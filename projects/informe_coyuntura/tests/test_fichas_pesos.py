@@ -118,30 +118,31 @@ def _cuerpo_ficha(clave: str) -> str:
     return cuerpo.split("\n    cambios:", 1)[0]
 
 
-NUMERO_EN_LETRAS = {
-    5: "cinco", 6: "seis", 7: "siete", 14: "catorce",
-    17: "diecisiete", 18: "dieciocho", 19: "diecinueve",
+ARCHIVOS_FICHAS = {
+    "macro": ROOT / "output/fichas/fichas-macro.md",
+    "gestion": ROOT / "output/fichas/fichas-gestion.md",
+    "vida_cotidiana": ROOT / "output/fichas/fichas-vida_cotidiana.md",
+    "politica": ROOT / "output/fichas/fichas-politica.md",
 }
 
 
-def test_las_fichas_de_indices_declaran_la_composicion_vigente():
+def test_las_fichas_renderizadas_declaran_la_composicion_vigente():
+    """Los Markdown versionados son la salida pública del generador de fichas."""
     problemas = []
-    for c in INFORME["cinturones"].values():
+    for cinturon, c in INFORME["cinturones"].items():
         for clave in ("itcm", "itcg", "itvc", "itcp"):
             idx = c.get(clave)
             if not idx:
                 continue
-            cuerpo = _cuerpo_ficha(clave).lower()
-            n_dim = len(idx["dimensiones"])
+            cuerpo = ARCHIVOS_FICHAS[cinturon].read_text(encoding="utf-8")
             n_ind = sum(len(d.get("indicadores") or {})
                         for d in idx["dimensiones"].values())
-            palabra_dim = NUMERO_EN_LETRAS[n_dim]
-            palabra_ind = NUMERO_EN_LETRAS[n_ind]
-            sustantivo = "componentes" if clave == "itvc" else "indicadores"
-            if f"{palabra_dim} dimensiones" not in cuerpo:
-                problemas.append(f"{clave}: no declara {n_dim} dimensiones")
-            if f"{palabra_ind} {sustantivo}" not in cuerpo:
-                problemas.append(f"{clave}: no declara {n_ind} {sustantivo}")
+            if f"| {n_ind} indicadores:" not in cuerpo:
+                problemas.append(f"{clave}: no declara {n_ind} indicadores")
+            for dimension in idx["dimensiones"].values():
+                if f"| {dimension['nombre']} |" not in cuerpo:
+                    problemas.append(
+                        f"{clave}: no muestra la dimensión {dimension['nombre']}")
     assert not problemas, "fichas de índice con composición anterior:\n  " + "\n  ".join(problemas)
 
 

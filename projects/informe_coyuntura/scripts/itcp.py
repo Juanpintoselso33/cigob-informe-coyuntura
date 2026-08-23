@@ -5,13 +5,13 @@ ITCP = Σ peso_dimensión × Σ (peso_indicador × puntaje_banda(valor)), escala
 0-100 donde 100 = mínima tensión (máximo capital político). Tensión 0-10 del
 informe = (100 − ITCP) / 10 (motor común en parametrica.py).
 
-A diferencia de ITCM/ITCG/ITVC, NO hay un documento CIGOB que fije los pesos
-de las 5 dimensiones (imagen y voto, poder legislativo, alianzas
-territoriales, cohesión interna del oficialismo, conflicto social) — ya
-descriptas en docs/archivo/cinturon_politica.md pero nunca pesadas. Los pesos acá son
-una decisión editorial explícita (ver ADR-0036): "imagen y voto" pesa
-deliberadamente MENOS que las demás porque el propio marco del proyecto
-distingue capital político de popularidad.
+A diferencia de ITCM/ITCG/ITVC, NO hay un documento CIGOB que fije los pesos.
+Las cinco dimensiones originales —imagen y voto, poder legislativo, alianzas
+territoriales, cohesión interna del oficialismo y conflicto social— estaban
+descriptas en docs/archivo/cinturon_politica.md pero nunca pesadas. ADR-0036
+fijó esa primera paramétrica; ADR-0088 y ADR-0126 incorporaron sector privado
+y poder judicial. La composición vigente de siete dimensiones vive en
+DIMENSIONES_ITCP.
 
 Ninguna banda de este índice sigue PROVISIONAL desde 2026-07-09 (ver
 ADR-0036 para el estado original). `adhesion_reformas_provincial` fue la

@@ -19,6 +19,7 @@ la PROSA contra la paramétrica. Este test hace eso.
 """
 import bisect
 import importlib
+import json
 import re
 import sys
 from pathlib import Path
@@ -233,65 +234,31 @@ def test_lo_que_dejo_de_puntuar_lo_dice_su_descripcion():
 #
 # No es prosa de adorno: es la metodología publicada. Un lector que quiera
 # reproducir el índice con lo que dice la ficha obtiene otro número.
-NUMERALES = {"tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7,
-             "ocho": 8, "nueve": 9, "diez": 10, "once": 11, "doce": 12,
-             "trece": 13, "catorce": 14, "quince": 15, "dieciséis": 16,
-             "diecisiete": 17, "dieciocho": 18, "diecinueve": 19, "veinte": 20}
-
 FICHA_ITVC = _bloque(FICHAS, "itvc")
 
-
-def _n_componentes() -> int:
-    return sum(len(d["indicadores"]) for d in itvc.DIMENSIONES_ITVC.values())
-
-
-# Los CUATRO índices declaran su composición en prosa, no sólo el ITCIS. La
-# primera versión de esta guarda miraba únicamente la ficha del ITCIS, y por eso
-# no vio que la del ITCG decía «Quince indicadores puntúan en cinco dimensiones»
-# con catorce — lo encontró una revisión externa el 2026-08-21. Un hueco de la
-# guarda es tan caro como el error que deja pasar.
-PARAMETRICAS = {"itcm": "itcm", "itcg": "itcg", "itcp": "itcp", "itvc": "itvc"}
+PARAMETRICAS = {
+    "itcm": ("itcm", "macro"),
+    "itcg": ("itcg", "gestion"),
+    "itcp": ("itcp", "politica"),
+    "itvc": ("itvc", "vida_cotidiana"),
+}
 
 
-def _composicion_real(modulo: str) -> tuple:
-    """(componentes, dimensiones) de la paramétrica de un cinturón."""
+@pytest.mark.parametrize("indice,configuracion", sorted(PARAMETRICAS.items()))
+def test_el_snapshot_que_consumen_las_fichas_publica_la_composicion_vigente(
+        indice, configuracion):
+    modulo, cinturon = configuracion
+    snapshot = json.loads(
+        (ROOT / "web/src/data/informe.json").read_text(encoding="utf-8"))
+    publicadas = snapshot["cinturones"][cinturon][indice]["dimensiones"]
     mod = importlib.import_module(modulo)
-    dims = next(getattr(mod, x) for x in dir(mod) if x.startswith("DIMENSIONES"))
-    return sum(len(d["indicadores"]) for d in dims.values()), len(dims)
-
-
-@pytest.mark.parametrize("ficha,modulo", sorted(PARAMETRICAS.items()))
-def test_la_ficha_del_indice_declara_bien_cuantos_componentes_tiene(ficha, modulo):
-    """Cualquier «N componentes/indicadores en M dimensiones» de la ficha de un
-    índice tiene que dar los números de su paramétrica."""
-    bloque = _bloque(FICHAS, ficha)
-    if not bloque:
-        pytest.skip(f"{ficha} no tiene ficha")
-    frases = re.findall(
-        r"(\w+) (?:componentes|indicadores) (?:puntúan )?en (\w+) dimensiones",
-        bloque, re.I)
-    if not frases:
-        pytest.skip(f"la ficha de {ficha} no declara su composición en prosa")
-    comps, ndims = _composicion_real(modulo)
-    malos = []
-    for comp, dim in frases:
-        c, d = NUMERALES.get(comp.lower()), NUMERALES.get(dim.lower())
-        if c is None or d is None:
-            malos.append(f"«{comp} … en {dim} dimensiones» no se pudo leer")
-            continue
-        if c != comps or d != ndims:
-            malos.append(f"la ficha dice «{comp} en {dim} dimensiones» y la "
-                         f"paramétrica tiene {comps} en {ndims}")
-    assert not malos, f"la ficha de {ficha} no se cuenta bien:\n  " + "\n  ".join(malos)
-
-
-def test_alguna_ficha_declara_su_composicion():
-    """Si el patrón de la prosa cambia y las cuatro empiezan a saltearse, los
-    parametrizados de arriba pasarían todos por `skip` sin mirar nada."""
-    con = [f for f in PARAMETRICAS if re.search(
-        r"\w+ (?:componentes|indicadores) (?:puntúan )?en \w+ dimensiones",
-        _bloque(FICHAS, f), re.I)]
-    assert len(con) >= 2, f"sólo {con} declaran composición: revisá el parser"
+    motor = next(getattr(mod, nombre)
+                 for nombre in dir(mod)
+                 if nombre.startswith("DIMENSIONES"))
+    assert set(publicadas) == set(motor)
+    for dimension, definicion in motor.items():
+        assert set(publicadas[dimension]["indicadores"]) == set(
+            definicion["indicadores"])
 
 
 def test_la_leyenda_de_agregacion_declara_los_pesos_de_dimension_vigentes():

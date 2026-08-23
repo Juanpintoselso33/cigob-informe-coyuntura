@@ -30,6 +30,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from config import (DIAS_SIN_FETCH, DIAS_SIN_FETCH_DEFAULT,  # noqa: E402
+                    MAX_DIAS, MAX_DIAS_DEFAULT,
                     cache_es_esperable)
 SNAPSHOT = (Path(sys.argv[sys.argv.index("--snapshot") + 1])
             if "--snapshot" in sys.argv else ROOT / "web" / "src" / "data")
@@ -40,73 +41,6 @@ VALIDACION = (Path(sys.argv[sys.argv.index("--validacion") + 1])
               if "--validacion" in sys.argv
               else ROOT / "output" / "validacion_externa.json")
 
-# ── G2: rezago máximo en días por indicador (default: mensual con margen) ──
-MAX_DIAS_DEFAULT = 110
-MAX_DIAS = {
-    # trimestrales EPH (fecha = inicio del trimestre, publica ~70d después del cierre)
-    "informalidad": 280, "pluriempleo": 280,
-    # SIPA: son declaraciones de las empresas que se consolidan y se revisan,
-    # con ~3 meses de rezago estructural (ADR-0130). 150 días deja margen sobre
-    # ese ritmo sin dejar de avisar si la fuente se muere de verdad.
-    "empleo_registrado": 150,
-    # fuentes con rezago estructural largo
-    # ANUAL: la serie RON de Hacienda es por año calendario ejecutado y el
-    # archivo del año nuevo aparece bien entrado el año siguiente. La fecha del
-    # dato es el cierre del año de referencia (31-dic), así que el rezago crece
-    # todo el año hasta que se publica el archivo siguiente: 560 días cubre ese
-    # ciclo completo sin dejar de avisar si la fuente se muere de verdad. Hasta
-    # el 29-jul-2026 la card declaraba `date.today()` y este tope no existía
-    # porque el indicador se mostraba fresco siempre.
-    "iaf_transferencias": 560,
-    # ANUALES del bloque judicial (ADR-0168). Sin tope propio, un indicador
-    # anual queda marcado como desactualizado siempre, que es exactamente el
-    # falso positivo que ADR-0133 separó de una falla de integridad.
-    # velocidad_resolucion: el anuario del año N sale bien entrado N+1, y la
-    # fecha del dato es el cierre del año de referencia — mismo ciclo que
-    # iaf_transferencias.
-    "velocidad_resolucion": 560,
-    # judicializacion: el punto del año en curso se recalcula en cada corrida y
-    # se fecha al 1-ene de ese año, así que el rezago crece hasta 365 días antes
-    # de que aparezca el punto siguiente. 430 cubre el ciclo con margen.
-    "judicializacion": 430,
-    "protocolo_antipiquetes": 430,      # DP publica monitoreos esporádicos
-    "litigiosidad_laboral": 220,        # SRT
-    "libertad_opcion_salud": 220,       # SSS
-    # mensuales con ~2-3 meses de rezago de publicación
-    "emae_ia": 140, "iai": 140, "icip": 140, "brecha_salario_cbt": 150,
-    # ADR-0218: la SRT publica con ~3 meses de rezago (verificado: en agosto
-    # de 2026 el último dato era mayo). El tope de 140 venía del IPI, que es
-    # más rápido; con esta fuente dejaría menos de un mes de margen.
-    "mortalidad_pymes": 165, "despacho_cemento": 140, "consumo_carne": 140,
-    # SIPA publica con el mismo rezago de ~3 meses que la SRT (ADR-0219).
-    "trabajo_independiente": 165,
-    # DNRPA (ADR-0223). El rezago está MEDIDO sobre el historial de
-    # actualizaciones del catálogo, no copiado de ningún documento: el mes M
-    # aparece entre el día 1 y el 4 de M+1 (sep-2025 a ago-2026), con un solo
-    # caso más tardío, el 13-mar-2026. Es dato registral, no una encuesta.
-    # Con esa cadencia la card nunca pasa de ~72 días de antigüedad; 90 es el
-    # punto donde una publicación se corrió más allá del mes siguiente entero,
-    # o sea un mes salteado, que es justo lo que el tope tiene que agarrar.
-    # ADR-0224: el tope pasa al componente que quedó. Es el MISMO número y por
-    # la misma medición —los dos registros de la DNRPA publican con la misma
-    # cadencia y el colector exige que lleguen al mismo mes—, así que el tope
-    # de autos vale para la suma sin recalibrar nada.
-    "motorizacion_total": 90,
-    # ADR-0225. Encadena DOS rezagos y por eso el default de 110 marcaría
-    # atraso todos los meses: el INDEC publica el mes M unos 52 días después
-    # de terminado (junio-2026 salió el 21-ago-2026) y la API de datos.gob.ar
-    # tarda ~13 días más en espejarlo (mayo-2026 apareció el 5-ago-2026). El
-    # último punto disponible tiene entonces entre ~95 y ~126 días según en qué
-    # parte del ciclo caiga la corrida. 140 deja margen sobre ese techo y
-    # avisa antes de que se saltee un mes entero, que es lo que hay que agarrar.
-    "consumo_supermercados": 140,
-    "endeudamiento_familiar": 140, "inseguridad": 150,
-    # IEF: la serie es mensual, pero el BCRA libera la planilla por lote
-    # semestral. 300 días cubre el ciclo sin presentarla como fuente mensual.
-    "carga_servicio_deuda_hogares": 300,
-    # Trabajo: planilla mensual con 2-3 meses de rezago observado.
-    "jornadas_individuales_no_trabajadas_12m": 150,
-}
 CARRY_FORWARD_MAX = 0.40                # tope de desactualizados por cinturón
 
 # ── G2b: días máximos SIN un fetch exitoso, por indicador (ADR-0191) ──────────

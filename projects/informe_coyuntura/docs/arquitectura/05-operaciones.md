@@ -15,7 +15,7 @@ La corrida completa sin manos:
    - `gate_calidad.py` (G1 estructura · G2 frescura con tope por indicador y
      presupuesto de carry-forward ≤40% por cinturón · G3 invariante
      serie↔titular con excepciones declaradas · G6 cero jerga interna);
-   - `pytest tests/ -q` (G4 reconciliación paramétrica de los tres índices y
+   - `pytest tests/ -q` (G4 reconciliación paramétrica de los cuatro índices y
      el score global · G5 la robustez Monte Carlo encierra el valor).
 4. Commit del snapshot + caches + stores a `main` (bot). Por eso las
    sesiones de trabajo largas suelen terminar con un `git pull --rebase`
@@ -23,15 +23,19 @@ La corrida completa sin manos:
    despliega**: el build lo hace Vercel, no el workflow.
 5. `bigquery_export.py` espeja la corrida en el archivo histórico (ADR-0180).
 
-Los topes de frescura y las excepciones del G3 se calibran en
-`scripts/gate_calidad.py` (cabecera del archivo); al cambiar la semántica
-card/serie de un indicador (ej. pulso vs canasta), declarar la excepción ahí
-con su motivo.
+Los topes de frescura del dato (`MAX_DIAS`) y del fetch (`DIAS_SIN_FETCH`) se
+calibran en `config.py`, no en el gate: los comparte con `publicar.py`, que
+marca `desactualizado` en el snapshot, y una política con dos dueños se
+desincroniza en silencio. Las excepciones del G3 y los topes propios de la
+serie (`G3B_MAX_DIAS`) siguen en la cabecera de `scripts/gate_calidad.py`; al
+cambiar la semántica card/serie de un indicador (ej. pulso vs canasta),
+declarar la excepción ahí con su motivo.
 
 > **GitHub Pages se retiró en julio de 2026** y con él `pages.yml`. El sitio
 > lo construye **Vercel** en cada push a `main` (Root Directory =
-> `projects/informe_coyuntura/web`, dominio `informe.cigob.org`); no hay
-> workflow de deploy en este repo.
+> `projects/informe_coyuntura/web`); no hay workflow de deploy en este repo.
+> La URL de producción que se verifica está en el
+> [README del proyecto](../../README.md#web-pública).
 
 ### `piquetes-poll.yml` — poll liviano (15:00 y 21:00 UTC)
 Corre `piquetes_poll.py` (alertas de manifestaciones) sin la pipeline entera.

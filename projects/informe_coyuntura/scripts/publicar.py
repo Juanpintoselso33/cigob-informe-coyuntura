@@ -1,8 +1,8 @@
 """Arma el snapshot de datos que consume la web del informe de coyuntura.
 
 Lee output/informe.json + el ultimo vida_cotidiana_*.json + output/series/*.csv
-y escribe web/src/data/informe.json (con vida cotidiana enriquecido a ~13
-indicadores automaticos) y web/src/data/series.json.
+y escribe web/src/data/informe.json (con vida cotidiana enriquecido con los
+indicadores automáticos vigentes) y web/src/data/series.json.
 """
 import csv, glob, json, os, re, statistics, sys
 from datetime import date, datetime
@@ -58,6 +58,21 @@ def _add(out, key, valor, unidad, fuente, fecha, **extra):
          "fecha_dato": fecha, "desactualizado": False}
     d.update(extra)
     out[key] = d
+
+
+def agregar_carga_servicio_deuda(enriquecido, series):
+    serie = series.get("carga_servicio_deuda_hogares") or []
+    if not serie:
+        return
+    ultimo = serie[-1]
+    _add(enriquecido, "carga_servicio_deuda_hogares",
+         ultimo["valor"], "% de la masa salarial registrada",
+         "BCRA — Informe de Estabilidad Financiera (CDF/MS)",
+         ultimo["fecha"][:7],
+         detalle_txt=("Cuotas de capital e intereses de las familias como "
+                      "porcentaje de la masa salarial registrada; el BCRA "
+                      "promedia tres meses tanto en el numerador como en el "
+                      "denominador. Más carga implica menor capacidad de pago."))
 
 
 def build_vida(raw):
@@ -397,18 +412,18 @@ VIDA_CONTEXTO = ("Indicador de contexto — no integra el ITCIS (paramétrica CI
 
 MACRO_CONTEXTO = "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
 GESTION_CONTEXTO = "Indicador de contexto — no integra el ITCG (paramétrica CIGOB jul-2026)."
-# Sin uso hoy: los 12 indicadores de política puntúan en el ITCP (itcp.py no
-# declara indicadores de contexto todavía) — se deja igual que MACRO/GESTION_CONTEXTO
-# por si un futuro indicador de política entra como contexto puro.
+# Texto de respaldo para una card de política que no integre el índice. Los
+# seguimientos internos vigentes se excluyen mediante POLITICA_OCULTOS.
 POLITICA_CONTEXTO = "Indicador de contexto — no integra el ITCP (paramétrica CIGOB jul-2026)."
 
 SCORE_EXPLICACION = {
     "macro":          ("ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: "
                        "estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, "
                        "actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."),
-    "politica":       ("ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: "
-                       "poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, "
-                       "conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."),
+    "politica":       ("ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 7 dimensiones: "
+                       "poder legislativo 21%, alianzas territoriales 19%, cohesión interna del oficialismo 15%, "
+                       "conflicto social 10%, imagen y voto 7%, poder judicial 15%, sector privado 13%. "
+                       "La tensión del cinturón es (100 − ITCP) / 10."),
     "gestion":        ("ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: "
                        "reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, "
                        "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."),
@@ -2456,7 +2471,6 @@ def aplicar_scoring(informe, series):
             ind["aporte_lectura"] = lectura
     _semaforos(informe)
 
-
     # REGLA (ADR-0153/0216): o integra el índice, o no es card.
     #
     # Desde ADR-0217 el que puntúa es el consumo TOTAL de carnes, así que la
@@ -2681,20 +2695,7 @@ def main():
             # vulnerabilidad. La planilla del IEF contiene una serie mensual,
             # aunque el BCRA la libera por lotes semestrales; por eso el dato
             # se fecha con el último mes observado y no con la publicación.
-            serie_carga = series.get("carga_servicio_deuda_hogares") or []
-            if serie_carga:
-                ult_carga = serie_carga[-1]
-                dias_carga = (date.today()
-                              - date.fromisoformat(ult_carga["fecha"][:10])).days
-                _add(enriquecido, "carga_servicio_deuda_hogares",
-                     ult_carga["valor"], "% de la masa salarial registrada",
-                     "BCRA — Informe de Estabilidad Financiera (CDF/MS)",
-                     ult_carga["fecha"][:7],
-                     desactualizado=dias_carga > 300,
-                     detalle_txt=("Cuotas de capital e intereses de las familias como "
-                                  "porcentaje de la masa salarial registrada; el BCRA "
-                                  "promedia tres meses tanto en el numerador como en el "
-                                  "denominador. Más carga implica menor capacidad de pago."))
+            agregar_carga_servicio_deuda(enriquecido, series)
             # Inseguridad: la card muestra el IVI mensual (LICIP-UTDT), la
             # métrica del ITVC desde el ADR-0032. El SNIC anual (denuncias
             # registradas) queda como contraste declarado en el detalle.

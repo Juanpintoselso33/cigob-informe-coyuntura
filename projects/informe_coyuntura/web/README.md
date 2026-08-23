@@ -4,7 +4,7 @@ App [Astro](https://astro.build/) que renderiza el observatorio público del Inf
 Coyuntura. Replica el estilo del observatorio de klipea (CSS propio de CIGOB) y se
 alimenta de un snapshot de datos en JSON.
 
-- **Publicado en:** https://informe.cigob.org
+- **URL pública vigente:** ver el [README del proyecto](../README.md#web-pública)
 - **Stack:** Astro 4.16, sin framework de UI (componentes `.astro` puros)
 - **Node:** 20 (el que usa el CI)
 
@@ -12,9 +12,9 @@ alimenta de un snapshot de datos en JSON.
 
 | Opción | Valor | Por qué |
 |---|---|---|
-| `site` | `https://informe.cigob.org` | URL canónica del único sitio publicado |
+| `site` | `https://informe.cigob.org` | URL canónica configurada en los metadatos y el sitemap |
 | `base` | `/` | El sitio se sirve desde la raíz del dominio custom |
-| `outDir` | `../../../web-dominio` | El build sale a la carpeta que el workflow sube como artefacto de Pages |
+| `outDir` | `dist/` (default) | Vercel publica ese directorio según `vercel.json` en la raíz del repo |
 
 ## Desarrollo local
 
@@ -22,7 +22,7 @@ alimenta de un snapshot de datos en JSON.
 cd projects/informe_coyuntura/web
 npm install
 npm run dev        # servidor de desarrollo con HMR
-npm run build      # build de producción → ../../../web-dominio
+npm run build      # build de producción → dist/
 npm run preview    # previsualizar el build
 ```
 
@@ -37,9 +37,9 @@ La web NO ejecuta los colectores: consume un snapshot precalculado en `src/data/
 | `src/data/informe.json` | Informe completo (cinturones, indicadores, scores) |
 | `src/data/series.json` | Series históricas agrupadas para los sparklines |
 
-Ambos los regenera `python scripts/publicar.py` (en la raíz del proyecto) a partir de
-los outputs de los colectores. Ciclo completo de actualización en el
-[`README` del proyecto](../README.md#web-pública).
+Ambos los regenera `.venv/bin/python scripts/publicar.py` (en la raíz del
+proyecto) a partir de los outputs de los colectores. Ciclo completo de
+actualización en el [`README` del proyecto](../README.md#web-pública).
 
 ## Estructura
 
@@ -59,7 +59,7 @@ web/
 
 ## Deploy
 
-Automático vía `.github/workflows/pages.yml` en cada push a `main`: corre un
-solo `npm ci && npm run build`, sube `web-dominio/` con
-`actions/upload-pages-artifact` y publica directamente desde este repo con
-`actions/deploy-pages`. No usa `DEPLOY_TARGET` ni un repo externo de deploy.
+Automático vía la integración de GitHub de Vercel en cada push a `main`.
+`vercel.json` instala y construye esta app desde la raíz del monorepo y publica
+`projects/informe_coyuntura/web/dist`. GitHub Pages y `pages.yml` se retiraron;
+no hay un workflow de deploy en este repo.

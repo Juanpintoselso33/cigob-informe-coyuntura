@@ -75,10 +75,11 @@ Un test verifica que el valor puntual cae dentro del rango.
 ### 2. Dimensión crítica — flag ADR-0020
 Una dimensión bajo el umbral crítico se marca en el snapshot y la web la
 señaliza ("el promedio del índice no la compensa"). Hoy: vulnerabilidad
-financiera (endeudamiento real×mora).
+financiera (mora materializada 70% y carga del servicio de deuda 30%,
+ADR-0231).
 
 ### 3. Validación externa — `validacion_externa.py`
-Reconstruye las series históricas de los tres índices y las contrasta con
+Reconstruye las series históricas de los cuatro índices y las contrasta con
 anclas externas que NO alimentan al índice:
 
 | Índice | Par propio | Contrastes cruzados |
@@ -86,6 +87,7 @@ anclas externas que NO alimentan al índice:
 | ITCM | riesgo país (EMBI, ArgentinaDatos) | Merval USD, ICC |
 | ITCG | Merval en USD (Yahoo ^MERV / CCL) | riesgo país, ICG |
 | ITVC | ICC UTDT (test también sin-ICC por circularidad) | riesgo país, Merval |
+| ITCP | EPU Argentina | — |
 
 Publica niveles, **primeras diferencias** (la prueba anti-tendencia: en ~30
 meses de una sola normalización los niveles correlacionan "gratis") y
@@ -102,7 +104,7 @@ que se ve en la web.
 ## Tests — `tests/`
 
 La suite pytest sin red cubre bandas, interpolación y ejemplos completos de
-ITCM/ITCG/ITVC; contratos de fuentes; series; y reconciliación del snapshot
+ITCM/ITCG/ITVC/ITCP; contratos de fuentes; series; y reconciliación del snapshot
 publicado (suma ponderada = índice, robustez encierra el valor, tensión =
 fórmula). Cuando un ADR cambia el motor, los valores esperados se recalibran
 **con el engine**, nunca a mano.

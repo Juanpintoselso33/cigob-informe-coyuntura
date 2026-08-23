@@ -9,7 +9,7 @@ deploy es una foto completa y verificable.
 ```
 web/src/
 ├── pages/
-│   ├── index.astro        # panel global (5 cinturones, tensión)
+│   ├── index.astro        # panel global (4 cinturones, tensión)
 │   └── [slug].astro       # página por cinturón: tiles, modales, robustez,
 │                          #   validación externa y matriz cruzada
 ├── components/            # Hero, TensionPanel, IndicadorTile/Row/Modal,

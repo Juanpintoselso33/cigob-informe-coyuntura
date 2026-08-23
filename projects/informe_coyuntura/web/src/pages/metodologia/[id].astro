@@ -178,11 +178,21 @@ const composicion = it
       })),
     }))
   : [];
+const cantidadDimensiones = composicion.length;
+const cantidadIndicadores = composicion.reduce((total, dim) => total + dim.inds.length, 0);
+const sustantivoIndicadores = fx.base100 ? "componentes" : "indicadores";
+const composicionVigente = `${cantidadIndicadores} ${sustantivoIndicadores} en ${cantidadDimensiones} ${cantidadDimensiones === 1 ? "dimensión" : "dimensiones"}`;
+const resumenIndice = !esIndicador && it
+  ? `${fx.resumen} ${composicionVigente[0].toUpperCase()}${composicionVigente.slice(1)}.`
+  : fx.resumen;
+const seleccionIndice = !esIndicador && it
+  ? [`Composición vigente: ${composicionVigente}. La tabla muestra la estructura y los valores de esta edición.`, ...fx.seleccion]
+  : fx.seleccion;
 
 // secciones OCDE/JRC del índice (título, chip de paso, párrafos)
 const pasosIndice = !esIndicador ? [
   { paso: "Paso 1 · OCDE/JRC", titulo: "Marco conceptual", parrafos: fx.marcoConceptual },
-  { paso: "Paso 2 · OCDE/JRC", titulo: "Selección de indicadores", parrafos: fx.seleccion },
+  { paso: "Paso 2 · OCDE/JRC", titulo: "Selección de indicadores", parrafos: seleccionIndice },
   { paso: "Paso 3 · OCDE/JRC", titulo: "Tratamiento de los datos", parrafos: fx.tratamiento },
   { paso: "Paso 5 · OCDE/JRC", titulo: fx.base100 ? "Normalización: base 100" : "Normalización: anclas interpoladas", parrafos: fx.normalizacion },
 ] : [];
@@ -196,7 +206,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
     <div class="cg-hero-inner cg-detalle-inner">
       <p class="cg-eyebrow"><a href={`${base}/metodologia/`}>← Metodología</a> · Ficha metodológica</p>
       <h1 class="cg-hero-title cg-detalle-title">{heroTitulo}</h1>
-      <p class="cg-hero-lead cg-detalle-lead">{esIndicador ? desc!.que : fx.resumen}</p>
+      <p class="cg-hero-lead cg-detalle-lead">{esIndicador ? desc!.que : resumenIndice}</p>
       <div class="cg-detalle-meta">
         {esIndicador && pres && (
           <span class="cg-detalle-chip">Hoy <strong>{pres.texto}{pres.unidad ? ` ${pres.unidad}` : ""}</strong> ({periodoVigente})</span>

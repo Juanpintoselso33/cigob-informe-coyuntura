@@ -5,8 +5,8 @@
 ```mermaid
 flowchart LR
     subgraph Fuentes
-        F1[INDEC / BCRA / MECON<br/>datos.gob.ar / apis.datos]
-        F2[UTDT · CICCRA · CAFAM<br/>SNIC · ACLED · Trends]
+        F1[INDEC / BCRA / MECON / Sec. Trabajo<br/>datos.gob.ar / apis.datos]
+        F2[UTDT · SAGYP · DNRPA<br/>SNIC · ACLED · Trends]
         F3[Yahoo Finance · ArgentinaDatos<br/>Presupuesto Abierto · HCDN]
     end
     subgraph Colectores
@@ -35,17 +35,17 @@ flowchart LR
 solo ensambla los caches que dejaron los colectores. Si un indicador no se
 actualiza, el sospechoso es su colector, no el generador. Para actualizar un
 cinturón a mano hay que correr su colector primero (ej.
-`python scripts/macro.py`) y recién después la cadena.
+`.venv/bin/python scripts/macro.py`) y recién después la cadena.
 
 ## Cadena de actualización manual
 
 ```bash
-python scripts/macro.py                 # (o gestion.py / vida_cotidiana/main.py / etc.)
-python scripts/generar_informe.py       # ensambla output/informe.json
-python scripts/descargar_series.py      # series oficiales + derivadas
-python scripts/validacion_externa.py    # refresca el store de validación
-python scripts/publicar.py              # scoring + snapshot web/src/data
-python -m pytest tests/ -q              # la suite debe quedar verde
+.venv/bin/python scripts/macro.py                 # (o gestion.py / vida_cotidiana/main.py / etc.)
+.venv/bin/python scripts/generar_informe.py       # ensambla output/informe.json
+.venv/bin/python scripts/descargar_series.py      # series oficiales + derivadas
+.venv/bin/python scripts/validacion_externa.py    # refresca el store de validación
+.venv/bin/python scripts/publicar.py              # scoring + snapshot web/src/data
+.venv/bin/python -m pytest tests/ -q              # la suite debe quedar verde
 ```
 
 ## Colectores
@@ -55,9 +55,9 @@ python -m pytest tests/ -q              # la suite debe quedar verde
 | `scripts/macro.py` | macro | BCRA (memo anti rate-limit del IdC), INDEC, MECON, planilla ITCRM |
 | `scripts/gestion.py` | gestión | Presupuesto Abierto (token), Boletín Oficial, ACLED (sonda auto-destrabante con credenciales UBA), Diagnóstico Político |
 | `scripts/vida_cotidiana/main.py` | vida | modular: `collectors/{bcra,cafam,ciccra,indec_series,salud,snic,trends,utdt_icc,manual}.py`, config central en `config.py` |
-| `scripts/politica.py` | política | HCDN datos abiertos, encuestas |
+| `scripts/politica.py` | política | HCDN datos abiertos, encuestas, ACLED y Secretaría de Trabajo |
 
-Cada colector escribe `output/cache/<cinturon>_<timestamp>.json`; el
+Cada colector escribe `output/cache/<cinturon>.json`; el
 ensamblador toma el más reciente. Si una fuente falla, `publicar.py` hace
 **carry-forward** del indicador desde el snapshot anterior (el dato previo con
 su fecha, nunca un hueco).

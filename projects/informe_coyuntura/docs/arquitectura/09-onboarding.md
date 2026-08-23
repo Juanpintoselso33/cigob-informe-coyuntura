@@ -2,7 +2,7 @@
 
 ## Requisitos
 
-- **Python 3.11+** y **Node 20+** (el CI usa Node 20).
+- **Python 3.12** y **Node 20+** (las mismas versiones que usa CI).
 - `gh` CLI autenticado (para mirar/relanzar deploys).
 - Git con acceso al repo (privado; pedir invitación como colaborador).
 
@@ -11,7 +11,8 @@
 ```bash
 git clone <repo>            # el repo raíz "Analisis CIGOB"
 cd "Analisis CIGOB/projects/informe_coyuntura"
-pip install -r requirements.txt
+uv venv --python 3.12
+uv pip install --python .venv/bin/python -r requirements.txt
 cd web && npm install
 ```
 
@@ -39,12 +40,12 @@ mantienen la web íntegra.
 
 ```bash
 cd projects/informe_coyuntura
-python scripts/macro.py                # colector (o el del cinturón que toque)
-python scripts/generar_informe.py      # ensambla (NO refresca colectores)
-python scripts/descargar_series.py     # series + stores resilientes
-python scripts/validacion_externa.py   # robustez pilar 3
-python scripts/publicar.py             # scoring + snapshot web/src/data
-python -m pytest tests/ -q             # verdes o no se pushea
+.venv/bin/python scripts/macro.py                # colector (o el del cinturón que toque)
+.venv/bin/python scripts/generar_informe.py      # ensambla (NO refresca colectores)
+.venv/bin/python scripts/descargar_series.py     # series + stores resilientes
+.venv/bin/python scripts/validacion_externa.py   # robustez pilar 3
+.venv/bin/python scripts/publicar.py             # scoring + snapshot web/src/data
+.venv/bin/python -m pytest tests/ -q             # verdes o no se pushea
 ```
 
 ## Ver la web local
@@ -74,7 +75,10 @@ Para screenshots de verificación visual se usa Playwright contra ese server
 ## Flujo de trabajo
 
 1. Cambio metodológico → **ADR primero** (`docs/adr/`, formato de los
-   existentes, fila en el README del índice).
+   existentes). El índice del README y las relaciones inversas **no se
+   escriben a mano**: los regenera `.venv/bin/python scripts/adr_coherencia.py`
+   desde el frontmatter, y los manuales de cinturón,
+   `.venv/bin/python scripts/manual_cinturon.py --todos`.
 2. Código + tests recalibrados **con el engine** (nunca valores a mano).
 3. Si toca la web: build + screenshot comparado contra una card aprobada.
 4. Commit de archivos relevantes (nada de `git add -A`), push a `main`,

@@ -2139,9 +2139,74 @@ def fetch_itvc_isac() -> list:
 
 BCRA_INF_BANCOS_ANEXO = ("https://www.bcra.gob.ar/archivos/Pdfs/"
                          "PublicacionesEstadisticas/informes/InfBanc_Anexo.xlsx")
+BCRA_IEF_EDICION_URL = ("https://www.bcra.gob.ar/publicaciones/"
+                        "informe-de-estabilidad-financiera-{semestre}-semestre-{anio}/")
+BCRA_IEF_SEMESTRES = ("primer", "segundo")
+BCRA_IEF_EDICIONES_A_PROBAR = 3
+# Fallback: la planilla del 1er semestre de 2026, la edición vigente cuando se
+# incorporó el indicador. El BCRA libera una planilla nueva por semestre con
+# OTRO nombre de archivo (el actual arrastra además un error de tipeo,
+# "finananciera"), así que clavarla sería congelar la serie sin ruido: el 404
+# lo absorbe `descargar._correr` y la card se quedaría en su último mes. Por eso
+# se descubre el XLSX desde la página de la edición —que sí trae el enlace en el
+# HTML servido— y esta URL queda sólo como red de contención.
 BCRA_IEF_CARGA_DEUDA = ("https://www.bcra.gob.ar/archivos/Pdfs/"
                         "PublicacionesEstadisticas/informes/"
                         "Informe-estabilidad-finananciera-2026-01-serie.xlsx")
+
+
+def _bcra_ief_ediciones(hoy: date | None = None) -> list:
+    """URLs de las páginas de las últimas ediciones del IEF, de nueva a vieja.
+
+    El IEF es semestral y su página usa un slug regular
+    (``…-primer-semestre-2026``), así que la edición vigente se deduce de la
+    fecha en vez de fijarse. Se prueban también las anteriores porque la del
+    semestre en curso todavía no existe durante los meses previos a su
+    publicación.
+    """
+    hoy = hoy or date.today()
+    anio, semestre = hoy.year, 1 if hoy.month <= 6 else 2
+    out = []
+    for _ in range(BCRA_IEF_EDICIONES_A_PROBAR):
+        out.append(BCRA_IEF_EDICION_URL.format(
+            semestre=BCRA_IEF_SEMESTRES[semestre - 1], anio=anio))
+        semestre -= 1
+        if semestre == 0:
+            anio, semestre = anio - 1, 2
+    return out
+
+
+def _bcra_ief_planilla_vigente() -> str:
+    """URL del XLSX de series de la edición más reciente del IEF publicada.
+
+    Devuelve :data:`BCRA_IEF_CARGA_DEUDA` si ninguna página de edición
+    contesta o ninguna publica un ``.xlsx``: perder el descubrimiento no debe
+    costar el dato, sólo la actualización.
+    """
+    from urllib.parse import urljoin
+    try:
+        from bs4 import BeautifulSoup
+    except ImportError:
+        return BCRA_IEF_CARGA_DEUDA
+    for edicion in _bcra_ief_ediciones():
+        try:
+            r = requests.get(edicion, headers=HTTP_HEADERS,
+                             timeout=HTTP_TIMEOUT, verify=False)
+            r.raise_for_status()
+        except requests.RequestException:
+            continue
+        hrefs = [a.get("href", "")
+                 for a in BeautifulSoup(r.text, "html.parser").find_all("a")
+                 if a.get("href", "").lower().endswith(".xlsx")]
+        # La planilla de series es el único XLSX que el IEF publica hoy, pero
+        # el nombre se prefiere por "serie" para no confundirla si algún día
+        # la edición sube otra: el resto del nombre no es estable (arrastra un
+        # error de tipeo y cambia de formato entre ediciones).
+        candidato = next((h for h in hrefs if "serie" in h.lower()),
+                         hrefs[0] if hrefs else None)
+        if candidato:
+            return urljoin(edicion, candidato)
+    return BCRA_IEF_CARGA_DEUDA
 
 
 def _anexo_bancos_familias() -> tuple:
@@ -2251,13 +2316,15 @@ def fetch_carga_servicio_deuda_serie() -> list:
     salarial registrada (CDF/MS), en porcentaje.
 
     El IEF del BCRA publica el histórico mensual completo en su planilla de
-    series. Se busca la hoja y la columna por sus rótulos, no por el número
+    series. La planilla se descubre desde la página de la edición vigente
+    (:func:`_bcra_ief_planilla_vigente`) porque cada semestre cambia de nombre
+    de archivo. Se busca la hoja y la columna por sus rótulos, no por el número
     ``17`` que tiene en la edición de julio de 2026: ese orden puede cambiar
     cuando el BCRA agregue gráficos. El rebase B100 invertido lo hace
     :func:`itvc.rebase_de_serie`, igual que para la mora.
     """
     import openpyxl
-    r = requests.get(BCRA_IEF_CARGA_DEUDA, headers=HTTP_HEADERS,
+    r = requests.get(_bcra_ief_planilla_vigente(), headers=HTTP_HEADERS,
                      timeout=HTTP_TIMEOUT * 3, verify=False)
     r.raise_for_status()
     wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)

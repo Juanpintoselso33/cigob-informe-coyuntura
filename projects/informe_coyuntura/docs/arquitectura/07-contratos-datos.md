@@ -47,7 +47,7 @@ archivos a mano.
   "metodo_obtencion": "automatico",  // "automatico" | "semiautomatico" | "manual";
                                  // lo escribe publicar.py, es lo que muestra el badge
   "en_indice": true,             // integra la paramétrica (false = contexto)
-  "dimension": "confianza",
+  "dimension": "seguridad",
   "indice_itvc": 102.1,          // B100 vigente del componente: post-techo y post-ajuste (solo vida)
   "indice_itvc_crudo": 148.3,    // solo si el techo lo recortó: B100 antes del recorte
   "recorte_itvc": 8.3,           // puntos que le sacó el techo (crudo − 140)
@@ -65,13 +65,17 @@ archivos a mano.
 {
   "valor": 90.7, "banda": "deterioro_moderado", "banda_legible": "...",
   "dimensiones": {
-    "confianza": {
-      "nombre": "Confianza y seguridad", "peso": 0.15, "puntaje": 103.8,
-      "critica": false,          // flag ADR-0020: bajo umbral, el promedio no la compensa
+    "vulnerabilidad": {
+      "nombre": "Vulnerabilidad financiera", "peso": 0.10, "puntaje": 24.7,
+      "critica": true,           // flag ADR-0020: bajo umbral, el promedio no la compensa
       "indicadores": {
-        "icc_utdt": { "peso": 0.45, "peso_efectivo": 0.0675,
-                      "puntaje_banda": 97.1,     // sin override
-                      "puntaje_aplicado": 97.1 } // vigente (= banda salvo ajuste)
+        "mora_familias": { "peso": 0.70, "peso_efectivo": 0.07,
+                           "puntaje_banda": 17.2,     // sin override
+                           "puntaje_aplicado": 17.2 }, // vigente (= banda salvo ajuste)
+        "carga_servicio_deuda_hogares": {
+          "peso": 0.30, "peso_efectivo": 0.03,
+          "puntaje_banda": 42.3, "puntaje_aplicado": 42.3
+        }
       }
     }
   },
@@ -93,12 +97,11 @@ salvo `SERIE_COMPLETA`. Claves extra sin card (`inseguridad_snic`,
 
 ## `output/` — artefactos intermedios
 
-- `cache/<cinturon>_<ts>.json`: crudo del colector (el ensamblador toma el
-  más reciente por cinturón).
+- `cache/<cinturon>.json`: último crudo válido de cada colector.
 - `informe.json` / `informe.md`: ensamblado editorial (pre-scoring).
 - `series/*.csv`: `fecha,valor` por indicador (+ metadatos de unidad/fuente
   en el registro de `descargar_series.py`).
-- `validacion_externa.json`: series reconstruidas de los 3 índices + anclas
+- `validacion_externa.json`: series reconstruidas de los 4 índices + anclas
   externas + correlaciones (niveles, diferencias, lead-lag).
 - `sensibilidad.json`, `interpolacion_sombra.json`: soportes de robustez.
 

@@ -31,7 +31,7 @@ cómo llega y qué lo amortigua. Credenciales: solo donde se indica.
 
 Ocultos (insumos, ADR-0022): base monetaria, depósitos, préstamos nominales, circulante.
 
-## Gestión (17, todo automatizado — ADR-0025)
+## Gestión
 
 | Indicador | Fuente / vía | Credencial | Notas |
 |---|---|---|---|
@@ -51,32 +51,25 @@ Ocultos (insumos, ADR-0022): base monetaria, depósitos, préstamos nominales, c
 | `alertas_manifestacion` | API Transporte GCBA (serviceAlerts) | `BA_TRANSPORTE_*` | + poll 2×/día (`piquetes-poll.yml`) |
 | `protestas_caba` | ACLED (agregado semanal) | `ACLED_*` (cuenta juan@ott.law nivel Open; sonda UBA auto-destrabante en `gestion.py`) | serie completa 2018→ (excepción de ventana) |
 
-## Vida cotidiana (13, todos puntúan — ADR-0034)
+## Vida cotidiana
 
-| Indicador | Fuente / vía | Frec. | Resiliencia / ADRs |
-|---|---|---|---|
-| `brecha_salario_cbt` | Sec. Trabajo (RIPTE) + INDEC (CBT) | mensual | mes común; CBT fresca provisoria |
-| `ipc_alimentos` | INDEC IPC alimentos | mensual | ITVC: relativo al IPC general (ADR-0033) |
-| `peso_tarifas` | INDEC IPC regulados | mensual | relativo al salario |
-| `endeudamiento_familiar` | BCRA crédito consumo + Informe sobre Bancos (mora) | mensual | I_EC real×mora; **dimensión crítica** |
-| `informalidad` / `pluriempleo` | INDEC EPH (serie 52.2 trimestral) | trimestral | upgrade barrido 2/13 |
-| `mortalidad_pymes` | INDEC IPI manufacturero **desestacionalizado** | mensual | card desest (barrido 6/13) |
-| `despacho_cemento` | INDEC ISAC desestacionalizado | mensual | — |
-| `inseguridad` | **UTDT LICIP — IVI** (PDFs mensuales) | mensual ~1-2m | store `ivi_serie.json`, base declarada ene-2024 (ADR-0032); contraste SNIC anual con store `snic_serie.json` (host frágil) |
-| `icc_utdt` | UTDT CIF (xls, requiere `xlrd==1.2`) | mensual | par de validación del ITVC |
-| `sentimiento_digital` | Google Trends vía pytrends | mensual (puntaje) + pulso 3m | ventana fija 2021→, store con reemplazo TOTAL (ADR-0034); 429 frecuentes |
-| `consumo_carne` | CICCRA (PM-12m) | mensual | store `carne_serie.json` |
-| `patentamiento_motos` | CAFAM | mensual, días | móvil 12m (ADR-0024) |
+Familias de fuente: INDEC y datos.gob.ar (precios, ingresos, empleo, consumo y
+construcción) · Secretaría de Trabajo (RIPTE) · BCRA (Informe sobre Bancos e
+Informe de Estabilidad Financiera) · SRT (empleadores) · SAGYP (carnes) ·
+DNRPA (motorización) · UTDT (confianza y victimización) · Google Trends.
+El detalle indicador por indicador, incluida la resiliencia ante faltantes,
+está en las fichas.
 
 ## Política
 
 Familias de fuente del cinturón, que desde ADR-0036 puntúa con la paramétrica
 ITCP: Votómetro CIGOB · InfoLeg y Boletín Oficial (`ratio_dnu`) · ACLED
 (`conflictividad_nacional`, que reemplazó a la serie CEPA por ADR-0052) ·
-serie RON oficial (`iaf_transferencias`) · datos.hcdn.gob.ar y actas del
-Senado (eficacia legislativa, comisiones, cohesión de bloque) · elaboración
-CIGOB con registro datado (`data/politica/manuales.json`). El detalle
-indicador por indicador está en las fichas.
+Secretaría de Trabajo (jornadas individuales no trabajadas, ADR-0232) · serie
+RON oficial (`iaf_transferencias`) · datos.hcdn.gob.ar y actas del Senado
+(eficacia legislativa, comisiones, cohesión de bloque) · elaboración CIGOB con
+registro datado (`data/politica/manuales.json`). El detalle indicador por
+indicador está en las fichas.
 
 Espíritu de época fue un quinto cinturón —`icc_utdt` y `sentimiento_digital`
 compartidos con vida, más `clima_electoral`— y salió del tablero por
