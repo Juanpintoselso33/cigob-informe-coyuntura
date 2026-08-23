@@ -19,7 +19,15 @@ const badge = badgeEstado(ind);
 // no se ganó. Le pasa a asistencia_directa (TDPS 100%, fuera del índice por
 // saturado — ADR-0100): amarillo ahí leería "tensión media" sobre un logro.
 const color = ind.semaforo?.color ? semaforoDe(ind) : null;
-const badgeCls = badge === "Automático" ? "auto" : badge === "Carga manual" ? "manual" : "estim";
+// Las cuatro ramas son las cuatro que devuelve badgeEstado(). Van explícitas y
+// no con un `else` de bolsa: cuando se sumó "Semiautomático" cayó en el
+// catch-all y las cards semiautomáticas salían con `.estim`, o sea en itálica
+// —la marca que el sitio reserva para las estimaciones—. El rótulo decía una
+// cosa y el estilo otra.
+const badgeCls = badge === "Automático" ? "auto"
+  : badge === "Semiautomático" ? "semi"
+  : badge === "Carga manual" ? "manual"
+  : "estim";
 // El chip muestra el período del dato en vez del rótulo "Automático" (que no
 // informaba nada); manual/estimación conservan su rótulo — ahí el origen ES
 // la información, y la fecha ya la aporta aclaracion() en el modal.

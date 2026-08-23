@@ -88,73 +88,73 @@ fecha,indicador,valor,unidad,fuente
 2019-03-01,trabajo_independiente,16.79,% del empleo registrado,SIPA — autónomos y monotributo sobre el total de trabajo registrado
 2019-02-01,trabajo_independiente,16.9,% del empleo registrado,SIPA — autónomos y monotributo sobre el total de trabajo registrado
 2019-01-01,trabajo_independiente,16.82,% del empleo registrado,SIPA — autónomos y monotributo sobre el total de trabajo registrado
-2026-07-01,sentimiento_digital,57.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-06-01,sentimiento_digital,60.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-05-01,sentimiento_digital,61.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-04-01,sentimiento_digital,69.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-03-01,sentimiento_digital,72.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-02-01,sentimiento_digital,65.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-01-01,sentimiento_digital,72.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-12-01,sentimiento_digital,60.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-11-01,sentimiento_digital,70.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-10-01,sentimiento_digital,74.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-07-01,sentimiento_digital,58.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-06-01,sentimiento_digital,59.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-05-01,sentimiento_digital,63.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-04-01,sentimiento_digital,68.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-03-01,sentimiento_digital,72.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-02-01,sentimiento_digital,66.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-01-01,sentimiento_digital,71.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-12-01,sentimiento_digital,61.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-11-01,sentimiento_digital,70.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-10-01,sentimiento_digital,74.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2025-09-01,sentimiento_digital,80.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-08-01,sentimiento_digital,85.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-07-01,sentimiento_digital,76.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-06-01,sentimiento_digital,76.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-05-01,sentimiento_digital,79.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-04-01,sentimiento_digital,84.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-03-01,sentimiento_digital,75.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-02-01,sentimiento_digital,83.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-08-01,sentimiento_digital,86.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-07-01,sentimiento_digital,77.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-06-01,sentimiento_digital,79.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-05-01,sentimiento_digital,79.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-04-01,sentimiento_digital,84.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-03-01,sentimiento_digital,75.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-02-01,sentimiento_digital,83.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2025-01-01,sentimiento_digital,84.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-12-01,sentimiento_digital,77.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-11-01,sentimiento_digital,82.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-10-01,sentimiento_digital,80.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-09-01,sentimiento_digital,82.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-08-01,sentimiento_digital,85.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-07-01,sentimiento_digital,81.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-06-01,sentimiento_digital,86.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-05-01,sentimiento_digital,99.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-04-01,sentimiento_digital,97.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-03-01,sentimiento_digital,86.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-02-01,sentimiento_digital,91.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-01-01,sentimiento_digital,103.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-12-01,sentimiento_digital,95.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-11-01,sentimiento_digital,102.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-10-01,sentimiento_digital,102.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-09-01,sentimiento_digital,91.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-08-01,sentimiento_digital,102.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-07-01,sentimiento_digital,87.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-06-01,sentimiento_digital,87.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-05-01,sentimiento_digital,90.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-04-01,sentimiento_digital,94.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-03-01,sentimiento_digital,101.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-02-01,sentimiento_digital,82.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-01-01,sentimiento_digital,84.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-12-01,sentimiento_digital,69.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-11-01,sentimiento_digital,83.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-10-01,sentimiento_digital,82.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-09-01,sentimiento_digital,88.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-08-01,sentimiento_digital,105.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-07-01,sentimiento_digital,99.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-06-01,sentimiento_digital,92.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-05-01,sentimiento_digital,76.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-04-01,sentimiento_digital,75.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-03-01,sentimiento_digital,78.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-02-01,sentimiento_digital,66.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-01-01,sentimiento_digital,67.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-12-01,sentimiento_digital,59.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-12-01,sentimiento_digital,77.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-11-01,sentimiento_digital,82.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-10-01,sentimiento_digital,82.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-09-01,sentimiento_digital,82.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-08-01,sentimiento_digital,87.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-07-01,sentimiento_digital,80.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-06-01,sentimiento_digital,88.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-05-01,sentimiento_digital,101.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-04-01,sentimiento_digital,100.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-03-01,sentimiento_digital,87.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-02-01,sentimiento_digital,90.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-01-01,sentimiento_digital,104.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-12-01,sentimiento_digital,95.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-11-01,sentimiento_digital,102.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-10-01,sentimiento_digital,102.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-09-01,sentimiento_digital,92.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-08-01,sentimiento_digital,103.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-07-01,sentimiento_digital,86.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-06-01,sentimiento_digital,87.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-05-01,sentimiento_digital,91.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-04-01,sentimiento_digital,94.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-03-01,sentimiento_digital,102.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-02-01,sentimiento_digital,83.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-01-01,sentimiento_digital,84.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-12-01,sentimiento_digital,70.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-11-01,sentimiento_digital,84.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-10-01,sentimiento_digital,84.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-09-01,sentimiento_digital,89.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-08-01,sentimiento_digital,105.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-07-01,sentimiento_digital,99.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-06-01,sentimiento_digital,92.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-05-01,sentimiento_digital,78.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-04-01,sentimiento_digital,75.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-03-01,sentimiento_digital,80.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-02-01,sentimiento_digital,67.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-01-01,sentimiento_digital,68.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-12-01,sentimiento_digital,60.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2021-11-01,sentimiento_digital,81.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-10-01,sentimiento_digital,74.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-09-01,sentimiento_digital,71.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-08-01,sentimiento_digital,68.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-07-01,sentimiento_digital,66.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-06-01,sentimiento_digital,66.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-05-01,sentimiento_digital,64.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-04-01,sentimiento_digital,64.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-03-01,sentimiento_digital,70.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-02-01,sentimiento_digital,77.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-01-01,sentimiento_digital,70.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-10-01,sentimiento_digital,73.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-09-01,sentimiento_digital,72.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-08-01,sentimiento_digital,69.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-07-01,sentimiento_digital,67.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-06-01,sentimiento_digital,66.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-05-01,sentimiento_digital,64.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-04-01,sentimiento_digital,64.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-03-01,sentimiento_digital,70.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-02-01,sentimiento_digital,77.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-01-01,sentimiento_digital,71.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2026-06-01,pobreza_nowcast,31.6,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
 2026-05-01,pobreza_nowcast,29.6,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
 2026-04-01,pobreza_nowcast,29.2,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
@@ -241,53 +241,15 @@ fecha,indicador,valor,unidad,fuente
 2016-10-01,pluriempleo,7.2,%,"INDEC EPH (47.2, trimestral)"
 2016-07-01,pluriempleo,7.0,%,"INDEC EPH (47.2, trimestral)"
 2016-04-01,pluriempleo,7.7,%,"INDEC EPH (47.2, trimestral)"
-2026-07-01,peso_tarifas,2.13,% m/m regulados,INDEC serie 148.3
-2026-06-01,peso_tarifas,2.3,% m/m regulados,INDEC serie 148.3
-2026-05-01,peso_tarifas,2.4,% m/m regulados,INDEC serie 148.3
-2026-04-01,peso_tarifas,4.68,% m/m regulados,INDEC serie 148.3
-2026-03-01,peso_tarifas,5.08,% m/m regulados,INDEC serie 148.3
-2026-02-01,peso_tarifas,4.25,% m/m regulados,INDEC serie 148.3
-2026-01-01,peso_tarifas,2.43,% m/m regulados,INDEC serie 148.3
-2025-12-01,peso_tarifas,3.29,% m/m regulados,INDEC serie 148.3
-2025-11-01,peso_tarifas,2.89,% m/m regulados,INDEC serie 148.3
-2025-10-01,peso_tarifas,2.56,% m/m regulados,INDEC serie 148.3
-2025-09-01,peso_tarifas,2.63,% m/m regulados,INDEC serie 148.3
-2025-08-01,peso_tarifas,2.67,% m/m regulados,INDEC serie 148.3
-2025-07-01,peso_tarifas,2.31,% m/m regulados,INDEC serie 148.3
-2025-06-01,peso_tarifas,2.23,% m/m regulados,INDEC serie 148.3
-2025-05-01,peso_tarifas,1.31,% m/m regulados,INDEC serie 148.3
-2025-04-01,peso_tarifas,1.77,% m/m regulados,INDEC serie 148.3
-2025-03-01,peso_tarifas,3.21,% m/m regulados,INDEC serie 148.3
-2025-02-01,peso_tarifas,2.32,% m/m regulados,INDEC serie 148.3
-2025-01-01,peso_tarifas,2.61,% m/m regulados,INDEC serie 148.3
-2024-12-01,peso_tarifas,3.37,% m/m regulados,INDEC serie 148.3
-2024-11-01,peso_tarifas,3.54,% m/m regulados,INDEC serie 148.3
-2024-10-01,peso_tarifas,2.7,% m/m regulados,INDEC serie 148.3
-2024-09-01,peso_tarifas,4.53,% m/m regulados,INDEC serie 148.3
-2024-08-01,peso_tarifas,5.89,% m/m regulados,INDEC serie 148.3
-2024-07-01,peso_tarifas,4.33,% m/m regulados,INDEC serie 148.3
-2024-06-01,peso_tarifas,8.06,% m/m regulados,INDEC serie 148.3
-2024-05-01,peso_tarifas,4.02,% m/m regulados,INDEC serie 148.3
-2024-04-01,peso_tarifas,18.39,% m/m regulados,INDEC serie 148.3
-2024-03-01,peso_tarifas,18.13,% m/m regulados,INDEC serie 148.3
-2024-02-01,peso_tarifas,21.11,% m/m regulados,INDEC serie 148.3
-2024-01-01,peso_tarifas,26.57,% m/m regulados,INDEC serie 148.3
-2023-12-01,peso_tarifas,20.68,% m/m regulados,INDEC serie 148.3
-2023-11-01,peso_tarifas,10.06,% m/m regulados,INDEC serie 148.3
-2023-10-01,peso_tarifas,6.62,% m/m regulados,INDEC serie 148.3
-2023-09-01,peso_tarifas,8.32,% m/m regulados,INDEC serie 148.3
-2023-08-01,peso_tarifas,8.28,% m/m regulados,INDEC serie 148.3
-2023-07-01,peso_tarifas,6.72,% m/m regulados,INDEC serie 148.3
-2023-06-01,peso_tarifas,7.18,% m/m regulados,INDEC serie 148.3
-2023-05-01,peso_tarifas,9.03,% m/m regulados,INDEC serie 148.3
-2023-04-01,peso_tarifas,4.89,% m/m regulados,INDEC serie 148.3
-2023-03-01,peso_tarifas,8.29,% m/m regulados,INDEC serie 148.3
-2023-02-01,peso_tarifas,5.14,% m/m regulados,INDEC serie 148.3
-2023-01-01,peso_tarifas,7.1,% m/m regulados,INDEC serie 148.3
-2022-12-01,peso_tarifas,5.11,% m/m regulados,INDEC serie 148.3
-2022-11-01,peso_tarifas,6.23,% m/m regulados,INDEC serie 148.3
-2022-10-01,peso_tarifas,7.41,% m/m regulados,INDEC serie 148.3
-2022-09-01,peso_tarifas,4.55,% m/m regulados,INDEC serie 148.3
+2026-08-01,peso_tarifas,14.5,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-07-01,peso_tarifas,15.0,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-06-01,peso_tarifas,15.0,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-05-01,peso_tarifas,14.1,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-04-01,peso_tarifas,12.2,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-03-01,peso_tarifas,12.3,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-02-01,peso_tarifas,11.0,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2026-01-01,peso_tarifas,11.3,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
+2025-12-01,peso_tarifas,11.1,% del salario RIPTE,IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA
 2026-07-01,patentamiento_motos,72418,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2026-06-01,patentamiento_motos,69475,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
 2026-05-01,patentamiento_motos,69925,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
@@ -569,39 +531,15 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,mora_familias,5.22,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
 2021-08-01,mora_familias,5.7,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
 2021-07-01,mora_familias,5.79,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
-2026-06-01,itvc_tarifas,72.4,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2026-05-01,itvc_tarifas,71.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2026-04-01,itvc_tarifas,72.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2026-03-01,itvc_tarifas,73.6,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2026-02-01,itvc_tarifas,75.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2026-01-01,itvc_tarifas,74.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-12-01,itvc_tarifas,76.0,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-11-01,itvc_tarifas,77.4,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-10-01,itvc_tarifas,78.7,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-09-01,itvc_tarifas,78.7,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-08-01,itvc_tarifas,79.6,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-07-01,itvc_tarifas,80.7,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-06-01,itvc_tarifas,80.2,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-05-01,itvc_tarifas,79.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-04-01,itvc_tarifas,79.4,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-03-01,itvc_tarifas,78.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-02-01,itvc_tarifas,77.9,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2025-01-01,itvc_tarifas,75.1,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-12-01,itvc_tarifas,75.1,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-11-01,itvc_tarifas,76.1,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-10-01,itvc_tarifas,76.6,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-09-01,itvc_tarifas,73.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-08-01,itvc_tarifas,74.0,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-07-01,itvc_tarifas,75.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-06-01,itvc_tarifas,73.9,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-05-01,itvc_tarifas,75.3,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-04-01,itvc_tarifas,73.0,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-03-01,itvc_tarifas,74.4,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-02-01,itvc_tarifas,77.1,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2024-01-01,itvc_tarifas,83.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2023-12-01,itvc_tarifas,92.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2023-11-01,itvc_tarifas,103.0,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
-2023-10-01,itvc_tarifas,106.7,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2026-08-01,itvc_tarifas,112.6,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
+2026-07-01,itvc_tarifas,115.0,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
+2026-06-01,itvc_tarifas,115.0,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
+2026-05-01,itvc_tarifas,107.3,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
+2026-04-01,itvc_tarifas,114.0,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
+2026-03-01,itvc_tarifas,117.2,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
+2026-02-01,itvc_tarifas,124.4,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
+2026-01-01,itvc_tarifas,125.0,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
+2025-12-01,itvc_tarifas,125.0,índice de asequibilidad por componente (100 = tensión 5),IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)
 2026-06-01,itvc_pobreza,126.9,índice (100 = 4T-2023),UTDT — Nowcast de Pobreza (nivel) + INDEC EPH (base 2º sem. 2023)
 2026-05-01,itvc_pobreza,135.5,índice (100 = 4T-2023),UTDT — Nowcast de Pobreza (nivel) + INDEC EPH (base 2º sem. 2023)
 2026-04-01,itvc_pobreza,137.3,índice (100 = 4T-2023),UTDT — Nowcast de Pobreza (nivel) + INDEC EPH (base 2º sem. 2023)
@@ -1085,7 +1023,7 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,icc_utdt,38.5,índice,"UTDT (ICC, serie XLS)"
 2021-08-01,icc_utdt,37.8,índice,"UTDT (ICC, serie XLS)"
 2021-07-01,icc_utdt,39.2,índice,"UTDT (ICC, serie XLS)"
-2026-08-01,endeudamiento_familiar,43.72,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-08-01,endeudamiento_familiar,43.94,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-07-01,endeudamiento_familiar,46.42,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-06-01,endeudamiento_familiar,47.32,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-05-01,endeudamiento_familiar,45.93,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)

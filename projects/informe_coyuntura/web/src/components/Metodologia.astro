@@ -8,7 +8,7 @@ import { FICHAS } from "../lib/fichas.ts";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
-// conteos vivos: indicadores únicos, automáticos y fuentes distintas
+// conteos vivos: indicadores únicos, su método de obtención y fuentes distintas
 const vistos = new Set<string>();
 const fuentes = new Set<string>();
 let autos = 0;
@@ -18,10 +18,15 @@ for (const c of Object.values(informe.cinturones)) {
   for (const [k, ind] of Object.entries(c.indicadores)) {
     if (!vistos.has(k)) {
       vistos.add(k);
-      const metodo = badgeEstado(ind);
-      if (metodo === "Automático") autos++;
-      if (metodo === "Semiautomático") semiautos++;
-      if (metodo === "Carga manual") manuales++;
+      // Por `metodo_obtencion` y NO por `badgeEstado`: el badge devuelve
+      // "Estimación" antes de mirar el método cuando el indicador se quedó sin
+      // valor, así que el día que una fuente se cae ese indicador no entra en
+      // ninguno de los tres y la frase deja de sumar el total que tiene al
+      // lado — en silencio, porque hoy no hay ninguno en null.
+      const metodo = ind.metodo_obtencion ?? "automatico";
+      if (metodo === "manual") manuales++;
+      else if (metodo === "semiautomatico") semiautos++;
+      else autos++;
     }
     if (ind.fuente) fuentes.add(ind.fuente as string);
   }

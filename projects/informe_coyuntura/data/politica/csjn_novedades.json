@@ -2,9 +2,9 @@
  "_meta": {
   "descripcion": "Fallos de la CSJN que declaran inconstitucionalidad o tienen al Estado como parte. Detección automática; la lectura y la clasificación las hace el analista (ADR-0140). NO es un contador: el endpoint abierto topea en 10 registros por consulta y no pagina. Sacar de 'pendientes' lo ya revisado.",
   "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
-  "nuevas_en_la_corrida": 2,
+  "nuevas_en_la_corrida": 0,
   "registros_vistos_en_la_corrida": 40,
-  "ultima_corrida": "2026-08-21"
+  "ultima_corrida": "2026-08-23"
  },
  "pendientes": {
   "818689": {

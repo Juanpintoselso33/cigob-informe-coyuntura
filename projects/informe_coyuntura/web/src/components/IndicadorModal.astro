@@ -27,6 +27,7 @@ const INDICE_CFG: Record<string, { key: string; sigla: string; base100: boolean 
 const numero = (valor: unknown): number | null =>
   typeof valor === "number" && Number.isFinite(valor) ? valor : null;
 type MetaIndiceIndicador = {
+  indicador: string;
   dimNombre: string;
   sigla: string;
   base100: boolean;
@@ -36,6 +37,7 @@ type MetaIndiceIndicador = {
   pesoEfectivo: number | null;
   puntajeAplicado: number | null;
   aporteIndice: number | null;
+  fechaPuntaje: string | null;
 };
 const indiceMetaDe: Record<string, MetaIndiceIndicador> = {};
 for (const [ckey, c] of Object.entries(informe.cinturones)) {
@@ -60,6 +62,7 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
         ?? puntajePublicado
         ?? numero(ind?.puntaje_banda);
       indiceMetaDe[`${SLUG_DE[ckey] ?? ckey}.${ikey}`] = {
+        indicador: ikey,
         dimNombre: dim.nombre,
         sigla: cfg.sigla,
         base100: cfg.base100,
@@ -70,6 +73,9 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
         puntajeAplicado,
         aporteIndice: pesoEfectivo !== null && puntajeAplicado !== null
           ? pesoEfectivo * puntajeAplicado
+          : null,
+        fechaPuntaje: typeof ind?.fecha_indice_itvc === "string"
+          ? ind.fecha_indice_itvc
           : null,
       };
     }
@@ -112,6 +118,7 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
     const claveInfo = `${SLUG_DE[ckey] ?? ckey}.${ikey}`;
     const indiceMeta = ind.en_indice === false ? null : (indiceMetaDe[claveInfo] ?? null);
     info[claveInfo] = {
+      key: ikey,
       label: label(ikey), cinturon: CINT_NOMBRE[ckey] ?? ckey,
       que: d.que, aporta: d.aporta,
       valor: p.texto, unidad: p.unidad, unidadSerie: UNIDADES_SERIE[ikey] ?? p.unidad,
@@ -161,6 +168,14 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
         ? `${indiceMeta.dimNombre} · ${indiceMeta.pesoInternoNominal !== null ? Math.round(indiceMeta.pesoInternoNominal * 100) + "% interno" : "peso interno no disponible"}`
         : (ind.en_indice === false ? "Contexto — no integra el índice" : null),
       indiceMeta,
+      // El rótulo dice "esto es el dato de la fuente, NO el nivel que puntúa",
+      // así que la pregunta es por la unidad de la SERIE, no la de la card.
+      // Mirando la card, `motorizacion_total` (c/1.000 hab.) y
+      // `consumo_carnes_total` (kg/hab) daban true y el gráfico se rotulaba
+      // como dato crudo cuando lo que dibuja ES el índice base-100.
+      // `UNIDADES_SERIE` ya declara exactamente esos dos casos.
+      datoFuenteDifiere: !!indiceMeta?.base100
+        && !(UNIDADES_SERIE[ikey] ?? ind.unidad ?? "").toLowerCase().includes("100 ="),
     };
   }
 }
@@ -362,7 +377,7 @@ const dimsJson = JSON.stringify(dims);
     }
     const aporte = typeof meta.aporteIndice === "number" && typeof meta.puntajeAplicado === "number"
       ? `<p class="cg-score-map"><strong>Aporte actual:</strong> ` +
-        `${meta.base100 ? `nivel aplicado ${nf.format(meta.puntajeAplicado)} (100 = 4T-2023)` : `puntaje aplicado ${nf.format(meta.puntajeAplicado)}/100`} ` +
+        `${meta.base100 ? `nivel aplicado ${nf.format(meta.puntajeAplicado)} (${meta.indicador === "peso_tarifas" ? "100 = tensión 5" : "100 = 4T-2023"})` : `puntaje aplicado ${nf.format(meta.puntajeAplicado)}/100`} ` +
         `× ${pctIndice(meta.pesoEfectivo)} ≈ <strong>${nf.format(meta.aporteIndice)} puntos del ${esc(meta.sigla)}</strong>.</p>`
       : "";
     return `<h4 class="cg-modal-h4">Cómo entra al ${esc(meta.sigla)}</h4>` +
@@ -460,10 +475,11 @@ const dimsJson = JSON.stringify(dims);
       const d = INFO[`${cint}.${key}`] || INFO[key] || { label: key, cinturon: "", que: "", aporta: "", valor: "—", unidad: "", fuente: "", fecha: "", estado: "" };
       const serie = SERIES[key] || [];
 
-      // `estado` es lo que devuelve badgeEstado(): "Automático" | "Carga
-      // manual" | "Estimación". Es el MODO DE OBTENCIÓN del dato, no su
-      // frescura ni el semáforo del cinturón — hay otro campo `estado` en el
-      // snapshot (estable/en_tension/tensionado) que es cosa distinta.
+      // `estado` es lo que devuelve badgeEstado(): "Automático" |
+      // "Semiautomático" | "Carga manual" | "Estimación". Es el MODO DE
+      // OBTENCIÓN del dato, no su frescura ni el semáforo del cinturón — hay
+      // otro campo `estado` en el snapshot (estable/en_tension/tensionado)
+      // que es cosa distinta.
       track("ver_indicador", { indicador: key, cinturon: cint || d.cinturon, estado: d.estado });
 
       document.getElementById("cg-modal-eyebrow").textContent = d.cinturon ? `Indicador · ${d.cinturon}` : "Indicador";
@@ -501,8 +517,16 @@ const dimsJson = JSON.stringify(dims);
         detalleEl.style.display = "none";
       }
 
+      const filaNivelQuePuntua = d.datoFuenteDifiere && d.indiceMeta?.puntajeAplicado != null
+        ? celda(
+            "Nivel que puntúa",
+            `${nf.format(d.indiceMeta.puntajeAplicado)} · ${d.key === "peso_tarifas" ? "índice de asequibilidad" : "índice base 100"}` +
+              (d.indiceMeta.fechaPuntaje ? ` · dato al ${fechaLegible(d.indiceMeta.fechaPuntaje)}` : ""),
+          )
+        : "";
       document.getElementById("cg-modal-ficha").innerHTML =
-        celda("Último valor", `${d.valor} ${d.unidad}`.trim() + (d.valorAbsolutoTxt ? ` (${d.valorAbsolutoTxt})` : "")) +
+        celda(d.datoFuenteDifiere ? "Último dato de la fuente" : "Último valor", `${d.valor} ${d.unidad}`.trim() + (d.valorAbsolutoTxt ? ` (${d.valorAbsolutoTxt})` : "")) +
+        filaNivelQuePuntua +
         celda("Unidad", d.unidadLarga || d.tipo || "—") +
         celda("Dimensión", d.dimTxt || "—") +
         celda("Frecuencia", d.frecuencia || "—") +
@@ -583,6 +607,9 @@ const dimsJson = JSON.stringify(dims);
           `<h4 class="cg-modal-h4">Cómo incide en el score</h4>` +
           `<p class="cg-score-note">${esc(d.aporteNota)}</p>`;
       }
+      if (d.aporteNota && d.aporteScore != null) {
+        tensionHtml += `<p class="cg-score-note"><strong>Advertencia de lectura:</strong> ${esc(d.aporteNota)}</p>`;
+      }
       const avisoHtml = d.notaDenominador
         ? `<div class="cg-aviso-artefacto"><strong>Por qué bajó sin que nada empeorara.</strong> ${esc(d.notaDenominador)}</div>`
         : "";
@@ -620,13 +647,17 @@ const dimsJson = JSON.stringify(dims);
                      barra: "Composición del indicador" };
       // Encabezado del gráfico
       serieH.style.display = tipo ? "" : "none";
-      if (tipo) serieH.textContent = HEAD[tipo] ?? "Indicador";
+      if (tipo) serieH.textContent = d.datoFuenteDifiere && tipo === "linea"
+        ? "Evolución del dato de la fuente (no del nivel que puntúa)"
+        : (HEAD[tipo] ?? "Indicador");
       // Serie de datos + CSV: siempre que haya al menos un dato (histórico acumulado).
       if (serie.length >= 1) {
         sub.style.display = "";
-        sub.textContent = serie.length >= 2
+        sub.textContent = (d.datoFuenteDifiere
+          ? `El ITCIS usa el ${d.key === "peso_tarifas" ? "índice de asequibilidad" : "nivel base 100"} mostrado arriba. `
+          : "") + (serie.length >= 2
           ? `${serie.length} datos · se muestran los últimos ${Math.min(12, serie.length)}`
-          : "1 dato · el histórico se va acumulando mes a mes";
+          : "1 dato · el histórico se va acumulando mes a mes");
         const rows = serie.slice(-12).reverse()
           .map(p => `<tr><td>${esc(p.fecha)}</td><td>${nf.format(p.valor)}</td></tr>`).join("");
         table.innerHTML = `<thead><tr><th>Fecha</th><th>Valor</th></tr></thead><tbody>${rows}</tbody>`;

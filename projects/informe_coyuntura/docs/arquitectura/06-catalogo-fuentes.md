@@ -2,10 +2,16 @@
 
 El mapa de daños: cuando una fuente cambie o se caiga, acá está qué toca,
 cómo llega y qué lo amortigua. Credenciales: solo donde se indica.
-(Los cinturones política y espíritu de época están **pre-barrido**: sus filas
-se completarán en detalle cuando pasen por la revisión uno-por-uno.)
 
-## Macro (13 puntuables + 4 nominales ocultos)
+> **La fuente de cada indicador la declara su ficha, no esta tabla.** Desde
+> ADR-0220 la ficha (`output/fichas/*.md`, publicada en `/metodologia/<id>`)
+> es el único lugar que se verifica contra el colector, y
+> `tests/test_la_ficha_no_se_queda_atras.py` falla si divergen. Esta página
+> es el mapa de daños por familia de fuente; ante una diferencia manda la
+> ficha, y las altas y bajas de indicadores posteriores a jul-2026 pueden no
+> estar reflejadas acá.
+
+## Macro
 
 | Indicador | Fuente / vía | Frec. y rezago | Notas de resiliencia / ADRs |
 |---|---|---|---|
@@ -33,7 +39,7 @@ Ocultos (insumos, ADR-0022): base monetaria, depósitos, préstamos nominales, c
 | `apertura_comercial` | ARCA (DEX+DIM) + INDEC ICA + BCRA A3500 | — | alícuota efectiva (ADR-0023) |
 | `desregulacion_normativa` / `reestructuracion_organismos` | InfoLeg | — | proxy normativo |
 | `reduccion_estado` | INDEC dotación APN | — | % vs dic-2023 |
-| `gasto_funcionamiento` / `masa_salarial` | Sec. Hacienda IMIG/AIF + IPC | — | var. real vs 2023; candidato a 3m MA (pendiente) |
+| `gasto_funcionamiento` | Sec. Hacienda IMIG/AIF + IPC | — | var. real vs 2023. `masa_salarial` salía de la misma fuente y dejó de puntuar (ADR-0186) |
 | `fal_modernizacion_laboral` | CNV (FCI RG 1071/2025) + Boletín Oficial | — | — |
 | `litigiosidad_laboral` | SRT serie histórica | — | al índice 70/30 |
 | `privatizaciones` | Boletín Oficial + tabla doc CIGOB | — | etapas 0-4 |
@@ -62,20 +68,19 @@ Ocultos (insumos, ADR-0022): base monetaria, depósitos, préstamos nominales, c
 | `consumo_carne` | CICCRA (PM-12m) | mensual | store `carne_serie.json` |
 | `patentamiento_motos` | CAFAM | mensual, días | móvil 12m (ADR-0024) |
 
-## Política (9, pre-barrido)
+## Política
 
-Votómetro CIGOB (`votometro_ventaja_lla`, también `clima_electoral` en
-espíritu) · InfoLeg (`ratio_dnu`) · CEPA (`movilizacion_cepa`) · serie RON
-oficial (`iaf_transferencias`) · datos.hcdn.gob.ar (`eficacia_legislativa`,
-`veto_quorum`, `comisiones_caidas`, votaciones para `cohesion_bloque`) ·
-elaboración CIGOB con registro datado (`gobernadores_alineamiento`,
-`data/politica/manuales.json`).
+Familias de fuente del cinturón, que desde ADR-0036 puntúa con la paramétrica
+ITCP: Votómetro CIGOB · InfoLeg y Boletín Oficial (`ratio_dnu`) · ACLED
+(`conflictividad_nacional`, que reemplazó a la serie CEPA por ADR-0052) ·
+serie RON oficial (`iaf_transferencias`) · datos.hcdn.gob.ar y actas del
+Senado (eficacia legislativa, comisiones, cohesión de bloque) · elaboración
+CIGOB con registro datado (`data/politica/manuales.json`). El detalle
+indicador por indicador está en las fichas.
 
-## Espíritu de época (3, pre-barrido)
-
-Comparte `icc_utdt` y `sentimiento_digital` con vida (⚠️ al cambiar la
-semántica de la card se toca este cinturón también) + `clima_electoral`
-(Votómetro).
+Espíritu de época fue un quinto cinturón —`icc_utdt` y `sentimiento_digital`
+compartidos con vida, más `clima_electoral`— y salió del tablero por
+ADR-0205.
 
 ## Fuentes investigadas y descartadas (con evidencia)
 

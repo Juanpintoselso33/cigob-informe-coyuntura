@@ -87,6 +87,7 @@ def run_all() -> dict:
     from collectors.consumo_carnes import fetch_consumo_carnes
     from collectors.srt_empleadores import fetch_empleadores_pyme
     from collectors.trabajo_independiente import fetch_trabajo_independiente
+    from collectors.iiep_tarifas import fetch_iiep_tarifas
 
     def _empleadores_sin_serie():
         """La card sólo necesita el último mes. La serie completa (359
@@ -116,7 +117,7 @@ def run_all() -> dict:
     from collectors.trends import fetch_trends
     from collectors.utdt_nowcast_pobreza import fetch_nowcast_pobreza
 
-    logger.info("Iniciando recolección — 13 fuentes...")
+    logger.info("Iniciando recolección — 14 fuentes...")
 
     fuentes_automatizadas = [
         "indec_series (IPC, CBT, salarios, empleo, RIPTE, ISAC, EMAE, IPI, faena, acero)",
@@ -129,6 +130,7 @@ def run_all() -> dict:
         "consumo_carnes (total vacuna+aviar+porcina per capita — tablero SAGYP)",
         "srt (empleadores con cobertura de ART por tamano de nomina)",
         "sipa (autonomos y monotributo sobre el empleo registrado)",
+        "iiep_uba_conicet (canasta de luz, gas, agua y transporte del AMBA / RIPTE)",
         "snic (estadisticas criminales nacionales + CABA)",
         "salud (datasets DEIS/SNVS via datos.salud.gob.ar CKAN)",
         "trends (interes Google: inflacion, precios, dolar, empleo, inseguridad, corrupcion)",
@@ -172,6 +174,7 @@ def run_all() -> dict:
         # cierran reaparecen como gente facturando por su cuenta, es
         # reconfiguracion; si no reaparecen, es destruccion.
         "trabajo_independiente": _seguro(_independiente_sin_serie, "trabajo_independiente"),
+        "iiep_tarifas": _seguro(fetch_iiep_tarifas, "iiep_tarifas"),
         "snic":   fetch_snic(),
         "salud":  fetch_salud(),
         "trends": fetch_trends(),

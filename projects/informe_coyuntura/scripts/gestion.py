@@ -42,6 +42,13 @@ Indicadores manuales: 0 — protocolo_antipiquetes se automatizó con los
 anclajes públicos de Diagnóstico Político (ADR-0025); manuales.json queda
 solo como fallback.
 
+«AUTO» acá quiere decir que el colector busca el dato solo, sin entrada en
+manuales.json. NO quiere decir que el valor avance sin una persona: varios de
+estos indicadores detectan la novedad automáticamente y sólo incorporan lo que
+alguien asentó o clasificó en el registro curado. Lo que la web declara sobre la
+procedencia de cada dato sale de `METODO_OBTENCION_EXCEPCIONES` en publicar.py
+(ADR-0234), que es el único lugar donde eso se define.
+
 Nota INDEC www: el WAF de indec.gob.ar resetea el handshake TLS de Python
 (fingerprinting del ClientHello); el fetch del XLSX cae a curl como fallback.
 """

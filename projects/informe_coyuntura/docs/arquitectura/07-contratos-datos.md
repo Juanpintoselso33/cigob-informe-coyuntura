@@ -8,8 +8,12 @@ archivos a mano.
 
 ```jsonc
 {
-  "generado": "2026-07-04T...",
-  "validacion_cruzada": {            // matriz 3×3 (raíz, la comparten los 3 cinturones)
+  "schema_version": "1.2.0",
+  "generated_at": "2026-08-21T16:03:48-03:00",   // sello de la corrida, con zona (ADR-0203)
+  "period": "2026-08",
+  "score_global": 5.1,
+  "ponderacion": { "fase": "temprana", "pesos": { /* un peso por cinturón */ } },
+  "validacion_cruzada": {            // matriz discriminante (raíz, la comparten los cinturones)
     "filas": [ { "indice": "ITCM", "propio": "riesgo",
                  "riesgo": {"r": -0.74, "n": 30},
                  "merval": {"r": 0.64, "n": 30},
@@ -24,8 +28,7 @@ archivos a mano.
     },
     "gestion":        { "itcg": {...}, ... },
     "vida_cotidiana": { "itvc": {...}, ... },
-    "politica":       { ... },       // score directo, sin bloque paramétrico
-    "espiritu_epoca": { ... }
+    "politica":       { "itcp": {...}, ... }
   }
 }
 ```
@@ -39,10 +42,16 @@ archivos a mano.
   "fuente": "UTDT — Índice de Victimización (LICIP)",
   "fecha_dato": "2026-04",       // período del dato (no de la corrida)
   "detalle_txt": "...",          // aclaraciones: provisorio, contraste, doble ventana
-  "desactualizado": false,       // true si el carry-forward superó el umbral
+  "desactualizado": false,       // el fetch falló y esto es caché (o es carga manual);
+                                 // NO es "la fuente publica tarde" — ver ADR-0227
+  "metodo_obtencion": "automatico",  // "automatico" | "semiautomatico" | "manual";
+                                 // lo escribe publicar.py, es lo que muestra el badge
   "en_indice": true,             // integra la paramétrica (false = contexto)
   "dimension": "confianza",
-  "indice_itvc": 102.1,          // B100 del componente (solo vida)
+  "indice_itvc": 102.1,          // B100 vigente del componente: post-techo y post-ajuste (solo vida)
+  "indice_itvc_crudo": 148.3,    // solo si el techo lo recortó: B100 antes del recorte
+  "recorte_itvc": 8.3,           // puntos que le sacó el techo (crudo − 140)
+  "winsor_exento": true,         // solo si el componente está exento y superó 140
   "peso_efectivo": 0.045,        // peso final tras renormalización
   "aporte_score": 4.6,           // tensión 0-10 que aporta
   "aporte_formula": "...",       // cómo se calcula, en llano (va al modal)
@@ -50,7 +59,7 @@ archivos a mano.
 }
 ```
 
-### El bloque paramétrico (`itcm` / `itcg` / `itvc`)
+### El bloque paramétrico (`itcm` / `itcg` / `itvc` / `itcp`)
 
 ```jsonc
 {

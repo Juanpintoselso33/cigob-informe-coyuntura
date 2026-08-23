@@ -188,6 +188,31 @@ def test_una_sigla_institucional_declarada_si_acredita_la_misma_fuente():
     )
 
 
+# Los dos de abajo son los que fijan la regla que distingue una sigla de
+# organismo de una del objeto medido. Los dos de arriba pasan igual con la regla
+# vieja (`if sd & sr`): en el primero las siglas no se intersecan y el False sale
+# del cotejo por palabras; en el segundo la intersección también es vacía —el
+# nombre largo no tiene siglas— y el True sale de la expansión.
+def test_una_sigla_compartida_que_no_es_organismo_no_acredita_la_fuente():
+    """Con la regla vieja esto daba verdadero: ficha y colector comparten «IPC»,
+    que es lo medido y no quien lo mide, así que un cambio de organismo pasaba."""
+    assert not _mismo_organismo(
+        "INDEC — IPC nivel general",
+        "UTDT — expectativas de IPC",
+        "",
+    )
+
+
+def test_una_sigla_de_organismo_compartida_acredita_la_fuente_sin_expansion():
+    """La contracara: sin este camino, dos formas del mismo organismo que sólo
+    comparten la sigla no coincidirían por ninguna de las vías siguientes."""
+    assert _mismo_organismo(
+        "SRT — partes empleadoras con cobertura de ART",
+        "SRT",
+        "",
+    )
+
+
 def test_la_ficha_declara_la_fuente_que_el_colector_uso():
     malos, comparados = [], 0
     for ck, ik, ind in _indicadores_publicados():

@@ -75,6 +75,43 @@ def test_el_snapshot_con_indicador_cualitativo_no_pierde_la_fila():
     assert fila["valor_txt"].startswith("En proceso")
 
 
+def test_bigquery_archiva_la_procedencia_de_indicadores_dentro_y_fuera_del_indice(tmp_path):
+    snap = {
+        "generated_at": "2026-08-21T16:03:48",
+        "cinturones": {
+            "macro": {
+                "itcm": {
+                    "valor": 62.5,
+                    "dimensiones": {
+                        "actividad": {
+                            "indicadores": {
+                                "ipi_manufacturero": {"valor": 4.2},
+                            },
+                        },
+                    },
+                },
+                "indicadores": {
+                    "ipi_manufacturero": {
+                        "valor": 4.2,
+                        "metodo_obtencion": "automatico",
+                    },
+                    "contexto_manual": {
+                        "valor": 1.0,
+                        "en_indice": False,
+                        "metodo_obtencion": "manual",
+                    },
+                },
+            },
+        },
+    }
+
+    filas = bq.construir_filas(snap, raiz=tmp_path)
+    por_indicador = {f["indicador"]: f for f in filas["indicadores"]}
+
+    assert por_indicador["ipi_manufacturero"]["metodo_obtencion"] == "automatico"
+    assert por_indicador["contexto_manual"]["metodo_obtencion"] == "manual"
+
+
 # --------------------------------------------------------------------------
 # 4. `origen` distingue el cron de una republicación a mano
 # --------------------------------------------------------------------------

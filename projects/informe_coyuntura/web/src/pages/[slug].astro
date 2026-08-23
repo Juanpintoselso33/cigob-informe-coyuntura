@@ -276,7 +276,7 @@ const robChartData = rob?.hist && indice ? {
       <section class="cg-section">
         <div class="cg-section-head">
           <p class="cg-eyebrow">Índice paramétrico</p>
-          <h2 class="cg-h2">{indice.sigla}: {num(indice.data.valor as number)}{indice.base100 ? " (base 100 = 4T-2023)" : "/100"} — {indice.data.banda_legible}</h2>
+          <h2 class="cg-h2">{indice.sigla}: {num(indice.data.valor as number)}{indice.base100 ? " (escala de referencia 100)" : "/100"} — {indice.data.banda_legible}</h2>
           <p class="cg-h2-sub">{indice.descripcion}</p>
         </div>
         <div class="cg-itcm-dims">
@@ -826,12 +826,16 @@ const robChartData = rob?.hist && indice ? {
         <p class="cg-eyebrow">Nota metodológica</p>
         <p>
           El cinturón se puntúa con el <strong>ITCIS-B100</strong>, un índice de{" "}
-          <strong>seguimiento de gestión</strong>: cada componente se rebasea a 100 en el{" "}
+          <strong>seguimiento de gestión</strong>: diecisiete componentes se rebasean a 100 en el{" "}
           <strong>promedio del 4º trimestre de 2023</strong> (no diciembre puntual, para
           amortiguar la distorsión de la devaluación) y el índice acumula la mejora o el
-          deterioro desde el arranque del mandato. Alimentos y tarifas se miden por su{" "}
-          <strong>nivel relativo a los salarios</strong> (¿suben más o menos que los
-          ingresos?), la actividad industrial y la construcción por su{" "}
+          deterioro desde el arranque del mandato. La excepción es la canasta de servicios
+          públicos: se mide sobre el salario y usa anclas internacionales fijas de
+          asequibilidad —10% del ingreso para agua+energía y 5% para transporte,
+          tomando la peor de las dos señales—,
+          para no tomar como normal el precio subsidiado de 2023. Alimentos y alquiler se
+          miden contra el índice general de precios de su misma cobertura. La actividad
+          industrial y la construcción se miden por su{" "}
           <strong>nivel desestacionalizado</strong> (no la variación de un mes), y el
           endeudamiento se corrige por la <strong>tasa de mora</strong> de la cartera de
           consumo — más deuda con mora estable es acceso al crédito; con mora disparada, es

@@ -311,7 +311,7 @@
           "indicador": "jornadas_individuales_no_trabajadas_12m",
           "categoria": "historia_larga",
           "peso": 0.04,
-          "motivo": "anclas fijadas sobre los 17 años completos 2006-2022 de la serie oficial, anteriores al mandato (ADR-0232)"
+          "motivo": "anclas fijadas sobre los 17 años completos 2006-2022 de la serie oficial, anteriores al mandato (ADR-0235)"
         },
         {
           "indicador": "judicializacion",
@@ -355,20 +355,21 @@
     "ITVC": {
       "peso_total": 1.0000000000000002,
       "categorias": {
-        "conceptual": 1.0000000000000002
+        "conceptual": 0.8875000000000002,
+        "externa": 0.1125
       },
       "detalle": [
+        {
+          "indicador": "peso_tarifas",
+          "categoria": "externa",
+          "peso": 0.1125,
+          "motivo": "canasta IIEP/RIPTE: agua+energía contra 10-15% (Banco Mundial) y transporte contra 5% (ONU-Hábitat), evaluados por separado sin compensación (ADR-0235)"
+        },
         {
           "indicador": "brecha_salario_cbt",
           "categoria": "conceptual",
           "peso": 0.1338,
           "motivo": "rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123)"
-        },
-        {
-          "indicador": "peso_tarifas",
-          "categoria": "conceptual",
-          "peso": 0.1125,
-          "motivo": "nivel de regulados vs salario rebaseado a 4T-2023; ancla en fecha fija"
         },
         {
           "indicador": "ipc_alimentos",
@@ -474,7 +475,8 @@
         }
       ],
       "share": {
-        "conceptual": 1.0
+        "conceptual": 0.887,
+        "externa": 0.112
       },
       "share_circular": 0.0
     }

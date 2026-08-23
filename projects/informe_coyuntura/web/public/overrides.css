@@ -102,16 +102,20 @@
     white-space: nowrap;
 }
 /* A1 (revisión de coherencia UI, ago-2026): el badge dice frescura/origen del
-   dato ("MAY 2026" / "Carga manual" / "Estimación"), no desempeño — pintarlo
-   con la paleta del semáforo (verde/amarillo) lo hacía competir con el punto
-   de tensión de la misma card, y encima la píldora era el elemento más
-   grande y llamativo mientras el punto real medía 8px. Los tres estados usan
-   ahora solo neutros que el sitio ya tiene: la distinción entre `auto` (el
-   caso común, sin marcar) y `manual`/`estim` (la excepción) queda en el
-   texto —que ya la dice— y en un borde más visible, no en el hue. */
+   dato ("MAY 2026" / "Semiautomático" / "Carga manual" / "Estimación"), no
+   desempeño — pintarlo con la paleta del semáforo (verde/amarillo) lo hacía
+   competir con el punto de tensión de la misma card, y encima la píldora era
+   el elemento más grande y llamativo mientras el punto real medía 8px. Los
+   cuatro estados usan ahora solo neutros que el sitio ya tiene: la distinción
+   entre `auto` (el caso común, sin marcar) y `semi`/`manual`/`estim` (la
+   excepción) queda en el texto —que ya la dice— y en un borde más visible, no
+   en el hue. */
 .cg-tile-badge.auto   { background: var(--bg-page); color: var(--muted); }
+.cg-tile-badge.semi,
 .cg-tile-badge.manual,
 .cg-tile-badge.estim  { background: var(--paper); color: var(--dark); border-color: var(--muted-soft); }
+/* La itálica es sólo de `estim`: marca que el número no salió de la fuente.
+   `semi` y `manual` traen dato real —cambia quién lo trae, no qué es—. */
 .cg-tile-badge.estim  { font-style: italic; }
 .cg-tile-desc { margin: 0; font-size: 11.5px; line-height: 1.45; color: var(--muted);
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }

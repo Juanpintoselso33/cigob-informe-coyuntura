@@ -87,8 +87,10 @@ y la regla editorial que ordenó todo lo que sigue:
 - **Promover el consumo privado de Cuentas Nacionales a ancla ya** — descartada
   por muestra: nueve trimestres (ver abajo).
 - **Elegir como ancla la mensual con mejor correlación** (naftas, +0,400 en
-  diferencias) — descartada: es exactamente «cualquier cosa que correlacione
-  bien», y su precio es un regulado que el índice ya puntúa en `peso_tarifas`.
+  diferencias) — descartada: era exactamente «cualquier cosa que correlacione
+  bien» y, al tomar esta decisión, su precio integraba el IPC Regulados usado
+  por `peso_tarifas`. ADR-0235 cambió luego ese componente a la canasta IIEP;
+  la razón principal del descarte —seleccionar por correlación— no cambia.
 
 ## Decisión
 

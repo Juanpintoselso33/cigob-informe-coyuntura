@@ -14,9 +14,9 @@ Este documento tiene una ficha por indicador — son 19 en total, y cada una arr
 
 Todos los colores de este documento —el del índice, el de cada dimensión y el de cada indicador— salen de una sola escala: la **tensión de 0 a 10** que publica el informe. Se parte en cuatro tramos y esos tramos son los mismos para todo.
 
-El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde 100 es el promedio del 4º trimestre de 2023. Por encima de 100 hay mejora acumulada; por debajo, deterioro. La tensión sale de 5 − (índice − 100) × 0,2.
+El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale a tensión 5. En 17 componentes, 100 es el promedio del 4º trimestre de 2023; la canasta de servicios públicos es la excepción: 100 surge de referencias internacionales de asequibilidad. La tensión sale de 5 − (índice − 100) × 0,2 en ambos casos.
 
-| Tensión | Índice del ITCIS y de sus dimensiones (base 100 = 4º trim. 2023) | Color |
+| Tensión | Índice del ITCIS y de sus dimensiones (100 = tensión 5) | Color |
 |---|---|---|
 | hasta 4 | 105 o más | VERDE |
 | más de 4 y hasta 6 | de 95 a 105 | AMARILLO |
@@ -35,14 +35,14 @@ El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde 100 es el pro
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 90,0** | **NARANJA** | Deterioro moderado vs 4T-2023 | 19 indicadores: 5 en verde · 3 en amarillo · 6 en naranja · 5 en rojo |
+| **ITCIS: 94,6** | **NARANJA** | Deterioro moderado frente a las referencias | 19 indicadores: 6 en verde · 3 en amarillo · 6 en naranja · 4 en rojo |
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
 | Ingresos y consumo | Si el sueldo alcanza y qué compra. | 112,4 | VERDE | 28,1 % |
-| Presión de precios | Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general). | 83,2 | ROJO | 25,0 % |
+| Presión de precios | Tres gastos sensibles. | 101,3 | AMARILLO | 25,0 % |
 | Prospectivas de empleo | El trabajo por sus dos caras: cuánto hay y de qué calidad es. | 92,5 | NARANJA | 24,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,7 | ROJO | 10,0 % |
 | Confianza y percepción | El ánimo con que se vive el momento, medido de dos maneras. | 100,1 | AMARILLO | 8,2 % |
@@ -68,7 +68,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 83,2 índice (2004 = 100, desestacionalizado) | NARANJA | 5,6 % |
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,98 % m/m | VERDE | 8,8 % |
-| Peso de tarifas (regulados) | Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. | 2,13 % m/m regulados | ROJO | 11,2 % |
+| Canasta de servicios públicos / salario | Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar… | 14,5 % del salario RIPTE | VERDE | 11,2 % |
 | Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,47 % m/m alquileres | ROJO | 5,0 % |
 | **DIMENSIÓN: Prospectivas de empleo** | | | | |
 | Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC. | 37,9 % | NARANJA | 8,3 % |
@@ -82,11 +82,11 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | ROJO | 3,0 % |
 | **DIMENSIÓN: Confianza y percepción** | | | | |
 | Confianza del consumidor (ICC) | El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor). | 39,9 índice | NARANJA | 6,8 % |
-| Sentimiento digital (Trends) | Cuánta atención pública se llevan seis problemas, medida por lo que se busca en internet. | 57,6 índice (100 = 4T-2023) | VERDE | 1,5 % |
+| Sentimiento digital (Trends) | Cuánta atención pública se llevan seis problemas, medida por lo que se busca en internet. | 58,4 índice (100 = 4T-2023) | VERDE | 1,5 % |
 | **DIMENSIÓN: Seguridad** | | | | |
 | Victimización (IVI) | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 28 % de hogares víctimas (últimos 12 meses) | AMARILLO | 4,5 % |
 
-*Datos al 2026-08-21.*
+*Datos al 2026-08-23.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -112,7 +112,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | canastas (RIPTE/CBT) |
 | **SERIE DISPONIBLE** | 2021-08 → 2026-06 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El salario formal (RIPTE) corre un mes detrás de la canasta: el par común queda ~2 meses atrás del calendario. |
 | **PRODUCTOR DEL DATO** | Secretaría de Trabajo (RIPTE) + INDEC (Canasta Básica Total) | **OPERACIÓN ESTADÍSTICA** | RIPTE — remuneración imponible promedio de los trabajadores estables ÷ Canasta Básica Total por adulto equivalente |
-| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API de series para la canasta; el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API de series para la canasta; el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -120,7 +120,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 
 Mide el poder adquisitivo real del ingreso, lo que la gente siente en el bolsillo.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -129,7 +129,7 @@ Mide el poder adquisitivo real del ingreso, lo que la gente siente en el bolsill
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -200,7 +200,7 @@ Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa 
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m |
 | **SERIE DISPONIBLE** | 2022-09 → 2026-07 (47 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC se publica a mediados del mes siguiente. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | IPC — Alimentos y bebidas no alcohólicas, nivel nacional; el componente lo compara contra el IPC general |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -208,7 +208,7 @@ Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa 
 
 Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.
 
-**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
@@ -217,7 +217,7 @@ Es la inflación más sensible socialmente: pega directo en la mesa de cada hoga
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -271,82 +271,87 @@ Ponderación vigente en el ITCIS: 8,8 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Peso de tarifas (regulados)
+# Canasta de servicios públicos / salario
 
-Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITCIS puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.
+Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del AMBA.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 2,13 % m/m regulados** (2026-07) | **ROJO** | Peso efectivo 11,2 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 14,5 % del salario RIPTE** (2026-08) | **VERDE** | Peso efectivo 11,2 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | peso_tarifas | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m regulados |
-| **SERIE DISPONIBLE** | 2022-09 → 2026-07 (47 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC sale a mediados del mes siguiente; el componente espera además el salario formal (~2 meses). |
-| **PRODUCTOR DEL DATO** | INDEC (precios regulados) + Secretaría de Trabajo (RIPTE) | **OPERACIÓN ESTADÍSTICA** | IPC — precios regulados, comparados contra el salario formal |
-| **MODO DE ACCESO** | Automático: API pública de series y planilla del RIPTE. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
+| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % del salario RIPTE |
+| **SERIE DISPONIBLE** | 2025-12 → 2026-08 (9 puntos) | **REZAGO DE PUBLICACIÓN** | El IIEP publica durante el mismo mes una estimación de la canasta y del RIPTE del período. |
+| **PRODUCTOR DEL DATO** | IIEP UBA-CONICET, Observatorio de Tarifas y Subsidios | **OPERACIÓN ESTADÍSTICA** | Canasta de Servicios Públicos del AMBA sobre salario RIPTE |
+| **MODO DE ACCESO** | Automático: páginas mensuales del reporte de Tarifas y Subsidios. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITCIS puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.
+Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del AMBA.
 
-Mide el impacto acumulado de la quita de subsidios sobre el gasto fijo del hogar en términos de ingresos — la decisión de política más atribuible a la gestión dentro de la dimensión de precios.
+Mide directamente la asequibilidad de los servicios públicos y puntúa con 45% de la dimensión de precios. Agua+energía y transporte se comparan por separado con referencias internacionales de 10% y 5% del ingreso; entra la mayor tensión para que un rubro caro no quede oculto por otro barato.
 
-**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
-- La card muestra la variación mensual de los regulados.
-- El componente mide el peso de los servicios regulados en el salario: nivel de regulados contra nivel del RIPTE, rebaseado a 100 = 4º trimestre de 2023. Por debajo de 100, las tarifas subieron más que los salarios desde el arranque.
+- El IIEP suma las facturas mensuales de electricidad, gas, agua y transporte para un hogar representativo del AMBA.
+- La card publica esa canasta como porcentaje del salario RIPTE estimado por el propio reporte.
+- El total se separa usando la participación del transporte que publica el IIEP. Agua+energía se compara con 10% del ingreso y transporte con 5%; cada exceso de 2,5 puntos agrega 5 de tensión. Se toma el peor grupo y el índice que entra al ITCIS es 125 − 5 × tensión.
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este componente no usa como vara las tarifas subsidiadas de 2023. Agua y energía se comparan con 10% del ingreso, transporte con 5%, y se conserva la mayor tensión. Ese resultado se expresa en la escala común del ITCIS, donde 100 equivale a tensión 5; no es un índice temporal base 100.
 
 **Valores que definen cada color**
 
-| Rango (índice base 100 = 4º trim. 2023) | Color |
+| Rango (índice de asequibilidad; 100 = tensión 5) | Color |
 |---|---|
 | 105 o más | VERDE |
 | de 95 a 105 | AMARILLO |
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **72,4**.
+Este componente está hoy en **112,6**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (2,13 % m/m regulados) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (14,5 % del salario RIPTE) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 2,13 % m/m regulados (2026-07).
+Dato vigente: 14,5 % del salario RIPTE (2026-08).
 
-El componente está en 72,4 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
+Agua y energía representan 8,3% del salario; transporte, 6,2%. La mayor de las dos señales fija la tensión equivalente en 2,5/10. El índice de asequibilidad resultante es 112,6 — 105 o más —, que corresponde al tramo VERDE. 100 equivale a tensión 5; no al nivel tarifario del 4º trimestre de 2023.
 
-**Color vigente: ROJO**
+**Color vigente: VERDE**
 
 Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
-- La tensión equivalente del componente excede la escala del cinturón y se corta en el máximo: el deterioro es mayor que lo que la escala muestra.
-- Depende del RIPTE, que cubre solo asalariados formales.
+- Representa un hogar tipo del AMBA y no al país entero; consumo, segmentación y cuadros tarifarios varían por hogar y jurisdicción.
+- El denominador es RIPTE: representa empleo formal estable, no el ingreso mediano de todos los hogares.
+- Las referencias internacionales usan ingreso o presupuesto del hogar; el RIPTE es un salario formal individual. La comparación es una escala de asequibilidad del ingreso formal representativo, no una estimación de pobreza energética de todos los hogares.
+- La serie exacta reconstruida comienza en diciembre de 2025, cuando los informes PDF pasan a expresar en texto tanto la carga sobre el salario como la participación del transporte. Los meses anteriores no se estiman leyendo puntos de un gráfico.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; sin componente, renormalización.
+- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; si no hay dato utilizable, la dimensión renormaliza entre alimentos y alquiler.
 
-- **Política de revisiones:** Re-descarga completa por actualización; base dinámica de la propia serie.
+- **Política de revisiones:** Re-descarga completa de las páginas mensuales; las anclas de 10% para agua+energía y 5% para transporte son fijas y no se recalibran con el resultado argentino.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITCIS base-100 como nivel de regulados contra el salario (antes puntuaba por variación mensual anclada).
+**2026-08-21** — IPC Regulados/RIPTE se reemplaza por la canasta efectiva IIEP/RIPTE. Conserva su peso; agua+energía y transporte pasan a anclas internacionales propias, sin usar como vara el 4T-2023 subsidiado.
+
+**2026-07-03** — Entra al ITCIS base-100 como nivel de regulados contra el salario (decisión superada por ADR-0232).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -372,7 +377,7 @@ Cuánto se encareció el alquiler de la vivienda por encima del resto de los pre
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m alquileres |
 | **SERIE DISPONIBLE** | 2021-09 → 2026-07 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC-GBA se publica a mediados del mes siguiente (~1 mes). |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Índice de Precios al Consumidor del Gran Buenos Aires — alquiler de la vivienda |
-| **MODO DE ACCESO** | Automático: API pública de series. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: API pública de series. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -380,7 +385,7 @@ Cuánto se encareció el alquiler de la vivienda por encima del resto de los pre
 
 La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.
 
-**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
@@ -390,7 +395,7 @@ La desregulación del mercado de alquileres fue uno de los cambios de política 
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -459,7 +464,7 @@ Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en 
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-06 (42 puntos) | **REZAGO DE PUBLICACIÓN** | El tablero oficial publica el mes con unas semanas de demora; la faena del INDEC, con dos meses. El titular avanza con el tablero y el índice con la faena. |
 | **PRODUCTOR DEL DATO** | SAGYP (nivel) e INDEC (evolución) | **OPERACIÓN ESTADÍSTICA** | Nivel: SAGYP — Dirección Nacional de Producción Ganadera, tablero de consumo per cápita de carnes, promedio móvil de 12 meses. Evolución: faena mensual en toneladas de vacunos, porcinos y aves (INDEC, series 40.3_VT_0_M_17 · 40.3_PT_0_M_18 · 40.3_AT_0_M_14), per cápita con la población proyectada del INDEC. |
-| **MODO DE ACCESO** | Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -467,7 +472,7 @@ Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en 
 
 Distingue dos cosas que se parecen y no son lo mismo: si el consumo de vacuna cae y el total se sostiene, hay sustitución hacia pollo o cerdo; si caen los dos juntos, hay una pérdida real de acceso a proteína animal. Por eso puntúa el total y no la vacuna, que sola no permite separarlas — el desglose por carne se publica acá abajo, junto al color. El titular muestra el nivel oficial en kilos; el gráfico y el puntaje van en índice base 100 = 4T-2023, reconstruido desde la faena, que es lo único con historia para comparar contra el arranque del mandato.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -477,7 +482,7 @@ Distingue dos cosas que se parecen y no son lo mismo: si el consumo de vacuna ca
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -551,7 +556,7 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % |
 | **SERIE DISPONIBLE** | 2016-04 → 2026-01 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
 | **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — asalariados sin descuento jubilatorio, tasa trimestral |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -559,7 +564,7 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 
 Mide la precariedad laboral y la exclusión de la red de protección social. En el ITCIS su base es el 4T-2023 exacto (el trimestre de arranque del mandato).
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -567,7 +572,7 @@ Mide la precariedad laboral y la exclusión de la red de protección social. En 
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -638,7 +643,7 @@ Qué proporción del empleo registrado son trabajadores independientes —autón
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % del empleo registrado |
 | **SERIE DISPONIBLE** | 2019-01 → 2026-05 (89 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses, el mismo del cierre administrativo con que el SIPA publica sus series de trabajo registrado. |
 | **PRODUCTOR DEL DATO** | SIPA — Sistema Integrado Previsional Argentino (Secretaría de Trabajo) | **OPERACIÓN ESTADÍSTICA** | Series mensuales sin estacionalidad de trabajadores registrados: autónomos y monotributistas por un lado; asalariados del sector privado, del sector público y de casas particulares por el otro. |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -646,7 +651,7 @@ Qué proporción del empleo registrado son trabajadores independientes —autón
 
 Es la contracara del cierre de empresas. Cuando caen los empleadores, dice si esas unidades productivas desaparecieron o se reconfiguraron en gente que factura por su cuenta. Un empleo que se corre del salario al trabajo independiente pierde aportes patronales, indemnización y estabilidad, aunque siga siendo registrado.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -656,7 +661,7 @@ Es la contracara del cierre de empresas. Cuando caen los empleadores, dice si es
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -726,7 +731,7 @@ Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona 
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | empleadores |
 | **SERIE DISPONIBLE** | 2019-01 → 2026-05 (89 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses. La SRT publica su serie histórica todos los meses, con el rezago del cierre administrativo de las declaraciones. |
 | **PRODUCTOR DEL DATO** | SRT — Superintendencia de Riesgos del Trabajo | **OPERACIÓN ESTADÍSTICA** | Serie histórica de partes empleadoras según tamaño de la nómina, cuadro 4.2: cantidad de empleadores con al menos una persona declarada con cobertura de ART, abierta por tramo de nómina, desde julio de 1996. |
-| **MODO DE ACCESO** | Automático: lectura mensual del XLSX publicado por la SRT. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: lectura mensual del XLSX publicado por la SRT. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -734,7 +739,7 @@ Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona 
 
 Es el cierre neto de empresas medido de forma directa, no aproximado por la producción industrial: el saldo entre las que abren y las que cierran, que es el dato que dice si el entramado PyME se está achicando.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -744,7 +749,7 @@ Es el cierre neto de empresas medido de forma directa, no aproximado por la prod
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -816,7 +821,7 @@ El nivel de actividad de la construcción, gran motor de empleo de baja califica
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | índice ISAC |
 | **SERIE DISPONIBLE** | 2021-07 → 2026-06 (60 puntos) | **REZAGO DE PUBLICACIÓN** | ~2 meses (calendario de difusión de la construcción del INDEC). |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | ISAC — Indicador Sintético de la Actividad de la Construcción, serie desestacionalizada (el nombre histórico del indicador quedó; la métrica real es el ISAC) |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -824,7 +829,7 @@ El nivel de actividad de la construcción, gran motor de empleo de baja califica
 
 Termómetro de la obra pública y privada, sensible al ciclo económico.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -833,7 +838,7 @@ Termómetro de la obra pública y privada, sensible al ciclo económico.
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -900,7 +905,7 @@ Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % |
 | **SERIE DISPONIBLE** | 2016-04 → 2026-01 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
 | **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — tasa de subocupación demandante (aproximación declarada del pluriempleo) |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -908,7 +913,7 @@ Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le
 
 Señala empleo insuficiente: gente ocupada a la que no le alcanza.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -916,7 +921,7 @@ Señala empleo insuficiente: gente ocupada a la que no le alcanza.
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -984,7 +989,7 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | miles de puestos |
 | **SERIE DISPONIBLE** | 2023-10 → 2026-05 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Los datos del Sistema Integrado Previsional se publican con alrededor de tres meses de rezago: son declaraciones de las empresas que se consolidan y se revisan. |
 | **PRODUCTOR DEL DATO** | Ministerio de Capital Humano — Sistema Integrado Previsional Argentino (SIPA) | **OPERACIÓN ESTADÍSTICA** | Trabajadores registrados según modalidad ocupacional principal — asalariados del sector privado, en miles de personas |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -992,7 +997,7 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 
 Es la única medida directa de empleo del cinturón. Los otros componentes de la dimensión describen actividad —producción industrial, construcción— o anticipan giros, pero ninguno cuenta puestos de trabajo. Desde diciembre de 2023 el sector privado registrado perdió alrededor de doscientos cincuenta mil puestos, y la caída interanual no se interrumpió en ningún mes desde agosto de 2025.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -1002,7 +1007,7 @@ Es la única medida directa de empleo del cinturón. Los otros componentes de la
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1072,7 +1077,7 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 | **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | % de hogares víctimas (últimos 12 meses) |
 | **SERIE DISPONIBLE** | 2020-01 → 2026-04 (31 puntos) | **REZAGO DE PUBLICACIÓN** | La encuesta de victimización se publica con uno a dos meses de rezago. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — LICIP (métrica) + Ministerio de Seguridad — SNIC (contraste) | **OPERACIÓN ESTADÍSTICA** | IVI — Índice de Victimización: porcentaje de hogares de 40 centros urbanos que sufrieron al menos un delito en los últimos 12 meses, denunciado o no |
-| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1089,7 +1094,7 @@ Mide una de las principales preocupaciones cotidianas midiendo lo que la gente e
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1160,7 +1165,7 @@ El optimismo de la gente sobre la economía y sus finanzas personales (Índice d
 | **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice |
 | **SERIE DISPONIBLE** | 2021-07 → 2026-08 (60 puntos) | **REZAGO DE PUBLICACIÓN** | Semanas: la universidad publica el índice del mes durante el mes siguiente. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — Centro de Investigación en Finanzas | **OPERACIÓN ESTADÍSTICA** | ICC — Índice de Confianza del Consumidor, serie histórica nacional |
-| **MODO DE ACCESO** | Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1176,7 +1181,7 @@ Captura el humor económico de la gente, que anticipa consumo y voto.
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1248,7 +1253,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | % de personas |
 | **SERIE DISPONIBLE** | 2025-01 → 2026-06 (18 puntos) | **REZAGO DE PUBLICACIÓN** | El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del INDEC llega dos veces al año y con más demora. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella (estimación mensual) e INDEC (base y referencia oficial) | **OPERACIÓN ESTADÍSTICA** | Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para la base y el contraste |
-| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1256,7 +1261,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 
 Es la única medición de pobreza con frecuencia mensual que existe en el país, y la variable de mayor carga simbólica del cinturón. Integra el ITCIS con el 25% de la dimensión de ingresos y consumo (9,31% del índice), invertida: más pobreza, peor puntaje.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -1265,7 +1270,7 @@ Es la única medición de pobreza con frecuencia mensual que existe en el país,
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1327,7 +1332,7 @@ Cuánta atención pública se llevan seis problemas, medida por lo que se busca 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 57,6 índice (100 = 4T-2023)** (2026-07) | **VERDE** | Peso efectivo 1,5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 58,4 índice (100 = 4T-2023)** (2026-07) | **VERDE** | Peso efectivo 1,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1337,7 +1342,7 @@ Cuánta atención pública se llevan seis problemas, medida por lo que se busca 
 | **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice (100 = 4T-2023) |
 | **SERIE DISPONIBLE** | 2021-01 → 2026-07 (67 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un mes: el mes en curso se descarta por incompleto y se publica el último mes cerrado. |
 | **PRODUCTOR DEL DATO** | Google Trends (fuente no oficial) | **OPERACIÓN ESTADÍSTICA** | Interés de búsqueda en Argentina de una canasta de seis términos: inflación, precios, dólar, empleo, inseguridad y corrupción |
-| **MODO DE ACCESO** | Automático: una consulta por término sobre la misma ventana fija (2021 en adelante). Cada término se reemplaza entero cuando su propia descarga es sana; el que falla conserva su serie anterior. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: una consulta por término sobre la misma ventana fija (2021 en adelante). Cada término se reemplaza entero cuando su propia descarga es sana; el que falla conserva su serie anterior. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1356,7 +1361,7 @@ Mide la preocupación por la conducta (qué busca la gente cuando algo le duele)
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1377,7 +1382,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 57,6 índice (100 = 4T-2023) (2026-07).
+Dato vigente: 58,4 índice (100 = 4T-2023) (2026-07).
 
 El componente está en 140 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo y el semáforo ya no distingue mejoras.
 
@@ -1433,7 +1438,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | vehículos 0km por cada 1.000 habitantes (12 meses) |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-07 (43 puntos) | **REZAGO DE PUBLICACIÓN** | Menos de un mes: el registro publica cada mes en los primeros días del siguiente. Se toma el último mes calendario completo. |
 | **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (unidades) e INDEC (población) | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de automotores y de motovehículos (0 kilómetro), por mes y jurisdicción del registro seccional, sumadas y divididas por la población urbana total proyectada del INDEC. |
-| **MODO DE ACCESO** | Automático: CSV abierto sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: CSV abierto sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1441,7 +1446,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 
 Mide acceso total a un vehículo sin confundir una suba de motos con una mejora automática: si los hogares sólo reemplazaran autos por motos, la suma quedaría estable. La ficha muestra ambas patas y el cambio de su composición para distinguir acceso de sustitución descendente.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -1453,7 +1458,7 @@ Mide acceso total a un vehículo sin confundir una suba de motos con una mejora 
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1532,7 +1537,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | índice (2004 = 100, desestacionalizado) |
 | **SERIE DISPONIBLE** | 2017-01 → 2026-05 (113 puntos) | **REZAGO DE PUBLICACIÓN** | Encadena dos demoras y por eso es de las cards más lentas del cinturón: el INDEC publica el mes de referencia unos 52 días después de terminado, y la API de series tarda unas dos semanas más en espejarlo. El último punto disponible tiene entre tres y cuatro meses según en qué parte de ese ciclo caiga la corrida. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada |
-| **MODO DE ACCESO** | Automático: API pública sin credenciales. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: API pública sin credenciales. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1540,7 +1545,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 
 Es el único componente del cinturón que mide volumen efectivamente comprado. Todos los demás miden lo que entra (ingresos), lo que cuesta (precios), de dónde viene el ingreso (empleo), lo que no se paga (mora) o lo que se opina (percepción): ninguno mira lo que el hogar se llevó de la góndola. Cubre comercio registrado de cadenas, así que no ve el almacén de barrio ni el comercio informal.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -1550,7 +1555,7 @@ Es el único componente del cinturón que mide volumen efectivamente comprado. T
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1620,7 +1625,7 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 | **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la cartera en situación irregular |
 | **SERIE DISPONIBLE** | 2021-07 → 2026-05 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El anexo del Informe sobre Bancos se publica con ~2 meses de rezago. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Anexo del Informe sobre Bancos — planilla de calidad de cartera, sección Familias: ratio de irregularidad y saldos de préstamos personales y tarjetas |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1638,7 +1643,7 @@ Es la señal directa de estrés financiero de los hogares: la deuda puede crecer
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1709,7 +1714,7 @@ Qué porcentaje de la masa salarial registrada destinan las familias al pago men
 | **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la masa salarial registrada |
 | **SERIE DISPONIBLE** | 2012-04 → 2026-04 (169 puntos) | **REZAGO DE PUBLICACIÓN** | La serie es mensual, pero el BCRA la publica por lotes con el Informe de Estabilidad Financiera semestral. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Informe de Estabilidad Financiera — estimación de la carga mensual de los servicios de deuda de las familias |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial de series del informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial de series del informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1727,7 +1732,7 @@ Mide capacidad comprometida antes de que aparezca el incumplimiento. Complementa
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 

@@ -52,6 +52,13 @@ IAF (Índice de Armonía Federal): iaf_transferencias captura cumplimiento fisca
 (reemplaza a gobernadores_alineamiento, ver docstring de fetch_alineamiento_senadores_prov).
 veto_quorum y comisiones_caidas capturan la eficacia legislativa de la oposición y el
 bloqueo en comisiones — candidatos a fusionarse en índice compuesto legislativo.
+
+Ojo con el «auto» de esta lista: acá significa que el colector busca el dato solo,
+sin entrada en manuales.json. NO significa que el valor avance sin una persona:
+varios de estos indicadores dejan lo ambiguo en triage (`pendientes_de_codificar`,
+`pendientes_triage`). Lo que la web declara sobre la procedencia de cada dato sale
+de `METODO_OBTENCION_EXCEPCIONES` en publicar.py (ADR-0234), que es el único lugar
+donde eso se define.
 """
 import sys
 import io

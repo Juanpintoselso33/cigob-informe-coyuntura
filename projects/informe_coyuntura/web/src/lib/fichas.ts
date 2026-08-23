@@ -34,7 +34,7 @@ export interface FuenteFicha {
   operacion: string;    // la operación estadística / serie exacta
   serie?: string;       // identificador técnico de la serie (API)
   url?: string;         // página oficial de la fuente
-  acceso: string;       // cómo lo obtiene el informe (automático/manual)
+  acceso: string;       // cómo lo obtiene el informe (automático/semiautomático/manual)
 }
 
 // Banda institucional tal como la publica el documento CIGOB, más los puntos
@@ -372,7 +372,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El EMAE es provisorio y el INDEC lo revisa hacia atrás con cada publicación; la serie del informe absorbe esas revisiones al regenerarse.",
       "Comparte dimensión con el IPI manufacturero, que aporta la segunda lectura de actividad; hasta julio de 2026 era la única variable, y el 11% del índice colgaba de un solo dato.",
     ],
-    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión de actividad queda vacía y su peso se redistribuye entre las demás.",
+    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros dos indicadores de la dimensión.",
     revisiones: "La fuente revisa (serie provisoria); el informe regenera la serie completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original como única variable de actividad; su peso de dimensión bajó de 15% a 13% y luego a 11% al incorporarse las dimensiones de competitividad e inversión." },
@@ -685,12 +685,12 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Mide sólo la industria manufacturera, alrededor de un sexto del producto: no es una medida de actividad agregada y no reemplaza al EMAE, lo acompaña.",
       "El EMAE ya incluye a la industria manufacturera, así que este indicador no aporta un sector nuevo sino una segunda medición del mismo: su función es que la dimensión no dependa de un único dato, no ampliar la cobertura.",
-      "Ambos indicadores de la dimensión los publica el INDEC. La redundancia cubre el riesgo de que falte o se revise una serie, no el de que el organismo cambie de metodología: en ese caso se moverían los dos juntos.",
+      "Los tres indicadores de la dimensión los publica el INDEC, y dos de ellos salen de la misma operación EMAE. La redundancia cubre el riesgo de que falte o se revise una serie, no el de que el organismo cambie de metodología: en ese caso se moverían todos juntos.",
       "El promedio de tres meses amortigua los cambios de nivel: un quiebre brusco tarda dos o tres meses en verse completo.",
       "La serie es original, no desestacionalizada; la comparación interanual absorbe la estacionalidad pero no los efectos de calendario, que el suavizado atenúa sin eliminar.",
       "El INDEC revisa el índice hacia atrás con cada publicación.",
     ],
-    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión queda sólo con el EMAE y su peso se renormaliza.",
+    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión queda con el EMAE y su difusión sectorial, y los pesos se renormalizan.",
     revisiones: "La fuente revisa la serie; el informe la regenera completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
       { fecha: "2026-07-18", cambio: "Alta del indicador como segunda señal de actividad junto al EMAE, tras una auditoría de consistencia que señaló que el 11% del índice colgaba de un único dato." },
@@ -1048,7 +1048,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-20, 10], [-12.5, 35], [0, 60], [12.5, 80], [20, 100]],
       unidadCorta: "% i.a.",
     },
-    dobleUso: "La operación IPI también alimenta (en su variante desestacionalizada) un componente del ITCIS.",
+    dobleUso: "La misma operación IPI alimenta al indicador de producción industrial manufacturera, que puntúa por sí mismo en la dimensión de actividad del ITCM: acá entra como cociente contra el empleo, allá como variación interanual del nivel general.",
     limitaciones: [
       "El diseño institucional incluía la importación de hardware de alta tecnología, que no es automatizable con las fuentes públicas actuales: el índice quedó con dos de tres componentes, renormalizados y declarados.",
       "AMBIGÜEDAD DE INTERPRETACIÓN, declarada. Un aumento de los pagos al exterior por servicios de informática admite dos lecturas opuestas y el índice adopta una: puede significar que la economía se está digitalizando —incorpora software, nube e inteligencia artificial para producir mejor— o que depende de tecnología que no produce y gira divisas para conseguirla. El indicador puntúa la primera lectura: más pagos, mejor puntaje. La evidencia disponible la respalda sólo en parte. Sobre ciento siete meses, los pagos anticipan a la productividad con una correlación de 0,28 cuando se los adelanta un trimestre: una asociación real pero modesta, compatible también con que ambas variables suban juntas cuando la economía crece, sin que una cause a la otra. Quien lea el indicador debe saber que un valor alto no distingue por sí solo entre capitalización tecnológica y dependencia tecnológica.",
@@ -1773,7 +1773,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Cámara de Diputados + Senado de la Nación + InfoLeg (Ministerio de Justicia)",
       operacion: "Actas de votación nominal de ambas cámaras (insistencias de leyes vetadas y tratamientos de decretos bajo la ley 26.122) + base de legislación nacional (decretos de veto, leyes promulgadas por insistencia)",
       url: "https://votaciones.hcdn.gob.ar",
-      acceso: "Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos se comparte con el indicador de derrotas legislativas.",
+      acceso: "Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos es el mismo que usa el indicador de normas desafiadas en el recinto.",
     },
     transformaciones: [
       "Una norma queda DESAFIADA desde su primera votación en el recinto, gane quien gane: la insistencia de una ley vetada (art. 83 de la Constitución) o el control de un decreto bajo la ley 26.122.",
@@ -1984,7 +1984,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-12, 100], [-10, 85], [-6, 65], [-2, 40], [0, 10]],
       unidadCorta: "% vs dic-2023",
     },
-    dobleUso: "Mide personas; el costo de la nómina lo miden por separado el gasto de funcionamiento y la masa salarial — tres patas complementarias declaradas de la misma dimensión.",
+    dobleUso: "Mide personas; el costo de la nómina lo mide por separado el gasto de funcionamiento — dos patas complementarias declaradas de la misma dimensión. La masa salarial las acompañó hasta agosto de 2026, cuando salió del ITCG por ADR-0186.",
     limitaciones: [
       "Los meses recientes vienen imputados y el INDEC los revisa hacia atrás.",
       "Las bandas se calibraron a mano contra el recorte observado (~10-12% → banda alta): es una convención propia del proyecto y no una meta oficial.",
@@ -2026,7 +2026,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-25, 100], [-20, 85], [-10, 65], [-2.5, 40], [0, 10]],
       unidadCorta: "% real vs 2023",
     },
-    dobleUso: "Su componente de salarios se solapa conceptualmente con la masa salarial (fuente distinta): el marco las trata como patas complementarias — ninguna sola alcanza.",
+    dobleUso: "Su componente de salarios se solapa conceptualmente con la masa salarial (fuente distinta), que el marco trataba como pata complementaria hasta que salió del ITCG por ADR-0186. Desde entonces es la única lectura del costo de la nómina dentro de la dimensión, y acompaña a la dotación de personal, que mide cuánta gente hay y no cuánto cuesta.",
     limitaciones: [
       "Bandas calibradas a mano contra el ajuste 2024, un episodio históricamente atípico.",
       "La base caja/devengado de Hacienda está sujeta a reclasificaciones presupuestarias.",
@@ -2632,30 +2632,35 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "peso_tarifas",
     cinturon: "vida_cotidiana",
-    rezago: "El IPC sale a mediados del mes siguiente; el componente espera además el salario formal (~2 meses).",
+    rezago: "El IIEP publica durante el mismo mes una estimación de la canasta y del RIPTE del período.",
     fuente: {
-      organismo: "INDEC (precios regulados) + Secretaría de Trabajo (RIPTE)",
-      operacion: "IPC — precios regulados, comparados contra el salario formal",
-      serie: "148.3_IREGULANAL_DICI_M_22 + RIPTE · API de datos.gob.ar y planilla oficial",
-      url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-5-31",
-      acceso: "Automático: API pública de series y planilla del RIPTE.",
+      organismo: "IIEP UBA-CONICET, Observatorio de Tarifas y Subsidios",
+      operacion: "Canasta de Servicios Públicos del AMBA sobre salario RIPTE",
+      serie: "Electricidad, gas, agua y transporte de un hogar representativo · porcentaje del RIPTE",
+      url: "https://economicas.uba.ar/iiep/category/tarifassubsidios/",
+      acceso: "Automático: páginas mensuales del reporte de Tarifas y Subsidios.",
     },
     transformaciones: [
-      "La card muestra la variación mensual de los regulados.",
-      "El componente mide el peso de los servicios regulados en el salario: nivel de regulados contra nivel del RIPTE, rebaseado a 100 = 4º trimestre de 2023. Por debajo de 100, las tarifas subieron más que los salarios desde el arranque.",
+      "El IIEP suma las facturas mensuales de electricidad, gas, agua y transporte para un hogar representativo del AMBA.",
+      "La card publica esa canasta como porcentaje del salario RIPTE estimado por el propio reporte.",
+      "El total se separa usando la participación del transporte que publica el IIEP. Agua+energía se compara con 10% del ingreso y transporte con 5%; cada exceso de 2,5 puntos agrega 5 de tensión. Se toma el peor grupo y el índice que entra al ITCIS es 125 − 5 × tensión.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de presión de precios (45% interno · 11,25% del ITCIS).",
-      "Captura el efecto de la quita de subsidios que el IPC general diluye.",
+      "Integra la dimensión de presión de precios con 45% interno, equivalente a 11,25% del ITCIS.",
+      "Las anclas son externas y comparables por variable: el Banco Mundial ubica agua+energía en un rango indicativo de 10–15% del ingreso y ONU-Hábitat recomienda que el transporte público no supere 5%. Se aplican por separado: un exceso en transporte no se compensa con energía barata, ni al revés.",
+      "Reemplaza como dato visible al IPC Regulados/RIPTE, que no medía una canasta de tarifas ni una participación del ingreso.",
     ],
     limitaciones: [
-      "La tensión equivalente del componente excede la escala del cinturón y se corta en el máximo: el deterioro es mayor que lo que la escala muestra.",
-      "Depende del RIPTE, que cubre solo asalariados formales.",
+      "Representa un hogar tipo del AMBA y no al país entero; consumo, segmentación y cuadros tarifarios varían por hogar y jurisdicción.",
+      "El denominador es RIPTE: representa empleo formal estable, no el ingreso mediano de todos los hogares.",
+      "Las referencias internacionales usan ingreso o presupuesto del hogar; el RIPTE es un salario formal individual. La comparación es una escala de asequibilidad del ingreso formal representativo, no una estimación de pobreza energética de todos los hogares.",
+      "La serie exacta reconstruida comienza en diciembre de 2025, cuando los informes PDF pasan a expresar en texto tanto la carga sobre el salario como la participación del transporte. Los meses anteriores no se estiman leyendo puntos de un gráfico.",
     ],
-    faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización.",
-    revisiones: "Re-descarga completa por actualización; base dinámica de la propia serie.",
+    faltantes: "Se mantiene el último valor publicado como desactualizado; si no hay dato utilizable, la dimensión renormaliza entre alimentos y alquiler.",
+    revisiones: "Re-descarga completa de las páginas mensuales; las anclas de 10% para agua+energía y 5% para transporte son fijas y no se recalibran con el resultado argentino.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITCIS base-100 como nivel de regulados contra el salario (antes puntuaba por variación mensual anclada)." },
+      { fecha: "2026-08-21", cambio: "IPC Regulados/RIPTE se reemplaza por la canasta efectiva IIEP/RIPTE. Conserva su peso; agua+energía y transporte pasan a anclas internacionales propias, sin usar como vara el 4T-2023 subsidiado." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS base-100 como nivel de regulados contra el salario (decisión superada por ADR-0232)." },
     ],
   },
 
@@ -3152,14 +3157,14 @@ export const FICHAS: Record<string, Ficha> = {
     nombreLargo: "Índice de Tensión del Cinturón de Impacto Social",
     base100: true,
     cinturon: "vida_cotidiana",
-    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada en las condiciones de vida; menos de 100 = deterioro. Diecinueve componentes en seis dimensiones.",
+    resumen: "Índice de seguimiento: dieciocho componentes se comparan contra el arranque del mandato y la canasta de servicios contra umbrales internacionales de asequibilidad por rubro. Más de 100 = mejores condiciones; menos de 100 = peores. Diecinueve componentes en seis dimensiones.",
     marcoConceptual: [
       "El cinturón de impacto social mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, la mora y la carga de deuda de las familias, el empleo y sus prospectivas, y el clima de confianza y seguridad.",
-      "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. A diferencia del ITCM y el ITCG, no usa tablas de umbrales: mide la evolución acumulada contra una línea de base común — el arranque del mandato.",
+      "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. Dieciocho componentes miden evolución acumulada contra el arranque del mandato; la canasta de servicios es la excepción documentada y usa anclas internacionales de asequibilidad.",
     ],
     seleccion: [
       "Diecinueve componentes en seis dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
-      "Criterio: fuentes públicas con serie reconstruible al 4º trimestre de 2023 — o con línea de base declarada donde no existe medición de entonces (la encuesta de victimización arranca su base en enero de 2024, documentado).",
+      "Criterio: fuentes públicas con serie reconstruible al 4º trimestre de 2023 — o con línea de base declarada. La victimización usa enero de 2024 porque la encuesta no existía en 2023; servicios públicos usa umbrales internacionales separados para agua+energía y transporte porque comparar contra las tarifas subsidiadas de 2023 falseaba su asequibilidad.",
     ],
     tratamiento: [
       "Componentes faltantes: los pesos se renormalizan dentro de la dimensión y entre dimensiones; ante una fuente caída, el indicador mantiene su último valor publicado marcado como desactualizado.",
@@ -3167,7 +3172,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Recorte asimétrico declarado: todos los componentes salvo motorización total se acotan a un techo de 140 (un boom puntual no compra compensación ilimitada) y deliberadamente NO tienen piso — el deterioro no se recorta, se señaliza con el flag de dimensión crítica. Motorización total está exenta porque su peso efectivo limita el aporte y 140 no es un extremo frente a su historia; la ficha del componente cuantifica ambos argumentos.",
     ],
     normalizacion: [
-      "Cada componente es un índice continuo rebaseado a 100 = promedio del 4º trimestre de 2023 (o su base declarada). No hay bandas ni anclas: la normalización es el rebase, y las transformaciones por componente (acumulados móviles, deflactación, relativos al IPC general) están documentadas en cada ficha.",
+      "Cada componente es un índice continuo. Diecisiete se rebasean a 100 = promedio del 4º trimestre de 2023 (o su base declarada); servicios públicos transforma la mayor tensión entre agua+energía y transporte, con 100 = tensión 5. Las transformaciones están documentadas en cada ficha.",
     ],
     agregacion: {
       latex: String.raw`\begin{gathered}\text{ITCIS}=\sum_d w_d\sum_{i\in d}w_i\,\operatorname{cap}_i(x_i)\\[3pt]\operatorname{cap}_i(x)=\begin{cases}x,&i=\text{motorización total}\\\min(x,140),&\text{resto}\end{cases}\end{gathered}`,

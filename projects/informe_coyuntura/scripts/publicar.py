@@ -83,9 +83,22 @@ def build_vida(raw):
          round(cc_val / 1e6, 2) if isinstance(cc_val, (int, float)) else cc_val,
          "billones de pesos (consumo)",
          "BCRA — crédito de consumo (API) + Informe sobre Bancos", cc.get("fecha"))
-    reg = indec.get("ipc_regulados", {})
-    _add(out, "peso_tarifas", round(reg.get("variacion_mensual_pct", 0), 2),
-         "% m/m regulados", "INDEC — IPC precios regulados (vía datos.gob.ar)", reg.get("fecha"))
+    servicios = raw.get("iiep_tarifas") or {}
+    valor_servicios = servicios.get("valor")
+    # La clave debe existir aun durante un outage: _carry_forward sólo puede
+    # restaurar indicadores presentes. Omitirla dejaba la serie puntuando sin
+    # card visible, exactamente el estado que ADR-0153 prohíbe.
+    _add(
+        out, "peso_tarifas",
+        round(valor_servicios, 1) if isinstance(valor_servicios, (int, float)) else None,
+        "% del salario RIPTE",
+        "IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA",
+        servicios.get("fecha"),
+        variacion_mensual_pct=servicios.get("variacion_mensual_pct"),
+        cobertura_costos_pct=servicios.get("cobertura_costos_pct"),
+        transporte_pct_canasta=servicios.get("transporte_pct_canasta"),
+        fuente_url=servicios.get("url"),
+    )
     alq = indec.get("ipc_alquiler_gba", {})
     _add(out, "alquiler_real", round(alq.get("variacion_mensual_pct", 0), 2),
          "% m/m alquileres", "INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)",
@@ -362,7 +375,6 @@ POB_AR = 46_700_000
 SCORING = {
     # ── vida cotidiana ── (metodología CIGOB validada may-2026; anclas de dominio)
     "ipc_alimentos":       (lambda v: v,                "0% → 0 · 5% → 5 · 10% → 10 (mensual)"),
-    "peso_tarifas":        (lambda v: v,                "0% → 0 · 5% → 5 · 10% → 10 (regulados, m/m)"),
     "brecha_salario_cbt":  (lambda v: (4 - v) * 10 / 3, "4 canastas → 0 · 2,5 → 5 · 1 → 10 (salario formal / CBT)"),
     "consumo_carne":       (lambda v: (55 - v) / 2,     "55 → 0 · 45 → 5 · 35 → 10 (kg/hab/año)"),
     "informalidad":        (lambda v: (v - 25) / 2.5,   "25% → 0 · 37,5% → 5 · 50% → 10"),
@@ -400,8 +412,9 @@ SCORE_EXPLICACION = {
     "gestion":        ("ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: "
                        "reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, "
                        "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."),
-    "vida_cotidiana": ("ITCIS-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada en las "
-                       "condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 28%, precios 25%, "
+    "vida_cotidiana": ("ITCIS-B100 (índice de seguimiento: los componentes usan 100 = promedio del 4T-2023, salvo "
+                       "servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) "
+                       "ponderado por 6 dimensiones: ingresos y consumo 28%, precios 25%, "
                        "vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. "
                        "La tensión del cinturón es 5 − (ITCIS − 100) × 0,2."),
 }
@@ -452,6 +465,17 @@ def _reconciliar_intermedio(informe):
         destino["score"] = c["score"]
         if "estado" in c:
             destino["estado"] = c["estado"]
+        # El ITVC también se calcula recién en publicar.py. Copiar sólo su
+        # tensión dejaba una contradicción interna: score 6,2 junto al bloque
+        # viejo de ITVC 89,3 (que equivale a 7,1). El bloque completo es un
+        # único hecho calculado y debe viajar junto.
+        if ckey == "vida_cotidiana" and c.get("itvc"):
+            if (destino.get("itvc") or {}).get("valor") != c["itvc"].get("valor"):
+                cambios.append(
+                    f"ITCIS {(destino.get('itvc') or {}).get('valor')}"
+                    f"→{c['itvc'].get('valor')}"
+                )
+            destino["itvc"] = c["itvc"]
     if intermedio.get("score_global") != informe["score_global"]:
         cambios.append(f"global {intermedio.get('score_global')}→{informe['score_global']}")
     intermedio["score_global"] = informe["score_global"]
@@ -1805,13 +1829,114 @@ def _validacion_itcp(bloque):
     }
 
 
+# Indicador → serie de la que sale su índice. Los que no figuran acá usan una
+# serie homónima (`rebase_de_serie(series, "mora_familias")` y compañía).
+_SERIE_DEL_INDICADOR_ITVC = {i: s for s, i in itvc.SERIES_REBASEADAS.items()}
+
+
+def _fecha_del_indice_itvc(ikey, series):
+    """Mes del último punto de la serie que produjo el índice del componente.
+
+    La card trae `fecha_dato` de la fuente y el índice sale de la serie, que
+    puede ir un mes atrás. `IndicadorModal.astro` ya leía `fecha_indice_itvc`
+    para decir de cuándo es el nivel que puntúa —lo único para lo que existe
+    esa fila— pero no lo escribía nadie, así que el sufijo nunca renderizaba.
+    Devuelve None si la serie no resuelve: entonces el modal omite el sufijo,
+    como venía haciendo.
+    """
+    skey = _SERIE_DEL_INDICADOR_ITVC.get(ikey, ikey)
+    serie = (series or {}).get(skey) or []
+    return ((serie[-1].get("fecha") or "")[:10] or None) if serie else None
+
+
+# La card guarda la carga redondeada a un decimal (`build_vida`) y la serie se
+# arma con el valor sin redondear, así que la card no identifica una carga sino
+# el intervalo de cargas que redondean a ella.
+_BORDE_REDONDEO_CARGA = 0.05
+
+
+def _rango_indice_compatible_con_card(valor, transporte_pct):
+    """Índices que la card puede estar representando, extremos incluidos.
+
+    Comparar el índice publicado contra UNA recomputación desde la card es
+    comparar cosas distintas: cualquier carga en [v−0,05, v+0,05] produce esa
+    misma card. Con el transporte al 43% de la canasta esos 0,05 valen 0,215
+    puntos de índice — cuatro veces la tolerancia fija de 0,05 que había acá,
+    así que el guard se disparaba por redondeo y no por desalineación.
+
+    El índice es monótono no creciente en la carga (las dos tensiones crecen
+    con ella y se toma la mayor), así que los extremos del intervalo lo acotan.
+    """
+    carga = float(valor)
+    piso_carga = max(carga - _BORDE_REDONDEO_CARGA, 1e-9)   # más carga → menos índice
+    techo = itvc.indice_asequibilidad_tarifas(piso_carga, transporte_pct)
+    piso = itvc.indice_asequibilidad_tarifas(carga + _BORDE_REDONDEO_CARGA, transporte_pct)
+    return piso, techo
+
+
+def _series_tarifas_alineadas_con_card(c, series):
+    """Impide mezclar la card IIEP de un mes con el índice tarifario de otro.
+
+    Si no se puede acreditar que card y serie hablan del mismo mes, el
+    componente **se cae** en vez de publicarse mal: `indices_desde_series` lo
+    deja en None y `calcular_itvc` renormaliza sobre el resto de la dimensión.
+    Antes esto era un `raise` sin captura —`aplicar_scoring` no lo envuelve—,
+    así que una desalineación de un mes mataba la publicación nocturna entera.
+    Y es alcanzable con ruido de infraestructura común: la card sale de un
+    fetch corto y la serie de una descarga larga que, si expira, conserva las
+    filas del mes anterior.
+
+    Degradar en silencio sería el otro error (ver `sentimiento_digital`), así
+    que el motivo queda en la card y G9 del gate lo levanta.
+    """
+    tarjeta = (c.get("indicadores") or {}).get("peso_tarifas")
+    if not tarjeta:
+        return series
+    tarjeta.pop("desalineacion_serie", None)
+    fecha = (tarjeta.get("fecha_dato") or "")[:7]
+    puntos = [p for p in (series.get("itvc_tarifas") or [])
+              if (p.get("fecha") or "")[:7] == fecha]
+    motivo = None
+    if not fecha or len(puntos) != 1:
+        motivo = (f"card {fecha or 'sin fecha'} sin un único punto coincidente "
+                  f"en itvc_tarifas")
+    elif tarjeta.get("valor") is None or tarjeta.get("transporte_pct_canasta") is None:
+        # Carry-forward desde un snapshot anterior a que la card llevara
+        # desglose: `_carry_forward` sólo restaura los campos que el previo
+        # tenía, así que el titular vuelve y el desglose no. Recalcular acá
+        # reventaba con TypeError —`float(None)`— sobre exactamente los datos
+        # para los que existe el texto de fórmula sin desglose, que por eso
+        # era inalcanzable. El mes sí se pudo cotejar: alcanza para publicar.
+        pass
+    else:
+        publicado = puntos[0].get("valor")
+        piso, techo = _rango_indice_compatible_con_card(
+            tarjeta.get("valor"), tarjeta.get("transporte_pct_canasta")
+        )
+        if publicado is None or not piso - 1e-9 <= float(publicado) <= techo + 1e-9:
+            motivo = (f"índice de serie {publicado} fuera del rango "
+                      f"[{piso}, {techo}] que admite la card")
+    if motivo:
+        tarjeta["desalineacion_serie"] = motivo
+        print(f"[AVISO] peso_tarifas: {motivo}; el componente se omite del ITCIS "
+              f"y la dimensión renormaliza", file=sys.stderr)
+        degradada = dict(series)
+        degradada.pop("itvc_tarifas", None)
+        return degradada
+    alineadas = dict(series)
+    alineadas["itvc_tarifas"] = puntos
+    return alineadas
+
+
 def _scoring_vida_itvc(c, series):
     """Vida cotidiana se puntúa con el ITVC-B100: cada componente es un índice
-    rebaseado a 100 = promedio 4T-2023, agregado con los pesos del doc 260702.
+    rebaseado a 100 = promedio 4T-2023, salvo tarifas (anclas externas por rubro),
+    y se agrega con los pesos vigentes.
     La tensión del cinturón y el aporte por indicador usan el mapeo lineal
     5 − (índice − 100) × 0,2 (topeado a 0-10)."""
     from datetime import datetime as _dt
-    indices = _itvc_indices(c["indicadores"], series)
+    series_indice = _series_tarifas_alineadas_con_card(c, series)
+    indices = _itvc_indices(c["indicadores"], series_indice)
     winsorizados = indices.pop("_winsor", {})
     ajustes = itvc.cargar_ajustes(AJUSTES_ITVC_PATH, _dt.now().strftime("%Y-%m"))
     resultado = itvc.calcular_itvc(indices, ajustes)
@@ -1842,6 +1967,11 @@ def _scoring_vida_itvc(c, series):
             ind["en_indice"] = True
             ind["dimension"] = dkey
             ind["indice_itvc"] = info["puntaje_aplicado"]
+            fecha_indice = _fecha_del_indice_itvc(ikey, series_indice)
+            if fecha_indice:
+                ind["fecha_indice_itvc"] = fecha_indice
+            else:
+                ind.pop("fecha_indice_itvc", None)
             ind["peso_efectivo"] = info["peso_efectivo"]
             if ikey in winsorizados:
                 ind["indice_itvc_crudo"] = winsorizados[ikey]
@@ -1882,6 +2012,24 @@ def _scoring_vida_itvc(c, series):
                        f"(100 = arranque del mandato; más = mejora); pesa "
                        f"{coma(round(info['peso_efectivo'] * 100, 1))}% del ITCIS. "
                        f"Tensión = 5 − (índice − 100) × 0,2.")
+            if ikey == "peso_tarifas":
+                carga = ind.get("valor")
+                proporcion_t = ind.get("transporte_pct_canasta")
+                carga_t = carga * proporcion_t / 100 if carga is not None and proporcion_t is not None else None
+                carga_ae = carga - carga_t if carga is not None and carga_t is not None else None
+                if carga_ae is not None and carga_t is not None:
+                    formula = (f"Canasta IIEP/RIPTE: {coma(carga)}% = agua+energía "
+                               f"{coma(round(carga_ae, 1))}% + transporte {coma(round(carga_t, 1))}%. "
+                               f"Se toma la mayor tensión contra sus límites (10% y 5%): "
+                               f"índice {coma(info['puntaje_aplicado'])}. "
+                               f"Pesa {coma(round(info['peso_efectivo'] * 100, 1))}% del ITCIS.")
+                    lectura = (f"Agua y energía representan {coma(round(carga_ae, 1))}% del salario; "
+                               f"transporte, {coma(round(carga_t, 1))}%. La mayor de las dos "
+                               f"señales fija la tensión equivalente en {coma(aporte)}/10.")
+                else:
+                    formula = (f"Índice de asequibilidad por rubro: "
+                               f"{coma(info['puntaje_aplicado'])}; pesa "
+                               f"{coma(round(info['peso_efectivo'] * 100, 1))}% del ITCIS.")
             if ikey in winsorizados:
                 nota = (f"Winsorizado (tratamiento de outliers): índice crudo "
                         f"{coma(winsorizados[ikey])} acotado al techo de {coma(ITVC_WINSOR_TOPE)} "
@@ -2426,6 +2574,14 @@ def _carry_forward(enriquecido, previo):
             # moverse la que mide hace cuánto que la fuente no contesta.
             if prev.get("obtenido_en"):
                 ind["obtenido_en"] = prev["obtenido_en"]
+            # Insumos que forman el score tarifario. Restaurar sólo el titular
+            # mezclaría 14,5% viejo con un desglose nulo/nuevo y la fórmula ya
+            # no reproduciría el punto que entra al índice.
+            if key == "peso_tarifas":
+                for campo in ("variacion_mensual_pct", "cobertura_costos_pct",
+                              "transporte_pct_canasta", "fuente_url"):
+                    if campo in prev:
+                        ind[campo] = prev[campo]
             print(f"[carry-forward] vida.{key}: sin dato nuevo, se mantiene {prev.get('valor')} ({prev.get('fecha_dato')})")
     return enriquecido
 

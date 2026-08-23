@@ -41,11 +41,11 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso. | 46,5 | AMARILLO | 21,0 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en seis señales. | 46,5 | AMARILLO | 21,0 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 75,8 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 96,7 | VERDE | 15,0 % |
-| Poder judicial | La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. | 59,4 | AMARILLO | 15,0 % |
-| Sector privado | La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan… | 54,2 | AMARILLO | 13,0 % |
+| Poder judicial | La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. | 59,4 | AMARILLO | 15,0 % |
+| Sector privado | La relación con los empresarios por dos vías, lo que esperan y lo que dicen. | 54,2 | AMARILLO | 13,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar. | 71,7 | VERDE | 10,0 % |
 | Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 73,6 | VERDE | 7,0 % |
 
@@ -88,7 +88,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Imagen y voto** | | | | |
 | Ventaja LLA−PJ (Votómetro) | La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles. | 4,3 Puntos porcentuales | VERDE | 7,0 % |
 
-*Datos al 2026-08-21.*
+*Datos al 2026-08-23.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -114,7 +114,7 @@ La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas 
 | **DIMENSIÓN EN EL ITCP** | Imagen y voto | **UNIDAD DE MEDIDA** | Puntos porcentuales |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El Votómetro se actualiza cuando las consultoras publican encuestas nuevas (cadencia irregular, típicamente semanas); el informe recalcula la ventaja todos los días con lo cargado. |
 | **PRODUCTOR DEL DATO** | Fundación CIGOB — Votómetro | **OPERACIÓN ESTADÍSTICA** | Agregador de encuestas de intención de voto: todos los sondeos publicados desde diciembre de 2023, con calificación de calidad por consultora |
-| **MODO DE ACCESO** | Automático: lee el listado de encuestas que publica el Votómetro; si el sitio no responde, usa la última copia local. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: lee el listado de encuestas que publica el Votómetro; si el sitio no responde, usa la última copia local. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -205,7 +205,7 @@ Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | DNUs por ley |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | InfoLeg carga las normas al ritmo del Boletín Oficial: días entre la publicación y su aparición en el buscador. |
 | **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — conteo de decretos de necesidad y urgencia y de leyes sancionadas en los últimos 365 días |
-| **MODO DE ACCESO** | Automático: consulta el buscador oficial con dos búsquedas (leyes y decretos con el texto «necesidad y urgencia», ambas acotadas a los últimos 365 días) y toma los conteos de resultados. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: consulta el buscador oficial con dos búsquedas (leyes y decretos con el texto «necesidad y urgencia», ambas acotadas a los últimos 365 días) y toma los conteos de resultados. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -213,7 +213,7 @@ Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en 
 
 Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. En el relevamiento cerrado el 19 de julio de 2026, el 95% de los decretos de necesidad y urgencia de esta gestión nunca había llegado a votarse en el recinto; de los ocho que sí habían llegado, seis habían caído. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -300,7 +300,7 @@ La diferencia entre lo que esperan las empresas constructoras que trabajan para 
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | pp de brecha (obra pública − privada, 12m) |
 | **SERIE DISPONIBLE** | 2017-11 → 2026-09 (101 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC publica la encuesta junto con el informe mensual de la construcción, unas semanas después del cierre del período relevado. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta Cualitativa de la Construcción — expectativas de las empresas sobre el nivel de actividad de los próximos tres meses, con respuestas separadas para obra pública y obra privada (Cuadro 7.1) |
-| **MODO DE ACCESO** | Automático: descarga la planilla oficial del indicador sintético de la actividad de la construcción y lee el cuadro de expectativas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: descarga la planilla oficial del indicador sintético de la actividad de la construcción y lee el cuadro de expectativas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -308,7 +308,7 @@ La diferencia entre lo que esperan las empresas constructoras que trabajan para 
 
 Conviene una advertencia antes del dato: este indicador se comporta distinto según el gobierno, porque para el actual el recorte de la obra pública es el programa y no un síntoma de dificultades, de modo que la tensión con el sector puede subir mientras el Gobierno gobierna con comodidad. Dicho eso, lo que mide es sólido. Las dos submuestras son el mismo sector: mismos costos, mismo crédito, misma economía. Lo único que las distingue es quién les paga. Por eso la diferencia entre ambas aísla lo que aporta el Estado y descarta el ciclo económico general. Cuando las que dependen de la obra pública esperan mucho peor que sus pares privadas, la fuente del problema es la política pública y no el mercado.
 
-**Dimensión que integra — Sector privado.** La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados. Al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga: la diferencia aísla lo que aporta la política pública y descarta el ciclo económico.
+**Dimensión que integra — Sector privado.** La relación con los empresarios por dos vías, lo que esperan y lo que dicen. La primera es la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados: al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga, así que la diferencia aísla lo que aporta la política pública y descarta el ciclo económico. La segunda es la postura pública de la Asociación Empresaria Argentina y la Unión Industrial Argentina — el saldo entre apoyos y críticas de sus comunicados sobre medidas del Ejecutivo nacional en los últimos doce meses —, que es el vínculo dicho y no inferido.
 
 ## Método de cómputo
 
@@ -391,7 +391,7 @@ Qué dicen en público, por escrito y con firma institucional, las dos cámaras 
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Asociación Empresaria Argentina (AEA) y Unión Industrial Argentina (UIA) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de ambas entidades |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -399,7 +399,7 @@ Qué dicen en público, por escrito y con firma institucional, las dos cámaras 
 
 Es la única medida directa de la relación entre el Gobierno y el empresariado organizado: las demás miran el clima de negocios o los datos de un sector, y de ahí infieren el vínculo. Acá el vínculo está dicho. Conviene saber qué no dice: no mide el humor del empresariado en general ni la opinión de sus asociados, sino lo que una asociación decidió declarar públicamente — una cámara puede callar por conveniencia y ese silencio no aparece. La clasificación la hace una persona siguiendo reglas escritas de antemano, y dos personas distintas la hicieron por separado para verificar que las reglas no dejan lugar a la interpretación.
 
-**Dimensión que integra — Sector privado.** La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados. Al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga: la diferencia aísla lo que aporta la política pública y descarta el ciclo económico.
+**Dimensión que integra — Sector privado.** La relación con los empresarios por dos vías, lo que esperan y lo que dicen. La primera es la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados: al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga, así que la diferencia aísla lo que aporta la política pública y descarta el ciclo económico. La segunda es la postura pública de la Asociación Empresaria Argentina y la Unión Industrial Argentina — el saldo entre apoyos y críticas de sus comunicados sobre medidas del Ejecutivo nacional en los últimos doce meses —, que es el vínculo dicho y no inferido.
 
 ## Método de cómputo
 
@@ -482,7 +482,7 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 | **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | % vs 2023 |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-07 (32 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de ACLED se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
 | **PRODUCTOR DEL DATO** | ACLED — Armed Conflict Location & Event Data | **OPERACIÓN ESTADÍSTICA** | Agregado semanal de eventos por provincia para América Latina — eventos de protesta y disturbios (Protests y Riots) en la Argentina |
-| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -570,7 +570,7 @@ Cuántas jornadas individuales de trabajo se perdieron por paros en todo el paí
 | **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | jornadas individuales no trabajadas (12m) |
 | **SERIE DISPONIBLE** | 2006-12 → 2026-05 (234 puntos) | **REZAGO DE PUBLICACIÓN** | La Secretaría de Trabajo actualiza la planilla mensual con alrededor de dos a tres meses de rezago. |
 | **PRODUCTOR DEL DATO** | Secretaría de Trabajo, Empleo y Seguridad Social | **OPERACIÓN ESTADÍSTICA** | Estadísticas de conflictos laborales — evolución mensual de conflictos con paro, huelguistas y jornadas de paro |
-| **MODO DE ACCESO** | Automático: descubre y lee la planilla XLSX vigente publicada en la página oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: descubre y lee la planilla XLSX vigente publicada en la página oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -654,7 +654,7 @@ Cuánto varían, en términos reales, las transferencias del Estado nacional a l
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % interanual real |
 | **SERIE DISPONIBLE** | 2018-12 → 2025-12 (8 puntos) | **REZAGO DE PUBLICACIÓN** | Por diseño compara el último año cerrado contra el anterior: durante 2026 se lee «2025 contra 2024» — el dato puede tener hasta un año de rezago. |
 | **PRODUCTOR DEL DATO** | Ministerio de Economía (Secretaría de Hacienda); deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | Serie RON — recursos de origen nacional transferidos a las provincias (archivo anual oficial), deflactada con el IPC nacional |
-| **MODO DE ACCESO** | Automático: descarga el archivo oficial y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: descarga el archivo oficial y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -748,7 +748,7 @@ Qué porcentaje de los proyectos que envía el Ejecutivo el Congreso termina apr
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de proyectos |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El portal de datos abiertos de Diputados carga proyectos y movimientos con días o semanas de demora respecto del hecho parlamentario. |
 | **PRODUCTOR DEL DATO** | HCDN — Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Datasets «proyectos parlamentarios» y «leyes sancionadas» del portal oficial de datos abiertos |
-| **MODO DE ACCESO** | Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -756,7 +756,7 @@ Qué porcentaje de los proyectos que envía el Ejecutivo el Congreso termina apr
 
 Mide la capacidad real de convertir la agenda de gobierno en ley, sin castigar a los proyectos recién enviados que todavía no tuvieron tiempo de tratarse.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -848,7 +848,7 @@ Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de sesiones |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El portal de datos abiertos de Diputados registra las sesiones a los días de ocurridas. |
 | **PRODUCTOR DEL DATO** | HCDN — Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Dataset «sesiones» (sesiones plenarias) del portal oficial de datos abiertos |
-| **MODO DE ACCESO** | Automático: API pública del portal, filtrando las sesiones de Diputados del período legislativo en curso. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: API pública del portal, filtrando las sesiones de Diputados del período legislativo en curso. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -856,7 +856,7 @@ Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda 
 
 El quórum es el primer filtro de cualquier agenda legislativa: sin él no se debate ni se vota nada. Una tasa alta indica que el oficialismo no logra reunir a la cámara, sea porque la oposición se ausenta deliberadamente o porque sus propios aliados no acompañan.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -939,7 +939,7 @@ Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % de jurisdicciones (sobre 24) adheridas al RIGI |
 | **SERIE DISPONIBLE** | 2024-07 → 2026-07 (25 puntos) | **REZAGO DE PUBLICACIÓN** | La tabla de provincias adheridas se actualiza en el sitio oficial apenas una provincia formaliza su adhesión; el informe la relee completa en cada actualización. |
 | **PRODUCTOR DEL DATO** | Ministerio de Agricultura, Ganadería y Pesca (MAGyP) | **OPERACIÓN ESTADÍSTICA** | Tabla de provincias adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742) |
-| **MODO DE ACCESO** | Automático: lectura directa de la tabla publicada en el sitio del MAGyP. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: lectura directa de la tabla publicada en el sitio del MAGyP. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1025,7 +1025,7 @@ Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones d
 | **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días |
-| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1118,7 +1118,7 @@ De las normas del Ejecutivo que el Congreso desafió en el recinto en los últim
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2024-03 → 2026-08 (30 puntos) | **REZAGO DE PUBLICACIÓN** | Las cámaras publican sus actas de votación a los días de cada sesión; el clasificador incorpora las actas nuevas en la actualización nocturna siguiente. La caída de un veto se registra con la publicación de la ley insistida en el Boletín Oficial, dos a tres semanas después del voto de la segunda cámara. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados + Senado de la Nación + InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras (insistencias de leyes vetadas y tratamientos de decretos bajo la ley 26.122) + base de legislación nacional (decretos de veto, leyes promulgadas por insistencia) |
-| **MODO DE ACCESO** | Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos se comparte con el indicador de derrotas legislativas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos es el mismo que usa el indicador de normas desafiadas en el recinto. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1126,7 +1126,7 @@ De las normas del Ejecutivo que el Congreso desafió en el recinto en los últim
 
 Es la cara ganada del pulso legislativo que el conteo de derrotas no registra: un gobierno sin mayoría gobierna sosteniendo sus vetos con un tercio de una cámara. Una tasa alta indica bloqueo firme; una baja, un Congreso capaz de voltear sus normas. Al mirar 12 meses atrás, una crisis reciente pesa durante un año.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -1206,7 +1206,7 @@ Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación se publican con algunos días de demora respecto de la sesión; InfoLeg carga los vetos al ritmo del Boletín Oficial. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados · Senado de la Nación · InfoLeg | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras y base de legislación nacional — normas del Poder Ejecutivo sometidas a votación en el recinto |
-| **MODO DE ACCESO** | Semiautomático: clasifica las actas de votación de ambas cámaras y las cruza con los vetos de InfoLeg; los casos ambiguos del registro compartido con bloqueo sostenido quedan pendientes de revisión humana. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Semiautomático: clasifica las actas de votación de ambas cámaras y las cruza con los vetos de InfoLeg; los casos ambiguos del registro compartido con bloqueo sostenido quedan pendientes de revisión humana. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1214,7 +1214,7 @@ Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto 
 
 Mide con qué frecuencia el Congreso decide dar la pelea, sin importar cómo termine. Desafiar una norma del Ejecutivo es un acto excepcional —exige mayorías especiales o un procedimiento específico—, así que un puñado al año ya indica confrontación abierta. Junto con la proporción de normas que el Gobierno logra sostener, responde las dos preguntas del pulso legislativo: cuánto lo confrontan y cuánto aguanta.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -1291,7 +1291,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | leyes sancionadas (12m) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El dataset se actualiza con la sanción de cada ley, de modo que el rezago es el de la carga en el portal de datos abiertos: en general unas semanas. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Dataset de leyes sancionadas, con el expediente inicial y la fecha de sanción definitiva de cada una |
-| **MODO DE ACCESO** | Automático: el mismo portal que el proyecto ya consulta para la eficacia parlamentaria. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: el mismo portal que el proyecto ya consulta para la eficacia parlamentaria. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1299,7 +1299,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir 
 
 Mide la actividad legislativa por su volumen, que es el número que efectivamente se mueve. La participación del Ejecutivo en esa producción es notablemente estable —entre cinco y diez leyes por ventana en todo el período—, de modo que cuando su porcentaje sube, lo que cambió no fue el Ejecutivo sino el Congreso, que sancionó menos. Medir el total evita leer una parálisis legislativa como un avance del Gobierno.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -1375,7 +1375,7 @@ Qué porcentaje de los fallos publicados en jurisdicción federal y nacional inv
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % de sumarios con medida cautelar |
 | **SERIE DISPONIBLE** | 2016-01 → 2026-01 (11 puntos) | **REZAGO DE PUBLICACIÓN** | La base indexa los fallos con demora variable y el punto es anual, de modo que el dato describe un año que ya cerró. |
 | **PRODUCTOR DEL DATO** | Sistema Argentino de Información Jurídica (SAIJ) | **OPERACIÓN ESTADÍSTICA** | Buscador de jurisprudencia, restringido por jurisdicción |
-| **MODO DE ACCESO** | Automático: la consulta y el modo de leer los totales quedaron verificados y documentados. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: la consulta y el modo de leer los totales quedaron verificados y documentados. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1383,7 +1383,7 @@ Qué porcentaje de los fallos publicados en jurisdicción federal y nacional inv
 
 Mide cuánto de la agenda se dirime en tribunales por la vía de la suspensión, que es el instrumento con el que una decisión del Ejecutivo se frena antes de discutirse en el fondo. Se publica como proporción y no como conteo porque el número de fallos publicados depende del volumen editorial de la base de jurisprudencia: el conteo crudo se quintuplica entre 2016 y 2021 sin que las cautelares se hayan quintuplicado.
 
-**Dimensión que integra — Poder judicial.** La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. No es una decisión que el Gobierno tome solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura de los tribunales es un termómetro de la negociación política. La dimensión mide por ahora la capacidad de nombrar, no el comportamiento de la Justicia.
+**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras tres miran el comportamiento de la Justicia: qué proporción de los fallos federales y nacionales involucra una medida cautelar, cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces.
 
 ## Método de cómputo
 
@@ -1459,7 +1459,7 @@ Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los 
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % de expedientes resueltos sobre ingresados |
 | **SERIE DISPONIBLE** | 2014-12 → 2025-12 (12 puntos) | **REZAGO DE PUBLICACIÓN** | El anuario se publica con el año cerrado, de modo que el dato describe el año anterior. |
 | **PRODUCTOR DEL DATO** | Corte Suprema de Justicia de la Nación | **OPERACIÓN ESTADÍSTICA** | Anuario estadístico, sobre su sistema de gestión judicial |
-| **MODO DE ACCESO** | Carga manual anual: los tableros interactivos no admiten consulta automática; el valor se releva de la versión estática de cada hoja y se valida contra el anuario en documento. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Carga manual anual: los tableros interactivos no admiten consulta automática; el valor se releva de la versión estática de cada hoja y se valida contra el anuario en documento. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1467,7 +1467,7 @@ Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los 
 
 Distingue una Corte que se pone al día de una que acumula. Por encima de cien resuelve más de lo que recibe y descarga atraso; por debajo, el atraso crece. Importa para este cinturón porque una causa que tarda años en resolverse deja en pie, mientras tanto, lo que se discute.
 
-**Dimensión que integra — Poder judicial.** La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. No es una decisión que el Gobierno tome solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura de los tribunales es un termómetro de la negociación política. La dimensión mide por ahora la capacidad de nombrar, no el comportamiento de la Justicia.
+**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras tres miran el comportamiento de la Justicia: qué proporción de los fallos federales y nacionales involucra una medida cautelar, cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces.
 
 ## Método de cómputo
 
@@ -1544,7 +1544,7 @@ Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Cons
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | sesiones de las comisiones de control (12m) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Depende de cuándo el Consejo publica la nota de cada sesión, en general dentro de las semanas siguientes. |
 | **PRODUCTOR DEL DATO** | Consejo de la Magistratura de la Nación | **OPERACIÓN ESTADÍSTICA** | Archivo de notas de prensa de las comisiones de Acusación y de Disciplina |
-| **MODO DE ACCESO** | Automático sobre el archivo público de notas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático sobre el archivo público de notas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1552,7 +1552,7 @@ Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Cons
 
 Mide si el mecanismo de control disciplinario de los jueces está funcionando o está detenido. Se cuentan las sesiones de ambas comisiones y no las de una sola porque el conjunto da una serie estable y comparable mes a mes, mientras que cada comisión por separado sesiona pocas veces al año.
 
-**Dimensión que integra — Poder judicial.** La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. No es una decisión que el Gobierno tome solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura de los tribunales es un termómetro de la negociación política. La dimensión mide por ahora la capacidad de nombrar, no el comportamiento de la Justicia.
+**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras tres miran el comportamiento de la Justicia: qué proporción de los fallos federales y nacionales involucra una medida cautelar, cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces.
 
 ## Método de cómputo
 
@@ -1628,7 +1628,7 @@ Qué porcentaje de los cargos de juez de la justicia federal y nacional tiene ju
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % de cargos de juez con juez designado |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El padrón de magistrados se publica con actualizaciones irregulares, en general de uno a dos meses. Los registros de designaciones y renuncias se actualizan con más frecuencia, de modo que la serie incorpora los movimientos posteriores a la última foto del padrón. |
 | **PRODUCTOR DEL DATO** | Ministerio de Justicia | **OPERACIÓN ESTADÍSTICA** | Padrón de magistrados de la Justicia Federal y Nacional (con marca de cargo vacante), más los registros de designaciones y de renuncias de magistrados |
-| **MODO DE ACCESO** | Automático: los tres archivos se resuelven por la interfaz del portal de datos abiertos. El nombre de cada archivo incluye su fecha de publicación y cambia en cada actualización, de modo que se busca el recurso vigente en lugar de construir la dirección a mano. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: los tres archivos se resuelven por la interfaz del portal de datos abiertos. El nombre de cada archivo incluye su fecha de publicación y cambia en cada actualización, de modo que se busca el recurso vigente en lugar de construir la dirección a mano. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1636,7 +1636,7 @@ Qué porcentaje de los cargos de juez de la justicia federal y nacional tiene ju
 
 Mide una capacidad que el Gobierno no ejerce solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura del Poder Judicial es un termómetro de la negociación política, no de la gestión administrativa. La serie muestra un desgaste sostenido durante más de dos años —las renuncias siguieron y las designaciones se detuvieron— seguido de una recuperación abrupta cuando el Senado aprobó un conjunto de pliegos en junio de 2026.
 
-**Dimensión que integra — Poder judicial.** La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. No es una decisión que el Gobierno tome solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura de los tribunales es un termómetro de la negociación política. La dimensión mide por ahora la capacidad de nombrar, no el comportamiento de la Justicia.
+**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras tres miran el comportamiento de la Justicia: qué proporción de los fallos federales y nacionales involucra una medida cautelar, cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces.
 
 ## Método de cómputo
 
@@ -1716,7 +1716,7 @@ Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Li
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % votos de senadores no-LLA alineados con LLA, por provincia |
 | **SERIE DISPONIBLE** | 2024-02 → 2026-08 (31 puntos) | **REZAGO DE PUBLICACIÓN** | El portal de votaciones nominales del Senado registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
 | **PRODUCTOR DEL DATO** | Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales del Senado — coincidencia de senadores no alineados con la posición del bloque de La Libertad Avanza, por provincia, actas de los últimos 90 días |
-| **MODO DE ACCESO** | Automático: lectura directa del portal público de votaciones nominales del Senado; sin carga manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Automático: lectura directa del portal público de votaciones nominales del Senado; sin carga manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-23 |
 
 ## Definición — qué mide y por qué importa
 

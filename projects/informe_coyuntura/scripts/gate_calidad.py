@@ -465,6 +465,18 @@ def main() -> int:
                           f"({editorial.relative_to(ROOT)}) — la portada publica la "
                           f"síntesis automática")
 
+    # ── G9 — componentes que se cayeron por desalineación card↔serie ─────────
+    # AVISA, no bloquea: `publicar.py` ya degradó (el componente sale del índice
+    # y la dimensión renormaliza), que es publicable. Lo que este aviso evita es
+    # que la degradación pase inadvertida — un componente que desaparece sin que
+    # nadie se entere es el modo de falla de `sentimiento_digital`.
+    for ck, cin in (inf.get("cinturones") or {}).items():
+        for ik, ind in (cin.get("indicadores") or {}).items():
+            motivo = (ind or {}).get("desalineacion_serie")
+            if motivo:
+                avisos.append(f"G9 {ck}/{ik}: {motivo} — el componente se omitió "
+                              f"del índice y la dimensión renormalizó")
+
     # ── Bloqueantes vs. no bloqueantes (ADR-0133, corregido por ADR-0227) ────
     # Una fuente que se atrasa NO puede impedir que se publique todo lo demás.
     # Bloquear la publicación entera por eso deja al informe SIN ACTUALIZAR

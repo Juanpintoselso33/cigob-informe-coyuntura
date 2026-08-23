@@ -4,7 +4,7 @@
 
 Sistema automatizado que produce el **Informe de Coyuntura CIGOB**: un tablero
 público (informe.cigob.org) que sigue la situación argentina a través de
-**cinco cinturones** de indicadores, con actualización nocturna sin
+**cuatro cinturones** de indicadores, con actualización nocturna sin
 intervención manual.
 
 Los cinturones vienen del marco Matusiano (Triángulo de Gobierno) adoptado por
@@ -12,28 +12,35 @@ el CIGOB:
 
 | Cinturón | Slug | Indicadores | Puntuación |
 |---|---|---|---|
-| Situación macroeconómica | `macro` | 13 (+4 nominales ocultos) | **ITCM** paramétrico |
-| Gestión / reformas | `gestion` | 17 | **ITCG** paramétrico |
-| Vida cotidiana | `vida_cotidiana` | 13 | **ITVC-B100** |
-| Política | `politica` | 9 | score directo |
-| Espíritu de época | `espiritu_epoca` | 3 | score directo |
+| Situación macroeconómica | `macro` | 17 (+4 nominales ocultos) | **ITCM** paramétrico |
+| Gestión / reformas | `gestion` | 14 | **ITCG** paramétrico |
+| Vida cotidiana | `vida_cotidiana` | 18 | **ITVC-B100** |
+| Política | `politica` | 18 | **ITCP** paramétrico |
+
+Espíritu de época fue el quinto cinturón hasta que salió del tablero
+(ADR-0205). Los conteos de arriba son los del snapshot vigente y se mueven con
+cada alta o baja de indicador: la cuenta viva la publica la propia página de
+metodología.
 
 Cada cinturón publica un **score de tensión 0-10** (mayor = más tensión) y el
 sitio los agrega en un panel global.
 
-## Las tres paramétricas
+## Las cuatro paramétricas
 
-- **ITCM** (macro): 6 dimensiones (26/24/16/11/11/12), 13 indicadores con
-  anclas e interpolación. Estabilidad monetaria combina IPC, REM, IDM y presión
+- **ITCM** (macro): 6 dimensiones (26/24/16/11/11/12), con anclas e
+  interpolación. Estabilidad monetaria combina IPC, REM, IDM y presión
   de dolarización de carteras con pesos internos 40/25/25/10. Esta última mide
   un constructo latente con observable por régimen: brecha CCL/A3500 suavizada
   antes de abril de 2025 y compras netas de personas sobre M2 privado desde la
   apertura (ADR-0055).
-- **ITCG** (gestión): avance de la transformación del Estado, 0-100 con
-  bandas por indicador. ~73 pts.
+- **ITCG** (gestión): avance de la transformación del Estado, 5 dimensiones
+  (35/25/15/15/10), 0-100 con bandas por indicador.
 - **ITVC-B100** (vida): índice de seguimiento con base 100 = 4T-2023
   (arranque del mandato); cada componente es un rebase de su serie, sin
-  bandas. ~91 pts. Tensión = 5 − (ITVC − 100) × 0,2.
+  bandas. Tensión = 5 − (ITVC − 100) × 0,2. Los componentes se winsorizan
+  asimétricamente —techo 140, sin piso (ADR-0033)— salvo los exentos.
+- **ITCP** (política): 7 dimensiones con bandas por indicador (ADR-0036). La
+  política dejó de puntuarse por score directo.
 
 El detalle de agregación está en [03 — Motor paramétrico](03-motor-parametrico.md).
 
@@ -42,7 +49,7 @@ El detalle de agregación está en [03 — Motor paramétrico](03-motor-parametr
 1. **La app deployada es la fuente de verdad.** Los documentos metodológicos
    de origen son read-only; cuando la metodología evoluciona, cambia el
    código (scripts, ponderaciones, datos) y se documenta la decisión como ADR.
-2. **Toda decisión no trivial es un ADR** (`docs/adr/`, 55 al momento):
+2. **Toda decisión no trivial es un ADR** (`docs/adr/`, más de 230):
    rediseños de indicadores, criterios de familia (ragged edge, ADR-0030),
    tratamiento de outliers (ADR-0033), fuentes descartadas con evidencia.
 3. **Todo indicador automatizado reconstruye su serie hacia atrás** — mínimo
@@ -69,7 +76,7 @@ projects/informe_coyuntura/
 ├── web/                # sitio Astro (ver 04)
 ├── tests/              # pytest: motor paramétrico, fuentes y reconciliación
 └── docs/
-    ├── adr/            # decisiones (55)
+    ├── adr/            # decisiones (más de 230)
     └── arquitectura/   # esta carpeta
 ```
 

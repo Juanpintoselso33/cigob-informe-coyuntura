@@ -23,6 +23,7 @@ import comarb    # recaudación provincial (Convenio Multilateral) + el cálculo
 import macro     # reutiliza el parser SDDS y las constantes del balance (reservas netas)
 import gestion   # reutiliza el lector del sheet oficial del RIGI + fechas del BO
 import politica  # reutiliza la reconstrucción histórica del Votómetro
+import itvc      # fórmula única de asequibilidad tarifaria (ADR-0235)
 
 sys.stdout.reconfigure(encoding="utf-8")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -1656,8 +1657,28 @@ VIDA_INDEC = [
 # muestra la card del indicador), reconstruida para todo el histórico disponible.
 VIDA_DERIVADAS = [
     ("ipc_alimentos",    "% m/m",           "INDEC serie 146.3", lambda: fetch_indec_var_mensual("146.3_IALIMENNAL_DICI_M_45")),
-    ("peso_tarifas",     "% m/m regulados", "INDEC serie 148.3", lambda: fetch_indec_var_mensual("148.3_IREGULANAL_DICI_M_22")),
 ]
+
+
+def fetch_peso_tarifas_iiep_serie() -> list:
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    from iiep_tarifas import fetch_iiep_tarifas_serie
+    return fetch_iiep_tarifas_serie()
+
+
+def fetch_peso_tarifas_iiep_historia() -> list[dict]:
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    from iiep_tarifas import fetch_iiep_tarifas_historia
+    return fetch_iiep_tarifas_historia()
+
+
+VIDA_DERIVADAS.append(
+    ("peso_tarifas", "% del salario RIPTE",
+     "IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA",
+     fetch_peso_tarifas_iiep_serie)
+)
 def fetch_icc_serie(meses: int = 60) -> list:
     """Serie histórica del ICC UTDT: parsea TODAS las filas del XLS oficial (col 0 fecha,
     col 1 índice), no solo la última como el indicador. Reusa el scraper del colector de
@@ -1989,11 +2010,26 @@ def fetch_itvc_alquiler() -> list:
 
 
 def fetch_itvc_tarifas() -> list:
-    """I_PT: peso de los servicios regulados en el salario (IPC Regulados nivel
-    vs RIPTE), 100 = 4T-2023."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
-    from config import INDEC_SERIES
-    return _itvc_relativo_salario(INDEC_SERIES["ipc_regulados"])
+    """I_PT: asequibilidad de la canasta IIEP sobre RIPTE (ADR-0235).
+
+    Agua+energía se compara con el límite inferior de 10% del rango del Banco
+    Mundial; transporte, con el 5% de ONU-Hábitat. En cada grupo, exceder el
+    límite en 2,5 puntos da tensión 5 y en 5 puntos, tensión 10. Se toma la
+    MAYOR tensión para que un servicio caro no quede compensado por otro barato.
+    El índice común es 125 − 5 × tensión. No usa el 4T-2023 subsidiado.
+    """
+    out = []
+    for dato in fetch_peso_tarifas_iiep_historia():
+        peso_transporte = dato.get("transporte_pct_canasta")
+        if peso_transporte is None:
+            continue
+        out.append([
+            dato["fecha"],
+            itvc.indice_asequibilidad_tarifas(dato["valor"], peso_transporte),
+        ])
+    if not out:
+        raise ValueError("IIEP sin desglose de transporte para calcular asequibilidad")
+    return out
 
 
 def fetch_trabajo_independiente_serie() -> list:
@@ -2510,7 +2546,9 @@ def fetch_carne_serie() -> list:
 
 VIDA_DERIVADAS += [
     ("itvc_alimentos", "índice (100 = 4T-2023)", "INDEC IPC Alimentos + IPC general (elab. CIGOB)", fetch_itvc_alimentos),
-    ("itvc_tarifas", "índice (100 = 4T-2023)", "INDEC IPC Regulados + RIPTE (elab. CIGOB)", fetch_itvc_tarifas),
+    ("itvc_tarifas", "índice de asequibilidad por componente (100 = tensión 5)",
+     "IIEP UBA-CONICET + anclas Banco Mundial/ONU-Hábitat (elab. CIGOB)",
+     fetch_itvc_tarifas),
     ("itvc_alquiler", "índice (100 = 4T-2023)", "INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)", fetch_itvc_alquiler),
     # La card de alquiler, con historia. Va acá y no en el literal de
     # VIDA_DERIVADAS de más arriba porque ese se evalúa antes de que existan

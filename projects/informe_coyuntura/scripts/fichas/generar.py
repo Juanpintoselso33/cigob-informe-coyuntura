@@ -151,12 +151,13 @@ def cobertura(ikey):
 
 
 # El ITVC no tiene tablas de bandas por componente: cada uno entra como índice
-# continuo base-100 (100 = promedio 4T-2023), así que `publicar.py` no le puede
-# calcular umbrales en la unidad nativa y publica `umbrales: null`. Pero la
-# escala existe y es exacta: tensión = 5 − (índice − 100) × 0,2, verificada
-# contra los 16 componentes sin un solo desajuste. Los cortes 4/6/8 de tensión
-# se invierten a índice, y como el corte es techo inclusivo (`tension <= tope`
-# en parametrica.color_de_tension), el borde queda del lado del color mejor:
+# continuo en una escala donde 100 equivale a tensión 5, así que `publicar.py`
+# no le puede calcular umbrales en la unidad nativa y publica `umbrales: null`.
+# En 17 componentes esa escala nace del rebase 4T-2023. `peso_tarifas` es la
+# excepción deliberada de ADR-0235: nace de límites internacionales de
+# asequibilidad y 100 NO es una base temporal. Los cortes 4/6/8 de tensión se
+# invierten a índice, y como el corte es techo inclusivo (`tension <= tope` en
+# parametrica.color_de_tension), el borde queda del lado del color mejor:
 # índice 105 es verde, 95 amarillo, 85 naranja.
 #
 # El texto de cada tramo va literal y no por la función `rango` genérica: ésta
@@ -230,16 +231,17 @@ if CORTES:
     w("")
     topes = [c.get("hasta") for c in CORTES]
     if CINT == "vida_cotidiana":
-        # El ITVC es base-100 (100 = 4T-2023), no un puntaje 0-100: su tensión
-        # es 5 − (índice − 100) × 0,2, así que los mismos cortes 4/6/8 caen en
-        # otros números y la tabla tiene que decir ésos, no los del resto.
+        # El ITVC usa una escala continua donde 100 = tensión 5, no un puntaje
+        # 0-100. En 17 componentes surge del rebase 4T-2023; tarifas conserva
+        # la misma escala, pero la construye con anclas de asequibilidad.
         escala = [("105 o más", "verde"), ("de 95 a 105", "amarillo"),
                   ("de 85 a 95", "naranja"), ("menos de 85", "rojo")]
-        titulo_col = f"Índice del {SIGLA} y de sus dimensiones (base 100 = 4º trim. 2023)"
-        nota = ("El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde "
-                "100 es el promedio del 4º trimestre de 2023. Por encima de 100 hay "
-                "mejora acumulada; por debajo, deterioro. La tensión sale de "
-                "5 − (índice − 100) × 0,2.")
+        titulo_col = f"Índice del {SIGLA} y de sus dimensiones (100 = tensión 5)"
+        nota = ("El ITVC no es un puntaje de 0 a 100: usa una escala continua donde "
+                "100 equivale a tensión 5. En 17 componentes, 100 es el promedio del "
+                "4º trimestre de 2023; la canasta de servicios públicos es la excepción: "
+                "100 surge de referencias internacionales de asequibilidad. La tensión "
+                "sale de 5 − (índice − 100) × 0,2 en ambos casos.")
     else:
         escala = [("60 o más", "verde"), ("de 40 a 60", "amarillo"),
                   ("de 20 a 40", "naranja"), ("menos de 20", "rojo")]
@@ -449,15 +451,23 @@ for n, (ikey, o) in enumerate(ind.items(), 1):
     elif indice is not None:
         w("## Semáforo — valores que determinan el color")
         w("")
-        w("Este cinturón no usa tablas de bandas por indicador: cada componente entra al "
-          "índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el "
-          "arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, "
-          "deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su "
-          "unidad original.")
+        if ikey == "peso_tarifas":
+            w("Este componente no usa como vara las tarifas subsidiadas de 2023. Agua y "
+              "energía se comparan con 10% del ingreso, transporte con 5%, y se conserva "
+              "la mayor tensión. Ese resultado se expresa en la escala común del ITCIS, "
+              "donde 100 equivale a tensión 5; no es un índice temporal base 100.")
+            titulo_rango = "Rango (índice de asequibilidad; 100 = tensión 5)"
+        else:
+            w("Este cinturón no usa tablas de bandas por indicador: el componente entra "
+              "como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el "
+              "arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, "
+              "deterioro. El color se lee sobre ese número rebaseado, no sobre el valor "
+              "en su unidad original.")
+            titulo_rango = "Rango (índice base 100 = 4º trim. 2023)"
         w("")
         w("**Valores que definen cada color**")
         w("")
-        w("| Rango (índice base 100 = 4º trim. 2023) | Color |")
+        w(f"| {titulo_rango} | Color |")
         w("|---|---|")
         for t in UMBRALES_ITVC:
             w(f"| {t['texto']} | {COLOR[t['color']]} |")
@@ -480,9 +490,16 @@ for n, (ikey, o) in enumerate(ind.items(), 1):
     por_que = sem.get("por_que")
     if not por_que and indice is not None:
         tramo = next(t for t in UMBRALES_ITVC if t["color"] == sem.get("color"))
-        por_que = (f"El componente está en {coma(indice, 1)} sobre la base 100 del 4º "
-                   f"trimestre de 2023 — {tramo['texto']} —, que es el tramo "
-                   f"{COLOR.get(sem.get('color'), '—')}.")
+        if ikey == "peso_tarifas":
+            por_que = ((o.get("aporte_lectura") or "") +
+                       f" El índice de asequibilidad resultante es {coma(indice, 1)} "
+                       f"— {tramo['texto']} —, que corresponde al tramo "
+                       f"{COLOR.get(sem.get('color'), '—')}. 100 equivale a tensión 5; "
+                       "no al nivel tarifario del 4º trimestre de 2023.")
+        else:
+            por_que = (f"El componente está en {coma(indice, 1)} sobre la base 100 del 4º "
+                       f"trimestre de 2023 — {tramo['texto']} —, que es el tramo "
+                       f"{COLOR.get(sem.get('color'), '—')}.")
         # Los bordes de la escala son parte de la lectura, no una nota al pie: fuera
         # de [75, 125] la tensión queda acotada y el color deja de moverse con el
         # dato, así que la ficha no puede mostrar el color sin decirlo.

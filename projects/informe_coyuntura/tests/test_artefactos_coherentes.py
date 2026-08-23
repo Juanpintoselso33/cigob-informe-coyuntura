@@ -76,6 +76,18 @@ def test_mismo_score_global(artefactos):
     )
 
 
+def test_mismo_bloque_itvc(artefactos):
+    """Score e índice social son dos lecturas del mismo cálculo, no dos datos."""
+    intermedio, snapshot = artefactos
+    a = intermedio["cinturones"]["vida_cotidiana"].get("itvc")
+    b = snapshot["cinturones"]["vida_cotidiana"].get("itvc")
+    assert a == b, (
+        "output/informe.json conserva un ITVC distinto del snapshot web; "
+        f"intermedio={None if not a else a.get('valor')}, "
+        f"snapshot={None if not b else b.get('valor')}"
+    )
+
+
 def test_el_md_declara_el_mismo_global(artefactos):
     """`informe.md` lleva el global en su frontmatter y es lo primero que lee
     un humano que abre el artefacto. Se regenera junto con el .json; si

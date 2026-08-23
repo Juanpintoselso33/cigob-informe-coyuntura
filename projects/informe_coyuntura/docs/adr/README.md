@@ -6,8 +6,8 @@ las descartadas, para no volver a investigarlas) y sus consecuencias.
 
 ## ¿Buscás qué rige hoy?
 
-Este registro responde **por qué** se decidió cada cosa y **cuándo**: son 165
-documentos y no se leen de corrido. Para saber qué mide cada cinturón hoy —con
+Este registro responde **por qué** se decidió cada cosa y **cuándo**: son más
+de 230 documentos y no se leen de corrido. Para saber qué mide cada cinturón hoy —con
 qué pesos, con qué anclas y qué decisiones siguen abiertas— están los
 **[manuales metodológicos](../manuales/README.md)**, que se generan de este
 registro y del código que corre.
@@ -254,6 +254,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0224](0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) | Puntúa la motorización total, no cada vehículo por su lado | `motorizacion_total`, `patentamiento_autos`, `patentamiento_motos` | vigente |
 | [0225](0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) | El supermercado deja de validar el índice y pasa a integrarlo | `consumo_supermercados` | vigente |
 | [0231](0231-la-carga-de-deuda-anticipa-la-mora.md) | La carga de deuda anticipa la mora | `mora_familias`, `carga_servicio_deuda_hogares` | vigente |
+| [0235](0235-regulados-frente-al-salario-no-es-peso-de-tarifas.md) | La canasta de servicios puntúa contra asequibilidad, no contra 2023 | `peso_tarifas` | vigente |
 
 ### Espíritu de época
 
@@ -316,3 +317,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0220](0220-la-ficha-se-ata-al-colector-y-al-adr.md) | La ficha se ata al colector y al ADR |  | vigente |
 | [0227](0227-demorada-no-es-desactualizada.md) | «Demorada» no es «desactualizada» |  | vigente |
 | [0233](0233-la-dimension-tambien-tiene-historia.md) | La dimensión también tiene historia |  | vigente |
+| [0234](0234-el-snapshot-declara-como-se-obtuvo-cada-dato.md) | El snapshot declara cómo se obtuvo cada dato |  | vigente |
