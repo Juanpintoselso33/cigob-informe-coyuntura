@@ -44,11 +44,12 @@ CAMPO = re.compile(r"^\s{4}(\w+):", re.M)
 #
 # El criterio para aceptarla es uno solo: que la frase remita a algo que el
 # pipeline recalcula —una tabla, una serie, una ficha— en vez de afirmar el valor.
+# Las cuatro entradas `(itcX, "seleccion")` salieron cuando las fichas de índice
+# dejaron de afirmar un conteo en prosa —«Diecisiete indicadores… con los
+# puntajes de hoy»— y pasaron a remitir a la tabla de composición, que se
+# genera. Sin frase no hay deixis que aceptar, y dejarlas era la puerta abierta
+# que este inventario existe para cerrar.
 ACEPTADAS = {
-    ("itcm", "seleccion"): "remite a la tabla de composición, que se recalcula",
-    ("itcg", "seleccion"): "remite a la tabla de composición, que se recalcula",
-    ("itvc", "seleccion"): "remite a la tabla de composición, que se recalcula",
-    ("itcp", "seleccion"): "remite a la tabla de composición, que se recalcula",
     ("alineamiento_senadores_prov", "incidenciaTexto"):
         "«la mejor señal automatizable disponible hoy» declara un límite del "
         "estado del arte, no un valor: si aparece una fuente mejor se cambia el "
@@ -135,7 +136,14 @@ def test_el_test_mira_algo():
     """Contra el falso verde: si el parseo se rompe y no encuentra ninguna
     cadena, los tres tests de arriba pasan vacíos."""
     hallazgos = _deixis_en_fichas()
-    assert len(hallazgos) >= 5, (
+    # El piso era 5 mientras las cuatro fichas de índice afirmaban un conteo en
+    # prosa. Al reescribirlas contra la tabla generada quedaron las cuatro
+    # frases de indicador, que son las que declaran un límite del método y no
+    # un estado. Baja a 4 por eso, no porque el parseo encuentre menos.
+    assert len(hallazgos) >= 4, (
         f"sólo {len(hallazgos)} apariciones de deixis; el parseo de fichas.ts "
         f"probablemente se rompió y los otros tests están pasando en falso"
     )
+    # Y el piso solo dice algo mientras el inventario no esté vacío: si alguien
+    # borra ACEPTADAS entero, los tres tests de arriba pasan sin mirar nada.
+    assert len(ACEPTADAS) >= 4
