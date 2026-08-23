@@ -669,29 +669,71 @@ def test_vida_itvc_reconcilia():
     assert serie_servicios[-1] == {"fecha": "2026-08-01", "valor": 14.5}
 
 
+def _card_tarifas(**extra):
+    card = {"valor": 14.5, "transporte_pct_canasta": 43.0, "fecha_dato": "2026-08-01"}
+    card.update(extra)
+    return {"indicadores": {"peso_tarifas": card}}
+
+
 def test_tarifas_no_mezcla_card_y_score_de_meses_distintos():
-    cinturon = {"indicadores": {"peso_tarifas": {
-        "valor": 14.5,
-        "transporte_pct_canasta": 43.0,
-        "fecha_dato": "2026-08-01",
-    }}}
+    """Un mes distinto tira el componente del índice; no lo publica mal."""
+    cinturon = _card_tarifas()
     series = {"itvc_tarifas": [{"fecha": "2026-07-01", "valor": 115.0}]}
-    with pytest.raises(ValueError, match="card 2026-08"):
-        publicar._series_tarifas_alineadas_con_card(cinturon, series)
+    degradada = publicar._series_tarifas_alineadas_con_card(cinturon, series)
+    assert "itvc_tarifas" not in degradada
+    assert "card 2026-08" in cinturon["indicadores"]["peso_tarifas"]["desalineacion_serie"]
+
+
+def test_una_desalineacion_de_tarifas_no_mata_la_publicacion():
+    """Era un `raise` y `aplicar_scoring` no lo envuelve, así que un mes de
+    desfasaje —alcanzable con un timeout de `descargar_series`— dejaba la
+    corrida nocturna sin escribir nada. Degradar es publicable; abortar no."""
+    cinturon = _card_tarifas()
+    publicar._series_tarifas_alineadas_con_card(cinturon, {"itvc_tarifas": []})
+    assert cinturon["indicadores"]["peso_tarifas"]["desalineacion_serie"]
 
 
 def test_tarifas_recalcula_el_score_desde_los_datos_visibles():
-    cinturon = {"indicadores": {"peso_tarifas": {
-        "valor": 14.5,
-        "transporte_pct_canasta": 43.0,
-        "fecha_dato": "2026-08-01",
-    }}}
+    cinturon = _card_tarifas()
     correcto = {"itvc_tarifas": [{"fecha": "2026-08-01", "valor": 112.6}]}
     assert publicar._series_tarifas_alineadas_con_card(cinturon, correcto) == correcto
+    assert "desalineacion_serie" not in cinturon["indicadores"]["peso_tarifas"]
 
+    cinturon = _card_tarifas()
     mutado = {"itvc_tarifas": [{"fecha": "2026-08-01", "valor": 115.0}]}
-    with pytest.raises(ValueError, match="115.0 != 112.6"):
-        publicar._series_tarifas_alineadas_con_card(cinturon, mutado)
+    degradada = publicar._series_tarifas_alineadas_con_card(cinturon, mutado)
+    assert "itvc_tarifas" not in degradada
+    assert "115.0 fuera del rango" in cinturon["indicadores"]["peso_tarifas"]["desalineacion_serie"]
+
+
+def test_el_redondeo_de_la_card_no_cuenta_como_desalineacion():
+    """`build_vida` guarda la carga con `round(valor, 1)` y la serie se arma sin
+    redondear. Con transporte al 43% de la canasta, esos 0,05 de carga valen
+    0,215 puntos de índice: contra la tolerancia fija de 0,05 que había antes,
+    el guard se disparaba por redondeo y mataba la publicación.
+
+    Este test FALLA con la comparación vieja (`abs(pub − esperado) > 0.05`):
+    112,5 y 112,8 salen de cargas —14,54 y 14,46— que redondean a la card 14,5.
+    """
+    for indice_serie in (112.5, 112.8):
+        cinturon = _card_tarifas()
+        series = {"itvc_tarifas": [{"fecha": "2026-08-01", "valor": indice_serie}]}
+        alineadas = publicar._series_tarifas_alineadas_con_card(cinturon, series)
+        assert alineadas["itvc_tarifas"] == series["itvc_tarifas"], indice_serie
+        assert "desalineacion_serie" not in cinturon["indicadores"]["peso_tarifas"]
+
+
+def test_el_rango_de_tarifas_no_es_tan_ancho_que_no_guarde_nada():
+    """La contracara: ensanchar la tolerancia no puede volver inerte al guard.
+    La banda que admite la card mide 0,5 puntos —±0,215 de propagar el
+    redondeo de la carga, más el decimal con que redondea el propio índice—,
+    así que un índice a un punto de distancia sigue siendo desalineación."""
+    piso, techo = publicar._rango_indice_compatible_con_card(14.5, 43.0)
+    assert (piso, techo) == (112.4, 112.9)
+    cinturon = _card_tarifas()
+    series = {"itvc_tarifas": [{"fecha": "2026-08-01", "valor": 113.6}]}
+    publicar._series_tarifas_alineadas_con_card(cinturon, series)
+    assert cinturon["indicadores"]["peso_tarifas"]["desalineacion_serie"]
 
 
 def test_robustez_publicada_encierra_el_valor():

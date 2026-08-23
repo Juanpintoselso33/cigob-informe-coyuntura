@@ -1751,28 +1751,92 @@ def _validacion_itcp(bloque):
     }
 
 
+# Indicador → serie de la que sale su índice. Los que no figuran acá usan una
+# serie homónima (`rebase_de_serie(series, "mora_familias")` y compañía).
+_SERIE_DEL_INDICADOR_ITVC = {i: s for s, i in itvc.SERIES_REBASEADAS.items()}
+
+
+def _fecha_del_indice_itvc(ikey, series):
+    """Mes del último punto de la serie que produjo el índice del componente.
+
+    La card trae `fecha_dato` de la fuente y el índice sale de la serie, que
+    puede ir un mes atrás. `IndicadorModal.astro` ya leía `fecha_indice_itvc`
+    para decir de cuándo es el nivel que puntúa —lo único para lo que existe
+    esa fila— pero no lo escribía nadie, así que el sufijo nunca renderizaba.
+    Devuelve None si la serie no resuelve: entonces el modal omite el sufijo,
+    como venía haciendo.
+    """
+    skey = _SERIE_DEL_INDICADOR_ITVC.get(ikey, ikey)
+    serie = (series or {}).get(skey) or []
+    return ((serie[-1].get("fecha") or "")[:10] or None) if serie else None
+
+
+# La card guarda la carga redondeada a un decimal (`build_vida`) y la serie se
+# arma con el valor sin redondear, así que la card no identifica una carga sino
+# el intervalo de cargas que redondean a ella.
+_BORDE_REDONDEO_CARGA = 0.05
+
+
+def _rango_indice_compatible_con_card(valor, transporte_pct):
+    """Índices que la card puede estar representando, extremos incluidos.
+
+    Comparar el índice publicado contra UNA recomputación desde la card es
+    comparar cosas distintas: cualquier carga en [v−0,05, v+0,05] produce esa
+    misma card. Con el transporte al 43% de la canasta esos 0,05 valen 0,215
+    puntos de índice — cuatro veces la tolerancia fija de 0,05 que había acá,
+    así que el guard se disparaba por redondeo y no por desalineación.
+
+    El índice es monótono no creciente en la carga (las dos tensiones crecen
+    con ella y se toma la mayor), así que los extremos del intervalo lo acotan.
+    """
+    carga = float(valor)
+    piso_carga = max(carga - _BORDE_REDONDEO_CARGA, 1e-9)   # más carga → menos índice
+    techo = itvc.indice_asequibilidad_tarifas(piso_carga, transporte_pct)
+    piso = itvc.indice_asequibilidad_tarifas(carga + _BORDE_REDONDEO_CARGA, transporte_pct)
+    return piso, techo
+
+
 def _series_tarifas_alineadas_con_card(c, series):
-    """Impide mezclar la card IIEP de un mes con el índice tarifario de otro."""
+    """Impide mezclar la card IIEP de un mes con el índice tarifario de otro.
+
+    Si no se puede acreditar que card y serie hablan del mismo mes, el
+    componente **se cae** en vez de publicarse mal: `indices_desde_series` lo
+    deja en None y `calcular_itvc` renormaliza sobre el resto de la dimensión.
+    Antes esto era un `raise` sin captura —`aplicar_scoring` no lo envuelve—,
+    así que una desalineación de un mes mataba la publicación nocturna entera.
+    Y es alcanzable con ruido de infraestructura común: la card sale de un
+    fetch corto y la serie de una descarga larga que, si expira, conserva las
+    filas del mes anterior.
+
+    Degradar en silencio sería el otro error (ver `sentimiento_digital`), así
+    que el motivo queda en la card y G9 del gate lo levanta.
+    """
     tarjeta = (c.get("indicadores") or {}).get("peso_tarifas")
     if not tarjeta:
         return series
+    tarjeta.pop("desalineacion_serie", None)
     fecha = (tarjeta.get("fecha_dato") or "")[:7]
     puntos = [p for p in (series.get("itvc_tarifas") or [])
               if (p.get("fecha") or "")[:7] == fecha]
+    motivo = None
     if not fecha or len(puntos) != 1:
-        raise ValueError(
-            f"peso_tarifas: card {fecha or 'sin fecha'} sin un único punto "
-            "coincidente en itvc_tarifas"
+        motivo = (f"card {fecha or 'sin fecha'} sin un único punto coincidente "
+                  f"en itvc_tarifas")
+    else:
+        publicado = puntos[0].get("valor")
+        piso, techo = _rango_indice_compatible_con_card(
+            tarjeta.get("valor"), tarjeta.get("transporte_pct_canasta")
         )
-    esperado = itvc.indice_asequibilidad_tarifas(
-        tarjeta.get("valor"), tarjeta.get("transporte_pct_canasta")
-    )
-    publicado = puntos[0].get("valor")
-    if publicado is None or abs(float(publicado) - esperado) > 0.05:
-        raise ValueError(
-            f"peso_tarifas: índice de serie {publicado} != {esperado} "
-            "recalculado desde la card"
-        )
+        if publicado is None or not piso - 1e-9 <= float(publicado) <= techo + 1e-9:
+            motivo = (f"índice de serie {publicado} fuera del rango "
+                      f"[{piso}, {techo}] que admite la card")
+    if motivo:
+        tarjeta["desalineacion_serie"] = motivo
+        print(f"[AVISO] peso_tarifas: {motivo}; el componente se omite del ITCIS "
+              f"y la dimensión renormaliza", file=sys.stderr)
+        degradada = dict(series)
+        degradada.pop("itvc_tarifas", None)
+        return degradada
     alineadas = dict(series)
     alineadas["itvc_tarifas"] = puntos
     return alineadas
@@ -1816,6 +1880,11 @@ def _scoring_vida_itvc(c, series):
             ind["en_indice"] = True
             ind["dimension"] = dkey
             ind["indice_itvc"] = info["puntaje_aplicado"]
+            fecha_indice = _fecha_del_indice_itvc(ikey, series_indice)
+            if fecha_indice:
+                ind["fecha_indice_itvc"] = fecha_indice
+            else:
+                ind.pop("fecha_indice_itvc", None)
             ind["peso_efectivo"] = info["peso_efectivo"]
             if ikey in winsorizados:
                 ind["indice_itvc_crudo"] = winsorizados[ikey]
