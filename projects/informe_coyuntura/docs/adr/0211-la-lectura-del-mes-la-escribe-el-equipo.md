@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-20
 cinturon: 'transversal'
 archivos: ['web/src/components/Bluf.astro', 'web/src/contenido/lectura-del-mes/', 'scripts/gate_calidad.py', 'web/public/dashboard.css']
-relacionado: ['0165', '0199', '0234']
+relacionado: ['0165', '0199', '0231', '0234']
 ambito: 'El bloque "La lectura del mes" de la portada'
 origen: 'Devolución de Luis Babino sobre el artifact de agosto: reemplazó la síntesis automática por un párrafo editorial escrito a mano'
 ---
