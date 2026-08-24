@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 46,
+  "comunicados_vistos": 48,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. NO puntúa: el indicador no se publica hasta que haya segunda pasada con kappa ≥ 0,70. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-08-23"
+  "nuevos_en_la_corrida": 2,
+  "ultima_corrida": "2026-08-24"
  },
  "pendientes": {
   "UIA|con-un-nuevo-esquema-federal-uia-joven-lanzo-la-ed": {
@@ -42,6 +42,17 @@
    "texto": "Desde el Departamento de Educación, Tecnología e Innovación Productiva participamos de  “Conversaciones para una ETP conectada con el mundo del trabajo” , un encuentro convocado por el INET junto con empresas y cámaras. El objetivo fue avanzar en consensos para fortalecer las prácticas profesionalizantes y  generar un marco federal  que habilite experiencias más sostenidas de formación dual o en alternancia.  Durante el encuentro, presentamos los aprendizajes del trabajo que venimos desarrollando junto con INET y OEI en  Formación Situada . La iniciativa busca integrar la formación curricular con experiencias estructuradas en contextos productivos reales y fortalecer el rol formativo de las empresas para experiencias de nivel medio, formación profesional y técnico superior.  Compartimos las experiencias desarrolladas en Provincia de Buenos Aires con  Nestlé y la Escuela Técnica N.° 1 de Magdalena  y con  Industrias Guidi y la Escuela Técnica N.° 4 de Almirante Brown . En ambos casos, el objetivo es avanzar desde prácticas puntuales hacia experiencias de aprendizaje vinculadas con procesos y desafíos reales de las empresas.  También se presentaron las experiencias de formación dual de la Cámara de Comercio Argentino-Alemana y de la Cámara de Comercio Suiza, y se señalaron algunos desafíos para su desarrollo en nuestro país: contar con planes formativos y articulación curricular, fortalecer a los roles intermediarios y a los tutores, los esquemas de monitoreo y evaluación, clarificar las condiciones para la participación de estudiantes menores de 18 años y generar esquemas que las empresas puedan sostener en el tiempo.  El INET continuará este proceso junto con las jurisdicciones y el sector productivo para avanzar en una normativa nacional que brinde criterios comunes para el desarrollo de estas experiencias.",
    "titulo": "Formación técnica y empresas: INET y el sector productivo avanzan en un marco federal",
    "url": "https://www.uia.org.ar/uia/novedades/formacion-tecnica-y-empresas-inet-y-el-sector-prod"
+  },
+  "UIA|industria-inspira-entra-en-su-ultima-semana-de-ins": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-08-24",
+   "id": "industria-inspira-entra-en-su-ultima-semana-de-ins",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Estudiantes de los últimos años de escuelas técnicas de todo el país podrán presentar sus proyectos hasta el 28 de agosto. Los ganadores provinciales avanzarán a la instancia nacional y el equipo que obtenga el primer puesto será premiado en la 32.ª Conferencia Industrial de la UIA.   La Unión Industrial Argentina (UIA), a través de UIA Joven, transita la última semana de inscripciones de Industria Inspira 2026, el concurso federal que invita a estudiantes de los últimos años de escuelas técnicas a desarrollar proyectos industriales, innovadores y sustentables que respondan a problemáticas concretas de sus comunidades.  La convocatoria permanecerá abierta hasta el viernes 28 de agosto, por lo que todavía hay tiempo para completar y presentar las propuestas. Invitamos a las escuelas que todavía están trabajando en sus propuestas a completar la presentación antes del cierre de la convocatoria.  Durante esta edición, estudiantes y docentes de veinte provincias participaron del lanzamiento federal, recorrieron establecimientos productivos y accedieron a talleres virtuales desarrollados junto con la Universidad Siglo 21. Estas actividades estuvieron orientadas a acompañar la formulación de los proyectos y vincular los aprendizajes escolares con desafíos reales de la industria.  Una vez finalizada la inscripción el 28 de agosto, comenzará el proceso de evaluación. En una primera instancia se seleccionarán los proyectos ganadores de cada provincia. Estos equipos representarán a sus jurisdicciones y competirán en la instancia nacional, en la que se definirá la terna ganadora del concurso.  Los equipos seleccionados recibirán premios destinados a estudiantes, docentes y escuelas, que incluirán dispositivos electrónicos, propuestas de formación y otros recursos para acompañar las trayectorias educativas y fortalecer las capacidades de las instituciones. Además, el proyecto que obtenga el primer puesto será presentado y premiado en noviembre durante la 32.ª Conferencia Industrial de la UIA.  Con su alcance federal, Industria Inspira busca reconocer el talento de los jóvenes en cada territorio y fortalecer los vínculos entre la educación y la industria.   Últimos días para participar: las escuelas podrán cargar sus proyectos hasta el 28 de agosto.",
+   "titulo": "Industria Inspira entra en su última semana de inscripción",
+   "url": "https://www.uia.org.ar/uia/novedades/industria-inspira-entra-en-su-ultima-semana-de-ins"
   },
   "UIA|la-uia-analizo-el-impacto-del-super-rigi-en-el-des": {
    "camara": "UIA",
@@ -86,6 +97,17 @@
    "texto": "Durante la 114ª Conferencia Internacional del Trabajo de la Organización Internacional del Trabajo (OIT), que se está llevando a cabo en Ginebra, el presidente de la UIA, Martín Rappallini, resaltó la necesidad de promover el empleo formal y acompañar la transformación tecnológica.      Ginebra, 5 de junio de 2026.  La Unión Industrial Argentina (UIA) participó de la 114ª Conferencia Internacional del Trabajo de la OIT, donde representantes de gobiernos, empleadores y trabajadores analizaron el impacto de la innovación tecnológica sobre el mundo laboral.  Durante la sesión plenaria, el presidente de la entidad y delegado empleador argentino, Martín Rappallini, compartió la visión del sector industrial sobre los desafíos y oportunidades de este proceso de transformación. Rappallini señaló que la innovación tecnológica representa una oportunidad para el desarrollo, pero advirtió que sus beneficios sólo se traducen en bienestar cuando contribuyen a aumentar la productividad, promover la inversión y crear empleo de calidad.  Rappallini sostuvo que Argentina enfrenta desafíos estructurales vinculados a la generación de empleo formal, en un contexto marcado por altos niveles de informalidad y más de una década de estancamiento del empleo privado. En esta línea, resaltó la importancia que adquiere la reciente sanción de la Ley de Modernización Laboral.  Entre los principales conceptos de su exposición, Rappallini destacó:",
    "titulo": "La UIA destacó en Ginebra la importancia de la modernización laboral",
    "url": "https://www.uia.org.ar/uia/novedades/la-uia-destaco-en-ginebra-la-importancia-de-la-mod"
+  },
+  "UIA|la-uia-mantuvo-una-reunion-con-la-diputada-karina": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-08-24",
+   "id": "la-uia-mantuvo-una-reunion-con-la-diputada-karina",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Autoridades del Departamento de Ambiente y Desarrollo Sustentable mantuvieron una reunión con la Diputada Karina Banfi respecto al proyecto de ley 2050-D-2026 de Presupuestos Mínimos de Protección Ambiental para la Gestión de Residuos mediante la Responsabilidad Extendida del Productor (REP) de su autoría.  Durante el encuentro se compartieron los comentarios del sector sobre el proyecto, así como también sobre un texto que fue trabajado en el marco de la Mesa de Economía Circular, convocada por la Dirección de Industria Sostenible, y que cuenta con el apoyo del sector.",
+   "titulo": "La UIA mantuvo una reunión con la Diputada Karina Banfi para dialogar sobre un proyecto de ley que regula la gestión de residuos mediante la Responsabilidad Extendida del Productor",
+   "url": "https://www.uia.org.ar/uia/novedades/la-uia-mantuvo-una-reunion-con-la-diputada-karina"
   },
   "UIA|la-uia-presento-herramientas-para-le-medicion-de-l": {
    "camara": "UIA",
@@ -470,6 +492,10 @@
    "fecha": "2026-08-12",
    "titulo": "Formación técnica y empresas: INET y el sector productivo avanzan en un marco federal"
   },
+  "UIA|industria-inspira-entra-en-su-ultima-semana-de-ins": {
+   "fecha": "2026-08-24",
+   "titulo": "Industria Inspira entra en su última semana de inscripción"
+  },
   "UIA|la-industria-impulsa-el-bitren-para-bajar-costos-l": {
    "fecha": "2026-04-15",
    "origen": "migración de URL; ya codificado",
@@ -500,6 +526,10 @@
    "fecha": "2026-03-31",
    "origen": "migración de URL; ya codificado",
    "titulo": "La UIA llama a preservar la vigencia de la Ley de Modernización Laboral"
+  },
+  "UIA|la-uia-mantuvo-una-reunion-con-la-diputada-karina": {
+   "fecha": "2026-08-24",
+   "titulo": "La UIA mantuvo una reunión con la Diputada Karina Banfi para dialogar sobre un proyecto de ley que regula la gestión de residuos mediante la Responsabilidad Ext"
   },
   "UIA|la-uia-presento-herramientas-para-le-medicion-de-l": {
    "fecha": "2026-04-14",
