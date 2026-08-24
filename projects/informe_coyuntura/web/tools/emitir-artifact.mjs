@@ -183,7 +183,7 @@ for (const clave of EXCLUIDAS) {
 }
 
 // ── CSS ───────────────────────────────────────────────────────────────────────────────────
-const hojas = [path.join(DIST, 'dashboard.css'), path.join(DIST, 'overrides.css')];
+const hojas = [path.join(DIST, 'marca.css'), path.join(DIST, 'dashboard.css'), path.join(DIST, 'overrides.css')];
 for (const f of fs.readdirSync(ASSETS).filter(n => n.endsWith('.css'))) {
   if (LITE && n_esMath(f)) continue;
   hojas.push(path.join(ASSETS, f));

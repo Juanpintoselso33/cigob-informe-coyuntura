@@ -21,8 +21,15 @@ const gaId = rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Las cuatro familias del Manual de Marca que existen en Google Fonts,
+         cada una con los pesos que el manual le asigna y ni uno más: Lora
+         (títulos), Lato (cuerpos, con itálica real para <em>), Inter (interfaz)
+         y Work Sans (datos). La quinta, Garet, es comercial y se sirve desde
+         public/fuentes/ — ver marca.css. -->
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Lato:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&family=Work+Sans:wght@400;700&display=swap" />
+    <!-- marca.css define los tokens; dashboard.css los consume. El orden importa. -->
+    <link rel="stylesheet" href={`${base}/marca.css`} />
     <link rel="stylesheet" href={`${base}/dashboard.css`} />
     <link rel="stylesheet" href={`${base}/overrides.css`} />
     {gaId && (

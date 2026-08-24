@@ -8,22 +8,38 @@
  * gráficos de evolución, hemeroteca, metodología.
  */
 :root {
-    /* Paleta alineada a cigob.org (celeste #4998DB + menta) — 2026-06 */
-    --teal:        #4998DB;   /* celeste CiGob (primario/links/headings) */
-    --teal-dark:   #2F6FB0;   /* azul más oscuro para hover/contraste de texto */
-    --teal-soft:   #D1E5F6;   /* tint celeste claro CiGob */
-    --cta:         #3E9486;   /* menta CiGob (deeper, legible como texto y como botón) */
-    --cta-dark:    #2E6F65;
-    --dark:        #0A1414;
-    --dark-soft:   #1F2A28;
-    --muted:       #6B7370;
-    --muted-soft:  #9CA39F;
-    --bd:          #E2E5E2;
-    --bd-soft:     #EFF1EF;
-    --bg-page:     #F7F8F7;
-    --bg-tint:     #FAFBFA;
-    --paper:       #FFFFFF;
+    /* Paleta del "Manual de Marca Web" de CiGob (21-ago-2026) — 2026-08.
+       Los valores viven en marca.css; acá sólo se mapean los nombres
+       históricos del informe contra su token de marca, así las ~2.500
+       reglas de abajo siguen escritas igual y el color se mueve de un
+       solo lugar. La convención vieja decía "teal", pero la gama
+       principal del manual es AZUL; el nombre se conserva para no
+       reescribir cada regla, el valor no. */
+    --teal:        var(--azul);           /* primario: links, acentos, gráficos */
+    --teal-dark:   var(--azul-oscuro);    /* hover y contraste de texto */
+    /* Azul de TEXTO. El base (#3D9AD1) da 3,1:1 sobre blanco — debajo del
+       4,5:1 que WCAG pide para texto chico, y así venía de antes del manual.
+       El oscuro da 4,81:1 sin salirse de la gama. El base queda para lo que
+       es gráfico: fondos, trazos, bordes y barras. */
+    --teal-ink:    var(--azul-oscuro);
+    --teal-soft:   var(--azul-palido);    /* fondo de píldoras y áreas de spark */
+    --cta:         var(--verde-oscuro);   /* secundario: acento y botones */
+    --cta-dark:    var(--verde-profundo); /* texto en verde sobre fondo claro */
+    --dark:        var(--tinta);          /* lectura principal */
+    --dark-soft:   var(--tinta-media);
+    --muted:       var(--tinta-suave);    /* cuerpos secundarios */
+    --muted-soft:  var(--tinta-tenue);    /* unidades, ticks, texto terciario */
+    --bd:          var(--linea);
+    --bd-soft:     var(--linea-suave);
+    --bg-page:     var(--fondo-limpio);
+    --bg-tint:     var(--fondo-hover);
+    --paper:       var(--blanco);
 
+    /* SEMÁFORO — no es marca, es señal. El manual de marca define la
+       identidad; estos cuatro colores codifican el nivel de tensión y su
+       lectura depende de la convención universal verde/amarillo/naranja/rojo.
+       Teñirlos de azul y verde CiGob volvería el tablero ilegible, así que
+       quedan fuera del alcance del manual a propósito. */
     --verde:       #16A34A;
     --verde-soft:  #DCFCE7;
     --amarillo:    #CA8A04;
@@ -33,6 +49,10 @@
     --rojo:        #DC2626;
     --rojo-soft:   #FEE2E2;
 
+    /* IDENTIFICADORES DE CINTURÓN — tampoco son marca: son cinco categorías
+       que tienen que distinguirse ENTRE SÍ de un vistazo, y cinco tonos
+       dentro de la gama azul+verde del manual no se distinguen. Misma
+       razón que el semáforo. */
     --c-macro:     #1E40AF;
     --c-politica:  #B91C1C;
     --c-vida:      #92400E;
@@ -41,15 +61,15 @@
 
     --radius-card: 14px;
     --radius-big:  22px;
-    --shadow-card: 0 2px 14px rgba(10,20,20,.06);
-    --shadow-hover:0 10px 28px rgba(10,20,20,.10);
+    --shadow-card: 0 2px 14px rgba(27,46,60,.06);
+    --shadow-hover:0 10px 28px rgba(27,46,60,.10);
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 html, body { margin: 0; padding: 0; }
 body {
-    font-family: 'Montserrat', system-ui, -apple-system, Arial, sans-serif;
+    font-family: var(--ff-cuerpo);
     background: var(--bg-page);
     color: var(--dark);
     font-size: 15px;
@@ -57,9 +77,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-a { color: var(--teal); text-decoration: none; }
+a { color: var(--teal-ink); text-decoration: none; }
 a:hover { text-decoration: underline; }
-em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta); }
+em { font-family: var(--ff-cuerpo); font-style: italic; color: var(--cta-dark); }
 
 /* ── NAV (sticky) ──────────────────────────────── */
 .cg-nav {
@@ -80,18 +100,19 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-nav-brand:hover { text-decoration: none; }
 /* Sección "Monitor del Plan de Gobierno" — referencia al producto, junto a la marca CiGob. */
 .cg-nav-producto {
+    font-family: var(--ff-ui);
     display: flex; align-items: center; align-self: stretch;
     padding-left: 14px; border-left: 1px solid var(--bd);
     font-weight: 800; font-size: 14px; color: var(--dark);
     letter-spacing: -.01em; text-decoration: none;
 }
-.cg-nav-producto:hover { color: var(--teal); text-decoration: none; }
+.cg-nav-producto:hover { color: var(--teal-ink); text-decoration: none; }
 /* Mes de la edición junto al nombre del producto (entrega mensual) */
 .cg-nav-mes {
     margin-left: 10px; padding-left: 10px; border-left: 1px solid var(--bd);
     font-weight: 600; font-size: 12px; color: var(--muted); letter-spacing: 0;
 }
-.cg-nav-producto:hover .cg-nav-mes { color: var(--teal); }
+.cg-nav-producto:hover .cg-nav-mes { color: var(--teal-ink); }
 @media (max-width: 760px) { .cg-nav-producto { display: none; } }
 /* Logo CiGob — imagen oficial (256×77 RGBA, dos círculos azul+verde
    + texto blanco "CiGob"). El texto es blanco así que necesita fondo
@@ -104,7 +125,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     padding: 6px 12px;
     background: var(--teal);
     border-radius: 9px;
-    box-shadow: 0 4px 12px rgba(73,152,219,.25);
+    box-shadow: 0 4px 12px rgba(61,154,209,.25);
 }
 .cg-nav-logo img {
     height: 100%; width: auto; display: block;
@@ -117,10 +138,10 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     width: 36px; height: 36px; padding: 0;
     justify-content: center; color: #fff;
     font-weight: 800; font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--ff-marca);
 }
 .cg-nav-titles { display: flex; flex-direction: column; }
-.cg-nav-title { font-weight: 800; color: var(--dark); font-size: 15px; line-height: 1.1; }
+.cg-nav-title { font-family: var(--ff-marca); font-weight: 700; color: var(--dark); font-size: 15px; line-height: 1.1; }
 .cg-nav-sub   { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
 /* Marca CiGob del header (cigob.org): ícono de anillos limpio + wordmark
@@ -131,15 +152,15 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-nav .cg-nav-title { font-size: 27px; line-height: 1; letter-spacing: -.015em; }
 .cg-nav .cg-nav-sub   { color: var(--dark); font-weight: 700; font-size: 11px; margin-top: 1px; letter-spacing: .01em; }
 .cg-nav-links { display: flex; gap: 22px; }
-.cg-nav-links a { color: var(--dark); font-weight: 700; font-size: 13px; }
-.cg-nav-links a:hover { color: var(--teal); text-decoration: none; }
+.cg-nav-links a { font-family: var(--ff-ui); color: var(--dark); font-weight: 600; font-size: 13px; }
+.cg-nav-links a:hover { color: var(--teal-ink); text-decoration: none; }
 @media (max-width: 720px) { .cg-nav-links { display: none; } }
 
 /* ── HERO ─────────────────────────────────────── */
 .cg-hero {
     background:
-        radial-gradient(ellipse at top left, rgba(0,99,99,0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at bottom right, rgba(205,122,82,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at top left, rgba(61,154,209,0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(123,191,170,0.10) 0%, transparent 50%),
         linear-gradient(180deg, var(--bg-page) 0%, #fff 100%);
     padding: 64px 24px 56px;
     border-bottom: 1px solid var(--bd-soft);
@@ -150,18 +171,19 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     text-align: center;
 }
 .cg-hero-eyebrow {
+    font-family: var(--ff-ui);
     display: inline-block;
     font-size: 11px; font-weight: 800;
     letter-spacing: .14em; text-transform: uppercase;
-    color: var(--teal);
+    color: var(--teal-ink);
     padding: 6px 14px;
     background: var(--teal-soft);
-    border: 1px solid #B8D4C4;
+    border: 1px solid var(--azul-medio);
     border-radius: 999px;
     margin: 0 0 18px;
 }
 .cg-hero-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--ff-titulo);
     font-weight: 800;
     font-size: clamp(36px, 6vw, 64px);
     line-height: 1.05;
@@ -201,10 +223,12 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     box-shadow: var(--shadow-card);
 }
 .cg-hero-stat-num {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 32px; color: var(--teal); line-height: 1;
+    font-family: var(--ff-dato);
+    font-variant-numeric: tabular-nums;
+    font-size: 32px; color: var(--teal-ink); line-height: 1;
 }
 .cg-hero-stat-lbl {
+    font-family: var(--ff-ui);
     font-size: 11px; font-weight: 700; color: var(--muted);
     text-transform: uppercase; letter-spacing: .06em;
     margin-top: 6px;
@@ -218,6 +242,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-hero-since { font-size: 12px; color: var(--muted); }
 
 .cg-status-pill {
+    font-family: var(--ff-ui);
     display: inline-flex; align-items: center; gap: 8px;
     padding: 6px 14px; border-radius: 999px;
     background: var(--paper);
@@ -228,7 +253,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-status-dot {
     width: 8px; height: 8px; border-radius: 50%;
     background: var(--muted);
-    box-shadow: 0 0 0 3px rgba(107,115,112,.12);
+    box-shadow: 0 0 0 3px rgba(94,122,138,.14);
 }
 .cg-status-pill.is-signed .cg-status-dot { background: var(--verde); box-shadow: 0 0 0 3px rgba(22,163,74,.18); animation: pulse 2.5s ease-in-out infinite; }
 .cg-status-pill.is-draft  .cg-status-dot { background: var(--amarillo); box-shadow: 0 0 0 3px rgba(202,138,4,.18); }
@@ -246,12 +271,13 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-section { margin-top: 56px; }
 .cg-section-head { margin-bottom: 22px; }
 .cg-eyebrow {
+    font-family: var(--ff-ui);
     font-size: 11px; font-weight: 800;
     letter-spacing: .12em; text-transform: uppercase;
-    color: var(--teal); margin: 0 0 6px;
+    color: var(--teal-ink); margin: 0 0 6px;
 }
 .cg-h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--ff-titulo);
     font-weight: 800;
     font-size: clamp(26px, 3vw, 34px);
     color: var(--dark);
@@ -340,6 +366,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-cint-sub  { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-top: 2px; }
 
 .cg-verdict {
+    font-family: var(--ff-ui);
     flex-shrink: 0;
     display: inline-flex; align-items: center; gap: 6px;
     padding: 5px 11px; border-radius: 999px;
@@ -422,7 +449,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-genoma-seg:focus-visible + .cg-genoma-tip { opacity: 1; transform: translateY(0); }
 .cg-genoma-tip-head { display: block; font-weight: 700; }
 .cg-genoma-tip-desc { display: block; margin-top: 3px; color: var(--muted); font-size: 10.5px; }
-.cg-genoma-tip-cta  { display: block; margin-top: 5px; font-size: 9.5px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: .05em; }
+.cg-genoma-tip-cta  { display: block; margin-top: 5px; font-size: 9.5px; font-weight: 700; color: var(--teal-ink); text-transform: uppercase; letter-spacing: .05em; }
 .cg-genoma-cap { font-size: 10px; color: var(--muted); margin-bottom: 6px; letter-spacing: .01em; }
 .cg-genoma-cap--solo { margin: 12px 0 3px; }
 /* Notas de origen de contenido generado (bluf, watchlist, evolución) */
@@ -460,9 +487,9 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     color: var(--muted-soft); font-size: 12px;
     opacity: 0; transition: opacity .12s;
 }
-.cg-ind:hover .cg-ind-name::after { opacity: 1; color: var(--teal); }
+.cg-ind:hover .cg-ind-name::after { opacity: 1; color: var(--teal-ink); }
 .cg-ind-value {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--ff-dato);
     font-variant-numeric: tabular-nums;
     font-weight: 700;
     white-space: nowrap;
@@ -505,6 +532,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     margin-bottom: 20px;
 }
 .cg-chart-title {
+    font-family: var(--ff-titulo);
     font-size: 16px; font-weight: 800; color: var(--dark);
     margin: 0 0 4px; letter-spacing: -0.005em;
 }
@@ -549,7 +577,8 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     margin-top: 8px;
 }
 .cg-chart-mini-now {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--ff-dato);
+    font-variant-numeric: tabular-nums;
     font-size: 20px; font-weight: 700; color: var(--dark);
 }
 .cg-chart-mini-now .unit { font-size: 12px; color: var(--muted); font-weight: 500; margin-left: 4px; }
@@ -569,7 +598,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-spark-dot.amarillo { fill: var(--amarillo); }
 .cg-spark-dot.rojo     { fill: var(--rojo); }
 .cg-spark-grid  { stroke: var(--bd-soft); stroke-width: 1; stroke-dasharray: 2 4; }
-.cg-spark-axis  { fill: var(--muted); font-size: 10px; font-family: 'JetBrains Mono', monospace; }
+.cg-spark-axis  { fill: var(--muted); font-size: 10px; font-family: var(--ff-dato); font-variant-numeric: tabular-nums; }
 
 /* ── Panels (tensión + recs) ─────────────────── */
 .cg-twocol {
@@ -584,6 +613,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     box-shadow: var(--shadow-card);
 }
 .cg-panel h3 {
+    font-family: var(--ff-titulo);
     font-size: 16px; font-weight: 800; color: var(--dark);
     margin: 0 0 12px; letter-spacing: -0.005em;
 }
@@ -631,6 +661,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-rec-title { font-weight: 700; color: var(--dark); margin: 0 0 3px; line-height: 1.4; }
 .cg-rec-meta  { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .cg-rec-pill {
+    font-family: var(--ff-ui);
     font-size: 10px; font-weight: 700;
     padding: 2px 9px; border-radius: 999px;
     background: #fff; color: var(--muted);
@@ -639,7 +670,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 }
 .cg-rec-pill--critica { background: var(--rojo-soft);     color: #7F1D1D; border-color: #FECACA; }
 .cg-rec-pill--alta    { background: var(--amarillo-soft); color: #713F12; border-color: #FDE68A; }
-.cg-rec-pill--media   { background: var(--teal-soft);     color: #0F4A48; border-color: #B8D4C4; }
+.cg-rec-pill--media   { background: var(--teal-soft);     color: var(--azul-profundo); border-color: var(--azul-medio); }
 .cg-rec-pill--baja    { background: var(--bg-page);       color: var(--muted); }
 
 /* ── ARCHIVO ──────────────────────────────────── */
@@ -660,7 +691,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 }
 .cg-archive-card.current {
     border-color: var(--teal);
-    box-shadow: 0 4px 18px rgba(0,99,99,.12);
+    box-shadow: 0 4px 18px rgba(61,154,209,.16);
 }
 .cg-archive-card.current::after {
     content: 'Actual';
@@ -672,7 +703,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 }
 .cg-archive-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
 .cg-archive-period {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--ff-titulo);
     font-weight: 700;
     font-size: 22px; color: var(--dark); line-height: 1.1;
 }
@@ -701,6 +732,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-archive-score.rojos-5 { background: var(--rojo-soft);     color: #7F1D1D; border-color: #FECACA; }
 .cg-archive-actions { margin-left: auto; display: flex; gap: 6px; }
 .cg-archive-btn {
+    font-family: var(--ff-ui);
     display: inline-flex; align-items: center; gap: 5px;
     padding: 6px 12px;
     background: var(--paper); border: 1px solid var(--bd);
@@ -731,9 +763,9 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 }
 @media (max-width: 560px) { .cg-method { padding: 24px 18px; } }
 .cg-method article h3 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--ff-titulo);
     font-weight: 700;
-    font-size: 19px; color: var(--teal);
+    font-size: 19px; color: var(--teal-ink);
     margin: 0 0 8px;
 }
 .cg-method article p {
@@ -746,52 +778,54 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-sources ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 30px; }
 @media (max-width: 720px) { .cg-sources ul { columns: 1; } }
 .cg-sources li { padding: 4px 0; font-size: 12.5px; color: var(--muted); }
-.cg-sources li::before { content: '· '; color: var(--teal); font-weight: 700; }
+.cg-sources li::before { content: '· '; color: var(--teal-ink); font-weight: 700; }
 
 /* ── FOOTER ───────────────────────────────────── */
 .cg-foot {
     background: var(--dark);
-    color: #C9D1CF;
+    color: var(--linea);
     margin-top: 60px;
     padding: 50px 24px 22px;
 }
 .cg-foot-inner {
     max-width: 1280px; margin: 0 auto;
     display: grid; grid-template-columns: 1fr 2fr; gap: 36px;
-    padding-bottom: 30px; border-bottom: 1px solid #1F2A28;
+    padding-bottom: 30px; border-bottom: 1px solid var(--tinta-media);
 }
 @media (max-width: 880px) { .cg-foot-inner { grid-template-columns: 1fr; } }
 .cg-foot-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
 .cg-foot-brand:hover { text-decoration: none; }
 .cg-foot-logo { display: inline-flex; align-items: center; height: 46px; }
 .cg-foot-logo img { height: 100%; width: auto; display: block; max-height: 46px; }
-.cg-foot-brand strong { display: block; color: #fff; font-size: 24px; font-weight: 800; line-height: 1; letter-spacing: -.015em; }
-.cg-foot-brand span   { display: block; color: #9CA39F; font-size: 12px; margin-top: 3px; }
-.cg-foot-brand .cg-foot-prod { color: #DCE3E1; font-weight: 700; font-size: 13px; margin-top: 4px; }
+.cg-foot-brand strong { display: block; font-family: var(--ff-marca); color: var(--blanco); font-size: 24px; font-weight: 700; line-height: 1; letter-spacing: -.015em; }
+.cg-foot-brand span   { display: block; color: var(--tinta-tenue); font-size: 12px; margin-top: 3px; }
+.cg-foot-brand .cg-foot-prod { color: var(--azul-medio); font-weight: 700; font-size: 13px; margin-top: 4px; }
 .cg-foot-brand:hover strong { color: #fff; }
-.cg-foot-brand:hover .cg-foot-prod { color: var(--teal); }
+.cg-foot-brand:hover .cg-foot-prod { color: var(--teal-ink); }
 .cg-foot-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 @media (max-width: 720px) { .cg-foot-cols { grid-template-columns: 1fr; } }
 .cg-foot-cols h4 {
+    font-family: var(--ff-ui);
     font-size: 11px; font-weight: 800;
     text-transform: uppercase; letter-spacing: .12em;
     color: var(--cta); margin: 0 0 10px;
 }
 .cg-foot-cols a {
+    font-family: var(--ff-ui);
     display: block; padding: 4px 0;
-    color: #C9D1CF; font-size: 13px;
+    color: var(--linea); font-size: 13px;
 }
 .cg-foot-cols a:hover { color: #fff; text-decoration: none; }
-.cg-foot-cols p { margin: 0; color: #9CA39F; font-size: 13px; line-height: 1.5; }
+.cg-foot-cols p { margin: 0; color: var(--tinta-tenue); font-size: 13px; line-height: 1.5; }
 .cg-foot-legal {
     max-width: 1280px; margin: 22px auto 0;
-    font-size: 11px; color: #6B7370; text-align: center;
+    font-size: 11px; color: var(--tinta-tenue); text-align: center;
 }
 
 /* ── MODAL gráfico expandido ──────────────────── */
 .cg-modal {
     position: fixed; inset: 0;
-    background: rgba(10,20,20,.6);
+    background: rgba(27,46,60,.55);
     backdrop-filter: blur(4px);
     z-index: 60;
     padding: 20px;
@@ -806,7 +840,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     padding: 36px 40px 32px;
     max-width: 760px; width: 100%;
     max-height: 90vh; overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(10,20,20,.3);
+    box-shadow: 0 20px 60px rgba(27,46,60,.30);
     position: relative;
 }
 .cg-modal-close {
@@ -821,7 +855,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 }
 .cg-modal-close:hover { background: var(--rojo); color: #fff; border-color: var(--rojo); }
 .cg-modal-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--ff-titulo);
     font-weight: 700;
     font-size: 28px; color: var(--dark);
     margin: 4px 0;
@@ -838,7 +872,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 /* La altura del gráfico la fija ApexCharts (260px); el contenedor la envuelve. */
 .cg-chart-modal .apexcharts-canvas { margin: 0 auto; }
 /* Tooltip de ApexCharts alineado a la tipografía CiGob */
-.apexcharts-tooltip { font-family: 'Montserrat', sans-serif !important; box-shadow: 0 6px 20px rgba(10,20,20,.12) !important; border: 1px solid var(--bd) !important; }
+.apexcharts-tooltip { font-family: var(--ff-ui) !important; box-shadow: 0 6px 20px rgba(27,46,60,.12) !important; border: 1px solid var(--bd) !important; }
 .apexcharts-tooltip-title { font-weight: 800 !important; background: var(--paper) !important; border-bottom: 1px solid var(--bd-soft) !important; }
 .cg-modal-table {
     width: 100%; border-collapse: collapse;
@@ -846,6 +880,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     margin-top: 16px;
 }
 .cg-modal-table thead th {
+    font-family: var(--ff-ui);
     text-align: left; padding: 8px 10px;
     font-size: 10px; font-weight: 800;
     color: var(--muted); text-transform: uppercase; letter-spacing: .06em;
@@ -856,13 +891,14 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     padding: 10px;
     border-bottom: 1px solid var(--bd-soft);
 }
-.cg-modal-table tbody td:last-child { text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+.cg-modal-table tbody td:last-child { text-align: right; font-family: var(--ff-dato); font-variant-numeric: tabular-nums; font-weight: 700; }
 .cg-modal-table tbody tr:last-child td { border-bottom: none; }
 .cg-modal-csv {
+    font-family: var(--ff-ui);
     margin-top: 18px;
     display: inline-flex; align-items: center; gap: 7px;
     padding: 9px 16px;
-    background: #fff; color: var(--teal);
+    background: #fff; color: var(--teal-ink);
     border: 1px solid var(--teal); border-radius: 999px;
     font-size: 12.5px; font-weight: 700; letter-spacing: .02em;
     cursor: pointer;
@@ -874,7 +910,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 /* ── Overlay error / empty ────────────────────── */
 .cg-overlay {
     position: fixed; inset: 0;
-    background: rgba(10,20,20,.55);
+    background: rgba(27,46,60,.55);
     z-index: 50;
 }
 .cg-overlay[hidden] { display: none !important; }
@@ -884,12 +920,13 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-overlay-card {
     background: #fff; border-radius: 14px;
     padding: 26px 30px;
-    box-shadow: 0 16px 48px rgba(10,20,20,.25);
+    box-shadow: 0 16px 48px rgba(27,46,60,.25);
     max-width: 420px; text-align: center;
 }
 .cg-overlay h3 { margin: 0 0 8px; color: var(--rojo); font-size: 18px; }
 .cg-overlay p  { margin: 0 0 16px; color: var(--muted); font-size: 13.5px; line-height: 1.55; }
 .cg-overlay button {
+    font-family: var(--ff-ui);
     background: var(--teal); color: #fff;
     border: 0; padding: 10px 22px;
     border-radius: 10px; font-weight: 700; font-size: 13px;
