@@ -1,0 +1,98 @@
+/* ═══════════════════════════════════════════════════════════════════
+   TOKENS DE MARCA — CiGob
+   Fuente: "260821 Manual de Marca Web.docx" (21-ago-2026).
+
+   Este archivo es la marca y NADA MÁS que la marca: los nueve colores y
+   las cinco familias que el manual define, más un puñado de derivados
+   que el manual no cubre y que están marcados como tales.
+
+   Lo carga `Layout.astro` ANTES de dashboard.css, que mapea contra estos
+   tokens sus propias variables históricas (--teal, --cta, --dark…). Por
+   eso alcanza con tocar acá para mover el color de todo el informe.
+
+   Si agregás este archivo a algún lado, acordate de `tools/emitir-artifact.mjs`:
+   su lista de hojas es explícita y un CSS que no esté ahí sale del artifact
+   con los var() sin definir.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* ── 1. Identidad cromática ─────────────────────────────────────
+       Los nueve valores del manual, textuales. No se editan sin que
+       cambie el manual. */
+
+    /* Gama azul (principal) */
+    --azul:            #3D9AD1;   /* base */
+    --azul-oscuro:     #2878AB;
+    --azul-profundo:   #1A4F72;
+    --azul-palido:     #E8F4FB;   /* fondo */
+    --azul-medio:      #C8E5F4;   /* fondo / bordes */
+
+    /* Gama verde (secundaria) */
+    --verde-marca:     #7BBFAA;   /* base — `--verde` ya es el semáforo */
+    --verde-oscuro:    #5A9D87;
+    --verde-profundo:  #2D6655;
+    --verde-palido:    #EEF7F3;
+    --verde-medio:     #C4E5D9;
+
+    /* Gama neutra */
+    --tinta:           #1B2E3C;   /* lectura principal */
+    --tinta-suave:     #5E7A8A;   /* cuerpos de texto */
+    --blanco:          #FFFFFF;
+    --fondo-limpio:    #F6FAFB;
+
+    /* Derivados — NO están en el manual. Existen porque el informe tiene
+       jerarquías que una landing no tiene (bordes de card, texto terciario,
+       fondos de hover). Todos salen de la gama neutra; cualquier color
+       nuevo va acá y se documenta en una línea. */
+    --tinta-media:     #2A4356;   /* un escalón sobre la tinta principal */
+    --tinta-tenue:     #8FA6B2;   /* texto terciario, unidades, ticks */
+    --linea:           #D8E6ED;   /* bordes y separadores */
+    --linea-suave:     #EAF2F6;   /* separadores internos */
+    --fondo-hover:     #FAFDFE;   /* tint de hover sobre blanco */
+
+    /* ── 2. Sistema tipográfico ─────────────────────────────────────
+       Cada familia tiene UNA función exclusiva. El manual es explícito
+       en que no se intercambian, así que el CSS no las nombra directo:
+       nombra el rol. */
+
+    /* Garet Bold — exclusiva del logotipo "CiGob", la barra de navegación
+       y la firma del pie. NO está en Google Fonts (es comercial): hasta
+       tener el archivo con licencia web, el stack de reserva sostiene la
+       forma geométrica. Ver public/fuentes/LEEME.md. */
+    --ff-marca:  'Garet', 'Avenir Next', 'Century Gothic', 'Trebuchet MS', sans-serif;
+
+    /* Lora — títulos H1/H2 y encabezados de sección. */
+    --ff-titulo: 'Lora', Georgia, Cambria, 'Times New Roman', serif;
+
+    /* Lato — cuerpos de texto y párrafos generales. */
+    --ff-cuerpo: 'Lato', system-ui, -apple-system, 'Segoe UI', Helvetica, sans-serif;
+
+    /* Inter — interfaz: botones, menús, etiquetas, píldoras. */
+    --ff-ui:     'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, sans-serif;
+
+    /* Work Sans — datos empíricos, métricas e indicadores. En el informe
+       le tocan los valores de los índices, los números de las cards y las
+       celdas numéricas de las tablas. */
+    --ff-dato:   'Work Sans', system-ui, -apple-system, 'Segoe UI', Helvetica, sans-serif;
+
+    /* Monoespaciada: NO es una familia de marca. Queda reservada al código
+       literal de las fichas (nombres de campo, snippets), donde el ancho
+       fijo es semántico y no decorativo. Stack del sistema: no descarga. */
+    --ff-mono:   ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+/* Work Sans es proporcional; JetBrains Mono, que ocupaba este rol antes, era
+   de ancho fijo. Sin tabular-nums las columnas de números bailan al cambiar
+   de valor y las tablas dejan de alinear. Se pide en el mismo lugar donde se
+   pide la familia — ver dashboard.css/overrides.css. */
+
+/* Garet: se serviría desde el propio sitio. Mientras el .woff2 no esté,
+   `font-display: swap` deja el stack de reserva y no se rompe nada; el
+   @font-face que apunta a un archivo ausente es inerte, no es un error. */
+@font-face {
+    font-family: 'Garet';
+    src: url('/fuentes/garet-bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}

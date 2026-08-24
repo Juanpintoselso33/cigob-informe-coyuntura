@@ -5,8 +5,11 @@ import ApexCharts from "apexcharts";
 const NF = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 2 });
 const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
 
-const FONT = "Montserrat, system-ui, sans-serif";
-const COL = { muted: "#9CA39F", grid: "#ECE6DA", dark: "#1F2A28", zero: "#C9C2B4" };
+// Tipografía y neutros del Manual de Marca (ver public/marca.css). Un gráfico
+// es dato empírico de punta a punta —ejes, rótulos, leyendas—, así que le
+// toca Work Sans. Los cuatro neutros salen de la gama neutra del manual.
+const FONT = "'Work Sans', system-ui, sans-serif";
+const COL = { muted: "#5E7A8A", grid: "#D8E6ED", dark: "#1B2E3C", zero: "#8FA6B2" };
 
 // Color por slug de cinturón (coincide con --c-* de dashboard.css).
 export const COLOR_CINTURON: Record<string, string> = {
@@ -14,7 +17,7 @@ export const COLOR_CINTURON: Record<string, string> = {
   gestion: "#4338CA",
 };
 export function colorDe(slug?: string): string {
-  return (slug && COLOR_CINTURON[slug]) || "#4998DB";
+  return (slug && COLOR_CINTURON[slug]) || "#3D9AD1";
 }
 
 export interface Punto { fecha: string; valor: number; }
@@ -57,7 +60,7 @@ function esMensual(serie: Punto[]): boolean {
 
 // Gráfico de línea/área para una serie temporal, con tooltip en hover.
 export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string; indicador?: string } = {}) {
-  const color = opts.color ?? "#4998DB";
+  const color = opts.color ?? "#3D9AD1";
   const vals = serie.map(p => p.valor);
   const cruzaCero = Math.min(...vals) < 0 && Math.max(...vals) > 0;
   const xfmt = esMensual(serie) ? "MMM yyyy" : "dd MMM yy";
@@ -135,8 +138,9 @@ export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: strin
 // tonos suaves. `refY` dibuja una referencia horizontal punteada con rótulo.
 export function multiTimeChart(el: HTMLElement, series: { nombre: string; puntos: Punto[] }[],
                                opts: { color?: string; unidad?: string; refY?: number; refLabel?: string } = {}) {
-  const color = opts.color ?? "#4998DB";
-  const SUAVES = ["#3E9486", "#C9A227", "#8A8F98"];
+  const color = opts.color ?? "#3D9AD1";
+    // Acompañantes de las series secundarias, dentro de las dos gamas del manual.
+  const SUAVES = ["#5A9D87", "#8FA6B2", "#2D6655"];
   const chart = new ApexCharts(el, {
     chart: { type: "line", height: 280, width: "100%", fontFamily: FONT,
              toolbar: { show: false }, zoom: { enabled: false }, animations: { enabled: true, speed: 450 } },
@@ -171,7 +175,7 @@ export function multiTimeChart(el: HTMLElement, series: { nombre: string; puntos
 export function dualTimeChart(el: HTMLElement, a: { nombre: string; puntos: Punto[]; unidad?: string },
                               b: { nombre: string; puntos: Punto[]; unidad?: string },
                               opts: { color?: string; ejeBInvertido?: boolean } = {}) {
-  const color = opts.color ?? "#3E9486";
+  const color = opts.color ?? "#5A9D87";
   const fmt = (s: { unidad?: string }) => (v: number) =>
     `${NF.format(v)}${s.unidad ? ` ${s.unidad}` : ""}`;
   const chart = new ApexCharts(el, {
@@ -181,7 +185,7 @@ export function dualTimeChart(el: HTMLElement, a: { nombre: string; puntos: Punt
       { name: a.nombre, data: a.puntos.map(p => ({ x: aTimestamp(p.fecha), y: p.valor })) },
       { name: b.nombre, data: b.puntos.map(p => ({ x: aTimestamp(p.fecha), y: p.valor })) },
     ],
-    colors: [color, "#64748B"],
+    colors: [color, "#5E7A8A"],
     stroke: { curve: "smooth", width: [3, 1.8] },
     dataLabels: { enabled: false },
     markers: { size: 0, hover: { size: 5 }, strokeColors: "#fff" },
@@ -197,7 +201,7 @@ export function dualTimeChart(el: HTMLElement, a: { nombre: string; puntos: Punt
       // eje de la externa se invierte — las curvas co-mueven visualmente como
       // en la tarjeta, pero el tooltip muestra el valor real.
       { seriesName: b.nombre, opposite: true, reversed: !!opts.ejeBInvertido,
-        labels: { formatter: fmt(b), style: { colors: "#64748B", fontSize: "11px" } } },
+        labels: { formatter: fmt(b), style: { colors: "#5E7A8A", fontSize: "11px" } } },
     ],
     grid: { borderColor: COL.grid, strokeDashArray: 4, xaxis: { lines: { show: false } },
             padding: { left: 8, right: 8, top: 0 } },
@@ -217,7 +221,7 @@ export function distChart(el: HTMLElement,
                                p05: number; p95: number; valor: number;
                                n_draws: number; base100?: boolean },
                           opts: { color?: string } = {}) {
-  const color = opts.color ?? "#3E9486";
+  const color = opts.color ?? "#5A9D87";
   const n = d.hist.length;
   const bw = (d.hist_max - d.hist_min) / n;
   const puntos = d.hist.map((c, i) => ({
@@ -231,7 +235,7 @@ export function distChart(el: HTMLElement,
   });
   const anotaciones: any[] = [
     anot(d.p05, `p05 · ${NF.format(d.p05)}`, COL.muted, 4),
-    anot(d.valor, `valor · ${NF.format(d.valor)}`, "#1F2937"),
+    anot(d.valor, `valor · ${NF.format(d.valor)}`, "#1B2E3C"),
     anot(d.p95, `p95 · ${NF.format(d.p95)}`, COL.muted, 4),
   ];
   if (d.base100 && 100 >= d.hist_min && 100 <= d.hist_max) {
@@ -265,7 +269,7 @@ export function distChart(el: HTMLElement,
 
 // Mini gráfico (sparkline con tooltip) para las cards de la home.
 export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string } = {}) {
-  const color = opts.color ?? "#4998DB";
+  const color = opts.color ?? "#3D9AD1";
   const chart = new ApexCharts(el, {
     chart: { type: "area", height: 92, sparkline: { enabled: true }, fontFamily: FONT, animations: { enabled: true, speed: 400 } },
     series: [{ name: opts.nombre ?? "Valor", data: serie.map(p => ({ x: aTimestamp(p.fecha), y: p.valor })) }],
@@ -283,7 +287,7 @@ export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: stri
 // Medidor radial para indicadores sin serie temporal. `fill` (0–100) define cuánto
 // se llena el arco; `centerText` el número del centro (si no, "fill%").
 export function gaugeChart(el: HTMLElement, fill: number, opts: { color?: string; label?: string; centerText?: string } = {}) {
-  const color = opts.color ?? "#4998DB";
+  const color = opts.color ?? "#3D9AD1";
   const chart = new ApexCharts(el, {
     chart: { type: "radialBar", height: 260, width: "100%", fontFamily: FONT },
     series: [Math.max(0, Math.min(100, fill))],
@@ -305,7 +309,7 @@ export function gaugeChart(el: HTMLElement, fill: number, opts: { color?: string
 
 // Barras horizontales para descomponer un indicador en sus componentes.
 export function barChart(el: HTMLElement, items: { nombre: string; valor: number }[], opts: { color?: string; unidad?: string } = {}) {
-  const color = opts.color ?? "#4998DB";
+  const color = opts.color ?? "#3D9AD1";
   const chart = new ApexCharts(el, {
     chart: { type: "bar", height: 260, width: "100%", fontFamily: FONT, toolbar: { show: false } },
     series: [{ name: "Valor", data: items.map(i => +Number(i.valor).toFixed(2)) }],
