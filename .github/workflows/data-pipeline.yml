@@ -181,7 +181,6 @@ jobs:
                   projects/informe_coyuntura/data/vida/carnes_total_serie.json \
                   projects/informe_coyuntura/data/vida/sentimiento_serie.json \
                   projects/informe_coyuntura/data/vida/ivi_serie.json \
-                  projects/informe_coyuntura/data/vida/motos_serie.json \
                   projects/informe_coyuntura/data/vida/snic_serie.json \
                   projects/informe_coyuntura/data/vida/intencion_migratoria_serie.json \
                   projects/informe_coyuntura/data/vida/componente_b_migracion.json \
@@ -192,7 +191,11 @@ jobs:
                   projects/informe_coyuntura/data/politica/cohesion_bloque_diputados_actas_cache.json \
                   projects/informe_coyuntura/data/politica/id_maximo_diputados.json \
                   projects/informe_coyuntura/data/politica/gabinete_salidas.json \
-                  projects/informe_coyuntura/data/politica/gabinete_decretos_cache.json
+                  projects/informe_coyuntura/data/politica/gabinete_decretos_cache.json \
+                  projects/informe_coyuntura/data/politica/cohesion_bloque_serie.json \
+                  projects/informe_coyuntura/data/politica/cohesion_bloque_senado_serie.json \
+                  projects/informe_coyuntura/data/politica/alineamiento_senadores_serie.json \
+                  projects/informe_coyuntura/data/vida/pobreza_nowcast_serie.json
           if git diff --staged --quiet; then
             echo "::notice::Sin cambios en datos — no se commitea."
           else
