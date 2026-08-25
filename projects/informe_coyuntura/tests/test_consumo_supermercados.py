@@ -52,10 +52,17 @@ IND = VIDA["indicadores"]["consumo_supermercados"]
 CLAVE = "consumo_supermercados"
 
 
-def _respuesta(filas):
+UNITS_REALES = "Índice base 2017=100"
+
+
+def _respuesta(filas, units=UNITS_REALES):
+    """Respuesta de la API con metadatos: la base la declara la fuente y el
+    colector la lee de ahí (ADR-0243), así que sin `meta` no hay card."""
+    meta = ([{"field": {"units": units}}] if units is not None else [])
+
     class R:
         def raise_for_status(self): pass
-        def json(self): return {"data": filas}
+        def json(self): return {"data": filas, "meta": meta}
     return types.SimpleNamespace(get=lambda *a, **k: R())
 
 
@@ -109,7 +116,9 @@ def test_con_la_base_completa_devuelve_el_ultimo_punto():
     _col.requests = _respuesta([["2023-10-01", 100.0], ["2023-11-01", 102.0],
                                 ["2023-12-01", 98.0], ["2024-01-01", 91.5]])
     d = _col.fetch_consumo_supermercados()
-    assert d["consumo_supermercados"] == {"valor": 91.5, "fecha": "2024-01"}
+    assert d["consumo_supermercados"] == {
+        "valor": 91.5, "fecha": "2024-01", "anio_base": 2017,
+        "unidad": "índice (2017 = 100, desestacionalizado)"}
     assert len(d["serie"]) == 4
 
 
@@ -199,3 +208,86 @@ def test_la_matriz_cruzada_no_se_contrasta_contra_un_componente():
     assert fila["propio"] == "volumen_hogar"
     externas = dict(SNAPSHOT["validacion_cruzada"]["externas"])
     assert "supermercado" not in externas["volumen_hogar"].lower()
+
+
+# ── 6 · La base y las revisiones (ADR-0243) ─────────────────────────────────
+# La card rotulaba «índice (2004 = 100)». La Encuesta de Supermercados vigente
+# usa base 2017=100 y la serie ni siquiera tiene puntos antes de enero de 2017:
+# el rótulo no describía nada. Sobrevivió porque era un literal repetido en
+# tres archivos y no había contra qué compararlo.
+
+def test_la_base_sale_de_la_fuente_y_no_de_un_literal():
+    _col.requests = _respuesta([["2023-10-01", 100.0], ["2023-11-01", 102.0],
+                                ["2023-12-01", 98.0], ["2024-01-01", 91.5]])
+    d = _col.fetch_consumo_supermercados()["consumo_supermercados"]
+    assert d["anio_base"] == 2017
+    assert "2017 = 100" in d["unidad"]
+
+
+def test_la_base_erronea_no_puede_volver():
+    """2004 no es una base plausible para una serie que empieza en 2017."""
+    _col.requests = _respuesta([["2023-10-01", 100.0], ["2023-11-01", 102.0],
+                                ["2023-12-01", 98.0], ["2024-01-01", 91.5]])
+    d = _col.fetch_consumo_supermercados()["consumo_supermercados"]
+    assert "2004" not in d["unidad"]
+
+
+def test_si_la_fuente_cambia_de_base_el_rotulo_la_sigue():
+    """El punto de leerla: que no haya que acordarse de actualizar el rótulo."""
+    _col.requests = _respuesta(
+        [["2023-10-01", 100.0], ["2023-11-01", 102.0],
+         ["2023-12-01", 98.0], ["2024-01-01", 91.5]],
+        units="Índice base año 2021=100")
+    d = _col.fetch_consumo_supermercados()["consumo_supermercados"]
+    assert d["anio_base"] == 2021
+    assert "2021 = 100" in d["unidad"]
+
+
+def test_sin_base_declarada_el_colector_levanta():
+    """Antes que inventar un rótulo, fallar. El anterior no vino de ningún lado
+    verificable y estuvo publicado igual."""
+    _col.requests = _respuesta([["2023-10-01", 100.0], ["2023-11-01", 102.0],
+                                ["2023-12-01", 98.0]], units="Índice")
+    with pytest.raises(ValueError, match="base"):
+        _col.fetch_consumo_supermercados()
+
+
+def test_una_serie_anterior_a_su_propia_base_levanta():
+    """Si la serie tuviera puntos de antes del año base, la base declarada no
+    es la de esos puntos: hay dos bases empalmadas y el nivel no es comparable."""
+    _col.requests = _respuesta([["2010-01-01", 70.0], ["2023-10-01", 100.0],
+                                ["2023-11-01", 102.0], ["2023-12-01", 98.0]],
+                               units="Índice base 2017=100")
+    with pytest.raises(ValueError, match="base declarada"):
+        _col.fetch_consumo_supermercados()
+
+
+def test_una_revision_del_indec_reemplaza_el_valor_anterior():
+    """El INDEC revisó mayo-2026 de 83,2 a 83,0 al publicar junio.
+
+    El colector pide el histórico entero en cada corrida, así que la revisión
+    entra sola. Lo que este test cuida es que nadie meta un cache o un
+    `setdefault` que conserve la versión vieja: la serie desestacionalizada se
+    recalcula cada mes, y guardar la primera lectura la congelaría."""
+    _col.requests = _respuesta([["2023-10-01", 100.0], ["2023-11-01", 102.0],
+                                ["2023-12-01", 98.0], ["2026-05-01", 83.222]])
+    primera = _col.fetch_consumo_supermercados()
+    assert primera["consumo_supermercados"]["valor"] == 83.2
+
+    _col.requests = _respuesta([["2023-10-01", 100.0], ["2023-11-01", 102.0],
+                                ["2023-12-01", 98.0], ["2026-05-01", 83.0],
+                                ["2026-06-01", 82.1]])
+    segunda = _col.fetch_consumo_supermercados()
+    assert segunda["serie"]["2026-05"] == 83.0, "quedó congelada la lectura vieja"
+    assert segunda["consumo_supermercados"] == {
+        "valor": 82.1, "fecha": "2026-06", "anio_base": 2017,
+        "unidad": "índice (2017 = 100, desestacionalizado)"}
+
+
+def test_el_ultimo_periodo_es_el_ultimo_publicado_no_el_penultimo():
+    """Con junio disponible, la card tiene que ser junio."""
+    _col.requests = _respuesta([["2023-10-01", 100.0], ["2023-11-01", 102.0],
+                                ["2023-12-01", 98.0], ["2026-05-01", 83.0],
+                                ["2026-06-01", 82.1]])
+    d = _col.fetch_consumo_supermercados()["consumo_supermercados"]
+    assert d["fecha"] == "2026-06" and d["valor"] == 82.1

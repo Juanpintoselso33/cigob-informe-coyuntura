@@ -1,0 +1,1042 @@
+{
+  "origen": "web/src/data/informe.json",
+  "sha256_snapshot": "83543334655bfbfef471fd85bf8e1168cd6ccf9922a89a8bf786f14a31c77b62",
+  "generated_at": "2026-08-25T16:11:15.527712-03:00",
+  "period": "2026-08",
+  "score_global": 3.9,
+  "cinturon_dominante": "vida_cotidiana",
+  "cinturones": {
+    "macro": {
+      "score": 3.6,
+      "estado": "en_tension",
+      "parametrica": "itcm",
+      "parametrica_valor": 64.1,
+      "parametrica_banda": "moderadamente_aflojado",
+      "dimensiones": {
+        "estabilidad_monetaria": {
+          "peso": 0.26,
+          "puntaje": 65.3
+        },
+        "viabilidad_fiscal_comercial": {
+          "peso": 0.24,
+          "puntaje": 71.0
+        },
+        "financiamiento": {
+          "peso": 0.16,
+          "puntaje": 61.5
+        },
+        "actividad": {
+          "peso": 0.11,
+          "puntaje": 64.1
+        },
+        "competitividad_externa": {
+          "peso": 0.11,
+          "puntaje": 48.7
+        },
+        "inversion": {
+          "peso": 0.12,
+          "puntaje": 64.9
+        }
+      }
+    },
+    "politica": {
+      "score": 3.3,
+      "estado": "en_tension",
+      "parametrica": "itcp",
+      "parametrica_valor": 67.0,
+      "parametrica_banda": "moderadamente_aflojado",
+      "dimensiones": {
+        "poder_legislativo": {
+          "peso": 0.21,
+          "puntaje": 46.5
+        },
+        "alianzas_territoriales": {
+          "peso": 0.19,
+          "puntaje": 75.8
+        },
+        "cohesion_interna": {
+          "peso": 0.15,
+          "puntaje": 96.7
+        },
+        "conflicto_social": {
+          "peso": 0.1,
+          "puntaje": 71.7
+        },
+        "imagen_voto": {
+          "peso": 0.07,
+          "puntaje": 73.6
+        },
+        "poder_judicial": {
+          "peso": 0.15,
+          "puntaje": 59.4
+        },
+        "sector_privado": {
+          "peso": 0.13,
+          "puntaje": 54.2
+        }
+      }
+    },
+    "vida_cotidiana": {
+      "score": 6.1,
+      "estado": "tensionado",
+      "parametrica": "itvc",
+      "parametrica_valor": 94.6,
+      "parametrica_banda": "deterioro_moderado",
+      "dimensiones": {
+        "ingresos": {
+          "peso": 0.2806,
+          "puntaje": 112.4
+        },
+        "precios": {
+          "peso": 0.25,
+          "puntaje": 101.3
+        },
+        "vulnerabilidad": {
+          "peso": 0.1,
+          "puntaje": 24.7
+        },
+        "empleo": {
+          "peso": 0.2419,
+          "puntaje": 92.5
+        },
+        "percepcion": {
+          "peso": 0.0825,
+          "puntaje": 100.1
+        },
+        "seguridad": {
+          "peso": 0.045,
+          "puntaje": 102.1
+        }
+      }
+    },
+    "gestion": {
+      "score": 2.7,
+      "estado": "estable",
+      "parametrica": "itcg",
+      "parametrica_valor": 73.0,
+      "parametrica_banda": "moderadamente_aflojado",
+      "dimensiones": {
+        "reformas_economicas": {
+          "peso": 0.35,
+          "puntaje": 75.6
+        },
+        "reforma_estado": {
+          "peso": 0.25,
+          "puntaje": 80.8
+        },
+        "reforma_laboral": {
+          "peso": 0.15,
+          "puntaje": 57.9
+        },
+        "privatizaciones_inversion": {
+          "peso": 0.15,
+          "puntaje": 57.5
+        },
+        "social_orden": {
+          "peso": 0.1,
+          "puntaje": 90.6
+        }
+      }
+    }
+  },
+  "n_indicadores": 69,
+  "indicadores": {
+    "adhesion_reformas_provincial": {
+      "cinturon": "politica",
+      "valor": 66.7,
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "alianzas_territoriales",
+      "puntaje_banda": 81.7,
+      "peso_efectivo": 0.057,
+      "aporte_score": 1.8,
+      "semaforo": "verde"
+    },
+    "alineamiento_senadores_prov": {
+      "cinturon": "politica",
+      "valor": 57.0,
+      "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
+      "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
+      "fecha_dato": "2026-08-06",
+      "en_indice": true,
+      "dimension": "alianzas_territoriales",
+      "puntaje_banda": 69.0,
+      "peso_efectivo": 0.057,
+      "aporte_score": 3.1,
+      "semaforo": "verde"
+    },
+    "alquiler_real": {
+      "cinturon": "vida_cotidiana",
+      "valor": 1.47,
+      "unidad": "% m/m alquileres",
+      "fuente": "INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)",
+      "fecha_dato": "2026-07-01",
+      "en_indice": true,
+      "dimension": "precios",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.05,
+      "aporte_score": 10.0,
+      "semaforo": "rojo"
+    },
+    "apertura_comercial": {
+      "cinturon": "gestion",
+      "valor": 6.18,
+      "unidad": "% del intercambio (alícuota efectiva)",
+      "fuente": "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "reformas_economicas",
+      "puntaje_banda": 58.8,
+      "peso_efectivo": 0.14,
+      "aporte_score": 4.1,
+      "semaforo": "amarillo"
+    },
+    "apoyo_empresario": {
+      "cinturon": "politica",
+      "valor": -0.429,
+      "unidad": "saldo de postura (−1 a +1, 12m móviles)",
+      "fuente": "Comunicados de AEA y UIA — codificación CIGOB",
+      "fecha_dato": "2026-08-01",
+      "en_indice": true,
+      "dimension": "sector_privado",
+      "puntaje_banda": 35.7,
+      "peso_efectivo": 0.065,
+      "aporte_score": 6.4,
+      "semaforo": "naranja"
+    },
+    "asistencia_directa": {
+      "cinturon": "gestion",
+      "valor": 100.0,
+      "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
+      "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "social_orden",
+      "puntaje_banda": 100.0,
+      "peso_efectivo": 0.04,
+      "aporte_score": 0.0,
+      "semaforo": "verde"
+    },
+    "bloqueo_sostenido": {
+      "cinturon": "politica",
+      "valor": 33.3,
+      "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
+      "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_banda": 26.6,
+      "peso_efectivo": 0.0252,
+      "aporte_score": 7.3,
+      "semaforo": "naranja"
+    },
+    "brecha_obra_publica": {
+      "cinturon": "politica",
+      "valor": -1.1,
+      "unidad": "pp de brecha (obra pública − privada, 12m)",
+      "fuente": "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
+      "fecha_dato": "2026-09-01",
+      "en_indice": true,
+      "dimension": "sector_privado",
+      "puntaje_banda": 72.8,
+      "peso_efectivo": 0.065,
+      "aporte_score": 2.7,
+      "semaforo": "verde"
+    },
+    "brecha_salario_cbt": {
+      "cinturon": "vida_cotidiana",
+      "valor": 3.87,
+      "unidad": "canastas (RIPTE/CBT)",
+      "fuente": "Sec. Trabajo (RIPTE) + INDEC (CBT)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "ingresos",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.1338,
+      "aporte_score": 2.5,
+      "semaforo": "verde"
+    },
+    "carga_servicio_deuda_hogares": {
+      "cinturon": "vida_cotidiana",
+      "valor": 24.076,
+      "unidad": "% de la masa salarial registrada",
+      "fuente": "BCRA — Informe de Estabilidad Financiera (CDF/MS)",
+      "fecha_dato": "2026-04",
+      "en_indice": true,
+      "dimension": "vulnerabilidad",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.03,
+      "aporte_score": 10.0,
+      "semaforo": "rojo"
+    },
+    "cepo_mulc": {
+      "cinturon": "gestion",
+      "valor": 6.0,
+      "unidad": "% de brecha CCL/mayorista",
+      "fuente": "dolarapi.com — CCL y mayorista (el mayorista replica la referencia A3500 del BCRA)",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "reformas_economicas",
+      "puntaje_banda": 94.0,
+      "peso_efectivo": 0.14,
+      "aporte_score": 0.6,
+      "semaforo": "verde"
+    },
+    "cobertura_judicial": {
+      "cinturon": "politica",
+      "valor": 69.63,
+      "unidad": "% de cargos de juez con juez designado",
+      "fuente": "Ministerio de Justicia — padrón de magistrados, designaciones y renuncias (datos.jus.gob.ar)",
+      "fecha_dato": "2026-08-01",
+      "en_indice": true,
+      "dimension": "poder_judicial",
+      "puntaje_banda": 51.6,
+      "peso_efectivo": 0.06,
+      "aporte_score": 4.8,
+      "semaforo": "amarillo"
+    },
+    "cohesion_bloque": {
+      "cinturon": "politica",
+      "valor": 99.8,
+      "unidad": "% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)",
+      "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
+      "fecha_dato": "2026-08-06",
+      "en_indice": true,
+      "dimension": "cohesion_interna",
+      "puntaje_banda": 96.7,
+      "peso_efectivo": 0.15,
+      "aporte_score": 0.3,
+      "semaforo": "verde"
+    },
+    "concesiones_infraestructura": {
+      "cinturon": "gestion",
+      "valor": 28.7,
+      "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
+      "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "privatizaciones_inversion",
+      "puntaje_banda": 44.6,
+      "peso_efectivo": 0.03,
+      "aporte_score": 5.5,
+      "semaforo": "amarillo"
+    },
+    "conflictividad_nacional": {
+      "cinturon": "politica",
+      "valor": -24.1,
+      "unidad": "% vs 2023",
+      "fuente": "ACLED — agregado semanal por provincia (acleddata.com)",
+      "fecha_dato": "2026-07-01",
+      "en_indice": true,
+      "dimension": "conflicto_social",
+      "puntaje_banda": 52.9,
+      "peso_efectivo": 0.06,
+      "aporte_score": 4.7,
+      "semaforo": "amarillo"
+    },
+    "consumo_carnes_total": {
+      "cinturon": "vida_cotidiana",
+      "valor": 114.45,
+      "unidad": "kg/hab/año",
+      "fuente": "SAGYP — tablero de consumo per cápita de carnes (nivel) · INDEC — faena de vacunos, porcinos y aves (evolución del índice)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "ingresos",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.0088,
+      "aporte_score": 6.0,
+      "semaforo": "amarillo"
+    },
+    "consumo_supermercados": {
+      "cinturon": "vida_cotidiana",
+      "valor": 83.2,
+      "unidad": "índice (2004 = 100, desestacionalizado)",
+      "fuente": "INDEC — Encuesta de supermercados (ventas a precios constantes)",
+      "fecha_dato": "2026-05-01",
+      "en_indice": true,
+      "dimension": "ingresos",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.0561,
+      "aporte_score": 6.8,
+      "semaforo": "naranja"
+    },
+    "costo_financiamiento_tesoro": {
+      "cinturon": "macro",
+      "valor": 8.07,
+      "unidad": "% real anual (TIREA vs. inflación esperada REM)",
+      "fuente": "Sec. de Finanzas — colocaciones de deuda + BCRA (REM)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "financiamiento",
+      "puntaje_banda": 78.9,
+      "peso_efectivo": 0.04,
+      "aporte_score": 2.1,
+      "semaforo": "verde"
+    },
+    "credito_privado": {
+      "cinturon": "macro",
+      "valor": 2.5,
+      "unidad": "% i.a. real",
+      "fuente": "BCRA (préstamos al sector privado, var. 26) + IPC INDEC",
+      "fecha_dato": "2026-07-01",
+      "en_indice": true,
+      "dimension": "financiamiento",
+      "puntaje_banda": 41.7,
+      "peso_efectivo": 0.032,
+      "aporte_score": 5.8,
+      "semaforo": "amarillo"
+    },
+    "desafios_legislativos": {
+      "cinturon": "politica",
+      "valor": 3.0,
+      "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
+      "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_banda": 90.0,
+      "peso_efectivo": 0.0273,
+      "aporte_score": 1.0,
+      "semaforo": "verde"
+    },
+    "desequilibrio_monetario": {
+      "cinturon": "macro",
+      "valor": 50.86,
+      "unidad": "pts de tensión (0-100)",
+      "fuente": "BCRA (M2 transaccional privado, circulante, depósitos privados en pesos y en dólares, y Mercado de Cambios)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "estabilidad_monetaria",
+      "puntaje_banda": 49.1,
+      "peso_efectivo": 0.052,
+      "aporte_score": 5.1,
+      "semaforo": "amarillo"
+    },
+    "despacho_cemento": {
+      "cinturon": "vida_cotidiana",
+      "valor": 148.1,
+      "unidad": "índice ISAC",
+      "fuente": "INDEC — ISAC desestacionalizado (vía datos.gob.ar)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "empleo",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.0326,
+      "aporte_score": 8.6,
+      "semaforo": "rojo"
+    },
+    "desregulacion_normativa": {
+      "cinturon": "gestion",
+      "valor": 16771.0,
+      "unidad": "artículos de normas modificados o eliminados, acumulados desde dic-2023",
+      "fuente": "Ministerio de Desregulación y Transformación del Estado — Análisis de la desregulación implementada (informe mensual)",
+      "fecha_dato": "2026-07-01",
+      "en_indice": true,
+      "dimension": "reformas_economicas",
+      "puntaje_banda": 72.5,
+      "peso_efectivo": 0.07,
+      "aporte_score": 2.8,
+      "semaforo": "verde"
+    },
+    "eficacia_legislativa": {
+      "cinturon": "politica",
+      "valor": 15.4,
+      "unidad": "% de proyectos",
+      "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_banda": 50.8,
+      "peso_efectivo": 0.0567,
+      "aporte_score": 4.9,
+      "semaforo": "amarillo"
+    },
+    "emae_difusion": {
+      "cinturon": "macro",
+      "valor": 80.0,
+      "unidad": "% de sectores en crecimiento i.a.",
+      "fuente": "INDEC — EMAE apertura sectorial (vía datos.gob.ar)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "actividad",
+      "puntaje_banda": 80.0,
+      "peso_efectivo": 0.022,
+      "aporte_score": 2.0,
+      "semaforo": "verde"
+    },
+    "emae_ia": {
+      "cinturon": "macro",
+      "valor": 2.69,
+      "unidad": "% i.a.",
+      "fuente": "INDEC — EMAE (vía datos.gob.ar)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "actividad",
+      "puntaje_banda": 69.5,
+      "peso_efectivo": 0.066,
+      "aporte_score": 3.0,
+      "semaforo": "verde"
+    },
+    "empleo_registrado": {
+      "cinturon": "vida_cotidiana",
+      "valor": 6106.526,
+      "unidad": "miles de puestos",
+      "fuente": "Min. de Capital Humano — SIPA (vía datos.gob.ar)",
+      "fecha_dato": "2026-05-01",
+      "en_indice": true,
+      "dimension": "empleo",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.0543,
+      "aporte_score": 5.9,
+      "semaforo": "amarillo"
+    },
+    "fal_modernizacion_laboral": {
+      "cinturon": "gestion",
+      "valor": 50.0,
+      "unidad": "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
+      "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "reforma_laboral",
+      "puntaje_banda": 55.0,
+      "peso_efectivo": 0.075,
+      "aporte_score": 4.5,
+      "semaforo": "amarillo"
+    },
+    "gasto_funcionamiento": {
+      "cinturon": "gestion",
+      "valor": -31.37,
+      "unidad": "% de variación real vs 2023-06 (IMIG funcionamiento)",
+      "fuente": "Sec. Hacienda IMIG (datos.gob.ar) + IPC INDEC",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "reforma_estado",
+      "puntaje_banda": 100.0,
+      "peso_efectivo": 0.0781,
+      "aporte_score": 0.0,
+      "semaforo": "verde"
+    },
+    "iaf_transferencias": {
+      "cinturon": "politica",
+      "valor": 0.8,
+      "unidad": "% interanual real",
+      "fuente": "Sec. Hacienda — serie RON de recursos de origen nacional + IPC INDEC (deflactor)",
+      "fecha_dato": "2025-12-31",
+      "en_indice": true,
+      "dimension": "alianzas_territoriales",
+      "puntaje_banda": 76.6,
+      "peso_efectivo": 0.076,
+      "aporte_score": 2.3,
+      "semaforo": "verde"
+    },
+    "iai": {
+      "cinturon": "macro",
+      "valor": -0.18,
+      "unidad": "% i.a. ponderado",
+      "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "inversion",
+      "puntaje_banda": 59.2,
+      "peso_efectivo": 0.072,
+      "aporte_score": 4.1,
+      "semaforo": "amarillo"
+    },
+    "icc_utdt": {
+      "cinturon": "vida_cotidiana",
+      "valor": 39.9,
+      "unidad": "índice",
+      "fuente": "UTDT — Índice de Confianza del Consumidor (CIF)",
+      "fecha_dato": "2026-08-01",
+      "en_indice": true,
+      "dimension": "percepcion",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.0675,
+      "aporte_score": 6.8,
+      "semaforo": "naranja"
+    },
+    "icip": {
+      "cinturon": "macro",
+      "valor": 8.36,
+      "unidad": "% i.a. ponderado",
+      "fuente": "INDEC — servicios de informática (balanza) + IPI/empleo (productividad)",
+      "fecha_dato": "2026-04-01",
+      "en_indice": true,
+      "dimension": "inversion",
+      "puntaje_banda": 73.4,
+      "peso_efectivo": 0.048,
+      "aporte_score": 2.7,
+      "semaforo": "verde"
+    },
+    "idc": {
+      "cinturon": "macro",
+      "valor": -0.32,
+      "unidad": "σ vs. su historia",
+      "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
+      "fecha_dato": "2026-07-01",
+      "en_indice": true,
+      "dimension": "financiamiento",
+      "puntaje_banda": 49.3,
+      "peso_efectivo": 0.0336,
+      "aporte_score": 5.1,
+      "semaforo": "amarillo"
+    },
+    "idm": {
+      "cinturon": "macro",
+      "valor": 4.73,
+      "unidad": "pp (brecha i.a. real)",
+      "fuente": "BCRA (M3 privado = circulante var. 17 + depósitos privados var. 100; M2 privado transaccional var. 197) + IPC INDEC",
+      "fecha_dato": "2026-07-01",
+      "en_indice": true,
+      "dimension": "estabilidad_monetaria",
+      "puntaje_banda": 49.8,
+      "peso_efectivo": 0.052,
+      "aporte_score": 5.0,
+      "semaforo": "amarillo"
+    },
+    "informalidad": {
+      "cinturon": "vida_cotidiana",
+      "valor": 37.9,
+      "unidad": "%",
+      "fuente": "INDEC EPH",
+      "fecha_dato": "2026-01-01",
+      "en_indice": true,
+      "dimension": "empleo",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.0827,
+      "aporte_score": 6.2,
+      "semaforo": "naranja"
+    },
+    "inseguridad": {
+      "cinturon": "vida_cotidiana",
+      "valor": 28.0,
+      "unidad": "% de hogares víctimas (últimos 12 meses)",
+      "fuente": "UTDT — Índice de Victimización (LICIP)",
+      "fecha_dato": "2026-04",
+      "en_indice": true,
+      "dimension": "seguridad",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.045,
+      "aporte_score": 4.6,
+      "semaforo": "amarillo"
+    },
+    "ipc_alimentos": {
+      "cinturon": "vida_cotidiana",
+      "valor": 1.98,
+      "unidad": "% m/m",
+      "fuente": "INDEC — IPC alimentos y bebidas (vía datos.gob.ar)",
+      "fecha_dato": "2026-07-01",
+      "en_indice": true,
+      "dimension": "precios",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.0875,
+      "aporte_score": 3.5,
+      "semaforo": "verde"
+    },
+    "ipc_total": {
+      "cinturon": "macro",
+      "valor": 2.11,
+      "unidad": "% mensual",
+      "fuente": "INDEC — IPC nacional (vía datos.gob.ar)",
+      "fecha_dato": "2026-07-01",
+      "en_indice": true,
+      "dimension": "estabilidad_monetaria",
+      "puntaje_banda": 72.8,
+      "peso_efectivo": 0.104,
+      "aporte_score": 2.7,
+      "semaforo": "verde"
+    },
+    "ipi_manufacturero": {
+      "cinturon": "macro",
+      "valor": -2.0,
+      "unidad": "% i.a. (promedio 3 meses)",
+      "fuente": "INDEC — IPI manufacturero, nivel general (vía datos.gob.ar)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "actividad",
+      "puntaje_banda": 32.0,
+      "peso_efectivo": 0.022,
+      "aporte_score": 6.8,
+      "semaforo": "naranja"
+    },
+    "jornadas_individuales_no_trabajadas_12m": {
+      "cinturon": "politica",
+      "valor": 4760195,
+      "unidad": "jornadas individuales no trabajadas (12m)",
+      "fuente": "Secretaría de Trabajo — Estadísticas de conflictos laborales",
+      "fecha_dato": "2026-05-01",
+      "en_indice": true,
+      "dimension": "conflicto_social",
+      "puntaje_banda": 100.0,
+      "peso_efectivo": 0.04,
+      "aporte_score": 0.0,
+      "semaforo": "verde"
+    },
+    "judicializacion": {
+      "cinturon": "politica",
+      "valor": 1.57,
+      "unidad": "% de sumarios con medida cautelar",
+      "fuente": "SAIJ — buscador de jurisprudencia (Federal + Nacional)",
+      "fecha_dato": "2026-01-01",
+      "en_indice": true,
+      "dimension": "poder_judicial",
+      "puntaje_banda": 54.4,
+      "peso_efectivo": 0.03,
+      "aporte_score": 4.6,
+      "semaforo": "amarillo"
+    },
+    "libertad_opcion_salud": {
+      "cinturon": "gestion",
+      "valor": 31.8,
+      "unidad": "% de usuarios de prepagas con aportes derivados directo (sin triangulación)",
+      "fuente": "SSS — RNAS y RNEMP por entidad (argentina.gob.ar/sssalud/estadisticas)",
+      "fecha_dato": "2026-03-01",
+      "en_indice": true,
+      "dimension": "social_orden",
+      "puntaje_banda": 54.8,
+      "peso_efectivo": 0.02,
+      "aporte_score": 4.5,
+      "semaforo": "amarillo"
+    },
+    "litigiosidad_laboral": {
+      "cinturon": "gestion",
+      "valor": 2.1,
+      "unidad": "% variación juicios SRT (12m vs 12m previos)",
+      "fuente": "SRT — Serie histórica de litigiosidad",
+      "fecha_dato": "2026-05-01",
+      "en_indice": true,
+      "dimension": "reforma_laboral",
+      "puntaje_banda": 60.8,
+      "peso_efectivo": 0.075,
+      "aporte_score": 3.9,
+      "semaforo": "verde"
+    },
+    "mora_familias": {
+      "cinturon": "vida_cotidiana",
+      "valor": 14.52,
+      "unidad": "% de la cartera en situación irregular",
+      "fuente": "BCRA — Informe sobre Bancos (personales + tarjetas de familias)",
+      "fecha_dato": "2026-05",
+      "en_indice": true,
+      "dimension": "vulnerabilidad",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.07,
+      "aporte_score": 10.0,
+      "semaforo": "rojo"
+    },
+    "mortalidad_pymes": {
+      "cinturon": "vida_cotidiana",
+      "valor": 460777,
+      "unidad": "empleadores",
+      "fuente": "SRT — partes empleadoras con cobertura de ART, hasta 50 trabajadores",
+      "fecha_dato": "2026-05-01",
+      "en_indice": true,
+      "dimension": "empleo",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.0357,
+      "aporte_score": 6.2,
+      "semaforo": "naranja"
+    },
+    "motorizacion_total": {
+      "cinturon": "vida_cotidiana",
+      "valor": 30.9,
+      "unidad": "vehículos 0km por cada 1.000 habitantes (12 meses)",
+      "fuente": "DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC)",
+      "fecha_dato": "2026-07-01",
+      "en_indice": true,
+      "dimension": "ingresos",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.0089,
+      "aporte_score": 0.0,
+      "semaforo": "verde"
+    },
+    "paralisis_denuncias": {
+      "cinturon": "politica",
+      "valor": 7,
+      "unidad": "sesiones de las comisiones de control (12m)",
+      "fuente": "Consejo de la Magistratura — archivo de notas de las comisiones",
+      "fecha_dato": "2026-08-01",
+      "en_indice": true,
+      "dimension": "poder_judicial",
+      "puntaje_banda": 45.0,
+      "peso_efectivo": 0.03,
+      "aporte_score": 5.5,
+      "semaforo": "amarillo"
+    },
+    "peso_tarifas": {
+      "cinturon": "vida_cotidiana",
+      "valor": 14.5,
+      "unidad": "% del salario RIPTE",
+      "fuente": "IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA",
+      "fecha_dato": "2026-08-01",
+      "en_indice": true,
+      "dimension": "precios",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.1125,
+      "aporte_score": 2.5,
+      "semaforo": "verde"
+    },
+    "pluriempleo": {
+      "cinturon": "vida_cotidiana",
+      "valor": 7.5,
+      "unidad": "%",
+      "fuente": "INDEC EPH",
+      "fecha_dato": "2026-01-01",
+      "en_indice": true,
+      "dimension": "empleo",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.0124,
+      "aporte_score": 6.9,
+      "semaforo": "naranja"
+    },
+    "pobreza_nowcast": {
+      "cinturon": "vida_cotidiana",
+      "valor": 31.6,
+      "unidad": "% de personas",
+      "fuente": "UTDT — Nowcast de Pobreza (González-Rozada)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "ingresos",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.073,
+      "aporte_score": 0.0,
+      "semaforo": "verde"
+    },
+    "privatizaciones": {
+      "cinturon": "gestion",
+      "valor": 51.4,
+      "unidad": "% de avance (etapas 0-4, cartera Ley Bases)",
+      "fuente": "Boletín Oficial + doc CIGOB 260702 (tabla jun-2026)",
+      "fecha_dato": "2026-06-30",
+      "en_indice": true,
+      "dimension": "privatizaciones_inversion",
+      "puntaje_banda": 71.4,
+      "peso_efectivo": 0.06,
+      "aporte_score": 2.9,
+      "semaforo": "verde"
+    },
+    "produccion_legislativa": {
+      "cinturon": "politica",
+      "valor": 25,
+      "unidad": "leyes sancionadas (12m)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas",
+      "fecha_dato": "2026-08-01",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_banda": 30.0,
+      "peso_efectivo": 0.0315,
+      "aporte_score": 7.0,
+      "semaforo": "naranja"
+    },
+    "protocolo_antipiquetes": {
+      "cinturon": "gestion",
+      "valor": 74.2,
+      "unidad": "% de reducción de cortes por manifestación en CABA vs 2023 (IRPC)",
+      "fuente": "Diagnóstico Político — monitoreos públicos de piquetes",
+      "fecha_dato": "2025-12-31",
+      "en_indice": true,
+      "dimension": "social_orden",
+      "puntaje_banda": 99.0,
+      "peso_efectivo": 0.04,
+      "aporte_score": 0.1,
+      "semaforo": "verde"
+    },
+    "ratio_dnu": {
+      "cinturon": "politica",
+      "valor": 1.92,
+      "unidad": "DNUs por ley",
+      "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_banda": 16.0,
+      "peso_efectivo": 0.042,
+      "aporte_score": 8.4,
+      "semaforo": "rojo"
+    },
+    "recaudacion": {
+      "cinturon": "macro",
+      "valor": 88.2,
+      "unidad": "índice (100 = 4T-2023)",
+      "fuente": "Sec. Hacienda — recaudación DGI (vía datos.gob.ar) + Comisión Arbitral del Convenio Multilateral",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "viabilidad_fiscal_comercial",
+      "puntaje_banda": 43.0,
+      "peso_efectivo": 0.072,
+      "aporte_score": 5.7,
+      "semaforo": "amarillo"
+    },
+    "reduccion_estado": {
+      "cinturon": "gestion",
+      "valor": -20.36,
+      "unidad": "% de variación vs dic-2023 (dotación APN)",
+      "fuente": "INDEC — Dotación de personal de la APN (mensual)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "reforma_estado",
+      "puntaje_banda": 100.0,
+      "peso_efectivo": 0.1094,
+      "aporte_score": 0.0,
+      "semaforo": "verde"
+    },
+    "reestructuracion_organismos": {
+      "cinturon": "gestion",
+      "valor": 24.4,
+      "unidad": "% de avance (proxy InfoLeg, caso por caso)",
+      "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "reforma_estado",
+      "puntaje_banda": 23.2,
+      "peso_efectivo": 0.0625,
+      "aporte_score": 7.7,
+      "semaforo": "naranja"
+    },
+    "rem_ipc_12m": {
+      "cinturon": "macro",
+      "valor": 21.8,
+      "unidad": "% anual esperado",
+      "fuente": "BCRA — REM, expectativas de inflación (API monetarias)",
+      "fecha_dato": "2026-07-31",
+      "en_indice": true,
+      "dimension": "estabilidad_monetaria",
+      "puntaje_banda": 81.9,
+      "peso_efectivo": 0.052,
+      "aporte_score": 1.8,
+      "semaforo": "verde"
+    },
+    "reservas_bcra": {
+      "cinturon": "macro",
+      "valor": 11962.0,
+      "unidad": "Millones de USD",
+      "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
+      "fecha_dato": "2026-07-31",
+      "en_indice": true,
+      "dimension": "financiamiento",
+      "puntaje_banda": 67.8,
+      "peso_efectivo": 0.0544,
+      "aporte_score": 3.2,
+      "semaforo": "verde"
+    },
+    "resultado_primario": {
+      "cinturon": "macro",
+      "valor": 5.55,
+      "unidad": "% de la recaudación (acum. 12 meses)",
+      "fuente": "Sec. de Hacienda — IMIG (resultado primario) + recaudación (vía datos.gob.ar)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "viabilidad_fiscal_comercial",
+      "puntaje_banda": 82.2,
+      "peso_efectivo": 0.12,
+      "aporte_score": 1.8,
+      "semaforo": "verde"
+    },
+    "rigi_inversiones": {
+      "cinturon": "gestion",
+      "valor": 23.5,
+      "unidad": "% de inversión aprobada sobre el pipeline",
+      "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "privatizaciones_inversion",
+      "puntaje_banda": 50.0,
+      "peso_efectivo": 0.06,
+      "aporte_score": 5.0,
+      "semaforo": "amarillo"
+    },
+    "saldo_comercial_12m": {
+      "cinturon": "macro",
+      "valor": 22481.0,
+      "unidad": "Millones de USD (acum. 12 meses)",
+      "fuente": "INDEC — ICA, intercambio comercial (vía datos.gob.ar)",
+      "fecha_dato": "2026-06-01",
+      "en_indice": true,
+      "dimension": "viabilidad_fiscal_comercial",
+      "puntaje_banda": 85.0,
+      "peso_efectivo": 0.048,
+      "aporte_score": 1.5,
+      "semaforo": "verde"
+    },
+    "sentimiento_digital": {
+      "cinturon": "vida_cotidiana",
+      "valor": 58.2,
+      "unidad": "índice (100 = 4T-2023)",
+      "fuente": "Google Trends",
+      "fecha_dato": "2026-07-01",
+      "en_indice": true,
+      "dimension": "percepcion",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.015,
+      "aporte_score": 0.0,
+      "semaforo": "verde"
+    },
+    "tcrm": {
+      "cinturon": "macro",
+      "valor": 85.47,
+      "unidad": "Índice (base dic-2015=100)",
+      "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
+      "fecha_dato": "2026-07-01",
+      "en_indice": true,
+      "dimension": "competitividad_externa",
+      "puntaje_banda": 48.7,
+      "peso_efectivo": 0.11,
+      "aporte_score": 5.1,
+      "semaforo": "amarillo"
+    },
+    "trabajo_independiente": {
+      "cinturon": "vida_cotidiana",
+      "valor": 20.6,
+      "unidad": "% del empleo registrado",
+      "fuente": "SIPA — autónomos y monotributo sobre el total de trabajo registrado",
+      "fecha_dato": "2026-05-01",
+      "en_indice": true,
+      "dimension": "empleo",
+      "puntaje_banda": null,
+      "peso_efectivo": 0.0242,
+      "aporte_score": 6.4,
+      "semaforo": "naranja"
+    },
+    "velocidad_resolucion": {
+      "cinturon": "politica",
+      "valor": 45.4,
+      "unidad": "% de expedientes resueltos sobre ingresados",
+      "fuente": "CSJN — anuario estadístico (sistema de gestión judicial)",
+      "fecha_dato": "2025-12-31",
+      "en_indice": true,
+      "dimension": "poder_judicial",
+      "puntaje_banda": 94.6,
+      "peso_efectivo": 0.03,
+      "aporte_score": 0.5,
+      "semaforo": "verde"
+    },
+    "veto_quorum": {
+      "cinturon": "politica",
+      "valor": 10.0,
+      "unidad": "% de sesiones",
+      "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
+      "fecha_dato": "2026-08-25",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_banda": 78.3,
+      "peso_efectivo": 0.0273,
+      "aporte_score": 2.2,
+      "semaforo": "verde"
+    },
+    "votometro_ventaja_lla": {
+      "cinturon": "politica",
+      "valor": 4.3,
+      "unidad": "Puntos porcentuales",
+      "fuente": "Votómetro CIGOB",
+      "fecha_dato": "2026-07-22",
+      "en_indice": true,
+      "dimension": "imagen_voto",
+      "puntaje_banda": 73.6,
+      "peso_efectivo": 0.07,
+      "aporte_score": 2.6,
+      "semaforo": "verde"
+    }
+  }
+}

@@ -198,28 +198,285 @@ INDEC_SERIES_URL = "https://apis.datos.gob.ar/series/api/series/"
 INDEC_IPC_INDICE = "148.3_INIVELNAL_DICI_M_26"   # IPC nivel general, índice (base dic-2016=100)
 
 
-def _ipc_promedio_indec() -> dict:
-    """Inflación PROMEDIO anual derivada de la serie ÍNDICE oficial de INDEC
-    (sin hardcodear): {año: promedio(índice año)/promedio(índice año−1) − 1},
-    solo para años con los 12 meses publicados. Confiable desde 2018 (base
-    dic-2016=100 → primer año completo 2017).
+# ── RON mensual — transferencias federales a precios de cada mes (ADR-0239) ───
+# El CSV anual sólo permite comparar dos sumas nominales contra un deflactor
+# único, y eso subdeflacta: las transferencias se devengan mes a mes, con
+# estacionalidad propia, así que el deflactor correcto está ponderado por el
+# flujo de cada mes y no por el calendario. La misma planilla de Hacienda que
+# publica el consolidado anual trae una hoja por mes; de ahí sale la serie.
 
-    ADR-0065: es el deflactor correcto para comparar SUMAS ANUALES de flujos
-    (las transferencias del año se devengan mes a mes a los precios de cada
-    mes, no a los de diciembre). El dic-dic que se usaba antes subdeflactaba
-    en años de inflación descendente: para 2025, dic-dic 31,5% vs promedio
-    ~40% — la variación real publicada daba +7,0% cuando IARAF/OPC/Politikon
-    (que deflactan por promedio) reportan +1,6/2,7%."""
+RON_CONSOLIDADO_PAGINA = "https://www.argentina.gob.ar/economia/sechacienda/asuntosprovinciales/ron"
+
+# Las tres filas del cuadro que SON transferencias a jurisdicciones. El resto
+# —Tesoro Nacional, Seguridad Social, Fondo A.T.N.— queda en la Nación
+# (ADR-0066). Los rótulos vienen espaciados letra por letra en los años viejos
+# ("P R O V I N C I A S"), así que se comparan sin espacios.
+RON_FILAS_JURISDICCION = ("provincias", "c.a.b.a", "fdo.compensador")
+
+_MESES_RON = ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+              "agosto", "septiembre", "octubre", "noviembre", "diciembre")
+
+_RON_MENSUAL_MEMO: dict = {}      # {año: {YYYY-MM: monto}}
+_RON_CSV_MEMO: dict = {}          # {año: total anual, en la unidad del CSV}
+_RON_URLS_MEMO: dict = {}
+
+
+def _norm_ron(s) -> str:
+    """Sin acentos, sin espacios repetidos, en minúsculas."""
+    import unicodedata
+    s = unicodedata.normalize("NFKD", str(s))
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return re.sub(r"\s+", " ", s).strip().lower()
+
+
+def _rotulo_ron(s) -> str:
+    """Como `_norm_ron` pero sin NINGÚN espacio: hasta 2023 los rótulos de fila
+    venían espaciados letra por letra («P R O V I N C I A S»)."""
+    return _norm_ron(s).replace(" ", "")
+
+
+def _ron_consolidado_urls() -> dict:
+    """{año: url} de las planillas «Información consolidada» de Hacienda.
+
+    El nombre de archivo no es estable —`informacion_consolidada_2024.xlsx`,
+    `informacion_consolidada2025_5.xlsx`, `informacion_consolidada_2026_4.xlsx`—
+    así que el año se lee del nombre y la URL se resuelve desde la página."""
+    if _RON_URLS_MEMO:
+        return _RON_URLS_MEMO
+    r = requests.get(RON_CONSOLIDADO_PAGINA, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    patron = (r'((?:https://www\.argentina\.gob\.ar)?'
+              r'/sites/default/files/informacion_consolidada[^"]*?\.xlsx?)')
+    for href in re.findall(patron, r.text):
+        m = re.search(r"(20\d{2})", href.rsplit("/", 1)[-1])
+        if not m:
+            continue
+        _RON_URLS_MEMO[int(m.group(1))] = (
+            href if href.startswith("http")
+            else f"https://www.argentina.gob.ar{href}")
+    if not _RON_URLS_MEMO:
+        raise ValueError("no se encontraron planillas consolidadas de RON")
+    return _RON_URLS_MEMO
+
+
+def _hojas_de_planilla(contenido: bytes, es_xlsx: bool) -> dict:
+    """{hoja: filas}. Hacienda pasó a .xlsx recién en 2024; todo lo anterior
+    sigue en el .xls OLE2, que openpyxl no abre."""
+    if es_xlsx:
+        import io
+        import openpyxl
+        wb = openpyxl.load_workbook(io.BytesIO(contenido), read_only=True, data_only=True)
+        return {_norm_ron(h): [list(f) for f in wb[h].iter_rows(values_only=True)]
+                for h in wb.sheetnames}
+    import xlrd
+    wb = xlrd.open_workbook(file_contents=contenido)
+    hojas = {}
+    for h in wb.sheet_names():
+        sh = wb.sheet_by_name(h)
+        hojas[_norm_ron(h)] = [
+            [sh.cell_value(i, j) if sh.cell_value(i, j) != "" else None
+             for j in range(sh.ncols)]
+            for i in range(sh.nrows)
+        ]
+    return hojas
+
+
+def _columnas_ron(filas: list) -> tuple:
+    """(columna del total RON, columna de la compensación del Consenso Fiscal).
+
+    Se buscan por encabezado, no por posición: el cuadro fue ganando columnas
+    con los años y una posición fija se desplaza sin que nada falle. El
+    encabezado está partido en varias filas, así que se concatena en vertical."""
+    ancho = max((len(f) for f in filas[:16]), default=0)
+    encabezados = {}
+    for j in range(ancho):
+        # sólo las celdas de TEXTO: en las planillas viejas el encabezado y los
+        # datos comparten las primeras filas, y arrastrar los números haría que
+        # ningún encabezado "termine" donde se lo espera
+        encabezados[j] = " ".join(
+            _norm_ron(filas[i][j])
+            for i in range(min(16, len(filas)))
+            if j < len(filas[i]) and isinstance(filas[i][j], str) and filas[i][j].strip()
+        )
+    total = consenso = None
+    for j, txt in encabezados.items():
+        if total is None and "total" in txt and "origen nacional" in txt:
+            total = j
+        if consenso is None and "consenso fiscal" in txt:
+            consenso = j
+    if total is None:
+        # Hasta 2017 la columna se llamaba sólo «T O T A L», sin decir de qué.
+        # Se toma la última que TERMINA en total y no es un subtotal: hay dos
+        # columnas «Sub-total» antes, y quedarse con una de ellas dejaría afuera
+        # media planilla sin que nada fallara.
+        candidatas = [j for j, txt in encabezados.items()
+                      if txt.replace(" ", "").endswith("total")
+                      and "subtotal" not in txt.replace(" ", "")
+                      and "sub-total" not in txt.replace(" ", "")]
+        total = candidatas[-1] if candidatas else None
+    if total is None:
+        raise ValueError("no está la columna de total de recursos de origen nacional")
+    return total, consenso
+
+
+def _total_jurisdicciones(filas: list) -> float:
+    """Suma del cuadro para las filas que son transferencias a jurisdicciones.
+
+    «Provincias» aparece dos veces —encabezado y subtotal—; se toma la que trae
+    números. La compensación del Consenso Fiscal va aparte en su propia columna
+    y sí forma parte de lo girado: sin ella el total no cierra contra el CSV
+    anual (2024: 41,13 B contra 42,13 B)."""
+    total_col, consenso_col = _columnas_ron(filas)
+    suma = 0.0
+    vistas = set()
+    for f in filas:
+        if not f or f[0] is None:
+            continue
+        rot = _rotulo_ron(f[0])
+        if rot not in RON_FILAS_JURISDICCION or rot in vistas:
+            continue
+        val = f[total_col] if total_col < len(f) else None
+        if not isinstance(val, (int, float)):
+            continue                       # el encabezado homónimo, sin números
+        vistas.add(rot)
+        suma += float(val)
+        if consenso_col is not None and consenso_col < len(f):
+            c = f[consenso_col]
+            if isinstance(c, (int, float)):
+                suma += float(c)
+    if "provincias" not in vistas:
+        raise ValueError("el cuadro no trae la fila de subtotal de provincias")
+    return suma
+
+
+def _ron_mensual(desde: int) -> dict:
+    """{YYYY-MM: monto girado a jurisdicciones}, desde el año `desde`.
+
+    Mismo universo que el CSV anual —lo reconcilia peso por peso— pero abierto
+    por mes, que es lo que hace falta para deflactar cada flujo a los precios en
+    los que se devengó. Un mes sin hoja (el año en curso) simplemente no está."""
+    urls = _ron_consolidado_urls()
+    for y in sorted(y for y in urls if y >= desde):
+        if y in _RON_MENSUAL_MEMO:
+            continue
+        r = requests.get(urls[y], headers=HTTP_HEADERS, timeout=120)
+        r.raise_for_status()
+        hojas = _hojas_de_planilla(r.content, urls[y].endswith(".xlsx"))
+        del_anio = {}
+        for k, mes in enumerate(_MESES_RON, 1):
+            if mes not in hojas:
+                continue
+            try:
+                del_anio[f"{y}-{k:02d}"] = _total_jurisdicciones(hojas[mes])
+            except ValueError:
+                continue
+        _RON_MENSUAL_MEMO[y] = del_anio
+    out = {}
+    for y, meses in _RON_MENSUAL_MEMO.items():
+        if y >= desde:
+            out.update(meses)
+    return out
+
+
+def _ipc_indice_mensual() -> dict:
+    """{YYYY-MM: índice IPC nivel general} de INDEC, base dic-2016=100."""
     r = requests.get(INDEC_SERIES_URL,
-                     params={"ids": INDEC_IPC_INDICE, "format": "json", "limit": 200, "sort": "desc"},
+                     params={"ids": INDEC_IPC_INDICE, "format": "json",
+                             "limit": 1000, "sort": "desc"},
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
-    por_anio: dict[int, list[float]] = {}
-    for fecha, val in r.json()["data"]:
-        if val is not None:
-            por_anio.setdefault(int(str(fecha)[:4]), []).append(float(val))
-    prom = {y: sum(v) / len(v) for y, v in por_anio.items() if len(v) == 12}
-    return {y: prom[y] / prom[y - 1] - 1 for y in prom if y - 1 in prom}
+    return {str(f)[:7]: float(v) for f, v in r.json()["data"] if v is not None}
+
+
+def _ron_total_anual_csv() -> dict:
+    """{año: total girado a jurisdicciones} del CSV anual de Hacienda.
+
+    Es el mismo universo que las hojas mensuales y cubre 2003-2025 en UNA sola
+    unidad, así que hace de ancla: las planillas mensuales cambiaron de miles a
+    millones de pesos entre 2022 y 2023 y no declaran su unidad en ningún lado
+    (sin el ancla, 2023 daba −99,9% real)."""
+    import csv
+    import io
+    if _RON_CSV_MEMO:
+        return _RON_CSV_MEMO
+    r = requests.get(RON_CSV_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    rd = csv.reader(io.StringIO(r.text), delimiter=";")
+    next(rd)
+    for row in rd:
+        if len(row) < 5:
+            continue
+        if row[1].strip().lower() in RON_NO_PROVINCIA:      # ADR-0066
+            continue
+        try:
+            y, v = int(row[0]), float(row[4].replace(",", "."))
+        except ValueError:
+            continue
+        _RON_CSV_MEMO[y] = _RON_CSV_MEMO.get(y, 0.0) + v
+    if not _RON_CSV_MEMO:
+        raise ValueError("el CSV anual de RON no trajo ningún año")
+    return _RON_CSV_MEMO
+
+
+def _factor_unidad(suma_mensual: float, total_csv: float) -> float:
+    """Potencia de 1000 que lleva las hojas del año a la unidad del CSV.
+
+    No se "ajusta" nada: el factor tiene que ser exactamente una potencia de mil
+    y el residuo, menor al 1%. Si no lo es, algo cambió en el cuadro —una fila
+    nueva, una columna corrida— y es preferible que el colector falle a que
+    publique una variación real construida sobre dos unidades distintas."""
+    import math
+    if suma_mensual <= 0 or total_csv <= 0:
+        raise ValueError("suma mensual o total anual no positivos")
+    factor = 1000.0 ** round(math.log(total_csv / suma_mensual, 1000.0))
+    residuo = abs(suma_mensual * factor / total_csv - 1.0)
+    if residuo > 0.01:
+        raise ValueError(
+            f"las hojas mensuales no reconcilian con el CSV anual: "
+            f"factor {factor:g}, residuo {residuo:.3%}")
+    return factor
+
+
+def _iaf_real_por_anio(desde: int = 2016) -> dict:
+    """{año: (var_real, var_nominal, deflactor, total_ref, total_ant)}.
+
+    Cada flujo mensual se lleva a precios de una base común dividiéndolo por el
+    IPC de SU mes, y recién ahí se suman los doce. Es la diferencia entre medir
+    la variación real y medir la variación nominal con un deflactor promedio:
+    para 2025 la primera da +1,6% —lo mismo que IARAF y Politikon— y la segunda
+    daba +0,8% (ADR-0239).
+
+    Sólo entran los años con los doce meses publicados: un año a medias
+    compararía nueve meses contra doce."""
+    mensual = _ron_mensual(desde)
+    ipc = _ipc_indice_mensual()
+    anual_csv = _ron_total_anual_csv()
+    completos = {}
+    for y in sorted({int(ym[:4]) for ym in mensual}):
+        meses = [f"{y}-{k:02d}" for k in range(1, 13)]
+        if not all(m in mensual and m in ipc for m in meses):
+            continue
+        if y not in anual_csv:
+            continue                       # sin ancla no se sabe en qué unidad está
+        factor = _factor_unidad(sum(mensual[m] for m in meses), anual_csv[y])
+        completos[y] = (meses, factor)
+    out = {}
+    for y in sorted(completos):
+        if y - 1 not in completos:
+            continue
+        (meses_ref, f_ref), (meses_ant, f_ant) = completos[y], completos[y - 1]
+        nom_ref = sum(mensual[m] * f_ref for m in meses_ref)
+        nom_ant = sum(mensual[m] * f_ant for m in meses_ant)
+        real_ref = sum(mensual[m] * f_ref / ipc[m] for m in meses_ref)
+        real_ant = sum(mensual[m] * f_ant / ipc[m] for m in meses_ant)
+        if not nom_ant or not real_ant:
+            continue
+        var_real = real_ref / real_ant - 1.0
+        var_nom = nom_ref / nom_ant - 1.0
+        deflactor = (1.0 + var_nom) / (1.0 + var_real) - 1.0
+        out[y] = (var_real, var_nom, deflactor, nom_ref, nom_ant)
+    return out
+
 
 logging.basicConfig(level=logging.WARNING, format="%(message)s")
 
@@ -521,6 +778,77 @@ def _infoleg_session_count(session: requests.Session, action_url: str,
     raise ValueError(f"Conteo no encontrado en InfoLeg (tipo={tipo}, texto={texto!r})")
 
 
+# ── DNU: el tipo jurídico, no la coincidencia textual (ADR-0241) ─────────────
+
+_RE_INFOLEG_DNU = re.compile(r"^decreto\s+dnu\b", re.IGNORECASE)
+_INFOLEG_FILAS_POR_PAGINA = 50
+
+
+def _infoleg_listado_completo(session: requests.Session, action_url: str, tipo: str,
+                              desde: date, hasta: date, texto: str = "") -> list[dict]:
+    """Todas las filas del listado de InfoLeg, paginando.
+
+    La grilla devuelve 50 por página y el resto queda detrás de un submit del
+    mismo formulario con `desplazamiento=AP` e `irAPagina`. Contar sólo la
+    primera página daría 50 y no fallaría: la ventana de 365 días trae 48, o
+    sea que el techo estaba a dos normas de distancia."""
+    vistos, items, total = set(), [], None
+    for pagina in range(1, 60):
+        data = {
+            "tipoNorma": tipo, "numero": "", "anioSancion": "", "dependencia": "",
+            "diaPubDesde": f"{desde.day:02d}", "mesPubDesde": f"{desde.month:02d}",
+            "anioPubDesde": str(desde.year),
+            "diaPubHasta": f"{hasta.day:02d}", "mesPubHasta": f"{hasta.month:02d}",
+            "anioPubHasta": str(hasta.year),
+            "texto": texto,
+        }
+        if pagina > 1:
+            data["desplazamiento"] = "AP"
+            data["irAPagina"] = str(pagina)
+        time.sleep(_DERROTAS_PAUSA_INFOLEG)
+        r = session.post(action_url, data=data, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+        r.raise_for_status()
+        if "Encontradas" not in r.text and "No se encontraron normas" not in r.text:
+            raise ValueError(f"respuesta InfoLeg sin listado (tipo={tipo}, texto={texto!r})")
+        m = re.search(r"Encontradas?[:\s]+(\d+)", r.text, re.IGNORECASE)
+        if total is None:
+            total = int(m.group(1)) if m else 0
+        antes = len(items)
+        for it in _parsear_listado_infoleg(r.text):
+            if it["infoleg_id"] not in vistos:
+                vistos.add(it["infoleg_id"])
+                items.append(it)
+        if len(items) >= total or len(items) == antes:
+            # una página que no aporta filas nuevas no va a aportarlas en la
+            # siguiente: se corta acá y decide el control de total de abajo
+            break
+    if len(items) != total:
+        raise ValueError(
+            f"InfoLeg devolvió {len(items)} filas de {total} declaradas "
+            f"(tipo={tipo}, texto={texto!r}): el listado quedó truncado")
+    return items
+
+
+def _infoleg_contar_dnus(session: requests.Session, action_url: str,
+                         desde: date, hasta: date) -> tuple[int, list[dict]]:
+    """(cantidad de DNU publicados en la ventana, inventario).
+
+    El conteo anterior era el de la búsqueda de texto completo `necesidad y
+    urgencia` sobre los decretos, y esa frase aparece también en decretos que
+    **no** son DNU: los que prorrogan una intervención dispuesta por un DNU,
+    los reglamentarios de una ley sancionada por DNU, los vetos que la citan.
+    En la ventana auditada eso daba 48 donde había 37 (ADR-0241).
+
+    El tipo jurídico está en la propia grilla: InfoLeg rotula `Decreto DNU 771 /
+    2026` frente a `Decreto 710 / 2026` o `Decreto Reglamentario 58 / 2026`. La
+    búsqueda de texto se conserva porque acota la grilla —sin ella habría que
+    traer todos los decretos del año— pero ya no decide."""
+    items = _infoleg_listado_completo(session, action_url, "2", desde, hasta,
+                                      texto="necesidad y urgencia")
+    dnus = [it for it in items if _RE_INFOLEG_DNU.match(it["norma"])]
+    return len(dnus), dnus
+
+
 # ── Sector privado: brecha de expectativas obra pública vs. privada ───────────
 # INDEC publica la Encuesta Cualitativa de la Construcción dentro del ISAC. El
 # Cuadro 7.1 pregunta a las grandes empresas constructoras cómo esperan que
@@ -657,9 +985,15 @@ def fetch_ratio_dnu() -> dict | None:
     Mayor ratio = mayor dependencia del decreto → debilidad legislativa y exposición judicial.
     Dimensión: capacidad legislativa del Ejecutivo (Luis Babino: Agregados de Poder).
 
+    Los dos lados usan la MISMA convención jurídica: **publicación en el
+    Boletín Oficial** (ADR-0241). Mezclar leyes sancionadas con DNU publicados
+    compararía dos momentos distintos del trámite.
+
     Fuente: servicios.infoleg.gob.ar
-    - Leyes: tipoNorma=1 (Ley)
-    - DNUs: tipoNorma=2 (Decreto) + texto="necesidad y urgencia"
+    - Leyes: tipoNorma=1 (Ley), por fecha de publicación
+    - DNUs: tipoNorma=2 (Decreto) acotado con texto="necesidad y urgencia" y
+      filtrado por el tipo que declara la grilla (`Decreto DNU`). La frase sola
+      no alcanza: la dicen también decretos que no son DNU.
     Requiere GET previo para obtener jsessionid del formulario.
     """
     try:
@@ -679,8 +1013,7 @@ def fetch_ratio_dnu() -> dict | None:
         if leyes == 0:
             raise ValueError("0 leyes — posible fallo en búsqueda InfoLeg (tipoNorma=1)")
 
-        dnus = _infoleg_session_count(session, action_url, "2", desde, hasta,
-                                       texto="necesidad y urgencia")
+        dnus, inventario = _infoleg_contar_dnus(session, action_url, desde, hasta)
 
         ratio = round(dnus / leyes, 3)
 
@@ -689,10 +1022,18 @@ def fetch_ratio_dnu() -> dict | None:
             "dnu_count": dnus,
             "leyes_count": leyes,
             "ventana_dias": 365,
-            "unidad": "DNUs por ley",
+            "unidad": "DNUs publicados por ley publicada",
             "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
             "fecha_dato": str(date.today()),
             "desactualizado": False,
+            "ventana_desde": desde.isoformat(),
+            "ventana_hasta": hasta.isoformat(),
+            "inventario_dnu": [{"norma": it["norma"].split(" PODER")[0].strip(),
+                                "fecha_pub": it["fecha_pub"]} for it in inventario],
+            "detalle_txt": (
+                f"{dnus} DNU y {leyes} leyes publicados en el Boletín Oficial "
+                f"entre {desde.isoformat()} y {hasta.isoformat()} → {ratio:.2f} "
+                f"DNU por ley"),
         }
 
     except Exception as e:
@@ -1031,70 +1372,48 @@ def fetch_jornadas_individuales_no_trabajadas() -> dict | None:
 
 def fetch_iaf_transferencias() -> dict | None:
     """
-    Variación real YoY de transferencias federales totales (RON Hacienda).
+    Variación real i.a. de las transferencias federales (RON Hacienda).
     Dimensión: armonía fiscal federal (Luis Babino: Agregados de Poder — IAF).
 
-    Fuente: CSV anual Hacienda — columnas: ano;provincia;impuesto;regimen;monto
-    Decimal en monto: coma (ej. 2787,1198 → 2787.1198).
-    Se suman los montos del año de referencia (año_actual − 1) y año anterior,
-    EXCLUYENDO las jurisdicciones que no son provincias (RON_NO_PROVINCIA:
-    Tesoro Nacional, Seguridad Social, Fondo ATN — ADR-0066; validado: con el
-    filtro, nivel 2025 ≈ $60B y nominal +43,0%, idénticos a IARAF/DNAP).
-    Deflactor: inflación PROMEDIO anual del índice IPC de INDEC (ADR-0065 —
-    el dic-dic anterior subdeflactaba sumas anuales con inflación en baja;
-    validado contra IARAF/OPC/Politikon, que deflactan igual). La serie es de
-    transferencias EJECUTADAS del año calendario (no presupuesto): la fila
-    "2025" del CSV es lo efectivamente girado durante 2025.
+    Universo (ADR-0066): lo girado a jurisdicciones —Provincias, C.A.B.A. y
+    Fondo Compensador, incluida la compensación del Consenso Fiscal—. Quedan
+    afuera Tesoro Nacional, Seguridad Social y Fondo A.T.N., que no salen de la
+    Nación.
+
+    Deflactor (ADR-0239): **cada flujo mensual a precios de su propio mes**. El
+    método anterior dividía el cociente de dos sumas nominales por un único IPC
+    promedio anual, y eso subdeflacta cuando el gasto no se reparte parejo por
+    el calendario: para 2025 publicaba +0,8% donde IARAF y Politikon informaban
+    +1,6/1,7%. Mes a mes da +1,64%.
+
+    La serie es de transferencias EJECUTADAS del año calendario: el año de
+    referencia es el último cerrado, no el presupuesto del siguiente.
     """
-    import csv
-    import io
     try:
         year_ref = date.today().year - 1   # último año completo
-        year_ant = date.today().year - 2   # año anterior para comparar
-
-        r = requests.get(RON_CSV_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
-        r.raise_for_status()
-
-        reader = csv.reader(io.StringIO(r.text), delimiter=";")
-        next(reader)  # saltar header
-
-        tot: dict[int, float] = {year_ref: 0.0, year_ant: 0.0}
-        for row in reader:
-            if len(row) < 5:
-                continue
-            try:
-                yr = int(row[0])
-            except ValueError:
-                continue
-            if yr not in tot:
-                continue
-            if row[1].strip().lower() in RON_NO_PROVINCIA:   # ADR-0066
-                continue
-            try:
-                tot[yr] += float(row[4].replace(",", "."))
-            except ValueError:
-                continue
-
-        if tot[year_ref] == 0 or tot[year_ant] == 0:
-            raise ValueError(f"Sin datos para {year_ref} o {year_ant} en RON CSV")
-
-        var_nominal = (tot[year_ref] / tot[year_ant]) - 1.0
-        ipc = _ipc_promedio_indec().get(year_ref)
-        if ipc is None:
-            raise ValueError(
-                f"IPC promedio no disponible para {year_ref} (serie índice INDEC incompleta)"
-            )
-        var_real = (1.0 + var_nominal) / (1.0 + ipc) - 1.0
+        por_anio = _iaf_real_por_anio()
+        if year_ref not in por_anio:
+            disponibles = sorted(por_anio)
+            if not disponibles:
+                raise ValueError("sin años completos en la planilla mensual de RON")
+            year_ref = disponibles[-1]
+        var_real, var_nominal, deflactor, tot_ref, tot_ant = por_anio[year_ref]
 
         return {
             "valor": round(var_real * 100.0, 1),
             "var_nominal_pct": round(var_nominal * 100.0, 1),
-            "total_ref_mm": round(tot[year_ref] / 1e6, 0),
-            "total_ant_mm": round(tot[year_ant] / 1e6, 0),
-            "periodo": f"{year_ref} vs {year_ant}",
-            "ipc_aplicado_pct": round(ipc * 100.0, 1),
+            "total_ref_mm": round(tot_ref / 1e6, 0),
+            "total_ant_mm": round(tot_ant / 1e6, 0),
+            "periodo": f"{year_ref} vs {year_ref - 1}",
+            "ipc_aplicado_pct": round(deflactor * 100.0, 1),
             "unidad": "% interanual real",
-            "fuente": "Sec. Hacienda — serie RON de recursos de origen nacional + IPC INDEC (deflactor)",
+            "fuente": ("Sec. Hacienda — RON, planilla mensual consolidada + IPC "
+                       "INDEC (deflactado mes a mes)"),
+            "detalle_txt": (
+                f"{year_ref}: {var_nominal * 100:+.1f}% nominal contra un deflactor "
+                f"de {deflactor * 100:.1f}% ponderado por el flujo de cada mes "
+                f"→ {var_real * 100:+.1f}% real"
+            ),
             # La fecha del DATO es el cierre del año de referencia, no la de la
             # corrida. Antes acá iba `date.today()`: la card se mostraba fresca
             # todos los días mientras comparaba dos años calendario cerrados —en
@@ -1942,6 +2261,19 @@ def cobertura_judicial_serie() -> tuple[dict, dict]:
 
     Importa el orden: entre t y P cada designación cubrió una vacante y cada
     renuncia creó una, así que hacia atrás los signos se invierten.
+
+    **El numerador es `cargo_vacante = NO`**, no `cargo_cobertura = Titular`.
+    Son dos campos distintos y no dan lo mismo: en el padrón del 5-jun-2026 hay
+    610 cargos no vacantes y 604 con titular, porque 6 tienen titular designado
+    pero con licencia y figuran cubiertos por subrogante. Es `cargo_vacante` el
+    que se corresponde con lo que dice la unidad —cargos *con juez designado*— y
+    el único que los registros de designaciones y renuncias saben mover.
+
+    La card publicaba el porcentaje del primero y lo explicaba con el conteo del
+    segundo, **y a la fecha del padrón en vez de la del corte**: 69,63% arriba y
+    «604 de 955» abajo, que es 63,25% (ADR-0240). Por eso ahora los metadatos
+    devuelven el numerador y el corte del valor que se publica, además de la
+    foto del padrón.
     """
     padron = _jus_csv(JUS_PADRON_Q)
     habilitados = [f for f in padron
@@ -1960,26 +2292,36 @@ def cobertura_judicial_serie() -> tuple[dict, dict]:
     renun = _jus_fechas(_jus_csv(JUS_RENUNCIAS_Q), "fecha_renuncia")
 
     hoy = date.today().isoformat()
+    # Un registro fechado en el futuro no describe el presente: el dataset trae
+    # designaciones con fecha posterior a hoy y contarlas adelantaría cobertura
+    # que todavía no ocurrió.
+    desig = [x for x in desig if x <= hoy]
+    renun = [x for x in renun if x <= hoy]
+
     serie, ym = {}, "2023-12"
+    corte_ultimo, mov_ultimo = None, None
     while ym <= hoy[:7]:
         ultimo_dia = calendar.monthrange(int(ym[:4]), int(ym[5:7]))[1]
         corte = min(f"{ym}-{ultimo_dia:02d}", hoy)
         if corte <= fecha_padron:
-            vac = (vac_p
-                   + sum(1 for x in desig if corte < x <= fecha_padron)
-                   - sum(1 for x in renun if corte < x <= fecha_padron))
+            d = sum(1 for x in desig if corte < x <= fecha_padron)
+            r = sum(1 for x in renun if corte < x <= fecha_padron)
+            vac = vac_p + d - r
         else:
-            vac = (vac_p
-                   - sum(1 for x in desig if fecha_padron < x <= corte)
-                   + sum(1 for x in renun if fecha_padron < x <= corte))
+            d = sum(1 for x in desig if fecha_padron < x <= corte)
+            r = sum(1 for x in renun if fecha_padron < x <= corte)
+            vac = vac_p - d + r
         serie[ym] = round(100.0 * (total - vac) / total, 2)
+        corte_ultimo, mov_ultimo = corte, {"designaciones": d, "renuncias": r,
+                                           "cargos_con_juez": total - vac}
         anio, mes = int(ym[:4]), int(ym[5:7]) + 1
         ym = f"{anio + 1}-01" if mes == 13 else f"{anio}-{mes:02d}"
 
     cobertura = {c: sum(1 for f in habilitados if f.get("cargo_cobertura") == c)
                  for c in ("Titular", "Subrogante", "Sin subrogante designado")}
     return serie, {"total_cargos": total, "vacantes_padron": vac_p,
-                   "fecha_padron": fecha_padron, "composicion": cobertura}
+                   "fecha_padron": fecha_padron, "composicion": cobertura,
+                   "fecha_corte": corte_ultimo, **(mov_ultimo or {})}
 
 
 def _jus_fecha_padron() -> str:
@@ -2002,14 +2344,23 @@ def fetch_cobertura_judicial() -> dict | None:
     Mide la capacidad del Gobierno de completar el Poder Judicial, que exige
     acuerdo del Senado: es una capacidad NEGOCIADA, no una decisión propia, y
     por eso pertenece a este cinturón y no al de gestión.
+
+    La card publica **numerador, denominador y la fecha de cada uno** (ADR-0240).
+    Antes mostraba 69,63% arriba y «604 de 955 cargos» abajo —que es 63,25%—
+    porque el porcentaje salía de `cargo_vacante` al corte de hoy y el conteo de
+    `cargo_cobertura` a la fecha del padrón: dos definiciones y dos cortes en la
+    misma card, y ningún gate mira si el texto reproduce el número.
     """
     try:
         serie, meta = cobertura_judicial_serie()
         ym = max(serie)
+        total = meta["total_cargos"]
+        numerador = meta["cargos_con_juez"]
         comp = meta["composicion"]
         titular = comp.get("Titular", 0)
         subrog = comp.get("Subrogante", 0)
         sin_nadie = comp.get("Sin subrogante designado", 0)
+        padron_con_juez = total - meta["vacantes_padron"]
         return {
             "valor":          serie[ym],
             "unidad":         "% de cargos de juez con juez designado",
@@ -2017,22 +2368,31 @@ def fetch_cobertura_judicial() -> dict | None:
                               "designaciones y renuncias (datos.jus.gob.ar)",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": False,
-            "cargos_totales":  meta["total_cargos"],
-            "cargos_titular":  titular,
-            "cargos_subrogante": subrog,
-            "cargos_sin_cubrir": sin_nadie,
-            "fecha_padron":   meta["fecha_padron"],
+            # numerador, denominador y corte DEL VALOR publicado
+            "cargos_con_juez": numerador,
+            "cargos_totales":  total,
+            "fecha_corte":     meta["fecha_corte"],
+            # la foto de la que parte, con su propia fecha
+            "fecha_padron":       meta["fecha_padron"],
+            "padron_con_juez":    padron_con_juez,
+            "padron_titular":     titular,
+            "padron_subrogante":  subrog,
+            "padron_sin_cubrir":  sin_nadie,
+            # el inventario que explica la distancia entre las dos fechas
+            "designaciones_desde_padron": meta["designaciones"],
+            "renuncias_desde_padron":     meta["renuncias"],
             "detalle_txt": (
-                f"{titular} de {meta['total_cargos']} cargos de juez habilitados "
-                f"tienen titular designado · {subrog} funcionan con subrogante y "
-                f"{sin_nadie} están sin cubrir (padrón al {meta['fecha_padron']}; "
-                f"la serie incorpora designaciones y renuncias posteriores)"),
+                f"{numerador} de {total} cargos de juez habilitados tienen juez "
+                f"designado al {meta['fecha_corte']} · sale del padrón al "
+                f"{meta['fecha_padron']} —{padron_con_juez} de {total} no "
+                f"vacantes— más {meta['designaciones']} designaciones y menos "
+                f"{meta['renuncias']} renuncias posteriores · en ese padrón, los "
+                f"{total} cargos se repartían en {titular} con titular en "
+                f"funciones, {subrog} con subrogante y {sin_nadie} sin cubrir"),
         }
     except Exception as e:
         _warn("cobertura_judicial", e)
         return None
-
-
 
 
 # ── Bloque judicial y producción legislativa (ADR-0168) ──────────────────────

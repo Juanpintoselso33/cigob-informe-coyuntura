@@ -95,6 +95,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0158](0158-validacion-del-itcm-por-puntos-de-giro.md) | El ITCM se valida por puntos de giro, no sólo por correlación |  | vigente |
 | [0192](0192-desequilibrio-monetario-stock-por-flujo.md) | Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va | `desequilibrio_monetario`, `presion_dolarizacion` | vigente |
 | [0193](0193-peso-del-desequilibrio-monetario.md) | El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó | `desequilibrio_monetario`, `rem_ipc_12m`, `idm` | vigente |
+| [0238](0238-la-tirea-no-se-estima-se-lee.md) | La TIREA no se estima, se lee |  | vigente |
 
 ### Política (ITCP)
 
@@ -123,7 +124,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0062](0062-eficacia-legislativa-fuente-leyes-sancionadas.md) | eficacia_legislativa: numerador desde leyes-sancionadas (la sanción del Senado era invisible) y denominador sin comunicaciones administrativas | `eficacia_legislativa` | superado por [0061](0061-eficacia-legislativa-cohorte-madura.md) |
 | [0063](0063-eficacia-legislativa-expedientes-jgm.md) | eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible | `eficacia_legislativa` | vigente |
 | [0064](0064-comisiones-caidas-contexto-oculto.md) | comisiones_caidas sale del ITCP a seguimiento interno (fuente ciega a las sanciones del Senado) | `poder_legislativo` | vigente |
-| [0065](0065-iaf-transferencias-deflactor-promedio.md) | iaf_transferencias: deflactor promedio anual (el dic-dic subdeflactaba sumas anuales) | `iaf_transferencias` | vigente |
+| [0065](0065-iaf-transferencias-deflactor-promedio.md) | iaf_transferencias: deflactor promedio anual (el dic-dic subdeflactaba sumas anuales) | `iaf_transferencias` | superado por [0239](0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) |
 | [0066](0066-iaf-transferencias-solo-provincias.md) | iaf_transferencias: el CSV RON incluye la porción del Tesoro Nacional y la ANSES — se filtra a provincias | `iaf_transferencias` | vigente |
 | [0069](0069-bloqueo-sostenido-indicador.md) | bloqueo_sostenido: la cara ganada del pulso legislativo entra al ITCP | `bloqueo_sostenido` | vigente |
 | [0070](0070-eficacia-mascara-era-validacion.md) | máscara de era para eficacia_legislativa en la reconstrucción del ITCP | `eficacia_legislativa` | vigente |
@@ -168,6 +169,9 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0183](0183-rediseno-del-cinturon-politico.md) | Rediseño del cinturón político según el documento de agosto: registrado, no aplicado |  | propuesto |
 | [0230](0230-nadie-publica-si-un-decreto-sigue-rigiendo.md) | Nadie publica si un decreto sigue rigiendo |  | rechazado |
 | [0232](0232-la-intensidad-laboral-complementa-la-calle.md) | La intensidad laboral complementa la calle | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` | vigente |
+| [0239](0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) | El deflactor lo pondera el flujo, no el calendario | `iaf_transferencias` | vigente |
+| [0240](0240-el-numerador-viaja-con-su-fecha.md) | El numerador viaja con su fecha | `cobertura_judicial` | vigente |
+| [0241](0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) | Un DNU es un tipo jurídico, no una frase | `ratio_dnu` | vigente |
 
 ### Gestión (ITCG)
 
@@ -211,6 +215,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0226](0226-el-itcg-se-queda-sin-validacion-externa-y-lo-declara.md) | El ITCG se queda sin validación externa única, y lo declara |  | vigente |
 | [0228](0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) | El FAL puntúa lo que rige, no lo que se dictó | `fal_modernizacion_laboral` | vigente |
 | [0229](0229-la-desregulacion-cuenta-actos-no-efectos.md) | La desregulación cuenta actos, no efectos, y la ficha lo dice | `desregulacion_normativa` | vigente |
+| [0244](0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) | El acto jurídico manda sobre el estado del portal | `concesiones_infraestructura` | vigente |
 
 ### Vida cotidiana (ITVC)
 
@@ -255,6 +260,8 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0225](0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) | El supermercado deja de validar el índice y pasa a integrarlo | `consumo_supermercados` | vigente |
 | [0231](0231-la-carga-de-deuda-anticipa-la-mora.md) | La carga de deuda anticipa la mora | `mora_familias`, `carga_servicio_deuda_hogares` | vigente |
 | [0235](0235-regulados-frente-al-salario-no-es-peso-de-tarifas.md) | La canasta de servicios puntúa contra asequibilidad, no contra 2023 | `peso_tarifas` | vigente |
+| [0242](0242-el-icc-que-se-publica-es-el-nacional.md) | El ICC que se publica es el nacional | `icc_utdt` | vigente |
+| [0243](0243-la-base-del-indice-la-declara-la-fuente.md) | La base del índice la declara la fuente | `consumo_supermercados` | vigente |
 
 ### Espíritu de época
 

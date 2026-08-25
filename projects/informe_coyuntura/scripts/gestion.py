@@ -2345,44 +2345,175 @@ def _esta_adjudicado(estado: str) -> bool:
     return bool(re.search(r"\bADJUDICADO\b", (estado or "").upper()))
 
 
+# CONTRAT.AR informa el estado del proceso, pero **se queda viejo**: al 25-ago-2026
+# mostraba «Disponible Para Adjudicar» dos etapas que ya estaban adjudicadas por
+# resolución publicada —la II-B desde el 28-jul y la III desde el 24-ago—. El
+# acto jurídico que adjudica es la resolución, no el estado del portal, así que
+# el indicador lo busca en el Boletín Oficial vía InfoLeg (ADR-0244).
+
+_RE_PROCESO_RFC = re.compile(r"\b504-\d{4}-LPU\d{2}\b")
+# En esta licitación de etapa múltiple, la adjudicación es la aprobación de lo
+# actuado en la SEGUNDA etapa: la primera precalifica oferentes y la segunda
+# evalúa las ofertas económicas y adjudica los renglones. Verificado contra el
+# texto del Boletín Oficial de la Resolución 1379/2026, que lista los ocho
+# tramos con sus adjudicatarios.
+_RE_ADJUDICA_RFC = re.compile(r"SEGUNDA\s+ETAPA")
+INFOLEG_VER_NORMA = "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id={id}"
+_ADJ_RFC_MEMO: dict = {}
+
+
+def _infoleg_texto_norma(session, infoleg_id: str) -> str:
+    """Texto plano de la ficha de una norma en InfoLeg."""
+    from bs4 import BeautifulSoup
+    r = session.get(INFOLEG_VER_NORMA.format(id=infoleg_id),
+                    headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    return re.sub(r"\s+", " ", BeautifulSoup(r.text, "html.parser").get_text(" ", strip=True))
+
+
+def _adjudicacion_publicada(proceso: str) -> dict | None:
+    """{'norma', 'fecha_pub'} de la resolución que adjudicó ese proceso, o None.
+
+    Dos filtros, y hacen falta los dos. El buscador de InfoLeg **no es exacto**:
+    pedirle `504-0007-LPU25` devuelve también resoluciones que hablan de otros
+    procesos, así que el número se verifica dentro del texto completo de cada
+    candidata. Y el sumario del listado viene truncado, así que la candidatura
+    se decide por la frase que sí entra —«SEGUNDA ETAPA»— y la confirmación por
+    el texto de la ficha.
+    """
+    if proceso in _ADJ_RFC_MEMO:
+        return _ADJ_RFC_MEMO[proceso]
+    from bs4 import BeautifulSoup
+    ses = requests.Session()
+    r_home = ses.get(INFOLEG_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r_home.raise_for_status()
+    m = re.search(r'action="(/infolegInternet/[^"]+)"', r_home.text)
+    if not m:
+        raise ValueError("InfoLeg: no se encontró la URL del formulario")
+    url = "https://servicios.infoleg.gob.ar" + m.group(1)
+    hoy = date.today()
+    datos = {"tipoNorma": "3", "numero": "", "anioSancion": "", "dependencia": "",
+             "diaPubDesde": "01", "mesPubDesde": "01", "anioPubDesde": "2024",
+             "diaPubHasta": f"{hoy.day:02d}", "mesPubHasta": f"{hoy.month:02d}",
+             "anioPubHasta": str(hoy.year), "texto": proceso}
+    r = ses.post(url, data=datos, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    if "Encontradas" not in r.text and "No se encontraron normas" not in r.text:
+        raise ValueError(f"InfoLeg: respuesta sin listado para {proceso}")
+
+    hallazgo = None
+    for fila in BeautifulSoup(r.text, "html.parser").find_all("tr"):
+        enlace = fila.find("a", href=re.compile(r"verNorma\.do\?(?:resaltar=true&)?id=\d+"))
+        celdas = [c.get_text(" ", strip=True) for c in fila.find_all("td")]
+        if not enlace or len(celdas) < 3:
+            continue
+        if not _RE_ADJUDICA_RFC.search(celdas[2].upper()):
+            continue                       # ni siquiera es candidata
+        iid = re.search(r"id=(\d+)", enlace["href"]).group(1)
+        texto = _infoleg_texto_norma(ses, iid).upper()
+        if proceso not in texto or not _RE_ADJUDICA_RFC.search(texto):
+            continue                       # el buscador la trajo por otro proceso
+        fecha = _fecha_infoleg_rfc(celdas[1])
+        norma = re.sub(r"\s+", " ", celdas[0]).split(" MINISTERIO")[0]
+        norma = norma.split(" SECRETARIA")[0].strip()
+        if fecha and (hallazgo is None or fecha < hallazgo["fecha_pub"]):
+            hallazgo = {"norma": norma, "fecha_pub": fecha, "infoleg_id": iid}
+    _ADJ_RFC_MEMO[proceso] = hallazgo
+    return hallazgo
+
+
+_MESES_RFC = {"ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6,
+              "jul": 7, "ago": 8, "sep": 9, "oct": 10, "nov": 11, "dic": 12}
+
+
+def _fecha_infoleg_rfc(texto: str) -> str | None:
+    """'24-ago-2026' → '2026-08-24'."""
+    m = re.search(r"(\d{1,2})-([a-zA-Z]{3})[a-zA-Z]*-(\d{4})", texto or "")
+    if not m:
+        return None
+    mes = _MESES_RFC.get(m.group(2).lower())
+    return f"{m.group(3)}-{mes:02d}-{int(m.group(1)):02d}" if mes else None
+
+
 def fetch_concesiones_infraestructura() -> dict | None:
     """
     Tasa de adjudicación de la Red Federal de Concesiones, en KM (doc 260702:
-    'km bajo concesión adjudicada / km totales del proceso'): el estado de cada
-    proceso licitatorio sale de CONTRAT.AR (sin login) y el kilometraje por
-    etapa de la página oficial de la RFC. Una etapa cuenta como adjudicada
-    cuando su proceso está en estado 'Adjudicado' (las etapas II-B y III
-    adjudican por renglones — refinamiento pendiente, cuentan al cierre).
+    'km bajo concesión adjudicada / km totales del proceso'): el kilometraje por
+    etapa sale de la página oficial de la RFC y el estado de cada proceso, de
+    **dos** fuentes que se complementan (ADR-0244):
+
+    - **CONTRAT.AR**, que informa el estado del expediente;
+    - **el Boletín Oficial vía InfoLeg**, que publica la resolución que adjudica.
+
+    Hacen falta las dos porque CONTRAT.AR se queda viejo: al 25-ago-2026 seguía
+    mostrando «Disponible Para Adjudicar» dos etapas ya adjudicadas por
+    resolución —la II-B desde el 28-jul y la III desde el 24-ago—, y el
+    indicador publicaba 28,7% cuando el plan estaba entero adjudicado. El acto
+    jurídico manda sobre el estado del portal.
     """
     try:
         procesos = _contratar_procesos_rfc()
         km = _rfc_km_por_etapa()
         km_total = sum(km.values())
-        adjudicadas, detalle_p = [], []
+
+        inventario, adjudicadas, detalle_p = [], set(), []
         for proceso, nombre, estado in procesos:
             etapa = _etapa_de_proceso(nombre)
-            adjudicado = _esta_adjudicado(estado)
+            por_portal = _esta_adjudicado(estado)
+            resolucion = None
+            if not por_portal:
+                # sólo se consulta el Boletín cuando el portal NO lo declara:
+                # si ya dice Adjudicado no hay nada que dirimir
+                try:
+                    resolucion = _adjudicacion_publicada(proceso)
+                except Exception as e:                      # la RFC no depende de InfoLeg
+                    print(f"  [WARN] concesiones {proceso}: InfoLeg no respondió ({e})")
+            adjudicado = por_portal or resolucion is not None
             if etapa and adjudicado and etapa in km:
-                adjudicadas.append(etapa)
-            detalle_p.append(f"{etapa or proceso}: {estado}")
-        km_adj = sum(km[e] for e in set(adjudicadas))
+                adjudicadas.add(etapa)
+            inventario.append({
+                "etapa": etapa, "proceso": proceso,
+                "km": km.get(etapa),
+                "adjudicado": adjudicado,
+                "estado_contratar": estado,
+                "fuente_estado": "CONTRAT.AR" if por_portal
+                                 else ("Boletín Oficial" if resolucion else "sin adjudicar"),
+                "resolucion": (resolucion or {}).get("norma"),
+                "fecha_adjudicacion": (resolucion or {}).get("fecha_pub"),
+            })
+            if adjudicado and resolucion:
+                detalle_p.append(f"{etapa or proceso}: adjudicada por "
+                                 f"{resolucion['norma']} ({resolucion['fecha_pub']})")
+            elif adjudicado:
+                detalle_p.append(f"{etapa or proceso}: adjudicada (CONTRAT.AR)")
+            else:
+                detalle_p.append(f"{etapa or proceso}: {estado}")
+
+        km_adj = sum(km[e] for e in adjudicadas)
         avance = round(100.0 * km_adj / km_total, 1)
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
         etapa_key = {"I": "etapa_i", "II": "etapa_ii", "II-B": "etapa_ii_b", "III": "etapa_iii"}
+        por_boletin = [i for i in inventario if i["fuente_estado"] == "Boletín Oficial"]
+        nota = ""
+        if por_boletin:
+            etapas = ", ".join(sorted(str(i["etapa"]) for i in por_boletin))
+            nota = (f" · CONTRAT.AR todavía no refleja la adjudicación de "
+                    f"{etapas}, que constan en el Boletín Oficial")
         return {
             "valor":          avance,
             "unidad":         "% de km adjudicados / km del plan (Red Federal de Concesiones)",
-            "fuente":         "CONTRAT.AR (UOC 504) + página oficial RFC",
+            "fuente":         "CONTRAT.AR (UOC 504) + Boletín Oficial (InfoLeg) + página oficial RFC",
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,
             "km_adjudicados": round(km_adj),
             "km_totales":     round(km_total),
             "procesos":       len(procesos),
+            "inventario_etapas": inventario,
             # % adjudicado por etapa → gráfico de barras del modal
             "componentes":    {etapa_key.get(e, e): (100.0 if e in adjudicadas else 0.0)
                                for e in km},
             "detalle_txt": (f"{miles(km_adj)} de {miles(km_total)} km adjudicados · "
-                            + " · ".join(sorted(set(detalle_p)))),
+                            + " · ".join(sorted(set(detalle_p))) + nota),
         }
     except Exception as e:
         _warn("concesiones_infraestructura", e)

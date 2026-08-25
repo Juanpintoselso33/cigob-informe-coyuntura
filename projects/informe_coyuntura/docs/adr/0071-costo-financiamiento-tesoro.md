@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-18
 cinturon: 'macro'
 indicadores: [costo_financiamiento_tesoro]
-relacionado: ['0019', '0021', '0022', '0074']
+relacionado: ['0019', '0021', '0022', '0074', '0238']
 ambito: 'Cinturón macro · ITCM · dimensión Financiamiento · `costo_financiamiento_tesoro` (nuevo)'
 origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 3'
 ---

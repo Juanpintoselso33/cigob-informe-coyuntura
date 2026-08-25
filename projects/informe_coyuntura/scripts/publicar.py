@@ -251,7 +251,10 @@ def build_vida(raw):
     # invisible para `_carry_forward`, que sólo repara las que ya están en None.
     super_ = (raw.get("indec_supermercados") or {}).get("consumo_supermercados", {})
     _add(out, "consumo_supermercados", super_.get("valor"),
-         "índice (2004 = 100, desestacionalizado)",
+         # la base la declara la fuente y la lee el colector (ADR-0243); el
+         # literal que había acá decía «2004 = 100» y la serie ni siquiera
+         # empieza antes de 2017
+         super_.get("unidad") or "índice (desestacionalizado)",
          "INDEC — Encuesta de supermercados (ventas a precios constantes)",
          f"{super_['fecha']}-01" if super_.get("fecha") else None)
     return out

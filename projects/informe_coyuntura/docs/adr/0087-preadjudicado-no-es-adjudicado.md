@@ -6,7 +6,7 @@ fecha: 2026-07-19
 cinturon: 'gestion'
 indicadores: [concesiones_infraestructura]
 archivos: ['gestion.py', 'descargar_series.py']
-relacionado: ['0086']
+relacionado: ['0086', '0244']
 ambito: '`concesiones_infraestructura` · ITCG · `gestion.py` · `descargar_series.py`'
 origen: 'Lo encontró el test generalizado que introdujo ADR-0086, en su primera corrida'
 ---

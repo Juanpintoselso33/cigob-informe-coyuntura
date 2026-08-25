@@ -8,7 +8,7 @@ indice: 'ITCP'
 indicadores: [ratio_dnu]
 parametros: ['BANDAS_ITCP']
 supersede_parcialmente: ['0058']
-relacionado: ['0036', '0038', '0045', '0052', '0061', '0065']
+relacionado: ['0036', '0038', '0045', '0052', '0061', '0065', '0241']
 ---
 
 # ADR-0059 — ratio_dnu: se revierte la recalibración de anclas de ADR-0058

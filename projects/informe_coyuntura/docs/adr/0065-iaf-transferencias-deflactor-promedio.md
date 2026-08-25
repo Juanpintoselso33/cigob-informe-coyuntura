@@ -1,12 +1,14 @@
 ---
 madr: 4
 id: '0065'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'Superado por ADR-0239'
 fecha: 2026-07-15
 cinturon: 'politica'
 indicadores: [iaf_transferencias]
 archivos: ['_ipc_promedio_indec()']
 relacionado: ['0059', '0066']
+superado_por: ['0239']
 ambito: 'Cinturón política · ITCP · `iaf_transferencias` · `_ipc_promedio_indec()`'
 ---
 

@@ -40,6 +40,10 @@ def test_fetch_ratio_dnu_serie_ventana_movil_por_mes(monkeypatch):
         return {"1": 10, "2": 15}[tipo]
 
     monkeypatch.setattr(politica, "_infoleg_session_count", fake_count)
+    monkeypatch.setattr(politica, "_infoleg_contar_dnus",
+                        lambda ses, au, desde, hasta:
+                            (fake_count(ses, au, "2", desde, hasta,
+                                        "necesidad y urgencia"), []))
 
     serie = descargar_series.fetch_ratio_dnu_serie()
 
@@ -78,6 +82,10 @@ def test_fetch_ratio_dnu_serie_omite_mes_sin_leyes(monkeypatch):
         return {"1": 10, "2": 15}[tipo]
 
     monkeypatch.setattr(politica, "_infoleg_session_count", fake_count)
+    monkeypatch.setattr(politica, "_infoleg_contar_dnus",
+                        lambda ses, au, desde, hasta:
+                            (fake_count(ses, au, "2", desde, hasta,
+                                        "necesidad y urgencia"), []))
 
     serie = descargar_series.fetch_ratio_dnu_serie()
 

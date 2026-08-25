@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-15
 cinturon: 'politica'
 indicadores: [iaf_transferencias]
-relacionado: ['0065']
+relacionado: ['0065', '0239']
 ambito: 'Cinturón política · ITCP · `iaf_transferencias`'
 ---
 

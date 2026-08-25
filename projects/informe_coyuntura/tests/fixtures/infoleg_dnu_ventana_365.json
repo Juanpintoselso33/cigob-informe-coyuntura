@@ -1,0 +1,308 @@
+{
+  "_fuente": "InfoLeg — buscarNormas.do, tipoNorma=2 (Decreto) + texto «necesidad y urgencia»",
+  "_url": "https://servicios.infoleg.gob.ar/infolegInternet/buscarNormas.do",
+  "_descargado": "2026-08-25",
+  "_ventana": {
+    "desde": "2025-08-25",
+    "hasta": "2026-08-25",
+    "dias": 365
+  },
+  "_que_congela": "Las 48 filas que devolvia la busqueda de texto completo en la ventana auditada. Solo 37 estan tipificadas como DNU en la propia grilla; las otras 11 son decretos que MENCIONAN la frase (prorrogas de intervenciones, reglamentarios, un veto). Con 25 leyes publicadas, 37/25 = 1,48 y no 48/25 = 1,92.",
+  "leyes_publicadas": 25,
+  "esperado": {
+    "dnu": 37,
+    "ratio": 1.48,
+    "ratio_erroneo": 1.92,
+    "filas_totales": 48
+  },
+  "filas": [
+    {
+      "infoleg_id": "429094",
+      "norma": "Decreto DNU 771 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-08-21",
+      "sumario": "PODER EJECUTIVO NACIONAL LEY DE MINISTERIOS - MODIFICACION SUSTITUYESE EL INCISO 74 DEL ARTICULO 20 Y LOS INCISOS 16, 20"
+    },
+    {
+      "infoleg_id": "428911",
+      "norma": "Decreto DNU 736 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-08-14",
+      "sumario": "PODER EJECUTIVO DISPOSICIONES SUSTITUYESE EL ARTICULO 23 DEL DECRETO N° 905 DEL 31 DE MAYO DE 2002 Y SUS NORMAS MODIFICA"
+    },
+    {
+      "infoleg_id": "428613",
+      "norma": "Decreto DNU 717 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-08-06",
+      "sumario": "PODER EJECUTIVO NACIONAL EJERCICIOS MILITARES FRATERNO XXXIX VIEKAREN XXVI SIFOREX XIV Y UNITAS LXVII - AUTORIZA"
+    },
+    {
+      "infoleg_id": "428615",
+      "norma": "Decreto 710 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-08-06",
+      "sumario": "OBRA SOCIAL DE LAS FUERZAS ARMADAS REGIMEN GENERAL DE COMPRAS Y CONTRATACIONES APRUEBASE EL REGIMEN GENERAL DE COMPRAS Y"
+    },
+    {
+      "infoleg_id": "428321",
+      "norma": "Decreto DNU 681 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-07-30",
+      "sumario": "PODER EJECUTIVO NACIONAL LEY 25871 - MODIFICACION MODIFICACION DE LA LEY DE MIGRACIONES N° 25.871. INCORPORASE COMO INCI"
+    },
+    {
+      "infoleg_id": "428190",
+      "norma": "Decreto DNU 667 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-07-28",
+      "sumario": "SISTEMA HIDROELECTRICO LOS NIHUILES LICITACION PUBLICA - CONVOCATORIA CONVOCASE A LICITACION PUBLICA NACIONAL E INTERNAC"
+    },
+    {
+      "infoleg_id": "428101",
+      "norma": "Decreto DNU 650 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-07-24",
+      "sumario": "PODER EJECUTIVO NACIONAL EJERCICIO MULTINACIONAL PANAMAX 2026 - AUTORIZACION AUTORIZASE LA SALIDA DEL TERRITORIO NACIO"
+    },
+    {
+      "infoleg_id": "427769",
+      "norma": "Decreto 605 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-07-17",
+      "sumario": "OBRA SOCIAL DE LAS FUERZAS FEDERALES DE SEGURIDAD REGIMEN DE CONTRATACIONES - APRUEBASE APRUEBASE EL REGIMEN DE CONTRATA"
+    },
+    {
+      "infoleg_id": "427717",
+      "norma": "Decreto DNU 594 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-07-16",
+      "sumario": "PRESUPUESTO MODIFICACION MODIFICASE EL PRESUPUESTO GENERAL DE LA ADMINISTRACION NACIONAL PARA EL EJERCICIO 2026, DE ACUE"
+    },
+    {
+      "infoleg_id": "427566",
+      "norma": "Decreto DNU 585 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-07-13",
+      "sumario": "PODER EJECUTIVO NACIONAL EMERGENCIA DEL SECTOR ENERGETICO NACIONA - PRORROGA PRORROGASE LA EMERGENCIA DEL SECTOR ENERGET"
+    },
+    {
+      "infoleg_id": "427516",
+      "norma": "Decreto DNU 580 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-07-08",
+      "sumario": "PODER EJECUTIVO NACIONAL DISPOSICIONES DEROGASE EL DECRETO N° 689 DEL 26 DE ABRIL DE 2002. A LOS EFECTOS DEL CALCULO DEL"
+    },
+    {
+      "infoleg_id": "427383",
+      "norma": "Decreto DNU 571 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-07-03",
+      "sumario": "PODER EJECUTIVO NACIONAL LEY DE MINISTERIOS - MODIFICACION SUSTITUYESE EL ARTICULO 1°, EL ARTICULO 9° DEL TITULO III Y E"
+    },
+    {
+      "infoleg_id": "426960",
+      "norma": "Decreto DNU 490 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-06-25",
+      "sumario": "PODER EJECUTIVO NACIONAL EJERCICIO COMBINADO SALITRE 2026 - AUTORIZACION AUTORIZASE LA SALIDA DEL TERRITORIO NACIONAL "
+    },
+    {
+      "infoleg_id": "426728",
+      "norma": "Decreto DNU 473 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-06-17",
+      "sumario": "PERSONAL MILITAR DISPOSICIONES INCORPORASE COMO INCISO 4° DEL ARTICULO 56 DE LA LEY PARA EL PERSONAL MILITAR N° 19.101 Y"
+    },
+    {
+      "infoleg_id": "425373",
+      "norma": "Decreto DNU 314 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-05-04",
+      "sumario": "PODER EJECUTIVO NACIONAL PLAN DE ADECUACION Y REEQUIPAMIENTO MILITAR ARGENTINO ESTABLECER EL PLAN DE ADECUACION Y REEQUI"
+    },
+    {
+      "infoleg_id": "425123",
+      "norma": "Decreto DNU 274 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-04-24",
+      "sumario": "PODER EJECUTIVO NACIONAL DISPOSICIONES SUSTITUYESE EL ARTICULO 15 DE LA LEY 27.161 Y SUS MODIFICATORIAS. EL SERVICIO MET"
+    },
+    {
+      "infoleg_id": "424950",
+      "norma": "Decreto DNU 252 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-04-17",
+      "sumario": "PODER EJECUTIVO NACIONAL DECRETO 688/2002 - MODIFICACION REGIMEN DE ADUANA EN FACTORIA. SUSTITUYENSE EL ARTICULO 1°, LOS"
+    },
+    {
+      "infoleg_id": "424951",
+      "norma": "Decreto DNU 264 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-04-17",
+      "sumario": "PODER EJECUTIVO NACIONAL EJERCICIO DAGA ATLANTICA - AUTORIZASE INGRESO DE MEDIOS Y PERSONAL EEUU AUTORIZASE EL INGRESO"
+    },
+    {
+      "infoleg_id": "424329",
+      "norma": "Decreto DNU 203 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-03-30",
+      "sumario": "PODER EJECUTIVO NACIONAL EJERCICIO COMBINADO ACRUX XII - AUTORIZACION AUTORIZASE LA SALIDA DEL TERRITORIO NACIONAL DE "
+    },
+    {
+      "infoleg_id": "423820",
+      "norma": "Decreto DNU 149 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-03-12",
+      "sumario": "PODER EJECUTIVO NACIONAL EJERCICIO COOPERACION XI - AUTORIZACION AUTORIZASE LA SALIDA DEL TERRITORIO NACIONAL DE MEDIO"
+    },
+    {
+      "infoleg_id": "422981",
+      "norma": "Decreto DNU 88 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-02-06",
+      "sumario": "PODER EJECUTIVO DISPOSICIONES CREASE, EN EL AMBITO DEL MINISTERIO DE DEFENSA, LA OBRA SOCIAL DE LAS FUERZAS ARMADAS (OSF"
+    },
+    {
+      "infoleg_id": "422916",
+      "norma": "Decreto 82 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-02-04",
+      "sumario": "INTERVENCION PRORROGA PRORROGASE POR EL PLAZO DE UN (1) AÑO, A PARTIR DEL 4 DE FEBRERO DE 2026, LA INTERVENCION DE EDUC."
+    },
+    {
+      "infoleg_id": "422851",
+      "norma": "Decreto DNU 80 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-02-02",
+      "sumario": "PODER EJECUTIVO DECLARASE LA EMERGENCIA IGNEA DECLARASE LA EMERGENCIA IGNEA EN LA PROVINCIA DE SANTA CRUZ, EN LOS TERMIN"
+    },
+    {
+      "infoleg_id": "422852",
+      "norma": "Decreto 79 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-02-02",
+      "sumario": "INTERVENCIONES PRORROGA PRORROGASE, A PARTIR DEL 2 DE FEBRERO DEL 2026 Y HASTA EL 1º DE FEBRERO DE 2027, LA INTERVENCION"
+    },
+    {
+      "infoleg_id": "422761",
+      "norma": "Decreto DNU 73 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-30",
+      "sumario": "PODER EJECUTIVO DECLARASE LA EMERGENCIA IGNEA DECLARASE LA EMERGENCIA IGNEA EN LAS PROVINCIAS DEL CHUBUT, DE RIO NEGRO, "
+    },
+    {
+      "infoleg_id": "422706",
+      "norma": "Decreto Reglamentario 58 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-29",
+      "sumario": "PODER EJECUTIVO REGLAMENTACION DE LA LEY PARA EL PERSONAL MILITAR N° 19.101 - MODIFICACION SUSTITUYENSE LOS ARTICULOS 18"
+    },
+    {
+      "infoleg_id": "422614",
+      "norma": "Decreto DNU 49 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-27",
+      "sumario": "PODER EJECUTIVO EMERGENCIA DEL SECTOR ENERGETICO NACIONAL - PRORROGASE PRORROGASE LA EMERGENCIA DEL SECTOR ENERGETICO NA"
+    },
+    {
+      "infoleg_id": "422546",
+      "norma": "Decreto DNU 26 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-26",
+      "sumario": "PODER EJECUTIVO DISPOSICIONES SUSTITUYESE EL PUNTO 13 DEL PLAN DE REASEGURO Y POTENCIACION DE LA PRODUCCION FEDERAL DE "
+    },
+    {
+      "infoleg_id": "422547",
+      "norma": "Decreto DNU 34 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-26",
+      "sumario": "PODER EJECUTIVO LEY PARA EL PERSONAL MILITAR N° 19.101 - MODIFICACION SUSTITUYENSE EL INCISO 1° DEL ARTICULO 38 Y EL ART"
+    },
+    {
+      "infoleg_id": "422548",
+      "norma": "Decreto DNU 41 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-26",
+      "sumario": "PODER EJECUTIVO LEY Nº 22.415 - MODIFICACION SUSTITUYENSE LOS ARTICULOS 226 Y 323 DE LA LEY N° 22.415 (CODIGO ADUANERO) "
+    },
+    {
+      "infoleg_id": "422550",
+      "norma": "Decreto 27 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-26",
+      "sumario": "ADMINISTRACION PUBLICA NACIONAL DECRETO 50/2019 - MODIFICACION SUSTITUYESE DEL ANEXO I -ORGANIGRAMA DE APLICACION DE LA "
+    },
+    {
+      "infoleg_id": "422412",
+      "norma": "Decreto DNU 17 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-16",
+      "sumario": "VIAJES OFICIALES AUTORIZACION AUTORIZASE AL TITULAR DEL PODER EJECUTIVO NACIONAL A AUSENTARSE DEL PAIS CUANDO RAZONES DE"
+    },
+    {
+      "infoleg_id": "422104",
+      "norma": "Decreto DNU 2 / 2026 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-05",
+      "sumario": "PODER EJECUTIVO NACIONAL ACUERDO MODIFICATORIO DEL ACTA DEL FARALLON NEGRO - MODIFICACION LEY Nº 14.771 APRUEBASE EL AC"
+    },
+    {
+      "infoleg_id": "422010",
+      "norma": "Decreto DNU 942 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-02",
+      "sumario": "PODER EJECUTIVO DISPOSICIONES PRORROGASE HASTA EL 31 DE DICIEMBRE DE 2026 LA EMERGENCIA SANITARIA NACIONAL ESTABLECIDA P"
+    },
+    {
+      "infoleg_id": "422011",
+      "norma": "Decreto DNU 941 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-02",
+      "sumario": "PODER EJECUTIVO MODIFICACION DE LA LEY DE INTELIGENCIA NACIONAL N° 25.520 CREASE EL CENTRO NACIONAL DE CIBERSEGURIDAD (C"
+    },
+    {
+      "infoleg_id": "422014",
+      "norma": "Decreto 931 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2026-01-02",
+      "sumario": "PODER EJECUTIVO DISPOSICIONES INSTRUYESE A LA SECRETARIA DE TRANSFORMACION DEL ESTADO Y FUNCION PUBLICA DEL MINISTERIO D"
+    },
+    {
+      "infoleg_id": "420736",
+      "norma": "Decreto DNU 849 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-12-01",
+      "sumario": "PRESUPUESTO ADMINISTRACION NACIONAL MODIFICACION MODIFICASE EL PRESUPUESTO GENERAL DE LA ADMINISTRACION NACIONAL PARA EL"
+    },
+    {
+      "infoleg_id": "420406",
+      "norma": "Decreto DNU 825 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-11-20",
+      "sumario": "PODER EJECUTIVO NACIONAL LEY DE MINISTERIOS - MODIFICACION SUSTITUYENSE LOS INCISOS 35 Y 40 DEL ARTICULO 16 DEL TITULO V"
+    },
+    {
+      "infoleg_id": "420305",
+      "norma": "Decreto 812 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-11-18",
+      "sumario": "PODER EJECUTIVO NACIONAL DECRETO 1240/2002 - MODIFICACION SUSTITUYESE EL ARTICULO 8° DEL DECRETO N° 1240 DEL 12 DE JULIO"
+    },
+    {
+      "infoleg_id": "420123",
+      "norma": "Decreto DNU 805 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-11-13",
+      "sumario": "PODER EJECUTIVO LEY N° 26.221 - TEXTO ORDENADO APRUEBASE EL TEXTO ORDENADO DEL MARCO REGULATORIO DE LA LEY N° 26.221."
+    },
+    {
+      "infoleg_id": "420022",
+      "norma": "Decreto DNU 793 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-11-11",
+      "sumario": "PODER EJECUTIVO MODIFICACION LEY DE MINISTERIOS SUSTITUYESE EL ARTICULO 9º DEL TITULO III DE LA LEY DE MINISTERIOS Nº 22"
+    },
+    {
+      "infoleg_id": "418048",
+      "norma": "Decreto DNU 697 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-09-30",
+      "sumario": "PODER EJECUTIVO NACIONAL EJERCICIOS COMBINADOS SOLIDARIDAD Y TRIDENTE - AUTORIZACION AUTORIZASE LA SALIDA DEL TERRIT"
+    },
+    {
+      "infoleg_id": "418049",
+      "norma": "Decreto 696 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-09-30",
+      "sumario": "PODER EJECUTIVO NACIONAL DECRETO 1467/2011 - MODIFICACION SUSTITUYESE EL ANEXO I DEL DECRETO Nº 1467 DEL 22 DE SEPTIEMBR"
+    },
+    {
+      "infoleg_id": "417484",
+      "norma": "Decreto DNU 658 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-09-15",
+      "sumario": "PODER EJECUTIVO NACIONAL LEY DE MINISTERIOS - MODIFICACION SUSTITUYESE: EL ARTICULO 1º, EL ARTICULO 4° BIS, EL ARTICULO "
+    },
+    {
+      "infoleg_id": "417372",
+      "norma": "Decreto 651 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-09-11",
+      "sumario": "VETO PROYECTO DE LEY 27796 - OBSERVASE EN SU TOTALIDAD OBSERVASE EN SU TOTALIDAD EL PROYECTO DE LEY REGISTRADO BAJO EL N"
+    },
+    {
+      "infoleg_id": "417101",
+      "norma": "Decreto DNU 628 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-09-03",
+      "sumario": "PODER EJECUTIVO NACIONAL DISPOSICIONES RESTITUYESE LA PLENA VIGENCIA DE LAS DISPOSICIONES NORMATIVAS QUE FUERON DEROGADA"
+    },
+    {
+      "infoleg_id": "417102",
+      "norma": "Decreto DNU 627 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-09-03",
+      "sumario": "PODER EJECUTIVO NACIONAL DISPOSICIONES RESTITUYESE LA PLENA VIGENCIA DE LAS DISPOSICIONES NORMATIVAS QUE FUERON DEROGADA"
+    },
+    {
+      "infoleg_id": "416912",
+      "norma": "Decreto 615 / 2025 PODER EJECUTIVO NACIONAL (P.E.N.) Ver Norma y Textos Resaltados",
+      "fecha_pub": "2025-08-28",
+      "sumario": "CASA DE MONEDA SAU INTERVENCION - PRORROGA DISPONESE LA PRORROGA DE LA INTERVENCION DE CASA DE MONEDA SOCIEDAD ANONIMA U"
+    }
+  ]
+}

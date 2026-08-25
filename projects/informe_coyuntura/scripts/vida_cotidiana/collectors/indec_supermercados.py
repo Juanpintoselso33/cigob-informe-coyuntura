@@ -36,6 +36,7 @@ parte del ciclo caiga la corrida. Por eso el tope del gate es 140 y no el
 default de 110, que marcaría atraso todos los meses (ver `gate_calidad.MAX_DIAS`).
 """
 import logging
+import re
 
 import requests
 
@@ -59,18 +60,47 @@ SERIE_ID = "455.1_VENTAS_PREADA_0_M_44_44"
 # sin que nada avise: es la falla que este colector tiene que hacer ruidosa.
 BASE_MESES = ("2023-10", "2023-11", "2023-12")
 
+# La base del índice se LEE de la fuente, no se escribe acá. La card la
+# rotulaba «2004 = 100» y la Encuesta de Supermercados vigente usa **base
+# 2017=100**: la serie ni siquiera empieza antes de enero de 2017 (ADR-0243).
+# `units` es el campo donde la API declara la base; si dejara de traerlo, el
+# colector falla en vez de inventar un rótulo.
+_RE_BASE = re.compile(r"base\s*(?:a[ñn]o\s*)?(\d{4})\s*=\s*100", re.IGNORECASE)
+
+
+def base_declarada(meta: list) -> tuple[int, str]:
+    """(año base, unidad textual) leídos de los metadatos de la serie.
+
+    Falla si la API no declara una base reconocible. Es a propósito: el rótulo
+    anterior —«2004 = 100»— no vino de ningún lado verificable y sobrevivió
+    porque nadie tenía contra qué compararlo."""
+    for bloque in meta or []:
+        units = ((bloque.get("field") or {}).get("units") or "").strip()
+        m = _RE_BASE.search(units)
+        if m:
+            return int(m.group(1)), units
+    raise ValueError(
+        f"{SERIE_ID}: la API no declara la base del índice en «units»; "
+        "sin eso el rótulo de la card sería una suposición")
+
 
 def fetch_consumo_supermercados() -> dict:
-    """{'consumo_supermercados': {'valor', 'fecha'}, 'serie': {YYYY-MM: valor}}.
+    """{'consumo_supermercados': {'valor', 'fecha', 'unidad'}, 'serie': {...}}.
 
     La card es el último punto de la MISMA serie que alimenta el índice: no hay
     dos caminos que puedan divergir. `descargar_series.py` reusa esta función.
+
+    La unidad también sale de acá (ADR-0243), leída de los metadatos de la
+    fuente: card, serie y web dejan de tener cada una su copia del rótulo.
     """
     r = requests.get(SERIES_API,
-                     params={"ids": SERIE_ID, "format": "json", "limit": 5000},
+                     params={"ids": SERIE_ID, "format": "json", "limit": 5000,
+                             "metadata": "full"},
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
-    filas = r.json().get("data") or []
+    cuerpo = r.json()
+    anio_base, _ = base_declarada(cuerpo.get("meta"))
+    filas = cuerpo.get("data") or []
     serie = {f[0][:7]: float(f[1]) for f in filas if f[1] is not None}
     if not serie:
         raise ValueError(f"{SERIE_ID}: la API no devolvió ningún punto")
@@ -81,10 +111,18 @@ def fetch_consumo_supermercados() -> dict:
             f"{SERIE_ID}: faltan meses de la base 4T-2023 ({', '.join(faltan)}); "
             "sin ellos el rebase del componente mediría contra otra base")
 
+    primero = min(serie)
+    if int(primero[:4]) < anio_base:
+        raise ValueError(
+            f"{SERIE_ID}: la serie arranca en {primero} pero la base declarada "
+            f"es {anio_base}=100; una de las dos cosas cambió")
+
     ult = max(serie)
-    logger.info("consumo_supermercados OK: %s = %.1f (%d meses)",
-                ult, serie[ult], len(serie))
+    unidad = f"índice ({anio_base} = 100, desestacionalizado)"
+    logger.info("consumo_supermercados OK: %s = %.1f (%d meses, %s)",
+                ult, serie[ult], len(serie), unidad)
     return {
-        "consumo_supermercados": {"valor": round(serie[ult], 1), "fecha": ult},
+        "consumo_supermercados": {"valor": round(serie[ult], 1), "fecha": ult,
+                                  "unidad": unidad, "anio_base": anio_base},
         "serie": serie,
     }

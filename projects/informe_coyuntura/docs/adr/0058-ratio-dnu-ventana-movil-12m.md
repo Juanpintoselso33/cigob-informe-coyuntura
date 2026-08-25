@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-15
 cinturon: 'politica'
 indicadores: [ratio_dnu, poder_legislativo]
-relacionado: ['0036', '0045', '0052', '0060']
+relacionado: ['0036', '0045', '0052', '0060', '0241']
 superado_parcialmente_por: ['0059']
 ambito: 'Cinturón política · ITCP · `ratio_dnu` · dimensión `poder_legislativo`'
 ---

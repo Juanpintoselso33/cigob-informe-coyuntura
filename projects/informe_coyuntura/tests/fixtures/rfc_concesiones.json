@@ -1,0 +1,69 @@
+{
+  "_fuente": "CONTRAT.AR (busqueda «RED FEDERAL», UOC 504) + pagina oficial de la Red Federal de Concesiones + InfoLeg/Boletin Oficial",
+  "_url_rfc": "https://www.argentina.gob.ar/transporte/vialidad-nacional/red-federal-de-concesiones",
+  "_url_contratar": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+  "_descargado": "2026-08-25",
+  "_que_congela": "El estado de los cuatro procesos en CONTRAT.AR, los km por etapa de la pagina oficial y la resolucion de adjudicacion de cada proceso en el Boletin Oficial. Al 25-ago-2026 CONTRAT.AR mostraba «Disponible Para Adjudicar» la II-B y la III, adjudicadas por Resolucion 1149/2026 (28-jul) y 1379/2026 (24-ago). El indicador publicaba 28,7% con el plan entero adjudicado.",
+  "km_por_etapa": {
+    "I": 741.71,
+    "II": 1871.82,
+    "II-B": 2557.11,
+    "III": 3920.21
+  },
+  "procesos": [
+    {
+      "proceso": "504-0001-LPU26",
+      "nombre": "RED FEDERAL DE CONCESIONES - ETAPA III -",
+      "estado_contratar": "Disponible Para Adjudicar",
+      "etapa": "III"
+    },
+    {
+      "proceso": "504-0007-LPU25",
+      "nombre": "RED FEDERAL DE CONCESIONES - ETAPA I - TRAMO ORIENTAL - TRAMO CONEXIÓN",
+      "estado_contratar": "Adjudicado",
+      "etapa": "I"
+    },
+    {
+      "proceso": "504-0013-LPU25",
+      "nombre": "RED FEDERAL DE CONCESIONES - ETAPA II - Tramos Sur, Atlántico, Acceso Sur y Pampa.",
+      "estado_contratar": "Adjudicado",
+      "etapa": "II"
+    },
+    {
+      "proceso": "504-0015-LPU25",
+      "nombre": "RED FEDERAL DE CONCESIONES- ETAPA II-B-Tramos Mediterráneo, Puntano, Portuario Norte y Portuario Sur",
+      "estado_contratar": "Disponible Para Adjudicar",
+      "etapa": "II-B"
+    }
+  ],
+  "adjudicaciones_boletin": {
+    "504-0001-LPU26": {
+      "norma": "Resolución 1379 / 2026",
+      "fecha_pub": "2026-08-24",
+      "infoleg_id": "429144"
+    },
+    "504-0007-LPU25": {
+      "norma": "Resolución 80 / 2025",
+      "fecha_pub": "2025-11-19",
+      "infoleg_id": "420365"
+    },
+    "504-0013-LPU25": {
+      "norma": "Resolución 706 / 2026",
+      "fecha_pub": "2026-05-15",
+      "infoleg_id": "425890"
+    },
+    "504-0015-LPU25": {
+      "norma": "Resolución 1149 / 2026",
+      "fecha_pub": "2026-07-28",
+      "infoleg_id": "428228"
+    }
+  },
+  "esperado": {
+    "valor": 100.0,
+    "km_adjudicados": 9091,
+    "km_totales": 9091,
+    "valor_erroneo": 28.7,
+    "km_adjudicados_erroneo": 2614,
+    "cota_inferior_auditoria": 71.65
+  }
+}

@@ -1070,32 +1070,80 @@ def _colocaciones_urls() -> dict:
     return {y: u for y, (_, u) in mejores.items()}
 
 
+def _tem_capitalizable(cup: str) -> float | None:
+    """TEM del cupón de una LECAP/BONCAP a tasa fija en pesos, o None.
+
+    Sólo la tasa fija: `capitalizable "TAMAR TEM"` no trae número y queda
+    afuera, igual que CER, dólar linked y cupón variable."""
+    m = _RE_TEM_CAP.search(_norm_txt(cup))
+    return float(m.group(1).replace(",", ".")) / 100.0 if m else None
+
+
 def _tirea_de_fila(cup: str, emi, ven, col, precio: float) -> float | None:
-    """TIREA (tasa efectiva ANUAL) implícita de una colocación a tasa fija en
-    pesos. Dos familias: capitalizable (LECAP/BONCAP, paga 1000·(1+TEM)^n al
-    vencimiento) y a descuento / cupón cero (LEDE, paga 1000). El resto —CER,
-    dólar linked, TAMAR variable— queda afuera: su 'tasa' no es comparable."""
-    c = _norm_txt(cup)
-    m = _RE_TEM_CAP.search(c)
-    if m:
-        tem = float(m.group(1).replace(",", ".")) / 100.0
-        n = (ven.year - emi.year) * 12 + (ven.month - emi.month)
-        payoff = 1000.0 * (1.0 + tem) ** n
-    elif "a descuento" in c or "cupon cero" in c:
-        payoff = 1000.0
+    """TIREA (tasa efectiva ANUAL) de una colocación a tasa fija en pesos.
+
+    Para una LECAP/BONCAP la TIREA **es un dato publicado, no una estimación**:
+    Finanzas informa la TEM en el cupón y la convención del mercado la anualiza
+    como `(1+TEM)^12 - 1`. Es lo que se reconstruía a mano —mal— hasta
+    ago-2026: `_tirea_reconstruida` capitalizaba por meses de calendario
+    enteros en vez de por el plazo real, así que una letra emitida el 30-jun a
+    noviembre contaba 5 meses de capitalización sobre 4,5 corridos. En la S13N6
+    (TEM 2,1%) eso publicaba 32,17% donde la Secretaría informó 28,32%, y el
+    indicador salía 8,07% real en vez de 4,92% (ADR-0238).
+
+    Las LEDE a descuento no tienen TEM publicada: ahí sí hay que reconstruir
+    desde el precio, que es lo único que define su rendimiento.
+    """
+    tem = _tem_capitalizable(cup)
+    if tem is not None:
+        tirea = (1.0 + tem) ** 12 - 1.0
+    elif "a descuento" in _norm_txt(cup) or "cupon cero" in _norm_txt(cup):
+        dias = (ven - col).days
+        if dias <= 0 or precio <= 0:
+            return None
+        tirea = (1000.0 / precio) ** (365.0 / dias) - 1.0
     else:
+        return None                      # CER, dólar linked, TAMAR: no comparable
+    if (ven - col).days <= 0 or precio <= 0:
         return None
-    dias = (ven - col).days
-    if dias <= 0 or precio <= 0:
-        return None
-    tirea = (payoff / precio) ** (365.0 / dias) - 1.0
     return tirea if 0.0 < tirea < 8.0 else None      # descarta filas corruptas
 
 
+def _tirea_reconstruida(cup: str, emi, ven, col, precio: float) -> float | None:
+    """TIREA implícita en el precio de corte. NO alimenta el indicador: existe
+    para validar contra la tasa publicada.
+
+    El payoff de una capitalizable es `1000·(1+TEM)^(días/30)` sobre el plazo
+    real emisión→vencimiento, y se anualiza sobre 360 días (12 meses de 30),
+    que es la misma convención con la que el mercado pasa de TEM a TIREA. Bien
+    escrita, en una emisión nueva colocada a la par reproduce la tasa oficial
+    **exactamente** —0,0000 pb en las 57 colocaciones de ese tipo desde
+    dic-2023—, y eso es justamente lo que prueba el test de tolerancia.
+
+    En una reapertura colocada fuera de la par el número se separa de la tasa
+    oficial a propósito: mide el rendimiento marginal del precio de corte, no
+    la tasa contractual del instrumento. Por eso valida, pero no publica.
+    """
+    tem = _tem_capitalizable(cup)
+    if tem is None:
+        return None
+    dias_vida = (ven - emi).days
+    dias = (ven - col).days
+    if dias_vida <= 0 or dias <= 0 or precio <= 0:
+        return None
+    payoff = 1000.0 * (1.0 + tem) ** (dias_vida / 30.0)
+    return (payoff / precio) ** (360.0 / dias) - 1.0
+
+
 def _tirea_mensual(anios: int = 2) -> dict:
-    """{YYYY-MM: (tirea_ponderada, monto_adjudicado, n_colocaciones)} a partir
-    de las planillas de Finanzas. Se pondera por valor efectivo adjudicado: una
-    licitación chica no debe mover el promedio como una grande."""
+    """{YYYY-MM: (tirea_ponderada, monto_adjudicado, n_colocaciones, inventario)}
+    a partir de las planillas de Finanzas. Se pondera por valor efectivo
+    adjudicado: una licitación chica no debe mover el promedio como una grande.
+
+    El inventario —instrumento, TIREA y monto de cada colocación— viaja con el
+    promedio para que la card pueda decir de qué salió el número. Una tasa
+    promedio sin las colocaciones que la forman no es auditable: fue justamente
+    lo que dejó pasar 32,17% durante meses.""" 
     if _COLOC_MEMO:
         return _COLOC_MEMO
     import io, openpyxl
@@ -1103,7 +1151,7 @@ def _tirea_mensual(anios: int = 2) -> dict:
     urls = _colocaciones_urls()
     if not urls:
         raise ValueError("no se encontraron planillas de colocaciones")
-    acc: dict = defaultdict(lambda: [0.0, 0.0, 0])
+    acc: dict = defaultdict(lambda: [0.0, 0.0, 0, []])
     for y in sorted(urls)[-anios:]:
         r = requests.get(urls[y], timeout=90, headers={"User-Agent": "Mozilla/5.0"})
         r.raise_for_status()
@@ -1151,7 +1199,12 @@ def _tirea_mensual(anios: int = 2) -> dict:
                 a[0] += tirea * ve
                 a[1] += ve
                 a[2] += 1
-    _COLOC_MEMO.update({ym: (s / w, w, n) for ym, (s, w, n) in acc.items() if w > 0})
+                a[3].append({"instrumento": str(fila[0]).strip(),
+                             "tirea": round(tirea * 100.0, 2),
+                             "valor_efectivo": round(ve, 3),
+                             "colocacion": col.strftime("%Y-%m-%d")})
+    _COLOC_MEMO.update({ym: (s / w, w, n, inv)
+                        for ym, (s, w, n, inv) in acc.items() if w > 0})
     return _COLOC_MEMO
 
 
@@ -1183,7 +1236,7 @@ def fetch_costo_financiamiento_tesoro() -> dict | None:
         if not comunes:
             raise ValueError("sin meses con colocaciones y REM simultáneos")
         ym = comunes[-1]
-        t, monto, n = tirea[ym]
+        t, monto, n, inventario = tirea[ym]
         esperada = rem[ym]
         real = ((1.0 + t) / (1.0 + esperada / 100.0) - 1.0) * 100.0
         return {
@@ -1194,6 +1247,7 @@ def fetch_costo_financiamiento_tesoro() -> dict | None:
             "tirea_nominal": round(t * 100.0, 2),
             "inflacion_esperada": round(esperada, 1),
             "colocaciones": n,
+            "inventario_colocaciones": inventario,
             "detalle_txt": (
                 f"{ym}: TIREA {t * 100:.1f}% en {n} colocación/es a tasa fija en pesos "
                 f"contra inflación esperada {esperada:.1f}% → {real:+.1f}% real"

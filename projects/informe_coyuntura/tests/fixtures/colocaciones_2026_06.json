@@ -1,0 +1,196 @@
+{
+  "_fuente": "Sec. de Finanzas — «Colocaciones de deuda 2026», planilla colocaciones_30-06-26_a_publicar.xlsx",
+  "_url": "https://www.argentina.gob.ar/sites/default/files/colocaciones_30-06-26_a_publicar.xlsx",
+  "_descargado": "2026-08-25",
+  "_que_congela": "Todas las colocaciones de junio de 2026, sin filtrar. La unica a tasa fija en pesos es la LECAP S13N6 (LECAP/$/13-11-2026, TEM 2,1%): la que la auditoria del 25-ago-2026 uso para mostrar que el indicador publicaba TIREA 32,17% donde la Secretaria informo 28,32%. El resto esta para que el test pruebe tambien que se excluyen (USD, CER, dual, TAMAR).",
+  "_rem_ipc_12m_2026_06": 22.3,
+  "filas": [
+    {
+      "hoja": "Letras",
+      "instrumento": "LELINK/U$D/31-08-2026",
+      "emision": "2026-06-12",
+      "vencimiento": "2026-08-31",
+      "cupon": "Cupón cero",
+      "moneda_origen": "USD",
+      "colocacion": "2026-06-12",
+      "valor_efectivo": 1120.63029102178,
+      "precio_emision": 988.33
+    },
+    {
+      "hoja": "Letras",
+      "instrumento": "LECAP/$/13-11-2026",
+      "emision": "2026-06-30",
+      "vencimiento": "2026-11-13",
+      "cupon": "Tasa efectiva mensual capitalizable 2,1%.",
+      "moneda_origen": "ARP",
+      "colocacion": "2026-06-30",
+      "valor_efectivo": 4178076.198085,
+      "precio_emision": 1000.0
+    },
+    {
+      "hoja": "Letras",
+      "instrumento": "LELINK/U$D/31-08-2026",
+      "emision": "2026-06-12",
+      "vencimiento": "2026-08-31",
+      "cupon": "Cupón cero",
+      "moneda_origen": "USD",
+      "colocacion": "2026-06-30",
+      "valor_efectivo": 387.659462727,
+      "precio_emision": 989.7
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONAR/U$S/6%/31-10-2028",
+      "emision": "2026-03-31",
+      "vencimiento": "2028-10-31",
+      "cupon": "T.N.A. 6%. Pagos mensuales",
+      "moneda_origen": "USD",
+      "colocacion": "2026-06-12",
+      "valor_efectivo": 190.5,
+      "precio_emision": 952.5
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONAR/U$S/6%/31-10-2028",
+      "emision": "2026-03-31",
+      "vencimiento": "2028-10-31",
+      "cupon": "T.N.A. 6%. Pagos mensuales",
+      "moneda_origen": "USD",
+      "colocacion": "2026-06-12",
+      "valor_efectivo": 95.25,
+      "precio_emision": 952.5
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONCER DUAL/$/CER o TAMAR+3%/15-12-2028",
+      "emision": "2026-06-12",
+      "vencimiento": "2028-12-15",
+      "cupon": "Tasa efectiva mensual capitalizable “TAMAR TEM\" o Ajuste de capital por CER",
+      "moneda_origen": "ARP",
+      "colocacion": "2026-06-12",
+      "valor_efectivo": 1445394.74894996,
+      "precio_emision": 890.0
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONCER DUAL/$/CER o TAMAR+3%/14-12-2029",
+      "emision": "2026-06-12",
+      "vencimiento": "2029-12-14",
+      "cupon": "Tasa efectiva mensual capitalizable “TAMAR TEM\" o Ajuste de capital por CER",
+      "moneda_origen": "ARP",
+      "colocacion": "2026-06-12",
+      "valor_efectivo": 827978.074774578,
+      "precio_emision": 819.0
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONCER DUAL/$/CER o TAMAR+3%/28-06-2030",
+      "emision": "2026-06-12",
+      "vencimiento": "2030-06-28",
+      "cupon": "Tasa efectiva mensual capitalizable “TAMAR TEM\" o Ajuste de capital por CER",
+      "moneda_origen": "ARP",
+      "colocacion": "2026-06-12",
+      "valor_efectivo": 2110309.49223354,
+      "precio_emision": 780.0
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONTE/U$S/15-12-2028",
+      "emision": "2026-06-12",
+      "vencimiento": "2028-12-15",
+      "cupon": "Cero cupón",
+      "moneda_origen": "USD",
+      "colocacion": "2026-06-12",
+      "valor_efectivo": 80.301157332,
+      "precio_emision": 818.0
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONCER/$/TASA CERO/29-10-2027",
+      "emision": "2026-06-30",
+      "vencimiento": "2027-10-29",
+      "cupon": "Cero cupón/Ajusta capital por CER s/norma de emisión",
+      "moneda_origen": "UCP",
+      "colocacion": "2026-06-30",
+      "valor_efectivo": 465748.4065278,
+      "precio_emision": 920.0
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONCER/$/TASA CERO/15-12-2028",
+      "emision": "2026-06-30",
+      "vencimiento": "2028-12-15",
+      "cupon": "Cero cupón/Ajusta capital por CER s/norma de emisión",
+      "moneda_origen": "UCP",
+      "colocacion": "2026-06-30",
+      "valor_efectivo": 1477289.79747828,
+      "precio_emision": 820.0
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONCER/$/TASA CERO/31-03-2028",
+      "emision": "2026-04-01",
+      "vencimiento": "2028-03-31",
+      "cupon": "Cero cupón",
+      "moneda_origen": "UCP",
+      "colocacion": "2026-06-30",
+      "valor_efectivo": 197575.81902397503,
+      "precio_emision": 952.5
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONO/$/TAMAR+5,4%/30-07-2027",
+      "emision": "2026-06-30",
+      "vencimiento": "2027-07-30",
+      "cupon": "Tasa efectiva mensual capitalizable “TAMAR TEM\" + margen",
+      "moneda_origen": "ARP",
+      "colocacion": "2026-06-30",
+      "valor_efectivo": 2425481.668268,
+      "precio_emision": 1000.0
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONCER DUAL/$/CER o TAMAR+3%/14-12-2029",
+      "emision": "2026-06-12",
+      "vencimiento": "2029-12-14",
+      "cupon": "Tasa efectiva mensual capitalizable “TAMAR TEM\" o Ajuste de capital por CER",
+      "moneda_origen": "ARP",
+      "colocacion": "2026-06-30",
+      "valor_efectivo": 3777602.278507295,
+      "precio_emision": 822.5
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONTE/U$S/15-12-2028",
+      "emision": "2026-06-12",
+      "vencimiento": "2028-12-15",
+      "cupon": "Cero cupón",
+      "moneda_origen": "USD",
+      "colocacion": "2026-06-30",
+      "valor_efectivo": 82.17939435800001,
+      "precio_emision": 817.0
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONAR/U$S/6%/31-10-2028",
+      "emision": "2026-03-31",
+      "vencimiento": "2028-10-31",
+      "cupon": "T.N.A. 6%. Pagos mensuales",
+      "moneda_origen": "USD",
+      "colocacion": "2026-06-30",
+      "valor_efectivo": 257.222,
+      "precio_emision": 967.0
+    },
+    {
+      "hoja": "Bonos",
+      "instrumento": "BONAR/U$S/6%/31-10-2028",
+      "emision": "2026-03-31",
+      "vencimiento": "2028-10-31",
+      "cupon": "T.N.A. 6%. Pagos mensuales",
+      "moneda_origen": "USD",
+      "colocacion": "2026-06-30",
+      "valor_efectivo": 96.7,
+      "precio_emision": 967.0
+    }
+  ]
+}

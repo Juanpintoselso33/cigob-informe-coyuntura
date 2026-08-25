@@ -27,21 +27,77 @@ def _get_latest_xls_fname() -> str:
     return matches[0]
 
 
-def _parse_icc_xls(content: bytes) -> dict:
+# Rótulos de las columnas regionales y de las de variación. El cuadro trae
+# Capital, Interior, GBA y Nacional, cada uno con su variación mensual al lado.
+_REGIONALES = ("capital", "interior", "gba", "conurbano")
+_RE_BANNER = re.compile(r"desagreg|series", re.IGNORECASE)
+
+
+def _norm(s: str) -> str:
+    import unicodedata
+    s = unicodedata.normalize("NFKD", str(s))
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return re.sub(r"\s+", " ", s).strip().lower()
+
+
+def columna_icc_nacional(ws) -> int:
+    """Índice de la columna «ICC Nacional», ubicada por su encabezado.
+
+    Hasta ago-2026 el colector leía la **columna 1 por posición**, que es
+    `ICC Capital`: publicaba el ICC de CABA rotulado como total nacional. En el
+    corte auditado eso daba 39,87 donde el nacional era 40,23 (ADR-0242).
+
+    El encabezado está partido en varias filas y hay una **trampa**: la fila 0
+    trae el banner `ICC Nacional - Desagregación por regiones` **encima de la
+    columna de Capital**. Un `"nacional" in encabezado` que incluyera esa fila
+    volvería a elegir Capital, ahora con aire de estar bien ubicada. Por eso el
+    banner se descarta y las regionales se excluyen explícitamente.
+    """
+    ancho = ws.ncols
+    candidatas = []
+    for j in range(1, ancho):
+        partes = []
+        for i in range(min(8, ws.nrows)):
+            c = ws.cell(i, j)
+            if c.ctype != xlrd.XL_CELL_TEXT:
+                continue
+            t = _norm(c.value)
+            if not t or _RE_BANNER.search(t):
+                continue
+            partes.append(t)
+        hdr = " ".join(partes)
+        if not hdr or "variacion" in hdr:
+            continue
+        if any(r in hdr for r in _REGIONALES):
+            continue
+        if "icc" in hdr and "nacional" in hdr:
+            candidatas.append(j)
+    if len(candidatas) != 1:
+        raise ValueError(
+            f"no se pudo ubicar una única columna «ICC Nacional» "
+            f"(candidatas: {candidatas}); el cuadro de la UTDT cambió de forma")
+    return candidatas[0]
+
+
+def _parse_icc_xls(content: bytes, columna: int | None = None) -> dict:
     """
     Parsea el Excel del ICC UTDT.
-    La serie histórica tiene formato: columna fecha, columna ICC.
+    La serie histórica tiene formato: columna fecha, columnas de índice.
     Busca la última fila con datos válidos.
+
+    `columna=None` ubica la del total nacional por encabezado. El Índice Líder
+    usa el mismo layout pero tiene una sola serie, y ahí se pasa la columna.
     """
     wb = xlrd.open_workbook(file_contents=content)
     ws = wb.sheets()[0]
+    col = columna if columna is not None else columna_icc_nacional(ws)
 
     ultimo_fecha = None
     ultimo_valor = None
 
     for row_idx in range(ws.nrows - 1, -1, -1):
         fecha_cell = ws.cell(row_idx, 0)
-        valor_cell = ws.cell(row_idx, 1)
+        valor_cell = ws.cell(row_idx, col)
 
         # Fechas en xlrd tienen ctype=3 (XL_CELL_DATE); valores numéricos ctype=2
         if fecha_cell.ctype == xlrd.XL_CELL_DATE and valor_cell.ctype == xlrd.XL_CELL_NUMBER:
@@ -56,7 +112,8 @@ def _parse_icc_xls(content: bytes) -> dict:
     if ultimo_valor is None:
         raise ValueError("No se pudo parsear ninguna fila válida del Excel ICC")
 
-    return {"valor": ultimo_valor, "fecha": ultimo_fecha, "unidad": "Índice"}
+    return {"valor": ultimo_valor, "fecha": ultimo_fecha, "unidad": "Índice",
+            "cobertura": "total nacional" if columna is None else "serie única"}
 
 
 def _fetch_indice_lider(results: dict) -> None:
@@ -73,7 +130,7 @@ def _fetch_indice_lider(results: dict) -> None:
         x = requests.get(UTDT_ICC_DOWNLOAD_BASE + fnames[0], headers=HTTP_HEADERS,
                          timeout=HTTP_TIMEOUT, verify=False)
         x.raise_for_status()
-        il = _parse_icc_xls(x.content)      # mismo layout: col 0 fecha, col 1 valor
+        il = _parse_icc_xls(x.content, columna=1)   # una sola serie: col 0 fecha, col 1 valor
         results["indice_lider"] = il
         logger.info("Índice Líder UTDT OK: %s = %s", il["fecha"], il["valor"])
     except Exception as e:

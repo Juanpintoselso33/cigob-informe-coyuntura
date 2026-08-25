@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-25
 cinturon: 'politica'
 indicadores: [poder_judicial, cobertura_judicial]
-relacionado: ['0168']
+relacionado: ['0168', '0240']
 complementado_por: ['0131']
 ambito: 'ITCP · dimensión `poder_judicial` (nueva) · `cobertura_judicial` (nuevo) · pesos entre dimensiones · banda · serie'
 origen: 'Aporte externo sobre el cinturón político (doc 260724), decisión del editor'

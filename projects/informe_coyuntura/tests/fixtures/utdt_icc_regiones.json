@@ -1,0 +1,262 @@
+{
+  "_fuente": "UTDT — Indice de Confianza del Consumidor, hoja «Desagregacion por regiones»",
+  "_url": "https://www.utdt.edu/ver_contenido.php?id_contenido=1673",
+  "_descargado": "2026-08-25",
+  "_que_congela": "Los encabezados reales (tres filas, con el banner «ICC Nacional - Desagregacion por regiones» encima de la columna de CAPITAL) y los ultimos 30 periodos de las cuatro series. En el corte auditado el colector publicaba 39,87 -que es Capital- rotulado como total nacional; el nacional del mismo corte es 40,23.",
+  "_columnas_reales": {
+    "capital": 1,
+    "interior": 3,
+    "gba": 5,
+    "nacional": 7
+  },
+  "encabezado": [
+    [
+      "SERIES",
+      "ICC Nacional - Desagregación por regiones",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "ICC",
+      "Variación"
+    ],
+    [
+      null,
+      "ICC ",
+      "Variación",
+      "ICC",
+      "Variación",
+      "ICC ",
+      "Variación",
+      "Nacional",
+      "mensual"
+    ],
+    [
+      null,
+      "Capital",
+      "mensual",
+      "Interior",
+      "mensual",
+      "GBA",
+      "mensual",
+      null,
+      null
+    ]
+  ],
+  "filas": [
+    {
+      "periodo": "2024-04",
+      "capital": 38.4518,
+      "interior": 39.4798,
+      "gba": 35.451,
+      "nacional": 37.1651
+    },
+    {
+      "periodo": "2024-05",
+      "capital": 41.8367,
+      "interior": 42.9061,
+      "gba": 34.6045,
+      "nacional": 38.304
+    },
+    {
+      "periodo": "2024-06",
+      "capital": 35.9649,
+      "interior": 44.7575,
+      "gba": 33.2787,
+      "nacional": 37.229
+    },
+    {
+      "periodo": "2024-07",
+      "capital": 36.3095,
+      "interior": 44.073,
+      "gba": 37.0719,
+      "nacional": 39.0987
+    },
+    {
+      "periodo": "2024-08",
+      "capital": 42.9638,
+      "interior": 46.831,
+      "gba": 37.9152,
+      "nacional": 41.4553
+    },
+    {
+      "periodo": "2024-09",
+      "capital": 38.7931,
+      "interior": 41.6995,
+      "gba": 37.5143,
+      "nacional": 39.002
+    },
+    {
+      "periodo": "2024-10",
+      "capital": 39.4646,
+      "interior": 48.2004,
+      "gba": 39.9886,
+      "nacional": 42.4248
+    },
+    {
+      "periodo": "2024-11",
+      "capital": 44.4162,
+      "interior": 53.52,
+      "gba": 40.3061,
+      "nacional": 45.0157
+    },
+    {
+      "periodo": "2024-12",
+      "capital": 42.1743,
+      "interior": 52.008,
+      "gba": 43.7432,
+      "nacional": 46.0292
+    },
+    {
+      "periodo": "2025-01",
+      "capital": 44.8393,
+      "interior": 54.3886,
+      "gba": 44.116,
+      "nacional": 47.3833
+    },
+    {
+      "periodo": "2025-02",
+      "capital": 45.3074,
+      "interior": 52.2983,
+      "gba": 44.9425,
+      "nacional": 47.2576
+    },
+    {
+      "periodo": "2025-03",
+      "capital": 43.4524,
+      "interior": 50.2811,
+      "gba": 40.7666,
+      "nacional": 44.1139
+    },
+    {
+      "periodo": "2025-04",
+      "capital": 42.3759,
+      "interior": 49.5243,
+      "gba": 41.5022,
+      "nacional": 44.1029
+    },
+    {
+      "periodo": "2025-05",
+      "capital": 42.4479,
+      "interior": 51.634,
+      "gba": 42.8651,
+      "nacional": 45.4893
+    },
+    {
+      "periodo": "2025-06",
+      "capital": 43.8482,
+      "interior": 50.1833,
+      "gba": 43.2578,
+      "nacional": 45.4768
+    },
+    {
+      "periodo": "2025-07",
+      "capital": 47.2222,
+      "interior": 49.9008,
+      "gba": 44.0949,
+      "nacional": 46.3745
+    },
+    {
+      "periodo": "2025-08",
+      "capital": 37.0791,
+      "interior": 46.3747,
+      "gba": 37.1032,
+      "nacional": 39.9443
+    },
+    {
+      "periodo": "2025-09",
+      "capital": 40.63,
+      "interior": 44.6464,
+      "gba": 36.7908,
+      "nacional": 39.8128
+    },
+    {
+      "periodo": "2025-10",
+      "capital": 40.3298,
+      "interior": 47.9651,
+      "gba": 39.6745,
+      "nacional": 42.3228
+    },
+    {
+      "periodo": "2025-11",
+      "capital": 39.9215,
+      "interior": 51.5137,
+      "gba": 44.7268,
+      "nacional": 46.0436
+    },
+    {
+      "periodo": "2025-12",
+      "capital": 48.3086,
+      "interior": 47.4852,
+      "gba": 43.614,
+      "nacional": 45.5495
+    },
+    {
+      "periodo": "2026-01",
+      "capital": 47.5945,
+      "interior": 51.2364,
+      "gba": 43.583,
+      "nacional": 46.5704
+    },
+    {
+      "periodo": "2026-02",
+      "capital": 43.8948,
+      "interior": 50.0782,
+      "gba": 41.25,
+      "nacional": 44.3802
+    },
+    {
+      "periodo": "2026-03",
+      "capital": 40.8287,
+      "interior": 50.7095,
+      "gba": 37.3916,
+      "nacional": 42.0259
+    },
+    {
+      "periodo": "2026-04",
+      "capital": 38.0952,
+      "interior": 45.3485,
+      "gba": 36.8182,
+      "nacional": 39.6391
+    },
+    {
+      "periodo": "2026-05",
+      "capital": 40.5392,
+      "interior": 45.3947,
+      "gba": 36.9966,
+      "nacional": 40.1379
+    },
+    {
+      "periodo": "2026-06",
+      "capital": 42.4775,
+      "interior": 46.3277,
+      "gba": 40.6984,
+      "nacional": 42.709
+    },
+    {
+      "periodo": "2026-07",
+      "capital": 39.8256,
+      "interior": 45.5503,
+      "gba": 38.1152,
+      "nacional": 40.6691
+    },
+    {
+      "periodo": "2026-08",
+      "capital": 39.8674,
+      "interior": 43.8221,
+      "gba": 38.2727,
+      "nacional": 40.2294
+    }
+  ],
+  "esperado": {
+    "periodo": "2026-08",
+    "nacional": 40.23,
+    "capital_erroneo": 39.87
+  },
+  "_cobertura_verificada": {
+    "primer_periodo_nacional": "2001-03",
+    "puntos_nacionales": 306,
+    "_nota": "medido sobre el XLS completo el 25-ago-2026; el fixture guarda solo los ultimos 30 periodos"
+  }
+}

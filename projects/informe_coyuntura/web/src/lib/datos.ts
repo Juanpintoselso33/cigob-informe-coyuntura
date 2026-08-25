@@ -555,7 +555,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   patentamiento_motos: "Unidades",
   patentamiento_autos: "Unidades (autos 0km inscriptos en el mes)",
   motorizacion_total: "Vehículos 0km (autos + motos) por cada 1.000 habitantes, acumulado de 12 meses",
-  consumo_supermercados: "Índice de ventas a precios constantes (2004 = 100, desestacionalizado)",
+  consumo_supermercados: "Índice de ventas a precios constantes (2017 = 100, desestacionalizado)",
   // gestion
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
   concesiones_infraestructura: "% de km adjudicados (RFC)", reduccion_estado: "% de variación vs dic-2023",

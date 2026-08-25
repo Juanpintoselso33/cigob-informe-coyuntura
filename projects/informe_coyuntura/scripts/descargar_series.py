@@ -803,43 +803,24 @@ def fetch_votometro_serie() -> list:
 
 
 def fetch_iaf_serie() -> list:
-    """Serie ANUAL de la variación real i.a. de transferencias federales totales
-    (RON Hacienda, transferencias EJECUTADAS del año calendario — el punto
-    YYYY-12-01 es el acumulado de ESE año cerrado, no el presupuesto del
-    siguiente), deflactada por la inflación PROMEDIO anual del índice IPC de
-    INDEC (ADR-0065) — misma fórmula que el indicador. Confiable desde 2018
-    (primer año con promedio completo de la base dic-2016). [[YYYY-12-01, %]]."""
-    import csv
-    import io
-    r = requests.get(politica.RON_CSV_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
-    r.raise_for_status()
-    rd = csv.reader(io.StringIO(r.text), delimiter=";")
-    next(rd)
-    tot = {}
-    for row in rd:
-        if len(row) < 5:
-            continue
-        if row[1].strip().lower() in politica.RON_NO_PROVINCIA:   # ADR-0066
-            continue
-        try:
-            tot[int(row[0])] = tot.get(int(row[0]), 0.0) + float(row[4].replace(",", "."))
-        except ValueError:
-            continue
-    ipc = politica._ipc_promedio_indec()
-    out = []
-    for y in sorted(tot):
-        if y - 1 in tot and tot[y - 1] and y in ipc:
-            var_nom = tot[y] / tot[y - 1] - 1.0
-            var_real = (1.0 + var_nom) / (1.0 + ipc[y]) - 1.0
-            out.append([f"{y}-12-01", round(var_real * 100.0, 1)])
-    return out
+    """Serie ANUAL de la variación real i.a. de las transferencias federales
+    (RON Hacienda). El punto YYYY-12-01 es el año calendario cerrado, no el
+    presupuesto del siguiente.
+
+    Misma fórmula que la card (ADR-0239): cada flujo mensual se lleva a precios
+    de su propio mes antes de sumar. Arranca en 2018, el primer año que tiene
+    los doce meses publicados y un año anterior contra el cual compararse.
+    [[YYYY-12-01, %]]."""
+    return [[f"{y}-12-01", round(v[0] * 100.0, 1)]
+            for y, v in sorted(politica._iaf_real_por_anio().items())]
 
 
 def fetch_ratio_dnu_serie() -> list:
     """Serie MENSUAL del ratio DNUs/leyes (InfoLeg), ventana móvil de 365 días
     al fin de cada mes desde dic-2023 — misma fórmula que el indicador
     (ADR-0058; antes era un punto por año calendario, no comparable mes a
-    mes). InfoLeg no expone un dump con fecha por registro como el CKAN de
+    mes). Los DNU se cuentan por tipo jurídico, no por coincidencia textual
+    (ADR-0241): con la misma ventana y la misma regla de fecha que la card. InfoLeg no expone un dump con fecha por registro como el CKAN de
     HCDN, así que cada mes requiere su propia consulta al buscador (una de
     leyes + una de DNUs), reutilizando la misma sesión.
     [[YYYY-MM-01, ratio]]."""
@@ -858,8 +839,7 @@ def fetch_ratio_dnu_serie() -> list:
             leyes = politica._infoleg_session_count(s, au, "1", desde, hasta)
             if not leyes:
                 continue
-            dnus = politica._infoleg_session_count(s, au, "2", desde, hasta,
-                                                     texto="necesidad y urgencia")
+            dnus, _ = politica._infoleg_contar_dnus(s, au, desde, hasta)
         except Exception as e:
             print(f"  [WARN] ratio_dnu serie {ym}: {e}")
             continue
@@ -1551,7 +1531,8 @@ def fetch_conflictividad_nacional_mensual() -> list:
 
 POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
-    ("iaf_transferencias", "% i.a. real", "RON Hacienda + IPC INDEC (dic-dic)", fetch_iaf_serie),
+    ("iaf_transferencias", "% i.a. real",
+     "RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes", fetch_iaf_serie),
     ("ratio_dnu", "DNUs por ley (12m móviles)", "InfoLeg", fetch_ratio_dnu_serie),
     ("desafios_legislativos", "normas desafiadas en el recinto (12m)",
      "Actas de Diputados y Senado + InfoLeg — elaboración CIGOB",
@@ -1680,22 +1661,28 @@ VIDA_DERIVADAS.append(
      fetch_peso_tarifas_iiep_serie)
 )
 def fetch_icc_serie(meses: int = 60) -> list:
-    """Serie histórica del ICC UTDT: parsea TODAS las filas del XLS oficial (col 0 fecha,
-    col 1 índice), no solo la última como el indicador. Reusa el scraper del colector de
-    vida. Devuelve los últimos `meses` como [[YYYY-MM-01, icc]] ascendente."""
+    """Serie histórica del ICC UTDT: parsea TODAS las filas del XLS oficial, no
+    sólo la última como el indicador. Reusa el scraper del colector de vida.
+    Devuelve los últimos `meses` como [[YYYY-MM-01, icc]] ascendente.
+
+    La columna es la del **total nacional**, ubicada por encabezado con la misma
+    función que usa la card (ADR-0242). Antes leía la columna 1 por posición, que
+    es `ICC Capital`: card y serie coincidían entre sí y las dos publicaban CABA
+    con rótulo nacional, así que el gate G3 no tenía nada que marcar."""
     import xlrd
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
-    from utdt_icc import _get_latest_xls_fname
+    from utdt_icc import _get_latest_xls_fname, columna_icc_nacional
     from config import UTDT_ICC_DOWNLOAD_BASE
     r = requests.get(UTDT_ICC_DOWNLOAD_BASE + _get_latest_xls_fname(),
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT, verify=False)
     r.raise_for_status()
     wb = xlrd.open_workbook(file_contents=r.content)
     ws = wb.sheets()[0]
+    col = columna_icc_nacional(ws)
     out = []
     for i in range(ws.nrows):
-        fc, vc = ws.cell(i, 0), ws.cell(i, 1)
+        fc, vc = ws.cell(i, 0), ws.cell(i, col)
         if fc.ctype == xlrd.XL_CELL_DATE and vc.ctype == xlrd.XL_CELL_NUMBER:
             t = xlrd.xldate_as_tuple(fc.value, wb.datemode)
             out.append([f"{t[0]}-{t[1]:02d}-01", round(vc.value, 1)])
@@ -2103,7 +2090,8 @@ def fetch_consumo_supermercados_serie() -> list:
     del INDEC (ADR-0225). MISMA serie que la card y que el índice: el colector
     devuelve el histórico completo y la card es su último punto.
 
-    Se guarda el índice CRUDO de la fuente (base 2004 = 100) y no el rebase a
+    Se guarda el índice CRUDO de la fuente (base 2017 = 100, la que declara la
+    propia API — ADR-0243) y no el rebase a
     4T-2023: el rebase lo hacen `itvc.indices_desde_series` y la reconstrucción
     de `validacion_externa`, cada uno con la misma función que usa para todos
     los demás componentes. Guardar acá una serie ya rebaseada crearía un
@@ -2662,7 +2650,7 @@ VIDA_DERIVADAS += [
     # ADR-0225: el componente que mide volumen efectivamente comprado. Sin
     # cache y sin acumulación: la API devuelve el histórico entero en cada
     # corrida, igual que la DNRPA.
-    ("consumo_supermercados", "índice (2004 = 100, desestacionalizado)",
+    ("consumo_supermercados", "índice (2017 = 100, desestacionalizado)",
      "INDEC — Encuesta de supermercados, ventas a precios constantes (API datos.gob.ar)",
      fetch_consumo_supermercados_serie),
     # inseguridad = IVI mensual (ADR-0032); el SNIC anual sigue como serie de

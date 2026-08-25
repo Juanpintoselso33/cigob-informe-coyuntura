@@ -138,3 +138,136 @@ def test_las_subrogancias_no_cuentan_como_cobertura():
     assert titular <= cubiertos <= titular + 0.1 * subrogante, (
         f"cubiertos={cubiertos}, titulares={titular}, subrogantes={subrogante}: "
         f"las subrogancias parecen estar contándose como cobertura")
+
+
+# ── El número y su explicación (ADR-0240) ────────────────────────────────────
+# La card publicaba 69,63% arriba y «604 de 955 cargos» abajo, que es 63,25%.
+# No era un redondeo: el porcentaje contaba `cargo_vacante` al corte de hoy y el
+# texto contaba `cargo_cobertura` a la fecha del padrón —dos definiciones y dos
+# cortes—. Ningún gate compara un texto con el número que dice explicar.
+
+class _PadronFalso:
+    """Padrón mínimo con la trampa real adentro: seis cargos NO vacantes cuyo
+    `cargo_cobertura` dice «Subrogante» porque el titular está de licencia. Son
+    los que hacen que 610 y 604 no sean el mismo número."""
+
+    def __init__(self, con_titular=604, con_licencia=6, subrogados=276, sin_cubrir=69):
+        self.filas = (
+            [{"organo_habilitado": "SI", "cargo_vacante": "NO",
+              "cargo_cobertura": "Titular"}] * con_titular
+            + [{"organo_habilitado": "SI", "cargo_vacante": "NO",
+                "cargo_cobertura": "Subrogante"}] * con_licencia
+            + [{"organo_habilitado": "SI", "cargo_vacante": "SI",
+                "cargo_cobertura": "Subrogante"}] * subrogados
+            + [{"organo_habilitado": "SI", "cargo_vacante": "SI",
+                "cargo_cobertura": "Sin subrogante designado"}] * sin_cubrir
+            # un órgano no habilitado: no entra al denominador
+            + [{"organo_habilitado": "NO", "cargo_vacante": "SI",
+                "cargo_cobertura": "Sin subrogante designado"}] * 47
+        )
+
+
+@pytest.fixture
+def padron_falso(monkeypatch):
+    p = _PadronFalso()
+
+    def _csv(q, *a, **k):
+        if q == politica.JUS_PADRON_Q:
+            return p.filas
+        if q == politica.JUS_DESIGNACIONES_Q:
+            return [{"cargo_tipo": "Juez", "fecha_desginacion": "2026-06-24"}] * 60
+        return [{"cargo_tipo": "Juez", "fecha_renuncia": "2026-07-01"}] * 5
+
+    monkeypatch.setattr(politica, "_jus_csv", _csv)
+    monkeypatch.setattr(politica, "_jus_fecha_padron", lambda: "2026-06-05")
+    return p
+
+
+def test_el_valor_es_el_cociente_que_la_card_publica(padron_falso):
+    """`valor == 100 · numerador / denominador`, con los dos del MISMO corte.
+
+    Es la guarda que la auditoría pidió, y la que no existía: cualquiera de las
+    dos mitades podía moverse sola."""
+    card = politica.fetch_cobertura_judicial()
+    assert card is not None
+    esperado = 100.0 * card["cargos_con_juez"] / card["cargos_totales"]
+    assert abs(card["valor"] - esperado) < 0.01
+
+
+def test_el_numerador_del_padron_no_se_publica_como_numerador_del_valor(padron_falso):
+    """604 es del padrón y con otra definición; 665 es el numerador del valor.
+
+    Si vuelven a coincidir, alguien mezcló los cortes otra vez."""
+    card = politica.fetch_cobertura_judicial()
+    assert card["cargos_con_juez"] == 665
+    assert card["padron_titular"] == 604
+    assert card["padron_con_juez"] == 610
+    assert card["cargos_con_juez"] != card["padron_titular"]
+
+
+def test_el_valor_erroneo_no_puede_volver(padron_falso):
+    """63,25% es 604/955: el número que la card *decía* mientras publicaba otro.
+
+    No es que 63,25% esté mal a secas —es correcto para 'cargos con titular en
+    funciones al 5-jun'—: está mal como explicación de 69,63%."""
+    card = politica.fetch_cobertura_judicial()
+    assert abs(card["valor"] - 69.63) < 0.01
+    assert abs(card["valor"] - 63.25) > 1.0
+
+
+def test_cada_numero_viaja_con_su_fecha(padron_falso):
+    """El corte del valor y el del padrón son distintos y los dos se publican.
+
+    Publicar un porcentaje sin decir a qué fecha corresponde su numerador es lo
+    que permitió que las dos fechas convivieran sin que se notara."""
+    card = politica.fetch_cobertura_judicial()
+    assert card["fecha_padron"] == "2026-06-05"
+    assert card["fecha_corte"] > card["fecha_padron"]
+    assert card["fecha_padron"] in card["detalle_txt"]
+    assert card["fecha_corte"] in card["detalle_txt"]
+
+
+def test_el_inventario_explica_la_distancia_entre_las_dos_fechas(padron_falso):
+    """665 = 610 + 60 designaciones − 5 renuncias. La cuenta tiene que cerrar
+    con lo que la card declara, no con lo que el lector suponga."""
+    card = politica.fetch_cobertura_judicial()
+    assert (card["padron_con_juez"]
+            + card["designaciones_desde_padron"]
+            - card["renuncias_desde_padron"]) == card["cargos_con_juez"]
+
+
+def test_la_composicion_del_padron_suma_el_denominador(padron_falso):
+    """604 + 282 + 69 = 955. Es una partición del total, no del numerador: si el
+    texto la presentara como desglose de 610 estaría mintiendo por omisión."""
+    card = politica.fetch_cobertura_judicial()
+    assert (card["padron_titular"] + card["padron_subrogante"]
+            + card["padron_sin_cubrir"]) == card["cargos_totales"]
+
+
+def test_una_designacion_futura_no_adelanta_cobertura(padron_falso, monkeypatch):
+    """El dataset trae designaciones con fecha posterior a hoy.
+
+    Contarlas publicaría como cubierto un cargo que todavía no lo está, y el
+    error entraría solo el día que esa fecha llegue."""
+    from datetime import date, timedelta
+    futura = (date.today() + timedelta(days=90)).isoformat()
+
+    def _csv(q, *a, **k):
+        if q == politica.JUS_PADRON_Q:
+            return padron_falso.filas
+        if q == politica.JUS_DESIGNACIONES_Q:
+            return ([{"cargo_tipo": "Juez", "fecha_desginacion": "2026-06-24"}] * 60
+                    + [{"cargo_tipo": "Juez", "fecha_desginacion": futura}] * 20)
+        return [{"cargo_tipo": "Juez", "fecha_renuncia": "2026-07-01"}] * 5
+
+    monkeypatch.setattr(politica, "_jus_csv", _csv)
+    card = politica.fetch_cobertura_judicial()
+    assert card["designaciones_desde_padron"] == 60
+    assert card["cargos_con_juez"] == 665
+
+
+def test_el_denominador_son_los_organos_habilitados(padron_falso):
+    """47 cargos de órganos no habilitados no existen todavía: meterlos en el
+    denominador bajaría la cobertura sin que nada hubiera pasado."""
+    card = politica.fetch_cobertura_judicial()
+    assert card["cargos_totales"] == 955
