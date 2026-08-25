@@ -11690,63 +11690,63 @@
   "desequilibrio_monetario": [
     {
       "fecha": "2025-04-01",
-      "valor": 44.0
+      "valor": 24.9
     },
     {
       "fecha": "2025-05-01",
-      "valor": 67.46
+      "valor": 48.06
     },
     {
       "fecha": "2025-06-01",
-      "valor": 70.85
+      "valor": 46.17
     },
     {
       "fecha": "2025-07-01",
-      "valor": 80.89
+      "valor": 60.1
     },
     {
       "fecha": "2025-08-01",
-      "valor": 68.92
+      "valor": 52.85
     },
     {
       "fecha": "2025-09-01",
-      "valor": 88.62
+      "valor": 74.14
     },
     {
       "fecha": "2025-10-01",
-      "valor": 85.2
+      "valor": 81.02
     },
     {
       "fecha": "2025-11-01",
-      "valor": 39.92
+      "valor": 48.18
     },
     {
       "fecha": "2025-12-01",
-      "valor": 43.0
+      "valor": 26.48
     },
     {
       "fecha": "2026-01-01",
-      "valor": 67.71
+      "valor": 65.98
     },
     {
       "fecha": "2026-02-01",
-      "valor": 56.76
+      "valor": 57.69
     },
     {
       "fecha": "2026-03-01",
-      "valor": 48.44
+      "valor": 50.27
     },
     {
       "fecha": "2026-04-01",
-      "valor": 63.78
+      "valor": 61.63
     },
     {
       "fecha": "2026-05-01",
-      "valor": 50.19
+      "valor": 52.64
     },
     {
       "fecha": "2026-06-01",
-      "valor": 50.86
+      "valor": 38.69
     }
   ],
   "cuenta_corriente": [

@@ -1,7 +1,7 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-25 19:27:20"
-score_global: 3.7
+generado: "2026-08-25 20:11:20"
+score_global: 3.6
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
 alerta_multicinturon: false
@@ -10,11 +10,11 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-08
 
-**Score global:** 3.7/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.2/10)
+**Score global:** 3.6/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.2/10)
 
 ## Cinturones
 
-### 🟡 Macro — score 3.6/10 (en_tension)
+### 🟡 Macro — score 3.5/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -31,7 +31,7 @@ schema_version: "1.2.0"
 | tcrm | 85.47 | Índice (base dic-2015=100) | 2026-07-01 | fresco |
 | rem_ipc_12m | 21.8 | % anual esperado | 2026-07-31 | fresco |
 | idm | 4.7 | pp (brecha i.a. real) | 2026-07-01 | fresco |
-| desequilibrio_monetario | 50.86 | pts de tensión (0-100) | 2026-06-01 | fresco |
+| desequilibrio_monetario | 38.69 | pts de tensión (0-100) | 2026-06-01 | fresco |
 | iai | -0.18 | % i.a. ponderado | 2026-06-01 | fresco |
 | icip | 8.36 | % i.a. ponderado | 2026-04-01 | fresco |
 | credito_privado | -1.5 | % i.a. real (crédito en pesos) | 2026-07-01 | fresco |
@@ -104,4 +104,4 @@ schema_version: "1.2.0"
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-08-25 19:27:20 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-25 20:11:20 — schema 1.2.0*

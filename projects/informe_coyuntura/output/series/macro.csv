@@ -1950,21 +1950,21 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,emae_difusion,46.67,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
 2024-01-01,emae_difusion,40.0,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
 2023-12-01,emae_difusion,53.33,% de sectores en crecimiento i.a.,INDEC — EMAE apertura sectorial (vía datos.gob.ar)
-2026-06-01,desequilibrio_monetario,50.86,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2026-05-01,desequilibrio_monetario,50.19,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2026-04-01,desequilibrio_monetario,63.78,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2026-03-01,desequilibrio_monetario,48.44,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2026-02-01,desequilibrio_monetario,56.76,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2026-01-01,desequilibrio_monetario,67.71,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2025-12-01,desequilibrio_monetario,43.0,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2025-11-01,desequilibrio_monetario,39.92,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2025-10-01,desequilibrio_monetario,85.2,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2025-09-01,desequilibrio_monetario,88.62,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2025-08-01,desequilibrio_monetario,68.92,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2025-07-01,desequilibrio_monetario,80.89,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2025-06-01,desequilibrio_monetario,70.85,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2025-05-01,desequilibrio_monetario,67.46,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2025-04-01,desequilibrio_monetario,44.0,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2026-06-01,desequilibrio_monetario,38.69,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2026-05-01,desequilibrio_monetario,52.64,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2026-04-01,desequilibrio_monetario,61.63,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2026-03-01,desequilibrio_monetario,50.27,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2026-02-01,desequilibrio_monetario,57.69,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2026-01-01,desequilibrio_monetario,65.98,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2025-12-01,desequilibrio_monetario,26.48,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2025-11-01,desequilibrio_monetario,48.18,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2025-10-01,desequilibrio_monetario,81.02,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2025-09-01,desequilibrio_monetario,74.14,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2025-08-01,desequilibrio_monetario,52.85,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2025-07-01,desequilibrio_monetario,60.1,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2025-06-01,desequilibrio_monetario,46.17,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2025-05-01,desequilibrio_monetario,48.06,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
+2025-04-01,desequilibrio_monetario,24.9,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
 2026-01-01,cuenta_corriente,-4281.1,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
 2025-10-01,cuenta_corriente,-7788.1,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
 2025-07-01,cuenta_corriente,-8004.8,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
