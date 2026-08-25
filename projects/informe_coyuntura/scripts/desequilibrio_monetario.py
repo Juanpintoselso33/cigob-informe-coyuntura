@@ -29,25 +29,28 @@ Cada componente se lleva a una posicion 0-1 interpolando entre los percentiles
 de su ventana de calibracion, y la tension sale de interpolar BILINEALMENTE
 entre las cuatro esquinas de la matriz de la ficha:
 
-                        | B bajo (poca fuga) | B alto (fuga fuerte)
-    --------------------+--------------------+---------------------
-     A alto (poca dol.) |  verde        ->  0 |  naranja/rojo -> 77,5
-     A bajo (mucha dol.)|  amarillo     -> 40 |  rojo         -> 90
+                        | B bajo (poca compra) | B alto (compra fuerte)
+    --------------------+----------------------+-----------------------
+     A alto (poca dol.) |  sin tension   ->  0    |  solo presion   -> 58,75
+     A bajo (mucha dol.)|  solo liquidez -> 58,75 |  las dos        -> 90
 
 Las cuatro esquinas caen exactamente sobre `puntaje = 100 - tension`, de modo
 que las anclas del ITCM son la inversion lineal y no hay una segunda escala que
 se pueda desincronizar de esta.
 
-Notese que la matriz NO es simetrica: pasar de verde a amarillo (que se degrade
-A) cuesta 40 puntos y pasar de verde a naranja/rojo (que se degrade B) cuesta
-77,5. Eso no es una ponderacion inventada aca: sale de las celdas que fijo la
-ficha, y refleja su tesis de que la presion compradora de divisas es la senal
-grave.
+La matriz es SIMETRICA desde ADR-0257: las dos esquinas cruzadas valen lo mismo.
+La ficha las habia fijado en 40 (degradar A) y 77,5 (degradar B), apoyada en la
+tesis de que la fuga fuera del sistema es la senal grave. ADR-0252 mostro que B
+no observa fuga sino compra neta de divisas --el BCRA estimo que cerca del 80%
+de esas compras quedo depositado localmente-- y con eso la asimetria se quedo
+sin fundamento. El dato no pudo reponerlo: contra tres referencias externas
+cada componente sale con el signo invertido en al menos una. No se puede
+ordenar, asi que no se ordena.
 
-ADR-0252: el componente B se llamaba "fuga fuera del sistema" y no identifica
-eso. Mide la compra neta de billetes y divisas del sector privado no
-financiero; el BCRA estimo que cerca del 80% de esas compras quedo depositado
-localmente. Es presion compradora, que es lo que el dato observa.
+Lo que se cae es el ORDEN entre las dos cruzadas, no su NIVEL: las dos pasan a
+58,75, el promedio de las de la ficha. Sigue estando por encima de 45, que es
+donde la matriz se volveria un promedio liso y se perderia la razon de ser del
+indicador -- cruzar y no promediar.
 """
 import io
 from collections import defaultdict
@@ -115,9 +118,21 @@ HTTP_TIMEOUT = 90
 # Percentiles (0/25/50/75/100) por interpolacion lineal sobre la serie ordenada.
 POSICIONES = (0.0, 0.25, 0.50, 0.75, 1.0)
 
-# Ventana 2021-01 -> 2026-08 (68 meses), toda la historia de la var. 197.
-CORTES_A = (31.62, 34.48, 38.27, 44.34, 49.96)
-VENTANA_A = "2021-01 / 2026-08"
+# Ventana 2025-04 -> 2026-08 (17 meses), desde la apertura del cepo a personas
+# humanas -- la MISMA ventana que B, y por la misma razon (ADR-0257).
+#
+# Hasta ADR-0257 esta ventana era 2021-01 / 2026-08, toda la historia de la
+# var. 197. El problema: 51 de esos 68 meses son de cepo, y bajo cepo un ratio
+# alto de pesos transaccionales no mide confianza en el peso -- mide que no
+# habia donde ir. Es el mismo argumento que ADR-0192 acepto para B ("bajo cepo
+# este flujo daba ~0 por falta de acceso, no por confianza") y que no aplico a
+# A. Las dos distribuciones casi no se tocan: bajo cepo el ratio corria 33,1 a
+# 50,0 (mediana 40,3) y en regimen abierto corre 30,6 a 37,7 (mediana 32,8), o
+# sea que el MAXIMO del regimen abierto cae por debajo de la MEDIANA del cepo.
+# Con los cortes viejos, A quedaba clavada contra el piso: media 0,15 y 11 de
+# 15 meses por debajo de 0,25. Con estos se reparte: media 0,51, desvio 0,27.
+CORTES_A = (30.6, 32.05, 32.83, 34.46, 37.65)
+VENTANA_A = "2025-04 / 2026-08"
 
 # Ventana 2025-04 -> 2026-06 (15 meses), desde la apertura del cepo a personas
 # humanas: la ficha la fija asi para no mezclar regimenes cambiarios, y tiene
@@ -125,14 +140,43 @@ VENTANA_A = "2021-01 / 2026-08"
 CORTES_B = (1122.3, 1954.2, 2363.3, 3643.7, 6545.1)
 VENTANA_B = "2025-04 / 2026-06"
 
-# Esquinas de la matriz, en tension (0 = verde, 100 = peor). La celda
-# "naranja/rojo" de la ficha se toma como el punto medio entre naranja (65) y
-# rojo (90): la ficha la dejo escrita con las dos etiquetas y el medio es la
-# lectura honesta.
-TENSION_A_BAJO_B_BAJO = 40.0   # amarillo -- menos pesos transaccionales, sin presion
-TENSION_A_ALTO_B_BAJO = 0.0    # verde -- confianza real
-TENSION_A_BAJO_B_ALTO = 90.0   # rojo -- menos pesos transaccionales Y presion alta
-TENSION_A_ALTO_B_ALTO = 77.5   # naranja/rojo -- presion alta pese a liquidez alta
+# Esquinas de la matriz, en tension (0 = mejor, 100 = peor).
+#
+# Las dos esquinas puras -- nada degradado (0) y todo degradado (90) -- vienen
+# de la ficha y no estan en discusion. Las dos CRUZADAS valen lo mismo desde
+# ADR-0257, y eso es una decision, no un descuido:
+#
+#   * la ficha las habia fijado en 40 (se degrada A) y 77,5 (se degrada B), y
+#     esa asimetria se justificaba con la tesis de que la fuga fuera del
+#     sistema es la senal grave. ADR-0252 mostro que B no observa fuga: observa
+#     compra neta de divisas. La justificacion se cayo con el nombre.
+#   * el dato tampoco puede reponerla. Contra tres referencias externas
+#     (EPU, Merval en dolares, indice lider) cada componente sale con el signo
+#     invertido en al menos una, y con n=15 solo uno de los seis coeficientes
+#     llega a ser significativo. Dos referencias ordenan al reves que la tercera.
+#
+# Cuando no se puede determinar un orden, lo honesto es no codificarlo. Las dos
+# cruzadas pasan a valer 58,75, que es el promedio de las que fijo la ficha:
+# se reparte en partes iguales la MISMA severidad total que ella les habia
+# asignado (40 + 77,5 = 117,5). Cambia el orden, no el nivel -- que es
+# exactamente lo que ADR-0252 invalido y nada mas.
+#
+# Que el nivel se conserve NO es un detalle. La suma de las dos cruzadas es lo
+# unico que determina el termino de interaccion de la bilineal:
+#
+#     tension = c * d_A + c * B + (90 - 2c) * d_A * B
+#
+# con c = 58,75 da la misma interaccion de -27,5 que tenia la matriz de la
+# ficha. Y sobre todo: c = 58,75 esta POR ENCIMA de 45, que es donde la matriz
+# se volveria un promedio liso. Ahi esta la premisa fundacional del indicador
+# --"el resultado sale de CRUZARLOS, no de promediarlos"-- que ADR-0252 no puso
+# en duda: un componente en su mejor valor no puede tapar al otro en el peor.
+# Con 45 la habriamos perdido de contrabando, corrigiendo mas de lo que se
+# habia caido.
+TENSION_A_BAJO_B_BAJO = 58.75  # se degrado A sola
+TENSION_A_ALTO_B_BAJO = 0.0    # nada degradado
+TENSION_A_BAJO_B_ALTO = 90.0   # los dos degradados
+TENSION_A_ALTO_B_ALTO = 58.75  # se degrado B sola
 
 # El compuesto no existe antes de que exista B bajo el regimen abierto. B se
 # puede calcular desde 2003, pero con cepo daba ~0 y la matriz lo leeria como
@@ -184,16 +228,26 @@ def tension_matriz(pos_a: float, pos_b: float) -> float:
     )
 
 
+#: Cuadrantes de la matriz. Los nombres dicen QUE se degrado, no cuan grave es
+#: (ADR-0257). Antes eran colores --verde, amarillo, naranja_rojo, rojo-- y eso
+#: confundia dos cosas distintas: el cuadrante es un diagnostico (cual de los
+#: dos componentes se movio) y la banda es una severidad. Mientras las esquinas
+#: cruzadas valian distinto los dos coincidian; ahora valen igual, y un
+#: cuadrante llamado "naranja_rojo" que puntua lo mismo que uno llamado
+#: "amarillo" seria una etiqueta que miente.
+CELDAS = {
+    ("alto", "bajo"): "sin_tension",          # liquidez alta y poca compra
+    ("bajo", "bajo"): "solo_liquidez",        # se degrado A sola
+    ("alto", "alto"): "solo_presion",         # se degrado B sola
+    ("bajo", "alto"): "liquidez_y_presion",   # los dos
+}
+
+
 def _celda(pos_a: float, pos_b: float) -> str:
     """Cuadrante de la matriz donde cae el mes, para la lectura cualitativa."""
     lado_a = "alto" if pos_a >= 0.5 else "bajo"
     lado_b = "alto" if pos_b >= 0.5 else "bajo"
-    return {
-        ("alto", "bajo"): "verde",
-        ("bajo", "bajo"): "amarillo",
-        ("alto", "alto"): "naranja_rojo",
-        ("bajo", "alto"): "rojo",
-    }[(lado_a, lado_b)]
+    return CELDAS[(lado_a, lado_b)]
 
 
 def parsear_fuga_spnf(contenido: bytes) -> dict:

@@ -126,11 +126,18 @@ BANDAS_ITCM = {
     ],
     "desequilibrio_monetario": [        # tensión 0-100 de la matriz A × B (ADR-0192)
         # El valor crudo YA VIENE en unidades de tensión: desequilibrio_monetario.py
-        # resuelve la matriz de la ficha por interpolación bilineal y publica
-        # 0 (verde) a 100 (deterioro total). Estos cortes son los CUATRO COLORES
-        # de esa matriz —sus esquinas (0 · 40 · 77,5 · 90) caen una en cada tramo—
-        # y sirven a la lectura categórica; el puntaje continuo sale de
-        # ANCLAS_ITCM, que es la inversión exacta puntaje = 100 − tensión.
+        # resuelve la matriz por interpolación bilineal y publica 0 (nada
+        # degradado) a 100 (deterioro total). Estos cuatro tramos son una escala
+        # de SEVERIDAD del compuesto y nada más.
+        #
+        # Hasta ADR-0257 pretendían además una esquina de la matriz por tramo, y
+        # eso confundía severidad con diagnóstico. Ya no puede sostenerse: las
+        # dos esquinas cruzadas valen 45 y caen en el mismo tramo, porque
+        # degradar A sola y degradar B sola son igual de graves por
+        # construcción. Cuál de los dos se degradó lo dice el cuadrante
+        # (`celda`), que es otra cosa y viaja aparte en el snapshot.
+        # El puntaje continuo sale de ANCLAS_ITCM, la inversión exacta
+        # puntaje = 100 − tensión.
         # La divergencia banda/ancla es deliberada y del mismo tipo que la que
         # documenta ADR-0082: el motor siempre usa las anclas.
         (-INF, 20.0, 100), (20.0, 50.0, 60), (50.0, 80.0, 35), (80.0, INF, 10),
@@ -282,10 +289,12 @@ BANDAS_ITCM = {
 }
 
 ANCLAS_ITCM = {
-    # Las cuatro esquinas de la matriz del desequilibrio monetario (0 · 40 ·
-    # 77,5 · 90 de tensión → 100 · 60 · 22,5 · 10 de puntaje) caen TODAS sobre
+    # Las cuatro esquinas de la matriz del desequilibrio monetario (0 · 45 ·
+    # 45 · 90 de tensión → 100 · 55 · 55 · 10 de puntaje) caen TODAS sobre
     # esta recta, así que dos anclas la reproducen exactamente y no hay una
-    # segunda escala que se pueda desincronizar de la del módulo.
+    # segunda escala que se pueda desincronizar de la del módulo. Las dos
+    # cruzadas valen lo mismo desde ADR-0257: la recta no se entera, porque
+    # traduce tensión a puntaje y no depende de cuántos valores distintos haya.
     "desequilibrio_monetario": ((0.0, 100.0), (100.0, 0.0)),
 }
 

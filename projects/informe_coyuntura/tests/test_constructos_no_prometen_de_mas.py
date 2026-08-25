@@ -64,7 +64,10 @@ NIEGA = ("no mide", "no identifica", "no es", "no son", "no lo sostiene",
          "quedó depositado", "consumo intermedio", "ya no puntúa",
          "salió del índice", "estimar una", "es un agregado", "son agregados",
          # citar el ADR de esta entrega marca una línea explicativa
-         "adr-0252", "adr-0253", "adr-0254", "adr-0255")
+         "adr-0252", "adr-0253", "adr-0254", "adr-0255",
+         # ADR-0257 cita la tesis de la fuga para decir que se cayó
+         "adr-0257", "la tesis de", "se quedó sin fundamento",
+         "apoyada en la tesis", "se justificaba con la tesis")
 
 
 # ── 17 · «fuera del sistema» (ADR-0252) ─────────────────────────────────────
@@ -79,12 +82,12 @@ def test_las_celdas_de_la_matriz_describen_la_combinacion_no_el_destino():
     """Las cuatro esquinas nombran qué se observó, no dónde terminó la plata."""
     txt = publicar._macro_input_txt("desequilibrio_monetario", {
         "valor": 77.5, "componente_a": 49.96, "componente_b": 6545.1,
-        "celda": "naranja_rojo"})
+        "celda": "solo_presion"})
     assert "presión compradora" in txt
     assert "fuga" not in txt.lower()
-    for celda, esperado in (("verde", "poca compra"),
-                            ("amarillo", "sin presión compradora"),
-                            ("rojo", "presión compradora alta")):
+    for celda, esperado in (("sin_tension", "poca compra"),
+                            ("solo_liquidez", "sin presión compradora"),
+                            ("liquidez_y_presion", "presión compradora alta")):
         t = publicar._macro_input_txt("desequilibrio_monetario", {
             "valor": 1.0, "componente_a": 1.0, "componente_b": 1.0, "celda": celda})
         assert esperado in t, celda

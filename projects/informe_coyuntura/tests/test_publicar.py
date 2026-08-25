@@ -52,34 +52,40 @@ def test_macro_input_txt_explica_los_dos_componentes_del_desequilibrio():
         "valor": 50.91,
         "componente_a": 33.5,
         "componente_b": 2066.6,
-        "celda": "amarillo",
+        "celda": "solo_liquidez",
     }
     assert publicar._macro_input_txt("desequilibrio_monetario", ind) == (
         "tensión 50,91 pts = liquidez privada en pesos transaccionales 33,5% × "
         "compra neta de divisas del sector privado US$ 2066,6 M — "
-        "menos pesos transaccionales, sin presión compradora"
+        "menos pesos transaccionales, sin presión compradora, "
+        "medidos contra el régimen abierto"
     )
 
 
 def test_macro_input_txt_nombra_la_celda_de_presion_alta():
-    """La celda que la ficha llama «naranja/rojo»: la composición de la liquidez
-    se ve bien y la compra de divisas es alta igual. Es el caso que el indicador
-    existe para exponer, así que tiene que quedar dicho en el detalle y no sólo
-    en el número.
+    """La celda donde la composición de la liquidez se ve bien y la compra de
+    divisas es alta igual. Es el caso que el indicador existe para exponer, así
+    que tiene que quedar dicho en el detalle y no sólo en el número.
 
     ADR-0252: la etiqueta decía «fuga oculta fuera del sistema» y afirmaba algo
     que el dato no observa — el BCRA estimó que ~80% de esas compras quedó
-    depositado localmente. Ahora describe la combinación, no el destino."""
+    depositado localmente. Ahora describe la combinación, no el destino.
+
+    ADR-0257: el cuadrante se llamaba «naranja_rojo». Con las dos esquinas
+    cruzadas valiendo lo mismo, un nombre de color afirmaría un orden de
+    gravedad que el número de al lado desmiente. Y la lectura declara contra qué
+    ventana mide, porque «alta» es una posición y no un nivel."""
     ind = {
         "valor": 77.5,
         "componente_a": 49.96,
         "componente_b": 6545.1,
-        "celda": "naranja_rojo",
+        "celda": "solo_presion",
     }
     assert publicar._macro_input_txt("desequilibrio_monetario", ind) == (
         "tensión 77,5 pts = liquidez privada en pesos transaccionales 49,96% × "
         "compra neta de divisas del sector privado US$ 6545,1 M — "
-        "presión compradora alta pese a liquidez transaccional alta"
+        "presión compradora alta pese a liquidez transaccional alta, "
+        "medidos contra el régimen abierto"
     )
 
 

@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'macro'
 indicadores: [desequilibrio_monetario]
 archivos: ['scripts/desequilibrio_monetario.py', 'scripts/itcm.py', 'scripts/publicar.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts', 'tests/test_constructos_no_prometen_de_mas.py']
-relacionado: ['0192', '0055']
+relacionado: ['0055', '0192', '0257']
 ambito: 'Cinturón macro · ITCM · `desequilibrio_monetario` · qué observa realmente su componente B'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «la compra neta de divisas del sector privado no identifica dinero fuera del sistema»'
 ---

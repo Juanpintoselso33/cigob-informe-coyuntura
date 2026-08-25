@@ -230,8 +230,11 @@ def test_desequilibrio_monetario_tiene_capa_publica_completa_y_sin_jerga_interna
     formula_txt = formula.group(1)
     # Los dos componentes y la matriz que los cruza tienen que estar dichos:
     # sin eso la fórmula parece un promedio y el indicador no es un promedio.
+    # Se pide «matriz» y las cuatro esquinas, no la palabra «bilineal»: es
+    # jerga del método y lo que el lector necesita saber es que se cruzan y que
+    # una esquina sana no compensa a la otra (ADR-0257).
     assert "M2" in formula_txt and "divisas" in formula_txt
-    assert "bilineal" in formula_txt and "matriz" in formula_txt
+    assert "matriz" in formula_txt and "esquinas" in formula_txt
     assert "0" in formula_txt and "100" in formula_txt
 
     ficha = re.search(

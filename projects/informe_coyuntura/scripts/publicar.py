@@ -778,17 +778,27 @@ def _macro_input_txt(ikey, ind):
         # ADR-0252: las etiquetas describen la COMBINACIÓN observada, no dónde
         # terminó el dinero. La compra neta de divisas no identifica salida del
         # sistema financiero — el BCRA estimó que ~80% quedó depositado acá.
+        # ADR-0257: los cuadrantes se nombran por lo que se degradó, no por un
+        # color. Las dos combinaciones cruzadas puntúan IGUAL —la matriz es
+        # simétrica— así que un nombre que sugiriera que una es más grave que
+        # la otra contradiría el número de al lado.
         celdas = {
-            "verde": "liquidez transaccional alta y poca compra de divisas",
-            "amarillo": "menos pesos transaccionales, sin presión compradora",
-            "naranja_rojo": "presión compradora alta pese a liquidez transaccional alta",
-            "rojo": "menos pesos transaccionales y presión compradora alta",
+            "sin_tension": "liquidez transaccional alta y poca compra de divisas",
+            "solo_liquidez": "menos pesos transaccionales, sin presión compradora",
+            "solo_presion": "presión compradora alta pese a liquidez transaccional alta",
+            "liquidez_y_presion": "menos pesos transaccionales y presión compradora alta",
         }
+        # «Alta» y «baja» son posiciones dentro de la ventana de calibración, no
+        # niveles absolutos, y desde ADR-0257 esa ventana es el régimen abierto
+        # para los DOS componentes. Sin decirlo, «liquidez transaccional alta»
+        # con el ratio en 33,5% se lee como una afirmación sobre el nivel — y
+        # contra la era del cepo ese mismo número era de los más bajos.
         lectura = celdas.get(ind.get("celda"), "")
         return (f"tensión {coma(ind.get('valor'))} pts = liquidez privada en pesos "
                 f"transaccionales {coma(ind['componente_a'])}% × compra neta de "
                 f"divisas del sector privado US$ {coma(ind['componente_b'])} M"
-                + (f" — {lectura}" if lectura else ""))
+                + (f" — {lectura}, medidos contra el régimen abierto"
+                   if lectura else ""))
     if ikey == "iai" and ind.get("componentes"):
         c = ind["componentes"]
         partes = [f"ISAC {coma(c.get('isac'))}%", f"BK importados {coma(c.get('bk_importados'))}%"]

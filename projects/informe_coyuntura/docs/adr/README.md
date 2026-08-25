@@ -100,6 +100,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0252](0252-la-compra-de-divisas-no-dice-adonde-fue-el-dinero.md) | La compra de divisas no dice adónde fue el dinero | `desequilibrio_monetario` | vigente |
 | [0253](0253-pagar-la-nube-no-es-capitalizar.md) | Pagar la nube no es capitalizar | `icip` | vigente |
 | [0254](0254-la-brecha-m3-m2-no-es-oferta-menos-demanda.md) | La brecha M3–M2 no es oferta menos demanda | `idm` | vigente |
+| [0257](0257-los-dos-componentes-el-mismo-regimen-y-el-mismo-peso.md) | Los dos componentes, el mismo régimen y el mismo peso | `desequilibrio_monetario` | vigente |
 
 ### Política (ITCP)
 
