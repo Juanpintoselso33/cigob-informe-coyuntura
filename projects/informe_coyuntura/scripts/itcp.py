@@ -698,6 +698,23 @@ INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cep
 # `publicar.py` los suma a POLITICA_OCULTOS, así que tampoco se muestran: la
 # regla del tablero es que si no puntúa, no es card (ADR-0051/0153/0189).
 INDICADORES_SUSPENDIDOS = {
+    "judicializacion": {
+        "dimension": "poder_judicial",
+        "desde": "2026-08",
+        "desde_txt": "agosto de 2026",
+        "adr": "0255",
+        "por_que": "El 1,57% son 114 sumarios con la frase «medida cautelar» "
+                   "sobre 7.273 publicados por SAIJ en jurisdicción federal y "
+                   "nacional. Ese corpus no identifica causas contra el Poder "
+                   "Ejecutivo ni contra políticas de su agenda: una cautelar "
+                   "entre privados cuenta igual. El indicador se llamaba "
+                   "«judicialización de la agenda» y medía densidad de "
+                   "menciones en un corpus heterogéneo.",
+        "condicion_reingreso": "Un universo de causas contra actos o políticas "
+                               "del Poder Ejecutivo, con unidad caso/expediente "
+                               "—no sumario—, deduplicación, estado procesal y "
+                               "corte temporal declarado.",
+    },
     "apoyo_empresario": {
         "dimension": "sector_privado",
         "desde": "2026-08",

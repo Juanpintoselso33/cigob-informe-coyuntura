@@ -53,8 +53,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Conteo en ventana móvil",
   },
   judicializacion: {
-    que: "Qué porcentaje de los fallos publicados en jurisdicción federal y nacional involucra una medida cautelar.",
-    aporta: "Mide cuánto de la agenda se dirime en tribunales por la vía de la suspensión, que es el instrumento con el que una decisión del Ejecutivo se frena antes de discutirse en el fondo. Se publica como proporción y no como conteo porque el número de fallos publicados depende del volumen editorial de la base de jurisprudencia: el conteo crudo se quintuplica entre 2016 y 2021 sin que las cautelares se hayan quintuplicado.",
+    que: "Qué porcentaje de los sumarios publicados por SAIJ en jurisdicción federal y nacional menciona una medida cautelar. Ya NO puntúa en el ITCP: salió del índice en ADR-0255 porque ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda —una cautelar entre privados cuenta igual—, así que la proporción no mide judicialización de la agenda de gobierno. Se sigue relevando.",
+    aporta: "Da la densidad de menciones cautelares en la jurisprudencia publicada, que es un dato sobre el corpus de SAIJ y no sobre el Ejecutivo. Se publica como proporción y no como conteo porque el número de fallos publicados depende del volumen editorial de la base de jurisprudencia: el conteo crudo se quintuplica entre 2016 y 2021 sin que las cautelares se hayan quintuplicado.",
     frecuencia: "Anual", tipo: "% de fallos",
   },
   velocidad_resolucion: {
@@ -98,13 +98,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Expectativa",
   },
   idm: {
-    que: "Índice de Desequilibrio Monetario: compara cuánto crece la oferta amplia de pesos del sector privado (M3 privado) con cuánto crece su demanda transaccional (M2 privado), ambos en términos reales e interanuales. El M2 transaccional incluye el circulante en poder del público, las cuentas corrientes privadas en pesos y las cajas de ahorro privadas en pesos; excluye los depósitos a la vista remunerados de personas jurídicas.",
-    aporta: "Detecta si sobran pesos respecto de lo que la economía quiere retener: una brecha positiva señala excedente monetario que puede presionar precios y brecha cambiaria; una negativa, remonetización traccionada por demanda real de dinero.",
+    que: "Brecha de crecimiento real M3–M2: compara cuánto crece el agregado amplio de pesos del sector privado (M3 privado) con cuánto crece el transaccional (M2 privado), ambos en términos reales e interanuales. Los dos son agregados monetarios, así que la brecha NO es oferta menos demanda de dinero: estimar una demanda pide variables, forma funcional y validación, y nada de eso hay acá (ADR-0254). El M2 transaccional incluye el circulante en poder del público, las cuentas corrientes privadas en pesos y las cajas de ahorro privadas en pesos; excluye los depósitos a la vista remunerados de personas jurídicas.",
+    aporta: "Muestra hacia dónde se mueven los pesos dentro del sistema: una brecha positiva dice que el agregado amplio corre más rápido que el transaccional —los pesos se van a plazo y a instrumentos remunerados en vez de quedarse en transacciones—; una negativa, lo contrario. Es un dato sobre la velocidad relativa de dos agregados, no un diagnóstico de exceso monetario.",
     frecuencia: "Mensual", tipo: "Brecha i.a. real",
   },
   desequilibrio_monetario: {
-    que: "Una medida de 0 a 100 de la tensión monetaria vista desde la confianza en el peso. Cruza dos cosas que por separado engañan: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional (lo que se ve, porque queda dentro del sistema financiero), y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios (lo que se va, aunque nunca pase por un depósito).",
-    aporta: "Los dos componentes se leen juntos porque uno solo miente: si la salida hacia el colchón es fuerte, la foto de adentro puede verse estable o hasta mejorando —esos dólares nunca entraron al denominador— mientras el fondo es lo peor posible. El resultado sale de cruzarlos en una matriz, no de promediarlos. Mayor tensión reduce el puntaje de estabilidad monetaria.",
+    que: "Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso (ADR-0252): el BCRA estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.",
+    aporta: "Los dos componentes se leen juntos porque uno solo alcanza para engañar: la composición de la liquidez puede verse estable mientras crece la compra de divisas, y a la inversa. El resultado sale de cruzarlos en una matriz, no de promediarlos. Mayor tensión reduce el puntaje de estabilidad monetaria.",
     frecuencia: "Mensual", tipo: "Tensión 0–100",
   },
   iai: {
@@ -113,8 +113,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación i.a. ponderada",
   },
   icip: {
-    que: "Índice de Capitalización Inteligente y Productividad: mide la inversión digital/intangible —pagos al exterior por servicios de informática (software, nube, IA) y productividad laboral (IPI/empleo)— en variación interanual.",
-    aporta: "Sigue la incorporación de tecnología que no pasa por aduana como bien de capital. Leído junto al IAI apunta a la 'trampa de la madurez': un país puede invertir en ladrillos y camiones pero estancarse si no se digitaliza. Con una advertencia declarada en la ficha: un aumento de los pagos al exterior por software admite leerse como digitalización o como dependencia tecnológica, y el indicador puntúa la primera. Se construye con datos del INDEC (balanza de servicios + IPI/empleo).",
+    que: "Pagos de servicios digitales y productividad: combina los pagos al exterior por servicios de informática (software, nube, IA) con la productividad laboral (IPI/empleo), en variación interanual. NO es inversión digital ni capitalización (ADR-0253): en cuentas nacionales esos pagos transfronterizos son consumo intermedio, no formación bruta de capital — pagar la licencia de la nube todos los meses no capitaliza a nadie.",
+    aporta: "Sigue el gasto en tecnología que no pasa por aduana como bien de capital. Leído junto al IAI apunta a la 'trampa de la madurez': un país puede invertir en ladrillos y camiones pero estancarse si no se digitaliza. Con una advertencia declarada en la ficha: un aumento de los pagos al exterior por software admite leerse como digitalización o como dependencia tecnológica, y el indicador puntúa la primera. Medir inversión digital de verdad pediría software, bases de datos y equipos TIC según cuentas nacionales: eso es un indicador nuevo, no otro rótulo sobre éste. Se construye con datos del INDEC (balanza de servicios + IPI/empleo).",
     frecuencia: "Mensual", tipo: "Variación i.a. ponderada",
   },
   prestamos_privados: {
@@ -463,12 +463,12 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
 // Claves únicas entre ITCM/ITCG/ITCIS.
 export const DIM_DESCRIPCIONES: Record<string, string> = {
   // ITCM
-  estabilidad_monetaria: "La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM), el desequilibrio entre oferta y demanda transaccional de pesos (IDM) y la presión por salir del peso, observada según el régimen cambiario vigente.",
+  estabilidad_monetaria: "La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM), la brecha de crecimiento real entre el agregado amplio y el transaccional (IDM) y la presión por salir del peso, observada según el régimen cambiario vigente.",
   viabilidad_fiscal_comercial: "Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real es el sostén del ancla fiscal y el saldo comercial, los dólares genuinos del intercambio.",
   financiamiento: "Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero (IdC), crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.",
   actividad: "Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.",
   competitividad_externa: "Si el tipo de cambio real alcanza para competir: el ITCRM oficial del BCRA contra su propia historia.",
-  inversion: "Si alguien está apostando al futuro: inversión física (construcción, bienes de capital) y capitalización digital e intangible.",
+  inversion: "Si alguien está apostando al futuro: inversión física (construcción, bienes de capital) y gasto en servicios digitales, que no es lo mismo — los pagos al exterior por informática y nube son consumo intermedio, no formación de capital.",
   // ITCG
   reformas_economicas: "El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.",
   reforma_estado: "El achicamiento del Estado en tres medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real y reestructuración de organismos.",

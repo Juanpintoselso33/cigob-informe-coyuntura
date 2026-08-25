@@ -23,10 +23,10 @@ import itcm
 
 def test_las_cuatro_esquinas_reproducen_la_matriz_de_la_ficha():
     # (posicion_a, posicion_b) -> tensión declarada en la ficha
-    assert dm.tension_matriz(1.0, 0.0) == 0.0     # verde: confianza real
+    assert dm.tension_matriz(1.0, 0.0) == 0.0     # verde: liquidez alta, poca compra
     assert dm.tension_matriz(0.0, 0.0) == 40.0    # amarillo: contenida en el sistema
     assert dm.tension_matriz(1.0, 1.0) == 77.5    # naranja/rojo: fuga oculta
-    assert dm.tension_matriz(0.0, 1.0) == 90.0    # rojo: deterioro dentro y fuera
+    assert dm.tension_matriz(0.0, 1.0) == 90.0    # rojo: menos pesos Y presión alta
 
 
 def test_la_matriz_no_es_simetrica_y_la_fuga_pesa_mas_que_el_stock():

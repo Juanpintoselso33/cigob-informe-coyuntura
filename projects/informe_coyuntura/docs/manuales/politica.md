@@ -19,7 +19,7 @@ al ADR.
 | `cohesion_interna` | 15% | `cohesion_bloque` |
 | `conflicto_social` | 10% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
 | `imagen_voto` | 7% | `votometro_ventaja_lla` |
-| `poder_judicial` | 15% | `cobertura_judicial`, `judicializacion`, `velocidad_resolucion`, `paralisis_denuncias` |
+| `poder_judicial` | 15% | `cobertura_judicial`, `velocidad_resolucion`, `paralisis_denuncias` |
 | `sector_privado` | 13% | `brecha_obra_publica` |
 
 Suma de pesos: 100%.
@@ -252,8 +252,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 40% |
-| Peso efectivo en el índice | **6.0%** |
+| Peso dentro de la dimensión | 50% |
+| Peso efectivo en el índice | **7.5%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 1 meses |
 | Procedencia del ancla | `conceptual` — niveles redondos de cobertura de un cuerpo (>90 completa · 80-90 buena · 70-80 aceptable · 60-70 deficitaria · ≤60 crítica), explícitamente NO calibrados contra el rango observado 64-73%, que es desempeño real y bajo (ADR-0126) |
@@ -262,30 +262,14 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0126](../adr/0126-el-itcp-abre-la-dimension-poder-judicial.md) El ITCP abre la dimensión del Poder Judicial · [ADR-0144](../adr/0144-el-piloto-de-concursos-corrobora-cobertura-judicial.md) El piloto de concursos corrobora la cobertura judicial · [ADR-0240](../adr/0240-el-numerador-viaja-con-su-fecha.md) El numerador viaja con su fecha
 
-#### Judicialización de la agenda
-
-`judicializacion`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **3.0%** |
-| Familia de lectura | tensión externa |
-| Rezago declarado | 9 meses |
-| Procedencia del ancla | `historia_larga` — el techo es el 0,78% de densidad cautelar promedio de 2016-2019 —dos gobiernos anteriores al medido— contra 1,66% del promedio 2020-2026 (ADR-0168) |
-
-**Bandas**: ≤ 0.8 → 100 · 0.8–1.2 → 85 · 1.2–1.6 → 65 · 1.6–2 → 40 · > 2 → 10
-
-**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0170](../adr/0170-judicializacion-y-paralisis-pasan-a-fuente-viva.md) Judicialización y parálisis de denuncias pasan a fuente viva
-
 #### Velocidad de resolución de la Corte
 
 `velocidad_resolucion`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **3.0%** |
+| Peso dentro de la dimensión | 25% |
+| Peso efectivo en el índice | **3.8%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 12 meses |
 | Procedencia del ancla | `conceptual` — el 100% es el punto donde la Corte resuelve exactamente lo que le entra, sin acumular ni descargar atraso; los cortes son márgenes redondos alrededor de ese valor y no el rango observado 26-142 (ADR-0168) |
@@ -300,8 +284,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **3.0%** |
+| Peso dentro de la dimensión | 25% |
+| Peso efectivo en el índice | **3.8%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 2 meses |
 | Procedencia del ancla | `conceptual` — cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, no calibrados contra el rango observado 2-7 (ADR-0168) |
@@ -339,6 +323,7 @@ histórica.
 - `comisiones_caidas` — Comisiones sin sanción (declarado como contexto)
 - `derrotas_legislativas` — Derrotas legislativas del Ejecutivo (declarado como contexto)
 - `gobernadores_alineamiento` — Alineamiento de gobernadores (retirado)
+- `judicializacion` — Densidad de menciones cautelares en sumarios SAIJ
 - `movilizacion_cepa` — Tensión social (CEPA, interno) (declarado como contexto)
 - `protestas_caba` — Protestas en CABA (ACLED) (declarado como contexto)
 - `rotacion_gabinete` — Rotación del gabinete (declarado como contexto)
@@ -380,7 +365,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-67 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+68 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -449,3 +434,4 @@ histórica.
 - [0240](../adr/0240-el-numerador-viaja-con-su-fecha.md) — El numerador viaja con su fecha
 - [0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) — Un DNU es un tipo jurídico, no una frase
 - [0246](../adr/0246-el-saldo-empresario-se-calculaba-sobre-un-corpus-abierto.md) — El saldo empresario se calculaba sobre un corpus abierto
+- [0255](../adr/0255-el-corpus-de-saij-no-identifica-al-ejecutivo.md) — El corpus de SAIJ no identifica al Ejecutivo

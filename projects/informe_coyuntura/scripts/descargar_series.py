@@ -261,8 +261,8 @@ def fetch_tcrm_serie(meses: int | None = None) -> list:
 
 
 def fetch_idm_serie(meses: int | None = None) -> list:
-    """Serie mensual del Índice de Desequilibrio Monetario (brecha i.a. real entre
-    M3 y M2 privado), con la misma fórmula que el indicador en macro.py. Devuelve
+    """Serie mensual de la brecha de crecimiento real M3–M2 privados, con la
+    misma fórmula que el indicador en macro.py (ADR-0254). Devuelve
     los últimos `meses` como [[YYYY-MM-01, gap_pp]]."""
     meses = meses or _meses_desde_asuncion()
     serie = macro._idm_serie_mensual(meses_hist=meses + 4)  # [(YYYY-MM, gap, m3, m2)] asc.

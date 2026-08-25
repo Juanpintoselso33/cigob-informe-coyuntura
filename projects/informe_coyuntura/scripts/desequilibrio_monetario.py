@@ -1,4 +1,4 @@
-"""Desequilibrio monetario: confianza DENTRO del sistema x fuga FUERA del sistema.
+"""Composicion de la liquidez privada x presion compradora de divisas.
 
 Implementa la ficha "Desequilibrio Monetario" (Diego, ago-2026). El indicador
 nace de una observacion sobre el IDM vigente (ADR-0009): M2 y M3 son agregados
@@ -41,7 +41,13 @@ se pueda desincronizar de esta.
 Notese que la matriz NO es simetrica: pasar de verde a amarillo (que se degrade
 A) cuesta 40 puntos y pasar de verde a naranja/rojo (que se degrade B) cuesta
 77,5. Eso no es una ponderacion inventada aca: sale de las celdas que fijo la
-ficha, y refleja su tesis de que la fuga fuera del sistema es la senal grave.
+ficha, y refleja su tesis de que la presion compradora de divisas es la senal
+grave.
+
+ADR-0252: el componente B se llamaba "fuga fuera del sistema" y no identifica
+eso. Mide la compra neta de billetes y divisas del sector privado no
+financiero; el BCRA estimo que cerca del 80% de esas compras quedo depositado
+localmente. Es presion compradora, que es lo que el dato observa.
 """
 import io
 from collections import defaultdict
@@ -67,7 +73,9 @@ BCRA_CIRCULANTE_ID = 17   # Billetes y monedas en poder del publico
 BCRA_DEP_PRIV_ARS  = 100  # Depositos del SPNF en pesos (incluye cedros)
 BCRA_DEP_PRIV_USD  = 104  # Depositos del SPNF en moneda extranjera, EXPRESADOS EN PESOS
 
-# -- Componente B: fuga fuera del sistema ---------------------------------------
+# -- Componente B: presion compradora de divisas --------------------------------
+# NO mide dinero "fuera del sistema" (ADR-0252): comprar divisas y sacarlas del
+# sistema financiero son dos actos distintos, y el segundo no se observa aca.
 # La ficha lo nombra "Formacion de Activos Externos del Sector Privado No
 # Financiero". Ese rubro YA NO SE PUBLICA con ese nombre: el anexo del balance
 # cambiario reserva "Formacion de activos externos" para el sector financiero y
@@ -121,10 +129,10 @@ VENTANA_B = "2025-04 / 2026-06"
 # "naranja/rojo" de la ficha se toma como el punto medio entre naranja (65) y
 # rojo (90): la ficha la dejo escrita con las dos etiquetas y el medio es la
 # lectura honesta.
-TENSION_A_BAJO_B_BAJO = 40.0   # amarillo -- dolarizacion contenida en el sistema
+TENSION_A_BAJO_B_BAJO = 40.0   # amarillo -- menos pesos transaccionales, sin presion
 TENSION_A_ALTO_B_BAJO = 0.0    # verde -- confianza real
-TENSION_A_BAJO_B_ALTO = 90.0   # rojo -- deterioro total, dentro y fuera
-TENSION_A_ALTO_B_ALTO = 77.5   # naranja/rojo -- fuga oculta fuera del sistema
+TENSION_A_BAJO_B_ALTO = 90.0   # rojo -- menos pesos transaccionales Y presion alta
+TENSION_A_ALTO_B_ALTO = 77.5   # naranja/rojo -- presion alta pese a liquidez alta
 
 # El compuesto no existe antes de que exista B bajo el regimen abierto. B se
 # puede calcular desde 2003, pero con cepo daba ~0 y la matriz lo leeria como

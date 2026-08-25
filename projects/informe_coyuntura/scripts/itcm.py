@@ -43,24 +43,29 @@ Revisiones sobre el doc original (observaciones del analista, docs
 
 Incorporaciones de la 3ª tanda (propuesta "Índice de Desequilibrio Monetario"
 + tipo de cambio multilateral, jun-2026):
-  * Estabilidad monetaria suma el IDM (Índice de Desequilibrio Monetario): la
-    brecha entre el crecimiento de la oferta amplia de pesos privados (M3 privado)
-    y la demanda transaccional (M2 privado). La propuesta original lo define como
+  * Estabilidad monetaria suma el IDM (brecha de crecimiento real M3–M2; se
+    llamaba «Índice de Desequilibrio Monetario» hasta ADR-0254): la brecha entre
+    el crecimiento del M3 privado y el del M2 privado transaccional. Los dos son
+    AGREGADOS: la brecha no es oferta menos demanda estimada. La propuesta original lo define como
     ΔM3 nominal − ΔM2 real mensual; esa fórmula está sesgada por la inflación
     (resta una tasa real de una nominal → da rojo permanente) y por la
     estacionalidad del aguinaldo. Se implementa la versión REAL-REAL INTERANUAL
     (ΔM3 priv. real i.a. − ΔM2 priv. real i.a.), que respeta la intención
-    (oferta vs demanda real de pesos) sin esos defectos. El IDM se computa en
+    (comparar los dos agregados en términos reales) sin esos defectos. Se computa en
     macro.py a partir de circulante (var. 17) + depósitos privados (var. 100) y
     M2 privado transaccional (var. 197) del BCRA, deflactados por el IPC.
-  * Desequilibrio monetario (ficha de Diego, ago-2026; ADR-0192): indicador
-    separado del IDM que cruza DOS componentes en una matriz — cuánta de la
-    liquidez privada total sigue en pesos transaccionales (stock, dentro del
-    sistema) contra cuántos dólares netos compra el sector privado no financiero
-    (flujo, fuera del sistema). Reemplaza a `presion_dolarizacion` (ADR-0055),
-    que medía la misma fuga cambiaria desde la misma fuente del BCRA y quedaba
-    contándola dos veces dentro de la dimensión. El módulo resuelve la matriz y
-    publica una tensión 0-100; mayor tensión reduce el ITCM.
+  * Composición de la liquidez y presión compradora (ficha de Diego, ago-2026;
+    ADR-0192, renombrado por ADR-0252): indicador separado del IDM que cruza DOS
+    componentes en una matriz — cuánta de la liquidez privada total sigue en
+    pesos transaccionales (stock) contra cuántos dólares netos compra el sector
+    privado no financiero (flujo). El componente B se llamaba «fuga fuera del
+    sistema» y no identifica eso: el BCRA estimó que cerca del 80% de esas
+    compras quedó depositado localmente. Comprar divisas y sacarlas del sistema
+    financiero son dos actos distintos y acá sólo se observa el primero.
+    Reemplaza a `presion_dolarizacion` (ADR-0055), que medía la misma presión
+    cambiaria desde la misma fuente del BCRA y quedaba contándola dos veces
+    dentro de la dimensión. El módulo resuelve la matriz y publica una tensión
+    0-100; mayor tensión reduce el ITCM.
   * Nueva dimensión COMPETITIVIDAD EXTERNA (12%): el TCRM (ITCRM oficial del BCRA,
     base 2015=100) deja de ser contexto y puntúa. Apreciación real = atraso
     cambiario = más tensión. Las 4 dimensiones originales se recortan en
@@ -72,10 +77,11 @@ macro.py como promedios ponderados de variaciones interanuales:
   * IAI — Índice Anticipador de Inversión (físico): ISAC construcción + bienes de
     capital importados (+ patentamientos comerciales cuando haya histórico). Mide
     la inversión tradicional/tangible.
-  * ICIP — Índice de Capitalización Inteligente: pagos al exterior de servicios de
-    informática (software/cloud/IA) + productividad laboral (IPI/empleo). Mide la
-    inversión digital/intangible. La lectura conjunta IAI vs ICIP expone la
-    "trampa de la madurez" (invertir en ladrillos sin digitalizarse).
+  * ICIP — Pagos de servicios digitales y productividad: pagos al exterior de
+    servicios de informática (software/cloud/IA) + productividad laboral
+    (IPI/empleo). NO es inversión digital: esos pagos son consumo intermedio en
+    cuentas nacionales (ADR-0253). La lectura conjunta IAI vs ICIP sigue
+    contrastando inversión física contra gasto en digitalización.
   El umbral ±2% de los docs no sobrevive al dato argentino (las series i.a. se
   mueven ±30-180% por la base 2024-2025): se usan BANDAS ANCHAS calibradas a la
   realidad, conservando la lógica contracción/neutro/expansión.
@@ -109,10 +115,11 @@ BANDAS_ITCM = {
         # hereda su criterio del IPC, no del período medido.
         (-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (3.0, 5.0, 40), (5.0, INF, 10),
     ],
-    "idm": [                            # Índice de Desequilibrio Monetario (pp, brecha i.a. real)
+    "idm": [                            # Brecha de crecimiento real M3–M2 (pp, i.a.)
         # gap = crecimiento i.a. REAL del M3 privado − del M2 privado transaccional.
-        # Negativo = la demanda real tracciona (remonetización genuina, baja tensión);
-        # positivo = la masa amplia corre por encima de la demanda → excedente de pesos
+        # Negativo = el agregado transaccional crece más rápido que el amplio;
+        # positivo = el amplio corre por encima del transaccional. NO es un
+        # excedente sobre la demanda de dinero: M2 es un agregado (ADR-0254).
         # que presiona la brecha cambiaria. Calibrado con la historia 2024-2026 (oct-24 a
         # may-26 va de −11 pp en la remonetización post-estabilización a +7 pp en el pico).
         (-INF, -2.0, 100), (-2.0, 2.0, 85), (2.0, 5.0, 60), (5.0, 8.0, 35), (8.0, INF, 10),
@@ -255,10 +262,14 @@ BANDAS_ITCM = {
         # la realidad 2024-2026 conservando la lógica contracción/neutro/expansión.
         (10.0, INF, 100), (2.0, 10.0, 80), (-2.0, 2.0, 60), (-10.0, -2.0, 35), (-INF, -10.0, 10),
     ],
-    "icip": [                           # ICIP — Capitalización Inteligente (% i.a. ponderado)
-        # Inversión digital/intangible (servicios tech + productividad). Más rápido y
-        # volátil que la física (los pagos de servicios informáticos i.a. oscilan más),
-        # de ahí la banda más ancha. Más = la economía se digitaliza más rápido.
+    "icip": [                           # ICIP — pagos de servicios digitales (% i.a. ponderado)
+        # ADR-0253: se llamaba «Capitalización Inteligente». Los pagos al exterior
+        # por informática y nube son, en cuentas nacionales, consumo intermedio —
+        # no formación bruta de capital: pagar la nube todos los meses no
+        # capitaliza a nadie. Mide pagos de servicios digitales combinados con
+        # productividad laboral, y así se llama ahora.
+        # Más rápido y volátil que la inversión física (los pagos de servicios
+        # informáticos i.a. oscilan más), de ahí la banda más ancha.
         (20.0, INF, 100), (5.0, 20.0, 80), (-5.0, 5.0, 60), (-20.0, -5.0, 35), (-INF, -20.0, 10),
     ],
     "credito_privado": [                # Crédito al sector privado, % i.a. REAL (ADR-0022)

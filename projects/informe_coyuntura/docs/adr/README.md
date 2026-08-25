@@ -97,6 +97,9 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0193](0193-peso-del-desequilibrio-monetario.md) | El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó | `desequilibrio_monetario`, `rem_ipc_12m`, `idm` | vigente |
 | [0238](0238-la-tirea-no-se-estima-se-lee.md) | La TIREA no se estima, se lee |  | vigente |
 | [0251](0251-el-credito-en-pesos-no-se-mezcla-con-el-tipo-de-cambio.md) | El crédito en pesos no se mezcla con el tipo de cambio | `credito_privado` | vigente |
+| [0252](0252-la-compra-de-divisas-no-dice-adonde-fue-el-dinero.md) | La compra de divisas no dice adónde fue el dinero | `desequilibrio_monetario` | vigente |
+| [0253](0253-pagar-la-nube-no-es-capitalizar.md) | Pagar la nube no es capitalizar | `icip` | vigente |
+| [0254](0254-la-brecha-m3-m2-no-es-oferta-menos-demanda.md) | La brecha M3–M2 no es oferta menos demanda | `idm` | vigente |
 
 ### Política (ITCP)
 
@@ -174,6 +177,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0240](0240-el-numerador-viaja-con-su-fecha.md) | El numerador viaja con su fecha | `cobertura_judicial` | vigente |
 | [0241](0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) | Un DNU es un tipo jurídico, no una frase | `ratio_dnu` | vigente |
 | [0246](0246-el-saldo-empresario-se-calculaba-sobre-un-corpus-abierto.md) | El saldo empresario se calculaba sobre un corpus abierto | `apoyo_empresario` | vigente |
+| [0255](0255-el-corpus-de-saij-no-identifica-al-ejecutivo.md) | El corpus de SAIJ no identifica al Ejecutivo | `judicializacion` | vigente |
 
 ### Gestión (ITCG)
 

@@ -57,14 +57,19 @@ def test_macro_input_txt_explica_los_dos_componentes_del_desequilibrio():
     assert publicar._macro_input_txt("desequilibrio_monetario", ind) == (
         "tensión 50,91 pts = liquidez privada en pesos transaccionales 33,5% × "
         "compra neta de divisas del sector privado US$ 2066,6 M — "
-        "dolarización contenida en el sistema"
+        "menos pesos transaccionales, sin presión compradora"
     )
 
 
-def test_macro_input_txt_nombra_la_celda_de_fuga_oculta():
-    """La celda que la ficha llama «naranja/rojo»: el stock se ve bien y la fuga
-    no. Es el caso que el indicador existe para exponer, así que tiene que
-    quedar dicho en el detalle y no sólo en el número."""
+def test_macro_input_txt_nombra_la_celda_de_presion_alta():
+    """La celda que la ficha llama «naranja/rojo»: la composición de la liquidez
+    se ve bien y la compra de divisas es alta igual. Es el caso que el indicador
+    existe para exponer, así que tiene que quedar dicho en el detalle y no sólo
+    en el número.
+
+    ADR-0252: la etiqueta decía «fuga oculta fuera del sistema» y afirmaba algo
+    que el dato no observa — el BCRA estimó que ~80% de esas compras quedó
+    depositado localmente. Ahora describe la combinación, no el destino."""
     ind = {
         "valor": 77.5,
         "componente_a": 49.96,
@@ -74,7 +79,7 @@ def test_macro_input_txt_nombra_la_celda_de_fuga_oculta():
     assert publicar._macro_input_txt("desequilibrio_monetario", ind) == (
         "tensión 77,5 pts = liquidez privada en pesos transaccionales 49,96% × "
         "compra neta de divisas del sector privado US$ 6545,1 M — "
-        "fuga oculta fuera del sistema"
+        "presión compradora alta pese a liquidez transaccional alta"
     )
 
 

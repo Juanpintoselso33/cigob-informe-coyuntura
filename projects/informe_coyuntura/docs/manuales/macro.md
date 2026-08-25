@@ -55,7 +55,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
 
-#### Exceso de pesos sobre la demanda (IDM)
+#### Brecha de crecimiento real M3–M2
 
 `idm`
 
@@ -67,9 +67,9 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ -2 → 100 · -2–2 → 85 · 2–5 → 60 · 5–8 → 35 · > 8 → 10
 
-**Lo gobiernan**: [ADR-0053](../adr/0053-transparencia-y-agregados-monetarios-idm.md) Transparencia y agregados monetarios del IDM · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
+**Lo gobiernan**: [ADR-0053](../adr/0053-transparencia-y-agregados-monetarios-idm.md) Transparencia y agregados monetarios del IDM · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0254](../adr/0254-la-brecha-m3-m2-no-es-oferta-menos-demanda.md) La brecha M3–M2 no es oferta menos demanda
 
-#### Dolarización dentro y fuera del sistema
+#### Liquidez en pesos y presión compradora de divisas
 
 `desequilibrio_monetario`
 
@@ -81,7 +81,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 20 → 100 · 20–50 → 60 · 50–80 → 35 · > 80 → 10
 
-**Lo gobiernan**: [ADR-0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
+**Lo gobiernan**: [ADR-0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0252](../adr/0252-la-compra-de-divisas-no-dice-adonde-fue-el-dinero.md) La compra de divisas no dice adónde fue el dinero
 
 ### Dimensión `viabilidad_fiscal_comercial` (24%)
 
@@ -183,7 +183,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 40 → 100 · 20–40 → 85 · 8–20 → 65 · 0–8 → 45 · -10–0 → 25 · ≤ -10 → 10
 
-**Lo gobiernan**: [ADR-0074](../adr/0074-rebalanceo-idc-credito.md) El crédito otorgado deja de pesar un tercio de la capacidad de prestar
+**Lo gobiernan**: [ADR-0074](../adr/0074-rebalanceo-idc-credito.md) El crédito otorgado deja de pesar un tercio de la capacidad de prestar · [ADR-0251](../adr/0251-el-credito-en-pesos-no-se-mezcla-con-el-tipo-de-cambio.md) El crédito en pesos no se mezcla con el tipo de cambio
 
 ### Dimensión `actividad` (11%)
 
@@ -261,7 +261,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM
 
-#### Capitalización digital (ICIP)
+#### Pagos de servicios digitales y productividad
 
 `icip`
 
@@ -273,7 +273,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 20 → 100 · 5–20 → 80 · -5–5 → 60 · -20–-5 → 35 · ≤ -20 → 10
 
-**Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM
+**Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM · [ADR-0253](../adr/0253-pagar-la-nube-no-es-capitalizar.md) Pagar la nube no es capitalizar
 
 ## Se releva y no puntúa
 
@@ -306,7 +306,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-33 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+37 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -341,3 +341,7 @@ histórica.
 - [0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) — Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va
 - [0193](../adr/0193-peso-del-desequilibrio-monetario.md) — El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
 - [0238](../adr/0238-la-tirea-no-se-estima-se-lee.md) — La TIREA no se estima, se lee
+- [0251](../adr/0251-el-credito-en-pesos-no-se-mezcla-con-el-tipo-de-cambio.md) — El crédito en pesos no se mezcla con el tipo de cambio
+- [0252](../adr/0252-la-compra-de-divisas-no-dice-adonde-fue-el-dinero.md) — La compra de divisas no dice adónde fue el dinero
+- [0253](../adr/0253-pagar-la-nube-no-es-capitalizar.md) — Pagar la nube no es capitalizar
+- [0254](../adr/0254-la-brecha-m3-m2-no-es-oferta-menos-demanda.md) — La brecha M3–M2 no es oferta menos demanda

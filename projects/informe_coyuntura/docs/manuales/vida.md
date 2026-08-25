@@ -251,7 +251,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0018).
+**Lo gobiernan**: [ADR-0249](../adr/0249-la-subocupacion-demandante-se-llama-por-su-nombre.md) La subocupación demandante se llama por su nombre
 
 #### Peso del trabajo independiente
 
@@ -265,7 +265,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) La contracara del cierre: el trabajo independiente
+**Lo gobiernan**: [ADR-0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) La contracara del cierre: el trabajo independiente · [ADR-0250](../adr/0250-el-universo-restringido-se-enumera.md) El universo restringido se enumera
 
 ### Dimensión `percepcion` (8%)
 
@@ -334,7 +334,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-40 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+42 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -376,3 +376,5 @@ histórica.
 - [0242](../adr/0242-el-icc-que-se-publica-es-el-nacional.md) — El ICC que se publica es el nacional
 - [0243](../adr/0243-la-base-del-indice-la-declara-la-fuente.md) — La base del índice la declara la fuente
 - [0248](../adr/0248-el-volumen-de-busquedas-no-tiene-valencia.md) — El volumen de búsquedas no tiene valencia
+- [0249](../adr/0249-la-subocupacion-demandante-se-llama-por-su-nombre.md) — La subocupación demandante se llama por su nombre
+- [0250](../adr/0250-el-universo-restringido-se-enumera.md) — El universo restringido se enumera

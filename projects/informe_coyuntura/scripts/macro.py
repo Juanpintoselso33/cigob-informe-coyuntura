@@ -117,7 +117,7 @@ BCRA_TC_MAYOR_ID    = 5    # Tipo de cambio mayorista de referencia (ARS/USD)
 BCRA_DEP_PRIV_ID        = 100  # Depósitos privados en pesos — insumo IdC e IDM
 BCRA_PREST_PRIV_ID      = 117  # Préstamos otorgados al sector privado — insumo IdC
 BCRA_CIRCULANTE_ID      = 17   # Billetes y monedas en poder del público — insumo M3 privado (IDM)
-BCRA_M2_PRIV_ID         = 197  # M2 transaccional del sector privado — demanda de dinero (IDM)
+BCRA_M2_PRIV_ID         = 197  # M2 transaccional del sector privado (agregado, NO una demanda estimada — ADR-0254)
 DESEQUILIBRIO_MAX_REZAGO_MESES = 2   # Mercado de Cambios publica con hasta dos meses de rezago
 
 HTTP_TIMEOUT = 30
@@ -292,15 +292,18 @@ def _ym_shift(ym: str, meses: int) -> str:
 
 
 def _idm_serie_mensual(meses_hist: int = 24) -> list:
-    """Serie mensual del Índice de Desequilibrio Monetario (IDM).
+    """Serie mensual de la brecha de crecimiento real M3–M2 privados (IDM).
 
-    Brecha entre el crecimiento interanual REAL de la oferta amplia de pesos del
-    sector privado (M3 privado = circulante en poder del público + depósitos
-    privados, var. 17 + 100) y el de la demanda transaccional (M2 privado, var.
-    197), ambos deflactados por el IPC. Versión real-real interanual: corrige el
-    sesgo inflacionario y la estacionalidad del aguinaldo de la propuesta original
-    (m/m nominal-real). Positivo = la masa amplia corre por encima de la demanda
-    real → excedente de pesos que presiona la brecha cambiaria.
+    Brecha entre el crecimiento interanual REAL del M3 privado (circulante en
+    poder del público + depósitos privados, var. 17 + 100) y el del M2 privado
+    transaccional (var. 197), ambos deflactados por el IPC. Los dos son
+    agregados monetarios; la brecha no es oferta menos demanda (ADR-0254).
+
+    Versión real-real interanual: corrige el sesgo inflacionario y la
+    estacionalidad del aguinaldo de la propuesta original (m/m nominal-real).
+    Positivo = el agregado amplio crece más rápido que el transaccional, o sea
+    que los pesos se van a plazo y a instrumentos remunerados en vez de quedarse
+    en transacciones.
 
     Devuelve [(YYYY-MM, gap_pp, m3_real_ia, m2_real_ia)] ascendente.
     """
@@ -1352,11 +1355,22 @@ def fetch_rem_ipc_12m() -> dict | None:
 
 
 def fetch_idm() -> dict | None:
-    """Índice de Desequilibrio Monetario (IDM): brecha i.a. real entre la oferta
-    amplia de pesos privados (M3 privado) y la demanda transaccional (M2 privado).
-    Positivo = excedente de pesos sobre la demanda → presión sobre la brecha;
-    negativo = remonetización genuina traccionada por la demanda real. Ver
-    _idm_serie_mensual para la metodología (real-real interanual)."""
+    """Brecha de crecimiento real M3–M2 privados, en puntos porcentuales.
+
+    Es la diferencia entre cuánto crece en términos reales el M3 privado y
+    cuánto crece el M2 privado transaccional, ambos interanuales. Positivo = el
+    agregado amplio crece más rápido que el transaccional: los pesos se están
+    yendo a plazo y a instrumentos remunerados en vez de quedarse en
+    transacciones. Negativo = lo contrario.
+
+    **No mide un exceso sobre la demanda de dinero** (ADR-0254). Hasta ago-2026
+    se llamaba «Índice de Desequilibrio Monetario» y se leía como oferta menos
+    demanda estimada; M2 es un agregado monetario, no una función de demanda.
+    Estimar una demanda de dinero requiere elegir variables, forma funcional y
+    validación, y nada de eso está acá. Lo que sí observa —dos agregados y su
+    velocidad relativa— sigue siendo informativo, y así se llama ahora.
+
+    Ver _idm_serie_mensual para la metodología (real-real interanual)."""
     try:
         serie = _idm_serie_mensual()
         if not serie:
@@ -1539,10 +1553,19 @@ def fetch_iai() -> dict | None:
 
 
 def fetch_icip() -> dict | None:
-    """ICIP — Índice de Capitalización Inteligente y Productividad (digital/
-    intangible). Promedio ponderado de variaciones i.a.: pagos al exterior de
-    servicios de informática (software/cloud/IA) + productividad laboral
-    (IPI/empleo). Mayor = la economía se digitaliza más rápido. Banda 'icip'."""
+    """ICIP — Pagos de servicios digitales y productividad. Promedio ponderado
+    de variaciones i.a.: pagos al exterior de servicios de informática
+    (software/cloud/IA) + productividad laboral (IPI/empleo). Mayor = la
+    economía paga más por servicios digitales y/o produce más por ocupado.
+    Banda 'icip'.
+
+    **No es capitalización** (ADR-0253). Se llamaba «Índice de Capitalización
+    Inteligente y Productividad» y el insumo principal no lo sostiene: en
+    cuentas nacionales, los pagos transfronterizos por informática y nube son
+    **consumo intermedio**, no formación bruta de capital. Pagar la licencia de
+    la nube todos los meses no capitaliza a nadie. Medir inversión digital de
+    verdad pide software, bases de datos y equipos TIC según cuentas nacionales;
+    eso es un indicador nuevo, no un rótulo distinto sobre este."""
     try:
         # ÚLTIMO MES COMÚN de los TRES insumos (ADR-0030, mismo criterio de
         # borde irregular que IAI/recaudación/IdC): sin esto, el día que la

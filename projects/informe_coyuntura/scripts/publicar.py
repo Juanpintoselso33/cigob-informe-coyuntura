@@ -775,11 +775,14 @@ def _macro_input_txt(ikey, ind):
         return (f"brecha {coma(ind.get('valor'))} pp = M3 priv. real i.a. "
                 f"{coma(ind['m3_real_ia'])}% − M2 priv. real i.a. {coma(ind['m2_real_ia'])}%")
     if ikey == "desequilibrio_monetario" and ind.get("componente_a") is not None:
+        # ADR-0252: las etiquetas describen la COMBINACIÓN observada, no dónde
+        # terminó el dinero. La compra neta de divisas no identifica salida del
+        # sistema financiero — el BCRA estimó que ~80% quedó depositado acá.
         celdas = {
-            "verde": "confianza real",
-            "amarillo": "dolarización contenida en el sistema",
-            "naranja_rojo": "fuga oculta fuera del sistema",
-            "rojo": "deterioro dentro y fuera del sistema",
+            "verde": "liquidez transaccional alta y poca compra de divisas",
+            "amarillo": "menos pesos transaccionales, sin presión compradora",
+            "naranja_rojo": "presión compradora alta pese a liquidez transaccional alta",
+            "rojo": "menos pesos transaccionales y presión compradora alta",
         }
         lectura = celdas.get(ind.get("celda"), "")
         return (f"tensión {coma(ind.get('valor'))} pts = liquidez privada en pesos "

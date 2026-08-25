@@ -531,6 +531,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "El punto del año en curso se recalcula en cada corrida, porque la base sigue indexando fallos de ese año. Al ser un cociente, el numerador y el denominador se recortan juntos y el punto sigue siendo comparable.",
     cambios: [
       { fecha: "2026-07-31", cambio: "Entra al índice como uno de los tres indicadores de comportamiento del Poder Judicial." },
+      { fecha: "2026-08-25", cambio: "ADR-0255: sale del ITCP. El 1,57% son 114 sumarios que mencionan «medida cautelar» sobre 7.273 publicados por SAIJ, y ese corpus no identifica causas contra el Poder Ejecutivo: una cautelar entre privados cuenta igual. Renombrarlo no alcanzaba, porque para puntuar hay que decidir un signo y más menciones cautelares en la jurisprudencia general no dicen nada sobre el gobierno. Libera su 20% de la dimensión de Poder Judicial, que se reparte entre los otros tres. Se sigue relevando. Vuelve con un universo de causas contra actos del Ejecutivo, con unidad de expediente y no de sumario." },
     ],
   },
 
@@ -926,6 +927,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-13", cambio: "Aclaración de transparencia, sin cambio metodológico: la ficha explicita la composición del M2 transaccional y publica la cadena completa de ponderación y el aporte vigente del IDM al ITCM." },
       { fecha: "2026-07-13", cambio: "Su peso interno pasa de 30% a 25% al incorporarse una señal de presión de dolarización; su peso nominal efectivo en el ITCM pasa de 7,8% a 6,5%." },
+      { fecha: "2026-08-25", cambio: "ADR-0254: el indicador pasa a llamarse «Brecha de crecimiento real M3–M2». Se publicaba como «Exceso de pesos sobre la demanda» y no mide eso: M3 y M2 son los dos agregados monetarios, y una demanda de dinero es una función estimada —variables, forma funcional, período, validación— que acá no existe. La fórmula, la banda y el peso no cambian, así que la serie sigue siendo comparable hacia atrás; lo que cambia es la lectura, que pasa de «sobran pesos» a hacia dónde se mueven los pesos dentro del sistema. Queda anotado que la banda se calibró bajo la lectura anterior y merece revisarse." },
     ],
   },
 
@@ -941,11 +943,11 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: API monetaria del BCRA y planilla acumulativa del anexo estadístico del mercado de cambios y balance cambiario.",
     },
     transformaciones: [
-      "Componente A (stock, dentro del sistema): el M2 transaccional del sector privado se divide por el M3 ampliado —circulante en poder del público más depósitos privados en pesos más depósitos privados en dólares expresados en pesos— y se expresa en porcentaje. Mide qué proporción de la liquidez privada total sigue en pesos de uso transaccional.",
+      "Componente A (stock, composición de la liquidez): el M2 transaccional del sector privado se divide por el M3 ampliado —circulante en poder del público más depósitos privados en pesos más depósitos privados en dólares expresados en pesos— y se expresa en porcentaje. Mide qué proporción de la liquidez privada total sigue en pesos de uso transaccional.",
       "El numerador es la variable 197 del BCRA y no una reconstrucción propia, porque la definición del indicador excluye la vista remunerada de personas jurídicas y esa exclusión no se puede replicar sumando circulante, cuentas corrientes y cajas de ahorro: medido sobre la historia disponible, esa suma corre 22,8% por encima de la 197 en promedio y hasta 57% en un mes.",
-      "Componente B (flujo, fuera del sistema): compra neta de billetes y divisas sin fines específicos del sector privado no financiero, en millones de dólares, con el sector público excluido. Positivo significa salida.",
+      "Componente B (flujo, presión compradora de divisas): compra neta de billetes y divisas sin fines específicos del sector privado no financiero, en millones de dólares, con el sector público excluido. Positivo significa más compra neta. NO identifica dinero fuera del sistema financiero: el BCRA estimó que cerca del 80% de esas compras quedó depositado localmente, y comprar divisas y sacarlas del sistema son dos actos distintos.",
       "Cada componente se convierte en una posición de 0 a 1 interpolando entre los percentiles de su ventana de calibración, con saturación fuera de los extremos. Componente A: 31,62 → 0; 34,48 → 0,25; 38,27 → 0,50; 44,34 → 0,75; 49,96 → 1. Componente B: 1.122 → 0; 1.954 → 0,25; 2.363 → 0,50; 3.644 → 0,75; 6.545 → 1.",
-      "Las dos posiciones se cruzan por interpolación bilineal entre las cuatro esquinas de la matriz, expresadas en tensión de 0 a 100: A alto con B bajo (confianza real) da 0; A bajo con B bajo (dolarización contenida en el sistema) da 40; A alto con B alto (fuga oculta fuera del sistema) da 77,5; A bajo con B alto (deterioro dentro y fuera) da 90.",
+      "Las dos posiciones se cruzan por interpolación bilineal entre las cuatro esquinas de la matriz, expresadas en tensión de 0 a 100: A alto con B bajo (liquidez transaccional alta y poca compra de divisas) da 0; A bajo con B bajo (menos pesos transaccionales, sin presión compradora) da 40; A alto con B alto (presión compradora alta pese a liquidez transaccional alta) da 77,5; A bajo con B alto (menos pesos transaccionales y presión compradora alta) da 90.",
       "La celda que la ficha original dejó escrita como «naranja/rojo» se resuelve como el punto medio entre naranja (65) y rojo (90), que es 77,5.",
       "La tensión se traduce al ITCM con anclas explícitas que son su inversión exacta: 0 da 100 y 100 da 0. Las cuatro esquinas caen sobre esa recta, de modo que no hay una segunda escala que se pueda desincronizar de la del cálculo.",
       "Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del ITCM: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su 11% viene de ser el único indicador de su dimensión y no de un juicio sobre su importancia relativa.",
@@ -976,6 +978,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-08-11", cambio: "El peso dentro de estabilidad monetaria pasa de 10% a 20%, para que su peso nominal en el índice quede a la altura del de las reservas, como pedía la ficha original. Ceden el REM y el IDM; la inflación realizada conserva su 40%." },
       { fecha: "2026-08-11", cambio: "Alta del indicador, a partir de la ficha Desequilibrio Monetario. Reemplaza a la presión de dolarización de carteras dentro de estabilidad monetaria. Los cortes de banda preliminares de la ficha se sustituyeron por percentiles reales de cada serie, como la propia ficha preveía: con los preliminares ninguno de los quince meses de la ventana daba verde, y su referencia de que más de 3.000 millones era comparable a julio de 2025 erraba por unos 80%, porque ese mes fueron 5.436 millones." },
+      { fecha: "2026-08-25", cambio: "El componente B pasa a llamarse presión compradora de divisas. Se llamaba «fuga fuera del sistema» y no identifica eso: mide la compra neta de billetes y divisas del sector privado no financiero, y el BCRA estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos. Las cuatro celdas de la matriz pasan a describir la combinación observada en vez del destino del dinero. El valor, la matriz y las bandas no cambian. Queda anotado que la asimetría de la matriz —degradar B cuesta 77,5 puntos y degradar A sólo 40— se justificaba con la tesis de la fuga y merece revisarse en la próxima recalibración." },
     ],
   },
 
@@ -1064,6 +1067,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-06-30", cambio: "Nace y entra al índice (dimensión inversión, 40% interno), sin el componente de hardware y con bandas anchas propias." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "El titular pasa al último mes común de los tres insumos." },
+      { fecha: "2026-08-25", cambio: "ADR-0253: el indicador pasa a llamarse «Pagos de servicios digitales y productividad». Se publicaba como «Capitalización digital» y su insumo principal no lo sostiene: en cuentas nacionales, los pagos al exterior por informática y nube son consumo intermedio, no formación bruta de capital. La fórmula, la banda y el peso no cambian; lo que se retira es la afirmación de que ese gasto capitaliza. Medir inversión digital de verdad pediría software, bases de datos y equipos TIC según cuentas nacionales, que es un indicador nuevo." },
     ],
   },
 
