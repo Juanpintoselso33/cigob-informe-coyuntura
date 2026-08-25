@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-08-25T03:40:38.832227+00:00",
+    "generated_at": "2026-08-25T16:10:59.394390-03:00",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -2806,7 +2806,7 @@
     "2026-05": 2131.0,
     "2026-06": 2087.8,
     "2026-07": 2090.0,
-    "2026-08": 1894.4
+    "2026-08": 1894.0
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
@@ -4938,9 +4938,9 @@
       "avanzo": "2026-08-05"
     },
     "icg_utdt": {
-      "ultimo": "2026-06",
-      "n": 296,
-      "avanzo": "2026-08-05"
+      "ultimo": "2026-08",
+      "n": 297,
+      "avanzo": "2026-08-25"
     },
     "clima_electoral": {
       "ultimo": "2026-07",
@@ -5016,9 +5016,9 @@
           "etiqueta": "Confianza en el Gobierno (ICG de la UTDT)",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": 0.326,
+          "r_niveles": 0.364,
           "r_diferencias": 0.393,
-          "n": 31
+          "n": 32
         },
         {
           "estadistica": "indice_lider",
@@ -5079,8 +5079,8 @@
       "n_ajenas": 7,
       "niveles": {
         "convergente": 0.259,
-        "discriminante": 0.279,
-        "brecha": -0.02
+        "discriminante": 0.285,
+        "brecha": -0.026
       },
       "diferencias": {
         "convergente": 0.205,
@@ -5429,7 +5429,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 6 estadísticas de su propio terreno con 0,259 y a las 7 ajenas con 0,279. En los cambios mes a mes la separación no se sostiene: 0,205 con lo propio contra 0,207 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 6 estadísticas de su propio terreno con 0,259 y a las 7 ajenas con 0,285. En los cambios mes a mes la separación no se sostiene: 0,205 con lo propio contra 0,207 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
     },
     "itcg": {
       "indice": "itcg",

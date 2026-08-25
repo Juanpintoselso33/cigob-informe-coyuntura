@@ -2899,6 +2899,10 @@
     {
       "fecha": "2026-06-01",
       "valor": 2.07
+    },
+    {
+      "fecha": "2026-08-01",
+      "valor": 2.059
     }
   ],
   "gasto_funcionamiento": [

@@ -3129,6 +3129,20 @@ def fetch_fal_serie() -> list:
             m, y = 1, y + 1
     return out
 
+# ── UTDT · ICG ───────────────────────────────────────────────────────────────
+# El ICG no cuelga de `listado_contenidos.php` como el ICC (16458) o el Índice
+# Líder (16461): su ficha vive en `ver_contenido.php` y la descarga en una
+# página aparte. Por eso no aparece sondeando ids vecinos (ADR-0175).
+#
+# NO BORRAR AL EDITAR LAS FUNCIONES DE ACÁ ABAJO. Estas dos constantes ya se
+# perdieron una vez, de arrastre, en un commit que tocaba `fetch_fal_serie`
+# (d322ac2, 21-ago-2026): el arreglo del ADR-0175 vivió dos semanas y se
+# deshizo solo. El síntoma no es un error de red sino un `NameError` que el
+# try/except de `descargar()` traga como "fuente caída", así que la serie se
+# congela y parece un problema de la UTDT.
+UTDT_ICG_LISTADO = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=28756"
+UTDT_ICG_REFERER = "https://www.utdt.edu/ver_contenido.php?id_contenido=1439&id_item_menu=2964"
+
 def fetch_icg_serie() -> list:
     """Serie mensual del ICG UTDT (Índice de Confianza en el Gobierno, 0-5) —
     insumo de la validación externa del ITCG (no es indicador del cinturón).

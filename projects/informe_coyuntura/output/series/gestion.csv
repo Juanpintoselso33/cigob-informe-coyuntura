@@ -423,6 +423,7 @@ fecha,indicador,valor,unidad,fuente
 2022-07-01,indice_salarios_publico,695.34,indice base oct-2016=100,INDEC/datos.gob.ar
 2022-06-01,indice_salarios_publico,647.9,indice base oct-2016=100,INDEC/datos.gob.ar
 2022-05-01,indice_salarios_publico,619.44,indice base oct-2016=100,INDEC/datos.gob.ar
+2026-08-01,icg_utdt,2.059,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2026-06-01,icg_utdt,2.07,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2026-05-01,icg_utdt,1.99,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2026-04-01,icg_utdt,2.023,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
