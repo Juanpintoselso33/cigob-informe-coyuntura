@@ -76,6 +76,10 @@ jobs:
           ACLED_UBA_PASSWORD: ${{ secrets.ACLED_UBA_PASSWORD }}
         run: |
           set +e
+          # Se duplica la salida a un archivo para que el aviso a Slack pueda
+          # clasificarla después. Sin esto habría que volver a pedir el log por
+          # API, que es más frágil y llega tarde.
+          exec > >(tee -a "$RUNNER_TEMP/colectores.log") 2>&1
           # Los colectores usan sus exit codes como DATO, no como error:
           #   0 = todo fresco · 1 = mixto fresco/caché · 2 = todo caché
           # Una fuente caída es normal y no debe cortar la corrida.
@@ -224,6 +228,21 @@ jobs:
       # se publicó. El sentido inverso no existe — el pipeline nunca lee de
       # BigQuery, para que no pueda volverse un camino que esquive G1-G7.
       #
+      # La corrida salió bien, pero puede haber publicado con datos degradados
+      # que no esperábamos. El script calla lo conocido (SAIJ bloquea a los
+      # runners por IP y eso ya está decidido) y sólo habla de lo que no
+      # entiende: una fuente caída entera, un presupuesto agotado, o un error
+      # que NO es de red — esa última clase es la que se disfraza de "fuente
+      # caída" y congela una serie, como pasó con icg_utdt durante cuatro días.
+      - name: Avisar degradaciones inesperadas
+        if: success()
+        continue-on-error: true
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CANAL_ALERTAS: ${{ secrets.SLACK_CANAL_ALERTAS }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python scripts/aviso_slack.py degradado --log "$RUNNER_TEMP/colectores.log"
+
       # `continue-on-error` es deliberado, mismo criterio que el aviso de falla:
       # publicar el informe es el camino crítico. Si BigQuery está caído o la
       # credencial venció, se pierde una corrida del archivo, no la publicación.
@@ -258,6 +277,8 @@ jobs:
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CANAL_ALERTAS: ${{ secrets.SLACK_CANAL_ALERTAS }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           # Los pasos ya corridos tienen conclusión aunque el job siga abierto,
@@ -281,6 +302,11 @@ jobs:
             gh issue create --title "El pipeline nocturno está fallando" \
               --label pipeline-caido --body "$cuerpo"
           fi
+          # El issue es el registro; Slack es la notificación. Sin esto el
+          # aviso se abre y se cierra a las 3 de la mañana sin que nadie lo
+          # vea: pasó del 22 al 24-ago-2026, tres noches, con la web sirviendo
+          # datos del 21.
+          python scripts/aviso_slack.py fallo --pasos "$pasos" || true
 
       # El aviso se apaga solo. Un issue que hay que cerrar a mano se vuelve
       # ruido y deja de leerse, que es la forma lenta de volver al silencio.
@@ -289,9 +315,15 @@ jobs:
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CANAL_ALERTAS: ${{ secrets.SLACK_CANAL_ALERTAS }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
+          # El aviso de recuperación va DENTRO del loop a propósito: si no
+          # había issue abierto, no hubo falla, y un "todo bien" diario es
+          # justo lo que entrena a la gente a ignorar el canal.
           for n in $(gh issue list --state open --label pipeline-caido \
                        --json number --jq '.[].number'); do
             gh issue close "$n" --comment "Resuelto: la corrida terminó bien y publicó. $RUN_URL"
+            python scripts/aviso_slack.py recuperado || true
           done

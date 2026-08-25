@@ -435,6 +435,48 @@ had none of it and the site was byte-identical. The user had to point it out
 twice. There was already a memory saying "verify production" and it pointed at
 the retired GitHub Pages target, which is why it did not bite.
 
+## Avisos del pipeline: el issue registra, Slack notifica
+
+Son dos capas y hacen cosas distintas. **No sacar ninguna pensando que la otra
+alcanza.**
+
+- **Issue de GitHub** con etiqueta `pipeline-caido`: se abre en la primera
+  falla, acumula un comentario por corrida y **se cierra solo** cuando una
+  vuelve a publicar. Es el registro.
+- **`#alertas` en el Slack de CiGob** (`scripts/aviso_slack.py`): es la
+  notificación. Del 22 al 24-ago-2026 el pipeline falló tres noches seguidas,
+  la web sirvió datos del 21, y el issue se abrió y se cerró a las 3 de la
+  mañana sin que nadie lo viera.
+
+Tres avisos, y ninguno se manda porque sí:
+
+| Cuándo | Qué dice |
+|---|---|
+| La corrida falló | 🔴 con los pasos que fallaron. La web quedó con datos viejos, no malos |
+| Publicó pero degradada de forma inesperada | 🟡 con el indicador y el motivo |
+| Volvió a publicar después de fallar | 🟢 una sola vez, **dentro del loop que cierra el issue** |
+
+**La regla que mantiene vivo el canal: sólo lo accionable.** Un "todo bien"
+diario entrena a la gente a ignorar al bot, y el día que diga 🔴 tampoco lo van
+a leer. Por eso una corrida limpia **no manda nada**, y los deploys y el CI en
+verde no entran a propósito: ya están en GitHub y en Vercel.
+
+Y por eso `DEGRADACION_ESPERADA` en `aviso_slack.py` calla a SAIJ: bloquea a
+los runners por IP casi todas las noches, ya está investigado y la política es
+refrescar a mano. Alertarlo haría ruido en una semana. **Antes de sumar una
+fuente a esa lista, verificá que su degradación sea realmente conocida y
+decidida** — la lista existe para lo que ya se resolvió no mirar, no para
+silenciar lo que molesta.
+
+Lo que sí grita: una fuente caída entera (exit=2), un presupuesto agotado, y
+sobre todo **un error que NO es de red**. Esa última clase es la que se
+disfraza de "fuente caída" y congela una serie sin que nada falle: pasó con
+`icg_utdt`, cuatro días (ADR-0175). `tests/test_aviso_slack.py` prueba el
+clasificador, y sobre todo prueba lo que NO tiene que avisar.
+
+Los secretos (`SLACK_BOT_TOKEN`, `SLACK_CANAL_ALERTAS`) están en el repo del
+informe. El canal es privado; si se agrega otro bot hay que invitarlo a mano.
+
 ## When a GitHub Actions run fails
 
 **Don't reflexively call it "transient, just `gh run rerun`."** Check first:
