@@ -28,7 +28,7 @@ def test_sigue_pesando_mas_que_los_proxies():
     empleo, una de volumen y otra de calidad, que es lo que ADR-0033 pedía."""
     ind = _dim()
     assert ind["empleo_registrado"] == 0.2246   # ADR-0219: cedió ×0,90
-    for proxy in ("mortalidad_pymes", "despacho_cemento", "pluriempleo"):
+    for proxy in ("mortalidad_pymes", "despacho_cemento", "subocupacion_demandante"):
         assert ind["empleo_registrado"] > ind[proxy], f"{proxy} lo pasó"
     assert max(ind, key=ind.get) == "informalidad", "ADR-0214 la puso primera"
 
@@ -45,7 +45,7 @@ def test_los_proxies_conservan_su_orden_relativo():
     ind = _dim()
     assert "indice_lider" not in ind, "ADR-0154 lo sacó del cinturón"
     valores = [ind[k] for k in ("mortalidad_pymes", "despacho_cemento",
-                                "pluriempleo")]
+                                "subocupacion_demandante")]
     assert valores == sorted(valores, reverse=True), ind
 
 

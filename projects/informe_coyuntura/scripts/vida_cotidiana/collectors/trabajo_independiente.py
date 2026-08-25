@@ -6,7 +6,15 @@ reconfiguraron: menos empresas con nómina y más gente facturando por su cuenta
 Sin este indicador, el informe sólo puede ver la mitad del movimiento.
 
 Mide qué proporción del empleo registrado son trabajadores independientes
-—autónomos y monotributistas— frente a los asalariados de cualquier sector.
+—autónomos y monotributistas del régimen general— frente a los asalariados de
+cualquier sector.
+
+**El universo es restringido y el rótulo lo dice** (ADR-0250). Hasta agosto de
+2026 la card decía «% del empleo registrado» a secas mientras dejaba afuera al
+monotributo social de los DOS lados del cociente. La exclusión está bien
+fundada —ver abajo— pero prometer «el empleo registrado» y publicar otro
+universo es lo que la auditoría del 25-ago-2026 marcó. Ahora la card enumera
+qué categorías entran, cuál queda afuera y cuánto daría con ella adentro.
 
 ## Por qué el monotributo social queda AFUERA
 
@@ -45,6 +53,14 @@ ASALARIADOS = {
 # nombrado para que la exclusión sea una decisión visible y no un olvido.
 EXCLUIDA = ("monotributo_social", "151.1_IPENDIETAC_2012_M_43", "2024-12")
 
+# Rótulos publicables de cada componente del cociente. Un porcentaje sobre un
+# universo restringido tiene que poder enumerarse: es la diferencia entre una
+# exclusión declarada y un recorte silencioso.
+CATEGORIAS_NUMERADOR = ("autónomos", "monotributo general")
+CATEGORIAS_DENOMINADOR = ("autónomos", "monotributo general",
+                          "asalariados privados", "asalariados públicos",
+                          "casas particulares")
+
 
 def _serie(series_id: str) -> dict:
     for intento in range(REINTENTOS):
@@ -66,6 +82,14 @@ def _serie(series_id: str) -> dict:
 
 def fetch_trabajo_independiente() -> dict:
     partes = {k: _serie(v) for k, v in {**INDEPENDIENTES, **ASALARIADOS}.items()}
+    # El régimen excluido se baja igual: se publica como contraste dentro de la
+    # explicación de la card, para que el lector vea qué cambia al incluirlo en
+    # vez de tener que creernos.
+    try:
+        social = _serie(EXCLUIDA[1])
+    except Exception as e:                                # noqa: BLE001
+        logger.warning("monotributo social (contraste): %s", e)
+        social = {}
     vacias = [k for k, v in partes.items() if not v]
     if vacias:
         raise ValueError(f"SIPA no devolvió datos para {vacias}")
@@ -81,10 +105,20 @@ def fetch_trabajo_independiente() -> dict:
     part = {m: round(indep[m] / (indep[m] + asal[m]) * 100, 2) for m in meses}
 
     ultimo = meses[-1]
+    con_social = None
+    if ultimo in social:
+        i2 = indep[ultimo] + social[ultimo]
+        con_social = round(i2 / (i2 + asal[ultimo]) * 100, 2)
+
     return {
         "mes": ultimo,
         "participacion": part[ultimo],
         "independientes": round(indep[ultimo]),
         "asalariados": round(asal[ultimo]),
+        "categorias_numerador": list(CATEGORIAS_NUMERADOR),
+        "categorias_denominador": list(CATEGORIAS_DENOMINADOR),
+        "excluido": EXCLUIDA[0],
+        "excluido_quiebre": EXCLUIDA[2],
+        "participacion_con_excluido": con_social,
         "serie": part,
     }

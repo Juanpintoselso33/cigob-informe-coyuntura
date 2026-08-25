@@ -96,6 +96,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0192](0192-desequilibrio-monetario-stock-por-flujo.md) | Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va | `desequilibrio_monetario`, `presion_dolarizacion` | vigente |
 | [0193](0193-peso-del-desequilibrio-monetario.md) | El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó | `desequilibrio_monetario`, `rem_ipc_12m`, `idm` | vigente |
 | [0238](0238-la-tirea-no-se-estima-se-lee.md) | La TIREA no se estima, se lee |  | vigente |
+| [0251](0251-el-credito-en-pesos-no-se-mezcla-con-el-tipo-de-cambio.md) | El crédito en pesos no se mezcla con el tipo de cambio | `credito_privado` | vigente |
 
 ### Política (ITCP)
 
@@ -265,6 +266,8 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0242](0242-el-icc-que-se-publica-es-el-nacional.md) | El ICC que se publica es el nacional | `icc_utdt` | vigente |
 | [0243](0243-la-base-del-indice-la-declara-la-fuente.md) | La base del índice la declara la fuente | `consumo_supermercados` | vigente |
 | [0248](0248-el-volumen-de-busquedas-no-tiene-valencia.md) | El volumen de búsquedas no tiene valencia | `sentimiento_digital` | vigente |
+| [0249](0249-la-subocupacion-demandante-se-llama-por-su-nombre.md) | La subocupación demandante se llama por su nombre | `subocupacion_demandante` | vigente |
+| [0250](0250-el-universo-restringido-se-enumera.md) | El universo restringido se enumera | `trabajo_independiente` | vigente |
 
 ### Espíritu de época
 

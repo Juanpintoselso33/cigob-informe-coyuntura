@@ -104,7 +104,14 @@ PATENTAMIENTOS_COMERCIALES_KEYS = ("CAMION", "PICK", "UTILITARIO", "FURGON", "CH
 BCRA_RESERVAS_ID    = 1    # Reservas internacionales BRUTAS (millones USD)
 BCRA_BADLAR_ID      = 7    # BADLAR bancos privados (% anual) — contexto + insumo del IdC
 BCRA_REM_IPC_ID     = 29   # REM: mediana expectativas IPC próximos 12 meses (% anual)
-BCRA_PRESTAMOS_ID   = 26   # Préstamos sector privado (millones ARS) — contexto
+# ADR-0251: la variable 26 es `MEyML` — pesos Y moneda extranjera valuada en
+# pesos. El titular usa la 117 (`ML`, sólo pesos): con la 26, una devaluación
+# revaluaba la cartera en dólares y el indicador lo publicaba como crecimiento
+# real del crédito. Las otras dos se publican como desglose, no como titular.
+BCRA_PRESTAMOS_ID     = 117  # Préstamos al sector privado EN PESOS (millones ARS)
+BCRA_PRESTAMOS_USD_ID = 125  # ...en moneda extranjera, en millones de USD
+BCRA_PRESTAMOS_ME_ID  = 126  # ...esa misma cartera valuada en pesos
+BCRA_PRESTAMOS_TOT_ID = 26   # pesos + moneda extranjera valuada en pesos
 BCRA_BASE_MON_ID    = 15   # Base monetaria (millones ARS)
 BCRA_TC_MAYOR_ID    = 5    # Tipo de cambio mayorista de referencia (ARS/USD)
 BCRA_DEP_PRIV_ID        = 100  # Depósitos privados en pesos — insumo IdC e IDM
@@ -1627,12 +1634,24 @@ def fetch_prestamos_privados() -> dict | None:
 
 
 def fetch_credito_privado() -> dict | None:
-    """Variación interanual REAL de los préstamos al sector privado (BCRA
-    var. 26), deflactada por el IPC (INDEC). ADR-0022: mide el crédito
-    REALIZADO — información distinta de la capacidad prestable del IdC (que
-    usa tasas y ratios) — y es la única señal no redundante de los viejos
+    """Variación interanual REAL de los préstamos al sector privado **en
+    pesos** (BCRA var. 117), deflactada por el IPC (INDEC). ADR-0022: mide el
+    crédito REALIZADO — información distinta de la capacidad prestable del IdC
+    (que usa tasas y ratios) — y es la única señal no redundante de los viejos
     indicadores de contexto (badlar/préstamos/base/TC quedan ocultos: son
-    insumos de IdC, IDM y TCRM)."""
+    insumos de IdC, IDM y TCRM).
+
+    **Por qué en pesos y no el total** (ADR-0251): hasta ago-2026 el titular
+    usaba la variable 26, que el BCRA declara `MEyML` — pesos y moneda
+    extranjera **valuada en pesos**. Con esa serie, una devaluación revalúa la
+    cartera en dólares sin que se preste un peso más, y el indicador lo publica
+    como crecimiento real del crédito. En julio de 2026 eso daba +2,6% real
+    cuando el crédito en pesos caía 1,5%: la cartera en dólares crecía 17,1%
+    real medida en pesos y arrastraba el titular.
+
+    El crédito en moneda extranjera no se descarta: se publica en el desglose,
+    en dólares y en su valuación en pesos, que es donde se puede leer sin que
+    se mezcle con el efecto cambiario."""
     try:
         # ÚLTIMO MES CON IPC CERRADO (ADR-0030): el titular anterior usaba el
         # préstamo diario al día deflactado con el IPC i.a. de dos meses atrás
@@ -1650,6 +1669,27 @@ def fetch_credito_privado() -> dict | None:
         deflactor = ipc[ym] / ipc[p]
         real = ((1.0 + nominal) / deflactor - 1.0) * 100.0
         coma = lambda x: str(round(x, 1)).replace(".", ",")
+
+        # Desglose: la cartera en moneda extranjera, en su propia unidad y en
+        # pesos, más el total. Van como contexto DENTRO de la card, no como
+        # cards propias (ADR-0153: si no puntúa, no es card).
+        desglose = {}
+        try:
+            usd = _bcra_fin_de_mes(BCRA_PRESTAMOS_USD_ID, 16)
+            me = _bcra_fin_de_mes(BCRA_PRESTAMOS_ME_ID, 16)
+            tot = _bcra_fin_de_mes(BCRA_PRESTAMOS_TOT_ID, 16)
+            if ym in usd and p in usd:
+                desglose["usd_ia"] = round((usd[ym] / usd[p] - 1.0) * 100.0, 1)
+                desglose["usd_saldo_mm"] = round(usd[ym])
+            if ym in me and p in me:
+                desglose["me_en_pesos_ia_real"] = round(
+                    ((me[ym] / me[p]) / deflactor - 1.0) * 100.0, 1)
+            if ym in tot and p in tot:
+                desglose["total_ia_real"] = round(
+                    ((tot[ym] / tot[p]) / deflactor - 1.0) * 100.0, 1)
+        except Exception as e:                            # noqa: BLE001
+            _warn("credito_privado (desglose)", e)
+
         fresco = ""
         detalle = _bcra_detalle(BCRA_PRESTAMOS_ID, dias=400)   # desc
         ultimo = detalle[0]
@@ -1662,15 +1702,27 @@ def fetch_credito_privado() -> dict | None:
                 real_f = ((1.0 + nom_f) / deflactor - 1.0) * 100.0
                 fresco = (f" — al {ultimo['fecha']} (provisorio, no puntúa): "
                           f"{coma(real_f)}% real con deflactor de {ym}")
+        contexto = ""
+        if desglose.get("me_en_pesos_ia_real") is not None:
+            contexto = (f" · aparte, la cartera en moneda extranjera "
+                        f"{coma(desglose['me_en_pesos_ia_real'])}% real medida en pesos"
+                        + (f" y {coma(desglose['usd_ia'])}% en dólares"
+                           if desglose.get("usd_ia") is not None else "")
+                        + (f"; los dos universos juntos, "
+                           f"{coma(desglose['total_ia_real'])}% real"
+                           if desglose.get("total_ia_real") is not None else ""))
         return {
             "valor": round(real, 1),
-            "unidad": "% i.a. real",
-            "fuente": "BCRA (préstamos al sector privado, var. 26) + IPC INDEC",
+            "unidad": "% i.a. real (crédito en pesos)",
+            "fuente": "BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC",
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "nominal_ia": round(nominal * 100.0, 1),
-            "detalle_txt": (f"nominal {coma(nominal * 100.0)}% i.a. deflactado por IPC — "
-                            f"crédito realizado, no capacidad (IdC) (mes común: {ym}){fresco}"),
+            "moneda": "pesos",
+            **desglose,
+            "detalle_txt": (f"nominal {coma(nominal * 100.0)}% i.a. deflactado por IPC, "
+                            f"sólo crédito EN PESOS — crédito realizado, no capacidad "
+                            f"(IdC) (mes común: {ym}){contexto}{fresco}"),
         }
     except Exception as e:
         _warn("credito_privado", e)

@@ -17,8 +17,8 @@ al ADR.
 | `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `motorizacion_total`, `consumo_supermercados` |
 | `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
 | `vulnerabilidad` | 10% | `mora_familias`, `carga_servicio_deuda_hogares` |
-| `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `pluriempleo`, `trabajo_independiente` |
-| `percepcion` | 8% | `icc_utdt`, `sentimiento_digital` |
+| `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `subocupacion_demandante`, `trabajo_independiente` |
+| `percepcion` | 8% | `icc_utdt` |
 | `seguridad` | 4% | `inseguridad` |
 
 Suma de pesos: 100%.
@@ -106,7 +106,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0225](../adr/0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) El supermercado deja de validar el índice y pasa a integrarlo
+**Lo gobiernan**: [ADR-0225](../adr/0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) El supermercado deja de validar el índice y pasa a integrarlo · [ADR-0243](../adr/0243-la-base-del-indice-la-declara-la-fuente.md) La base del índice la declara la fuente
 
 ### Dimensión `precios` (25%)
 
@@ -124,7 +124,7 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0033](../adr/0033-itvc-doble-conteo-y-winsorizacion.md) ITVC: doble conteo salario/comida eliminado y winsorización asimétrica
 
-#### Peso de tarifas (regulados)
+#### Canasta de servicios públicos / salario
 
 `peso_tarifas`
 
@@ -132,11 +132,11 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 45% |
 | Peso efectivo en el índice | **11.2%** |
-| Procedencia del ancla | `conceptual` — nivel de regulados vs salario rebaseado a 4T-2023; ancla en fecha fija |
+| Procedencia del ancla | `externa` — canasta IIEP/RIPTE: agua+energía contra 10-15% (Banco Mundial) y transporte contra 5% (ONU-Hábitat), evaluados por separado sin compensación (ADR-0235) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0018).
+**Lo gobiernan**: [ADR-0235](../adr/0235-regulados-frente-al-salario-no-es-peso-de-tarifas.md) La canasta de servicios puntúa contra asequibilidad, no contra 2023
 
 #### Costo real del alquiler
 
@@ -242,13 +242,12 @@ donde colar una calibración (ADR-0123).
 
 #### Subocupación demandante
 
-`pluriempleo`
+`subocupacion_demandante`
 
 | | |
 |---|---|
 | Peso dentro de la dimensión | 5% |
 | Peso efectivo en el índice | **1.2%** |
-| Procedencia del ancla | `conceptual` — subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -276,27 +275,13 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 82% |
-| Peso efectivo en el índice | **6.8%** |
+| Peso dentro de la dimensión | 100% |
+| Peso efectivo en el índice | **8.2%** |
 | Procedencia del ancla | `conceptual` — ICC rebaseado a 4T-2023; ancla en fecha fija |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0018).
-
-#### Sentimiento digital (Trends)
-
-`sentimiento_digital`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 18% |
-| Peso efectivo en el índice | **1.5%** |
-| Procedencia del ancla | `conceptual` — canasta de 6 búsquedas, cada término rebaseado a su propio 4T-2023 y promediado con peso igual, invertida (ADR-0034, ADR-0222); ancla en fecha fija |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0034](../adr/0034-sentimiento-digital-puntuable.md) Sentimiento digital: de contexto a componente del ITVC · [ADR-0222](../adr/0222-la-canasta-de-busquedas-pesa-por-termino-no-por-volumen.md) La canasta de búsquedas pesa por término, no por volumen
+**Lo gobiernan**: [ADR-0242](../adr/0242-el-icc-que-se-publica-es-el-nacional.md) El ICC que se publica es el nacional
 
 ### Dimensión `seguridad` (4%)
 
@@ -322,6 +307,7 @@ histórica.
 
 - `endeudamiento_familiar` — Endeudamiento de consumo
 - `indice_lider` — Índice líder (anticipa el ciclo)
+- `sentimiento_digital` — Sentimiento digital (Trends)
 
 ## Decisiones abiertas
 
@@ -348,7 +334,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-36 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+40 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -386,3 +372,7 @@ histórica.
 - [0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) — Puntúa la motorización total, no cada vehículo por su lado
 - [0225](../adr/0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) — El supermercado deja de validar el índice y pasa a integrarlo
 - [0231](../adr/0231-la-carga-de-deuda-anticipa-la-mora.md) — La carga de deuda anticipa la mora
+- [0235](../adr/0235-regulados-frente-al-salario-no-es-peso-de-tarifas.md) — La canasta de servicios puntúa contra asequibilidad, no contra 2023
+- [0242](../adr/0242-el-icc-que-se-publica-es-el-nacional.md) — El ICC que se publica es el nacional
+- [0243](../adr/0243-la-base-del-indice-la-declara-la-fuente.md) — La base del índice la declara la fuente
+- [0248](../adr/0248-el-volumen-de-busquedas-no-tiene-valencia.md) — El volumen de búsquedas no tiene valencia

@@ -306,7 +306,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-32 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+33 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -340,3 +340,4 @@ histórica.
 - [0158](../adr/0158-validacion-del-itcm-por-puntos-de-giro.md) — El ITCM se valida por puntos de giro, no sólo por correlación
 - [0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) — Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va
 - [0193](../adr/0193-peso-del-desequilibrio-monetario.md) — El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
+- [0238](../adr/0238-la-tirea-no-se-estima-se-lee.md) — La TIREA no se estima, se lee

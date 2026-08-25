@@ -32,7 +32,7 @@ def test_pico_es_el_que_se_va_y_vuelve():
     """La firma de un error de lectura: un mes fuera de lugar y al siguiente la
     serie está donde estaba. Caso real: ipc_alimentos 7,7 → 15,7 → 29,7 → 20,4."""
     assert bq_ml.forma_de(_f(15.7, 29.7, 16.0)) == "pico"
-    assert bq_ml.forma_de(_f(8.2, 5.0, 8.1)) == "pico"      # pluriempleo 2020-04
+    assert bq_ml.forma_de(_f(8.2, 5.0, 8.1)) == "pico"      # subocupacion_demandante 2020-04
 
 
 def test_escalon_es_el_que_salta_y_se_queda():

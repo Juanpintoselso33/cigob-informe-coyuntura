@@ -20,7 +20,7 @@ al ADR.
 | `conflicto_social` | 10% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
 | `imagen_voto` | 7% | `votometro_ventaja_lla` |
 | `poder_judicial` | 15% | `cobertura_judicial`, `judicializacion`, `velocidad_resolucion`, `paralisis_denuncias` |
-| `sector_privado` | 13% | `brecha_obra_publica`, `apoyo_empresario` |
+| `sector_privado` | 13% | `brecha_obra_publica` |
 
 Suma de pesos: 100%.
 
@@ -42,7 +42,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 0.3 → 100 · 0.3–0.7 → 85 · 0.7–1.2 → 65 · 1.2–2 → 40 · > 2 → 10
 
-**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto")
+**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase
 
 #### Eficacia parlamentaria
 
@@ -140,7 +140,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 10 → 100 · 0–10 → 85 · -10–0 → 65 · -20–-10 → 40 · ≤ -20 → 10
 
-**Lo gobiernan**: [ADR-0065](../adr/0065-iaf-transferencias-deflactor-promedio.md) iaf_transferencias: deflactor promedio anual (el dic-dic subdeflactaba sumas anuales) · [ADR-0066](../adr/0066-iaf-transferencias-solo-provincias.md) iaf_transferencias: el CSV RON incluye la porción del Tesoro Nacional y la ANSES — se filtra a provincias · [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide
+**Lo gobiernan**: [ADR-0066](../adr/0066-iaf-transferencias-solo-provincias.md) iaf_transferencias: el CSV RON incluye la porción del Tesoro Nacional y la ANSES — se filtra a provincias · [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide · [ADR-0239](../adr/0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) El deflactor lo pondera el flujo, no el calendario
 
 #### Alineamiento de senadores por provincia
 
@@ -260,7 +260,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 90 → 100 · 80–90 → 85 · 70–80 → 65 · 60–70 → 40 · ≤ 60 → 10
 
-**Lo gobiernan**: [ADR-0126](../adr/0126-el-itcp-abre-la-dimension-poder-judicial.md) El ITCP abre la dimensión del Poder Judicial · [ADR-0144](../adr/0144-el-piloto-de-concursos-corrobora-cobertura-judicial.md) El piloto de concursos corrobora la cobertura judicial
+**Lo gobiernan**: [ADR-0126](../adr/0126-el-itcp-abre-la-dimension-poder-judicial.md) El ITCP abre la dimensión del Poder Judicial · [ADR-0144](../adr/0144-el-piloto-de-concursos-corrobora-cobertura-judicial.md) El piloto de concursos corrobora la cobertura judicial · [ADR-0240](../adr/0240-el-numerador-viaja-con-su-fecha.md) El numerador viaja con su fecha
 
 #### Judicialización de la agenda
 
@@ -318,8 +318,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 50% |
-| Peso efectivo en el índice | **6.5%** |
+| Peso dentro de la dimensión | 100% |
+| Peso efectivo en el índice | **13.0%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 7.5 meses |
 | Procedencia del ancla | `conceptual` — números redondos alrededor del cero, explícitamente NO calibrados contra el rango observado (ADR-0088) |
@@ -328,28 +328,13 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0088](../adr/0088-dimension-sector-privado.md) El ITCP incorpora una dimensión de sector privado · [ADR-0095](../adr/0095-la-brecha-cambia-de-signo-segun-el-gobierno.md) La brecha de obra pública cambia de signo según el gobierno
 
-#### Postura pública de las cámaras empresarias
-
-`apoyo_empresario`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 50% |
-| Peso efectivo en el índice | **6.5%** |
-| Familia de lectura | tensión externa |
-| Rezago declarado | 6 meses |
-| Procedencia del ancla | `conceptual` — el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150) |
-
-**Bandas**: > 0.6 → 100 · 0.2–0.6 → 85 · -0.2–0.2 → 65 · -0.6–-0.2 → 40 · ≤ -0.6 → 10
-
-**Lo gobiernan**: [ADR-0145](../adr/0145-apoyo-empresario-la-fuente-sirve-la-metrica-no.md) Apoyo empresario: la fuente sirve, la métrica no · [ADR-0148](../adr/0148-apoyo-empresario-con-uia-la-metrica-funciona.md) Apoyo empresario: con UIA, la métrica funciona · [ADR-0149](../adr/0149-detector-de-postura-empresaria.md) Detector de postura empresaria · [ADR-0150](../adr/0150-apoyo-empresario-entra-al-itcp.md) Apoyo empresario entra al ITCP, y el bug que lo encontró · [ADR-0151](../adr/0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) El corpus estaba truncado: `apoyo_empresario` se recodifica entero
-
 ## Se releva y no puntúa
 
 Estos indicadores se siguen scrapeando y cacheando, pero están fuera
 del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
+- `apoyo_empresario` — Postura pública de las cámaras empresarias
 - `cohesion_bloque_senado` — Cohesión del bloque LLA (Senado, fusionado)
 - `comisiones_caidas` — Comisiones sin sanción (declarado como contexto)
 - `derrotas_legislativas` — Derrotas legislativas del Ejecutivo (declarado como contexto)
@@ -395,7 +380,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-64 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+67 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -417,7 +402,6 @@ histórica.
 - [0061](../adr/0061-eficacia-legislativa-cohorte-madura.md) — eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo
 - [0063](../adr/0063-eficacia-legislativa-expedientes-jgm.md) — eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible
 - [0064](../adr/0064-comisiones-caidas-contexto-oculto.md) — comisiones_caidas sale del ITCP a seguimiento interno (fuente ciega a las sanciones del Senado)
-- [0065](../adr/0065-iaf-transferencias-deflactor-promedio.md) — iaf_transferencias: deflactor promedio anual (el dic-dic subdeflactaba sumas anuales)
 - [0066](../adr/0066-iaf-transferencias-solo-provincias.md) — iaf_transferencias: el CSV RON incluye la porción del Tesoro Nacional y la ANSES — se filtra a provincias
 - [0069](../adr/0069-bloqueo-sostenido-indicador.md) — bloqueo_sostenido: la cara ganada del pulso legislativo entra al ITCP
 - [0070](../adr/0070-eficacia-mascara-era-validacion.md) — máscara de era para eficacia_legislativa en la reconstrucción del ITCP
@@ -461,3 +445,7 @@ histórica.
 - [0172](../adr/0172-la-serie-termina-donde-esta-la-card.md) — La serie termina donde está la card
 - [0183](../adr/0183-rediseno-del-cinturon-politico.md) — Rediseño del cinturón político según el documento de agosto: registrado, no aplicado
 - [0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) — La intensidad laboral complementa la calle
+- [0239](../adr/0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) — El deflactor lo pondera el flujo, no el calendario
+- [0240](../adr/0240-el-numerador-viaja-con-su-fecha.md) — El numerador viaja con su fecha
+- [0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) — Un DNU es un tipo jurídico, no una frase
+- [0246](../adr/0246-el-saldo-empresario-se-calculaba-sobre-un-corpus-abierto.md) — El saldo empresario se calculaba sobre un corpus abierto

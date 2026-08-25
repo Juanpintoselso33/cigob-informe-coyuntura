@@ -44,8 +44,13 @@ FUENTES_MANUALES = {
             "URL: came.com.ar/estadisticas"
         ),
     },
+    # OJO: esto NO es el indicador que se publica. El tablero publica
+    # `subocupacion_demandante` (EPH 47.2), que mide gente que trabaja poco y
+    # busca más. Hasta ago-2026 esa card se llamaba `pluriempleo` por error
+    # (ADR-0249). El pluriempleo de verdad —tener más de un empleo— sigue sin
+    # construirse, y esta entrada documenta cómo se haría.
     "pluriempleo": {
-        "indicador": "Proporción de ocupados con más de un empleo",
+        "indicador": "Proporción de ocupados con más de un empleo (NO se publica)",
         "fuente": "INDEC — EPH microdatos (variable CNOCP o módulo estrategias de hogar)",
         "frecuencia": "Trimestral",
         "estado": "DISPONIBLE EN MICRODATOS — requiere descarga de base EPH y procesamiento",

@@ -4,7 +4,7 @@ id: '0018'
 estado: 'aceptado'
 fecha: 2026-07-03
 cinturon: 'vida'
-relacionado: ['0067', '0190', '0212', '0215', '0217', '0218', '0223', '0224']
+relacionado: ['0067', '0190', '0212', '0215', '0217', '0218', '0223', '0224', '0249']
 modificado_por: ['0232', '0235']
 origen: 'doc "ITVC — versión base 100" (Fundación CIGOB, 260702, `docs/260702 vida cotidiana finakl.docx`)'
 ---

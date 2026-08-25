@@ -154,10 +154,34 @@ def build_vida(raw):
     # Antes publicaba la variación mensual del IPI manufacturero.
     ind_ = raw.get("trabajo_independiente") or {}
     if ind_.get("participacion") is not None:
+        # ADR-0250: el universo es restringido y el rótulo lo dice. Antes decía
+        # «% del empleo registrado» mientras dejaba el monotributo social
+        # afuera de los dos lados del cociente.
         _add(out, "trabajo_independiente", ind_["participacion"],
-             "% del empleo registrado",
-             "SIPA — autónomos y monotributo sobre el total de trabajo registrado",
+             "% del empleo registrado SIPA, sin monotributo social",
+             "SIPA — autónomos y monotributo general sobre el empleo registrado total (asalariados privados, públicos y casas particulares)",
              f"{ind_['mes']}-01")
+        card = out["trabajo_independiente"]
+        for k in ("categorias_numerador", "categorias_denominador",
+                  "excluido", "excluido_quiebre", "participacion_con_excluido"):
+            if ind_.get(k) is not None:
+                card[k] = ind_[k]
+        # SIPA publica en MILES de personas: 2.587 son 2,59 millones de
+        # puestos, y decir "2.587 independientes" los convierte en dos mil.
+        millones = lambda x: f"{x / 1000:.2f}".replace(".", ",")
+        total = ind_["independientes"] + ind_["asalariados"]
+        con = ind_.get("participacion_con_excluido")
+        card["detalle_txt"] = (
+            f"{millones(ind_['independientes'])} millones de independientes sobre "
+            f"{millones(total)} millones de puestos registrados · numerador: "
+            f"{', '.join(ind_.get('categorias_numerador') or [])} · denominador: "
+            f"{', '.join(ind_.get('categorias_denominador') or [])} · queda afuera "
+            f"el monotributo social, cuyo padrón cayó de 653 a 259 mil personas en "
+            f"un solo mes ({ind_.get('excluido_quiebre')}) por un cambio de régimen "
+            f"y no del mercado de trabajo"
+            + (f" · con ese régimen adentro daría {con:.1f}%".replace(".", ",")
+               if con else "")
+        )
     emp = raw.get("empleadores_pyme") or {}
     if emp.get("pyme") is not None:
         _add(out, "mortalidad_pymes", emp["pyme"],
@@ -167,8 +191,10 @@ def build_vida(raw):
     _add(out, "despacho_cemento", round(isac.get("valor", 0), 1),
          "índice ISAC", "INDEC — ISAC desestacionalizado (vía datos.gob.ar)", isac.get("fecha"))
     sub = indec.get("subocupacion_demandante", {})
-    _add(out, "pluriempleo", round(sub.get("valor", 0) * 100, 1),
-         "%", "INDEC EPH", sub.get("fecha"))
+    # ADR-0249: la tasa la calcula INDEC sobre la PEA, no sobre los ocupados.
+    _add(out, "subocupacion_demandante", round(sub.get("valor", 0) * 100, 1),
+         "% de la PEA", "INDEC — EPH, tasa de subocupación demandante",
+         sub.get("fecha"))
     emp = indec.get("empleo_registrado", {})
     _add(out, "empleo_registrado", emp.get("valor"),
          "miles de puestos", "Min. de Capital Humano — SIPA (vía datos.gob.ar)",
@@ -398,7 +424,7 @@ SCORING = {
     "informalidad":        (lambda v: (v - 25) / 2.5,   "25% → 0 · 37,5% → 5 · 50% → 10"),
     "mortalidad_pymes":    (lambda v: 5 - v,            "+5% → 0 · 0% → 5 · −5% → 10 (IPI m/m)"),
     "despacho_cemento":    (lambda v: (180 - v) / 10,   "180 → 0 · 130 → 5 · 80 → 10 (índice ISAC)"),
-    "pluriempleo":         (lambda v: v - 5,            "5% → 0 · 10% → 5 · 15% → 10 (subocupación demandante)"),
+    "subocupacion_demandante":         (lambda v: v - 5,            "5% → 0 · 10% → 5 · 15% → 10 (subocupación demandante)"),
     "icc_utdt":            (lambda v: (60 - v) / 3,     "60 → 0 · 45 → 5 · 30 → 10 (índice de confianza)"),
     # sentimiento_digital lo puntúa VIDA COTIDIANA. Vivía acá abajo del rótulo
     # de espíritu de época porque el cinturón lo espejaba; el cinturón salió

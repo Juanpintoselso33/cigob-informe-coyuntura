@@ -303,7 +303,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Termómetro de la obra pública y privada, sensible al ciclo económico.",
     frecuencia: "Mensual", tipo: "Índice",
   },
-  pluriempleo: {
+  subocupacion_demandante: {
     que: "Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le alcanza.",
     aporta: "Señala empleo insuficiente: gente ocupada a la que no le alcanza.",
     frecuencia: "Trimestral", tipo: "Nivel (%)",
@@ -479,7 +479,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.",
   precios: "Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.",
   vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo. Combina la mora de la cartera —incumplimiento ya materializado— con la carga del servicio de deuda sobre la masa salarial —capacidad de pago comprometida antes del atraso—.",
-  empleo: "El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.",
+  empleo: "El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el subocupacion_demandante y el peso del trabajo independiente sobre el empleo registrado.",
   percepcion: "El ánimo con que se vive el momento, medido de dos maneras: preguntando (el Índice de Confianza del Consumidor de la UTDT) y observando qué busca la gente en internet.",
   seguridad: "Qué proporción de los hogares fue víctima de un delito. No es percepción ni sensación: es el hecho, relevado por encuesta.",
   // ITCP

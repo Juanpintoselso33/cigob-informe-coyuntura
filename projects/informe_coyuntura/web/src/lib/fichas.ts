@@ -408,7 +408,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si falta el dato, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros tres componentes de la dimensión.",
     revisiones: "La fuente revisa sus series al consolidar declaraciones; el informe regenera la serie completa en cada actualización.",
     cambios: [
-      { fecha: "2026-07-25", cambio: "Entra al índice como componente principal de la dimensión de empleo, con el treinta y cinco por ciento. Hasta entonces la dimensión se llamaba así pero ninguno de sus cuatro componentes medía empleo: eran indicadores de producción, de construcción, de pluriempleo y un índice líder." },
+      { fecha: "2026-07-25", cambio: "Entra al índice como componente principal de la dimensión de empleo, con el treinta y cinco por ciento. Hasta entonces la dimensión se llamaba así pero ninguno de sus cuatro componentes medía empleo: eran indicadores de producción, de construcción, de subocupacion_demandante y un índice líder." },
     ],
   },
 
@@ -1105,6 +1105,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-03", cambio: "Nace y entra al índice: rescata la única señal no redundante de los cuatro contextos nominales (que dejan de publicarse); la dimensión de financiamiento queda 45% reservas + 40% IdC + 15% crédito." },
       { fecha: "2026-07-04", cambio: "El titular pasa al último mes con IPC cerrado; el dato diario fresco queda como provisorio (antes se deflactaba el préstamo del día con un IPC de dos meses atrás)." },
+      { fecha: "2026-08-25", cambio: "ADR-0251: el titular pasa a medir sólo el crédito EN PESOS (BCRA var. 117). Usaba la var. 26, que el propio catálogo del BCRA declara `MEyML`: pesos más la cartera en dólares valuada en pesos. Con esa serie una devaluación revaluaba la cartera sin que se prestara un peso más y entraba como crecimiento real: en julio de 2026 publicaba +2,5% mientras el crédito en pesos caía 1,5%. La cartera en moneda extranjera no se descarta —se publica en el desglose, en dólares y en pesos, junto con el total— pero deja de decidir el titular. La serie se rehace entera: las dos variables no son empalmables porque no comparten universo." },
     ],
   },
 
@@ -2838,6 +2839,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "El SIPA revisa hacia atrás con cada edición y las cinco series se releen completas en cada corrida, así que las revisiones entran solas.",
     cambios: [
       { fecha: "2026-08-21", cambio: "Entra al ITCIS (ADR-0219) como la contracara del cierre de PyMEs, con 10% de la dimensión; los cinco componentes previos ceden proporcionalmente y conservan su orden relativo. El componente entra en 92,8 y el peso nominal de la dimensión no se toca." },
+      { fecha: "2026-08-25", cambio: "ADR-0250: la card declara el universo restringido que siempre usó. Decía «% del empleo registrado» y dejaba al monotributo social afuera de los dos lados del cociente. La exclusión sigue —el padrón cayó de 653 a 259 mil personas entre noviembre y diciembre de 2024 por un cambio de régimen, y con ese salto adentro el indicador daría vuelta el signo del período— pero ahora la unidad dice «sin monotributo social», la card enumera las categorías del numerador y del denominador, y publica cuánto daría con el régimen incluido (22,1% contra 20,6%). El valor no cambia." },
     ],
   },
 
@@ -2870,14 +2872,14 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
-  pluriempleo: {
+  subocupacion_demandante: {
     tipo: "indicador",
-    id: "pluriempleo",
+    id: "subocupacion_demandante",
     cinturon: "vida_cotidiana",
     rezago: "Encuesta trimestral publicada con uno a dos trimestres de rezago.",
     fuente: {
       organismo: "INDEC (EPH)",
-      operacion: "EPH — tasa de subocupación demandante (aproximación declarada del pluriempleo)",
+      operacion: "EPH — tasa de subocupación demandante (aproximación declarada del subocupacion_demandante)",
       serie: "47.2_ECTSDT_0_T_47 · API de datos.gob.ar",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-31-58",
       acceso: "Automático: API pública de series de tiempo.",
@@ -2889,13 +2891,15 @@ export const FICHAS: Record<string, Ficha> = {
       "Pertenece a la dimensión de prospectivas de empleo (5,12% interno · 1,24% del ITCIS).",
     ],
     limitaciones: [
-      "Aproximación declarada: mide gente que trabaja poco y busca más, no la tenencia de múltiples empleos.",
+      "Mide gente que trabaja menos horas de las que quisiera y busca más, no la tenencia de múltiples empleos. Hasta agosto de 2026 el indicador se llamaba `pluriempleo`, que es otro fenómeno (ADR-0249).",
+      "Es porcentaje de la POBLACIÓN ECONÓMICAMENTE ACTIVA, no de los ocupados: así la define INDEC y así hay que compararla con la desocupación.",
       "Trimestral contra base de un trimestre: sesgo estacional chico aceptado.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
     revisiones: "La encuesta se revisa; re-descarga completa por actualización.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITCIS con rebase invertido base-100." },
+      { fecha: "2026-08-25", cambio: "ADR-0249: el indicador pasa a llamarse `subocupacion_demandante`. Se llamaba `pluriempleo` y medía otra cosa: la fuente siempre fue la tasa de subocupación demandante de la EPH (serie 47.2), que cuenta a quienes trabajan menos horas de las que quisieran y buscan más, no a quienes tienen más de un empleo. La unidad pasa de «%» y «% de ocupados» a «% de la PEA», que es como INDEC la calcula. El valor, la serie y el peso no cambian: cambia el nombre y la unidad declarada." },
     ],
   },
 
@@ -3178,7 +3182,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     tratamiento: [
       "Componentes faltantes: los pesos se renormalizan dentro de la dimensión y entre dimensiones; ante una fuente caída, el indicador mantiene su último valor publicado marcado como desactualizado.",
-      "Polaridad: los componentes donde «más es peor» —informalidad, mora y carga del servicio de deuda, pluriempleo, peso del trabajo independiente, victimización y búsquedas de urgencia— se invierten para que en todos valga la misma lectura: por encima de 100, mejora.",
+      "Polaridad: los componentes donde «más es peor» —informalidad, mora y carga del servicio de deuda, subocupacion_demandante, peso del trabajo independiente, victimización y búsquedas de urgencia— se invierten para que en todos valga la misma lectura: por encima de 100, mejora.",
       "Recorte asimétrico declarado: todos los componentes salvo motorización total se acotan a un techo de 140 (un boom puntual no compra compensación ilimitada) y deliberadamente NO tienen piso — el deterioro no se recorta, se señaliza con el flag de dimensión crítica. Motorización total está exenta porque su peso efectivo limita el aporte y 140 no es un extremo frente a su historia; la ficha del componente cuantifica ambos argumentos.",
     ],
     normalizacion: [

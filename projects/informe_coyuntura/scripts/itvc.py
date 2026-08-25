@@ -64,7 +64,7 @@ def alta_proporcional(previos: dict, nuevo: str, peso: float) -> dict:
 # son las HISTÓRICAS del cinturón vida (mapeo componente→clave en el ADR-0018):
 # I_SRC→brecha_salario_cbt · I_IFL→informalidad · I_IA→ipc_alimentos ·
 # I_PT→peso_tarifas · I_EC→endeudamiento_familiar · I_IPI→mortalidad_pymes ·
-# I_ISC→despacho_cemento · I_SD→pluriempleo · I_ICC→icc_utdt ·
+# I_ISC→despacho_cemento · I_SD→subocupacion_demandante · I_ICC→icc_utdt ·
 # I_HD→inseguridad · I_CC→consumo_carne · I_PM→patentamiento_motos.
 DIMENSIONES_ITVC = {
     "ingresos": {
@@ -262,8 +262,8 @@ DIMENSIONES_ITVC = {
         # el componente principal. La dimensión se llamaba "empleo" y NINGUNO de
         # sus cuatro componentes medía empleo: mortalidad_pymes es un proxy de
         # producción (IPI), despacho_cemento uno de construcción (ISAC),
-        # pluriempleo mide cuántos tienen más de un trabajo y el líder anticipa
-        # giros. El dato directo —asalariados registrados del sector privado,
+        # subocupacion_demandante mide gente que trabaja poco y busca más, y el
+        # líder anticipa giros. El dato directo —asalariados registrados del sector privado,
         # SIPA, mensual— existía y no se estaba usando.
         #
         # Los cuatro existentes ceden proporcionalmente (×0,65) y conservan su
@@ -297,7 +297,7 @@ DIMENSIONES_ITVC = {
         # gente facturando por su cuenta no es lo mismo que una que desaparece.
         "indicadores": {"informalidad": 0.3419, "empleo_registrado": 0.2246,
                         "mortalidad_pymes": 0.1476,
-                        "despacho_cemento": 0.1347, "pluriempleo": 0.0512,
+                        "despacho_cemento": 0.1347, "subocupacion_demandante": 0.0512,
                         "trabajo_independiente": 0.1000},
     },
     "percepcion": {
@@ -626,10 +626,10 @@ def indices_desde_series(vida_ind, series, baselines=None):
     idx["carga_servicio_deuda_hogares"] = rebase_de_serie(
         series, "carga_servicio_deuda_hogares", invertido=True)
     idx["icc_utdt"] = rebase_de_serie(series, "icc_utdt")
-    idx["pluriempleo"] = rebase_de_serie(series, "pluriempleo", invertido=True)
+    idx["subocupacion_demandante"] = rebase_de_serie(series, "subocupacion_demandante", invertido=True)
     # Empleo registrado privado (ADR-0130): NO invertido — más empleo es mejor.
     # Es el único componente de la dimensión que mide empleo de verdad; los
-    # otros tres son proxies (producción, construcción, pluriempleo) — el
+    # otros tres son proxies (producción, construcción, subocupacion_demandante) — el
     # líder salió del cinturón en ADR-0154.
     idx["empleo_registrado"] = rebase_de_serie(series, "empleo_registrado")
     # ADR-0218: cierre neto de PyMEs — empleadores de hasta 50 trabajadores

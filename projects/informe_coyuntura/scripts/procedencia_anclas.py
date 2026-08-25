@@ -204,7 +204,7 @@ PROCEDENCIA = {
         "carga CDF/MS rebaseada a la fecha fija 4T-2023 e invertida (ADR-0231)"),
     "mortalidad_pymes": ("conceptual", "nivel del IPI desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"),
     "despacho_cemento": ("conceptual", "nivel del ISAC desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"),
-    "pluriempleo": ("conceptual", "subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija"),
+    "subocupacion_demandante": ("conceptual", "subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija"),
     "empleo_registrado": ("conceptual", "asalariados privados registrados (SIPA) rebaseados a 4T-2023, sin invertir (ADR-0130); ancla en fecha fija"),
     "icc_utdt": ("conceptual", "ICC rebaseado a 4T-2023; ancla en fecha fija"),
     "sentimiento_digital": ("conceptual",

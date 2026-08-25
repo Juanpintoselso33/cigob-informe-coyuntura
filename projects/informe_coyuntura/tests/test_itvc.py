@@ -29,7 +29,7 @@ EJEMPLO = {
     "carga_servicio_deuda_hogares": 70.0,
     "mortalidad_pymes": 102.0,
     "despacho_cemento": 80.0,
-    "pluriempleo": 96.0,
+    "subocupacion_demandante": 96.0,
     "icc_utdt": 118.0,
     "inseguridad": 104.0,
     "sentimiento_digital": 110.0,
@@ -148,7 +148,7 @@ def test_pesos_del_documento():
                                           "empleo_registrado": 0.2246,
                                           "mortalidad_pymes": 0.1476,
                                           "despacho_cemento": 0.1347,
-                                          "pluriempleo": 0.0512,
+                                          "subocupacion_demandante": 0.0512,
                                           "trabajo_independiente": 0.1000}
     assert d["percepcion"]["indicadores"] == {"icc_utdt": 0.8182, "sentimiento_digital": 0.1818}
     assert d["seguridad"]["indicadores"] == {"inseguridad": 1.0}

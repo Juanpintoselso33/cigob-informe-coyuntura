@@ -37,6 +37,10 @@ INDEC_BASE   = "https://apis.datos.gob.ar/series/api/series/"
 BCRA_BASE    = "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias"
 INDICADORES_SUSTITUIDOS = {
     "desequilibrio_monetario": {"presion_dolarizacion", "dolarizacion_depositos"},
+    # ADR-0249: el indicador se llamaba `pluriempleo` y medía otra cosa. Es un
+    # cambio de nombre, no un indicador nuevo: la clave vieja se purga del CSV
+    # para que no queden las dos como si fueran series distintas.
+    "subocupacion_demandante": {"pluriempleo"},
 }
 
 # ── Presupuesto de tiempo por indicador (ADR-0173) ────────────────────────────
@@ -699,10 +703,14 @@ def fetch_recaudacion_real_serie() -> list:
     return [[f"{ym}-01", v] for ym, v in sorted(serie.items())]
 def fetch_credito_privado_serie() -> list:
     """Serie mensual de la variación i.a. REAL de los préstamos al sector
-    privado (BCRA var. 26 fin de mes, deflactada por el IPC nivel) — la misma
-    métrica del indicador credito_privado (ADR-0022). [[YYYY-MM-01, %]]."""
+    privado **en pesos** (BCRA var. 117 fin de mes, deflactada por el IPC
+    nivel) — la misma métrica del indicador credito_privado (ADR-0022).
+
+    La var. 26 que se usaba antes es `MEyML`: incluye la cartera en dólares
+    valuada en pesos, así que una devaluación entraba como crecimiento real del
+    crédito (ADR-0251). [[YYYY-MM-01, %]]."""
     fin_mes = {}
-    for f, v in sorted(fetch_bcra(26, dias=1350)):
+    for f, v in sorted(fetch_bcra(macro.BCRA_PRESTAMOS_ID, dias=1350)):
         fin_mes[f[:7]] = v
     ipc = {f[:7]: v for f, v in fetch_indec("148.3_INIVELNAL_DICI_M_26", limit=60)}
     out = []
@@ -761,7 +769,9 @@ MACRO_DERIVADAS = [
     # porque card y serie coinciden en el número (88,2 contra 88,2) y G3 sólo
     # compara números.
     ("recaudacion", "índice (100 = 4T-2023)", "Sec. Hacienda (recaudación DGI) + IPC (deflactor)", fetch_recaudacion_real_serie),
-    ("credito_privado", "% i.a. real", "BCRA (préstamos privados) + IPC INDEC", fetch_credito_privado_serie),
+    ("credito_privado", "% i.a. real (crédito en pesos)",
+     "BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC",
+     fetch_credito_privado_serie),
     ("costo_financiamiento_tesoro", "% real anual", "Sec. de Finanzas (colocaciones) + BCRA (REM)", fetch_costo_financiamiento_tesoro_serie),
     ("resultado_primario", "% de la recaudación (12m)", "Sec. de Hacienda — IMIG + recaudación", fetch_resultado_primario_serie),
     ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
@@ -1853,7 +1863,9 @@ VIDA_DERIVADAS.append(
 
 VIDA_DERIVADAS += [
     ("informalidad", "%", "INDEC EPH (52.2, trimestral)", lambda: fetch_indec_x100("52.2_ASDJ_0_0_37")),
-    ("pluriempleo", "%", "INDEC EPH (47.2, trimestral)", lambda: fetch_indec_x100("47.2_ECTSDT_0_T_47")),
+    ("subocupacion_demandante", "% de la PEA",
+     "INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)",
+     lambda: fetch_indec_x100("47.2_ECTSDT_0_T_47")),
     # Empleo registrado privado (ADR-0130): asalariados del sector privado
     # declarados al SIPA, miles de personas, mensual. El rebase B100 contra el
     # 4T-2023 lo hace publicar.py, igual que el resto de los componentes.
@@ -2614,8 +2626,8 @@ VIDA_DERIVADAS += [
     # ADR-0218: `mortalidad_pymes` deja de ser el IPI industrial y pasa a medir
     # lo que su nombre promete — el cierre neto de PyMEs. Una sola serie para la
     # card y para el índice; `itvc_ipi` se retira.
-    ("trabajo_independiente", "% del empleo registrado",
-     "SIPA — autónomos y monotributo sobre el total de trabajo registrado",
+    ("trabajo_independiente", "% del empleo registrado SIPA, sin monotributo social",
+     "SIPA — autónomos y monotributo general sobre el empleo registrado total (asalariados privados, públicos y casas particulares)",
      fetch_trabajo_independiente_serie),
     ("mortalidad_pymes", "empleadores (hasta 50 trabajadores)",
      "SRT — serie histórica de partes empleadoras por tamaño de nómina",

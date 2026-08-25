@@ -15,7 +15,7 @@ al ADR.
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
 | `reformas_economicas` | 35% | `cepo_mulc`, `apertura_comercial`, `desregulacion_normativa` |
-| `reforma_estado` | 25% | `reduccion_estado`, `gasto_funcionamiento`, `reestructuracion_organismos` |
+| `reforma_estado` | 25% | `reduccion_estado`, `gasto_funcionamiento` |
 | `reforma_laboral` | 15% | `fal_modernizacion_laboral`, `litigiosidad_laboral` |
 | `privatizaciones_inversion` | 15% | `privatizaciones`, `rigi_inversiones`, `concesiones_infraestructura` |
 | `social_orden` | 10% | `asistencia_directa`, `protocolo_antipiquetes`, `libertad_opcion_salud` |
@@ -76,8 +76,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 44% |
-| Peso efectivo en el índice | **10.9%** |
+| Peso dentro de la dimensión | 58% |
+| Peso efectivo en el índice | **14.6%** |
 | Procedencia del ancla | `convencion` — «calibrado con el dato real»: el recorte observado de ~10-12% define la banda 85 |
 
 **Bandas**: ≤ -12 → 100 · -12–-8 → 85 · -8–-4 → 65 · -4–0 → 40 · > 0 → 10
@@ -90,27 +90,13 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 31% |
-| Peso efectivo en el índice | **7.8%** |
+| Peso dentro de la dimensión | 42% |
+| Peso efectivo en el índice | **10.4%** |
 | Procedencia del ancla | `convencion` — bandas anchas por el ajuste de 2024, que la propia ficha llama históricamente atípico |
 
 **Bandas**: ≤ -25 → 100 · -25–-15 → 85 · -15–-5 → 65 · -5–0 → 40 · > 0 → 10
 
 **Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0013).
-
-#### Reestructuración de organismos
-
-`reestructuracion_organismos`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 25% |
-| Peso efectivo en el índice | **6.2%** |
-| Procedencia del ancla | `conceptual` — medidor de avance 0-100 hacia el plan de disoluciones/cierres; el 100 es el ancla, no el rango observado (ADR-0121) |
-
-**Bandas**: > 80 → 100 · 60–80 → 85 · 40–60 → 65 · 20–40 → 40 · ≤ 20 → 10
-
-**Lo gobiernan**: [ADR-0185](../adr/0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) `reestructuracion_organismos` habla solo de disolución o cierre · [ADR-0188](../adr/0188-reestructuracion-organismos-numerador-caso-por-caso.md) `reestructuracion_organismos`: el numerador cuenta solo cierres vigentes de organismos públicos, caso por caso
 
 ### Dimensión `reforma_laboral` (15%)
 
@@ -184,7 +170,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤ 15 → 10
 
-**Lo gobiernan**: [ADR-0087](../adr/0087-preadjudicado-no-es-adjudicado.md) "Preadjudicado" contiene "Adjudicado"
+**Lo gobiernan**: [ADR-0087](../adr/0087-preadjudicado-no-es-adjudicado.md) "Preadjudicado" contiene "Adjudicado" · [ADR-0244](../adr/0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) El acto jurídico manda sobre el estado del portal
 
 ### Dimensión `social_orden` (10%)
 
@@ -236,7 +222,10 @@ Estos indicadores se siguen scrapeando y cacheando, pero están fuera
 del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
+- `alertas_manifestacion` — Alertas de manifestación (GCBA) (declarado como contexto)
 - `masa_salarial` — Masa salarial pública
+- `protestas_caba` — Protestas en CABA (ACLED) (declarado como contexto)
+- `reestructuracion_organismos` — Reestructuración de organismos
 
 ## Decisiones abiertas
 
@@ -250,7 +239,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-33 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+35 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -285,3 +274,5 @@ histórica.
 - [0226](../adr/0226-el-itcg-se-queda-sin-validacion-externa-y-lo-declara.md) — El ITCG se queda sin validación externa única, y lo declara
 - [0228](../adr/0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) — El FAL puntúa lo que rige, no lo que se dictó
 - [0229](../adr/0229-la-desregulacion-cuenta-actos-no-efectos.md) — La desregulación cuenta actos, no efectos, y la ficha lo dice
+- [0244](../adr/0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) — El acto jurídico manda sobre el estado del portal
+- [0247](../adr/0247-un-porcentaje-entre-normas-y-una-meta-documental.md) — Un porcentaje entre normas y una meta documental

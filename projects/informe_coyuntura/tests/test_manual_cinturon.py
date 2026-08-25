@@ -24,7 +24,8 @@ pytest.importorskip("yaml")
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-import manual_cinturon as MC  # noqa: E402
+import manual_cinturon as MC
+import parametrica  # noqa: E402
 
 GENERADOS = [c for c in MC.CINTURONES if (MC.SALIDA / f"{c}.md").exists()]
 
@@ -40,7 +41,19 @@ def test_hay_al_menos_un_manual():
 def test_dimensiones_y_pesos_al_dia(cinturon):
     modulo, indice, _ = MC.CINTURONES[cinturon]
     mod = importlib.import_module(modulo)
-    dimensiones = getattr(mod, f"DIMENSIONES_{indice}")
+    tabla = getattr(mod, f"DIMENSIONES_{indice}")
+    # Los pesos que el manual declara son los VIGENTES: un suspendido conserva
+    # su peso de diseño en la tabla (ADR-0245) pero no puntúa, y sus pares
+    # absorbieron el hueco. Comparar contra la tabla haría fallar al manual por
+    # decir la verdad.
+    vigentes = parametrica.indicadores_vigentes(
+        tabla, getattr(mod, "INDICADORES_SUSPENDIDOS", {}))
+    dimensiones = {}
+    for k, d in tabla.items():
+        if k not in vigentes:
+            continue
+        suma = sum(vigentes[k].values())
+        dimensiones[k] = {**d, "indicadores": {i: p / suma for i, p in vigentes[k].items()}}
     texto = (MC.SALIDA / f"{cinturon}.md").read_text(encoding="utf-8")
 
     for dim, d in dimensiones.items():
@@ -69,8 +82,13 @@ def test_no_documenta_indicadores_que_ya_no_puntuan(cinturon):
     """Un indicador que salió del índice no puede seguir en «Qué mide»."""
     modulo, indice, _ = MC.CINTURONES[cinturon]
     mod = importlib.import_module(modulo)
-    vivos = {i for d in getattr(mod, f"DIMENSIONES_{indice}").values()
-             for i in d["indicadores"]}
+    # «Vivo» es lo que puntúa, no lo que figura en la tabla de pesos: un
+    # suspendido conserva su peso de diseño ahí (ADR-0245), y usar la tabla
+    # como definición dejaría al test ciego justo ante una suspensión.
+    vivos = {i for d in parametrica.indicadores_vigentes(
+                 getattr(mod, f"DIMENSIONES_{indice}"),
+                 getattr(mod, "INDICADORES_SUSPENDIDOS", {})).values()
+             for i in d}
     texto = (MC.SALIDA / f"{cinturon}.md").read_text(encoding="utf-8")
     seccion = texto.split("## Qué mide cada indicador")[1].split("\n## ")[0]
     documentados = set(re.findall(r"^`(\w+)`$", seccion, re.M))

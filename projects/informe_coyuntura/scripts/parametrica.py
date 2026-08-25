@@ -365,6 +365,27 @@ def sin_suspendidos(valores: dict, suspendidos: dict | set | None) -> dict:
     return {k: v for k, v in valores.items() if k not in suspendidos}
 
 
+def indicadores_vigentes(dimensiones: dict, suspendidos: dict | set | None) -> dict:
+    """{dimensión: {indicador: peso}} de lo que HOY puntúa (ADR-0245).
+
+    Desde que suspender dejó de borrar el indicador de `DIMENSIONES_*`, esa
+    tabla ya no contesta «¿esto puntúa?»: contesta «¿cuánto pesaría si
+    puntuara?». Todo lo que necesite lo primero —el generador de manuales, las
+    matrices de redundancia, los tests que hablan de componentes vivos— tiene
+    que pasar por acá, o va a documentar como componente algo que no lo es.
+
+    Los pesos que devuelve son los de DISEÑO, sin renormalizar: quien necesite
+    los efectivos los tiene en el resultado de `calcular_indice`.
+    """
+    fuera = set(suspendidos or ())
+    out = {}
+    for dkey, dim in dimensiones.items():
+        vivos = {i: p for i, p in dim["indicadores"].items() if i not in fuera}
+        if vivos:
+            out[dkey] = vivos
+    return out
+
+
 def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: dict,
                     dimensiones: dict, bandas_interpretacion: list,
                     interpretacion_legible: dict,

@@ -39,7 +39,7 @@ es un **ESCALÓN**: salta y se queda.
 
 Y las 12 de forma pico se miraron una por una: `ipc_alimentos` 2023-12 (29,7 —
 la devaluación de diciembre), `alquiler_real` 2024-04, `protestas_caba` en tres
-meses distintos, `pluriempleo` 2020-04 (la cuarentena), `icg_utdt` 2002-06.
+meses distintos, `subocupacion_demandante` 2020-04 (la cuarentena), `icg_utdt` 2002-06.
 **Todas son eventos reales. Ninguna es un error de dato.**
 
 O sea: en toda la historia del proyecto este detector encontró **cero** de lo que

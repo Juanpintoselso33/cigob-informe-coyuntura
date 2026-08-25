@@ -33,6 +33,7 @@ ADR_DIR = RAIZ / "docs" / "adr"
 SALIDA = RAIZ / "docs" / "manuales"
 sys.path.insert(0, str(RAIZ / "scripts"))
 sys.path.insert(0, str(RAIZ))
+import parametrica  # noqa: E402
 from config import SIGLAS_PUBLICAS  # noqa: E402  (necesita el sys.path de arriba)
 
 # cinturón -> (módulo, índice TÉCNICO, nombre legible). El índice de acá
@@ -157,27 +158,20 @@ def cargar_ocultos(cinturon: str) -> set[str]:
     «tiene banda pero no está en ninguna dimensión» deja afuera a los que
     nunca tuvieron banda (`badlar`, `indice_lider`) y a los que salieron del
     tablero por decisión editorial.
+
+    Se IMPORTA, no se parsea. Antes se leía el archivo con una regex de una
+    línea más `ast.literal_eval`, y eso alcanzaba mientras las cuatro listas
+    fueran literales. Dejaron de serlo: `GESTION_OCULTOS` es una unión de tres
+    conjuntos hace meses y venía devolviendo **vacío en silencio**, y al sumar
+    los suspendidos (ADR-0245) `POLITICA_OCULTOS` empezó a devolver de más a
+    medias —el prefijo que la regex alcanzaba a ver— y `VIDA_OCULTOS` vacío.
+    Un manual que dice que no hay indicadores fuera del índice cuando hay
+    cuatro es peor que uno que no tiene la sección.
     """
-    import ast
     nombre = {"macro": "MACRO_OCULTOS", "politica": "POLITICA_OCULTOS",
               "gestion": "GESTION_OCULTOS", "vida": "VIDA_OCULTOS"}[cinturon]
-    src = (RAIZ / "scripts" / "publicar.py").read_text(encoding="utf-8")
-    m = re.search(rf"^{nombre}\s*=\s*(.+)$", src, re.M)
-    if not m:
-        return set()
-    expr = m.group(1).strip()
-    # Forma A: literal — {"badlar", "prestamos_privados", ...}
-    try:
-        return set(ast.literal_eval(expr))
-    except (ValueError, SyntaxError):
-        pass
-    # Forma B: set(itcg.INDICADORES_CONTEXTO)
-    ref = re.match(r"set\((\w+)\.(\w+)\)", expr)
-    if ref:
-        mod = importlib.import_module(ref.group(1))
-        return set(getattr(mod, ref.group(2), []))
-    return set()
-
+    publicar = importlib.import_module("publicar")
+    return set(getattr(publicar, nombre))
 
 def bandas_legibles(mod, indicador: str) -> str:
     bandas = getattr(mod, f"BANDAS_{mod.__name__.upper()}", {}).get(indicador)
@@ -197,7 +191,21 @@ def bandas_legibles(mod, indicador: str) -> str:
 def generar(cinturon: str) -> Path:
     modulo, indice, legible = CINTURONES[cinturon]
     mod = importlib.import_module(modulo)
-    dimensiones = getattr(mod, f"DIMENSIONES_{indice}")
+    tabla = getattr(mod, f"DIMENSIONES_{indice}")
+    suspendidos = getattr(mod, "INDICADORES_SUSPENDIDOS", {})
+    # El manual documenta lo que PUNTÚA. `DIMENSIONES_*` conserva el peso de
+    # diseño de los suspendidos (ADR-0245), así que hay que filtrarlos o el
+    # documento los presenta como componentes vivos.
+    # ...y los pesos se renormalizan, porque los pares absorbieron el hueco:
+    # declarar el peso de diseño describiría un reparto que ya no rige.
+    vigentes = parametrica.indicadores_vigentes(tabla, suspendidos)
+    dimensiones = {}
+    for k, d in tabla.items():
+        if k not in vigentes:
+            continue
+        suma = sum(vigentes[k].values())
+        dimensiones[k] = {**d,
+                          "indicadores": {i: p / suma for i, p in vigentes[k].items()}}
     familias = getattr(mod, f"FAMILIAS_{indice}", {})
     rezagos = getattr(mod, f"REZAGO_MESES_{indice}", {})
     contexto = getattr(mod, "INDICADORES_CONTEXTO", [])

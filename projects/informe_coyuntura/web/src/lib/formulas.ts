@@ -215,7 +215,7 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`100\cdot\frac{\left(\frac{\text{servicio de deuda}}{\text{masa salarial registrada}}\right)_{\text{4T-23}}}{\left(\frac{\text{servicio de deuda}}{\text{masa salarial registrada}}\right)_{\text{hoy}}}`,
     leyenda: "Carga mensual de capital e intereses de las familias sobre la masa salarial registrada (CDF/MS, BCRA), con promedio móvil de tres meses en numerador y denominador. Se invierte al rebasear: más ingreso comprometido en deuda significa menor capacidad de pago y peor puntaje.",
   },
-  pluriempleo: {
+  subocupacion_demandante: {
     latex: String.raw`100\cdot\frac{\text{subocupaci\'on}_{\text{4T-23}}}{\text{subocupaci\'on}_{\text{hoy}}}`,
     leyenda: "Subocupación demandante (EPH): gente que necesita trabajar más horas. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100.",
   },

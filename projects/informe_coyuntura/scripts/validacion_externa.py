@@ -23,7 +23,7 @@ renormalización estándar del motor absorbe la ausencia.
 Cómo se reconstruye la serie mensual del ITVC (dic-2023 → hoy):
 - Componentes transformados (itvc_alimentos/tarifas/ipi/isac/endeudamiento):
   ya son índices base-100 en series.json.
-- Componentes de rebase directo (brecha, ICC, pluriempleo, carne, motos):
+- Componentes de rebase directo (brecha, ICC, subocupacion_demandante, carne, motos):
   se rebasea TODA la serie contra su promedio 4T-2023.
 - Anuales (informalidad, inseguridad): rebase anual + forward-fill mensual
   (regla del doc: "último dato disponible").
@@ -137,7 +137,7 @@ COMPONENTES = {
         "carga_servicio_deuda_hogares", True, False, False),  # ADR-0231
     "brecha_salario_cbt":     ("brecha_salario_cbt", False, False, False),
     "icc_utdt":               ("icc_utdt", False, False, False),
-    "pluriempleo":            ("pluriempleo", True, False, False),
+    "subocupacion_demandante":            ("subocupacion_demandante", True, False, False),
     # ADR-0130: empleo registrado privado (SIPA). NO invertido — más empleo es
     # mejor. Entra a la reconstrucción como los demás componentes de rebase.
     "empleo_registrado":      ("empleo_registrado", False, False, False),
@@ -154,7 +154,7 @@ COMPONENTES = {
     # igual que en `itvc.indices_desde_series` — la fuente ya la desestacionalizó.
     "consumo_supermercados":  ("consumo_supermercados", False, False, False),
     "informalidad":           ("informalidad", True, True, False),
-    # ADR-0219: invertido, igual que informalidad y pluriempleo.
+    # ADR-0219: invertido, igual que informalidad y subocupacion_demandante.
     "trabajo_independiente":  ("trabajo_independiente", True, False, False),
     "inseguridad":            ("inseguridad", True, False, False),      # IVI mensual (ADR-0032)
     "sentimiento_digital":    ("sentimiento_digital", True, False, False),  # ADR-0034
