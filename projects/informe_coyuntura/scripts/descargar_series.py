@@ -2102,8 +2102,8 @@ def fetch_consumo_supermercados_serie() -> list:
     del INDEC (ADR-0225). MISMA serie que la card y que el índice: el colector
     devuelve el histórico completo y la card es su último punto.
 
-    Se guarda el índice CRUDO de la fuente (base 2017 = 100, la que declara la
-    propia API — ADR-0243) y no el rebase a
+    Se guarda el índice CRUDO de la fuente (base 2017 = 100, la que declara el
+    título del Cuadro 1 — ADR-0243) y no el rebase a
     4T-2023: el rebase lo hacen `itvc.indices_desde_series` y la reconstrucción
     de `validacion_externa`, cada uno con la misma función que usa para todos
     los demás componentes. Guardar acá una serie ya rebaseada crearía un
@@ -2660,10 +2660,11 @@ VIDA_DERIVADAS += [
      "jurisdicción), sin Tierra del Fuego",
      fetch_patentamiento_autos_serie),
     # ADR-0225: el componente que mide volumen efectivamente comprado. Sin
-    # cache y sin acumulación: la API devuelve el histórico entero en cada
+    # cache y sin acumulación: la planilla trae el histórico entero en cada
     # corrida, igual que la DNRPA.
     ("consumo_supermercados", "índice (2017 = 100, desestacionalizado)",
-     "INDEC — Encuesta de supermercados, ventas a precios constantes (API datos.gob.ar)",
+     "INDEC — Encuesta de supermercados, ventas a precios constantes "
+     "(serie_supermercados.xlsx, Cuadro 1)",
      fetch_consumo_supermercados_serie),
     # inseguridad = IVI mensual (ADR-0032); el SNIC anual sigue como serie de
     # contraste bajo clave propia (sin card: alimenta la ficha y validaciones)

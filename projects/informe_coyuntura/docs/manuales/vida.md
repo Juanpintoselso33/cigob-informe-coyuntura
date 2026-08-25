@@ -106,7 +106,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0225](../adr/0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) El supermercado deja de validar el índice y pasa a integrarlo · [ADR-0243](../adr/0243-la-base-del-indice-la-declara-la-fuente.md) La base del índice la declara la fuente
+**Lo gobiernan**: [ADR-0225](../adr/0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) El supermercado deja de validar el índice y pasa a integrarlo · [ADR-0243](../adr/0243-la-base-del-indice-la-declara-la-fuente.md) La base del índice la declara la fuente · [ADR-0256](../adr/0256-la-serie-sale-del-indec-no-de-su-espejo.md) La serie sale del INDEC, no de su espejo
 
 ### Dimensión `precios` (25%)
 
@@ -334,7 +334,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-42 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+43 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -378,3 +378,4 @@ histórica.
 - [0248](../adr/0248-el-volumen-de-busquedas-no-tiene-valencia.md) — El volumen de búsquedas no tiene valencia
 - [0249](../adr/0249-la-subocupacion-demandante-se-llama-por-su-nombre.md) — La subocupación demandante se llama por su nombre
 - [0250](../adr/0250-el-universo-restringido-se-enumera.md) — El universo restringido se enumera
+- [0256](../adr/0256-la-serie-sale-del-indec-no-de-su-espejo.md) — La serie sale del INDEC, no de su espejo

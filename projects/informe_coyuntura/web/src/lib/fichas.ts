@@ -3056,13 +3056,13 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "consumo_supermercados",
     cinturon: "vida_cotidiana",
-    rezago: "Encadena dos demoras y por eso es de las cards más lentas del cinturón: el INDEC publica el mes de referencia unos 52 días después de terminado, y la API de series tarda unas dos semanas más en espejarlo. El último punto disponible tiene entre tres y cuatro meses según en qué parte de ese ciclo caiga la corrida.",
+    rezago: "Medido sobre las 14 publicaciones del calendario del INDEC entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la card sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC.",
     fuente: {
       organismo: "INDEC",
       operacion: "Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada",
-      serie: "455.1_VENTAS_PREADA_0_M_44_44 · API de series de tiempo de datos.gob.ar, enero de 2017 en adelante",
-      url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-12-37",
-      acceso: "Automático: API pública sin credenciales.",
+      serie: "Serie histórica de la Encuesta de supermercados (serie_supermercados.xlsx), Cuadro 1, columna «Serie desestacionalizada», enero de 2017 en adelante",
+      url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-1-34",
+      acceso: "Automático: planilla pública sin credenciales. La misma serie espejada en la API de datos.gob.ar se sigue bajando en cada corrida, pero sólo como contraste del número leído.",
     },
     transformaciones: [
       "Componente del índice: el índice de la fuente rebaseado a 100 = promedio del 4º trimestre de 2023 (más volumen comprado = mejora).",
@@ -3080,11 +3080,12 @@ export const FICHAS: Record<string, Ficha> = {
       "«A precios constantes» significa deflactado con índices de precios del propio INDEC, así que comparte insumo con el componente de precios de los alimentos. El solapamiento está declarado y medido: entre los dos la correlación es +0,558 en niveles y +0,058 al mirar los cambios mes a mes.",
       "Mide cantidad vendida, no calidad de lo comprado: un carrito que cambia primera marca por segunda a igual volumen se registra igual.",
     ],
-    faltantes: "El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la card mantiene el último valor como desactualizado.",
-    revisiones: "La API devuelve el histórico completo en cada corrida, así que una revisión del INDEC —habituales en las series desestacionalizadas, que se recalculan al agregar meses— se incorpora sola y sin dejar huella de la versión anterior.",
+    faltantes: "El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la card mantiene el último valor como desactualizado. No hay respaldo que lea el espejo: publicar desde ahí podría hacer RETROCEDER la card a un mes anterior, que es peor que no actualizarla.",
+    revisiones: "La planilla trae el histórico completo en cada corrida, así que una revisión del INDEC —habituales en las series desestacionalizadas, que se recalculan al agregar meses— se incorpora sola y sin dejar huella de la versión anterior. Al publicar junio de 2026, por ejemplo, mayo pasó de 83,2 a 83,0.",
     cambios: [
       { fecha: "2026-08-21", cambio: "Entra al ITCIS con 20% de la dimensión de ingresos y consumo, y los cinco componentes previos ceden proporcionalmente conservando su orden relativo (ADR-0225). Venía de ser el ancla de validación externa del cinturón: mide condiciones materiales del hogar, así que integra el índice en vez de juzgarlo — la misma regla que había sacado a la confianza del consumidor de ese papel." },
       { fecha: "2026-08-25", cambio: "ADR-0243: la base del índice se lee de los metadatos de la fuente en vez de escribirse a mano. La card la rotulaba «2004 = 100» y la Encuesta de Supermercados usa base 2017=100 —la serie ni siquiera tiene puntos antes de enero de 2017—. El valor y el puntaje no cambian: el rebase del cinturón es contra el 4º trimestre de 2023 y nunca usó la base de la fuente. Queda pendiente el rezago del espejo: el INDEC publicó junio de 2026 el 21 de agosto y la API de series todavía no lo refleja." },
+      { fecha: "2026-08-25", cambio: "ADR-0256: la serie deja de bajarse de la API de datos.gob.ar y sale de la planilla de serie histórica del propio INDEC (Cuadro 1, columna desestacionalizada). La API era un espejo con atraso propio y encadenaba dos rezagos: la card mostraba mayo de 2026 mientras el INDEC ya había publicado junio el día 21. Con el cambio la card pasa a junio (82,1) y el tope de rezago del gate baja de 140 a 130 días, ahora medido sobre 14 publicaciones reales del calendario del INDEC en vez de estimado. El espejo se conserva como contraste del número leído, no como fuente." },
     ],
   },
 

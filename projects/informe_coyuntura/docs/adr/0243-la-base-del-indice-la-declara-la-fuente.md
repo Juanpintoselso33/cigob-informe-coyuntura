@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'vida'
 indicadores: [consumo_supermercados]
 archivos: ['scripts/vida_cotidiana/collectors/indec_supermercados.py', 'scripts/publicar.py', 'scripts/descargar_series.py', 'web/src/lib/datos.ts', 'tests/test_consumo_supermercados.py']
-relacionado: ['0225', '0220']
+relacionado: ['0220', '0225', '0256']
 ambito: 'Cinturón vida cotidiana · ITVC · `consumo_supermercados` · de dónde sale la base del índice y qué período se publica'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «la base real es 2017=100»'
 ---

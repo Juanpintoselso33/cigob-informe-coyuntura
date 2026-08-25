@@ -167,14 +167,17 @@ MAX_DIAS = {
     # cadencia y el colector exige que lleguen al mismo mes—, así que el tope
     # de autos vale para la suma sin recalibrar nada.
     "motorizacion_total": 90,
-    # ADR-0225. Encadena DOS rezagos y por eso el default de 110 marcaría
-    # atraso todos los meses: el INDEC publica el mes M unos 52 días después
-    # de terminado (junio-2026 salió el 21-ago-2026) y la API de datos.gob.ar
-    # tarda ~13 días más en espejarlo (mayo-2026 apareció el 5-ago-2026). El
-    # último punto disponible tiene entonces entre ~95 y ~126 días según en qué
-    # parte del ciclo caiga la corrida. 140 deja margen sobre ese techo y
-    # avisa antes de que se saltee un mes entero, que es lo que hay que agarrar.
-    "consumo_supermercados": 140,
+    # ADR-0225/0256. El default de 110 marcaría atraso todos los meses. El tope
+    # sale de MEDIR el calendario del INDEC, no de estimarlo: sobre las 14
+    # publicaciones entre julio-2025 y agosto-2026, el mes M sale entre 48 y 57
+    # días después de terminado (mediana 53) y las publicaciones se separan
+    # entre 23 y 34 días. Como `fecha_dato` es el día 1 del mes de referencia,
+    # el último punto nace con 78-86 días y llega como mucho a **116** la
+    # víspera de la publicación siguiente. 130 deja margen sobre ese techo
+    # medido y sigue agarrando un mes salteado, que lo llevaría a ~146.
+    # Bajó de 140 al dejar de encadenar el rezago del espejo de datos.gob.ar:
+    # desde ADR-0256 la serie sale de la planilla del propio INDEC.
+    "consumo_supermercados": 130,
     "endeudamiento_familiar": 140, "inseguridad": 150,
     # IEF: la serie es mensual, pero el BCRA libera la planilla por lote
     # semestral. 300 días cubre el ciclo sin presentarla como fuente mensual.

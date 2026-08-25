@@ -272,6 +272,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0248](0248-el-volumen-de-busquedas-no-tiene-valencia.md) | El volumen de búsquedas no tiene valencia | `sentimiento_digital` | vigente |
 | [0249](0249-la-subocupacion-demandante-se-llama-por-su-nombre.md) | La subocupación demandante se llama por su nombre | `subocupacion_demandante` | vigente |
 | [0250](0250-el-universo-restringido-se-enumera.md) | El universo restringido se enumera | `trabajo_independiente` | vigente |
+| [0256](0256-la-serie-sale-del-indec-no-de-su-espejo.md) | La serie sale del INDEC, no de su espejo | `consumo_supermercados` | vigente |
 
 ### Espíritu de época
 

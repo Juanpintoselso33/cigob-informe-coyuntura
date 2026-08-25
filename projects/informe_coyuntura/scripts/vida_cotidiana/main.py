@@ -109,7 +109,7 @@ def run_all() -> dict:
 
     def _supermercados_sin_serie():
         """Mismo criterio: la card es el último punto y la serie completa
-        (113 meses) la baja `descargar_series.py` del mismo colector."""
+        la baja `descargar_series.py` del mismo colector."""
         d = fetch_consumo_supermercados()
         return {k: v for k, v in d.items() if k != 'serie'}
     from collectors.snic import fetch_snic

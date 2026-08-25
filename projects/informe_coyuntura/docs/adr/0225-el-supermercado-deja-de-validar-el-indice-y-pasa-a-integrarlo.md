@@ -8,7 +8,7 @@ indicadores: [consumo_supermercados]
 archivos: ['scripts/vida_cotidiana/collectors/indec_supermercados.py', 'scripts/vida_cotidiana/main.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/panel_validacion.py', 'scripts/procedencia_anclas.py', 'scripts/gate_calidad.py', 'tests/test_itvc.py']
 modifica: ['0224']
 cierra: ['0155']
-relacionado: ['0031', '0045', '0108', '0130', '0153', '0159', '0161', '0162', '0163', '0167', '0176', '0216', '0219', '0223', '0226', '0243']
+relacionado: ['0031', '0045', '0108', '0130', '0153', '0159', '0161', '0162', '0163', '0167', '0176', '0216', '0219', '0223', '0226', '0243', '0256']
 ambito: 'ITCIS · dimensión de ingresos y consumo · validación externa del cinturón'
 origen: 'Pedido del editor: buscar una validación externa que sea UN SOLO INDICADOR, no el factor común de varias'
 ---
