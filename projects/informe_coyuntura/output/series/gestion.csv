@@ -814,8 +814,8 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,desregulacion_normativa,1660.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2024-01-01,desregulacion_normativa,1555.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2023-12-01,desregulacion_normativa,1150.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2026-08-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
-2026-07-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
+2026-08-01,concesiones_infraestructura,100.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
+2026-07-01,concesiones_infraestructura,56.9,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-06-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-05-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-04-01,concesiones_infraestructura,8.2,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
@@ -847,7 +847,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2024-01-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2023-12-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
-2026-08-01,cepo_mulc,5.69,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
+2026-08-01,cepo_mulc,5.62,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-07-01,cepo_mulc,5.9,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-06-01,cepo_mulc,4.65,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-05-01,cepo_mulc,6.35,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)

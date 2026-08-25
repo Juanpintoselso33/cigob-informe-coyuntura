@@ -25,16 +25,64 @@ def test_preadjudicado_no_cuenta_como_adjudicado():
     assert not gestion._esta_adjudicado(None)
 
 
-def test_el_store_de_concesiones_no_reintrodujo_la_etapa_preadjudicada():
-    """Si II-B vuelve al store, tiene que ser porque CONTRAT.AR la muestra
-    adjudicada — no porque el bug de substring haya vuelto."""
+def test_toda_etapa_del_store_de_concesiones_declara_de_donde_salio():
+    """Una etapa entra al store por un ACTO, y el store dice cuál.
+
+    Nació (ADR-0087) como «II-B no puede estar acá»: había entrado sola porque
+    el chequeo de estado usaba `'ADJUDICADO' in estado` y CONTRAT.AR informa
+    «Preadjudicado», que contiene la palabra. Verificar la ausencia alcanzaba
+    mientras la única vía de entrada fuera el portal.
+
+    Ya no lo es: desde ADR-0244 una etapa también entra por una resolución
+    publicada, y II-B entró así —Resolución 1149/2026, BO 28-jul-2026— que es
+    una razón más fuerte que el estado del portal, no más débil. Así que lo que
+    hay que cuidar no es que II-B falte, sino que **ninguna etapa esté sin una
+    procedencia que la justifique**. Un `fuente` que no nombre ni una resolución
+    ni una detección explícita de CONTRAT.AR es la firma de que algo entró solo.
+    """
     import json
+    import re
     from pathlib import Path
     store = json.loads((Path(__file__).resolve().parents[1] / "data" / "gestion" /
                         "concesiones_fechas.json").read_text(encoding="utf-8-sig"))
-    assert "II-B" not in store["etapas"], (
-        "II-B volvió al store: verificar en CONTRAT.AR que esté ADJUDICADO y no "
-        "PREADJUDICADO antes de aceptar el cambio (ADR-0087)")
+    sin_respaldo = []
+    for etapa, meta in store["etapas"].items():
+        fuente = meta.get("fuente") or ""
+        por_norma = re.search(r"(RESOL|Resoluci[oó]n)", fuente, re.I)
+        por_portal = "CONTRAT.AR" in fuente and "detectado" in fuente
+        if not (por_norma or por_portal):
+            sin_respaldo.append(f"{etapa}: {fuente[:70]!r}")
+        assert meta.get("fecha") and meta.get("km"), f"{etapa} sin fecha o sin km"
+    assert not sin_respaldo, (
+        "estas etapas están en el store sin declarar el acto que las adjudicó: "
+        + "; ".join(sin_respaldo))
+
+
+def test_preadjudicado_nunca_alcanza_para_entrar_al_store():
+    """La guarda de ADR-0087, ahora dicha de frente en vez de por la ausencia de
+    una etapa: es la frontera de palabra la que separa las dos cosas."""
+    import gestion
+    assert not gestion._esta_adjudicado("Preadjudicado")
+    assert not gestion._esta_adjudicado("PREADJUDICADO")
+    assert not gestion._esta_adjudicado("Disponible Para Adjudicar")
+    assert gestion._esta_adjudicado("Adjudicado")
+
+
+def test_las_etapas_que_entraron_por_el_boletin_se_fechan_con_la_publicacion():
+    """Para una función escalonada, la fecha ES el escalón. Poner el mes en que
+    se detectó en vez del de la publicación corre el salto de la serie."""
+    import json
+    import re
+    from pathlib import Path
+    store = json.loads((Path(__file__).resolve().parents[1] / "data" / "gestion" /
+                        "concesiones_fechas.json").read_text(encoding="utf-8-sig"))
+    for etapa, meta in store["etapas"].items():
+        m = re.search(r"BO (\d{4})-(\d{2})-\d{2}", meta.get("fuente") or "")
+        if not m:
+            continue
+        assert meta["fecha"] == f"{m.group(1)}-{m.group(2)}", (
+            f"{etapa}: el store la fecha en {meta['fecha']} y el BO la publicó "
+            f"en {m.group(1)}-{m.group(2)}")
 
 
 # ── Desregulación: sólo cuenta lo que deroga de verdad (ADR-0096) ───────────

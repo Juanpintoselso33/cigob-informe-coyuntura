@@ -264,8 +264,16 @@ def _indices_itvc_por_componente() -> dict:
     `_valores_itcm_por_mes`.
     """
     series = cargar_series()
+    # Un componente suspendido (ADR-0245) no entra a la reconstrucción: el
+    # motor lo descartaría igual, pero dejarlo acá hace que la matriz de
+    # redundancia y la vista por mes lo cuenten como parte del índice.
+    vivos = {i for d in parametrica.indicadores_vigentes(
+                 itvc.DIMENSIONES_ITVC, itvc.INDICADORES_SUSPENDIDOS).values()
+             for i in d}
     indices_por_comp = {}
     for comp, (skey, invertido, anual, ya_rebaseada) in COMPONENTES.items():
+        if comp not in vivos:
+            continue
         vals = _mensual(series.get(skey) or [])
         if comp in MOVIL12:
             vals = _movil12(vals)          # estacionalidad fuerte del flujo crudo
@@ -675,8 +683,13 @@ def matriz_redundancia_itvc(umbral: float = 0.7) -> dict:
     demás — y conviene tenerlo presente al leer la matriz, porque no todas las
     filas están medidas en las mismas condiciones.
     """
-    comp = {i for d in itvc.DIMENSIONES_ITVC.values() for i in d["indicadores"]}
-    dims = {k: {"indicadores": d["indicadores"]} for k, d in itvc.DIMENSIONES_ITVC.items()}
+    # Sólo los que HOY puntúan (ADR-0245): la tabla de dimensiones conserva el
+    # peso de diseño de los suspendidos, y una matriz de redundancia que los
+    # incluya describe un índice que no es el que se publica.
+    vigentes = parametrica.indicadores_vigentes(itvc.DIMENSIONES_ITVC,
+                                                itvc.INDICADORES_SUSPENDIDOS)
+    comp = {i for d in vigentes.values() for i in d}
+    dims = {k: {"indicadores": d} for k, d in vigentes.items()}
     return matriz_redundancia(_EscalaIdentidad(comp), dims,
                               _valores_itvc_por_mes(), ACOPLADOS_POR_DISENO, umbral)
 
@@ -685,7 +698,11 @@ def matriz_redundancia_itcp(umbral: float = 0.7) -> dict:
     escala = parametrica.Escala(itcp.BANDAS_ITCP,
                                 getattr(itcp, "ANCLAS_ITCP", None),
                                 getattr(itcp, "TRANSFORMACIONES_ITCP", None))
-    return matriz_redundancia(escala, itcp.DIMENSIONES_ITCP,
+    vigentes = parametrica.indicadores_vigentes(itcp.DIMENSIONES_ITCP,
+                                                itcp.INDICADORES_SUSPENDIDOS)
+    dims = {k: {**itcp.DIMENSIONES_ITCP[k], "indicadores": d}
+            for k, d in vigentes.items()}
+    return matriz_redundancia(escala, dims,
                               _valores_itcp_por_mes(), ACOPLADOS_POR_DISENO, umbral)
 
 
@@ -784,8 +801,12 @@ ITCP_SERIE_ANUAL = {
     "velocidad_resolucion": "serie anual (anuario CSJN), un punto por año — ADR-0169",
 }
 
-ITCP_SERIES = [k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores"]
-               if k not in ITCP_SERIE_ANUAL]
+# Los suspendidos no entran a la reconstrucción histórica: `calcular_itcp` los
+# descarta igual (ADR-0245), pero pedir sus series haría trabajo de red para
+# nada y dejaría la lista diciendo que forman parte del índice.
+ITCP_SERIES = [k for d in parametrica.indicadores_vigentes(
+                   itcp.DIMENSIONES_ITCP, itcp.INDICADORES_SUSPENDIDOS).values()
+               for k in d if k not in ITCP_SERIE_ANUAL]
 
 # MÁSCARA DE ERA para eficacia_legislativa en la reconstrucción (ADR-0070,
 # 2026-07-16): la cohorte madura del indicador (expedientes PE publicados

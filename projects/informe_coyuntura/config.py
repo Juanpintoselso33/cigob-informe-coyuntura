@@ -119,7 +119,7 @@ BARBARISMO_MAP = {
 MAX_DIAS_DEFAULT = 110
 MAX_DIAS = {
     # trimestrales EPH (fecha = inicio del trimestre, publica ~70d después del cierre)
-    "informalidad": 280, "pluriempleo": 280,
+    "informalidad": 280, "subocupacion_demandante": 280,   # ADR-0249: se llamaba `pluriempleo`
     # SIPA: son declaraciones de las empresas que se consolidan y se revisan,
     # con ~3 meses de rezago estructural (ADR-0130). 150 días deja margen sobre
     # ese ritmo sin dejar de avisar si la fuente se muere de verdad.

@@ -96,6 +96,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,tcrm,132.79,índice (base dic-2015),BCRA ITCRM
 2023-12-01,tcrm,124.88,índice (base dic-2015),BCRA ITCRM
 2023-11-01,tcrm,83.2,índice (base dic-2015),BCRA ITCRM
+2026-08-25,tc_mayorista,1511.5326,ARS/USD,BCRA
 2026-08-24,tc_mayorista,1506.9002,ARS/USD,BCRA
 2026-08-21,tc_mayorista,1497.4528,ARS/USD,BCRA
 2026-08-20,tc_mayorista,1497.2898,ARS/USD,BCRA
@@ -970,25 +971,26 @@ fecha,indicador,valor,unidad,fuente
 2022-03-01,recaudacion,99.7,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-02-01,recaudacion,101.7,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-01-01,recaudacion,101.9,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-08-20,prestamos_privados,142230179.0,M ARS,BCRA
-2026-08-19,prestamos_privados,142007511.0,M ARS,BCRA
-2026-08-18,prestamos_privados,141420736.0,M ARS,BCRA
-2026-08-14,prestamos_privados,140778414.0,M ARS,BCRA
-2026-08-13,prestamos_privados,140459212.0,M ARS,BCRA
-2026-08-12,prestamos_privados,140404019.0,M ARS,BCRA
-2026-08-11,prestamos_privados,140508523.0,M ARS,BCRA
-2026-08-10,prestamos_privados,140236224.0,M ARS,BCRA
-2026-08-07,prestamos_privados,140178686.0,M ARS,BCRA
-2026-08-06,prestamos_privados,140386108.0,M ARS,BCRA
-2026-08-05,prestamos_privados,140751631.0,M ARS,BCRA
-2026-08-04,prestamos_privados,141293505.0,M ARS,BCRA
-2026-08-03,prestamos_privados,141239348.0,M ARS,BCRA
-2026-07-31,prestamos_privados,140652907.0,M ARS,BCRA
+2026-08-21,prestamos_privados,142543586.0,M ARS,BCRA
+2026-08-20,prestamos_privados,142235905.0,M ARS,BCRA
+2026-08-19,prestamos_privados,141975933.0,M ARS,BCRA
+2026-08-18,prestamos_privados,141419308.0,M ARS,BCRA
+2026-08-14,prestamos_privados,140913996.0,M ARS,BCRA
+2026-08-13,prestamos_privados,140458772.0,M ARS,BCRA
+2026-08-12,prestamos_privados,140403988.0,M ARS,BCRA
+2026-08-11,prestamos_privados,140505102.0,M ARS,BCRA
+2026-08-10,prestamos_privados,140236221.0,M ARS,BCRA
+2026-08-07,prestamos_privados,140178683.0,M ARS,BCRA
+2026-08-06,prestamos_privados,140386105.0,M ARS,BCRA
+2026-08-05,prestamos_privados,140751629.0,M ARS,BCRA
+2026-08-04,prestamos_privados,141293502.0,M ARS,BCRA
+2026-08-03,prestamos_privados,141239346.0,M ARS,BCRA
+2026-07-31,prestamos_privados,140683361.0,M ARS,BCRA
 2026-07-30,prestamos_privados,141382111.0,M ARS,BCRA
 2026-07-29,prestamos_privados,141084960.0,M ARS,BCRA
 2026-07-28,prestamos_privados,140878649.0,M ARS,BCRA
 2026-07-27,prestamos_privados,140285835.0,M ARS,BCRA
-2026-07-24,prestamos_privados,139391957.0,M ARS,BCRA
+2026-07-24,prestamos_privados,139342195.0,M ARS,BCRA
 2026-07-23,prestamos_privados,138816469.0,M ARS,BCRA
 2026-07-22,prestamos_privados,138114886.0,M ARS,BCRA
 2026-07-21,prestamos_privados,137793627.0,M ARS,BCRA
@@ -1725,7 +1727,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,ipc_nucleo,12.29,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
 2024-01-01,ipc_nucleo,20.22,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
 2023-12-01,ipc_nucleo,28.26,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
-2026-07-01,idm,4.73,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2026-07-01,idm,4.7,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-06-01,idm,6.24,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-05-01,idm,4.3,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-04-01,idm,6.42,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
@@ -1972,67 +1974,69 @@ fecha,indicador,valor,unidad,fuente
 2024-07-01,cuenta_corriente,927.0,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
 2024-04-01,cuenta_corriente,-6099.5,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
 2024-01-01,cuenta_corriente,-16422.5,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
-2026-07-01,credito_privado,2.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2026-06-01,credito_privado,8.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2026-05-01,credito_privado,9.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2026-04-01,credito_privado,13.8,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2026-03-01,credito_privado,18.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2026-02-01,credito_privado,22.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2026-01-01,credito_privado,30.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-12-01,credito_privado,37.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-11-01,credito_privado,47.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-10-01,credito_privado,56.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-09-01,credito_privado,67.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-08-01,credito_privado,77.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-07-01,credito_privado,89.0,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-06-01,credito_privado,98.3,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-05-01,credito_privado,109.2,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-04-01,credito_privado,118.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-03-01,credito_privado,111.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-02-01,credito_privado,103.8,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-01-01,credito_privado,86.3,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-12-01,credito_privado,58.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-11-01,credito_privado,29.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-10-01,credito_privado,15.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-09-01,credito_privado,11.7,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-08-01,credito_privado,-1.2,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-07-01,credito_privado,-9.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-06-01,credito_privado,-17.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-05-01,credito_privado,-23.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-04-01,credito_privado,-30.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-03-01,credito_privado,-30.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-02-01,credito_privado,-29.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2024-01-01,credito_privado,-26.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2023-12-01,credito_privado,-19.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2026-06-01,costo_financiamiento_tesoro,8.07,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2026-05-01,costo_financiamiento_tesoro,3.26,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2026-04-01,costo_financiamiento_tesoro,8.93,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2026-03-01,costo_financiamiento_tesoro,8.78,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2026-02-01,costo_financiamiento_tesoro,14.03,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2026-01-01,costo_financiamiento_tesoro,23.97,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-12-01,costo_financiamiento_tesoro,2.67,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-11-01,costo_financiamiento_tesoro,12.95,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-10-01,costo_financiamiento_tesoro,9.74,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-09-01,costo_financiamiento_tesoro,23.17,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-08-01,costo_financiamiento_tesoro,33.51,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-07-01,costo_financiamiento_tesoro,24.9,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-06-01,costo_financiamiento_tesoro,16.46,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-05-01,costo_financiamiento_tesoro,11.35,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-04-01,costo_financiamiento_tesoro,13.0,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-03-01,costo_financiamiento_tesoro,10.71,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-02-01,costo_financiamiento_tesoro,10.49,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2025-01-01,costo_financiamiento_tesoro,6.26,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2024-12-01,costo_financiamiento_tesoro,10.76,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2024-11-01,costo_financiamiento_tesoro,7.57,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2024-10-01,costo_financiamiento_tesoro,15.79,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2024-09-01,costo_financiamiento_tesoro,9.96,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2024-08-01,costo_financiamiento_tesoro,11.67,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2024-07-01,costo_financiamiento_tesoro,0.94,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2024-06-01,costo_financiamiento_tesoro,1.05,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2024-05-01,costo_financiamiento_tesoro,5.35,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2024-04-01,costo_financiamiento_tesoro,-10.83,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
-2024-03-01,costo_financiamiento_tesoro,-14.96,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-07-01,credito_privado,-1.5,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2026-06-01,credito_privado,1.7,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2026-05-01,credito_privado,3.8,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2026-04-01,credito_privado,7.4,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2026-03-01,credito_privado,12.4,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2026-02-01,credito_privado,17.2,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2026-01-01,credito_privado,22.7,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-12-01,credito_privado,28.1,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-11-01,credito_privado,35.0,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-10-01,credito_privado,40.6,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-09-01,credito_privado,50.3,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-08-01,credito_privado,61.7,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-07-01,credito_privado,73.6,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-06-01,credito_privado,90.9,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-05-01,credito_privado,105.4,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-04-01,credito_privado,117.8,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-03-01,credito_privado,108.2,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-02-01,credito_privado,92.0,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2025-01-01,credito_privado,80.0,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-12-01,credito_privado,55.5,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-11-01,credito_privado,19.6,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-10-01,credito_privado,8.7,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-09-01,credito_privado,6.4,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-08-01,credito_privado,-5.7,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-07-01,credito_privado,-15.0,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-06-01,credito_privado,-23.7,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-05-01,credito_privado,-31.3,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-04-01,credito_privado,-38.4,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-03-01,credito_privado,-36.7,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-02-01,credito_privado,-33.7,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2024-01-01,credito_privado,-32.6,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2023-12-01,credito_privado,-25.8,% i.a. real (crédito en pesos),"BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC"
+2026-07-01,costo_financiamiento_tesoro,5.8,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-06-01,costo_financiamiento_tesoro,4.93,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-05-01,costo_financiamiento_tesoro,5.86,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-04-01,costo_financiamiento_tesoro,2.75,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-03-01,costo_financiamiento_tesoro,7.01,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-02-01,costo_financiamiento_tesoro,8.96,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-01-01,costo_financiamiento_tesoro,17.79,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-12-01,costo_financiamiento_tesoro,3.02,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-11-01,costo_financiamiento_tesoro,14.68,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-10-01,costo_financiamiento_tesoro,14.05,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-09-01,costo_financiamiento_tesoro,13.11,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-08-01,costo_financiamiento_tesoro,24.32,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-07-01,costo_financiamiento_tesoro,29.89,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-06-01,costo_financiamiento_tesoro,24.11,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-05-01,costo_financiamiento_tesoro,27.15,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-04-01,costo_financiamiento_tesoro,23.91,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-03-01,costo_financiamiento_tesoro,27.41,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-02-01,costo_financiamiento_tesoro,28.52,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-01-01,costo_financiamiento_tesoro,12.96,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-12-01,costo_financiamiento_tesoro,21.96,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-11-01,costo_financiamiento_tesoro,17.47,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-10-01,costo_financiamiento_tesoro,24.61,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-09-01,costo_financiamiento_tesoro,15.23,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-08-01,costo_financiamiento_tesoro,9.86,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-07-01,costo_financiamiento_tesoro,8.65,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-06-01,costo_financiamiento_tesoro,0.91,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-05-01,costo_financiamiento_tesoro,-5.17,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-04-01,costo_financiamiento_tesoro,-10.39,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-03-01,costo_financiamiento_tesoro,-13.58,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-08-21,base_monetaria,46210440.0,M ARS,BCRA
 2026-08-20,base_monetaria,48175716.0,M ARS,BCRA
 2026-08-19,base_monetaria,47824170.0,M ARS,BCRA
 2026-08-18,base_monetaria,46427239.0,M ARS,BCRA
@@ -2666,6 +2670,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-10,base_monetaria,10274059.0,M ARS,BCRA
 2024-01-09,base_monetaria,10286320.0,M ARS,BCRA
 2024-01-08,base_monetaria,10005620.0,M ARS,BCRA
+2026-08-24,badlar,23.625,% anual,BCRA
 2026-08-21,badlar,24.125,% anual,BCRA
 2026-08-20,badlar,24.3125,% anual,BCRA
 2026-08-19,badlar,23.0,% anual,BCRA

@@ -88,6 +88,21 @@ reescribe hacia atrás: sería tocar pesos publicados sin necesidad.
 - La reconstrucción histórica de `validacion_externa` usa el mismo punto de
   entrada, así que la serie del índice queda homogénea con la card: no hay un
   camino que puntúe el suspendido y otro que no.
+- **`DIMENSIONES_*` deja de contestar «¿esto puntúa?».** Pasa a contestar
+  «¿cuánto pesaría si puntuara?», y todo lo que la leía con la primera intención
+  quedó mal. Se encontraron tres consumidores así, los tres corregidos con
+  `parametrica.indicadores_vigentes()`, que es ahora la única respuesta a esa
+  pregunta: el **generador de manuales** —que presentaba los suspendidos como
+  componentes vivos, con sus pesos de diseño—, las **matrices de redundancia**
+  de ITVC e ITCP —que medían un índice que no es el que se publica— y la
+  **reconstrucción histórica** que alimenta la validación externa. Es el costo
+  real de esta decisión y conviene tenerlo presente: cualquier lector nuevo de
+  la tabla de pesos tiene que preguntarse cuál de las dos preguntas está
+  haciendo.
+- De paso apareció un error anterior a esta decisión: `cargar_ocultos()` leía
+  las listas de ocultos parseando `publicar.py` con una regex de una línea más
+  `ast.literal_eval`, y **`GESTION_OCULTOS` venía devolviendo vacío en silencio**
+  desde que dejó de ser un literal. Ahora se importan.
 - **Aparece un efecto de segundo orden que conviene no perder de vista.** El
   test del piso de cobertura afirmaba que un mes incompleto siempre da **por
   debajo** del valor real, y era cierto en los 31 meses de la serie. Dejó de

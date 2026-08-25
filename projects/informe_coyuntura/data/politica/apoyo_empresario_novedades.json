@@ -1,12 +1,12 @@
 {
  "_meta": {
-  "comunicados_vistos": 46,
+  "comunicados_vistos": 47,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. NO puntúa: el indicador no se publica hasta que haya segunda pasada con kappa ≥ 0,70. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
-  "nuevos_en_la_corrida": 0,
+  "nuevos_en_la_corrida": 1,
   "ultima_corrida": "2026-08-25"
  },
  "pendientes": {
@@ -42,6 +42,17 @@
    "texto": "Desde el Departamento de Educación, Tecnología e Innovación Productiva participamos de  “Conversaciones para una ETP conectada con el mundo del trabajo” , un encuentro convocado por el INET junto con empresas y cámaras. El objetivo fue avanzar en consensos para fortalecer las prácticas profesionalizantes y  generar un marco federal  que habilite experiencias más sostenidas de formación dual o en alternancia.  Durante el encuentro, presentamos los aprendizajes del trabajo que venimos desarrollando junto con INET y OEI en  Formación Situada . La iniciativa busca integrar la formación curricular con experiencias estructuradas en contextos productivos reales y fortalecer el rol formativo de las empresas para experiencias de nivel medio, formación profesional y técnico superior.  Compartimos las experiencias desarrolladas en Provincia de Buenos Aires con  Nestlé y la Escuela Técnica N.° 1 de Magdalena  y con  Industrias Guidi y la Escuela Técnica N.° 4 de Almirante Brown . En ambos casos, el objetivo es avanzar desde prácticas puntuales hacia experiencias de aprendizaje vinculadas con procesos y desafíos reales de las empresas.  También se presentaron las experiencias de formación dual de la Cámara de Comercio Argentino-Alemana y de la Cámara de Comercio Suiza, y se señalaron algunos desafíos para su desarrollo en nuestro país: contar con planes formativos y articulación curricular, fortalecer a los roles intermediarios y a los tutores, los esquemas de monitoreo y evaluación, clarificar las condiciones para la participación de estudiantes menores de 18 años y generar esquemas que las empresas puedan sostener en el tiempo.  El INET continuará este proceso junto con las jurisdicciones y el sector productivo para avanzar en una normativa nacional que brinde criterios comunes para el desarrollo de estas experiencias.",
    "titulo": "Formación técnica y empresas: INET y el sector productivo avanzan en un marco federal",
    "url": "https://www.uia.org.ar/uia/novedades/formacion-tecnica-y-empresas-inet-y-el-sector-prod"
+  },
+  "UIA|grupo-de-trabajo-de-innovacion-abierta-argentina-2": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-08-25",
+   "id": "grupo-de-trabajo-de-innovacion-abierta-argentina-2",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "En el  Centro de Industria X (CIX) de la Unión Industrial Argentina (UIA)  se realizó el primer encuentro del  Grupo de Trabajo de Innovación Abierta Argentina de IBERINNOVA – Estrategia Iberoamericana para el Emprendimiento Innovador , una iniciativa impulsada por la Secretaría General Iberoamericana (SEGIB), el Consejo de Empresarios Iberoamericanos (CEIB) y la UIA, orientada a incorporar activamente la voz y la experiencia del sector privado en la construcción de una agenda regional de innovación. La apertura contó con la participación de Marcelo Domínguez Molet, miembro del Comité Ejecutivo de la UIA y representante de la entidad ante CEIB; Graciela Ciccia, presidenta del Departamento de Desarrollo Científico Tecnológico de la UIA y Directora Ejecutiva de la Cámara Argentina de Biotecnología; y Esteban Campero, Director de la Oficina Subregional para el Cono Sur de SEGIB.  El encuentro reunió a referentes de empresas, cámaras empresariales, organismos públicos, instituciones científico-tecnológicas y actores del ecosistema emprendedor, entre ellos Accenture, Biogénesis Bagó, BIOL, CAB - Cámara Argentina de Biotecnología, CENIT-UNSAM, CESSI Argentina, CNH Argentina, Grupo Harmony, Grupo INSUD, INTI, Kamay Ventures | Overboost, Laboratorios ELEA, Mabxience, Rockwell Automation, SEGIB y Sinergium Biotech. La diversidad de organizaciones participantes permitió poner en común experiencias de innovación abierta desde distintas industrias y abordar oportunidades concretas de colaboración.  Durante la jornada se compartieron perspectivas, desafíos y buenas prácticas para fortalecer la articulación entre grandes empresas, PyMEs, startups, universidades, centros tecnológicos y gobiernos, promoviendo la productividad, la competitividad, la sostenibilidad y el desarrollo tecnológico de la región. El encuentro permitió además avanzar en la elaboración de recomendaciones de política pública, una hoja de ruta regional y aportes empresariales que contribuirán al Compromiso Iberoamericano por el Emprendimiento Innovador y serán parte del camino hacia la XXX Cumbre Iberoamericana de Jefas y Jefes de Estado y de Gobierno, que tendrá lugar en noviembre de 2026 en Madrid.",
+   "titulo": "Grupo de Trabajo de Innovación Abierta Argentina de IBERINNOVA",
+   "url": "https://www.uia.org.ar/uia/novedades/grupo-de-trabajo-de-innovacion-abierta-argentina-2"
   },
   "UIA|industria-inspira-entra-en-su-ultima-semana-de-ins": {
    "camara": "UIA",
@@ -491,6 +502,10 @@
   "UIA|formacion-tecnica-y-empresas-inet-y-el-sector-prod": {
    "fecha": "2026-08-12",
    "titulo": "Formación técnica y empresas: INET y el sector productivo avanzan en un marco federal"
+  },
+  "UIA|grupo-de-trabajo-de-innovacion-abierta-argentina-2": {
+   "fecha": "2026-08-25",
+   "titulo": "Grupo de Trabajo de Innovación Abierta Argentina de IBERINNOVA"
   },
   "UIA|industria-inspira-entra-en-su-ultima-semana-de-ins": {
    "fecha": "2026-08-24",

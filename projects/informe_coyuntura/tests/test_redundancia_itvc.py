@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 import itvc
+import parametrica
 import validacion_externa as ve
 
 
@@ -28,16 +29,25 @@ def test_matriz_y_reconstruccion_no_pueden_divergir():
     assert set(vals) == set(serie), "la matriz y la serie no cubren los mismos meses"
     # y los componentes que la matriz mira son exactamente los que el índice
     # pondera: ni uno de más (mediría algo que no entra) ni de menos
-    comp_dim = {i for d in itvc.DIMENSIONES_ITVC.values() for i in d["indicadores"]}
+    comp_dim = _componentes_vigentes()
     assert set(vals[max(vals)]) == comp_dim, (
         f"sobran {set(vals[max(vals)]) - comp_dim}, faltan {comp_dim - set(vals[max(vals)])}"
     )
 
 
+def _componentes_vigentes():
+    """Los que HOY puntúan. `DIMENSIONES_ITVC` conserva el peso de diseño de un
+    suspendido (ADR-0245), así que usarla como definición de «componente» haría
+    fallar a la matriz por describir correctamente el índice."""
+    return {i for d in parametrica.indicadores_vigentes(
+                itvc.DIMENSIONES_ITVC, itvc.INDICADORES_SUSPENDIDOS).values()
+            for i in d}
+
+
 def test_todo_componente_puntuable_entra_a_la_matriz():
     """Un componente que pondera y no se mide deja un hueco invisible."""
     m = ve.matriz_redundancia_itvc()
-    comp = {i for d in itvc.DIMENSIONES_ITVC.values() for i in d["indicadores"]}
+    comp = _componentes_vigentes()
     assert m["n_indicadores"] == len(comp), (
         f"la matriz mide {m['n_indicadores']} de {len(comp)} componentes"
     )
@@ -108,7 +118,7 @@ def test_lo_publicado_cubre_los_componentes_que_hoy_puntuan():
     red = bloque.get("redundancia")
     if not red:
         return
-    vivos = {i for d in itvc.DIMENSIONES_ITVC.values() for i in d["indicadores"]}
+    vivos = _componentes_vigentes()
     assert red["n_indicadores"] == len(vivos), (
         f"la matriz publicada mide {red['n_indicadores']} componentes y el índice tiene "
         f"{len(vivos)}: falta correr validacion_externa.py"
@@ -123,8 +133,6 @@ def test_ningun_indice_publica_una_matriz_desfasada():
     la serie había crecido y más pares pasaron a tener datos. Comparar sólo el
     número de indicadores no lo habría visto; hay que comparar los PARES.
     """
-    import validacion_externa as ve
-
     for sig, fn in (("itcm", ve.matriz_redundancia_itcm),
                     ("itcg", ve.matriz_redundancia_itcg),
                     ("itcp", ve.matriz_redundancia_itcp),

@@ -205,7 +205,15 @@ def test_ninguna_excepcion_de_procedencia_apunta_a_un_indicador_que_ya_no_existe
         for clave in (cinturon.get("indicadores") or {})
     }
 
-    huerfanas = sorted(set(publicar.METODO_OBTENCION_EXCEPCIONES) - publicados)
+    # Un indicador suspendido (ADR-0245) no se publica, así que su excepción no
+    # puede badgear mal a nadie; y tiene que sobrevivir para el día que vuelva.
+    # Lo que este test caza es la clave MUERTA por un renombre, que es otra cosa.
+    import itcg
+    import itcp
+    import itvc
+    suspendidos = set(itcp.INDICADORES_SUSPENDIDOS) | set(itcg.INDICADORES_SUSPENDIDOS) \
+        | set(itvc.INDICADORES_SUSPENDIDOS)
+    huerfanas = sorted(set(publicar.METODO_OBTENCION_EXCEPCIONES) - publicados - suspendidos)
 
     assert not huerfanas, (
         "estas excepciones de procedencia no corresponden a ningún indicador "
@@ -228,10 +236,17 @@ def test_el_snapshot_publicado_declara_la_procedencia_que_dictan_las_excepciones
     assert declarado and all(v is not None for v in declarado.values()), (
         "hay indicadores publicados sin `metodo_obtencion`: la web no puede "
         "decir cómo se obtuvo el dato")
+    import itcg
+    import itcp
+    import itvc
+    suspendidos = set(itcp.INDICADORES_SUSPENDIDOS) | set(itcg.INDICADORES_SUSPENDIDOS) \
+        | set(itvc.INDICADORES_SUSPENDIDOS)
     for clave, esperado in publicar.METODO_OBTENCION_EXCEPCIONES.items():
         # Con `.get`: si la clave ya no se publica lo dice el test de arriba,
         # que es el dueño de ese caso; acá el mensaje tiene que seguir siendo
         # legible en vez de reventar con un KeyError.
+        if clave in suspendidos:
+            continue          # no se publica: no hay badge que verificar
         assert declarado.get(clave) == esperado, (
             f"{clave} se publica como {declarado.get(clave)!r} y la excepción "
             f"declara {esperado!r}")
@@ -415,12 +430,16 @@ def test_politica_itcp_reconcilia():
     # judicializacion, velocidad_resolucion y paralisis_denuncias al judicial,
     # que deja de colgar de un solo dato.
     # 19 desde ADR-0232: entra la intensidad laboral oficial en conflicto social.
-    assert len(en_indice) == 19, f"esperaba 19 indicadores en el índice, hay {len(en_indice)}"
-    for _nuevo in ("produccion_legislativa", "judicializacion",
+    # 19 → 17: salieron `apoyo_empresario` (ADR-0246) y `judicializacion` (ADR-0255)
+    assert len(en_indice) == 17, f"esperaba 17 indicadores en el índice, hay {len(en_indice)}"
+    for _nuevo in ("produccion_legislativa",
                    "velocidad_resolucion", "paralisis_denuncias"):
         assert _nuevo in en_indice, f"{_nuevo} tendría que puntuar (ADR-0168)"
+    # ADR-0255: `judicializacion` sale del índice — el corpus de SAIJ no
+    # identifica causas contra el Ejecutivo. ADR-0246: sale `apoyo_empresario`.
+    assert "judicializacion" not in en_indice
+    assert "apoyo_empresario" not in en_indice
     assert "bloqueo_sostenido" in en_indice
-    assert "apoyo_empresario" in en_indice
     assert "brecha_obra_publica" in en_indice
     # ADR-0089: derrotas sale del índice, entra desafíos en su lugar
     assert "desafios_legislativos" in en_indice
@@ -533,10 +552,11 @@ def test_gestion_itcg_reconcilia():
     # avance de propuestas y un índice de avance no puede descartar las
     # cumplidas. `masa_salarial` sigue sin puntuar (duda metodológica sin
     # saldar, ADR-0186) y por eso ahora tampoco se publica.
-    assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
+    # 14 → 13: salió `reestructuracion_organismos` (ADR-0247)
+    assert len(en_indice) == 13, f"esperaba 13 indicadores en el índice, hay {len(en_indice)}"
     assert contexto == {}, ("gestión no publica indicadores que no puntúen: "
                             f"{sorted(contexto)}")
-    assert len(c["indicadores"]) == 14, "el snapshot no debe traer cards sin puntaje"
+    assert len(c["indicadores"]) == 13, "el snapshot no debe traer cards sin puntaje"
     assert "asistencia_directa" in en_indice, "la promesa cumplida puntúa (ADR-0189)"
     assert "litigiosidad_laboral" in en_indice
     # Los cuatro que no puntúan quedan OCULTOS del snapshot (GESTION_OCULTOS):
@@ -638,7 +658,8 @@ def test_vida_itvc_reconcilia():
     # hogar, así que integra el índice en vez de juzgarlo — y es el único
     # componente que mide volumen efectivamente comprado).
     # 19 desde ADR-0231: entra carga del servicio de deuda en vulnerabilidad.
-    assert len(en_indice) == 19, f"esperaba 19 componentes en el índice, hay {len(en_indice)}"
+    # 19 → 18: salió `sentimiento_digital` (ADR-0248)
+    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"

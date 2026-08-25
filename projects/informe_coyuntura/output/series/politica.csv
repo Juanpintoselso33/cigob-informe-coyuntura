@@ -110,39 +110,39 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rotacion_gabinete,1,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2024-01-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2023-12-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
-2026-08-01,ratio_dnu,1.92,DNUs por ley (12m móviles),InfoLeg
-2026-07-01,ratio_dnu,1.92,DNUs por ley (12m móviles),InfoLeg
-2026-06-01,ratio_dnu,2.3,DNUs por ley (12m móviles),InfoLeg
-2026-05-01,ratio_dnu,4.727,DNUs por ley (12m móviles),InfoLeg
-2026-04-01,ratio_dnu,4.0,DNUs por ley (12m móviles),InfoLeg
-2026-03-01,ratio_dnu,4.75,DNUs por ley (12m móviles),InfoLeg
-2026-02-01,ratio_dnu,4.214,DNUs por ley (12m móviles),InfoLeg
-2026-01-01,ratio_dnu,4.769,DNUs por ley (12m móviles),InfoLeg
-2025-12-01,ratio_dnu,4.909,DNUs por ley (12m móviles),InfoLeg
-2025-11-01,ratio_dnu,5.273,DNUs por ley (12m móviles),InfoLeg
-2025-10-01,ratio_dnu,5.545,DNUs por ley (12m móviles),InfoLeg
-2025-09-01,ratio_dnu,1.939,DNUs por ley (12m móviles),InfoLeg
-2025-08-01,ratio_dnu,1.442,DNUs por ley (12m móviles),InfoLeg
-2025-07-01,ratio_dnu,1.488,DNUs por ley (12m móviles),InfoLeg
-2025-06-01,ratio_dnu,1.522,DNUs por ley (12m móviles),InfoLeg
-2025-05-01,ratio_dnu,1.457,DNUs por ley (12m móviles),InfoLeg
-2025-04-01,ratio_dnu,1.467,DNUs por ley (12m móviles),InfoLeg
-2025-03-01,ratio_dnu,1.511,DNUs por ley (12m móviles),InfoLeg
-2025-02-01,ratio_dnu,1.643,DNUs por ley (12m móviles),InfoLeg
-2025-01-01,ratio_dnu,1.643,DNUs por ley (12m móviles),InfoLeg
-2024-12-01,ratio_dnu,1.69,DNUs por ley (12m móviles),InfoLeg
-2024-11-01,ratio_dnu,1.833,DNUs por ley (12m móviles),InfoLeg
-2024-10-01,ratio_dnu,1.833,DNUs por ley (12m móviles),InfoLeg
-2024-09-01,ratio_dnu,2.406,DNUs por ley (12m móviles),InfoLeg
-2024-08-01,ratio_dnu,3.667,DNUs por ley (12m móviles),InfoLeg
-2024-07-01,ratio_dnu,3.571,DNUs por ley (12m móviles),InfoLeg
-2024-06-01,ratio_dnu,2.783,DNUs por ley (12m móviles),InfoLeg
-2024-05-01,ratio_dnu,2.652,DNUs por ley (12m móviles),InfoLeg
-2024-04-01,ratio_dnu,1.812,DNUs por ley (12m móviles),InfoLeg
-2024-03-01,ratio_dnu,1.576,DNUs por ley (12m móviles),InfoLeg
-2024-02-01,ratio_dnu,1.5,DNUs por ley (12m móviles),InfoLeg
-2024-01-01,ratio_dnu,1.353,DNUs por ley (12m móviles),InfoLeg
-2023-12-01,ratio_dnu,1.176,DNUs por ley (12m móviles),InfoLeg
+2026-08-01,ratio_dnu,1.48,DNUs por ley (12m móviles),InfoLeg
+2026-07-01,ratio_dnu,1.4,DNUs por ley (12m móviles),InfoLeg
+2026-06-01,ratio_dnu,1.45,DNUs por ley (12m móviles),InfoLeg
+2026-05-01,ratio_dnu,2.818,DNUs por ley (12m móviles),InfoLeg
+2026-04-01,ratio_dnu,2.429,DNUs por ley (12m móviles),InfoLeg
+2026-03-01,ratio_dnu,2.833,DNUs por ley (12m móviles),InfoLeg
+2026-02-01,ratio_dnu,2.5,DNUs por ley (12m móviles),InfoLeg
+2026-01-01,ratio_dnu,2.846,DNUs por ley (12m móviles),InfoLeg
+2025-12-01,ratio_dnu,2.818,DNUs por ley (12m móviles),InfoLeg
+2025-11-01,ratio_dnu,3.182,DNUs por ley (12m móviles),InfoLeg
+2025-10-01,ratio_dnu,3.273,DNUs por ley (12m móviles),InfoLeg
+2025-09-01,ratio_dnu,1.182,DNUs por ley (12m móviles),InfoLeg
+2025-08-01,ratio_dnu,0.884,DNUs por ley (12m móviles),InfoLeg
+2025-07-01,ratio_dnu,0.953,DNUs por ley (12m móviles),InfoLeg
+2025-06-01,ratio_dnu,1.022,DNUs por ley (12m móviles),InfoLeg
+2025-05-01,ratio_dnu,1.022,DNUs por ley (12m móviles),InfoLeg
+2025-04-01,ratio_dnu,1.0,DNUs por ley (12m móviles),InfoLeg
+2025-03-01,ratio_dnu,1.022,DNUs por ley (12m móviles),InfoLeg
+2025-02-01,ratio_dnu,1.119,DNUs por ley (12m móviles),InfoLeg
+2025-01-01,ratio_dnu,1.143,DNUs por ley (12m móviles),InfoLeg
+2024-12-01,ratio_dnu,1.119,DNUs por ley (12m móviles),InfoLeg
+2024-11-01,ratio_dnu,1.214,DNUs por ley (12m móviles),InfoLeg
+2024-10-01,ratio_dnu,1.238,DNUs por ley (12m móviles),InfoLeg
+2024-09-01,ratio_dnu,1.656,DNUs por ley (12m móviles),InfoLeg
+2024-08-01,ratio_dnu,2.476,DNUs por ley (12m móviles),InfoLeg
+2024-07-01,ratio_dnu,2.429,DNUs por ley (12m móviles),InfoLeg
+2024-06-01,ratio_dnu,2.043,DNUs por ley (12m móviles),InfoLeg
+2024-05-01,ratio_dnu,1.957,DNUs por ley (12m móviles),InfoLeg
+2024-04-01,ratio_dnu,1.344,DNUs por ley (12m móviles),InfoLeg
+2024-03-01,ratio_dnu,1.212,DNUs por ley (12m móviles),InfoLeg
+2024-02-01,ratio_dnu,1.176,DNUs por ley (12m móviles),InfoLeg
+2024-01-01,ratio_dnu,1.088,DNUs por ley (12m móviles),InfoLeg
+2023-12-01,ratio_dnu,1.029,DNUs por ley (12m móviles),InfoLeg
 2026-08-01,produccion_legislativa,25,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2026-07-01,produccion_legislativa,28,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2026-06-01,produccion_legislativa,24,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
@@ -457,14 +457,14 @@ fecha,indicador,valor,unidad,fuente
 2007-02-01,jornadas_individuales_no_trabajadas_12m,5950101,jornadas individuales no trabajadas (12m móviles),Secretaría de Trabajo — Estadísticas de conflictos laborales
 2007-01-01,jornadas_individuales_no_trabajadas_12m,5935151,jornadas individuales no trabajadas (12m móviles),Secretaría de Trabajo — Estadísticas de conflictos laborales
 2006-12-01,jornadas_individuales_no_trabajadas_12m,5972813,jornadas individuales no trabajadas (12m móviles),Secretaría de Trabajo — Estadísticas de conflictos laborales
-2025-12-01,iaf_transferencias,0.8,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2024-12-01,iaf_transferencias,-8.3,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2023-12-01,iaf_transferencias,-5.8,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2022-12-01,iaf_transferencias,6.5,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2021-12-01,iaf_transferencias,6.9,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2020-12-01,iaf_transferencias,-3.2,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2019-12-01,iaf_transferencias,-1.4,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2018-12-01,iaf_transferencias,6.3,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2025-12-01,iaf_transferencias,1.6,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-12-01,iaf_transferencias,-9.8,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-12-01,iaf_transferencias,-4.4,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-12-01,iaf_transferencias,6.3,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-12-01,iaf_transferencias,7.3,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-12-01,iaf_transferencias,-4.1,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-12-01,iaf_transferencias,-1.4,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2018-12-01,iaf_transferencias,6.7,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
 2026-08-01,eficacia_legislativa,15.4,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2026-07-01,eficacia_legislativa,13.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2026-06-01,eficacia_legislativa,22.2,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
@@ -564,7 +564,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2024-01-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2023-12-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
-2026-07-01,conflictividad_nacional,-24.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-07-01,conflictividad_nacional,-24.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-06-01,conflictividad_nacional,-23.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-05-01,conflictividad_nacional,-21.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-04-01,conflictividad_nacional,-26.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)

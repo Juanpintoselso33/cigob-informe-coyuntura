@@ -164,8 +164,10 @@ def test_la_clave_vieja_no_sobrevive_en_ningun_lado():
         texto = ruta.read_text(encoding="utf-8")
         if CLAVE_VIEJA not in texto:
             continue
-        # `manual.py` documenta cómo se construiría el pluriempleo de verdad
-        if ruta.name == "manual.py":
+        # `manual.py` documenta cómo se construiría el pluriempleo de verdad, y
+        # `verificacion_remediacion.py` la nombra justamente para vigilar que no
+        # vuelva: las dos tienen que poder escribirla.
+        if ruta.name in ("manual.py", "verificacion_remediacion.py"):
             continue
         for linea in texto.splitlines():
             limpia = linea.strip()

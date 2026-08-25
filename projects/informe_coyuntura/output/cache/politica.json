@@ -1,22 +1,22 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-08-25T03:21:16.730135",
-  "score": 3.3,
+  "generated_at": "2026-08-25T18:39:13.051062",
+  "score": 2.9,
   "itcp": {
-    "valor": 67.0,
+    "valor": 70.9,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.21,
-        "puntaje": 46.5,
+        "puntaje": 52.2,
         "indicadores": {
           "ratio_dnu": {
             "peso": 0.2,
-            "puntaje_banda": 16.0,
-            "puntaje_aplicado": 16.0,
-            "valor": 1.92,
+            "puntaje_banda": 44.6,
+            "puntaje_aplicado": 44.6,
+            "valor": 1.48,
             "peso_efectivo": 0.042
           },
           "eficacia_legislativa": {
@@ -60,13 +60,13 @@
       "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
         "peso": 0.19,
-        "puntaje": 75.8,
+        "puntaje": 76.5,
         "indicadores": {
           "iaf_transferencias": {
             "peso": 0.4,
-            "puntaje_banda": 76.6,
-            "puntaje_aplicado": 76.6,
-            "valor": 0.8,
+            "puntaje_banda": 78.2,
+            "puntaje_aplicado": 78.2,
+            "valor": 1.6,
             "peso_efectivo": 0.076
           },
           "alineamiento_senadores_prov": {
@@ -104,13 +104,13 @@
       "conflicto_social": {
         "nombre": "Conflicto social",
         "peso": 0.1,
-        "puntaje": 71.7,
+        "puntaje": 71.5,
         "indicadores": {
           "conflictividad_nacional": {
             "peso": 0.6,
-            "puntaje_banda": 52.9,
-            "puntaje_aplicado": 52.9,
-            "valor": -24.1,
+            "puntaje_banda": 52.5,
+            "puntaje_aplicado": 52.5,
+            "valor": -24.0,
             "peso_efectivo": 0.06
           },
           "jornadas_individuales_no_trabajadas_12m": {
@@ -141,35 +141,28 @@
       "poder_judicial": {
         "nombre": "Poder judicial",
         "peso": 0.15,
-        "puntaje": 59.4,
+        "puntaje": 60.7,
         "indicadores": {
           "cobertura_judicial": {
             "peso": 0.4,
             "puntaje_banda": 51.6,
             "puntaje_aplicado": 51.6,
             "valor": 69.63,
-            "peso_efectivo": 0.06
-          },
-          "judicializacion": {
-            "peso": 0.2,
-            "puntaje_banda": 54.4,
-            "puntaje_aplicado": 54.4,
-            "valor": 1.57,
-            "peso_efectivo": 0.03
+            "peso_efectivo": 0.075
           },
           "velocidad_resolucion": {
             "peso": 0.2,
             "puntaje_banda": 94.6,
             "puntaje_aplicado": 94.6,
             "valor": 45.4,
-            "peso_efectivo": 0.03
+            "peso_efectivo": 0.0375
           },
           "paralisis_denuncias": {
             "peso": 0.2,
             "puntaje_banda": 45.0,
             "puntaje_aplicado": 45.0,
             "valor": 7.0,
-            "peso_efectivo": 0.03
+            "peso_efectivo": 0.0375
           }
         },
         "peso_efectivo": 0.15
@@ -177,21 +170,14 @@
       "sector_privado": {
         "nombre": "Sector privado",
         "peso": 0.13,
-        "puntaje": 54.2,
+        "puntaje": 72.8,
         "indicadores": {
           "brecha_obra_publica": {
             "peso": 0.5,
             "puntaje_banda": 72.8,
             "puntaje_aplicado": 72.8,
             "valor": -1.1,
-            "peso_efectivo": 0.065
-          },
-          "apoyo_empresario": {
-            "peso": 0.5,
-            "puntaje_banda": 35.7,
-            "puntaje_aplicado": 35.7,
-            "valor": -0.429,
-            "peso_efectivo": 0.065
+            "peso_efectivo": 0.13
           }
         },
         "peso_efectivo": 0.13
@@ -209,7 +195,7 @@
       "fuente": "Votómetro CIGOB",
       "fecha_dato": "2026-07-22",
       "desactualizado": false,
-      "obtenido_en": "2026-08-25T03:18:24",
+      "obtenido_en": "2026-08-25T18:34:37",
       "en_indice": true,
       "dimension": "imagen_voto",
       "puntaje_itcp": 73.6,
@@ -217,19 +203,172 @@
       "peso_efectivo": 0.07
     },
     "ratio_dnu": {
-      "valor": 1.92,
-      "dnu_count": 48,
+      "valor": 1.48,
+      "dnu_count": 37,
       "leyes_count": 25,
       "ventana_dias": 365,
-      "unidad": "DNUs por ley",
+      "unidad": "DNUs publicados por ley publicada",
       "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
       "fecha_dato": "2026-08-25",
       "desactualizado": false,
-      "obtenido_en": "2026-08-25T03:18:26",
+      "ventana_desde": "2025-08-25",
+      "ventana_hasta": "2026-08-25",
+      "inventario_dnu": [
+        {
+          "norma": "Decreto DNU 771 / 2026",
+          "fecha_pub": "2026-08-21"
+        },
+        {
+          "norma": "Decreto DNU 736 / 2026",
+          "fecha_pub": "2026-08-14"
+        },
+        {
+          "norma": "Decreto DNU 717 / 2026",
+          "fecha_pub": "2026-08-06"
+        },
+        {
+          "norma": "Decreto DNU 681 / 2026",
+          "fecha_pub": "2026-07-30"
+        },
+        {
+          "norma": "Decreto DNU 667 / 2026",
+          "fecha_pub": "2026-07-28"
+        },
+        {
+          "norma": "Decreto DNU 650 / 2026",
+          "fecha_pub": "2026-07-24"
+        },
+        {
+          "norma": "Decreto DNU 594 / 2026",
+          "fecha_pub": "2026-07-16"
+        },
+        {
+          "norma": "Decreto DNU 585 / 2026",
+          "fecha_pub": "2026-07-13"
+        },
+        {
+          "norma": "Decreto DNU 580 / 2026",
+          "fecha_pub": "2026-07-08"
+        },
+        {
+          "norma": "Decreto DNU 571 / 2026",
+          "fecha_pub": "2026-07-03"
+        },
+        {
+          "norma": "Decreto DNU 490 / 2026",
+          "fecha_pub": "2026-06-25"
+        },
+        {
+          "norma": "Decreto DNU 473 / 2026",
+          "fecha_pub": "2026-06-17"
+        },
+        {
+          "norma": "Decreto DNU 314 / 2026",
+          "fecha_pub": "2026-05-04"
+        },
+        {
+          "norma": "Decreto DNU 274 / 2026",
+          "fecha_pub": "2026-04-24"
+        },
+        {
+          "norma": "Decreto DNU 252 / 2026",
+          "fecha_pub": "2026-04-17"
+        },
+        {
+          "norma": "Decreto DNU 264 / 2026",
+          "fecha_pub": "2026-04-17"
+        },
+        {
+          "norma": "Decreto DNU 203 / 2026",
+          "fecha_pub": "2026-03-30"
+        },
+        {
+          "norma": "Decreto DNU 149 / 2026",
+          "fecha_pub": "2026-03-12"
+        },
+        {
+          "norma": "Decreto DNU 88 / 2026",
+          "fecha_pub": "2026-02-06"
+        },
+        {
+          "norma": "Decreto DNU 80 / 2026",
+          "fecha_pub": "2026-02-02"
+        },
+        {
+          "norma": "Decreto DNU 73 / 2026",
+          "fecha_pub": "2026-01-30"
+        },
+        {
+          "norma": "Decreto DNU 49 / 2026",
+          "fecha_pub": "2026-01-27"
+        },
+        {
+          "norma": "Decreto DNU 26 / 2026",
+          "fecha_pub": "2026-01-26"
+        },
+        {
+          "norma": "Decreto DNU 34 / 2026",
+          "fecha_pub": "2026-01-26"
+        },
+        {
+          "norma": "Decreto DNU 41 / 2026",
+          "fecha_pub": "2026-01-26"
+        },
+        {
+          "norma": "Decreto DNU 17 / 2026",
+          "fecha_pub": "2026-01-16"
+        },
+        {
+          "norma": "Decreto DNU 2 / 2026",
+          "fecha_pub": "2026-01-05"
+        },
+        {
+          "norma": "Decreto DNU 942 / 2025",
+          "fecha_pub": "2026-01-02"
+        },
+        {
+          "norma": "Decreto DNU 941 / 2025",
+          "fecha_pub": "2026-01-02"
+        },
+        {
+          "norma": "Decreto DNU 849 / 2025",
+          "fecha_pub": "2025-12-01"
+        },
+        {
+          "norma": "Decreto DNU 825 / 2025",
+          "fecha_pub": "2025-11-20"
+        },
+        {
+          "norma": "Decreto DNU 805 / 2025",
+          "fecha_pub": "2025-11-13"
+        },
+        {
+          "norma": "Decreto DNU 793 / 2025",
+          "fecha_pub": "2025-11-11"
+        },
+        {
+          "norma": "Decreto DNU 697 / 2025",
+          "fecha_pub": "2025-09-30"
+        },
+        {
+          "norma": "Decreto DNU 658 / 2025",
+          "fecha_pub": "2025-09-15"
+        },
+        {
+          "norma": "Decreto DNU 628 / 2025",
+          "fecha_pub": "2025-09-03"
+        },
+        {
+          "norma": "Decreto DNU 627 / 2025",
+          "fecha_pub": "2025-09-03"
+        }
+      ],
+      "detalle_txt": "37 DNU y 25 leyes publicados en el Boletín Oficial entre 2025-08-25 y 2026-08-25 → 1.48 DNU por ley",
+      "obtenido_en": "2026-08-25T18:34:39",
       "en_indice": true,
       "dimension": "poder_legislativo",
-      "puntaje_itcp": 16.0,
-      "puntaje_banda": 16.0,
+      "puntaje_itcp": 44.6,
+      "puntaje_banda": 44.6,
       "peso_efectivo": 0.042
     },
     "brecha_obra_publica": {
@@ -240,12 +379,12 @@
       "desactualizado": false,
       "variacion_12m": 4.9,
       "detalle_txt": "Brecha de -1,1 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
-      "obtenido_en": "2026-08-25T03:18:28",
+      "obtenido_en": "2026-08-25T18:34:39",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 72.8,
       "puntaje_banda": 72.8,
-      "peso_efectivo": 0.065
+      "peso_efectivo": 0.13
     },
     "apoyo_empresario": {
       "valor": -0.429,
@@ -259,27 +398,23 @@
       "criticas_ventana": 5,
       "pendientes_de_codificar": 14,
       "detalle_txt": "En los últimos doce meses AEA y UIA se pronunciaron 7 veces sobre medidas del Gobierno nacional: 2 de apoyo y 5 de crítica. Saldo −0,429 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 14 comunicados detectados sin codificar.",
-      "obtenido_en": "2026-08-25T03:18:28",
-      "en_indice": true,
-      "dimension": "sector_privado",
-      "puntaje_itcp": 35.7,
-      "puntaje_banda": 35.7,
-      "peso_efectivo": 0.065
+      "obtenido_en": "2026-08-25T18:34:39",
+      "en_indice": true
     },
     "conflictividad_nacional": {
-      "valor": -24.1,
-      "acum_12m": 1978,
+      "valor": -24.0,
+      "acum_12m": 1979,
       "eventos_2023": 2605,
       "unidad": "% vs 2023",
       "fuente": "ACLED — agregado semanal por provincia (acleddata.com)",
       "fecha_dato": "2026-07-01",
       "desactualizado": false,
-      "detalle_txt": "1978 eventos de protesta y disturbios en el país en 12m (hasta 2026-07) vs 2605 en todo 2023 (-24,1%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país",
-      "obtenido_en": "2026-08-25T03:18:42",
+      "detalle_txt": "1979 eventos de protesta y disturbios en el país en 12m (hasta 2026-07) vs 2605 en todo 2023 (-24,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país",
+      "obtenido_en": "2026-08-25T18:34:48",
       "en_indice": true,
       "dimension": "conflicto_social",
-      "puntaje_itcp": 52.9,
-      "puntaje_banda": 52.9,
+      "puntaje_itcp": 52.5,
+      "puntaje_banda": 52.5,
       "peso_efectivo": 0.06
     },
     "jornadas_individuales_no_trabajadas_12m": {
@@ -289,7 +424,7 @@
       "fecha_dato": "2026-05-01",
       "desactualizado": false,
       "detalle_txt": "4.760.195 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
-      "obtenido_en": "2026-08-25T03:18:45",
+      "obtenido_en": "2026-08-25T18:34:50",
       "en_indice": true,
       "dimension": "conflicto_social",
       "puntaje_itcp": 100.0,
@@ -305,25 +440,26 @@
       "fuente": "https://centrocepa.com.ar/documentos/informes/837-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial-2",
       "fecha_dato": "2026-08-23",
       "desactualizado": false,
-      "obtenido_en": "2026-08-25T03:18:49",
+      "obtenido_en": "2026-08-25T18:34:51",
       "en_indice": false
     },
     "iaf_transferencias": {
-      "valor": 0.8,
+      "valor": 1.6,
       "var_nominal_pct": 43.1,
       "total_ref_mm": 60.0,
       "total_ant_mm": 42.0,
       "periodo": "2025 vs 2024",
-      "ipc_aplicado_pct": 41.9,
+      "ipc_aplicado_pct": 40.8,
       "unidad": "% interanual real",
-      "fuente": "Sec. Hacienda — serie RON de recursos de origen nacional + IPC INDEC (deflactor)",
+      "fuente": "Sec. Hacienda — RON, planilla mensual consolidada + IPC INDEC (deflactado mes a mes)",
+      "detalle_txt": "2025: +43.1% nominal contra un deflactor de 40.8% ponderado por el flujo de cada mes → +1.6% real",
       "fecha_dato": "2025-12-31",
       "desactualizado": false,
-      "obtenido_en": "2026-08-25T03:18:52",
+      "obtenido_en": "2026-08-25T18:34:53",
       "en_indice": true,
       "dimension": "alianzas_territoriales",
-      "puntaje_itcp": 76.6,
-      "puntaje_banda": 76.6,
+      "puntaje_itcp": 78.2,
+      "puntaje_banda": 78.2,
       "peso_efectivo": 0.076
     },
     "eficacia_legislativa": {
@@ -337,7 +473,7 @@
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
       "fecha_dato": "2026-08-25",
       "desactualizado": false,
-      "obtenido_en": "2026-08-25T03:19:02",
+      "obtenido_en": "2026-08-25T18:34:56",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 50.8,
@@ -353,7 +489,7 @@
       "fecha_dato": "2026-08-25",
       "desactualizado": false,
       "detalle_txt": "1 de 10 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
-      "obtenido_en": "2026-08-25T03:19:05",
+      "obtenido_en": "2026-08-25T18:34:57",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 78.3,
@@ -370,7 +506,7 @@
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
       "fecha_dato": "2026-08-25",
       "desactualizado": false,
-      "obtenido_en": "2026-08-25T03:19:10",
+      "obtenido_en": "2026-08-25T18:34:58",
       "en_indice": false
     },
     "adhesion_reformas_provincial": {
@@ -380,7 +516,7 @@
       "fecha_dato": "2026-08-25",
       "n_provincias": 16,
       "desactualizado": false,
-      "obtenido_en": "2026-08-25T03:19:11",
+      "obtenido_en": "2026-08-25T18:34:59",
       "en_indice": true,
       "dimension": "alianzas_territoriales",
       "puntaje_itcp": 81.7,
@@ -398,7 +534,7 @@
       "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
       "fecha_dato": "2026-08-25",
       "desactualizado": false,
-      "obtenido_en": "2026-08-25T03:19:38",
+      "obtenido_en": "2026-08-25T18:35:26",
       "en_indice": false
     },
     "rotacion_gabinete": {
@@ -411,7 +547,7 @@
       "salidas_estructurales": 2,
       "ultima_salida": "Manuel Adorni — Jefe de Gabinete de Ministros (2026-06)",
       "detalle_txt": "7 salidas en 12 meses = 5 políticas · 2 por bancas electorales — Gerardo Werthein (2025-10), Guillermo Francos (2025-11), Lisandro Catalan (2025-11), Patricia Bullrich (2025-12), Luis Petri (2025-12), Mariano Cuneo Libarona (2026-03), Manuel Adorni (2026-06)",
-      "obtenido_en": "2026-08-25T03:19:44",
+      "obtenido_en": "2026-08-25T18:35:31",
       "en_indice": false
     },
     "protestas_caba": {
@@ -423,7 +559,7 @@
       "eventos_2023": 240,
       "var_vs_2023": 15.8,
       "detalle_txt": "278 eventos en 12m (hasta 2026-07) vs 240 en 2023 (+15,8%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
-      "obtenido_en": "2026-08-25T03:19:44",
+      "obtenido_en": "2026-08-25T18:35:31",
       "en_indice": false
     },
     "cohesion_bloque": {
@@ -438,7 +574,7 @@
           "valor": 100.0,
           "fecha_dato": "2026-06-24",
           "n_actas": 13,
-          "corrida_exitosa_en": "2026-08-23",
+          "corrida_exitosa_en": "2026-08-25",
           "desactualizado": false
         },
         "senado": {
@@ -449,7 +585,7 @@
           "desactualizado": false
         }
       },
-      "obtenido_en": "2026-08-25T03:20:23",
+      "obtenido_en": "2026-08-25T18:38:31",
       "en_indice": true,
       "dimension": "cohesion_interna",
       "puntaje_itcp": 96.7,
@@ -468,7 +604,7 @@
       "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
       "fecha_dato": "2026-08-25",
       "desactualizado": false,
-      "obtenido_en": "2026-08-25T03:20:29",
+      "obtenido_en": "2026-08-25T18:38:36",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 26.6,
@@ -485,7 +621,7 @@
       "fecha_dato": "2026-08-25",
       "desactualizado": false,
       "detalle_txt": "3 normas propias desafiadas en el recinto en los últimos 12 meses (2 cayeron, 1 siguen en pie)",
-      "obtenido_en": "2026-08-25T03:20:29",
+      "obtenido_en": "2026-08-25T18:38:36",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 90.0,
@@ -499,7 +635,7 @@
       "fecha_dato": "2026-08-01",
       "desactualizado": false,
       "detalle_txt": "25 leyes sancionadas en los últimos 12 meses. El promedio histórico del dataset (2008-2025, cuatro presidencias) es de 74 leyes por año.",
-      "obtenido_en": "2026-08-25T03:20:33",
+      "obtenido_en": "2026-08-25T18:38:37",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 30.0,
@@ -527,12 +663,12 @@
       "fecha_dato": "2025-12-31",
       "desactualizado": false,
       "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
-      "obtenido_en": "2026-08-25T03:20:34",
+      "obtenido_en": "2026-08-25T18:38:37",
       "en_indice": true,
       "dimension": "poder_judicial",
       "puntaje_itcp": 94.6,
       "puntaje_banda": 94.6,
-      "peso_efectivo": 0.03
+      "peso_efectivo": 0.0375
     },
     "paralisis_denuncias": {
       "valor": 7,
@@ -541,12 +677,12 @@
       "fecha_dato": "2026-08-01",
       "desactualizado": false,
       "detalle_txt": "7 sesiones ordinarias de las comisiones de Acusación y Disciplina en los últimos 12 meses (rango de la serie: 2 a 7, promedio 5.0).",
-      "obtenido_en": "2026-08-25T03:20:38",
+      "obtenido_en": "2026-08-25T18:38:39",
       "en_indice": true,
       "dimension": "poder_judicial",
       "puntaje_itcp": 45.0,
       "puntaje_banda": 45.0,
-      "peso_efectivo": 0.03
+      "peso_efectivo": 0.0375
     },
     "cobertura_judicial": {
       "valor": 69.63,
@@ -554,18 +690,23 @@
       "fuente": "Ministerio de Justicia — padrón de magistrados, designaciones y renuncias (datos.jus.gob.ar)",
       "fecha_dato": "2026-08-01",
       "desactualizado": false,
+      "cargos_con_juez": 665,
       "cargos_totales": 955,
-      "cargos_titular": 604,
-      "cargos_subrogante": 282,
-      "cargos_sin_cubrir": 69,
+      "fecha_corte": "2026-08-25",
       "fecha_padron": "2026-06-05",
-      "detalle_txt": "604 de 955 cargos de juez habilitados tienen titular designado · 282 funcionan con subrogante y 69 están sin cubrir (padrón al 2026-06-05; la serie incorpora designaciones y renuncias posteriores)",
-      "obtenido_en": "2026-08-25T03:20:49",
+      "padron_con_juez": 610,
+      "padron_titular": 604,
+      "padron_subrogante": 282,
+      "padron_sin_cubrir": 69,
+      "designaciones_desde_padron": 60,
+      "renuncias_desde_padron": 5,
+      "detalle_txt": "665 de 955 cargos de juez habilitados tienen juez designado al 2026-08-25 · sale del padrón al 2026-06-05 —610 de 955 no vacantes— más 60 designaciones y menos 5 renuncias posteriores · en ese padrón, los 955 cargos se repartían en 604 con titular en funciones, 282 con subrogante y 69 sin cubrir",
+      "obtenido_en": "2026-08-25T18:38:40",
       "en_indice": true,
       "dimension": "poder_judicial",
       "puntaje_itcp": 51.6,
       "puntaje_banda": 51.6,
-      "peso_efectivo": 0.06
+      "peso_efectivo": 0.075
     },
     "alineamiento_senadores_prov": {
       "valor": 57.0,

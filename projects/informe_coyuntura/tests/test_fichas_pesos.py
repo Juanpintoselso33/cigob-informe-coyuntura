@@ -44,9 +44,16 @@ def _pesos_reales() -> dict:
             if not idx:
                 continue
             for dv in (idx.get("dimensiones") or {}).values():
+                dim_ef = dv.get("peso_efectivo") or 0
                 for ikey, iv in (dv.get("indicadores") or {}).items():
-                    out[ikey] = {"interno": (iv.get("peso") or 0) * 100,
-                                 "efectivo": (iv.get("peso_efectivo") or 0) * 100,
+                    ef = iv.get("peso_efectivo") or 0
+                    # El peso INTERNO vigente se deriva del efectivo, no se lee
+                    # de `peso`: ese campo trae el peso de DISEÑO, y cuando un
+                    # componente de la dimensión está suspendido (ADR-0245) los
+                    # que quedan pesan más de lo que la tabla dice. `icc_utdt`
+                    # figura con 81,82% y hoy es el único de su dimensión.
+                    out[ikey] = {"interno": (ef / dim_ef * 100) if dim_ef else 0,
+                                 "efectivo": ef * 100,
                                  "dimension": (dv.get("peso") or 0) * 100}
     return out
 

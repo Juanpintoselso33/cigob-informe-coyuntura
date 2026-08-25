@@ -14,6 +14,16 @@
       "fecha": "2026-05",
       "km": 1871.82,
       "fuente": "Resolución 706/2026 MEC (BO ~15/05/2026) — Etapa II-A: Tramo Sur-Atlántico-Acceso Sur (Concret Nor-Marcalba-Pose-Coarco) y Tramo Pampa (Construcciones Electromecánicas del Oeste)"
+    },
+    "III": {
+      "fecha": "2026-08",
+      "km": 3920.21,
+      "fuente": "Resolución 1379 / 2026, BO 2026-08-24 — 504-0001-LPU26 (detectado por el Boletín; CONTRAT.AR informaba «Disponible Para Adjudicar»)"
+    },
+    "II-B": {
+      "fecha": "2026-07",
+      "km": 2557.11,
+      "fuente": "Resolución 1149 / 2026, BO 2026-07-28 — 504-0015-LPU25 (detectado por el Boletín; CONTRAT.AR informaba «Disponible Para Adjudicar»)"
     }
   },
   "_corregido_2026-07-19": "Se eliminó la etapa II-B (2557,11 km, fecha 2026-07). La detección automática la había dado por adjudicada porque el chequeo de estado usaba 'ADJUDICADO' in estado, y CONTRAT.AR informa 'Preadjudicado' — que contiene la palabra. La etapa está PREADJUDICADA, no adjudicada. Volverá a entrar sola cuando el portal la muestre adjudicada de verdad (ADR-0087)."

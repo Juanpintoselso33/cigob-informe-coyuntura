@@ -64,7 +64,10 @@ def test_card_y_serie_son_el_mismo_numero():
     assert serie, "sin serie publicada"
     assert abs(serie[-1]["valor"] - IND["valor"]) < 0.01, (
         f"card {IND['valor']} ≠ serie {serie[-1]['valor']}")
-    assert IND.get("unidad") == "% del empleo registrado"
+    # ADR-0250: la unidad declara el universo restringido. «% del empleo
+    # registrado» a secas prometía SIPA entero y el cociente deja el monotributo
+    # social afuera de los dos lados.
+    assert IND.get("unidad") == "% del empleo registrado SIPA, sin monotributo social"
 
 
 def test_la_serie_llega_al_4t_2023_y_no_tiene_saltos():

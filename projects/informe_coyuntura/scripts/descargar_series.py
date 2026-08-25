@@ -2996,8 +2996,10 @@ def fetch_concesiones_serie() -> list:
     administrativos puntuales): cada etapa suma sus km desde su mes de
     adjudicación. El store concesiones_fechas.json trae las fechas oficiales
     verificadas (Etapa I: RESOL-2025-80-ST ene-2026 · II-A: Res. 706/2026
-    may-2026) y se auto-actualiza cuando CONTRAT.AR muestra una etapa nueva
-    en ADJUDICADO (mes corriente) — mismo patrón que rigi_fechas.
+    may-2026) y se auto-actualiza con la MISMA regla que la card (ADR-0244):
+    una etapa entra cuando CONTRAT.AR la muestra ADJUDICADO o cuando hay una
+    resolución publicada que la adjudique. En el segundo caso el escalón se
+    fecha con la publicación en el Boletín, no con el mes en que se detectó.
     Antes de la primera adjudicación el avance es 0. [[YYYY-MM-01, %]]."""
     store = json.loads(CONCESIONES_FECHAS_STORE.read_text(encoding="utf-8-sig"))
     etapas = store["etapas"]
@@ -3007,12 +3009,37 @@ def fetch_concesiones_serie() -> list:
         hoy_ym = date.today().strftime("%Y-%m")
         for proceso, nombre, estado in gestion._contratar_procesos_rfc():
             etapa = gestion._etapa_de_proceso(nombre)
-            if etapa and gestion._esta_adjudicado(estado) and etapa in km:
-                if etapa not in etapas:
+            if not etapa or etapa not in km:
+                continue
+            # MISMA regla que la card (ADR-0244): adjudica el acto publicado, no
+            # el estado del portal. La detección anterior miraba sólo
+            # CONTRAT.AR y por eso la serie se quedó en 28,7% mientras la card
+            # daba 100% — el gate G3 lo marcó.
+            #
+            # Y cuando el hito viene del Boletín, la fecha es la de la
+            # publicación y no "el mes en que lo detectamos": para una función
+            # escalonada eso no es un detalle, es el escalón puesto donde va.
+            # El propio store ya lo decía de la Etapa I: «manda el BO».
+            resolucion = None
+            if not gestion._esta_adjudicado(estado):
+                try:
+                    resolucion = gestion._adjudicacion_publicada(proceso)
+                except Exception as e:                      # noqa: BLE001
+                    print(f"  [WARN] concesiones serie {proceso}: InfoLeg no respondió ({e})")
+                if resolucion is None:
+                    continue
+            if etapa not in etapas:
+                if resolucion:
+                    etapas[etapa] = {
+                        "fecha": resolucion["fecha_pub"][:7], "km": km[etapa],
+                        "fuente": (f"{resolucion['norma']}, BO {resolucion['fecha_pub']} "
+                                   f"— {proceso} (detectado por el Boletín; CONTRAT.AR "
+                                   f"informaba «{estado}»)")}
+                else:
                     etapas[etapa] = {"fecha": hoy_ym, "km": km[etapa],
                                      "fuente": f"CONTRAT.AR {proceso} (detectado {hoy_ym})"}
-                else:
-                    etapas[etapa]["km"] = km[etapa]
+            else:
+                etapas[etapa]["km"] = km[etapa]
         CONCESIONES_FECHAS_STORE.write_text(
             json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
     except Exception as e:

@@ -499,20 +499,43 @@ def test_publicar_expone_crudo_recorte_y_exencion_en_el_snapshot():
     indicadores = cinturon["indicadores"]
     series = copy.deepcopy(SERIES)
 
+    # El caso se CONSTRUYE en vez de esperarlo del dato del día. El ejemplo era
+    # `sentimiento_digital`, el único que solía pasar el techo, y salió del
+    # índice (ADR-0248): sin nadie recortado, el test pasaba a no mirar nada.
+    # Se empuja un componente NO exento por encima del techo — así el recorte
+    # existe siempre y sigue probándose el mecanismo, no la coyuntura.
+    #
+    # `icc_utdt` y no el primero que aparezca: varios componentes se rebasan
+    # INVERTIDOS (más subocupación o más trabajo independiente = peor), así que
+    # subirles la serie los hunde en vez de pasarlos por el techo. El ICC va
+    # derecho: más confianza, índice más alto.
+    victima = "icc_utdt"
+    assert victima in series and victima not in itvc.WINSOR_EXENTOS
+    series[victima][-1]["valor"] = series[victima][0]["valor"] * 4
+
     publicar._scoring_vida_itvc(cinturon, series)
 
     # Sin números fijos: `SNAPSHOT` es el snapshot PUBLICADO, así que clavar
     # 173,6 acá era clavar el índice de Google Trends de un día — se movía en
     # la corrida siguiente y rompía el nocturno sin que nada estuviera mal. Lo
     # que el test tiene que fijar es la relación, que no depende de la fecha.
-    sentimiento = indicadores["sentimiento_digital"]
-    assert sentimiento["indice_itvc"] == itvc.WINSOR_TOPE
-    assert sentimiento["indice_itvc_crudo"] > itvc.WINSOR_TOPE, (
-        "si el crudo no supera el techo no hay recorte que exponer y este test "
-        "dejó de mirar lo que dice mirar")
-    assert sentimiento["recorte_itvc"] == round(
-        sentimiento["indice_itvc_crudo"] - itvc.WINSOR_TOPE, 1)
-    assert "winsor_exento" not in sentimiento
+    #
+    # Tampoco se clava CUÁL componente se recorta: el ejemplo era
+    # `sentimiento_digital` y salió del índice (ADR-0248). Se busca el que
+    # efectivamente esté recortado, así el test sobrevive a que cambie la
+    # composición y no a costa de dejar de mirar el recorte.
+    recortados = [k for k, v in indicadores.items()
+                  if isinstance(v, dict) and v.get("recorte_itvc")]
+    assert recortados, (
+        "ningún componente quedó por encima del techo de winsorización, así que "
+        "no hay recorte que exponer y este test dejó de mirar lo que dice mirar")
+    for clave in recortados:
+        recortado = indicadores[clave]
+        assert recortado["indice_itvc"] == itvc.WINSOR_TOPE, clave
+        assert recortado["indice_itvc_crudo"] > itvc.WINSOR_TOPE, clave
+        assert recortado["recorte_itvc"] == round(
+            recortado["indice_itvc_crudo"] - itvc.WINSOR_TOPE, 1), clave
+        assert "winsor_exento" not in recortado, clave
     # La exención sólo significa algo mientras el componente esté por encima
     # del techo: si cae debajo, el `assert` de abajo avisa que este caso dejó
     # de probar la exención en vez de pasar por casualidad.

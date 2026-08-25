@@ -2,8 +2,8 @@
   "_meta": {
     "descripcion": "Eventos de protesta (Protests+Riots) por mes, del agregado semanal de ACLED (acleddata.com): 'mensual' = CABA (card de contexto de gestión), 'mensual_nacional' = Argentina entera (insumo de conflictividad_nacional del ITCP, ADR-0052). Atribución: datos de ACLED.",
     "actualizado": "2026-08-25",
-    "hasta_semana": "2026-08-08",
-    "fuente_xlsx": "https://acleddata.com/system/files/2026-08/Latin-America-the-Caribbean_aggregated_data_up_to_week_of-2026-08-08.xlsx"
+    "hasta_semana": "2026-08-15",
+    "fuente_xlsx": "https://acleddata.com/system/files/2026-08/Latin-America-the-Caribbean_aggregated_data_up_to_week_of-2026-08-15.xlsx"
   },
   "mensual": {
     "2017-12": 5,
@@ -110,7 +110,7 @@
     "2026-05": 34,
     "2026-06": 25,
     "2026-07": 7,
-    "2026-08": 10
+    "2026-08": 19
   },
   "mensual_nacional": {
     "2017-12": 21,
@@ -216,7 +216,7 @@
     "2026-04": 251,
     "2026-05": 279,
     "2026-06": 121,
-    "2026-07": 89,
-    "2026-08": 82
+    "2026-07": 90,
+    "2026-08": 114
   }
 }

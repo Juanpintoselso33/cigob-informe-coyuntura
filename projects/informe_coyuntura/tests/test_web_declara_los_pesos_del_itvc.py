@@ -29,6 +29,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import itvc  # noqa: E402
+import parametrica  # noqa: E402
 from publicar import VIDA_OCULTOS  # noqa: E402
 
 DESCRIPCIONES = (ROOT / "web" / "src" / "lib" / "descripciones.ts").read_text(encoding="utf-8")
@@ -268,13 +269,16 @@ def test_el_snapshot_que_consumen_las_fichas_publica_la_composicion_vigente(
         (ROOT / "web/src/data/informe.json").read_text(encoding="utf-8"))
     publicadas = snapshot["cinturones"][cinturon][indice]["dimensiones"]
     mod = importlib.import_module(modulo)
-    motor = next(getattr(mod, nombre)
+    tabla = next(getattr(mod, nombre)
                  for nombre in dir(mod)
                  if nombre.startswith("DIMENSIONES"))
+    # Contra lo que HOY puntúa, no contra la tabla de diseño: un suspendido
+    # conserva su peso ahí (ADR-0245) y el snapshot —correctamente— no lo trae.
+    motor = parametrica.indicadores_vigentes(
+        tabla, getattr(mod, "INDICADORES_SUSPENDIDOS", {}))
     assert set(publicadas) == set(motor)
-    for dimension, definicion in motor.items():
-        assert set(publicadas[dimension]["indicadores"]) == set(
-            definicion["indicadores"])
+    for dimension, indicadores in motor.items():
+        assert set(publicadas[dimension]["indicadores"]) == set(indicadores)
 
 
 def test_la_leyenda_de_agregacion_declara_los_pesos_de_dimension_vigentes():
