@@ -66,5 +66,5 @@ def test_las_tres_definiciones_son_la_misma_funcion():
 ])
 def test_la_alerta_cuenta_con_el_mismo_criterio(scores, esperada):
     datos = {k: {"score": v} for k, v in scores.items()}
-    _, alerta = generar_informe.detectar_barbarismo(datos)
+    _, _, alerta = generar_informe.detectar_barbarismo(datos)
     assert alerta is esperada

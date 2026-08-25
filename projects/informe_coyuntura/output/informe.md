@@ -1,15 +1,16 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-25 03:40:53"
+generado: "2026-08-25 15:16:31"
 score_global: 3.9
 barbarismo_activo: "político"
+cinturon_dominante: "vida_cotidiana"
 alerta_multicinturon: false
 schema_version: "1.2.0"
 ---
 
 # Informe de Coyuntura — 2026-08
 
-**Score global:** 3.9/10  |  **Riesgo dominante:** político
+**Score global:** 3.9/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.1/10)
 
 ## Cinturones
 
@@ -103,4 +104,4 @@ schema_version: "1.2.0"
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-08-25 03:40:53 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-25 15:16:31 — schema 1.2.0*

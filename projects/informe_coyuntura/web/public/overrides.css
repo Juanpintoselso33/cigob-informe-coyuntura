@@ -1468,6 +1468,12 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   padding: 1px 6px; border-radius: 999px;
   background: var(--naranja-soft); color: #7C2D12; border: 1px solid #FED7AA;
 }
+/* El dominante NO es lo mismo que el tensionado —puede haber dominante sin
+   ningún cinturón tensionado— así que se distingue del tag naranja en vez de
+   repetir su color (ADR-0237). */
+.cg-matriz-tag--dom {
+  background: var(--teal-soft); color: var(--azul-profundo); border-color: var(--azul-medio);
+}
 /* .cg-matriz pasó de <div> a <ul>: sin esto hereda las viñetas y el padding
    de lista del navegador. */
 .cg-matriz { list-style: none; padding: 0; }

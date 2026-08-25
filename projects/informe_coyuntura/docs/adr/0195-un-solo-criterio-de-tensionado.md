@@ -6,7 +6,7 @@ fecha: 2026-08-12
 cinturon: 'transversal'
 parametros: ['UMBRALES["EN_TENSION_MAX"]']
 archivos: ['config.py', 'scripts/generar_informe.py', 'scripts/publicar.py', 'tests/test_estado_un_solo_criterio.py']
-relacionado: ['0082', '0194']
+relacionado: ['0082', '0194', '0237']
 ambito: 'Estado de los cinturones · alerta multicinturón · snapshot publicado'
 origen: 'Revisión adversarial del rediseño visual (ADR-0194): al intentar mostrar en la web si un cinturón contaba para la alerta, el dato no cerraba'
 ---

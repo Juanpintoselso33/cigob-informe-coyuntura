@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-09
 cinturon: 'transversal'
 archivos: ['scripts/publicar.py', 'scripts/panel_validacion.py', 'tests/test_siglas_publicas.py']
-relacionado: ['0012', '0013', '0018', '0189']
+relacionado: ['0012', '0013', '0018', '0189', '0237']
 superado_parcialmente_por: ['0212']
 ambito: 'Nombres y siglas de los cuatro índices paramétricos'
 origen: 'Editor, 2026-08-09: "quedan pendiente renombrar los índices, quedaron con nombres poco indicativos de lo que son, además muy parecidos a los de la Di Tella."'

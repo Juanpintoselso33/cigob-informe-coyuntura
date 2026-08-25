@@ -1,5 +1,5 @@
 ---
-import { informe, cap, mesLegible, CINTURONES, verdictDeCinturon, peorDimension, num } from "../lib/datos.ts";
+import { informe, cap, mesLegible, CINTURONES, verdictDeCinturon, peorDimension, cinturonDominante, num } from "../lib/datos.ts";
 
 // La lectura del mes tiene DOS caminos, y el orden importa (ADR-0211).
 //
@@ -64,6 +64,9 @@ const fraseFoco = foco
 // esto se resuelve en build: no hay servidor que pueda ir a buscarlo después.
 // La ruta se compara por sufijo `/AAAA-MM.md` — `informe.period` ya viene en
 // ese formato exacto desde el snapshot.
+// El barbarismo no nombra a su cinturón: dos comparten "político" (ADR-0237).
+const dominante = cinturonDominante(informe);
+
 const editoriales = import.meta.glob<{ Content: any }>("../contenido/lectura-del-mes/*.md", { eager: true });
 const Editorial = Object.entries(editoriales)
   .find(([ruta]) => ruta.endsWith(`/${informe.period}.md`))?.[1]?.Content;
@@ -83,8 +86,9 @@ const Editorial = Object.entries(editoriales)
     <Fragment>
       <p class="cg-bluf-text">
         {fraseEstados} {fraseFoco} El riesgo dominante del período es el barbarismo
-        {informe.barbarismo_activo}: el desequilibrio hacia el que más se inclina hoy el
-        tablero si las tensiones no se procesan.
+        {informe.barbarismo_activo}{dominante && `, que hoy sale de ${dominante.nombre.toLowerCase()}`}:
+        el desequilibrio hacia el que más se inclina hoy el tablero si las
+        tensiones no se procesan.
       </p>
       <p class="cg-bluf-nota">Síntesis generada automáticamente a partir del tablero de indicadores. La lectura editorial del equipo acompaña cada edición mensual.</p>
     </Fragment>

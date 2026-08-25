@@ -11,7 +11,8 @@
 // La barra va de BANDA bajo el lead, no en una segunda columna: es ancha y
 // baja, y metida en una columna propia quedaba apretada contra el título
 // (ADR-0204). La aguja de arco que estaba antes sí pedía columna.
-import { informe, cap, mesLegible, indicadoresRezagados } from "../lib/datos.ts";
+import { informe, cap, mesLegible, indicadoresRezagados, num,
+         cinturonDominante, cinturonesRojos } from "../lib/datos.ts";
 import NivelTension from "./NivelTension.astro";
 
 const f = informe.generated_at;
@@ -20,6 +21,31 @@ const datosAl = `${f.slice(8, 10)}/${f.slice(5, 7)}/${f.slice(0, 4)}`;
 // fecha del ARMADO del snapshot, no de todos los datos — cada fuente tiene
 // su propio rezago (visible por indicador) y los desactualizados se cuentan.
 const rezagados = indicadoresRezagados(informe);
+
+// El pie de la barra NOMBRA al cinturón dominante, no sólo al barbarismo
+// (ADR-0237). "Riesgo dominante: Político" mandaba al lector a la card
+// Política —3,3 y verde— cuando el que lo produce es Impacto social en 6,1:
+// `politica` y `vida_cotidiana` comparten barbarismo. El veredicto era
+// correcto y parecía contradecir a su propia tabla.
+const dominante = cinturonDominante(informe);
+const pieRiesgo = `Riesgo dominante: ${cap(informe.barbarismo_activo)}`
+  + (dominante ? ` — ${dominante.nombre} (${num(dominante.score)}/10)` : "");
+
+// La píldora decía "Estable" mientras un cinturón estaba en tensión alta.
+// No mentía —significa "no hay alerta multicinturón"— pero pegada a la barra
+// se lee como veredicto del país. Ahora dice lo que cuenta: cuántos hay
+// tensionados, que es el insumo de la regla matusiana (ADR-0237).
+const rojos = cinturonesRojos(informe);
+const estadoSistemico = informe.alerta_multicinturon
+  ? "Alerta sistémica"
+  : rojos === 0
+    ? "Sin cinturones tensionados"
+    : `${rojos} cinturón tensionado`;
+// `is-draft` (ámbar) ya existía en dashboard.css sin usarse. El verde con
+// pulso quedaba para el caso de un cinturón tensionado, que no es el mismo
+// estado que ninguno.
+const pildoraClase = informe.alerta_multicinturon
+  ? "is-err" : rojos === 0 ? "is-signed" : "is-draft";
 ---
 <header class="cg-hero" id="top">
   <div class="cg-hero-inner cg-hero-inner--nivel">
@@ -30,11 +56,11 @@ const rezagados = indicadoresRezagados(informe);
         Monitor de evaluación de Proyectos de Gobierno basado en la metodología CIGOB-MATUS.
       </p>
       <p class="cg-hero-meta">
-        <span class:list={["cg-status-pill", informe.alerta_multicinturon ? "is-err" : "is-signed"]}>
+        <span class:list={["cg-status-pill", pildoraClase]}>
           <span class="cg-status-dot"></span>
-          <span class="cg-status-text">{informe.alerta_multicinturon ? "Alerta sistémica" : "Estable"}</span>
+          <span class="cg-status-text">{estadoSistemico}</span>
         </span>
-        <span class="cg-hero-since">Actualizado el {datosAl}{rezagados > 0 ? ` · ${rezagados} indicadores con rezago declarado` : ""}</span>
+        <span class="cg-hero-since">Actualizado el {datosAl}{rezagados > 0 ? ` · ${rezagados} indicador${rezagados === 1 ? "" : "es"} con rezago declarado` : ""}</span>
       </p>
     </div>
     <div class="cg-hero-nivel">
@@ -42,7 +68,7 @@ const rezagados = indicadoresRezagados(informe);
         tension={informe.score_global}
         titulo="Tensión general"
         tamano="grande"
-        pie={`Riesgo dominante: ${cap(informe.barbarismo_activo)}`}
+        pie={pieRiesgo}
       />
     </div>
   </div>

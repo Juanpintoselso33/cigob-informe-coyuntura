@@ -319,3 +319,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0233](0233-la-dimension-tambien-tiene-historia.md) | La dimensión también tiene historia |  | vigente |
 | [0234](0234-el-snapshot-declara-como-se-obtuvo-cada-dato.md) | El snapshot declara cómo se obtuvo cada dato |  | vigente |
 | [0236](0236-la-marca-se-declara-una-vez-y-el-tablero-la-consume.md) | La marca se declara una vez y el tablero la consume |  | vigente |
+| [0237](0237-el-riesgo-dominante-nombra-su-cinturon.md) | El riesgo dominante nombra su cinturón |  | vigente |

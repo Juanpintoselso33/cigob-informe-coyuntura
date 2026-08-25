@@ -11,8 +11,13 @@
 // ago-2026): antes cada cinturón era un punto sin etiqueta ni nombre
 // accesible, y el conteo de abajo decía "1 tensionado" sin decir cuál. Ahora
 // cada fila lleva su lectura en texto y el que dispara la regla queda marcado.
-import { informe, CINTURONES, colorPorTension, LECTURA_SEMAFORO, verdictDeCinturon, cinturonesRojos, cap } from "../lib/datos.ts";
+//
+// El título nombra al cinturón dominante además del barbarismo (ADR-0237):
+// dos cinturones comparten "político", así que la palabra sola no dice de
+// dónde sale el veredicto. Acá la fila también queda marcada.
+import { informe, CINTURONES, colorPorTension, LECTURA_SEMAFORO, verdictDeCinturon, cinturonesRojos, cinturonDominante, cap, num } from "../lib/datos.ts";
 const tensionados = cinturonesRojos(informe);
+const dominante = cinturonDominante(informe);
 const filas = CINTURONES.map(c => {
   const cint = informe.cinturones[c.key];
   const color = colorPorTension(cint.score);
@@ -22,19 +27,21 @@ const filas = CINTURONES.map(c => {
     color,
     lectura: color ? LECTURA_SEMAFORO[color] : "Escala no disponible",
     tensionado: verdictDeCinturon(cint.estado) === "rojo",
+    dominante: c.key === dominante?.key,
   };
 });
 const nombresTensionados = filas.filter(f => f.tensionado).map(f => f.nombre);
 ---
 <div class="cg-panel" id="cg-tension">
   <p class="cg-eyebrow">Tensión sistémica</p>
-  <h3>Riesgo dominante: {cap(informe.barbarismo_activo)}</h3>
+  <h3>Riesgo dominante: {cap(informe.barbarismo_activo)}{dominante && ` — ${dominante.nombre} (${num(dominante.score)}/10)`}</h3>
   <ul class="cg-matriz" role="list">
     {filas.map(f => (
       <li class:list={["cg-matriz-item", { "is-tensionado": f.tensionado }]}>
         <span class:list={["cg-dot", f.color ? `sem-${f.color}` : null]} aria-hidden="true"></span>
         <span>{f.nombre} · {f.riesgo}</span>
         <span class="cg-matriz-lectura">{f.lectura}</span>
+        {f.dominante && <span class="cg-matriz-tag cg-matriz-tag--dom">Dominante</span>}
         {f.tensionado && <span class="cg-matriz-tag">Tensionado</span>}
       </li>
     ))}

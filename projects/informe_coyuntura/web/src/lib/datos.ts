@@ -151,6 +151,10 @@ export interface Informe {
   score_global: number;
   cinturones: Record<"macro" | "politica" | "vida_cotidiana" | "gestion", Cinturon>;
   barbarismo_activo: string;
+  // Clave del cinturón que produjo ese barbarismo (ADR-0237). Opcional: lo
+  // agrega `publicar.recomputar_barbarismo()` desde ago-2026, así que un
+  // snapshot anterior no lo trae y `cinturonDominante()` lo deriva.
+  cinturon_dominante?: string | null;
   alerta_multicinturon: boolean;
   flags: string[];
   // Cortes de parametrica.CORTES_SEMAFORO (ADR-0181), expuestos para que la
@@ -627,6 +631,34 @@ export function presentacion(key: string, ind: Indicador): Presentacion {
 // Conteo de cinturones "rojos" (para hero + tensión)
 export function cinturonesRojos(inf: Informe): number {
   return Object.values(inf.cinturones).filter(c => verdictDeCinturon(c.estado) === "rojo").length;
+}
+
+// Qué cinturón produjo el riesgo dominante, con su nombre público y su score.
+//
+// El nombre del barbarismo NO alcanza para encontrarlo: `politica` y
+// `vida_cotidiana` comparten "político" (BARBARISMO_MAP en config.py). En
+// agosto de 2026 la portada decía "Riesgo dominante: Político" con Impacto
+// social en 6,1 y Política en 3,3 y verde — el lector buscaba la card
+// Política y el veredicto parecía contradecir a su propia tabla (ADR-0237).
+//
+// La fuente es el campo publicado. El fallback existe sólo para snapshots
+// anteriores a ago-2026 (el archivo), y es exacto, no aproximado: el
+// dominante es el de mayor score, y entre los que comparten su barbarismo el
+// de mayor score ES el de mayor score de todos.
+export interface Dominante { key: string; nombre: string; slug: string; score: number; }
+
+export function cinturonDominante(inf: Informe): Dominante | null {
+  if (!inf.barbarismo_activo) return null;
+  const meta = (key: string) => CINTURONES.find(c => c.key === key);
+  const arma = (key: string): Dominante | null => {
+    const m = meta(key), c = (inf.cinturones as Record<string, Cinturon>)[key];
+    return m && c ? { key, nombre: m.nombre, slug: m.slug, score: c.score } : null;
+  };
+  if (inf.cinturon_dominante) return arma(inf.cinturon_dominante);
+  const candidatos = Object.entries(inf.cinturones)
+    .filter(([, c]) => c.barbarismo_riesgo === inf.barbarismo_activo);
+  if (!candidatos.length) return null;
+  return arma(candidatos.reduce((a, b) => (b[1].score > a[1].score ? b : a))[0]);
 }
 
 // Indicadores que representan un NIVEL en escala 0–100 (porcentaje de algo o

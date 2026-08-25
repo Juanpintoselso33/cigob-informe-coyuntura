@@ -494,6 +494,14 @@ def _reconciliar_intermedio(informe):
     if intermedio.get("score_global") != informe["score_global"]:
         cambios.append(f"global {intermedio.get('score_global')}→{informe['score_global']}")
     intermedio["score_global"] = informe["score_global"]
+    # El veredicto de portada viaja con los scores: si acá se copiara el score
+    # y no el barbarismo que sale de él, el intermedio quedaría diciendo un
+    # riesgo dominante que sus propios números ya no sostienen — el ADR-0208
+    # otra vez, en el artefacto de al lado (ADR-0237).
+    for campo in ("barbarismo_activo", "cinturon_dominante", "alerta_multicinturon"):
+        if intermedio.get(campo) != informe.get(campo):
+            cambios.append(f"{campo} {intermedio.get(campo)}→{informe.get(campo)}")
+        intermedio[campo] = informe.get(campo)
     path.write_text(json.dumps(intermedio, ensure_ascii=False, indent=2, default=str),
                     encoding="utf-8")
     # El .md sale del MISMO dict, así que se regenera con el escritor de
@@ -503,6 +511,36 @@ def _reconciliar_intermedio(informe):
     _gi.escribir_md(intermedio)
     if cambios:
         print(f"[OK] intermedio reconciliado: {' · '.join(cambios)}")
+
+
+def recomputar_barbarismo(informe):
+    """Re-deriva el veredicto de portada DESPUÉS de que los scores son finales.
+
+    `detectar_barbarismo()` corre en `generar_informe.py`, y hasta acá el
+    snapshot lo heredaba tal cual — pero `recomputar_vida_y_global` puede
+    haber movido el score de vida cotidiana entre un script y el otro. Esa es
+    exactamente la forma del ADR-0208: un veredicto editorial calculado sobre
+    scores que después cambiaron. Aquella vez se arregló haciendo que el
+    intermedio naciera bien; esto es el cinturón de seguridad del otro lado.
+    Hoy es no-op —si imprime algo, algo se movió y hay que mirarlo.
+
+    Publica además `cinturon_dominante`: qué cinturón produjo el barbarismo.
+    Ver ADR-0237.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import generar_informe as _gi
+    barbarismo, dominante, alerta = _gi.detectar_barbarismo(informe["cinturones"])
+    cambios = []
+    if informe.get("barbarismo_activo") != barbarismo:
+        cambios.append(f"barbarismo {informe.get('barbarismo_activo')}→{barbarismo}")
+    if informe.get("alerta_multicinturon") != alerta:
+        cambios.append(f"alerta {informe.get('alerta_multicinturon')}→{alerta}")
+    informe["barbarismo_activo"] = barbarismo
+    informe["cinturon_dominante"] = dominante
+    informe["alerta_multicinturon"] = alerta
+    if cambios:
+        print(f"[OK] barbarismo recomputado sobre scores finales: {' · '.join(cambios)}")
+    return informe
 
 
 def recomputar_vida_y_global(informe):
@@ -2723,6 +2761,7 @@ def main():
     informe = anotar_metodo_obtencion(informe)
     informe = aplicar_scoring(informe, series)
     informe = recomputar_vida_y_global(informe)
+    informe = recomputar_barbarismo(informe)   # sobre los scores ya finales
     _validacion_cruzada(informe)   # matriz discriminante (ADR-0031): necesita los 3 bloques
 
     # Red de seguridad: persistir el valor de cada indicador y construir su serie

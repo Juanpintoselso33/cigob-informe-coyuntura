@@ -149,14 +149,25 @@ def calcular_score_global(cinturones_data: dict) -> float:
     return round(score_sum / peso_total, 1) if peso_total else 5.0
 
 
-def detectar_barbarismo(cinturones_data: dict) -> tuple[str | None, bool]:
+def detectar_barbarismo(cinturones_data: dict) -> tuple[str | None, str | None, bool]:
     """
-    Retorna (barbarismo_activo, alerta_multicinturon).
+    Retorna (barbarismo_activo, cinturon_dominante, alerta_multicinturon).
     Regla matusiana: nunca apretar 3 cinturones a la vez.
     barbarismo_activo = cinturón con score más alto que supera umbral de tensión.
     alerta_multicinturon = True si 2+ cinturones están "tensionados", con el
     MISMO criterio que `_estado` — no uno propio: cuando acá decía
     `score >= EN_TENSION_MAX + 1` había una zona muerta entre 6 y 7 (ADR-0195).
+
+    `cinturon_dominante` es la CLAVE del cinturón que produjo el barbarismo, y
+    se publica junto a él porque el nombre del barbarismo no alcanza para
+    encontrarlo: BARBARISMO_MAP manda DOS cinturones a "político" (`politica` y
+    `vida_cotidiana`). En agosto de 2026 la portada anunciaba "Riesgo dominante:
+    Político" con Impacto social en 6,1 y Política en 3,3 y verde — el lector
+    buscaba la card Política, la encontraba entre las más flojas, y el veredicto
+    parecía contradecir a su propia tabla (ADR-0237). El número estaba bien; lo
+    que faltaba era decir de dónde salía. Sin este campo la web tenía que
+    re-derivarlo, que es exactamente la clase de duplicación que el ADR-0208
+    dejó como lección.
     """
     tensionados = [
         (nombre, data["score"])
@@ -172,11 +183,11 @@ def detectar_barbarismo(cinturones_data: dict) -> tuple[str | None, bool]:
     alerta_multicinturon = len(tensionados) >= 2
 
     if not en_tension_o_mas:
-        return None, alerta_multicinturon
+        return None, None, alerta_multicinturon
 
     dominante = max(en_tension_o_mas, key=lambda x: x[1])[0]
     barbarismo = BARBARISMO_MAP.get(dominante)
-    return barbarismo, alerta_multicinturon
+    return barbarismo, dominante, alerta_multicinturon
 
 
 def construir_informe(caches: dict) -> dict:
@@ -232,7 +243,8 @@ def construir_informe(caches: dict) -> dict:
                      else _INDICES_PARAMETRICOS[nombre][0])
             cinturones_data[nombre][clave] = resultado_indice
 
-    barbarismo_activo, alerta_multicinturon = detectar_barbarismo(cinturones_data)
+    barbarismo_activo, cinturon_dominante, alerta_multicinturon = \
+        detectar_barbarismo(cinturones_data)
 
     if alerta_multicinturon:
         for nombre in cinturones_data:
@@ -253,6 +265,7 @@ def construir_informe(caches: dict) -> dict:
         },
         "cinturones":           cinturones_data,
         "barbarismo_activo":    barbarismo_activo,
+        "cinturon_dominante":   cinturon_dominante,
         "alerta_multicinturon": alerta_multicinturon,
         "flags":                flags,
     }
@@ -276,6 +289,7 @@ def escribir_md(informe: dict) -> None:
     generated  = informe["generated_at"][:19].replace("T", " ")
     score_g    = informe["score_global"]
     barbarismo = informe["barbarismo_activo"] or "ninguno"
+    dominante  = informe.get("cinturon_dominante")
     alerta     = informe["alerta_multicinturon"]
     flags      = informe["flags"]
 
@@ -287,6 +301,7 @@ def escribir_md(informe: dict) -> None:
     lines.append(f"generado: \"{generated}\"")
     lines.append(f"score_global: {score_g}")
     lines.append(f"barbarismo_activo: \"{barbarismo}\"")
+    lines.append(f"cinturon_dominante: \"{dominante or 'ninguno'}\"")
     lines.append(f"alerta_multicinturon: {str(alerta).lower()}")
     lines.append(f"schema_version: \"{SCHEMA_VERSION}\"")
     lines.append("---")
@@ -294,7 +309,16 @@ def escribir_md(informe: dict) -> None:
 
     lines.append(f"# Informe de Coyuntura — {period}")
     lines.append("")
-    lines.append(f"**Score global:** {score_g}/10  |  **Riesgo dominante:** {barbarismo}")
+    # La CLAVE, sin maquillar: `.title()` daría "Vida Cotidiana", que es el
+    # nombre público que ADR-0190 dio de baja. El .md es artefacto de ingesta
+    # y ahí el identificador correcto es la clave del snapshot.
+    dominante_txt = ""
+    if dominante:
+        score_dom = (informe["cinturones"].get(dominante) or {}).get("score")
+        dominante_txt = f" ({dominante}"
+        dominante_txt += f", {score_dom}/10)" if score_dom is not None else ")"
+    lines.append(f"**Score global:** {score_g}/10  |  "
+                 f"**Riesgo dominante:** {barbarismo}{dominante_txt}")
 
     if alerta:
         lines.append("")

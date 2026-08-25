@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-25T03:40:53.633858+00:00",
+  "generated_at": "2026-08-25T15:16:31.735054-03:00",
   "period": "2026-08",
   "score_global": 3.9,
   "ponderacion": {
@@ -10415,6 +10415,7 @@
     }
   },
   "barbarismo_activo": "político",
+  "cinturon_dominante": "vida_cotidiana",
   "alerta_multicinturon": false,
   "flags": [],
   "semaforo_cortes": [

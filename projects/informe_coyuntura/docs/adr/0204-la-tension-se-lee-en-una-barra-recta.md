@@ -6,7 +6,7 @@ fecha: 2026-08-14
 cinturon: 'transversal'
 archivos: ['web/src/components/NivelTension.astro', 'web/src/components/Hero.astro', 'web/src/components/CinturonCard.astro', 'web/src/components/IndicadorModal.astro', 'web/src/pages/[slug].astro', 'web/src/pages/metodologia/index.astro', 'web/public/overrides.css', 'tests/test_web_semaforo.py']
 supersede_parcialmente: ['0194']
-relacionado: ['0181']
+relacionado: ['0181', '0237']
 ambito: 'Capa visual del informe · portada, cinturones, dimensiones y modal'
 origen: 'Luis Babino: el concepto de velocímetro no le gusta y hay que sacarlo de todos lados'
 ---
