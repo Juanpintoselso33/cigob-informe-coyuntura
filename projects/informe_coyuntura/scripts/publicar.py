@@ -2117,7 +2117,7 @@ MACRO_OCULTOS = {"badlar", "prestamos_privados", "base_monetaria", "tc_mayorista
 # ADR-0022): la revisión editorial los sacó del ITCP y el tablero solo
 # muestra lo que integra las dimensiones. Siguen en la pipeline completa
 # (colector, registro curado, cache y series) como seguimiento interno.
-POLITICA_OCULTOS = set(itcp.INDICADORES_CONTEXTO)
+POLITICA_OCULTOS = set(itcp.INDICADORES_CONTEXTO) | set(itcp.INDICADORES_SUSPENDIDOS)
 
 # Indicadores de gestión OCULTOS del snapshot (ADR-0051, cierra la regla de
 # ADR-0048/0049 sobre el último cinturón que publicaba contexto visible): el
@@ -2144,7 +2144,8 @@ GESTION_OCULTOS = (set(itcg.INDICADORES_CONTEXTO)
 #
 # Es el quinto cinturón en tener lista de ocultos, y con eso los cinco usan el
 # mismo patrón: entra al índice o se oculta. No hay cards de contexto (ADR-0153).
-VIDA_OCULTOS = {"endeudamiento_familiar", "indice_lider"}
+VIDA_OCULTOS = ({"endeudamiento_familiar", "indice_lider"}
+                | set(itvc.INDICADORES_SUSPENDIDOS))
 
 
 # ── Semáforo de 4 colores (ADR-0181) ──────────────────────────────────────────

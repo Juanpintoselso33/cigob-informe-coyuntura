@@ -172,6 +172,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0239](0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) | El deflactor lo pondera el flujo, no el calendario | `iaf_transferencias` | vigente |
 | [0240](0240-el-numerador-viaja-con-su-fecha.md) | El numerador viaja con su fecha | `cobertura_judicial` | vigente |
 | [0241](0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) | Un DNU es un tipo jurídico, no una frase | `ratio_dnu` | vigente |
+| [0246](0246-el-saldo-empresario-se-calculaba-sobre-un-corpus-abierto.md) | El saldo empresario se calculaba sobre un corpus abierto | `apoyo_empresario` | vigente |
 
 ### Gestión (ITCG)
 
@@ -216,6 +217,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0228](0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) | El FAL puntúa lo que rige, no lo que se dictó | `fal_modernizacion_laboral` | vigente |
 | [0229](0229-la-desregulacion-cuenta-actos-no-efectos.md) | La desregulación cuenta actos, no efectos, y la ficha lo dice | `desregulacion_normativa` | vigente |
 | [0244](0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) | El acto jurídico manda sobre el estado del portal | `concesiones_infraestructura` | vigente |
+| [0247](0247-un-porcentaje-entre-normas-y-una-meta-documental.md) | Un porcentaje entre normas y una meta documental | `reestructuracion_organismos` | vigente |
 
 ### Vida cotidiana (ITVC)
 
@@ -262,6 +264,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0235](0235-regulados-frente-al-salario-no-es-peso-de-tarifas.md) | La canasta de servicios puntúa contra asequibilidad, no contra 2023 | `peso_tarifas` | vigente |
 | [0242](0242-el-icc-que-se-publica-es-el-nacional.md) | El ICC que se publica es el nacional | `icc_utdt` | vigente |
 | [0243](0243-la-base-del-indice-la-declara-la-fuente.md) | La base del índice la declara la fuente | `consumo_supermercados` | vigente |
+| [0248](0248-el-volumen-de-busquedas-no-tiene-valencia.md) | El volumen de búsquedas no tiene valencia | `sentimiento_digital` | vigente |
 
 ### Espíritu de época
 
@@ -327,3 +330,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0234](0234-el-snapshot-declara-como-se-obtuvo-cada-dato.md) | El snapshot declara cómo se obtuvo cada dato |  | vigente |
 | [0236](0236-la-marca-se-declara-una-vez-y-el-tablero-la-consume.md) | La marca se declara una vez y el tablero la consume |  | vigente |
 | [0237](0237-el-riesgo-dominante-nombra-su-cinturon.md) | El riesgo dominante nombra su cinturón |  | vigente |
+| [0245](0245-suspender-libera-el-peso-y-el-indice-renormaliza-solo.md) | Suspender libera el peso, y el índice renormaliza solo |  | vigente |

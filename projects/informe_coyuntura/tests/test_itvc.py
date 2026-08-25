@@ -72,7 +72,10 @@ def test_itvc_reproduce_ejemplo():
     # ADR-0214: 92,2 → 94,1 al recibir `informalidad` (96,0), que está por
     # encima del promedio de los proxies.
     assert dims["empleo"]["puntaje"] == 94.1
-    assert dims["percepcion"]["puntaje"] == 116.5   # ADR-0115: sólo ICC + Trends
+    # ADR-0115 la dejó con ICC + Trends (116,5). ADR-0248 saca
+    # `sentimiento_digital` del índice y su 18,18% pasa al ICC, que queda
+    # solo en la dimensión: el puntaje es el suyo.
+    assert dims["percepcion"]["puntaje"] == 118.0
     assert dims["seguridad"]["puntaje"] == 104.0    # ADR-0115: victimización sola
     # ADR-0214: 87,0 → 86,9. El traslado es NEUTRO sobre el índice cuando
     # están todos los componentes —conserva el peso efectivo de cada uno—,
@@ -84,7 +87,7 @@ def test_itvc_reproduce_ejemplo():
     # vehículos con 130,0 y ahora pesa el doble, así que sobre una dimensión a
     # la que le faltan componentes el efecto se amplifica. La corrida real dio
     # 90,7 antes y 90,8 después.
-    assert r["valor"] == 87.5
+    assert r["valor"] == 87.6   # 87,5 → 87,6 con ADR-0248
     assert r["banda"] == "deterioro_moderado"
     assert r["ajustes_aplicados"] == []
 
@@ -218,7 +221,7 @@ def test_ajuste_manual_del_analista():
     # EJEMPLO no trae alquiler_real (ADR-0111), así que precios renormaliza
     # sobre los dos componentes del doc: 0,4375×95 + 0,5625×80 = 86,6
     assert r["dimensiones"]["precios"]["puntaje"] == 86.6
-    assert r["valor"] == 90.3
+    assert r["valor"] == 90.5   # 90,3 → 90,5 con ADR-0248
 
 
 def test_sin_datos_devuelve_none():

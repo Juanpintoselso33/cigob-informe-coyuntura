@@ -34,12 +34,28 @@ from publicar import VIDA_OCULTOS  # noqa: E402
 DESCRIPCIONES = (ROOT / "web" / "src" / "lib" / "descripciones.ts").read_text(encoding="utf-8")
 FICHAS = (ROOT / "web" / "src" / "lib" / "fichas.ts").read_text(encoding="utf-8")
 
-# {indicador: (peso interno, peso efectivo en el índice)}
-PESOS = {
-    ind: (interno, round(interno * dim["peso"] * 100, 2))
-    for dim in itvc.DIMENSIONES_ITVC.values()
-    for ind, interno in dim["indicadores"].items()
-}
+# {indicador: (peso interno, peso efectivo en el índice)} — POST-suspensión.
+# Un indicador suspendido (ADR-0245) libera su peso y sus pares lo absorben, así
+# que el reparto que la web tiene que declarar no es el de la tabla de diseño
+# sino el que queda después de renormalizar. Cuando salió `sentimiento_digital`,
+# `icc_utdt` pasó de 81,82% a 100% de su dimensión sin que nadie lo tocara: si
+# el test siguiera comparando contra la tabla, la ficha quedaría describiendo un
+# reparto que ya no existe, que es exactamente lo que ADR-0220 vino a evitar.
+def _pesos_vigentes() -> dict:
+    out = {}
+    for dim in itvc.DIMENSIONES_ITVC.values():
+        vivos = {i: p for i, p in dim["indicadores"].items()
+                 if i not in itvc.INDICADORES_SUSPENDIDOS}
+        suma = sum(vivos.values())
+        if not suma:
+            continue
+        for ind, interno in vivos.items():
+            renorm = interno / suma
+            out[ind] = (renorm, round(renorm * dim["peso"] * 100, 2))
+    return out
+
+
+PESOS = _pesos_vigentes()
 
 
 def _bloque(texto: str, clave: str) -> str:

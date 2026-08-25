@@ -150,7 +150,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (12m)", tipo: "Brecha (pp)",
   },
   apoyo_empresario: {
-    que: "Qué dicen en público, por escrito y con firma institucional, las dos cámaras empresarias de referencia —la Asociación Empresaria Argentina y la Unión Industrial Argentina— sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses.",
+    que: "Qué dicen en público, por escrito y con firma institucional, las dos cámaras empresarias de referencia —la Asociación Empresaria Argentina y la Unión Industrial Argentina— sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Ya NO puntúa en el ITCP: salió del índice en ADR-0246 porque el saldo se calculaba sobre siete textos codificados con catorce pendientes, y entre los pendientes había apoyos y críticas de peso. Se sigue relevando.",
     aporta: "Es la única medida directa de la relación entre el Gobierno y el empresariado organizado: las demás miran el clima de negocios o los datos de un sector, y de ahí infieren el vínculo. Acá el vínculo está dicho. Conviene saber qué no dice: no mide el humor del empresariado en general ni la opinión de sus asociados, sino lo que una asociación decidió declarar públicamente — una cámara puede callar por conveniencia y ese silencio no aparece. La clasificación la hace una persona siguiendo reglas escritas de antemano, y dos personas distintas la hicieron por separado para verificar que las reglas no dejan lugar a la interpretación.",
     frecuencia: "Continua (12m)", tipo: "Saldo (−1 a +1)",
   },
@@ -319,7 +319,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Índice",
   },
   sentimiento_digital: {
-    que: "Cuánta atención pública se llevan seis problemas, medida por lo que se busca en internet: inflación, precios, dólar, empleo, inseguridad y corrupción.",
+    que: "Cuánta atención pública se llevan seis problemas, medida por lo que se busca en internet: inflación, precios, dólar, empleo, inseguridad y corrupción. Ya NO puntúa en el ITCIS: salió del índice en ADR-0248 porque el volumen de búsquedas no distingue si un tema preocupa o alegra, y la validación externa dio el signo contrario al esperado. Se sigue relevando y su serie se publica.",
     aporta: "Mide la preocupación por la conducta (qué busca la gente cuando algo le duele), complementando al ICC que la mide por encuesta. Los seis términos pesan lo mismo y cada uno se compara contra el arranque del mandato. La corrupción es la excepción de lectura: se mueve por escándalos, así que un pico suyo dice que se habla de un caso, no que empeoró el bolsillo.",
     frecuencia: "Mensual", tipo: "Índice (100 = 4T-2023)",
   },
@@ -378,7 +378,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación vs. dic-2023",
   },
   reestructuracion_organismos: {
-    que: "Cuántos organismos públicos se disolvieron o cerraron desde diciembre de 2023, con ese cierre todavía vigente.",
+    que: "Cuántos organismos públicos se disolvieron o cerraron desde diciembre de 2023, con ese cierre todavía vigente. Ya NO puntúa en el ITCG: salió del índice en ADR-0247 porque el porcentaje dividía normas por una meta documental —dos unidades distintas— y el buscador se salteaba cierres conocidos. Se sigue relevando como inventario.",
     aporta: "Mide el avance concreto de la reforma del aparato estatal por la vía más dura y verificable: el cierre. No cuenta fusiones, transformaciones ni reorganizaciones que no impliquen disolver un organismo — esas son difíciles de verificar caso por caso y quedan fuera de lo que este indicador afirma medir. Tampoco cuenta un hallazgo de la búsqueda que, revisado caso por caso, resultó ajeno a un organismo público o fue revertido después: cada norma se contrasta contra un registro curado antes de sumar.",
     frecuencia: "Mensual", tipo: "Avance de reforma",
   },

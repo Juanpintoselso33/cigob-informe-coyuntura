@@ -346,6 +346,25 @@ def puntaje_de(valor, indicador: str, bandas_por_indicador: dict,
     return puntaje_interpolado(float(valor), bandas_por_indicador[indicador])
 
 
+def sin_suspendidos(valores: dict, suspendidos: dict | set | None) -> dict:
+    """Saca del cálculo los indicadores suspendidos, sin tocar la tabla de pesos.
+
+    Un indicador suspendido **libera su peso**, y los que quedan en su dimensión
+    se reparten ese hueco solos: es exactamente lo que `calcular_indice` ya hace
+    con un indicador sin dato, así que suspender es hacerlo ver como ausente
+    (ADR-0245).
+
+    La alternativa —borrarlo de `DIMENSIONES_*` y reescribir a mano los pesos de
+    sus pares— es la que se usó en ago-2026 para `masa_salarial`. Funciona, pero
+    tiene dos costos: los pesos renormalizados quedan escritos como si fueran de
+    diseño, y reponer el indicador obliga a recalcular los originales de memoria.
+    Acá el peso de diseño sigue a la vista y reponerlo es sacar una línea.
+    """
+    if not suspendidos:
+        return valores
+    return {k: v for k, v in valores.items() if k not in suspendidos}
+
+
 def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: dict,
                     dimensiones: dict, bandas_interpretacion: list,
                     interpretacion_legible: dict,

@@ -358,6 +358,31 @@ INTERPRETACION_LEGIBLE = {
 # la base de la serie oficial del INDEC y declarando el desvío del empalme).
 INDICADORES_CONTEXTO: list[str] = []
 
+# ── Retirados del índice hasta rediseño (ADR-0245 fija el mecanismo) ────────
+# Se sacan del CÁLCULO, no de la tabla de pesos: liberan su peso y los que
+# quedan en la dimensión lo absorben solos. `publicar.py` los suma a
+# VIDA_OCULTOS, así que tampoco se muestran (ADR-0154: si no puntúa, no es card).
+INDICADORES_SUSPENDIDOS = {
+    "sentimiento_digital": {
+        "dimension": "percepcion",
+        "desde": "2026-08",
+        "desde_txt": "agosto de 2026",
+        "adr": "0248",
+        "por_que": "El volumen de búsquedas no identifica valencia. La "
+                   "aritmética era estable y la validación externa, adversa: "
+                   "r = −0,788 contra Ipsos post-base, r = −0,126 en niveles y "
+                   "+0,082 en cambios contra el ICC de la UTDT en 59 meses, y "
+                   "34 de 42 ventanas móviles de 18 meses con el signo opuesto "
+                   "al esperado. Buscar «inflación» no dice si a uno le "
+                   "preocupa o le alegra.",
+        "condicion_reingreso": "Términos o topics predeclarados, varios "
+                               "vintages congelados, encuesta objetivo definida "
+                               "y validación temporal fuera de muestra. No vale "
+                               "reusar la correlación favorable de una canasta "
+                               "anterior para validar la actual.",
+    },
+}
+
 
 def banda_interpretacion(itvc: float) -> str:
     return parametrica.banda_interpretacion(itvc, BANDAS_INTERPRETACION)
@@ -400,12 +425,17 @@ def calcular_itvc(indices: dict, ajustes: dict | None = None) -> dict | None:
     ignora) en el ITVC-B100, renormalizando pesos ante faltantes (dentro de
     cada dimensión y entre dimensiones), con overrides del analista.
 
+    Los de `INDICADORES_SUSPENDIDOS` se sacan acá y no de la tabla de pesos
+    (ADR-0245), así que la reconstrucción histórica de `validacion_externa`
+    tampoco los usa: la serie del índice queda homogénea con la card.
+
     Devuelve la misma forma que calcular_itcm/itcg ({valor, banda,
     banda_legible, dimensiones, ajustes_aplicados}; `puntaje_banda` guarda el
     índice sin override y `puntaje_aplicado` el vigente) para que el resto
     del pipeline y la web lo consuman genérico. None sin ningún componente.
     """
     ajustes = ajustes or {}
+    indices = parametrica.sin_suspendidos(indices, INDICADORES_SUSPENDIDOS)
     resultado_dims = {}
     ajustes_aplicados = []
 

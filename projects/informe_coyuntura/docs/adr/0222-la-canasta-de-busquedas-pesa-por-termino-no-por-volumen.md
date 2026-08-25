@@ -7,7 +7,7 @@ cinturon: 'vida'
 indicadores: [sentimiento_digital]
 archivos: ['scripts/vida_cotidiana/config.py', 'scripts/vida_cotidiana/collectors/trends.py', 'scripts/vida_cotidiana/main.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'scripts/gate_calidad.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/datos.ts', 'tests/test_sentimiento_canasta.py']
 complementa: ['0034']
-relacionado: ['0033', '0115', '0220']
+relacionado: ['0033', '0115', '0220', '0248']
 ambito: 'ITCIS · `sentimiento_digital` · composición de la canasta de Google Trends, ponderación y empalme de escalas'
 origen: 'Editor, agosto de 2026: sumar «dólar», «empleo» y «corrupción» a la canasta de búsquedas'
 ---

@@ -1337,6 +1337,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-27", cambio: "Entra al cinturón como segundo indicador de la dimensión de sector privado, que hasta ahora tenía uno solo. Una revisión externa había señalado que los empresarios eran el actor peor medido del cinturón." },
       { fecha: "2026-07-27", cambio: "Al verificar la clasificación con dos codificadores independientes se descubrió que los cincuenta y siete comunicados de la Unión Industrial se habían leído sin su texto: el proceso de descarga se quedaba con el menú de navegación del sitio y esos casos se habían clasificado sólo por el título. Se corrigió la descarga y se rehízo la clasificación completa sobre el texto real, descartando la primera. El hallazgo no vino de ninguna verificación automática sino de que los dos codificadores, por separado, avisaron que los textos venían todos iguales." },
+      { fecha: "2026-08-25", cambio: "ADR-0246: sale del ITCP hasta cerrar el corpus. El saldo −0,429 salía de siete comunicados codificados con catorce detectados sin codificar, y entre esos catorce había apoyos y críticas de peso: el número medía qué se alcanzó a clasificar, no la postura del sector. Libera su 50% de la dimensión de sector privado, que queda con `brecha_obra_publica` como único componente. Se sigue relevando y su serie se sigue publicando. Vuelve al índice con corpus cerrado y publicado, criterios fijados de antemano y doble codificación con control de concordancia." },
     ],
   },
 
@@ -2126,6 +2127,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-09", cambio: "Etiqueta y descripción precisadas a pedido de CIGOB: se habla solo de disolución o cierre, no de fusión/transformación/centralización. El cálculo no cambió — la búsqueda en InfoLeg siempre fue solo «disolución». Ver ADR-0185." },
       { fecha: "2026-08-09", cambio: "Se buscó una cifra mejor que 45 para el denominador (Ley Bases, Ministerio de Desregulación, prensa) y ninguna resultó viable; el 45 se mantiene, ahora documentado en detalle. Ver ADR-0185." },
       { fecha: "2026-08-09", cambio: "El conteo pasa de 18 a 11 (avance de 40,0% a 24,4%; ITCG de 78,7 a 76,8): la lectura caso por caso que pidió CIGOB encontró que 3 de los 18 documentos no hablaban de un organismo público y 4 eran actos de un paquete de decretos que el Congreso rechazó y quedaron sin efecto. InfoLeg sigue siendo la fuente de descubrimiento, pero cada hallazgo se contrasta ahora contra un registro curado con motivo y norma; lo que todavía nadie clasificó no cuenta y la corrida lo avisa. Ver ADR-0188." },
+      { fecha: "2026-08-25", cambio: "ADR-0247: sale del ITCG. El 24,4% era 11 sobre 45, y ninguno de los dos números servía: el 11 cuenta NORMAS —que afectan unas 18 entidades— y el 45 es una convención documental, no una meta oficial; además el buscador se salteaba cierres conocidos como el del ENOHSA. Libera su 25% de la dimensión de Reforma del Estado, que se reparte entre dotación y gasto de funcionamiento conservando la proporción 7:5. Se conserva el inventario de entidades y actos como insumo del rediseño. Vuelve cuando numerador y denominador compartan unidad y el universo esté cerrado." },
     ],
   },
 
@@ -2944,7 +2946,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el ICC rebaseado a 100 = promedio del 4º trimestre de 2023 (más confianza = mejora).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de confianza y percepción (81,8% interno · 6,75% del ITCIS).",
+      "Pertenece a la dimensión de confianza y percepción (100% interno · 8,25% del ITCIS): desde agosto de 2026 es su único componente, porque `sentimiento_digital` salió del índice (ADR-0248) y liberó su peso.",
     ],
     dobleUso: "Doble función declarada: (1) componente del ITCIS; (2) ancla de la validación externa del ITCIS — para no ser circular, en ese estudio el índice se recalcula sin este componente. Hasta julio de 2026 puntuó además en el cinturón espíritu de época, que desde entonces quedó acotado a la intención migratoria; esa lectura se sigue registrando como seguimiento interno.",
     limitaciones: [
@@ -2995,6 +2997,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Declarado indicador de contexto: la ventana de tres meses no permitía línea de base 2023." },
       { fecha: "2026-07-04", cambio: "Pasa a componente puntuable tras un banco de pruebas empírico: la canasta de ventana fija con cociente interno resultó estable entre actualizaciones y consistente con la inflación." },
       { fecha: "2026-08-21", cambio: "ADR-0222: la canasta pasa a seis términos con peso igual —entran dólar, empleo y corrupción, y sale trabajo, cuyas búsquedas asociadas son derecho laboral, un plan social, el feriado y la tarea escolar—. Cada término se consulta por separado y se compara contra su propia base, lo que reemplaza al promedio crudo, que pesaba por volumen de búsqueda. La card deja de ser un pulso aparte y publica el mismo último mes cerrado que el gráfico." },
+      { fecha: "2026-08-25", cambio: "ADR-0248: sale del ITCIS. El volumen de búsquedas mide atención y la atención no tiene signo: buscar «inflación» no dice si a uno le preocupa o le conviene. La validación externa lo contradice en cuatro cortes —r = −0,788 contra Ipsos post-base, −0,126 en niveles y +0,082 en cambios contra el ICC de la UTDT en 59 meses, y 34 de 42 ventanas móviles de 18 meses con el signo opuesto—. Libera su 18,18% de la dimensión de percepción, que queda con el ICC como único componente. Se sigue relevando. El reingreso exige términos predeclarados y validación fuera de muestra." },
     ],
   },
 

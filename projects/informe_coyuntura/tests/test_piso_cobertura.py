@@ -11,6 +11,7 @@ completo y metido en una correlación donde pesa igual que un mes completo.
 Estos tests fijan las tres piezas: cómo se mide la cobertura, que el piso
 recorte, y que el mes en curso no entre.
 """
+import statistics
 import sys
 from pathlib import Path
 
@@ -94,25 +95,48 @@ def test_itcg_no_publica_el_mes_en_curso():
     assert max(serie) <= ve._ultimo_mes_completo()
 
 
-def test_la_ausencia_de_componentes_del_itcg_empuja_el_indice_para_abajo():
+def test_la_ausencia_de_componentes_del_itcg_sesga_el_indice():
     """Por qué el piso y no una advertencia: el faltante NO es aleatorio.
 
-    Los componentes que se demoran son los que puntúan alto, así que un mes
-    incompleto no queda ruidoso alrededor del valor real — queda sesgado hacia
-    abajo. Recalcular un mes de cobertura plena con el subconjunto flaco lo
-    demuestra, y es lo que hacía leer como caída de gestión lo que era el
-    calendario de publicación.
+    Un mes incompleto no queda ruidoso alrededor del valor real: queda **muy
+    lejos**, y siempre para el mismo lado dentro de una misma composición del
+    índice. Recalcular meses de cobertura plena con el subconjunto que llega
+    temprano lo demuestra: la mediana del desvío son ~10 puntos y en 30 de 31
+    meses supera los 3.
+
+    Hasta agosto de 2026 este test afirmaba algo más fuerte —que el recorte
+    siempre daba **por debajo**— y era cierto en los 31 meses. Dejó de serlo al
+    suspender `reestructuracion_organismos` (ADR-0247): era el único componente
+    de Reforma del Estado que llegaba temprano, y puntuaba bajo. Sin él, la
+    dimensión entera desaparece del subconjunto rápido y lo que queda puntúa
+    alto, así que desde may-2025 el recorte da por encima.
+
+    El signo depende de qué componentes integran el índice y de cuáles se
+    demoran; las dos cosas cambian. Lo que no cambia es que el desvío es grande
+    y sistemático, y eso es lo que justifica un piso de cobertura en vez de una
+    nota al pie.
     """
     vals = ve._valores_itcg_por_mes()
-    pleno = "2026-06"
-    if pleno not in vals:
-        pytest.skip("la serie ya no llega a 2026-06")
     presentes = {k for k, v in (vals.get("2026-08") or {}).items() if v is not None}
     if not presentes:
         pytest.skip("sin mes parcial contra el cual comparar")
-    completo = itcg.calcular_itcg(vals[pleno])["valor"]
-    recortado = itcg.calcular_itcg(
-        {k: v for k, v in vals[pleno].items() if k in presentes})["valor"]
-    assert recortado < completo, (
-        "si el faltante fuera aleatorio este test no tendría por qué pasar; "
-        "pasa porque los componentes lentos del ITCG son los que puntúan alto")
+
+    desvios = []
+    for ym, v in sorted(vals.items()):
+        if sum(1 for x in v.values() if x is not None) < 10:
+            continue
+        completo = itcg.calcular_itcg(v)
+        recortado = itcg.calcular_itcg({k: x for k, x in v.items() if k in presentes})
+        if completo and recortado:
+            desvios.append(abs(recortado["valor"] - completo["valor"]))
+    if len(desvios) < 10:
+        pytest.skip("pocos meses de cobertura plena para medir el sesgo")
+
+    grandes = sum(1 for d in desvios if d > 3.0)
+    assert grandes >= 0.8 * len(desvios), (
+        f"sólo {grandes} de {len(desvios)} meses se desvían más de 3 puntos al "
+        "recortar: si el faltante fuera casi inocuo, el piso de cobertura no "
+        "haría falta")
+    assert statistics.median(desvios) > 5.0, (
+        f"mediana del desvío {statistics.median(desvios):.1f}: el piso existe "
+        "porque un mes incompleto está lejos del valor real, no al lado")

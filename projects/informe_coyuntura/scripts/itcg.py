@@ -353,6 +353,23 @@ INDICADORES_CUMPLIDOS = {}
 # `desde` es el mes en que salió del cálculo; se publica en la card para que
 # el lector sepa desde cuándo el número que ve no mueve el índice.
 INDICADORES_SUSPENDIDOS = {
+    "reestructuracion_organismos": {
+        "dimension": "reforma_estado",
+        "desde": "2026-08",
+        "desde_txt": "agosto de 2026",
+        "adr": "0247",
+        "por_que": "El porcentaje dividía cosas de unidades distintas: 11 son "
+                   "NORMAS —que afectan unas 18 entidades— y 45 es una "
+                   "convención documental, no una meta oficial. Además el "
+                   "buscador se salteaba cierres conocidos como el del ENOHSA. "
+                   "Un avance sobre un denominador que nadie fijó no es un "
+                   "porcentaje de avance.",
+        "condicion_reingreso": "Numerador y denominador en la MISMA unidad "
+                               "—preferentemente entidades—, universo cerrado y "
+                               "publicado, regla explícita para fusiones, "
+                               "absorciones y disoluciones, y una fuente que un "
+                               "tercero pueda reproducir.",
+    },
     "masa_salarial": {
         "dimension": "reforma_estado",
         "desde": "2026-08",
@@ -396,7 +413,12 @@ def calcular_itcg(valores: dict, ajustes: dict | None = None) -> dict | None:
     Algoritmo común en parametrica.calcular_indice (renormalización ante
     faltantes, overrides con vencimiento); acá solo se enchufan las tablas
     del cinturón de gestión.
+
+    Los indicadores de `INDICADORES_SUSPENDIDOS` se sacan acá y no de la tabla
+    de pesos: liberan su peso y los que quedan en la dimensión lo absorben solos
+    (ADR-0245).
     """
     return parametrica.calcular_indice(
-        valores, ajustes, BANDAS_ITCG, DIMENSIONES_ITCG,
+        parametrica.sin_suspendidos(valores, INDICADORES_SUSPENDIDOS),
+        ajustes, BANDAS_ITCG, DIMENSIONES_ITCG,
         BANDAS_INTERPRETACION, INTERPRETACION_LEGIBLE)

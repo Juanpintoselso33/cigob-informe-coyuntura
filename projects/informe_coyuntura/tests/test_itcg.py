@@ -80,8 +80,10 @@ def test_itcg_reproduce_ejemplo():
     assert dims["reformas_economicas"]["puntaje"] == 81.3
     # 78,3 → 77,3 (ADR-0186: masa_salarial sale del cálculo; reduccion_estado,
     # gasto_funcionamiento y reestructuracion_organismos renormalizan 35/25/20
-    # → 43,75/31,25/25, conservando su proporción relativa 7:5:4).
-    assert dims["reforma_estado"]["puntaje"] == 77.3
+    # → 43,75/31,25/25, conservando su proporción relativa 7:5:4) → 85,6
+    # (ADR-0247: sale reestructuracion_organismos y su 25% se reparte entre los
+    # dos que quedan, 58,33/41,67 — sin tocar la tabla de pesos, ADR-0245).
+    assert dims["reforma_estado"]["puntaje"] == 85.6
     # 38,9 → 44,3 (ADR-0128, reparto 50/50) → 78,9 (ADR-0142, el FAL pasa a
     # contar sus dos actos DICTADOS y salta de 30,8 a 100) → 56,4 (ADR-0228, el
     # FAL vuelve a medir lo que RIGE y baja de 100 a 55). El de ADR-0142 fue un
@@ -92,9 +94,9 @@ def test_itcg_reproduce_ejemplo():
     # ADR-0189: vuelve asistencia_directa y la dimension recupera el 40/40/20
     # del documento. 0,4x100 + 0,4x76,6 + 0,2x65 = 83,6 (antes 72,8 con 67/33).
     assert dims["social_orden"]["puntaje"] == 83.6
-    assert r["valor"] == 73.3          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228)
+    assert r["valor"] == 75.4          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228) → 75,4 (0247)
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcg.tension_de_itcg(r["valor"]) == 2.7
+    assert itcg.tension_de_itcg(r["valor"]) == 2.5
     assert r["ajustes_aplicados"] == []
 
 
@@ -179,19 +181,43 @@ def test_bordes_de_banda():
 
 
 def test_renormalizacion_ante_faltantes():
-    """Sin gasto_funcionamiento (fuente caída), la Reforma del Estado
-    renormaliza entre dotación (0,4375) y organismos (0,25) — los dos únicos
-    indicadores que quedan, ya que masa_salarial no es más miembro de la
-    dimensión (ADR-0186: salió del cálculo, no de "faltó el dato")."""
+    """Una fuente caída reparte su peso entre los que quedan en la dimensión.
+
+    Se prueba en `reformas_economicas`, que después de ADR-0247 es la que sigue
+    teniendo suficientes componentes como para que renormalizar signifique algo:
+    en `reforma_estado` quedan dos, y sacar uno la deja con un solo indicador,
+    que es un caso degenerado y no prueba el reparto."""
+    valores = dict(EJEMPLO)
+    dim = itcg.DIMENSIONES_ITCG["reformas_economicas"]["indicadores"]
+    caido = sorted(dim)[0]
+    valores[caido] = None
+    r = itcg.calcular_itcg(valores)
+    d2 = r["dimensiones"]["reformas_economicas"]
+
+    assert caido not in d2["indicadores"]
+    assert len(d2["indicadores"]) == len(dim) - 1
+    # el reparto conserva la proporción relativa de los que quedan
+    resto = sum(p for k, p in dim.items() if k != caido)
+    for k, info in d2["indicadores"].items():
+        # `peso_efectivo` se publica redondeado a 4 decimales
+        assert abs(info["peso"] / resto
+                   - info["peso_efectivo"] / d2["peso_efectivo"]) < 1e-3
+
+    pesos = [i["peso_efectivo"] for d in r["dimensiones"].values()
+             for i in d["indicadores"].values()]
+    assert abs(sum(pesos) - 1.0) <= 0.001
+
+
+def test_una_fuente_caida_sobre_una_dimension_ya_suspendida():
+    """Los dos mecanismos se componen: la suspensión saca uno y el faltante,
+    otro. La dimensión sobrevive con el que queda y sigue pesando lo mismo."""
     valores = dict(EJEMPLO)
     valores["gasto_funcionamiento"] = None
     r = itcg.calcular_itcg(valores)
     d2 = r["dimensiones"]["reforma_estado"]
-    assert set(d2["indicadores"]) == {"reduccion_estado", "reestructuracion_organismos"}
-    # (0,4375×88,8 + 0,25×52,5) / 0,6875 = 75,6 (puntajes interpolados; mismo
-    # resultado que antes de ADR-0186 porque la proporción 7:4 entre estos dos
-    # se conservó al renormalizar sin masa_salarial)
-    assert d2["puntaje"] == 75.6
+    assert set(d2["indicadores"]) == {"reduccion_estado"}
+    assert d2["puntaje"] == 88.8            # queda solo, así que es su puntaje
+    assert abs(d2["peso_efectivo"] - itcg.DIMENSIONES_ITCG["reforma_estado"]["peso"]) < 1e-9
     pesos = [i["peso_efectivo"] for d in r["dimensiones"].values()
              for i in d["indicadores"].values()]
     assert abs(sum(pesos) - 1.0) <= 0.001

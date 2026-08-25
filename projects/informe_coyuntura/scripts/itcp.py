@@ -690,6 +690,31 @@ INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cep
                         # su banda queda arriba como referencia histórica
                         "comisiones_caidas"]
 
+# ── Retirados del índice hasta rediseño (ADR-0245 fija el mecanismo) ────────
+# Se sacan del CÁLCULO, no de la tabla de pesos: liberan su peso y los que
+# quedan en la dimensión lo absorben solos. El peso de diseño sigue a la vista
+# y reponer el indicador es sacar una línea de acá.
+#
+# `publicar.py` los suma a POLITICA_OCULTOS, así que tampoco se muestran: la
+# regla del tablero es que si no puntúa, no es card (ADR-0051/0153/0189).
+INDICADORES_SUSPENDIDOS = {
+    "apoyo_empresario": {
+        "dimension": "sector_privado",
+        "desde": "2026-08",
+        "desde_txt": "agosto de 2026",
+        "adr": "0246",
+        "por_que": "El saldo −0,429 salía de SIETE textos codificados con "
+                   "CATORCE pendientes, y entre los pendientes había apoyos y "
+                   "críticas sustantivos. Un saldo sobre un corpus abierto no "
+                   "mide la postura del sector: mide qué se alcanzó a codificar.",
+        "condicion_reingreso": "Corpus cerrado y publicado, criterios de "
+                               "codificación fijados de antemano, doble "
+                               "codificación con control de concordancia, "
+                               "inventario completo y prueba de que la card y "
+                               "la serie usan la misma cohorte.",
+    },
+}
+
 # ── Qué tipo de cosa mide cada indicador (ADR-0094) ──────────────────────────
 # Prioridad 2 de la auditoría del cinturón: el índice mezclaba bajo una misma
 # etiqueta tres preguntas distintas, y eso "dificulta responder con precisión la
@@ -846,7 +871,11 @@ def cargar_ajustes(path, periodo: str) -> dict:
 
 
 def calcular_itcp(valores: dict, ajustes: dict | None = None) -> dict | None:
-    """Calcula el ITCP a partir de {indicador: valor} (None se ignora)."""
+    """Calcula el ITCP a partir de {indicador: valor} (None se ignora).
+
+    Los de `INDICADORES_SUSPENDIDOS` se sacan acá y no de la tabla de pesos
+    (ADR-0245)."""
     return parametrica.calcular_indice(
-        valores, ajustes, BANDAS_ITCP, DIMENSIONES_ITCP,
+        parametrica.sin_suspendidos(valores, INDICADORES_SUSPENDIDOS),
+        ajustes, BANDAS_ITCP, DIMENSIONES_ITCP,
         BANDAS_INTERPRETACION, INTERPRETACION_LEGIBLE)
