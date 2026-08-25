@@ -152,12 +152,33 @@ jobs:
       - name: Tests de reconciliación y robustez (G4-G5)
         run: python -m pytest tests -q
 
+      # El Monitor en #informe-de-coyuntura: un mensaje fijo que se actualiza en
+      # su lugar (chat.update NO notifica) y uno nuevo SÓLO si algo se movió de
+      # verdad. Ese canal tuvo 8 mensajes humanos en 60 días: un resumen diario
+      # lo convertiría en un feed con el bot hablando el 88% del tiempo.
+      #
+      # Va ANTES de commitear, no después: `output/estado_slack.json` guarda el
+      # ts del mensaje fijo y el estado anterior, y tiene que entrar en el
+      # commit de ESTA corrida. Si quedara afuera, el runner arrancaría cada
+      # noche sin el ts y publicaría un mensaje nuevo en vez de editar el que ya
+      # está — que es exactamente el feed diario que no queremos.
+      #
+      # El snapshot ya pasó el gate y los tests acá: lo único que viene después
+      # es el commit, y si ese falla salta el aviso de falla igual.
+      - name: Avisar el Monitor en Slack
+        continue-on-error: true
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CANAL_INFORME: ${{ secrets.SLACK_CANAL_INFORME }}
+        run: python scripts/aviso_informe.py
+
       - name: Commitear snapshot + caches a main
         working-directory: .
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add projects/informe_coyuntura/output/cache/*.json \
+                  projects/informe_coyuntura/output/estado_slack.json \
                   projects/informe_coyuntura/output/series/*.csv \
                   projects/informe_coyuntura/output/sensibilidad.json \
                   projects/informe_coyuntura/output/informe.json \

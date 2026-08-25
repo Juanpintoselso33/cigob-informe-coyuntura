@@ -474,8 +474,29 @@ disfraza de "fuente caída" y congela una serie sin que nada falle: pasó con
 `icg_utdt`, cuatro días (ADR-0175). `tests/test_aviso_slack.py` prueba el
 clasificador, y sobre todo prueba lo que NO tiene que avisar.
 
-Los secretos (`SLACK_BOT_TOKEN`, `SLACK_CANAL_ALERTAS`) están en el repo del
-informe. El canal es privado; si se agrega otro bot hay que invitarlo a mano.
+Los secretos (`SLACK_BOT_TOKEN`, `SLACK_CANAL_ALERTAS`, `SLACK_CANAL_INFORME`)
+están en el repo del informe. Los canales requieren invitar al bot a mano.
+
+### El Monitor en `#informe-de-coyuntura` (`scripts/aviso_informe.py`)
+
+Ese canal es de **discusión**, no de avisos: tuvo **8 mensajes humanos en 60
+días**. Un resumen diario serían ~30 por mes contra ~4: el bot hablando el 88%
+del tiempo. Por eso hace dos cosas y ninguna es un resumen diario:
+
+1. **Un mensaje fijo que se actualiza en su lugar.** `chat.update` no notifica,
+   así que la foto de hoy está siempre arriba y no genera un mensaje nuevo.
+   **Hay que fijarlo a mano una vez** — la app no pide `pins:write` a propósito,
+   porque agregarlo obliga a reinstalarla y rotar el token para un solo clic.
+2. **Un mensaje nuevo sólo si algo se movió**: cambió el riesgo dominante o su
+   cinturón, un cinturón cambió de estado, se prendió la alerta multicinturón,
+   o el score global se movió ≥ `UMBRAL_SCORE`. Un score que se mueve unas
+   décimas porque se actualizó un indicador **no avisa**: eso es el resumen
+   diario entrando por la ventana.
+
+`output/estado_slack.json` guarda el ts del mensaje fijo y el estado anterior, y
+**está en el `git add` de la corrida**. Si quedara afuera, el runner arrancaría
+cada noche sin el ts y publicaría un mensaje nuevo en vez de editar. Por eso el
+paso va **antes** de commitear, no después.
 
 ## When a GitHub Actions run fails
 
