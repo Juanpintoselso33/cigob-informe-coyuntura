@@ -1545,6 +1545,20 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
    Lleva ancho de lectura propio: el contenedor de la página va a 1280px y una
    línea de ese largo no se lee de corrido. */
 .cg-marco { max-width: 72ch; }
+/* En desktop la tarjeta del marco ocupa todo el ancho y el texto a 72ch dejaba
+   la mitad derecha vacía. Dos columnas usan ese espacio SIN estirar la línea:
+   la medida por columna sigue siendo legible, que es para lo que estaba el
+   72ch en primer lugar.
+   `columns` sólo actúa sobre un contenedor de BLOQUE. Acá es seguro porque
+   .cg-method (dashboard.css) no declara `display` — es la trampa del CLAUDE.md
+   al revés: antes de escribir esto hay que mirar qué display le pone la otra
+   hoja, o la regla queda inerte sin fallar ni avisar. */
+@media (min-width: 900px) {
+  .cg-marco { max-width: none; columns: 2; column-gap: 44px; }
+  /* La apertura es LA definición del informe: cruza las dos columnas para que
+     se lea como entrada y no como una columna más. */
+  .cg-marco .cg-marco-lead { column-span: all; margin-bottom: 18px; }
+}
 .cg-marco p {
   font-size: 15px; line-height: 1.7; color: var(--dark);
   margin: 0 0 14px;
