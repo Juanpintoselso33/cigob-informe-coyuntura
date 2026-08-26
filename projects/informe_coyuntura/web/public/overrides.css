@@ -589,8 +589,15 @@
 .cg-ficha-dl dd { margin: 0; font-size: 13.5px; color: var(--dark); font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
 .cg-ficha-dl dd a { color: var(--teal-ink); font-weight: 700; }
 .cg-ficha-dl dd code { font-family: var(--ff-mono); font-size: 12.5px; background: var(--bg-page); border: 1px solid var(--bd); border-radius: 6px; padding: 1px 6px; }
-.cg-ficha-p { font-size: 14px; line-height: 1.65; color: var(--dark); margin: 0 0 10px; max-width: 72ch; }
-.cg-ficha-ul { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.65; color: var(--dark); max-width: 72ch; }
+/* 90ch y no 72ch: estos bloques viven DENTRO de tarjetas que ocupan todo el
+   ancho, y a 72ch (~500px en una tarjeta de ~1195px) quedaba media tarjeta
+   blanca — la caja dibujaba el borde alrededor del vacío. No se puede llenar
+   del todo sin llegar a ~170 caracteres por renglón, que es ilegible; 90ch es
+   el punto donde deja de leerse como un error sin arruinar la medida.
+   El marco de /metodologia queda en 72ch a propósito: ahí el ancho se
+   aprovecha con dos columnas, que sí sirven porque es prosa corrida. */
+.cg-ficha-p { font-size: 14px; line-height: 1.65; color: var(--dark); margin: 0 0 10px; max-width: 90ch; }
+.cg-ficha-ul { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.65; color: var(--dark); max-width: 90ch; }
 .cg-ficha-ul li { margin-bottom: 8px; }
 .cg-ficha-ul li::marker { color: var(--teal-ink); }
 .cg-paso-chip {
@@ -608,7 +615,7 @@
 .cg-ficha-callout {
   background: var(--bg-page); border: 1px solid var(--bd); border-left: 3px solid var(--teal);
   border-radius: 10px; padding: 14px 16px; margin: 14px 0 0;
-  font-size: 13.5px; line-height: 1.6; color: var(--dark); max-width: 72ch;
+  font-size: 13.5px; line-height: 1.6; color: var(--dark); max-width: 90ch;
 }
 .cg-ficha-callout a { color: var(--teal-ink); font-weight: 700; }
 .cg-ficha-math { overflow-x: auto; padding: 6px 0; }
@@ -624,7 +631,7 @@
 .cg-ficha-tabla tbody tr + tr { border-top: 1px dashed var(--bd); }
 .cg-ficha-tabla td.num { font-variant-numeric: tabular-nums; font-family: var(--ff-dato); font-size: 12.5px; white-space: nowrap; }
 .cg-ficha-cell-note { display: block; margin-top: 3px; color: var(--muted); font-family: inherit; font-size: 10.5px; font-weight: 500; }
-.cg-cambios { list-style: none; margin: 0; padding: 0; max-width: 72ch; }
+.cg-cambios { list-style: none; margin: 0; padding: 0; max-width: 90ch; }
 .cg-cambios li {
   position: relative; padding: 0 0 16px 18px; margin-left: 6px;
   border-left: 2px solid var(--bd);
