@@ -1,6 +1,6 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-25 20:11:20"
+generado: "2026-08-25 21:39:35"
 score_global: 3.6
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -14,7 +14,7 @@ schema_version: "1.2.0"
 
 ## Cinturones
 
-### 🟡 Macro — score 3.5/10 (en_tension)
+### 🟡 Macro — score 3.4/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -35,7 +35,7 @@ schema_version: "1.2.0"
 | iai | -0.18 | % i.a. ponderado | 2026-06-01 | fresco |
 | icip | 8.36 | % i.a. ponderado | 2026-04-01 | fresco |
 | credito_privado | -1.5 | % i.a. real (crédito en pesos) | 2026-07-01 | fresco |
-| costo_financiamiento_tesoro | 5.8 | % real anual (TIREA vs. inflación esperada REM) | 2026-07-01 | fresco |
+| costo_financiamiento_tesoro | 4.13 | % real anual (TIREA vs. inflación esperada REM) | 2026-07-01 | fresco |
 | resultado_primario | 5.55 | % de la recaudación (acum. 12 meses) | 2026-06-01 | fresco |
 | prestamos_privados | 2.2 | % mensual nominal | 2026-08-20 | fresco |
 | base_monetaria | 0.27 | % mensual nominal | 2026-08-21 | fresco |
@@ -49,7 +49,6 @@ schema_version: "1.2.0"
 | votometro_ventaja_lla | 4.3 | Puntos porcentuales | 2026-07-22 | fresco |
 | ratio_dnu | 1.48 | DNUs publicados por ley publicada | 2026-08-25 | fresco |
 | brecha_obra_publica | -1.1 | pp de brecha (obra pública − privada, 12m) | 2026-09-01 | fresco |
-| apoyo_empresario | -0.429 | saldo de postura (−1 a +1, 12m móviles) | 2026-08-01 | fresco |
 | conflictividad_nacional | -24.0 | % vs 2023 | 2026-07-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4760195 | jornadas individuales no trabajadas (12m) | 2026-05-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
@@ -65,11 +64,17 @@ schema_version: "1.2.0"
 | bloqueo_sostenido | 33.3 | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-08-25 | fresco |
 | desafios_legislativos | 3.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-08-25 | fresco |
 | produccion_legislativa | 25 | leyes sancionadas (12m) | 2026-08-01 | fresco |
-| judicializacion | 1.57 | % de sumarios con medida cautelar | 2026-01-01 | ⚠ cache |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 7 | sesiones de las comisiones de control (12m) | 2026-08-01 | fresco |
 | cobertura_judicial | 69.63 | % de cargos de juez con juez designado | 2026-08-01 | fresco |
 | alineamiento_senadores_prov | 57.0 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-08-06 | fresco |
+
+**Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
+
+| Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
+|---|---|---|---|---|---|
+| apoyo_empresario | -0.429 | saldo de postura (−1 a +1, 12m móviles) | 2026-08-01 | agosto de 2026 (ADR-0246) | El saldo −0,429 salía de SIETE textos codificados con CATORCE pendientes, y entre los pendientes había apoyos y críticas sustantivos. Un saldo sobre un corpus abierto no mide la postura del sector: mide qué se alcanzó a codificar. |
+| judicializacion | 1.57 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
 
 ### 🔴 Vida Cotidiana — score 6.2/10 (tensionado)
 *Riesgo de barbarismo: político*
@@ -90,8 +95,6 @@ schema_version: "1.2.0"
 | desregulacion_normativa | 16771.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-07-01 | fresco |
 | reduccion_estado | -20.36 | % de variación vs dic-2023 (dotación APN) | 2026-06-01 | fresco |
 | gasto_funcionamiento | -31.37 | % de variación real vs 2023-06 (IMIG funcionamiento) | 2026-06-01 | fresco |
-| masa_salarial | -32.37 | % de variación real vs 2023-06 (SPN remuneraciones) | 2026-06-01 | fresco |
-| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-08-25 | fresco |
 | fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-08-25 | fresco |
 | litigiosidad_laboral | 2.1 | % variación juicios SRT (12m vs 12m previos) | 2026-05-01 | fresco |
 | privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
@@ -103,5 +106,12 @@ schema_version: "1.2.0"
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-08-25 | fresco |
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 
+**Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
+
+| Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
+|---|---|---|---|---|---|
+| masa_salarial | -32.37 | % de variación real vs 2023-06 (SPN remuneraciones) | 2026-06-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. La card se sigue publicando con su valor mensual — lo que se retira es el puntaje, no el dato. |
+| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-08-25 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
+
 ---
-*Generado por CIGOB — 2026-08-25 20:11:20 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-25 21:39:35 — schema 1.2.0*

@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Macroeconomía — resumen
 
-Este documento tiene una ficha por indicador — son 17 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 15 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,16 +35,16 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 64,1** | **VERDE** | Moderadamente aflojado | 17 indicadores: 9 en verde · 6 en amarillo · 2 en naranja |
+| **ITCM: 65,6** | **VERDE** | Moderadamente aflojado | 15 indicadores: 9 en verde · 4 en amarillo · 2 en naranja |
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde cuatro señales complementarias. | 65,3 | VERDE | 26,0 % |
+| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 72,3 | VERDE | 26,0 % |
 | Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 71,0 | VERDE | 24,0 % |
-| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero (IdC), crédito real otorgado y el costo del Tesoro. | 62,0 | VERDE | 16,0 % |
-| Inversión | Si alguien está apostando al futuro. | 64,9 | VERDE | 12,0 % |
+| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero (IdC), crédito real otorgado y el costo del Tesoro. | 63,8 | VERDE | 16,0 % |
+| Inversión | Si alguien está apostando al futuro: la inversión física —construcción y bienes de capital—, que desde agosto de 2026 es el único componente que puntúa. | 59,2 | AMARILLO | 12,0 % |
 | Actividad económica | Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. | 64,1 | VERDE | 11,0 % |
 | Competitividad externa | Si el tipo de cambio real alcanza para competir: el ITCRM oficial del BCRA contra su propia historia. | 48,7 | AMARILLO | 11,0 % |
 
@@ -61,10 +61,9 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCM |
 |---|---|---|---|---|
 | **DIMENSIÓN: Estabilidad monetaria-inflacionaria** | | | | |
-| Inflación mensual (IPC) | Cuánto suben en el mes los precios al consumidor en general. | 2,11 % mensual | VERDE | 10,4 % |
+| Inflación mensual (IPC) | Cuánto suben en el mes los precios al consumidor en general. | 2,11 % mensual | VERDE | 15,6 % |
 | Expectativas inflación (REM 12m) | La inflación que el mercado espera para los próximos 12 meses. | 21,8 % anual esperado | VERDE | 5,2 % |
-| Brecha de crecimiento real M3–M2 | Brecha de crecimiento real M3–M2. | 4,7 pp (brecha i.a. real) | AMARILLO | 5,2 % |
-| Liquidez en pesos y presión compradora de divisas | Una medida de 0 a 100 que cruza dos cosas observables. | 50,86 pts de tensión (0-100) | AMARILLO | 5,2 % |
+| Liquidez en pesos y presión compradora de divisas | Una medida de 0 a 100 que cruza dos cosas observables. | 38,69 pts de tensión (0-100) | VERDE | 5,2 % |
 | **DIMENSIÓN: Viabilidad fiscal-comercial** | | | | |
 | Saldo comercial 12m | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses. | 22.481 Millones de USD (acum. 12 meses) | VERDE | 4,8 % |
 | Base imponible real (nación + provincias) | Cuánta economía formal hay para gravar, medida en pesos constantes y comparada contra el cuarto trimestre de 2023, que… | 88,2 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
@@ -73,10 +72,9 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Reservas netas | Los dólares de libre disponibilidad del Banco Central. | 11.962 Millones de USD | VERDE | 5,4 % |
 | Capacidad prestable (IdC) | Índice de Capacidad Prestable. | −0,32 σ vs. su historia | AMARILLO | 3,4 % |
 | Crédito privado real | Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el… | −1,5 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
-| Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 5,8 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
+| Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 4,13 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
 | **DIMENSIÓN: Inversión** | | | | |
-| Inversión física (IAI) | Índice Anticipador de Inversión. | −0,18 % i.a. ponderado | AMARILLO | 7,2 % |
-| Pagos de servicios digitales y productividad | Pagos de servicios digitales y productividad. | 8,36 % i.a. ponderado | VERDE | 4,8 % |
+| Inversión física (IAI) | Índice Anticipador de Inversión. | −0,18 % i.a. ponderado | AMARILLO | 12,0 % |
 | **DIMENSIÓN: Actividad económica** | | | | |
 | Actividad económica (EMAE i.a.) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | 2,69 % i.a. | VERDE | 6,6 % |
 | Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el INDEC divide la actividad económica, cuántos crecen respecto de un año atrás. | 80 % de sectores en crecimiento i.a. | VERDE | 2,2 % |
@@ -100,7 +98,7 @@ Cuánto suben en el mes los precios al consumidor en general.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 2,11 % mensual** (2026-07) | **VERDE** | Peso efectivo 10,4 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 2,11 % mensual** (2026-07) | **VERDE** | Peso efectivo 15,6 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -118,7 +116,7 @@ Cuánto suben en el mes los precios al consumidor en general.
 
 Es el termómetro central de la estabilización: marca si el programa antiinflacionario avanza o se estanca.
 
-**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM), la brecha de crecimiento real entre el agregado amplio y el transaccional (IDM) y la presión por salir del peso, observada según el régimen cambiario vigente.
+**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM) y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
 
 ## Método de cómputo
 
@@ -152,7 +150,7 @@ Dato vigente: 2,11 % mensual (2026-07).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCM: 10,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 15,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** El IPC participa además como deflactor de otros componentes del sistema: la recaudación real, el crédito privado real, el IDM y la tasa real del IdC. Un error de medición de la fuente se propagaría a esos indicadores.
 
@@ -941,7 +939,7 @@ La inflación que el mercado espera para los próximos 12 meses.
 
 Captura la credibilidad del programa: si el mercado espera que la inflación siga bajando, el ancla de expectativas funciona; si la ve acelerarse, hay desconfianza.
 
-**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM), la brecha de crecimiento real entre el agregado amplio y el transaccional (IDM) y la presión por salir del peso, observada según el régimen cambiario vigente.
+**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM) y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
 
 ## Método de cómputo
 
@@ -1009,108 +1007,13 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Brecha de crecimiento real M3–M2
-
-Brecha de crecimiento real M3–M2: compara cuánto crece el agregado amplio de pesos del sector privado (M3 privado) con cuánto crece el transaccional (M2 privado), ambos en términos reales e interanuales. Los dos son agregados monetarios, así que la brecha NO es oferta menos demanda de dinero: estimar una demanda pide variables, forma funcional y validación, y nada de eso hay acá (ADR-0254). El M2 transaccional incluye el circulante en poder del público, las cuentas corrientes privadas en pesos y las cajas de ahorro privadas en pesos; excluye los depósitos a la vista remunerados de personas jurídicas.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: 4,7 pp (brecha i.a. real)** (2026-07) | **AMARILLO** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | idm | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Estabilidad monetaria-inflacionaria | **UNIDAD DE MEDIDA** | pp (brecha i.a. real) |
-| **SERIE DISPONIBLE** | 2023-11 → 2026-07 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Necesita el IPC cerrado para deflactar: se publica para el último mes con IPC disponible, unas dos semanas después de mediados del mes siguiente. |
-| **PRODUCTOR DEL DATO** | BCRA (agregados monetarios) + INDEC (IPC como deflactor) | **OPERACIÓN ESTADÍSTICA** | Agregados monetarios privados: circulante en poder del público, depósitos privados, cuentas corrientes privadas en pesos, cajas de ahorro privadas en pesos y M2 transaccional privado; índice de elaboración propia |
-| **MODO DE ACCESO** | Automático: API pública del BCRA y API de series de datos.gob.ar; la brecha se calcula en el propio informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-25 |
-
-## Definición — qué mide y por qué importa
-
-Brecha de crecimiento real M3–M2: compara cuánto crece el agregado amplio de pesos del sector privado (M3 privado) con cuánto crece el transaccional (M2 privado), ambos en términos reales e interanuales. Los dos son agregados monetarios, así que la brecha NO es oferta menos demanda de dinero: estimar una demanda pide variables, forma funcional y validación, y nada de eso hay acá (ADR-0254). El M2 transaccional incluye el circulante en poder del público, las cuentas corrientes privadas en pesos y las cajas de ahorro privadas en pesos; excluye los depósitos a la vista remunerados de personas jurídicas.
-
-Muestra hacia dónde se mueven los pesos dentro del sistema: una brecha positiva dice que el agregado amplio corre más rápido que el transaccional —los pesos se van a plazo y a instrumentos remunerados en vez de quedarse en transacciones—; una negativa, lo contrario. Es un dato sobre la velocidad relativa de dos agregados, no un diagnóstico de exceso monetario.
-
-**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM), la brecha de crecimiento real entre el agregado amplio y el transaccional (IDM) y la presión por salir del peso, observada según el régimen cambiario vigente.
-
-## Método de cómputo
-
-- M3 privado construido = circulante en poder del público + depósitos privados, a fin de mes (no existe como serie directa del BCRA).
-- M2 privado transaccional = circulante en poder del público + cuentas corrientes privadas en pesos + cajas de ahorro privadas en pesos. Excluye los depósitos a la vista remunerados de personas jurídicas.
-- IDM = crecimiento interanual real del M3 privado − crecimiento interanual real del M2 privado, ambos deflactados por IPC, en puntos porcentuales.
-- Positivo = sobran pesos respecto de lo que la economía quiere retener (presión latente sobre precios y brecha); negativo = remonetización genuina.
-
-## Semáforo — valores que determinan el color
-
-Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
-
-**Valores que definen cada color**
-
-| Rango (pp (brecha i.a. real)) | Color |
-|---|---|
-| ≤ 3,5 | VERDE |
-| 3,5 – 5,9 | AMARILLO |
-| 5,9 – 7,4 | NARANJA |
-| ≥ 7,4 | ROJO |
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- brecha 4,7 pp = M3 priv. real i.a. −3,64% − M2 priv. real i.a. −8,33%
-
-## Color vigente y por qué
-
-Dato vigente: 4,7 pp (brecha i.a. real) (2026-07).
-
-4,7 pp (brecha i.a. real) cae en el tramo que corresponde a Amarillo, a 1,2 del corte más cercano.
-
-**Color vigente: AMARILLO**
-
-Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-- **Participación en otros indicadores.** Comparte insumos con el IdC (depósitos privados y el IPC como deflactor).
-
-## Transparencia — limitaciones declaradas
-
-- Las bandas están calibradas con una historia corta (fines de 2024 en adelante): desde −11 puntos en la remonetización hasta +7 en el pico de excedente.
-- La fórmula es una reinterpretación documentada de la propuesta institucional: la versión literal (nominal contra real, mensual) tenía sesgo inflacionario y estacionalidad de aguinaldo, y se reemplazó por la versión interanual real-real.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, IPC, REM y presión de dolarización renormalizan dentro de la dimensión.
-
-- **Política de revisiones:** Los stocks del BCRA no se revisan de forma habitual; la serie se regenera completa en cada actualización.
-
-## Historial — cambios metodológicos documentados
-
-**2026-06-28** — Nace y entra al índice: la dimensión de estabilidad monetaria pasa de IPC 50% / REM 50% a IPC 40% / REM 30% / IDM 30%, en versión interanual real-real.
-
-**2026-07-03** — Puntaje interpolado entre anclas.
-
-**2026-07-13** — Aclaración de transparencia, sin cambio metodológico: la ficha explicita la composición del M2 transaccional y publica la cadena completa de ponderación y el aporte vigente del IDM al ITCM.
-
-**2026-07-13** — Su peso interno pasa de 30% a 25% al incorporarse una señal de presión de dolarización; su peso nominal efectivo en el ITCM pasa de 7,8% a 6,5%.
-
-**2026-08-25** — ADR-0254: el indicador pasa a llamarse «Brecha de crecimiento real M3–M2». Se publicaba como «Exceso de pesos sobre la demanda» y no mide eso: M3 y M2 son los dos agregados monetarios, y una demanda de dinero es una función estimada —variables, forma funcional, período, validación— que acá no existe. La fórmula, la banda y el peso no cambian, así que la serie sigue siendo comparable hacia atrás; lo que cambia es la lectura, que pasa de «sobran pesos» a hacia dónde se mueven los pesos dentro del sistema. Queda anotado que la banda se calibró bajo la lectura anterior y merece revisarse.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
-
 # Liquidez en pesos y presión compradora de divisas
 
 Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso (ADR-0252): el BCRA estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 50,86 pts de tensión (0-100)** (2026-06) | **AMARILLO** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 38,69 pts de tensión (0-100)** (2026-06) | **VERDE** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1128,7 +1031,7 @@ Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez pr
 
 Los dos componentes se leen juntos porque uno solo alcanza para engañar: la composición de la liquidez puede verse estable mientras crece la compra de divisas, y a la inversa. El resultado sale de cruzarlos en una matriz, no de promediarlos. Mayor tensión reduce el puntaje de estabilidad monetaria.
 
-**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM), la brecha de crecimiento real entre el agregado amplio y el transaccional (IDM) y la presión por salir del peso, observada según el régimen cambiario vigente.
+**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM) y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
 
 ## Método de cómputo
 
@@ -1136,8 +1039,8 @@ Los dos componentes se leen juntos porque uno solo alcanza para engañar: la com
 - El numerador es la variable 197 del BCRA y no una reconstrucción propia, porque la definición del indicador excluye la vista remunerada de personas jurídicas y esa exclusión no se puede replicar sumando circulante, cuentas corrientes y cajas de ahorro: medido sobre la historia disponible, esa suma corre 22,8% por encima de la 197 en promedio y hasta 57% en un mes.
 - Componente B (flujo, presión compradora de divisas): compra neta de billetes y divisas sin fines específicos del sector privado no financiero, en millones de dólares, con el sector público excluido. Positivo significa más compra neta. NO identifica dinero fuera del sistema financiero: el BCRA estimó que cerca del 80% de esas compras quedó depositado localmente, y comprar divisas y sacarlas del sistema son dos actos distintos.
 - Cada componente se convierte en una posición de 0 a 1 interpolando entre los percentiles de su ventana de calibración, con saturación fuera de los extremos. Componente A: 31,62 → 0; 34,48 → 0,25; 38,27 → 0,50; 44,34 → 0,75; 49,96 → 1. Componente B: 1.122 → 0; 1.954 → 0,25; 2.363 → 0,50; 3.644 → 0,75; 6.545 → 1.
-- Las dos posiciones se cruzan por interpolación bilineal entre las cuatro esquinas de la matriz, expresadas en tensión de 0 a 100: A alto con B bajo (liquidez transaccional alta y poca compra de divisas) da 0; A bajo con B bajo (menos pesos transaccionales, sin presión compradora) da 40; A alto con B alto (presión compradora alta pese a liquidez transaccional alta) da 77,5; A bajo con B alto (menos pesos transaccionales y presión compradora alta) da 90.
-- La celda que la ficha original dejó escrita como «naranja/rojo» se resuelve como el punto medio entre naranja (65) y rojo (90), que es 77,5.
+- Las dos posiciones se cruzan entre las cuatro esquinas de la matriz, expresadas en tensión de 0 a 100: liquidez transaccional alta y poca compra de divisas da 0; menos pesos transaccionales, sin presión compradora da 58,75; presión compradora alta pese a liquidez transaccional alta da 58,75; menos pesos transaccionales y presión compradora alta da 90.
+- Las dos esquinas cruzadas valen lo mismo. La ficha original las había fijado en 40 y 77,5, apoyada en la tesis de que la fuga fuera del sistema es la señal grave; como el componente B no observa fuga sino compra de divisas, esa asimetría se quedó sin fundamento y el dato no pudo reponerlo — contra tres referencias externas cada componente sale con el signo invertido en al menos una. Cuando no se puede determinar un orden, no se codifica uno. Lo que se reparte en partes iguales es la misma severidad total que la ficha les había asignado a las dos juntas (40 más 77,5), así que cambia el orden y no el nivel: 58,75 queda por encima de 45, que es donde la matriz se volvería un promedio liso y un componente sano taparía al otro en su peor valor.
 - La tensión se traduce al ITCM con anclas explícitas que son su inversión exacta: 0 da 100 y 100 da 0. Las cuatro esquinas caen sobre esa recta, de modo que no hay una segunda escala que se pueda desincronizar de la del cálculo.
 - Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del ITCM: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su 11% viene de ser el único indicador de su dimensión y no de un juicio sobre su importancia relativa.
 
@@ -1158,15 +1061,15 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- tensión 50,86 pts = liquidez privada en pesos transaccionales 33,49% × compra neta de divisas del sector privado US$ 2067,4 M — menos pesos transaccionales, sin presión compradora
+- tensión 38,69 pts = liquidez privada en pesos transaccionales 33,49% × compra neta de divisas del sector privado US$ 2067,4 M — liquidez transaccional alta y poca compra de divisas, medidos contra el régimen abierto
 
 ## Color vigente y por qué
 
-Dato vigente: 50,86 pts de tensión (0-100) (2026-06).
+Dato vigente: 38,69 pts de tensión (0-100) (2026-06).
 
-50,86 pts de tensión (0-100) cae en el tramo que corresponde a Amarillo, a 9,14 del corte más cercano.
+38,69 pts de tensión (0-100) cae en el tramo que corresponde a Verde, a 1,31 del corte más cercano.
 
-**Color vigente: AMARILLO**
+**Color vigente: VERDE**
 
 Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -1175,7 +1078,8 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 ## Transparencia — limitaciones declaradas
 
 - La serie arranca en abril de 2025 y no antes. El componente de flujo se puede calcular desde 2003, pero bajo cepo daba prácticamente cero por falta de acceso al dólar, no por confianza: publicarlo hacia atrás haría leer «poca fuga» —es decir, verde— justo en los meses de control de cambios.
-- La ventana de calibración del componente A empieza en enero de 2021, no en 2016 como pedía la ficha original, porque el M2 transaccional del sector privado no se publica antes de esa fecha y reconstruirlo con las series sueltas desplazaría el ratio casi nueve puntos porcentuales.
+- El componente A se puede calcular desde enero de 2021 y no antes: el M2 transaccional del sector privado no se publica antes de esa fecha, y reconstruirlo con las series sueltas desplazaría el ratio casi nueve puntos porcentuales — por eso no arranca en 2016, como pedía la ficha original.
+- La ventana con la que se lo CALIBRA, en cambio, es la misma que la del componente B: desde abril de 2025, la apertura del cepo a personas humanas. Es una distinción que importa. Bajo cepo, un ratio alto de pesos transaccionales no mide confianza en el peso: mide que no había otro lugar donde ponerlos, igual que la compra de divisas daba casi cero por falta de acceso y no por tranquilidad. Calibrar contra 2021-2026 mezclaba los dos regímenes, y las distribuciones casi no se tocan: bajo cepo el ratio corría entre 33,1% y 50,0% con una mediana de 40,3%, y en régimen abierto corre entre 30,6% y 37,7% con una mediana de 32,8% — el máximo del régimen abierto queda por debajo de la mediana del cepo. El efecto era que el componente A quedaba pegado a su piso casi todos los meses y el indicador funcionaba, en los hechos, con uno solo de sus dos componentes.
 - El componente B tiene sólo quince meses de historia bajo el régimen abierto. Los cortes por percentiles deberán revisarse cuando haya más evidencia posterior a la apertura del cepo.
 - Los cortes por percentiles hacen que verde signifique el mejor cuarto de la ventana de calibración, que es un período de dolarización alta, y no un nivel deseable en abstracto. Cuando un componente se mueve cerca del extremo de su ventana, su posición se satura y el indicador deja de distinguir entre meses: la tabla de anclas y la serie muestran dónde está cayendo.
 - El denominador del componente A incluye depósitos en dólares valuados en pesos, así que una devaluación baja el ratio aunque nadie cambie de cartera. El efecto es visible en diciembre de 2023 y en julio de 2025. La tensión cambiaria que eso refleja ya puntúa además por su cuenta en el TCRM.
@@ -1197,6 +1101,8 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 **2026-08-25** — El componente B pasa a llamarse presión compradora de divisas. Se llamaba «fuga fuera del sistema» y no identifica eso: mide la compra neta de billetes y divisas del sector privado no financiero, y el BCRA estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos. Las cuatro celdas de la matriz pasan a describir la combinación observada en vez del destino del dinero. El valor, la matriz y las bandas no cambian. Queda anotado que la asimetría de la matriz —degradar B cuesta 77,5 puntos y degradar A sólo 40— se justificaba con la tesis de la fuga y merece revisarse en la próxima recalibración.
 
+**2026-08-25** — Se salda la deuda anterior y aparece un defecto más grande que la escondía. (1) El componente A se calibraba contra 2021-2026, y 51 de esos 68 meses son de cepo: bajo cepo un ratio alto de pesos transaccionales no mide confianza, mide que no había dónde ir — el mismo argumento que la ficha ya había aceptado para B y no había aplicado a A. Las dos distribuciones casi no se tocan (el máximo del régimen abierto cae por debajo de la mediana del cepo), así que A quedaba clavada contra su piso y el indicador era casi unidimensional. Pasa a calibrarse en la misma ventana que B, desde la apertura del cepo. (2) Las dos esquinas cruzadas de la matriz pasan a valer lo mismo (58,75 cada una, contra 40 y 77,5): la asimetría había perdido su fundamento y el dato no pudo reponerlo. Se reparte en partes iguales la misma severidad total que la ficha les había dado a las dos juntas, así que cambia el orden y no el nivel y la forma de la matriz queda intacta. (3) Los cuadrantes dejan de nombrarse por colores, porque dos de ellos ahora puntúan igual. Junio de 2026 pasa de 50,86 a 38,69 puntos de tensión: +9,70 lo aporta la matriz y −13,67 la ventana.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -1211,7 +1117,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,18 % i.a. ponderado** (2026-06) | **AMARILLO** | Peso efectivo 7,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −0,18 % i.a. ponderado** (2026-06) | **AMARILLO** | Peso efectivo 12 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1229,7 +1135,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 Anticipa si el país amplía su capacidad productiva (máquinas, obra, equipo) o se descapitaliza. Mayor = la inversión se expande por encima de la reposición; negativo = se consume más stock de capital del que se genera. Se construye con datos del INDEC (ISAC + ICA bienes de capital).
 
-**Dimensión que integra — Inversión.** Si alguien está apostando al futuro: inversión física (construcción, bienes de capital) y gasto en servicios digitales, que no es lo mismo — los pagos al exterior por informática y nube son consumo intermedio, no formación de capital.
+**Dimensión que integra — Inversión.** Si alguien está apostando al futuro: la inversión física —construcción y bienes de capital—, que desde agosto de 2026 es el único componente que puntúa. El gasto en servicios digitales acompañaba como segundo componente hasta agosto de 2026, cuando pasó a calcularse fuera del índice: los pagos al exterior por informática y nube son consumo intermedio, no formación de capital, y el compuesto sumaba con el mismo signo dos insumos que necesitarían signos opuestos.
 
 ## Método de cómputo
 
@@ -1263,7 +1169,7 @@ Dato vigente: −0,18 % i.a. ponderado (2026-06).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** La operación ISAC también alimenta (en su variante desestacionalizada) un componente del ITCIS; los bienes de capital son una subserie del ICA que alimenta el saldo comercial.
 
@@ -1286,103 +1192,6 @@ Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicion
 **2026-07-03** — Puntaje interpolado entre anclas.
 
 **2026-07-04** — El titular pasa al último mes común de las fuentes (antes podía mezclar meses distintos bajo una sola etiqueta); el componente fresco queda como provisorio.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
-
-# Pagos de servicios digitales y productividad
-
-Pagos de servicios digitales y productividad: combina los pagos al exterior por servicios de informática (software, nube, IA) con la productividad laboral (IPI/empleo), en variación interanual. NO es inversión digital ni capitalización (ADR-0253): en cuentas nacionales esos pagos transfronterizos son consumo intermedio, no formación bruta de capital — pagar la licencia de la nube todos los meses no capitaliza a nadie.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: 8,36 % i.a. ponderado** (2026-04) | **VERDE** | Peso efectivo 4,8 % del ITCM | Cinturón Macroeconomía |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | icip | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Inversión | **UNIDAD DE MEDIDA** | % i.a. ponderado |
-| **SERIE DISPONIBLE** | 2023-08 → 2026-04 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El titular se calcula al último mes común de los tres insumos (~2 meses y medio a 3); el insumo más fresco se muestra como provisorio. |
-| **PRODUCTOR DEL DATO** | INDEC (los tres insumos) | **OPERACIÓN ESTADÍSTICA** | Balanza de servicios (pagos al exterior de servicios de informática) + IPI manufacturero + índice de empleo de la Encuesta de Indicadores Laborales |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo; la composición se calcula en el propio informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-08-25 |
-
-## Definición — qué mide y por qué importa
-
-Pagos de servicios digitales y productividad: combina los pagos al exterior por servicios de informática (software, nube, IA) con la productividad laboral (IPI/empleo), en variación interanual. NO es inversión digital ni capitalización (ADR-0253): en cuentas nacionales esos pagos transfronterizos son consumo intermedio, no formación bruta de capital — pagar la licencia de la nube todos los meses no capitaliza a nadie.
-
-Sigue el gasto en tecnología que no pasa por aduana como bien de capital. Leído junto al IAI apunta a la 'trampa de la madurez': un país puede invertir en ladrillos y camiones pero estancarse si no se digitaliza. Con una advertencia declarada en la ficha: un aumento de los pagos al exterior por software admite leerse como digitalización o como dependencia tecnológica, y el indicador puntúa la primera. Medir inversión digital de verdad pediría software, bases de datos y equipos TIC según cuentas nacionales: eso es un indicador nuevo, no otro rótulo sobre éste. Se construye con datos del INDEC (balanza de servicios + IPI/empleo).
-
-**Dimensión que integra — Inversión.** Si alguien está apostando al futuro: inversión física (construcción, bienes de capital) y gasto en servicios digitales, que no es lo mismo — los pagos al exterior por informática y nube son consumo intermedio, no formación de capital.
-
-## Método de cómputo
-
-- Servicios tecnológicos: variación interanual de los pagos al exterior por software, nube e inteligencia artificial.
-- Productividad: variación interanual del cociente producción industrial / empleo.
-- Promedio ponderado 57% servicios + 43% productividad.
-
-## Semáforo — valores que determinan el color
-
-Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
-
-**Valores que definen cada color**
-
-| Rango (% i.a. ponderado) | Color |
-|---|---|
-| ≥ 0 | VERDE |
-| −10 – 0 | AMARILLO |
-| −17 – −10 | NARANJA |
-| ≤ −17 | ROJO |
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- +8.4 % i.a. = servicios tech +15.6% · productividad -1.2% (mes común: 2026-04) — servicios tech 2026-06 (provisorio, no puntúa): +2.5%
-
-## Color vigente y por qué
-
-Dato vigente: 8,36 % i.a. ponderado (2026-04).
-
-8,36 % i.a. ponderado cae en el tramo que corresponde a Verde, a 8,36 del corte más cercano.
-
-**Color vigente: VERDE**
-
-Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-- **Participación en otros indicadores.** La misma operación IPI alimenta al indicador de producción industrial manufacturera, que puntúa por sí mismo en la dimensión de actividad del ITCM: acá entra como cociente contra el empleo, allá como variación interanual del nivel general.
-
-## Transparencia — limitaciones declaradas
-
-- El diseño institucional incluía la importación de hardware de alta tecnología, que no es automatizable con las fuentes públicas actuales: el índice quedó con dos de tres componentes, renormalizados y declarados.
-- AMBIGÜEDAD DE INTERPRETACIÓN, declarada. Un aumento de los pagos al exterior por servicios de informática admite dos lecturas opuestas y el índice adopta una: puede significar que la economía se está digitalizando —incorpora software, nube e inteligencia artificial para producir mejor— o que depende de tecnología que no produce y gira divisas para conseguirla. El indicador puntúa la primera lectura: más pagos, mejor puntaje. La evidencia disponible la respalda sólo en parte. Sobre ciento siete meses, los pagos anticipan a la productividad con una correlación de 0,28 cuando se los adelanta un trimestre: una asociación real pero modesta, compatible también con que ambas variables suban juntas cuando la economía crece, sin que una cause a la otra. Quien lea el indicador debe saber que un valor alto no distingue por sí solo entre capitalización tecnológica y dependencia tecnológica.
-- El componente de pagos al exterior es mucho más volátil que el de productividad (desvío de 71 puntos contra 11) y pesa el 57% del índice: los movimientos del indicador los explica casi siempre esa serie, no la de productividad.
-- Los pagos al exterior por servicios de informática son una aproximación a la digitalización, no una medición directa de inversión en capital digital.
-- El empleo de la encuesta laboral se usa como aproximación de las horas trabajadas.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Sin mes común de los tres insumos, se mantiene el último valor disponible, señalado como desactualizado; sin dato, el IAI pasa a explicar toda la dimensión de inversión.
-
-- **Política de revisiones:** Titular por panel alineado, no se revisa; las revisiones de las fuentes se absorben al regenerar las series.
-
-## Historial — cambios metodológicos documentados
-
-**2026-07-18** — Se declara en la ficha la ambigüedad de interpretación del componente de pagos al exterior, que admite leerse como capitalización tecnológica o como dependencia tecnológica, junto con la evidencia que la respalda parcialmente.
-
-**2026-06-30** — Nace y entra al índice (dimensión inversión, 40% interno), sin el componente de hardware y con bandas anchas propias.
-
-**2026-07-03** — Puntaje interpolado entre anclas.
-
-**2026-07-04** — El titular pasa al último mes común de los tres insumos.
-
-**2026-08-25** — ADR-0253: el indicador pasa a llamarse «Pagos de servicios digitales y productividad». Se publicaba como «Capitalización digital» y su insumo principal no lo sostiene: en cuentas nacionales, los pagos al exterior por informática y nube son consumo intermedio, no formación bruta de capital. La fórmula, la banda y el peso no cambian; lo que se retira es la afirmación de que ese gasto capitaliza. Medir inversión digital de verdad pediría software, bases de datos y equipos TIC según cuentas nacionales, que es un indicador nuevo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1487,7 +1296,7 @@ Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos: la tas
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 5,8 % real anual (TIREA vs. inflación esperada REM)** (2026-07) | **VERDE** | Peso efectivo 4 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 4,13 % real anual (TIREA vs. inflación esperada REM)** (2026-07) | **VERDE** | Peso efectivo 4 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1533,13 +1342,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 2026-07: TIREA 28.9% en 2 colocación/es a tasa fija en pesos contra inflación esperada 21.8% → +5.8% real
+- 2026-07: TIREA de corte 26.8% en 2 colocación/es a tasa fija en pesos contra inflación esperada 21.8% → +4.1% real
 
 ## Color vigente y por qué
 
-Dato vigente: 5,8 % real anual (TIREA vs. inflación esperada REM) (2026-07).
+Dato vigente: 4,13 % real anual (TIREA vs. inflación esperada REM) (2026-07).
 
-5,8 % real anual (TIREA vs. inflación esperada REM) cae en el tramo que corresponde a Verde, a 6,7 del corte más cercano.
+4,13 % real anual (TIREA vs. inflación esperada REM) cae en el tramo que corresponde a Verde, a 6,02 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -1564,6 +1373,8 @@ Ponderación vigente en el ITCM: 4 % efectivo. El color es una lectura adicional
 **2026-07-18** — Nace y entra al índice con el 25% de la dimensión de financiamiento, que pasa a llamarse capacidad y costo del financiamiento; los otros tres componentes se recortan en proporción. Cubre el precio del financiamiento del Estado, que la dimensión no medía.
 
 **2026-08-25** — ADR-0238: la TIREA deja de reconstruirse desde precio y fechas y se lee del cupón, que es donde la Secretaría la publica —(1+TEM)^12−1—. La reconstrucción anterior capitalizaba por meses de calendario enteros en vez del plazo real: en la LECAP S13N6 publicaba 32,17% donde la fuente informó 28,32%, y el indicador daba 8,07% real en lugar de 4,92%. Toda la serie desde diciembre de 2023 se recalculó; el desvío iba de −17,8 a +22,0 puntos según el mes, así que un valor anterior a esta fecha no se compara con uno posterior.
+
+**2026-08-25** — ADR-0258: la tasa de cada colocación pasa a ser la TIREA de corte —el rendimiento que fija el precio al que se colocó— y no la tasa contractual del instrumento. Leer el cupón sólo es correcto en una emisión nueva a la par; en una reapertura el cupón fija el flujo y el precio fija el rendimiento. En la reapertura de la LECAP S30N6 del 15 de julio de 2026, colocada a $1.194, el indicador informaba 31,37% donde la Secretaría publicó 25,59%, y julio salía 5,80% real en vez de 4,13%. La convención de días se calibró contra catorce tasas de corte publicadas entre julio de 2025 y agosto de 2026. Toda la serie desde diciembre de 2023 se recalculó: cambian 22 de los 40 meses con colocaciones, así que un valor anterior a esta fecha no se compara con uno posterior.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

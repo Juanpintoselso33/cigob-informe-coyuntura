@@ -42,7 +42,7 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
 | Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 75,8 | VERDE | 35,0 % |
-| Reforma del Estado | El achicamiento del Estado en tres medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real y reestructuración de organismos. | 100,0 | VERDE | 25,0 % |
+| Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 100,0 | VERDE | 25,0 % |
 | Reforma laboral | Instrumento y resultado. | 57,9 | AMARILLO | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales. | 68,6 | VERDE | 15,0 % |
 | Reforma social y orden | La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud. | 90,6 | VERDE | 10,0 % |
@@ -392,7 +392,7 @@ Cuánto varía la dotación de personal de la Administración Pública Nacional 
 
 La métrica insignia de la reforma del Estado: personas, no pesos. Universo: Administración Pública Nacional — incluye fuerzas armadas y de seguridad (~10% de la dotación) y no incluye empresas del Estado ni provincias/municipios.
 
-**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en tres medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real y reestructuración de organismos.
+**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario.
 
 ## Método de cómputo
 
@@ -484,7 +484,7 @@ Cuánto varía en términos reales el gasto de funcionamiento del Estado naciona
 
 La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal.
 
-**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en tres medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real y reestructuración de organismos.
+**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario.
 
 ## Método de cómputo
 

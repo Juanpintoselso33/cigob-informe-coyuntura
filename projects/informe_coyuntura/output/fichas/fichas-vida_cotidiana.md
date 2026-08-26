@@ -41,11 +41,11 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
-| Ingresos y consumo | Si el sueldo alcanza y qué compra. | 112,4 | VERDE | 28,1 % |
+| Ingresos y consumo | Si el sueldo alcanza y qué compra. | 112,2 | VERDE | 28,1 % |
 | Presión de precios | Tres gastos sensibles. | 101,3 | AMARILLO | 25,0 % |
 | Prospectivas de empleo | El trabajo por sus dos caras: cuánto hay y de qué calidad es. | 92,5 | NARANJA | 24,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,7 | ROJO | 10,0 % |
-| Confianza y percepción | El ánimo con que se vive el momento, medido de dos maneras. | 91,1 | NARANJA | 8,2 % |
+| Confianza y percepción | El ánimo con que se vive el momento, medido preguntando. | 91,1 | NARANJA | 8,2 % |
 | Seguridad | Qué proporción de los hogares fue víctima de un delito. | 102,1 | AMARILLO | 4,5 % |
 
 ```{=openxml}
@@ -65,7 +65,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Consumo total de carnes per cápita | Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en promedio móvil de doce meses. | 114,45 kg/hab/año | AMARILLO | 0,9 % |
 | Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,6 % de personas | VERDE | 7,3 % |
 | Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 30,9 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
-| Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 83,2 índice (2017 = 100, desestacionalizado) | NARANJA | 5,6 % |
+| Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 82,1 índice (2017 = 100, desestacionalizado) | NARANJA | 5,6 % |
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,98 % m/m | VERDE | 8,8 % |
 | Canasta de servicios públicos / salario | Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar… | 14,5 % del salario RIPTE | VERDE | 11,2 % |
@@ -75,7 +75,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Peso del trabajo independiente | Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los… | 20,6 % del empleo registrado SIPA, sin monotributo social | NARANJA | 2,4 % |
 | Empleadores PyME activos | Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona declarada con cobertura de ART. | 460.777 empleadores | NARANJA | 3,6 % |
 | Construcción (ISAC) | El nivel de actividad de la construcción, gran motor de empleo de baja calificación. | 148,1 índice ISAC | ROJO | 3,3 % |
-| Subocupación demandante | Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le alcanza. | 7,5 % de la PEA | NARANJA | 1,2 % |
+| Subocupación demandante | Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando… | 7,5 % de la PEA | NARANJA | 1,2 % |
 | Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.106,53 miles de puestos | AMARILLO | 5,4 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
 | Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,52 % de la cartera en situación irregular | ROJO | 7,0 % |
@@ -531,6 +531,8 @@ Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicio
 
 **2026-08-20** — Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023 (ADR-0217). La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.
 
+**2026-08-25** — ADR-0267: cambia qué pasa con la card cuando la fuente no contesta, no cómo se mide. Su publicación vivía dentro de la rama que comprueba si SAGYP trajo el mes, así que un corte de la fuente no la degradaba: la hacía desaparecer del tablero. A diferencia del consumo de carne vacuna, este componente no tiene respaldo en CICCRA, y la rama de respaldo publicaba la vacuna y se olvidaba del total. Pasó de verdad ese mismo día: el colector devolvió vacío y el informe salió con un indicador menos, sin que ninguna verificación lo notara. Desde ahora se publica siempre, con el valor en blanco si la fuente falló, y el mecanismo que arrastra el último dato bueno lo marca como desactualizado. El valor, la serie y el método no cambian.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -563,7 +565,7 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 
 Mide la precariedad laboral y la exclusión de la red de protección social. En el ITCIS su base es el 4T-2023 exacto (el trimestre de arranque del mandato).
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el subocupacion_demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -650,7 +652,7 @@ Qué proporción del empleo registrado son trabajadores independientes —autón
 
 Es la contracara del cierre de empresas. Cuando caen los empleadores, dice si esas unidades productivas desaparecieron o se reconfiguraron en gente que factura por su cuenta. Un empleo que se corre del salario al trabajo independiente pierde aportes patronales, indemnización y estabilidad, aunque siga siendo registrado.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el subocupacion_demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -740,7 +742,7 @@ Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona 
 
 Es el cierre neto de empresas medido de forma directa, no aproximado por la producción industrial: el saldo entre las que abren y las que cierran, que es el dato que dice si el entramado PyME se está achicando.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el subocupacion_demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -830,7 +832,7 @@ El nivel de actividad de la construcción, gran motor de empleo de baja califica
 
 Termómetro de la obra pública y privada, sensible al ciclo económico.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el subocupacion_demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -892,7 +894,7 @@ Ponderación vigente en el ITCIS: 3,3 % efectivo. El color es una lectura adicio
 
 # Subocupación demandante
 
-Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le alcanza.
+Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando otro empleo. Es la tasa de subocupación demandante de la EPH, y el INDEC la calcula sobre la PEA —no sobre los ocupados—, que es lo que la vuelve comparable con la tasa de desocupación.
 
 | | | | |
 |---|---|---|---|
@@ -905,19 +907,20 @@ Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le
 | **IDENTIFICADOR TÉCNICO** | subocupacion_demandante | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % de la PEA |
 | **SERIE DISPONIBLE** | 2016-04 → 2026-01 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
-| **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — tasa de subocupación demandante (aproximación declarada del subocupacion_demandante) |
+| **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — tasa de subocupación demandante, valores trimestrales para el total de aglomerados urbanos relevados |
 | **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-25 |
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le alcanza.
+Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando otro empleo. Es la tasa de subocupación demandante de la EPH, y el INDEC la calcula sobre la PEA —no sobre los ocupados—, que es lo que la vuelve comparable con la tasa de desocupación.
 
-Señala empleo insuficiente: gente ocupada a la que no le alcanza.
+Señala empleo insuficiente: gente que ya tiene trabajo y sale igual a buscar más horas. Es la presión sobre el mercado laboral que la desocupación no ve, porque a estas personas las cuenta como ocupadas.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el subocupacion_demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
+- La tasa se toma tal como la publica el INDEC: el porcentaje de la POBLACIÓN ECONÓMICAMENTE ACTIVA que trabaja menos horas de las que quisiera y además busca otro empleo. El denominador es la PEA, el mismo de la tasa de desocupación, y no el total de ocupados.
 - Componente del índice: la tasa rebaseada de forma invertida (menos subocupación demandante = mejora) contra el 4º trimestre de 2023.
 
 ## Semáforo — valores que determinan el color
@@ -969,6 +972,8 @@ Ponderación vigente en el ITCIS: 1,2 % efectivo. El color es una lectura adicio
 
 **2026-08-25** — ADR-0249: el indicador pasa a llamarse `subocupacion_demandante`. Se llamaba `pluriempleo` y medía otra cosa: la fuente siempre fue la tasa de subocupación demandante de la EPH (serie 47.2), que cuenta a quienes trabajan menos horas de las que quisieran y buscan más, no a quienes tienen más de un empleo. La unidad pasa de «%» y «% de ocupados» a «% de la PEA», que es como INDEC la calcula. El valor, la serie y el peso no cambian: cambia el nombre y la unidad declarada.
 
+**2026-08-25** — ADR-0263: la descripción pública decía «qué porcentaje de los ocupados» y el INDEC calcula la tasa sobre la población económicamente activa. El denominador correcto queda dicho en las tres capas —descripción, transformaciones y limitaciones— y no sólo en la unidad. Ningún valor cambia: cambia de qué universo se afirma que sale el 7,5%.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -1001,7 +1006,7 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 
 Es la única medida directa de empleo del cinturón. Los otros componentes de la dimensión describen actividad —producción industrial, construcción— o anticipan giros, pero ninguno cuenta puestos de trabajo. Desde diciembre de 2023 el sector privado registrado perdió alrededor de doscientos cincuenta mil puestos, y la caída interanual no se interrumpió en ningún mes desde agosto de 2025.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el subocupacion_demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -1177,7 +1182,7 @@ El optimismo de la gente sobre la economía y sus finanzas personales (Índice d
 
 Captura el humor económico de la gente, que anticipa consumo y voto.
 
-**Dimensión que integra — Confianza y percepción.** El ánimo con que se vive el momento, medido de dos maneras: preguntando (el Índice de Confianza del Consumidor de la UTDT) y observando qué busca la gente en internet.
+**Dimensión que integra — Confianza y percepción.** El ánimo con que se vive el momento, medido preguntando: el Índice de Confianza del Consumidor de la UTDT, que desde agosto de 2026 es el único componente de la dimensión. La segunda vía —observar qué busca la gente en internet— salió del índice porque el volumen de búsquedas no distingue si un tema preocupa o alegra; se sigue relevando y su serie se publica.
 
 ## Método de cómputo
 
@@ -1437,7 +1442,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 83,2 índice (2017 = 100, desestacionalizado)** (2026-05) | **NARANJA** | Peso efectivo 5,6 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 82,1 índice (2017 = 100, desestacionalizado)** (2026-06) | **NARANJA** | Peso efectivo 5,6 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1445,9 +1450,9 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | consumo_supermercados | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | índice (2017 = 100, desestacionalizado) |
-| **SERIE DISPONIBLE** | 2017-01 → 2026-05 (113 puntos) | **REZAGO DE PUBLICACIÓN** | Encadena dos demoras y por eso es de las cards más lentas del cinturón: el INDEC publica el mes de referencia unos 52 días después de terminado, y la API de series tarda unas dos semanas más en espejarlo. El último punto disponible tiene entre tres y cuatro meses según en qué parte de ese ciclo caiga la corrida. |
+| **SERIE DISPONIBLE** | 2017-01 → 2026-06 (114 puntos) | **REZAGO DE PUBLICACIÓN** | Medido sobre las 14 publicaciones del calendario del INDEC entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la card sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada |
-| **MODO DE ACCESO** | Automático: API pública sin credenciales. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-25 |
+| **MODO DE ACCESO** | Automático: planilla pública sin credenciales. La misma serie espejada en la API de datos.gob.ar se sigue bajando en cada corrida, pero sólo como contraste del número leído. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-25 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1476,19 +1481,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **91,2**.
+Este componente está hoy en **90,1**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (83,2 índice (2017 = 100, desestacionalizado)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (82,1 índice (2017 = 100, desestacionalizado)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 83,2 índice (2017 = 100, desestacionalizado) (2026-05).
+Dato vigente: 82,1 índice (2017 = 100, desestacionalizado) (2026-06).
 
-El componente está en 91,2 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
+El componente está en 90,1 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
 
 **Color vigente: NARANJA**
 
@@ -1503,15 +1508,17 @@ Ponderación vigente en el ITCIS: 5,6 % efectivo. El color es una lectura adicio
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la card mantiene el último valor como desactualizado.
+- **Si falta el dato:** El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la card mantiene el último valor como desactualizado. No hay respaldo que lea el espejo: publicar desde ahí podría hacer RETROCEDER la card a un mes anterior, que es peor que no actualizarla.
 
-- **Política de revisiones:** La API devuelve el histórico completo en cada corrida, así que una revisión del INDEC —habituales en las series desestacionalizadas, que se recalculan al agregar meses— se incorpora sola y sin dejar huella de la versión anterior.
+- **Política de revisiones:** La planilla trae el histórico completo en cada corrida, así que una revisión del INDEC —habituales en las series desestacionalizadas, que se recalculan al agregar meses— se incorpora sola y sin dejar huella de la versión anterior. Al publicar junio de 2026, por ejemplo, mayo pasó de 83,2 a 83,0.
 
 ## Historial — cambios metodológicos documentados
 
 **2026-08-21** — Entra al ITCIS con 20% de la dimensión de ingresos y consumo, y los cinco componentes previos ceden proporcionalmente conservando su orden relativo (ADR-0225). Venía de ser el ancla de validación externa del cinturón: mide condiciones materiales del hogar, así que integra el índice en vez de juzgarlo — la misma regla que había sacado a la confianza del consumidor de ese papel.
 
 **2026-08-25** — ADR-0243: la base del índice se lee de los metadatos de la fuente en vez de escribirse a mano. La card la rotulaba «2004 = 100» y la Encuesta de Supermercados usa base 2017=100 —la serie ni siquiera tiene puntos antes de enero de 2017—. El valor y el puntaje no cambian: el rebase del cinturón es contra el 4º trimestre de 2023 y nunca usó la base de la fuente. Queda pendiente el rezago del espejo: el INDEC publicó junio de 2026 el 21 de agosto y la API de series todavía no lo refleja.
+
+**2026-08-25** — ADR-0256: la serie deja de bajarse de la API de datos.gob.ar y sale de la planilla de serie histórica del propio INDEC (Cuadro 1, columna desestacionalizada). La API era un espejo con atraso propio y encadenaba dos rezagos: la card mostraba mayo de 2026 mientras el INDEC ya había publicado junio el día 21. Con el cambio la card pasa a junio (82,1) y el tope de rezago del gate baja de 140 a 130 días, ahora medido sobre 14 publicaciones reales del calendario del INDEC en vez de estimado. El espejo se conserva como contraste del número leído, no como fuente.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

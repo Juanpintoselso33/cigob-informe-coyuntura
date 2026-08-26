@@ -44,8 +44,8 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 | Poder legislativo | La capacidad de gobernar por ley en el Congreso, en seis señales. | 52,2 | AMARILLO | 21,0 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 76,5 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 96,7 | VERDE | 15,0 % |
-| Poder judicial | La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. | 60,7 | VERDE | 15,0 % |
-| Sector privado | La relación con los empresarios por dos vías, lo que esperan y lo que dicen. | 72,8 | VERDE | 13,0 % |
+| Poder judicial | La relación con el Poder Judicial por tres vías: cobertura de cargos de juez, velocidad de la Corte y control disciplinario. | 60,7 | VERDE | 15,0 % |
+| Sector privado | La relación con los empresarios por lo que esperan. | 72,8 | VERDE | 13,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 71,5 | VERDE | 10,0 % |
 | Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 73,6 | VERDE | 7,0 % |
 
@@ -62,14 +62,14 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Ratio DNU / leyes | Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en los últimos 12 meses. | 1,48 DNUs publicados por ley publicada | AMARILLO | 4,2 % |
+| Ratio DNU / leyes | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,48 DNUs publicados por ley publicada | AMARILLO | 4,2 % |
 | Eficacia parlamentaria | Qué porcentaje de los proyectos que envía el Ejecutivo el Congreso termina aprobando, contados recién a partir de que… | 15,4 % de proyectos | AMARILLO | 5,7 % |
 | Sesiones caídas por falta de quórum | Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum… | 10 % de sesiones | VERDE | 2,7 % |
 | Bloqueo legislativo sostenido | De las normas del Ejecutivo que el Congreso desafió en el recinto en los últimos 12 meses (vetos cuya insistencia se… | 33,3 % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | NARANJA | 2,5 % |
 | Normas desafiadas en el recinto | Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses. | 3 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | VERDE | 2,7 % |
 | Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. | 25 leyes sancionadas (12m) | NARANJA | 3,1 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
-| Armonía federal (transferencias) | Cuánto varían, en términos reales, las transferencias del Estado nacional a las provincias. | 1,6 % interanual real | VERDE | 7,6 % |
+| Armonía federal (transferencias) | Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante un… | 1,6 % interanual real | VERDE | 7,6 % |
 | Adhesión provincial al RIGI | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 66,7 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 5,7 % |
 | Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 57 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 5,7 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
@@ -189,7 +189,7 @@ Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional
 
 # Ratio DNU / leyes
 
-Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en los últimos 12 meses.
+Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
 
 | | | | |
 |---|---|---|---|
@@ -202,12 +202,12 @@ Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en 
 | **IDENTIFICADOR TÉCNICO** | ratio_dnu | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | DNUs publicados por ley publicada |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | InfoLeg carga las normas al ritmo del Boletín Oficial: días entre la publicación y su aparición en el buscador. |
-| **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — conteo de decretos de necesidad y urgencia y de leyes sancionadas en los últimos 365 días |
-| **MODO DE ACCESO** | Automático: consulta el buscador oficial con dos búsquedas (leyes y decretos con el texto «necesidad y urgencia», ambas acotadas a los últimos 365 días) y toma los conteos de resultados. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-25 |
+| **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — listado de decretos tipificados «Decreto DNU» y conteo de leyes, los dos por fecha de publicación en el Boletín Oficial, en los últimos 365 días |
+| **MODO DE ACCESO** | Automático: dos consultas al buscador oficial sobre la misma ventana. Del lado de las leyes toma el total de resultados. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia» y se queda con los que la grilla rotula «Decreto DNU»; la card publica el inventario de las normas efectivamente contadas, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-25 |
 
 ## Definición — qué mide y por qué importa
 
-Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en los últimos 12 meses.
+Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
 
 Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. En el relevamiento cerrado el 19 de julio de 2026, el 95% de los decretos de necesidad y urgencia de esta gestión nunca había llegado a votarse en el recinto; de los ocho que sí habían llegado, seis habían caído. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
 
@@ -215,8 +215,9 @@ Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, n
 
 ## Método de cómputo
 
-- Ratio = DNU dictados en los últimos 365 días / leyes sancionadas en los últimos 365 días — ventana móvil, no acumulado del año calendario.
-- Los DNU se identifican buscando la frase «necesidad y urgencia» dentro de los decretos.
+- Ratio = DNU publicados en el Boletín Oficial en los últimos 365 días / leyes publicadas en el Boletín Oficial en los últimos 365 días — ventana móvil, no acumulado del año calendario, y la misma convención de fecha en los dos lados: publicación, no dictado ni sanción. Con las mismas normas, usar leyes sancionadas en vez de publicadas movería el ratio de 1,48 a 1,68 sin que nada fallara.
+- Los DNU se identifican por el TIPO JURÍDICO que declara la grilla de InfoLeg («Decreto DNU»), no por el texto. La búsqueda por la frase «necesidad y urgencia» se conserva sólo como filtro previo, para no tener que traer todos los decretos del año: esa frase la dicen también los decretos que prorrogan una intervención dispuesta por un DNU, los reglamentarios, los vetos que la citan al fundarse y los decretos ordinarios que modifican una norma dictada en su momento por DNU.
+- El listado se pagina hasta completar el total que declara el buscador (la grilla devuelve 50 filas por página); si lo acumulado no llega a ese total, el indicador falla en vez de publicar un conteo corto.
 - La serie histórica recalcula esta misma ventana móvil al cierre de cada mes desde diciembre de 2023: cada punto es homogéneo y comparable con el anterior, sin el reseteo de un acumulado que arranca de cero cada enero.
 
 ## Semáforo — valores que determinan el color
@@ -252,9 +253,9 @@ Ponderación vigente en el ITCP: 4,2 % efectivo. El color es una lectura adicion
 
 - Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.
 - En el relevamiento cerrado el 19 de julio de 2026, los datos respaldaban que la dependencia fuera una vulnerabilidad real y no una objeción teórica, pero también que fuera latente: de los 162 decretos de necesidad y urgencia dictados desde diciembre de 2023, el 95% nunca se había votado en el recinto y por lo tanto seguía vigente; de los ocho que sí se habían votado, seis habían caído. El 7 de agosto de 2025 cayeron cinco en un solo día.
-- Identificar DNU por la frase «necesidad y urgencia» es una aproximación: puede contar de más o de menos.
+- El conteo depende de cómo InfoLeg rotula cada norma. Es una dependencia asumida y preferible a la anterior: si la fuente cambiara la rotulación, el conteo caería a cero y se notaría en el acto, mientras que una frase que deja de coincidir baja el número de a poco y no se nota.
 - Depende del formulario del buscador oficial: un rediseño del sitio lo interrumpe hasta adaptarlo.
-- El buscador no expone un listado con fecha por norma: reconstruir la serie mensual exige una consulta separada por mes, no una descarga única.
+- El buscador no ofrece descarga masiva: reconstruir la serie mensual exige dos consultas por mes —una de leyes y una de decretos—, no un volcado único como el de otros portales de datos abiertos.
 
 ## Si falta el dato / Política de revisiones
 
@@ -275,6 +276,8 @@ Ponderación vigente en el ITCP: 4,2 % efectivo. El color es una lectura adicion
 **2026-07-15** — El cociente pasó de acumulado del año calendario (un punto por año, reseteaba en enero) a ventana móvil de 365 días (un punto por mes, comparable mes a mes). Las anclas del puntaje NO cambiaron: siguen ancladas a la práctica histórica 2011-2024, no al rango observado bajo esta gestión.
 
 **2026-08-25** — ADR-0241: los DNU se cuentan por el tipo jurídico que declara InfoLeg (`Decreto DNU`) y no por la coincidencia textual de «necesidad y urgencia», que aparece también en decretos que no son DNU —prórrogas de intervenciones, reglamentarios, un veto—. En la ventana auditada eran 37 y se contaban 48: el ratio pasa de 1,92 a 1,48. Los dos lados usan publicación en el Boletín Oficial. La serie mensual se rehízo con el mismo filtro.
+
+**2026-08-25** — ADR-0263: la ficha, la fórmula y la descripción pública se sincronizan con el cálculo que efectivamente corre. Decían «DNU dictados / leyes sancionadas» y describían la búsqueda textual descartada; ahora dicen lo único que el indicador hace: DNU publicados sobre leyes publicadas en el Boletín Oficial, ventana móvil de 365 días, con los DNU identificados por el tipo jurídico de la grilla. Ningún valor cambia — cambia lo que el texto afirma que se midió.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -308,7 +311,7 @@ La diferencia entre lo que esperan las empresas constructoras que trabajan para 
 
 Conviene una advertencia antes del dato: este indicador se comporta distinto según el gobierno, porque para el actual el recorte de la obra pública es el programa y no un síntoma de dificultades, de modo que la tensión con el sector puede subir mientras el Gobierno gobierna con comodidad. Dicho eso, lo que mide es sólido. Las dos submuestras son el mismo sector: mismos costos, mismo crédito, misma economía. Lo único que las distingue es quién les paga. Por eso la diferencia entre ambas aísla lo que aporta el Estado y descarta el ciclo económico general. Cuando las que dependen de la obra pública esperan mucho peor que sus pares privadas, la fuente del problema es la política pública y no el mercado.
 
-**Dimensión que integra — Sector privado.** La relación con los empresarios por dos vías, lo que esperan y lo que dicen. La primera es la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados: al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga, así que la diferencia aísla lo que aporta la política pública y descarta el ciclo económico. La segunda es la postura pública de la Asociación Empresaria Argentina y la Unión Industrial Argentina — el saldo entre apoyos y críticas de sus comunicados sobre medidas del Ejecutivo nacional en los últimos doce meses —, que es el vínculo dicho y no inferido.
+**Dimensión que integra — Sector privado.** La relación con los empresarios por lo que esperan: la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados: al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga, así que la diferencia aísla lo que aporta la política pública y descarta el ciclo económico. La segunda vía prevista —la postura pública de la Asociación Empresaria Argentina y la Unión Industrial Argentina, el vínculo dicho y no inferido— salió del índice en agosto de 2026: el saldo se calculaba sobre un corpus abierto, con más comunicados pendientes de codificar que codificados. Se sigue relevando sin puntuar, así que la dimensión descansa en un solo indicador mientras dure la suspensión.
 
 ## Método de cómputo
 
@@ -549,7 +552,7 @@ Ponderación vigente en el ITCP: 4 % efectivo. El color es una lectura adicional
 
 # Armonía federal (transferencias)
 
-Cuánto varían, en términos reales, las transferencias del Estado nacional a las provincias.
+Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante un año calendario completo, comparado con el año anterior. Entra lo transferido a las provincias, a la Ciudad de Buenos Aires y al Fondo Compensador, incluida la compensación del Consenso Fiscal; quedan afuera las porciones que se quedan en la Nación —Tesoro Nacional, Seguridad Social y Fondo A.T.N.—. Son las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones), no los giros discrecionales.
 
 | | | | |
 |---|---|---|---|
@@ -562,12 +565,12 @@ Cuánto varían, en términos reales, las transferencias del Estado nacional a l
 | **IDENTIFICADOR TÉCNICO** | iaf_transferencias | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % interanual real |
 | **SERIE DISPONIBLE** | 2018-12 → 2025-12 (8 puntos) | **REZAGO DE PUBLICACIÓN** | Por diseño compara el último año cerrado contra el anterior: durante 2026 se lee «2025 contra 2024» — el dato puede tener hasta un año de rezago. |
-| **PRODUCTOR DEL DATO** | Ministerio de Economía (Secretaría de Hacienda); deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | Serie RON — recursos de origen nacional transferidos a las provincias (archivo anual oficial), deflactada con el IPC nacional |
-| **MODO DE ACCESO** | Automático: descarga el archivo oficial y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-08-25 |
+| **PRODUCTOR DEL DATO** | Ministerio de Economía (Secretaría de Hacienda); deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | RON — recursos de origen nacional girados a las jurisdicciones, planilla mensual consolidada (una hoja por mes), con el archivo anual oficial como ancla de unidad; deflactor: IPC nacional del INDEC |
+| **MODO DE ACCESO** | Automático: resuelve desde la página oficial la planilla consolidada de cada año (el nombre del archivo no es estable), suma en cada hoja mensual las filas de jurisdicción y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-08-25 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto varían, en términos reales, las transferencias del Estado nacional a las provincias.
+Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante un año calendario completo, comparado con el año anterior. Entra lo transferido a las provincias, a la Ciudad de Buenos Aires y al Fondo Compensador, incluida la compensación del Consenso Fiscal; quedan afuera las porciones que se quedan en la Nación —Tesoro Nacional, Seguridad Social y Fondo A.T.N.—. Son las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones), no los giros discrecionales.
 
 Mide el gesto fiscal de la Nación hacia las provincias: cuánto gira por encima o por debajo de lo que giraba antes, en términos reales. Es un insumo de la relación federal, no la respuesta de los gobernadores: informa lo que hace el Gobierno nacional, no cómo reaccionan las provincias.
 
@@ -575,8 +578,10 @@ Mide el gesto fiscal de la Nación hacia las provincias: cuánto gira por encima
 
 ## Método de cómputo
 
-- Suma las transferencias efectivamente giradas a las 24 jurisdicciones durante el año de referencia y durante el año anterior — es ejecución, no presupuesto: la fila de un año es lo que la Nación transfirió ese año calendario. El archivo oficial también distribuye recursos al Tesoro Nacional, a la Seguridad Social y al Fondo ATN; esas porciones no son transferencias a provincias y quedan excluidas (con la exclusión, el nivel anual coincide con los informes fiscales de referencia).
-- La variación nominal se deflacta por la inflación promedio anual (promedio del índice IPC del año contra el promedio del año anterior): el resultado es la variación real interanual. El promedio —y no la punta diciembre contra diciembre— es el deflactor correcto para sumas anuales de flujos, porque las transferencias se devengan mes a mes a los precios de cada mes; es el mismo criterio que usan los análisis fiscales de referencia.
+- Universo: lo girado a las jurisdicciones —Provincias, Ciudad de Buenos Aires y Fondo Compensador—, incluida la compensación del Consenso Fiscal, que el cuadro publica en su propia columna y sí forma parte de lo transferido (sin ella el total no cierra contra el archivo anual). Quedan afuera las porciones que se quedan en la Nación: Tesoro Nacional, Seguridad Social y Fondo A.T.N. Es ejecución, no presupuesto: lo que la Nación giró ese año calendario.
+- Deflación mes a mes: cada flujo mensual se divide por el índice IPC nacional de SU propio mes (INDEC, base diciembre de 2016 = 100) antes de sumarse. Los doce meses, ya llevados a esa base común, se suman, y la variación real es el cociente entre el total del año de referencia y el del año anterior. No se usa un deflactor único: el IPC promedio anual le da a cada mes el mismo peso y el gasto no se reparte parejo por el calendario, así que subdeflacta cuando el grueso cae en los meses más baratos. El deflactor que resulta de la operación —la diferencia entre la variación nominal y la real— viaja en la card, de modo que la comparación con cualquier otra estimación pública es reproducible sin abrir el código.
+- Sólo entran los años con los doce meses publicados: un año a medias compararía nueve meses contra doce.
+- Las hojas mensuales pasaron de miles a millones de pesos entre 2022 y 2023 sin declararlo en ningún lado. El archivo anual oficial, que cubre 2003-2025 en una sola unidad, hace de ancla: el factor entre ambos tiene que ser exactamente una potencia de mil y el residuo, menor al 1%. Si no lo es, el cálculo falla en vez de publicar una variación armada sobre dos unidades distintas.
 - En el gráfico, cada punto anual se ubica en diciembre del año que cierra: el valor fechado en diciembre de 2025 es la variación del año 2025 completo contra 2024.
 
 ## Semáforo — valores que determinan el color
@@ -611,7 +616,7 @@ Ponderación vigente en el ITCP: 7,6 % efectivo. El color es una lectura adicion
 ## Transparencia — limitaciones declaradas
 
 - Granularidad anual: no capta la tensión federal dentro del año.
-- El nombre del archivo oficial cambia cada año: hay que apuntar la descarga de nuevo cada enero.
+- Depende del formato del cuadro consolidado: la columna del total y los rótulos de fila se localizan por encabezado y no por posición —el cuadro fue ganando columnas con los años y los rótulos viejos venían espaciados letra por letra—, pero un rediseño de la planilla interrumpe el indicador hasta adaptarlo.
 - Mide el flujo fiscal hacia las provincias — una aproximación parcial a la relación política con los gobernadores.
 - La serie cubre las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones del Consenso Fiscal); no incluye los giros discrecionales —las transferencias no automáticas—, que otros informes agregan por separado.
 
@@ -634,6 +639,8 @@ Ponderación vigente en el ITCP: 7,6 % efectivo. El color es una lectura adicion
 **2026-07-15** — Se excluyeron del cálculo las porciones del archivo oficial que no son transferencias a provincias (Tesoro Nacional, Seguridad Social, Fondo ATN): el nivel anual pasó a coincidir con los informes fiscales de referencia (~$60 billones en 2025) y la variación quedó medida solo sobre lo que efectivamente reciben las jurisdicciones.
 
 **2026-08-25** — ADR-0239: cada flujo mensual se deflacta por el IPC de su propio mes antes de sumarse, en vez de dividir el cociente de dos sumas nominales por un único IPC promedio anual. Los montos pasan a salir de la planilla mensual consolidada de Hacienda, que reconcilia peso por peso con el CSV anual. 2025 pasa de +0,8% a +1,6% real, que es lo que informan IARAF y Politikon. La serie 2018-2025 se rehízo entera: se mueve poco en años de inflación pareja y hasta 1,5 puntos en los de inflación cambiante.
+
+**2026-08-25** — ADR-0263: la fórmula y la ficha se sincronizan con esa deflación. Seguían describiendo una suma anual dividida por un IPC promedio —el método reemplazado— y la fuente anual que dejó de usarse. Ahora quedan explícitos los cinco términos del contrato: qué jurisdicciones entran (Provincias, Ciudad de Buenos Aires y Fondo Compensador, con la compensación del Consenso Fiscal) y cuáles no, qué clase de transferencia (automáticas, no discrecionales), la ventana (dos años calendario completos), el deflactor (IPC nacional del INDEC, mes a mes) y la base común a la que se llevan los doce flujos antes de sumarse. Ningún valor cambia.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1294,7 +1301,7 @@ Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los 
 
 Distingue una Corte que se pone al día de una que acumula. Por encima de cien resuelve más de lo que recibe y descarga atraso; por debajo, el atraso crece. Importa para este cinturón porque una causa que tarda años en resolverse deja en pie, mientras tanto, lo que se discute.
 
-**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras tres miran el comportamiento de la Justicia: qué proporción de los fallos federales y nacionales involucra una medida cautelar, cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces.
+**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por tres vías: cobertura de cargos de juez, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras dos miran el comportamiento de la Justicia: cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces. Una cuarta vía —la densidad de menciones cautelares en los sumarios que publica SAIJ— salió del índice en agosto de 2026, porque ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. Se sigue relevando sin puntuar.
 
 ## Método de cómputo
 
@@ -1379,7 +1386,7 @@ Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Cons
 
 Mide si el mecanismo de control disciplinario de los jueces está funcionando o está detenido. Se cuentan las sesiones de ambas comisiones y no las de una sola porque el conjunto da una serie estable y comparable mes a mes, mientras que cada comisión por separado sesiona pocas veces al año.
 
-**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras tres miran el comportamiento de la Justicia: qué proporción de los fallos federales y nacionales involucra una medida cautelar, cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces.
+**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por tres vías: cobertura de cargos de juez, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras dos miran el comportamiento de la Justicia: cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces. Una cuarta vía —la densidad de menciones cautelares en los sumarios que publica SAIJ— salió del índice en agosto de 2026, porque ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. Se sigue relevando sin puntuar.
 
 ## Método de cómputo
 
@@ -1463,7 +1470,7 @@ Qué porcentaje de los cargos de juez de la justicia federal y nacional tiene ju
 
 Mide una capacidad que el Gobierno no ejerce solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura del Poder Judicial es un termómetro de la negociación política, no de la gestión administrativa. La serie muestra un desgaste sostenido durante más de dos años —las renuncias siguieron y las designaciones se detuvieron— seguido de una recuperación abrupta cuando el Senado aprobó un conjunto de pliegos en junio de 2026.
 
-**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras tres miran el comportamiento de la Justicia: qué proporción de los fallos federales y nacionales involucra una medida cautelar, cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces.
+**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por tres vías: cobertura de cargos de juez, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras dos miran el comportamiento de la Justicia: cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces. Una cuarta vía —la densidad de menciones cautelares en los sumarios que publica SAIJ— salió del índice en agosto de 2026, porque ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. Se sigue relevando sin puntuar.
 
 ## Método de cómputo
 
