@@ -184,9 +184,16 @@ def test_idm_explica_la_composicion_oficial_del_m2_transaccional():
         "cajas de ahorro privadas en pesos",
         "depósitos a la vista remunerados de personas jurídicas",
     ]
+    # El IDM dejó de puntuar y de publicarse como card (ADR-0261), así que ya no
+    # tiene ficha: la regla del proyecto es que lo que no puntúa no se muestra,
+    # ni en el tablero ni en las fichas metodológicas. La exigencia sobre la
+    # ficha NO se borra, se ata a que la ficha exista — si el indicador vuelve
+    # al índice, vuelve a regir sola y sin que nadie tenga que acordarse.
+    tiene_ficha = "\n  idm: {" in FICHAS_TS
     for componente in componentes:
         assert componente in DESCRIPCIONES_TS, f"Falta {componente!r} en la definición pública del IDM"
-        assert componente in FICHAS_TS, f"Falta {componente!r} en la ficha técnica del IDM"
+        if tiene_ficha:
+            assert componente in FICHAS_TS, f"Falta {componente!r} en la ficha técnica del IDM"
 
     aporta_idm = re.search(
         r'idm:\s*\{[\s\S]*?aporta:\s*"([^"]+)"',

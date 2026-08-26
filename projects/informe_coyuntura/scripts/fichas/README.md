@@ -15,10 +15,8 @@ la página, tendríamos dos versiones del mismo dato.
 
 Desde `projects/informe_coyuntura/`, después de una corrida del pipeline:
 
-```powershell
-foreach ($c in "macro","politica","gestion","vida_cotidiana","espiritu_epoca") {
-  python scripts/fichas/generar.py $c
-}
+```bash
+python scripts/fichas/generar.py --todos     # o un cinturón suelto por nombre
 # El .md ya está en output/fichas/; falta el Word con la marca CIGOB.
 pandoc "output/fichas/fichas-macro.md" -o "output/fichas/Fichas Semaforo Macro.docx" `
        --reference-doc=docs/template/cigob_reference.docx
@@ -31,7 +29,7 @@ python scripts/fichas/verificar.py
 
 ## Los tres pasos
 
-- **`generar.py <cinturon>`** — arma el Markdown en `output/fichas/`. Abre con
+- **`generar.py <cinturon>`** (o `--todos`) — arma el Markdown en `output/fichas/`. Abre con
   una portada de resumen (el índice, las dimensiones y todos los indicadores
   con su color y su peso) y sigue con una ficha por indicador, cada una en
   página nueva.
@@ -58,7 +56,16 @@ mal no está verificando nada.
 
 ## Cuándo se regeneran
 
-Cuando cambian los datos o los textos que las alimentan — o sea, después de
-cualquier corrida del pipeline que se publique. Los `.docx` versionados en
-`output/fichas/` son la última versión enviada; regenerarlos sin publicar el
-snapshot correspondiente los deja diciendo algo que la web no dice.
+**Los `.md` los regenera el pipeline nocturno** (ADR-0260): `generar.py --todos`
+corre después de `publicar.py` y antes de los gates, y `output/fichas/*.md`
+entra en el commit de la corrida. Antes de eso no lo hacía nadie y el artefacto
+derivaba en silencio — la auditoría del 25-ago-2026 encontró la ficha del
+supermercado publicando mayo mientras la card ya publicaba junio.
+`tests/test_fichas_generadas_al_dia.py` cruza período, valor, color, peso e
+índice base-100 de **todos** los indicadores contra el snapshot, así que una
+corrida a mano que publique sin regenerar las fichas ya no pasa.
+
+**Los `.docx` siguen siendo manuales**, y a propósito: son la última versión
+*enviada* al equipo, no un espejo del snapshot de hoy. Pasan por pandoc y
+`estilar.py`, y `verificar.py` es el gate antes de mandarlos. Regenerarlos sin
+publicar el snapshot correspondiente los deja diciendo algo que la web no dice.

@@ -7,7 +7,7 @@ cinturon: 'politica'
 indicadores: [iaf_transferencias]
 archivos: ['scripts/politica.py', 'scripts/descargar_series.py', 'tests/test_politica_iaf_deflactor.py', 'tests/fixtures/ron_transferencias_2024_2025.json']
 supersede: ['0065']
-relacionado: ['0066']
+relacionado: ['0066', '0263']
 ambito: 'Cinturón política · ITCP · `iaf_transferencias` · cómo se deflacta una suma anual de flujos mensuales'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «IARAF +1,6%; Politikon +1,7% para el agregado anual comparable. El crecimiento nominal local, +43,1%, sí es consistente»'
 ---

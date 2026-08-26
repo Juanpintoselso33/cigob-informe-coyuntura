@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'vida'
 indicadores: [consumo_supermercados]
 archivos: ['scripts/vida_cotidiana/collectors/indec_supermercados.py', 'scripts/descargar_series.py', 'scripts/vida_cotidiana/main.py', 'config.py', 'web/src/lib/fichas.ts', 'tests/test_consumo_supermercados.py']
-relacionado: ['0243', '0225', '0155']
+relacionado: ['0155', '0225', '0243', '0260']
 ambito: 'Cinturón vida cotidiana · ITCIS · `consumo_supermercados` · de qué fuente sale la serie y con qué rezago'
 origen: 'Pendiente declarado al cerrar la remediación de la auditoría, 25-ago-2026: el INDEC publicó junio el 21-ago y la card seguía en mayo'
 ---

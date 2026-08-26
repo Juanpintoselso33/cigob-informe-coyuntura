@@ -8,7 +8,7 @@ indicadores: [desequilibrio_monetario, presion_dolarizacion]
 parametros: ['BANDAS_ITCM["desequilibrio_monetario"]', 'ANCLAS_ITCM["desequilibrio_monetario"]', 'CORTES_A', 'CORTES_B']
 archivos: ['scripts/desequilibrio_monetario.py', 'scripts/itcm.py', 'scripts/macro.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'tests/', 'datos.ts', 'descripciones.ts', 'formulas.ts', 'fichas.ts', 'astro.config.mjs']
 supersede: ['0055']
-relacionado: ['0009', '0021', '0053', '0054', '0057', '0082', '0083', '0120', '0193', '0252', '0257']
+relacionado: ['0009', '0021', '0053', '0054', '0057', '0082', '0083', '0120', '0193', '0252', '0257', '0261', '0262']
 continuado_por: ['0193']
 ambito: 'Cinturón macro · ITCM · dimensión estabilidad monetaria · colector BCRA · series históricas · validación externa · web metodológica'
 origen: 'Ficha "Desequilibrio Monetario" (Diego, 10-ago-2026), a partir de una observación de un economista consultado por Luis'

@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'politica'
 indicadores: [apoyo_empresario]
 archivos: ['scripts/itcp.py', 'scripts/publicar.py', 'web/src/lib/descripciones.ts', 'tests/test_suspension_libera_el_peso.py']
-relacionado: ['0148', '0149', '0245']
+relacionado: ['0148', '0149', '0245', '0259', '0265']
 ambito: 'Cinturón política · ITCP · `apoyo_empresario` · por qué sale del score hasta cerrar el corpus'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «había 14 textos pendientes, incluidos apoyos y críticas sustantivos»'
 ---

@@ -136,11 +136,16 @@ def test_el_rotulo_del_idm_nombra_los_dos_agregados():
     assert "demanda" not in m.group(1).lower()
 
 
-def test_la_formula_del_idm_no_cambio():
-    """El rediseño de nombre no toca el cálculo: la banda es la misma, así que
-    la serie histórica sigue siendo comparable."""
-    assert "idm" in itcm.BANDAS_ITCM
-    assert itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]["indicadores"]["idm"] == 0.2
+def test_el_idm_ya_no_puntua_pero_su_calculo_sigue_intacto():
+    """ADR-0261 cierra lo que ADR-0254 dejó abierto. El renombre no había tocado
+    la banda, y la banda afirmaba una dirección que ya no tenía con qué
+    sostenerse. Lo que se retira es el CONTRATO CON EL SCORE, no el dato: `idm`
+    pasa a contexto y su fórmula en el colector no cambia, así que la serie
+    histórica sigue siendo comparable hacia atrás."""
+    assert "idm" not in itcm.BANDAS_ITCM
+    assert "idm" in itcm.INDICADORES_CONTEXTO
+    en_dimensiones = {i for d in itcm.DIMENSIONES_ITCM.values() for i in d["indicadores"]}
+    assert "idm" not in en_dimensiones
 
 
 # ── 19 · judicialización fuera del score (ADR-0255) ─────────────────────────

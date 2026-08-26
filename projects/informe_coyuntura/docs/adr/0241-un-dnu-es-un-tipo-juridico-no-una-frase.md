@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'politica'
 indicadores: [ratio_dnu]
 archivos: ['scripts/politica.py', 'scripts/descargar_series.py', 'tests/test_politica_ratio_dnu.py', 'tests/fixtures/infoleg_dnu_ventana_365.json']
-relacionado: ['0058', '0059']
+relacionado: ['0058', '0059', '0263']
 ambito: 'Cinturón política · ITCP · `ratio_dnu` · cómo se identifica un DNU y con qué convención se cuenta cada lado del cociente'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «sólo 37 registros están tipificados como DNU»'
 ---

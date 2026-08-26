@@ -14,22 +14,32 @@ acá todavía no es el entregable: falta pandoc con la plantilla CIGOB y despué
 """
 import json
 import re
+import subprocess
+import sys
 from pathlib import Path
 
-# La raíz del proyecto sale de la ubicación de este archivo: vive en
-# scripts/fichas/, así que sube dos niveles. Antes era un path absoluto de
-# una máquina concreta, que dentro del repo no le sirve a nadie.
-RAIZ = Path(__file__).resolve().parents[2]
-SALIDA_DIR = RAIZ / "output" / "fichas"
-import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from comun import (CADENA, CINTURONES, COLOR, ORDEN_COLOR, RAIZ, SALIDA_DIR,
+                   clave_indice, coma, labels, ruta_md)
+
+# Sin argumento —o con `--todos`— se regeneran los cuatro. El pipeline nocturno
+# lo llama así: un solo comando, y la lista de cinturones vive en `comun.py` en
+# vez de duplicarse en el workflow, donde nadie la iría a actualizar.
+# Se re-ejecuta el script en vez de refactorizarlo a función: el cuerpo son 400
+# líneas de nivel de módulo que dependen de CINT, y envolverlas para ahorrar
+# cuatro arranques de intérprete (0,15 s los cuatro juntos) no se paga.
+if len(sys.argv) < 2 or sys.argv[1] == "--todos":
+    for _c in CINTURONES:
+        subprocess.run([sys.executable, __file__, _c], check=True)
+    raise SystemExit(0)
+
 CINT = sys.argv[1]
-SIGLA, NOMBRE = {
- "macro": ("ITCM", "Macroeconomía"),
- "politica": ("ITCP", "Política"),
- "gestion": ("ITCG", "Gestión"),
- "vida_cotidiana": ("ITCIS", "Impacto social"),
-}[CINT]
-SALIDA_MD = SALIDA_DIR / f"fichas-{CINT}.md"
+if CINT not in CINTURONES:
+    raise SystemExit(
+        f"'{CINT}' no es un cinturón con ficha. Los que hay: "
+        + ", ".join(CINTURONES))
+SIGLA, NOMBRE = CINTURONES[CINT]
+SALIDA_MD = ruta_md(CINT)
 
 informe = json.loads((RAIZ / "web/src/data/informe.json").read_text(encoding="utf-8"))
 fichas_ts = (RAIZ / "web/src/lib/fichas.ts").read_text(encoding="utf-8")
@@ -37,28 +47,13 @@ desc_ts = (RAIZ / "web/src/lib/descripciones.ts").read_text(encoding="utf-8")
 datos_ts = (RAIZ / "web/src/lib/datos.ts").read_text(encoding="utf-8")
 series = json.loads((RAIZ / "web/src/data/series.json").read_text(encoding="utf-8"))
 
-CADENA = r'"((?:[^"\\]|\\.)*)"'
-COLOR = {"verde": "VERDE", "amarillo": "AMARILLO", "naranja": "NARANJA", "rojo": "ROJO"}
-ORDEN_COLOR = ["verde", "amarillo", "naranja", "rojo"]
-def _clave_indice():
-    """Bajo qué clave publica el snapshot el índice de este cinturón, si tiene
-    uno. Espíritu de época no arma paramétrica, así que devuelve None."""
-    b = informe["cinturones"][CINT]
-    return next((k for k in ("itcm", "itcg", "itcp", "itvc") if k in b), None)
-
-
-CLAVE_INDICE = _clave_indice()
+CLAVE_INDICE = clave_indice(informe["cinturones"][CINT])
 DIMS = ({d: v["nombre"]
          for d, v in informe["cinturones"][CINT][CLAVE_INDICE]["dimensiones"].items()}
         if CLAVE_INDICE else {})
 
 
-def _lab():
-    m = re.search(r"export const LABELS[^{]*\{(.*?)\n\};", datos_ts, re.S)
-    return dict(re.findall(r"(\w+):\s*" + CADENA, m.group(1)))
-
-
-LABELS = _lab()
+LABELS = labels(datos_ts)
 
 
 def _dim_desc():
@@ -116,18 +111,6 @@ def cambios(ikey):
     if not m:
         return []
     return re.findall(r'fecha:\s*"([^"]+)",\s*cambio:\s*' + CADENA, m.group(1))
-
-
-def coma(x, dec=2, recortar=True):
-    """Número en formato local. `recortar` saca los decimales que sobran, que
-    es lo que se quiere en prosa; en una columna de tabla no, porque deja
-    "71" al lado de "67,1" y la columna se lee torcida."""
-    if x is None:
-        return "—"
-    s = f"{float(x):,.{dec}f}".replace(",", "@").replace(".", ",").replace("@", ".")
-    if recortar and "," in s:
-        s = s.rstrip("0").rstrip(",")
-    return s.replace("-", "−")  # menos tipográfico, no guión
 
 
 def rango(t, unidad):

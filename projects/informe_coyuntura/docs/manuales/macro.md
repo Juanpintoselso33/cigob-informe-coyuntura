@@ -14,12 +14,12 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `estabilidad_monetaria` | 26% | `ipc_total`, `rem_ipc_12m`, `idm`, `desequilibrio_monetario` |
+| `estabilidad_monetaria` | 26% | `ipc_total`, `rem_ipc_12m`, `desequilibrio_monetario` |
 | `viabilidad_fiscal_comercial` | 24% | `resultado_primario`, `recaudacion`, `saldo_comercial_12m` |
 | `financiamiento` | 16% | `reservas_bcra`, `idc`, `costo_financiamiento_tesoro`, `credito_privado` |
 | `actividad` | 11% | `emae_ia`, `emae_difusion`, `ipi_manufacturero` |
 | `competitividad_externa` | 11% | `tcrm` |
-| `inversion` | 12% | `iai`, `icip` |
+| `inversion` | 12% | `iai` |
 
 Suma de pesos: 100%.
 
@@ -33,8 +33,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 40% |
-| Peso efectivo en el índice | **10.4%** |
+| Peso dentro de la dimensión | 60% |
+| Peso efectivo en el índice | **15.6%** |
 | Procedencia del ancla | `conceptual` — bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120) |
 
 **Bandas**: ≤ 1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · > 5 → 10
@@ -55,20 +55,6 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
 
-#### Brecha de crecimiento real M3–M2
-
-`idm`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **5.2%** |
-| Procedencia del ancla | `convencion` — «calibrado con la historia 2024-2026» |
-
-**Bandas**: ≤ -2 → 100 · -2–2 → 85 · 2–5 → 60 · 5–8 → 35 · > 8 → 10
-
-**Lo gobiernan**: [ADR-0053](../adr/0053-transparencia-y-agregados-monetarios-idm.md) Transparencia y agregados monetarios del IDM · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0254](../adr/0254-la-brecha-m3-m2-no-es-oferta-menos-demanda.md) La brecha M3–M2 no es oferta menos demanda
-
 #### Liquidez en pesos y presión compradora de divisas
 
 `desequilibrio_monetario`
@@ -81,7 +67,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 20 → 100 · 20–50 → 60 · 50–80 → 35 · > 80 → 10
 
-**Lo gobiernan**: [ADR-0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0252](../adr/0252-la-compra-de-divisas-no-dice-adonde-fue-el-dinero.md) La compra de divisas no dice adónde fue el dinero · [ADR-0257](../adr/0257-los-dos-componentes-el-mismo-regimen-y-el-mismo-peso.md) Los dos componentes, el mismo régimen y el mismo peso
+**Lo gobiernan**: [ADR-0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0252](../adr/0252-la-compra-de-divisas-no-dice-adonde-fue-el-dinero.md) La compra de divisas no dice adónde fue el dinero · [ADR-0257](../adr/0257-los-dos-componentes-el-mismo-regimen-y-el-mismo-peso.md) Los dos componentes, el mismo régimen y el mismo peso · [ADR-0264](../adr/0264-renombrar-no-borra-la-lectura-refutada.md) Renombrar no borra la lectura refutada
 
 ### Dimensión `viabilidad_fiscal_comercial` (24%)
 
@@ -169,7 +155,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 20 → 15 · 12–20 → 45 · 6–12 → 75 · 0–6 → 100 · -5–0 → 55 · ≤ -5 → 20
 
-**Lo gobiernan**: [ADR-0071](../adr/0071-costo-financiamiento-tesoro.md) costo_financiamiento_tesoro: el precio del financiamiento soberano entra al ITCM
+**Lo gobiernan**: [ADR-0071](../adr/0071-costo-financiamiento-tesoro.md) costo_financiamiento_tesoro: el precio del financiamiento soberano entra al ITCM · [ADR-0258](../adr/0258-la-reapertura-rinde-su-precio-no-su-cupon.md) Una reapertura rinde lo que dice su precio, no lo que dice su cupón
 
 #### Crédito privado real
 
@@ -253,27 +239,13 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 60% |
-| Peso efectivo en el índice | **7.2%** |
+| Peso dentro de la dimensión | 100% |
+| Peso efectivo en el índice | **12.0%** |
 | Procedencia del ancla | `convencion` — el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026 |
 
 **Bandas**: > 10 → 100 · 2–10 → 80 · -2–2 → 60 · -10–-2 → 35 · ≤ -10 → 10
 
 **Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM
-
-#### Pagos de servicios digitales y productividad
-
-`icip`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 40% |
-| Peso efectivo en el índice | **4.8%** |
-| Procedencia del ancla | `convencion` — banda ensanchada por la volatilidad observada del período |
-
-**Bandas**: > 20 → 100 · 5–20 → 80 · -5–5 → 60 · -20–-5 → 35 · ≤ -20 → 10
-
-**Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM · [ADR-0253](../adr/0253-pagar-la-nube-no-es-capitalizar.md) Pagar la nube no es capitalizar
 
 ## Se releva y no puntúa
 
@@ -283,6 +255,8 @@ histórica.
 
 - `badlar` — Tasa BADLAR (declarado como contexto)
 - `base_monetaria` — Base monetaria (declarado como contexto)
+- `icip` — Pagos de servicios digitales y productividad (declarado como contexto)
+- `idm` — Brecha de crecimiento real M3–M2 (declarado como contexto)
 - `prestamos_privados` — Préstamos al sector privado (declarado como contexto)
 - `tc_mayorista` — Tipo de cambio mayorista (declarado como contexto)
 
@@ -306,7 +280,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-38 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+42 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -346,3 +320,7 @@ histórica.
 - [0253](../adr/0253-pagar-la-nube-no-es-capitalizar.md) — Pagar la nube no es capitalizar
 - [0254](../adr/0254-la-brecha-m3-m2-no-es-oferta-menos-demanda.md) — La brecha M3–M2 no es oferta menos demanda
 - [0257](../adr/0257-los-dos-componentes-el-mismo-regimen-y-el-mismo-peso.md) — Los dos componentes, el mismo régimen y el mismo peso
+- [0258](../adr/0258-la-reapertura-rinde-su-precio-no-su-cupon.md) — Una reapertura rinde lo que dice su precio, no lo que dice su cupón
+- [0261](../adr/0261-la-brecha-m3-m2-no-tiene-signo.md) — La brecha M3–M2 no tiene signo, así que no puntúa
+- [0262](../adr/0262-dos-insumos-que-necesitan-signos-opuestos.md) — Dos insumos que necesitan signos opuestos
+- [0264](../adr/0264-renombrar-no-borra-la-lectura-refutada.md) — Renombrar no borra la lectura refutada

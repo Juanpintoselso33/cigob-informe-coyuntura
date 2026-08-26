@@ -101,6 +101,10 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0253](0253-pagar-la-nube-no-es-capitalizar.md) | Pagar la nube no es capitalizar | `icip` | vigente |
 | [0254](0254-la-brecha-m3-m2-no-es-oferta-menos-demanda.md) | La brecha M3–M2 no es oferta menos demanda | `idm` | vigente |
 | [0257](0257-los-dos-componentes-el-mismo-regimen-y-el-mismo-peso.md) | Los dos componentes, el mismo régimen y el mismo peso | `desequilibrio_monetario` | vigente |
+| [0258](0258-la-reapertura-rinde-su-precio-no-su-cupon.md) | Una reapertura rinde lo que dice su precio, no lo que dice su cupón | `costo_financiamiento_tesoro` | vigente |
+| [0261](0261-la-brecha-m3-m2-no-tiene-signo.md) | La brecha M3–M2 no tiene signo, así que no puntúa | `idm` | vigente |
+| [0262](0262-dos-insumos-que-necesitan-signos-opuestos.md) | Dos insumos que necesitan signos opuestos | `icip` | vigente |
+| [0264](0264-renombrar-no-borra-la-lectura-refutada.md) | Renombrar no borra la lectura refutada | `idm`, `icip`, `desequilibrio_monetario` | vigente |
 
 ### Política (ITCP)
 
@@ -179,6 +183,8 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0241](0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) | Un DNU es un tipo jurídico, no una frase | `ratio_dnu` | vigente |
 | [0246](0246-el-saldo-empresario-se-calculaba-sobre-un-corpus-abierto.md) | El saldo empresario se calculaba sobre un corpus abierto | `apoyo_empresario` | vigente |
 | [0255](0255-el-corpus-de-saij-no-identifica-al-ejecutivo.md) | El corpus de SAIJ no identifica al Ejecutivo | `judicializacion` | vigente |
+| [0263](0263-la-ficha-describe-el-metodo-que-corre.md) | La ficha describe el método que corre | `ratio_dnu`, `iaf_transferencias`, `subocupacion_demandante` | vigente |
+| [0265](0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) | Una dimensión no promete vías que ya no puntúan | `apoyo_empresario`, `judicializacion`, `sentimiento_digital` | vigente |
 
 ### Gestión (ITCG)
 
@@ -274,6 +280,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0249](0249-la-subocupacion-demandante-se-llama-por-su-nombre.md) | La subocupación demandante se llama por su nombre | `subocupacion_demandante` | vigente |
 | [0250](0250-el-universo-restringido-se-enumera.md) | El universo restringido se enumera | `trabajo_independiente` | vigente |
 | [0256](0256-la-serie-sale-del-indec-no-de-su-espejo.md) | La serie sale del INDEC, no de su espejo | `consumo_supermercados` | vigente |
+| [0267](0267-una-fuente-caida-degrada-no-desaparece.md) | Una fuente caída degrada el indicador, no lo hace desaparecer | `consumo_carnes_total` | vigente |
 
 ### Espíritu de época
 
@@ -340,3 +347,6 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0236](0236-la-marca-se-declara-una-vez-y-el-tablero-la-consume.md) | La marca se declara una vez y el tablero la consume |  | vigente |
 | [0237](0237-el-riesgo-dominante-nombra-su-cinturon.md) | El riesgo dominante nombra su cinturón |  | vigente |
 | [0245](0245-suspender-libera-el-peso-y-el-indice-renormaliza-solo.md) | Suspender libera el peso, y el índice renormaliza solo |  | vigente |
+| [0259](0259-un-suspendido-es-archivo-no-componente.md) | Un indicador suspendido es archivo, no componente |  | vigente |
+| [0260](0260-las-fichas-generadas-las-regenera-el-pipeline.md) | Las fichas generadas las regenera el pipeline | `consumo_supermercados`, `desequilibrio_monetario` | vigente |
+| [0266](0266-lo-que-el-indice-declara-fuera-no-se-publica.md) | Lo que el índice declara fuera no se publica |  | vigente |

@@ -78,7 +78,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card · [ADR-0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) Puntúa el acceso total a proteína, no la carne vacuna
+**Lo gobiernan**: [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card · [ADR-0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) Puntúa el acceso total a proteína, no la carne vacuna · [ADR-0267](../adr/0267-una-fuente-caida-degrada-no-desaparece.md) Una fuente caída degrada el indicador, no lo hace desaparecer
 
 #### Motorización total
 
@@ -334,7 +334,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-43 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+44 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -379,3 +379,4 @@ histórica.
 - [0249](../adr/0249-la-subocupacion-demandante-se-llama-por-su-nombre.md) — La subocupación demandante se llama por su nombre
 - [0250](../adr/0250-el-universo-restringido-se-enumera.md) — El universo restringido se enumera
 - [0256](../adr/0256-la-serie-sale-del-indec-no-de-su-espejo.md) — La serie sale del INDEC, no de su espejo
+- [0267](../adr/0267-una-fuente-caida-degrada-no-desaparece.md) — Una fuente caída degrada el indicador, no lo hace desaparecer

@@ -8,7 +8,7 @@ indicadores: [desequilibrio_monetario, rem_ipc_12m, idm, ipc_total]
 parametros: ['DIMENSIONES_ITCM["estabilidad_monetaria"]["indicadores"]', 'TECHOS["ITCM"]["circular"]']
 archivos: ['scripts/itcm.py', 'scripts/procedencia_anclas.py', 'tests/test_itcm.py', 'fichas.ts']
 continua: ['0192']
-relacionado: ['0009', '0055', '0105', '0120', '0192']
+relacionado: ['0009', '0055', '0105', '0120', '0192', '0261']
 ambito: 'ITCM · dimensión estabilidad monetaria · ponderación interna'
 origen: 'Ficha "Desequilibrio Monetario" (Diego): «peso similar al de los indicadores cambiarios/de reservas ya existentes», con el número final deliberadamente abierto'
 ---

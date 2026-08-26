@@ -135,6 +135,24 @@ jobs:
       - name: Regenerar sensibilidad ampliada
         run: python scripts/sensibilidad.py
 
+      # Las fichas metodológicas en Markdown salen del mismo snapshot que la web
+      # y hasta ADR-0260 no las regeneraba nadie: el generador existía y no
+      # estaba acá, así que el artefacto se quedaba donde lo hubiera dejado la
+      # última corrida a mano. La auditoría del 25-ago-2026 encontró la ficha del
+      # supermercado publicando mayo mientras la card ya publicaba junio, y al
+      # regenerar aparecieron el ITCM entero y `desequilibrio_monetario`
+      # arrastrando lo mismo. No son decorativos: `output/fichas/*.md` es el
+      # material de ingesta para modelos, así que un número viejo ahí se propaga.
+      #
+      # Va DESPUÉS de publicar.py —que es lo que escribe el snapshot del que
+      # leen— y ANTES de los gates, para que el pytest de esta misma corrida
+      # cruce las fichas recién escritas contra el snapshot recién publicado
+      # (tests/test_fichas_generadas_al_dia.py). Regenerarlas después de los
+      # gates commitearía un artefacto que nadie miró.
+      # Cuestan 0,2 s los cuatro cinturones.
+      - name: Regenerar las fichas metodológicas
+        run: python scripts/fichas/generar.py --todos
+
       # Gates de calidad. Desde ADR-0133 el gate distingue:
       #   * INTEGRIDAD (G1 campos faltantes · G3 card≠serie · G6 jerga interna)
       #     → corta. El snapshot afirmaría algo que no es cierto.
@@ -183,6 +201,7 @@ jobs:
                   projects/informe_coyuntura/output/sensibilidad.json \
                   projects/informe_coyuntura/output/informe.json \
                   projects/informe_coyuntura/output/informe.md \
+                  projects/informe_coyuntura/output/fichas/*.md \
                   projects/informe_coyuntura/output/validacion_externa.json \
                   projects/informe_coyuntura/web/src/data/informe.json \
                   projects/informe_coyuntura/web/src/data/series.json \

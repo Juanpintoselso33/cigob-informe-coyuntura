@@ -95,7 +95,18 @@ TECHOS = {
     # y la fracción circular del ITCM pasa de 40,3% a 41,6%. La circularidad se
     # mide ponderada por peso, así que repesar un indicador la mueve aunque
     # ninguna banda cambie.
-    "ITCM": {"circular": 0.42, "sin_declarar": 0.01},
+    # BAJA a 0,33 el 2026-08-25 (ADR-0261/0262/0266). Tres movimientos, y el
+    # trinquete obliga a fijar la mejora en el mismo cambio:
+    #   · salen `idm` e `icip` del índice —los dos con anclas de convención,
+    #     calibradas contra su propio período— así que su circularidad se va
+    #     con ellos;
+    #   · `costo_financiamiento_tesoro` deja de contarse como convención: sus
+    #     cortes son umbrales normativos de una tasa REAL y los dos episodios
+    #     que el ADR-0071 citaba servían para validar el rótulo, no para fijar
+    #     los cortes. La glosa vieja confundía la validación con el origen.
+    # El resultado medido es 32,4%. El techo queda en 0,33 y a partir de acá el
+    # ITCM no puede volver a subir sin que alguien lo firme.
+    "ITCM": {"circular": 0.33, "sin_declarar": 0.01},
     # ITCG y ITCP bajaron el 2026-07-20 (ADR-0121) al declarar el origen de sus
     # bandas sin_declarar: los medidores de avance 0-100 (ITCG) y los indicadores
     # anclados al cero (ITCP: ventaja electoral, quórum, transferencias) eran
@@ -124,7 +135,6 @@ PROCEDENCIA = {
     # ── ITCM ────────────────────────────────────────────────────────────────
     "ipc_total": ("conceptual", "bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120)"),
     "rem_ipc_12m": ("conceptual", "hereda las bandas normativas del ipc_total —misma vara para inflación esperada y realizada— (ADR-0120)"),
-    "idm": ("convencion", "«calibrado con la historia 2024-2026»"),
     "desequilibrio_monetario": ("convencion", "cortes por percentiles (p0/p25/p50/p75/p100) de cada componente, como pide la sección 7 de la ficha; la matriz A×B y sus cuatro esquinas vienen del documento (ADR-0192)"),
     "recaudacion": ("conceptual", "bandas de variación real en torno al cero; los cortes caen razonablemente en la distribución 2021-2023 de la serie DGI que se puntúa desde ADR-0127 (mediana +4,5%; p0/p14/p57/p80) y NO se recalibraron al cambiar de fuente (ADR-0120)"),
     "saldo_comercial_12m": ("conceptual", "bandas en torno al equilibrio comercial (cero), techo institucional 85; consistentes con la mediana histórica (ADR-0120)"),
@@ -136,9 +146,16 @@ PROCEDENCIA = {
     "ipi_manufacturero": ("conceptual", "hereda las bandas del EMAE a propósito para dejar ver la brecha industria-actividad, con cita a ADR-0045 (ADR-0076/0079)"),
     "tcrm": ("historia_larga", "historia 1997-2026: p10≈75, p25≈87, mediana≈106 — 29 años, cinco gobiernos"),
     "resultado_primario": ("convencion", "referencias dic-2023 (−12,0%) y el programa estabilizado en +6/+8% (ADR-0072)"),
-    "costo_financiamiento_tesoro": ("convencion", "extremos tomados de dic-2023 (−12,2%) y ago-2025 (+33,5%) (ADR-0071)"),
+    # ADR-0266: decía `convencion` y "extremos tomados de dic-2023 y ago-2025",
+    # que confundía la VALIDACIÓN con el ORIGEN. Los cortes de ADR-0071 son
+    # conceptuales: el 0 es el cero de una tasa real —la frontera de la
+    # licuación—, el 6 está cerca del crecimiento potencial (la condición r < g)
+    # y el 12 y el 20 son pasos hacia la dinámica explosiva. Ninguno es un
+    # percentil, y de hecho ninguno de los dos episodios citados ES un corte:
+    # los dos caen en bandas abiertas. Estaban ahí para comprobar que la banda
+    # los rotulaba como los rotulaba la prensa, no para fijarla.
+    "costo_financiamiento_tesoro": ("conceptual", "umbrales normativos de una tasa REAL: 0 = frontera de la licuación · 6 ≈ crecimiento potencial (r < g) · 12 y 20 hacia la dinámica explosiva (ADR-0071); dic-2023 y ago-2025 se usaron para validar el rótulo, no para fijar los cortes"),
     "iai": ("convencion", "el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026"),
-    "icip": ("convencion", "banda ensanchada por la volatilidad observada del período"),
     "credito_privado": ("convencion", "«calibradas a la remonetización 2024-2026» (ADR-0022)"),
 
     # ── ITCG ────────────────────────────────────────────────────────────────

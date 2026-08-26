@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'gestion'
 indicadores: [reestructuracion_organismos]
 archivos: ['scripts/itcg.py', 'scripts/publicar.py', 'web/src/lib/descripciones.ts', 'tests/test_itcg.py', 'tests/test_piso_cobertura.py']
-relacionado: ['0245']
+relacionado: ['0245', '0259', '0265']
 ambito: 'Cinturón gestión · ITCG · `reestructuracion_organismos` · por qué su porcentaje no es un porcentaje'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «11 cuenta normas que afectan aproximadamente 18 entidades; 45 es una convención documental»'
 ---

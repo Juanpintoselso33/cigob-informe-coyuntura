@@ -43,17 +43,12 @@ Revisiones sobre el doc original (observaciones del analista, docs
 
 Incorporaciones de la 3ª tanda (propuesta "Índice de Desequilibrio Monetario"
 + tipo de cambio multilateral, jun-2026):
-  * Estabilidad monetaria suma el IDM (brecha de crecimiento real M3–M2; se
-    llamaba «Índice de Desequilibrio Monetario» hasta ADR-0254): la brecha entre
-    el crecimiento del M3 privado y el del M2 privado transaccional. Los dos son
-    AGREGADOS: la brecha no es oferta menos demanda estimada. La propuesta original lo define como
-    ΔM3 nominal − ΔM2 real mensual; esa fórmula está sesgada por la inflación
-    (resta una tasa real de una nominal → da rojo permanente) y por la
-    estacionalidad del aguinaldo. Se implementa la versión REAL-REAL INTERANUAL
-    (ΔM3 priv. real i.a. − ΔM2 priv. real i.a.), que respeta la intención
-    (comparar los dos agregados en términos reales) sin esos defectos. Se computa en
-    macro.py a partir de circulante (var. 17) + depósitos privados (var. 100) y
-    M2 privado transaccional (var. 197) del BCRA, deflactados por el IPC.
+  * El IDM (brecha de crecimiento real M3–M2) SALIÓ del índice el 25-ago-2026
+    (ADR-0261). Se llamaba «Índice de Desequilibrio Monetario» y ADR-0254 mostró
+    que M2 es un agregado, no una demanda estimada; con eso la banda quedó
+    afirmando una dirección sin fundamento, y ninguna referencia externa del
+    proyecto pudo reponerla. Se sigue calculando y publicando como contexto (ver
+    INDICADORES_CONTEXTO): la brecha es un dato, no un puntaje.
   * Composición de la liquidez y presión compradora (ficha de Diego, ago-2026;
     ADR-0192, renombrado por ADR-0252): indicador separado del IDM que cruza DOS
     componentes en una matriz — cuánta de la liquidez privada total sigue en
@@ -77,14 +72,16 @@ macro.py como promedios ponderados de variaciones interanuales:
   * IAI — Índice Anticipador de Inversión (físico): ISAC construcción + bienes de
     capital importados (+ patentamientos comerciales cuando haya histórico). Mide
     la inversión tradicional/tangible.
-  * ICIP — Pagos de servicios digitales y productividad: pagos al exterior de
-    servicios de informática (software/cloud/IA) + productividad laboral
-    (IPI/empleo). NO es inversión digital: esos pagos son consumo intermedio en
-    cuentas nacionales (ADR-0253). La lectura conjunta IAI vs ICIP sigue
-    contrastando inversión física contra gasto en digitalización.
+  * ICIP — Pagos de servicios digitales y productividad: SALIÓ del índice el
+    25-ago-2026 (ADR-0262). Suma con el mismo signo dos insumos que necesitarían
+    signos opuestos: pagos al exterior por servicios de informática (57%, consumo
+    intermedio en cuentas nacionales — ADR-0253) y productividad laboral (43%).
+    Se sigue calculando y publicando como contexto, y la lectura conjunta contra
+    el IAI —inversión física contra gasto en digitalización— sigue disponible
+    fuera del score. La dimensión queda con el IAI solo.
   El umbral ±2% de los docs no sobrevive al dato argentino (las series i.a. se
-  mueven ±30-180% por la base 2024-2025): se usan BANDAS ANCHAS calibradas a la
-  realidad, conservando la lógica contracción/neutro/expansión.
+  mueven ±30-180% por la base 2024-2025): el IAI usa BANDAS ANCHAS calibradas a
+  la realidad, conservando la lógica contracción/neutro/expansión.
 """
 from pathlib import Path
 
@@ -114,15 +111,6 @@ BANDAS_ITCM = {
         # No tiene historia propia previa a dic-2023 —es la serie derivada— pero
         # hereda su criterio del IPC, no del período medido.
         (-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (3.0, 5.0, 40), (5.0, INF, 10),
-    ],
-    "idm": [                            # Brecha de crecimiento real M3–M2 (pp, i.a.)
-        # gap = crecimiento i.a. REAL del M3 privado − del M2 privado transaccional.
-        # Negativo = el agregado transaccional crece más rápido que el amplio;
-        # positivo = el amplio corre por encima del transaccional. NO es un
-        # excedente sobre la demanda de dinero: M2 es un agregado (ADR-0254).
-        # que presiona la brecha cambiaria. Calibrado con la historia 2024-2026 (oct-24 a
-        # may-26 va de −11 pp en la remonetización post-estabilización a +7 pp en el pico).
-        (-INF, -2.0, 100), (-2.0, 2.0, 85), (2.0, 5.0, 60), (5.0, 8.0, 35), (8.0, INF, 10),
     ],
     "desequilibrio_monetario": [        # tensión 0-100 de la matriz A × B (ADR-0192)
         # El valor crudo YA VIENE en unidades de tensión: desequilibrio_monetario.py
@@ -259,6 +247,33 @@ BANDAS_ITCM = {
         # crece más rápido que la economía (ago-2025 dio +33,5%, con rollover del
         # 61% y tasas que "duplicaban la inflación"). El óptimo es positivo y
         # moderado, cerca del crecimiento potencial.
+        #
+        # LOS CORTES SON CONCEPTUALES, NO DISTRIBUCIONALES, y conviene dejarlo
+        # dicho porque se preguntó y no era evidente. Cada uno tiene significado
+        # propio (ADR-0071, tabla de la sección «Escala de U invertida»): el 0 es
+        # el cero de una tasa REAL —la frontera de la licuación—, el 6 está cerca
+        # del crecimiento potencial (la condición r < g de sostenibilidad), y el
+        # 12 y el 20 son pasos redondos hacia la dinámica explosiva. Ninguno es un
+        # percentil. Los dos episodios que cita ADR-0071 —dic-2023 en −12,2% y
+        # ago-2025 en +33,5%— están ahí como VALIDACIÓN (¿la banda los rotula como
+        # los rotulaba la prensa?), no como origen de los cortes: ninguno de los
+        # dos ES un corte, y los dos caen en las bandas abiertas.
+        #
+        # Por eso ADR-0258 —que corrigió el indicador para que use la TIREA de
+        # corte y no el cupón contractual, y con eso mueve 22 de los 40 meses— NO
+        # los invalida: cambia la MEDICIÓN de la serie, y un umbral normativo no
+        # se mide contra la serie. Es el mismo criterio de ADR-0120.
+        # Ojo, `scripts/procedencia_anclas.py` clasifica este indicador como
+        # "convencion" diciendo "extremos tomados de dic-2023 y ago-2025": esa
+        # glosa confunde la validación con el origen y conviene corregirla.
+        #
+        # QUEDA ABIERTO, y es lo único que ADR-0258 sí toca: con la serie vieja el
+        # techo de 20% era casi inalcanzable; con la nueva, sep-2025 da 58,81% y
+        # todo lo que pase de 20 puntúa 15 por igual. La banda no distingue 21% de
+        # 59% justo en el episodio que la corrección destapó. Que el peor tramo
+        # sature es deliberado (igual que ipc_total por encima de 5% m/m), pero
+        # cuánta resolución se pierde sólo se puede medir con la serie nueva
+        # publicada. No se recalibra a ciegas ni para conservar un puntaje.
         (20.0, INF, 15), (12.0, 20.0, 45), (6.0, 12.0, 75),
         (0.0, 6.0, 100), (-5.0, 0.0, 55), (-INF, -5.0, 20),
     ],
@@ -268,16 +283,6 @@ BANDAS_ITCM = {
         # argentina se mueven ±30-180% por la base 2024); bandas ANCHAS calibradas a
         # la realidad 2024-2026 conservando la lógica contracción/neutro/expansión.
         (10.0, INF, 100), (2.0, 10.0, 80), (-2.0, 2.0, 60), (-10.0, -2.0, 35), (-INF, -10.0, 10),
-    ],
-    "icip": [                           # ICIP — pagos de servicios digitales (% i.a. ponderado)
-        # ADR-0253: se llamaba «Capitalización Inteligente». Los pagos al exterior
-        # por informática y nube son, en cuentas nacionales, consumo intermedio —
-        # no formación bruta de capital: pagar la nube todos los meses no
-        # capitaliza a nadie. Mide pagos de servicios digitales combinados con
-        # productividad laboral, y así se llama ahora.
-        # Más rápido y volátil que la inversión física (los pagos de servicios
-        # informáticos i.a. oscilan más), de ahí la banda más ancha.
-        (20.0, INF, 100), (5.0, 20.0, 80), (-5.0, 5.0, 60), (-20.0, -5.0, 35), (-INF, -20.0, 10),
     ],
     "credito_privado": [                # Crédito al sector privado, % i.a. REAL (ADR-0022)
         # Crédito REALIZADO (complementa la capacidad del IdC). Bandas anchas
@@ -308,24 +313,25 @@ DIMENSIONES_ITCM = {
         "nombre": "Estabilidad monetaria-inflacionaria",
         "peso": 0.26,
         "indicadores": {
-            # 40/20/20/20 (ADR-0193). El desequilibrio monetario no hereda el
-            # 10% de presion_dolarizacion: la ficha pide "un peso similar al de
-            # los indicadores cambiarios/de reservas ya existentes" y ese 10%
-            # daba 2,6% nominal, menos de la mitad del comparable.
+            # 60/20/20 desde ADR-0261. Eran 40/20/20/20 (ADR-0193) con `idm` en
+            # el cuarto lugar, y su 20% vacante vuelve ENTERO al IPC.
             #
-            # El comparable es reservas_bcra (5,44% nominal), no el TCRM: el
-            # TCRM llega a 11% porque es el único indicador de su dimensión, no
-            # porque se lo haya juzgado el doble de importante que las reservas.
-            # Anclar ahí sería leer un artefacto de la estructura.
-            #
-            # El 20% deja al indicador en 5,2% nominal, al lado de reservas. Lo
-            # que cede son rem e idm, no el IPC: los tres son lecturas distintas
-            # de la misma tensión monetaria y ninguna es más autoritativa que
-            # otra, mientras que la inflación realizada sigue siendo el núcleo
-            # de la dimensión y conserva su 40%.
-            "ipc_total": 0.40,
+            # No se renormaliza en proporción, y la razón es que ADR-0193 no fijó
+            # estos pesos como proporciones sino con dos compromisos explícitos
+            # que hay que preservar:
+            #   1. el desequilibrio monetario vale lo que las reservas EN TÉRMINOS
+            #      NOMINALES ("un peso similar al de los indicadores cambiarios/de
+            #      reservas ya existentes": 0,26 × 0,20 = 5,2% contra 5,44% de
+            #      reservas_bcra). Ese ancla es absoluta, no relativa: repartir el
+            #      20% en proporción lo habría subido a 6,5% y roto el ancla —lo
+            #      atajó `test_el_desequilibrio_pesa_como_las_reservas_y_no_como_
+            #      el_tcrm`, que ya existía;
+            #   2. rem y desequilibrio son PARES entre sí, y el IPC es el núcleo
+            #      de la dimensión.
+            # Sacar un par no cambia lo que valen los otros dos: la cuota vacante
+            # vuelve al núcleo y nada más se mueve.
+            "ipc_total": 0.60,
             "rem_ipc_12m": 0.20,
-            "idm": 0.20,
             "desequilibrio_monetario": 0.20,
         },
     },
@@ -391,7 +397,17 @@ DIMENSIONES_ITCM = {
     "inversion": {
         "nombre": "Inversión",
         "peso": 0.12,
-        "indicadores": {"iai": 0.6, "icip": 0.4},
+        # Un solo indicador desde ADR-0262: `icip` salió del índice y el IAI
+        # —ISAC + bienes de capital importados— se queda con la dimensión
+        # entera, que es lo que hace `parametrica.calcular_indice` al
+        # renormalizar. No es la primera dimensión de un indicador solo:
+        # competitividad_externa ya lo era.
+        #
+        # El PESO de la dimensión no se toca. Lo que perdió justificación es que
+        # unos pagos al exterior por servicios digitales midan formación de
+        # capital, no que la inversión física valga menos del 12% del ITCM.
+        # Revisarlo sería otra decisión y pide su propio ADR.
+        "indicadores": {"iai": 1.0},
     },
 }
 
@@ -416,7 +432,17 @@ INTERPRETACION_LEGIBLE = {
 # badlar: ya no integra el índice (la dimensión de financiamiento usa el IdC);
 # se sigue publicando como contexto e insumo del IdC (tasa pasiva de referencia).
 # tcrm SALIÓ de contexto: ahora puntúa en la dimensión competitividad_externa.
-INDICADORES_CONTEXTO = ["badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"]
+#
+# idm (ADR-0261) e icip (ADR-0262) ENTRARON acá el 25-ago-2026. Los dos siguen
+# calculándose, publicándose en `output/series/macro.csv` y viajando a BigQuery:
+# lo que se retiró es su contrato con el SCORE, no el dato.
+#   * idm: su lectura causal murió con ADR-0254 y ninguna referencia externa
+#     pudo firmar la dirección que la banda afirmaba.
+#   * icip: sus dos insumos necesitarían signos opuestos y el compuesto los suma
+#     con el mismo, así que ninguna dimensión lo arregla.
+# Ver los dos ADR: no alcanzaba con moverlos ni con recalibrarlos.
+INDICADORES_CONTEXTO = ["badlar", "prestamos_privados", "base_monetaria", "tc_mayorista",
+                        "idm", "icip"]
 
 
 def puntaje_banda(valor: float, bandas: list) -> int:

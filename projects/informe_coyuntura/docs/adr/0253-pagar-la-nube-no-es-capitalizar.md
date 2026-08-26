@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'macro'
 indicadores: [icip]
 archivos: ['scripts/macro.py', 'scripts/itcm.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'tests/test_constructos_no_prometen_de_mas.py']
-relacionado: ['0009']
+relacionado: ['0009', '0262', '0264']
 ambito: 'Cinturón macro · ITCM · `icip` · por qué unos pagos al exterior no son formación de capital'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «pagos transfronterizos de informática y nube suelen ser consumo intermedio; no son por sí mismos formación bruta de capital»'
 ---

@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'macro'
 indicadores: [desequilibrio_monetario]
 archivos: ['scripts/desequilibrio_monetario.py', 'scripts/itcm.py', 'scripts/publicar.py', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts', 'tests/test_desequilibrio_monetario.py']
-relacionado: ['0252', '0192', '0082']
+relacionado: ['0082', '0192', '0252', '0260', '0261', '0264']
 ambito: 'Cinturón macro · ITCM · `desequilibrio_monetario` · ventana de calibración de A y esquinas cruzadas de la matriz'
 origen: 'Deuda declarada en ADR-0252: la asimetría de la matriz se justificaba con la tesis de la fuga y quedó sin fundamento'
 ---

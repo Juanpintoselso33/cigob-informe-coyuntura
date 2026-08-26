@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-25
 cinturon: 'transversal'
 archivos: ['scripts/parametrica.py', 'scripts/itcp.py', 'scripts/itcg.py', 'scripts/itvc.py', 'tests/test_suspension_libera_el_peso.py']
-relacionado: ['0186', '0189', '0246', '0247', '0248', '0255']
+relacionado: ['0186', '0189', '0246', '0247', '0248', '0255', '0259', '0265', '0266']
 ambito: 'Transversal · qué le pasa al peso de un indicador cuando se lo saca del score'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «Un indicador suspendido libera su peso y los restantes se renormalizan automáticamente dentro de su dimensión. No asignar pesos nuevos a mano para preservar el score anterior»'
 ---

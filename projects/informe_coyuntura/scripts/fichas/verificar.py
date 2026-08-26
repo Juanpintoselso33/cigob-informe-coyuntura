@@ -20,19 +20,11 @@ import sys
 from pathlib import Path
 from docx import Document
 
-# La raíz del proyecto sale de la ubicación de este archivo: vive en
-# scripts/fichas/, así que sube dos niveles. Antes era un path absoluto de
-# una máquina concreta, que dentro del repo no le sirve a nadie.
-RAIZ = Path(__file__).resolve().parents[2]
-AQUI = RAIZ / "output" / "fichas"
-informe = json.loads((RAIZ / "web/src/data/informe.json").read_text(encoding="utf-8"))
-datos_ts = (RAIZ / "web/src/lib/datos.ts").read_text(encoding="utf-8")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from comun import COLOR, RAIZ, SALIDA_DIR as AQUI, coma, labels
 
-CADENA = r'"((?:[^"\\]|\\.)*)"'
-LABELS = dict(re.findall(r"(\w+):\s*" + CADENA,
-                         re.search(r"export const LABELS[^{]*\{(.*?)\n\};",
-                                   datos_ts, re.S).group(1)))
-COLOR = {"verde": "VERDE", "amarillo": "AMARILLO", "naranja": "NARANJA", "rojo": "ROJO"}
+informe = json.loads((RAIZ / "web/src/data/informe.json").read_text(encoding="utf-8"))
+LABELS = labels()
 DOCS = {
     "macro": "Fichas Semaforo Macro.docx",
     "politica": "Fichas Semaforo Politica.docx",
@@ -42,15 +34,6 @@ DOCS = {
 # Los mismos cortes que publica el informe, para el chequeo de coherencia del
 # ITVC: la ficha declara la escala base-100 y tiene que caer en su propio tramo.
 TRAMOS_ITVC = ((105.0, "verde"), (95.0, "amarillo"), (85.0, "naranja"))
-
-
-def coma(x, dec=2):
-    if x is None:
-        return "—"
-    s = f"{float(x):,.{dec}f}".replace(",", "@").replace(".", ",").replace("@", ".")
-    if "," in s:
-        s = s.rstrip("0").rstrip(",")
-    return s.replace("-", "−")
 
 
 def norm(s):

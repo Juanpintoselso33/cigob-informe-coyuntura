@@ -53,6 +53,22 @@ def coma(x) -> str:
     return ("−" + s[1:]) if s.startswith("-") else s
 
 
+def _red(valor, dec, factor=1):
+    """Redondea, **conservando el None**. Es el punto entero de la función.
+
+    El patrón que reemplaza era `round(x.get("valor", 0), 2)`: con la fuente
+    caída publicaba **0**, y un cero no es un dato faltante — es un dato. Peor
+    que la ausencia: `_carry_forward` sólo repara los `None`, así que el cero
+    pasaba de largo y se publicaba como si el organismo lo hubiera informado.
+    Con el INDEC caído, la inflación de alimentos habría salido 0,00% m/m.
+    Descubierto el 25-ago-2026 al escribir
+    `tests/test_una_fuente_caida_degrada_no_desaparece.py`.
+    """
+    if valor is None:
+        return None
+    return round(valor * factor, dec)
+
+
 def _add(out, key, valor, unidad, fuente, fecha, **extra):
     d = {"valor": valor, "unidad": unidad, "fuente": fuente,
          "fecha_dato": fecha, "desactualizado": False}
@@ -84,11 +100,11 @@ def build_vida(raw):
     out = {}
 
     bs = indec.get("brecha_salario_cbt", {})
-    _add(out, "brecha_salario_cbt", round(bs.get("valor", 0), 2),
+    _add(out, "brecha_salario_cbt", _red(bs.get("valor"), 2),
          "canastas (RIPTE/CBT)", "Sec. Trabajo (RIPTE) + INDEC (CBT)", bs.get("fecha"),
          detalle_txt=bs.get("nota"))
     al = indec.get("ipc_alimentos", {})
-    _add(out, "ipc_alimentos", round(al.get("variacion_mensual_pct", 0), 2),
+    _add(out, "ipc_alimentos", _red(al.get("variacion_mensual_pct"), 2),
          "% m/m", "INDEC — IPC alimentos y bebidas (vía datos.gob.ar)", al.get("fecha"))
     cc = bcra.get("credito_consumo_total", {})
     # El crédito de consumo viene en millones de pesos; pasar a billones para
@@ -115,7 +131,7 @@ def build_vida(raw):
         fuente_url=servicios.get("url"),
     )
     alq = indec.get("ipc_alquiler_gba", {})
-    _add(out, "alquiler_real", round(alq.get("variacion_mensual_pct", 0), 2),
+    _add(out, "alquiler_real", _red(alq.get("variacion_mensual_pct"), 2),
          "% m/m alquileres", "INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)",
          alq.get("fecha"))
     # Componente A de la ficha de proteína animal. Pasa de CICCRA al tablero de
@@ -129,38 +145,54 @@ def build_vida(raw):
         _add(out, "consumo_carne", carnes["vacuna"],
              "kg/hab/año", "SAGYP — tablero consumo per cápita de carnes (promedio móvil 12m)",
              f"{carnes['mes']}-01")
-        # Componentes B y C: el total distingue sustitución de empobrecimiento,
-        # y el ratio dice cuál de los dos está pasando.
-        # Las DOS fuentes, porque el modal publica una sola línea de fuente y
-        # el lector ve el nivel de una y el gráfico de la otra (ADR-0217).
-        _add(out, "consumo_carnes_total", carnes["total"],
-             "kg/hab/año",
-             "SAGYP — tablero de consumo per cápita de carnes (nivel) · "
-             "INDEC — faena de vacunos, porcinos y aves (evolución del índice)",
-             f"{carnes['mes']}-01")
-        # Las variaciones i.a. las publica la misma fuente y las consume la
-        # matriz A×B en `_por_que_carne`. Viajan COLGADAS del indicador, como
-        # ya hacen `componentes` en el IAI o `regimen` en otros: meterlas como
-        # clave suelta del dict las convertiría en un indicador fantasma.
-        out["consumo_carnes_total"]["variaciones"] = carnes.get("variaciones") or {}
     else:
         _add(out, "consumo_carne", carne.get("valor"),
              "kg/hab/año", "CICCRA", carne.get("fecha"))
+    # Componentes B y C: el total distingue sustitución de empobrecimiento, y el
+    # ratio dice cuál de los dos está pasando.
+    # Las DOS fuentes, porque el modal publica una sola línea de fuente y el
+    # lector ve el nivel de una y el gráfico de la otra (ADR-0217).
+    #
+    # Se llama SIEMPRE, aunque SAGYP no haya traído el mes, por el mismo motivo
+    # que la motorización, sentimiento_digital y el supermercado: **una clave
+    # AUSENTE es invisible para `_carry_forward`**, que sólo repara las que ya
+    # están en None. Vivía adentro del `if` y por eso el indicador no se
+    # degradaba: DESAPARECÍA. Pasó de verdad el 25-ago-2026 —el colector devolvió
+    # `consumo_carnes: None` y el snapshot salió con 62 cards en vez de 63—, y
+    # `gate_calidad.py` lo dejó pasar porque mira estructura, frescura y
+    # card-contra-serie, no invariantes de conteo. A diferencia de `consumo_carne`,
+    # este componente NO tiene respaldo en CICCRA: la rama de respaldo publicaba
+    # la carne vacuna y se olvidaba del total.
+    _add(out, "consumo_carnes_total", carnes.get("total"),
+         "kg/hab/año",
+         "SAGYP — tablero de consumo per cápita de carnes (nivel) · "
+         "INDEC — faena de vacunos, porcinos y aves (evolución del índice)",
+         f"{carnes['mes']}-01" if carnes.get("mes") else None)
+    # Las variaciones i.a. las publica la misma fuente y las consume la matriz
+    # A×B en `_por_que_carne`. Viajan COLGADAS del indicador, como ya hacen
+    # `componentes` en el IAI o `regimen` en otros: meterlas como clave suelta
+    # del dict las convertiría en un indicador fantasma.
+    out["consumo_carnes_total"]["variaciones"] = carnes.get("variaciones") or {}
     inf = indec.get("informalidad_trimestral") or indec.get("informalidad_anual", {})
-    _add(out, "informalidad", round(inf.get("valor", 0) * 100, 1),
+    _add(out, "informalidad", _red(inf.get("valor"), 1, 100),
          "%", "INDEC EPH", inf.get("fecha"))
     # ADR-0218: el indicador pasa a medir lo que su nombre promete — el cierre
     # neto de PyMEs — con la base de empleadores con cobertura de ART de la SRT.
     # Antes publicaba la variación mensual del IPI manufacturero.
     ind_ = raw.get("trabajo_independiente") or {}
+    # ADR-0250: el universo es restringido y el rótulo lo dice. Antes decía
+    # «% del empleo registrado» mientras dejaba el monotributo social afuera de
+    # los dos lados del cociente.
+    #
+    # Se agrega SIEMPRE, con `valor: None` si SIPA no contestó: una clave
+    # ausente es invisible para `_carry_forward` y el indicador desaparecería
+    # de la web en vez de quedar marcado como desactualizado. El detalle sí va
+    # adentro del `if`, porque se arma con cinco campos del propio dato.
+    _add(out, "trabajo_independiente", ind_.get("participacion"),
+         "% del empleo registrado SIPA, sin monotributo social",
+         "SIPA — autónomos y monotributo general sobre el empleo registrado total (asalariados privados, públicos y casas particulares)",
+         f"{ind_['mes']}-01" if ind_.get("mes") else None)
     if ind_.get("participacion") is not None:
-        # ADR-0250: el universo es restringido y el rótulo lo dice. Antes decía
-        # «% del empleo registrado» mientras dejaba el monotributo social
-        # afuera de los dos lados del cociente.
-        _add(out, "trabajo_independiente", ind_["participacion"],
-             "% del empleo registrado SIPA, sin monotributo social",
-             "SIPA — autónomos y monotributo general sobre el empleo registrado total (asalariados privados, públicos y casas particulares)",
-             f"{ind_['mes']}-01")
         card = out["trabajo_independiente"]
         for k in ("categorias_numerador", "categorias_denominador",
                   "excluido", "excluido_quiebre", "participacion_con_excluido"):
@@ -183,16 +215,16 @@ def build_vida(raw):
                if con else "")
         )
     emp = raw.get("empleadores_pyme") or {}
-    if emp.get("pyme") is not None:
-        _add(out, "mortalidad_pymes", emp["pyme"],
-             "empleadores", "SRT — partes empleadoras con cobertura de ART, hasta 50 trabajadores",
-             f"{emp['mes']}-01")
+    # Igual que arriba: SIEMPRE, con None si la SRT no contestó.
+    _add(out, "mortalidad_pymes", emp.get("pyme"),
+         "empleadores", "SRT — partes empleadoras con cobertura de ART, hasta 50 trabajadores",
+         f"{emp['mes']}-01" if emp.get("mes") else None)
     isac = indec.get("isac", {})
-    _add(out, "despacho_cemento", round(isac.get("valor", 0), 1),
+    _add(out, "despacho_cemento", _red(isac.get("valor"), 1),
          "índice ISAC", "INDEC — ISAC desestacionalizado (vía datos.gob.ar)", isac.get("fecha"))
     sub = indec.get("subocupacion_demandante", {})
     # ADR-0249: la tasa la calcula INDEC sobre la PEA, no sobre los ocupados.
-    _add(out, "subocupacion_demandante", round(sub.get("valor", 0) * 100, 1),
+    _add(out, "subocupacion_demandante", _red(sub.get("valor"), 1, 100),
          "% de la PEA", "INDEC — EPH, tasa de subocupación demandante",
          sub.get("fecha"))
     emp = indec.get("empleo_registrado", {})
@@ -204,13 +236,13 @@ def build_vida(raw):
          "hechos/año", "SNIC — Ministerio de Seguridad (calidad UNODC grado A)",
          str(seg.get("anio")))
     icc = utdt.get("icc_utdt", {})
-    _add(out, "icc_utdt", round(icc.get("valor", 0), 1),
+    _add(out, "icc_utdt", _red(icc.get("valor"), 1),
          "índice", "UTDT — Índice de Confianza del Consumidor (CIF)", icc.get("fecha"))
     pn = (raw.get("pobreza") or {}).get("pobreza_nowcast", {})
     _add(out, "pobreza_nowcast", pn.get("valor"),
          "% de personas", "UTDT — Nowcast de Pobreza (González-Rozada)", pn.get("fecha"))
     il = utdt.get("indice_lider", {})
-    _add(out, "indice_lider", round(il.get("valor", 0), 1),
+    _add(out, "indice_lider", _red(il.get("valor"), 1),
          "índice", "UTDT — Índice Líder (CIF)", il.get("fecha"))
     # sd puede venir {} (nunca corrió) o {"...": null} (Trends 429/timeout,
     # ver "nota" del dump crudo) -- en ambos casos _add() se llama SIEMPRE
@@ -2150,7 +2182,16 @@ def _scoring_vida_itvc(c, series):
 # (colector, cache y series — son insumos del IdC/IDM/TCRM y del crédito
 # real), pero no se publican como tiles: su única señal no redundante entra
 # al índice vía credito_privado.
-MACRO_OCULTOS = {"badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"}
+#
+# Se DERIVA de `itcm.INDICADORES_CONTEXTO`, como en política, gestión y vida.
+# Era el único de los cuatro que repetía la lista como literal, y esa copia no
+# es un detalle de estilo: un indicador que sale del score y entra a la lista
+# del módulo se seguía publicando como card sin puntuar, que es justo lo que
+# ADR-0153 y ADR-0216 prohíben y que vuelve por omisión —cae en el `else` de
+# `_scoring_indice` y se lleva la nota de contexto—. Apareció el 25-ago-2026 al
+# sacar `idm` e `icip` del índice: los dos habrían quedado visibles y mudos.
+# `tests/test_ocultos_derivan_de_la_fuente.py` lo vigila para los cuatro.
+MACRO_OCULTOS = set(itcm.INDICADORES_CONTEXTO)
 
 # Indicadores de política OCULTOS del snapshot (ADR-0048, mismo criterio que
 # ADR-0022): la revisión editorial los sacó del ITCP y el tablero solo

@@ -888,18 +888,21 @@ const robChartData = rob?.hist && indice ? {
           12 meses, que no son pasivos del BCRA para defender el tipo de cambio. La dimensión de
           financiamiento usa el <strong>Índice de Capacidad Prestable</strong> (precio, volumen
           y asignación del crédito), no la tasa nominal. La estabilidad monetaria incorpora el{" "}
-          <strong>brecha de crecimiento real M3–M2</strong> (diferencia interanual real
-          entre el agregado amplio de pesos privados y el transaccional; los dos son
-          agregados, así que no es oferta menos demanda) y la{" "}
           <strong>presión de dolarización de carteras</strong>: bajo restricciones se observa en
           la brecha CCL/mayorista y, desde la apertura, en las compras netas de dólares de
-          personas humanas respecto del M2 privado. Una quinta dimensión de{" "}
+          personas humanas respecto del M2 privado. La{" "}
+          <strong>brecha de crecimiento real M3–M2</strong> (diferencia interanual real entre el
+          agregado amplio de pesos privados y el transaccional; los dos son agregados, así que
+          no es oferta menos demanda) acompañaba esta dimensión hasta agosto de 2026 y hoy se
+          calcula fuera del puntaje. Una quinta dimensión de{" "}
           <strong>competitividad externa</strong> puntúa el{" "}
           <strong>tipo de cambio real multilateral</strong>: la apreciación se lee como tensión.
-          La sexta dimensión, <strong>inversión</strong>, combina el{" "}
-          <strong>IAI</strong> (inversión física: construcción y bienes de capital) y el{" "}
-          <strong>ICIP</strong> (capitalización digital: servicios tech y productividad);
-          sus umbrales se calibraron a la volatilidad real de las series, no al ±2% teórico.
+          La sexta dimensión, <strong>inversión</strong>, puntúa hoy con un solo componente, el{" "}
+          <strong>IAI</strong> (inversión física: construcción y bienes de capital); sus umbrales
+          se calibraron a la volatilidad real de las series, no al ±2% teórico. El{" "}
+          <strong>ICIP</strong> (pagos al exterior por servicios de informática —consumo
+          intermedio, no formación de capital— y productividad laboral) la acompañaba hasta
+          agosto de 2026 y hoy se calcula fuera del puntaje.
           Cada indicador se puntúa por <strong>interpolación entre las anclas</strong> de su
           tabla de umbrales (sin escalones de banda: dos valores casi iguales reciben
           puntajes casi iguales). El <strong>score {num(c.score)}/10</strong> y

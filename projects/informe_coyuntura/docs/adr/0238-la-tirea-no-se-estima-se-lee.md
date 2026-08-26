@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-25
 cinturon: 'macro'
 archivos: ['scripts/macro.py', 'tests/test_macro_costo_financiamiento.py', 'tests/fixtures/colocaciones_2026_06.json']
-relacionado: ['0071']
+relacionado: ['0071', '0258']
 ambito: 'Datos · de dónde sale la TIREA con la que se mide el costo del financiamiento del Tesoro'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «Corregir la TIREA: la colocación externa comparable informa 28,32%, no 32,17%»'
 ---

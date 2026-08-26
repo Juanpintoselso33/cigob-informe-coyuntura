@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'vida'
 indicadores: [sentimiento_digital]
 archivos: ['scripts/itvc.py', 'scripts/publicar.py', 'web/src/lib/descripciones.ts', 'web/src/lib/fichas.ts', 'tests/test_itvc.py', 'tests/test_suspension_libera_el_peso.py']
-relacionado: ['0222', '0245']
+relacionado: ['0222', '0245', '0259', '0265']
 ambito: 'Cinturón vida cotidiana · ITVC · `sentimiento_digital` · por qué un volumen de búsquedas no mide ánimo'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «el volumen de búsquedas no identifica valencia ni bienestar»'
 ---

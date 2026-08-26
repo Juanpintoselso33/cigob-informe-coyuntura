@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'politica'
 indicadores: [judicializacion]
 archivos: ['scripts/itcp.py', 'scripts/publicar.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'tests/test_constructos_no_prometen_de_mas.py']
-relacionado: ['0168', '0245']
+relacionado: ['0168', '0245', '0259', '0265']
 ambito: 'Cinturón política · ITCP · `judicializacion` · por qué sale del score hasta tener un universo de causas'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «el corpus no identifica causas contra el PEN ni políticas de su agenda»'
 ---

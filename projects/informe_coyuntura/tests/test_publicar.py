@@ -495,12 +495,20 @@ def test_macro_itcm_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    # 17 desde 2026-07-25 (ADR-0124: entra emae_difusion a la dimensión actividad).
-    assert len(en_indice) == 17, f"esperaba 17 indicadores en el índice, hay {len(en_indice)}"
-    # ADR-0022: los 4 monetarios nominales quedan OCULTOS del snapshot (siguen
-    # en pipeline como insumos de IdC/IDM/TCRM); su señal entra vía credito_privado.
+    # 17 desde 2026-07-25 (ADR-0124: entra emae_difusion a la dimensión
+    # actividad). **15 desde 2026-08-25**: salen `idm` (ADR-0261, ninguna de las
+    # seis referencias externas pudo firmar la dirección de su banda) e `icip`
+    # (ADR-0262, su compuesto suma con el mismo signo dos insumos que
+    # necesitarían signos opuestos).
+    assert len(en_indice) == 15, f"esperaba 15 indicadores en el índice, hay {len(en_indice)}"
+    # ADR-0022: los monetarios nominales quedan OCULTOS del snapshot (siguen en
+    # pipeline como insumos de IdC/TCRM); su señal entra vía credito_privado.
     assert contexto == {}, f"macro no debería publicar contexto: {set(contexto)}"
-    for oculto in ("badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"):
+    # ADR-0266: la lista se DERIVA de `itcm.INDICADORES_CONTEXTO`, así que basta
+    # con anotar ahí una baja para que deje de publicarse. Se enumera igual
+    # porque este test cuida el resultado, no el mecanismo.
+    for oculto in ("badlar", "prestamos_privados", "base_monetaria",
+                   "tc_mayorista", "idm", "icip"):
         assert oculto not in c["indicadores"], f"{oculto} debería estar oculto"
     assert "credito_privado" in en_indice
     desequilibrio = en_indice["desequilibrio_monetario"]

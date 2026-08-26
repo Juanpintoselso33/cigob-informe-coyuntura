@@ -261,7 +261,15 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
       </section>
     )}
 
-    {esIndicador && ind && (
+    {/* El cuerpo de la ficha NO depende de que el indicador tenga fila en el
+        snapshot: fuente, método, escala, limitaciones y changelog describen el
+        indicador, no la corrida. Un indicador retirado conserva ficha histórica
+        —eso dicen los ADR que lo retiran— y hasta acá la conservaba vacía: sin
+        esta distinción la página quedaba en el callout de «sin dato vigente» y
+        no había dónde leer con qué regla se construyó la serie que se sigue
+        publicando. Lo que sí se oculta es cada bloque que lee un campo de la
+        corrida, uno por uno. */}
+    {esIndicador && (
       <Fragment>
         <!-- ── Identificación (ficha ODS 0-3: qué es, unidad, fuente) ── -->
         <section class="cg-section">
@@ -285,7 +293,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
                 </dd>
               </div>
             )}
-            <div><dt>Unidad de medida</dt><dd>{UNIDADES_LARGAS[f.id] ?? ind.unidad ?? "—"}</dd></div>
+            <div><dt>Unidad de medida</dt><dd>{UNIDADES_LARGAS[f.id] ?? ind?.unidad ?? "—"}</dd></div>
             <div><dt>Frecuencia</dt><dd>{desc!.frecuencia}</dd></div>
             <div><dt>Tipo de dato</dt><dd>{desc!.tipo}</dd></div>
             {cobertura && <div><dt>Serie disponible</dt><dd>{cobertura}; el informe grafica desde dic-2023 (inicio del mandato)</dd></div>}
@@ -297,7 +305,9 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
             </div>
             {fi.fuente.serie && <div><dt>Serie exacta</dt><dd>{fi.fuente.serie}</dd></div>}
             <div><dt>Modo de acceso</dt><dd>{fi.fuente.acceso}</dd></div>
-            <div><dt>Última actualización</dt><dd>Dato de {periodoVigente} · informe generado el {informe.generated_at.slice(0, 10)}</dd></div>
+            {ind
+              ? <div><dt>Última actualización</dt><dd>Dato de {periodoVigente} · informe generado el {informe.generated_at.slice(0, 10)}</dd></div>
+              : <div><dt>Última actualización</dt><dd>Sin dato vigente en el informe: el indicador se retiró del tablero y esta ficha queda como registro de cómo se construyó su serie</dd></div>}
           </dl>
         </section>
 
@@ -333,7 +343,9 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
               <p class="cg-eyebrow">Puntaje</p>
               <h2 class="cg-h2">{indice ? `Cómo entra al ${indice.sigla}` : "Cómo se convierte en tensión"}</h2>
               {fi.anclas && (
-                <p class="cg-h2-sub">Los umbrales son institucionales (paramétrica CIGOB); el motor los lee como anclas y el puntaje se interpola linealmente entre ellas.</p>
+                <p class="cg-h2-sub">{integraIndice
+                  ? "Los umbrales son institucionales (paramétrica CIGOB); el motor los lee como anclas y el puntaje se interpola linealmente entre ellas."
+                  : "Este indicador NO puntúa hoy: la tabla de abajo es la escala con la que puntuaba y se conserva para poder leer su serie histórica. Su valor vigente no se convierte en ningún puntaje ni pesa en el índice."}</p>
               )}
             </div>
             <div class="cg-ficha-card">
@@ -371,10 +383,10 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
                 </Fragment>
               )}
               {fi.incidenciaTexto?.map(p => <p class="cg-ficha-p">{p}</p>)}
-              {!fi.anclas && ind.aporte_formula && (
+              {!fi.anclas && ind?.aporte_formula && (
                 <div class="cg-ficha-callout"><strong>Regla vigente.</strong> {ind.aporte_formula}</div>
               )}
-              {ind.aporte_lectura && <p class="cg-ficha-p" style="margin-top:12px;">{ind.aporte_lectura}</p>}
+              {ind?.aporte_lectura && <p class="cg-ficha-p" style="margin-top:12px;">{ind.aporte_lectura}</p>}
             </div>
             {fi.dobleUso && (
               <p class="cg-ficha-p" style="margin-top:14px;"><strong>Participación en otros indicadores.</strong> {fi.dobleUso}</p>

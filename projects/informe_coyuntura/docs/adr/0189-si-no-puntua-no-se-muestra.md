@@ -6,7 +6,7 @@ fecha: 2026-08-09
 cinturon: 'gestion'
 indicadores: [asistencia_directa, masa_salarial, social_orden, reforma_estado]
 continua: ['0051', '0100', '0186']
-relacionado: ['0190', '0212', '0245']
+relacionado: ['0190', '0212', '0245', '0259', '0264']
 ambito: 'ITCG · qué puntúa y qué se publica, en el tablero y en las fichas'
 origen: 'Instrucción del editor, 2026-08-09: "si los indicadores no puntean, no se muestran y no van ni en la ficha ni en el cinturón" y "si está cumplida tiene que puntear, si es un índice que busca medir cuánto avanzó el gobierno en sus propuestas no tiene sentido excluir una ya cumplida."'
 ---

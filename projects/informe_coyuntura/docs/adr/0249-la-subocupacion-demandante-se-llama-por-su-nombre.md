@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'vida'
 indicadores: [subocupacion_demandante]
 archivos: ['scripts/itvc.py', 'scripts/publicar.py', 'scripts/descargar_series.py', 'scripts/validacion_externa.py', 'scripts/vida_cotidiana/config.py', 'web/src/lib/datos.ts', 'web/src/lib/fichas.ts', 'output/series/vida_cotidiana.csv', 'tests/test_universos_declarados.py']
-relacionado: ['0018', '0130']
+relacionado: ['0018', '0130', '0263']
 ambito: 'Cinturón vida cotidiana · ITCIS · el indicador que se llamaba `pluriempleo` y medía otra cosa'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «INDEC define subocupación demandante como porcentaje de la PEA; pluriempleo es otro fenómeno»'
 ---

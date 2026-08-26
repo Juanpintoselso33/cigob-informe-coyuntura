@@ -42,7 +42,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 0.3 → 100 · 0.3–0.7 → 85 · 0.7–1.2 → 65 · 1.2–2 → 40 · > 2 → 10
 
-**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase
+**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre
 
 #### Eficacia parlamentaria
 
@@ -140,7 +140,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 10 → 100 · 0–10 → 85 · -10–0 → 65 · -20–-10 → 40 · ≤ -20 → 10
 
-**Lo gobiernan**: [ADR-0066](../adr/0066-iaf-transferencias-solo-provincias.md) iaf_transferencias: el CSV RON incluye la porción del Tesoro Nacional y la ANSES — se filtra a provincias · [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide · [ADR-0239](../adr/0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) El deflactor lo pondera el flujo, no el calendario
+**Lo gobiernan**: [ADR-0066](../adr/0066-iaf-transferencias-solo-provincias.md) iaf_transferencias: el CSV RON incluye la porción del Tesoro Nacional y la ANSES — se filtra a provincias · [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide · [ADR-0239](../adr/0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) El deflactor lo pondera el flujo, no el calendario · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre
 
 #### Alineamiento de senadores por provincia
 
@@ -365,7 +365,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-68 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+70 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -435,3 +435,5 @@ histórica.
 - [0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) — Un DNU es un tipo jurídico, no una frase
 - [0246](../adr/0246-el-saldo-empresario-se-calculaba-sobre-un-corpus-abierto.md) — El saldo empresario se calculaba sobre un corpus abierto
 - [0255](../adr/0255-el-corpus-de-saij-no-identifica-al-ejecutivo.md) — El corpus de SAIJ no identifica al Ejecutivo
+- [0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) — La ficha describe el método que corre
+- [0265](../adr/0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) — Una dimensión no promete vías que ya no puntúan

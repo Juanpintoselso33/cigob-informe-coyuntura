@@ -24,7 +24,8 @@ export interface Punto { fecha: string; valor: number; }
 
 // Indicadores cuya serie cruza el cero con lectura de signo clara: el área se
 // pinta verde del lado "bueno" y roja del "malo". polaridad +1 = positivo es
-// bueno (reservas, actividad); −1 = negativo es bueno (IDM: sobran pesos;
+// bueno (reservas, actividad); −1 = negativo es bueno (IDM: la brecha positiva
+// se lee como tensión;
 // litigiosidad/gasto real: caer es la mejora). Sin entrada → área neutra.
 const POLARIDAD_SIGNO: Record<string, 1 | -1> = {
   reservas_bcra: 1, emae_ia: 1, ipi_manufacturero: 1, recaudacion: 1, saldo_comercial_12m: 1,

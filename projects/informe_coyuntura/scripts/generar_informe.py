@@ -106,6 +106,112 @@ def _recalcular_indice(nombre: str, indicadores: dict, score_cache: float) -> tu
     return tension_de(resultado["valor"]), resultado
 
 
+# ── Contrato de suspensión en el artefacto crudo (ADR-0259) ───────────────────
+# ADR-0245 sacó a los suspendidos del CÁLCULO, y `publicar.py` los saca del
+# snapshot público. Entre esas dos capas quedó `output/informe.json`, que se
+# arma copiando el caché del colector tal cual: ahí `judicializacion` seguía
+# diciendo `en_indice: true` con `peso_efectivo: 0.03` y `puntaje_itcp: 54,4`
+# —los de la última corrida en que sí puntuó— y `apoyo_empresario` seguía
+# diciendo `en_indice: true`. Ninguno aportaba nada al índice; el artefacto
+# afirmaba que sí.
+#
+# El contrato, en una línea: **un indicador suspendido se conserva como ARCHIVO
+# y nunca como componente vigente**. Conserva su valor, su fuente, su fecha y su
+# dimensión de origen; pierde todo lo que sólo tiene sentido en algo que puntúa
+# (`en_indice`, `peso_efectivo`, `puntaje_*`) y gana el bloque `suspendido` con
+# el motivo y la condición de reingreso.
+#
+# Se aplica ACÁ, en el último paso antes de escribir el artefacto, y no en cada
+# colector: `gestion.py` ya lo hacía bien para sus dos casos y `politica.py` no
+# lo hacía para ninguno, que es exactamente el modo de falla de una regla que
+# hay que acordarse de repetir. Recorriendo `INDICADORES_SUSPENDIDOS` de cada
+# índice, la próxima suspensión no necesita tocar nada de este archivo.
+_MODULOS_INDICE = {
+    "macro":          itcm,
+    "politica":       itcp,
+    "gestion":        itcg,
+    "vida_cotidiana": itvc,
+}
+
+# Campos que sólo significan algo en un componente VIGENTE del índice. Se
+# borran, no se ponen en cero: la ausencia es la forma que el artefacto ya usa
+# para todo lo que no puntúa (`rotacion_gabinete` y los demás de contexto nunca
+# tuvieron estas claves), y un `peso_efectivo: 0` sería una segunda convención
+# para el mismo hecho, además de un número que se suma, se promedia y se
+# grafica. `puntaje_*` va por prefijo a propósito: enumerar `puntaje_itcm`,
+# `puntaje_itcp`… es lo que se olvida cuando aparece una sigla nueva.
+CAMPOS_VIGENTES_A_BORRAR = ("peso_efectivo", "peso", "aporte_score")
+PREFIJOS_VIGENTES_A_BORRAR = ("puntaje_", "indice_")
+
+
+def _es_campo_de_componente_vigente(clave: str) -> bool:
+    return (clave in CAMPOS_VIGENTES_A_BORRAR
+            or clave.startswith(PREFIJOS_VIGENTES_A_BORRAR))
+
+
+def suspendidos_de(cinturon: str) -> dict:
+    """`INDICADORES_SUSPENDIDOS` del índice del cinturón, o {}.
+
+    `getattr` con default y no acceso directo: `itcm` hoy no tiene tabla, y el
+    día que la tenga esto la toma sin que haya que venir a editarlo.
+    """
+    modulo = _MODULOS_INDICE.get(cinturon)
+    return dict(getattr(modulo, "INDICADORES_SUSPENDIDOS", None) or {})
+
+
+def marcar_suspendidos(cinturon: str, indicadores: dict) -> list[str]:
+    """Aplica el contrato de archivo a los suspendidos del cinturón (ADR-0259).
+
+    Devuelve las claves efectivamente marcadas, en orden. Un suspendido que no
+    está en el caché no se inventa: el contrato es sobre lo que se publica.
+    """
+    marcados = []
+    for nombre, meta in suspendidos_de(cinturon).items():
+        ind = indicadores.get(nombre)
+        if not isinstance(ind, dict):
+            continue
+        for clave in [k for k in ind if _es_campo_de_componente_vigente(k)]:
+            del ind[clave]
+        ind["en_indice"] = False
+        # La dimensión de origen se conserva: es parte del archivo (dónde
+        # pesaba), no una afirmación de vigencia.
+        if meta.get("dimension"):
+            ind["dimension"] = meta["dimension"]
+        ind["suspendido"] = dict(meta)
+        marcados.append(nombre)
+    return marcados
+
+
+def verificar_que_ninguno_puntua(cinturon: str, resultado_indice: dict | None) -> None:
+    """El otro lado del contrato: un suspendido tampoco puede estar DENTRO del
+    bloque del índice, con peso y puntaje propios.
+
+    Hoy no puede pasar —`calcular_itc*()` filtra con `parametrica.sin_suspendidos`
+    antes de calcular— y justamente por eso conviene la guarda: el día que un
+    índice nuevo se olvide de llamarlo, el artefacto saldría con el suspendido
+    puntuando y nada lo diría. Falla fuerte porque publicar eso es peor que no
+    publicar.
+    """
+    if not resultado_indice:
+        return
+    suspendidos = set(suspendidos_de(cinturon))
+    if not suspendidos:
+        return
+    colados = sorted(
+        ikey
+        for dim in resultado_indice.get("dimensiones", {}).values()
+        for ikey in dim.get("indicadores", {})
+        if ikey in suspendidos
+    )
+    if colados:
+        raise ValueError(
+            f"{cinturon}: {', '.join(colados)} está suspendido y sin embargo "
+            "aparece puntuando dentro del índice. El punto de entrada del "
+            "índice tiene que filtrar con parametrica.sin_suspendidos() "
+            "(ADR-0245/0259)."
+        )
+
+
 # La definición vive en config.estado_de_score: es la misma que usa publicar y
 # la misma con la que se cuenta la alerta.
 _estado = estado_de_score
@@ -216,14 +322,27 @@ def construir_informe(caches: dict) -> dict:
         cache = caches[nombre]
         indicadores = cache.get("indicadores", {})
         score, resultado_indice = _recalcular_indice(nombre, indicadores, cache.get("score", 5.0))
+        verificar_que_ninguno_puntua(nombre, resultado_indice)
+
+        # El artefacto crudo se arma DESPUÉS del cálculo, así que acá ya se sabe
+        # qué quedó afuera: los suspendidos pasan a archivo (ADR-0259).
+        suspendidos = marcar_suspendidos(nombre, indicadores)
 
         # Detectar indicadores desactualizados. Los que tienen ventana
         # DECLARADA y siguen adentro no entran: andan por caché a propósito y
         # el flag diario tapaba a los que sí están rotos (ADR-0210). Cuando se
         # pasan de la ventana, G2b corta la publicación.
+        #
+        # Los suspendidos tampoco entran, por el mismo motivo de fondo: no
+        # alimentan ningún puntaje ni ninguna card, así que su frescura no
+        # tiene consecuencia y avisar por ella es ruido diario sobre un dato
+        # que ya nadie usa. `judicializacion` es el caso vivo — SAIJ bloquea a
+        # los runners casi todas las noches (ADR-0175) y el indicador está
+        # suspendido desde ADR-0255.
         desactualizados = [
             ind for ind, vals in indicadores.items()
             if vals.get("desactualizado", False)
+            and ind not in suspendidos
             and not cache_es_esperable(ind, _dias_sin_fetch(vals))
         ]
         if desactualizados:
@@ -337,9 +456,16 @@ def escribir_md(informe: dict) -> None:
         lines.append(f"### {emoji} {nombre.replace('_', ' ').title()} — score {score}/10 ({estado})")
         lines.append(f"*Riesgo de barbarismo: {barb}*")
         lines.append("")
+        # Los suspendidos salen de la tabla principal y van a una propia,
+        # rotulada (ADR-0259): compartir tabla con los vigentes es afirmar que
+        # son el mismo tipo de cosa, y el .md es artefacto de ingesta — lo lee
+        # quien no tiene el resto del contexto a mano.
+        vigentes   = {i: v for i, v in data["indicadores"].items() if not v.get("suspendido")}
+        suspendidos = {i: v for i, v in data["indicadores"].items() if v.get("suspendido")}
+
         lines.append("| Indicador | Valor | Unidad | Fecha | Estado |")
         lines.append("|---|---|---|---|---|")
-        for ind, vals in data["indicadores"].items():
+        for ind, vals in vigentes.items():
             valor       = vals.get("valor", "N/A")
             unidad      = vals.get("unidad", "")
             fecha       = vals.get("fecha_dato", "")
@@ -350,6 +476,26 @@ def escribir_md(informe: dict) -> None:
                 valor_str += f" (brecha {valor_extra:+.2f}pp)"
             lines.append(f"| {ind} | {valor_str} | {unidad} | {fecha} | {desact} |")
         lines.append("")
+
+        if suspendidos:
+            lines.append("**Suspendidos — archivo histórico, NO integran el índice "
+                         "ni el score de arriba:**")
+            lines.append("")
+            lines.append("| Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |")
+            lines.append("|---|---|---|---|---|---|")
+            for ind, vals in suspendidos.items():
+                meta   = vals.get("suspendido") or {}
+                desde  = meta.get("desde_txt") or meta.get("desde") or "—"
+                adr    = f" (ADR-{meta['adr']})" if meta.get("adr") else ""
+                # Una celda de tabla Markdown no sobrevive ni a un salto de
+                # línea ni a un `|`. Los motivos son prosa libre escrita en el
+                # ADR de turno: hoy ninguno tiene ninguna de las dos cosas, y
+                # el día que las tenga la tabla se partiría en silencio.
+                motivo = " ".join(str(meta.get("por_que", "")).split()).replace("|", "\\|")
+                lines.append(f"| {ind} | {vals.get('valor', 'N/A')} | "
+                             f"{vals.get('unidad', '')} | {vals.get('fecha_dato', '')} | "
+                             f"{desde}{adr} | {motivo} |")
+            lines.append("")
 
     if flags:
         lines.append("## Advertencias")

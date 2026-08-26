@@ -3,8 +3,9 @@
 
 La Entrega 2 de la remediación saca tres indicadores del score:
 `apoyo_empresario` (ITCP), `reestructuracion_organismos` (ITCG) y
-`sentimiento_digital` (ITVC). El riesgo de una suspensión no es el indicador que
-sale — es lo que pasa con su peso.
+`sentimiento_digital` (ITVC); `judicializacion` (ITCP) se sumó después, con
+ADR-0255. El riesgo de una suspensión no es el indicador que sale — es lo que
+pasa con su peso.
 
 Dos formas de hacerlo mal, las dos vistas en proyectos parecidos:
 
@@ -34,6 +35,7 @@ import publicar
 # (módulo, indicador suspendido, dimensión, cómo se pasan los valores)
 CASOS = [
     (itcp, "apoyo_empresario", "sector_privado"),
+    (itcp, "judicializacion", "poder_judicial"),
     (itcg, "reestructuracion_organismos", "reforma_estado"),
     (itvc, "sentimiento_digital", "percepcion"),
 ]
@@ -197,3 +199,22 @@ def test_el_peso_liberado_se_queda_en_su_dimension(sigla):
         interno = sum(i["puntaje_aplicado"] * i["peso_efectivo"]
                       for i in d["indicadores"].values())
         assert abs(interno / d["peso_efectivo"] - d["puntaje"]) < 0.15
+
+
+# ── Y qué queda de él en el artefacto crudo (ADR-0259) ────────────────────────
+# El peso liberado es sólo la mitad de la historia. La otra es qué dice de él
+# `output/informe.json`, que hasta el 25-ago-2026 lo seguía declarando
+# componente vigente. El contrato y sus guardas viven en
+# `test_suspendido_es_archivo_no_componente.py`; acá se ancla el puente para
+# que no queden como dos temas sin relación.
+
+@pytest.mark.parametrize("mod,indicador,dimension", CASOS)
+def test_el_artefacto_crudo_lo_archiva_en_vez_de_publicarlo(mod, indicador, dimension):
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    import generar_informe as gi
+
+    cinturon = {"itcp": "politica", "itcg": "gestion",
+                "itvc": "vida_cotidiana"}[_sigla(mod)]
+    assert indicador in gi.suspendidos_de(cinturon), (
+        f"{indicador} está suspendido en {_sigla(mod)} pero "
+        "generar_informe.py no lo ve: el contrato de archivo no se le aplica")

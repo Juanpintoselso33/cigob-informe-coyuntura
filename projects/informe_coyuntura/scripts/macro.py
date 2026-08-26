@@ -1089,60 +1089,102 @@ def _tem_capitalizable(cup: str) -> float | None:
     return float(m.group(1).replace(",", ".")) / 100.0 if m else None
 
 
+# Un "mes" en la convención de Finanzas es 365/12 días, no 30, y el año es de
+# 365 días, no de 360. Se determinó ajustando las dos bases contra las TIREA de
+# corte publicadas en trece reaperturas (jul-2025 → ago-2026): con 365/12 y 365
+# el error cuadrático medio es 0,09 pp; con 30 y 360 —la convención que se había
+# supuesto— es 1,08 pp, y el desvío crece cuanto más corto es el plazo
+# remanente. Ver ADR-0258.
+_MES_DIAS = 365.0 / 12.0
+
+
 def _tirea_de_fila(cup: str, emi, ven, col, precio: float) -> float | None:
-    """TIREA (tasa efectiva ANUAL) de una colocación a tasa fija en pesos.
+    """TIREA (tasa efectiva ANUAL) **de corte** de una colocación en pesos.
 
-    Para una LECAP/BONCAP la TIREA **es un dato publicado, no una estimación**:
-    Finanzas informa la TEM en el cupón y la convención del mercado la anualiza
-    como `(1+TEM)^12 - 1`. Es lo que se reconstruía a mano —mal— hasta
-    ago-2026: `_tirea_reconstruida` capitalizaba por meses de calendario
-    enteros en vez de por el plazo real, así que una letra emitida el 30-jun a
-    noviembre contaba 5 meses de capitalización sobre 4,5 corridos. En la S13N6
-    (TEM 2,1%) eso publicaba 32,17% donde la Secretaría informó 28,32%, y el
-    indicador salía 8,07% real en vez de 4,92% (ADR-0238).
+    Es el rendimiento al que el Tesoro efectivamente colocó, que es lo que el
+    indicador quiere medir: se descuenta el flujo del instrumento contra el
+    precio de corte de ESA licitación.
 
-    Las LEDE a descuento no tienen TEM publicada: ahí sí hay que reconstruir
-    desde el precio, que es lo único que define su rendimiento.
+        payoff = 1000 · (1 + TEM)^(días de vida / (365/12))     # capitalizable
+        payoff = 1000                                           # a descuento
+        TIREA  = (payoff / precio)^(365 / días al vencimiento) − 1
+
+    **En una emisión nueva colocada a la par la fórmula devuelve exactamente
+    `(1+TEM)^12 − 1`**, que es la TIREA que publica la Secretaría: con
+    `precio = 1000` y `días al vencimiento = días de vida`, los exponentes se
+    cancelan. Por eso no hay dos caminos ni hay que detectar la reapertura —
+    hay una sola cuenta que en el caso a la par coincide con el dato publicado.
+
+    Lo que había antes anualizaba el cupón (`(1+TEM)^12 − 1`) para TODA fila,
+    también para las reaperturas. En una reapertura el cupón fija el flujo pero
+    el precio determina el rendimiento, así que eso publicaba la tasa
+    contractual del instrumento en vez del costo de la colocación. En la
+    reapertura de la S30N6 del 15-jul-2026 (precio de corte $1.194) informaba
+    31,37% donde la Secretaría publicó **25,59%**, y el indicador salía 5,80%
+    real en vez de 4,13% (ADR-0258). No era un caso de borde: sobre las 177
+    colocaciones a tasa fija en pesos desde 2023, 118 se colocaron fuera de la
+    par, y ahí el cupón se desvía de la tasa de corte entre −30,5 y +29,2 pp.
+
+    La convención de días no se supuso: mes de 365/12 días y año de 365 se
+    ajustaron contra catorce TIREA de corte publicadas por la Secretaría
+    (0,41 pp de error cuadrático medio; con mes de 30 y año de 360, 1,08 pp y
+    creciendo cuanto más corto es el plazo remanente).
+
+    ADR-0238 había elegido leer el cupón porque la reconstrucción de entonces
+    estaba rota —capitalizaba por meses de calendario enteros— y dejó la
+    reapertura anotada como limitación declarada. Esto la cierra.
     """
     tem = _tem_capitalizable(cup)
+    norm = _norm_txt(cup)
     if tem is not None:
-        tirea = (1.0 + tem) ** 12 - 1.0
-    elif "a descuento" in _norm_txt(cup) or "cupon cero" in _norm_txt(cup):
-        dias = (ven - col).days
-        if dias <= 0 or precio <= 0:
+        dias_vida = (ven - emi).days
+        if dias_vida <= 0:
             return None
-        tirea = (1000.0 / precio) ** (365.0 / dias) - 1.0
+        payoff = 1000.0 * (1.0 + tem) ** (dias_vida / _MES_DIAS)
+    elif "a descuento" in norm or "cupon cero" in norm:
+        payoff = 1000.0                  # LEDE/LETE: sin TEM, paga 1.000
     else:
         return None                      # CER, dólar linked, TAMAR: no comparable
-    if (ven - col).days <= 0 or precio <= 0:
+    dias = (ven - col).days
+    if dias <= 0 or precio <= 0:
         return None
+    tirea = (payoff / precio) ** (365.0 / dias) - 1.0
     return tirea if 0.0 < tirea < 8.0 else None      # descarta filas corruptas
 
 
-def _tirea_reconstruida(cup: str, emi, ven, col, precio: float) -> float | None:
-    """TIREA implícita en el precio de corte. NO alimenta el indicador: existe
-    para validar contra la tasa publicada.
+def _tirea_contractual(cup: str) -> float | None:
+    """Tasa del CUPÓN anualizada, `(1+TEM)^12 − 1`. NO alimenta el indicador:
+    existe como control y para que el inventario pueda mostrar las dos.
 
-    El payoff de una capitalizable es `1000·(1+TEM)^(días/30)` sobre el plazo
-    real emisión→vencimiento, y se anualiza sobre 360 días (12 meses de 30),
-    que es la misma convención con la que el mercado pasa de TEM a TIREA. Bien
-    escrita, en una emisión nueva colocada a la par reproduce la tasa oficial
-    **exactamente** —0,0000 pb en las 57 colocaciones de ese tipo desde
-    dic-2023—, y eso es justamente lo que prueba el test de tolerancia.
-
-    En una reapertura colocada fuera de la par el número se separa de la tasa
-    oficial a propósito: mide el rendimiento marginal del precio de corte, no
-    la tasa contractual del instrumento. Por eso valida, pero no publica.
+    Es la tasa que el instrumento paga por contrato desde su emisión, no la que
+    el Tesoro pagó en esta licitación. Las dos coinciden —exactamente— cuando
+    la colocación es una emisión nueva a la par, y ése es el invariante que
+    prueba `test_a_la_par_la_tasa_de_corte_es_el_cupon_anualizado`. Cuando se
+    separan, la que describe el costo de fondeo del mes es la de corte.
     """
     tem = _tem_capitalizable(cup)
-    if tem is None:
-        return None
-    dias_vida = (ven - emi).days
-    dias = (ven - col).days
-    if dias_vida <= 0 or dias <= 0 or precio <= 0:
-        return None
-    payoff = 1000.0 * (1.0 + tem) ** (dias_vida / 30.0)
-    return (payoff / precio) ** (360.0 / dias) - 1.0
+    return (1.0 + tem) ** 12 - 1.0 if tem is not None else None
+
+
+def _entrada_inventario(instrumento: str, cup: str, emi, col,
+                        precio: float, ve: float, tirea: float) -> dict:
+    """Una fila del inventario de colocaciones que viaja con la card.
+
+    Lleva la tasa de corte **y** la contractual porque son distintas justo
+    cuando importa: en una reapertura fuera de la par. Publicar el promedio sin
+    esa distinción es lo que dejó pasar 31,37% en la S30N6 sin que nadie
+    pudiera revisarlo (ADR-0258)."""
+    contractual = _tirea_contractual(cup)
+    return {
+        "instrumento": instrumento,
+        "tirea": round(tirea * 100.0, 2),
+        "valor_efectivo": round(ve, 3),
+        "colocacion": col.strftime("%Y-%m-%d"),
+        "precio_corte": round(precio, 2),
+        "reapertura": emi != col,
+        "tirea_contractual": (None if contractual is None
+                              else round(contractual * 100.0, 2)),
+    }
 
 
 def _tirea_mensual(anios: int = 2) -> dict:
@@ -1150,10 +1192,15 @@ def _tirea_mensual(anios: int = 2) -> dict:
     a partir de las planillas de Finanzas. Se pondera por valor efectivo
     adjudicado: una licitación chica no debe mover el promedio como una grande.
 
-    El inventario —instrumento, TIREA y monto de cada colocación— viaja con el
-    promedio para que la card pueda decir de qué salió el número. Una tasa
-    promedio sin las colocaciones que la forman no es auditable: fue justamente
-    lo que dejó pasar 32,17% durante meses.""" 
+    La tasa de cada fila es la **TIREA de corte** —el rendimiento que fija el
+    precio de esa licitación—, no la tasa contractual del instrumento: ver
+    `_tirea_de_fila` y ADR-0258.
+
+    El inventario —instrumento, TIREA de corte, tasa contractual, precio de
+    corte y monto de cada colocación— viaja con el promedio para que la card
+    pueda decir de qué salió el número. Una tasa promedio sin las colocaciones
+    que la forman no es auditable: fue justamente lo que dejó pasar 32,17%
+    durante meses, y después 31,37% en una reapertura."""
     if _COLOC_MEMO:
         return _COLOC_MEMO
     import io, openpyxl
@@ -1209,10 +1256,8 @@ def _tirea_mensual(anios: int = 2) -> dict:
                 a[0] += tirea * ve
                 a[1] += ve
                 a[2] += 1
-                a[3].append({"instrumento": str(fila[0]).strip(),
-                             "tirea": round(tirea * 100.0, 2),
-                             "valor_efectivo": round(ve, 3),
-                             "colocacion": col.strftime("%Y-%m-%d")})
+                a[3].append(_entrada_inventario(
+                    str(fila[0]).strip(), get("cup"), emi, col, precio, ve, tirea))
     _COLOC_MEMO.update({ym: (s / w, w, n, inv)
                         for ym, (s, w, n, inv) in acc.items() if w > 0})
     return _COLOC_MEMO
@@ -1231,8 +1276,9 @@ def _rem_12m_por_mes(dias: int = 1200) -> dict:
 
 def fetch_costo_financiamiento_tesoro() -> dict | None:
     """Tasa REAL ex-ante que paga el Tesoro por colocar deuda en pesos: la TIREA
-    promedio ponderada de las colocaciones del mes, deflactada por la inflación
-    esperada a 12 meses del REM. Se publica en TIREA (tasa efectiva anual), no
+    **de corte** promedio ponderada de las colocaciones del mes, deflactada por
+    la inflación esperada a 12 meses del REM. De corte, no contractual: en una
+    reapertura el rendimiento lo fija el precio, no el cupón (ADR-0258). Se publica en TIREA (tasa efectiva anual), no
     en TNA: a tasas altas divergen mucho (dic-2023 fue 105% TNA = 169% TIREA).
 
     Es una variable de U INVERTIDA: la tasa real muy negativa es represión
@@ -1259,7 +1305,7 @@ def fetch_costo_financiamiento_tesoro() -> dict | None:
             "colocaciones": n,
             "inventario_colocaciones": inventario,
             "detalle_txt": (
-                f"{ym}: TIREA {t * 100:.1f}% en {n} colocación/es a tasa fija en pesos "
+                f"{ym}: TIREA de corte {t * 100:.1f}% en {n} colocación/es a tasa fija en pesos "
                 f"contra inflación esperada {esperada:.1f}% → {real:+.1f}% real"
             ),
             "desactualizado": False,

@@ -19,12 +19,8 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\left(\sqrt[12]{\,1+\tfrac{\text{expectativa anual}}{100}\,}-1\right)\times 100`,
     leyenda: "La inflación esperada a 12 meses (mediana del REM, BCRA) convertida a su equivalente mensual, para compararla con el IPC en la misma escala.",
   },
-  idm: {
-    latex: String.raw`\underbrace{\text{crecim. real de }M3}_{\text{pesos que HAY}}\;-\;\underbrace{\text{crecim. real de }M2}_{\text{pesos que la gente QUIERE}}`,
-    leyenda: "Crecimientos interanuales reales (descontada la inflación) de los agregados privados. Positivo = sobran pesos → presión sobre precios y brecha; negativo = remonetización genuina.",
-  },
   desequilibrio_monetario: {
-    latex: String.raw`A_t=100\,\frac{M2^{transaccional}_{privado}}{\text{circulante}+\text{dep}^{\$}_{priv}+\text{dep}^{U\!S\!D}_{priv}}\qquad B_t=\text{compra neta de divisas del SPNF (U\!S\!D M)}\\[6pt]a=\pi_A(A_t),\;b=\pi_B(B_t)\in[0,1]\qquad T_t=(1-a)(1-b)\,40+a(1-b)\,0+(1-a)b\,90+ab\,77{,}5\\[6pt]\text{puntaje ITCM}=100-T_t`,
+    latex: String.raw`A_t=100\,\frac{M2^{transaccional}_{privado}}{\text{circulante}+\text{dep}^{\$}_{priv}+\text{dep}^{U\!S\!D}_{priv}}\qquad B_t=\text{compra neta de divisas del SPNF (U\!S\!D M)}\\[6pt]a=\pi_A(A_t),\;b=\pi_B(B_t)\in[0,1]\qquad T_t=(1-a)(1-b)\,58{,}75+a(1-b)\,0+(1-a)b\,90+ab\,58{,}75\\[6pt]\text{puntaje ITCM}=100-T_t`,
     leyenda: "El indicador cruza dos componentes en vez de promediarlos. A mide, sobre el total de la liquidez privada (pesos más los dólares depositados, valuados en pesos), qué proporción sigue en pesos de uso transaccional: es la composición de la liquidez que queda depositada. B mide la compra neta de divisas del sector privado no financiero en el mercado de cambios: es presión compradora, y no dice adónde fue ese dinero — el BCRA estimó que cerca del 80% quedó depositado localmente. Aparece aunque no toque ningún depósito. Cada uno se lleva a una posición de 0 a 1 interpolando entre los percentiles de su ventana de calibración (los dos desde abril de 2025, la apertura del cepo a personas humanas, para no mezclar regímenes cambiarios: bajo cepo ni la compra de divisas ni la composición de la liquidez miden confianza, miden falta de acceso). La tensión sale de cruzar las dos posiciones entre las cuatro esquinas de la matriz: nada degradado 0, se degradó la liquidez sola 58,75, se degradó la presión compradora sola 58,75, las dos 90. Las dos esquinas cruzadas valen lo mismo y quedan por encima de 45, que es lo que daría promediarlas: un componente en su mejor valor no compensa al otro en el peor. Valían 40 y 77,5, apoyadas en la tesis de que la fuga fuera del sistema es la señal grave; como B no observa fuga, esa asimetría se quedó sin fundamento y el dato no pudo reponerlo. El puntaje del ITCM es el complemento de la tensión.",
   },
   recaudacion: {
@@ -102,10 +98,6 @@ export const FORMULAS: Record<string, Formula> = {
   iai: {
     latex: String.raw`\begin{gathered}0{,}55\cdot\text{construcci\'on}\;+\;0{,}30\cdot\text{bienes de capital}\\[2pt]+\;0{,}15\cdot\text{patentamientos}\end{gathered}`,
     leyenda: "Variaciones interanuales de la inversión física, calculadas al último mes que ambas fuentes tienen publicado: ISAC (construcción), importación de bienes de capital y patentamientos comerciales. Sin patentamientos, renormaliza a 0,65/0,35. Limitación declarada: los bienes de capital se miden en dólares corrientes e incluyen el efecto de los precios internacionales — el INDEC solo publica el índice de cantidades con frecuencia trimestral.",
-  },
-  icip: {
-    latex: String.raw`0{,}57\cdot\text{servicios tech}\;+\;0{,}43\cdot\text{productividad}`,
-    leyenda: "Variaciones interanuales de la inversión intangible: pagos al exterior por software/cloud/IA + productividad laboral (producción industrial por empleado).",
   },
 
   // ── Gestión (ITCG) ───────────────────────────────────────────────────────
@@ -274,8 +266,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Comunicados institucionales fechados de la Asociación Empresaria Argentina (AEA) y la Unión Industrial Argentina (UIA). Cada comunicado se clasifica a mano en dos ejes: si respalda o critica lo que comenta, y a quién le habla. Sólo entran al cálculo los que se pronuncian sobre una medida del Gobierno nacional: los que informan una reunión, un acto o un cambio de autoridades no toman posición y quedan afuera, igual que los dirigidos al Congreso, a una provincia o a la Justicia. El resultado va de −1, si en doce meses todo fue crítica, a +1 si todo fue apoyo; cero significa que las cámaras apoyaron tanto como criticaron.",
   },
   ratio_dnu: {
-    latex: String.raw`\frac{\text{DNU dictados, \'ultimos 365 d\'ias}}{\text{leyes sancionadas, \'ultimos 365 d\'ias}}`,
-    leyenda: "Conteos del buscador oficial de InfoLeg sobre una ventana móvil de 365 días (no el año calendario). Más de 1 = el Ejecutivo dicta más decretos de necesidad y urgencia que leyes logra sancionar el Congreso.",
+    latex: String.raw`\frac{\text{DNU publicados en el B.O., \'ultimos 365 d\'ias}}{\text{leyes publicadas en el B.O., \'ultimos 365 d\'ias}}`,
+    leyenda: "Buscador oficial de InfoLeg sobre una ventana móvil de 365 días (no el año calendario), con la MISMA convención de fecha en los dos lados: la publicación en el Boletín Oficial. Los DNU se identifican por el tipo jurídico que declara la grilla —«Decreto DNU»—, no por la frase «necesidad y urgencia»: esa frase la dicen también decretos que prorrogan una intervención dispuesta por un DNU, reglamentarios y vetos que la citan al fundarse, y la búsqueda por texto queda sólo como filtro previo para acotar el listado. Más de 1 = se publican más decretos de necesidad y urgencia que leyes.",
   },
   veto_quorum: {
     latex: String.raw`\frac{\text{sesiones en minor\'ia}_{\text{12 m}}}{\text{sesiones convocadas}_{\text{12 m}}}\times 100`,
@@ -306,8 +298,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Jornadas individuales no trabajadas por paros, acumuladas en doce meses. La metodología oficial permite sumar esta magnitud entre meses porque ya combina el tamaño y la duración del paro; no se suman conflictos ni huelguistas, que podrían repetirse.",
   },
   iaf_transferencias: {
-    latex: String.raw`\left(\frac{\text{transferencias a provincias}_{\text{a\~no}}}{\text{transferencias}_{\text{a\~no anterior}}}\cdot\frac{\overline{\text{IPC}}_{\text{a\~no anterior}}}{\overline{\text{IPC}}_{\text{a\~no}}}-1\right)\times 100`,
-    leyenda: "Serie oficial de recursos de origen nacional efectivamente girados (Hacienda), deflactada con la inflación promedio anual del IPC de INDEC — el criterio correcto para sumas anuales de flujos: la variación real interanual de lo que la Nación transfirió a las provincias.",
+    latex: String.raw`\left(\frac{\sum_{m\,\in\,\text{a\~no}}\text{transferencias}_{m}/\text{IPC}_{m}}{\sum_{m\,\in\,\text{a\~no anterior}}\text{transferencias}_{m}/\text{IPC}_{m}}-1\right)\times 100`,
+    leyenda: "Recursos de origen nacional efectivamente girados a las jurisdicciones —Provincias, Ciudad de Buenos Aires y Fondo Compensador, incluida la compensación del Consenso Fiscal; afuera Tesoro Nacional, Seguridad Social y Fondo A.T.N.—, mes a mes, según la planilla mensual consolidada de la Secretaría de Hacienda. Cada flujo se lleva a una base común dividiéndolo por el índice IPC nacional de SU propio mes (INDEC, base diciembre de 2016 = 100) y recién ahí se suman los doce: un deflactor único le daría a cada mes el mismo peso, y las transferencias no se reparten parejo por el calendario. Los dos términos son años calendario completos; un año a medias no entra.",
   },
   adhesion_reformas_provincial: {
     latex: String.raw`\frac{\text{jurisdicciones adheridas al RIGI}}{24}\times 100`,

@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'macro'
 indicadores: [idm]
 archivos: ['scripts/macro.py', 'scripts/itcm.py', 'scripts/descargar_series.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/pages/[slug].astro', 'tests/test_constructos_no_prometen_de_mas.py']
-relacionado: ['0009']
+relacionado: ['0009', '0261', '0264']
 ambito: 'Cinturón macro · ITCM · `idm` · por qué comparar dos agregados no es medir un exceso sobre la demanda'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «qué no mide: oferta monetaria efectiva menos una demanda de dinero estimada»'
 ---
