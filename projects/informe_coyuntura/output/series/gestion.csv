@@ -1,4 +1,5 @@
 fecha,indicador,valor,unidad,fuente
+2026-08-01,rigi_inversiones,46526,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-07-01,rigi_inversiones,46161,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-06-01,rigi_inversiones,31192,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-05-01,rigi_inversiones,27760,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
@@ -847,7 +848,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2024-01-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2023-12-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
-2026-08-01,cepo_mulc,5.68,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
+2026-08-01,cepo_mulc,5.6,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-07-01,cepo_mulc,5.9,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-06-01,cepo_mulc,4.65,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-05-01,cepo_mulc,6.35,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
