@@ -4,7 +4,7 @@
   "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
   "nuevas_en_la_corrida": 0,
   "registros_vistos_en_la_corrida": 40,
-  "ultima_corrida": "2026-08-27"
+  "ultima_corrida": "2026-08-28"
  },
  "pendientes": {
   "818689": {
@@ -510,6 +510,16 @@
    "fecha": "13/08/2026",
    "marcado": true,
    "termino": "inconstitucionalidad"
+  },
+  "831308": {
+   "fecha": "27/08/2026",
+   "marcado": false,
+   "termino": "estado nacional"
+  },
+  "831332": {
+   "fecha": "27/08/2026",
+   "marcado": false,
+   "termino": "amparo"
   }
  }
 }

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-27 05:06:55"
+generado: "2026-08-28 05:59:54"
 score_global: 3.6
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -22,7 +22,7 @@ schema_version: "1.2.0"
 | ipc_total | 2.11 | % mensual | 2026-07-01 | fresco |
 | reservas_bcra | 11962.0 | Millones de USD | 2026-07-31 | fresco |
 | idc | -0.32 | σ vs. su historia | 2026-07-01 | fresco |
-| badlar | 24.38 | % anual | 2026-08-25 | fresco |
+| badlar | 23.19 | % anual | 2026-08-26 | fresco |
 | emae_ia | 2.69 | % i.a. | 2026-06-01 | fresco |
 | emae_difusion | 80.0 | % de sectores en crecimiento i.a. | 2026-06-01 | fresco |
 | ipi_manufacturero | -2.0 | % i.a. (promedio 3 meses) | 2026-06-01 | fresco |
@@ -37,9 +37,9 @@ schema_version: "1.2.0"
 | credito_privado | -1.5 | % i.a. real (crédito en pesos) | 2026-07-01 | fresco |
 | costo_financiamiento_tesoro | 4.13 | % real anual (TIREA vs. inflación esperada REM) | 2026-07-01 | fresco |
 | resultado_primario | 5.55 | % de la recaudación (acum. 12 meses) | 2026-06-01 | fresco |
-| prestamos_privados | 2.23 | % mensual nominal | 2026-08-21 | fresco |
-| base_monetaria | 1.62 | % mensual nominal | 2026-08-24 | fresco |
-| tc_mayorista | 1.19 | % mensual | 2026-08-26 | fresco |
+| prestamos_privados | 1.82 | % mensual nominal | 2026-08-24 | fresco |
+| base_monetaria | 2.04 | % mensual nominal | 2026-08-25 | fresco |
+| tc_mayorista | 1.47 | % mensual | 2026-08-27 | fresco |
 
 ### 🟢 Politica — score 2.9/10 (estable)
 *Riesgo de barbarismo: político*
@@ -47,22 +47,22 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | votometro_ventaja_lla | 4.3 | Puntos porcentuales | 2026-07-22 | fresco |
-| ratio_dnu | 1.48 | DNUs publicados por ley publicada | 2026-08-27 | fresco |
+| ratio_dnu | 1.48 | DNUs publicados por ley publicada | 2026-08-28 | fresco |
 | brecha_obra_publica | -1.1 | pp de brecha (obra pública − privada, 12m) | 2026-09-01 | fresco |
 | conflictividad_nacional | -24.0 | % vs 2023 | 2026-07-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4760195 | jornadas individuales no trabajadas (12m) | 2026-05-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
 | iaf_transferencias | 1.6 | % interanual real | 2025-12-31 | fresco |
-| eficacia_legislativa | 14.3 | % de proyectos | 2026-08-27 | fresco |
-| veto_quorum | 10.0 | % de sesiones | 2026-08-27 | fresco |
-| comisiones_caidas | 97.2 | % de proyectos | 2026-08-27 | fresco |
-| adhesion_reformas_provincial | 66.7 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-08-27 | fresco |
-| derrotas_legislativas | 3 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-08-27 | fresco |
-| rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-08-27 | fresco |
+| eficacia_legislativa | 14.3 | % de proyectos | 2026-08-28 | fresco |
+| veto_quorum | 10.0 | % de sesiones | 2026-08-28 | fresco |
+| comisiones_caidas | 97.2 | % de proyectos | 2026-08-28 | fresco |
+| adhesion_reformas_provincial | 66.7 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-08-28 | fresco |
+| derrotas_legislativas | 3 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-08-28 | fresco |
+| rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-08-28 | fresco |
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 | cohesion_bloque | 99.8 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-08-06 | fresco |
-| bloqueo_sostenido | 33.3 | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-08-27 | fresco |
-| desafios_legislativos | 3.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-08-27 | fresco |
+| bloqueo_sostenido | 33.3 | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-08-28 | fresco |
+| desafios_legislativos | 3.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-08-28 | fresco |
 | produccion_legislativa | 25 | leyes sancionadas (12m) | 2026-08-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 7 | sesiones de las comisiones de control (12m) | 2026-08-01 | fresco |
@@ -85,25 +85,25 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 40.23 | índice | 2026-08-01 | fresco |
 
-### 🟢 Gestion — score 2.1/10 (estable)
+### 🟢 Gestion — score 2.0/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 6.13 | % de brecha CCL/mayorista | 2026-08-27 | fresco |
+| cepo_mulc | 5.96 | % de brecha CCL/mayorista | 2026-08-28 | fresco |
 | apertura_comercial | 6.18 | % del intercambio (alícuota efectiva) | 2026-06-01 | fresco |
 | desregulacion_normativa | 16771.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-07-01 | fresco |
 | reduccion_estado | -20.36 | % de variación vs dic-2023 (dotación APN) | 2026-06-01 | fresco |
 | gasto_funcionamiento | -31.37 | % de variación real vs 2023-06 (IMIG funcionamiento) | 2026-06-01 | fresco |
-| fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-08-27 | fresco |
+| fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-08-28 | fresco |
 | litigiosidad_laboral | 2.1 | % variación juicios SRT (12m vs 12m previos) | 2026-05-01 | fresco |
 | privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
-| rigi_inversiones | 23.7 | % de inversión aprobada sobre el pipeline | 2026-08-27 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-27 | fresco |
-| asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-08-27 | fresco |
+| rigi_inversiones | 23.7 | % de inversión aprobada sobre el pipeline | 2026-08-28 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-28 | fresco |
+| asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-08-28 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 31.8 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-03-01 | fresco |
-| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-08-27 | fresco |
+| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-08-28 | fresco |
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
@@ -111,7 +111,7 @@ schema_version: "1.2.0"
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
 | masa_salarial | -32.37 | % de variación real vs 2023-06 (SPN remuneraciones) | 2026-06-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. La card se sigue publicando con su valor mensual — lo que se retira es el puntaje, no el dato. |
-| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-08-27 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
+| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-08-28 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 
 ---
-*Generado por CIGOB — 2026-08-27 05:06:55 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-28 05:59:54 — schema 1.2.0*

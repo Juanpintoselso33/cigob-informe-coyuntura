@@ -56,45 +56,45 @@
     }
   },
   "itcg": {
-    "valor_publicado": 79.4,
-    "valor_recomputado": 79.4,
+    "valor_publicado": 79.5,
+    "valor_recomputado": 79.5,
     "experimentos": {
       "pesos": {
-        "media": 79.4,
-        "p05": 77.9,
-        "p95": 80.8,
+        "media": 79.5,
+        "p05": 78.1,
+        "p95": 81.0,
         "desvio": 0.89
       },
       "combinado": {
-        "media": 79.4,
-        "p05": 77.6,
-        "p95": 81.2,
-        "desvio": 1.07
+        "media": 79.6,
+        "p05": 77.7,
+        "p95": 81.3,
+        "desvio": 1.08
       },
       "insumos": {
-        "media": 79.4,
-        "p05": 78.4,
-        "p95": 80.4,
+        "media": 79.5,
+        "p05": 78.5,
+        "p95": 80.5,
         "desvio": 0.62
       }
     },
     "leave_one_out": {
       "cepo_mulc": 75.2,
-      "apertura_comercial": 83.2,
-      "rigi_inversiones": 81.2,
-      "concesiones_infraestructura": 78.2,
-      "libertad_opcion_salud": 80.3,
-      "asistencia_directa": 78.8,
-      "protocolo_antipiquetes": 78.8,
-      "fal_modernizacion_laboral": 79.8,
-      "litigiosidad_laboral": 79.0,
-      "privatizaciones": 79.1,
-      "desregulacion_normativa": 79.6,
-      "reduccion_estado": 79.4,
-      "gasto_funcionamiento": 79.4
+      "apertura_comercial": 83.5,
+      "rigi_inversiones": 81.4,
+      "concesiones_infraestructura": 78.4,
+      "libertad_opcion_salud": 80.4,
+      "asistencia_directa": 78.9,
+      "protocolo_antipiquetes": 79.0,
+      "fal_modernizacion_laboral": 80.0,
+      "litigiosidad_laboral": 79.1,
+      "desregulacion_normativa": 79.8,
+      "privatizaciones": 79.3,
+      "reduccion_estado": 79.5,
+      "gasto_funcionamiento": 79.5
     },
     "tension": {
-      "base": 2.1,
+      "base": 2.0,
       "rango_combinado": [
         1.9,
         2.2
