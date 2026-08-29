@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'vida'
 indicadores: [consumo_carnes_total]
 archivos: ['scripts/publicar.py', 'tests/test_una_fuente_caida_degrada_no_desaparece.py']
-relacionado: ['0224', '0225']
+relacionado: ['0224', '0225', '0269']
 ambito: 'Publicación · cinturón Impacto social · qué pasa con una card cuando su fuente no contesta'
 origen: 'Regresión en vivo el 25-ago-2026: SAGYP devolvió None y el snapshot salió con 62 cards en vez de 63'
 ---

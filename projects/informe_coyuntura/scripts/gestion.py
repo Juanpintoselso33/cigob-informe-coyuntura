@@ -201,8 +201,28 @@ def _sellar(resultado: dict) -> dict:
 
 
 def _manual_entry(nombre: str, manuales: dict, cache_anterior: dict) -> dict | None:
-    """Entrada desde manuales.json (valor = insumo que bandea el ITCG) o cache
-    anterior como último recurso. Manual ⇒ desactualizado=True (badge honesto)."""
+    """Qué publica una card cuando su fuente no contesta (ADR-0269).
+
+    El orden importa y durante meses estuvo al revés: primero el último valor
+    que ALGUNA vez salió de la fuente en vivo, y sólo si no hay ninguno, la
+    semilla escrita a mano en manuales.json. En los dos casos
+    `desactualizado=True`, que es el badge honesto.
+
+    `obtenido_en` es el discriminador: lo pone `_sellar` y sólo sobre
+    resultados frescos (ADR-0191), así que su presencia separa "esto vino de la
+    fuente" de "esto lo tipeó una persona". El carry-forward lo arrastra
+    intacto, que es justamente lo que se quiere conservar.
+
+    La semilla es para arrancar sin cache, no para corregir a la fuente: se
+    escribe una vez y se queda quieta mientras el mundo se mueve. El
+    29-ago-2026 `contratar.gob.ar` se cayó y la card de concesiones **retrocedió
+    de 100% a 28,7%** —el valor de julio, cuando faltaban dos etapas por
+    adjudicar— teniendo el 100% bueno en el cache de la noche anterior.
+    """
+    prev = cache_anterior.get("indicadores", {}).get(nombre, {})
+    if prev.get("valor") is not None and prev.get("obtenido_en"):
+        return {**prev, "desactualizado": True}
+
     m = manuales.get(nombre, {})
     valor = m.get("valor", m.get("avance_pct"))   # compat con el formato viejo
     if valor is not None:
@@ -215,7 +235,6 @@ def _manual_entry(nombre: str, manuales: dict, cache_anterior: dict) -> dict | N
             "notas":          m.get("notas", ""),
             "desactualizado": True,
         }
-    prev = cache_anterior.get("indicadores", {}).get(nombre, {})
     if prev and prev.get("valor") is not None:
         return {**prev, "desactualizado": True}
     return None

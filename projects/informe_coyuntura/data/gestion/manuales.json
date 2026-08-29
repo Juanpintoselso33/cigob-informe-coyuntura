@@ -18,29 +18,29 @@
     }
   },
   "desregulacion_normativa": {
-    "valor": 57,
-    "unidad": "% de avance desregulatorio",
+    "valor": 16771,
+    "unidad": "artículos de normas modificados o eliminados, acumulados desde dic-2023",
     "estado": "estimado",
-    "fuente": "Doc CIGOB 260702 (57% de normas derogadas)",
-    "notas": "Fallback si InfoLeg no responde. El doc 260702 lee 57% de normas derogadas → banda 85 ('desregulación en marcha').",
-    "fecha_dato": "2026-06-30"
+    "fuente": "Ministerio de Desregulación y Transformación del Estado — Análisis de la desregulación implementada (informe mensual)",
+    "notas": "FALLBACK (ADR-0269): sólo se usa si NUNCA hubo un valor en vivo en el cache. Estaba en 57 '% de avance desregulatorio', la unidad anterior a ADR-0143, que pasó la escala de NORMAS a ARTÍCULOS: contra la banda de hoy esos 57 se leían como 57 artículos y puntuaban 10 en vez de 100. Este valor es la última lectura verificada de la fuente (informe al 1-jul-2026).",
+    "fecha_dato": "2026-07-01"
   },
   "concesiones_infraestructura": {
-    "valor": 28.7,
+    "valor": 100.0,
     "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
     "estado": "estimado",
-    "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
-    "notas": "FALLBACK: el colector AUTO scrapea CONTRAT.AR (búsqueda 'RED FEDERAL', sin login) y el kilometraje de la página oficial de la RFC. Jul-2026: Etapas I y II-A adjudicadas (2.614 de 9.091 km = 28,7%); II-B en preselección; III con dictamen pendiente.",
-    "fecha_dato": "2026-07-02"
+    "fuente": "CONTRAT.AR (UOC 504) + Boletín Oficial (InfoLeg) + página oficial RFC",
+    "notas": "FALLBACK (ADR-0269): sólo se usa si NUNCA hubo un valor en vivo en el cache; el último valor en vivo le gana a esta semilla. Las cuatro etapas de la RFC están adjudicadas — I: RESOL-2025-80-ST, BO 19-nov-2025 (741,71 km) · II-A: Res. 706/2026, BO 15-may-2026 (1.871,82 km) · II-B: Res. 1149/2026, BO 28-jul-2026 (2.557,11 km) · III: Res. 1379/2026, BO 24-ago-2026 (3.920,21 km) — 9.091 de 9.091 km = 100%. El acto publicado manda sobre el estado del portal (ADR-0244).",
+    "fecha_dato": "2026-08-24"
   },
   "fal_modernizacion_laboral": {
-    "valor": 0.4,
+    "valor": 50.0,
     "cobertura_cct_pct": 0.7,
     "unidad": "Índice de Avance del Fondo de Asistencia Laboral 0-100 (cobertura CCT 40% + adopción financiera 30% + litigiosidad 30%, renormalizado a lo disponible)",
     "estado": "estimado",
-    "fuente": "MTEySS / CNV / Boletín Oficial — elaboración CIGOB",
-    "notas": "El colector AUTO cuenta los fondos de cese o asistencia laboral del registro CNV (hoy: 0) y las menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde la publicación de la Ley de Modernización Laboral (marzo de 2026). 'valor' y 'cobertura_cct_pct' solo operan como respaldo si esas fuentes no responden. El régimen entra en vigencia el 1 de noviembre de 2026 (el Decreto 408/2026 prorrogó el arranque desde junio): la adopción financiera no puede comenzar antes de esa fecha y el valor bajo refleja eso. Actualizar el respaldo con: convenios homologados que incorporen el fondo (buscador del MTEySS) y grandes gremios que lo adopten.",
-    "fecha_dato": "2026-07-15"
+    "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
+    "notas": "FALLBACK (ADR-0269): sólo se usa si NUNCA hubo un valor en vivo en el cache. Estaba en 0,4, valor de la fórmula anterior a la recalibración de ADR-0228 (2026-08-21), que dejó el índice como escalera 0·20·25·30·45·50·55·70·75·80·100 = 0,50·actos fundamentales vigentes/2 + 0,20·régimen en vigencia (1-nov-2026) + 0,30·al menos un FAL registrado en la CNV. Hoy: los dos actos vigentes, el régimen todavía no rige y no hay FAL en el registro CNV → 50. Última lectura verificada de la fuente el 25-ago-2026.",
+    "fecha_dato": "2026-08-25"
   },
   "asistencia_directa": {
     "valor": 100,

@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'gestion'
 indicadores: [concesiones_infraestructura]
 archivos: ['scripts/gestion.py', 'tests/test_gestion_concesiones.py', 'tests/fixtures/rfc_concesiones.json']
-relacionado: ['0087']
+relacionado: ['0087', '0269']
 ambito: 'Cinturón gestión · ITCG · `concesiones_infraestructura` · qué fuente decide que una etapa está adjudicada'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «la Resolución 1379/2026 adjudicó formalmente los ocho tramos de Etapa III»'
 ---

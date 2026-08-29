@@ -185,6 +185,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0255](0255-el-corpus-de-saij-no-identifica-al-ejecutivo.md) | El corpus de SAIJ no identifica al Ejecutivo | `judicializacion` | vigente |
 | [0263](0263-la-ficha-describe-el-metodo-que-corre.md) | La ficha describe el método que corre | `ratio_dnu`, `iaf_transferencias`, `subocupacion_demandante` | vigente |
 | [0265](0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) | Una dimensión no promete vías que ya no puntúan | `apoyo_empresario`, `judicializacion`, `sentimiento_digital` | vigente |
+| [0268](0268-el-slug-no-define-una-sesion.md) | El slug no define una sesión | `paralisis_denuncias` | vigente |
 
 ### Gestión (ITCG)
 
@@ -230,6 +231,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0229](0229-la-desregulacion-cuenta-actos-no-efectos.md) | La desregulación cuenta actos, no efectos, y la ficha lo dice | `desregulacion_normativa` | vigente |
 | [0244](0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) | El acto jurídico manda sobre el estado del portal | `concesiones_infraestructura` | vigente |
 | [0247](0247-un-porcentaje-entre-normas-y-una-meta-documental.md) | Un porcentaje entre normas y una meta documental | `reestructuracion_organismos` | vigente |
+| [0269](0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) | La semilla escrita a mano no le gana al último valor bueno | `concesiones_infraestructura`, `desregulacion_normativa`, `fal_modernizacion_laboral` | vigente |
 
 ### Vida cotidiana (ITVC)
 
