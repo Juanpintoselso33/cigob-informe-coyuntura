@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 46,
+  "comunicados_vistos": 51,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. NO puntúa: el indicador no se publica hasta que haya segunda pasada con kappa ≥ 0,70. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-08-28"
+  "nuevos_en_la_corrida": 5,
+  "ultima_corrida": "2026-08-29"
  },
  "pendientes": {
   "UIA|con-un-nuevo-esquema-federal-uia-joven-lanzo-la-ed": {
@@ -164,6 +164,39 @@
    "titulo": "La UIA y 13 cámaras sectoriales firmaron un compromiso histórico para impulsar la Ley de Envases",
    "url": "https://www.uia.org.ar/uia/novedades/la-uia-y-13-camaras-sectoriales-firmaron-un-compro"
   },
+  "UIA|participamos-del-debate-por-el-regimen-de-incentiv": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-08-26",
+   "id": "participamos-del-debate-por-el-regimen-de-incentiv",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "En el marco del debate de las comisiones de Presupuesto y Hacienda, Economía Nacional e Inversión y Legislación General del Honorable Senado de la Nación por el proyecto de ley aprobado por la Cámara de Diputados sobre la creación del Súper RIGI, el Presidente del Departamento PyMI y Desarrollo Regional de la UIA acercó la postura del sector productivo a los senadores nacionales. Nuestra exposición se enfocó en pedidos de modificación en torno al desarrollo de proveedores estipulado en el artículo 17 inciso o) del proyecto de ley en revisión, y al establecimiento de sanciones por incumplimiento.  Durante su presentación, Diego Leal destacó que la Argentina necesita inversiones y un marco jurídico que permita impulsar al entramado productivo nacional. En este sentido, si bien el proyecto en revisión incorpora un plan de desarrollo de proveedores —debido a la experiencia comparada y la experiencia nacional con el RIGI—, se puede prever que su alcance y eficacia serán limitados de avanzar tal como ha sido redactado en la Media Sanción.  El proyecto actual establece que un 20% de la inversión debe destinarse a «bienes, obras o servicios». Sin embargo, creemos que el impacto sería mucho mayor si ese porcentaje se enfocara exclusivamente en bienes de producción nacional. La diferencia entre las obras y los servicios es que son no transables y, por lo tanto, se ejecutan localmente en cualquier caso, existan o no un incentivo u obligación específica. Por el contrario, los bienes industriales, por ser transables, pueden ser sustituidos por bienes importados y esta característica es la que promueve que los países adopten y desarrollen programas de desarrollo de proveedores. En un mundo donde muchos países subsidian su producción, no contar con una política clara de desarrollo de proveedores locales termina beneficiando a los proveedores de otros países. Por eso, apostamos por una economía \"inteligentemente abierta\" que cuide el empleo local. Obligar a que este 20% se destine a bienes nacionales —o al menos la mitad de ese porcentaje, como propusimos alternativamente— es clave para traccionar a nuestras pymes, desarrollar talento, sumar tecnología y crear trabajo de calidad, transformando cada gran inversión en un verdadero motor de desarrollo.  Otro punto de preocupación que destacó es la repetición de una condición del RIGI original: el contenido local se exige solo si la oferta está disponible “en condiciones de mercado en cuanto a precio y calidad”. Esta formulación presupone que la eventual exclusión de la oferta nacional obedece exclusivamente a una insuficiencia de precio o calidad, cuando sus causas son sustancialmente más complejas y de carácter estructural. Para evitar que esta cláusula termine excluyendo a nuestra industria, propusimos que la autoridad de aplicación trabaje junto al sector privado para definir reglas claras que verifiquen las verdaderas posibilidades de respuesta local. Así, en lugar de consolidar la exclusión de la oferta nacional, podríamos promover una integración real de valor argentino.  Tratándose de inversiones de una magnitud extraordinaria, el régimen debería funcionar como una palanca para potenciar nuestras capacidades productivas y tecnológicas, integrando a los proveedores a la cadena de valor. Por eso, nos resulta muy llamativo y preocupante que el Súper RIGI tenga un componente de desarrollo local incluso menor que el del RIGI original.  Finalmente, alertamos que el proyecto actual no contempla sanciones si no se cumple con el contenido local, algo que ya generó vacíos y controversias en el RIGI. Nuestra sugerencia concreta es que caduquen los beneficios impositivos vinculados a las importaciones si la empresa no respeta el compromiso de destinar ese 20% a bienes nacionales. Fijar metas claras y comprobables es esencial para asegurar que la llegada de capitales genere un círculo virtuoso para la Argentina y nos ayude a revertir la pérdida de puestos de trabajo industriales de los últimos años.  La presentación ante los senadores se enmarca en una serie de acciones que impulsamos con el objetivo de incluir a la industria nacional dentro de este proyecto. Este trabajo sostenido se inició desde el ingreso mismo de la iniciativa a la Cámara de Diputados, contando con exposiciones previas de María Laura Bermúdez y Diego Leal en la comisión de Industria, así como con diversas solicitudes formales elevadas a los legisladores nacionales de ambas cámaras.",
+   "titulo": "Participamos del debate por el Régimen de Incentivo para Grandes Inversiones en Nuevas Industrias (Súper RIGI)",
+   "url": "https://www.uia.org.ar/uia/novedades/participamos-del-debate-por-el-regimen-de-incentiv"
+  },
+  "UIA|participamos-del-debate-sobre-el-establecimiento-d": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-08-26",
+   "id": "participamos-del-debate-sobre-el-establecimiento-d",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "En el marco del plenario de las comisiones de Legislación General, Ambiente y Desarrollo Sustentable, y Presupuesto y Hacienda del Honorable Senado de la Nación, el Presidente del Departamento de Ambiente y Desarrollo Sustentable de la UIA, Manuel Frávega, presentó la visión del sector productivo sobre los proyectos de ley orientados establecer un marco jurídico para los mercados de carbono en el país.  Durante nuestra intervención, ratificamos que desde la UIA consideramos de especial interés avanzar en un marco jurídico que propicie el desarrollo de un mercado voluntario de carbono en la Argentina. Entendemos que esta herramienta es capaz de generar incentivos reales para que las empresas realicen inversiones orientadas a la reducción y remoción de emisiones. Un marco regulatorio adecuado puede contribuir a movilizar capitales, promover proyectos de mitigación y brindar la certeza jurídica necesaria para su desarrollo y comercialización internacional.  Para que esto suceda, consideramos fundamental que la normativa defina con claridad aspectos centrales como la titularidad de los créditos, su registración, transferencia y las condiciones para su articulación con los mecanismos previstos en el Artículo 6 del Acuerdo de París. En ese sentido, instamos a que los proyectos se concentren en establecer las condiciones necesarias para el funcionamiento de un mercado voluntario que canalice inversión privada hacia la descarbonización, sin generar nuevas cargas obligatorias.",
+   "titulo": "Participamos del debate sobre el establecimiento de un marco jurídico para los Mercados de Carbono",
+   "url": "https://www.uia.org.ar/uia/novedades/participamos-del-debate-sobre-el-establecimiento-d"
+  },
+  "UIA|participamos-del-debate-sobre-la-reforma-integral": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-08-26",
+   "id": "participamos-del-debate-sobre-la-reforma-integral",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "En el marco del tratamiento del proyecto de reforma integral de la Ley General de Sociedades en la Comisión de Legislación General del Honorable Senado de la Nación, el Presidente del Departamento de Relaciones Parlamentarias, Mariano Genovesi, acercó la postura institucional de la UIA a los senadores nacionales.  Nuestra exposición fue acompañada por un documento de posición que presenta 26 propuestas de modificación al articulado, buscando garantizar un régimen más ágil y moderno, pero que consolide la seguridad jurídica y la protección patrimonial.  Durante su presentación, Genovesi destacó que la Argentina y sus empresas necesitan actualizar sus normativas, por lo que desde la UIA compartimos los objetivos generales del proyecto: dotar al país de un régimen societario más simple, flexible y previsible, compatible con la libertad de organización. En esa línea, valoramos positivamente varios avances de la iniciativa, como el reconocimiento del carácter supletorio de la ley, la precisión en el régimen de responsabilidad de los socios, la eliminación de criterios meramente formales para la fiscalización estatal y la incorporación del arbitraje societario como mecanismo eficaz para la resolución de conflictos. Sin embargo, advertimos sobre algunas inconsistencias que el proyecto debe corregir para no generar el efecto contrario al deseado.  En este sentido,  consideramos esencial que los senadores nacionales tomen en consideración las propuestas acercadas por el sector, a fin de aportar a la mejora del proyecto y ajustarlo con mayor precisión a sus objetivos declarados .",
+   "titulo": "Participamos del debate sobre la reforma integral de la Ley General de Sociedades",
+   "url": "https://www.uia.org.ar/uia/novedades/participamos-del-debate-sobre-la-reforma-integral"
+  },
   "UIA|presentamos-el-informe-proveedores-mineros-en-arge": {
    "camara": "UIA",
    "destinatario": null,
@@ -174,6 +207,28 @@
    "texto": "En el marco del encuentro organizado por los gobernadores de la Mesa del Litio, el Consejo Federal de Inversiones (CFI) y el Banco Interamericano de Desarrollo (BID), presentamos los resultados del estudio realizado junto con el BID y CAEM sobre las potencialidades de desarrollo de proveedores del sector minero en Argentina.  En un contexto de creciente demanda global, la expansión de proyectos mineros abre una oportunidad concreta para generar empleo, diversificar las economías provinciales, fortalecer capacidades productivas locales y capturar mayor valor en los territorios donde se desarrolla la actividad.  Entre los puntos más relevante del informe, destaca la oportunidad que existe en la Argentina y el desafío de lograr que los proveedores argentinos estén preparados para integrarse a la cadena de valor minera. Existe una plataforma productiva diversa sobre la cual construir ingeniería, metalmecánica, químicos, logística y otras capacidades ya presentes en el país. Sobre 91 rubros analizados, 73 cuentan con oferta nacional relevada, aunque todavía existen brechas importantes en capacidad, certificaciones, homologaciones, financiamiento y coordinación con la demanda.",
    "titulo": "Presentamos el informe \"Proveedores Mineros en Argentina\"",
    "url": "https://www.uia.org.ar/uia/novedades/presentamos-el-informe-proveedores-mineros-en-arge"
+  },
+  "UIA|presentamos-las-propuestas-del-sector-industrial-e": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-06-09",
+   "id": "presentamos-las-propuestas-del-sector-industrial-e",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La UIA participó de una reunión informativa de la Comisión de Industria de la Cámara de Diputados el martes 9 de junio. María Laura Bermúdez, Directora Ejecutiva, presentó a los Diputados Nacionales el rol de la UIA en la Industria Nacional, su representatividad industrial y datos sobre la actividad económica, laboral, comercial y de financiamiento del sector Industrial, así como los pilares centrales para reducir el costo argentino y fortalecer la competitividad.  También se presentaron las medidas legislativas necesarias para la industria, entre las que se incluyen una Nueva Ley PyME, una Reforma Tributaria para la Competitividad del Sector Transable y una Ley de Gestión Integral de Envases, entre otros. Por su parte, el Presidente del Departamento PyMI y Desarrollo Regional, Diego Leal, presentó los puntos esenciales para una Nueva Ley PyME.",
+   "titulo": "Presentamos las propuestas del sector industrial en la Comisión de Industria de la Cámara de Diputados",
+   "url": "https://www.uia.org.ar/uia/novedades/presentamos-las-propuestas-del-sector-industrial-e"
+  },
+  "UIA|recibimos-a-los-diputados-nacionales-de-la-comisio": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-05-26",
+   "id": "recibimos-a-los-diputados-nacionales-de-la-comisio",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Recibimos a los Diputados de la comisión de Pequeñas y Medianas Empresas en el Centro de Industria X. En la reunión informativa del sector industrial, la UIA describió el panorama actual de la actividad PyMI y expuso su preocupación por la demora en la reactivación y la caída del empleo, así como también por las distorsiones que persisten para la actividad productiva en materia tributaria, financiera, logística y laboral. La reducción gradual del costo argentino es fundamental para que los sectores que compiten globalmente puedan desarrollarse en igualdad de condiciones y sostener inversión, empleo y crecimiento. Se presentaron propuestas de medidas para una Ley PyME que incluya medidas para las empresas en crisis, un sistema tributario PyME, un RIMI acorde a la realidad de las empresas PyME, y promoción del financiamiento y de las exportaciones PyME.  Asistieron al encuentro los Diputados Nacionales Pablo Farías (Provincias Unidas, Santa Fe, Presidente); Verónica Razzini (La Libertad Avanza, Santa Fe, Vicepresidente 1°); Roxana Monzón (Unión por la Patria, Buenos Aires, Vicepresidenta 2°); Marina Salzmann (Unión por la Patria, Buenos Aires, Secretaria); Florencia Carignano (Unión por la Patria, Santa Fe); María Cecilia Ibáñez (La Libertad Avanza, Córdoba); Diógenes González (Unión Cívica Radical, Corrientes); Enrique Lluch (La Libertad Avanza, Cordoba) y Juan Brügge (Provincias Unidas, Córdoba).  De parte del sector industrial, estuvieron presentes el el Presidente de la Unión Industrial Argentina, Martín Rappallini; el Presidente del Departamento de Relaciones Parlamentarias, Mariano Genovesi; el Presidente del Departamento PyMI y Desarrollo Regional, Diego Leal; el Presidente del Departamento de Política Social, Juan José Etala; el Vicepresidente del Departamento PyMI y Desarrollo Regional, Agustín López Munell y el miembro de Junta Directiva, Horacio Moschetto.",
+   "titulo": "Recibimos a los Diputados Nacionales de la Comisión de Pequeñas y Medianas Empresas en el Centro de Industria X de la UIA",
+   "url": "https://www.uia.org.ar/uia/novedades/recibimos-a-los-diputados-nacionales-de-la-comisio"
   },
   "UIA|se-reunio-la-junta-directiva-de-la-uia": {
    "camara": "UIA",
@@ -589,6 +644,18 @@
    "fecha": "2026-05-20",
    "titulo": "La UIA y 13 cámaras sectoriales firmaron un compromiso histórico para impulsar la Ley de Envases"
   },
+  "UIA|participamos-del-debate-por-el-regimen-de-incentiv": {
+   "fecha": "2026-08-26",
+   "titulo": "Participamos del debate por el Régimen de Incentivo para Grandes Inversiones en Nuevas Industrias (Súper RIGI)"
+  },
+  "UIA|participamos-del-debate-sobre-el-establecimiento-d": {
+   "fecha": "2026-08-26",
+   "titulo": "Participamos del debate sobre el establecimiento de un marco jurídico para los Mercados de Carbono"
+  },
+  "UIA|participamos-del-debate-sobre-la-reforma-integral": {
+   "fecha": "2026-08-26",
+   "titulo": "Participamos del debate sobre la reforma integral de la Ley General de Sociedades"
+  },
   "UIA|preocupacion-en-la-junta-directiva-de-la-uia": {
    "fecha": "2026-03-17",
    "origen": "migración de URL; ya codificado",
@@ -597,6 +664,14 @@
   "UIA|presentamos-el-informe-proveedores-mineros-en-arge": {
    "fecha": "2026-08-18",
    "titulo": "Presentamos el informe \"Proveedores Mineros en Argentina\""
+  },
+  "UIA|presentamos-las-propuestas-del-sector-industrial-e": {
+   "fecha": "2026-06-09",
+   "titulo": "Presentamos las propuestas del sector industrial en la Comisión de Industria de la Cámara de Diputados"
+  },
+  "UIA|recibimos-a-los-diputados-nacionales-de-la-comisio": {
+   "fecha": "2026-05-26",
+   "titulo": "Recibimos a los Diputados Nacionales de la Comisión de Pequeñas y Medianas Empresas en el Centro de Industria X de la UIA"
   },
   "UIA|se-reunio-la-junta-directiva-de-la-uia": {
    "fecha": "2026-08-25",

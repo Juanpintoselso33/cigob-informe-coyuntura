@@ -1,9 +1,9 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-08-28T05:41:25.091822",
+  "generated_at": "2026-08-29T21:50:28.328470",
   "score": 2.9,
   "itcp": {
-    "valor": 70.7,
+    "valor": 70.6,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -60,7 +60,7 @@
       "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
         "peso": 0.19,
-        "puntaje": 76.5,
+        "puntaje": 79.8,
         "indicadores": {
           "iaf_transferencias": {
             "peso": 0.4,
@@ -71,9 +71,9 @@
           },
           "alineamiento_senadores_prov": {
             "peso": 0.3,
-            "puntaje_banda": 69.0,
-            "puntaje_aplicado": 69.0,
-            "valor": 57.0,
+            "puntaje_banda": 80.2,
+            "puntaje_aplicado": 80.2,
+            "valor": 62.6,
             "peso_efectivo": 0.057
           },
           "adhesion_reformas_provincial": {
@@ -89,13 +89,13 @@
       "cohesion_interna": {
         "nombre": "Cohesión interna del oficialismo",
         "peso": 0.15,
-        "puntaje": 96.7,
+        "puntaje": 100.0,
         "indicadores": {
           "cohesion_bloque": {
             "peso": 1.0,
-            "puntaje_banda": 96.7,
-            "puntaje_aplicado": 96.7,
-            "valor": 99.8,
+            "puntaje_banda": 100.0,
+            "puntaje_aplicado": 100.0,
+            "valor": 99.9,
             "peso_efectivo": 0.15
           }
         },
@@ -141,7 +141,7 @@
       "poder_judicial": {
         "nombre": "Poder judicial",
         "peso": 0.15,
-        "puntaje": 60.7,
+        "puntaje": 52.0,
         "indicadores": {
           "cobertura_judicial": {
             "peso": 0.4,
@@ -159,9 +159,9 @@
           },
           "paralisis_denuncias": {
             "peso": 0.2,
-            "puntaje_banda": 45.0,
-            "puntaje_aplicado": 45.0,
-            "valor": 7.0,
+            "puntaje_banda": 10.0,
+            "puntaje_aplicado": 10.0,
+            "valor": 14.0,
             "peso_efectivo": 0.0375
           }
         },
@@ -195,7 +195,7 @@
       "fuente": "Votómetro CIGOB",
       "fecha_dato": "2026-07-22",
       "desactualizado": false,
-      "obtenido_en": "2026-08-28T05:38:11",
+      "obtenido_en": "2026-08-29T21:46:50",
       "en_indice": true,
       "dimension": "imagen_voto",
       "puntaje_itcp": 73.6,
@@ -209,10 +209,10 @@
       "ventana_dias": 365,
       "unidad": "DNUs publicados por ley publicada",
       "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
-      "fecha_dato": "2026-08-28",
+      "fecha_dato": "2026-08-29",
       "desactualizado": false,
-      "ventana_desde": "2025-08-28",
-      "ventana_hasta": "2026-08-28",
+      "ventana_desde": "2025-08-29",
+      "ventana_hasta": "2026-08-29",
       "inventario_dnu": [
         {
           "norma": "Decreto DNU 771 / 2026",
@@ -363,8 +363,8 @@
           "fecha_pub": "2025-09-03"
         }
       ],
-      "detalle_txt": "37 DNU y 25 leyes publicados en el Boletín Oficial entre 2025-08-28 y 2026-08-28 → 1.48 DNU por ley",
-      "obtenido_en": "2026-08-28T05:38:15",
+      "detalle_txt": "37 DNU y 25 leyes publicados en el Boletín Oficial entre 2025-08-29 y 2026-08-29 → 1.48 DNU por ley",
+      "obtenido_en": "2026-08-29T21:46:54",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 44.6,
@@ -379,7 +379,7 @@
       "desactualizado": false,
       "variacion_12m": 4.9,
       "detalle_txt": "Brecha de -1,1 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
-      "obtenido_en": "2026-08-28T05:38:17",
+      "obtenido_en": "2026-08-29T21:46:57",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 72.8,
@@ -398,7 +398,7 @@
       "criticas_ventana": 5,
       "pendientes_de_codificar": 17,
       "detalle_txt": "En los últimos doce meses AEA y UIA se pronunciaron 7 veces sobre medidas del Gobierno nacional: 2 de apoyo y 5 de crítica. Saldo −0,429 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 17 comunicados detectados sin codificar.",
-      "obtenido_en": "2026-08-28T05:38:17",
+      "obtenido_en": "2026-08-29T21:46:57",
       "en_indice": true
     },
     "conflictividad_nacional": {
@@ -410,7 +410,7 @@
       "fecha_dato": "2026-07-01",
       "desactualizado": false,
       "detalle_txt": "1979 eventos de protesta y disturbios en el país en 12m (hasta 2026-07) vs 2605 en todo 2023 (-24,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país",
-      "obtenido_en": "2026-08-28T05:38:31",
+      "obtenido_en": "2026-08-29T21:47:11",
       "en_indice": true,
       "dimension": "conflicto_social",
       "puntaje_itcp": 52.5,
@@ -424,7 +424,7 @@
       "fecha_dato": "2026-05-01",
       "desactualizado": false,
       "detalle_txt": "4.760.195 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
-      "obtenido_en": "2026-08-28T05:38:34",
+      "obtenido_en": "2026-08-29T21:47:15",
       "en_indice": true,
       "dimension": "conflicto_social",
       "puntaje_itcp": 100.0,
@@ -440,7 +440,7 @@
       "fuente": "https://centrocepa.com.ar/documentos/informes/837-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial-2",
       "fecha_dato": "2026-08-23",
       "desactualizado": false,
-      "obtenido_en": "2026-08-28T05:38:38",
+      "obtenido_en": "2026-08-29T21:47:19",
       "en_indice": false
     },
     "iaf_transferencias": {
@@ -455,7 +455,7 @@
       "detalle_txt": "2025: +43.1% nominal contra un deflactor de 40.8% ponderado por el flujo de cada mes → +1.6% real",
       "fecha_dato": "2025-12-31",
       "desactualizado": false,
-      "obtenido_en": "2026-08-28T05:38:56",
+      "obtenido_en": "2026-08-29T21:47:42",
       "en_indice": true,
       "dimension": "alianzas_territoriales",
       "puntaje_itcp": 78.2,
@@ -466,14 +466,14 @@
       "valor": 14.3,
       "aprobados_n": 2,
       "enviados_n": 14,
-      "cohorte_desde": "2024-08-28",
-      "cohorte_hasta": "2025-08-28",
+      "cohorte_desde": "2024-08-29",
+      "cohorte_hasta": "2025-08-29",
       "dias_madurado_min": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
-      "fecha_dato": "2026-08-28",
+      "fecha_dato": "2026-08-29",
       "desactualizado": false,
-      "obtenido_en": "2026-08-28T05:39:05",
+      "obtenido_en": "2026-08-29T21:47:52",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 48.6,
@@ -486,10 +486,10 @@
       "total_n": 10,
       "unidad": "% de sesiones",
       "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
-      "fecha_dato": "2026-08-28",
+      "fecha_dato": "2026-08-29",
       "desactualizado": false,
       "detalle_txt": "1 de 10 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
-      "obtenido_en": "2026-08-28T05:39:08",
+      "obtenido_en": "2026-08-29T21:47:55",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 78.3,
@@ -498,25 +498,25 @@
     },
     "comisiones_caidas": {
       "valor": 97.2,
-      "dictamen_n": 501,
+      "dictamen_n": 500,
       "aprobados_n": 14,
-      "caidas_n": 487,
+      "caidas_n": 486,
       "ventana_dias": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-      "fecha_dato": "2026-08-28",
+      "fecha_dato": "2026-08-29",
       "desactualizado": false,
-      "obtenido_en": "2026-08-28T05:39:13",
+      "obtenido_en": "2026-08-29T21:48:02",
       "en_indice": false
     },
     "adhesion_reformas_provincial": {
       "valor": 66.7,
       "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
       "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
-      "fecha_dato": "2026-08-28",
+      "fecha_dato": "2026-08-29",
       "n_provincias": 16,
       "desactualizado": false,
-      "obtenido_en": "2026-08-28T05:39:15",
+      "obtenido_en": "2026-08-29T21:48:03",
       "en_indice": true,
       "dimension": "alianzas_territoriales",
       "puntaje_itcp": 81.7,
@@ -532,22 +532,22 @@
       "detalle_txt": "3 vetos insistidos por el Congreso + 0 decretos rechazados en el recinto en los últimos 12 meses",
       "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
       "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
-      "fecha_dato": "2026-08-28",
+      "fecha_dato": "2026-08-29",
       "desactualizado": false,
-      "obtenido_en": "2026-08-28T05:39:46",
+      "obtenido_en": "2026-08-29T21:48:31",
       "en_indice": false
     },
     "rotacion_gabinete": {
       "valor": 7,
       "unidad": "salidas de rango ministerial (acum. 12 meses)",
       "fuente": "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
-      "fecha_dato": "2026-08-28",
+      "fecha_dato": "2026-08-29",
       "desactualizado": false,
       "salidas_politicas": 5,
       "salidas_estructurales": 2,
       "ultima_salida": "Manuel Adorni — Jefe de Gabinete de Ministros (2026-06)",
       "detalle_txt": "7 salidas en 12 meses = 5 políticas · 2 por bancas electorales — Gerardo Werthein (2025-10), Guillermo Francos (2025-11), Lisandro Catalan (2025-11), Patricia Bullrich (2025-12), Luis Petri (2025-12), Mariano Cuneo Libarona (2026-03), Manuel Adorni (2026-06)",
-      "obtenido_en": "2026-08-28T05:39:53",
+      "obtenido_en": "2026-08-29T21:48:38",
       "en_indice": false
     },
     "protestas_caba": {
@@ -559,15 +559,15 @@
       "eventos_2023": 240,
       "var_vs_2023": 15.8,
       "detalle_txt": "278 eventos en 12m (hasta 2026-07) vs 240 en 2023 (+15,8%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
-      "obtenido_en": "2026-08-28T05:39:53",
+      "obtenido_en": "2026-08-29T21:48:38",
       "en_indice": false
     },
     "cohesion_bloque": {
-      "valor": 99.8,
+      "valor": 99.9,
       "unidad": "% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)",
       "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
-      "fecha_dato": "2026-08-06",
-      "n_actas": 34,
+      "fecha_dato": "2026-08-27",
+      "n_actas": 38,
       "desactualizado": false,
       "componentes": {
         "diputados": {
@@ -578,18 +578,18 @@
           "desactualizado": false
         },
         "senado": {
-          "valor": 99.5,
-          "fecha_dato": "2026-08-06",
-          "n_actas": 21,
-          "corrida_exitosa_en": "2026-08-28",
+          "valor": 99.6,
+          "fecha_dato": "2026-08-27",
+          "n_actas": 25,
+          "corrida_exitosa_en": "2026-08-29",
           "desactualizado": false
         }
       },
-      "obtenido_en": "2026-08-28T05:40:35",
+      "obtenido_en": "2026-08-29T21:49:21",
       "en_indice": true,
       "dimension": "cohesion_interna",
-      "puntaje_itcp": 96.7,
-      "puntaje_banda": 96.7,
+      "puntaje_itcp": 100.0,
+      "puntaje_banda": 100.0,
       "peso_efectivo": 0.15
     },
     "bloqueo_sostenido": {
@@ -602,9 +602,9 @@
       "detalle_txt": "1 de 3 normas desafiadas en el recinto siguen en pie (vetos con insistencia votada + decretos votados bajo la ley 26.122, últimos 12 meses)",
       "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
       "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-      "fecha_dato": "2026-08-28",
+      "fecha_dato": "2026-08-29",
       "desactualizado": false,
-      "obtenido_en": "2026-08-28T05:40:45",
+      "obtenido_en": "2026-08-29T21:49:28",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 26.6,
@@ -618,10 +618,10 @@
       "ultimo_desafio": "2025-09-18",
       "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
       "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-      "fecha_dato": "2026-08-28",
+      "fecha_dato": "2026-08-29",
       "desactualizado": false,
       "detalle_txt": "3 normas propias desafiadas en el recinto en los últimos 12 meses (2 cayeron, 1 siguen en pie)",
-      "obtenido_en": "2026-08-28T05:40:45",
+      "obtenido_en": "2026-08-29T21:49:28",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 90.0,
@@ -635,7 +635,7 @@
       "fecha_dato": "2026-08-01",
       "desactualizado": false,
       "detalle_txt": "25 leyes sancionadas en los últimos 12 meses. El promedio histórico del dataset (2008-2025, cuatro presidencias) es de 74 leyes por año.",
-      "obtenido_en": "2026-08-28T05:40:48",
+      "obtenido_en": "2026-08-29T21:49:32",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 30.0,
@@ -663,7 +663,7 @@
       "fecha_dato": "2025-12-31",
       "desactualizado": false,
       "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
-      "obtenido_en": "2026-08-28T05:40:49",
+      "obtenido_en": "2026-08-29T21:49:33",
       "en_indice": true,
       "dimension": "poder_judicial",
       "puntaje_itcp": 94.6,
@@ -671,17 +671,132 @@
       "peso_efectivo": 0.0375
     },
     "paralisis_denuncias": {
-      "valor": 7,
+      "valor": 14,
       "unidad": "sesiones de las comisiones de control (12m)",
       "fuente": "Consejo de la Magistratura — archivo de notas de las comisiones",
       "fecha_dato": "2026-08-01",
       "desactualizado": false,
-      "detalle_txt": "7 sesiones ordinarias de las comisiones de Acusación y Disciplina en los últimos 12 meses (rango de la serie: 2 a 7, promedio 5.0).",
-      "obtenido_en": "2026-08-28T05:40:53",
+      "sesiones_12m": [
+        {
+          "fecha": "2025-09-17",
+          "comision": "acusacion",
+          "post_id": 51551,
+          "slug": "sesiono-la-comision-de-acusacion-12",
+          "url": "https://consejomagistratura.gov.ar/index.php/2025/09/17/sesiono-la-comision-de-acusacion-12/",
+          "tipo": "ordinaria_numerada"
+        },
+        {
+          "fecha": "2025-11-12",
+          "comision": "acusacion",
+          "post_id": 52035,
+          "slug": "sesionaron-las-comisiones-de-administracion-y-financiera-y-de-acusacion",
+          "url": "https://consejomagistratura.gov.ar/index.php/2025/11/12/sesionaron-las-comisiones-de-administracion-y-financiera-y-de-acusacion/",
+          "tipo": "publicacion_agrupada"
+        },
+        {
+          "fecha": "2025-11-19",
+          "comision": "disciplina",
+          "post_id": 52115,
+          "slug": "sesiono-la-comision-de-disciplina-y-la-comision-de-administracion-y-financiera",
+          "url": "https://consejomagistratura.gov.ar/index.php/2025/11/19/sesiono-la-comision-de-disciplina-y-la-comision-de-administracion-y-financiera/",
+          "tipo": "sesion"
+        },
+        {
+          "fecha": "2025-11-26",
+          "comision": "disciplina",
+          "post_id": 52194,
+          "slug": "sesionaron-las-comisiones-de-disciplina-y-de-seleccion-de-magistrados-y-escuela-judicial",
+          "url": "https://consejomagistratura.gov.ar/index.php/2025/11/26/sesionaron-las-comisiones-de-disciplina-y-de-seleccion-de-magistrados-y-escuela-judicial/",
+          "tipo": "publicacion_agrupada"
+        },
+        {
+          "fecha": "2025-12-17",
+          "comision": "acusacion",
+          "post_id": 52530,
+          "slug": "sesiono-la-comision-de-acusacion-13",
+          "url": "https://consejomagistratura.gov.ar/index.php/2025/12/17/sesiono-la-comision-de-acusacion-13/",
+          "tipo": "ordinaria_numerada"
+        },
+        {
+          "fecha": "2026-02-25",
+          "comision": "acusacion",
+          "post_id": 52726,
+          "slug": "sesiono-la-comision-de-acusacion-14",
+          "url": "https://consejomagistratura.gov.ar/index.php/2026/02/25/sesiono-la-comision-de-acusacion-14/",
+          "tipo": "ordinaria_numerada"
+        },
+        {
+          "fecha": "2026-03-17",
+          "comision": "acusacion",
+          "post_id": 52924,
+          "slug": "la-comision-de-acusacion-propuso-al-plenario-acusar-a-los-jueces-lopez-y-diaz-lacava-ante-el-jurado-de-enjuiciamiento",
+          "url": "https://consejomagistratura.gov.ar/index.php/2026/03/17/la-comision-de-acusacion-propuso-al-plenario-acusar-a-los-jueces-lopez-y-diaz-lacava-ante-el-jurado-de-enjuiciamiento/",
+          "tipo": "resultado_sustantivo"
+        },
+        {
+          "fecha": "2026-04-08",
+          "comision": "disciplina",
+          "post_id": 53088,
+          "slug": "sesiono-la-comision-de-disciplina-8",
+          "url": "https://consejomagistratura.gov.ar/index.php/2026/04/08/sesiono-la-comision-de-disciplina-8/",
+          "tipo": "ordinaria_numerada"
+        },
+        {
+          "fecha": "2026-04-22",
+          "comision": "acusacion",
+          "post_id": 53237,
+          "slug": "sesionaron-las-comisiones-de-acusacion-y-de-administracion-y-se-realizo-una-nueva-reunion-conjunta-de-las-comisiones-de-seleccion-y-reglamentacion",
+          "url": "https://consejomagistratura.gov.ar/index.php/2026/04/22/sesionaron-las-comisiones-de-acusacion-y-de-administracion-y-se-realizo-una-nueva-reunion-conjunta-de-las-comisiones-de-seleccion-y-reglamentacion/",
+          "tipo": "publicacion_agrupada"
+        },
+        {
+          "fecha": "2026-05-13",
+          "comision": "disciplina",
+          "post_id": 53501,
+          "slug": "sesionaron-las-comisiones-de-seleccion-y-de-disciplina",
+          "url": "https://consejomagistratura.gov.ar/index.php/2026/05/13/sesionaron-las-comisiones-de-seleccion-y-de-disciplina/",
+          "tipo": "extraordinaria"
+        },
+        {
+          "fecha": "2026-05-28",
+          "comision": "acusacion",
+          "post_id": 53633,
+          "slug": "la-comision-de-acusacion-propone-al-plenario-iniciar-el-proceso-de-remocion-del-juez-salmain",
+          "url": "https://consejomagistratura.gov.ar/index.php/2026/05/28/la-comision-de-acusacion-propone-al-plenario-iniciar-el-proceso-de-remocion-del-juez-salmain/",
+          "tipo": "resultado_sustantivo"
+        },
+        {
+          "fecha": "2026-06-03",
+          "comision": "disciplina",
+          "post_id": 53683,
+          "slug": "sesiono-la-comision-de-disciplina-9",
+          "url": "https://consejomagistratura.gov.ar/index.php/2026/06/03/sesiono-la-comision-de-disciplina-9/",
+          "tipo": "ordinaria_numerada"
+        },
+        {
+          "fecha": "2026-07-15",
+          "comision": "acusacion",
+          "post_id": 54181,
+          "slug": "sesiono-la-comision-de-acusacion-15",
+          "url": "https://consejomagistratura.gov.ar/index.php/2026/07/15/sesiono-la-comision-de-acusacion-15/",
+          "tipo": "ordinaria_numerada"
+        },
+        {
+          "fecha": "2026-08-19",
+          "comision": "disciplina",
+          "post_id": 54446,
+          "slug": "sesiono-la-comision-de-disciplina-10",
+          "url": "https://consejomagistratura.gov.ar/index.php/2026/08/19/sesiono-la-comision-de-disciplina-10/",
+          "tipo": "ordinaria_numerada"
+        }
+      ],
+      "criterio_conjuntas": "Cada comisión que sesiona aporta un evento, aunque la nota agrupe varias comisiones o documente una sesión conjunta; fecha y comisión se deduplican. Las audiencias no cuentan.",
+      "detalle_txt": "14 sesiones de las comisiones de Acusación y Disciplina en los últimos 12 meses, incluidas ordinarias, extraordinarias y las publicadas junto con otras comisiones; las audiencias no cuentan (rango de la serie: 13 a 18, promedio 15.2).",
+      "obtenido_en": "2026-08-29T21:49:41",
       "en_indice": true,
       "dimension": "poder_judicial",
-      "puntaje_itcp": 45.0,
-      "puntaje_banda": 45.0,
+      "puntaje_itcp": 10.0,
+      "puntaje_banda": 10.0,
       "peso_efectivo": 0.0375
     },
     "cobertura_judicial": {
@@ -692,7 +807,7 @@
       "desactualizado": false,
       "cargos_con_juez": 665,
       "cargos_totales": 955,
-      "fecha_corte": "2026-08-28",
+      "fecha_corte": "2026-08-29",
       "fecha_padron": "2026-06-05",
       "padron_con_juez": 610,
       "padron_titular": 604,
@@ -700,8 +815,8 @@
       "padron_sin_cubrir": 69,
       "designaciones_desde_padron": 60,
       "renuncias_desde_padron": 5,
-      "detalle_txt": "665 de 955 cargos de juez habilitados tienen juez designado al 2026-08-28 · sale del padrón al 2026-06-05 —610 de 955 no vacantes— más 60 designaciones y menos 5 renuncias posteriores · en ese padrón, los 955 cargos se repartían en 604 con titular en funciones, 282 con subrogante y 69 sin cubrir",
-      "obtenido_en": "2026-08-28T05:41:03",
+      "detalle_txt": "665 de 955 cargos de juez habilitados tienen juez designado al 2026-08-29 · sale del padrón al 2026-06-05 —610 de 955 no vacantes— más 60 designaciones y menos 5 renuncias posteriores · en ese padrón, los 955 cargos se repartían en 604 con titular en funciones, 282 con subrogante y 69 sin cubrir",
+      "obtenido_en": "2026-08-29T21:49:54",
       "en_indice": true,
       "dimension": "poder_judicial",
       "puntaje_itcp": 51.6,
@@ -709,17 +824,17 @@
       "peso_efectivo": 0.075
     },
     "alineamiento_senadores_prov": {
-      "valor": 57.0,
+      "valor": 62.6,
       "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
       "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
-      "fecha_dato": "2026-08-06",
+      "fecha_dato": "2026-08-27",
       "n_provincias": 24,
-      "corrida_exitosa_en": "2026-08-28",
+      "corrida_exitosa_en": "2026-08-29",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
-      "puntaje_itcp": 69.0,
-      "puntaje_banda": 69.0,
+      "puntaje_itcp": 80.2,
+      "puntaje_banda": 80.2,
       "peso_efectivo": 0.057
     }
   }

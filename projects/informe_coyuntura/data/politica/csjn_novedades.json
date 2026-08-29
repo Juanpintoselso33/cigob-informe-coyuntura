@@ -4,7 +4,7 @@
   "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
   "nuevas_en_la_corrida": 0,
   "registros_vistos_en_la_corrida": 40,
-  "ultima_corrida": "2026-08-28"
+  "ultima_corrida": "2026-08-29"
  },
  "pendientes": {
   "818689": {
@@ -500,6 +500,11 @@
    "fecha": "20/08/2026",
    "marcado": true,
    "termino": "inconstitucionalidad"
+  },
+  "830984": {
+   "fecha": "27/08/2026",
+   "marcado": false,
+   "termino": "medida cautelar"
   },
   "830997": {
    "fecha": "20/08/2026",
