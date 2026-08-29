@@ -1,5 +1,6 @@
 """Tests de la dimensión del Poder Judicial en el ITCP (ADR-0126)."""
 import sys
+from datetime import date
 from pathlib import Path
 
 import pytest
@@ -271,3 +272,208 @@ def test_el_denominador_son_los_organos_habilitados(padron_falso):
     denominador bajaría la cobertura sin que nada hubiera pasado."""
     card = politica.fetch_cobertura_judicial()
     assert card["cargos_totales"] == 955
+
+
+# ── Universo de sesiones de control (ADR-0268) ──────────────────────────────
+
+@pytest.fixture
+def consejo_posts():
+    path = Path(__file__).parent / "fixtures" / "consejo_comisiones_posts.json"
+    import json
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+@pytest.fixture
+def consejo_api_falsa(monkeypatch, consejo_posts):
+    class Respuesta:
+        status_code = 200
+        headers = {}
+
+        def __init__(self, data):
+            self._data = data
+
+        def json(self):
+            return self._data
+
+        def raise_for_status(self):
+            return None
+
+    def get(_url, params=None, **_kwargs):
+        categoria = int(params["categories"])
+        nombre = next(k for k, v in politica.CONSEJO_CATS.items() if v == categoria)
+        return Respuesta(consejo_posts[nombre])
+
+    monkeypatch.setattr(politica.requests, "get", get)
+
+
+def test_una_nota_conjunta_asignada_a_una_categoria_aporta_ambas_comisiones(
+        monkeypatch):
+    post = {
+        "id": 1,
+        "date": "2026-08-20T12:00:00",
+        "slug": "sesionaron-las-comisiones-de-acusacion-y-de-disciplina",
+        "link": "https://consejo.test/1",
+        "title": {"rendered": (
+            "Sesionaron las Comisiones de Acusación y de Disciplina")},
+        "content": {"rendered": "<p>Ambas comisiones celebraron su sesión.</p>"},
+    }
+
+    class Respuesta:
+        status_code = 200
+        headers = {"X-WP-TotalPages": "1"}
+
+        def __init__(self, data):
+            self._data = data
+
+        def json(self):
+            return self._data
+
+        def raise_for_status(self):
+            return None
+
+    def get(_url, params=None, **_kwargs):
+        data = [post] if int(params["categories"]) == politica.CONSEJO_CATS["acusacion"] else []
+        return Respuesta(data)
+
+    monkeypatch.setattr(politica.requests, "get", get)
+    inventario = politica._consejo_inventario_sesiones()
+    assert {(e["fecha"], e["comision"]) for e in inventario} == {
+        ("2026-08-20", "acusacion"), ("2026-08-20", "disciplina"),
+    }
+
+
+def test_la_paginacion_respeta_el_total_aunque_el_lote_tenga_cien(monkeypatch):
+    valido = {
+        "id": 1,
+        "date": "2026-08-19T12:00:00",
+        "slug": "sesiono-la-comision-de-disciplina-10",
+        "link": "https://consejo.test/1",
+        "title": {"rendered": "Sesionó la Comisión de Disciplina"},
+        "content": {"rendered": "<p>Sesión ordinaria.</p>"},
+    }
+    relleno = [{
+        "id": n,
+        "date": "2026-08-01T12:00:00",
+        "slug": f"noticia-{n}",
+        "link": f"https://consejo.test/{n}",
+        "title": {"rendered": f"Noticia {n}"},
+        "content": {"rendered": "<p>Sin sesión de comisión.</p>"},
+    } for n in range(2, 101)]
+    paginas_pedidas = []
+
+    class Respuesta:
+        status_code = 200
+        headers = {"X-WP-TotalPages": "1"}
+
+        def __init__(self, data):
+            self._data = data
+
+        def json(self):
+            return self._data
+
+        def raise_for_status(self):
+            return None
+
+    def get(_url, params=None, **_kwargs):
+        paginas_pedidas.append((params["categories"], params["page"]))
+        data = [valido, *relleno] if int(params["categories"]) == politica.CONSEJO_CATS["disciplina"] else []
+        return Respuesta(data)
+
+    monkeypatch.setattr(politica.requests, "get", get)
+    inventario = politica._consejo_inventario_sesiones()
+    assert len(inventario) == 1
+    assert all(pagina == 1 for _, pagina in paginas_pedidas)
+
+
+def test_inventario_cuenta_el_universo_y_deduplica(consejo_api_falsa):
+    inventario = politica._consejo_inventario_sesiones()
+    claves = [(e["fecha"], e["comision"]) for e in inventario]
+
+    assert len(inventario) == 16
+    assert len(claves) == len(set(claves))
+    assert claves.count(("2025-08-13", "disciplina")) == 1, (
+        "dos copias de una nota no pueden duplicar una reunión")
+
+
+@pytest.mark.parametrize("fecha", ["2025-08-06", "2026-03-17", "2026-05-28"])
+def test_las_sesiones_con_resultado_sustantivo_no_dependen_del_slug(
+        consejo_api_falsa, fecha):
+    inventario = politica._consejo_inventario_sesiones()
+    evento = next(e for e in inventario if e["fecha"] == fecha)
+    assert evento["comision"] == "acusacion"
+    assert evento["tipo"] == "resultado_sustantivo"
+
+
+def test_las_publicaciones_agrupadas_y_extraordinarias_cuentan(consejo_api_falsa):
+    inventario = politica._consejo_inventario_sesiones()
+    por_fecha = {e["fecha"]: e for e in inventario}
+    assert por_fecha["2025-11-12"]["tipo"] == "publicacion_agrupada"
+    assert por_fecha["2025-11-12"]["comision"] == "acusacion"
+    assert por_fecha["2026-05-13"]["tipo"] == "extraordinaria"
+    assert por_fecha["2026-05-13"]["comision"] == "disciplina"
+
+
+def test_las_audiencias_y_el_jurado_no_cuentan(consejo_api_falsa):
+    inventario = politica._consejo_inventario_sesiones()
+    ids = {e["post_id"] for e in inventario}
+    assert not {53570, 53850, 54431} & ids
+
+
+def test_una_referencia_retrospectiva_no_se_clasifica_como_sesion_actual():
+    post = {
+        "slug": "la-comision-informo-sobre-una-causa",
+        "title": {"rendered": "La Comisión de Acusación informó sobre una causa"},
+        "content": {"rendered": (
+            "La causa se había originado en una sesión de la Comisión de "
+            "Acusación del mes pasado. Hoy se publicó la resolución.")},
+    }
+    assert politica._clasificar_sesion_consejo(post, "acusacion") is None
+
+
+def test_la_serie_reconstruida_da_14_en_agosto_2026(consejo_api_falsa):
+    inventario = politica._consejo_inventario_sesiones()
+    serie = politica._paralisis_serie_desde_eventos(inventario, date(2026, 8, 26))
+    assert serie["2026-08"] == 14
+
+
+def test_la_ventana_movil_incluye_exactamente_doce_meses_calendario():
+    eventos = [
+        {"fecha": "2025-08-31"},
+        {"fecha": "2025-09-01"},
+        {"fecha": "2026-08-31"},
+    ]
+    serie = politica._paralisis_serie_desde_eventos(eventos, date(2026, 8, 31))
+    assert serie["2026-08"] == 2
+
+
+def test_la_card_expone_el_inventario_y_el_criterio(consejo_api_falsa):
+    inventario = politica._consejo_inventario_sesiones()
+    serie = politica._paralisis_serie_desde_eventos(inventario, date(2026, 8, 26))
+    vigentes = [
+        e for e in inventario if "2025-09-01" <= e["fecha"] < "2026-09-01"
+    ]
+    assert serie["2026-08"] == len(vigentes) == 14
+
+    # La fecha real de ejecución puede avanzar; se prueban acá los campos que
+    # hacen auditable el número sin congelar el mes corriente global.
+    card = politica.fetch_paralisis_denuncias()
+    assert card["sesiones_12m"]
+    assert "fecha y comisión se deduplican" in card["criterio_conjuntas"]
+    assert "audiencias no cuentan" in card["criterio_conjuntas"]
+
+
+def test_el_inventario_versionado_cierra_con_la_serie_publicada():
+    import json
+    store = json.loads(
+        (Path(__file__).parent.parent / "data" / "politica" /
+         "denuncias_comisiones_universo.json").read_text(encoding="utf-8"))
+    eventos = store["sesiones_2026_08"]
+    claves = {(e["fecha"], e["comision"]) for e in eventos}
+
+    assert len(eventos) == len(claves) == store["conteo_2026_08"]["total"] == 14
+    assert store["conteo_2026_08"] == {
+        "acusacion": 8, "disciplina": 6, "total": 14,
+    }
+    assert store["serie_12m"]["puntos"]["2026-08"] == 14
+    for fecha in ("2026-03-17", "2026-05-28"):
+        assert (fecha, "acusacion") in claves

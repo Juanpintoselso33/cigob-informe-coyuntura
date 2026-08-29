@@ -2403,7 +2403,6 @@ def fetch_cobertura_judicial() -> dict | None:
 # refresca es un indicador viejo sin que ningún gate lo note.
 
 CAUTELARES_PATH  = PROJECT_DIR / "data" / "politica" / "cautelares_saij_relevamiento.json"
-DENUNCIAS_PATH   = PROJECT_DIR / "data" / "politica" / "denuncias_comisiones_universo.json"
 CSJN_FUENTES_PATH = PROJECT_DIR / "data" / "politica" / "correccion_fuentes_judicial_empresario.json"
 
 
@@ -2528,23 +2527,40 @@ def fetch_velocidad_resolucion() -> dict | None:
 def fetch_paralisis_denuncias() -> dict | None:
     """Sesiones de las comisiones de Acusación y Disciplina en 12m (ADR-0134/0168).
 
-    EN VIVO contra la API del sitio del Consejo (ADR-0170). Mide AMBAS
-    comisiones: Disciplina sola tiene 8 sesiones en cuatro años, o sea un
-    indicador de evento, que es la clase que ADR-0147 dejó suspendida.
+    EN VIVO contra la API del sitio del Consejo (ADR-0170/0268). Mide AMBAS
+    comisiones sobre un inventario de reuniones, no sobre una forma de slug.
     """
     try:
-        puntos = paralisis_denuncias_serie()
+        inventario = _consejo_inventario_sesiones()
+        puntos = _paralisis_serie_desde_eventos(inventario, date.today())
         ym = max(puntos)
-        s = _leer_store(DENUNCIAS_PATH)["serie_12m"]
+        mes_fin = date(int(ym[:4]), int(ym[5:7]), 1)
+        indice_desde = mes_fin.year * 12 + (mes_fin.month - 1) - 11
+        desde = date(
+            indice_desde // 12, indice_desde % 12 + 1, 1,
+        ).isoformat()
+        hasta = date(
+            int(ym[:4]) + (int(ym[5:7]) // 12),
+            (int(ym[5:7]) % 12) + 1,
+            1,
+        ).isoformat()
+        eventos_12m = [e for e in inventario if desde <= e["fecha"] < hasta]
         return {
             "valor": puntos[ym],
             "unidad": "sesiones de las comisiones de control (12m)",
             "fuente": "Consejo de la Magistratura — archivo de notas de las comisiones",
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
+            "sesiones_12m": eventos_12m,
+            "criterio_conjuntas": (
+                "Cada comisión que sesiona aporta un evento, aunque la nota agrupe "
+                "varias comisiones o documente una sesión conjunta; fecha y comisión "
+                "se deduplican. Las audiencias no cuentan."),
             "detalle_txt": (
-                f"{puntos[ym]} sesiones ordinarias de las comisiones de Acusación y "
-                f"Disciplina en los últimos 12 meses (rango de la serie: "
+                f"{puntos[ym]} sesiones de las comisiones de Acusación y Disciplina "
+                f"en los últimos 12 meses, incluidas ordinarias, extraordinarias y "
+                f"las publicadas junto con otras comisiones; las audiencias no cuentan "
+                f"(rango de la serie: "
                 f"{min(puntos.values())} a {max(puntos.values())}, promedio "
                 f"{round(sum(puntos.values())/len(puntos), 1)})."),
         }
@@ -2561,6 +2577,80 @@ CONSEJO_WP    = "https://consejomagistratura.gov.ar/index.php/wp-json/wp/v2"
 CONSEJO_CATS  = {"acusacion": 129, "disciplina": 130}
 _RE_SESION    = re.compile(
     r"sesion[oó]?-?(?:la|las)?-?comisi[oó]n-de-(acusacion|disciplina)-(\d+)")
+
+
+def _texto_consejo(valor: str) -> str:
+    """Texto comparable de un título/cuerpo de WordPress.
+
+    Los títulos alternan tildes, entidades HTML y etiquetas. La clasificación
+    se hace sobre lenguaje institucional explícito, no sobre un slug concreto.
+    """
+    texto = BeautifulSoup(unescape(str(valor or "")), "html.parser").get_text(" ")
+    texto = unicodedata.normalize("NFKD", texto)
+    texto = "".join(c for c in texto if not unicodedata.combining(c))
+    return re.sub(r"\s+", " ", texto).strip().lower()
+
+
+def _clasificar_sesion_consejo(post: dict, comision: str) -> str | None:
+    """Clasifica una nota si documenta una sesión de la comisión indicada.
+
+    La categoría de WordPress delimita el universo, pero también contiene
+    audiencias y noticias del Jurado. Por eso se exige evidencia de reunión en
+    título o cuerpo. Las audiencias se excluyen: son actos dentro de una causa,
+    no sesiones de comisión. En cambio se incluyen sesiones extraordinarias,
+    reuniones cubiertas junto a otras comisiones y notas cuyo título destaca
+    el resultado sustantivo; todas responden a la pregunta publicada —cuántas
+    veces sesionó la comisión— aunque el slug no tenga un número.
+    """
+    slug = _texto_consejo(post.get("slug", "")).replace(" ", "-")
+    titulo = _texto_consejo((post.get("title") or {}).get("rendered", ""))
+    cuerpo = _texto_consejo((post.get("content") or {}).get("rendered", ""))
+    objetivo = f"comision de {comision}"
+
+    # Las notas de audiencia pueden recordar una sesión anterior en el cuerpo;
+    # esa mención no convierte a la audiencia en una nueva sesión.
+    if "audiencia" in titulo or slug.startswith("audiencia-"):
+        return None
+
+    numerada = _RE_SESION.search(slug)
+    if numerada and numerada.group(1) == comision:
+        return "ordinaria_numerada"
+
+    titulo_declara_comision = objetivo in titulo or (
+        "sesionaron las comisiones" in titulo and comision in titulo)
+    titulo_declara_reunion = any(
+        marca in titulo for marca in ("sesion", "reunion")
+    )
+
+    # Evidencia explícita en el cuerpo para las noticias que titulan con el
+    # dictamen o la remoción y no con la reunión (06-08-2025, 17-03-2026 y
+    # 28-05-2026). El fallback exige un verbo institucional que atribuya la
+    # reunión a la comisión, o una marca temporal inequívoca antes del nombre;
+    # así una noticia que sólo recuerda una sesión pasada no cuenta.
+    cuerpo_declara_reunion = bool(
+        re.search(
+            rf"{objetivo}.{{0,180}}(?:celebro|realizo|llevo (?:a cabo|adelante)|"
+            rf"sesiono|se reunio).{{0,140}}(?:sesion|reunion)",
+            cuerpo,
+        )
+        or re.search(
+            rf"(?:sesion|reunion) (?:del dia de hoy|de hoy).{{0,180}}{objetivo}",
+            cuerpo,
+        )
+    )
+
+    if not ((titulo_declara_comision and titulo_declara_reunion)
+            or cuerpo_declara_reunion):
+        return None
+    if "extraordinaria" in titulo or "sesion extraordinaria" in cuerpo:
+        return "extraordinaria"
+    if "continuacion" in titulo:
+        return "continuacion"
+    if "comisiones" in titulo or "plenario y la comision" in titulo:
+        return "publicacion_agrupada"
+    if "sesion" not in titulo:
+        return "resultado_sustantivo"
+    return "sesion"
 
 
 def _saij_federal_y_nacional(consulta: str) -> int:
@@ -2599,35 +2689,112 @@ def judicializacion_serie() -> dict[str, float]:
     return serie
 
 
-def _consejo_sesiones() -> list[tuple[str, str, int]]:
-    """(fecha, comisión, número de sesión) de las notas del Consejo.
+def _consejo_inventario_sesiones() -> list[dict]:
+    """Inventario deduplicado de sesiones publicadas por el Consejo.
 
-    La numeración secuencial es lo que valida la cobertura: si el Consejo
-    sesionara sin publicar la nota, el número siguiente delataría el hueco.
+    La unidad es una sesión de una comisión. Si una nota documenta reuniones
+    de varias comisiones, cada comisión objetivo aporta un evento; si las dos
+    comisiones objetivo aparecen en la misma nota, aporta dos. Varias notas de
+    la misma comisión y fecha se deduplican porque describen una sola reunión.
     """
-    out: list[tuple[str, str, int]] = []
+    candidatos: list[dict] = []
     for comision, cat in CONSEJO_CATS.items():
         pagina = 1
         while True:
             r = requests.get(f"{CONSEJO_WP}/posts",
                              params={"categories": cat, "per_page": 100,
-                                     "page": pagina, "_fields": "date,slug"},
+                                     "page": pagina,
+                                     "_fields": "id,date,slug,link,title,content"},
                              headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
             if r.status_code != 200:
-                break
+                r.raise_for_status()
             lote = r.json()
             if not lote:
                 break
             for p in lote:
-                m = _RE_SESION.search(p.get("slug", ""))
-                if m:
-                    out.append((p["date"][:10], m.group(1), int(m.group(2))))
-            if len(lote) < 100:
+                # WordPress puede asignar una nota conjunta a una sola de las
+                # categorías. El contenido, no la taxonomía editorial, define
+                # qué comisión sesionó; el deduplicador absorbe los posts que
+                # sí estén presentes en ambas categorías.
+                for comision_documentada in CONSEJO_CATS:
+                    if comision_documentada != comision:
+                        titulo = _texto_consejo(
+                            (p.get("title") or {}).get("rendered", ""),
+                        )
+                        objetivo = f"comision de {comision_documentada}"
+                        objetivo_en_titulo = objetivo in titulo or (
+                            "sesionaron las comisiones" in titulo
+                            and comision_documentada in titulo
+                        )
+                        if not objetivo_en_titulo:
+                            continue
+                    tipo = _clasificar_sesion_consejo(p, comision_documentada)
+                    if tipo:
+                        candidatos.append({
+                            "fecha": p["date"][:10],
+                            "comision": comision_documentada,
+                            "post_id": p.get("id"),
+                            "slug": p.get("slug", ""),
+                            "url": p.get("link", ""),
+                            "tipo": tipo,
+                        })
+            total_paginas_txt = getattr(r, "headers", {}).get("X-WP-TotalPages")
+            llego_al_final = (
+                pagina >= int(total_paginas_txt)
+                if total_paginas_txt is not None
+                else len(lote) < 100
+            )
+            if llego_al_final:
                 break
             pagina += 1
+
+    # El blog puede asignar una misma nota a más de una categoría o republicar
+    # el resultado de una reunión. La clave fecha+comisión representa la unidad
+    # estadística y evita contar dos veces el mismo encuentro.
+    por_reunion: dict[tuple[str, str], dict] = {}
+    prioridad = {
+        "ordinaria_numerada": 5,
+        "resultado_sustantivo": 4,
+        "sesion": 3,
+        "extraordinaria": 2,
+        "continuacion": 2,
+        "publicacion_agrupada": 1,
+    }
+    for evento in candidatos:
+        clave = (evento["fecha"], evento["comision"])
+        anterior = por_reunion.get(clave)
+        if anterior is None or prioridad[evento["tipo"]] > prioridad[anterior["tipo"]]:
+            por_reunion[clave] = evento
+    out = sorted(por_reunion.values(), key=lambda e: (e["fecha"], e["comision"]))
     if not out:
-        raise ValueError("el archivo del Consejo no devolvió sesiones numeradas")
+        raise ValueError("el archivo del Consejo no devolvió sesiones identificables")
     return out
+
+
+def _consejo_sesiones() -> list[tuple[str, str, int | None]]:
+    """Vista compatible del inventario: (fecha, comisión, número si existe)."""
+    out = []
+    for evento in _consejo_inventario_sesiones():
+        m = _RE_SESION.search(evento["slug"])
+        out.append((evento["fecha"], evento["comision"], int(m.group(2)) if m else None))
+    return out
+
+
+def _paralisis_serie_desde_eventos(eventos: list[dict], hoy: date) -> dict[str, int]:
+    """Construye la serie mensual desde un inventario ya deduplicado."""
+    fechas = sorted(e["fecha"] for e in eventos)
+    serie: dict[str, int] = {}
+    cur = date(2023, 12, 1)
+    while cur <= hoy:
+        # Ventana de 12 meses CALENDARIO terminada en el mes informado: desde
+        # el primer día de once meses atrás hasta el último del mes corriente.
+        indice_ini = cur.year * 12 + (cur.month - 1) - 11
+        ini = date(indice_ini // 12, indice_ini % 12 + 1, 1)
+        sig = date(cur.year + (cur.month // 12), (cur.month % 12) + 1, 1)
+        serie[f"{cur.year}-{cur.month:02d}"] = sum(
+            1 for f in fechas if ini.isoformat() <= f < sig.isoformat())
+        cur = sig
+    return serie
 
 
 def paralisis_denuncias_serie() -> dict[str, int]:
@@ -2638,20 +2805,8 @@ def paralisis_denuncias_serie() -> dict[str, int]:
     cuatro años— y una serie sobre una sola quedaría dominada por el ruido de
     un evento aislado (ADR-0168).
     """
-    fechas = sorted(f for f, _, _ in _consejo_sesiones())
-    serie: dict[str, int] = {}
-    cur, hoy = date(2023, 12, 1), date.today()
-    while cur <= hoy:
-        # Ventana de 12 meses CALENDARIO terminada en el mes informado: desde
-        # el primer día de once meses atrás hasta el último del mes corriente.
-        # Cerrarla el día 1 dejaba afuera las sesiones del propio mes, que es
-        # lo que producía diferencias de ±1 contra el relevamiento manual.
-        ini = date(cur.year - 1, cur.month, 1)
-        sig = date(cur.year + (cur.month // 12), (cur.month % 12) + 1, 1)
-        serie[f"{cur.year}-{cur.month:02d}"] = sum(
-            1 for f in fechas if ini.isoformat() <= f < sig.isoformat())
-        cur = sig
-    return serie
+    return _paralisis_serie_desde_eventos(
+        _consejo_inventario_sesiones(), date.today())
 
 # ── Colectores manuales ───────────────────────────────────────────────────────
 

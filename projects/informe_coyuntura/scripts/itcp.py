@@ -150,12 +150,10 @@ BANDAS_ITCP = {
     "paralisis_denuncias": [         # sesiones de las 2 comisiones en 12m, MENOR = mejor
         # CONCEPTUAL (ADR-0168): cortes redondos sobre sesiones por año de dos
         # comisiones —una por semestre cada una, una por trimestre, una por
-        # bimestre— no calibrados contra el rango observado (2 a 7).
-        #
-        # Mide sesiones de AMBAS comisiones, no de Disciplina sola: ADR-0166
-        # había derivado lo segundo, y los datos crudos lo desmienten —
-        # Disciplina tiene 8 sesiones en cuatro años, o sea un indicador de
-        # evento, que es justamente la clase que ADR-0147 dejó suspendida.
+        # bimestre—. ADR-0268 corrigió el universo de slugs numerados a todas
+        # las sesiones documentadas y la serie pasó de 2–7 a 13–18. Las bandas
+        # se preservan: recalibrarlas contra el nuevo resultado observado
+        # mezclaría la corrección del dato con otra decisión metodológica.
         (-INF, 2.0, 100), (2.0, 4.0, 85), (4.0, 6.0, 65),
         (6.0, 9.0, 40), (9.0, INF, 10),
     ],

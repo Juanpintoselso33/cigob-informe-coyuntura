@@ -288,11 +288,11 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **3.8%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 2 meses |
-| Procedencia del ancla | `conceptual` — cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, no calibrados contra el rango observado 2-7 (ADR-0168) |
+| Procedencia del ancla | `conceptual` — cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, preservados al corregir el universo de slugs numerados (rango 13-18; ADR-0168/0268) |
 
 **Bandas**: ≤ 2 → 100 · 2–4 → 85 · 4–6 → 65 · 6–9 → 40 · > 9 → 10
 
-**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0170](../adr/0170-judicializacion-y-paralisis-pasan-a-fuente-viva.md) Judicialización y parálisis de denuncias pasan a fuente viva
+**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0170](../adr/0170-judicializacion-y-paralisis-pasan-a-fuente-viva.md) Judicialización y parálisis de denuncias pasan a fuente viva · [ADR-0268](../adr/0268-el-slug-no-define-una-sesion.md) El slug no define una sesión
 
 ### Dimensión `sector_privado` (13%)
 
@@ -341,7 +341,7 @@ histórica.
   <br>quedó anotado como pendiente editorial si el indicador **corresponde al cinturón
 - **[ADR-0134](../adr/0134-paralisis-de-denuncias-la-fuente-sirve-y-el-dato-contradice-la-hipotesis.md)** — Parálisis de denuncias: la fuente sirve, y el dato contradice la hipótesis
   <br>2. **No se incorpora todavía ningún indicador al ITCP.** Faltan dos decisiones
-  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166, ADR-0168. Verificar antes de tratarlo como abierto.
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166, ADR-0168, ADR-0268. Verificar antes de tratarlo como abierto.
 - **[ADR-0135](../adr/0135-cautelares-judicializacion-si-bloqueo-no.md)** — Cautelares: judicialización sí, bloqueo cautelar no
   <br>- **Judicialización: viable** — queda como candidata construible. La densidad cautelar normalizada en jurisdicción Federal + Nacional nace discriminando: rango ×3,5, historia desde 2016 para calibrar 
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0166, ADR-0168. Verificar antes de tratarlo como abierto.
@@ -365,7 +365,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-70 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+71 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -437,3 +437,4 @@ histórica.
 - [0255](../adr/0255-el-corpus-de-saij-no-identifica-al-ejecutivo.md) — El corpus de SAIJ no identifica al Ejecutivo
 - [0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) — La ficha describe el método que corre
 - [0265](../adr/0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) — Una dimensión no promete vías que ya no puntúan
+- [0268](../adr/0268-el-slug-no-define-una-sesion.md) — El slug no define una sesión

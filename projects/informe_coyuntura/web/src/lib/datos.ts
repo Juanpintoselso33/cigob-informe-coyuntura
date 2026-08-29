@@ -564,7 +564,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   produccion_legislativa: "leyes sancionadas en los últimos 12 meses",
   judicializacion: "sumarios con medida cautelar sobre el total, jurisdicción Federal + Nacional",
   velocidad_resolucion: "expedientes resueltos sobre ingresados en el año (CSJN)",
-  paralisis_denuncias: "sesiones ordinarias de las comisiones de Acusación y Disciplina en 12 meses",
+  paralisis_denuncias: "sesiones documentadas de las comisiones de Acusación y Disciplina en 12 meses",
   empleo_registrado: "Miles de asalariados registrados del sector privado (SIPA)",
   desregulacion_normativa: "Artículos modificados o eliminados desde dic-2023", apertura_comercial: "% del intercambio (alícuota efectiva)",
   gasto_funcionamiento: "% de variación real vs 2023", masa_salarial: "% de variación real vs 2023",

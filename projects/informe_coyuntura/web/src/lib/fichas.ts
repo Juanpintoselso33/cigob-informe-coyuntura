@@ -589,12 +589,13 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "Consejo de la Magistratura de la Nación",
       operacion: "Archivo de notas de prensa de las comisiones de Acusación y de Disciplina",
-      serie: "Sesiones numeradas de cada comisión desde su separación, en 2022",
+      serie: "Sesiones documentadas de cada comisión desde su separación, en 2022",
       url: "https://www.consejomagistratura.gov.ar",
       acceso: "Automático sobre el archivo público de notas.",
     },
     transformaciones: [
-      "Se cuentan las sesiones numeradas de ambas comisiones en la ventana móvil de doce meses. Las notas sin número —sesiones conjuntas, extraordinarias y audiencias testimoniales— se relevan aparte y no entran en el conteo.",
+      "Se cuenta cada sesión documentada de ambas comisiones en la ventana móvil de doce meses, tenga o no un número en la URL. Incluye sesiones ordinarias, extraordinarias y reuniones publicadas junto o en forma conjunta con otras comisiones. Fecha y comisión forman la clave de deduplicación.",
+      "Las audiencias testimoniales o del artículo 20 y las noticias del Jurado de Enjuiciamiento no cuentan: son actos de una causa o de otro órgano, no sesiones de comisión.",
       "Se suman las dos comisiones. Cada una por separado sesiona pocas veces al año, y una serie construida sobre una sola quedaría dominada por el ruido de un evento aislado.",
     ],
     anclas: {
@@ -609,14 +610,15 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "sesiones (12m)",
     },
     limitaciones: [
-      "Cuenta que la comisión se reúna, no que resuelva. Las decisiones concretas contra un magistrado son un fenómeno distinto y mucho más raro —cuatro en veinte meses— y no entran en este conteo.",
+      "Cuenta que la comisión se reúna, resuelva o no. Una nota cuyo título destaca un dictamen sigue contando si el cuerpo documenta que la decisión se tomó en sesión.",
       "Las dos comisiones se comportan distinto: una sesiona con más frecuencia y produce acciones, la otra sesiona menos y no publicó ninguna. El indicador las suma, de modo que no distingue cuál de las dos se movió.",
       "Depende de que el Consejo publique la nota de cada sesión. Una sesión sin nota es invisible para el indicador.",
     ],
     faltantes: "Si el archivo no se puede leer, se mantiene el último valor disponible, señalado como desactualizado.",
     revisiones: "Una nota publicada con retraso puede sumar una sesión a meses ya informados.",
     cambios: [
-      { fecha: "2026-07-31", cambio: "Entra al índice midiendo las sesiones de ambas comisiones. Se descartó medir sólo la comisión de Disciplina: tiene ocho sesiones en cuatro años, lo que la convierte en un indicador de eventos aislados y no en una serie." },
+      { fecha: "2026-08-26", cambio: "Se corrige el universo: el número del slug deja de ser requisito. Entran las sesiones con título sustantivo, extraordinarias y publicadas junto con otras comisiones; se deduplican por fecha y comisión y se excluyen audiencias y noticias del Jurado." },
+      { fecha: "2026-07-31", cambio: "Entra al índice midiendo las sesiones de ambas comisiones. Con el criterio entonces vigente —sólo slugs numerados— se descartó medir únicamente Disciplina por la escasez de eventos; ese universo fue corregido el 26 de agosto." },
     ],
   },
 
@@ -881,7 +883,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La conversión a equivalente mensual supone un ritmo constante a lo largo del año esperado.",
       "La escala vigente es una decisión propia: las bandas absolutas del documento original quedaron miscalibradas para un régimen de desinflación y se reemplazaron, con el cambio documentado.",
     ],
-    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin dato, el IPC, el IDM y la presión de dolarización renormalizan dentro de la dimensión de estabilidad monetaria.",
+    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin dato utilizable, el IPC y el desequilibrio monetario renormalizan entre sí dentro de la dimensión de estabilidad monetaria.",
     revisiones: "El REM publicado no se revisa: cada mes es un relevamiento nuevo.",
     cambios: [
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, con bandas absolutas sobre el nivel anual." },
@@ -907,9 +909,9 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente A (stock, composición de la liquidez): el M2 transaccional del sector privado se divide por el M3 ampliado —circulante en poder del público más depósitos privados en pesos más depósitos privados en dólares expresados en pesos— y se expresa en porcentaje. Mide qué proporción de la liquidez privada total sigue en pesos de uso transaccional.",
       "El numerador es la variable 197 del BCRA y no una reconstrucción propia, porque la definición del indicador excluye la vista remunerada de personas jurídicas y esa exclusión no se puede replicar sumando circulante, cuentas corrientes y cajas de ahorro: medido sobre la historia disponible, esa suma corre 22,8% por encima de la 197 en promedio y hasta 57% en un mes.",
       "Componente B (flujo, presión compradora de divisas): compra neta de billetes y divisas sin fines específicos del sector privado no financiero, en millones de dólares, con el sector público excluido. Positivo significa más compra neta. NO identifica dinero fuera del sistema financiero: el BCRA estimó que cerca del 80% de esas compras quedó depositado localmente, y comprar divisas y sacarlas del sistema son dos actos distintos.",
-      "Cada componente se convierte en una posición de 0 a 1 interpolando entre los percentiles de su ventana de calibración, con saturación fuera de los extremos. Componente A: 31,62 → 0; 34,48 → 0,25; 38,27 → 0,50; 44,34 → 0,75; 49,96 → 1. Componente B: 1.122 → 0; 1.954 → 0,25; 2.363 → 0,50; 3.644 → 0,75; 6.545 → 1.",
+      "Cada componente se convierte en una posición de 0 a 1 interpolando entre los percentiles de su ventana de calibración, con saturación fuera de los extremos. Componente A: 30,6 → 0; 32,05 → 0,25; 32,83 → 0,50; 34,46 → 0,75; 37,65 → 1. Componente B: 1.122 → 0; 1.954 → 0,25; 2.363 → 0,50; 3.644 → 0,75; 6.545 → 1.",
       "Las dos posiciones se cruzan entre las cuatro esquinas de la matriz, expresadas en tensión de 0 a 100: liquidez transaccional alta y poca compra de divisas da 0; menos pesos transaccionales, sin presión compradora da 58,75; presión compradora alta pese a liquidez transaccional alta da 58,75; menos pesos transaccionales y presión compradora alta da 90.",
-      "Las dos esquinas cruzadas valen lo mismo. La ficha original las había fijado en 40 y 77,5, apoyada en la tesis de que la fuga fuera del sistema es la señal grave; como el componente B no observa fuga sino compra de divisas, esa asimetría se quedó sin fundamento y el dato no pudo reponerlo — contra tres referencias externas cada componente sale con el signo invertido en al menos una. Cuando no se puede determinar un orden, no se codifica uno. Lo que se reparte en partes iguales es la misma severidad total que la ficha les había asignado a las dos juntas (40 más 77,5), así que cambia el orden y no el nivel: 58,75 queda por encima de 45, que es donde la matriz se volvería un promedio liso y un componente sano taparía al otro en su peor valor.",
+      "Las dos esquinas cruzadas valen lo mismo. La ficha original las había fijado en 40 y 77,5, apoyada en una inferencia no observable sobre el destino del dinero; como el componente B sólo observa compra de divisas, esa asimetría se quedó sin fundamento y el dato no pudo reponerlo — contra tres referencias externas cada componente sale con el signo invertido en al menos una. Cuando no se puede determinar un orden, no se codifica uno. Lo que se reparte en partes iguales es la misma severidad total que la ficha les había asignado a las dos juntas (40 más 77,5), así que cambia el orden y no el nivel: 58,75 queda por encima de 45, que es donde la matriz se volvería un promedio liso y un componente sano taparía al otro en su peor valor.",
       "La tensión se traduce al ITCM con anclas explícitas que son su inversión exacta: 0 da 100 y 100 da 0. Las cuatro esquinas caen sobre esa recta, de modo que no hay una segunda escala que se pueda desincronizar de la del cálculo.",
       "Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del ITCM: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su 11% viene de ser el único indicador de su dimensión y no de un juicio sobre su importancia relativa.",
     ],
@@ -923,9 +925,9 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[0, 100], [58.75, 41.25], [90, 10], [100, 0]],
       unidadCorta: "pts de tensión (0–100)",
     },
-    dobleUso: "Comparte fuente con el IDM (los agregados monetarios del BCRA) y con el saldo del mercado de cambios, pero no mide lo mismo que ninguno: el IDM compara el crecimiento real de la oferta amplia de pesos contra el de la demanda transaccional, y este indicador mira el nivel de dolarización de la liquidez y la salida efectiva de divisas. Reemplaza a la presión de dolarización de carteras, que medía la misma fuga desde la misma planilla y quedaba contándola dos veces dentro de la dimensión.",
+    dobleUso: "Comparte insumos monetarios con el IDM y el mismo anexo cambiario que el saldo del mercado de cambios, pero no replica sus cálculos: el IDM compara el crecimiento real de dos agregados en pesos; este indicador cruza el nivel del cociente entre liquidez transaccional y liquidez ampliada con la compra neta de divisas del sector privado no financiero. Reemplaza a la presión de dolarización de carteras, que tomaba por separado el mismo concepto 03 del anexo; retirarla evita que esa compra neta incidiera dos veces dentro de la dimensión.",
     limitaciones: [
-      "La serie arranca en abril de 2025 y no antes. El componente de flujo se puede calcular desde 2003, pero bajo cepo daba prácticamente cero por falta de acceso al dólar, no por confianza: publicarlo hacia atrás haría leer «poca fuga» —es decir, verde— justo en los meses de control de cambios.",
+      "La serie arranca en abril de 2025 y no antes. El componente de flujo se puede calcular desde 2003, pero bajo cepo daba prácticamente cero por falta de acceso al dólar, no por confianza: publicarlo hacia atrás haría leer «baja presión compradora» —es decir, verde— justo en los meses de control de cambios.",
       "El componente A se puede calcular desde enero de 2021 y no antes: el M2 transaccional del sector privado no se publica antes de esa fecha, y reconstruirlo con las series sueltas desplazaría el ratio casi nueve puntos porcentuales — por eso no arranca en 2016, como pedía la ficha original.",
       "La ventana con la que se lo CALIBRA, en cambio, es la misma que la del componente B: desde abril de 2025, la apertura del cepo a personas humanas. Es una distinción que importa. Bajo cepo, un ratio alto de pesos transaccionales no mide confianza en el peso: mide que no había otro lugar donde ponerlos, igual que la compra de divisas daba casi cero por falta de acceso y no por tranquilidad. Calibrar contra 2021-2026 mezclaba los dos regímenes, y las distribuciones casi no se tocan: bajo cepo el ratio corría entre 33,1% y 50,0% con una mediana de 40,3%, y en régimen abierto corre entre 30,6% y 37,7% con una mediana de 32,8% — el máximo del régimen abierto queda por debajo de la mediana del cepo. El efecto era que el componente A quedaba pegado a su piso casi todos los meses y el indicador funcionaba, en los hechos, con uno solo de sus dos componentes.",
       "El componente B tiene sólo quince meses de historia bajo el régimen abierto. Los cortes por percentiles deberán revisarse cuando haya más evidencia posterior a la apertura del cepo.",

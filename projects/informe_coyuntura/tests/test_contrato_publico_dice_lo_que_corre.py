@@ -299,6 +299,64 @@ def test_las_paginas_astro_entran_al_corpus():
     assert any("[slug].astro" in n for n in PAGINAS)
 
 
+def test_el_rem_declara_solo_los_componentes_que_renormalizan_si_falta():
+    """IDM salió del ITCM y la presión de dolarización fue reemplazada.
+
+    Si falta el REM, los únicos pares vigentes que absorben su peso dentro de
+    estabilidad monetaria son IPC y desequilibrio monetario (ADR-0261).
+    """
+    ficha = _capas("rem_ipc_12m")["fichas.ts"]
+    pares_vigentes = (
+        set(itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]["indicadores"])
+        - {"rem_ipc_12m"}
+    )
+    assert pares_vigentes == {"ipc_total", "desequilibrio_monetario"}, (
+        "cambió la composición de estabilidad monetaria: actualizá también la "
+        "política de faltantes del REM")
+    m = re.search(r'faltantes:\s*"([^"]+)"', ficha)
+    assert m, "la ficha del REM no declara qué hace ante faltantes"
+    texto = m.group(1).lower()
+    assert "ipc" in texto and "desequilibrio monetario" in texto
+    assert "idm" not in texto and "presión de dolarización" not in texto, (
+        "la ficha del REM conserva componentes que ya no integran estabilidad monetaria")
+
+
+def test_el_desequilibrio_no_reintroduce_constructos_retirados_en_campos_activos():
+    """La crónica puede citar el texto viejo; la definición vigente, no.
+
+    Estas cuatro expresiones fueron el residuo exacto encontrado por la
+    reverificación. `_afirma` excluye sólo las entradas literales de `cambios:`.
+    """
+    ficha = _capas("desequilibrio_monetario")["fichas.ts"]
+    prohibidas = ("demanda transaccional", "salida efectiva", "misma fuga", "poca fuga")
+    malos = []
+    for linea in ficha.splitlines():
+        for frase in prohibidas:
+            if _afirma(linea, frase, ()):
+                malos.append(f"«{frase}»: {linea.strip()[:120]}")
+    assert not malos, (
+        "la ficha vigente vuelve a interpretar agregados o compras de divisas "
+        "como constructos que no observa:\n  " + "\n  ".join(malos))
+
+
+def test_la_ficha_del_desequilibrio_publica_los_cortes_vigentes_de_a():
+    """La ventana cambió al régimen abierto; sus percentiles también."""
+    import desequilibrio_monetario as dm
+
+    ficha = _capas("desequilibrio_monetario")["fichas.ts"]
+    m = re.search(r'"Cada componente se convierte.*?Componente A:(.*?)Componente B:',
+                  ficha)
+    assert m, "no se encontró la declaración de cortes del componente A"
+    declarados = m.group(1)
+    for corte in dm.CORTES_A:
+        literal = str(corte).replace(".", ",")
+        assert literal in declarados, (
+            f"la ficha no publica el corte vigente {literal}; "
+            f"el motor usa {dm.CORTES_A}")
+    for viejo in ("31,62", "34,48", "38,27", "44,34", "49,96"):
+        assert viejo not in declarados, f"la ficha conserva el corte viejo {viejo}"
+
+
 def test_un_indicador_de_contexto_no_tiene_ficha_ni_formula():
     """La regla del proyecto (ADR-0189): si no puntúa, no se muestra — ni en el
     tablero ni en las fichas metodológicas, que salen del mismo snapshot.

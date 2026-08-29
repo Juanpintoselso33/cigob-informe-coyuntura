@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-26
 cinturon: 'politica'
 relacionado: ['0170']
+corregido_por: ['0268']
 cerrado_por: ['0166', '0168']
 ambito: 'cinturón político (ITCP), bloque judicial'
 ---
