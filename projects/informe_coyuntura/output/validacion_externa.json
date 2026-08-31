@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-08-30T03:26:20.420114+00:00",
+    "generated_at": "2026-08-31T03:29:02.485974+00:00",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -912,7 +912,7 @@
         "privatizaciones": 0.828,
         "protocolo_antipiquetes": 0.867,
         "reduccion_estado": 0.755,
-        "reestructuracion_organismos": 0.432
+        "reestructuracion_organismos": 0.431
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.207,
@@ -1052,7 +1052,7 @@
       },
       "reestructuracion_organismos": {
         "apertura_comercial": 0.359,
-        "cepo_mulc": 0.432,
+        "cepo_mulc": 0.431,
         "concesiones_infraestructura": 0.703,
         "desregulacion_normativa": 0.617,
         "fal_modernizacion_laboral": 0.797,
@@ -2565,7 +2565,7 @@
     "2026-05": 2131.0,
     "2026-06": 2087.8,
     "2026-07": 2090.0,
-    "2026-08": 1879.2
+    "2026-08": 1878.5
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {

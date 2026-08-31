@@ -1,8 +1,8 @@
 {
  "_meta": {
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
-  "nuevas_en_la_corrida": 0,
-  "ultima_corrida": "2026-08-30"
+  "nuevas_en_la_corrida": 9,
+  "ultima_corrida": "2026-08-31"
  },
  "pendientes": {
   "425373": {
@@ -130,6 +130,69 @@
    "periodo": "2026-07",
    "titulo": "Resolución 190 / 2026",
    "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428457"
+  },
+  "428578": {
+   "coincidencia": "privatiza",
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08",
+   "titulo": "Resolución 1214 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428578"
+  },
+  "428616": {
+   "coincidencia": "adjudica",
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08",
+   "titulo": "Decreto 709 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428616"
+  },
+  "428664": {
+   "coincidencia": "adjudica",
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08",
+   "titulo": "Resolución GENERAL 1159 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428664"
+  },
+  "428716": {
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Corredores Viales",
+   "periodo": "2026-08",
+   "titulo": "Decreto 718 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428716"
+  },
+  "428747": {
+   "coincidencia": "adjudica",
+   "empresa": "Corredores Viales",
+   "periodo": "2026-08",
+   "titulo": "Resolución 55 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428747"
+  },
+  "428810": {
+   "coincidencia": "pliego",
+   "empresa": "Transener",
+   "periodo": "2026-08",
+   "titulo": "Resolución 202 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428810"
+  },
+  "428996": {
+   "coincidencia": "adjudica",
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08",
+   "titulo": "Resolución 68 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428996"
+  },
+  "429036": {
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08",
+   "titulo": "Resolución 1350 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429036"
+  },
+  "429239": {
+   "coincidencia": "sujeta a privatización",
+   "empresa": "AySA",
+   "periodo": "2026-08",
+   "titulo": "Resolución 1386 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429239"
   }
  },
  "revisadas": {
@@ -1482,6 +1545,461 @@
    "del_proceso": false,
    "empresa": "Enarsa",
    "periodo": "2026-07"
+  },
+  "428487": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428512": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428542": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "periodo": "2026-08"
+  },
+  "428578": {
+   "del_proceso": true,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428582": {
+   "del_proceso": false,
+   "empresa": "YCRT",
+   "periodo": "2026-08"
+  },
+  "428597": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428613": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428616": {
+   "del_proceso": true,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428647": {
+   "del_proceso": false,
+   "empresa": "Corredores Viales",
+   "periodo": "2026-08"
+  },
+  "428664": {
+   "del_proceso": true,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428696": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428706": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428716": {
+   "del_proceso": true,
+   "empresa": "Corredores Viales",
+   "periodo": "2026-08"
+  },
+  "428725": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428728": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "periodo": "2026-08"
+  },
+  "428735": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428747": {
+   "del_proceso": true,
+   "empresa": "Corredores Viales",
+   "periodo": "2026-08"
+  },
+  "428754": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428769": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428792": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428810": {
+   "del_proceso": true,
+   "empresa": "Transener",
+   "periodo": "2026-08"
+  },
+  "428850": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428885": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428894": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "428948": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "periodo": "2026-08"
+  },
+  "428950": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "periodo": "2026-08"
+  },
+  "428995": {
+   "del_proceso": false,
+   "empresa": "Corredores Viales",
+   "periodo": "2026-08"
+  },
+  "428996": {
+   "del_proceso": true,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "429034": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "periodo": "2026-08"
+  },
+  "429036": {
+   "del_proceso": true,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "429042": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "periodo": "2026-08"
+  },
+  "429046": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "429053": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "periodo": "2026-08"
+  },
+  "429089": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "429094": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429095": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429096": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429104": {
+   "del_proceso": false,
+   "empresa": "AySA",
+   "periodo": "2026-08"
+  },
+  "429120": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "429129": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429136": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429145": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429159": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429160": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429161": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429162": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429164": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429167": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429185": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "429191": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429192": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429207": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429208": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429209": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429212": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429214": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429215": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429216": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429217": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429218": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429219": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429221": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429222": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429239": {
+   "del_proceso": true,
+   "empresa": "AySA",
+   "periodo": "2026-08"
+  },
+  "429254": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429265": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429279": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429280": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429301": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429311": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429313": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429315": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429316": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429317": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429318": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429319": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429320": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429323": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429325": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429326": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "periodo": "2026-08"
+  },
+  "429327": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429328": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429330": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429331": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429343": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "429344": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429351": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "periodo": "2026-08"
+  },
+  "429352": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429359": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429363": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429366": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
   }
  }
 }

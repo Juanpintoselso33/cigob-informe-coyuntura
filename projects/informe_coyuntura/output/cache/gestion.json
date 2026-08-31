@@ -1,6 +1,6 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-08-30T03:09:49.714852",
+  "generated_at": "2026-08-31T03:11:57.038555",
   "score": 2.0,
   "itcg": {
     "valor": 79.5,
@@ -146,9 +146,9 @@
       "valor": 6.07,
       "unidad": "% de brecha CCL/mayorista",
       "fuente": "dolarapi.com — CCL y mayorista (el mayorista replica la referencia A3500 del BCRA)",
-      "fecha_dato": "2026-08-30",
+      "fecha_dato": "2026-08-31",
       "desactualizado": false,
-      "obtenido_en": "2026-08-30T03:07:16",
+      "obtenido_en": "2026-08-31T03:08:02",
       "en_indice": true,
       "dimension": "reformas_economicas",
       "puntaje_itcg": 93.6,
@@ -162,7 +162,7 @@
       "fecha_dato": "2026-06-01",
       "desactualizado": false,
       "detalle_txt": "US$ 984 M recaudados por derechos de impo+expo sobre US$ 15.916 M de intercambio (2026-06) · canal aduanero sin fuente pública",
-      "obtenido_en": "2026-08-30T03:07:19",
+      "obtenido_en": "2026-08-31T03:08:08",
       "en_indice": true,
       "dimension": "reformas_economicas",
       "puntaje_itcg": 58.8,
@@ -179,7 +179,7 @@
       "normas_afectadas": 2803,
       "alta_del_mes": 593,
       "detalle_txt": "16.771 artículos modificados o eliminados desde el 10 de diciembre de 2023 (+593 en el mes) · los produjeron 719 normas de desregulación, que modificaron o eliminaron 2803 normas anteriores",
-      "obtenido_en": "2026-08-30T03:07:25",
+      "obtenido_en": "2026-08-31T03:08:15",
       "en_indice": true,
       "dimension": "reformas_economicas",
       "puntaje_itcg": 72.5,
@@ -200,7 +200,7 @@
       "var_planta_civil": -19.0,
       "fecha_desglose_fuerzas": "2026-02",
       "detalle_txt": "184.202 agentes (2026-06) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,58% aparte; el universo completo varía -20,43%",
-      "obtenido_en": "2026-08-30T03:07:27",
+      "obtenido_en": "2026-08-31T03:08:17",
       "en_indice": true,
       "dimension": "reforma_estado",
       "puntaje_itcg": 100.0,
@@ -214,7 +214,7 @@
       "fecha_dato": "2026-06-01",
       "desactualizado": false,
       "detalle_txt": "$ 2,11 bn devengados (2026-06) vs $ 0,44 bn (2023-06) · inflación del período ×6,9",
-      "obtenido_en": "2026-08-30T03:07:29",
+      "obtenido_en": "2026-08-31T03:08:20",
       "en_indice": true,
       "dimension": "reforma_estado",
       "puntaje_itcg": 100.0,
@@ -228,7 +228,7 @@
       "fecha_dato": "2026-06-01",
       "desactualizado": false,
       "detalle_txt": "$ 1,61 bn devengados (2026-06) vs $ 0,34 bn (2023-06) · inflación del período ×6,9",
-      "obtenido_en": "2026-08-30T03:07:30",
+      "obtenido_en": "2026-08-31T03:08:21",
       "en_indice": false,
       "dimension": "reforma_estado",
       "suspendido": {
@@ -242,7 +242,7 @@
       "valor": 24.4,
       "unidad": "% de avance (proxy InfoLeg, caso por caso)",
       "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
-      "fecha_dato": "2026-08-30",
+      "fecha_dato": "2026-08-31",
       "desactualizado": false,
       "conteo_normas": 11,
       "excluidas": [
@@ -296,9 +296,20 @@
           "motivo": "falso_positivo"
         }
       ],
-      "sin_clasificar": [],
-      "detalle_txt": "11 actos de disolución o cierre de organismos desde dic-2023 (45 = plan completo) · 7 excluidos por falso positivo o por revertidos por el Congreso",
-      "obtenido_en": "2026-08-30T03:07:47",
+      "sin_clasificar": [
+        {
+          "id": "429307",
+          "titulo": "Disposición 8 / 2026",
+          "periodo": "2026-08"
+        },
+        {
+          "id": "428999",
+          "titulo": "Resolución 1525 / 2026",
+          "periodo": "2026-08"
+        }
+      ],
+      "detalle_txt": "11 actos de disolución o cierre de organismos desde dic-2023 (45 = plan completo) · 7 excluidos por falso positivo o por revertidos por el Congreso · 2 sin clasificar todavía, no cuentan",
+      "obtenido_en": "2026-08-31T03:08:44",
       "en_indice": false,
       "dimension": "reforma_estado",
       "suspendido": {
@@ -314,7 +325,7 @@
       "valor": 50.0,
       "unidad": "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
       "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
-      "fecha_dato": "2026-08-30",
+      "fecha_dato": "2026-08-31",
       "desactualizado": false,
       "actos": [
         {
@@ -358,7 +369,7 @@
       "fci_cese_registrados": 0,
       "menciones_bo": 4,
       "detalle_txt": "2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 4 menciones del FAL en el BO desde mar-2026",
-      "obtenido_en": "2026-08-30T03:07:51",
+      "obtenido_en": "2026-08-31T03:08:57",
       "en_indice": true,
       "dimension": "reforma_laboral",
       "puntaje_itcg": 55.0,
@@ -373,7 +384,7 @@
       "desactualizado": false,
       "juicios_12m": 127363,
       "detalle_txt": "127.363 juicios en 12m (hasta 2026-05) vs 124.767 previos",
-      "obtenido_en": "2026-08-30T03:07:51",
+      "obtenido_en": "2026-08-31T03:08:58",
       "en_indice": true,
       "dimension": "reforma_laboral",
       "puntaje_itcg": 60.8,
@@ -599,10 +610,73 @@
           "periodo": "2026-07",
           "titulo": "Resolución 190 / 2026",
           "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428457"
+        },
+        "429239": {
+          "empresa": "AySA",
+          "periodo": "2026-08",
+          "titulo": "Resolución 1386 / 2026",
+          "coincidencia": "sujeta a privatización",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429239"
+        },
+        "428810": {
+          "empresa": "Transener",
+          "periodo": "2026-08",
+          "titulo": "Resolución 202 / 2026",
+          "coincidencia": "pliego",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428810"
+        },
+        "428716": {
+          "empresa": "Corredores Viales",
+          "periodo": "2026-08",
+          "titulo": "Decreto 718 / 2026",
+          "coincidencia": "sujeta a privatización",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428716"
+        },
+        "428747": {
+          "empresa": "Corredores Viales",
+          "periodo": "2026-08",
+          "titulo": "Resolución 55 / 2026",
+          "coincidencia": "adjudica",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428747"
+        },
+        "429036": {
+          "empresa": "Belgrano Cargas",
+          "periodo": "2026-08",
+          "titulo": "Resolución 1350 / 2026",
+          "coincidencia": "sujeta a privatización",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429036"
+        },
+        "428996": {
+          "empresa": "Belgrano Cargas",
+          "periodo": "2026-08",
+          "titulo": "Resolución 68 / 2026",
+          "coincidencia": "adjudica",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428996"
+        },
+        "428616": {
+          "empresa": "Belgrano Cargas",
+          "periodo": "2026-08",
+          "titulo": "Decreto 709 / 2026",
+          "coincidencia": "adjudica",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428616"
+        },
+        "428664": {
+          "empresa": "Belgrano Cargas",
+          "periodo": "2026-08",
+          "titulo": "Resolución GENERAL 1159 / 2026",
+          "coincidencia": "adjudica",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428664"
+        },
+        "428578": {
+          "empresa": "Belgrano Cargas",
+          "periodo": "2026-08",
+          "titulo": "Resolución 1214 / 2026",
+          "coincidencia": "privatiza",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428578"
         }
       },
-      "detalle_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener · 18 norma(s) nueva(s) del Boletín Oficial sin revisar",
-      "obtenido_en": "2026-08-30T03:08:05",
+      "detalle_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener · 27 norma(s) nueva(s) del Boletín Oficial sin revisar",
+      "obtenido_en": "2026-08-31T03:10:41",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
       "puntaje_itcg": 71.4,
@@ -613,7 +687,7 @@
       "valor": 23.7,
       "unidad": "% de inversión aprobada sobre el pipeline",
       "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-      "fecha_dato": "2026-08-30",
+      "fecha_dato": "2026-08-31",
       "desactualizado": false,
       "proyectos_aprobados": 22,
       "inversion_aprobada_musd": 47073,
@@ -621,7 +695,7 @@
       "inversion_evaluacion_musd": 151936,
       "nota_denominador": null,
       "detalle_txt": "22 proyectos aprobados (US$ 47.073M) / 22 en evaluación (US$ 151.936M) → 23,7% de la inversión total ya aprobada",
-      "obtenido_en": "2026-08-30T03:08:06",
+      "obtenido_en": "2026-08-31T03:10:41",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
       "puntaje_itcg": 50.3,
@@ -632,7 +706,7 @@
       "valor": 100.0,
       "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
       "fuente": "CONTRAT.AR (UOC 504) + Boletín Oficial (InfoLeg) + página oficial RFC",
-      "fecha_dato": "2026-08-30",
+      "fecha_dato": "2026-08-31",
       "desactualizado": false,
       "km_adjudicados": 9091,
       "km_totales": 9091,
@@ -686,7 +760,7 @@
         "etapa_iii": 100.0
       },
       "detalle_txt": "9.091 de 9.091 km adjudicados · I: adjudicada (CONTRAT.AR) · II-B: adjudicada por Resolución 1149 / 2026 (2026-07-28) · II: adjudicada (CONTRAT.AR) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24) · CONTRAT.AR todavía no refleja la adjudicación de II-B, III, que constan en el Boletín Oficial",
-      "obtenido_en": "2026-08-30T03:08:14",
+      "obtenido_en": "2026-08-31T03:10:50",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
       "puntaje_itcg": 100.0,
@@ -697,7 +771,7 @@
       "valor": 100.0,
       "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
       "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-      "fecha_dato": "2026-08-30",
+      "fecha_dato": "2026-08-31",
       "desactualizado": false,
       "ejercicio": 2026,
       "componentes": {
@@ -706,7 +780,7 @@
         "tdps_2023": 98.3
       },
       "detalle_txt": "Devengado 2026: $ 558.060M directo a personas (5.1.4) / $ 558.060M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)",
-      "obtenido_en": "2026-08-30T03:09:00",
+      "obtenido_en": "2026-08-31T03:11:33",
       "en_indice": true,
       "dimension": "social_orden",
       "puntaje_itcg": 100.0,
@@ -724,7 +798,7 @@
         "caba_2025": 240
       },
       "detalle_txt": "240 cortes en CABA en 2025 vs 931 en 2023 (Diagnóstico Político; definición de piquete = Res. 943/23)",
-      "obtenido_en": "2026-08-30T03:09:30",
+      "obtenido_en": "2026-08-31T03:11:34",
       "en_indice": true,
       "dimension": "social_orden",
       "puntaje_itcg": 99.0,
@@ -741,7 +815,7 @@
       "prepagas_inscriptas": 59,
       "usuarios_prepagas": 8369312,
       "detalle_txt": "2.660.767 beneficiarios derivados directo a 59 prepagas inscriptas (03/2026) / 8.369.312 usuarios de prepagas (RNEMP 01/2026); canal inexistente pre-DNU 70/23",
-      "obtenido_en": "2026-08-30T03:09:31",
+      "obtenido_en": "2026-08-31T03:11:38",
       "en_indice": true,
       "dimension": "social_orden",
       "puntaje_itcg": 54.8,
@@ -752,11 +826,11 @@
       "valor": 0,
       "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
       "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
-      "fecha_dato": "2026-08-30",
+      "fecha_dato": "2026-08-31",
       "desactualizado": false,
-      "dias_muestreados_mes": 30,
-      "detalle_txt": "0 alertas en 30 días muestreados de 2026-08 · acumula desde 2026-07-02 (sin baseline 2023)",
-      "obtenido_en": "2026-08-30T03:09:34",
+      "dias_muestreados_mes": 31,
+      "detalle_txt": "0 alertas en 31 días muestreados de 2026-08 · acumula desde 2026-07-02 (sin baseline 2023)",
+      "obtenido_en": "2026-08-31T03:11:41",
       "en_indice": false
     },
     "protestas_caba": {
@@ -768,7 +842,7 @@
       "eventos_2023": 240,
       "var_vs_2023": 15.8,
       "detalle_txt": "278 eventos en 12m (hasta 2026-07) vs 240 en 2023 (+15,8%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
-      "obtenido_en": "2026-08-30T03:09:49",
+      "obtenido_en": "2026-08-31T03:11:57",
       "en_indice": false
     }
   }
