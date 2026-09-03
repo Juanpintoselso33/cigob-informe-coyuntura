@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from aviso_slack import analizar
+from aviso_slack import analizar, causas, colectores, resumen_pytest
 
 # Log real de la corrida del 25-ago-2026, recortado.
 SAIJ = ("[WARN] politica.judicializacion: 403 Client Error: Forbidden for url: "
@@ -58,3 +58,69 @@ def test_otro_error_de_red_tampoco_avisa():
 def test_agotar_el_presupuesto_avisa():
     ms = analizar("##[warning]series agotó su presupuesto de 25m — se sigue con caché\n")
     assert len(ms) == 1 and "presupuesto" in ms[0]
+
+
+# ── Lo que el aviso tiene que DECIR, no sólo lo que tiene que callar ─────────
+#
+# Hasta septiembre de 2026 el aviso nombraba el paso ("Tests de reconciliación")
+# y nada más: para saber qué había pasado había que abrir el run igual. Peor,
+# las tres noches del 1 al 3-sep mandaron el mismo texto y se leían como tres
+# problemas cuando era uno solo — un mes escrito a mano adentro de un test.
+
+CORRIDA_CAIDA = (
+    "::notice::macro exit=0\n"
+    "::notice::politica exit=1\n"
+    "  [FALLA] G3 gestion/concesiones_infraestructura: card 28.7 ≠ serie 100.0\n"
+    "FAILED tests/test_piso_cobertura.py::test_la_ausencia_de_componentes"
+    " - AssertionError: sólo 24 de 32 meses se desvían más de 3 puntos\n"
+    "1 failed, 3211 passed, 4 skipped in 216.41s\n"
+    "##[error]Process completed with exit code 1.\n"
+)
+
+
+def test_el_aviso_nombra_la_prueba_que_fallo_y_su_motivo():
+    """Lo mínimo para no tener que abrir el run."""
+    texto = "\n".join(causas(CORRIDA_CAIDA))
+    assert "test_la_ausencia_de_componentes" in texto
+    assert "24 de 32 meses" in texto, "sin el motivo, el nombre del test no alcanza"
+
+
+def test_el_aviso_nombra_la_falla_del_gate():
+    assert any("G3 gestion/concesiones" in c for c in causas(CORRIDA_CAIDA))
+
+
+def test_no_repite_el_epitafio_generico_de_github():
+    """«Process completed with exit code 1» es «falló porque falló»."""
+    assert not any("exit code 1" in c for c in causas(CORRIDA_CAIDA))
+
+
+def test_cuenta_cuantas_pruebas_fallaron():
+    assert resumen_pytest(CORRIDA_CAIDA) == "1 de 3212 pruebas"
+
+
+def test_un_log_ilegible_no_inventa_una_causa():
+    """Prefiere decir que no sabe: el aviso nunca es la única fuente."""
+    assert causas("basura sin formato\n") == []
+
+
+# ── La forma cruda de los comandos de workflow ──────────────────────────────
+#
+# `::notice::` es lo que el script ESCRIBE y lo que el `tee` guarda en el
+# archivo que este parser lee; `##[notice]` es como GitHub lo RENDERIZA en el
+# log descargado. Los tests de arriba usaban sólo la segunda forma, así que los
+# avisos de "fuente caída entera" y "presupuesto agotado" pasaban en verde
+# mientras en producción no matcheaban NUNCA. Se prueban las dos.
+
+def test_la_fuente_caida_entera_grita_en_la_forma_que_escribe_el_script():
+    assert analizar("::notice::gestion exit=2\n"), (
+        "el archivo que se lee trae `::notice::`, no `##[notice]`: con el parser "
+        "mirando sólo la forma renderizada este aviso nunca se disparó")
+
+
+def test_el_presupuesto_agotado_grita_en_la_forma_que_escribe_el_script():
+    assert analizar("::warning::series agotó su presupuesto de 25m\n")
+
+
+def test_los_colectores_se_leen_en_las_dos_formas():
+    assert colectores("::notice::macro exit=0\n##[notice]politica exit=1\n") == [
+        ("macro", 0), ("politica", 1)]

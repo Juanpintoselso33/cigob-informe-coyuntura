@@ -7,7 +7,7 @@ cinturon: 'transversal'
 indice: 'ITCG'
 archivos: ['scripts/descargar_series.py', 'output/series/validacion.csv']
 continua: ['0173']
-relacionado: ['0167', '0242']
+relacionado: ['0167', '0242', '0270']
 continuado_por: ['0176']
 ambito: 'Validación externa · serie ICG UTDT'
 origen: 'El aviso de series sin filas previas que agregó ADR-0173 destapó que fetch_icg_serie levantaba NameError en cada corrida'

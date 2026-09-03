@@ -164,11 +164,20 @@ jobs:
       #     y sirve caché; una card demorada con el fetch sano lo tiene en
       #     false, y está bien. El gate sólo LEE el snapshot y corre después
       #     de publicar.py: no marca nada.
+      # Los dos gates duplican su salida a un archivo por el mismo motivo que
+      # los colectores: para que el aviso pueda decir QUÉ falló y no sólo en
+      # qué paso. Sin esto el aviso nombraba el paso y había que abrir el run
+      # igual, que es el trabajo que el aviso venía a evitar — y tres noches
+      # con el mismo texto se leían como tres fallas distintas.
       - name: Gate de calidad del snapshot (G1-G3, G6)
-        run: python scripts/gate_calidad.py
+        run: |
+          set -o pipefail
+          python scripts/gate_calidad.py 2>&1 | tee -a "$RUNNER_TEMP/gates.log"
 
       - name: Tests de reconciliación y robustez (G4-G5)
-        run: python -m pytest tests -q
+        run: |
+          set -o pipefail
+          python -m pytest tests -q 2>&1 | tee -a "$RUNNER_TEMP/gates.log"
 
       # El Monitor en #informe-de-coyuntura: un mensaje fijo que se actualiza en
       # su lugar (chat.update NO notifica) y uno nuevo SÓLO si algo se movió de
@@ -327,26 +336,46 @@ jobs:
           pasos=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/jobs" \
                     --jq '.jobs[].steps[] | select(.conclusion=="failure") | "- " + .name' 2>/dev/null || true)
           [ -z "$pasos" ] && pasos="- (no se pudo determinar el paso)"
-          # printf y no un string multilínea: dentro del bloque YAML las líneas
-          # de continuación arrastran la indentación y markdown las renderiza
-          # como bloque de código.
-          cuerpo=$(printf 'La corrida del %s falló.\n\n**Pasos que fallaron:**\n%s\n\n%s\n\nEl snapshot **no se publicó**: producción sigue sirviendo el anterior.\nEste issue se cierra solo cuando una corrida vuelva a terminar bien.\n' \
-                     "$(date -u '+%Y-%m-%d %H:%M UTC')" "$pasos" "$RUN_URL")
+
           gh label create pipeline-caido --color B60205 \
             --description "El pipeline nocturno terminó en falla" 2>/dev/null || true
           n=$(gh issue list --state open --label pipeline-caido --limit 1 \
                 --json number --jq '.[0].number // empty')
+
+          # Cuántas noches seguidas lleva. El issue acumula un comentario por
+          # corrida caída, así que la cuenta ya está ahí. Decirlo importa: tres
+          # avisos idénticos se leen como tres problemas y son uno solo.
+          noches=1
           if [ -n "$n" ]; then
-            gh issue comment "$n" --body "$cuerpo"
+            previos=$(gh issue view "$n" --json comments --jq '.comments | length' 2>/dev/null || echo 0)
+            noches=$((previos + 2))
+          fi
+
+          # Qué está viendo la gente mientras tanto: el snapshot que quedó
+          # commiteado, que es el que Vercel sirve.
+          sirviendo=$(git show HEAD:projects/informe_coyuntura/web/src/data/informe.json 2>/dev/null \
+                      | python -c "import json,sys; print(json.load(sys.stdin).get('generated_at',''))" 2>/dev/null || true)
+
+          # El cuerpo del issue y el mensaje de Slack salen del MISMO parser:
+          # dos formatos, un solo lugar que sabe leer un log de corrida.
+          python scripts/aviso_slack.py reporte --pasos "$pasos" \
+            --gates "$RUNNER_TEMP/gates.log" --log "$RUNNER_TEMP/colectores.log" \
+            --noches "$noches" --sirviendo "$sirviendo" > "$RUNNER_TEMP/cuerpo.md" || \
+            printf 'La corrida falló y no se pudo armar el diagnóstico.\n\n%s\n' "$RUN_URL" > "$RUNNER_TEMP/cuerpo.md"
+
+          if [ -n "$n" ]; then
+            gh issue comment "$n" --body-file "$RUNNER_TEMP/cuerpo.md"
           else
             gh issue create --title "El pipeline nocturno está fallando" \
-              --label pipeline-caido --body "$cuerpo"
+              --label pipeline-caido --body-file "$RUNNER_TEMP/cuerpo.md"
           fi
           # El issue es el registro; Slack es la notificación. Sin esto el
           # aviso se abre y se cierra a las 3 de la mañana sin que nadie lo
           # vea: pasó del 22 al 24-ago-2026, tres noches, con la web sirviendo
           # datos del 21.
-          python scripts/aviso_slack.py fallo --pasos "$pasos" || true
+          python scripts/aviso_slack.py fallo --pasos "$pasos" \
+            --gates "$RUNNER_TEMP/gates.log" --log "$RUNNER_TEMP/colectores.log" \
+            --noches "$noches" --sirviendo "$sirviendo" || true
 
       # El aviso se apaga solo. Un issue que hay que cerrar a mano se vuelve
       # ruido y deja de leerse, que es la forma lenta de volver al silencio.

@@ -352,3 +352,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0259](0259-un-suspendido-es-archivo-no-componente.md) | Un indicador suspendido es archivo, no componente |  | vigente |
 | [0260](0260-las-fichas-generadas-las-regenera-el-pipeline.md) | Las fichas generadas las regenera el pipeline | `consumo_supermercados`, `desequilibrio_monetario` | vigente |
 | [0266](0266-lo-que-el-indice-declara-fuera-no-se-publica.md) | Lo que el índice declara fuera no se publica |  | vigente |
+| [0270](0270-el-aviso-dice-que-fallo-no-en-que-paso.md) | El aviso dice qué falló, no en qué paso falló |  | vigente |
