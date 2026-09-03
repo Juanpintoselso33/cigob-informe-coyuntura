@@ -86,6 +86,29 @@ Se suman tres datos que antes no estaban y cambian la lectura:
 Y los parsers pasan a aceptar **las dos formas** de los comandos de workflow,
 siempre.
 
+### Lo que apareció al revisarlo, y es lo más grave
+
+**`if: failure()` no cubre un job cancelado**, y GitHub cancela el job cuando se
+come el `timeout-minutes`. La corrida del 26-ago-2026 murió así a los 45m20s:
+figura como `cancelled`, y no abrió issue ni mandó nada a Slack. Un tope que se
+toca es exactamente cuando hay que avisar. Pasa a `failure() || cancelled()`,
+con su propio texto: un job cancelado no suele dejar causa en el log, y lo que
+importa es dónde se quedó.
+
+Otros tres, del mismo tipo —el aviso afirmando algo que no verificó—:
+
+- **Qué está sirviendo producción se leía de `HEAD`.** Si el commit sale bien y
+  los tres `push` fallan, `HEAD` es justamente el snapshot que producción NO
+  recibió. Se lee de `origin/main`.
+- **La racha contaba todos los comentarios del issue**, incluidos los humanos.
+  Cuenta sólo los del bot. Y se dice «corrida caída», no «noche»: un reintento a
+  mano el mismo día también suma, y llamarlo noche sería mentir por redondeo.
+- **Un pytest que ni arranca daba diagnóstico vacío.** Un `ModuleNotFoundError`
+  rompe la COLECCIÓN: no hay `FAILED` ni `N failed`, hay `ERROR` y `N errors`.
+  Es la forma exacta del crash de pypdf del 26-jul-2026 (ADR-0133). Se
+  reconocen los dos, y si no se reconoce nada se pega el final del log en vez
+  de decir «no se pudo leer la causa».
+
 ### Consecuencias
 
 - El aviso alcanza para decidir sin abrir el run.

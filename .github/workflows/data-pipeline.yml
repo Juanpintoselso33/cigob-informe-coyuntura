@@ -321,14 +321,19 @@ jobs:
       # `continue-on-error` es deliberado: el aviso NUNCA puede cambiar el
       # resultado del job ni tapar la falla real. Si GitHub no deja abrir el
       # issue, se pierde el aviso, no el diagnóstico.
+      # `failure()` NO cubre un job cancelado, y GitHub cancela el job cuando
+      # se come el `timeout-minutes`. El 26-ago-2026 la corrida murió así a los
+      # 45m20s: sin issue, sin Slack, sin nada. Un tope que se toca es
+      # exactamente cuando hay que avisar.
       - name: Avisar que la corrida falló
-        if: failure()
+        if: ${{ failure() || cancelled() }}
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CANAL_ALERTAS: ${{ secrets.SLACK_CANAL_ALERTAS }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ESTADO: ${{ job.status }}
         run: |
           # Los pasos ya corridos tienen conclusión aunque el job siga abierto,
           # así que se puede nombrar el culpable en el aviso mismo. Sin esto el
@@ -342,25 +347,32 @@ jobs:
           n=$(gh issue list --state open --label pipeline-caido --limit 1 \
                 --json number --jq '.[0].number // empty')
 
-          # Cuántas noches seguidas lleva. El issue acumula un comentario por
-          # corrida caída, así que la cuenta ya está ahí. Decirlo importa: tres
-          # avisos idénticos se leen como tres problemas y son uno solo.
-          noches=1
+          # Cuántas corridas caídas seguidas lleva el aviso abierto: el issue
+          # acumula un comentario por corrida, así que la cuenta ya está ahí.
+          # Decirlo importa — tres avisos idénticos se leen como tres problemas
+          # y son uno solo. Se cuentan SÓLO los comentarios del bot: uno humano
+          # no es una corrida caída y inflaría la racha.
+          fallas=1
           if [ -n "$n" ]; then
-            previos=$(gh issue view "$n" --json comments --jq '.comments | length' 2>/dev/null || echo 0)
-            noches=$((previos + 2))
+            previos=$(gh issue view "$n" --json comments \
+                        --jq '[.comments[] | select(.author.login == "github-actions")] | length' \
+                        2>/dev/null || echo 0)
+            fallas=$((previos + 2))
           fi
 
-          # Qué está viendo la gente mientras tanto: el snapshot que quedó
-          # commiteado, que es el que Vercel sirve.
-          sirviendo=$(git show HEAD:projects/informe_coyuntura/web/src/data/informe.json 2>/dev/null \
+          # Qué está viendo la gente. Se lee de `origin/main`, NO de HEAD: si el
+          # commit salió bien y los tres push fallaron, HEAD es justamente el
+          # snapshot que producción NO recibió, y el aviso afirmaría que se está
+          # sirviendo algo que nunca llegó.
+          git fetch -q origin main 2>/dev/null || true
+          sirviendo=$(git show origin/main:projects/informe_coyuntura/web/src/data/informe.json 2>/dev/null \
                       | python -c "import json,sys; print(json.load(sys.stdin).get('generated_at',''))" 2>/dev/null || true)
 
           # El cuerpo del issue y el mensaje de Slack salen del MISMO parser:
           # dos formatos, un solo lugar que sabe leer un log de corrida.
           python scripts/aviso_slack.py reporte --pasos "$pasos" \
             --gates "$RUNNER_TEMP/gates.log" --log "$RUNNER_TEMP/colectores.log" \
-            --noches "$noches" --sirviendo "$sirviendo" > "$RUNNER_TEMP/cuerpo.md" || \
+            --fallas "$fallas" --sirviendo "$sirviendo" --estado "$ESTADO" > "$RUNNER_TEMP/cuerpo.md" || \
             printf 'La corrida falló y no se pudo armar el diagnóstico.\n\n%s\n' "$RUN_URL" > "$RUNNER_TEMP/cuerpo.md"
 
           if [ -n "$n" ]; then
@@ -375,7 +387,7 @@ jobs:
           # datos del 21.
           python scripts/aviso_slack.py fallo --pasos "$pasos" \
             --gates "$RUNNER_TEMP/gates.log" --log "$RUNNER_TEMP/colectores.log" \
-            --noches "$noches" --sirviendo "$sirviendo" || true
+            --fallas "$fallas" --sirviendo "$sirviendo" --estado "$ESTADO" || true
 
       # El aviso se apaga solo. Un issue que hay que cerrar a mano se vuelve
       # ruido y deja de leerse, que es la forma lenta de volver al silencio.

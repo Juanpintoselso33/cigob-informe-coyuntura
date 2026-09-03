@@ -52,8 +52,13 @@ DEGRADACION_ESPERADA = {"judicializacion"}
 # los avisos de "fuente caída entera" y "presupuesto agotado" nunca se
 # dispararon en producción, con los tests en verde porque los alimentaban con
 # la forma renderizada. Se aceptan las dos, siempre.
-CMD = r"(?:::|##\[)"
-FIN = r"(?:::|\])"
+def _cmd(nombre: str) -> str:
+    """Las DOS formas del mismo comando de workflow, cada una entera.
+
+    Definir apertura y cierre por separado matchea también `::error]` y
+    `##[error::`, que no existen. Acá se alternan comandos completos.
+    """
+    return rf"(?:::{nombre}::|\#\#\[{nombre}\])"
 
 RUIDO_DE_RED = re.compile(
     r"\b\d{3}\s+(client|server)\s+error|timeout|timed out|connection|"
@@ -73,10 +78,15 @@ RUIDO_DE_RED = re.compile(
 
 FALLA_PYTEST = re.compile(r"^FAILED\s+(\S+?)(?:\s+-\s+(.*))?$", re.M)
 RESUMEN_PYTEST = re.compile(r"^(\d+) failed,\s*(\d+) passed", re.M)
+# Un ModuleNotFoundError rompe pytest en la COLECCIÓN: no hay ni un `FAILED` ni
+# un `N failed`, hay `ERROR tests/x.py` y `N errors`. Es la forma en que un
+# crash de import se veía como un diagnóstico vacío.
+ERROR_PYTEST = re.compile(r"^ERROR\s+(\S+?)(?:\s+-\s+(.*))?$", re.M)
+RESUMEN_ERRORES = re.compile(r"^(\d+) errors?\b", re.M)
 FALLA_GATE = re.compile(r"^\s*\[FALLA\]\s+(.+)$", re.M)
-ERROR_WORKFLOW = re.compile(rf"^{CMD}error{FIN}(.+)$", re.M)
+ERROR_WORKFLOW = re.compile(rf"^{_cmd('error')}(.+)$", re.M)
 RUIDO_GENERICO = re.compile(r"Process completed with exit code|^No se pudo publicar|^causa queda", re.I)
-EXIT_COLECTOR = re.compile(rf"^{CMD}notice{FIN}(\w+) exit=(\d+)$", re.M)
+EXIT_COLECTOR = re.compile(rf"^{_cmd('notice')}(\w+) exit=(\d+)$", re.M)
 
 
 def _leer(ruta: str) -> str:
@@ -97,9 +107,15 @@ def causas(log: str) -> list[str]:
     for m in FALLA_GATE.finditer(log):
         fuera.append(f"Gate de calidad · {m.group(1).strip()}")
 
-    for m in FALLA_PYTEST.finditer(log):
-        prueba, motivo = m.group(1), (m.group(2) or "").strip()
-        fuera.append(f"{prueba}" + (f"\n    {motivo[:300]}" if motivo else ""))
+    for patron in (FALLA_PYTEST, ERROR_PYTEST):
+        for m in patron.finditer(log):
+            prueba, motivo = m.group(1), (m.group(2) or "").strip()
+            if not motivo:
+                # En un error de colección el motivo va en una línea `E   ...`
+                # aparte, no pegado al nombre del archivo.
+                em = re.search(r"^E\s+(\w*Error.*)$", log, re.M)
+                motivo = em.group(1).strip() if em else ""
+            fuera.append(f"{prueba}" + (f"\n    {motivo[:300]}" if motivo else ""))
 
     for m in ERROR_WORKFLOW.finditer(log):
         texto = m.group(1).strip()
@@ -115,7 +131,20 @@ def causas(log: str) -> list[str]:
 
 def resumen_pytest(log: str) -> str:
     m = RESUMEN_PYTEST.search(log)
-    return f"{m.group(1)} de {int(m.group(1)) + int(m.group(2))} pruebas" if m else ""
+    if m:
+        return f"{m.group(1)} de {int(m.group(1)) + int(m.group(2))} pruebas"
+    e = RESUMEN_ERRORES.search(log)
+    return f"{e.group(1)} módulo(s) ni siquiera se pudieron cargar" if e else ""
+
+
+def cola(log: str, n: int = 6) -> list[str]:
+    """Las últimas líneas con contenido, para cuando no se reconoce nada.
+
+    Es peor decir «no se pudo leer la causa» y nada más: el final del log casi
+    siempre tiene el traceback, aunque no tenga un formato conocido.
+    """
+    lineas = [l.strip() for l in log.splitlines() if l.strip()]
+    return lineas[-n:]
 
 
 def colectores(log: str) -> list[tuple[str, int]]:
@@ -130,10 +159,21 @@ def _linea_colectores(cols: list[tuple[str, int]]) -> str:
     return " · ".join(f"{n} {glifo.get(c, f'exit={c}')}" for n, c in cols)
 
 
-def _noches(n: int) -> str:
+def _racha(n: int) -> str:
+    """Cuántas corridas caídas seguidas lleva el aviso ABIERTO.
+
+    Se dice «corrida» y no «noche» a propósito: un reintento a mano el mismo día
+    también suma, y llamarlo noche sería mentir por redondeo.
+    """
     if n <= 1:
         return ""
-    return f" *({n}ª noche seguida — es la misma falla, no {n} fallas)*"
+    return f" *(corrida caída nº {n} desde que se abrió el aviso — puede ser la misma causa)*"
+
+
+CANCELADO = (
+    "El job fue *cancelado*, no falló: o se comió el tope de 45 minutos, o lo "
+    "cortó alguien. Suele no dejar causa en el log — mirá dónde se quedó."
+)
 
 
 def publicar(texto: str) -> int:
@@ -160,7 +200,7 @@ def analizar(log: str) -> list[str]:
     """Devuelve los motivos por los que hay que avisar. Vacío = todo esperado."""
     motivos: list[str] = []
 
-    for m in re.finditer(rf"^{CMD}notice{FIN}(\w+) exit=(\d+)", log, re.M):
+    for m in re.finditer(rf"^{_cmd('notice')}(\w+) exit=(\d+)", log, re.M):
         script, code = m.group(1), int(m.group(2))
         if code == 2:
             motivos.append(f"`{script}` no pudo traer *nada* fresco (exit=2): la fuente está caída entera.")
@@ -174,13 +214,13 @@ def analizar(log: str) -> list[str]:
             f"    Eso se reporta como «fuente caída» y congela la serie. Casi seguro es del código."
         )
 
-    for m in re.finditer(rf"^{CMD}warning{FIN}(\w+) agotó su presupuesto", log, re.M):
+    for m in re.finditer(rf"^{_cmd('warning')}(\w+) agotó su presupuesto", log, re.M):
         motivos.append(f"`{m.group(1)}` agotó su presupuesto de tiempo y siguió con caché.")
 
     return motivos
 
 
-def _reporte(a, pasos, motivos, cols, resumen) -> int:
+def _reporte(a, pasos, motivos, cols, resumen, fin) -> int:
     """El cuerpo del issue: el mismo diagnóstico, más largo y en markdown.
 
     Acá sí conviene ser verboso — el issue es el registro y se lee después,
@@ -188,10 +228,14 @@ def _reporte(a, pasos, motivos, cols, resumen) -> int:
     """
     from datetime import datetime, timezone
     out = [f"La corrida del {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC} falló."]
-    if a.noches > 1:
-        out.append(f"\n> **{a.noches}ª noche seguida.** Si el motivo de abajo es el "
-                   f"mismo que el del comentario anterior, es UNA falla que sigue "
-                   f"abierta, no {a.noches} fallas distintas.")
+    if a.estado == "cancelled":
+        out.append("\n> **El job fue cancelado, no falló.** O se comió el tope de 45 "
+                   "minutos, o lo cortó alguien. Un job cancelado suele no dejar causa "
+                   "en el log: lo que importa es dónde se quedó.")
+    if a.fallas > 1:
+        out.append(f"\n> **Corrida caída nº {a.fallas}** desde que se abrió este aviso. "
+                   f"Si el motivo de abajo es el mismo que el del comentario anterior, "
+                   f"es UNA falla que sigue abierta, no {a.fallas} fallas distintas.")
 
     out.append("\n## Pasos que fallaron\n")
     out += [f"- {p_}" for p_ in pasos] or ["- (no se pudo determinar el paso)"]
@@ -203,6 +247,9 @@ def _reporte(a, pasos, motivos, cols, resumen) -> int:
             out.append(f"- `{cabeza}`")
             if cola.strip():
                 out.append(f"  > {cola.strip()}")
+    elif fin:
+        out.append("No se reconoció una causa conocida. El final del log:\n")
+        out.append("```\n" + "\n".join(fin) + "\n```")
     else:
         out.append("_No se pudo leer la causa del log. Está en el run._")
     if resumen:
@@ -234,7 +281,9 @@ def main() -> int:
     p.add_argument("--pasos", default="")
     p.add_argument("--log", default="")
     p.add_argument("--gates", default="", help="log del gate y de pytest")
-    p.add_argument("--noches", type=int, default=1)
+    p.add_argument("--fallas", type=int, default=1,
+                   help="cuántas corridas caídas seguidas lleva el aviso abierto")
+    p.add_argument("--estado", default="failure", help="job.status: failure | cancelled")
     p.add_argument("--sirviendo", default="", help="generated_at de lo que está en producción")
     a = p.parse_args()
 
@@ -247,9 +296,15 @@ def main() -> int:
         resumen = resumen_pytest(texto_gates)
 
         if a.modo == "reporte":
-            return _reporte(a, pasos, motivos, cols, resumen)
+            return _reporte(a, pasos, motivos, cols, resumen,
+                            cola(texto_gates or texto_cols))
 
-        cuerpo = [f"🔴 *El pipeline nocturno falló y no publicó.*{_noches(a.noches)}"]
+        cancelado = a.estado == "cancelled"
+        cabecera = ("🔴 *El pipeline nocturno se cortó sin publicar.*"
+                    if cancelado else "🔴 *El pipeline nocturno falló y no publicó.*")
+        cuerpo = [cabecera + _racha(a.fallas)]
+        if cancelado:
+            cuerpo.append(CANCELADO)
         cuerpo.append("*Paso:* " + (", ".join(pasos) or "no se pudo determinar"))
         if motivos:
             cuerpo.append("*Qué falló:*")
@@ -257,7 +312,12 @@ def main() -> int:
             if len(motivos) > 5:
                 cuerpo.append(f"  …y {len(motivos) - 5} más, en el run.")
         else:
-            cuerpo.append("_No se pudo leer la causa del log; está en el run._")
+            fin = cola(texto_gates or texto_cols)
+            if fin:
+                cuerpo.append("*No se reconoció una causa; el final del log dice:*")
+                cuerpo += [f"> {l[:200]}" for l in fin[-3:]]
+            else:
+                cuerpo.append("_No se pudo leer la causa del log; está en el run._")
         if resumen:
             cuerpo.append(f"*Pruebas:* falló {resumen}.")
         if cols:

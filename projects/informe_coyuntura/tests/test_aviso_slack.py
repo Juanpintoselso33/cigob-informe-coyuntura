@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from aviso_slack import analizar, causas, colectores, resumen_pytest
+from aviso_slack import analizar, causas, cola, colectores, resumen_pytest
 
 # Log real de la corrida del 25-ago-2026, recortado.
 SAIJ = ("[WARN] politica.judicializacion: 403 Client Error: Forbidden for url: "
@@ -124,3 +124,36 @@ def test_el_presupuesto_agotado_grita_en_la_forma_que_escribe_el_script():
 def test_los_colectores_se_leen_en_las_dos_formas():
     assert colectores("::notice::macro exit=0\n##[notice]politica exit=1\n") == [
         ("macro", 0), ("politica", 1)]
+
+
+# ── Los cinco huecos que encontró la revisión adversarial ───────────────────
+
+COLECCION_ROTA = (
+    "ERROR tests/test_vida.py\n"
+    "E   ModuleNotFoundError: No module named 'pypdf'\n"
+    "1 error in 0.12s\n"
+)
+
+
+def test_un_pytest_que_ni_arranca_tambien_dice_por_que():
+    """Un ModuleNotFoundError rompe la COLECCIÓN: no hay `FAILED` ni
+    `N failed`. Es la forma exacta en que un crash de import se veía como un
+    diagnóstico vacío — y ya pasó, con pypdf, el 26-jul-2026 (ADR-0133)."""
+    texto = "\n".join(causas(COLECCION_ROTA))
+    assert "test_vida.py" in texto
+    assert "pypdf" in texto, "sin el módulo que falta, el aviso no sirve de nada"
+    assert "módulo" in resumen_pytest(COLECCION_ROTA)
+
+
+def test_un_log_sin_formato_conocido_muestra_el_final_en_vez_de_callarse():
+    """«No se pudo leer la causa» y nada más es peor que pegar el final del
+    log: el traceback casi siempre está ahí aunque no tenga formato."""
+    assert cola("linea vieja\nTraceback (most recent call last):\nKeyError: 'x'\n") \
+        == ["linea vieja", "Traceback (most recent call last):", "KeyError: 'x'"]
+
+
+def test_los_delimitadores_no_se_mezclan():
+    """`::error]` y `##[error::` no existen; matchearlos es inventar causas."""
+    assert causas("::error]falso\n") == []
+    assert causas("##[error::falso\n") == []
+    assert causas("##[error]verdadero\n") == ["verdadero"]
