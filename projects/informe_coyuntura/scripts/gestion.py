@@ -200,6 +200,21 @@ def _sellar(resultado: dict) -> dict:
     return {**resultado, "obtenido_en": datetime.now().isoformat(timespec="seconds")}
 
 
+def _semilla_mas_nueva(manual: dict, prev: dict) -> bool:
+    """¿La semilla declara un dato posterior al que tiene el cache? (ADR-0269)
+
+    Las dos fechas son ISO (`YYYY-MM-DD` o `YYYY-MM`), así que alcanza con
+    comparar los prefijos comunes: `2026-08` contra `2026-08-24` no decide
+    nada y se resuelve como empate, que deja ganar al cache. Si a alguna de las
+    dos le falta la fecha no hay comparación posible y también gana el cache.
+    """
+    a, b = str(manual.get("fecha_dato") or ""), str(prev.get("fecha_dato") or "")
+    if not a or not b:
+        return False
+    n = min(len(a), len(b))
+    return a[:n] > b[:n]
+
+
 def _manual_entry(nombre: str, manuales: dict, cache_anterior: dict) -> dict | None:
     """Qué publica una card cuando su fuente no contesta (ADR-0269).
 
@@ -208,22 +223,33 @@ def _manual_entry(nombre: str, manuales: dict, cache_anterior: dict) -> dict | N
     semilla escrita a mano en manuales.json. En los dos casos
     `desactualizado=True`, que es el badge honesto.
 
-    `obtenido_en` es el discriminador: lo pone `_sellar` y sólo sobre
-    resultados frescos (ADR-0191), así que su presencia separa "esto vino de la
-    fuente" de "esto lo tipeó una persona". El carry-forward lo arrastra
-    intacto, que es justamente lo que se quiere conservar.
+    `obtenido_en` es el discriminador: lo pone `_sellar` y sólo sobre lo que
+    devolvió un colector (ADR-0191), así que separa "esto lo calculó el
+    colector" de "esto lo tipeó una persona en manuales.json". No prueba que
+    haya habido tráfico de red —hay colectores que calculan sobre un archivo
+    curado del repo— y no hace falta que lo pruebe: lo que produce el colector
+    sigue siendo mejor evidencia que la copia a mano de ese mismo número. El
+    carry-forward lo arrastra intacto, que es lo que se quiere conservar.
 
     La semilla es para arrancar sin cache, no para corregir a la fuente: se
     escribe una vez y se queda quieta mientras el mundo se mueve. El
     29-ago-2026 `contratar.gob.ar` se cayó y la card de concesiones **retrocedió
     de 100% a 28,7%** —el valor de julio, cuando faltaban dos etapas por
     adjudicar— teniendo el 100% bueno en el cache de la noche anterior.
+
+    **La excepción, y por qué existe**: si la semilla declara un `fecha_dato`
+    MÁS NUEVO que el del cache, gana la semilla. Sin esa puerta, una
+    recalibración de metodología quedaría bloqueada mientras la fuente esté
+    caída: el cache sellado bajo la fórmula vieja le ganaría para siempre a la
+    semilla corregida, que es exactamente el error que este ADR arregla, con
+    los papeles invertidos.
     """
     prev = cache_anterior.get("indicadores", {}).get(nombre, {})
-    if prev.get("valor") is not None and prev.get("obtenido_en"):
+    m = manuales.get(nombre, {})
+    if (prev.get("valor") is not None and prev.get("obtenido_en")
+            and not _semilla_mas_nueva(m, prev)):
         return {**prev, "desactualizado": True}
 
-    m = manuales.get(nombre, {})
     valor = m.get("valor", m.get("avance_pct"))   # compat con el formato viejo
     if valor is not None:
         return {

@@ -79,13 +79,25 @@ la fuente las habría hecho saltar dos órdenes de magnitud con el badge de
 cuando tiene valor y `obtenido_en`, y sólo si no la hay cae a la semilla.
 
 `obtenido_en` es el discriminador y ya existía: lo pone `_sellar()` y **sólo
-sobre resultados frescos** (ADR-0191). Su presencia distingue "esto vino de la
-fuente" de "esto lo tipeó una persona", y el carry-forward lo arrastra intacto,
-que es justo lo que hay que conservar. No hizo falta inventar un campo nuevo ni
-comparar fechas de formatos distintos.
+sobre lo que devolvió un colector** (ADR-0191). No prueba que haya habido
+tráfico de red —hay colectores que calculan sobre un archivo curado del repo,
+como `protocolo_antipiquetes`— y no hace falta que lo pruebe: lo que produce el
+colector sigue siendo mejor evidencia que la copia a mano de ese mismo número.
+El carry-forward lo arrastra intacto, que es justo lo que hay que conservar.
 
-De paso se actualizó la semilla de `concesiones_infraestructura` a 100% con las
-cuatro etapas y sus resoluciones: aunque ya no la lea nadie que tenga cache, un
+**Con una puerta**: si la semilla declara un `fecha_dato` más nuevo que el del
+cache, gana la semilla. Sin ella este mismo ADR se repetiría con los papeles
+invertidos —una recalibración de metodología quedaría bloqueada mientras la
+fuente esté caída, porque el cache sellado bajo la fórmula vieja le ganaría
+para siempre a la semilla corregida—. Las fechas son ISO y se comparan por
+prefijo común: un empate, una precisión distinta o una fecha ausente dejan
+ganar al cache.
+
+De paso se corrigieron las tres semillas desfasadas —incluida la `unidad` del
+FAL, que seguía describiendo la fórmula anterior a ADR-0228 y que
+`_manual_entry()` copia tal cual a la card—. La de
+`concesiones_infraestructura` pasa a 100% con las cuatro etapas y sus
+resoluciones: aunque ya no la lea nadie que tenga cache, un
 clon nuevo la lee, y dejarla en 28,7 es dejar la trampa armada.
 
 ### Consecuencias
@@ -99,7 +111,14 @@ clon nuevo la lee, y dejarla en 28,7 es dejar la trampa armada.
 `tests/test_la_semilla_no_le_gana_al_cache.py` construye el caso exacto del
 29-ago —cache con 100 sellado, semilla con 28,7— y falla si vuelve a ganar la
 semilla. Prueba además que la semilla sí se usa cuando el cache no tiene nada
-sellado, que es la razón por la que el archivo existe.
+sellado, que es la razón por la que el archivo existe, y que una semilla más
+nueva sí entra.
+
+La guarda que importa es la cuarta: ninguna semilla puede mover más de **20
+puntos de banda** el puntaje de su indicador respecto del último valor del
+colector —el mismo criterio de `test_puntaje_unico_camino`—. Un umbral por
+cociente no habría servido: la regresión del 29-ago fue 100 → 28,7, apenas
+3,5×, y contra la banda del ITCG son 100 contra 44,6.
 
 ## Pros y contras de las opciones
 

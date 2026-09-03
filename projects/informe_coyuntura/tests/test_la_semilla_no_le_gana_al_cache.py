@@ -68,29 +68,63 @@ def test_un_valor_de_cache_sin_sello_no_le_gana_a_la_semilla():
                                  cache)["valor"] == 55.0
 
 
-def test_ninguna_semilla_publicada_esta_en_otra_magnitud_que_su_ultimo_valor_en_vivo():
-    """La guarda que le habría puesto nombre al problema el 29-ago.
+def test_ninguna_semilla_cambiaria_el_puntaje_publicado_de_su_indicador():
+    """La guarda que le habría puesto nombre al problema el 29-ago-2026.
 
     No exige que la semilla esté al día —envejecer es su naturaleza— sino que
-    esté en la MISMA magnitud que lo que baja el colector. Una semilla en otra
-    escala no es un dato viejo: es un dato equivocado esperando un corte de red.
+    caer a ella no MUEVA el número que se publica. El criterio es el mismo que
+    usa `test_puntaje_unico_camino`: 20 puntos de banda, que tolera el desfasaje
+    normal entre dos fechas y no tolera un cambio de magnitud ni un retroceso.
+
+    Un umbral por cociente no sirve acá: la regresión que rompió el pipeline
+    fue 100 → 28,7, apenas 3,5×, y habría pasado por debajo de cualquier "10×".
+    Contra la banda del ITCG esos mismos números son 100 contra 44,6.
     """
+    import parametrica
+    import itcg
+
+    escala = parametrica.Escala(itcg.BANDAS_ITCG, getattr(itcg, "ANCLAS_ITCG", None))
     manuales = json.loads((RAIZ / "data" / "gestion" / "manuales.json")
                           .read_text(encoding="utf-8-sig"))
     cache = json.loads((RAIZ / "output" / "cache" / "gestion.json")
                        .read_text(encoding="utf-8"))["indicadores"]
 
-    problemas = []
+    problemas, comprobados = [], 0
     for nombre, m in manuales.items():
         if nombre.startswith("_"):
             continue
         semilla = m.get("valor", m.get("avance_pct"))
         vivo = cache.get(nombre, {})
-        if semilla is None or not vivo.get("obtenido_en") or vivo.get("valor") is None:
+        if (semilla is None or vivo.get("valor") is None
+                or not vivo.get("obtenido_en") or not escala.puntuable(nombre)):
             continue
-        a, b = abs(float(semilla)), abs(float(vivo["valor"]))
-        if max(a, b) > 10 * max(min(a, b), 1e-9):
-            problemas.append(f"{nombre}: semilla {semilla} vs último valor en vivo "
-                             f"{vivo['valor']} — no es un dato viejo, es otra magnitud")
+        comprobados += 1
+        p_semilla = escala.puntaje(float(semilla), nombre)
+        p_vivo = escala.puntaje(float(vivo["valor"]), nombre)
+        if abs(p_semilla - p_vivo) > 20:
+            problemas.append(
+                f"{nombre}: caer a la semilla ({semilla}) movería el puntaje de "
+                f"{p_vivo} a {p_semilla} — el respaldo publica otro número, no "
+                f"el mismo más viejo")
 
     assert not problemas, "\n".join(problemas)
+    assert comprobados >= 4, f"solo se comprobaron {comprobados} semillas"
+
+
+def test_una_semilla_mas_nueva_que_el_cache_si_entra():
+    """La puerta para una recalibración de metodología con la fuente caída.
+
+    Sin ella el error de ADR-0269 se repite con los papeles invertidos: el
+    cache sellado bajo la fórmula vieja le ganaría para siempre a la semilla
+    corregida mientras la fuente no conteste.
+    """
+    cache = _cache(valor=100.0, fecha_dato="2026-08-21",
+                   obtenido_en="2026-08-21T14:06:24", desactualizado=False)
+    semilla = {"concesiones_infraestructura": {"valor": 50.0, "fecha_dato": "2026-08-25"}}
+    assert gestion._manual_entry("concesiones_infraestructura", semilla, cache)["valor"] == 50.0
+
+    # empate y fechas de distinta precisión no alcanzan: gana el cache
+    for fecha in ("2026-08-21", "2026-08", "2026-08-01", ""):
+        semilla["concesiones_infraestructura"]["fecha_dato"] = fecha
+        assert gestion._manual_entry(
+            "concesiones_infraestructura", semilla, cache)["valor"] == 100.0, fecha

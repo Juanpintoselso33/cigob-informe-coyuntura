@@ -35,8 +35,7 @@
   },
   "fal_modernizacion_laboral": {
     "valor": 50.0,
-    "cobertura_cct_pct": 0.7,
-    "unidad": "Índice de Avance del Fondo de Asistencia Laboral 0-100 (cobertura CCT 40% + adopción financiera 30% + litigiosidad 30%, renormalizado a lo disponible)",
+    "unidad": "Índice 0–100 (FAL vigente: 0,50·actos fundamentales vigentes/2 + 0,20·régimen en vigencia + 0,30·al menos un FAL registrado en la CNV)",
     "estado": "estimado",
     "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
     "notas": "FALLBACK (ADR-0269): sólo se usa si NUNCA hubo un valor en vivo en el cache. Estaba en 0,4, valor de la fórmula anterior a la recalibración de ADR-0228 (2026-08-21), que dejó el índice como escalera 0·20·25·30·45·50·55·70·75·80·100 = 0,50·actos fundamentales vigentes/2 + 0,20·régimen en vigencia (1-nov-2026) + 0,30·al menos un FAL registrado en la CNV. Hoy: los dos actos vigentes, el régimen todavía no rige y no hay FAL en el registro CNV → 50. Última lectura verificada de la fuente el 25-ago-2026.",
