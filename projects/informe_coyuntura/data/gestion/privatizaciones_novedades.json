@@ -1,8 +1,8 @@
 {
  "_meta": {
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
-  "nuevas_en_la_corrida": 9,
-  "ultima_corrida": "2026-08-31"
+  "nuevas_en_la_corrida": 0,
+  "ultima_corrida": "2026-09-03"
  },
  "pendientes": {
   "425373": {
@@ -1997,6 +1997,76 @@
    "periodo": "2026-08"
   },
   "429366": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429379": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429381": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429382": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429383": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429384": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429385": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429408": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08"
+  },
+  "429416": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429420": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429421": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429422": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429427": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429433": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "periodo": "2026-08"
+  },
+  "429434": {
    "del_proceso": false,
    "empresa": "Enarsa",
    "periodo": "2026-08"

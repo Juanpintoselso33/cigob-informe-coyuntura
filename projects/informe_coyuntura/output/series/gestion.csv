@@ -26,6 +26,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2024-01-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2023-12-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2026-09-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2026-08-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2026-07-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2026-06-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
@@ -59,7 +60,8 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2024-01-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2023-12-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
-2026-06-01,reduccion_estado,-20.36,% vs dic-2023,INDEC (dotación APN mensual)
+2026-07-01,reduccion_estado,-20.66,% vs dic-2023,INDEC (dotación APN mensual)
+2026-06-01,reduccion_estado,-20.3,% vs dic-2023,INDEC (dotación APN mensual)
 2026-05-01,reduccion_estado,-19.81,% vs dic-2023,INDEC (dotación APN mensual)
 2026-04-01,reduccion_estado,-19.25,% vs dic-2023,INDEC (dotación APN mensual)
 2026-03-01,reduccion_estado,-18.79,% vs dic-2023,INDEC (dotación APN mensual)
@@ -90,6 +92,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,reduccion_estado,-3.44,% vs dic-2023,INDEC (dotación APN mensual)
 2024-01-01,reduccion_estado,-3.16,% vs dic-2023,INDEC (dotación APN mensual)
 2023-12-01,reduccion_estado,0.0,% vs dic-2023,INDEC (dotación APN mensual)
+2026-08-01,protocolo_antipiquetes,74.2,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2026-07-01,protocolo_antipiquetes,74.2,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2026-06-01,protocolo_antipiquetes,74.2,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2026-05-01,protocolo_antipiquetes,74.2,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
@@ -225,6 +228,7 @@ fecha,indicador,valor,unidad,fuente
 2018-02-01,protestas_caba,10,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2018-01-01,protestas_caba,16,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2017-12-01,protestas_caba,5,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
+2026-09-01,privatizaciones,51.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2026-08-01,privatizaciones,51.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2026-07-01,privatizaciones,51.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2026-06-01,privatizaciones,51.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
@@ -258,6 +262,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2024-01-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2023-12-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
+2026-07-01,masa_salarial,-32.44,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-06-01,masa_salarial,-32.37,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-05-01,masa_salarial,-22.98,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-04-01,masa_salarial,-23.62,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
@@ -721,6 +726,7 @@ fecha,indicador,valor,unidad,fuente
 2002-01-01,icg_utdt,1.357,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2001-12-01,icg_utdt,0.757,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2001-11-01,icg_utdt,1.036,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
+2026-07-01,gasto_funcionamiento,-28.69,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-06-01,gasto_funcionamiento,-31.37,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-05-01,gasto_funcionamiento,-24.35,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-04-01,gasto_funcionamiento,-14.47,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
@@ -751,6 +757,7 @@ fecha,indicador,valor,unidad,fuente
 2024-03-01,gasto_funcionamiento,-20.89,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2024-02-01,gasto_funcionamiento,-15.63,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2024-01-01,gasto_funcionamiento,-28.31,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2026-08-01,fal_modernizacion_laboral,50.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2026-07-01,fal_modernizacion_laboral,50.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2026-06-01,fal_modernizacion_laboral,50.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2026-05-01,fal_modernizacion_laboral,25.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
@@ -815,6 +822,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,desregulacion_normativa,1660.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2024-01-01,desregulacion_normativa,1555.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2023-12-01,desregulacion_normativa,1150.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-09-01,concesiones_infraestructura,100.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-08-01,concesiones_infraestructura,100.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-07-01,concesiones_infraestructura,56.9,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-06-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
@@ -848,7 +856,8 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2024-01-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2023-12-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
-2026-08-01,cepo_mulc,5.78,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
+2026-09-01,cepo_mulc,5.59,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
+2026-08-01,cepo_mulc,5.73,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-07-01,cepo_mulc,5.9,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-06-01,cepo_mulc,4.65,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-05-01,cepo_mulc,6.35,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
