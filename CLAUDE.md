@@ -452,9 +452,15 @@ Tres avisos, y ninguno se manda porque sí:
 
 | Cuándo | Qué dice |
 |---|---|
-| La corrida falló | 🔴 con los pasos que fallaron. La web quedó con datos viejos, no malos |
+| La corrida falló **o la cancelaron** | 🔴 el paso, **la prueba que falló con su assertion**, cuántas corridas caídas seguidas lleva, qué colectores sí anduvieron y qué snapshot está sirviendo producción |
 | Publicó pero degradada de forma inesperada | 🟡 con el indicador y el motivo |
 | Volvió a publicar después de fallar | 🟢 una sola vez, **dentro del loop que cierra el issue** |
+
+El 🔴 y el cuerpo del issue salen del **mismo parser** (`aviso_slack.py`, modos
+`fallo` y `reporte`): un solo lugar que sabe leer un log de corrida, dos
+formatos. Si hace falta que el aviso diga algo nuevo, se toca ahí — duplicarlo
+en bash dentro del YAML es la forma segura de que Slack y el issue terminen
+contando cosas distintas (ADR-0270).
 
 **La regla que mantiene vivo el canal: sólo lo accionable.** Un "todo bien"
 diario entrena a la gente a ignorar al bot, y el día que diga 🔴 tampoco lo van
@@ -473,6 +479,26 @@ sobre todo **un error que NO es de red**. Esa última clase es la que se
 disfraza de "fuente caída" y congela una serie sin que nada falle: pasó con
 `icg_utdt`, cuatro días (ADR-0175). `tests/test_aviso_slack.py` prueba el
 clasificador, y sobre todo prueba lo que NO tiene que avisar.
+
+> **Ojo con este párrafo: fue falso hasta el 3-sep-2026.** Los dos primeros
+> avisos —fuente caída entera y presupuesto agotado— **nunca se dispararon**.
+> El parser buscaba `##[notice]`, que es como GitHub *renderiza* los comandos
+> de workflow en el log descargado; el archivo que lee lo escribe un `tee`
+> dentro del runner, donde están en su forma cruda `::notice::`. Los tests
+> estaban en verde porque los alimentaban con la forma renderizada.
+>
+> Deja dos reglas que valen más que el arreglo:
+>
+> - **Una guarda alimentada con un formato que producción no produce no prueba
+>   nada, y no hace ruido al no probarlo.** Si un parser lee un archivo, el
+>   fixture del test tiene que salir de ese archivo, no de cómo se ve en
+>   pantalla.
+> - **`if: failure()` no cubre un job cancelado**, y GitHub cancela el job
+>   cuando toca `timeout-minutes`. La corrida del 26-ago-2026 murió así a los
+>   45m20s sin avisar nada. Va `failure() || cancelled()`.
+>
+> Ambos arreglados en ADR-0270. La primera prueba real del código nuevo es la
+> próxima falla de verdad: al 3-sep sólo lo ejercitan los tests.
 
 Los secretos (`SLACK_BOT_TOKEN`, `SLACK_CANAL_ALERTAS`, `SLACK_CANAL_INFORME`)
 están en el repo del informe. Los canales requieren invitar al bot a mano.
