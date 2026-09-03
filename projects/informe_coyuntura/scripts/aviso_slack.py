@@ -104,8 +104,18 @@ def causas(log: str) -> list[str]:
     """
     fuera: list[str] = []
 
+    # Sin deduplicar, una causa que aparezca en los dos logs se lista dos
+    # veces. Un aviso que repite se lee como dos problemas, que es justo lo
+    # que este parser vino a evitar.
+    vistas: set[str] = set()
+
+    def _sumar(texto: str) -> None:
+        if texto not in vistas:
+            vistas.add(texto)
+            fuera.append(texto)
+
     for m in FALLA_GATE.finditer(log):
-        fuera.append(f"Gate de calidad · {m.group(1).strip()}")
+        _sumar(f"Gate de calidad · {m.group(1).strip()}")
 
     for patron in (FALLA_PYTEST, ERROR_PYTEST):
         for m in patron.finditer(log):
@@ -115,7 +125,7 @@ def causas(log: str) -> list[str]:
                 # aparte, no pegado al nombre del archivo.
                 em = re.search(r"^E\s+(\w*Error.*)$", log, re.M)
                 motivo = em.group(1).strip() if em else ""
-            fuera.append(f"{prueba}" + (f"\n    {motivo[:300]}" if motivo else ""))
+            _sumar(f"{prueba}" + (f"\n    {motivo[:300]}" if motivo else ""))
 
     for m in ERROR_WORKFLOW.finditer(log):
         texto = m.group(1).strip()
@@ -124,7 +134,7 @@ def causas(log: str) -> list[str]:
         # "falló porque falló". La causa real ya la pusieron los parsers de
         # arriba, o no está en el log.
         if texto and not RUIDO_GENERICO.match(texto):
-            fuera.append(texto[:300])
+            _sumar(texto[:300])
 
     return fuera
 

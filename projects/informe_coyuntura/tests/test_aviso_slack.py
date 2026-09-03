@@ -157,3 +157,11 @@ def test_los_delimitadores_no_se_mezclan():
     assert causas("::error]falso\n") == []
     assert causas("##[error::falso\n") == []
     assert causas("##[error]verdadero\n") == ["verdadero"]
+
+
+def test_una_causa_que_aparece_dos_veces_se_lista_una():
+    """El aviso lee dos logs (gates y colectores) concatenados. Si la misma
+    causa cae en los dos, listarla dos veces la hace parecer dos problemas —
+    exactamente lo que este parser vino a evitar."""
+    doble = CORRIDA_CAIDA + CORRIDA_CAIDA
+    assert causas(doble) == causas(CORRIDA_CAIDA)
