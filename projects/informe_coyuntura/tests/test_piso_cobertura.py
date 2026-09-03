@@ -117,13 +117,22 @@ def test_la_ausencia_de_componentes_del_itcg_sesga_el_indice():
     nota al pie.
     """
     vals = ve._valores_itcg_por_mes()
-    presentes = {k for k, v in (vals.get("2026-08") or {}).items() if v is not None}
+    if not vals:
+        pytest.skip("sin serie del ITCG")
+    # El subconjunto "que llega temprano" se lee del ÚLTIMO mes de la serie,
+    # que es el que todavía se está llenando. Estuvo escrito a mano como
+    # "2026-08" y el 1-sep esa constante empezó a significar otra cosa: agosto
+    # se había completado, el recorte pasó a parecerse al índice entero y el
+    # test falló tres noches seguidas (1, 2 y 3-sep-2026) sin que hubiera
+    # cambiado nada de lo que mide. Un mes literal es una fecha de vencimiento.
+    parcial = max(vals)
+    presentes = {k for k, v in (vals.get(parcial) or {}).items() if v is not None}
     if not presentes:
         pytest.skip("sin mes parcial contra el cual comparar")
 
     desvios = []
     for ym, v in sorted(vals.items()):
-        if sum(1 for x in v.values() if x is not None) < 10:
+        if ym == parcial or sum(1 for x in v.values() if x is not None) < 10:
             continue
         completo = itcg.calcular_itcg(v)
         recortado = itcg.calcular_itcg({k: x for k, x in v.items() if k in presentes})
