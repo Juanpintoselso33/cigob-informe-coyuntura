@@ -4,7 +4,7 @@
   "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
   "nuevas_en_la_corrida": 0,
   "registros_vistos_en_la_corrida": 40,
-  "ultima_corrida": "2026-09-03"
+  "ultima_corrida": "2026-09-04"
  },
  "pendientes": {
   "818689": {
@@ -523,6 +523,11 @@
   },
   "831332": {
    "fecha": "27/08/2026",
+   "marcado": false,
+   "termino": "amparo"
+  },
+  "831746": {
+   "fecha": "03/09/2026",
    "marcado": false,
    "termino": "amparo"
   }

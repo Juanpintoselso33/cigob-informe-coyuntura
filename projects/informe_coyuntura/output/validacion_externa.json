@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-03T09:39:41.049080+00:00",
+    "generated_at": "2026-09-04T03:25:24.069892+00:00",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -2568,7 +2568,7 @@
     "2026-06": 2087.8,
     "2026-07": 2090.0,
     "2026-08": 1913.0,
-    "2026-09": 1945.3
+    "2026-09": 1917.1
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
