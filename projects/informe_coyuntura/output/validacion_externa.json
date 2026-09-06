@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-04T03:25:24.069892+00:00",
+    "generated_at": "2026-09-06T03:25:46.556911+00:00",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -324,6 +324,12 @@
         "total": 2
       },
       {
+        "componente": "credito_privado",
+        "falsas": 1,
+        "perdidos": 1,
+        "total": 2
+      },
+      {
         "componente": "emae_difusion",
         "falsas": 0,
         "perdidos": 2,
@@ -352,12 +358,6 @@
         "falsas": 0,
         "perdidos": 2,
         "total": 2
-      },
-      {
-        "componente": "credito_privado",
-        "falsas": 1,
-        "perdidos": 2,
-        "total": 3
       },
       {
         "componente": "rem_ipc_12m",
@@ -413,7 +413,7 @@
         "desequilibrio_monetario": 0.431,
         "emae_difusion": 0.192,
         "emae_ia": 0.201,
-        "idc": 0.164,
+        "idc": 0.165,
         "ipc_total": 0.257,
         "ipi_manufacturero": 0.07,
         "recaudacion": -0.025,
@@ -429,11 +429,11 @@
         "emae_difusion": 0.721,
         "emae_ia": 0.811,
         "idc": 0.902,
-        "ipc_total": 0.787,
+        "ipc_total": 0.786,
         "ipi_manufacturero": 0.729,
         "recaudacion": -0.355,
         "rem_ipc_12m": 0.818,
-        "reservas_bcra": 0.128,
+        "reservas_bcra": 0.127,
         "resultado_primario": 0.736,
         "saldo_comercial_12m": 0.573,
         "tcrm": -0.482
@@ -484,27 +484,27 @@
         "tcrm": -0.643
       },
       "idc": {
-        "costo_financiamiento_tesoro": 0.164,
+        "costo_financiamiento_tesoro": 0.165,
         "credito_privado": 0.902,
         "desequilibrio_monetario": 0.126,
         "emae_difusion": 0.653,
         "emae_ia": 0.835,
-        "ipc_total": 0.899,
+        "ipc_total": 0.9,
         "ipi_manufacturero": 0.741,
         "recaudacion": -0.245,
         "rem_ipc_12m": 0.892,
-        "reservas_bcra": 0.428,
-        "resultado_primario": 0.865,
+        "reservas_bcra": 0.431,
+        "resultado_primario": 0.866,
         "saldo_comercial_12m": 0.689,
         "tcrm": -0.657
       },
       "ipc_total": {
         "costo_financiamiento_tesoro": 0.257,
-        "credito_privado": 0.787,
+        "credito_privado": 0.786,
         "desequilibrio_monetario": -0.086,
         "emae_difusion": 0.652,
         "emae_ia": 0.729,
-        "idc": 0.899,
+        "idc": 0.9,
         "ipi_manufacturero": 0.588,
         "recaudacion": -0.297,
         "rem_ipc_12m": 0.928,
@@ -560,11 +560,11 @@
       },
       "reservas_bcra": {
         "costo_financiamiento_tesoro": -0.179,
-        "credito_privado": 0.128,
+        "credito_privado": 0.127,
         "desequilibrio_monetario": 0.103,
         "emae_difusion": 0.354,
         "emae_ia": 0.329,
-        "idc": 0.428,
+        "idc": 0.431,
         "ipc_total": 0.618,
         "ipi_manufacturero": 0.49,
         "recaudacion": -0.496,
@@ -579,7 +579,7 @@
         "desequilibrio_monetario": -0.155,
         "emae_difusion": 0.466,
         "emae_ia": 0.692,
-        "idc": 0.865,
+        "idc": 0.866,
         "ipc_total": 0.837,
         "ipi_manufacturero": 0.464,
         "recaudacion": -0.084,
@@ -653,7 +653,7 @@
       {
         "a": "idc",
         "b": "ipc_total",
-        "r": 0.899,
+        "r": 0.9,
         "n": 32,
         "dimension_a": "financiamiento",
         "dimension_b": "estabilidad_monetaria",
@@ -693,7 +693,7 @@
       {
         "a": "idc",
         "b": "resultado_primario",
-        "r": 0.865,
+        "r": 0.866,
         "n": 32,
         "dimension_a": "financiamiento",
         "dimension_b": "viabilidad_fiscal_comercial",
@@ -763,7 +763,7 @@
       {
         "a": "credito_privado",
         "b": "ipc_total",
-        "r": 0.787,
+        "r": 0.786,
         "n": 32,
         "dimension_a": "financiamiento",
         "dimension_b": "estabilidad_monetaria",
@@ -883,7 +883,7 @@
     "umbral": 0.7,
     "n_indicadores": 14,
     "n_pares": 76,
-    "r_abs_medio": 0.453,
+    "r_abs_medio": 0.454,
     "share_altos": 0.25,
     "share_bajos": 0.342,
     "matriz": {
@@ -903,8 +903,8 @@
       },
       "cepo_mulc": {
         "apertura_comercial": 0.355,
-        "concesiones_infraestructura": 0.322,
-        "desregulacion_normativa": 0.92,
+        "concesiones_infraestructura": 0.325,
+        "desregulacion_normativa": 0.919,
         "fal_modernizacion_laboral": 0.338,
         "gasto_funcionamiento": 0.257,
         "libertad_opcion_salud": 0.89,
@@ -913,12 +913,12 @@
         "privatizaciones": 0.831,
         "protocolo_antipiquetes": 0.869,
         "reduccion_estado": 0.759,
-        "reestructuracion_organismos": 0.452
+        "reestructuracion_organismos": 0.454
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.207,
-        "cepo_mulc": 0.322,
-        "desregulacion_normativa": 0.417,
+        "cepo_mulc": 0.325,
+        "desregulacion_normativa": 0.455,
         "fal_modernizacion_laboral": 0.905,
         "gasto_funcionamiento": 0.252,
         "litigiosidad_laboral": 0.127,
@@ -930,23 +930,23 @@
       },
       "desregulacion_normativa": {
         "apertura_comercial": 0.505,
-        "cepo_mulc": 0.92,
-        "concesiones_infraestructura": 0.417,
-        "fal_modernizacion_laboral": 0.479,
+        "cepo_mulc": 0.919,
+        "concesiones_infraestructura": 0.455,
+        "fal_modernizacion_laboral": 0.524,
         "gasto_funcionamiento": 0.321,
         "libertad_opcion_salud": 0.92,
         "litigiosidad_laboral": 0.42,
         "masa_salarial": 0.461,
-        "privatizaciones": 0.943,
-        "protocolo_antipiquetes": 0.875,
+        "privatizaciones": 0.946,
+        "protocolo_antipiquetes": 0.874,
         "reduccion_estado": 0.711,
-        "reestructuracion_organismos": 0.617
+        "reestructuracion_organismos": 0.646
       },
       "fal_modernizacion_laboral": {
         "apertura_comercial": 0.211,
         "cepo_mulc": 0.338,
         "concesiones_infraestructura": 0.905,
-        "desregulacion_normativa": 0.479,
+        "desregulacion_normativa": 0.524,
         "gasto_funcionamiento": 0.144,
         "litigiosidad_laboral": 0.17,
         "masa_salarial": 0.158,
@@ -1013,7 +1013,7 @@
         "apertura_comercial": 0.538,
         "cepo_mulc": 0.831,
         "concesiones_infraestructura": 0.528,
-        "desregulacion_normativa": 0.943,
+        "desregulacion_normativa": 0.946,
         "fal_modernizacion_laboral": 0.564,
         "gasto_funcionamiento": 0.426,
         "libertad_opcion_salud": 0.794,
@@ -1027,7 +1027,7 @@
         "apertura_comercial": 0.265,
         "cepo_mulc": 0.869,
         "concesiones_infraestructura": 0.268,
-        "desregulacion_normativa": 0.875,
+        "desregulacion_normativa": 0.874,
         "fal_modernizacion_laboral": 0.314,
         "gasto_funcionamiento": 0.188,
         "libertad_opcion_salud": 0.994,
@@ -1053,9 +1053,9 @@
       },
       "reestructuracion_organismos": {
         "apertura_comercial": 0.359,
-        "cepo_mulc": 0.452,
+        "cepo_mulc": 0.454,
         "concesiones_infraestructura": 0.734,
-        "desregulacion_normativa": 0.617,
+        "desregulacion_normativa": 0.646,
         "fal_modernizacion_laboral": 0.824,
         "gasto_funcionamiento": 0.161,
         "libertad_opcion_salud": 0.283,
@@ -1080,21 +1080,11 @@
       {
         "a": "desregulacion_normativa",
         "b": "privatizaciones",
-        "r": 0.943,
-        "n": 32,
+        "r": 0.946,
+        "n": 33,
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
         "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "cepo_mulc",
-        "b": "desregulacion_normativa",
-        "r": 0.92,
-        "n": 32,
-        "dimension_a": "reformas_economicas",
-        "dimension_b": "reformas_economicas",
-        "misma_dimension": true,
         "por_diseno": null
       },
       {
@@ -1105,6 +1095,16 @@
         "dimension_a": "reformas_economicas",
         "dimension_b": "social_orden",
         "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "cepo_mulc",
+        "b": "desregulacion_normativa",
+        "r": 0.919,
+        "n": 33,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "reformas_economicas",
+        "misma_dimension": true,
         "por_diseno": null
       },
       {
@@ -1130,8 +1130,8 @@
       {
         "a": "desregulacion_normativa",
         "b": "protocolo_antipiquetes",
-        "r": 0.875,
-        "n": 31,
+        "r": 0.874,
+        "n": 32,
         "dimension_a": "reformas_economicas",
         "dimension_b": "social_orden",
         "misma_dimension": false,
@@ -2568,7 +2568,7 @@
     "2026-06": 2087.8,
     "2026-07": 2090.0,
     "2026-08": 1913.0,
-    "2026-09": 1917.1
+    "2026-09": 1916.1
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
@@ -2974,7 +2974,7 @@
           "2026-04": 50.5,
           "2026-05": 56.5,
           "2026-06": 55.3,
-          "2026-07": 64.1
+          "2026-07": 64.2
         }
       },
       "actividad": {
