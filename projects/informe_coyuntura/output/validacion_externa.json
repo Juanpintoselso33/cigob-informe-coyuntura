@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-06T03:25:46.556911+00:00",
+    "generated_at": "2026-09-07T03:28:55.856579+00:00",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -903,21 +903,21 @@
       },
       "cepo_mulc": {
         "apertura_comercial": 0.355,
-        "concesiones_infraestructura": 0.325,
+        "concesiones_infraestructura": 0.326,
         "desregulacion_normativa": 0.919,
         "fal_modernizacion_laboral": 0.338,
         "gasto_funcionamiento": 0.257,
         "libertad_opcion_salud": 0.89,
         "litigiosidad_laboral": 0.413,
         "masa_salarial": 0.469,
-        "privatizaciones": 0.831,
+        "privatizaciones": 0.832,
         "protocolo_antipiquetes": 0.869,
         "reduccion_estado": 0.759,
         "reestructuracion_organismos": 0.454
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.207,
-        "cepo_mulc": 0.325,
+        "cepo_mulc": 0.326,
         "desregulacion_normativa": 0.455,
         "fal_modernizacion_laboral": 0.905,
         "gasto_funcionamiento": 0.252,
@@ -1011,7 +1011,7 @@
       },
       "privatizaciones": {
         "apertura_comercial": 0.538,
-        "cepo_mulc": 0.831,
+        "cepo_mulc": 0.832,
         "concesiones_infraestructura": 0.528,
         "desregulacion_normativa": 0.946,
         "fal_modernizacion_laboral": 0.564,
@@ -1150,7 +1150,7 @@
       {
         "a": "cepo_mulc",
         "b": "privatizaciones",
-        "r": 0.831,
+        "r": 0.832,
         "n": 34,
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
@@ -2568,7 +2568,7 @@
     "2026-06": 2087.8,
     "2026-07": 2090.0,
     "2026-08": 1913.0,
-    "2026-09": 1916.1
+    "2026-09": 1917.7
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
