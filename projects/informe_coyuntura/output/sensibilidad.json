@@ -12,14 +12,14 @@
     "valor_recomputado": 65.0,
     "experimentos": {
       "pesos": {
-        "media": 64.9,
+        "media": 65.0,
         "p05": 64.1,
         "p95": 65.8,
         "desvio": 0.53
       },
       "combinado": {
         "media": 61.1,
-        "p05": 59.4,
+        "p05": 59.5,
         "p95": 62.8,
         "desvio": 1.02
       },
@@ -39,10 +39,10 @@
       "costo_financiamiento_tesoro": 63.3,
       "credito_privado": 66.1,
       "rem_ipc_12m": 64.0,
+      "ipi_manufacturero": 65.9,
       "emae_ia": 64.1,
-      "ipi_manufacturero": 65.8,
+      "iai": 65.8,
       "saldo_comercial_12m": 64.2,
-      "iai": 65.7,
       "idc": 65.6,
       "emae_difusion": 64.5,
       "reservas_bcra": 64.7
@@ -51,53 +51,53 @@
       "base": 3.5,
       "rango_combinado": [
         3.7,
-        4.1
+        4.0
       ]
     }
   },
   "itcg": {
-    "valor_publicado": 80.4,
-    "valor_recomputado": 80.4,
+    "valor_publicado": 80.5,
+    "valor_recomputado": 80.5,
     "experimentos": {
       "pesos": {
-        "media": 80.4,
-        "p05": 78.8,
-        "p95": 81.8,
-        "desvio": 0.91
+        "media": 80.5,
+        "p05": 79.0,
+        "p95": 81.9,
+        "desvio": 0.9
       },
       "combinado": {
-        "media": 80.2,
-        "p05": 78.4,
-        "p95": 81.8,
-        "desvio": 1.02
+        "media": 80.4,
+        "p05": 78.7,
+        "p95": 82.0,
+        "desvio": 1.0
       },
       "insumos": {
-        "media": 80.1,
-        "p05": 79.3,
-        "p95": 80.9,
-        "desvio": 0.49
+        "media": 80.3,
+        "p05": 79.6,
+        "p95": 81.1,
+        "desvio": 0.45
       }
     },
     "leave_one_out": {
-      "cepo_mulc": 75.3,
-      "apertura_comercial": 84.9,
+      "cepo_mulc": 75.4,
+      "apertura_comercial": 85.0,
       "rigi_inversiones": 82.2,
-      "concesiones_infraestructura": 79.2,
-      "libertad_opcion_salud": 81.3,
-      "asistencia_directa": 79.7,
-      "protocolo_antipiquetes": 79.8,
-      "litigiosidad_laboral": 79.9,
-      "desregulacion_normativa": 80.8,
-      "fal_modernizacion_laboral": 80.8,
-      "privatizaciones": 80.1,
-      "reduccion_estado": 80.4,
-      "gasto_funcionamiento": 80.4
+      "concesiones_infraestructura": 79.3,
+      "libertad_opcion_salud": 81.4,
+      "asistencia_directa": 79.9,
+      "protocolo_antipiquetes": 79.9,
+      "desregulacion_normativa": 80.9,
+      "fal_modernizacion_laboral": 80.9,
+      "litigiosidad_laboral": 80.1,
+      "privatizaciones": 80.3,
+      "reduccion_estado": 80.5,
+      "gasto_funcionamiento": 80.5
     },
     "tension": {
       "base": 2.0,
       "rango_combinado": [
         1.8,
-        2.2
+        2.1
       ]
     }
   },

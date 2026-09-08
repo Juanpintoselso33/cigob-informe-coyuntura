@@ -1,15 +1,26 @@
 {
  "_meta": {
-  "comunicados_vistos": 46,
+  "comunicados_vistos": 47,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. NO puntúa: el indicador no se publica hasta que haya segunda pasada con kappa ≥ 0,70. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-09-07"
+  "nuevos_en_la_corrida": 1,
+  "ultima_corrida": "2026-09-08"
  },
  "pendientes": {
+  "UIA|celebramos-el-dia-de-la-industria-2": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-09-02",
+   "id": "celebramos-el-dia-de-la-industria-2",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "En el evento conmemorativo de la primera exportación de manufacturas, Martín Rappallini remarcó que la riqueza de un país está en su capacidad para transformar los recursos naturales, remarcó que la industria compite con el mundo pero paga costos argentinos, y pidió respeto hacia los industriales que producen y arriesgan su capital.   La Unión Industrial Argentina llevó a cabo su celebración del Día de la Industria en la planta de Laboratorio Elea, en Los Polvorines. El evento contó con la presencia de más de 200 representantes de todos los sectores industriales que conforman la entidad, autoridades nacionales y locales, y referentes del ámbito productivo. El principal orador fue Martín Rappallini, presidente de la UIA, luego de unas palabras de bienvenida de Isaías Drajer, presidente de Elea.",
+   "titulo": "Celebramos el Día de la Industria",
+   "url": "https://www.uia.org.ar/uia/novedades/celebramos-el-dia-de-la-industria-2"
+  },
   "UIA|con-un-nuevo-esquema-federal-uia-joven-lanzo-la-ed": {
    "camara": "UIA",
    "destinatario": null,
@@ -562,6 +573,10 @@
   },
   "UIA|4244": {
    "origen": "codificacion ADR-0148"
+  },
+  "UIA|celebramos-el-dia-de-la-industria-2": {
+   "fecha": "2026-09-02",
+   "titulo": "Celebramos el Día de la Industria"
   },
   "UIA|con-un-nuevo-esquema-federal-uia-joven-lanzo-la-ed": {
    "fecha": "2026-05-14",
