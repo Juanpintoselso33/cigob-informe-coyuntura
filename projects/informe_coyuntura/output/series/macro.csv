@@ -97,6 +97,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,tcrm,132.79,índice (base dic-2015),BCRA ITCRM
 2023-12-01,tcrm,124.88,índice (base dic-2015),BCRA ITCRM
 2023-11-01,tcrm,83.2,índice (base dic-2015),BCRA ITCRM
+2026-09-08,tc_mayorista,1510.1049,ARS/USD,BCRA
 2026-09-07,tc_mayorista,1511.154,ARS/USD,BCRA
 2026-09-04,tc_mayorista,1507.3745,ARS/USD,BCRA
 2026-09-03,tc_mayorista,1508.2111,ARS/USD,BCRA
@@ -731,7 +732,6 @@ fecha,indicador,valor,unidad,fuente
 2024-01-25,tc_mayorista,823.05,ARS/USD,BCRA
 2024-01-24,tc_mayorista,822.45,ARS/USD,BCRA
 2024-01-23,tc_mayorista,821.95,ARS/USD,BCRA
-2024-01-22,tc_mayorista,821.45,ARS/USD,BCRA
 2026-06-01,saldo_comercial_12m,22481.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-05-01,saldo_comercial_12m,21166.7,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-04-01,saldo_comercial_12m,18324.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
@@ -973,13 +973,14 @@ fecha,indicador,valor,unidad,fuente
 2022-03-01,recaudacion,99.7,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-02-01,recaudacion,101.7,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-01-01,recaudacion,101.9,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-09-03,prestamos_privados,143639714.0,M ARS,BCRA
-2026-09-02,prestamos_privados,144041235.0,M ARS,BCRA
-2026-09-01,prestamos_privados,144645418.0,M ARS,BCRA
-2026-08-31,prestamos_privados,144706884.0,M ARS,BCRA
-2026-08-28,prestamos_privados,144457947.0,M ARS,BCRA
+2026-09-04,prestamos_privados,143410350.0,M ARS,BCRA
+2026-09-03,prestamos_privados,143639020.0,M ARS,BCRA
+2026-09-02,prestamos_privados,144039490.0,M ARS,BCRA
+2026-09-01,prestamos_privados,144646265.0,M ARS,BCRA
+2026-08-31,prestamos_privados,144865524.0,M ARS,BCRA
+2026-08-28,prestamos_privados,144458089.0,M ARS,BCRA
 2026-08-27,prestamos_privados,144415443.0,M ARS,BCRA
-2026-08-26,prestamos_privados,144074373.0,M ARS,BCRA
+2026-08-26,prestamos_privados,144075932.0,M ARS,BCRA
 2026-08-25,prestamos_privados,143634384.0,M ARS,BCRA
 2026-08-24,prestamos_privados,143392487.0,M ARS,BCRA
 2026-08-21,prestamos_privados,142696849.0,M ARS,BCRA
@@ -996,7 +997,7 @@ fecha,indicador,valor,unidad,fuente
 2026-08-05,prestamos_privados,140761254.0,M ARS,BCRA
 2026-08-04,prestamos_privados,141298129.0,M ARS,BCRA
 2026-08-03,prestamos_privados,141245514.0,M ARS,BCRA
-2026-07-31,prestamos_privados,142248930.0,M ARS,BCRA
+2026-07-31,prestamos_privados,142259290.0,M ARS,BCRA
 2026-07-30,prestamos_privados,141383312.0,M ARS,BCRA
 2026-07-29,prestamos_privados,141085426.0,M ARS,BCRA
 2026-07-28,prestamos_privados,140883095.0,M ARS,BCRA
@@ -1605,7 +1606,6 @@ fecha,indicador,valor,unidad,fuente
 2024-01-25,prestamos_privados,19428690.0,M ARS,BCRA
 2024-01-24,prestamos_privados,19301922.0,M ARS,BCRA
 2024-01-23,prestamos_privados,19235161.0,M ARS,BCRA
-2024-01-22,prestamos_privados,19231233.0,M ARS,BCRA
 2026-06-01,ipi_manufacturero,-2.0,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (vía datos.gob.ar)
 2026-05-01,ipi_manufacturero,-0.98,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (vía datos.gob.ar)
 2026-04-01,ipi_manufacturero,-2.05,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (vía datos.gob.ar)
@@ -2042,6 +2042,7 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,costo_financiamiento_tesoro,-10.39,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2024-03-01,costo_financiamiento_tesoro,-13.58,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-09-04,base_monetaria,47251329.0,M ARS,BCRA
 2026-09-03,base_monetaria,47282027.0,M ARS,BCRA
 2026-09-02,base_monetaria,46347290.0,M ARS,BCRA
 2026-09-01,base_monetaria,47216078.0,M ARS,BCRA
@@ -2674,7 +2675,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-25,base_monetaria,10325641.0,M ARS,BCRA
 2024-01-24,base_monetaria,10351652.0,M ARS,BCRA
 2024-01-23,base_monetaria,10363492.0,M ARS,BCRA
-2024-01-22,base_monetaria,10144159.0,M ARS,BCRA
+2026-09-07,badlar,22.125,% anual,BCRA
 2026-09-04,badlar,22.0625,% anual,BCRA
 2026-09-03,badlar,23.25,% anual,BCRA
 2026-09-02,badlar,23.125,% anual,BCRA
@@ -3308,4 +3309,3 @@ fecha,indicador,valor,unidad,fuente
 2024-01-25,badlar,108.8125,% anual,BCRA
 2024-01-24,badlar,109.875,% anual,BCRA
 2024-01-23,badlar,109.6875,% anual,BCRA
-2024-01-22,badlar,108.6875,% anual,BCRA
