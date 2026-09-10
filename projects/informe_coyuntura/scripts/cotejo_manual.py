@@ -22,9 +22,16 @@ _CLAVES_SANCION = ('PROYECTO_ID', 'EXPEDIENTE_INICIAL', 'LEY')
 
 
 def registrar(indicador, registro, motivo, fuente):
-    print(MARCA + json.dumps(dict(indicador=indicador, registro=registro,
-                                  motivo=motivo, fuente=fuente), ensure_ascii=False),
-          file=sys.stderr)
+    """Escribe el marcador en una línea propia aunque stdout venga en bloque.
+
+    En el runner stdout y stderr comparten un pipe (`2>&1`) y stdout va
+    bufferizado: sin vaciarlo antes, el marcador caía en medio de una línea de
+    salida pendiente y el parser no lo veía.
+    """
+    sys.stdout.flush()
+    sys.stderr.write(MARCA + json.dumps(dict(indicador=indicador, registro=registro,
+                                             motivo=motivo, fuente=fuente), ensure_ascii=False) + '\n')
+    sys.stderr.flush()
 
 
 def fecha_canonica(valor):
@@ -104,10 +111,11 @@ def fecha_acta_verificada(id_acta):
 def avisos(log):
     salida, vistos = [], set()
     for linea in log.splitlines():
-        if not linea.startswith(MARCA):
+        inicio = linea.find(MARCA)
+        if inicio < 0:
             continue
         try:
-            dato = json.loads(linea[len(MARCA):])
+            dato = json.loads(linea[inicio + len(MARCA):])
             campos = [dato[k] for k in ('indicador', 'registro', 'motivo', 'fuente')]
             if not all(isinstance(x, str) and x.strip() for x in campos):
                 continue

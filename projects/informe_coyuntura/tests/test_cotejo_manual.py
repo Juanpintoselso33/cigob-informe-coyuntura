@@ -204,3 +204,23 @@ def test_conciliacion_judicial_avisa_antes_de_vencer(monkeypatch, capsys, dias_a
     if avisa:
         assert corte in mensajes[0] and 'revisado_hasta' in mensajes[0]
         assert {10: 'vence en 5 días', 14: 'vence mañana', 20: 'venció hace 6 días'}[dias_atras] in mensajes[0]
+
+
+# ── El marcador sobrevive a un stdout bufferizado compartiendo el pipe ───────
+def test_marcador_llega_entero_con_stdout_bufferizado_en_subproceso(tmp_path):
+    import subprocess
+    programa = (
+        "import sys; sys.path.insert(0, sys.argv[1])\n"
+        "from cotejo_manual import registrar\n"
+        "for n in range(3000): print(f'linea de salida numero {n} ' + 'x' * 40)\n"
+        "print('parcial sin salto', end='')\n"
+        "registrar('eficacia_legislativa', 'HCDN1', 'Fecha ausente.', 'https://datos.hcdn.gob.ar')\n"
+        "for n in range(3000): print(f'mas salida {n}')\n"
+    )
+    r = subprocess.run([sys.executable, '-c', programa, str(Path(politica.__file__).parent)],
+                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, check=True)
+    mensajes = avisos(r.stdout)
+    assert len(mensajes) == 1 and 'HCDN1' in mensajes[0]
+    lineas = [l for l in r.stdout.splitlines() if cotejo_manual.MARCA in l]
+    assert len(lineas) == 1 and lineas[0].startswith('parcial sin salto' + cotejo_manual.MARCA)
+    assert avisos('basura previa' + cotejo_manual.MARCA + '{"indicador":"a","registro":"b","motivo":"c","fuente":"d"}')

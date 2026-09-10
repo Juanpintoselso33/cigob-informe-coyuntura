@@ -1828,6 +1828,48 @@ def _infoleg_texto(norma_id: str) -> str:
         return ""
 
 
+def _privat_evaluar_norma(norma_id, titulo, empresa, anio_v, mes_v, previa, intentadas,
+                          relecturas, relectura_pendiente, textos_fallidos, revisadas,
+                          pendientes, nuevas):
+    """Lee una norma y la clasifica. Devuelve (relecturas, nuevas) actualizados."""
+    if previa is not None:
+        if relecturas >= PRIVATIZACIONES_LOTE_RELECTURA:
+            if norma_id not in relectura_pendiente:
+                relectura_pendiente.append(norma_id)
+            return relecturas, nuevas
+        relecturas += 1
+    intentadas.add(norma_id)
+    # el texto de una norma publicada es inmutable: se evalúa una
+    # sola vez y el veredicto queda cacheado, pase o no el filtro
+    texto = _infoleg_texto(norma_id)
+    if not texto.strip():
+        textos_fallidos.append(norma_id)
+        print(f"  [WARN] privatizaciones/novedades {norma_id}: texto no disponible; se reintentará")
+        return relecturas, nuevas
+    empresas_mencionadas = _privat_empresas_en_texto(texto)
+    m = _PRIVAT_PROCESO.search(texto)
+    es_candidata = bool(m and empresas_mencionadas)
+    revisadas[norma_id] = {"empresa": empresas_mencionadas[0] if empresas_mencionadas else empresa,
+                           "empresas_mencionadas": empresas_mencionadas,
+                           "version_filtro": 2,
+                           "periodo": f"{anio_v}-{mes_v:02d}",
+                           "del_proceso": es_candidata}
+    if not es_candidata:
+        pendientes.pop(norma_id, None)
+        return relecturas, nuevas
+    era_pendiente = norma_id in pendientes
+    pendientes[norma_id] = {
+        "empresa": empresas_mencionadas[0],
+        "empresas_mencionadas": empresas_mencionadas,
+        "periodo": f"{anio_v}-{mes_v:02d}",
+        "titulo": titulo,
+        "coincidencia": m.group(0).lower(),
+        "url": f"https://servicios.infoleg.gob.ar/infolegInternet/"
+               f"verNorma.do?id={norma_id}",
+    }
+    return relecturas, nuevas + (not era_pendiente)
+
+
 def detectar_novedades_privatizaciones(meses_atras: int = 3) -> dict:
     """Normas nuevas del Boletín Oficial que nombran a cada empresa privatizable.
 
@@ -1854,6 +1896,8 @@ def detectar_novedades_privatizaciones(meses_atras: int = 3) -> dict:
     relectura_pendiente = []
     relecturas = 0
     consultas_sin_error = 0
+    sin_texto_previo = set(store.get("_meta", {}).get("cobertura", {}).get("textos_fallidos", []))
+    diferidas = []
 
     hoy = date.today()
     ventana = []
@@ -1884,42 +1928,21 @@ def detectar_novedades_privatizaciones(meses_atras: int = 3) -> dict:
                     continue
                 if norma_id in intentadas:
                     continue
-                if previa is not None:
-                    if relecturas >= PRIVATIZACIONES_LOTE_RELECTURA:
-                        if norma_id not in relectura_pendiente:
-                            relectura_pendiente.append(norma_id)
-                        continue
-                    relecturas += 1
-                intentadas.add(norma_id)
-                # el texto de una norma publicada es inmutable: se evalúa una
-                # sola vez y el veredicto queda cacheado, pase o no el filtro
-                texto = _infoleg_texto(norma_id)
-                if not texto.strip():
-                    textos_fallidos.append(norma_id)
-                    print(f"  [WARN] privatizaciones/novedades {norma_id}: texto no disponible; se reintentará")
+                if previa is not None and norma_id in sin_texto_previo:
+                    diferidas.append((norma_id, titulo, empresa, anio_v, mes_v))
                     continue
-                empresas_mencionadas = _privat_empresas_en_texto(texto)
-                m = _PRIVAT_PROCESO.search(texto)
-                es_candidata = bool(m and empresas_mencionadas)
-                revisadas[norma_id] = {"empresa": empresas_mencionadas[0] if empresas_mencionadas else empresa,
-                                       "empresas_mencionadas": empresas_mencionadas,
-                                       "version_filtro": 2,
-                                       "periodo": f"{anio_v}-{mes_v:02d}",
-                                       "del_proceso": es_candidata}
-                if not es_candidata:
-                    pendientes.pop(norma_id, None)
-                    continue
-                era_pendiente = norma_id in pendientes
-                pendientes[norma_id] = {
-                    "empresa": empresas_mencionadas[0],
-                    "empresas_mencionadas": empresas_mencionadas,
-                    "periodo": f"{anio_v}-{mes_v:02d}",
-                    "titulo": titulo,
-                    "coincidencia": m.group(0).lower(),
-                    "url": f"https://servicios.infoleg.gob.ar/infolegInternet/"
-                           f"verNorma.do?id={norma_id}",
-                }
-                nuevas += not era_pendiente
+                relecturas, nuevas = _privat_evaluar_norma(
+                    norma_id, titulo, empresa, anio_v, mes_v, previa, intentadas, relecturas,
+                    relectura_pendiente, textos_fallidos, revisadas, pendientes, nuevas)
+
+    # Las que la corrida anterior no pudo leer se reintentan al final, para que
+    # no se coman el lote antes que las normas nuevas o nunca releídas.
+    for norma_id, titulo, empresa, anio_v, mes_v in diferidas:
+        if norma_id in intentadas:
+            continue
+        relecturas, nuevas = _privat_evaluar_norma(
+            norma_id, titulo, empresa, anio_v, mes_v, revisadas.get(norma_id), intentadas,
+            relecturas, relectura_pendiente, textos_fallidos, revisadas, pendientes, nuevas)
 
     store.setdefault("_meta", {}).update({
         "descripcion": ("Normas del BO que nombran empresas privatizables. Detección "
