@@ -454,6 +454,7 @@ Tres avisos, y ninguno se manda porque sí:
 |---|---|
 | La corrida falló **o la cancelaron** | 🔴 el paso, **la prueba que falló con su assertion**, cuántas corridas caídas seguidas lleva, qué colectores sí anduvieron y qué snapshot está sirviendo producción |
 | Publicó pero degradada de forma inesperada | 🟡 con el indicador y el motivo |
+| Publicó pero **no quedó en BigQuery** (o falta `GCP_SA_KEY`) | 🟡 con el error del export, la pista (facturación suspendida, clave vencida) y cómo se recupera con `bigquery_backfill.py`. El paso corre con `continue-on-error`, así que sin este aviso el workflow sale en verde: pasó el 9 y 10-sep-2026 |
 | Volvió a publicar después de fallar | 🟢 una sola vez, **dentro del loop que cierra el issue** |
 
 El 🔴 y el cuerpo del issue salen del **mismo parser** (`aviso_slack.py`, modos

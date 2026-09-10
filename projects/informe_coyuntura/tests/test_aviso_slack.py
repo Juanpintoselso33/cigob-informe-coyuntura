@@ -165,3 +165,61 @@ def test_una_causa_que_aparece_dos_veces_se_lista_una():
     exactamente lo que este parser vino a evitar."""
     doble = CORRIDA_CAIDA + CORRIDA_CAIDA
     assert causas(doble) == causas(CORRIDA_CAIDA)
+
+
+# ── El espejo en BigQuery ────────────────────────────────────────────────────
+#
+# El paso corre con continue-on-error y el workflow sale en verde aunque falle.
+# El 9 y el 10-sep-2026 el export rebotó dos noches con billingNotEnabled
+# (Google había suspendido la facturación por un pago rechazado) y no avisó
+# nadie. Log real de la corrida del 10-sep, recortado.
+from aviso_slack import analizar_bigquery
+
+BILLING = (
+    "ERROR: no se pudo limpiar la corrida en corridas: 403 Billing has not been "
+    "enabled for this project. Enable billing at https://console.cloud.google.com/"
+    "billing. DML queries are not allowed in the free tier.; reason: "
+    "billingNotEnabled, message: Billing has not been enabled for this project.\n"
+    "\nLocation: southamerica-east1\nJob ID: f4413058\n\n"
+    "  Si es 'billingNotEnabled', el free tier no permite DML y\n"
+    "  reintentar DUPLICARIA las filas. No se escribió nada.\n"
+    "corrida generated_at=2026-09-10T03:33:02.087548+00:00\n"
+    "  TOTAL                          9796 filas\n"
+)
+LISTO = "corrida generated_at=2026-09-10T03:33:02+00:00\n  series  6896 filas -> x\n\nlisto\n"
+
+
+def test_un_espejo_que_termino_bien_no_avisa():
+    assert analizar_bigquery(LISTO, "success") == []
+
+
+def test_sin_log_ni_estado_no_avisa():
+    # Una corrida a mano, o un workflow viejo que no pasa el log: silencio.
+    assert analizar_bigquery("", "") == []
+
+
+def test_la_facturacion_suspendida_avisa_y_dice_que_es_la_facturacion():
+    [m] = analizar_bigquery(BILLING, "failure")
+    assert "no quedó archivada en BigQuery" in m
+    assert "no se pudo limpiar la corrida" in m
+    assert "facturación" in m
+    assert "bigquery_backfill" in m           # cómo se recupera, en el aviso mismo
+
+
+def test_una_falla_sin_causa_conocida_muestra_el_final_del_log():
+    log = "Traceback (most recent call last):\n  File x\nKeyError: 'giros'\n"
+    [m] = analizar_bigquery(log, "failure")
+    assert "KeyError: 'giros'" in m
+
+
+def test_la_clave_ausente_avisa_aunque_el_paso_salga_en_verde():
+    # El paso hace `exit 0` sin la clave: outcome=success y el archivo se
+    # queda quieto sin que nada lo diga.
+    [m] = analizar_bigquery("::warning::Sin GCP_SA_KEY — se omite el espejo en BigQuery.\n", "success")
+    assert "GCP_SA_KEY" in m
+
+
+def test_la_credencial_vencida_dice_que_es_la_clave():
+    log = "EXPORT A BIGQUERY: FALLÓ — no se subió nada.\n('invalid_grant: Invalid JWT Signature.')\n"
+    [m] = analizar_bigquery(log, "failure")
+    assert "GCP_SA_KEY" in m

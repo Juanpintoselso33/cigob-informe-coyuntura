@@ -277,12 +277,45 @@ jobs:
       # se publicó. El sentido inverso no existe — el pipeline nunca lee de
       # BigQuery, para que no pueda volverse un camino que esquive G1-G7.
       #
+      # `continue-on-error` es deliberado, mismo criterio que el aviso de falla:
+      # publicar el informe es el camino crítico. Si BigQuery está caído o la
+      # credencial venció, se pierde una corrida del archivo, no la publicación.
+      - name: Espejar la corrida en BigQuery
+        id: bigquery
+        continue-on-error: true
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          # Todo lo que diga este paso va también a un archivo: el aviso 🟡 de
+          # abajo lo lee. Sin eso, con `continue-on-error`, una falla acá no se
+          # ve en ningún lado — el 9 y el 10-sep-2026 el export rebotó dos
+          # noches (facturación suspendida) con el workflow en verde.
+          set -o pipefail
+          if [ -z "$GCP_SA_KEY" ]; then
+            echo "::warning::Sin GCP_SA_KEY — se omite el espejo en BigQuery." \
+              | tee "$RUNNER_TEMP/bigquery.log"
+            exit 0
+          fi
+          # El runner es efímero, pero igual fuera del árbol de trabajo para
+          # que ningún `git add` posterior pueda alcanzar la clave.
+          printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/gcp-sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/gcp-sa.json"
+          rc=0
+          python scripts/bigquery_export.py 2>&1 | tee "$RUNNER_TEMP/bigquery.log" || rc=$?
+          rm -f "$RUNNER_TEMP/gcp-sa.json"
+          exit $rc
+
       # La corrida salió bien, pero puede haber publicado con datos degradados
       # que no esperábamos. El script calla lo conocido (SAIJ bloquea a los
       # runners por IP y eso ya está decidido) y sólo habla de lo que no
       # entiende: una fuente caída entera, un presupuesto agotado, o un error
       # que NO es de red — esa última clase es la que se disfraza de "fuente
       # caída" y congela una serie, como pasó con icg_utdt durante cuatro días.
+      #
+      # Y el espejo en BigQuery: corre con `continue-on-error`, así que su falla
+      # no cambia el resultado del job. `steps.bigquery.outcome` es el que
+      # guarda la falla real (`conclusion` la disfraza de success). Por eso este
+      # paso va DESPUÉS del espejo, no antes.
       - name: Avisar degradaciones inesperadas
         if: success()
         continue-on-error: true
@@ -290,26 +323,11 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CANAL_ALERTAS: ${{ secrets.SLACK_CANAL_ALERTAS }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: python scripts/aviso_slack.py degradado --log "$RUNNER_TEMP/colectores.log"
-
-      # `continue-on-error` es deliberado, mismo criterio que el aviso de falla:
-      # publicar el informe es el camino crítico. Si BigQuery está caído o la
-      # credencial venció, se pierde una corrida del archivo, no la publicación.
-      - name: Espejar la corrida en BigQuery
-        continue-on-error: true
-        env:
-          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          BIGQUERY_ESTADO: ${{ steps.bigquery.outcome }}
         run: |
-          if [ -z "$GCP_SA_KEY" ]; then
-            echo "::warning::Sin GCP_SA_KEY — se omite el espejo en BigQuery."
-            exit 0
-          fi
-          # El runner es efímero, pero igual fuera del árbol de trabajo para
-          # que ningún `git add` posterior pueda alcanzar la clave.
-          printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/gcp-sa.json"
-          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/gcp-sa.json"
-          python scripts/bigquery_export.py
-          rm -f "$RUNNER_TEMP/gcp-sa.json"
+          python scripts/aviso_slack.py degradado \
+            --log "$RUNNER_TEMP/colectores.log" \
+            --bigquery "$RUNNER_TEMP/bigquery.log" --bigquery-estado "$BIGQUERY_ESTADO"
 
       # ── Aviso de falla ────────────────────────────────────────────────────
       # El pipeline estuvo cortado del 1 al 4 de agosto de 2026 —cuatro noches

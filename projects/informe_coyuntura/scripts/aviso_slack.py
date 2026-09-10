@@ -14,7 +14,8 @@ Modos:
   fallo      la corrida falló y no publicó
   reporte    el mismo diagnóstico en markdown, para el cuerpo del issue
   recuperado volvió a publicar después de al menos una falla
-  degradado  revisa el log de colectores y avisa SÓLO lo inesperado
+  degradado  revisa el log de colectores y el del espejo en BigQuery, y
+             avisa SÓLO lo inesperado
 
 `fallo` y `reporte` comparten el parser: un solo lugar que sabe leer un log de
 corrida, dos formatos de salida. Duplicarlo en bash dentro del workflow es la
@@ -230,6 +231,59 @@ def analizar(log: str) -> list[str]:
     return motivos
 
 
+# ── El espejo en BigQuery ────────────────────────────────────────────────────
+#
+# El paso de BigQuery corre con `continue-on-error`: publicar es el camino
+# crítico y el archivo no puede frenarlo. El costo es que su falla no se ve en
+# ningún lado — el workflow sale en verde. El 8-sep-2026 Google suspendió la
+# cuenta de facturación por un pago rechazado; el export falló el 9 y el 10 con
+# `billingNotEnabled` y nadie se enteró hasta que alguien preguntó. Las dos
+# corridas quedaron fuera del archivo (se recuperan con bigquery_backfill.py
+# porque el snapshot sí se commiteó, pero eso hay que saberlo para hacerlo).
+
+ERROR_BIGQUERY = re.compile(r"^\s*(ERROR:.+|EXPORT A BIGQUERY: FALLÓ.*)$", re.M)
+SIN_CLAVE_BIGQUERY = re.compile(rf"^{_cmd('warning')}Sin GCP_SA_KEY", re.M)
+
+PISTAS_BIGQUERY = {
+    "billingNotEnabled": ("La cuenta de facturación del proyecto está apagada o "
+                          "suspendida (mirá el mail de Google Cloud). Sin facturación "
+                          "BigQuery no acepta el DELETE que hace idempotente la carga."),
+    "invalid_grant": "La clave de la service account (GCP_SA_KEY) venció o fue revocada.",
+}
+
+
+def analizar_bigquery(log: str, estado: str) -> list[str]:
+    """Motivos para avisar del espejo en BigQuery. Vacío = quedó archivado.
+
+    `estado` es `steps.<id>.outcome`: con continue-on-error, `outcome` guarda
+    la falla real y `conclusion` la disfraza de success.
+    """
+    if SIN_CLAVE_BIGQUERY.search(log):
+        return ["La corrida *no quedó archivada en BigQuery*: falta el secreto "
+                "`GCP_SA_KEY`, el paso se saltea sin escribir nada."]
+    if estado != "failure":
+        return []
+
+    m = ERROR_BIGQUERY.search(log)
+    if m:
+        detalle = m.group(1).strip()
+        pista = ""
+        for clave, texto in PISTAS_BIGQUERY.items():
+            if clave in log:
+                pista = texto
+                break
+        cabeza = f"La corrida *no quedó archivada en BigQuery*: `{detalle[:220]}`"
+        return [cabeza + (f"\n    {pista}" if pista else "")
+                + "\n    El snapshot sí se publicó y commiteó: cuando vuelva, se recupera con "
+                  "`bigquery_backfill.py`."]
+
+    fin = cola(log, 3)
+    texto = ("La corrida *no quedó archivada en BigQuery* y el log no dice una causa "
+             "conocida; el final dice:")
+    return [texto + "".join(f"\n    > {l[:200]}" for l in fin)
+            if fin else texto.replace("; el final dice:", ".")]
+
+
 def _reporte(a, pasos, motivos, cols, resumen, fin) -> int:
     """El cuerpo del issue: el mismo diagnóstico, más largo y en markdown.
 
@@ -291,6 +345,9 @@ def main() -> int:
     p.add_argument("--pasos", default="")
     p.add_argument("--log", default="")
     p.add_argument("--gates", default="", help="log del gate y de pytest")
+    p.add_argument("--bigquery", default="", help="log del espejo en BigQuery")
+    p.add_argument("--bigquery-estado", default="",
+                   help="steps.bigquery.outcome: success | failure | skipped")
     p.add_argument("--fallas", type=int, default=1,
                    help="cuántas corridas caídas seguidas lleva el aviso abierto")
     p.add_argument("--estado", default="failure", help="job.status: failure | cancelled")
@@ -343,17 +400,21 @@ def main() -> int:
     if a.modo == "recuperado":
         return publicar(f"🟢 *El pipeline volvió a publicar.* Ya está al día.\n{a.url}")
 
-    if not a.log or not os.path.exists(a.log):
-        return 0
-    motivos = analizar(open(a.log, encoding="utf-8", errors="replace").read())
-    if not motivos:
+    motivos = analizar(_leer(a.log))
+    archivo = analizar_bigquery(_leer(a.bigquery), a.bigquery_estado)
+    if not motivos and not archivo:
         return 0                                   # silencio: nada inesperado
+    if motivos:
+        cabecera = "🟡 *La corrida publicó, pero con datos degradados que no esperábamos.*"
+        pie = "\n\nLas fuentes con degradación conocida (SAIJ) no se avisan."
+    else:
+        cabecera = "🟡 *La corrida publicó, pero no quedó en el archivo histórico.*"
+        pie = ""
     return publicar(
-        "🟡 *La corrida publicó, pero con datos degradados que no esperábamos.*\n"
-        + "\n".join(f"• {m}" for m in motivos)
-        + f"\n\nLas fuentes con degradación conocida (SAIJ) no se avisan.\n{a.url}"
+        cabecera + "\n"
+        + "\n".join(f"• {m}" for m in motivos + archivo)
+        + f"{pie}\n{a.url}"
     )
-
 
 if __name__ == "__main__":
     raise SystemExit(main())
