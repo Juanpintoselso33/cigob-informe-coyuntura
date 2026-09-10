@@ -151,7 +151,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 25% |
 | Peso efectivo en el índice | **4.0%** |
-| Procedencia del ancla | `convencion` — extremos tomados de dic-2023 (−12,2%) y ago-2025 (+33,5%) (ADR-0071) |
+| Procedencia del ancla | `conceptual` — umbrales normativos de una tasa REAL: 0 = frontera de la licuación · 6 ≈ crecimiento potencial (r < g) · 12 y 20 hacia la dinámica explosiva (ADR-0071); dic-2023 y ago-2025 se usaron para validar el rótulo, no para fijar los cortes |
 
 **Bandas**: > 20 → 15 · 12–20 → 45 · 6–12 → 75 · 0–6 → 100 · -5–0 → 55 · ≤ -5 → 20
 

@@ -46,9 +46,7 @@ Suma de pesos: 100%.
 
 #### Eficacia legislativa de proyectos maduros
 
-`eficacia_legislativa` — **Eficacia legislativa de proyectos maduros**
-
-Evalúa publicaciones parlamentarias de hace 365 a 730 días, inclusive, con sanción definitiva hasta el corte. La ficha muestra numerador, denominador y fechas de cohorte. No cubre la agenda reciente. Las bandas conservan sus valores: son una estimación razonada con referencias históricas de otro universo; su validación con cohortes equivalentes está pendiente, como reconoce ADR-0061.
+`eficacia_legislativa`
 
 | | |
 |---|---|

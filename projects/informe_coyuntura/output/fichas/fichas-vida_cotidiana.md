@@ -508,7 +508,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 113,94 kg/hab/año (2026-07).
 
-Sustitución, no menos proteína: la carne vacuna suma 46,8 kg por habitante (−8,4% interanual) y el total de carnes 113,9 kg (−2,0%); la vacuna es el 41,0% de lo que se come. El total se mantiene en o por encima del promedio histórico de largo plazo (112,8 kg), así que lo que cae es la vacuna en favor de pollo y cerdo.
+Consumo aparente: vacuna 46,8 kg por habitante y año (−8,4% interanual); total de las tres carnes 113,9 kg (−2,0% interanual). La vacuna representa 41,0% del total. El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico.
 
 **Color vigente: NARANJA**
 

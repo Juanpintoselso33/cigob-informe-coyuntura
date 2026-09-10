@@ -248,6 +248,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 5% |
 | Peso efectivo en el índice | **1.2%** |
+| Procedencia del ancla | `conceptual` — subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
