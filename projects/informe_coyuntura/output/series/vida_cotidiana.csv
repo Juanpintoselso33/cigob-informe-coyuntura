@@ -128,74 +128,74 @@ fecha,indicador,valor,unidad,fuente
 2016-10-01,subocupacion_demandante,7.2,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
 2016-07-01,subocupacion_demandante,7.0,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
 2016-04-01,subocupacion_demandante,7.7,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
-2026-08-01,sentimiento_digital,64.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-07-01,sentimiento_digital,58.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-06-01,sentimiento_digital,59.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-05-01,sentimiento_digital,63.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-04-01,sentimiento_digital,69.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-03-01,sentimiento_digital,72.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-02-01,sentimiento_digital,66.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-01-01,sentimiento_digital,70.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-12-01,sentimiento_digital,61.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-11-01,sentimiento_digital,69.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-10-01,sentimiento_digital,74.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-09-01,sentimiento_digital,79.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-08-01,sentimiento_digital,85.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-07-01,sentimiento_digital,75.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-06-01,sentimiento_digital,78.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-05-01,sentimiento_digital,78.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-04-01,sentimiento_digital,83.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-03-01,sentimiento_digital,76.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-02-01,sentimiento_digital,84.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-01-01,sentimiento_digital,84.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-12-01,sentimiento_digital,77.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-11-01,sentimiento_digital,81.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-10-01,sentimiento_digital,81.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-09-01,sentimiento_digital,83.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-08-01,sentimiento_digital,86.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-07-01,sentimiento_digital,79.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-06-01,sentimiento_digital,84.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-05-01,sentimiento_digital,98.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-04-01,sentimiento_digital,98.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-03-01,sentimiento_digital,86.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-02-01,sentimiento_digital,89.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-01-01,sentimiento_digital,101.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-12-01,sentimiento_digital,94.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-11-01,sentimiento_digital,102.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-10-01,sentimiento_digital,102.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-09-01,sentimiento_digital,91.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-08-01,sentimiento_digital,101.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-07-01,sentimiento_digital,86.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-06-01,sentimiento_digital,88.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-05-01,sentimiento_digital,90.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-04-01,sentimiento_digital,93.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-03-01,sentimiento_digital,101.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-02-01,sentimiento_digital,83.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-01-01,sentimiento_digital,84.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-12-01,sentimiento_digital,68.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-11-01,sentimiento_digital,84.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-10-01,sentimiento_digital,83.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-09-01,sentimiento_digital,88.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-08-01,sentimiento_digital,106.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-07-01,sentimiento_digital,97.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-06-01,sentimiento_digital,92.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-08-01,sentimiento_digital,63.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-07-01,sentimiento_digital,59.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-06-01,sentimiento_digital,59.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-05-01,sentimiento_digital,64.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-04-01,sentimiento_digital,70.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-03-01,sentimiento_digital,72.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-02-01,sentimiento_digital,65.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-01-01,sentimiento_digital,70.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-12-01,sentimiento_digital,60.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-11-01,sentimiento_digital,68.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-10-01,sentimiento_digital,75.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-09-01,sentimiento_digital,80.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-08-01,sentimiento_digital,86.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-07-01,sentimiento_digital,76.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-06-01,sentimiento_digital,78.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-05-01,sentimiento_digital,78.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-04-01,sentimiento_digital,82.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-03-01,sentimiento_digital,76.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-02-01,sentimiento_digital,84.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-01-01,sentimiento_digital,84.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-12-01,sentimiento_digital,77.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-11-01,sentimiento_digital,82.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-10-01,sentimiento_digital,81.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-09-01,sentimiento_digital,82.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-08-01,sentimiento_digital,85.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-07-01,sentimiento_digital,79.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-06-01,sentimiento_digital,85.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-05-01,sentimiento_digital,99.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-04-01,sentimiento_digital,98.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-03-01,sentimiento_digital,87.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-02-01,sentimiento_digital,90.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-01-01,sentimiento_digital,102.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-12-01,sentimiento_digital,95.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-11-01,sentimiento_digital,102.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-10-01,sentimiento_digital,102.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-09-01,sentimiento_digital,92.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-08-01,sentimiento_digital,103.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-07-01,sentimiento_digital,87.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-06-01,sentimiento_digital,88.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-05-01,sentimiento_digital,90.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-04-01,sentimiento_digital,95.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-03-01,sentimiento_digital,101.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-02-01,sentimiento_digital,83.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-01-01,sentimiento_digital,84.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-12-01,sentimiento_digital,69.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-11-01,sentimiento_digital,85.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-10-01,sentimiento_digital,83.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-09-01,sentimiento_digital,89.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-08-01,sentimiento_digital,106.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-07-01,sentimiento_digital,99.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-06-01,sentimiento_digital,93.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2022-05-01,sentimiento_digital,77.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-04-01,sentimiento_digital,75.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-03-01,sentimiento_digital,78.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-04-01,sentimiento_digital,75.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-03-01,sentimiento_digital,78.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2022-02-01,sentimiento_digital,66.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-01-01,sentimiento_digital,67.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-12-01,sentimiento_digital,59.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-11-01,sentimiento_digital,80.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-10-01,sentimiento_digital,73.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-09-01,sentimiento_digital,72.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-08-01,sentimiento_digital,67.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-07-01,sentimiento_digital,66.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-06-01,sentimiento_digital,67.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-05-01,sentimiento_digital,63.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-04-01,sentimiento_digital,65.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-03-01,sentimiento_digital,69.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-02-01,sentimiento_digital,76.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-01-01,sentimiento_digital,70.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-01-01,sentimiento_digital,68.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-12-01,sentimiento_digital,59.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-11-01,sentimiento_digital,81.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-10-01,sentimiento_digital,74.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-09-01,sentimiento_digital,72.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-08-01,sentimiento_digital,69.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-07-01,sentimiento_digital,66.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-06-01,sentimiento_digital,67.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-05-01,sentimiento_digital,64.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-04-01,sentimiento_digital,64.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-03-01,sentimiento_digital,69.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-02-01,sentimiento_digital,76.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-01-01,sentimiento_digital,70.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2026-07-01,pobreza_nowcast,31.3,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
 2026-06-01,pobreza_nowcast,31.6,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
 2026-05-01,pobreza_nowcast,29.6,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
@@ -598,39 +598,40 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,itvc_lider,95.6,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2023-11-01,itvc_lider,100.9,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2023-10-01,itvc_lider,103.5,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2026-06-01,itvc_isac,82.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2026-05-01,itvc_isac,85.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2026-04-01,itvc_isac,80.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2026-03-01,itvc_isac,83.5,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2026-02-01,itvc_isac,79.5,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2026-01-01,itvc_isac,80.5,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2025-12-01,itvc_isac,80.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-07-01,itvc_isac,77.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-06-01,itvc_isac,81.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-05-01,itvc_isac,85.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-04-01,itvc_isac,80.0,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-03-01,itvc_isac,84.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-02-01,itvc_isac,79.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-01-01,itvc_isac,80.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-12-01,itvc_isac,80.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2025-11-01,itvc_isac,78.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2025-10-01,itvc_isac,81.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2025-09-01,itvc_isac,81.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2025-08-01,itvc_isac,80.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2025-07-01,itvc_isac,80.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2025-06-01,itvc_isac,81.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2025-05-01,itvc_isac,80.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2025-04-01,itvc_isac,82.5,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2025-03-01,itvc_isac,77.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2025-02-01,itvc_isac,80.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2025-01-01,itvc_isac,78.3,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-09-01,itvc_isac,81.5,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-08-01,itvc_isac,80.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-07-01,itvc_isac,81.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-06-01,itvc_isac,81.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-05-01,itvc_isac,79.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-04-01,itvc_isac,82.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-03-01,itvc_isac,77.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-02-01,itvc_isac,80.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-01-01,itvc_isac,78.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2024-12-01,itvc_isac,80.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2024-11-01,itvc_isac,78.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2024-10-01,itvc_isac,74.9,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2024-09-01,itvc_isac,78.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2024-08-01,itvc_isac,77.5,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2024-07-01,itvc_isac,78.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2024-06-01,itvc_isac,73.9,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2024-05-01,itvc_isac,71.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2024-04-01,itvc_isac,65.9,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2024-03-01,itvc_isac,66.0,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2024-02-01,itvc_isac,76.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-10-01,itvc_isac,74.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-09-01,itvc_isac,78.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-08-01,itvc_isac,77.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-07-01,itvc_isac,79.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-06-01,itvc_isac,73.3,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-05-01,itvc_isac,71.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-04-01,itvc_isac,65.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-03-01,itvc_isac,66.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-02-01,itvc_isac,76.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2024-01-01,itvc_isac,79.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2023-12-01,itvc_isac,92.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2023-12-01,itvc_isac,92.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2023-11-01,itvc_isac,103.0,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
-2023-10-01,itvc_isac,104.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2023-10-01,itvc_isac,104.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2026-05-01,itvc_endeudamiento,171.5,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2026-04-01,itvc_endeudamiento,173.3,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2026-03-01,itvc_endeudamiento,175.4,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
@@ -1029,7 +1030,7 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,icc_utdt,40.5,índice,"UTDT (ICC, serie XLS)"
 2021-08-01,icc_utdt,39.8,índice,"UTDT (ICC, serie XLS)"
 2021-07-01,icc_utdt,37.9,índice,"UTDT (ICC, serie XLS)"
-2026-09-01,endeudamiento_familiar,45.79,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-09-01,endeudamiento_familiar,45.21,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-08-01,endeudamiento_familiar,47.23,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-07-01,endeudamiento_familiar,47.12,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-06-01,endeudamiento_familiar,47.3,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
@@ -1105,66 +1106,66 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,empleo_registrado,6379.1,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
 2023-11-01,empleo_registrado,6385.8,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
 2023-10-01,empleo_registrado,6374.4,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
-2026-06-01,despacho_cemento,148.11,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2026-05-01,despacho_cemento,154.5,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2026-04-01,despacho_cemento,144.87,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2026-03-01,despacho_cemento,150.47,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2026-02-01,despacho_cemento,143.25,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2026-01-01,despacho_cemento,145.09,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-12-01,despacho_cemento,145.45,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-11-01,despacho_cemento,140.68,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-10-01,despacho_cemento,146.67,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-09-01,despacho_cemento,146.61,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-08-01,despacho_cemento,144.57,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-07-01,despacho_cemento,144.95,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-06-01,despacho_cemento,147.34,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-05-01,despacho_cemento,144.51,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-04-01,despacho_cemento,148.59,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-03-01,despacho_cemento,138.86,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-02-01,despacho_cemento,145.41,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2025-01-01,despacho_cemento,141.1,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-12-01,despacho_cemento,145.16,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-11-01,despacho_cemento,141.63,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-10-01,despacho_cemento,134.9,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-09-01,despacho_cemento,141.56,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-08-01,despacho_cemento,139.66,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-07-01,despacho_cemento,141.81,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-06-01,despacho_cemento,133.09,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-05-01,despacho_cemento,128.95,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-04-01,despacho_cemento,118.81,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-03-01,despacho_cemento,118.99,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-02-01,despacho_cemento,137.65,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2024-01-01,despacho_cemento,143.63,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-12-01,despacho_cemento,166.94,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-11-01,despacho_cemento,185.59,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-10-01,despacho_cemento,188.04,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-09-01,despacho_cemento,188.14,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-08-01,despacho_cemento,189.28,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-07-01,despacho_cemento,190.73,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-06-01,despacho_cemento,192.16,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-05-01,despacho_cemento,192.84,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-04-01,despacho_cemento,198.17,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-03-01,despacho_cemento,195.62,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-02-01,despacho_cemento,184.36,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2023-01-01,despacho_cemento,186.17,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-12-01,despacho_cemento,182.85,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-11-01,despacho_cemento,188.06,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-10-01,despacho_cemento,188.89,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-09-01,despacho_cemento,192.34,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-08-01,despacho_cemento,195.59,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-07-01,despacho_cemento,201.51,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-06-01,despacho_cemento,199.81,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-05-01,despacho_cemento,202.64,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-04-01,despacho_cemento,200.65,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-03-01,despacho_cemento,193.04,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-02-01,despacho_cemento,199.87,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2022-01-01,despacho_cemento,188.97,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2021-12-01,despacho_cemento,198.81,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2021-11-01,despacho_cemento,190.92,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2021-10-01,despacho_cemento,187.98,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2021-09-01,despacho_cemento,185.36,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2021-08-01,despacho_cemento,186.38,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
-2021-07-01,despacho_cemento,188.23,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-07-01,despacho_cemento,140.16,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-06-01,despacho_cemento,146.85,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-05-01,despacho_cemento,153.39,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-04-01,despacho_cemento,144.07,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-03-01,despacho_cemento,151.44,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-02-01,despacho_cemento,142.95,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-01-01,despacho_cemento,145.15,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-12-01,despacho_cemento,145.41,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-11-01,despacho_cemento,140.62,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-10-01,despacho_cemento,146.54,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-09-01,despacho_cemento,146.76,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-08-01,despacho_cemento,144.84,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-07-01,despacho_cemento,147.09,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-06-01,despacho_cemento,146.03,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-05-01,despacho_cemento,143.51,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-04-01,despacho_cemento,147.92,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-03-01,despacho_cemento,139.67,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-02-01,despacho_cemento,145.11,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-01-01,despacho_cemento,141.18,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-12-01,despacho_cemento,145.12,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-11-01,despacho_cemento,141.61,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-10-01,despacho_cemento,134.61,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-09-01,despacho_cemento,141.72,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-08-01,despacho_cemento,139.99,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-07-01,despacho_cemento,143.71,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-06-01,despacho_cemento,132.03,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-05-01,despacho_cemento,128.25,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-04-01,despacho_cemento,118.31,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-03-01,despacho_cemento,119.64,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-02-01,despacho_cemento,137.28,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-01-01,despacho_cemento,143.55,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-12-01,despacho_cemento,166.95,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-11-01,despacho_cemento,185.54,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-10-01,despacho_cemento,187.71,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-09-01,despacho_cemento,188.26,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-08-01,despacho_cemento,189.49,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-07-01,despacho_cemento,192.36,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-06-01,despacho_cemento,191.19,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-05-01,despacho_cemento,191.97,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-04-01,despacho_cemento,197.67,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-03-01,despacho_cemento,196.8,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-02-01,despacho_cemento,184.07,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-01-01,despacho_cemento,186.1,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-12-01,despacho_cemento,182.92,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-11-01,despacho_cemento,188.12,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-10-01,despacho_cemento,188.61,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-09-01,despacho_cemento,192.46,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-08-01,despacho_cemento,195.84,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-07-01,despacho_cemento,202.68,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-06-01,despacho_cemento,199.03,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-05-01,despacho_cemento,201.87,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-04-01,despacho_cemento,200.21,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-03-01,despacho_cemento,193.87,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-02-01,despacho_cemento,199.59,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-01-01,despacho_cemento,188.89,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-12-01,despacho_cemento,198.97,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-11-01,despacho_cemento,191.04,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-10-01,despacho_cemento,187.8,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-09-01,despacho_cemento,185.31,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-08-01,despacho_cemento,186.57,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
 2026-01-01,desocupacion,0.078,%,INDEC/datos.gob.ar
 2025-10-01,desocupacion,0.075,%,INDEC/datos.gob.ar
 2025-07-01,desocupacion,0.066,%,INDEC/datos.gob.ar
