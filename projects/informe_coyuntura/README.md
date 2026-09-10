@@ -220,7 +220,7 @@ pytrends>=4.9.2
 
 ## Avisos de datos que requieren cotejo manual
 
-El pipeline envía al canal `SLACK_CANAL_ALERTAS` las incidencias `[COTEJO_MANUAL]` emitidas por los colectores, tanto si la corrida termina bien como si falla. Cada aviso identifica indicador, registro, problema y fuente; el mensaje incluye el enlace a la corrida. Repeticiones idénticas se agrupan dentro de esa corrida. Mientras no se corrija el dato, puede volver a avisar en la corrida siguiente.
+El pipeline envía al canal `SLACK_CANAL_ALERTAS` las incidencias `[COTEJO_MANUAL]` emitidas por los colectores, tanto si la corrida termina bien como si falla. Cada aviso identifica indicador, registro, problema y fuente; el mensaje incluye el enlace a la corrida. Repeticiones idénticas se agrupan dentro de esa corrida. Mientras no se corrija el dato, puede volver a avisar en la corrida siguiente. En el 🔴 de una corrida caída los cotejos van en una sección aparte de las causas de la falla, con presupuesto propio (5 causas y 3 cotejos, el resto en el run): muchos de una clase nunca esconden a la otra.
 
 El primer detector revisa fechas de sanción ausentes, `NA` o inválidas en el catálogo de HCDN. Solicita cotejar expediente o ley y registrar la fecha real con respaldo; no asigna la fecha de consulta ni modifica valores automáticamente. Otros colectores pueden registrar incidencias con `cotejo_manual.registrar`; esta infraestructura no detecta por sí sola todas las posibles inconsistencias. Sin incidencias, no genera avisos adicionales. Las pruebas del transporte usan un emisor simulado.
 

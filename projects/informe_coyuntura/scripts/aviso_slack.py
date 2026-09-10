@@ -139,7 +139,7 @@ def causas(log: str) -> list[str]:
         if texto and not RUIDO_GENERICO.match(texto):
             _sumar(texto[:300])
 
-    return avisos_cotejo(log) + fuera
+    return fuera
 
 
 def resumen_pytest(log: str) -> str:
@@ -286,7 +286,24 @@ def analizar_bigquery(log: str, estado: str) -> list[str]:
             if fin else texto.replace("; el final dice:", ".")]
 
 
-def _reporte(a, pasos, motivos, cols, resumen, fin) -> int:
+# Presupuesto de líneas del 🔴: las causas reales y los cotejos pendientes van
+# en secciones separadas, cada una con su tope, para que muchos de una clase
+# nunca escondan a la otra. La causa de la falla no se repite a la noche
+# siguiente; el cotejo sí, así que es la causa la que no puede quedar afuera.
+TOPE_CAUSAS = 5
+TOPE_COTEJOS = 3
+
+
+def _seccion(cuerpo: list[str], titulo: str, items: list[str], tope: int) -> None:
+    if not items:
+        return
+    cuerpo.append(titulo)
+    cuerpo += [f"• {m}" for m in items[:tope]]
+    if len(items) > tope:
+        cuerpo.append(f"  …y {len(items) - tope} más, en el run.")
+
+
+def _reporte(a, pasos, motivos, cols, resumen, fin, cotejos=()) -> int:
     """El cuerpo del issue: el mismo diagnóstico, más largo y en markdown.
 
     Acá sí conviene ser verboso — el issue es el registro y se lee después,
@@ -320,6 +337,14 @@ def _reporte(a, pasos, motivos, cols, resumen, fin) -> int:
         out.append("_No se pudo leer la causa del log. Está en el run._")
     if resumen:
         out.append(f"\nFalló **{resumen}**.")
+
+    if cotejos:
+        out.append("\n## Cotejo manual pendiente\n")
+        for m in cotejos:
+            cabeza, _, cola = m.partition("\n")
+            out.append(f"- `{cabeza}`")
+            if cola.strip():
+                out.append(f"  > {cola.strip()}")
 
     out.append("\n## Qué sí anduvo\n")
     if cols:
@@ -361,12 +386,13 @@ def main() -> int:
         texto_gates = _leer(a.gates)
         texto_cols = _leer(a.log)
         motivos = causas(texto_gates + "\n" + texto_cols)
+        cotejos = avisos_cotejo(texto_gates + "\n" + texto_cols)
         cols = colectores(texto_cols)
         resumen = resumen_pytest(texto_gates)
 
         if a.modo == "reporte":
             return _reporte(a, pasos, motivos, cols, resumen,
-                            cola(texto_gates or texto_cols))
+                            cola(texto_gates or texto_cols), cotejos)
 
         cancelado = a.estado == "cancelled"
         cabecera = ("🔴 *El pipeline nocturno se cortó sin publicar.*"
@@ -376,10 +402,7 @@ def main() -> int:
             cuerpo.append(CANCELADO)
         cuerpo.append("*Paso:* " + (", ".join(pasos) or "no se pudo determinar"))
         if motivos:
-            cuerpo.append("*Qué falló:*")
-            cuerpo += [f"• {m}" for m in motivos[:5]]
-            if len(motivos) > 5:
-                cuerpo.append(f"  …y {len(motivos) - 5} más, en el run.")
+            _seccion(cuerpo, "*Qué falló:*", motivos, TOPE_CAUSAS)
         else:
             fin = cola(texto_gates or texto_cols)
             if fin:
@@ -391,6 +414,7 @@ def main() -> int:
             cuerpo.append(f"*Pruebas:* falló {resumen}.")
         if cols:
             cuerpo.append(f"*Colectores:* {_linea_colectores(cols)}.")
+        _seccion(cuerpo, "*Cotejo manual pendiente:*", cotejos, TOPE_COTEJOS)
         cuerpo.append(
             "\nLa web sigue mostrando la corrida anterior"
             + (f" ({a.sirviendo})" if a.sirviendo else "")

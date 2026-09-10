@@ -180,29 +180,78 @@ def test_el_test_mira_algo():
     assert len(con_peso) >= 10, f"sólo {len(con_peso)} fichas declaran peso interno"
 
 
-# Lo que las cinco fichas legislativas afirman en su incidencia: el peso nominal
-# de cada componente y que, cuando a uno le falta universo, el peso se
-# redistribuye entre los que puntúan. Se verifica ejecutando el motor sobre el
-# snapshot publicado, no leyendo la prosa: la app es la fuente de verdad.
-PESO_NOMINAL_PUBLICADO = {
-    "desafios_legislativos": 13, "ratio_dnu": 20, "eficacia_legislativa": 27,
-    "veto_quorum": 13, "bloqueo_sostenido": 12,
-}
+# Las fichas legislativas publican en /metodologia/<id> su peso nominal dentro
+# de la dimensión. Se contrasta el TEXTO PÚBLICO EMITIDO por el build de Astro
+# (web/dist) contra el motor ejecutado, no el fuente: si falta Node o el build
+# falla, la prueba falla con el motivo — no se saltea.
+WEB = ROOT / "web"
+DIST = WEB / "dist"
+
+
+def _paginas_ficha_emitidas() -> dict:
+    """{id: [párrafos de la ficha]} leídos del HTML que emite `astro build`."""
+    import subprocess
+    from html.parser import HTMLParser
+    fuentes = [WEB / "src/lib/fichas.ts", ROOT / "web/src/data/informe.json",
+               WEB / "src/pages/metodologia/[id].astro"]
+    sello = DIST / "metodologia" / "index.html"
+    if not sello.exists() or sello.stat().st_mtime < max(f.stat().st_mtime for f in fuentes):
+        if not (WEB / "node_modules").exists():
+            r = subprocess.run(["npm", "ci", "--no-audit", "--no-fund"], cwd=WEB,
+                               capture_output=True, text=True)
+            assert r.returncode == 0, f"npm ci falló, no hay artefacto que contrastar:\n{r.stderr[-2000:]}"
+        r = subprocess.run(["npm", "run", "build"], cwd=WEB, capture_output=True, text=True)
+        assert r.returncode == 0, f"astro build falló, no hay artefacto que contrastar:\n{r.stderr[-2000:]}"
+    assert sello.exists(), f"el build no emitió {sello}"
+
+    class Parrafos(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.parrafos, self._abierto = [], False
+        def handle_starttag(self, tag, attrs):
+            if tag == "p" and ("class", "cg-ficha-p") in attrs:
+                self._abierto = True
+                self.parrafos.append("")
+        def handle_endtag(self, tag):
+            if tag == "p":
+                self._abierto = False
+        def handle_data(self, data):
+            if self._abierto:
+                self.parrafos[-1] += data
+
+    out = {}
+    for pagina in sorted((DIST / "metodologia").glob("*/index.html")):
+        parser = Parrafos()
+        parser.feed(pagina.read_text(encoding="utf-8"))
+        out[pagina.parent.name] = parser.parrafos
+    return out
 
 
 def test_pesos_nominales_legislativos_coinciden_con_diseno():
     import copy
     sys.path.insert(0, str(ROOT / "scripts"))
     import politica
+    paginas = _paginas_ficha_emitidas()
+    assert len(paginas) >= 28, f"el build emitió {len(paginas)} fichas: ¿cambió la ruta?"
     indicadores = copy.deepcopy(INFORME["cinturones"]["politica"]["indicadores"])
-    for clave in PESO_NOMINAL_PUBLICADO:
+    legislativos = list(politica.itcp.DIMENSIONES_ITCP["poder_legislativo"]["indicadores"])
+    for clave in legislativos:
         indicadores[clave] = {**indicadores[clave], "valor": 50.0, "estado": None}
     dim = politica.calcular_itcp_cinturon(indicadores)["dimensiones"]["poder_legislativo"]
     assert dim["peso"] == 0.21
-    for clave, nominal in PESO_NOMINAL_PUBLICADO.items():
+    verificadas = 0
+    for clave in legislativos:
+        texto = " ".join(paginas.get(clave, []))
+        m = re.search(r"peso nominal de (\d+(?:,\d+)?)\s*%", texto)
+        if not m:
+            continue
         componente = dim["indicadores"][clave]
-        assert abs(componente["peso"] * 100 - nominal) < TOLERANCIA_PP, clave
+        assert abs(_num(m[1]) - componente["peso"] * 100) < TOLERANCIA_PP, (
+            f"{clave}: la ficha publicada dice {m[1]}%, el motor usa {componente['peso'] * 100:.0f}%")
+        assert "peso efectivo" in texto, clave
         assert componente["peso_efectivo"] == round(0.21 * componente["peso"], 4), clave
+        verificadas += 1
+    assert verificadas == 5
 
     # Sin universo en un componente, los demás absorben su peso.
     indicadores["bloqueo_sostenido"] = {**indicadores["bloqueo_sostenido"],

@@ -2400,14 +2400,15 @@ def _avisar_vencimiento_judicial(corte: str) -> None:
     from config import dias_sin_fetch_tolerados
     from cotejo_manual import registrar
     tope = dias_sin_fetch_tolerados("cobertura_judicial")
-    restantes = tope - (date.today() - date.fromisoformat(corte)).days
+    dias_sin_fetch = (date.today() - date.fromisoformat(corte)).days
+    restantes = tope - dias_sin_fetch
     if restantes > JUDICIAL_AVISO_DIAS_ANTES:
         return
-    plazo = (f"vence en {restantes} días" if restantes > 0 else
-             "venció hoy" if restantes == 0 else f"venció hace {-restantes} días")
+    plazo = (f"vence en {restantes + 1} días" if restantes > 0 else
+             "vence mañana" if restantes == 0 else f"venció hace {-restantes} días")
     registrar("cobertura_judicial", f"conciliación revisada al {corte}",
-              f"La conciliación judicial {plazo} (tope de {tope} días sin fetch del gate G2b, "
-              "que corta la publicación). Renovarla verificando las fuentes reales: CSV de "
+              f"La conciliación judicial {plazo}: lleva {dias_sin_fetch} días sin fetch y el gate "
+              f"G2b corta la publicación cuando supera {tope}. Renovarla verificando las fuentes reales: CSV de "
               "designaciones y renuncias del Ministerio de Justicia, Boletín Oficial y Consejo "
               "de la Magistratura; incorporar los movimientos y bajas nuevos y recién entonces "
               "fechar revisado_hasta y revisado_el en data/politica/cobertura_judicial_*.json. "

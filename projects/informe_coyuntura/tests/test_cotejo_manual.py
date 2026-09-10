@@ -10,7 +10,7 @@ from cotejo_manual import revisar_fechas_sancion, avisos
 def test_fecha_invalida_llega_al_aviso_con_registro_y_fuente(fecha, capsys):
     revisar_fechas_sancion([{'PROYECTO_ID':'HCDN1', 'SANCION_DEFINITIVA':fecha}], 'https://datos.hcdn.gob.ar')
     log=capsys.readouterr().err
-    for parser in (aviso_slack.analizar, aviso_slack.causas):
+    for parser in (aviso_slack.analizar, aviso_slack.avisos_cotejo):
         mensajes=parser(log+log)
         assert len(mensajes)==1
         assert 'HCDN1' in mensajes[0] and 'https://datos.hcdn.gob.ar' in mensajes[0]
@@ -49,6 +49,42 @@ def test_fallo_con_muchas_causas_no_oculta_cotejo(tmp_path,monkeypatch,capsys):
     monkeypatch.setattr(sys,'argv',['aviso_slack','fallo','--log',str(p),'--url','https://github.com/run/1'])
     assert aviso_slack.main()==0
     assert 'Cotejo manual' in enviados[0] and 'HCDN1' in enviados[0]
+
+
+def _log_con_muchas_causas_y_cotejos(tmp_path, capsys):
+    revisar_fechas_sancion([{'PROYECTO_ID': f'HCDN{n}'} for n in range(7)], 'https://datos.hcdn.gob.ar')
+    p = tmp_path / 'log'
+    p.write_text(capsys.readouterr().err
+                 + '\n'.join(f'FAILED tests/test_x.py::test_{n} - error' for n in range(8)))
+    return p
+
+
+def test_fallo_muestra_causas_y_cotejos_en_secciones_con_presupuesto_propio(tmp_path, monkeypatch, capsys):
+    p = _log_con_muchas_causas_y_cotejos(tmp_path, capsys)
+    enviados = []
+    monkeypatch.setattr(aviso_slack, 'publicar', lambda cuerpo: enviados.append(cuerpo) or 0)
+    monkeypatch.setattr(sys, 'argv', ['aviso_slack', 'fallo', '--log', str(p), '--url', 'https://github.com/run/1'])
+    assert aviso_slack.main() == 0
+    cuerpo = enviados[0]
+    causas, _, cotejos = cuerpo.partition('*Cotejo manual pendiente:*')
+    assert '*Qué falló:*' in causas
+    assert all(f'test_{n}' in causas for n in range(5)) and 'test_5' not in cuerpo
+    assert '…y 3 más, en el run.' in causas
+    assert 'HCDN' not in causas
+    assert sum(f'HCDN{n}' in cotejos for n in range(7)) == 3
+    assert '…y 4 más, en el run.' in cotejos
+    assert 'https://github.com/run/1' in cuerpo
+
+
+def test_reporte_del_issue_lista_todos_los_cotejos_aparte(tmp_path, monkeypatch, capsys):
+    p = _log_con_muchas_causas_y_cotejos(tmp_path, capsys)
+    monkeypatch.setattr(sys, 'argv', ['aviso_slack', 'reporte', '--log', str(p), '--url', 'https://github.com/run/1'])
+    assert aviso_slack.main() == 0
+    salida = capsys.readouterr().out
+    fallo, _, cotejo = salida.partition('## Cotejo manual pendiente')
+    assert '## Qué falló, en concreto' in fallo and 'HCDN' not in fallo
+    assert all(f'test_{n}' in fallo for n in range(8))
+    assert all(f'HCDN{n}' in cotejo for n in range(7))
 
 
 # ── Correcciones documentadas y actas sin fecha ──────────────────────────────
@@ -152,7 +188,7 @@ def test_acta_con_fecha_documentada_se_acredita_sin_aviso(tmp_path, monkeypatch,
 
 
 # ── Conciliación judicial: avisa antes de que G2b corte la publicación ───────
-@pytest.mark.parametrize('dias_atras, avisa', [(3, False), (10, True), (20, True)])
+@pytest.mark.parametrize('dias_atras, avisa', [(3, False), (10, True), (14, True), (20, True)])
 def test_conciliacion_judicial_avisa_antes_de_vencer(monkeypatch, capsys, dias_atras, avisa):
     corte = (date.today() - timedelta(days=dias_atras)).isoformat()
     meta = {'total_cargos': 955, 'vacantes_padron': 345, 'fecha_padron': '2026-06-05',
@@ -167,4 +203,4 @@ def test_conciliacion_judicial_avisa_antes_de_vencer(monkeypatch, capsys, dias_a
     assert bool(mensajes) is avisa
     if avisa:
         assert corte in mensajes[0] and 'revisado_hasta' in mensajes[0]
-        assert ('venció' if dias_atras > 14 else 'vence en') in mensajes[0]
+        assert {10: 'vence en 5 días', 14: 'vence mañana', 20: 'venció hace 6 días'}[dias_atras] in mensajes[0]
