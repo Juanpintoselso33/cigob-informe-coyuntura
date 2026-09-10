@@ -1,0 +1,853 @@
+{
+  "fecha_padron": "2026-06-05",
+  "revisado_hasta": "2026-09-08",
+  "estado": "reconstruccion_estimada_con_limites",
+  "criterio": "Ajustes documentados del flujo de titulares sobre el universo habilitado del padrón. No equivalen a cargos en ejercicio: el momento de jura puede diferir del nombramiento.",
+  "limites": [
+    "No incorpora órganos no habilitados en el padrón sin una fuente de habilitación.",
+    "No certifica el calendario de juras ni la exhaustividad de fallecimientos.",
+    "Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen."
+  ],
+  "movimientos": [
+    {
+      "norma": "465/2026",
+      "tipo": "designacion",
+      "fecha": "2026-06-12",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "ROMERO, Analía Victoria",
+      "cargo_previo": "Juzgado Nacional de Primera Instancia en lo Civil N° 40",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, Sala E",
+      "fuente": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv"
+    },
+    {
+      "norma": "527/2026",
+      "tipo": "designacion",
+      "fecha": "2026-06-24",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "PELUZZI, Marcelo Alejandro",
+      "cargo_previo": "Juzgado Nacional de Ejecución Penal N° 4",
+      "cargo_nuevo": "Juez de Cámara del Tribunal Oral en lo Criminal y Correccional Nº 2 de la Capital Federal",
+      "fuente": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv"
+    },
+    {
+      "norma": "510/2026",
+      "tipo": "designacion",
+      "fecha": "2026-06-24",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "STRASSER, Fernando",
+      "cargo_previo": "Juzgado Federal de Primera Instancia de la Seguridad Social Nº 2",
+      "cargo_nuevo": "Vocal de la Cámara Federal de la Seguridad Social, Sala III",
+      "fuente": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv"
+    },
+    {
+      "norma": "522/2026",
+      "tipo": "designacion",
+      "fecha": "2026-06-24",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "BISCARDI, Samanta Claudia",
+      "cargo_previo": "Juzgado Nacional de Primera Instancia en lo Civil N° 81 (Familia)",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Fereral, Sala E",
+      "fuente": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv"
+    },
+    {
+      "norma": "524/2026",
+      "tipo": "designacion",
+      "fecha": "2026-06-24",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "CASTRO, Paula Andrea",
+      "cargo_previo": "Juzgado Nacional de Primera Instancia en lo Civil N° 93",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, SALA F",
+      "fuente": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv"
+    },
+    {
+      "norma": "529/2026",
+      "tipo": "designacion",
+      "fecha": "2026-06-24",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "CÓRDOBA, Lucila Inés",
+      "cargo_previo": "Juzgado Nacional de Primera Instancia en lo Civil N° 8 (Familia)",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, Sala K",
+      "fuente": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv"
+    },
+    {
+      "norma": "528/2026",
+      "tipo": "designacion",
+      "fecha": "2026-06-24",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "QUIAN ZAVALÍA, Santiago",
+      "cargo_previo": "Juzgado Nacional en lo Criminal y Correccional N° 32",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Criminal y Correcional de la Capital Federal, Vocalía Nº 20",
+      "fuente": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv"
+    },
+    {
+      "norma": "530/2026",
+      "tipo": "designacion",
+      "fecha": "2026-06-24",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "CARNOTA, Walter Fabián",
+      "cargo_previo": "Juzgado Federal de Primera Instancia de la Seguridad Social Nº 3",
+      "cargo_nuevo": "Vocal de la Cámara Federal de Apelaciones de la Seguridad Social, Sala II",
+      "fuente": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv"
+    },
+    {
+      "norma": "538/2026",
+      "tipo": "designacion",
+      "fecha": "2026-06-24",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "BERNAN, Yamile Susana",
+      "cargo_previo": "Juzgado Nacional en lo Criminal y Correccional N° 8",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Criminal y Correcional de la Capital Federal, Vocalía Nº 14",
+      "fuente": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv"
+    },
+    {
+      "norma": "493/2026",
+      "tipo": "designacion",
+      "fecha": "2026-06-24",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "DECARIA, Hugo Fabián",
+      "cargo_previo": "Juzgado Nacional en lo Criminal y Correccional N° 20",
+      "cargo_nuevo": "Juez de Cámara del Tribunal Oral en lo Criminal y Correccional Nº 3 de la Capital Federal",
+      "fuente": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv"
+    },
+    {
+      "norma": "887/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347026/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "883/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347021/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "896/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347032/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "886/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347023/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "888/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 0,
+      "motivo": "Persona ya titular en el padrón; no se suma otra vez al agregado.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347019/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": [
+        "Juzgado Nacional de Primera Instancia en lo Comercial N° 18"
+      ]
+    },
+    {
+      "norma": "880/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 0,
+      "motivo": "Persona ya titular en el padrón; no se suma otra vez al agregado.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347025/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": [
+        "Juzgado Federal de Primera Instancia de la Seguridad Social Nº 7"
+      ]
+    },
+    {
+      "norma": "905/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347044/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "904/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347035/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "902/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347034/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "923/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347046/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "900/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347033/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "933/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347057/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "916/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347037/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "935/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347029/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "919/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347027/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "920/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347040/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "894/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347022/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "917/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347041/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "899/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347036/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "925/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 0,
+      "motivo": "Persona ya titular en el padrón; no se suma otra vez al agregado.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347024/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": [
+        "Tribunal Oral de Menores N° 3"
+      ]
+    },
+    {
+      "norma": "938/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347059/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "928/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347050/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "910/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347042/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "913/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347054/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "927/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347051/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "915/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347049/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "909/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347039/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "882/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347060/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "929/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347048/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "931/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347053/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "918/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 0,
+      "motivo": "Destino no habilitado en el padrón base; no se añade al numerador de los 955 cargos. Se requiere verificar habilitación y efectos sobre el cargo de origen.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347058/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": [
+        "Juzgado Nacional de Primera Instancia en lo Civil N° 104"
+      ]
+    },
+    {
+      "norma": "922/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347043/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "895/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347030/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "879/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347020/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "926/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347047/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "906/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347055/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "901/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347038/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "914/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347056/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "889/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347031/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "930/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347052/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "892/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347028/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "921/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-07",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347045/20260908",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "848/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-01",
+      "delta": 0,
+      "motivo": "Persona ya titular en el padrón; no se suma otra vez al agregado.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346762/20260902",
+      "clasificacion": "designacion",
+      "cargo_previo": [
+        "Tribunal Oral en lo Criminal Federal Nº 1 de La Plata"
+      ]
+    },
+    {
+      "norma": "847/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-01",
+      "delta": 0,
+      "motivo": "Persona ya titular en el padrón; no se suma otra vez al agregado.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346764/20260902",
+      "clasificacion": "designacion",
+      "cargo_previo": [
+        "Juzgado Nacional de Primera Instancia en lo Penal Económico Nº 2"
+      ]
+    },
+    {
+      "norma": "853/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-01",
+      "delta": 0,
+      "motivo": "Renovación de un titular existente; efecto neto nulo.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346763/20260902",
+      "clasificacion": "renovacion",
+      "cargo_previo": [
+        "Sala B"
+      ]
+    },
+    {
+      "norma": "664/2026",
+      "tipo": "renuncia",
+      "fecha": "2026-09-01",
+      "delta": -1,
+      "motivo": "Renuncia efectiva desde la fecha del artículo 1.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344979/20260728",
+      "clasificacion": "renuncia",
+      "cargo_previo": [
+        "Juzgado Federal de Primera Instancia N° 1 de Neuquen"
+      ]
+    },
+    {
+      "norma": "633/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344689/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "638/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344703/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "640/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344702/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "621/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344683/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "646/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 0,
+      "motivo": "Lista de conjueces; no cubre cargos titulares.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344686/20260722",
+      "clasificacion": "conjueces",
+      "cargo_previo": []
+    },
+    {
+      "norma": "641/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344696/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "631/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344694/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "619/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344682/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "642/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344695/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "635/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 0,
+      "motivo": "Persona ya titular en el padrón; no se suma otra vez al agregado.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344697/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": [
+        "Juzgado Nacional de Primera Instancia en lo Comercial N° 8"
+      ]
+    },
+    {
+      "norma": "624/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 0,
+      "motivo": "Persona ya titular en el padrón; no se suma otra vez al agregado.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344684/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": [
+        "Juzgado Nacional de Primera Instancia del Trabajo N° 38"
+      ]
+    },
+    {
+      "norma": "627/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 0,
+      "motivo": "Persona ya titular en el padrón; no se suma otra vez al agregado.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344693/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": [
+        "Juzgado Nacional de Primera Instancia del Trabajo N° 34"
+      ]
+    },
+    {
+      "norma": "625/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344690/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "637/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344700/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "644/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344699/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "645/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 0,
+      "motivo": "Renovación de un titular existente; efecto neto nulo.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344688/20260722",
+      "clasificacion": "renovacion",
+      "cargo_previo": [
+        "Juzgado Federal de Primera Instancia N° 2 de San Juan"
+      ]
+    },
+    {
+      "norma": "620/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 0,
+      "motivo": "Persona ya titular en el padrón; no se suma otra vez al agregado.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344685/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": [
+        "Juzgado Nacional de Primera Instancia del Trabajo N° 33"
+      ]
+    },
+    {
+      "norma": "623/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344692/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "634/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 0,
+      "motivo": "Persona ya titular en el padrón; no se suma otra vez al agregado.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344701/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": [
+        "Juzgado Federal de Primera Instancia Nº 2 de Mar del Plata"
+      ]
+    },
+    {
+      "norma": "632/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344691/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "639/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344698/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "622/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-21",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344687/20260722",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "615/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-20",
+      "delta": 0,
+      "motivo": "Renovación de un titular existente; efecto neto nulo.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344585/20260721",
+      "clasificacion": "renovacion",
+      "cargo_previo": [
+        "Sala VIII"
+      ]
+    },
+    {
+      "norma": "589/2026",
+      "tipo": "designacion",
+      "fecha": "2026-07-14",
+      "delta": 0,
+      "motivo": "Destino no habilitado en el padrón base; no se añade al numerador de los 955 cargos. Se requiere verificar habilitación y efectos sobre el cargo de origen.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344335/20260715",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    }
+  ]
+}

@@ -1,9 +1,8 @@
 """Consumo per cápita de carnes (vacuna + aviar + porcina) — SAGYP.
 
-Componente B y C de la ficha "Consumo de Proteína Animal": el indicador vigente
-mira sólo carne vacuna, y una caída ahí se lee como pérdida de poder adquisitivo
-cuando muchas veces es sustitución hacia pollo o cerdo. Con el total y el ratio
-se puede distinguir una cosa de la otra.
+Consumo aparente agregado de tres carnes y su composición. Complementa la
+serie de faena usada por el índice; no identifica ingesta de proteína ni
+sustitución dentro de los mismos hogares.
 
 Fuente: SAGYP — Dirección Nacional de Producción Ganadera, tablero
 "CONSUMO PER CAPITA CARNES PROMEDIO MÓVIL". PDF mensual, con el promedio móvil

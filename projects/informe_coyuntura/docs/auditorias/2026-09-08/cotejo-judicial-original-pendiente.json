@@ -1,0 +1,449 @@
+{
+  "consulta": "2026-09-08",
+  "estado": "correccion_pendiente",
+  "fuentes": [
+    {
+      "titulo": "Magistrados de la Justicia Federal y de la Justicia Nacional",
+      "url": "https://datos.jus.gob.ar/dataset/3c18d46e-729e-4973-8efd-f54cab18b7e3/resource/b12bdbb7-646f-4701-99b7-1109ce919dd5/download/magistrados-justicia-federal-nacional-jueces-20260605.csv",
+      "modificacion_catalogo": "2026-06-08T16:40:18.928316",
+      "sha256": "708f5791bc033c0b83c61cdbb197b1a443dfa46dc3a276913fc2a896cb1808d3",
+      "filas": 1002,
+      "habilitados": 955,
+      "vacancia": {
+        "NO": 610,
+        "SI": 345
+      },
+      "cobertura": {
+        "Titular": 604,
+        "Subrogante": 282,
+        "Sin subrogante designado": 69
+      }
+    },
+    {
+      "titulo": "Designaciones de magistrados de la Justicia Federal y de la Justicia Nacional",
+      "url": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv",
+      "modificacion_catalogo": "2026-07-13T18:48:30.146988",
+      "sha256": "d82a8e8783666297f908f5b08652c43f431ac2ea7ca5dfd205b3e43916694810",
+      "filas": 3509,
+      "movimientos_posteriores_padron": [
+        {
+          "fecha": "2026-06-11",
+          "norma": "DEC. 446/2026",
+          "cargo": "Juez del Juzgado Federal de Primera Instancia Nº 2 de Santa Fe"
+        },
+        {
+          "fecha": "2026-06-11",
+          "norma": "DEC. 445/2026",
+          "cargo": "Juez del Tribunal Federal de Juicio de Santa Fe"
+        },
+        {
+          "fecha": "2026-06-11",
+          "norma": "DEC. 447/2026",
+          "cargo": "Juez del Juzgado Federal de Primera Instancia de Rafaela"
+        },
+        {
+          "fecha": "2026-06-12",
+          "norma": "DEC. 461/2026",
+          "cargo": "Jueza del Juzgado Nacional en lo Criminal y Correccional Nº 17 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-12",
+          "norma": "DEC. 459/2026",
+          "cargo": "Jueza del Juzgado Nacional de Primera Instancia en lo Civil Nº 62 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-12",
+          "norma": "DEC. 457/2026",
+          "cargo": "Juez del Juzgado Nacional en lo Criminal y Correccional Nº 1 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-12",
+          "norma": "DEC. 465/2026",
+          "cargo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, Sala E"
+        },
+        {
+          "fecha": "2026-06-12",
+          "norma": "DEC. 464/2026",
+          "cargo": "Vocal de la Cámara Federal de Apelaciones de La Plata, Sala I"
+        },
+        {
+          "fecha": "2026-06-12",
+          "norma": "DEC. 455/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral en lo Criminal Federal Nº 2 de La Plata"
+        },
+        {
+          "fecha": "2026-06-12",
+          "norma": "DEC. 460/2026",
+          "cargo": "Jueza del Juzgado Nacional en lo Criminal y Correccional Nº 14 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-12",
+          "norma": "DEC. 452/2026",
+          "cargo": "Juez del Juzgado Federal de Primera Instancia de la Seguridad Social Nº 10 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-12",
+          "norma": "DEC. 463/2026",
+          "cargo": "Vocal de la Cámara Nacional de Apelaciones en lo Comercial de la Capital Federal, Sala B"
+        },
+        {
+          "fecha": "2026-06-12",
+          "norma": "DEC. 453/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral en lo Criminal Federal Nº 1 de La Plata"
+        },
+        {
+          "fecha": "2026-06-12",
+          "norma": "DEC. 462/2026",
+          "cargo": "Jueza del Juzgado Nacional en lo Criminal y Correccional Nº 18 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 507/2026",
+          "cargo": "Juez del Juzgado Nacional en lo Criminal y Correccional Nº 31 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 515/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral en lo Criminal Federal Nº 3 de San Martín"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 516/2026",
+          "cargo": "Juez del Juzgado Nacional de Primera Instancia en lo Civil Nº 64 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 514/2026",
+          "cargo": "Jueza del Juzgado Federal de Primera Instancia de Ejecuciones Fiscales Tributarias Nº 3 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 513/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral en lo Penal Económico Nº 2 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 512/2026",
+          "cargo": "Jueza del Juzgado Federal de Primera Instancia de Ejecuciones Fiscales Tributarias Nº 4 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 509/2026",
+          "cargo": "Juez del Tribunal Federal de Juicio de Neuquén"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 511/2026",
+          "cargo": "Juez del Juzgado Nacional en lo Criminal y Correccional Nº 13 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 508/2026",
+          "cargo": "Juez del Juzgado Federal de Primera Instancia Nº 2 de Salta"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 521/2026",
+          "cargo": "Juez del Juzgado Nacional de Primera Instancia en lo Civil Nº 95 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 527/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral en lo Criminal y Correccional Nº 2 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 510/2026",
+          "cargo": "Vocal de la Cámara Federal de la Seguridad Social, Sala III"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 517/2026",
+          "cargo": "Juez del Juzgado Nacional de Primera Instancia en lo Civil Nº 94 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 522/2026",
+          "cargo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Fereral, Sala E"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 518/2026",
+          "cargo": "Juez del Juzgado Nacional de Primera Instancia en lo Civil Nº 5 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 523/2026",
+          "cargo": "Jueza del Juzgado Nacional de Primera Instancia en lo Comercial Nº 22 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 520/2026",
+          "cargo": "Juez del Juzgado Federal de Primera Instancia de San Carlos de Bariloche"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 519/2026",
+          "cargo": "Jueza del Juzgado Nacional de Primera Instancia en lo Civil Nº 77 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 506/2026",
+          "cargo": "Juez del Juzgado Nacional de Menores Nº 2 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 524/2026",
+          "cargo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, SALA F"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 497/2026",
+          "cargo": "Juez de la Cámara Nacional de Casación en lo Criminal y Correccional de la Capital Federal, Vocalía Nº 10"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 526/2026",
+          "cargo": "Vocal de la Cámara Federal de Apelaciones de Mendoza, Sala A"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 495/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral en lo Criminal y Correccional Nº 1 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 545/2026",
+          "cargo": "Juez del Juzgado Nacional de Primera Instancia en Lo Civil Nº 25 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 529/2026",
+          "cargo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, Sala K"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 528/2026",
+          "cargo": "Vocal de la Cámara Nacional de Apelaciones en lo Criminal y Correcional de la Capital Federal, Vocalía Nº 20"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 530/2026",
+          "cargo": "Vocal de la Cámara Federal de Apelaciones de la Seguridad Social, Sala II"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 536/2026",
+          "cargo": "Juez del Juzgado Nacional de Primera Instancia en lo Comercial Nº 4 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 535/2026",
+          "cargo": "Juez del Tribunal Federal de Juicio de Formosa"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 538/2026",
+          "cargo": "Vocal de la Cámara Nacional de Apelaciones en lo Criminal y Correcional de la Capital Federal, Vocalía Nº 14"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 541/2026",
+          "cargo": "Vocal de la Cámara Federal de Apelaciones de La Plata, Sala III"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 540/2026",
+          "cargo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, Sala F"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 499/2026",
+          "cargo": "Juez del Juzgado Nacional de Primera Instancia en Lo Civil Nº 80 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 543/2026",
+          "cargo": "Juez del Juzgado Nacional de Primera Instancia en lo Civil Nº 44 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 505/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral en lo Criminal Federal Nº 5 de San Martín"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 493/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral en lo Criminal y Correccional Nº 3 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 494/2026",
+          "cargo": "Juez del Juzgado Nacional en lo Criminal y Correccional Nº 47 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 492/2026",
+          "cargo": "Jueza de Cámara del Tribunal Oral en lo Criminal y Correccional Nº 20 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 496/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral en lo Criminal Federal Nº 2 de San Martín"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 498/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral de Menores Nº 3 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 500/2026",
+          "cargo": "Juez del Juzgado Nacional en lo Criminal y Correccional Nº 7 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 502/2026",
+          "cargo": "Juez del Juzgado Nacional en lo Criminal y Correccional Nº 59 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 501/2026",
+          "cargo": "Jueza de Cámara del Tribunal Oral en lo Criminal Federal Nº 1 de La Plata"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 504/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral en lo Criminal y Correccional Nº 7 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 503/2026",
+          "cargo": "Juez de Cámara del Tribunal Oral en lo Criminal Federal Nº 5 de San Martín"
+        },
+        {
+          "fecha": "2026-06-24",
+          "norma": "DEC. 544/2026",
+          "cargo": "Jueza del Juzgado Nacional en lo Criminal y Correccional Nº 23 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-11-11",
+          "norma": "DEC. 367/2026",
+          "cargo": "Vocal de la Cámara Federal de Casación Penal, Vocalía VII"
+        }
+      ]
+    },
+    {
+      "titulo": "Renuncias de magistrados de la Justicia Federal y de la Justicia Nacional",
+      "url": "https://datos.jus.gob.ar/dataset/36c14e01-d3f6-47f3-9f12-9c25a48fe8c6/resource/e0e6483e-bc07-4c3e-a262-6095065f3e6e/download/magistrados-justicia-federal-nacional-renuncias-20260713.csv",
+      "modificacion_catalogo": "2026-07-13T19:00:04.392501",
+      "sha256": "38a64895f63402a152d8c987addda2805b6b2ecc36345e176237bfd0939336f8",
+      "filas": 1676,
+      "movimientos_posteriores_padron": [
+        {
+          "fecha": "2026-07-01",
+          "norma": "DEC. 380/2026",
+          "cargo": "Juez del Juzgado Nacional de Priemra Instancia del Trabajo Nº 30 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-07-01",
+          "norma": "DEC. 379/2026",
+          "cargo": "Juez del Juzgado Nacional en lo Criminal y Correccional Nº 61 de la Capital Federal"
+        },
+        {
+          "fecha": "2026-08-01",
+          "norma": "DEC. 569/2026",
+          "cargo": "Jueza de Cámara del Tribunal Oral en lo Criminal Federal Nº 5 de San Martín"
+        },
+        {
+          "fecha": "2026-08-01",
+          "norma": "DEC. 444/2026",
+          "cargo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, Sala B"
+        },
+        {
+          "fecha": "2026-08-01",
+          "norma": "DEC. 570/2026",
+          "cargo": "Jueza del Juzgado Nacional de Primera Instancia en lo Civil Nº 58 de la Capital Federal"
+        }
+      ]
+    }
+  ],
+  "hallazgos": [
+    "El catálogo de movimientos llega al 13 de julio; la tarjeta extrapola a septiembre.",
+    "El BO del 22 de julio publica nombramientos posteriores ausentes del CSV.",
+    "El Decreto 367/2026 renueva a un juez por cinco años desde noviembre: no cubre una nueva vacante, aunque el registro lo clasifica como designación. Se requiere distinguir continuidad de altas.",
+    "Diez de las 60 designaciones de junio corresponden a personas ya titulares de cargos habilitados del padrón. La suma bruta no mide altas netas de cobertura; conciliar cargos de origen."
+  ],
+  "designaciones_de_titulares_ya_presentes": [
+    {
+      "nombre": "ROMERO, Analía Victoria",
+      "norma": "DEC. 465/2026",
+      "fecha": "2026-06-12",
+      "cargo_previo": "Juzgado Nacional de Primera Instancia en lo Civil N° 40",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, Sala E"
+    },
+    {
+      "nombre": "PELUZZI, Marcelo Alejandro",
+      "norma": "DEC. 527/2026",
+      "fecha": "2026-06-24",
+      "cargo_previo": "Juzgado Nacional de Ejecución Penal N° 4",
+      "cargo_nuevo": "Juez de Cámara del Tribunal Oral en lo Criminal y Correccional Nº 2 de la Capital Federal"
+    },
+    {
+      "nombre": "STRASSER, Fernando",
+      "norma": "DEC. 510/2026",
+      "fecha": "2026-06-24",
+      "cargo_previo": "Juzgado Federal de Primera Instancia de la Seguridad Social Nº 2",
+      "cargo_nuevo": "Vocal de la Cámara Federal de la Seguridad Social, Sala III"
+    },
+    {
+      "nombre": "BISCARDI, Samanta Claudia",
+      "norma": "DEC. 522/2026",
+      "fecha": "2026-06-24",
+      "cargo_previo": "Juzgado Nacional de Primera Instancia en lo Civil N° 81 (Familia)",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Fereral, Sala E"
+    },
+    {
+      "nombre": "CASTRO, Paula Andrea",
+      "norma": "DEC. 524/2026",
+      "fecha": "2026-06-24",
+      "cargo_previo": "Juzgado Nacional de Primera Instancia en lo Civil N° 93",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, SALA F"
+    },
+    {
+      "nombre": "CÓRDOBA, Lucila Inés",
+      "norma": "DEC. 529/2026",
+      "fecha": "2026-06-24",
+      "cargo_previo": "Juzgado Nacional de Primera Instancia en lo Civil N° 8 (Familia)",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Civil de la Capital Federal, Sala K"
+    },
+    {
+      "nombre": "QUIAN ZAVALÍA, Santiago",
+      "norma": "DEC. 528/2026",
+      "fecha": "2026-06-24",
+      "cargo_previo": "Juzgado Nacional en lo Criminal y Correccional N° 32",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Criminal y Correcional de la Capital Federal, Vocalía Nº 20"
+    },
+    {
+      "nombre": "CARNOTA, Walter Fabián",
+      "norma": "DEC. 530/2026",
+      "fecha": "2026-06-24",
+      "cargo_previo": "Juzgado Federal de Primera Instancia de la Seguridad Social Nº 3",
+      "cargo_nuevo": "Vocal de la Cámara Federal de Apelaciones de la Seguridad Social, Sala II"
+    },
+    {
+      "nombre": "BERNAN, Yamile Susana",
+      "norma": "DEC. 538/2026",
+      "fecha": "2026-06-24",
+      "cargo_previo": "Juzgado Nacional en lo Criminal y Correccional N° 8",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Criminal y Correcional de la Capital Federal, Vocalía Nº 14"
+    },
+    {
+      "nombre": "DECARIA, Hugo Fabián",
+      "norma": "DEC. 493/2026",
+      "fecha": "2026-06-24",
+      "cargo_previo": "Juzgado Nacional en lo Criminal y Correccional N° 20",
+      "cargo_nuevo": "Juez de Cámara del Tribunal Oral en lo Criminal y Correccional Nº 3 de la Capital Federal"
+    }
+  ]
+}

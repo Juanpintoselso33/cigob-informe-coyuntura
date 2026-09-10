@@ -1,5 +1,5 @@
 ---
-import { informe, cap, mesLegible, CINTURONES, verdictDeCinturon, peorDimension, cinturonDominante, num } from "../lib/datos.ts";
+import { informe, cap, mesLegible, CINTURONES, colorPorTension, LECTURA_SEMAFORO, peorDimension, cinturonDominante, num } from "../lib/datos.ts";
 
 // La lectura del mes tiene DOS caminos, y el orden importa (ADR-0211).
 //
@@ -15,11 +15,7 @@ import { informe, cap, mesLegible, CINTURONES, verdictDeCinturon, peorDimension,
 // de la prosa—, así que la única defensa es que el código no pueda hacerlo.
 const estados = CINTURONES.map(m => ({ meta: m, c: informe.cinturones[m.key] }))
   .filter(x => x.c);
-const porVerdict = (v: string) => estados.filter(x => verdictDeCinturon(x.c.estado) === v);
-const rojos = porVerdict("rojo"), amarillos = porVerdict("amarillo"), verdes = porVerdict("verde");
 const masTenso = [...estados].sort((a, b) => b.c.score - a.c.score)[0];
-const nombres = (xs: typeof estados) => xs.map(x => x.meta.nombre.toLowerCase()).join(", ")
-  .replace(/, ([^,]*)$/, " y $1");
 
 // La dimensión que más tensión aporta en TODO el tablero (comparada en
 // tensión equivalente, para poder cruzar índices de bandas con base-100).
@@ -29,33 +25,16 @@ for (const x of estados) {
   if (p && (!foco || p.tension > foco.dim.tension)) foco = { dim: p, meta: x.meta };
 }
 
-// Todas las cláusulas van en minúscula -- la mayúscula de arranque se
-// aplica UNA sola vez, al final, sobre el string ya unido. Antes, la
-// cláusula de `masTenso` traía su "Con" mayúscula hardcodeada asumiendo
-// que siempre iba a ser la primera del párrafo (cierto mientras
-// `rojos` era estructuralmente siempre 0); apenas un cinturón puede
-// pintarse rojo, esa cláusula pasa a la segunda posición y la mayúscula
-// queda en mitad de la oración, después de un punto y coma.
-const frases: string[] = [];
-if (rojos.length > 0) {
-  frases.push(`${nombres(rojos)} ${rojos.length === 1 ? "está" : "están"} en zona crítica`);
-}
-if (rojos.length === 1 && rojos[0] === masTenso) {
-  // El cinturón en rojo y el más exigido son el mismo: no repetir el
-  // nombre dos cláusulas seguidas (redundante -- ya se lo nombró arriba).
-  frases.push(`con una tensión global de ${num(informe.score_global)}/10, es además el cinturón más exigido del tablero (${num(masTenso.c.score)}/10)`);
-} else {
-  frases.push(`con una tensión global de ${num(informe.score_global)}/10, ${masTenso.meta.nombre.toLowerCase()} es el cinturón más exigido del tablero (${num(masTenso.c.score)}/10)`);
-}
-if (amarillos.length > 0 && !amarillos.includes(masTenso)) {
-  frases.push(`${nombres(amarillos)} ${amarillos.length === 1 ? "opera" : "operan"} en tensión`);
-} else if (amarillos.length > 1) {
-  frases.push(`también ${nombres(amarillos.filter(x => x !== masTenso))} en tensión`);
-}
-if (verdes.length > 0) {
-  frases.push(`${nombres(verdes)} se ${verdes.length === 1 ? "mantiene estable" : "mantienen estables"}`);
-}
-const fraseEstados = cap(frases.join("; ")) + ".";
+// La síntesis usa la misma escala publicada que las tarjetas. El estado
+// sistémico de tres categorías no equivale a las cuatro bandas de tensión.
+const frases = estados.map(({ meta, c }) => {
+  const color = colorPorTension(c.score);
+  const lectura = color ? LECTURA_SEMAFORO[color].toLowerCase() : "sin clasificación disponible";
+  return `${meta.nombre.toLowerCase()}: ${lectura} (${num(c.score)}/10)`;
+});
+const fraseEstados = cap(frases.join("; ")) + ". "
+  + `La tensión global es ${num(informe.score_global)}/10.`
+  + (masTenso ? ` ${masTenso.meta.nombre} es el cinturón con mayor tensión.` : "");
 const fraseFoco = foco
   ? `La mayor presión puntual del mes está en ${foco.dim.nombre.toLowerCase()} (${num(foco.dim.puntaje)}${foco.dim.base100 ? "" : "/100"}), la dimensión que más tensión aporta al índice de ${foco.meta.nombre.toLowerCase()}.`
   : "";

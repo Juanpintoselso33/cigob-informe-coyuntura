@@ -176,11 +176,17 @@ def padron_falso(monkeypatch):
         if q == politica.JUS_PADRON_Q:
             return p.filas
         if q == politica.JUS_DESIGNACIONES_Q:
-            return [{"cargo_tipo": "Juez", "fecha_desginacion": "2026-06-24"}] * 60
-        return [{"cargo_tipo": "Juez", "fecha_renuncia": "2026-07-01"}] * 5
+            return [{"cargo_tipo": "Juez", "fecha_desginacion": "2026-06-24",
+                     "norma_numero": f"{i}/2026"} for i in range(1000, 1060)]
+        return [{"cargo_tipo": "Juez", "fecha_renuncia": "2026-07-01",
+                 "norma_numero": f"{i}/2026"} for i in range(2000, 2005)]
 
     monkeypatch.setattr(politica, "_jus_csv", _csv)
     monkeypatch.setattr(politica, "_jus_fecha_padron", lambda: "2026-06-05")
+    monkeypatch.setattr(politica, "_jus_registros_conciliados", lambda: (
+        {"fecha_padron": "2026-06-05", "revisado_hasta": politica.date.today().isoformat(),
+         "movimientos": [], "limites": []},
+        {"revisado_el": politica.date.today().isoformat(), "eventos": []}))
     return p
 
 
@@ -257,9 +263,12 @@ def test_una_designacion_futura_no_adelanta_cobertura(padron_falso, monkeypatch)
         if q == politica.JUS_PADRON_Q:
             return padron_falso.filas
         if q == politica.JUS_DESIGNACIONES_Q:
-            return ([{"cargo_tipo": "Juez", "fecha_desginacion": "2026-06-24"}] * 60
-                    + [{"cargo_tipo": "Juez", "fecha_desginacion": futura}] * 20)
-        return [{"cargo_tipo": "Juez", "fecha_renuncia": "2026-07-01"}] * 5
+            return ([{"cargo_tipo": "Juez", "fecha_desginacion": "2026-06-24",
+                      "norma_numero": f"{i}/2026"} for i in range(1000, 1060)]
+                    + [{"cargo_tipo": "Juez", "fecha_desginacion": futura,
+                        "norma_numero": f"{i}/2026"} for i in range(3000, 3020)])
+        return [{"cargo_tipo": "Juez", "fecha_renuncia": "2026-07-01",
+                 "norma_numero": f"{i}/2026"} for i in range(2000, 2005)]
 
     monkeypatch.setattr(politica, "_jus_csv", _csv)
     card = politica.fetch_cobertura_judicial()
@@ -272,6 +281,40 @@ def test_el_denominador_son_los_organos_habilitados(padron_falso):
     denominador bajaría la cobertura sin que nada hubiera pasado."""
     card = politica.fetch_cobertura_judicial()
     assert card["cargos_totales"] == 955
+
+
+def test_conciliacion_integra_baja_del_ancla_promocion_y_corte(padron_falso, monkeypatch):
+    padron_falso.filas[0] = dict(padron_falso.filas[0],
+                               magistrado_nombre="Persona A", organo_nombre="Tribunal A")
+    monkeypatch.setattr(politica, "_jus_registros_conciliados", lambda: (
+        {"fecha_padron": "2026-06-05", "revisado_hasta": "2026-07-15", "limites": [],
+         "movimientos": [{"norma": "1000/2026", "tipo": "designacion",
+                          "fecha": "2026-06-24", "delta": 0,
+                          "fuente": "norma pública", "motivo": "promoción interna"}]},
+        {"revisado_el": "2026-07-15", "eventos": [
+            {"persona": "Persona A", "organo": "Tribunal A", "tipo": "fallecimiento",
+             "fecha": "2026-05-01", "fuente": "acta pública"},
+            {"persona": "Persona B", "organo": "Tribunal B", "tipo": "remocion",
+             "fecha": "2026-07-10", "fuente": "sentencia pública"}]}))
+    serie, meta = politica.cobertura_judicial_serie()
+    card = politica.fetch_cobertura_judicial()
+    assert max(serie) == "2026-07"
+    assert card["fecha_corte"] == "2026-07-15"
+    assert card["obtenido_en"] == "2026-07-15"
+    assert card["padron_con_juez_original"] == 610
+    assert card["padron_con_juez"] == 609
+    assert card["designaciones_desde_padron"] == 59
+    assert card["otras_bajas_desde_padron"] == 1
+    assert card["cargos_con_juez"] == 609 + 59 - 5 - 1
+    assert card["valor"] == serie["2026-07"]
+    assert serie["2026-04"] == round(100 * 610 / 955, 2)
+    assert meta["ancla_corregida"] == 609
+
+
+def test_un_padron_nuevo_exige_revisar_la_conciliacion(padron_falso, monkeypatch):
+    monkeypatch.setattr(politica, "_jus_fecha_padron", lambda: "2026-07-05")
+    with pytest.raises(ValueError, match="nuevo padrón"):
+        politica.cobertura_judicial_serie()
 
 
 # ── Universo de sesiones de control (ADR-0268) ──────────────────────────────

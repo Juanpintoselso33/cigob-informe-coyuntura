@@ -39,9 +39,10 @@
       "fecha": "2026-07-01"
     },
     "ipc_alquiler_gba": {
-      "valor": 12449.235,
-      "variacion_mensual_pct": 1.474988428083801,
-      "fecha": "2026-07-01"
+      "valor": 11728.8484,
+      "fecha": "2026-07-01",
+      "variacion_mensual_pct": 3.924244918223496,
+      "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_ipc_aperturas.xls"
     },
     "cbt": {
       "valor": 506380.55,
@@ -100,9 +101,11 @@
       "fecha": "2025-01-01"
     },
     "isac": {
-      "valor": 148.112056182325,
-      "variacion_mensual_pct": -4.137358595102569,
-      "fecha": "2026-06-01"
+      "valor": 140.163347962769,
+      "variacion_mensual_pct": -4.552853607241458,
+      "fecha": "2026-07-01",
+      "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_isac_2026.xls",
+      "obtenido_en": "2026-09-08T16:20:35"
     },
     "emae": {
       "valor": 0.0269413019801598,
@@ -110,9 +113,11 @@
       "fecha": "2026-06-01"
     },
     "ipi": {
-      "valor": 119.098206634938,
-      "variacion_mensual_pct": 0.938282507569177,
-      "fecha": "2026-06-01"
+      "valor": 112.306188977958,
+      "variacion_mensual_pct": -4.987904491151019,
+      "fecha": "2026-07-01",
+      "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_ipi_manufacturero_2026.xls",
+      "obtenido_en": "2026-09-08T16:20:35"
     },
     "faena_vacuna": {
       "valor": 1095.548,

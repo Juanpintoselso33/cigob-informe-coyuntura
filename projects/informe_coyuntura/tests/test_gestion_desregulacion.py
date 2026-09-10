@@ -21,6 +21,28 @@ import parametrica
 STORE = gestion.DESREG_OFICIAL_STORE
 
 
+def test_edicion_agosto_revisa_julio_sin_confundir_incrementos():
+    texto = ("Artículos modificados o eliminados acumulados. Últimos 3 meses. "
+             "JUNIO 16.178 16.848 17.115 JULIO AGOSTO Resolución 480/2026 +267 +670")
+    assert gestion._desreg_articulos_recientes(texto, "2026-08", 17115) == {
+        "2026-06": 16178, "2026-07": 16848, "2026-08": 17115}
+    assert gestion._desreg_articulos_recientes(texto, "2026-08", 17116) == {}
+    assert gestion._desreg_articulos_recientes(texto, "2026-07", 17115) == {}
+
+
+def test_ultima_edicion_prevalece_y_alta_usa_historia_revisada(monkeypatch):
+    store = {"backfill_articulos": {"2026-04": 15000}, "informes": {
+        "julio.pdf": {"periodo": "2026-07", "articulos": 16771},
+        "agosto.pdf": {"periodo": "2026-08", "articulos": 17115,
+                       "articulos_recientes": {"2026-06": 16178, "2026-07": 16848,
+                                               "2026-08": 17115}},
+    }}
+    monkeypatch.setattr(gestion, "_desreg_oficial_store", lambda: store)
+    monkeypatch.setattr(gestion, "_desreg_guardar_store", lambda _: None)
+    assert gestion.desregulacion_oficial_serie()["2026-07"] == 16848
+    assert gestion.fetch_desregulacion_normativa()["alta_del_mes"] == 267
+
+
 @pytest.fixture(autouse=True)
 def _store_escribe_en_tmp(tmp_path, monkeypatch):
     """`desregulacion_oficial_serie()` persiste el store en cada llamada (es
@@ -29,6 +51,10 @@ def _store_escribe_en_tmp(tmp_path, monkeypatch):
     guardián de conftest lo marca en teardown. Se redirige la constante a
     tmp_path con una copia de los datos reales: los tests siguen leyendo el
     store de verdad y la escritura cae afuera del repo."""
+    # Estas pruebas verifican la serie conservada y el parser con PDFs de
+    # prueba. Descubrir publicaciones en vivo introduce esperas de red y
+    # cambia la muestra durante la ejecución.
+    monkeypatch.setattr(gestion, "_desreg_informes_publicados", lambda: {})
     if STORE.exists():
         destino = tmp_path / STORE.name
         destino.write_bytes(STORE.read_bytes())

@@ -1,0 +1,89 @@
+{
+  "fuente": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_isac_2026.xls",
+  "sha256": "d72a1f6720330f83b1012bad079b4eb0a66970d20ed02052f20d2151570596d8",
+  "informe": "https://www.indec.gob.ar/uploads/informesdeprensa/isac_09_263EF0E9CDDD.pdf",
+  "publicacion": "2026-09-08",
+  "cuadro": "7.1",
+  "ultimas_filas": [
+    {
+      "periodo": "Noviembre 2025 - enero 2026",
+      "privada_aumenta": 10.5,
+      "privada_disminuye": 21.0,
+      "publica_aumenta": 15.5,
+      "publica_disminuye": 24.7,
+      "brecha": 1.3
+    },
+    {
+      "periodo": "Diciembre 2025 - febrero 2026",
+      "privada_aumenta": 13.0,
+      "privada_disminuye": 18.5,
+      "publica_aumenta": 21.9,
+      "publica_disminuye": 24.0,
+      "brecha": 3.4
+    },
+    {
+      "periodo": "Enero 2026 - marzo 2026",
+      "privada_aumenta": 22.0,
+      "privada_disminuye": 13.0,
+      "publica_aumenta": 19.1,
+      "publica_disminuye": 21.3,
+      "brecha": -11.2
+    },
+    {
+      "periodo": "Febrero 2026 - abril 2026",
+      "privada_aumenta": 16.7,
+      "privada_disminuye": 15.6,
+      "publica_aumenta": 19.5,
+      "publica_disminuye": 17.1,
+      "brecha": 1.3
+    },
+    {
+      "periodo": "Marzo 2026 - mayo 2026",
+      "privada_aumenta": 17.8,
+      "privada_disminuye": 12.9,
+      "publica_aumenta": 20.0,
+      "publica_disminuye": 16.8,
+      "brecha": -1.7
+    },
+    {
+      "periodo": "Abril 2026 - junio 2026",
+      "privada_aumenta": 11.0,
+      "privada_disminuye": 14.0,
+      "publica_aumenta": 17.5,
+      "publica_disminuye": 21.6,
+      "brecha": -1.1
+    },
+    {
+      "periodo": "Mayo 2026 - julio 2026",
+      "privada_aumenta": 9.4,
+      "privada_disminuye": 15.1,
+      "publica_aumenta": 14.4,
+      "publica_disminuye": 25.6,
+      "brecha": -5.5
+    },
+    {
+      "periodo": "Junio 2026 - agosto 2026",
+      "privada_aumenta": 14.4,
+      "privada_disminuye": 18.3,
+      "publica_aumenta": 16.1,
+      "publica_disminuye": 23.7,
+      "brecha": -3.7
+    },
+    {
+      "periodo": "Julio 2026 - septiembre 2026",
+      "privada_aumenta": 12.1,
+      "privada_disminuye": 16.8,
+      "publica_aumenta": 18.0,
+      "publica_disminuye": 29.2,
+      "brecha": -6.5
+    },
+    {
+      "periodo": "Agosto 2026 - octubre 2026",
+      "privada_aumenta": 10.6,
+      "privada_disminuye": 14.4,
+      "publica_aumenta": 16.9,
+      "publica_disminuye": 25.8,
+      "brecha": -5.1
+    }
+  ]
+}

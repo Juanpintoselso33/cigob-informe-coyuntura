@@ -1,0 +1,193 @@
+{
+  "fecha_consulta": "2026-09-08",
+  "campo": "Nombre proceso",
+  "alcance": "Búsquedas públicas sin filtros de estado o fecha. Las búsquedas sin coincidencias no certifican ausencia de procesos.",
+  "consultas": [
+    {
+      "termino": "AySA",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "Se han encontrado (1) resultados para su búsqueda"
+      ],
+      "tabla": "Número proceso\tNombre proceso\tTipo de Proceso\tFecha de apertura\tEstado\tUnidad Ejecutora\n504/2-0003-LPU26\tVenta del 90% del paquete accionario de AySA de titularidad del Estado Nacional\t\n\nLicitación Pública\n\n\t\n\n15/09/2026 10:00 Hrs.\n\n\tPublicado\t\n\n504/2 - AGENCIA DE TRANSFORMACION DE EMPRESAS PUBLICAS",
+      "enlaces": [
+        {
+          "texto": "504/2-0003-LPU26",
+          "id": "ctl00_CPH1_GridListaPliegos_ctl02_lnkNumeroProceso",
+          "href": "javascript:__doPostBack('ctl00$CPH1$GridListaPliegos$ctl02$lnkNumeroProceso','')"
+        }
+      ]
+    },
+    {
+      "termino": "Transener",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "No se han encontrado resultados para su búsqueda"
+      ],
+      "tabla": null,
+      "enlaces": []
+    },
+    {
+      "termino": "Citelec",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "Se han encontrado (1) resultados para su búsqueda"
+      ],
+      "tabla": "Número proceso\tNombre proceso\tTipo de Proceso\tFecha de apertura\tEstado\tUnidad Ejecutora\n504/2-0002-CPU25\tVenta de la totalidad de acciones de CITELEC S.A. de titularidad de ENARSA\t\n\nConcurso Público\n\n\t\n\n28/04/2026 10:00 Hrs.\n\n\tCon Documento Contractual\t\n\n504/2 - AGENCIA DE TRANSFORMACION DE EMPRESAS PUBLICAS",
+      "enlaces": [
+        {
+          "texto": "504/2-0002-CPU25",
+          "id": "ctl00_CPH1_GridListaPliegos_ctl02_lnkNumeroProceso",
+          "href": "javascript:__doPostBack('ctl00$CPH1$GridListaPliegos$ctl02$lnkNumeroProceso','')"
+        }
+      ]
+    },
+    {
+      "termino": "Energía Argentina",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "No se han encontrado resultados para su búsqueda"
+      ],
+      "tabla": null,
+      "enlaces": []
+    },
+    {
+      "termino": "Intercargo",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "Se han encontrado (1) resultados para su búsqueda"
+      ],
+      "tabla": "Número proceso\tNombre proceso\tTipo de Proceso\tFecha de apertura\tEstado\tUnidad Ejecutora\n504/2-0002-LPU26\tVenta del 100% del paquete accionario de Intercargo S.A.U. de titularidad del Estado Nacional.\t\n\nLicitación Pública\n\n\t\n\n25/06/2026 10:00 Hrs.\n\n\tDesierto\t\n\n504/2 - AGENCIA DE TRANSFORMACION DE EMPRESAS PUBLICAS",
+      "enlaces": [
+        {
+          "texto": "504/2-0002-LPU26",
+          "id": "ctl00_CPH1_GridListaPliegos_ctl02_lnkNumeroProceso",
+          "href": "javascript:__doPostBack('ctl00$CPH1$GridListaPliegos$ctl02$lnkNumeroProceso','')"
+        }
+      ]
+    },
+    {
+      "termino": "Corredores Viales",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "No se han encontrado resultados para su búsqueda"
+      ],
+      "tabla": null,
+      "enlaces": []
+    },
+    {
+      "termino": "Belgrano Cargas",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "No se han encontrado resultados para su búsqueda"
+      ],
+      "tabla": null,
+      "enlaces": []
+    },
+    {
+      "termino": "Nucleoeléctrica",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "No se han encontrado resultados para su búsqueda"
+      ],
+      "tabla": null,
+      "enlaces": []
+    },
+    {
+      "termino": "Río Turbio",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "No se han encontrado resultados para su búsqueda"
+      ],
+      "tabla": null,
+      "enlaces": []
+    },
+    {
+      "termino": "Operadora Ferroviaria",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "No se han encontrado resultados para su búsqueda"
+      ],
+      "tabla": null,
+      "enlaces": []
+    },
+    {
+      "termino": "Belgrano",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "Se han encontrado (1) resultados para su búsqueda"
+      ],
+      "tabla": "Número proceso\tNombre proceso\tTipo de Proceso\tFecha de apertura\tEstado\tUnidad Ejecutora\n46/22-0178-LPU23\tPuesta en Valor de las Instalaciones del Campamento General Belgrano - 22º Distrito Formosa\t\n\nLicitación Pública\n\n\t\n\n25/10/2023 12:00 Hrs.\n\n\tDejado Sin Efecto\t\n\n46/22 - 22° Formosa - DNV",
+      "enlaces": [
+        {
+          "texto": "46/22-0178-LPU23",
+          "id": "ctl00_CPH1_GridListaPliegos_ctl02_lnkNumeroProceso",
+          "href": "javascript:__doPostBack('ctl00$CPH1$GridListaPliegos$ctl02$lnkNumeroProceso','')"
+        }
+      ]
+    },
+    {
+      "termino": "ferrovi",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "No se han encontrado resultados para su búsqueda"
+      ],
+      "tabla": null,
+      "enlaces": []
+    },
+    {
+      "termino": "hidroel",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "Se han encontrado (1) resultados para su búsqueda"
+      ],
+      "tabla": "Número proceso\tNombre proceso\tTipo de Proceso\tFecha de apertura\tEstado\tUnidad Ejecutora\n504/2-0001-CPU25\tVenta de las acciones de las concesionarias Hidroeléctricas del Comahue\t\n\nConcurso Público\n\n\t\n\n28/11/2025 10:00 Hrs.\n\n\tAdjudicado\t\n\n504/2 - AGENCIA DE TRANSFORMACION DE EMPRESAS PUBLICAS",
+      "enlaces": [
+        {
+          "texto": "504/2-0001-CPU25",
+          "id": "ctl00_CPH1_GridListaPliegos_ctl02_lnkNumeroProceso",
+          "href": "javascript:__doPostBack('ctl00$CPH1$GridListaPliegos$ctl02$lnkNumeroProceso','')"
+        }
+      ]
+    },
+    {
+      "termino": "privatiza",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "No se han encontrado resultados para su búsqueda"
+      ],
+      "tabla": null,
+      "enlaces": []
+    },
+    {
+      "termino": "ENARSA",
+      "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+      "mensaje": [
+        "Se han encontrado (1) resultados para su búsqueda"
+      ],
+      "tabla": "Número proceso\tNombre proceso\tTipo de Proceso\tFecha de apertura\tEstado\tUnidad Ejecutora\n504/2-0002-CPU25\tVenta de la totalidad de acciones de CITELEC S.A. de titularidad de ENARSA\t\n\nConcurso Público\n\n\t\n\n28/04/2026 10:00 Hrs.\n\n\tCon Documento Contractual\t\n\n504/2 - AGENCIA DE TRANSFORMACION DE EMPRESAS PUBLICAS",
+      "enlaces": [
+        {
+          "texto": "504/2-0002-CPU25",
+          "id": "ctl00_CPH1_GridListaPliegos_ctl02_lnkNumeroProceso",
+          "href": "javascript:__doPostBack('ctl00$CPH1$GridListaPliegos$ctl02$lnkNumeroProceso','')"
+        }
+      ]
+    }
+  ],
+  "consulta_numero_belgrano": {
+    "termino": "504/2-0004-LPU26",
+    "url": "https://contratar.gob.ar/BuscarAvanzado.aspx",
+    "mensaje": [
+      "Se han encontrado (1) resultados para su búsqueda"
+    ],
+    "tabla": "Número proceso\tNombre proceso\tTipo de Proceso\tFecha de apertura\tEstado\tUnidad Ejecutora\n504/2-0004-LPU26\tConcesión de vías e inmuebles aledaños de LB, LSM y LU.\t\n\nLicitación Pública\n\n\t\n\n11/11/2026 10:00 Hrs.\n\n\tPublicado\t\n\n504/2 - AGENCIA DE TRANSFORMACION DE EMPRESAS PUBLICAS",
+    "enlaces": [
+      {
+        "texto": "504/2-0004-LPU26",
+        "id": "ctl00_CPH1_GridListaPliegos_ctl02_lnkNumeroProceso",
+        "href": "javascript:__doPostBack('ctl00$CPH1$GridListaPliegos$ctl02$lnkNumeroProceso','')"
+      }
+    ]
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "fecha_consulta": "2026-09-08",
+  "url": "https://www.presupuestoabierto.gob.ar/api/v1/credito",
+  "metodo": "POST",
+  "consultas": [
+    {
+      "actividad": "Volver al Trabajo",
+      "ejercicio": 2026,
+      "filtros": [
+        {
+          "column": "actividad_desc",
+          "operator": "like",
+          "value": "%Volver al Trabajo%"
+        }
+      ],
+      "columnas": [
+        "inciso_id",
+        "principal_id",
+        "parcial_id",
+        "parcial_desc",
+        "credito_devengado"
+      ],
+      "filas": [
+        {
+          "inciso_id": 3,
+          "principal_id": 5,
+          "parcial_id": 5,
+          "parcial_desc": "Comisiones y gastos bancarios",
+          "credito_devengado": 1.597e-05
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 1,
+          "parcial_id": 4,
+          "parcial_desc": "Ayudas sociales a personas y asignaciones familiares",
+          "credito_devengado": 434589.03731808
+        }
+      ]
+    },
+    {
+      "actividad": "Acompañamiento Social",
+      "ejercicio": 2026,
+      "filtros": [
+        {
+          "column": "actividad_desc",
+          "operator": "like",
+          "value": "%Acompañamiento Social%"
+        }
+      ],
+      "columnas": [
+        "inciso_id",
+        "principal_id",
+        "parcial_id",
+        "parcial_desc",
+        "credito_devengado"
+      ],
+      "filas": [
+        {
+          "inciso_id": 5,
+          "principal_id": 1,
+          "parcial_id": 4,
+          "parcial_desc": "Ayudas sociales a personas y asignaciones familiares",
+          "credito_devengado": 123471.11114301
+        }
+      ]
+    },
+    {
+      "actividad": "Potenciar Trabajo",
+      "ejercicio": 2023,
+      "filtros": [
+        {
+          "column": "jurisdiccion_id",
+          "operator": "equal",
+          "value": "85"
+        },
+        {
+          "column": "programa_id",
+          "operator": "equal",
+          "value": "38"
+        }
+      ],
+      "filas": [
+        {
+          "inciso_id": 1,
+          "principal_id": 8,
+          "parcial_id": 7,
+          "parcial_desc": "Contratos especiales",
+          "credito_devengado": 2.40436485
+        },
+        {
+          "inciso_id": 3,
+          "principal_id": 2,
+          "parcial_id": 1,
+          "parcial_desc": "Alquiler de edificios y locales",
+          "credito_devengado": 1.9196384
+        },
+        {
+          "inciso_id": 3,
+          "principal_id": 4,
+          "parcial_id": 1,
+          "parcial_desc": "Estudios, investigaciones y proyectos de factibilidad",
+          "credito_devengado": 310.58135
+        },
+        {
+          "inciso_id": 3,
+          "principal_id": 4,
+          "parcial_id": 4,
+          "parcial_desc": "Contabilidad y auditoría",
+          "credito_devengado": 0
+        },
+        {
+          "inciso_id": 3,
+          "principal_id": 4,
+          "parcial_id": 5,
+          "parcial_desc": "Capacitación y difusión",
+          "credito_devengado": 168.446824
+        },
+        {
+          "inciso_id": 3,
+          "principal_id": 4,
+          "parcial_id": 6,
+          "parcial_desc": "Informática y sistemas computarizados",
+          "credito_devengado": 153.93007824
+        },
+        {
+          "inciso_id": 3,
+          "principal_id": 4,
+          "parcial_id": 9,
+          "parcial_desc": "Otros n.e.p.",
+          "credito_devengado": 205.3
+        },
+        {
+          "inciso_id": 3,
+          "principal_id": 5,
+          "parcial_id": 1,
+          "parcial_desc": "Transporte",
+          "credito_devengado": 0
+        },
+        {
+          "inciso_id": 3,
+          "principal_id": 5,
+          "parcial_id": 5,
+          "parcial_desc": "Comisiones y gastos bancarios",
+          "credito_devengado": 67.47474495
+        },
+        {
+          "inciso_id": 3,
+          "principal_id": 9,
+          "parcial_id": 9,
+          "parcial_desc": "Otros n.e.p.",
+          "credito_devengado": 0
+        },
+        {
+          "inciso_id": 4,
+          "principal_id": 3,
+          "parcial_id": 6,
+          "parcial_desc": "Equipo para computación",
+          "credito_devengado": 217.26642779
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 1,
+          "parcial_id": 4,
+          "parcial_desc": "Ayudas sociales a personas y asignaciones familiares",
+          "credito_devengado": 1003249.895002
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 1,
+          "parcial_id": 7,
+          "parcial_desc": "Transferencias a otras instituciones culturales y sociales sin fines de lucro",
+          "credito_devengado": 2457.745555
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 1,
+          "parcial_id": 8,
+          "parcial_desc": "Transferencias a cooperativas",
+          "credito_devengado": 9329.34657
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 2,
+          "parcial_id": 4,
+          "parcial_desc": "Transferencias a otras instituciones culturales y sociales sin fines de lucro",
+          "credito_devengado": 1873.538195
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 2,
+          "parcial_id": 5,
+          "parcial_desc": "Transferencias a cooperativas",
+          "credito_devengado": 2596.608334
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 6,
+          "parcial_id": 1,
+          "parcial_desc": "Transferencias a universidades nacionales para financiar gastos corrientes",
+          "credito_devengado": 28
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 6,
+          "parcial_id": 2,
+          "parcial_desc": "Transferencias a universidades nacionales para financiar gastos de capital",
+          "credito_devengado": 12
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 7,
+          "parcial_id": 1,
+          "parcial_desc": "Transferencias a la Administración Pública Provincial para financiar gastos corrientes",
+          "credito_devengado": 78.6112
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 7,
+          "parcial_id": 6,
+          "parcial_desc": "Transferencias a la Administración Pública Municipal para financiar gastos corrientes",
+          "credito_devengado": 605.25695261
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 8,
+          "parcial_id": 1,
+          "parcial_desc": "Transferencias a la Administración Pública Provincial para financiar gastos de capital",
+          "credito_devengado": 41.3888
+        },
+        {
+          "inciso_id": 5,
+          "principal_id": 8,
+          "parcial_id": 6,
+          "parcial_desc": "Transferencias a la Administración Pública Municipal para financiar gastos de capital",
+          "credito_devengado": 201.41490239
+        }
+      ]
+    }
+  ],
+  "alcance": "Devengado de las actividades filtradas; no acredita pago ni cobro efectivo."
+}

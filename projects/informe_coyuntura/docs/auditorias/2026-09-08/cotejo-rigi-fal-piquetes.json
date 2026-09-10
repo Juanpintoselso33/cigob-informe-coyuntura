@@ -1,0 +1,213 @@
+{
+  "fecha": "2026-09-08",
+  "metodo": "Ejecución real de los tres colectores sin modificar cache. Instrumentación de GET con URL y SHA; los POST de CNV/BO se ejecutaron por requests sin captura de respuesta en este registro. La réplica no certifica actualización de los hitos curados judiciales ni anclajes anuales.",
+  "indicadores": [
+    {
+      "indicador": "rigi_inversiones",
+      "resultado": {
+        "valor": 24.5,
+        "unidad": "% de inversión aprobada sobre el pipeline",
+        "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false,
+        "proyectos_aprobados": 23,
+        "inversion_aprobada_musd": 49766,
+        "proyectos_evaluacion": 23,
+        "inversion_evaluacion_musd": 153709,
+        "nota_denominador": null,
+        "detalle_txt": "23 proyectos aprobados (US$ 49.766M) / 23 en evaluación (US$ 153.709M) → 24,5% de la inversión total ya aprobada"
+      },
+      "previo": {
+        "valor": 24.5,
+        "unidad": "% de inversión aprobada sobre el pipeline",
+        "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false,
+        "proyectos_aprobados": 23,
+        "inversion_aprobada_musd": 49766,
+        "proyectos_evaluacion": 23,
+        "inversion_evaluacion_musd": 153709,
+        "nota_denominador": null,
+        "detalle_txt": "23 proyectos aprobados (US$ 49.766M) / 23 en evaluación (US$ 153.709M) → 24,5% de la inversión total ya aprobada",
+        "obtenido_en": "2026-09-08T03:06:38",
+        "en_indice": true,
+        "dimension": "privatizaciones_inversion",
+        "puntaje_itcg": 51.7,
+        "puntaje_banda": 51.7,
+        "peso_efectivo": 0.06
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1eytHJrzUjIFOXI-P1Hx_wbmZiSqPxVle059Djdos6u8/gviz/tq?tqx=out:csv&sheet=dataset",
+          "status": 200,
+          "sha256": "86654fe141b514913fc27f962d6f97b80eb1be17c7032a9bbbfc22543705666b",
+          "bytes": 14555
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1eytHJrzUjIFOXI-P1Hx_wbmZiSqPxVle059Djdos6u8/gviz/tq?tqx=out:csv&sheet=evaluacion",
+          "status": 200,
+          "sha256": "94bb3fe7ef26d2c9c72acedd1c98302417a5a9c5289d465a4ad3160c0823d8b7",
+          "bytes": 358
+        }
+      ],
+      "segundos": 3.8,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "fal_modernizacion_laboral",
+      "resultado": {
+        "valor": 50.0,
+        "unidad": "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
+        "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false,
+        "actos": [
+          {
+            "norma": "Ley 27.802",
+            "descripcion": "Congreso de la Nación — Ley de Modernización Laboral que instaura el FAL",
+            "fecha": "2026-03-06",
+            "dictado": true,
+            "suspendido": false,
+            "suspension": null,
+            "vigente": true
+          },
+          {
+            "norma": "Decreto 408/2026",
+            "descripcion": "Poder Ejecutivo Nacional — reglamentación del Título II (FAL)",
+            "fecha": "2026-06-01",
+            "dictado": true,
+            "suspendido": false,
+            "suspension": null,
+            "vigente": true
+          }
+        ],
+        "actos_vigentes": 2,
+        "actos_totales": 2,
+        "etapas": {
+          "construccion": 1.0,
+          "vigencia": 0.0,
+          "adopcion": 0.0,
+          "fecha_vigencia": "2026-11-01"
+        },
+        "componentes": {
+          "ley_27802": 100.0,
+          "decreto_408_2026": 100.0,
+          "vigencia": 0.0,
+          "adopcion": 0.0
+        },
+        "fal_cnv_registrados": 0,
+        "vigencia_desde": "2026-11-01",
+        "regimen_vigente": false,
+        "litigio_de_fondo_abierto": true,
+        "causa_de_fondo": "CGTRA c/ Estado Nacional s/ Acción Declarativa",
+        "fci_cese_registrados": 0,
+        "menciones_bo": 4,
+        "detalle_txt": "2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 4 menciones del FAL en el BO desde mar-2026"
+      },
+      "previo": {
+        "valor": 50.0,
+        "unidad": "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
+        "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false,
+        "actos": [
+          {
+            "norma": "Ley 27.802",
+            "descripcion": "Congreso de la Nación — Ley de Modernización Laboral que instaura el FAL",
+            "fecha": "2026-03-06",
+            "dictado": true,
+            "suspendido": false,
+            "suspension": null,
+            "vigente": true
+          },
+          {
+            "norma": "Decreto 408/2026",
+            "descripcion": "Poder Ejecutivo Nacional — reglamentación del Título II (FAL)",
+            "fecha": "2026-06-01",
+            "dictado": true,
+            "suspendido": false,
+            "suspension": null,
+            "vigente": true
+          }
+        ],
+        "actos_vigentes": 2,
+        "actos_totales": 2,
+        "etapas": {
+          "construccion": 1.0,
+          "vigencia": 0.0,
+          "adopcion": 0.0,
+          "fecha_vigencia": "2026-11-01"
+        },
+        "componentes": {
+          "ley_27802": 100.0,
+          "decreto_408_2026": 100.0,
+          "vigencia": 0.0,
+          "adopcion": 0.0
+        },
+        "fal_cnv_registrados": 0,
+        "vigencia_desde": "2026-11-01",
+        "regimen_vigente": false,
+        "litigio_de_fondo_abierto": true,
+        "causa_de_fondo": "CGTRA c/ Estado Nacional s/ Acción Declarativa",
+        "fci_cese_registrados": 0,
+        "menciones_bo": 4,
+        "detalle_txt": "2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 4 menciones del FAL en el BO desde mar-2026",
+        "obtenido_en": "2026-09-08T03:06:23",
+        "en_indice": true,
+        "dimension": "reforma_laboral",
+        "puntaje_itcg": 55.0,
+        "puntaje_banda": 55.0,
+        "peso_efectivo": 0.075
+      },
+      "error": null,
+      "solicitudes": [],
+      "segundos": 6.6,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "protocolo_antipiquetes",
+      "resultado": {
+        "valor": 74.2,
+        "unidad": "% de reducción de cortes por manifestación en CABA vs 2023 (IRPC)",
+        "fuente": "Diagnóstico Político — monitoreos públicos de piquetes",
+        "fecha_dato": "2025-12-31",
+        "desactualizado": false,
+        "componentes": {
+          "caba_2023": 931,
+          "caba_2025": 240
+        },
+        "detalle_txt": "240 cortes en CABA en 2025 vs 931 en 2023 (Diagnóstico Político; definición de piquete = Res. 943/23)"
+      },
+      "previo": {
+        "valor": 74.2,
+        "unidad": "% de reducción de cortes por manifestación en CABA vs 2023 (IRPC)",
+        "fuente": "Diagnóstico Político — monitoreos públicos de piquetes",
+        "fecha_dato": "2025-12-31",
+        "desactualizado": false,
+        "componentes": {
+          "caba_2023": 931,
+          "caba_2025": 240
+        },
+        "detalle_txt": "240 cortes en CABA en 2025 vs 931 en 2023 (Diagnóstico Político; definición de piquete = Res. 943/23)",
+        "obtenido_en": "2026-09-08T03:06:59",
+        "en_indice": true,
+        "dimension": "social_orden",
+        "puntaje_itcg": 99.0,
+        "puntaje_banda": 99.0,
+        "peso_efectivo": 0.04
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://diagnosticopolitico.com.ar/monitoreos-politicos",
+          "status": 200,
+          "sha256": "fbde4e7cd702a32cd5b69573a2181097201a0f8478206e4b0cfa5ab4af968fb2",
+          "bytes": 7646
+        }
+      ],
+      "segundos": 2.3,
+      "coincide_valor_y_fecha": true
+    }
+  ]
+}

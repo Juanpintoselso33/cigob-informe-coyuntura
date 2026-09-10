@@ -125,144 +125,6 @@ fecha,indicador,valor,unidad,fuente
 2024-03-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2024-02-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2024-01-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
-2026-07-01,protestas_caba,7,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2026-06-01,protestas_caba,25,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2026-05-01,protestas_caba,34,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2026-04-01,protestas_caba,27,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2026-03-01,protestas_caba,23,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2026-02-01,protestas_caba,30,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2026-01-01,protestas_caba,19,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-12-01,protestas_caba,16,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-11-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-10-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-09-01,protestas_caba,37,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-08-01,protestas_caba,24,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-07-01,protestas_caba,24,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-06-01,protestas_caba,31,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-05-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-04-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-03-01,protestas_caba,27,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-02-01,protestas_caba,16,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2025-01-01,protestas_caba,13,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-12-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-11-01,protestas_caba,21,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-10-01,protestas_caba,37,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-09-01,protestas_caba,16,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-08-01,protestas_caba,15,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-07-01,protestas_caba,11,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-06-01,protestas_caba,23,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-05-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-04-01,protestas_caba,13,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-03-01,protestas_caba,23,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-02-01,protestas_caba,22,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2024-01-01,protestas_caba,9,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-12-01,protestas_caba,38,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-11-01,protestas_caba,15,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-10-01,protestas_caba,13,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-09-01,protestas_caba,24,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-08-01,protestas_caba,19,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-07-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-06-01,protestas_caba,11,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-05-01,protestas_caba,12,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-04-01,protestas_caba,22,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-03-01,protestas_caba,30,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-02-01,protestas_caba,22,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2023-01-01,protestas_caba,16,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-12-01,protestas_caba,28,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-11-01,protestas_caba,24,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-10-01,protestas_caba,35,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-09-01,protestas_caba,27,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-08-01,protestas_caba,21,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-07-01,protestas_caba,20,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-06-01,protestas_caba,22,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-05-01,protestas_caba,20,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-04-01,protestas_caba,36,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-03-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-02-01,protestas_caba,19,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2022-01-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-12-01,protestas_caba,17,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-11-01,protestas_caba,20,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-10-01,protestas_caba,32,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-09-01,protestas_caba,27,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-08-01,protestas_caba,20,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-07-01,protestas_caba,19,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-06-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-05-01,protestas_caba,20,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-04-01,protestas_caba,37,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-03-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-02-01,protestas_caba,14,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2021-01-01,protestas_caba,15,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-12-01,protestas_caba,14,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-11-01,protestas_caba,28,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-10-01,protestas_caba,20,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-09-01,protestas_caba,24,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-08-01,protestas_caba,11,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-07-01,protestas_caba,9,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-06-01,protestas_caba,13,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-05-01,protestas_caba,15,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-04-01,protestas_caba,5,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-03-01,protestas_caba,6,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-02-01,protestas_caba,8,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2020-01-01,protestas_caba,9,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-12-01,protestas_caba,5,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-11-01,protestas_caba,17,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-10-01,protestas_caba,17,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-09-01,protestas_caba,16,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-08-01,protestas_caba,17,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-07-01,protestas_caba,8,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-06-01,protestas_caba,4,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-05-01,protestas_caba,6,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-04-01,protestas_caba,11,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-03-01,protestas_caba,13,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-02-01,protestas_caba,31,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2019-01-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-12-01,protestas_caba,27,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-11-01,protestas_caba,19,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-10-01,protestas_caba,12,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-09-01,protestas_caba,38,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-08-01,protestas_caba,18,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-07-01,protestas_caba,27,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-06-01,protestas_caba,28,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-05-01,protestas_caba,20,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-04-01,protestas_caba,22,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-03-01,protestas_caba,16,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-02-01,protestas_caba,10,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2018-01-01,protestas_caba,16,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2017-12-01,protestas_caba,5,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
-2026-09-01,privatizaciones,51.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2026-08-01,privatizaciones,51.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2026-07-01,privatizaciones,51.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2026-06-01,privatizaciones,51.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2026-05-01,privatizaciones,48.6,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2026-04-01,privatizaciones,45.8,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2026-03-01,privatizaciones,45.8,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2026-02-01,privatizaciones,44.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2026-01-01,privatizaciones,44.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-12-01,privatizaciones,44.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-11-01,privatizaciones,40.3,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-10-01,privatizaciones,37.5,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-09-01,privatizaciones,37.5,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-08-01,privatizaciones,36.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-07-01,privatizaciones,33.3,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-06-01,privatizaciones,22.2,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-05-01,privatizaciones,19.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-04-01,privatizaciones,19.4,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-03-01,privatizaciones,15.3,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-02-01,privatizaciones,13.9,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2025-01-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-12-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-11-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-10-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-09-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-08-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-07-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-06-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-05-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-04-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-03-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-02-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2024-01-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
-2023-12-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2026-07-01,masa_salarial,-32.44,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-06-01,masa_salarial,-32.37,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-05-01,masa_salarial,-22.98,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
@@ -354,34 +216,6 @@ fecha,indicador,valor,unidad,fuente
 2021-08-01,litigiosidad_laboral,42.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2021-07-01,litigiosidad_laboral,31.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2021-06-01,litigiosidad_laboral,31.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2026-03-01,libertad_opcion_salud,31.8,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2026-02-01,libertad_opcion_salud,31.6,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2026-01-01,libertad_opcion_salud,31.4,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-12-01,libertad_opcion_salud,31.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-11-01,libertad_opcion_salud,30.8,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-10-01,libertad_opcion_salud,30.8,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-09-01,libertad_opcion_salud,30.5,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-08-01,libertad_opcion_salud,30.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-07-01,libertad_opcion_salud,30.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-06-01,libertad_opcion_salud,29.4,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-05-01,libertad_opcion_salud,28.5,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-04-01,libertad_opcion_salud,27.9,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-03-01,libertad_opcion_salud,24.6,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-02-01,libertad_opcion_salud,24.7,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-01-01,libertad_opcion_salud,24.5,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-12-01,libertad_opcion_salud,0.7,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-11-01,libertad_opcion_salud,0.3,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-10-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-09-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-08-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-07-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-06-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-05-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-04-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-03-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-02-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-01-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2023-12-01,libertad_opcion_salud,0.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2026-04-01,indice_salarios_publico,7515.45,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-03-01,indice_salarios_publico,7344.33,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-02-01,indice_salarios_publico,6991.42,indice base oct-2016=100,INDEC/datos.gob.ar
@@ -791,39 +625,39 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2024-01-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
 2023-12-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL vigente),InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)
-2026-08-01,desregulacion_normativa,17115.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2026-07-01,desregulacion_normativa,16771.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2026-06-01,desregulacion_normativa,16178.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2026-05-01,desregulacion_normativa,15507.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2026-04-01,desregulacion_normativa,15251.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2026-03-01,desregulacion_normativa,15144.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2026-02-01,desregulacion_normativa,14572.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2026-01-01,desregulacion_normativa,14392.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-12-01,desregulacion_normativa,14149.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-11-01,desregulacion_normativa,13475.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-10-01,desregulacion_normativa,12361.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-09-01,desregulacion_normativa,9645.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-08-01,desregulacion_normativa,8892.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-07-01,desregulacion_normativa,8092.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-06-01,desregulacion_normativa,6958.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-05-01,desregulacion_normativa,6428.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-04-01,desregulacion_normativa,5743.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-03-01,desregulacion_normativa,5543.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-02-01,desregulacion_normativa,5083.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2025-01-01,desregulacion_normativa,4525.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-12-01,desregulacion_normativa,4077.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-11-01,desregulacion_normativa,3875.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-10-01,desregulacion_normativa,3226.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-09-01,desregulacion_normativa,3081.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-08-01,desregulacion_normativa,2639.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-07-01,desregulacion_normativa,2437.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-06-01,desregulacion_normativa,2149.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-05-01,desregulacion_normativa,2003.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-04-01,desregulacion_normativa,1974.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-03-01,desregulacion_normativa,1660.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-02-01,desregulacion_normativa,1660.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2024-01-01,desregulacion_normativa,1555.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
-2023-12-01,desregulacion_normativa,1150.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-08-01,desregulacion_normativa,17115,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-07-01,desregulacion_normativa,16848,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-06-01,desregulacion_normativa,16178,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-05-01,desregulacion_normativa,15507,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-04-01,desregulacion_normativa,15251,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-03-01,desregulacion_normativa,15144,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-02-01,desregulacion_normativa,14572,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-01-01,desregulacion_normativa,14392,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-12-01,desregulacion_normativa,14149,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-11-01,desregulacion_normativa,13475,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-10-01,desregulacion_normativa,12361,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-09-01,desregulacion_normativa,9645,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-08-01,desregulacion_normativa,8892,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-07-01,desregulacion_normativa,8092,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-06-01,desregulacion_normativa,6958,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-05-01,desregulacion_normativa,6428,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-04-01,desregulacion_normativa,5743,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-03-01,desregulacion_normativa,5543,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-02-01,desregulacion_normativa,5083,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-01-01,desregulacion_normativa,4525,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-12-01,desregulacion_normativa,4077,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-11-01,desregulacion_normativa,3875,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-10-01,desregulacion_normativa,3226,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-09-01,desregulacion_normativa,3081,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-08-01,desregulacion_normativa,2639,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-07-01,desregulacion_normativa,2437,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-06-01,desregulacion_normativa,2149,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-05-01,desregulacion_normativa,2003,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-04-01,desregulacion_normativa,1974,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-03-01,desregulacion_normativa,1660,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-02-01,desregulacion_normativa,1660,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-01-01,desregulacion_normativa,1555,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2023-12-01,desregulacion_normativa,1150,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2026-09-01,concesiones_infraestructura,100.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-08-01,concesiones_infraestructura,100.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-07-01,concesiones_infraestructura,56.9,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
@@ -892,75 +726,247 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,cepo_mulc,40.59,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2024-01-01,cepo_mulc,45.95,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2023-12-01,cepo_mulc,50.12,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
-2026-08-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2026-07-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2026-06-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2026-05-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2026-04-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2026-03-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2026-02-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2026-01-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-12-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-11-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-10-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-09-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-08-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-07-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-06-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-05-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-04-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-03-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-02-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2025-01-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2024-12-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2024-11-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2024-10-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2024-09-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2024-08-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2024-07-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2024-06-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2024-05-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2024-04-01,asistencia_directa,100.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-12-01,asistencia_directa,99.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-11-01,asistencia_directa,92.9,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-10-01,asistencia_directa,98.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-09-01,asistencia_directa,98.8,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-08-01,asistencia_directa,98.3,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-07-01,asistencia_directa,99.5,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-06-01,asistencia_directa,97.6,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-05-01,asistencia_directa,99.2,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-04-01,asistencia_directa,100.9,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-03-01,asistencia_directa,95.7,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-02-01,asistencia_directa,95.1,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2023-01-01,asistencia_directa,99.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2026-06-01,apertura_comercial,6.18,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2026-05-01,apertura_comercial,4.81,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2026-04-01,apertura_comercial,5.57,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2026-03-01,apertura_comercial,4.86,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2026-02-01,apertura_comercial,5.6,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2026-01-01,apertura_comercial,5.6,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-12-01,apertura_comercial,4.86,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-11-01,apertura_comercial,4.28,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-10-01,apertura_comercial,4.89,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-09-01,apertura_comercial,5.96,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-08-01,apertura_comercial,5.1,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-07-01,apertura_comercial,9.42,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-06-01,apertura_comercial,10.52,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-05-01,apertura_comercial,7.44,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-04-01,apertura_comercial,7.95,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-03-01,apertura_comercial,7.53,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-02-01,apertura_comercial,7.84,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2025-01-01,apertura_comercial,8.56,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-12-01,apertura_comercial,7.83,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-11-01,apertura_comercial,8.18,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-10-01,apertura_comercial,7.73,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-09-01,apertura_comercial,7.6,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-08-01,apertura_comercial,6.81,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-07-01,apertura_comercial,7.47,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-06-01,apertura_comercial,6.63,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-05-01,apertura_comercial,9.08,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-04-01,apertura_comercial,6.14,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-03-01,apertura_comercial,5.96,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-02-01,apertura_comercial,6.19,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2024-01-01,apertura_comercial,11.83,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
-2023-12-01,apertura_comercial,9.74,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-08-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-07-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-06-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-05-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-04-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-03-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-02-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-01-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-12-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-11-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-10-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-09-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-08-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-07-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-06-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-05-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-04-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-03-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-02-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-01-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-12-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-11-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-10-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-09-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-08-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-07-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-06-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-05-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-04-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-12-01,asistencia_directa,99.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-11-01,asistencia_directa,92.9,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-10-01,asistencia_directa,98.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-09-01,asistencia_directa,98.8,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-08-01,asistencia_directa,98.3,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-07-01,asistencia_directa,99.5,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-06-01,asistencia_directa,97.6,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-05-01,asistencia_directa,99.2,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-04-01,asistencia_directa,100.9,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-03-01,asistencia_directa,95.7,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-02-01,asistencia_directa,95.1,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-01-01,asistencia_directa,99.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-03-01,libertad_opcion_salud,31.6,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2026-02-01,libertad_opcion_salud,31.5,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2026-01-01,libertad_opcion_salud,31.4,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-12-01,libertad_opcion_salud,31.2,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-11-01,libertad_opcion_salud,30.8,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-10-01,libertad_opcion_salud,30.8,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-09-01,libertad_opcion_salud,30.5,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-08-01,libertad_opcion_salud,30.1,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-07-01,libertad_opcion_salud,30.0,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-06-01,libertad_opcion_salud,29.4,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-05-01,libertad_opcion_salud,28.5,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-04-01,libertad_opcion_salud,27.9,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-03-01,libertad_opcion_salud,24.6,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-02-01,libertad_opcion_salud,24.7,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2025-01-01,libertad_opcion_salud,24.5,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-12-01,libertad_opcion_salud,0.7,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-11-01,libertad_opcion_salud,0.3,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-10-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-09-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-08-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-07-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-06-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-05-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-04-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-03-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-02-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2024-01-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2023-12-01,libertad_opcion_salud,0.0,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2026-04-01,libertad_opcion_salud,31.7,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2026-05-01,libertad_opcion_salud,32.0,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2026-06-01,libertad_opcion_salud,33.1,% usuarios de prepagas con derivación directa,"SSS — RNAS/RNEMP, archivos referenciados en el portal"
+2026-06-01,apertura_comercial,6.15,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-05-01,apertura_comercial,4.81,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-04-01,apertura_comercial,5.57,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-03-01,apertura_comercial,4.86,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-02-01,apertura_comercial,5.6,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-01-01,apertura_comercial,5.6,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-12-01,apertura_comercial,4.86,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-11-01,apertura_comercial,4.28,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-10-01,apertura_comercial,4.89,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-09-01,apertura_comercial,5.96,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-08-01,apertura_comercial,5.1,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-07-01,apertura_comercial,9.42,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-06-01,apertura_comercial,10.52,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-05-01,apertura_comercial,7.44,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-04-01,apertura_comercial,7.95,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-03-01,apertura_comercial,7.53,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-02-01,apertura_comercial,7.84,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-01-01,apertura_comercial,8.56,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-12-01,apertura_comercial,7.83,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-11-01,apertura_comercial,8.18,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-10-01,apertura_comercial,7.73,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-09-01,apertura_comercial,7.6,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-08-01,apertura_comercial,6.81,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-07-01,apertura_comercial,7.47,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-06-01,apertura_comercial,6.63,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-05-01,apertura_comercial,9.08,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-04-01,apertura_comercial,6.14,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-03-01,apertura_comercial,5.96,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-02-01,apertura_comercial,6.19,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-01-01,apertura_comercial,11.83,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2023-12-01,apertura_comercial,9.74,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-07-01,apertura_comercial,7.62,% del intercambio (alícuota efectiva),ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2017-12-01,protestas_caba,5,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-01-01,protestas_caba,16,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-02-01,protestas_caba,10,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-03-01,protestas_caba,16,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-04-01,protestas_caba,22,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-05-01,protestas_caba,20,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-06-01,protestas_caba,28,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-07-01,protestas_caba,27,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-08-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-09-01,protestas_caba,38,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-10-01,protestas_caba,12,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-11-01,protestas_caba,19,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2018-12-01,protestas_caba,27,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-01-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-02-01,protestas_caba,31,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-03-01,protestas_caba,13,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-04-01,protestas_caba,11,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-05-01,protestas_caba,6,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-06-01,protestas_caba,4,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-07-01,protestas_caba,8,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-08-01,protestas_caba,17,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-09-01,protestas_caba,16,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-10-01,protestas_caba,17,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-11-01,protestas_caba,17,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2019-12-01,protestas_caba,5,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-01-01,protestas_caba,9,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-02-01,protestas_caba,8,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-03-01,protestas_caba,6,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-04-01,protestas_caba,5,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-05-01,protestas_caba,15,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-06-01,protestas_caba,13,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-07-01,protestas_caba,9,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-08-01,protestas_caba,11,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-09-01,protestas_caba,24,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-10-01,protestas_caba,20,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-11-01,protestas_caba,28,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2020-12-01,protestas_caba,14,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-01-01,protestas_caba,15,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-02-01,protestas_caba,14,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-03-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-04-01,protestas_caba,37,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-05-01,protestas_caba,20,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-06-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-07-01,protestas_caba,19,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-08-01,protestas_caba,20,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-09-01,protestas_caba,27,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-10-01,protestas_caba,32,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-11-01,protestas_caba,20,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2021-12-01,protestas_caba,17,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-01-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-02-01,protestas_caba,19,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-03-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-04-01,protestas_caba,36,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-05-01,protestas_caba,20,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-06-01,protestas_caba,22,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-07-01,protestas_caba,20,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-08-01,protestas_caba,21,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-09-01,protestas_caba,27,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-10-01,protestas_caba,35,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-11-01,protestas_caba,24,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2022-12-01,protestas_caba,28,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-01-01,protestas_caba,16,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-02-01,protestas_caba,22,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-03-01,protestas_caba,30,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-04-01,protestas_caba,22,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-05-01,protestas_caba,12,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-06-01,protestas_caba,11,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-07-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-08-01,protestas_caba,19,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-09-01,protestas_caba,24,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-10-01,protestas_caba,13,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-11-01,protestas_caba,15,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-12-01,protestas_caba,38,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-01-01,protestas_caba,9,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-02-01,protestas_caba,22,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-03-01,protestas_caba,23,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-04-01,protestas_caba,13,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-05-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-06-01,protestas_caba,23,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-07-01,protestas_caba,11,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-08-01,protestas_caba,15,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-09-01,protestas_caba,16,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-10-01,protestas_caba,37,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-11-01,protestas_caba,21,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2024-12-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-01-01,protestas_caba,13,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-02-01,protestas_caba,16,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-03-01,protestas_caba,27,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-04-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-05-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-06-01,protestas_caba,31,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-07-01,protestas_caba,24,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-08-01,protestas_caba,24,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-09-01,protestas_caba,37,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-10-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-11-01,protestas_caba,18,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2025-12-01,protestas_caba,16,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2026-01-01,protestas_caba,19,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2026-02-01,protestas_caba,30,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2026-03-01,protestas_caba,23,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2026-04-01,protestas_caba,27,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2026-05-01,protestas_caba,34,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2026-06-01,protestas_caba,25,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2026-07-01,protestas_caba,7,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2026-08-01,protestas_caba,26,eventos por mes de inicio de semana (CABA),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
+2023-12-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-01-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-02-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-03-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-04-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-05-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-06-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-07-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-08-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-09-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-10-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-11-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2024-12-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-01-01,privatizaciones,11.1,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-02-01,privatizaciones,13.9,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-03-01,privatizaciones,15.3,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-04-01,privatizaciones,19.4,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-05-01,privatizaciones,19.4,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-06-01,privatizaciones,22.2,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-07-01,privatizaciones,33.3,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-08-01,privatizaciones,36.1,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-09-01,privatizaciones,37.5,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-10-01,privatizaciones,37.5,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-11-01,privatizaciones,40.3,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2025-12-01,privatizaciones,44.4,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2026-01-01,privatizaciones,44.4,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2026-02-01,privatizaciones,44.4,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2026-03-01,privatizaciones,45.8,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2026-04-01,privatizaciones,45.8,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2026-05-01,privatizaciones,48.6,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2026-06-01,privatizaciones,48.6,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2026-07-01,privatizaciones,48.6,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2026-08-01,privatizaciones,55.6,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2026-09-01,privatizaciones,55.6,"% avance (etapas 0-4, cartera Ley Bases)",BO y CNV — hitos fechados (elab. CIGOB)
+2026-07-01,icg_utdt,1.936,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"

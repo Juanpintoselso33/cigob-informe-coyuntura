@@ -1,0 +1,87 @@
+{
+  "fecha_consulta": "2026-09-08",
+  "fuentes": [
+    {
+      "url": "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/informes/anexo-estadistico-mercado-cambios-balance-cambiario.xlsx",
+      "sha256": "bcfb49ecaf870cf497ee3bc16113439d8f017bd263ec7c65aa7af423ad4575de",
+      "status": 200
+    },
+    {
+      "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/197?desde=2026-07-01&limit=3000",
+      "sha256": "f6b3c0224352d8014b9d960d8513d235af87af9564178621e6cc3906c3d53437",
+      "status": 200
+    },
+    {
+      "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/17?desde=2026-07-01&limit=3000",
+      "sha256": "3d9a4a3b9143bf7f553117bd848df560b26699742ff50a57061cef81eab57b88",
+      "status": 200
+    },
+    {
+      "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/100?desde=2026-07-01&limit=3000",
+      "sha256": "9927bc4a7cdf8a133f15332aa2241e17f6bf6c8ded9048b6926cee1d6bad8305",
+      "status": 200
+    },
+    {
+      "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/104?desde=2026-07-01&limit=3000",
+      "sha256": "9fb8b67b65158b4851aed644300f02c78309850208192fc5ae43a1254b15857f",
+      "status": 200
+    }
+  ],
+  "ultimo_mes_anexo": "2026-07",
+  "montos_contables_por_sector_musd": {
+    "Industria de Papel, Ediciones e Impresiones": 16.6301736,
+    "Entretenimiento": 19.254869122600002,
+    "Construcción": 3.34400613,
+    "Otros Industria Manufacturera": 8.4896527,
+    "Alimentos, Bebidas y Tabaco": 4.4377569999999995,
+    "Seguros": 11.5429106545,
+    "Metales Comunes y Elaboración": 1.500788355,
+    "Gastronomía": 2.6980258768,
+    "Oleaginosos y Cerealeros": -0.3706892601999999,
+    "Agricultura, Ganadería y Otras Actividades Primarias": -0.32837776690000053,
+    "Otros Sector Privado no Financiero": 48.86123782419999,
+    "Informática": 1.7027897075,
+    "Productos Minerales no Metálicos (Cementos, Cerámicos y Otros)": -0.455113,
+    "Sector Público": 872.5142973809999,
+    "Personas Humanas": -3461.4829758861997,
+    "Industria Textil y Curtidos": 0.27099632240000004,
+    "Electricidad (Generación, Transporte, Distribución)": 9.765911094399998,
+    "Gas (Extracción, Transporte, Distribución)": 0.4108,
+    "Transporte": 45.2115003592,
+    "Industria Química, Caucho y Plástico": 5.6392355049,
+    "Industria Automotriz": 30.122526999999995,
+    "Comercio": -0.6569242351,
+    "Agua": 0.005534000000000001,
+    "Petróleo": 0.5533729999999999,
+    "Mineria": 64.265154,
+    "Turismo y Hotelería": 31.4094622574,
+    "Comunicaciones": 0.500554915,
+    "Maquinarias y Equipos": 4.659463779999999
+  },
+  "insumos_monetarios_fin_mes": [
+    {
+      "variable": 197,
+      "fecha": "2026-07-31",
+      "valor": 69577165.436
+    },
+    {
+      "variable": 17,
+      "fecha": "2026-07-31",
+      "valor": 26527054.0
+    },
+    {
+      "variable": 100,
+      "fecha": "2026-07-31",
+      "valor": 124918462.0
+    },
+    {
+      "variable": 104,
+      "fecha": "2026-07-31",
+      "valor": 59935540.9777
+    }
+  ],
+  "componente_a": 32.91551590800313,
+  "componente_b": 3152.0173569444996,
+  "tension_recalculada": 58.27024874392158,
+  "metodo": "Recorrido independiente de filas del concepto 03 y suma por sector; cuatro variables API y último día del mismo mes. Escala final usa anclas vigentes del motor, ya cubiertas por pruebas. No identifica destino de las divisas."
+}

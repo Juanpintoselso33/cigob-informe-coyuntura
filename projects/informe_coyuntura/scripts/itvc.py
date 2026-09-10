@@ -13,8 +13,10 @@ El ITVC es el promedio ponderado directo de esos índices.
 A diferencia del ITCM/ITCG no hay tablas de bandas: los componentes entran
 como índices continuos (la banda solo interpreta el resultado agregado).
 
-Los cinco pesos de dimensión (35/25/10/15/15) y los internos vienen TODOS
-del documento (no hay operacionalización propia de pesos). Polaridades:
+La estructura vigente tiene seis dimensiones y contiene modificaciones
+documentadas mediante ADR respecto de los cinco pesos del documento original.
+DIMENSIONES_ITVC declara pesos nominales; las suspensiones renormalizan los
+componentes activos sin cambiar el peso de su dimensión. Polaridades:
 las fórmulas de rebase viven en descargar_series (series itvc por
 componente) y en publicar (componentes sin serie histórica); acá solo se
 agrega, renormaliza e interpreta.
@@ -144,9 +146,9 @@ DIMENSIONES_ITVC = {
         # El motivo es el mismo que en ADR-0217. Con las dos series por
         # separado, una suba de motos admite dos lecturas opuestas —el hogar
         # accedió a su primer vehículo, o bajó de categoría— y el índice no
-        # tiene con qué distinguirlas. El total sí: si fuera sustitución
-        # descendente estaría plano, porque cada moto que entra tendría un auto
-        # que sale. Sube 7,5% en la ventana en que las dos series se separan.
+        # tiene con qué distinguirlas. ADR-0271 rectifica la inferencia de que
+        # el total sí las separaría: un flujo agregado creciente es compatible
+        # con sustitución en algunos hogares y primeras compras en otros.
         #
         # ADR-0225: entra `consumo_supermercados` con 20%, aplicando la regla
         # de cesión proporcional sobre lo que HAYA en la dimensión — por eso se
@@ -589,8 +591,8 @@ def rebase_de_serie(series, skey, invertido=False, base_meses=None):
     """Índice base-100 del ÚLTIMO punto de una serie vs su promedio 4T-2023.
     En series trimestrales el 4T-2023 es un único punto (2023-10), que coincide
     naturalmente con la base del doc; en mensuales, el promedio oct-nov-dic.
-    `base_meses` permite una base DECLARADA distinta cuando la fuente no midió
-    el 4T-2023 (ej. IVI: encuesta suspendida 2020-2023, reanudada ene-2024)."""
+    `base_meses` permite una base DECLARADA distinta (ej. IVI: enero de 2024,
+    conservada por continuidad; el archivo 2023 se recuperó en ADR-0273)."""
     serie = series.get(skey) or []
     vals = {p["fecha"][:7]: p["valor"] for p in serie}
     base_vals = [vals[m] for m in (base_meses or BASE_MESES) if vals.get(m) is not None]
@@ -671,9 +673,9 @@ def indices_desde_series(vida_ind, series, baselines=None):
     #
     # Inseguridad (SNIC anual: su serie emite el total del año en YYYY-12, así
     # el 4T-2023 resuelve al año 2023 — la excepción declarada del doc).
-    # IVI (ADR-0032): base = ene-2024, la primera medición tras la reanudación
-    # de la encuesta (suspendida 2020-2023; su ventana de 12 meses captura
-    # mayormente el año PRE-mandato, así que aproxima bien el arranque).
+    # IVI: base = ene-2024 por continuidad con ADR-0032. ADR-0273 recuperó
+    # 4T-2023 y rectificó la supuesta suspensión. Rebasar exige comparar el
+    # efecto y documentar una decisión, no cambiarlo al reparar el colector.
     idx["inseguridad"] = rebase_de_serie(series, "inseguridad", invertido=True,
                                                base_meses=("2024-01",))
     # Sentimiento digital (ADR-0034): canasta mensual Trends de ventana fija —

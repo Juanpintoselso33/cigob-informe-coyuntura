@@ -53,7 +53,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · > 5 → 10
 
-**Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
+**Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0289](../adr/0289-sensibilidad-conserva-transformaciones-y-deflactor.md) Sensibilidad conserva transformaciones y deflactor
 
 #### Liquidez en pesos y presión compradora de divisas
 
@@ -97,7 +97,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 110 → 100 · 100–110 → 85 · 90–100 → 60 · 80–90 → 35 · ≤ 80 → 10
 
-**Lo gobiernan**: [ADR-0003](../adr/0003-recaudacion-interanual-real.md) La recaudación se mide en variación interanual REAL (deflactada) · [ADR-0029](../adr/0029-recaudacion-promedio-movil-3m.md) Recaudación real: promedio móvil de 3 meses sobre IPC cerrado · [ADR-0072](../adr/0072-resultado-primario-dimension-fiscal.md) resultado_primario: la dimensión fiscal pasa a medir resultado, no ingresos · [ADR-0127](../adr/0127-la-recaudacion-mide-la-base-imponible-no-la-caja.md) La recaudación mide la base imponible, no la caja: pasa a DGI
+**Lo gobiernan**: [ADR-0003](../adr/0003-recaudacion-interanual-real.md) La recaudación se mide en variación interanual REAL (deflactada) · [ADR-0029](../adr/0029-recaudacion-promedio-movil-3m.md) Recaudación real: promedio móvil de 3 meses sobre IPC cerrado · [ADR-0072](../adr/0072-resultado-primario-dimension-fiscal.md) resultado_primario: la dimensión fiscal pasa a medir resultado, no ingresos · [ADR-0127](../adr/0127-la-recaudacion-mide-la-base-imponible-no-la-caja.md) La recaudación mide la base imponible, no la caja: pasa a DGI · [ADR-0283](../adr/0283-recaudacion-actualiza-gacetillas-comarb.md) Recaudación actualiza las gacetillas COMARB
 
 #### Saldo comercial 12m
 
@@ -111,7 +111,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000–5000 → 50 · -15000–-5000 → 30 · ≤ -15000 → 10
 
-**Lo gobiernan**: [ADR-0056](../adr/0056-suavizado-ajuste-automatico-saldo-comercial.md) Suavizado del ajuste automático de saldo comercial por composición expo/impo · [ADR-0080](../adr/0080-cuenta-corriente-contexto-saldo-comercial.md) La cuenta corriente acompaña al saldo comercial, y el texto público se corrige
+**Lo gobiernan**: [ADR-0056](../adr/0056-suavizado-ajuste-automatico-saldo-comercial.md) Suavizado del ajuste automático de saldo comercial por composición expo/impo · [ADR-0080](../adr/0080-cuenta-corriente-contexto-saldo-comercial.md) La cuenta corriente acompaña al saldo comercial, y el texto público se corrige · [ADR-0275](../adr/0275-ica-vigente-completa-la-api-historica.md) El cuadro ICA vigente completa la API histórica
 
 ### Dimensión `financiamiento` (16%)
 
@@ -127,7 +127,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤ 0 → 10
 
-**Lo gobiernan**: [ADR-0005](../adr/0005-reservas-netas-a-secas.md) Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal
+**Lo gobiernan**: [ADR-0005](../adr/0005-reservas-netas-a-secas.md) Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal · [ADR-0286](../adr/0286-reservas-explicita-la-estimacion-y-sus-exclusiones.md) Reservas explicita la estimación y sus exclusiones · [ADR-0287](../adr/0287-reservas-no-sustituye-insumos-faltantes.md) Reservas no sustituye insumos faltantes
 
 #### Capacidad prestable (IdC)
 
@@ -155,7 +155,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 20 → 15 · 12–20 → 45 · 6–12 → 75 · 0–6 → 100 · -5–0 → 55 · ≤ -5 → 20
 
-**Lo gobiernan**: [ADR-0071](../adr/0071-costo-financiamiento-tesoro.md) costo_financiamiento_tesoro: el precio del financiamiento soberano entra al ITCM · [ADR-0258](../adr/0258-la-reapertura-rinde-su-precio-no-su-cupon.md) Una reapertura rinde lo que dice su precio, no lo que dice su cupón
+**Lo gobiernan**: [ADR-0071](../adr/0071-costo-financiamiento-tesoro.md) costo_financiamiento_tesoro: el precio del financiamiento soberano entra al ITCM · [ADR-0258](../adr/0258-la-reapertura-rinde-su-precio-no-su-cupon.md) Una reapertura rinde lo que dice su precio, no lo que dice su cupón · [ADR-0288](../adr/0288-financiamiento-completa-meses-con-gacetillas.md) Financiamiento completa meses con gacetillas
 
 #### Crédito privado real
 
@@ -213,7 +213,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤ -5 → 5
 
-**Lo gobiernan**: [ADR-0076](../adr/0076-ipi-segunda-senal-actividad.md) La dimensión de actividad deja de colgar de un único dato · [ADR-0079](../adr/0079-peso-del-ipi-en-actividad.md) El IPI baja de 35% a 20%: es respaldo, no medida principal
+**Lo gobiernan**: [ADR-0076](../adr/0076-ipi-segunda-senal-actividad.md) La dimensión de actividad deja de colgar de un único dato · [ADR-0079](../adr/0079-peso-del-ipi-en-actividad.md) El IPI baja de 35% a 20%: es respaldo, no medida principal · [ADR-0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) Actividad usa las planillas originales vigentes
 
 ### Dimensión `competitividad_externa` (11%)
 
@@ -245,7 +245,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 10 → 100 · 2–10 → 80 · -2–2 → 60 · -10–-2 → 35 · ≤ -10 → 10
 
-**Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM
+**Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM · [ADR-0293](../adr/0293-iai-comparte-la-composicion-mensual.md) IAI comparte la composición mensual · [ADR-0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) Actividad usa las planillas originales vigentes · [ADR-0300](../adr/0300-iai-completa-bienes-de-capital-originales.md) IAI completa los bienes de capital originales · [ADR-0301](../adr/0301-historia-macro-deriva-componentes-del-motor.md) La historia macro deriva sus componentes del motor
 
 ## Se releva y no puntúa
 
@@ -280,7 +280,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-42 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+52 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -324,3 +324,13 @@ histórica.
 - [0261](../adr/0261-la-brecha-m3-m2-no-tiene-signo.md) — La brecha M3–M2 no tiene signo, así que no puntúa
 - [0262](../adr/0262-dos-insumos-que-necesitan-signos-opuestos.md) — Dos insumos que necesitan signos opuestos
 - [0264](../adr/0264-renombrar-no-borra-la-lectura-refutada.md) — Renombrar no borra la lectura refutada
+- [0275](../adr/0275-ica-vigente-completa-la-api-historica.md) — El cuadro ICA vigente completa la API histórica
+- [0283](../adr/0283-recaudacion-actualiza-gacetillas-comarb.md) — Recaudación actualiza las gacetillas COMARB
+- [0286](../adr/0286-reservas-explicita-la-estimacion-y-sus-exclusiones.md) — Reservas explicita la estimación y sus exclusiones
+- [0287](../adr/0287-reservas-no-sustituye-insumos-faltantes.md) — Reservas no sustituye insumos faltantes
+- [0288](../adr/0288-financiamiento-completa-meses-con-gacetillas.md) — Financiamiento completa meses con gacetillas
+- [0289](../adr/0289-sensibilidad-conserva-transformaciones-y-deflactor.md) — Sensibilidad conserva transformaciones y deflactor
+- [0293](../adr/0293-iai-comparte-la-composicion-mensual.md) — IAI comparte la composición mensual
+- [0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) — Actividad usa las planillas originales vigentes
+- [0300](../adr/0300-iai-completa-bienes-de-capital-originales.md) — IAI completa los bienes de capital originales
+- [0301](../adr/0301-historia-macro-deriva-componentes-del-motor.md) — La historia macro deriva sus componentes del motor

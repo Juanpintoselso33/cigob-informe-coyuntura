@@ -1,0 +1,10 @@
+{
+  "generated_at_snapshot": "2026-09-08T19:22:19.225561-03:00",
+  "sha256_snapshot": "5e048a7d5eca458ed61d8d4171437f2af7e94cb08f0a8463cdc92319f5638c84",
+  "indicadores": 63,
+  "dimensiones": 24,
+  "indicadores_observados_en_calculo": 62,
+  "indicadores_sin_universo": 1,
+  "fallas_estructura_y_aritmetica": [],
+  "alcance": "Censo del snapshot. No acredita veracidad de fuentes ni validez externa."
+}

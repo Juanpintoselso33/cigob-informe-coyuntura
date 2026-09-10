@@ -13,6 +13,11 @@ origen: 'Auditoría externa del cinturón político, prioridad 1'
 
 # ADR-0088 — El ITCP incorpora una dimensión de sector privado
 
+> Actualización del 8 de septiembre de 2026: [ADR-0302](0302-expectativas-construccion-fecha-y-calendario.md)
+> corrige la referencia temporal y filas omitidas de la serie. Las correlaciones
+> siguientes documentan el análisis original, no la corrida vigente. La web
+> publica el contraste recalculado desde los datos corregidos.
+
 | **Modifica** | ADR-0036 (pesos entre dimensiones del ITCP) |
 
 ## Contexto y planteo del problema

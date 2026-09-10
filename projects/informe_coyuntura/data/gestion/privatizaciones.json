@@ -1,59 +1,93 @@
 {
   "_meta": {
     "descripcion": "Índice de avance de privatizaciones por ETAPAS (doc 260702). Cada empresa de la cartera Ley Bases se puntúa 0-4: 0 sin definir · 1 preparatoria (marco habilitante) · 2 pliegos/estructuración · 3 licitación abierta o adjudicación en curso · 4 operación cerrada. avance_pct = promedio(etapa)/4 × 100. No hay fuente única automatizable (la Agencia de Transformación de Empresas Públicas no publica dashboard; la Bicameral tampoco): mantener con seguimiento quincenal del Boletín Oficial.",
-    "fuente": "Boletín Oficial + doc CIGOB 260702 (tabla jun-2026)",
-    "actualizado": "2026-06-30",
+    "fuente": "Boletín Oficial y CNV — hitos por empresa, revisión parcial al 8-sep-2026",
+    "actualizado": "2026-09-08",
+    "alcance_revision": "Actualizados Belgrano Cargas, AySA, Intercargo y el detalle operativo de Corredores Viales. Se revisaron los 27 avisos de la cola existente. Las etapas restantes conservan la evaluación previa; esta fecha no certifica una nueva revisión integral de toda la cartera. Transener: cierre corroborado en CNV el 28-ago; se corrige la transición histórica que lo anticipaba a junio. Se precisan los actos de Enarsa y YCRT sin certificar exhaustividad ni cambiar sus etapas; los importes contextuales quedan explícitamente pendientes de verificación contable. SOFSE: se retira la afirmación no acreditada de pausa y se precisan transformación y servicio específico. Nucleoeléctrica: se distingue el plazo normativo de su cumplimiento.",
     "contexto": {
-      "recaudacion_efectiva_musd": 1081,
-      "meta_recaudacion_2026_musd": [2000, 3000],
-      "nota": "Recaudación ya obtenida: IMPSA, represas del Comahue, Citelec. Meta declarada Min. Economía para 2026."
+      "nota": "No hay recaudación efectiva conciliada en este registro. El antecedente periodístico conserva las cifras heredadas como afirmaciones históricas, sin intervenir en el puntaje. Distinguir ofertas, precios adjudicados, contratos y cobros; evitar duplicar Enarsa/Citelec/Transener.",
+      "estado_verificacion": "pendiente_cotejo_contable",
+      "antecedente_periodistico": {
+        "fecha_publicacion": "2026-05-23",
+        "fuente_url": "https://tn.com.ar/economia/2026/05/23/el-gobierno-espera-duplicar-el-ingreso-por-privatizaciones-y-captar-hasta-us3000-millones-este-ano/",
+        "importe_reportado_musd": 1081,
+        "meta_reportada_2026_musd": [
+          2000,
+          3000
+        ],
+        "estado": "no_conciliado",
+        "observaciones": "Coincide con las cifras heredadas; no prueba que haya sido su fuente original. El desglose 27+700+356 suma 1083, no 1081. Anticipa Transener a abril; el cierre fue comunicado a CNV el 28 de agosto. No usar como caja efectiva ni como meta vigente verificada."
+      }
     }
   },
   "empresas": {
     "AySA": {
       "etapa": 3,
-      "mecanismo": "Concesión (90% acciones, 51% a operador estratégico)",
-      "hito": "Pliegos publicados 15-may-2026; apertura de sobres prevista 27-ago-2026"
+      "mecanismo": "Venta del 90% del paquete accionario estatal a un operador estratégico",
+      "hito": "Licitación 504/2-0003-LPU26 con pliegos aprobados; la Resolución ME 1386/2026 (BO 26-ago) incorpora la Circular Modificatoria 9 y prorroga los plazos. No hay cierre acreditado.",
+      "fuente_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346399/20260826",
+      "verificado_en": "2026-09-08"
     },
     "Transener": {
       "etapa": 4,
       "mecanismo": "Venta de acciones (vía Citelec, controlada por Enarsa)",
-      "hito": "Venta concretada por USD 356M, consorcio Genneia-Edison Transmisión"
+      "hito": "Transferencia perfeccionada, comunicada por Genneia a CNV el 28-ago-2026 (presentación 3563177), una vez cumplidas las condiciones suspensivas. El precio adjudicado fue USD 356,17M; la autorización regulatoria de junio no era el cierre.",
+      "fuente_url": "https://aif2.cnv.gov.ar/presentations/publicview/4d540be8-65d6-42ee-bbce-8fe70f2aa9ee",
+      "verificado_en": "2026-09-08",
+      "fecha_comunicacion_cierre": "2026-08-28"
     },
     "Enarsa": {
       "etapa": 2.5,
       "mecanismo": "División en unidades de negocio, concesión/venta por partes",
-      "hito": "Hidroeléctricas del Comahue adjudicadas (USD 700M); quedan termoeléctricas y gasoducto"
+      "hito": "Privatización por unidades de negocio: las sociedades de las represas del Comahue fueron adjudicadas y la SE 75/2026 autorizó el cambio de titularidad. La venta de la participación en Citelec se perfeccionó en agosto. Estos hitos parciales no acreditan la privatización completa de Enarsa ni el cierre de termoeléctricas y gasoductos.",
+      "fuente_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/339739/20260320",
+      "verificado_en": "2026-09-08",
+      "alcance_revision": "Cotejo de hitos parciales; etapa intermedia 2,5 conservada como juicio previo. No representa una proporción de activos vendidos. Citelec también se detalla en Transener: no sumar los importes de ambas filas."
     },
     "Intercargo": {
       "etapa": 2.5,
       "mecanismo": "Concurso público nacional/internacional",
-      "hito": "En proceso de licitación, sin cierre reportado"
+      "hito": "La Resolución ME 1148/2026 (BO 29-jul) declaró desierta la licitación 504/2-0002-LPU26. Se conserva la etapa histórica 2,5; el proceso no tiene adjudicación ni cierre acreditados.",
+      "fuente_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/345074/20260729",
+      "verificado_en": "2026-09-08"
     },
     "Corredores Viales": {
       "etapa": 3,
       "mecanismo": "Concesión de obra pública por peaje (Dto. 97/2025)",
-      "hito": "Decreto 411/2026; oferta recibida para Tramo I"
+      "hito": "RFC Etapa I en operación: DNV 717/2026 acredita obras iniciales y tarifas del Tramo Oriental. ME 555, 607 y 703/2026 modifican pliegos de etapas II-B y III. La etapa 3 no acredita cierre de la privatización completa.",
+      "fuente_url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426242",
+      "verificado_en": "2026-09-08"
     },
     "Belgrano Cargas": {
-      "etapa": 1.5,
+      "etapa": 3,
       "mecanismo": "Fragmentación en 7 concesiones + venta de material rodante",
-      "hito": "Decreto 282/2026 (material rodante); pliego integral en revisión, sin llamado formal"
+      "hito": "Resolución ME 1350/2026 (BO 20-ago): llamado a licitación 504/2-0004-LPU26 y aprobación de pliegos para las líneas Belgrano, San Martín y Urquiza. Etapa 3 por llamado formal; no equivale a operación cerrada.",
+      "fuente_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346112/20260820",
+      "verificado_en": "2026-09-08"
     },
     "Nucleoeléctrica": {
       "etapa": 1,
       "mecanismo": "Venta parcial (44% en bloque + 5% PPP)",
-      "hito": "Decreto 695/24 habilitó; etapa preparatoria, sin licitación"
+      "hito": "El Decreto 695/2025 autorizó la privatización parcial y la Resolución ME 1751/2025 inició el procedimiento e instruyó elaborar la documentación. El Decreto 695/2024 es el reglamento general, no la autorización específica. Las normas verificadas no acreditan un llamado ni cierre.",
+      "fuente_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/334097/20251106",
+      "verificado_en": "2026-09-08",
+      "alcance_revision": "Normas habilitantes cotejadas; ME 1751/2025 fija doce meses desde su entrada en vigencia para coordinar la privatización. Es una instrucción, no un resultado. No se acreditó aquí un llamado posterior ni una suspensión formal. Se conserva la excepción de etapa 1 documentada en ADR-0101."
     },
     "YCRT": {
       "etapa": 0.5,
       "mecanismo": "Sin definir modalidad final",
-      "hito": "Sin fechas concretas"
+      "hito": "El Decreto 115/2025 dispuso la transformación en Carboeléctrica Río Turbio S.A.; la ME 1181/2025 instruyó constituirla, designar autoridades e integrar capital. La ME 1233/2026 aprobó el presupuesto de YCRT. Estos actos no acreditan un llamado, adjudicación o venta.",
+      "fuente_url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-1181-2025-416551/texto",
+      "verificado_en": "2026-09-08",
+      "alcance_revision": "Constitución societaria ordenada, sin acreditar aquí su inscripción y puesta en funcionamiento. Se conserva etapa 0,5: transformar la sociedad no equivale al decreto específico de privatización exigido por el criterio histórico."
     },
     "SOFSE": {
       "etapa": 0.5,
-      "mecanismo": "Licitación de servicios, con control estatal residual",
-      "hito": "Sin fechas concretas"
+      "mecanismo": "Modalidad de privatización/concesión pendiente de acreditación; denominación actual SOFSA",
+      "hito": "La ST 34/2026 identifica la transformación de SOFSE en SOFSA y su inscripción societaria. La ME 150/2026 encomienda a ADIFSA procedimientos para el servicio Garupá–Encarnación y mantiene a SOFSA operándolo mientras tanto. Ninguno de estos actos acredita la adjudicación o venta de toda la operadora.",
+      "fuente_url": "https://www.boletinoficial.gov.ar/detalleAviso/primera/343329/20260619",
+      "verificado_en": "2026-09-08",
+      "alcance_revision": "Cotejo de transformación societaria y un servicio específico. No se certifica una suspensión formal de todo el proceso ni la ausencia de actos posteriores."
     }
   }
 }

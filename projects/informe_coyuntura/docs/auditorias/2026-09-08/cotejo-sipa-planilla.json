@@ -1,0 +1,97 @@
+{
+  "fecha": "2026-09-08",
+  "url": "https://www.argentina.gob.ar/sites/default/files/trabajoregistrado_2605_estadisticas.xlsx",
+  "sha256": "64fdd3c4dfab02034a3ee85a8515aac4b5bb523a33ca3e3ae8f6359be67b66b1",
+  "portales": [
+    {
+      "url": "https://www.argentina.gob.ar/trabajo/estadisticas/situacion-y-evolucion-del-trabajo-registrado",
+      "status": "200",
+      "sha256": "e57ebab959cbe1841a4c8a0fd9d31f62990d19cbb6f530ce19a80189f0f39eff",
+      "titulos": [
+        "Presidencia de la Nación",
+        "Situación y evolución del trabajo registrado",
+        "Publicación Mayo 2026",
+        "Publicaciones anteriores",
+        "Trámites",
+        "Acerca de la República Argentina",
+        "Acerca de Argentina.gob.ar"
+      ],
+      "enlaces": [
+        {
+          "texto": "Estadísticas",
+          "url": "blank:#https://www.argentina.gob.ar/sites/default/files/trabajoregistrado_2605_estadisticas.xlsx"
+        },
+        {
+          "texto": "Informe",
+          "url": "blank:#https://www.argentina.gob.ar/sites/default/files/trabajoregistrado_2605_informe.pdf"
+        }
+      ]
+    },
+    {
+      "url": "https://www.argentina.gob.ar/trabajo/estadisticas",
+      "status": "200",
+      "sha256": "899eb8afbe5a5dad04c6d4cfb69ebefc62af80a52c996b0cc247e68c4215b96f",
+      "titulos": [
+        "Presidencia de la Nación",
+        "Estudios y estadísticas laborales",
+        "Encuesta de Indicadores Laborales (EIL)",
+        "Observatorio de Empleo y Dinámica Empresarial (OEDE)",
+        "Boletín de Estadísticas Laborales (BEL)",
+        "Observatorio de Trabajo Infantil y Adolescente (OTIA)",
+        "Relaciones Laborales",
+        "Observatorio de Ocupaciones de Argentina (OOA)",
+        "Principales Indicadores del Trabajo Registrado - Información Mensual",
+        "Novedades y actualizaciones",
+        "Estadísticas Laborales Provinciales",
+        "Empleo y remuneraciones por departamento",
+        "Ausentismo laboral",
+        "Conflictividad",
+        "Estudios, informes y estadísticas",
+        "Poblaciones específicas",
+        "Revista de Trabajo",
+        "Serie \"Trabajo, Ocupación y Empleo\"",
+        "Mapa Productivo-Laboral",
+        "Encuestas con bases usuarias",
+        "Encuesta Nacional de Protección y Seguridad Social",
+        "Encuesta Nacional a Trabajadores sobre Condiciones de Empleo, Trabajo, Salud y Seguridad",
+        "Encuesta de Actividades de Niñas, Niños y Adolescentes",
+        "Encuesta sobre Empleo, Protección Social y Condiciones de Trabajo de los Asalariados Agrarios",
+        "Contacto",
+        "Trámites",
+        "Acerca de la República Argentina",
+        "Acerca de Argentina.gob.ar"
+      ],
+      "enlaces": [
+        {
+          "texto": "descargar",
+          "url": "https://www.argentina.gob.ar/sites/default/files/trabajoregistrado_2605_informe.pdf"
+        },
+        {
+          "texto": "ver",
+          "url": "https://www.argentina.gob.ar/sites/default/files/trabajoregistrado_2605_estadisticas.xlsx"
+        },
+        {
+          "texto": "ver",
+          "url": "https://www.argentina.gob.ar/sites/default/files/eil_2606_estadisticas.xlsx"
+        },
+        {
+          "texto": "Conflictividad",
+          "url": "https://www.argentina.gob.ar/sites/default/files/evolucion_mensual_de_la_conflictividad_laboral._datos_a_marzo_2026_0.xlsx"
+        }
+      ]
+    }
+  ],
+  "periodo": "2026-05",
+  "condicion": "Provisorio según la fuente",
+  "A.1_original_miles": 6106.526000000002,
+  "T.2.2_sin_estacionalidad": {
+    "privado": 6131.521,
+    "publico": 3387.509,
+    "casas": 447.955,
+    "autonomos": 388.208,
+    "monotributo": 2198.335,
+    "monotributo_social": 232.076
+  },
+  "participacion_sin_monotributo_social": 20.60411224637409,
+  "conciliacion": "Empleo publicado: serie original A.1. Trabajo independiente: cociente de T.2.2 sin estacionalidad; universos y transformación distintos, explicitados por indicador."
+}

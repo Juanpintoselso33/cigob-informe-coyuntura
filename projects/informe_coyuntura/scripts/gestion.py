@@ -9,15 +9,15 @@ overrides del analista en data/gestion/ajustes_itcg.json.
 
 CINCO DIMENSIONES (35/25/15/15/10):
   1. Reformas económicas — cepo_mulc (brecha CCL/mayorista, dolarapi),
-     apertura_comercial (ILCE: brecha inversa + alícuota efectiva DEX+DIM/ICA),
-     desregulacion_normativa (proxy InfoLeg "deroga").
+     apertura_comercial (alícuota efectiva DEX+DIM/ICA, sin duplicar la brecha),
+     desregulacion_normativa (fuente oficial y contraste de normas).
   2. Reforma del Estado — reduccion_estado (dotación APN, XLSX INDEC mensual),
      gasto_funcionamiento (IMIG salarios+otros, real vs mismo mes 2023),
-     masa_salarial (AIF SPN remuneraciones, real vs mismo mes 2023),
-     reestructuracion_organismos (InfoLeg "disolucion" como descubrimiento,
-     filtrado caso por caso contra un registro curado, ADR-0188).
-  3. Reforma laboral — fal_modernizacion_laboral (Fondo de Cese, manual:
-     adopción por CCT sin fuente estructurada; CNV RG 1071/2025 como contexto).
+     reestructuracion_organismos (suspendido; registro curado, ADR-0188).
+     masa_salarial queda como insumo/contexto, no componente adicional.
+  3. Reforma laboral — fal_modernizacion_laboral (Fondo de Asistencia Laboral:
+     construcción normativa vigente, vigencia del régimen y registro CNV),
+     litigiosidad_laboral (juicios SRT, acumulado 12 meses contra los 12 previos).
   4. Privatizaciones e inversión — privatizaciones (etapas 0-4 por empresa,
      store data/gestion/privatizaciones.json actualizado con el BO),
      rigi_inversiones (plataforma oficial, ADR-0011),
@@ -25,22 +25,16 @@ CINCO DIMENSIONES (35/25/15/15/10):
      Concesiones: CONTRAT.AR + página oficial RFC, ADR-0016).
   5. Reforma social y orden — asistencia_directa (TDPS contra la ejecución
      presupuestaria real, API Presupuesto Abierto, ADR-0015),
-     protocolo_antipiquetes (reducción de cortes CABA vs 2023, manual: el
-     registro histórico del GCBA está muerto; el poller GTFS-RT acumula la
-     serie que lo reemplazará, ADR-0014),
+     protocolo_antipiquetes (reducción de cortes CABA vs 2023, anclajes anuales
+     públicos de Diagnóstico Político y detector de publicaciones, ADR-0025),
      libertad_opcion_salud (derivación directa a prepagas inscriptas:
      padrones RNAS/RNEMP de la SSS, ADR-0016).
 
-Indicadores AUTO (16): cepo_mulc, apertura_comercial, desregulacion_normativa,
-  reduccion_estado, gasto_funcionamiento, masa_salarial,
-  reestructuracion_organismos, fal_modernizacion_laboral (CNV),
-  litigiosidad_laboral (contexto), privatizaciones (store curado),
-  rigi_inversiones, concesiones_infraestructura, asistencia_directa (TDPS),
-  libertad_opcion_salud, alertas_manifestacion (contexto),
-  protestas_caba (contexto, ACLED).
-Indicadores manuales: 0 — protocolo_antipiquetes se automatizó con los
-anclajes públicos de Diagnóstico Político (ADR-0025); manuales.json queda
-solo como fallback.
+La selección y ponderación de componentes publicados se define en itcg.py.
+El colector también conserva insumos y contexto que no puntúan: masa_salarial,
+alertas_manifestacion y protestas_caba, entre otros. Los registros curados
+requieren revisión humana aunque su lectura y sus detectores sean automáticos;
+manuales.json sirve como fallback.
 
 «AUTO» acá quiere decir que el colector busca el dato solo, sin entrada en
 manuales.json. NO quiere decir que el valor avance sin una persona: varios de
@@ -61,6 +55,7 @@ import json
 import subprocess
 import requests
 import logging
+import unicodedata
 from datetime import datetime, date
 from pathlib import Path
 
@@ -197,6 +192,8 @@ def _sellar(resultado: dict) -> dict:
     fuente no contesta. `fecha_dato` no sirve para eso — en las series anuales
     no se mueve aunque el fetch ande perfecto.
     """
+    if resultado.get("desactualizado"):
+        return dict(resultado)
     return {**resultado, "obtenido_en": datetime.now().isoformat(timespec="seconds")}
 
 
@@ -360,12 +357,34 @@ def fetch_cepo_mulc() -> dict | None:
         mayorista = dolares.get("mayorista",       {}).get("venta")
         if not ccl or not mayorista:
             raise ValueError("CCL o mayorista no encontrado en respuesta")
+        import math
+        from zoneinfo import ZoneInfo
+        if not all(math.isfinite(float(v)) and float(v) > 0 for v in (ccl, mayorista)):
+            raise ValueError("CCL y mayorista deben ser cotizaciones positivas y finitas")
+        fechas = {}
+        for casa in ("contadoconliqui", "mayorista"):
+            fecha = datetime.fromisoformat(dolares[casa]["fechaActualizacion"].replace("Z", "+00:00"))
+            if fecha.tzinfo is None:
+                raise ValueError("cotización sin zona horaria")
+            fechas[casa] = fecha.astimezone(ZoneInfo("America/Argentina/Buenos_Aires"))
+        # La consulta no rejuvenece una cotización vieja. El corte conservador
+        # es el día de la pata más antigua; ambas marcas quedan en el detalle.
+        fecha_dato = min(fechas.values()).date().isoformat()
         brecha = round((float(ccl) - float(mayorista)) / float(mayorista) * 100.0, 2)
         return {
             "valor":          brecha,
             "unidad":         "% de brecha CCL/mayorista",
             "fuente":         "dolarapi.com — CCL y mayorista (el mayorista replica la referencia A3500 del BCRA)",
-            "fecha_dato":     date.today().isoformat(),
+            "fecha_dato":     fecha_dato,
+            "cotizaciones": {
+                "ccl": {"venta": float(ccl), "actualizado_en": fechas["contadoconliqui"].isoformat()},
+                "mayorista": {"venta": float(mayorista), "actualizado_en": fechas["mayorista"].isoformat()},
+            },
+            "detalle_txt": (
+                f"CCL venta {float(ccl):.2f} ({fechas['contadoconliqui'].isoformat()}) / "
+                f"mayorista venta {float(mayorista):.2f} ({fechas['mayorista'].isoformat()}). "
+                "Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales."
+            ),
             "desactualizado": False,
         }
     except Exception as e:
@@ -394,13 +413,36 @@ def _tc_mayorista_promedio_por_mes(dias: int = 100) -> dict:
 ALICUOTA_CIERRE_PCT = 15.0
 
 
+def _alicuota_mensual(dias: int | None = None) -> dict:
+    """Mismos insumos, meses y cálculo para la tarjeta y la historia."""
+    import ica
+    dex = _indec_nivel_mensual(DEX_ID, limit=60)
+    dim = _indec_nivel_mensual(DIM_ID, limit=60)
+    expo = _indec_nivel_mensual(EXPO_ICA_ID, limit=60)
+    impo = _indec_nivel_mensual(IMPO_ICA_ID, limit=60)
+    original = ica.completar([[f'{m}-01', v] for m, v in expo.items()],
+                            [[f'{m}-01', v] for m, v in impo.items()])
+    comercio = {f[:7]: ex + im for f, ex, im in original['puntos']}
+    tc = (_tc_mayorista_promedio_por_mes(dias=dias) if dias is not None
+          else _tc_mayorista_promedio_por_mes())
+    filas = {}
+    for mes in sorted(set(dex) & set(dim) & set(comercio) & set(tc)):
+        if comercio[mes] <= 0 or tc[mes] <= 0:
+            continue
+        recaudacion = (dex[mes] + dim[mes]) / tc[mes]
+        filas[mes] = {'valor': round(100 * recaudacion / comercio[mes], 2),
+                      'recaudacion_musd': recaudacion, 'comercio_musd': comercio[mes]}
+    return {'mensual': filas, 'ica': original}
+
+
 def fetch_apertura_comercial(brecha_pct: float | None = None) -> dict | None:
     """
     Alícuota efectiva del comercio exterior (ADR-0021): recaudación de
-    derechos de importación + exportación (ARCA, en ARS → USD por el A3500
+    derechos de importación (incluye tasa de estadística) + exportación
+    (ARCA, en ARS → USD por el A3500
     promedio del mes) sobre el intercambio total del ICA (expo+impo, USD).
-    0% = comercio libre de fricción arancelaria · ≥15% = cierre de hecho
-    (la lineal del doc 260702, reproducida por las anclas de banda del ITCG).
+    Las anclas del ITCG representan la carga efectiva: este cociente no
+    identifica por sí solo libre comercio ni cierre legal del intercambio.
 
     Historia: hasta jul-2026 este indicador era el ILCE (compuesto con la
     brecha cambiaria al 40%) — la brecha ya puntúa como indicador propio
@@ -410,29 +452,24 @@ def fetch_apertura_comercial(brecha_pct: float | None = None) -> dict | None:
     (compatibilidad con el orquestador).
     """
     try:
-        dex  = _indec_nivel_mensual(DEX_ID, limit=8)
-        dim  = _indec_nivel_mensual(DIM_ID, limit=8)
-        expo = _indec_nivel_mensual(EXPO_ICA_ID, limit=8)
-        impo = _indec_nivel_mensual(IMPO_ICA_ID, limit=8)
-        tc   = _tc_mayorista_promedio_por_mes()
-        comunes = sorted(set(dex) & set(dim) & set(expo) & set(impo) & set(tc))
-        if not comunes:
+        datos = _alicuota_mensual()
+        if not datos['mensual']:
             raise ValueError("sin mes común entre recaudación DEX/DIM, ICA y TC A3500")
-        ym = comunes[-1]
-        recaudacion_musd = (dex[ym] + dim[ym]) / tc[ym]      # M ARS / (ARS/USD) = M USD
-        comercio_musd    = expo[ym] + impo[ym]
-        if comercio_musd <= 0:
-            raise ValueError("intercambio comercial nulo")
-        alicuota = 100.0 * recaudacion_musd / comercio_musd
+        ym = max(datos['mensual'])
+        fila = datos['mensual'][ym]
+        recaudacion_musd, comercio_musd = fila['recaudacion_musd'], fila['comercio_musd']
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
         return {
-            "valor":          round(alicuota, 2),
+            "valor":          fila['valor'],
             "unidad":         "% del intercambio (alícuota efectiva)",
             "fuente":         "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500",
             "fecha_dato":     f"{ym}-01",
-            "desactualizado": False,
+            "desactualizado": not datos['ica']['consulta_oficial_exitosa'],
+            "fuente_url": datos['ica']['url'],
+            "advertencia_fuente": datos['ica']['advertencia'],
+            "obtenido_en": datos['ica'].get('obtenido_en'),
             "detalle_txt": (f"US$ {miles(recaudacion_musd)} M recaudados por derechos de "
-                            f"impo+expo sobre US$ {miles(comercio_musd)} M de intercambio "
+                            f"impo+expo y tasa de estadística sobre US$ {miles(comercio_musd)} M de intercambio "
                             f"({ym}) · canal aduanero sin fuente pública"),
         }
     except Exception as e:
@@ -625,6 +662,28 @@ def _desreg_informes_publicados() -> dict:
     return out
 
 
+def _desreg_articulos_recientes(texto: str, periodo: str, total: int) -> dict:
+    """Lee etiquetas impresas, sin inferir valores desde alturas de barras."""
+    plano = re.sub(r"\s+", " ", texto.replace("ﬁ", "fi"))
+    bloque = re.search(r"acumulados\.?\s*Últimos 3 meses\.?(.{0,250})", plano, re.I)
+    if not bloque:
+        return {}
+    # El orden de extracción separa las cifras de sus rótulos; ambos deben
+    # contener exactamente los tres meses consecutivos que termina la tapa.
+    fragmento = re.split(r"Resolución|Decreto|EJEMPLOS|\b2\.", bloque.group(1), flags=re.I)[0]
+    meses = re.findall(r"\b(" + "|".join(_DESREG_MESES) + r")\b", fragmento, re.I)
+    valores = [int(n.replace(".", "")) for n in re.findall(r"(?<![\d+])\b\d{1,3}(?:\.\d{3})+\b", fragmento)]
+    anterior = _mes_previo_ym(periodo)
+    periodos = [_mes_previo_ym(anterior), anterior, periodo]
+    if len(meses) != 3 or len(valores) != 3:
+        return {}
+    if [_DESREG_MESES[m.lower()] for m in meses] != [int(p[5:]) for p in periodos]:
+        return {}
+    if valores[-1] != total or valores != sorted(valores):
+        return {}
+    return dict(zip(periodos, valores))
+
+
 def _desreg_leer_informe(url: str) -> dict | None:
     """Período y cifras de portada de un informe. Cubre los DOS formatos.
 
@@ -677,8 +736,14 @@ def _desreg_leer_informe(url: str) -> dict | None:
         arts   = cap(r"Art[ií]culos modi[fﬁ]cados o eliminados")
         if not (normas and modif and arts):
             return None
+    recientes = _desreg_articulos_recientes(texto, periodo, arts)
+    if re.search(r"Últimos\s+3\s+meses", plano, re.I) and not recientes:
+        raise ValueError("gráfico reciente de desregulación sin etiquetas compatibles")
+    import hashlib
     return {"periodo": periodo, "normas": normas,
-            "normas_afectadas": modif, "articulos": arts}
+            "normas_afectadas": modif, "articulos": arts,
+            "url": url, "sha256": hashlib.sha256(blob).hexdigest(),
+            "articulos_recientes": recientes}
 
 
 def _desreg_backfill_grafico(url: str, ancla: int, figura: str = "Figura 1") -> dict:
@@ -754,15 +819,17 @@ def desregulacion_oficial_serie(metrica: str = "articulos") -> dict:
     antes, hoy contexto de la card).
 
     Backfill desde el gráfico del informe de abril-2026 + el titular de cada
-    informe posterior. Todo se cachea: los informes publicados son inmutables.
+    informe posterior. La última edición puede revisar meses anteriores:
+    sus etiquetas impresas prevalecen sobre los titulares de ediciones previas.
     """
     clave_informe, clave_store, figura = DESREG_METRICAS[metrica]
     store = _desreg_oficial_store()
     informes = store.setdefault("informes", {})
     disponibles = _desreg_informes_publicados()
 
+    ultimo_cacheado = max((d["periodo"] for d in informes.values()), default="")
     for nombre, url in sorted(disponibles.items()):
-        if nombre in informes:
+        if nombre in informes and informes[nombre]["periodo"] != ultimo_cacheado:
             continue
         datos = _desreg_leer_informe(url)
         if datos:
@@ -787,6 +854,9 @@ def desregulacion_oficial_serie(metrica: str = "articulos") -> dict:
         # que el ministerio publicó en texto para ese mes
         if periodo > max(backfill, default="") and d.get(clave_informe):
             serie[periodo] = d[clave_informe]
+    if metrica == "articulos":
+        for d in sorted(informes.values(), key=lambda d: d["periodo"]):
+            serie.update(d.get("articulos_recientes", {}))
     return dict(sorted(serie.items()))
 
 
@@ -1077,7 +1147,7 @@ def fetch_masa_salarial() -> dict | None:
             "fuente":         "Sec. Hacienda AIF (datos.gob.ar) + IPC INDEC",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": False,
-            "detalle_txt":    (f"$ {nominal[ym]/1e6:,.2f} bn devengados ({ym}) vs "
+            "detalle_txt":    (f"$ {nominal[ym]/1e6:,.2f} bn, base caja ({ym}) vs "
                                f"$ {nominal[base_ym]/1e6:,.2f} bn ({base_ym}) · inflación del "
                                f"período ×{infl:,.1f}").replace(",", "@").replace(".", ",").replace("@", "."),
         }
@@ -1129,7 +1199,7 @@ def fetch_gasto_funcionamiento() -> dict | None:
             "fuente":         "Sec. Hacienda IMIG (datos.gob.ar) + IPC INDEC",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": False,
-            "detalle_txt":    (f"$ {total[ym]/1e6:,.2f} bn devengados ({ym}) vs "
+            "detalle_txt":    (f"$ {total[ym]/1e6:,.2f} bn, base caja ({ym}) vs "
                                f"$ {total[base_ym]/1e6:,.2f} bn ({base_ym}) · inflación del "
                                f"período ×{infl:,.1f}").replace(",", "@").replace(".", ",").replace("@", "."),
         }
@@ -1510,6 +1580,12 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
     try:
         hitos = json.loads(FAL_HITOS_PATH.read_text(encoding="utf-8-sig"))
         hoy_iso = date.today().isoformat()
+        revisiones = {
+            k: date.fromisoformat(hitos['_meta'][k]).isoformat()
+            for k in ('revision_normativa_en', 'revision_judicial_en')
+        }
+        if any(f > hoy_iso for f in revisiones.values()):
+            raise ValueError('FAL: fecha de revisión futura')
 
         fondos = _cnv_registro_fci()
         n_fal, n_cese = _cnv_fondos_fal(fondos), _cnv_fondos_cese(fondos)
@@ -1535,6 +1611,10 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
             "unidad":         "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
             "fuente":         "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
             "fecha_dato":     hoy_iso,
+            "referencia_temporal": "evaluación con registros de distintas fechas",
+            "evaluado_en": hoy_iso,
+            "consulta_cnv_en": hoy_iso,
+            **revisiones,
             "desactualizado": False,
             "actos":          actos,
             "actos_vigentes": len(vigentes),
@@ -1555,7 +1635,11 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
             "fci_cese_registrados": n_cese,
             "menciones_bo":         menciones,
             "detalle_txt": (
-                f"{len(vigentes)} de {len(actos)} actos fundamentales vigentes"
+                f"Evaluación al {hoy_iso}; consulta CNV de esa fecha. "
+                f"Revisión normativa del {revisiones['revision_normativa_en']} y "
+                f"judicial del {revisiones['revision_judicial_en']}; "
+                "la descarga CNV no actualiza esas revisiones. "
+                f"Según el registro curado: {len(vigentes)} de {len(actos)} actos fundamentales vigentes"
                 + (" (" + " · ".join(f"{a['norma']} {a['fecha']}" for a in vigentes) + ")"
                    if vigentes else "")
                 + ("".join(f" · {a['norma']} SUSPENDIDA por "
@@ -1575,14 +1659,29 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
         return None
 
 
+def _juicios_variacion_24m(serie: dict, mes: str) -> tuple:
+    """Variación y sumas de dos años móviles completos, sin comprimir huecos."""
+    import math
+    meses = [mes]
+    for _ in range(23):
+        meses.append(_mes_previo_ym(meses[-1]))
+    valores = [serie.get(m) for m in meses]
+    if any(not isinstance(v, (int, float)) or not math.isfinite(v) or v < 0
+           for v in valores):
+        raise ValueError('SRT: se requieren 24 meses consecutivos con valores válidos')
+    actual, anterior = sum(valores[:12]), sum(valores[12:])
+    if anterior == 0:
+        raise ValueError('SRT: período base sin juicios')
+    return round((actual / anterior - 1) * 100, 1), actual, anterior
+
+
 def fetch_litigiosidad_laboral() -> dict | None:
     """
     Variación % de los juicios laborales del sistema de riesgos del trabajo
     (SRT), acumulado 12 meses vs los 12 previos. Desde el ADR-0023 INTEGRA el
-    ITCG (reforma laboral, 30%): es el RESULTADO que la reforma persigue —
-    enfriar la industria del juicio — y complementa la adopción del Fondo de
-    Cese (instrumento). Proxy: no mide el canal indemnizatorio que el Fondo
-    reemplaza, pero es la única serie nacional mensual pública.
+    ITCG (reforma laboral, actualmente 50%). Complementa el indicador del
+    Fondo de Asistencia Laboral, pero no identifica sus efectos: SRT mide
+    juicios por riesgos del trabajo y no el canal indemnizatorio del Fondo.
     """
     try:
         import openpyxl
@@ -1609,11 +1708,7 @@ def fetch_litigiosidad_laboral() -> dict | None:
         yms = sorted(serie)
         if len(yms) < 24:
             raise ValueError("serie SRT demasiado corta para 12m vs 12m")
-        ult12  = sum(serie[ym] for ym in yms[-12:])
-        prev12 = sum(serie[ym] for ym in yms[-24:-12])
-        if not prev12:
-            raise ValueError("período base sin juicios")
-        var = round((ult12 / prev12 - 1.0) * 100.0, 1)
+        var, ult12, prev12 = _juicios_variacion_24m(serie, yms[-1])
         return {
             "valor":          var,
             "unidad":         "% variación juicios SRT (12m vs 12m previos)",
@@ -1636,9 +1731,9 @@ PRIVATIZACIONES_FECHAS_PATH = PROJECT_DIR / "data" / "gestion" / "privatizacione
 def _privatizaciones_detalle(empresas: dict) -> list:
     """[{empresa, etapa, mecanismo, hito, norma, fecha}] ordenado por etapa.
 
-    La `norma` es la fuente de la última transición registrada que no supera la
-    etapa vigente: es el acto del Boletín Oficial que respalda dónde está hoy
-    esa empresa. Si el registro de transiciones no está disponible, el detalle
+    La `norma` conserva el documento primario de la última transición registrada
+    que no supera la etapa vigente (Boletín Oficial, CNV u otro respaldo del
+    hecho). Si el registro de transiciones no está disponible, el detalle
     sale igual pero sin norma — mejor incompleto que ausente.
     """
     try:
@@ -1699,6 +1794,17 @@ _PRIVAT_PROCESO = re.compile(
     re.I)
 
 
+def _privat_empresas_en_texto(texto: str) -> list[str]:
+    """InfoLeg busca tokens con OR: verificar nombres en el texto recibido."""
+    def normalizar(s):
+        s = ''.join(c for c in unicodedata.normalize('NFKD', s) if not unicodedata.combining(c))
+        return ' '.join(re.sub(r'[^a-z0-9]+', ' ', s.lower()).split())
+    cuerpo = ' ' + normalizar(texto) + ' '
+    return [empresa for empresa, termino in PRIVATIZACIONES_TERMINOS.items()
+            if any(' ' + normalizar(nombre) + ' ' in cuerpo
+                   for nombre in (empresa, termino))]
+
+
 def _infoleg_texto(norma_id: str) -> str:
     """Texto plano de una norma. Vacío si no está disponible."""
     from bs4 import BeautifulSoup
@@ -1733,6 +1839,11 @@ def detectar_novedades_privatizaciones(meses_atras: int = 3) -> dict:
         store = {}
     revisadas = store.setdefault("revisadas", {})
     pendientes = store.setdefault("pendientes", {})
+    revision_manual = store.get("revision_auditoria", {})
+    intentadas = set()
+    consultas_fallidas = []
+    textos_fallidos = []
+    consultas_sin_error = 0
 
     hoy = date.today()
     ventana = []
@@ -1750,38 +1861,63 @@ def detectar_novedades_privatizaciones(meses_atras: int = 3) -> dict:
             clave_mes = f"{empresa}|{anio_v}-{mes_v:02d}"
             try:
                 hallazgos = _infoleg_buscar_mes(termino, anio_v, mes_v, session=session)
+                consultas_sin_error += 1
             except Exception as e:
+                consultas_fallidas.append(clave_mes)
                 print(f"  [WARN] privatizaciones/novedades {clave_mes}: {e}")
                 continue
             for norma_id, titulo in hallazgos:
-                if norma_id in revisadas:
+                if norma_id in revision_manual:
                     continue
+                if revisadas.get(norma_id, {}).get("version_filtro") == 2:
+                    continue
+                if norma_id in intentadas:
+                    continue
+                intentadas.add(norma_id)
                 # el texto de una norma publicada es inmutable: se evalúa una
                 # sola vez y el veredicto queda cacheado, pase o no el filtro
                 texto = _infoleg_texto(norma_id)
-                m = _PRIVAT_PROCESO.search(texto)
-                revisadas[norma_id] = {"empresa": empresa,
-                                       "periodo": f"{anio_v}-{mes_v:02d}",
-                                       "del_proceso": bool(m)}
-                if not m:
+                if not texto.strip():
+                    textos_fallidos.append(norma_id)
+                    print(f"  [WARN] privatizaciones/novedades {norma_id}: texto no disponible; se reintentará")
                     continue
+                empresas_mencionadas = _privat_empresas_en_texto(texto)
+                m = _PRIVAT_PROCESO.search(texto)
+                es_candidata = bool(m and empresas_mencionadas)
+                revisadas[norma_id] = {"empresa": empresas_mencionadas[0] if empresas_mencionadas else empresa,
+                                       "empresas_mencionadas": empresas_mencionadas,
+                                       "version_filtro": 2,
+                                       "periodo": f"{anio_v}-{mes_v:02d}",
+                                       "del_proceso": es_candidata}
+                if not es_candidata:
+                    pendientes.pop(norma_id, None)
+                    continue
+                era_pendiente = norma_id in pendientes
                 pendientes[norma_id] = {
-                    "empresa": empresa,
+                    "empresa": empresas_mencionadas[0],
+                    "empresas_mencionadas": empresas_mencionadas,
                     "periodo": f"{anio_v}-{mes_v:02d}",
                     "titulo": titulo,
                     "coincidencia": m.group(0).lower(),
                     "url": f"https://servicios.infoleg.gob.ar/infolegInternet/"
                            f"verNorma.do?id={norma_id}",
                 }
-                nuevas += 1
+                nuevas += not era_pendiente
 
-    store["_meta"] = {
+    store.setdefault("_meta", {}).update({
         "descripcion": ("Normas del BO que nombran empresas privatizables. Detección "
                         "automática; la etapa la sigue asignando el analista (ADR-0129). "
                         "Sacar de 'pendientes' lo ya revisado."),
         "ultima_corrida": hoy.isoformat(),
         "nuevas_en_la_corrida": nuevas,
-    }
+        "cobertura": {
+            "estado": "incompleta" if consultas_fallidas or textos_fallidos else "sin_fallos_detectados",
+            "consultas_previstas": len(PRIVATIZACIONES_TERMINOS) * len(ventana),
+            "consultas_sin_error": consultas_sin_error,
+            "consultas_fallidas": consultas_fallidas,
+            "textos_fallidos": textos_fallidos,
+        },
+    })
     PRIVATIZACIONES_NOVEDADES_PATH.parent.mkdir(parents=True, exist_ok=True)
     PRIVATIZACIONES_NOVEDADES_PATH.write_text(
         json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True), encoding="utf-8")
@@ -1810,13 +1946,19 @@ def fetch_privatizaciones() -> dict | None:
         cerradas = [n for n, e in empresas.items() if float(e["etapa"]) >= 4]
 
         # Detector de novedades (ADR-0129). No debe poder tumbar el indicador:
-        # si InfoLeg no responde, el avance se publica igual y la lista queda
-        # vacía — lo que se pierde es un aviso, no el dato.
+        # si InfoLeg no responde, se conserva el avance y se declara que la
+        # consulta fue incompleta. No se borran pendientes ya conocidos.
         try:
-            novedades = detectar_novedades_privatizaciones().get("pendientes", {})
+            deteccion = detectar_novedades_privatizaciones()
+            novedades = deteccion.get("pendientes", {})
+            cobertura = deteccion.get("_meta", {}).get("cobertura", {"estado": "no_informada"})
         except Exception as e:
             print(f"  [WARN] privatizaciones: detector de novedades no corrió ({e})")
-            novedades = {}
+            cobertura = {"estado": "incompleta", "detector_fallo": True}
+            try:
+                novedades = json.loads(PRIVATIZACIONES_NOVEDADES_PATH.read_text(encoding="utf-8-sig")).get("pendientes", {})
+            except (OSError, json.JSONDecodeError):
+                novedades = {}
 
         return {
             "valor":          avance,
@@ -1840,11 +1982,13 @@ def fetch_privatizaciones() -> dict | None:
             # del proceso, todavía sin revisar por el analista. NO mueven la
             # etapa; sólo avisan para que no se escape ninguna.
             "novedades_pendientes": novedades,
+            "novedades_cobertura": cobertura,
             "detalle_txt": (f"{len(etapas)} empresas · etapa promedio "
                             f"{str(round(etapa_prom, 2)).replace('.', ',')}/4"
                             + (f" · cerradas: {', '.join(cerradas)}" if cerradas else "")
                             + (f" · {len(novedades)} norma(s) nueva(s) del Boletín "
-                               f"Oficial sin revisar" if novedades else "")),
+                               f"Oficial sin revisar" if novedades else "")
+                            + (" · consulta de novedades incompleta" if cobertura.get("estado") == "incompleta" else "")),
         }
     except Exception as e:
         _warn("privatizaciones", e)
@@ -2167,12 +2311,11 @@ def fetch_alertas_manifestacion() -> dict | None:
 
 
 # ── D5: TDPS — asistencia directa (API Presupuesto Abierto, ADR-0015) ─────────
-# TDPS = 100 × (pago directo a personas / total de transferencias del programa).
+# TDPS = 100 × (devengado en 5.1.4 / devengado en inciso 5 del programa).
 # "Directo" = partida 5.1.4 "Ayudas sociales a personas y asignaciones
-# familiares" (clasificador por objeto del gasto); todo el resto del inciso 5
-# (instituciones sin fines de lucro, cooperativas, municipios) es plata que
-# llega al beneficiario a través de un tercero — las "Unidades de Gestión" que
-# el Dto. 198/2024 eliminó. Programas sucesores: actividades "Volver al
+# familiares" (clasificador por objeto del gasto). El resto del inciso 5 es
+# otra clasificación presupuestaria: no identifica por sí solo intermediarios
+# ni demuestra el pago final a beneficiarios. Programas sucesores: "Volver al
 # Trabajo" y "Acompañamiento Social"; baseline: Potenciar Trabajo 2023
 # (jurisdicción 85, programa 38), cacheado porque el ejercicio está cerrado.
 
@@ -2254,8 +2397,8 @@ def fetch_asistencia_directa() -> dict | None:
     TDPS — Tasa de Desintermediación de Planes Sociales (doc 260702), contra la
     EJECUCIÓN PRESUPUESTARIA REAL (API Presupuesto Abierto, base SIDIF):
     qué % del devengado de los programas sucesores del Potenciar Trabajo
-    ("Volver al Trabajo" + "Acompañamiento Social") se paga directo a personas
-    (partida 5.1.4) sobre el total de transferencias. Si el ejercicio corriente
+    ("Volver al Trabajo" + "Acompañamiento Social") se clasifica como ayudas a
+    personas (partida 5.1.4) sobre el total de transferencias. Si el ejercicio corriente
     aún no tiene devengado (enero), cae al ejercicio anterior.
     """
     token = _pa_token()
@@ -2277,13 +2420,14 @@ def fetch_asistencia_directa() -> dict | None:
         tdps = _tdps_de_partidas(rows)
         base = _tdps_baseline_2023(token)
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
-        detalle = (f"Devengado {ejercicio}: $ {miles(tdps['directo_musd'])}M directo a personas "
-                   f"(5.1.4) / $ {miles(tdps['total_musd'])}M transferido"
+        detalle = (f"Devengado {ejercicio}: $ {miles(tdps['directo_musd'])}M en ayudas a personas "
+                   f"(5.1.4) / $ {miles(tdps['total_musd'])}M en transferencias"
                    + (f" · baseline Potenciar 2023: {str(base['tdps']).replace('.', ',')}%"
-                      f" (con $ {miles(base['intermediado_musd'])}M vía organizaciones)" if base else ""))
+                      f" (con $ {miles(base['intermediado_musd'])}M en otras partidas)" if base else "")
+                   + " · Clasificación del devengado; no acredita pago efectivo ni ausencia de intermediación.")
         return {
             "valor":          tdps["tdps"],
-            "unidad":         "TDPS: % del gasto social pagado directo (sin intermediación)",
+            "unidad":         "TDPS: % del devengado de transferencias en ayudas a personas (5.1.4)",
             "fuente":         "API Presupuesto Abierto (SIDIF) — devengado por partida",
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,
@@ -2578,17 +2722,43 @@ SSS_RNAS_URL  = ("https://www.argentina.gob.ar/sites/default/files/2020/07/"
 SSS_RNEMP_URL = ("https://www.argentina.gob.ar/sites/default/files/2020/07/"
                  "evolucion_anual_de_usuarios_por_entidades_de_medicina_prepaga_-_ano_{anio}.xlsx")
 RNAS_PREPAGA_MIN = 900000   # códigos RNAS de prepagas inscriptas (DNU 70/23)
+SSS_PORTAL_URL = "https://www.argentina.gob.ar/sssalud/estadisticas"
+
+
+def _sss_archivo(url_tpl: str, anio: int):
+    """Descubre el archivo referenciado por SSS; no presume un nombre fijo vigente."""
+    import openpyxl
+    from bs4 import BeautifulSoup
+    from urllib.parse import urljoin
+    html = _http_get_resiliente(SSS_PORTAL_URL)
+    prefijo = url_tpl.format(anio=anio).removesuffix('.xlsx')
+    candidatos = {}
+    for enlace in BeautifulSoup(html, 'html.parser').select('a[href]'):
+        href = enlace['href']
+        inactivo = href.startswith('blank:#')
+        if inactivo:
+            href = href[len('blank:#'):]
+        url = urljoin(SSS_PORTAL_URL, href)
+        if re.fullmatch(re.escape(prefijo) + r'(?:[._]\d+)*\.xlsx', url):
+            candidatos[url] = candidatos.get(url, True) and inactivo
+    if not candidatos:
+        raise LookupError(f'SSS: sin referencia de archivo para {anio}')
+    if len(candidatos) != 1:
+        raise ValueError(f'SSS: varias referencias para {anio}; vigencia ambigua')
+    url, inactivo = next(iter(candidatos.items()))
+    wb = openpyxl.load_workbook(io.BytesIO(_http_get_resiliente(url)), data_only=True)
+    wb._cigob_fuente_url = url
+    wb._cigob_referencia_inactiva = inactivo
+    return wb
 
 
 def _sss_xlsx(url_tpl: str) -> tuple:
     """(workbook, año) del XLSX del año corriente (fallback: año previo)."""
-    import openpyxl
     anio = date.today().year
     for a in (anio, anio - 1):
         try:
-            content = _http_get_resiliente(url_tpl.format(anio=a))
-            return openpyxl.load_workbook(io.BytesIO(content), data_only=True), a
-        except Exception:
+            return _sss_archivo(url_tpl, a), a
+        except LookupError:
             continue
     raise ValueError("XLSX SSS no disponible (año corriente ni previo)")
 
@@ -2689,7 +2859,7 @@ def fetch_libertad_opcion_salud() -> dict | None:
         usuarios_prepagas = mm_rnemp = None
         for col, mm in sorted(cols2.items()):
             total_mes, _ = _sss_suma_mes(entidades2, col)
-            if total_mes > 0:
+            if total_mes > 0 and f"{anio_rnemp}-{mm}" <= f"{anio_rnas}-{mm_rnas}":
                 usuarios_prepagas, mm_rnemp = total_mes, mm
         if not usuarios_prepagas or not derivados:
             raise ValueError("RNAS o RNEMP sin datos del período")
@@ -2707,9 +2877,18 @@ def fetch_libertad_opcion_salud() -> dict | None:
             "derivados":            round(derivados),
             "prepagas_inscriptas":  prepagas,
             "usuarios_prepagas":    round(usuarios_prepagas),
+            "fecha_numerador": f"{anio_rnas}-{mm_rnas}-01",
+            "fecha_denominador": f"{anio_rnemp}-{mm_rnemp}-01",
+            "fuentes_detalle": {
+                "rnas": {"url": getattr(wb_rnas, '_cigob_fuente_url', None),
+                         "referencia_inactiva": getattr(wb_rnas, '_cigob_referencia_inactiva', False)},
+                "rnemp": {"url": getattr(wb_rnemp, '_cigob_fuente_url', None),
+                          "referencia_inactiva": getattr(wb_rnemp, '_cigob_referencia_inactiva', False)}},
             "detalle_txt": (f"{miles(derivados)} beneficiarios derivados directo a {prepagas} prepagas "
                             f"inscriptas ({mes_rnas}) / {miles(usuarios_prepagas)} usuarios de "
-                            f"prepagas (RNEMP {mes_rnemp}); canal inexistente pre-DNU 70/23"),
+                            f"prepagas (RNEMP {mes_rnemp}); canal inexistente pre-DNU 70/23"
+                            + (". El portal referencia RNEMP con un enlace inactivo; el archivo público responde."
+                               if getattr(wb_rnemp, '_cigob_referencia_inactiva', False) else "")),
         }
     except Exception as e:
         _warn("libertad_opcion_salud", e)
@@ -2742,16 +2921,20 @@ def fetch_protocolo_antipiquetes() -> dict | None:
 
         # Detector de informes nuevos (no fatal): años nacionales publicados
         # posteriores al último ancla del store.
+        advertencia = ""
         try:
             r = requests.get(DP_MONITOREOS_URL, headers=HTTP_HEADERS, timeout=30)
             r.raise_for_status()
-            anios = {int(a) for a in re.findall(r"piquetes en (20\d{2})", r.text)}
+            anios = {int(a) for a in re.findall(r"piquetes en (20\d{2})", r.text, re.I)}
+            if not anios:
+                raise ValueError("portal sin períodos de piquetes verificables")
             nuevos = sorted(a for a in anios if a > ult)
             if nuevos:
+                advertencia = f"El portal anuncia años posteriores ({nuevos}); el anclaje publicado sigue en {ult}."
                 print(f"  [AVISO] Diagnóstico Político publicó datos de {nuevos}: "
                       f"actualizar data/gestion/dp_piquetes.json")
         except Exception:
-            pass
+            advertencia = "No se pudo verificar si el portal publicó anclajes más recientes."
 
         return {
             "valor":          irpc,
@@ -2760,8 +2943,10 @@ def fetch_protocolo_antipiquetes() -> dict | None:
             "fecha_dato":     f"{ult}-12-31",
             "desactualizado": False,
             "componentes":    {"caba_2023": base, f"caba_{ult}": caba[ult]},
+            "advertencia_fuente": advertencia,
             "detalle_txt":    (f"{caba[ult]} cortes en CABA en {ult} vs {base} en 2023 "
-                               f"(Diagnóstico Político; definición de piquete = Res. 943/23)"),
+                               "(Diagnóstico Político; base 2023 estimada desde participación redondeada)"
+                               + (f" · {advertencia}" if advertencia else "")),
         }
     except Exception as e:
         _warn("protocolo_antipiquetes", e)
@@ -2957,12 +3142,19 @@ def actualizar_protestas_caba() -> dict | None:
         ws = wb[wb.sheetnames[0]]
         ws.reset_dimensions()   # el export trae dimensiones rotas (dice 1×1)
         filas = ws.iter_rows(values_only=True)
-        next(filas)             # WEEK|REGION|COUNTRY|ADMIN1|EVENT_TYPE|SUB_EVENT_TYPE|EVENTS|...
+        cabecera = next(filas)
+        if tuple(cabecera[:7]) != ('WEEK','REGION','COUNTRY','ADMIN1','EVENT_TYPE','SUB_EVENT_TYPE','EVENTS'):
+            raise ValueError('Agregado ACLED con columnas incompatibles')
         mensual: dict = {}
         nacional: dict = {}
         hasta = None
         for f in filas:
-            if not f or len(f) < 7 or str(f[2]) != "Argentina":
+            if not f or len(f) < 7:
+                continue
+            # El corte es del archivo, no de la última protesta de Argentina:
+            # una semana sin eventos no puede atrasar la cobertura declarada.
+            hasta = max(hasta, f[0].date()) if hasta else f[0].date()
+            if str(f[2]) != "Argentina":
                 continue
             if str(f[4]) not in ("Protests", "Riots"):
                 continue
@@ -2971,10 +3163,9 @@ def actualizar_protestas_caba() -> dict | None:
             nacional[ym] = nacional.get(ym, 0) + n
             if "Ciudad" in str(f[3]):
                 mensual[ym] = mensual.get(ym, 0) + n
-            hasta = max(hasta, f[0].date()) if hasta else f[0].date()
         if not mensual:
             raise ValueError("agregado ACLED sin filas de CABA")
-        store = {"_meta": {"descripcion": ("Eventos de protesta (Protests+Riots) por mes, del "
+        store = {"_meta": {"descripcion": ("Eventos de protesta (Protests+Riots) agrupados por mes de inicio de semana, del "
                                            "agregado semanal de ACLED (acleddata.com): 'mensual' "
                                            "= CABA (card de contexto de gestión), "
                                            "'mensual_nacional' = Argentina entera (insumo de "
@@ -2985,6 +3176,9 @@ def actualizar_protestas_caba() -> dict | None:
                            "fuente_xlsx": url_xlsx},
                  "mensual": {ym: mensual[ym] for ym in sorted(mensual)},
                  "mensual_nacional": {ym: nacional[ym] for ym in sorted(nacional)}}
+        from acled_calendario import cobertura_hasta
+        store['_meta']['cobertura_hasta'] = cobertura_hasta(store).isoformat()
+        store['_meta']['convencion_mes'] = 'mes del sábado inicial; semanas sábado–viernes sin dividir'
         PROTESTAS_STORE_PATH.write_text(
             json.dumps(store, ensure_ascii=False, indent=2), encoding="utf-8")
         _PROTESTAS_STORE_MEMO = store
@@ -3003,36 +3197,31 @@ def fetch_protestas_caba() -> dict | None:
     """
     try:
         store = actualizar_protestas_caba()
+        descarga_exitosa = store is not None
         if store is None and PROTESTAS_STORE_PATH.exists():
             store = json.loads(PROTESTAS_STORE_PATH.read_text(encoding="utf-8"))
         if not store:
             return None
-        mensual = store.get("mensual", {})
-        hasta = store.get("_meta", {}).get("hasta_semana", "")
-        yms = sorted(mensual)
-        # último mes completo: si la última semana del archivo no llega a fin de mes,
-        # el mes final está parcial y se excluye de la ventana de 12.
-        if hasta and yms and hasta[:7] == yms[-1]:
-            import calendar as _cal
-            a, m = int(hasta[:4]), int(hasta[5:7])
-            if int(hasta[8:10]) < _cal.monthrange(a, m)[1]:
-                yms = yms[:-1]
-        if len(yms) < 12:
-            raise ValueError("serie ACLED demasiado corta")
-        ult12 = sum(mensual[ym] for ym in yms[-12:])
-        base_2023 = sum(v for ym, v in mensual.items() if ym.startswith("2023"))
-        var = round((ult12 / base_2023 - 1.0) * 100.0, 1) if base_2023 else None
+        from acled_calendario import serie_12m
+        calculo = serie_12m(store, "mensual")
+        ultimo = calculo["puntos"][-1]
+        ult12, base_2023 = ultimo["acum_12m"], calculo["base_2023"]
+        var = ultimo["variacion"]
         return {
             "valor":          ult12,
             "unidad":         "eventos de protesta en 12 meses (CABA, ACLED)",
             "fuente":         "ACLED — agregado semanal por provincia (acleddata.com)",
-            "fecha_dato":     f"{yms[-1]}-01",
-            "desactualizado": False,
+            "fecha_dato":     ultimo["fecha"],
+            "cobertura_hasta": calculo["cobertura_hasta"],
+            "referencia_temporal": "mes de inicio de las semanas ACLED",
+            "desactualizado": not descarga_exitosa,
+            "obtenido_en": store["_meta"]["actualizado"],
             "eventos_2023":   base_2023,
             "var_vs_2023":    var,
-            "detalle_txt": (f"{ult12} eventos en 12m (hasta {yms[-1]}) vs {base_2023} en 2023"
+            "detalle_txt": (f"{ult12} eventos en 12m (grupos hasta {ultimo['fecha'][:7]}) vs {base_2023} en la base 2023"
                             + (f" ({var:+.1f}%)".replace(".", ",") if var is not None else "")
-                            + " — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo"),
+                            + " — semanas sábado–viernes agrupadas por su mes de inicio. "
+                              "Cuenta marchas y concentraciones, no cortes: contrastar con el protocolo"),
         }
     except Exception as e:
         _warn("protestas_caba", e)

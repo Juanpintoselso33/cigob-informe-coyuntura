@@ -7,11 +7,14 @@ no investigar desde cero. Numeración heredada de las sesiones de trabajo
 
 ## D7 — TDPS saturado
 
-**Qué:** `asistencia_directa` (TDPS) llegó a 100% — todo el gasto social
-relevante ya va directo, sin intermediarios. Un indicador saturado no
-discrimina más.
-**Propuesta:** mantenerlo como conquista consolidada (con nota) o
-reemplazarlo por una métrica con recorrido (ej. cobertura, tiempo de alta).
+**Qué:** `asistencia_directa` (TDPS) alcanza 100% del devengado de
+transferencias seleccionado clasificado como ayudas a personas (5.1.4).
+No acredita pago, cobro efectivo ni ausencia de intermediación; tampoco
+abarca todo el gasto social (ADR-0296). La proporción en su techo ofrece
+poco recorrido para registrar nuevas mejoras de esa composición.
+**Propuesta:** conservarlo como seguimiento de composición presupuestaria
+o evaluar una métrica de implementación con recorrido (ej. cobertura o
+tiempo de alta), con fuentes y universo definidos antes de sustituirlo.
 **Para decidir:** si la paramétrica de gestión premia *mantener* logros o
 solo *avanzar*.
 
@@ -31,8 +34,10 @@ reservas), posicional para los que solo tienen sentido relativo a su historia.
 **Qué:** varias dimensiones (en los tres índices) descansan en un único
 indicador: un error de fuente se transmite entero al índice. Vulnerabilidad
 del ITCIS y Conflicto social del ITCP salieron de esa lista (ADR-0231 y
-ADR-0232); quedan Competitividad externa (ITCM), Imagen y voto y Cohesión
-interna (ITCP) y Seguridad (ITCIS).
+ADR-0232); quedan Competitividad externa e Inversión (ITCM), Imagen y voto, Cohesión
+interna y Sector privado (ITCP), y Percepción y Seguridad (ITCIS). Las
+suspensiones de agosto hacen especialmente importante distinguir la estructura
+nominal de los componentes activos.
 **Para decidir:** mínimo de 2 componentes por dimensión como regla, o
 aceptar mono-indicador con flag. El barrido se sigue haciendo dimensión por
 dimensión mientras no haya regla escrita.
@@ -56,8 +61,8 @@ dimensión mientras no haya regla escrita.
   devaluación (la brecha marca +12,2% vs 4T-23 pero +2,7% vs oct-23
   pre-deval): es la definición del doc — "100 = arranque del mandato" — y el
   editor la ratificó (04-jul-2026).
-- **Sentimiento digital puntúa** (ADR-0034) — cerró la pregunta de si Trends
-  era metrizable.
+- **Sentimiento digital está suspendido** (ADR-0248): volumen de búsquedas
+  mide atención sin signo inequívoco. Su reingreso exige validación fuera de muestra.
 
 ## Pendientes externos (no requieren decisión, requieren que pase algo)
 

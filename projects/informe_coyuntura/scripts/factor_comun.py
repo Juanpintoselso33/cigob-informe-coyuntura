@@ -85,8 +85,13 @@ def _estandarizar(serie: dict) -> dict:
 
 
 def _difs(serie: dict) -> dict:
-    fs = sorted(serie)
-    return {fs[i]: serie[fs[i]] - serie[fs[i - 1]] for i in range(1, len(fs))}
+    cambios = {}
+    for ym in sorted(serie):
+        anio, mes = map(int, ym.split("-"))
+        previo = f"{anio - 1:04d}-12" if mes == 1 else f"{anio:04d}-{mes - 1:02d}"
+        if previo in serie:
+            cambios[ym] = serie[ym] - serie[previo]
+    return cambios
 
 
 def primer_componente(series: dict) -> dict | None:

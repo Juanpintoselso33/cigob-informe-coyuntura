@@ -215,14 +215,13 @@ def test_no_hay_arrastre_ni_interpolacion_en_la_capa_de_dimension():
     for dkey, d in publicado.items():
         assert set(d["serie"]) == set(vivo[dkey]["serie"]), (
             f"itvc/{dkey}: los meses publicados no son los que produce el motor")
-    # Y el caso concreto que motiva la regla: la seguridad arranca después que
-    # el resto (su fuente no medía en dic-2023) y ese hueco se publica como
-    # hueco, no como un valor inventado hacia atrás.
+    # ADR-0273 recuperó el archivo oficial 2023. La ausencia anterior era
+    # del colector, no de la fuente: ahora diciembre tiene un dato verificable.
     seguridad = publicado["seguridad"]["serie"]
-    ingresos = publicado["ingresos"]["serie"]
-    assert min(seguridad) > min(ingresos), (
-        "seguridad dejó de tener arranque tardío: si la fuente cambió, revisar "
-        "que el hueco inicial siga representándose como ausencia")
+    raw = ve._mensual(ve.cargar_series()["inseguridad"])
+    assert raw["2023-12"] == 27.8   # informe LICIP diciembre 2023
+    esperado = round(raw["2024-01"] / raw["2023-12"] * 100, 1)
+    assert seguridad["2023-12"] == esperado
 
 
 def test_el_techo_de_winsorizacion_se_aplico_al_componente():

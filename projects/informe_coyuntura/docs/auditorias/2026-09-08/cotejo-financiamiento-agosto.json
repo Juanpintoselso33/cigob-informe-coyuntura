@@ -1,0 +1,136 @@
+{
+  "consulta": "2026-09-08",
+  "resultado": {
+    "valor": 7.25,
+    "unidad": "% real anual (TIREA vs. inflación esperada REM)",
+    "fuente": "Sec. de Finanzas — colocaciones de deuda + BCRA (REM)",
+    "fecha_dato": "2026-08-01",
+    "tirea_nominal": 29.77,
+    "inflacion_esperada": 21.0,
+    "colocaciones": 4,
+    "inventario_colocaciones": [
+      {
+        "instrumento": "LETRA DEL TESORO NACIONAL CAPITALIZABLE EN PESOS CON VENCIMIENTO 30 DE NOVIEMBRE DE 2026 (S30N6 - reapertura)",
+        "tirea": 28.54,
+        "valor_efectivo": 3286206.0,
+        "colocacion": "2026-08-14",
+        "licitacion": "2026-08-12",
+        "precio_corte": 1206.31,
+        "tem_corte": null,
+        "reapertura": true,
+        "tirea_contractual": null,
+        "fuente_url": "https://www.argentina.gob.ar/noticias/resultado-de-la-licitacion-por-efectivo-de-instrumentos-del-tesoro-nacional-denominados-10",
+        "metodo_tirea": "publicada por Finanzas"
+      },
+      {
+        "instrumento": "LETRA DEL TESORO NACIONAL CAPITALIZABLE EN PESOS CON VENCIMIENTO 30 DE NOVIEMBRE DE 2026 (S30N6 - reapertura)",
+        "tirea": 29.75,
+        "valor_efectivo": 6085000.0,
+        "colocacion": "2026-08-31",
+        "licitacion": "2026-08-27",
+        "precio_corte": 1217.0,
+        "tem_corte": null,
+        "reapertura": true,
+        "tirea_contractual": null,
+        "fuente_url": "https://www.argentina.gob.ar/noticias/resultado-de-la-licitacion-por-efectivo-de-instrumentos-del-tesoro-nacional-denominados-11",
+        "metodo_tirea": "publicada por Finanzas"
+      },
+      {
+        "instrumento": "LETRA DEL TESORO NACIONAL CAPITALIZABLE EN PESOS CON VENCIMIENTO 29 DE ENERO DE 2027 (nueva)",
+        "tirea": 30.6,
+        "valor_efectivo": 2379233.0,
+        "colocacion": "2026-08-31",
+        "licitacion": "2026-08-27",
+        "precio_corte": null,
+        "tem_corte": 2.25,
+        "reapertura": false,
+        "tirea_contractual": null,
+        "fuente_url": "https://www.argentina.gob.ar/noticias/resultado-de-la-licitacion-por-efectivo-de-instrumentos-del-tesoro-nacional-denominados-11",
+        "metodo_tirea": "publicada por Finanzas"
+      },
+      {
+        "instrumento": "BONO DEL TESORO NACIONAL CAPITALIZABLE EN PESOS CON VENCIMIENTO 31 DE MAYO DE 2027 (T31Y7 - reapertura)",
+        "tirea": 30.69,
+        "valor_efectivo": 2448505.0,
+        "colocacion": "2026-08-31",
+        "licitacion": "2026-08-27",
+        "precio_corte": 1240.0,
+        "tem_corte": null,
+        "reapertura": true,
+        "tirea_contractual": null,
+        "fuente_url": "https://www.argentina.gob.ar/noticias/resultado-de-la-licitacion-por-efectivo-de-instrumentos-del-tesoro-nacional-denominados-11",
+        "metodo_tirea": "publicada por Finanzas"
+      }
+    ],
+    "detalle_txt": "2026-08: TIREA de corte 29.8% en 4 colocación/es a tasa fija en pesos contra inflación esperada 21.0% → +7.3% real",
+    "desactualizado": false
+  },
+  "ultimos_puntos": [
+    [
+      "2026-06-01",
+      4.93
+    ],
+    [
+      "2026-07-01",
+      4.13
+    ],
+    [
+      "2026-08-01",
+      7.25
+    ]
+  ],
+  "fuentes": [
+    {
+      "url": "https://www.argentina.gob.ar/economia/finanzas/deudapublica/colocacionesdedeuda",
+      "sha256": "831e54422ff20ea7d34deb1d5efbbe9296b667bd15429015176d87b30cf2eeef"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/sites/default/files/colocaciones_31-12-2025_0.xlsx",
+      "sha256": "c5a1544e723514e1293a58eb0484c54f98f7be8827148251dc6e186f69082a9c"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/sites/default/files/colocaciones_31-07-26_1.xlsx",
+      "sha256": "803d06f84b386822c0a5c0e1d7f4f2ba330cd6b3f1f477951e7459bfcf5d27e1"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/noticias/llamado-licitacion-de-instrumentos-del-tesoro-nacional-denominados-en-pesos-y-en-dolares-10",
+      "sha256": "2ed772f6279bf002c312ce44dcefd6629e199d0dc3546e053f6ef3bc1dd92402"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/noticias/resultado-de-la-licitacion-por-efectivo-de-instrumentos-del-tesoro-nacional-denominados-10",
+      "sha256": "b6407610ec653c451b96f907b825c1e9b4f5d5c392fdf3dc1b37a600eb8407bc"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/noticias/llamado-licitacion-de-instrumentos-del-tesoro-nacional-denominados-en-pesos-y-en-dolares-11",
+      "sha256": "8192cb608ce0b0bad0809aad5c682c114ba5efae006de3f995e44d3d56e088d5"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/noticias/resultado-de-la-licitacion-por-efectivo-de-instrumentos-del-tesoro-nacional-denominados-11",
+      "sha256": "15d9715235aacef9f4c8a4713564604d6abb34884e7567b77a59be44d78f1d9c"
+    },
+    {
+      "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29?desde=2023-05-27",
+      "sha256": "16f02bd738f658aa7462987903b64f57ed4c0d5629e9112cf23d2bc982ff194f"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/noticias/llamado-licitacion-de-instrumentos-del-tesoro-nacional-denominados-en-pesos-y-en-dolares-10",
+      "sha256": "4fccc1fc74317904b2edff0645f3fac4732e2eff4f0adb17fa79524e0ea9a7dd"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/noticias/resultado-de-la-licitacion-por-efectivo-de-instrumentos-del-tesoro-nacional-denominados-10",
+      "sha256": "7ba0d13811e085006440859caa46925d37f1ee2c8758dcff952d5240c75fb09d"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/noticias/llamado-licitacion-de-instrumentos-del-tesoro-nacional-denominados-en-pesos-y-en-dolares-11",
+      "sha256": "89fd2aa8cc139061b02c76d38ed1e7ffb847334ce7c2314d2679f10c0bc119f9"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/noticias/resultado-de-la-licitacion-por-efectivo-de-instrumentos-del-tesoro-nacional-denominados-11",
+      "sha256": "99fe2203fda11a5f9bf661a3058eaaeca29bfacd0b81cb06475f651021663823"
+    },
+    {
+      "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29?desde=2022-11-08",
+      "sha256": "8226b6cb9c910e384310dade43b53b14b020ef1817255f63e5a45faca3c172e8"
+    }
+  ]
+}

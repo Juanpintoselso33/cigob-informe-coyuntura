@@ -7,6 +7,7 @@ cinturon: 'macro'
 indicadores: [costo_financiamiento_tesoro]
 archivos: ['scripts/macro.py', 'tests/test_macro_costo_financiamiento.py', 'tests/fixtures/colocaciones_2026_07.json', 'tests/fixtures/tireas_corte_oficiales.json']
 relacionado: ['0071', '0238']
+complementado_por: ['0288']
 ambito: 'ITCM · costo del financiamiento del Tesoro · qué tasa mide una colocación fuera de la par'
 origen: 'Reauditoría de indicadores, 25-ago-2026, prioridad 0: «en la reapertura S30N6 se anualiza el cupón contractual de 2,30% TEM en vez de usar la TIREA de corte 25,59% determinada por el precio»'
 ---

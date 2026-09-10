@@ -268,6 +268,8 @@ if idx:
     w(f"| **{SIGLA}: {coma(idx.get('valor'), 1, recortar=False)}** | **{COLOR.get(sem_idx.get('color'), '—')}** "
       f"| {idx.get('banda_legible') or idx.get('banda') or '—'} "
       f"| {len(ind)} indicadores: {resumen_colores} |")
+    n_puntuan = sum(len(d.get("indicadores") or {}) for d in idx["dimensiones"].values())
+    w(f"Componentes que puntúan en este corte: {n_puntuan} de {len(ind)} publicados.")
     w("")
     dims = idx.get("dimensiones") or {}
     w("## Dimensiones")

@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'gestion'
 indicadores: [privatizaciones]
+relacionado: ['0277']
 complementado_por: ['0129']
 ambito: 'ITCG · `privatizaciones` · modal del indicador'
 origen: 'Auditoría externa del cinturón de gestión (doc 2), punto 3.5'
@@ -37,6 +38,10 @@ privatización y **la norma que respalda la etapa vigente**, con su fecha. El
 modal lo muestra como tabla, encabezada por la advertencia de que la etapa la
 asigna el equipo y de que la norma está ahí para que la asignación pueda
 verificarse.
+
+Ejemplo histórico del registro al redactar este ADR (julio de 2026), no tabla
+vigente. La auditoría de septiembre corrigió, entre otros, el cierre de
+Transener y el llamado de Belgrano; véase la actualización al final.
 
 | empresa | etapa | norma que la respalda |
 |---|---|---|
@@ -73,6 +78,16 @@ reproduzca desde el detalle. Si mañana se agrega una empresa sin respaldo
 documental, el pipeline se detiene.
 
 ## Más información
+
+### Actualización de la auditoría del 8 de septiembre de 2026
+
+El respaldo puede ser una norma del Boletín Oficial o una comunicación primaria
+del emisor en CNV. Transener ilustra por qué no basta una autorización: su
+transferencia se perfeccionó en agosto, no en junio. Se corrigieron la serie,
+la ficha y la explicación del modal. El estado vigente se consulta en el
+registro y en el [cotejo de privatizaciones](../auditorias/2026-09-08/privatizaciones-revision.md).
+La tabla anterior conserva el ejemplo histórico y no debe emplearse para
+reproducir el indicador actual.
 
 ### Limitaciones
 

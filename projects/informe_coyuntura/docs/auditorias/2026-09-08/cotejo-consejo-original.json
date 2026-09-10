@@ -1,0 +1,211 @@
+{
+  "consulta": "2026-09-08",
+  "universo": "Notas de las categorías 129 y 130, posteriores al 1 de septiembre de 2025 y anteriores al 9 de septiembre de 2026. Menos de 100 por categoría; ninguna página adicional. Revisión manual de títulos y cuerpos.",
+  "fuente": "https://consejomagistratura.gov.ar/index.php/wp-json/wp/v2/posts",
+  "resultado": 13,
+  "acusacion": 7,
+  "disciplina": 6,
+  "limite": "Inventario de notas publicadas, no certificación de todas las actas. Septiembre 2026 abierto; usa fecha editorial.",
+  "notas": [
+    {
+      "id": 54533,
+      "categoria": 129,
+      "fecha_publicacion": "2026-08-26T14:26:59",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/08/26/audiencia-del-art-20-a-la-dra-cristina-pozzer-penzo/",
+      "titulo": "Audiencia del art. 20 a la Dra. Cristina Pozzer Penzo",
+      "incluido": false,
+      "motivo": "Audiencia o noticia del Jurado, no sesión de comisión.",
+      "sha256_texto": "4f3816bb4822e547a73e6df5e8a125eb673906fd49af4fa4a9e0087684a9b7f8"
+    },
+    {
+      "id": 54431,
+      "categoria": 129,
+      "fecha_publicacion": "2026-08-18T19:07:46",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/08/18/el-jurado-de-enjuiciamiento-destituyo-a-alfredo-lopez/",
+      "titulo": "El Jurado de Enjuiciamiento destituyó a Alfredo López",
+      "incluido": false,
+      "motivo": "Audiencia o noticia del Jurado, no sesión de comisión.",
+      "sha256_texto": "e3f2cfe2cf3c100a34800d053d450f6ce16cbc700ddccad77cbb358ef5f60927"
+    },
+    {
+      "id": 54181,
+      "categoria": 129,
+      "fecha_publicacion": "2026-07-15T12:50:12",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/07/15/sesiono-la-comision-de-acusacion-15/",
+      "titulo": "Sesionó la Comisión de Acusación",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "9212e4c045c9b7627d37c789e242f94a9f9ff720f06f87b3d541dd36e9435799"
+    },
+    {
+      "id": 53633,
+      "categoria": 129,
+      "fecha_publicacion": "2026-05-28T13:23:25",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/05/28/la-comision-de-acusacion-propone-al-plenario-iniciar-el-proceso-de-remocion-del-juez-salmain/",
+      "titulo": "La Comisión de Acusación propone al Plenario iniciar el proceso de remoción del juez Salmain",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "ff5f2be02bbe7f04fffd713097955f368ece1b3846c20b231d6d3dba2f110813"
+    },
+    {
+      "id": 53570,
+      "categoria": 129,
+      "fecha_publicacion": "2026-05-20T19:12:23",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/05/20/audiencia-del-dr-salmain-en-los-terminos-del-art-20-del-rcdya/",
+      "titulo": "Audiencia del Dr. Salmain en los términos del Art.20 del RCDyA",
+      "incluido": false,
+      "motivo": "Audiencia o noticia del Jurado, no sesión de comisión.",
+      "sha256_texto": "861096a82c05a5573db506a539e2d1a718a799e501c39d8029e32da714c61bde"
+    },
+    {
+      "id": 53237,
+      "categoria": 129,
+      "fecha_publicacion": "2026-04-22T19:52:35",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/04/22/sesionaron-las-comisiones-de-acusacion-y-de-administracion-y-se-realizo-una-nueva-reunion-conjunta-de-las-comisiones-de-seleccion-y-reglamentacion/",
+      "titulo": "Sesionaron las Comisiones de Acusación y de Administración y se realizó una nueva reunión conjunta de las Comisiones de Selección y Reglamentación",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "5284f876deee69c9b8f1139d431c1d091a9f73d9a40c44140d6a7fc09115281e"
+    },
+    {
+      "id": 52924,
+      "categoria": 129,
+      "fecha_publicacion": "2026-03-17T16:16:28",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/03/17/la-comision-de-acusacion-propuso-al-plenario-acusar-a-los-jueces-lopez-y-diaz-lacava-ante-el-jurado-de-enjuiciamiento/",
+      "titulo": "La Comisión de Acusación propuso al Plenario acusar a los jueces López y Díaz Lacava ante el Jurado de Enjuiciamiento",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "0cf6351699ddd5a2cb834c50136bedf3d97d5a664356df86f20223297cfa3557"
+    },
+    {
+      "id": 52864,
+      "categoria": 129,
+      "fecha_publicacion": "2026-03-10T19:48:42",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/03/10/audiencia-testimonial-de-la-comision-de-acusacion/",
+      "titulo": "Audiencia testimonial de la Comisión de Acusación",
+      "incluido": false,
+      "motivo": "Audiencia o noticia del Jurado, no sesión de comisión.",
+      "sha256_texto": "5bd5a223441d6755602f889673807487a9505c9ef134b7e9c1cb1ae7cd571091"
+    },
+    {
+      "id": 52726,
+      "categoria": 129,
+      "fecha_publicacion": "2026-02-25T15:36:07",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/02/25/sesiono-la-comision-de-acusacion-14/",
+      "titulo": "Sesionó la Comisión de Acusación",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "63bc62870625ca54a9bbe26aaeca063dd1b9a26f43e7128b772228858463fb1b"
+    },
+    {
+      "id": 52661,
+      "categoria": 129,
+      "fecha_publicacion": "2026-02-10T15:07:27",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/02/10/audiencia-del-articulo-20-en-la-causa-contra-el-juez-diaz-lacava/",
+      "titulo": "Audiencia del artículo 20 en la causa contra el juez Díaz Lacava",
+      "incluido": false,
+      "motivo": "Audiencia o noticia del Jurado, no sesión de comisión.",
+      "sha256_texto": "92181edcf599ac173478fc0bcca7a676fcda086d26967289e31bab6b890a0c0b"
+    },
+    {
+      "id": 52530,
+      "categoria": 129,
+      "fecha_publicacion": "2025-12-17T16:02:59",
+      "url": "https://consejomagistratura.gov.ar/index.php/2025/12/17/sesiono-la-comision-de-acusacion-13/",
+      "titulo": "Sesionó la Comisión de Acusación",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "f5f7337a5918c97119d178fb632c6770b45666f2cd17345c5fea9d20295fabf8"
+    },
+    {
+      "id": 52035,
+      "categoria": 129,
+      "fecha_publicacion": "2025-11-12T20:37:34",
+      "url": "https://consejomagistratura.gov.ar/index.php/2025/11/12/sesionaron-las-comisiones-de-administracion-y-financiera-y-de-acusacion/",
+      "titulo": "Sesionaron las Comisiones de Administración y Financiera y de Acusación",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "8dff653c59251ce306af0f377f2421264044900549e06d5a33d23428f6dbccf4"
+    },
+    {
+      "id": 51551,
+      "categoria": 129,
+      "fecha_publicacion": "2025-09-17T14:11:17",
+      "url": "https://consejomagistratura.gov.ar/index.php/2025/09/17/sesiono-la-comision-de-acusacion-12/",
+      "titulo": "Sesionó la Comisión de Acusación",
+      "incluido": false,
+      "motivo": "Septiembre 2025 queda fuera de la ventana actual.",
+      "sha256_texto": "97fb8eb560583cecf9a3c0c029e31a0beb3150ceb2496cf0f5b9e39920876c36"
+    },
+    {
+      "id": 54446,
+      "categoria": 130,
+      "fecha_publicacion": "2026-08-19T21:35:36",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/08/19/sesiono-la-comision-de-disciplina-10/",
+      "titulo": "Sesionó la Comisión de Disciplina",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "091739a41195dc7a8c7546882af66eeb30087adee88a289f2c0cbabbdf28423d"
+    },
+    {
+      "id": 53850,
+      "categoria": 130,
+      "fecha_publicacion": "2026-06-24T16:07:49",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/06/24/audiencia-del-articulo-20-en-la-causa-contra-el-juez-goggi/",
+      "titulo": "Audiencia del artículo 20 en la causa contra el juez Goggi",
+      "incluido": false,
+      "motivo": "Audiencia o noticia del Jurado, no sesión de comisión.",
+      "sha256_texto": "9a429db04ff45a5ca68a7cb490b168d23d3c76cb931c226828108ac9ee8438bf"
+    },
+    {
+      "id": 53683,
+      "categoria": 130,
+      "fecha_publicacion": "2026-06-03T16:09:37",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/06/03/sesiono-la-comision-de-disciplina-9/",
+      "titulo": "Sesionó la Comisión de Disciplina",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "198e2a9b6d5bcc0d9bb698d044bd7ba9c93d550be8ed08f2b95537628ac1d31e"
+    },
+    {
+      "id": 53501,
+      "categoria": 130,
+      "fecha_publicacion": "2026-05-13T13:58:59",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/05/13/sesionaron-las-comisiones-de-seleccion-y-de-disciplina/",
+      "titulo": "Sesionaron las Comisiones de Selección y de Disciplina",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "d5924c940c11e32ceed68ecbfac065a7eaadfe96035e998f6426fb3303b442c3"
+    },
+    {
+      "id": 53088,
+      "categoria": 130,
+      "fecha_publicacion": "2026-04-08T16:39:27",
+      "url": "https://consejomagistratura.gov.ar/index.php/2026/04/08/sesiono-la-comision-de-disciplina-8/",
+      "titulo": "Sesionó la Comisión de Disciplina",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "330a276cd6208e4888d570ee9b56c617f9b686e023ac1193be8b0d9b97e01439"
+    },
+    {
+      "id": 52194,
+      "categoria": 130,
+      "fecha_publicacion": "2025-11-26T19:32:31",
+      "url": "https://consejomagistratura.gov.ar/index.php/2025/11/26/sesionaron-las-comisiones-de-disciplina-y-de-seleccion-de-magistrados-y-escuela-judicial/",
+      "titulo": "Sesionaron las Comisiones de Disciplina y de Selección de Magistrados y Escuela Judicial",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "4885fdcd74eabaa0616506d6902a3e762718bc3eec4c168ea79b872a63357ab5"
+    },
+    {
+      "id": 52115,
+      "categoria": 130,
+      "fecha_publicacion": "2025-11-19T16:41:41",
+      "url": "https://consejomagistratura.gov.ar/index.php/2025/11/19/sesiono-la-comision-de-disciplina-y-la-comision-de-administracion-y-financiera/",
+      "titulo": "Sesionó la Comisión de Disciplina y la Comisión de Administración y Financiera",
+      "incluido": true,
+      "motivo": "Sesión documentada en ventana octubre 2025–septiembre 2026.",
+      "sha256_texto": "6ef37eea512c650d034f2141a1cb978c7ea7b4ebd10e4baed28dc8d9d81ea5d7"
+    }
+  ]
+}

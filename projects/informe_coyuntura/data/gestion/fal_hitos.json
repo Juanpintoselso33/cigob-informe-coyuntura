@@ -2,7 +2,9 @@
   "_meta": {
     "descripcion": "Hechos fechados del Fondo de Asistencia Laboral (Ley 27.802) para el indicador fal_modernizacion_laboral: los actos normativos que lo construyen, la fecha en que el régimen empieza a regir y el estado judicial de esos actos (ADR-0228). Cada entrada está fechada y respaldada por una norma publicada o por una resolución judicial identificable — mismo patrón que concesiones_fechas.json y privatizaciones_fechas.json.",
     "por_que": "Una norma dictada y una norma que rige son dos estados distintos, y en política laboral argentina divergen: las doce medidas del sector Trabajo y Seguridad Social de la base de desregulaciones de Chequeado y elDiarioAR están calificadas de impacto NULO —son el capítulo laboral del DNU 70/2023, frenado en sede judicial— y la propia Ley 27.802 estuvo suspendida con efecto general entre el 30-mar y el 23-abr-2026. Por eso el indicador puntúa actos VIGENTES, no actos dictados.",
-    "verificado": "2026-07-20 los hitos normativos contra el buscador de InfoLeg, por número de norma. 2026-08-21 el estado judicial contra las resoluciones y su cobertura (ver `fuente` de cada entrada de `judicial`)."
+    "verificado": "2026-07-20 los hitos normativos contra el buscador de InfoLeg, por número de norma. 2026-08-21 el estado judicial contra las resoluciones y su cobertura (ver `fuente` de cada entrada de `judicial`).",
+    "revision_normativa_en": "2026-07-20",
+    "revision_judicial_en": "2026-08-21"
   },
   "vigencia": {
     "fecha": "2026-11-01",

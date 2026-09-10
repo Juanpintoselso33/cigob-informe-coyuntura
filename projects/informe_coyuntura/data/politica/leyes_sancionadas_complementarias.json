@@ -1,0 +1,120 @@
+{
+  "revisado_en": "2026-09-08",
+  "criterio": "Sanciones omitidas por CKAN, cotejadas en originales del Boletín Oficial y de la Dirección de Taquígrafos. La fecha es sanción definitiva, no media sanción, publicación ni promulgación. Se conserva expediente cuando todavía no se verificó un número de ley, sin inventarlo.",
+  "contraste_hcdn": "https://www3.hcdn.gob.ar/dependencias/secparl/dgral_info_parlamentaria/dip/archivos/Leyes_2023-_Pres_Javier_Milei_con_bloques_y_fecha_pres_y_sanc.pdf",
+  "leyes": [
+    {
+      "LEY": "27748",
+      "SANCION_DEFINITIVA": "2024-08-14",
+      "fuente": "https://otslist.boletinoficial.gob.ar/ots/download/25c0f8d03d49337c02cf3e93a037ce3c34330809949716c07167157ee527c672/0/",
+      "pagina": 6,
+      "publicacion": "2024-09-09"
+    },
+    {
+      "LEY": "27774",
+      "SANCION_DEFINITIVA": "2024-10-01",
+      "fuente": "https://otslist.boletinoficial.gob.ar/ots/download/87002cb32d65d99f5f2ebd3fa4e01824f977e93ce431b71cf3874821efdfcfcc/0/",
+      "pagina": 17,
+      "publicacion": "2024-10-18"
+    },
+    {
+      "EXPEDIENTE_INICIAL": "0026-S-2026",
+      "SANCION_DEFINITIVA": "2026-08-26",
+      "sancion_definitiva_verificada": true,
+      "tema": "Acuerdo de Libre Comercio Mercosur–Singapur",
+      "orden_del_dia": 208,
+      "fuente": "https://www3.hcdn.gob.ar/dependencias/dtaquigrafos/diarios/periodo-144/diario_202608266.pdf",
+      "referencia": "Aprobación definitiva expresa y comunicaciones correspondientes; no se remite al Senado para revisión.",
+      "PROYECTO_ID": "HCDN290726",
+      "fecha_inicio_sesion": "2026-08-26",
+      "nota_fecha": "El texto sancionado fechado y comunicado por Diputados dice 26-ago-2026. La sesión concluyó el 27 y la noticia es de ese día; prevalece la fecha del documento de sanción.",
+      "cotejo_prensa_hcdn": "https://www.hcdn.gob.ar/prensa/noticia/DIPUTADOS-CONVIRTIO-EN-LEY-EL-ACUERDO-DE-LIBRE-COMERCIO-ENTRE-EL-MERCOSUR-Y-SINGAPUR/",
+      "LEY": "27819",
+      "fuente_numero_ley": "https://www.hcdn.gob.ar/secparl/dsecretaria/bat/bat.jsp?periodo=144&reunion=6&sesion=5",
+      "fuente_fecha_sancion": "https://www3.hcdn.gob.ar/dependencias/dsecretaria/Periodo2026/BAT2026/PDF/0026-S-2026d.pdf"
+    },
+    {
+      "EXPEDIENTE_INICIAL": "0028-S-2026",
+      "SANCION_DEFINITIVA": "2026-08-26",
+      "sancion_definitiva_verificada": true,
+      "tema": "San Miguel de Tucumán, Capital Simbólica el 9 de julio",
+      "orden_del_dia": 243,
+      "fuente": "https://www3.hcdn.gob.ar/dependencias/dtaquigrafos/diarios/periodo-144/diario_202608266.pdf",
+      "referencia": "Aprobación definitiva expresa y comunicaciones correspondientes; no se remite al Senado para revisión.",
+      "fecha_inicio_sesion": "2026-08-26",
+      "nota_fecha": "El texto sancionado fechado y comunicado por Diputados dice 26-ago-2026. La sesión concluyó el 27 y la noticia es de ese día; prevalece la fecha del documento de sanción.",
+      "cotejo_prensa_hcdn": "https://www.hcdn.gob.ar/prensa/noticia/EN-SESION-ESPECIAL-LA-CAMARA-DE-DIPUTADOS-APROBO-UNA-BATERIA-DE-PROYECTOS/",
+      "LEY": "27820",
+      "fuente_numero_ley": "https://www.hcdn.gob.ar/secparl/dsecretaria/bat/bat.jsp?periodo=144&reunion=6&sesion=5",
+      "fuente_fecha_sancion": "https://www3.hcdn.gob.ar/dependencias/dsecretaria/Periodo2026/BAT2026/PDF/0028-S-2026d.pdf"
+    },
+    {
+      "EXPEDIENTE_INICIAL": "0022-S-2026",
+      "SANCION_DEFINITIVA": "2026-08-26",
+      "sancion_definitiva_verificada": true,
+      "tema": "Reorganización de la Cámara Federal de Apelaciones de Tucumán",
+      "orden_del_dia": 263,
+      "fuente": "https://www3.hcdn.gob.ar/dependencias/dtaquigrafos/diarios/periodo-144/diario_202608266.pdf",
+      "referencia": "Aprobación definitiva expresa y comunicaciones correspondientes; no se remite al Senado para revisión.",
+      "PROYECTO_ID": "HCDN290427",
+      "fecha_inicio_sesion": "2026-08-26",
+      "nota_fecha": "El texto sancionado fechado y comunicado por Diputados dice 26-ago-2026. La sesión concluyó el 27 y la noticia es de ese día; prevalece la fecha del documento de sanción.",
+      "cotejo_prensa_hcdn": "https://www.hcdn.gob.ar/prensa/noticia/EN-SESION-ESPECIAL-LA-CAMARA-DE-DIPUTADOS-APROBO-UNA-BATERIA-DE-PROYECTOS/",
+      "LEY": "27821",
+      "fuente_numero_ley": "https://www.hcdn.gob.ar/secparl/dsecretaria/bat/bat.jsp?periodo=144&reunion=6&sesion=5",
+      "fuente_fecha_sancion": "https://www3.hcdn.gob.ar/dependencias/dsecretaria/Periodo2026/BAT2026/PDF/0022-S-2026d.pdf"
+    },
+    {
+      "EXPEDIENTE_INICIAL": "0021-S-2026",
+      "SANCION_DEFINITIVA": "2026-08-26",
+      "sancion_definitiva_verificada": true,
+      "tema": "Sala II de la Cámara Federal de Apelaciones de Mar del Plata",
+      "orden_del_dia": 262,
+      "fuente": "https://www3.hcdn.gob.ar/dependencias/dtaquigrafos/diarios/periodo-144/diario_202608266.pdf",
+      "referencia": "Aprobación definitiva expresa y comunicaciones correspondientes; no se remite al Senado para revisión.",
+      "PROYECTO_ID": "HCDN290413",
+      "fecha_inicio_sesion": "2026-08-26",
+      "nota_fecha": "El texto sancionado fechado y comunicado por Diputados dice 26-ago-2026. La sesión concluyó el 27 y la noticia es de ese día; prevalece la fecha del documento de sanción.",
+      "cotejo_prensa_hcdn": "https://www.hcdn.gob.ar/prensa/noticia/EN-SESION-ESPECIAL-LA-CAMARA-DE-DIPUTADOS-APROBO-UNA-BATERIA-DE-PROYECTOS/",
+      "LEY": "27822",
+      "fuente_numero_ley": "https://www.hcdn.gob.ar/secparl/dsecretaria/bat/bat.jsp?periodo=144&reunion=6&sesion=5",
+      "fuente_fecha_sancion": "https://www3.hcdn.gob.ar/dependencias/dsecretaria/Periodo2026/BAT2026/PDF/0021-S-2026d.pdf"
+    },
+    {
+      "EXPEDIENTE_INICIAL": "0041-S-2025",
+      "SANCION_DEFINITIVA": "2026-08-26",
+      "sancion_definitiva_verificada": true,
+      "tema": "Camino de Brochero, patrimonio inmaterial",
+      "orden_del_dia": 270,
+      "fuente": "https://www3.hcdn.gob.ar/dependencias/dtaquigrafos/diarios/periodo-144/diario_202608266.pdf",
+      "referencia": "Aprobación definitiva expresa y comunicaciones correspondientes; no se remite al Senado para revisión.",
+      "PROYECTO_ID": "HCDN284644",
+      "fecha_inicio_sesion": "2026-08-26",
+      "nota_fecha": "El texto sancionado fechado y comunicado por Diputados dice 26-ago-2026. La sesión concluyó el 27 y la noticia es de ese día; prevalece la fecha del documento de sanción.",
+      "cotejo_prensa_hcdn": "https://www.hcdn.gob.ar/prensa/noticia/EN-SESION-ESPECIAL-LA-CAMARA-DE-DIPUTADOS-APROBO-UNA-BATERIA-DE-PROYECTOS/",
+      "LEY": "27823",
+      "fuente_numero_ley": "https://www.hcdn.gob.ar/secparl/dsecretaria/bat/bat.jsp?periodo=144&reunion=6&sesion=5",
+      "fuente_fecha_sancion": "https://www3.hcdn.gob.ar/dependencias/dsecretaria/Periodo2026/BAT2026/PDF/0041-S-2025d.pdf"
+    },
+    {
+      "LEY": "27824",
+      "SANCION_DEFINITIVA": "2026-08-27",
+      "tema": "Tratado de Extradición con Chile",
+      "orden_del_dia_senado": 120,
+      "expediente_senado": "CD-4/26",
+      "fuente": "https://www.senado.gob.ar/parlamentario/sesiones/2026-08-27%2000:00:00/7-26/downloadBoletin",
+      "pagina": 18,
+      "sancion_definitiva_verificada": true
+    },
+    {
+      "LEY": "27825",
+      "SANCION_DEFINITIVA": "2026-08-27",
+      "tema": "Tratado de Medellín sobre solicitudes de cooperación jurídica electrónica",
+      "orden_del_dia_senado": 121,
+      "expediente_senado": "CD-5/26",
+      "fuente": "https://www.senado.gob.ar/parlamentario/sesiones/2026-08-27%2000:00:00/7-26/downloadBoletin",
+      "pagina": 18,
+      "sancion_definitiva_verificada": true
+    }
+  ]
+}

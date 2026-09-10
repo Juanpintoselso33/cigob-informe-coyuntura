@@ -2,14 +2,22 @@
 
 Colectores de datos para los cuatro cinturones publicados del marco CIGOB-Matus (Macro, Política, Impacto Social y Gestión) y generador del informe periódico. Espíritu de Época salió del tablero el 14 de agosto de 2026.
 
-## Estado actual (agosto 2026)
+## Estado verificado al 8 de septiembre de 2026
 
-| Cinturón | Indicadores publicados | Automáticos | Semiautomáticos | Carga manual |
-|---|---:|---:|---:|---:|
-| Impacto Social | 19 | 19 | 0 | 0 |
-| Macro | 17 | 17 | 0 | 0 |
-| Política | 19 | 15 | 3 | 1 |
-| Gestión | 14 | 10 | 3 | 1 |
+| Cinturón | Dimensiones | Componentes nominales | Indicadores publicados (no suspendidos) |
+|---|---:|---:|---:|
+| Impacto Social | 6 | 19 | 18 |
+| Macro | 6 | 15 | 15 |
+| Política | 7 | 19 | 17 |
+| Gestión | 5 | 14 | 13 |
+
+El snapshot publica 63 indicadores. En el corte vigente, 62 tienen observación para puntuar; bloqueo sostenido se publica sin universo y no aporta al índice. Las definiciones nominales conservan cuatro
+componentes suspendidos: sentimiento digital, apoyo empresario, judicialización
+y reestructuración de organismos. No participan del cálculo; sus pesos internos
+se redistribuyen entre los componentes activos de la dimensión. Los manuales
+describen la estructura y el snapshot muestra la composición efectivamente usada.
+La fecha de consulta no equivale a la fecha del dato ni garantiza que no exista
+una publicación más reciente en otro canal del organismo.
 
 Los cuatro cinturones se puntúan con índices paramétricos de dimensiones ponderadas
 (**ITCM**, diseño original en `docs/archivo/cinturon_macro.md` — superado por los
@@ -17,7 +25,7 @@ ADRs 0009/0010/0021/0022/0053/0055, versión vigente en `scripts/itcm.py`, y **I
 dimensiones 35/25/15/15/10 del
 doc 260702 — ver `docs/adr/0013-itcg-parametrica-gestion.md`; motor común en
 `scripts/parametrica.py`). ITCM, ITCP e ITCG usan una escala 0–100; el ITCIS es
-base 100 = 4T-2023. El score global pondera los cuatro cinturones por fase del
+referencia compuesta: principalmente 4T-2023, con servicios públicos evaluados contra umbrales de carga sobre el salario (ADR-0235). El score global pondera los cuatro cinturones por fase del
 mandato (`config.py`: fase temprana 25% parejo; consolidación 29/29/24/18).
 
 Detalle por indicador —qué mide, fuente, transformaciones, límites—: las fichas
@@ -28,12 +36,17 @@ describe el estado a mayo de 2026 y se conserva como histórico.
 
 **Documentación de arquitectura** (cómo funciona el sistema de punta a punta —
 pipeline, motor paramétrico, web, operaciones): [`docs/arquitectura/`](docs/arquitectura/README.md).
+
+**Auditoría integral y contraste externo (8-sep-2026):**
+[`docs/auditorias/2026-09-08/`](docs/auditorias/2026-09-08/README.md).
+Incluye censo de componentes y dimensiones, reparaciones de actualización,
+comparación mensual con Di Tella y pendientes explícitos de fuente y método.
 Las decisiones de diseño y metodología están en [`docs/adr/`](docs/adr/README.md).
 
 ## Instalación
 
 ```bash
-git clone https://github.com/Fundacion-CIGOB/cigob-informe-coyuntura.git
+git clone https://github.com/Juanpintoselso33/cigob-informe-coyuntura.git
 cd cigob-informe-coyuntura/projects/informe_coyuntura
 uv venv --python 3.12
 uv pip install --python .venv/bin/python -r requirements.txt
@@ -171,18 +184,22 @@ projects/informe_coyuntura/
 3. Correr los cuatro colectores y el orquestador de impacto social para verificar que las fuentes respondan.
 4. Inspeccionar los outputs en `output/cache/*.json` (cada uno tiene indicadores, score y metadatos de extracción).
 
-## Documentación en Word (institucional)
+## Documentación vigente y exportaciones Word
 
-Los archivos `docs/*.md` se convierten a `.docx` con identidad visual CIGOB (logo, paleta institucional, header, footer y paginación) mediante pandoc + un template propio.
+La referencia actual está en los [manuales metodológicos](docs/manuales/README.md),
+las fichas de la web y `output/fichas/fichas-*.md`. Los manuales describen el
+método; las fichas Markdown incorporan el snapshot publicado y se regeneran
+con el pipeline.
 
-Para regenerar todos los `.docx` desde sus `.md`:
+Los `.docx` de `output/fichas/` conservan la última versión enviada al equipo;
+no se actualizan cada noche ni deben confundirse con el corte de la web.
+Para preparar una nueva entrega, seguir el [procedimiento de fichas Word](scripts/fichas/README.md)
+y verificarla contra su snapshot antes de enviarla.
 
-```powershell
-cd docs/template
-./build_all_docx.ps1
-```
-
-Detalles del sistema de templates en `docs/template/README.md`.
+Los documentos fechados en `docs/` y los diseños de `docs/archivo/` conservan
+antecedentes del proyecto. El script `docs/template/build_all_docx.ps1` enumera
+exportaciones históricas; no genera los cuatro manuales ni las fichas actuales.
+La [plantilla institucional](docs/template/README.md) aporta formato, no datos.
 
 ## Patrones técnicos consolidados
 
@@ -195,7 +212,7 @@ Detalles del sistema de templates en `docs/template/README.md`.
 
 ```
 requests>=2.31.0
-xlrd==1.2.0          # Para leer .xls OLE2 (UTDT ICC). No usar xlrd>=2.0
+xlrd==1.2.0          # Versión fijada por el proyecto; validar antes de migrar
 beautifulsoup4>=4.12
 pdfplumber>=0.10.0
 pytrends>=4.9.2

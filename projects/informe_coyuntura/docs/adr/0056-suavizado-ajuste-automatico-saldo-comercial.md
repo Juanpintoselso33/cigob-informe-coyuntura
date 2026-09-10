@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-15
 cinturon: 'macro'
 indicadores: [saldo_comercial_12m]
-relacionado: ['0019', '0021', '0072', '0080']
+relacionado: ['0019', '0021', '0072', '0080', '0275']
 ambito: 'Cinturón macro · ITCM · `saldo_comercial_12m` · Subcomponente D'
 ---
 

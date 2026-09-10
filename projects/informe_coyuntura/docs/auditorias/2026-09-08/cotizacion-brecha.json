@@ -1,0 +1,24 @@
+{
+  "valor": 5.35,
+  "unidad": "% de brecha CCL/mayorista",
+  "fuente": "dolarapi.com — CCL y mayorista (el mayorista replica la referencia A3500 del BCRA)",
+  "fecha_dato": "2026-09-08",
+  "cotizaciones": {
+    "ccl": {
+      "venta": 1588.7,
+      "actualizado_en": "2026-09-08T11:56:00-03:00"
+    },
+    "mayorista": {
+      "venta": 1508.0,
+      "actualizado_en": "2026-09-08T07:50:00-03:00"
+    }
+  },
+  "detalle_txt": "CCL venta 1588.70 (2026-09-08T11:56:00-03:00) / mayorista venta 1508.00 (2026-09-08T07:50:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
+  "desactualizado": false,
+  "obtenido_en": "2026-09-08T12:59:52.224335-03:00",
+  "en_indice": true,
+  "dimension": "reformas_economicas",
+  "puntaje_itcg": 97.9,
+  "puntaje_banda": 97.9,
+  "peso_efectivo": 0.14
+}

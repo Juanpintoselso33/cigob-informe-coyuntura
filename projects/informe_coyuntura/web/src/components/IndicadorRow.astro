@@ -16,7 +16,7 @@ const pres = presentacion(ikey, ind);
     {label(ikey)}
     {nota && <em style="font-style:normal;color:var(--muted-soft);font-size:11px;margin-left:6px;">({nota})</em>}
   </span>
-  {bucket === "fresco" && (
+  {bucket === "fresco" && ind.estado !== "sin_universo" && (
     <span class="cg-ind-sparkline"><Sparkline indicador={ikey} estado={estDot} /></span>
   )}
   <span class="cg-ind-value">

@@ -12,15 +12,10 @@ tenía nada compra su primera moto). Las dos lecturas mueven el patentamiento de
 motos hacia arriba, así que ninguna de las dos series por separado las
 distingue.
 
-Lo que sí las distingue es el TOTAL. Si los hogares bajaran de categoría, el
-total estaría plano o cayendo: cada moto que entra tendría un auto que sale.
-Medido sobre la ventana dic-2025 → jul-2026, en la que las dos series se
-separan, el total per cápita sube 7,5% — entraron 3,17 motos por cada auto que
-se dejó de patentar. La sustitución descendente no aparece.
-
-Es la misma salida que ADR-0217 le dio a la carne: puntuar el ACCESO TOTAL y
-usar la composición para explicar el color, en vez de elegirle un signo a un
-movimiento que tiene dos lecturas.
+El total permite describir el flujo conjunto, pero no identificar esas
+trayectorias: primeras compras, reposición, flotas y sustitución pueden
+coexistir. No contiene un identificador de hogar ni sus vehículos previos.
+ADR-0271 corrige la inferencia de acceso y conserva el cálculo y su peso.
 
 ## Los tres supuestos, declarados
 

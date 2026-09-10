@@ -132,8 +132,8 @@ def build_vida(raw):
     )
     alq = indec.get("ipc_alquiler_gba", {})
     _add(out, "alquiler_real", _red(alq.get("variacion_mensual_pct"), 2),
-         "% m/m alquileres", "INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)",
-         alq.get("fecha"))
+         "% m/m alquileres", "INDEC — IPC-GBA alquiler de la vivienda (planilla original)",
+         alq.get("fecha"), fuente_url=alq.get('fuente_url'))
     # Componente A de la ficha de proteína animal. Pasa de CICCRA al tablero de
     # SAGYP para que A, B y C salgan del MISMO PDF: misma metodología de
     # promedio móvil 12m, mismo corte temporal y mismo perímetro. Mezclarlos
@@ -221,7 +221,8 @@ def build_vida(raw):
          f"{emp['mes']}-01" if emp.get("mes") else None)
     isac = indec.get("isac", {})
     _add(out, "despacho_cemento", _red(isac.get("valor"), 1),
-         "índice ISAC", "INDEC — ISAC desestacionalizado (vía datos.gob.ar)", isac.get("fecha"))
+         "índice ISAC", "INDEC — ISAC desestacionalizado (planilla original vigente)", isac.get("fecha"),
+         obtenido_en=isac.get("obtenido_en"))
     sub = indec.get("subocupacion_demandante", {})
     # ADR-0249: la tasa la calcula INDEC sobre la PEA, no sobre los ocupados.
     _add(out, "subocupacion_demandante", _red(sub.get("valor"), 1, 100),
@@ -656,6 +657,8 @@ def _series_dimensiones(bloque, sigla, base100=False):
     dims = (bloque or {}).get("dimensiones") or {}
     if not dims:
         return
+    historia = _cargar_validacion().get(f"serie_{sigla}") or {}
+    bloque["serie_mensual"] = [[m, v] for m, v in sorted(historia.items())]
     por_dim = ((_cargar_validacion().get("series_dimensiones") or {}).get(sigla)) or {}
     publicadas, meses = 0, set()
     for dkey, dim in dims.items():
@@ -763,7 +766,7 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
                 origen = "automático" if aj.get("origen") == "automatico" else "del analista"
                 nota = f"Ajuste {origen}: banda {aj['de']} → {aj['a']}. {aj.get('justificacion', '')}"
         elif ind.get("en_indice") is False:
-            nota = contexto_txt
+            nota = ind.get("detalle_txt") if ind.get("estado") == "sin_universo" else contexto_txt
         ind["aporte_score"] = aporte
         ind["aporte_formula"] = formula
         ind["aporte_nota"] = nota
@@ -780,7 +783,7 @@ def _macro_input_txt(ikey, ind):
     if ikey == "reservas_bcra" and ind.get("netas_sdds_estricto") is not None:
         return (f"netas {int(ind.get('valor', 0))} = SDDS estricto {int(ind['netas_sdds_estricto'])} "
                 f"+ Tesoro {int(ind.get('depositos_tesoro', 0))} "
-                f"+ Bopreal {int(ind.get('bopreal_12m', 0))} (M USD)")
+                f"+ tramo II.1 >3 meses–1 año {int(ind.get('bopreal_12m', 0))} (M USD; fórmula CIGOB)")
     if ikey == "idc" and ind.get("componentes"):
         c, n = ind["componentes"], ind.get("niveles") or {}
         # `banda_idc` es el semáforo de 3 colores propio del IdC (por
@@ -882,9 +885,14 @@ def _politica_input_txt(ikey, ind):
         partes = [f"{nombre} {coma(c['valor'])}% "
                   + (f"(peso {peso}%, {c.get('n_actas', '?')} actas)" if len(camaras) == 2
                      else f"({c.get('n_actas', '?')} actas)")
+                  + f" · última acta {c.get('fecha_dato') or 'sin fecha'}"
+                  + (" · dato conservado en caché" if c.get('desactualizado') else "")
                   for nombre, peso, c in camaras]
         if partes:
-            return f"{coma(ind.get('valor'))}% = " + " · ".join(partes)
+            detalle = f"{coma(ind.get('valor'))}% = " + " · ".join(partes)
+            if len(camaras) == 1:
+                detalle += " · una sola cámara con dato: su peso se renormaliza al 100%"
+            return detalle
     return None
 
 
@@ -1100,12 +1108,14 @@ def _validacion_itcm(bloque):
     # El recuento de componentes se DERIVA de la composición vigente del índice:
     # escrito a mano quedó viejo cuando entró costo_financiamiento_tesoro
     # (decía "once de sus trece" con catorce indicadores en el ITCM).
-    _sin_serie = ("iai", "icip")          # no ingresan a la reconstrucción histórica
+    _activos = {k for d in bloque.get("dimensiones", {}).values()
+                for k in d.get("indicadores", {})}
+    _observados = set(val.get("componentes_historia_itcm") or [])
+    _sin_serie = tuple(sorted(_activos - _observados))
     _total = sum(len(d.get("indicadores", {}))
                  for d in bloque.get("dimensiones", {}).values())
     _usados = _total - len(_sin_serie)
-    _componentes = (f"{_usados} de sus {_total} componentes"
-                    if _total > len(_sin_serie) else "la mayoría de sus componentes")
+    _componentes = f"{_usados} de sus {_total} componentes"
 
     bloque["validacion"] = {
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
@@ -1115,8 +1125,8 @@ def _validacion_itcm(bloque):
         "sub": ("El contraste del cinturón macro es el Índice Líder de la Universidad Torcuato "
                 "Di Tella, que resume la marcha de la actividad económica y no integra el "
                 f"índice. El ITCM se reconstruye mes a mes desde las series de {_componentes} "
-                "(el IAI y el ICIP no ingresan en esta reconstrucción histórica, ni tampoco los "
-                "ajustes del analista: el nivel puede diferir del publicado — lo que valida es "
+                f"(sin serie histórica: {', '.join(k.upper() for k in _sin_serie) or 'ninguno'}; tampoco ingresan los "
+                "ajustes del analista; la cobertura varía entre meses: el nivel puede diferir del publicado — lo que valida es "
                 "su evolución). La correlación esperada es positiva: menos tensión "
                 "macroeconómica, más actividad."),
         "serie_label": "ITCM (reconstrucción mensual)",
@@ -1907,6 +1917,17 @@ def _validacion_itcp(bloque):
         len(d.get("indicadores", {}))
         for d in bloque.get("dimensiones", {}).values()
     )
+    corr_brecha = val.get("correlaciones_brecha_obra_publica") or {}
+    brecha_niv = (corr_brecha.get("niveles (brecha obra pública vs Construya var. i.a., ambas 12m)") or {}).get("r")
+    brecha_dif = (corr_brecha.get("primeras diferencias (brecha vs Construya)") or {}).get("r")
+    contraste_brecha = (
+        f" El contraste propio de expectativas de construcción con el volumen de insumos "
+        f"vendidos (Construya), ambas series suavizadas a doce meses, da "
+        f"{coma(brecha_niv)} en niveles y {coma(brecha_dif)} en cambios mensuales. "
+        "La fecha de expectativas representa el inicio de su horizonte trimestral; "
+        "el contraste retrospectivo no demuestra anticipación ni causalidad."
+        if brecha_niv is not None and brecha_dif is not None else
+        " El contraste propio con Construya no está disponible en esta corrida.")
     bloque["validacion"] = {
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
         "pares": [[m, serie[m], epu[m]] for m in comunes],
@@ -1939,19 +1960,12 @@ def _validacion_itcp(bloque):
                if r_sin_priv is not None else " ")
             + "El contraste mide incertidumbre de política económica en la prensa, y no cubre "
               "la relación del Gobierno con los empresarios: pedirle que valide una dimensión "
-              "que no abarca es pedirle lo que no mide. Esa dimensión tiene su propio contraste, "
-              "el volumen de insumos de construcción efectivamente vendidos, contra el que "
-              "correlaciona 0,79 en niveles y 0,47 en los cambios."
-            + (" Hay además un hallazgo que conviene declarar: el indicador de expectativas de "
-               "obra pública acompaña a la incertidumbre de política durante las dos "
-               "administraciones anteriores y se invierte con la actual. La razón es "
-               "sustantiva, no estadística: para gobiernos anteriores la tensión con las "
-               "empresas que dependen del Estado era un síntoma de dificultades, mientras que "
-               "para el actual el recorte de la obra pública es el programa de gobierno, de "
-               "modo que ejecutarlo reduce la incertidumbre sobre la política económica al "
-               "mismo tiempo que tensa la relación con ese sector. El indicador mide bien la "
-               "tensión; lo que no distingue es cuándo esa tensión es un costo que el Gobierno "
-               "sufre y cuándo es un precio que decide pagar."
+              "que no abarca es pedirle lo que no mide."
+            + contraste_brecha
+            + (" La comparación por gobierno permite examinar la estabilidad del signo. "
+               "Una asociación distinta no identifica por sí sola su causa: el recorte de "
+               "obra pública puede formar parte del programa y afectar las expectativas "
+               "del sector. Esa interpretación debe contrastarse con evidencia adicional."
                if val.get("brecha_obra_publica_por_gobierno") else "")),
     }
 
@@ -2133,7 +2147,7 @@ def _scoring_vida_itvc(c, series):
                 lectura = (f"En la escala del cinturón, este componente equivale a una "
                            f"tensión de {coma(aporte)}/10.")
             # bases DECLARADAS distintas del 4T-2023 (fuente sin medición en la base del doc)
-            base_lbl = {"inseguridad": "ene-2024 (base declarada: la encuesta se reanudó ese mes)"} \
+            base_lbl = {"inseguridad": "ene-2024 (base declarada conservada; archivo 2023 recuperado en septiembre de 2026)"} \
                 .get(ikey, "4T-2023")
             formula = (f"Índice base-100 vs {base_lbl}: {coma(info['puntaje_aplicado'])} "
                        f"(100 = arranque del mandato; más = mejora); pesa "
@@ -2304,57 +2318,41 @@ def _por_que_dimension(puntaje, tension, base100):
             f"tensión de {coma(tension)}/10 en la escala del informe.")
 
 
-# Corte verde del Componente B de la ficha de proteína animal: promedio
-# histórico de largo plazo del consumo total de carnes en Argentina (Bolsa de
-# Comercio de Rosario, últimos 10 años). Es un ancla EXTERNA, no un percentil
-# de la propia serie, así que no agrega circularidad al índice.
-CARNES_TOTAL_SOSTENIDO = 112.8
+# Referencia descriptiva del nivel de consumo aparente (BCR, promedio de diez
+# años). No es un corte del puntaje ni permite deducir la variación interanual.
+CARNES_TOTAL_REFERENCIA = 112.8
 
 
 def _por_que_carne(vacuna, total, variaciones):
-    """La matriz A×B de la ficha, dicha en una frase.
+    """Nivel, variación y composición agregados; no identifica trayectorias.
 
-    La ficha quiere distinguir dos cosas que el indicador de carne vacuna solo
-    no puede separar: que la gente coma menos vacuna porque la reemplaza por
-    pollo o cerdo (sustitución, precios relativos) de que coma menos proteína
-    animal en total (empobrecimiento).
-
-    Esto NO cambia el color ni el aporte al índice. El ITVC mide evolución
-    contra el arranque del mandato y el color sale de ahí; la matriz de la
-    ficha es un semáforo de nivel absoluto, que es otra pregunta. Hacer que
-    mande sobre el color metería una tercera vara en un cinturón que ya tiene
-    una — así que la matriz entra como el `por_que`, que es justamente el campo
-    que explica un color y que en vida cotidiana venía vacío.
+    El color usa la evolución de faena per cápita contra 4T-2023. El consumo
+    aparente oficial y su referencia histórica se explican como contexto.
     """
-    if vacuna is None or total is None:
-        return None
+    import math
+
     var_v = (variaciones or {}).get("vacuna")
     var_t = (variaciones or {}).get("total")
-    if var_v is None or var_t is None:
+    valores = (vacuna, total, var_v, var_t)
+    if any(not isinstance(v, (int, float)) or not math.isfinite(v) for v in valores):
+        return None
+    if total <= 0 or vacuna < 0 or vacuna > total:
         return None
 
     ratio = vacuna / total * 100
-    cae_vacuna = var_v < 0
-    total_sostenido = total >= CARNES_TOTAL_SOSTENIDO
-    base = (f"la carne vacuna suma {coma(round(vacuna, 1))} kg por habitante "
-            f"({coma(round(var_v, 1))}% interanual) y el total de carnes "
-            f"{coma(round(total, 1))} kg ({coma(round(var_t, 1))}%); "
-            f"la vacuna es el {coma(round(ratio, 1))}% de lo que se come")
-
-    if cae_vacuna and total_sostenido:
-        return (f"Sustitución, no menos proteína: {base}. El total se mantiene "
-                f"en o por encima del promedio histórico de largo plazo "
-                f"({coma(CARNES_TOTAL_SOSTENIDO)} kg), así que lo que cae es la "
-                f"vacuna en favor de pollo y cerdo.")
-    if cae_vacuna and not total_sostenido:
-        return (f"Cae el acceso a proteína animal, no sólo a la vacuna: {base}. "
-                f"El total quedó por debajo del promedio histórico de largo "
-                f"plazo ({coma(CARNES_TOTAL_SOSTENIDO)} kg), o sea que las otras "
-                f"carnes no compensan la caída.")
-    if not cae_vacuna and total_sostenido:
-        return f"Consumo sostenido: {base}."
-    return (f"Combinación inesperada — la vacuna no cae y el total sí: {base}. "
-            f"Conviene revisar el dato de origen antes de leerlo.")
+    posicion = ("por encima de" if total > CARNES_TOTAL_REFERENCIA else
+                "por debajo de" if total < CARNES_TOTAL_REFERENCIA else "igual a")
+    return (f"Consumo aparente: vacuna {coma(round(vacuna, 1))} kg por habitante y año "
+            f"({coma(round(var_v, 1))}% interanual); total de las tres carnes "
+            f"{coma(round(total, 1))} kg ({coma(round(var_t, 1))}% interanual). "
+            f"La vacuna representa {coma(round(ratio, 1))}% del total. "
+            f"El nivel total está {posicion} la referencia histórica "
+            f"de {coma(CARNES_TOTAL_REFERENCIA)} kg; esa comparación no indica "
+            f"si subió o bajó respecto del año anterior. "
+            f"Estos agregados no identifican sustitución dentro de los mismos "
+            f"hogares ni proteína ingerida. El color y el aporte al índice usan "
+            f"la evolución de faena por habitante frente a 4T-2023, no esta "
+            f"comparación de consumo aparente con el promedio histórico.")
 
 
 def _por_que_motorizacion(composicion):
@@ -2367,10 +2365,9 @@ def _por_que_motorizacion(composicion):
       (sustitución descendente, empobrecimiento), o
     - que compre su primera moto sin haber tenido nunca un auto (acceso).
 
-    Las dos empujan el patentamiento de motos hacia arriba. Lo que las separa
-    es el TOTAL: si fuera sustitución, cada moto que entra tendría un auto que
-    sale y el total estaría plano. El eje A es entonces la dirección del total,
-    y el eje B el corrimiento de la mezcla.
+    Las dos empujan el patentamiento de motos hacia arriba. El total y la mezcla
+    describen el flujo agregado, pero NO identifican compradores ni transiciones
+    de hogares: acceso, reposición y sustitución pueden coexistir (ADR-0271).
 
     Esto NO cambia el color ni el aporte al índice —el color sale del nivel
     rebaseado, como en toda card del cinturón—; entra como el `por_que`, que es
@@ -2403,20 +2400,18 @@ def _por_que_motorizacion(composicion):
     mas_motos = corrimiento > 0
 
     if sube_total and mas_motos:
-        return (f"Más acceso, con la mezcla corriéndose a la moto: {base}. "
-                f"El total sube, así que no es que los hogares bajen del auto a "
-                f"la moto —eso dejaría el total plano—: entran hogares que "
-                f"antes no patentaban nada. Que entren en dos ruedas y no en "
-                f"cuatro es el dato que conviene mirar aparte.")
+        lectura = "Más patentamientos y mayor participación de motos"
     if not sube_total and mas_motos:
-        return (f"Sustitución descendente: {base}. El total cae mientras la "
-                f"mezcla se corre a la moto, que es el patrón de hogares que "
-                f"dejan el auto y no de hogares que acceden por primera vez.")
+        lectura = ("Menos patentamientos y mayor participación de motos" if var_t < 0
+                   else "Total estable y mayor participación de motos")
     if sube_total and not mas_motos:
-        return (f"Más acceso y mezcla estable o mejor: {base}. Sube el total y "
-                f"la moto no gana participación.")
-    return (f"Menos acceso: {base}. Cae el total sin que la moto compense, o "
-            f"sea que se patenta menos de todo.")
+        lectura = "Más patentamientos, sin aumento de la participación de motos"
+    if not sube_total and not mas_motos:
+        lectura = ("Menos patentamientos, sin aumento de la participación de motos" if var_t < 0
+                   else "Total estable, sin aumento de la participación de motos")
+    return (f"{lectura}: {base}. El registro cuenta vehículos, no hogares: "
+            "no permite distinguir primeras compras, reposición, flotas ni "
+            "sustitución entre autos y motos. Estas situaciones pueden coexistir.")
 
 
 def _semaforos(informe):
@@ -2451,10 +2446,8 @@ def _semaforos(informe):
                 continue
             ind["semaforo"] = _semaforo_de(color, tension, umbrales, unidad,
                                            ind.get("valor"))
-            # El color de un indicador de vida sale de su nivel rebaseado, así
-            # que para la carne vacuna dice "cayó contra el arranque" y nada
-            # más — que es justo la lectura ambigua que la ficha de proteína
-            # animal quiere desarmar. La matriz A×B no lo cambia: lo explica.
+            # El consumo aparente y su composición dan contexto agregado.
+            # El texto distingue ese contexto del color basado en faena.
             if ikey == "consumo_carnes_total":
                 vacuna_ind = bloque["indicadores"].get("consumo_carne") or {}
                 por_que = _por_que_carne(vacuna_ind.get("valor"), ind.get("valor"),
@@ -2628,6 +2621,8 @@ def aplicar_scoring(informe, series):
 # clasificación humana necesaria para que el valor avance.
 METODO_OBTENCION_EXCEPCIONES = {
     "apoyo_empresario": "semiautomatico",
+    # CSV automático conciliado con movimientos y bajas de revisión humana.
+    "cobertura_judicial": "semiautomatico",
     # Los dos leen el mismo registro legislativo: las actas inequívocas se
     # clasifican solas y las ambiguas no avanzan hasta el triage humano.
     "desafios_legislativos": "semiautomatico",
@@ -2690,7 +2685,7 @@ def _sellar_vida(indicadores, raw):
         return indicadores
     for ind in indicadores.values():
         if ind.get("valor") is not None:
-            ind["obtenido_en"] = sello
+            ind["obtenido_en"] = ind.get("obtenido_en") or sello
     return indicadores
 
 

@@ -30,7 +30,7 @@ Indicadores:
   alineamiento_senadores_prov — % votos de senadores no-LLA alineados con LLA, por provincia
                                (scrape senado.gob.ar, auto — reemplaza a gobernadores_alineamiento,
                                placeholder manual congelado desde 2026-04, ver manuales.json)
-  veto_quorum               — % sesiones frustradas por falta de quórum (datos.hcdn.gob.ar CKAN, auto)
+  veto_quorum               — % reuniones en minoría (índice oficial de sesiones HCDN, auto)
   comisiones_caidas         — % proyectos con dictamen que no llegan al recinto (datos.hcdn.gob.ar CKAN, auto)
   adhesion_reformas_provincial — % provincias adheridas al RIGI (MAGyP, auto)
   derrotas_legislativas     — derrotas del Ejecutivo en el recinto, 12m: vetos insistidos +
@@ -80,6 +80,7 @@ from html import unescape
 from bs4 import BeautifulSoup
 from datetime import datetime, date, timedelta
 from pathlib import Path
+from urllib.parse import parse_qs, urljoin, urlparse
 
 sys.stdout.reconfigure(encoding="utf-8")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -200,7 +201,7 @@ INDEC_IPC_INDICE = "148.3_INIVELNAL_DICI_M_26"   # IPC nivel general, índice (b
 
 # ── RON mensual — transferencias federales a precios de cada mes (ADR-0239) ───
 # El CSV anual sólo permite comparar dos sumas nominales contra un deflactor
-# único, y eso subdeflacta: las transferencias se devengan mes a mes, con
+# único, que puede sesgar la variación: las transferencias se giran mes a mes, con
 # estacionalidad propia, así que el deflactor correcto está ponderado por el
 # flujo de cada mes y no por el calendario. La misma planilla de Hacienda que
 # publica el consolidado anual trae una hoja por mes; de ahí sale la serie.
@@ -354,7 +355,7 @@ def _ron_mensual(desde: int) -> dict:
 
     Mismo universo que el CSV anual —lo reconcilia peso por peso— pero abierto
     por mes, que es lo que hace falta para deflactar cada flujo a los precios en
-    los que se devengó. Un mes sin hoja (el año en curso) simplemente no está."""
+    los que se giró. Un mes sin hoja (el año en curso) simplemente no está."""
     urls = _ron_consolidado_urls()
     for y in sorted(y for y in urls if y >= desde):
         if y in _RON_MENSUAL_MEMO:
@@ -904,7 +905,9 @@ def brecha_obra_publica_serie() -> list:
     verifica y que dos bugs de esta jornada (ADR-0086/0087) violaron por tener
     el cálculo escrito dos veces.
 
-    [[YYYY-MM-01, brecha]] ascendente."""
+    [[YYYY-MM-01, brecha]] ascendente. La fecha identifica el INICIO del
+    horizonte de expectativas, no el fin ni la fecha de publicación (ADR-0302).
+    """
     import xlrd
 
     ws = xlrd.open_workbook(file_contents=_isac_descargar()).sheet_by_name(ISAC_HOJA)
@@ -913,23 +916,37 @@ def brecha_obra_publica_serie() -> list:
     mensual = []
     for i in range(ws.nrows):
         etiqueta = str(ws.cell(i, 0).value)
-        # La fila rotula la ventana completa ("Junio 2026 - agosto 2026"); el
-        # dato corresponde al mes de CIERRE, que es el segundo.
-        m = re.search(r"-\s*([a-zA-Zéí]+)\s+(\d{4})", etiqueta)
-        if not m or m.group(1).lower() not in ISAC_MESES:
+        m = re.fullmatch(
+            r"([a-zA-Zéí]+)\s+(?:de\s+)?(\d{4})\s*[-–]\s*"
+            r"([a-zA-Zéí]+)\s+(?:de\s+)?(\d{4})(?:\s*\(\d+\))?",
+            etiqueta.strip(), re.IGNORECASE)
+        if not m:
             continue
+        ym = (int(m[2]), ISAC_MESES[m[1].lower()])
+        fin = (int(m[4]), ISAC_MESES[m[3].lower()])
+        if (fin[0] * 12 + fin[1]) - (ym[0] * 12 + ym[1]) != 2:
+            raise ValueError(f"Horizonte ISAC no trimestral: {etiqueta}")
+        if ym > (date.today().year, date.today().month):
+            raise ValueError(f"Inicio de expectativas ISAC futuro: {etiqueta}")
         try:
-            priv = float(ws.cell(i, 1).value) - float(ws.cell(i, 3).value)
-            publ = float(ws.cell(i, 5).value) - float(ws.cell(i, 7).value)
+            valores = [float(ws.cell(i, j).value) for j in (1, 3, 5, 7)]
         except (ValueError, TypeError):
-            continue
-        ym = (int(m.group(2)), ISAC_MESES[m.group(1).lower()])
+            raise ValueError(f"Porcentajes ISAC ausentes: {etiqueta}")
+        if any(not math.isfinite(x) or not 0 <= x <= 100 for x in valores):
+            raise ValueError(f"Porcentajes ISAC inválidos: {etiqueta}")
+        priv = valores[0] - valores[1]
+        publ = valores[2] - valores[3]
         mensual.append((ym, publ - priv))
 
-    # El cuadro trae filas de notas al pie que también matchean el patrón de
-    # fecha; deduplicar por mes y ordenar deja sólo la grilla real.
+    # El patrón completo excluye notas al pie; una fila de período repetida
+    # o un salto de calendario no puede ocultarse al promediar.
     por_mes = dict(mensual)
+    if len(por_mes) != len(mensual):
+        raise ValueError("Horizontes ISAC duplicados")
     meses = sorted(por_mes)
+    for a, b in zip(meses, meses[1:]):
+        if (b[0] * 12 + b[1]) - (a[0] * 12 + a[1]) != 1:
+            raise ValueError(f"Calendario ISAC incompleto entre {a} y {b}")
     if len(meses) < ISAC_VENTANA:
         raise ValueError(f"ISAC {ISAC_HOJA}: {len(meses)} meses, se necesitan {ISAC_VENTANA}")
 
@@ -957,22 +974,34 @@ def fetch_brecha_obra_publica() -> dict | None:
     try:
         serie = brecha_obra_publica_serie()
         fecha, valor = serie[-1]
+        inicio = date.fromisoformat(fecha)
+        ordinal_fin = inicio.year * 12 + inicio.month - 1 + 2
+        fin = f"{ordinal_fin // 12:04d}-{ordinal_fin % 12 + 1:02d}"
         anterior = serie[-13][1] if len(serie) > 13 else None
         return {
             "valor":          valor,
             "unidad":         "pp de brecha (obra pública − privada, 12m)",
             "fuente":         "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
             "fecha_dato":     fecha,
+            "referencia_temporal": "inicio del horizonte de expectativas",
+            "periodo_expectativas": f"{fecha[:7]} a {fin}",
             "desactualizado": False,
             "variacion_12m":  None if anterior is None else round(valor - anterior, 1),
             "detalle_txt": (
                 f"Brecha de {str(valor).replace('.', ',')} pp entre lo que esperan las "
                 f"constructoras de obra pública y las de obra privada (promedio de 12 meses). "
+                f"Último horizonte consultado: {fecha[:7]} a {fin}; la fecha identifica su inicio, "
+                f"no una realización observada ni la fecha de publicación. "
                 f"Negativa = las que dependen del Estado esperan peor que sus pares privadas."),
         }
     except Exception as e:
         _warn("brecha_obra_publica", str(e))
         return None
+
+
+def inicio_ventana_365(hasta: date) -> date:
+    """365 fechas incluidas: InfoLeg incluye desde y hasta (ADR-0307)."""
+    return hasta - timedelta(days=364)
 
 
 def fetch_ratio_dnu() -> dict | None:
@@ -998,7 +1027,7 @@ def fetch_ratio_dnu() -> dict | None:
     """
     try:
         hasta = date.today()
-        desde = hasta - timedelta(days=365)
+        desde = inicio_ventana_365(hasta)
 
         session = requests.Session()
         r_home = session.get(INFOLEG_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
@@ -1214,9 +1243,9 @@ def fetch_conflictividad_nacional() -> dict | None:
     crudo). El conteo y la base quedan en el detalle (acum_12m,
     eventos_2023).
 
-    El último mes del archivo se excluye si está parcial (la semana final
-    no llega a fin de mes — el corte semanal + rezago de carga de ACLED lo
-    dejan incompleto) — mismo criterio que gestion.fetch_protestas_caba.
+    Se agrupan semanas por el mes de su sábado inicial. El viernes final
+    determina qué grupos mensuales están completos (ADR-0303); no se
+    confunden con conteos exactos por fecha diaria de cada evento.
     La serie usable arranca en dic-2023 (primera ventana 12m íntegramente
     comparable con la base); la cobertura ACLED pre-2020 NO es confiable
     (2019 promedia 102 eventos/mes vs 240 de 2020 — artefacto de expansión
@@ -1225,38 +1254,35 @@ def fetch_conflictividad_nacional() -> dict | None:
     """
     try:
         store = gestion.actualizar_protestas_caba()
+        descarga_exitosa = store is not None
         if store is None and gestion.PROTESTAS_STORE_PATH.exists():
             store = json.loads(gestion.PROTESTAS_STORE_PATH.read_text(encoding="utf-8"))
         if not store or "mensual_nacional" not in store:
             raise ValueError("store ACLED sin serie nacional (¿corrida vieja sin ADR-0052?)")
-        mensual = store["mensual_nacional"]
-        hasta = store.get("_meta", {}).get("hasta_semana", "")
-        yms = sorted(mensual)
-        if hasta and yms and hasta[:7] == yms[-1]:
-            import calendar as _cal
-            a, m = int(hasta[:4]), int(hasta[5:7])
-            if int(hasta[8:10]) < _cal.monthrange(a, m)[1]:
-                yms = yms[:-1]
-        if len(yms) < 12:
-            raise ValueError("serie ACLED nacional demasiado corta")
-        ult12 = sum(mensual[ym] for ym in yms[-12:])
-        base_2023 = sum(v for ym, v in mensual.items() if ym.startswith("2023"))
-        if not base_2023:
-            raise ValueError("store ACLED sin base 2023")
-        var = round((ult12 / base_2023 - 1.0) * 100.0, 1)
+        from acled_calendario import serie_12m
+        calculo = serie_12m(store, "mensual_nacional")
+        ultimo = calculo["puntos"][-1]
+        ult12, base_2023 = ultimo["acum_12m"], calculo["base_2023"]
+        var = ultimo["variacion"]
+        hasta = calculo["cobertura_hasta"]
         return {
             "valor":          var,
             "acum_12m":       ult12,
             "eventos_2023":   base_2023,
             "unidad":         "% vs 2023",
             "fuente":         "ACLED — agregado semanal por provincia (acleddata.com)",
-            "fecha_dato":     f"{yms[-1]}-01",
-            "desactualizado": bool(hasta) and _days_old(str(hasta)) > STALE_CONFLICTIVIDAD_DAYS,
+            "fecha_dato":     ultimo["fecha"],
+            "cobertura_hasta": hasta,
+            "referencia_temporal": "mes de inicio de las semanas ACLED",
+            "desactualizado": (not descarga_exitosa or
+                               _days_old(str(hasta)) > STALE_CONFLICTIVIDAD_DAYS),
+            "obtenido_en": store["_meta"]["actualizado"],
             "detalle_txt": (f"{ult12} eventos de protesta y disturbios en el país en 12m "
-                            f"(hasta {yms[-1]}) vs {base_2023} en todo 2023 "
+                            f"(grupos hasta {ultimo['fecha'][:7]}) vs {base_2023} en la base 2023 "
                             + f"({var:+.1f}%)".replace(".", ",")
                             + " — cuenta marchas, concentraciones y disturbios de ACLED en "
-                              "las 24 jurisdicciones; CABA es ~9% del total del país"),
+                              "las 24 jurisdicciones. Agrupa semanas sábado–viernes por "
+                              "su mes de inicio; las semanas que cruzan de mes no se dividen."),
         }
     except Exception as e:
         _warn("conflictividad_nacional", str(e))
@@ -1288,6 +1314,26 @@ def _columna_jornadas_de_paro(ws) -> int:
             raise ValueError("conflictos laborales: el grupo de jornadas de paro "
                              "no declara columna de total")
     raise ValueError("conflictos laborales: columna de jornadas de paro no encontrada")
+
+
+def _jornadas_acumuladas_12m(mensual: list) -> list:
+    """Doce meses calendario; una fila faltante no puede acortar un año."""
+    mensual = sorted(mensual)
+    if len(mensual) < 12:
+        raise ValueError("conflictos laborales: menos de 12 meses de jornadas")
+    previo = None
+    for ym, valor in mensual:
+        anio, mes = map(int, ym.split('-'))
+        if not 1 <= mes <= 12:
+            raise ValueError("conflictos laborales: mes inválido")
+        ordinal = anio * 12 + mes
+        if previo is not None and ordinal != previo + 1:
+            raise ValueError("conflictos laborales: meses duplicados o discontinuos")
+        if isinstance(valor, bool) or not math.isfinite(valor) or valor < 0:
+            raise ValueError("conflictos laborales: jornadas inválidas")
+        previo = ordinal
+    return [[f"{mensual[i][0]}-01", sum(v for _, v in mensual[i - 11:i + 1])]
+            for i in range(11, len(mensual))]
 
 
 def fetch_jornadas_individuales_no_trabajadas_serie() -> list:
@@ -1338,12 +1384,8 @@ def fetch_jornadas_individuales_no_trabajadas_serie() -> list:
         valor = row[col] if len(row) > col else None
         if not hasattr(fecha, "year") or not isinstance(valor, (int, float)):
             continue
-        mensual.append((f"{fecha.year:04d}-{fecha.month:02d}", int(valor)))
-    mensual.sort()
-    if len(mensual) < 12:
-        raise ValueError("conflictos laborales: menos de 12 meses de jornadas")
-    return [[f"{mensual[i][0]}-01", sum(v for _, v in mensual[i - 11:i + 1])]
-            for i in range(11, len(mensual))]
+        mensual.append((f"{fecha.year:04d}-{fecha.month:02d}", valor))
+    return _jornadas_acumuladas_12m(mensual)
 
 
 def fetch_jornadas_individuales_no_trabajadas() -> dict | None:
@@ -1382,7 +1424,7 @@ def fetch_iaf_transferencias() -> dict | None:
 
     Deflactor (ADR-0239): **cada flujo mensual a precios de su propio mes**. El
     método anterior dividía el cociente de dos sumas nominales por un único IPC
-    promedio anual, y eso subdeflacta cuando el gasto no se reparte parejo por
+    promedio anual, que puede sesgar el resultado si el gasto no se reparte parejo por
     el calendario: para 2025 publicaba +0,8% donde IARAF y Politikon informaban
     +1,6/1,7%. Mes a mes da +1,64%.
 
@@ -1453,6 +1495,25 @@ def _hcdn_paginate(resource_id: str, *, q: str = "") -> list[dict]:
     return records
 
 
+def _fecha_publicacion_proyecto(proyecto: dict) -> str:
+    """Fecha de publicación, con rectificaciones del TP original.
+
+    El ID identifica la publicación, no la firma del mensaje. Evidencia:
+    docs/auditorias/2026-09-08/cotejo-cohorte-tramites.json.
+    Se conserva intacta la fila bruta del catálogo.
+    """
+    fechas_tp = {
+        # https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/index.html
+        "HCDN142TP223": "2025-01-20",
+        # https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/index.html
+        "HCDN143TP109": "2025-08-06",
+    }
+    return fechas_tp.get(
+        proyecto.get("PUBLICACION_ID"),
+        str(proyecto.get("PUBLICACION_FECHA", ""))[:10],
+    )
+
+
 def _leyes_sancionadas_ids(hasta: str | None = None) -> set[str]:
     """PROYECTO_IDs con sanción definitiva según el dataset oficial
     leyes-sancionadas de HCDN (cada fila trae número de ley, fecha de
@@ -1496,7 +1557,7 @@ def fetch_eficacia_legislativa() -> dict | None:
     sesgo era real pero mucho menor al asumido.
 
     Cohorte MADURA (en vez de ventana compartida): proyectos PE publicados
-    entre hoy−730 y hoy−365 días — un tramo de 12 meses de publicaciones,
+    entre hoy−730 y hoy−365 días inclusivos — 366 fechas posibles,
     desplazado un año atrás para que CADA proyecto de la cohorte haya tenido
     AL MENOS 365 días de margen antes de evaluarlo. Elimina el sesgo de raíz
     en vez de compensarlo con anclas más generosas.
@@ -1515,7 +1576,7 @@ def fetch_eficacia_legislativa() -> dict | None:
     proyecto con origen en Diputados la sanción definitiva ocurre en el
     SENADO y jamás aparece como movimiento "SANCION" — el numerador era
     ciego a toda ley sancionada por la cámara revisora (verificado: leyes
-    27.783, 27.799 y 27.801, las tres PE de la cohorte vigente, las tres
+    27.783, 27.799 y 27.801, las tres PE de la cohorte auditada entonces, las tres
     invisibles para la métrica anterior; el 0,0% publicado era en realidad
     18,8%).
 
@@ -1535,7 +1596,7 @@ def fetch_eficacia_legislativa() -> dict | None:
         pe_cohorte: set[str] = {
             r["PROYECTO_ID"]
             for r in raw_pe
-            if cohorte_desde <= str(r.get("PUBLICACION_FECHA", ""))[:10] <= cohorte_hasta
+            if cohorte_desde <= _fecha_publicacion_proyecto(r) <= cohorte_hasta
             and "PROYECTO DE LEY" in str(r.get("TIPO", "")).upper()
             and (
                 _RE_PE_EXP.search(r.get("EXP_DIPUTADOS", "") or "")
@@ -1545,7 +1606,7 @@ def fetch_eficacia_legislativa() -> dict | None:
         if not pe_cohorte:
             raise ValueError("Sin proyectos de ley PE en la cohorte madura (hoy-730d a hoy-365d)")
 
-        sancionados = _leyes_sancionadas_ids()
+        sancionados = _leyes_sancionadas_ids(hasta=hoy.isoformat())
 
         aprobados = pe_cohorte & sancionados
         total     = len(pe_cohorte)
@@ -1590,27 +1651,59 @@ def fetch_eficacia_legislativa() -> dict | None:
 # Gabinete que no concurre, no el quórum que no se junta.
 #
 # El denominador son las sesiones convocadas para tratar temas: especiales
-# (incluidas continuación y homenaje) más las que quedaron en minoría. Quedan
+# (incluidas continuaciones; ADR-0308 excluye homenajes) más las que quedaron en minoría. Quedan
 # afuera las informativas, la preparatoria y la presentación de presupuesto, que
 # no son instancias donde el oficialismo necesite juntar quórum para avanzar.
 
+HCDN_SESIONES_INDICE = "https://www.hcdn.gob.ar/sesiones/"
+
+
+def _sesiones_desde_indice(html: str) -> list[dict]:
+    """Reuniones legislativas por identidad y fecha del índice oficial (ADR-0308)."""
+    registros: dict[str, dict] = {}
+    for enlace in BeautifulSoup(html, "html.parser").find_all("a", href=True):
+        url = urljoin(HCDN_SESIONES_INDICE, enlace["href"])
+        parsed = urlparse(url)
+        if parsed.netloc != "www.hcdn.gob.ar" or not parsed.path.endswith("/sesion.html"):
+            continue
+        q = parse_qs(parsed.query)
+        if not all(k in q for k in ("id", "periodo", "reunion")):
+            continue
+        titulo = enlace.get_text(" ", strip=True)
+        tipo = unicodedata.normalize("NFKD", titulo).encode("ascii", "ignore").decode().lower()
+        if any(t in tipo for t in ("asamblea", "informativa", "preparatoria", "presupuesto", "homenaje", "no efectuada")):
+            continue
+        minoria = "minoria" in tipo
+        if not minoria and not any(t in tipo for t in ("sesion ordinaria", "sesion extraordinaria", "sesion especial")):
+            continue
+        m = re.search(r"\((\d{2}/\d{2}/\d{4})\)\s*$", titulo)
+        if not m:
+            raise ValueError("reunión legislativa sin fecha reconocible en el índice")
+        fecha = datetime.strptime(m[1], "%d/%m/%Y").date()
+        if not date(2023, 1, 1) <= fecha <= date.today():
+            continue
+        iid = q["id"][0]
+        if not iid.isdigit() or not q["reunion"][0].isdigit():
+            raise ValueError("reunión legislativa sin identidad válida")
+        registro = {"id": iid, "fecha": fecha.isoformat(), "en_minoria": minoria,
+                    "titulo": titulo, "url": url}
+        if iid in registros and registros[iid] != registro:
+            raise ValueError("identidad de reunión con datos contradictorios")
+        registros[iid] = registro
+    if not registros:
+        raise ValueError("índice de Diputados sin reuniones legislativas reconocibles")
+    return sorted(registros.values(), key=lambda r: (r["fecha"], r["id"]))
+
+
+def _sesiones_diputados_registros() -> list[dict]:
+    r = requests.get(HCDN_SESIONES_INDICE, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    return _sesiones_desde_indice(r.text)
+
+
 def _hcdn_sesiones_legislativas() -> list[tuple[str, bool]]:
-    """[(YYYY-MM-DD, fracaso_de_quorum)] de Diputados, ascendente."""
-    out = []
-    for anio in range(2023, date.today().year + 1):
-        for r in _hcdn_paginate(HCDN_SESIONES_RID, q=str(anio)):
-            if str(r.get("SESION_CAMARA", "")).upper() != "DIPUTADOS":
-                continue
-            inicio = str(r.get("REUNION_INICIO") or "")[:10]
-            if not inicio.startswith(str(anio)):
-                continue
-            # El dataset llega con mojibake ("MinorÃ­a"): se compara sobre el
-            # prefijo sin tildes, que sobrevive a la codificación rota.
-            tipo = str(r.get("REUNION_TIPO", "")).lower()
-            es_minoria = tipo.startswith("minor")
-            if tipo.startswith("especial") or es_minoria:
-                out.append((inicio, es_minoria))
-    return sorted(set(out))
+    """Compatibilidad del descargador: conserva reuniones distintas del mismo día."""
+    return [(r["fecha"], r["en_minoria"]) for r in _sesiones_diputados_registros()]
 
 
 def _veto_quorum_tasa_12m(sesiones: list, referencia: date):
@@ -1627,7 +1720,8 @@ def _veto_quorum_tasa_12m(sesiones: list, referencia: date):
     desde = meses - 11
     ym_desde = f"{desde // 12}-{desde % 12 + 1:02d}"
     ym_hasta = f"{referencia.year}-{referencia.month:02d}"
-    en_ventana = [f for d, f in sesiones if ym_desde <= d[:7] <= ym_hasta]
+    en_ventana = [f for d, f in sesiones
+                 if ym_desde <= d[:7] <= ym_hasta and d <= referencia.isoformat()]
     if not en_ventana:
         return None
     total = len(en_ventana)
@@ -1637,19 +1731,20 @@ def _veto_quorum_tasa_12m(sesiones: list, referencia: date):
 
 def fetch_veto_quorum() -> dict | None:
     """
-    % sesiones plenarias (Diputados) frustradas por falta de quórum en el período corriente.
-    Detección: REUNION_TIPO contiene "Fracasada" en dataset de sesiones HCDN.
-    Período corriente: PERIODO_ID con prefijo HCDN{periodo_num} (144 = 2026).
-    Fórmula período: 144 + (año_actual − 2026).
+    % de sesiones plenarias (Diputados) frustradas por falta de quórum en
+    los doce meses calendario de la ventana vigente (ADR-0091).
+    El inventario usa reuniones legislativas y en minoría del índice HCDN;
+    las reuniones en minoría identifican las frustradas por quórum.
 
-    Nota: sesiones que nunca abren ("desactivadas") NO aparecen en HCDN — solo
-    sesiones formalmente iniciadas y luego fracasadas por quórum son registradas.
+    Las citadas no efectuadas se excluyen: su rótulo no prueba falta de quórum.
 
-    Fuente: datos.hcdn.gob.ar CKAN — sesiones (4ac70a51-...)
-    Score: 0%→0, 15%→5, 30%+→10  (formula: valor / 3)
+    Fuente: hcdn.gob.ar/sesiones/ (ADR-0308), con fechas y reuniones vigentes.
+    El puntaje se obtiene de las bandas vigentes del motor ITCP; este
+    colector devuelve la tasa y su universo, no una tensión calculada aparte.
     """
     try:
-        sesiones = _hcdn_sesiones_legislativas()
+        registros = _sesiones_diputados_registros()
+        sesiones = [(r["fecha"], r["en_minoria"]) for r in registros]
         tasa = _veto_quorum_tasa_12m(sesiones, date.today())
         if tasa is None:
             raise ValueError("sin sesiones legislativas en la ventana de 12 meses")
@@ -1659,11 +1754,14 @@ def fetch_veto_quorum() -> dict | None:
             "fracasadas_n": fracasadas_n,
             "total_n":      total_n,
             "unidad":       "% de sesiones",
-            "fuente":       "Cámara de Diputados (datos abiertos) — sesiones",
+            "fuente":       "Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas",
             "fecha_dato":   str(date.today()),
             "desactualizado": False,
-            "detalle_txt": (f"{fracasadas_n} de {total_n} sesiones legislativas convocadas en los "
-                            f"últimos 12 meses quedaron en minoría (no reunieron quórum)"),
+            "ultima_reunion_registrada": registros[-1]["fecha"],
+            "detalle_txt": (f"{fracasadas_n} de {total_n} reuniones legislativas registradas en "
+                            f"los 12 meses calendario hasta la fecha de consulta quedaron en minoría. "
+                            f"Última reunión: {registros[-1]['fecha']}. El mes en curso es parcial; "
+                            f"se excluyen convocatorias futuras y citadas no efectuadas."),
         }
 
     except Exception as e:
@@ -1778,12 +1876,43 @@ def _jus_csv(consulta: str) -> list[dict]:
     raise ValueError(f"sin recurso CSV para '{consulta}'")
 
 
+# Renovaciones de mandatos existentes, cotejadas en los artículos 1 del BO.
+# El CSV no tiene una columna que las distinga de altas. No inferir que toda
+# designación cubre una vacante. Registro y límites en ADR-0297.
+_JUS_RENOVACIONES = {
+    (876, 2024), (875, 2024), (736, 2025), (367, 2026),
+    (615, 2026), (645, 2026), (853, 2026),
+}
+
+
+def _jus_es_movimiento_del_universo(fila: dict, campo: str) -> bool:
+    """Descarta Corte Suprema y renovaciones del conteo de tribunales inferiores.
+
+    No resuelve por sí solo promociones, habilitaciones o remociones: esos
+    movimientos requieren conciliar el stock, no sólo filtrar fechas.
+    """
+    texto = unicodedata.normalize(
+        "NFKD", " ".join(str(fila.get(k) or "") for k in
+                         ("camara", "organo_nombre", "cargo_detalle")),
+    )
+    texto = "".join(c for c in texto if not unicodedata.combining(c)).lower()
+    if "corte suprema" in texto:
+        return False
+    if campo == "fecha_desginacion":
+        norma = re.search(r"(\d+)\s*/\s*(\d{4})", str(fila.get("norma_numero") or ""))
+        if norma and tuple(map(int, norma.groups())) in _JUS_RENOVACIONES:
+            return False
+    return True
+
+
 def _jus_fechas(filas: list[dict], campo: str, tipo: str = "Juez") -> list[str]:
     """Fechas ISO de los eventos de `tipo` (los registros mezclan jueces,
     fiscales y defensores; el padrón que ancla la serie es sólo de jueces)."""
     out = []
     for f in filas:
         if f.get("cargo_tipo") != tipo:
+            continue
+        if not _jus_es_movimiento_del_universo(f, campo):
             continue
         v = (f.get(campo) or "").strip()
         if len(v) >= 10 and v[:2] == "20":
@@ -2250,78 +2379,75 @@ def detectar_novedades_judiciales(terminos: tuple[str, ...] = CSJN_TERMINOS) -> 
     return store
 
 
+def _jus_registros_conciliados():
+    """Ajustes trazables y fecha límite de la revisión de fuentes."""
+    carpeta = PROJECT_DIR / "data" / "politica"
+    return (json.loads((carpeta / "cobertura_judicial_movimientos.json").read_text()),
+            json.loads((carpeta / "cobertura_judicial_bajas.json").read_text()))
+
+
 def cobertura_judicial_serie() -> tuple[dict, dict]:
-    """({YYYY-MM: % de cargos con juez designado}, metadatos del padrón).
+    """Estimación mensual de títulos cubiertos en el universo fijo del padrón.
 
-    El padrón es una FOTO fechada, no una serie. La serie se reconstruye
-    moviéndose desde esa foto con los registros de designaciones y renuncias:
-
-        hacia atrás   vacantes(t) = vacantes(P) + designaciones(t,P] − renuncias(t,P]
-        hacia adelante vacantes(t) = vacantes(P) − designaciones(P,t] + renuncias(P,t]
-
-    Importa el orden: entre t y P cada designación cubrió una vacante y cada
-    renuncia creó una, así que hacia atrás los signos se invierten.
-
-    **El numerador es `cargo_vacante = NO`**, no `cargo_cobertura = Titular`.
-    Son dos campos distintos y no dan lo mismo: en el padrón del 5-jun-2026 hay
-    610 cargos no vacantes y 604 con titular, porque 6 tienen titular designado
-    pero con licencia y figuran cubiertos por subrogante. Es `cargo_vacante` el
-    que se corresponde con lo que dice la unidad —cargos *con juez designado*— y
-    el único que los registros de designaciones y renuncias saben mover.
-
-    La card publicaba el porcentaje del primero y lo explicaba con el conteo del
-    segundo, **y a la fecha del padrón en vez de la del corte**: 69,63% arriba y
-    «604 de 955» abajo, que es 63,25% (ADR-0240). Por eso ahora los metadatos
-    devuelven el numerador y el corte del valor que se publica, además de la
-    foto del padrón.
+    La foto original se conserva. Las bajas omitidas corrigen el ancla y los
+    movimientos netos reconstruyen ambos lados de ella, sin contar traslados
+    ni renovaciones como nuevas coberturas. No certifica toma de posesión.
     """
+    from cobertura_judicial import conciliar_bajas, conciliar_movimientos, reconstruir_meses
+
     padron = _jus_csv(JUS_PADRON_Q)
     habilitados = [f for f in padron
                    if (f.get("organo_habilitado") or "").strip().upper() == "SI"]
     if not habilitados:
         raise ValueError("padrón sin cargos habilitados")
+    if any((f.get("cargo_vacante") or "").strip().upper() not in {"SI", "NO"}
+           for f in habilitados):
+        raise ValueError("padrón con vacancia desconocida")
     total = len(habilitados)
-    vac_p = sum(1 for f in habilitados
-                if (f.get("cargo_vacante") or "").strip().upper() == "SI")
-
-    # fecha del padrón: la más reciente de las juras registradas no sirve
-    # (quedan viejas), así que se toma del nombre del recurso vía su dataset.
+    vac_p = sum((f.get("cargo_vacante") or "").strip().upper() == "SI" for f in habilitados)
     fecha_padron = _jus_fecha_padron()
-
-    desig = _jus_fechas(_jus_csv(JUS_DESIGNACIONES_Q), "fecha_desginacion")
-    renun = _jus_fechas(_jus_csv(JUS_RENUNCIAS_Q), "fecha_renuncia")
-
-    hoy = date.today().isoformat()
-    # Un registro fechado en el futuro no describe el presente: el dataset trae
-    # designaciones con fecha posterior a hoy y contarlas adelantaría cobertura
-    # que todavía no ocurrió.
-    desig = [x for x in desig if x <= hoy]
-    renun = [x for x in renun if x <= hoy]
-
-    serie, ym = {}, "2023-12"
-    corte_ultimo, mov_ultimo = None, None
-    while ym <= hoy[:7]:
-        ultimo_dia = calendar.monthrange(int(ym[:4]), int(ym[5:7]))[1]
-        corte = min(f"{ym}-{ultimo_dia:02d}", hoy)
-        if corte <= fecha_padron:
-            d = sum(1 for x in desig if corte < x <= fecha_padron)
-            r = sum(1 for x in renun if corte < x <= fecha_padron)
-            vac = vac_p + d - r
-        else:
-            d = sum(1 for x in desig if fecha_padron < x <= corte)
-            r = sum(1 for x in renun if fecha_padron < x <= corte)
-            vac = vac_p - d + r
-        serie[ym] = round(100.0 * (total - vac) / total, 2)
-        corte_ultimo, mov_ultimo = corte, {"designaciones": d, "renuncias": r,
-                                           "cargos_con_juez": total - vac}
-        anio, mes = int(ym[:4]), int(ym[5:7]) + 1
-        ym = f"{anio + 1}-01" if mes == 13 else f"{anio}-{mes:02d}"
-
-    cobertura = {c: sum(1 for f in habilitados if f.get("cargo_cobertura") == c)
-                 for c in ("Titular", "Subrogante", "Sin subrogante designado")}
-    return serie, {"total_cargos": total, "vacantes_padron": vac_p,
-                   "fecha_padron": fecha_padron, "composicion": cobertura,
-                   "fecha_corte": corte_ultimo, **(mov_ultimo or {})}
+    registro, bajas = _jus_registros_conciliados()
+    if registro["fecha_padron"] != fecha_padron:
+        raise ValueError("El nuevo padrón requiere conciliar nuevamente los ajustes judiciales")
+    hasta = min(date.today().isoformat(), registro["revisado_hasta"], bajas["revisado_el"])
+    if hasta < fecha_padron:
+        raise ValueError("Revisión judicial anterior al padrón")
+    base = []
+    for consulta, campo, tipo, delta in (
+            (JUS_DESIGNACIONES_Q, "fecha_desginacion", "designacion", 1),
+            (JUS_RENUNCIAS_Q, "fecha_renuncia", "renuncia", -1)):
+        for fila in _jus_csv(consulta):
+            if (fila.get("cargo_tipo") or "").strip() != "Juez":
+                continue
+            if not _jus_es_movimiento_del_universo(fila, campo):
+                continue
+            fecha = (fila.get(campo) or "").strip()
+            date.fromisoformat(fecha)
+            if fecha < "2023-12-01" or fecha > hasta:
+                continue
+            norma = re.search(r"(\d+/\d{4})", fila.get("norma_numero") or "")
+            if not norma:
+                raise ValueError("Movimiento judicial sin norma identificable")
+            base.append({"norma": norma.group(1), "tipo": tipo, "fecha": fecha, "delta": delta})
+    movimientos = conciliar_movimientos(base, registro["movimientos"])
+    eventos, correcciones = conciliar_bajas(padron, fecha_padron, bajas["eventos"])
+    movimientos += [dict(e, norma="baja:" + e["persona"], delta=-1) for e in eventos]
+    ancla = total - vac_p - len(correcciones)
+    meses = reconstruir_meses(total, ancla, fecha_padron, movimientos, hasta)
+    ultimo = meses[max(meses)]
+    posteriores = [e for e in movimientos if fecha_padron < e["fecha"] <= hasta]
+    composicion = {c: sum(f.get("cargo_cobertura") == c for f in habilitados)
+                   for c in ("Titular", "Subrogante", "Sin subrogante designado")}
+    return {ym: x["valor"] for ym, x in meses.items()}, {
+        "total_cargos": total, "vacantes_padron": vac_p, "fecha_padron": fecha_padron,
+        "composicion": composicion, "fecha_corte": ultimo["corte"],
+        "cargos_con_juez": ultimo["cubiertos"], "ancla_corregida": ancla,
+        "correcciones_padron": len(correcciones),
+        "designaciones": sum(e["delta"] for e in posteriores if e["tipo"] == "designacion"),
+        "renuncias": -sum(e["delta"] for e in posteriores if e["tipo"] == "renuncia"),
+        "otras_bajas": -sum(e["delta"] for e in posteriores
+                           if e["tipo"] in {"remocion", "fallecimiento"}),
+        "limites": registro["limites"], "revisado_hasta": hasta}
 
 
 def _jus_fecha_padron() -> str:
@@ -2331,7 +2457,11 @@ def _jus_fecha_padron() -> str:
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
     for paquete in r.json()["result"]["results"]:
+        if not paquete.get("title", "").lower().startswith(JUS_PADRON_Q.split(" de ")[0].lower()):
+            continue
         for recurso in paquete.get("resources", []):
+            if recurso.get("format", "").upper() != "CSV":
+                continue
             m = re.search(r"(20\d{2})(\d{2})(\d{2})\.csv", recurso.get("url", ""))
             if m:
                 return f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
@@ -2339,17 +2469,10 @@ def _jus_fecha_padron() -> str:
 
 
 def fetch_cobertura_judicial() -> dict | None:
-    """% de cargos de juez habilitados que tienen juez designado (ADR-0126).
+    """Cobertura estimada, con ancla original, correcciones y flujos separados.
 
-    Mide la capacidad del Gobierno de completar el Poder Judicial, que exige
-    acuerdo del Senado: es una capacidad NEGOCIADA, no una decisión propia, y
-    por eso pertenece a este cinturón y no al de gestión.
-
-    La card publica **numerador, denominador y la fecha de cada uno** (ADR-0240).
-    Antes mostraba 69,63% arriba y «604 de 955 cargos» abajo —que es 63,25%—
-    porque el porcentaje salía de `cargo_vacante` al corte de hoy y el conteo de
-    `cargo_cobertura` a la fecha del padrón: dos definiciones y dos cortes en la
-    misma card, y ningún gate mira si el texto reproduce el número.
+    La integración requiere acuerdo del Senado; no se atribuye exclusivamente
+    al Ejecutivo. La tarjeta y la historia comparten el cálculo (ADR-0298).
     """
     try:
         serie, meta = cobertura_judicial_serie()
@@ -2363,18 +2486,25 @@ def fetch_cobertura_judicial() -> dict | None:
         padron_con_juez = total - meta["vacantes_padron"]
         return {
             "valor":          serie[ym],
-            "unidad":         "% de cargos de juez con juez designado",
+            "unidad":         "% estimado de cargos con juez designado",
             "fuente":         "Ministerio de Justicia — padrón de magistrados, "
-                              "designaciones y renuncias (datos.jus.gob.ar)",
+                              "designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura",
             "fecha_dato":     f"{ym}-01",
-            "desactualizado": False,
+            "desactualizado": meta["fecha_corte"] < date.today().isoformat(),
+            # El corte de la conciliación no avanza por releer sus archivos.
+            "obtenido_en": meta["fecha_corte"],
+            "estimado": True,
+            "limites_metodologicos": meta["limites"],
             # numerador, denominador y corte DEL VALOR publicado
             "cargos_con_juez": numerador,
             "cargos_totales":  total,
             "fecha_corte":     meta["fecha_corte"],
             # la foto de la que parte, con su propia fecha
             "fecha_padron":       meta["fecha_padron"],
-            "padron_con_juez":    padron_con_juez,
+            "padron_con_juez":    meta["ancla_corregida"],
+            "padron_con_juez_original": padron_con_juez,
+            "correcciones_padron": meta["correcciones_padron"],
+            "otras_bajas_desde_padron": meta["otras_bajas"],
             "padron_titular":     titular,
             "padron_subrogante":  subrog,
             "padron_sin_cubrir":  sin_nadie,
@@ -2382,13 +2512,14 @@ def fetch_cobertura_judicial() -> dict | None:
             "designaciones_desde_padron": meta["designaciones"],
             "renuncias_desde_padron":     meta["renuncias"],
             "detalle_txt": (
-                f"{numerador} de {total} cargos de juez habilitados tienen juez "
-                f"designado al {meta['fecha_corte']} · sale del padrón al "
-                f"{meta['fecha_padron']} —{padron_con_juez} de {total} no "
-                f"vacantes— más {meta['designaciones']} designaciones y menos "
-                f"{meta['renuncias']} renuncias posteriores · en ese padrón, los "
-                f"{total} cargos se repartían en {titular} con titular en "
-                f"funciones, {subrog} con subrogante y {sin_nadie} sin cubrir"),
+                f"Cobertura estimada: {numerador} de {total} cargos al {meta['fecha_corte']}. "
+                f"Padrón original al {meta['fecha_padron']}: {padron_con_juez} no vacantes; "
+                f"menos {meta['correcciones_padron']} bajas omitidas en esa foto = "
+                f"{meta['ancla_corregida']}. Después: +{meta['designaciones']} altas netas, "
+                f"−{meta['renuncias']} renuncias y −{meta['otras_bajas']} otras bajas. "
+                "Traslados y renovaciones no suman una nueva cobertura. "
+                "Universo fijo; no certifica juras ni exhaustividad de fallecimientos. "
+                + " ".join(meta["limites"])),
         }
     except Exception as e:
         _warn("cobertura_judicial", e)
@@ -2411,6 +2542,76 @@ def _leer_store(path) -> dict:
         return json.load(fh)
 
 
+def _leyes_sancionadas_complementarias() -> list[dict]:
+    path = Path(__file__).resolve().parents[1] / "data/politica/leyes_sancionadas_complementarias.json"
+    registro = json.loads(path.read_text(encoding="utf-8"))
+    if date.fromisoformat(registro["revisado_en"]) > date.today():
+        raise ValueError("revisión de leyes complementarias futura")
+    return registro["leyes"]
+
+
+def _leyes_fechadas(filas: list[dict]) -> list[tuple[str, date]]:
+    """Une ley y expediente verificado, sin duplicar una incorporación tardía."""
+    if not filas:
+        raise ValueError("leyes-sancionadas vacío")
+    filas = [*filas, *_leyes_sancionadas_complementarias()]
+    aliases = {}
+    def referencias(fila):
+        out = []
+        for campo, prefijo, patron in (
+            ("EXPEDIENTE_INICIAL", "exp:", r"\d{4}-(?:S|D|PE|JGM)-\d{4}"),
+            ("PROYECTO_ID", "proyecto:", r"HCDN\d+"),
+        ):
+            valor = str(fila.get(campo) or "").strip().upper()
+            if re.fullmatch(patron, valor):
+                out.append(prefijo + valor)
+        return out
+    for fila in filas:
+        ley = str(fila.get("LEY") or "").strip()
+        if ley.isdigit():
+            for ref in referencias(fila):
+                if ref in aliases and aliases[ref] != ley:
+                    raise ValueError("un expediente identifica dos números de ley")
+                aliases[ref] = ley
+    leyes: dict[str, set[date]] = {}
+    for fila in filas:
+        ley = str(fila.get("LEY") or "").strip()
+        if ley.isdigit():
+            identidad = "ley:" + ley
+        elif not ley and fila.get("sancion_definitiva_verificada") is True and referencias(fila):
+            refs = referencias(fila)
+            numeros = {aliases[ref] for ref in refs if ref in aliases}
+            if len(numeros) > 1:
+                raise ValueError("sanción complementaria con identidades contradictorias")
+            identidad = "ley:" + next(iter(numeros)) if numeros else refs[0]
+        else:
+            raise ValueError("leyes-sancionadas sin ley o expediente verificado válido")
+        fecha = date.fromisoformat(str(fila.get("SANCION_DEFINITIVA", ""))[:10])
+        if fecha > date.today():
+            raise ValueError("leyes-sancionadas con fecha futura")
+        leyes.setdefault(identidad, set()).add(fecha)
+    if not leyes:
+        raise ValueError("leyes-sancionadas vacío")
+    if any(len({(f.year, f.month) for f in fechas}) > 1 for fechas in leyes.values()):
+        raise ValueError("una ley tiene fechas de sanción en distintos meses")
+    return [(ley, f) for ley, fechas in leyes.items() for f in fechas]
+
+
+def _produccion_legislativa_mensual(leyes: list[tuple[str, date]]) -> dict[str, int]:
+    """Doce meses calendarios completos, excluido el mes en curso (ADR-0306)."""
+    hoy = date.today()
+    cur = date(2023, 12, 1)
+    serie: dict[str, int] = {}
+    while cur < date(hoy.year, hoy.month, 1):
+        siguiente = date(cur.year + (cur.month // 12), (cur.month % 12) + 1, 1)
+        inicio = date(siguiente.year - 1, siguiente.month, 1)
+        serie[cur.strftime("%Y-%m")] = len({
+            ley for ley, fecha in leyes if inicio <= fecha < siguiente
+        })
+        cur = siguiente
+    return serie
+
+
 def produccion_legislativa_serie() -> dict[str, int]:
     """Leyes con sanción definitiva en la ventana móvil de 12 meses, por mes.
 
@@ -2419,45 +2620,33 @@ def produccion_legislativa_serie() -> dict[str, int]:
     nace el expediente: el cociente de origen se mueve por el denominador
     (ADR-0137) y por eso lo que puntúa es este número (ADR-0168).
     """
-    filas = _hcdn_paginate(HCDN_LEYES_SANC_RID)
-    fechas: list[str] = []
-    for r in filas:
-        f = str(r.get("SANCION_DEFINITIVA", ""))[:10]
-        if len(f) == 10 and f[:4].isdigit():
-            fechas.append(f)
-    if not fechas:
-        raise ValueError("leyes-sancionadas sin fechas de sanción parseables")
-
-    fechas.sort()
-    desde = date(2023, 12, 1)
-    hoy = date.today()
-    serie: dict[str, int] = {}
-    cur = desde
-    while cur <= hoy:
-        fin = cur
-        ini = date(fin.year - 1, fin.month, 1)
-        n = sum(1 for f in fechas if ini.isoformat() <= f <= fin.isoformat())
-        serie[f"{fin.year}-{fin.month:02d}"] = n
-        cur = date(cur.year + (cur.month // 12), (cur.month % 12) + 1, 1)
-    return serie
+    return _produccion_legislativa_mensual(
+        _leyes_fechadas(_hcdn_paginate(HCDN_LEYES_SANC_RID)))
 
 
 def fetch_produccion_legislativa() -> dict | None:
     """Cuántas leyes sanciona el Congreso en 12 meses (ADR-0168)."""
     try:
-        serie = produccion_legislativa_serie()
+        leyes = _leyes_fechadas(_hcdn_paginate(HCDN_LEYES_SANC_RID))
+        serie = _produccion_legislativa_mensual(leyes)
         ym = max(serie)
         valor = serie[ym]
+        ultima = max(fecha for _, fecha in leyes).isoformat()
+        historicas = len({ley for ley, fecha in leyes if 2008 <= fecha.year <= 2025})
         return {
             "valor": valor,
             "unidad": "leyes sancionadas (12m)",
-            "fuente": "Cámara de Diputados — dataset de leyes sancionadas",
+            "fuente": "Cámaras de Diputados y Senadores — catálogos, boletines parlamentarios y Boletín Oficial",
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
+            "ultima_sancion_registrada": ultima,
+            "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
             "detalle_txt": (
-                f"{valor} leyes sancionadas en los últimos 12 meses. El promedio "
-                f"histórico del dataset (2008-2025, cuatro presidencias) es de 74 "
-                f"leyes por año."),
+                f"{valor} leyes distintas en los 12 meses completos hasta {ym}. "
+                f"Última sanción registrada: {ultima}; la consulta no certifica "
+                f"que el catálogo contenga todas las sanciones posteriores. "
+                f"Catálogo más complementos documentados: {historicas} leyes distintas de 2008-2025 "
+                f"({historicas / 18:.1f} por año). El umbral de diseño se mantiene en 74."),
         }
     except Exception as e:
         _warn("produccion_legislativa", e)
@@ -2939,10 +3128,13 @@ def _parsear_acta(html: str) -> list[dict]:
     Esto reemplaza la suposición original de 3 columnas
     (`<td>nombre</td><td class="ocultar">bloque</td><td>voto</td>`) que
     JAMÁS fue observada en vivo para Diputados (era inferencia por analogía
-    con Senado, donde sí se había confirmado esa estructura de 3 columnas, y
-    con el scraper de terceros Como_voto) — el HTML real de Diputados no
+    con Senado y con el scraper de terceros Como_voto) — el HTML real de Diputados no
     tiene ninguna clase "ocultar" (0 ocurrencias en la página real).
     get_text(strip=True) extrae igual el voto aunque esté anidado en <span>.
+
+    Senado, cotejo nominal 8-sep-2026: tabla #tabla con cinco columnas
+    (foto, senador, bloque, provincia, voto), 72 filas por acta. Comparte los
+    índices 1..4 que utiliza este parser; no es una tabla de tres columnas.
 
     parser="html.parser" (stdlib): lxml NO está en requirements.txt y
     rompería en CI (confirmado en la Tarea 4; mismo parser que ya usa
@@ -2983,11 +3175,11 @@ def _parsear_acta_diputados_pdf(contenido: bytes) -> list[dict]:
 
     El PDF no tiene una tabla con bordes que pdfplumber pueda detectar como
     tal (extract_tables() solo encuentra el bloque de metadata/encabezado,
-    no la lista de votantes) -- se agrupan palabras por fila (mismo `top`,
-    redondeado a 1 decimal) y se cortan en columnas nuevas donde el hueco
-    horizontal entre palabras supera _DIPUTADOS_UMBRAL_COLUMNA (~2pt dentro
-    de una columna -- "GUILLERMO CESAR", "Union Civica Radical" -- vs.
-    50-120pt entre columnas, confirmado en vivo contra el acta 5959).
+    no la lista de votantes). Se agrupan palabras por fila (mismo `top`,
+    redondeado a 1 decimal). Las filas con cuatro columnas bien separadas
+    permiten inferir los inicios de columna de esa página. Luego se usan
+    esas posiciones para todas las filas: un bloque largo puede dejar menos
+    de 15 puntos antes de la provincia y no debe perderse por ese motivo.
 
     El título decorativo ("Honorable Cámara...") y la fila de encabezados de
     columna vienen con cada CARÁCTER duplicado (fuente en negrita simulada
@@ -2996,6 +3188,8 @@ def _parsear_acta_diputados_pdf(contenido: bytes) -> list[dict]:
     repetida en cada página ("Acta Nº... Fecha:... Hora:...") SÍ arma 4
     columnas por casualidad -- se filtra exigiendo que la última columna sea
     un voto válido (_DIPUTADOS_VOTOS_VALIDOS), no por posición de página."""
+    from statistics import median
+
     filas = []
     with pdfplumber.open(io.BytesIO(contenido)) as pdf:
         for pagina in pdf.pages:
@@ -3003,19 +3197,36 @@ def _parsear_acta_diputados_pdf(contenido: bytes) -> list[dict]:
             for palabra in pagina.extract_words():
                 clave = round(palabra["top"], 1)
                 por_fila.setdefault(clave, []).append(palabra)
+            renglones = []
+            inicios = []
             for _, palabras in sorted(por_fila.items()):
                 palabras.sort(key=lambda p: p["x0"])
+                renglones.append(palabras)
                 columnas, actual = [], [palabras[0]["text"]]
+                posiciones = [palabras[0]["x0"]]
                 for anterior, palabra in zip(palabras, palabras[1:]):
                     if palabra["x0"] - anterior["x1"] > _DIPUTADOS_UMBRAL_COLUMNA:
                         columnas.append(" ".join(actual))
                         actual = [palabra["text"]]
+                        posiciones.append(palabra["x0"])
                     else:
                         actual.append(palabra["text"])
                 columnas.append(" ".join(actual))
-                if len(columnas) != 4:
+                if len(columnas) == 4 and columnas[-1].upper() in _DIPUTADOS_VOTOS_VALIDOS:
+                    inicios.append(posiciones)
+            if not inicios:
+                continue
+            limites = [median(p[i] for p in inicios) - 0.5 for i in (1, 2, 3)]
+            for palabras in renglones:
+                if palabras[-1]["text"].upper() not in _DIPUTADOS_VOTOS_VALIDOS:
                     continue
-                nombre, bloque, provincia, voto = columnas
+                columnas = [[], [], [], []]
+                for palabra in palabras:
+                    columna = sum(palabra["x0"] >= limite for limite in limites)
+                    columnas[columna].append(palabra["text"])
+                if not all(columnas):
+                    continue
+                nombre, bloque, provincia, voto = (" ".join(c) for c in columnas)
                 voto = voto.upper()
                 if voto not in _DIPUTADOS_VOTOS_VALIDOS:
                     continue
@@ -3100,9 +3311,9 @@ def _acta_diputados_cacheada(session: requests.Session, id_acta: int, cache: dic
     desde cero. Se cachea SIEMPRE que se pudo leer la fecha, con rice=None
     cuando el bloque LLA no aporta señal (empate o sin presentes), para que
     un walk repetido nunca vuelva a descargar la misma acta. None si la
-    acta no existe (404, hueco de id genuino) o no se pudo extraer la fecha
-    del PDF; `_ACTA_FALLO` si la descarga falló de forma transitoria (red,
-    403 agotado) -- el backfill anual usa la distinción para no cachear un
+    acta no existe (404, hueco de id genuino); `_ACTA_FALLO` si no se pudo
+    interpretar su fecha o la descarga falló (red, 403 agotado) --
+    el backfill anual usa la distinción para no cachear un
     año con agujeros. Ninguno de esos casos se cachea."""
     clave = str(id_acta)
     if clave in cache:
@@ -3111,13 +3322,13 @@ def _acta_diputados_cacheada(session: requests.Session, id_acta: int, cache: dic
     contenido = _diputados_acta_pdf(session, id_acta)
     if contenido is _ACTA_FALLO:
         return _ACTA_FALLO
-    if contenido is _ACTA_NO_EXISTE or contenido is None:
-        # None: tolerancia defensiva (el contrato actual de
-        # _diputados_acta_pdf ya no lo produce) -- se trata como hueco.
+    if contenido is _ACTA_NO_EXISTE:
         return None
+    if contenido is None:
+        return _ACTA_FALLO
     fecha = _diputados_acta_fecha(contenido)
     if fecha is None:
-        return None
+        return _ACTA_FALLO
     filas = _parsear_acta_diputados_pdf(contenido)
     afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
     neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
@@ -3382,9 +3593,12 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
     detalle = []
     fuera_de_ventana_seguidas = 0
     id_actual = id_maximo
+    recorrido_completo = True
     while id_actual > 0 and fuera_de_ventana_seguidas < MARGEN_SALIDA:
         entrada = _acta_diputados_cacheada(session, id_actual, cache)
         id_actual -= 1
+        if entrada is _ACTA_FALLO:
+            recorrido_completo = False
         if entrada is None or entrada is _ACTA_FALLO:
             # hueco en la numeración, PDF ilegible o fallo transitorio -- el
             # valor live es best-effort (se recalcula entero cada corrida,
@@ -3407,6 +3621,7 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_actas": len(detalle),
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
+        "recorrido_completo": recorrido_completo,
         "desactualizado": False,
     }
 
@@ -3488,12 +3703,14 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
     indices = []
     fecha_max = None
     for acta in actas:
-        if acta["fecha"] < limite:
+        if not limite <= acta["fecha"] <= referencia:
             continue
         r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
         if r is None:
-            continue
+            return None  # Una lectura parcial no es una actualización del indicador.
         filas = _parsear_acta(r.text)
+        if not filas:
+            return None  # HTTP 200 sin votos tampoco acredita una lectura completa.
         afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
         neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
         rice = indice_rice(afirm, neg)
@@ -3541,6 +3758,9 @@ def fetch_cohesion_bloque_senado_actas_anio(anio: int) -> list | None:
             fallidas += 1
             continue
         filas = _parsear_acta(r.text)
+        if not filas:
+            fallidas += 1
+            continue
         afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
         neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
         rice = indice_rice(afirm, neg)
@@ -3634,12 +3854,14 @@ def fetch_alineamiento_senadores_prov(anio: int | None = None, dias_ventana: int
     acumulado = {}
     fecha_max = None
     for acta in actas:
-        if acta["fecha"] < limite:
+        if not limite <= acta["fecha"] <= referencia:
             continue
         r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
         if r is None:
-            continue
+            return None  # Conserva el último dato mediante el caller, sin sesgar el universo.
         filas = _parsear_acta(r.text)
+        if not filas:
+            return None
         resultado_acta = _alineamiento_por_provincia(filas)
         for provincia, (coincide, total) in resultado_acta.items():
             c0, t0 = acumulado.get(provincia, (0, 0))
@@ -3705,6 +3927,9 @@ def fetch_alineamiento_senadores_actas_anio(anio: int) -> list | None:
             fallidas += 1
             continue
         filas = _parsear_acta(r.text)
+        if not filas:
+            fallidas += 1
+            continue
         resultado_acta = _alineamiento_por_provincia(filas)
         if resultado_acta:
             detalle.append({
@@ -3749,9 +3974,41 @@ def _agregar_alineamiento_ventana(detalle: list[dict], referencia: datetime, dia
 
 # ── MAGyP — adhesión provincial al RIGI ──────────────────────────────────────
 
+ADHESION_COMPLEMENTARIAS_PATH = PROJECT_DIR / "data/politica/adhesion_reformas_complementarias.json"
+
+
+def _rigi_complementarias_verificadas() -> set[str]:
+    """Adhesiones omitidas por MAGyP, comprobadas en sus leyes (ADR-0304).
+
+    Si un original no puede verificarse, falla la consulta completa: nunca
+    transforma un registro parcial en una baja de adhesiones.
+    """
+    import unicodedata
+    def texto(s):
+        return " ".join(unicodedata.normalize("NFKC", s).casefold().split())
+    registro = json.loads(ADHESION_COMPLEMENTARIAS_PATH.read_text(encoding="utf-8-sig"))
+    provincias = set()
+    for nombre, entrada in registro.items():
+        if nombre.startswith("_"):
+            continue
+        fecha = date.fromisoformat(entrada["fecha"])
+        if fecha > date.today():
+            continue
+        patrones = entrada["comprobar_textos"]
+        if not patrones or not all(isinstance(x, str) and x.strip() for x in patrones):
+            raise ValueError(f"RIGI: falta evidencia normativa de {nombre}")
+        r = requests.get(entrada["fuente"], headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+        r.raise_for_status()
+        original = texto(BeautifulSoup(r.text, "html.parser").get_text(" ", strip=True))
+        if not all(texto(x) in original for x in patrones):
+            raise ValueError(f"RIGI: el original de {nombre} no confirma la adhesión")
+        provincias.add(nombre)
+    return provincias
+
+
 def _provincias_adheridas_rigi() -> set[str] | None:
-    """{NOMBRE_PROVINCIA en mayúsculas, ...} de la tabla MAGyP de provincias
-    adheridas al RIGI (Título VII, Ley 27.742), o None si el fetch falló.
+    """Jurisdicciones de MAGyP y leyes complementarias del RIGI (ADR-0304).
+    Devuelve None si falla una fuente; no certifica ausencia de derogaciones.
     parser="html.parser" (stdlib, lxml no está en requirements.txt — ver
     Tarea 4 del plan de cohesion_bloque): el sitio fuente tiene un <tr> vacío
     malformado que con html.parser produce una fila SANTA CRUZ duplicada
@@ -3777,12 +4034,26 @@ def _provincias_adheridas_rigi() -> set[str] | None:
         provincia = celdas[0].get_text(strip=True)
         if provincia:
             provincias.add(provincia.upper())
-    return provincias or None
+    if not provincias:
+        return None
+    # CABA puede aparecer con su nombre completo cuando el catálogo se corrija.
+    for alias in ("CIUDAD AUTÓNOMA DE BUENOS AIRES", "CIUDAD AUTONOMA DE BUENOS AIRES"):
+        if alias in provincias:
+            provincias.remove(alias)
+            provincias.add("CABA")
+    try:
+        provincias.update(_rigi_complementarias_verificadas())
+    except Exception as e:
+        _warn("adhesion_reformas_provincial", e)
+        return None
+    if len(provincias) > 24:
+        return None
+    return provincias
 
 
 def fetch_adhesion_reformas_provincial() -> dict | None:
-    """% de provincias (sobre 24) adheridas formalmente al RIGI (Título VII,
-    Ley 27.742) — tabla MAGyP. Mide adhesión FISCAL a un régimen puntual, NO
+    """% de jurisdicciones (sobre 24) adheridas formalmente al RIGI (Título VII,
+    Ley 27.742) — MAGyP y leyes complementarias. Mide adhesión a un régimen puntual, NO
     alineamiento político general — no reemplaza a gobernadores_alineamiento."""
     provincias = _provincias_adheridas_rigi()
     if not provincias:
@@ -3790,9 +4061,15 @@ def fetch_adhesion_reformas_provincial() -> dict | None:
     return {
         "valor": round(len(provincias) / 24.0 * 100.0, 1),
         "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
-        "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
+        "fuente": "MAGyP — catálogo de adhesiones · leyes provinciales complementarias verificadas",
         "fecha_dato": datetime.now().strftime("%Y-%m-%d"),
         "n_provincias": len(provincias),
+        "jurisdicciones": sorted(provincias),
+        "detalle_txt": (
+            f"{len(provincias)} de 24 jurisdicciones con adhesión formal documentada. "
+            "Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, "
+            "omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas "
+            "ni certifica ausencia de cambios normativos posteriores."),
         "desactualizado": False,
     }
 
@@ -4521,7 +4798,7 @@ def _bloqueo_clasificar_diputados(registro: dict) -> None:
                 # transitorio (PDF inaccesible, CKAN caído): cortar acá — el
                 # watermark queda en el último id resuelto y mañana se retoma
                 print(f"  [WARN] bloqueo_sostenido: {e} — el walk corta acá y reintenta mañana")
-                break
+                raise RuntimeError(f"clasificación de Diputados incompleta en acta {id_acta}") from e
             if resuelta:
                 pendientes.pop(str(id_acta), None)
                 if nota:
@@ -4674,7 +4951,8 @@ def _bloqueo_tasa_12m(desafios: list, referencia: date):
     ym_desde = f"{desde // 12}-{desde % 12 + 1:02d}"
     ym_hasta = f"{referencia.year}-{referencia.month:02d}"
     corte = referencia.isoformat()
-    en_ventana = [e for e in desafios if ym_desde <= e["fecha_desafio"][:7] <= ym_hasta]
+    en_ventana = [e for e in desafios if ym_desde <= e["fecha_desafio"][:7] <= ym_hasta
+                  and e["fecha_desafio"] <= corte]
     if not en_ventana:
         return None
     caidas = sum(1 for e in en_ventana if e["fecha_caida"] and e["fecha_caida"] <= corte)
@@ -4718,9 +4996,8 @@ def fetch_desafios_legislativos() -> dict | None:
         # No reclasifica: corre después de fetch_bloqueo_sostenido, que ya dejó
         # el registro actualizado. Leer y contar, nada más.
         tasa = _bloqueo_tasa_12m(_bloqueo_desafios(registro), date.today())
-        if tasa is None:
-            raise ValueError("sin desafíos votados en la ventana de 12 meses")
-        _pct, n, caidas, ultimo = tasa
+        # Un conteo puede ser cero aunque la razón no tenga denominador.
+        _pct, n, caidas, ultimo = tasa if tasa is not None else (None, 0, 0, None)
         return {
             "valor":          float(n),
             "caidas_12m":     caidas,
@@ -4772,7 +5049,23 @@ def fetch_bloqueo_sostenido() -> dict | None:
         desafios = _bloqueo_desafios(registro)
         tasa = _bloqueo_tasa_12m(desafios, date.today())
         if tasa is None:
-            raise ValueError("sin desafíos votados en la ventana de 12 meses (sin denominador no hay tasa)")
+            if registro.get("actas_diputados_bloqueo", {}).get("pendientes"):
+                raise ValueError("sin tasa y con actas pendientes: no se acredita universo vacío")
+            return {
+                "valor": None,
+                "estado": "sin_universo",
+                "desafiadas_12m": 0,
+                "caidas_12m": 0,
+                "sostenidas_12m": 0,
+                "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
+                "fuente": "Actas de votación de Diputados y Senado + InfoLeg — elaboración CIGOB",
+                "fecha_dato": str(date.today()),
+                "desactualizado": False,
+                "detalle_txt": ("No hubo normas desafiadas en la ventana de doce meses. "
+                                "Sin denominador no hay tasa de bloqueo: no se asigna cero ni "
+                                "se conserva una tasa de otra ventana. El peso se redistribuye "
+                                "entre los componentes observados de la dimensión legislativa."),
+            }
         pct, n, caidas, ultimo = tasa
         pendientes = registro.get("actas_diputados_bloqueo", {}).get("pendientes", {})
         return {
@@ -5261,6 +5554,13 @@ def _anotar_indicadores_itcp(indicadores: dict, resultado: dict | None) -> None:
                     "peso_efectivo": info["peso_efectivo"],
                 }
     for nombre, ind in indicadores.items():
+        if ind.get("estado") == "sin_universo":
+            for campo in list(ind):
+                if campo.startswith("puntaje_") or campo == "peso_efectivo":
+                    ind.pop(campo)
+            ind["en_indice"] = False
+            ind["dimension"] = "poder_legislativo"
+            continue
         if nombre in por_indicador:
             ind.update(por_indicador[nombre])
         else:
@@ -5277,6 +5577,7 @@ def main() -> None:
 
     frescos: dict = {}
     frescos_count = 0
+    registro_eventos_actualizado = False
 
     colectores = [
         ("votometro_ventaja_lla",         fetch_votometro),
@@ -5299,9 +5600,14 @@ def main() -> None:
 
     for nombre, fetcher in colectores:
         resultado = fetcher()
+        if nombre == "derrotas_legislativas":
+            registro_eventos_actualizado = _resultado_utilizable(nombre, resultado)
         if _resultado_utilizable(nombre, resultado):
-            frescos[nombre] = _sellar(resultado)
-            frescos_count += 1
+            if nombre in {"conflictividad_nacional", "protestas_caba"} and resultado.get("desactualizado"):
+                frescos[nombre] = resultado
+            else:
+                frescos[nombre] = _sellar(resultado)
+                frescos_count += 1
         elif nombre in indicadores_anteriores:
             frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
 
@@ -5335,8 +5641,13 @@ def main() -> None:
     # clasificador usa como universo de ids el caché de actas de Diputados
     # que el walk de cohesión acaba de refrescar, y el registro de eventos
     # que fetch_derrotas_legislativas (en la lista de arriba) ya actualizó.
-    resultado_bloqueo = fetch_bloqueo_sostenido()
+    resultado_bloqueo = (fetch_bloqueo_sostenido()
+                        if registro_eventos_actualizado and dip_ok
+                        and resultado_cohesion.get("recorrido_completo", True) else None)
     if _resultado_utilizable("bloqueo_sostenido", resultado_bloqueo):
+        frescos["bloqueo_sostenido"] = _sellar(resultado_bloqueo)
+        frescos_count += 1
+    elif resultado_bloqueo is not None and resultado_bloqueo.get("estado") == "sin_universo":
         frescos["bloqueo_sostenido"] = _sellar(resultado_bloqueo)
         frescos_count += 1
     elif "bloqueo_sostenido" in indicadores_anteriores:
@@ -5348,7 +5659,9 @@ def main() -> None:
     # registro en idéntico estado. Son numerador y denominador de la misma
     # razón —desafiadas y sostenidas—, así que leerlos en momentos distintos
     # los haría inconsistentes entre sí.
-    resultado_desafios = fetch_desafios_legislativos()
+    # Sólo se declara el conteo actual si terminó la consulta compartida.
+    # Un registro guardado parcialmente no prueba ausencia de desafíos nuevos.
+    resultado_desafios = fetch_desafios_legislativos() if resultado_bloqueo is not None else None
     if _resultado_utilizable("desafios_legislativos", resultado_desafios):
         frescos["desafios_legislativos"] = _sellar(resultado_desafios)
         frescos_count += 1
@@ -5370,8 +5683,11 @@ def main() -> None:
 
     resultado_judicial = fetch_cobertura_judicial()
     if _resultado_utilizable("cobertura_judicial", resultado_judicial):
-        frescos["cobertura_judicial"] = _sellar(resultado_judicial)
-        frescos_count += 1
+        if resultado_judicial.get("desactualizado"):
+            frescos["cobertura_judicial"] = resultado_judicial
+        else:
+            frescos["cobertura_judicial"] = _sellar(resultado_judicial)
+            frescos_count += 1
     elif "cobertura_judicial" in indicadores_anteriores:
         frescos["cobertura_judicial"] = {**indicadores_anteriores["cobertura_judicial"],
                                          "desactualizado": True}

@@ -1,39 +1,16 @@
-"""validacion_externa.py — Validación de constructo del ITVC y el ITCM (ADR-0019, D6).
+"""Validación externa de los cuatro cinturones.
 
-Paso 9 del Handbook JRC/OCDE ("links to other variables"): si el índice mide
-lo que dice medir, debería co-moverse con variables externas relacionadas que
-NO lo componen. Dos estudios:
-  * ITVC (condiciones materiales de la vida cotidiana) contra el CONSUMO medido:
-    ventas en supermercados a precios constantes, serie desestacionalizada del
-    INDEC — correlación positiva esperada. Fue el ICC de UTDT hasta jul-2026;
-    se reemplazó porque el ICC ES un componente del ITVC (6,75%), lo que
-    obligaba a publicar un índice artificial «sin ICC», y porque un tercio del
-    peso del ITVC correlaciona NEGATIVO contra él (ADR-0155). El ICC queda como
-    contraste DISCRIMINANTE: mide si la percepción sigue a las condiciones.
-  * ITCM (tensión macroeconómica, reconstrucción mensual desde las series de
-    componentes con puntaje interpolado) contra el ÍNDICE LÍDER de la UTDT
-    (marcha de la actividad) — correlación POSITIVA esperada: menos tensión
-    macro, más actividad. Fue el riesgo país hasta jul-2026; se reemplazó
-    porque no validaba en primeras diferencias (ADR-0154).
+ITCM se contrasta con el Índice Líder UTDT. ITCIS, ITCG e ITCP usan el
+panel conceptual de panel_validacion.py, incluyendo factores comunes cuando
+hay cobertura suficiente. Se conservan correlaciones discriminantes y
+contrafácticos (ITCIS sin ICC); no equivalen a una validación independiente
+contra componentes propios. Supermercados e ICC integran ITCIS y no son sus
+anclas externas vigentes.
 
-Para que la comparación no sea circular (el ICC es un componente del ITVC,
-7,5% del peso), la serie del ITVC se recalcula EXCLUYENDO al ICC — la
-renormalización estándar del motor absorbe la ausencia.
-
-Cómo se reconstruye la serie mensual del ITVC (dic-2023 → hoy):
-- Componentes transformados (itvc_alimentos/tarifas/ipi/isac/endeudamiento):
-  ya son índices base-100 en series.json.
-- Componentes de rebase directo (brecha, ICC, subocupacion_demandante, carne, motos):
-  se rebasea TODA la serie contra su promedio 4T-2023.
-- Anuales (informalidad, inseguridad): rebase anual + forward-fill mensual
-  (regla del doc: "último dato disponible").
-- Cada mes se agrega con itvc.calcular_itvc (misma renormalización que el
-  índice publicado); un componente entra con su último dato ≤ mes.
-
-Correlaciones (Pearson): niveles y primeras diferencias, contemporáneas y
-con ±1 rezago. Salida: output/validacion_externa.json + resumen legible.
-
-Uso: python scripts/validacion_externa.py
+Las series se reconstruyen desde componentes con cobertura y renormalización.
+Se publican niveles, diferencias, giros y diagnósticos de tendencia; la
+comparación no acredita por sí sola causalidad, representatividad social ni
+predicción en tiempo real. Salida: output/validacion_externa.json.
 """
 import io
 import json
@@ -160,7 +137,7 @@ COMPONENTES = {
     "sentimiento_digital":    ("sentimiento_digital", True, False, False),  # ADR-0034
 }
 # Bases DECLARADAS distintas del 4T-2023 (misma regla que publicar):
-BASES_PROPIAS = {"inseguridad": ("2024-01",)}   # IVI reanudado ene-2024 (ADR-0032)
+BASES_PROPIAS = {"inseguridad": ("2024-01",)}   # base conservada; archivo 2023 recuperado en ADR-0273
 # Componentes que entran por acumulado móvil de 12 meses porque su flujo
 # mensual crudo tiene estacionalidad fuerte y contra una base fija mediría
 # calendario. Tiene que ser la MISMA lista que aplica
@@ -350,14 +327,11 @@ def _valores_itcm_por_mes() -> dict:
     ipc_mm = m("ipc_total")               # ya publicada en % m/m (04-jul-2026)
     rem = m("rem_ipc_12m")                # % anual → equivalente mensual
     saldo = m("saldo_comercial")          # M USD mensual → suma móvil 12m
-    directos = {k: m(k) for k in ("idm", "desequilibrio_monetario", "recaudacion",
-                                  "reservas_bcra", "idc", "credito_privado",
-                                  "emae_ia", "emae_difusion", "ipi_manufacturero", "tcrm",
-                                  # ADR-0071 / ADR-0072: ambos tienen serie
-                                  # mensual desde dic-2023 y entran a la
-                                  # reconstrucción como valores directos.
-                                  "costo_financiamiento_tesoro",
-                                  "resultado_primario")}
+    # El catálogo del motor gobierna también la historia. Una lista paralela
+    # omitió el IAI incluso después de publicarse su serie (ADR-0301).
+    activos = {k for d in itcm.DIMENSIONES_ITCM.values() for k in d["indicadores"]}
+    especiales = {"ipc_total", "rem_ipc_12m", "saldo_comercial_12m"}
+    directos = {k: m(k) for k in sorted(activos - especiales)}
 
     def saldo_12m(ym):
         yms = sorted(saldo)
@@ -510,15 +484,14 @@ def _serie_con_piso(nombre: str, valores_por_mes: dict, calcular,
 
 def construir_serie_itcm(dimensiones: dict | None = None) -> dict:
     """Serie mensual del ITCM reconstruida desde las series de componentes
-    (mismo motor, puntaje interpolado, sin overrides del analista): todos los
-    componentes tienen serie salvo IAI/ICIP, que faltan y el motor renormaliza.
+    (mismo motor, puntaje interpolado, sin overrides del analista). Los insumos
+    se derivan del catálogo activo; IAI incluye la dimensión de inversión.
     Reservas netas solo desde jun-2024 (límite de fuente documentado).
 
     Sin tope de mes en curso, a diferencia de ITCG/ITCP: las fuentes del ITCM
-    (INDEC, BCRA mensual, Hacienda) publican por mes cerrado, así que el último
-    mes reconstruible ya es un mes completo. El piso de cobertura sí se aplica,
-    aunque hoy no recorte nada (mínimo histórico 73,4%): es la red por si una
-    fuente se cae y el índice queda armado sobre la mitad de sus componentes."""
+    (INDEC, BCRA mensual, Hacienda) publican por mes cerrado. Esto no garantiza
+    que todos los componentes tengan dato para ese mes. Se aplica el piso de
+    cobertura y se conserva la composición mensual efectivamente observada."""
     return _serie_con_piso("ITCM", _valores_itcm_por_mes(), itcm.calcular_itcm,
                            dimensiones=dimensiones)
 
@@ -720,9 +693,10 @@ ITCG_SERIES = [
 
 def construir_serie_itcg(dimensiones: dict | None = None) -> dict:
     """Serie mensual del ITCG reconstruida desde las series de componentes
-    (mismo motor, puntaje interpolado, sin overrides del analista): 14 de los
-    15 componentes tienen serie con historia; el protocolo antipiquetes recién
-    acumula y el motor renormaliza.
+    (mismo motor, puntaje interpolado, sin overrides del analista). La lista
+    de componentes se deriva de las dimensiones vigentes; se excluyen las
+    series de magnitud no comparable y se renormaliza según la cobertura
+    disponible en cada mes, respetando el piso de cobertura.
 
     PISO DE COBERTURA Y MES EN CURSO (2026-08-12, ADR-0197). El ITCP tenía las
     dos defensas desde 2026-07-09 y el ITCG no tenía ninguna, así que la cola de
@@ -832,14 +806,15 @@ def construir_serie_itcp(dimensiones: dict | None = None) -> dict:
     política es dispareja:
     - Con historia mensual sólida desde dic-2023: votometro_ventaja_lla,
       eficacia_legislativa, (desde 2026-07-09, ADR-0046)
-      derrotas_legislativas —cuya serie completa se deriva del registro
+      desafios_legislativos —cuya serie se deriva del registro
       versionado de eventos— y (desde 2026-07-15, ADR-0058) ratio_dnu, que
       pasó de un punto por año calendario a ventana móvil de 365 días
       recalculada al fin de cada mes.
-    - veto_quorum llega por período legislativo (pocos puntos, no un valor
-      por mes) e iaf_transferencias es un dato anual (dic-dic): solo
-      "prenden" en los meses exactos en que hay dato — el resto del tiempo el
-      motor renormaliza sin ellos, igual que ITCM/ITCG con sus faltantes.
+    - veto_quorum se reconstruye mensualmente con ventana móvil de doce
+      meses. iaf_transferencias es anual (dic-dic): solo participa en los
+      meses exactos con dato; el motor renormaliza los pesos cuando faltan
+      componentes. Por eso un cambio mensual puede incluir composición,
+      además de variación de los indicadores presentes en ambos meses.
     - Desde 2026-07-09 la cobertura mejoró de verdad: cohesion_bloque
       (desde ADR-0048 la serie del compuesto bicameral 65/35, construida
       sobre las dos series por cámara de ADR-0039/0041) y
@@ -1120,15 +1095,22 @@ def _serie_indicador(nombre: str) -> dict:
     return out
 
 
+def _mes_desplazado(ym: str, k: int) -> str:
+    anio, mes = map(int, ym.split("-"))
+    anio_nuevo, mes_cero = divmod(anio * 12 + mes - 1 + k, 12)
+    return f"{anio_nuevo:04d}-{mes_cero + 1:02d}"
+
+
 def _difs(s: dict) -> dict:
-    yms = sorted(s)
-    return {yms[i]: round(s[yms[i]] - s[yms[i - 1]], 2) for i in range(1, len(yms))}
+    """Cambios de un mes calendario; no unir observaciones sobre un hueco."""
+    return {ym: round(s[ym] - s[previo], 2)
+            for ym in sorted(s)
+            if (previo := _mes_desplazado(ym, -1)) in s}
 
 
 def _lag(s: dict, k: int) -> dict:
-    """Serie corrida k meses hacia adelante (k>0: s adelanta al comparador)."""
-    yms = sorted(s)
-    return {yms[i + k]: s[yms[i]] for i in range(len(yms) - k)} if k > 0 else s
+    """Desplaza fechas k meses (k>0: s adelanta al comparador), sin imputar."""
+    return {_mes_desplazado(ym, k): valor for ym, valor in sorted(s.items())}
 
 
 # ── La brecha de obra pública cambia de signo según el gobierno (ADR-0095) ───
@@ -1195,7 +1177,7 @@ def main():
                             # test_salidas_versionadas_frescas RESTA los dos, y
                             # naive menos aware es TypeError.
                             "generated_at": datetime.now().astimezone().isoformat(),
-                            "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"}}
+                            "nota": "Validación por panel y ancla macro; el contraste adicional sin ICC evita comparar el ITCIS con un componente propio"}}
     print(f"serie ITVC reconstruida: {len(itvc_full)} meses "
           f"({min(itvc_full)} → {max(itvc_full)}) · último: {itvc_full[max(itvc_full)]}")
     resultados["serie_itvc"] = itvc_full
@@ -1227,6 +1209,11 @@ def main():
     print(f"\nserie ITCM reconstruida: {len(serie_itcm)} meses "
           f"({min(serie_itcm)} → {max(serie_itcm)}) · último: {serie_itcm[max(serie_itcm)]}")
     resultados["serie_itcm"] = serie_itcm
+    insumos_itcm = _valores_itcm_por_mes()
+    resultados["componentes_historia_itcm"] = sorted({
+        k for ym in serie_itcm for k, valor in insumos_itcm.get(ym, {}).items()
+        if valor is not None
+    })
     base = linea_base_itcm(serie_itcm)
     if base:
         resultados["linea_base_itcm"] = base

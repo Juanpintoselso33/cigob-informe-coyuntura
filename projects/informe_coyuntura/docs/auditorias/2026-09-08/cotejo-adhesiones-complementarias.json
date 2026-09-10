@@ -1,0 +1,354 @@
+{
+  "consultado": "2026-09-08",
+  "fuentes": [
+    {
+      "url": "https://www.magyp.gob.ar/desarrollo-foresto-industrial/provincias-adheridas.php",
+      "status": 200,
+      "sha256": "1aeacba91b3a78b8c06f27360c793b53e5731f6b6c583d661ae79189f22153f3"
+    },
+    {
+      "url": "https://www.santafe.gob.ar/boletinoficial/ver.php?seccion=2024%2F2024-12-30ley14386-2024.html",
+      "status": 200,
+      "sha256": "ddf0914466e78a712eb2a4b12d48c2ed1dda27b7a1b913a4b7a444d99a70afe1"
+    },
+    {
+      "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/856735",
+      "status": 200,
+      "sha256": "5dbe5448f10fb6bb8d2fa131a8ccb31513cfde35bbf8759427663caf3d03af65"
+    }
+  ],
+  "tarjeta": {
+    "valor": 75.0,
+    "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+    "fuente": "MAGyP — catálogo de adhesiones · leyes provinciales complementarias verificadas",
+    "fecha_dato": "2026-09-08",
+    "n_provincias": 18,
+    "jurisdicciones": [
+      "CABA",
+      "CATAMARCA",
+      "CHACO",
+      "CHUBUT",
+      "CORRIENTES",
+      "CÓRDOBA",
+      "ENTRE RÍOS",
+      "JUJUY",
+      "MENDOZA",
+      "MISIONES",
+      "NEUQUEN",
+      "RÍO NEGRO",
+      "SALTA",
+      "SAN JUAN",
+      "SAN LUIS",
+      "SANTA CRUZ",
+      "SANTA FE",
+      "TUCUMÁN"
+    ],
+    "detalle_txt": "18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.",
+    "desactualizado": false
+  },
+  "serie": [
+    [
+      "2024-07-31",
+      4.2
+    ],
+    [
+      "2024-08-31",
+      20.8
+    ],
+    [
+      "2024-09-30",
+      37.5
+    ],
+    [
+      "2024-10-31",
+      50.0
+    ],
+    [
+      "2024-11-30",
+      54.2
+    ],
+    [
+      "2024-12-31",
+      54.2
+    ],
+    [
+      "2025-01-31",
+      66.7
+    ],
+    [
+      "2025-02-28",
+      66.7
+    ],
+    [
+      "2025-03-31",
+      66.7
+    ],
+    [
+      "2025-04-30",
+      66.7
+    ],
+    [
+      "2025-05-31",
+      66.7
+    ],
+    [
+      "2025-06-30",
+      66.7
+    ],
+    [
+      "2025-07-31",
+      66.7
+    ],
+    [
+      "2025-08-31",
+      66.7
+    ],
+    [
+      "2025-09-30",
+      70.8
+    ],
+    [
+      "2025-10-31",
+      70.8
+    ],
+    [
+      "2025-11-30",
+      70.8
+    ],
+    [
+      "2025-12-31",
+      70.8
+    ],
+    [
+      "2026-01-31",
+      70.8
+    ],
+    [
+      "2026-02-28",
+      70.8
+    ],
+    [
+      "2026-03-31",
+      70.8
+    ],
+    [
+      "2026-04-30",
+      70.8
+    ],
+    [
+      "2026-05-31",
+      75.0
+    ],
+    [
+      "2026-06-30",
+      75.0
+    ],
+    [
+      "2026-07-31",
+      75.0
+    ],
+    [
+      "2026-08-31",
+      75.0
+    ]
+  ],
+  "limite": "Adhesiones documentadas en catálogo y leyes complementarias; no certifica exhaustividad de modificaciones o derogaciones posteriores.",
+  "tarjeta_anterior": {
+    "valor": 66.7,
+    "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+    "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
+    "fecha_dato": "2026-09-08",
+    "n_provincias": 16,
+    "desactualizado": false,
+    "obtenido_en": "2026-09-08T03:03:14",
+    "en_indice": true,
+    "dimension": "alianzas_territoriales",
+    "puntaje_itcp": 81.7,
+    "puntaje_banda": 81.7,
+    "peso_efectivo": 0.057
+  },
+  "serie_anterior": [
+    {
+      "fecha": "2026-08-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2026-07-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2026-06-30",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2026-05-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2026-04-30",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2026-03-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2026-02-28",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2026-01-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-12-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-11-30",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-10-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-09-30",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "66.7",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-08-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "62.5",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-07-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "62.5",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-06-30",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "62.5",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-05-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "62.5",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-04-30",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "62.5",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-03-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "62.5",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-02-28",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "62.5",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2025-01-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "62.5",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2024-12-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "54.2",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2024-11-30",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "54.2",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2024-10-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "50.0",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2024-09-30",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "37.5",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2024-08-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "20.8",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    },
+    {
+      "fecha": "2024-07-31",
+      "indicador": "adhesion_reformas_provincial",
+      "valor": "4.2",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+    }
+  ]
+}

@@ -20,11 +20,9 @@ alternativa con esa fecha (trivia.consejo.org.ar) devuelve "Request
 Rejected" (WAF) ante fetch directo — pero investigando A MANO, provincia por
 provincia, la fecha real de sanción/publicación de cada ley de adhesión
 (24 puntos mensuales reales, jul-2024→jun-2026, ADR-0044), se pudo construir
-la serie igual. Sus anclas (80/60/40/20) se CHEQUEARON contra esa serie y no
-se tocaron -- a diferencia de las otras 4 recalibraciones de hoy, discriminan
-bien en todo el rango observado (ver comentario en BANDAS_ITCP: la adhesión
-es un evento irreversible, no una tasa que oscila, así que el rango de hoy es
-un punto de partida en curso, no el rango final contra el que calibrar).
+la serie igual. ADR-0304 corrigió las omisiones de Santa Fe y CABA en ese
+registro. Se conservan las anclas 80/60/40/20; el indicador cuenta adhesiones
+documentadas y no certifica irreversibilidad jurídica ni ausencia de bajas.
 
 `protestas_caba` (2026-07-09, sin ADR propio -- recalibración menor, ver
 comentario en BANDAS_ITCP) también salió de PROVISIONAL: a diferencia de
@@ -104,9 +102,9 @@ BANDAS_ITCP = {
         (60.0, 70.0, 40), (-INF, 60.0, 10),
     ],
     "produccion_legislativa": [      # leyes sancionadas en 12m, MAYOR = mejor
-        # EXTERNA (ADR-0168, criterio de ADR-0105): el techo es el **promedio
-        # histórico de 74,4 leyes por año** de los 18 años completos que trae el
-        # dataset de HCDN (2008-2025, 1.340 leyes, cuatro presidencias). No es
+        # EXTERNA (ADR-0168/0306, criterio de ADR-0105): se conserva el umbral
+        # de diseño de 74 leyes. El cotejo de 2026-09-08 corrigió la referencia:
+        # 1.320 leyes distintas de 2008-2025 / 18 = 73,3 por año. No es
         # el rango observado bajo esta administración —15 a 47— sino una
         # referencia ajena al período medido, que es lo que ADR-0045 exige.
         #
@@ -116,7 +114,7 @@ BANDAS_ITCP = {
         # que se derrumbó fue la producción propia del Congreso. Puntuar el
         # cociente publicaría "el Ejecutivo domina la agenda" exactamente
         # cuando lo que pasó es que el Congreso dejó de sancionar. El cociente
-        # sobrevive en el modal como lectura de composición.
+        # no participa de este indicador.
         (74.0, INF, 100), (50.0, 74.0, 85), (35.0, 50.0, 65),
         (20.0, 35.0, 40), (-INF, 20.0, 10),
     ],
@@ -311,14 +309,11 @@ BANDAS_ITCP = {
         # supervivencia sobre el total de desafíos (capacidad de bloqueo:
         # el recurso de poder central de un Ejecutivo sin mayoría, que
         # gobierna sosteniendo el tercio del art. 83 CN y la vigencia de
-        # sus decretos). Anclas con referencia externa, no el rango propio:
-        # entre 2003 y 2025 NINGÚN veto presidencial fue insistido por el
-        # Congreso (tasa histórica de sostenimiento ~100%, incluso en los
-        # gobiernos en minoría de Macri), así que ≥90 = dominio normal del
-        # bloqueo; 75-90 = bloqueo firme con derrotas puntuales (el H2-2024
-        # real de esta gestión: 75%); 50-75 = bloqueo disputado (ago-sep
-        # 2025: 54,5/53,8%); 25-50 = minoría en jaque (oct-2025: 33%); <25 =
-        # bloqueo perdido (jul-2026: 20%, la resaca de la ventana).
+        # sus decretos). Cortes editoriales sobre la tasa de supervivencia:
+        # 100% significa sostener todos los desafíos. El antecedente de
+        # vetos no constituye calibración externa de 90/75/50/25, ni tiene
+        # el mismo denominador mixto de vetos y decretos. Véase ADR-0069,
+        # revisión 2026-09-08. Se preservan los cortes y puntajes originales.
         # mayor = mejor, tramos extremos abiertos (ADR-0021).
         # Limitación declarada (ficha): la ventana de 12m retiene las caídas
         # durante un año — la recuperación del bloqueo tras una crisis
@@ -355,20 +350,8 @@ BANDAS_ITCP = {
         (-INF, 40.0, 10),
     ],
     "adhesion_reformas_provincial": [
-        # CHEQUEADO 2026-07-09 contra 24 puntos mensuales reales (jul-2024 a
-        # jun-2026, reconstruidos investigando a mano la fecha de adhesión
-        # de cada provincia, ADR-0044) -- a diferencia de los otros 4
-        # indicadores recalibrados hoy, acá NO se tocaron las anclas: la
-        # adhesión al RIGI es un evento IRREVERSIBLE por provincia (un
-        # trinquete, no una tasa que oscila), así que el rango observado
-        # (4,2%–66,7%) es el arranque de un proceso todavía en curso, no una
-        # muestra representativa de su rango final -- recalibrar ahora
-        # anclaría las bandas a un punto de partida que se va a quedar
-        # obsoleto apenas sigan adhiriendo provincias. El puntaje interpolado
-        # ya discrimina de verdad en todo el rango observado (10 en jul-2024,
-        # 82 en jun-2026, sin aplanarse en ningún tramo) -- las anclas
-        # heredadas resultaron razonables, no hace falta cambiarlas. Vuelve
-        # a evaluarse si el rango observado se estanca de forma sostenida.
+        # Anclas conservadas de ADR-0044. ADR-0304 corrige el registro de
+        # adhesiones sin recalibrarlas; no se asume irreversibilidad legal.
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
     "cohesion_bloque": [

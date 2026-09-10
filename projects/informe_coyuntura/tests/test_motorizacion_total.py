@@ -4,7 +4,8 @@ El componente existe porque el patentamiento de motos solo no puede contestar
 la pregunta que el editorial discutía: si la gente pasa del auto a la moto
 porque no sostiene el auto (empobrecimiento) o porque accede a su primer
 vehículo (acceso). Las dos lecturas empujan las motos hacia arriba. El TOTAL
-las separa: la sustitución descendente dejaría el total plano.
+aporta contexto agregado, pero no identifica esas trayectorias individuales
+(rectificación de alcance en ADR-0271).
 
 Estos tests cuidan siete cosas que pueden volver a romperse:
 
@@ -584,16 +585,27 @@ def test_en_vivo_la_matriz_cubre_los_cuatro_cuadrantes():
     assert all(textos.values()), f"algún cuadrante quedó mudo: {textos}"
     assert len(set(textos.values())) == 4, (
         f"dos cuadrantes dicen lo mismo, así que la matriz no distingue: {textos}")
-    # El que decide el editorial: total que sube con la mezcla corriéndose a la
-    # moto NO puede leerse como sustitución descendente.
-    assert "Más acceso" in textos["sube_total y mas_motos"]
-    assert "Sustitución descendente" in textos["cae_total y mas_motos"]
+    assert "Más patentamientos" in textos["sube_total y mas_motos"]
+    assert "Menos patentamientos" in textos["cae_total y mas_motos"]
+    for texto in textos.values():
+        assert "no permite distinguir primeras compras" in texto
+        assert "Estas situaciones pueden coexistir" in texto
 
 
 def test_en_vivo_la_matriz_no_inventa_cuando_falta_un_dato():
     assert publicar._por_que_motorizacion(None) is None
     assert publicar._por_que_motorizacion({}) is None
     assert publicar._por_que_motorizacion({"ratio_motos": 58.4}) is None
+
+
+def test_total_sin_variacion_no_se_describe_como_caida():
+    composicion = {"ratio_motos": 60, "ratio_motos_base": 50,
+                   "total_var": 0, "autos_var": -10, "motos_var": 10,
+                   "total_12m": 1000000, "autos_12m": 400000, "motos_12m": 600000}
+    texto = publicar._por_que_motorizacion(composicion)
+    assert "Total estable" in texto
+    assert "Cae el total" not in texto
+    assert "entran hogares" not in texto
 
 
 def test_en_vivo_autos_y_motos_se_descartan_despues_de_los_semaforos():

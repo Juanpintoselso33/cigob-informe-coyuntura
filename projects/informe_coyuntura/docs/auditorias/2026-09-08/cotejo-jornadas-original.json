@@ -1,0 +1,94 @@
+{
+  "url": "https://www.argentina.gob.ar/sites/default/files/evolucion_mensual_de_la_conflictividad_laboral._datos_a_mayo_2026.xlsx",
+  "sha256": "16cb376b59644fa6e68dc062a63cc51582fca5e35e2e48389e13e65d26730ae2",
+  "filas": [
+    {
+      "fila": 232,
+      "fecha": "2025-01-01",
+      "jornadas": 23199
+    },
+    {
+      "fila": 233,
+      "fecha": "2025-02-01",
+      "jornadas": 429857
+    },
+    {
+      "fila": 234,
+      "fecha": "2025-03-01",
+      "jornadas": 380211
+    },
+    {
+      "fila": 235,
+      "fecha": "2025-04-01",
+      "jornadas": 133558
+    },
+    {
+      "fila": 236,
+      "fecha": "2025-05-01",
+      "jornadas": 793896
+    },
+    {
+      "fila": 237,
+      "fecha": "2025-06-01",
+      "jornadas": 338721
+    },
+    {
+      "fila": 238,
+      "fecha": "2025-07-01",
+      "jornadas": 295231
+    },
+    {
+      "fila": 239,
+      "fecha": "2025-08-01",
+      "jornadas": 664470
+    },
+    {
+      "fila": 240,
+      "fecha": "2025-09-01",
+      "jornadas": 581281
+    },
+    {
+      "fila": 241,
+      "fecha": "2025-10-01",
+      "jornadas": 352952
+    },
+    {
+      "fila": 242,
+      "fecha": "2025-11-01",
+      "jornadas": 230831
+    },
+    {
+      "fila": 243,
+      "fecha": "2025-12-01",
+      "jornadas": 268677
+    },
+    {
+      "fila": 244,
+      "fecha": "2026-01-01",
+      "jornadas": 29454
+    },
+    {
+      "fila": 245,
+      "fecha": "2026-02-01",
+      "jornadas": 119502
+    },
+    {
+      "fila": 246,
+      "fecha": "2026-03-01",
+      "jornadas": 1008577
+    },
+    {
+      "fila": 247,
+      "fecha": "2026-04-01",
+      "jornadas": 498725
+    },
+    {
+      "fila": 248,
+      "fecha": "2026-05-01",
+      "jornadas": 371774
+    }
+  ],
+  "total_12m_mayo_2026": 4760195,
+  "total_2025": 4492884,
+  "nota": "Cuadro C1: columna H total de jornadas; portal vigente enlaza mayo 2026. Informe anual 2025 redondea a 4.490.000; planilla da 4.492.884. Pendiente control de continuidad en colector."
+}

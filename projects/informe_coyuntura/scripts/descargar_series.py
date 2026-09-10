@@ -12,6 +12,7 @@ import time
 import signal
 import calendar
 import functools
+from urllib.parse import urljoin
 import requests
 import urllib3
 from contextlib import contextmanager
@@ -114,6 +115,9 @@ def _filas_previas(cinturon: str, indicadores: set) -> list:
 
 
 def fetch_indec(series_id: str, limit: int = 48) -> list:
+    import indec_actividad
+    if series_id in indec_actividad.SERIES:
+        return indec_actividad.filas(series_id, limit)
     r = requests.get(INDEC_BASE, params={"ids": series_id, "format": "json",
                      "limit": limit, "sort": "desc"},
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
@@ -178,12 +182,10 @@ def write_csv(
 
 def fetch_saldo_ica(limit: int = 48) -> list:
     """Saldo comercial mensual derivado de las series ICA (expo − impo).
-    La serie de saldo directa (164.3_SOTALTAL_0_0_8) corre con ~14 meses de
-    rezago; las ICA están frescas a ~2 meses (mismo criterio que macro.py)."""
-    expo = fetch_indec("74.3_IET_0_M_16", limit)
-    impo_por_fecha = dict(fetch_indec("74.3_IIT_0_M_25", limit))
-    return [[fecha, round(valor - impo_por_fecha[fecha], 1)]
-            for fecha, valor in expo if fecha in impo_por_fecha]
+    Comparte con la tarjeta la API histórica completada por el cuadro original
+    vigente de INDEC. No redondear los meses antes de acumular doce."""
+    datos = macro._ica_mensual(limit)
+    return [[fecha, ex - im] for fecha, ex, im in datos['puntos']]
 
 
 def fetch_saldo_12m_serie(limit: int = 60) -> list:
@@ -222,8 +224,8 @@ def _tesoro_por_mes() -> dict:
 
 
 def fetch_reservas_netas_serie(meses: int | None = None) -> list:
-    """Serie mensual de reservas NETAS "a secas" = SDDS estricto + dep. Tesoro +
-    Bopreal 12m (la misma fórmula que el indicador en macro.py), parseando las
+    """Serie mensual de estimación CIGOB = SDDS estricto + dep. Tesoro +
+    valor absoluto del tramo II.1 de más de tres meses a un año (la misma fórmula que el indicador en macro.py), parseando las
     últimas `meses` planillas SDDS (por defecto, desde dic-2023). LÍMITE DE LA
     FUENTE: el BCRA borra las planillas viejas (404 antes de jun-2024) y no
     están en Wayback (verificado jul-2026) → la serie arranca en jun-2024;
@@ -242,8 +244,9 @@ def fetch_reservas_netas_serie(meses: int | None = None) -> list:
                 if s and s["fecha"]:
                     _, mm, yy = s["fecha"].split("/")
                     ym = f"20{yy}-{mm}"
-                    netas = s["netas"] + tesoro.get(ym, 0.0) + abs(s["bopreal_12m"])
-                    out.append([f"20{yy}-{mm}-01", round(netas, 0)])
+                    if ym in tesoro:
+                        netas = s["netas"] + tesoro[ym] + abs(s["bopreal_12m"])
+                        out.append([f"20{yy}-{mm}-01", round(netas, 0)])
         except Exception:
             pass
         m -= 1
@@ -297,8 +300,8 @@ def fetch_idc_serie(meses: int | None = None) -> list:
 
 
 def fetch_iai_serie(meses: int | None = None) -> list:
-    """Serie histórica del IAI (inversión física: ISAC + BK importados, 65/35),
-    con la misma fórmula que macro.py. [[YYYY-MM-01, valor]]."""
+    """Serie histórica del IAI, con la composición de cada mes compartida con
+    macro.py (incluidos patentamientos cuando corresponde). [[YYYY-MM-01, valor]]."""
     meses = meses or _meses_desde_asuncion()
     return [[f"{ym}-01", v] for ym, v in macro._iai_serie_mensual(meses=meses)]
 
@@ -694,6 +697,7 @@ def fetch_recaudacion_real_serie() -> list:
     ventana, así que dos implementaciones —o dos ventanas— divergirían y G3
     fallaría. Misma disciplina que `apoyo_empresario_serie`.
     [[YYYY-MM-01, índice]]."""
+    comarb.actualizar()
     nominal = {f[:7]: v for f, v in fetch_indec(macro.INDEC_RECAUDACION_ID,
                                                 limit=comarb.LIMITE_MESES) if v}
     ipc = {f[:7]: v for f, v in fetch_indec(IPC_NIVEL_ID, limit=comarb.LIMITE_MESES) if v}
@@ -734,7 +738,8 @@ def fetch_costo_financiamiento_tesoro_serie() -> list:
     8,66%). Los meses sin colocaciones a tasa fija en pesos —enero y febrero de
     2024, cuando todo lo emitido fue CER— quedan fuera de la serie: no se
     inventa un dato que no existe."""
-    tirea = macro._tirea_mensual(anios=4)
+    import colocaciones_complementarias
+    tirea = colocaciones_complementarias.completar(macro._tirea_mensual(anios=4))
     rem = macro._rem_12m_por_mes(dias=1400)
     out = []
     for ym in sorted(tirea):
@@ -759,7 +764,7 @@ MACRO_DERIVADAS = [
     ("emae_ia", "% i.a.", "INDEC/datos.gob.ar", fetch_emae_ia_serie),
     ("emae_difusion", "% de sectores en crecimiento i.a.",
      "INDEC — EMAE apertura sectorial (vía datos.gob.ar)", fetch_emae_difusion_serie),
-    ("ipi_manufacturero", "% i.a. (promedio 3 meses)", "INDEC — IPI manufacturero (vía datos.gob.ar)", fetch_ipi_serie),
+    ("ipi_manufacturero", "% i.a. (promedio 3 meses)", "INDEC — IPI manufacturero (planilla original vigente)", fetch_ipi_serie),
     # acompaña al IPC general en el modal, no puntúa (ADR-0077)
     ("ipc_nucleo", "% mensual", "INDEC — IPC núcleo nacional (vía datos.gob.ar)", fetch_ipc_nucleo_serie),
     # La unidad decía "% i.a. real" y la serie devuelve un ÍNDICE desde el
@@ -774,8 +779,8 @@ MACRO_DERIVADAS = [
      fetch_credito_privado_serie),
     ("costo_financiamiento_tesoro", "% real anual", "Sec. de Finanzas (colocaciones) + BCRA (REM)", fetch_costo_financiamiento_tesoro_serie),
     ("resultado_primario", "% de la recaudación (12m)", "Sec. de Hacienda — IMIG + recaudación", fetch_resultado_primario_serie),
-    ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
-    ("saldo_comercial_12m", "M USD (acum. 12 meses)", "INDEC — ICA (vía datos.gob.ar)", fetch_saldo_12m_serie),
+    ("saldo_comercial", "M USD", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_saldo_ica),
+    ("saldo_comercial_12m", "M USD (acum. 12 meses)", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_saldo_12m_serie),
     # acompaña al saldo comercial en el modal, no puntúa (ADR-0080)
     ("cuenta_corriente", "M USD (acum. 4 trimestres)", "INDEC — balanza de pagos (vía datos.gob.ar)", fetch_cuenta_corriente_serie),
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
@@ -843,8 +848,8 @@ def fetch_ratio_dnu_serie() -> list:
     au = "https://servicios.infoleg.gob.ar" + m.group(1)
     out = []
     for ym, cutoff_iso, fin_iso in _hcdn_ventanas_12m():
-        desde = date.fromisoformat(cutoff_iso)
         hasta = date.fromisoformat(fin_iso)
+        desde = politica.inicio_ventana_365(hasta)
         try:
             leyes = politica._infoleg_session_count(s, au, "1", desde, hasta)
             if not leyes:
@@ -886,7 +891,7 @@ def fetch_eficacia_serie() -> list:
     proyecto finalmente se sancionó más tarde. [[YYYY-MM-01, %]]."""
     raw_pe = (politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-PE-")
               + politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-JGM-"))
-    pe = [(r["PROYECTO_ID"], str(r.get("PUBLICACION_FECHA", ""))[:10]) for r in raw_pe
+    pe = [(r["PROYECTO_ID"], politica._fecha_publicacion_proyecto(r)) for r in raw_pe
           if r.get("PROYECTO_ID")
           and "PROYECTO DE LEY" in str(r.get("TIPO", "")).upper()
           and (politica._RE_PE_EXP.search(r.get("EXP_DIPUTADOS", "") or "")
@@ -1282,13 +1287,17 @@ def fetch_adhesion_reformas_provincial_serie() -> list:
     reconstruible -- dejó de serlo el día que se investigaron las fuentes
     provinciales una por una).
 
-    Las provincias que aparecen HOY en la tabla MAGyP pero no tienen fecha
+    Se suman las leyes complementarias de ADR-0304, con las mismas fechas
+    utilizadas por la tarjeta: Santa Fe desde la vigencia explícita de la
+    ley, CABA desde su publicación. El catálogo MAGyP omite ambas.
+
+    Las provincias que aparecen HOY en las fuentes pero no tienen fecha
     investigada (adhesiones nuevas posteriores a esta investigación) NO
     entran al histórico -- solo al valor live de la card
     (politica.fetch_adhesion_reformas_provincial, que sigue releyendo la
-    tabla MAGyP fresca en cada corrida). Por eso adhesion_reformas_provincial
+    tabla y las leyes complementarias en cada corrida). Por eso adhesion_reformas_provincial
     está en G3_EXCEPCIONES de gate_calidad.py: mientras todas las provincias
-    adheridas tengan fecha conocida (el caso de hoy, 16/16) card y serie
+    adheridas tengan fecha conocida, card y serie
     coinciden exacto; el día que aparezca una provincia nueva sin fecha
     investigada, van a dejar de coincidir hasta que se la investigue a mano
     y se agregue a ADHESION_REFORMAS_FECHAS_PATH.
@@ -1298,6 +1307,8 @@ def fetch_adhesion_reformas_provincial_serie() -> list:
         return []
     try:
         crudo = json.loads(ADHESION_REFORMAS_FECHAS_PATH.read_text(encoding="utf-8-sig"))
+        complementarias = json.loads(politica.ADHESION_COMPLEMENTARIAS_PATH.read_text(encoding="utf-8-sig"))
+        crudo.update({k: v for k, v in complementarias.items() if not k.startswith("_")})
     except (OSError, json.JSONDecodeError):
         return []
     fechas = {k: v["fecha"] for k, v in crudo.items() if not k.startswith("_")}
@@ -1509,7 +1520,7 @@ def fetch_conflictividad_nacional_mensual() -> list:
     12m íntegramente post-asunción, comparable con la base). Lee la serie
     "mensual_nacional" del store que llena gestion.actualizar_protestas_caba()
     (una sola descarga de ~8 MB por corrida, memo por proceso en gestion).
-    El último mes se EXCLUYE si el archivo ACLED no llega a fin de mes —
+    El último grupo mensual se EXCLUYE si el viernes final cubierto no llega a fin de mes —
     misma regla que politica.fetch_conflictividad_nacional(), así el último
     punto de la serie coincide con la card (G3). No se emiten puntos
     pre-dic-2023: la cobertura ACLED pre-2020 no es confiable y 2023 es la
@@ -1518,32 +1529,16 @@ def fetch_conflictividad_nacional_mensual() -> list:
     if not gestion.PROTESTAS_STORE_PATH.exists():
         return []
     store = _json.loads(gestion.PROTESTAS_STORE_PATH.read_text(encoding="utf-8"))
-    mensual = store.get("mensual_nacional", {})
-    if not mensual:
-        return []
-    hasta = store.get("_meta", {}).get("hasta_semana", "")
-    yms = sorted(mensual)
-    if hasta and yms and hasta[:7] == yms[-1]:
-        a, m = int(hasta[:4]), int(hasta[5:7])
-        if int(hasta[8:10]) < calendar.monthrange(a, m)[1]:
-            yms = yms[:-1]
-    base_2023 = sum(v for ym, v in mensual.items() if ym.startswith("2023"))
-    if not base_2023:
-        return []
-    out = []
-    for i, ym in enumerate(yms):
-        if ym < "2023-12" or i < 11:
-            continue
-        acum = sum(mensual[y] for y in yms[i - 11:i + 1])
-        out.append([f"{ym}-01", round((acum / base_2023 - 1.0) * 100.0, 1)])
-    return out
+    from acled_calendario import serie_12m
+    calculo = serie_12m(store, "mensual_nacional")
+    return [[p["fecha"], p["variacion"]] for p in calculo["puntos"]]
 
 
 POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
     ("iaf_transferencias", "% i.a. real",
      "RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes", fetch_iaf_serie),
-    ("ratio_dnu", "DNUs por ley (12m móviles)", "InfoLeg", fetch_ratio_dnu_serie),
+    ("ratio_dnu", "DNUs publicados por ley publicada", "InfoLeg", fetch_ratio_dnu_serie),
     ("desafios_legislativos", "normas desafiadas en el recinto (12m)",
      "Actas de Diputados y Senado + InfoLeg — elaboración CIGOB",
      fetch_desafios_legislativos_mensual),
@@ -1574,8 +1569,8 @@ POLITICA_DERIVADAS = [
      lambda: [[f"{a}-12-31", v] for a, v in sorted(
          politica._leer_store(politica.CSJN_FUENTES_PATH)["velocidad_de_resolucion"]
          ["serie_historica_completa"]["tasa_resolucion_pct"].items())]),
-    ("cobertura_judicial", "% de cargos de juez con juez designado",
-     "Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)",
+    ("cobertura_judicial", "% estimado de cargos con juez designado",
+     "Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos",
      lambda: [[f"{ym}-01", v]
               for ym, v in sorted(politica.cobertura_judicial_serie()[0].items())]),
     # La serie la calcula el propio colector: la card de politica.py devuelve el
@@ -1589,7 +1584,7 @@ POLITICA_DERIVADAS = [
      "Comunicados de AEA y UIA — codificación CIGOB",
      politica.apoyo_empresario_serie),
     ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_eficacia_serie),
-    ("veto_quorum", "% sesiones en minoría (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_veto_quorum_serie),
+    ("veto_quorum", "% sesiones en minoría (12m móviles)", "Cámara de Diputados — índice oficial de sesiones", fetch_veto_quorum_serie),
     ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_comisiones_serie),
     ("derrotas_legislativas", "derrotas del Ejecutivo en el recinto (12m móviles)",
      "InfoLeg + actas del Senado — elaboración CIGOB",
@@ -1976,7 +1971,9 @@ def fetch_alquiler_real_serie() -> list:
     [[YYYY-MM-01, % m/m]]."""
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
     from config import INDEC_SERIES
-    niveles = _nivel_mensual(INDEC_SERIES["ipc_alquiler_gba"])
+    sys.path.insert(0, str(Path(__file__).parent / 'vida_cotidiana' / 'collectors'))
+    from ipc_alquiler import niveles as niveles_originales
+    niveles = niveles_originales()['alquiler']
     return [[f"{ym}-01", v] for ym, v in sorted(_var_mensual(niveles).items())]
 
 
@@ -1990,14 +1987,16 @@ def fetch_itvc_alquiler() -> list:
     pura, independiente del salario, para no repetir el ratio que ya mide la
     brecha salario/CBT.
 
-    Deflactado con el nivel general de GBA y no con el nacional: la única
-    apertura de alquiler que publica INDEC es la de GBA, y dividir un precio de
+    Deflactado con el nivel general de GBA y no con el nacional: se conserva
+    la apertura de alquiler GBA elegida por el monitor, y dividir un precio de
     GBA por un índice nacional mezclaría dos plazas en el mismo cociente.
     [[YYYY-MM-01, índice]]."""
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
     from config import INDEC_SERIES
-    alq = _nivel_mensual(INDEC_SERIES["ipc_alquiler_gba"])
-    gen = _nivel_mensual(INDEC_SERIES["ipc_gba_general"])
+    sys.path.insert(0, str(Path(__file__).parent / 'vida_cotidiana' / 'collectors'))
+    from ipc_alquiler import niveles as niveles_originales
+    original = niveles_originales()
+    alq, gen = original['alquiler'], original['general']
     a_base, g_base = _base_t423(alq), _base_t423(gen)
     out = []
     for ym in sorted(set(alq) & set(gen)):
@@ -2138,7 +2137,10 @@ def fetch_itvc_isac() -> list:
 
 
 BCRA_INF_BANCOS_ANEXO = ("https://www.bcra.gob.ar/archivos/Pdfs/"
-                         "PublicacionesEstadisticas/informes/InfBanc_Anexo.xlsx")
+                         "PublicacionesEstadisticas/informes/informe-bancos-anexo.xlsx")
+# ADR-0272: el enlace anterior InfBanc_Anexo.xlsx sigue devolviendo HTTP 200
+# pero quedó en mayo de 2026. El enlace de la edición de junio contiene junio.
+# No usar el antiguo como fallback silencioso: escondería otra congelación.
 BCRA_IEF_EDICION_URL = ("https://www.bcra.gob.ar/publicaciones/"
                         "informe-de-estabilidad-financiera-{semestre}-semestre-{anio}/")
 BCRA_IEF_SEMESTRES = ("primer", "segundo")
@@ -2355,7 +2357,7 @@ def fetch_carga_servicio_deuda_serie() -> list:
 
 IVI_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "ivi_serie.json"
 IVI_ARCHIVO_URL = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=23763"
-IVI_ULTIMO_URL = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=2156"
+IVI_ULTIMO_URL = "https://www.utdt.edu/ver_contenido.php?id_contenido=968&id_item_menu=2156"
 IVI_MESES = {"ENERO": 1, "FEBRERO": 2, "MARZO": 3, "ABRIL": 4, "MAYO": 5, "JUNIO": 6,
              "JULIO": 7, "AGOSTO": 8, "SEPTIEMBRE": 9, "SETIEMBRE": 9, "OCTUBRE": 10,
              "NOVIEMBRE": 11, "DICIEMBRE": 12}
@@ -2391,8 +2393,12 @@ def fetch_ivi_serie() -> list:
         for pagina in (IVI_ARCHIVO_URL, IVI_ULTIMO_URL):
             r = requests.get(pagina, headers=HTTP_HEADERS, timeout=60)
             r.raise_for_status()
-            urls |= set(re.findall(r'https://www\.utdt\.edu/download\.php\?fname=[^"&]+\.pdf', r.text))
-        nuevos = sorted(urls - set(store["procesados"]))
+            urls |= {urljoin(pagina, href) for href in re.findall(
+                r'''(?:href\s*=\s*["'])([^"']*download\.php\?fname=[^"'&]+\.pdf)["']''',
+                r.text, flags=re.I)}
+        # Los fname contienen la fecha de carga: priorizar el informe reciente
+        # antes de recorrer el archivo histórico bajo el presupuesto de tiempo.
+        nuevos = sorted(urls - set(store["procesados"]), reverse=True)
         for url in nuevos:
             try:
                 rp = requests.get(url, headers=HTTP_HEADERS, timeout=90)
@@ -2401,7 +2407,9 @@ def fetch_ivi_serie() -> list:
                 if parsed:
                     ym, v = parsed
                     store["mensual"][ym] = v
-                store["procesados"].append(url)
+                    store["procesados"].append(url)
+                else:
+                    print(f"  [WARN] IVI: PDF sin período/valor reconocible, se reintentará: {url}")
             except Exception as e:
                 print(f"  [WARN] IVI: PDF no procesado ({url[-30:]}): {str(e)[:50]}")
         if nuevos:
@@ -2622,7 +2630,7 @@ VIDA_DERIVADAS += [
     # estas funciones. Unidad y fuente COPIADAS de la card (publicar.py): si
     # divergen, la ficha pública dice una cosa y el CSV de la serie otra.
     ("alquiler_real", "% m/m alquileres",
-     "INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)", fetch_alquiler_real_serie),
+     "INDEC — IPC-GBA alquiler de la vivienda (planilla original)", fetch_alquiler_real_serie),
     # ADR-0218: `mortalidad_pymes` deja de ser el IPI industrial y pasa a medir
     # lo que su nombre promete — el cierre neto de PyMEs. Una sola serie para la
     # card y para el índice; `itvc_ipi` se retira.
@@ -2772,7 +2780,7 @@ def fetch_reduccion_serie() -> list:
 
 
 def fetch_tdps_serie() -> list:
-    """Serie mensual del TDPS (% del devengado pagado directo a personas,
+    """Serie mensual del TDPS (% del devengado clasificado en ayudas a personas,
     partida 5.1.4, sobre el total del inciso 5) del programa de ingreso social
     vigente en cada momento: Potenciar Trabajo (2023, jur. 85 prog. 38) y sus
     sucesores Volver al Trabajo + Acompañamiento Social (2024–). API
@@ -2839,7 +2847,7 @@ def _serie_var_real_vs_2023(nominal_ids: list) -> list:
 def fetch_opcion_salud_serie() -> list:
     """Serie mensual del % de usuarios de prepagas con aportes derivados
     directo (misma fórmula que el indicador): RNAS 90xxxx / total RNEMP, por
-    año desde 2024 (los XLSX de la SSS existen por año, URL estable; usa
+    año desde 2024 (descubre los XLSX referenciados en el portal; usa
     gestion._sss_tabla, que no depende de la fila de totales — falta en los
     archivos de algunos años). El denominador RNEMP se arrastra al último mes
     disponible (cambia lento y su archivo tiene más rezago que el RNAS)."""
@@ -2850,8 +2858,7 @@ def fetch_opcion_salud_serie() -> list:
                 (gestion.SSS_RNAS_URL, derivados, True),
                 (gestion.SSS_RNEMP_URL, usuarios, False)):
             try:
-                wb = openpyxl.load_workbook(io.BytesIO(
-                    gestion._http_get_resiliente(url_tpl.format(anio=anio))), data_only=True)
+                wb = gestion._sss_archivo(url_tpl, anio)
                 ws = wb[wb.sheetnames[0]]
                 cols, entidades = gestion._sss_tabla(ws)
                 for col, mm in sorted(cols.items()):
@@ -2884,7 +2891,7 @@ def fetch_protestas_serie() -> list:
     """Serie mensual de eventos de protesta en CABA desde el store que llena
     gestion.actualizar_protestas_caba() (evita re-bajar los ~8 MB de ACLED:
     el colector corre antes en el pipeline). El último mes se EXCLUYE si el
-    archivo ACLED no llega a fin de mes (misma regla que el indicador: un mes
+    viernes final del archivo ACLED no llega a fin de mes (misma regla que el indicador: un mes
     parcial dibujaría un derrumbe falso al final de la curva).
     [[YYYY-MM-01, eventos]]."""
     import json as _json
@@ -2892,12 +2899,8 @@ def fetch_protestas_serie() -> list:
         return []
     store = _json.loads(gestion.PROTESTAS_STORE_PATH.read_text(encoding="utf-8"))
     mensual = store.get("mensual", {})
-    hasta = store.get("_meta", {}).get("hasta_semana", "")
-    yms = sorted(mensual)
-    if hasta and yms and hasta[:7] == yms[-1]:
-        a, m = int(hasta[:4]), int(hasta[5:7])
-        if int(hasta[8:10]) < calendar.monthrange(a, m)[1]:
-            yms = yms[:-1]
+    from acled_calendario import meses_completos
+    yms = meses_completos(store, "mensual")
     return [[f"{ym}-01", mensual[ym]] for ym in yms]
 
 
@@ -2961,10 +2964,11 @@ def fetch_litigiosidad_serie() -> list:
     yms = sorted(serie)
     out = []
     for i in range(23, len(yms)):
-        ult12 = sum(serie[y] for y in yms[i - 11:i + 1])
-        prev12 = sum(serie[y] for y in yms[i - 23:i - 11])
-        if prev12:
-            out.append([f"{yms[i]}-01", round((ult12 / prev12 - 1.0) * 100.0, 1)])
+        try:
+            variacion, _, _ = gestion._juicios_variacion_24m(serie, yms[i])
+        except ValueError:
+            continue
+        out.append([f"{yms[i]}-01", variacion])
     return out[-60:]   # últimos 5 años (la serie arranca en 2010)
 
 
@@ -2973,19 +2977,10 @@ def fetch_alicuota_serie() -> list:
     (apertura_comercial desde el ADR-0021: la brecha salió del compuesto):
     recaudación DEX+DIM en USD por el A3500 promedio del mes, sobre el
     intercambio expo+impo del ICA. Desde dic-2023. [[YYYY-MM-01, %]]."""
-    dex  = gestion._indec_nivel_mensual(gestion.DEX_ID, limit=48)
-    dim  = gestion._indec_nivel_mensual(gestion.DIM_ID, limit=48)
-    expo = gestion._indec_nivel_mensual(gestion.EXPO_ICA_ID, limit=48)
-    impo = gestion._indec_nivel_mensual(gestion.IMPO_ICA_ID, limit=48)
     dias = (date.today() - date(2023, 11, 25)).days
-    tc   = gestion._tc_mayorista_promedio_por_mes(dias=dias)
-    out = []
-    for ym in sorted(set(dex) & set(dim) & set(expo) & set(impo) & set(tc)):
-        if ym < "2023-12" or expo[ym] + impo[ym] <= 0 or tc[ym] <= 0:
-            continue
-        alicuota = 100.0 * ((dex[ym] + dim[ym]) / tc[ym]) / (expo[ym] + impo[ym])
-        out.append([f"{ym}-01", round(alicuota, 2)])
-    return out
+    datos = gestion._alicuota_mensual(dias=dias)
+    return [[f'{ym}-01', fila['valor']] for ym, fila in datos['mensual'].items()
+            if ym >= '2023-12']
 
 
 CONCESIONES_FECHAS_STORE = Path(__file__).resolve().parents[1] / "data" / "gestion" / "concesiones_fechas.json"
@@ -3200,9 +3195,26 @@ def fetch_icg_serie() -> list:
                          or "icg" in str(ws.cell(i, 0).value).lower()), fila_fechas + 1)
         for j in range(ws.ncols):
             fc, vc = ws.cell(fila_fechas, j), ws.cell(fila_icg, j)
-            if fc.ctype == xlrd.XL_CELL_DATE and vc.ctype == xlrd.XL_CELL_NUMBER:
+            if vc.ctype != xlrd.XL_CELL_NUMBER:
+                continue
+            fecha = None
+            if fc.ctype == xlrd.XL_CELL_DATE:
                 t = xlrd.xldate_as_tuple(fc.value, wb.datemode)
-                out[f"{t[0]}-{t[1]:02d}-01"] = round(float(vc.value), 3)
+                fecha = f"{t[0]}-{t[1]:02d}-01"
+            elif fc.ctype == xlrd.XL_CELL_TEXT:
+                # El XLS oficial mezcla fechas Excel con rótulos como jul-26.
+                meses = {m: n for n, m in enumerate(
+                    ("ene", "feb", "mar", "abr", "may", "jun",
+                     "jul", "ago", "sep", "oct", "nov", "dic"), 1)}
+                rotulo = re.fullmatch(r"([a-z]{3})[- /](\d{2}|\d{4})",
+                                      str(fc.value).strip().lower())
+                if rotulo and rotulo[1] in meses:
+                    anio = int(rotulo[2])
+                    if len(rotulo[2]) == 2:
+                        anio += 2000  # La serie ICG comienza en 2001.
+                    fecha = f"{anio:04d}-{meses[rotulo[1]]:02d}-01"
+            if fecha:
+                out[fecha] = round(float(vc.value), 3)
     return sorted([f, v] for f, v in out.items())
 
 
@@ -3275,7 +3287,7 @@ GESTION_DERIVADAS = [
      lambda: [[f, round(min(100.0, v * 100.0 / gestion.ORGANISMOS_PLAN_TOTAL), 1)]
               for f, v in gestion.serie_reestructuracion_vigentes()]),
     ("reduccion_estado", "% vs dic-2023", "INDEC (dotación APN mensual)", fetch_reduccion_serie),
-    ("asistencia_directa", "% TDPS (directo a personas / transferencias)", "API Presupuesto Abierto (SIDIF)", fetch_tdps_serie),
+    ("asistencia_directa", "% TDPS (devengado 5.1.4 / inciso 5)", "API Presupuesto Abierto (SIDIF)", fetch_tdps_serie),
     ("gasto_funcionamiento", "% real vs mismo mes 2023", "Sec. Hacienda IMIG + IPC INDEC",
      lambda: _serie_var_real_vs_2023([gestion.FUNC_SALARIOS_ID, gestion.FUNC_OTROS_ID])),
     ("masa_salarial", "% real vs mismo mes 2023", "Sec. Hacienda AIF + IPC INDEC",

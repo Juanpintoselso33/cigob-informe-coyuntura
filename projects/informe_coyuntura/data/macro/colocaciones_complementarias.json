@@ -1,0 +1,25 @@
+{
+  "descripcion": "Meses cerrados revisados contra resultados y llamados oficiales, posteriores al corte de la planilla anual. Registra fuentes y cobertura, no tasas cargadas a mano.",
+  "meses": {
+    "2026-08": {
+      "cobertura_verificada": true,
+      "evidencia": "docs/auditorias/2026-09-08/financiamiento-agosto-pendiente.md",
+      "licitaciones": [
+        {
+          "resultado": "https://www.argentina.gob.ar/noticias/resultado-de-la-licitacion-por-efectivo-de-instrumentos-del-tesoro-nacional-denominados-10",
+          "llamado": "https://www.argentina.gob.ar/noticias/llamado-licitacion-de-instrumentos-del-tesoro-nacional-denominados-en-pesos-y-en-dolares-10",
+          "fecha": "2026-08-12",
+          "liquidacion": "2026-08-14",
+          "filas_fijas": 1
+        },
+        {
+          "resultado": "https://www.argentina.gob.ar/noticias/resultado-de-la-licitacion-por-efectivo-de-instrumentos-del-tesoro-nacional-denominados-11",
+          "llamado": "https://www.argentina.gob.ar/noticias/llamado-licitacion-de-instrumentos-del-tesoro-nacional-denominados-en-pesos-y-en-dolares-11",
+          "fecha": "2026-08-27",
+          "liquidacion": "2026-08-31",
+          "filas_fijas": 3
+        }
+      ]
+    }
+  }
+}

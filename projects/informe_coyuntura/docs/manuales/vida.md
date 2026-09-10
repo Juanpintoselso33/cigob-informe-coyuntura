@@ -92,7 +92,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) Puntúa la motorización total, no cada vehículo por su lado
+**Lo gobiernan**: [ADR-0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) Puntúa la motorización total, no cada vehículo por su lado · [ADR-0271](../adr/0271-patentamientos-no-identifican-trayectorias-de-hogares.md) Los patentamientos no identifican trayectorias de hogares
 
 #### Ventas en supermercados
 
@@ -150,7 +150,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0111](../adr/0111-alquiler-real-entra-al-itvc.md) El costo del alquiler entra al cinturón; pobreza y expectativas no
+**Lo gobiernan**: [ADR-0111](../adr/0111-alquiler-real-entra-al-itvc.md) El costo del alquiler entra al cinturón; pobreza y expectativas no · [ADR-0291](../adr/0291-alquiler-usa-la-planilla-original.md) Alquiler usa la planilla original
 
 ### Dimensión `vulnerabilidad` (10%)
 
@@ -166,7 +166,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0067](../adr/0067-mora-familias-indicador-propio.md) la mora de las familias sale del compuesto de endeudamiento y puntúa como indicador propio del ITVC · [ADR-0231](../adr/0231-la-carga-de-deuda-anticipa-la-mora.md) La carga de deuda anticipa la mora
+**Lo gobiernan**: [ADR-0067](../adr/0067-mora-familias-indicador-propio.md) la mora de las familias sale del compuesto de endeudamiento y puntúa como indicador propio del ITVC · [ADR-0231](../adr/0231-la-carga-de-deuda-anticipa-la-mora.md) La carga de deuda anticipa la mora · [ADR-0272](../adr/0272-el-anexo-bancario-con-http-200-puede-estar-viejo.md) Un anexo bancario con HTTP 200 puede estar viejo
 
 #### Carga del servicio de deuda
 
@@ -224,7 +224,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0218](../adr/0218-el-cierre-de-pymes-se-mide-con-la-srt.md) El cierre de PyMEs se mide con la SRT, no con la producción industrial
+**Lo gobiernan**: [ADR-0218](../adr/0218-el-cierre-de-pymes-se-mide-con-la-srt.md) El cierre de PyMEs se mide con la SRT, no con la producción industrial · [ADR-0279](../adr/0279-las-series-laborales-no-identifican-transiciones.md) Las series laborales no identifican transiciones
 
 #### Construcción (ISAC)
 
@@ -265,7 +265,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) La contracara del cierre: el trabajo independiente · [ADR-0250](../adr/0250-el-universo-restringido-se-enumera.md) El universo restringido se enumera
+**Lo gobiernan**: [ADR-0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) La contracara del cierre: el trabajo independiente · [ADR-0250](../adr/0250-el-universo-restringido-se-enumera.md) El universo restringido se enumera · [ADR-0279](../adr/0279-las-series-laborales-no-identifican-transiciones.md) Las series laborales no identifican transiciones
 
 ### Dimensión `percepcion` (8%)
 
@@ -297,7 +297,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0032](../adr/0032-inseguridad-ivi-mensual.md) Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT)
+**Lo gobiernan**: [ADR-0032](../adr/0032-inseguridad-ivi-mensual.md) Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT) · [ADR-0273](../adr/0273-victimizacion-descubre-el-portal-vigente-y-enlaces-relativos.md) Victimización descubre el portal vigente y enlaces relativos
 
 ## Se releva y no puntúa
 
@@ -334,7 +334,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-44 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+49 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -380,3 +380,8 @@ histórica.
 - [0250](../adr/0250-el-universo-restringido-se-enumera.md) — El universo restringido se enumera
 - [0256](../adr/0256-la-serie-sale-del-indec-no-de-su-espejo.md) — La serie sale del INDEC, no de su espejo
 - [0267](../adr/0267-una-fuente-caida-degrada-no-desaparece.md) — Una fuente caída degrada el indicador, no lo hace desaparecer
+- [0271](../adr/0271-patentamientos-no-identifican-trayectorias-de-hogares.md) — Los patentamientos no identifican trayectorias de hogares
+- [0272](../adr/0272-el-anexo-bancario-con-http-200-puede-estar-viejo.md) — Un anexo bancario con HTTP 200 puede estar viejo
+- [0273](../adr/0273-victimizacion-descubre-el-portal-vigente-y-enlaces-relativos.md) — Victimización descubre el portal vigente y enlaces relativos
+- [0279](../adr/0279-las-series-laborales-no-identifican-transiciones.md) — Las series laborales no identifican transiciones
+- [0291](../adr/0291-alquiler-usa-la-planilla-original.md) — Alquiler usa la planilla original

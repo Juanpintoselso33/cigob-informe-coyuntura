@@ -1,0 +1,147 @@
+{
+  "fecha_consulta": "2026-09-08",
+  "consultas": [
+    {
+      "method": "POST",
+      "url": "https://www.senado.gob.ar/parlamentario/parlamentaria/exp",
+      "form": {
+        "busqueda_proyectos[expedienteLugar]": "PE",
+        "busqueda_proyectos[expedienteNumeroPos]": "2024",
+        "busqueda_proyectos[expedienteNumeroPre]": "",
+        "busqueda_proyectos[expedienteTipo]": "PL"
+      },
+      "status": 200,
+      "sha256": "0e660676b1b1a542e2a7a443b5d2c3ce38169abb5e916cf9af2e772677180d6b",
+      "links": [
+        "/parlamentario/comisiones/verExp/46.24/PE/PL"
+      ],
+      "tabla": [
+        "Exp Tipo Origen Exp. HCD Extracto 46/24 Proyecto De Ley Poder Ejecutivo Nacional MENSAJE N° 40/24 Y PROYECTO DE LEY QUE APRUEBA EL PROTOCOLO DE ENMIENDA AL CONVENIO CON EL GOBIERNO DE LA REPÚBLICA FRANCESA A FIN DE EVITAR LA DOBLE IMPOSICIÓN Y PREVENIR LA EVASIÓN FISCAL EN MATERIA DE IMPUESTOS SOBRE LA RENTA Y EL PATRIMONIO, SUSCRIPTO EN LA CIUDAD AUTÓNOMA DE BUENOS AIRES EL 6 DE DICIEMBRE DE 2019."
+      ],
+      "sin_resultados": false
+    },
+    {
+      "method": "POST",
+      "url": "https://www.senado.gob.ar/parlamentario/parlamentaria/exp",
+      "form": {
+        "busqueda_proyectos[expedienteLugar]": "JGM",
+        "busqueda_proyectos[expedienteNumeroPos]": "2024",
+        "busqueda_proyectos[expedienteNumeroPre]": "",
+        "busqueda_proyectos[expedienteTipo]": "PL"
+      },
+      "status": 200,
+      "sha256": "7dd0e9f1b47dfa5af1f6769a3a08cb5566e5f445e8d7e043bcfb5632f72f3417",
+      "links": [],
+      "tabla": [],
+      "sin_resultados": true
+    },
+    {
+      "method": "POST",
+      "url": "https://www.senado.gob.ar/parlamentario/parlamentaria/exp",
+      "form": {
+        "busqueda_proyectos[expedienteLugar]": "PE",
+        "busqueda_proyectos[expedienteNumeroPos]": "2025",
+        "busqueda_proyectos[expedienteNumeroPre]": "",
+        "busqueda_proyectos[expedienteTipo]": "PL"
+      },
+      "status": 200,
+      "sha256": "677ed35c86f7dfe502e93734b9b9250fc539cd1694f0eb14b619225378200696",
+      "links": [
+        "/parlamentario/comisiones/verExp/161.25/PE/PL",
+        "/parlamentario/comisiones/verExp/159.25/PE/PL"
+      ],
+      "tabla": [
+        "Exp Tipo Origen Exp. HCD Extracto 161/25 Proyecto De Ley Poder Ejecutivo Nacional 10/26 MENSAJE N° 36/25 Y PROYECTO DE LEY QUE MODIFICA SU SIMILAR 26.639 \"RÉGIMEN DE PRESUPUESTOS MÍNIMOS PARA LA PRESERVACIÓN DE LOS GLACIARES Y DEL AMBIENTE PERIGLACIAL\" 159/25 Proyecto De Ley Poder Ejecutivo Nacional MENSAJE N° 35/25 Y PROYECTO DE LEY DE MODERNIZACIÓN LABORAL."
+      ],
+      "sin_resultados": false
+    },
+    {
+      "method": "POST",
+      "url": "https://www.senado.gob.ar/parlamentario/parlamentaria/exp",
+      "form": {
+        "busqueda_proyectos[expedienteLugar]": "JGM",
+        "busqueda_proyectos[expedienteNumeroPos]": "2025",
+        "busqueda_proyectos[expedienteNumeroPre]": "",
+        "busqueda_proyectos[expedienteTipo]": "PL"
+      },
+      "status": 200,
+      "sha256": "7177f765bde1c358583606fd61e526c1455f0ec5a652b84573255af4ede4fea6",
+      "links": [],
+      "tabla": [],
+      "sin_resultados": true
+    }
+  ],
+  "proyectos": [
+    {
+      "expediente": "0046-PE-2024",
+      "url": "https://www.senado.gob.ar/parlamentario/comisiones/verExp/46.24/PE/PL",
+      "status": 200,
+      "sha256": "60d466503639a611c25e6c0031c839cc3247994150142b93336250a4ac8b1300",
+      "tablas": [
+        "N° Origen Tipo Extracto 46/24 Poder Ejecutivo Nacional Proyecto De Ley MENSAJE N° 40/24 Y PROYECTO DE LEY QUE APRUEBA EL PROTOCOLO DE ENMIENDA AL CONVENIO CON EL GOBIERNO DE LA REPÚBLICA FRANCESA A FIN DE EVITAR LA DOBLE IMPOSICIÓN Y PREVENIR LA EVASIÓN FISCAL EN MATERIA DE IMPUESTOS SOBRE LA RENTA Y EL PATRIMONIO, SUSCRIPTO EN LA CIUDAD AUTÓNOMA DE BUENOS AIRES EL 6 DE DICIEMBRE DE 2019.",
+        "Envío PEN Nro. Men. PEN: 40/24",
+        "MESA DE ENTRADAS DADO CUENTA Nº DE D.A.E. 06-06-2024 22-08-2024 49/2024 Tipo: NORMAL",
+        "DIR. GRAL. de COMISIONES INGRESO DEL DICTAMEN A LA MESA DE ENTRADAS 10-06-2024 25-09-2024 04-03-2026 10-03-2026",
+        "COMISIÓN FECHA DE INGRESO FECHA DE EGRESO DE RELACIONES EXTERIORES Y CULTO ORDEN DE GIRO: 1 04-03-2026 10-03-2026 DE PRESUPUESTO Y HACIENDA ORDEN DE GIRO: 2 04-03-2026 10-03-2026 DE RELACIONES EXTERIORES Y CULTO ORDEN DE GIRO: 1 10-06-2024 25-09-2024 DE PRESUPUESTO Y HACIENDA ORDEN DE GIRO: 2 10-06-2024 25-09-2024",
+        "SENADO FECHA DE SANCION: 18-03-2026 SANCION: APROBO COMENTARIO: NOTA:PASA A DIP.",
+        "DIPUTADOS FECHA DE SANCION: 24-06-2026 SANCION: APROBO",
+        "SANCION DE LEY FECHA DE SANCION: 24-06-2026 NUMERO DE LEY: 27814 FECHA COMUNICACION P.E.N.: 2026-07-01 00:00:00",
+        "PODER EJECUTIVO DE LA NACION RESOLUCION: Promulgo FECHA: 17-06-2026 DECRETO NUMERO: 600/26 FECHA DEL DECRETO: 16-07-2026 BOLETIN OFICIAL NUMERO: 35.951 FECHA DEL BOLETIN OFICIAL: 17-07-2026",
+        "OBSERVACIONES 04-03-26VUELVE A COMISION POR ISP 27/26 , SEGUN EL ART. 106 PARRAFO 4° DEL REGLAMENTO DEL H. SENADO, POR RENOVACION BIENAL DEL CUERPO.",
+        "NÚMERO DE FECHA ESTADO ANEXO 157/24 25-09-2024 CADUCA POR RENOV. BIENAL Sin Anexo 2/26 10-03-2026 APROBADA Sin Anexo"
+      ],
+      "proyecto_ckan": "HCDN275958",
+      "fecha_publicacion_ckan": "2024-06-06",
+      "coincide_con_ingreso": true,
+      "en_cohorte_actual": false
+    },
+    {
+      "expediente": "0161-PE-2025",
+      "url": "https://www.senado.gob.ar/parlamentario/comisiones/verExp/161.25/PE/PL",
+      "status": 200,
+      "sha256": "88a9b943a83866299fb46a971b55b2b4f2a9883f5bc7c36e330041e0c15e3842",
+      "tablas": [
+        "N° Origen Tipo Extracto 161/25 Poder Ejecutivo Nacional Proyecto De Ley MENSAJE N° 36/25 Y PROYECTO DE LEY QUE MODIFICA SU SIMILAR 26.639 \"RÉGIMEN DE PRESUPUESTOS MÍNIMOS PARA LA PRESERVACIÓN DE LOS GLACIARES Y DEL AMBIENTE PERIGLACIAL\"",
+        "Exp. HCD: 10/26",
+        "Envío PEN Decreto Ingreso: 271/26",
+        "MESA DE ENTRADAS DADO CUENTA Nº DE D.A.E. 15-12-2025 26-02-2026 104/2025 Tipo: NORMAL",
+        "DIR. GRAL. de COMISIONES INGRESO DEL DICTAMEN A LA MESA DE ENTRADAS 16-12-2025 18-12-2025",
+        "COMISIÓN FECHA DE INGRESO FECHA DE EGRESO DE AMBIENTE Y DESARROLLO SUSTENTABLE ORDEN DE GIRO: 1 16-12-2025 18-12-2025 DE MINERÍA, ENERGÍA Y COMBUSTIBLES ORDEN DE GIRO: 2 16-12-2025 18-12-2025",
+        "SENADO FECHA DE SANCION: 26-02-2026 SANCION: APROBO COMENTARIO: NOTA:PASA A DIP.",
+        "DIPUTADOS FECHA DE SANCION: 08-04-2026 SANCION: APROBO",
+        "SANCION DE LEY FECHA DE SANCION: 08-04-2026 NUMERO DE LEY: 27804",
+        "PODER EJECUTIVO DE LA NACION RESOLUCION: Promulgo FECHA: 23-04-2026 DECRETO NUMERO: 271/26 FECHA DEL DECRETO: 23-04-2026 BOLETIN OFICIAL NUMERO: 35.896 FECHA DEL BOLETIN OFICIAL: 24-04-2026",
+        "NÚMERO DE FECHA ESTADO ANEXO 700/25 18-12-2025 APROBADA Sin Anexo"
+      ],
+      "proyecto_ckan": "HCDN289095",
+      "fecha_publicacion_ckan": "2025-12-15",
+      "coincide_con_ingreso": true,
+      "en_cohorte_actual": false
+    },
+    {
+      "expediente": "0159-PE-2025",
+      "url": "https://www.senado.gob.ar/parlamentario/comisiones/verExp/159.25/PE/PL",
+      "status": 200,
+      "sha256": "ce6500dfe3b5a846350730ebc8b5ba28f5638b06af1d41179b488dbd3137a015",
+      "tablas": [
+        "N° Origen Tipo Extracto 159/25 Poder Ejecutivo Nacional Proyecto De Ley MENSAJE N° 35/25 Y PROYECTO DE LEY DE MODERNIZACIÓN LABORAL.",
+        "Envío PEN Nro. Men. PEN: 35/25",
+        "MESA DE ENTRADAS DADO CUENTA Nº DE D.A.E. 20-02-2026 18-03-2026 110/2025 Tipo: NORMAL 11-12-2025 11-02-2026 105/2025 Tipo: NORMAL",
+        "DIR. GRAL. de COMISIONES INGRESO DEL DICTAMEN A LA MESA DE ENTRADAS 11-12-2025 18-12-2025 20-02-2026 20-02-2026",
+        "COMISIÓN FECHA DE INGRESO FECHA DE EGRESO DE TRABAJO Y PREVISIÓN SOCIAL ORDEN DE GIRO: 1 20-02-2026 20-02-2026 DE PRESUPUESTO Y HACIENDA ORDEN DE GIRO: 2 20-02-2026 20-02-2026 DE TRABAJO Y PREVISIÓN SOCIAL ORDEN DE GIRO: 1 11-12-2025 18-12-2025 DE PRESUPUESTO Y HACIENDA ORDEN DE GIRO: 2 11-12-2025 18-12-2025",
+        "SENADO FECHA DE SANCION: 12-02-2026 SANCION: APROBO COMENTARIO: CON MODIFICACIONES NOTA:APROBADO CONJUNTAMENTE CON EL P.E. 186/25 PASA A DIP.",
+        "DIPUTADOS FECHA DE SANCION: 20-02-2026 SANCION: MODIFICO",
+        "SENADORES FECHA DE SANCION: 27-02-2026 SANCION:APROBO NOTA: LEY",
+        "SANCION DE LEY FECHA DE SANCION: 27-02-2026 NUMERO DE LEY: 27802",
+        "PODER EJECUTIVO DE LA NACION RESOLUCION: Promulgo FECHA: 05-03-2026 DECRETO NUMERO: 137/26 FECHA DEL DECRETO: 05-03-2026 BOLETIN OFICIAL NUMERO: 35.865 FECHA DEL BOLETIN OFICIAL: 06-03-2026",
+        "OBSERVACIONES DICT. EN DISIDENCIA SDRES. VISCHI; GOERLING LARA; ESPINOLA; ROYON; FAMA; CRISTINA.-",
+        "NÚMERO DE FECHA ESTADO ANEXO 699/25 18-12-2025 APROBADA CON MODIF. Sin Anexo 706/25 20-02-2026 APROBADA Sin Anexo"
+      ],
+      "proyecto_ckan": "HCDN289082",
+      "fecha_publicacion_ckan": "2025-12-11",
+      "coincide_con_ingreso": true,
+      "en_cohorte_actual": false
+    }
+  ],
+  "resultado": "Los tres PL PE hallados para años 2024/2025 ya figuran en CKAN y quedan fuera de la cohorte actual. JGM sin resultados. Se mantiene 2/14=14.3. No acredita exhaustividad de todas las cohortes históricas."
+}

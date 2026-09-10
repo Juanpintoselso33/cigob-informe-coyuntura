@@ -1,0 +1,37 @@
+{
+  "fecha_verificacion": "2026-09-08",
+  "bcra": {
+    "url": "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/informes/informe-bancos-anexo.xlsx",
+    "sha256_archivo": "bd3cfe3aefefa9830e18779fdb1d21902b69e61e3e582011018d498452a35d58",
+    "ultimo_periodo": "2026-06",
+    "metodo": "parser del proyecto; personales + tarjetas ponderados por saldo"
+  },
+  "ivi": {
+    "url": "https://www.utdt.edu/download.php?fname=_178596896306235900.pdf",
+    "sha256_archivo": "704a5de541cf0de54a859876a772d89c7745f74b2de9dbc55530bf0ad4b70616",
+    "ultimo_periodo": "2026-07",
+    "valor": 27.3,
+    "metodo": "pypdf y lectura visual de página 1"
+  },
+  "limitacion": "Manifiesto de fuentes reparadas; no certificación individual de las 63 series.",
+  "ica": {
+    "url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_20_08_26.xls",
+    "sha256_archivo": "7ec6d1426f1e67d4cd6d8608e277390286bd1ea950a1e2047ec9830f99d8d6eb",
+    "ultimo_periodo": "2026-07",
+    "saldo_12m_millones_usd": 23731,
+    "verificacion": "suma mensual y total anual 2025 menos enero-julio 2025 más enero-julio 2026"
+  },
+  "sss": {
+    "portal": "https://www.argentina.gob.ar/sssalud/estadisticas",
+    "periodo_nuevo": "2026-06",
+    "derivados": 2754461,
+    "usuarios": 8332458,
+    "valor_redondeado": 33.1,
+    "estado": "Comprobado con salvedad RNEMP; colector, snapshot e historia actualizados",
+    "nota_rnemp": "Enlace con prefijo blank:# en el HTML; archivo público descargable, no prueba de publicación activa.",
+    "sha256_rnas": "f6d4c69211ff5c672218a7f6e28a7d7fc3c87ce781973b9e1a07a72b0369e8f5",
+    "sha256_rnemp": "e78d355168668d06cb8ef56154f1850e49ec339890fb629937204497fbafd845",
+    "rnas_url": "https://www.argentina.gob.ar/sites/default/files/2020/07/evolucion_anual_de_beneficiarios_de_agentes_del_seguro_de_salud_por_entidad_-_ano_2026.14.08.xlsx",
+    "rnemp_url": "https://www.argentina.gob.ar/sites/default/files/2020/07/evolucion_anual_de_usuarios_por_entidades_de_medicina_prepaga_-_ano_2026.14.08.xlsx"
+  }
+}

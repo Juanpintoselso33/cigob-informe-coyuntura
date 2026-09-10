@@ -6,7 +6,7 @@ pública vigente y el ciclo de publicación están en el
 
 **Qué manda cuando esta carpeta y otra cosa se contradicen.** Estas páginas
 describen la *forma* del sistema —flujo, contratos, operación— y se revisan de
-a saltos; la última pasada de estructura es de ago-2026. Lo que mide y con qué
+a saltos; la última pasada de estructura es del 8-sep-2026. Lo que mide y con qué
 peso cada indicador NO se lee acá: manda la **ficha** del indicador
 (`/metodologia/<id>`), que es lo único atado al colector por
 `tests/test_la_ficha_no_se_queda_atras.py` (ADR-0220), y el **porqué** de cada

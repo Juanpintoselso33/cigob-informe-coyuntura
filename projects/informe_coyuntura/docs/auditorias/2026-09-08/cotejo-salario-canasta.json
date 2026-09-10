@@ -1,0 +1,32 @@
+{
+  "fecha_consulta": "2026-09-08",
+  "fuentes": [
+    {
+      "url": "https://www.indec.gob.ar/Nivel4/Tema/4/43/149",
+      "sha256": "5191eca42c3196a7ec5e3196dd80e5772e8b45917ed3b8dadacff87d59cdbb38",
+      "bytes": 9633
+    },
+    {
+      "url": "https://www.indec.gob.ar/uploads/informesdeprensa/canasta_08_26ED3042AA70.pdf",
+      "sha256": "b033cb1f3b1ef12c1d3d43f46d57f94b1a4334edcabf84a4da3620e4262201ce",
+      "bytes": 2337774
+    },
+    {
+      "url": "https://www.argentina.gob.ar/trabajo/seguridadsocial/ripte",
+      "sha256": "20f3dedf7ab7845963f69b9656812d0e79d82c00eacb5345863b820b4579c2c8",
+      "bytes": 38849
+    }
+  ],
+  "mes_comun": "2026-06",
+  "ripte_pesos": 1915878.76,
+  "cbt_adulto_equivalente_gba_pesos": 495622.3,
+  "cociente": 3.8656024153876856,
+  "cbt_ultimo_mes": "2026-07",
+  "cbt_ultimo_valor": 506380.55,
+  "metodo": "Portales vigentes y PDF original. Junio se lee del cuadro 4 de canastas julio, conciliado con API. RIPTE portal mantiene junio; cociente coincide con cotejo-social-fuentes.json. No mezcla meses. GET curl IPv4 y extracción textual del PDF.",
+  "limites": [
+    "RIPTE remunerativo imponible con tope, no ingreso neto de hogar.",
+    "CBT Gran Buenos Aires por adulto equivalente, no canasta familiar.",
+    "Enlace PDF RIPTE del portal contiene blank:#; el monto y período se verificaron en el HTML oficial."
+  ]
+}

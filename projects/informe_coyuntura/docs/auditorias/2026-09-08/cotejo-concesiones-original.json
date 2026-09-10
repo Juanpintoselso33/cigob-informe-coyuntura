@@ -1,0 +1,150 @@
+{
+  "fuente": "https://www.argentina.gob.ar/transporte/vialidad-nacional/red-federal-de-concesiones",
+  "consultado": "2026-09-08",
+  "sha256_html": "3641a5ca30f599691e464ecadd2872bd1e9f961b9780796f7bc2c44964f9ef04",
+  "etapas": [
+    {
+      "etapa": "I",
+      "tramos": [
+        {
+          "tramo": "Oriental",
+          "km": "682,28",
+          "rutas": "12, 14, 117, 135, A-015"
+        },
+        {
+          "tramo": "Conexión",
+          "km": "59,43",
+          "rutas": "174 (Conexión Física Rosario-Victoria)"
+        }
+      ],
+      "km": "741.71"
+    },
+    {
+      "etapa": "II-A",
+      "tramos": [
+        {
+          "tramo": "Sur Atlántico Acceso Sur",
+          "km": "1325,17",
+          "rutas": "Au. Ezeiza – Cañuelas, Au. Riccheri, Au. Jorge Newbery, 3, 205, 226."
+        },
+        {
+          "tramo": "Pampa",
+          "km": "546,65",
+          "rutas": "5"
+        }
+      ],
+      "km": "1871.82"
+    },
+    {
+      "etapa": "II-B",
+      "tramos": [
+        {
+          "tramo": "Mediterráneo",
+          "km": "672,32",
+          "rutas": "7, 35"
+        },
+        {
+          "tramo": "Puntano",
+          "km": "720",
+          "rutas": "8, 36, 193, A-005"
+        },
+        {
+          "tramo": "Portuario Sur",
+          "km": "636,75",
+          "rutas": "9, 188"
+        },
+        {
+          "tramo": "Portuario Norte",
+          "km": "528,04",
+          "rutas": "9, 33, A-008"
+        }
+      ],
+      "km": "2557.11"
+    },
+    {
+      "etapa": "III",
+      "tramos": [
+        {
+          "tramo": "Centro",
+          "km": "681.92",
+          "rutas": "9, 19, 34"
+        },
+        {
+          "tramo": "Mesopotámico",
+          "km": "276,11",
+          "rutas": "12, 18"
+        },
+        {
+          "tramo": "Centro - Norte",
+          "km": "536,43",
+          "rutas": "34"
+        },
+        {
+          "tramo": "Noroeste",
+          "km": "596,52",
+          "rutas": "9, 34, 66, 1V66, A-016"
+        },
+        {
+          "tramo": "Litoral",
+          "km": "546,74",
+          "rutas": "12, 16"
+        },
+        {
+          "tramo": "Noreste",
+          "km": "456,22",
+          "rutas": "12, 105"
+        },
+        {
+          "tramo": "Chaco - Santa Fe",
+          "km": "497,18",
+          "rutas": "11"
+        },
+        {
+          "tramo": "Cuyo",
+          "km": "329,09",
+          "rutas": "7"
+        }
+      ],
+      "km": "3920.21"
+    }
+  ],
+  "km_total": "9090.85",
+  "adjudicaciones": [
+    {
+      "etapa": "I",
+      "proceso": "504-0007-LPU25",
+      "norma": "Resolución ST 80/2025",
+      "articulos": "2 y 3",
+      "fuente": "https://www.boletinoficial.gob.ar/pdf/aviso/primera/334748/20251119"
+    },
+    {
+      "etapa": "II-A",
+      "proceso": "504-0013-LPU25",
+      "norma": "Resolución ME 706/2026",
+      "articulos": "2, renglones 1 y 2",
+      "fuente": "https://otslist.boletinoficial.gob.ar/ots/download/f87c345c601ff39638cd13c3988205ca5f3b61d27e23ddfa2d80bb9b431c0745/0/"
+    },
+    {
+      "etapa": "II-B",
+      "proceso": "504-0015-LPU25",
+      "norma": "Resolución ME 1149/2026",
+      "articulos": "2, cuatro renglones",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/345005/20260728"
+    },
+    {
+      "etapa": "III",
+      "proceso": "504-0001-LPU26",
+      "norma": "Resolución ME 1379/2026",
+      "articulos": "4, ocho renglones",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346271/20260824",
+      "sha256_html": "9740ee4a73030aaddd69a26befdd4e3fa039a05b994bfce8e84daf6a1846818a"
+    }
+  ],
+  "resultado": {
+    "km_adjudicados": 9090.85,
+    "km_plan": 9090.85,
+    "porcentaje": 100,
+    "km_tarjeta_redondeado": 9091,
+    "alcance": "Adjudicación formal de los 16 tramos de cuatro etapas del universo RFC publicado. No certifica operación, obras terminadas ni calidad de la infraestructura."
+  }
+}

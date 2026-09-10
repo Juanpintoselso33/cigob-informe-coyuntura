@@ -2,9 +2,9 @@
  "_meta": {
   "descripcion": "Recaudación mensual de los sistemas COMARB (IIBB Convenio Multilateral + regímenes de retención/percepción), en millones de pesos nominales. NO es recaudación provincial total.",
   "fuente": "https://www.ca.gob.ar/gacetillas",
-  "gacetillas": 42,
+  "gacetillas": 44,
   "reconstruidos_2022": 12,
-  "nuevos_en_esta_corrida": 42
+  "nuevos_en_esta_corrida": 0
  },
  "gacetillas": {
   "2023-01": {
@@ -501,6 +501,30 @@
    "sirtac": 154639.0,
    "desvio_suma_pct": 0.0,
    "archivo": "Gacetilla_Recaudacion_Mensual_06_Jun_2026.pdf"
+  },
+  "2026-07": {
+   "total": 2296256.0,
+   "var_ia_publicada": 30.0,
+   "sifere": 962636.0,
+   "sircar": 340782.0,
+   "sirpei": 143274.0,
+   "sircreb": 645656.0,
+   "sircupa": 28122.0,
+   "sirtac": 175787.0,
+   "desvio_suma_pct": 0.0,
+   "archivo": "Gacetilla_Recaudacion_Mensual_07_Jul 2026.pdf"
+  },
+  "2026-08": {
+   "total": 2321766.0,
+   "var_ia_publicada": 23.0,
+   "sifere": 893167.0,
+   "sircar": 367659.0,
+   "sirpei": 148151.0,
+   "sircreb": 708220.0,
+   "sircupa": 28332.0,
+   "sirtac": 176238.0,
+   "desvio_suma_pct": 0.0,
+   "archivo": "Gacetilla_Recaudacion_Mensual_08_Ago_2026.pdf"
   }
  },
  "reconstruido_2022": {

@@ -1,0 +1,865 @@
+{
+  "verificado_en": "2026-09-08",
+  "metodo": "Colectores actuales mediante transporte HTTP curl real. Registro de URL, estado y SHA de cada respuesta. Sin actualizar caches. La reproducción no basta para descartar cambios de ruta o publicaciones ausentes en una API.",
+  "indicadores": [
+    {
+      "indicador": "tcrm",
+      "resultado": {
+        "valor": 85.51,
+        "unidad": "Índice (base dic-2015=100)",
+        "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
+        "fecha_dato": "2026-08-01",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 85.51,
+        "unidad": "Índice (base dic-2015=100)",
+        "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
+        "fecha_dato": "2026-08-01",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:01:41",
+        "en_indice": true,
+        "dimension": "competitividad_externa",
+        "puntaje_itcm": 48.8,
+        "puntaje_banda": 48.8,
+        "peso_efectivo": 0.11
+      },
+      "solicitudes": [
+        {
+          "url": "https://www.bcra.gob.ar/Pdfs/PublicacionesEstadisticas/ITCRMSerie.xlsx",
+          "status": 200,
+          "sha256": "168d33dc42dea48d89ff9eafe99c9b0fd0b06d9979a81b47200040195fcff441",
+          "bytes": 3660700
+        }
+      ],
+      "segundos": 2.0,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "rem_ipc_12m",
+      "resultado": {
+        "valor": 21.0,
+        "unidad": "% anual esperado",
+        "fuente": "BCRA — REM, expectativas de inflación (API monetarias)",
+        "fecha_dato": "2026-08-31",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 21.0,
+        "unidad": "% anual esperado",
+        "fuente": "BCRA — REM, expectativas de inflación (API monetarias)",
+        "fecha_dato": "2026-08-31",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:01:42",
+        "en_indice": true,
+        "dimension": "estabilidad_monetaria",
+        "puntaje_itcm": 83.0,
+        "puntaje_banda": 83.0,
+        "peso_efectivo": 0.052,
+        "equivalente_mensual": 1.6,
+        "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.6% mensual, en la misma escala que el IPC."
+      },
+      "solicitudes": [
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29?desde=2026-07-25",
+          "status": 200,
+          "sha256": "498ae7507c999f2953ae20968c72284fde493ed4c258a833380cc2437755572f",
+          "bytes": 209
+        }
+      ],
+      "segundos": 0.1,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "credito_privado",
+      "resultado": {
+        "valor": -0.6,
+        "unidad": "% i.a. real (crédito en pesos)",
+        "fuente": "BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC",
+        "fecha_dato": "2026-07-01",
+        "desactualizado": false,
+        "nominal_ia": 33.0,
+        "moneda": "pesos",
+        "usd_ia": 45.1,
+        "usd_saldo_mm": 24987,
+        "me_en_pesos_ia_real": 19.3,
+        "total_ia_real": 3.7,
+        "detalle_txt": "nominal 33,0% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad (IdC) (mes común: 2026-07) · aparte, la cartera en moneda extranjera 19,3% real medida en pesos y 45,1% en dólares; los dos universos juntos, 3,7% real — al 2026-09-02 (provisorio, no puntúa): -1,6% real con deflactor de 2026-07"
+      },
+      "previo": {
+        "valor": -0.6,
+        "unidad": "% i.a. real (crédito en pesos)",
+        "fuente": "BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC",
+        "fecha_dato": "2026-07-01",
+        "desactualizado": false,
+        "nominal_ia": 33.0,
+        "moneda": "pesos",
+        "usd_ia": 45.1,
+        "usd_saldo_mm": 24987,
+        "me_en_pesos_ia_real": 19.3,
+        "total_ia_real": 3.7,
+        "detalle_txt": "nominal 33,0% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad (IdC) (mes común: 2026-07) · aparte, la cartera en moneda extranjera 19,3% real medida en pesos y 45,1% en dólares; los dos universos juntos, 3,7% real — al 2026-09-02 (provisorio, no puntúa): -1,6% real con deflactor de 2026-07",
+        "obtenido_en": "2026-09-08T03:02:11",
+        "en_indice": true,
+        "dimension": "financiamiento",
+        "puntaje_itcm": 34.8,
+        "puntaje_banda": 34.8,
+        "peso_efectivo": 0.032
+      },
+      "solicitudes": [
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/117?desde=2025-04-20&limit=3000",
+          "status": 200,
+          "sha256": "540e1031dbf127cc3feaa76e48fc6825c1cb220094c9ca4589d97b4dade241a3",
+          "bytes": 17378
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=20&sort=desc",
+          "status": 200,
+          "sha256": "8ee23d5cc38b89f4dbe6e1f31ad58903d8811d9ebf206e57a10310eaf35641b1",
+          "bytes": 1744
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/125?desde=2025-04-20&limit=3000",
+          "status": 200,
+          "sha256": "16bc54e16059b770c97d35f52d36e1b064f84ad867bf4b4fe4b526d1f6289802",
+          "bytes": 16339
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/126?desde=2025-04-20&limit=3000",
+          "status": 200,
+          "sha256": "9e494aec2cf619eee86360d69f756c437b0f553f5702107190f2a6f8be35fbbc",
+          "bytes": 17332
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26?desde=2025-04-20&limit=3000",
+          "status": 200,
+          "sha256": "ccf60612f7602bd496ec3d38e504de042f9f5b5fb493a60f7fb1c0531dbddaff",
+          "bytes": 17650
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/117?desde=2025-08-04",
+          "status": 200,
+          "sha256": "02e72ee3e56cb4fa061729547613bd314cfa5b4bef637f705140609b2100ffc1",
+          "bytes": 13738
+        }
+      ],
+      "segundos": 1.4,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "ipc_total",
+      "resultado": {
+        "valor": 2.11,
+        "unidad": "% mensual",
+        "fuente": "INDEC — IPC nacional (vía datos.gob.ar)",
+        "fecha_dato": "2026-07-01",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 2.11,
+        "unidad": "% mensual",
+        "fuente": "INDEC — IPC nacional (vía datos.gob.ar)",
+        "fecha_dato": "2026-07-01",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:01:07",
+        "en_indice": true,
+        "dimension": "estabilidad_monetaria",
+        "puntaje_itcm": 72.8,
+        "puntaje_banda": 72.8,
+        "peso_efectivo": 0.156
+      },
+      "solicitudes": [
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=2&sort=desc",
+          "status": 200,
+          "sha256": "c0c03e8d8c0e78999c73aa11d10635a97849dd543b999fb62ad5648db2be6f6d",
+          "bytes": 1252
+        }
+      ],
+      "segundos": 0.6,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "reservas_bcra",
+      "resultado": {
+        "valor": 11962.0,
+        "unidad": "Millones de USD",
+        "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
+        "fecha_dato": "2026-07-31",
+        "netas_sdds_estricto": 5820.0,
+        "depositos_tesoro": 3606.0,
+        "bopreal_12m": 2537.0,
+        "reservas_brutas": 47599.0,
+        "drenaje_prestamos_dep": -20028.0,
+        "drenaje_swaps": -19254.0,
+        "drenaje_repos": -2498.0,
+        "metodo": "sdds+tesoro+bopreal",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 11962.0,
+        "unidad": "Millones de USD",
+        "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
+        "fecha_dato": "2026-07-31",
+        "netas_sdds_estricto": 5820.0,
+        "depositos_tesoro": 3606.0,
+        "bopreal_12m": 2537.0,
+        "reservas_brutas": 47599.0,
+        "drenaje_prestamos_dep": -20028.0,
+        "drenaje_swaps": -19254.0,
+        "drenaje_repos": -2498.0,
+        "metodo": "sdds+tesoro+bopreal",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:01:17",
+        "en_indice": true,
+        "dimension": "financiamiento",
+        "puntaje_itcm": 67.8,
+        "puntaje_banda": 67.8,
+        "peso_efectivo": 0.0544
+      },
+      "solicitudes": [
+        {
+          "url": "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/temp0926.pdf",
+          "status": 404,
+          "sha256": "3e27d5d75931d34ad9aedd336d7a82d5bf02663ebc9acd9858c97e8bf64f44fe",
+          "bytes": 59917
+        },
+        {
+          "url": "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/temp0826.pdf",
+          "status": 404,
+          "sha256": "83931b4608ad8e55832811694ffc31a8a67f58a0489a9f3883be7d48e7887ae9",
+          "bytes": 60304
+        },
+        {
+          "url": "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/temp0726.pdf",
+          "status": 200,
+          "sha256": "5a7ef60bed7e9fe8fc728a96e4685112476700debe57d824683695bb00c0a28a",
+          "bytes": 175447
+        },
+        {
+          "url": "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/balbcrhis.xls",
+          "status": 200,
+          "sha256": "52f29eac81cb21546f031b97b11d12a21ded5348760ee5738009ee03b86fdf4b",
+          "bytes": 832512
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1?desde=2026-07-25",
+          "status": 200,
+          "sha256": "81e6b3ea175b3a04e2b5430e9ae8e7723125a93efa5f36f21ee2e312f7a359aa",
+          "bytes": 1489
+        }
+      ],
+      "segundos": 6.4,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "idc",
+      "resultado": {
+        "valor": -0.33,
+        "unidad": "σ vs. su historia",
+        "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
+        "fecha_dato": "2026-07-01",
+        "componentes": {
+          "precio": 0.36,
+          "volumen": -0.19,
+          "asignacion": -1.19
+        },
+        "niveles": {
+          "tasa_real_pp": -0.47,
+          "dep_real_ia_pct": -2.3,
+          "holgura_pct": 16.5
+        },
+        "ventana": "2017-12 → 2026-07 (104 meses)",
+        "badlar_real_mensual": -0.47,
+        "banda_idc": "amarillo",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": -0.33,
+        "unidad": "σ vs. su historia",
+        "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
+        "fecha_dato": "2026-07-01",
+        "componentes": {
+          "precio": 0.36,
+          "volumen": -0.19,
+          "asignacion": -1.19
+        },
+        "niveles": {
+          "tasa_real_pp": -0.47,
+          "dep_real_ia_pct": -2.3,
+          "holgura_pct": 16.5
+        },
+        "ventana": "2017-12 → 2026-07 (104 meses)",
+        "badlar_real_mensual": -0.47,
+        "banda_idc": "amarillo",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:01:21",
+        "en_indice": true,
+        "dimension": "financiamiento",
+        "puntaje_itcm": 49.0,
+        "puntaje_banda": 49.0,
+        "peso_efectivo": 0.0336
+      },
+      "solicitudes": [
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7?desde=2016-06-22&limit=3000",
+          "status": 200,
+          "sha256": "94e8ff6c3f2e83d00d49ea0f45c5166b97dd6b7ecbf189f6b0a63feaa9599b2a",
+          "bytes": 114431
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/100?desde=2016-06-22&limit=3000",
+          "status": 200,
+          "sha256": "7a2b1c529383f9409e257398feb59d471407a68394f1b21f1bde55e9e9e1549c",
+          "bytes": 127768
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/117?desde=2016-06-22&limit=3000",
+          "status": 200,
+          "sha256": "5f6a7db4a1b89479e663ab02197aa5bd5812b6f7960a0266351521f2f55323c5",
+          "bytes": 127176
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=126&sort=desc",
+          "status": 200,
+          "sha256": "08bf139c00da099f627467767ba94fb0805a4bbecc6a05221c9ccc1f1bd005fa",
+          "bytes": 4253
+        }
+      ],
+      "segundos": 1.6,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "emae_ia",
+      "resultado": {
+        "valor": 2.69,
+        "unidad": "% i.a.",
+        "fuente": "INDEC — EMAE (vía datos.gob.ar)",
+        "fecha_dato": "2026-06-01",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 2.69,
+        "unidad": "% i.a.",
+        "fuente": "INDEC — EMAE (vía datos.gob.ar)",
+        "fecha_dato": "2026-06-01",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:01:23",
+        "en_indice": true,
+        "dimension": "actividad",
+        "puntaje_itcm": 69.5,
+        "puntaje_banda": 69.5,
+        "peso_efectivo": 0.066
+      },
+      "solicitudes": [
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=143.3_ICE_SERVIA_2004_A_25&format=json&limit=2&sort=desc",
+          "status": 200,
+          "sha256": "f0f19bbbc3070c8592bdcc7bbbb030c62e0350f26c52d9b81ccc76f6f35b1996",
+          "bytes": 1205
+        }
+      ],
+      "segundos": 0.6,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "emae_difusion",
+      "resultado": {
+        "valor": 80.0,
+        "unidad": "% de sectores en crecimiento i.a.",
+        "fuente": "INDEC — EMAE apertura sectorial (vía datos.gob.ar)",
+        "fecha_dato": "2026-06-01",
+        "desactualizado": false,
+        "sectores_totales": 15,
+        "sectores_crecen": 12,
+        "sectores_por_variacion": [
+          {
+            "sector": "Pesca",
+            "var_ia": 247.6
+          },
+          {
+            "sector": "Explotación de minas y canteras",
+            "var_ia": 15.57
+          },
+          {
+            "sector": "Intermediación financiera",
+            "var_ia": 5.08
+          },
+          {
+            "sector": "Agricultura, ganadería, caza y silvicultura",
+            "var_ia": 4.62
+          },
+          {
+            "sector": "Construcción",
+            "var_ia": 2.8
+          },
+          {
+            "sector": "Industria manufacturera",
+            "var_ia": 1.89
+          },
+          {
+            "sector": "Hoteles y restaurantes",
+            "var_ia": 1.78
+          },
+          {
+            "sector": "Transporte, almacenamiento y comunicaciones",
+            "var_ia": 1.55
+          },
+          {
+            "sector": "Inmobiliarias, empresariales y alquiler",
+            "var_ia": 1.3
+          },
+          {
+            "sector": "Servicios sociales (salud)",
+            "var_ia": 1.04
+          },
+          {
+            "sector": "Comercio mayorista, minorista y reparaciones",
+            "var_ia": 0.84
+          },
+          {
+            "sector": "Servicios comunitarios",
+            "var_ia": 0.39
+          },
+          {
+            "sector": "Enseñanza",
+            "var_ia": -0.11
+          },
+          {
+            "sector": "Electricidad, gas y agua",
+            "var_ia": -0.41
+          },
+          {
+            "sector": "Administración pública, defensa y seguridad social",
+            "var_ia": -1.52
+          }
+        ],
+        "detalle_txt": "12 de 15 sectores crecen · lidera Pesca (247,6%) · el que más cae es Administración pública, defensa y seguridad social (-1,52%)"
+      },
+      "previo": {
+        "valor": 80.0,
+        "unidad": "% de sectores en crecimiento i.a.",
+        "fuente": "INDEC — EMAE apertura sectorial (vía datos.gob.ar)",
+        "fecha_dato": "2026-06-01",
+        "desactualizado": false,
+        "sectores_totales": 15,
+        "sectores_crecen": 12,
+        "sectores_por_variacion": [
+          {
+            "sector": "Pesca",
+            "var_ia": 247.6
+          },
+          {
+            "sector": "Explotación de minas y canteras",
+            "var_ia": 15.57
+          },
+          {
+            "sector": "Intermediación financiera",
+            "var_ia": 5.08
+          },
+          {
+            "sector": "Agricultura, ganadería, caza y silvicultura",
+            "var_ia": 4.62
+          },
+          {
+            "sector": "Construcción",
+            "var_ia": 2.8
+          },
+          {
+            "sector": "Industria manufacturera",
+            "var_ia": 1.89
+          },
+          {
+            "sector": "Hoteles y restaurantes",
+            "var_ia": 1.78
+          },
+          {
+            "sector": "Transporte, almacenamiento y comunicaciones",
+            "var_ia": 1.55
+          },
+          {
+            "sector": "Inmobiliarias, empresariales y alquiler",
+            "var_ia": 1.3
+          },
+          {
+            "sector": "Servicios sociales (salud)",
+            "var_ia": 1.04
+          },
+          {
+            "sector": "Comercio mayorista, minorista y reparaciones",
+            "var_ia": 0.84
+          },
+          {
+            "sector": "Servicios comunitarios",
+            "var_ia": 0.39
+          },
+          {
+            "sector": "Enseñanza",
+            "var_ia": -0.11
+          },
+          {
+            "sector": "Electricidad, gas y agua",
+            "var_ia": -0.41
+          },
+          {
+            "sector": "Administración pública, defensa y seguridad social",
+            "var_ia": -1.52
+          }
+        ],
+        "detalle_txt": "12 de 15 sectores crecen · lidera Pesca (247,6%) · el que más cae es Administración pública, defensa y seguridad social (-1,52%)",
+        "obtenido_en": "2026-09-08T03:01:30",
+        "en_indice": true,
+        "dimension": "actividad",
+        "puntaje_itcm": 80.0,
+        "puntaje_banda": 80.0,
+        "peso_efectivo": 0.022
+      },
+      "solicitudes": [
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=11.3_ISOM_2004_M_39%2C11.3_VIPAA_2004_M_5%2C11.3_ISD_2004_M_26%2C11.3_VMASD_2004_M_23%2C11.3_ITC_2004_M_21%2C11.3_VMATC_2004_M_12%2C11.3_AGCS_2004_M_41%2C11.3_P_2004_M_20%2C11.3_EMC_2004_M_25%2C11.3_IM_2004_M_25%2C11.3_SEGA_2004_M_48%2C11.3_C_2004_M_60%2C11.3_CMMR_2004_M_10%2C11.3_HR_2004_M_24%2C11.3_TAC_2004_M_60&format=json&limit=30&sort=desc",
+          "status": 200,
+          "sha256": "f53b2b79f511ab414bb460f0284f072d0cfc2dff5e4effa7063f8eb049deab05",
+          "bytes": 23705
+        }
+      ],
+      "segundos": 6.7,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "ipi_manufacturero",
+      "resultado": {
+        "valor": -2.0,
+        "unidad": "% i.a. (promedio 3 meses)",
+        "fuente": "INDEC — IPI manufacturero, nivel general (vía datos.gob.ar)",
+        "fecha_dato": "2026-06-01",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": -2.0,
+        "unidad": "% i.a. (promedio 3 meses)",
+        "fuente": "INDEC — IPI manufacturero, nivel general (vía datos.gob.ar)",
+        "fecha_dato": "2026-06-01",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:01:31",
+        "en_indice": true,
+        "dimension": "actividad",
+        "puntaje_itcm": 32.0,
+        "puntaje_banda": 32.0,
+        "peso_efectivo": 0.022
+      },
+      "solicitudes": [
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=453.1_SERIE_ORIGNAL_0_0_14_46&format=json&limit=5000&sort=desc",
+          "status": 200,
+          "sha256": "89f4aad1cf7bdb948e498d5a3fc6388240fbdbbb74bab7d36aeb60f312cbd15a",
+          "bytes": 5633
+        }
+      ],
+      "segundos": 0.6,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "recaudacion",
+      "resultado": {
+        "valor": 88.2,
+        "unidad": "índice (100 = 4T-2023)",
+        "fuente": "Sec. Hacienda — recaudación DGI (vía datos.gob.ar) + Comisión Arbitral del Convenio Multilateral",
+        "fecha_dato": "2026-06-01",
+        "aporte_provincial_pct": 15.5,
+        "detalle_txt": "La base imponible real está en 88,2 sobre una base de 100 en el cuarto trimestre de 2023, es decir 11,8% por debajo. Meses previos: 2026-03: 92,0 · 2026-04: 95,4 · 2026-05: 97,7. Los impuestos provinciales del Convenio Multilateral aportan 15,5% de la base medida.",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 88.2,
+        "unidad": "índice (100 = 4T-2023)",
+        "fuente": "Sec. Hacienda — recaudación DGI (vía datos.gob.ar) + Comisión Arbitral del Convenio Multilateral",
+        "fecha_dato": "2026-06-01",
+        "aporte_provincial_pct": 15.5,
+        "detalle_txt": "La base imponible real está en 88,2 sobre una base de 100 en el cuarto trimestre de 2023, es decir 11,8% por debajo. Meses previos: 2026-03: 92,0 · 2026-04: 95,4 · 2026-05: 97,7. Los impuestos provinciales del Convenio Multilateral aportan 15,5% de la base medida.",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:01:34",
+        "en_indice": true,
+        "dimension": "viabilidad_fiscal_comercial",
+        "puntaje_itcm": 43.0,
+        "puntaje_banda": 43.0,
+        "peso_efectivo": 0.072
+      },
+      "solicitudes": [
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=172.3_SOTAL_DDGI_M_0_0_12&format=json&limit=80&sort=desc",
+          "status": 200,
+          "sha256": "a45802680ef34dfd382ac8cb3146f751aa87aa31e513af804be30882df3ef396",
+          "bytes": 3794
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=80&sort=desc",
+          "status": 200,
+          "sha256": "ae40610b1bac7fcc3ac87b598b27f5a7c7a6a302804baa6d5b013e4b63c5acb2",
+          "bytes": 3319
+        }
+      ],
+      "segundos": 1.1,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "desequilibrio_monetario",
+      "resultado": {
+        "valor": 58.27,
+        "unidad": "pts de tensión (0-100)",
+        "fuente": "BCRA (M2 transaccional privado, circulante, depósitos privados en pesos y en dólares, y Mercado de Cambios)",
+        "fecha_dato": "2026-07-01",
+        "desactualizado": false,
+        "puntaje_itcm": 41.7,
+        "componente_a": 32.92,
+        "componente_b": 3152.0,
+        "posicion_a": 0.5131,
+        "posicion_b": 0.654,
+        "celda": "solo_presion"
+      },
+      "previo": {
+        "valor": 58.27,
+        "unidad": "pts de tensión (0-100)",
+        "fuente": "BCRA (M2 transaccional privado, circulante, depósitos privados en pesos y en dólares, y Mercado de Cambios)",
+        "fecha_dato": "2026-07-01",
+        "desactualizado": false,
+        "puntaje_itcm": 41.7,
+        "componente_a": 32.92,
+        "componente_b": 3152.0,
+        "posicion_a": 0.5131,
+        "posicion_b": 0.654,
+        "celda": "solo_presion",
+        "obtenido_en": "2026-09-08T03:02:03",
+        "en_indice": true,
+        "dimension": "estabilidad_monetaria",
+        "puntaje_banda": 41.7,
+        "peso_efectivo": 0.052
+      },
+      "solicitudes": [
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/197?desde=2023-04-07&limit=3000",
+          "status": 200,
+          "sha256": "b09ef557890a597b03a33f35c8bedca914066d6bebb4cf97d47e3e68771fc276",
+          "bytes": 42956
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/17?desde=2023-04-07&limit=3000",
+          "status": 200,
+          "sha256": "c2a49e795e148b35ec66a31aed08d178983df6a1b0616da180bbf5496e8a3235",
+          "bytes": 42730
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/100?desde=2023-04-07&limit=3000",
+          "status": 200,
+          "sha256": "2e3b9cd3227af26c40d33115acfe77650a8559464287a629e17396c2cd23e957",
+          "bytes": 43154
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/104?desde=2023-04-07&limit=3000",
+          "status": 200,
+          "sha256": "f9c648ddc6d705bf895923fa80def57a9a96a64ce79a2b9cbe356898411fc98c",
+          "bytes": 42802
+        },
+        {
+          "url": "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/informes/anexo-estadistico-mercado-cambios-balance-cambiario.xlsx",
+          "status": 200,
+          "sha256": "bcfb49ecaf870cf497ee3bc16113439d8f017bd263ec7c65aa7af423ad4575de",
+          "bytes": 18478511
+        }
+      ],
+      "segundos": 7.4,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "iai",
+      "resultado": {
+        "valor": -0.18,
+        "unidad": "% i.a. ponderado",
+        "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)",
+        "fecha_dato": "2026-06-01",
+        "desactualizado": false,
+        "componentes": {
+          "isac": 4.0,
+          "bk_importados": -8.0
+        },
+        "pesos_nota": "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)",
+        "detalle_txt": "-0.2 % i.a. = ISAC +4.0% · BK importados -8.0% (mes común: 2026-06)"
+      },
+      "previo": {
+        "valor": -0.18,
+        "unidad": "% i.a. ponderado",
+        "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)",
+        "fecha_dato": "2026-06-01",
+        "desactualizado": false,
+        "componentes": {
+          "isac": 4.0,
+          "bk_importados": -8.0
+        },
+        "pesos_nota": "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)",
+        "detalle_txt": "-0.2 % i.a. = ISAC +4.0% · BK importados -8.0% (mes común: 2026-06)",
+        "obtenido_en": "2026-09-08T03:02:04",
+        "en_indice": true,
+        "dimension": "inversion",
+        "puntaje_itcm": 59.2,
+        "puntaje_banda": 59.2,
+        "peso_efectivo": 0.12
+      },
+      "solicitudes": [
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=33.2_ISAC_NIVELRAL_0_M_18_63&format=json&limit=16&sort=desc",
+          "status": 200,
+          "sha256": "8c5295467d10e9d55e5a9716540f3e2ca443619c8d6f7a7cd7b2b410175f07c5",
+          "bytes": 1807
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=74.3_IIBCA_0_M_32&format=json&limit=16&sort=desc",
+          "status": 200,
+          "sha256": "ce1d2daa9cf602f4ac8b110023c7211565b7f2ea5ee3d81a115c45f1e9421772",
+          "bytes": 1546
+        }
+      ],
+      "segundos": 1.1,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "costo_financiamiento_tesoro",
+      "resultado": {
+        "valor": 4.13,
+        "unidad": "% real anual (TIREA vs. inflación esperada REM)",
+        "fuente": "Sec. de Finanzas — colocaciones de deuda + BCRA (REM)",
+        "fecha_dato": "2026-07-01",
+        "tirea_nominal": 26.83,
+        "inflacion_esperada": 21.8,
+        "colocaciones": 2,
+        "inventario_colocaciones": [
+          {
+            "instrumento": "LECAP/$/30-11-2026",
+            "tirea": 25.41,
+            "valor_efectivo": 2382801.223,
+            "colocacion": "2026-07-17",
+            "precio_corte": 1194.0,
+            "reapertura": true,
+            "tirea_contractual": 31.37
+          },
+          {
+            "instrumento": "LECAP/$/16-10-2026",
+            "tirea": 27.57,
+            "valor_efectivo": 4612304.505,
+            "colocacion": "2026-07-31",
+            "precio_corte": 1000.0,
+            "reapertura": false,
+            "tirea_contractual": 27.57
+          }
+        ],
+        "detalle_txt": "2026-07: TIREA de corte 26.8% en 2 colocación/es a tasa fija en pesos contra inflación esperada 21.8% → +4.1% real",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 4.13,
+        "unidad": "% real anual (TIREA vs. inflación esperada REM)",
+        "fuente": "Sec. de Finanzas — colocaciones de deuda + BCRA (REM)",
+        "fecha_dato": "2026-07-01",
+        "tirea_nominal": 26.83,
+        "inflacion_esperada": 21.8,
+        "colocaciones": 2,
+        "inventario_colocaciones": [
+          {
+            "instrumento": "LECAP/$/30-11-2026",
+            "tirea": 25.41,
+            "valor_efectivo": 2382801.223,
+            "colocacion": "2026-07-17",
+            "precio_corte": 1194.0,
+            "reapertura": true,
+            "tirea_contractual": 31.37
+          },
+          {
+            "instrumento": "LECAP/$/16-10-2026",
+            "tirea": 27.57,
+            "valor_efectivo": 4612304.505,
+            "colocacion": "2026-07-31",
+            "precio_corte": 1000.0,
+            "reapertura": false,
+            "tirea_contractual": 27.57
+          }
+        ],
+        "detalle_txt": "2026-07: TIREA de corte 26.8% en 2 colocación/es a tasa fija en pesos contra inflación esperada 21.8% → +4.1% real",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:02:13",
+        "en_indice": true,
+        "dimension": "financiamiento",
+        "puntaje_itcm": 95.3,
+        "puntaje_banda": 95.3,
+        "peso_efectivo": 0.04
+      },
+      "solicitudes": [
+        {
+          "url": "https://www.argentina.gob.ar/economia/finanzas/deudapublica/colocacionesdedeuda",
+          "status": 200,
+          "sha256": "7ed9fb3aacc91eb78f172beb712a15502efacedee625f5e57b5a4738e2407a25",
+          "bytes": 33584
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/colocaciones_31-12-2025_0.xlsx",
+          "status": 200,
+          "sha256": "c5a1544e723514e1293a58eb0484c54f98f7be8827148251dc6e186f69082a9c",
+          "bytes": 196087
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/colocaciones_31-07-26_1.xlsx",
+          "status": 200,
+          "sha256": "803d06f84b386822c0a5c0e1d7f4f2ba330cd6b3f1f477951e7459bfcf5d27e1",
+          "bytes": 120130
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29?desde=2023-05-27",
+          "status": 200,
+          "sha256": "16f02bd738f658aa7462987903b64f57ed4c0d5629e9112cf23d2bc982ff194f",
+          "bytes": 1969
+        }
+      ],
+      "segundos": 0.5,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "resultado_primario",
+      "resultado": {
+        "valor": 5.96,
+        "unidad": "% de la recaudación (acum. 12 meses)",
+        "fuente": "Sec. de Hacienda — IMIG (resultado primario) + recaudación (vía datos.gob.ar)",
+        "fecha_dato": "2026-07-01",
+        "detalle_txt": "2026-07: superávit primario de 6.0% de la recaudación acumulada de doce meses",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 5.96,
+        "unidad": "% de la recaudación (acum. 12 meses)",
+        "fuente": "Sec. de Hacienda — IMIG (resultado primario) + recaudación (vía datos.gob.ar)",
+        "fecha_dato": "2026-07-01",
+        "detalle_txt": "2026-07: superávit primario de 6.0% de la recaudación acumulada de doce meses",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:02:14",
+        "en_indice": true,
+        "dimension": "viabilidad_fiscal_comercial",
+        "puntaje_itcm": 84.8,
+        "puntaje_banda": 84.8,
+        "peso_efectivo": 0.12
+      },
+      "solicitudes": [
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=452.3_RESULTADO_RIO_0_M_18_54&format=json&limit=90&sort=desc",
+          "status": 200,
+          "sha256": "4aba7dfefc0bb87b04be6596045063ffecb705230091717e86ff4d3bb83ca93d",
+          "bytes": 4355
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=172.3_TL_RECAION_M_0_0_17&format=json&limit=90&sort=desc",
+          "status": 200,
+          "sha256": "6a8819192c1e8f15a266ded636d6cc2af7683a75c2d4c6d30e3c6d8b5029a859",
+          "bytes": 4173
+        }
+      ],
+      "segundos": 1.2,
+      "coincide_valor_y_fecha": true
+    }
+  ]
+}

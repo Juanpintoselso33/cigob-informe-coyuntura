@@ -74,7 +74,8 @@ def aporte_sobre_tendencia(indice: dict, externa: dict, min_meses: int = 18) -> 
     n = len(meses)
     if n < min_meses:
         return {"n": n, "suficiente": False}
-    t = [float(i) for i in range(n)]
+    ordinales = [int(m[:4]) * 12 + int(m[5:7]) - 1 for m in meses]
+    t = [float(m - ordinales[0]) for m in ordinales]
     x = [indice[m] for m in meses]
     y = [externa[m] for m in meses]
     _, r2_tend = ols(y, [t])

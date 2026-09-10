@@ -1,0 +1,873 @@
+{
+  "fecha_verificacion": "2026-09-08",
+  "estado": "corregido_original_integrado",
+  "fuente_original": {
+    "url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_ipc_aperturas.xls",
+    "sha256": "e0d5eec47a189099f19590e65f33bdf4206b03c41563327508c41ca45aaf1bef",
+    "hoja": "Índices aperturas",
+    "region": "GBA",
+    "fila_alquiler_excel": 29,
+    "fila_general_excel": 8
+  },
+  "metadata_api": [
+    {
+      "frequency": "month",
+      "start_date": "2026-07-01",
+      "end_date": "2016-04-01"
+    },
+    {
+      "catalog": {
+        "title": "Datos Programación Macroeconómica"
+      },
+      "dataset": {
+        "title": "Índice de Precios al Consumidor GBA (IPC-GBA). Base diciembre 2016.",
+        "description": "Índice de Precios al Consumidor del Gran Buenos Aires. Apertura por capítulos. Base diciembre 2016.",
+        "issued": "2017-09-28",
+        "source": "Instituto Nacional de Estadística y Censos (INDEC)"
+      },
+      "distribution": {
+        "title": "Índice de Precios al Consumidor de GBA, principales aperturas. Base diciembre 2016. Valores mensuales",
+        "downloadURL": "https://infra.datos.gob.ar/catalog/sspm/dataset/101/distribution/101.7/download/indice-precios-al-consumidor-gba-principales-aperturas-base-diciembre-2016-mensual.csv"
+      },
+      "field": {
+        "description": "IPC-GBA. Alquiler de la vivienda. Base abr 2016. Mensual",
+        "id": "104.1_I2RE_2016_M_25",
+        "units": "Índice Dic-2016=100",
+        "representation_mode": "value",
+        "representation_mode_units": "Índice Dic-2016=100"
+      }
+    }
+  ],
+  "base_ambas_series_dic2016": {
+    "original": 100.0,
+    "api": 100.0
+  },
+  "julio": {
+    "variacion_mensual_original": 3.924244918223496,
+    "variacion_api": 1.474988428083801,
+    "indice_relativo_4t2023_original": 50.31892638653061,
+    "base_alquiler": 1411.7082333333333,
+    "base_general_gba": 2889.2142
+  },
+  "historia_comparada": [
+    {
+      "fecha": "2016-12-01",
+      "alquiler_original": 100.0,
+      "general_gba_original": 100.0,
+      "alquiler_api": 100.0,
+      "general_gba_api": 100.0
+    },
+    {
+      "fecha": "2017-01-01",
+      "alquiler_original": 102.0834,
+      "general_gba_original": 101.313,
+      "alquiler_api": 99.9812,
+      "general_gba_api": 101.313
+    },
+    {
+      "fecha": "2017-02-01",
+      "alquiler_original": 104.9897,
+      "general_gba_original": 103.8085,
+      "alquiler_api": 108.4042,
+      "general_gba_api": 103.8085
+    },
+    {
+      "fecha": "2017-03-01",
+      "alquiler_original": 107.0834,
+      "general_gba_original": 106.2627,
+      "alquiler_api": 110.7756,
+      "general_gba_api": 106.2627
+    },
+    {
+      "fecha": "2017-04-01",
+      "alquiler_original": 109.4185,
+      "general_gba_original": 109.0613,
+      "alquiler_api": 115.889,
+      "general_gba_api": 109.0613
+    },
+    {
+      "fecha": "2017-05-01",
+      "alquiler_original": 111.8493,
+      "general_gba_original": 110.4607,
+      "alquiler_api": 118.0458,
+      "general_gba_api": 110.4607
+    },
+    {
+      "fecha": "2017-06-01",
+      "alquiler_original": 114.2723,
+      "general_gba_original": 111.9943,
+      "alquiler_api": 120.9192,
+      "general_gba_api": 111.9943
+    },
+    {
+      "fecha": "2017-07-01",
+      "alquiler_original": 116.8074,
+      "general_gba_original": 113.9199,
+      "alquiler_api": 123.9173,
+      "general_gba_api": 113.9199
+    },
+    {
+      "fecha": "2017-08-01",
+      "alquiler_original": 119.277,
+      "general_gba_original": 115.6031,
+      "alquiler_api": 127.1644,
+      "general_gba_api": 115.6031
+    },
+    {
+      "fecha": "2017-09-01",
+      "alquiler_original": 121.9879,
+      "general_gba_original": 117.9656,
+      "alquiler_api": 128.2415,
+      "general_gba_api": 117.9656
+    },
+    {
+      "fecha": "2017-10-01",
+      "alquiler_original": 123.9424,
+      "general_gba_original": 119.4985,
+      "alquiler_api": 128.9128,
+      "general_gba_api": 119.4985
+    },
+    {
+      "fecha": "2017-11-01",
+      "alquiler_original": 127.2592,
+      "general_gba_original": 120.8941,
+      "alquiler_api": 130.1608,
+      "general_gba_api": 120.8941
+    },
+    {
+      "fecha": "2017-12-01",
+      "alquiler_original": 130.1058,
+      "general_gba_original": 125.0392,
+      "alquiler_api": 154.7145,
+      "general_gba_api": 125.0392
+    },
+    {
+      "fecha": "2018-01-01",
+      "alquiler_original": 132.5224,
+      "general_gba_original": 127.0147,
+      "alquiler_api": 152.2688,
+      "general_gba_api": 127.0147
+    },
+    {
+      "fecha": "2018-02-01",
+      "alquiler_original": 136.217,
+      "general_gba_original": 130.2913,
+      "alquiler_api": 159.7757,
+      "general_gba_api": 130.2913
+    },
+    {
+      "fecha": "2018-03-01",
+      "alquiler_original": 138.7211,
+      "general_gba_original": 133.5028,
+      "alquiler_api": 161.3686,
+      "general_gba_api": 133.5028
+    },
+    {
+      "fecha": "2018-04-01",
+      "alquiler_original": 141.1518,
+      "general_gba_original": 136.938,
+      "alquiler_api": 172.2109,
+      "general_gba_api": 136.938
+    },
+    {
+      "fecha": "2018-05-01",
+      "alquiler_original": 144.6152,
+      "general_gba_original": 139.58,
+      "alquiler_api": 170.0052,
+      "general_gba_api": 139.58
+    },
+    {
+      "fecha": "2018-06-01",
+      "alquiler_original": 148.6714,
+      "general_gba_original": 145.0582,
+      "alquiler_api": 176.5691,
+      "general_gba_api": 145.0582
+    },
+    {
+      "fecha": "2018-07-01",
+      "alquiler_original": 151.3089,
+      "general_gba_original": 149.1178,
+      "alquiler_api": 176.5774,
+      "general_gba_api": 149.1178
+    },
+    {
+      "fecha": "2018-08-01",
+      "alquiler_original": 154.3268,
+      "general_gba_original": 155.1747,
+      "alquiler_api": 191.835,
+      "general_gba_api": 155.1747
+    },
+    {
+      "fecha": "2018-09-01",
+      "alquiler_original": 158.0753,
+      "general_gba_original": 165.4903,
+      "alquiler_api": 193.24,
+      "general_gba_api": 165.4903
+    },
+    {
+      "fecha": "2018-10-01",
+      "alquiler_original": 160.932,
+      "general_gba_original": 173.8549,
+      "alquiler_api": 206.9187,
+      "general_gba_api": 173.8549
+    },
+    {
+      "fecha": "2018-11-01",
+      "alquiler_original": 163.5089,
+      "general_gba_original": 178.877,
+      "alquiler_api": 208.9736,
+      "general_gba_api": 178.877
+    },
+    {
+      "fecha": "2018-12-01",
+      "alquiler_original": 166.7797,
+      "general_gba_original": 183.9381,
+      "alquiler_api": 218.8376,
+      "general_gba_api": 183.9381
+    },
+    {
+      "fecha": "2019-01-01",
+      "alquiler_original": 170.9399,
+      "general_gba_original": 189.1236,
+      "alquiler_api": 221.858,
+      "general_gba_api": 189.1236
+    },
+    {
+      "fecha": "2019-02-01",
+      "alquiler_original": 175.0847,
+      "general_gba_original": 196.3597,
+      "alquiler_api": 237.6627,
+      "general_gba_api": 196.3597
+    },
+    {
+      "fecha": "2019-03-01",
+      "alquiler_original": 178.8148,
+      "general_gba_original": 205.7679,
+      "alquiler_api": 246.3054,
+      "general_gba_api": 205.7679
+    },
+    {
+      "fecha": "2019-04-01",
+      "alquiler_original": 184.0643,
+      "general_gba_original": 212.4469,
+      "alquiler_api": 254.7437,
+      "general_gba_api": 212.4469
+    },
+    {
+      "fecha": "2019-05-01",
+      "alquiler_original": 188.1844,
+      "general_gba_original": 218.8793,
+      "alquiler_api": 263.5952,
+      "general_gba_api": 218.8793
+    },
+    {
+      "fecha": "2019-06-01",
+      "alquiler_original": 192.3408,
+      "general_gba_original": 224.6105,
+      "alquiler_api": 270.5535,
+      "general_gba_api": 224.6105
+    },
+    {
+      "fecha": "2019-07-01",
+      "alquiler_original": 197.0157,
+      "general_gba_original": 229.4286,
+      "alquiler_api": 276.9197,
+      "general_gba_api": 229.4286
+    },
+    {
+      "fecha": "2019-08-01",
+      "alquiler_original": 202.4586,
+      "general_gba_original": 238.3069,
+      "alquiler_api": 281.3647,
+      "general_gba_api": 238.3069
+    },
+    {
+      "fecha": "2019-09-01",
+      "alquiler_original": 206.7147,
+      "general_gba_original": 252.1482,
+      "alquiler_api": 285.7905,
+      "general_gba_api": 252.1482
+    },
+    {
+      "fecha": "2019-10-01",
+      "alquiler_original": 211.7529,
+      "general_gba_original": 260.2101,
+      "alquiler_api": 291.3924,
+      "general_gba_api": 260.2101
+    },
+    {
+      "fecha": "2019-11-01",
+      "alquiler_original": 216.0979,
+      "general_gba_original": 270.8019,
+      "alquiler_api": 296.2231,
+      "general_gba_api": 270.8019
+    },
+    {
+      "fecha": "2019-12-01",
+      "alquiler_original": 219.7458,
+      "general_gba_original": 281.1775,
+      "alquiler_api": 304.2973,
+      "general_gba_api": 281.1775
+    },
+    {
+      "fecha": "2020-01-01",
+      "alquiler_original": 224.7543,
+      "general_gba_original": 286.4913,
+      "alquiler_api": 302.4597,
+      "general_gba_api": 286.4913
+    },
+    {
+      "fecha": "2020-02-01",
+      "alquiler_original": 230.7931,
+      "general_gba_original": 291.737,
+      "alquiler_api": 305.987,
+      "general_gba_api": 291.737
+    },
+    {
+      "fecha": "2020-03-01",
+      "alquiler_original": 237.435,
+      "general_gba_original": 302.2274,
+      "alquiler_api": 312.0891,
+      "general_gba_api": 302.2274
+    },
+    {
+      "fecha": "2020-04-01",
+      "alquiler_original": 240.1874,
+      "general_gba_original": 306.4483,
+      "alquiler_api": 312.7519,
+      "general_gba_api": 306.4483
+    },
+    {
+      "fecha": "2020-05-01",
+      "alquiler_original": 239.6559,
+      "general_gba_original": 311.0922,
+      "alquiler_api": 313.5388,
+      "general_gba_api": 311.0922
+    },
+    {
+      "fecha": "2020-06-01",
+      "alquiler_original": 243.6906,
+      "general_gba_original": 317.4661,
+      "alquiler_api": 315.6588,
+      "general_gba_api": 317.4661
+    },
+    {
+      "fecha": "2020-07-01",
+      "alquiler_original": 245.5019,
+      "general_gba_original": 322.6791,
+      "alquiler_api": 317.1731,
+      "general_gba_api": 322.6791
+    },
+    {
+      "fecha": "2020-08-01",
+      "alquiler_original": 250.9998,
+      "general_gba_original": 331.6957,
+      "alquiler_api": 325.1627,
+      "general_gba_api": 331.6957
+    },
+    {
+      "fecha": "2020-09-01",
+      "alquiler_original": 254.6721,
+      "general_gba_original": 340.902,
+      "alquiler_api": 328.7368,
+      "general_gba_api": 340.902
+    },
+    {
+      "fecha": "2020-10-01",
+      "alquiler_original": 264.2728,
+      "general_gba_original": 353.0444,
+      "alquiler_api": 335.9612,
+      "general_gba_api": 353.0444
+    },
+    {
+      "fecha": "2020-11-01",
+      "alquiler_original": 270.5571,
+      "general_gba_original": 363.5381,
+      "alquiler_api": 344.243,
+      "general_gba_api": 363.5381
+    },
+    {
+      "fecha": "2020-12-01",
+      "alquiler_original": 277.5582,
+      "general_gba_original": 377.0507,
+      "alquiler_api": 358.4496,
+      "general_gba_api": 377.0507
+    },
+    {
+      "fecha": "2021-01-01",
+      "alquiler_original": 286.1373,
+      "general_gba_original": 389.4454,
+      "alquiler_api": 355.0014,
+      "general_gba_api": 389.4454
+    },
+    {
+      "fecha": "2021-02-01",
+      "alquiler_original": 294.5284,
+      "general_gba_original": 403.4854,
+      "alquiler_api": 362.9717,
+      "general_gba_api": 403.4854
+    },
+    {
+      "fecha": "2021-03-01",
+      "alquiler_original": 302.7106,
+      "general_gba_original": 424.4539,
+      "alquiler_api": 366.4275,
+      "general_gba_api": 424.4539
+    },
+    {
+      "fecha": "2021-04-01",
+      "alquiler_original": 321.0829,
+      "general_gba_original": 441.8955,
+      "alquiler_api": 381.5934,
+      "general_gba_api": 441.8955
+    },
+    {
+      "fecha": "2021-05-01",
+      "alquiler_original": 332.1374,
+      "general_gba_original": 456.7856,
+      "alquiler_api": 391.89,
+      "general_gba_api": 456.7856
+    },
+    {
+      "fecha": "2021-06-01",
+      "alquiler_original": 342.0757,
+      "general_gba_original": 470.784,
+      "alquiler_api": 400.3266,
+      "general_gba_api": 470.784
+    },
+    {
+      "fecha": "2021-07-01",
+      "alquiler_original": 352.4974,
+      "general_gba_original": 485.3036,
+      "alquiler_api": 414.8198,
+      "general_gba_api": 485.3036
+    },
+    {
+      "fecha": "2021-08-01",
+      "alquiler_original": 359.2718,
+      "general_gba_original": 497.9371,
+      "alquiler_api": 426.6639,
+      "general_gba_api": 497.9371
+    },
+    {
+      "fecha": "2021-09-01",
+      "alquiler_original": 368.4727,
+      "general_gba_original": 517.0425,
+      "alquiler_api": 432.5079,
+      "general_gba_api": 517.0425
+    },
+    {
+      "fecha": "2021-10-01",
+      "alquiler_original": 384.3873,
+      "general_gba_original": 536.5423,
+      "alquiler_api": 445.2315,
+      "general_gba_api": 536.5423
+    },
+    {
+      "fecha": "2021-11-01",
+      "alquiler_original": 391.4287,
+      "general_gba_original": 548.7073,
+      "alquiler_api": 453.1519,
+      "general_gba_api": 548.7073
+    },
+    {
+      "fecha": "2021-12-01",
+      "alquiler_original": 402.5405,
+      "general_gba_original": 570.9981,
+      "alquiler_api": 464.4451,
+      "general_gba_api": 570.9981
+    },
+    {
+      "fecha": "2022-01-01",
+      "alquiler_original": 415.039,
+      "general_gba_original": 593.4219,
+      "alquiler_api": 469.0176,
+      "general_gba_api": 593.4219
+    },
+    {
+      "fecha": "2022-02-01",
+      "alquiler_original": 442.2751,
+      "general_gba_original": 620.5007,
+      "alquiler_api": 480.7991,
+      "general_gba_api": 620.5007
+    },
+    {
+      "fecha": "2022-03-01",
+      "alquiler_original": 458.898,
+      "general_gba_original": 661.8688,
+      "alquiler_api": 521.0635,
+      "general_gba_api": 661.8688
+    },
+    {
+      "fecha": "2022-04-01",
+      "alquiler_original": 488.6577,
+      "general_gba_original": 702.829,
+      "alquiler_api": 546.0704,
+      "general_gba_api": 702.829
+    },
+    {
+      "fecha": "2022-05-01",
+      "alquiler_original": 524.6585,
+      "general_gba_original": 736.3637,
+      "alquiler_api": 561.5937,
+      "general_gba_api": 736.3637
+    },
+    {
+      "fecha": "2022-06-01",
+      "alquiler_original": 549.1632,
+      "general_gba_original": 776.6701,
+      "alquiler_api": 603.7395,
+      "general_gba_api": 776.6701
+    },
+    {
+      "fecha": "2022-07-01",
+      "alquiler_original": 571.8195,
+      "general_gba_original": 833.8894,
+      "alquiler_api": 632.2228,
+      "general_gba_api": 833.8894
+    },
+    {
+      "fecha": "2022-08-01",
+      "alquiler_original": 588.7573,
+      "general_gba_original": 891.851,
+      "alquiler_api": 666.6488,
+      "general_gba_api": 891.851
+    },
+    {
+      "fecha": "2022-09-01",
+      "alquiler_original": 607.3065,
+      "general_gba_original": 945.6836,
+      "alquiler_api": 682.2554,
+      "general_gba_api": 945.6836
+    },
+    {
+      "fecha": "2022-10-01",
+      "alquiler_original": 637.0168,
+      "general_gba_original": 1007.6275,
+      "alquiler_api": 737.5066,
+      "general_gba_api": 1007.6275
+    },
+    {
+      "fecha": "2022-11-01",
+      "alquiler_original": 666.3493,
+      "general_gba_original": 1058.0026,
+      "alquiler_api": 816.5347,
+      "general_gba_api": 1058.0026
+    },
+    {
+      "fecha": "2022-12-01",
+      "alquiler_original": 697.8706,
+      "general_gba_original": 1114.5359,
+      "alquiler_api": 850.8246,
+      "general_gba_api": 1114.5359
+    },
+    {
+      "fecha": "2023-01-01",
+      "alquiler_original": 742.3707,
+      "general_gba_original": 1180.967,
+      "alquiler_api": 917.578,
+      "general_gba_api": 1180.967
+    },
+    {
+      "fecha": "2023-02-01",
+      "alquiler_original": 787.1568,
+      "general_gba_original": 1259.9952,
+      "alquiler_api": 960.1565,
+      "general_gba_api": 1259.9952
+    },
+    {
+      "fecha": "2023-03-01",
+      "alquiler_original": 825.5901,
+      "general_gba_original": 1358.4995,
+      "alquiler_api": 871.5169,
+      "general_gba_api": 1358.4995
+    },
+    {
+      "fecha": "2023-04-01",
+      "alquiler_original": 882.564,
+      "general_gba_original": 1475.1378,
+      "alquiler_api": 1093.6606,
+      "general_gba_api": 1475.1378
+    },
+    {
+      "fecha": "2023-05-01",
+      "alquiler_original": 910.6983,
+      "general_gba_original": 1592.4496,
+      "alquiler_api": 1223.1349,
+      "general_gba_api": 1592.4496
+    },
+    {
+      "fecha": "2023-06-01",
+      "alquiler_original": 959.2891,
+      "general_gba_original": 1685.1612,
+      "alquiler_api": 1312.2864,
+      "general_gba_api": 1685.1612
+    },
+    {
+      "fecha": "2023-07-01",
+      "alquiler_original": 1021.2888,
+      "general_gba_original": 1789.4275,
+      "alquiler_api": 1359.47,
+      "general_gba_api": 1789.4275
+    },
+    {
+      "fecha": "2023-08-01",
+      "alquiler_original": 1116.5901,
+      "general_gba_original": 2008.8079,
+      "alquiler_api": 1520.058,
+      "general_gba_api": 2008.8079
+    },
+    {
+      "fecha": "2023-09-01",
+      "alquiler_original": 1183.2782,
+      "general_gba_original": 2253.4785,
+      "alquiler_api": 1626.3733,
+      "general_gba_api": 2253.4785
+    },
+    {
+      "fecha": "2023-10-01",
+      "alquiler_original": 1303.1389,
+      "general_gba_original": 2447.565,
+      "alquiler_api": 1771.8731,
+      "general_gba_api": 2447.565
+    },
+    {
+      "fecha": "2023-11-01",
+      "alquiler_original": 1400.0558,
+      "general_gba_original": 2763.435,
+      "alquiler_api": 1872.1498,
+      "general_gba_api": 2763.435
+    },
+    {
+      "fecha": "2023-12-01",
+      "alquiler_original": 1531.93,
+      "general_gba_original": 3456.6426,
+      "alquiler_api": 2144.0192,
+      "general_gba_api": 3456.6426
+    },
+    {
+      "fecha": "2024-01-01",
+      "alquiler_original": 1712.2524,
+      "general_gba_original": 4132.479,
+      "alquiler_api": 2343.5658,
+      "general_gba_api": 4132.479
+    },
+    {
+      "fecha": "2024-02-01",
+      "alquiler_original": 1894.2761,
+      "general_gba_original": 4751.2725,
+      "alquiler_api": 2881.4008,
+      "general_gba_api": 4751.2725
+    },
+    {
+      "fecha": "2024-03-01",
+      "alquiler_original": 2054.4223,
+      "general_gba_original": 5296.8225,
+      "alquiler_api": 3281.3524,
+      "general_gba_api": 5296.8225
+    },
+    {
+      "fecha": "2024-04-01",
+      "alquiler_original": 2292.6751,
+      "general_gba_original": 5785.5699,
+      "alquiler_api": 4607.8825,
+      "general_gba_api": 5785.5699
+    },
+    {
+      "fecha": "2024-05-01",
+      "alquiler_original": 2570.8219,
+      "general_gba_original": 6034.3831,
+      "alquiler_api": 4703.3331,
+      "general_gba_api": 6034.3831
+    },
+    {
+      "fecha": "2024-06-01",
+      "alquiler_original": 2869.3539,
+      "general_gba_original": 6297.096,
+      "alquiler_api": 5254.8695,
+      "general_gba_api": 6297.096
+    },
+    {
+      "fecha": "2024-07-01",
+      "alquiler_original": 3393.1617,
+      "general_gba_original": 6551.322,
+      "alquiler_api": 5514.9954,
+      "general_gba_api": 6551.322
+    },
+    {
+      "fecha": "2024-08-01",
+      "alquiler_original": 3873.0544,
+      "general_gba_original": 6822.4011,
+      "alquiler_api": 5852.2072,
+      "general_gba_api": 6822.4011
+    },
+    {
+      "fecha": "2024-09-01",
+      "alquiler_original": 4385.1917,
+      "general_gba_original": 7076.041,
+      "alquiler_api": 6254.078,
+      "general_gba_api": 7076.041
+    },
+    {
+      "fecha": "2024-10-01",
+      "alquiler_original": 4809.027,
+      "general_gba_original": 7275.6042,
+      "alquiler_api": 6546.2992,
+      "general_gba_api": 7275.6042
+    },
+    {
+      "fecha": "2024-11-01",
+      "alquiler_original": 5216.1165,
+      "general_gba_original": 7464.8667,
+      "alquiler_api": 6841.4128,
+      "general_gba_api": 7464.8667
+    },
+    {
+      "fecha": "2024-12-01",
+      "alquiler_original": 5555.9631,
+      "general_gba_original": 7678.7745,
+      "alquiler_api": 7218.6886,
+      "general_gba_api": 7678.7745
+    },
+    {
+      "fecha": "2025-01-01",
+      "alquiler_original": 6051.167,
+      "general_gba_original": 7834.1477,
+      "alquiler_api": 7377.9452,
+      "general_gba_api": 7834.1477
+    },
+    {
+      "fecha": "2025-02-01",
+      "alquiler_original": 6446.5465,
+      "general_gba_original": 8009.2272,
+      "alquiler_api": 7610.2254,
+      "general_gba_api": 8009.2272
+    },
+    {
+      "fecha": "2025-03-01",
+      "alquiler_original": 6790.9114,
+      "general_gba_original": 8317.925,
+      "alquiler_api": 7841.6485,
+      "general_gba_api": 8317.925
+    },
+    {
+      "fecha": "2025-04-01",
+      "alquiler_original": 7033.5153,
+      "general_gba_original": 8547.3129,
+      "alquiler_api": 7977.6053,
+      "general_gba_api": 8547.3129
+    },
+    {
+      "fecha": "2025-05-01",
+      "alquiler_original": 7540.4801,
+      "general_gba_original": 8675.5948,
+      "alquiler_api": 8208.9236,
+      "general_gba_api": 8675.5948
+    },
+    {
+      "fecha": "2025-06-01",
+      "alquiler_original": 7877.1812,
+      "general_gba_original": 8851.2214,
+      "alquiler_api": 8559.0479,
+      "general_gba_api": 8851.2214
+    },
+    {
+      "fecha": "2025-07-01",
+      "alquiler_original": 8140.7769,
+      "general_gba_original": 9016.5562,
+      "alquiler_api": 8591.0827,
+      "general_gba_api": 9016.5562
+    },
+    {
+      "fecha": "2025-08-01",
+      "alquiler_original": 8413.0192,
+      "general_gba_original": 9185.3068,
+      "alquiler_api": 8784.9537,
+      "general_gba_api": 9185.3068
+    },
+    {
+      "fecha": "2025-09-01",
+      "alquiler_original": 8709.9907,
+      "general_gba_original": 9377.7681,
+      "alquiler_api": 9033.504,
+      "general_gba_api": 9377.7681
+    },
+    {
+      "fecha": "2025-10-01",
+      "alquiler_original": 9007.5586,
+      "general_gba_original": 9602.5137,
+      "alquiler_api": 9238.2438,
+      "general_gba_api": 9602.5137
+    },
+    {
+      "fecha": "2025-11-01",
+      "alquiler_original": 9268.2831,
+      "general_gba_original": 9840.8457,
+      "alquiler_api": 9540.9531,
+      "general_gba_api": 9840.8457
+    },
+    {
+      "fecha": "2025-12-01",
+      "alquiler_original": 9492.2073,
+      "general_gba_original": 10115.6707,
+      "alquiler_api": 9902.1871,
+      "general_gba_api": 10115.6707
+    },
+    {
+      "fecha": "2026-01-01",
+      "alquiler_original": 9737.9556,
+      "general_gba_original": 10395.7458,
+      "alquiler_api": 10108.1109,
+      "general_gba_api": 10395.7458
+    },
+    {
+      "fecha": "2026-02-01",
+      "alquiler_original": 9991.5433,
+      "general_gba_original": 10667.6896,
+      "alquiler_api": 10710.9204,
+      "general_gba_api": 10667.6896
+    },
+    {
+      "fecha": "2026-03-01",
+      "alquiler_original": 10343.5349,
+      "general_gba_original": 11031.5404,
+      "alquiler_api": 11093.2794,
+      "general_gba_api": 11031.5404
+    },
+    {
+      "fecha": "2026-04-01",
+      "alquiler_original": 10601.0544,
+      "general_gba_original": 11336.5576,
+      "alquiler_api": 11607.9584,
+      "general_gba_api": 11336.5576
+    },
+    {
+      "fecha": "2026-05-01",
+      "alquiler_original": 10884.3049,
+      "general_gba_original": 11594.5499,
+      "alquiler_api": 11811.3556,
+      "general_gba_api": 11594.5499
+    },
+    {
+      "fecha": "2026-06-01",
+      "alquiler_original": 11285.9597,
+      "general_gba_original": 11810.9464,
+      "alquiler_api": 12268.2793,
+      "general_gba_api": 11810.9464
+    },
+    {
+      "fecha": "2026-07-01",
+      "alquiler_original": 11728.8484,
+      "general_gba_original": 12078.7372,
+      "alquiler_api": 12449.235,
+      "general_gba_api": 12078.7372
+    }
+  ],
+  "alcance": "La diferencia no es un factor de rebase constante. El nivel general GBA coincide; alquiler no. La planilla también publica alquiler de otras regiones. No aceptar la réplica de API como validación del dato.",
+  "resultado_publicado": {
+    "alquiler_mensual": 3.92,
+    "componente_relativo": 50.3,
+    "itcis": 93.3,
+    "tension_social": 6.3
+  }
+}

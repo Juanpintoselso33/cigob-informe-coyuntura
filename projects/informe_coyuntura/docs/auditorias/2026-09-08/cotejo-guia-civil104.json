@@ -1,0 +1,13 @@
+{
+  "url": "https://consejomagistratura.gov.ar/guiajudicial/integrantes.php",
+  "metodo": "POST",
+  "parametros": {
+    "id": "690"
+  },
+  "fecha_consulta": "2026-09-08",
+  "http_status": 200,
+  "sha256": "e3a01d58c4ae6f76cb4b149c769c041602f990d96c79052021af0e796f32ccfe",
+  "texto": "Dr. Andrés Guillermo Fraga | Juez Dr. Gabriel Angel Tamborenea | Secretario",
+  "limite": "La guía y la respuesta no declaran fecha de actualización. Identifica a Fraga como juez de Civil 104 al consultar, pero no certifica ausencia de un traslado reciente ni fecha de jura.",
+  "guia_url": "https://consejomagistratura.gov.ar/guiajudicial/"
+}

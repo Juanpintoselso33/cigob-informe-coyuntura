@@ -5,12 +5,15 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'politica'
 indicadores: [veto_quorum]
+corregido_por: ['0308']
 continuado_por: ['0172']
 ambito: 'ITCP · `veto_quorum` · serie mensual'
 origen: 'Auditoría externa del cinturón político, prioridad 6 (techo estructural)'
 ---
 
 # ADR-0091 — El indicador de quórum contaba mal el fracaso
+
+> Actualización: [ADR-0308](0308-sesiones-y-sanciones-fuera-del-catalogo.md) reemplaza las fechas de sesiones de CKAN por el índice oficial y agrega cinco sanciones de agosto omitidas en el catálogo.
 
 ## Contexto y planteo del problema
 

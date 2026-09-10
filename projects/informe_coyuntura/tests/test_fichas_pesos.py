@@ -144,8 +144,9 @@ def test_las_fichas_renderizadas_declaran_la_composicion_vigente():
             cuerpo = ARCHIVOS_FICHAS[cinturon].read_text(encoding="utf-8")
             n_ind = sum(len(d.get("indicadores") or {})
                         for d in idx["dimensiones"].values())
-            if f"| {n_ind} indicadores:" not in cuerpo:
-                problemas.append(f"{clave}: no declara {n_ind} indicadores")
+            if f"| {len(c['indicadores'])} indicadores:" not in cuerpo:
+                problemas.append(f"{clave}: no declara sus indicadores publicados")
+            assert f"Componentes que puntúan en este corte: {n_ind} de {len(c['indicadores'])} publicados." in cuerpo
             for dimension in idx["dimensiones"].values():
                 if f"| {dimension['nombre']} |" not in cuerpo:
                     problemas.append(
@@ -177,3 +178,19 @@ def test_el_test_mira_algo():
     # para que un parseo roto no pase inadvertido.
     assert len(inc) >= 28, f"sólo se parsearon {len(inc)} fichas: ¿cambió el formato?"
     assert len(con_peso) >= 10, f"sólo {len(con_peso)} fichas declaran peso interno"
+
+
+def test_pesos_nominales_legislativos_coinciden_con_diseno():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import itcp
+    pesos = itcp.DIMENSIONES_ITCP["poder_legislativo"]["indicadores"]
+    verificadas = 0
+    for clave, texto in _incidencia_por_ficha().items():
+        if clave not in pesos:
+            continue
+        m = re.search(r"peso nominal de (\d+(?:,\d+)?)%", texto)
+        if m:
+            assert abs(_num(m[1]) - pesos[clave] * 100) < TOLERANCIA_PP
+            assert "peso efectivo" in texto
+            verificadas += 1
+    assert verificadas == 5

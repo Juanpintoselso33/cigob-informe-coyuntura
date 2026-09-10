@@ -4,8 +4,7 @@
 
 Sistema automatizado que produce el **Informe de Coyuntura CIGOB**: un tablero
 público que sigue la situación argentina a través de
-**cuatro cinturones** de indicadores, con actualización nocturna sin
-intervención manual.
+**cuatro cinturones** de indicadores, con actualización nocturna automatizada y algunos insumos de revisión humana.
 
 Los cinturones vienen del marco Matusiano (Triángulo de Gobierno) adoptado por
 el CIGOB:
@@ -14,7 +13,7 @@ el CIGOB:
 |---|---|---|
 | Situación macroeconómica | `macro` | **ITCM** paramétrico |
 | Gestión / reformas | `gestion` | **ITCG** paramétrico |
-| Vida cotidiana | `vida_cotidiana` | **ITVC-B100** |
+| Vida cotidiana | `vida_cotidiana` | **ITCIS** |
 | Política | `politica` | **ITCP** paramétrico |
 
 Espíritu de época fue el quinto cinturón hasta que salió del tablero
@@ -28,20 +27,20 @@ sitio los agrega en un panel global.
 
 ## Las cuatro paramétricas
 
-- **ITCM** (macro): 6 dimensiones (26/24/16/11/11/12), con anclas e
-  interpolación. Estabilidad monetaria combina IPC, REM, IDM y presión
-  de dolarización de carteras con pesos internos 40/25/25/10. Esta última mide
-  un constructo latente con observable por régimen: brecha CCL/A3500 suavizada
-  antes de abril de 2025 y compras netas de personas sobre M2 privado desde la
-  apertura (ADR-0055).
-- **ITCG** (gestión): avance de la transformación del Estado, 5 dimensiones
-  (35/25/15/15/10), 0-100 con bandas por indicador.
-- **ITVC-B100** (vida): índice de seguimiento con base 100 = 4T-2023
-  (arranque del mandato); cada componente es un rebase de su serie, sin
-  bandas. Tensión = 5 − (ITVC − 100) × 0,2. Los componentes se winsorizan
-  asimétricamente —techo 140, sin piso (ADR-0033)— salvo los exentos.
-- **ITCP** (política): 7 dimensiones con bandas por indicador (ADR-0036). La
-  política dejó de puntuarse por score directo.
+- **ITCM** (macro): seis dimensiones (26/24/16/11/11/12). Estabilidad
+  monetaria combina IPC, REM y composición de liquidez/presión compradora
+  con pesos internos 60/20/20. IDM e ICIP se retiraron del índice en agosto
+  (ADR-0261/0262); Inversión conserva IAI como único componente.
+- **ITCG** (gestión): cinco dimensiones (35/25/15/15/10). Mide ejecución de
+  reformas definidas por el programa; no acredita su impacto social ni la
+  calidad general de los servicios públicos. Los suspendidos no puntúan.
+- **ITCIS** (impacto social, módulo `itvc.py`): seis dimensiones; referencia
+  compuesta principalmente basada en 4T-2023, con servicios públicos contra
+  umbrales de carga sobre el salario (ADR-0235). El 100 no equivale a un
+  porcentaje de bienestar. Tensión = 5 − (ITCIS − 100) × 0,2, acotada a 0–10.
+- **ITCP** (política): siete dimensiones de capacidad de gobernar. Sus
+  componentes y polaridades no deben confundirse con calidad institucional,
+  aprobación del Gobierno o intención de voto.
 
 El detalle de agregación está en [03 — Motor paramétrico](03-motor-parametrico.md).
 

@@ -44,6 +44,7 @@ export interface DimensionIndice {
   serie?: [string, number][];
 }
 export interface IndiceParametrico {
+  serie_mensual?: [string, number][];
   valor: number;          // 0-100, mayor = menos tensión (cinturón aflojado)
   banda: string;
   banda_legible: string;
@@ -343,6 +344,7 @@ export function verdictDeCinturon(estado: string): "verde" | "amarillo" | "rojo"
 // Clasificación de un indicador para el orden de display
 export type Bucket = "fresco" | "rezagado" | "placeholder";
 export function bucketDeIndicador(ind: Indicador): Bucket {
+  if (ind.estado === "sin_universo") return ind.desactualizado ? "rezagado" : "fresco";
   if (ind.estado === "placeholder" || ind.valor === null) return "placeholder";
   if (ind.desactualizado) return "rezagado";
   return "fresco";
@@ -384,7 +386,7 @@ export const LABELS: Record<string, string> = {
   conflictividad_nacional: "Conflictividad social (país)",
   jornadas_individuales_no_trabajadas_12m: "Intensidad de los paros",
   movilizacion_cepa: "Tensión social (CEPA, interno)", iaf_transferencias: "Armonía federal (transferencias)",
-  eficacia_legislativa: "Eficacia parlamentaria", cohesion_bloque: "Cohesión del bloque LLA (bicameral)",
+  eficacia_legislativa: "Eficacia legislativa de proyectos maduros", cohesion_bloque: "Cohesión del bloque LLA (bicameral)",
   cohesion_bloque_senado: "Cohesión del bloque LLA (Senado, fusionado)",
   rotacion_gabinete: "Rotación del gabinete",
   gobernadores_alineamiento: "Alineamiento de gobernadores (retirado)", veto_quorum: "Sesiones caídas por falta de quórum",
@@ -414,7 +416,7 @@ export const LABELS: Record<string, string> = {
   cobertura_judicial: "Cobertura de cargos judiciales",
   produccion_legislativa: "Producción legislativa del Congreso",
   judicializacion: "Densidad de menciones cautelares en sumarios SAIJ",
-  velocidad_resolucion: "Velocidad de resolución de la Corte",
+  velocidad_resolucion: "Tasa de resolución de la Corte",
   paralisis_denuncias: "Actividad de las comisiones de control",
   empleo_registrado: "Empleo registrado privado",
   desregulacion_normativa: "Desregulación normativa", apertura_comercial: "Apertura comercial (alícuota)",
@@ -444,6 +446,7 @@ export function cap(s: string): string {
 
 // Aclaración chica para buckets no-frescos
 export function aclaracion(b: Bucket, ind: Indicador): string | null {
+  if (ind.estado === "sin_universo") return ind.desactualizado ? `sin universo · consulta a ${ind.fecha_dato}` : "sin universo";
   if (b === "placeholder") return "— pendiente";
   if (b === "rezagado") return `dato a ${ind.fecha_dato}`;
   return null;
@@ -616,6 +619,7 @@ export interface Presentacion { texto: string; unidad: string; titulo: string; }
 // - nada usable → "—"
 // La descripción larga (o el texto de estado) queda en `titulo` (tooltip).
 export function presentacion(key: string, ind: Indicador): Presentacion {
+  if (ind.estado === "sin_universo") return { texto: "Sin universo", unidad: "", titulo: typeof ind.detalle_txt === "string" ? ind.detalle_txt : "Sin denominador para calcular la tasa" };
   if (typeof ind.valor === "number") {
     // Números muy grandes (ej. cantidad de hechos delictivos) en notación compacta.
     const texto = Math.abs(ind.valor) >= 1e6 ? NF_COMPACT.format(ind.valor) : formatValor(ind.valor);
@@ -681,6 +685,7 @@ export type Visual =
 // Decide el mejor visual para un indicador: serie histórica → sparkline;
 // avance de reforma o nivel 0–100 → barra; en otro caso → número grande.
 export function visualDe(key: string, ind: Indicador): Visual {
+  if (ind.estado === "sin_universo") return { tipo: "numero" };
   if (typeof ind.avance_pct === "number") return { tipo: "barra", pct: clamp100(ind.avance_pct), avance: true };
   if ((series[key] ?? []).length >= 2) return { tipo: "sparkline" };
   if (BARRA_0_100.has(key) && typeof ind.valor === "number") return { tipo: "barra", pct: clamp100(ind.valor), avance: false };
@@ -688,7 +693,8 @@ export function visualDe(key: string, ind: Indicador): Visual {
 }
 
 // Badge honesto del origen del dato.
-export function badgeEstado(ind: Indicador): "Automático" | "Semiautomático" | "Carga manual" | "Estimación" {
+export function badgeEstado(ind: Indicador): "Automático" | "Semiautomático" | "Carga manual" | "Estimación" | "Sin universo" {
+  if (ind.estado === "sin_universo") return "Sin universo";
   if (ind.estado === "placeholder" || ind.valor === null) return "Estimación";
   if (ind.metodo_obtencion === "manual") return "Carga manual";
   if (ind.metodo_obtencion === "semiautomatico") return "Semiautomático";

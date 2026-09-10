@@ -1,0 +1,236 @@
+{
+  "fecha": "2026-09-08",
+  "metodo": "HTTP real, consulta sin modificar cache. Diferencias intradiarias conservadas en el registro.",
+  "indicadores": [
+    {
+      "indicador": "cepo_mulc",
+      "resultado": {
+        "valor": 5.35,
+        "unidad": "% de brecha CCL/mayorista",
+        "fuente": "dolarapi.com — CCL y mayorista (el mayorista replica la referencia A3500 del BCRA)",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 4.74,
+        "unidad": "% de brecha CCL/mayorista",
+        "fuente": "dolarapi.com — CCL y mayorista (el mayorista replica la referencia A3500 del BCRA)",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:05:50",
+        "en_indice": true,
+        "dimension": "reformas_economicas",
+        "puntaje_itcg": 100.0,
+        "puntaje_banda": 100.0,
+        "peso_efectivo": 0.14
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://dolarapi.com/v1/dolares",
+          "status": 200,
+          "sha256": "24cee089146abced449d3a33c55d6bae0c93ed059514a590f402e1b1dcfb47dc",
+          "bytes": 1221
+        }
+      ],
+      "segundos": 0.2,
+      "coincide_valor_y_fecha": false
+    },
+    {
+      "indicador": "apertura_comercial",
+      "resultado": {
+        "valor": 6.18,
+        "unidad": "% del intercambio (alícuota efectiva)",
+        "fuente": "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500",
+        "fecha_dato": "2026-06-01",
+        "desactualizado": false,
+        "detalle_txt": "US$ 984 M recaudados por derechos de impo+expo sobre US$ 15.916 M de intercambio (2026-06) · canal aduanero sin fuente pública"
+      },
+      "previo": {
+        "valor": 6.18,
+        "unidad": "% del intercambio (alícuota efectiva)",
+        "fuente": "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500",
+        "fecha_dato": "2026-06-01",
+        "desactualizado": false,
+        "detalle_txt": "US$ 984 M recaudados por derechos de impo+expo sobre US$ 15.916 M de intercambio (2026-06) · canal aduanero sin fuente pública",
+        "obtenido_en": "2026-09-08T03:05:53",
+        "en_indice": true,
+        "dimension": "reformas_economicas",
+        "puntaje_itcg": 58.8,
+        "puntaje_banda": 58.8,
+        "peso_efectivo": 0.14
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=142.3_DEREC_2001_M_20&format=json&limit=8&sort=desc",
+          "status": 200,
+          "sha256": "a32c4e9b490b02c3bc8cbfbdaf2ca0a2b1d73e4e638ee6a68aa1515d16f8fcb9",
+          "bytes": 1396
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=142.3_DEREC_2001_M_26&format=json&limit=8&sort=desc",
+          "status": 200,
+          "sha256": "8e8d3aca9f75028739608aa4333926b8c81261c4e2bce926ba5adb2f1d814633",
+          "bytes": 1402
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=74.3_IET_0_M_16&format=json&limit=8&sort=desc",
+          "status": 200,
+          "sha256": "7183d538fa49d54f280acb11829c1f0bcfbbb9b1748e66e9b5dae1e1c8fe38f3",
+          "bytes": 1283
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=74.3_IIT_0_M_25&format=json&limit=8&sort=desc",
+          "status": 200,
+          "sha256": "7c39eecbad69e66b55ef3eb780ee6cc1aedc7802cb4e99642e8b709dfd728607",
+          "bytes": 1282
+        },
+        {
+          "url": "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/5?desde=2026-05-31&limit=3000",
+          "status": 200,
+          "sha256": "828ea95366800d4972839e2251bd9e7c934abab63b87e82b219db4e6c98b433d",
+          "bytes": 3333
+        }
+      ],
+      "segundos": 2.4,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "reduccion_estado",
+      "resultado": {
+        "valor": -20.66,
+        "unidad": "% de variación vs dic-2023 (dotación APN)",
+        "fuente": "INDEC — Dotación de personal de la APN (mensual)",
+        "fecha_dato": "2026-07-01",
+        "desactualizado": false,
+        "dotacion_actual": 183520,
+        "dotacion_dic23": 231305,
+        "var_empresas_publicas": -20.74,
+        "var_universo_completo": -20.68,
+        "var_fuerzas_seguridad": -15.24,
+        "var_planta_civil": -19.0,
+        "fecha_desglose_fuerzas": "2026-02",
+        "detalle_txt": "183.520 agentes (2026-07) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,74% aparte; el universo completo varía -20,68%"
+      },
+      "previo": {
+        "valor": -20.66,
+        "unidad": "% de variación vs dic-2023 (dotación APN)",
+        "fuente": "INDEC — Dotación de personal de la APN (mensual)",
+        "fecha_dato": "2026-07-01",
+        "desactualizado": false,
+        "dotacion_actual": 183520,
+        "dotacion_dic23": 231305,
+        "var_empresas_publicas": -20.74,
+        "var_universo_completo": -20.68,
+        "var_fuerzas_seguridad": -15.24,
+        "var_planta_civil": -19.0,
+        "fecha_desglose_fuerzas": "2026-02",
+        "detalle_txt": "183.520 agentes (2026-07) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,74% aparte; el universo completo varía -20,68%",
+        "obtenido_en": "2026-09-08T03:06:01",
+        "en_indice": true,
+        "dimension": "reforma_estado",
+        "puntaje_itcg": 100.0,
+        "puntaje_banda": 100.0,
+        "peso_efectivo": 0.1458
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://www.indec.gob.ar/ftp/cuadros/economia/serie_dotacion_apn.xlsx",
+          "status": 200,
+          "sha256": "991171db8f77095864b85ff8a81ff21e125fd0a5b0f1f82f0f27e8160cf707f2",
+          "bytes": 178478
+        }
+      ],
+      "segundos": 0.3,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "gasto_funcionamiento",
+      "resultado": {
+        "valor": -28.69,
+        "unidad": "% de variación real vs 2023-07 (IMIG funcionamiento)",
+        "fuente": "Sec. Hacienda IMIG (datos.gob.ar) + IPC INDEC",
+        "fecha_dato": "2026-07-01",
+        "desactualizado": false,
+        "detalle_txt": "$ 2,82 bn devengados (2026-07) vs $ 0,60 bn (2023-07) · inflación del período ×6,6"
+      },
+      "previo": {
+        "valor": -28.69,
+        "unidad": "% de variación real vs 2023-07 (IMIG funcionamiento)",
+        "fuente": "Sec. Hacienda IMIG (datos.gob.ar) + IPC INDEC",
+        "fecha_dato": "2026-07-01",
+        "desactualizado": false,
+        "detalle_txt": "$ 2,82 bn devengados (2026-07) vs $ 0,60 bn (2023-07) · inflación del período ×6,6",
+        "obtenido_en": "2026-09-08T03:06:03",
+        "en_indice": true,
+        "dimension": "reforma_estado",
+        "puntaje_itcg": 100.0,
+        "puntaje_banda": 100.0,
+        "peso_efectivo": 0.1042
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=452.2_SALARIOSIOS_0_T_8_22&format=json&limit=48&sort=desc",
+          "status": 200,
+          "sha256": "7216fb97946e9139b6f4f5c31fec7409ab7ba9ca71984051139ef21a7f483f08",
+          "bytes": 2570
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=452.2_OTROS_GASTNTO_0_T_27_55&format=json&limit=48&sort=desc",
+          "status": 200,
+          "sha256": "1e8649aa830542899f3b3a6caab0e10e3f7c96d9fd1fca9606acfc0bf6708688",
+          "bytes": 2549
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=48&sort=desc",
+          "status": 200,
+          "sha256": "8b74c95a4d4bc997bfaa33318812fbac7b51302397ba34c31024c0a32719f4a4",
+          "bytes": 2492
+        }
+      ],
+      "segundos": 2.5,
+      "coincide_valor_y_fecha": true
+    },
+    {
+      "indicador": "litigiosidad_laboral",
+      "resultado": {
+        "valor": 2.1,
+        "unidad": "% variación juicios SRT (12m vs 12m previos)",
+        "fuente": "SRT — Serie histórica de litigiosidad",
+        "fecha_dato": "2026-05-01",
+        "desactualizado": false,
+        "juicios_12m": 127363,
+        "detalle_txt": "127.363 juicios en 12m (hasta 2026-05) vs 124.767 previos"
+      },
+      "previo": {
+        "valor": 2.1,
+        "unidad": "% variación juicios SRT (12m vs 12m previos)",
+        "fuente": "SRT — Serie histórica de litigiosidad",
+        "fecha_dato": "2026-05-01",
+        "desactualizado": false,
+        "juicios_12m": 127363,
+        "detalle_txt": "127.363 juicios en 12m (hasta 2026-05) vs 124.767 previos",
+        "obtenido_en": "2026-09-08T03:06:24",
+        "en_indice": true,
+        "dimension": "reforma_laboral",
+        "puntaje_itcg": 60.8,
+        "puntaje_banda": 60.8,
+        "peso_efectivo": 0.075
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://www.srt.gob.ar/estadisticas/litigiosidad/series/Juicios%20-%20Total%20Sistema.xlsx",
+          "status": 200,
+          "sha256": "4532d59450abb756424a00476e59621be8af3e66bc6a2eef855594a110209247",
+          "bytes": 69744
+        }
+      ],
+      "segundos": 0.2,
+      "coincide_valor_y_fecha": true
+    }
+  ]
+}

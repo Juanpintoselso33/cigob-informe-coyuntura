@@ -54,9 +54,6 @@ ACEPTADAS = {
         "«la mejor señal automatizable disponible hoy» declara un límite del "
         "estado del arte, no un valor: si aparece una fuente mejor se cambia el "
         "indicador, no el texto",
-    ("adhesion_reformas_provincial", "incidenciaTexto"):
-        "«el rango observado hoy es el arranque de un proceso» es justamente la "
-        "advertencia de que el rango NO está cerrado — la frase envejece bien",
     ("bloqueo_sostenido", "limitaciones"):
         "«un acta publicada hoy se clasifica al día siguiente» describe el rezago "
         "del proceso, no un estado",
@@ -136,14 +133,12 @@ def test_el_test_mira_algo():
     """Contra el falso verde: si el parseo se rompe y no encuentra ninguna
     cadena, los tres tests de arriba pasan vacíos."""
     hallazgos = _deixis_en_fichas()
-    # El piso era 5 mientras las cuatro fichas de índice afirmaban un conteo en
-    # prosa. Al reescribirlas contra la tabla generada quedaron las cuatro
-    # frases de indicador, que son las que declaran un límite del método y no
-    # un estado. Baja a 4 por eso, no porque el parseo encuentre menos.
-    assert len(hallazgos) >= 4, (
+    # ADR-0304 retira la frase y la excepción de adhesiones RIGI. Quedan tres
+    # frases declaradas; el inventario no debe conservar permisos sobrantes.
+    assert len(hallazgos) >= 3, (
         f"sólo {len(hallazgos)} apariciones de deixis; el parseo de fichas.ts "
         f"probablemente se rompió y los otros tests están pasando en falso"
     )
     # Y el piso solo dice algo mientras el inventario no esté vacío: si alguien
     # borra ACEPTADAS entero, los tres tests de arriba pasan sin mirar nada.
-    assert len(ACEPTADAS) >= 4
+    assert len(ACEPTADAS) >= 3

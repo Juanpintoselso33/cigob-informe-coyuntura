@@ -278,7 +278,13 @@ def test_el_snapshot_que_consumen_las_fichas_publica_la_composicion_vigente(
         tabla, getattr(mod, "INDICADORES_SUSPENDIDOS", {}))
     assert set(publicadas) == set(motor)
     for dimension, indicadores in motor.items():
-        assert set(publicadas[dimension]["indicadores"]) == set(indicadores)
+        sin_universo = {k for k in indicadores
+                        if snapshot["cinturones"][cinturon]["indicadores"].get(k, {}).get("estado") == "sin_universo"}
+        for k in sin_universo:
+            dato = snapshot["cinturones"][cinturon]["indicadores"][k]
+            assert dato["valor"] is None and dato.get("puntaje") is None
+            assert dato.get("incluir_en_indice", False) is False
+        assert set(publicadas[dimension]["indicadores"]) == set(indicadores) - sin_universo
 
 
 def test_la_leyenda_de_agregacion_declara_los_pesos_de_dimension_vigentes():

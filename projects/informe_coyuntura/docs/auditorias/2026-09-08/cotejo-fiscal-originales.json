@@ -1,0 +1,151 @@
+{
+  "fecha_consulta": "2026-09-08",
+  "fuentes": [
+    {
+      "url": "https://apis.datos.gob.ar/series/api/series/?ids=452.2_SALARIOSIOS_0_T_8_22&format=json&limit=48&sort=desc",
+      "sha256": "7216fb97946e9139b6f4f5c31fec7409ab7ba9ca71984051139ef21a7f483f08"
+    },
+    {
+      "url": "https://apis.datos.gob.ar/series/api/series/?ids=452.2_OTROS_GASTNTO_0_T_27_55&format=json&limit=48&sort=desc",
+      "sha256": "1e8649aa830542899f3b3a6caab0e10e3f7c96d9fd1fca9606acfc0bf6708688"
+    },
+    {
+      "url": "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=48&sort=desc",
+      "sha256": "8b74c95a4d4bc997bfaa33318812fbac7b51302397ba34c31024c0a32719f4a4"
+    },
+    {
+      "url": "https://apis.datos.gob.ar/series/api/series/?ids=452.3_RESULTADO_RIO_0_M_18_54&format=json&limit=48&sort=desc",
+      "sha256": "7ebba8b5ac5406d3a46b7d937e6ba34447f53fcbc4015cc916694f825c243551"
+    },
+    {
+      "url": "https://apis.datos.gob.ar/series/api/series/?ids=172.3_TL_RECAION_M_0_0_17&format=json&limit=48&sort=desc",
+      "sha256": "f43f30d138cd3c01c202a1e742940af552148b4f32838fa1e389917b55ffd506"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/sites/default/files/2025/09/sector_publico_base_caja_agosto_2025.xlsx",
+      "sha256": "0d50b29d484a4d831cf5b75e9e4eadbec77b5437c553b8d8802e2b6f5dace61a"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/sites/default/files/2025/10/sector_publico_base_caja_septiembre_2025_1.xlsx",
+      "sha256": "bbcd1ed852edea14902c34741516f9d2cce8a8b5b88fda3bffaf76f5e13c1ebc"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/sites/default/files/2025/11/sector_publico_base_caja_octubre_2025_1.xlsx",
+      "sha256": "54f1812c38209783b0c79e35870cb97343d46e73a0219c6b439ef79111996ace"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/sites/default/files/2025/12/sector_publico_base_caja_noviembre_2025.xlsx",
+      "sha256": "1d7963650f67c7b37e50580aa2814d48e609a4147d311e76307e16a685383d61"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/sites/default/files/2026/01/sector_publico_base_caja_diciembre_2025.xlsx",
+      "sha256": "8916ca47cd3d7d10d6ce23626a7a953221c2e1d99dd96fb47592c7f9eb4c076e"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/sites/default/files/julio.zip",
+      "sha256": "9107041850435f291245c906c230d7730a480dcc5f0acc741a9e7d069a59ed0b"
+    },
+    {
+      "url": "https://www.argentina.gob.ar/sites/default/files/2023/08/julio-2023.xls",
+      "sha256": "6ac0fcfe86a75e64e3116a56e9bc324e8ba12c4769ea144056cbd1f5226b6ac0"
+    }
+  ],
+  "resultado_primario_meses": [
+    {
+      "mes": "2025-08",
+      "original": 1556864,
+      "api": 1556864.0000000035,
+      "diferencia": -3.4924596548080444e-09
+    },
+    {
+      "mes": "2025-09",
+      "original": 696965.0999999996,
+      "api": 696965.1000000015,
+      "diferencia": -1.862645149230957e-09
+    },
+    {
+      "mes": "2025-10",
+      "original": 823924.8,
+      "api": 823924.8000000007,
+      "diferencia": -6.984919309616089e-10
+    },
+    {
+      "mes": "2025-11",
+      "original": 2128009.4000000022,
+      "api": 2128009.399999995,
+      "diferencia": 7.450580596923828e-09
+    },
+    {
+      "mes": "2025-12",
+      "original": -2876449.5999999996,
+      "api": -2876449.600000005,
+      "diferencia": 5.587935447692871e-09
+    },
+    {
+      "mes": "2026-01",
+      "original": 3125737.3000000007,
+      "api": 3125737.299999999,
+      "diferencia": 1.862645149230957e-09
+    },
+    {
+      "mes": "2026-02",
+      "original": 1410639.6999999993,
+      "api": 1410639.7000000067,
+      "diferencia": -7.450580596923828e-09
+    },
+    {
+      "mes": "2026-03",
+      "original": 930284.0999999978,
+      "api": 930284.099999994,
+      "diferencia": 3.725290298461914e-09
+    },
+    {
+      "mes": "2026-04",
+      "original": 632844.0999999996,
+      "api": 632844.1000000015,
+      "diferencia": -1.862645149230957e-09
+    },
+    {
+      "mes": "2026-05",
+      "original": 1924366.8999999966,
+      "api": 1924366.9000000025,
+      "diferencia": -5.820766091346741e-09
+    },
+    {
+      "mes": "2026-06",
+      "original": -696842.9,
+      "api": -696842.9000000022,
+      "diferencia": 2.2118911147117615e-09
+    },
+    {
+      "mes": "2026-07",
+      "original": 2960332.6999999993,
+      "api": 2960332.7000000067,
+      "diferencia": -7.450580596923828e-09
+    }
+  ],
+  "resultado_primario_12m": {
+    "numerador_original": 12616675.599999996,
+    "numerador_api": 12616675.600000003,
+    "recaudacion_api": 211632775.142866,
+    "ratio_original": 5.961588696024476
+  },
+  "gasto": {
+    "salarios_julio2026_api": 2178519.5,
+    "otros_julio2026_api": 646230.9,
+    "salarios_julio2023_api": 485467.3,
+    "otros_julio2023_api": 110853.80000000002,
+    "ipc_julio2026": 12076.3937,
+    "ipc_julio2023": 1818.0838,
+    "variacion_real": -28.685714325585398,
+    "original_julio2026": {
+      "salarios": 2178519.5,
+      "otros": 646230.9
+    },
+    "original_julio2023": {
+      "salarios": 485467.3,
+      "otros": 110853.8
+    },
+    "base_contable": "caja"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "itvc": {
+    "niveles": {
+      "antes": {
+        "convergente": 0.163,
+        "discriminante": 0.219,
+        "brecha": -0.056
+      },
+      "despues": {
+        "convergente": 0.163,
+        "discriminante": 0.221,
+        "brecha": -0.058
+      }
+    },
+    "diferencias": {
+      "antes": {
+        "convergente": 0.215,
+        "discriminante": 0.191,
+        "brecha": 0.024
+      },
+      "despues": {
+        "convergente": 0.215,
+        "discriminante": 0.19,
+        "brecha": 0.025
+      }
+    }
+  },
+  "itcg": {
+    "niveles": {
+      "antes": {
+        "convergente": 0.394,
+        "discriminante": 0.389,
+        "brecha": 0.005
+      },
+      "despues": {
+        "convergente": 0.394,
+        "discriminante": 0.392,
+        "brecha": 0.002
+      }
+    },
+    "diferencias": {
+      "antes": {
+        "convergente": 0.128,
+        "discriminante": 0.155,
+        "brecha": -0.027
+      },
+      "despues": {
+        "convergente": 0.128,
+        "discriminante": 0.156,
+        "brecha": -0.028
+      }
+    }
+  },
+  "itcp": {
+    "niveles": {
+      "antes": {
+        "convergente": 0.149,
+        "discriminante": 0.224,
+        "brecha": -0.075
+      },
+      "despues": {
+        "convergente": 0.169,
+        "discriminante": 0.224,
+        "brecha": -0.055
+      }
+    },
+    "diferencias": {
+      "antes": {
+        "convergente": 0.325,
+        "discriminante": 0.159,
+        "brecha": 0.166
+      },
+      "despues": {
+        "convergente": 0.323,
+        "discriminante": 0.159,
+        "brecha": 0.164
+      }
+    }
+  },
+  "correlaciones_itcg": {
+    "antes": {
+      "niveles (ITCG vs Merval USD)": {
+        "r": 0.766,
+        "n": 32
+      },
+      "primeras diferencias (ITCG vs Merval USD)": {
+        "r": 0.139,
+        "n": 31
+      },
+      "niveles sin tendencia (ITCG vs Merval USD)": {
+        "r": 0.15,
+        "n": 32
+      },
+      "niveles (ITCG vs ICG)": {
+        "r": -0.67,
+        "n": 31
+      },
+      "primeras diferencias (ITCG vs ICG)": {
+        "r": 0.093,
+        "n": 30
+      }
+    },
+    "despues": {
+      "niveles (ITCG vs Merval USD)": {
+        "r": 0.766,
+        "n": 32
+      },
+      "primeras diferencias (ITCG vs Merval USD)": {
+        "r": 0.139,
+        "n": 31
+      },
+      "niveles sin tendencia (ITCG vs Merval USD)": {
+        "r": 0.15,
+        "n": 32
+      },
+      "niveles (ITCG vs ICG)": {
+        "r": -0.695,
+        "n": 32
+      },
+      "primeras diferencias (ITCG vs ICG)": {
+        "r": 0.102,
+        "n": 31
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+[
+  {
+    "indicador": "apertura_comercial",
+    "anterior": {
+      "valor": 6.18,
+      "unidad": "% del intercambio (alícuota efectiva)",
+      "fuente": "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500",
+      "fecha_dato": "2026-06-01",
+      "desactualizado": false,
+      "detalle_txt": "US$ 984 M recaudados por derechos de impo+expo sobre US$ 15.916 M de intercambio (2026-06) · canal aduanero sin fuente pública",
+      "obtenido_en": "2026-09-08T03:05:53",
+      "en_indice": true,
+      "dimension": "reformas_economicas",
+      "puntaje_itcg": 58.8,
+      "puntaje_banda": 58.8,
+      "peso_efectivo": 0.14
+    },
+    "actual": {
+      "valor": 7.62,
+      "unidad": "% del intercambio (alícuota efectiva)",
+      "fuente": "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500",
+      "fecha_dato": "2026-07-01",
+      "desactualizado": false,
+      "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_20_08_26.xls",
+      "advertencia_fuente": null,
+      "detalle_txt": "US$ 1.189 M recaudados por derechos de impo+expo y tasa de estadística sobre US$ 15.593 M de intercambio (2026-07) · canal aduanero sin fuente pública",
+      "obtenido_en": "2026-09-08T13:27:27.374334-03:00",
+      "en_indice": true,
+      "dimension": "reformas_economicas",
+      "puntaje_itcg": 49.2,
+      "puntaje_banda": 49.2,
+      "peso_efectivo": 0.14
+    },
+    "indice": 79.1,
+    "ultimo_serie": [
+      "2026-07-01",
+      7.62
+    ]
+  },
+  {
+    "indicador": "recaudacion",
+    "anterior": {
+      "valor": 88.2,
+      "unidad": "índice (100 = 4T-2023)",
+      "fuente": "Sec. Hacienda — recaudación DGI (vía datos.gob.ar) + Comisión Arbitral del Convenio Multilateral",
+      "fecha_dato": "2026-06-01",
+      "aporte_provincial_pct": 15.5,
+      "detalle_txt": "La base imponible real está en 88,2 sobre una base de 100 en el cuarto trimestre de 2023, es decir 11,8% por debajo. Meses previos: 2026-03: 92,0 · 2026-04: 95,4 · 2026-05: 97,7. Los impuestos provinciales del Convenio Multilateral aportan 15,5% de la base medida.",
+      "desactualizado": false,
+      "obtenido_en": "2026-09-08T03:01:34",
+      "en_indice": true,
+      "dimension": "viabilidad_fiscal_comercial",
+      "puntaje_itcm": 43.0,
+      "puntaje_banda": 43.0,
+      "peso_efectivo": 0.072
+    },
+    "actual": {
+      "valor": 102.1,
+      "unidad": "índice (100 = 4T-2023)",
+      "fuente": "Sec. Hacienda — recaudación DGI (vía datos.gob.ar) + Comisión Arbitral del Convenio Multilateral",
+      "fecha_dato": "2026-07-01",
+      "aporte_provincial_pct": 15.4,
+      "detalle_txt": "La base imponible real está en 102,1 sobre una base de 100 en el cuarto trimestre de 2023, es decir 2,1% por encima. Meses previos: 2026-04: 95,4 · 2026-05: 97,7 · 2026-06: 88,2. Los impuestos provinciales del Convenio Multilateral aportan 15,4% de la base medida.",
+      "desactualizado": false,
+      "obtenido_en": "2026-09-08T13:27:30.091527-03:00",
+      "en_indice": true,
+      "dimension": "viabilidad_fiscal_comercial",
+      "puntaje_itcm": 77.7,
+      "puntaje_banda": 77.7,
+      "peso_efectivo": 0.072
+    },
+    "indice": 67.5,
+    "ultimo_serie": [
+      "2026-07-01",
+      102.1
+    ]
+  }
+]

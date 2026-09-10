@@ -1,0 +1,78 @@
+[
+  {
+    "indicador": "conflictividad_nacional",
+    "resultado": {
+      "valor": -24.0,
+      "acum_12m": 1979,
+      "eventos_2023": 2605,
+      "unidad": "% vs 2023",
+      "fuente": "ACLED — agregado semanal por provincia (acleddata.com)",
+      "fecha_dato": "2026-07-01",
+      "desactualizado": false,
+      "detalle_txt": "1979 eventos de protesta y disturbios en el país en 12m (hasta 2026-07) vs 2605 en todo 2023 (-24,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país"
+    },
+    "error": null
+  },
+  {
+    "indicador": "cohesion_diputados",
+    "resultado": null,
+    "error": null
+  },
+  {
+    "indicador": "cohesion_senado",
+    "resultado": {
+      "valor": 100.0,
+      "unidad": "% cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días",
+      "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
+      "fecha_dato": "2026-08-27",
+      "n_actas": 16,
+      "corrida_exitosa_en": "2026-09-08",
+      "desactualizado": false
+    },
+    "error": null
+  },
+  {
+    "indicador": "cohesion_bloque",
+    "resultado": {
+      "compuesto": {
+        "valor": 100.0,
+        "unidad": "% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)",
+        "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
+        "fecha_dato": "2026-08-27",
+        "n_actas": 29,
+        "desactualizado": false,
+        "componentes": {
+          "diputados": {
+            "valor": 100.0,
+            "fecha_dato": "2026-06-24",
+            "n_actas": 13,
+            "corrida_exitosa_en": "2026-08-25",
+            "desactualizado": true
+          },
+          "senado": {
+            "valor": 100.0,
+            "fecha_dato": "2026-08-27",
+            "n_actas": 16,
+            "corrida_exitosa_en": "2026-09-08",
+            "desactualizado": false
+          }
+        }
+      },
+      "consulta_completa": false
+    },
+    "error": null
+  },
+  {
+    "indicador": "alineamiento_senadores_prov",
+    "resultado": {
+      "valor": 59.3,
+      "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
+      "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
+      "fecha_dato": "2026-08-27",
+      "n_provincias": 24,
+      "corrida_exitosa_en": "2026-09-08",
+      "desactualizado": false
+    },
+    "error": null
+  }
+]

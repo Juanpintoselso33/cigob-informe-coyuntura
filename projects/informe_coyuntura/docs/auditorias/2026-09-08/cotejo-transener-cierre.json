@@ -1,0 +1,80 @@
+{
+  "consultado_en": "2026-09-08",
+  "fuente_cierre": "https://aif2.cnv.gov.ar/presentations/publicview/4d540be8-65d6-42ee-bbce-8fe70f2aa9ee",
+  "presentacion": 3563177,
+  "fecha_documento": "2026-08-28",
+  "fuente_regulatoria": "https://www.boletinoficial.gob.ar/detalleAviso/primera/343371/20260622",
+  "fuente_balance": "https://www.transener.com.ar/wp-content/uploads/2026/08/TR-consolidado-06-2026_VF.pdf",
+  "pagina_pdf_balance": 36,
+  "sha256_comunicado": "ba5f80f9b49356481adb23752dd0c49f6cb3e45c61f6a068cf3e31d4623bd1a8",
+  "conclusion": "La autorización de junio precede al perfeccionamiento comunicado en agosto. El registro anterior anticipaba dos meses la etapa 4. La etapa vigente se conserva.",
+  "empresa_anterior": {
+    "etapa": 4,
+    "mecanismo": "Venta de acciones (vía Citelec, controlada por Enarsa)",
+    "hito": "Venta concretada por USD 356M, consorcio Genneia-Edison Transmisión"
+  },
+  "empresa_corregida": {
+    "etapa": 4,
+    "mecanismo": "Venta de acciones (vía Citelec, controlada por Enarsa)",
+    "hito": "Transferencia perfeccionada, comunicada por Genneia a CNV el 28-ago-2026 (presentación 3563177), una vez cumplidas las condiciones suspensivas. El precio adjudicado fue USD 356,17M; la autorización regulatoria de junio no era el cierre.",
+    "fuente_url": "https://aif2.cnv.gov.ar/presentations/publicview/4d540be8-65d6-42ee-bbce-8fe70f2aa9ee",
+    "verificado_en": "2026-09-08",
+    "fecha_comunicacion_cierre": "2026-08-28"
+  },
+  "transiciones_anteriores": [
+    {
+      "etapa": 1,
+      "fecha": "2025-04",
+      "fuente": "Decreto 286/2025 (BO 25-abr-2025), art. 2: autoriza la venta de las acciones de ENARSA en Citelec (no figura en la Ley Bases; deriva de la privatización de ENARSA)"
+    },
+    {
+      "etapa": 2,
+      "fecha": "2025-07",
+      "fuente": "Resolución ME 1050/2025 (BO 25-jul-2025): inicia el proceso (1ª fase: Citelec)"
+    },
+    {
+      "etapa": 3,
+      "fecha": "2025-12",
+      "fuente": "Resolución ME 2090/2025 (BO dic-2025): concurso público por el 50% de Citelec. Adjudicación: Res. ME 673/2026 (BO 11-may-2026), Edison-Genneia, USD 356M"
+    },
+    {
+      "etapa": 4,
+      "fecha": "2026-06",
+      "fuente": "Contrato de compraventa firmado 04-jun-2026; ENReGE Res. 130/2026 (BO 22-jun-2026) autorizó la transferencia"
+    }
+  ],
+  "transiciones_corregidas": [
+    {
+      "etapa": 1,
+      "fecha": "2025-04",
+      "fuente": "Decreto 286/2025 (BO 25-abr-2025), art. 2: autoriza la venta de las acciones de ENARSA en Citelec (no figura en la Ley Bases; deriva de la privatización de ENARSA)"
+    },
+    {
+      "etapa": 2,
+      "fecha": "2025-07",
+      "fuente": "Resolución ME 1050/2025 (BO 25-jul-2025): inicia el proceso (1ª fase: Citelec)"
+    },
+    {
+      "etapa": 3,
+      "fecha": "2025-12",
+      "fuente": "Resolución ME 2090/2025 (BO dic-2025): concurso público por el 50% de Citelec. Adjudicación: Res. ME 673/2026 (BO 11-may-2026), Edison-Genneia, USD 356M"
+    },
+    {
+      "etapa": 4,
+      "fecha": "2026-08",
+      "fuente": "CNV, presentación Genneia 3563177 del 28-ago-2026: informa cumplidas las condiciones suspensivas y perfeccionada la transferencia de la participación de ENARSA en Citelec. https://aif2.cnv.gov.ar/presentations/publicview/4d540be8-65d6-42ee-bbce-8fe70f2aa9ee"
+    }
+  ],
+  "cambios_serie": [
+    {
+      "fecha": "2026-06-01",
+      "antes": 51.4,
+      "despues": 48.6
+    },
+    {
+      "fecha": "2026-07-01",
+      "antes": 51.4,
+      "despues": 48.6
+    }
+  ]
+}

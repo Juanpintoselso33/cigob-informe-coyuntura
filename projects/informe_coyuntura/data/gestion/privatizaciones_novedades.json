@@ -2,199 +2,10 @@
  "_meta": {
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
   "nuevas_en_la_corrida": 0,
-  "ultima_corrida": "2026-09-10"
+  "revision_manual_en": "2026-09-08",
+  "ultima_corrida": "2026-09-08"
  },
- "pendientes": {
-  "425373": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Corredores Viales",
-   "periodo": "2026-05",
-   "titulo": "Decreto DNU 314 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425373"
-  },
-  "425431": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Belgrano Cargas",
-   "periodo": "2026-05",
-   "titulo": "Resolución 549 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425431"
-  },
-  "425531": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Corredores Viales",
-   "periodo": "2026-05",
-   "titulo": "Resolución 555 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425531"
-  },
-  "425593": {
-   "coincidencia": "adjudica",
-   "empresa": "Belgrano Cargas",
-   "periodo": "2026-05",
-   "titulo": "Resolución 2012 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425593"
-  },
-  "425686": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Corredores Viales",
-   "periodo": "2026-05",
-   "titulo": "Resolución 607 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425686"
-  },
-  "425821": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Corredores Viales",
-   "periodo": "2026-05",
-   "titulo": "Resolución 703 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425821"
-  },
-  "425822": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "AySA",
-   "periodo": "2026-05",
-   "titulo": "Resolución 704 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425822"
-  },
-  "425904": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Intercargo",
-   "periodo": "2026-05",
-   "titulo": "Resolución 707 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425904"
-  },
-  "426121": {
-   "coincidencia": "pliego",
-   "empresa": "Enarsa",
-   "periodo": "2026-05",
-   "titulo": "Resolución 81 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426121"
-  },
-  "426242": {
-   "coincidencia": "licitación pública",
-   "empresa": "Enarsa",
-   "periodo": "2026-05",
-   "titulo": "Resolución 717 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426242"
-  },
-  "426510": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Intercargo",
-   "periodo": "2026-06",
-   "titulo": "Resolución 833 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426510"
-  },
-  "426795": {
-   "coincidencia": "adjudica",
-   "empresa": "Belgrano Cargas",
-   "periodo": "2026-06",
-   "titulo": "Resolución 136 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426795"
-  },
-  "427319": {
-   "coincidencia": "pliego",
-   "empresa": "Belgrano Cargas",
-   "periodo": "2026-07",
-   "titulo": "Resolución 199 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427319"
-  },
-  "427566": {
-   "coincidencia": "adjudica",
-   "empresa": "Belgrano Cargas",
-   "periodo": "2026-07",
-   "titulo": "Decreto DNU 585 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427566"
-  },
-  "427661": {
-   "coincidencia": "concurso público",
-   "empresa": "YCRT",
-   "periodo": "2026-07",
-   "titulo": "Decreto 590 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427661"
-  },
-  "428126": {
-   "coincidencia": "privatiza",
-   "empresa": "Corredores Viales",
-   "periodo": "2026-07",
-   "titulo": "Disposición 215 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428126"
-  },
-  "428273": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Intercargo",
-   "periodo": "2026-07",
-   "titulo": "Resolución 1148 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428273"
-  },
-  "428457": {
-   "coincidencia": "adjudica",
-   "empresa": "Belgrano Cargas",
-   "periodo": "2026-07",
-   "titulo": "Resolución 190 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428457"
-  },
-  "428578": {
-   "coincidencia": "privatiza",
-   "empresa": "Belgrano Cargas",
-   "periodo": "2026-08",
-   "titulo": "Resolución 1214 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428578"
-  },
-  "428616": {
-   "coincidencia": "adjudica",
-   "empresa": "Belgrano Cargas",
-   "periodo": "2026-08",
-   "titulo": "Decreto 709 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428616"
-  },
-  "428664": {
-   "coincidencia": "adjudica",
-   "empresa": "Belgrano Cargas",
-   "periodo": "2026-08",
-   "titulo": "Resolución GENERAL 1159 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428664"
-  },
-  "428716": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Corredores Viales",
-   "periodo": "2026-08",
-   "titulo": "Decreto 718 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428716"
-  },
-  "428747": {
-   "coincidencia": "adjudica",
-   "empresa": "Corredores Viales",
-   "periodo": "2026-08",
-   "titulo": "Resolución 55 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428747"
-  },
-  "428810": {
-   "coincidencia": "pliego",
-   "empresa": "Transener",
-   "periodo": "2026-08",
-   "titulo": "Resolución 202 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428810"
-  },
-  "428996": {
-   "coincidencia": "adjudica",
-   "empresa": "Belgrano Cargas",
-   "periodo": "2026-08",
-   "titulo": "Resolución 68 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428996"
-  },
-  "429036": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "Belgrano Cargas",
-   "periodo": "2026-08",
-   "titulo": "Resolución 1350 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429036"
-  },
-  "429239": {
-   "coincidencia": "sujeta a privatización",
-   "empresa": "AySA",
-   "periodo": "2026-08",
-   "titulo": "Resolución 1386 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429239"
-  }
- },
+ "pendientes": {},
  "revisadas": {
   "425373": {
    "del_proceso": true,
@@ -1182,7 +993,7 @@
    "periodo": "2026-07"
   },
   "427661": {
-   "del_proceso": true,
+   "del_proceso": false,
    "empresa": "YCRT",
    "periodo": "2026-07"
   },
@@ -2070,6 +1881,345 @@
    "del_proceso": false,
    "empresa": "Enarsa",
    "periodo": "2026-08"
+  }
+ },
+ "revision_auditoria": {
+  "425373": {
+   "clasificacion": "ajena",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [],
+   "periodo": "2026-05",
+   "resolucion": "Plan de adecuación y reequipamiento militar; no privatización de Corredores Viales.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "dc7ced76853c4057550a1b22d9effc7f36828f13ae8da61244f332096777fbf9",
+   "titulo": "Decreto DNU 314 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425373"
+  },
+  "425431": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [
+    "Belgrano Cargas"
+   ],
+   "periodo": "2026-05",
+   "resolucion": "Prórroga de Ferroexpreso Pampeano y diseño del corredor Rosario-Bahía Blanca; la comunicación a Belgrano no implica privatizarlo.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "228b5223412aeae0469f2b75131956345b68689765118f47bf1cc85e2675123c",
+   "titulo": "Resolución 549 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425431"
+  },
+  "425531": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [
+    "Corredores Viales"
+   ],
+   "periodo": "2026-05",
+   "resolucion": "Circular 2 de RFC etapa II-B; modifica pliegos, sin cierre de toda la cartera de Corredores.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "04a8017dcc8f7a3ae491ea179429909aae1bb89bdb03febd639700593c5d16c3",
+   "titulo": "Resolución 555 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425531"
+  },
+  "425593": {
+   "clasificacion": "ajena",
+   "coincidencia": "adjudica",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-05",
+   "resolucion": "Reglamentos del concurso de residencias de salud; no Belgrano Cargas.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "51ecadc30de81120e5cd5cc3e7bf3e26934a9daa0883b0d6df6a6fcc37a57808",
+   "titulo": "Resolución 2012 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425593"
+  },
+  "425686": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [
+    "Corredores Viales"
+   ],
+   "periodo": "2026-05",
+   "resolucion": "Circular 1 de RFC etapa III; sin cierre de la privatización de Corredores.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "fc6cb6ba57292b446c9517b38449707321a9bbd17c3f8094d1811276b525fdc2",
+   "titulo": "Resolución 607 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425686"
+  },
+  "425821": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [
+    "Corredores Viales"
+   ],
+   "periodo": "2026-05",
+   "resolucion": "Circular 2 de RFC etapa III; no cambia la etapa 3 de Corredores.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "c270519feee5cb05f55bfb1b978cdbe72289d37c8aff2d387ee4c590284ad432",
+   "titulo": "Resolución 703 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425821"
+  },
+  "425822": {
+   "clasificacion": "incorporada",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "AySA",
+   "empresas_mencionadas": [
+    "AySA"
+   ],
+   "periodo": "2026-05",
+   "resolucion": "Llamado de AySA de mayo, ya incorporado; prórroga posterior revisada por ME 1386/2026.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "55506c03458b8bf621288e8d51e0d1b289ab54af2bd1152f03a07bb839507cc0",
+   "titulo": "Resolución 704 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425822"
+  },
+  "425904": {
+   "clasificacion": "superada",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Intercargo",
+   "empresas_mencionadas": [
+    "Intercargo"
+   ],
+   "periodo": "2026-05",
+   "resolucion": "Circular 2 de Intercargo; procedimiento luego declarado desierto por ME 1148/2026.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "c9913d47857deddee90ec60254d3c9794dcf56662e5e9f4da0b8fdbdfe9fec74",
+   "titulo": "Resolución 707 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425904"
+  },
+  "426121": {
+   "clasificacion": "ajena",
+   "coincidencia": "pliego",
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-05",
+   "resolucion": "Subasta de inmuebles de AABE; no privatización de Enarsa.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "a091661693db85d660d730c74c2d0357f82f5ea8c6b806efc86f78149bae1876",
+   "titulo": "Resolución 81 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426121"
+  },
+  "426242": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "licitación pública",
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-05",
+   "resolucion": "Finalización de obras iniciales y tarifas de la sección Zárate, RFC etapa I; no es venta de Enarsa ni cierre de todo Corredores.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "fa9dcc4e43d9e8feb0caeeeec17144cea2e73347c84c243479319326960ede50",
+   "titulo": "Resolución 717 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426242"
+  },
+  "426510": {
+   "clasificacion": "superada",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Intercargo",
+   "empresas_mencionadas": [
+    "Intercargo"
+   ],
+   "periodo": "2026-06",
+   "resolucion": "Circular 4 de Intercargo; procedimiento luego declarado desierto por ME 1148/2026.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "2d2c0227873ff05630cea7a1b009df0a3ed9178e85cb2a7689946db7d8147701",
+   "titulo": "Resolución 833 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426510"
+  },
+  "426795": {
+   "clasificacion": "ajena",
+   "coincidencia": "adjudica",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-06",
+   "resolucion": "Adjudicación de almacenamiento eléctrico AlmaGBA; no Belgrano Cargas.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "63edddc401d768e158c011abf72a8b71624c17fb6740163a3450978b32f50d4c",
+   "titulo": "Resolución 136 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426795"
+  },
+  "427319": {
+   "clasificacion": "ajena",
+   "coincidencia": "pliego",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [
+    "Enarsa"
+   ],
+   "periodo": "2026-07",
+   "resolucion": "Inscripción en el Registro de Integridad y Transparencia; no privatización de Belgrano ni Enarsa.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "04009bda0013a491470f1df456fc5d263c3922a6d19440466573a185c73b71d5",
+   "titulo": "Resolución 199 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427319"
+  },
+  "427566": {
+   "clasificacion": "ajena",
+   "coincidencia": "adjudica",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [
+    "Enarsa"
+   ],
+   "periodo": "2026-07",
+   "resolucion": "Prórroga de emergencia energética hasta diciembre de 2027; no cambia etapas de privatización.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "648aa31ce3121550a0b4b633777d5421e36961f105a07d6d8a9fc712342659d1",
+   "titulo": "Decreto DNU 585 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427566"
+  },
+  "427661": {
+   "coincidencia": "concurso público",
+   "empresa": "YCRT",
+   "periodo": "2026-07",
+   "resolucion": "Falso positivo: Decreto 590/2026 corresponde a hidrocarburos offshore CAN_200, no a YCRT.",
+   "revisado_en": "2026-09-08",
+   "titulo": "Decreto 590 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427661"
+  },
+  "428126": {
+   "clasificacion": "ajena",
+   "coincidencia": "privatiza",
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "resolucion": "Manual para autorización de cinemómetros; no privatización de Corredores.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "804b93364cf8c64e1c5d1566d33ea9af8b278528f7631ac5291125fdee1035e3",
+   "titulo": "Disposición 215 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428126"
+  },
+  "428273": {
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Intercargo",
+   "periodo": "2026-07",
+   "resolucion": "Actualizado hito de Intercargo: licitación desierta; etapa histórica conservada pendiente de regla metodológica.",
+   "revisado_en": "2026-09-08",
+   "titulo": "Resolución 1148 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428273"
+  },
+  "428457": {
+   "clasificacion": "ajena",
+   "coincidencia": "adjudica",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "resolucion": "Reglas de subsidios energéticos focalizados; no Belgrano Cargas.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "b6b37f56542897ab93b8ed4a967156eb0b6b91bd98c767232c601e35c938249e",
+   "titulo": "Resolución 190 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428457"
+  },
+  "428578": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "privatiza",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [
+    "Belgrano Cargas",
+    "SOFSE"
+   ],
+   "periodo": "2026-08",
+   "resolucion": "Asignación a ADIFSA del ramal U15 Paraná-El Pingo; no adjudica privatización de Belgrano o SOFSE.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "2ae6ae95a30fc371a3fc6873490677dba0291734952cb1ebd7a4f29c16c3810a",
+   "titulo": "Resolución 1214 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428578"
+  },
+  "428616": {
+   "clasificacion": "ajena",
+   "coincidencia": "adjudica",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "resolucion": "Régimen administrativo y patrimonial de OSFFESEG; no Belgrano Cargas.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "2ec8b389b603174790a82757339fbef0832f7d3cd1ea13300e4d84df9f5e44d3",
+   "titulo": "Decreto 709 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428616"
+  },
+  "428664": {
+   "clasificacion": "ajena",
+   "coincidencia": "adjudica",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "resolucion": "Régimen CNV de fideicomisos financieros; no privatización de Belgrano Cargas.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "ec531b4f996404e8053c1547f5f1dd33810aeb76589a535fc025c4366637b1d4",
+   "titulo": "Resolución GENERAL 1159 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428664"
+  },
+  "428716": {
+   "clasificacion": "incorporada",
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [
+    "Belgrano Cargas"
+   ],
+   "periodo": "2026-08",
+   "resolucion": "Destino fiduciario del producido de material rodante de Belgrano; antecedente del llamado ME 1350/2026 ya incorporado. Atribución previa a Corredores incorrecta.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "2389ce9628c8e025d12f47316eb5a624c7f5cc7af6649467a12b26b512f1a88e",
+   "titulo": "Decreto 718 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428716"
+  },
+  "428747": {
+   "clasificacion": "ajena",
+   "coincidencia": "adjudica",
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "resolucion": "Permisos del transporte automotor de pasajeros; no privatización de Corredores Viales.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "fb01ce0af19858c8f8c55daa9808bd8321f36de376d37927f24b3b91ded85655",
+   "titulo": "Resolución 55 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428747"
+  },
+  "428810": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "pliego",
+   "empresa": "Transener",
+   "empresas_mencionadas": [
+    "Transener"
+   ],
+   "periodo": "2026-08",
+   "resolucion": "Licitación de ampliación eléctrica AMBA I; no modifica la venta ya cerrada de Citelec/Transener.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "485235b1b6f07d93a1ad5d178177678655c69e662b8e32bcc35629acbed1067d",
+   "titulo": "Resolución 202 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428810"
+  },
+  "428996": {
+   "clasificacion": "ajena",
+   "coincidencia": "adjudica",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "resolucion": "Registro de Inversiones Mineras y procedimientos fiscales; no privatización de Belgrano Cargas.",
+   "revisado_en": "2026-09-08",
+   "sha256_texto": "095f824b7334ff82d1f8a752daf97544667406210bf940b37c601196e979e70a",
+   "titulo": "Resolución 68 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428996"
+  },
+  "429036": {
+   "coincidencia": "sujeta a privatización",
+   "empresa": "Belgrano Cargas",
+   "periodo": "2026-08",
+   "resolucion": "Incorporado llamado formal de Belgrano Cargas, etapa 3 desde agosto.",
+   "revisado_en": "2026-09-08",
+   "titulo": "Resolución 1350 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429036"
+  },
+  "429239": {
+   "coincidencia": "sujeta a privatización",
+   "empresa": "AySA",
+   "periodo": "2026-08",
+   "resolucion": "Actualizado hito de AySA por prórroga; etapa 3 sin cambio.",
+   "revisado_en": "2026-09-08",
+   "titulo": "Resolución 1386 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429239"
   }
  }
 }

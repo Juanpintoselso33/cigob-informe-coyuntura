@@ -72,6 +72,8 @@ def test_la_card_publica_las_pendientes(tmp_path, monkeypatch):
     store = tmp_path / "privatizaciones_novedades.json"
     store.write_bytes(gestion.PRIVATIZACIONES_NOVEDADES_PATH.read_bytes())
     monkeypatch.setattr(gestion, "PRIVATIZACIONES_NOVEDADES_PATH", store)
+    # La forma de publicación no necesita consultar la red ni descubrir normas.
+    monkeypatch.setattr(gestion, "_infoleg_buscar_mes", lambda *a, **kw: [])
     card = gestion.fetch_privatizaciones()
     if card is None:
         pytest.skip("colector sin datos")
@@ -80,3 +82,100 @@ def test_la_card_publica_las_pendientes(tmp_path, monkeypatch):
         assert d.get("empresa") in gestion.PRIVATIZACIONES_TERMINOS, d
         assert d.get("url", "").startswith("https://servicios.infoleg.gob.ar"), d
         assert d.get("titulo") and "\n" not in d["titulo"], d
+
+
+def _detector_aislado(tmp_path, monkeypatch, texto, previo=None):
+    ruta = tmp_path / 'novedades.json'
+    ruta.write_text(json.dumps(previo or {}))
+    monkeypatch.setattr(gestion, 'PRIVATIZACIONES_NOVEDADES_PATH', ruta)
+    monkeypatch.setattr(gestion, '_infoleg_buscar_mes', lambda *a, **kw: [('123', 'Resolución')])
+    monkeypatch.setattr(gestion, '_infoleg_texto', lambda nid: texto)
+    return gestion.detectar_novedades_privatizaciones(meses_atras=1)
+
+
+def test_busqueda_or_no_prueba_mencion_de_empresa(tmp_path, monkeypatch):
+    # Caso real Dto. 590/2026: concurso offshore, devuelto al buscar YCRT.
+    s = _detector_aislado(tmp_path, monkeypatch,
+        'Convócase a concurso público internacional para explorar hidrocarburos CAN_200.')
+    assert not s['pendientes']
+    assert s['revisadas']['123']['del_proceso'] is False
+
+
+def test_texto_vacio_se_reintenta_en_otra_corrida(tmp_path, monkeypatch):
+    s = _detector_aislado(tmp_path, monkeypatch, '')
+    assert '123' not in s['revisadas']
+    monkeypatch.setattr(gestion, '_infoleg_texto', lambda nid:
+        'Apruébase el pliego de AGUA Y SANEAMIENTOS ARGENTINOS S.A.')
+    s = gestion.detectar_novedades_privatizaciones(meses_atras=1)
+    assert s['pendientes']['123']['empresa'] == 'AySA'
+
+
+def test_cache_anterior_se_revalida_y_atribuye_por_texto(tmp_path, monkeypatch):
+    previo = {'revisadas': {'123': {'empresa': 'AySA', 'del_proceso': False}}}
+    s = _detector_aislado(tmp_path, monkeypatch,
+        'BELGRANO CARGAS Y LOGÍSTICA. Apruébanse los pliegos de licitación pública.', previo)
+    assert s['pendientes']['123']['empresa'] == 'Belgrano Cargas'
+    assert s['revisadas']['123']['version_filtro'] == 2
+    monkeypatch.setattr(gestion, '_infoleg_texto', lambda nid: pytest.fail('ya clasificada'))
+    gestion.detectar_novedades_privatizaciones(meses_atras=1)
+
+
+def test_revalidacion_retira_pendiente_falso_sin_tocar_revision_manual(tmp_path, monkeypatch):
+    previo = {'revisadas': {'123': {'empresa': 'YCRT', 'del_proceso': True}},
+              'pendientes': {'123': {'empresa': 'YCRT'}}}
+    s = _detector_aislado(tmp_path, monkeypatch, 'Concurso público offshore CAN_200.', previo)
+    assert not s['pendientes']
+    previo['revision_auditoria'] = {'123': {'resolucion': 'Revisión ya documentada'}}
+    s = _detector_aislado(tmp_path, monkeypatch, 'AySA privatización', previo)
+    assert s['revision_auditoria'] == previo['revision_auditoria']
+    assert s['pendientes'] == previo['pendientes']
+
+
+def test_menciones_normalizadas_y_varias_empresas():
+    assert gestion._privat_empresas_en_texto('NUCLEOELECTRICA y Energía\nArgentina S.A.') == ['Enarsa', 'Nucleoeléctrica']
+    assert gestion._privat_empresas_en_texto('intercargosa y energía de Argentina') == []
+
+
+def test_cobertura_distingue_fallo_de_cero_y_preserva_revision(tmp_path, monkeypatch):
+    ruta = tmp_path / 'novedades.json'
+    ruta.write_text(json.dumps({'_meta': {'revision_manual_en': '2026-08-01'},
+                                'pendientes': {'99': {'empresa': 'AySA'}}}))
+    monkeypatch.setattr(gestion, 'PRIVATIZACIONES_NOVEDADES_PATH', ruta)
+    monkeypatch.setattr(gestion, 'PRIVATIZACIONES_TERMINOS', {'AySA': 'Agua', 'Enarsa': 'Energía'})
+    def buscar(termino, *a, **kw):
+        if termino == 'Agua':
+            raise RuntimeError('fuente caída')
+        return []
+    monkeypatch.setattr(gestion, '_infoleg_buscar_mes', buscar)
+    s = gestion.detectar_novedades_privatizaciones(meses_atras=1)
+    c = s['_meta']['cobertura']
+    assert c['estado'] == 'incompleta'
+    assert c['consultas_previstas'] == 2 and c['consultas_sin_error'] == 1
+    assert len(c['consultas_fallidas']) == 1
+    assert s['_meta']['revision_manual_en'] == '2026-08-01'
+    assert '99' in s['pendientes']
+    monkeypatch.setattr(gestion, '_infoleg_buscar_mes', lambda *a, **kw: [])
+    c = gestion.detectar_novedades_privatizaciones(meses_atras=1)['_meta']['cobertura']
+    assert c['estado'] == 'sin_fallos_detectados'
+    assert c['consultas_fallidas'] == []
+
+
+def test_texto_fallido_impide_declarar_busqueda_sin_fallos(tmp_path, monkeypatch):
+    s = _detector_aislado(tmp_path, monkeypatch, '')
+    assert s['_meta']['cobertura']['estado'] == 'incompleta'
+    assert s['_meta']['cobertura']['textos_fallidos'] == ['123']
+
+
+def test_card_conserva_pendientes_y_avisa_si_detector_falla(tmp_path, monkeypatch):
+    ruta = tmp_path / 'novedades.json'
+    pendiente = {'99': {'empresa': 'AySA', 'titulo': 'Pliego', 'url': 'https://example.test/norma'}}
+    ruta.write_text(json.dumps({'pendientes': pendiente}))
+    monkeypatch.setattr(gestion, 'PRIVATIZACIONES_NOVEDADES_PATH', ruta)
+    def fallar():
+        raise RuntimeError('detector caído')
+    monkeypatch.setattr(gestion, 'detectar_novedades_privatizaciones', fallar)
+    card = gestion.fetch_privatizaciones()
+    assert card is not None and card['valor'] is not None
+    assert card['novedades_pendientes'] == pendiente
+    assert card['novedades_cobertura']['estado'] == 'incompleta'
+    assert 'consulta de novedades incompleta' in card['detalle_txt']

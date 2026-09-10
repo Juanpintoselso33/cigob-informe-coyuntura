@@ -1,0 +1,32 @@
+{
+  "consulta": "2026-09-08",
+  "total_contractual": {
+    "usd": 706885298.49,
+    "fecha_comunicado": "2025-12-22",
+    "fuente": "https://www.argentina.gob.ar/noticias/el-estado-nacional-firmo-los-contratos-de-transferencia-de-acciones-y-concesion-de-las",
+    "alcance": "Firma contractual; no extracto de caja"
+  },
+  "pago_informado_por_adquirente": {
+    "activo": "Piedra del Águila",
+    "usd": 245000000,
+    "periodo_pago": "2026-01",
+    "fuente": "https://www.centralpuerto.com/wp-content/uploads/2026/03/20260304-4Q25-ENG-CEPU-Results.pdf",
+    "pagina_pdf": 2,
+    "alcance": "Declaración de la empresa pagadora; no conciliación completa del Tesoro"
+  },
+  "limite": "Piedra del Águila está incluida en Comahue: no sumar ambos importes. No valida el total histórico de privatizaciones.",
+  "condiciones_pago": {
+    "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/5977087/20251230?suplemento=1",
+    "norma": "ME 2124/2025",
+    "articulo_pago": 3,
+    "fecha_limite": "2026-01-06",
+    "articulo_posesion": 4,
+    "posesion_prevista": "2026-01-08T12:00:00",
+    "alcance": "Obligación y cronograma, no comprobante del pago de cada adjudicatario"
+  },
+  "corroboracion_periodistica": {
+    "fuente": "https://tn.com.ar/economia/2026/01/06/entraron-us700-millones-de-la-privatizacion-de-las-represas-las-reservas-superaron-los-us44000-millones/",
+    "fecha": "2026-01-06",
+    "alcance": "Reporta desembolso conjunto, sin sustituir conciliación primaria por operación"
+  }
+}

@@ -48,6 +48,11 @@ _INDICES_PARAMETRICOS = {
     "gestion":  ("itcg", gestion.calcular_itcg_cinturon,  itcg.tension_de_itcg),
     "politica": ("itcp", politica.calcular_itcp_cinturon, itcp.tension_de_itcp),
 }
+_ANOTADORES_PARAMETRICOS = {
+    'macro': macro.anotar_indicadores,
+    'gestion': gestion.anotar_indicadores,
+    'politica': politica._anotar_indicadores_itcp,
+}
 
 # Vida cotidiana va aparte porque su índice no se arma desde el caché del
 # colector sino desde las SERIES persistidas: cada componente es un índice
@@ -103,6 +108,9 @@ def _recalcular_indice(nombre: str, indicadores: dict, score_cache: float) -> tu
     resultado = calcular(indicadores)
     if resultado is None:
         return score_cache, None
+    # Los metadatos de las tarjetas deben pertenecer al mismo cálculo nuevo,
+    # no al motor/ajuste que estaba vigente al descargar el caché.
+    _ANOTADORES_PARAMETRICOS[nombre](indicadores, resultado)
     return tension_de(resultado["valor"]), resultado
 
 

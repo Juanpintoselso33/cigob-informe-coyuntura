@@ -35,18 +35,19 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 93,7** | **NARANJA** | Deterioro moderado frente a las referencias | 18 indicadores: 5 en verde · 2 en amarillo · 7 en naranja · 4 en rojo |
+| **ITCIS: 93,1** | **NARANJA** | Deterioro moderado frente a las referencias | 18 indicadores: 5 en verde · 2 en amarillo · 7 en naranja · 4 en rojo |
+Componentes que puntúan en este corte: 18 de 18 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
 | Ingresos y consumo | Si el sueldo alcanza y qué compra. | 112,5 | VERDE | 28,1 % |
-| Presión de precios | Tres gastos sensibles. | 101,3 | AMARILLO | 25,0 % |
-| Prospectivas de empleo | El trabajo por sus dos caras: cuánto hay y de qué calidad es. | 91,9 | NARANJA | 24,2 % |
-| Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,7 | ROJO | 10,0 % |
+| Presión de precios | Tres gastos sensibles. | 98,4 | AMARILLO | 25,0 % |
+| Prospectivas de empleo | Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC)… | 91,9 | NARANJA | 24,2 % |
+| Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,8 | ROJO | 10,0 % |
 | Confianza y percepción | El ánimo con que se vive el momento, medido preguntando. | 91,1 | NARANJA | 8,2 % |
-| Seguridad | Qué proporción de los hogares fue víctima de un delito. | 102,1 | AMARILLO | 4,5 % |
+| Seguridad | Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. | 104,8 | AMARILLO | 4,5 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -62,30 +63,30 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 |---|---|---|---|---|
 | **DIMENSIÓN: Ingresos y consumo** | | | | |
 | Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,87 canastas (RIPTE/CBT) | VERDE | 13,4 % |
-| Consumo total de carnes per cápita | Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en promedio móvil de doce meses. | 113,94 kg/hab/año | NARANJA | 0,9 % |
+| Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero… | 113,94 kg/hab/año | NARANJA | 0,9 % |
 | Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,3 % de personas | VERDE | 7,3 % |
 | Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 31,25 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
 | Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 82,1 índice (2017 = 100, desestacionalizado) | NARANJA | 5,6 % |
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,98 % m/m | VERDE | 8,8 % |
 | Canasta de servicios públicos / salario | Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar… | 14,5 % del salario RIPTE | VERDE | 11,2 % |
-| Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,47 % m/m alquileres | ROJO | 5,0 % |
+| Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 3,92 % m/m alquileres | ROJO | 5,0 % |
 | **DIMENSIÓN: Prospectivas de empleo** | | | | |
 | Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC. | 37,9 % | NARANJA | 8,3 % |
 | Peso del trabajo independiente | Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los… | 20,6 % del empleo registrado SIPA, sin monotributo social | NARANJA | 2,4 % |
-| Empleadores PyME activos | Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona declarada con cobertura de ART. | 460.777 empleadores | NARANJA | 3,6 % |
-| Construcción (ISAC) | El nivel de actividad de la construcción, gran motor de empleo de baja calificación. | 140,2 índice ISAC | ROJO | 3,3 % |
+| Empleadores PyME activos | Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART. | 460.777 empleadores | NARANJA | 3,6 % |
+| Construcción (ISAC) | Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. | 140,2 índice ISAC | ROJO | 3,3 % |
 | Subocupación demandante | Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando… | 7,5 % de la PEA | NARANJA | 1,2 % |
 | Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.106,53 miles de puestos | AMARILLO | 5,4 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
-| Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,52 % de la cartera en situación irregular | ROJO | 7,0 % |
+| Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,41 % de la cartera en situación irregular | ROJO | 7,0 % |
 | Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | ROJO | 3,0 % |
 | **DIMENSIÓN: Confianza y percepción** | | | | |
 | Confianza del consumidor (ICC) | El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor). | 40,2 índice | NARANJA | 8,2 % |
 | **DIMENSIÓN: Seguridad** | | | | |
-| Victimización (IVI) | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 28 % de hogares víctimas (últimos 12 meses) | AMARILLO | 4,5 % |
+| Victimización (IVI) | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 4,5 % |
 
-*Datos al 2026-09-10.*
+*Datos al 2026-09-08.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -111,7 +112,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | canastas (RIPTE/CBT) |
 | **SERIE DISPONIBLE** | 2021-08 → 2026-06 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El salario formal (RIPTE) corre un mes detrás de la canasta: el par común queda ~2 meses atrás del calendario. |
 | **PRODUCTOR DEL DATO** | Secretaría de Trabajo (RIPTE) + INDEC (Canasta Básica Total) | **OPERACIÓN ESTADÍSTICA** | RIPTE — remuneración imponible promedio de los trabajadores estables ÷ Canasta Básica Total por adulto equivalente |
-| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API de series para la canasta; el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API de series para la canasta; el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -160,6 +161,7 @@ Ponderación vigente en el ITCIS: 13,4 % efectivo. El color es una lectura adici
 ## Transparencia — limitaciones declaradas
 
 - El RIPTE cubre solo asalariados formales estables: deja afuera a informales y cuentapropistas; la canasta es por adulto equivalente.
+- El RIPTE mide remuneración imponible, con tope y sin conceptos no remunerativos: no es ingreso de bolsillo. La CBT corresponde al Gran Buenos Aires. El cociente expresa canastas por adulto equivalente, no canastas familiares ni capacidad de compra observada de todos los hogares.
 - El peso del componente (13,38% del índice) es una discusión abierta declarada del diseño.
 - Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.
 
@@ -199,7 +201,7 @@ Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa 
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m |
 | **SERIE DISPONIBLE** | 2022-09 → 2026-07 (47 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC se publica a mediados del mes siguiente. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | IPC — Alimentos y bebidas no alcohólicas, nivel nacional; el componente lo compara contra el IPC general |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -286,7 +288,7 @@ Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, g
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % del salario RIPTE |
 | **SERIE DISPONIBLE** | 2025-12 → 2026-08 (9 puntos) | **REZAGO DE PUBLICACIÓN** | El IIEP publica durante el mismo mes una estimación de la canasta y del RIPTE del período. |
 | **PRODUCTOR DEL DATO** | IIEP UBA-CONICET, Observatorio de Tarifas y Subsidios | **OPERACIÓN ESTADÍSTICA** | Canasta de Servicios Públicos del AMBA sobre salario RIPTE |
-| **MODO DE ACCESO** | Automático: páginas mensuales del reporte de Tarifas y Subsidios. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: páginas mensuales del reporte de Tarifas y Subsidios. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -366,7 +368,7 @@ Cuánto se encareció el alquiler de la vivienda por encima del resto de los pre
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,47 % m/m alquileres** (2026-07) | **ROJO** | Peso efectivo 5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 3,92 % m/m alquileres** (2026-07) | **ROJO** | Peso efectivo 5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -374,9 +376,9 @@ Cuánto se encareció el alquiler de la vivienda por encima del resto de los pre
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | alquiler_real | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m alquileres |
-| **SERIE DISPONIBLE** | 2021-09 → 2026-07 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC-GBA se publica a mediados del mes siguiente (~1 mes). |
+| **SERIE DISPONIBLE** | 2017-01 → 2026-07 (115 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC-GBA se publica a mediados del mes siguiente (~1 mes). |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Índice de Precios al Consumidor del Gran Buenos Aires — alquiler de la vivienda |
-| **MODO DE ACCESO** | Automático: API pública de series. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: planilla histórica original del INDEC, con validación de región, conceptos y continuidad mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -405,19 +407,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **64,8**.
+Este componente está hoy en **50,3**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (1,47 % m/m alquileres) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (3,92 % m/m alquileres) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 1,47 % m/m alquileres (2026-07).
+Dato vigente: 3,92 % m/m alquileres (2026-07).
 
-El componente está en 64,8 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
+El componente está en 50,3 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
 
 **Color vigente: ROJO**
 
@@ -425,7 +427,7 @@ Ponderación vigente en el ITCIS: 5 % efectivo. El color es una lectura adiciona
 
 ## Transparencia — limitaciones declaradas
 
-- Sólo mide el Gran Buenos Aires: es la única apertura de alquiler que publica el INDEC, y el mercado del interior puede comportarse distinto.
+- Sólo mide el Gran Buenos Aires. El INDEC también publica aperturas de alquiler para otras regiones; el monitor conserva GBA y no representa el mercado del interior.
 - Mide el alquiler que releva el IPC, que sigue contratos vigentes; los valores de los contratos nuevos pueden moverse antes.
 - No distingue entre hogares propietarios e inquilinos: el índice describe el precio, no cuántos lo pagan.
 
@@ -439,6 +441,8 @@ Ponderación vigente en el ITCIS: 5 % efectivo. El color es una lectura adiciona
 
 **2026-07-20** — Alta del indicador: la dimensión de precios no medía el costo de la vivienda.
 
+**2026-09-08** — ADR-0291: la API discrepaba del original sin que lo explicara un rebase. Se reconstruyen tarjeta e historia desde la planilla INDEC, conservando GBA, base 4T-2023 y pesos. La revisión del ITCIS no representa una variación económica nueva.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -449,7 +453,7 @@ Ponderación vigente en el ITCIS: 5 % efectivo. El color es una lectura adiciona
 
 # Consumo total de carnes per cápita
 
-Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en promedio móvil de doce meses. Es el acceso total a proteína cárnica, sin importar de qué animal viene.
+Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero oficial. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares.
 
 | | | | |
 |---|---|---|---|
@@ -463,13 +467,13 @@ Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en 
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-07 (43 puntos) | **REZAGO DE PUBLICACIÓN** | El tablero oficial publica el mes con unas semanas de demora; la faena del INDEC, con dos meses. El titular avanza con el tablero y el índice con la faena. |
 | **PRODUCTOR DEL DATO** | SAGYP (nivel) e INDEC (evolución) | **OPERACIÓN ESTADÍSTICA** | Nivel: SAGYP — Dirección Nacional de Producción Ganadera, tablero de consumo per cápita de carnes, promedio móvil de 12 meses. Evolución: faena mensual en toneladas de vacunos, porcinos y aves (INDEC, series 40.3_VT_0_M_17 · 40.3_PT_0_M_18 · 40.3_AT_0_M_14), per cápita con la población proyectada del INDEC. |
-| **MODO DE ACCESO** | Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
-Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en promedio móvil de doce meses. Es el acceso total a proteína cárnica, sin importar de qué animal viene.
+Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero oficial. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares.
 
-Distingue dos cosas que se parecen y no son lo mismo: si el consumo de vacuna cae y el total se sostiene, hay sustitución hacia pollo o cerdo; si caen los dos juntos, hay una pérdida real de acceso a proteína animal. Por eso puntúa el total y no la vacuna, que sola no permite separarlas — el desglose por carne se publica acá abajo, junto al color. El titular muestra el nivel oficial en kilos; el gráfico y el puntaje van en índice base 100 = 4T-2023, reconstruido desde la faena, que es lo único con historia para comparar contra el arranque del mandato.
+La suma y el desglose muestran la evolución agregada de las tres carnes, sin identificar sustituciones dentro de los mismos hogares. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones: una divergencia respecto del consumo puede afectar la interpretación y el puntaje.
 
 **Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
@@ -477,7 +481,7 @@ Distingue dos cosas que se parecen y no son lo mismo: si el consumo de vacuna ca
 
 - Suma de las tres carnes —vacuna, aviar y porcina— en toneladas, promedio móvil de 12 meses: la misma ventana con la que la fuente oficial publica su per cápita, y la que saca la estacionalidad fuerte de la faena.
 - Pasaje a per cápita con la población total proyectada del INDEC, interpolada a meses desde su serie trimestral.
-- Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menos proteína por habitante = deterioro).
+- Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menor faena por habitante = deterioro en el proxy).
 
 ## Semáforo — valores que determinan el color
 
@@ -513,7 +517,7 @@ Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicio
 ## Transparencia — limitaciones declaradas
 
 - El nivel es consumo «aparente», no medición de hogares: no observa lo que come una familia, sino lo que queda en el mercado interno.
-- La evolución se reconstruye desde la FAENA, que es producción y no netea exportaciones. No afecta al puntaje —el índice se lee contra su propia base, así que pesa la evolución y no el nivel— pero sí explica que la variación reconstruida no dé idéntica a la que publica el tablero. La distancia entre ambas se vigila: si supera los 3 puntos porcentuales, la faena dejó de aproximar el consumo.
+- La evolución se reconstruye desde la FAENA, que es producción y no netea exportaciones. Rebasar a 100 no elimina diferencias de evolución entre producción y consumo; esas diferencias pueden afectar al puntaje. Una distancia superior a tres puntos porcentuales se usa como aviso de divergencia, no como prueba de equivalencia cuando queda por debajo.
 - Sólo cubre las tres carnes. Huevo, lácteos, pescado y legumbres también son proteína y también muestran sustitución; sus fuentes no tienen la frecuencia necesaria para un seguimiento mensual.
 - El pasaje a per cápita usa una proyección de población, no un censo del mes.
 
@@ -557,7 +561,7 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % |
 | **SERIE DISPONIBLE** | 2016-04 → 2026-01 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
 | **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — asalariados sin descuento jubilatorio, tasa trimestral |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -565,7 +569,7 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 
 Mide la precariedad laboral y la exclusión de la red de protección social. En el ITCIS su base es el 4T-2023 exacto (el trimestre de arranque del mandato).
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -610,7 +614,7 @@ Ponderación vigente en el ITCIS: 8,3 % efectivo. El color es una lectura adicio
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; sin componente, la brecha salarial absorbe el peso de la dimensión.
+- **Si falta el dato:** Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso se redistribuye proporcionalmente entre los componentes disponibles de prospectivas de empleo. La brecha salarial pertenece a otra dimensión y no absorbe ese peso.
 
 - **Política de revisiones:** La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones.
 
@@ -644,19 +648,19 @@ Qué proporción del empleo registrado son trabajadores independientes —autón
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % del empleo registrado SIPA, sin monotributo social |
 | **SERIE DISPONIBLE** | 2019-01 → 2026-05 (89 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses, el mismo del cierre administrativo con que el SIPA publica sus series de trabajo registrado. |
 | **PRODUCTOR DEL DATO** | SIPA — Sistema Integrado Previsional Argentino (Secretaría de Trabajo) | **OPERACIÓN ESTADÍSTICA** | Series mensuales sin estacionalidad de trabajadores registrados: autónomos y monotributistas por un lado; asalariados del sector privado, del sector público y de casas particulares por el otro. |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
 Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el ITCIS puntúa INVERTIDA: más peso independiente es peor.
 
-Es la contracara del cierre de empresas. Cuando caen los empleadores, dice si esas unidades productivas desaparecieron o se reconfiguraron en gente que factura por su cuenta. Un empleo que se corre del salario al trabajo independiente pierde aportes patronales, indemnización y estabilidad, aunque siga siendo registrado.
+Describe la composición del empleo registrado, excluido el monotributo social. Puede aumentar porque crecen los independientes o porque caen los asalariados. Complementa el número de empleadores, pero no permite identificar si quienes perdieron un empleo pasaron a facturar por su cuenta. El signo invertido expresa el criterio del monitor sobre protección laboral; no mide la calidad de cada trabajo independiente.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
-- Participación: autónomos más monotributistas sobre el TOTAL del empleo registrado, no sólo sobre el privado — un asalariado que pasa a monotributo puede venir de cualquiera de los tres sectores.
+- Participación: autónomos y monotributistas del régimen general sobre esas categorías más asalariados privados, públicos y de casas particulares. Se excluye el monotributo social de ambos lados del cociente.
 - El monotributo social queda EXCLUIDO, y es la decisión que más pesa acá: su serie cae 394 mil personas en un solo mes, diciembre de 2024. Eso no es mercado de trabajo, es una decisión regulatoria sobre el propio régimen.
 - Componente del índice: la participación rebaseada de forma INVERTIDA contra el promedio del 4º trimestre de 2023 (más peso independiente = deterioro).
 
@@ -706,6 +710,8 @@ Ponderación vigente en el ITCIS: 2,4 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-09-08** — ADR-0279: se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.
+
 **2026-08-21** — Entra al ITCIS (ADR-0219) como la contracara del cierre de PyMEs, con 10% de la dimensión; los cinco componentes previos ceden proporcionalmente y conservan su orden relativo. El componente entra en 92,8 y el peso nominal de la dimensión no se toca.
 
 **2026-08-25** — ADR-0250: la card declara el universo restringido que siempre usó. Decía «% del empleo registrado» y dejaba al monotributo social afuera de los dos lados del cociente. La exclusión sigue —el padrón cayó de 653 a 259 mil personas entre noviembre y diciembre de 2024 por un cambio de régimen, y con ese salto adentro el indicador daría vuelta el signo del período— pero ahora la unidad dice «sin monotributo social», la card enumera las categorías del numerador y del denominador, y publica cuánto daría con el régimen incluido (22,1% contra 20,6%). El valor no cambia.
@@ -720,7 +726,7 @@ Ponderación vigente en el ITCIS: 2,4 % efectivo. El color es una lectura adicio
 
 # Empleadores PyME activos
 
-Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona declarada con cobertura de ART. Cuando una PyME cierra, quiebra o despide a toda su nómina, el contrato con la aseguradora se rescinde casi en el acto, así que la baja aparece en el mes. En el ITCIS puntúa por el NIVEL rebaseado a 100 = 4T-2023: menos empleadores es peor.
+Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART. En el ITCIS puntúa por el nivel rebaseado a 100 = 4T-2023: menos empleadores es peor.
 
 | | | | |
 |---|---|---|---|
@@ -734,15 +740,15 @@ Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona 
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | empleadores |
 | **SERIE DISPONIBLE** | 2019-01 → 2026-05 (89 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses. La SRT publica su serie histórica todos los meses, con el rezago del cierre administrativo de las declaraciones. |
 | **PRODUCTOR DEL DATO** | SRT — Superintendencia de Riesgos del Trabajo | **OPERACIÓN ESTADÍSTICA** | Serie histórica de partes empleadoras según tamaño de la nómina, cuadro 4.2: cantidad de empleadores con al menos una persona declarada con cobertura de ART, abierta por tramo de nómina, desde julio de 1996. |
-| **MODO DE ACCESO** | Automático: lectura mensual del XLSX publicado por la SRT. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: lectura mensual del XLSX publicado por la SRT. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
-Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona declarada con cobertura de ART. Cuando una PyME cierra, quiebra o despide a toda su nómina, el contrato con la aseguradora se rescinde casi en el acto, así que la baja aparece en el mes. En el ITCIS puntúa por el NIVEL rebaseado a 100 = 4T-2023: menos empleadores es peor.
+Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART. En el ITCIS puntúa por el nivel rebaseado a 100 = 4T-2023: menos empleadores es peor.
 
-Es el cierre neto de empresas medido de forma directa, no aproximado por la producción industrial: el saldo entre las que abren y las que cierran, que es el dato que dice si el entramado PyME se está achicando.
+Observa la cantidad de empleadores dentro de ese universo. Una baja puede corresponder a un cierre, a dejar de tener personal declarado o a superar los 50 trabajadores; una entrada puede provenir de una empresa que reduce su nómina. La serie agregada no separa esos movimientos ni acredita quiebras.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -785,7 +791,7 @@ Ponderación vigente en el ITCIS: 3,6 % efectivo. El color es una lectura adicio
 
 - Sólo ve empleadores con al menos una persona declarada: una empresa que despide a toda su nómina y sigue existiendo cuenta como baja, y una que nunca tuvo empleados no cuenta nunca.
 - Es cobertura de riesgos del trabajo, no padrón tributario: el universo es el de las relaciones laborales registradas con ART.
-- Mide el saldo neto, no las altas y bajas por separado: un mes con mucha rotación y saldo cero se lee igual que un mes quieto.
+- Mide el stock de empleadores en los tramos de 1 a 50 trabajadores, no cierres o quiebras. Una empresa que supera 50 sale del universo y una que reduce su nómina a ese tramo entra; la serie no distingue esos cruces de altas o bajas de cobertura.
 - El equivalente por el lado de AFIP —la base de empleadores de OEDE— dejaría ver el universo tributario completo, pero está congelada en octubre de 2023, justo antes del período que el informe evalúa.
 
 ## Si falta el dato / Política de revisiones
@@ -795,6 +801,8 @@ Ponderación vigente en el ITCIS: 3,6 % efectivo. El color es una lectura adicio
 - **Política de revisiones:** La SRT reemite el archivo entero cada mes y la serie se relee completa en cada corrida, así que las revisiones hacia atrás entran solas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — ADR-0279: se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.
 
 **2026-07-03** — Entra al ITCIS como nivel desestacionalizado base-100 (antes puntuaba por variación mensual de la serie original, dominada por estacionalidad).
 
@@ -810,7 +818,7 @@ Ponderación vigente en el ITCIS: 3,6 % efectivo. El color es una lectura adicio
 
 # Construcción (ISAC)
 
-El nivel de actividad de la construcción, gran motor de empleo de baja calificación.
+Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.
 
 | | | | |
 |---|---|---|---|
@@ -822,17 +830,17 @@ El nivel de actividad de la construcción, gran motor de empleo de baja califica
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | despacho_cemento | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | índice ISAC |
-| **SERIE DISPONIBLE** | 2021-08 → 2026-07 (60 puntos) | **REZAGO DE PUBLICACIÓN** | ~2 meses (calendario de difusión de la construcción del INDEC). |
+| **SERIE DISPONIBLE** | 2021-07 → 2026-07 (61 puntos) | **REZAGO DE PUBLICACIÓN** | ~2 meses (calendario de difusión de la construcción del INDEC). |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | ISAC — Indicador Sintético de la Actividad de la Construcción, serie desestacionalizada (el nombre histórico del indicador quedó; la métrica real es el ISAC) |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: descubre la planilla anual vigente desde la página oficial de construcción; usa el mismo lector de niveles que la historia y el componente ISAC del IAI. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
-El nivel de actividad de la construcción, gran motor de empleo de baja calificación.
+Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.
 
 Termómetro de la obra pública y privada, sensible al ciclo económico.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -882,6 +890,8 @@ Ponderación vigente en el ITCIS: 3,3 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-09-08** — ADR-0299: IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.
+
 **2026-07-03** — Entra al ITCIS como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias).
 
 ```{=openxml}
@@ -908,7 +918,7 @@ Qué porcentaje de la población económicamente activa trabaja menos horas de l
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % de la PEA |
 | **SERIE DISPONIBLE** | 2016-04 → 2026-01 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
 | **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — tasa de subocupación demandante, valores trimestrales para el total de aglomerados urbanos relevados |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -916,7 +926,7 @@ Qué porcentaje de la población económicamente activa trabaja menos horas de l
 
 Señala empleo insuficiente: gente que ya tiene trabajo y sale igual a buscar más horas. Es la presión sobre el mercado laboral que la desocupación no ve, porque a estas personas las cuenta como ocupadas.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -998,15 +1008,15 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | miles de puestos |
 | **SERIE DISPONIBLE** | 2023-10 → 2026-05 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Los datos del Sistema Integrado Previsional se publican con alrededor de tres meses de rezago: son declaraciones de las empresas que se consolidan y se revisan. |
 | **PRODUCTOR DEL DATO** | Ministerio de Capital Humano — Sistema Integrado Previsional Argentino (SIPA) | **OPERACIÓN ESTADÍSTICA** | Trabajadores registrados según modalidad ocupacional principal — asalariados del sector privado, en miles de personas |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
 Cuántos asalariados del sector privado están registrados ante la seguridad social. Es el dato que las empresas declaran mes a mes, no una estimación de encuesta.
 
-Es la única medida directa de empleo del cinturón. Los otros componentes de la dimensión describen actividad —producción industrial, construcción— o anticipan giros, pero ninguno cuenta puestos de trabajo. Desde diciembre de 2023 el sector privado registrado perdió alrededor de doscientos cincuenta mil puestos, y la caída interanual no se interrumpió en ningún mes desde agosto de 2025.
+Cuenta puestos asalariados privados registrados. Complementa las medidas de actividad e informalidad; no cubre empleo público, independiente o no registrado ni describe por sí solo la calidad de esos puestos. La serie permite seguir el nivel y sus variaciones con la fecha de cada observación.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), la subocupación demandante y el peso del trabajo independiente sobre el empleo registrado.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -1076,7 +1086,7 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 28 % de hogares víctimas (últimos 12 meses)** (2026-04) | **AMARILLO** | Peso efectivo 4,5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 27,3 % de hogares víctimas (últimos 12 meses)** (2026-07) | **AMARILLO** | Peso efectivo 4,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1084,21 +1094,21 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | inseguridad | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | % de hogares víctimas (últimos 12 meses) |
-| **SERIE DISPONIBLE** | 2020-01 → 2026-04 (31 puntos) | **REZAGO DE PUBLICACIÓN** | La encuesta de victimización se publica con uno a dos meses de rezago. |
+| **SERIE DISPONIBLE** | 2014-01 → 2026-07 (139 puntos) | **REZAGO DE PUBLICACIÓN** | La encuesta de victimización se publica con uno a dos meses de rezago. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — LICIP (métrica) + Ministerio de Seguridad — SNIC (contraste) | **OPERACIÓN ESTADÍSTICA** | IVI — Índice de Victimización: porcentaje de hogares de 40 centros urbanos que sufrieron al menos un delito en los últimos 12 meses, denunciado o no |
-| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
 Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del LICIP (Universidad Di Tella) en 40 centros urbanos.
 
-Mide una de las principales preocupaciones cotidianas midiendo lo que la gente efectivamente sufre — incluidos los delitos que nunca se denuncian. Las denuncias registradas (SNIC, anual) quedan como contraste en el detalle: cuando ambas fuentes divergen, la divergencia es información.
+Recoge hechos de victimización declarados por los hogares, incluidos casos no denunciados. Sigue sujeto a cobertura, recuerdo y error muestral de la encuesta. Las denuncias registradas se ofrecen como contraste; sus diferencias de universo impiden tratarlas como mediciones intercambiables.
 
-**Dimensión que integra — Seguridad.** Qué proporción de los hogares fue víctima de un delito. No es percepción ni sensación: es el hecho, relevado por encuesta.
+**Dimensión que integra — Seguridad.** Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. Describe victimización reportada, con sus límites muestrales y de recuerdo; no es un censo de delitos ni una medida de sensación de inseguridad.
 
 ## Método de cómputo
 
-- Componente del índice: el porcentaje de hogares víctimas, rebaseado de forma invertida (menos victimización = mejora) con base declarada en enero de 2024 — no existe medición del 4º trimestre de 2023.
+- Componente del índice: el porcentaje de hogares víctimas, rebaseado de forma invertida (menos victimización = mejora) con base declarada en enero de 2024, conservada por continuidad de la serie publicada.
 - La ventana de 12 meses de la pregunta desestacionaliza por construcción.
 
 ## Semáforo — valores que determinan el color
@@ -1114,7 +1124,7 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **102,1**.
+Este componente está hoy en **104,8**.
 
 ## Datos concretos detrás del valor
 
@@ -1124,9 +1134,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 28 % de hogares víctimas (últimos 12 meses) (2026-04).
+Dato vigente: 27,3 % de hogares víctimas (últimos 12 meses) (2026-07).
 
-El componente está en 102,1 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
+El componente está en 104,8 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
 
 **Color vigente: AMARILLO**
 
@@ -1134,9 +1144,9 @@ Ponderación vigente en el ITCIS: 4,5 % efectivo. El color es una lectura adicio
 
 ## Transparencia — limitaciones declaradas
 
-- La encuesta estuvo suspendida entre 2020 y 2023: la base de enero de 2024 es una aproximación declarada del arranque (su ventana de 12 meses cubre mayormente el año previo).
+- La auditoría del 8-sep-2026 recuperó informes de 2020–2023, incluido el 4º trimestre de 2023: la afirmación anterior de suspensión era incorrecta. Se mantiene explícita la base de enero de 2024; una eventual armonización con 4T-2023 requiere documentar su efecto sobre el índice (ADR-0273).
 - Error muestral de ±3 puntos por mes (~1.000 hogares) y cobertura solo urbana.
-- La divergencia con el registro de denuncias se publica como información: denuncias bajando con victimización subiendo indica que crece el delito no denunciado.
+- La divergencia con el registro de denuncias requiere contrastar universos, períodos y error muestral: por sí sola no demuestra crecimiento del delito no denunciado.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1149,6 +1159,8 @@ Ponderación vigente en el ITCIS: 4,5 % efectivo. El color es una lectura adicio
 **2026-07-03** — Entra al ITCIS vía el registro anual de delitos, invertido, con base 2023.
 
 **2026-07-04** — La métrica pasa a la encuesta mensual de victimización (con la base declarada en enero de 2024); el registro de denuncias queda como serie de contraste.
+
+**2026-09-08** — Se actualiza el portal de descubrimiento y se admiten enlaces relativos a PDF; se recupera julio de 2026 y se explicita el límite del contraste con denuncias (ADR-0273).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1174,13 +1186,13 @@ El optimismo de la gente sobre la economía y sus finanzas personales (Índice d
 | **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice |
 | **SERIE DISPONIBLE** | 2021-07 → 2026-08 (60 puntos) | **REZAGO DE PUBLICACIÓN** | Semanas: la universidad publica el índice del mes durante el mes siguiente. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — Centro de Investigación en Finanzas | **OPERACIÓN ESTADÍSTICA** | ICC — Índice de Confianza del Consumidor, serie histórica nacional |
-| **MODO DE ACCESO** | Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
 El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor).
 
-Captura el humor económico de la gente, que anticipa consumo y voto.
+Describe percepciones y expectativas económicas de los encuestados. Complementa los indicadores materiales; no mide intención de voto ni demuestra por sí solo capacidad de anticipar consumo o resultados electorales.
 
 **Dimensión que integra — Confianza y percepción.** El ánimo con que se vive el momento, medido preguntando: el Índice de Confianza del Consumidor de la UTDT, que desde agosto de 2026 es el único componente de la dimensión. La segunda vía —observar qué busca la gente en internet— salió del índice porque el volumen de búsquedas no distingue si un tema preocupa o alegra; se sigue relevando y su serie se publica.
 
@@ -1219,11 +1231,11 @@ El componente está en 91,1 sobre la base 100 del 4º trimestre de 2023 — de 8
 
 Ponderación vigente en el ITCIS: 8,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Doble función declarada: (1) componente del ITCIS; (2) ancla de la validación externa del ITCIS — para no ser circular, en ese estudio el índice se recalcula sin este componente. Hasta julio de 2026 puntuó además en el cinturón espíritu de época, que desde entonces quedó acotado a la intención migratoria; esa lectura se sigue registrando como seguimiento interno.
+- **Participación en otros indicadores.** Doble función declarada: (1) componente del ITCIS; (2) contraste discriminante entre condiciones materiales y percepción, recalculando el ITCIS sin ICC. El panel externo es la validación vigente; el ICC no es evidencia independiente del índice que lo contiene. El antiguo cinturón espíritu de época quedó fuera del tablero (ADR-0205).
 
 ## Transparencia — limitaciones declaradas
 
-- Mide percepción y ánimo, no condiciones materiales: por diseño convive con medidas de conducta (consumo, patentamientos) en la misma dimensión.
+- Mide percepción y ánimo, no condiciones materiales: convive con medidas de conducta en otras dimensiones del ITCIS.
 - Depende del formato de publicación de la universidad: un cambio en el listado o la planilla interrumpe la lectura hasta adaptarla.
 
 ## Si falta el dato / Política de revisiones
@@ -1264,13 +1276,13 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | % de personas |
 | **SERIE DISPONIBLE** | 2025-01 → 2026-07 (19 puntos) | **REZAGO DE PUBLICACIÓN** | El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del INDEC llega dos veces al año y con más demora. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella (estimación mensual) e INDEC (base y referencia oficial) | **OPERACIÓN ESTADÍSTICA** | Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para la base y el contraste |
-| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
 El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del INDEC, que se publica dos veces al año: es una proyección que se actualiza todos los meses.
 
-Es la única medición de pobreza con frecuencia mensual que existe en el país, y la variable de mayor carga simbólica del cinturón. Integra el ITCIS con el 25% de la dimensión de ingresos y consumo (9,31% del índice), invertida: más pobreza, peor puntaje.
+Permite seguir una estimación de pobreza entre publicaciones oficiales. Integra la dimensión de ingresos y consumo con signo invertido: más pobreza reduce el componente. Su peso efectivo se muestra en la composición del índice y no convierte la estimación en una medición oficial mensual.
 
 **Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
@@ -1353,13 +1365,13 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | vehículos 0km por cada 1.000 habitantes (12 meses) |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-08 (44 puntos) | **REZAGO DE PUBLICACIÓN** | Menos de un mes: el registro publica cada mes en los primeros días del siguiente. Se toma el último mes calendario completo. |
 | **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (unidades) e INDEC (población) | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de automotores y de motovehículos (0 kilómetro), por mes y jurisdicción del registro seccional, sumadas y divididas por la población urbana total proyectada del INDEC. |
-| **MODO DE ACCESO** | Automático: CSV abierto sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: CSV abierto sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
 Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de doce meses. En el ITCIS se compara contra el promedio del 4º trimestre de 2023.
 
-Mide acceso total a un vehículo sin confundir una suba de motos con una mejora automática: si los hogares sólo reemplazaran autos por motos, la suma quedaría estable. La ficha muestra ambas patas y el cambio de su composición para distinguir acceso de sustitución descendente.
+Mide patentamientos totales por habitante y muestra la composición entre autos y motos. Es un proxy de consumo durable: el registro no distingue primeras compras, reposición, flotas ni sustitución entre vehículos de un mismo hogar.
 
 **Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
@@ -1396,7 +1408,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 31,25 vehículos 0km por cada 1.000 habitantes (12 meses) (2026-08).
 
-Más acceso, con la mezcla corriéndose a la moto: en los últimos doce meses se patentaron 1,37 millones de vehículos 0 km (15,7% interanual): 552 mil autos (−5,9%) y 816 mil motos (36,8%). Las motos son el 59,6% de lo que se patenta, contra 51,6% al arranque del mandato. El total sube, así que no es que los hogares bajen del auto a la moto —eso dejaría el total plano—: entran hogares que antes no patentaban nada. Que entren en dos ruedas y no en cuatro es el dato que conviene mirar aparte.
+Más patentamientos y mayor participación de motos: en los últimos doce meses se patentaron 1,37 millones de vehículos 0 km (15,7% interanual): 552 mil autos (−5,9%) y 816 mil motos (36,8%). Las motos son el 59,6% de lo que se patenta, contra 51,6% al arranque del mandato. El registro cuenta vehículos, no hogares: no permite distinguir primeras compras, reposición, flotas ni sustitución entre autos y motos. Estas situaciones pueden coexistir.
 
 **Color vigente: VERDE**
 
@@ -1407,7 +1419,7 @@ Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicio
 - Es un FLUJO de altas, no el parque circulante: cuenta los vehículos que se incorporan, no los que hay. Un hogar que conserva el auto que ya tenía no aparece.
 - Cuenta unidades, no gama ni precio: un auto de entrada de gama y uno caro se registran igual, y una moto pesa lo mismo que un auto en la suma. El registro no publica cilindrada ni valor, así que separar gamas exigiría otra fuente.
 - Es una compra financiada: responde tanto al crédito prendario y a las condiciones de importación como al ingreso de los hogares. No distingue un hogar que puede más de un hogar que consigue cuota.
-- La composición no es neutral, y el indicador no la puntúa. Los índices de pobreza multidimensional de referencia tratan al automóvil como un activo cuya sola tenencia saca al hogar de la privación, y a la motocicleta como un activo menor; los índices de riqueza que estiman el peso de cada bien en vez de suponerlo le asignan a la moto alrededor de un quinto del peso del auto. La escalera de activos existe y tiene peldaños. Que el total suba mientras la mezcla se corre a la moto es acceso y descenso de peldaño a la vez, y el color sólo refleja lo primero.
+- La composición no es neutral, y el indicador no la puntúa. Los índices de pobreza multidimensional de referencia tratan al automóvil como un activo cuya sola tenencia saca al hogar de la privación, y a la motocicleta como un activo menor; los índices de riqueza que estiman el peso de cada bien en vez de suponerlo le asignan a la moto alrededor de un quinto del peso del auto. La escalera de activos existe y tiene peldaños. Un total creciente con mayor participación de motos describe un cambio agregado de composición, no prueba trayectorias de hogares. El color refleja el flujo por habitante frente a la referencia, no el bienestar de los compradores.
 - Una suba del total puede venir de precios relativos y no de ingreso. El precio de adquirir un vehículo cayó en términos reales mientras el del transporte público más que se duplicó, así que parte de la motorización es un desplazamiento forzado desde el colectivo y no una mejora del bolsillo. El componente no separa esos dos motores.
 - La inscripción es del registro seccional donde se hace el trámite, que no siempre coincide con dónde vive el comprador — la apertura por jurisdicción sirve para composición, no para geografía del consumo.
 - Es un proxy de consumo durable, no de bienestar general.
@@ -1420,13 +1432,15 @@ Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-09-08** — Se limita la interpretación al flujo y la composición de patentamientos. El registro no identifica primeras compras ni transiciones entre vehículos de un mismo hogar. No cambian el cálculo, el peso ni la serie.
+
 **2026-07-03** — Entra al ITCIS el patentamiento de motos con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad.
 
 **2026-07-04** — Se aplica al componente de motos el techo de recorte 140 y su peso interno baja de 10% a 5%.
 
 **2026-08-21** — Entra el patentamiento de autos como componente espejo, con el mismo peso y la misma transformación que motos (ADR-0223).
 
-**2026-08-21** — Los dos vehículos se funden en la motorización total per cápita, que toma el peso combinado de ambos; autos y motos dejan de ser tarjetas y pasan a explicar el color desde adentro (ADR-0224). El motivo es que ninguna de las dos series por separado distingue acceso de descenso de categoría, y el total sí. Con el cambio, el componente deja de estar apoyado contra el techo de recorte —del que queda exento— y vuelve a moverse con la fuente. La fuente de motos pasa de la cámara al registro, que es lo único que permite excluir el movimiento registral de Tierra del Fuego.
+**2026-08-21** — Los dos vehículos se funden en la motorización total per cápita, que toma el peso combinado de ambos; autos y motos dejan de ser tarjetas y pasan a explicar el color desde adentro (ADR-0224). La decisión original atribuyó al total la capacidad de distinguir acceso de descenso de categoría; esa interpretación se rectificó el 8 de septiembre de 2026 porque el registro no identifica trayectorias de hogares. Con el cambio, el componente deja de estar apoyado contra el techo de recorte —del que queda exento— y vuelve a moverse con la fuente. La fuente de motos pasa de la cámara al registro, que es lo único que permite excluir el movimiento registral de Tierra del Fuego.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1452,13 +1466,13 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | índice (2017 = 100, desestacionalizado) |
 | **SERIE DISPONIBLE** | 2017-01 → 2026-06 (114 puntos) | **REZAGO DE PUBLICACIÓN** | Medido sobre las 14 publicaciones del calendario del INDEC entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la card sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada |
-| **MODO DE ACCESO** | Automático: planilla pública sin credenciales. La misma serie espejada en la API de datos.gob.ar se sigue bajando en cada corrida, pero sólo como contraste del número leído. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: planilla pública sin credenciales. La misma serie espejada en la API de datos.gob.ar se sigue bajando en cada corrida, pero sólo como contraste del número leído. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
 Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el INDEC en su serie desestacionalizada. En el ITCIS puntúa rebaseado a 100 = 4T-2023.
 
-Es el único componente del cinturón que mide volumen efectivamente comprado. Todos los demás miden lo que entra (ingresos), lo que cuesta (precios), de dónde viene el ingreso (empleo), lo que no se paga (mora) o lo que se opina (percepción): ninguno mira lo que el hogar se llevó de la góndola. Cubre comercio registrado de cadenas, así que no ve el almacén de barrio ni el comercio informal.
+Mide ventas reales de los supermercados relevados. Complementa ingresos, precios y otros consumos; no cubre toda la compra de alimentos ni el comercio minorista. Los cambios de canal de compra también pueden mover la serie.
 
 **Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
@@ -1534,7 +1548,7 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 14,52 % de la cartera en situación irregular** (2026-05) | **ROJO** | Peso efectivo 7 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 14,41 % de la cartera en situación irregular** (2026-06) | **ROJO** | Peso efectivo 7 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1542,9 +1556,9 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | mora_familias | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la cartera en situación irregular |
-| **SERIE DISPONIBLE** | 2021-07 → 2026-05 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El anexo del Informe sobre Bancos se publica con ~2 meses de rezago. |
+| **SERIE DISPONIBLE** | 2021-07 → 2026-06 (60 puntos) | **REZAGO DE PUBLICACIÓN** | El anexo del Informe sobre Bancos se publica con ~2 meses de rezago. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Anexo del Informe sobre Bancos — planilla de calidad de cartera, sección Familias: ratio de irregularidad y saldos de préstamos personales y tarjetas |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1573,7 +1587,7 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **17,2**.
+Este componente está hoy en **17,3**.
 
 ## Datos concretos detrás del valor
 
@@ -1583,9 +1597,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 14,52 % de la cartera en situación irregular (2026-05).
+Dato vigente: 14,41 % de la cartera en situación irregular (2026-06).
 
-El componente está en 17,2 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
+El componente está en 17,3 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
 
 **Color vigente: ROJO**
 
@@ -1608,6 +1622,8 @@ Ponderación vigente en el ITCIS: 7 % efectivo. El color es una lectura adiciona
 **2026-07-15** — Entra al ITCIS como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa.
 
 **2026-08-21** — Conserva 70% de vulnerabilidad al incorporarse la carga del servicio de deuda como señal previa al incumplimiento (ADR-0231).
+
+**2026-09-08** — Se corrige el enlace del anexo: el archivo anterior respondía HTTP 200 con datos atrasados. Se conserva la ponderación por saldo y se incorpora junio de 2026 (ADR-0272).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1633,7 +1649,7 @@ Qué porcentaje de la masa salarial registrada destinan las familias al pago men
 | **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la masa salarial registrada |
 | **SERIE DISPONIBLE** | 2012-04 → 2026-04 (169 puntos) | **REZAGO DE PUBLICACIÓN** | La serie es mensual, pero el BCRA la publica por lotes con el Informe de Estabilidad Financiera semestral. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Informe de Estabilidad Financiera — estimación de la carga mensual de los servicios de deuda de las familias |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial de series del informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial de series del informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 

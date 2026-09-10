@@ -35,18 +35,19 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 69,7** | **VERDE** | Moderadamente aflojado | 17 indicadores: 10 en verde · 4 en amarillo · 1 en naranja · 2 en rojo |
+| **ITCP: 73,0** | **VERDE** | Moderadamente aflojado | 17 indicadores: 11 en verde · 4 en amarillo · 1 en rojo |
+Componentes que puntúan en este corte: 16 de 17 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en seis señales. | 50,1 | AMARILLO | 21,0 % |
-| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 77,9 | VERDE | 19,0 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en seis señales. | 59,3 | AMARILLO | 21,0 % |
+| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 81,1 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 15,0 % |
-| Poder judicial | La relación con el Poder Judicial por tres vías: cobertura de cargos de juez, velocidad de la Corte y control disciplinario. | 52,0 | AMARILLO | 15,0 % |
-| Sector privado | La relación con los empresarios por lo que esperan. | 71,4 | VERDE | 13,0 % |
-| Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 71,5 | VERDE | 10,0 % |
+| Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,1 | AMARILLO | 15,0 % |
+| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 71,4 | VERDE | 13,0 % |
+| Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 71,7 | VERDE | 10,0 % |
 | Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 73,6 | VERDE | 7,0 % |
 
 ```{=openxml}
@@ -62,31 +63,31 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Ratio DNU / leyes | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,4 DNUs publicados por ley publicada | AMARILLO | 4,2 % |
-| Eficacia parlamentaria | Qué porcentaje de los proyectos que envía el Ejecutivo el Congreso termina aprobando, contados recién a partir de que… | 14,3 % de proyectos | AMARILLO | 5,7 % |
-| Sesiones caídas por falta de quórum | Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum… | 11,1 % de sesiones | VERDE | 2,7 % |
-| Bloqueo legislativo sostenido | De las normas del Ejecutivo que el Congreso desafió en el recinto en los últimos 12 meses (vetos cuya insistencia se… | 33,3 % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | NARANJA | 2,5 % |
-| Normas desafiadas en el recinto | Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses. | 3 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | VERDE | 2,7 % |
-| Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. | 22 leyes sancionadas (12m) | ROJO | 3,1 % |
+| Ratio DNU / leyes | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,4 DNUs publicados por ley publicada | AMARILLO | 4,8 % |
+| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 14,3 % de proyectos | AMARILLO | 6,4 % |
+| Sesiones caídas por falta de quórum | Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum… | 10 % de sesiones | VERDE | 3,1 % |
+| Bloqueo legislativo sostenido | De las normas del Ejecutivo que el Congreso desafió en el recinto en los últimos 12 meses (vetos cuya insistencia se… | — % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | — | fuera del índice |
+| Normas desafiadas en el recinto | Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses. | 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | VERDE | 3,1 % |
+| Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. | 29 leyes sancionadas (12m) | AMARILLO | 3,6 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
 | Armonía federal (transferencias) | Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante un… | 1,6 % interanual real | VERDE | 7,6 % |
-| Adhesión provincial al RIGI | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 66,7 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 5,7 % |
+| Adhesión provincial al RIGI | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 5,7 % |
 | Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 59,3 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 5,7 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
 | Cohesión del bloque LLA (bicameral) | Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones divididas de los últimos 90 días de ambas… | 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | VERDE | 15,0 % |
 | **DIMENSIÓN: Poder judicial** | | | | |
-| Velocidad de resolución de la Corte | Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los que le ingresan. | 45,4 % de expedientes resueltos sobre ingresados | VERDE | 3,8 % |
+| Tasa de resolución de la Corte | Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los que le ingresan. | 45,4 % de expedientes resueltos sobre ingresados | VERDE | 3,8 % |
 | Actividad de las comisiones de control | Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las… | 13 sesiones de las comisiones de control (12m) | ROJO | 3,8 % |
-| Cobertura de cargos judiciales | Qué porcentaje de los cargos de juez de la justicia federal y nacional tiene juez designado. | 69,63 % de cargos de juez con juez designado | AMARILLO | 7,5 % |
+| Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,82 % estimado de cargos con juez designado | VERDE | 7,5 % |
 | **DIMENSIÓN: Sector privado** | | | | |
 | Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,8 pp de brecha (obra pública − privada, 12m) | VERDE | 13,0 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
-| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24 % vs 2023 | AMARILLO | 6,0 % |
+| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24,1 % vs 2023 | AMARILLO | 6,0 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.760.195 jornadas individuales no trabajadas (12m) | VERDE | 4,0 % |
 | **DIMENSIÓN: Imagen y voto** | | | | |
 | Ventaja LLA−PJ (Votómetro) | La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles. | 4,3 Puntos porcentuales | VERDE | 7,0 % |
 
-*Datos al 2026-09-10.*
+*Datos al 2026-09-08.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -111,8 +112,8 @@ La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas 
 | **IDENTIFICADOR TÉCNICO** | votometro_ventaja_lla | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Imagen y voto | **UNIDAD DE MEDIDA** | Puntos porcentuales |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El Votómetro se actualiza cuando las consultoras publican encuestas nuevas (cadencia irregular, típicamente semanas); el informe recalcula la ventaja todos los días con lo cargado. |
-| **PRODUCTOR DEL DATO** | Fundación CIGOB — Votómetro | **OPERACIÓN ESTADÍSTICA** | Agregador de encuestas de intención de voto: todos los sondeos publicados desde diciembre de 2023, con calificación de calidad por consultora |
-| **MODO DE ACCESO** | Automático: lee el listado de encuestas que publica el Votómetro; si el sitio no responde, usa la última copia local. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-10 |
+| **PRODUCTOR DEL DATO** | Fundación CIGOB — Votómetro | **OPERACIÓN ESTADÍSTICA** | Agregador de encuestas de intención de voto: sondeos incluidos en la curaduría desde diciembre de 2023, con calificación de calidad por consultora; no acredita exhaustividad de todos los estudios publicados |
+| **MODO DE ACCESO** | Automático: lee el listado de encuestas que publica el Votómetro; si el sitio no responde, usa la última copia local. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -157,19 +158,20 @@ Dato vigente: 4,3 Puntos porcentuales (2026-07).
 
 Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** El mismo dato alimentó el indicador de clima electoral del cinturón espíritu de época entre junio y julio de 2026, hasta que ese cinturón quedó acotado a la intención migratoria como único indicador; la lectura duplicada se sigue registrando como seguimiento interno, sin publicarse ni puntuar.
+- **Participación en otros indicadores.** El mismo dato alimentó el indicador de clima electoral del antiguo cinturón espíritu de época. Ese cinturón salió del monitor el 14 de agosto de 2026, eliminando el segundo aporte de este indicador al índice global.
 
 ## Transparencia — limitaciones declaradas
 
 - La fuente es una curaduría propia de encuestas de terceros, no un registro oficial.
-- El peso por recencia se calcula contra el día de la actualización: sin encuestas nuevas, el valor deriva lentamente día a día.
+- Sin encuestas nuevas ni revisiones, el valor permanece constante: todos los pesos exponenciales reciben el mismo factor diario, que se cancela al normalizar. La ventana de 60 días está anclada en el último sondeo, no en el día de consulta.
+- El monitor usa recencia y calidad sobre sondeos de espacios políticos. No reproduce el modelo completo de cinco factores, candidatos y simulaciones del Votómetro; su ventaja no equivale a una probabilidad electoral ni sirve como validación externa independiente del propio CIGOB.
 - Si pasan más de 60 días sin sondeos, el indicador se marca como desactualizado.
 
 ## Si falta el dato / Política de revisiones
 
 - **Si falta el dato:** Si la lectura falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.
 
-- **Política de revisiones:** La serie mensual completa se rederiva de las encuestas en cada actualización: un sondeo cargado con retraso corrige los meses que toca. La serie evalúa la ponderación al cierre de cada mes, así que su último punto puede diferir levemente del titular, que se recalcula todos los días.
+- **Política de revisiones:** La serie mensual completa se rederiva de las encuestas en cada actualización: un sondeo cargado con retraso corrige los meses que toca. No es un archivo de lo conocido en cada fecha. La serie evalúa el mismo esquema al cierre de cada mes; consultar otro día no cambia por sí solo el promedio. Titular e historia pueden diferir en una décima por el orden de redondeo de LLA y PJ.
 
 ## Historial — cambios metodológicos documentados
 
@@ -193,7 +195,7 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,4 DNUs publicados por ley publicada** (2026-09) | **AMARILLO** | Peso efectivo 4,2 % del ITCP | Cinturón Política |
+| **Hoy: 1,4 DNUs publicados por ley publicada** (2026-09) | **AMARILLO** | Peso efectivo 4,8 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -201,9 +203,9 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | ratio_dnu | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | DNUs publicados por ley publicada |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | InfoLeg carga las normas al ritmo del Boletín Oficial: días entre la publicación y su aparición en el buscador. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | InfoLeg incorpora publicaciones del Boletín Oficial con un rezago que no está garantizado. La fecha de consulta no acredita por sí sola exhaustividad ni tipificación correcta. |
 | **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — listado de decretos tipificados «Decreto DNU» y conteo de leyes, los dos por fecha de publicación en el Boletín Oficial, en los últimos 365 días |
-| **MODO DE ACCESO** | Automático: dos consultas al buscador oficial sobre la misma ventana. Del lado de las leyes toma el total de resultados. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia» y se queda con los que la grilla rotula «Decreto DNU»; la card publica el inventario de las normas efectivamente contadas, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: dos consultas al buscador oficial sobre la misma ventana. Del lado de las leyes toma el total de resultados. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia» y se queda con los que la grilla rotula «Decreto DNU»; la card publica el inventario de las normas efectivamente contadas, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -215,10 +217,10 @@ Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, n
 
 ## Método de cómputo
 
-- Ratio = DNU publicados en el Boletín Oficial en los últimos 365 días / leyes publicadas en el Boletín Oficial en los últimos 365 días — ventana móvil, no acumulado del año calendario, y la misma convención de fecha en los dos lados: publicación, no dictado ni sanción. Con las mismas normas, usar leyes sancionadas en vez de publicadas movería el ratio de 1,48 a 1,68 sin que nada fallara.
+- Ratio = DNU publicados / leyes publicadas en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.
 - Los DNU se identifican por el TIPO JURÍDICO que declara la grilla de InfoLeg («Decreto DNU»), no por el texto. La búsqueda por la frase «necesidad y urgencia» se conserva sólo como filtro previo, para no tener que traer todos los decretos del año: esa frase la dicen también los decretos que prorrogan una intervención dispuesta por un DNU, los reglamentarios, los vetos que la citan al fundarse y los decretos ordinarios que modifican una norma dictada en su momento por DNU.
 - El listado se pagina hasta completar el total que declara el buscador (la grilla devuelve 50 filas por página); si lo acumulado no llega a ese total, el indicador falla en vez de publicar un conteo corto.
-- La serie histórica recalcula esta misma ventana móvil al cierre de cada mes desde diciembre de 2023: cada punto es homogéneo y comparable con el anterior, sin el reseteo de un acumulado que arranca de cero cada enero.
+- La serie histórica recalcula esta ventana móvil al cierre de cada mes desde diciembre de 2023. El mes en curso es provisional y termina en el día de consulta; también abarca 365 fechas, pero todavía no representa el cierre de ese mes. No hay un reseteo del conteo en enero.
 
 ## Semáforo — valores que determinan el color
 
@@ -237,7 +239,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 35 DNU y 25 leyes publicados en el Boletín Oficial entre 2025-09-10 y 2026-09-10 → 1.40 DNU por ley
+- 35 DNU y 25 leyes publicados en el Boletín Oficial entre 2025-09-09 y 2026-09-08 → 1.40 DNU por ley
 
 ## Color vigente y por qué
 
@@ -247,13 +249,13 @@ Dato vigente: 1,4 DNUs publicados por ley publicada (2026-09).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCP: 4,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 4,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.
 - En el relevamiento cerrado el 19 de julio de 2026, los datos respaldaban que la dependencia fuera una vulnerabilidad real y no una objeción teórica, pero también que fuera latente: de los 162 decretos de necesidad y urgencia dictados desde diciembre de 2023, el 95% nunca se había votado en el recinto y por lo tanto seguía vigente; de los ocho que sí se habían votado, seis habían caído. El 7 de agosto de 2025 cayeron cinco en un solo día.
-- El conteo depende de cómo InfoLeg rotula cada norma. Es una dependencia asumida y preferible a la anterior: si la fuente cambiara la rotulación, el conteo caería a cero y se notaría en el acto, mientras que una frase que deja de coincidir baja el número de a poco y no se nota.
+- El conteo depende tanto del rótulo de InfoLeg como del filtro textual previo. Ambos pueden tener errores u omisiones parciales sin que el resultado caiga a cero. El cotejo del 8-sep-2026 encontró que InfoLeg rotula el 44/2026 como DNU aunque el original lo identifica como decreto común; el filtro usado no lo estaba contando. La consulta completa de decretos y los textos originales son controles independientes necesarios.
 - Depende del formulario del buscador oficial: un rediseño del sitio lo interrumpe hasta adaptarlo.
 - El buscador no ofrece descarga masiva: reconstruir la serie mensual exige dos consultas por mes —una de leyes y una de decretos—, no un volcado único como el de otros portales de datos abiertos.
 
@@ -261,9 +263,11 @@ Ponderación vigente en el ITCP: 4,2 % efectivo. El color es una lectura adicion
 
 - **Si falta el dato:** Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.
 
-- **Política de revisiones:** Los conteos se reconsultan completos en cada actualización: si la fuente carga normas con retraso, el número se corrige solo.
+- **Política de revisiones:** Los conteos se reconsultan en cada actualización. Las cargas tardías o correcciones del catálogo pueden revisar los valores; la consulta automática no garantiza detectar errores de rótulo ni omisiones del filtro textual.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — ADR-0307: se corrige el día adicional que introducían los extremos inclusivos. Se contrastan el inventario completo de decretos y los originales; se retiran garantías de actualización y detección que la fuente no asegura.
 
 **2026-05** — Entra al cinturón en reemplazo del índice de confianza en el gobierno (UTDT): el cinturón mide capacidad de gobernar, no popularidad.
 
@@ -293,7 +297,7 @@ La diferencia entre lo que esperan las empresas constructoras que trabajan para 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −1,8 pp de brecha (obra pública − privada, 12m)** (2026-10) | **VERDE** | Peso efectivo 13 % del ITCP | Cinturón Política |
+| **Hoy: −1,8 pp de brecha (obra pública − privada, 12m)** (2026-08) | **VERDE** | Peso efectivo 13 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -301,24 +305,24 @@ La diferencia entre lo que esperan las empresas constructoras que trabajan para 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | brecha_obra_publica | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | pp de brecha (obra pública − privada, 12m) |
-| **SERIE DISPONIBLE** | 2017-11 → 2026-10 (102 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC publica la encuesta junto con el informe mensual de la construcción, unas semanas después del cierre del período relevado. |
+| **SERIE DISPONIBLE** | 2017-07 → 2026-08 (110 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC publica la encuesta junto con el informe mensual de la construcción. Su fecha de publicación es distinta del horizonte trimestral de expectativas: la serie identifica el inicio de ese horizonte y no acredita disponibilidad pública en ese mes. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta Cualitativa de la Construcción — expectativas de las empresas sobre el nivel de actividad de los próximos tres meses, con respuestas separadas para obra pública y obra privada (Cuadro 7.1) |
-| **MODO DE ACCESO** | Automático: descarga la planilla oficial del indicador sintético de la actividad de la construcción y lee el cuadro de expectativas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: descarga la planilla oficial del indicador sintético de la actividad de la construcción y lee el cuadro de expectativas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
 La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que trabajan para clientes privados. El INDEC les pregunta todos los meses si creen que su actividad va a subir o bajar en el trimestre siguiente, y publica las dos respuestas por separado. El indicador resta una de la otra y promedia los últimos doce meses.
 
-Conviene una advertencia antes del dato: este indicador se comporta distinto según el gobierno, porque para el actual el recorte de la obra pública es el programa y no un síntoma de dificultades, de modo que la tensión con el sector puede subir mientras el Gobierno gobierna con comodidad. Dicho eso, lo que mide es sólido. Las dos submuestras son el mismo sector: mismos costos, mismo crédito, misma economía. Lo único que las distingue es quién les paga. Por eso la diferencia entre ambas aísla lo que aporta el Estado y descarta el ciclo económico general. Cuando las que dependen de la obra pública esperan mucho peor que sus pares privadas, la fuente del problema es la política pública y no el mercado.
+Compara las expectativas de constructoras orientadas a obra pública y privada. Una brecha negativa indica un saldo de expectativas menor en el primer grupo. Compartir sector no garantiza iguales costos, acceso al crédito ni composición de proyectos: la diferencia no aísla el efecto causal de la política pública ni elimina el ciclo económico. Su interpretación como tensión política debe contrastarse con la agenda y las condiciones del período.
 
-**Dimensión que integra — Sector privado.** La relación con los empresarios por lo que esperan: la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados: al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga, así que la diferencia aísla lo que aporta la política pública y descarta el ciclo económico. La segunda vía prevista —la postura pública de la Asociación Empresaria Argentina y la Unión Industrial Argentina, el vínculo dicho y no inferido— salió del índice en agosto de 2026: el saldo se calculaba sobre un corpus abierto, con más comunicados pendientes de codificar que codificados. Se sigue relevando sin puntuar, así que la dimensión descansa en un solo indicador mientras dure la suspensión.
+**Dimensión que integra — Sector privado.** Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La postura pública de las cámaras empresarias está suspendida por cobertura incompleta del corpus; mientras dure la suspensión, la dimensión depende sólo de la brecha de expectativas.
 
 ## Método de cómputo
 
 - Para cada grupo de empresas se calcula un saldo de respuesta: el porcentaje que espera que su actividad aumente menos el porcentaje que espera que disminuya. Quienes esperan que no varíe no suman ni restan.
 - La brecha es el saldo de las empresas de obra pública menos el de las de obra privada. Cero significa que ambos grupos esperan lo mismo; un valor negativo, que las que dependen del Estado esperan peor que sus pares privadas.
 - Se promedian los últimos doce meses. La lectura mensual es volátil —salta unos seis puntos de un mes al siguiente— y el promedio móvil deja ver el movimiento de fondo sin perder capacidad de reacción.
-- La serie se reconstruye con el mismo cálculo desde noviembre de 2017, de modo que hay línea de base de tres gobiernos anteriores contra la cual comparar.
+- La serie se referencia al mes de inicio del horizonte trimestral consultado. La tarjeta también informa su final: no son realizaciones observadas en ese último mes ni fechas de publicación. El promedio exige doce meses consecutivos y la reconstrucción comienza en julio de 2017.
 
 ## Semáforo — valores que determinan el color
 
@@ -337,11 +341,11 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Brecha de -1,8 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas.
+- Brecha de -1,8 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Último horizonte consultado: 2026-08 a 2026-10; la fecha identifica su inicio, no una realización observada ni la fecha de publicación. Negativa = las que dependen del Estado esperan peor que sus pares privadas.
 
 ## Color vigente y por qué
 
-Dato vigente: −1,8 pp de brecha (obra pública − privada, 12m) (2026-10).
+Dato vigente: −1,8 pp de brecha (obra pública − privada, 12m) (2026-08).
 
 −1,8 pp de brecha (obra pública − privada, 12m) cae en el tramo que corresponde a Verde, a 5,2 del corte más cercano.
 
@@ -351,12 +355,14 @@ Ponderación vigente en el ITCP: 13 % efectivo. El color es una lectura adiciona
 
 ## Transparencia — limitaciones declaradas
 
-- El comportamiento del indicador depende del gobierno que se mida, y conviene saberlo antes de leerlo. Contrastado contra el índice de incertidumbre de política económica, acompaña esa incertidumbre durante las dos administraciones anteriores —correlación de −0,56 con Macri y de −0,64 con Alberto Fernández, el signo esperado— y se invierte con la actual, donde da +0,33. La razón es sustantiva y no estadística: para gobiernos anteriores la tensión con las empresas que dependen del Estado era un síntoma de dificultades, mientras que para el actual el recorte de la obra pública es el programa de gobierno. Ejecutarlo reduce la incertidumbre sobre la política económica al mismo tiempo que tensa la relación con ese sector. El caso más claro es 2024: el indicador marcó el peor valor de sus diez años de serie durante el año en que se sancionó la Ley Bases y la incertidumbre de política tocó su nivel más bajo del período.
+- Las submuestras no constituyen un experimento: pueden diferir en proyectos, financiamiento y exposición al ciclo. Restar sus saldos no identifica el efecto causal del Estado ni elimina esas diferencias.
+- El vínculo entre expectativas de construcción e incertidumbre de política puede variar entre gobiernos. Las correlaciones se recalculan en el contraste publicado; no identifican su causa. Que el recorte de obra pública forme parte del programa es una explicación posible de esa diferencia, que requiere evidencia adicional.
 - De lo anterior se sigue el límite de fondo: el indicador mide bien la tensión, pero no distingue cuándo esa tensión es un costo que el Gobierno sufre y cuándo es un precio que decide pagar. El índice lo puntúa como costo. Un lector que quiera evaluar capacidad de gobierno debería leerlo junto con lo que el Gobierno logró en el mismo período, no de forma aislada.
 - Mide un solo canal de conflicto: el gasto en infraestructura. Sería ciego a una tensión con el agro, la energía o los bancos, y por eso conviene leerlo como lo que es —la relación del Gobierno con el sector que depende de la obra pública— y no como un termómetro del humor empresario en general.
 - Son expectativas declaradas, no decisiones tomadas. Conviene contrastarlo con el volumen de insumos de construcción efectivamente vendidos: si las expectativas se hunden y las ventas no caen, la tensión es sobre todo discursiva.
 - La pregunta indaga por el cambio esperado, no por el nivel. Un recorte sostenido termina normalizándose: cuando las empresas se acostumbran al presupuesto nuevo dejan de esperar caídas adicionales y la brecha vuelve a cero aunque la obra pública siga en un piso históricamente bajo.
 - La encuesta releva grandes empresas constructoras; las pequeñas y las regionales están subrepresentadas.
+- La fecha de referencia del horizonte no acredita disponibilidad pública en ese mes. La historia se reconstruye retrospectivamente; medir anticipación en tiempo real exige conservar las fechas de publicación de cada edición.
 
 ## Si falta el dato / Política de revisiones
 
@@ -365,6 +371,8 @@ Ponderación vigente en el ITCP: 13 % efectivo. El color es una lectura adiciona
 - **Política de revisiones:** El INDEC puede revisar los porcentajes de meses anteriores al ampliarse la muestra respondente. Cada actualización recalcula la serie completa desde el origen, de modo que las revisiones se incorporan solas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — ADR-0302: referencia al inicio del horizonte de expectativas y extremos explícitos en tarjeta. Se recuperan filas históricas que incluían la preposición «de» antes del año y se exige calendario consecutivo para el promedio de doce meses. Se recalculan historia y contrastes; no cambian pesos ni bandas.
 
 **2026-07-19** — Entra al cinturón como primer indicador de la nueva dimensión de sector privado. Una revisión externa del cinturón señaló que de los tres actores que el índice se propone medir —legisladores, gobernadores y empresarios— el tercero no tenía ningún indicador propio.
 
@@ -384,7 +392,7 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −24 % vs 2023** (2026-07) | **AMARILLO** | Peso efectivo 6 % del ITCP | Cinturón Política |
+| **Hoy: −24,1 % vs 2023** (2026-08) | **AMARILLO** | Peso efectivo 6 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -392,9 +400,9 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | conflictividad_nacional | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | % vs 2023 |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-07 (32 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de ACLED se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de ACLED se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
 | **PRODUCTOR DEL DATO** | ACLED — Armed Conflict Location & Event Data | **OPERACIÓN ESTADÍSTICA** | Agregado semanal de eventos por provincia para América Latina — eventos de protesta y disturbios (Protests y Riots) en la Argentina |
-| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -406,9 +414,9 @@ Aproxima la tensión en la calle a escala nacional, un límite real al margen de
 
 ## Método de cómputo
 
-- Suma los eventos de protesta y disturbios de todo el país, mes a mes.
-- Acumula los últimos 12 meses completos (el mes en curso se excluye hasta que cierra, porque el registro se carga con rezago).
-- El indicador es la variación porcentual de ese acumulado contra el total del año 2023, la línea de base del mandato: negativo = menos conflicto en la calle que en 2023.
+- Suma los eventos de protesta y disturbios del agregado semanal de todo el país. Cada semana va del sábado al viernes y se asigna al mes de su sábado inicial.
+- Acumula los últimos doce grupos mensuales completos según el viernes final cubierto por el archivo. Exige calendario consecutivo y base completa; no trata la fecha del sábado como si fuera el final de la cobertura.
+- Calcula la variación porcentual contra los grupos de semanas iniciadas en 2023. Un valor negativo indica menos eventos registrados con esa misma convención que en la base.
 
 ## Semáforo — valores que determinan el color
 
@@ -427,13 +435,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 1979 eventos de protesta y disturbios en el país en 12m (hasta 2026-07) vs 2605 en todo 2023 (-24,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país
+- 1977 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-08) vs 2605 en la base 2023 (-24,1%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.
 
 ## Color vigente y por qué
 
-Dato vigente: −24 % vs 2023 (2026-07).
+Dato vigente: −24,1 % vs 2023 (2026-08).
 
-−24,0 % vs 2023 cae en el tramo que corresponde a Amarillo, a 2,1 del corte más cercano.
+−24,1 % vs 2023 cae en el tramo que corresponde a Amarillo, a 2,0 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -445,16 +453,19 @@ Ponderación vigente en el ITCP: 6 % efectivo. El color es una lectura adicional
 - La base de comparación es fija (el total de 2023): a medida que pasa el tiempo, la referencia envejece — el mismo criterio declarado que usa el índice de impacto social con su base de fin de 2023.
 - La cobertura de ACLED para la Argentina es confiable desde 2020; los años anteriores registran menos eventos por expansión de la propia cobertura, no por menor conflictividad — por eso ni las bandas ni el gráfico usan datos previos a la base.
 - Depende de la cobertura de prensa que releva ACLED: eventos sin cobertura periodística no entran al registro.
+- Las semanas que cruzan de mes o año se asignan enteras a su inicio. Los grupos mensuales no son conteos exactos por fecha del evento: obtenerlos exige microdatos diarios. La base y la ventana usan la misma convención semanal.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si la descarga semanal falla, se usa el último archivo ya guardado (el indicador se marca desactualizado si el registro queda más de 30 días atrás); sin archivo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.
+- **Si falta el dato:** Si falla la descarga semanal, se usa el último archivo guardado, marcado como desactualizado y conservando su fecha de obtención. También se advierte si el corte cubierto supera treinta días de antigüedad. Sin archivo utilizable, el indicador queda fuera y su peso se renormaliza.
 
 - **Política de revisiones:** ACLED revisa y completa semanas recientes en cada publicación; el acumulado de 12 meses se recalcula completo desde el archivo en cada actualización y absorbe esas revisiones automáticamente.
 
 ## Historial — cambios metodológicos documentados
 
 **2026-07-11** — Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes de CEPA, que no permitía una serie mensual comparable.
+
+**2026-09-08** — ADR-0303: week es el sábado inicial, no el final de la cobertura. Se incorpora agosto, ya cubierto hasta el viernes 4-sep, y se comparte el calendario entre tarjeta e historia. Se explicita la agrupación por inicio de semana y se conserva el sello del archivo cuando falla la descarga.
 
 **2026-08-21** — Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral (ADR-0232).
 
@@ -482,7 +493,7 @@ Cuántas jornadas individuales de trabajo se perdieron por paros en todo el paí
 | **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | jornadas individuales no trabajadas (12m) |
 | **SERIE DISPONIBLE** | 2006-12 → 2026-05 (234 puntos) | **REZAGO DE PUBLICACIÓN** | La Secretaría de Trabajo actualiza la planilla mensual con alrededor de dos a tres meses de rezago. |
 | **PRODUCTOR DEL DATO** | Secretaría de Trabajo, Empleo y Seguridad Social | **OPERACIÓN ESTADÍSTICA** | Estadísticas de conflictos laborales — evolución mensual de conflictos con paro, huelguistas y jornadas de paro |
-| **MODO DE ACCESO** | Automático: descubre y lee la planilla XLSX vigente publicada en la página oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: descubre y lee la planilla XLSX vigente publicada en la página oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -496,6 +507,7 @@ Agrega intensidad a la frecuencia de eventos que mide ACLED: distingue un confli
 
 - Toma el total mensual nacional de jornadas individuales no trabajadas: cantidad de huelguistas multiplicada por la duración de los paros.
 - Suma los últimos doce meses. La propia metodología de la fuente autoriza esta suma; no se suman conflictos ni huelguistas porque podrían repetirse entre meses.
+- Exige meses consecutivos y únicos y jornadas finitas no negativas. Un hueco o duplicado impide calcular la serie; doce filas no sustituyen doce meses calendario. Se conservan eventuales fracciones de jornada publicadas por la fuente.
 - Menos jornadas significa menos tensión. Las anclas son 5,0 · 6,5 · 8,0 · 10,0 millones, fijadas sobre los diecisiete años completos anteriores al mandato (2006-2022).
 
 ## Semáforo — valores que determinan el color
@@ -542,6 +554,8 @@ Ponderación vigente en el ITCP: 4 % efectivo. El color es una lectura adicional
 
 **2026-08-21** — Incorporado como segunda pata de conflicto social para medir tamaño y duración de los paros, con 40% interno; ACLED conserva 60%.
 
+**2026-09-08** — ADR-0295: la suma exige continuidad mensual y valores válidos. Se corroboran las doce filas originales que suman 4.760.195 jornadas hasta mayo de 2026; no cambia el valor publicado.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -566,7 +580,7 @@ Cuánto varían, en términos reales, los recursos de origen nacional que la Nac
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % interanual real |
 | **SERIE DISPONIBLE** | 2018-12 → 2025-12 (8 puntos) | **REZAGO DE PUBLICACIÓN** | Por diseño compara el último año cerrado contra el anterior: durante 2026 se lee «2025 contra 2024» — el dato puede tener hasta un año de rezago. |
 | **PRODUCTOR DEL DATO** | Ministerio de Economía (Secretaría de Hacienda); deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | RON — recursos de origen nacional girados a las jurisdicciones, planilla mensual consolidada (una hoja por mes), con el archivo anual oficial como ancla de unidad; deflactor: IPC nacional del INDEC |
-| **MODO DE ACCESO** | Automático: resuelve desde la página oficial la planilla consolidada de cada año (el nombre del archivo no es estable), suma en cada hoja mensual las filas de jurisdicción y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: resuelve desde la página oficial la planilla consolidada de cada año (el nombre del archivo no es estable), suma en cada hoja mensual las filas de jurisdicción y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -579,7 +593,7 @@ Mide el gesto fiscal de la Nación hacia las provincias: cuánto gira por encima
 ## Método de cómputo
 
 - Universo: lo girado a las jurisdicciones —Provincias, Ciudad de Buenos Aires y Fondo Compensador—, incluida la compensación del Consenso Fiscal, que el cuadro publica en su propia columna y sí forma parte de lo transferido (sin ella el total no cierra contra el archivo anual). Quedan afuera las porciones que se quedan en la Nación: Tesoro Nacional, Seguridad Social y Fondo A.T.N. Es ejecución, no presupuesto: lo que la Nación giró ese año calendario.
-- Deflación mes a mes: cada flujo mensual se divide por el índice IPC nacional de SU propio mes (INDEC, base diciembre de 2016 = 100) antes de sumarse. Los doce meses, ya llevados a esa base común, se suman, y la variación real es el cociente entre el total del año de referencia y el del año anterior. No se usa un deflactor único: el IPC promedio anual le da a cada mes el mismo peso y el gasto no se reparte parejo por el calendario, así que subdeflacta cuando el grueso cae en los meses más baratos. El deflactor que resulta de la operación —la diferencia entre la variación nominal y la real— viaja en la card, de modo que la comparación con cualquier otra estimación pública es reproducible sin abrir el código.
+- Deflación mes a mes: cada flujo mensual se divide por el índice IPC nacional de su propio mes, con base común diciembre de 2016 = 100, antes de sumarse. La variación real es el cociente entre ambas sumas a precios comparables menos uno. Un promedio anual simple de precios puede sesgar el resultado cuando los flujos no se distribuyen uniformemente. El deflactor implícito es (1 + variación nominal) / (1 + variación real) − 1, con tasas expresadas como fracción; no es la resta entre ambas tasas. La tarjeta publica ese deflactor para permitir reproducir la cuenta.
 - Sólo entran los años con los doce meses publicados: un año a medias compararía nueve meses contra doce.
 - Las hojas mensuales pasaron de miles a millones de pesos entre 2022 y 2023 sin declararlo en ningún lado. El archivo anual oficial, que cubre 2003-2025 en una sola unidad, hace de ancla: el factor entre ambos tiene que ser exactamente una potencia de mil y el residuo, menor al 1%. Si no lo es, el cálculo falla en vez de publicar una variación armada sobre dos unidades distintas.
 - En el gráfico, cada punto anual se ubica en diciembre del año que cierra: el valor fechado en diciembre de 2025 es la variación del año 2025 completo contra 2024.
@@ -642,6 +656,8 @@ Ponderación vigente en el ITCP: 7,6 % efectivo. El color es una lectura adicion
 
 **2026-08-25** — ADR-0263: la fórmula y la ficha se sincronizan con esa deflación. Seguían describiendo una suma anual dividida por un IPC promedio —el método reemplazado— y la fuente anual que dejó de usarse. Ahora quedan explícitos los cinco términos del contrato: qué jurisdicciones entran (Provincias, Ciudad de Buenos Aires y Fondo Compensador, con la compensación del Consenso Fiscal) y cuáles no, qué clase de transferencia (automáticas, no discrecionales), la ventana (dos años calendario completos), el deflactor (IPC nacional del INDEC, mes a mes) y la base común a la que se llevan los doce flujos antes de sumarse. Ningún valor cambia.
 
+**2026-09-08** — El cotejo de los 24 flujos originales reproduce 1,6365% real para 2025 y coincide con 1,6% de la OPC. Se aclara que el deflactor implícito es un cociente, no la resta de tasas; el cálculo ya usaba la fórmula correcta.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -650,13 +666,13 @@ Ponderación vigente en el ITCP: 7,6 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
 
-# Eficacia parlamentaria
+# Eficacia legislativa de proyectos maduros
 
-Qué porcentaje de los proyectos que envía el Ejecutivo el Congreso termina aprobando, contados recién a partir de que tuvieron un año de margen para tramitarse.
+Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. Cada proyecto tuvo al menos un año para tramitarse.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 14,3 % de proyectos** (2026-09) | **AMARILLO** | Peso efectivo 5,7 % del ITCP | Cinturón Política |
+| **Hoy: 14,3 % de proyectos** (2026-09) | **AMARILLO** | Peso efectivo 6,4 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -664,23 +680,24 @@ Qué porcentaje de los proyectos que envía el Ejecutivo el Congreso termina apr
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | eficacia_legislativa | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de proyectos |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El portal de datos abiertos de Diputados carga proyectos y movimientos con días o semanas de demora respecto del hecho parlamentario. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | La demora de carga no está garantizada. La fecha de consulta no certifica que el catálogo incluya todos los proyectos o sanciones recientes. |
 | **PRODUCTOR DEL DATO** | HCDN — Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Datasets «proyectos parlamentarios» y «leyes sancionadas» del portal oficial de datos abiertos |
-| **MODO DE ACCESO** | Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de los proyectos que envía el Ejecutivo el Congreso termina aprobando, contados recién a partir de que tuvieron un año de margen para tramitarse.
+Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. Cada proyecto tuvo al menos un año para tramitarse.
 
-Mide la capacidad real de convertir la agenda de gobierno en ley, sin castigar a los proyectos recién enviados que todavía no tuvieron tiempo de tratarse.
+Mide la aprobación de una cohorte de proyectos maduros. Las iniciativas publicadas hace menos de un año quedan fuera: no resume la aprobación de la agenda actual ni pondera la importancia política de cada proyecto.
 
 **Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
 - Identifica los proyectos de ley enviados por el Poder Ejecutivo por su número de expediente — tanto los de la Presidencia como los de la Jefatura de Gabinete, la vía por la que entra siempre el Presupuesto anual — y por su tipo de trámite: las comunicaciones administrativas (avisos de vetos, resoluciones, decisiones administrativas), que llevan numeración similar pero no son proyectos, quedan fuera del denominador.
-- Toma una cohorte MADURA: proyectos enviados entre hace 12 y 24 meses — ya tuvieron al menos un año de margen para tramitarse antes de evaluarlos.
-- Un proyecto de esa cohorte cuenta como aprobado si figura en el registro oficial de leyes sancionadas, sin importar en qué cámara ocurrió la sanción definitiva ni cuándo.
+- Toma proyectos con antigüedad de 365 a 730 días, incluyendo ambos límites. El intervalo admite 366 fechas de publicación y no equivale exactamente a doce meses calendario. Cada proyecto tuvo al menos 365 días para tramitarse.
+- Usa la fecha de publicación parlamentaria, con rectificaciones documentadas del catálogo frente al Trámite Parlamentario original. No la sustituye por la fecha de firma del mensaje. Tarjeta e historia aplican las mismas rectificaciones.
+- Un proyecto de esa cohorte cuenta como aprobado si figura en el registro oficial de leyes sancionadas, con sanción definitiva fechada hasta el día evaluado, independientemente de la cámara que completó el trámite.
 - El indicador es aprobados sobre el total de esa cohorte — ya no exige que envío y sanción caigan en la misma ventana.
 
 ## Semáforo — valores que determinan el color
@@ -710,23 +727,27 @@ Dato vigente: 14,3 % de proyectos (2026-09).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCP: 5,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 6,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.
 - Un trámite que supera los 24 meses nunca llega a contarse dentro de su cohorte: la ventana captura la mediana y el tramo alto de las duraciones observadas, pero los trámites excepcionalmente largos quedan fuera por construcción.
 - Denominador chico: con unos quince a veinte proyectos por cohorte, uno solo mueve varios puntos porcentuales.
-- Cuenta proyectos por igual, sin ponderar su peso político.
-- La serie histórica es reproducible: si un proyecto se sanciona después de publicado un punto de la serie, ese punto no se corrige retroactivamente (aunque el indicador vigente sí lo refleje al recorrer la fuente completa).
+- Cuenta proyectos por igual, sin ponderar su peso político. Las iniciativas recientes quedan fuera aunque sean centrales para la agenda actual.
+- La serie histórica es reproducible: si un proyecto se sanciona después de publicado un punto de la serie, ese punto no se corrige retroactivamente (el indicador vigente puede reflejarlo mientras el proyecto siga dentro de su cohorte).
 
 ## Si falta el dato / Política de revisiones
 
 - **Si falta el dato:** Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.
 
-- **Política de revisiones:** La serie completa se regenera desde la fuente en cada actualización.
+- **Política de revisiones:** La serie completa se regenera desde la fuente. Las cargas tardías o rectificaciones pueden modificar puntos anteriores; una sanción posterior al corte histórico no cuenta en ese punto.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-10** — Nombre público precisado como eficacia legislativa de proyectos maduros; la ficha muestra conteo y fechas de cohorte. Se explicita la exclusión de agenda reciente y la limitación de comparabilidad de las bandas históricas, sin cambiar umbrales.
+
+**2026-09-08** — Se acota también la tarjeta al día de evaluación, igual que la historia. Se explicitan los límites de 365–730 días inclusivos, la demora de catálogo no garantizada y la posibilidad de revisiones por cargas tardías. La cohorte vigente sigue en 2/14 = 14,3%.
 
 **2026-05** — Incorporado al cinturón político como medida de la capacidad de convertir la agenda de gobierno en ley.
 
@@ -756,7 +777,7 @@ Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 11,1 % de sesiones** (2026-09) | **VERDE** | Peso efectivo 2,7 % del ITCP | Cinturón Política |
+| **Hoy: 10 % de sesiones** (2026-09) | **VERDE** | Peso efectivo 3,1 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -764,9 +785,9 @@ Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | veto_quorum | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de sesiones |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El portal de datos abiertos de Diputados registra las sesiones a los días de ocurridas. |
-| **PRODUCTOR DEL DATO** | HCDN — Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Dataset «sesiones» (sesiones plenarias) del portal oficial de datos abiertos |
-| **MODO DE ACCESO** | Automático: API pública del portal, filtrando las sesiones de Diputados del período legislativo en curso. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-10 |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Se consulta el índice oficial de sesiones, que puede incluir convocatorias futuras: se excluyen por fecha. El rezago de publicación no está garantizado; se informa la última reunión registrada. |
+| **PRODUCTOR DEL DATO** | HCDN — Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Índice oficial de sesiones plenarias y versiones taquigráficas |
+| **MODO DE ACCESO** | Automático: lectura del índice de reuniones desde 2023, con deduplicación por identidad, exclusión de fechas futuras y selección de la ventana mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -778,9 +799,9 @@ El quórum es el primer filtro de cualquier agenda legislativa: sin él no se de
 
 ## Método de cómputo
 
-- Una sesión cuenta como caída cuando el registro oficial la clasifica «en minoría»: fue convocada, esperó —unas dos horas en promedio— y nunca llegó a constituirse, por lo que no recibió número de sesión. Las que sí se constituyen duran alrededor de doce horas y llevan número.
-- El denominador son las sesiones convocadas para tratar temas: las especiales, sus continuaciones y las que quedaron en minoría. Quedan afuera las informativas, la sesión preparatoria y la presentación del presupuesto, instancias donde el oficialismo no necesita reunir quórum para avanzar su agenda.
-- Se calcula sobre los últimos doce meses calendario, no por período legislativo. El período reiniciaba el conteo cada marzo, de modo que durante buena parte del año el indicador se apoyaba en dos o tres sesiones.
+- El numerador cuenta las reuniones que el índice oficial clasifica como expresiones en minoría. No se infiere su condición por la duración ni se equipara cualquier sesión no efectuada con falta de quórum.
+- El denominador reúne sesiones legislativas ordinarias, extraordinarias o especiales y reuniones en minoría. Excluye informativas, preparatorias, asambleas, homenajes, presentaciones de presupuesto y citadas no efectuadas. Dos reuniones distintas del mismo día se conservan; dos enlaces de la misma reunión se cuentan una sola vez.
+- La ventana comprende el mes informado y los once anteriores. Los meses históricos cierran al último día; el mes en curso es parcial hasta el día de consulta. No se reinicia el conteo al cambiar de período legislativo.
 
 ## Semáforo — valores que determinan el color
 
@@ -799,31 +820,33 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 1 de 9 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)
+- 1 de 10 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. Última reunión: 2026-08-26. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas.
 
 ## Color vigente y por qué
 
-Dato vigente: 11,1 % de sesiones (2026-09).
+Dato vigente: 10 % de sesiones (2026-09).
 
-11,1 % de sesiones cae en el tramo que corresponde a Verde, a 5,9 del corte más cercano.
+10,0 % de sesiones cae en el tramo que corresponde a Verde, a 7,0 del corte más cercano.
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 2,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
-- Las sesiones desactivadas antes de la convocatoria formal no aparecen en el registro oficial: el indicador subestima el bloqueo.
-- El denominador sigue siendo modesto —entre doce y dieciséis sesiones en la ventana—, así que cada sesión caída mueve varios puntos porcentuales. Es una mejora sobre el conteo por período legislativo, que llegó a apoyarse en cinco sesiones, pero conviene leer el indicador por su tendencia y no por su valor exacto de un mes.
+- Las citadas no efectuadas aparecen en el índice pero se excluyen mientras su rótulo no acredite falta de quórum. Tampoco se cuentan negociaciones o convocatorias retiradas sin registro: no es una medida exhaustiva del bloqueo parlamentario.
+- El denominador es pequeño y cambia con cada reunión; una sola reunión en minoría puede mover varios puntos porcentuales. Deben leerse juntos porcentaje, numerador, denominador y ventana.
 - No distingue el quórum frustrado por la oposición de la inasistencia propia — decisión metodológica declarada.
 
 ## Si falta el dato / Política de revisiones
 
 - **Si falta el dato:** Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.
 
-- **Política de revisiones:** El dataset se reconsulta completo en cada actualización.
+- **Política de revisiones:** El índice de sesiones se reconsulta en cada actualización. Las correcciones de fecha, nuevas reuniones publicadas o cambios de clasificación pueden revisar la historia; no se aplica un desplazamiento fijo a los datos del catálogo anterior.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — ADR-0308: el índice oficial reemplaza al catálogo, cuyas 72 fechas cotejadas estaban desplazadas dos días. Recupera la reunión del 26 de agosto y excluye la convocatoria futura del 9 de septiembre. Se conserva el criterio de minoría y se deduplica por reunión.
 
 **2026-05** — Incorporado al cinturón político como medida del bloqueo parlamentario.
 
@@ -847,7 +870,7 @@ Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 66,7 % de jurisdicciones (sobre 24) adheridas al RIGI** (2026-09) | **VERDE** | Peso efectivo 5,7 % del ITCP | Cinturón Política |
+| **Hoy: 75 % de jurisdicciones (sobre 24) adheridas al RIGI** (2026-09) | **VERDE** | Peso efectivo 5,7 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -855,9 +878,9 @@ Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | adhesion_reformas_provincial | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % de jurisdicciones (sobre 24) adheridas al RIGI |
-| **SERIE DISPONIBLE** | 2024-07 → 2026-08 (26 puntos) | **REZAGO DE PUBLICACIÓN** | La tabla de provincias adheridas se actualiza en el sitio oficial apenas una provincia formaliza su adhesión; el informe la relee completa en cada actualización. |
-| **PRODUCTOR DEL DATO** | Ministerio de Agricultura, Ganadería y Pesca (MAGyP) | **OPERACIÓN ESTADÍSTICA** | Tabla de provincias adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742) |
-| **MODO DE ACCESO** | Automático: lectura directa de la tabla publicada en el sitio del MAGyP. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-10 |
+| **SERIE DISPONIBLE** | 2024-07 → 2026-08 (26 puntos) | **REZAGO DE PUBLICACIÓN** | El catálogo nacional puede omitir adhesiones ya publicadas. Se relee la tabla y se verifican leyes complementarias identificadas por la auditoría; el descubrimiento de nuevas omisiones requiere revisión periódica. |
+| **PRODUCTOR DEL DATO** | MAGyP · Boletines Oficiales de Santa Fe y CABA | **OPERACIÓN ESTADÍSTICA** | Tabla de provincias adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742) |
+| **MODO DE ACCESO** | Lectura de la tabla MAGyP y verificación del texto de las leyes complementarias: Santa Fe 14.386, art. 93, y CABA 6.949, art. 1. El registro de complementos es curado y trazable. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -869,8 +892,9 @@ Mide adhesión fiscal a un régimen de promoción de inversiones puntual, no el 
 
 ## Método de cómputo
 
-- Cuenta cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran en la tabla oficial como adheridas al RIGI.
+- Cuenta jurisdicciones únicas de la tabla MAGyP más adhesiones documentadas en leyes complementarias. Al 8-sep-2026, las omisiones de Santa Fe y CABA elevan el total de 16 a 18 sobre 24 (23 provincias y CABA).
 - El indicador es ese conteo sobre 24, expresado en porcentaje.
+- La historia utiliza fechas documentadas: Santa Fe desde el 1-ene-2025, vigencia explícita del art. 120 de su ley; CABA desde la publicación del 28-may-2026. Publicación, sanción y vigencia no son fechas equivalentes; el criterio de cada entrada queda declarado.
 
 ## Semáforo — valores que determinan el color
 
@@ -889,13 +913,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 16 de 24 jurisdicciones adheridas al RIGI
+- 18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.
 
 ## Color vigente y por qué
 
-Dato vigente: 66,7 % de jurisdicciones (sobre 24) adheridas al RIGI (2026-09).
+Dato vigente: 75 % de jurisdicciones (sobre 24) adheridas al RIGI (2026-09).
 
-66,7 % de jurisdicciones (sobre 24) adheridas al RIGI cae en el tramo que corresponde a Verde, a 20,7 del corte más cercano.
+75,0 % de jurisdicciones (sobre 24) adheridas al RIGI cae en el tramo que corresponde a Verde, a 29,0 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -904,16 +928,18 @@ Ponderación vigente en el ITCP: 5,7 % efectivo. El color es una lectura adicion
 ## Transparencia — limitaciones declaradas
 
 - Cuenta la adhesión formal, no la inversión efectiva que esa adhesión termina generando en cada provincia.
-- Es una tabla acumulativa: una vez que una provincia adhiere no se espera que salga de la lista, así que el indicador solo sube o queda estable — no capta marchas atrás.
+- El registro describe adhesiones formales acumuladas, no una revisión jurídica exhaustiva de vigencia. No detecta automáticamente derogaciones, restricciones o nuevas omisiones del catálogo; no se afirma que una adhesión sea jurídicamente irreversible.
 - El sitio fuente tiene una fila vacía mal formada que puede duplicar el nombre de una provincia al leer la tabla; no altera el conteo final porque cada provincia se cuenta una sola vez.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si la consulta al sitio falla, el indicador queda fuera de esa actualización y el puntaje del cinturón se calcula con los indicadores disponibles.
+- **Si falta el dato:** Si falla la tabla o no se puede comprobar una ley complementaria, el colector devuelve ausencia y el proceso conserva la tarjeta anterior como caché, si existe. No publica un descenso calculado con fuentes incompletas.
 
-- **Política de revisiones:** La tabla completa se relee de la fuente en cada actualización; no se acumulan lecturas parciales.
+- **Política de revisiones:** La tabla y los originales complementarios se reconsultan. Las nuevas adhesiones o cambios normativos requieren revisar el catálogo y el registro fechado; una respuesta HTTP 200 no garantiza exhaustividad.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — ADR-0304: se incorporan Santa Fe y CABA, omitidas por el catálogo nacional, en tarjeta e historia; se retiran las afirmaciones de actualización inmediata e irreversibilidad jurídica.
 
 **2026-07-07** — Alta como indicador de la dimensión de alianzas territoriales: mide adhesión fiscal al RIGI, distinta del alineamiento político general que ya capta el indicador de gobernadores.
 
@@ -943,7 +969,7 @@ Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones d
 | **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días |
-| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -976,7 +1002,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 100,0% = Diputados 100,0% (peso 65%, 13 actas) · Senado 100,0% (peso 35%, 16 actas)
+- 100,0% = Diputados 100,0% (peso 65%, 42 actas) · última acta 2026-08-27 · Senado 100,0% (peso 35%, 16 actas) · última acta 2026-08-27
 
 ## Color vigente y por qué
 
@@ -1000,9 +1026,13 @@ Ponderación vigente en el ITCP: 15 % efectivo. El color es una lectura adiciona
 
 - **Si falta el dato:** Si la lectura de uno de los portales falla, se conserva el último promedio calculado de esa cámara y el compuesto se arma igual; recién se marca desactualizado si ninguna cámara tuvo una actualización que llegara a su portal en más de 10 días — un receso legislativo sin actas nuevas no cuenta como desactualización.
 
-- **Política de revisiones:** El promedio de los últimos 90 días se recalcula completo desde las fuentes en cada actualización; no se arrastran promedios previos.
+- **Política de revisiones:** Cuando las fuentes responden, se recalcula el promedio de los últimos 90 días. Ante fallos o receso sin actas se aplica la conservación del último promedio descrita en faltantes. El detalle muestra la fecha de última acta y la condición de caché de cada cámara; la fecha más reciente del compuesto no acredita actualización de ambas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — Senado: una descarga fallida o una página sin votos invalida la lectura completa, en la tarjeta y en la reconstrucción anual. La tarjeta excluye actas posteriores al corte; no se publica un promedio parcial como actualización exitosa.
+
+**2026-09-08** — El desglose público incorpora fechas de actas y caché por cámara; explica la renormalización al 100% cuando sólo aporta una. Se conserva la fórmula (ADR-0284).
 
 **2026-05** — Incorporado al cinturón como estimación manual, a la espera de una fuente estructurada de votaciones vigente.
 
@@ -1026,7 +1056,7 @@ De las normas del Ejecutivo que el Congreso desafió en el recinto en los últim
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 33,3 % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses** (2026-08) | **NARANJA** | Peso efectivo 2,5 % del ITCP | Cinturón Política |
+| **Hoy: — % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses** (2026-09) | **—** | Fuera del índice | Cinturón Política |
 
 ## Identificación
 
@@ -1036,7 +1066,7 @@ De las normas del Ejecutivo que el Congreso desafió en el recinto en los últim
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2024-03 → 2026-08 (30 puntos) | **REZAGO DE PUBLICACIÓN** | Las cámaras publican sus actas de votación a los días de cada sesión; el clasificador incorpora las actas nuevas en la actualización nocturna siguiente. La caída de un veto se registra con la publicación de la ley insistida en el Boletín Oficial, dos a tres semanas después del voto de la segunda cámara. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados + Senado de la Nación + InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras (insistencias de leyes vetadas y tratamientos de decretos bajo la ley 26.122) + base de legislación nacional (decretos de veto, leyes promulgadas por insistencia) |
-| **MODO DE ACCESO** | Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos es el mismo que usa el indicador de normas desafiadas en el recinto. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos es el mismo que usa el indicador de normas desafiadas en el recinto. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1053,34 +1083,11 @@ Es la cara ganada del pulso legislativo que el conteo de derrotas no registra: u
 - El indicador es el porcentaje de normas desafiadas en los últimos 12 meses calendario que seguían en pie al cierre del mes: cada punto histórico evalúa el estado a esa fecha, así que una caída posterior no reescribe los meses ya publicados.
 - Los vetos sin insistencia votada y los decretos que ninguna cámara trató no entran al denominador: sin desafío no hay prueba del bloqueo.
 
-## Semáforo — valores que determinan el color
-
-Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
-
-**Valores que definen cada color**
-
-| Rango (% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses) | Color |
-|---|---|
-| ≥ 62,5 | VERDE |
-| 42,5 – 62,5 | AMARILLO |
-| 30 – 42,5 | NARANJA |
-| ≤ 30 | ROJO |
-
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 1 de 3 normas desafiadas en el recinto siguen en pie (vetos con insistencia votada + decretos votados bajo la ley 26.122, últimos 12 meses)
-
-## Color vigente y por qué
-
-Dato vigente: 33,3 % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses (2026-08).
-
-33,3 % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses cae en el tramo que corresponde a Naranja, a 3,3 del corte más cercano.
-
-**Color vigente: NARANJA**
-
-Ponderación vigente en el ITCP: 2,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+- No hubo normas desafiadas en la ventana de doce meses. Sin denominador no hay tasa de bloqueo: no se asigna cero ni se conserva una tasa de otra ventana. El peso se redistribuye entre los componentes observados de la dimensión legislativa.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1092,11 +1099,13 @@ Ponderación vigente en el ITCP: 2,5 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si las actas o InfoLeg fallan, se mantiene el último valor disponible, señalado como desactualizado; el histórico ya clasificado se preserva, así que una caída de fuente solo retrasa la detección de votaciones nuevas.
+- **Si falta el dato:** Si las actas o InfoLeg fallan, se mantiene el último resultado disponible, señalado como desactualizado. Si la consulta termina y no hay normas desafiadas en la ventana, se publica «Sin universo»: valor nulo, sin puntaje y con redistribución del peso entre los componentes observados de la dimensión. El conteo de desafíos sí vale cero; no se arrastra una tasa de otra ventana.
 
 - **Política de revisiones:** Las votaciones consumadas son inmutables. Los vetos con media insistencia pendiente se re-verifican en cada actualización (no caducan): si la segunda cámara completa la insistencia, la norma pasa a caída desde ese mes en adelante — los puntos históricos ya publicados no se reescriben, porque cada uno evalúa el estado al cierre de su propio mes.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — ADR-0276: una ventana sin desafíos verificados no define una tasa. Se publica sin universo y fuera del cálculo; una consulta incompleta conserva el dato previo con su fecha.
 
 **2026-07-16** — Incorporado como la cara ganada del pulso legislativo: los vetos sostenidos y la supervivencia de decretos no puntuaban en ningún indicador (el conteo de derrotas solo registra las normas caídas). Serie mensual desde marzo de 2024.
 
@@ -1114,7 +1123,7 @@ Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 3 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses** (2026-08) | **VERDE** | Peso efectivo 2,7 % del ITCP | Cinturón Política |
+| **Hoy: 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses** (2026-09) | **VERDE** | Peso efectivo 3,1 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1124,7 +1133,7 @@ Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación se publican con algunos días de demora respecto de la sesión; InfoLeg carga los vetos al ritmo del Boletín Oficial. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados · Senado de la Nación · InfoLeg | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras y base de legislación nacional — normas del Poder Ejecutivo sometidas a votación en el recinto |
-| **MODO DE ACCESO** | Semiautomático: clasifica las actas de votación de ambas cámaras y las cruza con los vetos de InfoLeg; los casos ambiguos del registro compartido con bloqueo sostenido quedan pendientes de revisión humana. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Semiautomático: clasifica las actas de votación de ambas cámaras y las cruza con los vetos de InfoLeg; los casos ambiguos del registro compartido con bloqueo sostenido quedan pendientes de revisión humana. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1157,17 +1166,17 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 3 normas propias desafiadas en el recinto en los últimos 12 meses (2 cayeron, 1 siguen en pie)
+- 0 normas propias desafiadas en el recinto en los últimos 12 meses (0 cayeron, 0 siguen en pie)
 
 ## Color vigente y por qué
 
-Dato vigente: 3 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses (2026-08).
+Dato vigente: 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses (2026-09).
 
-3,0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses cae en el tramo que corresponde a Verde, a 4,7 del corte más cercano.
+0,0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses cae en el tramo que corresponde a Verde, a 7,7 del corte más cercano.
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 2,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1182,6 +1191,8 @@ Ponderación vigente en el ITCP: 2,7 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** El registro se reconstruye completo en cada actualización: si una fuente carga un acta con retraso, el conteo se corrige solo hacia atrás.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — ADR-0276: cero desafíos es válido sólo con cobertura completa del universo compartido. Una consulta fallida no acredita ausencia de eventos.
 
 **2026-07-19** — Entra al índice en reemplazo de las derrotas legislativas, que medían casi exactamente lo mismo que el bloqueo sostenido: desde marzo de 2025 ambos indicadores arrojaban mes a mes el mismo número, y entre los dos se llevaban el 40% de la dimensión para responder una sola pregunta. Las derrotas se siguen relevando y quedan a la vista como dato dentro de la ficha del bloqueo.
 
@@ -1199,7 +1210,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 22 leyes sancionadas (12m)** (2026-09) | **ROJO** | Peso efectivo 3,1 % del ITCP | Cinturón Política |
+| **Hoy: 29 leyes sancionadas (12m)** (2026-08) | **AMARILLO** | Peso efectivo 3,6 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1207,22 +1218,22 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | produccion_legislativa | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | leyes sancionadas (12m) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El dataset se actualiza con la sanción de cada ley, de modo que el rezago es el de la carga en el portal de datos abiertos: en general unas semanas. |
-| **PRODUCTOR DEL DATO** | Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Dataset de leyes sancionadas, con el expediente inicial y la fecha de sanción definitiva de cada una |
-| **MODO DE ACCESO** | Automático: el mismo portal que el proyecto ya consulta para la eficacia parlamentaria. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-10 |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | La carga del catálogo tiene un rezago no garantizado. Se informa la última sanción registrada y se excluye el mes en curso; un mes calendario cerrado no asegura que todas sus leyes ya estén cargadas. |
+| **PRODUCTOR DEL DATO** | Cámaras de Diputados y Senadores | **OPERACIÓN ESTADÍSTICA** | Catálogo de leyes sancionadas más sanciones omitidas cotejadas en el Boletín Oficial, diarios de sesiones y boletines parlamentarios |
+| **MODO DE ACCESO** | Catálogo automático por API; complementos curados con enlace al original y fecha de revisión manual. No se garantiza actualización automática del registro complementario. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
 Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto.
 
-Mide la actividad legislativa por su volumen, que es el número que efectivamente se mueve. La participación del Ejecutivo en esa producción es notablemente estable —entre cinco y diez leyes por ventana en todo el período—, de modo que cuando su porcentaje sube, lo que cambió no fue el Ejecutivo sino el Congreso, que sancionó menos. Medir el total evita leer una parálisis legislativa como un avance del Gobierno.
+Describe el volumen total de leyes sancionadas, sin equipararlo a victorias del Ejecutivo. Complementa la eficacia de su agenda y las votaciones que desafían sus normas; ni el origen ni el contenido de cada ley se deducen del total.
 
 **Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
-- Se cuentan las leyes con sanción definitiva dentro de la ventana de doce meses que termina en el mes informado. La ventana es móvil y no calendaria, para que cada mes sea comparable con el anterior sin el salto de enero.
-- No se distingue de dónde nació cada proyecto. La composición por origen se publica aparte, en el detalle de la card, porque es una lectura y no el puntaje.
+- Se cuentan leyes distintas, identificadas por número o expediente de sanción definitiva verificada, dentro de doce meses calendarios completos hasta el último día del mes informado. Se incluye el primer día del mes inicial y se excluye el primer día del mes siguiente al informado. No se publica el mes en curso.
+- Se agregan las sanciones omitidas por el catálogo cotejadas en el Boletín Oficial y en diarios de sesiones (registro local revisado el 8-sep-2026). Se cuenta por ley o, mientras no haya número verificado, por expediente con sanción definitiva documentada. La vinculación por expediente/proyecto evita duplicarlo cuando el catálogo lo incorpora. Las fechas inválidas, futuras o contradictorias impiden actualizar.
 
 ## Semáforo — valores que determinan el color
 
@@ -1241,31 +1252,35 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 22 leyes sancionadas en los últimos 12 meses. El promedio histórico del dataset (2008-2025, cuatro presidencias) es de 74 leyes por año.
+- 29 leyes distintas en los 12 meses completos hasta 2026-08. Última sanción registrada: 2026-08-27; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.
 
 ## Color vigente y por qué
 
-Dato vigente: 22 leyes sancionadas (12m) (2026-09).
+Dato vigente: 29 leyes sancionadas (12m) (2026-08).
 
-22 leyes sancionadas (12m) cae en el tramo que corresponde a Rojo, a 0,5 del corte más cercano.
+29 leyes sancionadas (12m) cae en el tramo que corresponde a Amarillo, a 1,5 del corte más cercano.
 
-**Color vigente: ROJO**
+**Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 3,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - Cuenta leyes, no su importancia. Una ley de presupuesto y una que declara una fecha conmemorativa pesan igual.
-- El promedio histórico con el que se compara incluye años de mayorías muy distintas. No es un óptimo normativo: es la referencia disponible más ancha, de dieciocho años y cuatro presidencias.
+- El umbral de diseño se conserva en 74. El cotejo del 8 de septiembre de 2026 contó 1.320 leyes distintas de 2008-2025, un promedio de 73,3 por año; 74 no es ese promedio exacto ni un óptimo normativo. La referencia abarca mayorías distintas y depende de la exhaustividad del catálogo.
 - La ventana móvil de doce meses suaviza pero también demora: un cambio de ritmo tarda meses en verse completo.
 
 ## Si falta el dato / Política de revisiones
 
 - **Si falta el dato:** Si el portal no responde, se mantiene el último valor disponible, señalado como desactualizado.
 
-- **Política de revisiones:** El dataset puede incorporar leyes con retraso, de modo que los últimos meses de la serie pueden ajustarse levemente hacia arriba.
+- **Política de revisiones:** La carga tardía, la eliminación de duplicados y las correcciones de fechas pueden revisar la historia en ambas direcciones. Una descarga exitosa no certifica exhaustividad.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — ADR-0308: siete sanciones definitivas de agosto omitidas en el catálogo, 27.819 a 27.825; identidad por expediente/proyecto hasta verificar número de ley y deduplicación al incorporarse a CKAN.
+
+**2026-09-08** — ADR-0306: doce meses completos, deduplicación por ley, corrección del promedio histórico y puntos de interpolación de la ficha alineados con el motor; se conservan las bandas de diseño.
 
 **2026-07-31** — Entra al índice. Se decidió medir el total de leyes sancionadas y no la proporción de origen del Ejecutivo, porque esa proporción se mueve por el denominador: el numerador es estable entre cinco y diez leyes en todo el período.
 
@@ -1277,7 +1292,7 @@ Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
 
-# Velocidad de resolución de la Corte
+# Tasa de resolución de la Corte
 
 Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los que le ingresan.
 
@@ -1293,15 +1308,15 @@ Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los 
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % de expedientes resueltos sobre ingresados |
 | **SERIE DISPONIBLE** | 2014-12 → 2025-12 (12 puntos) | **REZAGO DE PUBLICACIÓN** | El anuario se publica con el año cerrado, de modo que el dato describe el año anterior. |
 | **PRODUCTOR DEL DATO** | Corte Suprema de Justicia de la Nación | **OPERACIÓN ESTADÍSTICA** | Anuario estadístico, sobre su sistema de gestión judicial |
-| **MODO DE ACCESO** | Carga manual anual: los tableros interactivos no admiten consulta automática; el valor se releva de la versión estática de cada hoja y se valida contra el anuario en documento. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Carga manual anual: los tableros interactivos no admiten consulta automática; el valor se releva de la versión estática de cada hoja y se valida contra el anuario en documento. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
 Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los que le ingresan.
 
-Distingue una Corte que se pone al día de una que acumula. Por encima de cien resuelve más de lo que recibe y descarga atraso; por debajo, el atraso crece. Importa para este cinturón porque una causa que tarda años en resolverse deja en pie, mientras tanto, lo que se discute.
+Compara las salidas y entradas anuales de casos: por encima de cien se resuelven más casos de los que ingresan; por debajo, menos. No mide el tiempo que tarda una causa ni si las decisiones favorecen al Gobierno. Su signo en el índice expresa una hipótesis sobre fricción judicial, no una consecuencia demostrada por estos datos.
 
-**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por tres vías: cobertura de cargos de juez, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras dos miran el comportamiento de la Justicia: cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces. Una cuarta vía —la densidad de menciones cautelares en los sumarios que publica SAIJ— salió del índice en agosto de 2026, porque ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. Se sigue relevando sin puntuar.
+**Dimensión que integra — Poder judicial.** Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. No mide juras certificadas, duración de causas ni resultados favorables al Gobierno. Las menciones cautelares de SAIJ permanecen fuera del índice porque ese corpus no identifica litigios contra la agenda del Ejecutivo.
 
 ## Método de cómputo
 
@@ -1339,7 +1354,7 @@ Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicion
 
 ## Transparencia — limitaciones declaradas
 
-- El signo de este indicador es deliberado y conviene decirlo: una Corte más lenta le da más puntaje al Gobierno. El cinturón mide capacidad de gobernar sin fricción, no salud institucional, y una causa que tarda años deja en pie mientras tanto lo que se discute.
+- El signo es una hipótesis del monitor: una menor tasa de resolución aporta más puntaje como aproximación a menor fricción judicial. El cociente no mide la duración de los expedientes, su efecto sobre políticas ni el sentido de las decisiones; por sí solo no demuestra ventaja para el Gobierno.
 - Cuenta expedientes, no su peso. Una causa que define una política y una queja de trámite cuentan igual.
 - Los años por encima de cien por ciento son años de descarga de atraso acumulado, no de mayor productividad instantánea.
 - Es anual. No sirve para leer el pulso de un mes.
@@ -1351,6 +1366,8 @@ Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La fuente puede corregir cifras de años anteriores al publicar el anuario siguiente.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — Se presenta como tasa de resolución: el cociente anual de expedientes resueltos e ingresados no mide duración judicial ni demuestra ventaja para el Gobierno. Se conserva el cálculo y se explicita la hipótesis del signo (ADR-0281).
 
 **2026-07-31** — Entra al índice. El veredicto anterior lo daba por imposible por falta de fecha de inicio de causa; la corrección encontró que el anuario publica ingresos y resueltos por año, que es lo que el indicador necesita.
 
@@ -1378,19 +1395,19 @@ Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Cons
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | sesiones de las comisiones de control (12m) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Depende de cuándo el Consejo publica la nota de cada sesión, en general dentro de las semanas siguientes. |
 | **PRODUCTOR DEL DATO** | Consejo de la Magistratura de la Nación | **OPERACIÓN ESTADÍSTICA** | Archivo de notas de prensa de las comisiones de Acusación y de Disciplina |
-| **MODO DE ACCESO** | Automático sobre el archivo público de notas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático sobre el archivo público de notas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
 Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces: Acusación y Disciplina.
 
-Mide si el mecanismo de control disciplinario de los jueces está funcionando o está detenido. Se cuentan las sesiones de ambas comisiones y no las de una sola porque el conjunto da una serie estable y comparable mes a mes, mientras que cada comisión por separado sesiona pocas veces al año.
+Describe la frecuencia de reuniones de Acusación y Disciplina. No informa cuántas denuncias se resolvieron, el sentido de las decisiones ni si hubo sanciones. La ausencia de una nota publicada tampoco certifica que una comisión no se haya reunido.
 
-**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por tres vías: cobertura de cargos de juez, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras dos miran el comportamiento de la Justicia: cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces. Una cuarta vía —la densidad de menciones cautelares en los sumarios que publica SAIJ— salió del índice en agosto de 2026, porque ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. Se sigue relevando sin puntuar.
+**Dimensión que integra — Poder judicial.** Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. No mide juras certificadas, duración de causas ni resultados favorables al Gobierno. Las menciones cautelares de SAIJ permanecen fuera del índice porque ese corpus no identifica litigios contra la agenda del Ejecutivo.
 
 ## Método de cómputo
 
-- Se cuenta cada sesión documentada de ambas comisiones en la ventana móvil de doce meses, tenga o no un número en la URL. Incluye sesiones ordinarias, extraordinarias y reuniones publicadas junto o en forma conjunta con otras comisiones. Fecha y comisión forman la clave de deduplicación.
+- Se cuenta cada sesión documentada de ambas comisiones en la ventana de doce meses calendario terminada en el mes informado, tenga o no un número en la URL. El último mes está abierto hasta su cierre: al 8 de septiembre de 2026, la ventana comienza el 1 de octubre de 2025. Incluye sesiones ordinarias, extraordinarias y reuniones publicadas junto o en forma conjunta con otras comisiones. Fecha de publicación y comisión forman la clave de deduplicación.
 - Las audiencias testimoniales o del artículo 20 y las noticias del Jurado de Enjuiciamiento no cuentan: son actos de una causa o de otro órgano, no sesiones de comisión.
 - Se suman las dos comisiones. Cada una por separado sesiona pocas veces al año, y una serie construida sobre una sola quedaría dominada por el ruido de un evento aislado.
 
@@ -1426,8 +1443,9 @@ Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicion
 ## Transparencia — limitaciones declaradas
 
 - Cuenta que la comisión se reúna, resuelva o no. Una nota cuyo título destaca un dictamen sigue contando si el cuerpo documenta que la decisión se tomó en sesión.
-- Las dos comisiones se comportan distinto: una sesiona con más frecuencia y produce acciones, la otra sesiona menos y no publicó ninguna. El indicador las suma, de modo que no distingue cuál de las dos se movió.
+- Suma las dos comisiones sin distinguir el contenido ni el resultado de sus decisiones. Ambas publican actuaciones: la cantidad de reuniones no demuestra paralización de denuncias, ausencia de sanciones ni protección del gobierno.
 - Depende de que el Consejo publique la nota de cada sesión. Una sesión sin nota es invisible para el indicador.
+- Usa la fecha de publicación de la nota. Si ésta difiere de la fecha de reunión, puede desplazar el evento de mes; tampoco equivale a un inventario certificado de actas. El mes todavía abierto puede aumentar antes de cerrar.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1436,6 +1454,8 @@ Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Una nota publicada con retraso puede sumar una sesión a meses ya informados.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — El cotejo del archivo original corrobora 13 sesiones publicadas desde octubre de 2025. Se explicita el mes abierto y la fecha editorial, y se retira la afirmación desactualizada de que Disciplina no publicó acciones. No cambia el conteo ni el puntaje.
 
 **2026-08-26** — Se corrige el universo: el número del slug deja de ser requisito. Entran las sesiones con título sustantivo, extraordinarias y publicadas junto con otras comisiones; se deduplican por fecha y comisión y se excluyen audiencias y noticias del Jurado.
 
@@ -1451,36 +1471,37 @@ Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicion
 
 # Cobertura de cargos judiciales
 
-Qué porcentaje de los cargos de juez de la justicia federal y nacional tiene juez designado. Un cargo cubierto por un subrogante cuenta como vacante, porque la subrogancia es transitoria y no reemplaza a un juez nombrado para ese tribunal.
+Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. Se reconstruye desde un padrón y movimientos netos documentados; no certifica juras ni todos los cargos efectivamente en ejercicio. Una vacante sigue contando como vacante aunque tenga subrogante. Un titular de licencia con reemplazo transitorio conserva su cargo cubierto.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 69,63 % de cargos de juez con juez designado** (2026-09) | **AMARILLO** | Peso efectivo 7,5 % del ITCP | Cinturón Política |
+| **Hoy: 73,82 % estimado de cargos con juez designado** (2026-09) | **VERDE** | Peso efectivo 7,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | cobertura_judicial | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % de cargos de juez con juez designado |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El padrón de magistrados se publica con actualizaciones irregulares, en general de uno a dos meses. Los registros de designaciones y renuncias se actualizan con más frecuencia, de modo que la serie incorpora los movimientos posteriores a la última foto del padrón. |
-| **PRODUCTOR DEL DATO** | Ministerio de Justicia | **OPERACIÓN ESTADÍSTICA** | Padrón de magistrados de la Justicia Federal y Nacional (con marca de cargo vacante), más los registros de designaciones y de renuncias de magistrados |
-| **MODO DE ACCESO** | Automático: los tres archivos se resuelven por la interfaz del portal de datos abiertos. El nombre de cada archivo incluye su fecha de publicación y cambia en cada actualización, de modo que se busca el recurso vigente en lugar de construir la dirección a mano. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-10 |
+| **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % estimado de cargos con juez designado |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Actualización irregular. La serie sólo avanza hasta la fecha revisada de los registros complementarios; ejecutar el colector no extiende esa fecha. Un nuevo padrón requiere volver a conciliar los ajustes. |
+| **PRODUCTOR DEL DATO** | Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura | **OPERACIÓN ESTADÍSTICA** | Padrón de magistrados, designaciones y renuncias, conciliados con normas y bajas documentadas |
+| **MODO DE ACCESO** | Mixto: descarga automática de CSV y revisión documentada de movimientos netos, actos posteriores y bajas. Los ajustes se conservan en data/politica/cobertura_judicial_movimientos.json y cobertura_judicial_bajas.json. No se amplía el corte sin revisar esos registros. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de los cargos de juez de la justicia federal y nacional tiene juez designado. Un cargo cubierto por un subrogante cuenta como vacante, porque la subrogancia es transitoria y no reemplaza a un juez nombrado para ese tribunal.
+Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. Se reconstruye desde un padrón y movimientos netos documentados; no certifica juras ni todos los cargos efectivamente en ejercicio. Una vacante sigue contando como vacante aunque tenga subrogante. Un titular de licencia con reemplazo transitorio conserva su cargo cubierto.
 
-Mide una capacidad que el Gobierno no ejerce solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura del Poder Judicial es un termómetro de la negociación política, no de la gestión administrativa. La serie muestra un desgaste sostenido durante más de dos años —las renuncias siguieron y las designaciones se detuvieron— seguido de una recuperación abrupta cuando el Senado aprobó un conjunto de pliegos en junio de 2026.
+Describe la capacidad de integrar el Poder Judicial mediante un proceso que requiere designación del Ejecutivo y acuerdo del Senado. El acuerdo sobre un pliego no equivale a una toma de posesión. La reconstrucción conserva un universo fijo de órganos habilitados y requiere conciliar altas, promociones, traslados y bajas; sus revisiones no deben interpretarse como cambios ocurridos en el mes.
 
-**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por tres vías: cobertura de cargos de juez, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras dos miran el comportamiento de la Justicia: cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces. Una cuarta vía —la densidad de menciones cautelares en los sumarios que publica SAIJ— salió del índice en agosto de 2026, porque ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. Se sigue relevando sin puntuar.
+**Dimensión que integra — Poder judicial.** Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. No mide juras certificadas, duración de causas ni resultados favorables al Gobierno. Las menciones cautelares de SAIJ permanecen fuera del índice porque ese corpus no identifica litigios contra la agenda del Ejecutivo.
 
 ## Método de cómputo
 
 - Se consideran únicamente los cargos de juez en órganos habilitados: los tribunales creados por ley pero todavía no puestos en funcionamiento no forman parte del denominador, porque no hay nada que cubrir.
 - Un cargo marcado como vacante cuenta como no cubierto aunque tenga subrogante a cargo. La subrogancia se publica aparte, en el detalle de la card.
 - Hay una excepción, y la fuente la distingue bien: un puñado de cargos tiene juez designado que está de licencia, con un subrogante a cargo mientras tanto. Ese cargo no figura como vacante, porque el juez existe y el cargo es suyo, aunque quien firme sea el subrogante. Al cinco de junio de 2026 son seis casos.
-- La serie mensual se reconstruye desde el padrón: hacia atrás, cada designación posterior indica un cargo que antes estaba vacante y cada renuncia posterior uno que antes estaba cubierto; hacia adelante, la operación se invierte. Los registros de designaciones y renuncias incluyen fiscales y defensores, que se descartan porque el padrón que fija el nivel es sólo de jueces.
+- La serie mensual se reconstruye desde el padrón con movimientos netos de jueces de tribunales inferiores. Se excluyen fiscales, defensores, Corte Suprema, renovaciones y conjueces. Una promoción de un titular ya contado no suma una persona nueva. Las normas complementarias reemplazan el efecto del mismo registro si después aparece en el CSV; no se duplican.
+- Las bajas comprobadas que seguían figurando como no vacantes corrigen el ancla sin modificar la fuente original. Hacia atrás se resta el flujo neto entre el mes y el padrón; hacia adelante se suma. El 5 de junio de 2026 la foto original tiene 610 cargos no vacantes: una baja omitida lleva el ancla estimada a 609. La composición original se conserva por separado.
 
 ## Semáforo — valores que determinan el color
 
@@ -1488,7 +1509,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% de cargos de juez con juez designado) | Color |
+| Rango (% estimado de cargos con juez designado) | Color |
 |---|---|
 | ≥ 73 | VERDE |
 | 65 – 73 | AMARILLO |
@@ -1499,15 +1520,15 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 665 de 955 cargos de juez habilitados tienen juez designado al 2026-09-10 · sale del padrón al 2026-06-05 —610 de 955 no vacantes— más 60 designaciones y menos 5 renuncias posteriores · en ese padrón, los 955 cargos se repartían en 604 con titular en funciones, 282 con subrogante y 69 sin cubrir
+- Cobertura estimada: 705 de 955 cargos al 2026-09-08. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +103 altas netas, −6 renuncias y −1 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen.
 
 ## Color vigente y por qué
 
-Dato vigente: 69,63 % de cargos de juez con juez designado (2026-09).
+Dato vigente: 73,82 % estimado de cargos con juez designado (2026-09).
 
-69,63 % de cargos de juez con juez designado cae en el tramo que corresponde a Amarillo, a 3,37 del corte más cercano.
+73,82 % estimado de cargos con juez designado cae en el tramo que corresponde a Verde, a 0,82 del corte más cercano.
 
-**Color vigente: AMARILLO**
+**Color vigente: VERDE**
 
 Ponderación vigente en el ITCP: 7,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -1516,16 +1537,20 @@ Ponderación vigente en el ITCP: 7,5 % efectivo. El color es una lectura adicion
 - Mide la capacidad de integrar el Poder Judicial, no su comportamiento. No dice nada sobre cómo falla la Justicia, con qué velocidad resuelve ni en qué sentido lo hace.
 - El total de cargos se mantiene constante a lo largo de la serie reconstruida. La creación o habilitación de tribunales nuevos en el período movería el denominador y no está incorporada, de modo que la reconstrucción es más confiable cerca de la fecha del padrón que en su extremo inicial.
 - Las subrogancias se descuentan por completo, lo que es una decisión metodológica discutible: un juzgado con subrogante funciona, aunque de forma precaria. La composición se publica para que el lector pueda hacer la lectura contraria.
-- En el período reconstruido la cobertura se movió entre el sesenta y cuatro y el setenta y tres por ciento, de modo que sólo dos de las cinco bandas están pobladas. Las bandas superiores describen situaciones que la justicia argentina no alcanzó en estos años; no se bajaron los umbrales para poblarlas, porque eso convertiría un desempeño bajo en un puntaje alto.
-- Los traslados de jueces entre tribunales no se procesan como eventos propios: un traslado deja una vacante y cubre otra, y en el agregado se compensan, pero puede introducir diferencias de un cargo en meses puntuales.
+- Es una estimación de títulos designados, no un censo de jueces en ejercicio: no certifica fechas de jura ni exhaustividad de fallecimientos. Los traslados se compensan en el agregado bajo continuidad del titular; las fechas de salida y toma de posesión pueden diferir.
+- Los destinos no habilitados en el padrón no se agregan sin acreditar habilitación. El traslado de Fraga a San Justo (918/2026) requiere verificar cuándo deja el cargo de origen: el ajuste provisional neto cero puede sobreestimar un cargo del universo fijo. Este límite no se presenta como validación cerrada del stock.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si los archivos no se pueden leer, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión del Poder Judicial queda vacía y su peso se redistribuye entre las demás.
+- **Si falta el dato:** Si los archivos no se pueden leer o el padrón requiere una nueva conciliación, se mantiene el último valor disponible, señalado como desactualizado. Sin valor previo, su peso se redistribuye entre los otros indicadores activos del Poder Judicial; sólo si falta toda la dimensión se redistribuye entre las demás.
 
-- **Política de revisiones:** Cada actualización del padrón vuelve a anclar la serie completa, de modo que los valores pasados pueden ajustarse levemente cuando el Ministerio publica una foto nueva. El salto de junio de 2026 fue contrastado contra una fuente independiente: el archivo de concursos del propio Consejo de la Magistratura, que no registra ninguna entrevista entre octubre de 2024 y mayo de 2026 y concentra siete concursos con entrevistas personales entre junio y julio de 2026. Las dos fuentes marcan el mismo quiebre en el mismo mes, sin compartir método: además de aprobarse pliegos en el Senado, la maquinaria de selección volvió a moverse.
+- **Política de revisiones:** Un padrón nuevo obliga a revisar los ajustes antes de reanclar. La corrección de flujos y bajas puede revisar toda la historia; un salto entre versiones no es necesariamente un cambio ocurrido ese mes. La actividad de concursos sirve como contraste institucional de la reactivación, pero no demuestra por sí sola cuántos cargos se cubrieron.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — ADR-0298: reconstrucción con altas netas, normas posteriores al CSV y bajas documentadas; ancla original separada de la corregida, corte limitado a la revisión y límites explícitos sobre juras, habilitaciones y fallecimientos.
+
+**2026-09-08** — ADR-0297: se excluyen movimientos de la Corte Suprema y renovaciones verificadas, que no son altas netas de tribunales inferiores. La conciliación integral de promociones, nuevas normas y universo habilitado continúa abierta; todavía no se certifica el stock reconstruido.
 
 **2026-07-25** — Entra al índice como único indicador de la dimensión nueva del Poder Judicial, con el quince por ciento del cinturón. La serie se reconstruyó completa desde diciembre de 2023.
 
@@ -1555,7 +1580,7 @@ Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Li
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % votos de senadores no-LLA alineados con LLA, por provincia |
 | **SERIE DISPONIBLE** | 2024-02 → 2026-09 (32 puntos) | **REZAGO DE PUBLICACIÓN** | El portal de votaciones nominales del Senado registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
 | **PRODUCTOR DEL DATO** | Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales del Senado — coincidencia de senadores no alineados con la posición del bloque de La Libertad Avanza, por provincia, actas de los últimos 90 días |
-| **MODO DE ACCESO** | Automático: lectura directa del portal público de votaciones nominales del Senado; sin carga manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-10 |
+| **MODO DE ACCESO** | Automático: lectura directa del portal público de votaciones nominales del Senado; sin carga manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-08 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1611,9 +1636,13 @@ Ponderación vigente en el ITCP: 5,7 % efectivo. El color es una lectura adicion
 
 - **Si falta el dato:** Si la lectura del sitio falla, se conserva el último promedio calculado; recién se marca desactualizado si pasan más de 10 días sin una actualización que haya llegado al portal — un receso legislativo sin actas nuevas no cuenta como desactualización.
 
-- **Política de revisiones:** El promedio de los últimos 90 días se recalcula completo desde la fuente en cada actualización; no se arrastran promedios previos.
+- **Política de revisiones:** Cuando el portal responde y hay actas, se recalcula el promedio de los últimos 90 días. Ante fallos o receso sin actas se conserva el último promedio según la regla de faltantes; esto no es una observación nueva.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-08** — Una descarga fallida o una página sin votos invalida la lectura completa, también en la reconstrucción anual. La tarjeta excluye actas futuras; ante lectura incompleta se aplica la conservación del dato anterior, sin marcar como exitoso un promedio parcial.
+
+**2026-09-08** — Se aclara que el recálculo requiere actas y que ante fallos o receso puede conservarse el promedio anterior; se elimina la afirmación incompatible con esa regla (ADR-0284).
 
 **2026-07-08** — Alta como reemplazo de \"alineamiento de gobernadores\" (indicador de carga manual, sin fuente automatizable encontrada): mide coincidencia de voto de senadores no oficialistas con la posición del bloque de gobierno, por provincia.
 

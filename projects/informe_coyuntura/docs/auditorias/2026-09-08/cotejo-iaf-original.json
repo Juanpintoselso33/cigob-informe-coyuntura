@@ -1,0 +1,148 @@
+{
+  "fuentes": [
+    {
+      "anio": 2024,
+      "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada_2024.xlsx",
+      "sha256": "d3769235fc6f04325f0b9b61ca31f5f536ff857dcbec86df446b44fccbec2e2b",
+      "flujos": [
+        {
+          "mes": "2024-01",
+          "ron": 2290925.6924254303,
+          "ipc": 4261.5324
+        },
+        {
+          "mes": "2024-02",
+          "ron": 2212492.7305928264,
+          "ipc": 4825.7881
+        },
+        {
+          "mes": "2024-03",
+          "ron": 2221292.5575234,
+          "ipc": 5357.0929
+        },
+        {
+          "mes": "2024-04",
+          "ron": 2691921.1988786007,
+          "ipc": 5830.2271
+        },
+        {
+          "mes": "2024-05",
+          "ron": 5032157.425336162,
+          "ipc": 6073.7
+        },
+        {
+          "mes": "2024-06",
+          "ron": 3647557.376872371,
+          "ipc": 6351.7145
+        },
+        {
+          "mes": "2024-07",
+          "ron": 3366085.7830725326,
+          "ipc": 6607.7479
+        },
+        {
+          "mes": "2024-08",
+          "ron": 3746562.5032851105,
+          "ipc": 6883.4412
+        },
+        {
+          "mes": "2024-09",
+          "ron": 4304986.075317337,
+          "ipc": 7122.2421
+        },
+        {
+          "mes": "2024-10",
+          "ron": 4137904.166980369,
+          "ipc": 7313.9542
+        },
+        {
+          "mes": "2024-11",
+          "ron": 4236006.050862149,
+          "ipc": 7491.4314
+        },
+        {
+          "mes": "2024-12",
+          "ron": 4245566.71777065,
+          "ipc": 7694.0075
+        }
+      ]
+    },
+    {
+      "anio": 2025,
+      "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada2025_5.xlsx",
+      "sha256": "78f1f3bd2d8f2c86fd558d103cf892e03b77739af53650c8014d8f252ac14cda",
+      "flujos": [
+        {
+          "mes": "2025-01",
+          "ron": 4749797.448539012,
+          "ipc": 7864.1257
+        },
+        {
+          "mes": "2025-02",
+          "ron": 4424378.0485253595,
+          "ipc": 8052.9927
+        },
+        {
+          "mes": "2025-03",
+          "ron": 3994893.75209917,
+          "ipc": 8353.3158
+        },
+        {
+          "mes": "2025-04",
+          "ron": 4361994.819462631,
+          "ipc": 8585.6078
+        },
+        {
+          "mes": "2025-05",
+          "ron": 5567740.638083601,
+          "ipc": 8714.4871
+        },
+        {
+          "mes": "2025-06",
+          "ron": 5428436.827291857,
+          "ipc": 8855.5681
+        },
+        {
+          "mes": "2025-07",
+          "ron": 5048679.4581931075,
+          "ipc": 9023.973
+        },
+        {
+          "mes": "2025-08",
+          "ron": 5127703.586890468,
+          "ipc": 9193.2441
+        },
+        {
+          "mes": "2025-09",
+          "ron": 5091862.485868133,
+          "ipc": 9384.0922
+        },
+        {
+          "mes": "2025-10",
+          "ron": 5485076.059699431,
+          "ipc": 9603.8623
+        },
+        {
+          "mes": "2025-11",
+          "ron": 5257790.786758648,
+          "ipc": 9841.3581
+        },
+        {
+          "mes": "2025-12",
+          "ron": 5746837.197386171,
+          "ipc": 10121.3715
+        }
+      ]
+    }
+  ],
+  "variacion_nominal_pct": 43.081516617313966,
+  "variacion_real_pct": 1.636496463348669,
+  "consulta": "2026-09-08",
+  "metodo": "Suma independiente de columnas W (RON) e Y (Consenso Fiscal) de filas jurisdiccionales, en cada mes; división por IPC mensual antes de sumar cada año.",
+  "fuente_ipc": "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json",
+  "opc_2025": "https://opc.gob.ar/download/48399/?tmstv=1769103498",
+  "opc_2025_real_pct": 1.6,
+  "opc_2025_nominal_pct": 43.1,
+  "opc_semestre_2026": "https://opc.gob.ar/download/51647/?tmstv=1785786460",
+  "opc_semestre_2026_automaticas_real_pct": -2.8
+}

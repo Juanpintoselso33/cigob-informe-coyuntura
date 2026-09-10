@@ -4,7 +4,7 @@
 
 - **Python 3.12** y **Node 20+** (las mismas versiones que usa CI).
 - `gh` CLI autenticado (para mirar/relanzar deploys).
-- Git con acceso al repo (privado; pedir invitación como colaborador).
+- Git para clonar el repositorio público; acceso de colaborador para enviar cambios.
 
 ## Setup
 
@@ -16,8 +16,8 @@ uv pip install --python .venv/bin/python -r requirements.txt
 cd web && npm install
 ```
 
-⚠️ `xlrd==1.2.0` está pineado a propósito (el ICC de UTDT llega en `.xls`
-OLE2; xlrd ≥2 no lo lee). No "actualizar" esa dependencia.
+`xlrd==1.2.0` está fijado por el proyecto. Una migración requiere probar los
+lectores existentes; no atribuir la fijación a falta de soporte de `.xls`.
 
 ### Credenciales — `.env` en la raíz del repo (gitignored)
 
@@ -45,7 +45,7 @@ cd projects/informe_coyuntura
 .venv/bin/python scripts/descargar_series.py     # series + stores resilientes
 .venv/bin/python scripts/validacion_externa.py   # robustez pilar 3
 .venv/bin/python scripts/publicar.py             # scoring + snapshot web/src/data
-.venv/bin/python -m pytest tests/ -q             # verdes o no se pushea
+.venv/bin/python -m pytest tests/ -q  # un proceso; con xdist usar -n 6 como máximo             # verdes o no se pushea
 ```
 
 ## Ver la web local
@@ -92,8 +92,8 @@ Para screenshots de verificación visual se usa Playwright contra ese server
 - El bot nocturno commitea a `main` a la madrugada: empezar el día con
   `git pull --rebase`; si hay conflicto en `informe.json`/caches →
   `checkout --theirs` y regenerar.
-- OneDrive: el repo vive dentro de OneDrive; si un archivo aparece lockeado,
-  esperar la sincronización.
+- En la Mac de Juan el repo vive en `/Users/juan/dev/trabajo/CIGOB/Analisis CIGOB`,
+  fuera de OneDrive. No asumir que otra máquina comparte esa ubicación.
 - PowerShell 5.1: los here-strings `@"..."@` se comen backticks — para
   Python inline usar `@'...'@` (literal) o la shell Bash.
 - `gh run watch` a veces engancha el run anterior — verificar por SHA.

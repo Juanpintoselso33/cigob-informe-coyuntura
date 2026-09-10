@@ -7,6 +7,7 @@ cinturon: 'gestion'
 indicadores: [privatizaciones]
 archivos: ['privatizaciones_novedades.json']
 complementa: ['0101']
+relacionado: ['0277']
 ambito: 'ITCG · `privatizaciones` · `privatizaciones_novedades.json` (nuevo)'
 origen: 'Aporte externo sobre el cinturón de gestión (doc 260723)'
 ---
@@ -106,5 +107,9 @@ defecto es de tres meses, de modo que en régimen cada corrida procesa apenas
 las normas nuevas.
 
 El detector **no puede tumbar el indicador**: si InfoLeg no responde, el avance
-se publica igual y la lista queda vacía. Lo que se pierde es un aviso, no el
-dato.
+se publica igual, se conservan avisos conocidos y se informa la cobertura
+incompleta de la consulta.
+
+### Corrección de cobertura — 8-sep-2026
+
+El detector registra consultas previstas, consultas sin error, claves empresa/mes fallidas y textos no recuperados. `sin_fallos_detectados` describe la ejecución, no certifica exhaustividad del catálogo. Ante fallos publica `incompleta`, conserva metadatos de revisión manual y los pendientes anteriores; un fallo global tampoco vacía los avisos de la tarjeta. El avance curado no cambia por una interrupción del detector.

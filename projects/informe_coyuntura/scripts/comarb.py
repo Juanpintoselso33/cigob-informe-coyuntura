@@ -130,8 +130,13 @@ def actualizar(session: requests.Session | None = None, verbose: bool = False) -
     store = _cache_leer()
     gacetillas = store.setdefault("gacetillas", {})
 
-    html = ses.get(LISTADO, timeout=TIMEOUT, verify=False).text
+    respuesta = ses.get(LISTADO, timeout=TIMEOUT, verify=False)
+    respuesta.raise_for_status()
+    html = respuesta.text
     hrefs = sorted(set(re.findall(r'href="([^"]*[Gg]acetilla[^"]*\.pdf)"', html)))
+    esperados = {_periodo(h) for h in hrefs if _periodo(h)}
+    if not esperados:
+        raise ValueError('COMARB: catálogo sin gacetillas reconocibles')
     nuevos = 0
     for href in hrefs:
         per = _periodo(href)
@@ -139,7 +144,11 @@ def actualizar(session: requests.Session | None = None, verbose: bool = False) -
             continue
         url = urllib.parse.urljoin(BASE, urllib.parse.quote(href, safe=":/?&=%"))
         try:
-            reg = _leer_pdf(ses.get(url, timeout=TIMEOUT, verify=False).content)
+            respuesta = ses.get(url, timeout=TIMEOUT, verify=False)
+            respuesta.raise_for_status()
+            reg = _leer_pdf(respuesta.content)
+            if reg and (reg['desvio_suma_pct'] is None or abs(reg['desvio_suma_pct']) > 0.01):
+                raise ValueError('COMARB: los sistemas no suman el total')
         except Exception as e:                                    # noqa: BLE001
             if verbose:
                 print(f"  [WARN] COMARB {per}: {type(e).__name__}: {e}")
@@ -172,6 +181,9 @@ def actualizar(session: requests.Session | None = None, verbose: bool = False) -
         "nuevos_en_esta_corrida": nuevos,
     }
     _cache_escribir(store)
+    faltantes = esperados - set(gacetillas)
+    if faltantes:
+        raise ValueError(f'COMARB: gacetillas publicadas sin validar: {sorted(faltantes)}')
     return store
 
 

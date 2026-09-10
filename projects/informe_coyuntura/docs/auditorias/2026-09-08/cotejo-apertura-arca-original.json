@@ -1,0 +1,67 @@
+{
+  "dex": {
+    "julio": 1192117.21702272,
+    "agosto": 1015505.61409477,
+    "ultimo": "2026-08"
+  },
+  "dim_estadistica": {
+    "julio": 575666.99681123,
+    "agosto": 620590.6146891,
+    "ultimo": "2026-08"
+  },
+  "dgi": {
+    "julio": 12640577.95556934,
+    "agosto": 11831038.552328192,
+    "ultimo": "2026-08"
+  },
+  "a3500_julio": 1487.0038095238097,
+  "original_arca": {
+    "url": "https://contenidos.afip.gob.ar/institucional/estudios/archivos/serie2026.xls",
+    "sha256": "e55bcf76c5ce412add287c5fac8a6c4bffe5c17709581499eaf86f8b032a5eda",
+    "columna": "JULIO",
+    "dex": 1192117.2170227203,
+    "dim": 466938.06392612995,
+    "estadistica": 108728.93288509997
+  },
+  "calculo_apertura": {
+    "intercambio_ica_musd": 15592.53539828,
+    "recaudacion_musd": 1188.8229219803118,
+    "alicuota": 7.624307988497175
+  },
+  "evidencia_http": [
+    {
+      "url": "https://apis.datos.gob.ar/series/api/series/?ids=142.3_DEREC_2001_M_20&format=json&limit=60&sort=desc",
+      "status": 200,
+      "sha256": "db215d44b15af0277d992e8286c1035443f7e8bd2a44f4d021db2e09c5fe297c"
+    },
+    {
+      "url": "https://apis.datos.gob.ar/series/api/series/?ids=142.3_DEREC_2001_M_26&format=json&limit=60&sort=desc",
+      "status": 200,
+      "sha256": "d2ea41928ba670204725853063e7ec62e77fef0e59f385ab1b448fce4f843c7f"
+    },
+    {
+      "url": "https://apis.datos.gob.ar/series/api/series/?ids=172.3_SOTAL_DDGI_M_0_0_12&format=json&limit=60&sort=desc",
+      "status": 200,
+      "sha256": "96e8a1e2f8f24f8230ac84b303208d64f35dec700ed5030ade288e7562610c13"
+    },
+    {
+      "url": "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/5?desde=2026-05-31&limit=3000",
+      "status": 200,
+      "sha256": "828ea95366800d4972839e2251bd9e7c934abab63b87e82b219db4e6c98b433d"
+    }
+  ],
+  "fecha_verificacion": "2026-09-08",
+  "ica_original": {
+    "url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_20_08_26.xls",
+    "periodo": "2026-07",
+    "exportaciones_musd": 8853.85953346,
+    "importaciones_musd": 6738.67586482,
+    "evidencia_previa": "evidencia-fuentes.json"
+  },
+  "tarjeta": {
+    "valor": 7.62,
+    "fecha_dato": "2026-07-01"
+  },
+  "vigencia": "ARCA y A3500 llegan a agosto; ICA original llega a julio. Último mes común julio. No adelantar el denominador de comercio.",
+  "limite_dgi": "La réplica DGI se conserva como insumo de otra comprobación; este documento sólo cierra apertura comercial."
+}

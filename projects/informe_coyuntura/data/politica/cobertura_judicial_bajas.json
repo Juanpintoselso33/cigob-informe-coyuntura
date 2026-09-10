@@ -1,0 +1,46 @@
+{
+  "revisado_el": "2026-09-08",
+  "alcance": "Bajas corroboradas fuera del CSV de renuncias. Registro complementario, no censo exhaustivo de fallecimientos.",
+  "eventos": [
+    {
+      "persona": "MONTESI, Pablo Gustavo",
+      "fecha": "2024-08-21",
+      "tipo": "fallecimiento",
+      "organo": "Juzgado Federal de Primera Instancia de San Francisco",
+      "fuente": "https://www.cadena3.com/noticia/siempre-juntos/murio-pablo-montesi-juez-federal-de-san-francisco_394981",
+      "corroboracion": "https://www.lavozdesanjusto.com.ar/pesar-en-la-justicia-fallecio-el-juez-federal-pablo-montesi",
+      "nota": "Fecha corroborada en dos medios; el CSV de designaciones acredita su nombramiento en 2023 y el padrón posterior muestra vacante el órgano. No se encontró acto oficial de baja en esta consulta."
+    },
+    {
+      "persona": "SERÓ, Pablo Andrés",
+      "fecha": "2025-01-09",
+      "tipo": "fallecimiento",
+      "organo": "Juzgado Federal de Primera Instancia Nº 1 de Concepción del Uruguay",
+      "fuente": "https://pjn-documento-api.pjn.gov.ar/api/documento/adjunto/206993",
+      "corroboracion": "https://www.eldestapeweb.com/sociedad/muerte/murio-el-juez-federal-de-concepcion-del-uruguay-tras-caer-de-un-edificio-intervenia-en-un-caso-que-involucra-a-los-monos--202519123619",
+      "nota": "El Consejo documenta el fallecimiento en enero de 2025; la fecha diaria se coteja con la noticia contemporánea, porque el OCR de la resolución omite el número del día."
+    },
+    {
+      "persona": "PODERTI, Martín Luciano",
+      "fecha": "2025-12-18",
+      "tipo": "remocion",
+      "organo": "Tribunal Oral en lo Criminal Federal de Mar del Plata",
+      "fuente": "https://consejomagistratura.gov.ar/index.php/2025/12/18/el-jurado-de-enjuiciamiento-destituyo-a-martin-luciano-poderti/"
+    },
+    {
+      "persona": "GUZZARDI, Ana Silvia",
+      "fecha": "2026-03-18",
+      "tipo": "fallecimiento",
+      "organo": "Tribunal Oral en lo Criminal y Correccional N° 17",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/341641/20260506",
+      "nota": "Acordada CSJN 8/2026, considerando III. El padrón del 5-jun todavía la registra como titular: debe corregirse también el ancla."
+    },
+    {
+      "persona": "LÓPEZ, Alfredo Eugenio",
+      "fecha": "2026-08-18",
+      "tipo": "remocion",
+      "organo": "Juzgado Federal de Primera Instancia Nº 4 de Mar del Plata",
+      "fuente": "https://consejomagistratura.gov.ar/index.php/2026/08/18/el-jurado-de-enjuiciamiento-destituyo-a-alfredo-lopez/"
+    }
+  ]
+}

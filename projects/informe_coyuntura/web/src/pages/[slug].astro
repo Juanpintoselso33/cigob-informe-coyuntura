@@ -56,7 +56,8 @@ const filasIndice = filas.filter(({ ind }) => ind.en_indice !== false);
 // que decirles "logrado" sería tan falso como decirles "contexto".
 const filasCumplidas = filas.filter(({ ind }) => ind.en_indice === false && ind.cumplido);
 const filasSuspendidas = filas.filter(({ ind }) => ind.en_indice === false && ind.suspendido);
-const filasContexto = filas.filter(({ ind }) => ind.en_indice === false && !ind.cumplido && !ind.suspendido);
+const filasSinUniverso = filas.filter(({ ind }) => ind.en_indice === false && ind.estado === "sin_universo");
+const filasContexto = filas.filter(({ ind }) => ind.en_indice === false && !ind.cumplido && !ind.suspendido && ind.estado !== "sin_universo");
 const fuentes = fuentesDeCinturon(c);
 const indice = indiceDe(c);   // ITCM / ITCG / ITCIS / ITCP, o null (espíritu)
 // Los indicadores del índice se muestran AGRUPADOS por dimensión, en el mismo
@@ -376,6 +377,19 @@ const robChartData = rob?.hist && indice ? {
         </div>
       )}
     </section>
+
+    {filasSinUniverso.length > 0 && (
+      <section class="cg-section">
+        <div class="cg-section-head">
+          <p class="cg-eyebrow">Sin universo</p>
+          <h2 class="cg-h2">Sin tasa para esta ventana</h2>
+          <p class="cg-h2-sub">No hay eventos en el denominador para calcular estos componentes. Permanecen visibles, sin puntaje; su peso se redistribuye entre los componentes observados de la dimensión.</p>
+        </div>
+        <div class="cg-tile-grid">
+          {filasSinUniverso.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} compacto />)}
+        </div>
+      </section>
+    )}
 
     {filasContexto.length > 0 && (
       <section class="cg-section">
@@ -826,23 +840,21 @@ const robChartData = rob?.hist && indice ? {
         <p class="cg-eyebrow">Nota metodológica</p>
         <p>
           El cinturón se puntúa con el <strong>ITCIS-B100</strong>, un índice de{" "}
-          <strong>seguimiento de gestión</strong>: dieciocho componentes se rebasean a 100 en el{" "}
-          <strong>promedio del 4º trimestre de 2023</strong> (no diciembre puntual, para
-          amortiguar la distorsión de la devaluación) y el índice acumula la mejora o el
-          deterioro desde el arranque del mandato. La excepción es la canasta de servicios
+          <strong>impacto social</strong>: sus componentes se comparan con referencias
+          declaradas, mayormente el <strong>promedio del 4º trimestre de 2023</strong>.
+          La canasta de servicios
           públicos: se mide sobre el salario y usa anclas internacionales fijas de
           asequibilidad —10% del ingreso para agua+energía y 5% para transporte,
           tomando la peor de las dos señales—,
           para no tomar como normal el precio subsidiado de 2023. Alimentos y alquiler se
-          miden contra el índice general de precios de su misma cobertura. La actividad
-          industrial y la construcción se miden por su{" "}
-          <strong>nivel desestacionalizado</strong> (no la variación de un mes), y el
-          endeudamiento se corrige por la <strong>tasa de mora</strong> de la cartera de
-          consumo — más deuda con mora estable es acceso al crédito; con mora disparada, es
-          sobreendeudamiento. Excepción declarada: la inseguridad se mide con la encuesta de
-          victimización (LICIP-UTDT) con base en enero de 2024 — la encuesta estuvo suspendida
-          entre 2020 y 2023 y no existe medición del 4º trimestre de 2023; el registro de
-          denuncias (SNIC) queda como contraste. El{" "}
+          miden contra el índice general de precios de su misma cobertura. La vulnerabilidad
+          financiera combina <strong>mora de personales y tarjetas</strong> (70%) y
+          <strong> carga del servicio de deuda</strong> (30%); no premia el crecimiento
+          del endeudamiento. La victimización (LICIP-UTDT) conserva enero de 2024 como
+          base explícita. La auditoría de septiembre recuperó informes de 2023 y rectificó
+          la supuesta suspensión de la encuesta (ADR-0273). El registro SNIC es un
+          contraste de distinto universo y frecuencia. El agregado no representa un
+          porcentaje de bienestar ni un pronóstico electoral. El{" "}
           <strong>score {num(c.score)}/10</strong> deriva del <strong>ITCIS {num(c.itvc?.valor)}</strong>:
           tensión = 5 − (ITCIS − 100) × 0,2.
         </p>
@@ -880,35 +892,18 @@ const robChartData = rob?.hist && indice ? {
       <section class="cg-section cg-nota-met">
         <p class="cg-eyebrow">Nota metodológica</p>
         <p>
-          La <strong>recaudación tributaria</strong> se puntúa por su variación{" "}
-          <strong>interanual real</strong> (deflactada por el IPC del mismo período), para
-          aislar la recuperación genuina del efecto inflacionario. Las <strong>reservas</strong>{" "}
-          se miden <strong>netas de libre disponibilidad</strong> (el número del mercado): el
-          neto estricto de la planilla SDDS del BCRA más los depósitos del Tesoro y el Bopreal a
-          12 meses, que no son pasivos del BCRA para defender el tipo de cambio. La dimensión de
-          financiamiento usa el <strong>Índice de Capacidad Prestable</strong> (precio, volumen
-          y asignación del crédito), no la tasa nominal. La estabilidad monetaria incorpora el{" "}
-          <strong>presión de dolarización de carteras</strong>: bajo restricciones se observa en
-          la brecha CCL/mayorista y, desde la apertura, en las compras netas de dólares de
-          personas humanas respecto del M2 privado. La{" "}
-          <strong>brecha de crecimiento real M3–M2</strong> (diferencia interanual real entre el
-          agregado amplio de pesos privados y el transaccional; los dos son agregados, así que
-          no es oferta menos demanda) acompañaba esta dimensión hasta agosto de 2026 y hoy se
-          calcula fuera del puntaje. Una quinta dimensión de{" "}
-          <strong>competitividad externa</strong> puntúa el{" "}
-          <strong>tipo de cambio real multilateral</strong>: la apreciación se lee como tensión.
-          La sexta dimensión, <strong>inversión</strong>, puntúa hoy con un solo componente, el{" "}
-          <strong>IAI</strong> (inversión física: construcción y bienes de capital); sus umbrales
-          se calibraron a la volatilidad real de las series, no al ±2% teórico. El{" "}
-          <strong>ICIP</strong> (pagos al exterior por servicios de informática —consumo
-          intermedio, no formación de capital— y productividad laboral) la acompañaba hasta
-          agosto de 2026 y hoy se calcula fuera del puntaje.
+          El ITCM combina seis dimensiones. Las fichas de cada indicador detallan
+          sus fuentes, transformaciones, anclas y límites. La estimación de
+          reservas usa la fórmula CIGOB basada en la planilla SDDS y el balance
+          del BCRA; no equivale a una medición oficial de libre disponibilidad.
+          La composición vigente y el aporte de cada componente se muestran
+          en el detalle del índice.
           Cada indicador se puntúa por <strong>interpolación entre las anclas</strong> de su
           tabla de umbrales (sin escalones de banda: dos valores casi iguales reciben
           puntajes casi iguales). El <strong>score {num(c.score)}/10</strong> y
           el <strong>ITCM {num(c.itcm?.valor)}/100</strong> son la misma medición en dos escalas:
           tensión = (100 − ITCM) / 10; la escala 0–10 permite comparar macro con los otros
-          cuatro cinturones y componer el score global.
+          tres cinturones y componer el score global.
         </p>
       </section>
     )}

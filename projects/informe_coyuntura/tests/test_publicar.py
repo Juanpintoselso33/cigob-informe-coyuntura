@@ -411,7 +411,7 @@ def test_politica_itcp_reconcilia():
     itcp_val = c["itcp"]["valor"]
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
-    contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
+    contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False and i.get("estado") != "sin_universo"}
     # ADR-0048 (revisión editorial 2026-07-10) + ADR-0052 (2026-07-11) +
     # ADR-0069 (2026-07-16): 11 indicadores puntúan (la cohesión es UNA card,
     # el compuesto bicameral; conflictividad_nacional reemplaza a
@@ -437,7 +437,14 @@ def test_politica_itcp_reconcilia():
     # que deja de colgar de un solo dato.
     # 19 desde ADR-0232: entra la intensidad laboral oficial en conflicto social.
     # 19 → 17: salieron `apoyo_empresario` (ADR-0246) y `judicializacion` (ADR-0255)
-    assert len(en_indice) == 17, f"esperaba 17 indicadores en el índice, hay {len(en_indice)}"
+    assert len(c["indicadores"]) == 17
+    bloqueo = c["indicadores"]["bloqueo_sostenido"]
+    sin_universo = bloqueo.get("estado") == "sin_universo"
+    assert len(en_indice) == 17 - int(sin_universo)
+    if sin_universo:
+        assert bloqueo["valor"] is None
+        assert bloqueo.get("puntaje_itcp") is None
+        assert "bloqueo_sostenido" not in en_indice
     for _nuevo in ("produccion_legislativa",
                    "velocidad_resolucion", "paralisis_denuncias"):
         assert _nuevo in en_indice, f"{_nuevo} tendría que puntuar (ADR-0168)"
@@ -445,7 +452,8 @@ def test_politica_itcp_reconcilia():
     # identifica causas contra el Ejecutivo. ADR-0246: sale `apoyo_empresario`.
     assert "judicializacion" not in en_indice
     assert "apoyo_empresario" not in en_indice
-    assert "bloqueo_sostenido" in en_indice
+    if not sin_universo:
+        assert "bloqueo_sostenido" in en_indice
     assert "brecha_obra_publica" in en_indice
     # ADR-0089: derrotas sale del índice, entra desafíos en su lugar
     assert "desafios_legislativos" in en_indice
@@ -544,9 +552,15 @@ def test_validacion_itcm_declara_cobertura_vigente():
     # viejo con cada indicador nuevo (pasó al entrar costo_financiamiento_tesoro,
     # cuando el texto seguía diciendo "once de sus trece").
     total = sum(len(d["indicadores"]) for d in itcm_bloque["dimensiones"].values())
-    usados = total - 2                      # IAI e ICIP no entran a la reconstrucción
+    validacion = json.loads((DATA.parents[2] / "output" / "validacion_externa.json").read_text(encoding="utf-8"))
+    activos = {k for d in itcm_bloque["dimensiones"].values() for k in d["indicadores"]}
+    observados = set(validacion["componentes_historia_itcm"])
+    assert "iai" in observados
+    usados = len(activos & observados)
     assert f"{usados} de sus {total} componentes" in sub, sub
     assert "sin el capítulo inversión" not in sub
+    assert "ICIP" not in sub
+    assert "la cobertura varía entre meses" in sub
 
 
 def test_gestion_itcg_reconcilia():
@@ -935,3 +949,28 @@ def test_familias_no_ordenan_empates():
                 assert "lo más flojo" in texto, (
                     f"{ckey}: hay una diferencia real de {hueco} puntos y la card "
                     "no la nombra")
+
+
+@pytest.mark.parametrize("total,var_total,posicion", [
+    (110.0, 4.0, "por debajo de"),  # Puede crecer debajo de la referencia.
+    (114.0, -2.0, "por encima de"),  # Puede caer encima de la referencia.
+    (112.8, 0.0, "igual a"),
+])
+def test_carne_separa_nivel_variacion_y_fuente_del_color(total, var_total, posicion):
+    texto = publicar._por_que_carne(46.8, total, {"vacuna": -8.4, "total": var_total})
+    assert posicion in texto
+    assert f"{publicar.coma(var_total)}% interanual" in texto
+    assert "no identifican sustitución" in texto
+    assert "evolución de faena por habitante frente a 4T-2023" in texto
+    assert "Combinación inesperada" not in texto
+    assert "Sustitución, no menos proteína" not in texto
+
+
+@pytest.mark.parametrize("vacuna,total,variaciones", [
+    (46.8, 0, {"vacuna": 1, "total": 2}),
+    (120, 110, {"vacuna": 1, "total": 2}),
+    (46.8, 110, {"vacuna": 1}),
+    (46.8, float("nan"), {"vacuna": 1, "total": 2}),
+])
+def test_carne_no_inventa_lectura_sin_composicion_valida(vacuna, total, variaciones):
+    assert publicar._por_que_carne(vacuna, total, variaciones) is None

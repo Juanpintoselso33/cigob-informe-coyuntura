@@ -173,9 +173,15 @@ def _sellar(resultado: dict) -> dict:
 
 
 def _indec_serie(series_id: str, limit: int = 2) -> list:
+    import indec_actividad
+    if series_id in indec_actividad.SERIES:
+        return indec_actividad.filas(series_id, limit)
     params = {"ids": series_id, "format": "json", "limit": limit, "sort": "desc"}
     r = requests.get(INDEC_SERIES_BASE, params=params, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
+    if series_id == INDEC_BK_IMPO_ID:
+        import bienes_capital
+        return bienes_capital.completar(r.json()["data"], bienes_capital.original()["serie"], limit)
     return r.json()["data"]
 
 
@@ -355,19 +361,10 @@ def fetch_ipc() -> dict | None:
         return None
 
 
-# Reservas netas "a secas" — el número que mira el mercado (Machado/Ieral),
-# calculado 100% de datos oficiales, sin una sola constante:
-#   netas = SDDS estricto + depósitos del Tesoro + Bopreal a 12m
-# donde:
-#   • SDDS estricto = Activos de reserva (I.A) − drenajes a corto plazo en ME
-#     (Sección II) de la Planilla SDDS/NEDD del BCRA (oficial, mensual, USD).
-#   • depósitos del Tesoro = "Dep. del gobierno en ME" del Balance Consolidado del BCRA.
-#   • Bopreal a 12m = bucket de vencimiento "3m-1año" de la Sección II.1 del SDDS.
-#   El SDDS descuenta Tesoro y Bopreal como pasivos, pero el mercado los suma de
-#   vuelta porque no son pasivos del BCRA para defender el TC ("a secas"). Verificado
-#   empíricamente: la fórmula reproduce la banda del mercado en mar/abr/may-2026 (el
-#   bucket 3m-1año saltó de ~130 a ~2.670 en abril, justo cuando el Bopreal Serie 1B
-#   entró a la ventana de 12 meses). Todo automático, ningún componente a mano.
+# Estimación de reservas según el diseño CIGOB (ADR-0286):
+# I.A + II.1 + II.2 + II.3 + depósitos del Tesoro + abs(tramo II.1 >3m–1a).
+# El tramo no identifica instrumento: `bopreal_12m` es una clave heredada,
+# no una afirmación de que todos sus flujos sean BOPREAL o de libre disponibilidad.
 SDDS_URL_BASE = "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/{}.pdf"
 BCRA_BALANCE_URL = "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/balbcrhis.xls"
 BAL_COL_RESERVAS   = 7   # "Oro y divisas (neto)" — para ubicar la última fila con dato
@@ -426,7 +423,8 @@ def _parse_sdds_content(content: bytes) -> dict | None:
     si no matchea. Reutilizable (lo usa también descargar_series.py para la serie
     histórica). netas estricto = I.A Activos de reserva + Sección II (drenajes,
     ya negativos: II.1 préstamos/dep + II.2 forwards/swaps + II.3 repos). El bucket
-    "3m-1año" de II.1 es el Bopreal a 12m."""
+    "3m-1año" de II.1 se conserva en la clave histórica `bopreal_12m`;
+    el desglose por vencimiento no identifica instrumento (ADR-0286)."""
     import io
     import pdfplumber  # ya en requirements; import perezoso → si falta, cae al fallback
     with pdfplumber.open(io.BytesIO(content)) as pdf:
@@ -437,11 +435,11 @@ def _parse_sdds_content(content: bytes) -> dict | None:
                     r"(?:\s+(-?[\d.]+,\d{2})\s+(-?[\d.]+,\d{2})\s+(-?[\d.]+,\d{2}))?", txt)
     ii2 = re.search(r"swaps de monedas\)\s*\d*\s*\n\s*(-?[\d.]+,\d{2})", txt)
     ii3 = re.search(r"3\.\s*Otros \(especificar\)\s+(-?[\d.]+,\d{2})", txt)
-    if not all([ia, ii1, ii2, ii3]):
+    if not all([ia, ii1, ii2, ii3]) or not ii1.group(4):
         return None
     brutas = _num_es(ia.group(1))
     p_dep, swaps, repos = _num_es(ii1.group(1)), _num_es(ii2.group(1)), _num_es(ii3.group(1))
-    bopreal = _num_es(ii1.group(4)) if ii1.group(4) else 0.0
+    bopreal = _num_es(ii1.group(4))
     mf = re.search(r"final del per[ií]odo\)\s*(\d{2}/\d{2}/\d{2})", txt)
     return {"netas": brutas + p_dep + swaps + repos, "brutas": brutas,
             "prestamos_dep": p_dep, "swaps": swaps, "repos": repos,
@@ -470,14 +468,11 @@ def _reservas_netas_sdds() -> dict:
 
 
 def fetch_reservas_netas() -> dict | None:
-    """Reservas NETAS de libre disponibilidad (el número del mercado), calculadas
-    100% de datos oficiales, sin constantes:
-        netas = SDDS estricto (planilla SDDS del BCRA) + depósitos del Tesoro (balance).
-    Ambos componentes usan el mismo mes de cierre. Validación: brutas SDDS vs API
-    ±15%; si el PDF SDDS no parsea → FALLBACK (brutas API − drenajes Sección II
-    del último SDDS del config) + Tesoro. Si el balance no aporta el mismo mes de
-    cierre, el indicador falla y el colector conserva el último cache como desactualizado.
-    Nunca se publica una reserva neta parcial como dato fresco."""
+    """Estimación CIGOB con los tres sumandos completos del mismo mes.
+    Si falta SDDS o Tesoro, devuelve None para que el colector conserve su
+    último resultado completo marcado como desactualizado. No sustituye la
+    fórmula por reservas brutas recientes y pasivos incompletos de un config.
+    """
     try:
         s = _reservas_netas_sdds()
         fecha_sdds = datetime.strptime(s["fecha"], "%d/%m/%y")
@@ -489,8 +484,8 @@ def fetch_reservas_netas() -> dict | None:
         brutas_api = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
         if abs(s["brutas"] - brutas_api) / brutas_api > 0.15:
             raise ValueError(f"brutas SDDS {s['brutas']:.0f} vs API {brutas_api:.0f} divergen >15%")
-        # "a secas" = estricto, sumando de vuelta lo que el mercado no computa como
-        # pasivo del BCRA: depósitos del Tesoro + Bopreal a 12m (bucket 3m-1año de II.1).
+        # Exclusiones del diseño CIGOB; la clave histórica no identifica
+        # BOPREAL. La ficha declara literalmente el tramo de vencimientos.
         bopreal = abs(s.get("bopreal_12m", 0.0))
         netas = s["netas"] + tesoro + bopreal
         if not -40000 < netas < 40000:
@@ -511,35 +506,7 @@ def fetch_reservas_netas() -> dict | None:
             "desactualizado": False,
         }
     except Exception as e:
-        _warn("reservas_bcra (SDDS, cae a config)", e)
-
-    try:  # FALLBACK: brutas API − drenajes Sección II del último SDDS (config) + Tesoro
-        ultimo = _bcra_ultimo(BCRA_RESERVAS_ID)
-        brutas = float(ultimo["valor"])
-        fecha = ultimo["fecha"]
-        with open(RESERVAS_PASIVOS_PATH, encoding="utf-8") as f:
-            cfg = json.load(f)
-        if str(cfg.get("actualizado", ""))[:7] != fecha[:7]:
-            raise ValueError(
-                "fallback de reservas: drenajes y reservas brutas "
-                "corresponden a meses distintos"
-            )
-        tesoro = _tesoro_deposits_usd(fecha[:7])
-        estricto = brutas - float(cfg["drenajes_seccion_ii"])
-        return {
-            "valor": round(estricto + tesoro, 0),
-            "unidad": "Millones de USD",
-            "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
-            "fecha_dato": fecha,
-            "netas_sdds_estricto": round(estricto, 0),
-            "depositos_tesoro": round(tesoro, 0),
-            "reservas_brutas": round(brutas, 0),
-            "drenajes_actualizado": cfg.get("actualizado"),
-            "metodo": "config_fallback",
-            "desactualizado": False,
-        }
-    except Exception as e:
-        _warn("reservas_bcra", e)
+        _warn("reservas_bcra (sin estimación completa)", e)
         return None
 
 
@@ -789,8 +756,8 @@ def _ipi_ia_por_mes() -> dict:
     Se suaviza a propósito: la variación i.a. del IPI original salta ±9 pp de un
     mes al siguiente (feriados móviles, días hábiles, paradas de planta), un
     ruido que no dice nada sobre el estado de la industria. El promedio de tres
-    meses baja el desvío de los cambios mensuales de 6,2 a 2,5 pp sin agregar
-    rezago apreciable — la serie sigue siendo interanual, sólo deja de vibrar.
+    meses baja el desvío de los cambios mensuales de 6,2 a 2,5 pp en la muestra
+    de diseño, con un mes de rezago efectivo respecto de la última observación.
 
     La ventana se arma por CALENDARIO, no por posición en la lista: si el INDEC
     saltea un mes, ese promedio no se emite en vez de mezclar tres
@@ -822,15 +789,15 @@ def fetch_ipi_manufacturero() -> dict | None:
     """Segunda señal de actividad junto al EMAE (ADR-0076): producción
     industrial manufacturera, variación i.a. suavizada a tres meses.
 
-    Publica un mes ANTES que el EMAE, así que además de dejar de colgar la
-    dimensión de un único dato, acorta el rezago con el que se lee actividad."""
+    Se publica antes que el EMAE del mismo período, dentro del segundo mes
+    posterior. El promedio móvil conserva un mes adicional de rezago efectivo."""
     try:
         serie = _ipi_ia_por_mes()
         ym = max(serie)
         return {
             "valor": serie[ym],
             "unidad": "% i.a. (promedio 3 meses)",
-            "fuente": "INDEC — IPI manufacturero, nivel general (vía datos.gob.ar)",
+            "fuente": "INDEC — IPI manufacturero, nivel general (planilla original vigente)",
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
         }
@@ -839,20 +806,21 @@ def fetch_ipi_manufacturero() -> dict | None:
         return None
 
 
+def _ica_mensual(limit=60):
+    import ica
+    return ica.completar(_indec_serie(INDEC_EXPO_ICA_ID, limit=limit),
+                        _indec_serie(INDEC_IMPO_ICA_ID, limit=limit))
+
+
 def fetch_saldo_comercial_12m() -> dict | None:
-    """Saldo 12m = expo − impo de las series ICA (74.3, frescas a ~2 meses),
+    """Saldo 12m = expo − impo de la API histórica y el cuadro ICA vigente,
     con la composición que necesita la regla automática del ITCM (¿el superávit
-    viene de exportar más o de importar menos?). La serie de saldo directa
-    (164.3) tiene ~14 meses de rezago y queda solo como fallback."""
+    viene de exportar más o de importar menos?). Exige 24 meses consecutivos;
+    un fallo conserva la tarjeta anterior por el mecanismo general de caché."""
     try:
-        expo = _indec_serie(INDEC_EXPO_ICA_ID, limit=26)
-        impo = _indec_serie(INDEC_IMPO_ICA_ID, limit=26)
-        # Alinear por fecha: usar solo los meses presentes en ambas series.
-        impo_por_fecha = {f: v for f, v in impo if v is not None}
-        comunes = [(f, v, impo_por_fecha[f]) for f, v in expo
-                   if v is not None and f in impo_por_fecha]
-        if len(comunes) < 24:
-            raise ValueError(f"ICA: solo {len(comunes)} meses comunes expo/impo (se necesitan 24)")
+        import ica
+        datos = _ica_mensual()
+        comunes = ica.ventana(datos['puntos'], 24)
         ex  = [e for _, e, _ in comunes]
         im  = [i for _, _, i in comunes]
         expo_12, expo_prev = sum(ex[:12]), sum(ex[12:24])
@@ -860,9 +828,12 @@ def fetch_saldo_comercial_12m() -> dict | None:
         return {
             "valor": round(expo_12 - impo_12, 0),
             "unidad": "Millones de USD (acum. 12 meses)",
-            "fuente": "INDEC — ICA, intercambio comercial (vía datos.gob.ar)",
+            "fuente": "INDEC — ICA, cuadro original vigente + historia datos.gob.ar",
+            "fuente_url": datos['url'],
+            "advertencia_fuente": datos['advertencia'],
+            "obtenido_en": datos.get('obtenido_en'),
             "fecha_dato": comunes[0][0],
-            "desactualizado": False,
+            "desactualizado": not datos['consulta_oficial_exitosa'],
             "expo_12m": round(expo_12, 0),
             "impo_12m": round(impo_12, 0),
             "expo_var_ia": round((expo_12 / expo_prev - 1) * 100, 1),
@@ -872,19 +843,6 @@ def fetch_saldo_comercial_12m() -> dict | None:
         }
     except Exception as e:
         _warn("saldo_comercial_12m (ICA)", e)
-    try:
-        data   = _indec_serie(INDEC_SALDO_COM_ID, limit=13)
-        meses  = [row[1] for row in data[:12] if row[1] is not None]
-        total  = sum(meses)
-        return {
-            "valor": round(total, 0),
-            "unidad": "Millones de USD (acum. 12 meses)",
-            "fuente": "INDEC — ICA, intercambio comercial (vía datos.gob.ar)",
-            "fecha_dato": data[0][0],
-            "desactualizado": False,
-        }
-    except Exception as e:
-        _warn("saldo_comercial_12m", e)
         return None
 
 
@@ -922,6 +880,7 @@ def fetch_recaudacion() -> dict | None:
     `comarb.base_imponible_real_sa` — una sola implementación, así que card y
     serie no pueden divergir (G3 por construcción, como `apoyo_empresario`)."""
     try:
+        comarb.actualizar()
         nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_RECAUDACION_ID,
                                                     limit=comarb.LIMITE_MESES)
                if r[1] is not None}
@@ -1039,7 +998,7 @@ def fetch_resultado_primario() -> dict | None:
 # validador externo del ITCM y su fuente no es oficial); esta serie mide la
 # curva en pesos, que es donde el Tesoro efectivamente se financia hoy.
 
-_COLOC_MEMO: dict = {}            # memo por corrida: las planillas pesan ~0,4 MB
+_COLOC_MEMO: dict = {}            # memo por ventana de años: no recortar el backfill
 
 _RE_TEM_CAP = re.compile(r"capitalizable\s*([\d,\.]+)\s*%")
 _RE_FECHA_ARCH = re.compile(r"(\d{1,2})[-_](\d{1,2})[-_](\d{2,4})")
@@ -1201,8 +1160,8 @@ def _tirea_mensual(anios: int = 2) -> dict:
     pueda decir de qué salió el número. Una tasa promedio sin las colocaciones
     que la forman no es auditable: fue justamente lo que dejó pasar 32,17%
     durante meses, y después 31,37% en una reapertura."""
-    if _COLOC_MEMO:
-        return _COLOC_MEMO
+    if anios in _COLOC_MEMO:
+        return _COLOC_MEMO[anios]
     import io, openpyxl
     from collections import defaultdict
     urls = _colocaciones_urls()
@@ -1258,9 +1217,9 @@ def _tirea_mensual(anios: int = 2) -> dict:
                 a[2] += 1
                 a[3].append(_entrada_inventario(
                     str(fila[0]).strip(), get("cup"), emi, col, precio, ve, tirea))
-    _COLOC_MEMO.update({ym: (s / w, w, n, inv)
-                        for ym, (s, w, n, inv) in acc.items() if w > 0})
-    return _COLOC_MEMO
+    _COLOC_MEMO[anios] = {ym: (s / w, w, n, inv)
+                        for ym, (s, w, n, inv) in acc.items() if w > 0}
+    return _COLOC_MEMO[anios]
 
 
 def _rem_12m_por_mes(dias: int = 1200) -> dict:
@@ -1286,7 +1245,8 @@ def fetch_costo_financiamiento_tesoro() -> dict | None:
     es bola de nieve (la deuda crece más rápido que la economía, ago-2025). El
     óptimo está en positivo moderado."""
     try:
-        tirea = _tirea_mensual()
+        import colocaciones_complementarias
+        tirea = colocaciones_complementarias.completar(_tirea_mensual())
         rem = _rem_12m_por_mes()
         comunes = sorted(ym for ym in tirea if ym in rem)
         if not comunes:
@@ -1445,7 +1405,7 @@ def _rezago_mensual(mes: str, hoy: date | None = None) -> int:
 
 
 def fetch_desequilibrio_monetario() -> dict | None:
-    """Confianza en el peso: dolarización DENTRO del sistema x fuga FUERA de él."""
+    """Composición de liquidez privada × compra neta de divisas; no identifica fuga."""
     try:
         serie = _desequilibrio_monetario_serie_mensual()
         if not serie:
@@ -1530,19 +1490,32 @@ def actualizar_patentamientos_comerciales() -> dict:
     return store
 
 
-def _patentamientos_ia() -> dict | None:
+def _patentamientos_ia(periodo: str | None = None) -> dict | None:
     """Variación i.a. de los patentamientos comerciales SI ya hay 13 meses
     acumulados con el mismo mes del año anterior; si no, None (el IAI lo omite)."""
     store = _cargar_patentamientos()
-    meses = sorted(store)
+    meses = sorted(m for m in store if periodo is None or m <= periodo)
     if len(meses) < 13:
         return None
-    ym = meses[-1]
+    ym = periodo or meses[-1]
     prev = _ym_shift(ym, -12)
-    if prev not in store or not store[prev]:
+    if ym not in store or prev not in store or not store[prev]:
         return None
     return {"var_ia": (store[ym] / store[prev] - 1) * 100, "fecha": ym,
             "meses_acumulados": len(meses)}
+
+
+def _iai_componer(ym: str, isac: float, bk_ia: float) -> dict:
+    """Una fórmula por mes para portada e historia, sin mezclar fechas."""
+    pat = _patentamientos_ia(ym)
+    componentes = {"isac": isac, "bk_importados": bk_ia}
+    pesos = IAI_PESOS_SIN_PAT
+    if pat is not None:
+        pesos = IAI_PESOS_CON_PAT
+        componentes["patentamientos_comerciales"] = pat["var_ia"]
+    return {"valor": sum(pesos[k] * v for k, v in componentes.items()),
+            "componentes": {k: round(v, 1) for k, v in componentes.items()},
+            "patentamientos": pat}
 
 
 def fetch_iai() -> dict | None:
@@ -1564,16 +1537,13 @@ def fetch_iai() -> dict | None:
         ym = comunes[-1]
         isac = (isac_m[ym] / isac_m[_ym_shift(ym, -12)] - 1) * 100
         bk_ia = (bk_m[ym] / bk_m[_ym_shift(ym, -12)] - 1) * 100
-        pat  = _patentamientos_ia()
-        componentes = {"isac": round(isac, 1), "bk_importados": round(bk_ia, 1)}
+        calculo = _iai_componer(ym, isac, bk_ia)
+        pat = calculo["patentamientos"]
+        componentes = calculo["componentes"]
+        valor = calculo["valor"]
         if pat is not None:
-            w = IAI_PESOS_CON_PAT
-            componentes["patentamientos_comerciales"] = round(pat["var_ia"], 1)
-            valor = w["isac"]*isac + w["bk_importados"]*bk_ia + w["patentamientos_comerciales"]*pat["var_ia"]
             nota = f"ISAC 55% · BK importados 30% · patentamientos comerciales 15% ({pat['meses_acumulados']} meses)"
         else:
-            w = IAI_PESOS_SIN_PAT
-            valor = w["isac"]*isac + w["bk_importados"]*bk_ia
             nota = "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)"
         # componente con dato más nuevo que el mes común → contexto provisorio
         fresco = ""
@@ -1584,14 +1554,16 @@ def fetch_iai() -> dict | None:
         return {
             "valor": round(valor, 2),
             "unidad": "% i.a. ponderado",
-            "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)",
+            "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)"
+                      + (" + DNRPA (patentamientos comerciales)" if pat else ""),
             "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "componentes": componentes,
             "pesos_nota": nota,
             "detalle_txt": (f"{round(valor, 1):+} % i.a. = ISAC {componentes['isac']:+}% · "
                             f"BK importados {componentes['bk_importados']:+}% "
-                            f"(mes común: {ym}){fresco}"),
+                            + (f"· patentamientos {componentes['patentamientos_comerciales']:+}% " if pat else "")
+                            + f"(mes común: {ym}){fresco}"),
         }
     except Exception as e:
         _warn("iai", e)
@@ -1654,7 +1626,7 @@ def fetch_icip() -> dict | None:
 
 
 def _iai_serie_mensual(meses: int = 24) -> list:
-    """Serie histórica del IAI (sin patentamientos: solo ISAC + BK, 65/35).
+    """Serie histórica del IAI con la misma composición por mes que la tarjeta.
     Devuelve [(YYYY-MM, valor)] ascendente."""
     isac = _indec_nivel_mensual(INDEC_ISAC_NIVEL_ID, limit=meses + 16)
     bk   = _indec_nivel_mensual(INDEC_BK_IMPO_ID, limit=meses + 16)
@@ -1665,7 +1637,7 @@ def _iai_serie_mensual(meses: int = 24) -> list:
         if p in comunes and isac[p] and bk[p]:
             si = (isac[ym] / isac[p] - 1) * 100
             bi = (bk[ym] / bk[p] - 1) * 100
-            out.append((ym, round(0.65 * si + 0.35 * bi, 2)))
+            out.append((ym, round(_iai_componer(ym, si, bi)["valor"], 2)))
     return out[-meses:]
 
 
@@ -1938,8 +1910,13 @@ def main() -> None:
     ]:
         resultado = fetcher()
         if resultado is not None and resultado.get("valor") is not None:
-            frescos[nombre] = _sellar(resultado)
-            frescos_count  += 1
+            if resultado.get("desactualizado"):
+                # Un cuadro validado en una corrida anterior conserva su sello;
+                # volver a leerlo del disco no es otra consulta exitosa.
+                frescos[nombre] = resultado
+            else:
+                frescos[nombre] = _sellar(resultado)
+                frescos_count += 1
         elif nombre in indicadores_anteriores:
             frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
 

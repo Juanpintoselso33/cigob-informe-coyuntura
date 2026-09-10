@@ -10,13 +10,11 @@ mienten:
     depositados) esta en pesos de uso transaccional. Es un STOCK: mide la
     dolarizacion que se ve porque queda dentro del sistema financiero.
   * Componente B -- cuantos dolares netos compra el sector privado no financiero
-    en el mercado de cambios. Es un FLUJO: capta la salida aunque no pase por
-    ningun deposito.
+    en el mercado de cambios. Es un FLUJO de compra, sin identificacion del
+    destino posterior de las divisas (ADR-0252).
 
-Por que los dos juntos: si la fuga hacia el colchon es fuerte, A puede mostrarse
-estable o hasta mejorando --esos dolares nunca entraron al denominador-- mientras
-la situacion de fondo es la peor posible. B es el que expone ese caso, y por eso
-el resultado sale de CRUZARLOS, no de promediarlos.
+Se cruzan composicion de liquidez y compra neta porque son dimensiones distintas.
+El cruce no identifica el destino posterior de las divisas (ADR-0252).
 
 ## Como se convierte en un solo numero
 
@@ -216,8 +214,8 @@ def posicion(valor: float, cortes: tuple) -> float:
 def tension_matriz(pos_a: float, pos_b: float) -> float:
     """Interpolacion bilineal entre las cuatro esquinas de la matriz A x B.
 
-    `pos_a` 0 = mucha dolarizacion visible, 1 = poca. `pos_b` 0 = poca fuga,
-    1 = fuga fuerte. Devuelve tension 0-100; el puntaje ITCM es 100 - tension.
+    `pos_a` 0 = baja proporcion transaccional, 1 = alta. `pos_b` 0 = poca
+    compra neta de divisas, 1 = compra alta. Tension 0-100; puntaje = 100 - tension.
     """
     a, b = float(pos_a), float(pos_b)
     return (
@@ -251,10 +249,10 @@ def _celda(pos_a: float, pos_b: float) -> str:
 
 
 def parsear_fuga_spnf(contenido: bytes) -> dict:
-    """{YYYY-MM: USD millones} de compra neta de divisas del SPNF. Positivo = salida.
+    """{YYYY-MM: USD millones} de compra neta de divisas del SPNF. Positivo = compra.
 
     Mismo signo que usaba la presion de dolarizacion: el anexo informa el monto
-    con signo contable y aca interesa la salida como numero positivo.
+    con signo contable y aca interesa la compra neta como numero positivo.
     """
     wb = openpyxl.load_workbook(io.BytesIO(contenido), read_only=True, data_only=True)
     try:

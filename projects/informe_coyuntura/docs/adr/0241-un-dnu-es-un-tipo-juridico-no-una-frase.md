@@ -7,11 +7,14 @@ cinturon: 'politica'
 indicadores: [ratio_dnu]
 archivos: ['scripts/politica.py', 'scripts/descargar_series.py', 'tests/test_politica_ratio_dnu.py', 'tests/fixtures/infoleg_dnu_ventana_365.json']
 relacionado: ['0058', '0059', '0263']
+corregido_por: ['0307']
 ambito: 'Cinturón política · ITCP · `ratio_dnu` · cómo se identifica un DNU y con qué convención se cuenta cada lado del cociente'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «sólo 37 registros están tipificados como DNU»'
 ---
 
 # ADR-0241 — Un DNU es un tipo jurídico, no una frase
+
+> Corrección del 8-sep-2026: [ADR-0307](0307-ratio-dnu-ventana-inclusiva.md) corrige el intervalo inclusivo de 366 a 365 fechas y documenta límites reales de la clasificación de InfoLeg. Las descargas originales y sus valores se conservan como evidencia histórica.
 
 ## Contexto y planteo del problema
 
