@@ -180,17 +180,38 @@ def test_el_test_mira_algo():
     assert len(con_peso) >= 10, f"sólo {len(con_peso)} fichas declaran peso interno"
 
 
+# Lo que las cinco fichas legislativas afirman en su incidencia: el peso nominal
+# de cada componente y que, cuando a uno le falta universo, el peso se
+# redistribuye entre los que puntúan. Se verifica ejecutando el motor sobre el
+# snapshot publicado, no leyendo la prosa: la app es la fuente de verdad.
+PESO_NOMINAL_PUBLICADO = {
+    "desafios_legislativos": 13, "ratio_dnu": 20, "eficacia_legislativa": 27,
+    "veto_quorum": 13, "bloqueo_sostenido": 12,
+}
+
+
 def test_pesos_nominales_legislativos_coinciden_con_diseno():
+    import copy
     sys.path.insert(0, str(ROOT / "scripts"))
-    import itcp
-    pesos = itcp.DIMENSIONES_ITCP["poder_legislativo"]["indicadores"]
-    verificadas = 0
-    for clave, texto in _incidencia_por_ficha().items():
-        if clave not in pesos:
-            continue
-        m = re.search(r"peso nominal de (\d+(?:,\d+)?)%", texto)
-        if m:
-            assert abs(_num(m[1]) - pesos[clave] * 100) < TOLERANCIA_PP
-            assert "peso efectivo" in texto
-            verificadas += 1
-    assert verificadas == 5
+    import politica
+    indicadores = copy.deepcopy(INFORME["cinturones"]["politica"]["indicadores"])
+    for clave in PESO_NOMINAL_PUBLICADO:
+        indicadores[clave] = {**indicadores[clave], "valor": 50.0, "estado": None}
+    dim = politica.calcular_itcp_cinturon(indicadores)["dimensiones"]["poder_legislativo"]
+    assert dim["peso"] == 0.21
+    for clave, nominal in PESO_NOMINAL_PUBLICADO.items():
+        componente = dim["indicadores"][clave]
+        assert abs(componente["peso"] * 100 - nominal) < TOLERANCIA_PP, clave
+        assert componente["peso_efectivo"] == round(0.21 * componente["peso"], 4), clave
+
+    # Sin universo en un componente, los demás absorben su peso.
+    indicadores["bloqueo_sostenido"] = {**indicadores["bloqueo_sostenido"],
+                                        "valor": None, "estado": "sin_universo"}
+    dim = politica.calcular_itcp_cinturon(indicadores)["dimensiones"]["poder_legislativo"]
+    assert "bloqueo_sostenido" not in dim["indicadores"]
+    restantes = dim["indicadores"]
+    suma_nominal = sum(c["peso"] for c in restantes.values())
+    assert suma_nominal < 1
+    for clave, c in restantes.items():
+        assert c["peso_efectivo"] == round(0.21 * c["peso"] / suma_nominal, 4), clave
+        assert c["peso_efectivo"] > round(0.21 * c["peso"], 4), clave

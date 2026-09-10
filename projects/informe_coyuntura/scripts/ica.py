@@ -46,6 +46,10 @@ def parsear(contenido):
         anos.append(int(m[1]))
     if anos[0] != anos[1] + 1:
         raise ValueError('ICA: años no consecutivos')
+    for offset, anio in enumerate(anos):
+        m = re.fullmatch(r'(20\d{2})\s*[e*]?', str(filas[encabezado + 1][ci + offset]).strip())
+        if not m or int(m[1]) != anio:
+            raise ValueError('ICA: los años de importaciones no coinciden con los de exportaciones')
     puntos = {}
     for f in filas[encabezado + 2:]:
         mes = next((MESES[str(c).strip().lower()] for c in f[:ce]
@@ -75,7 +79,7 @@ def completar(expo, impo):
     Un fallo del portal conserva el último cuadro validado; no hace retroceder
     silenciosamente julio a junio. El cache no acredita actualidad de la fuente.
     """
-    anterior = json.loads(STORE.read_text()) if STORE.exists() else {}
+    anterior = json.loads(STORE.read_text(encoding='utf-8')) if STORE.exists() else {}
     actual, aviso = anterior, None
     try:
         r = requests.get(CATALOGO, timeout=30)
@@ -90,13 +94,19 @@ def completar(expo, impo):
             raise ValueError('ICA: el catálogo retrocedió respecto al cuadro guardado')
         actual = {'url': urls[0], 'consultado': datetime.now().astimezone().isoformat(), 'mensual': puntos}
         STORE.parent.mkdir(parents=True, exist_ok=True)
-        STORE.write_text(json.dumps(actual, ensure_ascii=False, indent=2) + '\n')
-    except (requests.RequestException, ValueError, xlrd.XLRDError) as exc:
+        STORE.write_text(json.dumps(actual, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    except (requests.RequestException, ValueError, xlrd.XLRDError,
+            IndexError, KeyError, TypeError) as exc:
         aviso = str(exc)
     if aviso and not actual.get('mensual'):
         raise ValueError(f'ICA: sin cuadro validado para conservar: {aviso}')
     ei, ii = dict(expo), dict(impo)
     pares = {f: [e, ii[f]] for f, e in ei.items() if e is not None and ii.get(f) is not None}
+    if aviso:
+        # Sin consulta oficial exitosa la fecha publicada no puede pasar del
+        # último cuadro validado: la API histórica no acredita meses nuevos.
+        tope = max(actual['mensual'])
+        pares = {f: v for f, v in pares.items() if f <= tope}
     pares.update(actual.get('mensual', {}))
     return {'puntos': [[f, *v] for f, v in sorted(pares.items(), reverse=True)],
             'url': actual.get('url'), 'advertencia': aviso,

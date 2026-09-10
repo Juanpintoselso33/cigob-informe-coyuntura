@@ -217,3 +217,39 @@ beautifulsoup4>=4.12
 pdfplumber>=0.10.0
 pytrends>=4.9.2
 ```
+
+## Avisos de datos que requieren cotejo manual
+
+El pipeline envía al canal `SLACK_CANAL_ALERTAS` las incidencias `[COTEJO_MANUAL]` emitidas por los colectores, tanto si la corrida termina bien como si falla. Cada aviso identifica indicador, registro, problema y fuente; el mensaje incluye el enlace a la corrida. Repeticiones idénticas se agrupan dentro de esa corrida. Mientras no se corrija el dato, puede volver a avisar en la corrida siguiente.
+
+El primer detector revisa fechas de sanción ausentes, `NA` o inválidas en el catálogo de HCDN. Solicita cotejar expediente o ley y registrar la fecha real con respaldo; no asigna la fecha de consulta ni modifica valores automáticamente. Otros colectores pueden registrar incidencias con `cotejo_manual.registrar`; esta infraestructura no detecta por sí sola todas las posibles inconsistencias. Sin incidencias, no genera avisos adicionales. Las pruebas del transporte usan un emisor simulado.
+
+Incidencias que hoy avisan, y qué hace el colector mientras tanto:
+
+| Incidencia | Qué pasa con el dato | Cómo se corrige |
+|---|---|---|
+| Sanción sin fecha o con fecha inválida en HCDN | `produccion_legislativa` no se calcula (sigue con caché); `eficacia_legislativa` conserva la fila sin cota temporal | Cotejar el expediente o la ley y cargar la fecha con su fuente en `data/politica/sanciones_fechas_verificadas.json`. Sólo sustituye fechas ausentes o inválidas; una fecha válida del catálogo nunca se reescribe |
+| Acta de Diputados sin fecha legible | El acta no acredita cobertura; el walk queda incompleto y `bloqueo_sostenido` y `desafios_legislativos` no se refrescan | Cotejar la fecha en la página de votaciones y documentarla en `data/politica/actas_diputados_fechas_verificadas.json` |
+| Conciliación judicial por vencer (5 días antes del tope de G2b, hoy 14) | `cobertura_judicial` se publica desde caché hasta el tope; después G2b corta la publicación | Ver la renovación de abajo |
+| PDF del IVI ilegible tras 3 intentos | Sale de la cola; la serie sigue con los meses que sí se leyeron | Cotejar el informe a mano y cargarlo en `data/vida/ivi_serie.json`, o borrar su entrada de `fallidos` para reintentar |
+
+Los dos registros de fechas verificadas nacen vacíos a propósito: cada entrada
+lleva la URL del documento que la respalda, y sin entrada el dato no entra al
+cálculo. No hay relleno automático.
+
+### Renovar la conciliación judicial
+
+La serie de `cobertura_judicial` sólo avanza hasta `revisado_hasta`
+(`cobertura_judicial_movimientos.json`) y `revisado_el`
+(`cobertura_judicial_bajas.json`); correr el colector no extiende esas fechas
+(ADR-0298). Cuando faltan 5 días para el tope de G2b el colector avisa por
+Slack. Renovar es verificar fuentes, no cambiar una fecha:
+
+1. Bajar los CSV de designaciones y renuncias del Ministerio de Justicia y
+   revisar el Boletín Oficial y el Consejo de la Magistratura desde la última
+   fecha revisada.
+2. Incorporar los movimientos nuevos a `movimientos` (con norma y fuente) y las
+   bajas comprobadas a `eventos`.
+3. Recién entonces fechar `revisado_hasta` y `revisado_el` con el día de la
+   revisión. Si el padrón cambió, volver a conciliar los ajustes: el colector
+   rechaza un padrón nuevo sin conciliación.

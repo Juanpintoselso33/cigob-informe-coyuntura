@@ -2356,6 +2356,9 @@ def fetch_carga_servicio_deuda_serie() -> list:
 
 
 IVI_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "ivi_serie.json"
+# Un PDF que no se deja interpretar se reintenta hasta acá y después sale de la
+# cola con aviso: sin tope volvía a bajarse cada noche al frente de la cola.
+IVI_MAX_INTENTOS = 3
 IVI_ARCHIVO_URL = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=23763"
 IVI_ULTIMO_URL = "https://www.utdt.edu/ver_contenido.php?id_contenido=968&id_item_menu=2156"
 IVI_MESES = {"ENERO": 1, "FEBRERO": 2, "MARZO": 3, "ABRIL": 4, "MAYO": 5, "JUNIO": 6,
@@ -2396,10 +2399,24 @@ def fetch_ivi_serie() -> list:
             urls |= {urljoin(pagina, href) for href in re.findall(
                 r'''(?:href\s*=\s*["'])([^"']*download\.php\?fname=[^"'&]+\.pdf)["']''',
                 r.text, flags=re.I)}
+        fallidos = store.setdefault("fallidos", {})
+        pendientes = urls - set(store["procesados"])
+        agotados = sorted(u for u in pendientes
+                          if fallidos.get(u, {}).get("intentos", 0) >= IVI_MAX_INTENTOS)
+        from cotejo_manual import registrar
+        for url in agotados:
+            registrar("inseguridad", url,
+                      f"El PDF del IVI no se pudo interpretar en {IVI_MAX_INTENTOS} intentos y salió de "
+                      "la cola. Cotejar el informe a mano: cargar el mes en data/vida/ivi_serie.json "
+                      "(mensual) y la URL en procesados, o borrar su entrada de fallidos para reintentar.",
+                      url)
         # Los fname contienen la fecha de carga: priorizar el informe reciente
         # antes de recorrer el archivo histórico bajo el presupuesto de tiempo.
-        nuevos = sorted(urls - set(store["procesados"]), reverse=True)
+        # Los que ya fallaron van al final, para que la cola avance igual.
+        nuevos = sorted((u for u in pendientes if u not in agotados), reverse=True)
+        nuevos.sort(key=lambda u: fallidos.get(u, {}).get("intentos", 0))
         for url in nuevos:
+            motivo = ""
             try:
                 rp = requests.get(url, headers=HTTP_HEADERS, timeout=90)
                 rp.raise_for_status()
@@ -2408,10 +2425,17 @@ def fetch_ivi_serie() -> list:
                     ym, v = parsed
                     store["mensual"][ym] = v
                     store["procesados"].append(url)
-                else:
-                    print(f"  [WARN] IVI: PDF sin período/valor reconocible, se reintentará: {url}")
+                    fallidos.pop(url, None)
+                    continue
+                motivo = "sin período/valor reconocible"
+                print(f"  [WARN] IVI: PDF sin período/valor reconocible, se reintentará: {url}")
             except Exception as e:
+                motivo = str(e)[:80]
                 print(f"  [WARN] IVI: PDF no procesado ({url[-30:]}): {str(e)[:50]}")
+            intento = fallidos.setdefault(url, {"intentos": 0})
+            intento["intentos"] += 1
+            intento["ultimo"] = datetime.today().strftime("%Y-%m-%d")
+            intento["motivo"] = motivo
         if nuevos:
             store["_meta"] = {"fuente": "UTDT — LICIP, Índice de Victimización (informes mensuales PDF)",
                               "actualizado": datetime.today().strftime("%Y-%m-%d"),

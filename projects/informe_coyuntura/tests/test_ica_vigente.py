@@ -86,3 +86,43 @@ def test_tarjeta_acumula_doce_y_compara_con_los_doce_anteriores(monkeypatch):
     assert c['fecha_dato']=='2026-07-01'
     assert c['expo_delta_12m']==123
     assert c['impo_delta_12m']==-58
+
+
+def test_fallo_del_catalogo_no_adelanta_la_fecha_con_la_api(tmp_path, monkeypatch):
+    store = tmp_path / 'ica.json'
+    store.write_text(json.dumps({'url': 'u', 'consultado': '2026-08-20T12:00:00-03:00',
+                                 'mensual': {'2026-07-01': [8853.859, 6738.676]}}))
+    monkeypatch.setattr(ica, 'STORE', store)
+    def fallo(*a, **kw): raise requests.ConnectionError('fuente no disponible')
+    monkeypatch.setattr(ica.requests, 'get', fallo)
+    r = ica.completar([['2026-08-01', 9000.], ['2026-06-01', 9111.8]],
+                      [['2026-08-01', 6000.], ['2026-06-01', 6876.6]])
+    assert not r['consulta_oficial_exitosa']
+    assert [p[0] for p in r['puntos']] == ['2026-07-01', '2026-06-01']
+
+
+def test_planilla_recortada_conserva_el_cuadro_validado(tmp_path, monkeypatch):
+    store = tmp_path / 'ica.json'
+    store.write_text(json.dumps({'url': 'u', 'consultado': '2026-08-20T12:00:00-03:00',
+                                 'mensual': {'2026-07-01': [8853.859, 6738.676]}}))
+    monkeypatch.setattr(ica, 'STORE', store)
+    monkeypatch.setattr(ica.requests, 'get', lambda *a, **kw: SimpleNamespace(
+        text='<a href="/ftp/cuadros/economia/ica_cuadros_20_08_26.xls">x</a>', content=b'',
+        raise_for_status=lambda: None))
+    def recortada(contenido): raise IndexError('list index out of range')
+    monkeypatch.setattr(ica, 'parsear', recortada)
+    r = ica.completar([], [])
+    assert r['puntos'][0][0] == '2026-07-01' and r['advertencia'] and not r['consulta_oficial_exitosa']
+    assert json.loads(store.read_text())['mensual'] == {'2026-07-01': [8853.859, 6738.676]}
+
+
+def test_parser_exige_anios_coherentes_en_importaciones(monkeypatch):
+    rows = [['Cuadro 1. Intercambio comercial argentino'],
+            ['Período', '', 'Exportaciones', '', 'Importaciones', ''],
+            ['', '', '2026e', '2025*', '2025*', '2026*']]
+    for m in ica.MESES:
+        rows.append(['', m.title(), 1., 1., 1., 1.])
+    hoja = SimpleNamespace(nrows=len(rows), cell_value=lambda r, c: rows[r][c], row_values=lambda r: rows[r])
+    monkeypatch.setattr(ica.xlrd, 'open_workbook', lambda **kw: SimpleNamespace(sheets=lambda: [hoja]))
+    with pytest.raises(ValueError, match='importaciones'):
+        ica.parsear(b'')

@@ -1530,7 +1530,9 @@ def _leyes_sancionadas_ids(hasta: str | None = None) -> set[str]:
     histórica para que un punto ya publicado no cambie retroactivamente
     cuando un proyecto se sanciona más tarde. Filas con fecha "NA" solo
     entran sin cota (no se puede verificar su timing)."""
-    filas = _hcdn_paginate(HCDN_LEYES_SANC_RID)
+    from cotejo_manual import aplicar_correcciones_sancion, revisar_fechas_sancion
+    filas = aplicar_correcciones_sancion(_hcdn_paginate(HCDN_LEYES_SANC_RID))
+    revisar_fechas_sancion(filas, HCDN_CKAN + "?resource_id=" + HCDN_LEYES_SANC_RID)
     return {
         str(r["PROYECTO_ID"]).strip()
         for r in filas
@@ -2382,8 +2384,35 @@ def detectar_novedades_judiciales(terminos: tuple[str, ...] = CSJN_TERMINOS) -> 
 def _jus_registros_conciliados():
     """Ajustes trazables y fecha límite de la revisión de fuentes."""
     carpeta = PROJECT_DIR / "data" / "politica"
-    return (json.loads((carpeta / "cobertura_judicial_movimientos.json").read_text()),
-            json.loads((carpeta / "cobertura_judicial_bajas.json").read_text()))
+    return (json.loads((carpeta / "cobertura_judicial_movimientos.json").read_text(encoding="utf-8")),
+            json.loads((carpeta / "cobertura_judicial_bajas.json").read_text(encoding="utf-8")))
+
+
+# Cuántos días antes de que G2b corte la publicación se avisa que la
+# conciliación judicial hay que renovarla revisando las fuentes.
+JUDICIAL_AVISO_DIAS_ANTES = 5
+
+
+def _avisar_vencimiento_judicial(corte: str) -> None:
+    raiz = str(Path(__file__).resolve().parents[1])
+    if raiz not in sys.path:
+        sys.path.insert(0, raiz)
+    from config import dias_sin_fetch_tolerados
+    from cotejo_manual import registrar
+    tope = dias_sin_fetch_tolerados("cobertura_judicial")
+    restantes = tope - (date.today() - date.fromisoformat(corte)).days
+    if restantes > JUDICIAL_AVISO_DIAS_ANTES:
+        return
+    plazo = (f"vence en {restantes} días" if restantes > 0 else
+             "venció hoy" if restantes == 0 else f"venció hace {-restantes} días")
+    registrar("cobertura_judicial", f"conciliación revisada al {corte}",
+              f"La conciliación judicial {plazo} (tope de {tope} días sin fetch del gate G2b, "
+              "que corta la publicación). Renovarla verificando las fuentes reales: CSV de "
+              "designaciones y renuncias del Ministerio de Justicia, Boletín Oficial y Consejo "
+              "de la Magistratura; incorporar los movimientos y bajas nuevos y recién entonces "
+              "fechar revisado_hasta y revisado_el en data/politica/cobertura_judicial_*.json. "
+              "No adelantar la fecha sin revisar.",
+              JUS_API)
 
 
 def cobertura_judicial_serie() -> tuple[dict, dict]:
@@ -2484,6 +2513,7 @@ def fetch_cobertura_judicial() -> dict | None:
         subrog = comp.get("Subrogante", 0)
         sin_nadie = comp.get("Sin subrogante designado", 0)
         padron_con_juez = total - meta["vacantes_padron"]
+        _avisar_vencimiento_judicial(meta["fecha_corte"])
         return {
             "valor":          serie[ym],
             "unidad":         "% estimado de cargos con juez designado",
@@ -2554,6 +2584,9 @@ def _leyes_fechadas(filas: list[dict]) -> list[tuple[str, date]]:
     """Une ley y expediente verificado, sin duplicar una incorporación tardía."""
     if not filas:
         raise ValueError("leyes-sancionadas vacío")
+    from cotejo_manual import aplicar_correcciones_sancion, revisar_fechas_sancion
+    filas = aplicar_correcciones_sancion(filas)
+    revisar_fechas_sancion(filas, HCDN_CKAN + "?resource_id=" + HCDN_LEYES_SANC_RID)
     filas = [*filas, *_leyes_sancionadas_complementarias()]
     aliases = {}
     def referencias(fila):
@@ -3328,7 +3361,18 @@ def _acta_diputados_cacheada(session: requests.Session, id_acta: int, cache: dic
         return _ACTA_FALLO
     fecha = _diputados_acta_fecha(contenido)
     if fecha is None:
-        return _ACTA_FALLO
+        from cotejo_manual import fecha_acta_verificada, registrar
+        verificada = fecha_acta_verificada(id_acta)
+        if verificada is None:
+            registrar("cohesion_bloque", f"acta {id_acta}",
+                      "El PDF del acta no trae una fecha legible y sin fecha no acredita "
+                      "cobertura: el walk queda incompleto y bloqueo_sostenido y "
+                      "desafios_legislativos no se refrescan. Cotejar la fecha en la página de "
+                      "votaciones de Diputados y documentarla con su fuente en "
+                      "data/politica/actas_diputados_fechas_verificadas.json; no se estima.",
+                      HCDN_VOTACIONES_BASE + _DIPUTADOS_ACTA_PDF_PATH.format(id=id_acta))
+            return _ACTA_FALLO
+        fecha = datetime(verificada.year, verificada.month, verificada.day)
     filas = _parsear_acta_diputados_pdf(contenido)
     afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
     neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")

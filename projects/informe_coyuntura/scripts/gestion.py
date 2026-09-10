@@ -1805,6 +1805,14 @@ def _privat_empresas_en_texto(texto: str) -> list[str]:
                    for nombre in (empresa, termino))]
 
 
+# Tope de RELECTURAS por corrida: normas ya revisadas con el filtro anterior que
+# hay que volver a leer con el vigente. Sin tope, el cambio de versión del
+# filtro dispara cientos de descargas de InfoLeg en una sola noche y puede
+# comerse el timeout del job. Lo que no entra en el lote queda anotado como
+# pendiente y se lee en corridas siguientes; nada se marca revisado sin leerlo.
+PRIVATIZACIONES_LOTE_RELECTURA = 25
+
+
 def _infoleg_texto(norma_id: str) -> str:
     """Texto plano de una norma. Vacío si no está disponible."""
     from bs4 import BeautifulSoup
@@ -1843,6 +1851,8 @@ def detectar_novedades_privatizaciones(meses_atras: int = 3) -> dict:
     intentadas = set()
     consultas_fallidas = []
     textos_fallidos = []
+    relectura_pendiente = []
+    relecturas = 0
     consultas_sin_error = 0
 
     hoy = date.today()
@@ -1869,10 +1879,17 @@ def detectar_novedades_privatizaciones(meses_atras: int = 3) -> dict:
             for norma_id, titulo in hallazgos:
                 if norma_id in revision_manual:
                     continue
-                if revisadas.get(norma_id, {}).get("version_filtro") == 2:
+                previa = revisadas.get(norma_id)
+                if previa is not None and previa.get("version_filtro") == 2:
                     continue
                 if norma_id in intentadas:
                     continue
+                if previa is not None:
+                    if relecturas >= PRIVATIZACIONES_LOTE_RELECTURA:
+                        if norma_id not in relectura_pendiente:
+                            relectura_pendiente.append(norma_id)
+                        continue
+                    relecturas += 1
                 intentadas.add(norma_id)
                 # el texto de una norma publicada es inmutable: se evalúa una
                 # sola vez y el veredicto queda cacheado, pase o no el filtro
@@ -1916,8 +1933,12 @@ def detectar_novedades_privatizaciones(meses_atras: int = 3) -> dict:
             "consultas_sin_error": consultas_sin_error,
             "consultas_fallidas": consultas_fallidas,
             "textos_fallidos": textos_fallidos,
+            "relectura_pendiente": relectura_pendiente,
         },
     })
+    if relectura_pendiente:
+        print(f"  [WARN] privatizaciones/novedades: {len(relectura_pendiente)} normas ya revisadas "
+              f"esperan relectura con el filtro vigente (lote de {PRIVATIZACIONES_LOTE_RELECTURA} por corrida)")
     PRIVATIZACIONES_NOVEDADES_PATH.parent.mkdir(parents=True, exist_ok=True)
     PRIVATIZACIONES_NOVEDADES_PATH.write_text(
         json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True), encoding="utf-8")
@@ -3149,7 +3170,7 @@ def actualizar_protestas_caba() -> dict | None:
         nacional: dict = {}
         hasta = None
         for f in filas:
-            if not f or len(f) < 7:
+            if not f or len(f) < 7 or not isinstance(f[0], datetime):
                 continue
             # El corte es del archivo, no de la última protesta de Argentina:
             # una semana sin eventos no puede atrasar la cobertura declarada.

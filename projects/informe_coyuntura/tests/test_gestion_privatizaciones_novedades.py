@@ -179,3 +179,26 @@ def test_card_conserva_pendientes_y_avisa_si_detector_falla(tmp_path, monkeypatc
     assert card['novedades_pendientes'] == pendiente
     assert card['novedades_cobertura']['estado'] == 'incompleta'
     assert 'consulta de novedades incompleta' in card['detalle_txt']
+
+
+def test_la_relectura_con_el_filtro_vigente_va_por_lotes_y_no_marca_sin_leer(tmp_path, monkeypatch):
+    previo = {'revisadas': {n: {'empresa': 'AySA', 'del_proceso': False} for n in ('1', '2', '3')}}
+    ruta = tmp_path / 'novedades.json'
+    ruta.write_text(json.dumps(previo))
+    monkeypatch.setattr(gestion, 'PRIVATIZACIONES_NOVEDADES_PATH', ruta)
+    monkeypatch.setattr(gestion, 'PRIVATIZACIONES_LOTE_RELECTURA', 2)
+    monkeypatch.setattr(gestion, '_infoleg_buscar_mes',
+                        lambda *a, **kw: [('1', 'a'), ('2', 'b'), ('3', 'c'), ('4', 'nueva')])
+    leidas = []
+    monkeypatch.setattr(gestion, '_infoleg_texto', lambda nid: leidas.append(nid) or
+                        'Apruébase el pliego de AGUA Y SANEAMIENTOS ARGENTINOS S.A.')
+    s = gestion.detectar_novedades_privatizaciones(meses_atras=1)
+    assert leidas == ['1', '2', '4']
+    assert s['revisadas']['3'] == {'empresa': 'AySA', 'del_proceso': False}
+    assert s['revisadas']['4']['version_filtro'] == 2
+    assert s['_meta']['cobertura']['relectura_pendiente'] == ['3']
+    leidas.clear()
+    s = gestion.detectar_novedades_privatizaciones(meses_atras=1)
+    assert leidas == ['3']
+    assert s['revisadas']['3']['version_filtro'] == 2
+    assert s['_meta']['cobertura']['relectura_pendiente'] == []

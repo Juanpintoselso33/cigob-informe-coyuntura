@@ -33,6 +33,8 @@ import re
 import sys
 import urllib.request
 
+from cotejo_manual import avisos as avisos_cotejo
+
 CANAL = os.environ.get("SLACK_CANAL_ALERTAS", "")
 TOKEN = os.environ.get("SLACK_BOT_TOKEN", "")
 
@@ -137,7 +139,7 @@ def causas(log: str) -> list[str]:
         if texto and not RUIDO_GENERICO.match(texto):
             _sumar(texto[:300])
 
-    return fuera
+    return avisos_cotejo(log) + fuera
 
 
 def resumen_pytest(log: str) -> str:
@@ -209,7 +211,7 @@ def publicar(texto: str) -> int:
 
 def analizar(log: str) -> list[str]:
     """Devuelve los motivos por los que hay que avisar. Vacío = todo esperado."""
-    motivos: list[str] = []
+    motivos: list[str] = avisos_cotejo(log)
 
     for m in re.finditer(rf"^{_cmd('notice')}(\w+) exit=(\d+)", log, re.M):
         script, code = m.group(1), int(m.group(2))

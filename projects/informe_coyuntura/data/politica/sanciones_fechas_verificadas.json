@@ -1,0 +1,6 @@
+{
+  "revisado_en": "2026-09-10",
+  "criterio": "Fechas de sanción definitiva ausentes o inválidas en el catálogo leyes-sancionadas de HCDN, cotejadas una por una en el expediente, el Boletín Oficial o la Dirección de Taquígrafos. Cada corrección lleva la fuente documental que la respalda. Sin corrección documentada la fila no entra al cálculo y el colector avisa; nunca se asigna la fecha de consulta ni se omite la fila en silencio.",
+  "campos": "PROYECTO_ID, EXPEDIENTE_INICIAL o LEY para identificar la fila; SANCION_DEFINITIVA en YYYY-MM-DD; fuente con la URL del documento.",
+  "correcciones": []
+}

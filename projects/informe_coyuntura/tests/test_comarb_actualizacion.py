@@ -42,3 +42,21 @@ def test_nueva_gacetilla_exige_conciliacion(tmp_path, monkeypatch, desvio, acept
         with pytest.raises(ValueError, match='sin validar'):
             comarb.actualizar(s)
         assert '2026-08' not in comarb._cache_leer()['gacetillas']
+
+
+def test_gacetilla_que_no_es_de_recaudacion_no_exige_validacion(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(comarb, 'CACHE', tmp_path / 'store.json')
+    monkeypatch.setattr(comarb.time, 'sleep', lambda _: None)
+    monkeypatch.setattr(comarb, '_leer_pdf', lambda _: {
+        'total': 100., 'var_ia_publicada': 10., 'desvio_suma_pct': 0.0})
+    s = sesion('<a href="/2026/Gacetilla_Recaudaci%C3%B3n_Mensual_08_Ago_2026.pdf">Agosto</a>'
+               '<a href="/2026/Gacetilla_Aniversario_09_Sep_2026.pdf">Aniversario</a>')
+    store = comarb.actualizar(s)
+    assert set(store['gacetillas']) == {'2026-08'}
+    assert 'Aniversario' in capsys.readouterr().out
+
+
+def test_sin_gacetillas_de_recaudacion_no_certifica(tmp_path, monkeypatch):
+    monkeypatch.setattr(comarb, 'CACHE', tmp_path / 'store.json')
+    with pytest.raises(ValueError, match='sin gacetillas'):
+        comarb.actualizar(sesion('<a href="/2026/Gacetilla_Aniversario_09_Sep_2026.pdf">x</a>'))
