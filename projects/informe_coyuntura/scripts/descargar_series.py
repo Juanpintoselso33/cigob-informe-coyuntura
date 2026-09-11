@@ -888,7 +888,10 @@ def fetch_eficacia_serie() -> list:
     de la cohorte de publicación. Reproducible: la sanción se acota por
     SANCION_DEFINITIVA al CIERRE de ese mes histórico, no hasta hoy, para
     que un punto ya publicado no cambie retroactivamente solo porque el
-    proyecto finalmente se sancionó más tarde. [[YYYY-MM-01, %]]."""
+    proyecto finalmente se sancionó más tarde. Las fechas salen de
+    politica._leyes_sancionadas_fechadas (misma regla que la card: con
+    correcciones documentadas aplicadas y todas canónicas, si no falla y el
+    CSV conserva la serie anterior). [[YYYY-MM-01, %]]."""
     raw_pe = (politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-PE-")
               + politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-JGM-"))
     pe = [(r["PROYECTO_ID"], politica._fecha_publicacion_proyecto(r)) for r in raw_pe
@@ -896,14 +899,11 @@ def fetch_eficacia_serie() -> list:
           and "PROYECTO DE LEY" in str(r.get("TIPO", "")).upper()
           and (politica._RE_PE_EXP.search(r.get("EXP_DIPUTADOS", "") or "")
                or politica._RE_PE_EXP.search(r.get("EXP_SENADO", "") or ""))]
-    raw_leyes = politica._hcdn_paginate(politica.HCDN_LEYES_SANC_RID)
-    san = [(str(r.get("PROYECTO_ID", "")).strip(), str(r.get("SANCION_DEFINITIVA", ""))[:10])
-           for r in raw_leyes if r.get("PROYECTO_ID")]
+    san = politica._leyes_sancionadas_fechadas()
     out = []
     for ym, cohorte_hasta, fin in _hcdn_ventanas_12m():
         cohorte_desde = (date.fromisoformat(cohorte_hasta) - timedelta(days=365)).isoformat()
         pe_ids = {pid for pid, f in pe if cohorte_desde <= f <= cohorte_hasta}
-        # "NA" en SANCION_DEFINITIVA queda excluido solo ('N' > dígitos en str)
         san_ids = {pid for pid, f in san if f <= fin}
         if pe_ids:
             out.append([f"{ym}-01", round(len(pe_ids & san_ids) / len(pe_ids) * 100.0, 1)])

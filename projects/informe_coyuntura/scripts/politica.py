@@ -1514,6 +1514,40 @@ def _fecha_publicacion_proyecto(proyecto: dict) -> str:
     )
 
 
+def _leyes_sancionadas_filas() -> list[dict]:
+    """Filas del dataset leyes-sancionadas con las correcciones documentadas
+    aplicadas; cada fecha ausente o ilegible que quede se registra como
+    [COTEJO_MANUAL] (no se rellena)."""
+    from cotejo_manual import aplicar_correcciones_sancion, revisar_fechas_sancion
+    filas = aplicar_correcciones_sancion(_hcdn_paginate(HCDN_LEYES_SANC_RID))
+    revisar_fechas_sancion(filas, HCDN_CKAN + "?resource_id=" + HCDN_LEYES_SANC_RID)
+    return filas
+
+
+def _leyes_sancionadas_fechadas() -> list[tuple[str, str]]:
+    """(PROYECTO_ID, SANCION_DEFINITIVA canónica) de cada ley sancionada.
+
+    Regla compartida por la card y la serie de eficacia_legislativa: toda
+    fila tiene que traer una fecha canónica (propia o documentada en
+    sanciones_fechas_verificadas.json). Si queda alguna sin fecha, falla —el
+    cotejo ya quedó registrado— para que card y serie conserven su último
+    valor verificable en vez de publicar un porcentaje parcial."""
+    from cotejo_manual import fecha_canonica
+    filas = _leyes_sancionadas_filas()
+    sin_fecha = [r for r in filas if fecha_canonica(r.get("SANCION_DEFINITIVA")) is None]
+    if sin_fecha:
+        raise ValueError(
+            f"leyes-sancionadas con {len(sin_fecha)} fila(s) sin fecha de sanción "
+            "canónica; documentar la fecha real en "
+            "data/politica/sanciones_fechas_verificadas.json"
+        )
+    return [
+        (str(r["PROYECTO_ID"]).strip(), fecha_canonica(r.get("SANCION_DEFINITIVA")))
+        for r in filas
+        if r.get("PROYECTO_ID")
+    ]
+
+
 def _leyes_sancionadas_ids(hasta: str | None = None) -> set[str]:
     """PROYECTO_IDs con sanción definitiva según el dataset oficial
     leyes-sancionadas de HCDN (cada fila trae número de ley, fecha de
@@ -1529,31 +1563,12 @@ def _leyes_sancionadas_ids(hasta: str | None = None) -> set[str]:
     `hasta` (ISO YYYY-MM-DD) acota por SANCION_DEFINITIVA — la card lo usa
     con la fecha de hoy y la serie histórica con el cierre de cada mes, para
     que un punto ya publicado no cambie retroactivamente cuando un proyecto
-    se sanciona más tarde. Con cota, cada fila tiene que traer una fecha
-    canónica (propia o documentada en sanciones_fechas_verificadas.json):
-    una fecha ausente o ilegible se registra como [COTEJO_MANUAL] y hace
-    fallar el cálculo, para que la card conserve el último valor verificable
-    en vez de publicar un porcentaje parcial. Sin cota no hay timing que
-    verificar y las filas entran todas."""
-    from cotejo_manual import (aplicar_correcciones_sancion, fecha_canonica,
-                               revisar_fechas_sancion)
-    filas = aplicar_correcciones_sancion(_hcdn_paginate(HCDN_LEYES_SANC_RID))
-    revisar_fechas_sancion(filas, HCDN_CKAN + "?resource_id=" + HCDN_LEYES_SANC_RID)
+    se sanciona más tarde. Con cota rige `_leyes_sancionadas_fechadas`: una
+    fecha ausente o ilegible hace fallar el cálculo. Sin cota no hay timing
+    que verificar y las filas entran todas."""
     if hasta is None:
-        return {str(r["PROYECTO_ID"]).strip() for r in filas if r.get("PROYECTO_ID")}
-    sin_fecha = [r for r in filas if fecha_canonica(r.get("SANCION_DEFINITIVA")) is None]
-    if sin_fecha:
-        raise ValueError(
-            f"leyes-sancionadas con {len(sin_fecha)} fila(s) sin fecha de sanción "
-            "canónica; documentar la fecha real en "
-            "data/politica/sanciones_fechas_verificadas.json"
-        )
-    return {
-        str(r["PROYECTO_ID"]).strip()
-        for r in filas
-        if r.get("PROYECTO_ID")
-        and fecha_canonica(r.get("SANCION_DEFINITIVA")) <= hasta
-    }
+        return {str(r["PROYECTO_ID"]).strip() for r in _leyes_sancionadas_filas() if r.get("PROYECTO_ID")}
+    return {pid for pid, fecha in _leyes_sancionadas_fechadas() if fecha <= hasta}
 
 
 def fetch_eficacia_legislativa() -> dict | None:
