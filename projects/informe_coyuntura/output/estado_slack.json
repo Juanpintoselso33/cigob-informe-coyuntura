@@ -7,19 +7,19 @@
     "multicinturon": false,
     "cinturones": {
       "macro": {
-        "score": 3.5,
+        "score": 3.6,
         "estado": "en_tension"
       },
       "politica": {
-        "score": 3.0,
+        "score": 2.7,
         "estado": "estable"
       },
       "vida_cotidiana": {
-        "score": 6.3,
+        "score": 6.4,
         "estado": "tensionado"
       },
       "gestion": {
-        "score": 2.0,
+        "score": 2.1,
         "estado": "estable"
       }
     }

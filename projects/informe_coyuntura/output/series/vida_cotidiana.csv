@@ -128,74 +128,74 @@ fecha,indicador,valor,unidad,fuente
 2016-10-01,subocupacion_demandante,7.2,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
 2016-07-01,subocupacion_demandante,7.0,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
 2016-04-01,subocupacion_demandante,7.7,% de la PEA,"INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)"
-2026-08-01,sentimiento_digital,64.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-08-01,sentimiento_digital,64.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2026-07-01,sentimiento_digital,58.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-06-01,sentimiento_digital,59.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-05-01,sentimiento_digital,63.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-04-01,sentimiento_digital,71.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-03-01,sentimiento_digital,72.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-02-01,sentimiento_digital,66.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2026-01-01,sentimiento_digital,71.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-12-01,sentimiento_digital,61.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-11-01,sentimiento_digital,70.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-10-01,sentimiento_digital,76.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-09-01,sentimiento_digital,80.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-08-01,sentimiento_digital,86.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-07-01,sentimiento_digital,78.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-06-01,sentimiento_digital,78.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-05-01,sentimiento_digital,79.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-04-01,sentimiento_digital,85.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-03-01,sentimiento_digital,76.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-02-01,sentimiento_digital,84.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2025-01-01,sentimiento_digital,84.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-12-01,sentimiento_digital,76.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-11-01,sentimiento_digital,81.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-10-01,sentimiento_digital,80.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-09-01,sentimiento_digital,84.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-08-01,sentimiento_digital,87.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-07-01,sentimiento_digital,80.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-06-01,sentimiento_digital,86.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-05-01,sentimiento_digital,100.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-04-01,sentimiento_digital,99.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-03-01,sentimiento_digital,86.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-02-01,sentimiento_digital,91.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2024-01-01,sentimiento_digital,105.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-12-01,sentimiento_digital,95.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-11-01,sentimiento_digital,101.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-06-01,sentimiento_digital,59.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-05-01,sentimiento_digital,62.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-04-01,sentimiento_digital,70.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-03-01,sentimiento_digital,73.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-02-01,sentimiento_digital,64.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2026-01-01,sentimiento_digital,70.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-12-01,sentimiento_digital,61.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-11-01,sentimiento_digital,69.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-10-01,sentimiento_digital,75.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-09-01,sentimiento_digital,80.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-08-01,sentimiento_digital,85.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-07-01,sentimiento_digital,77.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-06-01,sentimiento_digital,79.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-05-01,sentimiento_digital,78.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-04-01,sentimiento_digital,83.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-03-01,sentimiento_digital,75.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-02-01,sentimiento_digital,83.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2025-01-01,sentimiento_digital,83.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-12-01,sentimiento_digital,74.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-11-01,sentimiento_digital,82.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-10-01,sentimiento_digital,80.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-09-01,sentimiento_digital,83.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-08-01,sentimiento_digital,85.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-07-01,sentimiento_digital,78.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-06-01,sentimiento_digital,84.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-05-01,sentimiento_digital,100.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-04-01,sentimiento_digital,98.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-03-01,sentimiento_digital,86.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-02-01,sentimiento_digital,90.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2024-01-01,sentimiento_digital,103.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-12-01,sentimiento_digital,95.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-11-01,sentimiento_digital,102.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2023-10-01,sentimiento_digital,102.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-09-01,sentimiento_digital,93.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-08-01,sentimiento_digital,102.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-07-01,sentimiento_digital,87.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-06-01,sentimiento_digital,88.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-05-01,sentimiento_digital,90.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-04-01,sentimiento_digital,95.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-03-01,sentimiento_digital,101.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-02-01,sentimiento_digital,84.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2023-01-01,sentimiento_digital,85.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-12-01,sentimiento_digital,70.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-11-01,sentimiento_digital,84.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-10-01,sentimiento_digital,85.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-09-01,sentimiento_digital,89.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-08-01,sentimiento_digital,106.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-07-01,sentimiento_digital,99.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-06-01,sentimiento_digital,93.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-05-01,sentimiento_digital,76.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-04-01,sentimiento_digital,76.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-03-01,sentimiento_digital,81.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-02-01,sentimiento_digital,68.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2022-01-01,sentimiento_digital,67.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-12-01,sentimiento_digital,61.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-11-01,sentimiento_digital,81.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-10-01,sentimiento_digital,75.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-09-01,sentimiento_digital,72.2,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-08-01,sentimiento_digital,69.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-07-01,sentimiento_digital,67.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-06-01,sentimiento_digital,68.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-05-01,sentimiento_digital,65.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-04-01,sentimiento_digital,66.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-03-01,sentimiento_digital,71.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-02-01,sentimiento_digital,77.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
-2021-01-01,sentimiento_digital,70.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-09-01,sentimiento_digital,91.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-08-01,sentimiento_digital,102.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-07-01,sentimiento_digital,86.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-06-01,sentimiento_digital,86.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-05-01,sentimiento_digital,90.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-04-01,sentimiento_digital,94.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-03-01,sentimiento_digital,102.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-02-01,sentimiento_digital,81.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2023-01-01,sentimiento_digital,84.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-12-01,sentimiento_digital,69.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-11-01,sentimiento_digital,84.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-10-01,sentimiento_digital,83.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-09-01,sentimiento_digital,89.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-08-01,sentimiento_digital,107.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-07-01,sentimiento_digital,98.3,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-06-01,sentimiento_digital,91.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-05-01,sentimiento_digital,77.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-04-01,sentimiento_digital,75.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-03-01,sentimiento_digital,77.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-02-01,sentimiento_digital,67.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2022-01-01,sentimiento_digital,66.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-12-01,sentimiento_digital,60.5,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-11-01,sentimiento_digital,81.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-10-01,sentimiento_digital,73.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-09-01,sentimiento_digital,70.9,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-08-01,sentimiento_digital,68.8,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-07-01,sentimiento_digital,67.0,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-06-01,sentimiento_digital,67.1,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-05-01,sentimiento_digital,64.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-04-01,sentimiento_digital,64.6,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-03-01,sentimiento_digital,70.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-02-01,sentimiento_digital,76.7,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
+2021-01-01,sentimiento_digital,70.4,índice (100 = 4T-2023),"Google Trends (6 términos, ventana fija 2021→, ADR-0222)"
 2026-07-01,pobreza_nowcast,31.3,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
 2026-06-01,pobreza_nowcast,31.6,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
 2026-05-01,pobreza_nowcast,29.6,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
@@ -599,6 +599,41 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,itvc_lider,95.6,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2023-11-01,itvc_lider,100.9,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2023-10-01,itvc_lider,103.5,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2026-07-01,itvc_isac,77.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-06-01,itvc_isac,81.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-05-01,itvc_isac,85.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-04-01,itvc_isac,80.0,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-03-01,itvc_isac,84.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-02-01,itvc_isac,79.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-01-01,itvc_isac,80.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-12-01,itvc_isac,80.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-11-01,itvc_isac,78.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-10-01,itvc_isac,81.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-09-01,itvc_isac,81.5,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-08-01,itvc_isac,80.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-07-01,itvc_isac,81.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-06-01,itvc_isac,81.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-05-01,itvc_isac,79.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-04-01,itvc_isac,82.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-03-01,itvc_isac,77.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-02-01,itvc_isac,80.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-01-01,itvc_isac,78.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-12-01,itvc_isac,80.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-11-01,itvc_isac,78.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-10-01,itvc_isac,74.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-09-01,itvc_isac,78.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-08-01,itvc_isac,77.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-07-01,itvc_isac,79.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-06-01,itvc_isac,73.3,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-05-01,itvc_isac,71.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-04-01,itvc_isac,65.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-03-01,itvc_isac,66.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-02-01,itvc_isac,76.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-01-01,itvc_isac,79.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2023-12-01,itvc_isac,92.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2023-11-01,itvc_isac,103.0,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2023-10-01,itvc_isac,104.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-06-01,itvc_endeudamiento,172.8,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2026-05-01,itvc_endeudamiento,171.5,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2026-04-01,itvc_endeudamiento,173.3,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2026-03-01,itvc_endeudamiento,175.4,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
@@ -631,6 +666,41 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,itvc_endeudamiento,88.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2023-11-01,itvc_endeudamiento,104.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2023-10-01,itvc_endeudamiento,106.9,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2026-08-01,itvc_alquiler,50.0,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2026-07-01,itvc_alquiler,50.3,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2026-06-01,itvc_alquiler,51.1,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2026-05-01,itvc_alquiler,52.0,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2026-04-01,itvc_alquiler,52.3,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2026-03-01,itvc_alquiler,52.1,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2026-02-01,itvc_alquiler,52.2,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2026-01-01,itvc_alquiler,52.2,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-12-01,itvc_alquiler,52.1,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-11-01,itvc_alquiler,51.9,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-10-01,itvc_alquiler,52.1,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-09-01,itvc_alquiler,52.6,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-08-01,itvc_alquiler,53.3,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-07-01,itvc_alquiler,54.1,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-06-01,itvc_alquiler,54.9,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-05-01,itvc_alquiler,56.2,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-04-01,itvc_alquiler,59.4,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-03-01,itvc_alquiler,59.8,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-02-01,itvc_alquiler,60.7,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2025-01-01,itvc_alquiler,63.3,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-12-01,itvc_alquiler,67.5,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-11-01,itvc_alquiler,69.9,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-10-01,itvc_alquiler,73.9,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-09-01,itvc_alquiler,78.8,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-08-01,itvc_alquiler,86.1,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-07-01,itvc_alquiler,94.3,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-06-01,itvc_alquiler,107.2,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-05-01,itvc_alquiler,114.7,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-04-01,itvc_alquiler,123.3,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-03-01,itvc_alquiler,126.0,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-02-01,itvc_alquiler,122.6,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2024-01-01,itvc_alquiler,117.9,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2023-12-01,itvc_alquiler,110.3,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2023-11-01,itvc_alquiler,96.4,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2023-10-01,itvc_alquiler,91.8,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2026-07-01,itvc_alimentos,107.6,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2026-06-01,itvc_alimentos,107.5,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2026-05-01,itvc_alimentos,106.9,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
@@ -1071,9 +1141,9 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,icc_utdt,40.5,índice,"UTDT (ICC, serie XLS)"
 2021-08-01,icc_utdt,39.8,índice,"UTDT (ICC, serie XLS)"
 2021-07-01,icc_utdt,37.9,índice,"UTDT (ICC, serie XLS)"
-2026-09-01,endeudamiento_familiar,46.42,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
-2026-08-01,endeudamiento_familiar,47.07,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
-2026-07-01,endeudamiento_familiar,47.11,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-09-01,endeudamiento_familiar,44.29,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-08-01,endeudamiento_familiar,47.23,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-07-01,endeudamiento_familiar,47.12,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-06-01,endeudamiento_familiar,47.3,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-05-01,endeudamiento_familiar,45.93,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-04-01,endeudamiento_familiar,45.51,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
@@ -1147,6 +1217,66 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,empleo_registrado,6379.1,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
 2023-11-01,empleo_registrado,6385.8,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
 2023-10-01,empleo_registrado,6374.4,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
+2026-07-01,despacho_cemento,140.16,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-06-01,despacho_cemento,146.85,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-05-01,despacho_cemento,153.39,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-04-01,despacho_cemento,144.07,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-03-01,despacho_cemento,151.44,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-02-01,despacho_cemento,142.95,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-01-01,despacho_cemento,145.15,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-12-01,despacho_cemento,145.41,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-11-01,despacho_cemento,140.62,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-10-01,despacho_cemento,146.54,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-09-01,despacho_cemento,146.76,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-08-01,despacho_cemento,144.84,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-07-01,despacho_cemento,147.09,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-06-01,despacho_cemento,146.03,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-05-01,despacho_cemento,143.51,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-04-01,despacho_cemento,147.92,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-03-01,despacho_cemento,139.67,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-02-01,despacho_cemento,145.11,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-01-01,despacho_cemento,141.18,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-12-01,despacho_cemento,145.12,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-11-01,despacho_cemento,141.61,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-10-01,despacho_cemento,134.61,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-09-01,despacho_cemento,141.72,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-08-01,despacho_cemento,139.99,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-07-01,despacho_cemento,143.71,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-06-01,despacho_cemento,132.03,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-05-01,despacho_cemento,128.25,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-04-01,despacho_cemento,118.31,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-03-01,despacho_cemento,119.64,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-02-01,despacho_cemento,137.28,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-01-01,despacho_cemento,143.55,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-12-01,despacho_cemento,166.95,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-11-01,despacho_cemento,185.54,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-10-01,despacho_cemento,187.71,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-09-01,despacho_cemento,188.26,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-08-01,despacho_cemento,189.49,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-07-01,despacho_cemento,192.36,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-06-01,despacho_cemento,191.19,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-05-01,despacho_cemento,191.97,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-04-01,despacho_cemento,197.67,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-03-01,despacho_cemento,196.8,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-02-01,despacho_cemento,184.07,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-01-01,despacho_cemento,186.1,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-12-01,despacho_cemento,182.92,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-11-01,despacho_cemento,188.12,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-10-01,despacho_cemento,188.61,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-09-01,despacho_cemento,192.46,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-08-01,despacho_cemento,195.84,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-07-01,despacho_cemento,202.68,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-06-01,despacho_cemento,199.03,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-05-01,despacho_cemento,201.87,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-04-01,despacho_cemento,200.21,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-03-01,despacho_cemento,193.87,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-02-01,despacho_cemento,199.59,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-01-01,despacho_cemento,188.89,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-12-01,despacho_cemento,198.97,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-11-01,despacho_cemento,191.04,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-10-01,despacho_cemento,187.8,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-09-01,despacho_cemento,185.31,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-08-01,despacho_cemento,186.57,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
 2026-01-01,desocupacion,0.078,%,INDEC/datos.gob.ar
 2025-10-01,desocupacion,0.075,%,INDEC/datos.gob.ar
 2025-07-01,desocupacion,0.066,%,INDEC/datos.gob.ar
@@ -1609,247 +1739,119 @@ fecha,indicador,valor,unidad,fuente
 2021-10-01,brecha_salario_cbt,4.16,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2021-09-01,brecha_salario_cbt,4.13,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2021-08-01,brecha_salario_cbt,4.08,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
-2017-01-01,alquiler_real,2.08,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2017-02-01,alquiler_real,2.85,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2017-03-01,alquiler_real,1.99,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2017-04-01,alquiler_real,2.18,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2017-05-01,alquiler_real,2.22,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2017-06-01,alquiler_real,2.17,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2017-07-01,alquiler_real,2.22,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2017-08-01,alquiler_real,2.11,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2017-09-01,alquiler_real,2.27,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2017-10-01,alquiler_real,1.6,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2017-11-01,alquiler_real,2.68,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2017-12-01,alquiler_real,2.24,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-01-01,alquiler_real,1.86,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-02-01,alquiler_real,2.79,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-03-01,alquiler_real,1.84,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-04-01,alquiler_real,1.75,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-05-01,alquiler_real,2.45,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-06-01,alquiler_real,2.8,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-07-01,alquiler_real,1.77,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-08-01,alquiler_real,1.99,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-09-01,alquiler_real,2.43,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-10-01,alquiler_real,1.81,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-11-01,alquiler_real,1.6,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2018-12-01,alquiler_real,2.0,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-01-01,alquiler_real,2.49,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-02-01,alquiler_real,2.42,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-03-01,alquiler_real,2.13,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-04-01,alquiler_real,2.94,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-05-01,alquiler_real,2.24,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-06-01,alquiler_real,2.21,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-07-01,alquiler_real,2.43,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-08-01,alquiler_real,2.76,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-09-01,alquiler_real,2.1,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-10-01,alquiler_real,2.44,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-11-01,alquiler_real,2.05,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2019-12-01,alquiler_real,1.69,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-01-01,alquiler_real,2.28,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-02-01,alquiler_real,2.69,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-03-01,alquiler_real,2.88,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-04-01,alquiler_real,1.16,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-05-01,alquiler_real,-0.22,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-06-01,alquiler_real,1.68,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-07-01,alquiler_real,0.74,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-08-01,alquiler_real,2.24,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-09-01,alquiler_real,1.46,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-10-01,alquiler_real,3.77,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-11-01,alquiler_real,2.38,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2020-12-01,alquiler_real,2.59,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-01-01,alquiler_real,3.09,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-02-01,alquiler_real,2.93,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-03-01,alquiler_real,2.78,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-04-01,alquiler_real,6.07,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-05-01,alquiler_real,3.44,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-06-01,alquiler_real,2.99,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-07-01,alquiler_real,3.05,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-08-01,alquiler_real,1.92,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-09-01,alquiler_real,2.56,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-10-01,alquiler_real,4.32,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-11-01,alquiler_real,1.83,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2021-12-01,alquiler_real,2.84,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-01-01,alquiler_real,3.1,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-02-01,alquiler_real,6.56,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-03-01,alquiler_real,3.76,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-04-01,alquiler_real,6.49,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-05-01,alquiler_real,7.37,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-06-01,alquiler_real,4.67,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-07-01,alquiler_real,4.13,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-08-01,alquiler_real,2.96,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-09-01,alquiler_real,3.15,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-10-01,alquiler_real,4.89,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-11-01,alquiler_real,4.6,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2022-12-01,alquiler_real,4.73,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-01-01,alquiler_real,6.38,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-02-01,alquiler_real,6.03,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-03-01,alquiler_real,4.88,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-04-01,alquiler_real,6.9,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-05-01,alquiler_real,3.19,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-06-01,alquiler_real,5.34,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-07-01,alquiler_real,6.46,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-08-01,alquiler_real,9.33,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-09-01,alquiler_real,5.97,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-10-01,alquiler_real,10.13,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-11-01,alquiler_real,7.44,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-12-01,alquiler_real,9.42,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-01-01,alquiler_real,11.77,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-02-01,alquiler_real,10.63,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-03-01,alquiler_real,8.45,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-04-01,alquiler_real,11.6,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-05-01,alquiler_real,12.13,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-06-01,alquiler_real,11.61,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-07-01,alquiler_real,18.26,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-08-01,alquiler_real,14.14,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-09-01,alquiler_real,13.22,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-10-01,alquiler_real,9.67,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-11-01,alquiler_real,8.47,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2024-12-01,alquiler_real,6.52,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-01-01,alquiler_real,8.91,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-02-01,alquiler_real,6.53,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-03-01,alquiler_real,5.34,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-04-01,alquiler_real,3.57,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-05-01,alquiler_real,7.21,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-06-01,alquiler_real,4.47,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-07-01,alquiler_real,3.35,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-08-01,alquiler_real,3.34,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-09-01,alquiler_real,3.53,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-10-01,alquiler_real,3.42,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-11-01,alquiler_real,2.89,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2025-12-01,alquiler_real,2.42,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2026-01-01,alquiler_real,2.59,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2026-02-01,alquiler_real,2.6,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2026-03-01,alquiler_real,3.52,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2026-04-01,alquiler_real,2.49,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2026-05-01,alquiler_real,2.67,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2026-06-01,alquiler_real,3.69,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2026-07-01,alquiler_real,3.92,% m/m alquileres,INDEC — IPC-GBA (planilla original)
-2023-10-01,itvc_alquiler,91.8,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2023-11-01,itvc_alquiler,96.4,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2023-12-01,itvc_alquiler,110.3,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-01-01,itvc_alquiler,117.9,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-02-01,itvc_alquiler,122.6,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-03-01,itvc_alquiler,126.0,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-04-01,itvc_alquiler,123.3,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-05-01,itvc_alquiler,114.7,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-06-01,itvc_alquiler,107.2,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-07-01,itvc_alquiler,94.3,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-08-01,itvc_alquiler,86.1,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-09-01,itvc_alquiler,78.8,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-10-01,itvc_alquiler,73.9,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-11-01,itvc_alquiler,69.9,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2024-12-01,itvc_alquiler,67.5,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-01-01,itvc_alquiler,63.3,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-02-01,itvc_alquiler,60.7,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-03-01,itvc_alquiler,59.8,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-04-01,itvc_alquiler,59.4,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-05-01,itvc_alquiler,56.2,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-06-01,itvc_alquiler,54.9,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-07-01,itvc_alquiler,54.1,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-08-01,itvc_alquiler,53.3,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-09-01,itvc_alquiler,52.6,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-10-01,itvc_alquiler,52.1,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-11-01,itvc_alquiler,51.9,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2025-12-01,itvc_alquiler,52.1,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2026-01-01,itvc_alquiler,52.2,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2026-02-01,itvc_alquiler,52.2,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2026-03-01,itvc_alquiler,52.1,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2026-04-01,itvc_alquiler,52.3,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2026-05-01,itvc_alquiler,52.0,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2026-06-01,itvc_alquiler,51.1,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2026-07-01,itvc_alquiler,50.3,índice (100 = 4T-2023),INDEC — IPC-GBA (planilla original)
-2021-07-01,despacho_cemento,188.88,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2021-08-01,despacho_cemento,186.57,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2021-09-01,despacho_cemento,185.31,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2021-10-01,despacho_cemento,187.8,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2021-11-01,despacho_cemento,191.04,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2021-12-01,despacho_cemento,198.97,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-01-01,despacho_cemento,188.89,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-02-01,despacho_cemento,199.59,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-03-01,despacho_cemento,193.87,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-04-01,despacho_cemento,200.21,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-05-01,despacho_cemento,201.87,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-06-01,despacho_cemento,199.03,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-07-01,despacho_cemento,202.68,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-08-01,despacho_cemento,195.84,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-09-01,despacho_cemento,192.46,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-10-01,despacho_cemento,188.61,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-11-01,despacho_cemento,188.12,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2022-12-01,despacho_cemento,182.92,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-01-01,despacho_cemento,186.1,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-02-01,despacho_cemento,184.07,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-03-01,despacho_cemento,196.8,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-04-01,despacho_cemento,197.67,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-05-01,despacho_cemento,191.97,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-06-01,despacho_cemento,191.19,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-07-01,despacho_cemento,192.36,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-08-01,despacho_cemento,189.49,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-09-01,despacho_cemento,188.26,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-10-01,despacho_cemento,187.71,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-11-01,despacho_cemento,185.54,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-12-01,despacho_cemento,166.95,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-01-01,despacho_cemento,143.55,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-02-01,despacho_cemento,137.28,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-03-01,despacho_cemento,119.64,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-04-01,despacho_cemento,118.31,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-05-01,despacho_cemento,128.25,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-06-01,despacho_cemento,132.03,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-07-01,despacho_cemento,143.71,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-08-01,despacho_cemento,139.99,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-09-01,despacho_cemento,141.72,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-10-01,despacho_cemento,134.61,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-11-01,despacho_cemento,141.61,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2024-12-01,despacho_cemento,145.12,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-01-01,despacho_cemento,141.18,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-02-01,despacho_cemento,145.11,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-03-01,despacho_cemento,139.67,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-04-01,despacho_cemento,147.92,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-05-01,despacho_cemento,143.51,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-06-01,despacho_cemento,146.03,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-07-01,despacho_cemento,147.09,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-08-01,despacho_cemento,144.84,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-09-01,despacho_cemento,146.76,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-10-01,despacho_cemento,146.54,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-11-01,despacho_cemento,140.62,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2025-12-01,despacho_cemento,145.41,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2026-01-01,despacho_cemento,145.15,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2026-02-01,despacho_cemento,142.95,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2026-03-01,despacho_cemento,151.44,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2026-04-01,despacho_cemento,144.07,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2026-05-01,despacho_cemento,153.39,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2026-06-01,despacho_cemento,146.85,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2026-07-01,despacho_cemento,140.16,índice ISAC (desest.),INDEC — ISAC (planilla original vigente)
-2023-10-01,itvc_isac,104.2,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2023-11-01,itvc_isac,103.0,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2023-12-01,itvc_isac,92.7,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-01-01,itvc_isac,79.7,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-02-01,itvc_isac,76.2,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-03-01,itvc_isac,66.4,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-04-01,itvc_isac,65.7,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-05-01,itvc_isac,71.2,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-06-01,itvc_isac,73.3,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-07-01,itvc_isac,79.8,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-08-01,itvc_isac,77.7,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-09-01,itvc_isac,78.7,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-10-01,itvc_isac,74.8,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-11-01,itvc_isac,78.6,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2024-12-01,itvc_isac,80.6,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-01-01,itvc_isac,78.4,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-02-01,itvc_isac,80.6,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-03-01,itvc_isac,77.6,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-04-01,itvc_isac,82.1,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-05-01,itvc_isac,79.7,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-06-01,itvc_isac,81.1,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-07-01,itvc_isac,81.7,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-08-01,itvc_isac,80.4,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-09-01,itvc_isac,81.5,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-10-01,itvc_isac,81.4,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-11-01,itvc_isac,78.1,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2025-12-01,itvc_isac,80.8,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2026-01-01,itvc_isac,80.6,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2026-02-01,itvc_isac,79.4,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2026-03-01,itvc_isac,84.1,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2026-04-01,itvc_isac,80.0,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2026-05-01,itvc_isac,85.2,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2026-06-01,itvc_isac,81.6,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
-2026-07-01,itvc_isac,77.8,índice (100 = 4T-2023),INDEC — ISAC desestacionalizado original
+2026-08-01,alquiler_real,2.34,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2026-07-01,alquiler_real,3.92,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2026-06-01,alquiler_real,3.69,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2026-05-01,alquiler_real,2.67,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2026-04-01,alquiler_real,2.49,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2026-03-01,alquiler_real,3.52,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2026-02-01,alquiler_real,2.6,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2026-01-01,alquiler_real,2.59,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-12-01,alquiler_real,2.42,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-11-01,alquiler_real,2.89,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-10-01,alquiler_real,3.42,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-09-01,alquiler_real,3.53,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-08-01,alquiler_real,3.34,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-07-01,alquiler_real,3.35,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-06-01,alquiler_real,4.47,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-05-01,alquiler_real,7.21,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-04-01,alquiler_real,3.57,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-03-01,alquiler_real,5.34,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-02-01,alquiler_real,6.53,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2025-01-01,alquiler_real,8.91,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-12-01,alquiler_real,6.52,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-11-01,alquiler_real,8.47,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-10-01,alquiler_real,9.67,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-09-01,alquiler_real,13.22,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-08-01,alquiler_real,14.14,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-07-01,alquiler_real,18.26,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-06-01,alquiler_real,11.61,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-05-01,alquiler_real,12.13,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-04-01,alquiler_real,11.6,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-03-01,alquiler_real,8.45,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-02-01,alquiler_real,10.63,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2024-01-01,alquiler_real,11.77,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-12-01,alquiler_real,9.42,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-11-01,alquiler_real,7.44,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-10-01,alquiler_real,10.13,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-09-01,alquiler_real,5.97,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-08-01,alquiler_real,9.33,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-07-01,alquiler_real,6.46,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-06-01,alquiler_real,5.34,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-05-01,alquiler_real,3.19,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-04-01,alquiler_real,6.9,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-03-01,alquiler_real,4.88,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-02-01,alquiler_real,6.03,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2023-01-01,alquiler_real,6.38,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-12-01,alquiler_real,4.73,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-11-01,alquiler_real,4.6,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-10-01,alquiler_real,4.89,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-09-01,alquiler_real,3.15,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-08-01,alquiler_real,2.96,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-07-01,alquiler_real,4.13,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-06-01,alquiler_real,4.67,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-05-01,alquiler_real,7.37,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-04-01,alquiler_real,6.49,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-03-01,alquiler_real,3.76,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-02-01,alquiler_real,6.56,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2022-01-01,alquiler_real,3.1,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-12-01,alquiler_real,2.84,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-11-01,alquiler_real,1.83,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-10-01,alquiler_real,4.32,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-09-01,alquiler_real,2.56,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-08-01,alquiler_real,1.92,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-07-01,alquiler_real,3.05,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-06-01,alquiler_real,2.99,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-05-01,alquiler_real,3.44,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-04-01,alquiler_real,6.07,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-03-01,alquiler_real,2.78,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-02-01,alquiler_real,2.93,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2021-01-01,alquiler_real,3.09,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-12-01,alquiler_real,2.59,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-11-01,alquiler_real,2.38,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-10-01,alquiler_real,3.77,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-09-01,alquiler_real,1.46,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-08-01,alquiler_real,2.24,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-07-01,alquiler_real,0.74,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-06-01,alquiler_real,1.68,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-05-01,alquiler_real,-0.22,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-04-01,alquiler_real,1.16,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-03-01,alquiler_real,2.88,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-02-01,alquiler_real,2.69,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2020-01-01,alquiler_real,2.28,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-12-01,alquiler_real,1.69,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-11-01,alquiler_real,2.05,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-10-01,alquiler_real,2.44,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-09-01,alquiler_real,2.1,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-08-01,alquiler_real,2.76,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-07-01,alquiler_real,2.43,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-06-01,alquiler_real,2.21,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-05-01,alquiler_real,2.24,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-04-01,alquiler_real,2.94,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-03-01,alquiler_real,2.13,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-02-01,alquiler_real,2.42,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2019-01-01,alquiler_real,2.49,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-12-01,alquiler_real,2.0,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-11-01,alquiler_real,1.6,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-10-01,alquiler_real,1.81,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-09-01,alquiler_real,2.43,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-08-01,alquiler_real,1.99,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-07-01,alquiler_real,1.77,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-06-01,alquiler_real,2.8,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-05-01,alquiler_real,2.45,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-04-01,alquiler_real,1.75,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-03-01,alquiler_real,1.84,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-02-01,alquiler_real,2.79,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2018-01-01,alquiler_real,1.86,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-12-01,alquiler_real,2.24,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-11-01,alquiler_real,2.68,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-10-01,alquiler_real,1.6,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-09-01,alquiler_real,2.27,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-08-01,alquiler_real,2.11,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-07-01,alquiler_real,2.22,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-06-01,alquiler_real,2.17,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-05-01,alquiler_real,2.22,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-04-01,alquiler_real,2.18,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-03-01,alquiler_real,1.99,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-02-01,alquiler_real,2.85,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)
+2017-01-01,alquiler_real,2.08,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (planilla original)

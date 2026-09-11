@@ -1,9 +1,8 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-08T19:08:37.911326-03:00",
-    "nota": "Validación por panel y ancla macro; el contraste adicional sin ICC evita comparar el ITCIS con un componente propio",
-    "revision_icg": "2026-09-08: julio recuperado del XLS oficial (fecha textual jul-26); panel completo recalculado con entradas cotejadas y calendario corregido."
+    "generated_at": "2026-09-11T03:28:19.697129+00:00",
+    "nota": "Validación por panel y ancla macro; el contraste adicional sin ICC evita comparar el ITCIS con un componente propio"
   },
   "serie_itvc": {
     "2023-12": 96.9,
@@ -81,8 +80,8 @@
       "n": 32
     },
     "discriminante: ITVC sin ICC vs ICC (diferencias)": {
-      "r": 0.302,
-      "n": 31
+      "r": 0.288,
+      "n": 30
     }
   },
   "serie_itcm": {
@@ -415,7 +414,7 @@
   "redundancia_itcm": {
     "diferencias": {
       "n_pares": 105,
-      "r_abs_medio": 0.197,
+      "r_abs_medio": 0.198,
       "share_altos": 0.0
     },
     "umbral": 0.7,
@@ -427,7 +426,7 @@
     "matriz": {
       "costo_financiamiento_tesoro": {
         "credito_privado": -0.008,
-        "desequilibrio_monetario": 0.431,
+        "desequilibrio_monetario": 0.432,
         "emae_difusion": 0.192,
         "emae_ia": 0.201,
         "iai": 0.065,
@@ -443,7 +442,7 @@
       },
       "credito_privado": {
         "costo_financiamiento_tesoro": -0.008,
-        "desequilibrio_monetario": -0.049,
+        "desequilibrio_monetario": -0.05,
         "emae_difusion": 0.721,
         "emae_ia": 0.811,
         "iai": 0.877,
@@ -458,19 +457,19 @@
         "tcrm": -0.482
       },
       "desequilibrio_monetario": {
-        "costo_financiamiento_tesoro": 0.431,
-        "credito_privado": -0.049,
+        "costo_financiamiento_tesoro": 0.432,
+        "credito_privado": -0.05,
         "emae_difusion": -0.063,
         "emae_ia": 0.207,
-        "iai": 0.118,
+        "iai": 0.117,
         "idc": 0.126,
         "ipc_total": -0.086,
-        "ipi_manufacturero": 0.243,
-        "recaudacion": 0.0,
-        "rem_ipc_12m": -0.266,
-        "reservas_bcra": 0.103,
-        "resultado_primario": -0.155,
-        "saldo_comercial_12m": 0.249,
+        "ipi_manufacturero": 0.242,
+        "recaudacion": 0.001,
+        "rem_ipc_12m": -0.265,
+        "reservas_bcra": 0.104,
+        "resultado_primario": -0.156,
+        "saldo_comercial_12m": 0.25,
         "tcrm": -0.489
       },
       "emae_difusion": {
@@ -508,7 +507,7 @@
       "iai": {
         "costo_financiamiento_tesoro": 0.065,
         "credito_privado": 0.877,
-        "desequilibrio_monetario": 0.118,
+        "desequilibrio_monetario": 0.117,
         "emae_difusion": 0.829,
         "emae_ia": 0.872,
         "idc": 0.811,
@@ -556,7 +555,7 @@
       "ipi_manufacturero": {
         "costo_financiamiento_tesoro": 0.054,
         "credito_privado": 0.729,
-        "desequilibrio_monetario": 0.243,
+        "desequilibrio_monetario": 0.242,
         "emae_difusion": 0.544,
         "emae_ia": 0.765,
         "iai": 0.795,
@@ -572,7 +571,7 @@
       "recaudacion": {
         "costo_financiamiento_tesoro": 0.045,
         "credito_privado": -0.381,
-        "desequilibrio_monetario": 0.0,
+        "desequilibrio_monetario": 0.001,
         "emae_difusion": -0.609,
         "emae_ia": -0.264,
         "iai": -0.456,
@@ -588,7 +587,7 @@
       "rem_ipc_12m": {
         "costo_financiamiento_tesoro": 0.315,
         "credito_privado": 0.818,
-        "desequilibrio_monetario": -0.266,
+        "desequilibrio_monetario": -0.265,
         "emae_difusion": 0.728,
         "emae_ia": 0.713,
         "iai": 0.722,
@@ -604,7 +603,7 @@
       "reservas_bcra": {
         "costo_financiamiento_tesoro": -0.179,
         "credito_privado": 0.128,
-        "desequilibrio_monetario": 0.103,
+        "desequilibrio_monetario": 0.104,
         "emae_difusion": 0.354,
         "emae_ia": 0.329,
         "iai": 0.307,
@@ -620,7 +619,7 @@
       "resultado_primario": {
         "costo_financiamiento_tesoro": 0.377,
         "credito_privado": 0.736,
-        "desequilibrio_monetario": -0.155,
+        "desequilibrio_monetario": -0.156,
         "emae_difusion": 0.466,
         "emae_ia": 0.692,
         "iai": 0.586,
@@ -636,7 +635,7 @@
       "saldo_comercial_12m": {
         "costo_financiamiento_tesoro": 0.629,
         "credito_privado": 0.541,
-        "desequilibrio_monetario": 0.249,
+        "desequilibrio_monetario": 0.25,
         "emae_difusion": 0.39,
         "emae_ia": 0.593,
         "iai": 0.408,
@@ -1010,7 +1009,7 @@
       },
       "cepo_mulc": {
         "apertura_comercial": 0.346,
-        "concesiones_infraestructura": 0.328,
+        "concesiones_infraestructura": 0.327,
         "desregulacion_normativa": 0.918,
         "fal_modernizacion_laboral": 0.338,
         "gasto_funcionamiento": 0.257,
@@ -1024,7 +1023,7 @@
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.097,
-        "cepo_mulc": 0.328,
+        "cepo_mulc": 0.327,
         "desregulacion_normativa": 0.456,
         "fal_modernizacion_laboral": 0.905,
         "gasto_funcionamiento": 0.252,
@@ -1767,9 +1766,9 @@
       "alquiler_real": {
         "brecha_salario_cbt": -0.96,
         "carga_servicio_deuda_hogares": 0.963,
-        "consumo_carnes_total": 0.607,
+        "consumo_carnes_total": 0.608,
         "consumo_supermercados": -0.542,
-        "despacho_cemento": -0.498,
+        "despacho_cemento": -0.497,
         "empleo_registrado": 0.619,
         "icc_utdt": -0.704,
         "informalidad": 0.639,
@@ -1777,9 +1776,9 @@
         "ipc_alimentos": -0.904,
         "mora_familias": 0.77,
         "mortalidad_pymes": 0.837,
-        "motorizacion_total": -0.795,
-        "peso_tarifas": 0.401,
-        "pobreza_nowcast": -0.863,
+        "motorizacion_total": -0.796,
+        "peso_tarifas": 0.404,
+        "pobreza_nowcast": -0.86,
         "subocupacion_demandante": 0.061,
         "trabajo_independiente": 0.821
       },
@@ -1822,7 +1821,7 @@
         "trabajo_independiente": 0.875
       },
       "consumo_carnes_total": {
-        "alquiler_real": 0.607,
+        "alquiler_real": 0.608,
         "brecha_salario_cbt": -0.523,
         "carga_servicio_deuda_hogares": 0.576,
         "consumo_supermercados": -0.091,
@@ -1860,7 +1859,7 @@
         "trabajo_independiente": -0.157
       },
       "despacho_cemento": {
-        "alquiler_real": -0.498,
+        "alquiler_real": -0.497,
         "brecha_salario_cbt": 0.42,
         "carga_servicio_deuda_hogares": -0.491,
         "consumo_carnes_total": -0.084,
@@ -2012,7 +2011,7 @@
         "trabajo_independiente": 0.948
       },
       "motorizacion_total": {
-        "alquiler_real": -0.795,
+        "alquiler_real": -0.796,
         "brecha_salario_cbt": 0.73,
         "carga_servicio_deuda_hogares": -0.914,
         "consumo_carnes_total": -0.625,
@@ -2031,7 +2030,7 @@
         "trabajo_independiente": -0.896
       },
       "peso_tarifas": {
-        "alquiler_real": 0.401,
+        "alquiler_real": 0.404,
         "brecha_salario_cbt": -0.353,
         "carga_servicio_deuda_hogares": 0.853,
         "consumo_carnes_total": 0.779,
@@ -2050,7 +2049,7 @@
         "trabajo_independiente": -0.327
       },
       "pobreza_nowcast": {
-        "alquiler_real": -0.863,
+        "alquiler_real": -0.86,
         "brecha_salario_cbt": 0.152,
         "carga_servicio_deuda_hogares": -0.888,
         "consumo_carnes_total": -0.468,
@@ -2339,22 +2338,22 @@
         "por_diseno": null
       },
       {
-        "a": "alquiler_real",
-        "b": "pobreza_nowcast",
-        "r": -0.863,
-        "n": 20,
-        "dimension_a": "precios",
-        "dimension_b": "ingresos",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "pobreza_nowcast",
         "b": "trabajo_independiente",
         "r": -0.863,
         "n": 20,
         "dimension_a": "ingresos",
         "dimension_b": "empleo",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "alquiler_real",
+        "b": "pobreza_nowcast",
+        "r": -0.86,
+        "n": 20,
+        "dimension_a": "precios",
+        "dimension_b": "ingresos",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -2451,7 +2450,7 @@
       {
         "a": "alquiler_real",
         "b": "motorizacion_total",
-        "r": -0.795,
+        "r": -0.796,
         "n": 33,
         "dimension_a": "precios",
         "dimension_b": "ingresos",
@@ -2731,7 +2730,7 @@
     "2026-06": 2087.8,
     "2026-07": 2090.0,
     "2026-08": 1913.0,
-    "2026-09": 1936.7
+    "2026-09": 1985.7
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
@@ -2866,7 +2865,7 @@
           "2026-05": 96.1,
           "2026-06": 99.6,
           "2026-07": 99.5,
-          "2026-08": 98.4
+          "2026-08": 98.3
         }
       },
       "vulnerabilidad": {
@@ -4318,16 +4317,17 @@
     "2026-04": -4.66,
     "2026-05": 1.58,
     "2026-06": -0.57,
-    "2026-07": -6.51
+    "2026-07": -6.51,
+    "2026-08": -5.27
   },
   "correlaciones_brecha_obra_publica": {
     "niveles (brecha obra pública vs Construya var. i.a., ambas 12m)": {
       "r": 0.807,
-      "n": 109
+      "n": 110
     },
     "primeras diferencias (brecha vs Construya)": {
       "r": 0.298,
-      "n": 108
+      "n": 109
     }
   },
   "dispersion_itvc": {
@@ -4841,7 +4841,7 @@
     "transporte_pasajeros": {
       "antes_pct": 22.9,
       "despues_pct": 0.0,
-      "n_meses": 173
+      "n_meses": 174
     },
     "ventas_naftas": {
       "antes_pct": 17.7,
@@ -4886,9 +4886,9 @@
       "avanzo": "2026-09-08"
     },
     "transporte_pasajeros": {
-      "ultimo": "2026-05",
-      "n": 173,
-      "avanzo": "2026-08-13"
+      "ultimo": "2026-06",
+      "n": 174,
+      "avanzo": "2026-09-11"
     },
     "ventas_naftas": {
       "ultimo": "2026-07",
@@ -5044,9 +5044,9 @@
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
           "propia": true,
-          "r_niveles": 0.068,
-          "r_diferencias": 0.213,
-          "n": 30
+          "r_niveles": 0.064,
+          "r_diferencias": 0.24,
+          "n": 31
         },
         {
           "estadistica": "ventas_naftas",
@@ -5061,18 +5061,18 @@
       "n_propias": 6,
       "n_ajenas": 7,
       "niveles": {
-        "convergente": 0.163,
+        "convergente": 0.162,
         "discriminante": 0.221,
-        "brecha": -0.058
+        "brecha": -0.059
       },
       "diferencias": {
-        "convergente": 0.215,
+        "convergente": 0.22,
         "discriminante": 0.19,
-        "brecha": 0.025
+        "brecha": 0.03
       },
       "factor": {
         "cargas": {
-          "electricidad_residencial": 0.718,
+          "electricidad_residencial": 0.717,
           "gas_residencial": 0.209,
           "transporte_pasajeros": -0.068,
           "ventas_naftas": 0.661
@@ -5096,22 +5096,22 @@
           [
             "2023-12",
             96.9,
-            1.023
+            1.022
           ],
           [
             "2024-01",
             95.4,
-            1.176
+            1.175
           ],
           [
             "2024-02",
             96.0,
-            2.324
+            2.323
           ],
           [
             "2024-03",
             96.2,
-            1.354
+            1.353
           ],
           [
             "2024-04",
@@ -5136,7 +5136,7 @@
           [
             "2024-08",
             96.9,
-            1.471
+            1.472
           ],
           [
             "2024-09",
@@ -5146,17 +5146,17 @@
           [
             "2024-10",
             96.6,
-            0.914
+            0.913
           ],
           [
             "2024-11",
             97.5,
-            1.429
+            1.428
           ],
           [
             "2024-12",
             97.5,
-            0.565
+            0.564
           ],
           [
             "2025-01",
@@ -5176,7 +5176,7 @@
           [
             "2025-04",
             95.0,
-            1.033
+            1.034
           ],
           [
             "2025-05",
@@ -5216,22 +5216,22 @@
           [
             "2025-12",
             97.6,
-            2.198
+            2.196
           ],
           [
             "2026-01",
             96.1,
-            1.408
+            1.407
           ],
           [
             "2026-02",
             96.1,
-            1.392
+            1.391
           ],
           [
             "2026-03",
             94.6,
-            1.435
+            1.434
           ],
           [
             "2026-04",
@@ -5245,7 +5245,7 @@
           ]
         ],
         "r_niveles": 0.103,
-        "r_diferencias": 0.344,
+        "r_diferencias": 0.35,
         "mejor_sola_niveles": 0.315,
         "mejor_sola_diferencias": 0.378,
         "aporte_sobre_tendencia": {
@@ -5256,29 +5256,29 @@
           "r2_con_indice": 0.091,
           "aporte": 0.056,
           "signo": "positivo",
-          "coef": 0.1232
+          "coef": 0.1231
         },
         "plano": "niveles",
         "pares_grafico": [
           [
             "2023-12",
             96.9,
-            1.023
+            1.022
           ],
           [
             "2024-01",
             95.4,
-            1.176
+            1.175
           ],
           [
             "2024-02",
             96.0,
-            2.324
+            2.323
           ],
           [
             "2024-03",
             96.2,
-            1.354
+            1.353
           ],
           [
             "2024-04",
@@ -5303,7 +5303,7 @@
           [
             "2024-08",
             96.9,
-            1.471
+            1.472
           ],
           [
             "2024-09",
@@ -5313,17 +5313,17 @@
           [
             "2024-10",
             96.6,
-            0.914
+            0.913
           ],
           [
             "2024-11",
             97.5,
-            1.429
+            1.428
           ],
           [
             "2024-12",
             97.5,
-            0.565
+            0.564
           ],
           [
             "2025-01",
@@ -5343,7 +5343,7 @@
           [
             "2025-04",
             95.0,
-            1.033
+            1.034
           ],
           [
             "2025-05",
@@ -5383,22 +5383,22 @@
           [
             "2025-12",
             97.6,
-            2.198
+            2.196
           ],
           [
             "2026-01",
             96.1,
-            1.408
+            1.407
           ],
           [
             "2026-02",
             96.1,
-            1.392
+            1.391
           ],
           [
             "2026-03",
             94.6,
-            1.435
+            1.434
           ],
           [
             "2026-04",
@@ -5412,7 +5412,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 6 estadísticas de su propio terreno es 0,163 y con las 7 ajenas es 0,221. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,215 con lo propio contra 0,19 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 6 estadísticas de su propio terreno es 0,162 y con las 7 ajenas es 0,221. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,22 con lo propio contra 0,19 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     },
     "itcg": {
       "indice": "itcg",
@@ -5521,9 +5521,9 @@
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.463,
-          "r_diferencias": -0.166,
-          "n": 30
+          "r_niveles": -0.44,
+          "r_diferencias": -0.173,
+          "n": 31
         },
         {
           "estadistica": "ventas_naftas",
@@ -5539,13 +5539,13 @@
       "n_ajenas": 9,
       "niveles": {
         "convergente": 0.394,
-        "discriminante": 0.392,
-        "brecha": 0.002
+        "discriminante": 0.389,
+        "brecha": 0.005
       },
       "diferencias": {
         "convergente": 0.128,
-        "discriminante": 0.156,
-        "brecha": -0.028
+        "discriminante": 0.157,
+        "brecha": -0.029
       },
       "factor": {
         "cargas": {
@@ -5899,7 +5899,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 4 estadísticas de su propio terreno es 0,394 y con las 9 ajenas es 0,392. En los cambios mes a mes la separación no se sostiene: 0,128 con lo propio contra 0,156 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 4 estadísticas de su propio terreno es 0,394 y con las 9 ajenas es 0,389. En los cambios mes a mes la separación no se sostiene: 0,128 con lo propio contra 0,157 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     },
     "itcp": {
       "indice": "itcp",
@@ -6008,9 +6008,9 @@
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.094,
-          "r_diferencias": -0.197,
-          "n": 29
+          "r_niveles": -0.082,
+          "r_diferencias": -0.188,
+          "n": 30
         },
         {
           "estadistica": "ventas_naftas",
@@ -6026,15 +6026,15 @@
       "n_ajenas": 11,
       "niveles": {
         "convergente": 0.169,
-        "discriminante": 0.224,
-        "brecha": -0.055
+        "discriminante": 0.223,
+        "brecha": -0.054
       },
       "diferencias": {
         "convergente": 0.323,
         "discriminante": 0.159,
         "brecha": 0.164
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 2 estadísticas de su propio terreno es 0,169 y con las 11 ajenas es 0,224. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,323 con lo propio contra 0,159 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 2 estadísticas de su propio terreno es 0,169 y con las 11 ajenas es 0,223. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,323 con lo propio contra 0,159 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     }
   }
 }

@@ -33,6 +33,40 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,votometro_ventaja_lla,12.3,pp (brecha LLA−PJ),Votómetro CIGOB
 2024-01-01,votometro_ventaja_lla,14.2,pp (brecha LLA−PJ),Votómetro CIGOB
 2023-12-01,votometro_ventaja_lla,16.1,pp (brecha LLA−PJ),Votómetro CIGOB
+2026-09-11,veto_quorum,9.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2026-08-31,veto_quorum,9.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2026-07-31,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2026-06-30,veto_quorum,7.7,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2026-05-31,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2026-04-30,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2026-03-31,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2026-02-28,veto_quorum,13.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2026-01-31,veto_quorum,13.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-12-31,veto_quorum,13.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-11-30,veto_quorum,15.4,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-10-31,veto_quorum,36.8,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-09-30,veto_quorum,35.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-08-31,veto_quorum,35.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-07-31,veto_quorum,38.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-06-30,veto_quorum,40.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-05-31,veto_quorum,38.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-04-30,veto_quorum,33.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-03-31,veto_quorum,36.4,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-02-28,veto_quorum,40.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2025-01-31,veto_quorum,38.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-12-31,veto_quorum,36.4,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-11-30,veto_quorum,34.8,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-10-31,veto_quorum,16.7,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-09-30,veto_quorum,17.6,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-08-31,veto_quorum,17.6,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-07-31,veto_quorum,13.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-06-30,veto_quorum,12.5,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-05-31,veto_quorum,14.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-04-30,veto_quorum,15.4,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-03-31,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-02-29,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2024-01-31,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
+2023-12-31,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
 2025-12-31,velocidad_resolucion,45.4,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
 2024-12-31,velocidad_resolucion,41.7,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
 2023-12-31,velocidad_resolucion,52.4,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
@@ -79,6 +113,73 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rotacion_gabinete,1,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2024-01-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2023-12-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
+2026-09-01,ratio_dnu,1.4,DNUs publicados por ley publicada,InfoLeg
+2026-08-01,ratio_dnu,1.48,DNUs publicados por ley publicada,InfoLeg
+2026-07-01,ratio_dnu,1.4,DNUs publicados por ley publicada,InfoLeg
+2026-06-01,ratio_dnu,1.45,DNUs publicados por ley publicada,InfoLeg
+2026-05-01,ratio_dnu,2.818,DNUs publicados por ley publicada,InfoLeg
+2026-04-01,ratio_dnu,2.429,DNUs publicados por ley publicada,InfoLeg
+2026-03-01,ratio_dnu,2.833,DNUs publicados por ley publicada,InfoLeg
+2026-02-01,ratio_dnu,2.5,DNUs publicados por ley publicada,InfoLeg
+2026-01-01,ratio_dnu,2.846,DNUs publicados por ley publicada,InfoLeg
+2025-12-01,ratio_dnu,2.818,DNUs publicados por ley publicada,InfoLeg
+2025-11-01,ratio_dnu,3.182,DNUs publicados por ley publicada,InfoLeg
+2025-10-01,ratio_dnu,3.273,DNUs publicados por ley publicada,InfoLeg
+2025-09-01,ratio_dnu,1.182,DNUs publicados por ley publicada,InfoLeg
+2025-08-01,ratio_dnu,0.884,DNUs publicados por ley publicada,InfoLeg
+2025-07-01,ratio_dnu,0.953,DNUs publicados por ley publicada,InfoLeg
+2025-06-01,ratio_dnu,1.022,DNUs publicados por ley publicada,InfoLeg
+2025-05-01,ratio_dnu,1.022,DNUs publicados por ley publicada,InfoLeg
+2025-04-01,ratio_dnu,1.023,DNUs publicados por ley publicada,InfoLeg
+2025-03-01,ratio_dnu,1.022,DNUs publicados por ley publicada,InfoLeg
+2025-02-01,ratio_dnu,1.119,DNUs publicados por ley publicada,InfoLeg
+2025-01-01,ratio_dnu,1.143,DNUs publicados por ley publicada,InfoLeg
+2024-12-01,ratio_dnu,1.119,DNUs publicados por ley publicada,InfoLeg
+2024-11-01,ratio_dnu,1.19,DNUs publicados por ley publicada,InfoLeg
+2024-10-01,ratio_dnu,1.238,DNUs publicados por ley publicada,InfoLeg
+2024-09-01,ratio_dnu,1.656,DNUs publicados por ley publicada,InfoLeg
+2024-08-01,ratio_dnu,2.476,DNUs publicados por ley publicada,InfoLeg
+2024-07-01,ratio_dnu,2.429,DNUs publicados por ley publicada,InfoLeg
+2024-06-01,ratio_dnu,2.043,DNUs publicados por ley publicada,InfoLeg
+2024-05-01,ratio_dnu,1.913,DNUs publicados por ley publicada,InfoLeg
+2024-04-01,ratio_dnu,1.344,DNUs publicados por ley publicada,InfoLeg
+2024-03-01,ratio_dnu,1.212,DNUs publicados por ley publicada,InfoLeg
+2024-02-01,ratio_dnu,1.147,DNUs publicados por ley publicada,InfoLeg
+2024-01-01,ratio_dnu,1.088,DNUs publicados por ley publicada,InfoLeg
+2023-12-01,ratio_dnu,1.029,DNUs publicados por ley publicada,InfoLeg
+2026-08-01,produccion_legislativa,29,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-07-01,produccion_legislativa,25,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-06-01,produccion_legislativa,28,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-05-01,produccion_legislativa,24,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-04-01,produccion_legislativa,18,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-03-01,produccion_legislativa,17,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-02-01,produccion_legislativa,16,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-01-01,produccion_legislativa,17,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-12-01,produccion_legislativa,17,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-11-01,produccion_legislativa,15,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-10-01,produccion_legislativa,15,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-09-01,produccion_legislativa,38,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-08-01,produccion_legislativa,40,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-07-01,produccion_legislativa,49,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-06-01,produccion_legislativa,47,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-05-01,produccion_legislativa,48,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-04-01,produccion_legislativa,45,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-03-01,produccion_legislativa,47,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-02-01,produccion_legislativa,48,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-01-01,produccion_legislativa,44,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-12-01,produccion_legislativa,44,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-11-01,produccion_legislativa,44,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-10-01,produccion_legislativa,44,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-09-01,produccion_legislativa,24,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-08-01,produccion_legislativa,33,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-07-01,produccion_legislativa,21,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-06-01,produccion_legislativa,25,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-05-01,produccion_legislativa,23,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-04-01,produccion_legislativa,23,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-03-01,produccion_legislativa,31,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-02-01,produccion_legislativa,32,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-01-01,produccion_legislativa,34,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2023-12-01,produccion_legislativa,34,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2026-09-01,paralisis_denuncias,13,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-08-01,paralisis_denuncias,14,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-07-01,paralisis_denuncias,15,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
@@ -403,7 +504,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,eficacia_legislativa,31.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,eficacia_legislativa,30.4,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,eficacia_legislativa,36.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
-2026-09-08,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-09-11,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-08-31,desafios_legislativos,3.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-07-31,desafios_legislativos,10.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-06-30,desafios_legislativos,11.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
@@ -437,7 +538,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-01-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2023-12-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
-2026-09-08,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-09-11,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-08-31,derrotas_legislativas,3,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-07-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-06-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
@@ -471,6 +572,39 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2024-01-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2023-12-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-08-01,conflictividad_nacional,-24.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-07-01,conflictividad_nacional,-24.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-06-01,conflictividad_nacional,-23.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-05-01,conflictividad_nacional,-21.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-04-01,conflictividad_nacional,-26.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-03-01,conflictividad_nacional,-31.9,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-02-01,conflictividad_nacional,-32.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-01-01,conflictividad_nacional,-31.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-12-01,conflictividad_nacional,-33.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-11-01,conflictividad_nacional,-34.2,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-10-01,conflictividad_nacional,-33.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-09-01,conflictividad_nacional,-27.3,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-08-01,conflictividad_nacional,-27.8,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-07-01,conflictividad_nacional,-29.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-06-01,conflictividad_nacional,-30.2,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-05-01,conflictividad_nacional,-30.9,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-04-01,conflictividad_nacional,-28.3,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-03-01,conflictividad_nacional,-27.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-02-01,conflictividad_nacional,-27.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-01-01,conflictividad_nacional,-32.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-12-01,conflictividad_nacional,-27.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-11-01,conflictividad_nacional,-23.9,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-10-01,conflictividad_nacional,-25.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-09-01,conflictividad_nacional,-30.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-08-01,conflictividad_nacional,-29.8,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-07-01,conflictividad_nacional,-28.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-06-01,conflictividad_nacional,-18.5,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-05-01,conflictividad_nacional,-12.5,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-04-01,conflictividad_nacional,-12.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-03-01,conflictividad_nacional,-5.8,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-02-01,conflictividad_nacional,-0.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-01-01,conflictividad_nacional,2.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2023-12-01,conflictividad_nacional,0.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-09-01,comisiones_caidas,97.1,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2026-08-01,comisiones_caidas,97.2,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2026-07-01,comisiones_caidas,97.1,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
@@ -505,7 +639,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
-2026-09-08,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-09-11,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-08-31,cohesion_bloque,99.9,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-07-31,cohesion_bloque,99.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-06-30,cohesion_bloque,99.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
@@ -539,6 +673,150 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2024-01-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2023-12-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-09-01,cobertura_judicial,73.82,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-08-01,cobertura_judicial,69.95,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-07-01,cobertura_judicial,70.37,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-06-01,cobertura_judicial,69.01,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-05-01,cobertura_judicial,63.98,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-04-01,cobertura_judicial,64.08,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-03-01,cobertura_judicial,64.29,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-02-01,cobertura_judicial,64.92,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-01-01,cobertura_judicial,65.13,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-12-01,cobertura_judicial,65.24,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-11-01,cobertura_judicial,66.18,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-10-01,cobertura_judicial,67.23,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-09-01,cobertura_judicial,67.85,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-08-01,cobertura_judicial,68.59,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-07-01,cobertura_judicial,68.9,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-06-01,cobertura_judicial,69.11,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-05-01,cobertura_judicial,69.32,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-04-01,cobertura_judicial,69.63,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-03-01,cobertura_judicial,70.26,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-02-01,cobertura_judicial,70.58,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2025-01-01,cobertura_judicial,70.89,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-12-01,cobertura_judicial,71.2,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-11-01,cobertura_judicial,71.41,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-10-01,cobertura_judicial,71.52,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-09-01,cobertura_judicial,71.62,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-08-01,cobertura_judicial,71.62,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-07-01,cobertura_judicial,72.04,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-06-01,cobertura_judicial,72.04,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-05-01,cobertura_judicial,72.36,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-04-01,cobertura_judicial,72.46,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-03-01,cobertura_judicial,72.57,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-02-01,cobertura_judicial,72.88,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2024-01-01,cobertura_judicial,73.3,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2023-12-01,cobertura_judicial,73.4,% estimado de cargos con juez designado,"Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura — movimientos netos"
+2026-08-01,brecha_obra_publica,-1.8,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2026-07-01,brecha_obra_publica,-1.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2026-06-01,brecha_obra_publica,0.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2026-05-01,brecha_obra_publica,2.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2026-04-01,brecha_obra_publica,2.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2026-03-01,brecha_obra_publica,3.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2026-02-01,brecha_obra_publica,3.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2026-01-01,brecha_obra_publica,3.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-12-01,brecha_obra_publica,3.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-11-01,brecha_obra_publica,2.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-10-01,brecha_obra_publica,1.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-09-01,brecha_obra_publica,-1.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-08-01,brecha_obra_publica,-3.8,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-07-01,brecha_obra_publica,-6.0,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-06-01,brecha_obra_publica,-8.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-05-01,brecha_obra_publica,-13.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-04-01,brecha_obra_publica,-15.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-03-01,brecha_obra_publica,-17.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-02-01,brecha_obra_publica,-20.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2025-01-01,brecha_obra_publica,-24.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-12-01,brecha_obra_publica,-26.6,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-11-01,brecha_obra_publica,-28.6,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-10-01,brecha_obra_publica,-29.8,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-09-01,brecha_obra_publica,-29.6,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-08-01,brecha_obra_publica,-28.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-07-01,brecha_obra_publica,-27.0,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-06-01,brecha_obra_publica,-25.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-05-01,brecha_obra_publica,-23.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-04-01,brecha_obra_publica,-21.6,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-03-01,brecha_obra_publica,-17.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-02-01,brecha_obra_publica,-13.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2024-01-01,brecha_obra_publica,-8.5,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-12-01,brecha_obra_publica,-4.6,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-11-01,brecha_obra_publica,-1.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-10-01,brecha_obra_publica,1.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-09-01,brecha_obra_publica,3.5,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-08-01,brecha_obra_publica,5.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-07-01,brecha_obra_publica,4.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-06-01,brecha_obra_publica,4.8,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-05-01,brecha_obra_publica,5.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-04-01,brecha_obra_publica,5.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-03-01,brecha_obra_publica,3.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-02-01,brecha_obra_publica,3.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2023-01-01,brecha_obra_publica,3.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-12-01,brecha_obra_publica,4.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-11-01,brecha_obra_publica,5.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-10-01,brecha_obra_publica,5.5,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-09-01,brecha_obra_publica,6.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-08-01,brecha_obra_publica,7.5,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-07-01,brecha_obra_publica,10.0,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-06-01,brecha_obra_publica,11.8,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-05-01,brecha_obra_publica,13.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-04-01,brecha_obra_publica,14.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-03-01,brecha_obra_publica,15.5,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-02-01,brecha_obra_publica,14.8,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2022-01-01,brecha_obra_publica,14.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-12-01,brecha_obra_publica,13.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-11-01,brecha_obra_publica,11.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-10-01,brecha_obra_publica,9.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-09-01,brecha_obra_publica,7.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-08-01,brecha_obra_publica,6.0,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-07-01,brecha_obra_publica,4.5,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-06-01,brecha_obra_publica,3.0,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-05-01,brecha_obra_publica,2.8,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-04-01,brecha_obra_publica,3.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-03-01,brecha_obra_publica,4.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-02-01,brecha_obra_publica,2.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2021-01-01,brecha_obra_publica,-0.5,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-12-01,brecha_obra_publica,-1.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-11-01,brecha_obra_publica,-2.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-10-01,brecha_obra_publica,-4.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-09-01,brecha_obra_publica,-5.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-08-01,brecha_obra_publica,-4.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-07-01,brecha_obra_publica,-6.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-06-01,brecha_obra_publica,-8.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-05-01,brecha_obra_publica,-10.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-04-01,brecha_obra_publica,-12.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-03-01,brecha_obra_publica,-13.6,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-02-01,brecha_obra_publica,-11.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2020-01-01,brecha_obra_publica,-12.0,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-12-01,brecha_obra_publica,-12.0,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-11-01,brecha_obra_publica,-10.8,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-10-01,brecha_obra_publica,-10.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-09-01,brecha_obra_publica,-10.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-08-01,brecha_obra_publica,-12.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-07-01,brecha_obra_publica,-12.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-06-01,brecha_obra_publica,-12.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-05-01,brecha_obra_publica,-12.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-04-01,brecha_obra_publica,-11.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-03-01,brecha_obra_publica,-11.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-02-01,brecha_obra_publica,-11.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2019-01-01,brecha_obra_publica,-8.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-12-01,brecha_obra_publica,-8.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-11-01,brecha_obra_publica,-7.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-10-01,brecha_obra_publica,-6.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-09-01,brecha_obra_publica,-5.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-08-01,brecha_obra_publica,-4.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-07-01,brecha_obra_publica,-1.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-06-01,brecha_obra_publica,1.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-05-01,brecha_obra_publica,3.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-04-01,brecha_obra_publica,6.8,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-03-01,brecha_obra_publica,9.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-02-01,brecha_obra_publica,9.5,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2018-01-01,brecha_obra_publica,10.7,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2017-12-01,brecha_obra_publica,12.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2017-11-01,brecha_obra_publica,14.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2017-10-01,brecha_obra_publica,16.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2017-09-01,brecha_obra_publica,18.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2017-08-01,brecha_obra_publica,21.1,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2017-07-01,brecha_obra_publica,23.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
 2026-08-31,bloqueo_sostenido,33.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-07-31,bloqueo_sostenido,20.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-06-30,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
@@ -603,7 +881,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,apoyo_empresario,-0.6,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2024-01-01,apoyo_empresario,-0.6,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2023-12-01,apoyo_empresario,-0.667,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
-2026-09-08,alineamiento_senadores_prov,59.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2026-09-11,alineamiento_senadores_prov,59.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-08-31,alineamiento_senadores_prov,62.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-07-31,alineamiento_senadores_prov,70.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-06-30,alineamiento_senadores_prov,70.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
@@ -635,307 +913,29 @@ fecha,indicador,valor,unidad,fuente
 2024-04-30,alineamiento_senadores_prov,74.7,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2024-03-31,alineamiento_senadores_prov,69.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2024-02-29,alineamiento_senadores_prov,100.0,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
-2023-12-01,cobertura_judicial,73.4,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-01-01,cobertura_judicial,73.3,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-02-01,cobertura_judicial,72.88,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-03-01,cobertura_judicial,72.57,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-04-01,cobertura_judicial,72.46,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-05-01,cobertura_judicial,72.36,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-06-01,cobertura_judicial,72.04,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-07-01,cobertura_judicial,72.04,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-08-01,cobertura_judicial,71.62,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-09-01,cobertura_judicial,71.62,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-10-01,cobertura_judicial,71.52,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-11-01,cobertura_judicial,71.41,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2024-12-01,cobertura_judicial,71.2,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-01-01,cobertura_judicial,70.89,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-02-01,cobertura_judicial,70.58,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-03-01,cobertura_judicial,70.26,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-04-01,cobertura_judicial,69.63,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-05-01,cobertura_judicial,69.32,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-06-01,cobertura_judicial,69.11,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-07-01,cobertura_judicial,68.9,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-08-01,cobertura_judicial,68.59,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-09-01,cobertura_judicial,67.85,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-10-01,cobertura_judicial,67.23,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-11-01,cobertura_judicial,66.18,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2025-12-01,cobertura_judicial,65.24,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2026-01-01,cobertura_judicial,65.13,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2026-02-01,cobertura_judicial,64.92,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2026-03-01,cobertura_judicial,64.29,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2026-04-01,cobertura_judicial,64.08,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2026-05-01,cobertura_judicial,63.98,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2026-06-01,cobertura_judicial,69.01,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2026-07-01,cobertura_judicial,70.37,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2026-08-01,cobertura_judicial,69.95,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2026-09-01,cobertura_judicial,73.82,% estimado de cargos con juez designado,"Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura"
-2017-07-01,brecha_obra_publica,23.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2017-08-01,brecha_obra_publica,21.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2017-09-01,brecha_obra_publica,18.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2017-10-01,brecha_obra_publica,16.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2017-11-01,brecha_obra_publica,14.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2017-12-01,brecha_obra_publica,12.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-01-01,brecha_obra_publica,10.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-02-01,brecha_obra_publica,9.5,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-03-01,brecha_obra_publica,9.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-04-01,brecha_obra_publica,6.8,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-05-01,brecha_obra_publica,3.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-06-01,brecha_obra_publica,1.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-07-01,brecha_obra_publica,-1.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-08-01,brecha_obra_publica,-4.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-09-01,brecha_obra_publica,-5.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-10-01,brecha_obra_publica,-6.3,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-11-01,brecha_obra_publica,-7.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2018-12-01,brecha_obra_publica,-8.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-01-01,brecha_obra_publica,-8.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-02-01,brecha_obra_publica,-11.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-03-01,brecha_obra_publica,-11.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-04-01,brecha_obra_publica,-11.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-05-01,brecha_obra_publica,-12.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-06-01,brecha_obra_publica,-12.3,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-07-01,brecha_obra_publica,-12.3,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-08-01,brecha_obra_publica,-12.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-09-01,brecha_obra_publica,-10.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-10-01,brecha_obra_publica,-10.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-11-01,brecha_obra_publica,-10.8,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2019-12-01,brecha_obra_publica,-12.0,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-01-01,brecha_obra_publica,-12.0,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-02-01,brecha_obra_publica,-11.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-03-01,brecha_obra_publica,-13.6,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-04-01,brecha_obra_publica,-12.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-05-01,brecha_obra_publica,-10.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-06-01,brecha_obra_publica,-8.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-07-01,brecha_obra_publica,-6.3,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-08-01,brecha_obra_publica,-4.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-09-01,brecha_obra_publica,-5.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-10-01,brecha_obra_publica,-4.3,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-11-01,brecha_obra_publica,-2.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2020-12-01,brecha_obra_publica,-1.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-01-01,brecha_obra_publica,-0.5,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-02-01,brecha_obra_publica,2.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-03-01,brecha_obra_publica,4.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-04-01,brecha_obra_publica,3.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-05-01,brecha_obra_publica,2.8,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-06-01,brecha_obra_publica,3.0,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-07-01,brecha_obra_publica,4.5,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-08-01,brecha_obra_publica,6.0,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-09-01,brecha_obra_publica,7.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-10-01,brecha_obra_publica,9.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-11-01,brecha_obra_publica,11.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2021-12-01,brecha_obra_publica,13.3,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-01-01,brecha_obra_publica,14.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-02-01,brecha_obra_publica,14.8,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-03-01,brecha_obra_publica,15.5,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-04-01,brecha_obra_publica,14.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-05-01,brecha_obra_publica,13.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-06-01,brecha_obra_publica,11.8,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-07-01,brecha_obra_publica,10.0,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-08-01,brecha_obra_publica,7.5,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-09-01,brecha_obra_publica,6.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-10-01,brecha_obra_publica,5.5,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-11-01,brecha_obra_publica,5.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2022-12-01,brecha_obra_publica,4.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-01-01,brecha_obra_publica,3.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-02-01,brecha_obra_publica,3.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-03-01,brecha_obra_publica,3.3,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-04-01,brecha_obra_publica,5.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-05-01,brecha_obra_publica,5.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-06-01,brecha_obra_publica,4.8,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-07-01,brecha_obra_publica,4.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-08-01,brecha_obra_publica,5.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-09-01,brecha_obra_publica,3.5,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-10-01,brecha_obra_publica,1.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-11-01,brecha_obra_publica,-1.3,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-12-01,brecha_obra_publica,-4.6,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-01-01,brecha_obra_publica,-8.5,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-02-01,brecha_obra_publica,-13.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-03-01,brecha_obra_publica,-17.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-04-01,brecha_obra_publica,-21.6,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-05-01,brecha_obra_publica,-23.4,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-06-01,brecha_obra_publica,-25.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-07-01,brecha_obra_publica,-27.0,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-08-01,brecha_obra_publica,-28.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-09-01,brecha_obra_publica,-29.6,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-10-01,brecha_obra_publica,-29.8,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-11-01,brecha_obra_publica,-28.6,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2024-12-01,brecha_obra_publica,-26.6,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-01-01,brecha_obra_publica,-24.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-02-01,brecha_obra_publica,-20.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-03-01,brecha_obra_publica,-17.7,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-04-01,brecha_obra_publica,-15.3,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-05-01,brecha_obra_publica,-13.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-06-01,brecha_obra_publica,-8.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-07-01,brecha_obra_publica,-6.0,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-08-01,brecha_obra_publica,-3.8,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-09-01,brecha_obra_publica,-1.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-10-01,brecha_obra_publica,1.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-11-01,brecha_obra_publica,2.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2025-12-01,brecha_obra_publica,3.3,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2026-01-01,brecha_obra_publica,3.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2026-02-01,brecha_obra_publica,3.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2026-03-01,brecha_obra_publica,3.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2026-04-01,brecha_obra_publica,2.9,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2026-05-01,brecha_obra_publica,2.3,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2026-06-01,brecha_obra_publica,0.2,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2026-07-01,brecha_obra_publica,-1.1,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2026-08-01,brecha_obra_publica,-1.8,pp; promedio 12m; inicio del horizonte trimestral,INDEC · ISAC Cuadro 7.1
-2023-12-01,conflictividad_nacional,0.0,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-01-01,conflictividad_nacional,2.7,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-02-01,conflictividad_nacional,-0.1,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-03-01,conflictividad_nacional,-5.8,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-04-01,conflictividad_nacional,-12.4,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-05-01,conflictividad_nacional,-12.5,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-06-01,conflictividad_nacional,-18.5,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-07-01,conflictividad_nacional,-28.4,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-08-01,conflictividad_nacional,-29.8,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-09-01,conflictividad_nacional,-30.7,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-10-01,conflictividad_nacional,-25.0,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-11-01,conflictividad_nacional,-23.9,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-12-01,conflictividad_nacional,-27.7,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-01-01,conflictividad_nacional,-32.7,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-02-01,conflictividad_nacional,-27.7,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-03-01,conflictividad_nacional,-27.1,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-04-01,conflictividad_nacional,-28.3,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-05-01,conflictividad_nacional,-30.9,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-06-01,conflictividad_nacional,-30.2,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-07-01,conflictividad_nacional,-29.1,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-08-01,conflictividad_nacional,-27.8,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-09-01,conflictividad_nacional,-27.3,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-10-01,conflictividad_nacional,-33.1,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-11-01,conflictividad_nacional,-34.2,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2025-12-01,conflictividad_nacional,-33.1,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2026-01-01,conflictividad_nacional,-31.0,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2026-02-01,conflictividad_nacional,-32.7,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2026-03-01,conflictividad_nacional,-31.9,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2026-04-01,conflictividad_nacional,-26.4,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2026-05-01,conflictividad_nacional,-21.4,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2026-06-01,conflictividad_nacional,-23.0,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2026-07-01,conflictividad_nacional,-24.0,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2026-08-01,conflictividad_nacional,-24.1,% vs base 2023; grupos por inicio de semana (12m),ACLED — agregado semanal sábado–viernes; elaboración CIGOB
-2024-07-31,adhesion_reformas_provincial,4.2,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2024-08-31,adhesion_reformas_provincial,20.8,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2024-09-30,adhesion_reformas_provincial,37.5,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2024-10-31,adhesion_reformas_provincial,50.0,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2024-11-30,adhesion_reformas_provincial,54.2,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2024-12-31,adhesion_reformas_provincial,54.2,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-01-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-02-28,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-03-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-04-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-05-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-06-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-07-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-08-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-09-30,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-10-31,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-11-30,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2025-12-31,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2026-01-31,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2026-02-28,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2026-03-31,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2026-04-30,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2026-05-31,adhesion_reformas_provincial,75.0,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2026-06-30,adhesion_reformas_provincial,75.0,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2026-07-31,adhesion_reformas_provincial,75.0,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2026-08-31,adhesion_reformas_provincial,75.0,% de jurisdicciones (sobre 24),MAGyP y leyes provinciales complementarias — elaboración CIGOB
-2023-12-01,ratio_dnu,1.029,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-01-01,ratio_dnu,1.088,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-02-01,ratio_dnu,1.147,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-03-01,ratio_dnu,1.212,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-04-01,ratio_dnu,1.344,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-05-01,ratio_dnu,1.913,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-06-01,ratio_dnu,2.043,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-07-01,ratio_dnu,2.429,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-08-01,ratio_dnu,2.476,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-09-01,ratio_dnu,1.656,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-10-01,ratio_dnu,1.238,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-11-01,ratio_dnu,1.19,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2024-12-01,ratio_dnu,1.119,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-01-01,ratio_dnu,1.143,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-02-01,ratio_dnu,1.119,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-03-01,ratio_dnu,1.022,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-04-01,ratio_dnu,1.023,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-05-01,ratio_dnu,1.022,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-06-01,ratio_dnu,1.022,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-07-01,ratio_dnu,0.953,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-08-01,ratio_dnu,0.884,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-09-01,ratio_dnu,1.182,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-10-01,ratio_dnu,3.273,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-11-01,ratio_dnu,3.182,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2025-12-01,ratio_dnu,2.818,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2026-01-01,ratio_dnu,2.846,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2026-02-01,ratio_dnu,2.5,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2026-03-01,ratio_dnu,2.833,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2026-04-01,ratio_dnu,2.429,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2026-05-01,ratio_dnu,2.818,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2026-06-01,ratio_dnu,1.45,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2026-07-01,ratio_dnu,1.4,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2026-08-01,ratio_dnu,1.48,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2026-09-01,ratio_dnu,1.4,DNUs publicados por ley publicada,InfoLeg — reconstrucción por publicación y originales cotejados
-2023-12-31,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-01-31,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-02-29,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-03-31,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-04-30,veto_quorum,15.4,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-05-31,veto_quorum,14.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-06-30,veto_quorum,12.5,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-07-31,veto_quorum,13.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-08-31,veto_quorum,17.6,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-09-30,veto_quorum,17.6,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-10-31,veto_quorum,16.7,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-11-30,veto_quorum,34.8,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2024-12-31,veto_quorum,36.4,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-01-31,veto_quorum,38.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-02-28,veto_quorum,40.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-03-31,veto_quorum,36.4,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-04-30,veto_quorum,33.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-05-31,veto_quorum,38.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-06-30,veto_quorum,40.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-07-31,veto_quorum,38.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-08-31,veto_quorum,35.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-09-30,veto_quorum,35.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-10-31,veto_quorum,36.8,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-11-30,veto_quorum,15.4,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2025-12-31,veto_quorum,13.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2026-01-31,veto_quorum,13.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2026-02-28,veto_quorum,13.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2026-03-31,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2026-04-30,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2026-05-31,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2026-06-30,veto_quorum,7.7,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2026-07-31,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2026-08-31,veto_quorum,9.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2026-09-08,veto_quorum,10.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas
-2023-12-01,produccion_legislativa,34,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-01-01,produccion_legislativa,34,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-02-01,produccion_legislativa,32,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-03-01,produccion_legislativa,31,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-04-01,produccion_legislativa,23,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-05-01,produccion_legislativa,23,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-06-01,produccion_legislativa,25,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-07-01,produccion_legislativa,21,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-08-01,produccion_legislativa,33,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-09-01,produccion_legislativa,24,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-10-01,produccion_legislativa,44,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-11-01,produccion_legislativa,44,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2024-12-01,produccion_legislativa,44,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-01-01,produccion_legislativa,44,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-02-01,produccion_legislativa,48,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-03-01,produccion_legislativa,47,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-04-01,produccion_legislativa,45,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-05-01,produccion_legislativa,48,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-06-01,produccion_legislativa,47,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-07-01,produccion_legislativa,49,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-08-01,produccion_legislativa,40,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-09-01,produccion_legislativa,38,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-10-01,produccion_legislativa,15,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-11-01,produccion_legislativa,15,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2025-12-01,produccion_legislativa,17,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2026-01-01,produccion_legislativa,17,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2026-02-01,produccion_legislativa,16,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2026-03-01,produccion_legislativa,17,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2026-04-01,produccion_legislativa,18,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2026-05-01,produccion_legislativa,24,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2026-06-01,produccion_legislativa,28,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2026-07-01,produccion_legislativa,25,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
-2026-08-01,produccion_legislativa,29,leyes sancionadas (12m móviles),"Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones"
+2026-08-31,adhesion_reformas_provincial,75.0,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-07-31,adhesion_reformas_provincial,75.0,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-06-30,adhesion_reformas_provincial,75.0,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-05-31,adhesion_reformas_provincial,75.0,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-04-30,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-03-31,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-02-28,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-01-31,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-12-31,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-11-30,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-10-31,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-09-30,adhesion_reformas_provincial,70.8,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-08-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-07-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-06-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-05-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-04-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-03-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-02-28,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-01-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-12-31,adhesion_reformas_provincial,54.2,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-11-30,adhesion_reformas_provincial,54.2,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-10-31,adhesion_reformas_provincial,50.0,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-09-30,adhesion_reformas_provincial,37.5,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-08-31,adhesion_reformas_provincial,20.8,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-07-31,adhesion_reformas_provincial,4.2,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
