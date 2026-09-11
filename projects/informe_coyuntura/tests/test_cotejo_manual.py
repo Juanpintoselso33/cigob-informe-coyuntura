@@ -224,3 +224,43 @@ def test_marcador_llega_entero_con_stdout_bufferizado_en_subproceso(tmp_path):
     lineas = [l for l in r.stdout.splitlines() if cotejo_manual.MARCA in l]
     assert len(lineas) == 1 and lineas[0].startswith('parcial sin salto' + cotejo_manual.MARCA)
     assert avisos('basura previa' + cotejo_manual.MARCA + '{"indicador":"a","registro":"b","motivo":"c","fuente":"d"}')
+
+
+@pytest.mark.parametrize('invalida', ['', 'NA', '2026-02-30', None])
+def test_eficacia_con_corte_no_cuenta_fecha_invalida_y_conserva_cache(tmp_path, monkeypatch, capsys, invalida):
+    _correcciones(tmp_path, monkeypatch, [])
+    monkeypatch.setattr(politica, 'date', Hoy)
+
+    def paginate(rid, q=''):
+        if rid == politica.HCDN_PROYECTOS_RID:
+            return [{'PROYECTO_ID': 'HCDN1', 'TIPO': 'MENSAJE Y PROYECTO DE LEY',
+                     'EXP_DIPUTADOS': '0001-PE-2024', 'PUBLICACION_FECHA': '2025-03-01'}]
+        assert rid == politica.HCDN_LEYES_SANC_RID
+        return [{'PROYECTO_ID': 'HCDN1', 'LEY': 1, 'SANCION_DEFINITIVA': invalida},
+                {'PROYECTO_ID': 'HCDN2', 'LEY': 2, 'SANCION_DEFINITIVA': '2026-02-20T00:00:00'}]
+
+    monkeypatch.setattr(politica, '_hcdn_paginate', paginate)
+    with pytest.raises(ValueError):
+        politica._leyes_sancionadas_ids('2026-09-10')
+    assert politica.fetch_eficacia_legislativa() is None
+    salida = capsys.readouterr()
+    mensajes = avisos(salida.err)
+    assert len(mensajes) == 1 and 'HCDN1' in mensajes[0]
+    assert 'Usando cache' in salida.out
+    enviados = []
+    monkeypatch.setattr(aviso_slack, 'publicar', lambda cuerpo: enviados.append(cuerpo) or 0)
+    log = tmp_path / 'colectores.log'
+    log.write_text(salida.err + salida.out)
+    monkeypatch.setattr(sys, 'argv', ['aviso_slack', 'degradado', '--log', str(log), '--url', 'https://github.com/run/1'])
+    assert aviso_slack.main() == 0
+    assert len(enviados) == 1 and 'HCDN1' in enviados[0]
+
+
+def test_eficacia_con_corte_deja_fuera_sancion_valida_posterior(tmp_path, monkeypatch, capsys):
+    _correcciones(tmp_path, monkeypatch, [])
+    filas = [{'PROYECTO_ID': 'HCDN1', 'LEY': 1, 'SANCION_DEFINITIVA': '2026-02-20T00:00:00'},
+             {'PROYECTO_ID': 'HCDN2', 'LEY': 2, 'SANCION_DEFINITIVA': '2026-03-05T00:00:00'}]
+    monkeypatch.setattr(politica, '_hcdn_paginate', lambda *a, **kw: filas)
+    assert politica._leyes_sancionadas_ids('2026-02-28') == {'HCDN1'}
+    assert politica._leyes_sancionadas_ids('2026-03-05') == {'HCDN1', 'HCDN2'}
+    assert avisos(capsys.readouterr().err) == []

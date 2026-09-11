@@ -1526,18 +1526,33 @@ def _leyes_sancionadas_ids(hasta: str | None = None) -> set[str]:
     SANCION' vs 'CONSIDERACION Y SANCION', auditoría 2026-07-09) dejan de
     existir para eficacia_legislativa.
 
-    `hasta` (ISO YYYY-MM-DD) acota por SANCION_DEFINITIVA — lo usa la serie
-    histórica para que un punto ya publicado no cambie retroactivamente
-    cuando un proyecto se sanciona más tarde. Filas con fecha "NA" solo
-    entran sin cota (no se puede verificar su timing)."""
-    from cotejo_manual import aplicar_correcciones_sancion, revisar_fechas_sancion
+    `hasta` (ISO YYYY-MM-DD) acota por SANCION_DEFINITIVA — la card lo usa
+    con la fecha de hoy y la serie histórica con el cierre de cada mes, para
+    que un punto ya publicado no cambie retroactivamente cuando un proyecto
+    se sanciona más tarde. Con cota, cada fila tiene que traer una fecha
+    canónica (propia o documentada en sanciones_fechas_verificadas.json):
+    una fecha ausente o ilegible se registra como [COTEJO_MANUAL] y hace
+    fallar el cálculo, para que la card conserve el último valor verificable
+    en vez de publicar un porcentaje parcial. Sin cota no hay timing que
+    verificar y las filas entran todas."""
+    from cotejo_manual import (aplicar_correcciones_sancion, fecha_canonica,
+                               revisar_fechas_sancion)
     filas = aplicar_correcciones_sancion(_hcdn_paginate(HCDN_LEYES_SANC_RID))
     revisar_fechas_sancion(filas, HCDN_CKAN + "?resource_id=" + HCDN_LEYES_SANC_RID)
+    if hasta is None:
+        return {str(r["PROYECTO_ID"]).strip() for r in filas if r.get("PROYECTO_ID")}
+    sin_fecha = [r for r in filas if fecha_canonica(r.get("SANCION_DEFINITIVA")) is None]
+    if sin_fecha:
+        raise ValueError(
+            f"leyes-sancionadas con {len(sin_fecha)} fila(s) sin fecha de sanción "
+            "canónica; documentar la fecha real en "
+            "data/politica/sanciones_fechas_verificadas.json"
+        )
     return {
         str(r["PROYECTO_ID"]).strip()
         for r in filas
         if r.get("PROYECTO_ID")
-        and (hasta is None or str(r.get("SANCION_DEFINITIVA", ""))[:10] <= hasta)
+        and fecha_canonica(r.get("SANCION_DEFINITIVA")) <= hasta
     }
 
 
