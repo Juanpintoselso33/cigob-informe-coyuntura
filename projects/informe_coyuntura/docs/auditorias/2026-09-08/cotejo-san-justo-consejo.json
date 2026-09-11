@@ -1,0 +1,49 @@
+{
+  "consultado_en": "2026-09-08",
+  "actualizacion_declarada_portal": "2026-09-04",
+  "portal": "https://mc.consejomagistratura.gov.ar/mapadeconcursos/",
+  "portal_sha256": "0c4258af142dc65f76860a9f552041718175c90314f296426a1d3ef793211dfd",
+  "fuentes": [
+    {
+      "url": "https://mc.consejomagistratura.gov.ar/mapadeconcursos/export.php",
+      "status": 200,
+      "sha256": "84987bff722ed627681ee1f4b0d6f3b4b684b448cadd62ce6f756405afd108d7",
+      "filas": 78
+    },
+    {
+      "url": "https://mc.consejomagistratura.gov.ar/mapadeconcursos/export_remitidos.php",
+      "status": 200,
+      "sha256": "fba1c86a027a2f681adf8a4b72741518963491907e25dc7931d110e75592b376",
+      "filas": 279
+    },
+    {
+      "url": "https://mc.consejomagistratura.gov.ar/mapadeconcursos/export_concluidos.php",
+      "status": 200,
+      "sha256": "e44f9c4e0ed335e954606a78abe71296a98d61d1553bdcdc0eae00e89342552b",
+      "filas": 69
+    }
+  ],
+  "filas_relevantes": [
+    {
+      "archivo": "export.php",
+      "datos": {
+        "concurso_id": "447",
+        "concurso_denominacion": "JUZGADO FEDERAL DE PRIMERA INTANCIA EN LO CIVIL, COMERCIAL Y CONTENCIOSO ADMINISTRATIVO Nº 1 DE SAN JUSTO, Pcia. de BUENOS AIRES (no habilitado)",
+        "juzgado_tribunal_camara_nombre": "Juzgado Federal De Primera Instancia En Lo Civil, Comercial Y Contencioso Administrativo N° 1 De San Justo, Provincia De Buenos Aires (no Habilitado)"
+      }
+    },
+    {
+      "archivo": "export_remitidos.php",
+      "datos": {
+        "concurso_numero": "381",
+        "concurso_denominacion": "CÁMARA FEDERAL DE APELACIONES DE SAN JUSTO¸ PROVINCIA DE BUENOS AIRES (1 cargo¸ no habilitada)",
+        "juzgado_tribunal_camara_nombre": "Cámara Federal De Apelaciones De San Justo (no Habilitada)",
+        "nombre_apellido": "Andrés Guillermo Fraga",
+        "fecha_mensaje_senado": "2026-06-04",
+        "fecha_designación": ""
+      }
+    }
+  ],
+  "conclusion": "El Consejo aún rotula San Justo como no habilitada en su corte del 4-sep y lista a Fraga en el concurso 381. No acredita el efecto del decreto del 7-sep sobre Civil 104 ni jura; no modifica por sí solo el stock estimado.",
+  "alcance": "Registro de concursos y etapas, no padrón exhaustivo de cargos ocupados al 8-sep. No sumar filas ni totales de concursos como vacantes operativas."
+}

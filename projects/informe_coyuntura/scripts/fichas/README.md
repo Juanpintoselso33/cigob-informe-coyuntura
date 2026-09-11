@@ -16,13 +16,14 @@ la página, tendríamos dos versiones del mismo dato.
 Desde `projects/informe_coyuntura/`, después de una corrida del pipeline:
 
 ```bash
-python scripts/fichas/generar.py --todos     # o un cinturón suelto por nombre
+./.venv/bin/python scripts/fichas/generar.py --todos     # o un cinturón suelto por nombre
 # El .md ya está en output/fichas/; falta el Word con la marca CIGOB.
-pandoc "output/fichas/fichas-macro.md" -o "output/fichas/Fichas Semaforo Macro.docx" `
+pandoc "output/fichas/fichas-macro.md" -o "output/fichas/Fichas Semaforo Macro.docx" \
        --reference-doc=docs/template/cigob_reference.docx
-# …ídem los otros cuatro…
-python scripts/fichas/estilar.py output/fichas/*.docx
-python scripts/fichas/verificar.py
+# …ídem los otros tres cinturones vigentes…
+./.venv/bin/python scripts/fichas/estilar.py "output/fichas/Fichas Semaforo Macro.docx"
+# Aplicar también a Política, Gestión y Vida cotidiana; no al archivo retirado.
+./.venv/bin/python scripts/fichas/verificar.py
 ```
 
 `verificar.py` es el gate: si sale con fallas, el documento no se manda.
@@ -69,3 +70,9 @@ corrida a mano que publique sin regenerar las fichas ya no pasa.
 *enviada* al equipo, no un espejo del snapshot de hoy. Pasan por pandoc y
 `estilar.py`, y `verificar.py` es el gate antes de mandarlos. Regenerarlos sin
 publicar el snapshot correspondiente los deja diciendo algo que la web no dice.
+
+La copia `Fichas Semaforo Espiritu de epoca.docx` es histórica: ese cinturón
+se retiró (ADR-0205) y no forma parte de las cuatro fichas vigentes. Conservar
+las entregas anteriores como archivo. El verificador contrasta los cuatro
+Word contra el snapshot local: una entrega histórica puede fallar porque
+corresponde a otro corte, no porque deba reescribirse retrospectivamente.

@@ -11,6 +11,12 @@ logger = logging.getLogger(__name__)
 
 
 def _get_serie(series_id: str, limit: int = 2) -> list:
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    import indec_actividad
+    if series_id in indec_actividad.SERIES:
+        return indec_actividad.filas(series_id, limit)
     params = {"ids": series_id, "format": "json", "limit": limit, "sort": "desc"}
     r = requests.get(DATOS_GOB_BASE, params=params, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
@@ -26,7 +32,12 @@ def _var_mensual(series_id: str) -> dict:
     data = _get_serie(series_id, limit=2)
     actual, anterior = data[0][1], data[1][1]
     var = (actual / anterior - 1) * 100 if anterior else None
-    return {"valor": actual, "variacion_mensual_pct": var, "fecha": data[0][0]}
+    resultado = {"valor": actual, "variacion_mensual_pct": var, "fecha": data[0][0]}
+    import indec_actividad
+    if series_id in indec_actividad.SERIES:
+        fuente = indec_actividad.niveles(indec_actividad.SERIES[series_id][0])
+        resultado.update({k: fuente[k] for k in ("fuente_url", "obtenido_en")})
+    return resultado
 
 
 def search_serie(query: str, limit: int = 10) -> list[dict]:
@@ -70,7 +81,11 @@ def fetch_indec() -> dict:
     for key in ["ipc_total", "ipc_alimentos", "ipc_vivienda", "ipc_regulados",
                 "ipc_alquiler_gba"]:
         try:
-            results[key] = _var_mensual(INDEC_SERIES[key])
+            if key == 'ipc_alquiler_gba':
+                from .ipc_alquiler import tarjeta
+                results[key] = tarjeta()
+            else:
+                results[key] = _var_mensual(INDEC_SERIES[key])
             logger.info("%s OK: %s", key, results[key]["fecha"])
         except Exception as e:
             logger.error("%s FAIL: %s", key, e)

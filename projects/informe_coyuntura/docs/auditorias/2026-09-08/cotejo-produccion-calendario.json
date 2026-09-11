@@ -1,0 +1,349 @@
+{
+  "consultado_en": "2026-09-08T17:44:15.416871-03:00",
+  "fuente": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98",
+  "filas": 1340,
+  "api_igual_csv_normalizado": true,
+  "sha256_csv": "b8dabe892ba9f341414b4c36f5883f95f97d9a829471d6734f6430bf5e8d3294",
+  "recurso": {
+    "mimetype": "text/csv",
+    "cache_url": null,
+    "hash": "",
+    "description": "Trámite parlamentario de los proyectos convertidos en ley.",
+    "name": "Leyes sancionadas",
+    "format": "CSV",
+    "url": "https://datos.hcdn.gob.ar:443/dataset/5b1d2f38-e23f-412c-a286-02ab9dcf6082/resource/68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98/download/leyes_sancionadas3.1.csv",
+    "datastore_active": true,
+    "cache_last_updated": null,
+    "package_id": "5b1d2f38-e23f-412c-a286-02ab9dcf6082",
+    "created": "2019-07-11T16:39:57.345158",
+    "state": "active",
+    "mimetype_inner": null,
+    "last_modified": "2026-08-18T11:06:05.775752",
+    "position": 0,
+    "revision_id": "7ffe86b0-4332-47d9-969c-2c214efcce5a",
+    "url_type": "upload",
+    "id": "68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98",
+    "resource_type": null,
+    "size": 107091
+  },
+  "serie_corregida": {
+    "2023-12": 34,
+    "2024-01": 34,
+    "2024-02": 32,
+    "2024-03": 31,
+    "2024-04": 23,
+    "2024-05": 23,
+    "2024-06": 25,
+    "2024-07": 21,
+    "2024-08": 33,
+    "2024-09": 24,
+    "2024-10": 44,
+    "2024-11": 44,
+    "2024-12": 44,
+    "2025-01": 44,
+    "2025-02": 48,
+    "2025-03": 47,
+    "2025-04": 45,
+    "2025-05": 48,
+    "2025-06": 47,
+    "2025-07": 49,
+    "2025-08": 40,
+    "2025-09": 38,
+    "2025-10": 15,
+    "2025-11": 15,
+    "2025-12": 17,
+    "2026-01": 17,
+    "2026-02": 16,
+    "2026-03": 17,
+    "2026-04": 18,
+    "2026-05": 24,
+    "2026-06": 28,
+    "2026-07": 25,
+    "2026-08": 22
+  },
+  "tarjeta": {
+    "valor": 22,
+    "unidad": "leyes sancionadas (12m)",
+    "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO",
+    "fecha_dato": "2026-08-01",
+    "desactualizado": false,
+    "ultima_sancion_registrada": "2026-06-24",
+    "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
+    "detalle_txt": "22 leyes distintas en los 12 meses completos hasta 2026-08. Última sanción registrada: 2026-06-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74."
+  },
+  "tarjeta_anterior": {
+    "valor": 22,
+    "unidad": "leyes sancionadas (12m)",
+    "fuente": "Cámara de Diputados — dataset de leyes sancionadas",
+    "fecha_dato": "2026-09-01",
+    "desactualizado": false,
+    "detalle_txt": "22 leyes sancionadas en los últimos 12 meses. El promedio histórico del dataset (2008-2025, cuatro presidencias) es de 74 leyes por año.",
+    "obtenido_en": "2026-09-08T03:04:35",
+    "en_indice": true,
+    "dimension": "poder_legislativo",
+    "puntaje_itcp": 18.0,
+    "puntaje_banda": 18.0,
+    "peso_efectivo": 0.0315
+  },
+  "serie_anterior": [
+    {
+      "fecha": "2026-09-01",
+      "indicador": "produccion_legislativa",
+      "valor": "22",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2026-08-01",
+      "indicador": "produccion_legislativa",
+      "valor": "25",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2026-07-01",
+      "indicador": "produccion_legislativa",
+      "valor": "28",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2026-06-01",
+      "indicador": "produccion_legislativa",
+      "valor": "24",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2026-05-01",
+      "indicador": "produccion_legislativa",
+      "valor": "18",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2026-04-01",
+      "indicador": "produccion_legislativa",
+      "valor": "17",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2026-03-01",
+      "indicador": "produccion_legislativa",
+      "valor": "16",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2026-02-01",
+      "indicador": "produccion_legislativa",
+      "valor": "17",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2026-01-01",
+      "indicador": "produccion_legislativa",
+      "valor": "17",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-12-01",
+      "indicador": "produccion_legislativa",
+      "valor": "15",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-11-01",
+      "indicador": "produccion_legislativa",
+      "valor": "15",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-10-01",
+      "indicador": "produccion_legislativa",
+      "valor": "37",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-09-01",
+      "indicador": "produccion_legislativa",
+      "valor": "39",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-08-01",
+      "indicador": "produccion_legislativa",
+      "valor": "47",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-07-01",
+      "indicador": "produccion_legislativa",
+      "valor": "45",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-06-01",
+      "indicador": "produccion_legislativa",
+      "valor": "46",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-05-01",
+      "indicador": "produccion_legislativa",
+      "valor": "43",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-04-01",
+      "indicador": "produccion_legislativa",
+      "valor": "45",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-03-01",
+      "indicador": "produccion_legislativa",
+      "valor": "46",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-02-01",
+      "indicador": "produccion_legislativa",
+      "valor": "42",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2025-01-01",
+      "indicador": "produccion_legislativa",
+      "valor": "42",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-12-01",
+      "indicador": "produccion_legislativa",
+      "valor": "42",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-11-01",
+      "indicador": "produccion_legislativa",
+      "valor": "42",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-10-01",
+      "indicador": "produccion_legislativa",
+      "valor": "45",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-09-01",
+      "indicador": "produccion_legislativa",
+      "valor": "32",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-08-01",
+      "indicador": "produccion_legislativa",
+      "valor": "21",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-07-01",
+      "indicador": "produccion_legislativa",
+      "valor": "25",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-06-01",
+      "indicador": "produccion_legislativa",
+      "valor": "23",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-05-01",
+      "indicador": "produccion_legislativa",
+      "valor": "23",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-04-01",
+      "indicador": "produccion_legislativa",
+      "valor": "31",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-03-01",
+      "indicador": "produccion_legislativa",
+      "valor": "32",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-02-01",
+      "indicador": "produccion_legislativa",
+      "valor": "34",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2024-01-01",
+      "indicador": "produccion_legislativa",
+      "valor": "34",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    },
+    {
+      "fecha": "2023-12-01",
+      "indicador": "produccion_legislativa",
+      "valor": "34",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas"
+    }
+  ],
+  "complementos": {
+    "revisado_en": "2026-09-08",
+    "criterio": "Sanciones omitidas por CKAN, cotejadas en el informe de la Dirección de Información Parlamentaria y el Boletín Oficial. La fecha es la sanción, no la publicación ni la promulgación. No es un inventario exhaustivo.",
+    "contraste_hcdn": "https://www3.hcdn.gob.ar/dependencias/secparl/dgral_info_parlamentaria/dip/archivos/Leyes_2023-_Pres_Javier_Milei_con_bloques_y_fecha_pres_y_sanc.pdf",
+    "leyes": [
+      {
+        "LEY": "27748",
+        "SANCION_DEFINITIVA": "2024-08-14",
+        "fuente": "https://otslist.boletinoficial.gob.ar/ots/download/25c0f8d03d49337c02cf3e93a037ce3c34330809949716c07167157ee527c672/0/",
+        "pagina": 6,
+        "publicacion": "2024-09-09"
+      },
+      {
+        "LEY": "27774",
+        "SANCION_DEFINITIVA": "2024-10-01",
+        "fuente": "https://otslist.boletinoficial.gob.ar/ots/download/87002cb32d65d99f5f2ebd3fa4e01824f977e93ce431b71cf3874821efdfcfcc/0/",
+        "pagina": 17,
+        "publicacion": "2024-10-18"
+      }
+    ]
+  }
+}

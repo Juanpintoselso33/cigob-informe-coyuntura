@@ -10,12 +10,15 @@ archivos: ['scripts/itcp.py', 'scripts/politica.py', 'scripts/procedencia_anclas
 corrige: ['0166']
 cierra: ['0134', '0135', '0137', '0139']
 relacionado: ['0045', '0048', '0090', '0094', '0105', '0126', '0147', '0171', '0191', '0230', '0255', '0268']
+corregido_por: ['0306']
 continuado_por: ['0169', '0170']
 ambito: 'Cinturón político (ITCP) · dimensiones `poder_judicial` y `poder_legislativo`'
 origen: 'Implementación de los cuatro indicadores que ADR-0166 desbloqueó al fijar la orientación'
 ---
 
 # ADR-0168 — Los cuatro indicadores desbloqueados entran al ITCP
+
+> Corrección del 8-sep-2026: [ADR-0306](0306-produccion-legislativa-meses-completos.md) reemplaza la ventana mensual y la justificación numérica de producción legislativa. Las 1.340 filas incluyen 2026 y duplicados; hay 1.318 leyes distintas de 2008-2025 (73,2/año). Se conserva el umbral de diseño 74. Las cifras y afirmaciones originales de este ADR describen la decisión histórica.
 
 ## Contexto y planteo del problema
 

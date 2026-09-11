@@ -1,0 +1,25 @@
+﻿cinturon,dimension,nombre,peso_nominal,peso_efectivo,puntaje,activos,nominales
+macro,estabilidad_monetaria,Estabilidad monetaria-inflacionaria,0.26,0.26,68.6,3,3
+macro,viabilidad_fiscal_comercial,Viabilidad fiscal-comercial,0.24,0.24,82.7,3,3
+macro,financiamiento,Capacidad y costo del financiamiento,0.16,0.16,60.9,4,4
+macro,actividad,Actividad económica,0.11,0.11,62.8,3,3
+macro,competitividad_externa,Competitividad externa,0.11,0.11,48.8,1,1
+macro,inversion,Inversión,0.12,0.12,36.4,1,1
+politica,poder_legislativo,Poder legislativo,0.21,0.21,59.3,5,6
+politica,alianzas_territoriales,Alianzas territoriales,0.19,0.19,81.1,3,3
+politica,cohesion_interna,Cohesión interna del oficialismo,0.15,0.15,100.0,1,1
+politica,conflicto_social,Conflicto social,0.1,0.1,71.7,2,2
+politica,imagen_voto,Imagen y voto,0.07,0.07,73.6,1,1
+politica,poder_judicial,Poder judicial,0.15,0.15,57.1,3,4
+politica,sector_privado,Sector privado,0.13,0.13,71.4,1,2
+gestion,reformas_economicas,Reformas económicas fundamentales,0.35,0.35,73.5,3,3
+gestion,reforma_estado,Reforma del Estado,0.25,0.25,100.0,2,3
+gestion,reforma_laboral,Reforma laboral,0.15,0.15,57.9,2,2
+gestion,privatizaciones_inversion,Privatizaciones e inversión,0.15,0.15,70.9,3,3
+gestion,social_orden,Reforma social y orden,0.1,0.1,90.9,3,3
+vida_cotidiana,ingresos,Ingresos y consumo,0.2806,0.2806,112.5,5,5
+vida_cotidiana,precios,Presión de precios,0.25,0.25,98.4,3,3
+vida_cotidiana,vulnerabilidad,Vulnerabilidad financiera,0.1,0.1,24.8,2,2
+vida_cotidiana,empleo,Prospectivas de empleo,0.2419,0.2419,91.9,6,6
+vida_cotidiana,percepcion,Confianza y percepción,0.0825,0.0825,91.1,1,2
+vida_cotidiana,seguridad,Seguridad,0.045,0.045,104.8,1,1

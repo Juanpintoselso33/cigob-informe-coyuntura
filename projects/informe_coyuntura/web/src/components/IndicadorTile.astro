@@ -19,7 +19,7 @@ const badge = badgeEstado(ind);
 // no se ganó. Le pasa a asistencia_directa (TDPS 100%, fuera del índice por
 // saturado — ADR-0100): amarillo ahí leería "tensión media" sobre un logro.
 const color = ind.semaforo?.color ? semaforoDe(ind) : null;
-// Las cuatro ramas son las cuatro que devuelve badgeEstado(). Van explícitas y
+// Las ramas de origen y ausencia de universo van explícitas y
 // no con un `else` de bolsa: cuando se sumó "Semiautomático" cayó en el
 // catch-all y las cards semiautomáticas salían con `.estim`, o sea en itálica
 // —la marca que el sitio reserva para las estimaciones—. El rótulo decía una
@@ -27,6 +27,7 @@ const color = ind.semaforo?.color ? semaforoDe(ind) : null;
 const badgeCls = badge === "Automático" ? "auto"
   : badge === "Semiautomático" ? "semi"
   : badge === "Carga manual" ? "manual"
+  : badge === "Sin universo" ? "sin-universo"
   : "estim";
 // El chip muestra el período del dato en vez del rótulo "Automático" (que no
 // informaba nada); manual/estimación conservan su rótulo — ahí el origen ES
@@ -41,7 +42,7 @@ const desc = DESCRIPCIONES[ikey]?.que ?? "";
 // avance, para que el headline y la barra coincidan. En el resto, el valor normal.
 let headline = pres.texto;
 let unidad = pres.unidad;
-let micro = "";
+let micro = ikey === "eficacia_legislativa" && typeof ind.aprobados_n === "number" && typeof ind.enviados_n === "number" ? `${ind.aprobados_n} de ${ind.enviados_n} sancionados` : "";
 if (vis.tipo === "barra" && vis.avance) {
   headline = formatValor(vis.pct);
   unidad = "%";

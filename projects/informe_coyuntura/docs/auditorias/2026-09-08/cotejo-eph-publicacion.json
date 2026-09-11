@@ -1,0 +1,33 @@
+{
+  "fecha_consulta": "2026-09-08",
+  "fuentes": [
+    {
+      "url": "https://www.indec.gob.ar/Nivel4/Tema/4/31/58",
+      "sha256": "8547ad6cea83b8e107f4fc792c9de4d4c8c789d6df76259f533c9d3f3340b2de",
+      "bytes": 29712
+    },
+    {
+      "url": "https://www.indec.gob.ar/uploads/informesdeprensa/mercado_trabajo_eph_1trim269E33A05E47.pdf",
+      "sha256": "901da104f939e11d24966dacd799d397731b976a58615cb7b466509088141e2e",
+      "bytes": 2810960
+    }
+  ],
+  "periodo": "2026-T1",
+  "publicacion": "2026-06-22",
+  "proximo_informe_declarado_portal": "2026-09-17 (segundo trimestre)",
+  "informalidad": {
+    "monitor_pct": 37.9,
+    "original_pct": 37.9,
+    "universo": "Asalariados sin descuento jubilatorio / asalariados; total 31 aglomerados urbanos",
+    "comparacion_1t2025_pct": 36.3,
+    "advertencia": "No equivale a informalidad de todos los ocupados (44,2%)."
+  },
+  "subocupacion_demandante": {
+    "monitor_pct": 7.5,
+    "original_pct": 7.5,
+    "universo": "Subocupados demandantes de empleo / PEA; total 31 aglomerados urbanos",
+    "comparacion_1t2025_pct": 7.0,
+    "advertencia": "No equivale a subocupación total (11,1%) ni a pluriempleo."
+  },
+  "metodo": "GET real con curl IPv4. Lectura de tablas en texto del PDF, conciliada con réplica API en cotejo-social-fuentes.json. Portal vigente declara primer trimestre y fecha del próximo informe. Valores redondeados a un decimal, no se infiere precisión adicional."
+}

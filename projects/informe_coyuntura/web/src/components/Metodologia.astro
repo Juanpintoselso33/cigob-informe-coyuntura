@@ -70,7 +70,7 @@ const compDe = (i: (typeof indices)[number]["indice"]) => {
     <div class="cg-met-step" role="listitem">
       <span class="cg-met-num">6</span>
       <span class="cg-met-lbl">Controles</span>
-      <span class="cg-met-desc">Si un dato no cierra, no se publica: queda en pie la edición anterior.</span>
+      <span class="cg-met-desc">Los fallos de integridad frenan la publicación; las demoras de las fuentes se informan.</span>
     </div>
     <span class="cg-met-arrow" aria-hidden="true">→</span>
     <div class="cg-met-step" role="listitem">
@@ -102,7 +102,7 @@ const compDe = (i: (typeof indices)[number]["indice"]) => {
             índices — los del ITCM/ITCG salen de un documento institucional,
             los del ITCP son decisión editorial declarada en su propia ficha,
             y todos están documentados indicador por indicador. */}
-        <div class="cg-met-ind-comp">{compDe(indice)} · puntaje {indice.base100 ? "por evolución vs. 4T-2023" : "interpolado entre umbrales publicados"}</div>
+        <div class="cg-met-ind-comp">{compDe(indice)} · puntaje {indice.base100 ? "por evolución frente a las referencias de cada componente" : "interpolado entre umbrales publicados"}</div>
         <div class="cg-met-ind-cta">Ficha metodológica →</div>
       </a>
     ))}

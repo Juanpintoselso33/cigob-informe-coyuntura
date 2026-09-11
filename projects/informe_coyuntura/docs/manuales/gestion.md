@@ -38,7 +38,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · > 25 → 10
 
-**Lo gobiernan**: [ADR-0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
+**Lo gobiernan**: [ADR-0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista · [ADR-0280](../adr/0280-la-brecha-conserva-la-fecha-de-cotizacion.md) La brecha conserva la fecha de cotización
 
 #### Apertura comercial (alícuota)
 
@@ -52,7 +52,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 1 → 100 · 1–3.5 → 85 · 3.5–7 → 65 · 7–11 → 40 · > 11 → 10
 
-**Lo gobiernan**: [ADR-0021](../adr/0021-interpolacion-y-apertura-sin-brecha.md) Puntaje interpolado en ITCM/ITCG y apertura comercial sin brecha
+**Lo gobiernan**: [ADR-0021](../adr/0021-interpolacion-y-apertura-sin-brecha.md) Puntaje interpolado en ITCM/ITCG y apertura comercial sin brecha · [ADR-0282](../adr/0282-apertura-usa-el-ica-original-y-explicita-estadistica.md) Apertura usa el ICA original y explicita estadística
 
 #### Desregulación normativa
 
@@ -66,7 +66,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 30000 → 100 · 15000–30000 → 85 · 7000–15000 → 60 · 2500–7000 → 35 · ≤ 2500 → 10
 
-**Lo gobiernan**: [ADR-0096](../adr/0096-desregulacion-cuenta-normas-no-menciones.md) Desregulación: contar normas derogadas, no menciones de una palabra · [ADR-0125](../adr/0125-la-desregulacion-pasa-a-la-fuente-oficial.md) La desregulación pasa a medirse con la fuente oficial · [ADR-0143](../adr/0143-la-desregulacion-se-mide-en-articulos.md) La desregulación se mide en artículos, no en normas · [ADR-0229](../adr/0229-la-desregulacion-cuenta-actos-no-efectos.md) La desregulación cuenta actos, no efectos, y la ficha lo dice
+**Lo gobiernan**: [ADR-0096](../adr/0096-desregulacion-cuenta-normas-no-menciones.md) Desregulación: contar normas derogadas, no menciones de una palabra · [ADR-0125](../adr/0125-la-desregulacion-pasa-a-la-fuente-oficial.md) La desregulación pasa a medirse con la fuente oficial · [ADR-0143](../adr/0143-la-desregulacion-se-mide-en-articulos.md) La desregulación se mide en artículos, no en normas · [ADR-0229](../adr/0229-la-desregulacion-cuenta-actos-no-efectos.md) La desregulación cuenta actos, no efectos, y la ficha lo dice · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0292](../adr/0292-desregulacion-incorpora-revisiones-mensuales.md) Desregulación incorpora las revisiones mensuales
 
 ### Dimensión `reforma_estado` (25%)
 
@@ -112,7 +112,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 90 → 100 · 62.5–90 → 80 · 37.5–62.5 → 55 · 10–37.5 → 30 · ≤ 10 → 10
 
-**Lo gobiernan**: [ADR-0068](../adr/0068-fal-regimen-ley-27802.md) fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802 · [ADR-0098](../adr/0098-fal-en-tres-etapas.md) El FAL se mide en tres etapas: construcción, vigencia y adopción · [ADR-0228](../adr/0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) El FAL puntúa lo que rige, no lo que se dictó
+**Lo gobiernan**: [ADR-0068](../adr/0068-fal-regimen-ley-27802.md) fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802 · [ADR-0098](../adr/0098-fal-en-tres-etapas.md) El FAL se mide en tres etapas: construcción, vigencia y adopción · [ADR-0228](../adr/0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) El FAL puntúa lo que rige, no lo que se dictó · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0305](../adr/0305-fal-separa-consulta-y-revision-curada.md) Consultar CNV no actualiza la revisión judicial
 
 #### Litigiosidad laboral (SRT)
 
@@ -126,7 +126,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ -15 → 100 · -15–-5 → 85 · -5–5 → 65 · 5–20 → 40 · > 20 → 10
 
-**Lo gobiernan**: [ADR-0221](../adr/0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) Un cable trampa mira la banda, no el puntaje
+**Lo gobiernan**: [ADR-0221](../adr/0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) Un cable trampa mira la banda, no el puntaje · [ADR-0285](../adr/0285-litigiosidad-exige-ventanas-de-calendario.md) Litigiosidad exige ventanas de calendario
 
 ### Dimensión `privatizaciones_inversion` (15%)
 
@@ -142,7 +142,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤ 15 → 10
 
-**Lo gobiernan**: [ADR-0101](../adr/0101-privatizaciones-publica-la-norma-de-cada-etapa.md) Privatizaciones publica la norma que respalda cada etapa · [ADR-0129](../adr/0129-detector-de-novedades-de-privatizaciones.md) Privatizaciones: se automatiza la detección, no la clasificación
+**Lo gobiernan**: [ADR-0101](../adr/0101-privatizaciones-publica-la-norma-de-cada-etapa.md) Privatizaciones publica la norma que respalda cada etapa · [ADR-0129](../adr/0129-detector-de-novedades-de-privatizaciones.md) Privatizaciones: se automatiza la detección, no la clasificación · [ADR-0277](../adr/0277-novedades-verifican-empresa-y-reintentan-textos-vacios.md) El detector verifica la empresa y reintenta lecturas vacías
 
 #### Inversiones RIGI
 
@@ -170,7 +170,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤ 15 → 10
 
-**Lo gobiernan**: [ADR-0087](../adr/0087-preadjudicado-no-es-adjudicado.md) "Preadjudicado" contiene "Adjudicado" · [ADR-0244](../adr/0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) El acto jurídico manda sobre el estado del portal
+**Lo gobiernan**: [ADR-0087](../adr/0087-preadjudicado-no-es-adjudicado.md) "Preadjudicado" contiene "Adjudicado" · [ADR-0244](../adr/0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) El acto jurídico manda sobre el estado del portal · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno
 
 ### Dimensión `social_orden` (10%)
 
@@ -186,7 +186,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 95 → 100 · 85–95 → 85 · 60–85 → 65 · 30–60 → 40 · ≤ 30 → 10
 
-**Lo gobiernan**: [ADR-0100](../adr/0100-promesa-cumplida-no-es-contexto.md) Una promesa cumplida no es un indicador de contexto · [ADR-0189](../adr/0189-si-no-puntua-no-se-muestra.md) Si no puntúa no se muestra, y una promesa cumplida sí puntúa
+**Lo gobiernan**: [ADR-0100](../adr/0100-promesa-cumplida-no-es-contexto.md) Una promesa cumplida no es un indicador de contexto · [ADR-0189](../adr/0189-si-no-puntua-no-se-muestra.md) Si no puntúa no se muestra, y una promesa cumplida sí puntúa · [ADR-0296](../adr/0296-tdps-distingue-devengado-de-pago.md) TDPS distingue devengado de pago
 
 #### Orden público (piquetes)
 
@@ -200,7 +200,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 75 → 100 · 50–75 → 85 · 25–50 → 65 · 0–25 → 40 · ≤ 0 → 10
 
-**Lo gobiernan**: [ADR-0025](../adr/0025-protocolo-diagnostico-politico.md) Protocolo antipiquetes automatizado con Diagnóstico Político (y corrección 55 → 74,2)
+**Lo gobiernan**: [ADR-0025](../adr/0025-protocolo-diagnostico-politico.md) Protocolo antipiquetes automatizado con Diagnóstico Político (y corrección 55 → 74,2) · [ADR-0294](../adr/0294-cortes-explicita-base-estimada-y-fuente-no-verificable.md) Cortes explicita base estimada y fuente no verificable
 
 #### Libertad de opción en salud
 
@@ -214,7 +214,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 70 → 100 · 50–70 → 85 · 30–50 → 65 · 10–30 → 40 · ≤ 10 → 10
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0013).
+**Lo gobiernan**: [ADR-0278](../adr/0278-salud-descubre-los-padrones-referenciados.md) Salud descubre los padrones referenciados por el portal
 
 ## Se releva y no puntúa
 
@@ -229,17 +229,19 @@ histórica.
 
 ## Decisiones abiertas
 
-1 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
+2 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
 
 > La detección lee la prosa, así que **sobre-reporta a propósito**: si un ADR anota un pendiente y lo resuelve unos párrafos más abajo, sigue apareciendo acá. Se prefiere ese error al contrario —perder una decisión realmente abierta—. La marca ⚠️ sí es firme: sale de las relaciones declaradas entre ADR, no de adivinar sobre el texto.
 
 - **[ADR-0068](../adr/0068-fal-regimen-ley-27802.md)** — fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802
   <br>- Queda pendiente (mejor fuente): serie del MTEySS de convenios homologados
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0098. Verificar antes de tratarlo como abierto.
+- **[ADR-0305](../adr/0305-fal-separa-consulta-y-revision-curada.md)** — Consultar CNV no actualiza la revisión judicial
+  <br>valor y pesos; queda pendiente cerrar el expediente judicial y definir una
 
 ## Todos los ADR vigentes de este cinturón
 
-35 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+45 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -276,3 +278,13 @@ histórica.
 - [0229](../adr/0229-la-desregulacion-cuenta-actos-no-efectos.md) — La desregulación cuenta actos, no efectos, y la ficha lo dice
 - [0244](../adr/0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) — El acto jurídico manda sobre el estado del portal
 - [0247](../adr/0247-un-porcentaje-entre-normas-y-una-meta-documental.md) — Un porcentaje entre normas y una meta documental
+- [0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) — La semilla escrita a mano no le gana al último valor bueno
+- [0277](../adr/0277-novedades-verifican-empresa-y-reintentan-textos-vacios.md) — El detector verifica la empresa y reintenta lecturas vacías
+- [0278](../adr/0278-salud-descubre-los-padrones-referenciados.md) — Salud descubre los padrones referenciados por el portal
+- [0280](../adr/0280-la-brecha-conserva-la-fecha-de-cotizacion.md) — La brecha conserva la fecha de cotización
+- [0282](../adr/0282-apertura-usa-el-ica-original-y-explicita-estadistica.md) — Apertura usa el ICA original y explicita estadística
+- [0285](../adr/0285-litigiosidad-exige-ventanas-de-calendario.md) — Litigiosidad exige ventanas de calendario
+- [0292](../adr/0292-desregulacion-incorpora-revisiones-mensuales.md) — Desregulación incorpora las revisiones mensuales
+- [0294](../adr/0294-cortes-explicita-base-estimada-y-fuente-no-verificable.md) — Cortes explicita base estimada y fuente no verificable
+- [0296](../adr/0296-tdps-distingue-devengado-de-pago.md) — TDPS distingue devengado de pago
+- [0305](../adr/0305-fal-separa-consulta-y-revision-curada.md) — Consultar CNV no actualiza la revisión judicial

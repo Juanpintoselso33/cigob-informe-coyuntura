@@ -105,6 +105,16 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0261](0261-la-brecha-m3-m2-no-tiene-signo.md) | La brecha M3–M2 no tiene signo, así que no puntúa | `idm` | vigente |
 | [0262](0262-dos-insumos-que-necesitan-signos-opuestos.md) | Dos insumos que necesitan signos opuestos | `icip` | vigente |
 | [0264](0264-renombrar-no-borra-la-lectura-refutada.md) | Renombrar no borra la lectura refutada | `idm`, `icip`, `desequilibrio_monetario` | vigente |
+| [0275](0275-ica-vigente-completa-la-api-historica.md) | El cuadro ICA vigente completa la API histórica | `saldo_comercial_12m` | vigente |
+| [0283](0283-recaudacion-actualiza-gacetillas-comarb.md) | Recaudación actualiza las gacetillas COMARB | `recaudacion` | vigente |
+| [0286](0286-reservas-explicita-la-estimacion-y-sus-exclusiones.md) | Reservas explicita la estimación y sus exclusiones | `reservas_bcra` | vigente |
+| [0287](0287-reservas-no-sustituye-insumos-faltantes.md) | Reservas no sustituye insumos faltantes | `reservas_bcra` | vigente |
+| [0288](0288-financiamiento-completa-meses-con-gacetillas.md) | Financiamiento completa meses con gacetillas | `costo_financiamiento_tesoro` | vigente |
+| [0289](0289-sensibilidad-conserva-transformaciones-y-deflactor.md) | Sensibilidad conserva transformaciones y deflactor | `rem_ipc_12m` | vigente |
+| [0293](0293-iai-comparte-la-composicion-mensual.md) | IAI comparte la composición mensual | `iai` | vigente |
+| [0299](0299-actividad-usa-planillas-originales-vigentes.md) | Actividad usa las planillas originales vigentes | `ipi_manufacturero`, `iai`, `despacho_cemento` | vigente |
+| [0300](0300-iai-completa-bienes-de-capital-originales.md) | IAI completa los bienes de capital originales | `iai` | vigente |
+| [0301](0301-historia-macro-deriva-componentes-del-motor.md) | La historia macro deriva sus componentes del motor | `iai` | vigente |
 
 ### Política (ITCP)
 
@@ -186,6 +196,18 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0263](0263-la-ficha-describe-el-metodo-que-corre.md) | La ficha describe el método que corre | `ratio_dnu`, `iaf_transferencias`, `subocupacion_demandante` | vigente |
 | [0265](0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) | Una dimensión no promete vías que ya no puntúan | `apoyo_empresario`, `judicializacion`, `sentimiento_digital` | vigente |
 | [0268](0268-el-slug-no-define-una-sesion.md) | El slug no define una sesión | `paralisis_denuncias` | vigente |
+| [0276](0276-sin-desafios-no-hay-tasa-de-bloqueo.md) | Sin desafíos no hay tasa de bloqueo | `bloqueo_sostenido`, `desafios_legislativos` | vigente |
+| [0281](0281-tasa-de-resolucion-no-es-duracion-judicial.md) | Tasa de resolución no es duración judicial | `velocidad_resolucion` | vigente |
+| [0284](0284-cohesion-publica-fechas-y-cache-por-camara.md) | Cohesión publica fechas y caché por cámara | `cohesion_bloque`, `alineamiento_senadores_prov` | vigente |
+| [0295](0295-jornadas-exige-doce-meses-calendario.md) | Jornadas exige doce meses calendario | `jornadas_individuales_no_trabajadas_12m` | vigente |
+| [0297](0297-cobertura-excluye-corte-y-renovaciones.md) | Cobertura excluye Corte Suprema y renovaciones | `cobertura_judicial` | vigente |
+| [0298](0298-cobertura-concilia-movimientos-netos-y-bajas.md) | Cobertura concilia movimientos netos y bajas | `cobertura_judicial` | vigente |
+| [0302](0302-expectativas-construccion-fecha-y-calendario.md) | Expectativas de construcción: horizonte y calendario | `brecha_obra_publica` | vigente |
+| [0303](0303-acled-semana-inicia-el-sabado.md) | La semana ACLED empieza el sábado | `conflictividad_nacional`, `protestas_caba` | vigente |
+| [0304](0304-adhesion-rigi-completa-catalogo-con-leyes.md) | La ley publicada completa el catálogo de adhesiones | `adhesion_reformas_provincial` | vigente |
+| [0306](0306-produccion-legislativa-meses-completos.md) | Producción legislativa: doce meses completos y leyes distintas | `produccion_legislativa` | vigente |
+| [0307](0307-ratio-dnu-ventana-inclusiva.md) | Ratio DNU: 365 fechas incluidas | `ratio_dnu` | vigente |
+| [0308](0308-sesiones-y-sanciones-fuera-del-catalogo.md) | Sesiones y sanciones fuera del catálogo | `veto_quorum`, `produccion_legislativa` | vigente |
 
 ### Gestión (ITCG)
 
@@ -232,6 +254,15 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0244](0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) | El acto jurídico manda sobre el estado del portal | `concesiones_infraestructura` | vigente |
 | [0247](0247-un-porcentaje-entre-normas-y-una-meta-documental.md) | Un porcentaje entre normas y una meta documental | `reestructuracion_organismos` | vigente |
 | [0269](0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) | La semilla escrita a mano no le gana al último valor bueno | `concesiones_infraestructura`, `desregulacion_normativa`, `fal_modernizacion_laboral` | vigente |
+| [0277](0277-novedades-verifican-empresa-y-reintentan-textos-vacios.md) | El detector verifica la empresa y reintenta lecturas vacías | `privatizaciones` | vigente |
+| [0278](0278-salud-descubre-los-padrones-referenciados.md) | Salud descubre los padrones referenciados por el portal | `libertad_opcion_salud` | vigente |
+| [0280](0280-la-brecha-conserva-la-fecha-de-cotizacion.md) | La brecha conserva la fecha de cotización | `cepo_mulc` | vigente |
+| [0282](0282-apertura-usa-el-ica-original-y-explicita-estadistica.md) | Apertura usa el ICA original y explicita estadística | `apertura_comercial` | vigente |
+| [0285](0285-litigiosidad-exige-ventanas-de-calendario.md) | Litigiosidad exige ventanas de calendario | `litigiosidad_laboral` | vigente |
+| [0292](0292-desregulacion-incorpora-revisiones-mensuales.md) | Desregulación incorpora las revisiones mensuales | `desregulacion_normativa` | vigente |
+| [0294](0294-cortes-explicita-base-estimada-y-fuente-no-verificable.md) | Cortes explicita base estimada y fuente no verificable | `protocolo_antipiquetes` | vigente |
+| [0296](0296-tdps-distingue-devengado-de-pago.md) | TDPS distingue devengado de pago | `asistencia_directa` | vigente |
+| [0305](0305-fal-separa-consulta-y-revision-curada.md) | Consultar CNV no actualiza la revisión judicial | `fal_modernizacion_laboral` | vigente |
 
 ### Vida cotidiana (ITVC)
 
@@ -283,6 +314,11 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0250](0250-el-universo-restringido-se-enumera.md) | El universo restringido se enumera | `trabajo_independiente` | vigente |
 | [0256](0256-la-serie-sale-del-indec-no-de-su-espejo.md) | La serie sale del INDEC, no de su espejo | `consumo_supermercados` | vigente |
 | [0267](0267-una-fuente-caida-degrada-no-desaparece.md) | Una fuente caída degrada el indicador, no lo hace desaparecer | `consumo_carnes_total` | vigente |
+| [0271](0271-patentamientos-no-identifican-trayectorias-de-hogares.md) | Los patentamientos no identifican trayectorias de hogares | `motorizacion_total` | vigente |
+| [0272](0272-el-anexo-bancario-con-http-200-puede-estar-viejo.md) | Un anexo bancario con HTTP 200 puede estar viejo | `mora_familias` | vigente |
+| [0273](0273-victimizacion-descubre-el-portal-vigente-y-enlaces-relativos.md) | Victimización descubre el portal vigente y enlaces relativos | `inseguridad` | vigente |
+| [0279](0279-las-series-laborales-no-identifican-transiciones.md) | Las series laborales no identifican transiciones | `trabajo_independiente`, `mortalidad_pymes` | vigente |
+| [0291](0291-alquiler-usa-la-planilla-original.md) | Alquiler usa la planilla original | `alquiler_real` | vigente |
 
 ### Espíritu de época
 
@@ -353,3 +389,5 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0260](0260-las-fichas-generadas-las-regenera-el-pipeline.md) | Las fichas generadas las regenera el pipeline | `consumo_supermercados`, `desequilibrio_monetario` | vigente |
 | [0266](0266-lo-que-el-indice-declara-fuera-no-se-publica.md) | Lo que el índice declara fuera no se publica |  | vigente |
 | [0270](0270-el-aviso-dice-que-fallo-no-en-que-paso.md) | El aviso dice qué falló, no en qué paso falló |  | vigente |
+| [0274](0274-la-historia-del-indice-no-se-recorta-por-su-contraste.md) | La historia del índice no se recorta por su contraste |  | vigente |
+| [0290](0290-recalculo-anota-aportes-de-las-tarjetas.md) | El recálculo anota los aportes de las tarjetas |  | vigente |

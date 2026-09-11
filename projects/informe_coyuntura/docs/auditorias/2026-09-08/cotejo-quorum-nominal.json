@@ -1,0 +1,146 @@
+{
+  "corte": "2026-09-08",
+  "desde": "2025-10-01",
+  "hasta": "2026-09-08",
+  "definicion": "Doce meses calendario, último parcial. No ventana de 365 días.",
+  "fuente": "https://www.hcdn.gob.ar/sesiones/",
+  "sha256_indice": "6365e6d1b1d210e288797c50a89ad5322c62270d8e6a899ef3b310895286d11f",
+  "seleccion_nominal": [
+    {
+      "id": "3584",
+      "periodo": "144",
+      "reunion": "6",
+      "fecha": "2026-08-26",
+      "titulo": "6° Reunión - 5° Sesión Ordinaria Especial - (26/08/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3584&numVid=0&reunion=6&periodo=144"
+    },
+    {
+      "id": "3583",
+      "periodo": "144",
+      "reunion": "5",
+      "fecha": "2026-06-24",
+      "titulo": "5° Reunión - 4° Sesión Ordinaria Especial - (24/06/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3583&numVid=0&reunion=5&periodo=144"
+    },
+    {
+      "id": "3582",
+      "periodo": "144",
+      "reunion": "4",
+      "fecha": "2026-06-23",
+      "titulo": "4° Reunión - Expresiones en Minoría - (23/06/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3582&numVid=0&reunion=4&periodo=144"
+    },
+    {
+      "id": "3580",
+      "periodo": "144",
+      "reunion": "3",
+      "fecha": "2026-05-20",
+      "titulo": "3° Reunión - 3° Sesión Ordinaria Especial - (20/05/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3580&numVid=0&reunion=3&periodo=144"
+    },
+    {
+      "id": "3577",
+      "periodo": "144",
+      "reunion": "1",
+      "fecha": "2026-04-08",
+      "titulo": "1° Reunión - 1° Sesión Ordinaria Especial - (08/04/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3577&numVid=0&reunion=1&periodo=144"
+    },
+    {
+      "id": "3575",
+      "periodo": "143",
+      "reunion": "22",
+      "fecha": "2026-02-19",
+      "titulo": "22° Reunión - 3° Sesión Extraordinaria Especial - (19/02/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3575&numVid=0&reunion=22&periodo=143"
+    },
+    {
+      "id": "3574",
+      "periodo": "143",
+      "reunion": "21",
+      "fecha": "2026-02-12",
+      "titulo": "21° Reunión - 2° Sesión Extraordinaria Especial - (12/02/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3574&numVid=0&reunion=21&periodo=143"
+    },
+    {
+      "id": "3573",
+      "periodo": "143",
+      "reunion": "20",
+      "fecha": "2025-12-17",
+      "titulo": "20° Reunión - 1° Sesión Extraordinaria Especial - (17/12/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3573&numVid=0&reunion=20&periodo=143"
+    },
+    {
+      "id": "3572",
+      "periodo": "143",
+      "reunion": "18",
+      "fecha": "2025-12-03",
+      "titulo": "18° Reunión - 14° Sesión Especial - (03/12/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3572&numVid=0&reunion=18&periodo=143"
+    },
+    {
+      "id": "3568",
+      "periodo": "143",
+      "reunion": "15",
+      "fecha": "2025-10-08",
+      "titulo": "15° Reunión - 13° Sesión Ordinaria Especial - (08/10/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3568&numVid=0&reunion=15&periodo=143"
+    }
+  ],
+  "excluidas_en_ventana": [
+    {
+      "id": "3581",
+      "periodo": "144",
+      "reunion": "null",
+      "fecha": "2026-05-20",
+      "titulo": "Sesión Ordinaria Especial CITADA - NO EFECTUADA - (20/05/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3581&numVid=0&reunion=null&periodo=144"
+    },
+    {
+      "id": "3578",
+      "periodo": "144",
+      "reunion": "2",
+      "fecha": "2026-04-29",
+      "titulo": "2° Reunión - 2° Sesión Ordinaria Informativa - (29/04/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3578&numVid=0&reunion=2&periodo=144"
+    },
+    {
+      "id": "3576",
+      "periodo": "144",
+      "reunion": "1",
+      "fecha": "2026-03-01",
+      "titulo": "Asamblea Legislativa - (01/03/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3576&numVid=0&reunion=1&periodo=144"
+    },
+    {
+      "id": "3571",
+      "periodo": "143",
+      "reunion": "19",
+      "fecha": "2025-12-03",
+      "titulo": "19° Reunión - Sesión Preparatoria - (03/12/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3571&numVid=0&reunion=19&periodo=143"
+    },
+    {
+      "id": "3570",
+      "periodo": "143",
+      "reunion": "17",
+      "fecha": "2025-10-15",
+      "titulo": "17° Reunión - Informativa - Art. 71 CN CITADA - FRACASADA - (15/10/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3570&numVid=0&reunion=17&periodo=143"
+    },
+    {
+      "id": "3569",
+      "periodo": "143",
+      "reunion": "16",
+      "fecha": "2025-10-15",
+      "titulo": "16° Reunión - Informativa - Art. 71 CN CITADA - FRACASADA - (15/10/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3569&numVid=0&reunion=16&periodo=143"
+    }
+  ],
+  "resultado": {
+    "fracasadas_n": 1,
+    "total_n": 10,
+    "porcentaje": 10.0
+  },
+  "alcance": "Cotejo del dato vigente con inventario oficial conservado el mismo día; no acredita todas las formas de bloqueo político."
+}

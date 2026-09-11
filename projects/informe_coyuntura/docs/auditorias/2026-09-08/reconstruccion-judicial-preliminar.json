@@ -1,0 +1,193 @@
+{
+  "estado": "calculo_preliminar_pendiente_integracion_y_cotejo",
+  "ancla_original": 610,
+  "correcciones_ancla": [
+    {
+      "persona": "GUZZARDI, Ana Silvia",
+      "fecha": "2026-03-18",
+      "tipo": "fallecimiento",
+      "organo": "Tribunal Oral en lo Criminal y Correccional N° 17",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/341641/20260506",
+      "nota": "Acordada CSJN 8/2026, considerando III. El padrón del 5-jun todavía la registra como titular: debe corregirse también el ancla."
+    }
+  ],
+  "ancla_corregida": 609,
+  "universo": 955,
+  "serie": {
+    "2023-12": {
+      "cubiertos": 701,
+      "corte": "2023-12-31",
+      "valor": 73.4
+    },
+    "2024-01": {
+      "cubiertos": 700,
+      "corte": "2024-01-31",
+      "valor": 73.3
+    },
+    "2024-02": {
+      "cubiertos": 696,
+      "corte": "2024-02-29",
+      "valor": 72.88
+    },
+    "2024-03": {
+      "cubiertos": 693,
+      "corte": "2024-03-31",
+      "valor": 72.57
+    },
+    "2024-04": {
+      "cubiertos": 692,
+      "corte": "2024-04-30",
+      "valor": 72.46
+    },
+    "2024-05": {
+      "cubiertos": 691,
+      "corte": "2024-05-31",
+      "valor": 72.36
+    },
+    "2024-06": {
+      "cubiertos": 688,
+      "corte": "2024-06-30",
+      "valor": 72.04
+    },
+    "2024-07": {
+      "cubiertos": 688,
+      "corte": "2024-07-31",
+      "valor": 72.04
+    },
+    "2024-08": {
+      "cubiertos": 684,
+      "corte": "2024-08-31",
+      "valor": 71.62
+    },
+    "2024-09": {
+      "cubiertos": 684,
+      "corte": "2024-09-30",
+      "valor": 71.62
+    },
+    "2024-10": {
+      "cubiertos": 683,
+      "corte": "2024-10-31",
+      "valor": 71.52
+    },
+    "2024-11": {
+      "cubiertos": 682,
+      "corte": "2024-11-30",
+      "valor": 71.41
+    },
+    "2024-12": {
+      "cubiertos": 680,
+      "corte": "2024-12-31",
+      "valor": 71.2
+    },
+    "2025-01": {
+      "cubiertos": 677,
+      "corte": "2025-01-31",
+      "valor": 70.89
+    },
+    "2025-02": {
+      "cubiertos": 674,
+      "corte": "2025-02-28",
+      "valor": 70.58
+    },
+    "2025-03": {
+      "cubiertos": 671,
+      "corte": "2025-03-31",
+      "valor": 70.26
+    },
+    "2025-04": {
+      "cubiertos": 665,
+      "corte": "2025-04-30",
+      "valor": 69.63
+    },
+    "2025-05": {
+      "cubiertos": 662,
+      "corte": "2025-05-31",
+      "valor": 69.32
+    },
+    "2025-06": {
+      "cubiertos": 660,
+      "corte": "2025-06-30",
+      "valor": 69.11
+    },
+    "2025-07": {
+      "cubiertos": 658,
+      "corte": "2025-07-31",
+      "valor": 68.9
+    },
+    "2025-08": {
+      "cubiertos": 655,
+      "corte": "2025-08-31",
+      "valor": 68.59
+    },
+    "2025-09": {
+      "cubiertos": 648,
+      "corte": "2025-09-30",
+      "valor": 67.85
+    },
+    "2025-10": {
+      "cubiertos": 642,
+      "corte": "2025-10-31",
+      "valor": 67.23
+    },
+    "2025-11": {
+      "cubiertos": 632,
+      "corte": "2025-11-30",
+      "valor": 66.18
+    },
+    "2025-12": {
+      "cubiertos": 623,
+      "corte": "2025-12-31",
+      "valor": 65.24
+    },
+    "2026-01": {
+      "cubiertos": 622,
+      "corte": "2026-01-31",
+      "valor": 65.13
+    },
+    "2026-02": {
+      "cubiertos": 620,
+      "corte": "2026-02-28",
+      "valor": 64.92
+    },
+    "2026-03": {
+      "cubiertos": 614,
+      "corte": "2026-03-31",
+      "valor": 64.29
+    },
+    "2026-04": {
+      "cubiertos": 612,
+      "corte": "2026-04-30",
+      "valor": 64.08
+    },
+    "2026-05": {
+      "cubiertos": 611,
+      "corte": "2026-05-31",
+      "valor": 63.98
+    },
+    "2026-06": {
+      "cubiertos": 659,
+      "corte": "2026-06-30",
+      "valor": 69.01
+    },
+    "2026-07": {
+      "cubiertos": 672,
+      "corte": "2026-07-31",
+      "valor": 70.37
+    },
+    "2026-08": {
+      "cubiertos": 668,
+      "corte": "2026-08-31",
+      "valor": 69.95
+    },
+    "2026-09": {
+      "cubiertos": 705,
+      "corte": "2026-09-08",
+      "valor": 73.82
+    }
+  },
+  "limites": [
+    "No incorpora órganos no habilitados en el padrón sin una fuente de habilitación.",
+    "No certifica el calendario de juras ni la exhaustividad de fallecimientos.",
+    "Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen."
+  ]
+}

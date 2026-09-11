@@ -5,11 +5,17 @@ estado: 'aceptado'
 fecha: 2026-06-26
 cinturon: 'macro'
 indicadores: [reservas_bcra]
+corregido_por: ['0287']
 ambito: 'Dimensión Capacidad de financiamiento · indicador `reservas_bcra`'
 commit: '`3f17e5a` (final; saga: `9204e86` → `1b7d1b9` → `59af7db` → `6e28f83` → `3f17e5a`)'
 ---
 
 # ADR-0005 — Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal
+
+> Alcance corregido por ADR-0286 (8-sep-2026): la identificación del tramo
+> 3m–1año como BOPREAL y la afirmación de libre disponibilidad no quedaron
+> demostradas. Este documento conserva el razonamiento histórico, no certifica
+> esas equivalencias. Véase la ficha vigente y los pendientes de la auditoría.
 
 ## Contexto y planteo del problema
 

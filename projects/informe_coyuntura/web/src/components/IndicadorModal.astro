@@ -158,7 +158,8 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       // que "16 de 24"). "jurisdicciones", NO "provincias": de las 24, una
       // es CABA, que no es una provincia -- llamarlas "24 provincias" acá
       // sería impreciso y contradice la propia descripción del indicador.
-      valorAbsolutoTxt: typeof ind.n_provincias === "number" ? `${ind.n_provincias} de 24 jurisdicciones` : null,
+      cohorteTxt: ikey === "eficacia_legislativa" && typeof ind.cohorte_desde === "string" && typeof ind.cohorte_hasta === "string" ? `${ind.cohorte_desde} a ${ind.cohorte_hasta} (publicación parlamentaria; límites incluidos)` : null,
+      valorAbsolutoTxt: ikey === "eficacia_legislativa" && typeof ind.aprobados_n === "number" && typeof ind.enviados_n === "number" ? `${ind.aprobados_n} de ${ind.enviados_n} proyectos sancionados` : typeof ind.n_provincias === "number" ? `${ind.n_provincias} de 24 jurisdicciones` : null,
       es0100: BARRA_0_100.has(ikey),
       unidadCorta: p.unidad ?? "",
       formula: FORMULAS[ikey]?.latex ?? null,
@@ -166,7 +167,8 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       contextoDuro: contextoDuroFilas((ind as any).contexto_duro),
       dimTxt: indiceMeta
         ? `${indiceMeta.dimNombre} · ${indiceMeta.pesoInternoNominal !== null ? Math.round(indiceMeta.pesoInternoNominal * 100) + "% interno" : "peso interno no disponible"}`
-        : (ind.en_indice === false ? "Contexto — no integra el índice" : null),
+        : (ind.estado === "sin_universo" ? "Sin universo — no puntúa en esta ventana"
+           : ind.en_indice === false ? "Contexto — no integra el índice" : null),
       indiceMeta,
       // El rótulo dice "esto es el dato de la fuente, NO el nivel que puntúa",
       // así que la pregunta es por la unidad de la SERIE, no la de la card.
@@ -509,7 +511,7 @@ const dimsJson = JSON.stringify(dims);
           </tr>`).join("");
         detalleEl.innerHTML = `
           <p class="cg-det-titulo">Detalle por empresa</p>
-          <p class="cg-det-nota">La etapa de cada empresa la asigna el equipo a partir de actos publicados en el Boletín Oficial. Se muestra la norma que respalda la etapa vigente para que la asignación pueda verificarse.</p>
+          <p class="cg-det-nota">La etapa de cada empresa la asigna el equipo con documentos primarios, como normas del Boletín Oficial y comunicaciones del emisor en CNV. Se muestra el respaldo de la etapa vigente; una autorización o adjudicación no equivale por sí sola al cierre de la operación.</p>
           <table class="cg-det-tabla"><tbody>${filas}</tbody></table>`;
         detalleEl.style.display = "";
       } else {
@@ -527,6 +529,7 @@ const dimsJson = JSON.stringify(dims);
       document.getElementById("cg-modal-ficha").innerHTML =
         celda(d.datoFuenteDifiere ? "Último dato de la fuente" : "Último valor", `${d.valor} ${d.unidad}`.trim() + (d.valorAbsolutoTxt ? ` (${d.valorAbsolutoTxt})` : "")) +
         filaNivelQuePuntua +
+        (d.cohorteTxt ? celda("Cohorte evaluada", d.cohorteTxt) : "") +
         celda("Unidad", d.unidadLarga || d.tipo || "—") +
         celda("Dimensión", d.dimTxt || "—") +
         celda("Frecuencia", d.frecuencia || "—") +
@@ -816,6 +819,7 @@ const dimsJson = JSON.stringify(dims);
         C.sparkChart(el, serie, {
           color: C.colorDe(el.getAttribute("data-evo-slug")),
           unidad: el.getAttribute("data-evo-unidad") || "",
+          ...(el.getAttribute("data-evo-key")?.startsWith("__tension_") ? { rango: [0, 10] as [number, number] } : {}),
         });
       });
     }, { rootMargin: "250px" });

@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "verificado": "2026-09-08",
+    "descripcion": "Adhesiones formales omitidas por el catálogo MAGyP. Se reconsulta el texto original de cada ley al calcular tarjeta e historia. Este registro requiere revisión de novedades y no certifica ausencia de derogaciones posteriores. ADR-0304."
+  },
+  "SANTA FE": {
+    "fecha": "2025-01-01",
+    "criterio": "vigencia_explicita_art_120",
+    "ley": "Ley 14386, artículos 93 y 120",
+    "publicacion": "2024-12-30",
+    "fuente": "https://www.santafe.gob.ar/boletinoficial/ver.php?seccion=2024%2F2024-12-30ley14386-2024.html",
+    "comprobar_textos": ["REGISTRADA BAJO EL N° 14386", "93.- Adhiérese la provincia de Santa Fe", "Régimen de Incentivo a las Grandes Inversiones", "120.- La presente ley entrará en vigencia el 1 de enero de 2025"]
+  },
+  "CABA": {
+    "fecha": "2026-05-28",
+    "criterio": "publicacion_bo",
+    "ley": "Ley 6949, artículo 1",
+    "publicacion": "2026-05-28",
+    "fuente": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/856735",
+    "comprobar_textos": ["LEY 6949 2026", "La Ciudad Autónoma de Buenos Aires adhiere a las disposiciones", "Régimen de Incentivos para Grandes Inversiones", "Ley Nacional N° 27.742"]
+  }
+}

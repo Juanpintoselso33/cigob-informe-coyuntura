@@ -39,6 +39,7 @@ import io
 import json
 import re
 import time
+import unicodedata
 import urllib.parse
 from pathlib import Path
 
@@ -76,6 +77,14 @@ def _periodo(href: str) -> str | None:
         mm = re.search(r"[_\-]([a-zA-Záéíó]{3})[a-zá]*[_\- ]", nom)
         mes = _MES.get(mm.group(1)[:3].lower()) if mm else None
     return f"{anio.group(1)}-{mes:02d}" if anio and mes else None
+
+
+def _es_recaudacion(href: str) -> bool:
+    """La gacetilla mensual de recaudación se llama así en las 44 publicadas;
+    las institucionales no traen el rótulo TOTAL y no se les exige validación."""
+    nom = urllib.parse.unquote(href.split("/")[-1])
+    nom = "".join(c for c in unicodedata.normalize("NFKD", nom) if not unicodedata.combining(c))
+    return "recaudaci" in nom.lower()
 
 
 def _busca(txt: str, rotulo: str):
@@ -130,8 +139,17 @@ def actualizar(session: requests.Session | None = None, verbose: bool = False) -
     store = _cache_leer()
     gacetillas = store.setdefault("gacetillas", {})
 
-    html = ses.get(LISTADO, timeout=TIMEOUT, verify=False).text
-    hrefs = sorted(set(re.findall(r'href="([^"]*[Gg]acetilla[^"]*\.pdf)"', html)))
+    respuesta = ses.get(LISTADO, timeout=TIMEOUT, verify=False)
+    respuesta.raise_for_status()
+    html = respuesta.text
+    publicados = sorted(set(re.findall(r'href="([^"]*[Gg]acetilla[^"]*\.pdf)"', html)))
+    hrefs = [h for h in publicados if _es_recaudacion(h)]
+    for h in publicados:
+        if h not in hrefs:
+            print(f"  [WARN] COMARB: gacetilla que no es de recaudación, se ignora: {h.split('/')[-1]}")
+    esperados = {_periodo(h) for h in hrefs if _periodo(h)}
+    if not esperados:
+        raise ValueError('COMARB: catálogo sin gacetillas reconocibles')
     nuevos = 0
     for href in hrefs:
         per = _periodo(href)
@@ -139,7 +157,11 @@ def actualizar(session: requests.Session | None = None, verbose: bool = False) -
             continue
         url = urllib.parse.urljoin(BASE, urllib.parse.quote(href, safe=":/?&=%"))
         try:
-            reg = _leer_pdf(ses.get(url, timeout=TIMEOUT, verify=False).content)
+            respuesta = ses.get(url, timeout=TIMEOUT, verify=False)
+            respuesta.raise_for_status()
+            reg = _leer_pdf(respuesta.content)
+            if reg and (reg['desvio_suma_pct'] is None or abs(reg['desvio_suma_pct']) > 0.01):
+                raise ValueError('COMARB: los sistemas no suman el total')
         except Exception as e:                                    # noqa: BLE001
             if verbose:
                 print(f"  [WARN] COMARB {per}: {type(e).__name__}: {e}")
@@ -172,6 +194,9 @@ def actualizar(session: requests.Session | None = None, verbose: bool = False) -
         "nuevos_en_esta_corrida": nuevos,
     }
     _cache_escribir(store)
+    faltantes = esperados - set(gacetillas)
+    if faltantes:
+        raise ValueError(f'COMARB: gacetillas publicadas sin validar: {sorted(faltantes)}')
     return store
 
 

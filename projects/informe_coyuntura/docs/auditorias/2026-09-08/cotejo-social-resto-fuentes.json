@@ -1,0 +1,346 @@
+{
+  "fecha": "2026-09-08",
+  "metodo": "HTTP real con URL, estado y SHA de las respuestas. Coincidencia de valores y fechas con snapshot.",
+  "colectores": [
+    {
+      "colector": "iiep_tarifas",
+      "resultado": {
+        "valor": 14.5,
+        "peso_salario_pct": 14.5,
+        "variacion_mensual_pct": -2.1,
+        "cobertura_costos_pct": 55.0,
+        "transporte_pct_canasta": 43.0,
+        "fecha": "2026-08-01",
+        "url": "https://economicas.uba.ar/iiep/reporte-de-tarifas-y-subsidios-agosto-2026/"
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://economicas.uba.ar/iiep/wp-json/wp/v2/search?search=Reporte+de+Tarifas+y+Subsidios&per_page=100",
+          "status": 200,
+          "sha256": "4df5d6c1a900e2f01d122e173a8319c7d034f1a2d3fb1e7078efcc6af549adfd",
+          "bytes": 14815
+        },
+        {
+          "url": "https://economicas.uba.ar/iiep/reporte-de-tarifas-y-subsidios-agosto-2026/",
+          "status": 200,
+          "sha256": "112c92bf7fa4646fe4d57f815f5995aae87a7c423819d1a8a40d7f9214890e08",
+          "bytes": 103287
+        }
+      ],
+      "segundos": 6.8
+    },
+    {
+      "colector": "consumo_carnes",
+      "resultado": {
+        "mes": "2026-07",
+        "total": 113.94,
+        "vacuna": 46.75,
+        "aviar": 47.06,
+        "porcina": 20.13,
+        "ratio_bovina": 41.03,
+        "variaciones": {
+          "vacuna": -8.44,
+          "aviar": 0.23,
+          "porcina": 10.13,
+          "total": -2.02
+        }
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://www.magyp.gob.ar/sitio/areas/bovinos/informacion_sectorial/_archivos//000017_Tablero%20de%20consumo%20de%20carnes/000003_Tablero_CONSUMO_PER_CAPITA_CARNES_PROMEDIO_MOVIL.pdf",
+          "status": 200,
+          "sha256": "24a1d675aa6de5a8694dc5e75734fc2f664d74bfc47baae75eede423b827436d",
+          "bytes": 179759
+        }
+      ],
+      "segundos": 0.4
+    },
+    {
+      "colector": "pobreza",
+      "resultado": {
+        "pobreza_nowcast": {
+          "periodo": "2026-07",
+          "semestre": "Febrero 2026 - Julio 2026",
+          "valor": 31.3,
+          "ic_inf": 29.8,
+          "ic_sup": 32.7,
+          "fecha": "2026-07-01",
+          "unidad": "% de personas en hogares pobres"
+        }
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://www.utdt.edu/profesores/mrozada/pobreza",
+          "status": 200,
+          "sha256": "85025338e90bd1940bb13a865304fa8e4f07db5cb1a90753c9384bfa66dfbd70",
+          "bytes": 32744
+        },
+        {
+          "url": "https://www.utdt.edu/download.php?fname=_178774828469084200.pdf",
+          "status": 200,
+          "sha256": "3bb0b62cb19c45125d2e6c296664ac700e2a88d23b654b725d889a120bb909af",
+          "bytes": 950747
+        }
+      ],
+      "segundos": 1.7
+    },
+    {
+      "colector": "motorizacion",
+      "resultado": {
+        "motorizacion_total": {
+          "valor": 31.25,
+          "fecha": "2026-08",
+          "unidad": "vehículos 0km por cada 1.000 habitantes (12 meses)",
+          "fuente": "DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC)",
+          "composicion": {
+            "autos_12m": 552022,
+            "motos_12m": 815735,
+            "total_12m": 1367757,
+            "ratio_motos": 59.6,
+            "ratio_motos_base": 51.6,
+            "autos_var": -5.850991254042103,
+            "motos_var": 36.80310053598621,
+            "total_var": 15.655599638765704
+          }
+        },
+        "serie": {
+          "2023-01": 94.1,
+          "2023-02": 94.2,
+          "2023-03": 95.1,
+          "2023-04": 95.3,
+          "2023-05": 95.6,
+          "2023-06": 95.8,
+          "2023-07": 96.5,
+          "2023-08": 97.4,
+          "2023-09": 97.3,
+          "2023-10": 99.4,
+          "2023-11": 100.2,
+          "2023-12": 100.4,
+          "2024-01": 97.6,
+          "2024-02": 96.4,
+          "2024-03": 92.6,
+          "2024-04": 92.2,
+          "2024-05": 91.4,
+          "2024-06": 90.2,
+          "2024-07": 90.3,
+          "2024-08": 91.8,
+          "2024-09": 93.4,
+          "2024-10": 94.0,
+          "2024-11": 95.0,
+          "2024-12": 97.1,
+          "2025-01": 103.6,
+          "2025-02": 106.7,
+          "2025-03": 111.4,
+          "2025-04": 115.2,
+          "2025-05": 118.7,
+          "2025-06": 122.3,
+          "2025-07": 125.3,
+          "2025-08": 126.0,
+          "2025-09": 128.6,
+          "2025-10": 130.4,
+          "2025-11": 130.3,
+          "2025-12": 131.6,
+          "2026-01": 132.1,
+          "2026-02": 134.9,
+          "2026-03": 138.2,
+          "2026-04": 140.4,
+          "2026-05": 140.7,
+          "2026-06": 142.5,
+          "2026-07": 142.9,
+          "2026-08": 144.4
+        },
+        "serie_autos": {
+          "2022-11": 33462,
+          "2022-12": 19606,
+          "2023-01": 50071,
+          "2023-02": 30312,
+          "2023-03": 39709,
+          "2023-04": 34573,
+          "2023-05": 39935,
+          "2023-06": 39892,
+          "2023-07": 43866,
+          "2023-08": 39221,
+          "2023-09": 33454,
+          "2023-10": 41715,
+          "2023-11": 35730,
+          "2023-12": 18556,
+          "2024-01": 33853,
+          "2024-02": 24923,
+          "2024-03": 25674,
+          "2024-04": 32787,
+          "2024-05": 34527,
+          "2024-06": 30688,
+          "2024-07": 42881,
+          "2024-08": 41285,
+          "2024-09": 43423,
+          "2024-10": 44150,
+          "2024-11": 35957,
+          "2024-12": 21686,
+          "2025-01": 69109,
+          "2025-02": 44220,
+          "2025-03": 47989,
+          "2025-04": 54611,
+          "2025-05": 55941,
+          "2025-06": 52399,
+          "2025-07": 62373,
+          "2025-08": 54470,
+          "2025-09": 55881,
+          "2025-10": 52084,
+          "2025-11": 35332,
+          "2025-12": 24145,
+          "2026-01": 66189,
+          "2026-02": 41894,
+          "2026-03": 49101,
+          "2026-04": 47609,
+          "2026-05": 42840,
+          "2026-06": 47240,
+          "2026-07": 44917,
+          "2026-08": 44790
+        },
+        "serie_motos": {
+          "2022-11": 35284,
+          "2022-12": 29517,
+          "2023-01": 42763,
+          "2023-02": 36589,
+          "2023-03": 49598,
+          "2023-04": 40839,
+          "2023-05": 40986,
+          "2023-06": 34532,
+          "2023-07": 38257,
+          "2023-08": 43419,
+          "2023-09": 35413,
+          "2023-10": 43686,
+          "2023-11": 40992,
+          "2023-12": 33472,
+          "2024-01": 34034,
+          "2024-02": 31432,
+          "2024-03": 29328,
+          "2024-04": 39141,
+          "2024-05": 39831,
+          "2024-06": 33459,
+          "2024-07": 40924,
+          "2024-08": 55528,
+          "2024-09": 41134,
+          "2024-10": 46995,
+          "2024-11": 51106,
+          "2024-12": 50458,
+          "2025-01": 60228,
+          "2025-02": 41817,
+          "2025-03": 51821,
+          "2025-04": 53460,
+          "2025-05": 52739,
+          "2025-06": 46262,
+          "2025-07": 50429,
+          "2025-08": 49835,
+          "2025-09": 53811,
+          "2025-10": 56606,
+          "2025-11": 51935,
+          "2025-12": 60787,
+          "2026-01": 69342,
+          "2026-02": 71571,
+          "2026-03": 82235,
+          "2026-04": 82081,
+          "2026-05": 69925,
+          "2026-06": 69509,
+          "2026-07": 72719,
+          "2026-08": 75214
+        },
+        "patentamiento_autos": {
+          "valor": 44790,
+          "fecha": "2026-08",
+          "provincias": {
+            "Buenos Aires": 12198,
+            "Catamarca": 389,
+            "Chaco": 926,
+            "Chubut": 996,
+            "Ciudad Autónoma de Bs.As.": 8675,
+            "Corrientes": 945,
+            "Córdoba": 4862,
+            "Entre Ríos": 920,
+            "Formosa": 311,
+            "Jujuy": 589,
+            "La Pampa": 554,
+            "La Rioja": 211,
+            "Mendoza": 2031,
+            "Misiones": 413,
+            "Neuquén": 1496,
+            "Río Negro": 827,
+            "Salta": 929,
+            "San Juan": 578,
+            "San Luis": 407,
+            "Santa Cruz": 283,
+            "Santa Fe": 4382,
+            "Santiago del Estero": 610,
+            "Tucumán": 1258
+          }
+        },
+        "patentamiento_motos": {
+          "valor": 75214,
+          "fecha": "2026-08",
+          "provincias": {
+            "Buenos Aires": 22593,
+            "Catamarca": 1305,
+            "Chaco": 4395,
+            "Chubut": 388,
+            "Ciudad Autónoma de Bs.As.": 2125,
+            "Corrientes": 2869,
+            "Córdoba": 6155,
+            "Entre Ríos": 2282,
+            "Formosa": 1853,
+            "Jujuy": 2328,
+            "La Pampa": 621,
+            "La Rioja": 950,
+            "Mendoza": 2043,
+            "Misiones": 2077,
+            "Neuquén": 821,
+            "Río Negro": 937,
+            "Salta": 3081,
+            "San Juan": 1179,
+            "San Luis": 725,
+            "Santa Cruz": 116,
+            "Santa Fe": 7101,
+            "Santiago del Estero": 3095,
+            "Tucumán": 6175
+          }
+        }
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://datos.jus.gob.ar/api/3/action/package_show?id=estadistica-de-tramites-de-automotores",
+          "status": 200,
+          "sha256": "174226e437b50a8c792987e8858f825c206e4177f9c6e07ef437c8faeb071071",
+          "bytes": 8659
+        },
+        {
+          "url": "https://datos.jus.gob.ar/dataset/1ab0cc03-ab9b-4520-975c-5757d87d1061/resource/4358c995-bb04-4ad9-be4a-a9076dc3e42c/download/estadistica-inscripciones-iniciales-automotores-2000-01-2026-08.csv",
+          "status": 200,
+          "sha256": "a33a855d9b42c7a2e00f2722298b0711d08a1155bdd76b20859484f60dbf0dfa",
+          "bytes": 370198
+        },
+        {
+          "url": "https://datos.jus.gob.ar/api/3/action/package_show?id=estadistica-de-tramites-de-motovehiculos",
+          "status": 200,
+          "sha256": "8f40112452b7a6c608f93c8662e18b14a3c010605090a999710a9431be812757",
+          "bytes": 8778
+        },
+        {
+          "url": "https://datos.jus.gob.ar/dataset/72d85f23-b751-4d12-935b-25e32ed9445e/resource/d523dd08-5c12-467e-b947-aa3206a24d21/download/estadistica-inscripciones-iniciales-motovehiculos-2007-01-2026-08.csv",
+          "status": 200,
+          "sha256": "55d712f4eb9056be0638e6956ccd26513985f39387dcb030efe182eb0d399046",
+          "bytes": 290709
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=461.3_POBLACION_ANO_AEA_T_28_3&format=json&limit=80",
+          "status": 200,
+          "sha256": "41422da2678b00971c7a7ec544af83f47560e820299a3bdcc33ead9751b2aa07",
+          "bytes": 3272
+        }
+      ],
+      "segundos": 1.4
+    }
+  ]
+}

@@ -1,0 +1,3148 @@
+{
+  "consultado_en": "2026-09-08T18:17:20.014715-03:00",
+  "fuente_sesiones": "https://www.hcdn.gob.ar/sesiones/",
+  "sha256_indice": "6365e6d1b1d210e288797c50a89ad5322c62270d8e6a899ef3b310895286d11f",
+  "sesiones": [
+    {
+      "id": "703",
+      "fecha": "2023-02-28",
+      "en_minoria": false,
+      "titulo": "17° Reunión - 1° Sesión Extraordinaria Especial - (28/02/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=703&numVid=0&reunion=17&periodo=140"
+    },
+    {
+      "id": "704",
+      "fecha": "2023-03-28",
+      "en_minoria": false,
+      "titulo": "1° Reunión - 1° Sesión Ordinaria Especial - (28/03/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=704&numVid=0&reunion=1&periodo=141"
+    },
+    {
+      "id": "707",
+      "fecha": "2023-04-19",
+      "en_minoria": false,
+      "titulo": "3° Reunión - 3° Sesión Ordinaria Especial - (19/04/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=707&numVid=0&reunion=3&periodo=141"
+    },
+    {
+      "id": "1414",
+      "fecha": "2023-07-05",
+      "en_minoria": false,
+      "titulo": "5° Reunión - 5° Sesión Ordinaria Especial - (05/07/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=1414&numVid=0&reunion=5&periodo=141"
+    },
+    {
+      "id": "1415",
+      "fecha": "2023-08-23",
+      "en_minoria": false,
+      "titulo": "6° Reunión - 6° Sesión Ordinaria Especial - (23/08/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=1415&numVid=0&reunion=6&periodo=141"
+    },
+    {
+      "id": "3496",
+      "fecha": "2023-09-19",
+      "en_minoria": false,
+      "titulo": "7° Reunión - 7° Sesión Ordinaria Especial - (19/09/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3496&numVid=0&reunion=7&periodo=141"
+    },
+    {
+      "id": "3497",
+      "fecha": "2023-10-10",
+      "en_minoria": false,
+      "titulo": "8° Reunión - 8° Sesión Ordinaria Especial - (10/10/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3497&numVid=0&reunion=8&periodo=141"
+    },
+    {
+      "id": "3498",
+      "fecha": "2023-11-02",
+      "en_minoria": false,
+      "titulo": "9° Reunión - 9° Sesión Ordinaria Especial - (02/11/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3498&numVid=0&reunion=9&periodo=141"
+    },
+    {
+      "id": "3503",
+      "fecha": "2023-12-07",
+      "en_minoria": false,
+      "titulo": "10° Reunión - 1° Sesión Ordinaria De Prórroga Especial - (07/12/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3503&numVid=0&reunion=10&periodo=141"
+    },
+    {
+      "id": "3512",
+      "fecha": "2024-01-31",
+      "en_minoria": false,
+      "titulo": "12° Reunión - 1° Sesión Extraordinaria Especial - (31/01/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3512&numVid=0&reunion=12&periodo=141"
+    },
+    {
+      "id": "3513",
+      "fecha": "2024-02-01",
+      "en_minoria": false,
+      "titulo": "13° Reunión - 1° Sesión Extraordinaria Especial CONTINUACIÓN - (01/02/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3513&numVid=0&reunion=13&periodo=141"
+    },
+    {
+      "id": "3514",
+      "fecha": "2024-02-02",
+      "en_minoria": false,
+      "titulo": "14° Reunión - 1° Sesión Extraordinaria Especial CONTINUACIÓN - (02/02/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3514&numVid=0&reunion=14&periodo=141"
+    },
+    {
+      "id": "3515",
+      "fecha": "2024-02-06",
+      "en_minoria": false,
+      "titulo": "15° Reunión - 1° Sesión Extraordinaria Especial CONTINUACIÓN - (06/02/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3515&numVid=0&reunion=15&periodo=141"
+    },
+    {
+      "id": "3517",
+      "fecha": "2024-03-13",
+      "en_minoria": true,
+      "titulo": "1° Reunión - Expresiones en Minoría - (13/03/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3517&numVid=0&reunion=1&periodo=142"
+    },
+    {
+      "id": "3518",
+      "fecha": "2024-04-24",
+      "en_minoria": true,
+      "titulo": "2° Reunión - Expresiones en Minoría - (24/04/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3518&numVid=0&reunion=2&periodo=142"
+    },
+    {
+      "id": "3519",
+      "fecha": "2024-04-29",
+      "en_minoria": false,
+      "titulo": "3° Reunión - 1° Sesión Ordinaria Especial - (29/04/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3519&numVid=0&reunion=3&periodo=142"
+    },
+    {
+      "id": "3520",
+      "fecha": "2024-05-21",
+      "en_minoria": false,
+      "titulo": "4° Reunión - 2° Sesión Ordinaria Especial - (21/05/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3520&numVid=0&reunion=4&periodo=142"
+    },
+    {
+      "id": "3521",
+      "fecha": "2024-06-04",
+      "en_minoria": false,
+      "titulo": "5° Reunión - 3° Sesión Ordinaria Especial - (04/06/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3521&numVid=0&reunion=5&periodo=142"
+    },
+    {
+      "id": "3523",
+      "fecha": "2024-06-27",
+      "en_minoria": false,
+      "titulo": "6° Reunión - 4° Sesión Ordinaria Especial - (27/06/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3523&numVid=0&reunion=6&periodo=142"
+    },
+    {
+      "id": "3525",
+      "fecha": "2024-08-07",
+      "en_minoria": true,
+      "titulo": "7° Reunión - Expresiones en Minoría - (07/08/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3525&numVid=0&reunion=7&periodo=142"
+    },
+    {
+      "id": "3527",
+      "fecha": "2024-08-14",
+      "en_minoria": false,
+      "titulo": "8° Reunión - 5° Sesión Ordinaria Especial - (14/08/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3527&numVid=0&reunion=8&periodo=142"
+    },
+    {
+      "id": "3531",
+      "fecha": "2024-08-21",
+      "en_minoria": false,
+      "titulo": "9° Reunión - 6° Sesión Ordinaria Especial - (21/08/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3531&numVid=0&reunion=9&periodo=142"
+    },
+    {
+      "id": "3533",
+      "fecha": "2024-09-11",
+      "en_minoria": false,
+      "titulo": "11° Reunión - 8° Sesión Ordinaria Especial - (11/09/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3533&numVid=0&reunion=11&periodo=142"
+    },
+    {
+      "id": "3535",
+      "fecha": "2024-10-01",
+      "en_minoria": false,
+      "titulo": "12° Reunión - 9° Sesión Ordinaria Especial - (01/10/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3535&numVid=0&reunion=12&periodo=142"
+    },
+    {
+      "id": "3537",
+      "fecha": "2024-10-09",
+      "en_minoria": false,
+      "titulo": "13° Reunión - 10° Sesión Ordinaria Especial - (09/10/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3537&numVid=0&reunion=13&periodo=142"
+    },
+    {
+      "id": "3542",
+      "fecha": "2024-11-12",
+      "en_minoria": true,
+      "titulo": "14° Reunión - Expresiones en Minoría - (12/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3542&numVid=0&reunion=14&periodo=142"
+    },
+    {
+      "id": "3543",
+      "fecha": "2024-11-20",
+      "en_minoria": true,
+      "titulo": "15° Reunión - Expresiones en Minoría - (20/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3543&numVid=0&reunion=15&periodo=142"
+    },
+    {
+      "id": "3544",
+      "fecha": "2024-11-26",
+      "en_minoria": true,
+      "titulo": "17° Reunión - Expresiones en Minoría - (26/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3544&numVid=0&reunion=17&periodo=142"
+    },
+    {
+      "id": "3545",
+      "fecha": "2024-11-26",
+      "en_minoria": true,
+      "titulo": "16° Reunión - Expresiones en Minoría - (26/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3545&numVid=0&reunion=16&periodo=142"
+    },
+    {
+      "id": "3546",
+      "fecha": "2024-11-27",
+      "en_minoria": false,
+      "titulo": "18° Reunión - 11° Sesión Ordinaria Especial - (27/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3546&numVid=0&reunion=18&periodo=142"
+    },
+    {
+      "id": "3547",
+      "fecha": "2024-11-28",
+      "en_minoria": true,
+      "titulo": "19° Reunión - Expresiones en Minoría - (28/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3547&numVid=0&reunion=19&periodo=142"
+    },
+    {
+      "id": "3549",
+      "fecha": "2025-02-06",
+      "en_minoria": false,
+      "titulo": "21° Reunión - 1° Sesión Extraordinaria Especial - (06/02/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3549&numVid=0&reunion=21&periodo=142"
+    },
+    {
+      "id": "3550",
+      "fecha": "2025-02-12",
+      "en_minoria": false,
+      "titulo": "22° Reunión - 2° Sesión Extraordinaria Especial - (12/02/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3550&numVid=0&reunion=22&periodo=142"
+    },
+    {
+      "id": "3553",
+      "fecha": "2025-03-12",
+      "en_minoria": false,
+      "titulo": "1° Reunión - 1° Sesión Ordinaria Especial - (12/03/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3553&numVid=0&reunion=1&periodo=143"
+    },
+    {
+      "id": "3554",
+      "fecha": "2025-03-19",
+      "en_minoria": false,
+      "titulo": "2° Reunión - 2° Sesión Ordinaria Especial - (19/03/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3554&numVid=0&reunion=2&periodo=143"
+    },
+    {
+      "id": "3555",
+      "fecha": "2025-03-19",
+      "en_minoria": true,
+      "titulo": "3° Reunión - Expresiones en Minoría - (19/03/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3555&numVid=0&reunion=3&periodo=143"
+    },
+    {
+      "id": "3556",
+      "fecha": "2025-04-08",
+      "en_minoria": false,
+      "titulo": "4° Reunión - 3° Sesión Ordinaria Especial - (08/04/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3556&numVid=0&reunion=4&periodo=143"
+    },
+    {
+      "id": "3560",
+      "fecha": "2025-05-21",
+      "en_minoria": true,
+      "titulo": "8° Reunión - Expresiones en Minoría - (21/05/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3560&numVid=0&reunion=8&periodo=143"
+    },
+    {
+      "id": "3561",
+      "fecha": "2025-06-04",
+      "en_minoria": false,
+      "titulo": "9° Reunión - 7° Sesión Ordinaria Especial - (04/06/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3561&numVid=0&reunion=9&periodo=143"
+    },
+    {
+      "id": "3562",
+      "fecha": "2025-07-02",
+      "en_minoria": false,
+      "titulo": "10° Reunión - 8° Sesión Ordinaria Especial - (02/07/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3562&numVid=0&reunion=10&periodo=143"
+    },
+    {
+      "id": "3564",
+      "fecha": "2025-08-06",
+      "en_minoria": false,
+      "titulo": "11° Reunión - 9° Sesión Ordinaria Especial - (06/08/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3564&numVid=0&reunion=11&periodo=143"
+    },
+    {
+      "id": "3565",
+      "fecha": "2025-08-20",
+      "en_minoria": false,
+      "titulo": "12° Reunión - 10° Sesión Ordinaria Especial - (20/08/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3565&numVid=0&reunion=12&periodo=143"
+    },
+    {
+      "id": "3567",
+      "fecha": "2025-09-17",
+      "en_minoria": false,
+      "titulo": "14° Reunión - 12° Sesión Ordinaria Especial - (17/09/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3567&numVid=0&reunion=14&periodo=143"
+    },
+    {
+      "id": "3568",
+      "fecha": "2025-10-08",
+      "en_minoria": false,
+      "titulo": "15° Reunión - 13° Sesión Ordinaria Especial - (08/10/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3568&numVid=0&reunion=15&periodo=143"
+    },
+    {
+      "id": "3572",
+      "fecha": "2025-12-03",
+      "en_minoria": false,
+      "titulo": "18° Reunión - 14° Sesión Especial - (03/12/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3572&numVid=0&reunion=18&periodo=143"
+    },
+    {
+      "id": "3573",
+      "fecha": "2025-12-17",
+      "en_minoria": false,
+      "titulo": "20° Reunión - 1° Sesión Extraordinaria Especial - (17/12/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3573&numVid=0&reunion=20&periodo=143"
+    },
+    {
+      "id": "3574",
+      "fecha": "2026-02-12",
+      "en_minoria": false,
+      "titulo": "21° Reunión - 2° Sesión Extraordinaria Especial - (12/02/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3574&numVid=0&reunion=21&periodo=143"
+    },
+    {
+      "id": "3575",
+      "fecha": "2026-02-19",
+      "en_minoria": false,
+      "titulo": "22° Reunión - 3° Sesión Extraordinaria Especial - (19/02/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3575&numVid=0&reunion=22&periodo=143"
+    },
+    {
+      "id": "3577",
+      "fecha": "2026-04-08",
+      "en_minoria": false,
+      "titulo": "1° Reunión - 1° Sesión Ordinaria Especial - (08/04/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3577&numVid=0&reunion=1&periodo=144"
+    },
+    {
+      "id": "3580",
+      "fecha": "2026-05-20",
+      "en_minoria": false,
+      "titulo": "3° Reunión - 3° Sesión Ordinaria Especial - (20/05/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3580&numVid=0&reunion=3&periodo=144"
+    },
+    {
+      "id": "3582",
+      "fecha": "2026-06-23",
+      "en_minoria": true,
+      "titulo": "4° Reunión - Expresiones en Minoría - (23/06/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3582&numVid=0&reunion=4&periodo=144"
+    },
+    {
+      "id": "3583",
+      "fecha": "2026-06-24",
+      "en_minoria": false,
+      "titulo": "5° Reunión - 4° Sesión Ordinaria Especial - (24/06/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3583&numVid=0&reunion=5&periodo=144"
+    },
+    {
+      "id": "3584",
+      "fecha": "2026-08-26",
+      "en_minoria": false,
+      "titulo": "6° Reunión - 5° Sesión Ordinaria Especial - (26/08/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3584&numVid=0&reunion=6&periodo=144"
+    }
+  ],
+  "complementos": {
+    "revisado_en": "2026-09-08",
+    "criterio": "Sanciones omitidas por CKAN, cotejadas en originales del Boletín Oficial y de la Dirección de Taquígrafos. La fecha es sanción definitiva, no media sanción, publicación ni promulgación. Se conserva expediente cuando todavía no se verificó un número de ley, sin inventarlo.",
+    "contraste_hcdn": "https://www3.hcdn.gob.ar/dependencias/secparl/dgral_info_parlamentaria/dip/archivos/Leyes_2023-_Pres_Javier_Milei_con_bloques_y_fecha_pres_y_sanc.pdf",
+    "leyes": [
+      {
+        "LEY": "27748",
+        "SANCION_DEFINITIVA": "2024-08-14",
+        "fuente": "https://otslist.boletinoficial.gob.ar/ots/download/25c0f8d03d49337c02cf3e93a037ce3c34330809949716c07167157ee527c672/0/",
+        "pagina": 6,
+        "publicacion": "2024-09-09"
+      },
+      {
+        "LEY": "27774",
+        "SANCION_DEFINITIVA": "2024-10-01",
+        "fuente": "https://otslist.boletinoficial.gob.ar/ots/download/87002cb32d65d99f5f2ebd3fa4e01824f977e93ce431b71cf3874821efdfcfcc/0/",
+        "pagina": 17,
+        "publicacion": "2024-10-18"
+      },
+      {
+        "EXPEDIENTE_INICIAL": "0026-S-2026",
+        "SANCION_DEFINITIVA": "2026-08-27",
+        "sancion_definitiva_verificada": true,
+        "tema": "Acuerdo de Libre Comercio Mercosur–Singapur",
+        "orden_del_dia": 208,
+        "fuente": "https://www3.hcdn.gob.ar/dependencias/dtaquigrafos/diarios/periodo-144/diario_202608266.pdf",
+        "referencia": "Aprobación definitiva expresa y comunicaciones correspondientes; no se remite al Senado para revisión.",
+        "PROYECTO_ID": "HCDN290726",
+        "fecha_inicio_sesion": "2026-08-26",
+        "nota_fecha": "Sesión iniciada el 26 y concluida a las 3:47 del 27; sanciones informadas por HCDN el 27. El cómputo utiliza el mes, agosto.",
+        "cotejo_prensa_hcdn": "https://www.hcdn.gob.ar/prensa/noticia/DIPUTADOS-CONVIRTIO-EN-LEY-EL-ACUERDO-DE-LIBRE-COMERCIO-ENTRE-EL-MERCOSUR-Y-SINGAPUR/"
+      },
+      {
+        "EXPEDIENTE_INICIAL": "0028-S-2026",
+        "SANCION_DEFINITIVA": "2026-08-27",
+        "sancion_definitiva_verificada": true,
+        "tema": "San Miguel de Tucumán, Capital Simbólica el 9 de julio",
+        "orden_del_dia": 243,
+        "fuente": "https://www3.hcdn.gob.ar/dependencias/dtaquigrafos/diarios/periodo-144/diario_202608266.pdf",
+        "referencia": "Aprobación definitiva expresa y comunicaciones correspondientes; no se remite al Senado para revisión.",
+        "fecha_inicio_sesion": "2026-08-26",
+        "nota_fecha": "Sesión iniciada el 26 y concluida a las 3:47 del 27; sanciones informadas por HCDN el 27. El cómputo utiliza el mes, agosto.",
+        "cotejo_prensa_hcdn": "https://www.hcdn.gob.ar/prensa/noticia/EN-SESION-ESPECIAL-LA-CAMARA-DE-DIPUTADOS-APROBO-UNA-BATERIA-DE-PROYECTOS/"
+      },
+      {
+        "EXPEDIENTE_INICIAL": "0022-S-2026",
+        "SANCION_DEFINITIVA": "2026-08-27",
+        "sancion_definitiva_verificada": true,
+        "tema": "Reorganización de la Cámara Federal de Apelaciones de Tucumán",
+        "orden_del_dia": 263,
+        "fuente": "https://www3.hcdn.gob.ar/dependencias/dtaquigrafos/diarios/periodo-144/diario_202608266.pdf",
+        "referencia": "Aprobación definitiva expresa y comunicaciones correspondientes; no se remite al Senado para revisión.",
+        "PROYECTO_ID": "HCDN290427",
+        "fecha_inicio_sesion": "2026-08-26",
+        "nota_fecha": "Sesión iniciada el 26 y concluida a las 3:47 del 27; sanciones informadas por HCDN el 27. El cómputo utiliza el mes, agosto.",
+        "cotejo_prensa_hcdn": "https://www.hcdn.gob.ar/prensa/noticia/EN-SESION-ESPECIAL-LA-CAMARA-DE-DIPUTADOS-APROBO-UNA-BATERIA-DE-PROYECTOS/"
+      },
+      {
+        "EXPEDIENTE_INICIAL": "0021-S-2026",
+        "SANCION_DEFINITIVA": "2026-08-27",
+        "sancion_definitiva_verificada": true,
+        "tema": "Sala II de la Cámara Federal de Apelaciones de Mar del Plata",
+        "orden_del_dia": 262,
+        "fuente": "https://www3.hcdn.gob.ar/dependencias/dtaquigrafos/diarios/periodo-144/diario_202608266.pdf",
+        "referencia": "Aprobación definitiva expresa y comunicaciones correspondientes; no se remite al Senado para revisión.",
+        "PROYECTO_ID": "HCDN290413",
+        "fecha_inicio_sesion": "2026-08-26",
+        "nota_fecha": "Sesión iniciada el 26 y concluida a las 3:47 del 27; sanciones informadas por HCDN el 27. El cómputo utiliza el mes, agosto.",
+        "cotejo_prensa_hcdn": "https://www.hcdn.gob.ar/prensa/noticia/EN-SESION-ESPECIAL-LA-CAMARA-DE-DIPUTADOS-APROBO-UNA-BATERIA-DE-PROYECTOS/"
+      },
+      {
+        "EXPEDIENTE_INICIAL": "0041-S-2025",
+        "SANCION_DEFINITIVA": "2026-08-27",
+        "sancion_definitiva_verificada": true,
+        "tema": "Camino de Brochero, patrimonio inmaterial",
+        "orden_del_dia": 270,
+        "fuente": "https://www3.hcdn.gob.ar/dependencias/dtaquigrafos/diarios/periodo-144/diario_202608266.pdf",
+        "referencia": "Aprobación definitiva expresa y comunicaciones correspondientes; no se remite al Senado para revisión.",
+        "PROYECTO_ID": "HCDN284644",
+        "fecha_inicio_sesion": "2026-08-26",
+        "nota_fecha": "Sesión iniciada el 26 y concluida a las 3:47 del 27; sanciones informadas por HCDN el 27. El cómputo utiliza el mes, agosto.",
+        "cotejo_prensa_hcdn": "https://www.hcdn.gob.ar/prensa/noticia/EN-SESION-ESPECIAL-LA-CAMARA-DE-DIPUTADOS-APROBO-UNA-BATERIA-DE-PROYECTOS/"
+      }
+    ]
+  },
+  "tarjetas": {
+    "veto_quorum": {
+      "valor": 10.0,
+      "fracasadas_n": 1,
+      "total_n": 10,
+      "unidad": "% de sesiones",
+      "fuente": "Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas",
+      "fecha_dato": "2026-09-08",
+      "desactualizado": false,
+      "ultima_reunion_registrada": "2026-08-26",
+      "detalle_txt": "1 de 10 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. Última reunión: 2026-08-26. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas."
+    },
+    "produccion_legislativa": {
+      "valor": 27,
+      "unidad": "leyes sancionadas (12m)",
+      "fuente": "Cámara de Diputados — catálogo, Boletín Oficial y diarios de sesiones",
+      "fecha_dato": "2026-08-01",
+      "desactualizado": false,
+      "ultima_sancion_registrada": "2026-08-27",
+      "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
+      "detalle_txt": "27 leyes distintas en los 12 meses completos hasta 2026-08. Última sanción registrada: 2026-08-27; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74."
+    }
+  },
+  "series": {
+    "veto_quorum": [
+      [
+        "2023-12-31",
+        0.0
+      ],
+      [
+        "2024-01-31",
+        0.0
+      ],
+      [
+        "2024-02-29",
+        0.0
+      ],
+      [
+        "2024-03-31",
+        8.3
+      ],
+      [
+        "2024-04-30",
+        15.4
+      ],
+      [
+        "2024-05-31",
+        14.3
+      ],
+      [
+        "2024-06-30",
+        12.5
+      ],
+      [
+        "2024-07-31",
+        13.3
+      ],
+      [
+        "2024-08-31",
+        17.6
+      ],
+      [
+        "2024-09-30",
+        17.6
+      ],
+      [
+        "2024-10-31",
+        16.7
+      ],
+      [
+        "2024-11-30",
+        34.8
+      ],
+      [
+        "2024-12-31",
+        36.4
+      ],
+      [
+        "2025-01-31",
+        38.1
+      ],
+      [
+        "2025-02-28",
+        40.0
+      ],
+      [
+        "2025-03-31",
+        36.4
+      ],
+      [
+        "2025-04-30",
+        33.3
+      ],
+      [
+        "2025-05-31",
+        38.1
+      ],
+      [
+        "2025-06-30",
+        40.0
+      ],
+      [
+        "2025-07-31",
+        38.1
+      ],
+      [
+        "2025-08-31",
+        35.0
+      ],
+      [
+        "2025-09-30",
+        35.0
+      ],
+      [
+        "2025-10-31",
+        36.8
+      ],
+      [
+        "2025-11-30",
+        15.4
+      ],
+      [
+        "2025-12-31",
+        13.3
+      ],
+      [
+        "2026-01-31",
+        13.3
+      ],
+      [
+        "2026-02-28",
+        13.3
+      ],
+      [
+        "2026-03-31",
+        8.3
+      ],
+      [
+        "2026-04-30",
+        8.3
+      ],
+      [
+        "2026-05-31",
+        0.0
+      ],
+      [
+        "2026-06-30",
+        7.7
+      ],
+      [
+        "2026-07-31",
+        8.3
+      ],
+      [
+        "2026-08-31",
+        9.1
+      ],
+      [
+        "2026-09-08",
+        10.0
+      ]
+    ],
+    "produccion_legislativa": [
+      [
+        "2023-12-01",
+        34
+      ],
+      [
+        "2024-01-01",
+        34
+      ],
+      [
+        "2024-02-01",
+        32
+      ],
+      [
+        "2024-03-01",
+        31
+      ],
+      [
+        "2024-04-01",
+        23
+      ],
+      [
+        "2024-05-01",
+        23
+      ],
+      [
+        "2024-06-01",
+        25
+      ],
+      [
+        "2024-07-01",
+        21
+      ],
+      [
+        "2024-08-01",
+        33
+      ],
+      [
+        "2024-09-01",
+        24
+      ],
+      [
+        "2024-10-01",
+        44
+      ],
+      [
+        "2024-11-01",
+        44
+      ],
+      [
+        "2024-12-01",
+        44
+      ],
+      [
+        "2025-01-01",
+        44
+      ],
+      [
+        "2025-02-01",
+        48
+      ],
+      [
+        "2025-03-01",
+        47
+      ],
+      [
+        "2025-04-01",
+        45
+      ],
+      [
+        "2025-05-01",
+        48
+      ],
+      [
+        "2025-06-01",
+        47
+      ],
+      [
+        "2025-07-01",
+        49
+      ],
+      [
+        "2025-08-01",
+        40
+      ],
+      [
+        "2025-09-01",
+        38
+      ],
+      [
+        "2025-10-01",
+        15
+      ],
+      [
+        "2025-11-01",
+        15
+      ],
+      [
+        "2025-12-01",
+        17
+      ],
+      [
+        "2026-01-01",
+        17
+      ],
+      [
+        "2026-02-01",
+        16
+      ],
+      [
+        "2026-03-01",
+        17
+      ],
+      [
+        "2026-04-01",
+        18
+      ],
+      [
+        "2026-05-01",
+        24
+      ],
+      [
+        "2026-06-01",
+        28
+      ],
+      [
+        "2026-07-01",
+        25
+      ],
+      [
+        "2026-08-01",
+        27
+      ]
+    ]
+  },
+  "fuente_leyes_csv_sha256": "b8dabe892ba9f341414b4c36f5883f95f97d9a829471d6734f6430bf5e8d3294",
+  "version_taquigrafica_sha256": "fd970e8ef42d24d9cfb2900fcd2c1c6e0f35b508d8ad949b84859a25c815a7a5",
+  "tarjetas_anteriores": {
+    "veto_quorum": {
+      "valor": 11.1,
+      "fracasadas_n": 1,
+      "total_n": 9,
+      "unidad": "% de sesiones",
+      "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
+      "fecha_dato": "2026-09-08",
+      "desactualizado": false,
+      "detalle_txt": "1 de 9 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
+      "obtenido_en": "2026-09-08T03:03:09",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_itcp": 75.4,
+      "puntaje_banda": 75.4,
+      "peso_efectivo": 0.0273
+    },
+    "produccion_legislativa": {
+      "valor": 22,
+      "unidad": "leyes sancionadas (12m)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO",
+      "fecha_dato": "2026-08-01",
+      "desactualizado": false,
+      "ultima_sancion_registrada": "2026-06-24",
+      "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
+      "detalle_txt": "22 leyes distintas en los 12 meses completos hasta 2026-08. Última sanción registrada: 2026-06-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
+      "obtenido_en": "2026-09-08T17:44:15.416871-03:00",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_itcp": 18.0,
+      "puntaje_banda": 18.0,
+      "peso_efectivo": 0.0315
+    }
+  },
+  "series_anteriores": [
+    {
+      "fecha": "2026-09-08",
+      "indicador": "veto_quorum",
+      "valor": "11.1",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2026-08-31",
+      "indicador": "veto_quorum",
+      "valor": "10.0",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2026-07-31",
+      "indicador": "veto_quorum",
+      "valor": "8.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2026-06-30",
+      "indicador": "veto_quorum",
+      "valor": "8.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2026-05-31",
+      "indicador": "veto_quorum",
+      "valor": "0.0",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2026-04-30",
+      "indicador": "veto_quorum",
+      "valor": "8.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2026-03-31",
+      "indicador": "veto_quorum",
+      "valor": "7.7",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2026-02-28",
+      "indicador": "veto_quorum",
+      "valor": "12.5",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2026-01-31",
+      "indicador": "veto_quorum",
+      "valor": "12.5",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-12-31",
+      "indicador": "veto_quorum",
+      "valor": "12.5",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-11-30",
+      "indicador": "veto_quorum",
+      "valor": "14.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-10-31",
+      "indicador": "veto_quorum",
+      "valor": "31.6",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-09-30",
+      "indicador": "veto_quorum",
+      "valor": "31.6",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-08-31",
+      "indicador": "veto_quorum",
+      "valor": "30.0",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-07-31",
+      "indicador": "veto_quorum",
+      "valor": "33.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-06-30",
+      "indicador": "veto_quorum",
+      "valor": "33.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-05-31",
+      "indicador": "veto_quorum",
+      "valor": "33.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-04-30",
+      "indicador": "veto_quorum",
+      "valor": "28.6",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-03-31",
+      "indicador": "veto_quorum",
+      "valor": "33.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-02-28",
+      "indicador": "veto_quorum",
+      "valor": "36.8",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2025-01-31",
+      "indicador": "veto_quorum",
+      "valor": "38.9",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-12-31",
+      "indicador": "veto_quorum",
+      "valor": "33.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-11-30",
+      "indicador": "veto_quorum",
+      "valor": "31.8",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-10-31",
+      "indicador": "veto_quorum",
+      "valor": "17.6",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-09-30",
+      "indicador": "veto_quorum",
+      "valor": "16.7",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-08-31",
+      "indicador": "veto_quorum",
+      "valor": "17.6",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-07-31",
+      "indicador": "veto_quorum",
+      "valor": "13.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-06-30",
+      "indicador": "veto_quorum",
+      "valor": "12.5",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-05-31",
+      "indicador": "veto_quorum",
+      "valor": "14.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-04-30",
+      "indicador": "veto_quorum",
+      "valor": "15.4",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-03-31",
+      "indicador": "veto_quorum",
+      "valor": "8.3",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-02-29",
+      "indicador": "veto_quorum",
+      "valor": "0.0",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2024-01-31",
+      "indicador": "veto_quorum",
+      "valor": "0.0",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2023-12-31",
+      "indicador": "veto_quorum",
+      "valor": "0.0",
+      "unidad": "% sesiones en minoría (12m móviles)",
+      "fuente": "Cámara de Diputados (datos abiertos)"
+    },
+    {
+      "fecha": "2023-12-01",
+      "indicador": "produccion_legislativa",
+      "valor": "34",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-01-01",
+      "indicador": "produccion_legislativa",
+      "valor": "34",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-02-01",
+      "indicador": "produccion_legislativa",
+      "valor": "32",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-03-01",
+      "indicador": "produccion_legislativa",
+      "valor": "31",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-04-01",
+      "indicador": "produccion_legislativa",
+      "valor": "23",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-05-01",
+      "indicador": "produccion_legislativa",
+      "valor": "23",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-06-01",
+      "indicador": "produccion_legislativa",
+      "valor": "25",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-07-01",
+      "indicador": "produccion_legislativa",
+      "valor": "21",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-08-01",
+      "indicador": "produccion_legislativa",
+      "valor": "33",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-09-01",
+      "indicador": "produccion_legislativa",
+      "valor": "24",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-10-01",
+      "indicador": "produccion_legislativa",
+      "valor": "44",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-11-01",
+      "indicador": "produccion_legislativa",
+      "valor": "44",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2024-12-01",
+      "indicador": "produccion_legislativa",
+      "valor": "44",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-01-01",
+      "indicador": "produccion_legislativa",
+      "valor": "44",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-02-01",
+      "indicador": "produccion_legislativa",
+      "valor": "48",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-03-01",
+      "indicador": "produccion_legislativa",
+      "valor": "47",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-04-01",
+      "indicador": "produccion_legislativa",
+      "valor": "45",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-05-01",
+      "indicador": "produccion_legislativa",
+      "valor": "48",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-06-01",
+      "indicador": "produccion_legislativa",
+      "valor": "47",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-07-01",
+      "indicador": "produccion_legislativa",
+      "valor": "49",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-08-01",
+      "indicador": "produccion_legislativa",
+      "valor": "40",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-09-01",
+      "indicador": "produccion_legislativa",
+      "valor": "38",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-10-01",
+      "indicador": "produccion_legislativa",
+      "valor": "15",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-11-01",
+      "indicador": "produccion_legislativa",
+      "valor": "15",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2025-12-01",
+      "indicador": "produccion_legislativa",
+      "valor": "17",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2026-01-01",
+      "indicador": "produccion_legislativa",
+      "valor": "17",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2026-02-01",
+      "indicador": "produccion_legislativa",
+      "valor": "16",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2026-03-01",
+      "indicador": "produccion_legislativa",
+      "valor": "17",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2026-04-01",
+      "indicador": "produccion_legislativa",
+      "valor": "18",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2026-05-01",
+      "indicador": "produccion_legislativa",
+      "valor": "24",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2026-06-01",
+      "indicador": "produccion_legislativa",
+      "valor": "28",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2026-07-01",
+      "indicador": "produccion_legislativa",
+      "valor": "25",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    },
+    {
+      "fecha": "2026-08-01",
+      "indicador": "produccion_legislativa",
+      "valor": "22",
+      "unidad": "leyes sancionadas (12m móviles)",
+      "fuente": "Cámara de Diputados — catálogo y sanciones complementarias cotejadas en el BO"
+    }
+  ],
+  "inventario_indice_sin_filtro": [
+    {
+      "id": "3585",
+      "periodo": "144",
+      "reunion": "7",
+      "fecha": "2026-09-09",
+      "titulo": "7° Reunión - 6° Sesión Ordinaria Especial - (09/09/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3585&numVid=0&reunion=7&periodo=144"
+    },
+    {
+      "id": "3584",
+      "periodo": "144",
+      "reunion": "6",
+      "fecha": "2026-08-26",
+      "titulo": "6° Reunión - 5° Sesión Ordinaria Especial - (26/08/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3584&numVid=0&reunion=6&periodo=144"
+    },
+    {
+      "id": "3583",
+      "periodo": "144",
+      "reunion": "5",
+      "fecha": "2026-06-24",
+      "titulo": "5° Reunión - 4° Sesión Ordinaria Especial - (24/06/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3583&numVid=0&reunion=5&periodo=144"
+    },
+    {
+      "id": "3582",
+      "periodo": "144",
+      "reunion": "4",
+      "fecha": "2026-06-23",
+      "titulo": "4° Reunión - Expresiones en Minoría - (23/06/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3582&numVid=0&reunion=4&periodo=144"
+    },
+    {
+      "id": "3581",
+      "periodo": "144",
+      "reunion": "null",
+      "fecha": "2026-05-20",
+      "titulo": "Sesión Ordinaria Especial CITADA - NO EFECTUADA - (20/05/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3581&numVid=0&reunion=null&periodo=144"
+    },
+    {
+      "id": "3580",
+      "periodo": "144",
+      "reunion": "3",
+      "fecha": "2026-05-20",
+      "titulo": "3° Reunión - 3° Sesión Ordinaria Especial - (20/05/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3580&numVid=0&reunion=3&periodo=144"
+    },
+    {
+      "id": "3578",
+      "periodo": "144",
+      "reunion": "2",
+      "fecha": "2026-04-29",
+      "titulo": "2° Reunión - 2° Sesión Ordinaria Informativa - (29/04/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3578&numVid=0&reunion=2&periodo=144"
+    },
+    {
+      "id": "3577",
+      "periodo": "144",
+      "reunion": "1",
+      "fecha": "2026-04-08",
+      "titulo": "1° Reunión - 1° Sesión Ordinaria Especial - (08/04/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3577&numVid=0&reunion=1&periodo=144"
+    },
+    {
+      "id": "3576",
+      "periodo": "144",
+      "reunion": "1",
+      "fecha": "2026-03-01",
+      "titulo": "Asamblea Legislativa - (01/03/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3576&numVid=0&reunion=1&periodo=144"
+    },
+    {
+      "id": "3575",
+      "periodo": "143",
+      "reunion": "22",
+      "fecha": "2026-02-19",
+      "titulo": "22° Reunión - 3° Sesión Extraordinaria Especial - (19/02/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3575&numVid=0&reunion=22&periodo=143"
+    },
+    {
+      "id": "3574",
+      "periodo": "143",
+      "reunion": "21",
+      "fecha": "2026-02-12",
+      "titulo": "21° Reunión - 2° Sesión Extraordinaria Especial - (12/02/2026)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3574&numVid=0&reunion=21&periodo=143"
+    },
+    {
+      "id": "3573",
+      "periodo": "143",
+      "reunion": "20",
+      "fecha": "2025-12-17",
+      "titulo": "20° Reunión - 1° Sesión Extraordinaria Especial - (17/12/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3573&numVid=0&reunion=20&periodo=143"
+    },
+    {
+      "id": "3571",
+      "periodo": "143",
+      "reunion": "19",
+      "fecha": "2025-12-03",
+      "titulo": "19° Reunión - Sesión Preparatoria - (03/12/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3571&numVid=0&reunion=19&periodo=143"
+    },
+    {
+      "id": "3572",
+      "periodo": "143",
+      "reunion": "18",
+      "fecha": "2025-12-03",
+      "titulo": "18° Reunión - 14° Sesión Especial - (03/12/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3572&numVid=0&reunion=18&periodo=143"
+    },
+    {
+      "id": "3570",
+      "periodo": "143",
+      "reunion": "17",
+      "fecha": "2025-10-15",
+      "titulo": "17° Reunión - Informativa - Art. 71 CN CITADA - FRACASADA - (15/10/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3570&numVid=0&reunion=17&periodo=143"
+    },
+    {
+      "id": "3569",
+      "periodo": "143",
+      "reunion": "16",
+      "fecha": "2025-10-15",
+      "titulo": "16° Reunión - Informativa - Art. 71 CN CITADA - FRACASADA - (15/10/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3569&numVid=0&reunion=16&periodo=143"
+    },
+    {
+      "id": "3568",
+      "periodo": "143",
+      "reunion": "15",
+      "fecha": "2025-10-08",
+      "titulo": "15° Reunión - 13° Sesión Ordinaria Especial - (08/10/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3568&numVid=0&reunion=15&periodo=143"
+    },
+    {
+      "id": "3567",
+      "periodo": "143",
+      "reunion": "14",
+      "fecha": "2025-09-17",
+      "titulo": "14° Reunión - 12° Sesión Ordinaria Especial - (17/09/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3567&numVid=0&reunion=14&periodo=143"
+    },
+    {
+      "id": "3566",
+      "periodo": "143",
+      "reunion": "13",
+      "fecha": "2025-08-27",
+      "titulo": "13° Reunión - 11° Sesión Ordinaria Informativa - (27/08/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3566&numVid=0&reunion=13&periodo=143"
+    },
+    {
+      "id": "3565",
+      "periodo": "143",
+      "reunion": "12",
+      "fecha": "2025-08-20",
+      "titulo": "12° Reunión - 10° Sesión Ordinaria Especial - (20/08/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3565&numVid=0&reunion=12&periodo=143"
+    },
+    {
+      "id": "3564",
+      "periodo": "143",
+      "reunion": "11",
+      "fecha": "2025-08-06",
+      "titulo": "11° Reunión - 9° Sesión Ordinaria Especial - (06/08/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3564&numVid=0&reunion=11&periodo=143"
+    },
+    {
+      "id": "3563",
+      "periodo": "143",
+      "reunion": "null",
+      "fecha": "2025-07-02",
+      "titulo": "Sesión Ordinaria Especial CITADA - NO EFECTUADA - (02/07/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3563&numVid=0&reunion=null&periodo=143"
+    },
+    {
+      "id": "3562",
+      "periodo": "143",
+      "reunion": "10",
+      "fecha": "2025-07-02",
+      "titulo": "10° Reunión - 8° Sesión Ordinaria Especial - (02/07/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3562&numVid=0&reunion=10&periodo=143"
+    },
+    {
+      "id": "3561",
+      "periodo": "143",
+      "reunion": "9",
+      "fecha": "2025-06-04",
+      "titulo": "9° Reunión - 7° Sesión Ordinaria Especial - (04/06/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3561&numVid=0&reunion=9&periodo=143"
+    },
+    {
+      "id": "3560",
+      "periodo": "143",
+      "reunion": "8",
+      "fecha": "2025-05-21",
+      "titulo": "8° Reunión - Expresiones en Minoría - (21/05/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3560&numVid=0&reunion=8&periodo=143"
+    },
+    {
+      "id": "3558",
+      "periodo": "143",
+      "reunion": "7",
+      "fecha": "2025-04-29",
+      "titulo": "7° Reunión - 6° Sesión Ordinaria Informativa - Art. 71 CN - (29/04/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3558&numVid=0&reunion=7&periodo=143"
+    },
+    {
+      "id": "3559",
+      "periodo": "143",
+      "reunion": "6",
+      "fecha": "2025-04-22",
+      "titulo": "6° Reunión - 5° Sesión Ordinaria Especial de Homenaje - (22/04/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3559&numVid=0&reunion=6&periodo=143"
+    },
+    {
+      "id": "3557",
+      "periodo": "143",
+      "reunion": "5",
+      "fecha": "2025-04-16",
+      "titulo": "5° Reunión - 4° Sesión Ordinaria Informativa - (16/04/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3557&numVid=0&reunion=5&periodo=143"
+    },
+    {
+      "id": "3556",
+      "periodo": "143",
+      "reunion": "4",
+      "fecha": "2025-04-08",
+      "titulo": "4° Reunión - 3° Sesión Ordinaria Especial - (08/04/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3556&numVid=0&reunion=4&periodo=143"
+    },
+    {
+      "id": "3555",
+      "periodo": "143",
+      "reunion": "3",
+      "fecha": "2025-03-19",
+      "titulo": "3° Reunión - Expresiones en Minoría - (19/03/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3555&numVid=0&reunion=3&periodo=143"
+    },
+    {
+      "id": "3554",
+      "periodo": "143",
+      "reunion": "2",
+      "fecha": "2025-03-19",
+      "titulo": "2° Reunión - 2° Sesión Ordinaria Especial - (19/03/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3554&numVid=0&reunion=2&periodo=143"
+    },
+    {
+      "id": "3553",
+      "periodo": "143",
+      "reunion": "1",
+      "fecha": "2025-03-12",
+      "titulo": "1° Reunión - 1° Sesión Ordinaria Especial - (12/03/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3553&numVid=0&reunion=1&periodo=143"
+    },
+    {
+      "id": "3551",
+      "periodo": "143",
+      "reunion": "1",
+      "fecha": "2025-03-01",
+      "titulo": "Asamblea Legislativa - (01/03/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3551&numVid=0&reunion=1&periodo=143"
+    },
+    {
+      "id": "3550",
+      "periodo": "142",
+      "reunion": "22",
+      "fecha": "2025-02-12",
+      "titulo": "22° Reunión - 2° Sesión Extraordinaria Especial - (12/02/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3550&numVid=0&reunion=22&periodo=142"
+    },
+    {
+      "id": "3549",
+      "periodo": "142",
+      "reunion": "21",
+      "fecha": "2025-02-06",
+      "titulo": "21° Reunión - 1° Sesión Extraordinaria Especial - (06/02/2025)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3549&numVid=0&reunion=21&periodo=142"
+    },
+    {
+      "id": "3548",
+      "periodo": "142",
+      "reunion": "20",
+      "fecha": "2024-12-04",
+      "titulo": "20° Reunión - Sesión Preparatoria - (04/12/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3548&numVid=0&reunion=20&periodo=142"
+    },
+    {
+      "id": "3547",
+      "periodo": "142",
+      "reunion": "19",
+      "fecha": "2024-11-28",
+      "titulo": "19° Reunión - Expresiones en Minoría - (28/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3547&numVid=0&reunion=19&periodo=142"
+    },
+    {
+      "id": "3546",
+      "periodo": "142",
+      "reunion": "18",
+      "fecha": "2024-11-27",
+      "titulo": "18° Reunión - 11° Sesión Ordinaria Especial - (27/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3546&numVid=0&reunion=18&periodo=142"
+    },
+    {
+      "id": "3544",
+      "periodo": "142",
+      "reunion": "17",
+      "fecha": "2024-11-26",
+      "titulo": "17° Reunión - Expresiones en Minoría - (26/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3544&numVid=0&reunion=17&periodo=142"
+    },
+    {
+      "id": "3545",
+      "periodo": "142",
+      "reunion": "16",
+      "fecha": "2024-11-26",
+      "titulo": "16° Reunión - Expresiones en Minoría - (26/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3545&numVid=0&reunion=16&periodo=142"
+    },
+    {
+      "id": "3543",
+      "periodo": "142",
+      "reunion": "15",
+      "fecha": "2024-11-20",
+      "titulo": "15° Reunión - Expresiones en Minoría - (20/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3543&numVid=0&reunion=15&periodo=142"
+    },
+    {
+      "id": "3542",
+      "periodo": "142",
+      "reunion": "14",
+      "fecha": "2024-11-12",
+      "titulo": "14° Reunión - Expresiones en Minoría - (12/11/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3542&numVid=0&reunion=14&periodo=142"
+    },
+    {
+      "id": "3537",
+      "periodo": "142",
+      "reunion": "13",
+      "fecha": "2024-10-09",
+      "titulo": "13° Reunión - 10° Sesión Ordinaria Especial - (09/10/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3537&numVid=0&reunion=13&periodo=142"
+    },
+    {
+      "id": "3535",
+      "periodo": "142",
+      "reunion": "12",
+      "fecha": "2024-10-01",
+      "titulo": "12° Reunión - 9° Sesión Ordinaria Especial - (01/10/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3535&numVid=0&reunion=12&periodo=142"
+    },
+    {
+      "id": "3534",
+      "periodo": "142",
+      "reunion": "null",
+      "fecha": "2024-09-15",
+      "titulo": "Presentación  de Presupuesto - (15/09/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3534&numVid=0&reunion=null&periodo=142"
+    },
+    {
+      "id": "3533",
+      "periodo": "142",
+      "reunion": "11",
+      "fecha": "2024-09-11",
+      "titulo": "11° Reunión - 8° Sesión Ordinaria Especial - (11/09/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3533&numVid=0&reunion=11&periodo=142"
+    },
+    {
+      "id": "3532",
+      "periodo": "142",
+      "reunion": "10",
+      "fecha": "2024-09-04",
+      "titulo": "10° Reunión - 7° Sesión Ordinaria Informativa - (04/09/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3532&numVid=0&reunion=10&periodo=142"
+    },
+    {
+      "id": "3531",
+      "periodo": "142",
+      "reunion": "9",
+      "fecha": "2024-08-21",
+      "titulo": "9° Reunión - 6° Sesión Ordinaria Especial - (21/08/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3531&numVid=0&reunion=9&periodo=142"
+    },
+    {
+      "id": "3529",
+      "periodo": "142",
+      "reunion": "null",
+      "fecha": "2024-08-15",
+      "titulo": "Sesión Ordinaria Especial CITADA - NO EFECTUADA - (15/08/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3529&numVid=0&reunion=null&periodo=142"
+    },
+    {
+      "id": "3528",
+      "periodo": "142",
+      "reunion": "null",
+      "fecha": "2024-08-14",
+      "titulo": "Sesión Ordinaria Especial CITADA - NO EFECTUADA - (14/08/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3528&numVid=0&reunion=null&periodo=142"
+    },
+    {
+      "id": "3527",
+      "periodo": "142",
+      "reunion": "8",
+      "fecha": "2024-08-14",
+      "titulo": "8° Reunión - 5° Sesión Ordinaria Especial - (14/08/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3527&numVid=0&reunion=8&periodo=142"
+    },
+    {
+      "id": "3525",
+      "periodo": "142",
+      "reunion": "7",
+      "fecha": "2024-08-07",
+      "titulo": "7° Reunión - Expresiones en Minoría - (07/08/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3525&numVid=0&reunion=7&periodo=142"
+    },
+    {
+      "id": "3523",
+      "periodo": "142",
+      "reunion": "6",
+      "fecha": "2024-06-27",
+      "titulo": "6° Reunión - 4° Sesión Ordinaria Especial - (27/06/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3523&numVid=0&reunion=6&periodo=142"
+    },
+    {
+      "id": "3522",
+      "periodo": "142",
+      "reunion": "null",
+      "fecha": "2024-06-04",
+      "titulo": "Sesión Ordinaria Especial CITADA-NO EFECTUADA - (04/06/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3522&numVid=0&reunion=null&periodo=142"
+    },
+    {
+      "id": "3521",
+      "periodo": "142",
+      "reunion": "5",
+      "fecha": "2024-06-04",
+      "titulo": "5° Reunión - 3° Sesión Ordinaria Especial - (04/06/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3521&numVid=0&reunion=5&periodo=142"
+    },
+    {
+      "id": "3520",
+      "periodo": "142",
+      "reunion": "4",
+      "fecha": "2024-05-21",
+      "titulo": "4° Reunión - 2° Sesión Ordinaria Especial - (21/05/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3520&numVid=0&reunion=4&periodo=142"
+    },
+    {
+      "id": "3519",
+      "periodo": "142",
+      "reunion": "3",
+      "fecha": "2024-04-29",
+      "titulo": "3° Reunión - 1° Sesión Ordinaria Especial - (29/04/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3519&numVid=0&reunion=3&periodo=142"
+    },
+    {
+      "id": "3518",
+      "periodo": "142",
+      "reunion": "2",
+      "fecha": "2024-04-24",
+      "titulo": "2° Reunión - Expresiones en Minoría - (24/04/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3518&numVid=0&reunion=2&periodo=142"
+    },
+    {
+      "id": "3517",
+      "periodo": "142",
+      "reunion": "1",
+      "fecha": "2024-03-13",
+      "titulo": "1° Reunión - Expresiones en Minoría - (13/03/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3517&numVid=0&reunion=1&periodo=142"
+    },
+    {
+      "id": "3516",
+      "periodo": "142",
+      "reunion": "1",
+      "fecha": "2024-03-01",
+      "titulo": "Asamblea Legislativa - Apertura Ordinarias - (01/03/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3516&numVid=0&reunion=1&periodo=142"
+    },
+    {
+      "id": "3515",
+      "periodo": "141",
+      "reunion": "15",
+      "fecha": "2024-02-06",
+      "titulo": "15° Reunión - 1° Sesión Extraordinaria Especial CONTINUACIÓN - (06/02/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3515&numVid=0&reunion=15&periodo=141"
+    },
+    {
+      "id": "3514",
+      "periodo": "141",
+      "reunion": "14",
+      "fecha": "2024-02-02",
+      "titulo": "14° Reunión - 1° Sesión Extraordinaria Especial CONTINUACIÓN - (02/02/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3514&numVid=0&reunion=14&periodo=141"
+    },
+    {
+      "id": "3513",
+      "periodo": "141",
+      "reunion": "13",
+      "fecha": "2024-02-01",
+      "titulo": "13° Reunión - 1° Sesión Extraordinaria Especial CONTINUACIÓN - (01/02/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3513&numVid=0&reunion=13&periodo=141"
+    },
+    {
+      "id": "3512",
+      "periodo": "141",
+      "reunion": "12",
+      "fecha": "2024-01-31",
+      "titulo": "12° Reunión - 1° Sesión Extraordinaria Especial - (31/01/2024)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3512&numVid=0&reunion=12&periodo=141"
+    },
+    {
+      "id": "3504",
+      "periodo": "141",
+      "reunion": "4",
+      "fecha": "2023-12-10",
+      "titulo": "Asamblea Legislativa - (10/12/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3504&numVid=0&reunion=4&periodo=141"
+    },
+    {
+      "id": "3501",
+      "periodo": "141",
+      "reunion": "11",
+      "fecha": "2023-12-07",
+      "titulo": "11° Reunión - Sesión Preparatoria - (07/12/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3501&numVid=0&reunion=11&periodo=141"
+    },
+    {
+      "id": "3503",
+      "periodo": "141",
+      "reunion": "10",
+      "fecha": "2023-12-07",
+      "titulo": "10° Reunión - 1° Sesión Ordinaria De Prórroga Especial - (07/12/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3503&numVid=0&reunion=10&periodo=141"
+    },
+    {
+      "id": "3502",
+      "periodo": "141",
+      "reunion": "3",
+      "fecha": "2023-11-29",
+      "titulo": "Asamblea Legislativa - (29/11/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3502&numVid=0&reunion=3&periodo=141"
+    },
+    {
+      "id": "3499",
+      "periodo": "141",
+      "reunion": "2",
+      "fecha": "2023-11-02",
+      "titulo": "Asamblea Legislativa - (02/11/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3499&numVid=0&reunion=2&periodo=141"
+    },
+    {
+      "id": "3498",
+      "periodo": "141",
+      "reunion": "9",
+      "fecha": "2023-11-02",
+      "titulo": "9° Reunión - 9° Sesión Ordinaria Especial - (02/11/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3498&numVid=0&reunion=9&periodo=141"
+    },
+    {
+      "id": "3497",
+      "periodo": "141",
+      "reunion": "8",
+      "fecha": "2023-10-10",
+      "titulo": "8° Reunión - 8° Sesión Ordinaria Especial - (10/10/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3497&numVid=0&reunion=8&periodo=141"
+    },
+    {
+      "id": "3496",
+      "periodo": "141",
+      "reunion": "7",
+      "fecha": "2023-09-19",
+      "titulo": "7° Reunión - 7° Sesión Ordinaria Especial - (19/09/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=3496&numVid=0&reunion=7&periodo=141"
+    },
+    {
+      "id": "1415",
+      "periodo": "141",
+      "reunion": "6",
+      "fecha": "2023-08-23",
+      "titulo": "6° Reunión - 6° Sesión Ordinaria Especial - (23/08/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=1415&numVid=0&reunion=6&periodo=141"
+    },
+    {
+      "id": "1414",
+      "periodo": "141",
+      "reunion": "5",
+      "fecha": "2023-07-05",
+      "titulo": "5° Reunión - 5° Sesión Ordinaria Especial - (05/07/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=1414&numVid=0&reunion=5&periodo=141"
+    },
+    {
+      "id": "1413",
+      "periodo": "141",
+      "reunion": "4",
+      "fecha": "2023-06-13",
+      "titulo": "4° Reunión - 4° Sesión Ordinaria Informativa - (13/06/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=1413&numVid=0&reunion=4&periodo=141"
+    },
+    {
+      "id": "707",
+      "periodo": "141",
+      "reunion": "3",
+      "fecha": "2023-04-19",
+      "titulo": "3° Reunión - 3° Sesión Ordinaria Especial - (19/04/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=707&numVid=0&reunion=3&periodo=141"
+    },
+    {
+      "id": "705",
+      "periodo": "141",
+      "reunion": "2",
+      "fecha": "2023-03-29",
+      "titulo": "2° Reunión - 2° Sesión Ordinaria Informativa - (29/03/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=705&numVid=0&reunion=2&periodo=141"
+    },
+    {
+      "id": "704",
+      "periodo": "141",
+      "reunion": "1",
+      "fecha": "2023-03-28",
+      "titulo": "1° Reunión - 1° Sesión Ordinaria Especial - (28/03/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=704&numVid=0&reunion=1&periodo=141"
+    },
+    {
+      "id": "712",
+      "periodo": "141",
+      "reunion": "1",
+      "fecha": "2023-03-01",
+      "titulo": "Asamblea Legislativa - Apertura Ordinarias - (01/03/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=712&numVid=0&reunion=1&periodo=141"
+    },
+    {
+      "id": "703",
+      "periodo": "140",
+      "reunion": "17",
+      "fecha": "2023-02-28",
+      "titulo": "17° Reunión - 1° Sesión Extraordinaria Especial - (28/02/2023)",
+      "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=703&numVid=0&reunion=17&periodo=140"
+    }
+  ],
+  "inventario_ckan_sesiones": [
+    {
+      "_id": 58,
+      "REUNION_NO": 11,
+      "REUNION_TIPO": "Preparatoria",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2023-12-05T13:49:00",
+      "REUNION_FIN": "2023-12-05T16:38:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R11",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 59,
+      "REUNION_NO": 10,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2023-12-05T11:25:00",
+      "REUNION_FIN": "2023-12-05T11:40:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R10",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 60,
+      "REUNION_NO": 9,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 9,
+      "REUNION_INICIO": "2023-10-31T12:18:00",
+      "REUNION_FIN": "2023-10-31T12:27:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R09",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 61,
+      "REUNION_NO": 8,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 8,
+      "REUNION_INICIO": "2023-10-08T12:30:00",
+      "REUNION_FIN": "2023-10-09T06:00:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R08",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 62,
+      "REUNION_NO": 7,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 7,
+      "REUNION_INICIO": "2023-09-17T13:15:00",
+      "REUNION_FIN": "2023-09-18T02:03:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R07",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 63,
+      "REUNION_NO": 6,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 6,
+      "REUNION_INICIO": "2023-08-21T12:28:00",
+      "REUNION_FIN": "2023-08-21T15:42:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R06",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 64,
+      "REUNION_NO": 5,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 5,
+      "REUNION_INICIO": "2023-07-03T12:30:00",
+      "REUNION_FIN": "2023-07-04T02:00:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R05",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 65,
+      "REUNION_NO": 4,
+      "REUNION_TIPO": "Informativa",
+      "SESION_NO": 4,
+      "REUNION_INICIO": "2023-06-11T10:56:00",
+      "REUNION_FIN": "2023-06-11T18:00:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R04",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 66,
+      "REUNION_NO": 3,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 3,
+      "REUNION_INICIO": "2023-04-17T12:11:00",
+      "REUNION_FIN": "2023-04-17T20:29:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R03",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 67,
+      "REUNION_NO": 2,
+      "REUNION_TIPO": "Informativa",
+      "SESION_NO": 2,
+      "REUNION_INICIO": "2023-03-27T11:09:00",
+      "REUNION_FIN": "2023-03-27T19:15:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R02",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 68,
+      "REUNION_NO": 1,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2023-03-26T11:45:00",
+      "REUNION_FIN": "2023-03-26T22:15:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R01",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 69,
+      "REUNION_NO": 4,
+      "REUNION_TIPO": "Juramento Presidente Milei",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2023-12-08T11:14:00",
+      "REUNION_FIN": "2023-12-08T12:01:00",
+      "SESION_CAMARA": "ASAMBLEA",
+      "PERIODO_ID": "HCDN141A04",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 70,
+      "REUNION_NO": 3,
+      "REUNION_TIPO": "Resultado elecciones",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2023-11-27T15:12:00",
+      "REUNION_FIN": "2023-11-27T15:42:00",
+      "SESION_CAMARA": "ASAMBLEA",
+      "PERIODO_ID": "HCDN141A03",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 71,
+      "REUNION_NO": 2,
+      "REUNION_TIPO": "Resultado elecciones",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2023-10-31T14:28:00",
+      "REUNION_FIN": "2023-10-31T14:57:00",
+      "SESION_CAMARA": "ASAMBLEA",
+      "PERIODO_ID": "HCDN141A02",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 72,
+      "REUNION_NO": 1,
+      "REUNION_TIPO": "Apertura Ordinarias",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2023-02-27T11:03:00",
+      "REUNION_FIN": "2023-02-27T13:37:00",
+      "SESION_CAMARA": "ASAMBLEA",
+      "PERIODO_ID": "HCDN141A01",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 73,
+      "REUNION_NO": 17,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2023-02-26T10:57:00",
+      "REUNION_FIN": "2023-02-26T18:52:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN140R17",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 32,
+      "REUNION_NO": 20,
+      "REUNION_TIPO": "Preparatoria",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2024-12-02T14:18:00",
+      "REUNION_FIN": "2024-12-02T17:07:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R20",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 33,
+      "REUNION_NO": 19,
+      "REUNION_TIPO": "Minoría",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2024-11-26T10:31:00",
+      "REUNION_FIN": "2024-11-26T12:47:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R19",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 34,
+      "REUNION_NO": 18,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 11,
+      "REUNION_INICIO": "2024-11-25T12:16:00",
+      "REUNION_FIN": "2024-11-25T23:34:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R18",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 35,
+      "REUNION_NO": 17,
+      "REUNION_TIPO": "Minoría",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2024-11-24T15:31:00",
+      "REUNION_FIN": "2024-11-24T18:02:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R17",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 36,
+      "REUNION_NO": 16,
+      "REUNION_TIPO": "Minoría",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2024-11-24T13:31:00",
+      "REUNION_FIN": "2024-11-24T14:12:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R16",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 37,
+      "REUNION_NO": 15,
+      "REUNION_TIPO": "Minoría",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2024-11-18T12:31:00",
+      "REUNION_FIN": "2024-11-18T15:15:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R15",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 38,
+      "REUNION_NO": 14,
+      "REUNION_TIPO": "Minoría",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2024-11-10T15:31:00",
+      "REUNION_FIN": "2024-11-10T15:32:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R14",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 39,
+      "REUNION_NO": 13,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 10,
+      "REUNION_INICIO": "2024-10-07T11:18:00",
+      "REUNION_FIN": "2024-10-07T16:55:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R13",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 40,
+      "REUNION_NO": 12,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 9,
+      "REUNION_INICIO": "2024-09-29T11:48:00",
+      "REUNION_FIN": "2024-09-30T01:18:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R12",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 41,
+      "REUNION_NO": 11,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 8,
+      "REUNION_INICIO": "2024-09-09T11:14:00",
+      "REUNION_FIN": "2024-09-09T16:00:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R11",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 42,
+      "REUNION_NO": 10,
+      "REUNION_TIPO": "Informativa",
+      "SESION_NO": 7,
+      "REUNION_INICIO": "2024-09-02T11:27:00",
+      "REUNION_FIN": "2024-09-02T16:58:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R10",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 43,
+      "REUNION_NO": 9,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 6,
+      "REUNION_INICIO": "2024-08-19T12:17:00",
+      "REUNION_FIN": "2024-08-19T13:46:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R09",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 44,
+      "REUNION_NO": 8,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 5,
+      "REUNION_INICIO": "2024-08-12T11:42:00",
+      "REUNION_FIN": "2024-08-13T09:53:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R08",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 45,
+      "REUNION_NO": 7,
+      "REUNION_TIPO": "Minoría",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2024-08-05T12:54:00",
+      "REUNION_FIN": "2024-08-05T13:39:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R07",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 46,
+      "REUNION_NO": 6,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 4,
+      "REUNION_INICIO": "2024-06-25T12:15:00",
+      "REUNION_FIN": "2024-06-26T02:34:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R06",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 47,
+      "REUNION_NO": 5,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 3,
+      "REUNION_INICIO": "2024-06-02T11:24:00",
+      "REUNION_FIN": "2024-06-03T01:24:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R05",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 48,
+      "REUNION_NO": 4,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 2,
+      "REUNION_INICIO": "2024-05-19T14:23:00",
+      "REUNION_FIN": "2024-05-19T18:51:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R04",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 49,
+      "REUNION_NO": 3,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2024-04-27T12:23:00",
+      "REUNION_FIN": "2024-04-28T17:22:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R03",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 50,
+      "REUNION_NO": 2,
+      "REUNION_TIPO": "Minoría",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2024-04-22T11:31:00",
+      "REUNION_FIN": "2024-04-22T15:11:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R02",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 51,
+      "REUNION_NO": 1,
+      "REUNION_TIPO": "Minoría",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2024-03-11T12:31:00",
+      "REUNION_FIN": "2024-03-11T14:29:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R01",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 52,
+      "REUNION_NO": 100,
+      "REUNION_TIPO": "Presentación de Presupuesto",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2024-09-13T21:04:00",
+      "REUNION_FIN": "2024-09-13T21:53:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R*",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 53,
+      "REUNION_NO": 1,
+      "REUNION_TIPO": "Apertura Ordinarias",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2024-02-28T20:03:00",
+      "REUNION_FIN": "2024-02-28T22:04:00",
+      "SESION_CAMARA": "ASAMBLEA",
+      "PERIODO_ID": "HCDN142A01",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 54,
+      "REUNION_NO": 15,
+      "REUNION_TIPO": "Especial continuación",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2024-02-04T14:29:00",
+      "REUNION_FIN": "2024-02-04T19:20:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R15",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 55,
+      "REUNION_NO": 14,
+      "REUNION_TIPO": "Especial continuación",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2024-01-31T10:32:00",
+      "REUNION_FIN": "2024-01-31T18:15:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R14",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 56,
+      "REUNION_NO": 13,
+      "REUNION_TIPO": "Especial continuación",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2024-01-30T11:26:00",
+      "REUNION_FIN": "2024-01-31T00:39:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R13",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 57,
+      "REUNION_NO": 12,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2024-01-29T10:29:00",
+      "REUNION_FIN": "2024-01-29T21:38:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN141R12",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 9,
+      "REUNION_NO": 20,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2025-12-15T14:27:00",
+      "REUNION_FIN": "2025-12-16T03:49:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R20",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 10,
+      "REUNION_NO": 19,
+      "REUNION_TIPO": "Preparatoria",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2025-12-01T13:16:00",
+      "REUNION_FIN": "2025-12-01T16:35:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R19",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 11,
+      "REUNION_NO": 18,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 14,
+      "REUNION_INICIO": "2025-12-01T11:15:00",
+      "REUNION_FIN": "2025-12-01T11:24:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R18",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 12,
+      "REUNION_NO": 17,
+      "REUNION_TIPO": "Informativa Art. 71 CN - Citada - Fracasada",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2025-10-13T14:30:00",
+      "REUNION_FIN": "2025-10-13T14:32:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R17",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 13,
+      "REUNION_NO": 16,
+      "REUNION_TIPO": "Informativa Art. 71 CN - Citada - Fracasada",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2025-10-13T12:30:00",
+      "REUNION_FIN": "2025-10-13T12:31:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R16",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 14,
+      "REUNION_NO": 15,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 13,
+      "REUNION_INICIO": "2025-10-06T12:20:00",
+      "REUNION_FIN": "2025-10-07T02:56:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R15",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 15,
+      "REUNION_NO": 14,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 12,
+      "REUNION_INICIO": "2025-09-15T13:08:00",
+      "REUNION_FIN": "2025-09-15T21:10:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R14",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 16,
+      "REUNION_NO": 13,
+      "REUNION_TIPO": "Informativa",
+      "SESION_NO": 11,
+      "REUNION_INICIO": "2025-08-25T12:27:00",
+      "REUNION_FIN": "2025-08-25T18:18:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R13",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 17,
+      "REUNION_NO": 12,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 10,
+      "REUNION_INICIO": "2025-08-18T12:17:00",
+      "REUNION_FIN": "2025-08-19T01:04:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R12",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 18,
+      "REUNION_NO": 11,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 9,
+      "REUNION_INICIO": "2025-08-04T12:20:00",
+      "REUNION_FIN": "2025-08-05T00:42:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R11",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 19,
+      "REUNION_NO": 10,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 8,
+      "REUNION_INICIO": "2025-06-30T12:23:00",
+      "REUNION_FIN": "2025-06-30T16:54:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R10",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 20,
+      "REUNION_NO": 9,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 7,
+      "REUNION_INICIO": "2025-06-02T12:21:00",
+      "REUNION_FIN": "2025-06-03T02:41:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R09",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 21,
+      "REUNION_NO": 8,
+      "REUNION_TIPO": "Minoría",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2025-05-19T12:31:00",
+      "REUNION_FIN": "2025-05-19T15:39:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R08",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 22,
+      "REUNION_NO": 7,
+      "REUNION_TIPO": "Informativa Art. 71 CN",
+      "SESION_NO": 6,
+      "REUNION_INICIO": "2025-04-27T14:21:00",
+      "REUNION_FIN": "2025-04-27T22:17:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R07",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 23,
+      "REUNION_NO": 6,
+      "REUNION_TIPO": "Especial Homenaje",
+      "SESION_NO": 5,
+      "REUNION_INICIO": "2025-04-20T15:18:00",
+      "REUNION_FIN": "2025-04-20T19:09:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R06",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 24,
+      "REUNION_NO": 5,
+      "REUNION_TIPO": "Informativa",
+      "SESION_NO": 4,
+      "REUNION_INICIO": "2025-04-14T14:53:00",
+      "REUNION_FIN": "2025-04-14T21:59:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R05",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 25,
+      "REUNION_NO": 4,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 3,
+      "REUNION_INICIO": "2025-04-06T12:21:00",
+      "REUNION_FIN": "2025-04-06T20:15:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R04",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 26,
+      "REUNION_NO": 3,
+      "REUNION_TIPO": "Minoría",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2025-03-17T19:31:00",
+      "REUNION_FIN": "2025-03-17T20:56:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R03",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 27,
+      "REUNION_NO": 2,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 2,
+      "REUNION_INICIO": "2025-03-17T10:24:00",
+      "REUNION_FIN": "2025-03-17T17:01:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R02",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 28,
+      "REUNION_NO": 1,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2025-03-10T12:20:00",
+      "REUNION_FIN": "2025-03-10T18:07:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R01",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 29,
+      "REUNION_NO": 1,
+      "REUNION_TIPO": "Apertura Ordinarias",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2025-02-27T20:14:00",
+      "REUNION_FIN": "2025-02-27T22:25:00",
+      "SESION_CAMARA": "ASAMBLEA",
+      "PERIODO_ID": "HCDN143A01",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 30,
+      "REUNION_NO": 22,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 2,
+      "REUNION_INICIO": "2025-02-10T10:21:00",
+      "REUNION_FIN": "2025-02-10T22:58:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R22",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 31,
+      "REUNION_NO": 21,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2025-02-04T12:24:00",
+      "REUNION_FIN": "2025-02-05T01:12:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN142R21",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 1,
+      "REUNION_NO": 5,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 4,
+      "REUNION_INICIO": "2026-06-22T12:26:00",
+      "REUNION_FIN": "2026-06-22T23:39:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN144R05",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 2,
+      "REUNION_NO": 4,
+      "REUNION_TIPO": "Minoría",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2026-06-21T14:00:00",
+      "REUNION_FIN": "2026-06-21T15:10:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN144R04",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 3,
+      "REUNION_NO": 3,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 3,
+      "REUNION_INICIO": "2026-05-18T10:23:00",
+      "REUNION_FIN": "2026-05-18T22:28:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN144R03",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 4,
+      "REUNION_NO": 2,
+      "REUNION_TIPO": "Informativa",
+      "SESION_NO": 2,
+      "REUNION_INICIO": "2026-04-27T10:40:00",
+      "REUNION_FIN": "2026-04-27T17:38:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN144R02",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 5,
+      "REUNION_NO": 1,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 1,
+      "REUNION_INICIO": "2026-04-06T15:12:00",
+      "REUNION_FIN": "2026-04-07T02:37:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN144R01",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 6,
+      "REUNION_NO": 1,
+      "REUNION_TIPO": "Apertura Ordinarias",
+      "SESION_NO": 0,
+      "REUNION_INICIO": "2026-02-27T20:08:00",
+      "REUNION_FIN": "2026-02-27T22:51:00",
+      "SESION_CAMARA": "ASAMBLEA",
+      "PERIODO_ID": "HCDN144A01",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 7,
+      "REUNION_NO": 22,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 3,
+      "REUNION_INICIO": "2026-02-17T14:14:00",
+      "REUNION_FIN": "2026-02-18T02:02:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R22",
+      "rank": 0.0706241
+    },
+    {
+      "_id": 8,
+      "REUNION_NO": 21,
+      "REUNION_TIPO": "Especial",
+      "SESION_NO": 2,
+      "REUNION_INICIO": "2026-02-10T11:18:00",
+      "REUNION_FIN": "2026-02-10T23:55:00",
+      "SESION_CAMARA": "DIPUTADOS",
+      "PERIODO_ID": "HCDN143R21",
+      "rank": 0.0706241
+    }
+  ],
+  "cotejo_fechas": [
+    {
+      "periodo_id": "HCDN141R11",
+      "ckan": "2023-12-05",
+      "indice": "2023-12-07",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R10",
+      "ckan": "2023-12-05",
+      "indice": "2023-12-07",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R09",
+      "ckan": "2023-10-31",
+      "indice": "2023-11-02",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R08",
+      "ckan": "2023-10-08",
+      "indice": "2023-10-10",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R07",
+      "ckan": "2023-09-17",
+      "indice": "2023-09-19",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R06",
+      "ckan": "2023-08-21",
+      "indice": "2023-08-23",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R05",
+      "ckan": "2023-07-03",
+      "indice": "2023-07-05",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R04",
+      "ckan": "2023-06-11",
+      "indice": "2023-06-13",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R03",
+      "ckan": "2023-04-17",
+      "indice": "2023-04-19",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R02",
+      "ckan": "2023-03-27",
+      "indice": "2023-03-29",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R01",
+      "ckan": "2023-03-26",
+      "indice": "2023-03-28",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141A04",
+      "ckan": "2023-12-08",
+      "indice": "2023-12-10",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141A03",
+      "ckan": "2023-11-27",
+      "indice": "2023-11-29",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141A02",
+      "ckan": "2023-10-31",
+      "indice": "2023-11-02",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141A01",
+      "ckan": "2023-02-27",
+      "indice": "2023-03-01",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN140R17",
+      "ckan": "2023-02-26",
+      "indice": "2023-02-28",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R20",
+      "ckan": "2024-12-02",
+      "indice": "2024-12-04",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R19",
+      "ckan": "2024-11-26",
+      "indice": "2024-11-28",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R18",
+      "ckan": "2024-11-25",
+      "indice": "2024-11-27",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R17",
+      "ckan": "2024-11-24",
+      "indice": "2024-11-26",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R16",
+      "ckan": "2024-11-24",
+      "indice": "2024-11-26",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R15",
+      "ckan": "2024-11-18",
+      "indice": "2024-11-20",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R14",
+      "ckan": "2024-11-10",
+      "indice": "2024-11-12",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R13",
+      "ckan": "2024-10-07",
+      "indice": "2024-10-09",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R12",
+      "ckan": "2024-09-29",
+      "indice": "2024-10-01",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R11",
+      "ckan": "2024-09-09",
+      "indice": "2024-09-11",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R10",
+      "ckan": "2024-09-02",
+      "indice": "2024-09-04",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R09",
+      "ckan": "2024-08-19",
+      "indice": "2024-08-21",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R08",
+      "ckan": "2024-08-12",
+      "indice": "2024-08-14",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R07",
+      "ckan": "2024-08-05",
+      "indice": "2024-08-07",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R06",
+      "ckan": "2024-06-25",
+      "indice": "2024-06-27",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R05",
+      "ckan": "2024-06-02",
+      "indice": "2024-06-04",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R04",
+      "ckan": "2024-05-19",
+      "indice": "2024-05-21",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R03",
+      "ckan": "2024-04-27",
+      "indice": "2024-04-29",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R02",
+      "ckan": "2024-04-22",
+      "indice": "2024-04-24",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R01",
+      "ckan": "2024-03-11",
+      "indice": "2024-03-13",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142A01",
+      "ckan": "2024-02-28",
+      "indice": "2024-03-01",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R15",
+      "ckan": "2024-02-04",
+      "indice": "2024-02-06",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R14",
+      "ckan": "2024-01-31",
+      "indice": "2024-02-02",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R13",
+      "ckan": "2024-01-30",
+      "indice": "2024-02-01",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN141R12",
+      "ckan": "2024-01-29",
+      "indice": "2024-01-31",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R20",
+      "ckan": "2025-12-15",
+      "indice": "2025-12-17",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R19",
+      "ckan": "2025-12-01",
+      "indice": "2025-12-03",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R18",
+      "ckan": "2025-12-01",
+      "indice": "2025-12-03",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R17",
+      "ckan": "2025-10-13",
+      "indice": "2025-10-15",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R16",
+      "ckan": "2025-10-13",
+      "indice": "2025-10-15",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R15",
+      "ckan": "2025-10-06",
+      "indice": "2025-10-08",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R14",
+      "ckan": "2025-09-15",
+      "indice": "2025-09-17",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R13",
+      "ckan": "2025-08-25",
+      "indice": "2025-08-27",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R12",
+      "ckan": "2025-08-18",
+      "indice": "2025-08-20",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R11",
+      "ckan": "2025-08-04",
+      "indice": "2025-08-06",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R10",
+      "ckan": "2025-06-30",
+      "indice": "2025-07-02",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R09",
+      "ckan": "2025-06-02",
+      "indice": "2025-06-04",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R08",
+      "ckan": "2025-05-19",
+      "indice": "2025-05-21",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R07",
+      "ckan": "2025-04-27",
+      "indice": "2025-04-29",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R06",
+      "ckan": "2025-04-20",
+      "indice": "2025-04-22",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R05",
+      "ckan": "2025-04-14",
+      "indice": "2025-04-16",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R04",
+      "ckan": "2025-04-06",
+      "indice": "2025-04-08",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R03",
+      "ckan": "2025-03-17",
+      "indice": "2025-03-19",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R02",
+      "ckan": "2025-03-17",
+      "indice": "2025-03-19",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R01",
+      "ckan": "2025-03-10",
+      "indice": "2025-03-12",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143A01",
+      "ckan": "2025-02-27",
+      "indice": "2025-03-01",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R22",
+      "ckan": "2025-02-10",
+      "indice": "2025-02-12",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN142R21",
+      "ckan": "2025-02-04",
+      "indice": "2025-02-06",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN144R05",
+      "ckan": "2026-06-22",
+      "indice": "2026-06-24",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN144R04",
+      "ckan": "2026-06-21",
+      "indice": "2026-06-23",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN144R03",
+      "ckan": "2026-05-18",
+      "indice": "2026-05-20",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN144R02",
+      "ckan": "2026-04-27",
+      "indice": "2026-04-29",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN144R01",
+      "ckan": "2026-04-06",
+      "indice": "2026-04-08",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN144A01",
+      "ckan": "2026-02-27",
+      "indice": "2026-03-01",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R22",
+      "ckan": "2026-02-17",
+      "indice": "2026-02-19",
+      "diferencia_dias": 2
+    },
+    {
+      "periodo_id": "HCDN143R21",
+      "ckan": "2026-02-10",
+      "indice": "2026-02-12",
+      "diferencia_dias": 2
+    }
+  ]
+}

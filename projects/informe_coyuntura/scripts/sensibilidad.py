@@ -78,6 +78,8 @@ FRAC_ERROR_DEFLACTOR = 0.5
 INDICES = {
     "itcm": {"cinturon": "macro", "bandas": itcm.BANDAS_ITCM,
              "anclas": itcm.ANCLAS_ITCM,
+             "transformaciones": itcm.TRANSFORMACIONES_ITCM,
+             "exposicion": EXPOSICION_DEFLACTOR_ITCM,
              "tension": lambda v: round((100 - v) / 10, 1)},
     "itcg": {"cinturon": "gestion", "bandas": itcg.BANDAS_ITCG,
              "tension": lambda v: round((100 - v) / 10, 1)},
@@ -110,7 +112,10 @@ def _agregar(dims: dict) -> float:
         if not d["ind"]:
             continue
         pw = sum(i["peso"] for i in d["ind"].values())
-        dscore = sum(i["puntaje"] * i["peso"] for i in d["ind"].values()) / pw
+        # El motor agrega dimensiones redondeadas a un decimal. Omitir
+        # este paso puede dar una base distinta del índice publicado.
+        dscore = round(sum(i["puntaje"] * (i["peso"] / pw)
+                           for i in d["ind"].values()), 1)
         total += dscore * d["peso"]
         wsum += d["peso"]
     return total / wsum if wsum else 0.0
@@ -168,7 +173,8 @@ def _resumen(muestras: list) -> dict:
 def analizar_bloque(bloque: dict, bandas: dict | None, tension_fn,
                     n_draws: int = N_DRAWS,
                     anclas: dict | None = None,
-                    transformaciones: dict | None = None) -> dict:
+                    transformaciones: dict | None = None,
+                    exposicion: dict | None = None) -> dict:
     """Análisis completo de un bloque de índice publicado (dimensiones con
     puntajes): experimentos de pesos/bandas/combinado + leave-one-out.
     Función PURA sobre el bloque — la usa este script y también publicar.py
@@ -185,10 +191,10 @@ def analizar_bloque(bloque: dict, bandas: dict | None, tension_fn,
         exp["pesos"].append(_perturbar(dims, rng, pesos=True, escala=None))
         if bandas:
             exp["insumos"].append(_perturbar(
-                dims, rng, pesos=False, escala=escala
+                dims, rng, pesos=False, escala=escala, exposicion=exposicion
             ))
         exp["combinado"].append(_perturbar(
-            dims, rng, pesos=True, escala=escala
+            dims, rng, pesos=True, escala=escala, exposicion=exposicion
         ))
 
     loo = {}
@@ -204,6 +210,7 @@ def analizar_bloque(bloque: dict, bandas: dict | None, tension_fn,
     return {
         "valor_publicado": bloque["valor"],
         "valor_recomputado": round(base, 1),
+        "n_draws": n_draws,
         "experimentos": {k: _resumen(v) for k, v in exp.items()},
         "leave_one_out": dict(sorted(loo.items(), key=lambda kv: abs(kv[1] - base),
                                      reverse=True)),
@@ -271,7 +278,10 @@ def robustez_compacta(bloque: dict, bandas: dict | None, tension_fn,
 def analizar(nombre: str, bloque: dict, cfg: dict) -> dict:
     resultado = analizar_bloque(
         bloque, cfg["bandas"], cfg["tension"],
+        n_draws=N_DRAWS,
         anclas=cfg.get("anclas"),
+        transformaciones=cfg.get("transformaciones"),
+        exposicion=cfg.get("exposicion"),
     )
     base = resultado["valor_recomputado"]
     t = cfg["tension"]
@@ -299,7 +309,7 @@ def main():
     informe = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
     salida = {"_meta": {"n_draws": N_DRAWS, "semilla": SEMILLA,
                         "ruido_peso": RUIDO_PESO, "ruido_insumo": RUIDO_INSUMO,
-                        "snapshot": informe.get("generado", ""), "adr": "0019"}}
+                        "snapshot": informe.get("generated_at", ""), "adr": "0019"}}
     for nombre, cfg in INDICES.items():
         bloque = informe["cinturones"][cfg["cinturon"]].get(nombre)
         if not bloque:

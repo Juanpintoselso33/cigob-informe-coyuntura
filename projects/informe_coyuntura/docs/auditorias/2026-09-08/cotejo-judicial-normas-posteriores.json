@@ -1,0 +1,745 @@
+{
+  "consulta": "2026-09-08",
+  "universo_busqueda": "173 URLs únicas de Primera Sección con JUSTICIA, 14-jul a 8-sep de 2026; 70 decretos titulados JUSTICIA.",
+  "metodo": "49 detalles HTTP y 21 lecturas textuales web originales; 19 de estas últimas recuperadas de la edición completa del 22 de julio.",
+  "estado": "clasificacion_de_normas_completa; conciliacion_del_stock_pendiente",
+  "resumen": {
+    "designaciones": 65,
+    "renovaciones": 3,
+    "renuncias": 1,
+    "conjueces": 1,
+    "designaciones_de_titulares_previos": 11
+  },
+  "normas": [
+    {
+      "norma": "Decreto 887/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347026/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL FEDERAL DE CATAMARCA, PROVINCIA DE CATAMARCA, a la doctora María Virginia MIGUEL CARMONA . ",
+      "fuente_hash": "42c09cdf5996430ff650da35ec5c4b0fdcab8f6ed441d708d83f05273cbcd1ea",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 883/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347021/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL Y CORRECCIONAL N° 12 DE LA CAPITAL FEDERAL al doctor Walter Alfredo CAVASSA . ",
+      "fuente_hash": "8ff21cce53a730e4094a421d29f740f23cff2a8fd351f5db2bde379bbd3e3b56",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 896/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347032/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL Y CORRECCIONAL N° 19 DE LA CAPITAL FEDERAL al doctor Pablo César CINA . ",
+      "fuente_hash": "374ac1767a71bf91a317d8d93d35c8e1cda6fc63bad1465aa88cf83ba0cfe0d5",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 886/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347023/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL EN LO CRIMINAL Y CORRECCIONAL N° 3 DE LA CAPITAL FEDERAL al doctor Javier Rodrigo PEREYRA . ",
+      "fuente_hash": "e13be27440f30cf4d2bf5720a25faca33e95dc36f96e43abfe9a5c2ce6096584",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 888/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347019/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [
+        "Juzgado Nacional de Primera Instancia en lo Comercial N° 18"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA NACIONAL DE APELACIONES EN LO COMERCIAL DE LA CAPITAL FEDERAL, SALA C, a la doctora Valeria PÉREZ CASADO . ",
+      "fuente_hash": "41b83a26835086e8ce9b3bffcdfc596090520aaec60cf89748ec9fc890002fd5",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 880/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347025/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [
+        "Juzgado Federal de Primera Instancia de la Seguridad Social Nº 7"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA FEDERAL DE LA SEGURIDAD SOCIAL, SALA III, a la doctora Alicia Isabel BRAGHINI . ",
+      "fuente_hash": "6d2c1cbdfbaa0cada00e2997c2b1465d85c5df0cd8b3aa41c394aa47dfd5632b",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 905/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347044/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO COMERCIAL N° 10 DE LA CAPITAL FEDERAL al doctor Gustavo Alejandro Roque CULTRARO . ",
+      "fuente_hash": "6c80ac58a99dfbb10fb5f7e505be992ccdcfcb49014273e6a7498cff71e781b0",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 904/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347035/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO CIVIL N° 110 DE LA CAPITAL FEDERAL al doctor José María ABRAM LUJAN . ",
+      "fuente_hash": "1282eb67088f68bd72459fc794b640982db8f53317c7a95c4912deb0fe99f394",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 902/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347034/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO CIVIL N° 69 DE LA CAPITAL FEDERAL a la doctora Karina Gabriela RAPKINAS . ",
+      "fuente_hash": "79c3b1e8a5dbb0bb17f3fad818a9776c0a81464383c3ed4185085124dfe36632",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 923/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347046/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO COMERCIAL N° 23 DE LA CAPITAL FEDERAL al doctor Juan Pablo Ángel SALA . ",
+      "fuente_hash": "ab170968f8dc61542fb0dccc172cb2bfe3cf7e51c56f109feea6bec69ee50e88",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 900/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347033/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL EN LO CRIMINAL Y CORRECCIONAL N° 27 DE LA CAPITAL FEDERAL al doctor Miguel Ángel ASTURIAS . ",
+      "fuente_hash": "affef4feeafe60046b3e365e132333a08b43fc8b48bbf3f5bb2fd476e6259b8b",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 933/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347057/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL EN LO CRIMINAL Y CORRECCIONAL N° 38 DE LA CAPITAL FEDERAL al doctor Adolfo Omar PIENDIBENE . ",
+      "fuente_hash": "b1ff48b9a94c0c1485ac8b0074bbf499ed4ac086c72dc83a327d784738025206",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 916/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347037/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA FEDERAL DE APELACIONES DE CÓRDOBA, PROVINCIA DE CÓRDOBA, SALA A, a la doctora María Soledad MANCINI . ",
+      "fuente_hash": "d7c9ba0412c99e6c81a857b71d9372cc8de056521a5bbc3ecade32cea3300a39",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 935/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347029/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL Y CORRECCIONAL N° 10 DE LA CAPITAL FEDERAL al doctor Julio César DI GIORGIO . ",
+      "fuente_hash": "b8b5f6214c2706ce6cf545f83220425a99834b815588ac6e5a5a69d5dbf34843",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 919/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347027/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL Y CORRECCIONAL N° 16 DE LA CAPITAL FEDERAL a la doctora Vanesa Silvana ALFARO . ",
+      "fuente_hash": "003b53a4682ef659619208093859e1a820dab3ab552ee6daab793c2762121493",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 920/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347040/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL EN LO CRIMINAL Y CORRECCIONAL N° 58 DE LA CAPITAL FEDERAL al doctor Maximiliano Alberto Leandro CALLIZO . ",
+      "fuente_hash": "57d44bac0cef4360063bc87ff2a46985937be73dbca4a5ebe53dcb79f7072cc8",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 894/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347022/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO CIVIL N° 66 DE LA CAPITAL FEDERAL a la doctora Florencia Inés CÓRDOBA . ",
+      "fuente_hash": "551bbb603cb37601e2ab1690f63e8daf2a0faace96101f773b48a8af0988d997",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 917/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347041/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL EN LO CRIMINAL Y CORRECCIONAL N° 44 DE LA CAPITAL FEDERAL al doctor Sergio Alejandro ECHEGARAY . ",
+      "fuente_hash": "b00e7d441261dd6a4d8f6022ba8252971b895024c2761ba55f3e827314ea8faa",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 899/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347036/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL EN LO CRIMINAL Y CORRECCIONAL N° 45 DE LA CAPITAL FEDERAL al doctor Sebastián Rodrigo GHERSI . ",
+      "fuente_hash": "235ff897d8f10d7f2efe5e313c91e0827196071e89910da00bc208bd31d3fb98",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 925/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347024/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [
+        "Tribunal Oral de Menores N° 3"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL FEDERAL N° 4 DE LA CAPITAL FEDERAL a la doctora Valeria Alejandra RICO . ",
+      "fuente_hash": "7d17ddad475e3530863fd0659d0773152f51ba59c09cf5848418f56aa76107e8",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 938/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347059/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL Y CORRECCIONAL N° 19 DE LA CAPITAL FEDERAL a la doctora Albertina Anatonia CARÓN . ",
+      "fuente_hash": "7d1e71b7ef5c00629665e778e4669007077e71f172e01831d3e4f1ef1c2bf458",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 928/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347050/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL Y CORRECCIONAL N° 18 DE LA CAPITAL FEDERAL a la doctora Evangelina María LASALA . ",
+      "fuente_hash": "53a93e487fa4e80e20a664fc267486fbdc65bf3957d1e618c608b32e67b5b9d6",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 910/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347042/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL Y CORRECCIONAL N° 25 DE LA CAPITAL FEDERAL a la doctora Mariana SALDUNA . ",
+      "fuente_hash": "14dd4d67b35e70746dc809a356eee0c5789cba79cb32d2bed72f775da2857aef",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 913/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347054/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO CIVIL N° 109 DE LA CAPITAL FEDERAL a la doctora Pilar FERNÁNDEZ ESCARGUEL . ",
+      "fuente_hash": "3c165ed19a4d70ea065227a3a3c44be79ff5d42146f5e4394a9663cc31bd884b",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 927/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347051/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA FEDERAL DE APELACIONES DE CÓRDOBA, PROVINCIA DE CÓRDOBA, SALA B, al doctor Facundo Carlos CORTÉS . ",
+      "fuente_hash": "0b57057f3dceb53c1bbcaab674fdd2a953a87304e8cfc4cc2b5e5aeeb70a3aea",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 915/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347049/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA NACIONAL DE APELACIONES EN LO CIVIL DE LA CAPITAL FEDERAL, SALA K, al doctor Juan Manuel CABRAL . ",
+      "fuente_hash": "a000e4ed36874f91f6f39da6b71031bce2fe9e8dc7d1a01109b7945071e6f6a3",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 909/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347039/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL EN LO CRIMINAL Y CORRECCIONAL N° 41 DE LA CAPITAL FEDERAL al doctor Fernando Carlos Damián PASCUAL . ",
+      "fuente_hash": "7f4006cd7ffeb78b02b336f08887cd1e8ceefc08a32166d9026901095852c889",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 882/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347060/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL FEDERAL DE CATAMARCA, PROVINCIA DE CATAMARCA a la doctora Ana María BUSLEIMAN . ",
+      "fuente_hash": "dda0bf6ff42d1d386cb7f34c22fac917e149fc7206ec6f09d2a8f2b3a0ffc652",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 929/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347048/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL EN LO CRIMINAL Y CORRECCIONAL N° 30 DE LA CAPITAL FEDERAL al doctor Federico Alfredo BATTILANA . ",
+      "fuente_hash": "84709450751a811d144e2828abcf2ae376544b6839b72bcc78acfeac3d70b09b",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 931/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347053/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO CIVIL N° 19 DE LA CAPITAL FEDERAL al doctor Santiago VILLAGRÁN . ",
+      "fuente_hash": "5882d2a3e2ecfb0447ad701a6262a7b0d4a4b4cfef55734b11781debfdf24d23",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 918/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347058/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [
+        "Juzgado Nacional de Primera Instancia en lo Civil N° 104"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA FEDERAL DE APELACIONES DE SAN JUSTO, PROVINCIA DE BUENOS AIRES, al doctor Andrés Guillermo FRAGA . ",
+      "fuente_hash": "530bfbacede6e37ef08726f66f125e434362e175d55c5964b1bb68bd170ee21b",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 922/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347043/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO CIVIL N° 27 DE LA CAPITAL FEDERAL a la doctora Bárbara RASTELLINO . ",
+      "fuente_hash": "8dc924372822e9a2e9c37fef4168bf36d39146c87ccd2a7fc1874d73d0f1c445",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 895/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347030/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO CIVIL N° 26 DE LA CAPITAL FEDERAL al doctor Sergio BUITRAGO . ",
+      "fuente_hash": "86ca5afd4a91294d7652d9cbc228185e40d8c8b56152ef66c1b877cbd3c45bda",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 879/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347020/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA FEDERAL DE APELACIONES DE ROSARIO, PROVINCIA DE SANTA FE, SALA A, al doctor Florentino MALAPONTE . ",
+      "fuente_hash": "dd4f5fa5e728eef3f46556ec410191a4b0f97239f3eab2c136889474503a135a",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 926/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347047/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DEL TRIBUNAL FEDERAL DE JUICIO DE COMODORO RIVADAVIA, PROVINCIA DEL CHUBUT, a la doctora Ángela Cecilia PAGANO MATA . ",
+      "fuente_hash": "7eef70b76913f29fa111df9afad5935e3c53868043af21b8557c206050bfcb27",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 906/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347055/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL TRIBUNAL FEDERAL DE JUICIO DE COMODORO RIVADAVIA, PROVINCIA DEL CHUBUT, al doctor Sebastián Pedro RUIZ . ",
+      "fuente_hash": "42007651e986b680f78a3d7386f23dd2b22aaa6f31c1f9ea884ea561966c6bdb",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 901/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347038/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL EN LO CRIMINAL Y CORRECCIONAL N° 42 DE LA CAPITAL FEDERAL al doctor Diego Andrés VILLANUEVA . ",
+      "fuente_hash": "1cbbbe3591f8f196de41a0a6b7561887aa7d0df347977dd275f875a37dee0b45",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 914/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347056/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO CIVIL N° 22 DE LA CAPITAL FEDERAL al doctor Juan Santiago YLARRI . ",
+      "fuente_hash": "3ab319b7dae78f0580a2484a575d57d1d7c03724b87e96940693943f16306d44",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 889/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347031/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL FEDERAL N° 6 DE LA CAPITAL FEDERAL al doctor Ramiro VELASCO . ",
+      "fuente_hash": "6749a0c50556a9a7caa3eb3795f24fb27fc85f978263a6d6f3d97378e8ea49c4",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 930/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347052/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL FEDERAL N° 6 DE LA CAPITAL FEDERAL al doctor Santiago Juan SCHIOPETTO . ",
+      "fuente_hash": "9336bdee92de95539d2274434d8fb0517bd872765af0d9e5f4d96dc40a68f5ab",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 892/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347028/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL EN LO CRIMINAL Y CORRECCIONAL N° 54 DE LA CAPITAL FEDERAL al doctor Ramiro Ariel MARIÑO . ",
+      "fuente_hash": "4ae69465cac118b28aa95e809eefe7ede44d087951d3e0edc0ab52afe5811243",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 921/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347045/20260908",
+      "tipo": "designacion",
+      "publicacion": "20260908",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO CIVIL N° 9 DE LA CAPITAL FEDERAL a la doctora Lucila CALIFANO . ",
+      "fuente_hash": "50a7ff246c98bee7c907a735df0f32c1b24ad7bf19c0f0eccd094651ad8f8163",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 848/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346762/20260902",
+      "tipo": "designacion",
+      "publicacion": "20260902",
+      "titular_previo": [
+        "Tribunal Oral en lo Criminal Federal Nº 1 de La Plata"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA NACIONAL DE APELACIONES EN LO CRIMINAL Y CORRECCIONAL FEDERAL DE LA CAPITAL FEDERAL, SALA I, al doctor Pablo Daniel BERTUZZI . ",
+      "fuente_hash": "c2896da61dd9fbd0d6309d251ee4c66d45399925850ce686b6a21b88fd09ef78",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 847/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346764/20260902",
+      "tipo": "designacion",
+      "publicacion": "20260902",
+      "titular_previo": [
+        "Juzgado Nacional de Primera Instancia en lo Penal Económico Nº 2"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA NACIONAL DE APELACIONES EN LO CRIMINAL Y CORRECCIONAL FEDERAL DE LA CAPITAL FEDERAL, SALA I, al doctor Pablo YADAROLA . ",
+      "fuente_hash": "2a47e0f159d360e0ae2a1542b4ed8bdf6e8e19a9a85488218e3b93308b47bfac",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 853/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346763/20260902",
+      "tipo": "renovacion",
+      "publicacion": "20260902",
+      "titular_previo": [
+        "Sala B"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase por el término de CINCO (5) años, a partir del 6 de septiembre de 2026, VOCAL DE LA CÁMARA NACIONAL DE APELACIONES EN LO COMERCIAL DE LA CAPITAL FEDERAL, SALA B, a la doctora Matilde Evangelina BALLERINI , quien oportunamente fue nombrada por el PODER EJECUTIVO NACIONAL para desempeñar dicho cargo mediante el Decreto N° 1073 de fecha 18 de agosto de 2009. ",
+      "fuente_hash": "d4350792fca4d23f00f0293813cbe475ab0746a736384bd797bc18813ef25524",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 664/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344979/20260728",
+      "tipo": "renuncia",
+      "publicacion": "20260728",
+      "titular_previo": [
+        "Juzgado Federal de Primera Instancia N° 1 de Neuquen"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Acéptase, a partir del 1° de septiembre de 2026, la renuncia presentada por la doctora María Carolina PANDOLFI  al cargo de JUEZA DEL JUZGADO FEDERAL DE PRIMERA INSTANCIA N° 1 DE NEUQUÉN, PROVINCIA DEL NEUQUÉN. ",
+      "fuente_hash": "be303893b240f1780d2612dd5fddd2b9f004f07811c3790526f277e390bad78b",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 633/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344689/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO FEDERAL DE PRIMERA INSTANCIA EN LO CRIMINAL Y CORRECCIONAL Nº 2 DE LOMAS DE ZAMORA, PROVINCIA DE BUENOS AIRES, al doctor Juan Tomás RODRÍGUEZ PONTE . ",
+      "fuente_hash": "ac52ddec7f6e2621717f079822d127578c4dd69f68a8898678851fdbe3508083",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 638/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344703/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL FEDERAL N° 2 DE SAN MARTÍN, PROVINCIA DE BUENOS AIRES, al doctor Bernardo María RODRÍGUEZ PALMA . ",
+      "fuente_hash": "b6279aa9f77decdf59c8417be2a2225830fe01020443f3f46b7096bbf1448420",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 640/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344702/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL FEDERAL DE TUCUMÁN, PROVINCIA DE TUCUMÁN, al doctor Pablo Roberto TOLEDO . ",
+      "fuente_hash": "71b80a1384aa206cfd056e6170c89e4ea2afaed11226eac18f03d3f7ed41f67b",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 621/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344683/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA FEDERAL DE APELACIONES DE RESISTENCIA, PROVINCIA DEL CHACO, a la doctora María Virginia ISE . #I7715244I# #F7715244F# #I7715216I# #F7715216F# #I7715217I#BOLETÍN OFICIAL Nº 35.954 - Primera Sección 6 Miércoles 22 de julio de 2026 ",
+      "fuente_hash": "d5eecc4676617e8042ce13c176adae9fb70d8e121a8d69a6e7322ca7e91612c2",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 646/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344686/20260722",
+      "tipo": "conjueces",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbranse CONJUECES DE LOS JUZGADOS FEDERALES DE PRIMERA INSTANCIA DE LA JURISDICCIÓN DE LA CÁMARA FEDERAL DE APELACIONES DE CÓRDOBA a los doctores Maximiliano Daniel CHÁVEZ , Agustín GARCÍA FAURÉ , Gabriel Andrés MARNICH , José Eduardo VILLENA , Fernando Gabriel ZARABOZO  y a la doctora Andrea Cristina DI GREGORIO . ",
+      "fuente_hash": "7b7901589c706632340a2f2657c5ac0964df09c8b3bb233df4d65934f493ab00",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 641/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344696/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL FEDERAL DE POSADAS, PROVINCIA DE MISIONES, a la doctora Ruth María PONCE de LEÓN . ",
+      "fuente_hash": "eabbeb3de32d5c464901facda30bc08950903ac6cb2444036255fe45b8ba9827",
+      "transporte": "HTTP"
+    },
+    {
+      "norma": "Decreto 631/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344694/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL FEDERAL DE TUCUMÁN, PROVINCIA DE TUCUMÁN, al doctor Ángel Roger LUNA ROLDÁN . ",
+      "fuente_hash": "7c6e25f1611324cc4755e77ddba753006fe1271155699f4504ad9d32c2633a18",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 619/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344682/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL Y CORRECCIONAL N° 9 DE LA CAPITAL FEDERAL, al doctor Juan Carlos RICCARDINI . ",
+      "fuente_hash": "056eebb149bfc14bb10b57d685befc4314f9ab085e8b3c96414cdee6acf08b58",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 642/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344695/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA NACIONAL DE APELACIONES DEL TRABAJO DE LA CAPITAL FEDERAL, SALA V, al doctor Diego Fernando MANAUTA . ",
+      "fuente_hash": "0922e61182fcd44629ab78c40cbc6b97d48450ecab9236abcccd6d9ddac3723f",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 635/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344697/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [
+        "Juzgado Nacional de Primera Instancia en lo Comercial N° 8"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA NACIONAL DE APELACIONES EN LO COMERCIAL DE LA CAPITAL FEDERAL, SALA C, al doctor Javier Jorge COSENTINO . ",
+      "fuente_hash": "37441b205d03b3dd9f790f3b2316c443d269e288174f39919a1ac3d1f336a45a",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 624/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344684/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [
+        "Juzgado Nacional de Primera Instancia del Trabajo N° 38"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA NACIONAL DE APELACIONES DEL TRABAJO DE LA CAPITAL FEDERAL, SALA III, al doctor Claudio Fabián LOGUARRO . ",
+      "fuente_hash": "068ac0f786cd3a2d1235337b796fd0b79cb44377c3435cccb36f976969f3f61e",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 627/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344693/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [
+        "Juzgado Nacional de Primera Instancia del Trabajo N° 34"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA NACIONAL DE APELACIONES DEL TRABAJO DE LA CAPITAL FEDERAL, SALA X, a la doctora María Claudia JUEGUEN . ",
+      "fuente_hash": "bcf525b67c490e36704c2678b33ea18ff132d1f8dc16e9d74a8ebdea94490eca",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 625/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344690/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA FEDERAL DE APELACIONES DE SALTA, PROVINCIA DE SALTA, SALA I, al doctor Santiago FRENCH . ",
+      "fuente_hash": "85642d1f63a1ae261c91883ed693e41723384d78b1ae44ca2d713e81575b1ee4",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 637/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344700/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL Y CORRECCIONAL N° 14 DE LA CAPITAL FEDERAL, al doctor José Ignacio POLIZZA . ",
+      "fuente_hash": "76ae55d8b79c1655b90900f251680356aaad89d70946095bc6ba765f92abd4d4",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 644/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344699/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DEL JUZGADO FEDERAL DE PRIMERA INSTANCIA DE LA SEGURIDAD SOCIAL N° 5 DE LA CAPITAL FEDERAL, a la doctora María Gabriela JANEIRO . ",
+      "fuente_hash": "7488547fa5f3d224e9b0895f0a0e560b256af38306fc5ed495de16f4fc78d7c4",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 645/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344688/20260722",
+      "tipo": "renovacion",
+      "publicacion": "20260722",
+      "titular_previo": [
+        "Juzgado Federal de Primera Instancia N° 2 de San Juan"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase por el término de CINCO (5) años, a partir del 26 de agosto de 2026, JUEZ DEL JUZGADO FEDERAL DE PRIMERA INSTANCIA N° 2 DE SAN JUAN, PROVINCIA DE SAN JUAN, al doctor Leopoldo Jorge RAGO GALLO , quien oportunamente fue nombrado por el PODER EJECUTIVO NACIONAL mediante el Decreto N° 2602 del 23 de diciembre de 1992. #I7715239I# #F7715239F# #I7715219I# #F7715219F# #I7715243I#BOLETÍN OFICIAL Nº 35.954 - Primera Sección 8 Miércoles 22 de julio de 2026 ",
+      "fuente_hash": "7bdebc230d8b874b2c7c053459a39292e28566a7203163569843356cd5f46df7",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 620/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344685/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [
+        "Juzgado Nacional de Primera Instancia del Trabajo N° 33"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA NACIONAL DE APELACIONES DEL TRABAJO DE LA CAPITAL FEDERAL, SALA VI, a la doctora Marina Edith PISACCO . ",
+      "fuente_hash": "e0228b2f79ebde8fbf3685b21830cc25e1d764a37527d6149e9831c2cd37d61e",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 623/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344692/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL Y CORRECCIONAL N° 18 DE LA CAPITAL FEDERAL a la doctora Paula Vanesa ROMEO . ",
+      "fuente_hash": "d9903612ef5e07f8b39c9c6b2c66dfb5b25788a315eeab50363b3dbf495c7db5",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 634/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344701/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [
+        "Juzgado Federal de Primera Instancia Nº 2 de Mar del Plata"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA FEDERAL DE APELACIONES DE MAR DEL PLATA, PROVINCIA DE BUENOS AIRES, al doctor Santiago José MARTÍN . ",
+      "fuente_hash": "ea7fef30c1e674b62c987537e9c324c36e5a500871ab3b842840c22d82403566",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 632/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344691/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase VOCAL DE LA CÁMARA NACIONAL DE APELACIONES DEL TRABAJO DE LA CAPITAL FEDERAL, SALA II, al doctor Diego Javier TULA . ",
+      "fuente_hash": "15b17e111d97f0c65ab3d1ba9bfa8a242df805e1e5b91ae4722ce359023c6723",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 639/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344698/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DE CÁMARA DEL TRIBUNAL ORAL EN LO CRIMINAL Y CORRECCIONAL N° 9 DE LA CAPITAL FEDERAL, al doctor Mariano Adolfo KLUMPP . ",
+      "fuente_hash": "0a18004a6a1965799563775d3447c4ae9c76bbf8694c35dc3c17582657bfc43e",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 622/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344687/20260722",
+      "tipo": "designacion",
+      "publicacion": "20260722",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZ DEL JUZGADO NACIONAL DE PRIMERA INSTANCIA EN LO COMERCIAL N° 28 DE LA CAPITAL FEDERAL al doctor Pedro Manuel CRESPO . ",
+      "fuente_hash": "93f72f2d6509c276a597ea5457320734ec7a9f807d4f4973f0aeff9d59c234a9",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 615/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344585/20260721",
+      "tipo": "renovacion",
+      "publicacion": "20260721",
+      "titular_previo": [
+        "Sala VIII"
+      ],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase, por el término de CINCO (5) años, a partir del 27 de julio de 2026, VOCAL DE LA CÁMARA NACIONAL DE APELACIONES DEL TRABAJO DE LA CAPITAL FEDERAL, SALA VIII, al doctor Víctor Arturo PESINO , quien oportunamente fue nombrado en la Sala I de esa Cámara y trasladado a la Sala VIII por el PODER EJECUTIVO NACIONAL mediante el Decreto N° 733 del 8 de junio de 2011. ",
+      "fuente_hash": "838491c58ee6e975f8b889d8ed6872f088737ce15289b93b39c7ead1e4b62656",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    },
+    {
+      "norma": "Decreto 589/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344335/20260715",
+      "tipo": "designacion",
+      "publicacion": "20260715",
+      "titular_previo": [],
+      "articulo_sin_dni": "ARTÍCULO 1°.- Nómbrase JUEZA DEL JUZGADO FEDERAL DE PRIMERA INSTANCIA DE HURLINGHAM, PROVINCIA DE BUENOS AIRES, a la doctora Ana María Cristina JUAN . ",
+      "fuente_hash": "27c2468fa6fcaee372d1a0d14443f95d479f5cd2ac863cc06ecde99188d091da",
+      "transporte": "web.run: lectura textual original; no descarga binaria"
+    }
+  ]
+}

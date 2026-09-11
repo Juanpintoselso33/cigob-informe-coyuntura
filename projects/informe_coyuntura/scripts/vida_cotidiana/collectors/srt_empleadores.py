@@ -1,9 +1,8 @@
 """Empleadores PyME activos — Superintendencia de Riesgos del Trabajo (SRT).
 
-Mide el **cierre neto de empresas**: cuántas unidades productivas de hasta 50
-trabajadores siguen teniendo al menos una persona declarada con cobertura de
-ART. Cuando una PyME cierra, quiebra o despide a toda su nómina, el contrato
-con la ART se rescinde casi en el acto, así que la baja aparece en el mes.
+Mide la cantidad de empleadores con nóminas de 1 a 50 trabajadores cubiertos
+por ART. Sus variaciones incluyen entradas y salidas de cobertura y cambios
+de tramo de tamaño: no identifican cierres, quiebras ni altas por separado.
 
 Por qué la SRT y no otra fuente (ADR-0218): la base de empleadores de OEDE
 —que sería la equivalente por el lado de AFIP— dejó de actualizarse en octubre

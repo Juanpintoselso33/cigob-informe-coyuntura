@@ -30,7 +30,7 @@ var_real = (Σ flujos 2025 / Σ flujos 2024) / (1 + IPC promedio 2025) − 1
 
 El IPC promedio anual le da a **cada mes el mismo peso**. Los flujos no se
 reparten así: mayo y diciembre giran mucho más que febrero, y en 2025 el grueso
-cayó en meses ya más baratos, con la inflación en descenso. El deflactor
+cambió de distribución frente al año anterior. El deflactor
 ponderado por el flujo real es **40,78%**; el promedio de calendario, **41,92%**.
 Poco más de un punto de deflactor, y el indicador se corre de +1,6% a +0,8% —la
 mitad—.

@@ -156,6 +156,22 @@ que la ficha vino a desarmar, publicado en el índice.
 
 ## Más información
 
+### Rectificación de alcance — 8 de septiembre de 2026
+
+Se conserva la decisión de puntuar la suma de faena per cápita y el título
+histórico de este ADR, pero se rectifican las interpretaciones anteriores:
+los agregados no identifican sustituciones dentro de los mismos hogares,
+empobrecimiento ni proteína ingerida. La faena mide producción y no netea
+exportaciones; rebasarla no elimina diferencias de evolución con el consumo
+aparente ni evita que esas diferencias afecten al puntaje. Estar por encima
+o debajo de un promedio histórico tampoco determina el signo interanual.
+
+Se corrigieron ficha, descripción, leyenda de fórmula y explicación generada
+sin cambiar pesos ni serie. La eventual sustitución del proxy se evalúa por
+separado. Véanse [cotejo de la explicación](../auditorias/2026-09-08/carne-lectura-generada.md)
+y [mejoras potenciales](../auditorias/2026-09-08/mejoras-potenciales.md).
+
+
 - [[0119-pendientes-de-baja-prioridad-vida]] midió que la vacuna sigue al total
   con r=0,970 en niveles y r=0,987 en cambios, y por eso decidió no tocar el
   indicador. Ese argumento sostenía la **dirección**; el **nivel** quedaba

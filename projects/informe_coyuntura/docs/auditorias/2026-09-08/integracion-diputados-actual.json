@@ -1,0 +1,177 @@
+{
+  "fecha": "2026-09-08",
+  "antes": {
+    "cohesion_bloque": {
+      "valor": 100.0,
+      "unidad": "% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)",
+      "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
+      "fecha_dato": "2026-08-27",
+      "n_actas": 29,
+      "desactualizado": false,
+      "componentes": {
+        "diputados": {
+          "valor": 100.0,
+          "fecha_dato": "2026-06-24",
+          "n_actas": 13,
+          "corrida_exitosa_en": "2026-08-25",
+          "desactualizado": true
+        },
+        "senado": {
+          "valor": 100.0,
+          "fecha_dato": "2026-08-27",
+          "n_actas": 16,
+          "corrida_exitosa_en": "2026-09-08",
+          "desactualizado": false
+        }
+      },
+      "obtenido_en": "2026-09-08T03:04:26",
+      "en_indice": true,
+      "dimension": "cohesion_interna",
+      "puntaje_itcp": 100.0,
+      "puntaje_banda": 100.0,
+      "peso_efectivo": 0.15
+    },
+    "bloqueo_sostenido": {
+      "valor": 33.3,
+      "desafiadas_12m": 3,
+      "caidas_12m": 2,
+      "sostenidas_12m": 1,
+      "ultimo_desafio": "2025-09-18",
+      "pendientes_triage": 0,
+      "detalle_txt": "1 de 3 normas desafiadas en el recinto siguen en pie (vetos con insistencia votada + decretos votados bajo la ley 26.122, últimos 12 meses)",
+      "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
+      "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
+      "fecha_dato": "2026-08-31",
+      "desactualizado": true,
+      "obtenido_en": "2026-08-31T03:06:09",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_itcp": 26.6,
+      "puntaje_banda": 26.6,
+      "peso_efectivo": 0.0252
+    },
+    "desafios_legislativos": {
+      "valor": 3.0,
+      "caidas_12m": 2,
+      "sostenidas_12m": 1,
+      "ultimo_desafio": "2025-09-18",
+      "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
+      "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
+      "fecha_dato": "2026-08-31",
+      "desactualizado": true,
+      "detalle_txt": "3 normas propias desafiadas en el recinto en los últimos 12 meses (2 cayeron, 1 siguen en pie)",
+      "obtenido_en": "2026-08-31T03:06:09",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_itcp": 90.0,
+      "puntaje_banda": 90.0,
+      "peso_efectivo": 0.0273
+    }
+  },
+  "despues": {
+    "cohesion_bloque": {
+      "valor": 100.0,
+      "unidad": "% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)",
+      "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
+      "fecha_dato": "2026-08-27",
+      "n_actas": 58,
+      "desactualizado": false,
+      "componentes": {
+        "diputados": {
+          "valor": 100.0,
+          "fecha_dato": "2026-08-27",
+          "n_actas": 42,
+          "corrida_exitosa_en": "2026-09-08",
+          "desactualizado": false
+        },
+        "senado": {
+          "valor": 100.0,
+          "fecha_dato": "2026-08-27",
+          "n_actas": 16,
+          "corrida_exitosa_en": "2026-09-08",
+          "desactualizado": false
+        }
+      },
+      "obtenido_en": "2026-09-08T19:22:19.111303",
+      "en_indice": true,
+      "dimension": "cohesion_interna",
+      "puntaje_itcp": 100.0,
+      "puntaje_banda": 100.0,
+      "peso_efectivo": 0.15
+    },
+    "bloqueo_sostenido": {
+      "valor": null,
+      "estado": "sin_universo",
+      "desafiadas_12m": 0,
+      "caidas_12m": 0,
+      "sostenidas_12m": 0,
+      "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
+      "fuente": "Actas de votación de Diputados y Senado + InfoLeg — elaboración CIGOB",
+      "fecha_dato": "2026-09-08",
+      "desactualizado": false,
+      "detalle_txt": "No hubo normas desafiadas en la ventana de doce meses. Sin denominador no hay tasa de bloqueo: no se asigna cero ni se conserva una tasa de otra ventana. El peso se redistribuye entre los componentes observados de la dimensión legislativa.",
+      "obtenido_en": "2026-09-08T19:22:19.111303",
+      "en_indice": false,
+      "dimension": "poder_legislativo"
+    },
+    "desafios_legislativos": {
+      "valor": 0.0,
+      "caidas_12m": 0,
+      "sostenidas_12m": 0,
+      "ultimo_desafio": null,
+      "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
+      "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
+      "fecha_dato": "2026-09-08",
+      "desactualizado": false,
+      "detalle_txt": "0 normas propias desafiadas en el recinto en los últimos 12 meses (0 cayeron, 0 siguen en pie)",
+      "obtenido_en": "2026-09-08T19:22:19.111303",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_itcp": 100.0,
+      "puntaje_banda": 100.0,
+      "peso_efectivo": 0.031
+    }
+  },
+  "itcp_despues": 73.0,
+  "eventos_sha256": "de45d7171ee7b0fa0b23623bcc9bc6f3cea520ebaadda236134b1b9408f1b8c6",
+  "clasificadas_hasta_id": 5995,
+  "pendientes": {},
+  "fuentes": "Actas capturadas en cotejo-diputados-parser-corregido.json; ejecución normal de InfoLeg y Senado en registro temporal, resultados preservados.",
+  "resultados_eventos": {
+    "derrotas": {
+      "valor": 2,
+      "n_vetos_12m": 2,
+      "n_decretos_12m": 0,
+      "n_eventos_historico": 10,
+      "ultimo_evento": "2025-10-02",
+      "detalle_txt": "2 vetos insistidos por el Congreso + 0 decretos rechazados en el recinto en los últimos 12 meses",
+      "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
+      "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
+      "fecha_dato": "2026-09-08",
+      "desactualizado": false
+    },
+    "bloqueo_sostenido": {
+      "valor": null,
+      "estado": "sin_universo",
+      "desafiadas_12m": 0,
+      "caidas_12m": 0,
+      "sostenidas_12m": 0,
+      "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
+      "fuente": "Actas de votación de Diputados y Senado + InfoLeg — elaboración CIGOB",
+      "fecha_dato": "2026-09-08",
+      "desactualizado": false,
+      "detalle_txt": "No hubo normas desafiadas en la ventana de doce meses. Sin denominador no hay tasa de bloqueo: no se asigna cero ni se conserva una tasa de otra ventana. El peso se redistribuye entre los componentes observados de la dimensión legislativa."
+    },
+    "desafios_legislativos": {
+      "valor": 0.0,
+      "caidas_12m": 0,
+      "sostenidas_12m": 0,
+      "ultimo_desafio": null,
+      "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
+      "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
+      "fecha_dato": "2026-09-08",
+      "desactualizado": false,
+      "detalle_txt": "0 normas propias desafiadas en el recinto en los últimos 12 meses (0 cayeron, 0 siguen en pie)"
+    }
+  }
+}

@@ -3,15 +3,15 @@
     "ITCM": {
       "peso_total": 1.0,
       "categorias": {
-        "conceptual": 0.4740000000000001,
-        "convencion": 0.41600000000000004,
+        "conceptual": 0.5660000000000001,
+        "convencion": 0.32399999999999995,
         "historia_larga": 0.11
       },
       "detalle": [
         {
           "indicador": "ipc_total",
           "categoria": "conceptual",
-          "peso": 0.104,
+          "peso": 0.156,
           "motivo": "bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120)"
         },
         {
@@ -43,6 +43,12 @@
           "categoria": "conceptual",
           "peso": 0.048,
           "motivo": "bandas en torno al equilibrio comercial (cero), techo institucional 85; consistentes con la mediana histórica (ADR-0120)"
+        },
+        {
+          "indicador": "costo_financiamiento_tesoro",
+          "categoria": "conceptual",
+          "peso": 0.04,
+          "motivo": "umbrales normativos de una tasa REAL: 0 = frontera de la licuación · 6 ≈ crecimiento potencial (r < g) · 12 y 20 hacia la dinámica explosiva (ADR-0071); dic-2023 y ago-2025 se usaron para validar el rótulo, no para fijar los cortes"
         },
         {
           "indicador": "idc",
@@ -77,32 +83,14 @@
         {
           "indicador": "iai",
           "categoria": "convencion",
-          "peso": 0.072,
+          "peso": 0.12,
           "motivo": "el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026"
-        },
-        {
-          "indicador": "idm",
-          "categoria": "convencion",
-          "peso": 0.052,
-          "motivo": "«calibrado con la historia 2024-2026»"
         },
         {
           "indicador": "desequilibrio_monetario",
           "categoria": "convencion",
           "peso": 0.052,
           "motivo": "cortes por percentiles (p0/p25/p50/p75/p100) de cada componente, como pide la sección 7 de la ficha; la matriz A×B y sus cuatro esquinas vienen del documento (ADR-0192)"
-        },
-        {
-          "indicador": "icip",
-          "categoria": "convencion",
-          "peso": 0.048,
-          "motivo": "banda ensanchada por la volatilidad observada del período"
-        },
-        {
-          "indicador": "costo_financiamiento_tesoro",
-          "categoria": "convencion",
-          "peso": 0.04,
-          "motivo": "extremos tomados de dic-2023 (−12,2%) y ago-2025 (+33,5%) (ADR-0071)"
         },
         {
           "indicador": "credito_privado",
@@ -112,11 +100,11 @@
         }
       ],
       "share": {
-        "conceptual": 0.474,
-        "convencion": 0.416,
+        "conceptual": 0.566,
+        "convencion": 0.324,
         "historia_larga": 0.11
       },
-      "share_circular": 0.416
+      "share_circular": 0.324
     },
     "ITCG": {
       "peso_total": 1.0,
@@ -223,8 +211,8 @@
     "ITCP": {
       "peso_total": 1.0000000000000002,
       "categorias": {
-        "externa": 0.1554,
-        "conceptual": 0.48030000000000006,
+        "externa": 0.1302,
+        "conceptual": 0.5055000000000001,
         "convencion": 0.2943,
         "historia_larga": 0.07
       },
@@ -245,13 +233,7 @@
           "indicador": "produccion_legislativa",
           "categoria": "externa",
           "peso": 0.0315,
-          "motivo": "el techo es el promedio histórico de 74,4 leyes/año de los 18 años completos del dataset de HCDN (2008-2025, 1.340 leyes, cuatro presidencias), no el rango 15-47 observado bajo esta administración (ADR-0168)"
-        },
-        {
-          "indicador": "bloqueo_sostenido",
-          "categoria": "externa",
-          "peso": 0.0252,
-          "motivo": "ninguna insistencia exitosa entre 2003 y 2025: ~100% histórico de sostenimiento (ADR-0069)"
+          "motivo": "umbral de diseño conservado en 74 leyes/año; referencia corregida al 2026-09-08: 1.320 leyes distintas de 2008-2025 / 18 = 73,3 por año; no es el promedio exacto ni un óptimo normativo (ADR-0168/0306)"
         },
         {
           "indicador": "iaf_transferencias",
@@ -299,13 +281,19 @@
           "indicador": "paralisis_denuncias",
           "categoria": "conceptual",
           "peso": 0.03,
-          "motivo": "cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, no calibrados contra el rango observado 2-7 (ADR-0168)"
+          "motivo": "cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, preservados al corregir el universo de slugs numerados (rango 13-18; ADR-0168/0268)"
         },
         {
           "indicador": "veto_quorum",
           "categoria": "conceptual",
           "peso": 0.0273,
           "motivo": "tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121)"
+        },
+        {
+          "indicador": "bloqueo_sostenido",
+          "categoria": "conceptual",
+          "peso": 0.0252,
+          "motivo": "cortes editoriales sobre una tasa de supervivencia de 0 a 100%; el 100% representa sostenimiento completo. El antecedente de vetos no calibra los cortes 90/75/50/25 ni el universo mixto de vetos y decretos (ADR-0069, revisión 2026-09-08)"
         },
         {
           "indicador": "jornadas_individuales_no_trabajadas_12m",
@@ -345,8 +333,8 @@
         }
       ],
       "share": {
-        "externa": 0.155,
-        "conceptual": 0.48,
+        "externa": 0.13,
+        "conceptual": 0.505,
         "convencion": 0.294,
         "historia_larga": 0.07
       },
@@ -456,7 +444,7 @@
           "motivo": "canasta de 6 búsquedas, cada término rebaseado a su propio 4T-2023 y promediado con peso igual, invertida (ADR-0034, ADR-0222); ancla en fecha fija"
         },
         {
-          "indicador": "pluriempleo",
+          "indicador": "subocupacion_demandante",
           "categoria": "conceptual",
           "peso": 0.0124,
           "motivo": "subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija"

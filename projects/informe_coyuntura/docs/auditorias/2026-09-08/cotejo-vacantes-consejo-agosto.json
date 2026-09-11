@@ -1,0 +1,136 @@
+{
+  "consultado_en": "2026-09-08",
+  "fuente_consejo": "https://consejomagistratura.gov.ar/wp-content/uploads/2026/08/ORDEN-DEL-DIA-12-8-26.pdf",
+  "fecha_orden_dia": "2026-08-12",
+  "alcance": "Cruce de 12 juzgados civiles y laborales; no censo ni fechas exactas de jura. Se excluye Civil y Comercial Federal 8, que pertenece a otro fuero.",
+  "padron": [
+    {
+      "orden": "532",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia en lo Civil N° 8 (Familia)",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "NO",
+      "cargo_cobertura": "Titular",
+      "cargo_fecha_jura": "2018-05-18"
+    },
+    {
+      "orden": "582",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia en lo Civil N° 58",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "NO",
+      "cargo_cobertura": "Titular",
+      "cargo_fecha_jura": "2005-06-22"
+    },
+    {
+      "orden": "605",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia en lo Civil N° 81 (Familia)",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "NO",
+      "cargo_cobertura": "Titular",
+      "cargo_fecha_jura": "2018-05-08"
+    },
+    {
+      "orden": "617",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia en lo Civil N° 93",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "NO",
+      "cargo_cobertura": "Titular",
+      "cargo_fecha_jura": "2018-06-22"
+    },
+    {
+      "orden": "830",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia del Trabajo N° 30",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "NO",
+      "cargo_cobertura": "Titular",
+      "cargo_fecha_jura": "2019-08-26"
+    },
+    {
+      "orden": "833",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia del Trabajo N° 33",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "NO",
+      "cargo_cobertura": "Titular",
+      "cargo_fecha_jura": "2019-08-20"
+    },
+    {
+      "orden": "834",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia del Trabajo N° 34",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "NO",
+      "cargo_cobertura": "Titular",
+      "cargo_fecha_jura": "2018-05-03"
+    },
+    {
+      "orden": "838",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia del Trabajo N° 38",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "NO",
+      "cargo_cobertura": "Titular",
+      "cargo_fecha_jura": "2017-08-08"
+    },
+    {
+      "orden": "841",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia del Trabajo N° 41",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "SI",
+      "cargo_cobertura": "Subrogante",
+      "cargo_fecha_jura": ""
+    },
+    {
+      "orden": "846",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia del Trabajo N° 46",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "SI",
+      "cargo_cobertura": "Subrogante",
+      "cargo_fecha_jura": ""
+    },
+    {
+      "orden": "850",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia del Trabajo N° 50",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "SI",
+      "cargo_cobertura": "Subrogante",
+      "cargo_fecha_jura": ""
+    },
+    {
+      "orden": "862",
+      "organo_nombre": "Juzgado Nacional de Primera Instancia del Trabajo N° 62",
+      "organo_habilitado": "SI",
+      "cargo_vacante": "SI",
+      "cargo_cobertura": "Subrogante",
+      "cargo_fecha_jura": ""
+    }
+  ],
+  "casos_conciliados": [
+    {
+      "organo": "Civil 58",
+      "norma": "570/2026",
+      "tipo": "renuncia",
+      "fecha_efecto": "2026-08-01"
+    },
+    {
+      "organo": "Trabajo 30",
+      "norma": "380/2026",
+      "tipo": "renuncia",
+      "fecha_efecto": "2026-07-01"
+    },
+    {
+      "organo": "Trabajo 33",
+      "norma": "620/2026",
+      "tipo": "cambio de cargo",
+      "delta_registro": 0
+    },
+    {
+      "organo": "Trabajo 34",
+      "norma": "627/2026",
+      "tipo": "cambio de cargo",
+      "delta_registro": 0
+    },
+    {
+      "organo": "Trabajo 38",
+      "norma": "624/2026",
+      "tipo": "cambio de cargo",
+      "delta_registro": 0
+    }
+  ]
+}

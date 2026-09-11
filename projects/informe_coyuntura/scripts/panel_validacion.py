@@ -155,8 +155,7 @@ def _pearson(a: dict, b: dict):
 
 
 def _difs(s: dict) -> dict:
-    fs = sorted(s)
-    return {fs[i]: s[fs[i]] - s[fs[i - 1]] for i in range(1, len(fs))}
+    return factor_comun._difs(s)
 
 
 def perfil(indice: str, serie: dict, panel: dict) -> dict:
@@ -398,22 +397,23 @@ def lectura(p: dict) -> str:
     ajenas = ("la única ajena" if p["n_ajenas"] == 1 else f"las {p['n_ajenas']} ajenas")
     partes = [
         f"Contra un panel de {p['n_propias'] + p['n_ajenas']} estadísticas externas —ninguna "
-        f"forma parte del índice— la comparación se hace en dos planos. En niveles el índice "
-        f"acompaña a {propias} con {coma(niv['convergente'])} y a {ajenas} con "
+        f"forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. "
+        f"La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice "
+        f"con {propias} es {coma(niv['convergente'])} y con {ajenas} es "
         f"{coma(niv['discriminante'])}."
     ]
     if dif["brecha"] > 0:
         partes.append(
-            f"En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la "
-            f"tendencia que en estos años arrastró a casi todas las series argentinas— la "
-            f"separación se mantiene: {coma(dif['convergente'])} con lo propio contra "
+            f"En los cambios mes a mes, la asociación media es mayor con lo propio: "
+            f"{coma(dif['convergente'])} con lo propio contra "
             f"{coma(dif['discriminante'])} con lo ajeno.")
     else:
         partes.append(
             f"En los cambios mes a mes la separación no se sostiene: {coma(dif['convergente'])} "
-            f"con lo propio contra {coma(dif['discriminante'])} con lo ajeno. Descontada la "
-            f"tendencia común del período, el índice se mueve tanto o más con estadísticas de "
+            f"con lo propio contra {coma(dif['discriminante'])} con lo ajeno. En este plano, "
+            f"la asociación en magnitud es tanto o más alta con estadísticas de "
             f"otros terrenos que con las del suyo. Se publica porque el estándar pide explicar "
             f"las diferencias, no informar sólo las que confirman: con unos treinta meses de "
             f"historia y un panel corto, es un resultado a vigilar antes que un veredicto.")
+    partes.append("La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva.")
     return " ".join(partes)

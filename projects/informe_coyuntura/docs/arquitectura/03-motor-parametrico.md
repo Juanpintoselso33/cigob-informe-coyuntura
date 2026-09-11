@@ -14,46 +14,61 @@ respaldó esa decisión.
 ## Los cuatro índices
 
 ### ITCM — `itcm.py` (macro)
-- 6 dimensiones (pesos 26/24/16/11/11/12), 17 indicadores puntuables.
-- Estabilidad monetaria 40/25/25/10: IPC, REM, IDM y
-  `presion_dolarizacion` (ADR-0053/0055). El cuarto componente mide una presión
-  latente 0-100 con observable por régimen: promedio móvil contiguo de 3 meses
-  de la brecha CCL/A3500 antes de abril de 2025; desde entonces, compras netas
-  de Personas Humanas divididas por M2 privado en USD, con transición 1/2/3
-  meses y suma de numeradores y denominadores. Una segunda interpolación común
-  convierte presión 0/25/50/75/100 en puntaje ITCM 100/85/60/35/10.
-- Financiamiento interno 45/40/15 con crédito real (ADR-0022); IdC por
-  z-scores de nivel vs historia 2017→ (ADR-0028).
-- 4 indicadores nominales ocultos del snapshot pero vivos como insumos.
+
+Seis dimensiones y 15 componentes activos al 8-sep-2026. Pesos nominales:
+estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%,
+actividad 11%, competitividad externa 11% e inversión 12%.
+
+- Estabilidad: IPC 60%, REM 20% y composición de liquidez/presión compradora 20%.
+  El REM entra como equivalente mensual de su tasa anual; la matriz de liquidez
+  entra con inversión exacta de su tensión. No participan IDM ni ICIP.
+- Financiamiento: reservas netas 34%, IdC 21%, costo real del Tesoro 25%, crédito
+  privado real 20%. IdC usa z-scores de nivel, no el antiguo cociente mensual.
+- Actividad: EMAE 60%, difusión sectorial 20%, IPI manufacturero suavizado 20%.
+- Competitividad: TCRM. Inversión: IAI. Son dimensiones de un componente.
+
+Tablas, anclas explícitas y transformaciones vigentes: `scripts/itcm.py` y
+[manual macro](../manuales/macro.md). Una banda descriptiva no sustituye la
+interpolación ni las anclas explícitas que define cada motor.
 
 ### ITCG — `itcg.py` (gestión)
-- 0-100 de avance de la transformación; 5 dimensiones (pesos 35/25/15/15/10).
-- Apertura = alícuota efectiva, litigiosidad al índice 70/30 (ADR-0013/0023).
-- Overrides del analista en `data/gestion/ajustes_itcg.json`.
+
+Escala 0–100 de ejecución del programa; cinco dimensiones (35/25/15/15/10).
+Mantiene 14 posiciones nominales y 13 activas: reestructuración de organismos
+está suspendida. El peso interno liberado renormaliza sobre reducción de
+dotación y gasto de funcionamiento; la dimensión sigue pesando 25%.
+Una puntuación elevada acredita avance según esta definición, no eficacia
+social, calidad del gasto ni satisfacción de los usuarios.
 
 ### ITCP — `itcp.py` (política)
-- 7 dimensiones con bandas por indicador (ADR-0036), mismo motor de anclas.
-  El cinturón dejó de puntuarse con score directo.
 
-### ITVC-B100 — `itvc.py` + `publicar._itvc_indices` (vida)
-- **Sin bandas**: cada componente es su serie rebaseada a 100 = promedio
-  4T-2023 (`_itvc_rebase_de_serie`); trimestrales resuelven a 2023-10; la
-  motorización (autos + motos per cápita, ADR-0224) usa móvil 12m.
-- **Bases declaradas**: si la fuente no midió el 4T-2023, se declara otra
-  base (IVI: ene-2024, ADR-0032). Registro central: `base_meses` en el rebase.
-- **Winsorización asimétrica (ADR-0033)**: techo 140 por componente (un boom
-  no compra compensación ilimitada); **sin piso** — las crisis se señalizan,
-  no se recortan. El recorte viaja al snapshot (`indice_itvc_crudo`,
-  `recorte_itvc`) para que la nota del modal lo declare. `WINSOR_EXENTOS`
-  exime componentes puntuales con el motivo medido en el propio módulo
-  (hoy `motorizacion_total`, ADR-0224); cuando un exento pasa de 140 el
-  snapshot lo marca con `winsor_exento`.
-- Agregación por 6 dimensiones (ingresos 28,06 / precios 25 / empleo 24,19 /
-  vulnerabilidad 10 / percepción 8,25 / seguridad 4,5) con renormalización
-  ante faltantes, dentro de la dimensión y entre dimensiones. Los pesos
-  nominales de dimensión no se tocan en un alta: el que entra cede de los
-  internos (`alta_proporcional`).
-- Tensión = 5 − (ITVC − 100) × 0,2, acotada 0-10.
+Siete dimensiones: legislativo 21%, alianzas territoriales 19%, cohesión 15%,
+conflicto social 10%, imagen/voto 7%, judicial 15%, sector privado 13%.
+De 19 posiciones nominales, 17 están activas: apoyo empresario y judicialización
+están suspendidos. Sector privado queda representado sólo por la brecha de
+obra pública; no se debe presentar como una encuesta al empresariado.
+
+### ITCIS — `itvc.py` + `publicar._itvc_indices` (impacto social)
+
+- Seis dimensiones: ingresos/consumo 28,06%, precios 25%, empleo 24,19%,
+  vulnerabilidad financiera 10%, percepción 8,25%, seguridad 4,5%.
+- 19 posiciones nominales y 18 activas. Sentimiento digital está suspendido;
+  la percepción queda enteramente representada por el ICC.
+- La referencia principal es el promedio 4T-2023. Victimización declara una
+  base alternativa; servicios públicos usa umbrales de carga sobre el salario
+  (10% agua/energía y 5% transporte, ADR-0235). No es una base homogénea.
+- Techo de 140 por componente y sin piso, salvo motorización, exenta. El
+  snapshot declara recorte o exención. No equivalen a intervalos de confianza.
+- Tensión = 5 − (ITCIS − 100) × 0,2, acotada a 0–10.
+
+### Pesos nominales y efectivos
+
+`peso` en cada componente conserva su peso nominal. Al faltar o suspender
+componentes, el motor divide por la suma de los pesos de los presentes.
+`peso_efectivo` informa la participación resultante en el índice completo.
+Confundir ambos produce aparentes discrepancias en dimensiones suspendidas.
+Los manuales generados describen la estructura; el snapshot permite auditar el
+cálculo efectivamente publicado.
 
 ## La batería de robustez (tres pilares, ADR-0019/0020/0031)
 
@@ -79,27 +94,30 @@ financiera (mora materializada 70% y carga del servicio de deuda 30%,
 ADR-0231).
 
 ### 3. Validación externa — `validacion_externa.py`
-Reconstruye las series históricas de los cuatro índices y las contrasta con
-anclas externas que NO alimentan al índice:
 
-| Índice | Par propio | Contrastes cruzados |
-|---|---|---|
-| ITCM | riesgo país (EMBI, ArgentinaDatos) | Merval USD, ICC |
-| ITCG | Merval en USD (Yahoo ^MERV / CCL) | riesgo país, ICG |
-| ITVC | ICC UTDT (test también sin-ICC por circularidad) | riesgo país, Merval |
-| ITCP | EPU Argentina | — |
+El ITCM se contrasta con el Índice Líder UTDT. Los tres índices socioeconómicos
+usan un panel definido en `panel_validacion.py`:
 
-Publica niveles, **primeras diferencias** (la prueba anti-tendencia: en ~30
-meses de una sola normalización los niveles correlacionan "gratis") y
-lead-lag (resultado documentado: los índices son coincidentes, no
-anticipan). `publicar._validacion_cruzada` arma la matriz 3×3 discriminante
-que se ve en la web.
+| Índice | Referencias de su familia |
+|---|---|
+| ITCIS | Mayoristas, shoppings, electricidad y gas residenciales, transporte y naftas |
+| ITCG | Merval USD, inversión directa y de cartera de no residentes, financiamiento externo privado |
+| ITCP | EPU, ICG UTDT y clima electoral |
 
-> **⚠️ Mantenimiento crítico**: `validacion_externa.py` REPLICA la
-> construcción del ITVC (mapa `COMPONENTES`, `BASES_PROPIAS`, `ITVC_TECHO`).
-> Cada ADR que toque métricas del ITVC debe actualizar esa réplica — el
-> 04-jul-2026 quedó desalineada en silencio y la matriz publicó el índice
-> viejo hasta que una pregunta del editor lo destapó.
+Los factores comunes requieren cobertura suficiente. El ICC y los supermercados
+ya son componentes del ITCIS y no lo validan de manera independiente. El
+contrafáctico sin ICC se conserva como diagnóstico separado.
+
+Se publican niveles, primeras diferencias, contrastes sin tendencia y pruebas
+de giros. Una correlación de niveles alta no acredita causalidad ni capacidad
+predictiva. Los resultados pueden ser débiles o negativos y deben conservarse.
+La muestra corta y los rezagos de publicación limitan las conclusiones; una
+reconstrucción revisada no reproduce necesariamente lo conocido en cada mes.
+
+Las series históricas se reconstruyen desde sus componentes, con controles de
+cobertura. Los valores recientes pueden diferir de la tarjeta que reúne el
+último dato de cada fuente. El último mes del contraste no debe presentarse
+como si coincidiera automáticamente con el período de la portada.
 
 ## Tests — `tests/`
 

@@ -119,7 +119,8 @@ def test_fetch_ratio_dnu_usa_ventana_movil_365_dias(monkeypatch):
     assert len(llamadas) == 2
     for tipo, desde, hasta, texto in llamadas:
         assert hasta == date(2026, 7, 15)
-        assert desde == date(2025, 7, 15)  # 365 días antes, sin resetear en enero
+        assert desde == date(2025, 7, 16)
+        assert (hasta - desde).days + 1 == 365  # ambos extremos incluidos
         if tipo == "2":
             assert texto == "necesidad y urgencia"
 
@@ -217,7 +218,9 @@ def test_ambos_lados_usan_publicacion_en_el_boletin(grilla):
 
     Hubo 25 leyes publicadas y 22 sancionadas en la misma ventana: elegir mal
     un lado mueve el ratio de 1,48 a 1,68 sin que nada falle."""
-    assert grilla["_ventana"]["dias"] == 365
+    # Se conserva el relevamiento original: incluía 366 fechas, corregido
+    # para nuevas consultas en ADR-0307, sin falsear el fixture histórico.
+    assert grilla["_ventana"]["dias"] == 366
     dnus = sum(1 for f in grilla["filas"] if politica._RE_INFOLEG_DNU.match(f["norma"]))
     assert abs(round(dnus / 25, 2) - 1.48) < 0.005
     assert abs(round(dnus / 22, 2) - 1.48) > 0.1, (

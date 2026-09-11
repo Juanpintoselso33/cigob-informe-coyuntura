@@ -6,6 +6,7 @@ fecha: 2026-07-18
 cinturon: 'macro'
 archivos: ['scripts/sensibilidad.py']
 relacionado: ['0019', '0031', '0075']
+complementado_por: ['0289']
 ambito: 'Todas las paramétricas · `scripts/sensibilidad.py` · rango de robustez publicado del ITCM'
 origen: 'Revisión adversarial externa (18-jul-2026) + observación IV.2 de la auditoría de consistencia macro'
 ---

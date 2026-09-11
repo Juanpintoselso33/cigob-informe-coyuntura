@@ -1,0 +1,19 @@
+{
+  "fecha": "2026-09-08",
+  "catalogo": "https://www.srt.gob.ar/estadisticas/cf_serie_historica_up.php",
+  "boletin": "https://www.srt.gob.ar/estadisticas/cf_boletin_tamano.php",
+  "selector": "https://www.srt.gob.ar/estadisticas/js/js_cf_boletin_tamano.js",
+  "anio_habilitado": 2026,
+  "meses_habilitados": [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo"
+  ],
+  "fuente_colector_en_catalogo": true,
+  "replica_numerica": "cotejo-social-fuentes.json",
+  "alcance": "Empleadores asegurados con nómina de 1 a 50 personas, no cierres de empresas. El boletín se define como corte transversal a fecha de publicación.",
+  "sha256_catalogo": "c3133363b41b55aec520125618ddbad50a6e19d0d277e51f2973db5da57260a4",
+  "sha256_selector": "a22f21bf337d1426deb7f632952e57062b4c76eb5ae05ffffe38c21769f73ff9"
+}

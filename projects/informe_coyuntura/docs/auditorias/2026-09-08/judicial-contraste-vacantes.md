@@ -1,0 +1,9 @@
+# Vacantes del Consejo y cobertura periodística
+
+El [orden del día oficial del 12 de agosto](https://consejomagistratura.gov.ar/wp-content/uploads/2026/08/ORDEN-DEL-DIA-12-8-26.pdf) enumera vacantes concretas. Se cruzaron doce juzgados civiles y laborales con el padrón de junio. Cinco casos que no aparecían por nombre en los suplementos resultaron ya conciliados por norma: renuncias de Civil 58 y Trabajo 30; cambios a cámaras desde Trabajo 33, 34 y 38 (decretos 620, 627 y 624/2026, efecto neto cero). La coincidencia corrobora la necesidad de distinguir cargos y personas; no justifica descontarlos de nuevo. Evidencia en cotejo-vacantes-consejo-agosto.json.
+
+El documento no es un padrón completo ni determina fechas exactas de jura. Se mantiene 705/955 estimado y el pendiente de Fraga. La búsqueda de un total oficial actualizado no aportó un censo comparable.
+
+Como contraste cualitativo, [TN del 4 de agosto](https://tn.com.ar/politica/2026/08/04/el-ministro-de-justicia-confirmo-que-el-gobierno-envio-203-pliegos-judiciales-al-senado/) recoge el anuncio ministerial de 203 pliegos. [Boga del mismo día](https://boga.ar/justicia-/milei--el-presidente-que-mas-pliegos-judiciales-envio-al-senado-en-un-ano_a6a711efcdaab5f1c01ca8e78) distingue vacantes cubiertas y próximas a cubrir; el buscador confundía la fecha del encabezado del sitio con la publicación. Usa 1.002 cargos, frente a los 955 habilitados del monitor, y también presenta cifras conjuntas con ministerios públicos. No son porcentajes directamente comparables. Varias notas replican el mismo anuncio y no constituyen mediciones independientes.
+
+El enlace al mensaje original de X no pudo recuperarse: no se certificó aquí el récord anunciado. La cobertura respalda la presencia del tema en la agenda y las distinciones entre propuestas, nombramientos y ejercicio. No certifica la estimación numérica del monitor. Sin cambios de datos ni repetición de tests/build.

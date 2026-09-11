@@ -1,9 +1,8 @@
 """Peso del trabajo independiente en el empleo registrado (SIPA).
 
-Es la contracara del cierre de PyMEs. Cuando cae el número de empleadores, la
-pregunta que sigue es si esas unidades productivas desaparecieron o se
-reconfiguraron: menos empresas con nómina y más gente facturando por su cuenta.
-Sin este indicador, el informe sólo puede ver la mitad del movimiento.
+Complementa el número de empleadores con la composición del empleo registrado.
+Son series agregadas: no identifican el paso de una persona del empleo
+asalariado al independiente ni la transformación de una empresa cerrada.
 
 Mide qué proporción del empleo registrado son trabajadores independientes
 —autónomos y monotributistas del régimen general— frente a los asalariados de
@@ -26,7 +25,8 @@ además, la habría leído como una mejora.
 
 Con el régimen social adentro, la participación independiente CAE de 22,9% a
 22,1% entre el 4T-2023 y hoy. Sin él, SUBE de 19,1% a 20,6%. Las dos lecturas
-son opuestas y sólo una describe la economía.
+son opuestas porque los universos difieren; la exclusión reduce el efecto del
+quiebre administrativo, pero no convierte el cociente en una medida causal.
 """
 import logging
 import time

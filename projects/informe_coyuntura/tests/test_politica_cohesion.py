@@ -280,17 +280,22 @@ FIXTURE_ACTA_DIPUTADOS_PDF = (Path(__file__).parent / "fixtures" / "acta_diputad
 
 def test_parsear_acta_diputados_pdf_extrae_filas_reales():
     filas = politica._parsear_acta_diputados_pdf(FIXTURE_ACTA_DIPUTADOS_PDF)
-    # Acta real (O.D. 149, RIGI, 24-jun-2026): 131 AFIRMATIVO + 103 NEGATIVO
-    # + 16 AUSENTE + 2 ABSTENCION = 252 filas -- verificado contra el PDF real.
-    assert len(filas) == 252
+    # Encabezado original: 131 AFIRMATIVO + 107 NEGATIVO + 16 AUSENTE
+    # + 2 ABSTENCION = 256 votantes/ausentes; presidente sin votar aparte.
+    # El antiguo esperado 252 reproducía la omisión de bloques largos.
+    assert len(filas) == 256
     from collections import Counter
     assert Counter(f["voto"] for f in filas) == {
-        "AFIRMATIVO": 131, "NEGATIVO": 103, "AUSENTE": 16, "ABSTENCION": 2,
+        "AFIRMATIVO": 131, "NEGATIVO": 107, "AUSENTE": 16, "ABSTENCION": 2,
     }
     lla = [f for f in filas if politica.es_bloque_lla(f["bloque"])]
     assert Counter(f["voto"] for f in lla) == {"AFIRMATIVO": 93, "AUSENTE": 1}
     assert filas[0] == {"nombre": "AGUERO, GUILLERMO CESAR", "bloque": "Ucr - Union Civica Radical",
                          "provincia": "Chaco", "voto": "AFIRMATIVO"}
+    por_nombre = {f["nombre"]: f for f in filas}
+    assert len(por_nombre) == 256
+    assert por_nombre["BREGMAN, MYRIAM"]["bloque"] == "Pts-frente De Izquierda Y De Trabajadores"
+    assert por_nombre["DEL PLA, ROMINA"]["provincia"] == "Buenos Aires"
 
 
 def test_diputados_acta_fecha_extrae_del_encabezado_real():
@@ -1191,6 +1196,7 @@ FIXTURE_TABLA_RIGI = """
 
 
 def test_fetch_adhesion_reformas_provincial_cuenta_provincias(monkeypatch):
+    monkeypatch.setattr(politica, "_rigi_complementarias_verificadas", lambda: set())
     monkeypatch.setattr(politica.requests, "get",
         lambda *a, **kw: MagicMock(status_code=200, text=FIXTURE_TABLA_RIGI))
     resultado = politica.fetch_adhesion_reformas_provincial()
@@ -1205,6 +1211,7 @@ def test_fetch_adhesion_reformas_provincial_request_fallido(monkeypatch):
 
 
 def test_fetch_adhesion_reformas_provincial_deduplica_filas_repetidas(monkeypatch):
+    monkeypatch.setattr(politica, "_rigi_complementarias_verificadas", lambda: set())
     # Regresión: el sitio real (MAGyP) tiene un <tr> vacío malformado que con
     # html.parser produce una fila duplicada (confirmado en vivo: SANTA CRUZ
     # aparece 2 veces). `provincias` debe ser un set() -- si se refactoriza a

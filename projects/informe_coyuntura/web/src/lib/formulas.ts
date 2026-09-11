@@ -36,8 +36,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Acumulado de 12 meses del intercambio de bienes (ICA, INDEC), en millones de USD.",
   },
   reservas_bcra: {
-    latex: String.raw`\text{netas}=\text{brutas}-\underbrace{\text{swap} + \text{encajes USD} + \text{otros}}_{\text{fondos comprometidos, no disponibles}}+\text{dep. del Tesoro}`,
-    leyenda: "Planilla SDDS del BCRA (drenajes de la Sección II) + depósitos del Tesoro en USD del balance: las divisas de libre disponibilidad, descontando las que figuran en el activo pero están comprometidas.",
+    latex: String.raw`\text{estimación CIGOB}=\text{I.A}+\text{II.1}+\text{II.2}+\text{II.3}+\text{Tesoro}+|\text{II.1}_{>3m,\leq1a}|`,
+    leyenda: "Flujos de la planilla SDDS con sus signos, más depósitos del Tesoro y el valor absoluto del tramo de más de tres meses y hasta un año de II.1. Este tramo no identifica por sí solo al BOPREAL. Las exclusiones responden al diseño CIGOB y no certifican libre disponibilidad.",
   },
   idc: {
     latex: String.raw`\begin{gathered}0{,}30\cdot\underbrace{z_{\text{tasa real}}}_{\text{precio}}\;+\;0{,}40\cdot\underbrace{z_{\text{dep\'ositos}}}_{\text{volumen}}\;+\;0{,}30\cdot\underbrace{z_{\text{holgura}}}_{\text{asignaci\'on}}\\[4pt] z=\frac{\text{nivel de hoy}-\text{promedio hist\'orico}}{\text{desv\'io hist\'orico}}\end{gathered}`,
@@ -69,7 +69,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   produccion_legislativa: {
     latex: String.raw`\text{leyes sancionadas en los \'ultimos 12 meses}`,
-    leyenda: "Dataset oficial de leyes sancionadas de la Cámara de Diputados: se cuentan las leyes con sanción definitiva en la ventana de doce meses que termina en el mes informado. El promedio histórico de los dieciocho años completos que trae el dataset —desde 2008, con cuatro presidencias— es de setenta y cuatro leyes por año, y ése es el valor con el que se compara, no el rango de estos años.",
+    leyenda: "Catálogo de leyes sancionadas de la Cámara de Diputados más omisiones cotejadas en el Boletín Oficial y diarios de sesiones: leyes o expedientes con sanción definitiva verificada, sin duplicar incorporaciones tardías; identidades distintas en doce meses calendarios completos hasta el mes informado; se excluye el mes en curso. El umbral de diseño se conserva en 74 leyes por año. El cotejo del 8 de septiembre de 2026 encontró 1.320 leyes distintas de 2008-2025, un promedio de 73,3; el umbral no es ese promedio exacto ni un óptimo normativo. La última sanción registrada no certifica exhaustividad.",
   },
   judicializacion: {
     latex: String.raw`\frac{\text{sumarios con medida cautelar}}{\text{total de sumarios}}\times 100`,
@@ -135,7 +135,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   litigiosidad_laboral: {
     latex: String.raw`\left(\frac{\text{juicios \'ultimos 12 meses}}{\text{juicios 12 meses anteriores}}-1\right)\times 100`,
-    leyenda: "Juicios del sistema de riesgos del trabajo (SRT): si la industria del juicio se enfría, la variación se hace negativa.",
+    leyenda: "Variación entre dos acumulados consecutivos de doce meses de juicios del sistema de riesgos del trabajo (SRT). Un resultado negativo indica menos juicios registrados; no determina el mérito de los reclamos ni el efecto del FAL.",
   },
   privatizaciones: {
     latex: String.raw`\frac{\text{etapa promedio de la cartera}}{4}\times 100`,
@@ -150,12 +150,12 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Red Federal de Concesiones, por etapas con fecha del Boletín Oficial (CONTRAT.AR).",
   },
   asistencia_directa: {
-    latex: String.raw`\frac{\text{pagado directo a las personas}}{\text{total de transferencias del programa}}\times 100`,
-    leyenda: "Ejecución presupuestaria real (partida 5.1.4 sobre el total) de los programas sucesores del Potenciar: qué proporción de la asistencia llega sin intermediarios.",
+    latex: String.raw`\frac{\text{devengado en partida 5.1.4}}{\text{devengado en inciso 5}}\times 100`,
+    leyenda: "Volver al Trabajo y Acompañamiento Social: proporción del devengado de transferencias clasificada como ayudas a personas. No verifica el pago efectivo ni la ausencia de intermediación.",
   },
   protocolo_antipiquetes: {
     latex: String.raw`\left(1-\frac{\text{cortes en CABA, \'ultimo a\~no}}{\text{cortes en CABA en 2023}}\right)\times 100`,
-    leyenda: "Reducción porcentual de cortes contra 2023, con los anclajes anuales públicos de Diagnóstico Político (2023: 931 · 2025: 240). 100 = cero cortes; 0 = igual que 2023.",
+    leyenda: "Reducción porcentual de cortes contra 2023, con anclajes de Diagnóstico Político (2023: aproximadamente 931, estimado desde participación redondeada; 2025: 240). 100 = cero cortes; 0 = igual que 2023.",
   },
   libertad_opcion_salud: {
     latex: String.raw`\frac{\text{usuarios con aporte directo a su prepaga}}{\text{usuarios de prepagas}}\times 100`,
@@ -217,7 +217,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   consumo_carnes_total: {
     latex: String.raw`100\cdot\frac{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{hoy}}}{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{4T-23}}}`,
-    leyenda: "Acceso total a proteína cárnica por habitante, promedio móvil de 12 meses, 100 = 4T-2023. La evolución se reconstruye desde la faena del INDEC; el nivel en kilos lo publica SAGYP.",
+    leyenda: "Faena de vacunos, aves y porcinos por habitante, promedio móvil de 12 meses, rebaseada a 100 = 4T-2023. Es el proxy que puntúa; el titular muestra consumo aparente de SAGYP. No mide proteína ingerida ni descuenta exportaciones, y el rebase no elimina divergencias de evolución.",
   },
   motorizacion_total: {
     latex: String.raw`100\cdot\frac{\left[\left(\sum_{12m}\text{autos}+\sum_{12m}\text{motos}\right)\,/\,\text{población}\right]_{\text{hoy}}}{\left[\left(\sum_{12m}\text{autos}+\sum_{12m}\text{motos}\right)\,/\,\text{población}\right]_{\text{4T-23}}}`,
@@ -237,7 +237,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   inseguridad: {
     latex: String.raw`100\cdot\frac{\text{hogares v\'ictimas}_{\text{ene-24}}}{\text{hogares v\'ictimas}_{\text{hoy}}}`,
-    leyenda: "Índice de Victimización del LICIP (Universidad Di Tella): porcentaje de hogares de 40 centros urbanos que sufrió al menos un delito en los últimos 12 meses, lo haya denunciado o no — capta la cifra negra que las estadísticas de denuncias no ven. Encuesta mensual; la ventana de 12 meses absorbe la estacionalidad. Base declarada: enero 2024, la primera medición tras la reanudación de la encuesta (suspendida 2020-2023) — su ventana de 12 meses cubre mayormente el año previo al mandato. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. Contraste: los hechos denunciados del SNIC, en la ficha.",
+    leyenda: "Índice de Victimización del LICIP (Universidad Di Tella): porcentaje de hogares de 40 centros urbanos que sufrió al menos un delito en los últimos 12 meses, denunciado o no. Base declarada: enero de 2024, conservada por continuidad. La auditoría de septiembre recuperó informes de 2020–2023 y rectificó la supuesta suspensión de la encuesta (ADR-0273). La fórmula invierte la comparación: valor de la base dividido por el valor actual, por 100. Más de 100 significa menor victimización que en enero de 2024. El registro SNIC es un contraste con universo y frecuencia diferentes; su divergencia no prueba por sí sola cambios de subdenuncia.",
   },
   icc_utdt: {
     latex: String.raw`100\cdot\frac{\text{confianza del consumidor}_{\text{hoy}}}{\text{confianza}_{\text{4T-23}}}`,
@@ -251,7 +251,7 @@ export const FORMULAS: Record<string, Formula> = {
   // ── Política ─────────────────────────────────────────────────────────────
   eficacia_legislativa: {
     latex: String.raw`\frac{\text{proyectos del Ejecutivo convertidos en ley}}{\text{proyectos de ley enviados hace 12-24 meses}}\times 100`,
-    leyenda: "Cohorte madura: solo cuenta proyectos de ley con al menos 12 meses de margen desde que se enviaron, sobre los datos abiertos de la Cámara de Diputados. La aprobación se verifica contra el registro oficial de leyes sancionadas — cubre las sanciones de ambas cámaras — y se mira sin tope de tiempo.",
+    leyenda: "Cohorte madura: solo cuenta proyectos de ley con al menos 12 meses de margen desde que se enviaron, sobre los datos abiertos de la Cámara de Diputados. La cohorte incluye publicaciones de hace 365 a 730 días, ambos límites incluidos. Sólo cuentan sanciones definitivas de esa cohorte fechadas hasta el corte evaluado, verificadas en el registro oficial de ambas cámaras.",
   },
   desafios_legislativos: {
     latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\left(\text{vetos con insistencia votada}+\text{decretos votados bajo la ley 26.122}\right)`,

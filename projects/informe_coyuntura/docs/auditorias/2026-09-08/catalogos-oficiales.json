@@ -1,0 +1,287 @@
+{
+  "fecha": "2026-09-08",
+  "consultas": [
+    {
+      "organismo": "ripte",
+      "url": "https://www.argentina.gob.ar/trabajo/seguridadsocial/ripte",
+      "status": "200",
+      "bytes": 38849,
+      "sha256": "21f870ec1864b6980c47e2acdb40400a99af4385fdab9d245b6e8e1147ba31da",
+      "enlaces": [
+        {
+          "texto": "Descargar",
+          "url": "blank:#/sites/default/files/ripte_junio_2026-mdch.pdf"
+        }
+      ]
+    },
+    {
+      "organismo": "comarb",
+      "url": "https://www.ca.gob.ar/gacetillas",
+      "status": "200",
+      "bytes": 99807,
+      "sha256": "a923ce947a39bfd1d30dc1041bc3a81536ea0aec766b3d1e9955ed8e893c368c",
+      "enlaces": [
+        {
+          "texto": "Gaceta Tributaria Provincial",
+          "url": "/servicios/gacetilla-tributaria-provincial"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2026/Gacetilla_Recaudacion_Mensual_08_Ago_2026.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2026/Gacetilla_Recaudacion_Mensual_07_Jul 2026.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2026/Gacetilla_Recaudacion_Mensual_06_Jun_2026.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2026/Gacetilla_Recaudacion_Mensual_05_May_2026.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2026/Gacetilla_Recaudacion_Mensual_04_Abr_2026.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2026/Gacetilla_Recaudacion_Mensual_03_Mar_2026.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2026/Gacetilla_Recaudacion_Mensual_02_Feb_2026.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2026/Gacetilla_Recaudacion_Mensual_01_Ene_2026.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_Recaudacion_Mensual_12_Dic_2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_recaudacion_Mensual_11_Nov_2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_Recaudacion_Mensual_10_Oct 2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_Recaudacion_Mensual_09_Sep_2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_Recaudacion_Mensual_08_Ago_2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_Recaudacion_Mensual_07_Jul_2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_Recaudacion_Mensual_06_Jun_2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_Recaudacion_Mensual_05_May_2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_Recaudacion_Mensual_04_Abr_2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_Recaudacion_Mensual_03_Mar_2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_Recaudacion_Mensual_02_Feb_2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2025/Gacetilla_Recaudacion_Mensual_01_Ene_2025.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_Recaudacion_Mensual_12_Dic_2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_Recaudacion_Mensual_11_Nov_2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_Recaudación_Mensual_10-Oct-2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_Recaudacion_Mensual_09_Sep_2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_Recaudacion_Mensual_08_Ago_2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_Recaudacion_Mensual_07_Jul_2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_Recaudacion_Mensual_06_Jun_2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_Recaudacion_Mensual_05_May_2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_recaudacion_mensual_04-04-2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_Recaudacion_Mensual_03_Mar_2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_Recaudacion_Mensual_02_Feb_2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2024/Gacetilla_Recaudacion_Mensual_01_Ene_2024.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_12_Dic_2023.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_11_Nov_2023.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_10_Oct_2023.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_09_Sep_2023.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_08_Ago_2023.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_07_Jul_2023.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_06_Jun_2023.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_05_May_2023.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_04_Abr_2023.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_03_Mar_2023.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_02_Feb_2023.pdf"
+        },
+        {
+          "texto": "Gacetilla Recaudacion Mensual",
+          "url": "/descargas/gacetillas/2023/Gacetilla_Recaudacion_Mensual_01_Ene_2023.pdf"
+        },
+        {
+          "texto": "Gaceta Tributaria Provincial",
+          "url": "/servicios/gacetilla-tributaria-provincial"
+        }
+      ]
+    },
+    {
+      "organismo": "arca",
+      "url": "https://www.arca.gob.ar/institucional/estudios/",
+      "status": "200",
+      "bytes": 41417,
+      "sha256": "88aae24a4f467b0673bbc51c4a8b07111abbc4ae68d2b69cd202e72cbbb823ba",
+      "enlaces": [
+        {
+          "texto": "Recaudación",
+          "url": ""
+        },
+        {
+          "texto": "Informe de recaudación",
+          "url": "/institucional/estudios/informe-de-recaudacion"
+        },
+        {
+          "texto": "Recaudación mensual",
+          "url": "/institucional/estudios/recaudacion-mensual"
+        },
+        {
+          "texto": "Ver recaudación de agosto",
+          "url": "/institucional/documentos/ARCA-Recaudacion-082026.pdf"
+        },
+        {
+          "texto": "2026",
+          "url": "https://contenidos.afip.gob.ar/institucional/estudios/archivos/serie2026.xls"
+        },
+        {
+          "texto": "Agosto (2026)",
+          "url": "https://contenidos.afip.gob.ar/institucional/estudios/archivos/comparativo.agosto26.xlsx"
+        },
+        {
+          "texto": "Anexos estadísticos",
+          "url": "informe-de-recaudacion-anexos/"
+        },
+        {
+          "texto": "Anteriores",
+          "url": "informe-de-recaudacion"
+        },
+        {
+          "texto": "2026",
+          "url": "https://contenidos.afip.gob.ar/institucional/estudios/archivos/Boletin-de-Seguridad-Social-Mayo26.xlsx"
+        }
+      ]
+    },
+    {
+      "organismo": "emae",
+      "url": "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-9-48",
+      "status": "200",
+      "bytes": 37470,
+      "sha256": "b0ede1c534e8bee465434049a3a92676fef9c92bcf20fc48a80d9c889d05fa9b",
+      "enlaces": []
+    },
+    {
+      "organismo": "calendario",
+      "url": "https://www.indec.gob.ar/ftp/cuadros/publicaciones/calendario_2sem2026.pdf",
+      "status": "200",
+      "bytes": 57219,
+      "sha256": "c48b35dff43c6bd9fd0f3a1df3c8759e580aea6cf5e4471587b339e170d28ad6",
+      "enlaces": []
+    },
+    {
+      "organismo": "arca_agosto",
+      "url": "https://www.arca.gob.ar/institucional/documentos/ARCA-Recaudacion-082026.pdf",
+      "status": "200",
+      "bytes": 969787,
+      "sha256": "82afffb6cc9700f7356cc1be878a5ad347541c08902925b441a57ee2edb9654e",
+      "enlaces": []
+    },
+    {
+      "organismo": "ARCA",
+      "url": "https://contenidos.afip.gob.ar/institucional/estudios/archivos/serie2026.xls",
+      "sha256": "e55bcf76c5ce412add287c5fac8a6c4bffe5c17709581499eaf86f8b032a5eda",
+      "bytes": 260608,
+      "verificado": "Planilla con columnas enero-agosto; DEX julio 1192117.2170227203 y DIM julio 466938.06392612995 millones de pesos. Debe reconciliarse universo tributario antes de completar la serie DGI."
+    }
+  ]
+}

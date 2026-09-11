@@ -9,7 +9,7 @@ Sistema reproducible de conversión de `.md` a `.docx` con identidad visual CIGO
 | `cigob_logo.png` | Logo CIGOB descargado del sitio oficial (cigob.org) |
 | `cigob_reference.docx` | Plantilla Word con todos los estilos institucionales aplicados |
 | `build_reference.py` | Script que regenera `cigob_reference.docx` desde el default de pandoc |
-| `build_all_docx.ps1` | Script PowerShell para regenerar todos los .docx con el template |
+| `build_all_docx.ps1` | Script PowerShell de exportaciones históricas; no genera las fichas vigentes |
 
 ## Paleta institucional
 
@@ -52,21 +52,17 @@ python build_reference.py
 
 El primer comando obtiene el reference.docx default de pandoc. El segundo lo modifica aplicando los estilos institucionales.
 
-## Cómo regenerar todos los .docx desde los .md
+## Alcance de las exportaciones
 
-Desde `projects/informe_coyuntura/docs/`:
+`build_all_docx.ps1` conserva una lista de documentos históricos, anterior a
+los manuales actuales; algunos diseños se trasladaron a `docs/archivo/`.
+No usarlo como generador de toda la documentación vigente.
 
-**PowerShell (Windows):**
-```powershell
-./template/build_all_docx.ps1
-```
-
-**bash (Linux/Mac/WSL):**
-```bash
-for f in cinturon_gestion cinturon_macro cinturon_politica cinturon_vida_cotidiana 260523_proyecto_pais_estado_extraccion; do
-    pandoc "$f.md" -o "$f.docx" --reference-doc=template/cigob_reference.docx
-done
-```
+Para una nueva entrega de las cuatro fichas actuales, seguir
+[el procedimiento de fichas](../../scripts/fichas/README.md), que incluye
+estilado y verificación contra el snapshot correspondiente. Los
+[manuales metodológicos](../manuales/README.md) se generan desde el motor
+con `scripts/manual_cinturon.py`; la plantilla sólo aplica el formato Word.
 
 ## Comando manual para un solo documento
 
@@ -76,6 +72,6 @@ pandoc input.md -o output.docx --reference-doc=template/cigob_reference.docx
 
 ## Dependencias
 
-- `pandoc` >= 3.0 (`F:\miniconda\Scripts\pandoc.exe` en el entorno actual)
+- `pandoc` >= 3.0 (disponible en PATH para ejecutar las exportaciones)
 - Python con `python-docx` (`pip install python-docx`)
 - Python con `requests` y `Pillow` (solo si se vuelve a descargar el logo)

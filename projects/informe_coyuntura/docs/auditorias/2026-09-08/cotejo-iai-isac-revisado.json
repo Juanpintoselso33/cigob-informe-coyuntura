@@ -1,0 +1,13 @@
+{
+  "mes": "2026-06",
+  "isac_ia": 4.225702354370786,
+  "bk_ia": -8.029691201396949,
+  "calculo": {
+    "valor": -0.06368539014792063,
+    "componentes": {
+      "isac": 4.2,
+      "bk_importados": -8.0
+    },
+    "patentamientos": null
+  }
+}

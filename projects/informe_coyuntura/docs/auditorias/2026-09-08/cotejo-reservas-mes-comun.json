@@ -1,0 +1,24 @@
+{
+  "consulta": "2026-09-08",
+  "fuentes": [
+    {
+      "url": "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/balbcrhis.xls",
+      "sha256": "52f29eac81cb21546f031b97b11d12a21ded5348760ee5738009ee03b86fdf4b",
+      "status": 200
+    }
+  ],
+  "puntos_historicos": 26,
+  "meses_publicados_sin_tesoro": [],
+  "ultimo_sdds_parseado": {
+    "netas": 5819.76,
+    "brutas": 47599.19,
+    "prestamos_dep": -20028.36,
+    "swaps": -19253.56,
+    "repos": -2497.51,
+    "bopreal_12m": -2536.78,
+    "fecha": "31/07/26"
+  },
+  "tesoro_julio": 3605.5757981200018,
+  "reserva_julio_recalculada": 11962.0,
+  "metodo": "GET real de balance y parser corregido sobre PDF oficial ya descargado. Se comprueba existencia del Tesoro en todos los meses de la serie publicada; no se afirma haber reextraído cada PDF histórico."
+}

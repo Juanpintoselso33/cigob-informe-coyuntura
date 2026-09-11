@@ -1,0 +1,52 @@
+{
+  "fecha_verificacion": "2026-09-08",
+  "original_arca": {
+    "url": "https://www.arca.gob.ar/institucional/documentos/ARCA-Recaudacion-072026.pdf",
+    "sha256": "2a2ed818093c45a2a90e02aa909d46ff64a61e06e045aa9a60adaeb506b9d21b",
+    "pagina": 12,
+    "subtotal_impositivo_redondeado": 12640578,
+    "metodo": "Lectura visual, chequeada contra la API y reporte IDEP. No OCR automático."
+  },
+  "insumos_julio": {
+    "dgi": 12640577.95556934,
+    "comarb": 2296256.0,
+    "ipc": 12076.3937
+  },
+  "reconstruccion_independiente": {
+    "meses": 55,
+    "desde": "2022-01",
+    "hasta": "2026-07",
+    "factores": {
+      "07": 1.0024208403848138,
+      "08": 1.0453056893660775,
+      "09": 1.0024232885182818,
+      "10": 1.017310651397688,
+      "11": 0.9970059194658415,
+      "12": 1.0040956482578822,
+      "01": 0.9680385643445629,
+      "02": 0.9154704993072473,
+      "03": 0.8594175868793459,
+      "04": 0.8908262738950372,
+      "05": 1.1803085578981825,
+      "06": 1.1173764802850383
+    },
+    "base_sa_4t2023": 1208.2739461198853,
+    "valor": 102.1188210449463,
+    "tarjeta": 102.1
+  },
+  "vigencia": "DGI y COMARB alcanzan agosto; el IPC limita el mes común a julio. Agosto IPC anunciado para 10-sep.",
+  "cotejo_comarb": "cotejo-tributario-actualizado.json",
+  "evidencia_http": [
+    {
+      "url": "https://apis.datos.gob.ar/series/api/series/?ids=172.3_SOTAL_DDGI_M_0_0_12&format=json&limit=80&sort=desc",
+      "sha256": "a45802680ef34dfd382ac8cb3146f751aa87aa31e513af804be30882df3ef396",
+      "status": 200
+    },
+    {
+      "url": "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=80&sort=desc",
+      "sha256": "ae40610b1bac7fcc3ac87b598b27f5a7c7a6a302804baa6d5b013e4b63c5acb2",
+      "status": 200
+    }
+  ],
+  "salvedad": "La corrección estacional estima patrones habituales; no elimina desplazamientos excepcionales de vencimientos ni reafectaciones de saldos. No mide directamente base imponible observada."
+}

@@ -56,6 +56,7 @@ def test_fetch_ratio_dnu_serie_ventana_movil_por_mes(monkeypatch):
     assert len(ventanas_vistas) == 6
     ventanas_dnu = [(desde, hasta) for tipo, desde, hasta, _ in ventanas_vistas if tipo == "2"]
     assert len(set(ventanas_dnu)) == 3
+    assert all((hasta - desde).days + 1 == 365 for desde, hasta in ventanas_dnu)
     assert all(texto == "necesidad y urgencia" for tipo, *_, texto in ventanas_vistas if tipo == "2")
 
 

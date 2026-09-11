@@ -1,0 +1,359 @@
+{
+  "fecha_consulta": "2026-09-08",
+  "alcance": "Entradas PE/JGM del índice de Trámites Parlamentarios de Diputados, fechas 2024-09-08 a 2025-09-08 inclusivas. No acredita exhaustividad de proyectos originados en Senado que no figuren en ese índice.",
+  "fuentes": [
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_240.html",
+      "fecha_tp": "12-02-2025",
+      "sha256": "66f5fe2f76aa5c2bfe860ca81d4c4e2985f17d86afe49b2795090f3f7c293ec3"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_223.html",
+      "fecha_tp": "20-01-2025",
+      "sha256": "16e239df93beb986a5a3cf00a9a8bd9d24b8cc36e500552393261741cdb71aa1"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_215.html",
+      "fecha_tp": "08-01-2025",
+      "sha256": "7c0502df8aece2e44020767c2a3063881c6cf81d606c6b3d59c880170337407e"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_192.html",
+      "fecha_tp": "02-12-2024",
+      "sha256": "ccb3d3035b8296fc397101f481f30b8072adc228bb710d55b5a795a63afb2292"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_185.html",
+      "fecha_tp": "21-11-2024",
+      "sha256": "b3c52bfa5d40f3f68762094d219b9b619533d181577c88c70c37820105756de2"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_173.html",
+      "fecha_tp": "01-11-2024",
+      "sha256": "ea1273d6ebba00ac62bd1467eb552812187156d48976c8d45b8d101ca7606172"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_161.html",
+      "fecha_tp": "16-10-2024",
+      "sha256": "ac5d148974571f6d385154030c4e37c8c765b02cc417c6e312b61d66d1dc1ad8"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_159.html",
+      "fecha_tp": "14-10-2024",
+      "sha256": "3c8b9233e598c78d104fad49ee4fa89c189fbc813f1a1dc76748e0a8be6ff23d"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_153.html",
+      "fecha_tp": "03-10-2024",
+      "sha256": "99e928bdae549cb6a77592b6bb23f6c27c7d9a57fbaa95deb5ec65e894147ad0"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_152.html",
+      "fecha_tp": "02-10-2024",
+      "sha256": "06fff1294f2d041b66bd1a34be7511c8a3255acccd1ed03a657f4f12719b0563"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_139.html",
+      "fecha_tp": "15-09-2024",
+      "sha256": "440c463386e2641b5c0056f1bd954edb6ce73725dad2bc3612fc53d231b052d9"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_123.html",
+      "fecha_tp": "27-08-2025",
+      "sha256": "4b964cb713dd47855b63299b10b8d89f9875a5beb5302ea8c43ec42c903a614e"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_109.html",
+      "fecha_tp": "06-08-2025",
+      "sha256": "c85162ce7cd6f5b9384124025ff58072fe9598954d8f46f2b08ef0c1482d57dc"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_107.html",
+      "fecha_tp": "04-08-2025",
+      "sha256": "2ebdf173a23fed1d0e2d74d2d1c59be80f18150d8970005abb35e6b107b752a0"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_084.html",
+      "fecha_tp": "01-07-2025",
+      "sha256": "3cc3911e0226f04d425aba9f20ef28a52c4b06d2fe8ae7727f2935632b63bc91"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_068.html",
+      "fecha_tp": "05-06-2025",
+      "sha256": "7cf1ed4e326a2148d18219511c0ad7593398be7a73ebe97f9397cc3336e08ca0"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_047.html",
+      "fecha_tp": "07-05-2025",
+      "sha256": "0a3359d0e44c6dbf9ec12eb83d8c355fc8bc8ae70fb95e0e395437b1eb766b48"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_014.html",
+      "fecha_tp": "17-03-2025",
+      "sha256": "3e21ff8c0eb5fc7f34846c2c0daf23de2806378fe086f974befc385dc7f8ab7a"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/index.html",
+      "sha256": "929d2d31fa59e2fc44ab1c462248da6ec2fd011b91cf7d6262753bd833d96796"
+    },
+    {
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/index.html",
+      "sha256": "cbb535d481c69a0736826f14189e96788576024c468bb8c4cd2d2c145a82ed0c"
+    },
+    {
+      "url": "https://www4.hcdn.gob.ar/dependencias/dsecretaria/Periodo2024/PDF2024/TP2024/0023-PE-2024.pdf",
+      "sha256": "3eeb97f5ba80e4cbf16d2e93361d2d9b5c859cd83244914c46dc456ea2d6697d",
+      "texto_primeras_dos_paginas": "República Argentina - Poder Ejecutivo Nacional\nAÑO DE LA RECONSTRUCCIÓN DE LA NACIÓN ARGENTINA\nNota\n\nNúmero: NO-2025-06166155-APN-SRPEI#JGM\nCIUDAD DE BUENOS AIRES\nViernes 17 de Enero de 2025\n\nReferencia: NOTA DEL MENSAJE N° 02/2025\n\nA: AL SEÑOR PRESIDENTE DE LA HCDN (Dr. Martín MENEM),\nCon Copia A:\n\nDe mi mayor consideración:\n\nSEÑOR PRESIDENTE\nTengo el agrado de dirigirme a Ud. a fin de remitirle adjunto al presente el Original del Mensaje\nN° 02/2025 y Proyecto de Ley, modificatorio de la Ley de Impuesto a las Ganancias, texto ordenado en 2019 y sus\nmodificaciones, a los fines de disponer la actualización de los quebrantos impositivos.\n\nSin otro particular saluda atte.\n\nDigitally signed by GESTION DOCUMENTAL ELECTRONICA - GDE\nDate: 2025.01.17 23:48:29 -03:00\n\nOscar Armando MOSCARIELLO\nSecretario\nSecretaría de Relaciones Parlamentarias e Institucionales\nJefatura de Gabinete de Ministros\n\nDigitally signed by GESTION DOCUMENTAL\nELECTRONICA - GDE\nDate: 2025.01.17 23:48:29 -03:00\n\n\fRepública Argentina - Poder Ejecutivo Nacional\nAÑO DE LA RECONSTRUCCIÓN DE LA NACIÓN ARGENTINA\nMensaje\nNúmero: MEN-2025-2-APN-PTE\nCIUDAD DE BUENOS AIRES\nViernes 17 de Enero de 2025\n\nReferencia: Mensaje: Ley - Sustituye el undécimo párrafo del artículo 25 de la Ley de Impuesto a las Ganancias,\ntexto ordenado en 2019 y sus modificaciones - quebrantos\n\nAL H. CONGRESO DE LA NACIÓN:\nTengo el agrado de remitir el Proyecto de Ley modificatorio de la Ley de Impuesto a las Ganancias, texto\nordenado en 2019 y sus modificaciones, a los fines de disponer la actualización de los quebrantos impositivos.\nEn tal sentido, cabe recordar que mediante el artículo 59 de la Ley N° 27.430, en lo que aquí concierne, se\nhabilitó la posibilidad de actualizar determinados conceptos enumerados en los artículos expresamente\nmencionados en el entonces segundo párrafo del artículo 89 (actual artículo 93) de la ley del gravamen, con la\ncondición de que se trataren de adquisiciones o inversiones efectuadas en los ejercicios fiscales que se iniciaron a\npartir del 1° de enero de 2018.\nAl respecto, debe tenerse presente que la actualización de los quebrantos impositivos se encuentra normada en el\nartículo 25 de la Ley de Impuesto a las Ganancias, texto ordenado en 2019 y sus modificaciones, cuyo undécimo\npárrafo prevé que: “Los quebrantos se actualizarán teniendo en cuenta la variación del Índice de Precios Internos\nal por Mayor (IPIM), publicado por el INSTITUTO NACIONAL DE ESTADÍSTICA Y CENSOS, organismo\ndesconcentrado actuante en el ámbito del MINISTERIO DE HACIENDA, operada entre el mes de cierre del\nejercicio fiscal en que se originaron y el mes de cierre del ejercicio fiscal que se liquida”.\nSi bien el undécimo párrafo del artículo 25 de la ley del tributo se encuentra plenamente vigente, el coeficiente de\nactualización que debe considerarse es UNO (1), toda vez que el artículo 93 de la ley del impuesto, salvo para las\nexcepciones expresamente mencionadas en su segundo párrafo -entre las que no se encuentran los quebrantos-, en\nsu primer párrafo dispone que debe estarse a lo previsto en el artículo 39 de la Ley N° 24.073.\nEn ese sentido, cabe recordar que dicho artículo 39 prevé que a los fines de las actualizaciones de valores\nprevistas en la Ley N° 11.683, texto ordenado en 1998 y sus modificaciones, y en las normas de los tributos\nregidos por la misma, no alcanzados por las disposiciones de la Ley N° 23.928, las tablas e índices que a esos\nfines elabora la DIRECCIÓN GENERAL IMPOSITIVA para ser aplicadas a partir del 1° de abril de 1992\ndeberán, en todos los casos, tomar como límite máximo las variaciones operadas hasta el mes de marzo de 1992,\n\n\f"
+    },
+    {
+      "url": "https://www4.hcdn.gob.ar/dependencias/dsecretaria/Periodo2025/PDF2025/TP2025/0007-PE-2025.pdf",
+      "sha256": "741fcc545d5df2a5e7bfc287fcd19621376446349b5c2fc03a1dcd4ed36090ea",
+      "texto_primeras_dos_paginas": "República Argentina - Poder Ejecutivo Nacional\nAÑO DE LA RECONSTRUCCIÓN DE LA NACIÓN ARGENTINA\nNota\n\nNúmero: NO-2025-85741626-APN-SRPEI#JGM\nCIUDAD DE BUENOS AIRES\nMiércoles 6 de Agosto de 2025\n\nReferencia: NOTA DEL MENSAJE N° 17/2025\n\nA: AL SEÑOR PRESIDENTE DE LA HCDN (Dr. Martín MENEM),\nCon Copia A:\n\nDe mi mayor consideración:\n\nSEÑOR PRESIDENTE\nTengo el agrado de dirigirme a Ud. a fin de remitirle adjunto al presente el Original del\nMensaje N°17/2025 y Proyecto de Ley por el cual se propone reconocer la actuación del Brigadier (R) “VGM”\nJorge Francisco MARTÍNEZ en la “GUERRA DEL ATLÁNTICO SUR”, por su relevante mérito, valor y heroísmo\nen defensa de la patria y, en tal sentido, se le conceda la medalla “LA NACIÓN ARGENTINA AL VALOR EN\nCOMBATE”.\n\nSin otro particular saluda atte.\n\n\fDigitally signed by GESTION DOCUMENTAL ELECTRONICA - GDE\nDate: 2025.08.06 10:14:10 -03:00\n\nOscar Armando MOSCARIELLO\nSecretario\nSecretaría de Relaciones Parlamentarias e Institucionales\nJefatura de Gabinete de Ministros\n\nDigitally signed by GESTION DOCUMENTAL\nELECTRONICA - GDE\nDate: 2025.08.06 10:14:10 -03:00\n\n\f"
+    },
+    {
+      "url": "https://www4.hcdn.gob.ar/dependencias/dsecretaria/Periodo2024/PDF2024/TP2024/0024-PE-2024.pdf",
+      "sha256": "da6534ac6b933793fe540e7bc636d7636c277ef8dae8e924482b182aa9cbe4c1",
+      "texto_primeras_dos_paginas": "República Argentina - Poder Ejecutivo Nacional\nAÑO DE LA RECONSTRUCCIÓN DE LA NACIÓN ARGENTINA\nNota\n\nNúmero: NO-2025-06166190-APN-SRPEI#JGM\nCIUDAD DE BUENOS AIRES\nViernes 17 de Enero de 2025\n\nReferencia: NOTA DEL MENSAJE N° 03 /2025\n\nA: AL SEÑOR PRESIDENTE DE LA HCDN (Dr. Martín MENEM),\nCon Copia A:\n\nDe mi mayor consideración:\n\nSEÑOR PRESIDENTE\nTengo el agrado de dirigirme a Ud. a fin de remitirle adjunto al presente el Original del Mensaje N°\n03/2025, con el objeto de someter a su consideración un Proyecto de Ley denominado como “Ficha Limpia”, que incorpora\nun nuevo supuesto de inelegibilidad a los previstos en el artículo 33 de la Ley Orgánica de los Partidos Políticos N° 23.298 y\nsus modificatorias.\n\nSin otro particular saluda atte.\n\nDigitally signed by GESTION DOCUMENTAL ELECTRONICA - GDE\nDate: 2025.01.17 23:48:55 -03:00\n\nOscar Armando MOSCARIELLO\nSecretario\nSecretaría de Relaciones Parlamentarias e Institucionales\nJefatura de Gabinete de Ministros\n\nDigitally signed by GESTION DOCUMENTAL\nELECTRONICA - GDE\nDate: 2025.01.17 23:48:56 -03:00\n\n\fRepública Argentina - Poder Ejecutivo Nacional\nAÑO DE LA RECONSTRUCCIÓN DE LA NACIÓN ARGENTINA\nMensaje\nNúmero: MEN-2025-3-APN-PTE\nCIUDAD DE BUENOS AIRES\nViernes 17 de Enero de 2025\n\nReferencia: Mensaje: Ley - LEY DE FICHA LIMPIA\n\nAL H. CONGRESO DE LA NACIÓN:\nTengo el agrado de dirigirme con el objeto de someter a su consideración un Proyecto de Ley denominado como\n“Ficha Limpia”, que incorpora un nuevo supuesto de inelegibilidad a los previstos en el artículo 33 de la Ley\nOrgánica de los Partidos Políticos N° 23.298 y sus modificatorias.\nEn ese sentido, el presente Proyecto de Ley tiene como objetivo garantizar y reforzar el principio de idoneidad en\nel ámbito electoral y en lo que hace a la gestión gubernamental. Para lograrlo propone una serie de\nmodificaciones normativas tendientes a impedir que quienes hayan sido condenados en segunda instancia por un\ndelito de corrupción puedan ser candidatos para cargos electivos nacionales u ocupar diferentes cargos en el\námbito de la Administración Pública Nacional.\nLa iniciativa que aquí se remite contiene una propuesta que procura implementar el instituto “Ficha Limpia”, de\nconformidad con los principios de derecho público que surgen de los artículos 16 y 36 de la CONSTITUCIÓN\nNACIONAL y, al mismo tiempo, volverlo compatible con el derecho a la doble instancia en materia penal.\nEn efecto, por medio del artículo 16 de nuestra Ley Fundamental se dispone que todos los habitantes de la Nación\nArgentina son iguales ante la ley y “admisibles en los empleos sin otra condición que la idoneidad”. Por su parte,\na través del artículo 36, el cual fue incorporado en la reforma del año 1994, se establece que atenta contra el\nsistema democrático “quien incurriere en grave delito doloso contra el Estado que conlleve enriquecimiento,\nquedando inhabilitado por el tiempo que las leyes determinen para ocupar cargos o empleos públicos”. A través\nde este último artículo, además, se asimila a los autores de un delito doloso contra el Estado que conlleve\nenriquecimiento a quienes se encuentran encuadrados por medio del artículo 29 de la CONSTITUCIÓN\nNACIONAL en la categoría de infames traidores a la Patria.\nEn concreto, el proyecto remitido tiene como fin regular el derecho de sufragio pasivo y establecer un límite\nrazonable que permita que las inelegibilidades contenidas en el artículo 33 de la Ley Orgánica de los Partidos\nPolíticos N° 23.298 y sus modificatorias se encuentren en coincidencia con las disposiciones de la\nCONSTITUCIÓN NACIONAL e implementen las normas constitucionales recién mencionadas, con el fin de\n\n\f"
+    }
+  ],
+  "entradas": [
+    {
+      "exp": "0025-PE-2024",
+      "fecha_tp": "12-02-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_240.html",
+      "texto": "MENSAJE NRO: 0008/2025 Y PROYECTO DE LEY. DE FECHA 11 DE FEBRERO DE 2025 POR EL CUAL SE MODIFICAN LOS ARTÍCULOS 186 Y 189 DEL CÓDIGO PENAL SOBRE INCENDIOS Y OTROS ESTRAGOS. ( 0025-PE-2024",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0023-PE-2024",
+      "fecha_tp": "20-01-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_223.html",
+      "texto": "MENSAJE NRO: 0002/2025 Y PROYECTO DE LEY. DE FECHA 17 DE ENERO DE 2025 POR EL CUAL SE SUSTITUYE EL UNDÉCIMO PÁRRAFO DEL ARTÍCULO 25 DE LA LEY DE IMPUESTO A LAS GANANCIAS, TEXTO ORDENADO EN 2019 Y SUS MODIFICACIONES - QUEBRANTOS -. ( 0023-PE-2024",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0024-PE-2024",
+      "fecha_tp": "20-01-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_223.html",
+      "texto": "MENSAJE NRO: 0003/2025 Y PROYECTO DE LEY. DE FECHA 20 DE ENERO DE 2025 POR EL CUAL SE INCORPORA LA FIGURA DE \"FICHA LIMPIA A LA LEY 23298, ORGÁNICA DE LOS PARTIDOS POLÍTICOS. MODIFICACIÓN DE LAS LEYES 26571; 19945 Y 22117.  ( 0024-PE-2024",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0018-JGM-2024",
+      "fecha_tp": "08-01-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_215.html",
+      "texto": "REMITE DECISIÓN ADMINISTRATIVA N°1022 DE FECHA 27 DE DICIEMBRE DE 2024 POR EL CUAL SE MODIFICA EL PRESUPUESTO DE LA ADMINISTRACIÓN PÚBLICA NACIONAL 2024. ( 0018-JGM-2024",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0017-JGM-2024",
+      "fecha_tp": "02-12-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_192.html",
+      "texto": "REMITE LA DECISIÓN ADMINISTRATIVA N° 1018 DEL 28 DE NOVIEMBRE DE 2024 POR LA CUAL MODIFICA EL PRESUPUESTO GENERAL DE LA ADMINISTRACIÓN NACIONAL PARA EL EJERCICIO 2024. ( 0017-JGM-2024",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0021-PE-2024",
+      "fecha_tp": "21-11-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_185.html",
+      "texto": "MENSAJE NRO: 0063/2024 Y PROYECTO DE LEY. DE FECHA 21 DE NOVIEMBRE DE 2024 SOBRE REFORMAS ESTRUCTURALES A LA LEY 23298 -ORGÁNICA DE LOS PARTIDOS POLÍTICOS- Y SUS MODIFICATORIAS. ( 0021-PE-2024",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0022-PE-2024",
+      "fecha_tp": "21-11-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_185.html",
+      "texto": "MENSAJE NRO: 0064/2024 Y PROYECTO DE LEY. DE FECHA 21 DE NOVIEMBRE DE 2024 SOBRE REFORMA PARA EL FORTALECIMIENTO ELECTORAL. ( 0022-PE-2024",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0016-JGM-2024",
+      "fecha_tp": "01-11-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_173.html",
+      "texto": "REMITE LA DECISIÓN ADMINISTRATIVA N° 1015 DEL 29 DE OCTUBRE DE 2024 POR LA CUAL SE MODIFICA EL PRESUPUESTO GENERAL DE LA ADMINISTRACIÓN NACIONAL PARA EL EJERCICIO 2024. ( 0016-JGM-2024",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0015-JGM-2024",
+      "fecha_tp": "16-10-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_161.html",
+      "texto": "REMITE EL PLAN NACIONAL DE INVERSIONES PÚBLICAS PARA EL TRIENIO 2025-2027.  ( 0015-JGM-2024",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0018-PE-2024",
+      "fecha_tp": "14-10-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_159.html",
+      "texto": "MENSAJE NRO: 0059/2024 Y PROYECTO DE LEY. DE FECHA 10 DE OCTUBRE DE 2024 SOBRE LA MODERNIZACIÓN, DIGITALIZACIÓN Y DESBUROCRATIZACIÓN DE LA JUSTICIA. ( 0018-PE-2024",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0019-PE-2024",
+      "fecha_tp": "14-10-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_159.html",
+      "texto": "MENSAJE NRO: 0060/2024 Y PROYECTO DE LEY. DE FECHA 10 DE OCTUBRE DE 2024 SOBRE MODIFICACIÓN DEL CÓDIGO CIVIL Y COMERCIAL DE LA NACIÓN TENDIENTE A IMPLEMENTAR LA DISOLUCIÓN DEL VÍNCULO MATRIMONIAL EN SEDE ADMINISTRATIVA.  ( 0019-PE-2024",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0020-PE-2024",
+      "fecha_tp": "14-10-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_159.html",
+      "texto": "MENSAJE NRO: 0061/2024 Y PROYECTO DE LEY. DE FECHA 10 DE OCTUBRE DE 2024 SOBRE DEROGACIÓN DE LEGISLACIÓN OBSOLETA - “LEY DE HOJARASCA”.  ( 0020-PE-2024",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0017-PE-2024",
+      "fecha_tp": "03-10-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_153.html",
+      "texto": "MENSAJE NRO: 0057/2024. DE FECHA 2 DE OCTUBRE DE 2024 COMUNICANDO EL DICTADO DEL DECRETO POR EL CUAL SE OBSERVA TOTALMENTE Y SE DEVUELVE EL PROYECTO DE LEY REGISTRADO BAJO EL N° 27757. ( 0017-PE-2024",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0016-PE-2024",
+      "fecha_tp": "02-10-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_152.html",
+      "texto": "MENSAJE NRO: 0058/2024 Y PROYECTO DE LEY. DE FECHA 2 DE OCTUBRE DE 2024 POR EL CUAL SE APRUEBA LA DECLARACIÓN DE PRIVATIZACIÓN DE AEROLÍNEAS ARGENTINAS S.A. ( 0016-PE-2024",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0013-JGM-2024",
+      "fecha_tp": "02-10-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_152.html",
+      "texto": "MENSAJE NRO: 0056/2024. DE FECHA 2 DE OCTUBRE DE 2024 COMUNICANDO EL DICTADO DEL DECRETO N° 873/2024 DEL 1° DE OCTUBRE DE 2024, SOBRE LA PRIVATIZACIÓN DE LA EMPRESA AEROLÍNEAS ARGENTINAS S.A. ( 0013-JGM-2024",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0014-JGM-2024",
+      "fecha_tp": "02-10-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_152.html",
+      "texto": "REMITE LA DECISIÓN ADMINISTRATIVA 910/2024 DEL 2 DE OCTUBRE DE 2024 POR LA CUAL SE MODIFICA EL PRESUPUESTO GENERAL DE LA ADMINISTRACIÓN NACIONAL PARA EL EJERCICIO 2024.  ( 0014-JGM-2024",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0012-JGM-2024",
+      "fecha_tp": "15-09-2024",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_139.html",
+      "texto": "Y PROYECTO DE LEY DE FECHA 15 DE SEPTIEMBRE DE 2024 DE PRESUPUESTO GENERAL DE LA ADMINISTRACIÓN NACIONAL PARA EL EJERCICIO FISCAL DEL AÑO 2025. (0012-JGM-2024",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0008-PE-2025",
+      "fecha_tp": "27-08-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_123.html",
+      "texto": "MENSAJE 0025/2025 Y PROYECTO DE LEY, DE FECHA 26 DE AGOSTO DE 2025, POR EL CUAL SE AUTORIZA LA SALIDA DE PERSONAL Y/O MEDIOS DEL ESTADO MAYOR CONJUNTO DE LAS FUERZAS ARMADAS, DEL EJÉRCITO ARGENTINO, DE LA ARMADA ARGENTINA Y DE LA FUERZA AÉREA ARGENTINA DEL TERRITORIO NACIONAL Y EL INGRESO DE TROPAS EXTRANJERAS. ( 0008-PE-2025",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0007-PE-2025",
+      "fecha_tp": "06-08-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_109.html",
+      "texto": "MENSAJE NRO: 0017/2025 Y PROYECTO DE LEY. DE FECHA 6 DE AGOSTO DE 2025 POR EL CUAL SE RECONOCE AL BRIGADIER (R) “VGM” JORGE FRANCISCO MARTÍNEZ EN LA “GUERRA DEL ATLÁNTICO SUR” Y SE CONCEDE LA MEDALLA “LA NACIÓN ARGENTINA AL VALOR EN COMBATE”. ( 0007-PE-2025",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0004-PE-2025",
+      "fecha_tp": "04-08-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_107.html",
+      "texto": "COMUNICA EL DICTADO DEL DECRETO N° 534 DEL 1 DE AGOSTO DE 2025, POR EL CUAL SE OBSERVA TOTALMENTE Y SE DEVUELVE EL PROYECTO DE LEY POR EL CUAL SE INCORPORA, A PARTIR DEL 1° DE ABRIL DE 2025, UN BONO EXTRAORDINARIO PREVISIONAL PARA BENEFICIARIOS QUE COBRAN LOS HABERES MÍNIMOS, REGISTRADO CON EL N° 27791. ( 0004-PE-2025",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0005-PE-2025",
+      "fecha_tp": "04-08-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_107.html",
+      "texto": "COMUNICA EL DICTADO DEL DECRETO N° 534 DEL 1 DE AGOSTO DE 2025, POR EL CUAL SE OBSERVA TOTALMENTE Y SE DEVUELVE EL PROYECTO DE LEY MEDIANTE EL CUAL SE PRORROGA DESDE SU VENCIMIENTO, Y POR EL TÉRMINO DE DOS AÑOS, LA VIGENCIA DEL CAPITULO II DE LA LEY 27705 QUE IMPLEMENTÓ LA UNIDAD DE PAGO DE DEUDA PREVISIONAL, REGISTRADO CON EL N° 27792. ( 0005-PE-2025",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0006-PE-2025",
+      "fecha_tp": "04-08-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_107.html",
+      "texto": "COMUNICA EL DICTADO DEL DECRETO N° 534 DEL 1 DE AGOSTO DE 2025, POR EL CUAL SE OBSERVA TOTALMENTE Y SE DEVUELVE EL PROYECTO DE LEY POR EL CUAL SE DECLARA LA EMERGENCIA EN DISCAPACIDAD EN TODO EL TERRITORIO NACIONAL HASTA EL 31 DE DICIEMBRE DE 2026, REGISTRADO CON EL N° 27793. ( 0006-PE-2025",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0009-JGM-2025",
+      "fecha_tp": "01-07-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_084.html",
+      "texto": "MENSAJE NRO: 0063/2025. DE FECHA 30 DE JUNIO DE 2025 COMUNICANDO EL INFORME DE AVANCE SOBRE LA ELABORACIÓN DEL PROYECTO DE LEY DE PRESUPUESTO GENERAL DE LA ADMINISTRACIÓN NACIONAL CORRESPONDIENTE AL EJERCICIO FISCAL 2026. ( 0009-JGM-2025",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0010-JGM-2025",
+      "fecha_tp": "01-07-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_084.html",
+      "texto": "REMITE LA CUENTA DE INVERSIÓN CORRESPONDIENTE AL EJERCICIO FISCAL 2024, CONFORME A LO DISPUESTO EN EL ARTÍCULO 75, INCISO 8 DE LA CONSTITUCIÓN NACIONAL. ( 0010-JGM-2025",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0002-PE-2025",
+      "fecha_tp": "05-06-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_068.html",
+      "texto": "RESOLUCIÓN DE FECHA 4 DE JUNIO DE 2025 POR LA CUAL SE AUTORIZA LA REALIZACIÓN DEL LIII VIAJE DE INSTRUCCIÓN Y LA SALIDA DEL TERRITORIO NACIONAL DEL BUQUE ESCUELA FRAGATA A.R.A. \"LIBERTAD\". ( 0002-PE-2025",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0003-PE-2025",
+      "fecha_tp": "05-06-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_068.html",
+      "texto": "MENSAJE NRO: 14/2025 Y PROYECTO DE LEY DE FECHA 5 DE JUNIO DE 2025, SOBRE REFORMAS AL PROCEDIMIENTO TRIBUTARIO Y AL RÉGIMEN PENAL TRIBUTARIO. MODIFICACIÓN DEL CÓDIGO CIVIL Y COMERCIAL DE LA NACIÓN. ( 0003-PE-2025",
+      "proyecto_de_ley": true
+    },
+    {
+      "exp": "0008-JGM-2025",
+      "fecha_tp": "07-05-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_047.html",
+      "texto": "REMITE DECISIÓN ADMINISTRATIVA N° 10 DE FECHA 29 DE ABRIL DE 2025 POR LA CUAL SE MODIFICA EL PRESUPUESTO DE LA ADMINISTRACIÓN PÚBLICA NACIONAL 2025. ( 0008-JGM-2025",
+      "proyecto_de_ley": false
+    },
+    {
+      "exp": "0001-PE-2025",
+      "fecha_tp": "17-03-2025",
+      "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_014.html",
+      "texto": "MENSAJE NRO: 0012/2025 Y PROYECTO DE LEY. DE FECHA 14 DE MARZO DE 2025 MEDIANTE EL CUAL SE ESTABLECE UN RÉGIMEN PARA LA PREVENCIÓN Y REPRESIÓN DE DELITOS EN ESPECTÁCULOS DEPORTIVOS. ( 0001-PE-2025",
+      "proyecto_de_ley": true
+    }
+  ],
+  "resultado": {
+    "entradas": 28,
+    "proyectos_de_ley": 14,
+    "otros_mensajes": 14,
+    "coincidencia_con_cohorte_ckan": true,
+    "discrepancias_fecha": [
+      {
+        "expediente": "0023-PE-2024",
+        "proyecto_id": "HCDN280628",
+        "publicacion_id": "HCDN142TP223",
+        "fecha_ckan": "2025-01-22",
+        "fecha_indice_tp": "2025-01-20",
+        "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_223.html"
+      },
+      {
+        "expediente": "0024-PE-2024",
+        "proyecto_id": "HCDN280629",
+        "publicacion_id": "HCDN142TP223",
+        "fecha_ckan": "2025-01-22",
+        "fecha_indice_tp": "2025-01-20",
+        "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2024/tp_223.html"
+      },
+      {
+        "expediente": "0007-PE-2025",
+        "proyecto_id": "HCDN286677",
+        "publicacion_id": "HCDN143TP109",
+        "fecha_ckan": "2025-07-30",
+        "fecha_indice_tp": "2025-08-06",
+        "url": "https://www2.hcdn.gob.ar/secparl/dsecretaria/s_t_parlamentario/2025/tp_109.html"
+      }
+    ],
+    "integracion_fechas": "aplicada a tarjeta, historia, publicación y contraste externo",
+    "cambios_serie": [
+      {
+        "fecha": "2026-07-01",
+        "antes": 13.3,
+        "despues": 14.3
+      }
+    ],
+    "itcp_julio_antes": 67.8,
+    "itcp_julio_despues": 67.9
+  }
+}

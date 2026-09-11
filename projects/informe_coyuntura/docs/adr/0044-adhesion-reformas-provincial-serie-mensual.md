@@ -11,6 +11,12 @@ ambito: '`data/politica/adhesion_reformas_provincial_fechas.json` (nuevo) · `sc
 
 # ADR-0044 — adhesion_reformas_provincial: serie mensual real vía investigación manual de fechas provinciales
 
+Actualización 8-sep-2026: [ADR-0304](0304-adhesion-rigi-completa-catalogo-con-leyes.md)
+documenta Santa Fe y CABA, omitidas en la tabla nacional. El registro vigente
+incluye 18 jurisdicciones y distingue publicación de vigencia explícita.
+Los conteos de 16 y la caracterización de irreversibilidad de este documento
+describen el diseño histórico; no constituyen la ficha metodológica vigente.
+
 ## Contexto y planteo del problema
 
 `adhesion_reformas_provincial` (% de provincias, sobre 24, adheridas

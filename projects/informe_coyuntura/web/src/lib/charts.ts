@@ -269,7 +269,7 @@ export function distChart(el: HTMLElement,
 }
 
 // Mini gráfico (sparkline con tooltip) para las cards de la home.
-export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string } = {}) {
+export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string; rango?: [number, number] } = {}) {
   const color = opts.color ?? "#3D9AD1";
   const chart = new ApexCharts(el, {
     chart: { type: "area", height: 92, sparkline: { enabled: true }, fontFamily: FONT, animations: { enabled: true, speed: 400 } },
@@ -280,6 +280,7 @@ export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: stri
     tooltip: { theme: "light", x: { format: esMensual(serie) ? "MMM yyyy" : "dd MMM yy" },
                y: { formatter: (v: number) => `${NF.format(v)}${opts.unidad ? ` ${opts.unidad}` : ""}` } },
     xaxis: { type: "datetime" },
+    ...(opts.rango ? { yaxis: { min: opts.rango[0], max: opts.rango[1] } } : {}),
   } as any);
   chart.render();
   return chart;

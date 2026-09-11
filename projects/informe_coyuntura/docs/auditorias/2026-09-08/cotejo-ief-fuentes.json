@@ -1,0 +1,25 @@
+{
+  "indicador": "carga_servicio_deuda_hogares",
+  "ultimo": [
+    "2026-04-01",
+    24.076
+  ],
+  "puntos": 169,
+  "solicitudes": [
+    {
+      "url": "https://www.bcra.gob.ar/publicaciones/informe-de-estabilidad-financiera-segundo-semestre-2026/",
+      "status": 404,
+      "sha256": "73de4b9e3a00b4751d26abe425582481610a70c372a199680967b41b2b33b3f7"
+    },
+    {
+      "url": "https://www.bcra.gob.ar/publicaciones/informe-de-estabilidad-financiera-primer-semestre-2026/",
+      "status": 200,
+      "sha256": "7a05e6b5b7940eed4ad1db3cf7aafdde7776e31e30f2ce82628b57c1b4cc1ab7"
+    },
+    {
+      "url": "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/informes/Informe-estabilidad-finananciera-2026-01-serie.xlsx",
+      "status": 200,
+      "sha256": "92c06886038662712d4ecb1753dc065fe747aed49da9c7803867d08eff6d180f"
+    }
+  ]
+}

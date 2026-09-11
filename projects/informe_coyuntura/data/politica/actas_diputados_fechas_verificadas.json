@@ -1,0 +1,6 @@
+{
+  "revisado_en": "2026-09-10",
+  "criterio": "Actas de votación de Diputados cuyo PDF no trae una fecha legible en el encabezado. La fecha se cotejó a mano en la página de votaciones de la Cámara y queda documentada con su fuente. Sin entrada acá el acta no acredita cobertura y el colector avisa; no se estima.",
+  "campos": "id del acta como clave; fecha en YYYY-MM-DD; fuente con la URL de la votación.",
+  "actas": {}
+}

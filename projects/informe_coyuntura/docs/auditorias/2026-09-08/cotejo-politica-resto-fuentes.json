@@ -1,0 +1,650 @@
+{
+  "fecha": "2026-09-08",
+  "metodo": "Ejecución real. GET instrumentados; sesiones GET/POST de InfoLeg no capturadas por el wrapper. Velocidad de resolución lee sólo registro local curado: réplica aritmética, no verificación externa.",
+  "indicadores": [
+    {
+      "indicador": "ratio_dnu",
+      "resultado": {
+        "valor": 1.4,
+        "dnu_count": 35,
+        "leyes_count": 25,
+        "ventana_dias": 365,
+        "unidad": "DNUs publicados por ley publicada",
+        "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false,
+        "ventana_desde": "2025-09-08",
+        "ventana_hasta": "2026-09-08",
+        "inventario_dnu": [
+          {
+            "norma": "Decreto DNU 771 / 2026",
+            "fecha_pub": "2026-08-21"
+          },
+          {
+            "norma": "Decreto DNU 736 / 2026",
+            "fecha_pub": "2026-08-14"
+          },
+          {
+            "norma": "Decreto DNU 717 / 2026",
+            "fecha_pub": "2026-08-06"
+          },
+          {
+            "norma": "Decreto DNU 681 / 2026",
+            "fecha_pub": "2026-07-30"
+          },
+          {
+            "norma": "Decreto DNU 667 / 2026",
+            "fecha_pub": "2026-07-28"
+          },
+          {
+            "norma": "Decreto DNU 650 / 2026",
+            "fecha_pub": "2026-07-24"
+          },
+          {
+            "norma": "Decreto DNU 594 / 2026",
+            "fecha_pub": "2026-07-16"
+          },
+          {
+            "norma": "Decreto DNU 585 / 2026",
+            "fecha_pub": "2026-07-13"
+          },
+          {
+            "norma": "Decreto DNU 580 / 2026",
+            "fecha_pub": "2026-07-08"
+          },
+          {
+            "norma": "Decreto DNU 571 / 2026",
+            "fecha_pub": "2026-07-03"
+          },
+          {
+            "norma": "Decreto DNU 490 / 2026",
+            "fecha_pub": "2026-06-25"
+          },
+          {
+            "norma": "Decreto DNU 473 / 2026",
+            "fecha_pub": "2026-06-17"
+          },
+          {
+            "norma": "Decreto DNU 314 / 2026",
+            "fecha_pub": "2026-05-04"
+          },
+          {
+            "norma": "Decreto DNU 274 / 2026",
+            "fecha_pub": "2026-04-24"
+          },
+          {
+            "norma": "Decreto DNU 252 / 2026",
+            "fecha_pub": "2026-04-17"
+          },
+          {
+            "norma": "Decreto DNU 264 / 2026",
+            "fecha_pub": "2026-04-17"
+          },
+          {
+            "norma": "Decreto DNU 203 / 2026",
+            "fecha_pub": "2026-03-30"
+          },
+          {
+            "norma": "Decreto DNU 149 / 2026",
+            "fecha_pub": "2026-03-12"
+          },
+          {
+            "norma": "Decreto DNU 88 / 2026",
+            "fecha_pub": "2026-02-06"
+          },
+          {
+            "norma": "Decreto DNU 80 / 2026",
+            "fecha_pub": "2026-02-02"
+          },
+          {
+            "norma": "Decreto DNU 73 / 2026",
+            "fecha_pub": "2026-01-30"
+          },
+          {
+            "norma": "Decreto DNU 49 / 2026",
+            "fecha_pub": "2026-01-27"
+          },
+          {
+            "norma": "Decreto DNU 26 / 2026",
+            "fecha_pub": "2026-01-26"
+          },
+          {
+            "norma": "Decreto DNU 34 / 2026",
+            "fecha_pub": "2026-01-26"
+          },
+          {
+            "norma": "Decreto DNU 41 / 2026",
+            "fecha_pub": "2026-01-26"
+          },
+          {
+            "norma": "Decreto DNU 17 / 2026",
+            "fecha_pub": "2026-01-16"
+          },
+          {
+            "norma": "Decreto DNU 2 / 2026",
+            "fecha_pub": "2026-01-05"
+          },
+          {
+            "norma": "Decreto DNU 942 / 2025",
+            "fecha_pub": "2026-01-02"
+          },
+          {
+            "norma": "Decreto DNU 941 / 2025",
+            "fecha_pub": "2026-01-02"
+          },
+          {
+            "norma": "Decreto DNU 849 / 2025",
+            "fecha_pub": "2025-12-01"
+          },
+          {
+            "norma": "Decreto DNU 825 / 2025",
+            "fecha_pub": "2025-11-20"
+          },
+          {
+            "norma": "Decreto DNU 805 / 2025",
+            "fecha_pub": "2025-11-13"
+          },
+          {
+            "norma": "Decreto DNU 793 / 2025",
+            "fecha_pub": "2025-11-11"
+          },
+          {
+            "norma": "Decreto DNU 697 / 2025",
+            "fecha_pub": "2025-09-30"
+          },
+          {
+            "norma": "Decreto DNU 658 / 2025",
+            "fecha_pub": "2025-09-15"
+          }
+        ],
+        "detalle_txt": "35 DNU y 25 leyes publicados en el Boletín Oficial entre 2025-09-08 y 2026-09-08 → 1.40 DNU por ley"
+      },
+      "previo": {
+        "valor": 1.4,
+        "dnu_count": 35,
+        "leyes_count": 25,
+        "ventana_dias": 365,
+        "unidad": "DNUs publicados por ley publicada",
+        "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false,
+        "ventana_desde": "2025-09-08",
+        "ventana_hasta": "2026-09-08",
+        "inventario_dnu": [
+          {
+            "norma": "Decreto DNU 771 / 2026",
+            "fecha_pub": "2026-08-21"
+          },
+          {
+            "norma": "Decreto DNU 736 / 2026",
+            "fecha_pub": "2026-08-14"
+          },
+          {
+            "norma": "Decreto DNU 717 / 2026",
+            "fecha_pub": "2026-08-06"
+          },
+          {
+            "norma": "Decreto DNU 681 / 2026",
+            "fecha_pub": "2026-07-30"
+          },
+          {
+            "norma": "Decreto DNU 667 / 2026",
+            "fecha_pub": "2026-07-28"
+          },
+          {
+            "norma": "Decreto DNU 650 / 2026",
+            "fecha_pub": "2026-07-24"
+          },
+          {
+            "norma": "Decreto DNU 594 / 2026",
+            "fecha_pub": "2026-07-16"
+          },
+          {
+            "norma": "Decreto DNU 585 / 2026",
+            "fecha_pub": "2026-07-13"
+          },
+          {
+            "norma": "Decreto DNU 580 / 2026",
+            "fecha_pub": "2026-07-08"
+          },
+          {
+            "norma": "Decreto DNU 571 / 2026",
+            "fecha_pub": "2026-07-03"
+          },
+          {
+            "norma": "Decreto DNU 490 / 2026",
+            "fecha_pub": "2026-06-25"
+          },
+          {
+            "norma": "Decreto DNU 473 / 2026",
+            "fecha_pub": "2026-06-17"
+          },
+          {
+            "norma": "Decreto DNU 314 / 2026",
+            "fecha_pub": "2026-05-04"
+          },
+          {
+            "norma": "Decreto DNU 274 / 2026",
+            "fecha_pub": "2026-04-24"
+          },
+          {
+            "norma": "Decreto DNU 252 / 2026",
+            "fecha_pub": "2026-04-17"
+          },
+          {
+            "norma": "Decreto DNU 264 / 2026",
+            "fecha_pub": "2026-04-17"
+          },
+          {
+            "norma": "Decreto DNU 203 / 2026",
+            "fecha_pub": "2026-03-30"
+          },
+          {
+            "norma": "Decreto DNU 149 / 2026",
+            "fecha_pub": "2026-03-12"
+          },
+          {
+            "norma": "Decreto DNU 88 / 2026",
+            "fecha_pub": "2026-02-06"
+          },
+          {
+            "norma": "Decreto DNU 80 / 2026",
+            "fecha_pub": "2026-02-02"
+          },
+          {
+            "norma": "Decreto DNU 73 / 2026",
+            "fecha_pub": "2026-01-30"
+          },
+          {
+            "norma": "Decreto DNU 49 / 2026",
+            "fecha_pub": "2026-01-27"
+          },
+          {
+            "norma": "Decreto DNU 26 / 2026",
+            "fecha_pub": "2026-01-26"
+          },
+          {
+            "norma": "Decreto DNU 34 / 2026",
+            "fecha_pub": "2026-01-26"
+          },
+          {
+            "norma": "Decreto DNU 41 / 2026",
+            "fecha_pub": "2026-01-26"
+          },
+          {
+            "norma": "Decreto DNU 17 / 2026",
+            "fecha_pub": "2026-01-16"
+          },
+          {
+            "norma": "Decreto DNU 2 / 2026",
+            "fecha_pub": "2026-01-05"
+          },
+          {
+            "norma": "Decreto DNU 942 / 2025",
+            "fecha_pub": "2026-01-02"
+          },
+          {
+            "norma": "Decreto DNU 941 / 2025",
+            "fecha_pub": "2026-01-02"
+          },
+          {
+            "norma": "Decreto DNU 849 / 2025",
+            "fecha_pub": "2025-12-01"
+          },
+          {
+            "norma": "Decreto DNU 825 / 2025",
+            "fecha_pub": "2025-11-20"
+          },
+          {
+            "norma": "Decreto DNU 805 / 2025",
+            "fecha_pub": "2025-11-13"
+          },
+          {
+            "norma": "Decreto DNU 793 / 2025",
+            "fecha_pub": "2025-11-11"
+          },
+          {
+            "norma": "Decreto DNU 697 / 2025",
+            "fecha_pub": "2025-09-30"
+          },
+          {
+            "norma": "Decreto DNU 658 / 2025",
+            "fecha_pub": "2025-09-15"
+          }
+        ],
+        "detalle_txt": "35 DNU y 25 leyes publicados en el Boletín Oficial entre 2025-09-08 y 2026-09-08 → 1.40 DNU por ley",
+        "obtenido_en": "2026-09-08T03:02:21",
+        "en_indice": true,
+        "dimension": "poder_legislativo",
+        "puntaje_itcp": 47.7,
+        "puntaje_banda": 47.7,
+        "peso_efectivo": 0.042
+      },
+      "error": null,
+      "solicitudes": [],
+      "segundos": 2.0
+    },
+    {
+      "indicador": "eficacia_legislativa",
+      "resultado": {
+        "valor": 14.3,
+        "aprobados_n": 2,
+        "enviados_n": 14,
+        "cohorte_desde": "2024-09-08",
+        "cohorte_hasta": "2025-09-08",
+        "dias_madurado_min": 365,
+        "unidad": "% de proyectos",
+        "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 14.3,
+        "aprobados_n": 2,
+        "enviados_n": 14,
+        "cohorte_desde": "2024-09-08",
+        "cohorte_hasta": "2025-09-08",
+        "dias_madurado_min": 365,
+        "unidad": "% de proyectos",
+        "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:03:06",
+        "en_indice": true,
+        "dimension": "poder_legislativo",
+        "puntaje_itcp": 48.6,
+        "puntaje_banda": 48.6,
+        "peso_efectivo": 0.0567
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=22b2d52c-7a0e-426b-ac0a-a3326c388ba6&limit=500&offset=0&q=-PE-",
+          "status": 200,
+          "sha256": "596cfa5ed0fa74aece1fefdc6ec29b806cacd0af318d2db16c833442549d8ffa",
+          "bytes": 233364
+        },
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=22b2d52c-7a0e-426b-ac0a-a3326c388ba6&limit=500&offset=500&q=-PE-",
+          "status": 200,
+          "sha256": "c407dc002347986d03d82246daece12741d029bc3279581fefcfb2fb91c50b6c",
+          "bytes": 185773
+        },
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=22b2d52c-7a0e-426b-ac0a-a3326c388ba6&limit=500&offset=0&q=-JGM-",
+          "status": 200,
+          "sha256": "81a2b0c808f6e5e2dbd502d9f9abd57c6cc05fdf620a43a5ff5c72c5f2783d5e",
+          "bytes": 247492
+        },
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=22b2d52c-7a0e-426b-ac0a-a3326c388ba6&limit=500&offset=500&q=-JGM-",
+          "status": 200,
+          "sha256": "f08c7b1ed3f9bfc8ca0f19945d85e9d4cb56a285cebfbdfd10168df577076098",
+          "bytes": 82239
+        },
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98&limit=500&offset=0",
+          "status": 200,
+          "sha256": "84f015aa9969be186e20539ff1fe7736d0092ff3ecbbff1785fcbba3f163cae3",
+          "bytes": 119615
+        },
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98&limit=500&offset=500",
+          "status": 200,
+          "sha256": "8aac63b4d678f74f1502f5ccc3416fa32a32c385460c68a09738b8af7d193a04",
+          "bytes": 119787
+        },
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98&limit=500&offset=1000",
+          "status": 200,
+          "sha256": "a0c8ecbd57d33ddcc7f6bd0b00797b558a0fabcd039cfc7ee1a427f77da1f32d",
+          "bytes": 82090
+        }
+      ],
+      "segundos": 1.7
+    },
+    {
+      "indicador": "veto_quorum",
+      "resultado": {
+        "valor": 11.1,
+        "fracasadas_n": 1,
+        "total_n": 9,
+        "unidad": "% de sesiones",
+        "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false,
+        "detalle_txt": "1 de 9 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)"
+      },
+      "previo": {
+        "valor": 11.1,
+        "fracasadas_n": 1,
+        "total_n": 9,
+        "unidad": "% de sesiones",
+        "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
+        "fecha_dato": "2026-09-08",
+        "desactualizado": false,
+        "detalle_txt": "1 de 9 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
+        "obtenido_en": "2026-09-08T03:03:09",
+        "en_indice": true,
+        "dimension": "poder_legislativo",
+        "puntaje_itcp": 75.4,
+        "puntaje_banda": 75.4,
+        "peso_efectivo": 0.0273
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=4ac70a51-a82d-428b-966a-0a203dd0a7e3&limit=500&offset=0&q=2023",
+          "status": 200,
+          "sha256": "ea9bb045874cb4bfa27fea66c67def42079ee2f9d36d8a73a505a9fccbff5fcb",
+          "bytes": 4316
+        },
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=4ac70a51-a82d-428b-966a-0a203dd0a7e3&limit=500&offset=0&q=2024",
+          "status": 200,
+          "sha256": "a627c867b611fe3e25a509ff667c970f340426816fb70ebde304b415f638b98b",
+          "bytes": 6471
+        },
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=4ac70a51-a82d-428b-966a-0a203dd0a7e3&limit=500&offset=0&q=2025",
+          "status": 200,
+          "sha256": "a26a1e733bff3f4612e28873a26f9ddad007c007230ead5a0bbafd90fafca4d1",
+          "bytes": 5868
+        },
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=4ac70a51-a82d-428b-966a-0a203dd0a7e3&limit=500&offset=0&q=2026",
+          "status": 200,
+          "sha256": "a39daa9da6afe88c1bf3ae012d78eecd1ceee72d9e5e98d6014b4dd8d39037aa",
+          "bytes": 2564
+        }
+      ],
+      "segundos": 0.6
+    },
+    {
+      "indicador": "adhesion_reformas_provincial",
+      "resultado": {
+        "valor": 66.7,
+        "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+        "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
+        "fecha_dato": "2026-09-08",
+        "n_provincias": 16,
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 66.7,
+        "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
+        "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
+        "fecha_dato": "2026-09-08",
+        "n_provincias": 16,
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:03:14",
+        "en_indice": true,
+        "dimension": "alianzas_territoriales",
+        "puntaje_itcp": 81.7,
+        "puntaje_banda": 81.7,
+        "peso_efectivo": 0.057
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://www.magyp.gob.ar/desarrollo-foresto-industrial/provincias-adheridas.php",
+          "status": 200,
+          "sha256": "1aeacba91b3a78b8c06f27360c793b53e5731f6b6c583d661ae79189f22153f3",
+          "bytes": 21911
+        }
+      ],
+      "segundos": 0.1
+    },
+    {
+      "indicador": "velocidad_resolucion",
+      "resultado": {
+        "valor": 45.4,
+        "unidad": "% de expedientes resueltos sobre ingresados",
+        "fuente": "CSJN — anuario estadístico (sistema de gestión judicial)",
+        "fecha_dato": "2025-12-31",
+        "desactualizado": false,
+        "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula."
+      },
+      "previo": {
+        "valor": 45.4,
+        "unidad": "% de expedientes resueltos sobre ingresados",
+        "fuente": "CSJN — anuario estadístico (sistema de gestión judicial)",
+        "fecha_dato": "2025-12-31",
+        "desactualizado": false,
+        "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
+        "obtenido_en": "2026-09-08T03:04:37",
+        "en_indice": true,
+        "dimension": "poder_judicial",
+        "puntaje_itcp": 94.6,
+        "puntaje_banda": 94.6,
+        "peso_efectivo": 0.0375
+      },
+      "error": null,
+      "solicitudes": [],
+      "segundos": 0.0
+    },
+    {
+      "indicador": "iaf_transferencias",
+      "resultado": {
+        "valor": 1.6,
+        "var_nominal_pct": 43.1,
+        "total_ref_mm": 60.0,
+        "total_ant_mm": 42.0,
+        "periodo": "2025 vs 2024",
+        "ipc_aplicado_pct": 40.8,
+        "unidad": "% interanual real",
+        "fuente": "Sec. Hacienda — RON, planilla mensual consolidada + IPC INDEC (deflactado mes a mes)",
+        "detalle_txt": "2025: +43.1% nominal contra un deflactor de 40.8% ponderado por el flujo de cada mes → +1.6% real",
+        "fecha_dato": "2025-12-31",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 1.6,
+        "var_nominal_pct": 43.1,
+        "total_ref_mm": 60.0,
+        "total_ant_mm": 42.0,
+        "periodo": "2025 vs 2024",
+        "ipc_aplicado_pct": 40.8,
+        "unidad": "% interanual real",
+        "fuente": "Sec. Hacienda — RON, planilla mensual consolidada + IPC INDEC (deflactado mes a mes)",
+        "detalle_txt": "2025: +43.1% nominal contra un deflactor de 40.8% ponderado por el flujo de cada mes → +1.6% real",
+        "fecha_dato": "2025-12-31",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:02:58",
+        "en_indice": true,
+        "dimension": "alianzas_territoriales",
+        "puntaje_itcp": 78.2,
+        "puntaje_banda": 78.2,
+        "peso_efectivo": 0.076
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://www.argentina.gob.ar/economia/sechacienda/asuntosprovinciales/ron",
+          "status": 200,
+          "sha256": "bbf4ef68d1d52ba3574593809f6520f60d04593b6cb6e9e70176acebac546a13",
+          "bytes": 46667
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada_2016.xls",
+          "status": 200,
+          "sha256": "40efe4fba27d4db45cc8f715069fb9238728f3131733cf12599a7bf6f9982724",
+          "bytes": 376832
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada_2017.xls",
+          "status": 200,
+          "sha256": "cb1b60cf70499c16935864085a85377b65cfc666cd05e821c0463a816798c632",
+          "bytes": 410624
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada_2018.xls",
+          "status": 200,
+          "sha256": "0f250ab785efac6b8a5f35f5d966c4a75762a83dffffee77b024bf24dac645e0",
+          "bytes": 474112
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada_2019.xls",
+          "status": 200,
+          "sha256": "df79a0124bd33c2736659fbe0ccff0640ebb0d68c4c2f5a951d40b0ac33da9cf",
+          "bytes": 515072
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada_2020.xls",
+          "status": 200,
+          "sha256": "234e31be6546b81d15034bb1a21469887ed17dbb590beb58f44a6bd427341de5",
+          "bytes": 527872
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada_2021.xls",
+          "status": 200,
+          "sha256": "54c7a9f52757978be502945577bda5b8ee9cfa27aadc8545453d83c6f0dd1f52",
+          "bytes": 593408
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada_2022.xls",
+          "status": 200,
+          "sha256": "8fce90d4df18ed839b7972ba7a2ea4d8dff9f482c362306118f5ecf8fc4a6f93",
+          "bytes": 603648
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada_2023.xls",
+          "status": 200,
+          "sha256": "f84a00600951cf83d1f00e7caec0e3f44400bdf4a58fb949c8265812daf0f9d8",
+          "bytes": 572416
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada_2024.xlsx",
+          "status": 200,
+          "sha256": "d3769235fc6f04325f0b9b61ca31f5f536ff857dcbec86df446b44fccbec2e2b",
+          "bytes": 437217
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada2025_5.xlsx",
+          "status": 200,
+          "sha256": "78f1f3bd2d8f2c86fd558d103cf892e03b77739af53650c8014d8f252ac14cda",
+          "bytes": 486090
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/informacion_consolidada_2026_5.xlsx",
+          "status": 200,
+          "sha256": "bad6d03c65806c5db4dc4d4ba8f06d3c0f0efee22d315d25555968b3653ae20c",
+          "bytes": 370781
+        },
+        {
+          "url": "https://apis.datos.gob.ar/series/api/series/?ids=148.3_INIVELNAL_DICI_M_26&format=json&limit=1000&sort=desc",
+          "status": 200,
+          "sha256": "f374243a66f2243f3970ef1c37661483731e57670bd24b20975ae499d6e26419",
+          "bytes": 4254
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
+          "status": 200,
+          "sha256": "03fe25c279b8454034860cae76feace703754d16db1d797a887506a211971bac",
+          "bytes": 904152
+        }
+      ],
+      "segundos": 2.7
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "fecha": "2026-09-08",
+  "tarjeta": {
+    "valor": 2.1,
+    "unidad": "% variación juicios SRT (12m vs 12m previos)",
+    "fuente": "SRT — Serie histórica de litigiosidad",
+    "fecha_dato": "2026-05-01",
+    "desactualizado": false,
+    "juicios_12m": 127363,
+    "detalle_txt": "127.363 juicios en 12m (hasta 2026-05) vs 124.767 previos"
+  },
+  "ultimo_serie": [
+    "2026-05-01",
+    2.1
+  ],
+  "n_puntos": 60,
+  "portal": "https://www.srt.gob.ar/estadisticas/lit_ultimos_datos.php",
+  "sha256_portal": "29a898215b2c5fbce6a78fb026460481c5d49c38e7da0dfc0394d03e189c67b8",
+  "periodo_portal": "Mayo 2026",
+  "nota": "La tabla mensual del portal no es la variación acumulada 12m/12m: se coteja la vigencia, y la fórmula se reproduce en la planilla.",
+  "contraste_mes_aislado": {
+    "mayo_2026": 10699,
+    "mayo_2025": 11937,
+    "variacion_interanual": -10.4,
+    "lectura": "Mayo aislado cae aunque el acumulado móvil de doce meses aumenta. Son ventanas distintas, no valores incompatibles."
+  }
+}

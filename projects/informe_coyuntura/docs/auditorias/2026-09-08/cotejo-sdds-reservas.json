@@ -1,0 +1,20 @@
+{
+  "consulta": "2026-09-08",
+  "url": "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/temp0726.pdf",
+  "sha256": "5a7ef60bed7e9fe8fc728a96e4685112476700debe57d824683695bb00c0a28a",
+  "fecha_dato": "2026-07-31",
+  "brutas": 47599.19,
+  "ii1": -20028.36,
+  "ii2": -19253.56,
+  "ii3": -2497.51,
+  "ii1_tramo_mas_3m_hasta_1a": -2536.78,
+  "tesoro_nota_c": 3605.58,
+  "calculo_cigob": 11962.12,
+  "hallazgo": "Tramo por vencimiento no identifica instrumento; no prueba BOPREAL ni libre disponibilidad. La nota c concilia Tesoro. Dato numérico reproducible no certifica el constructo.",
+  "pendientes": [
+    "Conciliar por instrumento la exclusión que ADR-0005 llamó BOPREAL.",
+    "Verificar respaldo: config_fallback no suma el mismo tramo y actualmente lo presenta fresco si coincide el mes.",
+    "Corregir comentarios heredados del colector junto con la resolución del cálculo de respaldo."
+  ],
+  "correccion_publica": "ADR-0286; formula, sumandos, descripción y ficha sin afirmar identidad de instrumento ni libre disponibilidad."
+}

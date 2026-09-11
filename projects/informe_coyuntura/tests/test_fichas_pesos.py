@@ -144,8 +144,9 @@ def test_las_fichas_renderizadas_declaran_la_composicion_vigente():
             cuerpo = ARCHIVOS_FICHAS[cinturon].read_text(encoding="utf-8")
             n_ind = sum(len(d.get("indicadores") or {})
                         for d in idx["dimensiones"].values())
-            if f"| {n_ind} indicadores:" not in cuerpo:
-                problemas.append(f"{clave}: no declara {n_ind} indicadores")
+            if f"| {len(c['indicadores'])} indicadores:" not in cuerpo:
+                problemas.append(f"{clave}: no declara sus indicadores publicados")
+            assert f"Componentes que puntúan en este corte: {n_ind} de {len(c['indicadores'])} publicados." in cuerpo
             for dimension in idx["dimensiones"].values():
                 if f"| {dimension['nombre']} |" not in cuerpo:
                     problemas.append(

@@ -1,0 +1,313 @@
+{
+  "metodo": "Contribución exacta de dimensión: puntaje redondeado que utiliza el motor por peso nominal dividido por pesos de dimensiones presentes. La suma reproduce el índice antes de su redondeo final. El delta común recalcula ambos meses sólo con componentes presentes en los dos; es una comprobación de cobertura, no descomposición causal.",
+  "meses": [
+    {
+      "mes": "2026-01",
+      "anterior": 63.1,
+      "actual": 65.7,
+      "delta": 2.6,
+      "delta_componentes_comunes": 3.6,
+      "entran": [],
+      "salen": [
+        "iaf_transferencias"
+      ],
+      "dominantes": [
+        {
+          "mes": "2026-01",
+          "dimension": "cohesion_interna",
+          "aporte_previo": 10.995,
+          "aporte_actual": 15.0,
+          "cambio_aporte": 4.005,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-01",
+          "dimension": "alianzas_territoriales",
+          "aporte_previo": 13.357,
+          "aporte_actual": 12.179,
+          "cambio_aporte": -1.178,
+          "entran": "",
+          "salen": "iaf_transferencias"
+        },
+        {
+          "mes": "2026-01",
+          "dimension": "conflicto_social",
+          "aporte_previo": 10.0,
+          "aporte_actual": 9.4,
+          "cambio_aporte": -0.6,
+          "entran": "",
+          "salen": ""
+        }
+      ]
+    },
+    {
+      "mes": "2026-02",
+      "anterior": 65.7,
+      "actual": 64.7,
+      "delta": -1.0,
+      "delta_componentes_comunes": -1.0,
+      "entran": [],
+      "salen": [],
+      "dominantes": [
+        {
+          "mes": "2026-02",
+          "dimension": "alianzas_territoriales",
+          "aporte_previo": 12.179,
+          "aporte_actual": 10.507,
+          "cambio_aporte": -1.672,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-02",
+          "dimension": "conflicto_social",
+          "aporte_previo": 9.4,
+          "aporte_actual": 10.0,
+          "cambio_aporte": 0.6,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-02",
+          "dimension": "poder_legislativo",
+          "aporte_previo": 7.434,
+          "aporte_actual": 7.623,
+          "cambio_aporte": 0.189,
+          "entran": "",
+          "salen": ""
+        }
+      ]
+    },
+    {
+      "mes": "2026-03",
+      "anterior": 64.7,
+      "actual": 66.9,
+      "delta": 2.2,
+      "delta_componentes_comunes": 2.2,
+      "entran": [],
+      "salen": [],
+      "dominantes": [
+        {
+          "mes": "2026-03",
+          "dimension": "alianzas_territoriales",
+          "aporte_previo": 10.507,
+          "aporte_actual": 12.293,
+          "cambio_aporte": 1.786,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-03",
+          "dimension": "poder_legislativo",
+          "aporte_previo": 7.623,
+          "aporte_actual": 8.4,
+          "cambio_aporte": 0.777,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-03",
+          "dimension": "poder_judicial",
+          "aporte_previo": 4.455,
+          "aporte_actual": 4.065,
+          "cambio_aporte": -0.39,
+          "entran": "",
+          "salen": ""
+        }
+      ]
+    },
+    {
+      "mes": "2026-04",
+      "anterior": 66.9,
+      "actual": 62.6,
+      "delta": -4.3,
+      "delta_componentes_comunes": -4.3,
+      "entran": [],
+      "salen": [],
+      "dominantes": [
+        {
+          "mes": "2026-04",
+          "dimension": "conflicto_social",
+          "aporte_previo": 9.94,
+          "aporte_actual": 7.52,
+          "cambio_aporte": -2.42,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-04",
+          "dimension": "imagen_voto",
+          "aporte_previo": 6.643,
+          "aporte_actual": 5.516,
+          "cambio_aporte": -1.127,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-04",
+          "dimension": "poder_legislativo",
+          "aporte_previo": 8.4,
+          "aporte_actual": 7.476,
+          "cambio_aporte": -0.924,
+          "entran": "",
+          "salen": ""
+        }
+      ]
+    },
+    {
+      "mes": "2026-05",
+      "anterior": 62.6,
+      "actual": 67.4,
+      "delta": 4.8,
+      "delta_componentes_comunes": 4.8,
+      "entran": [],
+      "salen": [],
+      "dominantes": [
+        {
+          "mes": "2026-05",
+          "dimension": "alianzas_territoriales",
+          "aporte_previo": 12.673,
+          "aporte_actual": 18.278,
+          "cambio_aporte": 5.605,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-05",
+          "dimension": "conflicto_social",
+          "aporte_previo": 7.52,
+          "aporte_actual": 6.59,
+          "cambio_aporte": -0.93,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-05",
+          "dimension": "poder_legislativo",
+          "aporte_previo": 7.476,
+          "aporte_actual": 8.085,
+          "cambio_aporte": 0.609,
+          "entran": "",
+          "salen": ""
+        }
+      ]
+    },
+    {
+      "mes": "2026-06",
+      "anterior": 67.4,
+      "actual": 68.4,
+      "delta": 1.0,
+      "delta_componentes_comunes": 3.3,
+      "entran": [],
+      "salen": [
+        "jornadas_individuales_no_trabajadas_12m"
+      ],
+      "dominantes": [
+        {
+          "mes": "2026-06",
+          "dimension": "poder_legislativo",
+          "aporte_previo": 8.085,
+          "aporte_actual": 10.353,
+          "cambio_aporte": 2.268,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-06",
+          "dimension": "conflicto_social",
+          "aporte_previo": 6.59,
+          "aporte_actual": 4.89,
+          "cambio_aporte": -1.7,
+          "entran": "",
+          "salen": "jornadas_individuales_no_trabajadas_12m"
+        },
+        {
+          "mes": "2026-06",
+          "dimension": "poder_judicial",
+          "aporte_previo": 3.885,
+          "aporte_actual": 5.505,
+          "cambio_aporte": 1.62,
+          "entran": "",
+          "salen": ""
+        }
+      ]
+    },
+    {
+      "mes": "2026-07",
+      "anterior": 68.4,
+      "actual": 67.9,
+      "delta": -0.5,
+      "delta_componentes_comunes": -0.5,
+      "entran": [],
+      "salen": [],
+      "dominantes": [
+        {
+          "mes": "2026-07",
+          "dimension": "poder_legislativo",
+          "aporte_previo": 10.353,
+          "aporte_actual": 9.408,
+          "cambio_aporte": -0.945,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-07",
+          "dimension": "conflicto_social",
+          "aporte_previo": 4.89,
+          "aporte_actual": 5.25,
+          "cambio_aporte": 0.36,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-07",
+          "dimension": "sector_privado",
+          "aporte_previo": 9.802,
+          "aporte_actual": 9.464,
+          "cambio_aporte": -0.338,
+          "entran": "",
+          "salen": ""
+        }
+      ]
+    },
+    {
+      "mes": "2026-08",
+      "anterior": 67.9,
+      "actual": 68.2,
+      "delta": 0.3,
+      "delta_componentes_comunes": 0.3,
+      "entran": [],
+      "salen": [],
+      "dominantes": [
+        {
+          "mes": "2026-08",
+          "dimension": "poder_legislativo",
+          "aporte_previo": 9.408,
+          "aporte_actual": 11.298,
+          "cambio_aporte": 1.89,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-08",
+          "dimension": "alianzas_territoriales",
+          "aporte_previo": 18.278,
+          "aporte_actual": 16.397,
+          "cambio_aporte": -1.881,
+          "entran": "",
+          "salen": ""
+        },
+        {
+          "mes": "2026-08",
+          "dimension": "cohesion_interna",
+          "aporte_previo": 14.505,
+          "aporte_actual": 15.0,
+          "cambio_aporte": 0.495,
+          "entran": "",
+          "salen": ""
+        }
+      ]
+    }
+  ]
+}

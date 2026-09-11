@@ -1,0 +1,708 @@
+{
+  "julio_vigente": {
+    "valor": 60.4,
+    "banda": "moderadamente_aflojado",
+    "banda_legible": "Moderadamente aflojado",
+    "dimensiones": {
+      "estabilidad_monetaria": {
+        "nombre": "Estabilidad monetaria-inflacionaria",
+        "peso": 0.26,
+        "puntaje": 68.4,
+        "indicadores": {
+          "ipc_total": {
+            "peso": 0.6,
+            "puntaje_banda": 72.8,
+            "puntaje_aplicado": 72.8,
+            "valor": 2.11,
+            "peso_efectivo": 0.156
+          },
+          "rem_ipc_12m": {
+            "peso": 0.2,
+            "puntaje_banda": 81.9,
+            "puntaje_aplicado": 81.9,
+            "valor": 21.8,
+            "peso_efectivo": 0.052
+          },
+          "desequilibrio_monetario": {
+            "peso": 0.2,
+            "puntaje_banda": 41.7,
+            "puntaje_aplicado": 41.7,
+            "valor": 58.27,
+            "peso_efectivo": 0.052
+          }
+        },
+        "peso_efectivo": 0.26
+      },
+      "viabilidad_fiscal_comercial": {
+        "nombre": "Viabilidad fiscal-comercial",
+        "peso": 0.24,
+        "puntaje": 82.7,
+        "indicadores": {
+          "resultado_primario": {
+            "peso": 0.5,
+            "puntaje_banda": 84.8,
+            "puntaje_aplicado": 84.8,
+            "valor": 5.96,
+            "peso_efectivo": 0.12
+          },
+          "recaudacion": {
+            "peso": 0.3,
+            "puntaje_banda": 77.7,
+            "puntaje_aplicado": 77.7,
+            "valor": 102.1,
+            "peso_efectivo": 0.072
+          },
+          "saldo_comercial_12m": {
+            "peso": 0.2,
+            "puntaje_banda": 85.0,
+            "puntaje_aplicado": 85.0,
+            "valor": 23730.7885,
+            "peso_efectivo": 0.048
+          }
+        },
+        "peso_efectivo": 0.24
+      },
+      "financiamiento": {
+        "nombre": "Capacidad y costo del financiamiento",
+        "peso": 0.16,
+        "puntaje": 64.1,
+        "indicadores": {
+          "reservas_bcra": {
+            "peso": 0.34,
+            "puntaje_banda": 67.8,
+            "puntaje_aplicado": 67.8,
+            "valor": 11962.0,
+            "peso_efectivo": 0.0544
+          },
+          "idc": {
+            "peso": 0.21,
+            "puntaje_banda": 49.0,
+            "puntaje_aplicado": 49.0,
+            "valor": -0.33,
+            "peso_efectivo": 0.0336
+          },
+          "costo_financiamiento_tesoro": {
+            "peso": 0.25,
+            "puntaje_banda": 95.3,
+            "puntaje_aplicado": 95.3,
+            "valor": 4.13,
+            "peso_efectivo": 0.04
+          },
+          "credito_privado": {
+            "peso": 0.2,
+            "puntaje_banda": 34.8,
+            "puntaje_aplicado": 34.8,
+            "valor": -0.6,
+            "peso_efectivo": 0.032
+          }
+        },
+        "peso_efectivo": 0.16
+      },
+      "actividad": {
+        "nombre": "Actividad económica",
+        "peso": 0.11,
+        "puntaje": 25.4,
+        "indicadores": {
+          "ipi_manufacturero": {
+            "peso": 0.2,
+            "puntaje_banda": 25.4,
+            "puntaje_aplicado": 25.4,
+            "valor": -2.82,
+            "peso_efectivo": 0.11
+          }
+        },
+        "peso_efectivo": 0.11
+      },
+      "competitividad_externa": {
+        "nombre": "Competitividad externa",
+        "peso": 0.11,
+        "puntaje": 48.7,
+        "indicadores": {
+          "tcrm": {
+            "peso": 1.0,
+            "puntaje_banda": 48.7,
+            "puntaje_aplicado": 48.7,
+            "valor": 85.49,
+            "peso_efectivo": 0.11
+          }
+        },
+        "peso_efectivo": 0.11
+      },
+      "inversion": {
+        "nombre": "Inversión",
+        "peso": 0.12,
+        "puntaje": 36.4,
+        "indicadores": {
+          "iai": {
+            "peso": 1.0,
+            "puntaje_banda": 36.4,
+            "puntaje_aplicado": 36.4,
+            "valor": -5.66,
+            "peso_efectivo": 0.12
+          }
+        },
+        "peso_efectivo": 0.12
+      }
+    },
+    "ajustes_aplicados": []
+  },
+  "julio_sin_inversion": {
+    "valor": 63.7,
+    "banda": "moderadamente_aflojado",
+    "banda_legible": "Moderadamente aflojado",
+    "dimensiones": {
+      "estabilidad_monetaria": {
+        "nombre": "Estabilidad monetaria-inflacionaria",
+        "peso": 0.26,
+        "puntaje": 68.4,
+        "indicadores": {
+          "ipc_total": {
+            "peso": 0.6,
+            "puntaje_banda": 72.8,
+            "puntaje_aplicado": 72.8,
+            "valor": 2.11,
+            "peso_efectivo": 0.1773
+          },
+          "rem_ipc_12m": {
+            "peso": 0.2,
+            "puntaje_banda": 81.9,
+            "puntaje_aplicado": 81.9,
+            "valor": 21.8,
+            "peso_efectivo": 0.0591
+          },
+          "desequilibrio_monetario": {
+            "peso": 0.2,
+            "puntaje_banda": 41.7,
+            "puntaje_aplicado": 41.7,
+            "valor": 58.27,
+            "peso_efectivo": 0.0591
+          }
+        },
+        "peso_efectivo": 0.2955
+      },
+      "viabilidad_fiscal_comercial": {
+        "nombre": "Viabilidad fiscal-comercial",
+        "peso": 0.24,
+        "puntaje": 82.7,
+        "indicadores": {
+          "resultado_primario": {
+            "peso": 0.5,
+            "puntaje_banda": 84.8,
+            "puntaje_aplicado": 84.8,
+            "valor": 5.96,
+            "peso_efectivo": 0.1364
+          },
+          "recaudacion": {
+            "peso": 0.3,
+            "puntaje_banda": 77.7,
+            "puntaje_aplicado": 77.7,
+            "valor": 102.1,
+            "peso_efectivo": 0.0818
+          },
+          "saldo_comercial_12m": {
+            "peso": 0.2,
+            "puntaje_banda": 85.0,
+            "puntaje_aplicado": 85.0,
+            "valor": 23730.7885,
+            "peso_efectivo": 0.0545
+          }
+        },
+        "peso_efectivo": 0.2727
+      },
+      "financiamiento": {
+        "nombre": "Capacidad y costo del financiamiento",
+        "peso": 0.16,
+        "puntaje": 64.1,
+        "indicadores": {
+          "reservas_bcra": {
+            "peso": 0.34,
+            "puntaje_banda": 67.8,
+            "puntaje_aplicado": 67.8,
+            "valor": 11962.0,
+            "peso_efectivo": 0.0618
+          },
+          "idc": {
+            "peso": 0.21,
+            "puntaje_banda": 49.0,
+            "puntaje_aplicado": 49.0,
+            "valor": -0.33,
+            "peso_efectivo": 0.0382
+          },
+          "costo_financiamiento_tesoro": {
+            "peso": 0.25,
+            "puntaje_banda": 95.3,
+            "puntaje_aplicado": 95.3,
+            "valor": 4.13,
+            "peso_efectivo": 0.0455
+          },
+          "credito_privado": {
+            "peso": 0.2,
+            "puntaje_banda": 34.8,
+            "puntaje_aplicado": 34.8,
+            "valor": -0.6,
+            "peso_efectivo": 0.0364
+          }
+        },
+        "peso_efectivo": 0.1818
+      },
+      "actividad": {
+        "nombre": "Actividad económica",
+        "peso": 0.11,
+        "puntaje": 25.4,
+        "indicadores": {
+          "ipi_manufacturero": {
+            "peso": 0.2,
+            "puntaje_banda": 25.4,
+            "puntaje_aplicado": 25.4,
+            "valor": -2.82,
+            "peso_efectivo": 0.125
+          }
+        },
+        "peso_efectivo": 0.125
+      },
+      "competitividad_externa": {
+        "nombre": "Competitividad externa",
+        "peso": 0.11,
+        "puntaje": 48.7,
+        "indicadores": {
+          "tcrm": {
+            "peso": 1.0,
+            "puntaje_banda": 48.7,
+            "puntaje_aplicado": 48.7,
+            "valor": 85.49,
+            "peso_efectivo": 0.125
+          }
+        },
+        "peso_efectivo": 0.125
+      }
+    },
+    "ajustes_aplicados": []
+  },
+  "julio_sin_inversion_ni_ipi": {
+    "valor": 69.1,
+    "banda": "moderadamente_aflojado",
+    "banda_legible": "Moderadamente aflojado",
+    "dimensiones": {
+      "estabilidad_monetaria": {
+        "nombre": "Estabilidad monetaria-inflacionaria",
+        "peso": 0.26,
+        "puntaje": 68.4,
+        "indicadores": {
+          "ipc_total": {
+            "peso": 0.6,
+            "puntaje_banda": 72.8,
+            "puntaje_aplicado": 72.8,
+            "valor": 2.11,
+            "peso_efectivo": 0.2026
+          },
+          "rem_ipc_12m": {
+            "peso": 0.2,
+            "puntaje_banda": 81.9,
+            "puntaje_aplicado": 81.9,
+            "valor": 21.8,
+            "peso_efectivo": 0.0675
+          },
+          "desequilibrio_monetario": {
+            "peso": 0.2,
+            "puntaje_banda": 41.7,
+            "puntaje_aplicado": 41.7,
+            "valor": 58.27,
+            "peso_efectivo": 0.0675
+          }
+        },
+        "peso_efectivo": 0.3377
+      },
+      "viabilidad_fiscal_comercial": {
+        "nombre": "Viabilidad fiscal-comercial",
+        "peso": 0.24,
+        "puntaje": 82.7,
+        "indicadores": {
+          "resultado_primario": {
+            "peso": 0.5,
+            "puntaje_banda": 84.8,
+            "puntaje_aplicado": 84.8,
+            "valor": 5.96,
+            "peso_efectivo": 0.1558
+          },
+          "recaudacion": {
+            "peso": 0.3,
+            "puntaje_banda": 77.7,
+            "puntaje_aplicado": 77.7,
+            "valor": 102.1,
+            "peso_efectivo": 0.0935
+          },
+          "saldo_comercial_12m": {
+            "peso": 0.2,
+            "puntaje_banda": 85.0,
+            "puntaje_aplicado": 85.0,
+            "valor": 23730.7885,
+            "peso_efectivo": 0.0623
+          }
+        },
+        "peso_efectivo": 0.3117
+      },
+      "financiamiento": {
+        "nombre": "Capacidad y costo del financiamiento",
+        "peso": 0.16,
+        "puntaje": 64.1,
+        "indicadores": {
+          "reservas_bcra": {
+            "peso": 0.34,
+            "puntaje_banda": 67.8,
+            "puntaje_aplicado": 67.8,
+            "valor": 11962.0,
+            "peso_efectivo": 0.0706
+          },
+          "idc": {
+            "peso": 0.21,
+            "puntaje_banda": 49.0,
+            "puntaje_aplicado": 49.0,
+            "valor": -0.33,
+            "peso_efectivo": 0.0436
+          },
+          "costo_financiamiento_tesoro": {
+            "peso": 0.25,
+            "puntaje_banda": 95.3,
+            "puntaje_aplicado": 95.3,
+            "valor": 4.13,
+            "peso_efectivo": 0.0519
+          },
+          "credito_privado": {
+            "peso": 0.2,
+            "puntaje_banda": 34.8,
+            "puntaje_aplicado": 34.8,
+            "valor": -0.6,
+            "peso_efectivo": 0.0416
+          }
+        },
+        "peso_efectivo": 0.2078
+      },
+      "competitividad_externa": {
+        "nombre": "Competitividad externa",
+        "peso": 0.11,
+        "puntaje": 48.7,
+        "indicadores": {
+          "tcrm": {
+            "peso": 1.0,
+            "puntaje_banda": 48.7,
+            "puntaje_aplicado": 48.7,
+            "valor": 85.49,
+            "peso_efectivo": 0.1429
+          }
+        },
+        "peso_efectivo": 0.1429
+      }
+    },
+    "ajustes_aplicados": []
+  },
+  "junio_comunes": {
+    "valor": 61.3,
+    "banda": "moderadamente_aflojado",
+    "banda_legible": "Moderadamente aflojado",
+    "dimensiones": {
+      "estabilidad_monetaria": {
+        "nombre": "Estabilidad monetaria-inflacionaria",
+        "peso": 0.26,
+        "puntaje": 75.0,
+        "indicadores": {
+          "ipc_total": {
+            "peso": 0.6,
+            "puntaje_banda": 77.2,
+            "puntaje_aplicado": 77.2,
+            "valor": 1.89,
+            "peso_efectivo": 0.156
+          },
+          "rem_ipc_12m": {
+            "peso": 0.2,
+            "puntaje_banda": 81.2,
+            "puntaje_aplicado": 81.2,
+            "valor": 22.3,
+            "peso_efectivo": 0.052
+          },
+          "desequilibrio_monetario": {
+            "peso": 0.2,
+            "puntaje_banda": 62.0,
+            "puntaje_aplicado": 62.0,
+            "valor": 37.98,
+            "peso_efectivo": 0.052
+          }
+        },
+        "peso_efectivo": 0.26
+      },
+      "viabilidad_fiscal_comercial": {
+        "nombre": "Viabilidad fiscal-comercial",
+        "peso": 0.24,
+        "puntaje": 71.0,
+        "indicadores": {
+          "resultado_primario": {
+            "peso": 0.5,
+            "puntaje_banda": 82.2,
+            "puntaje_aplicado": 82.2,
+            "valor": 5.55,
+            "peso_efectivo": 0.12
+          },
+          "recaudacion": {
+            "peso": 0.3,
+            "puntaje_banda": 43.0,
+            "puntaje_aplicado": 43.0,
+            "valor": 88.2,
+            "peso_efectivo": 0.072
+          },
+          "saldo_comercial_12m": {
+            "peso": 0.2,
+            "puntaje_banda": 85.0,
+            "puntaje_aplicado": 85.0,
+            "valor": 22522.4889,
+            "peso_efectivo": 0.048
+          }
+        },
+        "peso_efectivo": 0.24
+      },
+      "financiamiento": {
+        "nombre": "Capacidad y costo del financiamiento",
+        "peso": 0.16,
+        "puntaje": 55.3,
+        "indicadores": {
+          "reservas_bcra": {
+            "peso": 0.34,
+            "puntaje_banda": 39.5,
+            "puntaje_aplicado": 39.5,
+            "valor": 4885.0,
+            "peso_efectivo": 0.0544
+          },
+          "idc": {
+            "peso": 0.21,
+            "puntaje_banda": 52.0,
+            "puntaje_aplicado": 52.0,
+            "valor": -0.24,
+            "peso_efectivo": 0.0336
+          },
+          "costo_financiamiento_tesoro": {
+            "peso": 0.25,
+            "puntaje_banda": 92.0,
+            "puntaje_aplicado": 92.0,
+            "valor": 4.93,
+            "peso_efectivo": 0.04
+          },
+          "credito_privado": {
+            "peso": 0.2,
+            "puntaje_banda": 39.9,
+            "puntaje_aplicado": 39.9,
+            "valor": 1.7,
+            "peso_efectivo": 0.032
+          }
+        },
+        "peso_efectivo": 0.16
+      },
+      "actividad": {
+        "nombre": "Actividad económica",
+        "peso": 0.11,
+        "puntaje": 32.1,
+        "indicadores": {
+          "ipi_manufacturero": {
+            "peso": 0.2,
+            "puntaje_banda": 32.1,
+            "puntaje_aplicado": 32.1,
+            "valor": -1.99,
+            "peso_efectivo": 0.11
+          }
+        },
+        "peso_efectivo": 0.11
+      },
+      "competitividad_externa": {
+        "nombre": "Competitividad externa",
+        "peso": 0.11,
+        "puntaje": 47.5,
+        "indicadores": {
+          "tcrm": {
+            "peso": 1.0,
+            "puntaje_banda": 47.5,
+            "puntaje_aplicado": 47.5,
+            "valor": 84.98,
+            "peso_efectivo": 0.11
+          }
+        },
+        "peso_efectivo": 0.11
+      },
+      "inversion": {
+        "nombre": "Inversión",
+        "peso": 0.12,
+        "puntaje": 59.8,
+        "indicadores": {
+          "iai": {
+            "peso": 1.0,
+            "puntaje_banda": 59.8,
+            "puntaje_aplicado": 59.8,
+            "valor": -0.06,
+            "peso_efectivo": 0.12
+          }
+        },
+        "peso_efectivo": 0.12
+      }
+    },
+    "ajustes_aplicados": []
+  },
+  "julio_comunes": {
+    "valor": 60.4,
+    "banda": "moderadamente_aflojado",
+    "banda_legible": "Moderadamente aflojado",
+    "dimensiones": {
+      "estabilidad_monetaria": {
+        "nombre": "Estabilidad monetaria-inflacionaria",
+        "peso": 0.26,
+        "puntaje": 68.4,
+        "indicadores": {
+          "ipc_total": {
+            "peso": 0.6,
+            "puntaje_banda": 72.8,
+            "puntaje_aplicado": 72.8,
+            "valor": 2.11,
+            "peso_efectivo": 0.156
+          },
+          "rem_ipc_12m": {
+            "peso": 0.2,
+            "puntaje_banda": 81.9,
+            "puntaje_aplicado": 81.9,
+            "valor": 21.8,
+            "peso_efectivo": 0.052
+          },
+          "desequilibrio_monetario": {
+            "peso": 0.2,
+            "puntaje_banda": 41.7,
+            "puntaje_aplicado": 41.7,
+            "valor": 58.27,
+            "peso_efectivo": 0.052
+          }
+        },
+        "peso_efectivo": 0.26
+      },
+      "viabilidad_fiscal_comercial": {
+        "nombre": "Viabilidad fiscal-comercial",
+        "peso": 0.24,
+        "puntaje": 82.7,
+        "indicadores": {
+          "resultado_primario": {
+            "peso": 0.5,
+            "puntaje_banda": 84.8,
+            "puntaje_aplicado": 84.8,
+            "valor": 5.96,
+            "peso_efectivo": 0.12
+          },
+          "recaudacion": {
+            "peso": 0.3,
+            "puntaje_banda": 77.7,
+            "puntaje_aplicado": 77.7,
+            "valor": 102.1,
+            "peso_efectivo": 0.072
+          },
+          "saldo_comercial_12m": {
+            "peso": 0.2,
+            "puntaje_banda": 85.0,
+            "puntaje_aplicado": 85.0,
+            "valor": 23730.7885,
+            "peso_efectivo": 0.048
+          }
+        },
+        "peso_efectivo": 0.24
+      },
+      "financiamiento": {
+        "nombre": "Capacidad y costo del financiamiento",
+        "peso": 0.16,
+        "puntaje": 64.1,
+        "indicadores": {
+          "reservas_bcra": {
+            "peso": 0.34,
+            "puntaje_banda": 67.8,
+            "puntaje_aplicado": 67.8,
+            "valor": 11962.0,
+            "peso_efectivo": 0.0544
+          },
+          "idc": {
+            "peso": 0.21,
+            "puntaje_banda": 49.0,
+            "puntaje_aplicado": 49.0,
+            "valor": -0.33,
+            "peso_efectivo": 0.0336
+          },
+          "costo_financiamiento_tesoro": {
+            "peso": 0.25,
+            "puntaje_banda": 95.3,
+            "puntaje_aplicado": 95.3,
+            "valor": 4.13,
+            "peso_efectivo": 0.04
+          },
+          "credito_privado": {
+            "peso": 0.2,
+            "puntaje_banda": 34.8,
+            "puntaje_aplicado": 34.8,
+            "valor": -0.6,
+            "peso_efectivo": 0.032
+          }
+        },
+        "peso_efectivo": 0.16
+      },
+      "actividad": {
+        "nombre": "Actividad económica",
+        "peso": 0.11,
+        "puntaje": 25.4,
+        "indicadores": {
+          "ipi_manufacturero": {
+            "peso": 0.2,
+            "puntaje_banda": 25.4,
+            "puntaje_aplicado": 25.4,
+            "valor": -2.82,
+            "peso_efectivo": 0.11
+          }
+        },
+        "peso_efectivo": 0.11
+      },
+      "competitividad_externa": {
+        "nombre": "Competitividad externa",
+        "peso": 0.11,
+        "puntaje": 48.7,
+        "indicadores": {
+          "tcrm": {
+            "peso": 1.0,
+            "puntaje_banda": 48.7,
+            "puntaje_aplicado": 48.7,
+            "valor": 85.49,
+            "peso_efectivo": 0.11
+          }
+        },
+        "peso_efectivo": 0.11
+      },
+      "inversion": {
+        "nombre": "Inversión",
+        "peso": 0.12,
+        "puntaje": 36.4,
+        "indicadores": {
+          "iai": {
+            "peso": 1.0,
+            "puntaje_banda": 36.4,
+            "puntaje_aplicado": 36.4,
+            "valor": -5.66,
+            "peso_efectivo": 0.12
+          }
+        },
+        "peso_efectivo": 0.12
+      }
+    },
+    "ajustes_aplicados": []
+  },
+  "componentes_comunes": [
+    "costo_financiamiento_tesoro",
+    "credito_privado",
+    "desequilibrio_monetario",
+    "iai",
+    "idc",
+    "ipc_total",
+    "ipi_manufacturero",
+    "recaudacion",
+    "rem_ipc_12m",
+    "reservas_bcra",
+    "resultado_primario",
+    "saldo_comercial_12m",
+    "tcrm"
+  ],
+  "metodo": "Comparaciones retrospectivas con originales revisados. Comunes exige valor no nulo en ambos meses. Las variantes de cobertura no son atribuciones causales ni información conocida en julio."
+}

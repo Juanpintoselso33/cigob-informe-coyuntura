@@ -209,9 +209,21 @@ def main() -> int:
         desactualizados = 0
         indicadores = c.get("indicadores", {})
         for ik, i in indicadores.items():
+            sin_universo_valido = (
+                ck == "politica" and ik == "bloqueo_sostenido"
+                and i.get("estado") == "sin_universo" and i.get("valor") is None
+                and i.get("desafiadas_12m") == 0 and i.get("caidas_12m") == 0
+                and i.get("sostenidas_12m") == 0 and i.get("en_indice") is False
+                and bool(i.get("detalle_txt")) and not i.get("semaforo")
+                and i.get("peso_efectivo") is None
+                and not any(k.startswith("puntaje_") for k in i))
+            if i.get("estado") == "sin_universo" and not sin_universo_valido:
+                fallas.append(f"G1 {ck}/{ik}: estado sin universo contradictorio")
             # G1 — indicador completo
             for campo in ("valor", "fecha_dato", "fuente", "unidad"):
                 if i.get(campo) in (None, ""):
+                    if campo == "valor" and sin_universo_valido:
+                        continue
                     fallas.append(f"G1 {ck}/{ik}: sin {campo}")
             # G2 — frescura
             f = _parse_fecha(i.get("fecha_dato"))
@@ -469,16 +481,16 @@ def main() -> int:
         print(f"  → {len(demorados)} fuente(s) demorada(s), ninguna falla de "
               f"integridad. El snapshot SE PUBLICA.")
         if demoradas_detalle:
-            print(f"    {len(demoradas_detalle)} card(s) con la fuente demorada. "
-                  f"«Demorada» es que el organismo todavía no publicó nada más "
-                  f"nuevo, NO que el fetch haya fallado: eso es `desactualizado`, "
-                  f"lo escribe el colector y lo vigila G2b. Son cosas distintas y "
-                  f"el estado del flag va abajo, leído del snapshot:")
+            print(f"    {len(demoradas_detalle)} card(s) con el dato demorado. "
+                  f"El rezago se calcula sobre el snapshot: no demuestra que el "
+                  f"organismo no haya publicado una edición más reciente. "
+                  f"El fallo de fetch se registra por separado en `desactualizado` "
+                  f"y lo vigila G2b. Estado del flag leído del snapshot:")
             for nombre, rezago, tope, fecha, flag in demoradas_detalle:
                 marca = ("desactualizado=true (además está en caché: lo mira G2b)"
                          if flag else
-                         "desactualizado=false — publica el último dato que "
-                         "existe, no un valor arrastrado")
+                         "desactualizado=false — sin fallo de fetch declarado; "
+                         "verificar vigencia del archivo en el organismo")
                 print(f"      · {nombre}: {fecha}, {rezago}d contra un tope de "
                       f"{tope}d · {marca}")
         if demoradas_anclas:

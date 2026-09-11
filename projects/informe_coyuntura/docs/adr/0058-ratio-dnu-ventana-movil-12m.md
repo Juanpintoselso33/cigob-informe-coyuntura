@@ -7,10 +7,13 @@ cinturon: 'politica'
 indicadores: [ratio_dnu, poder_legislativo]
 relacionado: ['0036', '0045', '0052', '0060', '0241']
 superado_parcialmente_por: ['0059']
+corregido_por: ['0307']
 ambito: 'Cinturón política · ITCP · `ratio_dnu` · dimensión `poder_legislativo`'
 ---
 
 # ADR-0058 — ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario)
+
+> Corrección del 8-sep-2026: [ADR-0307](0307-ratio-dnu-ventana-inclusiva.md) corrige el intervalo inclusivo de 366 a 365 fechas y documenta límites reales de la clasificación de InfoLeg. Las descargas originales y sus valores se conservan como evidencia histórica.
 
 ## Contexto y planteo del problema
 

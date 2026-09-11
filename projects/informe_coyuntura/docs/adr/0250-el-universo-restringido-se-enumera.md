@@ -7,6 +7,7 @@ cinturon: 'vida'
 indicadores: [trabajo_independiente]
 archivos: ['scripts/vida_cotidiana/collectors/trabajo_independiente.py', 'scripts/publicar.py', 'scripts/descargar_series.py', 'web/src/lib/datos.ts', 'tests/test_universos_declarados.py']
 relacionado: ['0219']
+corregido_por: ['0279']
 ambito: 'Cinturón vida cotidiana · ITCIS · `trabajo_independiente` · qué categorías entran al cociente y cuál no'
 origen: 'Auditoría externa de indicadores, 25-ago-2026: «excluye monotributo social tanto del numerador como del denominador, aunque el rótulo promete todo el empleo registrado SIPA»'
 ---

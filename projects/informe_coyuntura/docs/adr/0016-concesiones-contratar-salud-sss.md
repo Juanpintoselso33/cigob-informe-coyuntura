@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-02
 cinturon: 'gestion'
 archivos: ['scripts/gestion.py', 'scripts/descargar_series.py']
+relacionado: ['0278']
 ambito: '`scripts/gestion.py` · `scripts/descargar_series.py` · web'
 ---
 

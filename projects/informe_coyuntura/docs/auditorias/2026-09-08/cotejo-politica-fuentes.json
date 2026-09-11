@@ -1,0 +1,516 @@
+{
+  "fecha": "2026-09-08",
+  "metodo": "Seis colectores ejecutados con consultas reales; GET registrados con URL y hash. Coinciden valores y fechas del cache; no acredita por sí solo exhaustividad de eventos ni vigencia de registros curados.",
+  "indicadores": [
+    {
+      "indicador": "votometro_ventaja_lla",
+      "resultado": {
+        "valor": 4.3,
+        "lla_ponderado": 32.1,
+        "pj_ponderado": 27.8,
+        "n_encuestas": 9,
+        "unidad": "Puntos porcentuales",
+        "fuente": "Votómetro CIGOB",
+        "fecha_dato": "2026-07-22",
+        "desactualizado": false
+      },
+      "previo": {
+        "valor": 4.3,
+        "lla_ponderado": 32.1,
+        "pj_ponderado": 27.8,
+        "n_encuestas": 9,
+        "unidad": "Puntos porcentuales",
+        "fuente": "Votómetro CIGOB",
+        "fecha_dato": "2026-07-22",
+        "desactualizado": false,
+        "obtenido_en": "2026-09-08T03:02:17",
+        "en_indice": true,
+        "dimension": "imagen_voto",
+        "puntaje_itcp": 73.6,
+        "puntaje_banda": 73.6,
+        "peso_efectivo": 0.07
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://cigob.github.io/Votometro/",
+          "status": 200,
+          "sha256": "17f477c0b36e4cff1d75b599bf47154df634f97f7f7be164ce48fd979c87f318",
+          "bytes": 319325
+        }
+      ],
+      "segundos": 0.4
+    },
+    {
+      "indicador": "brecha_obra_publica",
+      "resultado": {
+        "valor": -1.1,
+        "unidad": "pp de brecha (obra pública − privada, 12m)",
+        "fuente": "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
+        "fecha_dato": "2026-09-01",
+        "desactualizado": false,
+        "variacion_12m": 4.9,
+        "detalle_txt": "Brecha de -1,1 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas."
+      },
+      "previo": {
+        "valor": -1.1,
+        "unidad": "pp de brecha (obra pública − privada, 12m)",
+        "fuente": "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
+        "fecha_dato": "2026-09-01",
+        "desactualizado": false,
+        "variacion_12m": 4.9,
+        "detalle_txt": "Brecha de -1,1 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
+        "obtenido_en": "2026-09-08T03:02:23",
+        "en_indice": true,
+        "dimension": "sector_privado",
+        "puntaje_itcp": 72.8,
+        "puntaje_banda": 72.8,
+        "peso_efectivo": 0.13
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_isac_2026.xls",
+          "status": 200,
+          "sha256": "e15c1ae847b6ef62541cc1df1762c145cab40b5729ad1e0081dbf1ca20628018",
+          "bytes": 781312
+        }
+      ],
+      "segundos": 0.2
+    },
+    {
+      "indicador": "produccion_legislativa",
+      "resultado": {
+        "valor": 22,
+        "unidad": "leyes sancionadas (12m)",
+        "fuente": "Cámara de Diputados — dataset de leyes sancionadas",
+        "fecha_dato": "2026-09-01",
+        "desactualizado": false,
+        "detalle_txt": "22 leyes sancionadas en los últimos 12 meses. El promedio histórico del dataset (2008-2025, cuatro presidencias) es de 74 leyes por año."
+      },
+      "previo": {
+        "valor": 22,
+        "unidad": "leyes sancionadas (12m)",
+        "fuente": "Cámara de Diputados — dataset de leyes sancionadas",
+        "fecha_dato": "2026-09-01",
+        "desactualizado": false,
+        "detalle_txt": "22 leyes sancionadas en los últimos 12 meses. El promedio histórico del dataset (2008-2025, cuatro presidencias) es de 74 leyes por año.",
+        "obtenido_en": "2026-09-08T03:04:35",
+        "en_indice": true,
+        "dimension": "poder_legislativo",
+        "puntaje_itcp": 18.0,
+        "puntaje_banda": 18.0,
+        "peso_efectivo": 0.0315
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98&limit=500&offset=0",
+          "status": 200,
+          "sha256": "84f015aa9969be186e20539ff1fe7736d0092ff3ecbbff1785fcbba3f163cae3",
+          "bytes": 119615
+        },
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98&limit=500&offset=500",
+          "status": 200,
+          "sha256": "8aac63b4d678f74f1502f5ccc3416fa32a32c385460c68a09738b8af7d193a04",
+          "bytes": 119787
+        },
+        {
+          "url": "https://datos.hcdn.gob.ar/api/3/action/datastore_search?resource_id=68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98&limit=500&offset=1000",
+          "status": 200,
+          "sha256": "a0c8ecbd57d33ddcc7f6bd0b00797b558a0fabcd039cfc7ee1a427f77da1f32d",
+          "bytes": 82090
+        }
+      ],
+      "segundos": 0.6
+    },
+    {
+      "indicador": "paralisis_denuncias",
+      "resultado": {
+        "valor": 13,
+        "unidad": "sesiones de las comisiones de control (12m)",
+        "fuente": "Consejo de la Magistratura — archivo de notas de las comisiones",
+        "fecha_dato": "2026-09-01",
+        "desactualizado": false,
+        "sesiones_12m": [
+          {
+            "fecha": "2025-11-12",
+            "comision": "acusacion",
+            "post_id": 52035,
+            "slug": "sesionaron-las-comisiones-de-administracion-y-financiera-y-de-acusacion",
+            "url": "https://consejomagistratura.gov.ar/index.php/2025/11/12/sesionaron-las-comisiones-de-administracion-y-financiera-y-de-acusacion/",
+            "tipo": "publicacion_agrupada"
+          },
+          {
+            "fecha": "2025-11-19",
+            "comision": "disciplina",
+            "post_id": 52115,
+            "slug": "sesiono-la-comision-de-disciplina-y-la-comision-de-administracion-y-financiera",
+            "url": "https://consejomagistratura.gov.ar/index.php/2025/11/19/sesiono-la-comision-de-disciplina-y-la-comision-de-administracion-y-financiera/",
+            "tipo": "sesion"
+          },
+          {
+            "fecha": "2025-11-26",
+            "comision": "disciplina",
+            "post_id": 52194,
+            "slug": "sesionaron-las-comisiones-de-disciplina-y-de-seleccion-de-magistrados-y-escuela-judicial",
+            "url": "https://consejomagistratura.gov.ar/index.php/2025/11/26/sesionaron-las-comisiones-de-disciplina-y-de-seleccion-de-magistrados-y-escuela-judicial/",
+            "tipo": "publicacion_agrupada"
+          },
+          {
+            "fecha": "2025-12-17",
+            "comision": "acusacion",
+            "post_id": 52530,
+            "slug": "sesiono-la-comision-de-acusacion-13",
+            "url": "https://consejomagistratura.gov.ar/index.php/2025/12/17/sesiono-la-comision-de-acusacion-13/",
+            "tipo": "ordinaria_numerada"
+          },
+          {
+            "fecha": "2026-02-25",
+            "comision": "acusacion",
+            "post_id": 52726,
+            "slug": "sesiono-la-comision-de-acusacion-14",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/02/25/sesiono-la-comision-de-acusacion-14/",
+            "tipo": "ordinaria_numerada"
+          },
+          {
+            "fecha": "2026-03-17",
+            "comision": "acusacion",
+            "post_id": 52924,
+            "slug": "la-comision-de-acusacion-propuso-al-plenario-acusar-a-los-jueces-lopez-y-diaz-lacava-ante-el-jurado-de-enjuiciamiento",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/03/17/la-comision-de-acusacion-propuso-al-plenario-acusar-a-los-jueces-lopez-y-diaz-lacava-ante-el-jurado-de-enjuiciamiento/",
+            "tipo": "resultado_sustantivo"
+          },
+          {
+            "fecha": "2026-04-08",
+            "comision": "disciplina",
+            "post_id": 53088,
+            "slug": "sesiono-la-comision-de-disciplina-8",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/04/08/sesiono-la-comision-de-disciplina-8/",
+            "tipo": "ordinaria_numerada"
+          },
+          {
+            "fecha": "2026-04-22",
+            "comision": "acusacion",
+            "post_id": 53237,
+            "slug": "sesionaron-las-comisiones-de-acusacion-y-de-administracion-y-se-realizo-una-nueva-reunion-conjunta-de-las-comisiones-de-seleccion-y-reglamentacion",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/04/22/sesionaron-las-comisiones-de-acusacion-y-de-administracion-y-se-realizo-una-nueva-reunion-conjunta-de-las-comisiones-de-seleccion-y-reglamentacion/",
+            "tipo": "publicacion_agrupada"
+          },
+          {
+            "fecha": "2026-05-13",
+            "comision": "disciplina",
+            "post_id": 53501,
+            "slug": "sesionaron-las-comisiones-de-seleccion-y-de-disciplina",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/05/13/sesionaron-las-comisiones-de-seleccion-y-de-disciplina/",
+            "tipo": "extraordinaria"
+          },
+          {
+            "fecha": "2026-05-28",
+            "comision": "acusacion",
+            "post_id": 53633,
+            "slug": "la-comision-de-acusacion-propone-al-plenario-iniciar-el-proceso-de-remocion-del-juez-salmain",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/05/28/la-comision-de-acusacion-propone-al-plenario-iniciar-el-proceso-de-remocion-del-juez-salmain/",
+            "tipo": "resultado_sustantivo"
+          },
+          {
+            "fecha": "2026-06-03",
+            "comision": "disciplina",
+            "post_id": 53683,
+            "slug": "sesiono-la-comision-de-disciplina-9",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/06/03/sesiono-la-comision-de-disciplina-9/",
+            "tipo": "ordinaria_numerada"
+          },
+          {
+            "fecha": "2026-07-15",
+            "comision": "acusacion",
+            "post_id": 54181,
+            "slug": "sesiono-la-comision-de-acusacion-15",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/07/15/sesiono-la-comision-de-acusacion-15/",
+            "tipo": "ordinaria_numerada"
+          },
+          {
+            "fecha": "2026-08-19",
+            "comision": "disciplina",
+            "post_id": 54446,
+            "slug": "sesiono-la-comision-de-disciplina-10",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/08/19/sesiono-la-comision-de-disciplina-10/",
+            "tipo": "ordinaria_numerada"
+          }
+        ],
+        "criterio_conjuntas": "Cada comisión que sesiona aporta un evento, aunque la nota agrupe varias comisiones o documente una sesión conjunta; fecha y comisión se deduplican. Las audiencias no cuentan.",
+        "detalle_txt": "13 sesiones de las comisiones de Acusación y Disciplina en los últimos 12 meses, incluidas ordinarias, extraordinarias y las publicadas junto con otras comisiones; las audiencias no cuentan (rango de la serie: 13 a 18, promedio 15.2)."
+      },
+      "previo": {
+        "valor": 13,
+        "unidad": "sesiones de las comisiones de control (12m)",
+        "fuente": "Consejo de la Magistratura — archivo de notas de las comisiones",
+        "fecha_dato": "2026-09-01",
+        "desactualizado": false,
+        "sesiones_12m": [
+          {
+            "fecha": "2025-11-12",
+            "comision": "acusacion",
+            "post_id": 52035,
+            "slug": "sesionaron-las-comisiones-de-administracion-y-financiera-y-de-acusacion",
+            "url": "https://consejomagistratura.gov.ar/index.php/2025/11/12/sesionaron-las-comisiones-de-administracion-y-financiera-y-de-acusacion/",
+            "tipo": "publicacion_agrupada"
+          },
+          {
+            "fecha": "2025-11-19",
+            "comision": "disciplina",
+            "post_id": 52115,
+            "slug": "sesiono-la-comision-de-disciplina-y-la-comision-de-administracion-y-financiera",
+            "url": "https://consejomagistratura.gov.ar/index.php/2025/11/19/sesiono-la-comision-de-disciplina-y-la-comision-de-administracion-y-financiera/",
+            "tipo": "sesion"
+          },
+          {
+            "fecha": "2025-11-26",
+            "comision": "disciplina",
+            "post_id": 52194,
+            "slug": "sesionaron-las-comisiones-de-disciplina-y-de-seleccion-de-magistrados-y-escuela-judicial",
+            "url": "https://consejomagistratura.gov.ar/index.php/2025/11/26/sesionaron-las-comisiones-de-disciplina-y-de-seleccion-de-magistrados-y-escuela-judicial/",
+            "tipo": "publicacion_agrupada"
+          },
+          {
+            "fecha": "2025-12-17",
+            "comision": "acusacion",
+            "post_id": 52530,
+            "slug": "sesiono-la-comision-de-acusacion-13",
+            "url": "https://consejomagistratura.gov.ar/index.php/2025/12/17/sesiono-la-comision-de-acusacion-13/",
+            "tipo": "ordinaria_numerada"
+          },
+          {
+            "fecha": "2026-02-25",
+            "comision": "acusacion",
+            "post_id": 52726,
+            "slug": "sesiono-la-comision-de-acusacion-14",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/02/25/sesiono-la-comision-de-acusacion-14/",
+            "tipo": "ordinaria_numerada"
+          },
+          {
+            "fecha": "2026-03-17",
+            "comision": "acusacion",
+            "post_id": 52924,
+            "slug": "la-comision-de-acusacion-propuso-al-plenario-acusar-a-los-jueces-lopez-y-diaz-lacava-ante-el-jurado-de-enjuiciamiento",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/03/17/la-comision-de-acusacion-propuso-al-plenario-acusar-a-los-jueces-lopez-y-diaz-lacava-ante-el-jurado-de-enjuiciamiento/",
+            "tipo": "resultado_sustantivo"
+          },
+          {
+            "fecha": "2026-04-08",
+            "comision": "disciplina",
+            "post_id": 53088,
+            "slug": "sesiono-la-comision-de-disciplina-8",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/04/08/sesiono-la-comision-de-disciplina-8/",
+            "tipo": "ordinaria_numerada"
+          },
+          {
+            "fecha": "2026-04-22",
+            "comision": "acusacion",
+            "post_id": 53237,
+            "slug": "sesionaron-las-comisiones-de-acusacion-y-de-administracion-y-se-realizo-una-nueva-reunion-conjunta-de-las-comisiones-de-seleccion-y-reglamentacion",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/04/22/sesionaron-las-comisiones-de-acusacion-y-de-administracion-y-se-realizo-una-nueva-reunion-conjunta-de-las-comisiones-de-seleccion-y-reglamentacion/",
+            "tipo": "publicacion_agrupada"
+          },
+          {
+            "fecha": "2026-05-13",
+            "comision": "disciplina",
+            "post_id": 53501,
+            "slug": "sesionaron-las-comisiones-de-seleccion-y-de-disciplina",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/05/13/sesionaron-las-comisiones-de-seleccion-y-de-disciplina/",
+            "tipo": "extraordinaria"
+          },
+          {
+            "fecha": "2026-05-28",
+            "comision": "acusacion",
+            "post_id": 53633,
+            "slug": "la-comision-de-acusacion-propone-al-plenario-iniciar-el-proceso-de-remocion-del-juez-salmain",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/05/28/la-comision-de-acusacion-propone-al-plenario-iniciar-el-proceso-de-remocion-del-juez-salmain/",
+            "tipo": "resultado_sustantivo"
+          },
+          {
+            "fecha": "2026-06-03",
+            "comision": "disciplina",
+            "post_id": 53683,
+            "slug": "sesiono-la-comision-de-disciplina-9",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/06/03/sesiono-la-comision-de-disciplina-9/",
+            "tipo": "ordinaria_numerada"
+          },
+          {
+            "fecha": "2026-07-15",
+            "comision": "acusacion",
+            "post_id": 54181,
+            "slug": "sesiono-la-comision-de-acusacion-15",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/07/15/sesiono-la-comision-de-acusacion-15/",
+            "tipo": "ordinaria_numerada"
+          },
+          {
+            "fecha": "2026-08-19",
+            "comision": "disciplina",
+            "post_id": 54446,
+            "slug": "sesiono-la-comision-de-disciplina-10",
+            "url": "https://consejomagistratura.gov.ar/index.php/2026/08/19/sesiono-la-comision-de-disciplina-10/",
+            "tipo": "ordinaria_numerada"
+          }
+        ],
+        "criterio_conjuntas": "Cada comisión que sesiona aporta un evento, aunque la nota agrupe varias comisiones o documente una sesión conjunta; fecha y comisión se deduplican. Las audiencias no cuentan.",
+        "detalle_txt": "13 sesiones de las comisiones de Acusación y Disciplina en los últimos 12 meses, incluidas ordinarias, extraordinarias y las publicadas junto con otras comisiones; las audiencias no cuentan (rango de la serie: 13 a 18, promedio 15.2).",
+        "obtenido_en": "2026-09-08T03:04:43",
+        "en_indice": true,
+        "dimension": "poder_judicial",
+        "puntaje_itcp": 10.0,
+        "puntaje_banda": 10.0,
+        "peso_efectivo": 0.0375
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://consejomagistratura.gov.ar/index.php/wp-json/wp/v2/posts?categories=129&per_page=100&page=1&_fields=id%2Cdate%2Cslug%2Clink%2Ctitle%2Ccontent",
+          "status": 200,
+          "sha256": "41b4e1864bf76151dc374f0106e9db75e2ad146eabacbc504e57509fe11b36bf",
+          "bytes": 443486
+        },
+        {
+          "url": "https://consejomagistratura.gov.ar/index.php/wp-json/wp/v2/posts?categories=130&per_page=100&page=1&_fields=id%2Cdate%2Cslug%2Clink%2Ctitle%2Ccontent",
+          "status": 200,
+          "sha256": "881f0b5a26aa201c29c453316d874331d2b37cee97f17524554ee094aeaee7f7",
+          "bytes": 298681
+        }
+      ],
+      "segundos": 2.8
+    },
+    {
+      "indicador": "cobertura_judicial",
+      "resultado": {
+        "valor": 69.63,
+        "unidad": "% de cargos de juez con juez designado",
+        "fuente": "Ministerio de Justicia — padrón de magistrados, designaciones y renuncias (datos.jus.gob.ar)",
+        "fecha_dato": "2026-09-01",
+        "desactualizado": false,
+        "cargos_con_juez": 665,
+        "cargos_totales": 955,
+        "fecha_corte": "2026-09-08",
+        "fecha_padron": "2026-06-05",
+        "padron_con_juez": 610,
+        "padron_titular": 604,
+        "padron_subrogante": 282,
+        "padron_sin_cubrir": 69,
+        "designaciones_desde_padron": 60,
+        "renuncias_desde_padron": 5,
+        "detalle_txt": "665 de 955 cargos de juez habilitados tienen juez designado al 2026-09-08 · sale del padrón al 2026-06-05 —610 de 955 no vacantes— más 60 designaciones y menos 5 renuncias posteriores · en ese padrón, los 955 cargos se repartían en 604 con titular en funciones, 282 con subrogante y 69 sin cubrir"
+      },
+      "previo": {
+        "valor": 69.63,
+        "unidad": "% de cargos de juez con juez designado",
+        "fuente": "Ministerio de Justicia — padrón de magistrados, designaciones y renuncias (datos.jus.gob.ar)",
+        "fecha_dato": "2026-09-01",
+        "desactualizado": false,
+        "cargos_con_juez": 665,
+        "cargos_totales": 955,
+        "fecha_corte": "2026-09-08",
+        "fecha_padron": "2026-06-05",
+        "padron_con_juez": 610,
+        "padron_titular": 604,
+        "padron_subrogante": 282,
+        "padron_sin_cubrir": 69,
+        "designaciones_desde_padron": 60,
+        "renuncias_desde_padron": 5,
+        "detalle_txt": "665 de 955 cargos de juez habilitados tienen juez designado al 2026-09-08 · sale del padrón al 2026-06-05 —610 de 955 no vacantes— más 60 designaciones y menos 5 renuncias posteriores · en ese padrón, los 955 cargos se repartían en 604 con titular en funciones, 282 con subrogante y 69 sin cubrir",
+        "obtenido_en": "2026-09-08T03:04:53",
+        "en_indice": true,
+        "dimension": "poder_judicial",
+        "puntaje_itcp": 51.6,
+        "puntaje_banda": 51.6,
+        "peso_efectivo": 0.075
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://datos.jus.gob.ar/api/3/action/package_search?q=Magistrados+de+la+Justicia+Federal+y+de+la+Justicia+Nacional&rows=5",
+          "status": 200,
+          "sha256": "839a65f5609a78a3a9b6b95f0426c21c118ad6139065a247ff1b9b0d878f8299",
+          "bytes": 62892
+        },
+        {
+          "url": "https://datos.jus.gob.ar/dataset/3c18d46e-729e-4973-8efd-f54cab18b7e3/resource/b12bdbb7-646f-4701-99b7-1109ce919dd5/download/magistrados-justicia-federal-nacional-jueces-20260605.csv",
+          "status": 200,
+          "sha256": "708f5791bc033c0b83c61cdbb197b1a443dfa46dc3a276913fc2a896cb1808d3",
+          "bytes": 287782
+        },
+        {
+          "url": "https://datos.jus.gob.ar/api/3/action/package_search?q=Magistrados+de+la+Justicia+Federal+y+de+la+Justicia+Nacional&rows=5",
+          "status": 200,
+          "sha256": "839a65f5609a78a3a9b6b95f0426c21c118ad6139065a247ff1b9b0d878f8299",
+          "bytes": 62892
+        },
+        {
+          "url": "https://datos.jus.gob.ar/api/3/action/package_search?q=Designaciones+de+magistrados+de+la+Justicia+Federal&rows=5",
+          "status": 200,
+          "sha256": "05f3a9373b372eeffb3a72be38ea44ce2271eb41c2ad58c88bf4731fec9a04f4",
+          "bytes": 62892
+        },
+        {
+          "url": "https://datos.jus.gob.ar/dataset/9f397011-5459-4f1c-b88e-9f48f7824e03/resource/d4fd21f4-f5c5-48f5-a12d-511981f997dc/download/magistrados-justicia-federal-nacional-designaciones-20260713.csv",
+          "status": 200,
+          "sha256": "d82a8e8783666297f908f5b08652c43f431ac2ea7ca5dfd205b3e43916694810",
+          "bytes": 1457907
+        },
+        {
+          "url": "https://datos.jus.gob.ar/api/3/action/package_search?q=Renuncias+de+magistrados+de+la+Justicia+Federal&rows=5",
+          "status": 200,
+          "sha256": "58036f7cc97ae1695c9d71c25c13553f5a5e857dfeb6fc91cc4372ea44d272a0",
+          "bytes": 62892
+        },
+        {
+          "url": "https://datos.jus.gob.ar/dataset/36c14e01-d3f6-47f3-9f12-9c25a48fe8c6/resource/e0e6483e-bc07-4c3e-a262-6095065f3e6e/download/magistrados-justicia-federal-nacional-renuncias-20260713.csv",
+          "status": 200,
+          "sha256": "38a64895f63402a152d8c987addda2805b6b2ecc36345e176237bfd0939336f8",
+          "bytes": 691211
+        }
+      ],
+      "segundos": 1.4
+    },
+    {
+      "indicador": "jornadas_individuales_no_trabajadas_12m",
+      "resultado": {
+        "valor": 4760195,
+        "unidad": "jornadas individuales no trabajadas (12m)",
+        "fuente": "Secretaría de Trabajo — Estadísticas de conflictos laborales",
+        "fecha_dato": "2026-05-01",
+        "desactualizado": false,
+        "detalle_txt": "4.760.195 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas."
+      },
+      "previo": {
+        "valor": 4760195,
+        "unidad": "jornadas individuales no trabajadas (12m)",
+        "fuente": "Secretaría de Trabajo — Estadísticas de conflictos laborales",
+        "fecha_dato": "2026-05-01",
+        "desactualizado": false,
+        "detalle_txt": "4.760.195 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
+        "obtenido_en": "2026-09-08T03:02:39",
+        "en_indice": true,
+        "dimension": "conflicto_social",
+        "puntaje_itcp": 100.0,
+        "puntaje_banda": 100.0,
+        "peso_efectivo": 0.04
+      },
+      "error": null,
+      "solicitudes": [
+        {
+          "url": "https://www.argentina.gob.ar/trabajo/estadisticas/relaciones-laborales/conflictos-laborales",
+          "status": 200,
+          "sha256": "eef56f5a5d6c79f0ccdbc8d35e58483bc507026705c833d9db3704ae9a0705be",
+          "bytes": 33358
+        },
+        {
+          "url": "https://www.argentina.gob.ar/sites/default/files/evolucion_mensual_de_la_conflictividad_laboral._datos_a_mayo_2026.xlsx",
+          "status": 200,
+          "sha256": "16cb376b59644fa6e68dc062a63cc51582fca5e35e2e48389e13e65d26730ae2",
+          "bytes": 1064606
+        }
+      ],
+      "segundos": 1.0
+    }
+  ]
+}

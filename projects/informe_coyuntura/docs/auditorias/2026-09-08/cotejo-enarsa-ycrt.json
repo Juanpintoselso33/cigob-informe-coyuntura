@@ -1,0 +1,26 @@
+{
+  "corte": "2026-09-08",
+  "alcance": "Precisión documental; sin modificación numérica.",
+  "fuentes": [
+    {
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/339739/20260320",
+      "norma": "SE 75/2026",
+      "hallazgo": "Autoriza cambio de titularidad de las cuatro sociedades hidroeléctricas; no cierra toda Enarsa."
+    },
+    {
+      "url": "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-1181-2025-416551/texto",
+      "norma": "ME 1181/2025",
+      "hallazgo": "Instruye constitución, autoridades y capital; no acredita por sí sola cumplimiento material ni venta."
+    },
+    {
+      "url": "https://www.boletinoficial.gov.ar/detalleAviso/primera/345421/20260805?anexos=1",
+      "norma": "ME 1233/2026",
+      "hallazgo": "Aprueba presupuesto y plan de acción. No es un acto de adjudicación."
+    }
+  ],
+  "pendientes": [
+    "Conciliación contable de los USD 1081M heredados y fuente de la meta de ingresos.",
+    "Exhaustividad de novedades posteriores y estado de SOFSE y Nucleoeléctrica.",
+    "Coherencia de etapas intermedias y tratamiento de matriz/filial como unidades separadas."
+  ]
+}

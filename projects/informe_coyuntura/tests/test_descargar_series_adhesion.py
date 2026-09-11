@@ -68,6 +68,7 @@ def test_fetch_adhesion_reformas_provincial_serie_sin_archivo_de_fechas_devuelve
 
 
 def test_provincias_adheridas_rigi_dedupe_filas_repetidas(monkeypatch):
+    monkeypatch.setattr(politica, "_rigi_complementarias_verificadas", lambda: set())
     class _FakeResp:
         status_code = 200
         text = (

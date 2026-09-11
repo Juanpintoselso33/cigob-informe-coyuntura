@@ -5,7 +5,7 @@
   "_ventana": {
     "desde": "2025-08-25",
     "hasta": "2026-08-25",
-    "dias": 365
+    "dias": 366
   },
   "_que_congela": "Las 48 filas que devolvia la busqueda de texto completo en la ventana auditada. Solo 37 estan tipificadas como DNU en la propia grilla; las otras 11 son decretos que MENCIONAN la frase (prorrogas de intervenciones, reglamentarios, un veto). Con 25 leyes publicadas, 37/25 = 1,48 y no 48/25 = 1,92.",
   "leyes_publicadas": 25,

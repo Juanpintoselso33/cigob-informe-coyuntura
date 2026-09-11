@@ -9,7 +9,7 @@ usan en ESTE proyecto.
   vida cotidiana, política), del marco Matusiano. Espíritu de época fue la
   quinta hasta ADR-0205.
 - **Paramétrica**: índice compuesto con reglas explícitas de agregación
-  (pesos, bandas o rebases) — ITCM, ITCG, ITVC, ITCP.
+  (pesos, bandas o rebases) — ITCM, ITCG, ITCIS, ITCP. `ITVC` es la clave interna del ITCIS.
 - **Tensión (0-10)**: la escala común de todos los cinturones; mayor = más
   tensión para el gobierno.
 - **Snapshot**: la foto congelada (`informe.json` + `series.json`) que la
@@ -31,8 +31,9 @@ usan en ESTE proyecto.
   puntaje se interpola linealmente entre los puntos medios de las bandas
   (ADR-0021).
 - **B100 / rebase**: expresar una serie como índice con 100 = su nivel en el
-  período base (4T-2023, el arranque del mandato). >100 = mejor que el
-  arranque.
+  período base declarado (habitualmente 4T-2023). La dirección depende del
+  componente y su inversión. No todos los componentes comparten base: las
+  tarifas usan umbrales de carga salarial. El agregado no es un porcentaje de bienestar.
 - **Base declarada**: cuando la fuente no midió el 4T-2023, se usa otra base
   explícita (ej. IVI: ene-2024) y se dice en la ficha.
 - **Renormalización**: si un componente no tiene dato, su peso se reparte
@@ -40,7 +41,7 @@ usan en ESTE proyecto.
   dimensiones).
 - **Winsorización (asimétrica)**: tope de 140 a los componentes B100 — un
   boom puntual no compra compensación ilimitada. Sin piso: las caídas no se
-  recortan (ADR-0033).
+  recortan (ADR-0033). Motorización es la excepción explícita al techo (ADR-0224).
 - **Dimensión crítica**: dimensión bajo el umbral crítico; se marca en rojo
   y la web avisa que el promedio del índice no la compensa (ADR-0020).
 - **Ragged edge**: cuando los insumos de un indicador de familia tienen
@@ -56,20 +57,22 @@ usan en ESTE proyecto.
   moverse el índice sin que cambie la historia (ADR-0019).
 - **Dominante (leave-one-out)**: el indicador que más arrastra el índice —
   se publica cuánto valdría el índice sin él.
-- **Par propio**: el ancla externa de cada índice (ITCM↔riesgo país,
-  ITCG↔Merval USD, ITVC↔ICC, ITCP↔EPU Argentina): una serie de
-  mercado/encuesta que NO alimenta al índice y debería co-moverse con él.
-- **Matriz cruzada (3×3)**: cada índice contra las tres anclas — muestra si
-  cada uno mide algo propio o todos miden lo mismo (ADR-0031).
+- **Ancla macro**: el Índice Líder UTDT contrasta al ITCM. Una correlación
+  no demuestra causalidad ni capacidad predictiva.
+- **Panel externo**: varias series por constructo, con contraste convergente
+  (familia propia) y discriminante (familias ajenas). Reemplaza la antigua
+  lectura de una única ancla por cinturón socioeconómico (ADR-0225).
+- **Factor común**: síntesis estadística de las series disponibles del panel;
+  debe leerse con sus cargas, cobertura y varianza explicada.
 - **Niveles vs primeras diferencias**: correlación de las series tal cual
   vs correlación de sus cambios mensuales. En una muestra con una sola gran
   tendencia, los niveles correlacionan "gratis"; las diferencias son la
   prueba exigente.
 - **Lead-lag**: probar si un índice se mueve ANTES que su ancla (anticipa) o
-  junto (coincidente). Resultado documentado: los cuatro son coincidentes.
+  junto (coincidente). La muestra y las revisiones limitan cualquier conclusión predictiva.
 - **Circularidad**: cuando el ancla externa también es componente del índice
-  (el ICC pesa 6,75% del ITVC) — por eso la validación se calcula también
-  sin-ICC.
+  (el ICC tiene 8,25% efectivo del ITCIS mientras sentimiento digital está
+  suspendido) — por eso el contraste con ICC también se calcula sin ICC.
 
 ## De las fuentes (siglas)
 

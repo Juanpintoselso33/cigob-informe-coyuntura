@@ -42,9 +42,9 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 0.3 → 100 · 0.3–0.7 → 85 · 0.7–1.2 → 65 · 1.2–2 → 40 · > 2 → 10
 
-**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre
+**Lo gobiernan**: [ADR-0058](../adr/0058-ratio-dnu-ventana-movil-12m.md) ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario) · [ADR-0059](../adr/0059-ratio-dnu-no-recalibrar-anclas.md) ratio_dnu: se revierte la recalibración de anclas de ADR-0058 · [ADR-0090](../adr/0090-que-pregunta-responde-el-ratio-dnu.md) Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto") · [ADR-0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) Un DNU es un tipo jurídico, no una frase · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre · [ADR-0307](../adr/0307-ratio-dnu-ventana-inclusiva.md) Ratio DNU: 365 fechas incluidas
 
-#### Eficacia parlamentaria
+#### Eficacia legislativa de proyectos maduros
 
 `eficacia_legislativa`
 
@@ -74,7 +74,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 5 → 100 · 5–10 → 85 · 10–20 → 65 · 20–30 → 40 · > 30 → 10
 
-**Lo gobiernan**: [ADR-0091](../adr/0091-veto-quorum-contaba-mal-el-fracaso.md) El indicador de quórum contaba mal el fracaso
+**Lo gobiernan**: [ADR-0091](../adr/0091-veto-quorum-contaba-mal-el-fracaso.md) El indicador de quórum contaba mal el fracaso · [ADR-0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) Sesiones y sanciones fuera del catálogo
 
 #### Normas desafiadas en el recinto
 
@@ -90,7 +90,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 2 → 100 · 2–5 → 85 · 5–9 → 65 · 9–12 → 40 · > 12 → 10
 
-**Lo gobiernan**: [ADR-0089](../adr/0089-desafios-en-lugar-de-derrotas.md) Desafíos legislativos en lugar de derrotas legislativas
+**Lo gobiernan**: [ADR-0089](../adr/0089-desafios-en-lugar-de-derrotas.md) Desafíos legislativos en lugar de derrotas legislativas · [ADR-0276](../adr/0276-sin-desafios-no-hay-tasa-de-bloqueo.md) Sin desafíos no hay tasa de bloqueo
 
 #### Bloqueo legislativo sostenido
 
@@ -102,11 +102,11 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **2.5%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 6 meses |
-| Procedencia del ancla | `externa` — ninguna insistencia exitosa entre 2003 y 2025: ~100% histórico de sostenimiento (ADR-0069) |
+| Procedencia del ancla | `conceptual` — cortes editoriales sobre una tasa de supervivencia de 0 a 100%; el 100% representa sostenimiento completo. El antecedente de vetos no calibra los cortes 90/75/50/25 ni el universo mixto de vetos y decretos (ADR-0069, revisión 2026-09-08) |
 
 **Bandas**: > 90 → 100 · 75–90 → 85 · 50–75 → 60 · 25–50 → 35 · ≤ 25 → 10
 
-**Lo gobiernan**: [ADR-0069](../adr/0069-bloqueo-sostenido-indicador.md) bloqueo_sostenido: la cara ganada del pulso legislativo entra al ITCP
+**Lo gobiernan**: [ADR-0069](../adr/0069-bloqueo-sostenido-indicador.md) bloqueo_sostenido: la cara ganada del pulso legislativo entra al ITCP · [ADR-0276](../adr/0276-sin-desafios-no-hay-tasa-de-bloqueo.md) Sin desafíos no hay tasa de bloqueo
 
 #### Producción legislativa del Congreso
 
@@ -118,11 +118,11 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **3.1%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 1.5 meses |
-| Procedencia del ancla | `externa` — el techo es el promedio histórico de 74,4 leyes/año de los 18 años completos del dataset de HCDN (2008-2025, 1.340 leyes, cuatro presidencias), no el rango 15-47 observado bajo esta administración (ADR-0168) |
+| Procedencia del ancla | `externa` — umbral de diseño conservado en 74 leyes/año; referencia corregida al 2026-09-08: 1.320 leyes distintas de 2008-2025 / 18 = 73,3 por año; no es el promedio exacto ni un óptimo normativo (ADR-0168/0306) |
 
 **Bandas**: > 74 → 100 · 50–74 → 85 · 35–50 → 65 · 20–35 → 40 · ≤ 20 → 10
 
-**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP
+**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0306](../adr/0306-produccion-legislativa-meses-completos.md) Producción legislativa: doce meses completos y leyes distintas · [ADR-0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) Sesiones y sanciones fuera del catálogo
 
 ### Dimensión `alianzas_territoriales` (19%)
 
@@ -156,7 +156,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 70 → 100 · 60–70 → 85 · 50–60 → 65 · 40–50 → 40 · ≤ 40 → 10
 
-**Lo gobiernan**: [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide
+**Lo gobiernan**: [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara
 
 #### Adhesión provincial al RIGI
 
@@ -172,7 +172,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 80 → 100 · 60–80 → 85 · 40–60 → 65 · 20–40 → 40 · ≤ 20 → 10
 
-**Lo gobiernan**: [ADR-0044](../adr/0044-adhesion-reformas-provincial-serie-mensual.md) adhesion_reformas_provincial: serie mensual real vía investigación manual de fechas provinciales
+**Lo gobiernan**: [ADR-0044](../adr/0044-adhesion-reformas-provincial-serie-mensual.md) adhesion_reformas_provincial: serie mensual real vía investigación manual de fechas provinciales · [ADR-0304](../adr/0304-adhesion-rigi-completa-catalogo-con-leyes.md) La ley publicada completa el catálogo de adhesiones
 
 ### Dimensión `cohesion_interna` (15%)
 
@@ -190,7 +190,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 99.9 → 100 · 99–99.9 → 85 · 97–99 → 65 · 95–97 → 40 · ≤ 95 → 10
 
-**Lo gobiernan**: [ADR-0041](../adr/0041-cohesion-bloque-diputados-cache-permanente-y-serie-mensual.md) cohesion_bloque (Diputados): caché permanente por acta y serie mensual real
+**Lo gobiernan**: [ADR-0041](../adr/0041-cohesion-bloque-diputados-cache-permanente-y-serie-mensual.md) cohesion_bloque (Diputados): caché permanente por acta y serie mensual real · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara
 
 ### Dimensión `conflicto_social` (10%)
 
@@ -208,7 +208,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ -32 → 100 · -32–-29 → 85 · -29–-26 → 65 · -26–-15 → 40 · > -15 → 10
 
-**Lo gobiernan**: [ADR-0132](../adr/0132-conflictividad-nacional-de-donde-viene-y-sobre-que-actua.md) Conflictividad nacional: de dónde viene y sobre qué actúa · [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle
+**Lo gobiernan**: [ADR-0132](../adr/0132-conflictividad-nacional-de-donde-viene-y-sobre-que-actua.md) Conflictividad nacional: de dónde viene y sobre qué actúa · [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0303](../adr/0303-acled-semana-inicia-el-sabado.md) La semana ACLED empieza el sábado
 
 #### Intensidad de los paros
 
@@ -224,7 +224,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 5e+06 → 100 · 5e+06–6.5e+06 → 85 · 6.5e+06–8e+06 → 65 · 8e+06–1e+07 → 40 · > 1e+07 → 10
 
-**Lo gobiernan**: [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle
+**Lo gobiernan**: [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0295](../adr/0295-jornadas-exige-doce-meses-calendario.md) Jornadas exige doce meses calendario
 
 ### Dimensión `imagen_voto` (7%)
 
@@ -260,9 +260,9 @@ Suma de pesos: 100%.
 
 **Bandas**: > 90 → 100 · 80–90 → 85 · 70–80 → 65 · 60–70 → 40 · ≤ 60 → 10
 
-**Lo gobiernan**: [ADR-0126](../adr/0126-el-itcp-abre-la-dimension-poder-judicial.md) El ITCP abre la dimensión del Poder Judicial · [ADR-0144](../adr/0144-el-piloto-de-concursos-corrobora-cobertura-judicial.md) El piloto de concursos corrobora la cobertura judicial · [ADR-0240](../adr/0240-el-numerador-viaja-con-su-fecha.md) El numerador viaja con su fecha
+**Lo gobiernan**: [ADR-0126](../adr/0126-el-itcp-abre-la-dimension-poder-judicial.md) El ITCP abre la dimensión del Poder Judicial · [ADR-0144](../adr/0144-el-piloto-de-concursos-corrobora-cobertura-judicial.md) El piloto de concursos corrobora la cobertura judicial · [ADR-0240](../adr/0240-el-numerador-viaja-con-su-fecha.md) El numerador viaja con su fecha · [ADR-0297](../adr/0297-cobertura-excluye-corte-y-renovaciones.md) Cobertura excluye Corte Suprema y renovaciones · [ADR-0298](../adr/0298-cobertura-concilia-movimientos-netos-y-bajas.md) Cobertura concilia movimientos netos y bajas
 
-#### Velocidad de resolución de la Corte
+#### Tasa de resolución de la Corte
 
 `velocidad_resolucion`
 
@@ -276,7 +276,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 40 → 100 · 40–70 → 85 · 70–100 → 65 · 100–130 → 40 · > 130 → 10
 
-**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP
+**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0281](../adr/0281-tasa-de-resolucion-no-es-duracion-judicial.md) Tasa de resolución no es duración judicial
 
 #### Actividad de las comisiones de control
 
@@ -310,7 +310,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 10 → 100 · 0–10 → 85 · -10–0 → 65 · -20–-10 → 40 · ≤ -20 → 10
 
-**Lo gobiernan**: [ADR-0088](../adr/0088-dimension-sector-privado.md) El ITCP incorpora una dimensión de sector privado · [ADR-0095](../adr/0095-la-brecha-cambia-de-signo-segun-el-gobierno.md) La brecha de obra pública cambia de signo según el gobierno
+**Lo gobiernan**: [ADR-0088](../adr/0088-dimension-sector-privado.md) El ITCP incorpora una dimensión de sector privado · [ADR-0095](../adr/0095-la-brecha-cambia-de-signo-segun-el-gobierno.md) La brecha de obra pública cambia de signo según el gobierno · [ADR-0302](../adr/0302-expectativas-construccion-fecha-y-calendario.md) Expectativas de construcción: horizonte y calendario
 
 ## Se releva y no puntúa
 
@@ -365,7 +365,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-71 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+83 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -438,3 +438,15 @@ histórica.
 - [0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) — La ficha describe el método que corre
 - [0265](../adr/0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) — Una dimensión no promete vías que ya no puntúan
 - [0268](../adr/0268-el-slug-no-define-una-sesion.md) — El slug no define una sesión
+- [0276](../adr/0276-sin-desafios-no-hay-tasa-de-bloqueo.md) — Sin desafíos no hay tasa de bloqueo
+- [0281](../adr/0281-tasa-de-resolucion-no-es-duracion-judicial.md) — Tasa de resolución no es duración judicial
+- [0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) — Cohesión publica fechas y caché por cámara
+- [0295](../adr/0295-jornadas-exige-doce-meses-calendario.md) — Jornadas exige doce meses calendario
+- [0297](../adr/0297-cobertura-excluye-corte-y-renovaciones.md) — Cobertura excluye Corte Suprema y renovaciones
+- [0298](../adr/0298-cobertura-concilia-movimientos-netos-y-bajas.md) — Cobertura concilia movimientos netos y bajas
+- [0302](../adr/0302-expectativas-construccion-fecha-y-calendario.md) — Expectativas de construcción: horizonte y calendario
+- [0303](../adr/0303-acled-semana-inicia-el-sabado.md) — La semana ACLED empieza el sábado
+- [0304](../adr/0304-adhesion-rigi-completa-catalogo-con-leyes.md) — La ley publicada completa el catálogo de adhesiones
+- [0306](../adr/0306-produccion-legislativa-meses-completos.md) — Producción legislativa: doce meses completos y leyes distintas
+- [0307](../adr/0307-ratio-dnu-ventana-inclusiva.md) — Ratio DNU: 365 fechas incluidas
+- [0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) — Sesiones y sanciones fuera del catálogo

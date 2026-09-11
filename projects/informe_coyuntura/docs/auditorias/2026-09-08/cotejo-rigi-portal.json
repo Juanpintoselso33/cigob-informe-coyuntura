@@ -1,0 +1,14 @@
+{
+  "fecha": "2026-09-08",
+  "portal": "https://www.argentina.gob.ar/economia/rigi",
+  "sha256_portal": "d00cf7cb9019b8b00aab6adf570a7107c9e0321134d8c51a7a608bdde6d763d6",
+  "sheet_configurado_confirmado": true,
+  "deduplicacion_portal": "uniqueEntries(nombre)",
+  "duplicados_consistentes": true,
+  "aprobados": 23,
+  "monto_aprobado_musd": 49766.0,
+  "evaluacion": 23,
+  "monto_evaluacion_musd": 153709.0,
+  "ratio": 24.5,
+  "alcance": "Inversión comprometida, no ejecución ni desembolsos."
+}

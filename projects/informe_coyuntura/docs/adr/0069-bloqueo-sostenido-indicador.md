@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-16
 cinturon: 'politica'
 indicadores: [bloqueo_sostenido]
-relacionado: ['0021', '0046', '0062', '0070', '0230']
+relacionado: ['0021', '0046', '0062', '0070', '0230', '0276']
 modificado_por: ['0089']
 ambito: 'Cinturón política · ITCP · dimensión Poder legislativo · `bloqueo_sostenido` (nuevo)'
 ---
@@ -88,15 +88,17 @@ la cohorte de la gestión anterior, ver ADR-0070).
    multiproyecto, decretos que el registro no conoce — que pueden ser
    decretos simples fuera de la 26.122, caso real 681/25).
 
-4. **Anclas 90/75/50/25 con referencia externa** (puntaje interpolado,
-   ADR-0021): entre 2003 y 2025 el Congreso no revirtió NINGÚN veto
-   presidencial (tasa histórica ~100%, incluso con Macri en minoría), así
-   que ≥90 = dominio normal del bloqueo; <25 = tercio perdido. El período
-   real recorre casi todo el rango: 100 (H1-2024) → 75 (H2-2024, cae el DNU
-   656 pero se sostienen dos vetos) → 55→33 (ago-oct 2025, primera
-   insistencia exitosa desde 2003 + 5 decretos derogados) → 20 (jul-2026,
-   la resaca de la ventana de 12m). No se calibra contra el rango propio
-   (disciplina de ADR-0059).
+4. **Anclas 90/75/50/25 conceptuales** (puntaje interpolado,
+   ADR-0021; procedencia corregida el 8-sep-2026): son cortes editoriales
+   sobre una tasa cuyo extremo 100% representa supervivencia completa.
+   No hay calibración externa demostrada de esos cuatro cortes. El
+   antecedente histórico de vetos no tiene el denominador del indicador,
+   que combina vetos y decretos desafiados. Tampoco el corte 25% significa
+   haber perdido un tercio de las bancas: son magnitudes distintas.
+   La redacción original «ningún veto entre 2003 y 2025» contradice la
+   [insistencia completada el 4-sep-2025, documentada por el Senado](https://www.senado.gob.ar/prensa/23125/noticias).
+   Se retira esa justificación sin cambiar anclas, pesos ni puntajes.
+   Validar o rediseñar los cortes queda como mejora metodológica separada.
 
 5. **Pesos de Poder legislativo: 20/25/15/20/20** (ratio_dnu / eficacia /
    veto_quorum / derrotas / bloqueo): cada indicador cede 0,05 y el nuevo

@@ -15,6 +15,12 @@ origen: 'Evidencia externa de tres terceros independientes, revisada a pedido de
 
 # ADR-0228 — El FAL puntúa lo que rige, no lo que se dictó
 
+Actualización 8-sep-2026: [ADR-0305](0305-fal-separa-consulta-y-revision-curada.md)
+explicita las fechas separadas de consulta CNV y revisión normativa/judicial.
+La fórmula se conserva, pero consultar CNV no certifica vigencia judicial al
+día de la evaluación. La litigiosidad SRT corresponde a riesgos del trabajo
+y no debe presentarse como resultado directo del FAL (ADR-0285/0305).
+
 **Esto revierte una decisión editorial previa.** [[0142-el-fal-mide-sus-dos-actos-fundamentales]]
 decidió, con el efecto a la vista y por decisión explícita del editor, que
 sancionar y reglamentar la ley agotaba lo que el Gobierno podía cumplir hasta la

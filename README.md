@@ -11,13 +11,13 @@ Reúne colectores de datos, generadores de informe y tableros web estáticos.
 
 Cada proyecto tiene su propio `README.md` con instalación, ejecución y detalle técnico.
 
-## Web pública (GitHub Pages)
+## Web pública
 
-El sitio se publica en **https://informe.cigob.org** (dominio custom, único
-target de deploy — un solo repo, un solo sitio). El workflow
-`.github/workflows/pages.yml` compila la app Astro y sube `web-dominio/`
-(build generado por CI, gitignored) como artefacto de Pages en cada push a
-`main`. Ver `web/README.md` para el detalle.
+La app Astro se publica mediante **Vercel** con cada push a `main`:
+https://cigob-informe-coyuntura.vercel.app/.
+El código está en `projects/informe_coyuntura/web/`; `vercel.json` en la raíz
+define instalación, compilación y directorio de salida. `web/` en la raíz es
+legado y no es el destino de publicación. GitHub Pages fue retirado.
 
 ## Scripts de utilidad (raíz)
 
@@ -30,15 +30,15 @@ target de deploy — un solo repo, un solo sitio). El workflow
 | Workflow | Qué hace |
 |---|---|
 | `.github/workflows/data-pipeline.yml` | Pipeline diario: corre los colectores, regenera el snapshot y dispara el deploy (00:00 ART) |
-| `.github/workflows/pages.yml` | Build de la app Astro + publicación en GitHub Pages |
+| `.github/workflows/piquetes-poll.yml` | Relevamiento de alertas de manifestación |
 
 ## Estructura del repo
 
 ```
 .
 ├── README.md                  # este archivo
-├── .github/workflows/         # CI: data-pipeline + pages
-├── web/                       # carpeta de trabajo del deploy (ver web/README.md)
+├── .github/workflows/         # CI: datos + alertas
+├── web/                       # documentación del sitio legado
 ├── scripts/                   # utilidades de raíz (md→docx)
 └── projects/
     └── informe_coyuntura/     # colectores + informe + web Astro (docs propios en projects/informe_coyuntura/docs/)
@@ -48,7 +48,7 @@ target de deploy — un solo repo, un solo sitio). El workflow
 
 1. Clonar el repo:
    ```bash
-   git clone https://github.com/Fundacion-CIGOB/cigob-informe-coyuntura.git
+   git clone https://github.com/Juanpintoselso33/cigob-informe-coyuntura.git
    cd cigob-informe-coyuntura
    ```
 2. Para trabajar sobre el **Informe de Coyuntura**, seguir su [`README`](projects/informe_coyuntura/) (Python + Astro).

@@ -7,11 +7,14 @@ cinturon: 'politica'
 indicadores: [ratio_dnu, iaf_transferencias, subocupacion_demandante]
 archivos: ['web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'web/src/lib/datos.ts', 'tests/test_contrato_publico_dice_lo_que_corre.py']
 relacionado: ['0239', '0241', '0249', '0220']
+corregido_por: ['0307']
 ambito: 'Capa pública · `ratio_dnu`, `iaf_transferencias`, `subocupacion_demandante` · sincronizar la descripción, la fórmula y la ficha con el cálculo que efectivamente corre'
 origen: 'Reauditoría post-cambios, 25-ago-2026: discrepancias 2, 3 y 9 — «números corregidos, contrato público todavía viejo»'
 ---
 
 # ADR-0263 — La ficha describe el método que corre
+
+> Corrección del 8-sep-2026: [ADR-0307](0307-ratio-dnu-ventana-inclusiva.md) corrige el intervalo inclusivo de 366 a 365 fechas y documenta límites reales de la clasificación de InfoLeg. Las descargas originales y sus valores se conservan como evidencia histórica.
 
 ## Contexto y planteo del problema
 
