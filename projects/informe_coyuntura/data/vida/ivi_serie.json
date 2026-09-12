@@ -1,7 +1,7 @@
 {
   "_meta": {
     "fuente": "UTDT — LICIP, Índice de Victimización (informes mensuales PDF)",
-    "actualizado": "2026-09-11",
+    "actualizado": "2026-09-12",
     "nota": "Encuesta mensual, 40 centros urbanos, ventana 12 meses. PDFs con URL por hash: se descubren desde el listado y se procesan una sola vez (ADR-0032)."
   },
   "procesados": [
@@ -288,58 +288,58 @@
   },
   "fallidos": {
     "https://www.utdt.edu/download.php?fname=_148218927092227400.pdf": {
-      "intentos": 1,
-      "ultimo": "2026-09-11",
+      "intentos": 2,
+      "ultimo": "2026-09-12",
       "motivo": "sin período/valor reconocible"
     },
     "https://www.utdt.edu/download.php?fname=_148218922510224800.pdf": {
-      "intentos": 1,
-      "ultimo": "2026-09-11",
+      "intentos": 2,
+      "ultimo": "2026-09-12",
       "motivo": "sin período/valor reconocible"
     },
     "https://www.utdt.edu/download.php?fname=_147819641620259900.pdf": {
-      "intentos": 1,
-      "ultimo": "2026-09-11",
+      "intentos": 2,
+      "ultimo": "2026-09-12",
       "motivo": "sin período/valor reconocible"
     },
     "https://www.utdt.edu/download.php?fname=_147819636374399200.pdf": {
-      "intentos": 1,
-      "ultimo": "2026-09-11",
+      "intentos": 2,
+      "ultimo": "2026-09-12",
       "motivo": "sin período/valor reconocible"
     },
     "https://www.utdt.edu/download.php?fname=_147819629387312200.pdf": {
-      "intentos": 1,
-      "ultimo": "2026-09-11",
+      "intentos": 2,
+      "ultimo": "2026-09-12",
       "motivo": "sin período/valor reconocible"
     },
     "https://www.utdt.edu/download.php?fname=_147819624752890300.pdf": {
-      "intentos": 1,
-      "ultimo": "2026-09-11",
+      "intentos": 2,
+      "ultimo": "2026-09-12",
       "motivo": "sin período/valor reconocible"
     },
     "https://www.utdt.edu/download.php?fname=_147819620415624100.pdf": {
-      "intentos": 1,
-      "ultimo": "2026-09-11",
+      "intentos": 2,
+      "ultimo": "2026-09-12",
       "motivo": "sin período/valor reconocible"
     },
     "https://www.utdt.edu/download.php?fname=_146756200456911600.pdf": {
-      "intentos": 1,
-      "ultimo": "2026-09-11",
+      "intentos": 2,
+      "ultimo": "2026-09-12",
       "motivo": "sin período/valor reconocible"
     },
     "https://www.utdt.edu/download.php?fname=_146499317997784100.pdf": {
-      "intentos": 1,
-      "ultimo": "2026-09-11",
+      "intentos": 2,
+      "ultimo": "2026-09-12",
       "motivo": "sin período/valor reconocible"
     },
     "https://www.utdt.edu/download.php?fname=_146193746561475900.pdf": {
-      "intentos": 1,
-      "ultimo": "2026-09-11",
+      "intentos": 2,
+      "ultimo": "2026-09-12",
       "motivo": "sin período/valor reconocible"
     },
     "https://www.utdt.edu/download.php?fname=_146006263321143500.pdf": {
-      "intentos": 1,
-      "ultimo": "2026-09-11",
+      "intentos": 2,
+      "ultimo": "2026-09-12",
       "motivo": "sin período/valor reconocible"
     }
   }

@@ -2,9 +2,9 @@
  "_meta": {
   "descripcion": "Fallos de la CSJN que declaran inconstitucionalidad o tienen al Estado como parte. Detección automática; la lectura y la clasificación las hace el analista (ADR-0140). NO es un contador: el endpoint abierto topea en 10 registros por consulta y no pagina. Sacar de 'pendientes' lo ya revisado.",
   "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
-  "nuevas_en_la_corrida": 0,
+  "nuevas_en_la_corrida": 1,
   "registros_vistos_en_la_corrida": 40,
-  "ultima_corrida": "2026-09-10"
+  "ultima_corrida": "2026-09-12"
  },
  "pendientes": {
   "818689": {
@@ -303,9 +303,28 @@
    "sentencia_arbitraria": false,
    "titulo": "Competencia en materia de lealtad comercial y decretos de necesidad y urgencia",
    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=831004"
+  },
+  "832064": {
+   "caratula": "PAPEL MISIONERO S.A.I.F.C. c/ PROVINCIA DE MISIONES s/accion declarativa de inconstitucionalidad",
+   "expediente": "CSJ 000511/2018/RH001",
+   "fecha": "10/09/2026",
+   "fuero": "CSJ",
+   "inconstitucional": true,
+   "materia": "AMBIENTAL",
+   "motivos": [
+    "declara inconstitucionalidad"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Insalubridad laboral: norma local que califica en forma general y abstracta",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=832064"
   }
  },
  "revisadas": {
+  "775364": {
+   "fecha": "10/09/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
   "818689": {
    "fecha": "04/11/2025",
    "marcado": true,
@@ -375,6 +394,11 @@
    "fecha": "23/04/2026",
    "marcado": true,
    "termino": "estado nacional"
+  },
+  "825982": {
+   "fecha": "10/09/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
   },
   "826185": {
    "fecha": "23/04/2026",
@@ -526,10 +550,35 @@
    "marcado": false,
    "termino": "amparo"
   },
+  "831732": {
+   "fecha": "10/09/2026",
+   "marcado": false,
+   "termino": "estado nacional"
+  },
   "831746": {
    "fecha": "03/09/2026",
    "marcado": false,
    "termino": "amparo"
+  },
+  "832036": {
+   "fecha": "10/09/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "832064": {
+   "fecha": "10/09/2026",
+   "marcado": true,
+   "termino": "inconstitucionalidad"
+  },
+  "832086": {
+   "fecha": "10/09/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "832225": {
+   "fecha": "10/09/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
   }
  }
 }
