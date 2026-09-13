@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-12T03:26:02.767109+00:00",
+    "generated_at": "2026-09-13T03:28:45.128579+00:00",
     "nota": "Validación por panel y ancla macro; el contraste adicional sin ICC evita comparar el ITCIS con un componente propio"
   },
   "serie_itvc": {
@@ -1754,15 +1754,15 @@
   "redundancia_itvc": {
     "diferencias": {
       "n_pares": 153,
-      "r_abs_medio": 0.217,
+      "r_abs_medio": 0.215,
       "share_altos": 0.02
     },
     "umbral": 0.7,
     "n_indicadores": 18,
     "n_pares": 153,
-    "r_abs_medio": 0.502,
-    "share_altos": 0.359,
-    "share_bajos": 0.327,
+    "r_abs_medio": 0.5,
+    "share_altos": 0.353,
+    "share_bajos": 0.333,
     "matriz": {
       "alquiler_real": {
         "brecha_salario_cbt": -0.959,
@@ -1770,7 +1770,7 @@
         "consumo_carnes_total": 0.608,
         "consumo_supermercados": -0.542,
         "despacho_cemento": -0.497,
-        "empleo_registrado": 0.619,
+        "empleo_registrado": 0.614,
         "icc_utdt": -0.704,
         "informalidad": 0.639,
         "inseguridad": 0.047,
@@ -1781,7 +1781,7 @@
         "peso_tarifas": 0.404,
         "pobreza_nowcast": -0.86,
         "subocupacion_demandante": 0.061,
-        "trabajo_independiente": 0.821
+        "trabajo_independiente": 0.816
       },
       "brecha_salario_cbt": {
         "alquiler_real": -0.959,
@@ -1789,7 +1789,7 @@
         "consumo_carnes_total": -0.514,
         "consumo_supermercados": 0.59,
         "despacho_cemento": 0.422,
-        "empleo_registrado": -0.599,
+        "empleo_registrado": -0.591,
         "icc_utdt": 0.685,
         "informalidad": -0.585,
         "inseguridad": 0.108,
@@ -1800,7 +1800,7 @@
         "peso_tarifas": -0.279,
         "pobreza_nowcast": 0.145,
         "subocupacion_demandante": -0.164,
-        "trabajo_independiente": -0.764
+        "trabajo_independiente": -0.754
       },
       "carga_servicio_deuda_hogares": {
         "alquiler_real": 0.963,
@@ -1808,7 +1808,7 @@
         "consumo_carnes_total": 0.576,
         "consumo_supermercados": -0.428,
         "despacho_cemento": -0.491,
-        "empleo_registrado": 0.632,
+        "empleo_registrado": 0.629,
         "icc_utdt": -0.612,
         "informalidad": 0.672,
         "inseguridad": -0.026,
@@ -1819,7 +1819,7 @@
         "peso_tarifas": 0.853,
         "pobreza_nowcast": -0.888,
         "subocupacion_demandante": -0.032,
-        "trabajo_independiente": 0.875
+        "trabajo_independiente": 0.873
       },
       "consumo_carnes_total": {
         "alquiler_real": 0.608,
@@ -1827,7 +1827,7 @@
         "carga_servicio_deuda_hogares": 0.576,
         "consumo_supermercados": -0.091,
         "despacho_cemento": -0.084,
-        "empleo_registrado": 0.898,
+        "empleo_registrado": 0.902,
         "icc_utdt": -0.17,
         "informalidad": 0.765,
         "inseguridad": 0.142,
@@ -1838,7 +1838,7 @@
         "peso_tarifas": 0.779,
         "pobreza_nowcast": -0.468,
         "subocupacion_demandante": 0.315,
-        "trabajo_independiente": 0.76
+        "trabajo_independiente": 0.774
       },
       "consumo_supermercados": {
         "alquiler_real": -0.542,
@@ -1846,7 +1846,7 @@
         "carga_servicio_deuda_hogares": -0.428,
         "consumo_carnes_total": -0.091,
         "despacho_cemento": 0.427,
-        "empleo_registrado": -0.03,
+        "empleo_registrado": -0.026,
         "icc_utdt": 0.574,
         "informalidad": -0.243,
         "inseguridad": -0.221,
@@ -1857,7 +1857,7 @@
         "peso_tarifas": -0.543,
         "pobreza_nowcast": -0.742,
         "subocupacion_demandante": 0.002,
-        "trabajo_independiente": -0.157
+        "trabajo_independiente": -0.145
       },
       "despacho_cemento": {
         "alquiler_real": -0.497,
@@ -1865,7 +1865,7 @@
         "carga_servicio_deuda_hogares": -0.491,
         "consumo_carnes_total": -0.084,
         "consumo_supermercados": 0.427,
-        "empleo_registrado": -0.067,
+        "empleo_registrado": -0.065,
         "icc_utdt": 0.366,
         "informalidad": -0.261,
         "inseguridad": -0.219,
@@ -1876,26 +1876,26 @@
         "peso_tarifas": -0.268,
         "pobreza_nowcast": 0.412,
         "subocupacion_demandante": 0.264,
-        "trabajo_independiente": -0.199
+        "trabajo_independiente": -0.202
       },
       "empleo_registrado": {
-        "alquiler_real": 0.619,
-        "brecha_salario_cbt": -0.599,
-        "carga_servicio_deuda_hogares": 0.632,
-        "consumo_carnes_total": 0.898,
-        "consumo_supermercados": -0.03,
-        "despacho_cemento": -0.067,
-        "icc_utdt": -0.093,
-        "informalidad": 0.766,
-        "inseguridad": -0.151,
-        "ipc_alimentos": -0.557,
-        "mora_familias": 0.774,
-        "mortalidad_pymes": 0.904,
-        "motorizacion_total": -0.723,
-        "peso_tarifas": 0.869,
-        "pobreza_nowcast": -0.727,
-        "subocupacion_demandante": 0.449,
-        "trabajo_independiente": 0.852
+        "alquiler_real": 0.614,
+        "brecha_salario_cbt": -0.591,
+        "carga_servicio_deuda_hogares": 0.629,
+        "consumo_carnes_total": 0.902,
+        "consumo_supermercados": -0.026,
+        "despacho_cemento": -0.065,
+        "icc_utdt": -0.089,
+        "informalidad": 0.765,
+        "inseguridad": -0.145,
+        "ipc_alimentos": -0.55,
+        "mora_familias": 0.771,
+        "mortalidad_pymes": 0.903,
+        "motorizacion_total": -0.725,
+        "peso_tarifas": 0.827,
+        "pobreza_nowcast": -0.693,
+        "subocupacion_demandante": 0.436,
+        "trabajo_independiente": 0.858
       },
       "icc_utdt": {
         "alquiler_real": -0.704,
@@ -1904,7 +1904,7 @@
         "consumo_carnes_total": -0.17,
         "consumo_supermercados": 0.574,
         "despacho_cemento": 0.366,
-        "empleo_registrado": -0.093,
+        "empleo_registrado": -0.089,
         "informalidad": -0.239,
         "inseguridad": 0.0,
         "ipc_alimentos": 0.731,
@@ -1914,7 +1914,7 @@
         "peso_tarifas": 0.907,
         "pobreza_nowcast": -0.501,
         "subocupacion_demandante": -0.005,
-        "trabajo_independiente": -0.366
+        "trabajo_independiente": -0.352
       },
       "informalidad": {
         "alquiler_real": 0.639,
@@ -1923,7 +1923,7 @@
         "consumo_carnes_total": 0.765,
         "consumo_supermercados": -0.243,
         "despacho_cemento": -0.261,
-        "empleo_registrado": 0.766,
+        "empleo_registrado": 0.765,
         "icc_utdt": -0.239,
         "inseguridad": 0.194,
         "ipc_alimentos": -0.437,
@@ -1933,7 +1933,7 @@
         "peso_tarifas": 0.463,
         "pobreza_nowcast": -0.362,
         "subocupacion_demandante": 0.307,
-        "trabajo_independiente": 0.782
+        "trabajo_independiente": 0.787
       },
       "inseguridad": {
         "alquiler_real": 0.047,
@@ -1942,7 +1942,7 @@
         "consumo_carnes_total": 0.142,
         "consumo_supermercados": -0.221,
         "despacho_cemento": -0.219,
-        "empleo_registrado": -0.151,
+        "empleo_registrado": -0.145,
         "icc_utdt": 0.0,
         "informalidad": 0.194,
         "ipc_alimentos": 0.09,
@@ -1952,7 +1952,7 @@
         "peso_tarifas": 0.395,
         "pobreza_nowcast": 0.23,
         "subocupacion_demandante": -0.218,
-        "trabajo_independiente": -0.124
+        "trabajo_independiente": -0.119
       },
       "ipc_alimentos": {
         "alquiler_real": -0.904,
@@ -1961,7 +1961,7 @@
         "consumo_carnes_total": -0.53,
         "consumo_supermercados": 0.529,
         "despacho_cemento": 0.249,
-        "empleo_registrado": -0.557,
+        "empleo_registrado": -0.55,
         "icc_utdt": 0.731,
         "informalidad": -0.437,
         "inseguridad": 0.09,
@@ -1971,7 +1971,7 @@
         "peso_tarifas": -0.149,
         "pobreza_nowcast": -0.04,
         "subocupacion_demandante": -0.194,
-        "trabajo_independiente": -0.684
+        "trabajo_independiente": -0.675
       },
       "mora_familias": {
         "alquiler_real": 0.77,
@@ -1980,7 +1980,7 @@
         "consumo_carnes_total": 0.631,
         "consumo_supermercados": -0.113,
         "despacho_cemento": -0.354,
-        "empleo_registrado": 0.774,
+        "empleo_registrado": 0.771,
         "icc_utdt": -0.285,
         "informalidad": 0.741,
         "inseguridad": -0.188,
@@ -1990,7 +1990,7 @@
         "peso_tarifas": 0.829,
         "pobreza_nowcast": -0.894,
         "subocupacion_demandante": 0.061,
-        "trabajo_independiente": 0.93
+        "trabajo_independiente": 0.934
       },
       "mortalidad_pymes": {
         "alquiler_real": 0.837,
@@ -1999,7 +1999,7 @@
         "consumo_carnes_total": 0.868,
         "consumo_supermercados": -0.171,
         "despacho_cemento": -0.298,
-        "empleo_registrado": 0.904,
+        "empleo_registrado": 0.903,
         "icc_utdt": -0.359,
         "informalidad": 0.802,
         "inseguridad": -0.041,
@@ -2009,7 +2009,7 @@
         "peso_tarifas": 0.905,
         "pobreza_nowcast": -0.757,
         "subocupacion_demandante": 0.196,
-        "trabajo_independiente": 0.948
+        "trabajo_independiente": 0.956
       },
       "motorizacion_total": {
         "alquiler_real": -0.796,
@@ -2018,7 +2018,7 @@
         "consumo_carnes_total": -0.625,
         "consumo_supermercados": 0.173,
         "despacho_cemento": 0.432,
-        "empleo_registrado": -0.723,
+        "empleo_registrado": -0.725,
         "icc_utdt": 0.314,
         "informalidad": -0.733,
         "inseguridad": 0.082,
@@ -2028,7 +2028,7 @@
         "peso_tarifas": -0.857,
         "pobreza_nowcast": 0.834,
         "subocupacion_demandante": 0.075,
-        "trabajo_independiente": -0.896
+        "trabajo_independiente": -0.904
       },
       "peso_tarifas": {
         "alquiler_real": 0.404,
@@ -2037,7 +2037,7 @@
         "consumo_carnes_total": 0.779,
         "consumo_supermercados": -0.543,
         "despacho_cemento": -0.268,
-        "empleo_registrado": 0.869,
+        "empleo_registrado": 0.827,
         "icc_utdt": 0.907,
         "informalidad": 0.463,
         "inseguridad": 0.395,
@@ -2047,7 +2047,7 @@
         "motorizacion_total": -0.857,
         "pobreza_nowcast": -0.109,
         "subocupacion_demandante": -0.463,
-        "trabajo_independiente": -0.327
+        "trabajo_independiente": 0.169
       },
       "pobreza_nowcast": {
         "alquiler_real": -0.86,
@@ -2056,7 +2056,7 @@
         "consumo_carnes_total": -0.468,
         "consumo_supermercados": -0.742,
         "despacho_cemento": 0.412,
-        "empleo_registrado": -0.727,
+        "empleo_registrado": -0.693,
         "icc_utdt": -0.501,
         "informalidad": -0.362,
         "inseguridad": 0.23,
@@ -2066,7 +2066,7 @@
         "motorizacion_total": 0.834,
         "peso_tarifas": -0.109,
         "subocupacion_demandante": -0.306,
-        "trabajo_independiente": -0.863
+        "trabajo_independiente": -0.848
       },
       "subocupacion_demandante": {
         "alquiler_real": 0.061,
@@ -2075,7 +2075,7 @@
         "consumo_carnes_total": 0.315,
         "consumo_supermercados": 0.002,
         "despacho_cemento": 0.264,
-        "empleo_registrado": 0.449,
+        "empleo_registrado": 0.436,
         "icc_utdt": -0.005,
         "informalidad": 0.307,
         "inseguridad": -0.218,
@@ -2085,26 +2085,26 @@
         "motorizacion_total": 0.075,
         "peso_tarifas": -0.463,
         "pobreza_nowcast": -0.306,
-        "trabajo_independiente": 0.219
+        "trabajo_independiente": 0.208
       },
       "trabajo_independiente": {
-        "alquiler_real": 0.821,
-        "brecha_salario_cbt": -0.764,
-        "carga_servicio_deuda_hogares": 0.875,
-        "consumo_carnes_total": 0.76,
-        "consumo_supermercados": -0.157,
-        "despacho_cemento": -0.199,
-        "empleo_registrado": 0.852,
-        "icc_utdt": -0.366,
-        "informalidad": 0.782,
-        "inseguridad": -0.124,
-        "ipc_alimentos": -0.684,
-        "mora_familias": 0.93,
-        "mortalidad_pymes": 0.948,
-        "motorizacion_total": -0.896,
-        "peso_tarifas": -0.327,
-        "pobreza_nowcast": -0.863,
-        "subocupacion_demandante": 0.219
+        "alquiler_real": 0.816,
+        "brecha_salario_cbt": -0.754,
+        "carga_servicio_deuda_hogares": 0.873,
+        "consumo_carnes_total": 0.774,
+        "consumo_supermercados": -0.145,
+        "despacho_cemento": -0.202,
+        "empleo_registrado": 0.858,
+        "icc_utdt": -0.352,
+        "informalidad": 0.787,
+        "inseguridad": -0.119,
+        "ipc_alimentos": -0.675,
+        "mora_familias": 0.934,
+        "mortalidad_pymes": 0.956,
+        "motorizacion_total": -0.904,
+        "peso_tarifas": 0.169,
+        "pobreza_nowcast": -0.848,
+        "subocupacion_demandante": 0.208
       }
     },
     "pares_altos": [
@@ -2141,7 +2141,7 @@
       {
         "a": "mortalidad_pymes",
         "b": "trabajo_independiente",
-        "r": 0.948,
+        "r": 0.956,
         "n": 33,
         "dimension_a": "empleo",
         "dimension_b": "empleo",
@@ -2151,7 +2151,7 @@
       {
         "a": "mora_familias",
         "b": "trabajo_independiente",
-        "r": 0.93,
+        "r": 0.934,
         "n": 33,
         "dimension_a": "vulnerabilidad",
         "dimension_b": "empleo",
@@ -2219,13 +2219,33 @@
         "por_diseno": null
       },
       {
+        "a": "motorizacion_total",
+        "b": "trabajo_independiente",
+        "r": -0.904,
+        "n": 33,
+        "dimension_a": "ingresos",
+        "dimension_b": "empleo",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "empleo_registrado",
         "b": "mortalidad_pymes",
-        "r": 0.904,
+        "r": 0.903,
         "n": 33,
         "dimension_a": "empleo",
         "dimension_b": "empleo",
         "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
+        "a": "consumo_carnes_total",
+        "b": "empleo_registrado",
+        "r": 0.902,
+        "n": 33,
+        "dimension_a": "ingresos",
+        "dimension_b": "empleo",
+        "misma_dimension": false,
         "por_diseno": null
       },
       {
@@ -2245,26 +2265,6 @@
         "n": 33,
         "dimension_a": "empleo",
         "dimension_b": "ingresos",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "consumo_carnes_total",
-        "b": "empleo_registrado",
-        "r": 0.898,
-        "n": 33,
-        "dimension_a": "ingresos",
-        "dimension_b": "empleo",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "motorizacion_total",
-        "b": "trabajo_independiente",
-        "r": -0.896,
-        "n": 33,
-        "dimension_a": "ingresos",
-        "dimension_b": "empleo",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -2301,7 +2301,7 @@
       {
         "a": "carga_servicio_deuda_hogares",
         "b": "trabajo_independiente",
-        "r": 0.875,
+        "r": 0.873,
         "n": 33,
         "dimension_a": "vulnerabilidad",
         "dimension_b": "empleo",
@@ -2319,30 +2319,10 @@
         "por_diseno": null
       },
       {
-        "a": "empleo_registrado",
-        "b": "peso_tarifas",
-        "r": 0.869,
-        "n": 9,
-        "dimension_a": "empleo",
-        "dimension_b": "precios",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "consumo_carnes_total",
         "b": "mortalidad_pymes",
         "r": 0.868,
         "n": 33,
-        "dimension_a": "ingresos",
-        "dimension_b": "empleo",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "pobreza_nowcast",
-        "b": "trabajo_independiente",
-        "r": -0.863,
-        "n": 20,
         "dimension_a": "ingresos",
         "dimension_b": "empleo",
         "misma_dimension": false,
@@ -2356,6 +2336,16 @@
         "dimension_a": "precios",
         "dimension_b": "ingresos",
         "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "empleo_registrado",
+        "b": "trabajo_independiente",
+        "r": 0.858,
+        "n": 33,
+        "dimension_a": "empleo",
+        "dimension_b": "empleo",
+        "misma_dimension": true,
         "por_diseno": null
       },
       {
@@ -2379,13 +2369,13 @@
         "por_diseno": null
       },
       {
-        "a": "empleo_registrado",
+        "a": "pobreza_nowcast",
         "b": "trabajo_independiente",
-        "r": 0.852,
-        "n": 33,
-        "dimension_a": "empleo",
+        "r": -0.848,
+        "n": 20,
+        "dimension_a": "ingresos",
         "dimension_b": "empleo",
-        "misma_dimension": true,
+        "misma_dimension": false,
         "por_diseno": null
       },
       {
@@ -2419,9 +2409,19 @@
         "por_diseno": null
       },
       {
+        "a": "empleo_registrado",
+        "b": "peso_tarifas",
+        "r": 0.827,
+        "n": 9,
+        "dimension_a": "empleo",
+        "dimension_b": "precios",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "alquiler_real",
         "b": "trabajo_independiente",
-        "r": 0.821,
+        "r": 0.816,
         "n": 33,
         "dimension_a": "precios",
         "dimension_b": "empleo",
@@ -2461,7 +2461,7 @@
       {
         "a": "informalidad",
         "b": "trabajo_independiente",
-        "r": 0.782,
+        "r": 0.787,
         "n": 33,
         "dimension_a": "empleo",
         "dimension_b": "empleo",
@@ -2479,9 +2479,19 @@
         "por_diseno": null
       },
       {
+        "a": "consumo_carnes_total",
+        "b": "trabajo_independiente",
+        "r": 0.774,
+        "n": 33,
+        "dimension_a": "ingresos",
+        "dimension_b": "empleo",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "empleo_registrado",
         "b": "mora_familias",
-        "r": 0.774,
+        "r": 0.771,
         "n": 33,
         "dimension_a": "empleo",
         "dimension_b": "vulnerabilidad",
@@ -2499,16 +2509,6 @@
         "por_diseno": null
       },
       {
-        "a": "empleo_registrado",
-        "b": "informalidad",
-        "r": 0.766,
-        "n": 33,
-        "dimension_a": "empleo",
-        "dimension_b": "empleo",
-        "misma_dimension": true,
-        "por_diseno": null
-      },
-      {
         "a": "consumo_carnes_total",
         "b": "informalidad",
         "r": 0.765,
@@ -2519,13 +2519,13 @@
         "por_diseno": null
       },
       {
-        "a": "brecha_salario_cbt",
-        "b": "trabajo_independiente",
-        "r": -0.764,
+        "a": "empleo_registrado",
+        "b": "informalidad",
+        "r": 0.765,
         "n": 33,
-        "dimension_a": "ingresos",
+        "dimension_a": "empleo",
         "dimension_b": "empleo",
-        "misma_dimension": false,
+        "misma_dimension": true,
         "por_diseno": null
       },
       {
@@ -2539,22 +2539,22 @@
         "por_diseno": null
       },
       {
-        "a": "consumo_carnes_total",
-        "b": "trabajo_independiente",
-        "r": 0.76,
-        "n": 33,
-        "dimension_a": "ingresos",
-        "dimension_b": "empleo",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "mortalidad_pymes",
         "b": "pobreza_nowcast",
         "r": -0.757,
         "n": 20,
         "dimension_a": "empleo",
         "dimension_b": "ingresos",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "brecha_salario_cbt",
+        "b": "trabajo_independiente",
+        "r": -0.754,
+        "n": 33,
+        "dimension_a": "ingresos",
+        "dimension_b": "empleo",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -2610,9 +2610,9 @@
       },
       {
         "a": "empleo_registrado",
-        "b": "pobreza_nowcast",
-        "r": -0.727,
-        "n": 20,
+        "b": "motorizacion_total",
+        "r": -0.725,
+        "n": 33,
         "dimension_a": "empleo",
         "dimension_b": "ingresos",
         "misma_dimension": false,
@@ -2626,16 +2626,6 @@
         "dimension_a": "ingresos",
         "dimension_b": "ingresos",
         "misma_dimension": true,
-        "por_diseno": null
-      },
-      {
-        "a": "empleo_registrado",
-        "b": "motorizacion_total",
-        "r": -0.723,
-        "n": 33,
-        "dimension_a": "empleo",
-        "dimension_b": "ingresos",
-        "misma_dimension": false,
         "por_diseno": null
       },
       {
@@ -2659,8 +2649,8 @@
         "por_diseno": null
       }
     ],
-    "pares_cruzados": 44,
-    "pares_no_explicados": 44
+    "pares_cruzados": 43,
+    "pares_no_explicados": 43
   },
   "serie_itcg": {
     "2023-12": 18.7,
@@ -2942,7 +2932,7 @@
           "2026-03": 94.1,
           "2026-04": 93.3,
           "2026-05": 93.8,
-          "2026-06": 93.4,
+          "2026-06": 93.3,
           "2026-07": 92.8,
           "2026-08": 92.8
         }

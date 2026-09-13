@@ -73,11 +73,11 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 2,34 % m/m alquileres | ROJO | 5,0 % |
 | **DIMENSIÓN: Prospectivas de empleo** | | | | |
 | Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC. | 37,9 % | NARANJA | 8,3 % |
-| Peso del trabajo independiente | Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los… | 20,6 % del empleo registrado SIPA, sin monotributo social | NARANJA | 2,4 % |
+| Peso del trabajo independiente | Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los… | 20,69 % del empleo registrado SIPA, sin monotributo social | NARANJA | 2,4 % |
 | Empleadores PyME activos | Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART. | 460.777 empleadores | NARANJA | 3,6 % |
 | Construcción (ISAC) | Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. | 140,2 índice ISAC | ROJO | 3,3 % |
 | Subocupación demandante | Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando… | 7,5 % de la PEA | NARANJA | 1,2 % |
-| Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.106,53 miles de puestos | AMARILLO | 5,4 % |
+| Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.095,84 miles de puestos | AMARILLO | 5,4 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
 | Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,41 % de la cartera en situación irregular | ROJO | 7,0 % |
 | Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | ROJO | 3,0 % |
@@ -86,7 +86,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Seguridad** | | | | |
 | Victimización (IVI) | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 4,5 % |
 
-*Datos al 2026-09-12.*
+*Datos al 2026-09-13.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -110,9 +110,9 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | brecha_salario_cbt | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | canastas (RIPTE/CBT) |
-| **SERIE DISPONIBLE** | 2021-08 → 2026-07 (60 puntos) | **REZAGO DE PUBLICACIÓN** | El salario formal (RIPTE) corre un mes detrás de la canasta: el par común queda ~2 meses atrás del calendario. |
+| **SERIE DISPONIBLE** | 2021-09 → 2026-07 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El salario formal (RIPTE) corre un mes detrás de la canasta: el par común queda ~2 meses atrás del calendario. |
 | **PRODUCTOR DEL DATO** | Secretaría de Trabajo (RIPTE) + INDEC (Canasta Básica Total) | **OPERACIÓN ESTADÍSTICA** | RIPTE — remuneración imponible promedio de los trabajadores estables ÷ Canasta Básica Total por adulto equivalente |
-| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API de series para la canasta; el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API de series para la canasta; el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -146,7 +146,7 @@ Este componente está hoy en **111,6**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- RIPTE / CBT del mismo mes (2026-07): canastas cubiertas por el salario imponible promedio
+- RIPTE / CBT del mismo mes (2026-07): canastas cubiertas por el salario imponible promedio — CBT de 2026-08 ya publicada ($519,578): esa brecha queda provisoria hasta que salga el RIPTE
 
 ## Color vigente y por qué
 
@@ -201,7 +201,7 @@ Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa 
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m |
 | **SERIE DISPONIBLE** | 2022-10 → 2026-08 (47 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC se publica a mediados del mes siguiente. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | IPC — Alimentos y bebidas no alcohólicas, nivel nacional; el componente lo compara contra el IPC general |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -288,7 +288,7 @@ Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, g
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % del salario RIPTE |
 | **SERIE DISPONIBLE** | 2025-12 → 2026-08 (9 puntos) | **REZAGO DE PUBLICACIÓN** | El IIEP publica durante el mismo mes una estimación de la canasta y del RIPTE del período. |
 | **PRODUCTOR DEL DATO** | IIEP UBA-CONICET, Observatorio de Tarifas y Subsidios | **OPERACIÓN ESTADÍSTICA** | Canasta de Servicios Públicos del AMBA sobre salario RIPTE |
-| **MODO DE ACCESO** | Automático: páginas mensuales del reporte de Tarifas y Subsidios. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: páginas mensuales del reporte de Tarifas y Subsidios. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -378,7 +378,7 @@ Cuánto se encareció el alquiler de la vivienda por encima del resto de los pre
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m alquileres |
 | **SERIE DISPONIBLE** | 2017-01 → 2026-08 (116 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC-GBA se publica a mediados del mes siguiente (~1 mes). |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Índice de Precios al Consumidor del Gran Buenos Aires — alquiler de la vivienda |
-| **MODO DE ACCESO** | Automático: planilla histórica original del INDEC, con validación de región, conceptos y continuidad mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: planilla histórica original del INDEC, con validación de región, conceptos y continuidad mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -467,7 +467,7 @@ Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio mó
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-07 (43 puntos) | **REZAGO DE PUBLICACIÓN** | El tablero oficial publica el mes con unas semanas de demora; la faena del INDEC, con dos meses. El titular avanza con el tablero y el índice con la faena. |
 | **PRODUCTOR DEL DATO** | SAGYP (nivel) e INDEC (evolución) | **OPERACIÓN ESTADÍSTICA** | Nivel: SAGYP — Dirección Nacional de Producción Ganadera, tablero de consumo per cápita de carnes, promedio móvil de 12 meses. Evolución: faena mensual en toneladas de vacunos, porcinos y aves (INDEC, series 40.3_VT_0_M_17 · 40.3_PT_0_M_18 · 40.3_AT_0_M_14), per cápita con la población proyectada del INDEC. |
-| **MODO DE ACCESO** | Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -561,7 +561,7 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % |
 | **SERIE DISPONIBLE** | 2016-04 → 2026-01 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
 | **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — asalariados sin descuento jubilatorio, tasa trimestral |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -638,7 +638,7 @@ Qué proporción del empleo registrado son trabajadores independientes —autón
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 20,6 % del empleo registrado SIPA, sin monotributo social** (2026-05) | **NARANJA** | Peso efectivo 2,4 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 20,69 % del empleo registrado SIPA, sin monotributo social** (2026-06) | **NARANJA** | Peso efectivo 2,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -646,9 +646,9 @@ Qué proporción del empleo registrado son trabajadores independientes —autón
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | trabajo_independiente | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % del empleo registrado SIPA, sin monotributo social |
-| **SERIE DISPONIBLE** | 2019-01 → 2026-05 (89 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses, el mismo del cierre administrativo con que el SIPA publica sus series de trabajo registrado. |
+| **SERIE DISPONIBLE** | 2019-01 → 2026-06 (90 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses, el mismo del cierre administrativo con que el SIPA publica sus series de trabajo registrado. |
 | **PRODUCTOR DEL DATO** | SIPA — Sistema Integrado Previsional Argentino (Secretaría de Trabajo) | **OPERACIÓN ESTADÍSTICA** | Series mensuales sin estacionalidad de trabajadores registrados: autónomos y monotributistas por un lado; asalariados del sector privado, del sector público y de casas particulares por el otro. |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -677,19 +677,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **92,8**.
+Este componente está hoy en **92,4**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 2,59 millones de independientes sobre 12,55 millones de puestos registrados · numerador: autónomos, monotributo general · denominador: autónomos, monotributo general, asalariados privados, asalariados públicos, casas particulares · queda afuera el monotributo social, cuyo padrón cayó de 653 a 259 mil personas en un solo mes (2024-12) por un cambio de régimen y no del mercado de trabajo · con ese régimen adentro daría 22,1%
+- 2,60 millones de independientes sobre 12,55 millones de puestos registrados · numerador: autónomos, monotributo general · denominador: autónomos, monotributo general, asalariados privados, asalariados públicos, casas particulares · queda afuera el monotributo social, cuyo padrón cayó de 653 a 259 mil personas en un solo mes (2024-12) por un cambio de régimen y no del mercado de trabajo · con ese régimen adentro daría 22,1%
 
 ## Color vigente y por qué
 
-Dato vigente: 20,6 % del empleo registrado SIPA, sin monotributo social (2026-05).
+Dato vigente: 20,69 % del empleo registrado SIPA, sin monotributo social (2026-06).
 
-El componente está en 92,8 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
+El componente está en 92,4 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
 
 **Color vigente: NARANJA**
 
@@ -740,7 +740,7 @@ Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | empleadores |
 | **SERIE DISPONIBLE** | 2019-01 → 2026-05 (89 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses. La SRT publica su serie histórica todos los meses, con el rezago del cierre administrativo de las declaraciones. |
 | **PRODUCTOR DEL DATO** | SRT — Superintendencia de Riesgos del Trabajo | **OPERACIÓN ESTADÍSTICA** | Serie histórica de partes empleadoras según tamaño de la nómina, cuadro 4.2: cantidad de empleadores con al menos una persona declarada con cobertura de ART, abierta por tramo de nómina, desde julio de 1996. |
-| **MODO DE ACCESO** | Automático: lectura mensual del XLSX publicado por la SRT. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: lectura mensual del XLSX publicado por la SRT. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -832,7 +832,7 @@ Nivel de actividad de la construcción medido por el ISAC desestacionalizado del
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | índice ISAC |
 | **SERIE DISPONIBLE** | 2021-08 → 2026-07 (60 puntos) | **REZAGO DE PUBLICACIÓN** | ~2 meses (calendario de difusión de la construcción del INDEC). |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | ISAC — Indicador Sintético de la Actividad de la Construcción, serie desestacionalizada (el nombre histórico del indicador quedó; la métrica real es el ISAC) |
-| **MODO DE ACCESO** | Automático: descubre la planilla anual vigente desde la página oficial de construcción; usa el mismo lector de niveles que la historia y el componente ISAC del IAI. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: descubre la planilla anual vigente desde la página oficial de construcción; usa el mismo lector de niveles que la historia y el componente ISAC del IAI. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -918,7 +918,7 @@ Qué porcentaje de la población económicamente activa trabaja menos horas de l
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % de la PEA |
 | **SERIE DISPONIBLE** | 2016-04 → 2026-01 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
 | **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — tasa de subocupación demandante, valores trimestrales para el total de aglomerados urbanos relevados |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -998,7 +998,7 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 6.106,53 miles de puestos** (2026-05) | **AMARILLO** | Peso efectivo 5,4 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 6.095,84 miles de puestos** (2026-06) | **AMARILLO** | Peso efectivo 5,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1006,9 +1006,9 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | empleo_registrado | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | miles de puestos |
-| **SERIE DISPONIBLE** | 2023-10 → 2026-05 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Los datos del Sistema Integrado Previsional se publican con alrededor de tres meses de rezago: son declaraciones de las empresas que se consolidan y se revisan. |
+| **SERIE DISPONIBLE** | 2023-10 → 2026-06 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Los datos del Sistema Integrado Previsional se publican con alrededor de tres meses de rezago: son declaraciones de las empresas que se consolidan y se revisan. |
 | **PRODUCTOR DEL DATO** | Ministerio de Capital Humano — Sistema Integrado Previsional Argentino (SIPA) | **OPERACIÓN ESTADÍSTICA** | Trabajadores registrados según modalidad ocupacional principal — asalariados del sector privado, en miles de personas |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1037,19 +1037,19 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **95,7**.
+Este componente está hoy en **95,5**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (6.106,53 miles de puestos) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (6.095,84 miles de puestos) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 6.106,53 miles de puestos (2026-05).
+Dato vigente: 6.095,84 miles de puestos (2026-06).
 
-El componente está en 95,7 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
+El componente está en 95,5 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
 
 **Color vigente: AMARILLO**
 
@@ -1096,7 +1096,7 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 | **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | % de hogares víctimas (últimos 12 meses) |
 | **SERIE DISPONIBLE** | 2014-01 → 2026-07 (139 puntos) | **REZAGO DE PUBLICACIÓN** | La encuesta de victimización se publica con uno a dos meses de rezago. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — LICIP (métrica) + Ministerio de Seguridad — SNIC (contraste) | **OPERACIÓN ESTADÍSTICA** | IVI — Índice de Victimización: porcentaje de hogares de 40 centros urbanos que sufrieron al menos un delito en los últimos 12 meses, denunciado o no |
-| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1186,7 +1186,7 @@ El optimismo de la gente sobre la economía y sus finanzas personales (Índice d
 | **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice |
 | **SERIE DISPONIBLE** | 2021-07 → 2026-08 (60 puntos) | **REZAGO DE PUBLICACIÓN** | Semanas: la universidad publica el índice del mes durante el mes siguiente. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — Centro de Investigación en Finanzas | **OPERACIÓN ESTADÍSTICA** | ICC — Índice de Confianza del Consumidor, serie histórica nacional |
-| **MODO DE ACCESO** | Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1266,7 +1266,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 31,3 % de personas** (2026-07) | **VERDE** | Peso efectivo 7,3 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 31,3 % de personas** (2026-08) | **VERDE** | Peso efectivo 7,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1274,9 +1274,9 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | pobreza_nowcast | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | % de personas |
-| **SERIE DISPONIBLE** | 2025-01 → 2026-07 (19 puntos) | **REZAGO DE PUBLICACIÓN** | El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del INDEC llega dos veces al año y con más demora. |
+| **SERIE DISPONIBLE** | 2025-01 → 2026-08 (20 puntos) | **REZAGO DE PUBLICACIÓN** | El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del INDEC llega dos veces al año y con más demora. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella (estimación mensual) e INDEC (base y referencia oficial) | **OPERACIÓN ESTADÍSTICA** | Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para la base y el contraste |
-| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1314,7 +1314,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 31,3 % de personas (2026-07).
+Dato vigente: 31,3 % de personas (2026-08).
 
 El componente está en 128,1 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Supera el punto donde la tensión toca 0, así que el semáforo ya no distingue mejoras adicionales: seguiría verde igual.
 
@@ -1365,7 +1365,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | vehículos 0km por cada 1.000 habitantes (12 meses) |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-08 (44 puntos) | **REZAGO DE PUBLICACIÓN** | Menos de un mes: el registro publica cada mes en los primeros días del siguiente. Se toma el último mes calendario completo. |
 | **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (unidades) e INDEC (población) | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de automotores y de motovehículos (0 kilómetro), por mes y jurisdicción del registro seccional, sumadas y divididas por la población urbana total proyectada del INDEC. |
-| **MODO DE ACCESO** | Automático: CSV abierto sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: CSV abierto sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1466,7 +1466,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | índice (2017 = 100, desestacionalizado) |
 | **SERIE DISPONIBLE** | 2017-01 → 2026-06 (114 puntos) | **REZAGO DE PUBLICACIÓN** | Medido sobre las 14 publicaciones del calendario del INDEC entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la card sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada |
-| **MODO DE ACCESO** | Automático: planilla pública sin credenciales. La misma serie espejada en la API de datos.gob.ar se sigue bajando en cada corrida, pero sólo como contraste del número leído. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: planilla pública sin credenciales. La misma serie espejada en la API de datos.gob.ar se sigue bajando en cada corrida, pero sólo como contraste del número leído. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1558,7 +1558,7 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 | **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la cartera en situación irregular |
 | **SERIE DISPONIBLE** | 2021-07 → 2026-06 (60 puntos) | **REZAGO DE PUBLICACIÓN** | El anexo del Informe sobre Bancos se publica con ~2 meses de rezago. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Anexo del Informe sobre Bancos — planilla de calidad de cartera, sección Familias: ratio de irregularidad y saldos de préstamos personales y tarjetas |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1649,7 +1649,7 @@ Qué porcentaje de la masa salarial registrada destinan las familias al pago men
 | **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la masa salarial registrada |
 | **SERIE DISPONIBLE** | 2012-04 → 2026-04 (169 puntos) | **REZAGO DE PUBLICACIÓN** | La serie es mensual, pero el BCRA la publica por lotes con el Informe de Estabilidad Financiera semestral. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Informe de Estabilidad Financiera — estimación de la carga mensual de los servicios de deuda de las familias |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial de series del informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-09-12 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial de series del informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-09-13 |
 
 ## Definición — qué mide y por qué importa
 

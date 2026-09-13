@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-09-12T03:26:13.791896+00:00",
+    "snapshot": "2026-09-13T03:28:58.721928+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -111,12 +111,12 @@
       "pesos": {
         "media": 93.0,
         "p05": 91.0,
-        "p95": 94.8,
+        "p95": 94.7,
         "desvio": 1.11
       },
       "combinado": {
         "media": 93.0,
-        "p05": 91.1,
+        "p05": 91.0,
         "p95": 94.7,
         "desvio": 1.1
       }
@@ -138,8 +138,8 @@
       "consumo_carnes_total": 93.1,
       "icc_utdt": 93.1,
       "mortalidad_pymes": 92.9,
-      "subocupacion_demandante": 93.0,
-      "trabajo_independiente": 93.0
+      "trabajo_independiente": 92.9,
+      "subocupacion_demandante": 93.0
     },
     "tension": {
       "base": 6.4,
