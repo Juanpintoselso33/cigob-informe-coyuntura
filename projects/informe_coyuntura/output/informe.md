@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-14 17:26:10"
+generado: "2026-09-14 21:44:07"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -22,7 +22,7 @@ schema_version: "1.2.0"
 | ipc_total | 1.66 | % mensual | 2026-08-01 | fresco |
 | reservas_bcra | 11962.0 | Millones de USD | 2026-07-31 | fresco |
 | idc | -0.26 | σ vs. su historia | 2026-08-01 | fresco |
-| badlar | 22.31 | % anual | 2026-09-10 | fresco |
+| badlar | 21.44 | % anual | 2026-09-11 | fresco |
 | emae_ia | 2.69 | % i.a. | 2026-06-01 | fresco |
 | emae_difusion | 80.0 | % de sectores en crecimiento i.a. | 2026-06-01 | fresco |
 | ipi_manufacturero | -2.82 | % i.a. (promedio 3 meses) | 2026-07-01 | fresco |
@@ -31,15 +31,15 @@ schema_version: "1.2.0"
 | tcrm | 85.53 | Índice (base dic-2015=100) | 2026-08-01 | fresco |
 | rem_ipc_12m | 21.0 | % anual esperado | 2026-08-31 | fresco |
 | idm | 2.4 | pp (brecha i.a. real) | 2026-08-01 | fresco |
-| desequilibrio_monetario | 58.25 | pts de tensión (0-100) | 2026-07-01 | fresco |
+| desequilibrio_monetario | 58.26 | pts de tensión (0-100) | 2026-07-01 | fresco |
 | iai | -5.66 | % i.a. ponderado | 2026-07-01 | fresco |
 | icip | 2.94 | % i.a. ponderado | 2026-06-01 | fresco |
 | credito_privado | -0.8 | % i.a. real (crédito en pesos) | 2026-08-01 | fresco |
 | costo_financiamiento_tesoro | 7.29 | % real anual (TIREA vs. inflación esperada REM) | 2026-08-01 | fresco |
 | resultado_primario | 5.96 | % de la recaudación (acum. 12 meses) | 2026-07-01 | fresco |
-| prestamos_privados | 0.49 | % mensual nominal | 2026-09-08 | fresco |
-| base_monetaria | -1.58 | % mensual nominal | 2026-09-09 | fresco |
-| tc_mayorista | 1.42 | % mensual | 2026-09-11 | fresco |
+| prestamos_privados | 0.96 | % mensual nominal | 2026-09-09 | fresco |
+| base_monetaria | -1.87 | % mensual nominal | 2026-09-10 | fresco |
+| tc_mayorista | 1.45 | % mensual | 2026-09-14 | fresco |
 
 ### 🟢 Politica — score 2.7/10 (estable)
 *Riesgo de barbarismo: político*
@@ -61,8 +61,8 @@ schema_version: "1.2.0"
 | rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-09-14 | fresco |
 | protestas_caba | 280 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
 | cohesion_bloque | 100.0 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-09-09 | fresco |
-| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-14 | fresco |
-| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-14 | fresco |
+| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-14 | ⚠ cache |
+| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-14 | ⚠ cache |
 | produccion_legislativa | 29 | leyes sancionadas (12m) | 2026-08-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-09-01 | fresco |
@@ -90,7 +90,7 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 5.9 | % de brecha CCL/mayorista | 2026-09-11 | fresco |
+| cepo_mulc | 5.97 | % de brecha CCL/mayorista | 2026-09-14 | fresco |
 | apertura_comercial | 7.62 | % del intercambio (alícuota efectiva) | 2026-07-01 | fresco |
 | desregulacion_normativa | 17115.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-08-01 | fresco |
 | reduccion_estado | -20.66 | % de variación vs dic-2023 (dotación APN) | 2026-07-01 | fresco |
@@ -98,7 +98,7 @@ schema_version: "1.2.0"
 | fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-09-14 | fresco |
 | litigiosidad_laboral | 2.1 | % variación juicios SRT (12m vs 12m previos) | 2026-05-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
-| rigi_inversiones | 24.5 | % de inversión aprobada sobre el pipeline | 2026-09-14 | fresco |
+| rigi_inversiones | 23.8 | % de inversión aprobada sobre el pipeline | 2026-09-14 | fresco |
 | concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-09-14 | fresco |
 | asistencia_directa | 100.0 | TDPS: % del devengado de transferencias en ayudas a personas (5.1.4) | 2026-09-14 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
@@ -115,7 +115,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:cobertura_judicial`
+- `desactualizado:politica:bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-14 17:26:10 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-14 21:44:07 — schema 1.2.0*

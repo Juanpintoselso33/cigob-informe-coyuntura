@@ -6,31 +6,6 @@
    "consultas_sin_error": 27,
    "estado": "sin_fallos_detectados",
    "relectura_pendiente": [
-    "428331",
-    "428345",
-    "428354",
-    "428995",
-    "428647",
-    "429408",
-    "429343",
-    "429185",
-    "429120",
-    "429046",
-    "429089",
-    "428894",
-    "428850",
-    "428885",
-    "428769",
-    "428792",
-    "428725",
-    "428735",
-    "428754",
-    "428696",
-    "428706",
-    "428613",
-    "428597",
-    "428512",
-    "428487",
     "428443",
     "428262",
     "428229",
@@ -1230,12 +1205,16 @@
   "428331": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428345": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428346": {
    "del_proceso": false,
@@ -1249,7 +1228,9 @@
   "428354": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428357": {
    "del_proceso": false,
@@ -1546,12 +1527,16 @@
   "428487": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428512": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428542": {
    "del_proceso": false,
@@ -1571,12 +1556,16 @@
   "428597": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428613": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428616": {
    "del_proceso": true,
@@ -1586,7 +1575,9 @@
   "428647": {
    "del_proceso": false,
    "empresa": "Corredores Viales",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428664": {
    "del_proceso": true,
@@ -1596,12 +1587,16 @@
   "428696": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428706": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428716": {
    "del_proceso": true,
@@ -1611,7 +1606,9 @@
   "428725": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428728": {
    "del_proceso": false,
@@ -1621,7 +1618,9 @@
   "428735": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428747": {
    "del_proceso": true,
@@ -1631,17 +1630,23 @@
   "428754": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428769": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428792": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428810": {
    "del_proceso": true,
@@ -1651,17 +1656,23 @@
   "428850": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428885": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428894": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428948": {
    "del_proceso": false,
@@ -1676,7 +1687,9 @@
   "428995": {
    "del_proceso": false,
    "empresa": "Corredores Viales",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428996": {
    "del_proceso": true,
@@ -1701,7 +1714,11 @@
   "429046": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [
+    "Belgrano Cargas"
+   ],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "429053": {
    "del_proceso": false,
@@ -1711,7 +1728,9 @@
   "429089": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "429094": {
    "del_proceso": false,
@@ -1740,7 +1759,9 @@
   "429120": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "429129": {
    "del_proceso": false,
@@ -1796,7 +1817,9 @@
   "429185": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "429191": {
    "del_proceso": false,
@@ -2034,7 +2057,9 @@
   "429343": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "429344": {
    "del_proceso": false,
@@ -2121,7 +2146,9 @@
   "429408": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "429416": {
    "del_proceso": false,

@@ -35,17 +35,17 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 78,7** | **VERDE** | Moderadamente aflojado | 13 indicadores: 9 en verde · 4 en amarillo |
+| **ITCG: 78,5** | **VERDE** | Moderadamente aflojado | 13 indicadores: 9 en verde · 4 en amarillo |
 Componentes que puntúan en este corte: 13 de 13 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 72,2 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 72,0 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 100,0 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. | 57,9 | AMARILLO | 15,0 % |
-| Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales. | 70,9 | VERDE | 15,0 % |
+| Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales. | 70,4 | VERDE | 15,0 % |
 | Reforma social y orden | Reúne la composición presupuestaria de transferencias de dos programas sociales (TDPS), la evolución de cortes por manifestación en CABA y la derivación directa de… | 90,9 | VERDE | 10,0 % |
 
 ```{=openxml}
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (CCL) del dólar mayorista de referencia: la brecha cambiaria. | 5,9 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (CCL) del dólar mayorista de referencia: la brecha cambiaria. | 5,97 % de brecha CCL/mayorista | VERDE | 14,0 % |
 | Apertura comercial (alícuota) | La recaudación de derechos de importación, exportación y tasa de estadística (ARCA) por cada dólar de intercambio… | 7,62 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.115 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -72,7 +72,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Litigiosidad laboral (SRT) | Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT). | 2,1 % variación juicios SRT (12m vs 12m previos) | VERDE | 7,5 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
 | Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 55,6 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
-| Inversiones RIGI | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 24,5 % de inversión aprobada sobre el pipeline | AMARILLO | 6,0 % |
+| Inversiones RIGI | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 23,8 % de inversión aprobada sobre el pipeline | AMARILLO | 6,0 % |
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
 | Asistencia directa (TDPS) | La TDPS aproxima la desintermediación mediante la composición presupuestaria. | 100 TDPS: % del devengado de transferencias en ayudas a personas (5.1.4) | VERDE | 4,0 % |
@@ -95,7 +95,7 @@ Cuánto se separa el dólar financiero (CCL) del dólar mayorista de referencia:
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 5,9 % de brecha CCL/mayorista** (2026-09) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 5,97 % de brecha CCL/mayorista** (2026-09) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -138,13 +138,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1597.50 (2026-09-13T18:00:00-03:00) / mayorista venta 1508.50 (2026-09-11T13:49:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1597.50 (2026-09-14T17:58:00-03:00) / mayorista venta 1507.50 (2026-09-14T13:19:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 5,9 % de brecha CCL/mayorista (2026-09).
+Dato vigente: 5,97 % de brecha CCL/mayorista (2026-09).
 
-5,9 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 8,1 del corte más cercano.
+5,97 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 8,03 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -849,7 +849,7 @@ Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 24,5 % de inversión aprobada sobre el pipeline** (2026-09) | **AMARILLO** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
+| **Hoy: 23,8 % de inversión aprobada sobre el pipeline** (2026-09) | **AMARILLO** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -892,13 +892,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 23 proyectos aprobados (US$ 49.766M) / 23 en evaluación (US$ 153.709M) → 24,5% de la inversión total ya aprobada
+- 23 proyectos aprobados (US$ 49.766M) / 25 en evaluación (US$ 159.713M) → 23,8% de la inversión total ya aprobada
 
 ## Color vigente y por qué
 
-Dato vigente: 24,5 % de inversión aprobada sobre el pipeline (2026-09).
+Dato vigente: 23,8 % de inversión aprobada sobre el pipeline (2026-09).
 
-24,5 % de inversión aprobada sobre el pipeline cae en el tramo que corresponde a Amarillo, a 5,0 del corte más cercano.
+23,8 % de inversión aprobada sobre el pipeline cae en el tramo que corresponde a Amarillo, a 5,7 del corte más cercano.
 
 **Color vigente: AMARILLO**
 

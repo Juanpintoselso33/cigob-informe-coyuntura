@@ -64,7 +64,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Estabilidad monetaria-inflacionaria** | | | | |
 | Inflación mensual (IPC) | Cuánto suben en el mes los precios al consumidor en general. | 1,66 % mensual | VERDE | 15,6 % |
 | Expectativas inflación (REM 12m) | La inflación que el mercado espera para los próximos 12 meses. | 21 % anual esperado | VERDE | 5,2 % |
-| Liquidez en pesos y presión compradora de divisas | Una medida de 0 a 100 que cruza dos cosas observables. | 58,25 pts de tensión (0-100) | AMARILLO | 5,2 % |
+| Liquidez en pesos y presión compradora de divisas | Una medida de 0 a 100 que cruza dos cosas observables. | 58,26 pts de tensión (0-100) | AMARILLO | 5,2 % |
 | **DIMENSIÓN: Viabilidad fiscal-comercial** | | | | |
 | Saldo comercial 12m | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses. | 23.731 Millones de USD (acum. 12 meses) | VERDE | 4,8 % |
 | Base imponible real (nación + provincias) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 91,3 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
@@ -1030,7 +1030,7 @@ Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez pr
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 58,25 pts de tensión (0-100)** (2026-07) | **AMARILLO** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 58,26 pts de tensión (0-100)** (2026-07) | **AMARILLO** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1078,13 +1078,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- tensión 58,25 pts = liquidez privada en pesos transaccionales 32,92% × compra neta de divisas del sector privado US$ 3152,0 M — presión compradora alta pese a liquidez transaccional alta, medidos contra el régimen abierto
+- tensión 58,26 pts = liquidez privada en pesos transaccionales 32,92% × compra neta de divisas del sector privado US$ 3152,0 M — presión compradora alta pese a liquidez transaccional alta, medidos contra el régimen abierto
 
 ## Color vigente y por qué
 
-Dato vigente: 58,25 pts de tensión (0-100) (2026-07).
+Dato vigente: 58,26 pts de tensión (0-100) (2026-07).
 
-58,25 pts de tensión (0-100) cae en el tramo que corresponde a Amarillo, a 1,75 del corte más cercano.
+58,26 pts de tensión (0-100) cae en el tramo que corresponde a Amarillo, a 1,74 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -1273,7 +1273,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- nominal 32,4% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad (IdC) (mes común: 2026-08) · aparte, la cartera en moneda extranjera 17,7% real medida en pesos y 37,8% en dólares; los dos universos juntos, 3,2% real — al 2026-09-08 (provisorio, no puntúa): -1,7% real con deflactor de 2026-08
+- nominal 32,4% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad (IdC) (mes común: 2026-08) · aparte, la cartera en moneda extranjera 17,7% real medida en pesos y 37,8% en dólares; los dos universos juntos, 3,2% real — al 2026-09-09 (provisorio, no puntúa): -1,3% real con deflactor de 2026-08
 
 ## Color vigente y por qué
 
