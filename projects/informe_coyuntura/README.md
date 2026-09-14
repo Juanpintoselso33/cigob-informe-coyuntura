@@ -2,18 +2,18 @@
 
 Colectores de datos para los cuatro cinturones publicados del marco CIGOB-Matus (Macro, Política, Impacto Social y Gestión) y generador del informe periódico. Espíritu de Época salió del tablero el 14 de agosto de 2026.
 
-## Estado verificado al 8 de septiembre de 2026
+## Estado verificado al 14 de septiembre de 2026
 
 | Cinturón | Dimensiones | Componentes nominales | Indicadores publicados (no suspendidos) |
 |---|---:|---:|---:|
 | Impacto Social | 6 | 19 | 18 |
 | Macro | 6 | 15 | 15 |
-| Política | 7 | 19 | 17 |
+| Política | 7 | 19 | 18 |
 | Gestión | 5 | 14 | 13 |
 
-El snapshot publica 63 indicadores. En el corte vigente, 62 tienen observación para puntuar; bloqueo sostenido se publica sin universo y no aporta al índice. Las definiciones nominales conservan cuatro
-componentes suspendidos: sentimiento digital, apoyo empresario, judicialización
-y reestructuración de organismos. No participan del cálculo; sus pesos internos
+El snapshot publica 64 indicadores. En el corte vigente, 63 tienen observación para puntuar; bloqueo sostenido se publica sin universo y no aporta al índice. Las definiciones nominales conservan tres
+componentes suspendidos: sentimiento digital, judicialización y reestructuración
+de organismos (apoyo empresario volvió al índice el 14-sep-2026, ADR-0310). No participan del cálculo; sus pesos internos
 se redistribuyen entre los componentes activos de la dimensión. Los manuales
 describen la estructura y el snapshot muestra la composición efectivamente usada.
 La fecha de consulta no equivale a la fecha del dato ni garantiza que no exista
