@@ -6,31 +6,6 @@
    "consultas_sin_error": 27,
    "estado": "sin_fallos_detectados",
    "relectura_pendiente": [
-    "428431",
-    "428433",
-    "428435",
-    "428436",
-    "428437",
-    "428439",
-    "428440",
-    "428441",
-    "428445",
-    "428446",
-    "428447",
-    "428448",
-    "428449",
-    "428450",
-    "428451",
-    "428465",
-    "428471",
-    "428321",
-    "428322",
-    "428323",
-    "428325",
-    "428326",
-    "428328",
-    "428329",
-    "428330",
     "428331",
     "428345",
     "428354",
@@ -104,7 +79,7 @@
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
   "nuevas_en_la_corrida": 0,
   "revision_manual_en": "2026-09-08",
-  "ultima_corrida": "2026-09-13"
+  "ultima_corrida": "2026-09-14"
  },
  "pendientes": {},
  "revisadas": {
@@ -1199,42 +1174,58 @@
   "428321": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428322": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428323": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428325": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428326": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428328": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428329": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428330": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428331": {
    "del_proceso": false,
@@ -1426,42 +1417,58 @@
   "428431": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428433": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428435": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428436": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428437": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428439": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428440": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428441": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428443": {
    "del_proceso": false,
@@ -1471,37 +1478,51 @@
   "428445": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428446": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428447": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428448": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428449": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428450": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428451": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428457": {
    "del_proceso": true,
@@ -1511,12 +1532,16 @@
   "428465": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428471": {
    "del_proceso": false,
    "empresa": "Enarsa",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428487": {
    "del_proceso": false,
