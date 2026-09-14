@@ -38,6 +38,17 @@ from cotejo_manual import avisos as avisos_cotejo
 CANAL = os.environ.get("SLACK_CANAL_ALERTAS", "")
 TOKEN = os.environ.get("SLACK_BOT_TOKEN", "")
 
+# #alertas no es sólo del Monitor: CiGob tiene más cosas que pueden avisar ahí
+# (la landing, el bot). «El pipeline» o «la web» a secas no dicen de qué
+# producto se habla, así que todo aviso lo nombra en la cabecera.
+MONITOR = "Monitor del Plan de Gobierno"
+MONITOR_URL = "https://cigob-informe-coyuntura.vercel.app/"
+
+
+def _cabecera(glifo: str, texto: str) -> str:
+    return f"{glifo} *{MONITOR} — {texto}*"
+
+
 # Fuentes con degradación CONOCIDA y decidida: no gritan.
 #
 # SAIJ bloquea por IP a los runners de GitHub. Está investigado a fondo y la
@@ -310,7 +321,7 @@ def _reporte(a, pasos, motivos, cols, resumen, fin, cotejos=()) -> int:
     a veces semanas más tarde, cuando nadie se acuerda de qué pasaba esa noche.
     """
     from datetime import datetime, timezone
-    out = [f"La corrida del {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC} falló."]
+    out = [f"La corrida del {MONITOR} del {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC} falló."]
     if a.estado == "cancelled":
         out.append("\n> **El job fue cancelado, no falló.** O se comió el tope de 45 "
                    "minutos, o lo cortó alguien. Un job cancelado suele no dejar causa "
@@ -395,8 +406,8 @@ def main() -> int:
                             cola(texto_gates or texto_cols), cotejos)
 
         cancelado = a.estado == "cancelled"
-        cabecera = ("🔴 *El pipeline nocturno se cortó sin publicar.*"
-                    if cancelado else "🔴 *El pipeline nocturno falló y no publicó.*")
+        cabecera = _cabecera("🔴", "el pipeline nocturno se cortó sin publicar."
+                             if cancelado else "el pipeline nocturno falló y no publicó.")
         cuerpo = [cabecera + _racha(a.fallas)]
         if cancelado:
             cuerpo.append(CANCELADO)
@@ -416,7 +427,7 @@ def main() -> int:
             cuerpo.append(f"*Colectores:* {_linea_colectores(cols)}.")
         _seccion(cuerpo, "*Cotejo manual pendiente:*", cotejos, TOPE_COTEJOS)
         cuerpo.append(
-            "\nLa web sigue mostrando la corrida anterior"
+            f"\n<{MONITOR_URL}|El Monitor> sigue mostrando la corrida anterior"
             + (f" ({a.sirviendo})" if a.sirviendo else "")
             + " — no hay dato malo publicado, hay dato viejo."
         )
@@ -424,23 +435,29 @@ def main() -> int:
         return publicar("\n".join(cuerpo))
 
     if a.modo == "recuperado":
-        return publicar(f"🟢 *El pipeline volvió a publicar.* Ya está al día.\n{a.url}")
+        return publicar(_cabecera("🟢", "el pipeline volvió a publicar.")
+                        + f" Ya está al día.\n{a.url}")
 
-    motivos = analizar(_leer(a.log))
+    texto_log = _leer(a.log)
+    motivos = analizar(texto_log)
     archivo = analizar_bigquery(_leer(a.bigquery), a.bigquery_estado)
     if not motivos and not archivo:
         return 0                                   # silencio: nada inesperado
+    # Mismo reparto que el 🔴: la causa arriba y los cotejos en su sección con
+    # tope. El 14-sep-2026 diez cotejos del IVI con la misma instrucción
+    # partieron el mensaje en dos y dejaron la causa real al final.
+    cotejos = avisos_cotejo(texto_log)
+    degradados = [m for m in motivos if m not in cotejos]
     if motivos:
-        cabecera = "🟡 *La corrida publicó, pero con datos degradados que no esperábamos.*"
-        pie = "\n\nLas fuentes con degradación conocida (SAIJ) no se avisan."
+        cuerpo = [_cabecera("🟡", "la corrida publicó, pero con datos degradados que no esperábamos.")]
     else:
-        cabecera = "🟡 *La corrida publicó, pero no quedó en el archivo histórico.*"
-        pie = ""
-    return publicar(
-        cabecera + "\n"
-        + "\n".join(f"• {m}" for m in motivos + archivo)
-        + f"{pie}\n{a.url}"
-    )
+        cuerpo = [_cabecera("🟡", "la corrida publicó, pero no quedó en el archivo histórico.")]
+    cuerpo += [f"• {m}" for m in degradados + archivo]
+    _seccion(cuerpo, "*Cotejo manual pendiente:*", cotejos, TOPE_COTEJOS)
+    if motivos:
+        cuerpo.append("\nLas fuentes con degradación conocida (SAIJ) no se avisan.")
+    cuerpo.append(a.url)
+    return publicar("\n".join(cuerpo))
 
 if __name__ == "__main__":
     raise SystemExit(main())

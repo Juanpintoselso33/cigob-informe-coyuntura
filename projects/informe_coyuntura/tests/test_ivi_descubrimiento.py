@@ -59,3 +59,26 @@ def test_pdf_ilegible_va_al_final_de_la_cola_y_sale_tras_tres_intentos(tmp_path,
     assert mal not in urls
     mensajes = avisos(capsys.readouterr().err)
     assert len(mensajes) == 1 and 'mal.pdf' in mensajes[0] and 'inseguridad' in mensajes[0]
+
+
+def test_parser_lee_informes_viejos_con_caracteres_separados(monkeypatch):
+    # pypdf parte así el texto de los informes 2014-2016; once meses caían a cotejo.
+    textos = {
+        b'2016': 'li cip FEBRERO 201 6 IVI – ÍN DICE Se estima que el 3 1 . 9 % de los hogares en 40',
+        b'2015': 'li cip M AYO 201 5 IVI Se estima que el 3 5 . 7 % de los hogares en 40',
+        b'2026': 'JULIO 2026 IVI Se estima que el 27.3% de los hogares en 40',
+        b'2014': 'licip ENERO 2014 Se estima que el 3 6.4% de los hogares',
+        b'genero': 'GENERO 2014 informe MAYO 2015 Se estima que el 35.7 % de los hogares',
+        b'131': 'MAYO 2015 dato 131.9 % de los hogares',
+    }
+    import pypdf
+    class Lector:
+        def __init__(self, buf):
+            self.pages = [SimpleNamespace(extract_text=lambda t=textos[buf.read()]: t)]
+    monkeypatch.setattr(pypdf, 'PdfReader', Lector)
+    assert ds._ivi_parse_pdf(b'2016') == ('2016-02', 31.9)
+    assert ds._ivi_parse_pdf(b'2015') == ('2015-05', 35.7)
+    assert ds._ivi_parse_pdf(b'2026') == ('2026-07', 27.3)
+    assert ds._ivi_parse_pdf(b'2014') == ('2014-01', 36.4)       # el viejo guardó 6,4
+    assert ds._ivi_parse_pdf(b'genero') == ('2015-05', 35.7)     # no lee ENERO en GENERO
+    assert ds._ivi_parse_pdf(b'131') is None                     # no trunca 131,9 a 31,9

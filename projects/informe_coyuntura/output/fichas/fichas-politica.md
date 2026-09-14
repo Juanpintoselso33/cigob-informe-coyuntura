@@ -959,7 +959,7 @@ Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones d
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)** (2026-08) | **VERDE** | Peso efectivo 15 % del ITCP | Cinturón Política |
+| **Hoy: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)** (2026-09) | **VERDE** | Peso efectivo 15 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -969,7 +969,7 @@ Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones d
 | **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días |
-| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-14 |
+| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-14 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1002,11 +1002,11 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 100,0% = Diputados 100,0% (peso 65%, 42 actas) · última acta 2026-08-27 · Senado 100,0% (peso 35%, 16 actas) · última acta 2026-08-27
+- 100,0% = Diputados 100,0% (peso 65%, 44 actas) · última acta 2026-09-09 · Senado 100,0% (peso 35%, 16 actas) · última acta 2026-08-27
 
 ## Color vigente y por qué
 
-Dato vigente: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) (2026-08).
+Dato vigente: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) (2026-09).
 
 100,0 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) cae en el tramo que corresponde a Verde, a 2,4 del corte más cercano.
 

@@ -1,5 +1,5 @@
 {
-  "revisado_en": "2026-09-08",
+  "revisado_en": "2026-09-14",
   "criterio": "Sanciones omitidas por CKAN, cotejadas en originales del Boletín Oficial y de la Dirección de Taquígrafos. La fecha es sanción definitiva, no media sanción, publicación ni promulgación. Se conserva expediente cuando todavía no se verificó un número de ley, sin inventarlo.",
   "contraste_hcdn": "https://www3.hcdn.gob.ar/dependencias/secparl/dgral_info_parlamentaria/dip/archivos/Leyes_2023-_Pres_Javier_Milei_con_bloques_y_fecha_pres_y_sanc.pdf",
   "leyes": [
@@ -104,7 +104,10 @@
       "expediente_senado": "CD-4/26",
       "fuente": "https://www.senado.gob.ar/parlamentario/sesiones/2026-08-27%2000:00:00/7-26/downloadBoletin",
       "pagina": 18,
-      "sancion_definitiva_verificada": true
+      "sancion_definitiva_verificada": true,
+      "EXPEDIENTE_INICIAL": "0011-PE-2024",
+      "PROYECTO_ID": "HCDN276796",
+      "fuente_alias": "https://datos.hcdn.gob.ar/dataset/proyectos-parlamentarios (EXP_DIPUTADOS y EXP_SENADO del mismo PROYECTO_ID)"
     },
     {
       "LEY": "27825",
@@ -114,7 +117,10 @@
       "expediente_senado": "CD-5/26",
       "fuente": "https://www.senado.gob.ar/parlamentario/sesiones/2026-08-27%2000:00:00/7-26/downloadBoletin",
       "pagina": 18,
-      "sancion_definitiva_verificada": true
+      "sancion_definitiva_verificada": true,
+      "EXPEDIENTE_INICIAL": "0012-PE-2024",
+      "PROYECTO_ID": "HCDN276849",
+      "fuente_alias": "https://datos.hcdn.gob.ar/dataset/proyectos-parlamentarios (EXP_DIPUTADOS y EXP_SENADO del mismo PROYECTO_ID)"
     }
   ]
 }

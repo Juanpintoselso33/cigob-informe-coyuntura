@@ -1094,7 +1094,7 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | inseguridad | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | % de hogares víctimas (últimos 12 meses) |
-| **SERIE DISPONIBLE** | 2014-01 → 2026-07 (139 puntos) | **REZAGO DE PUBLICACIÓN** | La encuesta de victimización se publica con uno a dos meses de rezago. |
+| **SERIE DISPONIBLE** | 2014-01 → 2026-07 (150 puntos) | **REZAGO DE PUBLICACIÓN** | La encuesta de victimización se publica con uno a dos meses de rezago. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — LICIP (métrica) + Ministerio de Seguridad — SNIC (contraste) | **OPERACIÓN ESTADÍSTICA** | IVI — Índice de Victimización: porcentaje de hogares de 40 centros urbanos que sufrieron al menos un delito en los últimos 12 meses, denunciado o no |
 | **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-14 |
 

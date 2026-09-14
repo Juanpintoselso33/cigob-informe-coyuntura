@@ -1,7 +1,7 @@
 {
   "_meta": {
     "fuente": "UTDT — LICIP, Índice de Victimización (informes mensuales PDF)",
-    "actualizado": "2026-09-13",
+    "actualizado": "2026-09-14",
     "nota": "Encuesta mensual, 40 centros urbanos, ventana 12 meses. PDFs con URL por hash: se descubren desde el listado y se procesan una sola vez (ADR-0032)."
   },
   "procesados": [
@@ -143,7 +143,18 @@
     "https://www.utdt.edu/download.php?fname=_170834892758439900.pdf",
     "https://www.utdt.edu/download.php?fname=_178596894096943700.pdf",
     "https://www.utdt.edu/download.php?fname=_178596895055701100.pdf",
-    "https://www.utdt.edu/download.php?fname=_178596896306235900.pdf"
+    "https://www.utdt.edu/download.php?fname=_178596896306235900.pdf",
+    "https://www.utdt.edu/download.php?fname=_148218927092227400.pdf",
+    "https://www.utdt.edu/download.php?fname=_148218922510224800.pdf",
+    "https://www.utdt.edu/download.php?fname=_147819641620259900.pdf",
+    "https://www.utdt.edu/download.php?fname=_147819636374399200.pdf",
+    "https://www.utdt.edu/download.php?fname=_147819629387312200.pdf",
+    "https://www.utdt.edu/download.php?fname=_147819624752890300.pdf",
+    "https://www.utdt.edu/download.php?fname=_147819620415624100.pdf",
+    "https://www.utdt.edu/download.php?fname=_146756200456911600.pdf",
+    "https://www.utdt.edu/download.php?fname=_146499317997784100.pdf",
+    "https://www.utdt.edu/download.php?fname=_146193746561475900.pdf",
+    "https://www.utdt.edu/download.php?fname=_146006263321143500.pdf"
   ],
   "mensual": {
     "2020-01": 28.8,
@@ -191,7 +202,7 @@
     "2016-09": 27.0,
     "2016-10": 27.8,
     "2016-06": 28.0,
-    "2014-01": 6.4,
+    "2014-01": 36.4,
     "2014-04": 41.1,
     "2014-05": 37.1,
     "2014-07": 33.5,
@@ -284,63 +295,18 @@
     "2023-12": 27.8,
     "2026-05": 27.0,
     "2026-06": 25.0,
-    "2026-07": 27.3
+    "2026-07": 27.3,
+    "2014-09": 37.6,
+    "2014-06": 36.6,
+    "2015-11": 38.4,
+    "2015-09": 34.5,
+    "2015-05": 35.7,
+    "2015-03": 39.0,
+    "2015-01": 37.5,
+    "2016-05": 26.2,
+    "2016-04": 26.6,
+    "2016-03": 28.4,
+    "2016-02": 31.9
   },
-  "fallidos": {
-    "https://www.utdt.edu/download.php?fname=_148218927092227400.pdf": {
-      "intentos": 3,
-      "ultimo": "2026-09-13",
-      "motivo": "sin período/valor reconocible"
-    },
-    "https://www.utdt.edu/download.php?fname=_148218922510224800.pdf": {
-      "intentos": 3,
-      "ultimo": "2026-09-13",
-      "motivo": "sin período/valor reconocible"
-    },
-    "https://www.utdt.edu/download.php?fname=_147819641620259900.pdf": {
-      "intentos": 3,
-      "ultimo": "2026-09-13",
-      "motivo": "sin período/valor reconocible"
-    },
-    "https://www.utdt.edu/download.php?fname=_147819636374399200.pdf": {
-      "intentos": 3,
-      "ultimo": "2026-09-13",
-      "motivo": "sin período/valor reconocible"
-    },
-    "https://www.utdt.edu/download.php?fname=_147819629387312200.pdf": {
-      "intentos": 3,
-      "ultimo": "2026-09-13",
-      "motivo": "sin período/valor reconocible"
-    },
-    "https://www.utdt.edu/download.php?fname=_147819624752890300.pdf": {
-      "intentos": 3,
-      "ultimo": "2026-09-13",
-      "motivo": "sin período/valor reconocible"
-    },
-    "https://www.utdt.edu/download.php?fname=_147819620415624100.pdf": {
-      "intentos": 3,
-      "ultimo": "2026-09-13",
-      "motivo": "sin período/valor reconocible"
-    },
-    "https://www.utdt.edu/download.php?fname=_146756200456911600.pdf": {
-      "intentos": 3,
-      "ultimo": "2026-09-13",
-      "motivo": "sin período/valor reconocible"
-    },
-    "https://www.utdt.edu/download.php?fname=_146499317997784100.pdf": {
-      "intentos": 3,
-      "ultimo": "2026-09-13",
-      "motivo": "sin período/valor reconocible"
-    },
-    "https://www.utdt.edu/download.php?fname=_146193746561475900.pdf": {
-      "intentos": 3,
-      "ultimo": "2026-09-13",
-      "motivo": "sin período/valor reconocible"
-    },
-    "https://www.utdt.edu/download.php?fname=_146006263321143500.pdf": {
-      "intentos": 3,
-      "ultimo": "2026-09-13",
-      "motivo": "sin período/valor reconocible"
-    }
-  }
+  "fallidos": {}
 }

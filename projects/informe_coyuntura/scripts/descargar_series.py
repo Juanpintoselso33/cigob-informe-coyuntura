@@ -2369,16 +2369,24 @@ IVI_MESES = {"ENERO": 1, "FEBRERO": 2, "MARZO": 3, "ABRIL": 4, "MAYO": 5, "JUNIO
 def _ivi_parse_pdf(content: bytes) -> tuple | None:
     """(YYYY-MM, ivi_pct) desde la primera página del informe mensual del
     LICIP: encabezado 'MES AÑO' + 'XX.X % de los hogares'. Patrón verificado
-    en informes de 2020, 2025 y 2026."""
+    en informes de 2014 a 2026.
+
+    En los informes de 2014-2016 pypdf parte las palabras y los números con
+    espacios ('M AYO 201 5', '3 1 . 9 %'): el patrón admite un espacio entre
+    cada carácter. Sin eso, once meses de 2014-2016 caían a cotejo manual."""
     import io as _io
     from pypdf import PdfReader
     t = " ".join(PdfReader(_io.BytesIO(content)).pages[0].extract_text().split())
-    m = re.search(r"([A-ZÑ]+)\s+(20\d\d)", t)
-    v = re.search(r"(\d{1,2}[.,]\d)\s*%\s*de los hogares", t)
-    if not (m and v and m.group(1).upper() in IVI_MESES):
+    meses = "|".join(r"\s?".join(mes) for mes in sorted(IVI_MESES, key=len, reverse=True))
+    # Los bordes a la izquierda evitan leer ENERO dentro de GENERO o 31,9 dentro
+    # de 131,9. El viejo patrón no los tenía y guardó 2014-01 = 6,4.
+    m = re.search(rf"(?<![A-ZÑ])({meses})\s*(2\s?0\s?\d\s?\d)(?!\d)", t)
+    v = re.search(r"(?<![\d.,])(\d(?:\s?\d)?)\s?[.,]\s?(\d)\s*%\s*de los hogares", t)
+    if not (m and v):
         return None
-    ym = f"{m.group(2)}-{IVI_MESES[m.group(1).upper()]:02d}"
-    return ym, float(v.group(1).replace(",", "."))
+    mes = IVI_MESES[m.group(1).replace(" ", "")]
+    anio = m.group(2).replace(" ", "")
+    return f"{anio}-{mes:02d}", float(f"{v.group(1).replace(' ', '')}.{v.group(2)}")
 
 
 def fetch_ivi_serie() -> list:

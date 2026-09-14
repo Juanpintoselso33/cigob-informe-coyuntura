@@ -80,3 +80,15 @@ def test_expediente_con_dos_leyes_no_se_fusiona_silenciosamente(monkeypatch):
     monkeypatch.setattr(politica,'_hcdn_paginate',lambda *a:[
         {**fila(n,'2026-08-26'),'EXPEDIENTE_INICIAL':'0028-S-2026'} for n in [1,2]])
     assert politica.fetch_produccion_legislativa() is None
+
+
+def test_ckan_sin_numero_toma_la_ley_de_su_expediente(monkeypatch):
+    # CKAN publicó los tratados del 27-ago sin número; el registro ya los tenía
+    # como 27.824 con el mismo expediente. Antes esto congelaba el indicador.
+    extra = {**fila('27824', '2026-08-27'), 'EXPEDIENTE_INICIAL': '0011-PE-2024',
+             'sancion_definitiva_verificada': True}
+    monkeypatch.setattr(politica, '_leyes_sancionadas_complementarias', lambda: [extra])
+    monkeypatch.setattr(politica, '_hcdn_paginate', lambda *a: [
+        fila(1, '2026-06-24'),
+        {'LEY': None, 'EXPEDIENTE_INICIAL': '0011-PE-2024', 'SANCION_DEFINITIVA': '2026-08-27T00:00:00'}])
+    assert politica.produccion_legislativa_serie()['2026-08'] == 2

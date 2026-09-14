@@ -2640,11 +2640,14 @@ def _leyes_fechadas(filas: list[dict]) -> list[tuple[str, date]]:
     leyes: dict[str, set[date]] = {}
     for fila in filas:
         ley = str(fila.get("LEY") or "").strip()
+        refs = referencias(fila)
+        numeros = {aliases[ref] for ref in refs if ref in aliases}
         if ley.isdigit():
             identidad = "ley:" + ley
-        elif not ley and fila.get("sancion_definitiva_verificada") is True and referencias(fila):
-            refs = referencias(fila)
-            numeros = {aliases[ref] for ref in refs if ref in aliases}
+        elif not ley and refs and (numeros or fila.get("sancion_definitiva_verificada") is True):
+            # Sin número, la fila vale si su sanción está verificada o si su
+            # expediente ya pertenece a una ley numerada: CKAN publica la
+            # sanción antes que el número (27.824/27.825, ADR-0308).
             if len(numeros) > 1:
                 raise ValueError("sanción complementaria con identidades contradictorias")
             identidad = "ley:" + next(iter(numeros)) if numeros else refs[0]

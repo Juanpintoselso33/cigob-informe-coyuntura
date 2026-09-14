@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-14 03:29:38"
+generado: "2026-09-14 17:26:10"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -60,10 +60,10 @@ schema_version: "1.2.0"
 | derrotas_legislativas | 2 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-09-14 | fresco |
 | rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-09-14 | fresco |
 | protestas_caba | 280 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
-| cohesion_bloque | 100.0 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-08-27 | fresco |
-| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-08 | ⚠ cache |
-| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-08 | ⚠ cache |
-| produccion_legislativa | 29 | leyes sancionadas (12m) | 2026-08-01 | ⚠ cache |
+| cohesion_bloque | 100.0 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-09-09 | fresco |
+| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-14 | fresco |
+| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-14 | fresco |
+| produccion_legislativa | 29 | leyes sancionadas (12m) | 2026-08-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-09-01 | fresco |
 | cobertura_judicial | 73.82 | % estimado de cargos con juez designado | 2026-09-01 | ⚠ cache |
@@ -74,7 +74,7 @@ schema_version: "1.2.0"
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
 | apoyo_empresario | -0.429 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | agosto de 2026 (ADR-0246) | El saldo −0,429 salía de SIETE textos codificados con CATORCE pendientes, y entre los pendientes había apoyos y críticas sustantivos. Un saldo sobre un corpus abierto no mide la postura del sector: mide qué se alcanzó a codificar. |
-| judicializacion | 1.57 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
+| judicializacion | 1.7 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
 
 ### 🔴 Vida Cotidiana — score 6.4/10 (tensionado)
 *Riesgo de barbarismo: político*
@@ -115,7 +115,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:bloqueo_sostenido,desafios_legislativos,produccion_legislativa,cobertura_judicial`
+- `desactualizado:politica:cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-14 03:29:38 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-14 17:26:10 — schema 1.2.0*
