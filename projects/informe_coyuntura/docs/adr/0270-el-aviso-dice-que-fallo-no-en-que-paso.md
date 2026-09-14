@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-09-03
 cinturon: 'transversal'
 archivos: ['scripts/aviso_slack.py', '.github/workflows/data-pipeline.yml', 'tests/test_aviso_slack.py']
-relacionado: ['0133', '0175']
+relacionado: ['0133', '0175', '0309']
 ambito: 'Operación · qué dicen el aviso de Slack y el issue cuando el pipeline se cae'
 origen: 'El pipeline falló las noches del 1, 2 y 3-sep-2026 y los tres avisos decían lo mismo: el nombre del paso'
 ---

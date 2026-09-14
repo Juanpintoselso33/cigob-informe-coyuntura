@@ -109,6 +109,12 @@ def fecha_acta_verificada(id_acta):
 
 
 def avisos(log):
+    return [f"Cotejo manual · {d['indicador']} · {d['registro']}\n    {d['motivo']}\n    Fuente: {d['fuente']}"
+            for d in datos(log)]
+
+
+def datos(log):
+    """Los cotejos del log como dicts, sin repetir y con el texto neutralizado."""
     salida, vistos = [], set()
     for linea in log.splitlines():
         inicio = linea.find(MARCA)
@@ -129,5 +135,5 @@ def avisos(log):
         def texto(s):
             return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('\n', ' ')[:500]
         ind, reg, motivo, fuente = map(texto, campos)
-        salida.append(f'Cotejo manual · {ind} · {reg}\n    {motivo}\n    Fuente: {fuente}')
+        salida.append(dict(indicador=ind, registro=reg, motivo=motivo, fuente=fuente))
     return salida

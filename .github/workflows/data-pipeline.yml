@@ -11,6 +11,12 @@ on:
     - cron: "0 3 * * *"
   workflow_dispatch: {}   # permite dispararlo a mano desde la pestaña Actions
 
+# Una corrida a la vez: dos solapadas leerían el mismo estado de los avisos y
+# duplicarían hilos en Slack (ADR-0309). La segunda espera, no cancela.
+concurrency:
+  group: data-pipeline
+  cancel-in-progress: false
+
 permissions:
   contents: write   # commitear el snapshot + caches de vuelta a main
   issues: write     # abrir/actualizar el issue de aviso cuando la corrida falla
@@ -44,6 +50,19 @@ jobs:
           # nocturno se cayó cuatro noches seguidas por eso, sin que ningún dato
           # estuviera mal. El repo pesa 16 MB y 913 commits: traer todo no cuesta.
           fetch-depth: 0
+
+      # Los avisos a Slack llevan un hilo por problema (ADR-0309) y necesitan
+      # recordar qué hilos quedaron abiertos. Eso no puede ir en git: una
+      # corrida caída no llega a commitear, y es justo la que avisa. Va en la
+      # cache de Actions, que se guarda al final pase lo que pase.
+      - name: Restaurar el estado de los avisos
+        if: github.ref == 'refs/heads/main'
+        uses: actions/cache/restore@v6
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/estado-avisos
+          key: estado-avisos-${{ github.run_id }}
+          restore-keys: estado-avisos-
 
       - uses: actions/setup-python@v6
         with:
@@ -179,7 +198,7 @@ jobs:
           set -o pipefail
           python -m pytest tests -q 2>&1 | tee -a "$RUNNER_TEMP/gates.log"
 
-      # El Monitor en #informe-de-coyuntura: un mensaje fijo que se actualiza en
+      # El Monitor en #monitor-de-proyecto-de-gobierno: un mensaje fijo que se actualiza en
       # su lugar (chat.update NO notifica) y uno nuevo SÓLO si algo se movió de
       # verdad. Ese canal tuvo 8 mensajes humanos en 60 días: un resumen diario
       # lo convertiría en un feed con el bot hablando el 88% del tiempo.
@@ -326,7 +345,10 @@ jobs:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           BIGQUERY_ESTADO: ${{ steps.bigquery.outcome }}
         run: |
-          python scripts/aviso_slack.py degradado \
+          # Los hilos son de `main` (ADR-0309): en otra rama el aviso sale suelto.
+          estado=""
+          [ "$GITHUB_REF" = "refs/heads/main" ] && estado="$RUNNER_TEMP/estado-avisos/estado.json"
+          python scripts/aviso_slack.py degradado --archivo-estado "$estado" \
             --log "$RUNNER_TEMP/colectores.log" \
             --bigquery "$RUNNER_TEMP/bigquery.log" --bigquery-estado "$BIGQUERY_ESTADO"
 
@@ -404,7 +426,9 @@ jobs:
           # aviso se abre y se cierra a las 3 de la mañana sin que nadie lo
           # vea: pasó del 22 al 24-ago-2026, tres noches, con la web sirviendo
           # datos del 21.
-          python scripts/aviso_slack.py fallo --pasos "$pasos" \
+          estado=""
+          [ "$GITHUB_REF" = "refs/heads/main" ] && estado="$RUNNER_TEMP/estado-avisos/estado.json"
+          python scripts/aviso_slack.py fallo --pasos "$pasos" --archivo-estado "$estado" \
             --gates "$RUNNER_TEMP/gates.log" --log "$RUNNER_TEMP/colectores.log" \
             --fallas "$fallas" --sirviendo "$sirviendo" --estado "$ESTADO" || true
 
@@ -415,15 +439,22 @@ jobs:
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          SLACK_CANAL_ALERTAS: ${{ secrets.SLACK_CANAL_ALERTAS }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          # El aviso de recuperación va DENTRO del loop a propósito: si no
-          # había issue abierto, no hubo falla, y un "todo bien" diario es
-          # justo lo que entrena a la gente a ignorar el canal.
+          # El «✅ se resolvió» de Slack ya no sale de acá: lo manda el paso de
+          # degradaciones al cerrar el hilo `corrida` (ADR-0309), así que sólo
+          # se cierra el issue.
           for n in $(gh issue list --state open --label pipeline-caido \
                        --json number --jq '.[].number'); do
             gh issue close "$n" --comment "Resuelto: la corrida terminó bien y publicó. $RUN_URL"
-            python scripts/aviso_slack.py recuperado || true
           done
+
+      # Siempre, también si la corrida falló o la cancelaron: es la corrida
+      # caída la que abre el hilo que la próxima tiene que cerrar.
+      - name: Guardar el estado de los avisos
+        if: always() && github.ref == 'refs/heads/main'
+        uses: actions/cache/save@v6
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/estado-avisos
+          key: estado-avisos-${{ github.run_id }}-${{ github.run_attempt }}

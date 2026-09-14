@@ -391,3 +391,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0270](0270-el-aviso-dice-que-fallo-no-en-que-paso.md) | El aviso dice qué falló, no en qué paso falló |  | vigente |
 | [0274](0274-la-historia-del-indice-no-se-recorta-por-su-contraste.md) | La historia del índice no se recorta por su contraste |  | vigente |
 | [0290](0290-recalculo-anota-aportes-de-las-tarjetas.md) | El recálculo anota los aportes de las tarjetas |  | vigente |
+| [0309](0309-un-hilo-por-problema-en-los-avisos.md) | Un hilo por problema en los avisos |  | vigente |

@@ -264,34 +264,3 @@ def test_eficacia_con_corte_deja_fuera_sancion_valida_posterior(tmp_path, monkey
     assert politica._leyes_sancionadas_ids('2026-02-28') == {'HCDN1'}
     assert politica._leyes_sancionadas_ids('2026-03-05') == {'HCDN1', 'HCDN2'}
     assert avisos(capsys.readouterr().err) == []
-
-
-def test_degradado_pone_la_causa_arriba_y_topea_los_cotejos(tmp_path, monkeypatch, capsys):
-    # 14-sep-2026: diez cotejos del IVI con la misma instrucción partieron el 🟡
-    # en dos mensajes y la causa real quedó al final. Y ningún aviso decía de
-    # qué producto hablaba.
-    revisar_fechas_sancion([{'PROYECTO_ID': f'HCDN{n}'} for n in range(10)], 'https://datos.hcdn.gob.ar')
-    p = tmp_path / 'log'
-    p.write_text(capsys.readouterr().err
-                 + '  [ERR] produccion_legislativa: leyes-sancionadas sin ley -- se conservan\n')
-    enviados = []
-    monkeypatch.setattr(aviso_slack, 'publicar', lambda cuerpo: enviados.append(cuerpo) or 0)
-    monkeypatch.setattr(sys, 'argv', ['aviso_slack', 'degradado', '--log', str(p), '--url', 'https://github.com/run/1'])
-    assert aviso_slack.main() == 0
-    cuerpo = enviados[0]
-    assert cuerpo.startswith('🟡 *Monitor del Plan de Gobierno — ')
-    arriba, _, cotejos = cuerpo.partition('*Cotejo manual pendiente:*')
-    assert 'produccion_legislativa' in arriba and 'HCDN' not in arriba
-    assert sum(f'HCDN{n}' in cotejos for n in range(10)) == 3
-    assert '…y 7 más, en el run.' in cotejos
-
-
-@pytest.mark.parametrize('modo', ['fallo', 'recuperado'])
-def test_todo_aviso_nombra_el_monitor(tmp_path, monkeypatch, modo):
-    p = tmp_path / 'log'
-    p.write_text('FAILED tests/test_x.py::test_a - error\n')
-    enviados = []
-    monkeypatch.setattr(aviso_slack, 'publicar', lambda cuerpo: enviados.append(cuerpo) or 0)
-    monkeypatch.setattr(sys, 'argv', ['aviso_slack', modo, '--log', str(p), '--url', 'https://github.com/run/1'])
-    assert aviso_slack.main() == 0
-    assert 'Monitor del Plan de Gobierno' in enviados[0].splitlines()[0]

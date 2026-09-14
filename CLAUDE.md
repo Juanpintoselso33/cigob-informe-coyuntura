@@ -443,12 +443,25 @@ alcanza.**
 - **Issue de GitHub** con etiqueta `pipeline-caido`: se abre en la primera
   falla, acumula un comentario por corrida y **se cierra solo** cuando una
   vuelve a publicar. Es el registro.
-- **`#alertas` en el Slack de CiGob** (`scripts/aviso_slack.py`): es la
+- **`#monitor-alertas` en el Slack de CiGob** (ex `#alertas`, `scripts/aviso_slack.py`): es la
   notificación. Del 22 al 24-ago-2026 el pipeline falló tres noches seguidas,
   la web sirvió datos del 21, y el issue se abrió y se cerró a las 3 de la
   mañana sin que nadie lo viera.
 
-Tres avisos, y ninguno se manda porque sí:
+**Un hilo por problema (ADR-0309).** Cada problema tiene clave estable y un
+mensaje raíz: aparece → mensaje nuevo; sigue → se edita la raíz («lleva N
+corridas»), sin mensaje nuevo en el canal; se resuelve → respuesta en el hilo
+que también sale en el canal («✅ se resolvió…») y la raíz pasa a ✅. Del 12 al
+14-sep-2026 el mismo 🟡 salió tres noches como tres mensajes y, al arreglarse,
+no dijo nada. El estado vive en la **cache de Actions**, no en git: una corrida
+caída no commitea y es la que abre el hilo. Una corrida caída sólo cierra el
+hilo `corrida`, nunca las degradaciones (esa noche no se midieron).
+
+**Todo aviso nombra el producto** («🟡 *Monitor del Plan de Gobierno — …*») y
+dice **qué ve la gente** en la web y **qué hacer**, con el rótulo de la card de
+`datos.ts`, no la clave interna (pedido de Juan, 14-sep-2026).
+
+Los avisos, y ninguno se manda porque sí:
 
 | Cuándo | Qué dice |
 |---|---|
@@ -456,7 +469,7 @@ Tres avisos, y ninguno se manda porque sí:
 | Publicó pero degradada de forma inesperada | 🟡 con el indicador y el motivo |
 | Un colector registró una incidencia `[COTEJO_MANUAL]` (publique o no) | 🟡 o, dentro del 🔴, una sección aparte de las causas con tope propio. Qué incidencias existen y cómo se corrige cada una: sección "Avisos de datos que requieren cotejo manual" de `projects/informe_coyuntura/README.md` |
 | Publicó pero **no quedó en BigQuery** (o falta `GCP_SA_KEY`) | 🟡 con el error del export, la pista (facturación suspendida, clave vencida) y cómo se recupera con `bigquery_backfill.py`. El paso corre con `continue-on-error`, así que sin este aviso el workflow sale en verde: pasó el 9 y 10-sep-2026 |
-| Volvió a publicar después de fallar | 🟢 una sola vez, **dentro del loop que cierra el issue** |
+| Cualquiera de los anteriores deja de pasar | ✅ en el hilo del problema, con broadcast al canal, y la raíz editada a resuelto |
 
 El 🔴 y el cuerpo del issue salen del **mismo parser** (`aviso_slack.py`, modos
 `fallo` y `reporte`): un solo lugar que sabe leer un log de corrida, dos
@@ -505,7 +518,7 @@ clasificador, y sobre todo prueba lo que NO tiene que avisar.
 Los secretos (`SLACK_BOT_TOKEN`, `SLACK_CANAL_ALERTAS`, `SLACK_CANAL_INFORME`)
 están en el repo del informe. Los canales requieren invitar al bot a mano.
 
-### El Monitor en `#informe-de-coyuntura` (`scripts/aviso_informe.py`)
+### El Monitor en `#monitor-de-proyecto-de-gobierno` (ex `#informe-de-coyuntura`, `scripts/aviso_informe.py`)
 
 Ese canal es de **discusión**, no de avisos: tuvo **8 mensajes humanos en 60
 días**. Un resumen diario serían ~30 por mes contra ~4: el bot hablando el 88%
