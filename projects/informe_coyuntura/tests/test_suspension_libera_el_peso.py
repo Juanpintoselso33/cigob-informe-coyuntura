@@ -4,7 +4,8 @@
 La Entrega 2 de la remediación saca tres indicadores del score:
 `apoyo_empresario` (ITCP), `reestructuracion_organismos` (ITCG) y
 `sentimiento_digital` (ITVC); `judicializacion` (ITCP) se sumó después, con
-ADR-0255. El riesgo de una suspensión no es el indicador que sale — es lo que
+ADR-0255. `apoyo_empresario` volvió al score con ADR-0310, sacando su línea de
+la tabla de suspendidos — que es exactamente lo que este mecanismo promete. El riesgo de una suspensión no es el indicador que sale — es lo que
 pasa con su peso.
 
 Dos formas de hacerlo mal, las dos vistas en proyectos parecidos:
@@ -34,7 +35,6 @@ import publicar
 
 # (módulo, indicador suspendido, dimensión, cómo se pasan los valores)
 CASOS = [
-    (itcp, "apoyo_empresario", "sector_privado"),
     (itcp, "judicializacion", "poder_judicial"),
     (itcg, "reestructuracion_organismos", "reforma_estado"),
     (itvc, "sentimiento_digital", "percepcion"),

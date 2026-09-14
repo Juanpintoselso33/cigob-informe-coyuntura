@@ -106,7 +106,8 @@ def test_la_serie_arranca_en_el_periodo_y_es_mensual_ascendente():
     assert serie[0][0] == "2023-12-01", "el período arranca con la asunción"
     fechas = [f for f, _ in serie]
     assert fechas == sorted(fechas) and len(fechas) == len(set(fechas))
-    assert len(serie) >= 30, "la serie se acortó: revisar el registro"
+    # Sin exigir un largo: el corte por pendientes (ADR-0310) acorta la serie
+    # legítimamente el día que haya un comunicado atrasado sin codificar.
 
 
 @pytest.mark.parametrize("saldo,esperado", [

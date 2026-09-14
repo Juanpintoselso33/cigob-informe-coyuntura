@@ -2109,6 +2109,13 @@ def apoyo_empresario_serie() -> list:
     equilibrio entre apoyo y crítica, que es una afirmación distinta de «no se
     pronunció» — así que ese mes simplemente no tiene punto.
 
+    **Corpus cerrado (ADR-0310).** La serie llega sólo hasta el último mes con
+    el inventario completo: si hay un comunicado detectado sin codificar, el
+    mes de ese comunicado y los siguientes no se calculan hasta codificarlo.
+    Así el saldo nunca vuelve a medir «qué se alcanzó a clasificar», que fue lo
+    que lo sacó del ITCP (ADR-0246); el dato queda viejo a la vista y el
+    rezago máximo del índice lo marca.
+
     [[YYYY-MM-01, saldo]] ascendente, saldo en [−1, +1].
     """
     d = json.loads(APOYO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
@@ -2120,8 +2127,9 @@ def apoyo_empresario_serie() -> list:
 
     y, m = map(int, APOYO_DESDE.split("-"))
     hoy = date.today()
+    tope = _apoyo_tope(hoy)
     out = []
-    while (y, m) <= (hoy.year, hoy.month):
+    while (y, m) <= tope:
         ini, fin = f"{y - 1:04d}-{m:02d}-01", f"{y:04d}-{m:02d}-31"
         v = [p for f, p in comp if ini <= f <= fin]
         a, c = v.count("apoyo"), v.count("critica")
@@ -2131,6 +2139,57 @@ def apoyo_empresario_serie() -> list:
         if m == 13:
             y, m = y + 1, 1
     return out
+
+
+def _apoyo_tope(hoy: date) -> tuple[int, int]:
+    """Último (año, mes) con el inventario completo y comprobado (ADR-0310).
+
+    Tres cosas lo bajan del mes en curso, y ninguna se puede ignorar sin que el
+    saldo vuelva a calcularse sobre un corpus que no se sabe completo:
+      · un comunicado pendiente → corta en el mes anterior al más viejo;
+      · un pendiente con fecha inválida o faltante → no se sabe dónde cae, así
+        que corta en el mes anterior al actual;
+      · el inventario no se comprobó este mes (las dos cámaras no respondieron
+        en la misma corrida desde entonces) → corta en el mes de la última
+        comprobación. Si nunca se registró una, no corta: es el estado previo a
+        ADR-0310 y lo fija la primera corrida del detector.
+    """
+    def anterior(y, m):
+        return (y, m - 1) if m > 1 else (y - 1, 12)
+
+    tope = (hoy.year, hoy.month)
+    try:
+        store = json.loads(APOYO_NOVEDADES_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return tope
+    for p in store.get("pendientes", {}).values():
+        try:
+            f = date.fromisoformat(str(p.get("fecha", ""))[:10])
+            corte = anterior(f.year, f.month)
+        except ValueError:
+            corte = anterior(hoy.year, hoy.month)
+        tope = min(tope, corte)
+    verificado = (store.get("_meta") or {}).get("inventario_verificado")
+    if verificado:
+        try:
+            v = date.fromisoformat(str(verificado)[:10])
+            tope = min(tope, (v.year, v.month))
+        except ValueError:
+            tope = min(tope, anterior(hoy.year, hoy.month))
+    return tope
+
+
+def avisar_apoyo_pendientes(pendientes: dict) -> None:
+    """Cada comunicado sin codificar va a #monitor-alertas como cotejo manual.
+
+    Mientras haya uno, la serie se corta (ADR-0310): sin aviso, el indicador se
+    quedaría viejo en silencio hasta que el rezago lo marque."""
+    from cotejo_manual import registrar
+    for clave, p in sorted(pendientes.items()):
+        registrar("apoyo_empresario", clave,
+                  "Comunicado sin codificar: la serie se corta en el mes anterior hasta codificarlo "
+                  "con el manual v2 y doble codificación ciega (data/politica/apoyo_empresario_codificacion.json).",
+                  p.get("url") or APOYO_NOVEDADES_PATH.name)
 
 
 def _apoyo_pendientes() -> int:
@@ -2155,9 +2214,10 @@ def fetch_apoyo_empresario() -> dict | None:
     que apoyan = mayor tensión con el sector privado organizado.
 
     Fuente: comunicados institucionales fechados de aeanet.net/prensa.html y
-    uia.org.ar/uia/novedades, codificados a mano con el protocolo de ADR-0131 —
-    dos codificadores ciegos entre sí, kappa 1,000 (postura) y 0,955
-    (destinatario), desacuerdos adjudicados por el autor del manual.
+    uia.org.ar/uia/novedades, codificados con el protocolo de ADR-0131 — dos
+    codificadores ciegos entre sí, desacuerdos adjudicados por el autor del
+    manual; el kappa de cada tanda está en `apoyo_empresario_codificacion.json`.
+    Suspendido por ADR-0246 y repuesto por ADR-0310.
 
     Dimensión: sector privado (ADR-0088).
     """
@@ -2166,10 +2226,13 @@ def fetch_apoyo_empresario() -> dict | None:
         fecha, valor = serie[-1]
         anterior = serie[-13][1] if len(serie) > 13 else None
         d = json.loads(APOYO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
+        # La misma ventana que el punto de la serie, con su límite superior: si
+        # la serie está cortada, contar lo codificado después descompondría un
+        # saldo que no es el publicado.
         comp = [c for c in d["casos"]
                 if c["destinatario"] == "ejecutivo_nacional"
                 and c["postura"] in ("apoyo", "critica")
-                and c["fecha"] >= f"{int(fecha[:4]) - 1}{fecha[4:7]}-01"]
+                and f"{int(fecha[:4]) - 1}{fecha[4:7]}-01" <= c["fecha"] <= f"{fecha[:7]}-31"]
         apoyos = sum(1 for c in comp if c["postura"] == "apoyo")
         pend = _apoyo_pendientes()
         return {
@@ -2178,7 +2241,9 @@ def fetch_apoyo_empresario() -> dict | None:
             # Sin número de ADR: este string se publica (G6).
             "fuente":         "Comunicados de AEA y UIA — codificación CIGOB",
             "fecha_dato":     fecha,
-            "desactualizado": False,
+            # Cortada por el inventario (ADR-0310), la card es un dato congelado
+            # y se declara así; al día llega al mes en curso.
+            "desactualizado": fecha[:7] < date.today().isoformat()[:7],
             "variacion_12m":  None if anterior is None else round(valor - anterior, 3),
             "comunicados_ventana": len(comp),
             "apoyos_ventana":      apoyos,
@@ -2202,7 +2267,8 @@ def fetch_apoyo_empresario() -> dict | None:
 def detectar_novedades_empresarias() -> dict:
     """Comunicados nuevos de UIA y AEA, pendientes de codificar.
 
-    NO puntúa ni alimenta el ITCP (ADR-0149). Cada comunicado se avisa una sola
+    El detector no clasifica (ADR-0149); sus pendientes cortan la serie del
+    indicador (ADR-0310). Cada comunicado se avisa una sola
     vez: los ya codificados en `apoyo_empresario_codificacion.json` entran como
     revisados de arranque, y los nuevos quedan en `pendientes` hasta que alguien
     los saque.
@@ -2237,28 +2303,42 @@ def detectar_novedades_empresarias() -> dict:
                              "nota": "sin codificar — ver apoyo_empresario_reglas.json"}
         nuevas += 1
 
+    respondieron = 0
     try:
         omitidos = {k.split("|", 1)[1] for k in revisadas if k.startswith("UIA|")}
         for c in _uia_comunicados(session, omitidos):
             anotar(c)
+        respondieron += 1
     except Exception as e:
         print(f"  [WARN] apoyo/UIA: {e}")
 
     try:
         for c in _aea_comunicados(session):
             anotar(c)
+        respondieron += 1
     except Exception as e:
         print(f"  [WARN] apoyo/AEA: {e}")
+
+    # Sólo una corrida en la que respondieron las DOS cámaras comprueba que el
+    # inventario está completo (ADR-0310). Si una se cae, se conserva la fecha
+    # anterior y la serie deja de avanzar pasado ese mes: un pendiente que no se
+    # pudo ver no puede quedar fuera del saldo como si no existiera.
+    verificado = (store.get("_meta") or {}).get("inventario_verificado")
+    if respondieron == 2:
+        verificado = date.today().isoformat()
 
     store["_meta"] = {
         "descripcion": ("Comunicados nuevos de UIA y AEA pendientes de codificar "
                         "(ADR-0149). Detección automática; la postura y el "
                         "destinatario los asigna una persona con las reglas de "
-                        "apoyo_empresario_reglas.json. NO puntúa: el indicador no "
-                        "se publica hasta que haya segunda pasada con kappa ≥ 0,70. "
-                        "Sacar de 'pendientes' lo ya codificado."),
+                        "apoyo_empresario_reglas.json. Los pendientes cortan la serie "
+                        "del indicador en el mes anterior al más viejo, y "
+                        "`inventario_verificado` es la última corrida en la que "
+                        "respondieron las dos cámaras (ADR-0310). Sacar de "
+                        "'pendientes' lo ya codificado."),
         "fuentes": {"UIA": UIA_NOVEDADES_URL, "AEA": AEA_PRENSA_URL},
         "ultima_corrida": date.today().isoformat(),
+        "inventario_verificado": verificado,
         "comunicados_vistos": vistos,
         "nuevos_en_la_corrida": nuevas,
     }
@@ -5657,6 +5737,20 @@ def main() -> None:
     frescos_count = 0
     registro_eventos_actualizado = False
 
+    # Detector de postura empresaria (ADR-0149), ANTES de los colectores: sus
+    # pendientes cortan la serie de apoyo_empresario (ADR-0310), y la card y
+    # `descargar_series` tienen que ver el mismo inventario. Corrido al final,
+    # como estaba, un comunicado nuevo cortaba la serie esa noche y la card
+    # recién la siguiente, y el gate G3 las encontraba distintas.
+    try:
+        pend = detectar_novedades_empresarias().get("pendientes", {})
+        if pend:
+            print(f"  [i] cámaras: {len(pend)} comunicado(s) sin codificar "
+                  f"→ data/politica/apoyo_empresario_novedades.json")
+            avisar_apoyo_pendientes(pend)
+    except Exception as e:
+        print(f"  [WARN] detector de postura empresaria no corrió ({e})")
+
     colectores = [
         ("votometro_ventaja_lla",         fetch_votometro),
         ("ratio_dnu",                     fetch_ratio_dnu),
@@ -5782,15 +5876,6 @@ def main() -> None:
     except Exception as e:
         print(f"  [WARN] detector de novedades judiciales no corrió ({e})")
 
-    # Detector de postura empresaria (ADR-0149). Tampoco produce indicador: sólo
-    # evita que el registro codificado a mano se quede viejo entre corridas.
-    try:
-        pend = detectar_novedades_empresarias().get("pendientes", {})
-        if pend:
-            print(f"  [i] cámaras: {len(pend)} comunicado(s) sin codificar "
-                  f"→ data/politica/apoyo_empresario_novedades.json")
-    except Exception as e:
-        print(f"  [WARN] detector de postura empresaria no corrió ({e})")
 
     # alineamiento_senadores_prov comparte el mismo contrato de retorno que
     # cohesion_bloque_senado (misma sesión/descubrimiento de actas de Senado):

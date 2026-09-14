@@ -191,7 +191,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0239](0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) | El deflactor lo pondera el flujo, no el calendario | `iaf_transferencias` | vigente |
 | [0240](0240-el-numerador-viaja-con-su-fecha.md) | El numerador viaja con su fecha | `cobertura_judicial` | vigente |
 | [0241](0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) | Un DNU es un tipo jurídico, no una frase | `ratio_dnu` | vigente |
-| [0246](0246-el-saldo-empresario-se-calculaba-sobre-un-corpus-abierto.md) | El saldo empresario se calculaba sobre un corpus abierto | `apoyo_empresario` | vigente |
+| [0246](0246-el-saldo-empresario-se-calculaba-sobre-un-corpus-abierto.md) | El saldo empresario se calculaba sobre un corpus abierto | `apoyo_empresario` | superado por [0310](0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) |
 | [0255](0255-el-corpus-de-saij-no-identifica-al-ejecutivo.md) | El corpus de SAIJ no identifica al Ejecutivo | `judicializacion` | vigente |
 | [0263](0263-la-ficha-describe-el-metodo-que-corre.md) | La ficha describe el método que corre | `ratio_dnu`, `iaf_transferencias`, `subocupacion_demandante` | vigente |
 | [0265](0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) | Una dimensión no promete vías que ya no puntúan | `apoyo_empresario`, `judicializacion`, `sentimiento_digital` | vigente |
@@ -208,6 +208,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0306](0306-produccion-legislativa-meses-completos.md) | Producción legislativa: doce meses completos y leyes distintas | `produccion_legislativa` | vigente |
 | [0307](0307-ratio-dnu-ventana-inclusiva.md) | Ratio DNU: 365 fechas incluidas | `ratio_dnu` | vigente |
 | [0308](0308-sesiones-y-sanciones-fuera-del-catalogo.md) | Sesiones y sanciones fuera del catálogo | `veto_quorum`, `produccion_legislativa` | vigente |
+| [0310](0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) | El saldo empresario vuelve al ITCP con el corpus cerrado | `apoyo_empresario` | vigente |
 
 ### Gestión (ITCG)
 

@@ -696,21 +696,6 @@ INDICADORES_SUSPENDIDOS = {
                                "—no sumario—, deduplicación, estado procesal y "
                                "corte temporal declarado.",
     },
-    "apoyo_empresario": {
-        "dimension": "sector_privado",
-        "desde": "2026-08",
-        "desde_txt": "agosto de 2026",
-        "adr": "0246",
-        "por_que": "El saldo −0,429 salía de SIETE textos codificados con "
-                   "CATORCE pendientes, y entre los pendientes había apoyos y "
-                   "críticas sustantivos. Un saldo sobre un corpus abierto no "
-                   "mide la postura del sector: mide qué se alcanzó a codificar.",
-        "condicion_reingreso": "Corpus cerrado y publicado, criterios de "
-                               "codificación fijados de antemano, doble "
-                               "codificación con control de concordancia, "
-                               "inventario completo y prueba de que la card y "
-                               "la serie usan la misma cohorte.",
-    },
 }
 
 # ── Qué tipo de cosa mide cada indicador (ADR-0094) ──────────────────────────

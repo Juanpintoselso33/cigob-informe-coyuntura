@@ -169,8 +169,8 @@ def test_los_cuatro_suspendidos_de_agosto_estan_cubiertos(informe):
     """Anclaje explícito: los dos que la reauditoría marcó incompletos y los
     dos que ya estaban bien, para que el test de arriba no pase por vacío si
     alguien vacía las tablas."""
+    # `apoyo_empresario` era el quinto: volvió al score con ADR-0310.
     esperados = {
-        ("politica", "apoyo_empresario"),
         ("politica", "judicializacion"),
         ("gestion", "reestructuracion_organismos"),
         ("gestion", "masa_salarial"),
@@ -269,7 +269,7 @@ def test_el_md_no_los_mezcla_con_los_vigentes(informe, tmp_path, monkeypatch):
                 assert not en_archivo, (
                     f"{nombre} no está suspendido y sale en la tabla de archivo")
 
-    assert {"judicializacion", "apoyo_empresario", "reestructuracion_organismos"} <= vistos, (
+    assert {"judicializacion", "reestructuracion_organismos"} <= vistos, (
         "el archivo tiene que seguir figurando en el .md, no borrarse")
 
 
@@ -277,7 +277,7 @@ def test_el_md_dice_desde_cuando_y_por_que(informe, tmp_path, monkeypatch):
     monkeypatch.setattr(gi, "OUTPUT_DIR", tmp_path)
     gi.escribir_md(informe)
     texto = (tmp_path / "informe.md").read_text(encoding="utf-8")
-    assert "ADR-0255" in texto and "ADR-0246" in texto and "ADR-0247" in texto
+    assert "ADR-0255" in texto and "ADR-0247" in texto
     assert "agosto de 2026" in texto
 
 
@@ -306,7 +306,7 @@ def test_el_md_deja_los_motivos_reales_en_una_sola_fila(informe, tmp_path, monke
     monkeypatch.setattr(gi, "OUTPUT_DIR", tmp_path)
     gi.escribir_md(informe)
     for linea in (tmp_path / "informe.md").read_text(encoding="utf-8").splitlines():
-        if linea.startswith(("| judicializacion |", "| apoyo_empresario |")):
+        if linea.startswith(("| judicializacion |", "| reestructuracion_organismos |")):
             assert linea.rstrip().endswith("|") and linea.count("|") == 7, linea
 
 

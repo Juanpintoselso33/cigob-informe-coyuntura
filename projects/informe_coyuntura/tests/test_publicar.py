@@ -437,10 +437,11 @@ def test_politica_itcp_reconcilia():
     # que deja de colgar de un solo dato.
     # 19 desde ADR-0232: entra la intensidad laboral oficial en conflicto social.
     # 19 → 17: salieron `apoyo_empresario` (ADR-0246) y `judicializacion` (ADR-0255)
-    assert len(c["indicadores"]) == 17
+    # 17 → 18: vuelve `apoyo_empresario` con el corpus cerrado (ADR-0310)
+    assert len(c["indicadores"]) == 18
     bloqueo = c["indicadores"]["bloqueo_sostenido"]
     sin_universo = bloqueo.get("estado") == "sin_universo"
-    assert len(en_indice) == 17 - int(sin_universo)
+    assert len(en_indice) == 18 - int(sin_universo)
     if sin_universo:
         assert bloqueo["valor"] is None
         assert bloqueo.get("puntaje_itcp") is None
@@ -449,9 +450,10 @@ def test_politica_itcp_reconcilia():
                    "velocidad_resolucion", "paralisis_denuncias"):
         assert _nuevo in en_indice, f"{_nuevo} tendría que puntuar (ADR-0168)"
     # ADR-0255: `judicializacion` sale del índice — el corpus de SAIJ no
-    # identifica causas contra el Ejecutivo. ADR-0246: sale `apoyo_empresario`.
+    # identifica causas contra el Ejecutivo. ADR-0246 sacó `apoyo_empresario`
+    # y ADR-0310 lo repuso con el corpus cerrado.
     assert "judicializacion" not in en_indice
-    assert "apoyo_empresario" not in en_indice
+    assert "apoyo_empresario" in en_indice
     if not sin_universo:
         assert "bloqueo_sostenido" in en_indice
     assert "brecha_obra_publica" in en_indice

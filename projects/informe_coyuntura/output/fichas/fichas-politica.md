@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Política — resumen
 
-Este documento tiene una ficha por indicador — son 17 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 18 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,8 +35,8 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 73,1** | **VERDE** | Moderadamente aflojado | 17 indicadores: 11 en verde · 4 en amarillo · 1 en rojo |
-Componentes que puntúan en este corte: 16 de 17 publicados.
+| **ITCP: 72,3** | **VERDE** | Moderadamente aflojado | 18 indicadores: 11 en verde · 5 en amarillo · 1 en rojo |
+Componentes que puntúan en este corte: 17 de 18 publicados.
 
 ## Dimensiones
 
@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 16 de 17 publicados.
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 81,1 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 15,0 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,1 | AMARILLO | 15,0 % |
-| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 71,4 | VERDE | 13,0 % |
+| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 64,8 | VERDE | 13,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 71,7 | VERDE | 10,0 % |
 | Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 73,6 | VERDE | 7,0 % |
 
@@ -80,7 +80,8 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Actividad de las comisiones de control | Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las… | 13 sesiones de las comisiones de control (12m) | ROJO | 3,8 % |
 | Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,82 % estimado de cargos con juez designado | VERDE | 7,5 % |
 | **DIMENSIÓN: Sector privado** | | | | |
-| Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,8 pp de brecha (obra pública − privada, 12m) | VERDE | 13,0 % |
+| Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,8 pp de brecha (obra pública − privada, 12m) | VERDE | 6,5 % |
+| Postura pública de las cámaras empresarias | Qué dicen en público, por escrito y con firma institucional, las dos cámaras empresarias de referencia —la Asociación… | −0,11 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 6,5 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24,1 % vs 2023 | AMARILLO | 6,0 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.760.195 jornadas individuales no trabajadas (12m) | VERDE | 4,0 % |
@@ -297,7 +298,7 @@ La diferencia entre lo que esperan las empresas constructoras que trabajan para 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −1,8 pp de brecha (obra pública − privada, 12m)** (2026-08) | **VERDE** | Peso efectivo 13 % del ITCP | Cinturón Política |
+| **Hoy: −1,8 pp de brecha (obra pública − privada, 12m)** (2026-08) | **VERDE** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -315,7 +316,7 @@ La diferencia entre lo que esperan las empresas constructoras que trabajan para 
 
 Compara las expectativas de constructoras orientadas a obra pública y privada. Una brecha negativa indica un saldo de expectativas menor en el primer grupo. Compartir sector no garantiza iguales costos, acceso al crédito ni composición de proyectos: la diferencia no aísla el efecto causal de la política pública ni elimina el ciclo económico. Su interpretación como tensión política debe contrastarse con la agenda y las condiciones del período.
 
-**Dimensión que integra — Sector privado.** Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La postura pública de las cámaras empresarias está suspendida por cobertura incompleta del corpus; mientras dure la suspensión, la dimensión depende sólo de la brecha de expectativas.
+**Dimensión que integra — Sector privado.** Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La completa, con el mismo peso, la postura pública de las cámaras empresarias hacia el Gobierno nacional —el saldo de apoyos y críticas en sus comunicados—, que volvió al índice en septiembre de 2026 con el inventario de comunicados completo.
 
 ## Método de cómputo
 
@@ -351,7 +352,7 @@ Dato vigente: −1,8 pp de brecha (obra pública − privada, 12m) (2026-08).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 13 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -377,6 +378,104 @@ Ponderación vigente en el ITCP: 13 % efectivo. El color es una lectura adiciona
 **2026-07-19** — Entra al cinturón como primer indicador de la nueva dimensión de sector privado. Una revisión externa del cinturón señaló que de los tres actores que el índice se propone medir —legisladores, gobernadores y empresarios— el tercero no tenía ningún indicador propio.
 
 **2026-07-20** — Al revisar el efecto de la incorporación sobre la validación externa del índice apareció que este indicador se comporta de manera distinta según el gobierno: acompaña a la incertidumbre de política económica con las dos administraciones anteriores y se invierte con la actual. Se decidió mantenerlo puntuando y publicar el hallazgo, en lugar de retirarlo o de reducir su peso para que el número diera mejor. La explicación completa quedó en las limitaciones de esta ficha.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
+
+# Postura pública de las cámaras empresarias
+
+Qué dicen en público, por escrito y con firma institucional, las dos cámaras empresarias de referencia —la Asociación Empresaria Argentina y la Unión Industrial Argentina— sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Puntúa en el ITCP con la mitad de la dimensión de sector privado. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: −0,11 saldo de postura (−1 a +1, 12m móviles)** (2026-09) | **AMARILLO** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | apoyo_empresario | **CINTURÓN** | Política |
+| **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
+| **PRODUCTOR DEL DATO** | Asociación Empresaria Argentina (AEA) y Unión Industrial Argentina (UIA) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de ambas entidades |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-14 |
+
+## Definición — qué mide y por qué importa
+
+Qué dicen en público, por escrito y con firma institucional, las dos cámaras empresarias de referencia —la Asociación Empresaria Argentina y la Unión Industrial Argentina— sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Puntúa en el ITCP con la mitad de la dimensión de sector privado. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados.
+
+Es la única medida directa de la relación entre el Gobierno y el empresariado organizado: las demás miran el clima de negocios o los datos de un sector, y de ahí infieren el vínculo. Acá el vínculo está dicho. Conviene saber qué no dice: no mide el humor del empresariado en general ni la opinión de sus asociados, sino lo que una asociación decidió declarar públicamente — una cámara puede callar por conveniencia y ese silencio no aparece. La clasificación la hace una persona siguiendo reglas escritas de antemano, y dos personas distintas la hicieron por separado para verificar que las reglas no dejan lugar a la interpretación.
+
+**Dimensión que integra — Sector privado.** Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La completa, con el mismo peso, la postura pública de las cámaras empresarias hacia el Gobierno nacional —el saldo de apoyos y críticas en sus comunicados—, que volvió al índice en septiembre de 2026 con el inventario de comunicados completo.
+
+## Método de cómputo
+
+- Cada comunicado se clasifica en dos ejes, con reglas escritas antes de mirar el material: qué dice sobre lo que comenta —respalda, critica o no toma posición— y a quién le habla, que puede ser el Gobierno nacional, el Congreso, una provincia o municipio, la Justicia, o un asunto externo o de la propia entidad.
+- Sólo entran al cálculo los comunicados dirigidos al Gobierno nacional que respaldan o critican. Los que informan una reunión, un acto institucional, un cambio de autoridades o una condolencia no toman posición y quedan afuera aunque hablen del Gobierno, y también quedan afuera los dirigidos a los otros poderes.
+- El indicador es el saldo de los últimos doce meses: apoyos menos críticas, dividido por el total. Va de −1, si todo fue crítica, a +1 si todo fue apoyo.
+- La serie llega sólo hasta el último mes con todos los comunicados clasificados. Si aparece uno sin clasificar, el mes de ese comunicado y los siguientes no se calculan hasta clasificarlo: el dato queda quieto en el último mes completo, en vez de calcularse sobre lo que se alcanzó a leer.
+- Un mes sin ningún comunicado que se pronuncie sobre el Gobierno nacional queda sin valor y no se rellena con cero: cero significa que las cámaras apoyaron tanto como criticaron, que es una afirmación distinta de que no se pronunciaron. En los treinta y dos meses de serie no ocurrió: el mínimo es de tres pronunciamientos por ventana y el promedio, de casi seis.
+
+## Semáforo — valores que determinan el color
+
+Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
+
+**Valores que definen cada color**
+
+| Rango (saldo de postura (−1 a +1, 12m móviles)) | Color |
+|---|---|
+| ≥ −0,08 | VERDE |
+| −0,4 – −0,08 | AMARILLO |
+| −0,53 – −0,4 | NARANJA |
+| ≤ −0,53 | ROJO |
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- En los últimos doce meses AEA y UIA se pronunciaron 9 veces sobre medidas del Gobierno nacional: 4 de apoyo y 5 de crítica. Saldo −0,111 en una escala de −1 (todo crítica) a +1 (todo apoyo).
+
+## Color vigente y por qué
+
+Dato vigente: −0,11 saldo de postura (−1 a +1, 12m móviles) (2026-09).
+
+−0,111 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,03 del corte más cercano.
+
+**Color vigente: AMARILLO**
+
+Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+## Transparencia — limitaciones declaradas
+
+- Mide lo que una asociación decidió declarar en público, no el humor del empresariado ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.
+- Son dos entidades. Se revisaron ocho cámaras y sólo estas dos publican comunicados de postura de manera sostenida: el resto publica agenda institucional, servicios al socio o boletines regulatorios, y dos no tienen contenido accesible. Eso deja fuera al agro y a la banca, que en el país tienen conflictos propios con el Estado.
+- La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta los comunicados nuevos y avisa cada uno como pendiente; mientras haya uno sin clasificar la serie no avanza, y si nadie lo clasifica durante meses el índice marca el dato como desactualizado. La cantidad de pendientes se muestra en la ficha del indicador.
+- Para verificar que las reglas de clasificación no dejan lugar a la interpretación, cada tanda de comunicados la clasifican por separado dos codificadores independientes que no ven el trabajo del otro. En la pasada completa sobre ciento tres comunicados coincidieron en el 95% de las posturas y en el 94% de los destinatarios; en la tanda de veintidós de septiembre de 2026, en el 91% y el 95%. Los pocos desacuerdos se resuelven con tres criterios generales escritos, no caso por caso. Cabe una advertencia sobre esa prueba: ambos codificadores son sistemas de inteligencia artificial del mismo tipo, que comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta. La prueba acredita que el manual es unívoco, no que cualquier par de lectores llegaría al mismo número.
+- La ventana de doce meses hace que el indicador describa, en promedio, la situación de seis meses atrás. Un giro brusco en la relación —como el de marzo de 2026— tarda en verse completo.
+- Los comunicados de AEA se leen de archivos PDF cuyo texto se extrae con un corte en los primeros párrafos. En los comunicados que abren con un rodeo y recién después fijan posición, esa extracción puede dejar afuera el pasaje decisivo.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Si los sitios de las cámaras no responden, el indicador no cambia: se calcula sobre el registro ya clasificado, que está guardado. Lo que se pierde es el aviso de comunicados nuevos.
+
+- **Política de revisiones:** El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.
+
+## Historial — cambios metodológicos documentados
+
+**2026-07-27** — Entra al cinturón como segundo indicador de la dimensión de sector privado, que hasta ahora tenía uno solo. Una revisión externa había señalado que los empresarios eran el actor peor medido del cinturón.
+
+**2026-07-27** — Al verificar la clasificación con dos codificadores independientes se descubrió que los cincuenta y siete comunicados de la Unión Industrial se habían leído sin su texto: el proceso de descarga se quedaba con el menú de navegación del sitio y esos casos se habían clasificado sólo por el título. Se corrigió la descarga y se rehízo la clasificación completa sobre el texto real, descartando la primera. El hallazgo no vino de ninguna verificación automática sino de que los dos codificadores, por separado, avisaron que los textos venían todos iguales.
+
+**2026-08-25** — ADR-0246: sale del ITCP hasta cerrar el corpus. El saldo −0,429 salía de siete comunicados codificados con catorce detectados sin codificar, y entre esos catorce había apoyos y críticas de peso: el número medía qué se alcanzó a clasificar, no la postura del sector. Libera su 50% de la dimensión de sector privado, que queda con `brecha_obra_publica` como único componente. Se sigue relevando y su serie se sigue publicando. Vuelve al índice con corpus cerrado y publicado, criterios fijados de antemano y doble codificación con control de concordancia.
+
+**2026-09-14** — ADR-0310: vuelve al ITCP con el 50% de diseño de la dimensión de sector privado. Se clasificaron los veintidós comunicados de la Unión Industrial detectados entre abril y septiembre con el mismo protocolo de doble codificación ciega —concordancia de 0,85 en postura y 0,93 en destinatario, por encima del mínimo de 0,70— y el inventario quedó sin pendientes. Con eso el saldo pasó de −0,429 a −0,111: dos de los nuevos respaldan medidas del Gobierno nacional, la reducción de retenciones y la concesión de la Hidrovía. La condición de corpus cerrado que faltaba se fija como regla de cálculo: la serie se detiene en el último mes con todos los comunicados clasificados, y cada comunicado nuevo se avisa como pendiente.
+
+**2026-08-25** — ADR-0259: se completa la despublicación. El artefacto crudo del informe lo seguía declarando componente vigente del ITCP después de haber salido del índice, porque el colector de Política no marcaba las suspensiones y su respaldo las leía de la tabla de bandas, que a propósito no se borra. Desde ahora todo indicador suspendido se publica como archivo y no como componente: conserva su último valor, su fuente, su fecha y la dimensión donde pesaba, y pierde el estado activo, el peso y el puntaje, que pasan a ser un bloque con el motivo de la suspensión y su condición de reingreso. La marca la pone el generador del informe recorriendo la tabla de suspendidos de cada índice, así que no depende de que cada colector se acuerde.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

@@ -20,7 +20,7 @@ al ADR.
 | `conflicto_social` | 10% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
 | `imagen_voto` | 7% | `votometro_ventaja_lla` |
 | `poder_judicial` | 15% | `cobertura_judicial`, `velocidad_resolucion`, `paralisis_denuncias` |
-| `sector_privado` | 13% | `brecha_obra_publica` |
+| `sector_privado` | 13% | `brecha_obra_publica`, `apoyo_empresario` |
 
 Suma de pesos: 100%.
 
@@ -302,8 +302,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **13.0%** |
+| Peso dentro de la dimensión | 50% |
+| Peso efectivo en el índice | **6.5%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 7.5 meses |
 | Procedencia del ancla | `conceptual` — números redondos alrededor del cero, explícitamente NO calibrados contra el rango observado (ADR-0088) |
@@ -312,13 +312,28 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0088](../adr/0088-dimension-sector-privado.md) El ITCP incorpora una dimensión de sector privado · [ADR-0095](../adr/0095-la-brecha-cambia-de-signo-segun-el-gobierno.md) La brecha de obra pública cambia de signo según el gobierno · [ADR-0302](../adr/0302-expectativas-construccion-fecha-y-calendario.md) Expectativas de construcción: horizonte y calendario
 
+#### Postura pública de las cámaras empresarias
+
+`apoyo_empresario`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 50% |
+| Peso efectivo en el índice | **6.5%** |
+| Familia de lectura | tensión externa |
+| Rezago declarado | 6 meses |
+| Procedencia del ancla | `conceptual` — el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150) |
+
+**Bandas**: > 0.6 → 100 · 0.2–0.6 → 85 · -0.2–0.2 → 65 · -0.6–-0.2 → 40 · ≤ -0.6 → 10
+
+**Lo gobiernan**: [ADR-0145](../adr/0145-apoyo-empresario-la-fuente-sirve-la-metrica-no.md) Apoyo empresario: la fuente sirve, la métrica no · [ADR-0148](../adr/0148-apoyo-empresario-con-uia-la-metrica-funciona.md) Apoyo empresario: con UIA, la métrica funciona · [ADR-0149](../adr/0149-detector-de-postura-empresaria.md) Detector de postura empresaria · [ADR-0150](../adr/0150-apoyo-empresario-entra-al-itcp.md) Apoyo empresario entra al ITCP, y el bug que lo encontró · [ADR-0151](../adr/0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) El corpus estaba truncado: `apoyo_empresario` se recodifica entero · [ADR-0265](../adr/0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) Una dimensión no promete vías que ya no puntúan · [ADR-0310](../adr/0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) El saldo empresario vuelve al ITCP con el corpus cerrado
+
 ## Se releva y no puntúa
 
 Estos indicadores se siguen scrapeando y cacheando, pero están fuera
 del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
-- `apoyo_empresario` — Postura pública de las cámaras empresarias
 - `cohesion_bloque_senado` — Cohesión del bloque LLA (Senado, fusionado)
 - `comisiones_caidas` — Comisiones sin sanción (declarado como contexto)
 - `derrotas_legislativas` — Derrotas legislativas del Ejecutivo (declarado como contexto)
@@ -433,7 +448,6 @@ histórica.
 - [0239](../adr/0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) — El deflactor lo pondera el flujo, no el calendario
 - [0240](../adr/0240-el-numerador-viaja-con-su-fecha.md) — El numerador viaja con su fecha
 - [0241](../adr/0241-un-dnu-es-un-tipo-juridico-no-una-frase.md) — Un DNU es un tipo jurídico, no una frase
-- [0246](../adr/0246-el-saldo-empresario-se-calculaba-sobre-un-corpus-abierto.md) — El saldo empresario se calculaba sobre un corpus abierto
 - [0255](../adr/0255-el-corpus-de-saij-no-identifica-al-ejecutivo.md) — El corpus de SAIJ no identifica al Ejecutivo
 - [0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) — La ficha describe el método que corre
 - [0265](../adr/0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) — Una dimensión no promete vías que ya no puntúan
@@ -450,3 +464,4 @@ histórica.
 - [0306](../adr/0306-produccion-legislativa-meses-completos.md) — Producción legislativa: doce meses completos y leyes distintas
 - [0307](../adr/0307-ratio-dnu-ventana-inclusiva.md) — Ratio DNU: 365 fechas incluidas
 - [0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) — Sesiones y sanciones fuera del catálogo
+- [0310](../adr/0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) — El saldo empresario vuelve al ITCP con el corpus cerrado

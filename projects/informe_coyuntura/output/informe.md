@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-14 18:54:34"
+generado: "2026-09-14 19:20:27"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -41,7 +41,7 @@ schema_version: "1.2.0"
 | base_monetaria | -1.87 | % mensual nominal | 2026-09-10 | fresco |
 | tc_mayorista | 1.45 | % mensual | 2026-09-14 | fresco |
 
-### 🟢 Politica — score 2.7/10 (estable)
+### 🟢 Politica — score 2.8/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -49,6 +49,7 @@ schema_version: "1.2.0"
 | votometro_ventaja_lla | 4.3 | Puntos porcentuales | 2026-07-22 | fresco |
 | ratio_dnu | 1.4 | DNUs publicados por ley publicada | 2026-09-14 | fresco |
 | brecha_obra_publica | -1.8 | pp de brecha (obra pública − privada, 12m) | 2026-08-01 | fresco |
+| apoyo_empresario | -0.111 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | fresco |
 | conflictividad_nacional | -24.1 | % vs 2023 | 2026-08-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4760195 | jornadas individuales no trabajadas (12m) | 2026-05-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
@@ -73,7 +74,6 @@ schema_version: "1.2.0"
 
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
-| apoyo_empresario | -0.111 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | agosto de 2026 (ADR-0246) | El saldo −0,429 salía de SIETE textos codificados con CATORCE pendientes, y entre los pendientes había apoyos y críticas sustantivos. Un saldo sobre un corpus abierto no mide la postura del sector: mide qué se alcanzó a codificar. |
 | judicializacion | 1.7 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
 
 ### 🔴 Vida Cotidiana — score 6.4/10 (tensionado)
@@ -118,4 +118,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-14 18:54:34 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-14 19:20:27 — schema 1.2.0*

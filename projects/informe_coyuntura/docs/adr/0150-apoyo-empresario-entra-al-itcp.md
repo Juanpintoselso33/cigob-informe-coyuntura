@@ -6,6 +6,7 @@ fecha: 2026-07-27
 cinturon: 'politica'
 indicadores: [sector_privado, apoyo_empresario]
 corrige: ['0148']
+relacionado: ['0310']
 corregido_por: ['0151']
 ambito: 'cinturón político (ITCP) · dimensión `sector_privado`'
 ---
