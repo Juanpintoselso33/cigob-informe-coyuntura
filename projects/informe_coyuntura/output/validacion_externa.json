@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-14T21:43:52.189791+00:00",
+    "generated_at": "2026-09-14T18:54:31.177248-03:00",
     "nota": "Validación por panel y ancla macro; el contraste adicional sin ICC evita comparar el ITCIS con un componente propio"
   },
   "serie_itvc": {

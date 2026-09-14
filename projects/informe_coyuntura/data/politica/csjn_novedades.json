@@ -6,319 +6,7 @@
   "registros_vistos_en_la_corrida": 40,
   "ultima_corrida": "2026-09-14"
  },
- "pendientes": {
-  "818689": {
-   "caratula": "COMUNIDAD TOBA NAM QOM c/ ESTADO NACIONAL Y OTROS s/AMPARO",
-   "expediente": "FRE 006231/2014/CS002",
-   "fecha": "04/11/2025",
-   "fuero": "FRE",
-   "inconstitucional": false,
-   "materia": "AMBIENTAL",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Instalación de planta de dióxido de uranio y procedimiento de consulta a las comunidades indígenas",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=818689"
-  },
-  "820564": {
-   "caratula": "Recurso Queja Nº 1 - Incidente Nº 1 - BAEZ, CARMEN ALICIA c/ SECRETARIA NACIONAL DE LA NIÑEZ ADOLESCENCIA Y FAMILIA (SENNAF) Y OTROS s/INC DE MEDIDA CAUTELAR",
-   "expediente": "FRE 000060/2025/1/1/RH001",
-   "fecha": "11/12/2025",
-   "fuero": "FRE",
-   "inconstitucional": false,
-   "materia": "RECURSO EXTRAORDINARIO",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Resolución denegatoria del recurso extraordinario sin previo traslado",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=820564"
-  },
-  "821249": {
-   "caratula": "SANTA CRUZ, PROVINCIA DE c/ ESTADO NACIONAL s/COBRO DE PESOS",
-   "expediente": "CSJ 893/2024",
-   "fecha": "11/12/2025",
-   "fuero": "CSJ",
-   "inconstitucional": false,
-   "materia": "COMPETENCIA - PROCESAL - TRIBUTARIO/ADUANERO",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Medidas cautelares: exigencia de que se evidencien fehacientemente las razones que las justifiquen",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=821249"
-  },
-  "823737": {
-   "caratula": "Recurso Queja Nº 1 - Incidente Nº 2 - PILARBUS SA Y OTROS c/ EN-M TRANSPORTE DE LA NACION-RESOL 270/08 s/INC APELACION",
-   "expediente": "CAF 020065/2021/2/1/RH005",
-   "fecha": "05/03/2026",
-   "fuero": "CAF",
-   "inconstitucional": false,
-   "materia": "ADMINISTRATIVO",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": true,
-   "titulo": "Distribución de las compensaciones tarifarias - Ejercicio de potestades propias de una autoridad nacional",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=823737"
-  },
-  "824163": {
-   "caratula": "NOE, NESTOR c/ ANSES Y OTRO s/AMPARO LEY 16.986",
-   "expediente": "FMZ 010707/2015/CS001",
-   "fecha": "17/03/2026",
-   "fuero": "FMZ",
-   "inconstitucional": false,
-   "materia": "PREVISIONAL",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": true,
-   "titulo": "Arbitraria denegatoria de un beneficio jubilatorio",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=824163"
-  },
-  "824306": {
-   "caratula": "Incidente Nº 3 - ACTOR: FUNDACION BANCO DE BOSQUES PARA EL MANEJO SUSTENTABLE DE LOS RECURSOS NATURALES DEMANDADO: EN - PEN - M PLANIFICACION FEDERAL, INVERSION P Y S Y OTROS s/INC APELACION",
-   "expediente": "CAF 084273/2016/3/CS001",
-   "fecha": "12/03/2026",
-   "fuero": "CAF",
-   "inconstitucional": false,
-   "materia": "AMBIENTAL",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Procedimiento de evaluación de impacto ambiental y medida cautelar",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=824306"
-  },
-  "824806": {
-   "caratula": "Recurso Queja Nº 2 - BODEREAU, FEDERICO ALFONSO c/ ANSES s/REAJUSTE DE HABERES",
-   "expediente": "FCB 033020143/2008/2/RH001",
-   "fecha": "26/03/2026",
-   "fuero": "FCB",
-   "inconstitucional": false,
-   "materia": "PROCESAL - RECURSO EXTRAORDINARIO",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Denegatoria del recurso extraordinario sin el acuerdo de los integrantes del tribunal colegiado",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=824806"
-  },
-  "825002": {
-   "caratula": "Recurso Queja Nº 1 - Recurso Queja Nº 1 - ASOCIACION GREMIAL DE COMPUTACION c/ PODER EJECUTIVO NACIONAL s/ACCION DECLARATIVA",
-   "expediente": "CNT 031762/2021/1/1/RH002",
-   "fecha": "31/03/2026",
-   "fuero": "CNT",
-   "inconstitucional": false,
-   "materia": "COMPETENCIA - LABORAL",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Naturaleza federal de las medidas de fomento nacional",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=825002"
-  },
-  "825972": {
-   "caratula": "Recurso Queja Nº 4 - ROMERO JUAN ANTONIO Y OTROS c/ EN-Mº ECONOMIA-  s/PROCESO DE CONOCIMIENTO",
-   "expediente": "CAF 006883/2008/4/RH003",
-   "fecha": "23/04/2026",
-   "fuero": "CAF",
-   "inconstitucional": false,
-   "materia": "HONORARIOS",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Honorarios de abogados: base regulatoria expresada en moneda extranjera",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=825972"
-  },
-  "826249": {
-   "caratula": "TORRES ABAD, CARMEN c/ EN-JGM s/HABEAS DATA",
-   "expediente": "CAF 049482/2016/CS001",
-   "fecha": "30/04/2026",
-   "fuero": "CAF",
-   "inconstitucional": true,
-   "materia": "ADMINISTRATIVO - CONSTITUCIONAL",
-   "motivos": [
-    "declara inconstitucionalidad",
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Transferencia de datos entre dos entes estatales: derechos a la privacidad y a la autodeterminación informativa",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=826249"
-  },
-  "826627": {
-   "caratula": "FORMOSA, PROVINCIA DE c/ ESTADO NACIONAL s/ACCION DECLARATIVA DE INCONSTITUCIONALIDAD",
-   "expediente": "CSJ 1817/2019",
-   "fecha": "07/05/2026",
-   "fuero": "CSJ",
-   "inconstitucional": false,
-   "materia": "PROCESAL",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Falta de acreditación de un interés jurídico inmediato o directo: inexistencia de \"caso\" o \"causa\"",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=826627"
-  },
-  "826838": {
-   "caratula": "Recurso Queja Nº 1 - RINCON BRAVO, GERARDO c/ ESTADO NACIONAL - DIRECCION NACIONAL DE MIGRACIONES s/RECURSO DIRECTO A JUZGADO",
-   "expediente": "FCB 042923/2022/1/RH001",
-   "fecha": "14/05/2026",
-   "fuero": "FCB",
-   "inconstitucional": false,
-   "materia": "PROCESAL",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Nulidad de actuaciones realizadas sin la participación de la Dirección Nacional de Migraciones",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=826838"
-  },
-  "827106": {
-   "caratula": "ADMINISTRACION GENERAL DE PUERTOS SE c/ PROVINCIA DE BUENOS AIRES - MINISTERIO DE PRODUCCION DE LA PROVINCIA DE BUENOS AIRES Y OTRO s/PROCESO DE CONOCIMIENTO",
-   "expediente": "CAF 017825/2020/CS001",
-   "fecha": "14/05/2026",
-   "fuero": "CAF",
-   "inconstitucional": false,
-   "materia": "COMPETENCIA - TRIBUTARIO/ADUANERO",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Competencia originaria de la Corte en razón de las personas",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=827106"
-  },
-  "828468": {
-   "caratula": "Recurso Queja Nº 1 - CONSEJO INTERUNIVERSITARIO NACIONAL Y OTROS c/ EN - PEN - DTO 759/25 s/AMPARO LEY 16.986",
-   "expediente": "CAF 039475/2025/1/1/RH001",
-   "fecha": "04/06/2026",
-   "fuero": "CAF",
-   "inconstitucional": false,
-   "materia": "PROCESAL",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Ley de Financiamiento de la Educación Universitaria y recusación de jueces docentes",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=828468"
-  },
-  "829504": {
-   "caratula": "JUSTO JUAN JOSE c/ ANSES s/AMPAROS Y SUMARISIMOS",
-   "expediente": "CSS 018538/2023/CS001",
-   "fecha": "02/07/2026",
-   "fuero": "CSS",
-   "inconstitucional": true,
-   "materia": "PREVISIONAL",
-   "motivos": [
-    "declara inconstitucionalidad",
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Excesos en las facultades reglamentarias",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=829504"
-  },
-  "829619": {
-   "caratula": "Recurso Queja Nº 1 - GIMENEZ, LOURDES SOLEDAD (POR LA REPR. INVOCADA) c/ ANSES s/AMPARO LEY 16.986",
-   "expediente": "FPA 005882/2023/1/RH001",
-   "fecha": "07/07/2026",
-   "fuero": "FPA",
-   "inconstitucional": false,
-   "materia": "PREVISIONAL",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": true,
-   "titulo": "Beneficios de la seguridad social: acción de amparo y excesivo rigor formal",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=829619"
-  },
-  "830107": {
-   "caratula": "Recurso Queja Nº 1 - EN-M ECONOMIA Y OTRO c/ BUNGE ARGENTINA SA s/INHIBITORIA",
-   "expediente": "CAF 024580/2022/1/RH001",
-   "fecha": "07/07/2026",
-   "fuero": "CAF",
-   "inconstitucional": false,
-   "materia": "ADMINISTRATIVO - COMPETENCIA - TRIBUTARIO/ADUANERO",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Cuestionamiento de la validez de un decreto nacional: competencia de la justicia federal con asiento en las provincias",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830107"
-  },
-  "830418": {
-   "caratula": "Recurso Queja Nº 1 - AYUDARTE CRISTINA c/ ANSES s/REAJUSTE DE HABERES",
-   "expediente": "FTU 002294/2009/1/RH001",
-   "fecha": "06/08/2026",
-   "fuero": "FTU",
-   "inconstitucional": false,
-   "materia": "PREVISIONAL",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Convenio de transferencia del sistema previsional y aplicación de normas nacionales",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830418"
-  },
-  "830871": {
-   "caratula": "AMADO JORGE NICOLAS c/ ANSES s/REAJUSTES VARIOS",
-   "expediente": "CSS 001199/2015/CS001",
-   "fecha": "20/08/2026",
-   "fuero": "CSS",
-   "inconstitucional": false,
-   "materia": "PREVISIONAL",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": true,
-   "titulo": "Omisión de expedirse sobre planteos de los litigantes",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830871"
-  },
-  "830997": {
-   "caratula": "Recurso Queja Nº 1 - PUEBLA, JULIO CESAR c/ EN-M SALUD DE LA NACION-EXPTE 139524691/22 Y OTROS s/AMPARO LEY 16.986",
-   "expediente": "CAF 023482/2023/1/RH001",
-   "fecha": "20/08/2026",
-   "fuero": "CAF",
-   "inconstitucional": false,
-   "materia": "HONORARIOS",
-   "motivos": [
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": true,
-   "titulo": "Regulación de honorarios de abogados: fundamentos dogmáticos y apartamiento de la ley",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830997"
-  },
-  "831004": {
-   "caratula": "CENCOSUD SA c/ ESTADO NACIONAL MINISTERIO DE ECONOMIA SECRETARIA DE INDUSTRIA Y DESARROLLO PRODUCTIVO s/LEALTAD COMERCIAL - LEY 22802 - ART 22",
-   "expediente": "CCF 007777/2024/CS001",
-   "fecha": "13/08/2026",
-   "fuero": "CCF",
-   "inconstitucional": true,
-   "materia": "ADMINISTRATIVO",
-   "motivos": [
-    "declara inconstitucionalidad",
-    "el Estado es parte"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Competencia en materia de lealtad comercial y decretos de necesidad y urgencia",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=831004"
-  },
-  "832064": {
-   "caratula": "PAPEL MISIONERO S.A.I.F.C. c/ PROVINCIA DE MISIONES s/accion declarativa de inconstitucionalidad",
-   "expediente": "CSJ 000511/2018/RH001",
-   "fecha": "10/09/2026",
-   "fuero": "CSJ",
-   "inconstitucional": true,
-   "materia": "AMBIENTAL",
-   "motivos": [
-    "declara inconstitucionalidad"
-   ],
-   "sentencia_arbitraria": false,
-   "titulo": "Insalubridad laboral: norma local que califica en forma general y abstracta",
-   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=832064"
-  }
- },
+ "pendientes": {},
  "revisadas": {
   "775364": {
    "fecha": "10/09/2026",
@@ -326,7 +14,17 @@
    "termino": "inconstitucionalidad"
   },
   "818689": {
+   "caratula": "COMUNIDAD TOBA NAM QOM c/ ESTADO NACIONAL Y OTROS s/AMPARO",
    "fecha": "04/11/2025",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Instalación de planta de dióxido de uranio (política nuclear federal, ley 24.804)",
+    "por_que": "Valida la política nuclear federal frente a un reclamo de consulta indígena, aunque es un caso puntual sin norma nacional cuestionada.",
+    "que_decidio": "La Corte rechazó el amparo de la Comunidad Toba Nam Qom contra la instalación de una planta de dióxido de uranio, a favor del Estado Nacional y la empresa, al considerar que no correspondía la consulta previa obligatoria del Convenio 169 de la OIT.",
+    "relevancia_monitor": "media",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=818689"
+   },
    "marcado": true,
    "termino": "medida cautelar"
   },
@@ -336,7 +34,17 @@
    "termino": "medida cautelar"
   },
   "820564": {
+   "caratula": "Recurso Queja Nº 1 - Incidente Nº 1 - BAEZ, CARMEN ALICIA c/ SECRETARIA NACIONAL DE LA NIÑEZ ADOLESCENCIA Y FAMILIA (SENNAF) Y OTROS s/INC DE MEDIDA CAUTELAR",
    "fecha": "11/12/2025",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no aplica",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": null,
+    "por_que": "Es una cuestión procesal sobre el trámite del recurso extraordinario, sin definición de fondo.",
+    "que_decidio": "La Corte dejó sin efecto la denegatoria del recurso extraordinario del Estado Nacional dictada sin el traslado previo que exige la ley, y ordenó que se resuelva de nuevo sobre su procedencia.",
+    "relevancia_monitor": "baja",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=820564"
+   },
    "marcado": true,
    "termino": "medida cautelar"
   },
@@ -351,7 +59,17 @@
    "termino": "medida cautelar"
   },
   "821249": {
+   "caratula": "SANTA CRUZ, PROVINCIA DE c/ ESTADO NACIONAL s/COBRO DE PESOS",
    "fecha": "11/12/2025",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Consenso Fiscal 2017 (compensación por eliminación del art. 104 de Ganancias)",
+    "por_que": "Toca un conflicto de financiamiento Nación-provincia, aunque solo resuelve la cautelar y no el fondo del reclamo.",
+    "que_decidio": "La Corte asumió competencia originaria en la demanda de Santa Cruz contra el Estado Nacional por compensaciones del Consenso Fiscal 2017, pero rechazó la medida cautelar pedida por la provincia por falta de acreditación del peligro en la demora.",
+    "relevancia_monitor": "media",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=821249"
+   },
    "marcado": true,
    "termino": "medida cautelar"
   },
@@ -361,7 +79,17 @@
    "termino": "amparo"
   },
   "823737": {
+   "caratula": "Recurso Queja Nº 1 - Incidente Nº 2 - PILARBUS SA Y OTROS c/ EN-M TRANSPORTE DE LA NACION-RESOL 270/08 s/INC APELACION",
    "fecha": "05/03/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Resolución del Ministerio de Transporte (2018) sobre distribución de compensaciones tarifarias",
+    "por_que": "Confirma la potestad del Poder Ejecutivo para fijar subsidios/compensaciones al transporte sin que los jueces se sustituyan al Ministerio.",
+    "que_decidio": "La Corte dejó sin efecto la medida cautelar que había frenado al Ministerio de Transporte para modificar los criterios de distribución de compensaciones tarifarias a empresas de transporte automotor, a favor del Estado Nacional.",
+    "relevancia_monitor": "media",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=823737"
+   },
    "marcado": true,
    "termino": "medida cautelar"
   },
@@ -371,27 +99,77 @@
    "termino": "estado nacional"
   },
   "824163": {
+   "caratula": "NOE, NESTOR c/ ANSES Y OTRO s/AMPARO LEY 16.986",
    "fecha": "17/03/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "parcial",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": null,
+    "por_que": "Es un caso jubilatorio individual sin efecto general sobre el sistema previsional.",
+    "que_decidio": "La Corte dejó sin efecto el rechazo de un amparo previsional y ordenó reconsiderar el otorgamiento del beneficio jubilatorio especial denegado por ANSES a un juez de faltas.",
+    "relevancia_monitor": "baja",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=824163"
+   },
    "marcado": true,
    "termino": "amparo"
   },
   "824306": {
+   "caratula": "Incidente Nº 3 - ACTOR: FUNDACION BANCO DE BOSQUES PARA EL MANEJO SUSTENTABLE DE LOS RECURSOS NATURALES DEMANDADO: EN - PEN - M PLANIFICACION FEDERAL, INVERSION",
    "fecha": "12/03/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Obras hidroeléctricas Represas del Río Santa Cruz / procedimiento de evaluación de impacto ambiental",
+    "por_que": "Habilita en los hechos la continuidad de una obra pública energética de gran escala, aunque la decisión es por inadmisibilidad procesal.",
+    "que_decidio": "La Corte declaró inadmisible el recurso de una fundación ambientalista contra el levantamiento de la medida cautelar sobre las obras hidroeléctricas del Río Santa Cruz, dejando que avancen los trabajos.",
+    "relevancia_monitor": "media",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=824306"
+   },
    "marcado": true,
    "termino": "medida cautelar"
   },
   "824806": {
+   "caratula": "Recurso Queja Nº 2 - BODEREAU, FEDERICO ALFONSO c/ ANSES s/REAJUSTE DE HABERES",
    "fecha": "26/03/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no aplica",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": null,
+    "por_que": "Es un vicio procesal interno de la cámara, sin relación con una política de gobierno.",
+    "que_decidio": "La Corte declaró la nulidad de la providencia que había declarado extemporáneo el recurso de un jubilado por haber sido dictada por la presidenta de la sala sin acuerdo de los demás jueces de la cámara.",
+    "relevancia_monitor": "baja",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=824806"
+   },
    "marcado": true,
    "termino": "estado nacional"
   },
   "825002": {
+   "caratula": "Recurso Queja Nº 1 - Recurso Queja Nº 1 - ASOCIACION GREMIAL DE COMPUTACION c/ PODER EJECUTIVO NACIONAL s/ACCION DECLARATIVA",
    "fecha": "31/03/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no aplica",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Decreto 1034/2020 (reglamentación de la Ley de Economía del Conocimiento 27.506/27.570)",
+    "por_que": "Es solo una definición de competencia judicial, no resuelve si el decreto excede la ley.",
+    "que_decidio": "La Corte declaró competente a la Justicia Contencioso Administrativa Federal, y no a la Justicia Laboral, para resolver el planteo de la Asociación Gremial de Computación contra el decreto 1034/2020 de Economía del Conocimiento.",
+    "relevancia_monitor": "baja",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=825002"
+   },
    "marcado": true,
    "termino": "estado nacional"
   },
   "825972": {
+   "caratula": "Recurso Queja Nº 4 - ROMERO JUAN ANTONIO Y OTROS c/ EN-Mº ECONOMIA-  s/PROCESO DE CONOCIMIENTO",
    "fecha": "23/04/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": null,
+    "por_que": "Es una cuestión de honorarios profesionales, de bajo interés para el monitor.",
+    "que_decidio": "La Corte revocó la regulación de honorarios de abogados fijada en dólares estadounidenses en un litigio por derechos de exportación, por violar la prohibición legal de indexar.",
+    "relevancia_monitor": "baja",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=825972"
+   },
    "marcado": true,
    "termino": "estado nacional"
   },
@@ -406,22 +184,62 @@
    "termino": "medida cautelar"
   },
   "826249": {
+   "caratula": "TORRES ABAD, CARMEN c/ EN-JGM s/HABEAS DATA",
    "fecha": "30/04/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "sí",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Convenio Marco de Cooperación ANSES-Secretaría de Comunicación Pública / arts. 5°.2.b y 11.3.b,c de la ley 25.326",
+    "por_que": "Limita la capacidad del Estado de intercambiar datos personales de ciudadanos entre organismos sin consentimiento, con impacto en cualquier política de gobierno digital o comunicación pública que use esas bases.",
+    "que_decidio": "La Corte, por mayoría, confirmó que ANSES no podía ceder a la Secretaría de Comunicación Pública el teléfono y correo electrónico de una jubilada sin su consentimiento, y declaró inconstitucionales los artículos de la ley 25.326 que habilitaban esa cesión de datos entre organismos estatales.",
+    "relevancia_monitor": "alta",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=826249"
+   },
    "marcado": true,
    "termino": "inconstitucionalidad"
   },
   "826627": {
+   "caratula": "FORMOSA, PROVINCIA DE c/ ESTADO NACIONAL s/ACCION DECLARATIVA DE INCONSTITUCIONALIDAD",
    "fecha": "07/05/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "DNU 566/2019 (facturación y pago retroactivo de petróleo crudo)",
+    "por_que": "Es un conflicto Nación-provincia por un DNU energético, aunque se resuelve por falta de caso y no sobre su constitucionalidad.",
+    "que_decidio": "La Corte rechazó la demanda de Formosa contra el DNU 566/2019 sobre pago retroactivo de petróleo crudo, porque el propio decreto no había sido aplicado y no existía 'caso' o 'causa' judicial.",
+    "relevancia_monitor": "media",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=826627"
+   },
    "marcado": true,
    "termino": "inconstitucionalidad"
   },
   "826838": {
+   "caratula": "Recurso Queja Nº 1 - RINCON BRAVO, GERARDO c/ ESTADO NACIONAL - DIRECCION NACIONAL DE MIGRACIONES s/RECURSO DIRECTO A JUZGADO",
    "fecha": "14/05/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no aplica",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Orden de expulsión de la Dirección Nacional de Migraciones",
+    "por_que": "Toca la política migratoria de expulsión de extranjeros con antecedentes penales, aunque el defecto es procesal y no define el fondo.",
+    "que_decidio": "La Corte declaró la nulidad de las actuaciones judiciales sobre la expulsión de un migrante condenado penalmente por no haberse dado participación a la Dirección Nacional de Migraciones, y devolvió la causa a instancia inferior.",
+    "relevancia_monitor": "media",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=826838"
+   },
    "marcado": true,
    "termino": "estado nacional"
   },
   "827106": {
+   "caratula": "ADMINISTRACION GENERAL DE PUERTOS SE c/ PROVINCIA DE BUENOS AIRES - MINISTERIO DE PRODUCCION DE LA PROVINCIA DE BUENOS AIRES Y OTRO s/PROCESO DE CONOCIMIENTO",
    "fecha": "14/05/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no aplica",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": null,
+    "por_que": "Es una definición de competencia judicial sin pronunciamiento de fondo.",
+    "que_decidio": "La Corte declaró que le corresponde entender en competencia originaria en un reclamo de la Administración General de Puertos (empresa del Estado Nacional) contra la Provincia de Buenos Aires por incumplimiento de un convenio de mantenimiento portuario.",
+    "relevancia_monitor": "baja",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=827106"
+   },
    "marcado": true,
    "termino": "estado nacional"
   },
@@ -446,7 +264,17 @@
    "termino": "inconstitucionalidad"
   },
   "828468": {
+   "caratula": "Recurso Queja Nº 1 - CONSEJO INTERUNIVERSITARIO NACIONAL Y OTROS c/ EN - PEN - DTO 759/25 s/AMPARO LEY 16.986",
    "fecha": "04/06/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "parcial",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Decreto 759/2025 (condiciona la ejecución de la Ley de Financiamiento de la Educación Universitaria 27.795)",
+    "por_que": "Es un incidente procesal dentro del litigio central sobre el financiamiento universitario, uno de los ejes de mayor impacto de la gestión actual.",
+    "que_decidio": "La Corte desestimó la queja del Estado Nacional para recusar por conflicto de interés a jueces docentes que intervienen en el amparo del Consejo Interuniversitario Nacional contra el decreto 759/2025, sin pronunciarse sobre el fondo de ese decreto.",
+    "relevancia_monitor": "alta",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=828468"
+   },
    "marcado": true,
    "termino": "inconstitucionalidad"
   },
@@ -466,12 +294,32 @@
    "termino": "amparo"
   },
   "829504": {
+   "caratula": "JUSTO JUAN JOSE c/ ANSES s/AMPAROS Y SUMARISIMOS",
    "fecha": "02/07/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "sí",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Resolución SSS 10/2020 (excluye empleados judiciales del régimen jubilatorio ley 24.018)",
+    "por_que": "Declara inválida una reglamentación previsional del Poder Ejecutivo, con efecto sobre un colectivo amplio de empleados judiciales aunque no sobre el sistema previsional general.",
+    "que_decidio": "La Corte confirmó que la Secretaría de Seguridad Social excedió sus facultades reglamentarias al excluir por resolución a empleados judiciales no jurisdiccionales del régimen jubilatorio especial de la ley 24.018, y mantuvo el otorgamiento del beneficio.",
+    "relevancia_monitor": "media",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=829504"
+   },
    "marcado": true,
    "termino": "amparo"
   },
   "829619": {
+   "caratula": "Recurso Queja Nº 1 - GIMENEZ, LOURDES SOLEDAD (POR LA REPR. INVOCADA) c/ ANSES s/AMPARO LEY 16.986",
    "fecha": "07/07/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "parcial",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Prestación Alimentar (ANSES)",
+    "por_que": "Es un caso individual de un programa social, resuelto por un defecto formal en el trámite del amparo.",
+    "que_decidio": "La Corte dejó sin efecto el rechazo de un amparo por 'excesivo rigor formal' y ordenó reconsiderar la rehabilitación de la Prestación Alimentar suspendida a una niña por ANSES.",
+    "relevancia_monitor": "baja",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=829619"
+   },
    "marcado": true,
    "termino": "amparo"
   },
@@ -496,7 +344,17 @@
    "termino": "amparo"
   },
   "830107": {
+   "caratula": "Recurso Queja Nº 1 - EN-M ECONOMIA Y OTRO c/ BUNGE ARGENTINA SA s/INHIBITORIA",
    "fecha": "07/07/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no aplica",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Decreto 131/2022 (derechos de exportación de productos agroindustriales)",
+    "por_que": "Es una disputa de competencia territorial, no resuelve la validez del decreto de retenciones.",
+    "que_decidio": "La Corte revocó la decisión que había dado competencia a la Justicia Federal de CABA y asignó el caso a la Justicia Federal de Córdoba, en una causa donde una empresa cuestiona el decreto 131/2022 de derechos de exportación agroindustriales.",
+    "relevancia_monitor": "baja",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830107"
+   },
    "marcado": true,
    "termino": "inconstitucionalidad"
   },
@@ -511,7 +369,17 @@
    "termino": "amparo"
   },
   "830418": {
+   "caratula": "Recurso Queja Nº 1 - AYUDARTE CRISTINA c/ ANSES s/REAJUSTE DE HABERES",
    "fecha": "06/08/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Convenio de Transferencia del sistema previsional Nación-Tucumán",
+    "por_que": "Define qué régimen de movilidad rige para las cajas provinciales transferidas a la Nación, con potencial impacto en otros casos análogos.",
+    "que_decidio": "La Corte revocó el fallo que aplicaba las leyes previsionales de Tucumán a una jubilada docente transferida, y estableció que por el Convenio de Transferencia rige la movilidad de las leyes nacionales 24.241 y 24.463.",
+    "relevancia_monitor": "media",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830418"
+   },
    "marcado": true,
    "termino": "estado nacional"
   },
@@ -521,7 +389,17 @@
    "termino": "inconstitucionalidad"
   },
   "830871": {
+   "caratula": "AMADO JORGE NICOLAS c/ ANSES s/REAJUSTES VARIOS",
    "fecha": "20/08/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no aplica",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Art. 25 de la ley 24.241 y art. 14.2 de la resolución SSS 6/09 (topes al haber previsional)",
+    "por_que": "Involucra los topes al haber jubilatorio, un tema previsional con potencial impacto sistémico, aunque acá se resuelve por omisión de pronunciamiento y no sobre el fondo.",
+    "que_decidio": "La Corte dejó parcialmente sin efecto un reajuste jubilatorio porque los jueces de grado y cámara omitieron expedirse sobre el reclamo del actor de incluir conceptos no remunerativos en el haber inicial, y ordenó que se resuelva ese planteo.",
+    "relevancia_monitor": "media",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830871"
+   },
    "marcado": true,
    "termino": "inconstitucionalidad"
   },
@@ -531,12 +409,32 @@
    "termino": "medida cautelar"
   },
   "830997": {
+   "caratula": "Recurso Queja Nº 1 - PUEBLA, JULIO CESAR c/ EN-M SALUD DE LA NACION-EXPTE 139524691/22 Y OTROS s/AMPARO LEY 16.986",
    "fecha": "20/08/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no aplica",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": null,
+    "por_que": "Es una cuestión de honorarios profesionales, de bajo interés para el monitor.",
+    "que_decidio": "La Corte dejó sin efecto la reducción de honorarios a dos abogados en un amparo de salud, por carecer de fundamentación válida y apartarse de la ley de honorarios.",
+    "relevancia_monitor": "baja",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830997"
+   },
    "marcado": true,
    "termino": "inconstitucionalidad"
   },
   "831004": {
+   "caratula": "CENCOSUD SA c/ ESTADO NACIONAL MINISTERIO DE ECONOMIA SECRETARIA DE INDUSTRIA Y DESARROLLO PRODUCTIVO s/LEALTAD COMERCIAL - LEY 22802 - ART 22",
    "fecha": "13/08/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "sí",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Decreto 274/2019, art. 53 (DNU que modificó la competencia en materia de lealtad comercial)",
+    "por_que": "Declara inconstitucional un decreto de necesidad y urgencia por invadir facultades exclusivas del Congreso, un precedente directo sobre los límites al uso de DNUs por el Poder Ejecutivo.",
+    "que_decidio": "La Corte declaró inconstitucional el artículo 53 del decreto 274/2019, que había fijado por decreto de necesidad y urgencia la competencia judicial en materia de lealtad comercial, y asignó la causa a la Justicia Contencioso Administrativa Federal según la ley 22.802.",
+    "relevancia_monitor": "alta",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=831004"
+   },
    "marcado": true,
    "termino": "inconstitucionalidad"
   },
@@ -566,7 +464,17 @@
    "termino": "inconstitucionalidad"
   },
   "832064": {
+   "caratula": "PAPEL MISIONERO S.A.I.F.C. c/ PROVINCIA DE MISIONES s/accion declarativa de inconstitucionalidad",
    "fecha": "10/09/2026",
+   "lectura": {
+    "contra_el_gobierno_nacional": "no aplica",
+    "fecha_lectura": "2026-09-14",
+    "norma_o_politica": "Ley provincial de Misiones 4483 (IX N° 7) sobre insalubridad laboral en la industria celulósico-papelera",
+    "por_que": "Es un conflicto Nación-provincia sobre competencias laborales, aunque el Poder Ejecutivo Nacional no es parte y la norma cuestionada es provincial.",
+    "que_decidio": "La Corte declaró inconstitucional una ley de la Provincia de Misiones que calificaba en forma general como insalubre a toda la industria de pasta celulosa y papel, por contradecir el procedimiento de la Ley de Contrato de Trabajo nacional, a favor de la empresa actora.",
+    "relevancia_monitor": "media",
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=832064"
+   },
    "marcado": true,
    "termino": "inconstitucionalidad"
   },
