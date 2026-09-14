@@ -219,6 +219,7 @@ jobs:
         run: python scripts/aviso_informe.py
 
       - name: Commitear snapshot + caches a main
+        id: commit
         working-directory: .
         run: |
           git config user.name  "github-actions[bot]"
@@ -375,12 +376,13 @@ jobs:
           SLACK_CANAL_ALERTAS: ${{ secrets.SLACK_CANAL_ALERTAS }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           ESTADO: ${{ job.status }}
+          COMMIT: ${{ steps.commit.outcome }}
         run: |
           # Los pasos ya corridos tienen conclusión aunque el job siga abierto,
           # así que se puede nombrar el culpable en el aviso mismo. Sin esto el
           # issue diría sólo "falló" y habría que entrar a leer el log igual.
           pasos=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/jobs" \
-                    --jq '.jobs[].steps[] | select(.conclusion=="failure") | "- " + .name' 2>/dev/null || true)
+                    --jq '.jobs[].steps[] | select(.conclusion=="failure" or .conclusion=="cancelled") | "- " + .name' 2>/dev/null || true)
           [ -z "$pasos" ] && pasos="- (no se pudo determinar el paso)"
 
           gh label create pipeline-caido --color B60205 \
@@ -409,6 +411,29 @@ jobs:
           sirviendo=$(git show origin/main:projects/informe_coyuntura/web/src/data/informe.json 2>/dev/null \
                       | python -c "import json,sys; print(json.load(sys.stdin).get('generated_at',''))" 2>/dev/null || true)
 
+          # ¿Publicó? Un job cortado por el tope DESPUÉS del commit (el
+          # 14-sep-2026 se cortó en BigQuery) sí dejó el snapshot en main, y
+          # decir «no publicó» es falso. Hacen falta las dos cosas: que el commit
+          # haya salido y que main sirva el snapshot de ESTA corrida — si los
+          # colectores ni corrieron, el snapshot local es el de main y coincidiría.
+          propio=$(python -c "import json; print(json.load(open('web/src/data/informe.json')).get('generated_at',''))" 2>/dev/null || true)
+          publico=""
+          if [ "$COMMIT" = "success" ] && [ -n "$sirviendo" ] && [ "$sirviendo" = "$propio" ]; then
+            publico="--publico"
+          fi
+
+          estado=""
+          [ "$GITHUB_REF" = "refs/heads/main" ] && estado="$RUNNER_TEMP/estado-avisos/estado.json"
+
+          if [ -n "$publico" ]; then
+            # Publicó: no es un pipeline caído, así que no hay issue. Sólo el
+            # aviso de lo que quedó sin hacer después del commit.
+            python scripts/aviso_slack.py fallo $publico --pasos "$pasos" --archivo-estado "$estado" \
+              --gates "$RUNNER_TEMP/gates.log" --log "$RUNNER_TEMP/colectores.log" \
+              --sirviendo "$sirviendo" --estado "$ESTADO" || true
+            exit 0
+          fi
+
           # El cuerpo del issue y el mensaje de Slack salen del MISMO parser:
           # dos formatos, un solo lugar que sabe leer un log de corrida.
           python scripts/aviso_slack.py reporte --pasos "$pasos" \
@@ -426,8 +451,6 @@ jobs:
           # aviso se abre y se cierra a las 3 de la mañana sin que nadie lo
           # vea: pasó del 22 al 24-ago-2026, tres noches, con la web sirviendo
           # datos del 21.
-          estado=""
-          [ "$GITHUB_REF" = "refs/heads/main" ] && estado="$RUNNER_TEMP/estado-avisos/estado.json"
           python scripts/aviso_slack.py fallo --pasos "$pasos" --archivo-estado "$estado" \
             --gates "$RUNNER_TEMP/gates.log" --log "$RUNNER_TEMP/colectores.log" \
             --fallas "$fallas" --sirviendo "$sirviendo" --estado "$ESTADO" || true

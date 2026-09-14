@@ -612,6 +612,25 @@ def sincronizar(ruta: str, actuales: list[dict], alcance, url: str = "") -> int:
     return 0
 
 
+def _corte_despues_de_publicar(a, pasos: list[str]) -> dict:
+    """El job se cortó con el snapshot ya en main (14-sep-2026: el tope de 45
+    minutos lo cortó en el espejo a BigQuery). Decir «no publicó» sería falso:
+    el Monitor está al día, lo que falta es lo que venía después del commit.
+    Por eso es 🟡 y cierra el hilo `corrida` si había uno abierto."""
+    pendientes = ", ".join(pasos) or "no se pudo determinar"
+    cuerpo = [
+        f"*Qué ve la gente:* <{MONITOR_URL}|el Monitor> está al día"
+        + (f" (corrida {a.sirviendo})" if a.sirviendo else "") + ": la corrida sí publicó.",
+        f"*Qué quedó sin hacer:* {pendientes}.",
+        "*Qué hacer:* si faltó BigQuery, la corrida se recupera con `bigquery_backfill.py`. "
+        "Si se repite, la corrida está rozando el tope de 45 minutos: mirar qué paso se alargó.",
+    ]
+    if a.estado == "cancelled":
+        cuerpo.insert(1, CANCELADO)
+    return _problema("cierre", "🟡", "la corrida publicó, pero se cortó antes de terminar",
+                     "la corrida vuelve a terminar completa", cuerpo, huella=pendientes)
+
+
 def main() -> int:
     p = argparse.ArgumentParser()
     p.add_argument("modo", choices=["fallo", "reporte", "recuperado", "degradado"])
@@ -626,6 +645,8 @@ def main() -> int:
                    help="cuántas corridas caídas seguidas lleva el aviso abierto")
     p.add_argument("--estado", default="failure", help="job.status: failure | cancelled")
     p.add_argument("--sirviendo", default="", help="generated_at de lo que está en producción")
+    p.add_argument("--publico", action="store_true",
+                   help="el job se cortó DESPUÉS de dejar el snapshot en main")
     p.add_argument("--archivo-estado", default="",
                    help="JSON con los hilos abiertos (ADR-0309); sin él, cada aviso sale suelto")
     a = p.parse_args()
@@ -644,6 +665,9 @@ def main() -> int:
                             cola(texto_gates or texto_cols), cotejos)
 
         cancelado = a.estado == "cancelled"
+        if a.publico:
+            return sincronizar(a.archivo_estado, [_corte_despues_de_publicar(a, pasos)],
+                               lambda c: c in ("corrida", "cierre"), a.url)
         cuerpo = []
         if cancelado:
             cuerpo.append(CANCELADO)

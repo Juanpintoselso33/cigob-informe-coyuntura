@@ -47,13 +47,13 @@ class SimpleSlack:
         return [p for p in self.posts if 'thread_ts' not in p]
 
 
-def correr(monkeypatch, tmp_path, modo, log='', gates=''):
+def correr(monkeypatch, tmp_path, modo, log='', gates='', extra=()):
     for nombre, texto in (('colectores.log', log), ('gates.log', gates)):
         (tmp_path / nombre).write_text(texto)
     monkeypatch.setattr(sys, 'argv', [
         'aviso_slack', modo, '--log', str(tmp_path / 'colectores.log'),
         '--gates', str(tmp_path / 'gates.log'), '--url', 'https://github.com/run/1',
-        '--archivo-estado', str(tmp_path / 'estado' / 'estado.json')])
+        '--archivo-estado', str(tmp_path / 'estado' / 'estado.json'), *extra])
     assert aviso_slack.main() == 0
 
 
@@ -123,6 +123,25 @@ def test_la_corrida_caida_se_cierra_cuando_una_publica(slack, monkeypatch, tmp_p
     assert estado(tmp_path) == {}
 
 
+def test_un_corte_despues_de_publicar_no_dice_que_no_publico(slack, monkeypatch, tmp_path):
+    # 14-sep-2026: el tope de 45 min cortó el job en BigQuery, con el snapshot
+    # ya en main. El 🔴 dijo «se corta sin publicar» y que la web mostraba la
+    # corrida anterior, que era justamente la nueva.
+    correr(monkeypatch, tmp_path, 'fallo', gates='FAILED tests/test_x.py::test_a - boom\n')
+    correr(monkeypatch, tmp_path, 'fallo', extra=[
+        '--publico', '--estado', 'cancelled', '--pasos', '- Espejar la corrida en BigQuery',
+        '--sirviendo', '2026-09-14T21:44:07+00:00'])
+    raiz = slack.raices()[-1]['texto']
+    assert raiz.startswith('🟡 *Monitor del Plan de Gobierno — la corrida publicó, pero se cortó antes de terminar*')
+    assert 'no publica' not in raiz and 'corrida anterior' not in raiz
+    assert 'Espejar la corrida en BigQuery' in raiz and 'bigquery_backfill' in raiz
+    # y cierra el «no publica» de la corrida anterior, que ya no es cierto
+    assert any(p.get('reply_broadcast') and 'vuelve a publicar' in p['texto'] for p in slack.posts)
+    assert set(estado(tmp_path)) == {'cierre'}
+    correr(monkeypatch, tmp_path, 'degradado', '')                   # la siguiente termina bien
+    assert estado(tmp_path) == {}
+
+
 def test_si_slack_no_confirma_el_cierre_queda_abierto_para_reintentar(slack, monkeypatch, tmp_path):
     correr(monkeypatch, tmp_path, 'degradado', ERR)
     monkeypatch.setattr(aviso_slack, 'publicar', lambda texto, **kw: '')
@@ -186,6 +205,13 @@ def test_el_workflow_restaura_pasa_y_guarda_el_estado_siempre():
     restaurar = next(p for p in pasos if p.get('uses', '').startswith('actions/cache/restore@'))
     assert "refs/heads/main" in restaurar['if'] and "refs/heads/main" in guardar['if']
     assert all('refs/heads/main' in r for r in avisos)
+    # El aviso de falla distingue un corte posterior al commit: sin el id del
+    # paso de commit no hay forma de saberlo y vuelve a decir «no publicó».
+    commit = next(p for p in pasos if p.get('name', '').startswith('Commitear'))
+    assert commit.get('id') == 'commit'
+    falla = next(p for p in pasos if p.get('name') == 'Avisar que la corrida falló')
+    assert falla['env']['COMMIT'] == '${{ steps.commit.outcome }}' and '--publico' in falla['run']
+    assert 'conclusion=="cancelled"' in falla['run']
     # Y dos corridas a la vez leerían el mismo estado y duplicarían hilos.
     flujo = yaml.safe_load(wf.read_text(encoding='utf-8'))
     assert flujo.get('concurrency', {}).get('cancel-in-progress') is False
