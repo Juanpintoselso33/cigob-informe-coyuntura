@@ -6,31 +6,6 @@
    "consultas_sin_error": 27,
    "estado": "sin_fallos_detectados",
    "relectura_pendiente": [
-    "428443",
-    "428262",
-    "428229",
-    "428104",
-    "428111",
-    "428128",
-    "428064",
-    "428074",
-    "428037",
-    "427858",
-    "427814",
-    "427717",
-    "427750",
-    "427752",
-    "427660",
-    "427579",
-    "427522",
-    "427529",
-    "427498",
-    "427453",
-    "427466",
-    "427313",
-    "427212",
-    "427276",
-    "428582",
     "428357",
     "428379",
     "427312",
@@ -54,7 +29,7 @@
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
   "nuevas_en_la_corrida": 0,
   "revision_manual_en": "2026-09-08",
-  "ultima_corrida": "2026-09-14"
+  "ultima_corrida": "2026-09-15"
  },
  "pendientes": {},
  "revisadas": {
@@ -961,7 +936,9 @@
   "427212": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427236": {
    "del_proceso": false,
@@ -975,7 +952,9 @@
   "427276": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427312": {
    "del_proceso": false,
@@ -985,7 +964,9 @@
   "427313": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427319": {
    "del_proceso": true,
@@ -1004,27 +985,37 @@
   "427453": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427466": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427498": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427522": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427529": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427534": {
    "del_proceso": false,
@@ -1044,12 +1035,19 @@
   "427579": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427660": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [
+    "Belgrano Cargas",
+    "SOFSE"
+   ],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427661": {
    "del_proceso": false,
@@ -1059,7 +1057,9 @@
   "427717": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427731": {
    "del_proceso": false,
@@ -1069,12 +1069,16 @@
   "427750": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427752": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427758": {
    "del_proceso": false,
@@ -1084,37 +1088,51 @@
   "427814": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "427858": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428037": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428064": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428074": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428104": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428111": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428126": {
    "del_proceso": true,
@@ -1124,7 +1142,9 @@
   "428128": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428182": {
    "del_proceso": false,
@@ -1134,12 +1154,16 @@
   "428229": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428262": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428273": {
    "del_proceso": true,
@@ -1454,7 +1478,9 @@
   "428443": {
    "del_proceso": false,
    "empresa": "Belgrano Cargas",
-   "periodo": "2026-07"
+   "empresas_mencionadas": [],
+   "periodo": "2026-07",
+   "version_filtro": 2
   },
   "428445": {
    "del_proceso": false,
@@ -1551,7 +1577,9 @@
   "428582": {
    "del_proceso": false,
    "empresa": "YCRT",
-   "periodo": "2026-08"
+   "empresas_mencionadas": [],
+   "periodo": "2026-08",
+   "version_filtro": 2
   },
   "428597": {
    "del_proceso": false,
