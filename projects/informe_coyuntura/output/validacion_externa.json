@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-16T02:58:28.670789-03:00",
+    "generated_at": "2026-09-16T03:40:43.229858-03:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -50,40 +50,41 @@
     }
   },
   "serie_itcm": {
-    "2023-12": 26.2,
-    "2024-01": 24.9,
+    "2023-12": 26.1,
+    "2024-01": 24.7,
     "2024-02": 28.8,
     "2024-03": 28.2,
-    "2024-04": 29.3,
-    "2024-05": 43.5,
-    "2024-06": 38.8,
-    "2024-07": 44.1,
-    "2024-08": 43.7,
-    "2024-09": 48.4,
-    "2024-10": 51.2,
-    "2024-11": 57.6,
-    "2024-12": 70.2,
+    "2024-04": 29.0,
+    "2024-05": 43.0,
+    "2024-06": 38.9,
+    "2024-07": 43.7,
+    "2024-08": 43.9,
+    "2024-09": 48.2,
+    "2024-10": 51.1,
+    "2024-11": 57.5,
+    "2024-12": 70.1,
     "2025-01": 75.3,
-    "2025-02": 74.0,
-    "2025-03": 68.4,
+    "2025-02": 73.7,
+    "2025-03": 68.0,
     "2025-04": 73.6,
     "2025-05": 75.9,
-    "2025-06": 77.0,
+    "2025-06": 76.5,
     "2025-07": 72.4,
-    "2025-08": 72.4,
-    "2025-09": 72.6,
+    "2025-08": 72.3,
+    "2025-09": 72.3,
     "2025-10": 69.3,
-    "2025-11": 64.4,
-    "2025-12": 69.8,
-    "2026-01": 59.4,
-    "2026-02": 54.8,
-    "2026-03": 67.5,
-    "2026-04": 59.5,
-    "2026-05": 64.4,
-    "2026-06": 64.8,
-    "2026-07": 60.4
+    "2025-11": 64.2,
+    "2025-12": 69.5,
+    "2026-01": 59.3,
+    "2026-02": 54.7,
+    "2026-03": 67.1,
+    "2026-04": 59.4,
+    "2026-05": 64.2,
+    "2026-06": 64.5,
+    "2026-07": 61.3
   },
   "componentes_historia_itcm": [
+    "actividad_tributaria",
     "costo_financiamiento_tesoro",
     "credito_privado",
     "desequilibrio_monetario",
@@ -102,7 +103,7 @@
   ],
   "linea_base_itcm": {
     "periodo": "2023-12",
-    "valor": 26.2,
+    "valor": 26.1,
     "cobertura": 0.81,
     "sin_dato": [
       "credito_privado",
@@ -175,19 +176,19 @@
   },
   "correlaciones_itcm": {
     "niveles (ITCM vs índice líder)": {
-      "r": 0.733,
+      "r": 0.732,
       "n": 32
     },
     "primeras diferencias (ITCM vs líder)": {
-      "r": 0.427,
+      "r": 0.428,
       "n": 31
     },
     "líder adelantado 1 mes vs ITCM": {
-      "r": 0.499,
+      "r": 0.5,
       "n": 32
     },
     "líder adelantado 3 meses vs ITCM": {
-      "r": 0.028,
+      "r": 0.029,
       "n": 32
     },
     "ITCM adelantado 1 mes vs líder": {
@@ -200,13 +201,13 @@
       {
         "mes": "2024-01",
         "tipo": "valle",
-        "amplitud": -8.07,
+        "amplitud": -8.1,
         "provisorio": true
       },
       {
         "mes": "2025-01",
         "tipo": "pico",
-        "amplitud": 11.32,
+        "amplitud": 11.46,
         "provisorio": false
       },
       {
@@ -306,6 +307,12 @@
         "total": 1
       },
       {
+        "componente": "actividad_tributaria",
+        "falsas": 0,
+        "perdidos": 2,
+        "total": 2
+      },
+      {
         "componente": "costo_financiamiento_tesoro",
         "falsas": 1,
         "perdidos": 1,
@@ -372,25 +379,43 @@
         "total": 6
       }
     ],
-    "evaluables": 14,
-    "peores": 11,
+    "evaluables": 15,
+    "peores": 12,
     "iguales": 2,
     "mejores": 1
   },
   "redundancia_itcm": {
     "diferencias": {
-      "n_pares": 105,
-      "r_abs_medio": 0.196,
+      "n_pares": 120,
+      "r_abs_medio": 0.192,
       "share_altos": 0.0
     },
     "umbral": 0.7,
-    "n_indicadores": 15,
-    "n_pares": 105,
-    "r_abs_medio": 0.476,
-    "share_altos": 0.295,
-    "share_bajos": 0.314,
+    "n_indicadores": 16,
+    "n_pares": 120,
+    "r_abs_medio": 0.49,
+    "share_altos": 0.308,
+    "share_bajos": 0.3,
     "matriz": {
+      "actividad_tributaria": {
+        "costo_financiamiento_tesoro": 0.159,
+        "credito_privado": 0.826,
+        "desequilibrio_monetario": 0.08,
+        "emae_difusion": 0.725,
+        "emae_ia": 0.84,
+        "iai": 0.851,
+        "idc": 0.81,
+        "ipc_total": 0.674,
+        "ipi_manufacturero": 0.828,
+        "recaudacion": -0.333,
+        "rem_ipc_12m": 0.693,
+        "reservas_bcra": 0.248,
+        "resultado_primario": 0.641,
+        "saldo_comercial_12m": 0.545,
+        "tcrm": -0.568
+      },
       "costo_financiamiento_tesoro": {
+        "actividad_tributaria": 0.159,
         "credito_privado": -0.108,
         "desequilibrio_monetario": 0.432,
         "emae_difusion": 0.192,
@@ -407,6 +432,7 @@
         "tcrm": -0.621
       },
       "credito_privado": {
+        "actividad_tributaria": 0.826,
         "costo_financiamiento_tesoro": -0.108,
         "desequilibrio_monetario": -0.052,
         "emae_difusion": 0.733,
@@ -423,6 +449,7 @@
         "tcrm": -0.414
       },
       "desequilibrio_monetario": {
+        "actividad_tributaria": 0.08,
         "costo_financiamiento_tesoro": 0.432,
         "credito_privado": -0.052,
         "emae_difusion": -0.063,
@@ -439,6 +466,7 @@
         "tcrm": -0.489
       },
       "emae_difusion": {
+        "actividad_tributaria": 0.725,
         "costo_financiamiento_tesoro": 0.192,
         "credito_privado": 0.733,
         "desequilibrio_monetario": -0.063,
@@ -455,6 +483,7 @@
         "tcrm": -0.302
       },
       "emae_ia": {
+        "actividad_tributaria": 0.84,
         "costo_financiamiento_tesoro": 0.201,
         "credito_privado": 0.796,
         "desequilibrio_monetario": 0.207,
@@ -471,6 +500,7 @@
         "tcrm": -0.643
       },
       "iai": {
+        "actividad_tributaria": 0.851,
         "costo_financiamiento_tesoro": 0.065,
         "credito_privado": 0.872,
         "desequilibrio_monetario": 0.117,
@@ -487,6 +517,7 @@
         "tcrm": -0.394
       },
       "idc": {
+        "actividad_tributaria": 0.81,
         "costo_financiamiento_tesoro": 0.16,
         "credito_privado": 0.889,
         "desequilibrio_monetario": 0.121,
@@ -503,6 +534,7 @@
         "tcrm": -0.653
       },
       "ipc_total": {
+        "actividad_tributaria": 0.674,
         "costo_financiamiento_tesoro": 0.279,
         "credito_privado": 0.718,
         "desequilibrio_monetario": -0.086,
@@ -519,6 +551,7 @@
         "tcrm": -0.634
       },
       "ipi_manufacturero": {
+        "actividad_tributaria": 0.828,
         "costo_financiamiento_tesoro": 0.054,
         "credito_privado": 0.723,
         "desequilibrio_monetario": 0.242,
@@ -535,6 +568,7 @@
         "tcrm": -0.535
       },
       "recaudacion": {
+        "actividad_tributaria": -0.333,
         "costo_financiamiento_tesoro": 0.023,
         "credito_privado": -0.371,
         "desequilibrio_monetario": 0.004,
@@ -551,6 +585,7 @@
         "tcrm": -0.052
       },
       "rem_ipc_12m": {
+        "actividad_tributaria": 0.693,
         "costo_financiamiento_tesoro": 0.326,
         "credito_privado": 0.788,
         "desequilibrio_monetario": -0.265,
@@ -567,6 +602,7 @@
         "tcrm": -0.622
       },
       "reservas_bcra": {
+        "actividad_tributaria": 0.248,
         "costo_financiamiento_tesoro": -0.179,
         "credito_privado": 0.128,
         "desequilibrio_monetario": 0.104,
@@ -583,6 +619,7 @@
         "tcrm": 0.106
       },
       "resultado_primario": {
+        "actividad_tributaria": 0.641,
         "costo_financiamiento_tesoro": 0.377,
         "credito_privado": 0.732,
         "desequilibrio_monetario": -0.156,
@@ -599,6 +636,7 @@
         "tcrm": -0.807
       },
       "saldo_comercial_12m": {
+        "actividad_tributaria": 0.545,
         "costo_financiamiento_tesoro": 0.629,
         "credito_privado": 0.497,
         "desequilibrio_monetario": 0.25,
@@ -615,6 +653,7 @@
         "tcrm": -0.908
       },
       "tcrm": {
+        "actividad_tributaria": -0.568,
         "costo_financiamiento_tesoro": -0.621,
         "credito_privado": -0.414,
         "desequilibrio_monetario": -0.489,
@@ -733,6 +772,26 @@
         "por_diseno": null
       },
       {
+        "a": "actividad_tributaria",
+        "b": "iai",
+        "r": 0.851,
+        "n": 32,
+        "dimension_a": "actividad",
+        "dimension_b": "inversion",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "actividad_tributaria",
+        "b": "emae_ia",
+        "r": 0.84,
+        "n": 31,
+        "dimension_a": "actividad",
+        "dimension_b": "actividad",
+        "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
         "a": "ipc_total",
         "b": "resultado_primario",
         "r": 0.837,
@@ -763,11 +822,41 @@
         "por_diseno": null
       },
       {
+        "a": "actividad_tributaria",
+        "b": "ipi_manufacturero",
+        "r": 0.828,
+        "n": 32,
+        "dimension_a": "actividad",
+        "dimension_b": "actividad",
+        "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
+        "a": "actividad_tributaria",
+        "b": "credito_privado",
+        "r": 0.826,
+        "n": 32,
+        "dimension_a": "actividad",
+        "dimension_b": "financiamiento",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "iai",
         "b": "idc",
         "r": 0.812,
         "n": 32,
         "dimension_a": "inversion",
+        "dimension_b": "financiamiento",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "actividad_tributaria",
+        "b": "idc",
+        "r": 0.81,
+        "n": 33,
+        "dimension_a": "actividad",
         "dimension_b": "financiamiento",
         "misma_dimension": false,
         "por_diseno": null
@@ -903,6 +992,16 @@
         "por_diseno": null
       },
       {
+        "a": "actividad_tributaria",
+        "b": "emae_difusion",
+        "r": 0.725,
+        "n": 31,
+        "dimension_a": "actividad",
+        "dimension_b": "actividad",
+        "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
         "a": "credito_privado",
         "b": "ipi_manufacturero",
         "r": 0.723,
@@ -943,8 +1042,8 @@
         "por_diseno": null
       }
     ],
-    "pares_cruzados": 26,
-    "pares_no_explicados": 26
+    "pares_cruzados": 29,
+    "pares_no_explicados": 29
   },
   "redundancia_itcg": {
     "diferencias": {
@@ -3337,38 +3436,38 @@
         "nombre": "Actividad económica",
         "peso": 0.11,
         "serie": {
-          "2023-12": 16.3,
-          "2024-01": 17.2,
-          "2024-02": 25.1,
-          "2024-03": 7.7,
-          "2024-04": 29.5,
-          "2024-05": 42.7,
-          "2024-06": 17.0,
-          "2024-07": 36.7,
-          "2024-08": 22.2,
-          "2024-09": 20.1,
-          "2024-10": 40.4,
-          "2024-11": 51.0,
-          "2024-12": 85.6,
-          "2025-01": 93.9,
-          "2025-02": 94.7,
-          "2025-03": 94.7,
-          "2025-04": 94.7,
-          "2025-05": 96.0,
-          "2025-06": 96.0,
-          "2025-07": 74.0,
-          "2025-08": 63.0,
-          "2025-09": 82.7,
-          "2025-10": 68.5,
-          "2025-11": 44.6,
-          "2025-12": 61.1,
-          "2026-01": 51.4,
-          "2026-02": 33.1,
-          "2026-03": 85.6,
-          "2026-04": 53.9,
-          "2026-05": 51.9,
-          "2026-06": 64.1,
-          "2026-07": 25.4
+          "2023-12": 15.4,
+          "2024-01": 15.8,
+          "2024-02": 24.5,
+          "2024-03": 7.3,
+          "2024-04": 26.5,
+          "2024-05": 38.2,
+          "2024-06": 17.8,
+          "2024-07": 32.9,
+          "2024-08": 24.0,
+          "2024-09": 18.3,
+          "2024-10": 40.1,
+          "2024-11": 50.0,
+          "2024-12": 84.2,
+          "2025-01": 94.7,
+          "2025-02": 91.8,
+          "2025-03": 91.1,
+          "2025-04": 94.4,
+          "2025-05": 96.5,
+          "2025-06": 91.1,
+          "2025-07": 73.8,
+          "2025-08": 62.2,
+          "2025-09": 79.9,
+          "2025-10": 68.7,
+          "2025-11": 42.7,
+          "2025-12": 59.0,
+          "2026-01": 50.2,
+          "2026-02": 32.6,
+          "2026-03": 82.1,
+          "2026-04": 53.5,
+          "2026-05": 50.1,
+          "2026-06": 61.2,
+          "2026-07": 33.5
         }
       },
       "competitividad_externa": {

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-16 02:58:35"
+generado: "2026-09-16 03:43:04"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -14,7 +14,7 @@ schema_version: "1.2.0"
 
 ## Cinturones
 
-### 🟡 Macro — score 3.6/10 (en_tension)
+### 🟡 Macro — score 3.7/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -26,6 +26,7 @@ schema_version: "1.2.0"
 | emae_ia | 2.69 | % i.a. | 2026-06-01 | fresco |
 | emae_difusion | 80.0 | % de sectores en crecimiento i.a. | 2026-06-01 | fresco |
 | ipi_manufacturero | -2.82 | % i.a. (promedio 3 meses) | 2026-07-01 | fresco |
+| actividad_tributaria | -5.41 | % i.a. real (compuesto IVA-DGI/cheque) | 2026-08-01 | fresco |
 | saldo_comercial_12m | 23731.0 | Millones de USD (acum. 12 meses) | 2026-07-01 | fresco |
 | recaudacion | 91.3 | índice (100 = 4T-2023) | 2026-08-01 | fresco |
 | tcrm | 85.53 | Índice (base dic-2015=100) | 2026-08-01 | fresco |
@@ -57,7 +58,7 @@ schema_version: "1.2.0"
 | eficacia_legislativa | 20.0 | % de proyectos | 2026-09-16 | fresco |
 | veto_quorum | 9.1 | % de sesiones | 2026-09-16 | fresco |
 | comisiones_caidas | 96.9 | % de proyectos | 2026-09-16 | fresco |
-| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-09-16 | fresco |
+| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-09-16 | ⚠ cache |
 | derrotas_legislativas | 2 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-09-16 | fresco |
 | rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-09-16 | fresco |
 | protestas_caba | 281 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
@@ -116,11 +117,11 @@ schema_version: "1.2.0"
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
 | masa_salarial | -32.44 | % de variación real vs 2023-07 (SPN remuneraciones) | 2026-07-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. La card se sigue publicando con su valor mensual — lo que se retira es el puntaje, no el dato. |
-| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-09-16 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
+| reestructuracion_organismos | 20.0 | % de avance (proxy InfoLeg, caso por caso) | 2026-09-16 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 
 ## Advertencias
 
-- `desactualizado:politica:apoyo_empresario,cobertura_judicial`
+- `desactualizado:politica:apoyo_empresario,adhesion_reformas_provincial,cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-16 02:58:35 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-16 03:43:04 — schema 1.2.0*
