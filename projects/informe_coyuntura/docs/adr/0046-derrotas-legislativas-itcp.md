@@ -6,7 +6,7 @@ fecha: 2026-07-09
 cinturon: 'politica'
 indicadores: [fetch_derrotas_legislativas, fetch_derrotas_legislativas_mensual]
 archivos: ['scripts/politica.py', 'data/politica/derrotas_legislativas_eventos.json', 'scripts/itcp.py', 'scripts/descargar_series.py', 'scripts/validacion_externa.py', 'scripts/gate_calidad.py', '.github/workflows/data-pipeline.yml', 'datos.ts', 'descripciones.ts', 'formulas.ts', 'fichas.ts', 'tests/test_itcp.py', 'tests/test_politica_derrotas.py']
-relacionado: ['0069']
+relacionado: ['0069', '0330']
 ambito: '`scripts/politica.py` (`fetch_derrotas_legislativas` y helpers) · `data/politica/derrotas_legislativas_eventos.json` (registro versionado, semilla verificada a mano) · `scripts/itcp.py` (banda nueva + pesos internos de poder_legislativo) · `scripts/descargar_series.py` (`fetch_derrotas_legislativas_mensual`) · `scripts/validacion_externa.py` (ITCP_SERIES) · `scripts/gate_calidad.py` (excepción G3) · `.github/workflows/data-pipeline.yml` (git add del registro) · web (`datos.ts`/`descripciones.ts`/`formulas.ts`/`fichas.ts`) · `tests/test_itcp.py` · `tests/test_politica_derrotas.py`'
 ---
 

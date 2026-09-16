@@ -163,7 +163,6 @@ def test_el_snapshot_declara_la_procedencia_de_cada_indicador():
             "politica": {"indicadores": {
                 "apoyo_empresario": {"valor": 0.0},
                 "desafios_legislativos": {"valor": 3.0},
-                "bloqueo_sostenido": {"valor": 33.3},
                 "velocidad_resolucion": {"valor": 85.7},
             }},
             "gestion": {"indicadores": {
@@ -186,7 +185,6 @@ def test_el_snapshot_declara_la_procedencia_de_cada_indicador():
     assert {k for k, v in metodos.items() if v == "semiautomatico"} == {
         "apoyo_empresario",
         "desafios_legislativos",
-        "bloqueo_sostenido",
         "reestructuracion_organismos",
         "fal_modernizacion_laboral",
         "protocolo_antipiquetes",
@@ -452,11 +450,10 @@ def test_politica_itcp_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False and i.get("estado") != "sin_universo"}
-    # ADR-0048 (revisión editorial 2026-07-10) + ADR-0052 (2026-07-11) +
-    # ADR-0069 (2026-07-16): 11 indicadores puntúan (la cohesión es UNA card,
-    # el compuesto bicameral; conflictividad_nacional reemplaza a
-    # movilizacion_cepa en conflicto social; bloqueo_sostenido entra a poder
-    # legislativo como la cara ganada del pulso que derrotas no acredita).
+    # ADR-0048 (revisión editorial 2026-07-10) + ADR-0052 (2026-07-11): 11
+    # indicadores puntúan (la cohesión es UNA card, el compuesto bicameral;
+    # conflictividad_nacional reemplaza a movilizacion_cepa en conflicto
+    # social).
     # rotacion_gabinete, protestas_caba, movilizacion_cepa y
     # comisiones_caidas (ADR-0064) quedan OCULTOS del snapshot
     # (POLITICA_OCULTOS, mismo criterio ADR-0022 que los monetarios de
@@ -478,14 +475,12 @@ def test_politica_itcp_reconcilia():
     # 19 desde ADR-0232: entra la intensidad laboral oficial en conflicto social.
     # 19 → 17: salieron `apoyo_empresario` (ADR-0246) y `judicializacion` (ADR-0255)
     # 17 → 18: vuelve `apoyo_empresario` con el corpus cerrado (ADR-0310)
-    assert len(c["indicadores"]) == 18
-    bloqueo = c["indicadores"]["bloqueo_sostenido"]
-    sin_universo = bloqueo.get("estado") == "sin_universo"
-    assert len(en_indice) == 18 - int(sin_universo)
-    if sin_universo:
-        assert bloqueo["valor"] is None
-        assert bloqueo.get("puntaje_itcp") is None
-        assert "bloqueo_sostenido" not in en_indice
+    # 18 → 17 (ADR-0330): sale `bloqueo_sostenido` — un indicador que enmudece
+    # en el extremo del fenómeno que mide (cero desafíos en la ventana) no es
+    # una card; su contenido pasa a la explicación de `desafios_legislativos`.
+    assert len(c["indicadores"]) == 17
+    assert "bloqueo_sostenido" not in c["indicadores"]
+    assert len(en_indice) == 17
     for _nuevo in ("produccion_legislativa",
                    "velocidad_resolucion", "paralisis_denuncias"):
         assert _nuevo in en_indice, f"{_nuevo} tendría que puntuar (ADR-0168)"
@@ -494,8 +489,6 @@ def test_politica_itcp_reconcilia():
     # y ADR-0310 lo repuso con el corpus cerrado.
     assert "judicializacion" not in en_indice
     assert "apoyo_empresario" in en_indice
-    if not sin_universo:
-        assert "bloqueo_sostenido" in en_indice
     assert "brecha_obra_publica" in en_indice
     # ADR-0089: derrotas sale del índice, entra desafíos en su lugar
     assert "desafios_legislativos" in en_indice

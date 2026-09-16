@@ -14,7 +14,7 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `poder_legislativo` | 21% | `ratio_dnu`, `eficacia_legislativa`, `veto_quorum`, `desafios_legislativos`, `bloqueo_sostenido`, `produccion_legislativa` |
+| `poder_legislativo` | 21% | `ratio_dnu`, `eficacia_legislativa`, `veto_quorum`, `desafios_legislativos`, `produccion_legislativa` |
 | `alianzas_territoriales` | 19% | `iaf_transferencias`, `alineamiento_senadores_prov`, `adhesion_reformas_provincial` |
 | `cohesion_interna` | 15% | `cohesion_bloque` |
 | `conflicto_social` | 10% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
@@ -34,8 +34,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **4.2%** |
+| Peso dentro de la dimensión | 23% |
+| Peso efectivo en el índice | **4.8%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `externa` — ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059) |
@@ -50,8 +50,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 27% |
-| Peso efectivo en el índice | **5.7%** |
+| Peso dentro de la dimensión | 30% |
+| Peso efectivo en el índice | **6.3%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 18 meses |
 | Procedencia del ancla | `externa` — Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061) |
@@ -66,8 +66,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 13% |
-| Peso efectivo en el índice | **2.7%** |
+| Peso dentro de la dimensión | 15% |
+| Peso efectivo en el índice | **3.1%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121) |
@@ -82,31 +82,15 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 13% |
-| Peso efectivo en el índice | **2.7%** |
+| Peso dentro de la dimensión | 15% |
+| Peso efectivo en el índice | **3.1%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `convencion` — anclas sobre el conteo observado (4 a 13 en 22 meses), leído contra el carácter excepcional del acto (ADR-0089) |
 
 **Bandas**: ≤ 2 → 100 · 2–5 → 85 · 5–9 → 65 · 9–12 → 40 · > 12 → 10
 
-**Lo gobiernan**: [ADR-0089](../adr/0089-desafios-en-lugar-de-derrotas.md) Desafíos legislativos en lugar de derrotas legislativas · [ADR-0276](../adr/0276-sin-desafios-no-hay-tasa-de-bloqueo.md) Sin desafíos no hay tasa de bloqueo
-
-#### Bloqueo legislativo sostenido
-
-`bloqueo_sostenido`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 12% |
-| Peso efectivo en el índice | **2.5%** |
-| Familia de lectura | capacidad propia |
-| Rezago declarado | 6 meses |
-| Procedencia del ancla | `conceptual` — cortes editoriales sobre una tasa de supervivencia de 0 a 100%; el 100% representa sostenimiento completo. El antecedente de vetos no calibra los cortes 90/75/50/25 ni el universo mixto de vetos y decretos (ADR-0069, revisión 2026-09-08) |
-
-**Bandas**: > 90 → 100 · 75–90 → 85 · 50–75 → 60 · 25–50 → 35 · ≤ 25 → 10
-
-**Lo gobiernan**: [ADR-0069](../adr/0069-bloqueo-sostenido-indicador.md) bloqueo_sostenido: la cara ganada del pulso legislativo entra al ITCP · [ADR-0276](../adr/0276-sin-desafios-no-hay-tasa-de-bloqueo.md) Sin desafíos no hay tasa de bloqueo
+**Lo gobiernan**: [ADR-0089](../adr/0089-desafios-en-lugar-de-derrotas.md) Desafíos legislativos en lugar de derrotas legislativas · [ADR-0276](../adr/0276-sin-desafios-no-hay-tasa-de-bloqueo.md) Sin desafíos no hay tasa de bloqueo · [ADR-0330](../adr/0330-bloqueo-sostenido-sale-del-indice-y-del-tablero.md) bloqueo_sostenido sale del índice y del tablero: enmudecer en el extremo no es una card
 
 #### Producción legislativa del Congreso
 
@@ -114,8 +98,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 15% |
-| Peso efectivo en el índice | **3.1%** |
+| Peso dentro de la dimensión | 17% |
+| Peso efectivo en el índice | **3.6%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 1.5 meses |
 | Procedencia del ancla | `externa` — umbral de diseño conservado en 74 leyes/año; referencia corregida al 2026-09-08: 1.320 leyes distintas de 2008-2025 / 18 = 73,3 por año; no es el promedio exacto ni un óptimo normativo (ADR-0168/0306) |
@@ -334,6 +318,7 @@ Estos indicadores se siguen scrapeando y cacheando, pero están fuera
 del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
+- `bloqueo_sostenido` — Bloqueo legislativo sostenido (declarado como contexto)
 - `cohesion_bloque_senado` — Cohesión del bloque LLA (Senado, fusionado)
 - `comisiones_caidas` — Comisiones sin sanción (declarado como contexto)
 - `derrotas_legislativas` — Derrotas legislativas del Ejecutivo (declarado como contexto)
@@ -380,7 +365,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-84 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+85 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -466,3 +451,4 @@ histórica.
 - [0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) — Sesiones y sanciones fuera del catálogo
 - [0310](../adr/0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) — El saldo empresario vuelve al ITCP con el corpus cerrado
 - [0312](../adr/0312-votometro-traduce-el-semaforo-de-luis.md) — El votómetro traduce el semáforo que pidió Luis, no ya los márgenes simétricos
+- [0330](../adr/0330-bloqueo-sostenido-sale-del-indice-y-del-tablero.md) — bloqueo_sostenido sale del índice y del tablero: enmudecer en el extremo no es una card

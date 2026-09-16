@@ -839,9 +839,10 @@ def construir_serie_itcp(dimensiones: dict | None = None) -> dict:
       reales, y adhesion_reformas_provincial 24 (fechas investigadas a mano,
       ADR-0044) — las dimensiones "alianzas territoriales" y "cohesión
       interna" ya no quedan renormalizadas sobre casi nada.
-    - protestas_caba y rotacion_gabinete NO entran (contexto desde
-      ADR-0048); la transformación var_vs_2023 que protestas necesitaba
-      se fue con ellos.
+    - protestas_caba, rotacion_gabinete y (desde 2026-09-16, ADR-0330)
+      bloqueo_sostenido NO entran (contexto); la transformación var_vs_2023
+      que protestas necesitaba se fue con ellos, y bloqueo_sostenido se cae
+      solo de ITCP_SERIES al salir de DIMENSIONES_ITCP (se deriva de ahí).
 
     PISO DE COBERTURA (2026-07-09; desde 2026-08-12 medido por peso de
     indicador y no por dimensión, ADR-0197): los meses que no llegan al 60%
@@ -870,10 +871,15 @@ def construir_serie_itcp(dimensiones: dict | None = None) -> dict:
     aplicada por componente — eficacia_legislativa se excluye de la
     reconstrucción hasta nov-2025 inclusive porque su cohorte madura
     (12-24m) recién es 100% de esta gestión desde dic-2025 (ver la
-    constante EFICACIA_COHORTE_100PCT_MILEI_DESDE arriba). Y desde ADR-0069
-    entra bloqueo_sostenido (tasa de normas desafiadas en pie), que le da a
-    la dimensión "poder legislativo" una pata que sí mide 2024: los vetos
-    sostenidos de sep/oct-2024 y la supervivencia del DNU 70."""
+    constante EFICACIA_COHORTE_100PCT_MILEI_DESDE arriba).
+
+    bloqueo_sostenido (ADR-0069) salió del índice el 2026-09-16 (ADR-0330): ya
+    no aporta su pata propia a "poder legislativo" en la reconstrucción. Los
+    meses en que llevaba trece corridas seguidas sin dato ("sin universo") no
+    cambian —ya se reconstruían sin él, el motor renormaliza igual—; los
+    meses 2024-03→2025-10 en que sí tenía tasa pierden ese componente y
+    redistribuyen su peso entre los otros cinco de la dimensión, mismo
+    mecanismo con el que ya conviven protestas_caba y rotacion_gabinete."""
     series = cargar_series()
     m = lambda k: _mensual(series.get(k) or [])
     directos = {k: m(k) for k in ITCP_SERIES}

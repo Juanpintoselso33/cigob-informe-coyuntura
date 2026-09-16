@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-16 03:43:04"
+generado: "2026-09-16 08:28:44"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -58,7 +58,7 @@ schema_version: "1.2.0"
 | eficacia_legislativa | 20.0 | % de proyectos | 2026-09-16 | fresco |
 | veto_quorum | 9.1 | % de sesiones | 2026-09-16 | fresco |
 | comisiones_caidas | 96.9 | % de proyectos | 2026-09-16 | fresco |
-| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-09-16 | ⚠ cache |
+| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-09-16 | fresco |
 | derrotas_legislativas | 2 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-09-16 | fresco |
 | rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-09-16 | fresco |
 | protestas_caba | 281 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
@@ -121,7 +121,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:apoyo_empresario,adhesion_reformas_provincial,cobertura_judicial`
+- `desactualizado:politica:apoyo_empresario,cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-16 03:43:04 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-16 08:28:44 — schema 1.2.0*

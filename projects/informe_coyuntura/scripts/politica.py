@@ -5146,6 +5146,14 @@ def fetch_desafios_legislativos() -> dict | None:
 
     Las derrotas se siguen relevando y quedan a la vista como dato dentro de la
     card de bloqueo (`caidas_12m`); lo que sale es su puntaje propio.
+
+    ADR-0330: cuando la ventana de 12 meses queda en cero (`n == 0`), el
+    `detalle_txt` deja de leerse como ausencia de dato — cero desafíos es la
+    señal más fuerte de gobernabilidad legislativa que este par puede dar, no
+    "no pasó nada" — y agrega, del registro histórico completo (no de un
+    número fijo), qué proporción sobrevivió las veces que sí hubo desafío.
+    Reemplaza a `bloqueo_sostenido`, que hasta entonces cargaba ese dato y
+    salió del índice y del tablero por enmudecer justo en este caso.
     """
     try:
         registro = _cargar_derrotas_registro()
@@ -5153,9 +5161,30 @@ def fetch_desafios_legislativos() -> dict | None:
             raise ValueError(f"registro de eventos ausente o ilegible ({DERROTAS_EVENTOS_PATH})")
         # No reclasifica: corre después de fetch_bloqueo_sostenido, que ya dejó
         # el registro actualizado. Leer y contar, nada más.
-        tasa = _bloqueo_tasa_12m(_bloqueo_desafios(registro), date.today())
+        desafios = _bloqueo_desafios(registro)
+        tasa = _bloqueo_tasa_12m(desafios, date.today())
         # Un conteo puede ser cero aunque la razón no tenga denominador.
         _pct, n, caidas, ultimo = tasa if tasa is not None else (None, 0, 0, None)
+        if n == 0:
+            hist_n = len(desafios)
+            hist_caidas = sum(1 for e in desafios if e["fecha_caida"])
+            if hist_n:
+                hist_pct = round((hist_n - hist_caidas) / hist_n * 100.0, 1)
+                cm = lambda x: str(x).replace(".", ",")
+                detalle_txt = (
+                    "Ninguna norma del Ejecutivo fue desafiada en el recinto en los "
+                    "últimos 12 meses — cero desafíos es la señal, no un dato "
+                    f"faltante. Cuando los hubo (histórico completo: {hist_n} normas "
+                    f"desde marzo de 2024), el {cm(hist_pct)}% siguió en pie "
+                    f"({hist_n - hist_caidas} de {hist_n})."
+                )
+            else:
+                detalle_txt = ("Ninguna norma del Ejecutivo fue desafiada en el recinto "
+                               "en los últimos 12 meses — cero desafíos es la señal, no "
+                               "un dato faltante.")
+        else:
+            detalle_txt = (f"{n} normas propias desafiadas en el recinto en los últimos 12 meses "
+                           f"({caidas} cayeron, {n - caidas} siguen en pie)")
         return {
             "valor":          float(n),
             "caidas_12m":     caidas,
@@ -5166,8 +5195,7 @@ def fetch_desafios_legislativos() -> dict | None:
                                "(vetos e insistencias) — elaboración CIGOB"),
             "fecha_dato":     str(date.today()),
             "desactualizado": False,
-            "detalle_txt": (f"{n} normas propias desafiadas en el recinto en los últimos 12 meses "
-                            f"({caidas} cayeron, {n - caidas} siguen en pie)"),
+            "detalle_txt": detalle_txt,
         }
     except Exception as e:
         _warn("desafios_legislativos", str(e))

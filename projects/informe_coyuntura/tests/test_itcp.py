@@ -204,7 +204,7 @@ def test_banda_derrotas_legislativas_interpolada_discrimina_la_serie_real():
     assert parametrica.puntaje_interpolado(8.0, bandas) == 53.6   # valor vigente jul-2026
 
 
-def test_pesos_internos_poder_legislativo_con_bloqueo():
+def test_pesos_internos_poder_legislativo_sin_bloqueo():
     # Redistribución 2026-07-16 (ADR-0069): entra bloqueo_sostenido con 0.20
     # (cada uno de los 4 previos cede 0.05, orden relativo conservado).
     # Antes 25/30/20/25 (ADR-0064, salida de comisiones_caidas); antes de
@@ -217,14 +217,18 @@ def test_pesos_internos_poder_legislativo_con_bloqueo():
     # 2026-07-31 (ADR-0168): entra produccion_legislativa con 0.15 y los cinco
     # existentes ceden proporcionalmente (×0.85). El orden relativo se conserva:
     # eficacia sigue primera, ratio_dnu segunda, los tres restantes parejos.
+    # 2026-09-16 (ADR-0330): sale bloqueo_sostenido (deja de puntuar y de
+    # publicarse — un indicador que enmudece en el extremo del fenómeno que
+    # mide no es una card) y los cinco restantes absorben su 0.12
+    # proporcionalmente (÷0.88). Numéricamente no mueve el ITCP: el indicador
+    # llevaba trece meses sin dato, así que el motor ya renormalizaba entre
+    # estos cinco todos los meses.
     dim = itcp.DIMENSIONES_ITCP["poder_legislativo"]
     assert dim["indicadores"] == {
-        "ratio_dnu": 0.20, "eficacia_legislativa": 0.27, "veto_quorum": 0.13,
-        "desafios_legislativos": 0.13, "bloqueo_sostenido": 0.12,
-        "produccion_legislativa": 0.15,
+        "ratio_dnu": 0.23, "eficacia_legislativa": 0.30, "veto_quorum": 0.15,
+        "desafios_legislativos": 0.15, "produccion_legislativa": 0.17,
     }
-    acoplados = dim["indicadores"]["desafios_legislativos"] + dim["indicadores"]["bloqueo_sostenido"]
-    assert acoplados <= 0.30, "el par acoplado no debería recuperar peso sin revisar ADR-0089"
+    assert "bloqueo_sostenido" not in dim["indicadores"]
     assert dim["indicadores"]["eficacia_legislativa"] > dim["indicadores"]["ratio_dnu"], (
         "eficacia tiene que seguir primera: es la medida más abarcativa (ADR-0061)")
     assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
@@ -295,11 +299,13 @@ def test_dimension_conflicto_social_combina_extension_e_intensidad():
 
 
 def test_indicadores_contexto_declarados_y_fuera_de_las_dimensiones():
-    # ADR-0048/0052: seguimiento interno sin puntuar; sus bandas quedan como
-    # referencia histórica en BANDAS_ITCP, así que el override de contexto es
-    # lo único que los mantiene fuera del en_indice de la card (patrón macro).
+    # ADR-0048/0052/0330: seguimiento interno sin puntuar; sus bandas quedan
+    # como referencia histórica en BANDAS_ITCP, así que el override de
+    # contexto es lo único que los mantiene fuera del en_indice de la card
+    # (patrón macro).
     assert set(itcp.INDICADORES_CONTEXTO) == {"rotacion_gabinete", "protestas_caba", "comisiones_caidas",
-                                              "movilizacion_cepa", "derrotas_legislativas"}
+                                              "movilizacion_cepa", "derrotas_legislativas",
+                                              "bloqueo_sostenido"}
     en_dimensiones = {k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores"]}
     for contexto in itcp.INDICADORES_CONTEXTO:
         assert contexto not in en_dimensiones

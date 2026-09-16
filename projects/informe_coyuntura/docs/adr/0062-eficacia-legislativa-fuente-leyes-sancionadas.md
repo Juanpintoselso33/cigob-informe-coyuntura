@@ -7,7 +7,7 @@ fecha: 2026-07-15
 cinturon: 'politica'
 indicadores: [eficacia_legislativa]
 complementa: ['0061']
-relacionado: ['0050', '0064', '0068', '0069']
+relacionado: ['0050', '0064', '0068', '0069', '0330']
 superado_por: ['0061']
 continuado_por: ['0063']
 ambito: 'Cinturón política · ITCP · `eficacia_legislativa` · fuentes HCDN CKAN'
