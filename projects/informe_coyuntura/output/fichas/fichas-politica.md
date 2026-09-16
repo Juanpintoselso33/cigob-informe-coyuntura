@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Política — resumen
 
-Este documento tiene una ficha por indicador — son 18 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 17 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,14 +35,14 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 70,4** | **VERDE** | Moderadamente aflojado | 18 indicadores: 11 en verde · 4 en amarillo · 1 en naranja · 1 en rojo |
-Componentes que puntúan en este corte: 17 de 18 publicados.
+| **ITCP: 70,4** | **VERDE** | Moderadamente aflojado | 17 indicadores: 11 en verde · 4 en amarillo · 1 en naranja · 1 en rojo |
+Componentes que puntúan en este corte: 17 de 17 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en seis señales. | 65,8 | VERDE | 21,0 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 66,0 | VERDE | 21,0 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 81,1 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 15,0 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,1 | AMARILLO | 15,0 % |
@@ -64,9 +64,8 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
 | Ratio DNU / leyes | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,1 DNUs publicados por ley publicada | AMARILLO | 4,8 % |
-| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 20 % de proyectos | VERDE | 6,4 % |
+| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 20 % de proyectos | VERDE | 6,3 % |
 | Sesiones caídas por falta de quórum | Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum… | 9,1 % de sesiones | VERDE | 3,1 % |
-| Bloqueo legislativo sostenido | De las normas del Ejecutivo que el Congreso desafió en el recinto en los últimos 12 meses (vetos cuya insistencia se… | — % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | — | fuera del índice |
 | Normas desafiadas en el recinto | Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses. | 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | VERDE | 3,1 % |
 | Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. | 29 leyes sancionadas (12m) | AMARILLO | 3,6 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
@@ -218,7 +217,7 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 
 Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. En el relevamiento cerrado el 19 de julio de 2026, el 95% de los decretos de necesidad y urgencia de esta gestión nunca había llegado a votarse en el recinto; de los ocho que sí habían llegado, seis habían caído. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -775,7 +774,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 20 % de proyectos** (2026-09) | **VERDE** | Peso efectivo 6,4 % del ITCP | Cinturón Política |
+| **Hoy: 20 % de proyectos** (2026-09) | **VERDE** | Peso efectivo 6,3 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -793,7 +792,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 
 Mide la aprobación de una cohorte de proyectos maduros. Las iniciativas publicadas hace menos de un año quedan fuera: no resume la aprobación de la agenda actual ni pondera la importancia política de cada proyecto.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -830,7 +829,7 @@ Dato vigente: 20 % de proyectos (2026-09).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 6,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 6,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -898,7 +897,7 @@ Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda 
 
 El quórum es el primer filtro de cualquier agenda legislativa: sin él no se debate ni se vota nada. Una tasa alta indica que el oficialismo no logra reunir a la cámara, sea porque la oposición se ausenta deliberadamente o porque sus propios aliados no acompañan.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -1153,73 +1152,6 @@ Ponderación vigente en el ITCP: 15 % efectivo. El color es una lectura adiciona
 
 *Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
 
-# Bloqueo legislativo sostenido
-
-De las normas del Ejecutivo que el Congreso desafió en el recinto en los últimos 12 meses (vetos cuya insistencia se votó y decretos sometidos a la ley 26.122), qué porcentaje sigue en pie.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: — % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses** (2026-09) | **—** | Fuera del índice | Cinturón Política |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | bloqueo_sostenido | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses |
-| **SERIE DISPONIBLE** | 2024-03 → 2026-08 (30 puntos) | **REZAGO DE PUBLICACIÓN** | Las cámaras publican sus actas de votación a los días de cada sesión; el clasificador incorpora las actas nuevas en la actualización nocturna siguiente. La caída de un veto se registra con la publicación de la ley insistida en el Boletín Oficial, dos a tres semanas después del voto de la segunda cámara. |
-| **PRODUCTOR DEL DATO** | Cámara de Diputados + Senado de la Nación + InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras (insistencias de leyes vetadas y tratamientos de decretos bajo la ley 26.122) + base de legislación nacional (decretos de veto, leyes promulgadas por insistencia) |
-| **MODO DE ACCESO** | Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos es el mismo que usa el indicador de normas desafiadas en el recinto. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-16 |
-
-## Definición — qué mide y por qué importa
-
-De las normas del Ejecutivo que el Congreso desafió en el recinto en los últimos 12 meses (vetos cuya insistencia se votó y decretos sometidos a la ley 26.122), qué porcentaje sigue en pie.
-
-Es la cara ganada del pulso legislativo que el conteo de derrotas no registra: un gobierno sin mayoría gobierna sosteniendo sus vetos con un tercio de una cámara. Una tasa alta indica bloqueo firme; una baja, un Congreso capaz de voltear sus normas. Al mirar 12 meses atrás, una crisis reciente pesa durante un año.
-
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
-
-## Método de cómputo
-
-- Una norma queda DESAFIADA desde su primera votación en el recinto, gane quien gane: la insistencia de una ley vetada (art. 83 de la Constitución) o el control de un decreto bajo la ley 26.122.
-- Sigue EN PIE mientras la insistencia no se complete en ambas cámaras (el veto se sostiene con un tercio de una sola) y mientras el decreto no sea rechazado por las dos (el rechazo de una sola cámara no lo deroga, como al DNU 70/2023).
-- El indicador es el porcentaje de normas desafiadas en los últimos 12 meses calendario que seguían en pie al cierre del mes: cada punto histórico evalúa el estado a esa fecha, así que una caída posterior no reescribe los meses ya publicados.
-- Los vetos sin insistencia votada y los decretos que ninguna cámara trató no entran al denominador: sin desafío no hay prueba del bloqueo.
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- No hubo normas desafiadas en la ventana de doce meses. Sin denominador no hay tasa de bloqueo: no se asigna cero ni se conserva una tasa de otra ventana. El peso se redistribuye entre los componentes observados de la dimensión legislativa.
-
-## Transparencia — limitaciones declaradas
-
-- La ventana de 12 meses retiene las caídas durante un año: la recuperación del bloqueo después de una crisis aparece con rezago mecánico, incluso si el Congreso nuevo dejó de desafiar normas (los desafíos viejos salen de la ventana doce meses después, no antes).
-- Un período sin desafíos votados no genera dato (sin denominador no hay tasa): el indicador queda fuera ese mes y los pesos de su dimensión se renormalizan — ausencia de desafíos puede ser dominio de agenda o simple falta de confrontación, y el indicador no distingue entre ambas.
-- Con pocos desafíos en ventana la tasa se mueve a saltos grandes (un desafío sobre cuatro son 25 puntos): es un indicador de eventos raros, como las derrotas legislativas.
-- La moción estándar de la comisión bicameral sobre un decreto es su rechazo; el caso raro de un dictamen de aprobación (una vez en el período: el acuerdo con el FMI) se detecta por el texto del motivo y queda para clasificación manual — la dirección de una moción ambigua nunca se adivina.
-- Las actas de Diputados se incorporan con la actualización nocturna: un acta publicada hoy se clasifica al día siguiente.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Si las actas o InfoLeg fallan, se mantiene el último resultado disponible, señalado como desactualizado. Si la consulta termina y no hay normas desafiadas en la ventana, se publica «Sin universo»: valor nulo, sin puntaje y con redistribución del peso entre los componentes observados de la dimensión. El conteo de desafíos sí vale cero; no se arrastra una tasa de otra ventana.
-
-- **Política de revisiones:** Las votaciones consumadas son inmutables. Los vetos con media insistencia pendiente se re-verifican en cada actualización (no caducan): si la segunda cámara completa la insistencia, la norma pasa a caída desde ese mes en adelante — los puntos históricos ya publicados no se reescriben, porque cada uno evalúa el estado al cierre de su propio mes.
-
-## Historial — cambios metodológicos documentados
-
-**2026-09-08** — ADR-0276: una ventana sin desafíos verificados no define una tasa. Se publica sin universo y fuera del cálculo; una consulta incompleta conserva el dato previo con su fecha.
-
-**2026-07-16** — Incorporado como la cara ganada del pulso legislativo: los vetos sostenidos y la supervivencia de decretos no puntuaban en ningún indicador (el conteo de derrotas solo registra las normas caídas). Serie mensual desde marzo de 2024.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
-
 # Normas desafiadas en el recinto
 
 Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses: vetos presidenciales sobre los que el Congreso votó una insistencia, y decretos sometidos a votación bajo la ley 26.122.
@@ -1244,13 +1176,14 @@ Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto 
 
 Mide con qué frecuencia el Congreso decide dar la pelea, sin importar cómo termine. Desafiar una norma del Ejecutivo es un acto excepcional —exige mayorías especiales o un procedimiento específico—, así que un puñado al año ya indica confrontación abierta. Junto con la proporción de normas que el Gobierno logra sostener, responde las dos preguntas del pulso legislativo: cuánto lo confrontan y cuánto aguanta.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
 - Una norma cuenta como desafiada cuando el Congreso la somete a votación en el recinto: un veto presidencial sobre el que se vota una insistencia, o un decreto puesto a consideración bajo el procedimiento de la ley 26.122.
 - Cada norma se cuenta una sola vez, en el mes de su primer desafío, aunque después vuelva al recinto.
 - Se suman las de los últimos doce meses calendario. No importa el resultado: entran tanto las que el Gobierno terminó perdiendo como las que logró sostener.
+- Cuando la ventana da cero, la card agrega —del registro histórico completo, no de un número fijo— qué proporción de las normas desafiadas en algún momento desde marzo de 2024 sigue en pie: es el dato que hasta el 16 de septiembre de 2026 publicaba el bloqueo sostenido (ADR-0330).
 
 ## Semáforo — valores que determinan el color
 
@@ -1269,7 +1202,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 0 normas propias desafiadas en el recinto en los últimos 12 meses (0 cayeron, 0 siguen en pie)
+- Ninguna norma del Ejecutivo fue desafiada en el recinto en los últimos 12 meses — cero desafíos es la señal, no un dato faltante. Cuando los hubo (histórico completo: 16 normas desde marzo de 2024), el 43,8% siguió en pie (7 de 16).
 
 ## Color vigente y por qué
 
@@ -1285,7 +1218,7 @@ Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicion
 
 - La ventana contiene pocos eventos —entre cuatro y trece en el período disponible—, así que un solo desafío que entra o sale mueve el indicador de manera perceptible.
 - Cuenta el acto de desafiar, no su importancia: una norma central y una menor pesan igual.
-- Sigue acoplado al bloqueo sostenido, con el que comparte el registro de eventos. Son las dos caras del mismo pulso —cuánto confronta el Congreso y cuánto resiste el Gobierno— y no deben leerse como dos confirmaciones independientes.
+- Comparte registro de eventos con el bloqueo sostenido (ADR-0069), que dejó de publicarse como card el 16 de septiembre de 2026 (ADR-0330) por enmudecer justo cuando la ventana da cero desafíos — su tasa de supervivencia histórica es la que esta card cita cuando el conteo es cero.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1294,6 +1227,8 @@ Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** El registro se reconstruye completo en cada actualización: si una fuente carga un acta con retraso, el conteo se corrige solo hacia atrás.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-16** — ADR-0330: la card agrega, cuando el conteo da cero, la tasa histórica de supervivencia de las normas desafiadas —el dato que publicaba el bloqueo sostenido, que sale del índice y del tablero por enmudecer justo en ese caso.
 
 **2026-09-08** — ADR-0276: cero desafíos es válido sólo con cobertura completa del universo compartido. Una consulta fallida no acredita ausencia de eventos.
 
@@ -1331,7 +1266,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir 
 
 Describe el volumen total de leyes sancionadas, sin equipararlo a victorias del Ejecutivo. Complementa la eficacia de su agenda y las votaciones que desafían sus normas; ni el origen ni el contenido de cada ley se deducen del total.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 

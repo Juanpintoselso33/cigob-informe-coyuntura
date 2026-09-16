@@ -72,6 +72,21 @@ compuesto se calibró contra su propia serie reconstruida (ver comentario).
 (3) `cohesion_bloque_senado` deja de ser un indicador propio (absorbido por
 el compuesto); su banda queda como referencia histórica, igual que
 gobernadores_alineamiento.
+
+REVISIÓN EDITORIAL 2026-09-16 (ADR-0330, corrige ADR-0069 y ADR-0276):
+`bloqueo_sostenido` SALE del índice Y del tablero. ADR-0276 había resuelto bien
+el denominador vacío (sin desafíos en la ventana no hay tasa, y no se inventa
+un cero ni se arrastra la de otra ventana) pero dejó a la vista el problema de
+fondo: un indicador cuya única salida posible en el extremo del fenómeno que
+mide —doce meses sin ningún desafío, la señal más fuerte de gobernabilidad
+legislativa que puede dar— es enmudecer, no es una card (regla de
+ADR-0153/0216: o integra el índice, o no es card). Se suma a
+INDICADORES_CONTEXTO, mismo patrón que rotacion_gabinete/protestas_caba/
+movilizacion_cepa/comisiones_caidas/derrotas_legislativas: sigue relevándose
+y cacheándose (el clasificador de actas de Diputados y Senado no se toca), y
+su contenido —cuántas normas se desafiaron y qué proporción sobrevivió—
+ahora vive en la explicación de `desafios_legislativos`, que sí publica el
+cero como señal. Su banda queda abajo como referencia histórica.
 """
 import parametrica
 
@@ -321,6 +336,12 @@ BANDAS_ITCP = {
         (10.0, INF, 100), (0.0, 10.0, 85), (-10.0, 0.0, 65), (-20.0, -10.0, 40), (-INF, -20.0, 10),
     ],
     "bloqueo_sostenido": [
+        # FUERA DEL ÍNDICE Y DEL TABLERO desde 2026-09-16 (ADR-0330, corrige
+        # ADR-0069 y ADR-0276: el denominador vacío estaba bien resuelto, pero
+        # un indicador que enmudece justo en el extremo del fenómeno que mide
+        # —cero desafíos en doce meses— no es una card) — se sigue relevando
+        # y cacheando (INDICADORES_CONTEXTO); su contenido pasa a la
+        # explicación de `desafios_legislativos`. Banda de referencia.
         # NUEVO 2026-07-16 (ADR-0069): % de normas propias DESAFIADAS en el
         # recinto (insistencias de veto votadas + validez de decretos votada
         # bajo la ley 26.122) que el Ejecutivo mantuvo en pie, ventana móvil
@@ -566,10 +587,17 @@ DIMENSIONES_ITCP = {
         # cuántas leyes sanciona el Congreso, que es el número que efectivamente
         # se mueve (15 a 47), no el cociente, que sube cuando el Congreso
         # produce menos y admite dos lecturas opuestas (ADR-0137).
-        "indicadores": {"ratio_dnu": 0.20, "eficacia_legislativa": 0.27,
-                        "veto_quorum": 0.13, "desafios_legislativos": 0.13,
-                        "bloqueo_sostenido": 0.12,
-                        "produccion_legislativa": 0.15},
+        # 2026-09-16 (ADR-0330): sale `bloqueo_sostenido` (deja de puntuar, ver
+        # el comentario de su banda) y los cinco restantes absorben su 0.12
+        # proporcionalmente (÷0.88), redondeado — mismo procedimiento inverso al
+        # de ADR-0168. El orden relativo no cambia. Numéricamente no mueve el
+        # ITCP: `bloqueo_sostenido` llevaba trece meses sin dato («sin
+        # universo»), así que el motor ya venía renormalizando el peso entre
+        # estos cinco todos los meses; esto sólo fija esa renormalización como
+        # peso de diseño en vez de recalcularla en runtime.
+        "indicadores": {"ratio_dnu": 0.23, "eficacia_legislativa": 0.30,
+                        "veto_quorum": 0.15, "desafios_legislativos": 0.15,
+                        "produccion_legislativa": 0.17},
     },
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
@@ -691,7 +719,12 @@ INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cep
                         "derrotas_legislativas",
                         # ADR-0064: fuente ciega a sanciones del Senado (ver ADR-0062);
                         # su banda queda arriba como referencia histórica
-                        "comisiones_caidas"]
+                        "comisiones_caidas",
+                        # ADR-0330: sale del índice y del tablero — un
+                        # indicador que enmudece en el extremo del fenómeno
+                        # que mide no es una card. Su contenido pasa a la
+                        # explicación de desafios_legislativos.
+                        "bloqueo_sostenido"]
 
 # ── Retirados del índice hasta rediseño (ADR-0245 fija el mecanismo) ────────
 # Se sacan del CÁLCULO, no de la tabla de pesos: liberan su peso y los que
@@ -751,7 +784,6 @@ FAMILIAS_ITCP = {
 
     # Capacidad propia: resultado de la acción del gobierno.
     "eficacia_legislativa": "capacidad",       # cuánto de lo que manda se sanciona
-    "bloqueo_sostenido": "capacidad",          # cuánto aguanta de lo desafiado
     "ratio_dnu": "capacidad",                  # cuánto depende del decreto
     "cohesion_bloque": "capacidad",            # cuán unido vota su propio bloque
     # Cubrir cargos de juez EXIGE acuerdo del Senado: no es conducta de un
@@ -820,7 +852,6 @@ REZAGO_MESES_ITCP = {
     "ratio_dnu": 6.0,
     "veto_quorum": 6.0,
     "desafios_legislativos": 6.0,
-    "bloqueo_sostenido": 6.0,
     "conflictividad_nacional": 6.0,
     "jornadas_individuales_no_trabajadas_12m": 6.0,
     # Ventanas de 90 días.

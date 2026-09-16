@@ -114,8 +114,9 @@ def test_reconstruccion_itcp_mascara_de_era_para_eficacia(monkeypatch, tmp_path)
     por_mes = {"2025-11": recibidos[0], "2025-12": recibidos[1]}
     assert por_mes["2025-11"]["eficacia_legislativa"] is None   # enmascarada
     assert por_mes["2025-12"]["eficacia_legislativa"] == 25.0   # cohorte 100% era
-    # bloqueo_sostenido integra la reconstrucción (ADR-0069)
-    assert "bloqueo_sostenido" in por_mes["2025-12"]
+    # bloqueo_sostenido salió de DIMENSIONES_ITCP (ADR-0330) y con eso de
+    # ITCP_SERIES, que se deriva de ahí: ya no integra la reconstrucción.
+    assert "bloqueo_sostenido" not in por_mes["2025-12"]
 
 
 # ── Guardia estructural de la reconstrucción del ITCM ────────────────────────

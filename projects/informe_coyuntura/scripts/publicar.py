@@ -2743,7 +2743,9 @@ METODO_OBTENCION_EXCEPCIONES = {
     # Los dos leen el mismo registro legislativo: las actas inequívocas se
     # clasifican solas y las ambiguas no avanzan hasta el triage humano.
     "desafios_legislativos": "semiautomatico",
-    "bloqueo_sostenido": "semiautomatico",
+    # bloqueo_sostenido comparte el registro pero salió del tablero (ADR-0330,
+    # ver POLITICA_OCULTOS) — no se publica, así que no necesita excepción acá
+    # (mismo criterio que derrotas_legislativas, comisiones_caidas, etc.).
     # El anuario de la Corte se releva una vez por año sin extractor.
     "velocidad_resolucion": "manual",
     # Detectan novedades automáticamente, pero el dato sólo incorpora los

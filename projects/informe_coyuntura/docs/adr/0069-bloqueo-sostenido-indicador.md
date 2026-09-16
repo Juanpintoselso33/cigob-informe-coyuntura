@@ -6,6 +6,7 @@ fecha: 2026-07-16
 cinturon: 'politica'
 indicadores: [bloqueo_sostenido]
 relacionado: ['0021', '0046', '0062', '0070', '0230', '0276']
+corregido_por: ['0330']
 modificado_por: ['0089']
 ambito: 'Cinturón política · ITCP · dimensión Poder legislativo · `bloqueo_sostenido` (nuevo)'
 ---

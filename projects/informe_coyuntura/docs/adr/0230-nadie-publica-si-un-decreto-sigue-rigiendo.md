@@ -6,7 +6,7 @@ nota_estado: '**Rechazado el indicador, versionado el relevamiento**: no se cons
 fecha: 2026-08-21
 cinturon: 'politica'
 archivos: ['data/politica/supervivencia_judicial_fuentes.json', 'tests/test_supervivencia_judicial_sin_fuente.py']
-relacionado: ['0069', '0089', '0131', '0135', '0140', '0141', '0143', '0147', '0168', '0170']
+relacionado: ['0069', '0089', '0131', '0135', '0140', '0141', '0143', '0147', '0168', '0170', '0330']
 ambito: 'Bloque judicial · si una norma del Ejecutivo sobrevive el desafío JUDICIAL — indicador propuesto y NO construido'
 origen: 'el capítulo laboral del DNU 70/2023 lo frenó la Justicia y no el Congreso, y el informe sólo mide el desafío legislativo'
 ---

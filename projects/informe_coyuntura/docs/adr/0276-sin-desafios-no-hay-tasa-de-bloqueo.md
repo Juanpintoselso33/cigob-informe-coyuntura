@@ -7,6 +7,7 @@ cinturon: 'politica'
 indicadores: [bloqueo_sostenido, desafios_legislativos]
 archivos: ['scripts/politica.py', 'scripts/publicar.py', 'scripts/gate_calidad.py', 'tests/test_politica_sin_universo.py']
 relacionado: ['0069', '0089']
+corregido_por: ['0330']
 ambito: 'Universo vacío y vigencia de las ventanas legislativas'
 origen: 'Auditoría integral: tarjeta en caché frente a conteo mensual cero'
 ---

@@ -2,6 +2,8 @@
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
@@ -14,11 +16,14 @@ def test_base_redondea_dimension_como_motor_con_faltantes():
 
     resultado = itcp.calcular_itcp({
         "ratio_dnu": 1.4, "eficacia_legislativa": 14.3,
-        "desafios_legislativos": 0, "bloqueo_sostenido": None,
-        "veto_quorum": 10,
+        "desafios_legislativos": 0, "veto_quorum": 10,
     })
     # Con una sola dimensión presente, su puntaje publicado es la base.
-    assert sensibilidad._agregar(sensibilidad._estructura(resultado)) == resultado["valor"]
+    # `_agregar` no redondea el paso final (multiplica y divide por el mismo
+    # peso de dimensión), así que compara con tolerancia de punto flotante en
+    # vez de igualdad exacta (ADR-0330: los pesos internos de poder_legislativo
+    # cambiaron y algunas combinaciones binarias no cancelan exacto).
+    assert sensibilidad._agregar(sensibilidad._estructura(resultado)) == pytest.approx(resultado["valor"])
 
 
 class _RuidoMaximo:

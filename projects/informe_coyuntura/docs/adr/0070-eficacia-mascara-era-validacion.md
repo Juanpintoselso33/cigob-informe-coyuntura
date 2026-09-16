@@ -6,7 +6,7 @@ fecha: 2026-07-16
 cinturon: 'politica'
 indicadores: [eficacia_legislativa]
 archivos: ['validacion_externa.py']
-relacionado: ['0061', '0069']
+relacionado: ['0061', '0069', '0330']
 ambito: 'Validación externa del ITCP (`validacion_externa.py`) · `eficacia_legislativa` (solo la serie reconstruida; la card no se toca)'
 ---
 

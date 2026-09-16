@@ -217,28 +217,28 @@
     "ITCP": {
       "peso_total": 1.0000000000000002,
       "categorias": {
-        "externa": 0.1302,
-        "conceptual": 0.5055000000000001,
-        "convencion": 0.2943,
+        "externa": 0.14700000000000002,
+        "conceptual": 0.48450000000000004,
+        "convencion": 0.2985,
         "historia_larga": 0.07
       },
       "detalle": [
         {
           "indicador": "eficacia_legislativa",
           "categoria": "externa",
-          "peso": 0.0567,
+          "peso": 0.063,
           "motivo": "Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061)"
         },
         {
           "indicador": "ratio_dnu",
           "categoria": "externa",
-          "peso": 0.042,
+          "peso": 0.0483,
           "motivo": "ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059)"
         },
         {
           "indicador": "produccion_legislativa",
           "categoria": "externa",
-          "peso": 0.0315,
+          "peso": 0.0357,
           "motivo": "umbral de diseño conservado en 74 leyes/año; referencia corregida al 2026-09-08: 1.320 leyes distintas de 2008-2025 / 18 = 73,3 por año; no es el promedio exacto ni un óptimo normativo (ADR-0168/0306)"
         },
         {
@@ -278,6 +278,12 @@
           "motivo": "anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044)"
         },
         {
+          "indicador": "veto_quorum",
+          "categoria": "conceptual",
+          "peso": 0.0315,
+          "motivo": "tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121)"
+        },
+        {
           "indicador": "velocidad_resolucion",
           "categoria": "conceptual",
           "peso": 0.03,
@@ -288,18 +294,6 @@
           "categoria": "conceptual",
           "peso": 0.03,
           "motivo": "cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, preservados al corregir el universo de slugs numerados (rango 13-18; ADR-0168/0268)"
-        },
-        {
-          "indicador": "veto_quorum",
-          "categoria": "conceptual",
-          "peso": 0.0273,
-          "motivo": "tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121)"
-        },
-        {
-          "indicador": "bloqueo_sostenido",
-          "categoria": "conceptual",
-          "peso": 0.0252,
-          "motivo": "cortes editoriales sobre una tasa de supervivencia de 0 a 100%; el 100% representa sostenimiento completo. El antecedente de vetos no calibra los cortes 90/75/50/25 ni el universo mixto de vetos y decretos (ADR-0069, revisión 2026-09-08)"
         },
         {
           "indicador": "jornadas_individuales_no_trabajadas_12m",
@@ -334,17 +328,17 @@
         {
           "indicador": "desafios_legislativos",
           "categoria": "convencion",
-          "peso": 0.0273,
+          "peso": 0.0315,
           "motivo": "anclas sobre el conteo observado (4 a 13 en 22 meses), leído contra el carácter excepcional del acto (ADR-0089)"
         }
       ],
       "share": {
-        "externa": 0.13,
-        "conceptual": 0.505,
-        "convencion": 0.294,
+        "externa": 0.147,
+        "conceptual": 0.484,
+        "convencion": 0.298,
         "historia_larga": 0.07
       },
-      "share_circular": 0.294
+      "share_circular": 0.298
     },
     "ITVC": {
       "peso_total": 1.0000000000000002,
