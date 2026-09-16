@@ -135,9 +135,28 @@ class TestCoherencia:
         """Si el indicador tiene tabla de umbrales, el valor de hoy tiene que
         caer en un tramo del color que se publicó.
 
-        Membresía low-exclusivo / high-inclusivo: la misma convención del
-        motor (parametrica.puntaje_banda: `low < valor <= high`), no una
-        elegida ad hoc para el test.
+        Membresía **low-inclusivo / high-exclusivo** (`desde <= valor < hasta`):
+        es como el motor asigna el color en el borde, y es como cualquiera lee
+        la tabla publicada ("verde: desde 20,0" incluye al 20,0).
+
+        Decía usar la convención de `parametrica.puntaje_banda`
+        (`low < valor <= high`), y eso era doblemente falso (2026-09-16):
+        `puntaje_banda` es el escalón LEGADO, no el camino de producción —que
+        es `puntaje_interpolado`—, y en el borde las dos no coinciden.
+
+        Lo destapó `politica/eficacia_legislativa` con valor exactamente 20,0:
+        el motor publica VERDE (interpolado 60,0 → tensión 4,0, y verde es
+        tensión ≤ 4), y la tabla publicada dice "amarillo 10,0–20,0 · verde
+        20,0–∞". Con la convención vieja el 20,0 caía en amarillo y la guarda
+        acusaba al motor de incoherente.
+
+        El cruce real está en 19,975, o sea 0,025 por debajo del umbral
+        publicado. Ese hueco NO es visible para el lector —el valor se muestra
+        con un decimal, así que nada entre 19,975 y 20,0 llega a la pantalla—,
+        pero está: si alguna vez se publican más decimales, o si un indicador
+        usa una escala más fina, esa franja va a mostrar card y tabla
+        discrepando de verdad. Queda anotado acá y no se arregla desde este
+        test, porque tocar el redondeo de `umbrales` mueve lo publicado.
         """
         for cinturon, ikey, ind in _indicadores(informe):
             sem = ind.get("semaforo") or {}
@@ -145,8 +164,8 @@ class TestCoherencia:
                 continue
             v = float(ind["valor"])
             tramos = [t for t in sem["umbrales"]
-                      if (t["desde"] is None or v > t["desde"])
-                      and (t["hasta"] is None or v <= t["hasta"])]
+                      if (t["desde"] is None or v >= t["desde"])
+                      and (t["hasta"] is None or v < t["hasta"])]
             assert tramos, f"{cinturon}/{ikey}: {v} no cae en ningún tramo"
             assert tramos[0]["color"] == sem["color"], f"{cinturon}/{ikey}"
 

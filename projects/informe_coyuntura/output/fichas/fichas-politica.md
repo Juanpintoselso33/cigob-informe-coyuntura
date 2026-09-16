@@ -35,14 +35,14 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 70,3** | **VERDE** | Moderadamente aflojado | 18 indicadores: 10 en verde · 5 en amarillo · 1 en naranja · 1 en rojo |
+| **ITCP: 70,4** | **VERDE** | Moderadamente aflojado | 18 indicadores: 11 en verde · 4 en amarillo · 1 en naranja · 1 en rojo |
 Componentes que puntúan en este corte: 17 de 18 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en seis señales. | 65,1 | VERDE | 21,0 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en seis señales. | 65,8 | VERDE | 21,0 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 81,1 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 15,0 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,1 | AMARILLO | 15,0 % |
@@ -64,7 +64,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
 | Ratio DNU / leyes | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,1 DNUs publicados por ley publicada | AMARILLO | 4,8 % |
-| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 18,8 % de proyectos | AMARILLO | 6,4 % |
+| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 20 % de proyectos | VERDE | 6,4 % |
 | Sesiones caídas por falta de quórum | Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum… | 9,1 % de sesiones | VERDE | 3,1 % |
 | Bloqueo legislativo sostenido | De las normas del Ejecutivo que el Congreso desafió en el recinto en los últimos 12 meses (vetos cuya insistencia se… | — % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | — | fuera del índice |
 | Normas desafiadas en el recinto | Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses. | 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | VERDE | 3,1 % |
@@ -244,7 +244,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 34 DNU y 31 leyes publicados en el Boletín Oficial entre 2025-09-16 y 2026-09-15 → 1.10 DNU por ley
+- 34 DNU y 31 leyes publicados en el Boletín Oficial entre 2025-09-17 y 2026-09-16 → 1.10 DNU por ley
 
 ## Color vigente y por qué
 
@@ -775,7 +775,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 18,8 % de proyectos** (2026-09) | **AMARILLO** | Peso efectivo 6,4 % del ITCP | Cinturón Política |
+| **Hoy: 20 % de proyectos** (2026-09) | **VERDE** | Peso efectivo 6,4 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -820,15 +820,15 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (18,8 % de proyectos) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (20 % de proyectos) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 18,8 % de proyectos (2026-09).
+Dato vigente: 20 % de proyectos (2026-09).
 
-18,8 % de proyectos cae en el tramo que corresponde a Amarillo, a 1,2 del corte más cercano.
+20,0 % de proyectos cae en el tramo que corresponde a Verde, a 0,0 del corte más cercano.
 
-**Color vigente: AMARILLO**
+**Color vigente: VERDE**
 
 Ponderación vigente en el ITCP: 6,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 

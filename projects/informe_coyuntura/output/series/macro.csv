@@ -732,7 +732,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,tc_mayorista,826.85,ARS/USD,BCRA
 2024-01-31,tc_mayorista,826.25,ARS/USD,BCRA
 2024-01-30,tc_mayorista,825.75,ARS/USD,BCRA
-2024-01-29,tc_mayorista,825.25,ARS/USD,BCRA
 2026-07-01,saldo_comercial_12m,23730.8,M USD (acum. 12 meses),INDEC — cuadro original ICA + historia datos.gob.ar
 2026-06-01,saldo_comercial_12m,22522.5,M USD (acum. 12 meses),INDEC — cuadro original ICA + historia datos.gob.ar
 2026-05-01,saldo_comercial_12m,21166.7,M USD (acum. 12 meses),INDEC — cuadro original ICA + historia datos.gob.ar
@@ -1609,7 +1608,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,prestamos_privados,20765860.0,M ARS,BCRA
 2024-01-31,prestamos_privados,20506986.0,M ARS,BCRA
 2024-01-30,prestamos_privados,20048509.0,M ARS,BCRA
-2024-01-29,prestamos_privados,19867304.0,M ARS,BCRA
 2026-07-01,ipi_manufacturero,-2.82,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (planilla original vigente)
 2026-06-01,ipi_manufacturero,-1.99,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (planilla original vigente)
 2026-05-01,ipi_manufacturero,-1.0,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (planilla original vigente)
@@ -2682,7 +2680,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,base_monetaria,10430278.0,M ARS,BCRA
 2024-01-31,base_monetaria,10923532.0,M ARS,BCRA
 2024-01-30,base_monetaria,10326024.0,M ARS,BCRA
-2024-01-29,base_monetaria,10406173.0,M ARS,BCRA
 2026-09-14,badlar,22.125,% anual,BCRA
 2026-09-11,badlar,21.4375,% anual,BCRA
 2026-09-10,badlar,22.3125,% anual,BCRA
@@ -3317,4 +3314,3 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,badlar,107.9375,% anual,BCRA
 2024-01-31,badlar,109.6875,% anual,BCRA
 2024-01-30,badlar,108.625,% anual,BCRA
-2024-01-29,badlar,109.0,% anual,BCRA
