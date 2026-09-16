@@ -71,17 +71,17 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 5,96 % de la recaudación (acum. 12 meses) | VERDE | 12,0 % |
 | **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
 | Reservas netas | Estimación CIGOB de reservas netas. | 11.962 Millones de USD | VERDE | 5,4 % |
-| Capacidad prestable (IdC) | Índice de Capacidad Prestable. | −0,26 σ vs. su historia | AMARILLO | 3,4 % |
+| Capacidad prestable | Índice de Capacidad Prestable. | −0,26 σ vs. su historia | AMARILLO | 3,4 % |
 | Crédito privado real | Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el… | −0,8 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
 | Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 7,29 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
 | **DIMENSIÓN: Inversión** | | | | |
-| Inversión física (IAI) | Índice Anticipador de Inversión. | −5,66 % i.a. ponderado | NARANJA | 12,0 % |
+| Inversión física | Índice Anticipador de Inversión. | −5,66 % i.a. ponderado | NARANJA | 12,0 % |
 | **DIMENSIÓN: Actividad económica** | | | | |
 | Actividad económica (EMAE i.a.) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | 2,69 % i.a. | VERDE | 6,6 % |
 | Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el INDEC divide la actividad económica, cuántos crecen respecto de un año atrás. | 80 % de sectores en crecimiento i.a. | VERDE | 2,2 % |
 | Producción industrial (IPI i.a.) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,82 % i.a. (promedio 3 meses) | NARANJA | 2,2 % |
 | **DIMENSIÓN: Competitividad externa** | | | | |
-| Tipo de cambio real (TCRM) | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). | 85,53 Índice (base dic-2015=100) | AMARILLO | 11,0 % |
+| Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). | 85,53 Índice (base dic-2015=100) | AMARILLO | 11,0 % |
 
 *Datos al 2026-09-15.*
 
@@ -273,7 +273,7 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Capacidad prestable (IdC)
+# Capacidad prestable
 
 Índice de Capacidad Prestable: mide si el sistema financiero tiene fondos y margen para prestar, comparando tres niveles contra su propia historia — la tasa real que reciben los depositantes (precio), el crecimiento interanual real de los depósitos privados (volumen) y la holgura entre depósitos y préstamos (asignación).
 
@@ -355,6 +355,8 @@ Ponderación vigente en el ITCM: 3,4 % efectivo. El color es una lectura adicion
 **2026-07-03** — Puntaje interpolado entre anclas.
 
 **2026-07-04** — Rediseño de la métrica: pasa de ratios mes a mes a niveles estandarizados contra la propia historia, publicados en desvíos estándar.
+
+**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Capacidad prestable (IdC)» a «Capacidad prestable». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna, que ya estaba traducida en el texto.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -839,7 +841,7 @@ Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Tipo de cambio real (TCRM)
+# Tipo de cambio real
 
 Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). Mide la dimensión de competitividad externa del índice.
 
@@ -921,6 +923,8 @@ Ponderación vigente en el ITCM: 11 % efectivo. El color es una lectura adiciona
 **2026-06-30** — Peso de la dimensión recortado de 12% a 11% al entrar la dimensión de inversión.
 
 **2026-07-03** — Puntaje interpolado entre anclas.
+
+**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Tipo de cambio real (TCRM)» a «Tipo de cambio real». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1128,7 +1132,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Inversión física (IAI)
+# Inversión física
 
 Índice Anticipador de Inversión: mide la inversión física/tradicional combinando la actividad de la construcción (ISAC) y la importación de bienes de capital, en variación interanual.
 
@@ -1216,6 +1220,8 @@ Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adiciona
 **2026-07-04** — El titular pasa al último mes común de las fuentes (antes podía mezclar meses distintos bajo una sola etiqueta); el componente fresco queda como provisorio.
 
 **2026-09-08** — ADR-0293: tarjeta e historial comparten la regla de incorporación de patentamientos y exigen el mismo mes de referencia. Se evita una divergencia futura de fórmula; los tres meses actualmente acumulados no activan todavía ese componente.
+
+**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Inversión física (IAI)» a «Inversión física». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

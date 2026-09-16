@@ -1761,9 +1761,12 @@ def fetch_credito_privado() -> dict | None:
             "nominal_ia": round(nominal * 100.0, 1),
             "moneda": "pesos",
             **desglose,
+            # Sin "(IdC)": ADR-0311 retiró esa sigla de los rótulos públicos y
+            # acá quedaba huérfana — el lector la veía sin tener dónde
+            # resolverla. El texto ya dice "capacidad prestable" en castellano.
             "detalle_txt": (f"nominal {coma(nominal * 100.0)}% i.a. deflactado por IPC, "
                             f"sólo crédito EN PESOS — crédito realizado, no capacidad "
-                            f"(IdC) (mes común: {ym}){contexto}{fresco}"),
+                            f"prestable (mes común: {ym}){contexto}{fresco}"),
         }
     except Exception as e:
         _warn("credito_privado", e)

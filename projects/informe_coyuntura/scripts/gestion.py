@@ -2471,7 +2471,9 @@ def fetch_asistencia_directa() -> dict | None:
                    + " · Clasificación del devengado; no acredita pago efectivo ni ausencia de intermediación.")
         return {
             "valor":          tdps["tdps"],
-            "unidad":         "TDPS: % del devengado de transferencias en ayudas a personas (5.1.4)",
+            # Sin la sigla "TDPS" (ADR-0311): no sobrevive en ningún rótulo
+            # público, así que en la unidad quedaba sin dónde resolverse.
+            "unidad":         "% del devengado de transferencias en ayudas a personas (5.1.4)",
             "fuente":         "API Presupuesto Abierto (SIDIF) — devengado por partida",
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,

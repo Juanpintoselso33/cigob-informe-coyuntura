@@ -75,7 +75,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Inversiones RIGI | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 23,8 % de inversión aprobada sobre el pipeline | AMARILLO | 6,0 % |
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
-| Asistencia directa (TDPS) | La TDPS aproxima la desintermediación mediante la composición presupuestaria. | 100 TDPS: % del devengado de transferencias en ayudas a personas (5.1.4) | VERDE | 4,0 % |
+| Asistencia directa | La TDPS aproxima la desintermediación mediante la composición presupuestaria. | 100 TDPS: % del devengado de transferencias en ayudas a personas (5.1.4) | VERDE | 4,0 % |
 | Orden público (piquetes) | En qué porcentaje se redujo el número de cortes por manifestación relevados en CABA respecto de una base estimada para… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
 | Libertad de opción en salud | Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como… | 33,1 % de usuarios de prepagas con aportes derivados directo (sin triangulación) | AMARILLO | 2,0 % |
 
@@ -1025,7 +1025,7 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Asistencia directa (TDPS)
+# Asistencia directa
 
 La TDPS aproxima la desintermediación mediante la composición presupuestaria: devengado de Volver al Trabajo y Acompañamiento Social clasificado como ayudas a personas (5.1.4) sobre el total de transferencias de esas actividades.
 
@@ -1104,6 +1104,8 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 **2026-07-02** — Pasa a la tasa real contra la ejecución presupuestaria, con línea de base 2023 verificada.
 
 **2026-09-08** — ADR-0296: se distingue devengado de pagado y se acota el universo a las dos actividades. Se retiran inferencias de ausencia de intermediación y la afirmación de una base 2023 mayoritariamente intermediada: la API confirma 98,312% en 5.1.4. No cambia la fórmula ni el 100% actual.
+
+**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Asistencia directa (TDPS)» a «Asistencia directa». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

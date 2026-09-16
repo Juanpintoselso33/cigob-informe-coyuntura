@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-25
 cinturon: 'transversal'
 archivos: ['scripts/generar_informe.py', 'scripts/publicar.py', 'web/src/lib/datos.ts', 'web/src/components/Hero.astro', 'web/src/components/TensionPanel.astro', 'web/src/components/Bluf.astro', 'web/src/components/Archivo.astro', 'web/public/overrides.css', 'tests/test_riesgo_dominante_nombra_su_cinturon.py', 'tests/test_estado_un_solo_criterio.py']
-relacionado: ['0181', '0190', '0195', '0204', '0208']
+relacionado: ['0181', '0190', '0195', '0204', '0208', '0311']
 ambito: 'Cómo se expone el veredicto de portada · qué cinturón produjo el barbarismo dominante y qué dice la píldora de estado sistémico'
 origen: 'Diego Dequino preguntó en #informe-de-coyuntura si había una inconsistencia en la exposición, con la portada del 25-ago-2026 marcada en dos lugares'
 ---

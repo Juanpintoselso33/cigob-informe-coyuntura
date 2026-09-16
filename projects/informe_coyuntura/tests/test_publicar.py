@@ -202,7 +202,7 @@ def test_ninguna_excepcion_de_procedencia_apunta_a_un_indicador_que_ya_no_existe
     que dejó de existir —los renombres son frecuentes: `patentamiento_motos` →
     `motorizacion_total`, `presion_dolarizacion` → `desequilibrio_monetario`— no
     rompe nada: el dato de carga manual pasa a badgearse como automático en la
-    web y a sumar al contador de Metodologia.astro. El snapshot publicado es el
+    web y a sumar al contador de /metodologia. El snapshot publicado es el
     contrato: si la clave no está ahí, la excepción quedó muerta."""
     snapshot = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
     publicados = {

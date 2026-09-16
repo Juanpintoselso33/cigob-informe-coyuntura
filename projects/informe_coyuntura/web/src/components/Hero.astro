@@ -28,8 +28,13 @@ const rezagados = indicadoresRezagados(informe);
 // `politica` y `vida_cotidiana` comparten barbarismo. El veredicto era
 // correcto y parecía contradecir a su propia tabla.
 const dominante = cinturonDominante(informe);
+// Sin "/10" (ADR-0311). El pie vive DENTRO de la misma figura que el titular
+// sin escala: un "6,4/10" a cuarenta píxeles del "3,7" pelado devuelve la
+// escala que se acaba de sacar y, peor, hace parecer que son dos magnitudes
+// distintas. El score del cinturón sí conserva su escala en su propia card,
+// que es el nivel donde el lector baja a buscar el detalle.
 const pieRiesgo = `Riesgo dominante: ${cap(informe.barbarismo_activo)}`
-  + (dominante ? ` — ${dominante.nombre} (${num(dominante.score)}/10)` : "");
+  + (dominante ? ` — ${dominante.nombre} (${num(dominante.score)})` : "");
 
 // La píldora decía "Estable" mientras un cinturón estaba en tensión alta.
 // No mentía —significa "no hay alerta multicinturón"— pero pegada a la barra
@@ -69,6 +74,7 @@ const pildoraClase = informe.alerta_multicinturon
         titulo="Tensión general"
         tamano="grande"
         pie={pieRiesgo}
+        mostrarEscala={false}
       />
     </div>
   </div>
