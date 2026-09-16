@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-18
 cinturon: 'macro'
 indicadores: [idc, credito_privado]
-relacionado: ['0022', '0028', '0071']
+relacionado: ['0022', '0028', '0071', '0329']
 ambito: 'Cinturón macro · ITCM · dimensión Capacidad y costo del financiamiento · `idc` · `credito_privado`'
 origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 4'
 ---

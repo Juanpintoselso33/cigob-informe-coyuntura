@@ -3,9 +3,9 @@
     "ITCM": {
       "peso_total": 1.0,
       "categorias": {
-        "conceptual": 0.5660000000000001,
+        "conceptual": 0.5528000000000001,
         "convencion": 0.32399999999999995,
-        "historia_larga": 0.11
+        "historia_larga": 0.1232
       },
       "detalle": [
         {
@@ -23,7 +23,7 @@
         {
           "indicador": "emae_ia",
           "categoria": "conceptual",
-          "peso": 0.066,
+          "peso": 0.0581,
           "motivo": "bandas de crecimiento en torno al cero; el corte de crecimiento nulo cae en p26 de la historia 2021-2023 (ADR-0120)"
         },
         {
@@ -59,13 +59,13 @@
         {
           "indicador": "emae_difusion",
           "categoria": "conceptual",
-          "peso": 0.022,
+          "peso": 0.0194,
           "motivo": "cortes por CANTIDAD DE SECTORES (14-15 generalizado · 11-13 mayoría amplia · 8-10 ajustada · 5-7 minoría · 0-4 contracción), puestos en el hueco entre valores alcanzables; explícitamente NO se ancló en el 50% de manual porque la mediana histórica argentina es 73,3% (ADR-0124)"
         },
         {
           "indicador": "ipi_manufacturero",
           "categoria": "conceptual",
-          "peso": 0.022,
+          "peso": 0.0194,
           "motivo": "hereda las bandas del EMAE a propósito para dejar ver la brecha industria-actividad, con cita a ADR-0045 (ADR-0076/0079)"
         },
         {
@@ -73,6 +73,12 @@
           "categoria": "historia_larga",
           "peso": 0.11,
           "motivo": "historia 1997-2026: p10≈75, p25≈87, mediana≈106 — 29 años, cinco gobiernos"
+        },
+        {
+          "indicador": "actividad_tributaria",
+          "categoria": "historia_larga",
+          "peso": 0.0132,
+          "motivo": "cortes redondos de 5 puntos en torno al cero, calibrados contra los 105 meses de la serie propia (dic-2017/ago-2026, la ventana que permite el IPC como deflactor) para que ninguno de los seis tramos concentre más de la quinta parte de la historia (ADR-0329)"
         },
         {
           "indicador": "resultado_primario",
@@ -100,9 +106,9 @@
         }
       ],
       "share": {
-        "conceptual": 0.566,
+        "conceptual": 0.553,
         "convencion": 0.324,
-        "historia_larga": 0.11
+        "historia_larga": 0.123
       },
       "share_circular": 0.324
     },

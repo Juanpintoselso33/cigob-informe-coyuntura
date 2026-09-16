@@ -77,6 +77,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Segunda lectura de la actividad, junto al EMAE: mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.",
     frecuencia: "Mensual", tipo: "Variación i.a. (promedio 3 meses)",
   },
+  actividad_tributaria: {
+    que: "Cuánto crecieron, en términos reales y respecto de un año atrás, el IVA-DGI y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.",
+    aporta: "La lectura más fresca de la dimensión: Hacienda informa estos dos tributos antes de que el INDEC cierre el EMAE del mismo mes. El IVA sigue de cerca el consumo interno; el cheque sigue toda transacción bancaria, así que además de actividad capta bancarización.",
+    frecuencia: "Mensual", tipo: "Variación i.a. real (compuesto)",
+  },
   saldo_comercial_12m: {
     que: "El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses.",
     aporta: "Muestra si el intercambio de bienes aporta o resta dólares. No alcanza para saber si el sector externo en conjunto los genera: faltan los servicios, los intereses y las utilidades giradas, que se ven en la cuenta corriente del gráfico.",

@@ -138,8 +138,8 @@ logging.basicConfig(level=logging.WARNING, format="%(message)s")
 CINTURON = "macro"
 INDICADORES_ESPERADOS = [
     "ipc_total", "reservas_bcra", "idc", "badlar",
-    "emae_ia", "emae_difusion", "ipi_manufacturero", "saldo_comercial_12m",
-    "recaudacion", "tcrm",
+    "emae_ia", "emae_difusion", "ipi_manufacturero", "actividad_tributaria",
+    "saldo_comercial_12m", "recaudacion", "tcrm",
     "rem_ipc_12m", "idm", "desequilibrio_monetario", "iai", "icip",
     "credito_privado", "prestamos_privados", "base_monetaria", "tc_mayorista",
     "costo_financiamiento_tesoro", "resultado_primario",
@@ -1052,6 +1052,138 @@ def fetch_recaudacion() -> dict | None:
         return resultado
     except Exception as e:
         _warn("recaudacion", e)
+        return None
+
+
+# ── Actividad tributaria: IVA-DGI + cheque como proxy de ACTIVIDAD (ADR-0329) ──
+# Corrige el alcance de ADR-0318/0319/0321: el pedido original era un PROXY DE
+# ACTIVIDAD ECONÓMICA a partir de IVA-DGI y del impuesto al cheque, y se había
+# implementado como un control dentro de la dimensión FISCAL (`_control_tributario`,
+# arriba) — útil, pero no lo que se pidió. Un proxy de actividad tiene que
+# PUNTUAR en la dimensión de actividad, no vivir sólo como texto en el detalle
+# de `recaudacion`. Ese texto no se toca: sigue explicando de dónde vino un
+# movimiento del agregado DGI. Este indicador es aparte.
+#
+# Composición: PROMEDIO PONDERADO, no matriz. Se evaluó cruzar IVA y cheque en
+# una matriz A×B como hace `desequilibrio_monetario.py` (ADR-0192/ADR-0252) y
+# se descartó: esa matriz existe porque A (confianza en el peso, stock) y B
+# (compra de divisas, flujo) son dos fenómenos que se REFUERZAN o se
+# CONTRARRESTAN de forma no lineal —degradar uno solo ya es grave, degradar
+# los dos es peor que la suma—, y la ficha que lo definió puso ese supuesto
+# por escrito con números propios. Acá no hay una ficha que declare esa
+# interacción: IVA-DGI y cheque son dos MEDICIONES RUIDOSAS DEL MISMO
+# CONSTRUCTO —cuánto se mueve la actividad—, cada una con su propio sesgo (el
+# IVA por evasión/alícuotas, el cheque por bancarización), tal como
+# `emae_ia` + `ipi_manufacturero` ya conviven en esta misma dimensión sin
+# matriz. Promediar es lo que corresponde cuando dos series miden lo mismo
+# con ruido distinto; cruzar es lo que corresponde cuando miden cosas
+# distintas que se combinan. Forzar una matriz sin una interacción declarada
+# habría sido inventar anclas para que "se vea sofisticado".
+#
+# Pesos del promedio: IVA-DGI 60%, cheque 40%. El IVA doméstico es un impuesto
+# al consumo interno —más cerca del constructo "actividad"—; el cheque grava
+# TODA transacción bancaria, así que además de actividad capta bancarización
+# (más o menos pagos por transferencia en vez de efectivo), un fenómeno propio
+# que no es actividad y que no se puede restar. Se le da menos peso por eso,
+# no porque su dato sea peor.
+PESO_IVA_ACTIVIDAD_TRIBUTARIA    = 0.6
+PESO_CHEQUE_ACTIVIDAD_TRIBUTARIA = 0.4
+
+# Ventana propia para la SERIE publicada (descargar_series.py), deliberadamente
+# NO `comarb.LIMITE_MESES` (revisión adversarial, 2026-09-16).
+#
+# `comarb.LIMITE_MESES=80` existe para `recaudacion`, donde la card y la serie
+# TIENEN que compartir ventana: `base_imponible_real_sa` desestacionaliza con
+# un promedio móvil sobre toda la muestra, así que una ventana distinta cambia
+# los factores estacionales y por lo tanto TODOS los puntos, incluido el
+# último — de ahí la restricción "no cambiar en un solo lado" de comarb.py.
+# `actividad_tributaria` no desestacionaliza: cada mes de `_real_ia_mensual`
+# depende sólo de nominal(t), nominal(t-12), IPC(t) e IPC(t-12), así que
+# ampliar la ventana no cambia ni un punto ya calculado, sólo agrega meses
+# viejos. No hay razón para heredar el límite de `recaudacion` ni riesgo de
+# romper su gate G3 al tocar esta constante en cambio.
+#
+# El valor importa porque las bandas de ADR-0329 se calibraron contra 105
+# meses (dic-2017/ago-2026, la ventana que permite el IPC nacional como
+# deflactor) y con `comarb.LIMITE_MESES` la serie publicada llegaba sólo a 68
+# meses (2021-01/2026-08): las bandas describían una historia que el tablero
+# nunca publicaba, sin que nada lo dijera. 200 alcanza sobrado el arranque del
+# IPC (2016-12) y deja margen para años de historia futura sin volver a tocar
+# esta constante.
+LIMITE_MESES_ACTIVIDAD_TRIBUTARIA = 200
+
+
+def _actividad_tributaria_serie_mensual(iva_nom: dict, cheque_nom: dict,
+                                         ipc: dict) -> dict:
+    """{YYYY-MM: % compuesto} = 0,6×IVA-DGI real i.a. + 0,4×cheque real i.a.
+
+    Reusa `_real_ia_mensual` —el mismo deflactor IPC y la misma aritmética
+    interanual que el resto del cinturón (ADR-0078)— sobre las mismas dos
+    series que ya bajaba `_control_tributario`. Un mes entra sólo si las DOS
+    series tienen el dato (misma regla que el resto de los compuestos de
+    macro.py: no se imputa el que falta)."""
+    iva_ia = _real_ia_mensual(iva_nom, ipc)
+    cheque_ia = _real_ia_mensual(cheque_nom, ipc)
+    return {
+        ym: PESO_IVA_ACTIVIDAD_TRIBUTARIA * iva_ia[ym]
+            + PESO_CHEQUE_ACTIVIDAD_TRIBUTARIA * cheque_ia[ym]
+        for ym in sorted(set(iva_ia) & set(cheque_ia))
+    }
+
+
+def fetch_actividad_tributaria() -> dict | None:
+    """Proxy de actividad económica vía IVA-DGI + impuesto al cheque, en
+    términos reales (ADR-0329).
+
+    Es la señal MÁS FRESCA de la dimensión: medido el 2026-09-16, contra el
+    último mes calendario cerrado (agosto-2026) este indicador publica ESE
+    mismo mes (0 meses de atraso), mientras `ipi_manufacturero` publica con 1
+    mes de atraso y `emae_ia`/`emae_difusion` con 2 — la Secretaría de
+    Hacienda/ARCA informa IVA-DGI y cheque antes de que el INDEC cierre el
+    EMAE del mismo período.
+
+    Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y
+    cheque son, entre ambos, 30%-62% del agregado DGI que ahí puntúa (53,6%
+    en ago-2026). El solapamiento es menor de lo que ese porcentaje sugiere
+    —`recaudacion` puntúa un NIVEL desestacionalizado, no la interanual de
+    estos dos componentes, y la correlación entre este compuesto y la
+    interanual real del propio agregado DGI es de sólo r=0,355 (n=105,
+    2017-12/2026-08, ~13% de varianza compartida)— pero existe. Ver ADR-0329
+    para la cuantificación completa del efecto sobre el ITCM."""
+    try:
+        iva_nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_IVA_DGI_ID,
+                                                        limit=comarb.LIMITE_MESES)
+                   if r[1] is not None}
+        cheque_nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_CHEQUE_ID,
+                                                           limit=comarb.LIMITE_MESES)
+                      if r[1] is not None}
+        ipc = {r[0][:7]: r[1] for r in _indec_serie(INDEC_IPC_ID,
+                                                    limit=comarb.LIMITE_MESES)
+               if r[1] is not None}
+        serie = _actividad_tributaria_serie_mensual(iva_nom, cheque_nom, ipc)
+        if not serie:
+            raise ValueError("actividad_tributaria: sin mes común entre IVA-DGI, cheque e IPC")
+        ym = max(serie)
+        iva_ia = _real_ia_mensual(iva_nom, ipc)[ym]
+        cheque_ia = _real_ia_mensual(cheque_nom, ipc)[ym]
+        cm = lambda x: f"{x:.1f}".replace(".", ",")
+        return {
+            "valor": round(serie[ym], 2),
+            "unidad": "% i.a. real (compuesto IVA-DGI/cheque)",
+            "fuente": "Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)",
+            "fecha_dato": f"{ym}-01",
+            "desactualizado": False,
+            "iva_var_ia_real": round(iva_ia, 1),
+            "cheque_var_ia_real": round(cheque_ia, 1),
+            "detalle_txt": (
+                f"Compuesto 0,6×IVA-DGI + 0,4×cheque, ambos en variación interanual "
+                f"real: IVA-DGI {cm(iva_ia)}%, cheque {cm(cheque_ia)}%, compuesto "
+                f"{cm(serie[ym])}%. El cheque capta además bancarización, no sólo "
+                f"actividad; el IVA responde también a evasión y cambios de alícuota."
+            ),
+        }
+    except Exception as e:
+        _warn("actividad_tributaria", e)
         return None
 
 
@@ -2028,6 +2160,7 @@ def main() -> None:
         ("emae_ia",            fetch_emae_ia),
         ("emae_difusion",      fetch_emae_difusion),
         ("ipi_manufacturero",  fetch_ipi_manufacturero),
+        ("actividad_tributaria", fetch_actividad_tributaria),
         ("saldo_comercial_12m", fetch_saldo_comercial_12m),
         ("recaudacion",        fetch_recaudacion),
         ("tcrm",               fetch_tcrm),

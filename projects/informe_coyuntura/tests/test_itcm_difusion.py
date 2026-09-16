@@ -154,13 +154,19 @@ def test_los_pesos_suman_uno():
 
 
 def test_el_peso_salio_del_emae_y_no_del_ipi():
-    """ADR-0124: la composición por FUENTE de la dimensión no cambia — el EMAE
-    sigue aportando 80% y el IPI 20%. Si mañana alguien saca el peso del IPI
-    para hacerle lugar a la difusión, cambia el criterio de ADR-0079 sin
-    decirlo."""
+    """ADR-0124: dentro de la composición INDEC (EMAE+IPI), el EMAE sigue
+    aportando 80% y el IPI 20% — ese reparto por fuente no cambió cuando entró
+    la difusión sectorial (ADR-0124), y sigue sin cambiar ahora.
+
+    ADR-0329 sí tocó los CUATRO pesos: al entrar `actividad_tributaria` (una
+    fuente distinta, Hacienda/ARCA, no INDEC) los tres indicadores INDEC se
+    recortaron PROPORCIONALMENTE (×0,80: 0,60→0,48, 0,20→0,16, 0,20→0,16), así
+    que la proporción INTERNA entre ellos —80/20 EMAE/IPI— se conserva aunque
+    el peso absoluto de cada uno bajó."""
     ind = _dim()
-    assert ind["ipi_manufacturero"] == 0.20
-    assert abs(ind["emae_ia"] + ind["emae_difusion"] - 0.80) < 1e-9
+    peso_indec = ind["emae_ia"] + ind["emae_difusion"] + ind["ipi_manufacturero"]
+    assert abs(ind["ipi_manufacturero"] / peso_indec - 0.20) < 1e-9
+    assert abs((ind["emae_ia"] + ind["emae_difusion"]) / peso_indec - 0.80) < 1e-9
 
 
 def test_difusion_y_emae_no_pesan_lo_mismo():

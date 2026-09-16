@@ -202,7 +202,8 @@ def test_publicacion_y_censo_con_componente_sin_universo(monkeypatch, tmp_path, 
     # 63 → 64: vuelve apoyo_empresario (ADR-0310). 64 → 63: sale `icc_utdt`
     # del ITCIS, que pasa a ancla externa (ADR-0314). 63 → 64: `consumo_carnes_total`
     # se parte en `consumo_carne_vacuna` + `consumo_carnes_otras`, que puntúan
-    # cada uno por su cuenta (ADR-0322) — una card más que antes.
-    assert resumen["indicadores"] == 64
-    assert resumen["indicadores_observados_en_calculo"] == 63   # 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322)
+    # cada uno por su cuenta (ADR-0322) — una card más que antes. 64 → 65:
+    # entra `actividad_tributaria` al ITCM (ADR-0329).
+    assert resumen["indicadores"] == 65
+    assert resumen["indicadores_observados_en_calculo"] == 64   # 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329)
     assert resumen["indicadores_sin_universo"] == 1

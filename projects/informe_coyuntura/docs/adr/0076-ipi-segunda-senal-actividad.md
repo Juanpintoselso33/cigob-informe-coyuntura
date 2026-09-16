@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-18
 cinturon: 'macro'
 indicadores: [ipi_manufacturero, emae_ia]
-relacionado: ['0021', '0029']
+relacionado: ['0021', '0029', '0329']
 ambito: 'Cinturón macro · ITCM · dimensión Actividad económica · `ipi_manufacturero` (nuevo) · `emae_ia`'
 origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 3'
 ---

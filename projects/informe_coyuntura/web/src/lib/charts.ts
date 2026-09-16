@@ -28,7 +28,8 @@ export interface Punto { fecha: string; valor: number; }
 // se lee como tensión;
 // litigiosidad/gasto real: caer es la mejora). Sin entrada → área neutra.
 const POLARIDAD_SIGNO: Record<string, 1 | -1> = {
-  reservas_bcra: 1, emae_ia: 1, ipi_manufacturero: 1, recaudacion: 1, saldo_comercial_12m: 1,
+  reservas_bcra: 1, emae_ia: 1, ipi_manufacturero: 1, actividad_tributaria: 1,
+  recaudacion: 1, saldo_comercial_12m: 1,
   idc: 1, credito_privado: 1, iai: 1, icip: 1, resultado_primario: 1,
   // costo_financiamiento_tesoro NO lleva polaridad a propósito: es la única
   // serie de U invertida del tablero (tasa real muy negativa = licuación;

@@ -4,7 +4,7 @@ id: '0152'
 estado: 'aceptado'
 fecha: 2026-07-29
 cinturon: 'macro'
-relacionado: ['0318', '0319', '0321']
+relacionado: ['0318', '0319', '0321', '0329']
 ambito: 'cinturón macro (ITCM), dimensión viabilidad fiscal-comercial'
 ---
 

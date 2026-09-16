@@ -6,7 +6,7 @@ fecha: 2026-09-15
 cinturon: 'macro'
 indicadores: [recaudacion]
 archivos: ['scripts/macro.py', 'web/src/lib/fichas.ts', 'tests/test_macro_recaudacion_dgi.py']
-relacionado: ['0078', '0152', '0239', '0318', '0321']
+relacionado: ['0078', '0152', '0239', '0318', '0321', '0329']
 ambito: 'Cinturón Macro · `recaudacion` · método de cómputo del control tributario (IVA-DGI, cheque)'
 origen: 'Continuación de ADR-0318: cómo se calcula el control sin inventar un deflactor propio'
 ---

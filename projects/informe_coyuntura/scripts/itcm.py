@@ -225,6 +225,23 @@ BANDAS_ITCM = {
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
         (-2.0, 0.0, 40), (-5.0, -2.0, 20), (-INF, -5.0, 5),
     ],
+    "actividad_tributaria": [           # % i.a. real, compuesto 0,6×IVA-DGI + 0,4×cheque
+        # ADR-0329. Bandas calibradas contra la SERIE PROPIA (2017-12/2026-08,
+        # 105 meses — ventana que limita el IPC, deflactor obligatorio), no
+        # elegidas para que el color quede bien (ADR-0045). El compuesto oscila
+        # mucho más que el EMAE (percentiles 10/90 en ±12 contra ±5-9 del EMAE):
+        # reusar las bandas del EMAE tal cual —se probó— satura de los DOS lados
+        # a la vez (60% de los meses cae en el peor o el mejor tramo, contra el
+        # reparto que exige ADR-0042). Estos cortes, sobre pasos redondos de 5
+        # puntos y con el cero como frontera conceptual (igual criterio que
+        # emae_ia/ipi_manufacturero, ADR-0120), reparten 19,0/14,3/18,1/20,0/
+        # 14,3/14,3% de los 105 meses entre los seis tramos, EN EL MISMO ORDEN
+        # que la tabla de arriba (de mejor a peor: >10, 5-10, 0-5, -5-0,
+        # -10 a -5, ≤-10) — ninguno concentra más de la quinta parte de la
+        # historia.
+        (10.0, INF, 100), (5.0, 10.0, 80), (0.0, 5.0, 60),
+        (-5.0, 0.0, 40), (-10.0, -5.0, 20), (-INF, -10.0, 5),
+    ],
     "tcrm": [                           # ITCRM oficial del BCRA (base 17-dic-2015=100)
         # Apreciación real = pérdida de competitividad y atraso cambiario = más tensión.
         # Bandas calibradas con la historia 1997-2026 (p10≈75, p25≈87, mediana≈106):
@@ -386,8 +403,35 @@ DIMENSIONES_ITCM = {
         # lo que cambia es que ese 80% pasa a leerse en dos registros: cuánto
         # crece la actividad (nivel) y en cuántos sectores crece (amplitud). El
         # IPI no se toca: sigue siendo el único respaldo de fuente distinta.
-        "indicadores": {"emae_ia": 0.60, "emae_difusion": 0.20,
-                        "ipi_manufacturero": 0.20},
+        #
+        # ADR-0329 (2026-09-16): entra `actividad_tributaria` (IVA-DGI + cheque,
+        # ADR-0318/0319 corregidos de encuadre fiscal a encuadre de actividad).
+        # A diferencia de emae_difusion, esto SÍ es una fuente distinta
+        # (Hacienda/ARCA, no INDEC) — no se le resta a un único indicador, se
+        # recortan los tres existentes PROPORCIONALMENTE, mismo criterio que
+        # ADR-0071/0074 en `financiamiento`.
+        #
+        # El peso de entrada se revisó a la baja (revisión adversarial,
+        # 2026-09-16) de 0,20 a 0,12: la redundancia interna medida da r=0,840
+        # contra emae_ia, 0,828 contra ipi_manufacturero y 0,725 contra
+        # emae_difusion — los tres por encima del umbral 0,7 del propio repo,
+        # y más alto que lo que el IPI (el otro "respaldo") ya correlaciona con
+        # el EMAE (r=0,765). El argumento de origen —que su freshness de
+        # publicación (0 meses de atraso contra 1 del IPI y 2 del EMAE)
+        # equivale a anticipar el ciclo— se puso a prueba con la correlación
+        # adelantada: actividad_tributaria(t) contra emae_ia(t+1)/(t+2) BAJA
+        # respecto de (t) (0,452→0,321→0,332, n=60) y lo mismo contra
+        # emae_difusion (0,726→0,617→0,626, n=31) — el máximo está en el
+        # presente, no adelante, así que no anticipa: es la MISMA lectura de
+        # actividad, disponible antes. Sólo contra ipi_manufacturero el
+        # adelanto de 1 mes no baja (0,825→0,848→0,755, n=32), pero la
+        # diferencia es chica y compatible con ruido de muestra. Por eso se le
+        # da menos peso que al IPI (0,12 contra 0,176 tras el recorte
+        # proporcional), no más: entra por frescura de publicación, no por
+        # señal nueva. ×0,88, preservando la proporción interna 80/20
+        # EMAE/IPI: 0,60→0,528, 0,20→0,176, 0,20→0,176.
+        "indicadores": {"emae_ia": 0.528, "emae_difusion": 0.176,
+                        "ipi_manufacturero": 0.176, "actividad_tributaria": 0.12},
     },
     "competitividad_externa": {
         "nombre": "Competitividad externa",
