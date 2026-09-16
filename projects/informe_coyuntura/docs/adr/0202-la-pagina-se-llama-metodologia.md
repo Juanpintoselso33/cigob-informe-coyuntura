@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-13
 cinturon: 'transversal'
 archivos: ['web/src/pages/metodologia/index.astro', 'web/src/pages/metodologia/[id].astro', 'web/src/components/Metodologia.astro']
-relacionado: ['0199', '0201']
+relacionado: ['0199', '0201', '0320']
 ambito: 'Nombre público de /metodologia y los enlaces que la nombran'
 origen: 'Última deuda declarada en ADR-0199 y 0201; el editor pidió cerrarla'
 ---

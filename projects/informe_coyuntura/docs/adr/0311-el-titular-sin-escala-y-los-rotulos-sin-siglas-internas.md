@@ -6,7 +6,7 @@ fecha: 2026-09-15
 cinturon: 'transversal'
 indicadores: [idc, iai, votometro_ventaja_lla, inseguridad, icc_utdt, despacho_cemento, tcrm, asistencia_directa, movilizacion_cepa]
 archivos: ['web/src/components/NivelTension.astro', 'web/src/components/Hero.astro', 'web/src/components/Bluf.astro', 'web/src/lib/datos.ts']
-relacionado: ['0194', '0204', '0237']
+relacionado: ['0194', '0204', '0237', '0320']
 ambito: 'Titular del Hero (tensión general) y `LABELS` de `datos.ts` — cómo se presenta el número, no cómo se calcula'
 origen: 'Apuntes de Juan del 15-sep-2026 (#monitor-de-proyecto-de-gobierno): sacar la escala de 10 del titular y las siglas internas de los rótulos'
 ---

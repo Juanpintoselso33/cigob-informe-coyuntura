@@ -9,7 +9,6 @@ import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
 import Evolucion from "../components/Evolucion.astro";
 import TensionPanel from "../components/TensionPanel.astro";
 import Recomendaciones from "../components/Recomendaciones.astro";
-import Metodologia from "../components/Metodologia.astro";
 import Footer from "../components/Footer.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
 import { informe, CINTURONES } from "../lib/datos.ts";
@@ -45,7 +44,9 @@ import { informe, CINTURONES } from "../lib/datos.ts";
         (revisión adversarial 2026-07-11: mostraba solo la edición vigente
         con un placeholder — hemeroteca sin hemeroteca). Reincorporar con
         la edición de agosto 2026. */}
-    <Metodologia />
+    {/* "Cómo se construye" retirado de la portada (ADR-0320): repetía
+        /metodologia, que Nav y Footer ya enlazan. El componente se borró
+        con él; si alguna vez vuelve, sale de `git show`. */}
   </main>
   <Footer />
   <IndicadorModal />
