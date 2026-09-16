@@ -34,4 +34,16 @@ La reforma real pasa de 0% el 26-feb a 100% el 27-feb. Es una prueba de fechas, 
 
 `codex review` no encontró errores en la primera versión de 17 tests. Después se ajustó la persistencia de sanciones históricas y se verificó con 18 tests y navegador; ese ajuste no tuvo segunda revisión independiente.
 
-El SHA256 de `web/src/data/informe.json` conserva el valor previo: `5e048a7d5eca458ed61d8d4171437f2af7e94cb08f0a8463cdc92319f5638c84`. Sin commit, push ni despliegue. Queda pendiente la validación metodológica con una cartera real completa y cortes mensuales.
+Todo lo de arriba se calculó contra el snapshot que había en
+`web/src/data/informe.json` el **8-sep-2026**, `sha256
+5e048a7d5eca458ed61d8d4171437f2af7e94cb08f0a8463cdc92319f5638c84`. El ancla es
+deliberada: sin ella no se puede rehacer la comparación. Pero **no describe el
+estado de hoy** — el pipeline nocturno regenera ese archivo todas las noches, y
+cuando este experimento se commiteó (15-sep) ya hasheaba
+`8e5f5d3d9df77fbf33ee6dd2a3b0f1b450aea8d368bb649b9ffb064f36eb31c3`. Nada en el
+repo compara el sha declarado contra el archivo, así que quien quiera
+re-verificar tiene que recuperar el snapshot de esa fecha (`git show
+a3f9fca9:projects/informe_coyuntura/web/src/data/informe.json`), no hashear el
+actual.
+
+Queda pendiente la validación metodológica con una cartera real completa y cortes mensuales.

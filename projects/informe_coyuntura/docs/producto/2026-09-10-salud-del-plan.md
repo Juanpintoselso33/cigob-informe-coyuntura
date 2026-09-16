@@ -78,7 +78,7 @@ Se mantiene la agenda de [mejoras metodológicas](../auditorias/2026-09-08/mejor
 
 ## Verificación de esta entrega
 
-Se releyeron el marco, arquitectura, devolución editorial de Babino y decisiones de nomenclatura; se cotejaron los seis ejemplos contra el snapshot local. Su SHA-256 sigue siendo `5e048a7d5eca458ed61d8d4171437f2af7e94cb08f0a8463cdc92319f5638c84`. No se consultaron fuentes externas nuevas ni se afirma actualidad al 10-sep. Se corrigió además D7 de la agenda de arquitectura: TDPS describe devengado clasificado, no pago sin intermediarios, conforme a ADR-0296. No se alteraron fórmulas, observaciones, pesos o sitio publicado.
+Se releyeron el marco, arquitectura, devolución editorial de Babino y decisiones de nomenclatura; se cotejaron los seis ejemplos contra el snapshot local. Su SHA-256 **al momento de esta entrega (10-sep-2026)** era `5e048a7d5eca458ed61d8d4171437f2af7e94cb08f0a8463cdc92319f5638c84`; el snapshot se regenera cada noche, así que el archivo de hoy no coincide y los seis ejemplos hay que leerlos contra esa foto, no contra la vigente. No se consultaron fuentes externas nuevas ni se afirma actualidad al 10-sep. Se corrigió además D7 de la agenda de arquitectura: TDPS describe devengado clasificado, no pago sin intermediarios, conforme a ADR-0296. No se alteraron fórmulas, observaciones, pesos o sitio publicado.
 
 ## Piloto documental preparado
 
