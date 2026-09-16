@@ -327,7 +327,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   clima_electoral: {
     latex: String.raw`\text{intenci\'on de voto LLA}-\text{intenci\'on de voto PJ}`,
-    leyenda: "Gap en puntos porcentuales (Votómetro).",
+    leyenda: "Gap en puntos porcentuales del agregador de encuestas de CiGob.",
   },
   indice_intencion_migratoria: {
     latex: String.raw`\text{inter\'es de b\'usqueda mensual}\;(0\text{-}100)`,

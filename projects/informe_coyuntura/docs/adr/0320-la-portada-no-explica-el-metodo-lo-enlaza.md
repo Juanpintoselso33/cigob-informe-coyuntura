@@ -70,9 +70,12 @@ son fuentes únicas de su información y se conservan.
 - Desaparece de la portada el último `<small>/10</small>` sobre el score
   global, que ADR-0311 había sacado del titular y que esta sección seguía
   mostrando. Los dos cambios quedan coherentes sin trabajo adicional.
-- El CSS `cg-met-*` queda sin consumidor en la portada. No se poda en este
-  cambio: `/metodologia` comparte parte de esas reglas y separarlas es un
-  trabajo propio.
+- El CSS `.cg-met-*` de `web/public/overrides.css` (~687-765, más su media
+  query) queda **sin ningún consumidor**: era exclusivo de esta sección. No se
+  poda acá porque está intercalado con `.cg-method` / `.cg-method-grid`, que
+  son otro prefijo y **siguen vivos** en `pages/metodologia/index.astro:82,128,142`;
+  separarlos a mano bajo el mismo cambio arriesga llevarse una regla viva sin
+  que nada lo note. Queda como poda pendiente, con el alcance ya delimitado.
 
 ### Confirmación
 

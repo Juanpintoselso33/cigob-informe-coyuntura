@@ -3319,7 +3319,7 @@ GESTION_DERIVADAS = [
      lambda: [[f, round(min(100.0, v * 100.0 / gestion.ORGANISMOS_PLAN_TOTAL), 1)]
               for f, v in gestion.serie_reestructuracion_vigentes()]),
     ("reduccion_estado", "% vs dic-2023", "INDEC (dotación APN mensual)", fetch_reduccion_serie),
-    ("asistencia_directa", "% TDPS (devengado 5.1.4 / inciso 5)", "API Presupuesto Abierto (SIDIF)", fetch_tdps_serie),
+    ("asistencia_directa", "% del devengado en ayudas a personas (5.1.4 / inciso 5)", "API Presupuesto Abierto (SIDIF)", fetch_tdps_serie),
     ("gasto_funcionamiento", "% real vs mismo mes 2023", "Sec. Hacienda IMIG + IPC INDEC",
      lambda: _serie_var_real_vs_2023([gestion.FUNC_SALARIOS_ID, gestion.FUNC_OTROS_ID])),
     ("masa_salarial", "% real vs mismo mes 2023", "Sec. Hacienda AIF + IPC INDEC",

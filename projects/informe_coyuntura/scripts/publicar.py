@@ -797,7 +797,9 @@ def _macro_input_txt(ikey, ind):
         # es, en vez de un color suelto sin dueño; se omite entero si el
         # colector no corrió y `banda_idc` no está (clave vieja `semaforo`).
         banda_idc = ind.get("banda_idc")
-        banda_idc_txt = f" (banda propia del IdC: {banda_idc})" if banda_idc else ""
+        # Sin la sigla "IdC" (ADR-0311): el rótulo público ya no la usa, así que
+        # en el detalle quedaba huérfana. "Este indicador" nombra la misma escala.
+        banda_idc_txt = f" (banda propia de este indicador: {banda_idc})" if banda_idc else ""
         txt = (f"{coma(ind.get('valor'))} σ = precio {coma(c.get('precio'))} · "
                f"volumen {coma(c.get('volumen'))} · asignación {coma(c.get('asignacion'))}"
                f"{banda_idc_txt}")
