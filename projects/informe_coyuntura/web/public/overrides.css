@@ -1634,8 +1634,19 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
     align-items: start;
   }
   .cg-marco-home-cuerpo > p { margin-bottom: 0; }
+  /* La cita abre el bloque y cruza las dos columnas (ADR-0326). Sin esto el
+     grid le daría una celda propia y el reparto «un párrafo por columna» se
+     iría a dos filas, con la definición de tensión partida a la mitad. */
+  .cg-marco-home-cuerpo > .cg-marco-home-cita {
+    grid-column: 1 / -1; margin-bottom: 16px;
+  }
 }
 @media (max-width: 899px) { .cg-marco-home-txt { max-width: 68ch; } }
+.cg-marco-home .cg-marco-home-cita {
+  font-size: 15.5px; line-height: 1.6; color: var(--dark);
+  border-left: 3px solid var(--teal-ink); padding-left: 14px;
+  margin: 0 0 14px;
+}
 .cg-marco-home-h {
   font-family: var(--ff-titulo);
   font-weight: 400;
