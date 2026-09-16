@@ -46,9 +46,11 @@ VALORES_EN_SERIE = {            # indicador: (mes, valor, tolerancia, ADR)
 VALORES_ESPERADOS = {           # indicador: (valor, tolerancia, ADR)
     "iaf_transferencias": (1.6, 0.15, "0239"),
     "ratio_dnu": (1.48, 0.06, "0241"),
-    # ±0,15 y no más: CABA marcaba 39,87 contra 40,23 del nacional, y una
-    # tolerancia de 0,35 no distinguiría una columna de la otra (ADR-0242).
-    "icc_utdt": (40.2, 0.15, "0242"),
+    # `icc_utdt` (ADR-0242, columna nacional vs CABA) salió del snapshot
+    # publicado el 2026-09-15: pasó a VIDA_OCULTOS al convertirse en ancla de
+    # validación externa (ADR-0314), así que ya no tiene card contra la cual
+    # verificar este valor. La corrección de ADR-0242 sigue vigente en la
+    # SERIE (`web/src/data/series.json`), que es lo que ahora se compara.
     "concesiones_infraestructura": (100.0, 0.6, "0244"),
     "credito_privado": (-1.5, 0.8, "0251"),
 }
