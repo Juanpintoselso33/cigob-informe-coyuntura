@@ -1449,7 +1449,7 @@ Ponderación vigente en el ITCIS: 1 % efectivo. El color es una lectura adiciona
 
 **2026-08-21** — Los dos vehículos se funden en la motorización total per cápita, que toma el peso combinado de ambos; autos y motos dejan de ser tarjetas y pasan a explicar el color desde adentro (ADR-0224). La decisión original atribuyó al total la capacidad de distinguir acceso de descenso de categoría; esa interpretación se rectificó el 8 de septiembre de 2026 porque el registro no identifica trayectorias de hogares. Con el cambio, el componente deja de estar apoyado contra el techo de recorte —del que queda exento— y vuelve a moverse con la fuente. La fuente de motos pasa de la cámara al registro, que es lo único que permite excluir el movimiento registral de Tierra del Fuego.
 
-**2026-09-15** — Se agrega el ratio motos/autos a la composición publicada (ADR-0322), pedido explícito de Juan como control de lectura. No cambia el puntaje, el peso ni la card: es una magnitud más dentro de la misma matriz.
+**2026-09-15** — Se agrega el ratio motos/autos a la composición publicada (ADR-0323), pedido explícito de Juan como control de lectura. No cambia el puntaje, el peso ni la card: es una magnitud más dentro de la misma matriz.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
