@@ -209,6 +209,8 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0307](0307-ratio-dnu-ventana-inclusiva.md) | Ratio DNU: 365 fechas incluidas | `ratio_dnu` | vigente |
 | [0308](0308-sesiones-y-sanciones-fuera-del-catalogo.md) | Sesiones y sanciones fuera del catálogo | `veto_quorum`, `produccion_legislativa` | vigente |
 | [0310](0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) | El saldo empresario vuelve al ITCP con el corpus cerrado | `apoyo_empresario` | vigente |
+| [0312](0312-votometro-traduce-el-semaforo-de-luis.md) | El votómetro traduce el semáforo que pidió Luis, no ya los márgenes simétricos | `votometro_ventaja_lla` | vigente |
+| [0313](0313-quorum-sin-convocante-en-la-fuente.md) | El quórum caído no se puede filtrar por quién convocó: la fuente no lo dice | `veto_quorum` | rechazado |
 
 ### Gestión (ITCG)
 

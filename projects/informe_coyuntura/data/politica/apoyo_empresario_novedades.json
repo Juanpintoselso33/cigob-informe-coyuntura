@@ -1,16 +1,39 @@
 {
  "_meta": {
-  "comunicados_vistos": 46,
+  "comunicados_vistos": 48,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie del indicador en el mes anterior al más viejo, y `inventario_verificado` es la última corrida en la que respondieron las dos cámaras (ADR-0310). Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
   "inventario_verificado": "2026-09-15",
-  "nuevos_en_la_corrida": 0,
+  "nuevos_en_la_corrida": 2,
   "ultima_corrida": "2026-09-15"
  },
- "pendientes": {},
+ "pendientes": {
+  "UIA|encuentro-argentino-de-comercio-exterior": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-08-12",
+   "id": "encuentro-argentino-de-comercio-exterior",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "El martes 12 de agosto participamos en el panel \"Sinergia importadora-exportadora para el desarrollo federal\", como parte del Encuentro Argentino de Comercio Exterior.  Ángel Padilla, miembro de nuestro Departamento de Transporte y Logística, junto a Fernando Furci, Gerente General de CIRA y Hernan Novara, economista de CERA, con la moderación de Yanina Lojo, consultora ComEx, expuso sobre las dificultades que ya está encontrando la industria a nivel logístico debido a los nuevos desarrollos de los sectores industriales.  Dentro del mismo, y durante 60 minutos, los expositores explicaron cuales son las fallas que el país debe corregir con el fin de mejorar la competitividad de las empresas a fin de generar más exportadores permanentes. Se habló de IIBB, costos portuarios, de las altas tasas de interés para la compra de maquinaria y hasta del tipo de cambio.  El panel concluyó con un acuerdo entre las tres partes: La falta de inversión en infraestructura genera un cuello de botella para la expansión que, junto a la carga impositiva, la falta de crédito y los extracostos logísticos, dificultan el desarrollo de nuevos sectores más allá de los tres principales sectores que dinamizan actualmente la economía: hidrocarburos, minería y agroindustria.  Dicho acuerdo fue reafirmado al hablar del trabajo que se viene desarrollando desde el Consejo de Cargadores ampliado (UIA+CAC+CIRA+CERA), donde las entidades buscamos empujar una agenda en conjunto relacionada a los costos portuarios, y continuamos generando puntos de consenso para mejorar la logística y competitividad nacional.",
+   "titulo": "Encuentro Argentino de Comercio Exterior",
+   "url": "https://www.uia.org.ar/uia/novedades/encuentro-argentino-de-comercio-exterior"
+  },
+  "UIA|sistema-ferroviario-de-cargas-en-argentina-informe": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-06-11",
+   "id": "sistema-ferroviario-de-cargas-en-argentina-informe",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "En Argentina el transporte y la logística cumplen un rol fundamental. Siendo el octavo país de mayor extensión en el mundo y con la distribución demográfica concéntrica que la caracteriza, la optimización del sistema de transporte de cargas es necesaria para garantizar la distribución de bienes, reducir la incidencia de sus costos en el precio final de los bienes industriales y sus insumos y aumentar la competitividad de las exportaciones.  Teóricamente, en una extensión así, se recomienda utilizar el camión para distancias cortas y medianas, y el transporte ferroviario y fluvio-marítimo en distancias largas. En ese sentido, vemos que es necesario abordar el tema de la infraestructura e inversión en transporte ferroviario de cargas, dado que actualmente representa sólo el 5% de las toneladas transportadas en el país (estimación del 2019). En otros países de la región ese porcentaje alcanza al 30%, aún con infraestructuras subóptimas.  Volcando casi el 90% de la carga de bienes al camión, la falta de infraestructura actual “se paga” con mayores costos logísticos, una peor condición de las rutas nacionales y una consecuente menor seguridad vial.  Por dicha razón, desde el Departamento de Transporte y Logística nos propusimos analizar la situación del sistema ferroviario, compararlo frente al de otros países, tanto regionales como de otros continentes, a fin de buscar posibilidades de mejoras y oportunidades. Este primer informe ferroviario apunta a ser un insumo de utilidad para el futuro proceso de concesión de las líneas férreas en el país.  Un sistema ferroviario de cargas bien planificado y desarrollado es el primer paso para un transporte multimodal eficiente, seguro y de calidad.",
+   "titulo": "Sistema ferroviario de cargas en Argentina: informe sobre su situación actual",
+   "url": "https://www.uia.org.ar/uia/novedades/sistema-ferroviario-de-cargas-en-argentina-informe"
+  }
+ },
  "revisadas": {
   "AEA|2020-03-21-union-y-responsabilidad-ante-el-desafio-": {
    "origen": "codificacion ADR-0148"
@@ -341,6 +364,10 @@
    "origen": "migración de URL; ya codificado",
    "titulo": "El Mercosur y Confindustria avanzan en una agenda común de integración productiva"
   },
+  "UIA|encuentro-argentino-de-comercio-exterior": {
+   "fecha": "2026-08-12",
+   "titulo": "Encuentro Argentino de Comercio Exterior"
+  },
   "UIA|formacion-tecnica-y-empresas-inet-y-el-sector-prod": {
    "fecha": "2026-08-12",
    "origen": "codificado 2026-09-14 (tanda en apoyo_empresario_codificacion.json)",
@@ -465,6 +492,10 @@
    "fecha": "2026-08-25",
    "origen": "duplicado de UIA|se-reunio-la-junta-directiva-de-la-uia (misma nota, otro slug): no se codifica dos veces",
    "titulo": "Se reunió la Junta Directiva de la UIA"
+  },
+  "UIA|sistema-ferroviario-de-cargas-en-argentina-informe": {
+   "fecha": "2026-06-11",
+   "titulo": "Sistema ferroviario de cargas en Argentina: informe sobre su situación actual"
   }
  }
 }

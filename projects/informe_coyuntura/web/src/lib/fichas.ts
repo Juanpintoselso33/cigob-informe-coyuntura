@@ -1162,7 +1162,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El indicador es la diferencia LLA − PJ de esas intenciones ponderadas, en puntos porcentuales.",
     ],
     incidenciaTexto: [
-      "El puntaje del índice se asigna por bandas de la ventaja, interpolado entre anclas: más de +15 puntos → el más alto; entre +5 y +15 → alto; entre −5 y +5 → moderado; entre −15 y −5 → bajo; −15 o menos → el más bajo.",
+      "El puntaje del índice se asigna por bandas de la ventaja, interpolado entre anclas (ADR-0312, traduce el semáforo de Luis): más de +8 puntos → verde, el más alto; entre +8 y +2 → amarillo, con el punto medio de la banda en +5 pp; entre +2 y −2 → naranja, con el punto medio en 0 pp; −2 o menos → rojo, el más bajo.",
       "Es el único indicador de la dimensión de imagen y voto del índice del cinturón (7% del total) — la dimensión que pesa deliberadamente menos que las otras seis, porque el proyecto distingue capital político de popularidad electoral.",
     ],
     dobleUso: "El mismo dato alimentó el indicador de clima electoral del antiguo cinturón espíritu de época. Ese cinturón salió del monitor el 14 de agosto de 2026, eliminando el segundo aporte de este indicador al índice global.",
@@ -1178,6 +1178,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del capital electoral del oficialismo." },
       { fecha: "2026-06-30", cambio: "Serie mensual reconstruida hacia atrás hasta diciembre de 2023, evaluando la misma ponderación al cierre de cada mes." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
+      { fecha: "2026-09-15", cambio: "ADR-0312 (corrige ADR-0121): anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El máximo puntaje de este indicador baja de 100 a 60 (queda 'apenas verde' más allá de +8 pp, no 'pleno')." },
     ],
   },
 

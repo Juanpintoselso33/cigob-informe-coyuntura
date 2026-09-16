@@ -8,10 +8,16 @@ archivos: ['procedencia_anclas.py']
 continua: ['0120']
 cierra: ['0103']
 relacionado: ['0181', '0228']
+corregido_por: ['0312']
 ambito: 'ITCG · ITCP · comentarios de bandas · `procedencia_anclas.py` · trinquete'
 ---
 
 # ADR-0121 — El ITCG y el ITCP declaran el origen de sus bandas; los tres convergen en ~40%
+
+> Actualización: [ADR-0312](0312-votometro-traduce-el-semaforo-de-luis.md) reancla
+> `votometro_ventaja_lla` para traducir el semáforo verde/amarillo/naranja/rojo
+> que pidió Luis; los cortes ±5/±15 pp descritos abajo para ese indicador ya no
+> son los vigentes.
 
 | **Cierra** | El backlog de circularidad de ADR-0103 en los tres índices con `sin_declarar` |
 | **Continúa** | ADR-0120 (lo mismo en el ITCM) |

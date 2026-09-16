@@ -79,11 +79,22 @@ INF = float("inf")
 
 BANDAS_ITCP = {
     "votometro_ventaja_lla": [           # pp gap LLA-PJ, mayor = mejor
-        # CONCEPTUAL (ADR-0121): la ventaja electoral se ancla en el CERO —empate
-        # técnico entre el oficialismo y el PJ, el valor con significado propio— y
-        # los cortes son márgenes simétricos redondos (±5, ±15 pp), no el rango
-        # observado del período.
-        (15.0, INF, 100), (5.0, 15.0, 85), (-5.0, 5.0, 65), (-15.0, -5.0, 40), (-INF, -15.0, 10),
+        # CONCEPTUAL (ADR-0312, corrige ADR-0121): los cortes traducen el
+        # semáforo que pidió Luis (verde/amarillo/naranja/rojo), no ya los
+        # márgenes simétricos ±5/±15 de ADR-0121. El semáforo del motor no se
+        # declara: se DERIVA del puntaje 0-100 vía la tensión equivalente
+        # (parametrica.CORTES_SEMAFORO, cortes de tensión 4/6/8 → puntaje
+        # 60/40/20). Las anclas de abajo se eligieron para que esos cruces de
+        # color caigan exactamente en los pp que pidió Luis:
+        #   ventaja > 8      → puntaje ≥ 60 → verde
+        #   entre  8 y 5     → puntaje [40,60) → amarillo
+        #   entre  5 y 0     → puntaje [20,40) → naranja
+        #   0 o negativa     → puntaje < 20  → rojo (saturado en 0 desde -2)
+        # Las anclas (edge de banda abierta, punto medio de banda cerrada)
+        # quedan en 8, 5 (medio de 2-8), 0 (medio de -2-2) y -2 (edge),
+        # exactamente los pp de corte de Luis — ver test_banda_votometro_semaforo
+        # en tests/test_itcp.py, que prueba los 4 colores contra 8 valores.
+        (8.0, INF, 60), (2.0, 8.0, 40), (-2.0, 2.0, 20), (-INF, -2.0, 0),
     ],
     "cobertura_judicial": [              # % de cargos de juez con juez designado
         # CONCEPTUAL (ADR-0126): los cortes son niveles redondos de cobertura de

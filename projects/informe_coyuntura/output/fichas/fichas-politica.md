@@ -35,20 +35,20 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 72,9** | **VERDE** | Moderadamente aflojado | 18 indicadores: 11 en verde · 5 en amarillo · 1 en rojo |
+| **ITCP: 70,3** | **VERDE** | Moderadamente aflojado | 18 indicadores: 10 en verde · 5 en amarillo · 1 en naranja · 1 en rojo |
 Componentes que puntúan en este corte: 17 de 18 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en seis señales. | 62,8 | VERDE | 21,0 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en seis señales. | 65,1 | VERDE | 21,0 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 81,1 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 15,0 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,1 | AMARILLO | 15,0 % |
-| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 64,8 | VERDE | 13,0 % |
-| Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 71,7 | VERDE | 10,0 % |
-| Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 73,6 | VERDE | 7,0 % |
+| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 60,4 | VERDE | 13,0 % |
+| Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 71,5 | VERDE | 10,0 % |
+| Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 37,2 | NARANJA | 7,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -63,7 +63,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Ratio DNU / leyes | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,36 DNUs publicados por ley publicada | AMARILLO | 4,8 % |
+| Ratio DNU / leyes | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,1 DNUs publicados por ley publicada | AMARILLO | 4,8 % |
 | Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 18,8 % de proyectos | AMARILLO | 6,4 % |
 | Sesiones caídas por falta de quórum | Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum… | 9,1 % de sesiones | VERDE | 3,1 % |
 | Bloqueo legislativo sostenido | De las normas del Ejecutivo que el Congreso desafió en el recinto en los últimos 12 meses (vetos cuya insistencia se… | — % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | — | fuera del índice |
@@ -81,12 +81,12 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,82 % estimado de cargos con juez designado | VERDE | 7,5 % |
 | **DIMENSIÓN: Sector privado** | | | | |
 | Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,8 pp de brecha (obra pública − privada, 12m) | VERDE | 6,5 % |
-| Postura pública de las cámaras empresarias | Qué dicen en público, por escrito y con firma institucional, las dos cámaras empresarias de referencia —la Asociación… | −0,11 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 6,5 % |
+| Postura pública de las cámaras empresarias | Qué dicen en público, por escrito y con firma institucional, las dos cámaras empresarias de referencia —la Asociación… | −0,25 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 6,5 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
-| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24,1 % vs 2023 | AMARILLO | 6,0 % |
+| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24 % vs 2023 | AMARILLO | 6,0 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.760.195 jornadas individuales no trabajadas (12m) | VERDE | 4,0 % |
 | **DIMENSIÓN: Imagen y voto** | | | | |
-| Ventaja LLA−PJ (Votómetro) | La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles. | 4,3 Puntos porcentuales | VERDE | 7,0 % |
+| Ventaja LLA−PJ (Votómetro) | La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles. | 4,3 Puntos porcentuales | NARANJA | 7,0 % |
 
 *Datos al 2026-09-15.*
 
@@ -104,7 +104,7 @@ La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 4,3 Puntos porcentuales** (2026-07) | **VERDE** | Peso efectivo 7 % del ITCP | Cinturón Política |
+| **Hoy: 4,3 Puntos porcentuales** (2026-07) | **NARANJA** | Peso efectivo 7 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -138,10 +138,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (Puntos porcentuales) | Color |
 |---|---|
-| ≥ −2 | VERDE |
-| −10 – −2 | AMARILLO |
-| −13,33 – −10 | NARANJA |
-| ≤ −13,33 | ROJO |
+| ≥ 8 | VERDE |
+| 5 – 8 | AMARILLO |
+| 0 – 5 | NARANJA |
+| ≤ 0 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -153,9 +153,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 4,3 Puntos porcentuales (2026-07).
 
-4,3 Puntos porcentuales cae en el tramo que corresponde a Verde, a 6,3 del corte más cercano.
+4,3 Puntos porcentuales cae en el tramo que corresponde a Naranja, a 0,7 del corte más cercano.
 
-**Color vigente: VERDE**
+**Color vigente: NARANJA**
 
 Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -182,6 +182,8 @@ Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional
 
 **2026-07-07** — Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
 
+**2026-09-15** — ADR-0312 (corrige ADR-0121): anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El máximo puntaje de este indicador baja de 100 a 60 (queda 'apenas verde' más allá de +8 pp, no 'pleno').
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -196,7 +198,7 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,36 DNUs publicados por ley publicada** (2026-09) | **AMARILLO** | Peso efectivo 4,8 % del ITCP | Cinturón Política |
+| **Hoy: 1,1 DNUs publicados por ley publicada** (2026-09) | **AMARILLO** | Peso efectivo 4,8 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -240,13 +242,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 34 DNU y 25 leyes publicados en el Boletín Oficial entre 2025-09-16 y 2026-09-15 → 1.36 DNU por ley
+- 34 DNU y 31 leyes publicados en el Boletín Oficial entre 2025-09-16 y 2026-09-15 → 1.10 DNU por ley
 
 ## Color vigente y por qué
 
-Dato vigente: 1,36 DNUs publicados por ley publicada (2026-09).
+Dato vigente: 1,1 DNUs publicados por ley publicada (2026-09).
 
-1,36 DNUs publicados por ley publicada cae en el tramo que corresponde a Amarillo, a 0,24 del corte más cercano.
+1,097 DNUs publicados por ley publicada cae en el tramo que corresponde a Amarillo, a 0,02 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -393,7 +395,7 @@ Qué dicen en público, por escrito y con firma institucional, las dos cámaras 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,11 saldo de postura (−1 a +1, 12m móviles)** (2026-09) | **AMARILLO** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
+| **Hoy: −0,25 saldo de postura (−1 a +1, 12m móviles)** (2026-05) | **AMARILLO** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -401,9 +403,9 @@ Qué dicen en público, por escrito y con firma institucional, las dos cámaras 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_empresario | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-05 (30 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Asociación Empresaria Argentina (AEA) y Unión Industrial Argentina (UIA) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de ambas entidades |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-15 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-15 |
 
 ## Definición — qué mide y por qué importa
 
@@ -438,13 +440,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses AEA y UIA se pronunciaron 9 veces sobre medidas del Gobierno nacional: 4 de apoyo y 5 de crítica. Saldo −0,111 en una escala de −1 (todo crítica) a +1 (todo apoyo).
+- En los últimos doce meses AEA y UIA se pronunciaron 8 veces sobre medidas del Gobierno nacional: 3 de apoyo y 5 de crítica. Saldo −0,25 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 2 comunicados detectados sin codificar.
 
 ## Color vigente y por qué
 
-Dato vigente: −0,11 saldo de postura (−1 a +1, 12m móviles) (2026-09).
+Dato vigente: −0,25 saldo de postura (−1 a +1, 12m móviles) (2026-05).
 
-−0,111 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,03 del corte más cercano.
+−0,25 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,15 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -491,7 +493,7 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −24,1 % vs 2023** (2026-08) | **AMARILLO** | Peso efectivo 6 % del ITCP | Cinturón Política |
+| **Hoy: −24 % vs 2023** (2026-08) | **AMARILLO** | Peso efectivo 6 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -534,13 +536,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 1977 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-08) vs 2605 en la base 2023 (-24,1%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.
+- 1981 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-08) vs 2605 en la base 2023 (-24,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.
 
 ## Color vigente y por qué
 
-Dato vigente: −24,1 % vs 2023 (2026-08).
+Dato vigente: −24 % vs 2023 (2026-08).
 
-−24,1 % vs 2023 cae en el tramo que corresponde a Amarillo, a 2,0 del corte más cercano.
+−24,0 % vs 2023 cae en el tramo que corresponde a Amarillo, a 2,1 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
