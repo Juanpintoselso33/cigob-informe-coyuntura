@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "estado": "piloto_documental_no_productivo",
+  "preparado_en": "2026-09-10",
+  "snapshot": {
+    "ruta": "web/src/data/informe.json",
+    "generated_at": "2026-09-08T19:22:19.225561-03:00",
+    "sha256": "5e048a7d5eca458ed61d8d4171437f2af7e94cb08f0a8463cdc92319f5638c84"
+  },
+  "alcance": "Tres preguntas; dos objetivos documentados. No es inventario exhaustivo del plan ni un nuevo índice.",
+  "fuentes": [
+    {
+      "id": "bcra_plan_2026",
+      "titulo": "BCRA — Objetivos y Planes 2026",
+      "url": "https://www.bcra.gob.ar/noticias/objetivos-y-planes-2026/",
+      "fecha_documento": "2025-12-29",
+      "localizador": "Primer párrafo de Objetivos y Planes para 2026",
+      "fragmento": "avanzar en el proceso de desinflación",
+      "alcance": "Objetivo institucional del programa; no se extrae una meta numérica mensual ni una fecha garantizada de cumplimiento.",
+      "tipo": "primaria",
+      "fecha_lectura": "2026-09-10"
+    },
+    {
+      "id": "pen_comunicado_122",
+      "titulo": "Presidencia — Comunicado Oficial 122",
+      "url": "https://www.argentina.gob.ar/noticias/comunicado-oficial-numero-122",
+      "fecha_documento": "2025-12-11",
+      "localizador": "Párrafos de remisión al Congreso y exhortación a su tratamiento",
+      "fragmento": "otorgar un tratamiento rápido y responsable a esta iniciativa",
+      "alcance": "Respalda la prioridad de la modernización laboral y su tratamiento; no fija un día límite de sanción ni una tasa de aprobación de toda la agenda.",
+      "tipo": "primaria",
+      "fecha_lectura": "2026-09-10"
+    },
+    {
+      "id": "ley_27802_ficha",
+      "titulo": "InfoLeg — ficha de Ley 27.802",
+      "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27802-423680",
+      "fecha_documento": "2026-03-06",
+      "localizador": "Sanción y publicación",
+      "fragmento": null,
+      "alcance": "Sanción 27-feb-2026; publicación 6-mar. Constata el acto legislativo, no implementación ni efectos.",
+      "tipo": "primaria",
+      "fecha_lectura": "2026-09-10"
+    },
+    {
+      "id": "ley_27802_art58",
+      "titulo": "Ley 27.802 — artículo 58",
+      "url": "https://www.argentina.gob.ar/normativa/nacional/norma-423680/texto",
+      "fecha_documento": "2026-03-06",
+      "localizador": "Título II, artículo 58",
+      "fragmento": "El presente régimen no modifica, sustituye, ni altera el régimen indemnizatorio.",
+      "alcance": "Define un mecanismo para asistir el cumplimiento de obligaciones laborales; no acredita pagos observados.",
+      "tipo": "primaria",
+      "fecha_lectura": "2026-09-10"
+    },
+    {
+      "id": "decreto_408",
+      "titulo": "Decreto 408/2026",
+      "url": "https://www.boletinoficial.gov.ar/detalleAviso/primera/342622/20260601",
+      "fecha_documento": "2026-06-01",
+      "localizador": "Artículos 26 y 27",
+      "fragmento": "al 1° de noviembre de 2026",
+      "alcance": "Art. 27 fija entrada en vigencia del régimen; art. 26 establece 45 días hábiles desde publicación para normas complementarias. No equivale a fecha del primer pago.",
+      "tipo": "primaria",
+      "fecha_lectura": "2026-09-10"
+    },
+    {
+      "id": "me_1276",
+      "titulo": "Ministerio de Economía — Resolución 1276/2026",
+      "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/345836/20260812",
+      "fecha_documento": "2026-08-12",
+      "localizador": "Artículos 1 y siguientes",
+      "fragmento": null,
+      "alcance": "Reglas de inversión de recursos FAL; evidencia normativa complementaria, sin acreditar fondos operando ni pagos.",
+      "tipo": "primaria",
+      "fecha_lectura": "2026-09-10"
+    },
+    {
+      "id": "senado_pe159",
+      "titulo": "Senado — PE 159/2025",
+      "url": "https://www.senado.gob.ar/parlamentario/comisiones/verExp/159.25/PE/PL",
+      "fecha_documento": "2025-12-11",
+      "localizador": "Ingreso en Mesa de Entradas",
+      "fragmento": null,
+      "alcance": "Fecha de ingreso y correspondencia conservadas en el cotejo local del 8-sep; no se reconsultó el expediente en esta etapa.",
+      "evidencia_local": "docs/auditorias/2026-09-08/eficacia-cohorte-senado.md",
+      "tipo": "primaria",
+      "fecha_lectura": "2026-09-08"
+    }
+  ],
+  "objetivos": [
+    {
+      "id": "estabilizacion_2026",
+      "formulacion": "Avanzar en desinflación preservando condiciones de estabilidad y crecimiento.",
+      "autor": "BCRA",
+      "fuentes": [
+        "bcra_plan_2026"
+      ],
+      "tipo": "objetivo_institucional_declarado",
+      "horizonte": "2026",
+      "meta_numerica": null,
+      "plazo_de_cumplimiento": null,
+      "motivo_campos_nulos": "El pasaje documenta dirección y horizonte de actuación, no una meta mensual cuantificada del IPC."
+    },
+    {
+      "id": "modernizacion_laboral",
+      "formulacion": "Impulsar la modernización del marco laboral y el empleo registrado.",
+      "autor": "Poder Ejecutivo Nacional",
+      "fuentes": [
+        "pen_comunicado_122"
+      ],
+      "tipo": "objetivo_gubernamental_declarado",
+      "horizonte": null,
+      "meta_numerica": null,
+      "plazo_de_cumplimiento": null,
+      "motivo_campos_nulos": "La exhortación a tratamiento rápido no fija un plazo calendario ni un número de empleos."
+    }
+  ],
+  "hitos": [
+    {
+      "id": "laboral_sancion",
+      "objetivo": "modernizacion_laboral",
+      "tipo": "acto_legislativo",
+      "estado": "acto_documentado",
+      "fecha_hecho": "2026-02-27",
+      "fuentes": [
+        "ley_27802_ficha"
+      ],
+      "limite": "No califica contenido, implementación o resultados de la ley."
+    },
+    {
+      "id": "fal_reglamentacion",
+      "objetivo": "modernizacion_laboral",
+      "tipo": "acto_normativo",
+      "estado": "acto_documentado",
+      "fecha_hecho": "2026-06-01",
+      "fuentes": [
+        "decreto_408"
+      ],
+      "limite": "Lectura del acto original; no certificación exhaustiva del estado judicial al 10-sep."
+    },
+    {
+      "id": "fal_reglas_inversion",
+      "objetivo": "modernizacion_laboral",
+      "tipo": "acto_normativo_complementario",
+      "estado": "acto_documentado",
+      "fecha_hecho": "2026-08-12",
+      "fuentes": [
+        "me_1276"
+      ],
+      "limite": "No acredita adopción ni modifica por sí solo la etapa calculada por el monitor."
+    },
+    {
+      "id": "fal_inicio_regimen",
+      "objetivo": "modernizacion_laboral",
+      "tipo": "fecha_normativa",
+      "estado": "fecha_documentada_no_hito_observado",
+      "fecha_hecho": null,
+      "fecha_prevista_en_fuente": "2026-11-01",
+      "fuentes": [
+        "decreto_408"
+      ],
+      "limite": "Fecha del art. 27 leído; no implica primer pago ni revisión exhaustiva de normas y litigios posteriores."
+    },
+    {
+      "id": "fal_complementarias",
+      "objetivo": "modernizacion_laboral",
+      "tipo": "plazo_normativo",
+      "estado": "cumplimiento_no_evaluado",
+      "fecha_hecho": null,
+      "plazo_literal": {
+        "cantidad": 45,
+        "unidad": "dias_habiles",
+        "inicio": "2026-06-01"
+      },
+      "fecha_vencimiento_calculada": null,
+      "fuentes": [
+        "decreto_408"
+      ],
+      "limite": "No se calcula vencimiento sin calendario aplicable ni se certifica cumplimiento con una única resolución."
+    },
+    {
+      "id": "fal_adopcion_efectiva",
+      "objetivo": "modernizacion_laboral",
+      "tipo": "implementacion",
+      "estado": "no_verificado_en_piloto",
+      "fecha_hecho": null,
+      "fuentes": [],
+      "limite": "Requiere registros e implementación observada; no convertir ausencia de comprobación en cero operativo."
+    }
+  ],
+  "preguntas": [
+    {
+      "id": "estabilizacion",
+      "pregunta": "¿La trayectoria de precios y las condiciones macro sostienen la estabilización?",
+      "objetivo": "estabilizacion_2026",
+      "cinturon": "macro",
+      "dimension": "estabilidad_monetaria",
+      "hipotesis_monitor": "IPC informa una condición del objetivo; debe leerse con expectativas, actividad y financiamiento.",
+      "observaciones": [
+        {
+          "cinturon": "macro",
+          "indicador": "ipc_total",
+          "valor": 2.11,
+          "unidad": "% mensual",
+          "fecha_dato": "2026-07-01",
+          "rol": "contexto_sin_reponderacion"
+        }
+      ],
+      "hitos": [],
+      "evaluacion_cumplimiento": "no_calculada",
+      "limite": "Una observación mensual no prueba tendencia sostenida ni atribución causal."
+    },
+    {
+      "id": "validacion_legislativa",
+      "pregunta": "¿La prioridad laboral obtuvo validación legislativa?",
+      "objetivo": "modernizacion_laboral",
+      "cinturon": "politica",
+      "dimension": "poder_legislativo",
+      "hipotesis_monitor": "Una prioridad documentada permite cotejar un hito nominal junto al agregado de capacidad.",
+      "observaciones": [
+        {
+          "cinturon": "politica",
+          "indicador": "eficacia_legislativa",
+          "valor": 14.3,
+          "unidad": "% de proyectos",
+          "fecha_dato": "2026-09-08",
+          "rol": "contexto_sin_reponderacion"
+        }
+      ],
+      "hitos": [
+        "laboral_sancion"
+      ],
+      "cohorte_al_corte": {
+        "desde": "2024-09-08",
+        "hasta": "2025-09-08",
+        "ingreso_proyecto": "2025-12-11",
+        "incluido": false,
+        "evidencia": "docs/auditorias/2026-09-08/eficacia-cohorte-senado.md"
+      },
+      "evaluacion_cumplimiento": "sancion_documentada_para_esta_iniciativa",
+      "limite": "El 14,3% describe otra cohorte; no es el porcentaje de esta reforma ni de toda la agenda actual."
+    },
+    {
+      "id": "implementacion_fal",
+      "pregunta": "¿El instrumento está pasando de norma a implementación?",
+      "objetivo": "modernizacion_laboral",
+      "cinturon": "gestion",
+      "dimension": "reforma_laboral",
+      "hipotesis_monitor": "Se distinguen construcción jurídica y ejecución efectiva de un instrumento de la misma reforma.",
+      "observaciones": [
+        {
+          "cinturon": "gestion",
+          "indicador": "fal_modernizacion_laboral",
+          "valor": 50.0,
+          "unidad": "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
+          "fecha_dato": "2026-09-08",
+          "rol": "contexto_sin_reponderacion"
+        }
+      ],
+      "hitos": [
+        "laboral_sancion",
+        "fal_reglamentacion",
+        "fal_reglas_inversion",
+        "fal_inicio_regimen",
+        "fal_complementarias",
+        "fal_adopcion_efectiva"
+      ],
+      "evaluacion_cumplimiento": "implementacion_no_verificada",
+      "revision_judicial_snapshot": "2026-08-21",
+      "limite": "La lectura normativa del piloto no actualiza la revisión judicial ni confirma pagos."
+    }
+  ],
+  "reglas": {
+    "puntaje_nuevo": false,
+    "modifica_indices": false,
+    "hitos_compartidos": "Referenciar el mismo identificador; no sumar apariciones ni generar porcentaje agregado.",
+    "dato_faltante": "No equivale a incumplimiento.",
+    "afirmaciones_gubernamentales": "Documentan intención, no validan efectos causales.",
+    "actualidad": "Lectura de fuentes de compromisos al 10-sep; observaciones del snapshot del 8-sep; estado judicial no actualizado."
+  }
+}

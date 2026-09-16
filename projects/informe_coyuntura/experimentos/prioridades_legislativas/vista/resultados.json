@@ -1,0 +1,946 @@
+{
+  "fechas": [
+    "2025-12-10",
+    "2026-02-26",
+    "2026-02-27",
+    "2026-09-08",
+    "2026-09-10"
+  ],
+  "casos": [
+    {
+      "id": "real",
+      "nombre": "Reforma documentada",
+      "nota": "Una iniciativa seleccionada para probar el vínculo. Cartera incompleta: no representa toda la agenda.",
+      "simulado": false,
+      "cortes": [
+        {
+          "corte": "2025-12-10",
+          "iniciativas": 0,
+          "denominador": 0,
+          "peso_sancionado": 0,
+          "peso_sin_verificar": 0,
+          "porcentaje": null,
+          "minimo": null,
+          "maximo": null,
+          "cobertura": null,
+          "estado": "sin_universo",
+          "filas": []
+        },
+        {
+          "corte": "2026-02-26",
+          "iniciativas": 1,
+          "denominador": 1,
+          "peso_sancionado": 0,
+          "peso_sin_verificar": 0,
+          "porcentaje": 0.0,
+          "minimo": 0.0,
+          "maximo": 0.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "PE-159-2025",
+              "nombre": "Modernización laboral",
+              "peso": 1,
+              "estado": "presentado",
+              "fecha_estado": "2025-12-11",
+              "fuente": "https://www.argentina.gob.ar/noticias/comunicado-oficial-numero-122",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-02-27",
+          "iniciativas": 1,
+          "denominador": 1,
+          "peso_sancionado": 1,
+          "peso_sin_verificar": 0,
+          "porcentaje": 100.0,
+          "minimo": 100.0,
+          "maximo": 100.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "PE-159-2025",
+              "nombre": "Modernización laboral",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-27",
+              "fuente": "https://www.argentina.gob.ar/normativa/nacional/ley-27802-423680",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-09-08",
+          "iniciativas": 1,
+          "denominador": 1,
+          "peso_sancionado": 1,
+          "peso_sin_verificar": 0,
+          "porcentaje": 100.0,
+          "minimo": 100.0,
+          "maximo": 100.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "PE-159-2025",
+              "nombre": "Modernización laboral",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-27",
+              "fuente": "https://www.argentina.gob.ar/normativa/nacional/ley-27802-423680",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-09-10",
+          "iniciativas": 1,
+          "denominador": 1,
+          "peso_sancionado": 1,
+          "peso_sin_verificar": 0,
+          "porcentaje": 100.0,
+          "minimo": 100.0,
+          "maximo": 100.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "PE-159-2025",
+              "nombre": "Modernización laboral",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-27",
+              "fuente": "https://www.argentina.gob.ar/normativa/nacional/ley-27802-423680",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "base",
+      "nombre": "Simulación: cartera completa",
+      "nota": "Cuatro iniciativas ficticias; dos sancionadas, una con media sanción y una retirada. Igual peso.",
+      "simulado": true,
+      "cortes": [
+        {
+          "corte": "2025-12-10",
+          "iniciativas": 0,
+          "denominador": 0,
+          "peso_sancionado": 0,
+          "peso_sin_verificar": 0,
+          "porcentaje": null,
+          "minimo": null,
+          "maximo": null,
+          "cobertura": null,
+          "estado": "sin_universo",
+          "filas": []
+        },
+        {
+          "corte": "2026-02-26",
+          "iniciativas": 4,
+          "denominador": 4,
+          "peso_sancionado": 2,
+          "peso_sin_verificar": 0,
+          "porcentaje": 50.0,
+          "minimo": 50.0,
+          "maximo": 50.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "media_sancion",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "retirado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-02-27",
+          "iniciativas": 4,
+          "denominador": 4,
+          "peso_sancionado": 2,
+          "peso_sin_verificar": 0,
+          "porcentaje": 50.0,
+          "minimo": 50.0,
+          "maximo": 50.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "media_sancion",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "retirado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-09-08",
+          "iniciativas": 4,
+          "denominador": 4,
+          "peso_sancionado": 2,
+          "peso_sin_verificar": 0,
+          "porcentaje": 50.0,
+          "minimo": 50.0,
+          "maximo": 50.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "media_sancion",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "retirado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-09-10",
+          "iniciativas": 4,
+          "denominador": 4,
+          "peso_sancionado": 2,
+          "peso_sin_verificar": 2,
+          "porcentaje": null,
+          "minimo": 50.0,
+          "maximo": 100.0,
+          "cobertura": 50.0,
+          "estado": "parcial",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "sin_verificar",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "sin_verificar",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faltantes",
+      "nombre": "Simulación: falta una verificación",
+      "nota": "Falta el documento de sanción de una iniciativa y su último estado no está actualizado. Permanece en el denominador.",
+      "simulado": true,
+      "cortes": [
+        {
+          "corte": "2025-12-10",
+          "iniciativas": 0,
+          "denominador": 0,
+          "peso_sancionado": 0,
+          "peso_sin_verificar": 0,
+          "porcentaje": null,
+          "minimo": null,
+          "maximo": null,
+          "cobertura": null,
+          "estado": "sin_universo",
+          "filas": []
+        },
+        {
+          "corte": "2026-02-26",
+          "iniciativas": 4,
+          "denominador": 4,
+          "peso_sancionado": 1,
+          "peso_sin_verificar": 0,
+          "porcentaje": 25.0,
+          "minimo": 25.0,
+          "maximo": 25.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "presentado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-08-01"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "media_sancion",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "retirado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-02-27",
+          "iniciativas": 4,
+          "denominador": 4,
+          "peso_sancionado": 1,
+          "peso_sin_verificar": 0,
+          "porcentaje": 25.0,
+          "minimo": 25.0,
+          "maximo": 25.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "presentado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-08-01"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "media_sancion",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "retirado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-09-08",
+          "iniciativas": 4,
+          "denominador": 4,
+          "peso_sancionado": 1,
+          "peso_sin_verificar": 1,
+          "porcentaje": null,
+          "minimo": 25.0,
+          "maximo": 50.0,
+          "cobertura": 75.0,
+          "estado": "parcial",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "sin_verificar",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-08-01"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "media_sancion",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "retirado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-09-10",
+          "iniciativas": 4,
+          "denominador": 4,
+          "peso_sancionado": 1,
+          "peso_sin_verificar": 3,
+          "porcentaje": null,
+          "minimo": 25.0,
+          "maximo": 100.0,
+          "cobertura": 25.0,
+          "estado": "parcial",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "sin_verificar",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-08-01"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "sin_verificar",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "sin_verificar",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seleccion",
+      "nombre": "Simulación: seleccionar sólo éxitos",
+      "nota": "Se omiten las dos iniciativas sin sanción. El porcentaje sube por selección, no por un nuevo logro.",
+      "simulado": true,
+      "cortes": [
+        {
+          "corte": "2025-12-10",
+          "iniciativas": 0,
+          "denominador": 0,
+          "peso_sancionado": 0,
+          "peso_sin_verificar": 0,
+          "porcentaje": null,
+          "minimo": null,
+          "maximo": null,
+          "cobertura": null,
+          "estado": "sin_universo",
+          "filas": []
+        },
+        {
+          "corte": "2026-02-26",
+          "iniciativas": 2,
+          "denominador": 2,
+          "peso_sancionado": 2,
+          "peso_sin_verificar": 0,
+          "porcentaje": 100.0,
+          "minimo": 100.0,
+          "maximo": 100.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-02-27",
+          "iniciativas": 2,
+          "denominador": 2,
+          "peso_sancionado": 2,
+          "peso_sin_verificar": 0,
+          "porcentaje": 100.0,
+          "minimo": 100.0,
+          "maximo": 100.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-09-08",
+          "iniciativas": 2,
+          "denominador": 2,
+          "peso_sancionado": 2,
+          "peso_sin_verificar": 0,
+          "porcentaje": 100.0,
+          "minimo": 100.0,
+          "maximo": 100.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-09-10",
+          "iniciativas": 2,
+          "denominador": 2,
+          "peso_sancionado": 2,
+          "peso_sin_verificar": 0,
+          "porcentaje": 100.0,
+          "minimo": 100.0,
+          "maximo": 100.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pesos",
+      "nombre": "Simulación: cambiar un peso",
+      "nota": "Una sancionada pesa tres y las otras uno. Es sensibilidad ilustrativa, no una ponderación adoptada.",
+      "simulado": true,
+      "cortes": [
+        {
+          "corte": "2025-12-10",
+          "iniciativas": 0,
+          "denominador": 0,
+          "peso_sancionado": 0,
+          "peso_sin_verificar": 0,
+          "porcentaje": null,
+          "minimo": null,
+          "maximo": null,
+          "cobertura": null,
+          "estado": "sin_universo",
+          "filas": []
+        },
+        {
+          "corte": "2026-02-26",
+          "iniciativas": 4,
+          "denominador": 6,
+          "peso_sancionado": 4,
+          "peso_sin_verificar": 0,
+          "porcentaje": 66.67,
+          "minimo": 66.67,
+          "maximo": 66.67,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 3,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "media_sancion",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "retirado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-02-27",
+          "iniciativas": 4,
+          "denominador": 6,
+          "peso_sancionado": 4,
+          "peso_sin_verificar": 0,
+          "porcentaje": 66.67,
+          "minimo": 66.67,
+          "maximo": 66.67,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 3,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "media_sancion",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "retirado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-09-08",
+          "iniciativas": 4,
+          "denominador": 6,
+          "peso_sancionado": 4,
+          "peso_sin_verificar": 0,
+          "porcentaje": 66.67,
+          "minimo": 66.67,
+          "maximo": 66.67,
+          "cobertura": 100.0,
+          "estado": "calculable",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 3,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "media_sancion",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "retirado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "corte": "2026-09-10",
+          "iniciativas": 4,
+          "denominador": 6,
+          "peso_sancionado": 4,
+          "peso_sin_verificar": 2,
+          "porcentaje": null,
+          "minimo": 66.67,
+          "maximo": 100.0,
+          "cobertura": 66.67,
+          "estado": "parcial",
+          "filas": [
+            {
+              "id": "sim-0",
+              "nombre": "Iniciativa ficticia 1",
+              "peso": 3,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-1",
+              "nombre": "Iniciativa ficticia 2",
+              "peso": 1,
+              "estado": "sancionado",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-2",
+              "nombre": "Iniciativa ficticia 3",
+              "peso": 1,
+              "estado": "sin_verificar",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            },
+            {
+              "id": "sim-3",
+              "nombre": "Iniciativa ficticia 4",
+              "peso": 1,
+              "estado": "sin_verificar",
+              "fecha_estado": "2026-02-01",
+              "fuente": "Escenario simulado",
+              "verificado_hasta": "2026-09-08"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "snapshot": {
+    "ruta": "web/src/data/informe.json",
+    "generated_at": "2026-09-08T19:22:19.225561-03:00",
+    "sha256": "5e048a7d5eca458ed61d8d4171437f2af7e94cb08f0a8463cdc92319f5638c84"
+  },
+  "baseline": {
+    "corte": "2026-09-08",
+    "porcentaje": 14.3,
+    "descripcion": "2 de 14 proyectos ingresados entre 8-sep-2024 y 8-sep-2025. La reforma del piloto queda fuera."
+  }
+}
