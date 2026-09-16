@@ -799,7 +799,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 9 empresas · etapa promedio 2,22/4 · cerradas: Transener · consulta de novedades incompleta
+- 9 empresas · etapa promedio 2,22/4 · cerradas: Transener
 
 ## Color vigente y por qué
 
