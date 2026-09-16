@@ -94,11 +94,20 @@ def test_peso_de_la_dimension_actividad_suma_uno():
     assert abs(sum(ind.values()) - 1.0) < 1e-9
 
 
-def test_actividad_tributaria_pesa_020_de_la_dimension():
-    """ADR-0329: entra con 0,20, y los tres INDEC se recortan proporcionalmente
-    (×0,80) preservando su proporción interna 80/20 EMAE/IPI (ADR-0124)."""
+def test_actividad_tributaria_pesa_012_de_la_dimension():
+    """ADR-0329, revisado 2026-09-16 (revisión adversarial): entraba con 0,20
+    y se baja a 0,12 — la redundancia medida contra sus tres compañeros
+    (r=0,840 emae_ia, 0,828 ipi_manufacturero, 0,725 emae_difusion, los tres
+    sobre el umbral 0,7) supera la que ya tiene `ipi_manufacturero` con
+    `emae_ia` (0,765), y la correlación adelantada no muestra que anticipe el
+    ciclo (máxima en t, no en t+1/t+2, contra emae_ia y emae_difusion). Los
+    tres INDEC se recortan proporcionalmente (×0,88) preservando su
+    proporción interna 80/20 EMAE/IPI (ADR-0124)."""
     ind = itcm.DIMENSIONES_ITCM["actividad"]["indicadores"]
-    assert ind["actividad_tributaria"] == 0.20
-    assert ind["emae_ia"] == 0.48
-    assert ind["emae_difusion"] == 0.16
-    assert ind["ipi_manufacturero"] == 0.16
+    assert ind["actividad_tributaria"] == 0.12
+    assert ind["emae_ia"] == 0.528
+    assert ind["emae_difusion"] == 0.176
+    assert ind["ipi_manufacturero"] == 0.176
+    # Entra por debajo de ipi_manufacturero, no por encima: es MÁS redundante
+    # con sus compañeros que el propio IPI, y no gana la premium de "adelanta".
+    assert ind["actividad_tributaria"] < ind["ipi_manufacturero"]

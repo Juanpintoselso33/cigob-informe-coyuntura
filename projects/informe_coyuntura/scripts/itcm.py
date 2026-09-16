@@ -234,9 +234,11 @@ BANDAS_ITCM = {
         # a la vez (60% de los meses cae en el peor o el mejor tramo, contra el
         # reparto que exige ADR-0042). Estos cortes, sobre pasos redondos de 5
         # puntos y con el cero como frontera conceptual (igual criterio que
-        # emae_ia/ipi_manufacturero, ADR-0120), reparten 14/14/20/18/14/19% de
-        # los 105 meses entre los seis tramos — ninguno concentra más de la
-        # quinta parte de la historia.
+        # emae_ia/ipi_manufacturero, ADR-0120), reparten 19,0/14,3/18,1/20,0/
+        # 14,3/14,3% de los 105 meses entre los seis tramos, EN EL MISMO ORDEN
+        # que la tabla de arriba (de mejor a peor: >10, 5-10, 0-5, -5-0,
+        # -10 a -5, ≤-10) — ninguno concentra más de la quinta parte de la
+        # historia.
         (10.0, INF, 100), (5.0, 10.0, 80), (0.0, 5.0, 60),
         (-5.0, 0.0, 40), (-10.0, -5.0, 20), (-INF, -10.0, 5),
     ],
@@ -403,16 +405,33 @@ DIMENSIONES_ITCM = {
         # IPI no se toca: sigue siendo el único respaldo de fuente distinta.
         #
         # ADR-0329 (2026-09-16): entra `actividad_tributaria` (IVA-DGI + cheque,
-        # ADR-0318/0319 corregidos de encuadre fiscal a encuadre de actividad)
-        # con 0,20. A diferencia de emae_difusion, esto SÍ es una fuente
-        # distinta (Hacienda/ARCA, no INDEC) — no se le resta a un único
-        # indicador, se recortan los tres existentes PROPORCIONALMENTE
-        # (×0,80, mismo criterio que ADR-0071/0074 en `financiamiento`):
-        # 0,60→0,48, 0,20→0,16, 0,20→0,16. Es también el único de los cuatro
-        # con menos de un mes de rezago de publicación (medido: 0 vs. 1 del IPI
-        # y 2 del EMAE/difusión).
-        "indicadores": {"emae_ia": 0.48, "emae_difusion": 0.16,
-                        "ipi_manufacturero": 0.16, "actividad_tributaria": 0.20},
+        # ADR-0318/0319 corregidos de encuadre fiscal a encuadre de actividad).
+        # A diferencia de emae_difusion, esto SÍ es una fuente distinta
+        # (Hacienda/ARCA, no INDEC) — no se le resta a un único indicador, se
+        # recortan los tres existentes PROPORCIONALMENTE, mismo criterio que
+        # ADR-0071/0074 en `financiamiento`.
+        #
+        # El peso de entrada se revisó a la baja (revisión adversarial,
+        # 2026-09-16) de 0,20 a 0,12: la redundancia interna medida da r=0,840
+        # contra emae_ia, 0,828 contra ipi_manufacturero y 0,725 contra
+        # emae_difusion — los tres por encima del umbral 0,7 del propio repo,
+        # y más alto que lo que el IPI (el otro "respaldo") ya correlaciona con
+        # el EMAE (r=0,765). El argumento de origen —que su freshness de
+        # publicación (0 meses de atraso contra 1 del IPI y 2 del EMAE)
+        # equivale a anticipar el ciclo— se puso a prueba con la correlación
+        # adelantada: actividad_tributaria(t) contra emae_ia(t+1)/(t+2) BAJA
+        # respecto de (t) (0,452→0,321→0,332, n=60) y lo mismo contra
+        # emae_difusion (0,726→0,617→0,626, n=31) — el máximo está en el
+        # presente, no adelante, así que no anticipa: es la MISMA lectura de
+        # actividad, disponible antes. Sólo contra ipi_manufacturero el
+        # adelanto de 1 mes no baja (0,825→0,848→0,755, n=32), pero la
+        # diferencia es chica y compatible con ruido de muestra. Por eso se le
+        # da menos peso que al IPI (0,12 contra 0,176 tras el recorte
+        # proporcional), no más: entra por frescura de publicación, no por
+        # señal nueva. ×0,88, preservando la proporción interna 80/20
+        # EMAE/IPI: 0,60→0,528, 0,20→0,176, 0,20→0,176.
+        "indicadores": {"emae_ia": 0.528, "emae_difusion": 0.176,
+                        "ipi_manufacturero": 0.176, "actividad_tributaria": 0.12},
     },
     "competitividad_externa": {
         "nombre": "Competitividad externa",

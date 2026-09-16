@@ -179,8 +179,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 48% |
-| Peso efectivo en el índice | **5.3%** |
+| Peso dentro de la dimensión | 53% |
+| Peso efectivo en el índice | **5.8%** |
 | Procedencia del ancla | `conceptual` — bandas de crecimiento en torno al cero; el corte de crecimiento nulo cae en p26 de la historia 2021-2023 (ADR-0120) |
 
 **Bandas**: > 5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤ -5 → 5
@@ -193,8 +193,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 16% |
-| Peso efectivo en el índice | **1.8%** |
+| Peso dentro de la dimensión | 18% |
+| Peso efectivo en el índice | **1.9%** |
 | Procedencia del ancla | `conceptual` — cortes por CANTIDAD DE SECTORES (14-15 generalizado · 11-13 mayoría amplia · 8-10 ajustada · 5-7 minoría · 0-4 contracción), puestos en el hueco entre valores alcanzables; explícitamente NO se ancló en el 50% de manual porque la mediana histórica argentina es 73,3% (ADR-0124) |
 
 **Bandas**: > 90 → 100 · 70–90 → 80 · 50–70 → 60 · 30–50 → 35 · ≤ 30 → 10
@@ -207,8 +207,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 16% |
-| Peso efectivo en el índice | **1.8%** |
+| Peso dentro de la dimensión | 18% |
+| Peso efectivo en el índice | **1.9%** |
 | Procedencia del ancla | `conceptual` — hereda las bandas del EMAE a propósito para dejar ver la brecha industria-actividad, con cita a ADR-0045 (ADR-0076/0079) |
 
 **Bandas**: > 5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤ -5 → 5
@@ -221,9 +221,9 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **2.2%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Peso dentro de la dimensión | 12% |
+| Peso efectivo en el índice | **1.3%** |
+| Procedencia del ancla | `historia_larga` — cortes redondos de 5 puntos en torno al cero, calibrados contra los 105 meses de la serie propia (dic-2017/ago-2026, la ventana que permite el IPC como deflactor) para que ninguno de los seis tramos concentre más de la quinta parte de la historia (ADR-0329) |
 
 **Bandas**: > 10 → 100 · 5–10 → 80 · 0–5 → 60 · -5–0 → 40 · -10–-5 → 20 · ≤ -10 → 5
 

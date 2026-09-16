@@ -35,7 +35,7 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 62,8** | **VERDE** | Moderadamente aflojado | 16 indicadores: 8 en verde · 4 en amarillo · 4 en naranja |
+| **ITCM: 63,1** | **VERDE** | Moderadamente aflojado | 16 indicadores: 8 en verde · 4 en amarillo · 4 en naranja |
 Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 74,6 | VERDE | 24,0 % |
 | Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 61,2 | VERDE | 16,0 % |
 | Inversión | Si alguien está apostando al futuro: la inversión física —construcción y bienes de capital—, que desde agosto de 2026 es el único componente que puntúa. | 36,4 | NARANJA | 12,0 % |
-| Actividad económica | Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. | 55,9 | AMARILLO | 11,0 % |
+| Actividad económica | Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. | 58,7 | AMARILLO | 11,0 % |
 | Competitividad externa | Si el tipo de cambio real alcanza para competir: el ITCRM oficial del BCRA contra su propia historia. | 48,8 | AMARILLO | 11,0 % |
 
 ```{=openxml}
@@ -77,10 +77,10 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Inversión** | | | | |
 | Inversión física | Índice Anticipador de Inversión. | −5,66 % i.a. ponderado | NARANJA | 12,0 % |
 | **DIMENSIÓN: Actividad económica** | | | | |
-| Actividad económica (EMAE i.a.) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | 2,69 % i.a. | VERDE | 5,3 % |
-| Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el INDEC divide la actividad económica, cuántos crecen respecto de un año atrás. | 80 % de sectores en crecimiento i.a. | VERDE | 1,8 % |
-| Producción industrial (IPI i.a.) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,82 % i.a. (promedio 3 meses) | NARANJA | 1,8 % |
-| Actividad tributaria (IVA-DGI + cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el IVA-DGI y el impuesto a los créditos y débitos… | −5,41 % i.a. real (compuesto IVA-DGI/cheque) | NARANJA | 2,2 % |
+| Actividad económica (EMAE i.a.) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | 2,69 % i.a. | VERDE | 5,8 % |
+| Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el INDEC divide la actividad económica, cuántos crecen respecto de un año atrás. | 80 % de sectores en crecimiento i.a. | VERDE | 1,9 % |
+| Producción industrial (IPI i.a.) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,82 % i.a. (promedio 3 meses) | NARANJA | 1,9 % |
+| Actividad tributaria (IVA-DGI + cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el IVA-DGI y el impuesto a los créditos y débitos… | −5,41 % i.a. real (compuesto IVA-DGI/cheque) | NARANJA | 1,3 % |
 | **DIMENSIÓN: Competitividad externa** | | | | |
 | Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). | 85,53 Índice (base dic-2015=100) | AMARILLO | 11,0 % |
 
@@ -373,7 +373,7 @@ El pulso mensual de la actividad económica: cuánto creció o cayó respecto de
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 2,69 % i.a.** (2026-06) | **VERDE** | Peso efectivo 5,3 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 2,69 % i.a.** (2026-06) | **VERDE** | Peso efectivo 5,8 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -424,7 +424,7 @@ Dato vigente: 2,69 % i.a. (2026-06).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCM: 5,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 5,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** La misma serie se extrae también como insumo de contexto en el cinturón de impacto social.
 
@@ -463,7 +463,7 @@ De los quince sectores en que el INDEC divide la actividad económica, cuántos 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 80 % de sectores en crecimiento i.a.** (2026-06) | **VERDE** | Peso efectivo 1,8 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 80 % de sectores en crecimiento i.a.** (2026-06) | **VERDE** | Peso efectivo 1,9 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -516,7 +516,7 @@ Dato vigente: 80 % de sectores en crecimiento i.a. (2026-06).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCM: 1,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -549,7 +549,7 @@ Cuánto produce la industria manufacturera respecto de un año atrás, promediad
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −2,82 % i.a. (promedio 3 meses)** (2026-07) | **NARANJA** | Peso efectivo 1,8 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −2,82 % i.a. (promedio 3 meses)** (2026-07) | **NARANJA** | Peso efectivo 1,9 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -601,7 +601,7 @@ Dato vigente: −2,82 % i.a. (promedio 3 meses) (2026-07).
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCM: 1,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** Usa las mismas bandas que el EMAE, deliberadamente y con una consecuencia que conviene declarar: sobre la historia disponible, un mes mediano del índice industrial puntúa 39 y uno del estimador de actividad agregada puntúa 71. La brecha no es un defecto de calibración sino desempeño real —la industria argentina creció menos que el conjunto de la economía durante el período—, y ensanchar las bandas para cerrarla borraría esa señal. El arrastre que produce se compensa limitando su peso dentro de la dimensión, no retocando las anclas.
 
@@ -642,7 +642,7 @@ Cuánto crecieron, en términos reales y respecto de un año atrás, el IVA-DGI 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −5,41 % i.a. real (compuesto IVA-DGI/cheque)** (2026-08) | **NARANJA** | Peso efectivo 2,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −5,41 % i.a. real (compuesto IVA-DGI/cheque)** (2026-08) | **NARANJA** | Peso efectivo 1,3 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -650,7 +650,7 @@ Cuánto crecieron, en términos reales y respecto de un año atrás, el IVA-DGI 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | actividad_tributaria | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Actividad económica | **UNIDAD DE MEDIDA** | % i.a. real (compuesto IVA-DGI/cheque) |
-| **SERIE DISPONIBLE** | 2021-01 → 2026-08 (68 puntos) | **REZAGO DE PUBLICACIÓN** | Es la lectura más fresca de la dimensión de actividad: la Secretaría de Hacienda/ARCA informa IVA-DGI y créditos/débitos bancarios de un mes dentro del mes siguiente, antes de que el INDEC cierre el EMAE del mismo período. Medido el 16-sep-2026 contra el último mes calendario cerrado (agosto): este indicador publica ese mismo mes (0 de atraso), el IPI manufacturero un mes de atraso, y el EMAE y su difusión sectorial dos. |
+| **SERIE DISPONIBLE** | 2021-01 → 2026-08 (68 puntos) | **REZAGO DE PUBLICACIÓN** | Es la lectura más fresca de la dimensión de actividad: la Secretaría de Hacienda/ARCA informa IVA-DGI y créditos/débitos bancarios de un mes dentro del mes siguiente, antes de que el INDEC cierre el EMAE del mismo período. Medido el 16-sep-2026 contra el último mes calendario cerrado (agosto): este indicador publica ese mismo mes (0 de atraso), el IPI manufacturero un mes de atraso, y el EMAE y su difusión sectorial dos. Frescura de PUBLICACIÓN, no anticipación de ciclo: la correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y baja al adelantarla (ver `dobleUso`), así que lo que entrega antes es la MISMA lectura de actividad, no una señal nueva. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda / ARCA (dato primario), deflactor INDEC | **OPERACIÓN ESTADÍSTICA** | IVA-DGI y créditos y débitos bancarios (impuesto al cheque), dos de los componentes del agregado de recaudación DGI, en pesos corrientes llevados a pesos constantes con el IPC nacional |
 | **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar, misma fuente que alimenta la descomposición del detalle de `recaudacion`. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-16 |
 
@@ -665,7 +665,7 @@ La lectura más fresca de la dimensión: Hacienda informa estos dos tributos ant
 ## Método de cómputo
 
 - Cada serie se lleva a variación interanual real: nominal contra el mismo mes del año anterior, deflactada por el IPC del mismo período (mismo método que el resto del cinturón).
-- Las dos variaciones se promedian con ponderación 0,6 para IVA-DGI y 0,4 para el cheque. No se cruzan en una matriz (como sí hace `desequilibrio_monetario`): esa construcción existe cuando dos componentes miden fenómenos DISTINTOS que se refuerzan o se contrarrestan de forma declarada; acá las dos series miden el mismo constructo —actividad— con ruido propio cada una, la misma situación que ya conviven `emae_ia` e `ipi_manufacturero` en esta dimensión, sin matriz.
+- Las dos variaciones se promedian con ponderación 0,6 para IVA-DGI y 0,4 para el cheque. No se cruzan en una matriz (como sí hace `desequilibrio_monetario`): esa construcción existe cuando dos componentes miden fenómenos DISTINTOS que se refuerzan o se contrarrestan de forma declarada; acá las dos series miden el mismo constructo —actividad— con ruido propio cada una, la misma situación que ya conviven `emae_ia` e `ipi_manufacturero` en esta dimensión, sin matriz. Medido, no supuesto: r(IVA-DGI, cheque) = 0,617 (105 meses, dic-2017/ago-2026; 0,645 desde dic-2023) — ni el 'mismo dato con otro nombre' (r>0,9) ni fenómenos independientes; en 41 de los 105 meses el compuesto puntúa distinto que el IVA-DGI solo, incluido el mes vigente (IVA-DGI −3,0%, cheque −9,1%, compuesto en banda 20 contra la banda 40 que daría el IVA solo). Esa divergencia se atiende bajando el peso del indicador dentro de la dimensión, no cruzándolo en matriz (ADR-0329).
 - El IVA pesa más porque es un impuesto al consumo interno, más cercano a 'actividad'; el cheque grava toda transacción bancaria y además de actividad capta bancarización —más o menos pagos por transferencia—, un fenómeno que no se puede restar de la serie.
 
 ## Semáforo — valores que determinan el color
@@ -695,9 +695,9 @@ Dato vigente: −5,41 % i.a. real (compuesto IVA-DGI/cheque) (2026-08).
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCM: 2,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 1,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa card ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con los pesos vigentes, este indicador aporta 2,2% al ITCM (0,11×0,20) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el ITCM tiene alrededor de 3% de su peso total expuesto al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador (ADR-0329).
+- **Participación en otros indicadores.** Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa card ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con el peso vigente (0,12, bajado de 0,20 el 2026-09-16, ver más abajo), este indicador aporta 1,32% al ITCM (0,11×0,12) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el ITCM tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador. `recaudacion` declara lo mismo desde su propia ficha (revisión adversarial, 2026-09-16). Además —y esto pesó más en el ajuste de peso que el doble uso con `recaudacion`— es redundante con sus PROPIOS compañeros de dimensión: r=0,840 con `emae_ia`, 0,828 con `ipi_manufacturero`, 0,725 con `emae_difusion` (los tres sobre el umbral 0,7 del repo, y más que lo que `ipi_manufacturero` ya correlaciona con `emae_ia`, r=0,765). La correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y BAJA al adelantarla un mes o dos, así que no anticipa el ciclo: entra por ser la lectura más fresca, no por aportar señal nueva, y el peso de entrada (0,12, por debajo del de `ipi_manufacturero`) se fijó en consecuencia (ADR-0329, revisado 2026-09-16).
 
 ## Transparencia — limitaciones declaradas
 
@@ -713,6 +713,8 @@ Ponderación vigente en el ITCM: 2,2 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Las dos fuentes primarias pueden revisar meses ya publicados; el informe recalcula la serie completa en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-16** — Revisión adversarial: el peso de entrada baja de 0,20 a 0,12 (los otros tres INDEC pasan a recortarse ×0,88 en vez de ×0,80). Motivo medido: redundancia con sus tres compañeros de dimensión por encima del umbral 0,7 del repo (r=0,840 emae_ia, 0,828 ipi_manufacturero, 0,725 emae_difusion) y sin evidencia de que anticipe el ciclo del EMAE — la correlación adelantada es máxima en el mes corriente, no en t+1/t+2, contra emae_ia y emae_difusion. Se declara también r(IVA-DGI, cheque)=0,617 (antes ausente), el número que decidía entre promediar y cruzar en matriz.
 
 **2026-09-16** — Alta del indicador (ADR-0329). Corrige el alcance de una implementación anterior (ADR-0318/0319/0321) que había convertido este mismo par de series en un control dentro del detalle de `recaudacion` (dimensión fiscal): el pedido original era un proxy de ACTIVIDAD, y como tal pasa a puntuar en esa dimensión. El texto de `recaudacion` no se toca — sigue siendo útil para leer de dónde vino un movimiento del agregado DGI.
 
@@ -885,6 +887,8 @@ Dato vigente: 91,3 índice (100 = 4T-2023) (2026-08).
 
 Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
+- **Participación en otros indicadores.** IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta card, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica (ADR-0329). Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al ITCM (0,24×0,30) contra 1,32% de `actividad_tributaria` (0,11×0,12). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el ITCM tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcrm` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.
+
 ## Transparencia — limitaciones declaradas
 
 - La parte provincial NO es la recaudación provincial total: son los Ingresos Brutos de los contribuyentes que operan en varias provincias, más los regímenes de retención y percepción. Cada provincia recauda además de sus contribuyentes puramente locales, y eso no pasa por este circuito. Es una porción grande y homogénea de la base imponible provincial, no su universo.
@@ -905,6 +909,8 @@ Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Los puntos históricos del indicador pueden cambiar por nuevas versiones de los insumos y porque los factores estacionales se recalculan al acumular meses. La reconstrucción de la parte provincial de 2022 está controlada contra el acumulado anual deducido por separado.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-16** — Se agrega `dobleUso`: esta card es el lado PESADO (7,2% del ITCM) del solapamiento con `actividad_tributaria` (1,32%), que ya lo declaraba desde su propia ficha pero no aparecía acá (revisión adversarial de ADR-0329).
 
 **2026-09-15** — Corrige el encuadre del punto anterior: IVA-DGI y cheque no son un control independiente, son dos de los propios componentes del agregado DGI (entre 30% y 62% del total según el mes). Se renombra a descomposición, se acota a tres meses el retroceso si esas series se retrasan (antes sin límite, con la ficha afirmando lo contrario), se agrega banda muerta para que valores que redondean a 0,0% no marquen divergencia, y se baja la afirmación de que divergir «sí es señal» de algo ajeno a la actividad (ADR-0321).
 
