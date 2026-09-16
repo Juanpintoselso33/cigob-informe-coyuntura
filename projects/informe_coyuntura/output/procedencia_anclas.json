@@ -343,8 +343,9 @@
     "ITVC": {
       "peso_total": 1.0000000000000002,
       "categorias": {
-        "conceptual": 0.8875000000000002,
-        "externa": 0.1125
+        "conceptual": 0.8692750000000001,
+        "externa": 0.1125,
+        "historia_larga": 0.018224999999999998
       },
       "detalle": [
         {
@@ -356,7 +357,7 @@
         {
           "indicador": "brecha_salario_cbt",
           "categoria": "conceptual",
-          "peso": 0.1338,
+          "peso": 0.1304,
           "motivo": "rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123)"
         },
         {
@@ -380,7 +381,7 @@
         {
           "indicador": "pobreza_nowcast",
           "categoria": "conceptual",
-          "peso": 0.073,
+          "peso": 0.0712,
           "motivo": "rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha"
         },
         {
@@ -392,7 +393,7 @@
         {
           "indicador": "consumo_supermercados",
           "categoria": "conceptual",
-          "peso": 0.0561,
+          "peso": 0.0547,
           "motivo": "serie desestacionalizada del INDEC rebaseada a 4T-2023 (ADR-0225); ancla en fecha fija, sin móvil 12m porque la fuente ya la desestacionalizó"
         },
         {
@@ -406,12 +407,6 @@
           "categoria": "conceptual",
           "peso": 0.05,
           "motivo": "encarecimiento relativo del alquiler rebaseado a 4T-2023 (ADR-0111)"
-        },
-        {
-          "indicador": "inseguridad",
-          "categoria": "conceptual",
-          "peso": 0.045,
-          "motivo": "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"
         },
         {
           "indicador": "mortalidad_pymes",
@@ -432,6 +427,12 @@
           "motivo": "carga CDF/MS rebaseada a la fecha fija 4T-2023 e invertida (ADR-0231)"
         },
         {
+          "indicador": "inseguridad",
+          "categoria": "conceptual",
+          "peso": 0.0268,
+          "motivo": "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"
+        },
+        {
           "indicador": "trabajo_independiente",
           "categoria": "conceptual",
           "peso": 0.0242,
@@ -446,25 +447,44 @@
         {
           "indicador": "motorizacion_total",
           "categoria": "conceptual",
-          "peso": 0.0089,
+          "peso": 0.0087,
           "motivo": "autos + motos per cápita, móvil 12m rebaseado a 4T-2023 (ADR-0224); ancla en fecha fija. EXENTO del tope de 140: a 0,89% de peso el techo acota una compensación que el peso ya acota, y contra esta base —deprimida— 140 es el nivel de un año normal, no un outlier"
+        },
+        {
+          "indicador": "ratio_motos_autos",
+          "categoria": "conceptual",
+          "peso": 0.007,
+          "motivo": "motos por cada auto patentado, móvil 12m rebaseado a 4T-2023 (el mismo colector y la misma base que `motorizacion_total`); ancla en fecha fija, no rango observado (ADR-0328)"
         },
         {
           "indicador": "consumo_carne_vacuna",
           "categoria": "conceptual",
-          "peso": 0.0046,
+          "peso": 0.0045,
           "motivo": "faena de vacunos per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0322)"
         },
         {
           "indicador": "consumo_carnes_otras",
           "categoria": "conceptual",
-          "peso": 0.0042,
+          "peso": 0.0041,
           "motivo": "faena de aviar+porcina per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0322)"
+        },
+        {
+          "indicador": "tasa_homicidios",
+          "categoria": "historia_larga",
+          "peso": 0.0115,
+          "motivo": "tasa_hechos del SNIC (ya calculada por la fuente, cada 100.000 hab.), serie oficial 2000-2025 (26 años); rebase contra el propio 2023, que cae cerca de la mediana de esos 26 años (4,32 vs. mediana ~5,7) y no en un extremo de la serie — pico 9,21 en 2002, mínimo 3,48 en 2025 (ADR-0327)"
+        },
+        {
+          "indicador": "tasa_robos",
+          "categoria": "historia_larga",
+          "peso": 0.0067,
+          "motivo": "tasa_hechos del SNIC, misma serie oficial 2000-2025 que homicidios; rebase contra el propio 2023 (985,1, dentro del rango histórico 832-1.128). Limitación declarada en la ficha: el punto 2025 (778,1) tiene una caída interanual que no se pudo confirmar contra un informe metodológico del SNIC (ADR-0327)"
         }
       ],
       "share": {
-        "conceptual": 0.887,
-        "externa": 0.112
+        "conceptual": 0.869,
+        "externa": 0.112,
+        "historia_larga": 0.018
       },
       "share_circular": 0.0
     }

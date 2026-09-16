@@ -6,7 +6,7 @@ fecha: 2026-09-16
 cinturon: 'vida'
 indicadores: [consumo_carne_vacuna, consumo_carnes_otras, inseguridad]
 archivos: ['scripts/publicar.py', 'scripts/vida_cotidiana/collectors/snic.py', 'scripts/itvc.py', 'web/src/lib/fichas.ts', 'tests/test_carne_compuesto.py', 'tests/test_snic_homicidios.py']
-relacionado: ['0322', '0323', '0324']
+relacionado: ['0322', '0323', '0324', '0327']
 ambito: 'Correcciones a la tanda ADR-0322/0323/0324, encontradas por revisión adversarial'
 origen: 'Revisión adversarial del PR #31, 16-sep-2026'
 ---

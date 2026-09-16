@@ -246,6 +246,21 @@ PROCEDENCIA = {
                           "nivel de un año normal, no un outlier"),
     "consumo_supermercados": ("conceptual", "serie desestacionalizada del INDEC rebaseada a 4T-2023 (ADR-0225); ancla en fecha fija, sin móvil 12m porque la fuente ya la desestacionalizó"),
     "inseguridad": ("conceptual", "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"),
+    "tasa_homicidios": ("historia_larga",
+                       "tasa_hechos del SNIC (ya calculada por la fuente, cada 100.000 hab.), "
+                       "serie oficial 2000-2025 (26 años); rebase contra el propio 2023, que "
+                       "cae cerca de la mediana de esos 26 años (4,32 vs. mediana ~5,7) y no en "
+                       "un extremo de la serie — pico 9,21 en 2002, mínimo 3,48 en 2025 (ADR-0327)"),
+    "tasa_robos": ("historia_larga",
+                  "tasa_hechos del SNIC, misma serie oficial 2000-2025 que homicidios; "
+                  "rebase contra el propio 2023 (985,1, dentro del rango histórico "
+                  "832-1.128). Limitación declarada en la ficha: el punto 2025 (778,1) "
+                  "tiene una caída interanual que no se pudo confirmar contra un informe "
+                  "metodológico del SNIC (ADR-0327)"),
+    "ratio_motos_autos": ("conceptual",
+                         "motos por cada auto patentado, móvil 12m rebaseado a 4T-2023 "
+                         "(el mismo colector y la misma base que `motorizacion_total`); "
+                         "ancla en fecha fija, no rango observado (ADR-0328)"),
 }
 
 

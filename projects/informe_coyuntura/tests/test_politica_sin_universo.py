@@ -203,6 +203,8 @@ def test_publicacion_y_censo_con_componente_sin_universo(monkeypatch, tmp_path, 
     # del ITCIS, que pasa a ancla externa (ADR-0314). 63 → 64: `consumo_carnes_total`
     # se parte en `consumo_carne_vacuna` + `consumo_carnes_otras`, que puntúan
     # cada uno por su cuenta (ADR-0322) — una card más que antes.
-    assert resumen["indicadores"] == 64
-    assert resumen["indicadores_observados_en_calculo"] == 63   # 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322)
+    # 64 → 67: `tasa_homicidios` + `tasa_robos` (ADR-0327) y `ratio_motos_autos`
+    # (ADR-0328) entran a puntuar como indicadores propios — tres cards más.
+    assert resumen["indicadores"] == 67
+    assert resumen["indicadores_observados_en_calculo"] == 66   # 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 66 (ADR-0327/0328)
     assert resumen["indicadores_sin_universo"] == 1

@@ -369,6 +369,12 @@ def fetch_motorizacion() -> dict:
         # que es donde el lector la puede ver.
         "serie_autos": {m: v for m, v in limpios_a.items() if m >= DESDE},
         "serie_motos": {m: v for m, v in limpios_m.items() if m >= DESDE},
+        # ADR-0328: motos/autos por mes, acumulado móvil de 12m (mismas
+        # ventanas que `total_12m`). Sin rebasear: `itvc.rebase_de_serie` la
+        # rebasea contra el 4T-2023 al construir el índice, igual que hace con
+        # `inseguridad` o `mora_familias`.
+        "serie_ratio_motos_autos": {m: round(mov_motos[m] / mov_autos[m], 4)
+                                     for m in mov_autos if mov_autos.get(m)},
         "patentamiento_autos": {"valor": limpios_a[ultimo_mes], "fecha": ultimo_mes,
                                 "provincias": {p: n for p, n in autos_prov[ultimo_mes].items()
                                                if p != JURISDICCION_EXCLUIDA}},

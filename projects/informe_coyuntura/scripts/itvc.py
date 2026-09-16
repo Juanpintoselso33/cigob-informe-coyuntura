@@ -201,13 +201,30 @@ DIMENSIONES_ITVC = {
         # ×0,80 de más abajo, redondeada a 4 decimales EN CADA COMPONENTE por
         # separado, siga sumando exactamente 1,0 en la dimensión — con
         # 0,0204/0,0188 la suma da 0,9999 por el redondeo independiente.
+        # ADR-0328: entra `ratio_motos_autos` con 2,5%, cesión proporcional
+        # sobre los seis que ya había (ADR-0130/0153, `alta_proporcional`).
+        # Motos por cada auto patentado, INVERTIDO — más motos por auto es
+        # DETERIORO (confirmado por el usuario): `motorizacion_total` cuenta
+        # patentamientos como señal positiva sin distinguir de qué categoría
+        # vienen, y el ratio existe justamente para detectar que ese
+        # crecimiento sea un corrimiento hacia el vehículo más barato y no una
+        # mejora pareja. El peso queda por debajo del que le queda a
+        # `motorizacion_total` tras esta misma cesión (~3,1%): es un control
+        # sobre la composición del mismo flujo que ya puntúa, no un dominio
+        # nuevo, y no debería pesar más que el total que controla. 2,5% (no
+        # 3%) es el valor exacto con el que las dos cesiones encadenadas —
+        # ×0,80 de `consumo_supermercados` y ×0,975 de ésta— siguen sumando
+        # 1,0 redondeando cada componente a 4 decimales por separado, mismo
+        # requisito que fijó los decimales de ADR-0322.
         "indicadores": alta_proporcional(
-            {"brecha_salario_cbt": 0.5959,
-             "pobreza_nowcast": 0.3253,
-             "consumo_carne_vacuna": 0.0205,
-             "consumo_carnes_otras": 0.0187,
-             "motorizacion_total": 0.0396},
-            "consumo_supermercados", 0.20),
+            alta_proporcional(
+                {"brecha_salario_cbt": 0.5959,
+                 "pobreza_nowcast": 0.3253,
+                 "consumo_carne_vacuna": 0.0205,
+                 "consumo_carnes_otras": 0.0187,
+                 "motorizacion_total": 0.0396},
+                "consumo_supermercados", 0.20),
+            "ratio_motos_autos", 0.025),
     },
     "precios": {
         "nombre": "Presión de precios",
@@ -352,15 +369,40 @@ DIMENSIONES_ITVC = {
         # ADR-0115. Dimensión propia porque la victimización no es percepción ni
         # consumo: es un hecho.
         #
-        # LIMITACIÓN CONOCIDA: queda con UNA sola pata, que es el defecto que
-        # ADR-0076 corrigió en la dimensión de actividad ("el 11% del índice
-        # cuelga de un solo dato"). Acá pesa 4,5% en vez de 11%, así que la
-        # exposición es menor, pero el riesgo de fuente única es el mismo y
-        # queda declarado. Sumarle una segunda medida —percepción de
-        # inseguridad, o delito por tipo— es trabajo pendiente.
+        # LIMITACIÓN QUE ESTO CIERRA (ADR-0327): hasta acá quedaba con UNA sola
+        # pata, el defecto que ADR-0076 ya había corregido en la dimensión de
+        # actividad ("el 11% del índice cuelga de un solo dato"). Entran dos
+        # componentes del SNIC —homicidios y robos, por NOMBRE y con la
+        # `tasa_hechos` que la propia fuente calcula (ADR-0324)— que NO
+        # reemplazan al IVI: son complementarios, no redundantes. El IVI es
+        # MENSUAL y capta delito denunciado y no denunciado (cifra negra); el
+        # SNIC es ANUAL y capta sólo lo denunciado, pero por tipo específico —
+        # el IVI no distingue homicidio de hurto.
+        #
+        # El rezago anual NO descalifica: ya hay tres indicadores vigentes en
+        # el snapshot con 244 días de rezago del dato (`velocidad_resolucion`,
+        # `iaf_transferencias`, `protocolo_antipiquetes`) y dos con 243
+        # (`informalidad`, `subocupacion_demandante`) — el argumento usado
+        # ayer para dejar el SNIC fuera del índice ("es anual, no puede
+        # puntuar en un tablero mensual") es falso y queda revertido acá
+        # (ADR-0327 corrige a ADR-0324/0325).
+        #
+        # Homicidios y robos NO se promedian entre sí: el homicidio casi no
+        # tiene subregistro (hay un cuerpo) y el robo depende de que la
+        # víctima denuncie, así que son señales de calidad distinta y entran
+        # como dos componentes separados (`alta_proporcional` dos veces).
+        # Pesos: inseguridad cede 30% a tasa_homicidios y el resultado cede
+        # 15% a tasa_robos → 0,595 / 0,255 / 0,150. El IVI conserva la
+        # mayoría por ser mensual y más fresco; homicidios pesa más que robos
+        # porque es la medida más confiable del desglose (sin subregistro) y
+        # porque la serie de robos tiene una limitación de calidad declarada
+        # en su ficha (caída de 2025 inconsistente con Hurtos y Robos
+        # agravados del mismo año — ver ficha y ADR-0327).
         "nombre": "Seguridad",
         "peso": 0.045,
-        "indicadores": {"inseguridad": 1.0},
+        "indicadores": alta_proporcional(
+            alta_proporcional({"inseguridad": 1.0}, "tasa_homicidios", 0.30),
+            "tasa_robos", 0.15),
     },
 }
 
@@ -718,6 +760,19 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # efecto y documentar una decisión, no cambiarlo al reparar el colector.
     idx["inseguridad"] = rebase_de_serie(series, "inseguridad", invertido=True,
                                                base_meses=("2024-01",))
+    # ADR-0327: SNIC por tipo, ANUAL — la serie sólo tiene un punto por año en
+    # YYYY-12, así que la base por defecto (oct/nov/dic-2023) resuelve sola al
+    # año 2023, igual que predijo el comentario de más arriba para cualquier
+    # serie del SNIC. INVERTIDO: menos tasa = mejora. `tasa_hechos` la calcula
+    # el SNIC, no se reconstruye con población propia.
+    idx["tasa_homicidios"] = rebase_de_serie(series, "tasa_homicidios", invertido=True)
+    idx["tasa_robos"] = rebase_de_serie(series, "tasa_robos", invertido=True)
+    # ADR-0328: motos por cada auto patentado, INVERTIDO — más motos por auto
+    # es deterioro (confirmado por el usuario), así que se rebasea igual que
+    # `mora_familias`: la base va arriba del cociente y una suba del ratio
+    # hoy da un índice por DEBAJO de 100. Reversible en una línea: sacar
+    # `invertido=True` invierte la lectura completa.
+    idx["ratio_motos_autos"] = rebase_de_serie(series, "ratio_motos_autos", invertido=True)
     # Sentimiento digital (ADR-0034): canasta mensual Trends de ventana fija —
     # el cociente intra-consulta es inmune a la renormalización. Invertido:
     # más búsquedas de inflación/precios = más urgencia percibida.

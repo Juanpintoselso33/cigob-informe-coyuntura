@@ -7,7 +7,7 @@ cinturon: 'vida'
 indicadores: [motorizacion_total, patentamiento_autos, patentamiento_motos]
 archivos: ['scripts/vida_cotidiana/collectors/motorizacion.py', 'scripts/vida_cotidiana/main.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'scripts/gate_calidad.py', 'tests/test_motorizacion_total.py']
 supersede_parcialmente: ['0223']
-relacionado: ['0018', '0024', '0033', '0108', '0153', '0216', '0217', '0231', '0233', '0267', '0322', '0323']
+relacionado: ['0018', '0024', '0033', '0108', '0153', '0216', '0217', '0231', '0233', '0267', '0322', '0323', '0328']
 corregido_por: ['0271']
 modificado_por: ['0225']
 ambito: 'ITCIS · dimensión de ingresos y consumo · qué puntúa del patentamiento de vehículos'

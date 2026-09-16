@@ -406,6 +406,8 @@ export const LABELS: Record<string, string> = {
   subocupacion_demandante: "Subocupación demandante", inseguridad: "Victimización",
   icc_utdt: "Confianza del consumidor", sentimiento_digital: "Sentimiento digital (Trends)",
   motorizacion_total: "Motorización total",
+  tasa_homicidios: "Tasa de homicidios dolosos", tasa_robos: "Tasa de robos",
+  ratio_motos_autos: "Ratio motos/autos",
   patentamiento_motos: "Patentamiento de motos", patentamiento_autos: "Patentamiento de autos",
   consumo_supermercados: "Ventas en supermercados",
   desocupacion: "Desocupación",
@@ -485,6 +487,8 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   despacho_cemento: "índice", subocupacion_demandante: "% de la PEA", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.", patentamiento_autos: "u.",
   motorizacion_total: "c/1.000 hab.",
+  tasa_homicidios: "c/100k hab.", tasa_robos: "c/100k hab.",
+  ratio_motos_autos: "motos/auto",
   consumo_supermercados: "índice",
   // gestion (insumos del ITCG)
   cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "%",
@@ -558,6 +562,9 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   patentamiento_motos: "Unidades",
   patentamiento_autos: "Unidades (autos 0km inscriptos en el mes)",
   motorizacion_total: "Vehículos 0km (autos + motos) por cada 1.000 habitantes, acumulado de 12 meses",
+  tasa_homicidios: "Homicidios dolosos por cada 100.000 habitantes (tasa oficial SNIC, anual)",
+  tasa_robos: "Robos, excluidos los agravados por lesiones o muertes, por cada 100.000 habitantes (tasa oficial SNIC, anual)",
+  ratio_motos_autos: "Motos patentadas por cada auto patentado, acumulado móvil de 12 meses",
   consumo_supermercados: "Índice de ventas a precios constantes (2017 = 100, desestacionalizado)",
   // gestion
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",

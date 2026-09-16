@@ -6,7 +6,7 @@ fecha: 2026-09-15
 cinturon: 'vida'
 indicadores: [inseguridad_snic]
 archivos: ['scripts/vida_cotidiana/collectors/snic.py']
-relacionado: ['0032', '0325']
+relacionado: ['0032', '0325', '0327']
 ambito: 'Contraste anual del IVI · SNIC · qué tipos de delito se conservan del desglose'
 origen: 'Juan, Slack #monitor-de-proyecto-de-gobierno, 15-sep-2026: "para seguridad, buscar datos de homicidios y rapiñas"'
 ---

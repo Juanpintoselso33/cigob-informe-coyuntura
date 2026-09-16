@@ -238,6 +238,36 @@ def build_vida(raw):
     _add(out, "inseguridad", seg.get("total_hechos"),
          "hechos/año", "SNIC — Ministerio de Seguridad (calidad UNODC grado A)",
          str(seg.get("anio")))
+    # ADR-0327: los dos tipos del SNIC que PUNTÚAN como indicador propio.
+    # `tasa_hechos` la calcula la fuente; acá sólo se toma el último año.
+    # Se llaman SIEMPRE (valor None si el colector falló), mismo motivo que
+    # motorización/supermercados: una clave ausente es invisible para
+    # `_carry_forward`.
+    tasas_snic = seg.get("tasas_por_tipo") or {}
+    homicidios_tasas = tasas_snic.get("Homicidios dolosos") or {}
+    anio_hom = max(homicidios_tasas) if homicidios_tasas else None
+    _add(out, "tasa_homicidios",
+         round(homicidios_tasas[anio_hom], 2) if anio_hom else None,
+         "homicidios dolosos cada 100.000 hab.",
+         "SNIC — Ministerio de Seguridad (tasa oficial, calidad UNODC grado A)",
+         f"{anio_hom}-12-31" if anio_hom else None)
+    robos_tasas = tasas_snic.get(
+        "Robos (excluye los agravados por el resultado de lesiones y/o muertes)") or {}
+    anio_rob = max(robos_tasas) if robos_tasas else None
+    _add(out, "tasa_robos",
+         round(robos_tasas[anio_rob], 1) if anio_rob else None,
+         "robos (excl. agravados) cada 100.000 hab.",
+         "SNIC — Ministerio de Seguridad (tasa oficial, calidad UNODC grado A)",
+         f"{anio_rob}-12-31" if anio_rob else None,
+         detalle_txt=("La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un "
+                       "año sin evento conocido que lo explique; Hurtos cae en "
+                       "proporción similar (−17,4%) mientras Robos agravados por "
+                       "el resultado de lesiones/muertes SUBE 45,5% el mismo año. "
+                       "El patrón es compatible con reporte incompleto de alguna "
+                       "jurisdicción al cierre de 2025 y no se pudo confirmar ni "
+                       "descartar contra un informe metodológico público del "
+                       "SNIC. Se publica el dato oficial vigente con esta "
+                       "limitación declarada.") if anio_rob == "2025" else None)
     icc = utdt.get("icc_utdt", {})
     _add(out, "icc_utdt", _red(icc.get("valor"), 1),
          "índice", "UTDT — Índice de Confianza del Consumidor (CIF)", icc.get("fecha"))
@@ -298,6 +328,23 @@ def build_vida(raw):
     # fantasma.
     if out.get("motorizacion_total") is not None and mt.get("composicion"):
         out["motorizacion_total"]["composicion"] = mt["composicion"]
+    # ADR-0328: entra a puntuar por su cuenta. El colector ya calcula el
+    # cociente para el mes vigente dentro de `composicion` (ADR-0323); acá se
+    # publica como card propia con card = último mes, serie = histórica
+    # rebaseada (misma separación card/índice que `motorizacion_total`).
+    comp = mt.get("composicion") or {}
+    _add(out, "ratio_motos_autos", comp.get("ratio_motos_autos"),
+         "motos por cada auto patentado (móvil 12m)",
+         "DNRPA — inscripciones iniciales de automotores y motovehículos, "
+         "sin Tierra del Fuego",
+         f"{mt['fecha']}-01" if mt.get("fecha") else None,
+         detalle_txt=("Más motos por auto se lee como DETERIORO: "
+                       "`motorizacion_total` cuenta todo patentamiento como "
+                       "señal positiva sin distinguir de qué vehículo viene, "
+                       "y este ratio existe para detectar que ese crecimiento "
+                       "sea un corrimiento hacia la moto y no una mejora "
+                       "pareja. Decisión de polaridad reversible en una línea "
+                       "de código."))
     autos = moto.get("patentamiento_autos", {})
     _add(out, "patentamiento_autos", autos.get("valor"),
          "unidades", "DNRPA — inscripciones iniciales de automotores",

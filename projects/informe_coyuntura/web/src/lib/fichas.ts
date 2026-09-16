@@ -2514,13 +2514,13 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023 (más canastas = mejora).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (47,67% interno · 13,38% del ITCIS) y sigue siendo el componente más pesado.",
+      "Pertenece a la dimensión de ingresos y consumo (46,48% interno · 13,04% del ITCIS) y sigue siendo el componente más pesado.",
       "El ITCIS promedia sus componentes base-100 por dimensión: por encima de 100, la brecha acumula mejora contra el arranque del mandato.",
     ],
     limitaciones: [
       "El RIPTE cubre solo asalariados formales estables: deja afuera a informales y cuentapropistas; la canasta es por adulto equivalente.",
       "El RIPTE mide remuneración imponible, con tope y sin conceptos no remunerativos: no es ingreso de bolsillo. La CBT corresponde al Gran Buenos Aires. El cociente expresa canastas por adulto equivalente, no canastas familiares ni capacidad de compra observada de todos los hogares.",
-      "El peso del componente (13,38% del índice) es una discusión abierta declarada del diseño.",
+      "El peso del componente (13,04% del índice) es una discusión abierta declarada del diseño.",
       "Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.",
     ],
     faltantes: "Si una fuente falla, se mantiene el último valor publicado (marcado como desactualizado); si el componente no calcula, los pesos del índice se renormalizan.",
@@ -2790,7 +2790,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se invierte, como los otros componentes que se leen al revés: más pobreza es peor, así que la base va arriba en el cociente y por encima de 100 significa MENOS pobreza que en la transición.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (26,02% interno · 7,3% del ITCIS).",
+      "Pertenece a la dimensión de ingresos y consumo (25,37% interno · 7,12% del ITCIS).",
       "Cubre lo que el indicador de salario no puede ver: la brecha entre salario y canasta compara salario REGISTRADO, así que sólo alcanza al empleo formal, mientras la pobreza cuenta personas, incluidos los hogares informales y los que no viven de un sueldo.",
     ],
     limitaciones: [
@@ -2992,13 +2992,14 @@ export const FICHAS: Record<string, Ficha> = {
       "La ventana de 12 meses de la pregunta desestacionaliza por construcción.",
     ],
     incidenciaTexto: [
-      "Es el único indicador de la dimensión de seguridad, así que se lleva su peso entero: 4,5% del ITCIS.",
+      "Pertenece a la dimensión de seguridad (59,5% interno · 2,68% del ITCIS). Hasta el 16-sep-2026 era el único componente y se llevaba el peso entero (4,5%); desde ADR-0327 comparte la dimensión con `tasa_homicidios` y `tasa_robos` (SNIC), y conserva la mayoría del peso por ser mensual y más fresco.",
+      "Es complementario y no redundante con los dos componentes del SNIC: capta delito denunciado y no denunciado (cifra negra) pero no distingue TIPO de delito, que es justo lo que homicidios y robos aportan por separado.",
     ],
     limitaciones: [
       "La auditoría del 8-sep-2026 recuperó informes de 2020–2023, incluido el 4º trimestre de 2023: la afirmación anterior de suspensión era incorrecta. Se mantiene explícita la base de enero de 2024; una eventual armonización con 4T-2023 requiere documentar su efecto sobre el índice (ADR-0273).",
       "Error muestral de ±3 puntos por mes (~1.000 hogares) y cobertura solo urbana.",
       "La divergencia con el registro de denuncias requiere contrastar universos, períodos y error muestral: por sí sola no demuestra crecimiento del delito no denunciado.",
-      "El contraste SNIC (registro oficial de delitos) es ANUAL, con ~8,5 meses de rezago desde el cierre del año, y no puntúa: es contexto declarado en el detalle, no un segundo componente del índice.",
+      "El SNIC (registro oficial de delitos) sigue apareciendo como contraste por tipo en el detalle, además de puntuar por separado como `tasa_homicidios` y `tasa_robos` desde ADR-0327.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
     revisiones: "Los informes procesados no se releen; el registro oficial de contraste se revisa hacia atrás y su serie se refresca completa.",
@@ -3008,6 +3009,77 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "Se actualiza el portal de descubrimiento y se admiten enlaces relativos a PDF; se recupera julio de 2026 y se explicita el límite del contraste con denuncias (ADR-0273)." },
       { fecha: "2026-09-15", cambio: "ADR-0311: el rótulo de la card pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna." },
       { fecha: "2026-09-16", cambio: "ADR-0325/0324: el desglose del SNIC por tipo de delito (homicidios, robos, hurtos, etc.), que se descargaba pero se quedaba en el snapshot interno del colector, se suma al contraste SNIC del detalle. Se restituyen Amenazas y Lesiones dolosas a la lista de tipos conservados." },
+      { fecha: "2026-09-16", cambio: "ADR-0327 revierte a ADR-0324/0325: el argumento de que el SNIC «es anual, no puede puntuar en un tablero mensual» era falso — el snapshot ya tenía cinco indicadores vigentes con 243-244 días de rezago del dato. Entran `tasa_homicidios` y `tasa_robos` como componentes propios de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. El peso interno de este indicador baja de 100% a 59,5% (2,68% del ITCIS)." },
+    ],
+  },
+
+  tasa_homicidios: {
+    tipo: "indicador",
+    id: "tasa_homicidios",
+    cinturon: "vida_cotidiana",
+    rezago: "ANUAL, con ~8,5 meses de rezago desde el cierre del año: el CSV del año N aparece bien entrado N+1 (el de 2025 se verificó disponible el 16-sep-2026). Mismo ciclo que `iaf_transferencias`/`velocidad_resolucion`, que también son anuales con `fecha_dato` al 31 de diciembre.",
+    fuente: {
+      organismo: "SNIC — Sistema Nacional de Información Criminal, Ministerio de Seguridad",
+      operacion: "Homicidios dolosos, tasa cada 100.000 habitantes YA CALCULADA por la fuente (columna `tasa_hechos` de snic-pais.csv, filtrada por `codigo_delito_snic_nombre = \"Homicidios dolosos\"`). No se reconstruye con población propia.",
+      serie: "snic-pais.csv, serie oficial 2000-2025 (26 años)",
+      url: "https://cloud-snic.minseg.gob.ar/Bases/SNIC/snic-pais.csv",
+      acceso: "Automático: CSV público sin credenciales. Con store persistente en `data/vida/snic_serie.json`: el host cae por días enteros y cada refresco exitoso pisa la serie completa porque la fuente revisa retroactivamente.",
+    },
+    transformaciones: [
+      "Ninguna sobre el dato: la tasa cada 100.000 habitantes la calcula el SNIC.",
+      "Componente del índice: la tasa rebaseada de forma invertida (menos homicidios = mejora) contra el propio 2023 — la serie sólo tiene un punto por año (diciembre), así que la base 4T-2023 del resto del cinturón resuelve sola al año 2023, igual que ya hace `inseguridad` con su base declarada.",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de seguridad (25,5% interno · 1,15% del ITCIS).",
+      "Entra junto con `tasa_robos` (ADR-0327), revirtiendo a ADR-0324/0325: el argumento de que el SNIC «es anual, no puede puntuar en un tablero mensual» es falso — cinco indicadores del snapshot vigente puntúan con 243-244 días de rezago del dato (`velocidad_resolucion`, `iaf_transferencias`, `protocolo_antipiquetes`, `informalidad`, `subocupacion_demandante`).",
+      "Es complementario a `inseguridad` (IVI), no redundante: el IVI es mensual y capta delito denunciado y no denunciado pero no distingue TIPO; el homicidio es el tipo de delito con MENOS subregistro de todo el desglose —hay un cuerpo, así que casi no depende de que alguien denuncie—, lo que compensa su rezago y justifica que pese más que `tasa_robos` dentro de la dimensión.",
+      "Ancla: la base 2023 (4,32 cada 100.000) cae cerca de la mediana de los 26 años de la serie (~5,7), lejos de los dos extremos —pico 9,21 en 2002, mínimo 3,48 en 2025—, así que no es un año atípico elegido para que el índice quede mejor o peor.",
+    ],
+    limitaciones: [
+      "Anual con ~8,5 meses de rezago: el color de esta card puede describir un año que ya terminó hace tiempo. El tope de frescura (560 días) lo declara así en vez de marcarlo como atrasado todos los meses.",
+      "Es un registro de hechos conocidos por la Justicia o la policía, no una encuesta: cambios en la persecución penal o en el registro administrativo pueden mover la tasa sin que cambie la violencia real, aunque el homicidio es el delito con menor margen para ese efecto.",
+      "La serie es NACIONAL: no distingue provincias ni tipos de arma, vínculo o contexto del hecho.",
+    ],
+    faltantes: "Con el host de cloud-snic caído, la serie sale del store persistente (`data/vida/snic_serie.json`) con su fecha de último refresco declarada; sin componente, renormalización dentro de la dimensión de seguridad.",
+    revisiones: "El CSV oficial se revisa retroactivamente y cada refresco exitoso pisa la serie completa (mismo criterio que `inseguridad_snic`).",
+    cambios: [
+      { fecha: "2026-09-15", cambio: "ADR-0324: homicidios se conserva por NOMBRE en `tipos_principales`, dentro del desglose SNIC que sólo alimenta el contraste de `inseguridad` — no puntúa." },
+      { fecha: "2026-09-16", cambio: "ADR-0327 revierte a ADR-0324/0325: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. 25,5% interno de la dimensión (1,15% del ITCIS)." },
+    ],
+  },
+
+  tasa_robos: {
+    tipo: "indicador",
+    id: "tasa_robos",
+    cinturon: "vida_cotidiana",
+    rezago: "ANUAL, ~8,5 meses de rezago. Ver `tasa_homicidios`: mismo ciclo, mismo tope de 560 días.",
+    fuente: {
+      organismo: "SNIC — Sistema Nacional de Información Criminal, Ministerio de Seguridad",
+      operacion: "Robos que excluyen los agravados por el resultado de lesiones o muertes, tasa cada 100.000 habitantes YA CALCULADA por la fuente (columna `tasa_hechos`, filtrada por `codigo_delito_snic_nombre = \"Robos (excluye los agravados por el resultado de lesiones y/o muertes)\"`).",
+      serie: "snic-pais.csv, serie oficial 2000-2025 (26 años)",
+      url: "https://cloud-snic.minseg.gob.ar/Bases/SNIC/snic-pais.csv",
+      acceso: "Automático: mismo store persistente que `tasa_homicidios`.",
+    },
+    transformaciones: [
+      "Ninguna sobre el dato: la tasa la calcula el SNIC.",
+      "Componente del índice: la tasa rebaseada de forma invertida contra el propio 2023 (985,1, dentro del rango histórico 832-1.128 de la serie), mismo mecanismo que `tasa_homicidios`.",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de seguridad (15% interno · 0,68% del ITCIS).",
+      "«Robo» es el término del SNIC más cercano a lo que Juan pidió como «rapiña»: se distingue del hurto justamente por la violencia o intimidación sobre la víctima.",
+      "Pesa menos que `tasa_homicidios` dentro de la dimensión (15% contra 25,5%) porque depende de que la víctima denuncie —a diferencia del homicidio— y porque tiene una limitación de calidad propia declarada abajo.",
+    ],
+    limitaciones: [
+      "Depende de la denuncia: a diferencia del homicidio, un robo no denunciado no entra a esta serie. El IVI (`inseguridad`) es el componente del cinturón que sí capta la cifra negra, y por eso pesa más en la dimensión.",
+      "LA CAÍDA DE 2025 NO ESTÁ EXPLICADA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada (ADR-0327), no se lo corrige ni se lo omite.",
+      "Anual con ~8,5 meses de rezago, igual que `tasa_homicidios`.",
+      "Serie NACIONAL, sin apertura provincial ni por modalidad (arma, vía pública, vivienda).",
+    ],
+    faltantes: "Mismo store persistente que `tasa_homicidios`; sin componente, renormalización dentro de la dimensión de seguridad.",
+    revisiones: "El CSV oficial se revisa retroactivamente y cada refresco exitoso pisa la serie completa.",
+    cambios: [
+      { fecha: "2026-09-15", cambio: "ADR-0324/0325: robos se conserva por NOMBRE en `tipos_principales`, sólo como contraste de `inseguridad` — no puntúa." },
+      { fecha: "2026-09-16", cambio: "ADR-0327 revierte a ADR-0324/0325: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula, y con la limitación de la caída de 2025 declarada en la ficha. 15% interno de la dimensión (0,68% del ITCIS)." },
     ],
   },
 
@@ -3104,7 +3176,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Es el único componente EXENTO del techo de recorte de 140 que rige para el resto del índice. Con un peso efectivo de 0,89%, si llegara a 170 aportaría 0,27 puntos del índice por encima de ese techo: la compensación ya queda acotada por el peso. Y contra una base tomada en el 4º trimestre de 2023 —el fondo del congelamiento previo a la devaluación— el nivel 140 no marca un valor extremo: dos tercios de los meses de la década anterior lo habrían superado.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (3,17% interno · 0,89% del ITCIS).",
+      "Pertenece a la dimensión de ingresos y consumo (3,09% interno · 0,87% del ITCIS).",
       "Mide el flujo total de patentamientos de vehículos 0 kilómetro por habitante. El total y su composición no identifican hogares: primeras compras, reposición, compras de empresas y sustitución entre autos y motos pueden coexistir. Una suba del total no demuestra por sí sola mayor acceso de hogares ni descarta sustitución descendente.",
       "La composición se publica junto al color: cuántos autos y cuántas motos hay detrás del total, y qué proporción de lo que se patenta son motos contra la proporción del arranque del mandato.",
       "ADR-0323 agrega el ratio motos/autos (no motos/total) como control pedido por Juan: sirve para leer si la motorización sube porque se compran más autos o porque se baja a la moto, algo que la participación de motos sobre el TOTAL no distingue de un total que crece parejo en las dos patas. Es una magnitud derivada dentro de esta misma card, no un indicador propio: no puntúa.",
@@ -3127,6 +3199,41 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-21", cambio: "Entra el patentamiento de autos como componente espejo, con el mismo peso y la misma transformación que motos (ADR-0223)." },
       { fecha: "2026-08-21", cambio: "Los dos vehículos se funden en la motorización total per cápita, que toma el peso combinado de ambos; autos y motos dejan de ser tarjetas y pasan a explicar el color desde adentro (ADR-0224). La decisión original atribuyó al total la capacidad de distinguir acceso de descenso de categoría; esa interpretación se rectificó el 8 de septiembre de 2026 porque el registro no identifica trayectorias de hogares. Con el cambio, el componente deja de estar apoyado contra el techo de recorte —del que queda exento— y vuelve a moverse con la fuente. La fuente de motos pasa de la cámara al registro, que es lo único que permite excluir el movimiento registral de Tierra del Fuego." },
       { fecha: "2026-09-15", cambio: "Se agrega el ratio motos/autos a la composición publicada (ADR-0323), pedido explícito de Juan como control de lectura. No cambia el puntaje, el peso ni la card: es una magnitud más dentro de la misma matriz." },
+      { fecha: "2026-09-16", cambio: "ADR-0328 revierte a ADR-0323: el ratio deja de ser una magnitud colgada de esta card y pasa a puntuar como indicador propio (`ratio_motos_autos`), con 2,5% de la dimensión de ingresos y consumo cedido proporcionalmente por los siete componentes que ya había. No cambia el cálculo ni el peso de ESTE indicador." },
+    ],
+  },
+
+  ratio_motos_autos: {
+    tipo: "indicador",
+    id: "ratio_motos_autos",
+    cinturon: "vida_cotidiana",
+    rezago: "Mismo calendario que `motorizacion_total`: menos de un mes, el registro publica cada mes en los primeros días del siguiente.",
+    fuente: {
+      organismo: "DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios",
+      operacion: "Inscripciones iniciales de motovehículos dividido inscripciones iniciales de automotores (0 kilómetro), acumulado móvil de 12 meses, sin Tierra del Fuego. Mismo colector y misma descarga que `motorizacion_total`.",
+      serie: "Estadística de trámites de automotores (desde enero de 2000) y de motovehículos (desde enero de 2007)",
+      url: "https://datos.jus.gob.ar/dataset/estadistica-de-tramites-de-automotores",
+      acceso: "Automático: CSV abierto sin credenciales, descubierto por catálogo en cada corrida.",
+    },
+    transformaciones: [
+      "Motos acumuladas en 12 meses dividido autos acumulados en 12 meses (mismas ventanas móviles que `motorizacion_total`, para sacar la estacionalidad fuerte de los dos flujos).",
+      "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023, INVERTIDO — más motos por cada auto es DETERIORO.",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de ingresos y consumo (2,5% interno · 0,7% del ITCIS).",
+      "La polaridad es la decisión de fondo, y es reversible en una línea (sacar `invertido=True` en `itvc.indices_desde_series`): `motorizacion_total` cuenta todo patentamiento como señal positiva sin distinguir de qué vehículo viene, y este ratio existe para detectar que ese crecimiento sea un corrimiento hacia la moto —el vehículo más barato— y no una mejora pareja del parque. Un total que sube mientras este ratio también sube dice que el crecimiento viene de la moto, no del auto.",
+      "No duplica a `motorizacion_total`: ese componente mide el NIVEL del flujo combinado, éste mide su COMPOSICIÓN. El peso (2,5%) queda por debajo del que le toca a `motorizacion_total` en la misma dimensión (3,09%) para que el control no pese más que lo que controla.",
+    ],
+    limitaciones: [
+      "Hereda las limitaciones de `motorizacion_total`: es un flujo de altas (no el parque circulante), no pondera por precio ni gama, y la inscripción es del registro seccional, no necesariamente de donde vive el comprador.",
+      "El registro no identifica hogares ni sus vehículos previos: un ratio que sube es compatible con sustitución (bajar de auto a moto) y con que hogares nuevos entren al mercado comprando directamente una moto. El ratio no distingue esos dos casos, sólo la composición agregada.",
+      "Es un proxy de composición del consumo durable, no de bienestar general.",
+    ],
+    faltantes: "Mismo colector que `motorizacion_total`: el colector levanta excepción ante cualquier cambio de forma de la fuente en vez de publicar una serie recortada. Con la fuente caída, la card mantiene el último valor como desactualizado.",
+    revisiones: "Los dos archivos de la DNRPA publican su histórico completo y se releen enteros en cada corrida.",
+    cambios: [
+      { fecha: "2026-09-15", cambio: "Nace como magnitud colgada de la card de `motorizacion_total` (ADR-0323): control de lectura pedido por Juan, sin puntaje propio." },
+      { fecha: "2026-09-16", cambio: "ADR-0328 revierte a ADR-0323: pasa a puntuar como indicador propio, con card, ficha y peso propios (2,5% interno de la dimensión de ingresos y consumo · 0,7% del ITCIS). Polaridad confirmada por el usuario: más motos por auto es deterioro." },
     ],
   },
 
@@ -3148,7 +3255,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Tampoco lleva promedio móvil de 12 meses, a diferencia de los patentamientos: esa transformación existe para sacarle el calendario a un flujo crudo, y acá el calendario ya está sacado.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (20% interno · 5,61% del ITCIS).",
+      "Pertenece a la dimensión de ingresos y consumo (19,5% interno · 5,47% del ITCIS).",
       "Es el único componente del índice que mide VOLUMEN EFECTIVAMENTE COMPRADO. Los otros diecisiete miden lo que entra al hogar (ingresos), lo que cuesta (precios), de dónde sale ese ingreso (empleo), lo que no se llega a pagar (mora), lo que se opina (percepción) o el delito sufrido. Ninguno mira lo que el hogar se llevó de la góndola.",
       "El peso surge de esa jerarquía: por encima de los dos proxies de compra realizada que ya había —una proteína y la motorización, que juntos no llegan al 8% de la dimensión— y por debajo de las dos medidas estructurales, la brecha entre salario y canasta y el conteo de pobreza.",
     ],

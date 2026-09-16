@@ -330,6 +330,8 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0323](0323-ratio-motos-autos-como-control-de-la-motorizacion.md) | El ratio motos/autos entra como control dentro de la card, no como indicador | `motorizacion_total` | vigente |
 | [0324](0324-el-snic-conserva-homicidios-por-nombre-no-por-ranking.md) | El SNIC conserva homicidios por nombre, no por ranking de volumen | `inseguridad_snic` | vigente |
 | [0325](0325-correcciones-a-la-tanda-carne-motos-snic.md) | Correcciones a la tanda carne/motos/SNIC (ADR-0322/0323/0324) | `consumo_carne_vacuna`, `consumo_carnes_otras`, `inseguridad` | vigente |
+| [0327](0327-homicidios-y-robos-del-snic-puntuan-en-seguridad.md) | Homicidios y robos del SNIC entran a puntuar en la dimensión de seguridad | `inseguridad`, `tasa_homicidios`, `tasa_robos` | vigente |
+| [0328](0328-ratio-motos-autos-puntua-como-indicador-propio.md) | El ratio motos/autos entra a puntuar como indicador propio | `ratio_motos_autos` | vigente |
 
 ### Espíritu de época
 

@@ -243,6 +243,18 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`100\cdot\frac{\text{hogares v\'ictimas}_{\text{ene-24}}}{\text{hogares v\'ictimas}_{\text{hoy}}}`,
     leyenda: "Índice de Victimización del LICIP (Universidad Di Tella): porcentaje de hogares de 40 centros urbanos que sufrió al menos un delito en los últimos 12 meses, denunciado o no. Base declarada: enero de 2024, conservada por continuidad. La auditoría de septiembre recuperó informes de 2020–2023 y rectificó la supuesta suspensión de la encuesta (ADR-0273). La fórmula invierte la comparación: valor de la base dividido por el valor actual, por 100. Más de 100 significa menor victimización que en enero de 2024. El registro SNIC es un contraste con universo y frecuencia diferentes; su divergencia no prueba por sí sola cambios de subdenuncia.",
   },
+  tasa_homicidios: {
+    latex: String.raw`100\cdot\frac{\text{tasa homicidios}_{2023}}{\text{tasa homicidios}_{\text{hoy}}}`,
+    leyenda: "Tasa de homicidios dolosos cada 100.000 habitantes que ya calcula el SNIC (Ministerio de Seguridad), serie anual 2000-2025. Se rebasea contra el propio 2023 —la serie sólo tiene un punto por año, en diciembre, así que la base 4T-2023 del resto del cinturón resuelve sola a ese año—. La fórmula invierte la comparación: base sobre valor actual, por 100. Más de 100 significa menos homicidios que en 2023. Puntúa junto con `tasa_robos` (ADR-0327), sin promediarse: son señales de calidad distinta.",
+  },
+  tasa_robos: {
+    latex: String.raw`100\cdot\frac{\text{tasa robos}_{2023}}{\text{tasa robos}_{\text{hoy}}}`,
+    leyenda: "Tasa de robos (excluye los agravados por lesiones o muertes) cada 100.000 habitantes, ya calculada por el SNIC. Mismo mecanismo que `tasa_homicidios`: rebase contra 2023, invertido. Limitación declarada: la tasa 2025 cae 22,4% contra 2024 de forma inconsistente con el resto del desglose de delitos contra la propiedad, sin confirmación metodológica pública del SNIC.",
+  },
+  ratio_motos_autos: {
+    latex: String.raw`100\cdot\frac{\left(\text{motos}/\text{autos}\right)_{\text{4T-23}}}{\left(\text{motos}/\text{autos}\right)_{\text{hoy}}}`,
+    leyenda: "Motos patentadas dividido autos patentados, acumulado móvil de 12 meses (mismo colector y mismas ventanas que `motorizacion_total`). En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que un resultado por encima de 100 signifique mejora: más motos por auto que en 2023 da un cociente por debajo de 100, que es la lectura de deterioro confirmada por el usuario (ADR-0328). Reversible en una línea: sacar la inversión leería lo contrario.",
+  },
   icc_utdt: {
     latex: String.raw`\text{ICC de UTDT (serie cruda, columna Nacional), sin rebasear}`,
     leyenda: "ICC de la Universidad Torcuato Di Tella. Hasta el 15-sep-2026 puntuaba en el ITCIS rebaseado a 100 = 4T-2023; desde ADR-0314 ya no compone el índice ni se rebasea: es su ancla de validación externa, y se correlaciona la serie cruda (niveles y diferencias) contra el ITCIS reconstruido.",

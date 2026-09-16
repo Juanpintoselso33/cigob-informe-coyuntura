@@ -6,7 +6,7 @@ fecha: 2026-09-15
 cinturon: 'vida'
 indicadores: [motorizacion_total]
 archivos: ['scripts/vida_cotidiana/collectors/motorizacion.py', 'scripts/publicar.py', 'web/src/lib/fichas.ts']
-relacionado: ['0223', '0224', '0271', '0325']
+relacionado: ['0223', '0224', '0271', '0325', '0328']
 ambito: 'ITCIS · `motorizacion_total` · magnitud de control dentro de la card, no indicador nuevo'
 origen: 'Juan, Slack #monitor-de-proyecto-de-gobierno, 15-sep-2026: "para controlar pongamos ratio de motos/autos"'
 ---

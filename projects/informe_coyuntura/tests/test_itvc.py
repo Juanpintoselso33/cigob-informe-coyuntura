@@ -66,6 +66,9 @@ def test_itvc_reproduce_ejemplo():
     # ADR-0224: 89,0 → 90,3. Motos y autos se fundieron en un componente que
     # pesa la suma de los dos, así que el 130,0 del ejemplo entra con 0,0396 en
     # vez de con 0,0196 y tira la dimensión para arriba.
+    # ADR-0328: `ratio_motos_autos` no está en EJEMPLO (None → renormaliza),
+    # así que el puntaje de la dimensión no se mueve por su entrada — el
+    # mismo comportamiento que ya tenían pobreza_nowcast/alquiler_real.
     assert dims["ingresos"]["puntaje"] == 90.3
     assert dims["precios"]["puntaje"] == 75.3
     # ADR-0231: mora 70% + carga del servicio de deuda 30%.
@@ -84,6 +87,8 @@ def test_itvc_reproduce_ejemplo():
     # confianza y percepción se queda sin NINGÚN componente activo y el motor
     # la salta entera (no aparece en `dimensiones`).
     assert "percepcion" not in dims
+    # ADR-0327: tasa_homicidios/tasa_robos no están en EJEMPLO → renormaliza
+    # sobre inseguridad sola, mismo puntaje que antes de que entraran.
     assert dims["seguridad"]["puntaje"] == 104.0    # ADR-0115: victimización sola
     # ADR-0214: 87,0 → 86,9. El traslado es NEUTRO sobre el índice cuando
     # están todos los componentes —conserva el peso efectivo de cada uno—,
@@ -141,12 +146,16 @@ def test_pesos_del_documento():
     # componentes que puntúan por separado, repartidos 0,0205/0,0187 nominal
     # (52,3%/47,7%, la proporción real de la faena al 4T-2023, ajustada en el
     # último dígito para que la cesión ×0,80 siga sumando 1,0 exacto).
-    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.4767,
-                                            "pobreza_nowcast": 0.2602,
-                                            "consumo_carne_vacuna": 0.0164,
-                                            "consumo_carnes_otras": 0.0150,
-                                            "motorizacion_total": 0.0317,
-                                            "consumo_supermercados": 0.2000}
+    # ADR-0328: entra `ratio_motos_autos` con 2,5% y los seis anteriores ceden
+    # ×0,975 (mismo requisito de exactitud: 2,5% y no 3% es lo que hace que el
+    # redondeo a 4 decimales de cada componente siga sumando 1,0 exacto).
+    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.4648,
+                                            "pobreza_nowcast": 0.2537,
+                                            "consumo_carne_vacuna": 0.0160,
+                                            "consumo_carnes_otras": 0.0146,
+                                            "motorizacion_total": 0.0309,
+                                            "consumo_supermercados": 0.1950,
+                                            "ratio_motos_autos": 0.0250}
     assert abs(sum(d["ingresos"]["indicadores"].values()) - 1.0) < 1e-9
     # ADR-0154 saca endeudamiento; ADR-0231 agrega carga del servicio de deuda,
     # una señal previa al incumplimiento que complementa la mora.
@@ -174,7 +183,13 @@ def test_pesos_del_documento():
     # componente activo — su 8,25% nominal se redistribuye entre las cinco
     # que quedan (ver test_itvc_reproduce_ejemplo).
     assert d["percepcion"]["indicadores"] == {"sentimiento_digital": 1.0}
-    assert d["seguridad"]["indicadores"] == {"inseguridad": 1.0}
+    # ADR-0327: entran `tasa_homicidios` (30% de cesión) y `tasa_robos` (15%
+    # de la cesión resultante) del SNIC. inseguridad (IVI, mensual) conserva
+    # la mayoría; homicidios pesa más que robos por ser la medida sin
+    # subregistro del desglose.
+    assert d["seguridad"]["indicadores"] == {"inseguridad": 0.595,
+                                             "tasa_homicidios": 0.255,
+                                             "tasa_robos": 0.150}
     for dim in d.values():
         assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
 

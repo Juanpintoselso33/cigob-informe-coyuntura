@@ -732,7 +732,9 @@ def test_vida_itvc_reconcilia():
     # 18 → 17: salió `icc_utdt`, que pasó a ancla externa (ADR-0314)
     # 17 → 18: `consumo_carnes_total` se parte en `consumo_carne_vacuna` +
     # `consumo_carnes_otras`, que puntúan cada uno por su cuenta (ADR-0322)
-    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
+    # 18 → 21: entran `tasa_homicidios` + `tasa_robos` (ADR-0327, dimensión de
+    # seguridad) y `ratio_motos_autos` (ADR-0328, dimensión de ingresos).
+    assert len(en_indice) == 21, f"esperaba 21 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"

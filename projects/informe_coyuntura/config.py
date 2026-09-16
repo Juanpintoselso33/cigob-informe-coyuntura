@@ -179,6 +179,14 @@ MAX_DIAS = {
     # desde ADR-0256 la serie sale de la planilla del propio INDEC.
     "consumo_supermercados": 130,
     "endeudamiento_familiar": 140, "inseguridad": 150,
+    # ADR-0327: SNIC, ANUAL con `fecha_dato` = 31-dic del año de referencia —
+    # mismo ciclo que `iaf_transferencias`/`velocidad_resolucion` (560 más
+    # arriba): el archivo del año siguiente aparece bien entrado ese año
+    # siguiente, así que el rezago crece hasta ahí antes de refrescar.
+    "tasa_homicidios": 560, "tasa_robos": 560,
+    # ADR-0328: mismo tope que `motorizacion_total` — sale del MISMO colector
+    # DNRPA con la MISMA cadencia medida (ver el comentario de más arriba).
+    "ratio_motos_autos": 90,
     # IEF: la serie es mensual, pero el BCRA libera la planilla por lote
     # semestral. 300 días cubre el ciclo sin presentarla como fuente mensual.
     "carga_servicio_deuda_hogares": 300,
