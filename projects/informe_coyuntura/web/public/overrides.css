@@ -1580,6 +1580,25 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 @media (max-width: 720px) {
   .cg-marco .cg-marco-lead { font-size: 16px; }
 }
+/* "Reducir sin simplificar" (ADR-0326): el subtítulo y la cita abren un tramo
+   nuevo DENTRO del marco, así que cruzan las dos columnas igual que la
+   apertura. Sin `column-span` el h3 quedaría a mitad de la columna izquierda
+   con su texto siguiendo en la derecha, que se lee como si el tramo empezara
+   dos veces. */
+.cg-marco .cg-marco-h3 {
+  font-size: 15px; font-weight: 800; color: var(--teal-dark);
+  letter-spacing: .01em; margin: 26px 0 12px; padding-top: 18px;
+  border-top: 1px solid var(--bd);
+}
+.cg-marco .cg-marco-cita {
+  font-size: 16px; line-height: 1.6; color: var(--dark);
+  border-left: 3px solid var(--teal-ink); padding-left: 16px;
+  margin: 0 0 16px;
+}
+@media (min-width: 900px) {
+  .cg-marco .cg-marco-h3,
+  .cg-marco .cg-marco-cita { column-span: all; }
+}
 
 /* ── "Qué es la tensión" en la portada (ADR-0199) ──────────────────────
    Nota de lectura, no una card de datos: borde de acento a la izquierda como

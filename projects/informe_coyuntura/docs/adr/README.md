@@ -405,3 +405,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0309](0309-un-hilo-por-problema-en-los-avisos.md) | Un hilo por problema en los avisos |  | vigente |
 | [0311](0311-el-titular-sin-escala-y-los-rotulos-sin-siglas-internas.md) | El titular sin escala y los rótulos sin siglas internas | `idc`, `iai`, `votometro_ventaja_lla` | vigente |
 | [0320](0320-la-portada-no-explica-el-metodo-lo-enlaza.md) | La portada no explica el método: lo enlaza |  | vigente |
+| [0326](0326-el-marco-dice-como-comunica-no-solo-que-mide.md) | El marco dice cómo comunica, no sólo qué mide |  | vigente |
