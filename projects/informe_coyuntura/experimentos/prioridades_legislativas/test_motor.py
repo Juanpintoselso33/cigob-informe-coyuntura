@@ -67,3 +67,34 @@ def test_sancion_historica_no_caduca_por_falta_de_revision():
 def test_cambiar_orden_no_cambia_resultado():
     a, b = item(), item("b", "presentado")
     assert calcular([a,b], "2026-09-08")["porcentaje"] == calcular([b,a], "2026-09-08")["porcentaje"]
+
+
+def test_documentado_sin_avance_no_es_desconocido():
+    # Sin evento aplicable pero con el período ya revisado hasta el corte:
+    # es un cero conocido (issue #27, punto 1), no una banda 0-100.
+    a = item()  # evento sancionado el 2026-02-01, verificado_hasta 2026-09-08
+    r = calcular([a], "2026-01-15")
+    assert r["filas"][0]["estado"] == "sin_avance"
+    assert (r["porcentaje"], r["cobertura"], r["estado"]) == (0, 100, "calculable")
+
+
+def test_retirado_y_rechazado_no_cuentan_como_posible_ley():
+    # Terminales negativos son absorbentes como la sanción: no vuelven a
+    # "sin_verificar" ni inflan el máximo (issue #27, punto 2).
+    a = item()
+    b = item("b", "retirado"); b["verificado_hasta"] = "2026-08-01"
+    c = item("c", "rechazado"); c["verificado_hasta"] = "2026-08-01"
+    r = calcular([a, b, c], "2026-09-08")
+    assert {f["id"]: f["estado"] for f in r["filas"]} == {"a": "sancionado", "b": "retirado", "c": "rechazado"}
+    assert r["minimo"] == pytest.approx(33.33, abs=0.01)
+    assert r["maximo"] == pytest.approx(33.33, abs=0.01)
+
+
+@pytest.mark.parametrize("clave", ["eventos", "nombre", "prioridad_desde", "verificado_hasta"])
+def test_cartera_malformada_da_valueerror_no_keyerror(clave):
+    # Contrato de los 18 tests: cualquier malformación es ValueError,
+    # nunca un KeyError que se escapa (issue #27, punto 5).
+    a = item()
+    del a[clave]
+    with pytest.raises(ValueError):
+        calcular([a], "2026-09-08")

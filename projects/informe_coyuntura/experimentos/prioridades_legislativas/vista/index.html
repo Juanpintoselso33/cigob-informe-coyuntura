@@ -18,17 +18,18 @@
 </main>
 <script type="module">
 const $=id=>document.getElementById(id), fmt=n=>n==null?'Sin cálculo':new Intl.NumberFormat('es-AR',{maximumFractionDigits:2}).format(n)+'%';
+function manejarError(e){$('error').textContent='No se pudo actualizar la vista. '+e.message}
 try{
  const response=await fetch('./resultados.json');if(!response.ok)throw new Error('No se pudo cargar el archivo de resultados');const data=await response.json();
- for(const c of data.casos){const o=new Option(c.nombre,c.id);$('caso').add(o)}for(const d of data.fechas)$('fecha').add(new Option(d,d));$('fecha').value='2026-09-08';$('caso').disabled=false;$('fecha').disabled=false;
- const estados={presentado:'Presentado',media_sancion:'Media sanción',sancionado:'Sanción definitiva',retirado:'Retirado',rechazado:'Rechazado',sin_verificar:'Sin verificar al corte'};
- function pintar(){const c=data.casos.find(c=>c.id===$('caso').value),r=c.cortes.find(r=>r.corte===$('fecha').value);$('contexto').textContent=(c.simulado?'Simulación. ':'Caso documentado. ')+c.nota;
+ for(const c of data.casos){const o=new Option(c.nombre,c.id);$('caso').add(o)}for(const d of data.fechas)$('fecha').add(new Option(d,d));$('fecha').value=data.fechas[data.fechas.length-1];$('caso').disabled=false;$('fecha').disabled=false;
+ const estados={presentado:'Presentado',media_sancion:'Media sanción',sancionado:'Sanción definitiva',retirado:'Retirado',rechazado:'Rechazado',sin_verificar:'Sin verificar al corte',sin_avance:'Documentado, sin avance'};
+ function pintar(){const c=data.casos.find(c=>c.id===$('caso').value);if(!c)throw new Error('Caso no encontrado: '+$('caso').value);const r=c.cortes.find(r=>r.corte===$('fecha').value);if(!r)throw new Error('Corte no encontrado para este caso: '+$('fecha').value);$('contexto').textContent=(c.simulado?'Simulación. ':'Caso documentado. ')+c.nota;
  $('valor').textContent=r.estado==='sin_universo'?'Sin universo':r.porcentaje==null?fmt(r.minimo)+' a '+fmt(r.maximo):fmt(r.porcentaje);
  $('formula').textContent=r.estado==='sin_universo'?'No hay iniciativas documentadas como prioridad antes de este corte.':`${r.peso_sancionado} de ${r.denominador} unidades de peso con sanción verificada; ${r.peso_sin_verificar} sin verificación suficiente.`;
  $('cobertura').textContent=fmt(r.cobertura);$('universo').textContent=`${r.iniciativas} iniciativas en la cartera seleccionada. `+(c.simulado?'Datos ficticios para probar reglas.':'No hay una cartera exhaustiva de prioridades del Gobierno.');
  $('filas').replaceChildren();for(const f of r.filas){const tr=document.createElement('tr');for(const val of [f.nombre,estados[f.estado],f.peso,f.fecha_estado??'—',f.verificado_hasta]){const td=document.createElement('td');td.textContent=val;tr.append(td)}if(f.fuente.startsWith('https://')){const a=document.createElement('a');a.href=f.fuente;a.textContent=' Fuente';a.target='_blank';a.rel='noopener noreferrer';tr.firstChild.append(a)}$('filas').append(tr)}
  $('comparacion').textContent=r.corte===data.baseline.corte?`Eficacia publicada al ${data.baseline.corte}: ${fmt(data.baseline.porcentaje)}. ${data.baseline.descripcion}`:'No se ofrece un valor del monitor para este corte: el contraste conservado corresponde al 8-sep-2026.';
  }
- $('caso').addEventListener('change',pintar);$('fecha').addEventListener('change',pintar);pintar();
-}catch(e){$('error').textContent='La vista necesita el servidor local y resultados.json. '+e.message}
+ $('caso').addEventListener('change',()=>{try{pintar()}catch(e){manejarError(e)}});$('fecha').addEventListener('change',()=>{try{pintar()}catch(e){manejarError(e)}});pintar();
+}catch(e){manejarError(e)}
 </script></html>
