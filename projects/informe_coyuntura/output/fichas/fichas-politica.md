@@ -182,7 +182,7 @@ Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional
 
 **2026-07-07** — Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
 
-**2026-09-15** — ADR-0312 (corrige ADR-0121): anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El máximo puntaje de este indicador baja de 100 a 60 (queda 'apenas verde' más allá de +8 pp, no 'pleno').
+**2026-09-15** — ADR-0312 (corrige ADR-0121): anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El indicador conserva el rango 0-100 (una quinta banda arriba de +8 pp evita bajar el techo a 60, como hacía la primera versión de este ADR).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

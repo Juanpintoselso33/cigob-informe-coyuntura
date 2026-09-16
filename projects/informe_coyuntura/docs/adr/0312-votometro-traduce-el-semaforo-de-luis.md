@@ -50,24 +50,31 @@ El equipo señaló además que la redacción de la ficha estaba en orden confuso
 
 ## Decisión
 
-Las anclas nuevas: `(8, INF, 60), (2, 8, 40), (-2, 2, 20), (-INF, -2, 0)`.
+Las anclas nuevas: `(14, INF, 100), (8, 14, 80), (2, 8, 40), (-2, 2, 20), (-INF, -2, 0)`.
 
 El motor deriva el puntaje 0-100 por **interpolación lineal entre anclas**
 (ADR-0021): para una banda finita el ancla es su punto medio, para una abierta
-es su borde finito. Con esta tabla, las anclas quedan exactamente en **8, 5
-(medio de 2–8), 0 (medio de −2–2) y −2** — los mismos pp que usó Luis para
-+8/+5/0, más un borde inferior en −2 para que el rojo no quede plano en el
-mismo valor en 0 y en cualquier negativo (sin un ancla debajo de 0, `puntaje(0)`
-y `puntaje(−1)` habrían sido idénticos y jamás se habrían podido distinguir en
-color).
+es su borde finito. Con esta tabla, las anclas quedan en **14, 11 (medio de
+8–14), 5 (medio de 2–8), 0 (medio de −2–2) y −2**. Los cruces de color siguen
+cayendo exactamente en los pp que pidió Luis (8, 5, 0) — el ancla nueva en 14
+no mueve ningún corte de semáforo, sólo estira el tramo verde para que siga
+subiendo por encima de +8 en vez de aplanarse ahí.
 
-Verificado numéricamente en `tests/test_itcp.py::test_banda_votometro_semaforo_traduce_umbrales_de_luis`,
-que evalúa 8 valores de ventaja contra su color, incluidos los dos cortes
-exactos (+5 y 0):
+**Revisión, misma corrida (2026-09-15):** la primera versión de este ADR usaba
+sólo cuatro bandas —`(8, INF, 60), (2, 8, 40), (-2, 2, 20), (-INF, -2, 0)`— y
+argumentaba que subir el ancla superior a 100 "corta el tramo +5/+8 antes de
+tiempo (con ancla en 100, +7 puntúa 70 → verde)". **Eso es un falso dilema**:
+sólo vale si se mantienen cuatro anclas. Agregando una quinta banda arriba de
+8 (con su propio punto medio en 11 y su ancla superior en 14) se logra el
+mismo barrido de colores **sin** bajar el techo del indicador de 100 a 60.
+
+Verificado numéricamente en `tests/test_itcp.py::test_banda_votometro_semaforo_traduce_umbrales_de_luis`
+(colores, sin cambios respecto de la versión anterior del ADR) y a mano contra
+las anclas nuevas:
 
 | ventaja (pp) | puntaje interpolado | tensión | color |
 |---|---|---|---|
-| +12 | 60,0 | 4,0 | verde |
+| +12 | 86,7 | 1,33 | verde |
 | **+8** (exacto) | 60,0 | 4,0 | **verde** |
 | +6 | 46,7 | 5,33 | amarillo |
 | **+5** (exacto, límite amarillo/naranja) | 40,0 | 6,0 | **amarillo** |
@@ -76,47 +83,87 @@ exactos (+5 y 0):
 | −1 | 10,0 | 9,0 | rojo |
 | −10 | 0,0 | 10,0 | rojo |
 
+Idéntico color a la tabla original en los 8 casos, techo 100 en vez de 60.
+
 Los dos cortes exactos (+5 y 0) caen del lado que fija la convención del motor
 (low exclusivo / high inclusivo en la tensión: `tensión ≤ tope` — ADR-0181), no
-de una elección editorial nueva.
+de una elección editorial nueva. Ninguno de los dos está exactamente en el pp
+nominal por el redondeo a un decimal de `puntaje_desde_anclas` (ADR-0021): el
+corte naranja→amarillo real está en **+4,9875** (puntaje crudo 39,95 redondea
+a 40,0), no en +5,00 — con +5,00 exacto también da amarillo, así que el pedido
+de Luis se cumple igual. Son 3 transiciones de color en total (no 4): rojo→naranja
+en 0 (dentro de la resolución del redondeo), naranja→amarillo en +4,9875, y
+amarillo→verde en ~+7,99. Ninguna cambió al pasar de cuatro a cinco anclas: el
+tramo (−∞, 8] es idéntico en las dos versiones de la tabla.
 
-### Consecuencia real: el tope de puntaje de este indicador baja de 100 a 60
+### Por qué NO bajar el techo a 60 (motivo real para preferir 5 anclas)
 
-Con las anclas de ADR-0121, una ventaja de +15 pp puntuaba 100 (el máximo del
-índice). Con las anclas nuevas, **el máximo alcanzable es 60**: cualquier
-ventaja ≥ +8 pp es "apenas verde", no "puntaje pleno". Es una consecuencia
-directa e inevitable de anclar el cruce verde/amarillo en el pp exacto que
-pidió Luis (+8) — si el ancla superior valiera más de 60, el tramo intermedio
-(+5 a +8) se corta antes de tiempo y una ventaja de +6 o +7 ya sale verde en
-vez de amarillo (verificado al construir la tabla: con el ancla superior en
-100, +7 pp puntúa 70 → tensión 3,0 → verde, incumpliendo el pedido).
+La versión de 4 anclas hacía que la **tensión mínima** del indicador fuera
+exactamente 4,0 — el borde inclusivo del verde en `CORTES_SEMAFORO`
+(`parametrica.py`). Eso significa que con techo 60 el indicador **sólo** es
+verde cuando está saturado en su máximo (+8,00 pp exactos → 60,0 → verde) y
+**+7,99 pp → 59,9 → amarillo**: la banda "sin tensión" del semáforo era
+inalcanzable salvo en el borde exacto de saturación, y una ventaja de +40 pp
+puntuaba lo mismo que una de +8 — el indicador dejaba de poder distinguir un
+empate apenas favorable de una victoria arrasadora. Es además, con ese techo,
+el **único** de los 26 indicadores del ITCP con rango 0–60 (los otros 25 van
+de 10 a 100); ningún gate lo detecta porque ningún test compara el rango de un
+indicador contra el resto del índice.
 
-Esto cambia dos tests que asumían el tope viejo de 100
+### Impacto medido en el histórico reconstruido
+
+`scripts/validacion_externa.py` reconstruye el ITCP mes a mes desde las series
+de componentes con las bandas vigentes en cada corrida (32 meses con cobertura
+suficiente, ene-2024→ago-2026). Comparando contra las anclas originales de
+ADR-0121 (`(15,∞,100)(5,15,85)(-5,5,65)(-15,-5,40)(-∞,-15,10)`):
+
+- **Con la tabla de 4 anclas (techo 60, descartada):** el ITCP reconstruido
+  baja en los 32 meses, entre −3,20 y −1,50, media **−2,11**. El techo solo
+  (aislado del resto de la recalibración) muerde en 12 de esos 32 meses —
+  todos con ventaja > 8 pp— y resta por sí mismo hasta 2,40 puntos de ITCP en
+  un mes puntual.
+- **Con la tabla de 5 anclas (techo 100, esta revisión):** el ITCP baja entre
+  −2,70 y **+0,20** (dic-2023/ene-2026/mar-2026 mejoran levemente por el
+  desplazamiento del corte naranja/rojo hacia 0 en vez de −15), media
+  **−1,43**. El movimiento restante es enteramente el efecto de trasladar los
+  cortes de +15/+5/−5/−15 (ADR-0121) a +8/+5/0 (Luis) en el tramo ≤ 8 pp — no
+  queda ningún componente de "techo bajado".
+
+El mes publicado más reciente (ago-2026, ventaja +4,3 pp) cae en el tramo
+[0, 5] que **no cambió** entre la tabla de 4 y la de 5 anclas (ambas comparten
+el segmento por debajo de 8 pp) — el ITCP publicado y la dimensión
+`imagen_voto` del snapshot actual quedan exactamente iguales a los que ya
+publicó la corrida anterior de este PR (70,3 y 37,2 respectivamente); el
+techo 100 sólo se manifiesta en meses con ventaja > 8 pp.
+
+Esto cambia otra vez los dos tests que ya se habían tocado por el tope 60
 (`test_calcular_itcp_pondera_dimensiones`, `test_calcular_itcp_renormaliza_ante_faltantes`):
-con `votometro_ventaja_lla` en su valor más alto observado (+15 pp), el ITCP
-"todo en el máximo" pasa de 100,0 a **96,1** (la dimensión imagen_voto entra
-con 60 en vez de 100, pesa 7% del índice).
+con `votometro_ventaja_lla` en su valor más alto observado (+15 pp, > 14, ancla
+superior), el indicador vuelve a puntuar el máximo (100), así que "todo en el
+máximo" vuelve a dar ITCP = 100,0 en vez de 96,1.
 
 ### Ficha
 
-Reescrita en orden descendente y con los cortes nuevos:
+Reescrita en orden descendente, con los cortes de **color** (no los bordes de
+banda) y sin la contradicción de la versión anterior (que mezclaba +2 con
+naranja y luego decía "−2 o menos → rojo", dejando +2 y −1 sin encajar en
+ningún tramo declarado):
 
 > "El puntaje del índice se asigna por bandas de la ventaja, interpolado entre
-> anclas: más de +8 puntos → verde, el más alto; entre +8 y +2 → amarillo, con
-> el punto medio de la banda en +5 pp; entre +2 y −2 → naranja, con el punto
-> medio en 0 pp; −2 o menos → rojo, el más bajo."
+> anclas: más de +8 puntos → verde, el más alto; entre +8 y +5 → amarillo;
+> entre +5 y 0 → naranja; 0 o menos → rojo, el más bajo."
 
-El texto nombra tanto los bordes reales de la tabla (8, 2, −2) como los pp de
-lectura de Luis (+5, 0) — son números distintos por construcción (borde de
-banda vs. punto medio interpolado) y las dos lecturas son correctas al mismo
-tiempo.
+El encabezado de la ficha ("van de 0 a 100, donde 100 es la mejor situación")
+vuelve a ser cierto con el techo restaurado.
 
 ### Validación externa
 
 `scripts/validacion_externa.py` reconstruye la serie histórica del ITCP contra
-las bandas vigentes; se corrió de nuevo después de este cambio (ver la
+las bandas vigentes; se corrió de nuevo después de esta revisión (ver la
 secuencia del PR) porque la reconstrucción usa las anclas nuevas para todo el
-histórico.
+histórico. Los r contra los benchmarks externos (EPU, primeras diferencias,
+adelantado, sin sector privado) se movieron dentro de lo esperable de una
+recalibración de bandas — valores actualizados en el PR.
 
 ## Más información
 

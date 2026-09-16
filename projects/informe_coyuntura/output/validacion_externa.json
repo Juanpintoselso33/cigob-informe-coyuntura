@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-15T22:41:34.460822-03:00",
+    "generated_at": "2026-09-15T23:05:03.003727-03:00",
     "nota": "Validación por panel y ancla macro; el contraste adicional sin ICC evita comparar el ITCIS con un componente propio"
   },
   "serie_itvc": {
@@ -1374,20 +1374,20 @@
   },
   "redundancia_itcp": {
     "diferencias": {
-      "n_pares": 104,
-      "r_abs_medio": 0.172,
+      "n_pares": 103,
+      "r_abs_medio": 0.183,
       "share_altos": 0.0
     },
     "umbral": 0.7,
     "n_indicadores": 17,
     "n_pares": 105,
-    "r_abs_medio": 0.396,
+    "r_abs_medio": 0.403,
     "share_altos": 0.152,
     "share_bajos": 0.371,
     "matriz": {
       "adhesion_reformas_provincial": {
         "alineamiento_senadores_prov": -0.081,
-        "apoyo_empresario": 0.327,
+        "apoyo_empresario": 0.435,
         "bloqueo_sostenido": -0.667,
         "brecha_obra_publica": 0.653,
         "cobertura_judicial": -0.526,
@@ -1399,11 +1399,11 @@
         "produccion_legislativa": -0.014,
         "ratio_dnu": 0.194,
         "veto_quorum": -0.019,
-        "votometro_ventaja_lla": 0.264
+        "votometro_ventaja_lla": 0.293
       },
       "alineamiento_senadores_prov": {
         "adhesion_reformas_provincial": -0.081,
-        "apoyo_empresario": -0.648,
+        "apoyo_empresario": -0.652,
         "bloqueo_sostenido": 0.301,
         "brecha_obra_publica": -0.348,
         "cobertura_judicial": 0.42,
@@ -1415,28 +1415,28 @@
         "produccion_legislativa": 0.177,
         "ratio_dnu": 0.205,
         "veto_quorum": 0.303,
-        "votometro_ventaja_lla": -0.124
+        "votometro_ventaja_lla": -0.161
       },
       "apoyo_empresario": {
-        "adhesion_reformas_provincial": 0.327,
-        "alineamiento_senadores_prov": -0.648,
-        "bloqueo_sostenido": -0.396,
-        "brecha_obra_publica": 0.39,
-        "cobertura_judicial": -0.524,
-        "cohesion_bloque": -0.435,
+        "adhesion_reformas_provincial": 0.435,
+        "alineamiento_senadores_prov": -0.652,
+        "bloqueo_sostenido": -0.53,
+        "brecha_obra_publica": 0.432,
+        "cobertura_judicial": -0.528,
+        "cohesion_bloque": -0.439,
         "conflictividad_nacional": 0.751,
-        "desafios_legislativos": -0.647,
-        "eficacia_legislativa": 0.492,
+        "desafios_legislativos": -0.686,
+        "eficacia_legislativa": 0.53,
         "jornadas_individuales_no_trabajadas_12m": 0.163,
-        "produccion_legislativa": -0.072,
-        "ratio_dnu": -0.153,
-        "veto_quorum": -0.482,
-        "votometro_ventaja_lla": 0.015
+        "produccion_legislativa": -0.074,
+        "ratio_dnu": -0.148,
+        "veto_quorum": -0.486,
+        "votometro_ventaja_lla": -0.051
       },
       "bloqueo_sostenido": {
         "adhesion_reformas_provincial": -0.667,
         "alineamiento_senadores_prov": 0.301,
-        "apoyo_empresario": -0.396,
+        "apoyo_empresario": -0.53,
         "brecha_obra_publica": -0.873,
         "cobertura_judicial": 0.804,
         "cohesion_bloque": -0.284,
@@ -1447,12 +1447,12 @@
         "produccion_legislativa": 0.474,
         "ratio_dnu": 0.346,
         "veto_quorum": -0.366,
-        "votometro_ventaja_lla": 0.177
+        "votometro_ventaja_lla": -0.028
       },
       "brecha_obra_publica": {
         "adhesion_reformas_provincial": 0.653,
         "alineamiento_senadores_prov": -0.348,
-        "apoyo_empresario": 0.39,
+        "apoyo_empresario": 0.432,
         "bloqueo_sostenido": -0.873,
         "cobertura_judicial": -0.782,
         "cohesion_bloque": 0.252,
@@ -1463,12 +1463,12 @@
         "produccion_legislativa": -0.415,
         "ratio_dnu": -0.28,
         "veto_quorum": 0.253,
-        "votometro_ventaja_lla": 0.128
+        "votometro_ventaja_lla": 0.273
       },
       "cobertura_judicial": {
         "adhesion_reformas_provincial": -0.526,
         "alineamiento_senadores_prov": 0.42,
-        "apoyo_empresario": -0.524,
+        "apoyo_empresario": -0.528,
         "bloqueo_sostenido": 0.804,
         "brecha_obra_publica": -0.782,
         "cohesion_bloque": -0.144,
@@ -1479,12 +1479,12 @@
         "produccion_legislativa": 0.479,
         "ratio_dnu": 0.516,
         "veto_quorum": -0.114,
-        "votometro_ventaja_lla": -0.11
+        "votometro_ventaja_lla": -0.185
       },
       "cohesion_bloque": {
         "adhesion_reformas_provincial": 0.203,
         "alineamiento_senadores_prov": 0.437,
-        "apoyo_empresario": -0.435,
+        "apoyo_empresario": -0.439,
         "bloqueo_sostenido": -0.284,
         "brecha_obra_publica": 0.252,
         "cobertura_judicial": -0.144,
@@ -1495,7 +1495,7 @@
         "produccion_legislativa": -0.499,
         "ratio_dnu": -0.347,
         "veto_quorum": 0.851,
-        "votometro_ventaja_lla": 0.055
+        "votometro_ventaja_lla": 0.225
       },
       "conflictividad_nacional": {
         "adhesion_reformas_provincial": -0.041,
@@ -1511,12 +1511,12 @@
         "produccion_legislativa": -0.116,
         "ratio_dnu": -0.263,
         "veto_quorum": -0.42,
-        "votometro_ventaja_lla": 0.053
+        "votometro_ventaja_lla": 0.093
       },
       "desafios_legislativos": {
         "adhesion_reformas_provincial": -0.561,
         "alineamiento_senadores_prov": 0.579,
-        "apoyo_empresario": -0.647,
+        "apoyo_empresario": -0.686,
         "bloqueo_sostenido": 0.845,
         "brecha_obra_publica": -0.818,
         "cobertura_judicial": 0.844,
@@ -1527,12 +1527,12 @@
         "produccion_legislativa": 0.48,
         "ratio_dnu": 0.418,
         "veto_quorum": -0.038,
-        "votometro_ventaja_lla": -0.04
+        "votometro_ventaja_lla": -0.091
       },
       "eficacia_legislativa": {
         "adhesion_reformas_provincial": -0.771,
         "alineamiento_senadores_prov": -0.742,
-        "apoyo_empresario": 0.492,
+        "apoyo_empresario": 0.53,
         "bloqueo_sostenido": 0.322,
         "brecha_obra_publica": 0.737,
         "cobertura_judicial": -0.451,
@@ -1543,7 +1543,7 @@
         "produccion_legislativa": -0.661,
         "ratio_dnu": -0.569,
         "veto_quorum": -0.56,
-        "votometro_ventaja_lla": 0.818
+        "votometro_ventaja_lla": 0.866
       },
       "jornadas_individuales_no_trabajadas_12m": {
         "adhesion_reformas_provincial": 0.164,
@@ -1559,12 +1559,12 @@
         "produccion_legislativa": -0.408,
         "ratio_dnu": -0.308,
         "veto_quorum": 0.269,
-        "votometro_ventaja_lla": 0.439
+        "votometro_ventaja_lla": 0.475
       },
       "produccion_legislativa": {
         "adhesion_reformas_provincial": -0.014,
         "alineamiento_senadores_prov": 0.177,
-        "apoyo_empresario": -0.072,
+        "apoyo_empresario": -0.074,
         "bloqueo_sostenido": 0.474,
         "brecha_obra_publica": -0.415,
         "cobertura_judicial": 0.479,
@@ -1575,12 +1575,12 @@
         "jornadas_individuales_no_trabajadas_12m": -0.408,
         "ratio_dnu": 0.871,
         "veto_quorum": -0.629,
-        "votometro_ventaja_lla": -0.024
+        "votometro_ventaja_lla": -0.035
       },
       "ratio_dnu": {
         "adhesion_reformas_provincial": 0.194,
         "alineamiento_senadores_prov": 0.205,
-        "apoyo_empresario": -0.153,
+        "apoyo_empresario": -0.148,
         "bloqueo_sostenido": 0.346,
         "brecha_obra_publica": -0.28,
         "cobertura_judicial": 0.516,
@@ -1591,12 +1591,12 @@
         "jornadas_individuales_no_trabajadas_12m": -0.308,
         "produccion_legislativa": 0.871,
         "veto_quorum": -0.5,
-        "votometro_ventaja_lla": 0.012
+        "votometro_ventaja_lla": 0.023
       },
       "veto_quorum": {
         "adhesion_reformas_provincial": -0.019,
         "alineamiento_senadores_prov": 0.303,
-        "apoyo_empresario": -0.482,
+        "apoyo_empresario": -0.486,
         "bloqueo_sostenido": -0.366,
         "brecha_obra_publica": 0.253,
         "cobertura_judicial": -0.114,
@@ -1607,23 +1607,23 @@
         "jornadas_individuales_no_trabajadas_12m": 0.269,
         "produccion_legislativa": -0.629,
         "ratio_dnu": -0.5,
-        "votometro_ventaja_lla": -0.161
+        "votometro_ventaja_lla": -0.001
       },
       "votometro_ventaja_lla": {
-        "adhesion_reformas_provincial": 0.264,
-        "alineamiento_senadores_prov": -0.124,
-        "apoyo_empresario": 0.015,
-        "bloqueo_sostenido": 0.177,
-        "brecha_obra_publica": 0.128,
-        "cobertura_judicial": -0.11,
-        "cohesion_bloque": 0.055,
-        "conflictividad_nacional": 0.053,
-        "desafios_legislativos": -0.04,
-        "eficacia_legislativa": 0.818,
-        "jornadas_individuales_no_trabajadas_12m": 0.439,
-        "produccion_legislativa": -0.024,
-        "ratio_dnu": 0.012,
-        "veto_quorum": -0.161
+        "adhesion_reformas_provincial": 0.293,
+        "alineamiento_senadores_prov": -0.161,
+        "apoyo_empresario": -0.051,
+        "bloqueo_sostenido": -0.028,
+        "brecha_obra_publica": 0.273,
+        "cobertura_judicial": -0.185,
+        "cohesion_bloque": 0.225,
+        "conflictividad_nacional": 0.093,
+        "desafios_legislativos": -0.091,
+        "eficacia_legislativa": 0.866,
+        "jornadas_individuales_no_trabajadas_12m": 0.475,
+        "produccion_legislativa": -0.035,
+        "ratio_dnu": 0.023,
+        "veto_quorum": -0.001
       }
     },
     "pares_altos": [
@@ -1645,6 +1645,16 @@
         "dimension_a": "poder_legislativo",
         "dimension_b": "poder_legislativo",
         "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
+        "a": "eficacia_legislativa",
+        "b": "votometro_ventaja_lla",
+        "r": 0.866,
+        "n": 9,
+        "dimension_a": "poder_legislativo",
+        "dimension_b": "imagen_voto",
+        "misma_dimension": false,
         "por_diseno": null
       },
       {
@@ -1698,16 +1708,6 @@
         "por_diseno": null
       },
       {
-        "a": "eficacia_legislativa",
-        "b": "votometro_ventaja_lla",
-        "r": 0.818,
-        "n": 9,
-        "dimension_a": "poder_legislativo",
-        "dimension_b": "imagen_voto",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "bloqueo_sostenido",
         "b": "cobertura_judicial",
         "r": 0.804,
@@ -1741,7 +1741,7 @@
         "a": "apoyo_empresario",
         "b": "conflictividad_nacional",
         "r": 0.751,
-        "n": 32,
+        "n": 29,
         "dimension_a": "sector_privado",
         "dimension_b": "conflicto_social",
         "misma_dimension": false,
@@ -2786,11 +2786,11 @@
     }
   },
   "serie_itcp": {
-    "2024-01": 62.2,
-    "2024-02": 68.0,
-    "2024-03": 68.4,
+    "2024-01": 65.6,
+    "2024-02": 70.0,
+    "2024-03": 68.5,
     "2024-04": 64.8,
-    "2024-05": 63.2,
+    "2024-05": 63.6,
     "2024-06": 55.1,
     "2024-07": 49.6,
     "2024-08": 50.6,
@@ -2799,25 +2799,25 @@
     "2024-11": 44.3,
     "2024-12": 49.7,
     "2025-01": 56.0,
-    "2025-02": 57.3,
-    "2025-03": 57.3,
-    "2025-04": 54.3,
-    "2025-05": 63.9,
-    "2025-06": 64.2,
-    "2025-07": 61.5,
-    "2025-08": 46.9,
+    "2025-02": 58.3,
+    "2025-03": 58.3,
+    "2025-04": 55.7,
+    "2025-05": 65.0,
+    "2025-06": 65.7,
+    "2025-07": 62.5,
+    "2025-08": 47.5,
     "2025-09": 46.0,
     "2025-10": 42.3,
     "2025-11": 54.2,
-    "2025-12": 61.2,
-    "2026-01": 64.5,
-    "2026-02": 62.4,
-    "2026-03": 62.8,
+    "2025-12": 62.6,
+    "2026-01": 66.9,
+    "2026-02": 64.6,
+    "2026-03": 65.3,
     "2026-04": 58.8,
     "2026-05": 62.9,
-    "2026-06": 64.2,
-    "2026-07": 64.4,
-    "2026-08": 64.7
+    "2026-06": 65.9,
+    "2026-07": 65.3,
+    "2026-08": 65.6
   },
   "series_dimensiones": {
     "itvc": {
@@ -3597,12 +3597,12 @@
         "nombre": "Imagen y voto",
         "peso": 0.07,
         "serie": {
-          "2024-01": 60.0,
-          "2024-02": 60.0,
-          "2024-03": 60.0,
+          "2024-01": 100.0,
+          "2024-02": 88.7,
+          "2024-03": 60.7,
           "2024-04": 53.3,
-          "2024-05": 60.0,
-          "2024-06": 60.0,
+          "2024-05": 66.7,
+          "2024-06": 60.7,
           "2024-07": 50.0,
           "2024-08": 40.7,
           "2024-09": 32.4,
@@ -3610,20 +3610,20 @@
           "2024-11": 39.6,
           "2024-12": 36.0,
           "2025-01": 60.0,
-          "2025-02": 60.0,
-          "2025-03": 60.0,
-          "2025-04": 60.0,
-          "2025-05": 60.0,
-          "2025-06": 60.0,
-          "2025-07": 60.0,
-          "2025-08": 60.0,
+          "2025-02": 74.0,
+          "2025-03": 74.0,
+          "2025-04": 80.0,
+          "2025-05": 74.7,
+          "2025-06": 82.0,
+          "2025-07": 74.7,
+          "2025-08": 68.0,
           "2025-09": 48.7,
           "2025-10": 52.0,
           "2025-11": 58.0,
-          "2025-12": 60.0,
-          "2026-01": 60.0,
-          "2026-02": 60.0,
-          "2026-03": 60.0,
+          "2025-12": 80.0,
+          "2026-01": 93.3,
+          "2026-02": 92.0,
+          "2026-03": 95.3,
           "2026-04": 52.7,
           "2026-05": 38.0,
           "2026-06": 36.0,
@@ -3702,9 +3702,9 @@
           "2026-03": 68.8,
           "2026-04": 65.1,
           "2026-05": 64.5,
-          "2026-06": 62.4,
-          "2026-07": 65.5,
-          "2026-08": 64.8
+          "2026-06": 75.4,
+          "2026-07": 72.8,
+          "2026-08": 71.4
         }
       },
       "alianzas_territoriales": {
@@ -4036,23 +4036,23 @@
   },
   "correlaciones_itcp": {
     "niveles (ITCP vs EPU Argentina)": {
-      "r": -0.373,
+      "r": -0.368,
       "n": 32
     },
     "primeras diferencias (ITCP vs EPU)": {
-      "r": -0.287,
+      "r": -0.291,
       "n": 31
     },
     "ITCP adelantado 1 mes vs EPU": {
-      "r": -0.284,
+      "r": -0.281,
       "n": 31
     },
     "EPU adelantado 1 mes vs ITCP": {
-      "r": -0.254,
+      "r": -0.231,
       "n": 32
     },
     "niveles, sin la dimensión de sector privado": {
-      "r": -0.524,
+      "r": -0.528,
       "n": 30
     }
   },
@@ -5950,8 +5950,8 @@
           "etiqueta": "Ventas en autoservicios mayoristas",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.109,
-          "r_diferencias": -0.222,
+          "r_niveles": -0.118,
+          "r_diferencias": -0.212,
           "n": 30
         },
         {
@@ -5959,8 +5959,8 @@
           "etiqueta": "Ventas en centros de compras",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.463,
-          "r_diferencias": -0.12,
+          "r_niveles": -0.462,
+          "r_diferencias": -0.123,
           "n": 30
         },
         {
@@ -5969,7 +5969,7 @@
           "fuente": "CAMMESA",
           "propia": false,
           "r_niveles": 0.507,
-          "r_diferencias": 0.31,
+          "r_diferencias": 0.319,
           "n": 31
         },
         {
@@ -5977,8 +5977,8 @@
           "etiqueta": "Incertidumbre de política (EPU)",
           "fuente": "Banco de España / SECMCA",
           "propia": true,
-          "r_niveles": -0.373,
-          "r_diferencias": -0.287,
+          "r_niveles": -0.368,
+          "r_diferencias": -0.291,
           "n": 32
         },
         {
@@ -5986,7 +5986,7 @@
           "etiqueta": "Financiamiento externo a empresas",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": 0.007,
+          "r_niveles": 0.018,
           "r_diferencias": 0.225,
           "n": 31
         },
@@ -5995,8 +5995,8 @@
           "etiqueta": "Consumo residencial de gas",
           "fuente": "Sec. de Energía",
           "propia": false,
-          "r_niveles": 0.208,
-          "r_diferencias": -0.008,
+          "r_niveles": 0.179,
+          "r_diferencias": 0.005,
           "n": 29
         },
         {
@@ -6004,8 +6004,8 @@
           "etiqueta": "Confianza en el Gobierno (ICG de la UTDT)",
           "fuente": "UTDT",
           "propia": true,
-          "r_niveles": 0.055,
-          "r_diferencias": 0.385,
+          "r_niveles": 0.064,
+          "r_diferencias": 0.404,
           "n": 32
         },
         {
@@ -6013,8 +6013,8 @@
           "etiqueta": "Índice Líder de actividad",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": -0.188,
-          "r_diferencias": -0.055,
+          "r_niveles": -0.153,
+          "r_diferencias": 0.008,
           "n": 31
         },
         {
@@ -6022,8 +6022,8 @@
           "etiqueta": "Inversión directa de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": 0.14,
-          "r_diferencias": 0.043,
+          "r_niveles": 0.15,
+          "r_diferencias": 0.046,
           "n": 31
         },
         {
@@ -6031,8 +6031,8 @@
           "etiqueta": "Inversión de cartera de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": -0.106,
-          "r_diferencias": -0.28,
+          "r_niveles": -0.108,
+          "r_diferencias": -0.285,
           "n": 31
         },
         {
@@ -6040,8 +6040,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": 0.005,
-          "r_diferencias": 0.149,
+          "r_niveles": 0.007,
+          "r_diferencias": 0.144,
           "n": 32
         },
         {
@@ -6049,8 +6049,8 @@
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.051,
-          "r_diferencias": -0.231,
+          "r_niveles": -0.076,
+          "r_diferencias": -0.217,
           "n": 30
         },
         {
@@ -6058,24 +6058,24 @@
           "etiqueta": "Ventas de naftas",
           "fuente": "Sec. de Energía",
           "propia": false,
-          "r_niveles": -0.346,
-          "r_diferencias": -0.111,
+          "r_niveles": -0.341,
+          "r_diferencias": -0.115,
           "n": 31
         }
       ],
       "n_propias": 2,
       "n_ajenas": 11,
       "niveles": {
-        "convergente": 0.214,
-        "discriminante": 0.194,
-        "brecha": 0.02
+        "convergente": 0.216,
+        "discriminante": 0.193,
+        "brecha": 0.023
       },
       "diferencias": {
-        "convergente": 0.336,
-        "discriminante": 0.159,
-        "brecha": 0.177
+        "convergente": 0.348,
+        "discriminante": 0.154,
+        "brecha": 0.194
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 2 estadísticas de su propio terreno es 0,214 y con las 11 ajenas es 0,194. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,336 con lo propio contra 0,159 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 2 estadísticas de su propio terreno es 0,216 y con las 11 ajenas es 0,193. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,348 con lo propio contra 0,154 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     }
   }
 }

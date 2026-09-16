@@ -92,6 +92,14 @@ haría falta parsear la versión taquigráfica completa de cada sesión — un
 trabajo de una escala distinta al de este ticket, y sin garantía de que el
 dato esté ahí de forma estructurada.
 
+Nota agregada en revisión adversarial (2026-09-15, sin investigar a fondo,
+fuera de alcance de este ticket): no se descartó explícitamente que el propio
+pedido formal de sesión especial (art. 35/37) exista como **expediente
+buscable** dentro de `proyectos-parlamentarios` (por texto/tipo, no por el
+campo `AUTOR` de un proyecto de ley) — distinto del Diario de Sesiones
+taquigráfico mencionado arriba. Si alguien retoma este ADR, es el primer lugar
+más barato para mirar antes de ir al taquigráfico completo.
+
 ## Más información
 
 ### La objeción del equipo, sin actuar sobre ella

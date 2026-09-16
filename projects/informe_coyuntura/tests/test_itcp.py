@@ -6,13 +6,14 @@ import parametrica
 
 
 def test_banda_votometro_extremos():
-    # (8,inf,60)·(2,8,40)·(-2,2,20)·(-inf,-2,0) — ADR-0312.
+    # (14,inf,100)·(8,14,80)·(2,8,40)·(-2,2,20)·(-inf,-2,0) — ADR-0312
+    # (revisión: techo 0-100, no 60 — ver comentario en BANDAS_ITCP).
     # Convención low exclusivo/high inclusivo (parametrica.puntaje_banda): en
     # el límite compartido 8.0 el punto cae en la banda que lo incluye por
     # high inclusivo (2,8,40], NO en la banda que lo excluye por low
-    # exclusivo (8,inf) — mismo criterio que itcg pinea (ver test_itcg.py,
+    # exclusivo (8,14) — mismo criterio que itcg pinea (ver test_itcg.py,
     # p.ej. protocolo_antipiquetes en 75.01 y no en 75.0 exacto).
-    assert itcp.puntaje_banda(20.0, itcp.BANDAS_ITCP["votometro_ventaja_lla"]) == 60
+    assert itcp.puntaje_banda(20.0, itcp.BANDAS_ITCP["votometro_ventaja_lla"]) == 100
     assert itcp.puntaje_banda(8.0, itcp.BANDAS_ITCP["votometro_ventaja_lla"]) == 40
     assert itcp.puntaje_banda(7.9, itcp.BANDAS_ITCP["votometro_ventaja_lla"]) == 40
     assert itcp.puntaje_banda(-20.0, itcp.BANDAS_ITCP["votometro_ventaja_lla"]) == 0
@@ -340,7 +341,7 @@ def test_pesos_itcp_suman_uno_en_cada_dimension():
 
 def test_calcular_itcp_pondera_dimensiones():
     valores = {
-        "votometro_ventaja_lla": 15.0,       # imagen_voto, puntaje 60 (tope desde ADR-0312)
+        "votometro_ventaja_lla": 15.0,       # imagen_voto, puntaje 100 (techo 0-100, ADR-0312)
         "ratio_dnu": 0.2,                    # poder_legislativo, puntaje 100
         "eficacia_legislativa": 60.0,        # poder_legislativo, puntaje 100
         "veto_quorum": 2.0,                  # poder_legislativo, puntaje 100
@@ -361,20 +362,21 @@ def test_calcular_itcp_pondera_dimensiones():
     }
     resultado = itcp.calcular_itcp(valores)
     assert resultado is not None
-    # imagen_voto tope en 60 desde ADR-0312 (votometro_ventaja_lla ya no
-    # puede dar puntaje 100): 96,1 = promedio ponderado con las otras seis
-    # dimensiones en 100 y esa en 60 (peso 0,07).
-    assert resultado["valor"] == 96.1
+    # imagen_voto llega a 100 con ventaja=15 (>14, ancla superior) — techo
+    # 0-100 restaurado tras la revisión del corte 60 (ADR-0312): con todas
+    # las demás dimensiones también en 100, el índice da 100 parejo.
+    assert resultado["valor"] == 100.0
     assert resultado["banda"] == "aflojado"
 
 
 def test_calcular_itcp_renormaliza_ante_faltantes():
     # Solo imagen_voto disponible -> esa dimensión sola determina el índice.
-    # Tope 60 desde ADR-0312 (antes 100): votometro_ventaja_lla ya no alcanza
-    # puntaje pleno con ninguna ventaja, por diseño (ver test del semáforo).
+    # Techo 0-100 (ADR-0312, revisión): con ventaja=15 (>14) el indicador
+    # satura en el puntaje pleno, igual que cualquier otro indicador del
+    # ITCP en su óptimo.
     resultado = itcp.calcular_itcp({"votometro_ventaja_lla": 15.0})
     assert resultado is not None
-    assert resultado["valor"] == 60.0
+    assert resultado["valor"] == 100.0
 
 
 def test_calcular_itcp_sin_datos_devuelve_none():
