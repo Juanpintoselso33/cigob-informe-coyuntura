@@ -216,6 +216,20 @@ DIMENSIONES_ITVC = {
         # ×0,80 de `consumo_supermercados` y ×0,975 de ésta— siguen sumando
         # 1,0 redondeando cada componente a 4 decimales por separado, mismo
         # requisito que fijó los decimales de ADR-0322.
+        #
+        # CORRECCIÓN (revisión adversarial post-merge, ver ADR-0328): "control
+        # sobre la composición" es el mismo encuadre que ADR-0321 corrigió para
+        # `recaudacion`/IVA-DGI en el ITCM — es una DESCOMPOSICIÓN del mismo
+        # flujo que `motorizacion_total`, no un control independiente. Medido:
+        # r = +0,40 en niveles pero r = −0,251 en la matriz de redundancia
+        # publicada (que correlaciona MOVIMIENTOS, no niveles) — el mismo boom
+        # de motos empuja a `motorizacion_total` hacia el verde y al ratio
+        # hacia el rojo EN SIMULTÁNEO, en la misma dimensión: no es doble
+        # conteo, es auto-cancelación parcial. El peso de 2,5% (0,7% del
+        # ITCIS) ya la acota en magnitud absoluta; no se rediseña el reparto
+        # de pesos en esta corrección porque hacerlo exigiría remover una de
+        # las dos vistas, y las dos preguntas —nivel del flujo, composición
+        # del flujo— siguen siendo dos preguntas distintas (ver ADR-0328).
         "indicadores": alta_proporcional(
             alta_proporcional(
                 {"brecha_salario_cbt": 0.5959,
@@ -667,22 +681,82 @@ def rebase_movil12(series, skey):
     return round(actual / (sum(bases) / len(bases)) * 100.0, 1)
 
 
-def rebase_de_serie(series, skey, invertido=False, base_meses=None):
+def rebase_de_serie(series, skey, invertido=False, base_meses=None, base_valor=None):
     """Índice base-100 del ÚLTIMO punto de una serie vs su promedio 4T-2023.
     En series trimestrales el 4T-2023 es un único punto (2023-10), que coincide
     naturalmente con la base del doc; en mensuales, el promedio oct-nov-dic.
     `base_meses` permite una base DECLARADA distinta (ej. IVI: enero de 2024,
-    conservada por continuidad; el archivo 2023 se recuperó en ADR-0273)."""
+    conservada por continuidad; el archivo 2023 se recuperó en ADR-0273).
+
+    `base_valor` (ADR-0327, corrección) permite una base NUMÉRICA explícita en
+    vez de mirar una fecha: hace falta para series donde anclar contra UN AÑO
+    elegido —aunque sea "el más reciente disponible cuando se fijó la
+    convención"— es la circularidad que `procedencia_anclas.py` existe para
+    contar. Si se pasa, `base_meses` se ignora por completo."""
     serie = series.get(skey) or []
-    vals = {p["fecha"][:7]: p["valor"] for p in serie}
-    base_vals = [vals[m] for m in (base_meses or BASE_MESES) if vals.get(m) is not None]
-    if not serie or not base_vals:
+    if not serie:
         return None
-    base = sum(base_vals) / len(base_vals)
+    if base_valor is not None:
+        base = base_valor
+    else:
+        vals = {p["fecha"][:7]: p["valor"] for p in serie}
+        base_vals = [vals[m] for m in (base_meses or BASE_MESES) if vals.get(m) is not None]
+        if not base_vals:
+            return None
+        base = sum(base_vals) / len(base_vals)
     ult = serie[-1]["valor"]
     if not ult or not base:
         return None
     return round((base / ult if invertido else ult / base) * 100.0, 1)
+
+
+def mediana_de_serie(series, skey):
+    """Mediana de TODOS los puntos históricos de una serie (no sólo el
+    último). Sirve de ancla para series con historia larga y sin tendencia
+    estructural sostenida (tasa_homicidios/tasa_robos, ADR-0327 corrección):
+    anclar contra un AÑO puntual —aunque sea uno "representativo"— es
+    exactamente la circularidad de convención que `procedencia_anclas.py`
+    pide declarar; la mediana de los 26 años disponibles no depende de cuál
+    año se mire primero."""
+    vals = sorted(p["valor"] for p in (series.get(skey) or []) if p.get("valor") is not None)
+    n = len(vals)
+    if n == 0:
+        return None
+    mitad = n // 2
+    return vals[mitad] if n % 2 else (vals[mitad - 1] + vals[mitad]) / 2.0
+
+
+# ADR-0328 corrección: `ratio_motos_autos` mide la COMPOSICIÓN del MISMO flujo
+# que `motorizacion_total` (autos + motos patentados) — es una descomposición,
+# no un control independiente (mismo precedente que ADR-0321 sienta para
+# `recaudacion`/IVA-DGI en el ITCM). Por eso comparte el problema estructural
+# que ya motivó la excepción de `motorizacion_total` al techo de 140
+# (ADR-0033/0224): su rango propio es mucho más ancho que el ±25% que la
+# pendiente fija de `tension_de_itvc` (0,2) puede mostrar sin saturar.
+#
+# Sin amortiguar, el ratio nace en índice 72,1 (tensión 10,58, saturada en el
+# techo de la escala 0-10) con sólo un +38,8% de crecimiento sobre su propia
+# base 4T-2023 — nace SIN margen para seguir mostrando que la tendencia
+# continúa, exactamente el defecto que la revisión adversarial señaló ("no
+# discrimina hacia arriba").
+#
+# FACTOR_AMORTIGUACION_RATIO_MOTOS_AUTOS comprime la distancia a 100 a la
+# mitad ANTES de que la pendiente fija la lea: reversible en una sola
+# constante, mismo espíritu que `invertido`. Con 0,5 el mismo dato de hoy da
+# índice 86,0 (tensión 7,8, naranja: ya no saturado) y el ratio sólo vuelve a
+# saturar si LLEGA A DUPLICAR su base (+100%), no con un +25%.
+FACTOR_AMORTIGUACION_RATIO_MOTOS_AUTOS = 0.5
+
+
+def rebase_amortiguado(series, skey, invertido=False, base_meses=None, factor=1.0):
+    """Como `rebase_de_serie`, pero comprime la distancia a 100 por `factor`
+    antes de devolverla. `factor=1.0` es exactamente `rebase_de_serie` (sin
+    efecto); ver `FACTOR_AMORTIGUACION_RATIO_MOTOS_AUTOS` para el caso que la
+    motiva."""
+    idx = rebase_de_serie(series, skey, invertido=invertido, base_meses=base_meses)
+    if idx is None:
+        return None
+    return round(100.0 + (idx - 100.0) * factor, 1)
 
 
 def indices_desde_series(vida_ind, series, baselines=None):
@@ -760,19 +834,36 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # efecto y documentar una decisión, no cambiarlo al reparar el colector.
     idx["inseguridad"] = rebase_de_serie(series, "inseguridad", invertido=True,
                                                base_meses=("2024-01",))
-    # ADR-0327: SNIC por tipo, ANUAL — la serie sólo tiene un punto por año en
-    # YYYY-12, así que la base por defecto (oct/nov/dic-2023) resuelve sola al
-    # año 2023, igual que predijo el comentario de más arriba para cualquier
-    # serie del SNIC. INVERTIDO: menos tasa = mejora. `tasa_hechos` la calcula
-    # el SNIC, no se reconstruye con población propia.
-    idx["tasa_homicidios"] = rebase_de_serie(series, "tasa_homicidios", invertido=True)
-    idx["tasa_robos"] = rebase_de_serie(series, "tasa_robos", invertido=True)
-    # ADR-0328: motos por cada auto patentado, INVERTIDO — más motos por auto
-    # es deterioro (confirmado por el usuario), así que se rebasea igual que
-    # `mora_familias`: la base va arriba del cociente y una suba del ratio
-    # hoy da un índice por DEBAJO de 100. Reversible en una línea: sacar
-    # `invertido=True` invierte la lectura completa.
-    idx["ratio_motos_autos"] = rebase_de_serie(series, "ratio_motos_autos", invertido=True)
+    # ADR-0327, CORRECCIÓN (revisión adversarial post-merge): el ancla original
+    # rebaseaba contra el propio 2023 — la base por defecto (oct/nov/dic)
+    # resuelve sola a ese año porque la serie del SNIC sólo tiene un punto por
+    # año, en YYYY-12. El ADR afirmaba que 2023 "cae cerca de la mediana" de
+    # los 26 años (4,32 vs. mediana ~5,7); medido, 4,32 está en el PERCENTIL 11
+    # de la serie 2000-2025 (25% por debajo de la mediana), no cerca de ella —
+    # y anclar contra un año puntual elegido es, además, exactamente la
+    # convención circular que `procedencia_anclas.py` existe para contar.
+    #
+    # Se ancla contra la MEDIANA de los 26 años en vez del año 2023. INVERTIDO:
+    # menos tasa = mejora. `tasa_hechos` la calcula el SNIC, no se reconstruye
+    # con población propia.
+    idx["tasa_homicidios"] = rebase_de_serie(
+        series, "tasa_homicidios", invertido=True,
+        base_valor=mediana_de_serie(series, "tasa_homicidios"))
+    idx["tasa_robos"] = rebase_de_serie(
+        series, "tasa_robos", invertido=True,
+        base_valor=mediana_de_serie(series, "tasa_robos"))
+    # ADR-0328, CORRECCIÓN: motos por cada auto patentado, INVERTIDO — más
+    # motos por auto es deterioro (confirmado por el usuario), así que se
+    # rebasea igual que `mora_familias`: la base va arriba del cociente y una
+    # suba del ratio hoy da un índice por DEBAJO de 100. Reversible en una
+    # línea: sacar `invertido=True` invierte la lectura completa.
+    #
+    # Se amortigua con FACTOR_AMORTIGUACION_RATIO_MOTOS_AUTOS (ver su
+    # comentario, arriba): sin amortiguar, el componente nace saturado en el
+    # techo de tensión de la escala y no puede mostrar que la tendencia sigue.
+    idx["ratio_motos_autos"] = rebase_amortiguado(
+        series, "ratio_motos_autos", invertido=True,
+        factor=FACTOR_AMORTIGUACION_RATIO_MOTOS_AUTOS)
     # Sentimiento digital (ADR-0034): canasta mensual Trends de ventana fija —
     # el cociente intra-consulta es inmune a la renormalización. Invertido:
     # más búsquedas de inflación/precios = más urgencia percibida.

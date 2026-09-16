@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-16 02:16:10"
+generado: "2026-09-16 02:58:35"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -10,7 +10,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-09
 
-**Score global:** 3.8/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.4/10)
+**Score global:** 3.8/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.3/10)
 
 ## Cinturones
 
@@ -76,7 +76,7 @@ schema_version: "1.2.0"
 |---|---|---|---|---|---|
 | judicializacion | 1.69 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
 
-### 🔴 Vida Cotidiana — score 6.4/10 (tensionado)
+### 🔴 Vida Cotidiana — score 6.3/10 (tensionado)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -123,4 +123,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-16 02:16:10 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-16 02:58:35 — schema 1.2.0*

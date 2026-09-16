@@ -6,7 +6,7 @@ fecha: 2026-09-15
 cinturon: 'macro'
 indicadores: [recaudacion]
 archivos: ['scripts/macro.py', 'web/src/lib/fichas.ts', 'tests/test_macro_recaudacion_dgi.py', 'docs/adr/0318-iva-cheque-entran-como-control-no-como-card.md', 'docs/adr/0319-control-tributario-mismo-deflactor-mismo-sentido.md']
-relacionado: ['0072', '0127', '0152', '0239', '0318', '0319', '0326']
+relacionado: ['0072', '0127', '0152', '0239', '0318', '0319', '0326', '0328']
 ambito: 'Cinturón Macro · `recaudacion` · encuadre de IVA-DGI/cheque, tope de retroceso, banda muerta'
 origen: 'Revisión adversarial de ADR-0318/ADR-0319 (15-sep-2026), previa al PR #28'
 ---

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-09-16T02:16:10.786302-03:00",
+  "generated_at": "2026-09-16T02:58:35.016027-03:00",
   "period": "2026-09",
   "score_global": 3.8,
   "ponderacion": {
@@ -1474,7 +1474,7 @@
       }
     },
     "vida_cotidiana": {
-      "score": 6.4,
+      "score": 6.3,
       "estado": "tensionado",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -1503,14 +1503,14 @@
       },
       "alerta": null,
       "itvc": {
-        "valor": 93.2,
+        "valor": 93.4,
         "banda": "deterioro_moderado",
         "banda_legible": "Deterioro moderado frente a las referencias",
         "dimensiones": {
           "ingresos": {
             "nombre": "Ingresos y consumo",
             "peso": 0.2806,
-            "puntaje": 111.1,
+            "puntaje": 111.4,
             "indicadores": {
               "brecha_salario_cbt": {
                 "peso": 0.4648,
@@ -1550,8 +1550,8 @@
               },
               "ratio_motos_autos": {
                 "peso": 0.025,
-                "puntaje_banda": 72.1,
-                "puntaje_aplicado": 72.1,
+                "puntaje_banda": 86.0,
+                "puntaje_aplicado": 86.0,
                 "peso_efectivo": 0.0076
               }
             },
@@ -1695,8 +1695,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 111,1, equivale a una tensión de 2,8/10 en la escala del informe.",
-              "tension": 2.8
+              "por_que": "El índice de la dimensión, 111,4, equivale a una tensión de 2,7/10 en la escala del informe.",
+              "tension": 2.7
             }
           },
           "precios": {
@@ -2218,7 +2218,7 @@
           "seguridad": {
             "nombre": "Seguridad",
             "peso": 0.045,
-            "puntaje": 113.0,
+            "puntaje": 115.9,
             "indicadores": {
               "inseguridad": {
                 "peso": 0.595,
@@ -2228,14 +2228,14 @@
               },
               "tasa_homicidios": {
                 "peso": 0.255,
-                "puntaje_banda": 124.3,
-                "puntaje_aplicado": 124.3,
+                "puntaje_banda": 140.0,
+                "puntaje_aplicado": 140.0,
                 "peso_efectivo": 0.0125
               },
               "tasa_robos": {
                 "peso": 0.15,
-                "puntaje_banda": 126.6,
-                "puntaje_aplicado": 126.6,
+                "puntaje_banda": 118.9,
+                "puntaje_aplicado": 118.9,
                 "peso_efectivo": 0.0074
               }
             },
@@ -2379,64 +2379,64 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 113,0, equivale a una tensión de 2,4/10 en la escala del informe.",
-              "tension": 2.4
+              "por_que": "El índice de la dimensión, 115,9, equivale a una tensión de 1,8/10 en la escala del informe.",
+              "tension": 1.8
             }
           }
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 91.1,
-          "p95": 95.1,
+          "p05": 91.4,
+          "p95": 95.4,
           "tension_rango": [
-            6.0,
-            6.8
+            5.9,
+            6.7
           ],
           "dominante": {
             "indicador": "alquiler_real",
-            "indice_sin": 96.5
+            "indice_sin": 96.7
           },
           "n_draws": 1000,
           "hist": [
             2,
             1,
-            0,
+            1,
             6,
-            4,
-            16,
-            17,
-            21,
-            23,
+            7,
             20,
-            27,
-            45,
-            33,
-            45,
-            67,
-            76,
+            16,
+            23,
+            21,
+            25,
+            26,
+            42,
+            37,
+            54,
+            73,
+            68,
             62,
-            58,
+            56,
             61,
             59,
-            53,
-            54,
-            32,
-            45,
-            33,
-            37,
+            47,
+            50,
+            35,
+            39,
+            36,
+            36,
             24,
-            22,
-            21,
-            8,
+            24,
+            13,
+            9,
             6,
             12,
             5,
-            2,
+            1,
             1,
             2
           ],
-          "hist_min": 89.8,
-          "hist_max": 96.58,
+          "hist_min": 90.12,
+          "hist_max": 96.86,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "serie_mensual": [

@@ -339,8 +339,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (primeros días del mes siguiente)", tipo: "Nivel per cápita · índice base-100 en el gráfico",
   },
   ratio_motos_autos: {
-    que: "Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que `motorizacion_total`. Puntúa INVERTIDO: más motos por auto es deterioro.",
-    aporta: "Aísla la COMPOSICIÓN del flujo de patentamientos que `motorizacion_total` mide en NIVEL: un total que crece mientras este ratio también sube dice que el crecimiento viene de la moto —el vehículo más barato— y no de una mejora pareja. Es reversible en una línea de código: la polaridad es una decisión de contenido, no un hecho aritmético.",
+    que: "Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. Puntúa INVERTIDO: más motos por auto es deterioro.",
+    aporta: "Aísla la COMPOSICIÓN del flujo de patentamientos que la motorización total mide en NIVEL: un total que crece mientras este ratio también sube dice que el crecimiento viene de la moto —el vehículo más barato— y no de una mejora pareja. La polaridad es una decisión de contenido, no un hecho aritmético.",
     frecuencia: "Mensual (primeros días del mes siguiente)", tipo: "Cociente (motos/auto) · índice base-100 en el gráfico",
   },
   patentamiento_motos: {

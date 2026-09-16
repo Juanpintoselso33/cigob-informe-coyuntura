@@ -338,13 +338,12 @@ def build_vida(raw):
          "DNRPA — inscripciones iniciales de automotores y motovehículos, "
          "sin Tierra del Fuego",
          f"{mt['fecha']}-01" if mt.get("fecha") else None,
-         detalle_txt=("Más motos por auto se lee como DETERIORO: "
-                       "`motorizacion_total` cuenta todo patentamiento como "
+         detalle_txt=("Más motos por auto se lee como DETERIORO: la "
+                       "motorización total cuenta todo patentamiento como "
                        "señal positiva sin distinguir de qué vehículo viene, "
                        "y este ratio existe para detectar que ese crecimiento "
                        "sea un corrimiento hacia la moto y no una mejora "
-                       "pareja. Decisión de polaridad reversible en una línea "
-                       "de código."))
+                       "pareja."))
     autos = moto.get("patentamiento_autos", {})
     _add(out, "patentamiento_autos", autos.get("valor"),
          "unidades", "DNRPA — inscripciones iniciales de automotores",

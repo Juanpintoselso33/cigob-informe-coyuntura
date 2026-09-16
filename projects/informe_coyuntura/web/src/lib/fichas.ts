@@ -3027,13 +3027,13 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Ninguna sobre el dato: la tasa cada 100.000 habitantes la calcula el SNIC.",
-      "Componente del índice: la tasa rebaseada de forma invertida (menos homicidios = mejora) contra el propio 2023 — la serie sólo tiene un punto por año (diciembre), así que la base 4T-2023 del resto del cinturón resuelve sola al año 2023, igual que ya hace `inseguridad` con su base declarada.",
+      "Componente del índice: la tasa rebaseada de forma invertida (menos homicidios = mejora) contra la MEDIANA de los 26 años de la serie (5,76), no contra un año puntual — corregido tras revisión adversarial (ver «Ancla» abajo).",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de seguridad (25,5% interno · 1,15% del ITCIS).",
       "Entra junto con `tasa_robos` (ADR-0327), revirtiendo a ADR-0324/0325: el argumento de que el SNIC «es anual, no puede puntuar en un tablero mensual» es falso — cinco indicadores del snapshot vigente puntúan con 243-244 días de rezago del dato (`velocidad_resolucion`, `iaf_transferencias`, `protocolo_antipiquetes`, `informalidad`, `subocupacion_demandante`).",
       "Es complementario a `inseguridad` (IVI), no redundante: el IVI es mensual y capta delito denunciado y no denunciado pero no distingue TIPO; el homicidio es el tipo de delito con MENOS subregistro de todo el desglose —hay un cuerpo, así que casi no depende de que alguien denuncie—, lo que compensa su rezago y justifica que pese más que `tasa_robos` dentro de la dimensión.",
-      "Ancla: la base 2023 (4,32 cada 100.000) cae cerca de la mediana de los 26 años de la serie (~5,7), lejos de los dos extremos —pico 9,21 en 2002, mínimo 3,48 en 2025—, así que no es un año atípico elegido para que el índice quede mejor o peor.",
+      "Ancla, CORREGIDA: el ADR original anclaba contra el propio 2023 (4,32 cada 100.000) afirmando que caía «cerca de la mediana» de los 26 años (~5,7). Medido, 4,32 está en el PERCENTIL 11 de la serie —25% por debajo de la mediana—, no cerca de ella, y anclar contra un año puntual elegido es la convención circular que `procedencia_anclas.py` existe para contar. Se ancla ahora contra la MEDIANA de los 26 años (5,76) en vez de un año, sin cambiar el resto del mecanismo.",
     ],
     limitaciones: [
       "Anual con ~8,5 meses de rezago: el color de esta card puede describir un año que ya terminó hace tiempo. El tope de frescura (560 días) lo declara así en vez de marcarlo como atrasado todos los meses.",
@@ -3045,6 +3045,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-09-15", cambio: "ADR-0324: homicidios se conserva por NOMBRE en `tipos_principales`, dentro del desglose SNIC que sólo alimenta el contraste de `inseguridad` — no puntúa." },
       { fecha: "2026-09-16", cambio: "ADR-0327 revierte a ADR-0324/0325: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. 25,5% interno de la dimensión (1,15% del ITCIS)." },
+      { fecha: "2026-09-16", cambio: "Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» a la mediana de los 26 años — la afirmación de que 2023 caía «cerca de la mediana» era falsa (percentil 11, no ~50)." },
     ],
   },
 
@@ -3062,16 +3063,17 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Ninguna sobre el dato: la tasa la calcula el SNIC.",
-      "Componente del índice: la tasa rebaseada de forma invertida contra el propio 2023 (985,1, dentro del rango histórico 832-1.128 de la serie), mismo mecanismo que `tasa_homicidios`.",
+      "Componente del índice: la tasa rebaseada de forma invertida contra la MEDIANA de los 26 años de la serie (925,1), no contra un año puntual — mismo mecanismo corregido que `tasa_homicidios`.",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de seguridad (15% interno · 0,68% del ITCIS).",
       "«Robo» es el término del SNIC más cercano a lo que Juan pidió como «rapiña»: se distingue del hurto justamente por la violencia o intimidación sobre la víctima.",
       "Pesa menos que `tasa_homicidios` dentro de la dimensión (15% contra 25,5%) porque depende de que la víctima denuncie —a diferencia del homicidio— y porque tiene una limitación de calidad propia declarada abajo.",
+      "Ancla, CORREGIDA: el ADR original anclaba contra el propio 2023 (985,1), que cae en el PERCENTIL 69 de los 26 años —por encima de la mediana—, sesgando el semáforo hacia el verde. Se ancla ahora contra la MEDIANA de la serie (925,1), igual criterio que `tasa_homicidios`.",
     ],
     limitaciones: [
       "Depende de la denuncia: a diferencia del homicidio, un robo no denunciado no entra a esta serie. El IVI (`inseguridad`) es el componente del cinturón que sí capta la cifra negra, y por eso pesa más en la dimensión.",
-      "LA CAÍDA DE 2025 NO ESTÁ EXPLICADA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada (ADR-0327), no se lo corrige ni se lo omite.",
+      "LA CAÍDA DE 2025 NO ESTÁ EXPLICADA, Y EL COLOR VERDE DE ESTA CARD DESCANSA SOBRE ELLA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada (ADR-0327), no se lo corrige ni se lo omite — pero el lector de la card, no sólo el de esta ficha, tiene que poder verla.",
       "Anual con ~8,5 meses de rezago, igual que `tasa_homicidios`.",
       "Serie NACIONAL, sin apertura provincial ni por modalidad (arma, vía pública, vivienda).",
     ],
@@ -3080,6 +3082,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-09-15", cambio: "ADR-0324/0325: robos se conserva por NOMBRE en `tipos_principales`, sólo como contraste de `inseguridad` — no puntúa." },
       { fecha: "2026-09-16", cambio: "ADR-0327 revierte a ADR-0324/0325: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula, y con la limitación de la caída de 2025 declarada en la ficha. 15% interno de la dimensión (0,68% del ITCIS)." },
+      { fecha: "2026-09-16", cambio: "Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» (percentil 69, sesgaba a verde) a la mediana de los 26 años." },
     ],
   },
 
@@ -3217,22 +3220,26 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Motos acumuladas en 12 meses dividido autos acumulados en 12 meses (mismas ventanas móviles que `motorizacion_total`, para sacar la estacionalidad fuerte de los dos flujos).",
-      "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023, INVERTIDO — más motos por cada auto es DETERIORO.",
+      "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023, INVERTIDO — más motos por cada auto es DETERIORO. La distancia a 100 se amortigua a la mitad antes de leerse en la escala de tensión (ver «Ancla y amortiguación» abajo).",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de ingresos y consumo (2,5% interno · 0,7% del ITCIS).",
-      "La polaridad es la decisión de fondo, y es reversible en una línea (sacar `invertido=True` en `itvc.indices_desde_series`): `motorizacion_total` cuenta todo patentamiento como señal positiva sin distinguir de qué vehículo viene, y este ratio existe para detectar que ese crecimiento sea un corrimiento hacia la moto —el vehículo más barato— y no una mejora pareja del parque. Un total que sube mientras este ratio también sube dice que el crecimiento viene de la moto, no del auto.",
-      "No duplica a `motorizacion_total`: ese componente mide el NIVEL del flujo combinado, éste mide su COMPOSICIÓN. El peso (2,5%) queda por debajo del que le toca a `motorizacion_total` en la misma dimensión (3,09%) para que el control no pese más que lo que controla.",
+      "La polaridad es la decisión de fondo (sacar `invertido=True` en `itvc.indices_desde_series` invierte la lectura completa): `motorizacion_total` cuenta todo patentamiento como señal positiva sin distinguir de qué vehículo viene, y este ratio existe para detectar que ese crecimiento sea un corrimiento hacia la moto —el vehículo más barato— y no una mejora pareja del parque. Un total que sube mientras este ratio también sube dice que el crecimiento viene de la moto, no del auto.",
+      "Es una DESCOMPOSICIÓN de `motorizacion_total`, no un control independiente: mismo colector, mismo flujo, mismas ventanas — el mismo encuadre que ADR-0321 corrigió para `recaudacion`/IVA-DGI en el ITCM. Ese componente mide el NIVEL del flujo combinado, éste mide su COMPOSICIÓN. El peso (2,5%) queda por debajo del que le toca a `motorizacion_total` en la misma dimensión (3,09%).",
+      "AUTO-CANCELACIÓN MEDIDA, no doble conteo: en niveles correlaciona +0,40 con `motorizacion_total`, pero en la matriz de redundancia publicada (que mide movimientos) da −0,251. El mismo boom de motos empuja a `motorizacion_total` hacia el verde y a este ratio hacia el rojo al mismo tiempo, en la misma dimensión.",
+      "Ancla y amortiguación: rebaseado contra 4T-2023 (fecha fija, como el resto del cinturón). Sin ajustar, un crecimiento del orden del 39% sobre esa base alcanza para que el índice nazca saturado en el extremo de la escala de tensión (10,58 recortado a 10,0) y deje de poder mostrar que el deterioro sigue. Se amortigua la distancia a 100 a la mitad (factor 0,5, reversible en una constante): con ese ajuste, ese mismo crecimiento da índice 86,0 (tensión 7,8, no saturada), y el componente sólo vuelve a saturar si el ratio LLEGA A DUPLICAR su base (ADR-0328, corrección post-merge).",
     ],
     limitaciones: [
       "Hereda las limitaciones de `motorizacion_total`: es un flujo de altas (no el parque circulante), no pondera por precio ni gama, y la inscripción es del registro seccional, no necesariamente de donde vive el comprador.",
       "El registro no identifica hogares ni sus vehículos previos: un ratio que sube es compatible con sustitución (bajar de auto a moto) y con que hogares nuevos entren al mercado comprando directamente una moto. El ratio no distingue esos dos casos, sólo la composición agregada.",
       "Es un proxy de composición del consumo durable, no de bienestar general.",
+      "El factor de amortiguación (0,5) es una corrección de escala, no de dato: comprime cuánto mueve la TENSIÓN mostrada un mismo cambio porcentual, no cambia el signo ni el sentido de la lectura.",
     ],
     faltantes: "Mismo colector que `motorizacion_total`: el colector levanta excepción ante cualquier cambio de forma de la fuente en vez de publicar una serie recortada. Con la fuente caída, la card mantiene el último valor como desactualizado.",
     revisiones: "Los dos archivos de la DNRPA publican su histórico completo y se releen enteros en cada corrida.",
     cambios: [
       { fecha: "2026-09-15", cambio: "Nace como magnitud colgada de la card de `motorizacion_total` (ADR-0323): control de lectura pedido por Juan, sin puntaje propio." },
+      { fecha: "2026-09-16", cambio: "Corrección post-merge (revisión adversarial): se amortigua la distancia a 100 a la mitad (factor 0,5) porque el índice nacía saturado en el extremo de la escala con apenas +38,8% de crecimiento sobre la base; se declara la auto-cancelación medida contra `motorizacion_total` (r=+0,40 en niveles, r=−0,251 en la matriz de redundancia) y se cita ADR-0321 como precedente de encuadre." },
       { fecha: "2026-09-16", cambio: "ADR-0328 revierte a ADR-0323: pasa a puntuar como indicador propio, con card, ficha y peso propios (2,5% interno de la dimensión de ingresos y consumo · 0,7% del ITCIS). Polaridad confirmada por el usuario: más motos por auto es deterioro." },
     ],
   },

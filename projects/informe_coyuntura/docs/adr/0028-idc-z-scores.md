@@ -7,7 +7,7 @@ fecha: 2026-07-04
 cinturon: 'macro'
 indicadores: [idc]
 supersede: ['0004']
-relacionado: ['0074']
+relacionado: ['0074', '0327']
 ambito: 'Dimensión Capacidad de financiamiento · indicador `idc`'
 ---
 

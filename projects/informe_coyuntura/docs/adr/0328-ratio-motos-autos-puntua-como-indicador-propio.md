@@ -5,8 +5,9 @@ estado: 'aceptado'
 fecha: 2026-09-16
 cinturon: 'vida'
 indicadores: [ratio_motos_autos]
-archivos: ['scripts/vida_cotidiana/collectors/motorizacion.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/validacion_externa.py', 'scripts/publicar.py', 'scripts/procedencia_anclas.py', 'config.py']
-relacionado: ['0224', '0271', '0322', '0323']
+archivos: ['scripts/vida_cotidiana/collectors/motorizacion.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/validacion_externa.py', 'scripts/publicar.py', 'scripts/procedencia_anclas.py', 'config.py', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts', 'web/src/lib/descripciones.ts', 'tests/test_itvc_ratio_motos_autos.py']
+supersede: ['0323']
+relacionado: ['0224', '0271', '0321', '0322']
 ambito: 'ITCIS · dimensión de ingresos y consumo · el ratio motos/autos pasa de magnitud colgada a indicador propio'
 origen: 'Juan, 16-sep-2026: revierte ADR-0323 — "los dos tienen que ser indicadores que puntúen, con su card y su peso"'
 ---
@@ -95,6 +96,54 @@ suspendida), su aporte nominal al ITCIS es 0,7%. Ver el cuerpo del PR para el
 valor del ITCIS antes/después de esta corrida y el movimiento de la serie
 histórica reconstruida.
 
+### CORRECCIÓN (16-sep-2026, revisión adversarial post-merge, mismo día)
+
+Dos defectos, medidos después del merge:
+
+**1. Nace saturado en el techo de tensión, sin margen para discriminar hacia
+arriba.** Sin ajuste, el rebase da índice 72,1 con sólo un +38,8% de
+crecimiento del ratio sobre su base 4T-2023 (1,0649 → 1,4777) — tensión
+5−(72,1−100)×0,2 = 10,58, recortada a 10,0 (el techo de la escala). El
+componente arranca a publicar ya en el extremo rojo, y como el ratio sigue
+una tendencia estructural sostenida (no un pico puntual), a partir de acá
+CUALQUIER mes futuro sigue mostrando el mismo 10,0 aunque el ratio siga
+subiendo: el indicador deja de poder decir "esto empeoró más" apenas nace.
+
+Se corrige con `FACTOR_AMORTIGUACION_RATIO_MOTOS_AUTOS = 0.5` (`itvc.py`):
+comprime la distancia a 100 a la mitad antes de que la pendiente fija de
+`tension_de_itvc` la lea. Con el mismo dato de hoy, el índice pasa a 86,0
+(tensión 7,8, naranja, no saturada) y el componente sólo vuelve a saturar si
+el ratio LLEGA A DUPLICAR su base (+100%), no con un +25%. Es reversible en
+una constante, mismo espíritu que `invertido`.
+
+**2. "Control de la motorización" es el mismo encuadre que ADR-0321 corrigió
+en el ITCM.** ADR-0321 estableció que descomponer un agregado en sus partes y
+leer de dónde viene el movimiento no es un "control independiente" —es una
+descomposición—, y que llamarlo control da a entender una fuente externa que
+no existe. Este ADR usaba el mismo lenguaje ("control de la motorización",
+"control sobre la composición") para `ratio_motos_autos`, que es
+aritméticamente la misma relación: motos y autos son los dos sumandos de
+`motorizacion_total`, y el ratio es su cociente. Se corrige la afirmación:
+es una descomposición del mismo flujo, no un control independiente. No
+cambia el peso ni el cálculo, cambia lo que se afirma sobre él (mismo
+alcance de corrección que tuvo ADR-0321).
+
+Consecuencia medible de ser la misma fuente: en NIVELES, `ratio_motos_autos`
+y `motorizacion_total` correlacionan +0,40 (comparten el mismo boom). Pero en
+la matriz de redundancia publicada —que correlaciona MOVIMIENTOS mes a mes,
+no niveles— el par da **r = −0,251**: no es doble conteo, es
+**auto-cancelación parcial**. El mismo mes en que el boom de motos empuja a
+`motorizacion_total` hacia el verde (más patentamientos = mejor, sin
+distinguir de qué vehículo), empuja al ratio hacia el rojo (más motos por
+auto = peor composición) en la MISMA dimensión y al MISMO tiempo. El peso de
+0,7% del ITCIS acota la magnitud absoluta del efecto; esta corrección no
+rediseña el reparto de pesos porque hacerlo exigiría remover una de las dos
+preguntas (nivel vs. composición), que siguen siendo distintas.
+
+`tests/test_itvc_ratio_motos_autos.py` fija el factor de amortiguación, que
+sin él el índice de hoy satura (mutación: `factor=1.0` reproduce el 10,0
+saturado), y que la polaridad (`invertido=True`) es la declarada.
+
 ## Pros y contras de las opciones
 
 **1. Indicador propio en la misma dimensión.** A favor: usa el peso, la
@@ -111,6 +160,9 @@ pedido explícito de que puntúe.
 
 ## Más información
 
+- [[0321-descomposicion-no-control-independiente]] — precedente que corrige el
+  mismo encuadre ("control" → "descomposición") para `recaudacion`/IVA-DGI en
+  el ITCM; la corrección post-merge de este ADR aplica el mismo principio acá.
 - [[0224-puntua-la-motorizacion-total-no-cada-vehiculo]] — funde autos y
   motos en el componente que puntúa; este ADR no lo reabre.
 - [[0322-la-vacuna-vuelve-a-puntuar-junto-al-resto-de-las-carnes]] — mismo
