@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-25
 cinturon: 'macro'
 indicadores: [emae_difusion, actividad]
+relacionado: ['0329']
 ambito: 'ITCM · `emae_difusion` (nuevo) · dimensión `actividad` · banda · serie'
 origen: 'Propuesta del editor, a partir de un informe externo sobre la composición del crecimiento'
 ---

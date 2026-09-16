@@ -6,7 +6,7 @@ fecha: 2026-09-15
 cinturon: 'macro'
 indicadores: [recaudacion]
 archivos: ['scripts/macro.py', 'web/src/lib/fichas.ts', 'tests/test_macro_recaudacion_dgi.py']
-relacionado: ['0072', '0127', '0152', '0153', '0216', '0319', '0321']
+relacionado: ['0072', '0127', '0152', '0153', '0216', '0319', '0321', '0329']
 ambito: 'Cinturón Macro · `recaudacion` · IVA-DGI y créditos/débitos bancarios (impuesto al cheque) como variables de control'
 origen: 'Pedido del equipo (apuntes 15-sep-2026, sección B → MACRO): incorporar variables de control para corregir distorsiones del agregado y evitar sobreponderar el efecto estacional'
 ---

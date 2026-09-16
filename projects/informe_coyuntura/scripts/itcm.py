@@ -225,6 +225,21 @@ BANDAS_ITCM = {
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
         (-2.0, 0.0, 40), (-5.0, -2.0, 20), (-INF, -5.0, 5),
     ],
+    "actividad_tributaria": [           # % i.a. real, compuesto 0,6×IVA-DGI + 0,4×cheque
+        # ADR-0329. Bandas calibradas contra la SERIE PROPIA (2017-12/2026-08,
+        # 105 meses — ventana que limita el IPC, deflactor obligatorio), no
+        # elegidas para que el color quede bien (ADR-0045). El compuesto oscila
+        # mucho más que el EMAE (percentiles 10/90 en ±12 contra ±5-9 del EMAE):
+        # reusar las bandas del EMAE tal cual —se probó— satura de los DOS lados
+        # a la vez (60% de los meses cae en el peor o el mejor tramo, contra el
+        # reparto que exige ADR-0042). Estos cortes, sobre pasos redondos de 5
+        # puntos y con el cero como frontera conceptual (igual criterio que
+        # emae_ia/ipi_manufacturero, ADR-0120), reparten 14/14/20/18/14/19% de
+        # los 105 meses entre los seis tramos — ninguno concentra más de la
+        # quinta parte de la historia.
+        (10.0, INF, 100), (5.0, 10.0, 80), (0.0, 5.0, 60),
+        (-5.0, 0.0, 40), (-10.0, -5.0, 20), (-INF, -10.0, 5),
+    ],
     "tcrm": [                           # ITCRM oficial del BCRA (base 17-dic-2015=100)
         # Apreciación real = pérdida de competitividad y atraso cambiario = más tensión.
         # Bandas calibradas con la historia 1997-2026 (p10≈75, p25≈87, mediana≈106):
@@ -386,8 +401,18 @@ DIMENSIONES_ITCM = {
         # lo que cambia es que ese 80% pasa a leerse en dos registros: cuánto
         # crece la actividad (nivel) y en cuántos sectores crece (amplitud). El
         # IPI no se toca: sigue siendo el único respaldo de fuente distinta.
-        "indicadores": {"emae_ia": 0.60, "emae_difusion": 0.20,
-                        "ipi_manufacturero": 0.20},
+        #
+        # ADR-0329 (2026-09-16): entra `actividad_tributaria` (IVA-DGI + cheque,
+        # ADR-0318/0319 corregidos de encuadre fiscal a encuadre de actividad)
+        # con 0,20. A diferencia de emae_difusion, esto SÍ es una fuente
+        # distinta (Hacienda/ARCA, no INDEC) — no se le resta a un único
+        # indicador, se recortan los tres existentes PROPORCIONALMENTE
+        # (×0,80, mismo criterio que ADR-0071/0074 en `financiamiento`):
+        # 0,60→0,48, 0,20→0,16, 0,20→0,16. Es también el único de los cuatro
+        # con menos de un mes de rezago de publicación (medido: 0 vs. 1 del IPI
+        # y 2 del EMAE/difusión).
+        "indicadores": {"emae_ia": 0.48, "emae_difusion": 0.16,
+                        "ipi_manufacturero": 0.16, "actividad_tributaria": 0.20},
     },
     "competitividad_externa": {
         "nombre": "Competitividad externa",

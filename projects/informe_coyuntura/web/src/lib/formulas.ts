@@ -91,6 +91,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\frac{1}{3}\sum_{m=0}^{2}\left(\frac{\text{IPI manufacturero}_{t-m}}{\text{IPI manufacturero}_{t-m-12}}-1\right)\times 100`,
     leyenda: "Promedio simple de las tres variaciones interanuales más recientes del Índice de Producción Industrial manufacturero del INDEC. El promedio móvil reduce el ruido mensual sin mezclar meses de distinta estacionalidad.",
   },
+  actividad_tributaria: {
+    latex: String.raw`0{,}6\cdot\text{IVA-DGI}_{\text{real i.a.}}\;+\;0{,}4\cdot\text{cheque}_{\text{real i.a.}}`,
+    leyenda: "Variación interanual real (deflactada por IPC) del IVA-DGI y del impuesto a los créditos y débitos bancarios, promediadas con más peso para el IVA por ser un impuesto al consumo interno; el cheque grava toda transacción bancaria y capta también bancarización, no sólo actividad.",
+  },
   tcrm: {
     latex: String.raw`\text{ITCRM}_{\text{hoy}}\qquad(\text{base dic-2015}=100)`,
     leyenda: "Tipo de cambio real multilateral oficial del BCRA: cuánto vale el peso contra las monedas de los socios comerciales, descontadas las inflaciones. Bajo = peso caro = exportar cuesta más.",

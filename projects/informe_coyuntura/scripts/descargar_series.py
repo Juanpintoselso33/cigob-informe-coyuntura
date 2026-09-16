@@ -705,6 +705,19 @@ def fetch_recaudacion_real_serie() -> list:
     if not serie:
         raise ValueError("recaudación: sin ventana suficiente para desestacionalizar")
     return [[f"{ym}-01", v] for ym, v in sorted(serie.items())]
+
+
+def fetch_actividad_tributaria_serie() -> list:
+    """Compuesto 0,6×IVA-DGI + 0,4×cheque, variación i.a. real (ADR-0329):
+    misma construcción que puntúa en la ficha (`macro._actividad_tributaria_serie_mensual`).
+    [[YYYY-MM-01, %]]."""
+    iva = {f[:7]: v for f, v in fetch_indec(macro.INDEC_IVA_DGI_ID, limit=comarb.LIMITE_MESES) if v}
+    cheque = {f[:7]: v for f, v in fetch_indec(macro.INDEC_CHEQUE_ID, limit=comarb.LIMITE_MESES) if v}
+    ipc = {f[:7]: v for f, v in fetch_indec(IPC_NIVEL_ID, limit=comarb.LIMITE_MESES) if v}
+    serie = macro._actividad_tributaria_serie_mensual(iva, cheque, ipc)
+    return [[f"{ym}-01", round(v, 2)] for ym, v in sorted(serie.items())]
+
+
 def fetch_credito_privado_serie() -> list:
     """Serie mensual de la variación i.a. REAL de los préstamos al sector
     privado **en pesos** (BCRA var. 117 fin de mes, deflactada por el IPC
@@ -765,6 +778,9 @@ MACRO_DERIVADAS = [
     ("emae_difusion", "% de sectores en crecimiento i.a.",
      "INDEC — EMAE apertura sectorial (vía datos.gob.ar)", fetch_emae_difusion_serie),
     ("ipi_manufacturero", "% i.a. (promedio 3 meses)", "INDEC — IPI manufacturero (planilla original vigente)", fetch_ipi_serie),
+    ("actividad_tributaria", "% i.a. real (compuesto IVA-DGI/cheque)",
+     "Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)",
+     fetch_actividad_tributaria_serie),
     # acompaña al IPC general en el modal, no puntúa (ADR-0077)
     ("ipc_nucleo", "% mensual", "INDEC — IPC núcleo nacional (vía datos.gob.ar)", fetch_ipc_nucleo_serie),
     # La unidad decía "% i.a. real" y la serie devuelve un ÍNDICE desde el

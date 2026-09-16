@@ -549,8 +549,9 @@ def test_macro_itcm_reconcilia():
     # actividad). **15 desde 2026-08-25**: salen `idm` (ADR-0261, ninguna de las
     # seis referencias externas pudo firmar la dirección de su banda) e `icip`
     # (ADR-0262, su compuesto suma con el mismo signo dos insumos que
-    # necesitarían signos opuestos).
-    assert len(en_indice) == 15, f"esperaba 15 indicadores en el índice, hay {len(en_indice)}"
+    # necesitarían signos opuestos). **16 desde 2026-09-16** (ADR-0329): entra
+    # `actividad_tributaria` (IVA-DGI + cheque como proxy de actividad).
+    assert len(en_indice) == 16, f"esperaba 16 indicadores en el índice, hay {len(en_indice)}"
     # ADR-0022: los monetarios nominales quedan OCULTOS del snapshot (siguen en
     # pipeline como insumos de IdC/TCRM); su señal entra vía credito_privado.
     assert contexto == {}, f"macro no debería publicar contexto: {set(contexto)}"

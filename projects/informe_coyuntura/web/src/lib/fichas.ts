@@ -721,6 +721,49 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  actividad_tributaria: {
+    tipo: "indicador",
+    id: "actividad_tributaria",
+    cinturon: "macro",
+    rezago: "Es la lectura más fresca de la dimensión de actividad: la Secretaría de Hacienda/ARCA informa IVA-DGI y créditos/débitos bancarios de un mes dentro del mes siguiente, antes de que el INDEC cierre el EMAE del mismo período. Medido el 16-sep-2026 contra el último mes calendario cerrado (agosto): este indicador publica ese mismo mes (0 de atraso), el IPI manufacturero un mes de atraso, y el EMAE y su difusión sectorial dos.",
+    fuente: {
+      organismo: "Secretaría de Hacienda / ARCA (dato primario), deflactor INDEC",
+      operacion: "IVA-DGI y créditos y débitos bancarios (impuesto al cheque), dos de los componentes del agregado de recaudación DGI, en pesos corrientes llevados a pesos constantes con el IPC nacional",
+      serie: "142.3_IVA_D_2001_M_7 (IVA-DGI) y 142.3_CREDI_2001_M_24 (cheque), vía datos.gob.ar; IPC 148.3_INIVELNAL_DICI_M_26 como deflactor",
+      url: "https://www.afip.gob.ar/institucional/estudios/",
+      acceso: "Automático: API pública de series de tiempo de datos.gob.ar, misma fuente que alimenta la descomposición del detalle de `recaudacion`.",
+    },
+    transformaciones: [
+      "Cada serie se lleva a variación interanual real: nominal contra el mismo mes del año anterior, deflactada por el IPC del mismo período (mismo método que el resto del cinturón).",
+      "Las dos variaciones se promedian con ponderación 0,6 para IVA-DGI y 0,4 para el cheque. No se cruzan en una matriz (como sí hace `desequilibrio_monetario`): esa construcción existe cuando dos componentes miden fenómenos DISTINTOS que se refuerzan o se contrarrestan de forma declarada; acá las dos series miden el mismo constructo —actividad— con ruido propio cada una, la misma situación que ya conviven `emae_ia` e `ipi_manufacturero` en esta dimensión, sin matriz.",
+      "El IVA pesa más porque es un impuesto al consumo interno, más cercano a 'actividad'; el cheque grava toda transacción bancaria y además de actividad capta bancarización —más o menos pagos por transferencia—, un fenómeno que no se puede restar de la serie.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "> 10", puntaje: 100 },
+        { banda: "5 – 10", puntaje: 80 },
+        { banda: "0 – 5", puntaje: 60 },
+        { banda: "−5 – 0", puntaje: 40 },
+        { banda: "−10 – −5", puntaje: 20 },
+        { banda: "≤ −10", puntaje: 5 },
+      ],
+      puntos: [[-10, 5], [-7.5, 20], [-2.5, 40], [2.5, 60], [7.5, 80], [10, 100]],
+      unidadCorta: "% i.a. real",
+    },
+    dobleUso: "Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa card ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con los pesos vigentes, este indicador aporta 2,2% al ITCM (0,11×0,20) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el ITCM tiene alrededor de 3% de su peso total expuesto al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador (ADR-0329).",
+    limitaciones: [
+      "Ninguna de las dos series mide actividad de forma directa: la recaudación responde también a evasión, cambios de alícuota, anticipos y vencimientos trasladados, y el impuesto al cheque a la proporción de pagos que pasan por el sistema bancario, no sólo a su volumen.",
+      "Las bandas se calibraron contra los 105 meses de historia real del compuesto (dic-2017/ago-2026, la ventana que permite el IPC como deflactor), no contra los 25 años que tienen IVA-DGI y cheque por separado desde 2001: antes de esa fecha no hay IPC nacional comparable para deflactar.",
+      "El compuesto oscila más que el EMAE (percentiles 10-90 de aproximadamente ±12 puntos contra ±5-9 del EMAE): reusar las bandas del EMAE tal cual saturaría el 60% de los meses en el mejor o el peor tramo, así que las anclas son propias y no comparables número a número con las de `emae_ia`.",
+      "Comparte fuente parcial con `recaudacion`: un shock tributario puro (cambio de alícuota, moratoria) puede mover a los dos indicadores en el mismo sentido sin que haya un cambio real de actividad detrás.",
+    ],
+    faltantes: "Si falta cualquiera de las dos series o el IPC del mes, ese mes no se calcula y el indicador conserva el último valor disponible, señalado como desactualizado.",
+    revisiones: "Las dos fuentes primarias pueden revisar meses ya publicados; el informe recalcula la serie completa en cada actualización.",
+    cambios: [
+      { fecha: "2026-09-16", cambio: "Alta del indicador (ADR-0329). Corrige el alcance de una implementación anterior (ADR-0318/0319/0321) que había convertido este mismo par de series en un control dentro del detalle de `recaudacion` (dimensión fiscal): el pedido original era un proxy de ACTIVIDAD, y como tal pasa a puntuar en esa dimensión. El texto de `recaudacion` no se toca — sigue siendo útil para leer de dónde vino un movimiento del agregado DGI." },
+    ],
+  },
+
   saldo_comercial_12m: {
     tipo: "indicador",
     id: "saldo_comercial_12m",

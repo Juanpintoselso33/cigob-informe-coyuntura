@@ -17,7 +17,7 @@ al ADR.
 | `estabilidad_monetaria` | 26% | `ipc_total`, `rem_ipc_12m`, `desequilibrio_monetario` |
 | `viabilidad_fiscal_comercial` | 24% | `resultado_primario`, `recaudacion`, `saldo_comercial_12m` |
 | `financiamiento` | 16% | `reservas_bcra`, `idc`, `costo_financiamiento_tesoro`, `credito_privado` |
-| `actividad` | 11% | `emae_ia`, `emae_difusion`, `ipi_manufacturero` |
+| `actividad` | 11% | `emae_ia`, `emae_difusion`, `ipi_manufacturero`, `actividad_tributaria` |
 | `competitividad_externa` | 11% | `tcrm` |
 | `inversion` | 12% | `iai` |
 
@@ -179,8 +179,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 60% |
-| Peso efectivo en el índice | **6.6%** |
+| Peso dentro de la dimensión | 48% |
+| Peso efectivo en el índice | **5.3%** |
 | Procedencia del ancla | `conceptual` — bandas de crecimiento en torno al cero; el corte de crecimiento nulo cae en p26 de la historia 2021-2023 (ADR-0120) |
 
 **Bandas**: > 5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤ -5 → 5
@@ -193,8 +193,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **2.2%** |
+| Peso dentro de la dimensión | 16% |
+| Peso efectivo en el índice | **1.8%** |
 | Procedencia del ancla | `conceptual` — cortes por CANTIDAD DE SECTORES (14-15 generalizado · 11-13 mayoría amplia · 8-10 ajustada · 5-7 minoría · 0-4 contracción), puestos en el hueco entre valores alcanzables; explícitamente NO se ancló en el 50% de manual porque la mediana histórica argentina es 73,3% (ADR-0124) |
 
 **Bandas**: > 90 → 100 · 70–90 → 80 · 50–70 → 60 · 30–50 → 35 · ≤ 30 → 10
@@ -207,13 +207,27 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **2.2%** |
+| Peso dentro de la dimensión | 16% |
+| Peso efectivo en el índice | **1.8%** |
 | Procedencia del ancla | `conceptual` — hereda las bandas del EMAE a propósito para dejar ver la brecha industria-actividad, con cita a ADR-0045 (ADR-0076/0079) |
 
 **Bandas**: > 5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤ -5 → 5
 
 **Lo gobiernan**: [ADR-0076](../adr/0076-ipi-segunda-senal-actividad.md) La dimensión de actividad deja de colgar de un único dato · [ADR-0079](../adr/0079-peso-del-ipi-en-actividad.md) El IPI baja de 35% a 20%: es respaldo, no medida principal · [ADR-0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) Actividad usa las planillas originales vigentes
+
+#### Actividad tributaria (IVA-DGI + cheque)
+
+`actividad_tributaria`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **2.2%** |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Bandas**: > 10 → 100 · 5–10 → 80 · 0–5 → 60 · -5–0 → 40 · -10–-5 → 20 · ≤ -10 → 5
+
+**Lo gobiernan**: [ADR-0329](../adr/0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal
 
 ### Dimensión `competitividad_externa` (11%)
 
@@ -280,7 +294,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-55 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+56 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -337,3 +351,4 @@ histórica.
 - [0318](../adr/0318-iva-cheque-entran-como-control-no-como-card.md) — IVA-DGI y cheque entran como control de `recaudacion`, no como card
 - [0319](../adr/0319-control-tributario-mismo-deflactor-mismo-sentido.md) — El control tributario usa el mismo deflactor y compara el mismo sentido
 - [0321](../adr/0321-descomposicion-no-control-independiente.md) — Es una descomposición del agregado, no un control independiente
+- [0329](../adr/0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) — IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal

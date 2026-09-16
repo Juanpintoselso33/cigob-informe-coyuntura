@@ -118,6 +118,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0318](0318-iva-cheque-entran-como-control-no-como-card.md) | IVA-DGI y cheque entran como control de `recaudacion`, no como card | `recaudacion` | vigente |
 | [0319](0319-control-tributario-mismo-deflactor-mismo-sentido.md) | El control tributario usa el mismo deflactor y compara el mismo sentido | `recaudacion` | vigente |
 | [0321](0321-descomposicion-no-control-independiente.md) | Es una descomposición del agregado, no un control independiente | `recaudacion` | vigente |
+| [0329](0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) | IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal | `actividad_tributaria` | vigente |
 
 ### Política (ITCP)
 
