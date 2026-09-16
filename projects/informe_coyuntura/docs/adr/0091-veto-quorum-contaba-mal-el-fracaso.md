@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'politica'
 indicadores: [veto_quorum]
+relacionado: ['0313']
 corregido_por: ['0308']
 continuado_por: ['0172']
 ambito: 'ITCP · `veto_quorum` · serie mensual'

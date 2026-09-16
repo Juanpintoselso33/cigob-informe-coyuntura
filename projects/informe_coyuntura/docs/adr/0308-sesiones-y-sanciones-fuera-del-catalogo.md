@@ -8,6 +8,7 @@ indice: 'ITCP'
 indicadores: [veto_quorum, produccion_legislativa]
 archivos: ['scripts/politica.py', 'scripts/descargar_series.py', 'web/src/lib/fichas.ts', 'data/politica/leyes_sancionadas_complementarias.json']
 corrige: ['0091', '0306']
+relacionado: ['0313']
 ---
 
 # ADR-0308 — Sesiones y sanciones fuera del catálogo

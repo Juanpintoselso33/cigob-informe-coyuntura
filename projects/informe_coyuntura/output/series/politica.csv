@@ -113,7 +113,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rotacion_gabinete,1,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2024-01-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2023-12-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
-2026-09-01,ratio_dnu,1.36,DNUs publicados por ley publicada,InfoLeg
+2026-09-01,ratio_dnu,1.097,DNUs publicados por ley publicada,InfoLeg
 2026-08-01,ratio_dnu,1.48,DNUs publicados por ley publicada,InfoLeg
 2026-07-01,ratio_dnu,1.4,DNUs publicados por ley publicada,InfoLeg
 2026-06-01,ratio_dnu,1.45,DNUs publicados por ley publicada,InfoLeg
@@ -217,7 +217,7 @@ fecha,indicador,valor,unidad,fuente
 2026-08-23,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-06-09,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-04-09,movilizacion_cepa,46.0,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
-2026-01-01,judicializacion,1.57,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2026-01-01,judicializacion,1.69,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2025-01-01,judicializacion,1.71,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2024-01-01,judicializacion,1.95,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2023-01-01,judicializacion,1.51,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
@@ -572,7 +572,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2024-01-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2023-12-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
-2026-08-01,conflictividad_nacional,-24.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-08-01,conflictividad_nacional,-24.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-07-01,conflictividad_nacional,-24.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-06-01,conflictividad_nacional,-23.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-05-01,conflictividad_nacional,-21.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
@@ -847,10 +847,6 @@ fecha,indicador,valor,unidad,fuente
 2024-05-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-04-30,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-03-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
-2026-09-01,apoyo_empresario,-0.111,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
-2026-08-01,apoyo_empresario,-0.111,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
-2026-07-01,apoyo_empresario,-0.111,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
-2026-06-01,apoyo_empresario,-0.25,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2026-05-01,apoyo_empresario,-0.25,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2026-04-01,apoyo_empresario,-0.25,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2026-03-01,apoyo_empresario,-0.143,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB

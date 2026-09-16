@@ -181,7 +181,7 @@ PROCEDENCIA = {
     "litigiosidad_laboral": ("historia_larga", "calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023)"),
 
     # ── ITCP ────────────────────────────────────────────────────────────────
-    "votometro_ventaja_lla": ("conceptual", "ventaja electoral anclada en el cero (empate) con márgenes simétricos redondos (ADR-0121)"),
+    "votometro_ventaja_lla": ("conceptual", "ventaja electoral anclada en el cero (empate); cortes ajustados para que el semáforo cambie exactamente en +8/+5/0 pp, los umbrales de Luis (ADR-0312, corrige ADR-0121)"),
     "ratio_dnu": ("externa", "ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059)"),
     "eficacia_legislativa": ("externa", "Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061)"),
     "veto_quorum": ("conceptual", "tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121)"),

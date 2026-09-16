@@ -1,7 +1,7 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-15 23:03:21"
-score_global: 3.7
+generado: "2026-09-15 23:05:15"
+score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
 alerta_multicinturon: false
@@ -10,7 +10,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-09
 
-**Score global:** 3.7/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.4/10)
+**Score global:** 3.8/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.4/10)
 
 ## Cinturones
 
@@ -41,16 +41,16 @@ schema_version: "1.2.0"
 | base_monetaria | -1.87 | % mensual nominal | 2026-09-10 | fresco |
 | tc_mayorista | 1.45 | % mensual | 2026-09-14 | fresco |
 
-### 🟢 Politica — score 2.7/10 (estable)
+### 🟢 Politica — score 3.0/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | votometro_ventaja_lla | 4.3 | Puntos porcentuales | 2026-07-22 | fresco |
-| ratio_dnu | 1.36 | DNUs publicados por ley publicada | 2026-09-15 | fresco |
+| ratio_dnu | 1.097 | DNUs publicados por ley publicada | 2026-09-15 | fresco |
 | brecha_obra_publica | -1.8 | pp de brecha (obra pública − privada, 12m) | 2026-08-01 | fresco |
-| apoyo_empresario | -0.111 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | fresco |
-| conflictividad_nacional | -24.1 | % vs 2023 | 2026-08-01 | fresco |
+| apoyo_empresario | -0.25 | saldo de postura (−1 a +1, 12m móviles) | 2026-05-01 | ⚠ cache |
+| conflictividad_nacional | -24.0 | % vs 2023 | 2026-08-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4760195 | jornadas individuales no trabajadas (12m) | 2026-05-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
 | iaf_transferencias | 1.6 | % interanual real | 2025-12-31 | fresco |
@@ -60,10 +60,10 @@ schema_version: "1.2.0"
 | adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-09-15 | fresco |
 | derrotas_legislativas | 2 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-09-15 | fresco |
 | rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-09-15 | fresco |
-| protestas_caba | 280 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
+| protestas_caba | 281 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
 | cohesion_bloque | 100.0 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-09-09 | fresco |
-| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-14 | ⚠ cache |
-| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-14 | ⚠ cache |
+| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-15 | fresco |
+| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-15 | fresco |
 | produccion_legislativa | 29 | leyes sancionadas (12m) | 2026-08-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-09-01 | fresco |
@@ -74,7 +74,7 @@ schema_version: "1.2.0"
 
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
-| judicializacion | 1.7 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
+| judicializacion | 1.69 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
 
 ### 🔴 Vida Cotidiana — score 6.4/10 (tensionado)
 *Riesgo de barbarismo: político*
@@ -83,12 +83,7 @@ schema_version: "1.2.0"
 |---|---|---|---|---|
 | ipc_total | 1.66 | % mensual | 2026-08-01 | fresco |
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
-
-**Retirados del índice — el colector lo sigue relevando pero ya NO compone el índice ni el score de arriba** (distinto de suspendido: no tiene motivo de reingreso porque no va a volver a puntuar; puede ser ancla de validación externa. Ver `publicar.VIDA_OCULTOS` y la ficha metodológica del indicador):
-
-| Indicador | Último valor | Unidad | Fecha |
-|---|---|---|---|
-| icc_utdt | 40.23 | índice | 2026-08-01 |
+| icc_utdt | 40.23 | índice | 2026-08-01 | fresco |
 
 ### 🟢 Gestion — score 2.1/10 (estable)
 *Riesgo de barbarismo: gerencial*
@@ -120,7 +115,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
+- `desactualizado:politica:apoyo_empresario,cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-15 23:03:21 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-15 23:05:15 — schema 1.2.0*

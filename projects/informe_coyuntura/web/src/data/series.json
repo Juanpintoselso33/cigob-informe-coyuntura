@@ -17846,7 +17846,7 @@
     },
     {
       "fecha": "2026-09-01",
-      "valor": 1.36
+      "valor": 1.097
     }
   ],
   "produccion_legislativa": [
@@ -18178,7 +18178,7 @@
     },
     {
       "fecha": "2026-01-01",
-      "valor": 1.57
+      "valor": 1.69
     }
   ],
   "jornadas_individuales_no_trabajadas_12m": [
@@ -19698,7 +19698,7 @@
     },
     {
       "fecha": "2026-08-01",
-      "valor": -24.1
+      "valor": -24.0
     }
   ],
   "comisiones_caidas": [
@@ -20799,22 +20799,6 @@
     {
       "fecha": "2026-05-01",
       "valor": -0.25
-    },
-    {
-      "fecha": "2026-06-01",
-      "valor": -0.25
-    },
-    {
-      "fecha": "2026-07-01",
-      "valor": -0.111
-    },
-    {
-      "fecha": "2026-08-01",
-      "valor": -0.111
-    },
-    {
-      "fecha": "2026-09-01",
-      "valor": -0.111
     }
   ],
   "alineamiento_senadores_prov": [
