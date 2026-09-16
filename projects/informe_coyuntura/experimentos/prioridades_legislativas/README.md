@@ -4,14 +4,14 @@
 
 Mide la proporción de una cartera documentada que obtuvo sanción definitiva. No mide por sí sola la salud del plan, implementación, vigencia ni resultados sociales. La regla base da igual peso a cada iniciativa. La variante ponderada sirve exclusivamente para sensibilidad.
 
-Fórmula: 100 × peso sancionado / peso total elegible al corte. Rechazos y retiros permanecen en el denominador. Sin universo, no hay porcentaje. Una sanción histórica respaldada no caduca por falta de revisión posterior. Los demás estados sin revisión suficiente son desconocidos: se informa el rango entre sanciones comprobadas y sanciones más desconocidos, conservando el denominador. No es un intervalo de confianza estadístico.
+Fórmula: 100 × peso sancionado / peso total elegible al corte. Rechazos y retiros permanecen en el denominador, pero no cuentan como posible sanción: son hechos ya ocurridos, absorbentes igual que la sanción, y no vuelven a quedar "sin verificar" por falta de revisión posterior. Sin universo, no hay porcentaje. Una sanción histórica respaldada no caduca por falta de revisión posterior. Una iniciativa sin ningún evento aplicable al corte pero con el período ya revisado hasta ese corte es un cero conocido ("sin avance"), no un desconocido. Sólo es desconocido el caso en que hubo evidencia previa pero la revisión no alcanza al corte: ahí se informa el rango entre sanciones comprobadas y sanciones más desconocidos, conservando el denominador. No es un intervalo de confianza estadístico.
 
 La reconstrucción usa fechas de hechos con evidencia reunida posteriormente; no reproduce la información disponible en tiempo real. Antes de integrar, definir una cartera representativa y reglas previas de inclusión y revisión, evaluar varios meses y comprobar la interpretación con el equipo. Un 100% sobre una reforma seleccionada no acredita éxito general ni superioridad respecto de la cohorte legislativa del monitor.
 
 ## Ejecutar desde projects/informe_coyuntura
 
 ```sh
-.venv/bin/python -m pytest experimentos/prioridades_legislativas/test_motor.py -q
+.venv/bin/python -m pytest experimentos/prioridades_legislativas -q
 .venv/bin/python experimentos/prioridades_legislativas/construir.py
 .venv/bin/python -m http.server 8772 --bind 127.0.0.1 --directory experimentos/prioridades_legislativas/vista
 ```
@@ -20,7 +20,7 @@ Abrir http://127.0.0.1:8772/. El generador sólo escribe en `vista/`; lee las fu
 
 ## Resultados comprobados
 
-18 pruebas automatizadas aprobadas. Se generan 25 combinaciones de escenario y corte. Interacción verificada en navegador: cuatro simulaciones, reforma antes y desde la sanción; sin errores de consola. Vista de escritorio inspeccionada; controles apilados en móvil y ancho de documento igual al visible (375 px), sin desborde horizontal general.
+28 pruebas automatizadas aprobadas (18 originales + 10 del issue #27: seis del motor —incluida la parametrizada de contrato `ValueError`—, una del generador y tres estáticas sobre `plantilla.html`, que no tiene navegador en este entorno). Se generan 25 combinaciones de escenario y corte. Interacción verificada en navegador **antes** del arreglo del punto 4 del issue #27 (corte por defecto y manejo de errores de `pintar()`): cuatro simulaciones, reforma antes y desde la sanción; sin errores de consola. Vista de escritorio inspeccionada; controles apilados en móvil y ancho de documento igual al visible (375 px), sin desborde horizontal general. **Ese arreglo puntual no se volvió a probar en un navegador** — sólo con los tres chequeos estáticos de `test_plantilla.py`.
 
 | Escenario al 8-sep-2026 | Resultado |
 | --- | --- |

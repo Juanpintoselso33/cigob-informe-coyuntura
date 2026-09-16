@@ -158,7 +158,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -167,7 +167,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
@@ -176,7 +176,7 @@
               "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
@@ -185,7 +185,7 @@
               "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -208,7 +208,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -217,7 +217,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
@@ -226,7 +226,7 @@
               "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
@@ -235,7 +235,7 @@
               "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -258,7 +258,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -267,7 +267,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
@@ -276,7 +276,7 @@
               "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
@@ -285,7 +285,7 @@
               "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -294,12 +294,12 @@
           "iniciativas": 4,
           "denominador": 4,
           "peso_sancionado": 2,
-          "peso_sin_verificar": 2,
-          "porcentaje": null,
+          "peso_sin_verificar": 0,
+          "porcentaje": 50.0,
           "minimo": 50.0,
-          "maximo": 100.0,
-          "cobertura": 50.0,
-          "estado": "parcial",
+          "maximo": 50.0,
+          "cobertura": 100.0,
+          "estado": "calculable",
           "filas": [
             {
               "id": "sim-0",
@@ -308,7 +308,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -317,25 +317,25 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
               "nombre": "Iniciativa ficticia 3",
               "peso": 1,
-              "estado": "sin_verificar",
+              "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
               "nombre": "Iniciativa ficticia 4",
               "peso": 1,
-              "estado": "sin_verificar",
+              "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         }
@@ -388,7 +388,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
@@ -397,7 +397,7 @@
               "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
@@ -406,7 +406,7 @@
               "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -438,7 +438,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
@@ -447,7 +447,7 @@
               "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
@@ -456,7 +456,7 @@
               "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -488,7 +488,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
@@ -497,7 +497,7 @@
               "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
@@ -506,7 +506,7 @@
               "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -515,11 +515,11 @@
           "iniciativas": 4,
           "denominador": 4,
           "peso_sancionado": 1,
-          "peso_sin_verificar": 3,
+          "peso_sin_verificar": 1,
           "porcentaje": null,
           "minimo": 25.0,
-          "maximo": 100.0,
-          "cobertura": 25.0,
+          "maximo": 50.0,
+          "cobertura": 75.0,
           "estado": "parcial",
           "filas": [
             {
@@ -538,25 +538,25 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
               "nombre": "Iniciativa ficticia 3",
               "peso": 1,
-              "estado": "sin_verificar",
+              "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
               "nombre": "Iniciativa ficticia 4",
               "peso": 1,
-              "estado": "sin_verificar",
+              "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         }
@@ -600,7 +600,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -609,7 +609,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -632,7 +632,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -641,7 +641,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -664,7 +664,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -673,7 +673,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -696,7 +696,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -705,7 +705,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         }
@@ -749,7 +749,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -758,7 +758,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
@@ -767,7 +767,7 @@
               "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
@@ -776,7 +776,7 @@
               "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -799,7 +799,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -808,7 +808,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
@@ -817,7 +817,7 @@
               "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
@@ -826,7 +826,7 @@
               "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -849,7 +849,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -858,7 +858,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
@@ -867,7 +867,7 @@
               "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
@@ -876,7 +876,7 @@
               "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         },
@@ -885,12 +885,12 @@
           "iniciativas": 4,
           "denominador": 6,
           "peso_sancionado": 4,
-          "peso_sin_verificar": 2,
-          "porcentaje": null,
+          "peso_sin_verificar": 0,
+          "porcentaje": 66.67,
           "minimo": 66.67,
-          "maximo": 100.0,
-          "cobertura": 66.67,
-          "estado": "parcial",
+          "maximo": 66.67,
+          "cobertura": 100.0,
+          "estado": "calculable",
           "filas": [
             {
               "id": "sim-0",
@@ -899,7 +899,7 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-1",
@@ -908,25 +908,25 @@
               "estado": "sancionado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-2",
               "nombre": "Iniciativa ficticia 3",
               "peso": 1,
-              "estado": "sin_verificar",
+              "estado": "media_sancion",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             },
             {
               "id": "sim-3",
               "nombre": "Iniciativa ficticia 4",
               "peso": 1,
-              "estado": "sin_verificar",
+              "estado": "retirado",
               "fecha_estado": "2026-02-01",
               "fuente": "Escenario simulado",
-              "verificado_hasta": "2026-09-08"
+              "verificado_hasta": "2026-09-10"
             }
           ]
         }

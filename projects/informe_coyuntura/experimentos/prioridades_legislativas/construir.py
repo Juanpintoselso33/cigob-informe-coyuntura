@@ -9,6 +9,7 @@ ROOT = HERE.parents[1]
 
 
 def construir():
+    fechas = ["2025-12-10", "2026-02-26", "2026-02-27", "2026-09-08", "2026-09-10"]
     registro = json.loads((ROOT / "docs/producto/piloto-compromisos-2026-09-10.json").read_text())
     fuentes = {s["id"]: s["url"] for s in registro["fuentes"]}
     real = [{"id": "PE-159-2025", "nombre": "Modernización laboral", "peso": 1,
@@ -18,9 +19,12 @@ def construir():
                  {"fecha": "2025-12-11", "estado": "presentado", "fuente": fuentes["pen_comunicado_122"]},
                  {"fecha": "2026-02-27", "estado": "sancionado", "fuente": fuentes["ley_27802_ficha"]}]}]
     sint = []
+    # verificado_hasta cubre el último corte: sin esto, la media sanción y el
+    # retiro caen en "revisado < límite" en 2026-09-10 y la cartera simulada
+    # muestra el defecto del motor como si fuera la regla (issue #27, punto 3).
     for n, estado in enumerate(["sancionado", "sancionado", "media_sancion", "retirado"]):
         sint.append({"id": f"sim-{n}", "nombre": f"Iniciativa ficticia {n+1}", "peso": 1,
-                     "prioridad_desde": "2026-01-01", "verificado_hasta": "2026-09-08",
+                     "prioridad_desde": "2026-01-01", "verificado_hasta": fechas[-1],
                      "fuente_prioridad": "Escenario simulado",
                      "eventos": [{"fecha": "2026-02-01", "estado": estado, "fuente": "Escenario simulado"}]})
     incompleto = copy.deepcopy(sint)
@@ -35,7 +39,6 @@ def construir():
         ("seleccion", "Simulación: seleccionar sólo éxitos", "Se omiten las dos iniciativas sin sanción. El porcentaje sube por selección, no por un nuevo logro.", sesgo),
         ("pesos", "Simulación: cambiar un peso", "Una sancionada pesa tres y las otras uno. Es sensibilidad ilustrativa, no una ponderación adoptada.", ponderado),
     ]
-    fechas = ["2025-12-10", "2026-02-26", "2026-02-27", "2026-09-08", "2026-09-10"]
     resultados = [{"id": id, "nombre": nombre, "nota": nota, "simulado": id != "real",
                    "cortes": [calcular(cartera, dia) for dia in fechas]} for id, nombre, nota, cartera in casos]
     paquete = {"fechas": fechas, "casos": resultados, "snapshot": registro["snapshot"],
