@@ -1089,6 +1089,29 @@ def fetch_recaudacion() -> dict | None:
 PESO_IVA_ACTIVIDAD_TRIBUTARIA    = 0.6
 PESO_CHEQUE_ACTIVIDAD_TRIBUTARIA = 0.4
 
+# Ventana propia para la SERIE publicada (descargar_series.py), deliberadamente
+# NO `comarb.LIMITE_MESES` (revisión adversarial, 2026-09-16).
+#
+# `comarb.LIMITE_MESES=80` existe para `recaudacion`, donde la card y la serie
+# TIENEN que compartir ventana: `base_imponible_real_sa` desestacionaliza con
+# un promedio móvil sobre toda la muestra, así que una ventana distinta cambia
+# los factores estacionales y por lo tanto TODOS los puntos, incluido el
+# último — de ahí la restricción "no cambiar en un solo lado" de comarb.py.
+# `actividad_tributaria` no desestacionaliza: cada mes de `_real_ia_mensual`
+# depende sólo de nominal(t), nominal(t-12), IPC(t) e IPC(t-12), así que
+# ampliar la ventana no cambia ni un punto ya calculado, sólo agrega meses
+# viejos. No hay razón para heredar el límite de `recaudacion` ni riesgo de
+# romper su gate G3 al tocar esta constante en cambio.
+#
+# El valor importa porque las bandas de ADR-0329 se calibraron contra 105
+# meses (dic-2017/ago-2026, la ventana que permite el IPC nacional como
+# deflactor) y con `comarb.LIMITE_MESES` la serie publicada llegaba sólo a 68
+# meses (2021-01/2026-08): las bandas describían una historia que el tablero
+# nunca publicaba, sin que nada lo dijera. 200 alcanza sobrado el arranque del
+# IPC (2016-12) y deja margen para años de historia futura sin volver a tocar
+# esta constante.
+LIMITE_MESES_ACTIVIDAD_TRIBUTARIA = 200
+
 
 def _actividad_tributaria_serie_mensual(iva_nom: dict, cheque_nom: dict,
                                          ipc: dict) -> dict:

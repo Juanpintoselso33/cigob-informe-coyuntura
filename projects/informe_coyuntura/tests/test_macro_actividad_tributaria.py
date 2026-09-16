@@ -11,6 +11,8 @@ REPO = Path(__file__).parent.parent
 sys.path.insert(0, str(REPO / "scripts"))
 import itcm
 import macro
+import descargar_series
+import comarb
 
 
 def _series(nominal_iva, nominal_cheque, ipc):
@@ -111,3 +113,41 @@ def test_actividad_tributaria_pesa_012_de_la_dimension():
     # Entra por debajo de ipi_manufacturero, no por encima: es MÁS redundante
     # con sus compañeros que el propio IPI, y no gana la premium de "adelanta".
     assert ind["actividad_tributaria"] < ind["ipi_manufacturero"]
+
+
+# ── La serie publicada tiene que cubrir la ventana que calibró las bandas ───
+# (ADR-0329, revisión adversarial 2026-09-16, segunda ronda)
+
+def test_la_serie_publicada_no_reusa_el_limite_de_recaudacion(monkeypatch):
+    """`comarb.LIMITE_MESES=80` es de `recaudacion` (card y serie DEBEN
+    compartir ventana ahí porque desestacionaliza). `actividad_tributaria` no
+    desestacionaliza y no hereda esa restricción: si `fetch_actividad_tributaria_serie`
+    volviera a pedir `comarb.LIMITE_MESES`, la serie publicada volvería a
+    truncarse a 68 meses mientras las bandas siguen calibradas contra 105 —
+    exactamente el bug que este test frena."""
+    limits_pedidos = []
+
+    def _fake_fetch_indec(series_id, limit=48):
+        limits_pedidos.append(limit)
+        return [["2020-01-01", 100.0]]
+
+    monkeypatch.setattr(descargar_series, "fetch_indec", _fake_fetch_indec)
+    descargar_series.fetch_actividad_tributaria_serie()
+
+    assert limits_pedidos, "no se llamó a fetch_indec"
+    assert all(l == macro.LIMITE_MESES_ACTIVIDAD_TRIBUTARIA for l in limits_pedidos), (
+        f"fetch_actividad_tributaria_serie pidió {set(limits_pedidos)}, "
+        f"esperaba sólo macro.LIMITE_MESES_ACTIVIDAD_TRIBUTARIA "
+        f"({macro.LIMITE_MESES_ACTIVIDAD_TRIBUTARIA})")
+    assert macro.LIMITE_MESES_ACTIVIDAD_TRIBUTARIA != comarb.LIMITE_MESES, (
+        "si algún día coinciden por casualidad este test no lo notaría; "
+        "el punto es que no son la MISMA constante")
+
+
+def test_la_ventana_propia_alcanza_los_105_meses_calibrados():
+    """105 meses (dic-2017/ago-2026) requieren IPC desde 2016-12: el `limit`
+    en meses calendario tiene que ser mayor a esa distancia. Falla si alguien
+    baja la constante por error sin volver a medir el reparto de bandas."""
+    from datetime import date
+    meses_hasta_ipc_2016_12 = (date.today().year - 2016) * 12 + date.today().month - 12
+    assert macro.LIMITE_MESES_ACTIVIDAD_TRIBUTARIA > meses_hasta_ipc_2016_12

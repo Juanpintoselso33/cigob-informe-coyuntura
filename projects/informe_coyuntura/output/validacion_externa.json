@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-16T02:43:15.063688-03:00",
+    "generated_at": "2026-09-16T02:51:01.833313-03:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {

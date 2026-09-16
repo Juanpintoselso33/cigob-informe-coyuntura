@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-09-16
 cinturon: 'macro'
 indicadores: [actividad_tributaria]
-archivos: ['scripts/macro.py', 'scripts/itcm.py', 'scripts/descargar_series.py', 'scripts/procedencia_anclas.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'web/src/lib/charts.ts', 'tests/test_itcm_difusion.py']
+archivos: ['scripts/macro.py', 'scripts/itcm.py', 'scripts/descargar_series.py', 'scripts/procedencia_anclas.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'web/src/lib/charts.ts', 'tests/test_itcm_difusion.py', 'tests/test_macro_actividad_tributaria.py']
 relacionado: ['0045', '0071', '0072', '0074', '0076', '0078', '0079', '0120', '0124', '0127', '0152', '0192', '0239', '0252', '0257', '0318', '0319', '0321']
 ambito: 'Cinturón Macro · dimensión `actividad` del ITCM · nuevo indicador `actividad_tributaria`'
 origen: 'Encargo del editor: el pedido original de ADR-0318/0319/0321 era un proxy de ACTIVIDAD y se había implementado como control dentro de la dimensión FISCAL'
@@ -137,6 +137,46 @@ Reparto resultante (de mejor a peor, mismo orden que la tabla): 19,0 / 14,3 /
 18,1 / 20,0 / 14,3 / 14,3% — ningún tramo concentra más de una quinta parte de
 la historia. Clasificado `historia_larga` en `procedencia_anclas.py`
 (calibrado contra la serie propia, incluyendo años anteriores a esta gestión).
+
+### La serie publicada tiene que ser la misma que calibró las bandas — corregido
+### (revisión adversarial, 2026-09-16, segunda ronda)
+
+El reparto de arriba se midió contra los 105 meses de historia (dic-2017/
+ago-2026) obtenidos pidiéndole a la API un `limit` amplio. Pero
+`scripts/descargar_series.py` (lo que arma la serie que de verdad se publica
+en el gráfico y el CSV) reutilizaba `comarb.LIMITE_MESES = 80` para el fetch
+de IVA-DGI, cheque e IPC — y con un `limit` en MESES CALENDARIO tomados desde
+hoy, no en meses del compuesto, la serie i.a. resultante quedaba en **68
+meses** (2021-01/2026-08), no 105: el reparto declarado describía una
+historia que el tablero nunca publicaba, y nadie lo hubiera notado sin medir
+la serie publicada contra el reparto.
+
+`comarb.LIMITE_MESES` es compartido a propósito con `recaudacion`
+(`comarb.py`, docstring de `base_imponible_real_sa`): esa desestacionaliza
+con un promedio móvil sobre toda la muestra, así que la card y la serie
+TIENEN que usar la misma ventana o los factores estacionales —y con ellos
+todos los puntos, incluido el último— divergen entre las dos. Subir esa
+constante global habría arreglado `actividad_tributaria` a costa de mover la
+desestacionalización de `recaudacion`, un indicador de otra dimensión que
+esta revisión no tenía que tocar.
+
+`actividad_tributaria` no desestacionaliza: cada punto de
+`_real_ia_mensual` depende sólo de nominal(t), nominal(t-12), IPC(t) e
+IPC(t-12), así que ampliar la ventana no cambia ni un punto ya calculado, sólo
+agrega meses viejos — no hereda la restricción de `recaudacion`, y no había
+motivo para compartir su constante. Se agrega
+`macro.LIMITE_MESES_ACTIVIDAD_TRIBUTARIA = 200`, propia de este indicador, y
+`descargar_series.fetch_actividad_tributaria_serie()` pasa a usarla. Verificado
+tras el cambio:
+
+- `output/series/macro.csv` y `web/src/data/series.json` publican ahora **105
+  meses** de `actividad_tributaria` (2017-12/2026-08), no 68.
+- El reparto de bandas MEDIDO sobre esa serie ya publicada da 19,0 / 14,3 /
+  18,1 / 20,0 / 14,3 / 14,3% — coincide exacto con el declarado arriba.
+- `comarb.LIMITE_MESES` no se tocó: `output/series/macro.csv` sólo ganó 37
+  filas nuevas de `actividad_tributaria` (los meses 2017-12/2020-12 que antes
+  faltaban), cero filas removidas o modificadas de ningún otro indicador. La
+  serie de `recaudacion` y su desestacionalización quedan bit a bit iguales.
 
 ### Rezago medido de los cuatro indicadores de `actividad` (16-sep-2026)
 
