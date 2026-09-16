@@ -228,7 +228,7 @@ Suma de pesos: 100%.
 
 ### Dimensión `imagen_voto` (7%)
 
-#### Ventaja LLA−PJ (Votómetro)
+#### Ventaja LLA−PJ
 
 `votometro_ventaja_lla`
 
@@ -238,11 +238,11 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **7.0%** |
 | Familia de lectura | recursos |
 | Rezago declarado | 1 meses |
-| Procedencia del ancla | `conceptual` — ventaja electoral anclada en el cero (empate) con márgenes simétricos redondos (ADR-0121) |
+| Procedencia del ancla | `conceptual` — ventaja electoral anclada en el cero (empate); cortes ajustados para que el semáforo cambie exactamente en +8/+5/0 pp, los umbrales de Luis (ADR-0312, corrige ADR-0121) |
 
-**Bandas**: > 15 → 100 · 5–15 → 85 · -5–5 → 65 · -15–-5 → 40 · ≤ -15 → 10
+**Bandas**: > 14 → 100 · 8–14 → 80 · 2–8 → 40 · -2–2 → 20 · ≤ -2 → 0
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0036).
+**Lo gobiernan**: [ADR-0312](../adr/0312-votometro-traduce-el-semaforo-de-luis.md) El votómetro traduce el semáforo que pidió Luis, no ya los márgenes simétricos
 
 ### Dimensión `poder_judicial` (15%)
 
@@ -339,7 +339,7 @@ histórica.
 - `derrotas_legislativas` — Derrotas legislativas del Ejecutivo (declarado como contexto)
 - `gobernadores_alineamiento` — Alineamiento de gobernadores (retirado)
 - `judicializacion` — Densidad de menciones cautelares en sumarios SAIJ
-- `movilizacion_cepa` — Tensión social (CEPA, interno) (declarado como contexto)
+- `movilizacion_cepa` — Tensión social (CEPA) (declarado como contexto)
 - `protestas_caba` — Protestas en CABA (ACLED) (declarado como contexto)
 - `rotacion_gabinete` — Rotación del gabinete (declarado como contexto)
 
@@ -380,7 +380,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-83 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+84 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -465,3 +465,4 @@ histórica.
 - [0307](../adr/0307-ratio-dnu-ventana-inclusiva.md) — Ratio DNU: 365 fechas incluidas
 - [0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) — Sesiones y sanciones fuera del catálogo
 - [0310](../adr/0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) — El saldo empresario vuelve al ITCP con el corpus cerrado
+- [0312](../adr/0312-votometro-traduce-el-semaforo-de-luis.md) — El votómetro traduce el semáforo que pidió Luis, no ya los márgenes simétricos

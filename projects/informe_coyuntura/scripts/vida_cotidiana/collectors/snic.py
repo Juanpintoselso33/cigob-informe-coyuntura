@@ -14,6 +14,31 @@ from config import SNIC_CSV, CABA_DELITOS_URL, HTTP_HEADERS, HTTP_TIMEOUT
 
 logger = logging.getLogger(__name__)
 
+# ADR-0323/0324/0325: se conservan por NOMBRE, no por ranking de volumen.
+# Antes `tipos_principales` era el top-5 por cantidad de hechos, y eso
+# descartaba "Homicidios dolosos" (1.613 hechos en 2025) mientras conservaba
+# categorías de bulto como "Robos" (360.946, el #1 nacional) — el dato ya se
+# bajaba y se tiraba en la cañería antes de llegar a la ficha. Nombres
+# verificados contra el CSV oficial 2025 (no contra este comentario, que
+# puede desactualizarse).
+#
+# ADR-0325: la primera versión de esta lista (sólo homicidios + robos +
+# hurtos + abusos) sacó "Amenazas" (217.883 hechos) y "Lesiones dolosas"
+# (179.710) sin decirlo — las dos estaban en el top-5 por volumen que este
+# cambio reemplaza. Se restituyen: el objetivo del cambio era dejar de
+# PERDER categorías relevantes al filtrar por ranking, no reemplazar una
+# pérdida por otra. Queda afuera "Otros delitos contra la propiedad"
+# (249.754): es un cajón residual sin identidad propia, no un tipo de delito.
+TIPOS_RELEVANTES = (
+    "Homicidios dolosos",
+    "Robos (excluye los agravados por el resultado de lesiones y/o muertes)",
+    "Robos agravados por el resultado de lesiones y/o muertes",
+    "Hurtos",
+    "Abusos sexuales con acceso carnal (violaciones)",
+    "Amenazas",
+    "Lesiones dolosas",
+)
+
 
 def _parse_snic_csv(content: bytes) -> dict:
     """
@@ -63,11 +88,34 @@ def _parse_snic_csv(content: bytes) -> dict:
             "nota": "CSV descargado pero columnas de hechos no identificadas. Ver 'columnas_disponibles'.",
         }
 
+    tipos = por_anio[ultimo_anio]["tipos"]
+    # Por NOMBRE (ver TIPOS_RELEVANTES), no por ranking de volumen: un ranking
+    # por cantidad de hechos deja afuera a los homicidios, que son el tipo más
+    # bajo en volumen y el más citado en cualquier lectura de seguridad.
+    principales = {t: tipos[t] for t in TIPOS_RELEVANTES if t in tipos}
+    faltantes = [t for t in TIPOS_RELEVANTES if t not in tipos]
+    if faltantes:
+        # ADR-0325: con lista fija por NOMBRE, el modo de falla más probable
+        # es que la fuente renombre una categoría — y eso antes se perdía
+        # en silencio (sólo un `logger.warning`, con un test que lo
+        # bendecía). Ahora es ruidoso: se levanta acá, lo atrapa el
+        # try/except de `fetch_snic()` (que loguea "SNIC FAIL" y sigue con
+        # el resto de las fuentes del cinturón sin tumbar la corrida
+        # completa) y, un nivel más arriba, `_seguro()` en main.py marca al
+        # colector como caído — exactamente el circuito que hoy usan
+        # `consumo_carnes.py` y demás colectores del cinturón para
+        # degradaciones de formato, y que alimenta el exit code 1/2 y el
+        # aviso de #monitor-alertas. No es "que revienta la corrida": es
+        # que deja de tirarse en silencio.
+        raise ValueError(
+            f"SNIC: el CSV {ultimo_anio} no trae estos tipos esperados "
+            f"(la fuente pudo renombrar la categoría): {faltantes}")
+
     return {
         "anio": ultimo_anio,
         "total_hechos": por_anio[ultimo_anio]["total_hechos"],
         "tipos_principales": dict(
-            sorted(por_anio[ultimo_anio]["tipos"].items(), key=lambda x: -x[1])[:5]
+            sorted(principales.items(), key=lambda x: -x[1])
         ),
     }
 

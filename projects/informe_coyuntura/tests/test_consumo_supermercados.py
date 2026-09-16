@@ -222,8 +222,11 @@ def test_entra_con_20_por_ciento_y_los_previos_cedieron():
     # `motorizacion_total` mientras la rama estaba abierta, y la cesión se
     # recalculó sola sobre lo que quedó — que es para lo que existe
     # `alta_proporcional`.
+    # ADR-0322 partió `consumo_carnes_total` (0,0392) en dos componentes que
+    # puntúan por separado; la cesión ×0,80 se aplica sobre cada uno.
     previos = {"brecha_salario_cbt": 0.5959, "pobreza_nowcast": 0.3253,
-               "consumo_carnes_total": 0.0392, "motorizacion_total": 0.0396}
+               "consumo_carne_vacuna": 0.0205, "consumo_carnes_otras": 0.0187,
+               "motorizacion_total": 0.0396}
     for k, v in previos.items():
         assert abs(ind[k] - round(v * 0.80, 4)) < 1e-9, f"{k} no cedió ×0,80"
 

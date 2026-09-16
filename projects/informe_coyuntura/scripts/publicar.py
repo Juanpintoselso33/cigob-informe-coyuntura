@@ -134,45 +134,47 @@ def build_vida(raw):
     _add(out, "alquiler_real", _red(alq.get("variacion_mensual_pct"), 2),
          "% m/m alquileres", "INDEC — IPC-GBA alquiler de la vivienda (planilla original)",
          alq.get("fecha"), fuente_url=alq.get('fuente_url'))
-    # Componente A de la ficha de proteína animal. Pasa de CICCRA al tablero de
-    # SAGYP para que A, B y C salgan del MISMO PDF: misma metodología de
-    # promedio móvil 12m, mismo corte temporal y mismo perímetro. Mezclarlos
-    # haría que el ratio bovina/total compare dos fuentes distintas.
-    # CICCRA queda como respaldo si el tablero no trae el mes.
+    # ADR-0322: la vacuna y el resto (aviar+porcina) puntúan cada uno por su
+    # cuenta — antes (ADR-0217) sólo el total puntuaba y la vacuna era
+    # diagnóstico puro. Los DOS salen del MISMO PDF de SAGYP: misma
+    # metodología de promedio móvil 12m, mismo corte temporal y mismo
+    # perímetro. CICCRA queda como respaldo de la vacuna si el tablero no
+    # trae el mes — el resto no tiene respaldo alternativo, así que si SAGYP
+    # no trajo el mes esa card queda en None (la repara `_carry_forward`).
+    #
+    # Se llaman SIEMPRE, aunque SAGYP no haya traído el mes, por el mismo
+    # motivo que la motorización, sentimiento_digital y el supermercado: una
+    # clave AUSENTE es invisible para `_carry_forward`, que sólo repara las
+    # que ya están en None. Pasó de verdad el 25-ago-2026 —el colector
+    # devolvió `consumo_carnes: None` y el snapshot salió con 62 cards en vez
+    # de 63—, y `gate_calidad.py` lo dejó pasar porque mira estructura,
+    # frescura y card-contra-serie, no invariantes de conteo.
     carnes = raw.get("consumo_carnes") or {}
     carne = ciccra.get("consumo_carne_per_capita", {})
     if carnes.get("vacuna") is not None:
-        _add(out, "consumo_carne", carnes["vacuna"],
+        _add(out, "consumo_carne_vacuna", carnes["vacuna"],
              "kg/hab/año", "SAGYP — tablero consumo per cápita de carnes (promedio móvil 12m)",
              f"{carnes['mes']}-01")
     else:
-        _add(out, "consumo_carne", carne.get("valor"),
+        _add(out, "consumo_carne_vacuna", carne.get("valor"),
              "kg/hab/año", "CICCRA", carne.get("fecha"))
-    # Componentes B y C: el total distingue sustitución de empobrecimiento, y el
-    # ratio dice cuál de los dos está pasando.
-    # Las DOS fuentes, porque el modal publica una sola línea de fuente y el
-    # lector ve el nivel de una y el gráfico de la otra (ADR-0217).
-    #
-    # Se llama SIEMPRE, aunque SAGYP no haya traído el mes, por el mismo motivo
-    # que la motorización, sentimiento_digital y el supermercado: **una clave
-    # AUSENTE es invisible para `_carry_forward`**, que sólo repara las que ya
-    # están en None. Vivía adentro del `if` y por eso el indicador no se
-    # degradaba: DESAPARECÍA. Pasó de verdad el 25-ago-2026 —el colector devolvió
-    # `consumo_carnes: None` y el snapshot salió con 62 cards en vez de 63—, y
-    # `gate_calidad.py` lo dejó pasar porque mira estructura, frescura y
-    # card-contra-serie, no invariantes de conteo. A diferencia de `consumo_carne`,
-    # este componente NO tiene respaldo en CICCRA: la rama de respaldo publicaba
-    # la carne vacuna y se olvidaba del total.
-    _add(out, "consumo_carnes_total", carnes.get("total"),
+    otras = None
+    if carnes.get("aviar") is not None and carnes.get("porcina") is not None:
+        otras = round(carnes["aviar"] + carnes["porcina"], 2)
+    _add(out, "consumo_carnes_otras", otras,
          "kg/hab/año",
-         "SAGYP — tablero de consumo per cápita de carnes (nivel) · "
-         "INDEC — faena de vacunos, porcinos y aves (evolución del índice)",
+         "SAGYP — tablero consumo per cápita de carnes (aviar + porcina, promedio móvil 12m)",
          f"{carnes['mes']}-01" if carnes.get("mes") else None)
     # Las variaciones i.a. las publica la misma fuente y las consume la matriz
-    # A×B en `_por_que_carne`. Viajan COLGADAS del indicador, como ya hacen
-    # `componentes` en el IAI o `regimen` en otros: meterlas como clave suelta
-    # del dict las convertiría en un indicador fantasma.
-    out["consumo_carnes_total"]["variaciones"] = carnes.get("variaciones") or {}
+    # que arma `_por_que_carne`. Viajan COLGADAS de los DOS indicadores —no de
+    # un tercero "consumo_carnes_total", que ya no es card (ADR-0322)—, como
+    # ya hacen `componentes` en el IAI o `regimen` en otros: meterlas como
+    # clave suelta del dict las convertiría en un indicador fantasma.
+    variaciones = carnes.get("variaciones") or {}
+    out["consumo_carne_vacuna"]["variaciones"] = variaciones
+    out["consumo_carnes_otras"]["variaciones"] = variaciones
+    out["consumo_carnes_otras"]["total_kg"] = carnes.get("total")
+    out["consumo_carnes_otras"]["ratio_bovina"] = carnes.get("ratio_bovina")
     inf = indec.get("informalidad_trimestral") or indec.get("informalidad_anual", {})
     _add(out, "informalidad", _red(inf.get("valor"), 1, 100),
          "%", "INDEC EPH", inf.get("fecha"))
@@ -453,7 +455,7 @@ SCORING = {
     # ── vida cotidiana ── (metodología CIGOB validada may-2026; anclas de dominio)
     "ipc_alimentos":       (lambda v: v,                "0% → 0 · 5% → 5 · 10% → 10 (mensual)"),
     "brecha_salario_cbt":  (lambda v: (4 - v) * 10 / 3, "4 canastas → 0 · 2,5 → 5 · 1 → 10 (salario formal / CBT)"),
-    "consumo_carne":       (lambda v: (55 - v) / 2,     "55 → 0 · 45 → 5 · 35 → 10 (kg/hab/año)"),
+    "consumo_carne_vacuna": (lambda v: (55 - v) / 2,    "55 → 0 · 45 → 5 · 35 → 10 (kg/hab/año)"),
     "informalidad":        (lambda v: (v - 25) / 2.5,   "25% → 0 · 37,5% → 5 · 50% → 10"),
     "mortalidad_pymes":    (lambda v: 5 - v,            "+5% → 0 · 0% → 5 · −5% → 10 (IPI m/m)"),
     "despacho_cemento":    (lambda v: (180 - v) / 10,   "180 → 0 · 130 → 5 · 80 → 10 (índice ISAC)"),
@@ -1523,7 +1525,7 @@ def _fecha_dato_a_date(valor):
     No todas las fichas fechan al día: las de frecuencia mensual rotulan su dato
     como «2026-05», que `date.fromisoformat` rechaza. Cuando el ITVC se sumó al
     perfil de vintages, tres de sus catorce componentes venían así
-    —`consumo_carne`, `inseguridad`, `patentamiento_motos`— y el `except
+    —`consumo_carne_vacuna`, `inseguridad`, `patentamiento_motos`— y el `except
     ValueError` los descartaba EN SILENCIO: la card habría dicho que describe el
     cinturón entero cubriendo once. Un rótulo mensual se lee como el primero de
     ese mes, que es la lectura conservadora (la más antigua posible).
@@ -2331,36 +2333,86 @@ def _por_que_dimension(puntaje, tension, base100):
 CARNES_TOTAL_REFERENCIA = 112.8
 
 
-def _por_que_carne(vacuna, total, variaciones):
+def _snic_desglose_txt(tipos_principales: dict) -> str:
+    """"; Homicidios dolosos: 1.613; Robos: 360.946" — el desglose del SNIC
+    por tipo de delito (ADR-0324/0325), tal como lo devuelve
+    `snic._parse_snic_csv` en `tipos_principales`.
+
+    Antes este dict se calculaba, se guardaba en el snapshot interno del
+    colector y no lo leía nadie río abajo (ni `publicar.py`, ni `web/src`,
+    ni el sitio construido): los homicidios se bajaban del CSV oficial y se
+    tiraban en la cañería antes de llegar al lector. Esta función es lo que
+    hace que sí lleguen, colgados del contraste SNIC que ya se publica en el
+    detalle de `inseguridad`.
+    """
+    if not tipos_principales:
+        return ""
+    partes = "; ".join(
+        f"{nombre}: {format(int(cant), ',').replace(',', '.')}"
+        for nombre, cant in tipos_principales.items()
+    )
+    return f". Por tipo: {partes}"
+
+
+def _por_que_carne(ikey, vacuna, otras, total, variaciones):
     """Nivel, variación y composición agregados; no identifica trayectorias.
 
     El color usa la evolución de faena per cápita contra 4T-2023. El consumo
     aparente oficial y su referencia histórica se explican como contexto.
+
+    Las dos cards que puntúan (`consumo_carne_vacuna` y `consumo_carnes_otras`)
+    comparten la MISMA matriz de nivel/variación —cada una necesita el número
+    de la otra para que la composición completa se vea desde cualquiera de las
+    dos—, pero el párrafo propio de cada una tiene que hablar de SU nivel y SUS
+    componentes, no repetir el de la otra (antes las dos publicaban el texto
+    de la vacuna, verificado en `dist/`).
     """
     import math
 
     var_v = (variaciones or {}).get("vacuna")
     var_t = (variaciones or {}).get("total")
-    valores = (vacuna, total, var_v, var_t)
+    var_a = (variaciones or {}).get("aviar")
+    var_p = (variaciones or {}).get("porcina")
+    valores = (vacuna, otras, total, var_v, var_t)
     if any(not isinstance(v, (int, float)) or not math.isfinite(v) for v in valores):
         return None
-    if total <= 0 or vacuna < 0 or vacuna > total:
+    if total <= 0 or vacuna < 0 or otras < 0 or vacuna > total:
         return None
 
-    ratio = vacuna / total * 100
+    ratio_vacuna = vacuna / total * 100
+    ratio_otras = 100 - ratio_vacuna
     posicion = ("por encima de" if total > CARNES_TOTAL_REFERENCIA else
                 "por debajo de" if total < CARNES_TOTAL_REFERENCIA else "igual a")
-    return (f"Consumo aparente: vacuna {coma(round(vacuna, 1))} kg por habitante y año "
-            f"({coma(round(var_v, 1))}% interanual); total de las tres carnes "
-            f"{coma(round(total, 1))} kg ({coma(round(var_t, 1))}% interanual). "
-            f"La vacuna representa {coma(round(ratio, 1))}% del total. "
-            f"El nivel total está {posicion} la referencia histórica "
-            f"de {coma(CARNES_TOTAL_REFERENCIA)} kg; esa comparación no indica "
-            f"si subió o bajó respecto del año anterior. "
-            f"Estos agregados no identifican sustitución dentro de los mismos "
-            f"hogares ni proteína ingerida. El color y el aporte al índice usan "
-            f"la evolución de faena por habitante frente a 4T-2023, no esta "
-            f"comparación de consumo aparente con el promedio histórico.")
+    contexto_total = (
+        f"total de las tres carnes {coma(round(total, 1))} kg por habitante y "
+        f"año ({coma(round(var_t, 1))}% interanual). El nivel total está "
+        f"{posicion} la referencia histórica de {coma(CARNES_TOTAL_REFERENCIA)} "
+        f"kg; esa comparación no indica si subió o bajó respecto del año "
+        f"anterior.")
+    cierre = (" Estos agregados no identifican sustitución dentro de los "
+              "mismos hogares ni proteína ingerida. El color y el aporte al "
+              "índice usan la evolución de faena por habitante frente a "
+              "4T-2023, no esta comparación de consumo aparente con el "
+              "promedio histórico.")
+
+    if ikey == "consumo_carne_vacuna":
+        cuerpo = (
+            f"Consumo aparente de carne vacuna: {coma(round(vacuna, 1))} kg "
+            f"por habitante y año ({coma(round(var_v, 1))}% interanual), el "
+            f"{coma(round(ratio_vacuna, 1))}% del {contexto_total} El resto "
+            f"(aviar + porcina) suma {coma(round(otras, 1))} kg, el "
+            f"{coma(round(ratio_otras, 1))}% restante.")
+    else:
+        var_a_txt = f"{coma(round(var_a, 1))}%" if isinstance(var_a, (int, float)) else "s/d"
+        var_p_txt = f"{coma(round(var_p, 1))}%" if isinstance(var_p, (int, float)) else "s/d"
+        cuerpo = (
+            f"Consumo aparente de aviar y porcina: {coma(round(otras, 1))} kg "
+            f"por habitante y año, el {coma(round(ratio_otras, 1))}% del "
+            f"{contexto_total} Aviar {var_a_txt} interanual y porcina "
+            f"{var_p_txt} interanual. La carne vacuna suma "
+            f"{coma(round(vacuna, 1))} kg aparte, el "
+            f"{coma(round(ratio_vacuna, 1))}% del total.")
+    return cuerpo + cierre
 
 
 def _por_que_motorizacion(composicion):
@@ -2392,6 +2444,19 @@ def _por_que_motorizacion(composicion):
         return None
 
     corrimiento = ratio - ratio_base
+    # Control pedido por Juan (15-sep, ADR-0322): motos/autos, no motos/total.
+    # Es la magnitud que separa "sube la motorización porque se compran más
+    # autos" de "sube porque se baja a la moto" — algo que `ratio` (motos
+    # sobre el TOTAL) no distingue de un total que crece parejo en las dos
+    # patas. Opcional: series viejas pueden no tenerlo todavía cacheado.
+    ratio_ma = composicion.get("ratio_motos_autos")
+    ratio_ma_base = composicion.get("ratio_motos_autos_base")
+    texto_ratio_ma = ""
+    if ratio_ma is not None and ratio_ma_base is not None:
+        texto_ratio_ma = (
+            f". Por cada auto patentado se patentan {coma(round(ratio_ma, 2))} "
+            f"motos, contra {coma(round(ratio_ma_base, 2))} al arranque del "
+            f"mandato")
     # En millones el total y en miles las dos patas: "1352 mil vehículos" es
     # un número que nadie dice en voz alta.
     base = (f"en los últimos doce meses se patentaron "
@@ -2402,7 +2467,8 @@ def _por_que_motorizacion(composicion):
             f"{coma(round(composicion['motos_12m'] / 1000))} mil motos "
             f"({coma(round(var_m, 1))}%). Las motos son el "
             f"{coma(round(ratio, 1))}% de lo que se patenta, contra "
-            f"{coma(round(ratio_base, 1))}% al arranque del mandato")
+            f"{coma(round(ratio_base, 1))}% al arranque del mandato"
+            f"{texto_ratio_ma}")
 
     sube_total = var_t > 0
     mas_motos = corrimiento > 0
@@ -2456,10 +2522,14 @@ def _semaforos(informe):
                                            ind.get("valor"))
             # El consumo aparente y su composición dan contexto agregado.
             # El texto distingue ese contexto del color basado en faena.
-            if ikey == "consumo_carnes_total":
-                vacuna_ind = bloque["indicadores"].get("consumo_carne") or {}
-                por_que = _por_que_carne(vacuna_ind.get("valor"), ind.get("valor"),
-                                         ind.get("variaciones"))
+            # ADR-0322: las DOS cards que puntúan (vacuna y el resto) muestran
+            # la MISMA matriz — cada una necesita el nivel de la otra para que
+            # el lector vea la composición completa, no sólo su mitad.
+            if ikey in ("consumo_carne_vacuna", "consumo_carnes_otras"):
+                vacuna_ind = bloque["indicadores"].get("consumo_carne_vacuna") or {}
+                otras_ind = bloque["indicadores"].get("consumo_carnes_otras") or {}
+                por_que = _por_que_carne(ikey, vacuna_ind.get("valor"), otras_ind.get("valor"),
+                                         otras_ind.get("total_kg"), ind.get("variaciones"))
                 if por_que:
                     ind["semaforo"]["por_que"] = por_que
             # Lo mismo para la motorización (ADR-0224): el color dice "subió
@@ -2596,28 +2666,21 @@ def aplicar_scoring(informe, series):
 
     # REGLA (ADR-0153/0216): o integra el índice, o no es card.
     #
-    # Desde ADR-0217 el que puntúa es el consumo TOTAL de carnes, así que la
-    # card es esa. La VACUNA sola deja de ser card: es el Componente A de la
-    # ficha, o sea diagnóstico —la mitad de la matriz A×B que distingue
-    # sustitución de pérdida de acceso—, y su valor se lee ahí adentro.
+    # ADR-0322: la vacuna dejó de ser sólo diagnóstico y pasó a puntuar junto
+    # con `consumo_carnes_otras` (aviar+porcina) — las DOS son cards ahora, así
+    # que ninguna se descarta acá. `consumo_carnes_total` nunca se agrega a
+    # `out` (no hay `_add` para esa clave), así que no hace falta popearla.
     #
-    # Se descarta DESPUÉS de `_semaforos` justamente porque la matriz la lee
-    # ahí. Sacarla antes deja al total sin su explicación y nada falla en voz
-    # alta: probado con VIDA_OCULTOS, el `por_que` quedó vacío y el gate pasó.
-    #
-    # ADR-0224: lo mismo con las dos patas de la motorización. El que puntúa es
+    # ADR-0224: la motorización sigue con el patrón viejo. El que puntúa es
     # el total; autos y motos son los Componentes A y B de su matriz A×B, o sea
-    # diagnóstico, y su valor se lee ahí adentro.
-    #
-    # OJO a la diferencia con la vacuna, que es la razón de que esto esté
-    # escrito: la matriz de la CARNE lee el indicador hermano, así que depende
-    # del orden y romperlo no hace ruido. La de la MOTORIZACIÓN no — su
-    # composición viaja colgada del propio total, que es justamente para que no
-    # dependa de este `pop`. Van juntas acá abajo por consistencia, no porque
-    # las dos lo necesiten; si alguien mueve este bloque, la carne se rompe en
-    # silencio y la motorización no.
+    # diagnóstico, y su valor se lee ahí adentro. Se descarta DESPUÉS de
+    # `_semaforos` porque la matriz los lee ahí: sacarlos antes deja al total
+    # sin su explicación y nada falla en voz alta — probado con VIDA_OCULTOS,
+    # el `por_que` quedó vacío y el gate pasó. Su composición viaja colgada
+    # del propio total, así que no depende del orden de este `pop` como sí
+    # dependía la carne antes de ADR-0322.
     vida = informe["cinturones"].get("vida_cotidiana", {})
-    for descartada in ("consumo_carne", "patentamiento_autos", "patentamiento_motos"):
+    for descartada in ("patentamiento_autos", "patentamiento_motos"):
         vida.get("indicadores", {}).pop(descartada, None)
     return informe
 
@@ -2833,6 +2896,17 @@ def main():
                     snic_txt = (f" — contraste SNIC (denuncias registradas, año "
                                 f"{ins.get('fecha_dato')}): "
                                 f"{format(int(v_snic), ',').replace(',', '.')} hechos")
+                    # ADR-0325/0324: el desglose por tipo del SNIC (homicidios,
+                    # robos, hurtos, etc.) se descargaba y se guardaba en
+                    # `tipos_principales`, pero nada lo leía río abajo —
+                    # nunca llegaba al lector, sólo al snapshot interno del
+                    # colector. Se suma acá, al mismo contraste anual que ya
+                    # se publica, en vez de convertirlo en indicador nuevo
+                    # que puntúe (fuera de alcance: es anual, con ~8,5 meses
+                    # de rezago desde el cierre del año).
+                    tipos_snic = ((raw.get("snic") or {}).get("inseguridad_snic") or {}).get(
+                        "tipos_principales") or {}
+                    snic_txt += _snic_desglose_txt(tipos_snic)
                 ult = ivi[-1]
                 ins.update({
                     "valor": ult["valor"],

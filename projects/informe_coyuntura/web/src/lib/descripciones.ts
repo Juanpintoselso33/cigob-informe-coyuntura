@@ -273,14 +273,14 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.",
     frecuencia: "Mensual", tipo: "Variación (card) · nivel relativo al IPC (índice)",
   },
-  consumo_carne: {
-    que: "Consumo aparente de carne vacuna por habitante. Se conserva como desglose; desde ADR-0217 no puntúa por separado del componente de carnes totales.",
-    aporta: "Aporta el desglose de carne vacuna junto al total de las tres carnes. Sus variaciones agregadas no identifican decisiones de sustitución de cada hogar ni permiten atribuir por sí solas una caída a pérdida de poder adquisitivo.",
-    frecuencia: "Mensual", tipo: "Nivel per cápita (desglose)",
+  consumo_carne_vacuna: {
+    que: "Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de SAGYP. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Desde ADR-0322 puntúa por separado, como corte aspiracional del consumo argentino.",
+    aporta: "Mide específicamente la carne vacuna, que es la que el consumo aparente argentino trata como aspiracional y la que más cae. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena de vacunos por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones: una divergencia respecto del consumo puede afectar la interpretación y el puntaje.",
+    frecuencia: "Mensual (unos 2 meses de rezago)", tipo: "Nivel (kg/hab) · índice base-100 en el gráfico",
   },
-  consumo_carnes_total: {
-    que: "Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero oficial. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares.",
-    aporta: "La suma y el desglose muestran la evolución agregada de las tres carnes, sin identificar sustituciones dentro de los mismos hogares. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones: una divergencia respecto del consumo puede afectar la interpretación y el puntaje.",
+  consumo_carnes_otras: {
+    que: "Consumo aparente por habitante de carne aviar y porcina combinadas, en promedio móvil de doce meses, según el tablero oficial de SAGYP. Puntúa junto con `consumo_carne_vacuna` (ADR-0322), en reemplazo del compuesto único de las tres carnes (ADR-0217): separadas, una cae mientras la otra puede sostenerse o subir por sustitución.",
+    aporta: "Complementa a la vacuna: si sube mientras la vacuna cae, describe sustitución hacia pollo y cerdo, no necesariamente menos proteína en total. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena de aviar+porcina por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones.",
     frecuencia: "Mensual (unos 2 meses de rezago)", tipo: "Nivel (kg/hab) · índice base-100 en el gráfico",
   },
   informalidad: {

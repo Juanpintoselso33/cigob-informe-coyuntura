@@ -174,7 +174,7 @@ Suma de pesos: 100%.
 
 ### Dimensión `social_orden` (10%)
 
-#### Asistencia directa (TDPS)
+#### Asistencia directa
 
 `asistencia_directa`
 

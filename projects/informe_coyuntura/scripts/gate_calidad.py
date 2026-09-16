@@ -86,7 +86,8 @@ G3_EXCEPCIONES = {
     # y desde dos fuentes, así que nunca van a coincidir por construcción.
     # NO es un caso de anclaje: que las dos fuentes no se separen lo vigila
     # tests/test_carne_compuesto.py contra la variación i.a. que publica SAGYP.
-    "consumo_carnes_total": "card = nivel kg/hab (SAGYP); serie = índice base-100 desde faena INDEC (ADR-0217)",
+    "consumo_carne_vacuna": "card = nivel kg/hab de vacuna (SAGYP); serie = índice base-100 desde faena INDEC (ADR-0322)",
+    "consumo_carnes_otras": "card = nivel kg/hab de aviar+porcina (SAGYP); serie = índice base-100 desde faena INDEC (ADR-0322)",
     # ADR-0224: la card publica el NIVEL —vehículos 0km por cada mil
     # habitantes, que es el número con significado para el lector— y la serie
     # el ÍNDICE base 100 = 4T-2023, que es lo que puntúa. A diferencia de la

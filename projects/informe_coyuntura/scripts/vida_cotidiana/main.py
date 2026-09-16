@@ -46,6 +46,18 @@ def imprimir_resumen(resultados: dict) -> None:
         if fuente == "metadata" or not datos:
             continue
         print(f"\n  [{fuente.upper()}]")
+        # Algunos colectores (ej. `consumo_carnes`) devuelven UN registro
+        # plano —{mes, total, vacuna, aviar, porcina, variaciones}— en vez de
+        # un dict de indicadores {nombre: {valor, fecha, ...}}. Sin este
+        # chequeo, el resumen iteraba ese registro como si cada campo fuera
+        # un indicador: casi todos son escalares (se descartaban en
+        # `isinstance(vals, dict)`) y sólo `variaciones` es un dict, así que
+        # el resumen imprimía "variaciones: None []" con datos frescos y
+        # válidos adentro — un bug de este print, no del colector.
+        if not any(isinstance(v, dict) and "valor" in v for v in datos.values()):
+            for campo, valor in datos.items():
+                print(f"    {campo}: {valor}")
+            continue
         for indicador, vals in datos.items():
             if not isinstance(vals, dict):
                 continue

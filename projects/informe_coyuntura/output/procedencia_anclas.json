@@ -245,7 +245,7 @@
           "indicador": "votometro_ventaja_lla",
           "categoria": "conceptual",
           "peso": 0.07,
-          "motivo": "ventaja electoral anclada en el cero (empate) con márgenes simétricos redondos (ADR-0121)"
+          "motivo": "ventaja electoral anclada en el cero (empate); cortes ajustados para que el semáforo cambie exactamente en +8/+5/0 pp, los umbrales de Luis (ADR-0312, corrige ADR-0121)"
         },
         {
           "indicador": "brecha_obra_publica",
@@ -372,6 +372,12 @@
           "motivo": "rebase base-100 a 4T-2023, invertido; ancla en la fecha fija (ADR-0123)"
         },
         {
+          "indicador": "sentimiento_digital",
+          "categoria": "conceptual",
+          "peso": 0.0825,
+          "motivo": "canasta de 6 búsquedas, cada término rebaseado a su propio 4T-2023 y promediado con peso igual, invertida (ADR-0034, ADR-0222); ancla en fecha fija"
+        },
+        {
           "indicador": "pobreza_nowcast",
           "categoria": "conceptual",
           "peso": 0.073,
@@ -382,12 +388,6 @@
           "categoria": "conceptual",
           "peso": 0.07,
           "motivo": "nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija"
-        },
-        {
-          "indicador": "icc_utdt",
-          "categoria": "conceptual",
-          "peso": 0.0675,
-          "motivo": "ICC rebaseado a 4T-2023; ancla en fecha fija"
         },
         {
           "indicador": "consumo_supermercados",
@@ -438,12 +438,6 @@
           "motivo": "participación rebaseada a 4T-2023; ancla en fecha fija (ADR-0219)"
         },
         {
-          "indicador": "sentimiento_digital",
-          "categoria": "conceptual",
-          "peso": 0.015,
-          "motivo": "canasta de 6 búsquedas, cada término rebaseado a su propio 4T-2023 y promediado con peso igual, invertida (ADR-0034, ADR-0222); ancla en fecha fija"
-        },
-        {
           "indicador": "subocupacion_demandante",
           "categoria": "conceptual",
           "peso": 0.0124,
@@ -456,10 +450,16 @@
           "motivo": "autos + motos per cápita, móvil 12m rebaseado a 4T-2023 (ADR-0224); ancla en fecha fija. EXENTO del tope de 140: a 0,89% de peso el techo acota una compensación que el peso ya acota, y contra esta base —deprimida— 140 es el nivel de un año normal, no un outlier"
         },
         {
-          "indicador": "consumo_carnes_total",
+          "indicador": "consumo_carne_vacuna",
           "categoria": "conceptual",
-          "peso": 0.0088,
-          "motivo": "consumo total de carnes per cápita rebaseado a 4T-2023 desde la faena del INDEC; ancla en fecha fija (ADR-0217)"
+          "peso": 0.0046,
+          "motivo": "faena de vacunos per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0322)"
+        },
+        {
+          "indicador": "consumo_carnes_otras",
+          "categoria": "conceptual",
+          "peso": 0.0042,
+          "motivo": "faena de aviar+porcina per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0322)"
         }
       ],
       "share": {
