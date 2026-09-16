@@ -240,8 +240,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Índice de Victimización del LICIP (Universidad Di Tella): porcentaje de hogares de 40 centros urbanos que sufrió al menos un delito en los últimos 12 meses, denunciado o no. Base declarada: enero de 2024, conservada por continuidad. La auditoría de septiembre recuperó informes de 2020–2023 y rectificó la supuesta suspensión de la encuesta (ADR-0273). La fórmula invierte la comparación: valor de la base dividido por el valor actual, por 100. Más de 100 significa menor victimización que en enero de 2024. El registro SNIC es un contraste con universo y frecuencia diferentes; su divergencia no prueba por sí sola cambios de subdenuncia.",
   },
   icc_utdt: {
-    latex: String.raw`100\cdot\frac{\text{confianza del consumidor}_{\text{hoy}}}{\text{confianza}_{\text{4T-23}}}`,
-    leyenda: "ICC de la Universidad Torcuato Di Tella, rebaseado al arranque del mandato.",
+    latex: String.raw`\text{ICC de UTDT (serie cruda, columna Nacional), sin rebasear}`,
+    leyenda: "ICC de la Universidad Torcuato Di Tella. Hasta el 15-sep-2026 puntuaba en el ITCIS rebaseado a 100 = 4T-2023; desde ADR-0314 ya no compone el índice ni se rebasea: es su ancla de validación externa, y se correlaciona la serie cruda (niveles y diferencias) contra el ITCIS reconstruido.",
   },
   sentimiento_digital: {
     latex: String.raw`100\cdot\frac{100}{\dfrac{1}{6}\sum_{i=1}^{6}100\cdot\dfrac{\text{b\'usquedas del t\'ermino }i_{\text{ mes}}}{\text{b\'usquedas del t\'ermino }i_{\text{ 4T-23}}}}`,

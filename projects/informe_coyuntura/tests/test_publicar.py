@@ -281,6 +281,43 @@ def test_la_validacion_itcp_deriva_el_conteo_de_la_composicion(monkeypatch):
     assert "3 componentes" in bloque["validacion"]["sub"]
 
 
+def test_validacion_itvc_toma_la_clave_real_del_ancla_icc(monkeypatch):
+    """ADR-0314: `validacion_externa.py` calcula el ancla ICC bajo una
+    clave de texto y `publicar.py` la busca por ese mismo nombre — nada los
+    ata. Un rename de un lado sin el otro deja `icc_niv` en `None` y el
+    párrafo del ICC desaparece del bloque publicado sin que nada lo note:
+    exactamente lo que pasó en el PR #29 (la clave vieja que quedó en
+    `publicar.py` era `"discriminante: ITVC sin ICC vs ICC (niveles)"`, la
+    real es `"ITCIS vs ICC UTDT (niveles)"`). Este test lee la clave real
+    del código fuente de `validacion_externa.py` -no la copia a mano- y
+    prueba que `_validacion_itvc` efectivamente la encuentra.
+    """
+    import re
+    fuente = (ROOT / "scripts" / "validacion_externa.py").read_text(encoding="utf-8")
+    m = re.search(r'"(ITCIS vs ICC UTDT \(niveles\))":', fuente)
+    assert m, "validacion_externa.py ya no declara la clave del ancla ICC en niveles"
+    clave = m.group(1)
+
+    meses = {f"2024-{mes:02d}": 100.0 + mes for mes in range(1, 13)}
+    monkeypatch.setattr(publicar, "_cargar_validacion", lambda: {
+        "serie_itvc": meses,
+        "panel_validacion": {"itvc": {"factor": {
+            "r_niveles": 0.2, "r_diferencias": 0.1, "n": 12,
+            "pares": [[k, 100.0, 1.0] for k in meses],
+        }}},
+        "correlaciones": {clave: {"r": -0.258, "n": 32}},
+    })
+
+    bloque = {}
+    publicar._validacion_itvc(bloque, {})
+
+    conclusion = bloque["validacion"]["conclusion"]
+    assert "−0,258" in conclusion, (
+        "el ancla ICC (ADR-0314) no llegó al texto publicado del ITCIS: "
+        f"conclusion={conclusion!r}"
+    )
+
+
 def test_un_crudo_de_vida_mas_viejo_no_reemplaza_el_snapshot_publicado(tmp_path):
     viejo = tmp_path / "vida_cotidiana_20260812_1035.json"
     viejo.write_text("{}", encoding="utf-8")

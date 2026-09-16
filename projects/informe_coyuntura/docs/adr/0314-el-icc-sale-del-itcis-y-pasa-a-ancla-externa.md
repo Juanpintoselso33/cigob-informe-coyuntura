@@ -112,6 +112,43 @@ La correlación medida entre el ITCIS completo (ahora sin ICC) y el ICC, sobre
 contraste discriminante entre condiciones materiales y percepción, no una
 confirmación de que deban moverse juntos.
 
+**Ese signo no es un detalle: es la circularidad que el ancla vino a
+eliminar, medida.** Dejando el ICC ADENTRO del índice (contrafactual: ITCIS
+con ICC vs. ICC), la correlación en niveles da **r = +0,161**; sacándolo
+—que es la Opción 1, la decidida— da **r = −0,258**. El signo se invierte:
+un índice que integra su propio contraste se correlaciona artificialmente
+con él por construcción, y eso es exactamente lo que la sección
+"Consecuencias" venía a evitar.
+
+### Sacar el ICC no sólo mueve el punto de hoy: revisa la serie histórica
+
+La tabla "Efecto medido" de más arriba compara un solo punto (el snapshot del
+15-sep-2026). Pero `construir_series_itvc` reconstruye el ITCIS mes a mes
+desde las series de sus componentes, así que sacar un componente **recalcula
+la serie completa hacia atrás**, no sólo el mes de hoy. Comparando la
+reconstrucción con ICC (contrafactual) contra la reconstrucción sin ICC
+(la real, ya publicada) mes a mes:
+
+| Período | Con ICC (contrafactual) | Sin ICC (Opción 1, publicado) | Diferencia |
+|---|---|---|---|
+| 2024-01 a 2024-04 | 95,4 → 98,1 | 96,7 → 99,4 | **+1,3** en los cuatro meses |
+| 2025-05 | 93,7 | 92,8 | **−0,9** |
+| 2025-11 | 94,7 | 93,8 | **−0,9** |
+| 2026-01 | 96,1 | 95,2 | **−0,9** |
+
+El rango de revisión medido es de **−0,9 a +1,3 puntos** según el mes — más
+que el +0,1 que muestra el snapshot de hoy, porque ahí las dos
+reconstrucciones ya convergen. Sacar un componente de un índice cuya
+dimensión de confianza pesaba 8,25% no es neutral hacia atrás.
+
+El panel de validación del ITCIS también se mueve, no sólo el punto de
+contraste con el ICC. En niveles, la asociación media del índice contra las
+estadísticas de su propio terreno (convergente) pasa de **0,162 a 0,288**, y
+contra las ajenas (discriminante) de **0,222 a 0,346** — ambas suben porque
+`icc_utdt` se sumó al panel de 14 estadísticas (antes 13) del lado "propio".
+En diferencias el movimiento es menor: convergente 0,221→0,211, discriminante
+0,191→0,161 (`output/validacion_externa.json` → `panel_validacion.itvc`).
+
 ### Candidatos para "confianza y percepción" — no implementados
 
 Juan pidió, además del votómetro, "alguna cosa más" para la dimensión de
@@ -128,6 +165,32 @@ decisión de contenido editorial que este ADR no puede tomar por Juan. Fuentes
 posibles a evaluar en una sesión dedicada (sin medir): encuestas de humor
 social de otros centros (CEOP, Management & Fit, Poliarquía) o un subíndice
 propio del ICC (situación personal vs. país) que la UTDT también publica.
+
+### Riesgo latente aceptado: `sentimiento_digital` queda con el 100% de la dimensión
+
+Sacar el ICC no sólo redistribuye peso ENTRE dimensiones (arriba): también
+cambia el reparto DENTRO de `percepcion`. Con el ICC adentro,
+`sentimiento_digital` pesaba 18,18% de esa dimensión (el ICC se llevaba el
+81,82% restante); sacado el ICC, `DIMENSIONES_ITVC["percepcion"]["indicadores"]`
+queda `{"sentimiento_digital": 1.0}` — **100%**.
+
+Hoy no tiene efecto (`sentimiento_digital` está suspendido desde ADR-0248 por
+validación externa adversa: r = −0,788 contra Ipsos, signo opuesto al
+esperado en 34 de 42 ventanas móviles), así que la dimensión entera se salta
+y su peso se redistribuye a las otras cinco. **Pero si esa suspensión se
+levanta sin revisar este número, `sentimiento_digital` se lleva de entrada el
+8,25% completo de la dimensión de confianza en vez del 1,5% que tenía cuando
+compartía con el ICC** — casi seis veces más, sin que nadie haya vuelto a
+decidir ese peso. `tests/test_web_declara_los_pesos_del_itvc.py` (línea 42)
+ya documentó el modo de falla simétrico cuando `sentimiento_digital` salió en
+ADR-0248 y el ICC se quedó con el 100%; este ADR reintroduce la misma
+situación del otro lado.
+
+**Decisión consciente**: se acepta el riesgo por ahora — la Opción 1 (sin
+reemplazo) ya está tomada y no se bloquea por esto — pero queda escrito para
+que un futuro "reactivar `sentimiento_digital`" no sea sólo sacar la
+suspensión: hay que fijar de nuevo su peso interno en `percepcion` antes de
+reactivarlo, no heredar el 100% por default.
 
 ### Consecuencias
 

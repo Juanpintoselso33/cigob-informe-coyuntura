@@ -23,6 +23,13 @@ from config import (PESOS_CINTURONES, UMBRALES, BARBARISMO_MAP, fase_mandato,
 # _INDICES_PARAMETRICOS más abajo y el ADR que documenta este cambio.
 import macro, gestion, politica, itcm, itcg, itcp, itvc
 import series_io
+# La dirección de esta importación es al revés del orden del pipeline
+# (publicar.py corre DESPUÉS de este script) pero es la única fuente de
+# verdad de qué indicador salió del índice sin estar suspendido —
+# `publicar.VIDA_OCULTOS`, ADR-0314/0154/0225—. Repetir esa lista acá a mano
+# es exactamente el modo de falla del punto 1 de esta misma tanda: dos
+# lugares que tienen que decir lo mismo y no hay nada que los ate.
+import publicar
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 SCRIPT_DIR  = Path(__file__).parent
@@ -165,6 +172,27 @@ def suspendidos_de(cinturon: str) -> dict:
     """
     modulo = _MODULOS_INDICE.get(cinturon)
     return dict(getattr(modulo, "INDICADORES_SUSPENDIDOS", None) or {})
+
+
+def retirados_de(cinturon: str, indicadores: dict) -> list[str]:
+    """Indicadores presentes en el caché de `cinturon` que salieron del índice
+    sin estar suspendidos (ADR-0314: `icc_utdt` deja el ITCIS y pasa a ancla
+    de validación externa, pero el colector lo sigue relevando).
+
+    Distinto de `suspendidos_de`: un suspendido tiene motivo y ADR declarados
+    en `INDICADORES_SUSPENDIDOS` y conserva el bloque `suspendido` completo
+    (ADR-0259); un retirado no tiene esa metadata en el módulo del índice —la
+    tiene en `publicar.VIDA_OCULTOS` y en su ficha—, así que acá sólo se avisa
+    que no compone el índice, sin inventar un motivo que este script no sabe.
+    Hoy sólo se resuelve para `vida_cotidiana`: es el único cinturón con esta
+    categoría (`indice_lider`, `endeudamiento_familiar`, `icc_utdt`); los
+    otros tres usan `publicar.*_OCULTOS` para CONTEXTO/CUMPLIDOS, que son
+    categorías distintas y no "salió del índice sin avisar".
+    """
+    if cinturon != "vida_cotidiana":
+        return []
+    ocultos = publicar.VIDA_OCULTOS - set(suspendidos_de(cinturon))
+    return [ind for ind in ocultos if ind in indicadores]
 
 
 def marcar_suspendidos(cinturon: str, indicadores: dict) -> list[str]:
@@ -336,6 +364,17 @@ def construir_informe(caches: dict) -> dict:
         # qué quedó afuera: los suspendidos pasan a archivo (ADR-0259).
         suspendidos = marcar_suspendidos(nombre, indicadores)
 
+        # Un retirado no está suspendido (`marcar_suspendidos` no lo toca) pero
+        # tampoco compone el índice: sin este bloque quedaba con `en_indice`
+        # ausente -eso ya estaba bien- pero DENTRO de la tabla de vigentes del
+        # .md/.json, indistinguible de un componente real (hallazgo real:
+        # `icc_utdt` listado como "fresco" en `output/informe.md` el
+        # 15-sep-2026, un día después de ADR-0314). No se le borra ningún
+        # campo -nunca tuvo `peso_efectivo`/`puntaje_itvc` para empezar- sólo
+        # se marca para que la tabla lo saque de "vigentes".
+        for ind_retirado in retirados_de(nombre, indicadores):
+            indicadores[ind_retirado]["retirado_del_indice"] = True
+
         # Detectar indicadores desactualizados. Los que tienen ventana
         # DECLARADA y siguen adentro no entran: andan por caché a propósito y
         # el flag diario tapaba a los que sí están rotos (ADR-0210). Cuando se
@@ -468,7 +507,13 @@ def escribir_md(informe: dict) -> None:
         # rotulada (ADR-0259): compartir tabla con los vigentes es afirmar que
         # son el mismo tipo de cosa, y el .md es artefacto de ingesta — lo lee
         # quien no tiene el resto del contexto a mano.
-        vigentes   = {i: v for i, v in data["indicadores"].items() if not v.get("suspendido")}
+        # Un retirado (ADR-0314) tampoco es "el mismo tipo de cosa" que un
+        # vigente, por la misma razón que un suspendido no lo es: no compone
+        # el índice. Se separa igual, antes de calcular `vigentes`.
+        retirados  = {i: v for i, v in data["indicadores"].items()
+                      if v.get("retirado_del_indice") and not v.get("suspendido")}
+        vigentes   = {i: v for i, v in data["indicadores"].items()
+                      if not v.get("suspendido") and not v.get("retirado_del_indice")}
         suspendidos = {i: v for i, v in data["indicadores"].items() if v.get("suspendido")}
 
         lines.append("| Indicador | Valor | Unidad | Fecha | Estado |")
@@ -503,6 +548,21 @@ def escribir_md(informe: dict) -> None:
                 lines.append(f"| {ind} | {vals.get('valor', 'N/A')} | "
                              f"{vals.get('unidad', '')} | {vals.get('fecha_dato', '')} | "
                              f"{desde}{adr} | {motivo} |")
+            lines.append("")
+
+        if retirados:
+            lines.append("**Retirados del índice — el colector lo sigue relevando "
+                         "pero ya NO compone el índice ni el score de arriba** "
+                         "(distinto de suspendido: no tiene motivo de reingreso "
+                         "porque no va a volver a puntuar; puede ser ancla de "
+                         "validación externa. Ver `publicar.VIDA_OCULTOS` y la "
+                         "ficha metodológica del indicador):")
+            lines.append("")
+            lines.append("| Indicador | Último valor | Unidad | Fecha |")
+            lines.append("|---|---|---|---|")
+            for ind, vals in retirados.items():
+                lines.append(f"| {ind} | {vals.get('valor', 'N/A')} | "
+                             f"{vals.get('unidad', '')} | {vals.get('fecha_dato', '')} |")
             lines.append("")
 
     if flags:

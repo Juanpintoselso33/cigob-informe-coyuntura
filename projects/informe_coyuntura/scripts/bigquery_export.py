@@ -297,7 +297,7 @@ def construir_filas_analisis(gen: str, raiz: Path | None = None) -> dict[str, li
     ve = leer("validacion_externa") or {}
 
     for clave, valor in ve.items():
-        # serie_itcm, serie_itvc_sin_icc, ... -> series reconstruidas del índice
+        # serie_itcm, serie_itvc, ... -> series reconstruidas del índice
         if clave.startswith("serie_"):
             variante = clave[len("serie_"):]
             for periodo, v in _serie_mensual(valor):

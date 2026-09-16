@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-15 22:27:34"
+generado: "2026-09-15 23:03:21"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -83,7 +83,12 @@ schema_version: "1.2.0"
 |---|---|---|---|---|
 | ipc_total | 1.66 | % mensual | 2026-08-01 | fresco |
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
-| icc_utdt | 40.23 | índice | 2026-08-01 | fresco |
+
+**Retirados del índice — el colector lo sigue relevando pero ya NO compone el índice ni el score de arriba** (distinto de suspendido: no tiene motivo de reingreso porque no va a volver a puntuar; puede ser ancla de validación externa. Ver `publicar.VIDA_OCULTOS` y la ficha metodológica del indicador):
+
+| Indicador | Último valor | Unidad | Fecha |
+|---|---|---|---|
+| icc_utdt | 40.23 | índice | 2026-08-01 |
 
 ### 🟢 Gestion — score 2.1/10 (estable)
 *Riesgo de barbarismo: gerencial*
@@ -118,4 +123,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-15 22:27:34 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-15 23:03:21 — schema 1.2.0*
