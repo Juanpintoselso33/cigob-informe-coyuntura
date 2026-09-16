@@ -32,8 +32,11 @@ const frases = estados.map(({ meta, c }) => {
   const lectura = color ? LECTURA_SEMAFORO[color].toLowerCase() : "sin clasificación disponible";
   return `${meta.nombre.toLowerCase()}: ${lectura} (${num(c.score)}/10)`;
 });
+// El score global va sin "/10": el titular (Hero) ya no muestra esa escala
+// (ADR-0311) y esta síntesis no puede seguir citándola como si se viera. Los
+// cinturones en `frases` sí la conservan — ahí la escala sigue publicada.
 const fraseEstados = cap(frases.join("; ")) + ". "
-  + `La tensión global es ${num(informe.score_global)}/10.`
+  + `La tensión global es ${num(informe.score_global)}.`
   + (masTenso ? ` ${masTenso.meta.nombre} es el cinturón con mayor tensión.` : "");
 const fraseFoco = foco
   ? `La mayor presión puntual del mes está en ${foco.dim.nombre.toLowerCase()} (${num(foco.dim.puntaje)}${foco.dim.base100 ? "" : "/100"}), la dimensión que más tensión aporta al índice de ${foco.meta.nombre.toLowerCase()}.`

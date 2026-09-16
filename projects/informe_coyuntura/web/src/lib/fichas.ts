@@ -340,6 +340,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-06-26", cambio: "Nace el IdC en reemplazo de la tasa BADLAR dentro de la dimensión de financiamiento, como índice de ratios mensuales." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "Rediseño de la métrica: pasa de ratios mes a mes a niveles estandarizados contra la propia historia, publicados en desvíos estándar." },
+      { fecha: "2026-09-15", cambio: "ADR-0311: el rótulo de la card pasa de «Capacidad prestable (IdC)» a «Capacidad prestable». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna, que ya estaba traducida en el texto." },
     ],
   },
 
@@ -863,6 +864,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-06-28", cambio: "Deja de ser contexto y entra al índice como quinta dimensión (competitividad externa)." },
       { fecha: "2026-06-30", cambio: "Peso de la dimensión recortado de 12% a 11% al entrar la dimensión de inversión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
+      { fecha: "2026-09-15", cambio: "ADR-0311: el rótulo de la card pasa de «Tipo de cambio real (TCRM)» a «Tipo de cambio real». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna." },
     ],
   },
 
@@ -1007,6 +1009,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "El titular pasa al último mes común de las fuentes (antes podía mezclar meses distintos bajo una sola etiqueta); el componente fresco queda como provisorio." },
       { fecha: "2026-09-08", cambio: "ADR-0293: tarjeta e historial comparten la regla de incorporación de patentamientos y exigen el mismo mes de referencia. Se evita una divergencia futura de fórmula; los tres meses actualmente acumulados no activan todavía ese componente." },
+      { fecha: "2026-09-15", cambio: "ADR-0311: el rótulo de la card pasa de «Inversión física (IAI)» a «Inversión física». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna." },
     ],
   },
 
@@ -1178,6 +1181,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del capital electoral del oficialismo." },
       { fecha: "2026-06-30", cambio: "Serie mensual reconstruida hacia atrás hasta diciembre de 2023, evaluando la misma ponderación al cierre de cada mes." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
+      { fecha: "2026-09-15", cambio: "ADR-0311: el rótulo de la card pasa de «Ventaja LLA−PJ (Votómetro)» a «Ventaja LLA−PJ». Se saca «Votómetro» por nombrar el método, no el dato; LLA y PJ se conservan porque son las siglas públicas de las fuerzas." },
     ],
   },
 
@@ -2391,6 +2395,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Versión inicial como carga manual (porcentaje de beneficiarios que cobra directo)." },
       { fecha: "2026-07-02", cambio: "Pasa a la tasa real contra la ejecución presupuestaria, con línea de base 2023 verificada." },
       { fecha: "2026-09-08", cambio: "ADR-0296: se distingue devengado de pagado y se acota el universo a las dos actividades. Se retiran inferencias de ausencia de intermediación y la afirmación de una base 2023 mayoritariamente intermediada: la API confirma 98,312% en 5.1.4. No cambia la fórmula ni el 100% actual." },
+      { fecha: "2026-09-15", cambio: "ADR-0311: el rótulo de la card pasa de «Asistencia directa (TDPS)» a «Asistencia directa». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna." },
     ],
   },
 
@@ -2892,6 +2897,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-09-08", cambio: "ADR-0299: IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API." },
       { fecha: "2026-07-03", cambio: "Entra al ITCIS como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias)." },
+      { fecha: "2026-09-15", cambio: "ADR-0311: el rótulo de la card pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna." },
     ],
   },
 
@@ -2958,6 +2964,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Entra al ITCIS vía el registro anual de delitos, invertido, con base 2023." },
       { fecha: "2026-07-04", cambio: "La métrica pasa a la encuesta mensual de victimización (con la base declarada en enero de 2024); el registro de denuncias queda como serie de contraste." },
       { fecha: "2026-09-08", cambio: "Se actualiza el portal de descubrimiento y se admiten enlaces relativos a PDF; se recupera julio de 2026 y se explicita el límite del contraste con denuncias (ADR-0273)." },
+      { fecha: "2026-09-15", cambio: "ADR-0311: el rótulo de la card pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna." },
     ],
   },
 
@@ -2989,6 +2996,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Entra al ITCIS base-100 con 50% interno de su dimensión." },
       { fecha: "2026-07-04", cambio: "Cede cinco puntos de peso interno al sentimiento digital, que mide lo mismo por conducta de búsqueda." },
       { fecha: "2026-08-25", cambio: "ADR-0242: se publica la columna del total NACIONAL del cuadro de la UTDT, ubicada por su encabezado. Hasta acá se leía la columna 1 por posición, que es `ICC Capital`: el tablero mostró el índice de la Ciudad de Buenos Aires rotulado como nacional (39,87 contra 40,23 en el corte auditado). Card y serie leían la misma columna equivocada, así que coincidían entre sí. La serie del cinturón se reconstruyó con la nacional, disponible desde marzo de 2001." },
+      { fecha: "2026-09-15", cambio: "ADR-0311: el rótulo de la card pasa de «Confianza del consumidor (ICC)» a «Confianza del consumidor». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna." },
     ],
   },
 
