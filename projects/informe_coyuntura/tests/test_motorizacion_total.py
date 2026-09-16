@@ -247,14 +247,18 @@ def test_el_peso_es_la_suma_de_los_dos_que_reemplaza():
     pesa la motorización EN RELACIÓN a cada uno de los otros tres."""
     ingresos = itvc.DIMENSIONES_ITVC["ingresos"]["indicadores"]
     motor = ingresos["motorizacion_total"]
-    esperadas = {"brecha_salario_cbt": 0.0396 / 0.5959,
-                 "pobreza_nowcast": 0.0396 / 0.3253,
-                 "consumo_carnes_total": 0.0396 / 0.0392}
-    for otro, razon in esperadas.items():
-        assert motor / ingresos[otro] == pytest.approx(razon, rel=1e-3), (
+    # ADR-0322: `consumo_carnes_total` (0,0392) se partió en dos componentes
+    # que puntúan por separado; la razón que importa es contra la SUMA, que es
+    # lo que preserva el invariante de reparto que este test protege.
+    carne_total = ingresos["consumo_carne_vacuna"] + ingresos["consumo_carnes_otras"]
+    esperadas = {"brecha_salario_cbt": (0.0396 / 0.5959, ingresos["brecha_salario_cbt"]),
+                 "pobreza_nowcast": (0.0396 / 0.3253, ingresos["pobreza_nowcast"]),
+                 "consumo_carnes (vacuna+otras)": (0.0396 / 0.0392, carne_total)}
+    for otro, (razon, valor) in esperadas.items():
+        assert motor / valor == pytest.approx(razon, rel=1e-3), (
             f"la motorización dejó de pesar lo de los dos vehículos en relación "
-            f"a {otro}: razón {motor / ingresos[otro]:.6f}, esperada {razon:.6f}")
-    # Y los cuatro siguen sumando lo que la dimensión reparte entre ellos.
+            f"a {otro}: razón {motor / valor:.6f}, esperada {razon:.6f}")
+    # Y los cinco siguen sumando lo que la dimensión reparte entre ellos.
     assert sum(ingresos.values()) == pytest.approx(1.0)
 
 
@@ -609,23 +613,65 @@ def test_total_sin_variacion_no_se_describe_como_caida():
     assert "entran hogares" not in texto
 
 
+# ── ADR-0323: ratio motos/autos, control pedido por Juan (15-sep-2026) ──────
+def test_el_por_que_incluye_el_ratio_motos_autos_cuando_esta():
+    composicion = {"ratio_motos": 60, "ratio_motos_base": 50,
+                   "total_var": 5, "autos_var": -10, "motos_var": 20,
+                   "total_12m": 1000000, "autos_12m": 400000, "motos_12m": 600000,
+                   "ratio_motos_autos": 1.5, "ratio_motos_autos_base": 1.0}
+    texto = publicar._por_que_motorizacion(composicion)
+    assert "1,5" in texto and "Por cada auto patentado" in texto, (
+        "el ratio motos/autos no aparece en la explicación, y es el control "
+        "que Juan pidió para leer si sube por autos o por motos")
+
+
+def test_el_por_que_no_rompe_sin_el_ratio_motos_autos():
+    """Control negativo: series viejas cacheadas antes de ADR-0323 no tienen
+    estos dos campos todavía. La explicación tiene que seguir funcionando sin
+    la frase, no reventar por un KeyError."""
+    composicion = {"ratio_motos": 60, "ratio_motos_base": 50,
+                   "total_var": 5, "autos_var": -10, "motos_var": 20,
+                   "total_12m": 1000000, "autos_12m": 400000, "motos_12m": 600000}
+    texto = publicar._por_que_motorizacion(composicion)
+    assert texto and "Por cada auto patentado" not in texto
+
+
+def test_el_colector_calcula_el_ratio_motos_autos(monkeypatch):
+    """El colector (no sólo `_por_que_motorizacion`) tiene que calcular los
+    dos campos nuevos con el CSV falso ya usado por el resto del archivo."""
+    d = _correr(monkeypatch, _csv_falso())
+    composicion = d["motorizacion_total"]["composicion"]
+    assert composicion.get("ratio_motos_autos") is not None
+    assert composicion.get("ratio_motos_autos_base") is not None
+    autos, motos = composicion["autos_12m"], composicion["motos_12m"]
+    assert composicion["ratio_motos_autos"] == pytest.approx(motos / autos, rel=1e-6)
+
+
 def test_en_vivo_autos_y_motos_se_descartan_despues_de_los_semaforos():
     """Que el `pop` siga en `aplicar_scoring` y DESPUÉS de `_semaforos`.
 
-    El orden importa para la carne —su matriz lee el indicador hermano— y este
-    test lo cuida para las tres juntas, que es como están escritas.
+    El orden importa: la matriz de motorización lee `composicion`, que ya
+    viaja colgada del propio total (no depende del pop), pero el pop tiene
+    que seguir yendo después de `_semaforos` para que el color ya esté
+    calculado cuando se descartan autos y motos como card.
+
+    ADR-0322: la carne ya NO está en esta lista — vacuna y el resto puntúan
+    cada uno por su cuenta y ninguno se descarta.
     """
     fuente = (ROOT / "scripts" / "publicar.py").read_text(encoding="utf-8")
     cuerpo = fuente[fuente.index("def aplicar_scoring("):]
     i_sem = cuerpo.index("_semaforos(informe)")
     i_pop = cuerpo.index("for descartada in")
     assert i_sem < i_pop, (
-        "el descarte de las cards quedó ANTES de _semaforos: la matriz de la "
-        "carne se queda sin su `por_que` y ningún gate lo ve")
-    for descartada in ("consumo_carne", "patentamiento_autos", "patentamiento_motos"):
+        "el descarte de las cards quedó ANTES de _semaforos: la matriz de "
+        "motorización se queda sin su `por_que` y ningún gate lo ve")
+    for descartada in ("patentamiento_autos", "patentamiento_motos"):
         assert descartada in cuerpo[i_pop:i_pop + 300], (
             f"{descartada} salió de la lista de descarte: vuelve a publicarse "
             f"como card sin puntuar")
+    assert '"consumo_carne"' not in cuerpo[i_pop:i_pop + 300], (
+        "la vacuna volvió a la lista de descarte: ADR-0322 la hizo puntuar, "
+        "no debería popearse como card")
 
 def test_en_vivo_la_exclusion_resta_de_verdad():
     """El mecanismo central de ADR-0224, probado sobre la función que lo hace.

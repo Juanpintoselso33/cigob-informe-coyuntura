@@ -2539,13 +2539,14 @@ def _poblacion_mensual(pob: list):
     return en
 
 
-def fetch_carnes_total_serie() -> list:
-    """Consumo TOTAL de carnes per cápita (vacuna + aviar + porcina), índice
-    base 100 = promedio del 4T-2023.
+def _fetch_faena_indice(categorias) -> list:
+    """Índice base 100 = 4T-2023 de la faena per cápita (móvil 12m) de las
+    categorías de carne indicadas (subconjunto de `FAENA_TONELADAS`).
 
-    Es el componente que PUNTÚA en el ITCIS (ADR-0217): mide el acceso a
-    proteína cárnica sin confundir sustitución con empobrecimiento, que es lo
-    que la vacuna sola no puede distinguir.
+    Compartida por `consumo_carne_vacuna` y `consumo_carnes_otras` (ADR-0322):
+    antes de esto una sola función sumaba las tres y sólo el compuesto
+    puntuaba (ADR-0217); ahora vacuna y el resto (aviar+porcina) puntúan cada
+    uno por su cuenta, con la MISMA lógica de reconstrucción.
 
     Se reconstruye desde la FAENA en toneladas del INDEC y no desde el tablero
     de SAGYP: el tablero publica el nivel per cápita ya calculado, pero es una
@@ -2563,11 +2564,13 @@ def fetch_carnes_total_serie() -> list:
       fuente, no una estimación nuestra.
     """
     crudas = {}
-    for carne, sid in FAENA_TONELADAS.items():
+    for carne in categorias:
+        sid = FAENA_TONELADAS[carne]
         crudas[carne] = {f[:7]: v for f, v in fetch_indec(sid, limit=240)}
     meses = sorted(set.intersection(*[set(d) for d in crudas.values()]))
     if len(meses) < 24:
-        raise RuntimeError(f"faena: sólo {len(meses)} meses en común entre las tres carnes")
+        raise RuntimeError(
+            f"faena {'+'.join(categorias)}: sólo {len(meses)} meses en común")
     total = {m: sum(crudas[c][m] for c in crudas) for m in meses}
 
     # Promedio móvil de 12 meses: la misma ventana con la que SAGYP publica su
@@ -2580,11 +2583,43 @@ def fetch_carnes_total_serie() -> list:
 
     base_meses = [m for m in ("2023-10", "2023-11", "2023-12") if m in per_capita]
     if len(base_meses) < 3:
-        raise RuntimeError("faena: la serie no llega al 4T-2023, que es la base del índice")
+        raise RuntimeError(
+            f"faena {'+'.join(categorias)}: la serie no llega al 4T-2023, "
+            f"que es la base del índice")
     base = sum(per_capita[m] for m in base_meses) / len(base_meses)
 
     return [[f"{m}-01", round(per_capita[m] / base * 100, 1)]
             for m in sorted(per_capita) if m >= "2023-01"]
+
+
+def fetch_carne_vacuna_indice_serie() -> list:
+    """Índice base 100 = 4T-2023 de la faena de VACUNOS per cápita.
+
+    Puntúa (ADR-0322): la carne vacuna, pedida por separado del compuesto
+    porque es el corte aspiracional del consumo argentino, no un sustituto
+    perfecto de "proteína cárnica en general" — cae 2 dígitos mientras el
+    resto se sostiene, y esa caída específica es la que ADR-0217 dejó de
+    puntuar al fusionarla en el total."""
+    return _fetch_faena_indice(("vacuna",))
+
+
+def fetch_carnes_otras_indice_serie() -> list:
+    """Índice base 100 = 4T-2023 de la faena de AVIAR + PORCINA per cápita.
+
+    Puntúa (ADR-0322), junto con `consumo_carne_vacuna`, en reemplazo de
+    `consumo_carnes_total`: separar a la vacuna sin sumar un segundo
+    componente que cubra pollo y cerdo dejaría de medir la sustitución hacia
+    esas carnes cuando la vacuna cae — que es la mitad del punto de la ficha
+    de proteína animal (ADR-0217)."""
+    return _fetch_faena_indice(("aviar", "porcina"))
+
+
+def fetch_carnes_total_serie() -> list:
+    """Índice base 100 = 4T-2023 de la faena TOTAL (vacuna+aviar+porcina)
+    per cápita. Ya NO puntúa (ADR-0322: reemplazada por `consumo_carne_vacuna`
+    + `consumo_carnes_otras`); se conserva como serie de contexto para la
+    matriz de la ficha y para `validacion_externa.py`."""
+    return _fetch_faena_indice(tuple(FAENA_TONELADAS))
 
 
 def fetch_carne_serie() -> list:
@@ -2711,6 +2746,15 @@ VIDA_DERIVADAS += [
     ("inseguridad", "% de hogares víctimas (12 meses)", "UTDT — IVI (LICIP)", fetch_ivi_serie),
     ("inseguridad_snic", "hechos/año (total país)", "SNIC (CSV oficial, suma anual)", fetch_inseguridad_serie),
     ("consumo_carne", "kg/hab/año (PM 12m)", "CICCRA (informes mensuales, caché local)", fetch_carne_serie),
+    # ADR-0322: reemplaza a `consumo_carnes_total` como lo que PUNTÚA. Se
+    # separan porque fusionadas la caída de la vacuna quedaba diluida por el
+    # sostén de pollo+cerdo (ADR-0217) y Juan pidió la vacuna "por separado".
+    ("consumo_carne_vacuna", "índice base 100 = 4T-2023",
+     "INDEC — faena de vacunos (toneladas), per cápita", fetch_carne_vacuna_indice_serie),
+    ("consumo_carnes_otras", "índice base 100 = 4T-2023",
+     "INDEC — faena de porcinos y aves (toneladas), per cápita",
+     fetch_carnes_otras_indice_serie),
+    # Ya NO puntúa (ADR-0322); se conserva sólo como contexto de la matriz.
     ("consumo_carnes_total", "índice base 100 = 4T-2023",
      "INDEC — faena de vacunos, porcinos y aves (toneladas), per cápita",
      fetch_carnes_total_serie),

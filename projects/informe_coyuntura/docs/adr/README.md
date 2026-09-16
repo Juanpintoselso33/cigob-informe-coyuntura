@@ -326,6 +326,9 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0279](0279-las-series-laborales-no-identifican-transiciones.md) | Las series laborales no identifican transiciones | `trabajo_independiente`, `mortalidad_pymes` | vigente |
 | [0291](0291-alquiler-usa-la-planilla-original.md) | Alquiler usa la planilla original | `alquiler_real` | vigente |
 | [0314](0314-el-icc-sale-del-itcis-y-pasa-a-ancla-externa.md) | El ICC sale del ITCIS y pasa a ancla de validación externa | `icc_utdt`, `sentimiento_digital` | vigente |
+| [0322](0322-la-vacuna-vuelve-a-puntuar-junto-al-resto-de-las-carnes.md) | La vacuna vuelve a puntuar, junto al resto de las carnes | `consumo_carne_vacuna`, `consumo_carnes_otras`, `consumo_carnes_total` | vigente |
+| [0323](0323-ratio-motos-autos-como-control-de-la-motorizacion.md) | El ratio motos/autos entra como control dentro de la card, no como indicador | `motorizacion_total` | vigente |
+| [0324](0324-el-snic-conserva-homicidios-por-nombre-no-por-ranking.md) | El SNIC conserva homicidios por nombre, no por ranking de volumen | `inseguridad_snic` | vigente |
 
 ### Espíritu de época
 

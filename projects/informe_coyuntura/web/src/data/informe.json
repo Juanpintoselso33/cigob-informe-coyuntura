@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-09-15T23:25:59.401765-03:00",
+  "generated_at": "2026-09-16T00:12:58.311244-03:00",
   "period": "2026-09",
   "score_global": 3.8,
   "ponderacion": {
@@ -2337,7 +2337,7 @@
           "sub_detalle": "Eso responde qué tan tensa está la macroeconomía hoy, pero no cuánto se movió desde lo que se recibió. Reconstruido con el mismo método, el índice del mes del traspaso funciona como referencia permanente."
         },
         "vintages": {
-          "dias_promedio": 60,
+          "dias_promedio": 61,
           "meses_promedio": 2.0,
           "fecha_mas_vieja": "1 de junio de 2026",
           "fecha_mas_nueva": "31 de agosto de 2026",
@@ -5420,7 +5420,7 @@
           "sub_detalle": "El promedio de las tres no responde ninguna por separado, así que acá se muestran abiertas. Es una separación de lectura: el índice se calcula igual y los pesos no cambian. Cada familia muestra qué porción del índice carga, porque ese reparto se mueve cuando entran o salen indicadores y explica parte de lo que cambia entre lecturas."
         },
         "vintages": {
-          "dias_promedio": 58,
+          "dias_promedio": 59,
           "meses_promedio": 1.9,
           "fecha_mas_vieja": "31 de diciembre de 2025",
           "fecha_mas_nueva": "15 de septiembre de 2026",
@@ -5475,7 +5475,7 @@
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "detalle_txt": "RIPTE / CBT del mismo mes (2026-07): canastas cubiertas por el salario imponible promedio — CBT de 2026-08 ya publicada ($519,578): esa brecha queda provisoria hasta que salga el RIPTE",
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -5500,7 +5500,7 @@
           "fuente": "INDEC — IPC alimentos y bebidas (vía datos.gob.ar)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -5529,7 +5529,7 @@
           "cobertura_costos_pct": 55.0,
           "transporte_pct_canasta": 43.0,
           "fuente_url": "https://economicas.uba.ar/iiep/reporte-de-tarifas-y-subsidios-agosto-2026/",
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -5555,7 +5555,7 @@
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
           "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_ipc_aperturas.xls",
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -5574,10 +5574,10 @@
             "por_que": null
           }
         },
-        "consumo_carnes_total": {
-          "valor": 113.94,
+        "consumo_carne_vacuna": {
+          "valor": 46.75,
           "unidad": "kg/hab/año",
-          "fuente": "SAGYP — tablero de consumo per cápita de carnes (nivel) · INDEC — faena de vacunos, porcinos y aves (evolución del índice)",
+          "fuente": "SAGYP — tablero consumo per cápita de carnes (promedio móvil 12m)",
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "variaciones": {
@@ -5586,20 +5586,53 @@
             "porcina": 10.13,
             "total": -2.02
           },
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
-          "indice_itvc": 94.4,
+          "indice_itvc": 89.2,
           "fecha_indice_itvc": "2026-07-01",
-          "peso_efectivo": 0.0096,
-          "aporte_score": 6.1,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 94,4 (100 = arranque del mandato; más = mejora); pesa 1,0% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "peso_efectivo": 0.005,
+          "aporte_score": 7.2,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 89,2 (100 = arranque del mandato; más = mejora); pesa 0,5% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 6,1/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 7,2/10.",
           "semaforo": {
             "color": "naranja",
-            "tension": 6.1,
+            "tension": 7.2,
+            "umbrales": null,
+            "unidad": null,
+            "por_que": "Consumo aparente: vacuna 46,8 kg por habitante y año (−8,4% interanual); total de las tres carnes 113,9 kg (−2,0% interanual). La vacuna representa 41,0% del total. El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico."
+          }
+        },
+        "consumo_carnes_otras": {
+          "valor": 67.19,
+          "unidad": "kg/hab/año",
+          "fuente": "SAGYP — tablero consumo per cápita de carnes (aviar + porcina, promedio móvil 12m)",
+          "fecha_dato": "2026-07-01",
+          "desactualizado": false,
+          "variaciones": {
+            "vacuna": -8.44,
+            "aviar": 0.23,
+            "porcina": 10.13,
+            "total": -2.02
+          },
+          "total_kg": 113.94,
+          "ratio_bovina": 41.03,
+          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "metodo_obtencion": "automatico",
+          "en_indice": true,
+          "dimension": "ingresos",
+          "indice_itvc": 100.0,
+          "fecha_indice_itvc": "2026-07-01",
+          "peso_efectivo": 0.0046,
+          "aporte_score": 5.0,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 100,0 (100 = arranque del mandato; más = mejora); pesa 0,5% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_nota": null,
+          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 5,0/10.",
+          "semaforo": {
+            "color": "amarillo",
+            "tension": 5.0,
             "umbrales": null,
             "unidad": null,
             "por_que": "Consumo aparente: vacuna 46,8 kg por habitante y año (−8,4% interanual); total de las tres carnes 113,9 kg (−2,0% interanual). La vacuna representa 41,0% del total. El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico."
@@ -5611,7 +5644,7 @@
           "fuente": "INDEC EPH",
           "fecha_dato": "2026-01-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5651,7 +5684,7 @@
           "excluido_quiebre": "2024-12",
           "participacion_con_excluido": 22.1,
           "detalle_txt": "2,60 millones de independientes sobre 12,55 millones de puestos registrados · numerador: autónomos, monotributo general · denominador: autónomos, monotributo general, asalariados privados, asalariados públicos, casas particulares · queda afuera el monotributo social, cuyo padrón cayó de 653 a 259 mil personas en un solo mes (2024-12) por un cambio de régimen y no del mercado de trabajo · con ese régimen adentro daría 22,1%",
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5676,7 +5709,7 @@
           "fuente": "SRT — partes empleadoras con cobertura de ART, hasta 50 trabajadores",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5701,7 +5734,7 @@
           "fuente": "INDEC — ISAC desestacionalizado (planilla original vigente)",
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-15T23:16:36-03:00",
+          "obtenido_en": "2026-09-16T00:08:47-03:00",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5726,7 +5759,7 @@
           "fuente": "INDEC — EPH, tasa de subocupación demandante",
           "fecha_dato": "2026-01-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5751,7 +5784,7 @@
           "fuente": "Min. de Capital Humano — SIPA (vía datos.gob.ar)",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5776,7 +5809,7 @@
           "fuente": "UTDT — Índice de Victimización (LICIP)",
           "fecha_dato": "2026-07",
           "desactualizado": false,
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "detalle_txt": "Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste SNIC (denuncias registradas, año 2025): 2.418.600 hechos",
           "metodo_obtencion": "automatico",
           "en_indice": true,
@@ -5802,7 +5835,7 @@
           "fuente": "UTDT — Nowcast de Pobreza (González-Rozada)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -5833,11 +5866,13 @@
             "total_12m": 1367757,
             "ratio_motos": 59.6,
             "ratio_motos_base": 51.6,
+            "ratio_motos_autos": 1.478,
+            "ratio_motos_autos_base": 1.065,
             "autos_var": -5.850991254042103,
             "motos_var": 36.80310053598621,
             "total_var": 15.655599638765704
           },
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -5854,7 +5889,7 @@
             "tension": 0.0,
             "umbrales": null,
             "unidad": null,
-            "por_que": "Más patentamientos y mayor participación de motos: en los últimos doce meses se patentaron 1,37 millones de vehículos 0 km (15,7% interanual): 552 mil autos (−5,9%) y 816 mil motos (36,8%). Las motos son el 59,6% de lo que se patenta, contra 51,6% al arranque del mandato. El registro cuenta vehículos, no hogares: no permite distinguir primeras compras, reposición, flotas ni sustitución entre autos y motos. Estas situaciones pueden coexistir."
+            "por_que": "Más patentamientos y mayor participación de motos: en los últimos doce meses se patentaron 1,37 millones de vehículos 0 km (15,7% interanual): 552 mil autos (−5,9%) y 816 mil motos (36,8%). Las motos son el 59,6% de lo que se patenta, contra 51,6% al arranque del mandato. Por cada auto patentado se patentan 1,48 motos, contra 1,06 al arranque del mandato. El registro cuenta vehículos, no hogares: no permite distinguir primeras compras, reposición, flotas ni sustitución entre autos y motos. Estas situaciones pueden coexistir."
           }
         },
         "consumo_supermercados": {
@@ -5863,7 +5898,7 @@
           "fuente": "INDEC — Encuesta de supermercados (ventas a precios constantes)",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-15T23:16:34.259718",
+          "obtenido_en": "2026-09-16T00:08:45.637272",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -5956,11 +5991,17 @@
                 "puntaje_aplicado": 128.1,
                 "peso_efectivo": 0.0796
               },
-              "consumo_carnes_total": {
-                "peso": 0.0314,
-                "puntaje_banda": 94.4,
-                "puntaje_aplicado": 94.4,
-                "peso_efectivo": 0.0096
+              "consumo_carne_vacuna": {
+                "peso": 0.0164,
+                "puntaje_banda": 89.2,
+                "puntaje_aplicado": 89.2,
+                "peso_efectivo": 0.005
+              },
+              "consumo_carnes_otras": {
+                "peso": 0.015,
+                "puntaje_banda": 100.0,
+                "puntaje_aplicado": 100.0,
+                "peso_efectivo": 0.0046
               },
               "motorizacion_total": {
                 "peso": 0.0317,
@@ -6795,7 +6836,7 @@
         "ajustes_aplicados": [],
         "robustez": {
           "p05": 91.1,
-          "p95": 95.1,
+          "p95": 95.2,
           "tension_rango": [
             6.0,
             6.8
@@ -6806,45 +6847,45 @@
           },
           "n_draws": 1000,
           "hist": [
-            1,
             4,
             6,
-            7,
-            5,
-            12,
-            20,
-            13,
-            20,
-            25,
-            34,
-            39,
+            1,
+            8,
+            3,
+            18,
+            10,
+            16,
+            24,
+            22,
+            23,
+            36,
             44,
-            45,
-            41,
-            62,
-            49,
+            46,
+            58,
+            58,
+            60,
+            64,
+            60,
             51,
-            52,
-            57,
-            59,
-            55,
+            63,
+            44,
             53,
-            29,
-            45,
-            31,
-            34,
-            23,
-            19,
-            23,
-            19,
-            8,
-            8,
+            39,
+            36,
+            32,
+            25,
+            20,
+            24,
+            17,
+            14,
+            9,
             3,
-            3,
-            1
+            7,
+            0,
+            2
           ],
-          "hist_min": 89.95,
-          "hist_max": 96.18,
+          "hist_min": 89.8,
+          "hist_max": 96.44,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "serie_mensual": [
@@ -7652,17 +7693,17 @@
           "sub_detalle": "Para confirmar el índice no hay una única serie de referencia —la que hacía ese papel pasó a ser componente del índice, y su reemplazo natural, el consumo privado de las Cuentas Nacionales, todavía tiene nueve trimestres—, así que se compara contra un panel de estadísticas externas y se mira si acompaña más a las de su propio terreno que a las ajenas. El gráfico muestra el factor común de las que miden volúmenes consumidos por los hogares —luz, gas, transporte, combustible—: lo que todas ellas comparten, en vez de una sola. Para discriminar sí hay una serie externa dedicada, la confianza del consumidor (ICC de UTDT), que salió del índice y pasó a ser su ancla. El detalle —las cargas de cada una, el panel completo y la referencia en formación— está en la ficha metodológica."
         },
         "redundancia": {
-          "n_indicadores": 17,
-          "n_pares": 136,
-          "r_abs_medio": 0.511,
-          "share_altos": 0.368,
-          "share_bajos": 0.331,
+          "n_indicadores": 18,
+          "n_pares": 153,
+          "r_abs_medio": 0.497,
+          "share_altos": 0.327,
+          "share_bajos": 0.34,
           "umbral": 0.7,
           "pares_cruzados": 39,
           "diferencias": {
-            "n_pares": 136,
-            "r_abs_medio": 0.216,
-            "share_altos": 0.022
+            "n_pares": 153,
+            "r_abs_medio": 0.212,
+            "share_altos": 0.02
           },
           "top": [
             {
@@ -7709,17 +7750,17 @@
             }
           ],
           "titulo": "¿Cuánta información distinta aporta cada componente?",
-          "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 17 componentes que tienen serie histórica, 136 pares en total, y se mide cuánto se mueven juntos.",
-          "conclusion": "La correlación media entre pares es 0,511: ni componentes independientes ni una sola señal repetida. Un 37% de los pares se mueve muy junto (por encima de 0,7) y un 33% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,216 y sólo un 2% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 50 pares que superan el umbral en niveles, 39 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 110,3 —un rango de 22,5 puntos— y en el último mes van de 17,3 a 144,4, un rango de 127,1. El índice, en cambio, se movió 4,1 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están seis veces más separadas entre sí que al principio.",
-          "resumen": "La correlación media entre pares es 0,511: ni componentes independientes ni una sola señal repetida. Un 37% de los pares se mueve muy junto (por encima de 0,7) y un 33% es prácticamente independiente.",
-          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,216 y sólo un 2% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 50 pares que superan el umbral en niveles, 39 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 110,3 —un rango de 22,5 puntos— y en el último mes van de 17,3 a 144,4, un rango de 127,1. El índice, en cambio, se movió 4,1 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están seis veces más separadas entre sí que al principio."
+          "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 18 componentes que tienen serie histórica, 153 pares en total, y se mide cuánto se mueven juntos.",
+          "conclusion": "La correlación media entre pares es 0,497: ni componentes independientes ni una sola señal repetida. Un 33% de los pares se mueve muy junto (por encima de 0,7) y un 34% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,212 y sólo un 2% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 50 pares que superan el umbral en niveles, 39 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 110,3 —un rango de 22,5 puntos— y en el último mes van de 17,3 a 144,4, un rango de 127,1. El índice, en cambio, se movió 4,1 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están seis veces más separadas entre sí que al principio.",
+          "resumen": "La correlación media entre pares es 0,497: ni componentes independientes ni una sola señal repetida. Un 33% de los pares se mueve muy junto (por encima de 0,7) y un 34% es prácticamente independiente.",
+          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,212 y sólo un 2% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 50 pares que superan el umbral en niveles, 39 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 110,3 —un rango de 22,5 puntos— y en el último mes van de 17,3 a 144,4, un rango de 127,1. El índice, en cambio, se movió 4,1 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están seis veces más separadas entre sí que al principio."
         },
         "dispersion": {
           "serie": {
             "2023-12": {
               "itvc": 97.5,
               "rango": 22.5,
-              "desvio": 5.3,
+              "desvio": 5.1,
               "min": {
                 "componente": "brecha_salario_cbt",
                 "valor": 87.8
@@ -7728,12 +7769,12 @@
                 "componente": "alquiler_real",
                 "valor": 110.3
               },
-              "n": 15
+              "n": 16
             },
             "2024-01": {
               "itvc": 96.7,
               "rango": 38.2,
-              "desvio": 8.6,
+              "desvio": 8.3,
               "min": {
                 "componente": "despacho_cemento",
                 "valor": 79.7
@@ -7742,12 +7783,12 @@
                 "componente": "alquiler_real",
                 "valor": 117.9
               },
-              "n": 15
+              "n": 16
             },
             "2024-02": {
               "itvc": 97.3,
               "rango": 46.4,
-              "desvio": 10.8,
+              "desvio": 10.4,
               "min": {
                 "componente": "despacho_cemento",
                 "valor": 76.2
@@ -7756,12 +7797,12 @@
                 "componente": "alquiler_real",
                 "valor": 122.6
               },
-              "n": 15
+              "n": 16
             },
             "2024-03": {
               "itvc": 97.5,
               "rango": 59.6,
-              "desvio": 13.5,
+              "desvio": 13.1,
               "min": {
                 "componente": "despacho_cemento",
                 "valor": 66.4
@@ -7770,12 +7811,12 @@
                 "componente": "alquiler_real",
                 "valor": 126.0
               },
-              "n": 15
+              "n": 16
             },
             "2024-04": {
               "itvc": 99.4,
               "rango": 64.3,
-              "desvio": 14.9,
+              "desvio": 14.4,
               "min": {
                 "componente": "despacho_cemento",
                 "valor": 65.7
@@ -7784,12 +7825,12 @@
                 "componente": "inseguridad",
                 "valor": 130.0
               },
-              "n": 15
+              "n": 16
             },
             "2024-05": {
               "itvc": 98.6,
               "rango": 56.5,
-              "desvio": 12.8,
+              "desvio": 12.4,
               "min": {
                 "componente": "despacho_cemento",
                 "valor": 71.2
@@ -7798,12 +7839,12 @@
                 "componente": "inseguridad",
                 "valor": 127.7
               },
-              "n": 15
+              "n": 16
             },
             "2024-06": {
               "itvc": 98.0,
               "rango": 39.7,
-              "desvio": 9.5,
+              "desvio": 9.3,
               "min": {
                 "componente": "despacho_cemento",
                 "valor": 73.3
@@ -7812,12 +7853,12 @@
                 "componente": "inseguridad",
                 "valor": 113.0
               },
-              "n": 15
+              "n": 16
             },
             "2024-07": {
               "itvc": 98.2,
               "rango": 36.0,
-              "desvio": 8.1,
+              "desvio": 7.9,
               "min": {
                 "componente": "despacho_cemento",
                 "valor": 79.8
@@ -7826,12 +7867,12 @@
                 "componente": "inseguridad",
                 "valor": 115.8
               },
-              "n": 15
+              "n": 16
             },
             "2024-08": {
               "itvc": 97.2,
               "rango": 40.0,
-              "desvio": 8.9,
+              "desvio": 8.7,
               "min": {
                 "componente": "despacho_cemento",
                 "valor": 77.7
@@ -7840,12 +7881,12 @@
                 "componente": "inseguridad",
                 "valor": 117.7
               },
-              "n": 15
+              "n": 16
             },
             "2024-09": {
               "itvc": 95.5,
               "rango": 26.5,
-              "desvio": 7.5,
+              "desvio": 7.4,
               "min": {
                 "componente": "despacho_cemento",
                 "valor": 78.7
@@ -7854,12 +7895,12 @@
                 "componente": "ipc_alimentos",
                 "valor": 105.2
               },
-              "n": 15
+              "n": 16
             },
             "2024-10": {
               "itvc": 96.7,
               "rango": 32.9,
-              "desvio": 9.7,
+              "desvio": 9.5,
               "min": {
                 "componente": "alquiler_real",
                 "valor": 73.9
@@ -7868,12 +7909,12 @@
                 "componente": "ipc_alimentos",
                 "valor": 106.8
               },
-              "n": 15
+              "n": 16
             },
             "2024-11": {
               "itvc": 97.0,
               "rango": 38.5,
-              "desvio": 10.6,
+              "desvio": 10.3,
               "min": {
                 "componente": "alquiler_real",
                 "valor": 69.9
@@ -7882,12 +7923,12 @@
                 "componente": "ipc_alimentos",
                 "valor": 108.4
               },
-              "n": 15
+              "n": 16
             },
             "2024-12": {
               "itvc": 96.9,
               "rango": 41.4,
-              "desvio": 11.8,
+              "desvio": 11.5,
               "min": {
                 "componente": "alquiler_real",
                 "valor": 67.5
@@ -7896,12 +7937,12 @@
                 "componente": "ipc_alimentos",
                 "valor": 108.9
               },
-              "n": 15
+              "n": 16
             },
             "2025-01": {
               "itvc": 97.3,
               "rango": 48.7,
-              "desvio": 13.6,
+              "desvio": 13.2,
               "min": {
                 "componente": "alquiler_real",
                 "valor": 63.3
@@ -7910,12 +7951,12 @@
                 "componente": "pobreza_nowcast",
                 "valor": 112.0
               },
-              "n": 16
+              "n": 17
             },
             "2025-02": {
               "itvc": 97.3,
               "rango": 54.2,
-              "desvio": 15.7,
+              "desvio": 15.3,
               "min": {
                 "componente": "alquiler_real",
                 "valor": 60.7
@@ -7924,12 +7965,12 @@
                 "componente": "pobreza_nowcast",
                 "valor": 114.9
               },
-              "n": 16
+              "n": 17
             },
             "2025-03": {
               "itvc": 94.8,
               "rango": 52.2,
-              "desvio": 16.2,
+              "desvio": 15.8,
               "min": {
                 "componente": "carga_servicio_deuda_hogares",
                 "valor": 59.2
@@ -7938,12 +7979,12 @@
                 "componente": "motorizacion_total",
                 "valor": 111.4
               },
-              "n": 16
+              "n": 17
             },
             "2025-04": {
               "itvc": 94.5,
               "rango": 59.5,
-              "desvio": 18.3,
+              "desvio": 17.8,
               "min": {
                 "componente": "carga_servicio_deuda_hogares",
                 "valor": 55.7
@@ -7952,12 +7993,12 @@
                 "componente": "motorizacion_total",
                 "valor": 115.2
               },
-              "n": 16
+              "n": 17
             },
             "2025-05": {
               "itvc": 92.8,
               "rango": 67.2,
-              "desvio": 20.7,
+              "desvio": 20.1,
               "min": {
                 "componente": "mora_familias",
                 "valor": 51.5
@@ -7966,12 +8007,12 @@
                 "componente": "motorizacion_total",
                 "valor": 118.7
               },
-              "n": 16
+              "n": 17
             },
             "2025-06": {
               "itvc": 94.4,
               "rango": 82.7,
-              "desvio": 23.9,
+              "desvio": 23.2,
               "min": {
                 "componente": "mora_familias",
                 "valor": 44.2
@@ -7980,12 +8021,12 @@
                 "componente": "pobreza_nowcast",
                 "valor": 126.9
               },
-              "n": 16
+              "n": 17
             },
             "2025-07": {
               "itvc": 95.4,
               "rango": 88.9,
-              "desvio": 26.2,
+              "desvio": 25.5,
               "min": {
                 "componente": "mora_familias",
                 "valor": 40.0
@@ -7994,12 +8035,12 @@
                 "componente": "pobreza_nowcast",
                 "valor": 128.9
               },
-              "n": 16
+              "n": 17
             },
             "2025-08": {
               "itvc": 94.0,
               "rango": 95.3,
-              "desvio": 26.4,
+              "desvio": 25.6,
               "min": {
                 "componente": "mora_familias",
                 "valor": 33.6
@@ -8008,12 +8049,12 @@
                 "componente": "pobreza_nowcast",
                 "valor": 128.9
               },
-              "n": 16
+              "n": 17
             },
             "2025-09": {
               "itvc": 94.7,
               "rango": 100.3,
-              "desvio": 28.5,
+              "desvio": 27.6,
               "min": {
                 "componente": "mora_familias",
                 "valor": 30.3
@@ -8022,12 +8063,12 @@
                 "componente": "pobreza_nowcast",
                 "valor": 130.6
               },
-              "n": 16
+              "n": 17
             },
             "2025-10": {
               "itvc": 95.1,
               "rango": 111.5,
-              "desvio": 30.0,
+              "desvio": 29.1,
               "min": {
                 "componente": "mora_familias",
                 "valor": 28.5
@@ -8036,12 +8077,12 @@
                 "componente": "inseguridad",
                 "valor": 140.0
               },
-              "n": 16
+              "n": 17
             },
             "2025-11": {
               "itvc": 93.8,
               "rango": 115.2,
-              "desvio": 30.5,
+              "desvio": 29.6,
               "min": {
                 "componente": "mora_familias",
                 "valor": 24.8
@@ -8050,12 +8091,12 @@
                 "componente": "inseguridad",
                 "valor": 140.0
               },
-              "n": 16
+              "n": 17
             },
             "2025-12": {
               "itvc": 97.1,
               "rango": 108.0,
-              "desvio": 29.3,
+              "desvio": 28.5,
               "min": {
                 "componente": "mora_familias",
                 "valor": 23.6
@@ -8064,12 +8105,12 @@
                 "componente": "motorizacion_total",
                 "valor": 131.6
               },
-              "n": 17
+              "n": 18
             },
             "2026-01": {
               "itvc": 95.2,
               "rango": 112.1,
-              "desvio": 29.0,
+              "desvio": 28.3,
               "min": {
                 "componente": "mora_familias",
                 "valor": 20.7
@@ -8078,12 +8119,12 @@
                 "componente": "pobreza_nowcast",
                 "valor": 132.8
               },
-              "n": 17
+              "n": 18
             },
             "2026-02": {
               "itvc": 95.7,
               "rango": 115.3,
-              "desvio": 29.7,
+              "desvio": 28.9,
               "min": {
                 "componente": "mora_familias",
                 "valor": 19.6
@@ -8092,12 +8133,12 @@
                 "componente": "motorizacion_total",
                 "valor": 134.9
               },
-              "n": 17
+              "n": 18
             },
             "2026-03": {
               "itvc": 94.6,
               "rango": 119.3,
-              "desvio": 29.7,
+              "desvio": 28.9,
               "min": {
                 "componente": "mora_familias",
                 "valor": 19.0
@@ -8106,12 +8147,12 @@
                 "componente": "pobreza_nowcast",
                 "valor": 138.3
               },
-              "n": 17
+              "n": 18
             },
             "2026-04": {
               "itvc": 94.5,
               "rango": 122.1,
-              "desvio": 30.0,
+              "desvio": 29.2,
               "min": {
                 "componente": "mora_familias",
                 "valor": 18.3
@@ -8120,12 +8161,12 @@
                 "componente": "motorizacion_total",
                 "valor": 140.4
               },
-              "n": 17
+              "n": 18
             },
             "2026-05": {
               "itvc": 93.6,
               "rango": 123.5,
-              "desvio": 29.7,
+              "desvio": 28.9,
               "min": {
                 "componente": "mora_familias",
                 "valor": 17.2
@@ -8134,12 +8175,12 @@
                 "componente": "motorizacion_total",
                 "valor": 140.7
               },
-              "n": 17
+              "n": 18
             },
             "2026-06": {
               "itvc": 94.3,
               "rango": 125.2,
-              "desvio": 30.0,
+              "desvio": 29.3,
               "min": {
                 "componente": "mora_familias",
                 "valor": 17.3
@@ -8148,12 +8189,12 @@
                 "componente": "motorizacion_total",
                 "valor": 142.5
               },
-              "n": 17
+              "n": 18
             },
             "2026-07": {
               "itvc": 93.6,
               "rango": 125.6,
-              "desvio": 29.9,
+              "desvio": 29.2,
               "min": {
                 "componente": "mora_familias",
                 "valor": 17.3
@@ -8162,12 +8203,12 @@
                 "componente": "motorizacion_total",
                 "valor": 142.9
               },
-              "n": 17
+              "n": 18
             },
             "2026-08": {
               "itvc": 93.4,
               "rango": 127.1,
-              "desvio": 30.0,
+              "desvio": 29.2,
               "min": {
                 "componente": "mora_familias",
                 "valor": 17.3
@@ -8176,14 +8217,14 @@
                 "componente": "motorizacion_total",
                 "valor": 144.4
               },
-              "n": 17
+              "n": 18
             }
           },
           "primero": {
             "mes": "2023-12",
             "itvc": 97.5,
             "rango": 22.5,
-            "desvio": 5.3,
+            "desvio": 5.1,
             "min": {
               "componente": "brecha_salario_cbt",
               "valor": 87.8
@@ -8192,13 +8233,13 @@
               "componente": "alquiler_real",
               "valor": 110.3
             },
-            "n": 15
+            "n": 16
           },
           "ultimo": {
             "mes": "2026-08",
             "itvc": 93.4,
             "rango": 127.1,
-            "desvio": 30.0,
+            "desvio": 29.2,
             "min": {
               "componente": "mora_familias",
               "valor": 17.3
@@ -8207,12 +8248,12 @@
               "componente": "motorizacion_total",
               "valor": 144.4
             },
-            "n": 17
+            "n": 18
           },
           "movimiento_neto": 4.1
         },
         "vintages": {
-          "dias_promedio": 94,
+          "dias_promedio": 95,
           "meses_promedio": 3.1,
           "fecha_mas_vieja": "1 de enero de 2026",
           "fecha_mas_nueva": "1 de agosto de 2026",
@@ -8221,12 +8262,12 @@
             {
               "indicador": "informalidad",
               "fecha": "1 de enero de 2026",
-              "meses": 8.4
+              "meses": 8.5
             },
             {
               "indicador": "subocupacion_demandante",
               "fecha": "1 de enero de 2026",
-              "meses": 8.4
+              "meses": 8.5
             },
             {
               "indicador": "carga_servicio_deuda_hogares",
@@ -8273,7 +8314,7 @@
           "tension": null
         }
       },
-      "fuente_enriquecida": "vida_cotidiana_20260915_2316.json",
+      "fuente_enriquecida": "vida_cotidiana_20260916_0009.json",
       "score_explicacion": "ITCIS-B100 (índice de seguimiento: los componentes usan 100 = promedio del 4T-2023, salvo servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 28%, precios 25%, vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (ITCIS − 100) × 0,2."
     },
     "gestion": {
@@ -10925,7 +10966,7 @@
           "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,114 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 19 pares que superan el umbral en niveles, 17 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
         },
         "vintages": {
-          "dias_promedio": 54,
+          "dias_promedio": 55,
           "meses_promedio": 1.8,
           "fecha_mas_vieja": "31 de diciembre de 2025",
           "fecha_mas_nueva": "15 de septiembre de 2026",

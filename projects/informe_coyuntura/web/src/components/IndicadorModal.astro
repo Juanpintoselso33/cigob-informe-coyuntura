@@ -172,10 +172,10 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       indiceMeta,
       // El rótulo dice "esto es el dato de la fuente, NO el nivel que puntúa",
       // así que la pregunta es por la unidad de la SERIE, no la de la card.
-      // Mirando la card, `motorizacion_total` (c/1.000 hab.) y
-      // `consumo_carnes_total` (kg/hab) daban true y el gráfico se rotulaba
-      // como dato crudo cuando lo que dibuja ES el índice base-100.
-      // `UNIDADES_SERIE` ya declara exactamente esos dos casos.
+      // Mirando la card, `motorizacion_total` (c/1.000 hab.) y las dos cards
+      // de carne, `consumo_carne_vacuna`/`consumo_carnes_otras` (kg/hab),
+      // daban true y el gráfico se rotulaba como dato crudo cuando lo que
+      // dibuja ES el índice base-100. `UNIDADES_SERIE` ya declara esos casos.
       datoFuenteDifiere: !!indiceMeta?.base100
         && !(UNIDADES_SERIE[ikey] ?? ind.unidad ?? "").toLowerCase().includes("100 ="),
     };

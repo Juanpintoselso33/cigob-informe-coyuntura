@@ -35,7 +35,11 @@ EJEMPLO = {
     # declara más.
     "inseguridad": 104.0,
     "sentimiento_digital": 110.0,
-    "consumo_carnes_total": 92.0,   # ADR-0217: puntúa el total, no la vacuna
+    # ADR-0322: `consumo_carnes_total` (ADR-0217) se partió en dos. Se
+    # conservan valores que promedian igual al 92,0 del doc para que la
+    # aritmética del ejemplo (peso combinado 0,0392) siga siendo comparable.
+    "consumo_carne_vacuna": 92.0,
+    "consumo_carnes_otras": 92.0,
     # ADR-0224: era `patentamiento_motos`. Se conserva el MISMO valor del doc
     # para que la aritmética del ejemplo siga siendo comparable: lo que cambió
     # es qué componente lo lleva, no el número.
@@ -133,9 +137,14 @@ def test_pesos_del_documento():
     # ceden ×0,80. Es el único componente que mide volumen efectivamente
     # comprado. Los decimales de acá salen de `alta_proporcional` aplicada
     # sobre la dimensión tal como la dejó ADR-0224, no de una cuenta a mano.
+    # ADR-0322: `consumo_carnes_total` (0,0314 acá) se parte en dos
+    # componentes que puntúan por separado, repartidos 0,0205/0,0187 nominal
+    # (52,3%/47,7%, la proporción real de la faena al 4T-2023, ajustada en el
+    # último dígito para que la cesión ×0,80 siga sumando 1,0 exacto).
     assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.4767,
                                             "pobreza_nowcast": 0.2602,
-                                            "consumo_carnes_total": 0.0314,
+                                            "consumo_carne_vacuna": 0.0164,
+                                            "consumo_carnes_otras": 0.0150,
                                             "motorizacion_total": 0.0317,
                                             "consumo_supermercados": 0.2000}
     assert abs(sum(d["ingresos"]["indicadores"].values()) - 1.0) < 1e-9
@@ -216,7 +225,8 @@ def test_renormalizacion_ante_faltantes():
     es la brecha: la dimensión ES su índice (87,5). Que no invente peso sigue
     siendo lo que este test comprueba, y lo verifica la suma de efectivos."""
     valores = dict(EJEMPLO)
-    valores["consumo_carnes_total"] = None
+    valores["consumo_carne_vacuna"] = None
+    valores["consumo_carnes_otras"] = None
     valores["motorizacion_total"] = None
     r = itvc.calcular_itvc(valores)
     ing = r["dimensiones"]["ingresos"]

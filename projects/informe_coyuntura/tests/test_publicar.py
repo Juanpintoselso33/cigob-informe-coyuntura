@@ -402,11 +402,12 @@ def test_publicar_genera_snapshot(tmp_path):
     # vida_cotidiana enriquecido: al menos 10 indicadores (no los 3 legacy)
     vida = informe["cinturones"]["vida_cotidiana"]["indicadores"]
     assert len(vida) >= 10, f"vida cotidiana solo tiene {len(vida)} indicadores"
-    # ADR-0217: el que publica card es el consumo TOTAL de carnes; la vacuna
-    # pasó a ser diagnóstico dentro de la matriz A×B y ya no es card.
+    # ADR-0322: vacuna y el resto (aviar+porcina) publican card cada uno por
+    # separado; `consumo_carnes_total` (ADR-0217) ya no es card.
     # ADR-0314: `icc_utdt` salió del índice y pasó a VIDA_OCULTOS —igual que
     # `indice_lider`—, así que ya no es card.
-    assert "consumo_carnes_total" in vida and "icc_utdt" not in vida
+    assert "consumo_carne_vacuna" in vida and "consumo_carnes_otras" in vida
+    assert "consumo_carnes_total" not in vida and "icc_utdt" not in vida
 
     # cada indicador tiene la forma mínima
     for cint in informe["cinturones"].values():
@@ -729,7 +730,9 @@ def test_vida_itvc_reconcilia():
     # 19 desde ADR-0231: entra carga del servicio de deuda en vulnerabilidad.
     # 19 → 18: salió `sentimiento_digital` (ADR-0248)
     # 18 → 17: salió `icc_utdt`, que pasó a ancla externa (ADR-0314)
-    assert len(en_indice) == 17, f"esperaba 17 componentes en el índice, hay {len(en_indice)}"
+    # 17 → 18: `consumo_carnes_total` se parte en `consumo_carne_vacuna` +
+    # `consumo_carnes_otras`, que puntúan cada uno por su cuenta (ADR-0322)
+    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"

@@ -324,6 +324,16 @@ def fetch_motorizacion() -> dict:
         "ratio_motos_base": round(
             sum(mov_motos[m] for m in BASE_4T_2023)
             / sum(mov_total[m] for m in BASE_4T_2023) * 100.0, 1),
+        # Control pedido por Juan (15-sep): motos/autos, NO motos/total. Sirve
+        # para leer si la motorización sube porque se compran más autos o
+        # porque se baja a la moto — algo que `ratio_motos` (motos sobre el
+        # total) no distingue de un total que crece parejo. Magnitud derivada,
+        # no card propia (ADR-0153/0216: no puntúa, así que no puede serlo).
+        "ratio_motos_autos": round(mov_motos[ultimo] / mov_autos[ultimo], 3)
+        if mov_autos[ultimo] else None,
+        "ratio_motos_autos_base": round(
+            sum(mov_motos[m] for m in BASE_4T_2023)
+            / sum(mov_autos[m] for m in BASE_4T_2023), 3),
         "autos_var": _var(mov_autos),
         "motos_var": _var(mov_motos),
         "total_var": _var(mov_total),

@@ -97,7 +97,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 110 → 100 · 100–110 → 85 · 90–100 → 60 · 80–90 → 35 · ≤ 80 → 10
 
-**Lo gobiernan**: [ADR-0003](../adr/0003-recaudacion-interanual-real.md) La recaudación se mide en variación interanual REAL (deflactada) · [ADR-0029](../adr/0029-recaudacion-promedio-movil-3m.md) Recaudación real: promedio móvil de 3 meses sobre IPC cerrado · [ADR-0072](../adr/0072-resultado-primario-dimension-fiscal.md) resultado_primario: la dimensión fiscal pasa a medir resultado, no ingresos · [ADR-0127](../adr/0127-la-recaudacion-mide-la-base-imponible-no-la-caja.md) La recaudación mide la base imponible, no la caja: pasa a DGI · [ADR-0283](../adr/0283-recaudacion-actualiza-gacetillas-comarb.md) Recaudación actualiza las gacetillas COMARB
+**Lo gobiernan**: [ADR-0003](../adr/0003-recaudacion-interanual-real.md) La recaudación se mide en variación interanual REAL (deflactada) · [ADR-0029](../adr/0029-recaudacion-promedio-movil-3m.md) Recaudación real: promedio móvil de 3 meses sobre IPC cerrado · [ADR-0072](../adr/0072-resultado-primario-dimension-fiscal.md) resultado_primario: la dimensión fiscal pasa a medir resultado, no ingresos · [ADR-0127](../adr/0127-la-recaudacion-mide-la-base-imponible-no-la-caja.md) La recaudación mide la base imponible, no la caja: pasa a DGI · [ADR-0283](../adr/0283-recaudacion-actualiza-gacetillas-comarb.md) Recaudación actualiza las gacetillas COMARB · [ADR-0318](../adr/0318-iva-cheque-entran-como-control-no-como-card.md) IVA-DGI y cheque entran como control de `recaudacion`, no como card · [ADR-0319](../adr/0319-control-tributario-mismo-deflactor-mismo-sentido.md) El control tributario usa el mismo deflactor y compara el mismo sentido · [ADR-0321](../adr/0321-descomposicion-no-control-independiente.md) Es una descomposición del agregado, no un control independiente
 
 #### Saldo comercial 12m
 
@@ -129,7 +129,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0005](../adr/0005-reservas-netas-a-secas.md) Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal · [ADR-0286](../adr/0286-reservas-explicita-la-estimacion-y-sus-exclusiones.md) Reservas explicita la estimación y sus exclusiones · [ADR-0287](../adr/0287-reservas-no-sustituye-insumos-faltantes.md) Reservas no sustituye insumos faltantes
 
-#### Capacidad prestable (IdC)
+#### Capacidad prestable
 
 `idc`
 
@@ -217,7 +217,7 @@ Suma de pesos: 100%.
 
 ### Dimensión `competitividad_externa` (11%)
 
-#### Tipo de cambio real (TCRM)
+#### Tipo de cambio real
 
 `tcrm`
 
@@ -233,7 +233,7 @@ Suma de pesos: 100%.
 
 ### Dimensión `inversion` (12%)
 
-#### Inversión física (IAI)
+#### Inversión física
 
 `iai`
 
@@ -280,7 +280,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-52 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+55 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -334,3 +334,6 @@ histórica.
 - [0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) — Actividad usa las planillas originales vigentes
 - [0300](../adr/0300-iai-completa-bienes-de-capital-originales.md) — IAI completa los bienes de capital originales
 - [0301](../adr/0301-historia-macro-deriva-componentes-del-motor.md) — La historia macro deriva sus componentes del motor
+- [0318](../adr/0318-iva-cheque-entran-como-control-no-como-card.md) — IVA-DGI y cheque entran como control de `recaudacion`, no como card
+- [0319](../adr/0319-control-tributario-mismo-deflactor-mismo-sentido.md) — El control tributario usa el mismo deflactor y compara el mismo sentido
+- [0321](../adr/0321-descomposicion-no-control-independiente.md) — Es una descomposición del agregado, no un control independiente

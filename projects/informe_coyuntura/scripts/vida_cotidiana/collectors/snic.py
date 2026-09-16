@@ -14,6 +14,20 @@ from config import SNIC_CSV, CABA_DELITOS_URL, HTTP_HEADERS, HTTP_TIMEOUT
 
 logger = logging.getLogger(__name__)
 
+# ADR-0323: se conservan por NOMBRE, no por ranking de volumen. Antes
+# `tipos_principales` era el top-5 por cantidad de hechos, y eso descartaba
+# "Homicidios dolosos" (1.613 hechos en 2025) mientras conservaba categorías
+# de bulto como "Robos" (360.946, el #1 nacional) — el dato ya se bajaba y se
+# tiraba en la cañería antes de llegar a la ficha. Nombres verificados contra
+# el CSV oficial 2025 (no contra este comentario, que puede desactualizarse).
+TIPOS_RELEVANTES = (
+    "Homicidios dolosos",
+    "Robos (excluye los agravados por el resultado de lesiones y/o muertes)",
+    "Robos agravados por el resultado de lesiones y/o muertes",
+    "Hurtos",
+    "Abusos sexuales con acceso carnal (violaciones)",
+)
+
 
 def _parse_snic_csv(content: bytes) -> dict:
     """
@@ -63,11 +77,21 @@ def _parse_snic_csv(content: bytes) -> dict:
             "nota": "CSV descargado pero columnas de hechos no identificadas. Ver 'columnas_disponibles'.",
         }
 
+    tipos = por_anio[ultimo_anio]["tipos"]
+    # Por NOMBRE (ver TIPOS_RELEVANTES), no por ranking de volumen: un ranking
+    # por cantidad de hechos deja afuera a los homicidios, que son el tipo más
+    # bajo en volumen y el más citado en cualquier lectura de seguridad.
+    principales = {t: tipos[t] for t in TIPOS_RELEVANTES if t in tipos}
+    faltantes = [t for t in TIPOS_RELEVANTES if t not in tipos]
+    if faltantes:
+        logger.warning("SNIC: el CSV %s no trae estos tipos esperados: %s",
+                        ultimo_anio, faltantes)
+
     return {
         "anio": ultimo_anio,
         "total_hechos": por_anio[ultimo_anio]["total_hechos"],
         "tipos_principales": dict(
-            sorted(por_anio[ultimo_anio]["tipos"].items(), key=lambda x: -x[1])[:5]
+            sorted(principales.items(), key=lambda x: -x[1])
         ),
     }
 
