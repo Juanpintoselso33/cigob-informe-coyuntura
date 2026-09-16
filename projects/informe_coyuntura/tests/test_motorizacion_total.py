@@ -413,12 +413,17 @@ def test_el_indice_vivo_y_la_reconstruccion_eximan_a_los_mismos():
 
 def test_el_peso_acota_el_aporte_que_la_exencion_deja_por_encima_del_techo():
     """La cifra publicada debe salir de los pesos vigentes, no de un reparto
-    anterior de la dimensión ingresos."""
+    anterior de la dimensión ingresos.
+
+    ADR-0328 agregó `ratio_motos_autos` a la misma dimensión con una cesión
+    proporcional adicional, así que el peso efectivo de este componente bajó
+    de 0,89% a 0,87% — el argumento (peso chico acota el exceso posible sobre
+    el techo) sigue valiendo con el número nuevo."""
     dim = itvc.DIMENSIONES_ITVC["ingresos"]
     peso_efectivo = dim["peso"] * dim["indicadores"]["motorizacion_total"]
-    assert peso_efectivo == pytest.approx(0.0089, abs=0.00005)
+    assert peso_efectivo == pytest.approx(0.00867, abs=0.00005)
     exceso_si_llegara_a_170 = (170 - itvc.WINSOR_TOPE) * peso_efectivo
-    assert exceso_si_llegara_a_170 == pytest.approx(0.27, abs=0.005)
+    assert exceso_si_llegara_a_170 == pytest.approx(0.26, abs=0.005)
 
 
 # ── 8 · Serie, base y frescura ──────────────────────────────────────────────

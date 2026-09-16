@@ -2094,6 +2094,17 @@ def fetch_motorizacion_total_serie() -> list:
     return [[f"{ym}-01", v] for ym, v in sorted(_motorizacion()["serie"].items())]
 
 
+def fetch_ratio_motos_autos_serie() -> list:
+    """Motos patentadas por cada auto patentado, acumulado móvil de 12 meses
+    (ADR-0328). Serie CRUDA (sin rebasear): `itvc.indices_desde_series` la
+    rebasea contra el 4T-2023 con `invertido=True` —más motos por auto es
+    DETERIORO, confirmado por Juan— igual que hace con `inseguridad` o
+    `mora_familias`. NO es la misma serie que `ratio_motos` (motos sobre el
+    TOTAL, que sólo cuelga de la card de `motorizacion_total`, ADR-0323):
+    ésta es motos sobre AUTOS y puntúa por su cuenta."""
+    return [[f"{ym}-01", v] for ym, v in sorted(_motorizacion()["serie_ratio_motos_autos"].items())]
+
+
 def fetch_patentamiento_autos_serie() -> list:
     """Inscripciones iniciales de automotores por mes (DNRPA), sin Tierra del
     Fuego. Componente B de la matriz A×B (ADR-0224): ya no puntúa, pero se
@@ -2530,6 +2541,83 @@ def fetch_inseguridad_serie() -> list:
     return [[f"{a}-12-01", v] for a, v in sorted(store["anual"].items())]
 
 
+# ADR-0327: los dos tipos de delito que pasan a puntuar como indicador propio,
+# por NOMBRE exacto en `codigo_delito_snic_nombre` — mismo criterio que
+# `snic.TIPOS_RELEVANTES`. Se usa `tasa_hechos`, que el SNIC ya calcula cada
+# 100.000 habitantes: no se reconstruye con población propia (duplicaría un
+# cálculo que la fuente publica y que es el que se cita).
+SNIC_TIPOS_TASA = {
+    "tasa_homicidios": "Homicidios dolosos",
+    "tasa_robos": "Robos (excluye los agravados por el resultado de lesiones y/o muertes)",
+}
+
+
+def _snic_tasas() -> dict:
+    """{tipo_snic: {anio: tasa_hechos}} de los dos tipos de SNIC_TIPOS_TASA,
+    con el MISMO store persistente que `fetch_inseguridad_serie` (cloud-snic
+    cae por días enteros) y el mismo criterio: si el host responde con un CSV
+    sano, se pisa la serie completa (la fuente revisa retroactivamente); si
+    no, sale del store."""
+    import csv as _csv
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from config import SNIC_CSV
+    store = json.loads(SNIC_SERIE_STORE.read_text(encoding="utf-8-sig"))
+    store.setdefault("por_tipo", {})
+    try:
+        r = requests.get(SNIC_CSV, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 3)
+        r.raise_for_status()
+        texto = r.content.decode("utf-8", errors="replace")
+        sep = ";" if ";" in texto.split("\n", 1)[0] else ","
+        tasas: dict = {tipo: {} for tipo in SNIC_TIPOS_TASA.values()}
+        for row in _csv.DictReader(io.StringIO(texto), delimiter=sep):
+            anio = (row.get("anio") or "").strip()
+            tipo = row.get("codigo_delito_snic_nombre") or ""
+            tasa = row.get("tasa_hechos")
+            if not anio.isdigit() or tipo not in tasas or not tasa:
+                continue
+            tasas[tipo][anio] = round(float(tasa.replace(",", ".")), 4)
+        if all(len(v) >= 20 for v in tasas.values()):    # descarga sana → refrescar store
+            store["por_tipo"] = tasas
+            store["_meta"]["actualizado"] = datetime.today().strftime("%Y-%m-%d")
+            SNIC_SERIE_STORE.write_text(
+                json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
+    except Exception as e:
+        print(f"  [WARN] tasas SNIC: cloud-snic caído ({str(e)[:60]}); serie del store "
+              f"(al {store['_meta'].get('actualizado')})")
+    return store["por_tipo"]
+
+
+def fetch_tasa_homicidios_serie() -> list:
+    """Homicidios dolosos, tasa cada 100.000 habitantes, YA CALCULADA por el
+    SNIC (columna `tasa_hechos`) — no reconstruida con población propia
+    (ADR-0327). Serie ANUAL 2000-2025: 26 años, la más larga del cinturón.
+    Puntúa junto con `tasa_robos` en la dimensión de seguridad, sin promediar
+    entre sí: el homicidio casi no tiene subregistro (hay un cuerpo) y el robo
+    depende de que la víctima denuncie, así que son señales de calidad
+    distinta y se agregan como dos componentes separados del índice, igual
+    que hace `itvc.py` con cualquier par de indicadores de una dimensión."""
+    tasas = _snic_tasas().get(SNIC_TIPOS_TASA["tasa_homicidios"], {})
+    return [[f"{a}-12-01", v] for a, v in sorted(tasas.items())]
+
+
+def fetch_tasa_robos_serie() -> list:
+    """Robos (excluye agravados por lesiones/muertes), tasa cada 100.000
+    habitantes, YA CALCULADA por el SNIC. Ver `fetch_tasa_homicidios_serie`.
+
+    LIMITACIÓN DECLARADA (ADR-0327): la tasa cae de 1.002,8 (2024) a 778,1
+    (2025), −22,4% en un año sin pandemia ni evento conocido que lo explique.
+    Hurtos —el otro delito contra la propiedad de bajo subregistro relativo—
+    cae en la misma proporción (805,2 → 665,1, −17,4%) mientras que Robos
+    agravados por el resultado de lesiones/muertes SUBE 45,5% el mismo año
+    (12,3 → 17,9): un patrón inconsistente con una baja real y pareja del
+    delito violento, y compatible con reporte incompleto de algunas
+    jurisdicciones al cierre de 2025. No se pudo confirmar ni descartar contra
+    ningún informe metodológico del SNIC disponible públicamente. Se publica
+    igual —es el dato oficial vigente— y la ficha declara la limitación."""
+    tasas = _snic_tasas().get(SNIC_TIPOS_TASA["tasa_robos"], {})
+    return [[f"{a}-12-01", v] for a, v in sorted(tasas.items())]
+
+
 CARNE_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "carne_serie.json"
 
 
@@ -2752,6 +2840,12 @@ VIDA_DERIVADAS += [
      "DNRPA — inscripciones iniciales de automotores y motovehículos, "
      "per cápita (INDEC), sin Tierra del Fuego",
      fetch_motorizacion_total_serie),
+    # ADR-0328: entra a puntuar en la dimensión de ingresos y consumo, junto a
+    # `motorizacion_total` (mismo colector, misma descarga).
+    ("ratio_motos_autos", "motos por cada auto patentado (móvil 12m)",
+     "DNRPA — inscripciones iniciales de automotores y motovehículos, "
+     "sin Tierra del Fuego",
+     fetch_ratio_motos_autos_serie),
     ("patentamiento_motos", "unidades/mes",
      "DNRPA — inscripciones iniciales de motovehículos (CSV mensual por "
      "jurisdicción), sin Tierra del Fuego",
@@ -2771,6 +2865,14 @@ VIDA_DERIVADAS += [
     # contraste bajo clave propia (sin card: alimenta la ficha y validaciones)
     ("inseguridad", "% de hogares víctimas (12 meses)", "UTDT — IVI (LICIP)", fetch_ivi_serie),
     ("inseguridad_snic", "hechos/año (total país)", "SNIC (CSV oficial, suma anual)", fetch_inseguridad_serie),
+    # ADR-0327: entran a puntuar, junto con `inseguridad` (IVI), en la
+    # dimensión de seguridad. `tasa_hechos` la calcula el SNIC, no este repo.
+    ("tasa_homicidios", "homicidios dolosos cada 100.000 hab. (anual)",
+     "SNIC — Ministerio de Seguridad (tasa oficial, serie 2000-2025)",
+     fetch_tasa_homicidios_serie),
+    ("tasa_robos", "robos (excl. agravados) cada 100.000 hab. (anual)",
+     "SNIC — Ministerio de Seguridad (tasa oficial, serie 2000-2025)",
+     fetch_tasa_robos_serie),
     ("consumo_carne", "kg/hab/año (PM 12m)", "CICCRA (informes mensuales, caché local)", fetch_carne_serie),
     # ADR-0322: reemplaza a `consumo_carnes_total` como lo que PUNTÚA. Se
     # separan porque fusionadas la caída de la vacuna quedaba diluida por el

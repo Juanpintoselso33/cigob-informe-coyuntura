@@ -7,7 +7,7 @@ cinturon: 'vida'
 indicadores: [motorizacion_total]
 archivos: ['scripts/publicar.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'tests/test_motorizacion_total.py']
 corrige: ['0224']
-relacionado: ['0323']
+relacionado: ['0323', '0328']
 ambito: 'Alcance de la interpretación del flujo de patentamientos'
 origen: 'Auditoría integral solicitada por Juan el 8 de septiembre de 2026'
 ---

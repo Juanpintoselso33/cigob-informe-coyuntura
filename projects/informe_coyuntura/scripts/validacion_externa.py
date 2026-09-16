@@ -139,7 +139,16 @@ COMPONENTES = {
     # ADR-0219: invertido, igual que informalidad y subocupacion_demandante.
     "trabajo_independiente":  ("trabajo_independiente", True, False, False),
     "inseguridad":            ("inseguridad", True, False, False),      # IVI mensual (ADR-0032)
+    # ADR-0327: SNIC por tipo, ANUAL — la `tasa_hechos` que ya calcula la
+    # fuente, con la base resolviendo sola al año 2023 (misma lógica que
+    # `itvc.rebase_de_serie` con BASE_MESES por defecto sobre una serie que
+    # sólo tiene un punto por año, en diciembre).
+    "tasa_homicidios":        ("tasa_homicidios", True, True, False),
+    "tasa_robos":             ("tasa_robos", True, True, False),
     "sentimiento_digital":    ("sentimiento_digital", True, False, False),  # ADR-0034
+    # ADR-0328: motos por cada auto patentado, móvil 12m (ya aplicado por el
+    # colector, no vuelve a pasar por MOVIL12), rebase normal invertido.
+    "ratio_motos_autos":      ("ratio_motos_autos", True, False, False),
 }
 # Bases DECLARADAS distintas del 4T-2023 (misma regla que publicar):
 BASES_PROPIAS = {"inseguridad": ("2024-01",)}   # base conservada; archivo 2023 recuperado en ADR-0273

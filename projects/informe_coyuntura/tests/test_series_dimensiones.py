@@ -237,10 +237,21 @@ def test_no_hay_arrastre_ni_interpolacion_en_la_capa_de_dimension():
             f"itvc/{dkey}: los meses publicados no son los que produce el motor")
     # ADR-0273 recuperó el archivo oficial 2023. La ausencia anterior era
     # del colector, no de la fuente: ahora diciembre tiene un dato verificable.
+    #
+    # ADR-0327 agregó `tasa_homicidios`/`tasa_robos` a esta dimensión: en
+    # 2023-12 los dos rebasean a exactamente 100 (es su propio año base), así
+    # que el punto de la dimensión deja de ser el índice de `inseguridad`
+    # solo y pasa a ser el promedio ponderado de los tres, con los mismos
+    # pesos vigentes de `itvc.DIMENSIONES_ITVC["seguridad"]`.
     seguridad = publicado["seguridad"]["serie"]
     raw = ve._mensual(ve.cargar_series()["inseguridad"])
     assert raw["2023-12"] == 27.8   # informe LICIP diciembre 2023
-    esperado = round(raw["2024-01"] / raw["2023-12"] * 100, 1)
+    indice_inseguridad = round(raw["2024-01"] / raw["2023-12"] * 100, 1)
+    pesos = itvc.DIMENSIONES_ITVC["seguridad"]["indicadores"]
+    esperado = round(
+        (indice_inseguridad * pesos["inseguridad"]
+         + 100.0 * pesos["tasa_homicidios"]
+         + 100.0 * pesos["tasa_robos"]) / sum(pesos.values()), 1)
     assert seguridad["2023-12"] == esperado
 
 

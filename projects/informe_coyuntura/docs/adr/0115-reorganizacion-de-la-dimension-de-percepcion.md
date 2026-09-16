@@ -6,7 +6,7 @@ fecha: 2026-07-20
 cinturon: 'vida'
 indicadores: [ingresos, percepcion, seguridad]
 continua: ['0110']
-relacionado: ['0214', '0222', '0314']
+relacionado: ['0214', '0222', '0314', '0327']
 ambito: 'ITVC · dimensiones `ingresos` · `percepcion` (nueva) · `seguridad` (nueva)'
 origen: 'Auditoría de Vida Cotidiana, punto 3.4, opción (b)'
 ---

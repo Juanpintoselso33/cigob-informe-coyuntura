@@ -6,7 +6,7 @@ fecha: 2026-09-15
 cinturon: 'vida'
 indicadores: [consumo_carne_vacuna, consumo_carnes_otras, consumo_carnes_total]
 archivos: ['scripts/itvc.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'scripts/gate_calidad.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'tests/test_carne_compuesto.py']
-relacionado: ['0153', '0216', '0217', '0224', '0325', '0326']
+relacionado: ['0153', '0216', '0217', '0224', '0325', '0326', '0328']
 ambito: 'ITCIS · componente de proteína animal · qué puntúa la carne'
 origen: 'Juan, Slack #monitor-de-proyecto-de-gobierno, 15-sep-2026: "en impacto social, sumar indicador carne vacuna por separado"'
 ---

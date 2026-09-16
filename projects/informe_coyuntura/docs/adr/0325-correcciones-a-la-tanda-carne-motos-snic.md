@@ -1,12 +1,14 @@
 ---
 madr: 4
 id: '0325'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'PARCIALMENTE SUPERSEDIDO por el [ADR-0327](0327-homicidios-y-robos-del-snic-puntuan-en-seguridad.md) el 16-sep-2026 en lo que hace a homicidios/robos: la decisión de que no puntúen se revierte. Las correcciones de la faena de carnes (`consumo_carne_vacuna`/`consumo_carnes_otras`) y el mecanismo de conservación por NOMBRE siguen vigentes sin cambios.'
 fecha: 2026-09-16
 cinturon: 'vida'
 indicadores: [consumo_carne_vacuna, consumo_carnes_otras, inseguridad]
 archivos: ['scripts/publicar.py', 'scripts/vida_cotidiana/collectors/snic.py', 'scripts/itvc.py', 'web/src/lib/fichas.ts', 'tests/test_carne_compuesto.py', 'tests/test_snic_homicidios.py']
 relacionado: ['0322', '0323', '0324']
+superado_por: ['0327']
 ambito: 'Correcciones a la tanda ADR-0322/0323/0324, encontradas por revisión adversarial'
 origen: 'Revisión adversarial del PR #31, 16-sep-2026'
 ---

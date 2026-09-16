@@ -315,8 +315,18 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   inseguridad: {
     que: "Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del LICIP (Universidad Di Tella) en 40 centros urbanos.",
-    aporta: "Recoge hechos de victimización declarados por los hogares, incluidos casos no denunciados. Sigue sujeto a cobertura, recuerdo y error muestral de la encuesta. Las denuncias registradas se ofrecen como contraste; sus diferencias de universo impiden tratarlas como mediciones intercambiables.",
+    aporta: "Recoge hechos de victimización declarados por los hogares, incluidos casos no denunciados. Sigue sujeto a cobertura, recuerdo y error muestral de la encuesta. Comparte dimensión con `tasa_homicidios` y `tasa_robos` (SNIC): son complementarios, no redundantes — este capta la cifra negra pero no distingue tipo de delito.",
     frecuencia: "Mensual (encuesta)", tipo: "Nivel (%)",
+  },
+  tasa_homicidios: {
+    que: "Homicidios dolosos cada 100.000 habitantes, tasa YA CALCULADA por el SNIC (Ministerio de Seguridad) sobre su registro anual de denuncias, serie oficial 2000-2025.",
+    aporta: "Es el tipo de delito con menos subregistro del desglose —hay un cuerpo, así que casi no depende de que alguien denuncie— y complementa al IVI (`inseguridad`), que es mensual pero no distingue tipo de delito. Es anual, con ~8,5 meses de rezago desde el cierre del año.",
+    frecuencia: "Anual (~8,5 meses de rezago)", tipo: "Tasa cada 100.000 hab. · índice base-100 en el gráfico",
+  },
+  tasa_robos: {
+    que: "Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa YA CALCULADA por el SNIC. Es el equivalente del SNIC a lo que suele llamarse «rapiña».",
+    aporta: "A diferencia de los homicidios, depende de que la víctima denuncie. La tasa 2025 (778,1) cae 22,4% contra 2024 sin un evento conocido que lo explique, y el patrón —Hurtos cae parecido mientras Robos agravados SUBE el mismo año— no se pudo confirmar ni descartar contra un informe metodológico público del SNIC: se publica el dato oficial con esta limitación declarada.",
+    frecuencia: "Anual (~8,5 meses de rezago)", tipo: "Tasa cada 100.000 hab. · índice base-100 en el gráfico",
   },
   icc_utdt: {
     que: "El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor, UTDT). Ya NO puntúa en el ITCIS: salió del índice en ADR-0314 porque un indicador no puede ser componente y juez del mismo índice a la vez. Pasó a ser el ANCLA de validación externa del ITCIS —el mismo rol que cumple el Índice Líder para el ITCM—, así que ahora se lo contrasta contra el índice en vez de promediarse adentro.",
@@ -332,6 +342,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     que: "Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de doce meses. En el ITCIS se compara contra el promedio del 4º trimestre de 2023.",
     aporta: "Mide patentamientos totales por habitante y muestra la composición entre autos y motos. Es un proxy de consumo durable: el registro no distingue primeras compras, reposición, flotas ni sustitución entre vehículos de un mismo hogar.",
     frecuencia: "Mensual (primeros días del mes siguiente)", tipo: "Nivel per cápita · índice base-100 en el gráfico",
+  },
+  ratio_motos_autos: {
+    que: "Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. Puntúa INVERTIDO: más motos por auto es deterioro.",
+    aporta: "Aísla la COMPOSICIÓN del flujo de patentamientos que la motorización total mide en NIVEL: un total que crece mientras este ratio también sube dice que el crecimiento viene de la moto —el vehículo más barato— y no de una mejora pareja. La polaridad es una decisión de contenido, no un hecho aritmético.",
+    frecuencia: "Mensual (primeros días del mes siguiente)", tipo: "Cociente (motos/auto) · índice base-100 en el gráfico",
   },
   patentamiento_motos: {
     que: "Cuántas motos se patentan en el mes.",

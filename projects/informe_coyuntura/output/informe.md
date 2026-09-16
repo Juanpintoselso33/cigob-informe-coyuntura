@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-16 02:51:10"
+generado: "2026-09-16 02:58:35"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -10,11 +10,11 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-09
 
-**Score global:** 3.8/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.4/10)
+**Score global:** 3.8/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.3/10)
 
 ## Cinturones
 
-### 🟡 Macro — score 3.7/10 (en_tension)
+### 🟡 Macro — score 3.6/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -26,7 +26,6 @@ schema_version: "1.2.0"
 | emae_ia | 2.69 | % i.a. | 2026-06-01 | fresco |
 | emae_difusion | 80.0 | % de sectores en crecimiento i.a. | 2026-06-01 | fresco |
 | ipi_manufacturero | -2.82 | % i.a. (promedio 3 meses) | 2026-07-01 | fresco |
-| actividad_tributaria | -5.41 | % i.a. real (compuesto IVA-DGI/cheque) | 2026-08-01 | fresco |
 | saldo_comercial_12m | 23731.0 | Millones de USD (acum. 12 meses) | 2026-07-01 | fresco |
 | recaudacion | 91.3 | índice (100 = 4T-2023) | 2026-08-01 | fresco |
 | tcrm | 85.53 | Índice (base dic-2015=100) | 2026-08-01 | fresco |
@@ -77,7 +76,7 @@ schema_version: "1.2.0"
 |---|---|---|---|---|---|
 | judicializacion | 1.69 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
 
-### 🔴 Vida Cotidiana — score 6.4/10 (tensionado)
+### 🔴 Vida Cotidiana — score 6.3/10 (tensionado)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -124,4 +123,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-16 02:51:10 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-16 02:58:35 — schema 1.2.0*

@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Impacto social — resumen
 
-Este documento tiene una ficha por indicador — son 18 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 21 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,18 +35,18 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 93,1** | **NARANJA** | Deterioro moderado frente a las referencias | 18 indicadores: 5 en verde · 3 en amarillo · 6 en naranja · 4 en rojo |
-Componentes que puntúan en este corte: 18 de 18 publicados.
+| **ITCIS: 93,4** | **NARANJA** | Deterioro moderado frente a las referencias | 21 indicadores: 7 en verde · 3 en amarillo · 7 en naranja · 4 en rojo |
+Componentes que puntúan en este corte: 21 de 21 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
-| Ingresos y consumo | Si el sueldo alcanza y qué compra. | 112,1 | VERDE | 28,1 % |
+| Ingresos y consumo | Si el sueldo alcanza y qué compra. | 111,4 | VERDE | 28,1 % |
 | Presión de precios | Tres gastos sensibles. | 98,3 | AMARILLO | 25,0 % |
 | Prospectivas de empleo | Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el… | 91,8 | NARANJA | 24,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,8 | ROJO | 10,0 % |
-| Seguridad | Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. | 104,8 | AMARILLO | 4,5 % |
+| Seguridad | Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. | 115,9 | VERDE | 4,5 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -61,12 +61,13 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCIS |
 |---|---|---|---|---|
 | **DIMENSIÓN: Ingresos y consumo** | | | | |
-| Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,84 canastas (RIPTE/CBT) | VERDE | 14,6 % |
+| Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,84 canastas (RIPTE/CBT) | VERDE | 14,2 % |
 | Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de SAGYP. | 46,75 kg/hab/año | NARANJA | 0,5 % |
-| Consumo de carne aviar y porcina per cápita | Consumo aparente por habitante de carne aviar y porcina combinadas, en promedio móvil de doce meses, según el tablero… | 67,19 kg/hab/año | AMARILLO | 0,5 % |
-| Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,3 % de personas | VERDE | 8,0 % |
-| Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 31,25 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 1,0 % |
-| Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 82,1 índice (2017 = 100, desestacionalizado) | NARANJA | 6,1 % |
+| Consumo de carne aviar y porcina per cápita | Consumo aparente por habitante de carne aviar y porcina combinadas, en promedio móvil de doce meses, según el tablero… | 67,19 kg/hab/año | AMARILLO | 0,4 % |
+| Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,3 % de personas | VERDE | 7,8 % |
+| Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 31,25 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
+| Ratio motos/autos | Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. | 1,48 motos por cada auto patentado (móvil 12m) | NARANJA | 0,8 % |
+| Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 82,1 índice (2017 = 100, desestacionalizado) | NARANJA | 6,0 % |
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % m/m | VERDE | 9,5 % |
 | Canasta de servicios públicos / salario | Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar… | 14,5 % del salario RIPTE | VERDE | 12,3 % |
@@ -82,7 +83,9 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,41 % de la cartera en situación irregular | ROJO | 7,6 % |
 | Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | ROJO | 3,3 % |
 | **DIMENSIÓN: Seguridad** | | | | |
-| Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 4,9 % |
+| Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 2,9 % |
+| Tasa de homicidios dolosos | Homicidios dolosos cada 100.000 habitantes, tasa YA CALCULADA por el SNIC (Ministerio de Seguridad) sobre su registro… | 3,48 homicidios dolosos cada 100.000 hab. | VERDE | 1,2 % |
+| Tasa de robos | Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa YA CALCULADA por el SNIC. | 778,1 robos (excl. agravados) cada 100.000 hab. | VERDE | 0,7 % |
 
 *Datos al 2026-09-16.*
 
@@ -100,7 +103,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 3,84 canastas (RIPTE/CBT)** (2026-07) | **VERDE** | Peso efectivo 14,6 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 3,84 canastas (RIPTE/CBT)** (2026-07) | **VERDE** | Peso efectivo 14,2 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -154,13 +157,13 @@ El componente está en 111,6 sobre la base 100 del 4º trimestre de 2023 — 105
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 14,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 14,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - El RIPTE cubre solo asalariados formales estables: deja afuera a informales y cuentapropistas; la canasta es por adulto equivalente.
 - El RIPTE mide remuneración imponible, con tope y sin conceptos no remunerativos: no es ingreso de bolsillo. La CBT corresponde al Gran Buenos Aires. El cociente expresa canastas por adulto equivalente, no canastas familiares ni capacidad de compra observada de todos los hogares.
-- El peso del componente (13,38% del índice) es una discusión abierta declarada del diseño.
+- El peso del componente (13,04% del índice) es una discusión abierta declarada del diseño.
 - Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.
 
 ## Si falta el dato / Política de revisiones
@@ -551,7 +554,7 @@ Consumo aparente por habitante de carne aviar y porcina combinadas, en promedio 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 67,19 kg/hab/año** (2026-07) | **AMARILLO** | Peso efectivo 0,5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 67,19 kg/hab/año** (2026-07) | **AMARILLO** | Peso efectivo 0,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -606,7 +609,7 @@ Consumo aparente de aviar y porcina: 67,2 kg por habitante y año, el 59,0% del 
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCIS: 0,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1178,7 +1181,7 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 27,3 % de hogares víctimas (últimos 12 meses)** (2026-07) | **AMARILLO** | Peso efectivo 4,9 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 27,3 % de hogares víctimas (últimos 12 meses)** (2026-07) | **AMARILLO** | Peso efectivo 2,9 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1194,7 +1197,7 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 
 Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del LICIP (Universidad Di Tella) en 40 centros urbanos.
 
-Recoge hechos de victimización declarados por los hogares, incluidos casos no denunciados. Sigue sujeto a cobertura, recuerdo y error muestral de la encuesta. Las denuncias registradas se ofrecen como contraste; sus diferencias de universo impiden tratarlas como mediciones intercambiables.
+Recoge hechos de victimización declarados por los hogares, incluidos casos no denunciados. Sigue sujeto a cobertura, recuerdo y error muestral de la encuesta. Comparte dimensión con `tasa_homicidios` y `tasa_robos` (SNIC): son complementarios, no redundantes — este capta la cifra negra pero no distingue tipo de delito.
 
 **Dimensión que integra — Seguridad.** Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. Describe victimización reportada, con sus límites muestrales y de recuerdo; no es un censo de delitos ni una medida de sensación de inseguridad.
 
@@ -1232,14 +1235,14 @@ El componente está en 104,8 sobre la base 100 del 4º trimestre de 2023 — de 
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCIS: 4,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 2,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - La auditoría del 8-sep-2026 recuperó informes de 2020–2023, incluido el 4º trimestre de 2023: la afirmación anterior de suspensión era incorrecta. Se mantiene explícita la base de enero de 2024; una eventual armonización con 4T-2023 requiere documentar su efecto sobre el índice (ADR-0273).
 - Error muestral de ±3 puntos por mes (~1.000 hogares) y cobertura solo urbana.
 - La divergencia con el registro de denuncias requiere contrastar universos, períodos y error muestral: por sí sola no demuestra crecimiento del delito no denunciado.
-- El contraste SNIC (registro oficial de delitos) es ANUAL, con ~8,5 meses de rezago desde el cierre del año, y no puntúa: es contexto declarado en el detalle, no un segundo componente del índice.
+- El SNIC (registro oficial de delitos) sigue apareciendo como contraste por tipo en el detalle, además de puntuar por separado como `tasa_homicidios` y `tasa_robos` desde ADR-0327.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1259,6 +1262,189 @@ Ponderación vigente en el ITCIS: 4,9 % efectivo. El color es una lectura adicio
 
 **2026-09-16** — ADR-0325/0324: el desglose del SNIC por tipo de delito (homicidios, robos, hurtos, etc.), que se descargaba pero se quedaba en el snapshot interno del colector, se suma al contraste SNIC del detalle. Se restituyen Amenazas y Lesiones dolosas a la lista de tipos conservados.
 
+**2026-09-16** — ADR-0327 revierte a ADR-0324/0325: el argumento de que el SNIC «es anual, no puede puntuar en un tablero mensual» era falso — el snapshot ya tenía cinco indicadores vigentes con 243-244 días de rezago del dato. Entran `tasa_homicidios` y `tasa_robos` como componentes propios de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. El peso interno de este indicador baja de 100% a 59,5% (2,68% del ITCIS).
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
+
+# Tasa de homicidios dolosos
+
+Homicidios dolosos cada 100.000 habitantes, tasa YA CALCULADA por el SNIC (Ministerio de Seguridad) sobre su registro anual de denuncias, serie oficial 2000-2025.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: 3,48 homicidios dolosos cada 100.000 hab.** (2025-12) | **VERDE** | Peso efectivo 1,2 % del ITCIS | Cinturón Impacto social |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | tasa_homicidios | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | homicidios dolosos cada 100.000 hab. |
+| **SERIE DISPONIBLE** | 2000-12 → 2025-12 (26 puntos) | **REZAGO DE PUBLICACIÓN** | ANUAL, con ~8,5 meses de rezago desde el cierre del año: el CSV del año N aparece bien entrado N+1 (el de 2025 se verificó disponible el 16-sep-2026). Mismo ciclo que `iaf_transferencias`/`velocidad_resolucion`, que también son anuales con `fecha_dato` al 31 de diciembre. |
+| **PRODUCTOR DEL DATO** | SNIC — Sistema Nacional de Información Criminal, Ministerio de Seguridad | **OPERACIÓN ESTADÍSTICA** | Homicidios dolosos, tasa cada 100.000 habitantes YA CALCULADA por la fuente (columna `tasa_hechos` de snic-pais.csv, filtrada por `codigo_delito_snic_nombre = "Homicidios dolosos"`). No se reconstruye con población propia. |
+| **MODO DE ACCESO** | Automático: CSV público sin credenciales. Con store persistente en `data/vida/snic_serie.json`: el host cae por días enteros y cada refresco exitoso pisa la serie completa porque la fuente revisa retroactivamente. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-09-16 |
+
+## Definición — qué mide y por qué importa
+
+Homicidios dolosos cada 100.000 habitantes, tasa YA CALCULADA por el SNIC (Ministerio de Seguridad) sobre su registro anual de denuncias, serie oficial 2000-2025.
+
+Es el tipo de delito con menos subregistro del desglose —hay un cuerpo, así que casi no depende de que alguien denuncie— y complementa al IVI (`inseguridad`), que es mensual pero no distingue tipo de delito. Es anual, con ~8,5 meses de rezago desde el cierre del año.
+
+**Dimensión que integra — Seguridad.** Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. Describe victimización reportada, con sus límites muestrales y de recuerdo; no es un censo de delitos ni una medida de sensación de inseguridad.
+
+## Método de cómputo
+
+- Ninguna sobre el dato: la tasa cada 100.000 habitantes la calcula el SNIC.
+- Componente del índice: la tasa rebaseada de forma invertida (menos homicidios = mejora) contra la MEDIANA de los 26 años de la serie (5,76), no contra un año puntual — corregido tras revisión adversarial (ver «Ancla» abajo).
+
+## Semáforo — valores que determinan el color
+
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+
+**Valores que definen cada color**
+
+| Rango (índice base 100 = 4º trim. 2023) | Color |
+|---|---|
+| 105 o más | VERDE |
+| de 95 a 105 | AMARILLO |
+| de 85 a 95 | NARANJA |
+| menos de 85 | ROJO |
+
+Este componente está hoy en **140**.
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- El informe publica el valor (3,48 homicidios dolosos cada 100.000 hab.) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+
+## Color vigente y por qué
+
+Dato vigente: 3,48 homicidios dolosos cada 100.000 hab. (2025-12).
+
+El componente está en 140 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo y el semáforo ya no distingue mejoras.
+
+**Color vigente: VERDE**
+
+Ponderación vigente en el ITCIS: 1,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+## Transparencia — limitaciones declaradas
+
+- Anual con ~8,5 meses de rezago: el color de esta card puede describir un año que ya terminó hace tiempo. El tope de frescura (560 días) lo declara así en vez de marcarlo como atrasado todos los meses.
+- Es un registro de hechos conocidos por la Justicia o la policía, no una encuesta: cambios en la persecución penal o en el registro administrativo pueden mover la tasa sin que cambie la violencia real, aunque el homicidio es el delito con menor margen para ese efecto.
+- La serie es NACIONAL: no distingue provincias ni tipos de arma, vínculo o contexto del hecho.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Con el host de cloud-snic caído, la serie sale del store persistente (`data/vida/snic_serie.json`) con su fecha de último refresco declarada; sin componente, renormalización dentro de la dimensión de seguridad.
+
+- **Política de revisiones:** El CSV oficial se revisa retroactivamente y cada refresco exitoso pisa la serie completa (mismo criterio que `inseguridad_snic`).
+
+## Historial — cambios metodológicos documentados
+
+**2026-09-15** — ADR-0324: homicidios se conserva por NOMBRE en `tipos_principales`, dentro del desglose SNIC que sólo alimenta el contraste de `inseguridad` — no puntúa.
+
+**2026-09-16** — ADR-0327 revierte a ADR-0324/0325: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. 25,5% interno de la dimensión (1,15% del ITCIS).
+
+**2026-09-16** — Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» a la mediana de los 26 años — la afirmación de que 2023 caía «cerca de la mediana» era falsa (percentil 11, no ~50).
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
+
+# Tasa de robos
+
+Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa YA CALCULADA por el SNIC. Es el equivalente del SNIC a lo que suele llamarse «rapiña».
+
+| | | | |
+|---|---|---|---|
+| **Hoy: 778,1 robos (excl. agravados) cada 100.000 hab.** (2025-12) | **VERDE** | Peso efectivo 0,7 % del ITCIS | Cinturón Impacto social |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | tasa_robos | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | robos (excl. agravados) cada 100.000 hab. |
+| **SERIE DISPONIBLE** | 2000-12 → 2025-12 (26 puntos) | **REZAGO DE PUBLICACIÓN** | ANUAL, ~8,5 meses de rezago. Ver `tasa_homicidios`: mismo ciclo, mismo tope de 560 días. |
+| **PRODUCTOR DEL DATO** | SNIC — Sistema Nacional de Información Criminal, Ministerio de Seguridad | **OPERACIÓN ESTADÍSTICA** | Robos que excluyen los agravados por el resultado de lesiones o muertes, tasa cada 100.000 habitantes YA CALCULADA por la fuente (columna `tasa_hechos`, filtrada por `codigo_delito_snic_nombre = "Robos (excluye los agravados por el resultado de lesiones y/o muertes)"`). |
+| **MODO DE ACCESO** | Automático: mismo store persistente que `tasa_homicidios`. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-09-16 |
+
+## Definición — qué mide y por qué importa
+
+Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa YA CALCULADA por el SNIC. Es el equivalente del SNIC a lo que suele llamarse «rapiña».
+
+A diferencia de los homicidios, depende de que la víctima denuncie. La tasa 2025 (778,1) cae 22,4% contra 2024 sin un evento conocido que lo explique, y el patrón —Hurtos cae parecido mientras Robos agravados SUBE el mismo año— no se pudo confirmar ni descartar contra un informe metodológico público del SNIC: se publica el dato oficial con esta limitación declarada.
+
+**Dimensión que integra — Seguridad.** Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. Describe victimización reportada, con sus límites muestrales y de recuerdo; no es un censo de delitos ni una medida de sensación de inseguridad.
+
+## Método de cómputo
+
+- Ninguna sobre el dato: la tasa la calcula el SNIC.
+- Componente del índice: la tasa rebaseada de forma invertida contra la MEDIANA de los 26 años de la serie (925,1), no contra un año puntual — mismo mecanismo corregido que `tasa_homicidios`.
+
+## Semáforo — valores que determinan el color
+
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+
+**Valores que definen cada color**
+
+| Rango (índice base 100 = 4º trim. 2023) | Color |
+|---|---|
+| 105 o más | VERDE |
+| de 95 a 105 | AMARILLO |
+| de 85 a 95 | NARANJA |
+| menos de 85 | ROJO |
+
+Este componente está hoy en **118,9**.
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin evento conocido que lo explique; Hurtos cae en proporción similar (−17,4%) mientras Robos agravados por el resultado de lesiones/muertes SUBE 45,5% el mismo año. El patrón es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025 y no se pudo confirmar ni descartar contra un informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada.
+
+## Color vigente y por qué
+
+Dato vigente: 778,1 robos (excl. agravados) cada 100.000 hab. (2025-12).
+
+El componente está en 118,9 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
+
+**Color vigente: VERDE**
+
+Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+## Transparencia — limitaciones declaradas
+
+- Depende de la denuncia: a diferencia del homicidio, un robo no denunciado no entra a esta serie. El IVI (`inseguridad`) es el componente del cinturón que sí capta la cifra negra, y por eso pesa más en la dimensión.
+- LA CAÍDA DE 2025 NO ESTÁ EXPLICADA, Y EL COLOR VERDE DE ESTA CARD DESCANSA SOBRE ELLA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada (ADR-0327), no se lo corrige ni se lo omite — pero el lector de la card, no sólo el de esta ficha, tiene que poder verla.
+- Anual con ~8,5 meses de rezago, igual que `tasa_homicidios`.
+- Serie NACIONAL, sin apertura provincial ni por modalidad (arma, vía pública, vivienda).
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Mismo store persistente que `tasa_homicidios`; sin componente, renormalización dentro de la dimensión de seguridad.
+
+- **Política de revisiones:** El CSV oficial se revisa retroactivamente y cada refresco exitoso pisa la serie completa.
+
+## Historial — cambios metodológicos documentados
+
+**2026-09-15** — ADR-0324/0325: robos se conserva por NOMBRE en `tipos_principales`, sólo como contraste de `inseguridad` — no puntúa.
+
+**2026-09-16** — ADR-0327 revierte a ADR-0324/0325: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula, y con la limitación de la caída de 2025 declarada en la ficha. 15% interno de la dimensión (0,68% del ITCIS).
+
+**2026-09-16** — Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» (percentil 69, sesgaba a verde) a la mediana de los 26 años.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -1273,7 +1459,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 31,3 % de personas** (2026-08) | **VERDE** | Peso efectivo 8 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 31,3 % de personas** (2026-08) | **VERDE** | Peso efectivo 7,8 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1327,7 +1513,7 @@ El componente está en 128,1 sobre la base 100 del 4º trimestre de 2023 — 105
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 7,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1362,7 +1548,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 31,25 vehículos 0km por cada 1.000 habitantes (12 meses)** (2026-08) | **VERDE** | Peso efectivo 1 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 31,25 vehículos 0km por cada 1.000 habitantes (12 meses)** (2026-08) | **VERDE** | Peso efectivo 0,9 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1419,7 +1605,7 @@ Más patentamientos y mayor participación de motos: en los últimos doce meses 
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1451,6 +1637,99 @@ Ponderación vigente en el ITCIS: 1 % efectivo. El color es una lectura adiciona
 
 **2026-09-15** — Se agrega el ratio motos/autos a la composición publicada (ADR-0323), pedido explícito de Juan como control de lectura. No cambia el puntaje, el peso ni la card: es una magnitud más dentro de la misma matriz.
 
+**2026-09-16** — ADR-0328 revierte a ADR-0323: el ratio deja de ser una magnitud colgada de esta card y pasa a puntuar como indicador propio (`ratio_motos_autos`), con 2,5% de la dimensión de ingresos y consumo cedido proporcionalmente por los siete componentes que ya había. No cambia el cálculo ni el peso de ESTE indicador.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
+
+# Ratio motos/autos
+
+Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. Puntúa INVERTIDO: más motos por auto es deterioro.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: 1,48 motos por cada auto patentado (móvil 12m)** (2026-08) | **NARANJA** | Peso efectivo 0,8 % del ITCIS | Cinturón Impacto social |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | ratio_motos_autos | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | motos por cada auto patentado (móvil 12m) |
+| **SERIE DISPONIBLE** | 2007-12 → 2026-08 (225 puntos) | **REZAGO DE PUBLICACIÓN** | Mismo calendario que `motorizacion_total`: menos de un mes, el registro publica cada mes en los primeros días del siguiente. |
+| **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de motovehículos dividido inscripciones iniciales de automotores (0 kilómetro), acumulado móvil de 12 meses, sin Tierra del Fuego. Mismo colector y misma descarga que `motorizacion_total`. |
+| **MODO DE ACCESO** | Automático: CSV abierto sin credenciales, descubierto por catálogo en cada corrida. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-16 |
+
+## Definición — qué mide y por qué importa
+
+Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. Puntúa INVERTIDO: más motos por auto es deterioro.
+
+Aísla la COMPOSICIÓN del flujo de patentamientos que la motorización total mide en NIVEL: un total que crece mientras este ratio también sube dice que el crecimiento viene de la moto —el vehículo más barato— y no de una mejora pareja. La polaridad es una decisión de contenido, no un hecho aritmético.
+
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
+
+## Método de cómputo
+
+- Motos acumuladas en 12 meses dividido autos acumulados en 12 meses (mismas ventanas móviles que `motorizacion_total`, para sacar la estacionalidad fuerte de los dos flujos).
+- Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023, INVERTIDO — más motos por cada auto es DETERIORO. La distancia a 100 se amortigua a la mitad antes de leerse en la escala de tensión (ver «Ancla y amortiguación» abajo).
+
+## Semáforo — valores que determinan el color
+
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+
+**Valores que definen cada color**
+
+| Rango (índice base 100 = 4º trim. 2023) | Color |
+|---|---|
+| 105 o más | VERDE |
+| de 95 a 105 | AMARILLO |
+| de 85 a 95 | NARANJA |
+| menos de 85 | ROJO |
+
+Este componente está hoy en **86**.
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- Más motos por auto se lee como DETERIORO: la motorización total cuenta todo patentamiento como señal positiva sin distinguir de qué vehículo viene, y este ratio existe para detectar que ese crecimiento sea un corrimiento hacia la moto y no una mejora pareja.
+
+## Color vigente y por qué
+
+Dato vigente: 1,48 motos por cada auto patentado (móvil 12m) (2026-08).
+
+El componente está en 86 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
+
+**Color vigente: NARANJA**
+
+Ponderación vigente en el ITCIS: 0,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+## Transparencia — limitaciones declaradas
+
+- Hereda las limitaciones de `motorizacion_total`: es un flujo de altas (no el parque circulante), no pondera por precio ni gama, y la inscripción es del registro seccional, no necesariamente de donde vive el comprador.
+- El registro no identifica hogares ni sus vehículos previos: un ratio que sube es compatible con sustitución (bajar de auto a moto) y con que hogares nuevos entren al mercado comprando directamente una moto. El ratio no distingue esos dos casos, sólo la composición agregada.
+- Es un proxy de composición del consumo durable, no de bienestar general.
+- El factor de amortiguación (0,5) es una corrección de escala, no de dato: comprime cuánto mueve la TENSIÓN mostrada un mismo cambio porcentual, no cambia el signo ni el sentido de la lectura.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Mismo colector que `motorizacion_total`: el colector levanta excepción ante cualquier cambio de forma de la fuente en vez de publicar una serie recortada. Con la fuente caída, la card mantiene el último valor como desactualizado.
+
+- **Política de revisiones:** Los dos archivos de la DNRPA publican su histórico completo y se releen enteros en cada corrida.
+
+## Historial — cambios metodológicos documentados
+
+**2026-09-15** — Nace como magnitud colgada de la card de `motorizacion_total` (ADR-0323): control de lectura pedido por Juan, sin puntaje propio.
+
+**2026-09-16** — Corrección post-merge (revisión adversarial): se amortigua la distancia a 100 a la mitad (factor 0,5) porque el índice nacía saturado en el extremo de la escala con apenas +38,8% de crecimiento sobre la base; se declara la auto-cancelación medida contra `motorizacion_total` (r=+0,40 en niveles, r=−0,251 en la matriz de redundancia) y se cita ADR-0321 como precedente de encuadre.
+
+**2026-09-16** — ADR-0328 revierte a ADR-0323: pasa a puntuar como indicador propio, con card, ficha y peso propios (2,5% interno de la dimensión de ingresos y consumo · 0,7% del ITCIS). Polaridad confirmada por el usuario: más motos por auto es deterioro.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -1465,7 +1744,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 82,1 índice (2017 = 100, desestacionalizado)** (2026-06) | **NARANJA** | Peso efectivo 6,1 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 82,1 índice (2017 = 100, desestacionalizado)** (2026-06) | **NARANJA** | Peso efectivo 6 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1520,7 +1799,7 @@ El componente está en 90,1 sobre la base 100 del 4º trimestre de 2023 — de 8
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCIS: 6,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 

@@ -40,10 +40,23 @@ TIPOS_RELEVANTES = (
 )
 
 
+def _num_ar(texto: str) -> float:
+    """El CSV del SNIC usa coma decimal dentro de columnas separadas por ';'
+    (`tasa_hechos` llega como "7,2270207", no "7.2270207"). `cantidad_hechos`
+    no lo necesita —son enteros sin coma— pero `tasa_hechos` sí, y la fuente
+    ya la trae calculada: no se recalcula con población propia (ADR-0327)."""
+    return float((texto or "0").replace(",", "."))
+
+
 def _parse_snic_csv(content: bytes) -> dict:
     """
     Parsea el CSV del SNIC nacional.
-    Devuelve el total de hechos del ultimo anio disponible y desglose por tipo.
+    Devuelve el total de hechos del ultimo anio disponible, el desglose por
+    tipo y, para los tipos de TIPOS_RELEVANTES, la SERIE COMPLETA de
+    `tasa_hechos` (cada 100.000 habitantes, ya calculada por la fuente) en
+    todos los años que trae el CSV — no sólo el último (ADR-0327: es lo que
+    permite anclar `tasa_homicidios`/`tasa_robos` contra la propia historia
+    de 26 años, sin inventar una referencia externa).
     """
     import csv
     text = content.decode("utf-8", errors="replace")
@@ -57,6 +70,7 @@ def _parse_snic_csv(content: bytes) -> dict:
 
     # Agrupar por anio
     por_anio: dict[str, dict] = {}
+    tasas_por_tipo: dict[str, dict[str, float]] = {}
     for row in rows:
         anio = row.get("anio") or row.get("year") or row.get("Anio") or ""
         if not anio:
@@ -70,6 +84,8 @@ def _parse_snic_csv(content: bytes) -> dict:
         ))
         por_anio[anio]["total_hechos"] += hechos
         por_anio[anio]["tipos"][tipo] = por_anio[anio]["tipos"].get(tipo, 0) + hechos
+        if tipo in TIPOS_RELEVANTES and row.get("tasa_hechos"):
+            tasas_por_tipo.setdefault(tipo, {})[anio] = round(_num_ar(row["tasa_hechos"]), 4)
 
     ultimo_anio = max(por_anio.keys()) if por_anio else None
 
@@ -117,6 +133,11 @@ def _parse_snic_csv(content: bytes) -> dict:
         "tipos_principales": dict(
             sorted(principales.items(), key=lambda x: -x[1])
         ),
+        # ADR-0327: series completas de tasa_hechos (26 años) para los dos
+        # tipos que puntúan como indicador propio. Se guardan por nombre y no
+        # sólo el último año porque `descargar_series.py` las usa para anclar
+        # `tasa_homicidios`/`tasa_robos` contra su propia historia.
+        "tasas_por_tipo": tasas_por_tipo,
     }
 
 

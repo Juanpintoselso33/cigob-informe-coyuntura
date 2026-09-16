@@ -1,12 +1,14 @@
 ---
 madr: 4
 id: '0324'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'PARCIALMENTE SUPERSEDIDO por el [ADR-0327](0327-homicidios-y-robos-del-snic-puntuan-en-seguridad.md) el 16-sep-2026: la decisión de que homicidios/robos NO puntúen se revierte (pasan a puntuar). El mecanismo que este ADR fija —conservar el desglose por NOMBRE en `tipos_principales`, no por ranking de volumen— sigue vigente y es la fuente de la que ADR-0327 toma los dos tipos que puntúan.'
 fecha: 2026-09-15
 cinturon: 'vida'
 indicadores: [inseguridad_snic]
 archivos: ['scripts/vida_cotidiana/collectors/snic.py']
 relacionado: ['0032', '0325']
+superado_por: ['0327']
 ambito: 'Contraste anual del IVI · SNIC · qué tipos de delito se conservan del desglose'
 origen: 'Juan, Slack #monitor-de-proyecto-de-gobierno, 15-sep-2026: "para seguridad, buscar datos de homicidios y rapiñas"'
 ---

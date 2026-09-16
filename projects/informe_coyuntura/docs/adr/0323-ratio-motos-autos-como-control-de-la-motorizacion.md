@@ -1,12 +1,14 @@
 ---
 madr: 4
 id: '0323'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'SUPERSEDIDO por el [ADR-0328](0328-ratio-motos-autos-puntua-como-indicador-propio.md) el 16-sep-2026: el ratio deja de ser una magnitud colgada sin puntaje y pasa a puntuar como indicador propio.'
 fecha: 2026-09-15
 cinturon: 'vida'
 indicadores: [motorizacion_total]
 archivos: ['scripts/vida_cotidiana/collectors/motorizacion.py', 'scripts/publicar.py', 'web/src/lib/fichas.ts']
 relacionado: ['0223', '0224', '0271', '0325']
+superado_por: ['0328']
 ambito: 'ITCIS · `motorizacion_total` · magnitud de control dentro de la card, no indicador nuevo'
 origen: 'Juan, Slack #monitor-de-proyecto-de-gobierno, 15-sep-2026: "para controlar pongamos ratio de motos/autos"'
 ---
