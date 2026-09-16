@@ -390,6 +390,7 @@ fecha,indicador,valor,unidad,fuente
 2023-03-01,motorizacion_total,95.1,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
 2023-02-01,motorizacion_total,94.2,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
 2023-01-01,motorizacion_total,94.1,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2026-06-01,mortalidad_pymes,460165,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
 2026-05-01,mortalidad_pymes,460777,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
 2026-04-01,mortalidad_pymes,462918,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
 2026-03-01,mortalidad_pymes,464922,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
@@ -1156,7 +1157,7 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,icc_utdt,40.5,índice,"UTDT (ICC, serie XLS)"
 2021-08-01,icc_utdt,39.8,índice,"UTDT (ICC, serie XLS)"
 2021-07-01,icc_utdt,37.9,índice,"UTDT (ICC, serie XLS)"
-2026-09-01,endeudamiento_familiar,43.75,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-09-01,endeudamiento_familiar,43.74,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-08-01,endeudamiento_familiar,47.24,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-07-01,endeudamiento_familiar,47.12,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-06-01,endeudamiento_familiar,47.3,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)

@@ -2973,22 +2973,23 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa.",
     },
     transformaciones: [
-      "Componente del índice: el ICC rebaseado a 100 = promedio del 4º trimestre de 2023 (más confianza = mejora).",
+      "YA NO puntúa (ADR-0314): hasta el 15-sep-2026 era componente del ITCIS (ICC rebaseado a 100 = promedio del 4º trimestre de 2023). Salió del cálculo y `validacion_externa.py` lee su serie cruda, sin rebasear acá.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de confianza y percepción (100% interno · 8,25% del ITCIS): desde agosto de 2026 es su único componente, porque `sentimiento_digital` salió del índice (ADR-0248) y liberó su peso.",
+      "No integra el ITCIS. Pertenecía a la dimensión de confianza y percepción (100% interno · 8,25% del ITCIS) hasta ADR-0314; con `sentimiento_digital` suspendido desde ADR-0248, esa dimensión se quedó sin ningún componente activo y su peso nominal se redistribuye entre las cinco dimensiones restantes, según la tabla de pesos vigente del índice.",
     ],
-    dobleUso: "Doble función declarada: (1) componente del ITCIS; (2) contraste discriminante entre condiciones materiales y percepción, recalculando el ITCIS sin ICC. El panel externo es la validación vigente; el ICC no es evidencia independiente del índice que lo contiene. El antiguo cinturón espíritu de época quedó fuera del tablero (ADR-0205).",
+    dobleUso: "Un indicador no puede ser componente y juez del mismo índice (ADR-0314, la misma regla que sacó al Índice Líder del ITCM en ADR-0154). Por eso el ICC dejó de componer el ITCIS y pasó a ser su ANCLA de validación externa: se contrasta el ITCIS completo contra el ICC en niveles y diferencias. El antiguo cinturón espíritu de época quedó fuera del tablero (ADR-0205).",
     limitaciones: [
-      "Mide percepción y ánimo, no condiciones materiales: convive con medidas de conducta en otras dimensiones del ITCIS.",
+      "Mide percepción y ánimo, no condiciones materiales: la correlación contra el ITCIS es discriminante (¿la percepción sigue a las condiciones materiales?), no una confirmación de que el índice deba parecerse al ICC.",
       "Depende del formato de publicación de la universidad: un cambio en el listado o la planilla interrumpe la lectura hasta adaptarla.",
     ],
-    faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
+    faltantes: "Se mantiene el último valor publicado como desactualizado; ya no participa de ninguna renormalización del ITCIS.",
     revisiones: "La planilla oficial trae la serie completa en cada descarga y adopta las revisiones de la fuente.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITCIS base-100 con 50% interno de su dimensión." },
       { fecha: "2026-07-04", cambio: "Cede cinco puntos de peso interno al sentimiento digital, que mide lo mismo por conducta de búsqueda." },
       { fecha: "2026-08-25", cambio: "ADR-0242: se publica la columna del total NACIONAL del cuadro de la UTDT, ubicada por su encabezado. Hasta acá se leía la columna 1 por posición, que es `ICC Capital`: el tablero mostró el índice de la Ciudad de Buenos Aires rotulado como nacional (39,87 contra 40,23 en el corte auditado). Card y serie leían la misma columna equivocada, así que coincidían entre sí. La serie del cinturón se reconstruyó con la nacional, disponible desde marzo de 2001." },
+      { fecha: "2026-09-15", cambio: "ADR-0314: sale de la tabla de dimensiones del ITCIS y pasa a ancla de validación externa del índice. La dimensión de confianza y percepción queda sin componente activo; su peso se redistribuye entre las otras cinco." },
     ],
   },
 
@@ -3028,6 +3029,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-04", cambio: "Pasa a componente puntuable tras un banco de pruebas empírico: la canasta de ventana fija con cociente interno resultó estable entre actualizaciones y consistente con la inflación." },
       { fecha: "2026-08-21", cambio: "ADR-0222: la canasta pasa a seis términos con peso igual —entran dólar, empleo y corrupción, y sale trabajo, cuyas búsquedas asociadas son derecho laboral, un plan social, el feriado y la tarea escolar—. Cada término se consulta por separado y se compara contra su propia base, lo que reemplaza al promedio crudo, que pesaba por volumen de búsqueda. La card deja de ser un pulso aparte y publica el mismo último mes cerrado que el gráfico." },
       { fecha: "2026-08-25", cambio: "ADR-0248: sale del ITCIS. El volumen de búsquedas mide atención y la atención no tiene signo: buscar «inflación» no dice si a uno le preocupa o le conviene. La validación externa lo contradice en cuatro cortes —r = −0,788 contra Ipsos post-base, −0,126 en niveles y +0,082 en cambios contra el ICC de la UTDT en 59 meses, y 34 de 42 ventanas móviles de 18 meses con el signo opuesto—. Libera su 18,18% de la dimensión de percepción, que queda con el ICC como único componente. Se sigue relevando. El reingreso exige términos predeclarados y validación fuera de muestra." },
+      { fecha: "2026-09-15", cambio: "ADR-0314: el ICC —el otro componente de la dimensión de percepción— sale también del ITCIS y pasa a ancla de validación externa. La dimensión queda sin ningún componente activo: `sentimiento_digital` sigue suspendido y no hay nadie más declarado ahí. Su peso nominal se redistribuye entre las otras cinco dimensiones." },
     ],
   },
 

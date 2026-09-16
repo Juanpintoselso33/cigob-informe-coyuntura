@@ -64,6 +64,11 @@ FAMILIA = {
     # ciclo de la actividad: es el ancla del ITCM, que tiene su propio régimen
     # (ADR-0158). Acá entra sólo como contraste AJENO para los otros tres.
     "indice_lider": "itcm",
+    # confianza del consumidor: es el ancla del ITCIS desde ADR-0314 (salió de
+    # DIMENSIONES_ITVC, mismo motivo que sacó al Líder del ITCM). Mismo patrón
+    # que `indice_lider` arriba: entra etiquetada con la familia de SU PROPIO
+    # índice y sirve de contraste AJENO para los otros tres.
+    "icc_utdt": "itvc",
 }
 
 # Nombre público de cada estadística. En mayúscula inicial —son nombres de
@@ -85,6 +90,7 @@ ETIQUETAS = {
     "icg_utdt": "Confianza en el Gobierno (ICG de la UTDT)",
     "clima_electoral": "Clima electoral",
     "indice_lider": "Índice Líder de actividad",
+    "icc_utdt": "Confianza del Consumidor (ICC de la UTDT)",
 }
 
 FUENTES = {
@@ -102,6 +108,7 @@ FUENTES = {
     "icg_utdt": "UTDT",
     "clima_electoral": "Votómetro",
     "indice_lider": "UTDT",
+    "icc_utdt": "UTDT",
 }
 
 # QUÉ ESTADÍSTICAS ARMAN EL FACTOR de cada índice (ADR-0163). No es «las de su

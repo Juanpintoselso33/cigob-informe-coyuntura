@@ -367,7 +367,9 @@ def test_publicar_genera_snapshot(tmp_path):
     assert len(vida) >= 10, f"vida cotidiana solo tiene {len(vida)} indicadores"
     # ADR-0217: el que publica card es el consumo TOTAL de carnes; la vacuna
     # pasó a ser diagnóstico dentro de la matriz A×B y ya no es card.
-    assert "consumo_carnes_total" in vida and "icc_utdt" in vida
+    # ADR-0314: `icc_utdt` salió del índice y pasó a VIDA_OCULTOS —igual que
+    # `indice_lider`—, así que ya no es card.
+    assert "consumo_carnes_total" in vida and "icc_utdt" not in vida
 
     # cada indicador tiene la forma mínima
     for cint in informe["cinturones"].values():
@@ -689,7 +691,8 @@ def test_vida_itvc_reconcilia():
     # componente que mide volumen efectivamente comprado).
     # 19 desde ADR-0231: entra carga del servicio de deuda en vulnerabilidad.
     # 19 → 18: salió `sentimiento_digital` (ADR-0248)
-    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
+    # 18 → 17: salió `icc_utdt`, que pasó a ancla externa (ADR-0314)
+    assert len(en_indice) == 17, f"esperaba 17 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"
@@ -703,10 +706,19 @@ def test_vida_itvc_reconcilia():
     # no se movió: los nominales cambian, lo que cada componente aporta no.
     # seguridad y mudó consumo a ingresos, repartiendo los pesos nominales de
     # modo que el peso EFECTIVO de cada indicador quedara idéntico.
+    # ADR-0314: `percepcion` ya no se publica — se quedó sin ningún componente
+    # activo (salió `icc_utdt`; `sentimiento_digital` sigue suspendido desde
+    # ADR-0248) y el motor la salta entera, igual que cualquier dimensión sin
+    # datos. Su 8,25% nominal sigue declarado en `itvc.DIMENSIONES_ITVC` —no
+    # se reparte a mano— así que la suma de los `peso` NOMINALES publicados
+    # queda en 0,9175 y no en 1,0: es `peso_efectivo` el que renormaliza y
+    # sigue sumando uno (se verifica más abajo).
     pesos = {k: d["peso"] for k, d in c["itvc"]["dimensiones"].items()}
     assert pesos == {"ingresos": 0.2806, "precios": 0.25, "vulnerabilidad": 0.10,
-                     "empleo": 0.2419, "percepcion": 0.0825, "seguridad": 0.045}
-    assert abs(sum(pesos.values()) - 1.0) < 1e-9
+                     "empleo": 0.2419, "seguridad": 0.045}
+    assert abs(sum(pesos.values()) - 0.9175) < 1e-9
+    pesos_efectivos = {k: d["peso_efectivo"] for k, d in c["itvc"]["dimensiones"].items()}
+    assert abs(sum(pesos_efectivos.values()) - 1.0) < 1e-3
 
     for k, i in en_indice.items():
         assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"
@@ -716,7 +728,9 @@ def test_vida_itvc_reconcilia():
     assert servicios["unidad"] == "% del salario RIPTE"
     assert servicios["en_indice"] is True
     assert servicios["indice_itvc"] == 112.6
-    assert servicios["peso_efectivo"] == 0.1125
+    # 0,1125 → 0,1226 con ADR-0314: `precios` renormaliza sobre 0,2725 en vez
+    # de 0,25 al absorber el hueco que dejó `percepcion` (0,45 × 0,2725).
+    assert servicios["peso_efectivo"] == 0.1226
     assert servicios["aporte_score"] == 2.5
     assert servicios["transporte_pct_canasta"] == 43.0
     assert "agua+energía 8,3% + transporte 6,2%" in servicios["aporte_formula"]

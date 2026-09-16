@@ -506,11 +506,12 @@ def test_publicar_expone_crudo_recorte_y_exencion_en_el_snapshot():
     # Se empuja un componente NO exento por encima del techo — así el recorte
     # existe siempre y sigue probándose el mecanismo, no la coyuntura.
     #
-    # `icc_utdt` y no el primero que aparezca: varios componentes se rebasan
-    # INVERTIDOS (más subocupación o más trabajo independiente = peor), así que
-    # subirles la serie los hunde en vez de pasarlos por el techo. El ICC va
-    # derecho: más confianza, índice más alto.
-    victima = "icc_utdt"
+    # `empleo_registrado` y no el primero que aparezca: varios componentes se
+    # rebasan INVERTIDOS (más subocupación o más trabajo independiente = peor),
+    # así que subirles la serie los hunde en vez de pasarlos por el techo. El
+    # empleo registrado va derecho: más empleo, índice más alto. (Hasta
+    # ADR-0314 se usaba `icc_utdt`, que salió del índice y ya no pasa por acá.)
+    victima = "empleo_registrado"
     assert victima in series and victima not in itvc.WINSOR_EXENTOS
     series[victima][-1]["valor"] = series[victima][0]["valor"] * 4
 

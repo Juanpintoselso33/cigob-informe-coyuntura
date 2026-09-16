@@ -314,8 +314,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (encuesta)", tipo: "Nivel (%)",
   },
   icc_utdt: {
-    que: "El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor).",
-    aporta: "Describe percepciones y expectativas económicas de los encuestados. Complementa los indicadores materiales; no mide intención de voto ni demuestra por sí solo capacidad de anticipar consumo o resultados electorales.",
+    que: "El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor, UTDT). Ya NO puntúa en el ITCIS: salió del índice en ADR-0314 porque un indicador no puede ser componente y juez del mismo índice a la vez. Pasó a ser el ANCLA de validación externa del ITCIS —el mismo rol que cumple el Índice Líder para el ITCM—, así que ahora se lo contrasta contra el índice en vez de promediarse adentro.",
+    aporta: "Describe percepciones y expectativas económicas de los encuestados, y sirve para leer si la percepción sigue a las condiciones materiales que mide el ITCIS. No mide intención de voto ni demuestra por sí solo capacidad de anticipar consumo o resultados electorales.",
     frecuencia: "Mensual", tipo: "Índice",
   },
   sentimiento_digital: {

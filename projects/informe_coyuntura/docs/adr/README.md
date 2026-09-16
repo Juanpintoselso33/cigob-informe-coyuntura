@@ -320,6 +320,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0273](0273-victimizacion-descubre-el-portal-vigente-y-enlaces-relativos.md) | Victimización descubre el portal vigente y enlaces relativos | `inseguridad` | vigente |
 | [0279](0279-las-series-laborales-no-identifican-transiciones.md) | Las series laborales no identifican transiciones | `trabajo_independiente`, `mortalidad_pymes` | vigente |
 | [0291](0291-alquiler-usa-la-planilla-original.md) | Alquiler usa la planilla original | `alquiler_real` | vigente |
+| [0314](0314-el-icc-sale-del-itcis-y-pasa-a-ancla-externa.md) | El ICC sale del ITCIS y pasa a ancla de validación externa | `icc_utdt`, `sentimiento_digital` | vigente |
 
 ### Espíritu de época
 

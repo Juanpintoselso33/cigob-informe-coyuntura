@@ -18,10 +18,9 @@ al ADR.
 | `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
 | `vulnerabilidad` | 10% | `mora_familias`, `carga_servicio_deuda_hogares` |
 | `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `subocupacion_demandante`, `trabajo_independiente` |
-| `percepcion` | 8% | `icc_utdt` |
 | `seguridad` | 4% | `inseguridad` |
 
-Suma de pesos: 100%.
+Suma de pesos: 92%.
 
 ## Cómo puntúa este cinturón
 
@@ -268,22 +267,6 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) La contracara del cierre: el trabajo independiente · [ADR-0250](../adr/0250-el-universo-restringido-se-enumera.md) El universo restringido se enumera · [ADR-0279](../adr/0279-las-series-laborales-no-identifican-transiciones.md) Las series laborales no identifican transiciones
 
-### Dimensión `percepcion` (8%)
-
-#### Confianza del consumidor (ICC)
-
-`icc_utdt`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **8.2%** |
-| Procedencia del ancla | `conceptual` — ICC rebaseado a 4T-2023; ancla en fecha fija |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0242](../adr/0242-el-icc-que-se-publica-es-el-nacional.md) El ICC que se publica es el nacional
-
 ### Dimensión `seguridad` (4%)
 
 #### Victimización (IVI)
@@ -307,6 +290,7 @@ del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
 - `endeudamiento_familiar` — Endeudamiento de consumo
+- `icc_utdt` — Confianza del consumidor (ICC)
 - `indice_lider` — Índice líder (anticipa el ciclo)
 - `sentimiento_digital` — Sentimiento digital (Trends)
 

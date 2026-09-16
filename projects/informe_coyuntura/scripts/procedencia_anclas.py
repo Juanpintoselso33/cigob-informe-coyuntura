@@ -223,7 +223,9 @@ PROCEDENCIA = {
     "despacho_cemento": ("conceptual", "nivel del ISAC desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"),
     "subocupacion_demandante": ("conceptual", "subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija"),
     "empleo_registrado": ("conceptual", "asalariados privados registrados (SIPA) rebaseados a 4T-2023, sin invertir (ADR-0130); ancla en fecha fija"),
-    "icc_utdt": ("conceptual", "ICC rebaseado a 4T-2023; ancla en fecha fija"),
+    # `icc_utdt` YA NO puntúa (ADR-0314): salió del ITCIS y pasó a ancla de
+    # validación externa, así que no tiene procedencia que declarar acá — la
+    # circularidad no aplica a lo que no compone el índice.
     "sentimiento_digital": ("conceptual",
                             "canasta de 6 búsquedas, cada término rebaseado a su propio 4T-2023 "
                             "y promediado con peso igual, invertida (ADR-0034, ADR-0222); "

@@ -2234,11 +2234,15 @@ GESTION_OCULTOS = (set(itcg.INDICADORES_CONTEXTO)
 # que ADR-0022): la revisión editorial los sacó del ITVC y el tablero solo
 # muestra lo que integra las dimensiones. Series y colector siguen corriendo —
 # `indice_lider` además pasó a ser el validador externo del ITCM, así que su
-# serie es un insumo vivo de validacion_externa.py.
+# serie es un insumo vivo de validacion_externa.py. Lo mismo desde ADR-0314
+# con `icc_utdt`: sale del ITVC y pasa a ancla externa del ITCIS en
+# validacion_externa.py — la misma regla que sacó a `indice_lider`: un
+# indicador no puede ser componente y juez del mismo índice, y el que deja de
+# ser componente no puede seguir siendo card.
 #
 # Es el quinto cinturón en tener lista de ocultos, y con eso los cinco usan el
 # mismo patrón: entra al índice o se oculta. No hay cards de contexto (ADR-0153).
-VIDA_OCULTOS = ({"endeudamiento_familiar", "indice_lider"}
+VIDA_OCULTOS = ({"endeudamiento_familiar", "indice_lider", "icc_utdt"}
                 | set(itvc.INDICADORES_SUSPENDIDOS))
 
 
