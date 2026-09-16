@@ -74,6 +74,67 @@ def test_la_metrica_es_un_nivel_y_no_una_variacion():
         "la unidad corta de la web tiene que declarar que es un nivel base-100")
 
 
+def test_las_series_de_control_apuntan_a_iva_y_cheque():
+    """ADR-0318: IVA-DGI y créditos/débitos bancarios entran como CONTROL, no
+    como cards nuevas — los ids tienen que ser justamente los verificados."""
+    assert macro.INDEC_IVA_DGI_ID == "142.3_IVA_D_2001_M_7"
+    assert macro.INDEC_CHEQUE_ID == "142.3_CREDI_2001_M_24"
+
+
+def test_control_tributario_detecta_divergencia_de_sentido():
+    """El caso que motiva el control: el agregado sube mientras los dos
+    impuestos ligados a actividad caen. Si el guard no mirara el signo de los
+    tres, esto pasaría desapercibido."""
+    ipc = {f"2025-{m:02d}": 100.0 * 1.02 ** m for m in range(1, 13)}
+    ipc.update({f"2026-{m:02d}": 100.0 * 1.02 ** (12 + m) for m in range(1, 9)})
+    # Agregado (índice ya real, base 100): sube de un año a otro.
+    serie_sa = {f"2025-{m:02d}": 90.0 for m in range(1, 13)}
+    serie_sa.update({f"2026-{m:02d}": 90.0 for m in range(1, 8)})
+    serie_sa["2026-08"] = 99.0  # +10% i.a. real del agregado
+
+    def nominal_constante_real(base):
+        # Nominal tal que, deflactado por el mismo IPC, cae ~10% real i.a.
+        return {ym: base * ipc[ym] / 100.0 * (0.9 if ym == "2026-08" else 1.0)
+                for ym in ipc}
+
+    iva_nom = nominal_constante_real(1000.0)
+    cheque_nom = nominal_constante_real(500.0)
+
+    control = macro._control_tributario(serie_sa, iva_nom, cheque_nom, ipc)
+    assert control["fecha"] == "2026-08"
+    assert control["agregado_var_ia_real"] == 10.0
+    assert control["iva_var_ia_real"] == -10.0
+    assert control["cheque_var_ia_real"] == -10.0
+    assert control["diverge"] is True
+
+
+def test_control_tributario_no_marca_divergencia_falsa_cuando_van_juntos():
+    """Control negativo del test anterior: si los tres se mueven en el mismo
+    sentido, un guard que devolviera `diverge=True` siempre pasaría el positivo
+    igual — este es el que lo discrimina."""
+    ipc = {f"2025-{m:02d}": 100.0 for m in range(1, 13)}
+    ipc.update({f"2026-{m:02d}": 100.0 for m in range(1, 9)})
+    serie_sa = {f"2025-{m:02d}": 90.0 for m in range(1, 13)}
+    serie_sa.update({f"2026-{m:02d}": 90.0 for m in range(1, 8)})
+    serie_sa["2026-08"] = 99.0  # +10% i.a. real, igual que arriba
+
+    def nominal_sube_parejo(base):
+        return {ym: base * (1.1 if ym == "2026-08" else 1.0) for ym in ipc}
+
+    iva_nom = nominal_sube_parejo(1000.0)
+    cheque_nom = nominal_sube_parejo(500.0)
+
+    control = macro._control_tributario(serie_sa, iva_nom, cheque_nom, ipc)
+    assert control["agregado_var_ia_real"] == 10.0
+    assert control["iva_var_ia_real"] == 10.0
+    assert control["cheque_var_ia_real"] == 10.0
+    assert control["diverge"] is False
+
+
+def test_control_tributario_es_none_sin_mes_comun():
+    assert macro._control_tributario({}, {}, {}, {}) is None
+
+
 def test_la_serie_y_la_card_comparten_la_constante():
     """Si la serie fijara el id a mano, cambiar la card dejaría el gráfico del
     modal midiendo otra magnitud que el titular — el defecto que persigue

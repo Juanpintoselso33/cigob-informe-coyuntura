@@ -57,6 +57,13 @@ INDEC_IMPO_ICA_ID    = "74.3_IIT_0_M_25"               # ICA importaciones total
 INDEC_RECAUDACION_ID = "172.3_SOTAL_DDGI_M_0_0_12"     # Recaudación DGI mensual (M ARS)
 INDEC_RECAUDACION_TOTAL_ID = "172.3_TL_RECAION_M_0_0_17"  # total — contexto de la card
 INDEC_RECAUDACION_DGA_ID   = "172.3_SOTAL_DDGA_M_0_0_12"  # aduana — contexto de la card
+# Variables de CONTROL sobre la actividad (ADR-0318), no componentes del índice:
+# IVA-DGI y créditos/débitos bancarios (impuesto al cheque) están ligados a la
+# actividad económica más de cerca que el agregado DGI+COMARB —que mezcla
+# vencimientos trasladados, cambios normativos y reasignaciones—, así que sirven
+# para leer si una suba del agregado viene de más actividad o de otra cosa.
+INDEC_IVA_DGI_ID = "142.3_IVA_D_2001_M_7"      # IVA-DGI mensual (M ARS) — control
+INDEC_CHEQUE_ID   = "142.3_CREDI_2001_M_24"    # Créditos y débitos bancarios — control
 # IMIG (Informe Mensual de Ingresos y Gastos, Sec. de Hacienda): resultado
 # PRIMARIO del Sector Público Nacional, mensual en millones de pesos.
 HACIENDA_RESULTADO_PRIMARIO_ID = "452.3_RESULTADO_RIO_0_M_18_54"
@@ -856,6 +863,44 @@ def _real_ia_pm3(nom: dict, ipc: dict) -> dict:
     return out
 
 
+def _control_tributario(serie_sa: dict, iva_nom: dict, cheque_nom: dict, ipc: dict) -> dict | None:
+    """Compara el SENTIDO del agregado contra dos variables de control (ADR-0318).
+
+    El agregado (`serie_sa`, ya real y desestacionalizado) se lee en su propia
+    variación interanual real —la misma unidad que corresponde a un nivel
+    base-100, y la que cancela la estacionalidad sin reintroducir el deflactor.
+    IVA-DGI y créditos/débitos bancarios (impuesto al cheque) se leen con
+    `_real_ia_pm3`, el MISMO deflactor (IPC) y la misma aritmética que el resto
+    del cinturón — no se inventa un tratamiento propio (ADR-0078).
+
+    Los tres impuestos están ligados a la actividad económica más de cerca que
+    el agregado DGI+COMARB, que además mezcla vencimientos trasladados, cambios
+    normativos y reasignaciones (ADR-0239: lo pondera el flujo, no el
+    calendario). Si el agregado sube y los dos controles caen, la suba no viene
+    de más actividad — viene de otro lado.
+
+    Devuelve None si no hay un mes con los tres datos y su comparable de hace
+    12 meses; nunca lanza (es lectura de control, no insumo del puntaje)."""
+    iva_ia = _real_ia_pm3(iva_nom, ipc)
+    cheque_ia = _real_ia_pm3(cheque_nom, ipc)
+    comunes = [ym for ym in sorted(serie_sa)
+               if ym in iva_ia and ym in cheque_ia
+               and _ym_shift(ym, -12) in serie_sa and serie_sa[_ym_shift(ym, -12)]]
+    if not comunes:
+        return None
+    ym = comunes[-1]
+    agregado = (serie_sa[ym] / serie_sa[_ym_shift(ym, -12)] - 1.0) * 100.0
+    iva, cheque = iva_ia[ym], cheque_ia[ym]
+    signo = lambda x: (x > 0) - (x < 0)
+    return {
+        "fecha": ym,
+        "agregado_var_ia_real": round(agregado, 1),
+        "iva_var_ia_real": round(iva, 1),
+        "cheque_var_ia_real": round(cheque, 1),
+        "diverge": signo(agregado) != signo(iva) or signo(agregado) != signo(cheque),
+    }
+
+
 def fetch_recaudacion() -> dict | None:
     """Base imponible REAL desestacionalizada: 100 = promedio del 4T-2023.
 
@@ -908,7 +953,34 @@ def fetch_recaudacion() -> dict | None:
         if aporte_prov is not None:
             detalle += (f" Los impuestos provinciales del Convenio Multilateral aportan "
                         f"{cm(aporte_prov)}% de la base medida.")
-        return {
+
+        # Control tributario (ADR-0318): IVA-DGI y cheque no cambian el puntaje,
+        # sólo lo que dice el detalle. Un fallo acá no puede tirar abajo la card.
+        control = None
+        try:
+            iva_nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_IVA_DGI_ID,
+                                                            limit=comarb.LIMITE_MESES)
+                       if r[1] is not None}
+            cheque_nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_CHEQUE_ID,
+                                                               limit=comarb.LIMITE_MESES)
+                          if r[1] is not None}
+            control = _control_tributario(serie, iva_nom, cheque_nom, ipc)
+        except Exception as e:
+            _warn("recaudacion.control_tributario", e)
+        if control is not None:
+            detalle += (
+                f" Control ({control['fecha']}, var. i.a. real): IVA-DGI "
+                f"{cm(control['iva_var_ia_real'])}%, cheque {cm(control['cheque_var_ia_real'])}%, "
+                f"agregado {cm(control['agregado_var_ia_real'])}%"
+                + (". Van en sentidos distintos: la suba o baja del agregado no se explica "
+                   "sólo por más o menos actividad — puede venir de vencimientos trasladados, "
+                   "cambios normativos o reasignaciones." if control["diverge"]
+                   else ". Van en el mismo sentido.")
+                + " Ningún impuesto mide actividad de forma directa (hay evasión, cambios de "
+                  "alícuota y anticipos), y el cheque además capta bancarización, no sólo producto."
+            )
+
+        resultado = {
             "valor": valor,
             "unidad": "índice (100 = 4T-2023)",
             "fuente": "Sec. Hacienda — recaudación DGI (vía datos.gob.ar) + "
@@ -918,6 +990,9 @@ def fetch_recaudacion() -> dict | None:
             "detalle_txt": detalle,
             "desactualizado": False,
         }
+        if control is not None:
+            resultado["control_tributario"] = control
+        return resultado
     except Exception as e:
         _warn("recaudacion", e)
         return None
