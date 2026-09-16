@@ -199,6 +199,8 @@ def test_publicacion_y_censo_con_componente_sin_universo(monkeypatch, tmp_path, 
     monkeypatch.setattr(auditoria_coherencia, "RAIZ", tmp_path)
     resumen, _, _ = auditoria_coherencia.auditar()
     assert resumen["fallas_estructura_y_aritmetica"] == []
-    assert resumen["indicadores"] == 64          # 63 → 64: vuelve apoyo_empresario (ADR-0310)
-    assert resumen["indicadores_observados_en_calculo"] == 63   # 62 → 63 (ADR-0310)
+    # 63 → 64: vuelve apoyo_empresario (ADR-0310). 64 → 63: sale `icc_utdt`
+    # del ITCIS, que pasa a ancla externa (ADR-0314).
+    assert resumen["indicadores"] == 63
+    assert resumen["indicadores_observados_en_calculo"] == 62   # 62 → 63 (ADR-0310) → 62 (ADR-0314)
     assert resumen["indicadores_sin_universo"] == 1

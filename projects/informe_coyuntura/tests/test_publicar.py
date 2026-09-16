@@ -281,6 +281,43 @@ def test_la_validacion_itcp_deriva_el_conteo_de_la_composicion(monkeypatch):
     assert "3 componentes" in bloque["validacion"]["sub"]
 
 
+def test_validacion_itvc_toma_la_clave_real_del_ancla_icc(monkeypatch):
+    """ADR-0314: `validacion_externa.py` calcula el ancla ICC bajo una
+    clave de texto y `publicar.py` la busca por ese mismo nombre — nada los
+    ata. Un rename de un lado sin el otro deja `icc_niv` en `None` y el
+    párrafo del ICC desaparece del bloque publicado sin que nada lo note:
+    exactamente lo que pasó en el PR #29 (la clave vieja que quedó en
+    `publicar.py` era `"discriminante: ITVC sin ICC vs ICC (niveles)"`, la
+    real es `"ITCIS vs ICC UTDT (niveles)"`). Este test lee la clave real
+    del código fuente de `validacion_externa.py` -no la copia a mano- y
+    prueba que `_validacion_itvc` efectivamente la encuentra.
+    """
+    import re
+    fuente = (ROOT / "scripts" / "validacion_externa.py").read_text(encoding="utf-8")
+    m = re.search(r'"(ITCIS vs ICC UTDT \(niveles\))":', fuente)
+    assert m, "validacion_externa.py ya no declara la clave del ancla ICC en niveles"
+    clave = m.group(1)
+
+    meses = {f"2024-{mes:02d}": 100.0 + mes for mes in range(1, 13)}
+    monkeypatch.setattr(publicar, "_cargar_validacion", lambda: {
+        "serie_itvc": meses,
+        "panel_validacion": {"itvc": {"factor": {
+            "r_niveles": 0.2, "r_diferencias": 0.1, "n": 12,
+            "pares": [[k, 100.0, 1.0] for k in meses],
+        }}},
+        "correlaciones": {clave: {"r": -0.258, "n": 32}},
+    })
+
+    bloque = {}
+    publicar._validacion_itvc(bloque, {})
+
+    conclusion = bloque["validacion"]["conclusion"]
+    assert "−0,258" in conclusion, (
+        "el ancla ICC (ADR-0314) no llegó al texto publicado del ITCIS: "
+        f"conclusion={conclusion!r}"
+    )
+
+
 def test_un_crudo_de_vida_mas_viejo_no_reemplaza_el_snapshot_publicado(tmp_path):
     viejo = tmp_path / "vida_cotidiana_20260812_1035.json"
     viejo.write_text("{}", encoding="utf-8")
@@ -367,7 +404,9 @@ def test_publicar_genera_snapshot(tmp_path):
     assert len(vida) >= 10, f"vida cotidiana solo tiene {len(vida)} indicadores"
     # ADR-0217: el que publica card es el consumo TOTAL de carnes; la vacuna
     # pasó a ser diagnóstico dentro de la matriz A×B y ya no es card.
-    assert "consumo_carnes_total" in vida and "icc_utdt" in vida
+    # ADR-0314: `icc_utdt` salió del índice y pasó a VIDA_OCULTOS —igual que
+    # `indice_lider`—, así que ya no es card.
+    assert "consumo_carnes_total" in vida and "icc_utdt" not in vida
 
     # cada indicador tiene la forma mínima
     for cint in informe["cinturones"].values():
@@ -689,7 +728,8 @@ def test_vida_itvc_reconcilia():
     # componente que mide volumen efectivamente comprado).
     # 19 desde ADR-0231: entra carga del servicio de deuda en vulnerabilidad.
     # 19 → 18: salió `sentimiento_digital` (ADR-0248)
-    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
+    # 18 → 17: salió `icc_utdt`, que pasó a ancla externa (ADR-0314)
+    assert len(en_indice) == 17, f"esperaba 17 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"
@@ -703,10 +743,19 @@ def test_vida_itvc_reconcilia():
     # no se movió: los nominales cambian, lo que cada componente aporta no.
     # seguridad y mudó consumo a ingresos, repartiendo los pesos nominales de
     # modo que el peso EFECTIVO de cada indicador quedara idéntico.
+    # ADR-0314: `percepcion` ya no se publica — se quedó sin ningún componente
+    # activo (salió `icc_utdt`; `sentimiento_digital` sigue suspendido desde
+    # ADR-0248) y el motor la salta entera, igual que cualquier dimensión sin
+    # datos. Su 8,25% nominal sigue declarado en `itvc.DIMENSIONES_ITVC` —no
+    # se reparte a mano— así que la suma de los `peso` NOMINALES publicados
+    # queda en 0,9175 y no en 1,0: es `peso_efectivo` el que renormaliza y
+    # sigue sumando uno (se verifica más abajo).
     pesos = {k: d["peso"] for k, d in c["itvc"]["dimensiones"].items()}
     assert pesos == {"ingresos": 0.2806, "precios": 0.25, "vulnerabilidad": 0.10,
-                     "empleo": 0.2419, "percepcion": 0.0825, "seguridad": 0.045}
-    assert abs(sum(pesos.values()) - 1.0) < 1e-9
+                     "empleo": 0.2419, "seguridad": 0.045}
+    assert abs(sum(pesos.values()) - 0.9175) < 1e-9
+    pesos_efectivos = {k: d["peso_efectivo"] for k, d in c["itvc"]["dimensiones"].items()}
+    assert abs(sum(pesos_efectivos.values()) - 1.0) < 1e-3
 
     for k, i in en_indice.items():
         assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"
@@ -716,7 +765,9 @@ def test_vida_itvc_reconcilia():
     assert servicios["unidad"] == "% del salario RIPTE"
     assert servicios["en_indice"] is True
     assert servicios["indice_itvc"] == 112.6
-    assert servicios["peso_efectivo"] == 0.1125
+    # 0,1125 → 0,1226 con ADR-0314: `precios` renormaliza sobre 0,2725 en vez
+    # de 0,25 al absorber el hueco que dejó `percepcion` (0,45 × 0,2725).
+    assert servicios["peso_efectivo"] == 0.1226
     assert servicios["aporte_score"] == 2.5
     assert servicios["transporte_pct_canasta"] == 43.0
     assert "agua+energía 8,3% + transporte 6,2%" in servicios["aporte_formula"]

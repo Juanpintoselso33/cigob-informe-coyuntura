@@ -34,10 +34,18 @@ import parametrica
 import publicar
 
 # (módulo, indicador suspendido, dimensión, cómo se pasan los valores)
+#
+# El caso (itvc, sentimiento_digital, percepcion) se sacó el 2026-09-15
+# (ADR-0314): probaba que el hueco lo absorbía `icc_utdt`, su único compañero
+# de dimensión, y ese compañero salió del índice en el mismo cambio. Hoy
+# `sentimiento_digital` es el ÚNICO indicador declarado en "percepcion", así
+# que suspenderlo no reparte un hueco entre pares — vacía la dimensión
+# entera, que es un caso distinto (la dimensión desaparece de `dimensiones`,
+# no se renormaliza) y ya lo cubre
+# test_itvc.py::test_itvc_reproduce_ejemplo.
 CASOS = [
     (itcp, "judicializacion", "poder_judicial"),
     (itcg, "reestructuracion_organismos", "reforma_estado"),
-    (itvc, "sentimiento_digital", "percepcion"),
 ]
 
 MODULOS = {"itcp": itcp, "itcg": itcg, "itvc": itvc}

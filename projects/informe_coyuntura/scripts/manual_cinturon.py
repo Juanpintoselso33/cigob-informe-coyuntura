@@ -231,12 +231,38 @@ def generar(cinturon: str) -> Path:
     ]
 
     # --- dimensiones
-    L += ["## Dimensiones y pesos", "", "| Dimensión | Peso | Indicadores |", "|---|---:|---|"]
-    for dim, d in dimensiones.items():
-        inds = d["indicadores"]
-        L.append(f"| `{dim}` | {d['peso']:.0%} | " +
-                 ", ".join(f"`{i}`" for i in inds) + " |")
-    L += ["", f"Suma de pesos: {sum(d['peso'] for d in dimensiones.values()):.0%}.", ""]
+    suma_nominal = sum(d["peso"] for d in dimensiones.values())
+    # Si alguna dimensión se quedó sin ningún indicador vigente (todos
+    # suspendidos), `indicadores_vigentes` ya la sacó de `dimensiones` más
+    # arriba: la tabla de diseño no vuelve a sumar 1,0, y el motor
+    # (`calcular_itvc`/`calcular_indice`) renormaliza el peso de las que
+    # quedan para que sí sumen. Publicar sólo el nominal subestima el peso
+    # real de cada una — hay que declarar el efectivo (ADR-0245).
+    hay_redistribucion = abs(suma_nominal - 1.0) > 0.001
+    if hay_redistribucion:
+        L += ["## Dimensiones y pesos", "",
+              "| Dimensión | Peso nominal | Peso efectivo | Indicadores |",
+              "|---|---:|---:|---|"]
+        for dim, d in dimensiones.items():
+            inds = d["indicadores"]
+            efectivo = d["peso"] / suma_nominal
+            L.append(f"| `{dim}` | {d['peso']:.0%} | {efectivo:.1%} | " +
+                     ", ".join(f"`{i}`" for i in inds) + " |")
+        L += ["",
+              f"Suma de pesos nominales: {suma_nominal:.0%}. El resto "
+              "(dimensiones sin ningún indicador vigente, todos "
+              "suspendidos) no se publica, y su peso se redistribuye "
+              "proporcionalmente entre las que quedan — es la misma "
+              "renormalización que el motor aplica dimensión a dimensión; "
+              "acá se aplica una vez más entre dimensiones para que la "
+              "columna «Peso efectivo» sume 100%.", ""]
+    else:
+        L += ["## Dimensiones y pesos", "", "| Dimensión | Peso | Indicadores |", "|---|---:|---|"]
+        for dim, d in dimensiones.items():
+            inds = d["indicadores"]
+            L.append(f"| `{dim}` | {d['peso']:.0%} | " +
+                     ", ".join(f"`{i}`" for i in inds) + " |")
+        L += ["", f"Suma de pesos: {suma_nominal:.0%}.", ""]
 
     if not bandas_todas:
         L += [

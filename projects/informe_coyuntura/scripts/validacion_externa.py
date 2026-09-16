@@ -1,11 +1,11 @@
 """Validación externa de los cuatro cinturones.
 
-ITCM se contrasta con el Índice Líder UTDT. ITCIS, ITCG e ITCP usan el
+ITCM se contrasta con el Índice Líder UTDT, ITCG con el ICG UTDT y ahora
+ITCIS con el ICC UTDT (ADR-0314: salió del índice y pasó a ancla, la misma
+regla que ya regía para el Líder del ITCM). ITCIS, ITCG e ITCP además usan el
 panel conceptual de panel_validacion.py, incluyendo factores comunes cuando
-hay cobertura suficiente. Se conservan correlaciones discriminantes y
-contrafácticos (ITCIS sin ICC); no equivalen a una validación independiente
-contra componentes propios. Supermercados e ICC integran ITCIS y no son sus
-anclas externas vigentes.
+hay cobertura suficiente. Supermercados integra ITCIS desde ADR-0225 y no es
+su ancla externa.
 
 Las series se reconstruyen desde componentes con cobertura y renormalización.
 Se publican niveles, diferencias, giros y diagnósticos de tendencia; la
@@ -113,7 +113,10 @@ COMPONENTES = {
     "carga_servicio_deuda_hogares": (
         "carga_servicio_deuda_hogares", True, False, False),  # ADR-0231
     "brecha_salario_cbt":     ("brecha_salario_cbt", False, False, False),
-    "icc_utdt":               ("icc_utdt", False, False, False),
+    # `icc_utdt` YA NO es componente (ADR-0314): salió de DIMENSIONES_ITVC y
+    # pasó a ancla externa (ver el bloque "ITCIS vs ICC UTDT" más abajo, que
+    # lee su serie cruda de `series.json` — no por acá, que es sólo para
+    # componentes vigentes del índice).
     "subocupacion_demandante":            ("subocupacion_demandante", True, False, False),
     # ADR-0130: empleo registrado privado (SIPA). NO invertido — más empleo es
     # mejor. Entra a la reconstrucción como los demás componentes de rebase.
@@ -285,7 +288,13 @@ def _valores_itvc_por_mes() -> dict:
 
 
 def construir_series_itvc(dimensiones: dict | None = None) -> tuple:
-    """(serie ITVC completa, serie ITVC sin ICC, serie ICC) mensuales.
+    """(serie ITVC completa, serie ICC) mensuales.
+
+    Hasta ADR-0314 también devolvía una tercera serie —el ITVC recalculado
+    SIN el ICC— porque el ICC todavía era componente y no se podía comparar
+    el índice completo contra su propio ingrediente. Con el ICC afuera del
+    índice esa variante quedaría idéntica a la serie completa (no hay nada
+    que restarle), así que se elimina en vez de dejarla como un alias muerto.
 
     Si se pasa un dict en `dimensiones`, se llena in-place con la serie por
     DIMENSIÓN del índice completo (ADR-0233). Sale por parámetro y no por
@@ -298,7 +307,7 @@ def construir_series_itvc(dimensiones: dict | None = None) -> tuple:
     series = cargar_series()
     indices_por_comp = _indices_itvc_por_componente()
     ult = max(max(v) for v in indices_por_comp.values() if v)
-    itvc_full, itvc_sin_icc = {}, {}
+    itvc_full = {}
     for ym in _meses("2023-12", ult):
         punto = {}
         for comp, vals in indices_por_comp.items():
@@ -310,11 +319,8 @@ def construir_series_itvc(dimensiones: dict | None = None) -> tuple:
             itvc_full[ym] = r["valor"]
             if dimensiones is not None:
                 _anotar_dimensiones(dimensiones, ym, r)
-        r2 = itvc.calcular_itvc({k: v for k, v in punto.items() if k != "icc_utdt"})
-        if r2:
-            itvc_sin_icc[ym] = r2["valor"]
     icc = _mensual(series.get("icc_utdt") or [])
-    return itvc_full, itvc_sin_icc, icc
+    return itvc_full, icc
 
 
 def _valores_itcm_por_mes() -> dict:
@@ -1165,7 +1171,7 @@ def main():
     # llena desde el mismo resultado mensual del motor con el que arma el
     # punto del índice, así que no hay una segunda agregación que mantener.
     dims = {"itvc": {}, "itcm": {}, "itcg": {}, "itcp": {}}
-    itvc_full, itvc_sin, icc = construir_series_itvc(dims["itvc"])
+    itvc_full, icc = construir_series_itvc(dims["itvc"])
     # generated_at: sin sello no había forma de notar que este archivo dejó de
     # commitearse. El pipeline lo regeneraba cada noche, publicar.py le sacaba
     # las correlaciones para el snapshot y después se descartaba, así que la
@@ -1177,32 +1183,32 @@ def main():
                             # test_salidas_versionadas_frescas RESTA los dos, y
                             # naive menos aware es TypeError.
                             "generated_at": datetime.now().astimezone().isoformat(),
-                            "nota": "Validación por panel y ancla macro; el contraste adicional sin ICC evita comparar el ITCIS con un componente propio"}}
+                            "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"}}
     print(f"serie ITVC reconstruida: {len(itvc_full)} meses "
           f"({min(itvc_full)} → {max(itvc_full)}) · último: {itvc_full[max(itvc_full)]}")
     resultados["serie_itvc"] = itvc_full
-    resultados["serie_itvc_sin_icc"] = itvc_sin
 
-    # ADR-0225: el ITCIS YA NO TIENE ANCLA ÚNICA. Las ventas en supermercados,
-    # que lo eran desde ADR-0155, pasaron a componente del índice; y ninguna de
-    # las candidatas que quedan sostiene un titular (el desarrollo está en el
-    # ADR). El contraste del cinturón es el panel y su factor común, que se
-    # calculan más abajo como para los otros dos socioeconómicos.
-    #
-    # El ICC queda como contraste DISCRIMINANTE, que es lo único que era: mide
-    # si la percepción sigue a las condiciones materiales. Necesita la variante
-    # sin ICC porque el ICC sí compone el índice.
-    pares = {}
-    pares.update({
-        "discriminante: ITVC sin ICC vs ICC (niveles)": (itvc_sin, icc),
-        "discriminante: ITVC sin ICC vs ICC (diferencias)": (_difs(itvc_sin), _difs(icc)),
-    })
+    # ── ITCIS vs ICC UTDT (percepción vs condiciones materiales) ───────────
+    # ADR-0314: el ICC SALIÓ de DIMENSIONES_ITVC y pasó a ser el ancla de
+    # validación del ITCIS — mismo rol que el Índice Líder para el ITCM y el
+    # ICG para el ITCG. Hasta acá no podía cumplir ese papel: era componente
+    # y juez del mismo índice a la vez, y el docstring de este módulo lo decía
+    # explícito. La correlación es DISCRIMINANTE y no confirmatoria: valida
+    # si la percepción sigue a las condiciones materiales que mide el ITCIS,
+    # no que el ITCIS "deba" parecerse al ICC.
     resultados["correlaciones"] = {}
-    print("\ncorrelaciones (Pearson):")
-    for nombre, (a, b) in pares.items():
-        r, n = _pearson(a, b)
-        resultados["correlaciones"][nombre] = {"r": r, "n": n}
-        print(f"  {nombre}: r = {r}  (n = {n})")
+    if icc:
+        pares = {
+            "ITCIS vs ICC UTDT (niveles)": (itvc_full, icc),
+            "ITCIS vs ICC UTDT (diferencias)": (_difs(itvc_full), _difs(icc)),
+        }
+        print("\ncorrelaciones ITCIS vs ICC UTDT (Pearson):")
+        for nombre, (a, b) in pares.items():
+            r, n = _pearson(a, b)
+            resultados["correlaciones"][nombre] = {"r": r, "n": n}
+            print(f"  {nombre}: r = {r}  (n = {n})")
+    else:
+        print("[WARN] ICC UTDT no disponible para el ancla del ITCIS")
 
     # ── ITCM vs Índice Líder (correlación positiva esperada) ───────────────
     serie_itcm = construir_serie_itcm(dims["itcm"])
@@ -1494,6 +1500,9 @@ def main():
             "indice_lider": resultados.get("indice_lider_mensual") or {},
             "icg_utdt": _mensual(series_json.get("icg_utdt") or []),
             "clima_electoral": _mensual(series_json.get("clima_electoral") or []),
+            # ADR-0314: ancla propia del ITCIS, mismo motivo que indice_lider
+            # arriba — ya se calculó como `icc` más arriba en esta función.
+            "icc_utdt": icc,
         }
         for clave, sid in (("consumo_mayoristas", CONSUMO_MAYORISTAS_ID),
                            ("consumo_shoppings", CONSUMO_SHOPPINGS_ID)):

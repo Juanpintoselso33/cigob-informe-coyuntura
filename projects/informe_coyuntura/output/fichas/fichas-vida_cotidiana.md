@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Impacto social — resumen
 
-Este documento tiene una ficha por indicador — son 18 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 17 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,8 +35,8 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 93,0** | **NARANJA** | Deterioro moderado frente a las referencias | 18 indicadores: 5 en verde · 2 en amarillo · 7 en naranja · 4 en rojo |
-Componentes que puntúan en este corte: 18 de 18 publicados.
+| **ITCIS: 93,1** | **NARANJA** | Deterioro moderado frente a las referencias | 17 indicadores: 5 en verde · 2 en amarillo · 6 en naranja · 4 en rojo |
+Componentes que puntúan en este corte: 17 de 17 publicados.
 
 ## Dimensiones
 
@@ -44,9 +44,8 @@ Componentes que puntúan en este corte: 18 de 18 publicados.
 |---|---|---|---|---|
 | Ingresos y consumo | Si el sueldo alcanza y qué compra. | 112,1 | VERDE | 28,1 % |
 | Presión de precios | Tres gastos sensibles. | 98,3 | AMARILLO | 25,0 % |
-| Prospectivas de empleo | Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC)… | 91,9 | NARANJA | 24,2 % |
+| Prospectivas de empleo | Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC)… | 91,8 | NARANJA | 24,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,8 | ROJO | 10,0 % |
-| Confianza y percepción | El ánimo con que se vive el momento, medido preguntando. | 91,1 | NARANJA | 8,2 % |
 | Seguridad | Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. | 104,8 | AMARILLO | 4,5 % |
 
 ```{=openxml}
@@ -62,29 +61,27 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCIS |
 |---|---|---|---|---|
 | **DIMENSIÓN: Ingresos y consumo** | | | | |
-| Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,84 canastas (RIPTE/CBT) | VERDE | 13,4 % |
-| Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero… | 113,94 kg/hab/año | NARANJA | 0,9 % |
-| Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,3 % de personas | VERDE | 7,3 % |
-| Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 31,25 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
-| Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 82,1 índice (2017 = 100, desestacionalizado) | NARANJA | 5,6 % |
+| Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,84 canastas (RIPTE/CBT) | VERDE | 14,6 % |
+| Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero… | 113,94 kg/hab/año | NARANJA | 1,0 % |
+| Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,3 % de personas | VERDE | 8,0 % |
+| Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 31,25 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 1,0 % |
+| Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 82,1 índice (2017 = 100, desestacionalizado) | NARANJA | 6,1 % |
 | **DIMENSIÓN: Presión de precios** | | | | |
-| Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % m/m | VERDE | 8,8 % |
-| Canasta de servicios públicos / salario | Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar… | 14,5 % del salario RIPTE | VERDE | 11,2 % |
-| Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 2,34 % m/m alquileres | ROJO | 5,0 % |
+| Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % m/m | VERDE | 9,5 % |
+| Canasta de servicios públicos / salario | Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar… | 14,5 % del salario RIPTE | VERDE | 12,3 % |
+| Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 2,34 % m/m alquileres | ROJO | 5,5 % |
 | **DIMENSIÓN: Prospectivas de empleo** | | | | |
-| Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC. | 37,9 % | NARANJA | 8,3 % |
-| Peso del trabajo independiente | Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los… | 20,69 % del empleo registrado SIPA, sin monotributo social | NARANJA | 2,4 % |
-| Empleadores PyME activos | Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART. | 460.777 empleadores | NARANJA | 3,6 % |
-| Construcción | Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. | 140,2 índice ISAC | ROJO | 3,3 % |
-| Subocupación demandante | Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando… | 7,5 % de la PEA | NARANJA | 1,2 % |
-| Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.095,84 miles de puestos | AMARILLO | 5,4 % |
+| Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC. | 37,9 % | NARANJA | 9,0 % |
+| Peso del trabajo independiente | Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los… | 20,69 % del empleo registrado SIPA, sin monotributo social | NARANJA | 2,6 % |
+| Empleadores PyME activos | Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART. | 460.165 empleadores | NARANJA | 3,9 % |
+| Construcción (ISAC) | Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. | 140,2 índice ISAC | ROJO | 3,5 % |
+| Subocupación demandante | Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando… | 7,5 % de la PEA | NARANJA | 1,4 % |
+| Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.095,84 miles de puestos | AMARILLO | 5,9 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
-| Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,41 % de la cartera en situación irregular | ROJO | 7,0 % |
-| Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | ROJO | 3,0 % |
-| **DIMENSIÓN: Confianza y percepción** | | | | |
-| Confianza del consumidor | El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor). | 40,2 índice | NARANJA | 8,2 % |
+| Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,41 % de la cartera en situación irregular | ROJO | 7,6 % |
+| Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | ROJO | 3,3 % |
 | **DIMENSIÓN: Seguridad** | | | | |
-| Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 4,5 % |
+| Victimización (IVI) | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 4,9 % |
 
 *Datos al 2026-09-15.*
 
@@ -102,7 +99,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 3,84 canastas (RIPTE/CBT)** (2026-07) | **VERDE** | Peso efectivo 13,4 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 3,84 canastas (RIPTE/CBT)** (2026-07) | **VERDE** | Peso efectivo 14,6 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -156,7 +153,7 @@ El componente está en 111,6 sobre la base 100 del 4º trimestre de 2023 — 105
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 13,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 14,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -191,7 +188,7 @@ Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,66 % m/m** (2026-08) | **VERDE** | Peso efectivo 8,8 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 1,66 % m/m** (2026-08) | **VERDE** | Peso efectivo 9,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -245,7 +242,7 @@ El componente está en 107,6 sobre la base 100 del 4º trimestre de 2023 — 105
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 8,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 9,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -278,7 +275,7 @@ Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, g
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 14,5 % del salario RIPTE** (2026-08) | **VERDE** | Peso efectivo 11,2 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 14,5 % del salario RIPTE** (2026-08) | **VERDE** | Peso efectivo 12,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -333,7 +330,7 @@ Agua y energía representan 8,3% del salario; transporte, 6,2%. La mayor de las 
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 12,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -368,7 +365,7 @@ Cuánto se encareció el alquiler de la vivienda por encima del resto de los pre
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 2,34 % m/m alquileres** (2026-08) | **ROJO** | Peso efectivo 5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 2,34 % m/m alquileres** (2026-08) | **ROJO** | Peso efectivo 5,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -423,7 +420,7 @@ El componente está en 50 sobre la base 100 del 4º trimestre de 2023 — menos 
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITCIS: 5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 5,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -457,7 +454,7 @@ Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio mó
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 113,94 kg/hab/año** (2026-07) | **NARANJA** | Peso efectivo 0,9 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 113,94 kg/hab/año** (2026-07) | **NARANJA** | Peso efectivo 1 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -512,7 +509,7 @@ Consumo aparente: vacuna 46,8 kg por habitante y año (−8,4% interanual); tota
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -551,7 +548,7 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 37,9 %** (2026-01) | **NARANJA** | Peso efectivo 8,3 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 37,9 %** (2026-01) | **NARANJA** | Peso efectivo 9 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -604,7 +601,7 @@ El componente está en 94,2 sobre la base 100 del 4º trimestre de 2023 — de 8
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCIS: 8,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -638,7 +635,7 @@ Qué proporción del empleo registrado son trabajadores independientes —autón
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 20,69 % del empleo registrado SIPA, sin monotributo social** (2026-06) | **NARANJA** | Peso efectivo 2,4 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 20,69 % del empleo registrado SIPA, sin monotributo social** (2026-06) | **NARANJA** | Peso efectivo 2,6 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -693,7 +690,7 @@ El componente está en 92,4 sobre la base 100 del 4º trimestre de 2023 — de 8
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCIS: 2,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 2,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -730,7 +727,7 @@ Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 460.777 empleadores** (2026-05) | **NARANJA** | Peso efectivo 3,6 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 460.165 empleadores** (2026-06) | **NARANJA** | Peso efectivo 3,9 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -738,9 +735,9 @@ Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | mortalidad_pymes | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | empleadores |
-| **SERIE DISPONIBLE** | 2019-01 → 2026-05 (89 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses. La SRT publica su serie histórica todos los meses, con el rezago del cierre administrativo de las declaraciones. |
+| **SERIE DISPONIBLE** | 2019-01 → 2026-06 (90 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses. La SRT publica su serie histórica todos los meses, con el rezago del cierre administrativo de las declaraciones. |
 | **PRODUCTOR DEL DATO** | SRT — Superintendencia de Riesgos del Trabajo | **OPERACIÓN ESTADÍSTICA** | Serie histórica de partes empleadoras según tamaño de la nómina, cuadro 4.2: cantidad de empleadores con al menos una persona declarada con cobertura de ART, abierta por tramo de nómina, desde julio de 1996. |
-| **MODO DE ACCESO** | Automático: lectura mensual del XLSX publicado por la SRT. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-15 |
+| **MODO DE ACCESO** | Automático: lectura mensual del XLSX publicado por la SRT. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-15 |
 
 ## Definición — qué mide y por qué importa
 
@@ -769,23 +766,23 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **93,8**.
+Este componente está hoy en **93,6**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (460.777 empleadores) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (460.165 empleadores) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 460.777 empleadores (2026-05).
+Dato vigente: 460.165 empleadores (2026-06).
 
-El componente está en 93,8 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
+El componente está en 93,6 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCIS: 3,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 3,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -816,13 +813,13 @@ Ponderación vigente en el ITCIS: 3,6 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Construcción
+# Construcción (ISAC)
 
 Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 140,2 índice ISAC** (2026-07) | **ROJO** | Peso efectivo 3,3 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 140,2 índice ISAC** (2026-07) | **ROJO** | Peso efectivo 3,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -876,7 +873,7 @@ El componente está en 77,8 sobre la base 100 del 4º trimestre de 2023 — meno
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITCIS: 3,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 3,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -894,8 +891,6 @@ Ponderación vigente en el ITCIS: 3,3 % efectivo. El color es una lectura adicio
 
 **2026-07-03** — Entra al ITCIS como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias).
 
-**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
-
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -910,7 +905,7 @@ Qué porcentaje de la población económicamente activa trabaja menos horas de l
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 7,5 % de la PEA** (2026-01) | **NARANJA** | Peso efectivo 1,2 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 7,5 % de la PEA** (2026-01) | **NARANJA** | Peso efectivo 1,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -964,7 +959,7 @@ El componente está en 90,7 sobre la base 100 del 4º trimestre de 2023 — de 8
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCIS: 1,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 1,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1000,7 +995,7 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 6.095,84 miles de puestos** (2026-06) | **AMARILLO** | Peso efectivo 5,4 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 6.095,84 miles de puestos** (2026-06) | **AMARILLO** | Peso efectivo 5,9 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1055,7 +1050,7 @@ El componente está en 95,5 sobre la base 100 del 4º trimestre de 2023 — de 9
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCIS: 5,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 5,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1082,13 +1077,13 @@ Ponderación vigente en el ITCIS: 5,4 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Victimización
+# Victimización (IVI)
 
 Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del LICIP (Universidad Di Tella) en 40 centros urbanos.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 27,3 % de hogares víctimas (últimos 12 meses)** (2026-07) | **AMARILLO** | Peso efectivo 4,5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 27,3 % de hogares víctimas (últimos 12 meses)** (2026-07) | **AMARILLO** | Peso efectivo 4,9 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1142,7 +1137,7 @@ El componente está en 104,8 sobre la base 100 del 4º trimestre de 2023 — de 
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCIS: 4,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 4,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1164,100 +1159,6 @@ Ponderación vigente en el ITCIS: 4,5 % efectivo. El color es una lectura adicio
 
 **2026-09-08** — Se actualiza el portal de descubrimiento y se admiten enlaces relativos a PDF; se recupera julio de 2026 y se explicita el límite del contraste con denuncias (ADR-0273).
 
-**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
-
-# Confianza del consumidor
-
-El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor).
-
-| | | | |
-|---|---|---|---|
-| **Hoy: 40,2 índice** (2026-08) | **NARANJA** | Peso efectivo 8,2 % del ITCIS | Cinturón Impacto social |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | icc_utdt | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice |
-| **SERIE DISPONIBLE** | 2021-07 → 2026-08 (60 puntos) | **REZAGO DE PUBLICACIÓN** | Semanas: la universidad publica el índice del mes durante el mes siguiente. |
-| **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — Centro de Investigación en Finanzas | **OPERACIÓN ESTADÍSTICA** | ICC — Índice de Confianza del Consumidor, serie histórica nacional |
-| **MODO DE ACCESO** | Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-15 |
-
-## Definición — qué mide y por qué importa
-
-El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor).
-
-Describe percepciones y expectativas económicas de los encuestados. Complementa los indicadores materiales; no mide intención de voto ni demuestra por sí solo capacidad de anticipar consumo o resultados electorales.
-
-**Dimensión que integra — Confianza y percepción.** El ánimo con que se vive el momento, medido preguntando: el Índice de Confianza del Consumidor de la UTDT, que desde agosto de 2026 es el único componente de la dimensión. La segunda vía —observar qué busca la gente en internet— salió del índice porque el volumen de búsquedas no distingue si un tema preocupa o alegra; se sigue relevando y su serie se publica.
-
-## Método de cómputo
-
-- Componente del índice: el ICC rebaseado a 100 = promedio del 4º trimestre de 2023 (más confianza = mejora).
-
-## Semáforo — valores que determinan el color
-
-Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
-
-**Valores que definen cada color**
-
-| Rango (índice base 100 = 4º trim. 2023) | Color |
-|---|---|
-| 105 o más | VERDE |
-| de 95 a 105 | AMARILLO |
-| de 85 a 95 | NARANJA |
-| menos de 85 | ROJO |
-
-Este componente está hoy en **91,1**.
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- El informe publica el valor (40,2 índice) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
-
-## Color vigente y por qué
-
-Dato vigente: 40,2 índice (2026-08).
-
-El componente está en 91,1 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
-
-**Color vigente: NARANJA**
-
-Ponderación vigente en el ITCIS: 8,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-- **Participación en otros indicadores.** Doble función declarada: (1) componente del ITCIS; (2) contraste discriminante entre condiciones materiales y percepción, recalculando el ITCIS sin ICC. El panel externo es la validación vigente; el ICC no es evidencia independiente del índice que lo contiene. El antiguo cinturón espíritu de época quedó fuera del tablero (ADR-0205).
-
-## Transparencia — limitaciones declaradas
-
-- Mide percepción y ánimo, no condiciones materiales: convive con medidas de conducta en otras dimensiones del ITCIS.
-- Depende del formato de publicación de la universidad: un cambio en el listado o la planilla interrumpe la lectura hasta adaptarla.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.
-
-- **Política de revisiones:** La planilla oficial trae la serie completa en cada descarga y adopta las revisiones de la fuente.
-
-## Historial — cambios metodológicos documentados
-
-**2026-07-03** — Entra al ITCIS base-100 con 50% interno de su dimensión.
-
-**2026-07-04** — Cede cinco puntos de peso interno al sentimiento digital, que mide lo mismo por conducta de búsqueda.
-
-**2026-08-25** — ADR-0242: se publica la columna del total NACIONAL del cuadro de la UTDT, ubicada por su encabezado. Hasta acá se leía la columna 1 por posición, que es `ICC Capital`: el tablero mostró el índice de la Ciudad de Buenos Aires rotulado como nacional (39,87 contra 40,23 en el corte auditado). Card y serie leían la misma columna equivocada, así que coincidían entre sí. La serie del cinturón se reconstruyó con la nacional, disponible desde marzo de 2001.
-
-**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Confianza del consumidor (ICC)» a «Confianza del consumidor». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
-
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -1272,7 +1173,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 31,3 % de personas** (2026-08) | **VERDE** | Peso efectivo 7,3 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 31,3 % de personas** (2026-08) | **VERDE** | Peso efectivo 8 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1326,7 +1227,7 @@ El componente está en 128,1 sobre la base 100 del 4º trimestre de 2023 — 105
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 7,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1361,7 +1262,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 31,25 vehículos 0km por cada 1.000 habitantes (12 meses)** (2026-08) | **VERDE** | Peso efectivo 0,9 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 31,25 vehículos 0km por cada 1.000 habitantes (12 meses)** (2026-08) | **VERDE** | Peso efectivo 1 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1418,7 +1319,7 @@ Más patentamientos y mayor participación de motos: en los últimos doce meses 
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1462,7 +1363,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 82,1 índice (2017 = 100, desestacionalizado)** (2026-06) | **NARANJA** | Peso efectivo 5,6 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 82,1 índice (2017 = 100, desestacionalizado)** (2026-06) | **NARANJA** | Peso efectivo 6,1 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1517,7 +1418,7 @@ El componente está en 90,1 sobre la base 100 del 4º trimestre de 2023 — de 8
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCIS: 5,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 6,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1554,7 +1455,7 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 14,41 % de la cartera en situación irregular** (2026-06) | **ROJO** | Peso efectivo 7 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 14,41 % de la cartera en situación irregular** (2026-06) | **ROJO** | Peso efectivo 7,6 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1609,7 +1510,7 @@ El componente está en 17,3 sobre la base 100 del 4º trimestre de 2023 — meno
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITCIS: 7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 7,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1645,7 +1546,7 @@ Qué porcentaje de la masa salarial registrada destinan las familias al pago men
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 24,08 % de la masa salarial registrada** (2026-04) | **ROJO** | Peso efectivo 3 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 24,08 % de la masa salarial registrada** (2026-04) | **ROJO** | Peso efectivo 3,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1700,7 +1601,7 @@ El componente está en 42,3 sobre la base 100 del 4º trimestre de 2023 — meno
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITCIS: 3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 3,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 

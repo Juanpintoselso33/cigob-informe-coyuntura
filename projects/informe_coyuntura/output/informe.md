@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-15 22:56:48"
+generado: "2026-09-15 23:03:21"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -22,7 +22,7 @@ schema_version: "1.2.0"
 | ipc_total | 1.66 | % mensual | 2026-08-01 | fresco |
 | reservas_bcra | 11962.0 | Millones de USD | 2026-07-31 | fresco |
 | idc | -0.26 | σ vs. su historia | 2026-08-01 | fresco |
-| badlar | 22.12 | % anual | 2026-09-14 | fresco |
+| badlar | 21.44 | % anual | 2026-09-11 | fresco |
 | emae_ia | 2.69 | % i.a. | 2026-06-01 | fresco |
 | emae_difusion | 80.0 | % de sectores en crecimiento i.a. | 2026-06-01 | fresco |
 | ipi_manufacturero | -2.82 | % i.a. (promedio 3 meses) | 2026-07-01 | fresco |
@@ -31,15 +31,15 @@ schema_version: "1.2.0"
 | tcrm | 85.53 | Índice (base dic-2015=100) | 2026-08-01 | fresco |
 | rem_ipc_12m | 21.0 | % anual esperado | 2026-08-31 | fresco |
 | idm | 2.4 | pp (brecha i.a. real) | 2026-08-01 | fresco |
-| desequilibrio_monetario | 58.19 | pts de tensión (0-100) | 2026-07-01 | fresco |
+| desequilibrio_monetario | 58.26 | pts de tensión (0-100) | 2026-07-01 | fresco |
 | iai | -5.66 | % i.a. ponderado | 2026-07-01 | fresco |
-| icip | 13.67 | % i.a. ponderado | 2026-07-01 | fresco |
+| icip | 2.94 | % i.a. ponderado | 2026-06-01 | fresco |
 | credito_privado | -0.8 | % i.a. real (crédito en pesos) | 2026-08-01 | fresco |
 | costo_financiamiento_tesoro | 7.29 | % real anual (TIREA vs. inflación esperada REM) | 2026-08-01 | fresco |
 | resultado_primario | 5.96 | % de la recaudación (acum. 12 meses) | 2026-07-01 | fresco |
-| prestamos_privados | 1.08 | % mensual nominal | 2026-09-10 | fresco |
-| base_monetaria | -1.31 | % mensual nominal | 2026-09-11 | fresco |
-| tc_mayorista | 0.84 | % mensual | 2026-09-15 | fresco |
+| prestamos_privados | 0.96 | % mensual nominal | 2026-09-09 | fresco |
+| base_monetaria | -1.87 | % mensual nominal | 2026-09-10 | fresco |
+| tc_mayorista | 1.45 | % mensual | 2026-09-14 | fresco |
 
 ### 🟢 Politica — score 2.7/10 (estable)
 *Riesgo de barbarismo: político*
@@ -83,7 +83,12 @@ schema_version: "1.2.0"
 |---|---|---|---|---|
 | ipc_total | 1.66 | % mensual | 2026-08-01 | fresco |
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
-| icc_utdt | 40.23 | índice | 2026-08-01 | fresco |
+
+**Retirados del índice — el colector lo sigue relevando pero ya NO compone el índice ni el score de arriba** (distinto de suspendido: no tiene motivo de reingreso porque no va a volver a puntuar; puede ser ancla de validación externa. Ver `publicar.VIDA_OCULTOS` y la ficha metodológica del indicador):
+
+| Indicador | Último valor | Unidad | Fecha |
+|---|---|---|---|
+| icc_utdt | 40.23 | índice | 2026-08-01 |
 
 ### 🟢 Gestion — score 2.1/10 (estable)
 *Riesgo de barbarismo: gerencial*
@@ -118,4 +123,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-15 22:56:48 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-15 23:03:21 — schema 1.2.0*

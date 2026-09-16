@@ -12,16 +12,15 @@ al ADR.
 
 ## Dimensiones y pesos
 
-| Dimensión | Peso | Indicadores |
-|---|---:|---|
-| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `motorizacion_total`, `consumo_supermercados` |
-| `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
-| `vulnerabilidad` | 10% | `mora_familias`, `carga_servicio_deuda_hogares` |
-| `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `subocupacion_demandante`, `trabajo_independiente` |
-| `percepcion` | 8% | `icc_utdt` |
-| `seguridad` | 4% | `inseguridad` |
+| Dimensión | Peso nominal | Peso efectivo | Indicadores |
+|---|---:|---:|---|
+| `ingresos` | 28% | 30.6% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `motorizacion_total`, `consumo_supermercados` |
+| `precios` | 25% | 27.2% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
+| `vulnerabilidad` | 10% | 10.9% | `mora_familias`, `carga_servicio_deuda_hogares` |
+| `empleo` | 24% | 26.4% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `subocupacion_demandante`, `trabajo_independiente` |
+| `seguridad` | 4% | 4.9% | `inseguridad` |
 
-Suma de pesos: 100%.
+Suma de pesos nominales: 92%. El resto (dimensiones sin ningún indicador vigente, todos suspendidos) no se publica, y su peso se redistribuye proporcionalmente entre las que quedan — es la misma renormalización que el motor aplica dimensión a dimensión; acá se aplica una vez más entre dimensiones para que la columna «Peso efectivo» sume 100%.
 
 ## Cómo puntúa este cinturón
 
@@ -268,22 +267,6 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) La contracara del cierre: el trabajo independiente · [ADR-0250](../adr/0250-el-universo-restringido-se-enumera.md) El universo restringido se enumera · [ADR-0279](../adr/0279-las-series-laborales-no-identifican-transiciones.md) Las series laborales no identifican transiciones
 
-### Dimensión `percepcion` (8%)
-
-#### Confianza del consumidor (ICC)
-
-`icc_utdt`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **8.2%** |
-| Procedencia del ancla | `conceptual` — ICC rebaseado a 4T-2023; ancla en fecha fija |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0242](../adr/0242-el-icc-que-se-publica-es-el-nacional.md) El ICC que se publica es el nacional
-
 ### Dimensión `seguridad` (4%)
 
 #### Victimización (IVI)
@@ -307,6 +290,7 @@ del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
 - `endeudamiento_familiar` — Endeudamiento de consumo
+- `icc_utdt` — Confianza del consumidor (ICC)
 - `indice_lider` — Índice líder (anticipa el ciclo)
 - `sentimiento_digital` — Sentimiento digital (Trends)
 
@@ -335,7 +319,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-49 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+50 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -386,3 +370,4 @@ histórica.
 - [0273](../adr/0273-victimizacion-descubre-el-portal-vigente-y-enlaces-relativos.md) — Victimización descubre el portal vigente y enlaces relativos
 - [0279](../adr/0279-las-series-laborales-no-identifican-transiciones.md) — Las series laborales no identifican transiciones
 - [0291](../adr/0291-alquiler-usa-la-planilla-original.md) — Alquiler usa la planilla original
+- [0314](../adr/0314-el-icc-sale-del-itcis-y-pasa-a-ancla-externa.md) — El ICC sale del ITCIS y pasa a ancla de validación externa

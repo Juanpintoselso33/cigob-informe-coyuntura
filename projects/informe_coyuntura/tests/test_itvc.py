@@ -30,7 +30,9 @@ EJEMPLO = {
     "mortalidad_pymes": 102.0,
     "despacho_cemento": 80.0,
     "subocupacion_demandante": 96.0,
-    "icc_utdt": 118.0,
+    # ADR-0314: `icc_utdt` salió de DIMENSIONES_ITVC y ya no entra acá — el
+    # motor lo ignoraría igual si se dejara, porque ninguna dimensión lo
+    # declara más.
     "inseguridad": 104.0,
     "sentimiento_digital": 110.0,
     "consumo_carnes_total": 92.0,   # ADR-0217: puntúa el total, no la vacuna
@@ -72,10 +74,12 @@ def test_itvc_reproduce_ejemplo():
     # ADR-0214: 92,2 → 94,1 al recibir `informalidad` (96,0), que está por
     # encima del promedio de los proxies.
     assert dims["empleo"]["puntaje"] == 94.1
-    # ADR-0115 la dejó con ICC + Trends (116,5). ADR-0248 saca
-    # `sentimiento_digital` del índice y su 18,18% pasa al ICC, que queda
-    # solo en la dimensión: el puntaje es el suyo.
-    assert dims["percepcion"]["puntaje"] == 118.0
+    # ADR-0115 la había dejado con ICC + Trends (116,5). ADR-0248 sacó
+    # `sentimiento_digital` del índice y su 18,18% pasó al ICC, que quedó
+    # solo en la dimensión. ADR-0314 saca también al ICC: la dimensión de
+    # confianza y percepción se queda sin NINGÚN componente activo y el motor
+    # la salta entera (no aparece en `dimensiones`).
+    assert "percepcion" not in dims
     assert dims["seguridad"]["puntaje"] == 104.0    # ADR-0115: victimización sola
     # ADR-0214: 87,0 → 86,9. El traslado es NEUTRO sobre el índice cuando
     # están todos los componentes —conserva el peso efectivo de cada uno—,
@@ -87,8 +91,14 @@ def test_itvc_reproduce_ejemplo():
     # vehículos con 130,0 y ahora pesa el doble, así que sobre una dimensión a
     # la que le faltan componentes el efecto se amplifica. La corrida real dio
     # 90,7 antes y 90,8 después.
-    assert r["valor"] == 87.6   # 87,5 → 87,6 con ADR-0248
-    assert r["banda"] == "deterioro_moderado"
+    # ADR-0248: 87,5 → 87,6. ADR-0314: 87,6 → 84,9 — el EJEMPLO no declara
+    # `pobreza_nowcast`, `alquiler_real` ni `empleo_registrado`, así que sacar
+    # la dimensión de percepción (118,0, la más alta del EJEMPLO) sobre un
+    # índice con huecos pesa más que en la corrida real: sobre el snapshot del
+    # 15-sep-2026, con los componentes vigentes, el ITVC pasó de 93,0 a 93,1
+    # (+0,1; ver ADR-0314 para el detalle).
+    assert r["valor"] == 84.9
+    assert r["banda"] == "deterioro_sustancial"
     assert r["ajustes_aplicados"] == []
 
 
@@ -150,7 +160,11 @@ def test_pesos_del_documento():
                                           "despacho_cemento": 0.1347,
                                           "subocupacion_demandante": 0.0512,
                                           "trabajo_independiente": 0.1000}
-    assert d["percepcion"]["indicadores"] == {"icc_utdt": 0.8182, "sentimiento_digital": 0.1818}
+    # ADR-0314: sale `icc_utdt`. Queda declarado sólo `sentimiento_digital`
+    # (suspendido desde ADR-0248), así que la dimensión no tiene HOY ningún
+    # componente activo — su 8,25% nominal se redistribuye entre las cinco
+    # que quedan (ver test_itvc_reproduce_ejemplo).
+    assert d["percepcion"]["indicadores"] == {"sentimiento_digital": 1.0}
     assert d["seguridad"]["indicadores"] == {"inseguridad": 1.0}
     for dim in d.values():
         assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
@@ -221,7 +235,7 @@ def test_ajuste_manual_del_analista():
     # EJEMPLO no trae alquiler_real (ADR-0111), así que precios renormaliza
     # sobre los dos componentes del doc: 0,4375×95 + 0,5625×80 = 86,6
     assert r["dimensiones"]["precios"]["puntaje"] == 86.6
-    assert r["valor"] == 90.5   # 90,3 → 90,5 con ADR-0248
+    assert r["valor"] == 88.0   # 90,3 → 90,5 con ADR-0248 → 88,0 con ADR-0314
 
 
 def test_sin_datos_devuelve_none():

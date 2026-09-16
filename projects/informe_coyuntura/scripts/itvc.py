@@ -308,9 +308,32 @@ DIMENSIONES_ITVC = {
         # medidas de ánimo: una encuestada (ICC) y una revelada por conducta de
         # búsqueda (Trends). Consumo se fue a `ingresos` y seguridad a su propia
         # dimensión.
+        #
+        # ADR-0314: SALE `icc_utdt`. Un indicador no puede ser componente y
+        # juez del mismo índice a la vez —la misma regla que sacó a
+        # `indice_lider` del ITCM (ADR-0154) y a `consumo_supermercados` del
+        # ancla del ITCIS (ADR-0225)— y hasta acá el ICC era las dos cosas:
+        # componía la dimensión Y `validacion_externa.py` documentaba en su
+        # docstring que por eso NO podía usarlo como ancla. Sacarlo es lo que
+        # se la habilita (ver validacion_externa.COMPONENTES y el bloque
+        # "ITCIS vs ICC").
+        #
+        # `sentimiento_digital` sigue suspendido desde ADR-0248 (r adversa
+        # contra Ipsos y el propio ICC), así que la dimensión queda sin NINGÚN
+        # indicador activo: el motor la salta entera (`if not presentes:
+        # continue`) y su 8,25% nominal se redistribuye proporcionalmente
+        # entre las cinco dimensiones restantes — el mismo mecanismo de
+        # renormalización que ya usa cualquier mes con datos faltantes, sin
+        # código nuevo. Medido contra el snapshot del 15-sep-2026: ITVC 93,0 →
+        # 93,1 (+0,1), tensión 6,4 → 6,4 (no se mueve al redondeo de una
+        # decimal). El peso NOMINAL de la dimensión no se toca — sigue
+        # declarado para que quede a la vista que la dimensión está vacía por
+        # decisión, no por olvido, y para que un futuro componente de
+        # confianza (ver ADR-0314) tenga dónde entrar sin inventar una
+        # dimensión nueva.
         "nombre": "Confianza y percepción",
         "peso": 0.0825,
-        "indicadores": {"icc_utdt": 0.8182, "sentimiento_digital": 0.1818},
+        "indicadores": {"sentimiento_digital": 1.0},
     },
     "seguridad": {
         # ADR-0115. Dimensión propia porque la victimización no es percepción ni
@@ -627,7 +650,9 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # más ingreso comprometido en cuotas e intereses = peor capacidad de pago.
     idx["carga_servicio_deuda_hogares"] = rebase_de_serie(
         series, "carga_servicio_deuda_hogares", invertido=True)
-    idx["icc_utdt"] = rebase_de_serie(series, "icc_utdt")
+    # `icc_utdt` YA NO se rebasea acá (ADR-0314): salió de DIMENSIONES_ITVC y
+    # pasó a ancla de validación externa en validacion_externa.py, que lee su
+    # serie cruda —no este índice base-100— igual que hace con `icg_utdt`.
     idx["subocupacion_demandante"] = rebase_de_serie(series, "subocupacion_demandante", invertido=True)
     # Empleo registrado privado (ADR-0130): NO invertido — más empleo es mejor.
     # Es el único componente de la dimensión que mide empleo de verdad; los

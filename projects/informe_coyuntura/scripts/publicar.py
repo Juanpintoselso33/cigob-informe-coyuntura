@@ -973,10 +973,10 @@ def _validacion_itvc(bloque, series):
     if r_niv is None:
         return
     corr = val.get("correlaciones", {})
-    icc_niv = (corr.get("discriminante: ITVC sin ICC vs ICC (niveles)") or {}).get("r")
+    icc_niv = (corr.get("ITCIS vs ICC UTDT (niveles)") or {}).get("r")
 
     partes = [
-        "No hay una sola serie externa que haga de contraste, y el motivo es parte del "
+        "No hay una sola serie externa que confirme el índice, y el motivo es parte del "
         "resultado. La que cumplía ese papel —las ventas en supermercados a precios "
         "constantes— mide condiciones materiales del hogar, así que pasó a integrar el "
         "índice: un indicador no puede ser componente y juez del mismo índice.",
@@ -1004,15 +1004,17 @@ def _validacion_itvc(bloque, series):
         "plot": "minmax",
         "titulo": "¿El ITCIS acompaña lo que el hogar efectivamente consume?",
         "sub": ("Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables "
-                "externas relacionadas que no lo componen. Este cinturón no tiene una única "
-                "serie de referencia —la que hacía de ancla pasó a ser componente del índice, y "
-                "su reemplazo natural, el consumo privado de las Cuentas Nacionales, todavía "
-                "tiene nueve trimestres—, así que se compara contra un panel de estadísticas "
-                "externas y se mira si acompaña más a las de su propio terreno que a las ajenas. "
-                "El gráfico muestra el factor común de las que miden volúmenes consumidos por "
-                "los hogares —luz, gas, transporte, combustible—: lo que todas ellas comparten, "
-                "en vez de una sola. El detalle —las cargas de cada una, el panel completo y la "
-                "referencia en formación— está en la ficha metodológica."),
+                "externas relacionadas que no lo componen. Para confirmar el índice no hay una "
+                "única serie de referencia —la que hacía ese papel pasó a ser componente del "
+                "índice, y su reemplazo natural, el consumo privado de las Cuentas Nacionales, "
+                "todavía tiene nueve trimestres—, así que se compara contra un panel de "
+                "estadísticas externas y se mira si acompaña más a las de su propio terreno que "
+                "a las ajenas. El gráfico muestra el factor común de las que miden volúmenes "
+                "consumidos por los hogares —luz, gas, transporte, combustible—: lo que todas "
+                "ellas comparten, en vez de una sola. Para discriminar sí hay una serie externa "
+                "dedicada, la confianza del consumidor (ICC de UTDT), que salió del índice y "
+                "pasó a ser su ancla. El detalle —las cargas de cada una, el panel completo y "
+                "la referencia en formación— está en la ficha metodológica."),
         "serie_label": "ITCIS (reconstrucción mensual)",
         "externa_label": "factor común de los volúmenes consumidos por el hogar",
         "trans_label": ("series normalizadas al rango del período; el factor es un puntaje "
@@ -2236,11 +2238,15 @@ GESTION_OCULTOS = (set(itcg.INDICADORES_CONTEXTO)
 # que ADR-0022): la revisión editorial los sacó del ITVC y el tablero solo
 # muestra lo que integra las dimensiones. Series y colector siguen corriendo —
 # `indice_lider` además pasó a ser el validador externo del ITCM, así que su
-# serie es un insumo vivo de validacion_externa.py.
+# serie es un insumo vivo de validacion_externa.py. Lo mismo desde ADR-0314
+# con `icc_utdt`: sale del ITVC y pasa a ancla externa del ITCIS en
+# validacion_externa.py — la misma regla que sacó a `indice_lider`: un
+# indicador no puede ser componente y juez del mismo índice, y el que deja de
+# ser componente no puede seguir siendo card.
 #
 # Es el quinto cinturón en tener lista de ocultos, y con eso los cinco usan el
 # mismo patrón: entra al índice o se oculta. No hay cards de contexto (ADR-0153).
-VIDA_OCULTOS = ({"endeudamiento_familiar", "indice_lider"}
+VIDA_OCULTOS = ({"endeudamiento_familiar", "indice_lider", "icc_utdt"}
                 | set(itvc.INDICADORES_SUSPENDIDOS))
 
 

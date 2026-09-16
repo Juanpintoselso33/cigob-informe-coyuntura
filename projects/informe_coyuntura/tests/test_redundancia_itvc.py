@@ -24,7 +24,7 @@ def test_matriz_y_reconstruccion_no_pueden_divergir():
     Si cada una armara sus índices por su lado, con el tiempo la matriz mediría
     una composición distinta de la que el informe publica y nadie lo notaría.
     """
-    serie, _, _ = ve.construir_series_itvc()
+    serie, _ = ve.construir_series_itvc()
     vals = ve._valores_itvc_por_mes()
     assert set(vals) == set(serie), "la matriz y la serie no cubren los mismos meses"
     # y los componentes que la matriz mira son exactamente los que el índice
@@ -53,22 +53,23 @@ def test_todo_componente_puntuable_entra_a_la_matriz():
     )
 
 
-def test_el_componente_de_vehiculos_no_es_redundante_con_el_icc():
-    """La pregunta que la auditoría pidió responder empíricamente.
+def test_el_icc_ya_no_esta_en_la_matriz_interna():
+    """ADR-0314: el ICC salió de DIMENSIONES_ITVC, así que ya no es correlación
+    INTERNA del ITVC.
 
-    Planteaba que `patentamiento_motos` podía ser en gran medida redundante con
-    el ICC —los dos podían estar midiendo humor del consumidor y no acceso—. No
-    lo era, y la pregunta sigue viva sobre el componente que la heredó: desde
-    ADR-0224 el que puntúa es `motorizacion_total`, que suma autos y motos.
-
-    Si algún día superara el umbral, la recomendación de la auditoría pasaría a
-    estar respaldada y habría que revisarlo.
+    Hasta acá este test respondía la pregunta que la auditoría pidió —si
+    `patentamiento_motos` (después `motorizacion_total`, ADR-0224) era en gran
+    medida redundante con el ICC, dos formas de medir humor del consumidor en
+    vez de acceso— mirando la matriz interna. No lo era. Con el ICC convertido
+    en ancla externa, esa misma pregunta se responde con la correlación
+    ITCIS↔ICC de `validacion_externa.py` (bloque "ITCIS vs ICC UTDT"), no acá:
+    la matriz interna ya no puede verlo porque el ICC dejó de ser un componente
+    que promediar.
     """
     m = ve.matriz_redundancia_itvc()
-    r = m["matriz"]["motorizacion_total"]["icc_utdt"]
-    assert abs(r) < m["umbral"], (
-        f"motorización ↔ ICC alcanzó |r|={abs(r):.3f} ≥ {m['umbral']}: la "
-        f"hipótesis de la auditoría pasaría a estar respaldada"
+    assert "icc_utdt" not in m["matriz"], (
+        "icc_utdt sigue apareciendo en la matriz de redundancia INTERNA del "
+        "ITVC: salió del índice en ADR-0314 y ese contraste ahora es externo"
     )
 
 
