@@ -6,7 +6,7 @@ fecha: 2026-09-15
 cinturon: 'macro'
 indicadores: [recaudacion]
 archivos: ['scripts/macro.py', 'web/src/lib/fichas.ts', 'tests/test_macro_recaudacion_dgi.py']
-relacionado: ['0072', '0127', '0152', '0153', '0216', '0319']
+relacionado: ['0072', '0127', '0152', '0153', '0216', '0319', '0321']
 ambito: 'Cinturón Macro · `recaudacion` · IVA-DGI y créditos/débitos bancarios (impuesto al cheque) como variables de control'
 origen: 'Pedido del equipo (apuntes 15-sep-2026, sección B → MACRO): incorporar variables de control para corregir distorsiones del agregado y evitar sobreponderar el efecto estacional'
 ---
@@ -29,6 +29,17 @@ no como un componente más del índice: sirven para leer si el agregado y la
 actividad van en el mismo sentido, y de paso evitan sobreponderar el efecto
 estacional del agregado (que ya es grande — ADR-0152 documenta 30 puntos de
 amplitud cruda entre el mes más alto y el más bajo).
+
+**Corrección posterior (ADR-0321, 2026-09-15):** "control" es el nombre
+equivocado. IVA-DGI y cheque no son una fuente distinta que verifica al
+agregado desde afuera — son, por definición, dos de los componentes que ya
+integran `172.3_SOTAL_DDGI` (ver el docstring de `fetch_recaudacion`). Entre
+ambos son entre 30% y 62% del agregado según el mes. Lo que este ADR describe
+sigue siendo válido como mecánica —no puntúa, va en el detalle, patrón
+`aporte_provincial_pct`— pero es una **descomposición** del agregado en su
+porción ligada a actividad y el resto, no una verificación independiente.
+ADR-0321 corrige el nombre y las afirmaciones; esta decisión (que no puntúe,
+que vaya en detalle y no en card nueva) no cambia.
 
 ## Factores de decisión
 
@@ -103,3 +114,5 @@ mismo sentido.
   variación.
 - ADR-0153 / ADR-0216: la regla «o integra el índice, o no es card».
 - ADR-0319: el método del control (mismo deflactor, misma aritmética).
+- ADR-0321: corrige el encuadre de "control independiente" a "descomposición
+  del propio agregado".

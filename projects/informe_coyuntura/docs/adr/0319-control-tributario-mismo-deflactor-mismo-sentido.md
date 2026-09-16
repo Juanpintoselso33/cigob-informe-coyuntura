@@ -6,7 +6,7 @@ fecha: 2026-09-15
 cinturon: 'macro'
 indicadores: [recaudacion]
 archivos: ['scripts/macro.py', 'web/src/lib/fichas.ts', 'tests/test_macro_recaudacion_dgi.py']
-relacionado: ['0078', '0152', '0239', '0318']
+relacionado: ['0078', '0152', '0239', '0318', '0321']
 ambito: 'Cinturón Macro · `recaudacion` · método de cómputo del control tributario (IVA-DGI, cheque)'
 origen: 'Continuación de ADR-0318: cómo se calcula el control sin inventar un deflactor propio'
 ---
@@ -60,10 +60,13 @@ Dos trampas ya documentadas en este repo aplican directo acá:
 
 Opción 3. `_control_tributario()` en `scripts/macro.py`:
 
-- Calcula la interanual real de IVA-DGI y de cheque con `_real_ia_pm3(nominal,
+- Calcula la interanual real de IVA-DGI y de cheque con `_real_ia_mensual(nominal,
   ipc)` — mismo IPC que deflacta el agregado, misma aritmética que ya usaba
   `recaudacion` antes de ADR-0152 y que sigue usando el resto de Macro
-  (`_indec_yoy`, `_desequilibrio_monetario_serie_mensual`).
+  (`_indec_yoy`, `_desequilibrio_monetario_serie_mensual`). La función se
+  llamaba `_real_ia_pm3`; el nombre sugería un promedio móvil de 3 meses que
+  nunca calculó (es interanual simple, mes contra el mismo mes del año
+  anterior) — se corrigió el nombre al escribir esta corrección.
 - Calcula el sentido del agregado como la interanual real de su propia serie
   ya desestacionalizada (`serie[ym] / serie[ym-12] - 1`): al ser interanual,
   compara el mismo mes calendario contra el año anterior y cancela la
@@ -71,21 +74,39 @@ Opción 3. `_control_tributario()` en `scripts/macro.py`:
 - Declara divergencia cuando el signo del agregado no coincide con el signo
   de IVA-DGI **o** con el de cheque — la lectura que pidió el equipo es
   justamente esa: si el agregado sube y los dos impuestos ligados a actividad
-  bajan, la suba no viene (sólo) de actividad.
-- Es best-effort: si falta un mes común entre las tres series, no hay control
-  ese mes y la card de `recaudacion` publica igual (ADR-0318).
+  bajan, la suba no viene (sólo) de actividad. El signo se calcula sobre los
+  valores YA redondeados a un decimal (los que se publican), con una banda
+  muerta de 0,05: lo que se muestra como 0,0% no cuenta como un sentido para
+  ninguna de las tres series. Sin esto, un agregado +0,04%/IVA −0,04% publicaba
+  literalmente "agregado 0,0%, IVA -0,0%... van en sentidos distintos", y tres
+  ceros exactos SÍ marcaban `diverge=False` — inconsistente en el propio
+  entorno del cero.
+- El punto común más reciente entre las tres series puede quedar varios meses
+  detrás de la card si IVA-DGI o cheque no publicaron todavía; sin tope,
+  `comunes[-1]` retrocedía sin límite y el resultado se mostraba sin ninguna
+  marca de desfasaje. Se acota a `MAX_RETROCESO_DESCOMPOSICION_MESES = 3`: más
+  allá de eso no hay descomposición ese mes; dentro del tope se publica con
+  `meses_atraso` para que el texto lo declare.
+- Es best-effort: si falta un mes común utilizable entre las tres series, no
+  hay control ese mes y la card de `recaudacion` publica igual (ADR-0318).
 
 ### Consecuencias
 
 - El control queda en la misma unidad (% interanual real) para las tres
   series, así que «mismo sentido» y «divergencia» se leen sin traducir nada.
-- `_real_ia_pm3`, que había quedado sin uso desde el 29-jul-2026 (ADR-0152
-  cambió `recaudacion` de variación a nivel), vuelve a tener un caller.
+- `_real_ia_mensual` (ex `_real_ia_pm3`), que había quedado sin uso desde el
+  29-jul-2026 (ADR-0152 cambió `recaudacion` de variación a nivel), vuelve a
+  tener un caller.
 - El control no dice nada sobre magnitud relativa, sólo sobre sentido: un mes
   donde el agregado sube 10% y el IVA sube apenas 1% cuenta como «mismo
   sentido», aunque la brecha sea grande. Eso es deliberado — separar «sentido»
   de «magnitud» evita que el control emita un juicio de calibración que no le
   corresponde.
+- **Ver ADR-0321**: el encuadre de este ADR y de ADR-0318 —"control
+  independiente"— es incorrecto. IVA-DGI y cheque son componentes del propio
+  agregado DGI, no una fuente aparte. El método de cómputo que describe este
+  ADR (deflactor, unidad, banda muerta, tope de retroceso) sigue vigente; lo
+  que cambia es cómo se nombra y qué se afirma con el resultado.
 
 ### Confirmación
 
@@ -94,18 +115,25 @@ sintéticos, un agregado que sube 10% real i.a. mientras IVA y cheque caen 10%
 cada uno marca `diverge=True`; el mismo agregado con IVA y cheque subiendo
 también 10% marca `diverge=False` (control negativo: descarta un guard que
 devolviera `diverge=True` siempre); sin mes común, `_control_tributario`
-devuelve `None` en lugar de fallar.
+devuelve `None` en lugar de fallar; más de tres meses de atraso entre IVA/cheque
+y la card también devuelve `None`; un mes de atraso (dentro del tope) publica
+con `meses_atraso=1`; el entorno del cero (valores que redondean a 0,0%) no
+marca divergencia, y un caso apenas fuera de la banda muerta (0,1%) sigue
+detectándose.
 
 **Verificación de campo (2026-09-15, series de datos.gob.ar hasta 2026-08):**
 el agregado desestacionalizado divergió del sentido conjunto de IVA-DGI y
-cheque en enero, marzo, abril y mayo de 2026. El caso más marcado es mayo:
-agregado +10,1% i.a. real mientras IVA-DGI cae 2,9% y cheque cae 3,5% — el
-agregado subió ese mes sin que ninguno de los dos impuestos ligados a
-actividad lo acompañara. En agosto (último mes publicado) los tres coinciden
-en signo negativo (agregado −0,8%, IVA −3,0%, cheque −9,1%), aunque con
-magnitudes muy distintas. Esto es un hallazgo para reportar, no una
-recalibración de bandas: el puntaje de `recaudacion` no cambia por esta
-verificación.
+cheque en **enero, marzo, abril, mayo y julio** de 2026 (cinco de los ocho
+meses del año, no cuatro — julio se omitió en la primera verificación de
+campo). El caso más marcado es mayo: agregado +10,1% i.a. real mientras
+IVA-DGI cae 2,9% y cheque cae 3,5%. Julio es igual de marcado en la dirección
+contraria: agregado +10,0%, IVA-DGI +5,6% pero cheque −11,3%. En agosto
+(último mes publicado) los tres coinciden en signo negativo (agregado −0,8%,
+IVA −3,0%, cheque −9,1%), aunque con magnitudes muy distintas. Esto es un
+hallazgo para reportar, no una recalibración de bandas: el puntaje de
+`recaudacion` no cambia por esta verificación. Ver ADR-0321 sobre cómo leer
+esta divergencia (no es una verificación independiente: IVA y cheque son
+parte del propio agregado).
 
 ## Pros y contras de las opciones
 
@@ -125,3 +153,5 @@ verificación.
 - ADR-0239: por qué un deflactor de calendario distorsiona una suma de flujos
   — y por qué no aplica a una lectura de un solo mes.
 - ADR-0318: la decisión de que este control entra como control, no como card.
+- ADR-0321: corrige el encuadre — es una descomposición del agregado, no un
+  control independiente — y las cinco (no cuatro) fechas de divergencia.

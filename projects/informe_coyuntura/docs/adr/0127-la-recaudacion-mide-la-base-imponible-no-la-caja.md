@@ -6,7 +6,7 @@ fecha: 2026-07-25
 cinturon: 'macro'
 indicadores: [recaudacion, resultado_primario]
 modifica: ['0003']
-relacionado: ['0130', '0318']
+relacionado: ['0130', '0318', '0321']
 ambito: 'ITCM · `recaudacion` · serie · card · `resultado_primario` (denominador)'
 origen: 'Planteo del editor'
 ---

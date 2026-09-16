@@ -57,13 +57,16 @@ INDEC_IMPO_ICA_ID    = "74.3_IIT_0_M_25"               # ICA importaciones total
 INDEC_RECAUDACION_ID = "172.3_SOTAL_DDGI_M_0_0_12"     # Recaudación DGI mensual (M ARS)
 INDEC_RECAUDACION_TOTAL_ID = "172.3_TL_RECAION_M_0_0_17"  # total — contexto de la card
 INDEC_RECAUDACION_DGA_ID   = "172.3_SOTAL_DDGA_M_0_0_12"  # aduana — contexto de la card
-# Variables de CONTROL sobre la actividad (ADR-0318), no componentes del índice:
-# IVA-DGI y créditos/débitos bancarios (impuesto al cheque) están ligados a la
-# actividad económica más de cerca que el agregado DGI+COMARB —que mezcla
-# vencimientos trasladados, cambios normativos y reasignaciones—, así que sirven
-# para leer si una suba del agregado viene de más actividad o de otra cosa.
-INDEC_IVA_DGI_ID = "142.3_IVA_D_2001_M_7"      # IVA-DGI mensual (M ARS) — control
-INDEC_CHEQUE_ID   = "142.3_CREDI_2001_M_24"    # Créditos y débitos bancarios — control
+# DESCOMPOSICIÓN del agregado, no un control independiente (ADR-0321 corrige
+# el encuadre de ADR-0318/0319): IVA-DGI y créditos/débitos bancarios (impuesto
+# al cheque) son, por definición, DOS DE LOS COMPONENTES de 172.3_SOTAL_DDGI —
+# entre 30% y 62% del total según el mes (verificado con datos.gob.ar,
+# ago-2026: 53,6%). No son una fuente distinta que "confirma" o "desmiente" al
+# agregado: son parte de él. Sirven para abrir el agregado en la porción ligada
+# a actividad (IVA + cheque) contra el resto (Ganancias, cambios normativos,
+# anticipos, aduana) y ver de cuál de las dos partes viene un movimiento.
+INDEC_IVA_DGI_ID = "142.3_IVA_D_2001_M_7"      # IVA-DGI mensual (M ARS) — componente
+INDEC_CHEQUE_ID   = "142.3_CREDI_2001_M_24"    # Créditos y débitos bancarios — componente
 # IMIG (Informe Mensual de Ingresos y Gastos, Sec. de Hacienda): resultado
 # PRIMARIO del Sector Público Nacional, mensual en millones de pesos.
 HACIENDA_RESULTADO_PRIMARIO_ID = "452.3_RESULTADO_RIO_0_M_18_54"
@@ -853,8 +856,12 @@ def fetch_saldo_comercial_12m() -> dict | None:
         return None
 
 
-def _real_ia_pm3(nom: dict, ipc: dict) -> dict:
-    """{YYYY-MM: % i.a. real} de una serie nominal deflactada por IPC."""
+def _real_ia_mensual(nom: dict, ipc: dict) -> dict:
+    """{YYYY-MM: % i.a. real} de una serie nominal deflactada por IPC.
+
+    Es una interanual simple mes contra el mismo mes del año anterior — NO
+    promedia ni suaviza nada (el nombre anterior, `_real_ia_pm3`, sugería un
+    promedio móvil de 3 meses que esta función nunca calculó)."""
     out = {}
     for ym in sorted(nom):
         prev = _ym_shift(ym, -12)
@@ -863,41 +870,77 @@ def _real_ia_pm3(nom: dict, ipc: dict) -> dict:
     return out
 
 
-def _control_tributario(serie_sa: dict, iva_nom: dict, cheque_nom: dict, ipc: dict) -> dict | None:
-    """Compara el SENTIDO del agregado contra dos variables de control (ADR-0318).
+def _ym_idx(ym: str) -> int:
+    """Índice entero creciente de un 'YYYY-MM', para medir distancia en meses."""
+    return int(ym[:4]) * 12 + int(ym[5:7])
+
+
+# Tope de retroceso: si IVA-DGI o cheque no publicaron el mes de la card, el
+# punto común más reciente puede ser viejo. Más allá de este límite el dato es
+# demasiado viejo para publicarse como si fuera una lectura del mes.
+MAX_RETROCESO_DESCOMPOSICION_MESES = 3
+
+# Banda muerta de la comparación de sentido: coherente con el único decimal
+# que se publica. Sin esto, +0.04%/-0.04% redondean a "0,0%" en el texto pero
+# cuentan como sentidos opuestos (agregado "sube", IVA "baja"), y el propio
+# cero exacto queda indefinido según a qué lado cae el redondeo de cada serie.
+BANDA_MUERTA_SENTIDO_PCT = 0.05
+
+
+def _control_tributario(serie_sa: dict, iva_nom: dict, cheque_nom: dict, ipc: dict,
+                         ultimo: str) -> dict | None:
+    """Descompone el agregado en la porción ligada a actividad y el resto
+    (ADR-0318, ADR-0321: corrige el encuadre de "control independiente").
+
+    IVA-DGI y créditos/débitos bancarios (impuesto al cheque) NO son una fuente
+    distinta del agregado: son, por definición, dos de sus propios componentes
+    (`fetch_recaudacion` suma exactamente estos impuestos internos de la DGI).
+    Entre ambos son entre ~30% y ~62% del agregado según el mes. Comparar su
+    sentido contra el del agregado no "confirma" ni "desmiente" nada de forma
+    independiente — muestra si el movimiento del agregado vino de la porción
+    ligada a actividad (IVA + cheque) o del resto (Ganancias, cambios
+    normativos, anticipos, aduana).
 
     El agregado (`serie_sa`, ya real y desestacionalizado) se lee en su propia
     variación interanual real —la misma unidad que corresponde a un nivel
     base-100, y la que cancela la estacionalidad sin reintroducir el deflactor.
-    IVA-DGI y créditos/débitos bancarios (impuesto al cheque) se leen con
-    `_real_ia_pm3`, el MISMO deflactor (IPC) y la misma aritmética que el resto
-    del cinturón — no se inventa un tratamiento propio (ADR-0078).
+    IVA-DGI y cheque se leen con `_real_ia_mensual`, el MISMO deflactor (IPC) y
+    la misma aritmética que el resto del cinturón — no se inventa un
+    tratamiento propio (ADR-0078).
 
-    Los tres impuestos están ligados a la actividad económica más de cerca que
-    el agregado DGI+COMARB, que además mezcla vencimientos trasladados, cambios
-    normativos y reasignaciones (ADR-0239: lo pondera el flujo, no el
-    calendario). Si el agregado sube y los dos controles caen, la suba no viene
-    de más actividad — viene de otro lado.
+    El punto común más reciente entre las tres series puede ser más viejo que
+    `ultimo` (el mes de la card) si IVA-DGI o cheque no publicaron todavía. Más
+    allá de `MAX_RETROCESO_DESCOMPOSICION_MESES` se descarta —demasiado viejo
+    para ser útil—; dentro del tope se publica con `meses_atraso` para que el
+    texto lo diga en vez de mostrarlo como si fuera del mismo mes.
 
-    Devuelve None si no hay un mes con los tres datos y su comparable de hace
-    12 meses; nunca lanza (es lectura de control, no insumo del puntaje)."""
-    iva_ia = _real_ia_pm3(iva_nom, ipc)
-    cheque_ia = _real_ia_pm3(cheque_nom, ipc)
+    La divergencia de sentido usa los mismos valores YA redondeados a un
+    decimal que se publican (banda muerta `BANDA_MUERTA_SENTIDO_PCT`): lo que
+    se muestra como 0,0% no cuenta como un sentido, ni para el agregado ni
+    para los componentes.
+
+    Devuelve None si no hay un mes común utilizable; nunca lanza (best-effort,
+    no es insumo del puntaje)."""
+    iva_ia = _real_ia_mensual(iva_nom, ipc)
+    cheque_ia = _real_ia_mensual(cheque_nom, ipc)
     comunes = [ym for ym in sorted(serie_sa)
                if ym in iva_ia and ym in cheque_ia
-               and _ym_shift(ym, -12) in serie_sa and serie_sa[_ym_shift(ym, -12)]]
+               and _ym_shift(ym, -12) in serie_sa and serie_sa[_ym_shift(ym, -12)]
+               and _ym_idx(ultimo) - _ym_idx(ym) <= MAX_RETROCESO_DESCOMPOSICION_MESES]
     if not comunes:
         return None
     ym = comunes[-1]
     agregado = (serie_sa[ym] / serie_sa[_ym_shift(ym, -12)] - 1.0) * 100.0
     iva, cheque = iva_ia[ym], cheque_ia[ym]
-    signo = lambda x: (x > 0) - (x < 0)
+    agregado_r, iva_r, cheque_r = round(agregado, 1), round(iva, 1), round(cheque, 1)
+    signo = lambda x: 0 if abs(x) < BANDA_MUERTA_SENTIDO_PCT else (1 if x > 0 else -1)
     return {
         "fecha": ym,
-        "agregado_var_ia_real": round(agregado, 1),
-        "iva_var_ia_real": round(iva, 1),
-        "cheque_var_ia_real": round(cheque, 1),
-        "diverge": signo(agregado) != signo(iva) or signo(agregado) != signo(cheque),
+        "agregado_var_ia_real": agregado_r,
+        "iva_var_ia_real": iva_r,
+        "cheque_var_ia_real": cheque_r,
+        "diverge": signo(agregado_r) != signo(iva_r) or signo(agregado_r) != signo(cheque_r),
+        "meses_atraso": _ym_idx(ultimo) - _ym_idx(ym),
     }
 
 
@@ -923,7 +966,14 @@ def fetch_recaudacion() -> dict | None:
     El valor es el ÚLTIMO PUNTO de la misma serie que publica
     `descargar_series.fetch_recaudacion_real_serie`, calculada por
     `comarb.base_imponible_real_sa` — una sola implementación, así que card y
-    serie no pueden divergir (G3 por construcción, como `apoyo_empresario`)."""
+    serie no pueden divergir (G3 por construcción, como `apoyo_empresario`).
+
+    El detalle también publica una DESCOMPOSICIÓN del agregado DGI (ADR-0318,
+    ADR-0321): IVA-DGI y créditos/débitos bancarios son, por definición, dos de
+    los propios componentes del agregado —no una fuente aparte que lo
+    "controle"—, así que la lectura útil es de dónde vino un movimiento (la
+    porción ligada a actividad, o el resto), no una verificación independiente.
+    Ver `_control_tributario`."""
     try:
         comarb.actualizar()
         nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_RECAUDACION_ID,
@@ -954,8 +1004,9 @@ def fetch_recaudacion() -> dict | None:
             detalle += (f" Los impuestos provinciales del Convenio Multilateral aportan "
                         f"{cm(aporte_prov)}% de la base medida.")
 
-        # Control tributario (ADR-0318): IVA-DGI y cheque no cambian el puntaje,
-        # sólo lo que dice el detalle. Un fallo acá no puede tirar abajo la card.
+        # Descomposición tributaria (ADR-0318/ADR-0321): IVA-DGI y cheque son
+        # dos componentes del propio agregado, no un control aparte. No cambian
+        # el puntaje; un fallo acá no puede tirar abajo la card.
         control = None
         try:
             iva_nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_IVA_DGI_ID,
@@ -964,20 +1015,26 @@ def fetch_recaudacion() -> dict | None:
             cheque_nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_CHEQUE_ID,
                                                                limit=comarb.LIMITE_MESES)
                           if r[1] is not None}
-            control = _control_tributario(serie, iva_nom, cheque_nom, ipc)
+            control = _control_tributario(serie, iva_nom, cheque_nom, ipc, ultimo)
         except Exception as e:
             _warn("recaudacion.control_tributario", e)
         if control is not None:
+            desfasaje = (f" (dato de {control['fecha']}, {control['meses_atraso']} "
+                         f"mes{'es' if control['meses_atraso'] != 1 else ''} más viejo que la card)"
+                         if control["meses_atraso"] > 0 else "")
             detalle += (
-                f" Control ({control['fecha']}, var. i.a. real): IVA-DGI "
+                f" Composición ({control['fecha']}, var. i.a. real){desfasaje}: IVA-DGI "
                 f"{cm(control['iva_var_ia_real'])}%, cheque {cm(control['cheque_var_ia_real'])}%, "
                 f"agregado {cm(control['agregado_var_ia_real'])}%"
-                + (". Van en sentidos distintos: la suba o baja del agregado no se explica "
-                   "sólo por más o menos actividad — puede venir de vencimientos trasladados, "
-                   "cambios normativos o reasignaciones." if control["diverge"]
-                   else ". Van en el mismo sentido.")
-                + " Ningún impuesto mide actividad de forma directa (hay evasión, cambios de "
-                  "alícuota y anticipos), y el cheque además capta bancarización, no sólo producto."
+                + (". La porción ligada a actividad (IVA + cheque) fue en sentido distinto del "
+                   "agregado: el movimiento del agregado no vino (sólo) de esa porción — puede "
+                   "venir del resto (Ganancias, cambios normativos, anticipos, aduana)."
+                   if control["diverge"]
+                   else ". La porción ligada a actividad fue en el mismo sentido que el agregado.")
+                + " IVA-DGI y cheque son, ellos mismos, dos de los componentes del agregado —no "
+                  "una fuente independiente— y tampoco miden actividad de forma directa (hay "
+                  "evasión, cambios de alícuota y anticipos), y el cheque además capta "
+                  "bancarización, no sólo producto."
             )
 
         resultado = {
