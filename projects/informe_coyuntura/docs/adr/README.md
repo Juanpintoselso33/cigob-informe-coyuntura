@@ -115,6 +115,9 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0299](0299-actividad-usa-planillas-originales-vigentes.md) | Actividad usa las planillas originales vigentes | `ipi_manufacturero`, `iai`, `despacho_cemento` | vigente |
 | [0300](0300-iai-completa-bienes-de-capital-originales.md) | IAI completa los bienes de capital originales | `iai` | vigente |
 | [0301](0301-historia-macro-deriva-componentes-del-motor.md) | La historia macro deriva sus componentes del motor | `iai` | vigente |
+| [0318](0318-iva-cheque-entran-como-control-no-como-card.md) | IVA-DGI y cheque entran como control de `recaudacion`, no como card | `recaudacion` | vigente |
+| [0319](0319-control-tributario-mismo-deflactor-mismo-sentido.md) | El control tributario usa el mismo deflactor y compara el mismo sentido | `recaudacion` | vigente |
+| [0321](0321-descomposicion-no-control-independiente.md) | Es una descomposición del agregado, no un control independiente | `recaudacion` | vigente |
 
 ### Política (ITCP)
 

@@ -64,7 +64,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Estabilidad monetaria-inflacionaria** | | | | |
 | Inflación mensual (IPC) | Cuánto suben en el mes los precios al consumidor en general. | 1,66 % mensual | VERDE | 15,6 % |
 | Expectativas inflación (REM 12m) | La inflación que el mercado espera para los próximos 12 meses. | 21 % anual esperado | VERDE | 5,2 % |
-| Liquidez en pesos y presión compradora de divisas | Una medida de 0 a 100 que cruza dos cosas observables. | 58,26 pts de tensión (0-100) | AMARILLO | 5,2 % |
+| Liquidez en pesos y presión compradora de divisas | Una medida de 0 a 100 que cruza dos cosas observables. | 58,19 pts de tensión (0-100) | AMARILLO | 5,2 % |
 | **DIMENSIÓN: Viabilidad fiscal-comercial** | | | | |
 | Saldo comercial 12m | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses. | 23.731 Millones de USD (acum. 12 meses) | VERDE | 4,8 % |
 | Base imponible real (nación + provincias) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 91,3 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
@@ -649,7 +649,7 @@ El balance entre lo que el país exporta y lo que importa, acumulado en los últ
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | saldo_comercial_12m | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Viabilidad fiscal-comercial | **UNIDAD DE MEDIDA** | Millones de USD (acum. 12 meses) |
-| **SERIE DISPONIBLE** | 2022-06 → 2026-07 (50 puntos) | **REZAGO DE PUBLICACIÓN** | El cuadro original del ICA se publica durante el mes siguiente al dato; la API histórica puede incorporarlo después. |
+| **SERIE DISPONIBLE** | 2022-07 → 2026-07 (49 puntos) | **REZAGO DE PUBLICACIÓN** | El cuadro original del ICA se publica durante el mes siguiente al dato; la API histórica puede incorporarlo después. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | ICA — Intercambio Comercial Argentino: exportaciones e importaciones totales mensuales, en millones de dólares |
 | **MODO DE ACCESO** | Automático: se descubre la planilla vigente desde el catálogo INDEC y se completa la historia de la API; la tarjeta y el gráfico comparten esa serie. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-15 |
 
@@ -765,6 +765,7 @@ Aproxima la evolución de la base imponible mediante ingresos cobrados. También
 - El resultado se lleva a pesos constantes con el índice de precios y se divide por el promedio del cuarto trimestre de 2023, que vale 100: la lectura es cuánta base imponible real queda respecto del punto de partida.
 - Se corrige la estacionalidad, que es grande: sin corregir, la diferencia entre el mes calendario más alto y el más bajo llega a treinta puntos del índice. El factor de cada mes es el cociente entre ese mes y la tendencia de doce meses centrada, promediado por mes calendario y normalizado para no alterar el nivel. Mayo y junio concentran recaudación —vencimientos y aguinaldo— y marzo es el piso. Corregida, la estacionalidad remanente baja a tres puntos.
 - La parte provincial de 2022 no se publica como informe mensual y se reconstruye desde la variación interanual que informa cada gacetilla de 2023. La reconstrucción se controla contra el acumulado anual, deducido por separado: los dos caminos coinciden salvo redondeo.
+- Como control, se compara el sentido del agregado contra la variación interanual real de IVA-DGI y de créditos y débitos bancarios (impuesto al cheque), con el mismo índice de precios como deflactor. Los dos impuestos no cambian el puntaje: sirven para leer si una suba o baja del agregado viene de más o menos actividad, o de otra cosa —vencimientos trasladados, cambios normativos, reasignaciones—, y para no sobreponderar el efecto estacional.
 
 ## Semáforo — valores que determinan el color
 
@@ -783,7 +784,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- La base imponible real está en 91,3 sobre una base de 100 en el cuarto trimestre de 2023, es decir 8,7% por debajo. Meses previos: 2026-05: 97,7 · 2026-06: 88,2 · 2026-07: 102,1. Los impuestos provinciales del Convenio Multilateral aportan 16,4% de la base medida.
+- La base imponible real está en 91,3 sobre una base de 100 en el cuarto trimestre de 2023, es decir 8,7% por debajo. Meses previos: 2026-05: 97,7 · 2026-06: 88,2 · 2026-07: 102,1. Los impuestos provinciales del Convenio Multilateral aportan 16,4% de la base medida. Control (2026-08, var. i.a. real): IVA-DGI -3,0%, cheque -9,1%, agregado -0,8%. Van en el mismo sentido. Ningún impuesto mide actividad de forma directa (hay evasión, cambios de alícuota y anticipos), y el cheque además capta bancarización, no sólo producto.
 
 ## Color vigente y por qué
 
@@ -806,14 +807,17 @@ Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicion
 - Los aportes a la seguridad social también son base imponible doméstica y quedan afuera. Siguen su propia dinámica —cayeron en términos reales desde fines de 2025— y mezclarlos habría sumado el mercado laboral a un indicador que quiere medir actividad y formalidad.
 - Deflactor único (índice de precios nacional), sin deflactor específico de la base imponible ni deflactores provinciales.
 - Las bandas se fijaron sobre una grilla conceptual —pasos de diez puntos de la base imponible real de la transición— y no sobre la distribución observada. La serie disponible recorre de 88 a 115, así que la banda más baja describe una situación posible y no una observada.
+- El control tributario (IVA-DGI, cheque) tampoco mide actividad de forma directa: la recaudación de un impuesto responde también a la evasión, a cambios de alícuota y a anticipos, y el impuesto al cheque además capta bancarización —más o menos operaciones por transferencia— y no sólo producto. Que agregado y controles coincidan en el sentido no prueba causalidad; que diverjan sí es señal de que algo ajeno a la actividad está moviendo el agregado.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si falta la gacetilla provincial de un mes, ese mes no entra y el indicador mantiene el último punto disponible, señalado como desactualizado. Sin ventana suficiente para corregir estacionalidad, el indicador no publica y el saldo comercial junto con el resultado primario explican la dimensión.
+- **Si falta el dato:** Si falta la gacetilla provincial de un mes, ese mes no entra y el indicador mantiene el último punto disponible, señalado como desactualizado. Sin ventana suficiente para corregir estacionalidad, el indicador no publica y el saldo comercial junto con el resultado primario explican la dimensión. Si fallan las series de IVA-DGI o cheque, el control queda ausente del detalle pero el indicador publica igual: no es un insumo del puntaje.
 
 - **Política de revisiones:** Los puntos históricos del indicador pueden cambiar por nuevas versiones de los insumos y porque los factores estacionales se recalculan al acumular meses. La reconstrucción de la parte provincial de 2022 está controlada contra el acumulado anual deducido por separado.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-09-15** — Suma un control tributario en el detalle (no en el puntaje): la variación interanual real de IVA-DGI y de créditos/débitos bancarios (impuesto al cheque), deflactadas con el mismo IPC, contra el sentido del agregado. Sirve para distinguir si un movimiento del agregado viene de más o menos actividad o de otro factor —vencimientos trasladados, cambios normativos, reasignaciones— y para no sobreponderar el efecto estacional (ADR-0318, ADR-0319).
 
 **2026-09-08** — Tarjeta e historia actualizan las gacetillas COMARB antes de calcular. Se rechazan catálogos vacíos, errores HTTP y nuevos PDFs sin conciliación de componentes; se conserva el último mes común con IPC (ADR-0283).
 
@@ -1034,7 +1038,7 @@ Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez pr
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 58,26 pts de tensión (0-100)** (2026-07) | **AMARILLO** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 58,19 pts de tensión (0-100)** (2026-07) | **AMARILLO** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1082,13 +1086,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- tensión 58,26 pts = liquidez privada en pesos transaccionales 32,92% × compra neta de divisas del sector privado US$ 3152,0 M — presión compradora alta pese a liquidez transaccional alta, medidos contra el régimen abierto
+- tensión 58,19 pts = liquidez privada en pesos transaccionales 32,93% × compra neta de divisas del sector privado US$ 3152,0 M — presión compradora alta pese a liquidez transaccional alta, medidos contra el régimen abierto
 
 ## Color vigente y por qué
 
-Dato vigente: 58,26 pts de tensión (0-100) (2026-07).
+Dato vigente: 58,19 pts de tensión (0-100) (2026-07).
 
-58,26 pts de tensión (0-100) cae en el tramo que corresponde a Amarillo, a 1,74 del corte más cercano.
+58,19 pts de tensión (0-100) cae en el tramo que corresponde a Amarillo, a 1,81 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -1279,7 +1283,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- nominal 32,4% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad (IdC) (mes común: 2026-08) · aparte, la cartera en moneda extranjera 17,7% real medida en pesos y 37,8% en dólares; los dos universos juntos, 3,2% real — al 2026-09-09 (provisorio, no puntúa): -1,3% real con deflactor de 2026-08
+- nominal 32,4% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad (IdC) (mes común: 2026-08) · aparte, la cartera en moneda extranjera 17,7% real medida en pesos y 37,8% en dólares; los dos universos juntos, 3,2% real — al 2026-09-10 (provisorio, no puntúa): -1,0% real con deflactor de 2026-08
 
 ## Color vigente y por qué
 
