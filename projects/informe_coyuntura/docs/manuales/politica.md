@@ -238,7 +238,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **7.0%** |
 | Familia de lectura | recursos |
 | Rezago declarado | 1 meses |
-| Procedencia del ancla | `conceptual` — ventaja electoral anclada en el cero (empate) con márgenes simétricos redondos (ADR-0121) |
+| Procedencia del ancla | `conceptual` — ventaja electoral anclada en el cero (empate); cortes ajustados para que el semáforo cambie exactamente en +8/+5/0 pp, los umbrales de Luis (ADR-0312, corrige ADR-0121) |
 
 **Bandas**: > 14 → 100 · 8–14 → 80 · 2–8 → 40 · -2–2 → 20 · ≤ -2 → 0
 

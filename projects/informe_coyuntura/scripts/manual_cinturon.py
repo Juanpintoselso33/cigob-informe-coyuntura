@@ -298,6 +298,14 @@ def generar(cinturon: str) -> Path:
                 cat, motivo = procedencia[ind]
                 fila.append(("Procedencia del ancla",
                              f"`{cat}`" + (f" — {motivo}" if motivo else "")))
+            else:
+                # No devolver la fila en silencio: un componente sin
+                # procedencia registrada tiene que notarse en el manual, no
+                # desaparecer como si nunca se hubiera preguntado. Pasó con
+                # las dos cards de carne de ADR-0322 mientras
+                # `procedencia_anclas.json` no se había regenerado (ADR-0325).
+                fila.append(("Procedencia del ancla",
+                             "⚠ sin registrar — correr `procedencia_anclas.py`"))
             L += ["| | |", "|---|---|"]
             L += [f"| {k} | {v} |" for k, v in fila]
             b = bandas_legibles(mod, ind)

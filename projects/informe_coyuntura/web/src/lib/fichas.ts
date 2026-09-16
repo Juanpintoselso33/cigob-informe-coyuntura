@@ -2719,13 +2719,14 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de ingresos y consumo, puntuando por separado del resto de las carnes (ADR-0322).",
-      "Mide específicamente la vacuna porque es el corte aspiracional del consumo argentino: promedio histórico de referencia ~73 kg/hab/año (fuera de la serie propia del monitor, que arranca en 2023); el nivel oficial más reciente (SAGYP, jul-2026) es 46,75 kg, con una caída interanual de −8,4%, cercana al «casi 10%» que reporta el equipo.",
+      "Mide específicamente la vacuna porque es el corte aspiracional del consumo argentino: el nivel oficial más reciente (SAGYP, jul-2026) es 46,75 kg/hab/año, con una caída interanual de −8,4%, cercana al «casi 10%» que reporta el equipo.",
       "Se publica junto al total de las tres carnes y a `consumo_carnes_otras`, para que el lector vea si la caída de la vacuna se compensa con aviar+porcina (sustitución) o no (menos proteína en total).",
+      "CICCRA respalda el mismo mes con un número distinto (46,0 kg, ago-2026, contra 46,75 de SAGYP): ninguna de las dos es \"la\" cifra oficial, son dos relevamientos con metodología propia. El titular usa SAGYP porque es la fuente con la que se reconstruye la serie completa del componente (ver `transformaciones`); CICCRA queda de respaldo si el tablero de SAGYP no trae el mes.",
     ],
     limitaciones: [
       "El nivel es consumo «aparente», no medición de hogares: no observa lo que come una familia, sino lo que queda en el mercado interno.",
       "La evolución se reconstruye desde la FAENA, que es producción y no netea exportaciones. Rebasar a 100 no elimina diferencias de evolución entre producción y consumo; esas diferencias pueden afectar al puntaje. Una distancia superior a tres puntos porcentuales se usa como aviso de divergencia, no como prueba de equivalencia cuando queda por debajo.",
-      "El «promedio histórico ~73 kg» que cita el equipo no se puede verificar contra la serie propia del monitor (arranca en oct-2023 para SAGYP/CICCRA); es una referencia externa, no recalculada acá.",
+      "El equipo cita un «promedio histórico ~73 kg/hab/año» de referencia: no se publica acá porque no hay fuente citable y verificable para ese número dentro de este repo (ni en la serie propia, que arranca en 2023, ni en un documento oficial localizable). Se prefiere no publicar el dato a publicarlo sin respaldo.",
       "El pasaje a per cápita usa una proyección de población, no un censo del mes.",
     ],
     faltantes: "Un mes sin tablero legible deja el titular en el último valor publicado (con respaldo en CICCRA); la serie del índice sigue avanzando con la faena, que es independiente.",
@@ -2734,7 +2735,8 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Entra al ITCIS el consumo de carne VACUNA (CICCRA), con línea de base documentada." },
       { fecha: "2026-08-12", cambio: "Se suma el consumo total de las tres carnes y la matriz que distingue sustitución de pérdida de acceso; el nivel pasa al tablero de SAGYP." },
       { fecha: "2026-08-20", cambio: "Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023 (ADR-0217). La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón." },
-      { fecha: "2026-09-15", cambio: "Vuelve a puntuar por separado (ADR-0322), a pedido explícito de sumar la carne vacuna como indicador propio. El componente `consumo_carnes_total` deja de puntuar y se reemplaza por ésta y por `consumo_carnes_otras`, con el peso nominal repartido en la misma proporción con la que cada una pesaba en el total al 4T-2023 (52,0% / 48,0%), sin tocar el peso de ningún otro componente." },
+      { fecha: "2026-09-15", cambio: "Vuelve a puntuar por separado (ADR-0322), a pedido explícito de sumar la carne vacuna como indicador propio. El componente `consumo_carnes_total` deja de puntuar y se reemplaza por ésta y por `consumo_carnes_otras`, con el peso nominal repartido en la misma proporción con la que cada una pesaba en el total al 4T-2023 (52,3% / 47,7%), sin tocar el peso de ningún otro componente." },
+      { fecha: "2026-09-16", cambio: "ADR-0325: se retira el «promedio histórico ~73 kg» sin fuente citable, se declara la divergencia SAGYP/CICCRA (46,75 vs 46,0 kg) y se corrige el 52,0%/48,0% de la entrada anterior por el 52,3%/47,7% que efectivamente usa el reparto de pesos." },
     ],
   },
   consumo_carnes_otras: {
@@ -2755,7 +2757,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "Entra al ITCIS (ADR-0322) junto con `consumo_carne_vacuna`, en reemplazo del compuesto único `consumo_carnes_total` (ADR-0217): separadas, evitan que la caída de la vacuna quede diluida por el sostén de pollo y cerdo, y viceversa.",
-      "Al 4T-2023, aviar+porcina pesaban 48,0% de la faena total de las tres carnes (vacuna 52,0%); el peso nominal del antiguo componente se repartió en esa proporción.",
+      "Al 4T-2023, aviar+porcina pesaban 47,7% de la faena total de las tres carnes (vacuna 52,3%); el peso nominal del antiguo componente se repartió en esa proporción.",
       "Se publica junto a la vacuna y al total, para que el lector vea si la sustitución compensa la caída de la vacuna (esta serie sube o se sostiene mientras la vacuna cae) o no (las dos caen juntas).",
     ],
     limitaciones: [
@@ -2768,6 +2770,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "La faena del INDEC se revisa hacia atrás y la serie se reconstruye entera en cada corrida.",
     cambios: [
       { fecha: "2026-09-15", cambio: "Nace del reemplazo de `consumo_carnes_total` (ADR-0322): antes el aviar y la porcina sólo entraban sumados a la vacuna en un único compuesto; ahora tienen componente propio con el peso proporcional que tenían dentro de ese total." },
+      { fecha: "2026-09-16", cambio: "ADR-0325: se corrige el 48,0%/52,0% de la entrada anterior por el 47,7%/52,3% real, y el texto que explica el color deja de repetir el párrafo de `consumo_carne_vacuna` — ahora nombra su propio nivel (aviar+porcina) y sus componentes." },
     ],
   },
   pobreza_nowcast: {
@@ -2995,6 +2998,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La auditoría del 8-sep-2026 recuperó informes de 2020–2023, incluido el 4º trimestre de 2023: la afirmación anterior de suspensión era incorrecta. Se mantiene explícita la base de enero de 2024; una eventual armonización con 4T-2023 requiere documentar su efecto sobre el índice (ADR-0273).",
       "Error muestral de ±3 puntos por mes (~1.000 hogares) y cobertura solo urbana.",
       "La divergencia con el registro de denuncias requiere contrastar universos, períodos y error muestral: por sí sola no demuestra crecimiento del delito no denunciado.",
+      "El contraste SNIC (registro oficial de delitos) es ANUAL, con ~8,5 meses de rezago desde el cierre del año, y no puntúa: es contexto declarado en el detalle, no un segundo componente del índice.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
     revisiones: "Los informes procesados no se releen; el registro oficial de contraste se revisa hacia atrás y su serie se refresca completa.",
@@ -3003,6 +3007,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-04", cambio: "La métrica pasa a la encuesta mensual de victimización (con la base declarada en enero de 2024); el registro de denuncias queda como serie de contraste." },
       { fecha: "2026-09-08", cambio: "Se actualiza el portal de descubrimiento y se admiten enlaces relativos a PDF; se recupera julio de 2026 y se explicita el límite del contraste con denuncias (ADR-0273)." },
       { fecha: "2026-09-15", cambio: "ADR-0311: el rótulo de la card pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna." },
+      { fecha: "2026-09-16", cambio: "ADR-0325/0324: el desglose del SNIC por tipo de delito (homicidios, robos, hurtos, etc.), que se descargaba pero se quedaba en el snapshot interno del colector, se suma al contraste SNIC del detalle. Se restituyen Amenazas y Lesiones dolosas a la lista de tipos conservados." },
     ],
   },
 

@@ -193,7 +193,7 @@ DIMENSIONES_ITVC = {
         # puntúan cada uno por su cuenta — la carne vacuna sola y el resto
         # (aviar+porcina) — y el 0,0392 nominal se reparte SIN tocar a nadie
         # más, en la proporción con la que cada carne pesaba en el total al
-        # 4T-2023 (52,0% vacuna / 48,0% resto, medido sobre la faena INDEC
+        # 4T-2023 (52,3% vacuna / 47,7% resto, medido sobre la faena INDEC
         # rebaseada): 0,0392 × 0,523 ≈ 0,0205 y 0,0392 × 0,477 ≈ 0,0187.
         # Repartir así, y no 50/50, evita que la composición real de lo que se
         # resta del "total" quede subrepresentada. Los cuatro dígitos exactos

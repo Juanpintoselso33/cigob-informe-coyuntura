@@ -329,6 +329,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0322](0322-la-vacuna-vuelve-a-puntuar-junto-al-resto-de-las-carnes.md) | La vacuna vuelve a puntuar, junto al resto de las carnes | `consumo_carne_vacuna`, `consumo_carnes_otras`, `consumo_carnes_total` | vigente |
 | [0323](0323-ratio-motos-autos-como-control-de-la-motorizacion.md) | El ratio motos/autos entra como control dentro de la card, no como indicador | `motorizacion_total` | vigente |
 | [0324](0324-el-snic-conserva-homicidios-por-nombre-no-por-ranking.md) | El SNIC conserva homicidios por nombre, no por ranking de volumen | `inseguridad_snic` | vigente |
+| [0325](0325-correcciones-a-la-tanda-carne-motos-snic.md) | Correcciones a la tanda carne/motos/SNIC (ADR-0322/0323/0324) | `consumo_carne_vacuna`, `consumo_carnes_otras`, `inseguridad` | vigente |
 
 ### Espíritu de época
 

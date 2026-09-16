@@ -73,10 +73,11 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 2% |
 | Peso efectivo en el índice | **0.5%** |
+| Procedencia del ancla | `conceptual` — faena de vacunos per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0322) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0322](../adr/0322-la-vacuna-vuelve-a-puntuar-junto-al-resto-de-las-carnes.md) La vacuna vuelve a puntuar, junto al resto de las carnes
+**Lo gobiernan**: [ADR-0322](../adr/0322-la-vacuna-vuelve-a-puntuar-junto-al-resto-de-las-carnes.md) La vacuna vuelve a puntuar, junto al resto de las carnes · [ADR-0325](../adr/0325-correcciones-a-la-tanda-carne-motos-snic.md) Correcciones a la tanda carne/motos/SNIC (ADR-0322/0323/0324)
 
 #### Consumo de carne aviar y porcina per cápita
 
@@ -86,10 +87,11 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 2% |
 | Peso efectivo en el índice | **0.4%** |
+| Procedencia del ancla | `conceptual` — faena de aviar+porcina per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0322) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0322](../adr/0322-la-vacuna-vuelve-a-puntuar-junto-al-resto-de-las-carnes.md) La vacuna vuelve a puntuar, junto al resto de las carnes
+**Lo gobiernan**: [ADR-0322](../adr/0322-la-vacuna-vuelve-a-puntuar-junto-al-resto-de-las-carnes.md) La vacuna vuelve a puntuar, junto al resto de las carnes · [ADR-0325](../adr/0325-correcciones-a-la-tanda-carne-motos-snic.md) Correcciones a la tanda carne/motos/SNIC (ADR-0322/0323/0324)
 
 #### Motorización total
 
@@ -293,7 +295,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0032](../adr/0032-inseguridad-ivi-mensual.md) Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT) · [ADR-0273](../adr/0273-victimizacion-descubre-el-portal-vigente-y-enlaces-relativos.md) Victimización descubre el portal vigente y enlaces relativos
+**Lo gobiernan**: [ADR-0032](../adr/0032-inseguridad-ivi-mensual.md) Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT) · [ADR-0273](../adr/0273-victimizacion-descubre-el-portal-vigente-y-enlaces-relativos.md) Victimización descubre el portal vigente y enlaces relativos · [ADR-0325](../adr/0325-correcciones-a-la-tanda-carne-motos-snic.md) Correcciones a la tanda carne/motos/SNIC (ADR-0322/0323/0324)
 
 ## Se releva y no puntúa
 
@@ -331,7 +333,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-53 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+54 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -386,3 +388,4 @@ histórica.
 - [0322](../adr/0322-la-vacuna-vuelve-a-puntuar-junto-al-resto-de-las-carnes.md) — La vacuna vuelve a puntuar, junto al resto de las carnes
 - [0323](../adr/0323-ratio-motos-autos-como-control-de-la-motorizacion.md) — El ratio motos/autos entra como control dentro de la card, no como indicador
 - [0324](../adr/0324-el-snic-conserva-homicidios-por-nombre-no-por-ranking.md) — El SNIC conserva homicidios por nombre, no por ranking de volumen
+- [0325](../adr/0325-correcciones-a-la-tanda-carne-motos-snic.md) — Correcciones a la tanda carne/motos/SNIC (ADR-0322/0323/0324)

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-09-16T00:12:58.311244-03:00",
+  "generated_at": "2026-09-16T00:46:00.984522-03:00",
   "period": "2026-09",
   "score_global": 3.8,
   "ponderacion": {
@@ -5475,7 +5475,7 @@
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "detalle_txt": "RIPTE / CBT del mismo mes (2026-07): canastas cubiertas por el salario imponible promedio — CBT de 2026-08 ya publicada ($519,578): esa brecha queda provisoria hasta que salga el RIPTE",
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -5500,7 +5500,7 @@
           "fuente": "INDEC — IPC alimentos y bebidas (vía datos.gob.ar)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -5529,7 +5529,7 @@
           "cobertura_costos_pct": 55.0,
           "transporte_pct_canasta": 43.0,
           "fuente_url": "https://economicas.uba.ar/iiep/reporte-de-tarifas-y-subsidios-agosto-2026/",
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -5555,7 +5555,7 @@
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
           "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_ipc_aperturas.xls",
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "precios",
@@ -5586,7 +5586,7 @@
             "porcina": 10.13,
             "total": -2.02
           },
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -5602,7 +5602,7 @@
             "tension": 7.2,
             "umbrales": null,
             "unidad": null,
-            "por_que": "Consumo aparente: vacuna 46,8 kg por habitante y año (−8,4% interanual); total de las tres carnes 113,9 kg (−2,0% interanual). La vacuna representa 41,0% del total. El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico."
+            "por_que": "Consumo aparente de carne vacuna: 46,8 kg por habitante y año (−8,4% interanual), el 41,0% del total de las tres carnes 113,9 kg por habitante y año (−2,0% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. El resto (aviar + porcina) suma 67,2 kg, el 59,0% restante. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico."
           }
         },
         "consumo_carnes_otras": {
@@ -5619,7 +5619,7 @@
           },
           "total_kg": 113.94,
           "ratio_bovina": 41.03,
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -5635,7 +5635,7 @@
             "tension": 5.0,
             "umbrales": null,
             "unidad": null,
-            "por_que": "Consumo aparente: vacuna 46,8 kg por habitante y año (−8,4% interanual); total de las tres carnes 113,9 kg (−2,0% interanual). La vacuna representa 41,0% del total. El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico."
+            "por_que": "Consumo aparente de aviar y porcina: 67,2 kg por habitante y año, el 59,0% del total de las tres carnes 113,9 kg por habitante y año (−2,0% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. Aviar 0,2% interanual y porcina 10,1% interanual. La carne vacuna suma 46,8 kg aparte, el 41,0% del total. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico."
           }
         },
         "informalidad": {
@@ -5644,7 +5644,7 @@
           "fuente": "INDEC EPH",
           "fecha_dato": "2026-01-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5684,7 +5684,7 @@
           "excluido_quiebre": "2024-12",
           "participacion_con_excluido": 22.1,
           "detalle_txt": "2,60 millones de independientes sobre 12,55 millones de puestos registrados · numerador: autónomos, monotributo general · denominador: autónomos, monotributo general, asalariados privados, asalariados públicos, casas particulares · queda afuera el monotributo social, cuyo padrón cayó de 653 a 259 mil personas en un solo mes (2024-12) por un cambio de régimen y no del mercado de trabajo · con ese régimen adentro daría 22,1%",
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5709,7 +5709,7 @@
           "fuente": "SRT — partes empleadoras con cobertura de ART, hasta 50 trabajadores",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5734,7 +5734,7 @@
           "fuente": "INDEC — ISAC desestacionalizado (planilla original vigente)",
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-16T00:08:47-03:00",
+          "obtenido_en": "2026-09-16T00:43:33-03:00",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5759,7 +5759,7 @@
           "fuente": "INDEC — EPH, tasa de subocupación demandante",
           "fecha_dato": "2026-01-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5784,7 +5784,7 @@
           "fuente": "Min. de Capital Humano — SIPA (vía datos.gob.ar)",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "empleo",
@@ -5809,8 +5809,8 @@
           "fuente": "UTDT — Índice de Victimización (LICIP)",
           "fecha_dato": "2026-07",
           "desactualizado": false,
-          "obtenido_en": "2026-09-16T00:08:45.637272",
-          "detalle_txt": "Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste SNIC (denuncias registradas, año 2025): 2.418.600 hechos",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
+          "detalle_txt": "Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste SNIC (denuncias registradas, año 2025): 2.418.600 hechos. Por tipo: Robos (excluye los agravados por el resultado de lesiones y/o muertes): 360.946; Hurtos: 308.523; Amenazas: 217.883; Lesiones dolosas: 179.710; Robos agravados por el resultado de lesiones y/o muertes: 8.293; Abusos sexuales con acceso carnal (violaciones): 6.344; Homicidios dolosos: 1.613",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "seguridad",
@@ -5835,7 +5835,7 @@
           "fuente": "UTDT — Nowcast de Pobreza (González-Rozada)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -5872,7 +5872,7 @@
             "motos_var": 36.80310053598621,
             "total_var": 15.655599638765704
           },
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -5898,7 +5898,7 @@
           "fuente": "INDEC — Encuesta de supermercados (ventas a precios constantes)",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-16T00:08:45.637272",
+          "obtenido_en": "2026-09-16T00:43:31.587727",
           "metodo_obtencion": "automatico",
           "en_indice": true,
           "dimension": "ingresos",
@@ -8314,7 +8314,7 @@
           "tension": null
         }
       },
-      "fuente_enriquecida": "vida_cotidiana_20260916_0009.json",
+      "fuente_enriquecida": "vida_cotidiana_20260916_0043.json",
       "score_explicacion": "ITCIS-B100 (índice de seguimiento: los componentes usan 100 = promedio del 4T-2023, salvo servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 28%, precios 25%, vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (ITCIS − 100) × 0,2."
     },
     "gestion": {

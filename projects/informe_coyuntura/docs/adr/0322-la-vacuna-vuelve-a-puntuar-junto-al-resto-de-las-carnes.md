@@ -6,7 +6,7 @@ fecha: 2026-09-15
 cinturon: 'vida'
 indicadores: [consumo_carne_vacuna, consumo_carnes_otras, consumo_carnes_total]
 archivos: ['scripts/itvc.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'scripts/gate_calidad.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'tests/test_carne_compuesto.py']
-relacionado: ['0217', '0216', '0153', '0224']
+relacionado: ['0153', '0216', '0217', '0224', '0325']
 ambito: 'ITCIS · componente de proteína animal · qué puntúa la carne'
 origen: 'Juan, Slack #monitor-de-proyecto-de-gobierno, 15-sep-2026: "en impacto social, sumar indicador carne vacuna por separado"'
 ---
@@ -24,7 +24,7 @@ ADR-0153/0216: o integra el índice, o no es card).
 
 Juan pide ahora sumarla "por separado". Eso reabre exactamente el problema
 que ADR-0217 cerró: si vuelve a puntuar sola, y el total sigue puntuando
-también, la faena vacuna —el 52,0% del total al 4T-2023, medido sobre las
+también, la faena vacuna —el 52,3% del total al 4T-2023, medido sobre las
 tres series de faena del INDEC— entraría dos veces al índice.
 
 **Antes de tocar el cálculo**, se verificó por qué la card de la vacuna
@@ -67,7 +67,7 @@ función sumaba las tres; ahora `_fetch_faena_indice(categorias)` en
 
 El peso nominal que tenía `consumo_carnes_total` (0,0392) se reparte entre
 los dos **en la proporción con la que cada carne pesaba en la faena total al
-4T-2023**, no 50/50: 52,0% vacuna / 48,0% aviar+porcina (medido sobre las
+4T-2023**, no 50/50: 52,3% vacuna / 47,7% aviar+porcina (medido sobre las
 tres series de faena INDEC, ventanas móviles de 12 meses que terminan en el
 4T-2023). Eso da 0,0392 × 0,523 ≈ **0,0205** para la vacuna y
 0,0392 × 0,477 ≈ **0,0187** para el resto — los cuatro dígitos exactos, y no
@@ -100,6 +100,30 @@ global resultante, se registran en el snapshot publicado por esta misma
 corrida (`web/src/data/informe.json`, `generated_at` de esta corrida) — no se
 calculan a mano acá para evitar que este documento quede desalineado con el
 número real la próxima vez que la faena se revise hacia atrás.
+
+**El resultado más importante de esa medición, dicho explícito: el ITCIS
+publicado no se mueve.** `itvc.valor` es 93,1 antes y después del split —
+verificado sobre `web/src/data/informe.json` (`peso_efectivo` de
+`consumo_carne_vacuna` = 0,0050 y de `consumo_carnes_otras` = 0,0046, exactos
+a los cuatro decimales del `consumo_carnes_total` que reemplazan: 0,0050 +
+0,0046 = 0,0096). **No es casualidad, es por construcción**: repartir el peso
+en la proporción real de la faena (52,3%/47,7%) hace que el promedio
+ponderado del score dé lo mismo que el score del total fusionado, porque el
+índice del total (94,4) YA ES el promedio ponderado de los índices de sus
+partes con esos mismos pesos (0,523×89,2 + 0,477×100,0 = 94,37 ≈ 94,4). Sobre
+el peso efectivo (×0,80 de la cesión hacia `consumo_supermercados`, ver
+arriba): 0,0314×94,4 = 2,964 puntos de aporte del total fusionado, contra
+0,0164×89,2 + 0,0150×100,0 = 2,963 puntos de la suma de las dos partes — la
+diferencia de milésimas es redondeo de los cuatro decimales publicados, no
+una discrepancia real.
+
+Que el índice no se mueva NO es un defecto de esta implementación: es la
+prueba de que separar vacuna de "el resto" no coló un cambio de nivel por la
+ventana. El objetivo del split nunca fue mover el ITCIS — fue dejar de tapar,
+con un promedio, que la vacuna cae a 89,2 mientras aviar+porcina se sostienen
+en 100,0. Antes de esta corrección, la sección de arriba decía sólo "se
+registran en el snapshot" sin decir el resultado, que es peor que decirlo: un
+lector no puede distinguir "no lo calculé" de "lo calculé y da lo mismo".
 
 ### Los tres números del equipo, verificados contra la serie
 

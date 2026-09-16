@@ -1013,7 +1013,10 @@ def test_familias_no_ordenan_empates():
     (112.8, 0.0, "igual a"),
 ])
 def test_carne_separa_nivel_variacion_y_fuente_del_color(total, var_total, posicion):
-    texto = publicar._por_que_carne(46.8, total, {"vacuna": -8.4, "total": var_total})
+    otras = total - 46.8
+    texto = publicar._por_que_carne(
+        "consumo_carne_vacuna", 46.8, otras, total,
+        {"vacuna": -8.4, "aviar": 0.2, "porcina": 10.1, "total": var_total})
     assert posicion in texto
     assert f"{publicar.coma(var_total)}% interanual" in texto
     assert "no identifican sustitución" in texto
@@ -1022,11 +1025,12 @@ def test_carne_separa_nivel_variacion_y_fuente_del_color(total, var_total, posic
     assert "Sustitución, no menos proteína" not in texto
 
 
-@pytest.mark.parametrize("vacuna,total,variaciones", [
-    (46.8, 0, {"vacuna": 1, "total": 2}),
-    (120, 110, {"vacuna": 1, "total": 2}),
-    (46.8, 110, {"vacuna": 1}),
-    (46.8, float("nan"), {"vacuna": 1, "total": 2}),
+@pytest.mark.parametrize("vacuna,otras,total,variaciones", [
+    (46.8, 63.2, 0, {"vacuna": 1, "total": 2}),
+    (120, -10, 110, {"vacuna": 1, "total": 2}),
+    (46.8, 63.2, 110, {"vacuna": 1}),
+    (46.8, 63.2, float("nan"), {"vacuna": 1, "total": 2}),
 ])
-def test_carne_no_inventa_lectura_sin_composicion_valida(vacuna, total, variaciones):
-    assert publicar._por_que_carne(vacuna, total, variaciones) is None
+def test_carne_no_inventa_lectura_sin_composicion_valida(vacuna, otras, total, variaciones):
+    assert publicar._por_que_carne("consumo_carne_vacuna", vacuna, otras, total, variaciones) is None
+    assert publicar._por_que_carne("consumo_carnes_otras", vacuna, otras, total, variaciones) is None

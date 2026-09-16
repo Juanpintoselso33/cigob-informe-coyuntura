@@ -2333,36 +2333,86 @@ def _por_que_dimension(puntaje, tension, base100):
 CARNES_TOTAL_REFERENCIA = 112.8
 
 
-def _por_que_carne(vacuna, total, variaciones):
+def _snic_desglose_txt(tipos_principales: dict) -> str:
+    """"; Homicidios dolosos: 1.613; Robos: 360.946" — el desglose del SNIC
+    por tipo de delito (ADR-0324/0325), tal como lo devuelve
+    `snic._parse_snic_csv` en `tipos_principales`.
+
+    Antes este dict se calculaba, se guardaba en el snapshot interno del
+    colector y no lo leía nadie río abajo (ni `publicar.py`, ni `web/src`,
+    ni el sitio construido): los homicidios se bajaban del CSV oficial y se
+    tiraban en la cañería antes de llegar al lector. Esta función es lo que
+    hace que sí lleguen, colgados del contraste SNIC que ya se publica en el
+    detalle de `inseguridad`.
+    """
+    if not tipos_principales:
+        return ""
+    partes = "; ".join(
+        f"{nombre}: {format(int(cant), ',').replace(',', '.')}"
+        for nombre, cant in tipos_principales.items()
+    )
+    return f". Por tipo: {partes}"
+
+
+def _por_que_carne(ikey, vacuna, otras, total, variaciones):
     """Nivel, variación y composición agregados; no identifica trayectorias.
 
     El color usa la evolución de faena per cápita contra 4T-2023. El consumo
     aparente oficial y su referencia histórica se explican como contexto.
+
+    Las dos cards que puntúan (`consumo_carne_vacuna` y `consumo_carnes_otras`)
+    comparten la MISMA matriz de nivel/variación —cada una necesita el número
+    de la otra para que la composición completa se vea desde cualquiera de las
+    dos—, pero el párrafo propio de cada una tiene que hablar de SU nivel y SUS
+    componentes, no repetir el de la otra (antes las dos publicaban el texto
+    de la vacuna, verificado en `dist/`).
     """
     import math
 
     var_v = (variaciones or {}).get("vacuna")
     var_t = (variaciones or {}).get("total")
-    valores = (vacuna, total, var_v, var_t)
+    var_a = (variaciones or {}).get("aviar")
+    var_p = (variaciones or {}).get("porcina")
+    valores = (vacuna, otras, total, var_v, var_t)
     if any(not isinstance(v, (int, float)) or not math.isfinite(v) for v in valores):
         return None
-    if total <= 0 or vacuna < 0 or vacuna > total:
+    if total <= 0 or vacuna < 0 or otras < 0 or vacuna > total:
         return None
 
-    ratio = vacuna / total * 100
+    ratio_vacuna = vacuna / total * 100
+    ratio_otras = 100 - ratio_vacuna
     posicion = ("por encima de" if total > CARNES_TOTAL_REFERENCIA else
                 "por debajo de" if total < CARNES_TOTAL_REFERENCIA else "igual a")
-    return (f"Consumo aparente: vacuna {coma(round(vacuna, 1))} kg por habitante y año "
-            f"({coma(round(var_v, 1))}% interanual); total de las tres carnes "
-            f"{coma(round(total, 1))} kg ({coma(round(var_t, 1))}% interanual). "
-            f"La vacuna representa {coma(round(ratio, 1))}% del total. "
-            f"El nivel total está {posicion} la referencia histórica "
-            f"de {coma(CARNES_TOTAL_REFERENCIA)} kg; esa comparación no indica "
-            f"si subió o bajó respecto del año anterior. "
-            f"Estos agregados no identifican sustitución dentro de los mismos "
-            f"hogares ni proteína ingerida. El color y el aporte al índice usan "
-            f"la evolución de faena por habitante frente a 4T-2023, no esta "
-            f"comparación de consumo aparente con el promedio histórico.")
+    contexto_total = (
+        f"total de las tres carnes {coma(round(total, 1))} kg por habitante y "
+        f"año ({coma(round(var_t, 1))}% interanual). El nivel total está "
+        f"{posicion} la referencia histórica de {coma(CARNES_TOTAL_REFERENCIA)} "
+        f"kg; esa comparación no indica si subió o bajó respecto del año "
+        f"anterior.")
+    cierre = (" Estos agregados no identifican sustitución dentro de los "
+              "mismos hogares ni proteína ingerida. El color y el aporte al "
+              "índice usan la evolución de faena por habitante frente a "
+              "4T-2023, no esta comparación de consumo aparente con el "
+              "promedio histórico.")
+
+    if ikey == "consumo_carne_vacuna":
+        cuerpo = (
+            f"Consumo aparente de carne vacuna: {coma(round(vacuna, 1))} kg "
+            f"por habitante y año ({coma(round(var_v, 1))}% interanual), el "
+            f"{coma(round(ratio_vacuna, 1))}% del {contexto_total} El resto "
+            f"(aviar + porcina) suma {coma(round(otras, 1))} kg, el "
+            f"{coma(round(ratio_otras, 1))}% restante.")
+    else:
+        var_a_txt = f"{coma(round(var_a, 1))}%" if isinstance(var_a, (int, float)) else "s/d"
+        var_p_txt = f"{coma(round(var_p, 1))}%" if isinstance(var_p, (int, float)) else "s/d"
+        cuerpo = (
+            f"Consumo aparente de aviar y porcina: {coma(round(otras, 1))} kg "
+            f"por habitante y año, el {coma(round(ratio_otras, 1))}% del "
+            f"{contexto_total} Aviar {var_a_txt} interanual y porcina "
+            f"{var_p_txt} interanual. La carne vacuna suma "
+            f"{coma(round(vacuna, 1))} kg aparte, el "
+            f"{coma(round(ratio_vacuna, 1))}% del total.")
+    return cuerpo + cierre
 
 
 def _por_que_motorizacion(composicion):
@@ -2478,8 +2528,8 @@ def _semaforos(informe):
             if ikey in ("consumo_carne_vacuna", "consumo_carnes_otras"):
                 vacuna_ind = bloque["indicadores"].get("consumo_carne_vacuna") or {}
                 otras_ind = bloque["indicadores"].get("consumo_carnes_otras") or {}
-                por_que = _por_que_carne(vacuna_ind.get("valor"), otras_ind.get("total_kg"),
-                                         ind.get("variaciones"))
+                por_que = _por_que_carne(ikey, vacuna_ind.get("valor"), otras_ind.get("valor"),
+                                         otras_ind.get("total_kg"), ind.get("variaciones"))
                 if por_que:
                     ind["semaforo"]["por_que"] = por_que
             # Lo mismo para la motorización (ADR-0224): el color dice "subió
@@ -2846,6 +2896,17 @@ def main():
                     snic_txt = (f" — contraste SNIC (denuncias registradas, año "
                                 f"{ins.get('fecha_dato')}): "
                                 f"{format(int(v_snic), ',').replace(',', '.')} hechos")
+                    # ADR-0325/0324: el desglose por tipo del SNIC (homicidios,
+                    # robos, hurtos, etc.) se descargaba y se guardaba en
+                    # `tipos_principales`, pero nada lo leía río abajo —
+                    # nunca llegaba al lector, sólo al snapshot interno del
+                    # colector. Se suma acá, al mismo contraste anual que ya
+                    # se publica, en vez de convertirlo en indicador nuevo
+                    # que puntúe (fuera de alcance: es anual, con ~8,5 meses
+                    # de rezago desde el cierre del año).
+                    tipos_snic = ((raw.get("snic") or {}).get("inseguridad_snic") or {}).get(
+                        "tipos_principales") or {}
+                    snic_txt += _snic_desglose_txt(tipos_snic)
                 ult = ivi[-1]
                 ins.update({
                     "valor": ult["valor"],

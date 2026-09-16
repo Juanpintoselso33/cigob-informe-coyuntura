@@ -14,6 +14,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import itvc  # noqa: E402
+import publicar  # noqa: E402
+import descargar_series  # noqa: E402
 
 SNAPSHOT = json.loads(
     (ROOT / "web" / "src" / "data" / "informe.json").read_text(encoding="utf-8"))
@@ -67,14 +69,41 @@ def test_las_dos_cards_existen_y_puntuan():
         ", ".join(k for k, i in IND.items() if not i.get("en_indice")))
 
 
-def test_la_matriz_explica_el_color_de_las_dos():
-    """Las dos cards que puntúan comparten la misma matriz explicativa, para
-    que el lector vea la composición completa (vacuna Y el resto) desde
-    cualquiera de las dos, no sólo desde una."""
-    for clave in ("consumo_carne_vacuna", "consumo_carnes_otras"):
-        por_que = (IND[clave].get("semaforo") or {}).get("por_que")
-        assert por_que, f"{clave} perdió la matriz que explica su color"
-        assert "vacuna" in por_que, por_que
+def test_la_matriz_explica_el_color_de_las_dos_con_texto_propio():
+    """Las dos cards que puntúan comparten la composición (vacuna Y el resto
+    aparecen en las dos, para que el lector vea el total desde cualquiera),
+    pero el texto de CADA UNA tiene que hablar de SU propio nivel: antes de
+    este fix las dos cards publicaban el mismo párrafo, el de la vacuna
+    (verificado en `dist/`: ninguna mención a aviar, porcina ni al valor
+    67,19 de `consumo_carnes_otras`)."""
+    por_que_vacuna = (IND["consumo_carne_vacuna"].get("semaforo") or {}).get("por_que")
+    por_que_otras = (IND["consumo_carnes_otras"].get("semaforo") or {}).get("por_que")
+    assert por_que_vacuna, "consumo_carne_vacuna perdió la matriz que explica su color"
+    assert por_que_otras, "consumo_carnes_otras perdió la matriz que explica su color"
+
+    # Las dos mencionan la vacuna (aparece en las dos como parte del total),
+    # pero NO pueden ser el mismo texto: cada una tiene que hablar de lo suyo.
+    assert "vacuna" in por_que_vacuna
+    assert "vacuna" in por_que_otras
+    assert por_que_vacuna != por_que_otras, (
+        "las dos cards publican el MISMO texto — control negativo: éste es "
+        "exactamente el bug que se está arreglando")
+
+    # La card de otras carnes tiene que nombrar su propio nivel y componentes.
+    otras_valor = IND["consumo_carnes_otras"].get("valor")
+    assert otras_valor is not None
+    assert publicar.coma(round(otras_valor, 1)) in por_que_otras, (
+        f"consumo_carnes_otras no menciona su propio valor ({otras_valor}): "
+        "sigue publicando el nivel de la vacuna")
+    assert "aviar" in por_que_otras.lower(), por_que_otras
+    assert "porcina" in por_que_otras.lower(), por_que_otras
+
+    # Control negativo explícito: la card de otras NO puede ser el párrafo
+    # "Consumo aparente de carne vacuna" que le corresponde a la otra card.
+    assert not por_que_otras.startswith("Consumo aparente de carne vacuna"), (
+        "consumo_carnes_otras publica el párrafo de apertura de la vacuna")
+    assert por_que_vacuna.startswith("Consumo aparente de carne vacuna")
+    assert por_que_otras.startswith("Consumo aparente de aviar")
 
 
 def test_las_series_se_reconstruyen_desde_la_faena_del_indec():
@@ -124,3 +153,41 @@ def test_la_reconstruccion_no_se_separa_de_la_fuente_oficial():
         f"publica {ia_sagyp:+.2f}%: {brecha:.2f} pp de brecha. No es un bug de "
         f"código — es que la faena dejó de aproximar el consumo. Ver ADR-0217/0322."
     )
+
+
+def test_otras_no_se_reconstruye_con_las_categorias_del_total():
+    """El riesgo exacto que ADR-0322 dice evitar: que `consumo_carnes_otras`
+    termine reconstruida con la faena de las TRES carnes (contando la vacuna
+    dos veces, una en `consumo_carne_vacuna` y otra acá).
+
+    Antes de este test, sustituir en memoria las categorías de la serie de
+    `consumo_carnes_otras` por las del total (`vacuna+aviar+porcina`) dejaba
+    pasar `test_la_reconstruccion_no_se_separa_de_la_fuente_oficial` y
+    `test_las_series_se_reconstruyen_desde_la_faena_del_indec` igual —
+    ninguna de las dos mira QUÉ categorías entran a la reconstrucción, sólo
+    el resultado agregado. Éste sí las mira, directo en la función que arma
+    la serie.
+    """
+    categorias_por_llamada = []
+
+    def _fake_fetch_faena_indice(categorias):
+        categorias_por_llamada.append(tuple(categorias))
+        return [["2023-10-01", 100.0]]
+
+    import unittest.mock as mock
+    with mock.patch.object(descargar_series, "_fetch_faena_indice",
+                            side_effect=_fake_fetch_faena_indice):
+        descargar_series.fetch_carne_vacuna_indice_serie()
+        descargar_series.fetch_carnes_otras_indice_serie()
+
+    assert categorias_por_llamada[0] == ("vacuna",), (
+        f"consumo_carne_vacuna se reconstruye con {categorias_por_llamada[0]}, "
+        "no sólo con la faena vacuna")
+    assert categorias_por_llamada[1] == ("aviar", "porcina"), (
+        f"consumo_carnes_otras se reconstruye con {categorias_por_llamada[1]}: "
+        "si esto alguna vez incluye 'vacuna', la faena vacuna entra dos veces "
+        "al ITCIS — exactamente lo que ADR-0322 dice evitar")
+    assert "vacuna" not in categorias_por_llamada[1], (
+        "control positivo del control negativo: esta línea tiene que fallar "
+        "si alguien sustituye la tupla de consumo_carnes_otras por la del "
+        "total (probado a mano rompiéndolo antes de este commit)")

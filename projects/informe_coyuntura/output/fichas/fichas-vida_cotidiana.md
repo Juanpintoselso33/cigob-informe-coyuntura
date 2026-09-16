@@ -506,7 +506,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 46,75 kg/hab/año (2026-07).
 
-Consumo aparente: vacuna 46,8 kg por habitante y año (−8,4% interanual); total de las tres carnes 113,9 kg (−2,0% interanual). La vacuna representa 41,0% del total. El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico.
+Consumo aparente de carne vacuna: 46,8 kg por habitante y año (−8,4% interanual), el 41,0% del total de las tres carnes 113,9 kg por habitante y año (−2,0% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. El resto (aviar + porcina) suma 67,2 kg, el 59,0% restante. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico.
 
 **Color vigente: NARANJA**
 
@@ -516,7 +516,7 @@ Ponderación vigente en el ITCIS: 0,5 % efectivo. El color es una lectura adicio
 
 - El nivel es consumo «aparente», no medición de hogares: no observa lo que come una familia, sino lo que queda en el mercado interno.
 - La evolución se reconstruye desde la FAENA, que es producción y no netea exportaciones. Rebasar a 100 no elimina diferencias de evolución entre producción y consumo; esas diferencias pueden afectar al puntaje. Una distancia superior a tres puntos porcentuales se usa como aviso de divergencia, no como prueba de equivalencia cuando queda por debajo.
-- El «promedio histórico ~73 kg» que cita el equipo no se puede verificar contra la serie propia del monitor (arranca en oct-2023 para SAGYP/CICCRA); es una referencia externa, no recalculada acá.
+- El equipo cita un «promedio histórico ~73 kg/hab/año» de referencia: no se publica acá porque no hay fuente citable y verificable para ese número dentro de este repo (ni en la serie propia, que arranca en 2023, ni en un documento oficial localizable). Se prefiere no publicar el dato a publicarlo sin respaldo.
 - El pasaje a per cápita usa una proyección de población, no un censo del mes.
 
 ## Si falta el dato / Política de revisiones
@@ -533,7 +533,9 @@ Ponderación vigente en el ITCIS: 0,5 % efectivo. El color es una lectura adicio
 
 **2026-08-20** — Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023 (ADR-0217). La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.
 
-**2026-09-15** — Vuelve a puntuar por separado (ADR-0322), a pedido explícito de sumar la carne vacuna como indicador propio. El componente `consumo_carnes_total` deja de puntuar y se reemplaza por ésta y por `consumo_carnes_otras`, con el peso nominal repartido en la misma proporción con la que cada una pesaba en el total al 4T-2023 (52,0% / 48,0%), sin tocar el peso de ningún otro componente.
+**2026-09-15** — Vuelve a puntuar por separado (ADR-0322), a pedido explícito de sumar la carne vacuna como indicador propio. El componente `consumo_carnes_total` deja de puntuar y se reemplaza por ésta y por `consumo_carnes_otras`, con el peso nominal repartido en la misma proporción con la que cada una pesaba en el total al 4T-2023 (52,3% / 47,7%), sin tocar el peso de ningún otro componente.
+
+**2026-09-16** — ADR-0325: se retira el «promedio histórico ~73 kg» sin fuente citable, se declara la divergencia SAGYP/CICCRA (46,75 vs 46,0 kg) y se corrige el 52,0%/48,0% de la entrada anterior por el 52,3%/47,7% que efectivamente usa el reparto de pesos.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -600,7 +602,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 67,19 kg/hab/año (2026-07).
 
-Consumo aparente: vacuna 46,8 kg por habitante y año (−8,4% interanual); total de las tres carnes 113,9 kg (−2,0% interanual). La vacuna representa 41,0% del total. El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico.
+Consumo aparente de aviar y porcina: 67,2 kg por habitante y año, el 59,0% del total de las tres carnes 113,9 kg por habitante y año (−2,0% interanual). El nivel total está por encima de la referencia histórica de 112,8 kg; esa comparación no indica si subió o bajó respecto del año anterior. Aviar 0,2% interanual y porcina 10,1% interanual. La carne vacuna suma 46,8 kg aparte, el 41,0% del total. Estos agregados no identifican sustitución dentro de los mismos hogares ni proteína ingerida. El color y el aporte al índice usan la evolución de faena por habitante frente a 4T-2023, no esta comparación de consumo aparente con el promedio histórico.
 
 **Color vigente: AMARILLO**
 
@@ -622,6 +624,8 @@ Ponderación vigente en el ITCIS: 0,5 % efectivo. El color es una lectura adicio
 ## Historial — cambios metodológicos documentados
 
 **2026-09-15** — Nace del reemplazo de `consumo_carnes_total` (ADR-0322): antes el aviar y la porcina sólo entraban sumados a la vacuna en un único compuesto; ahora tienen componente propio con el peso proporcional que tenían dentro de ese total.
+
+**2026-09-16** — ADR-0325: se corrige el 48,0%/52,0% de la entrada anterior por el 47,7%/52,3% real, y el texto que explica el color deja de repetir el párrafo de `consumo_carne_vacuna` — ahora nombra su propio nivel (aviar+porcina) y sus componentes.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1218,7 +1222,7 @@ Este componente está hoy en **104,8**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste SNIC (denuncias registradas, año 2025): 2.418.600 hechos
+- Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste SNIC (denuncias registradas, año 2025): 2.418.600 hechos. Por tipo: Robos (excluye los agravados por el resultado de lesiones y/o muertes): 360.946; Hurtos: 308.523; Amenazas: 217.883; Lesiones dolosas: 179.710; Robos agravados por el resultado de lesiones y/o muertes: 8.293; Abusos sexuales con acceso carnal (violaciones): 6.344; Homicidios dolosos: 1.613
 
 ## Color vigente y por qué
 
@@ -1235,6 +1239,7 @@ Ponderación vigente en el ITCIS: 4,9 % efectivo. El color es una lectura adicio
 - La auditoría del 8-sep-2026 recuperó informes de 2020–2023, incluido el 4º trimestre de 2023: la afirmación anterior de suspensión era incorrecta. Se mantiene explícita la base de enero de 2024; una eventual armonización con 4T-2023 requiere documentar su efecto sobre el índice (ADR-0273).
 - Error muestral de ±3 puntos por mes (~1.000 hogares) y cobertura solo urbana.
 - La divergencia con el registro de denuncias requiere contrastar universos, períodos y error muestral: por sí sola no demuestra crecimiento del delito no denunciado.
+- El contraste SNIC (registro oficial de delitos) es ANUAL, con ~8,5 meses de rezago desde el cierre del año, y no puntúa: es contexto declarado en el detalle, no un segundo componente del índice.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1251,6 +1256,8 @@ Ponderación vigente en el ITCIS: 4,9 % efectivo. El color es una lectura adicio
 **2026-09-08** — Se actualiza el portal de descubrimiento y se admiten enlaces relativos a PDF; se recupera julio de 2026 y se explicita el límite del contraste con denuncias (ADR-0273).
 
 **2026-09-15** — ADR-0311: el rótulo de la card pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+
+**2026-09-16** — ADR-0325/0324: el desglose del SNIC por tipo de delito (homicidios, robos, hurtos, etc.), que se descargaba pero se quedaba en el snapshot interno del colector, se suma al contraste SNIC del detalle. Se restituyen Amenazas y Lesiones dolosas a la lista de tipos conservados.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
