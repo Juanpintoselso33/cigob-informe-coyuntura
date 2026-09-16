@@ -99,6 +99,23 @@ def test_las_dimensiones_reagregadas_reproducen_el_indice(sigla):
     exacta y no admite tolerancia. Que dé es la prueba de que la serie por
     dimensión salió del mismo cálculo que la serie del índice: mismos meses,
     mismos pesos, mismo criterio ante un componente faltante.
+
+    ACUMULAR COMO ACUMULA EL MOTOR, no con `sum()` (2026-09-15). La suma se
+    hace con `+=` en el orden de las dimensiones, que es lo que hace
+    `parametrica.calcular_indice`. No es cosmético: con `sum()` el resultado
+    puede diferir del motor en **un ULP**, y un mes que cae justo en un empate
+    de redondeo se va para el otro lado. Pasó de verdad: una revisión de la SRT
+    movió `litigiosidad_laboral` de 3,5 a 3,6 en 2024-09, el ITCG aterrizó en
+    45,05 exacto, y las dos rutas lo redondearon distinto — el motor a 45,0
+    (el float más cercano a 45,05 cae apenas por debajo) y `sum()` a 45,1
+    (45.050000000000004, apenas por arriba). Mismos pesos, misma fórmula,
+    distinto orden de acumulación.
+
+    Esto NO afloja la guarda: sigue sin tolerancia y sigue comparando por
+    igualdad exacta. Lo que cambia es que reproduce la aritmética del motor en
+    vez de una equivalente en álgebra real pero no en punto flotante — que es
+    justo lo que el primer párrafo dice que hace. Cualquier diferencia real de
+    componentes, pesos o criterio de faltantes sigue apareciendo igual.
     """
     bloque, serie = SERIES_DIM[sigla], _serie_indice(sigla)
     assert serie, f"no hay serie del índice {sigla} contra la que reagregar"
@@ -106,7 +123,10 @@ def test_las_dimensiones_reagregadas_reproducen_el_indice(sigla):
         presentes = [(d["peso"], d["serie"][ym]) for d in bloque.values() if ym in d["serie"]]
         assert presentes, f"{sigla} {ym}: el índice tiene punto y ninguna dimensión"
         suma = sum(p for p, _ in presentes)
-        reagregado = round(sum(v * p / suma for p, v in presentes), 1)
+        acumulado = 0.0
+        for p, v in presentes:
+            acumulado += v * p / suma
+        reagregado = round(acumulado, 1)
         assert reagregado == valor, (
             f"{sigla} {ym}: reagregar las {len(presentes)} dimensiones da "
             f"{reagregado} y el índice publica {valor}")

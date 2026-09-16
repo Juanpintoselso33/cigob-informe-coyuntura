@@ -35,18 +35,18 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 78,5** | **VERDE** | Moderadamente aflojado | 13 indicadores: 9 en verde · 4 en amarillo |
+| **ITCG: 78,6** | **VERDE** | Moderadamente aflojado | 13 indicadores: 9 en verde · 4 en amarillo |
 Componentes que puntúan en este corte: 13 de 13 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 72,0 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 72,3 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 100,0 | VERDE | 25,0 % |
-| Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. | 57,9 | AMARILLO | 15,0 % |
+| Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. | 57,7 | AMARILLO | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales. | 70,4 | VERDE | 15,0 % |
-| Reforma social y orden | Reúne la composición presupuestaria de transferencias de dos programas sociales (TDPS), la evolución de cortes por manifestación en CABA y la derivación directa de… | 90,9 | VERDE | 10,0 % |
+| Reforma social y orden | Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes… | 90,9 | VERDE | 10,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (CCL) del dólar mayorista de referencia: la brecha cambiaria. | 5,97 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (CCL) del dólar mayorista de referencia: la brecha cambiaria. | 5,85 % de brecha CCL/mayorista | VERDE | 14,0 % |
 | Apertura comercial (alícuota) | La recaudación de derechos de importación, exportación y tasa de estadística (ARCA) por cada dólar de intercambio… | 7,62 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.115 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -69,13 +69,13 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023. | −28,69 % de variación real vs 2023-07 (IMIG funcionamiento) | VERDE | 10,4 % |
 | **DIMENSIÓN: Reforma laboral** | | | | |
 | Fondo de Asistencia Laboral | Cuánto de la reforma laboral RIGE, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el… | 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | AMARILLO | 7,5 % |
-| Litigiosidad laboral (SRT) | Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT). | 2,1 % variación juicios SRT (12m vs 12m previos) | VERDE | 7,5 % |
+| Litigiosidad laboral (SRT) | Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT). | 2,3 % variación juicios SRT (12m vs 12m previos) | VERDE | 7,5 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
 | Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 55,6 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
 | Inversiones RIGI | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 23,8 % de inversión aprobada sobre el pipeline | AMARILLO | 6,0 % |
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
-| Asistencia directa | La TDPS aproxima la desintermediación mediante la composición presupuestaria. | 100 TDPS: % del devengado de transferencias en ayudas a personas (5.1.4) | VERDE | 4,0 % |
+| Asistencia directa | Aproxima la desintermediación mediante la composición presupuestaria. | 100 % del devengado de transferencias en ayudas a personas (5.1.4) | VERDE | 4,0 % |
 | Orden público (piquetes) | En qué porcentaje se redujo el número de cortes por manifestación relevados en CABA respecto de una base estimada para… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
 | Libertad de opción en salud | Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como… | 33,1 % de usuarios de prepagas con aportes derivados directo (sin triangulación) | AMARILLO | 2,0 % |
 
@@ -95,7 +95,7 @@ Cuánto se separa el dólar financiero (CCL) del dólar mayorista de referencia:
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 5,97 % de brecha CCL/mayorista** (2026-09) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 5,85 % de brecha CCL/mayorista** (2026-09) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -138,13 +138,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1597.50 (2026-09-14T17:58:00-03:00) / mayorista venta 1507.50 (2026-09-14T13:19:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1594.60 (2026-09-15T17:56:00-03:00) / mayorista venta 1506.50 (2026-09-15T12:47:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 5,97 % de brecha CCL/mayorista (2026-09).
+Dato vigente: 5,85 % de brecha CCL/mayorista (2026-09).
 
-5,97 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 8,03 del corte más cercano.
+5,85 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 8,15 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -669,7 +669,7 @@ Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT): 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 2,1 % variación juicios SRT (12m vs 12m previos)** (2026-05) | **VERDE** | Peso efectivo 7,5 % del ITCG | Cinturón Gestión |
+| **Hoy: 2,3 % variación juicios SRT (12m vs 12m previos)** (2026-06) | **VERDE** | Peso efectivo 7,5 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -677,9 +677,9 @@ Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT): 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | litigiosidad_laboral | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | % variación juicios SRT (12m vs 12m previos) |
-| **SERIE DISPONIBLE** | 2021-06 → 2026-05 (60 puntos) | **REZAGO DE PUBLICACIÓN** | La serie oficial de juicios se publica con 3-4 meses de rezago. |
+| **SERIE DISPONIBLE** | 2021-07 → 2026-06 (60 puntos) | **REZAGO DE PUBLICACIÓN** | La serie oficial de juicios se publica con 3-4 meses de rezago. |
 | **PRODUCTOR DEL DATO** | SRT — Superintendencia de Riesgos del Trabajo | **OPERACIÓN ESTADÍSTICA** | Serie histórica de litigiosidad: ingresos de juicios del sistema de riesgos del trabajo, total sistema |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-09-15 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-15 |
 
 ## Definición — qué mide y por qué importa
 
@@ -710,13 +710,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 127.363 juicios en 12m (hasta 2026-05) vs 124.767 previos
+- 128.674 juicios en 12m (hasta 2026-06) vs 125.771 previos
 
 ## Color vigente y por qué
 
-Dato vigente: 2,1 % variación juicios SRT (12m vs 12m previos) (2026-05).
+Dato vigente: 2,3 % variación juicios SRT (12m vs 12m previos) (2026-06).
 
-2,1 % variación juicios SRT (12m vs 12m previos) cae en el tramo que corresponde a Verde, a 0,4 del corte más cercano.
+2,3 % variación juicios SRT (12m vs 12m previos) cae en el tramo que corresponde a Verde, a 0,2 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -1027,29 +1027,29 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 
 # Asistencia directa
 
-La TDPS aproxima la desintermediación mediante la composición presupuestaria: devengado de Volver al Trabajo y Acompañamiento Social clasificado como ayudas a personas (5.1.4) sobre el total de transferencias de esas actividades.
+Aproxima la desintermediación mediante la composición presupuestaria: devengado de Volver al Trabajo y Acompañamiento Social clasificado como ayudas a personas (5.1.4) sobre el total de transferencias de esas actividades.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 TDPS: % del devengado de transferencias en ayudas a personas (5.1.4)** (2026-09) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
+| **Hoy: 100 % del devengado de transferencias en ayudas a personas (5.1.4)** (2026-09) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | asistencia_directa | **CINTURÓN** | Gestión |
-| **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | TDPS: % del devengado de transferencias en ayudas a personas (5.1.4) |
+| **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % del devengado de transferencias en ayudas a personas (5.1.4) |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-08 (41 puntos) | **REZAGO DE PUBLICACIÓN** | Semanas: el devengado del ejercicio corriente se carga de forma continua. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda — Presupuesto Abierto | **OPERACIÓN ESTADÍSTICA** | TDPS — aproximación presupuestaria a la desintermediación: porcentaje del devengado de transferencias de Volver al Trabajo y Acompañamiento Social clasificado como ayudas a personas (5.1.4) |
 | **MODO DE ACCESO** | Automático: API oficial con credencial de acceso; la línea de base 2023 (ejercicio cerrado) se calculó una vez y quedó fijada. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-15 |
 
 ## Definición — qué mide y por qué importa
 
-La TDPS aproxima la desintermediación mediante la composición presupuestaria: devengado de Volver al Trabajo y Acompañamiento Social clasificado como ayudas a personas (5.1.4) sobre el total de transferencias de esas actividades.
+Aproxima la desintermediación mediante la composición presupuestaria: devengado de Volver al Trabajo y Acompañamiento Social clasificado como ayudas a personas (5.1.4) sobre el total de transferencias de esas actividades.
 
 Permite seguir esa composición del gasto. La base Potenciar Trabajo 2023 ya era 98,3%; no corresponde presentarla como una transferencia mayoritariamente intermediada. El devengado no acredita pago efectivo, cobro por el beneficiario ni ausencia de intermediación en la implementación.
 
-**Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales (TDPS), la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. La TDPS no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
 
 ## Método de cómputo
 
@@ -1062,7 +1062,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (TDPS: % del devengado de transferencias en ayudas a personas (5.1.4)) | Color |
+| Rango (% del devengado de transferencias en ayudas a personas (5.1.4)) | Color |
 |---|---|
 | ≥ 67 | VERDE |
 | 45 – 67 | AMARILLO |
@@ -1077,9 +1077,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 100 TDPS: % del devengado de transferencias en ayudas a personas (5.1.4) (2026-09).
+Dato vigente: 100 % del devengado de transferencias en ayudas a personas (5.1.4) (2026-09).
 
-100,0 TDPS: % del devengado de transferencias en ayudas a personas (5.1.4) cae en el tramo que corresponde a Verde, a 33,0 del corte más cercano.
+100,0 % del devengado de transferencias en ayudas a personas (5.1.4) cae en el tramo que corresponde a Verde, a 33,0 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -1139,7 +1139,7 @@ En qué porcentaje se redujo el número de cortes por manifestación relevados e
 
 Describe la evolución de los cortes registrados por Diagnóstico Político. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.
 
-**Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales (TDPS), la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. La TDPS no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
 
 ## Método de cómputo
 
@@ -1234,7 +1234,7 @@ Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados 
 
 Mide la adopción real de la libre elección con los padrones oficiales de la SSS (RNAS y RNEMP): antes de la reforma este canal no existía; a marzo de 2026 lo usan 2,66 millones de personas en 59 prepagas inscriptas.
 
-**Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales (TDPS), la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. La TDPS no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
 
 ## Método de cómputo
 

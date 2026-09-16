@@ -44,7 +44,7 @@ Componentes que puntúan en este corte: 17 de 17 publicados.
 |---|---|---|---|---|
 | Ingresos y consumo | Si el sueldo alcanza y qué compra. | 112,1 | VERDE | 28,1 % |
 | Presión de precios | Tres gastos sensibles. | 98,3 | AMARILLO | 25,0 % |
-| Prospectivas de empleo | Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC)… | 91,8 | NARANJA | 24,2 % |
+| Prospectivas de empleo | Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el… | 91,8 | NARANJA | 24,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,8 | ROJO | 10,0 % |
 | Seguridad | Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. | 104,8 | AMARILLO | 4,5 % |
 
@@ -74,14 +74,14 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC. | 37,9 % | NARANJA | 9,0 % |
 | Peso del trabajo independiente | Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los… | 20,69 % del empleo registrado SIPA, sin monotributo social | NARANJA | 2,6 % |
 | Empleadores PyME activos | Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART. | 460.165 empleadores | NARANJA | 3,9 % |
-| Construcción (ISAC) | Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. | 140,2 índice ISAC | ROJO | 3,5 % |
+| Construcción | Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. | 140,2 índice ISAC | ROJO | 3,5 % |
 | Subocupación demandante | Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando… | 7,5 % de la PEA | NARANJA | 1,4 % |
 | Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.095,84 miles de puestos | AMARILLO | 5,9 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
 | Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,41 % de la cartera en situación irregular | ROJO | 7,6 % |
 | Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | ROJO | 3,3 % |
 | **DIMENSIÓN: Seguridad** | | | | |
-| Victimización (IVI) | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 4,9 % |
+| Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 4,9 % |
 
 *Datos al 2026-09-15.*
 
@@ -566,7 +566,7 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 
 Mide la precariedad laboral y la exclusión de la red de protección social. En el ITCIS su base es el 4T-2023 exacto (el trimestre de arranque del mandato).
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -653,7 +653,7 @@ Qué proporción del empleo registrado son trabajadores independientes —autón
 
 Describe la composición del empleo registrado, excluido el monotributo social. Puede aumentar porque crecen los independientes o porque caen los asalariados. Complementa el número de empleadores, pero no permite identificar si quienes perdieron un empleo pasaron a facturar por su cuenta. El signo invertido expresa el criterio del monitor sobre protección laboral; no mide la calidad de cada trabajo independiente.
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -745,7 +745,7 @@ Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART
 
 Observa la cantidad de empleadores dentro de ese universo. Una baja puede corresponder a un cierre, a dejar de tener personal declarado o a superar los 50 trabajadores; una entrada puede provenir de una empresa que reduce su nómina. La serie agregada no separa esos movimientos ni acredita quiebras.
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -813,7 +813,7 @@ Ponderación vigente en el ITCIS: 3,9 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Construcción (ISAC)
+# Construcción
 
 Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.
 
@@ -837,7 +837,7 @@ Nivel de actividad de la construcción medido por el ISAC desestacionalizado del
 
 Termómetro de la obra pública y privada, sensible al ciclo económico.
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -891,6 +891,8 @@ Ponderación vigente en el ITCIS: 3,5 % efectivo. El color es una lectura adicio
 
 **2026-07-03** — Entra al ITCIS como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias).
 
+**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -923,7 +925,7 @@ Qué porcentaje de la población económicamente activa trabaja menos horas de l
 
 Señala empleo insuficiente: gente que ya tiene trabajo y sale igual a buscar más horas. Es la presión sobre el mercado laboral que la desocupación no ve, porque a estas personas las cuenta como ocupadas.
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -1013,7 +1015,7 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 
 Cuenta puestos asalariados privados registrados. Complementa las medidas de actividad e informalidad; no cubre empleo público, independiente o no registrado ni describe por sí solo la calidad de esos puestos. La serie permite seguir el nivel y sus variaciones con la fecha de cada observación.
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -1077,7 +1079,7 @@ Ponderación vigente en el ITCIS: 5,9 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Victimización (IVI)
+# Victimización
 
 Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del LICIP (Universidad Di Tella) en 40 centros urbanos.
 
@@ -1158,6 +1160,8 @@ Ponderación vigente en el ITCIS: 4,9 % efectivo. El color es una lectura adicio
 **2026-07-04** — La métrica pasa a la encuesta mensual de victimización (con la base declarada en enero de 2024); el registro de denuncias queda como serie de contraste.
 
 **2026-09-08** — Se actualiza el portal de descubrimiento y se admiten enlaces relativos a PDF; se recupera julio de 2026 y se explicita el límite del contraste con denuncias (ADR-0273).
+
+**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

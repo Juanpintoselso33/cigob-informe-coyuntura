@@ -1,22 +1,22 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-09-15T03:10:02.980490",
+  "generated_at": "2026-09-15T23:16:34.109403",
   "score": 2.1,
   "itcg": {
-    "valor": 78.5,
+    "valor": 78.6,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "reformas_economicas": {
         "nombre": "Reformas económicas fundamentales",
         "peso": 0.35,
-        "puntaje": 72.0,
+        "puntaje": 72.3,
         "indicadores": {
           "cepo_mulc": {
             "peso": 0.4,
-            "puntaje_banda": 94.2,
-            "puntaje_aplicado": 94.2,
-            "valor": 5.97,
+            "puntaje_banda": 94.9,
+            "puntaje_aplicado": 94.9,
+            "valor": 5.85,
             "peso_efectivo": 0.14
           },
           "apertura_comercial": {
@@ -61,7 +61,7 @@
       "reforma_laboral": {
         "nombre": "Reforma laboral",
         "peso": 0.15,
-        "puntaje": 57.9,
+        "puntaje": 57.7,
         "indicadores": {
           "fal_modernizacion_laboral": {
             "peso": 0.5,
@@ -72,9 +72,9 @@
           },
           "litigiosidad_laboral": {
             "peso": 0.5,
-            "puntaje_banda": 60.8,
-            "puntaje_aplicado": 60.8,
-            "valor": 2.1,
+            "puntaje_banda": 60.4,
+            "puntaje_aplicado": 60.4,
+            "valor": 2.3,
             "peso_efectivo": 0.075
           }
         },
@@ -143,27 +143,27 @@
   },
   "indicadores": {
     "cepo_mulc": {
-      "valor": 5.97,
+      "valor": 5.85,
       "unidad": "% de brecha CCL/mayorista",
       "fuente": "dolarapi.com — CCL y mayorista (el mayorista replica la referencia A3500 del BCRA)",
-      "fecha_dato": "2026-09-14",
+      "fecha_dato": "2026-09-15",
       "cotizaciones": {
         "ccl": {
-          "venta": 1597.5,
-          "actualizado_en": "2026-09-14T17:58:00-03:00"
+          "venta": 1594.6,
+          "actualizado_en": "2026-09-15T17:56:00-03:00"
         },
         "mayorista": {
-          "venta": 1507.5,
-          "actualizado_en": "2026-09-14T13:19:00-03:00"
+          "venta": 1506.5,
+          "actualizado_en": "2026-09-15T12:47:00-03:00"
         }
       },
-      "detalle_txt": "CCL venta 1597.50 (2026-09-14T17:58:00-03:00) / mayorista venta 1507.50 (2026-09-14T13:19:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
+      "detalle_txt": "CCL venta 1594.60 (2026-09-15T17:56:00-03:00) / mayorista venta 1506.50 (2026-09-15T12:47:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
       "desactualizado": false,
-      "obtenido_en": "2026-09-15T03:06:42",
+      "obtenido_en": "2026-09-15T23:15:11",
       "en_indice": true,
       "dimension": "reformas_economicas",
-      "puntaje_itcg": 94.2,
-      "puntaje_banda": 94.2,
+      "puntaje_itcg": 94.9,
+      "puntaje_banda": 94.9,
       "peso_efectivo": 0.14
     },
     "apertura_comercial": {
@@ -174,7 +174,7 @@
       "desactualizado": false,
       "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_20_08_26.xls",
       "advertencia_fuente": null,
-      "obtenido_en": "2026-09-15T03:06:48",
+      "obtenido_en": "2026-09-15T23:15:14",
       "detalle_txt": "US$ 1.189 M recaudados por derechos de impo+expo y tasa de estadística sobre US$ 15.593 M de intercambio (2026-07) · canal aduanero sin fuente pública",
       "en_indice": true,
       "dimension": "reformas_economicas",
@@ -192,7 +192,7 @@
       "normas_afectadas": 2841,
       "alta_del_mes": 267,
       "detalle_txt": "17.115 artículos modificados o eliminados desde el 10 de diciembre de 2023 (+267 en el mes) · los produjeron 770 normas de desregulación, que modificaron o eliminaron 2841 normas anteriores",
-      "obtenido_en": "2026-09-15T03:07:03",
+      "obtenido_en": "2026-09-15T23:15:18",
       "en_indice": true,
       "dimension": "reformas_economicas",
       "puntaje_itcg": 73.3,
@@ -213,7 +213,7 @@
       "var_planta_civil": -19.0,
       "fecha_desglose_fuerzas": "2026-02",
       "detalle_txt": "183.520 agentes (2026-07) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,74% aparte; el universo completo varía -20,68%",
-      "obtenido_en": "2026-09-15T03:07:05",
+      "obtenido_en": "2026-09-15T23:15:20",
       "en_indice": true,
       "dimension": "reforma_estado",
       "puntaje_itcg": 100.0,
@@ -227,7 +227,7 @@
       "fecha_dato": "2026-07-01",
       "desactualizado": false,
       "detalle_txt": "$ 2,82 bn. base caja (2026-07) vs $ 0,60 bn (2023-07) · inflación del período ×6,6",
-      "obtenido_en": "2026-09-15T03:07:07",
+      "obtenido_en": "2026-09-15T23:15:22",
       "en_indice": true,
       "dimension": "reforma_estado",
       "puntaje_itcg": 100.0,
@@ -241,7 +241,7 @@
       "fecha_dato": "2026-07-01",
       "desactualizado": false,
       "detalle_txt": "$ 2,18 bn. base caja (2026-07) vs $ 0,49 bn (2023-07) · inflación del período ×6,6",
-      "obtenido_en": "2026-09-15T03:07:08",
+      "obtenido_en": "2026-09-15T23:15:22",
       "en_indice": false,
       "dimension": "reforma_estado",
       "suspendido": {
@@ -322,7 +322,7 @@
         }
       ],
       "detalle_txt": "11 actos de disolución o cierre de organismos desde dic-2023 (45 = plan completo) · 7 excluidos por falso positivo o por revertidos por el Congreso · 2 sin clasificar todavía, no cuentan",
-      "obtenido_en": "2026-09-15T03:07:27",
+      "obtenido_en": "2026-09-15T23:15:29",
       "en_indice": false,
       "dimension": "reforma_estado",
       "suspendido": {
@@ -387,7 +387,7 @@
       "fci_cese_registrados": 0,
       "menciones_bo": 4,
       "detalle_txt": "Evaluación al 2026-09-15; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 4 menciones del FAL en el BO desde mar-2026",
-      "obtenido_en": "2026-09-15T03:07:31",
+      "obtenido_en": "2026-09-15T23:15:30",
       "en_indice": true,
       "dimension": "reforma_laboral",
       "puntaje_itcg": 55.0,
@@ -395,18 +395,18 @@
       "peso_efectivo": 0.075
     },
     "litigiosidad_laboral": {
-      "valor": 2.1,
+      "valor": 2.3,
       "unidad": "% variación juicios SRT (12m vs 12m previos)",
       "fuente": "SRT — Serie histórica de litigiosidad",
-      "fecha_dato": "2026-05-01",
+      "fecha_dato": "2026-06-01",
       "desactualizado": false,
-      "juicios_12m": 127363,
-      "detalle_txt": "127.363 juicios en 12m (hasta 2026-05) vs 124.767 previos",
-      "obtenido_en": "2026-09-15T03:07:32",
+      "juicios_12m": 128674,
+      "detalle_txt": "128.674 juicios en 12m (hasta 2026-06) vs 125.771 previos",
+      "obtenido_en": "2026-09-15T23:15:31",
       "en_indice": true,
       "dimension": "reforma_laboral",
-      "puntaje_itcg": 60.8,
-      "puntaje_banda": 60.8,
+      "puntaje_itcg": 60.4,
+      "puntaje_banda": 60.4,
       "peso_efectivo": 0.075
     },
     "privatizaciones": {
@@ -509,28 +509,10 @@
         "consultas_sin_error": 27,
         "consultas_fallidas": [],
         "textos_fallidos": [],
-        "relectura_pendiente": [
-          "428357",
-          "428379",
-          "427312",
-          "429351",
-          "429326",
-          "429034",
-          "429042",
-          "429053",
-          "428948",
-          "428950",
-          "428728",
-          "428542",
-          "428182",
-          "427731",
-          "427758",
-          "427534",
-          "427535"
-        ]
+        "relectura_pendiente": []
       },
       "detalle_txt": "9 empresas · etapa promedio 2,22/4 · cerradas: Transener",
-      "obtenido_en": "2026-09-15T03:08:18",
+      "obtenido_en": "2026-09-15T23:15:37",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
       "puntaje_itcg": 75.6,
@@ -549,7 +531,7 @@
       "inversion_evaluacion_musd": 159713,
       "nota_denominador": null,
       "detalle_txt": "23 proyectos aprobados (US$ 49.766M) / 25 en evaluación (US$ 159.713M) → 23,8% de la inversión total ya aprobada",
-      "obtenido_en": "2026-09-15T03:08:19",
+      "obtenido_en": "2026-09-15T23:15:38",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
       "puntaje_itcg": 50.5,
@@ -614,7 +596,7 @@
         "etapa_iii": 100.0
       },
       "detalle_txt": "9.091 de 9.091 km adjudicados · I: adjudicada (CONTRAT.AR) · II-B: adjudicada (CONTRAT.AR) · II: adjudicada (CONTRAT.AR) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24) · CONTRAT.AR todavía no refleja la adjudicación de III, que constan en el Boletín Oficial",
-      "obtenido_en": "2026-09-15T03:08:26",
+      "obtenido_en": "2026-09-15T23:15:42",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
       "puntaje_itcg": 100.0,
@@ -623,7 +605,7 @@
     },
     "asistencia_directa": {
       "valor": 100.0,
-      "unidad": "TDPS: % del devengado de transferencias en ayudas a personas (5.1.4)",
+      "unidad": "% del devengado de transferencias en ayudas a personas (5.1.4)",
       "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
       "fecha_dato": "2026-09-15",
       "desactualizado": false,
@@ -634,7 +616,7 @@
         "tdps_2023": 98.3
       },
       "detalle_txt": "Devengado 2026: $ 558.060M en ayudas a personas (5.1.4) / $ 558.060M en transferencias · baseline Potenciar 2023: 98,3% (con $ 17.224M en otras partidas) · Clasificación del devengado; no acredita pago efectivo ni ausencia de intermediación.",
-      "obtenido_en": "2026-09-15T03:09:11",
+      "obtenido_en": "2026-09-15T23:16:24",
       "en_indice": true,
       "dimension": "social_orden",
       "puntaje_itcg": 100.0,
@@ -653,7 +635,7 @@
       },
       "advertencia_fuente": "No se pudo verificar si el portal publicó anclajes más recientes.",
       "detalle_txt": "240 cortes en CABA en 2025 vs 931 en 2023 (Diagnóstico Político; base 2023 estimada desde participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.",
-      "obtenido_en": "2026-09-15T03:09:42",
+      "obtenido_en": "2026-09-15T23:16:25",
       "en_indice": true,
       "dimension": "social_orden",
       "puntaje_itcg": 99.0,
@@ -682,7 +664,7 @@
         }
       },
       "detalle_txt": "2.754.461 beneficiarios derivados directo a 65 prepagas inscriptas (06/2026) / 8.332.458 usuarios de prepagas (RNEMP 06/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.",
-      "obtenido_en": "2026-09-15T03:09:44",
+      "obtenido_en": "2026-09-15T23:16:25",
       "en_indice": true,
       "dimension": "social_orden",
       "puntaje_itcg": 56.4,
@@ -697,21 +679,21 @@
       "desactualizado": false,
       "dias_muestreados_mes": 15,
       "detalle_txt": "0 alertas en 15 días muestreados de 2026-09 · acumula desde 2026-07-02 (sin baseline 2023)",
-      "obtenido_en": "2026-09-15T03:09:47",
+      "obtenido_en": "2026-09-15T23:16:25",
       "en_indice": false
     },
     "protestas_caba": {
-      "valor": 280,
+      "valor": 281,
       "unidad": "eventos de protesta en 12 meses (CABA, ACLED)",
       "fuente": "ACLED — agregado semanal por provincia (acleddata.com)",
       "fecha_dato": "2026-08-01",
-      "cobertura_hasta": "2026-09-04",
+      "cobertura_hasta": "2026-09-11",
       "referencia_temporal": "mes de inicio de las semanas ACLED",
       "desactualizado": false,
-      "obtenido_en": "2026-09-15T03:10:02",
+      "obtenido_en": "2026-09-15T23:16:34",
       "eventos_2023": 240,
-      "var_vs_2023": 16.7,
-      "detalle_txt": "280 eventos en 12m (grupos hasta 2026-08) vs 240 en la base 2023 (+16,7%) — semanas sábado–viernes agrupadas por su mes de inicio. Cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
+      "var_vs_2023": 17.1,
+      "detalle_txt": "281 eventos en 12m (grupos hasta 2026-08) vs 240 en la base 2023 (+17,1%) — semanas sábado–viernes agrupadas por su mes de inicio. Cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
       "en_indice": false
     }
   }

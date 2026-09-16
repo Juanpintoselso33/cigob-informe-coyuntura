@@ -86,7 +86,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24 % vs 2023 | AMARILLO | 6,0 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.760.195 jornadas individuales no trabajadas (12m) | VERDE | 4,0 % |
 | **DIMENSIÓN: Imagen y voto** | | | | |
-| Ventaja LLA−PJ (Votómetro) | La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles. | 4,3 Puntos porcentuales | NARANJA | 7,0 % |
+| Ventaja LLA−PJ | La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles. | 4,3 Puntos porcentuales | NARANJA | 7,0 % |
 
 *Datos al 2026-09-15.*
 
@@ -98,7 +98,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 
 *Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
 
-# Ventaja LLA−PJ (Votómetro)
+# Ventaja LLA−PJ
 
 La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles.
 
@@ -181,6 +181,8 @@ Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional
 **2026-06-30** — Serie mensual reconstruida hacia atrás hasta diciembre de 2023, evaluando la misma ponderación al cierre de cada mes.
 
 **2026-07-07** — Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
+
+**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Ventaja LLA−PJ (Votómetro)» a «Ventaja LLA−PJ». Se saca «Votómetro» por nombrar el método, no el dato; LLA y PJ se conservan porque son las siglas públicas de las fuerzas.
 
 **2026-09-15** — ADR-0312 (corrige ADR-0121): anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El indicador conserva el rango 0-100 (una quinta banda arriba de +8 pp evita bajar el techo a 60, como hacía la primera versión de este ADR).
 

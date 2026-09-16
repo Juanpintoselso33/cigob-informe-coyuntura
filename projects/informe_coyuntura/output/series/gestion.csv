@@ -125,7 +125,7 @@ fecha,indicador,valor,unidad,fuente
 2024-03-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2024-02-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2024-01-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
-2026-08-01,protestas_caba,26,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
+2026-08-01,protestas_caba,27,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-07-01,protestas_caba,7,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-06-01,protestas_caba,25,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-05-01,protestas_caba,34,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
@@ -295,9 +295,10 @@ fecha,indicador,valor,unidad,fuente
 2024-03-01,masa_salarial,-19.13,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2024-02-01,masa_salarial,-10.68,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2024-01-01,masa_salarial,-27.15,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2026-06-01,litigiosidad_laboral,2.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-05-01,litigiosidad_laboral,2.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-04-01,litigiosidad_laboral,2.8,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2026-03-01,litigiosidad_laboral,3.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2026-03-01,litigiosidad_laboral,3.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-02-01,litigiosidad_laboral,2.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-01-01,litigiosidad_laboral,4.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2025-12-01,litigiosidad_laboral,4.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
@@ -306,7 +307,7 @@ fecha,indicador,valor,unidad,fuente
 2025-09-01,litigiosidad_laboral,5.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2025-08-01,litigiosidad_laboral,4.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2025-07-01,litigiosidad_laboral,6.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2025-06-01,litigiosidad_laboral,7.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-06-01,litigiosidad_laboral,6.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2025-05-01,litigiosidad_laboral,5.5,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2025-04-01,litigiosidad_laboral,6.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2025-03-01,litigiosidad_laboral,7.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
@@ -315,7 +316,7 @@ fecha,indicador,valor,unidad,fuente
 2024-12-01,litigiosidad_laboral,5.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2024-11-01,litigiosidad_laboral,6.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2024-10-01,litigiosidad_laboral,4.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2024-09-01,litigiosidad_laboral,3.5,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-09-01,litigiosidad_laboral,3.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2024-08-01,litigiosidad_laboral,1.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2024-07-01,litigiosidad_laboral,1.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2024-06-01,litigiosidad_laboral,1.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
@@ -354,7 +355,6 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,litigiosidad_laboral,60.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2021-08-01,litigiosidad_laboral,42.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2021-07-01,litigiosidad_laboral,31.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2021-06-01,litigiosidad_laboral,31.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-06-01,libertad_opcion_salud,33.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2026-05-01,libertad_opcion_salud,32.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2026-04-01,libertad_opcion_salud,31.7,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
@@ -863,7 +863,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2024-01-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2023-12-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
-2026-09-01,cepo_mulc,5.38,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
+2026-09-01,cepo_mulc,5.42,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-08-01,cepo_mulc,5.73,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-07-01,cepo_mulc,5.9,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-06-01,cepo_mulc,4.65,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
@@ -879,7 +879,7 @@ fecha,indicador,valor,unidad,fuente
 2025-08-01,cepo_mulc,0.26,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2025-07-01,cepo_mulc,0.85,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2025-06-01,cepo_mulc,0.93,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
-2025-05-01,cepo_mulc,4.33,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
+2025-05-01,cepo_mulc,2.31,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2025-04-01,cepo_mulc,12.15,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2025-03-01,cepo_mulc,18.25,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2025-02-01,cepo_mulc,13.94,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
@@ -897,47 +897,47 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,cepo_mulc,40.59,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2024-01-01,cepo_mulc,45.95,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2023-12-01,cepo_mulc,50.12,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
-2026-08-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2026-07-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2026-06-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2026-05-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2026-04-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2026-03-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2026-02-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2026-01-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-12-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-11-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-10-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-09-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-08-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-07-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-06-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-05-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-04-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-03-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-02-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2025-01-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2024-12-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2024-11-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2024-10-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2024-09-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2024-08-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2024-07-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2024-06-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2024-05-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2024-04-01,asistencia_directa,100.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-12-01,asistencia_directa,99.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-11-01,asistencia_directa,92.9,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-10-01,asistencia_directa,98.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-09-01,asistencia_directa,98.8,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-08-01,asistencia_directa,98.3,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-07-01,asistencia_directa,99.5,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-06-01,asistencia_directa,97.6,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-05-01,asistencia_directa,99.2,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-04-01,asistencia_directa,100.9,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-03-01,asistencia_directa,95.7,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-02-01,asistencia_directa,95.1,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
-2023-01-01,asistencia_directa,99.0,% TDPS (devengado 5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-08-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-07-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-06-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-05-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-04-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-03-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-02-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-01-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-12-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-11-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-10-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-09-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-08-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-07-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-06-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-05-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-04-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-03-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-02-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2025-01-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-12-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-11-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-10-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-09-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-08-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-07-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-06-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-05-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2024-04-01,asistencia_directa,100.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-12-01,asistencia_directa,99.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-11-01,asistencia_directa,92.9,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-10-01,asistencia_directa,98.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-09-01,asistencia_directa,98.8,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-08-01,asistencia_directa,98.3,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-07-01,asistencia_directa,99.5,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-06-01,asistencia_directa,97.6,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-05-01,asistencia_directa,99.2,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-04-01,asistencia_directa,100.9,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-03-01,asistencia_directa,95.7,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-02-01,asistencia_directa,95.1,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2023-01-01,asistencia_directa,99.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
 2026-07-01,apertura_comercial,7.62,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
 2026-06-01,apertura_comercial,6.15,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
 2026-05-01,apertura_comercial,4.81,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500

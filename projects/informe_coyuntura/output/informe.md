@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-15 23:05:15"
+generado: "2026-09-15 23:25:59"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -22,7 +22,7 @@ schema_version: "1.2.0"
 | ipc_total | 1.66 | % mensual | 2026-08-01 | fresco |
 | reservas_bcra | 11962.0 | Millones de USD | 2026-07-31 | fresco |
 | idc | -0.26 | σ vs. su historia | 2026-08-01 | fresco |
-| badlar | 21.44 | % anual | 2026-09-11 | fresco |
+| badlar | 22.12 | % anual | 2026-09-14 | fresco |
 | emae_ia | 2.69 | % i.a. | 2026-06-01 | fresco |
 | emae_difusion | 80.0 | % de sectores en crecimiento i.a. | 2026-06-01 | fresco |
 | ipi_manufacturero | -2.82 | % i.a. (promedio 3 meses) | 2026-07-01 | fresco |
@@ -31,15 +31,15 @@ schema_version: "1.2.0"
 | tcrm | 85.53 | Índice (base dic-2015=100) | 2026-08-01 | fresco |
 | rem_ipc_12m | 21.0 | % anual esperado | 2026-08-31 | fresco |
 | idm | 2.4 | pp (brecha i.a. real) | 2026-08-01 | fresco |
-| desequilibrio_monetario | 58.26 | pts de tensión (0-100) | 2026-07-01 | fresco |
+| desequilibrio_monetario | 58.19 | pts de tensión (0-100) | 2026-07-01 | fresco |
 | iai | -5.66 | % i.a. ponderado | 2026-07-01 | fresco |
-| icip | 2.94 | % i.a. ponderado | 2026-06-01 | fresco |
+| icip | 13.67 | % i.a. ponderado | 2026-07-01 | fresco |
 | credito_privado | -0.8 | % i.a. real (crédito en pesos) | 2026-08-01 | fresco |
 | costo_financiamiento_tesoro | 7.29 | % real anual (TIREA vs. inflación esperada REM) | 2026-08-01 | fresco |
 | resultado_primario | 5.96 | % de la recaudación (acum. 12 meses) | 2026-07-01 | fresco |
-| prestamos_privados | 0.96 | % mensual nominal | 2026-09-09 | fresco |
-| base_monetaria | -1.87 | % mensual nominal | 2026-09-10 | fresco |
-| tc_mayorista | 1.45 | % mensual | 2026-09-14 | fresco |
+| prestamos_privados | 1.08 | % mensual nominal | 2026-09-10 | fresco |
+| base_monetaria | -1.31 | % mensual nominal | 2026-09-11 | fresco |
+| tc_mayorista | 0.84 | % mensual | 2026-09-15 | fresco |
 
 ### 🟢 Politica — score 3.0/10 (estable)
 *Riesgo de barbarismo: político*
@@ -83,28 +83,33 @@ schema_version: "1.2.0"
 |---|---|---|---|---|
 | ipc_total | 1.66 | % mensual | 2026-08-01 | fresco |
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
-| icc_utdt | 40.23 | índice | 2026-08-01 | fresco |
+
+**Retirados del índice — el colector lo sigue relevando pero ya NO compone el índice ni el score de arriba** (distinto de suspendido: no tiene motivo de reingreso porque no va a volver a puntuar; puede ser ancla de validación externa. Ver `publicar.VIDA_OCULTOS` y la ficha metodológica del indicador):
+
+| Indicador | Último valor | Unidad | Fecha |
+|---|---|---|---|
+| icc_utdt | 40.23 | índice | 2026-08-01 |
 
 ### 🟢 Gestion — score 2.1/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 5.97 | % de brecha CCL/mayorista | 2026-09-14 | fresco |
+| cepo_mulc | 5.85 | % de brecha CCL/mayorista | 2026-09-15 | fresco |
 | apertura_comercial | 7.62 | % del intercambio (alícuota efectiva) | 2026-07-01 | fresco |
 | desregulacion_normativa | 17115.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-08-01 | fresco |
 | reduccion_estado | -20.66 | % de variación vs dic-2023 (dotación APN) | 2026-07-01 | fresco |
 | gasto_funcionamiento | -28.69 | % de variación real vs 2023-07 (IMIG funcionamiento) | 2026-07-01 | fresco |
 | fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-09-15 | fresco |
-| litigiosidad_laboral | 2.1 | % variación juicios SRT (12m vs 12m previos) | 2026-05-01 | fresco |
+| litigiosidad_laboral | 2.3 | % variación juicios SRT (12m vs 12m previos) | 2026-06-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 23.8 | % de inversión aprobada sobre el pipeline | 2026-09-15 | fresco |
 | concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-09-15 | fresco |
-| asistencia_directa | 100.0 | TDPS: % del devengado de transferencias en ayudas a personas (5.1.4) | 2026-09-15 | fresco |
+| asistencia_directa | 100.0 | % del devengado de transferencias en ayudas a personas (5.1.4) | 2026-09-15 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 33.1 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-06-01 | fresco |
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-09-15 | fresco |
-| protestas_caba | 280 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
+| protestas_caba | 281 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
 
@@ -118,4 +123,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-15 23:05:15 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-15 23:25:59 — schema 1.2.0*
