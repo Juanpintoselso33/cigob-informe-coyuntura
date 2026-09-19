@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-09-18T03:02:56.363552",
+  "generated_at": "2026-09-19T03:02:49.956359",
   "score": 3.7,
   "itcm": {
     "valor": 63.1,
@@ -59,7 +59,7 @@
             "peso": 0.2,
             "puntaje_banda": 85.0,
             "puntaje_aplicado": 85.0,
-            "valor": 23731.0,
+            "valor": 24460.0,
             "peso_efectivo": 0.048
           }
         },
@@ -68,7 +68,7 @@
       "financiamiento": {
         "nombre": "Capacidad y costo del financiamiento",
         "peso": 0.16,
-        "puntaje": 61.2,
+        "puntaje": 61.1,
         "indicadores": {
           "reservas_bcra": {
             "peso": 0.34,
@@ -93,9 +93,9 @@
           },
           "credito_privado": {
             "peso": 0.2,
-            "puntaje_banda": 34.3,
-            "puntaje_aplicado": 34.3,
-            "valor": -0.8,
+            "puntaje_banda": 33.9,
+            "puntaje_aplicado": 33.9,
+            "valor": -1.0,
             "peso_efectivo": 0.032
           }
         },
@@ -177,7 +177,7 @@
       "fuente": "INDEC — IPC nacional (vía datos.gob.ar)",
       "fecha_dato": "2026-08-01",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:01:24",
+      "obtenido_en": "2026-09-19T03:01:20",
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
       "puntaje_itcm": 81.8,
@@ -198,7 +198,7 @@
       "drenaje_repos": -2498.0,
       "metodo": "sdds+tesoro+bopreal",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:01:35",
+      "obtenido_en": "2026-09-19T03:01:30",
       "en_indice": true,
       "dimension": "financiamiento",
       "puntaje_itcm": 67.8,
@@ -213,18 +213,18 @@
       "componentes": {
         "precio": 0.56,
         "volumen": -0.16,
-        "asignacion": -1.22
+        "asignacion": -1.21
       },
       "niveles": {
         "tasa_real_pp": 0.08,
         "dep_real_ia_pct": -1.8,
-        "holgura_pct": 15.7
+        "holgura_pct": 15.8
       },
       "ventana": "2017-12 → 2026-08 (105 meses)",
       "badlar_real_mensual": 0.08,
       "banda_idc": "amarillo",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:01:39",
+      "obtenido_en": "2026-09-19T03:01:34",
       "en_indice": true,
       "dimension": "financiamiento",
       "puntaje_itcm": 51.3,
@@ -232,12 +232,12 @@
       "peso_efectivo": 0.0336
     },
     "badlar": {
-      "valor": 22.75,
+      "valor": 22.06,
       "unidad": "% anual",
       "fuente": "BCRA — BADLAR bancos privados (API monetarias)",
-      "fecha_dato": "2026-09-16",
+      "fecha_dato": "2026-09-17",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:01:40",
+      "obtenido_en": "2026-09-19T03:01:35",
       "en_indice": false
     },
     "emae_ia": {
@@ -246,7 +246,7 @@
       "fuente": "INDEC — EMAE (vía datos.gob.ar)",
       "fecha_dato": "2026-06-01",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:01:41",
+      "obtenido_en": "2026-09-19T03:01:36",
       "en_indice": true,
       "dimension": "actividad",
       "puntaje_itcm": 69.5,
@@ -324,7 +324,7 @@
         }
       ],
       "detalle_txt": "12 de 15 sectores crecen · lidera Pesca (247,6%) · el que más cae es Administración pública, defensa y seguridad social (-1,52%)",
-      "obtenido_en": "2026-09-18T03:01:48",
+      "obtenido_en": "2026-09-19T03:01:43",
       "en_indice": true,
       "dimension": "actividad",
       "puntaje_itcm": 80.0,
@@ -337,7 +337,7 @@
       "fuente": "INDEC — IPI manufacturero, nivel general (planilla original vigente)",
       "fecha_dato": "2026-07-01",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:01:54",
+      "obtenido_en": "2026-09-19T03:01:48",
       "en_indice": true,
       "dimension": "actividad",
       "puntaje_itcm": 25.4,
@@ -353,7 +353,7 @@
       "iva_var_ia_real": -3.0,
       "cheque_var_ia_real": -9.1,
       "detalle_txt": "Compuesto 0,6×IVA-DGI + 0,4×cheque, ambos en variación interanual real: IVA-DGI -3,0%, cheque -9,1%, compuesto -5,4%. El cheque capta además bancarización, no sólo actividad; el IVA responde también a evasión y cambios de alícuota.",
-      "obtenido_en": "2026-09-18T03:01:57",
+      "obtenido_en": "2026-09-19T03:01:50",
       "en_indice": true,
       "dimension": "actividad",
       "puntaje_itcm": 28.4,
@@ -361,20 +361,20 @@
       "peso_efectivo": 0.0132
     },
     "saldo_comercial_12m": {
-      "valor": 23731.0,
+      "valor": 24460.0,
       "unidad": "Millones de USD (acum. 12 meses)",
       "fuente": "INDEC — ICA, cuadro original vigente + historia datos.gob.ar",
-      "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_20_08_26.xls",
+      "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_18_09_26.xls",
       "advertencia_fuente": null,
-      "obtenido_en": "2026-09-18T03:02:04",
-      "fecha_dato": "2026-07-01",
+      "obtenido_en": "2026-09-19T03:01:56",
+      "fecha_dato": "2026-08-01",
       "desactualizado": false,
-      "expo_12m": 97974.0,
-      "impo_12m": 74243.0,
-      "expo_var_ia": 19.7,
-      "impo_var_ia": 3.9,
-      "expo_delta_12m": 16154.0,
-      "impo_delta_12m": 2819.0,
+      "expo_12m": 98954.0,
+      "impo_12m": 74494.0,
+      "expo_var_ia": 19.3,
+      "impo_var_ia": 2.0,
+      "expo_delta_12m": 15988.0,
+      "impo_delta_12m": 1490.0,
       "en_indice": true,
       "dimension": "viabilidad_fiscal_comercial",
       "puntaje_itcm": 85.0,
@@ -397,7 +397,7 @@
         "diverge": false,
         "meses_atraso": 0
       },
-      "obtenido_en": "2026-09-18T03:02:08",
+      "obtenido_en": "2026-09-19T03:02:00",
       "en_indice": true,
       "dimension": "viabilidad_fiscal_comercial",
       "puntaje_itcm": 50.7,
@@ -410,7 +410,7 @@
       "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
       "fecha_dato": "2026-08-01",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:02:15",
+      "obtenido_en": "2026-09-19T03:02:07",
       "en_indice": true,
       "dimension": "competitividad_externa",
       "puntaje_itcm": 48.8,
@@ -423,7 +423,7 @@
       "fuente": "BCRA — REM, expectativas de inflación (API monetarias)",
       "fecha_dato": "2026-08-31",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:02:16",
+      "obtenido_en": "2026-09-19T03:02:08",
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
       "puntaje_itcm": 83.0,
@@ -440,7 +440,7 @@
       "desactualizado": false,
       "m3_real_ia": -2.93,
       "m2_real_ia": -5.33,
-      "obtenido_en": "2026-09-18T03:02:19",
+      "obtenido_en": "2026-09-19T03:02:11",
       "en_indice": false
     },
     "desequilibrio_monetario": {
@@ -455,7 +455,7 @@
       "posicion_a": 0.515,
       "posicion_b": 0.654,
       "celda": "solo_presion",
-      "obtenido_en": "2026-09-18T03:02:36",
+      "obtenido_en": "2026-09-19T03:02:30",
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
       "puntaje_banda": 41.8,
@@ -472,8 +472,8 @@
         "bk_importados": -7.7
       },
       "pesos_nota": "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)",
-      "detalle_txt": "-5.7 % i.a. = ISAC -4.5% · BK importados -7.7% (mes común: 2026-07)",
-      "obtenido_en": "2026-09-18T03:02:42",
+      "detalle_txt": "-5.7 % i.a. = ISAC -4.5% · BK importados -7.7% (mes común: 2026-07) — BK 2026-08 (provisorio, no puntúa): +3.1%",
+      "obtenido_en": "2026-09-19T03:02:38",
       "en_indice": true,
       "dimension": "inversion",
       "puntaje_itcm": 36.4,
@@ -492,27 +492,27 @@
       },
       "pesos_nota": "Servicios tech 57% · productividad (IPI/empleo) 43%",
       "detalle_txt": "+13.7 % i.a. = servicios tech +26.8% · productividad -3.8% (mes común: 2026-07)",
-      "obtenido_en": "2026-09-18T03:02:44",
+      "obtenido_en": "2026-09-19T03:02:40",
       "en_indice": false
     },
     "credito_privado": {
-      "valor": -0.8,
+      "valor": -1.0,
       "unidad": "% i.a. real (crédito en pesos)",
       "fuente": "BCRA (préstamos al sector privado en pesos, var. 117) + IPC INDEC",
       "fecha_dato": "2026-08-01",
       "desactualizado": false,
-      "nominal_ia": 32.4,
+      "nominal_ia": 32.3,
       "moneda": "pesos",
       "usd_ia": 37.8,
       "usd_saldo_mm": 25240,
       "me_en_pesos_ia_real": 17.7,
-      "total_ia_real": 3.2,
-      "detalle_txt": "nominal 32,4% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-08) · aparte, la cartera en moneda extranjera 17,7% real medida en pesos y 37,8% en dólares; los dos universos juntos, 3,2% real — al 2026-09-14 (provisorio, no puntúa): -0,8% real con deflactor de 2026-08",
-      "obtenido_en": "2026-09-18T03:02:49",
+      "total_ia_real": 3.1,
+      "detalle_txt": "nominal 32,3% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-08) · aparte, la cartera en moneda extranjera 17,7% real medida en pesos y 37,8% en dólares; los dos universos juntos, 3,1% real — al 2026-09-15 (provisorio, no puntúa): -0,4% real con deflactor de 2026-08",
+      "obtenido_en": "2026-09-19T03:02:45",
       "en_indice": true,
       "dimension": "financiamiento",
-      "puntaje_itcm": 34.3,
-      "puntaje_banda": 34.3,
+      "puntaje_itcm": 33.9,
+      "puntaje_banda": 33.9,
       "peso_efectivo": 0.032
     },
     "costo_financiamiento_tesoro": {
@@ -563,7 +563,7 @@
       ],
       "detalle_txt": "2026-08: TIREA de corte 29.8% en 4 colocación/es a tasa fija en pesos contra inflación esperada 21.0% → +7.3% real",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:02:52",
+      "obtenido_en": "2026-09-19T03:02:46",
       "en_indice": true,
       "dimension": "financiamiento",
       "puntaje_itcm": 82.1,
@@ -577,7 +577,7 @@
       "fecha_dato": "2026-07-01",
       "detalle_txt": "2026-07: superávit primario de 6.0% de la recaudación acumulada de doce meses",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:02:54",
+      "obtenido_en": "2026-09-19T03:02:47",
       "en_indice": true,
       "dimension": "viabilidad_fiscal_comercial",
       "puntaje_itcm": 84.8,
@@ -585,30 +585,30 @@
       "peso_efectivo": 0.12
     },
     "prestamos_privados": {
-      "valor": 1.41,
+      "valor": 1.19,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — préstamos al sector privado (API monetarias)",
-      "fecha_dato": "2026-09-14",
+      "fecha_dato": "2026-09-15",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:02:54",
+      "obtenido_en": "2026-09-19T03:02:48",
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": -0.25,
+      "valor": -4.99,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — base monetaria (API monetarias)",
-      "fecha_dato": "2026-09-15",
+      "fecha_dato": "2026-09-16",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:02:55",
+      "obtenido_en": "2026-09-19T03:02:49",
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 0.85,
+      "valor": 0.99,
       "unidad": "% mensual",
       "fuente": "BCRA — TC mayorista A3500 (API monetarias)",
-      "fecha_dato": "2026-09-17",
+      "fecha_dato": "2026-09-18",
       "desactualizado": false,
-      "obtenido_en": "2026-09-18T03:02:56",
+      "obtenido_en": "2026-09-19T03:02:49",
       "en_indice": false
     }
   }
