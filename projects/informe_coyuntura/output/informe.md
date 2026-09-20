@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-20 03:29:16"
+generado: "2026-09-20 11:23:30"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -50,7 +50,7 @@ schema_version: "1.2.0"
 | votometro_ventaja_lla | 4.3 | Puntos porcentuales | 2026-07-22 | fresco |
 | ratio_dnu | 1.03 | DNUs publicados por ley publicada | 2026-09-20 | fresco |
 | brecha_obra_publica | -1.8 | pp de brecha (obra pública − privada, 12m) | 2026-08-01 | fresco |
-| apoyo_empresario | -0.25 | saldo de postura (−1 a +1, 12m móviles) | 2026-05-01 | ⚠ cache |
+| apoyo_empresario | -0.2 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | fresco |
 | conflictividad_nacional | -24.0 | % vs 2023 | 2026-08-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4760195 | jornadas individuales no trabajadas (12m) | 2026-05-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
@@ -63,8 +63,8 @@ schema_version: "1.2.0"
 | rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-09-20 | fresco |
 | protestas_caba | 281 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
 | cohesion_bloque | 100.0 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-09-17 | fresco |
-| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-19 | ⚠ cache |
-| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-19 | ⚠ cache |
+| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-20 | fresco |
+| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-20 | fresco |
 | produccion_legislativa | 29 | leyes sancionadas (12m) | 2026-08-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-09-01 | fresco |
@@ -121,8 +121,8 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:apoyo_empresario,bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
+- `desactualizado:politica:cobertura_judicial`
 - `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-09-20 03:29:16 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-20 11:23:30 — schema 1.2.0*

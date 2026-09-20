@@ -847,6 +847,10 @@ fecha,indicador,valor,unidad,fuente
 2024-05-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-04-30,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-03-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-09-01,apoyo_empresario,-0.2,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2026-08-01,apoyo_empresario,-0.111,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2026-07-01,apoyo_empresario,-0.111,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2026-06-01,apoyo_empresario,-0.25,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2026-05-01,apoyo_empresario,-0.25,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2026-04-01,apoyo_empresario,-0.25,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2026-03-01,apoyo_empresario,-0.143,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB

@@ -94,30 +94,57 @@
      124
     ],
     "efecto": "dos casos nuevos computan (apoyo al Ejecutivo nacional: reducción de retenciones del 23-may y concesión de la Hidrovía del 14-jul); los adjudicados no computan en ninguna de las dos opciones"
+   },
+   {
+    "fecha": "2026-09-20",
+    "casos": 4,
+    "indices": [
+     125,
+     128
+    ],
+    "origen": "4 comunicados UIA pendientes (jun, ago y sep 2026) que cortaban la serie en 2026-05 por el corpus cerrado de ADR-0310",
+    "protocolo": "dos codificadores ciegos entre sí con sólo el manual v2 y el corpus crudo; desacuerdos adjudicados con los tres criterios generales ya escritos, no caso por caso",
+    "naturaleza_de_los_codificadores": "pasada 1 Claude Opus 5, pasada 2 Codex (gpt-5.6-sol). A diferencia de las tandas anteriores los dos codificadores NO comparten modelo base, que era la limitación declarada en `naturaleza_de_los_codificadores`: concuerdan menos, y por eso este kappa no es comparable con los anteriores.",
+    "concordancia": {
+     "acuerdo_postura": 0.5,
+     "acuerdo_destinatario": 1.0,
+     "kappa_postura": 0.0,
+     "kappa_destinatario": null,
+     "umbral_minimo": 0.7,
+     "estado": "NO MEDIBLE",
+     "desacuerdos": 2,
+     "por_que_no_medible": "Con n=4 y marginales balanceados 2-2 en las dos pasadas, el acuerdo esperado por azar es 0,50 y el observado también: kappa = (0,50-0,50)/(1-0,50) = 0 POR CONSTRUCCIÓN, cualquiera sea la calidad de la codificación. El de destinatario es directamente indefinido (Pe=1, acuerdo 4/4). Un kappa de 0 acá no es evidencia de codificación inconfiable; es un estadístico sin potencia a este n. Las mediciones con potencia son las del corpus completo (kappa_postura 0,918 sobre n=125) y la tanda de 22 casos (0,85).",
+     "por_que_se_publica_igual": "Los DOS desacuerdos cayeron sobre el mismo borde —diagnóstico estructural frente a pedido de medida— y los resuelve sin residuo el criterio (3) escrito de antemano. O sea: el manual discriminó los casos que los codificadores no. No se reinterpretó ninguna codificación ni se tocó el manual para mover el número."
+    },
+    "adjudicados": [
+     125,
+     128
+    ],
+    "efecto": "de los 4, sólo 1 es computable (la crítica del 15-sep); los otros 3 son neutro y el manual excluye al neutro del conteo. La serie deja de estar topeada en 2026-05."
    }
   ]
  },
  "resultado": {
-  "total": 125,
+  "total": 129,
   "por_camara": {
    "AEA": 46,
-   "UIA": 79
+   "UIA": 83
   },
   "postura": {
    "apoyo": 19,
-   "critica": 33,
-   "neutro": 70,
+   "critica": 34,
+   "neutro": 73,
    "dudoso": 3
   },
   "destinatario": {
-   "ejecutivo_nacional": 56,
+   "ejecutivo_nacional": 60,
    "externo_o_propio": 41,
    "congreso": 17,
    "judicial": 4,
    "provincias_municipios": 7
   },
-  "computables_total": 37,
-  "computables_desde_dic2023": 18
+  "computables_total": 38,
+  "computables_desde_dic2023": 19
  },
  "casos": [
   {
@@ -1994,6 +2021,66 @@
     "destinatario": "ejecutivo_nacional"
    },
    "id": "celebramos-el-dia-de-la-industria-2"
+  },
+  {
+   "fecha": "2026-06-11",
+   "titulo": "Sistema ferroviario de cargas en Argentina: primer informe",
+   "camara": "UIA",
+   "texto": "En Argentina el transporte y la logística cumplen un rol fundamental. Siendo el octavo país de mayor extensión en el mundo y con la distribución demográfica concéntrica que la caracteriza, la optimización del sistema de transporte de cargas es necesaria para garantizar la distribución de bienes, reducir la incidencia de sus costos en el precio final de los bienes industriales y sus insumos y aumentar la competitividad de las exportaciones.  Teóricamente, en una extensión así, se recomienda utilizar el camión para distancias cortas y medianas, y el transporte ferroviario y fluvio-marítimo en distancias largas. En ese sentido, vemos que es necesario abordar el tema de la infraestructura e inversión en transporte ferroviario de cargas, dado que actualmente representa sólo el 5% de las toneladas transportadas en el país (estimación del 2019). En otros países de la región ese porcentaje alcanza al 30%, aún con infraestructuras subóptimas.  Volcando casi el 90% de la carga de bienes al camión, la falta de infraestructura actual “se paga” con mayores costos logísticos, una peor condición de las rutas nacionales y una consecuente menor seguridad vial.  Por dicha razón, desde el Departamento de Transporte y Logística nos propusimos analizar la situación del sistema ferroviario, compararlo frente al de otros países, tanto regionales como de otros continentes, a fin de buscar posibilidades de mejoras y oportunidades. Este primer informe ferroviario apunta a ser un insumo de utilidad para el futuro proceso de concesión de las líneas férreas en el país.  Un sistema ferroviario de cargas bien planificado y desarrollado es el primer paso para un transporte multimodal eficiente, seguro y de calidad.",
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "informe sectorial propio que describe una condición estructural —el ferrocarril mueve 5% de las toneladas contra 30% en la región— sin identificar una medida de gobierno vigente ni pedir revertirla; interpela la política nacional al ofrecerse como insumo del futuro proceso de concesión de las líneas férreas. Adjudicado por el criterio (3): diagnóstico estructural sin medida concreta, neutro.",
+   "concordancia": "adjudicado",
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional"
+   },
+   "id": "sistema-ferroviario-de-cargas-en-argentina-informe"
+  },
+  {
+   "fecha": "2026-08-12",
+   "titulo": "Encuentro Argentino de Comercio Exterior",
+   "camara": "UIA",
+   "texto": "El martes 12 de agosto participamos en el panel \"Sinergia importadora-exportadora para el desarrollo federal\", como parte del Encuentro Argentino de Comercio Exterior.  Ángel Padilla, miembro de nuestro Departamento de Transporte y Logística, junto a Fernando Furci, Gerente General de CIRA y Hernan Novara, economista de CERA, con la moderación de Yanina Lojo, consultora ComEx, expuso sobre las dificultades que ya está encontrando la industria a nivel logístico debido a los nuevos desarrollos de los sectores industriales.  Dentro del mismo, y durante 60 minutos, los expositores explicaron cuales son las fallas que el país debe corregir con el fin de mejorar la competitividad de las empresas a fin de generar más exportadores permanentes. Se habló de IIBB, costos portuarios, de las altas tasas de interés para la compra de maquinaria y hasta del tipo de cambio.  El panel concluyó con un acuerdo entre las tres partes: La falta de inversión en infraestructura genera un cuello de botella para la expansión que, junto a la carga impositiva, la falta de crédito y los extracostos logísticos, dificultan el desarrollo de nuevos sectores más allá de los tres principales sectores que dinamizan actualmente la economía: hidrocarburos, minería y agroindustria.  Dicho acuerdo fue reafirmado al hablar del trabajo que se viene desarrollando desde el Consejo de Cargadores ampliado (UIA+CAC+CIRA+CERA), donde las entidades buscamos empujar una agenda en conjunto relacionada a los costos portuarios, y continuamos generando puntos de consenso para mejorar la logística y competitividad nacional.",
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "crónica de un panel: el hecho reportado es la participación en el Encuentro Argentino de Comercio Exterior, y el diagnóstico —infraestructura, carga impositiva, crédito, extracostos logísticos— no identifica ninguna medida concreta; el contenido del reclamo apunta a la competitividad nacional.",
+   "concordancia": "acuerdo",
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional"
+   },
+   "id": "encuentro-argentino-de-comercio-exterior"
+  },
+  {
+   "fecha": "2026-09-15",
+   "titulo": "La UIA presentó propuestas para aliviar la coyuntura de las pymes",
+   "camara": "UIA",
+   "texto": "La producción industrial, según el INDEC, registró una caída de -4,9% respecto de julio de 2025. En términos sectoriales, 12 de los 16 sectores que componen el IPI cayeron respecto de julio de 2025, y 15 en términos mensuales (sólo la refinación de petróleo presentó una suba mensual).   Propuestas para alivio a las pymes.  Ante este escenario, la UIA remitió a la Subsecretaría PyME un documento técnico con propuestas para aliviar las dificultades que sufren las pymes. Estas ideas están respaldadas por los relevamientos del CEU y del Observatorio PyME sobre actividad, morosidad y empleo.  Algunas de las propuestas enviadas para aliviar la presión fiscal son la suspensión de embargos por 180 días, la migración entre planes de pago, la reducción de la tasa de financiación ARCA para pymes, el diferimiento de vencimientos impositivos (IVA) de 180 días para actividades estacionales, la anualización de cargas sociales y la postergación de Contribuciones Patronales para economías regionales, además de una agilización en la devolución de saldos a favor de impuestos nacionales.  Cabe recordar que la presión fiscal formal en la Argentina es de 56%, récord en el mundo. La industria produce bienes transables que compiten con el mercado internacional, y por lo tanto requieren tener una presión fiscal similar a la de los productos que vienen de países donde esa presión es normal.   Energía . Otro problema que sufre la industria -y sobre todo las pymes- es el costo energético. Los usuarios categorizados como GUDI (Grandes Usuarios de la Distribuidora) recibieron facturas con un incremento del orden del 90 al 100% en el costo básico, motivo por el cual se duplicó el costo del mes anterior y casi triplicó el valor de dos meses previos.  En este marco, se destacó la iniciativa de Entre Ríos, Santa Fe y Córdoba para avanzar en un esquema de financiamiento de los cargos estabilizados del Mercado Eléctrico Mayorista, luego de los planteos que realizó la UIA junto a las uniones industriales territoriales. La UIA propone al gobierno nacional el establecimiento de cuotas para hacer frente a las facturas, y el prorrateo de los vencimientos.   Crédito . Respecto al financiamiento productivo, sería positivo limitar la carga tributaria sobre el crédito y eliminar por completo los impuestos en las operaciones de refinanciación de pasivos. La presión tributaria sobre la intermediación financiera -IVA a nivel nacional, Ingresos Brutos y Sellos a nivel provincial, y una creciente proliferación de tasas municipales- eleva en promedio más de 18% el costo financiero del crédito productivo, lo que lleva una TNA de referencia del 35% a un CFT de 41,4% (aproximadamente 6,4 puntos porcentuales adicionales), en promedio. Este sobrecosto agrava el acceso al financiamiento en un contexto de baja profundidad crediticia y elevada morosidad empresarial.  Cabe señalar que los encajes sobre los depósitos a la vista se ubican en torno al 45%, un nivel considerablemente superior al observado en Brasil, cercano al 21%, y en Chile, del 9%. Esta diferencia limita la capacidad de intermediación de los bancos y contribuye a mantener condiciones más restrictivas para la expansión del crédito productivo. El crédito bancario en la Argentina representa solo el 12% del PBI, frente a un promedio regional cercano al 60%.",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "atribuye el problema a políticas vigentes y pide cambiarlas: remite propuestas a la Subsecretaría PyME, califica la presión fiscal de 56% como récord mundial, denuncia aumentos de energía del 90-100% a los GUDI y encajes del 45% contra 21% de Brasil, y propone al gobierno nacional cuotas y prorrateo de vencimientos.",
+   "concordancia": "acuerdo",
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional"
+   },
+   "id": "la-uia-presento-propuestas-para-aliviar-la-coyuntu"
+  },
+  {
+   "fecha": "2026-09-17",
+   "titulo": "La UIA volvió a pedir en Entre Ríos un puente para las pymes",
+   "camara": "UIA",
+   "texto": "Martín Rappallini participó en Paraná de la Jornada de la Industria organizada por la Unión Industrial de Entre Ríos (UIER).    17 de septiembre de 2026.  El presidente de la Unión Industrial Argentina (UIA), Martín Rappallini, participó en la ciudad de Paraná de la 22 Jornada de la Industria UIER, organizada por la Unión Industrial de Entre Ríos. Del encuentro participaron el gobernador de esa provincia, Rogelio Frigerio, legisladores y representantes de las uniones industriales y cámaras sectoriales de la provincia encabezadas por la presidente de UIER, Celeste Valenti. También estuvieron presentes el secretario de Hacienda de la Nación Carlos Guberman y el ministro de Economía y Servicios Públicos de Entre Ríos Fabián Boleas.  Bajo el lema “Decisiones de hoy para competir mañana”, la jornada reunió a referentes del sector público, empresarios y especialistas para abordar algunos de los principales desafíos de la industria: la reforma tributaria, el escenario económico, la inteligencia artificial, la tecnología, la innovación y el liderazgo empresarial.   Palabras de Martín Rappallini.  Durante su discurso, el presidente de la UIA planteó la necesidad de recuperar la actividad económica y de prestar mucha atención a la microeconomía, porque esta termina impactando en la macroeconomía.. “Tenemos que crecer para consolidar la estabilización, pero para crecer tenemos que trabajar fuertemente sobre la competitividad”, dijo Rappallini. El líder de la UIA volvió a proponer “un puente” para que las empresas industriales, especialmente las pymes, puedan atravesar este momento.  Rappallini hizo hincapié en los desafíos fundamentales que enfrenta la industria argentina: presión tributaria, competencia desleal con dumping y contrabando, escaso financiamiento, falta de infraestructura y desafíos elevados en materia educativa. El presidente de la UIA pidió entender la educación como una de las principales políticas productivas e industriales para la Argentina.  “El desarrollo de un país”, dijo Rappallini, “se construye acumulando capacidades, y la industria es uno de los principales lugares donde esas capacidades se generan”. El empresario agregó que un país que mantiene su capacidad de transformación mantiene su capacidad de generar riqueza. Por ello es que la industria, que siempre crea valor nuevo, es una parte fundamental de un país, ya que transforma materias primas y también sociedades. “Una empresa”, destacó el presidente de la UIA, “forma trabajadores, desarrolla proveedores, incorpora tecnología, aprende a exportar, mejora procesos y genera conocimiento. Ese conocimiento después queda en la sociedad”.  Rappallini destacó que la industria genera un ecosistema productivo a su alrededor, y por ello hay que defender y desarrollar la capacidad industrial.  El presidente de la UIA señaló a Entre Ríos como uno de los mejores ejemplos de que campo e industria son parte de un mismo sistema productivo, porque cuanta más industria tiene la producción agropecuaria, más valor puede agregarse, más empleo puede generarse y mayor será la capacidad argentina de exportar al mundo.   Industria en Entre Ríos.  La presidente de la Unión Industrial de Entre Ríos, Celeste Valenti, señaló en su discurso que sin industria no existe un proyecto de desarrollo sostenible en el tiempo, y que es imprescindible encontrar un entorno que permita que invertir, producir y generar empleo siga siendo posible. “No podemos pedirle a una industria que compita con el mundo si primero tiene que competir contra sus propios costos estructurales”, dijo Valenti. La empresaria valoró los avances logrados con el Gobierno provincial, los municipios y las distintas entidades empresarias de Entre Ríos, y mencionó como ejemplos la mesa energética, la nueva Ley de Gestión Ambiental, el Régimen de Incentivo a las Nuevas Inversiones y la vinculación entre educación y empleo.  La industria de Entre Ríos cuenta con 1.500 empresas y más de 30.000 empleos directos. El 58% de su producción industrial se da en el rubro Alimentos, el 16% en Metalmecánica, el 10% en Sustancias y Productos Químicos y el 7% en Madera. El 43% de las exportaciones de Entre Ríos provienen de la industria.",
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "crónica de la Jornada de la Industria de la UIER: Rappallini volvió a pedir «un puente» para las pymes y enumeró presión tributaria, dumping, escaso financiamiento e infraestructura, pero sin identificar una medida de gobierno concreta. Adjudicado por el criterio (3): diagnóstico estructural sin medida concreta, neutro.",
+   "concordancia": "adjudicado",
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional"
+   },
+   "id": "la-uia-volvio-a-pedir-en-entre-rios-un-puente-para"
   }
  ]
 }
