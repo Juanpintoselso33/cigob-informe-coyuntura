@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-20 11:23:30"
+generado: "2026-09-20 13:12:27"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -105,7 +105,7 @@ schema_version: "1.2.0"
 | litigiosidad_laboral | 2.3 | % variación juicios SRT (12m vs 12m previos) | 2026-06-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 23.8 | % de inversión aprobada sobre el pipeline | 2026-09-20 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-09-19 | ⚠ cache |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-09-20 | fresco |
 | asistencia_directa | 100.0 | % del devengado de transferencias en ayudas a personas (5.1.4) | 2026-09-20 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 33.1 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-06-01 | fresco |
@@ -122,7 +122,6 @@ schema_version: "1.2.0"
 ## Advertencias
 
 - `desactualizado:politica:cobertura_judicial`
-- `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-09-20 11:23:30 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-20 13:12:27 — schema 1.2.0*

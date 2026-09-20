@@ -138,7 +138,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1598.10 (2026-09-19T17:58:00-03:00) / mayorista venta 1514.50 (2026-09-18T13:37:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1598.10 (2026-09-20T11:57:00-03:00) / mayorista venta 1514.50 (2026-09-18T13:37:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
