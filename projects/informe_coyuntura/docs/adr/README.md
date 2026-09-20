@@ -119,7 +119,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0319](0319-control-tributario-mismo-deflactor-mismo-sentido.md) | El control tributario usa el mismo deflactor y compara el mismo sentido | `recaudacion` | vigente |
 | [0321](0321-descomposicion-no-control-independiente.md) | Es una descomposición del agregado, no un control independiente | `recaudacion` | vigente |
 | [0329](0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) | IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal | `actividad_tributaria` | vigente |
-| [0331](0331-la-inversion-tecnologica-no-tiene-serie-que-la-sostenga.md) | La inversión tecnológica no tiene serie que la sostenga: o es ruido, o es el BK del IAI | `icip`, `iai` | rechazado |
+| [0331](0331-la-inversion-tecnologica-no-tiene-serie-que-la-sostenga.md) | La inversión tecnológica no tiene serie que la sostenga | `icip`, `iai` | rechazado |
 
 ### Política (ITCP)
 
