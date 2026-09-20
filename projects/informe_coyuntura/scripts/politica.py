@@ -2264,6 +2264,156 @@ def fetch_apoyo_empresario() -> dict | None:
         return None
 
 
+# ── Guarda de cámara muda (ADR-0332) ───────────────────────────────────────
+# Las cámaras que este indicador promete medir. Si una no se puede evaluar, la
+# guarda lo DICE: "no evaluable" no puede parecerse a "no está muda" (revisión
+# adversarial del 20-sep-2026, hallazgo 1).
+CAMARAS_VIGILADAS = ("AEA", "UIA")
+
+# Con menos huecos observados que esto la cadencia no se puede estimar. No es un
+# umbral de días: decide si hay evidencia suficiente, y cuando no la hay la
+# guarda avisa que no está mirando en vez de callarse.
+CAMARA_MUDA_PISO_HUECOS = 10
+
+
+def _percentil(ordenada: list, q: float):
+    """Percentil por el método del más cercano sobre una lista ya ordenada."""
+    i = min(len(ordenada) - 1, max(0, round(q * (len(ordenada) - 1))))
+    return ordenada[i]
+
+
+def _mediana(ordenada: list):
+    n = len(ordenada)
+    if n % 2:
+        return ordenada[n // 2]
+    m = (ordenada[n // 2 - 1] + ordenada[n // 2]) / 2
+    return int(m) if m == int(m) else m
+
+
+def _apoyo_fechas_del_inventario() -> dict:
+    """Fechas publicadas por cámara según el INVENTARIO, no el corpus codificado.
+
+    Un comunicado recién detectado entra a `pendientes`, no a la codificación.
+    Mirar sólo lo codificado haría que la guarda siguiera diciendo «muda» después
+    de que la cámara volvió a publicar, hasta que alguien la clasifique — o sea
+    mediría nuestro atraso, no el silencio de la fuente (hallazgo 2).
+    """
+    fechas = {cam: set() for cam in CAMARAS_VIGILADAS}
+    d = json.loads(APOYO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
+    fuentes = [d["casos"]]
+    try:
+        store = json.loads(APOYO_NOVEDADES_PATH.read_text(encoding="utf-8-sig"))
+        fuentes.append(list((store.get("pendientes") or {}).values()))
+    except (OSError, json.JSONDecodeError):
+        pass  # sin inventario de pendientes se mide sólo sobre lo codificado
+    for fuente in fuentes:
+        for c in fuente:
+            cam = c.get("camara")
+            if cam in fechas and fecha_canonica_apoyo(c.get("fecha")):
+                fechas[cam].add(str(c["fecha"])[:10])
+    return fechas
+
+
+def fecha_canonica_apoyo(valor) -> bool:
+    """True si `valor` empieza con una fecha ISO válida."""
+    try:
+        date.fromisoformat(str(valor)[:10])
+        return True
+    except (ValueError, TypeError):
+        return False
+
+
+def silencio_por_camara(hoy: date | None = None) -> dict:
+    """Estado de silencio de cada cámara vigilada, contra su propia cadencia.
+
+    Devuelve SIEMPRE una entrada por cámara de `CAMARAS_VIGILADAS`, con
+    `evaluable` en False y un `motivo` cuando no se puede juzgar. Un dict vacío
+    era indistinguible de «ninguna está muda».
+
+    El umbral es el **percentil 95** de los huecos que la cámara ya se tomó, no
+    el máximo: con el máximo, un silencio extraordinario se convertía en el nuevo
+    umbral una vez cerrado y la guarda se volvía menos sensible justamente por
+    los incidentes que tenía que detectar (hallazgo 3). Va por cámara porque
+    publican a ritmos incomparables — medido al 20-sep-2026, AEA tiene mediana 43
+    días y p95 151; UIA mediana 7 y p95 38.
+    """
+    hoy = hoy or date.today()
+    try:
+        fechas_por_camara = _apoyo_fechas_del_inventario()
+    except (OSError, json.JSONDecodeError, KeyError, TypeError) as e:
+        return {cam: {"evaluable": False,
+                      "motivo": f"no se pudo leer el inventario de comunicados: {e}"}
+                for cam in CAMARAS_VIGILADAS}
+
+    out = {}
+    for cam in CAMARAS_VIGILADAS:
+        fechas = sorted(fechas_por_camara.get(cam) or ())
+        if not fechas:
+            out[cam] = {"evaluable": False,
+                        "motivo": "no hay ningún comunicado suyo en el inventario"}
+            continue
+        ultimo = fechas[-1]
+        silencio = (hoy - date.fromisoformat(ultimo)).days
+        huecos = sorted(g for g in
+                        ((date.fromisoformat(b) - date.fromisoformat(a)).days
+                         for a, b in zip(fechas, fechas[1:])) if g > 0)
+        base = {"ultimo": ultimo, "silencio": silencio, "huecos": len(huecos)}
+        if silencio < 0:
+            out[cam] = {**base, "evaluable": False,
+                        "motivo": f"su último comunicado tiene fecha futura ({ultimo})"}
+        elif len(huecos) < CAMARA_MUDA_PISO_HUECOS:
+            out[cam] = {**base, "evaluable": False,
+                        "motivo": (f"sólo {len(huecos)} huecos observados, menos que el "
+                                   f"piso de {CAMARA_MUDA_PISO_HUECOS}: no se puede "
+                                   f"estimar su cadencia")}
+        else:
+            out[cam] = {**base, "evaluable": True,
+                        "umbral": _percentil(huecos, 0.95),
+                        "maximo_historico": huecos[-1],
+                        "mediana": _mediana(huecos)}
+    return out
+
+
+def _avisar_camara_muda(hoy: date | None = None) -> list:
+    """Registra un cotejo manual por cámara muda, y otro por cámara no evaluable.
+
+    Existe porque NADA lo miraba: el corpus cerrado de ADR-0310 detecta
+    comunicados sin codificar y `inventario_verificado` comprueba que las dos
+    cámaras RESPONDAN, pero una cámara cuya página contesta y no publica nada
+    pasa las dos sin activarlas.
+    """
+    raiz = str(Path(__file__).resolve().parents[1])
+    if raiz not in sys.path:
+        sys.path.insert(0, raiz)
+    from cotejo_manual import registrar
+    avisadas = []
+    for cam, s in sorted(silencio_por_camara(hoy).items()):
+        fuente = AEA_PRENSA_URL if cam == "AEA" else UIA_NOVEDADES_URL
+        if not s["evaluable"]:
+            avisadas.append(f"{cam}:no-evaluable")
+            registrar(
+                "apoyo_empresario", f"vigilancia de {cam} sin evaluar",
+                f"La guarda de cámara muda no pudo juzgar a {cam}: {s['motivo']}. "
+                f"Mientras no se pueda evaluar, un silencio de esa cámara NO se "
+                f"detecta, así que esto no es lo mismo que «{cam} está publicando». "
+                f"Revisar el inventario y la codificación de comunicados.", fuente)
+            continue
+        if s["silencio"] <= s["umbral"]:
+            continue
+        avisadas.append(cam)
+        registrar(
+            "apoyo_empresario", f"{cam} muda desde {s['ultimo']}",
+            f"{cam} lleva {s['silencio']} días sin publicar un comunicado. Su umbral "
+            f"es {s['umbral']} días —el percentil 95 de sus {s['huecos']} huecos, "
+            f"mediana {s['mediana']}, máximo {s['maximo_historico']}—, así que el "
+            f"silencio no tiene precedente. El saldo se sigue calculando con la otra "
+            f"cámara y el rótulo de la card sigue diciendo «las cámaras empresarias». "
+            f"Verificar en la fuente si dejó de publicar, si cambió la sección o si el "
+            f"extractor se rompió; si dejó de publicar de verdad, decidirlo en un ADR y "
+            f"no dejarlo pasar en silencio.", fuente)
+    return avisadas
+
+
 def detectar_novedades_empresarias() -> dict:
     """Comunicados nuevos de UIA y AEA, pendientes de codificar.
 
@@ -2346,6 +2496,26 @@ def detectar_novedades_empresarias() -> dict:
     APOYO_NOVEDADES_PATH.write_text(
         json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True),
         encoding="utf-8")
+
+    # Una cámara que responde y no publica pasa las dos guardas de ADR-0310.
+    # Va DESPUÉS de escribir el store, y AISLADA: si esta guarda se cae no puede
+    # llevarse el aviso de pendientes que el llamador manda después (hallazgo 5 de
+    # la revisión adversarial). Y su propia caída se avisa, porque una guarda que
+    # no pudo mirar no es una guarda que no encontró nada.
+    try:
+        for cam in _avisar_camara_muda():
+            print(f"  [i] cámaras: aviso de {cam} — ver ADR-0332")
+    except Exception as e:                                  # noqa: BLE001
+        print(f"  [WARN] guarda de cámara muda caída: {e}")
+        try:
+            from cotejo_manual import registrar
+            registrar("apoyo_empresario", "guarda de cámara muda caída",
+                      f"La guarda que detecta si una cámara dejó de publicar falló con "
+                      f"«{e}», así que esta corrida NO vigiló el silencio de ninguna "
+                      f"cámara. No es lo mismo que «ninguna está muda». Ver ADR-0332.",
+                      AEA_PRENSA_URL)
+        except Exception:                                   # noqa: BLE001
+            pass  # si ni el aviso se puede registrar, queda el WARN de arriba
     return store
 
 
