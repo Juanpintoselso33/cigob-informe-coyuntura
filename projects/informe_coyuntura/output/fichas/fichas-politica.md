@@ -319,7 +319,7 @@ La diferencia entre lo que esperan las empresas constructoras que trabajan para 
 
 Compara las expectativas de constructoras orientadas a obra pública y privada. Una brecha negativa indica un saldo de expectativas menor en el primer grupo. Compartir sector no garantiza iguales costos, acceso al crédito ni composición de proyectos: la diferencia no aísla el efecto causal de la política pública ni elimina el ciclo económico. Su interpretación como tensión política debe contrastarse con la agenda y las condiciones del período.
 
-**Dimensión que integra — Sector privado.** Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La completa, con el mismo peso, la postura pública de las cámaras empresarias hacia el Gobierno nacional —el saldo de apoyos y críticas en sus comunicados—, que volvió al índice en septiembre de 2026 con el inventario de comunicados completo.
+**Dimensión que integra — Sector privado.** Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La completa, con el mismo peso, la postura pública de la UIA hacia el Gobierno nacional —el saldo de apoyos y críticas en sus comunicados—, que volvió al índice en septiembre de 2026 con el inventario de comunicados completo.
 
 ## Método de cómputo
 
@@ -414,7 +414,7 @@ Qué dice en público, por escrito y con firma institucional, la Unión Industri
 
 Es la única medida directa de la relación entre el Gobierno y el empresariado organizado: las demás miran el clima de negocios o los datos de un sector, y de ahí infieren el vínculo. Acá el vínculo está dicho. Conviene saber qué no dice: no mide el humor del empresariado en general ni la opinión de sus asociados, sino lo que una asociación decidió declarar públicamente — una cámara puede callar por conveniencia y ese silencio no aparece. Desde septiembre de 2026 el silencio sí aparece: hay un aviso automático cuando una cámara deja de publicar por más tiempo que el que se tomó nunca. La clasificación la hace una persona siguiendo reglas escritas de antemano, y dos personas distintas la hicieron por separado para verificar que las reglas no dejan lugar a la interpretación.
 
-**Dimensión que integra — Sector privado.** Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La completa, con el mismo peso, la postura pública de las cámaras empresarias hacia el Gobierno nacional —el saldo de apoyos y críticas en sus comunicados—, que volvió al índice en septiembre de 2026 con el inventario de comunicados completo.
+**Dimensión que integra — Sector privado.** Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La completa, con el mismo peso, la postura pública de la UIA hacia el Gobierno nacional —el saldo de apoyos y críticas en sus comunicados—, que volvió al índice en septiembre de 2026 con el inventario de comunicados completo.
 
 ## Método de cómputo
 

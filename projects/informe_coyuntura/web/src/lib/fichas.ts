@@ -1292,7 +1292,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la brecha, interpolado entre anclas: +10 puntos porcentuales o más → el más alto; entre 0 y +10 → alto; entre −10 y 0 → moderado; entre −20 y −10 → bajo; menos de −20 → el más bajo. Las anclas se fijaron en números redondos alrededor del cero, que es el valor con significado propio: brecha nula significa igualdad de los saldos de expectativas de los dos grupos; no ausencia de incertidumbre ni de efectos de la política pública.",
-      "Su peso de diseño es el 50% de la dimensión de sector privado del índice del cinturón, incorporada en julio de 2026. El otro 50% es la postura pública de las cámaras empresarias, que estuvo suspendida de agosto a septiembre de 2026 —en ese lapso este indicador absorbió la dimensión entera— y volvió al índice: 50% interno · 6,5% efectivo del ITCP.",
+      "Su peso de diseño es el 50% de la dimensión de sector privado del índice del cinturón, incorporada en julio de 2026. El otro 50% es la postura pública de la UIA, que estuvo suspendida de agosto a septiembre de 2026 —en ese lapso este indicador absorbió la dimensión entera— y volvió al índice: 50% interno · 6,5% efectivo del ITCP.",
     ],
     limitaciones: [
       "Las submuestras no constituyen un experimento: pueden diferir en proyectos, financiamiento y exposición al ciclo. Restar sus saldos no identifica el efecto causal del Estado ni elimina esas diferencias.",
