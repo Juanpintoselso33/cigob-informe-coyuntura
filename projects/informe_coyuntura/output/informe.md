@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-20 15:10:01"
+generado: "2026-09-20 16:12:23"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -68,7 +68,7 @@ schema_version: "1.2.0"
 | produccion_legislativa | 29 | leyes sancionadas (12m) | 2026-08-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-09-01 | fresco |
-| cobertura_judicial | 73.82 | % estimado de cargos con juez designado | 2026-09-01 | ⚠ cache |
+| cobertura_judicial | 73.82 | % estimado de cargos con juez designado | 2026-09-01 | fresco |
 | alineamiento_senadores_prov | 60.9 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-09-17 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
@@ -119,9 +119,5 @@ schema_version: "1.2.0"
 | masa_salarial | -32.44 | % de variación real vs 2023-07 (SPN remuneraciones) | 2026-07-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. La card se sigue publicando con su valor mensual — lo que se retira es el puntaje, no el dato. |
 | reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-09-20 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 
-## Advertencias
-
-- `desactualizado:politica:cobertura_judicial`
-
 ---
-*Generado por CIGOB — 2026-09-20 15:10:01 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-20 16:12:23 — schema 1.2.0*

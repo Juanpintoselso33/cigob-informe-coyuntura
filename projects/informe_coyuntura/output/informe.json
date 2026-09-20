@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-09-20T15:10:01.292920-03:00",
+  "generated_at": "2026-09-20T16:12:23.491717-03:00",
   "period": "2026-09",
   "score_global": 3.7,
   "ponderacion": {
@@ -644,7 +644,7 @@
           "fuente": "Votómetro CIGOB",
           "fecha_dato": "2026-07-22",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T12:58:24",
+          "obtenido_en": "2026-09-20T16:04:32",
           "en_indice": true,
           "dimension": "imagen_voto",
           "puntaje_itcp": 37.2,
@@ -801,7 +801,7 @@
             }
           ],
           "detalle_txt": "34 DNU y 33 leyes publicados en el Boletín Oficial entre 2025-09-21 y 2026-09-20 → 1.03 DNU por ley",
-          "obtenido_en": "2026-09-20T12:58:26",
+          "obtenido_en": "2026-09-20T16:04:34",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 61.9,
@@ -818,7 +818,7 @@
           "desactualizado": false,
           "variacion_12m": 2.0,
           "detalle_txt": "Brecha de -1,8 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Último horizonte consultado: 2026-08 a 2026-10; la fecha identifica su inicio, no una realización observada ni la fecha de publicación. Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
-          "obtenido_en": "2026-09-20T12:58:26",
+          "obtenido_en": "2026-09-20T16:04:34",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 71.4,
@@ -837,7 +837,7 @@
           "criticas_ventana": 6,
           "pendientes_de_codificar": 0,
           "detalle_txt": "En los últimos doce meses AEA y UIA se pronunciaron 10 veces sobre medidas del Gobierno nacional: 4 de apoyo y 6 de crítica. Saldo −0,2 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
-          "obtenido_en": "2026-09-20T12:58:26",
+          "obtenido_en": "2026-09-20T16:04:34",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 52.5,
@@ -854,7 +854,7 @@
           "cobertura_hasta": "2026-09-11",
           "referencia_temporal": "mes de inicio de las semanas ACLED",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T12:58:37",
+          "obtenido_en": "2026-09-20T16:04:44",
           "detalle_txt": "1981 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-08) vs 2605 en la base 2023 (-24,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
           "en_indice": true,
           "dimension": "conflicto_social",
@@ -869,7 +869,7 @@
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
           "detalle_txt": "4.760.195 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
-          "obtenido_en": "2026-09-20T12:58:37",
+          "obtenido_en": "2026-09-20T16:04:44",
           "en_indice": true,
           "dimension": "conflicto_social",
           "puntaje_itcp": 100.0,
@@ -885,7 +885,7 @@
           "fuente": "https://centrocepa.com.ar/documentos/informes/837-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial-2",
           "fecha_dato": "2026-08-23",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T12:58:39",
+          "obtenido_en": "2026-09-20T16:04:46",
           "en_indice": false
         },
         "iaf_transferencias": {
@@ -900,7 +900,7 @@
           "detalle_txt": "2025: +43.1% nominal contra un deflactor de 40.8% ponderado por el flujo de cada mes → +1.6% real",
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T12:58:41",
+          "obtenido_en": "2026-09-20T16:04:47",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 78.2,
@@ -918,7 +918,7 @@
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
           "fecha_dato": "2026-09-20",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T12:58:42",
+          "obtenido_en": "2026-09-20T16:04:49",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 60.0,
@@ -935,7 +935,7 @@
           "desactualizado": false,
           "ultima_reunion_registrada": "2026-09-09",
           "detalle_txt": "1 de 11 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. Última reunión: 2026-09-09. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas.",
-          "obtenido_en": "2026-09-20T12:58:42",
+          "obtenido_en": "2026-09-20T16:04:49",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 80.7,
@@ -952,7 +952,7 @@
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
           "fecha_dato": "2026-09-20",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T12:58:43",
+          "obtenido_en": "2026-09-20T16:04:50",
           "en_indice": false
         },
         "adhesion_reformas_provincial": {
@@ -983,7 +983,7 @@
           ],
           "detalle_txt": "18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T12:58:45",
+          "obtenido_en": "2026-09-20T16:04:51",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 92.5,
@@ -1001,7 +1001,7 @@
           "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
           "fecha_dato": "2026-09-20",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T12:59:07",
+          "obtenido_en": "2026-09-20T16:05:13",
           "en_indice": false
         },
         "rotacion_gabinete": {
@@ -1014,7 +1014,7 @@
           "salidas_estructurales": 2,
           "ultima_salida": "Manuel Adorni — Jefe de Gabinete de Ministros (2026-06)",
           "detalle_txt": "7 salidas en 12 meses = 5 políticas · 2 por bancas electorales — Gerardo Werthein (2025-10), Guillermo Francos (2025-11), Lisandro Catalan (2025-11), Patricia Bullrich (2025-12), Luis Petri (2025-12), Mariano Cuneo Libarona (2026-03), Manuel Adorni (2026-06)",
-          "obtenido_en": "2026-09-20T12:59:12",
+          "obtenido_en": "2026-09-20T16:05:18",
           "en_indice": false
         },
         "protestas_caba": {
@@ -1025,7 +1025,7 @@
           "cobertura_hasta": "2026-09-11",
           "referencia_temporal": "mes de inicio de las semanas ACLED",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T12:59:12",
+          "obtenido_en": "2026-09-20T16:05:18",
           "eventos_2023": 240,
           "var_vs_2023": 17.1,
           "detalle_txt": "281 eventos en 12m (grupos hasta 2026-08) vs 240 en la base 2023 (+17,1%) — semanas sábado–viernes agrupadas por su mes de inicio. Cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
@@ -1054,7 +1054,7 @@
               "desactualizado": false
             }
           },
-          "obtenido_en": "2026-09-20T12:59:42",
+          "obtenido_en": "2026-09-20T16:05:49",
           "en_indice": true,
           "dimension": "cohesion_interna",
           "puntaje_itcp": 100.0,
@@ -1072,7 +1072,7 @@
           "fecha_dato": "2026-09-20",
           "desactualizado": false,
           "detalle_txt": "No hubo normas desafiadas en la ventana de doce meses. Sin denominador no hay tasa de bloqueo: no se asigna cero ni se conserva una tasa de otra ventana. El peso se redistribuye entre los componentes observados de la dimensión legislativa.",
-          "obtenido_en": "2026-09-20T12:59:47",
+          "obtenido_en": "2026-09-20T16:06:02",
           "en_indice": false,
           "dimension": "poder_legislativo"
         },
@@ -1086,7 +1086,7 @@
           "fecha_dato": "2026-09-20",
           "desactualizado": false,
           "detalle_txt": "Ninguna norma del Ejecutivo fue desafiada en el recinto en los últimos 12 meses — cero desafíos es la señal, no un dato faltante. Cuando los hubo (histórico completo: 16 normas desde marzo de 2024), el 43,8% siguió en pie (7 de 16).",
-          "obtenido_en": "2026-09-20T12:59:47",
+          "obtenido_en": "2026-09-20T16:06:02",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 100.0,
@@ -1102,7 +1102,7 @@
           "ultima_sancion_registrada": "2026-08-27",
           "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
           "detalle_txt": "29 leyes distintas en los 12 meses completos hasta 2026-08. Última sanción registrada: 2026-08-27; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
-          "obtenido_en": "2026-09-20T12:59:47",
+          "obtenido_en": "2026-09-20T16:06:03",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 42.5,
@@ -1116,7 +1116,7 @@
           "fecha_dato": "2026-01-01",
           "desactualizado": false,
           "detalle_txt": "156 de 9095 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
-          "obtenido_en": "2026-09-20T12:59:50",
+          "obtenido_en": "2026-09-20T16:06:05",
           "en_indice": false,
           "dimension": "poder_judicial",
           "suspendido": {
@@ -1135,7 +1135,7 @@
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
           "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
-          "obtenido_en": "2026-09-20T12:59:50",
+          "obtenido_en": "2026-09-20T16:06:05",
           "en_indice": true,
           "dimension": "poder_judicial",
           "puntaje_itcp": 94.6,
@@ -1256,7 +1256,7 @@
           ],
           "criterio_conjuntas": "Cada comisión que sesiona aporta un evento, aunque la nota agrupe varias comisiones o documente una sesión conjunta; fecha y comisión se deduplican. Las audiencias no cuentan.",
           "detalle_txt": "13 sesiones de las comisiones de Acusación y Disciplina en los últimos 12 meses, incluidas ordinarias, extraordinarias y las publicadas junto con otras comisiones; las audiencias no cuentan (rango de la serie: 13 a 18, promedio 15.2).",
-          "obtenido_en": "2026-09-20T12:59:52",
+          "obtenido_en": "2026-09-20T16:06:07",
           "en_indice": true,
           "dimension": "poder_judicial",
           "puntaje_itcp": 10.0,
@@ -1268,18 +1268,19 @@
           "unidad": "% estimado de cargos con juez designado",
           "fuente": "Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura",
           "fecha_dato": "2026-09-01",
-          "desactualizado": true,
-          "obtenido_en": "2026-09-11",
+          "desactualizado": false,
+          "obtenido_en": "2026-09-20T16:06:08",
           "estimado": true,
           "limites_metodologicos": [
             "No incorpora órganos no habilitados en el padrón sin una fuente de habilitación.",
             "No certifica el calendario de juras ni la exhaustividad de fallecimientos.",
             "Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen.",
-            "Revisión del 2026-09-19: los CSV de designaciones y renuncias de datos.jus.gob.ar son snapshot del 2026-09-11 (su última norma_fecha es 2026-09-07, ya registrada) y el archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. Por eso `revisado_hasta` se fecha al 2026-09-11, la cobertura real de la fuente primaria, y NO a la fecha de la revisión: los decretos del Boletín Oficial posteriores al snapshot no están cotejados."
+            "Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales.",
+            "Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos."
           ],
           "cargos_con_juez": 705,
           "cargos_totales": 955,
-          "fecha_corte": "2026-09-11",
+          "fecha_corte": "2026-09-20",
           "fecha_padron": "2026-06-05",
           "padron_con_juez": 609,
           "padron_con_juez_original": 610,
@@ -1290,7 +1291,7 @@
           "padron_sin_cubrir": 69,
           "designaciones_desde_padron": 103,
           "renuncias_desde_padron": 6,
-          "detalle_txt": "Cobertura estimada: 705 de 955 cargos al 2026-09-11. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +103 altas netas, −6 renuncias y −1 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen. Revisión del 2026-09-19: los CSV de designaciones y renuncias de datos.jus.gob.ar son snapshot del 2026-09-11 (su última norma_fecha es 2026-09-07, ya registrada) y el archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. Por eso `revisado_hasta` se fecha al 2026-09-11, la cobertura real de la fuente primaria, y NO a la fecha de la revisión: los decretos del Boletín Oficial posteriores al snapshot no están cotejados.",
+          "detalle_txt": "Cobertura estimada: 705 de 955 cargos al 2026-09-20. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +103 altas netas, −6 renuncias y −1 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen. Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales. Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos.",
           "en_indice": true,
           "dimension": "poder_judicial",
           "puntaje_itcp": 62.0,
@@ -4600,7 +4601,5 @@
   "barbarismo_activo": "político",
   "cinturon_dominante": "vida_cotidiana",
   "alerta_multicinturon": false,
-  "flags": [
-    "desactualizado:politica:cobertura_judicial"
-  ]
+  "flags": []
 }
