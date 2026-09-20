@@ -8,7 +8,7 @@ cinturon: 'politica'
 indicadores: [apoyo_empresario]
 archivos: ['scripts/itcp.py', 'scripts/politica.py', 'web/src/lib/fichas.ts', 'data/politica/apoyo_empresario_codificacion.json', 'tests/test_apoyo_corpus_cerrado.py']
 supersede: ['0246']
-relacionado: ['0131', '0149', '0150', '0245']
+relacionado: ['0131', '0149', '0150', '0245', '0332']
 ambito: 'Cinturón política · ITCP · `apoyo_empresario` · reingreso al score y qué significa «corpus cerrado»'
 origen: 'Se vació la cola de comunicados pendientes y quedó por decidir si se cumplía la condición de reingreso de ADR-0246'
 ---

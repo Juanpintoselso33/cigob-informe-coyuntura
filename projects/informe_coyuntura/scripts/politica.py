@@ -2264,6 +2264,74 @@ def fetch_apoyo_empresario() -> dict | None:
         return None
 
 
+# Con menos huecos observados que esto, el máximo histórico de una cámara no es
+# una referencia: un corpus corto lo subestima y la guarda avisaría de más.
+CAMARA_MUDA_PISO_HUECOS = 10
+
+
+def silencio_por_camara(hoy: date | None = None) -> dict:
+    """Días sin publicar de cada cámara, contra su propio máximo histórico.
+
+    El umbral NO es un número elegido a mano: es el hueco más largo que la
+    propia cámara ya se tomó entre dos comunicados. Hace falta que sea por
+    cámara porque publican a ritmos distintos —medido sobre el corpus al
+    20-sep-2026, AEA tiene mediana 43 días y máximo 154; UIA mediana 7 y máximo
+    112—, así que un tope único daría falsos positivos en una y taparía a la
+    otra. Ver ADR-0332.
+    """
+    hoy = hoy or date.today()
+    d = json.loads(APOYO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
+    out = {}
+    for cam in ("AEA", "UIA"):
+        fechas = sorted({c["fecha"] for c in d["casos"] if c["camara"] == cam})
+        huecos = sorted(g for g in
+                        ((date.fromisoformat(b) - date.fromisoformat(a)).days
+                         for a, b in zip(fechas, fechas[1:])) if g > 0)
+        if len(huecos) < CAMARA_MUDA_PISO_HUECOS:
+            continue
+        n = len(huecos)
+        out[cam] = {
+            "ultimo": fechas[-1],
+            "silencio": (hoy - date.fromisoformat(fechas[-1])).days,
+            "maximo_historico": huecos[-1],
+            "mediana": huecos[n // 2] if n % 2 else (huecos[n // 2 - 1] + huecos[n // 2]) // 2,
+            "huecos": n,
+        }
+    return out
+
+
+def _avisar_camara_muda(hoy: date | None = None) -> list:
+    """Registra un cotejo manual por cada cámara cuyo silencio no tiene precedente.
+
+    Existe porque NADA lo miraba: el corpus cerrado de ADR-0310 detecta
+    comunicados sin codificar y `inventario_verificado` comprueba que las dos
+    cámaras RESPONDAN, pero una cámara cuya página contesta y no publica nada
+    pasa las dos. El saldo sigue saliendo, con un rótulo que promete dos
+    cámaras y una sola hablando (ADR-0332).
+    """
+    raiz = str(Path(__file__).resolve().parents[1])
+    if raiz not in sys.path:
+        sys.path.insert(0, raiz)
+    from cotejo_manual import registrar
+    mudas = []
+    for cam, s in sorted(silencio_por_camara(hoy).items()):
+        if s["silencio"] <= s["maximo_historico"]:
+            continue
+        mudas.append(cam)
+        registrar(
+            "apoyo_empresario",
+            f"{cam} muda desde {s['ultimo']}",
+            f"{cam} lleva {s['silencio']} días sin publicar un comunicado y su hueco más "
+            f"largo hasta ahora fue de {s['maximo_historico']} días (mediana {s['mediana']}), "
+            f"así que el silencio no tiene precedente. El saldo se sigue calculando con "
+            f"la otra cámara, y el rótulo de la card sigue diciendo «las cámaras "
+            f"empresarias». Verificar en la fuente si dejó de publicar, si cambió la "
+            f"sección o si el extractor se rompió; si dejó de publicar de verdad, "
+            f"decidirlo en un ADR y no dejarlo pasar en silencio.",
+            (AEA_PRENSA_URL if cam == "AEA" else UIA_NOVEDADES_URL))
+    return mudas
+
+
 def detectar_novedades_empresarias() -> dict:
     """Comunicados nuevos de UIA y AEA, pendientes de codificar.
 
@@ -2346,6 +2414,11 @@ def detectar_novedades_empresarias() -> dict:
     APOYO_NOVEDADES_PATH.write_text(
         json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True),
         encoding="utf-8")
+
+    # Una cámara que responde y no publica pasa las dos guardas de ADR-0310.
+    # Va DESPUÉS de escribir el store: el aviso no debe poder perder la corrida.
+    for cam in _avisar_camara_muda():
+        print(f"  [i] cámaras: {cam} muda, sin precedente — ver ADR-0332")
     return store
 
 

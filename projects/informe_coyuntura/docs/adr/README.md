@@ -216,6 +216,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0312](0312-votometro-traduce-el-semaforo-de-luis.md) | El votómetro traduce el semáforo que pidió Luis, no ya los márgenes simétricos | `votometro_ventaja_lla` | vigente |
 | [0313](0313-quorum-sin-convocante-en-la-fuente.md) | El quórum caído no se puede filtrar por quién convocó: la fuente no lo dice | `veto_quorum` | rechazado |
 | [0330](0330-bloqueo-sostenido-sale-del-indice-y-del-tablero.md) | bloqueo_sostenido sale del índice y del tablero: enmudecer en el extremo no es una card | `bloqueo_sostenido`, `desafios_legislativos` | vigente |
+| [0332](0332-una-camara-que-calla-no-dispara-nada.md) | Una cámara que calla no dispara nada, y el saldo sigue saliendo | `apoyo_empresario` | vigente |
 
 ### Gestión (ITCG)
 

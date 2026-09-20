@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-27
 cinturon: 'politica'
 indicadores: [sector_privado, apoyo_empresario]
-relacionado: ['0246', '0310']
+relacionado: ['0246', '0310', '0332']
 ambito: 'cinturón político (ITCP) · `sector_privado` · herramienta interna'
 ---
 
