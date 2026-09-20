@@ -65,8 +65,16 @@ SIGLAS_PUBLICAS = {"itcm": "ITCM", "itcg": "ITCG", "itvc": "ITCIS", "itcp": "ITC
 
 # Umbrales de clasificación de estado por cinturón (score 0-10)
 # score <= ESTABLE_MAX → "estable" | <= EN_TENSION_MAX → "en_tension" | > EN_TENSION_MAX → "tensionado"
+# ESTABLE_MAX pasó de 3 a 4 el 20-sep-2026 (ADR-0333). Los dos valores son los
+# bordes que el informe YA publica: en un índice 0-100, tensión 4 es el puntaje
+# 60 y tensión 6 es el 40, o sea los límites de BANDAS_INTERPRETACION entre
+# "moderadamente aflojado", "moderadamente apretado" y "apretado". El 3 no salía
+# de ningún lado —ADR-0195 lo arrastró al unificar tres criterios, sin
+# justificarlo— y hacía que el estado fuera MÁS estricto que el método que
+# resume: con ITCM 63,1 el propio informe leía "moderadamente aflojado" y el
+# semáforo lo pintaba verde, mientras el estado decía "en tensión".
 UMBRALES = {
-    "ESTABLE_MAX": 3,
+    "ESTABLE_MAX": 4,
     "EN_TENSION_MAX": 6,
 }
 

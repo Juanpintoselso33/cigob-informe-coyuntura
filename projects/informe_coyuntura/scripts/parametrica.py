@@ -27,7 +27,11 @@ La tensión 0-10 del informe se deriva como (100 − índice) / 10, así el rest
 del pipeline (umbrales, estados, score global) conserva su convención.
 """
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import UMBRALES  # noqa: E402  — única definición de los cortes de estado
 
 INF = float("inf")
 
@@ -94,14 +98,26 @@ def tension_de_indice(indice: float) -> float:
 
 # ── Semáforo de 4 colores (ADR-0181) ──────────────────────────────────────────
 # El color NO es una escala nueva: es la tensión 0-10 que el informe ya publica,
-# partida en cuatro tramos. Para los índices 0-100 eso da los cortes 60/40/20,
-# que son los bordes de BANDAS_INTERPRETACION; para el ITVC base-100 sale de
-# despejar su propia fórmula (tensión = 5 − (índice−100) × 0,2).
+# partida en cuatro tramos. Por eso sus dos primeros cortes **se derivan de
+# `config.UMBRALES`**, los mismos que `estado_de_score` usa para decir "estable /
+# en tensión / tensionado", y no se escriben acá.
+#
+# Los cortes NO cambiaron: siguen siendo 4/6/8, los bordes 60/40/20 de
+# BANDAS_INTERPRETACION que eligió ADR-0181. Lo que cambió es que ahora se
+# derivan de `UMBRALES` en vez de estar escritos dos veces. Hasta el 20-sep-2026
+# el estado cortaba en 3 y el color en 4, así que todo lo que cayera entre 3,0 y
+# 4,0 se publicaba con dos etiquetas opuestas —macro, en 3,69, salía «Sin tensión
+# relevante» en el titular y «en tensión» como estado—. ADR-0333 movió el umbral
+# del estado al borde publicado y ató las dos tablas para que no vuelvan a
+# separarse. El tercer corte (8,0) subdivide "tensionado" y no compite con
+# ningún estado.
 #
 # El color se calcula SIEMPRE sobre la tensión sin redondear. `aporte_score` en
 # el snapshot está redondeado a un decimal y usarlo acá rompe el borde: puntaje
-# 59,9 da tensión 4,01, que redondeada es 4,0 y saldría verde.
-CORTES_SEMAFORO = (("verde", 4.0), ("amarillo", 6.0), ("naranja", 8.0), ("rojo", INF))
+# 69,9 da tensión 3,01, que redondeada es 3,0 y saldría verde.
+CORTES_SEMAFORO = (("verde", float(UMBRALES["ESTABLE_MAX"])),
+                   ("amarillo", float(UMBRALES["EN_TENSION_MAX"])),
+                   ("naranja", 8.0), ("rojo", INF))
 
 
 def color_de_tension(tension: float) -> str:

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-20 13:12:27"
+generado: "2026-09-20 15:10:01"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -14,7 +14,7 @@ schema_version: "1.2.0"
 
 ## Cinturones
 
-### 🟡 Macro — score 3.7/10 (en_tension)
+### 🟢 Macro — score 3.7/10 (estable)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -124,4 +124,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-20 13:12:27 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-20 15:10:01 — schema 1.2.0*

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-09-20T13:12:27.784958-03:00",
+  "generated_at": "2026-09-20T15:10:01.292920-03:00",
   "period": "2026-09",
   "score_global": 3.7,
   "ponderacion": {
@@ -16,7 +16,7 @@
   "cinturones": {
     "macro": {
       "score": 3.7,
-      "estado": "en_tension",
+      "estado": "estable",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
         "ipc_total": {
