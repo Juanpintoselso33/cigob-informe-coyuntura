@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'macro'
 indicadores: [icip]
 archivos: ['scripts/itcm.py', 'tests/test_idm_e_icip_no_puntuan.py', 'tests/test_itcm.py']
-relacionado: ['0009', '0045', '0192', '0253', '0264', '0265']
+relacionado: ['0009', '0045', '0192', '0253', '0264', '0265', '0331']
 ambito: 'Cinturón macro · ITCM · `icip` · por qué mudarlo de dimensión no arregla nada'
 origen: 'Reauditoría externa post-cambios, 25-ago-2026: «continúa dentro de la dimensión Inversión y todo aumento de pagos transfronterizos eleva el score. Debe salir de Inversión o cambiar su primer insumo»'
 ---
