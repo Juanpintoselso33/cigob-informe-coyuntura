@@ -55,8 +55,10 @@ conveniencia y eso no aparece»*. Está pasando, y no aparece.
 
 ## Factores de decisión
 
-- El umbral no puede ser un número elegido a mano: es lo que este repo llama
-  copiar el rezago del documento en vez de medirlo.
+- El umbral en DÍAS no puede ser un número elegido a mano: es lo que este repo
+  llama copiar el rezago del documento en vez de medirlo. (Sí queda un número
+  elegido: cuántos huecos hacen falta para estimar una cadencia. No fija cuándo
+  avisar, fija cuándo hay evidencia para opinar.)
 - Tiene que ser **por cámara**. AEA publica cada 43 días de mediana y UIA cada 7:
   un tope único daría falsos positivos en una y taparía a la otra.
 - **Sólo lo accionable.** Un aviso que salte en cada hueco normal de AEA entrena
@@ -74,15 +76,43 @@ conveniencia y eso no aparece»*. Está pasando, y no aparece.
 
 ## Decisión
 
-**Opción 3.** `politica.silencio_por_camara()` calcula, por cámara, los días sin
-publicar y el hueco más largo que esa misma cámara ya se tomó entre dos
-comunicados. `_avisar_camara_muda()` registra una incidencia `[COTEJO_MANUAL]`
-—el mismo mecanismo que el vencimiento de la conciliación judicial— **sólo
-cuando el silencio supera ese máximo**, o sea cuando deja de tener precedente.
+**Opción 3.** `politica.silencio_por_camara()` calcula, por cámara vigilada, los
+días sin publicar y el umbral a partir de su propia cadencia.
+`_avisar_camara_muda()` registra una incidencia `[COTEJO_MANUAL]` —el mismo
+mecanismo que el vencimiento de la conciliación judicial— cuando el silencio
+supera ese umbral.
 
-El umbral se autocalibra: no hay ningún número de días en el código. Con menos
-de `CAMARA_MUDA_PISO_HUECOS = 10` huecos observados la guarda se abstiene, porque
-un corpus corto subestima la cadencia real y avisaría de más.
+Tres definiciones hacen el trabajo, y las tres salieron de la revisión
+adversarial previa al merge:
+
+**1. El umbral es el percentil 95 de los huecos, no el máximo.** Con el máximo la
+guarda ratcheteaba: un silencio extraordinario, una vez cerrado, se convertía en
+el nuevo umbral y la guarda quedaba sorda hasta superarlo. Una ausencia de 400
+días ignorada dejaba el umbral en 401 para siempre — la guarda aprendía justo de
+los incidentes que tenía que detectar. El p95 es insensible a un caso aislado y
+sí recoge los huecos largos cuando son parte de la cadencia real: al 20-sep-2026
+AEA queda con **umbral 134** (máximo 154, mediana 43) y UIA con **38** (máximo
+112, mediana 7).
+
+**2. La fecha sale del INVENTARIO, no del corpus codificado.** Un comunicado
+recién detectado entra a `pendientes`, no a la codificación. Leyendo sólo lo
+codificado, la guarda habría seguido diciendo «muda» después de que la cámara
+volvió a publicar, hasta que alguien la clasificara: eso mide nuestro atraso, no
+el silencio de la fuente.
+
+**3. «No pude evaluar» se avisa, y no se parece a «no está muda».** La función
+devuelve SIEMPRE una entrada por cada cámara de `CAMARAS_VIGILADAS`, con
+`evaluable: False` y un `motivo` cuando no puede juzgar —inventario ilegible,
+cámara ausente, fecha futura, o menos de `CAMARA_MUDA_PISO_HUECOS = 10` huecos
+observados—, y cada uno de esos casos registra su propia incidencia. La primera
+versión devolvía `{}` y la lista de avisos salía vacía: indistinguible de «las
+dos cámaras están publicando», o sea la misma omisión silenciosa que este ADR
+vino a eliminar.
+
+La llamada va **aislada en un `try`** después de escribir el store: si la guarda
+se cae no puede llevarse el aviso de pendientes que el llamador manda después, y
+su propia caída se registra como incidencia en vez de pasar por «no hay cámaras
+mudas».
 
 **No se renombra la card (opción 1 descartada).** El universo de diseño sigue
 siendo las dos cámaras y el manual ya declara que una puede callar; renombrar
@@ -104,31 +134,50 @@ redescubre a los golpes, que es la lección de ADR-0220.
   fecha 2026-09.
 - La guarda sirve para las dos cámaras: si mañana UIA se calla —que es la que
   sostiene 9 de los 10 computables— también avisa.
+- **El canal puede recibir avisos de «vigilancia sin evaluar»** que antes no
+  existían. Es deliberado y es el punto: preferimos un aviso de que no estamos
+  mirando antes que un silencio que se lee como que todo está bien.
 - Queda sin resolver, a propósito, que la ficha no publique la composición por
   cámara de la ventana. Se decide cuando se decida el perímetro.
 
 ### Confirmación
 
-`tests/test_camara_muda.py`, cinco casos, y lo que prueba de verdad es lo que la
+`tests/test_camara_muda.py`, doce casos. Lo que prueba de verdad es lo que la
 guarda **no** tiene que hacer:
 
-- avisa cuando el silencio no tiene precedente;
-- **NO** avisa con un hueco largo que la cámara ya se había tomado antes;
-- no opina con un corpus por debajo del piso de huecos;
+- **no** avisa con un silencio que la cámara ya se tomó varias veces;
+- **no** deja que un hueco extraordinario aislado le levante el umbral (el
+  anti-ratchet, con un caso de 400 días ya cerrado);
+- **no** se calla cuando no puede evaluar: hay un caso por inventario vacío, por
+  cámara ausente, por inventario ilegible, por fecha futura y por corpus bajo el
+  piso, y cada uno exige que salga la incidencia;
+- **no** sigue avisando cuando la cámara volvió a publicar aunque el comunicado
+  esté sin codificar;
 - el umbral es por cámara: dos cámaras con el mismo silencio y cadencias
   distintas no se juzgan igual;
+- el borde exacto no avisa y el día siguiente sí;
 - y un caso contra el corpus versionado, no un fixture, que falla si AEA vuelve a
-  publicar — o sea, este ADR deja de estar vigente y el test lo dice.
+  publicar — o sea, avisa que este ADR dejó de estar vigente.
 
-Probada rompiéndola en las dos direcciones, con el bytecode borrado antes de
-cada corrida: mutada a «nunca avisa» caen 2 tests; mutada a «avisa siempre» caen
-otros 2, entre ellos el del hueco con precedente. Restaurada, 5 passed.
+Los casos no comparan sólo el retorno de la función: leen stderr y exigen el
+marcador `[COTEJO_MANUAL]`, porque si `registrar()` se volviera un no-op un test
+que sólo mira la lista pasaría igual.
+
+Probada rompiéndola, con el bytecode borrado antes de cada corrida:
+
+| Mutación | Resultado |
+|---|---|
+| `silencio_por_camara` devuelve `{}` (fail-open) | **12 de 12 fallan** |
+| umbral vuelve al máximo en vez del p95 | 1 falla (el anti-ratchet) |
+| se deja de leer `pendientes` | 1 falla (mide el atraso, no la fuente) |
 
 ## Pros y contras de las opciones
 
-**Opción 3 (elegida).** Bueno: sin números mágicos, por cámara, y se calibra sola
-a medida que el corpus crece. Malo: si una cámara arrastra un hueco enorme
-histórico, el umbral queda alto y tarda en avisar.
+**Opción 3 (elegida).** Bueno: sin un umbral de días elegido a mano, por cámara,
+y se calibra sola a medida que el corpus crece. Malo: una cámara con huecos
+largos habituales tiene un umbral alto y tarda en avisar; y sigue habiendo un
+número puesto a mano —el piso de huecos— que decide si hay vigilancia, aunque
+ahora su ausencia se avisa en vez de silenciarse.
 
 **Opción 1.** Bueno: el rótulo diría la verdad hoy mismo. Malo: oscila con cada
 publicación, y tapa el hallazgo en vez de mostrarlo.
@@ -145,3 +194,27 @@ número que sirva para una cámara que publica cada 7 días y otra cada 43.
   midió de dónde venían los 10 computables de 2026 y AEA no aparecía desde
   marzo. Agosto de 2026 es el caso que lo resume: **11 comunicados codificados y
   cero computables**.
+
+### Qué corrigió la revisión adversarial de este ADR
+
+La primera versión de la guarda tenía tres fallas que una revisión con Codex
+—modelo distinto, contexto fresco— encontró antes del merge, y las tres eran de
+la misma familia que el problema que el ADR denuncia:
+
+1. **Fallaba abierta.** Con el inventario vacío, una ruta equivocada o una clave
+   renombrada devolvía `{}`, la lista de avisos salía vacía y el pipeline seguía
+   en verde: exactamente igual que con las dos cámaras publicando. Peor, el test
+   de «corpus corto» consagraba ese silencio como conducta correcta.
+2. **Medía nuestro atraso, no el silencio de la fuente.** Leía sólo el corpus
+   codificado, así que si AEA volvía a publicar la guarda seguía gritando «muda»
+   hasta que alguien clasificara el comunicado. El ADR prometía que avisaba
+   «hasta que publique» y eso era falso.
+3. **El umbral ratcheteaba.** Al usar el máximo, cada silencio extraordinario ya
+   cerrado subía el umbral para siempre: la guarda se volvía menos sensible
+   gracias a los incidentes que tenía que detectar.
+
+Las tres están corregidas arriba, con un caso de test por cada una. La revisión
+marcó además que la mediana con cantidad par se publicaba redondeada hacia abajo
+(7 y 8 daban 7, no 7,5) y que faltaba el test del borde exacto: los dos
+arreglados. El veredicto de la revisión fue «pediría cambios antes de mergear»,
+y tenía razón en las tres.
