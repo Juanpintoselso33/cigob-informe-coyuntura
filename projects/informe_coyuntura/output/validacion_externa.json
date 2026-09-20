@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-19T03:29:20.960641+00:00",
+    "generated_at": "2026-09-19T22:17:37.201733-03:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -2987,7 +2987,7 @@
     "2026-06": 2087.8,
     "2026-07": 2090.0,
     "2026-08": 1913.0,
-    "2026-09": 1896.8
+    "2026-09": 1896.5
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {

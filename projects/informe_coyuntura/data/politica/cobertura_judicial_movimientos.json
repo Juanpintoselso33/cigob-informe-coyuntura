@@ -1,12 +1,13 @@
 {
   "fecha_padron": "2026-06-05",
-  "revisado_hasta": "2026-09-08",
+  "revisado_hasta": "2026-09-11",
   "estado": "reconstruccion_estimada_con_limites",
   "criterio": "Ajustes documentados del flujo de titulares sobre el universo habilitado del padrón. No equivalen a cargos en ejercicio: el momento de jura puede diferir del nombramiento.",
   "limites": [
     "No incorpora órganos no habilitados en el padrón sin una fuente de habilitación.",
     "No certifica el calendario de juras ni la exhaustividad de fallecimientos.",
-    "Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen."
+    "Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen.",
+    "Revisión del 2026-09-19: los CSV de designaciones y renuncias de datos.jus.gob.ar son snapshot del 2026-09-11 (su última norma_fecha es 2026-09-07, ya registrada) y el archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. Por eso `revisado_hasta` se fecha al 2026-09-11, la cobertura real de la fuente primaria, y NO a la fecha de la revisión: los decretos del Boletín Oficial posteriores al snapshot no están cotejados."
   ],
   "movimientos": [
     {
