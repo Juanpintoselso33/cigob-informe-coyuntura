@@ -101,10 +101,18 @@ def test_la_serie_no_rellena_los_meses_vacios_con_cero():
     assert all(-1.0 <= v <= 1.0 for _, v in serie)
 
 
-def test_la_serie_arranca_en_el_periodo_y_es_mensual_ascendente():
+def test_la_serie_no_empieza_antes_del_periodo_y_es_mensual_ascendente():
     serie = politica.apoyo_empresario_serie()
-    assert serie[0][0] == "2023-12-01", "el período arranca con la asunción"
     fechas = [f for f, _ in serie]
+    # NUNCA antes de la asunción: ahí arranca el período que el indicador mide.
+    assert fechas[0] >= f"{politica.APOYO_DESDE}-01", "la serie se fue antes del período"
+    # Puede arrancar DESPUÉS, y desde ADR-0334 arranca: con AEA fuera del
+    # perímetro el corpus es el de UIA, cuyo primer comunicado es de dic-2023, así
+    # que la primera ventana móvil de doce meses con comunicados computables cae
+    # en abr-2024. Antes empezaba en dic-2023 porque AEA traía historia de 2020.
+    assert fechas[0] == "2024-04-01", (
+        "cambió el arranque de la serie: si se repuso AEA en APOYO_CAMARAS_PERIMETRO "
+        "vuelve a 2023-12-01 y hay que revisar ADR-0334")
     assert fechas == sorted(fechas) and len(fechas) == len(set(fechas))
     # Sin exigir un largo: el corte por pendientes (ADR-0310) acorta la serie
     # legítimamente el día que haya un comunicado atrasado sin codificar.

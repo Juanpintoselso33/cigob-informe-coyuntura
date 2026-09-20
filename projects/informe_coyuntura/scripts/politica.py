@@ -2092,7 +2092,11 @@ def _apoyo_firmas_codificadas() -> set[tuple[str, str]]:
 
 APOYO_DESDE = "2023-12"        # arranque del período (asunción Milei)
 
-
+# Cámaras que ENTRAN al cálculo (ADR-0334). AEA sale del perímetro: dejó de
+# publicar el 31-mar-2026 y el rótulo no puede prometer dos cámaras midiendo una.
+# Sus 46 comunicados codificados NO se borran —siguen en el registro y la guarda
+# de ADR-0332 la sigue vigilando—, así que reponerla es volver a nombrarla acá.
+APOYO_CAMARAS_PERIMETRO = ("UIA",)
 def apoyo_empresario_serie() -> list:
     """Saldo de postura empresaria hacia el Ejecutivo nacional, ventana móvil
     de 12 meses: (apoyos − críticas) / (apoyos + críticas).
@@ -2120,7 +2124,8 @@ def apoyo_empresario_serie() -> list:
     """
     d = json.loads(APOYO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
     comp = [(c["fecha"], c["postura"]) for c in d["casos"]
-            if c["destinatario"] == "ejecutivo_nacional"
+            if c["camara"] in APOYO_CAMARAS_PERIMETRO
+            and c["destinatario"] == "ejecutivo_nacional"
             and c["postura"] in ("apoyo", "critica")]
     if not comp:
         raise ValueError("apoyo_empresario: el registro no tiene casos computables")
@@ -2229,8 +2234,12 @@ def fetch_apoyo_empresario() -> dict | None:
         # La misma ventana que el punto de la serie, con su límite superior: si
         # la serie está cortada, contar lo codificado después descompondría un
         # saldo que no es el publicado.
+        # MISMO perímetro que `apoyo_empresario_serie`: contar acá los comunicados
+        # de una cámara que no entra al saldo publicaba «10 en la ventana» debajo
+        # de un saldo calculado sobre 9 (ADR-0334).
         comp = [c for c in d["casos"]
-                if c["destinatario"] == "ejecutivo_nacional"
+                if c["camara"] in APOYO_CAMARAS_PERIMETRO
+                and c["destinatario"] == "ejecutivo_nacional"
                 and c["postura"] in ("apoyo", "critica")
                 and f"{int(fecha[:4]) - 1}{fecha[4:7]}-01" <= c["fecha"] <= f"{fecha[:7]}-31"]
         apoyos = sum(1 for c in comp if c["postura"] == "apoyo")
@@ -2239,7 +2248,7 @@ def fetch_apoyo_empresario() -> dict | None:
             "valor":          valor,
             "unidad":         "saldo de postura (−1 a +1, 12m móviles)",
             # Sin número de ADR: este string se publica (G6).
-            "fuente":         "Comunicados de AEA y UIA — codificación CIGOB",
+            "fuente":         "Comunicados de la UIA — codificación CIGOB",
             "fecha_dato":     fecha,
             # Cortada por el inventario (ADR-0310), la card es un dato congelado
             # y se declara así; al día llega al mes en curso.
@@ -2250,7 +2259,7 @@ def fetch_apoyo_empresario() -> dict | None:
             "criticas_ventana":    len(comp) - apoyos,
             "pendientes_de_codificar": pend,
             "detalle_txt": (
-                f"En los últimos doce meses AEA y UIA se pronunciaron {len(comp)} veces "
+                f"En los últimos doce meses la UIA se pronunció {len(comp)} veces "
                 f"sobre medidas del Gobierno nacional: {apoyos} de apoyo y "
                 f"{len(comp) - apoyos} de crítica. Saldo "
                 # signo menos tipográfico, como en la unidad y en las anclas

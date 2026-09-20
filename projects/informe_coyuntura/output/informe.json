@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-09-20T16:12:23.491717-03:00",
+  "generated_at": "2026-09-20T20:23:31.073872-03:00",
   "period": "2026-09",
-  "score_global": 3.7,
+  "score_global": 3.8,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -631,7 +631,7 @@
       }
     },
     "politica": {
-      "score": 2.9,
+      "score": 3.0,
       "estado": "estable",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -644,7 +644,7 @@
           "fuente": "Votómetro CIGOB",
           "fecha_dato": "2026-07-22",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T16:04:32",
+          "obtenido_en": "2026-09-20T20:21:38",
           "en_indice": true,
           "dimension": "imagen_voto",
           "puntaje_itcp": 37.2,
@@ -801,7 +801,7 @@
             }
           ],
           "detalle_txt": "34 DNU y 33 leyes publicados en el Boletín Oficial entre 2025-09-21 y 2026-09-20 → 1.03 DNU por ley",
-          "obtenido_en": "2026-09-20T16:04:34",
+          "obtenido_en": "2026-09-20T20:21:40",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 61.9,
@@ -818,7 +818,7 @@
           "desactualizado": false,
           "variacion_12m": 2.0,
           "detalle_txt": "Brecha de -1,8 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Último horizonte consultado: 2026-08 a 2026-10; la fecha identifica su inicio, no una realización observada ni la fecha de publicación. Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
-          "obtenido_en": "2026-09-20T16:04:34",
+          "obtenido_en": "2026-09-20T20:21:40",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 71.4,
@@ -826,22 +826,22 @@
           "peso_efectivo": 0.065
         },
         "apoyo_empresario": {
-          "valor": -0.2,
+          "valor": -0.333,
           "unidad": "saldo de postura (−1 a +1, 12m móviles)",
-          "fuente": "Comunicados de AEA y UIA — codificación CIGOB",
+          "fuente": "Comunicados de la UIA — codificación CIGOB",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
-          "variacion_12m": -0.7,
-          "comunicados_ventana": 10,
-          "apoyos_ventana": 4,
+          "variacion_12m": -0.666,
+          "comunicados_ventana": 9,
+          "apoyos_ventana": 3,
           "criticas_ventana": 6,
           "pendientes_de_codificar": 0,
-          "detalle_txt": "En los últimos doce meses AEA y UIA se pronunciaron 10 veces sobre medidas del Gobierno nacional: 4 de apoyo y 6 de crítica. Saldo −0,2 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
-          "obtenido_en": "2026-09-20T16:04:34",
+          "detalle_txt": "En los últimos doce meses la UIA se pronunció 9 veces sobre medidas del Gobierno nacional: 3 de apoyo y 6 de crítica. Saldo −0,333 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
+          "obtenido_en": "2026-09-20T20:21:40",
           "en_indice": true,
           "dimension": "sector_privado",
-          "puntaje_itcp": 52.5,
-          "puntaje_banda": 52.5,
+          "puntaje_itcp": 44.2,
+          "puntaje_banda": 44.2,
           "peso_efectivo": 0.065
         },
         "conflictividad_nacional": {
@@ -854,7 +854,7 @@
           "cobertura_hasta": "2026-09-11",
           "referencia_temporal": "mes de inicio de las semanas ACLED",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T16:04:44",
+          "obtenido_en": "2026-09-20T20:21:49",
           "detalle_txt": "1981 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-08) vs 2605 en la base 2023 (-24,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
           "en_indice": true,
           "dimension": "conflicto_social",
@@ -869,7 +869,7 @@
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
           "detalle_txt": "4.760.195 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
-          "obtenido_en": "2026-09-20T16:04:44",
+          "obtenido_en": "2026-09-20T20:21:49",
           "en_indice": true,
           "dimension": "conflicto_social",
           "puntaje_itcp": 100.0,
@@ -885,7 +885,7 @@
           "fuente": "https://centrocepa.com.ar/documentos/informes/837-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial-2",
           "fecha_dato": "2026-08-23",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T16:04:46",
+          "obtenido_en": "2026-09-20T20:21:51",
           "en_indice": false
         },
         "iaf_transferencias": {
@@ -900,7 +900,7 @@
           "detalle_txt": "2025: +43.1% nominal contra un deflactor de 40.8% ponderado por el flujo de cada mes → +1.6% real",
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T16:04:47",
+          "obtenido_en": "2026-09-20T20:21:52",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 78.2,
@@ -918,7 +918,7 @@
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
           "fecha_dato": "2026-09-20",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T16:04:49",
+          "obtenido_en": "2026-09-20T20:21:53",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 60.0,
@@ -935,7 +935,7 @@
           "desactualizado": false,
           "ultima_reunion_registrada": "2026-09-09",
           "detalle_txt": "1 de 11 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. Última reunión: 2026-09-09. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas.",
-          "obtenido_en": "2026-09-20T16:04:49",
+          "obtenido_en": "2026-09-20T20:21:54",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 80.7,
@@ -952,7 +952,7 @@
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
           "fecha_dato": "2026-09-20",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T16:04:50",
+          "obtenido_en": "2026-09-20T20:21:54",
           "en_indice": false
         },
         "adhesion_reformas_provincial": {
@@ -983,7 +983,7 @@
           ],
           "detalle_txt": "18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T16:04:51",
+          "obtenido_en": "2026-09-20T20:21:56",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 92.5,
@@ -1001,7 +1001,7 @@
           "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
           "fecha_dato": "2026-09-20",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T16:05:13",
+          "obtenido_en": "2026-09-20T20:22:23",
           "en_indice": false
         },
         "rotacion_gabinete": {
@@ -1014,7 +1014,7 @@
           "salidas_estructurales": 2,
           "ultima_salida": "Manuel Adorni — Jefe de Gabinete de Ministros (2026-06)",
           "detalle_txt": "7 salidas en 12 meses = 5 políticas · 2 por bancas electorales — Gerardo Werthein (2025-10), Guillermo Francos (2025-11), Lisandro Catalan (2025-11), Patricia Bullrich (2025-12), Luis Petri (2025-12), Mariano Cuneo Libarona (2026-03), Manuel Adorni (2026-06)",
-          "obtenido_en": "2026-09-20T16:05:18",
+          "obtenido_en": "2026-09-20T20:22:29",
           "en_indice": false
         },
         "protestas_caba": {
@@ -1025,7 +1025,7 @@
           "cobertura_hasta": "2026-09-11",
           "referencia_temporal": "mes de inicio de las semanas ACLED",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T16:05:18",
+          "obtenido_en": "2026-09-20T20:22:29",
           "eventos_2023": 240,
           "var_vs_2023": 17.1,
           "detalle_txt": "281 eventos en 12m (grupos hasta 2026-08) vs 240 en la base 2023 (+17,1%) — semanas sábado–viernes agrupadas por su mes de inicio. Cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
@@ -1054,7 +1054,7 @@
               "desactualizado": false
             }
           },
-          "obtenido_en": "2026-09-20T16:05:49",
+          "obtenido_en": "2026-09-20T20:22:59",
           "en_indice": true,
           "dimension": "cohesion_interna",
           "puntaje_itcp": 100.0,
@@ -1072,7 +1072,7 @@
           "fecha_dato": "2026-09-20",
           "desactualizado": false,
           "detalle_txt": "No hubo normas desafiadas en la ventana de doce meses. Sin denominador no hay tasa de bloqueo: no se asigna cero ni se conserva una tasa de otra ventana. El peso se redistribuye entre los componentes observados de la dimensión legislativa.",
-          "obtenido_en": "2026-09-20T16:06:02",
+          "obtenido_en": "2026-09-20T20:23:03",
           "en_indice": false,
           "dimension": "poder_legislativo"
         },
@@ -1086,7 +1086,7 @@
           "fecha_dato": "2026-09-20",
           "desactualizado": false,
           "detalle_txt": "Ninguna norma del Ejecutivo fue desafiada en el recinto en los últimos 12 meses — cero desafíos es la señal, no un dato faltante. Cuando los hubo (histórico completo: 16 normas desde marzo de 2024), el 43,8% siguió en pie (7 de 16).",
-          "obtenido_en": "2026-09-20T16:06:02",
+          "obtenido_en": "2026-09-20T20:23:03",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 100.0,
@@ -1102,7 +1102,7 @@
           "ultima_sancion_registrada": "2026-08-27",
           "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
           "detalle_txt": "29 leyes distintas en los 12 meses completos hasta 2026-08. Última sanción registrada: 2026-08-27; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
-          "obtenido_en": "2026-09-20T16:06:03",
+          "obtenido_en": "2026-09-20T20:23:04",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 42.5,
@@ -1116,7 +1116,7 @@
           "fecha_dato": "2026-01-01",
           "desactualizado": false,
           "detalle_txt": "156 de 9095 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
-          "obtenido_en": "2026-09-20T16:06:05",
+          "obtenido_en": "2026-09-20T20:23:06",
           "en_indice": false,
           "dimension": "poder_judicial",
           "suspendido": {
@@ -1135,7 +1135,7 @@
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
           "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
-          "obtenido_en": "2026-09-20T16:06:05",
+          "obtenido_en": "2026-09-20T20:23:06",
           "en_indice": true,
           "dimension": "poder_judicial",
           "puntaje_itcp": 94.6,
@@ -1256,7 +1256,7 @@
           ],
           "criterio_conjuntas": "Cada comisión que sesiona aporta un evento, aunque la nota agrupe varias comisiones o documente una sesión conjunta; fecha y comisión se deduplican. Las audiencias no cuentan.",
           "detalle_txt": "13 sesiones de las comisiones de Acusación y Disciplina en los últimos 12 meses, incluidas ordinarias, extraordinarias y las publicadas junto con otras comisiones; las audiencias no cuentan (rango de la serie: 13 a 18, promedio 15.2).",
-          "obtenido_en": "2026-09-20T16:06:07",
+          "obtenido_en": "2026-09-20T20:23:08",
           "en_indice": true,
           "dimension": "poder_judicial",
           "puntaje_itcp": 10.0,
@@ -1269,7 +1269,7 @@
           "fuente": "Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
-          "obtenido_en": "2026-09-20T16:06:08",
+          "obtenido_en": "2026-09-20T20:23:10",
           "estimado": true,
           "limites_metodologicos": [
             "No incorpora órganos no habilitados en el padrón sin una fuente de habilitación.",
@@ -1315,7 +1315,7 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 71.0,
+        "valor": 70.4,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -1475,7 +1475,7 @@
           "sector_privado": {
             "nombre": "Sector privado",
             "peso": 0.13,
-            "puntaje": 62.0,
+            "puntaje": 57.8,
             "indicadores": {
               "brecha_obra_publica": {
                 "peso": 0.5,
@@ -1486,9 +1486,9 @@
               },
               "apoyo_empresario": {
                 "peso": 0.5,
-                "puntaje_banda": 52.5,
-                "puntaje_aplicado": 52.5,
-                "valor": -0.2,
+                "puntaje_banda": 44.2,
+                "puntaje_aplicado": 44.2,
+                "valor": -0.333,
                 "peso_efectivo": 0.065
               }
             },

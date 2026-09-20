@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [apoyo_empresario]
 archivos: ['scripts/politica.py', 'tests/test_camara_muda.py']
-relacionado: ['0149', '0310']
+relacionado: ['0149', '0310', '0334']
 ambito: 'Cinturón política · ITCP · `apoyo_empresario` · detectar que una cámara dejó de publicar; no cambia el cálculo del saldo'
 origen: 'Al desbloquear la card el 20-sep-2026 (tanda de 4 comunicados UIA) se midió de dónde venían los computables y AEA no aparecía desde marzo. Juan lo empujó preguntando «pero no hay más datos?».'
 ---

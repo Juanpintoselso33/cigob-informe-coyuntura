@@ -218,6 +218,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0313](0313-quorum-sin-convocante-en-la-fuente.md) | El quórum caído no se puede filtrar por quién convocó: la fuente no lo dice | `veto_quorum` | rechazado |
 | [0330](0330-bloqueo-sostenido-sale-del-indice-y-del-tablero.md) | bloqueo_sostenido sale del índice y del tablero: enmudecer en el extremo no es una card | `bloqueo_sostenido`, `desafios_legislativos` | vigente |
 | [0332](0332-una-camara-que-calla-no-dispara-nada.md) | Una cámara que calla no dispara nada, y el saldo sigue saliendo | `apoyo_empresario` | vigente |
+| [0334](0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md) | AEA sale del perímetro y el rótulo dice lo que mide | `apoyo_empresario` | vigente |
 
 ### Gestión (ITCG)
 

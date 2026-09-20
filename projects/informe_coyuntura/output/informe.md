@@ -1,7 +1,7 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-20 16:12:23"
-score_global: 3.7
+generado: "2026-09-20 20:23:31"
+score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
 alerta_multicinturon: false
@@ -10,7 +10,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-09
 
-**Score global:** 3.7/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.3/10)
+**Score global:** 3.8/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.3/10)
 
 ## Cinturones
 
@@ -42,7 +42,7 @@ schema_version: "1.2.0"
 | base_monetaria | -4.99 | % mensual nominal | 2026-09-16 | fresco |
 | tc_mayorista | 0.99 | % mensual | 2026-09-18 | fresco |
 
-### 🟢 Politica — score 2.9/10 (estable)
+### 🟢 Politica — score 3.0/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -50,7 +50,7 @@ schema_version: "1.2.0"
 | votometro_ventaja_lla | 4.3 | Puntos porcentuales | 2026-07-22 | fresco |
 | ratio_dnu | 1.03 | DNUs publicados por ley publicada | 2026-09-20 | fresco |
 | brecha_obra_publica | -1.8 | pp de brecha (obra pública − privada, 12m) | 2026-08-01 | fresco |
-| apoyo_empresario | -0.2 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | fresco |
+| apoyo_empresario | -0.333 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | fresco |
 | conflictividad_nacional | -24.0 | % vs 2023 | 2026-08-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4760195 | jornadas individuales no trabajadas (12m) | 2026-05-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
@@ -120,4 +120,4 @@ schema_version: "1.2.0"
 | reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-09-20 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 
 ---
-*Generado por CIGOB — 2026-09-20 16:12:23 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-20 20:23:31 — schema 1.2.0*

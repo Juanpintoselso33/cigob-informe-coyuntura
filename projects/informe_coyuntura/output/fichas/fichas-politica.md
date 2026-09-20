@@ -35,7 +35,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 71,0** | **VERDE** | Moderadamente aflojado | 17 indicadores: 12 en verde · 3 en amarillo · 1 en naranja · 1 en rojo |
+| **ITCP: 70,4** | **VERDE** | Moderadamente aflojado | 17 indicadores: 12 en verde · 3 en amarillo · 1 en naranja · 1 en rojo |
 Componentes que puntúan en este corte: 17 de 17 publicados.
 
 ## Dimensiones
@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 17 de 17 publicados.
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 82,1 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 15,0 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,1 | AMARILLO | 15,0 % |
-| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 62,0 | VERDE | 13,0 % |
+| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 57,8 | AMARILLO | 13,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 71,5 | VERDE | 10,0 % |
 | Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 37,2 | NARANJA | 7,0 % |
 
@@ -80,7 +80,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,82 % estimado de cargos con juez designado | VERDE | 7,5 % |
 | **DIMENSIÓN: Sector privado** | | | | |
 | Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,8 pp de brecha (obra pública − privada, 12m) | VERDE | 6,5 % |
-| Postura pública de las cámaras empresarias | Qué dicen en público, por escrito y con firma institucional, las dos cámaras empresarias de referencia —la Asociación… | −0,2 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 6,5 % |
+| Postura pública de la UIA | Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del… | −0,33 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 6,5 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24 % vs 2023 | AMARILLO | 6,0 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.760.195 jornadas individuales no trabajadas (12m) | VERDE | 4,0 % |
@@ -390,13 +390,13 @@ Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
 
-# Postura pública de las cámaras empresarias
+# Postura pública de la UIA
 
-Qué dicen en público, por escrito y con firma institucional, las dos cámaras empresarias de referencia —la Asociación Empresaria Argentina y la Unión Industrial Argentina— sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Puntúa en el ITCP con la mitad de la dimensión de sector privado. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados.
+Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Puntúa en el ITCP con la mitad de la dimensión de sector privado. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados. Hasta septiembre de 2026 el indicador promediaba dos cámaras, con la Asociación Empresaria Argentina; salió del cálculo porque dejó de publicar comunicados el 31 de marzo de 2026 y un rótulo no puede prometer dos cámaras midiendo una. Sus comunicados quedan guardados y clasificados: si vuelve a publicar, vuelve a entrar. Desde el recorte, un mes se publica sólo si tiene al menos tres comunicados computables en la ventana — con una sola cámara, dos comunicados alcanzaban para dar un saldo de −1,0 que no describe nada.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,2 saldo de postura (−1 a +1, 12m móviles)** (2026-09) | **AMARILLO** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
+| **Hoy: −0,33 saldo de postura (−1 a +1, 12m móviles)** (2026-09) | **AMARILLO** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -404,15 +404,15 @@ Qué dicen en público, por escrito y con firma institucional, las dos cámaras 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_empresario | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
-| **PRODUCTOR DEL DATO** | Asociación Empresaria Argentina (AEA) y Unión Industrial Argentina (UIA) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de ambas entidades |
+| **SERIE DISPONIBLE** | 2024-08 → 2026-09 (21 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
+| **PRODUCTOR DEL DATO** | Unión Industrial Argentina (UIA) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de ambas entidades |
 | **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-20 |
 
 ## Definición — qué mide y por qué importa
 
-Qué dicen en público, por escrito y con firma institucional, las dos cámaras empresarias de referencia —la Asociación Empresaria Argentina y la Unión Industrial Argentina— sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Puntúa en el ITCP con la mitad de la dimensión de sector privado. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados.
+Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Puntúa en el ITCP con la mitad de la dimensión de sector privado. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados. Hasta septiembre de 2026 el indicador promediaba dos cámaras, con la Asociación Empresaria Argentina; salió del cálculo porque dejó de publicar comunicados el 31 de marzo de 2026 y un rótulo no puede prometer dos cámaras midiendo una. Sus comunicados quedan guardados y clasificados: si vuelve a publicar, vuelve a entrar. Desde el recorte, un mes se publica sólo si tiene al menos tres comunicados computables en la ventana — con una sola cámara, dos comunicados alcanzaban para dar un saldo de −1,0 que no describe nada.
 
-Es la única medida directa de la relación entre el Gobierno y el empresariado organizado: las demás miran el clima de negocios o los datos de un sector, y de ahí infieren el vínculo. Acá el vínculo está dicho. Conviene saber qué no dice: no mide el humor del empresariado en general ni la opinión de sus asociados, sino lo que una asociación decidió declarar públicamente — una cámara puede callar por conveniencia y ese silencio no aparece. La clasificación la hace una persona siguiendo reglas escritas de antemano, y dos personas distintas la hicieron por separado para verificar que las reglas no dejan lugar a la interpretación.
+Es la única medida directa de la relación entre el Gobierno y el empresariado organizado: las demás miran el clima de negocios o los datos de un sector, y de ahí infieren el vínculo. Acá el vínculo está dicho. Conviene saber qué no dice: no mide el humor del empresariado en general ni la opinión de sus asociados, sino lo que una asociación decidió declarar públicamente — una cámara puede callar por conveniencia y ese silencio no aparece. Desde septiembre de 2026 el silencio sí aparece: hay un aviso automático cuando una cámara deja de publicar por más tiempo que el que se tomó nunca. La clasificación la hace una persona siguiendo reglas escritas de antemano, y dos personas distintas la hicieron por separado para verificar que las reglas no dejan lugar a la interpretación.
 
 **Dimensión que integra — Sector privado.** Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La completa, con el mismo peso, la postura pública de las cámaras empresarias hacia el Gobierno nacional —el saldo de apoyos y críticas en sus comunicados—, que volvió al índice en septiembre de 2026 con el inventario de comunicados completo.
 
@@ -441,13 +441,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses AEA y UIA se pronunciaron 10 veces sobre medidas del Gobierno nacional: 4 de apoyo y 6 de crítica. Saldo −0,2 en una escala de −1 (todo crítica) a +1 (todo apoyo).
+- En los últimos doce meses la UIA se pronunció 9 veces sobre medidas del Gobierno nacional: 3 de apoyo y 6 de crítica. Saldo −0,333 en una escala de −1 (todo crítica) a +1 (todo apoyo).
 
 ## Color vigente y por qué
 
-Dato vigente: −0,2 saldo de postura (−1 a +1, 12m móviles) (2026-09).
+Dato vigente: −0,33 saldo de postura (−1 a +1, 12m móviles) (2026-09).
 
-−0,2 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,12 del corte más cercano.
+−0,333 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,07 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -477,6 +477,8 @@ Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicion
 **2026-08-25** — ADR-0246: sale del ITCP hasta cerrar el corpus. El saldo −0,429 salía de siete comunicados codificados con catorce detectados sin codificar, y entre esos catorce había apoyos y críticas de peso: el número medía qué se alcanzó a clasificar, no la postura del sector. Libera su 50% de la dimensión de sector privado, que queda con `brecha_obra_publica` como único componente. Se sigue relevando y su serie se sigue publicando. Vuelve al índice con corpus cerrado y publicado, criterios fijados de antemano y doble codificación con control de concordancia.
 
 **2026-09-14** — ADR-0310: vuelve al ITCP con el 50% de diseño de la dimensión de sector privado. Se clasificaron los veintidós comunicados de la Unión Industrial detectados entre abril y septiembre con el mismo protocolo de doble codificación ciega —concordancia de 0,85 en postura y 0,93 en destinatario, por encima del mínimo de 0,70— y el inventario quedó sin pendientes. Con eso el saldo pasó de −0,429 a −0,111: dos de los nuevos respaldan medidas del Gobierno nacional, la reducción de retenciones y la concesión de la Hidrovía. La condición de corpus cerrado que faltaba se fija como regla de cálculo: la serie se detiene en el último mes con todos los comunicados clasificados, y cada comunicado nuevo se avisa como pendiente.
+
+**2026-09-20** — ADR-0334: la Asociación Empresaria Argentina sale del cálculo y el indicador pasa a llamarse por la cámara que efectivamente mide, la Unión Industrial. El motivo es que dejó de publicar comunicados el 31 de marzo de 2026 y el rótulo prometía dos cámaras midiendo una: de los diez comunicados que entraban en el promedio de los últimos doce meses, nueve eran de la Unión Industrial y uno solo de la otra. El recorte tiene un costo y conviene decirlo: la serie pasa de treinta y cuatro meses a treinta y empieza en abril de 2024 en vez de diciembre de 2023, porque la Unión Industrial tiene menos historia relevada. El saldo del mes pasa de −0,20 a −0,333. Queda un punto flojo anotado a propósito: con una sola cámara, nueve de los treinta meses quedan con uno o dos comunicados en su ventana y los primeros dan −1,0 sobre dos, una base demasiado chica para leerla como una postura. Los comunicados de la Asociación Empresaria quedan guardados y clasificados; si vuelve a publicar, vuelve a entrar al cálculo.
 
 **2026-09-20** — ADR-0332: se agrega un aviso para cuando una de las dos cámaras deja de publicar. Al clasificar cuatro comunicados que estaban pendientes se midió de dónde salen los datos que sostienen el saldo, y apareció que la Asociación Empresaria Argentina no emite un comunicado desde el 31 de marzo: ciento setenta y tres días, cuando su pausa más larga hasta entonces había sido de ciento cincuenta y cuatro. De los diez comunicados que entran en el promedio de los últimos doce meses, nueve son de la Unión Industrial y uno solo de la otra cámara. Nada lo advertía: las dos verificaciones que ya existían comprueban que no queden comunicados sin clasificar y que las dos páginas respondan, y una cámara cuya página contesta sin publicar novedades pasa las dos sin activarlas. Desde ahora el sistema avisa cuando el silencio de una cámara supera su propia pausa más larga, un umbral que se calcula solo y es distinto para cada una porque publican a ritmos muy diferentes. El saldo, el peso y la banda no cambian: que una cámara calle es un hecho del mundo y no un error de cálculo, y si el silencio resulta definitivo, cambiar qué mide el indicador será otra decisión.
 

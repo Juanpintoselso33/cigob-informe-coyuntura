@@ -382,7 +382,7 @@ export const LABELS: Record<string, string> = {
   // politica
   votometro_ventaja_lla: "Ventaja LLA−PJ", ratio_dnu: "Ratio DNU / leyes",
   brecha_obra_publica: "Brecha de expectativas: obra pública vs. privada",
-  apoyo_empresario: "Postura pública de las cámaras empresarias",
+  apoyo_empresario: "Postura pública de la UIA",
   desafios_legislativos: "Normas desafiadas en el recinto",
   conflictividad_nacional: "Conflictividad social (país)",
   jornadas_individuales_no_trabajadas_12m: "Intensidad de los paros",
