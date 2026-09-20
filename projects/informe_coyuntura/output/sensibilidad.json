@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-09-19T03:29:35.985194+00:00",
+    "snapshot": "2026-09-20T03:29:16.513629+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -105,45 +105,45 @@
     }
   },
   "itvc": {
-    "valor_publicado": 93.4,
-    "valor_recomputado": 93.4,
+    "valor_publicado": 93.3,
+    "valor_recomputado": 93.3,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
         "media": 93.4,
         "p05": 91.4,
-        "p95": 95.4,
+        "p95": 95.3,
         "desvio": 1.2
       },
       "combinado": {
-        "media": 93.4,
+        "media": 93.3,
         "p05": 91.3,
-        "p95": 95.4,
+        "p95": 95.3,
         "desvio": 1.23
       }
     },
     "leave_one_out": {
-      "alquiler_real": 96.7,
-      "peso_tarifas": 90.3,
-      "mora_familias": 95.4,
-      "pobreza_nowcast": 91.7,
-      "consumo_supermercados": 95.0,
+      "alquiler_real": 96.6,
+      "peso_tarifas": 90.2,
+      "mora_familias": 95.3,
+      "pobreza_nowcast": 91.6,
+      "consumo_supermercados": 94.9,
       "ipc_alimentos": 92.0,
-      "carga_servicio_deuda_hogares": 92.6,
-      "inseguridad": 94.2,
-      "despacho_cemento": 94.0,
-      "tasa_homicidios": 93.0,
-      "motorizacion_total": 93.1,
-      "informalidad": 93.1,
-      "empleo_registrado": 93.1,
-      "ratio_motos_autos": 93.6,
-      "mortalidad_pymes": 93.3,
+      "carga_servicio_deuda_hogares": 92.5,
+      "inseguridad": 94.1,
+      "despacho_cemento": 93.9,
+      "tasa_homicidios": 92.9,
+      "motorizacion_total": 93.0,
+      "informalidad": 93.0,
+      "empleo_registrado": 93.0,
       "consumo_carne_vacuna": 93.5,
-      "consumo_carnes_otras": 93.5,
-      "brecha_salario_cbt": 93.4,
+      "ratio_motos_autos": 93.5,
+      "consumo_carnes_otras": 93.4,
       "subocupacion_demandante": 93.4,
-      "trabajo_independiente": 93.4,
-      "tasa_robos": 93.4
+      "brecha_salario_cbt": 93.3,
+      "mortalidad_pymes": 93.3,
+      "trabajo_independiente": 93.3,
+      "tasa_robos": 93.3
     },
     "tension": {
       "base": 6.3,
