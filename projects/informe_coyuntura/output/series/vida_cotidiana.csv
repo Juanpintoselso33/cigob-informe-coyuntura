@@ -1437,8 +1437,8 @@ fecha,indicador,valor,unidad,fuente
 2021-10-01,icc_utdt,40.2,índice,"UTDT (ICC, serie XLS)"
 2021-09-01,icc_utdt,40.5,índice,"UTDT (ICC, serie XLS)"
 2021-08-01,icc_utdt,39.8,índice,"UTDT (ICC, serie XLS)"
-2026-09-01,endeudamiento_familiar,44.72,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
-2026-08-01,endeudamiento_familiar,47.1,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-09-01,endeudamiento_familiar,44.91,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-08-01,endeudamiento_familiar,47.09,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-07-01,endeudamiento_familiar,47.12,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-06-01,endeudamiento_familiar,47.3,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-05-01,endeudamiento_familiar,45.93,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
@@ -1480,7 +1480,6 @@ fecha,indicador,valor,unidad,fuente
 2023-05-01,endeudamiento_familiar,4.27,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2023-04-01,endeudamiento_familiar,3.94,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2023-03-01,endeudamiento_familiar,3.69,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
-2023-02-01,endeudamiento_familiar,3.49,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-06-01,empleo_registrado,6095.8,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
 2026-05-01,empleo_registrado,6106.7,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
 2026-04-01,empleo_registrado,6134.2,miles de puestos,Min. de Capital Humano — SIPA (vía datos.gob.ar)
