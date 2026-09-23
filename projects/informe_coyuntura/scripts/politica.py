@@ -99,8 +99,17 @@ DERROTAS_EVENTOS_PATH = PROJECT_DIR / "data" / "politica" / "derrotas_legislativ
 GABINETE_SALIDAS_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_salidas.json"
 GABINETE_DECRETOS_CACHE_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_decretos_cache.json"
 CSJN_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "csjn_novedades.json"
-VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # Votómetro live (embebido en cigob.org/votometro)
+# El Votómetro se publica por ediciones mensuales en la web de CiGob desde el
+# 16-sep-2026: el índice lista `/votometro/<mes>-<año>` y cada edición sirve su
+# HTML en `/votometro/contenido/<mes>-<año>.html`. El sitio viejo de GitHub
+# Pages dejó de actualizarse el 22-jul-2026 y queda sólo como respaldo.
+VOTOMETRO_WEB        = "https://cigob-landing.vercel.app"
+VOTOMETRO_INDICE_URL = f"{VOTOMETRO_WEB}/votometro/"
+VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # sitio viejo, respaldo
 VOTOMETRO_HTML = PROJECT_DIR / "data" / "politica" / "votometro_fallback.html"  # fallback local
+_MESES_EDICION = {m: i for i, m in enumerate(
+    ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
+     "septiembre", "octubre", "noviembre", "diciembre"), start=1)}
 
 CINTURON              = "politica"
 INDICADORES_ESPERADOS = [
@@ -584,18 +593,44 @@ def _days_old(fecha_str: str) -> int:
 
 # ── Votómetro parser ──────────────────────────────────────────────────────────
 
+def _edicion_vigente_votometro(indice_html: str) -> str | None:
+    """Id de la edición más reciente (`agosto-2026`) entre las que enlaza el
+    índice del Votómetro. Se ordena por fecha, no por orden de aparición: el
+    índice es contenido editable y no promete ningún orden."""
+    ediciones = set()
+    for mes, anio in re.findall(r'href="/votometro/([a-z]+)-(\d{4})"', indice_html):
+        if mes in _MESES_EDICION:
+            ediciones.add((int(anio), _MESES_EDICION[mes], f"{mes}-{anio}"))
+    return max(ediciones)[2] if ediciones else None
+
+
 def _cargar_votometro_html() -> str:
-    """HTML del Votómetro LIVE (cigob.github.io/Votometro, embebido en cigob.org).
-    Cae al archivo local si la URL falla o no trae encuestasRaw."""
-    try:
-        r = requests.get(VOTOMETRO_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    """HTML de la edición vigente del Votómetro en la web de CiGob.
+
+    Respaldos, en orden: el sitio viejo de GitHub Pages y el archivo local. Cada
+    caída se avisa, porque el respaldo publica encuestas más viejas sin que el
+    número se vea raro — pasó del 16-ago al 22-sep-2026 leyendo el sitio viejo."""
+    def _con_encuestas(url: str) -> str:
+        r = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
         r.raise_for_status()
-        if "encuestasRaw" in r.text:
-            return r.text
-        raise ValueError("encuestasRaw ausente en la respuesta del Votómetro live")
+        if "encuestasRaw" not in r.text:
+            raise ValueError(f"encuestasRaw ausente en {url}")
+        return r.text
+
+    try:
+        r = requests.get(VOTOMETRO_INDICE_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+        r.raise_for_status()
+        edicion = _edicion_vigente_votometro(r.text)
+        if not edicion:
+            raise ValueError("el índice del Votómetro no enlaza ninguna edición")
+        return _con_encuestas(f"{VOTOMETRO_WEB}/votometro/contenido/{edicion}.html")
+    except Exception as e:
+        _warn("votometro (web de CiGob falló, uso el sitio viejo)", str(e))
+    try:
+        return _con_encuestas(VOTOMETRO_URL)
     except Exception as e:
         if VOTOMETRO_HTML.exists():
-            _warn("votometro (URL live falló, uso archivo local)", str(e))
+            _warn("votometro (sitio viejo falló, uso archivo local)", str(e))
             return VOTOMETRO_HTML.read_text(encoding="utf-8")
         raise
 
