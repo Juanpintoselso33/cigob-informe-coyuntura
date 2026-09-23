@@ -264,6 +264,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2024-01-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2023-12-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
+2026-08-01,masa_salarial,-32.65,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-07-01,masa_salarial,-32.44,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-06-01,masa_salarial,-32.37,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-05-01,masa_salarial,-22.98,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
@@ -732,6 +733,7 @@ fecha,indicador,valor,unidad,fuente
 2002-01-01,icg_utdt,1.357,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2001-12-01,icg_utdt,0.757,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2001-11-01,icg_utdt,1.036,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
+2026-08-01,gasto_funcionamiento,-35.92,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-07-01,gasto_funcionamiento,-28.69,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-06-01,gasto_funcionamiento,-31.37,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-05-01,gasto_funcionamiento,-24.35,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
