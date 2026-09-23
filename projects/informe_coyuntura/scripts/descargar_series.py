@@ -3,6 +3,7 @@ descargar_series.py — Descarga series históricas por cinturón a CSV
 Salida: output/series/macro.csv | politica.csv | vida_cotidiana.csv | gestion.csv
 Columnas: fecha, indicador, valor, fuente
 """
+import importlib.util
 import sys
 import csv
 import io
@@ -25,6 +26,63 @@ import macro     # reutiliza el parser SDDS y las constantes del balance (reserv
 import gestion   # reutiliza el lector del sheet oficial del RIGI + fechas del BO
 import politica  # reutiliza la reconstrucción histórica del Votómetro
 import itvc      # fórmula única de asequibilidad tarifaria (ADR-0235)
+
+
+_VIDA_DIR = Path(__file__).parent / "vida_cotidiana"
+_CONFIG_VIDA = None
+
+
+def _entrar_a_vida_cotidiana() -> None:
+    """Pone `scripts/vida_cotidiana/` en sys.path. El `config` correcto lo
+    garantiza `@_con_config_de_vida`, que envuelve a toda función que llama a
+    ésta."""
+    sys.path.insert(0, str(_VIDA_DIR))                  # mismo orden que antes:
+    sys.path.insert(0, str(_VIDA_DIR / "collectors"))   # collectors queda primero
+
+
+def _config_de_vida():
+    global _CONFIG_VIDA
+    if _CONFIG_VIDA is None:
+        spec = importlib.util.spec_from_file_location("config", _VIDA_DIR / "config.py")
+        assert spec is not None and spec.loader is not None
+        _CONFIG_VIDA = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(_CONFIG_VIDA)
+    return _CONFIG_VIDA
+
+
+def _con_config_de_vida(fn):
+    """Durante la llamada, `config` es el de vida cotidiana; al salir, vuelve el
+    que estaba.
+
+    Vida cotidiana tiene su propio `config.py`, y la raíz del proyecto otro con
+    el mismo nombre. Python los distingue sólo por el nombre: si el de la raíz
+    ya está en `sys.modules["config"]` —lo cargan publicar.py, generar_informe.py
+    o validacion_externa.py—, los `from config import ...` de los colectores de
+    vida reciben ése y fallan con `cannot import name`. Como este script
+    conserva las filas anteriores ante cualquier error, eso congela las series
+    sin que la corrida falle: pasó el 21-sep-2026 con ~22 series.
+
+    Se restaura al salir porque el mismo choque existe al revés: un proceso que
+    después necesite el `config` de la raíz (pytest corre todo en uno) no puede
+    quedarse con el de vida. tests/test_config_de_vida_no_se_pisa.py lo prueba
+    en los dos sentidos."""
+    @functools.wraps(fn)
+    def envuelta(*args, **kwargs):
+        previo = sys.modules.get("config")
+        # también sys.path: `_entrar_a_vida_cotidiana` pone las carpetas de vida
+        # primero, y si quedaran ahí el próximo `import config` sin módulo
+        # cargado encontraría el de vida en vez del de la raíz
+        ruta_previa = list(sys.path)
+        sys.modules["config"] = _config_de_vida()
+        try:
+            return fn(*args, **kwargs)
+        finally:
+            sys.path[:] = ruta_previa
+            if previo is None:
+                sys.modules.pop("config", None)
+            else:
+                sys.modules["config"] = previo
+    return envuelta
 
 sys.stdout.reconfigure(encoding="utf-8")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -545,6 +603,7 @@ def fetch_itvc_pobreza() -> list:
 POBREZA_NOWCAST_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "pobreza_nowcast_serie.json"
 
 
+@_con_config_de_vida
 @_una_sola_vez_por_corrida
 def fetch_pobreza_nowcast_serie() -> list:
     """Serie del Nowcast de Pobreza de la UTDT, un punto por informe mensual
@@ -588,8 +647,7 @@ def fetch_pobreza_nowcast_serie() -> list:
     orden, así que un informe publicado después sigue ganando el semestre que
     comparte con uno anterior, venga o no del store.
     [[YYYY-MM-01, %]]."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    _entrar_a_vida_cotidiana()
     from utdt_nowcast_pobreza import _listar_informes, _leer_informe, _huecos, NOWCAST_DESCARGA
 
     store = json.loads(POBREZA_NOWCAST_SERIE_STORE.read_text(encoding="utf-8-sig")) \
@@ -1672,16 +1730,16 @@ VIDA_DERIVADAS = [
 ]
 
 
+@_con_config_de_vida
 def fetch_peso_tarifas_iiep_serie() -> list:
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    _entrar_a_vida_cotidiana()
     from iiep_tarifas import fetch_iiep_tarifas_serie
     return fetch_iiep_tarifas_serie()
 
 
+@_con_config_de_vida
 def fetch_peso_tarifas_iiep_historia() -> list[dict]:
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    _entrar_a_vida_cotidiana()
     from iiep_tarifas import fetch_iiep_tarifas_historia
     return fetch_iiep_tarifas_historia()
 
@@ -1691,6 +1749,7 @@ VIDA_DERIVADAS.append(
      "IIEP UBA-CONICET — Canasta de Servicios Públicos del AMBA",
      fetch_peso_tarifas_iiep_serie)
 )
+@_con_config_de_vida
 def fetch_icc_serie(meses: int = 60) -> list:
     """Serie histórica del ICC UTDT: parsea TODAS las filas del XLS oficial, no
     sólo la última como el indicador. Reusa el scraper del colector de vida.
@@ -1701,8 +1760,7 @@ def fetch_icc_serie(meses: int = 60) -> list:
     es `ICC Capital`: card y serie coincidían entre sí y las dos publicaban CABA
     con rótulo nacional, así que el gate G3 no tenía nada que marcar."""
     import xlrd
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    _entrar_a_vida_cotidiana()
     from utdt_icc import _get_latest_xls_fname, columna_icc_nacional
     from config import UTDT_ICC_DOWNLOAD_BASE
     r = requests.get(UTDT_ICC_DOWNLOAD_BASE + _get_latest_xls_fname(),
@@ -1759,6 +1817,7 @@ def _utdt_niveles(listado_url) -> dict:
     return out
 
 
+@_con_config_de_vida
 def fetch_indice_lider_serie(meses: int = 60) -> list:
     """NIVEL del Índice Líder de la UTDT — el mismo número que publica la card.
 
@@ -1775,12 +1834,13 @@ def fetch_indice_lider_serie(meses: int = 60) -> list:
     comprime 33 años y el movimiento reciente —lo que la card informa— queda
     invisible. 60 meses quedan muy por encima del piso de dic-2023.
     [[YYYY-MM-01, índice]]."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    _entrar_a_vida_cotidiana()
     from config import UTDT_IL_LISTADO
     niveles = sorted(_utdt_niveles(UTDT_IL_LISTADO).items())
     return [[f"{ym}-01", round(v, 1)] for ym, v in niveles][-meses:]
 
 
+@_con_config_de_vida
 def fetch_itvc_lider() -> list:
     """I_IL (ADR-0112): Índice Líder de la UTDT rebaseado a 4T-2023.
 
@@ -1789,7 +1849,7 @@ def fetch_itvc_lider() -> list:
     pasó. Se rebasea igual que los demás (100 = 4T-2023) y NO se invierte:
     un líder más alto anticipa mejor actividad, que es mejora.
     [[YYYY-MM-01, índice]]."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    _entrar_a_vida_cotidiana()
     from config import UTDT_IL_LISTADO
     return _itvc_rebase(_utdt_niveles(UTDT_IL_LISTADO))
 
@@ -1820,6 +1880,7 @@ VIDA_DERIVADAS.append(
 SENTIMIENTO_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "sentimiento_serie.json"
 
 
+@_con_config_de_vida
 def fetch_sentimiento_serie() -> list:
     """Serie MENSUAL del sentimiento digital (ADR-0034 + ADR-0222): canasta de
     los 6 términos en VENTANA FIJA 2021→hoy, resolución mensual nativa.
@@ -1831,8 +1892,7 @@ def fetch_sentimiento_serie() -> list:
     consulta —el escalar de Trends se cancela en el cociente—, y la canasta es
     el promedio simple de los seis índices. El mes en curso se descarta.
     [[YYYY-MM-01, índice base 100 = 4T-2023]]."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    _entrar_a_vida_cotidiana()
     import trends as _t
     store = _t.fetch_sentimiento_store(SENTIMIENTO_SERIE_STORE)
     mensual = store.get("mensual") or {}
@@ -1952,6 +2012,7 @@ def _itvc_relativo_salario(sid_precio: str) -> list:
     return out
 
 
+@_con_config_de_vida
 def fetch_itvc_alimentos() -> list:
     """I_IA REDISEÑADO (ADR-0033): encarecimiento RELATIVO de la comida —
     IPC alimentos contra el IPC general, rebaseado a 4T-2023. >100 = la comida
@@ -1961,7 +2022,7 @@ def fetch_itvc_alimentos() -> list:
     brecha salario/CBT: un tercio del ITVC contaba dos veces el mismo ratio
     salario/comida. Esta métrica es la pregunta de PRECIOS pura, independiente
     del salario. [[YYYY-MM-01, índice]]."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    _entrar_a_vida_cotidiana()
     from config import INDEC_SERIES
     alim = _nivel_mensual(INDEC_SERIES["ipc_alimentos"])
     gen = _nivel_mensual("148.3_INIVELNAL_DICI_M_26")
@@ -1975,6 +2036,7 @@ def fetch_itvc_alimentos() -> list:
     return out
 
 
+@_con_config_de_vida
 def fetch_alquiler_real_serie() -> list:
     """% m/m del IPC-GBA «alquiler de la vivienda» — la misma cuenta que la card.
 
@@ -1995,7 +2057,7 @@ def fetch_alquiler_real_serie() -> list:
     Misma fórmula y mismo redondeo que la card, para que G3 cierre:
     `(idx_t / idx_{t-1} − 1) × 100` a dos decimales.
     [[YYYY-MM-01, % m/m]]."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    _entrar_a_vida_cotidiana()
     from config import INDEC_SERIES
     sys.path.insert(0, str(Path(__file__).parent / 'vida_cotidiana' / 'collectors'))
     from ipc_alquiler import niveles as niveles_originales
@@ -2003,6 +2065,7 @@ def fetch_alquiler_real_serie() -> list:
     return [[f"{ym}-01", v] for ym, v in sorted(_var_mensual(niveles).items())]
 
 
+@_con_config_de_vida
 def fetch_itvc_alquiler() -> list:
     """I_AL (ADR-0111): encarecimiento RELATIVO del alquiler — IPC-GBA alquiler
     de la vivienda contra el nivel general de GBA, rebaseado a 4T-2023.
@@ -2017,7 +2080,7 @@ def fetch_itvc_alquiler() -> list:
     la apertura de alquiler GBA elegida por el monitor, y dividir un precio de
     GBA por un índice nacional mezclaría dos plazas en el mismo cociente.
     [[YYYY-MM-01, índice]]."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    _entrar_a_vida_cotidiana()
     from config import INDEC_SERIES
     sys.path.insert(0, str(Path(__file__).parent / 'vida_cotidiana' / 'collectors'))
     from ipc_alquiler import niveles as niveles_originales
@@ -2056,10 +2119,11 @@ def fetch_itvc_tarifas() -> list:
     return out
 
 
+@_con_config_de_vida
 def fetch_trabajo_independiente_serie() -> list:
     """Participación del trabajo independiente en el empleo registrado, en %.
     Misma serie para la card y para el índice (ADR-0219)."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    _entrar_a_vida_cotidiana()
     from collectors.trabajo_independiente import fetch_trabajo_independiente
     d = fetch_trabajo_independiente()
     return [[f"{ym}-01", v] for ym, v in sorted(d["serie"].items())
@@ -2073,9 +2137,10 @@ def fetch_trabajo_independiente_serie() -> list:
 _MOTORIZACION_CACHE = {}
 
 
+@_con_config_de_vida
 def _motorizacion() -> dict:
     if not _MOTORIZACION_CACHE:
-        sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+        _entrar_a_vida_cotidiana()
         from collectors.motorizacion import fetch_motorizacion
         _MOTORIZACION_CACHE["d"] = fetch_motorizacion()
     return _MOTORIZACION_CACHE["d"]
@@ -2133,6 +2198,7 @@ def fetch_patentamiento_motos_serie() -> list:
     return [[f"{ym}-01", v] for ym, v in sorted(_motorizacion()["serie_motos"].items())]
 
 
+@_con_config_de_vida
 def fetch_consumo_supermercados_serie() -> list:
     """Ventas en supermercados a precios constantes, serie desestacionalizada
     del INDEC (ADR-0225). MISMA serie que la card y que el índice: el colector
@@ -2144,18 +2210,19 @@ def fetch_consumo_supermercados_serie() -> list:
     de `validacion_externa`, cada uno con la misma función que usa para todos
     los demás componentes. Guardar acá una serie ya rebaseada crearía un
     segundo lugar donde la base puede quedar distinta."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    _entrar_a_vida_cotidiana()
     from collectors.indec_supermercados import fetch_consumo_supermercados
     d = fetch_consumo_supermercados()
     return [[f"{ym}-01", v] for ym, v in sorted(d["serie"].items())]
 
 
+@_con_config_de_vida
 def fetch_empleadores_pyme_serie() -> list:
     """Cantidad mensual de empleadores de hasta 50 trabajadores con cobertura
     de ART (SRT). Es la MISMA serie que alimenta la card y el índice: el
     rebase a 100 = 4T-2023 lo hace `itvc.rebase_de_serie`, así que no hay dos
     números distintos para lo mismo (ADR-0218)."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    _entrar_a_vida_cotidiana()
     from collectors.srt_empleadores import fetch_empleadores_pyme
     d = fetch_empleadores_pyme()
     return [[f"{ym}-01", v] for ym, v in sorted(d["serie_pyme"].items())
@@ -2499,6 +2566,7 @@ def fetch_ivi_serie() -> list:
 SNIC_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "snic_serie.json"
 
 
+@_con_config_de_vida
 def fetch_inseguridad_serie() -> list:
     """Serie ANUAL de hechos delictivos del SNIC (total país), con el MISMO
     criterio de suma que el colector — VALIDADO contra los totales oficiales
@@ -2510,7 +2578,7 @@ def fetch_inseguridad_serie() -> list:
     corrida). El CSV oficial se revisa retroactivamente: cada refresco pisa
     la serie completa. [[YYYY-12-01, hechos]]."""
     import csv as _csv
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    _entrar_a_vida_cotidiana()
     from config import SNIC_CSV
     store = json.loads(SNIC_SERIE_STORE.read_text(encoding="utf-8-sig"))
     try:
@@ -2552,6 +2620,7 @@ SNIC_TIPOS_TASA = {
 }
 
 
+@_con_config_de_vida
 def _snic_tasas() -> dict:
     """{tipo_snic: {anio: tasa_hechos}} de los dos tipos de SNIC_TIPOS_TASA,
     con el MISMO store persistente que `fetch_inseguridad_serie` (cloud-snic
@@ -2559,7 +2628,7 @@ def _snic_tasas() -> dict:
     sano, se pisa la serie completa (la fuente revisa retroactivamente); si
     no, sale del store."""
     import csv as _csv
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    _entrar_a_vida_cotidiana()
     from config import SNIC_CSV
     store = json.loads(SNIC_SERIE_STORE.read_text(encoding="utf-8-sig"))
     store.setdefault("por_tipo", {})
@@ -2736,14 +2805,14 @@ def fetch_carnes_total_serie() -> list:
     return _fetch_faena_indice(tuple(FAENA_TONELADAS))
 
 
+@_con_config_de_vida
 def fetch_carne_serie() -> list:
     """Serie MENSUAL del consumo de carne per cápita (promedio móvil 12m,
     CICCRA) desde oct-2023 (línea base del ITVC). Los PDFs mensuales se bajan
     una sola vez y quedan cacheados por mes en data/vida/carne_serie.json
     (~33 PDFs solo la primera corrida). Los informes de 2023 usan sufijo 'b'
     (separata económica); 2024→ van sin sufijo. [[YYYY-MM-01, kg/hab/año]]."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    _entrar_a_vida_cotidiana()
     from ciccra import _url_pdf, _extraer_per_capita
     try:
         cache = json.loads(CARNE_SERIE_STORE.read_text(encoding="utf-8-sig"))
@@ -2893,12 +2962,13 @@ VIDA_DERIVADAS += [
 ]
 
 
+@_con_config_de_vida
 def fetch_brecha_serie() -> list:
     """Serie de la brecha salario/CBT = RIPTE / Canasta Básica Total, ALINEADA por mes
     (mismo mes en ambas series; el indicador live toma el último de cada una, que a veces
     son meses distintos). Cuántas canastas cubre el salario imponible promedio.
     [[YYYY-MM-01, canastas]]."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    _entrar_a_vida_cotidiana()
     from config import RIPTE_CSV, INDEC_SERIES
     r = requests.get(RIPTE_CSV, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()

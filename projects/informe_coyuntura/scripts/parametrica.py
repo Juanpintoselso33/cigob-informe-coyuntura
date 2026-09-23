@@ -26,12 +26,33 @@ duplicaban la incertidumbre del índice y truncaban hasta ±13 puntos por compon
 La tensión 0-10 del informe se deriva como (100 − índice) / 10, así el resto
 del pipeline (umbrales, estados, score global) conserva su convención.
 """
+import importlib.util
 import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from config import UMBRALES  # noqa: E402  — única definición de los cortes de estado
+
+def _config_raiz():
+    """El `config.py` de la raíz, SIN ocupar el nombre `config` en sys.modules.
+
+    `scripts/vida_cotidiana/` tiene su propio `config`, y Python distingue a los
+    dos sólo por el nombre: si este módulo hiciera `from config import ...`,
+    todo proceso que lo cargue antes que vida cotidiana (descargar_series.py)
+    le dejaría a ésta el config equivocado. Pasó el 21-sep-2026 y congeló ~22
+    series sin que fallara la corrida (tests/test_config_de_vida_no_se_pisa.py).
+    Si el de la raíz ya está cargado como `config`, se reusa."""
+    ruta = Path(__file__).resolve().parents[1] / "config.py"
+    ya = sys.modules.get("config")
+    if ya is not None and Path(getattr(ya, "__file__", "") or "").resolve() == ruta:
+        return ya
+    spec = importlib.util.spec_from_file_location("_config_raiz", ruta)
+    assert spec is not None and spec.loader is not None, ruta
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+UMBRALES = _config_raiz().UMBRALES  # única definición de los cortes de estado
 
 INF = float("inf")
 
