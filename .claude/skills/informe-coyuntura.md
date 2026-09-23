@@ -1,6 +1,6 @@
 # Skill: Informe de Coyuntura — Mantenimiento y Operación
 
-> Actualizado 2026-08-14. Este skill es un resumen operativo de orientación
+> Este skill es un resumen operativo de orientación
 > rápida, **no la fuente de verdad** — para detalle de metodología/pesos/
 > bandas de un indicador puntual, siempre confirmar contra `README.md`,
 > `docs/adr/` (decisiones vigentes, inmutables) y los tests (`tests/*.py`
@@ -120,6 +120,8 @@ cd projects/informe_coyuntura
 .venv/bin/python scripts/validacion_externa.py
 .venv/bin/python scripts/generar_informe.py
 .venv/bin/python scripts/publicar.py         # snapshot para la web
+.venv/bin/python scripts/sensibilidad.py
+.venv/bin/python scripts/fichas/generar.py --todos   # pytest cruza las fichas contra el snapshot
 .venv/bin/python scripts/gate_calidad.py     # G1-G3/G6
 .venv/bin/python -m pytest tests -q          # G4-G5 (gate_calidad pasando NO implica esto)
 .venv/bin/python scripts/bigquery_export.py  # archivo histórico en BigQuery (ADR-0180)
@@ -201,8 +203,3 @@ commit y no en la página no está entregado.** La cadena es completa o no vale:
   `output/cache/*.json`, `output/series/*.csv` y `web/src/data/*.json`. Se
   resuelven tomando el dato fresco del cron y **re-corriendo el pipeline**, no
   eligiendo un lado a mano.
-
-Falla verificada 30-jul-2026: una sesión entera de trabajo (pobreza al ITVC, dos
-componentes saliendo, 10 URL de fichas rotas, el cambio de ancla de validación
-del ITCM) se reportó commit por commit como "pusheado", toda sobre una rama de
-PR. `main` no tenía nada y la web estaba idéntica.

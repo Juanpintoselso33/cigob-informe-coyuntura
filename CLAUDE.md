@@ -14,10 +14,8 @@ scoring, tests) — not product/PRD building. Do not scan or consider them per
 turn. Only read a specific `SKILL.md` if the user explicitly invokes BMAD or
 a named workflow by name.
 
-`.claude/skills/informe-coyuntura.md` was updated 2026-08-14 (**four**
-cinturones after ADR-0205, current paramétrica engines, current file layout) —
-still, it's a quick-reference, not the source of truth. It will drift again as
-the project evolves; when in doubt prefer `projects/informe_coyuntura/README.md`,
+`.claude/skills/informe-coyuntura.md` is a quick reference, not the source of
+truth; when in doubt prefer `projects/informe_coyuntura/README.md`,
 `docs/adr/`, and the tests over anything hand-summarized in a skill file.
 
 ## Repo overview
@@ -29,8 +27,8 @@ Monorepo for CIGOB/UBA political analysis tools.
   This is where nearly all active work happens.
 - `web/`: legacy static site. **Not the deploy target.**
 - `.github/workflows/`: daily data pipeline (`data-pipeline.yml`, 00:00 ART,
-  commits as `github-actions[bot]`). The `pages.yml` workflow is DEAD — GitHub
-  Pages was retired in July 2026. **The site deploys through Vercel, which
+  commits as `github-actions[bot]`). GitHub Pages was retired in July 2026 and
+  there is no `pages.yml` anymore. **The site deploys through Vercel, which
   builds every push to `main`** (production alias:
   `https://cigob-informe-coyuntura.vercel.app/`; the Astro app under
   `projects/informe_coyuntura/web/` is what it builds). Per-deploy
@@ -70,12 +68,12 @@ Mac — set up and verified 2026-08-13:
   through the Python SDK. If the export ever starts failing with credential
   errors, re-run `gcloud auth application-default login` against project
   `cigob-analytics`.
-- **Permissions.** The tree arrived from the tower with every directory at
+- **Permissions.** A tree copied from the tower can arrive with directories at
   `555` — no write bit even for the owner. Editing existing files works, but
   creating them does not, which breaks `uv venv`, `npm install`,
   `git worktree add` and, worst of all, **`git add`** (`insufficient permission
   for adding an object to repository database .git/objects`, which only shows
-  up once the work is already done). Fixed repo-wide; if it ever comes back:
+  up once the work is already done). If a directory ever loses its write bit:
 
   ```bash
   find . -type d ! -perm -u+w -exec chmod u+w {} +
@@ -151,12 +149,8 @@ entonces ya está roto.
   organismo distinto del que el colector realmente usó, o si un ADR aceptado
   nombra un indicador y su ficha no registra el cambio. La tercera es la que
   hace el trabajo: escribir el ADR *es* el disparador, no hay nada que
-  recordar. Costó una ficha entera describiendo el IPI mientras el colector
-  bajaba la SRT, y un indicador puntuando 2,42% sin ficha ninguna. Y ojo con
-  la trampa que apareció en el camino: **62 de 73 bloques de ficha
-  desbordaban hasta el fin del archivo** por un `\s*` greedy en el extractor,
-  así que varias guardas pasaban sin mirar nada. Una guarda que no se probó
-  rompiéndola no se sabe si guarda.
+  recordar. Y una guarda que no se probó rompiéndola no se sabe si guarda: un
+  extractor con un `\s*` greedy hizo pasar varias sin mirar nada.
 
   Y al romperla, **borrá el bytecode antes de correr**: un `__pycache__` viejo
   hace que pytest ejecute la versión anterior del módulo y el resultado no dice
@@ -236,7 +230,7 @@ Frontmatter YAML + esqueleto `Contexto y planteo · Factores de decisión ·
 Opciones consideradas · Decisión (+ Consecuencias, Confirmación) · Pros y
 contras · Más información`. `docs/adr/README.md` documenta el formato.
 
-- **Los números de ADR son identificadores estables**: se citan >1.300 veces
+- **Los números de ADR son identificadores estables**: se citan cientos de veces
   desde `scripts/`, `tests/`, `web/` y artefactos generados como
   `output/procedencia_anclas.json`. No se renumeran ni se fusionan archivos.
 - **Los ids van entre comillas** (`id: '0012'`, `relacionado: ['0036']`). Sin
@@ -244,10 +238,9 @@ contras · Más información`. `docs/adr/README.md` documenta el formato.
   apunta a otro ADR sin que falle nada. Costó 38 filas del índice en silencio.
 - El índice del README y las relaciones inversas **se generan**:
   `.venv/bin/python scripts/adr_coherencia.py`. No editar la tabla a mano.
-- `tests/test_adr_format.py` (993 tests) es el gate: frontmatter, vocabulario
-  cerrado de `estado`, bidireccionalidad, índice sincronizado y que todo ADR
-  citado desde código exista. Ese último chequeo encontró un ADR-0165 citado
-  por `publicar.py` que nunca se había escrito.
+- `tests/test_adr_format.py` es el gate: frontmatter, vocabulario cerrado de
+  `estado`, bidireccionalidad, índice sincronizado y que todo ADR citado desde
+  código exista.
 - Si se reescribe el CUERPO de ADR existentes, verificar que no se perdió
   ninguna cifra ni identificador — ningún otro test mira el contenido:
 
@@ -262,9 +255,8 @@ contras · Más información`. `docs/adr/README.md` documenta el formato.
 
 **First question, every time: does this change touch one cinturón or more
 than one?** Answer that before running anything — it decides which of the
-two paths below to use. Getting this wrong in either direction has actually
-happened and cost real time (see both verified incidents below): guessing
-"full pipeline" for a one-cinturón change burns ~20 min doing nothing
+two paths below to use. Getting this wrong in either direction costs real
+time: guessing "full pipeline" for a one-cinturón change burns ~20 min doing nothing
 useful; guessing "just this collector" when multiple cinturones are
 genuinely stale produces false G3 gate failures that look like real bugs.
 
@@ -283,6 +275,8 @@ cd projects/informe_coyuntura
 .venv/bin/python scripts/validacion_externa.py            # only if the change touched BANDAS_* or added/changed an indicator SERIES of a parametric index
 .venv/bin/python scripts/generar_informe.py
 .venv/bin/python scripts/publicar.py
+.venv/bin/python scripts/sensibilidad.py
+.venv/bin/python scripts/fichas/generar.py --todos        # pytest cruza las fichas contra el snapshot
 .venv/bin/python scripts/gate_calidad.py
 .venv/bin/python -m pytest tests -q
 .venv/bin/python scripts/bigquery_export.py               # espeja la corrida en BigQuery (ADR-0180)
@@ -292,11 +286,8 @@ cd projects/informe_coyuntura
 indicator series + current bands to correlate against external benchmarks
 (EPU, Merval, riesgo país, ICC) — publicar.py embeds those r values in the
 public snapshot. Band recalibrations and new monthly series change that
-reconstruction, but the scoped path above didn't include the script until
-2026-07-09, verified failure: after 3 ITCP band recalibrations + 2 new
-monthly series in one day, the published ITCP↔EPU r was still the morning's
-stale value (found by adversarial audit, not by any gate — no gate checks
-validation freshness).
+reconstruction, and no gate checks validation freshness: skip the script and
+the published r values stay stale without anything failing.
 
 `descargar_series.py --cinturon <nombre>` / `--indicador <nombre>` (added
 2026-07-09) touch only that scope — the other cinturones'/indicators'
@@ -307,13 +298,6 @@ indicator's rows). Skip `descargar_series.py` entirely if the change didn't
 touch series/backfill data at all (e.g., just unblocking a collector's live
 fetch). The individual collector scripts are already naturally scoped by
 cinturón (separate scripts); none takes a per-indicator flag yet.
-
-Verified failure mode 2026-07-09: unblocked one Diputados indicator
-(`politica.py`-only change) but ran the full 11-step sequence below anyway
-out of habit, costing ~20 min for a change that needed ~2. The full-pipeline
-rule below is for *actual* multi-cinturón staleness, not a default to apply
-unconditionally — check the "one vs. many" question above before reaching
-for it.
 
 **More than one cinturón genuinely stale, or unsure**: run the **full
 pipeline in one continuous sequence**, same order as
@@ -330,6 +314,8 @@ cd projects/informe_coyuntura
 .venv/bin/python scripts/validacion_externa.py
 .venv/bin/python scripts/generar_informe.py
 .venv/bin/python scripts/publicar.py
+.venv/bin/python scripts/sensibilidad.py
+.venv/bin/python scripts/fichas/generar.py --todos
 .venv/bin/python scripts/gate_calidad.py
 .venv/bin/python -m pytest tests -q
 .venv/bin/python scripts/bigquery_export.py               # espeja la corrida en BigQuery (ADR-0180)
@@ -350,19 +336,9 @@ scope; run the full sequence again instead. Set the expectation up front
 `.venv/bin/python -m pytest tests -q` in addition to `gate_calidad.py` — the real CI
 runs both as separate sequential gates (G1-G3/G6 via gate_calidad.py, G4-G5
 via pytest). `gate_calidad.py` passing does NOT mean the pytest
-reconciliation tests pass. Verified 2026-07-09: skipped the pytest step
-after a manual run, pushed a snapshot where `sentimiento_digital` had
-silently vanished from `vida_cotidiana` (Google Trends rate-limited after
-repeated same-day runs; `build_vida()` skipped adding the indicator
-entirely instead of adding it with `valor=None`, so `_carry_forward` never
-saw it to restore the last good value — fixed in `publicar.py`).
-`gate_calidad.py` had nothing to catch that with (it checks
-structure/freshness/card-vs-series, not indicator-count invariants) — only
-`test_publicar.py` did. Same principle burned a second time the same day in
-a different shape: `gate_calidad.py`/pytest also didn't check that every
-indicator has a display label in `web/src/lib/datos.ts` — that gap now has
-its own dedicated test (`tests/test_web_labels.py`, added 2026-07-09)
-instead of being fixed only as a one-off symptom.
+reconciliation tests pass: the gate checks structure, freshness and
+card-vs-series, while invariants like the indicator count or every indicator
+having a label in `web/src/lib/datos.ts` live only in pytest.
 
 Commit + push the resulting `output/`/`web/src/data/` changes **to `main`**,
 staging files explicitly (see the working rules above). Pushing to `main` is
@@ -393,16 +369,14 @@ Es idempotente: re-correr la misma corrida no duplica. Ver ADR-0180.
 Se recupera **sólo si el snapshot quedó commiteado**:
 `scripts/bigquery_backfill.py` reconstruye corridas viejas desde git y las
 escribe con el código de hoy (ADR-0209; así se rellenaron las 206 corridas
-anteriores al 6-ago-2026). Lo que no tiene commit no se puede recuperar — pasó
-con la corrida del 15-ago 16:40 UTC, exportada a mano y superada por otra diez
-minutos después antes de commitear.
+anteriores al 6-ago-2026). Lo que no tiene commit no se puede recuperar.
 
 Dos cosas al consultar el archivo:
 
-- **Filtrá por `corridas.origen = 'cron'`** si querés la evolución del dato. De
-  las 226 corridas archivadas sólo 71 son del nocturno; el resto son
-  republicaciones y regeneraciones de desarrollo (julio tiene 116 manuales
-  contra 24 del cron), y sin filtrar el mes parece un sismo.
+- **Filtrá por `corridas.origen = 'cron'`** si querés la evolución del dato. La
+  mayoría de las corridas archivadas no son del nocturno: son republicaciones
+  y regeneraciones de desarrollo, y sin filtrar un mes con mucho trabajo manual
+  parece un sismo.
 - **`corridas.score_global` no se lee de corrido** a través de un cambio de
   perímetro. Para eso está la vista `corridas_comparables`. Y ojo: corrige el
   perímetro, **no la metodología** — recalibraciones de bandas y cambios de
@@ -427,13 +401,6 @@ Dos cosas al consultar el archivo:
   `output/cache/*.json`, `output/series/*.csv`, `web/src/data/*.json`. Resolve
   them by taking the cron's fresh data and **re-running the pipeline** (see the
   section above), not by hand-picking a side.
-
-Verified failure, 2026-07-30: an entire session's work (pobreza into the ITVC,
-two components leaving it, 10 broken ficha URLs, the ITCM validation anchor
-swap) was reported commit by commit as "pushed" — all on a PR branch. `main`
-had none of it and the site was byte-identical. The user had to point it out
-twice. There was already a memory saying "verify production" and it pointed at
-the retired GitHub Pages target, which is why it did not bite.
 
 ## Avisos del pipeline: el issue registra, Slack notifica
 
@@ -495,25 +462,15 @@ disfraza de "fuente caída" y congela una serie sin que nada falle: pasó con
 `icg_utdt`, cuatro días (ADR-0175). `tests/test_aviso_slack.py` prueba el
 clasificador, y sobre todo prueba lo que NO tiene que avisar.
 
-> **Ojo con este párrafo: fue falso hasta el 3-sep-2026.** Los dos primeros
-> avisos —fuente caída entera y presupuesto agotado— **nunca se dispararon**.
-> El parser buscaba `##[notice]`, que es como GitHub *renderiza* los comandos
-> de workflow en el log descargado; el archivo que lee lo escribe un `tee`
-> dentro del runner, donde están en su forma cruda `::notice::`. Los tests
-> estaban en verde porque los alimentaban con la forma renderizada.
->
-> Deja dos reglas que valen más que el arreglo:
->
-> - **Una guarda alimentada con un formato que producción no produce no prueba
->   nada, y no hace ruido al no probarlo.** Si un parser lee un archivo, el
->   fixture del test tiene que salir de ese archivo, no de cómo se ve en
->   pantalla.
-> - **`if: failure()` no cubre un job cancelado**, y GitHub cancela el job
->   cuando toca `timeout-minutes`. La corrida del 26-ago-2026 murió así a los
->   45m20s sin avisar nada. Va `failure() || cancelled()`.
->
-> Ambos arreglados en ADR-0270. La primera prueba real del código nuevo es la
-> próxima falla de verdad: al 3-sep sólo lo ejercitan los tests.
+Dos reglas para tocar el parser o el workflow (ADR-0270):
+
+- **Una guarda alimentada con un formato que producción no produce no prueba
+  nada, y no hace ruido al no probarlo.** El log que lee el parser lo escribe un
+  `tee` dentro del runner, con los comandos en crudo (`::notice::`), no como
+  GitHub los renderiza (`##[notice]`): el fixture del test tiene que salir de ese
+  archivo.
+- **`if: failure()` no cubre un job cancelado**, y GitHub cancela el job cuando
+  toca `timeout-minutes`. Va `failure() || cancelled()`.
 
 Los secretos (`SLACK_BOT_TOKEN`, `SLACK_CANAL_ALERTAS`, `SLACK_CANAL_INFORME`)
 están en el repo del informe. Los canales requieren invitar al bot a mano.
@@ -553,28 +510,13 @@ paso va **antes** de commitear, no después.
    secret) — that's ours to fix, retrying won't help.
 
 Only retry (`gh run rerun <run-id>`) after confirming it's actually
-infra-side. Verified 2026-07-09: a deploy failed with "job was not acquired
-by Runner of type hosted"; githubstatus.com confirmed an active
-"Delays starting Actions runs" incident (~96% of hosted-runner jobs failing
-to start at peak) covering that exact window — rerun succeeded once the
-incident cleared. Confirming this took two `gh api` calls and one fetch, a
-lot cheaper than either (a) guessing wrong and missing a real bug, or
-(b) leaving the user without an actual answer for "why did it fail."
+infra-side. Confirming takes two `gh api` calls and one fetch, and it is also
+the answer the user needs to "why did it fail".
 
 ## Informe de Coyuntura quick reference
 
-Start in `projects/informe_coyuntura/`.
-
-```bash
-.venv/bin/python scripts/macro.py
-.venv/bin/python scripts/politica.py
-.venv/bin/python scripts/gestion.py
-.venv/bin/python scripts/vida_cotidiana/main.py
-.venv/bin/python scripts/vida_cotidiana.py   # puente legacy, después de main.py
-.venv/bin/python scripts/generar_informe.py
-.venv/bin/python scripts/publicar.py         # writes web/src/data/{informe,series}.json
-.venv/bin/python scripts/bigquery_export.py  # espeja la corrida en BigQuery (ADR-0180)
-```
+Start in `projects/informe_coyuntura/`. The run sequences are in "Publishing data
+"now"" above; `publicar.py` writes `web/src/data/{informe,series}.json`.
 
 Collector exit codes: `0` all fresh · `1` mixed fresh/cache · `2` all cache
 (source failures).
@@ -597,7 +539,8 @@ node tools/emitir-artifact.mjs --con-fichas
 ```
 
 **Sirve para abrir y navegar, no para pegarlo en una conversación con un modelo.** El completo
-son **1.511.640 tokens** y el lite 979.444 — contra los 200k de claude.ai. No hay poda que lo
+son **1.511.640 tokens** y el lite 979.444: el completo no entra en la ventana de 1M de los modelos
+actuales y el lite la ocupa casi entera. No hay poda que lo
 arregle: el 83 % de cada página son las series en `<script>` inline y **una sola sección ya son
 183.400 tokens**. Para ingesta están `output/informe.md` (2.627) y `output/fichas/*.md`
 (121.507 las cuatro).

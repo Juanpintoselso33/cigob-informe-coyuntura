@@ -9,7 +9,7 @@ Durable project facts must remain consistent across both files.
 ## Reuse Claude Context
 
 - BMAD workflow sources live under `.claude/skills/`; Codex discovers the single
-  router `.agents/skills/bmad/` instead of indexing 44 physical copies.
+  router `.agents/skills/bmad/` instead of indexing every physical copy.
 - When a user invokes BMAD or names a workflow, use the `bmad` router and read
   exactly `.claude/skills/<workflow>/SKILL.md` before acting.
 - If that skill references relative `steps/`, `templates/`, `assets/`, or
@@ -18,11 +18,8 @@ Durable project facts must remain consistent across both files.
 - Do not bulk-load all of `.claude/skills`; there are many BMAD skills and most
   are irrelevant to a given turn.
 - Treat `.claude/skills/informe-coyuntura.md` as useful operational context, but
-  verify it against the current repo docs before relying on details. It was
-  updated 2026-08-14 (**four** cinturones after ADR-0205, current paramétrica
-  engines, current file layout), so it is not stale today — but it is a quick
-  reference, not the source of truth, and it will drift again. When in doubt
-  prefer `projects/informe_coyuntura/README.md`, `docs/adr/`, and the tests.
+  verify it against the current repo docs before relying on details: it is a
+  quick reference, not the source of truth. When in doubt prefer `projects/informe_coyuntura/README.md`, `docs/adr/`, and the tests.
 
 ## Repo Overview
 
