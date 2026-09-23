@@ -12,6 +12,7 @@ Se publican niveles, diferencias, giros y diagnósticos de tendencia; la
 comparación no acredita por sí sola causalidad, representatividad social ni
 predicción en tiempo real. Salida: output/validacion_externa.json.
 """
+import functools
 import io
 import json
 import statistics
@@ -163,6 +164,16 @@ BASES_PROPIAS = {"inseguridad": ("2024-01",)}   # base conservada; archivo 2023 
 # ventana móvil a la SUMA de los dos y entrega la serie ya rebaseada. Se deja
 # el mecanismo en pie porque la próxima serie de flujo crudo lo va a necesitar.
 MOVIL12: set[str] = set()
+# Anuales anclados contra la mediana de toda su serie en vez de un año puntual
+# (ADR-0327, corrección). Tiene que ser lo mismo que hace `itvc` con
+# `mediana_de_serie`, o la historia y la card dejan de ser el mismo índice.
+MEDIANA_COMO_BASE = {"tasa_homicidios", "tasa_robos"}
+
+
+@functools.lru_cache(maxsize=1)
+def _series_vivas() -> dict:
+    """Las series con las que puntúa la card (publicar.build_series)."""
+    return publicar.build_series()
 ITVC_TECHO = 140.0                              # winsorización asimétrica (ADR-0033)
 # ADR-0224: la excepción al techo, acotada a un componente. Tiene que ser la
 # MISMA que `itvc.WINSOR_EXENTOS` — si divergen, la serie reconstruida y el
@@ -270,6 +281,26 @@ def _indices_itvc_por_componente() -> dict:
             vals = _movil12(vals)          # estacionalidad fuerte del flujo crudo
         idx = (vals if ya_rebaseada
                else _rebase(vals, invertido, anual, BASES_PROPIAS.get(comp)))
+        # ADR-0327 (corrección): homicidios y robos se anclan contra la MEDIANA
+        # de toda su historia (itvc.mediana_de_serie), no contra el año 2023 que
+        # `_rebase` usa para las anuales. Sin esto el mismo dato puntuaba 140,0
+        # en la card y 124,3 en la historia (destapado el 23-sep-2026).
+        if comp in MEDIANA_COMO_BASE and vals:
+            # la mediana sale de las MISMAS series que lee la card
+            # (publicar.build_series), no del histórico fusionado de
+            # `cargar_series`: si el SNIC dejara de entregar un año, la
+            # historia lo conservaría y la card no, y volverían a separarse
+            base = itvc.mediana_de_serie(_series_vivas(), skey)
+            if base:
+                idx = {ym: round((base / v if invertido else v / base) * 100.0, 1)
+                       for ym, v in vals.items() if v}
+        # ADR-0328: la card comprime la distancia a 100 del ratio motos/autos
+        # (itvc.rebase_amortiguado). Sin el mismo factor acá, el mismo dato
+        # puntuaba 86,0 en la card y 72,1 en la historia: lo destapó la serie
+        # descongelada el 23-sep-2026 (tests/test_series_dimensiones.py).
+        if comp == "ratio_motos_autos":
+            f = itvc.FACTOR_AMORTIGUACION_RATIO_MOTOS_AUTOS
+            idx = {ym: round(100.0 + (v - 100.0) * f, 1) for ym, v in idx.items()}
         # winsorización asimétrica del ADR-0033: mismo techo que publicar, y
         # la misma excepción acotada del ADR-0224
         indices_por_comp[comp] = (
@@ -1338,46 +1369,21 @@ def main():
         cruz = "" if p["misma_dimension"] else "  [dimensiones distintas]"
         print(f"  r = {p['r']:+.3f}  {p['a']} × {p['b']}{cruz}")
 
-    # ── ITCG vs ICG UTDT (confianza en el gobierno; positiva esperada) ─────
+    # ── ITCG: serie reconstruida, SIN contraste externo (ADR-0336) ──────────
+    # Un índice de ejecución no tiene validación externa por definición: una
+    # serie que mida lo que el gobierno hace es un instrumento de la misma
+    # agenda, y una que mida lo que pasa como consecuencia mezcla la ejecución
+    # con todo lo demás. La serie se sigue reconstruyendo porque la usan la
+    # redundancia y el archivo histórico; el Merval se sigue bajando porque es
+    # una de las estadísticas AJENAS del panel de los otros índices.
     serie_itcg = construir_serie_itcg(dims["itcg"])
     print(f"\nserie ITCG reconstruida: {len(serie_itcg)} meses "
           f"({min(serie_itcg)} → {max(serie_itcg)}) · último: {serie_itcg[max(serie_itcg)]}")
     resultados["serie_itcg"] = serie_itcg
-    series_json = cargar_series()
-    icg = _mensual(series_json.get("icg_utdt") or [])
-    pares_g = {}
     try:
-        merval = fetch_merval_usd_mensual()
-        resultados["merval_usd_mensual"] = merval
-        # El Merval sigue midiéndose y sigue en el panel, pero YA NO se publica
-        # como el par que valida al índice (ADR-0226): pricea lo que el mercado
-        # espera de la ejecución, no la ejecución. Sus tres números son la
-        # prueba de por qué dejó de encabezar.
-        pares_g.update({
-            "niveles (ITCG vs Merval USD)": (serie_itcg, merval),
-            "primeras diferencias (ITCG vs Merval USD)": (_difs(serie_itcg), _difs(merval)),
-            # El destendenciado es el que sostiene que el Merval dejó de
-            # encabezar (ADR-0226): se calcula acá y no se escribe a mano en
-            # la prosa, para que envejezca con los datos.
-            "niveles sin tendencia (ITCG vs Merval USD)":
-                (_sin_tendencia(serie_itcg), _sin_tendencia(merval)),
-        })
+        resultados["merval_usd_mensual"] = fetch_merval_usd_mensual()
     except Exception as e:
         print(f"[WARN] Merval USD no disponible: {e}")
-    if icg:
-        # Discriminante: el ITCG mide ejecución ACUMULATIVA, no popularidad —
-        # la divergencia con el ciclo de confianza política es esperable.
-        pares_g.update({
-            "niveles (ITCG vs ICG)": (serie_itcg, icg),
-            "primeras diferencias (ITCG vs ICG)": (_difs(serie_itcg), _difs(icg)),
-        })
-    if pares_g:
-        resultados["correlaciones_itcg"] = {}
-        print("correlaciones ITCG (Pearson):")
-        for nombre, (a, b) in pares_g.items():
-            r, n = _pearson(a, b)
-            resultados["correlaciones_itcg"][nombre] = {"r": r, "n": n}
-            print(f"  {nombre}: r = {r}  (n = {n})")
 
     # ── ITCP vs EPU Argentina (incertidumbre de política; negativa esperada) ──
     serie_itcp = construir_serie_itcp(dims["itcp"])
@@ -1608,7 +1614,8 @@ def main():
         if vacias:
             print(f"  [WARN] anclas del panel sin datos: {', '.join(sorted(vacias))}")
 
-        indices = {"itvc": itvc_full, "itcg": serie_itcg, "itcp": serie_itcp}
+        # Sin el ITCG (ADR-0336): no tiene contraste externo por definición.
+        indices = {"itvc": itvc_full, "itcp": serie_itcp}
         resultados["panel_validacion"] = {}
         print("")
         print("panel de validación socioeconómica:")

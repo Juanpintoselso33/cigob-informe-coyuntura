@@ -26,6 +26,7 @@ Las guardas de acá cierran esa clase, no un síntoma:
    puede superar el techo.
 """
 import json
+import statistics
 import sys
 from pathlib import Path
 
@@ -238,20 +239,28 @@ def test_no_hay_arrastre_ni_interpolacion_en_la_capa_de_dimension():
     # ADR-0273 recuperó el archivo oficial 2023. La ausencia anterior era
     # del colector, no de la fuente: ahora diciembre tiene un dato verificable.
     #
-    # ADR-0327 agregó `tasa_homicidios`/`tasa_robos` a esta dimensión: en
-    # 2023-12 los dos rebasean a exactamente 100 (es su propio año base), así
-    # que el punto de la dimensión deja de ser el índice de `inseguridad`
-    # solo y pasa a ser el promedio ponderado de los tres, con los mismos
-    # pesos vigentes de `itvc.DIMENSIONES_ITVC["seguridad"]`.
+    # ADR-0327 agregó `tasa_homicidios`/`tasa_robos` a esta dimensión, así
+    # que el punto de 2023-12 es el promedio ponderado de los tres con los
+    # pesos vigentes de `itvc.DIMENSIONES_ITVC["seguridad"]`. Los dos del SNIC
+    # se anclan contra la MEDIANA de toda su serie (corrección de ADR-0327,
+    # igual que la card): hasta el 23-sep-2026 la reconstrucción los anclaba en
+    # 2023 y este test esperaba 100 para los dos.
     seguridad = publicado["seguridad"]["serie"]
-    raw = ve._mensual(ve.cargar_series()["inseguridad"])
+    series = ve.cargar_series()
+    raw = ve._mensual(series["inseguridad"])
     assert raw["2023-12"] == 27.8   # informe LICIP diciembre 2023
     indice_inseguridad = round(raw["2024-01"] / raw["2023-12"] * 100, 1)
+
+    def _snic(k):
+        s = ve._mensual(series[k])
+        idx = round(statistics.median(s.values()) / s["2023-12"] * 100, 1)
+        return idx if k in ve.TECHO_EXENTOS else min(idx, ve.ITVC_TECHO)
+
     pesos = itvc.DIMENSIONES_ITVC["seguridad"]["indicadores"]
     esperado = round(
         (indice_inseguridad * pesos["inseguridad"]
-         + 100.0 * pesos["tasa_homicidios"]
-         + 100.0 * pesos["tasa_robos"]) / sum(pesos.values()), 1)
+         + _snic("tasa_homicidios") * pesos["tasa_homicidios"]
+         + _snic("tasa_robos") * pesos["tasa_robos"]) / sum(pesos.values()), 1)
     assert seguridad["2023-12"] == esperado
 
 

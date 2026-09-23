@@ -259,7 +259,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0188](0188-reestructuracion-organismos-numerador-caso-por-caso.md) | `reestructuracion_organismos`: el numerador cuenta solo cierres vigentes de organismos públicos, caso por caso | `reestructuracion_organismos` | vigente |
 | [0189](0189-si-no-puntua-no-se-muestra.md) | Si no puntúa no se muestra, y una promesa cumplida sí puntúa | `asistencia_directa`, `masa_salarial`, `social_orden` | vigente |
 | [0221](0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) | Un cable trampa mira la banda, no el puntaje | `litigiosidad_laboral` | vigente |
-| [0226](0226-el-itcg-se-queda-sin-validacion-externa-y-lo-declara.md) | El ITCG se queda sin validación externa única, y lo declara |  | vigente |
+| [0226](0226-el-itcg-se-queda-sin-validacion-externa-y-lo-declara.md) | El ITCG se queda sin validación externa única, y lo declara |  | superado por [0336](0336-el-itcg-no-tiene-validacion-externa-por-definicion.md) |
 | [0228](0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) | El FAL puntúa lo que rige, no lo que se dictó | `fal_modernizacion_laboral` | vigente |
 | [0229](0229-la-desregulacion-cuenta-actos-no-efectos.md) | La desregulación cuenta actos, no efectos, y la ficha lo dice | `desregulacion_normativa` | vigente |
 | [0244](0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) | El acto jurídico manda sobre el estado del portal | `concesiones_infraestructura` | vigente |
@@ -274,6 +274,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0294](0294-cortes-explicita-base-estimada-y-fuente-no-verificable.md) | Cortes explicita base estimada y fuente no verificable | `protocolo_antipiquetes` | vigente |
 | [0296](0296-tdps-distingue-devengado-de-pago.md) | TDPS distingue devengado de pago | `asistencia_directa` | vigente |
 | [0305](0305-fal-separa-consulta-y-revision-curada.md) | Consultar CNV no actualiza la revisión judicial | `fal_modernizacion_laboral` | vigente |
+| [0336](0336-el-itcg-no-tiene-validacion-externa-por-definicion.md) | El ITCG no tiene validación externa, por definición |  | vigente |
 
 ### Vida cotidiana (ITVC)
 

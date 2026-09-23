@@ -1699,9 +1699,9 @@ def _redundancia_itcm(bloque):
 
 def _validacion_cruzada(informe):
     """Matriz de validación cruzada (ADR-0031, tercer pilar de robustez): los
-    cuatro índices reconstruidos contra los CUATRO contrastes externos a la
-    vez. Validez convergente + discriminante: cada índice debe correlacionar
-    más fuerte con su par teórico (ITCM ↔ actividad · ITCG ↔ Merval ·
+    tres índices con contraste externo contra los TRES contrastes a la vez (el
+    ITCG no tiene, ADR-0336). Validez convergente + discriminante: cada índice
+    debe correlacionar más fuerte con su par teórico (ITCM ↔ actividad ·
     ITCIS ↔ el volumen que consume el hogar · ITCP ↔ EPU Argentina) que con el
     contraste ajeno — la prueba
     de que no miden "todo junto". Hoy no se cumple en todos, y la conclusión lo
@@ -1709,7 +1709,6 @@ def _validacion_cruzada(informe):
     try:
         bloques = {
             "ITCM": informe["cinturones"]["macro"]["itcm"]["validacion"]["pares"],
-            "ITCG": informe["cinturones"]["gestion"]["itcg"]["validacion"]["pares"],
             "ITVC": informe["cinturones"]["vida_cotidiana"]["itvc"]["validacion"]["pares"],
             "ITCP": informe["cinturones"]["politica"]["itcp"]["validacion"]["pares"],
         }
@@ -1718,7 +1717,7 @@ def _validacion_cruzada(informe):
     indices = {k: {p[0]: p[1] for p in v} for k, v in bloques.items()}
     # El indicador de mercado que era el ancla de macro YA NO EXISTE en el
     # informe: se reemplazó por el Índice Líder y el reemplazo es total, no una
-    # suma — decisión del editor. La matriz es 4×4, un contraste propio por
+    # suma — decisión del editor. La matriz es 3×3 (sin el ITCG, ADR-0336), un contraste propio por
     # índice.
     # ADR-0225: el contraste propio del ITCIS ya no es el consumo en
     # supermercados —que ahora COMPONE el índice— sino el factor común de los
@@ -1726,11 +1725,6 @@ def _validacion_cruzada(informe):
     # como "consumo" habría dicho en el tablero que el índice se contrasta
     # contra una serie que en realidad lleva adentro.
     externas = {"lider": {p[0]: p[2] for p in bloques["ITCM"]},
-                # La columna del ITCG ya no es el Merval sino el factor común de
-                # su panel (ADR-0226): `pares` sale de ahí, y dejar el rótulo
-                # viejo habría hecho que la matriz dijera "Merval" mientras
-                # compara contra otra cosa.
-                "capital_privado": {p[0]: p[2] for p in bloques["ITCG"]},
                 "volumen_hogar": {p[0]: p[2] for p in bloques["ITVC"]},
                 "epu": {p[0]: p[2] for p in bloques["ITCP"]}}
 
@@ -1745,10 +1739,11 @@ def _validacion_cruzada(informe):
         ms = sorted(s)
         return {ms[i]: s[ms[i]] - s[ms[i - 1]] for i in range(1, len(ms))}
 
-    PAR_PROPIO = {"ITCM": "lider", "ITCG": "capital_privado",
-                  "ITVC": "volumen_hogar", "ITCP": "epu"}
+    # Sin el ITCG (ADR-0336): un índice de ejecución no tiene contraste externo
+    # por definición, así que no tiene par propio que poner en la matriz.
+    PAR_PROPIO = {"ITCM": "lider", "ITVC": "volumen_hogar", "ITCP": "epu"}
     filas = []
-    for ik in ("ITCM", "ITCG", "ITVC", "ITCP"):
+    for ik in ("ITCM", "ITVC", "ITCP"):
         fila = {"indice": SIGLAS_PUBLICAS[ik.lower()], "propio": PAR_PROPIO[ik]}
         for ek, ext in externas.items():
             r, n = _r(indices[ik], ext)
@@ -1762,14 +1757,14 @@ def _validacion_cruzada(informe):
     if any(f[e]["r"] is None for f in filas for e in externas):
         return
     fmt = lambda r: ("+" if r > 0 else "") + str(r).replace(".", ",")
-    f_itcm, f_itcg, f_itvc, f_itcp = filas
+    f_itcm, f_itvc, f_itcp = filas
 
     # El poder discriminante se DERIVA, no se afirma. Antes el texto decía que
     # las celdas cruzadas eran "del mismo orden en más de un caso" con un ejemplo
     # escrito a mano; eso quedó corto cuando el ancla de macro pasó a ser la
     # actividad y su par propio quedó por debajo de dos ajenos. La frase se
     # recalcula en cada corrida para que no pueda sobreafirmar.
-    ETIQ = {"lider": "la actividad", "capital_privado": "la respuesta del capital privado",
+    ETIQ = {"lider": "la actividad",
             "volumen_hogar": "el volumen que consume el hogar",
             "epu": "la incertidumbre de política"}
     superados = []
@@ -1790,36 +1785,32 @@ def _validacion_cruzada(informe):
                          f"alcanza para separarlos; los cambios mes a mes que acompañan a cada "
                          f"celda son la lectura más exigente.")
     else:
-        discriminante = ("En los cuatro casos la correlación más fuerte es con el par propio, que "
+        discriminante = ("En los tres casos la correlación más fuerte es con el par propio, que "
                          "es la prueba de que cada índice mide su terreno y no «todo junto».")
     informe["validacion_cruzada"] = {
         "filas": filas,
         "externas": [["lider", "Actividad (Índice Líder UTDT)"],
-                     ["capital_privado", "Respuesta del capital privado (factor común)"],
                      ["volumen_hogar", "Volumen consumido por el hogar (factor común)"],
                      ["epu", "Incertidumbre de política (EPU Argentina)"]],
         "titulo": "¿Cada índice mide lo suyo?",
-        "sub": ("Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro "
-                "contrastes externos a la vez. Cada uno tiene el propio: la macroeconomía "
-                "(ITCM) con la marcha de la actividad, la gestión (ITCG) con el factor común "
-                "de la respuesta del capital privado —el valor de las empresas en dólares y "
-                "tres medidas de cuánto capital de afuera entra—, el impacto social (ITCIS) "
+        "sub": ("Los tres índices que tienen contraste externo se reconstruyen mes a mes y se "
+                "comparan contra los tres contrastes a la vez. Cada uno tiene el propio: la "
+                "macroeconomía (ITCM) con la marcha de la actividad, el impacto social (ITCIS) "
                 "con el factor común de los "
                 "volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política "
                 "(ITCP) con la incertidumbre de política que mide la "
-                "prensa (EPU Argentina). Si cada índice mide su propio terreno, debería "
+                "prensa (EPU Argentina). La gestión (ITCG) no figura: mide lo que el gobierno "
+                "hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería "
                 "correlacionar con su par natural al menos tanto como con los ajenos. Es la "
                 "prueba clásica de que un indicador no mide \"todo junto\"."),
         # La primera oración es la que va sola en la card (ADR-0165): corta y con
         # el veredicto. El detalle par por par queda para el desarrollo.
-        "conclusion": (f"Los cuatro pares propios dan el signo esperado. ITCM "
-                       f"{fmt(f_itcm['lider']['r'])} con la actividad, ITCG "
-                       f"{fmt(f_itcg['capital_privado']['r'])} con la respuesta del capital "
-                       f"privado, ITCIS "
+        "conclusion": (f"Los tres pares propios dan el signo esperado. ITCM "
+                       f"{fmt(f_itcm['lider']['r'])} con la actividad, ITCIS "
                        f"{fmt(f_itvc['volumen_hogar']['r'])} con el volumen que consume el "
                        f"hogar, ITCP "
                        f"{fmt(f_itcp['epu']['r'])} con la incertidumbre de política — este último "
-                       f"más moderado que los otros tres, coherente con un índice con varios "
+                       f"más moderado que los otros dos, coherente con un índice con varios "
                        f"componentes recién automatizados y con historia corta. "
                        + discriminante),
     }
@@ -1828,119 +1819,35 @@ def _validacion_cruzada(informe):
 
 
 def _validacion_itcg(bloque):
-    """Anexa al bloque ITCG su validación externa. **Sin ancla única, y el
-    problema queda declarado abierto** (ADR-0226).
+    """El ITCG no tiene validación externa, por definición (ADR-0336).
 
-    Por qué no hay una sola serie enfrente, que es lo que el lector espera:
+    Mide lo que el gobierno HIZO. Una serie externa puede medir dos cosas: lo
+    que el gobierno hace —y entonces es un instrumento de la misma agenda, y
+    correlacionar con ella es una identidad— o lo que pasa como consecuencia —el
+    valor de las empresas, la entrada de capital, la confianza—, que mezcla la
+    ejecución con todo lo demás que mueve a la economía y a la política. No hay
+    una tercera clase de serie. Hasta ADR-0336 la sección publicaba el factor
+    común del capital privado como contraste y declaraba el problema «abierto»;
+    una casilla de validación con un número adentro se lee como aprobada, y ese
+    número no podía confirmar un índice de ejecución.
 
-    - **No existe.** No hay ninguna serie mensual, argentina, publicada por un
-      tercero, que mida avance de reformas. Los índices internacionales de
-      capacidad estatal dan entre cero y tres observaciones contra los treinta y
-      un meses del índice, y el más cercano por concepto —el de regulación de
-      mercados de la OCDE— se actualiza cada cinco años, con una edición vigente
-      anterior a la desregulación que el índice mide.
-    - **El Merval no servía**, y sus propios números lo dicen: publicaba +0,75
-      en niveles, +0,07 al descontarle la tendencia y +0,13 en los cambios mes a
-      mes, por debajo del promedio de las estadísticas que el panel usa como
-      contraste AJENO. Sale de encabezar; sigue en el panel.
-    - **El gasto en subsidios se evaluó y no entra por ninguna de las dos
-      puertas.** Como validador está del lado equivocado de la ecuación: el
-      índice mide lo que el gobierno hizo y un validador tiene que medir lo que
-      pasó como consecuencia — bajar subsidios es un instrumento de la agenda,
-      no un efecto de ella; y lo publica el mismo gobierno que ejecuta. Como
-      componente lo frenó la medición: aporta 0,011 de R² sobre una tendencia,
-      contra los 0,347 que justificaron el alta del supermercado en el ITCIS.
-
-    Así que el titular es el factor común del panel, que es contra lo que el
-    gráfico ya venía comparando, y la sección dice que **la validez externa de
-    este cinturón sigue siendo un problema abierto**. Declararlo es más honesto
-    que llenar la casilla con la serie que mejor correlacione.
-    """
-    val = _cargar_validacion()
-    serie = val.get("serie_itcg") or {}
-    panel = (val.get("panel_validacion") or {}).get("itcg") or {}
-    factor = panel.get("factor") or {}
-    pares = factor.get("pares") or []
-    if len(pares) < 12 or not serie:
-        return
-    r_niv, r_dif = factor.get("r_niveles"), factor.get("r_diferencias")
-    if r_niv is None:
-        return
-    corr = val.get("correlaciones_itcg", {})
-    mrv_niv = (corr.get("niveles (ITCG vs Merval USD)") or {}).get("r")
-    mrv_dif = (corr.get("primeras diferencias (ITCG vs Merval USD)") or {}).get("r")
-    mrv_sin = (corr.get("niveles sin tendencia (ITCG vs Merval USD)") or {}).get("r")
-    ajenas = (panel.get("diferencias") or {}).get("discriminante")
-    icg_niv = (corr.get("niveles (ITCG vs ICG)") or {}).get("r")
-
-    partes = [
-        "No hay una sola serie externa que haga de contraste de este cinturón, y el motivo "
-        "no es que no se haya buscado: es que no existe. Ninguna institución publica en "
-        "Argentina una serie mensual que mida cuánto avanzó una agenda de reformas, y los "
-        "índices internacionales de capacidad estatal —efectividad de gobierno, calidad "
-        "regulatoria, libertad económica— son anuales o peores: contra los treinta y un "
-        "meses que tiene este índice aportan entre cero y tres observaciones, y el más "
-        "cercano por concepto se actualiza cada cinco años, con una edición vigente que "
-        "retrata al Estado ANTES de la desregulación que acá se mide.",
-    ]
-    if None not in (mrv_niv, mrv_sin, mrv_dif):
-        signo = lambda r: ("+" if r > 0 else "") + coma(r)
-        cola = ""
-        if ajenas is not None and abs(mrv_dif) < ajenas:
-            cola = (f", por debajo del {coma(ajenas)} que promedian las estadísticas que el "
-                    f"panel usa como contraste AJENO — el índice se movía con el que era su "
-                    f"contraste propio menos que con las series que no tienen nada que ver")
-        partes.append(
-            f"El contraste que encabezaba esta sección era el Merval en dólares y dejó de "
-            f"hacerlo. Publicaba {signo(mrv_niv)} en niveles, pero descontada la tendencia del "
-            f"período queda en {signo(mrv_sin)} y en los cambios mes a mes en "
-            f"{signo(mrv_dif)}{cola}. Un índice de acciones pone precio a lo que el mercado "
-            f"espera de la ejecución, que no es la ejecución. Sigue publicándose como una de "
-            f"las cuatro estadísticas del terreno propio de este cinturón.")
-    partes.append(
-        "Se evaluó reemplazarlo por el gasto en subsidios económicos —energía y transporte, "
-        "a precios constantes— y no entra por ninguna de las dos puertas, lo que es en sí "
-        "un resultado. Como contraste externo está del lado equivocado de la comparación: "
-        "este índice mide lo que el gobierno HIZO, y un contraste tiene que medir lo que "
-        "PASÓ como consecuencia; bajar subsidios es un instrumento de la misma agenda, y "
-        "además lo publica el propio gobierno que la ejecuta. Como componente del índice lo "
-        "frenó la medición: sobre una simple tendencia en el tiempo agrega 0,011 de poder "
-        "explicativo, contra los 0,347 con los que el consumo en supermercados se ganó su "
-        "lugar dentro del índice de impacto social.")
-    if icg_niv is not None:
-        partes.append(
-            f"El contraste que DISTINGUE en vez de confirmar sigue siendo el Índice de "
-            f"Confianza en el Gobierno de la Universidad Torcuato Di Tella —ajeno, no "
-            f"nuestro—: contra él la correlación es {coma(icg_niv)}. Que sea negativa no es "
-            f"una falla, es el resultado: la ejecución se acumula y el capital político sigue "
-            f"su propio ciclo. Este cinturón mide gestión, no popularidad.")
-    partes.append(
-        "Con todo eso sobre la mesa, la validez externa de este cinturón queda declarada como "
-        "PROBLEMA ABIERTO y no como casilla llena. Lo que haría falta para cerrarla está "
-        "escrito en la ficha metodológica, junto con el umbral que tendría que cumplir una "
-        "candidata para promoverse — fijado de antemano, para que la decisión no dependa de "
-        "mirar el número el día que aparezca.")
-
+    Se publica la DECLARACIÓN (sin pares, sin r, sin gráfico) para que el
+    tablero diga por qué no hay contraste en vez de omitirlo en silencio."""
     bloque["validacion"] = {
-        "r_niveles": r_niv, "r_diferencias": r_dif, "n": factor.get("n"),
-        "pares": pares,
-        "plot": "minmax",
-        "titulo": "¿Contra qué se contrasta un índice de ejecución?",
-        "sub": ("Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables "
-                "externas relacionadas que no lo componen. Este cinturón no tiene una serie de "
-                "referencia única, y no por falta de búsqueda: no existe ninguna estadística "
-                "mensual argentina, publicada por un tercero, que mida cuánto avanzó una agenda "
-                "de reformas. Así que se compara contra un panel de estadísticas externas —el "
-                "valor de las empresas argentinas en dólares y tres medidas de cuánto capital "
-                "de afuera decide entrar— y se mira si el índice acompaña más a las de su "
-                "propio terreno que a las ajenas. El gráfico muestra el factor común de las "
-                "cuatro: lo que todas comparten, en vez de una sola. El detalle —las cargas de "
-                "cada una, el panel completo y qué haría falta para cerrar la validez externa— "
-                "está en la ficha metodológica."),
-        "serie_label": "ITCG (reconstrucción mensual)",
-        "externa_label": "factor común del capital privado",
-        "trans_label": "series normalizadas al rango del período",
-        "conclusion": " ".join(partes),
+        "sin_contraste": True,
+        "titulo": "Un índice de ejecución no tiene contraste externo",
+        "sub": ("Este índice mide lo que el gobierno hace: cuánto avanzó la agenda de reformas "
+                "que se propuso. Por eso no tiene validación externa, y no por falta de "
+                "búsqueda. Una estadística de afuera puede medir lo que el gobierno hace, y "
+                "entonces es parte de la misma agenda —compararse con ella es compararse "
+                "consigo mismo—, o lo que pasa como consecuencia —el valor de las empresas, la "
+                "entrada de capital, la confianza—, que mezcla la ejecución con todo lo demás "
+                "que mueve a la economía y a la política. No hay una tercera clase de "
+                "estadística."),
+        "conclusion": ("La solidez del índice se sostiene en los otros dos controles que se "
+                       "publican en cada edición: cuánta información distinta aporta cada "
+                       "componente y cuánto se mueve el resultado si cambian los pesos. Por el "
+                       "mismo motivo este índice no figura en la matriz de validación cruzada."),
     }
 
 
@@ -2651,7 +2558,6 @@ def aplicar_scoring(informe, series):
             _scoring_indice(c, "itcg", itcg, GESTION_CONTEXTO, _gestion_input_txt)
             if c.get("itcg"):
                 _validacion_itcg(c["itcg"])
-                _panel_socioeconomico(c["itcg"], "itcg")
                 _redundancia(c["itcg"], "redundancia_itcg")
                 _vintages(c, "itcg")
             continue

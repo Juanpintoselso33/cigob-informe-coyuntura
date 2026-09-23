@@ -211,7 +211,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La matriz de validación cruzada verifica además el poder discriminante: que cada índice del informe correlacione más con su ancla propia que con las ajenas (que el ITCM mida lo macroeconómico y no «el humor general»). La matriz completa, con sus límites declarados, se publica en la página del cinturón.",
     ],
     comunicacion: [
-      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCM) / 10. Los cortes globales son continuos: hasta 3, estable; más de 3 y hasta 6, en tensión; más de 6, tensionado.",
+      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCM) / 10. Los cortes globales son continuos: hasta 4, estable; más de 4 y hasta 6, en tensión; más de 6, tensionado (ADR-0333).",
       "Cada indicador del cinturón publica su propia ficha, su fórmula y su tensión equivalente — cómo se leería el cinturón si solo existiera ese indicador —, junto con los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
@@ -1207,7 +1207,7 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "Fundación CIGOB — Votómetro",
       operacion: "Agregador de encuestas de intención de voto: sondeos incluidos en la curaduría desde diciembre de 2023, con calificación de calidad por consultora; no acredita exhaustividad de todos los estudios publicados",
-      url: "https://cigob.github.io/Votometro/",
+      url: "https://cigob-landing.vercel.app/votometro/",
       acceso: "Automático: lee el listado de encuestas que publica el Votómetro; si el sitio no responde, usa la última copia local.",
     },
     transformaciones: [
@@ -1234,6 +1234,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
       { fecha: "2026-09-15", cambio: "ADR-0311: el rótulo de la card pasa de «Ventaja LLA−PJ (Votómetro)» a «Ventaja LLA−PJ». Se saca «Votómetro» por nombrar el método, no el dato; LLA y PJ se conservan porque son las siglas públicas de las fuerzas." },
       { fecha: "2026-09-15", cambio: "ADR-0312 (corrige ADR-0121): anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El indicador conserva el rango 0-100 (una quinta banda arriba de +8 pp evita bajar el techo a 60, como hacía la primera versión de este ADR)." },
+      { fecha: "2026-09-22", cambio: "Las encuestas se leen de la edición vigente del Votómetro en la web de CiGob, donde se publica por ediciones mensuales desde el 16 de septiembre de 2026. El sitio anterior queda como respaldo." },
     ],
   },
 
@@ -3374,17 +3375,12 @@ export const FICHAS: Record<string, Ficha> = {
       "Se acompaña con el ejercicio de quitar cada componente por vez, para identificar cuál domina la lectura del mes.",
     ],
     validacion: [
-      "Este cinturón NO tiene serie de referencia única, y eso está declarado como un problema abierto en vez de disimulado con la serie que mejor correlacione. El índice se reconstruye mes a mes desde diciembre de 2023 y se compara contra un panel de cuatro estadísticas externas del terreno del capital privado —el valor de las empresas argentinas en dólares y tres medidas de cuánto capital de afuera decide entrar—, con el factor común de las cuatro como contraste del gráfico.",
-      "Por qué no hay una sola serie enfrente, y no es por falta de búsqueda: no existe ninguna estadística mensual argentina, publicada por un tercero, que mida cuánto avanzó una agenda de reformas. Los índices internacionales de capacidad estatal aportan entre cero y tres observaciones contra los treinta y un meses del índice — el Banco Mundial publica uno por año y revisó su serie histórica hacia atrás, la libertad económica de Fraser todavía rankea 2023, el índice de regulación de mercados de la OCDE se actualiza cada cinco años y su edición vigente retrata al Estado ANTES de la desregulación que acá se mide, y Argentina no participa de la encuesta de confianza en el gobierno de la OCDE.",
-      "El Merval en dólares encabezaba esta sección y dejó de hacerlo. La razón está en sus propios números: publicaba +0,75 en niveles, pero descontada la tendencia del período queda en +0,07 y en los cambios mes a mes en +0,13, por debajo del promedio de las estadísticas que el panel usa como contraste ajeno — el índice se movía con su contraste propio menos que con las series que no tienen nada que ver con él. No se retira: sigue como una de las cuatro del panel, que es lo que siempre fue.",
-      "Se evaluó reemplazarlo por el gasto en subsidios económicos (energía y transporte, a precios constantes) y no entró por ninguna de las dos puertas. Como contraste externo está del lado equivocado de la comparación: este índice mide lo que el gobierno HIZO, y un contraste tiene que medir lo que PASÓ como consecuencia. Bajar subsidios es un instrumento de la misma agenda que el índice puntúa, no un efecto de ella — y además lo publica el mismo gobierno que la ejecuta, que es corregir el examen con el examen.",
-      "Como componente del índice lo frenó la medición, no el concepto. Contra los catorce componentes actuales su correlación más alta en niveles es −0,92 (brecha cambiaria) y seis pares superan el umbral de 0,7, pero todos se desarman al descontar la tendencia (el máximo queda en 0,49), así que por redundancia habría pasado: la matriz vigente ya tiene dieciocho pares altos de setenta y siete y diez de los catorce componentes arrastran alguno. Lo que no pasó es el aporte: sobre una simple tendencia en el tiempo agrega 0,011 de poder explicativo, contra los 0,347 con los que el consumo en supermercados se ganó su lugar dentro del índice de impacto social y los 0,006 del contraste que ese mismo movimiento descartó.",
-      "El contraste que DISTINGUE en vez de confirmar es el Índice de Confianza en el Gobierno de la Universidad Torcuato Di Tella, que es ajeno al proyecto: contra él la correlación en niveles es negativa. Que lo sea no es una falla del índice, es el resultado — la ejecución de reformas se acumula y el capital político sigue su propio ciclo. Este cinturón mide gestión, no popularidad.",
-      "Qué haría falta para cerrar la validez externa, escrito de antemano para que la decisión no dependa de mirar el número el día que aparezca. Una candidata tiene que cumplir cuatro condiciones a la vez: medir una CONSECUENCIA de la capacidad de gestión y no un instrumento de la agenda; publicarla alguien que no sea el poder ejecutivo nacional; tener al menos veinticuatro observaciones desde diciembre de 2023; y aportar 0,10 o más de poder explicativo por encima de una tendencia en el tiempo, con el signo esperado. El umbral de 0,10 es convención declarada: se ubica un orden de magnitud por encima de lo que aportan los contrastes ya descartados y por debajo de lo que aportó el alta que sí prosperó en otro cinturón.",
-      "La matriz de validación cruzada compara además cada índice del informe contra todas las anclas a la vez, para ver si correlaciona más con la propia que con las ajenas. No se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período.",
+      "Este índice no tiene validación externa, y no por falta de búsqueda: por definición. Mide lo que el gobierno HIZO —cuánto avanzó la agenda de reformas que se propuso—. Una estadística de afuera puede medir dos cosas. O mide lo que el gobierno hace, y entonces es un instrumento de la misma agenda: compararse con ella es compararse consigo mismo. O mide lo que pasa como consecuencia —el valor de las empresas, la entrada de capital, la confianza—, y entonces mezcla la ejecución con todo lo demás que mueve a la economía y a la política: el precio internacional, el ciclo electoral, las expectativas. No hay una tercera clase de estadística.",
+      "Hasta septiembre de 2026 esta sección comparaba el índice contra el factor común de cuatro estadísticas del capital privado —el Merval en dólares y tres medidas de cuánto capital de afuera entra— y declaraba la validez externa como un problema abierto. Esa comparación se retiró (ADR-0336): una casilla de validación con un número adentro se lee como aprobada, y ese número no podía confirmar un índice de ejecución. Las cuatro estadísticas siguen en el panel como contraste ajeno de los otros índices.",
+      "La solidez del índice se sostiene en los otros dos controles que se publican en cada edición: cuánta información distinta aporta cada componente (redundancia) y cuánto se mueve el resultado si cambian los pesos (sensibilidad). Por el mismo motivo el ITCG no figura en la matriz de validación cruzada.",
     ],
     comunicacion: [
-      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCG) / 10. Los cortes globales son continuos: hasta 3, estable; más de 3 y hasta 6, en tensión; más de 6, tensionado.",
+      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCG) / 10. Los cortes globales son continuos: hasta 4, estable; más de 4 y hasta 6, en tensión; más de 6, tensionado (ADR-0333).",
       "Cada indicador publica su ficha, su fórmula, su tensión equivalente y los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
@@ -3397,8 +3393,8 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Mide ejecución de la agenda declarada, no la calidad ni el resultado de las reformas: un índice alto significa «se está haciendo lo prometido», no «lo prometido funciona».",
       "Varios indicadores usan calibraciones propias declaradas (planes completos, umbrales de avance) donde no existe una vara oficial.",
-      "El análisis multivariado previo del estándar OCDE/JRC (contrastar la estructura teórica con la correlación real entre indicadores) está pendiente; la validación cruzada lo aproxima por las anclas externas.",
-      "La ventana de validación es corta (los meses del mandato): las correlaciones se leen como consistencia, no como prueba.",
+      "El análisis multivariado previo del estándar OCDE/JRC (contrastar la estructura teórica con la correlación real entre indicadores) está pendiente, y no hay validación externa que lo supla: un índice de ejecución no tiene contraste externo posible (ADR-0336).",
+      "La historia es corta (los meses del mandato): la redundancia entre componentes y la sensibilidad a los pesos se leen como consistencia, no como prueba.",
     ],
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial del cinturón: doce indicadores de cumplimiento de reformas con promedio simple de avances." },
@@ -3407,6 +3403,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-04", cambio: "Matriz de validación cruzada como tercer pilar de robustez, con el Merval en dólares como ancla propia del índice." },
       { fecha: "2026-08-21", cambio: "El Merval en dólares deja de encabezar la validación externa —publicaba +0,75 en niveles y +0,07 al descontar la tendencia— y el cinturón pasa a publicar el panel y su factor común. La validez externa queda declarada como problema abierto, con las cuatro condiciones que tendría que cumplir una candidata fijadas de antemano. Se evaluó y se descartó el gasto en subsidios económicos, como contraste y como componente. No cambia ningún indicador, ningún peso ni ninguna banda." },
       { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses (ADR-0231). No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes." },
+      { fecha: "2026-09-22", cambio: "ADR-0336: sale la validación externa. El índice mide lo que el gobierno hace, así que no tiene contraste externo por definición; la sección deja de comparar contra el factor común del capital privado y el índice sale de la matriz de validación cruzada." },
     ],
   },
 
@@ -3541,10 +3538,10 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     validacion: [
       "El ITCP se contrasta contra el EPU de Argentina (Economic Policy Uncertainty: minería de texto sobre diarios locales, la misma familia metodológica que el índice de Baker/Bloom/Davis): el índice reconstruido mes a mes se correlaciona contra el EPU, con correlación esperada negativa (más capital político, menos incertidumbre de política en la prensa). El resultado se publica en la sección de validación del cinturón.",
-      "Participa además de la matriz de validación cruzada que compara los cuatro índices del informe contra sus cuatro anclas externas a la vez, publicada en la página del cinturón.",
+      "Participa además de la matriz de validación cruzada que compara a la vez los tres índices del informe que tienen contraste externo —ITCM, ITCIS e ITCP— contra sus tres anclas, publicada en la página del cinturón. El ITCG no participa: un índice de ejecución no tiene contraste externo (ADR-0336).",
     ],
     comunicacion: [
-      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCP) / 10. Los cortes globales son continuos: hasta 3, estable; más de 3 y hasta 6, en tensión; más de 6, tensionado.",
+      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCP) / 10. Los cortes globales son continuos: hasta 4, estable; más de 4 y hasta 6, en tensión; más de 6, tensionado (ADR-0333).",
       "Cada indicador del cinturón publica su ficha, su fórmula y su tensión equivalente, junto con los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [

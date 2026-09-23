@@ -634,12 +634,12 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
               </table>
             </Fragment>
           )}
-          {val && (
+          {val?.pares && (
             <div class="cg-ficha-callout">
               <strong>Edición vigente.</strong> {val.panel?.factor
                 ? `Correlación en niveles contra el factor común de las ${val.panel.factor.n_series} estadísticas de su terreno: r = ${coma(val.panel.factor.r_niveles, 2)} (${val.panel.factor.n} meses).`
                 : `Correlación en niveles con el ancla externa: r = ${coma(val.r_niveles, 2)} (${val.n} meses).`}
-              El detalle — niveles vs. cambios mes a mes, y la matriz cruzada de los cuatro índices — se publica en la <a href={`${base}/${slug}/`}>página del cinturón</a>.
+              El detalle — niveles vs. cambios mes a mes, y la matriz cruzada de los tres índices con contraste externo — se publica en la <a href={`${base}/${slug}/`}>página del cinturón</a>.
             </div>
           )}
         </section>

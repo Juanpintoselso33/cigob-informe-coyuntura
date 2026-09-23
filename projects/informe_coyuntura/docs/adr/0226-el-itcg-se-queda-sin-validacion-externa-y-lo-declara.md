@@ -1,11 +1,13 @@
 ---
 madr: 4
 id: '0226'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'PARCIALMENTE SUPERSEDIDO por el [ADR-0336](0336-el-itcg-no-tiene-validacion-externa-por-definicion.md) el 22-sep-2026: el factor común del capital privado deja de ser el contraste del ITCG y la validez externa deja de declararse «problema abierto» — un índice de ejecución no tiene contraste externo por definición. Siguen vigentes el descarte del Merval y el de los subsidios.'
 fecha: 2026-08-21
 cinturon: 'gestion'
 archivos: ['scripts/validacion_externa.py', 'scripts/publicar.py', 'tests/test_giros_referencia_completa.py']
 relacionado: ['0031', '0045', '0108', '0158', '0159', '0161', '0162', '0164', '0167', '0218', '0225', '0228', '0229', '0231', '0233']
+superado_por: ['0336']
 ambito: 'ITCG · contra qué se valida el índice, y qué se hace cuando la respuesta es que no hay contra qué'
 origen: 'Editor, 21-ago-2026: «buscar alguna validación externa que sea UN SOLO INDICADOR», y después: «no vamos a privar al índice de validez, robustez y capacidad por tener un validador externo que es un accesorio» · «sigue faltando la validez externa después»'
 ---

@@ -132,16 +132,13 @@ FUENTES = {
 #
 # Las tres de comercio siguen en el panel y en la familia del ITVC: se publican
 # sus correlaciones, sólo que no arman el factor.
-# ITCG → las cuatro de la respuesta del capital privado (ADR-0164). Acá el
-# factor NO le gana a la mejor estadística sola y se publica igual: es el mismo
-# criterio con el que se publicó el caso negativo del ITVC antes de resolverlo.
-# Elegir el subconjunto que diera mejor sería justamente lo prohibido.
+# ITCG → sin factor ni perfil propio (ADR-0336): un índice de ejecución no tiene
+# contraste externo por definición. Las cuatro estadísticas del capital privado
+# siguen en FAMILIA como contraste AJENO para los otros índices.
 FACTOR = {
     "itvc": ["electricidad_residencial", "gas_residencial",
              "transporte_pasajeros", "ventas_naftas"],
     "itcp": ["epu_argentina", "icg_utdt", "clima_electoral"],
-    "itcg": ["merval_usd", "inversion_directa_externa",
-             "inversion_portafolio_externa", "financiamiento_externo_privado"],
 }
 
 

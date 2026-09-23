@@ -6,7 +6,7 @@ nota_estado: 'Aceptado, **con resultado negativo publicado**'
 fecha: 2026-07-30
 cinturon: 'gestion'
 parametros: ['CAPITAL_PRIVADO_IDS']
-relacionado: ['0226']
+relacionado: ['0226', '0336']
 ambito: 'panel y factor común del ITCG; `CAPITAL_PRIVADO_IDS` en'
 ---
 

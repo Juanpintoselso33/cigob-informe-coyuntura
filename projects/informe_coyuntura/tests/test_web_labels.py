@@ -123,7 +123,10 @@ def test_ficha_markdown_de_tarifas_no_recae_en_la_base_temporal():
     bloque = ficha.split("# Canasta de servicios públicos / salario", 1)[1].split(
         "CIGOB · INFORME DE COYUNTURA", 1
     )[0]
-    assert "**Hoy: 14,5 % del salario RIPTE** (2026-08)" in bloque
+    card = json.loads((ROOT / "web/src/data/informe.json").read_text(encoding="utf-8"))[
+        "cinturones"]["vida_cotidiana"]["indicadores"]["peso_tarifas"]
+    hoy = f"{card['valor']:.1f}".replace(".", ",")
+    assert f"**Hoy: {hoy} % del salario RIPTE** ({card['fecha_dato'][:7]})" in bloque
     assert "**Color vigente: VERDE**" in bloque
     assert "100 equivale a tensión 5" in bloque
     assert "no al nivel tarifario del 4º trimestre de 2023" in bloque

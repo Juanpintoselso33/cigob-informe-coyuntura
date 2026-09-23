@@ -149,8 +149,8 @@ const robAmplitud = rob ? Math.round((rob.p95 - rob.p05) * 10) / 10 : null;
 // series se rebasean/normalizan al período común para dibujarlas en una
 // misma escala.
 const val = indice?.data.validacion ?? null;
-// Matriz de validación cruzada (las cuatro paramétricas con contraste
-// externo — ITCM/ITCG/ITCIS/ITCP): se muestra solo en esos cinturones, con la
+// Matriz de validación cruzada (las tres paramétricas con contraste
+// externo — ITCM/ITCIS/ITCP; el ITCG no tiene, ADR-0336): se muestra solo en esos cinturones, con la
 // fila del índice propio señalada. El filtro es genérico (busca la sigla del
 // cinturón actual entre las filas ya calculadas), así que un cinturón sin
 // validación propia (n < 12 meses de solape) queda afuera automáticamente
@@ -169,7 +169,7 @@ const cruz = cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice
   ? cruzRaw : null;
 // etiquetas cortas de las anclas externas para la matriz en mobile
 const CRUZ_CORTAS: Record<string, string> = {
-  lider: "Actividad", capital_privado: "Capital privado",
+  lider: "Actividad",
   volumen_hogar: "Volumen del hogar", epu: "EPU Argentina",
 };
 let valSvg: {
@@ -194,7 +194,7 @@ const vplot = val?.panel?.factor?.pares_grafico
         ? "se grafica el cambio de cada mes contra el anterior, que es el plano donde se compara"
         : "series normalizadas al rango del período" }
   : val;
-if (vplot && vplot.pares.length >= 12) {
+if (vplot?.pares && vplot.pares.length >= 12) {
   const W = 1120, H = 200, base = H - 26, top = 16, padx = 16;
   // Dos modos de escala (definidos por publicar según el par):
   //   rebase100    → ambas series a 100 en el primer mes (vida: escalas afines)
@@ -231,7 +231,7 @@ if (vplot && vplot.pares.length >= 12) {
 
 // Gráfico interactivo del modal de validación: series CRUDAS (la card muestra
 // las normalizadas) con el valor real de cada mes en el tooltip.
-const valChartData = val && indice ? {
+const valChartData = val?.pares && indice ? {
   slug: meta.slug,
   indice: { nombre: `${indice.sigla} (reconstrucción)`, unidad: "puntos" },
   externa: {
@@ -520,6 +520,16 @@ const robChartData = rob?.hist && indice ? {
               <div class="cg-det-cta">Ver el detalle →</div>
             </div>
           </Fragment>
+        )}
+        {val?.sin_contraste && (
+          // ADR-0336: el ITCG no tiene contraste externo por definición. Se dice
+          // por qué en vez de omitir la sección en silencio.
+          <div class="cg-section-head cg-val-head">
+            <p class="cg-eyebrow">Validación externa</p>
+            <h2 class="cg-h2">{val.titulo}</h2>
+            <p class="cg-h2-sub">{val.sub}</p>
+            <p class="cg-h2-sub">{val.conclusion}</p>
+          </div>
         )}
         {cruz && (
           <Fragment>
@@ -967,7 +977,7 @@ const robChartData = rob?.hist && indice ? {
     </template>
   )}
 
-  {val && indice && (
+  {val?.pares && indice && (
     <template id="cg-det-val">
       <p class="cg-eyebrow">Validación externa · {indice.sigla}</p>
       <h3 class="cg-modal-title">{val.titulo}</h3>
@@ -1008,17 +1018,18 @@ const robChartData = rob?.hist && indice ? {
       <p class="cg-eyebrow">Validación cruzada</p>
       <h3 class="cg-modal-title">{cruz.titulo}</h3>
       <p class="cg-modal-desc">
-        Los cuatro índices del informe se reconstruyen mes a mes y se comparan contra los cuatro
-        contrastes externos <strong>a la vez</strong>. La pregunta: ¿cada índice se parece más
+        Los tres índices que tienen contraste externo se reconstruyen mes a mes y se comparan
+        contra los tres contrastes <strong>a la vez</strong>. La gestión (ITCG) no participa: mide
+        lo que el gobierno hace y no tiene contraste externo posible (ADR-0336). La pregunta: ¿cada índice se parece más
         a su contraste natural que a los ajenos, o todos miden lo mismo con distinto nombre?
       </p>
       <div id="cg-det-cruz-tabla"></div>
       <p class="cg-modal-h4">Cómo leer la matriz</p>
       <p class="cg-modal-desc">
         Cada fila es un índice; cada columna, una vara externa. Las celdas sombreadas marcan
-        el par natural: la macroeconomía con el precio del riesgo argentino, la gestión con el
-        valor de las empresas, el impacto social con el ánimo del consumidor y la política con
-        la incertidumbre de política en la prensa (EPU). Una fila cuyo par natural es el más
+        el par natural: la macroeconomía con la marcha de la actividad, el impacto social con el
+        volumen que consume el hogar y la política con la incertidumbre de política en la prensa
+        (EPU). Una fila cuyo par natural es el más
         fuerte de su fila está midiendo algo propio.
       </p>
       <p class="cg-modal-h4">Los límites, declarados</p>

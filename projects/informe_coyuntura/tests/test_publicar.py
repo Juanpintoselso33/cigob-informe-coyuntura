@@ -759,23 +759,25 @@ def test_vida_itvc_reconcilia():
     for k, i in en_indice.items():
         assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"
 
+    # El valor, el índice y el aporte cambian cada mes que el IIEP publica: se
+    # verifica que card y serie digan lo mismo, no un mes congelado (el 14,5 de
+    # agosto rompió la suite el 23-sep-2026, cuando salió septiembre).
     servicios = c["indicadores"]["peso_tarifas"]
-    assert servicios["valor"] == 14.5
     assert servicios["unidad"] == "% del salario RIPTE"
     assert servicios["en_indice"] is True
-    assert servicios["indice_itvc"] == 112.6
+    assert isinstance(servicios["indice_itvc"], (int, float))
     # 0,1125 → 0,1226 con ADR-0314: `precios` renormaliza sobre 0,2725 en vez
     # de 0,25 al absorber el hueco que dejó `percepcion` (0,45 × 0,2725).
     assert servicios["peso_efectivo"] == 0.1226
-    assert servicios["aporte_score"] == 2.5
-    assert servicios["transporte_pct_canasta"] == 43.0
-    assert "agua+energía 8,3% + transporte 6,2%" in servicios["aporte_formula"]
+    assert servicios["aporte_score"] is not None
+    assert isinstance(servicios["transporte_pct_canasta"], (int, float))
+    assert "agua+energía" in servicios["aporte_formula"] and "transporte" in servicios["aporte_formula"]
     assert "4T-2023" not in servicios["aporte_formula"]
     assert "IIEP UBA-CONICET" in servicios["fuente"]
     serie_servicios = json.loads((DATA / "series.json").read_text(encoding="utf-8"))["peso_tarifas"]
-    assert len(serie_servicios) == 9
+    assert len(serie_servicios) >= 9
     assert serie_servicios[0] == {"fecha": "2025-12-01", "valor": 11.1}
-    assert serie_servicios[-1] == {"fecha": "2026-08-01", "valor": 14.5}
+    assert serie_servicios[-1] == {"fecha": servicios["fecha_dato"][:10], "valor": servicios["valor"]}
 
 
 def _card_tarifas(**extra):
