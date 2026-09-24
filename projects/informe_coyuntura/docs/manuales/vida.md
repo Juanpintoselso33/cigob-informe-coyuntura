@@ -14,7 +14,7 @@ al ADR.
 
 | Dimensión | Peso nominal | Peso efectivo | Indicadores |
 |---|---:|---:|---|
-| `ingresos` | 28% | 30.6% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carne_vacuna`, `consumo_carnes_otras`, `motorizacion_total`, `consumo_supermercados`, `ratio_motos_autos` |
+| `ingresos` | 28% | 30.6% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `consumo_carne_vacuna`, `motorizacion_total`, `consumo_supermercados`, `ratio_motos_autos` |
 | `precios` | 25% | 27.2% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
 | `vulnerabilidad` | 10% | 10.9% | `mora_familias`, `carga_servicio_deuda_hogares` |
 | `empleo` | 24% | 26.4% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `subocupacion_demandante`, `trabajo_independiente` |
@@ -65,6 +65,20 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0113](../adr/0113-nowcast-de-pobreza.md) La pobreza se publica, con la única fuente mensual que existe · [ADR-0114](../adr/0114-pobreza-oficial-acompana-al-nowcast.md) La pobreza oficial acompaña al nowcast en el mismo gráfico
 
+#### Consumo total de carnes per cápita
+
+`consumo_carnes_total`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 2% |
+| Peso efectivo en el índice | **0.4%** |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
+
+**Lo gobiernan**: [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card · [ADR-0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) Puntúa el acceso total a proteína, no la carne vacuna · [ADR-0267](../adr/0267-una-fuente-caida-degrada-no-desaparece.md) Una fuente caída degrada el indicador, no lo hace desaparecer · [ADR-0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) Puntúan el total de las tres carnes y, aparte, la vacuna
+
 #### Consumo de carne vacuna per cápita
 
 `consumo_carne_vacuna`
@@ -77,21 +91,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0322](../adr/0322-la-vacuna-vuelve-a-puntuar-junto-al-resto-de-las-carnes.md) La vacuna vuelve a puntuar, junto al resto de las carnes · [ADR-0325](../adr/0325-correcciones-a-la-tanda-carne-motos-snic.md) Correcciones a la tanda carne/motos/SNIC (ADR-0322/0323/0324)
-
-#### Consumo de carne aviar y porcina per cápita
-
-`consumo_carnes_otras`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 1% |
-| Peso efectivo en el índice | **0.4%** |
-| Procedencia del ancla | `conceptual` — faena de aviar+porcina per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0322) |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0322](../adr/0322-la-vacuna-vuelve-a-puntuar-junto-al-resto-de-las-carnes.md) La vacuna vuelve a puntuar, junto al resto de las carnes · [ADR-0325](../adr/0325-correcciones-a-la-tanda-carne-motos-snic.md) Correcciones a la tanda carne/motos/SNIC (ADR-0322/0323/0324)
+**Lo gobiernan**: [ADR-0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) Puntúan el total de las tres carnes y, aparte, la vacuna
 
 #### Motorización total
 
@@ -105,7 +105,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) Puntúa la motorización total, no cada vehículo por su lado · [ADR-0271](../adr/0271-patentamientos-no-identifican-trayectorias-de-hogares.md) Los patentamientos no identifican trayectorias de hogares · [ADR-0323](../adr/0323-ratio-motos-autos-como-control-de-la-motorizacion.md) El ratio motos/autos entra como control dentro de la card, no como indicador
+**Lo gobiernan**: [ADR-0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) Puntúa la motorización total, no cada vehículo por su lado · [ADR-0271](../adr/0271-patentamientos-no-identifican-trayectorias-de-hogares.md) Los patentamientos no identifican trayectorias de hogares
 
 #### Ventas en supermercados
 
@@ -129,7 +129,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 2% |
 | Peso efectivo en el índice | **0.7%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `conceptual` — motos por cada auto patentado, móvil 12m rebaseado a 4T-2023 (el mismo colector y la misma base que `motorizacion_total`); ancla en fecha fija, no rango observado. La distancia a 100 se amortigua a la mitad (factor 0,5) antes de entrar a la escala de tensión: sin amortiguar nace saturado en el techo de la escala con sólo +38,8% de crecimiento sobre la base (ADR-0328, corrección post-merge) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -309,7 +309,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0032](../adr/0032-inseguridad-ivi-mensual.md) Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT) · [ADR-0273](../adr/0273-victimizacion-descubre-el-portal-vigente-y-enlaces-relativos.md) Victimización descubre el portal vigente y enlaces relativos · [ADR-0325](../adr/0325-correcciones-a-la-tanda-carne-motos-snic.md) Correcciones a la tanda carne/motos/SNIC (ADR-0322/0323/0324) · [ADR-0327](../adr/0327-homicidios-y-robos-del-snic-puntuan-en-seguridad.md) Homicidios y robos del SNIC entran a puntuar en la dimensión de seguridad
+**Lo gobiernan**: [ADR-0032](../adr/0032-inseguridad-ivi-mensual.md) Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT) · [ADR-0273](../adr/0273-victimizacion-descubre-el-portal-vigente-y-enlaces-relativos.md) Victimización descubre el portal vigente y enlaces relativos · [ADR-0327](../adr/0327-homicidios-y-robos-del-snic-puntuan-en-seguridad.md) Homicidios y robos del SNIC entran a puntuar en la dimensión de seguridad
 
 #### Tasa de homicidios dolosos
 
@@ -319,7 +319,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 26% |
 | Peso efectivo en el índice | **1.1%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `historia_larga` — tasa_hechos del SNIC (ya calculada por la fuente, cada 100.000 hab.), serie oficial 2000-2025 (26 años); rebase contra la MEDIANA de esos 26 años (5,76), corregido: el ancla original (propio 2023, 4,32) se declaraba «cerca de la mediana» y en realidad cae en el percentil 11 (25% por debajo) — pico 9,21 en 2002, mínimo 3,48 en 2025. Anclar contra la mediana de la serie completa, no un año elegido, es lo que corrige la circularidad de convención (ADR-0327, corrección post-merge) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -333,7 +333,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 15% |
 | Peso efectivo en el índice | **0.7%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `historia_larga` — tasa_hechos del SNIC, misma serie oficial 2000-2025 que homicidios; rebase contra la MEDIANA de los 26 años (925,1), corregido: el ancla original (propio 2023, 985,1) caía en el percentil 69, sesgando el semáforo hacia el verde. Limitación declarada en la ficha: el punto 2025 (778,1) tiene una caída interanual que no se pudo confirmar contra un informe metodológico del SNIC (ADR-0327, corrección post-merge) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -375,7 +375,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-56 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+53 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -427,9 +427,6 @@ histórica.
 - [0279](../adr/0279-las-series-laborales-no-identifican-transiciones.md) — Las series laborales no identifican transiciones
 - [0291](../adr/0291-alquiler-usa-la-planilla-original.md) — Alquiler usa la planilla original
 - [0314](../adr/0314-el-icc-sale-del-itcis-y-pasa-a-ancla-externa.md) — El ICC sale del ITCIS y pasa a ancla de validación externa
-- [0322](../adr/0322-la-vacuna-vuelve-a-puntuar-junto-al-resto-de-las-carnes.md) — La vacuna vuelve a puntuar, junto al resto de las carnes
-- [0323](../adr/0323-ratio-motos-autos-como-control-de-la-motorizacion.md) — El ratio motos/autos entra como control dentro de la card, no como indicador
-- [0324](../adr/0324-el-snic-conserva-homicidios-por-nombre-no-por-ranking.md) — El SNIC conserva homicidios por nombre, no por ranking de volumen
-- [0325](../adr/0325-correcciones-a-la-tanda-carne-motos-snic.md) — Correcciones a la tanda carne/motos/SNIC (ADR-0322/0323/0324)
 - [0327](../adr/0327-homicidios-y-robos-del-snic-puntuan-en-seguridad.md) — Homicidios y robos del SNIC entran a puntuar en la dimensión de seguridad
 - [0328](../adr/0328-ratio-motos-autos-puntua-como-indicador-propio.md) — El ratio motos/autos entra a puntuar como indicador propio
+- [0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) — Puntúan el total de las tres carnes y, aparte, la vacuna

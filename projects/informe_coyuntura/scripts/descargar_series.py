@@ -2789,19 +2789,15 @@ def fetch_carne_vacuna_indice_serie() -> list:
 def fetch_carnes_otras_indice_serie() -> list:
     """Índice base 100 = 4T-2023 de la faena de AVIAR + PORCINA per cápita.
 
-    Puntúa (ADR-0322), junto con `consumo_carne_vacuna`, en reemplazo de
-    `consumo_carnes_total`: separar a la vacuna sin sumar un segundo
-    componente que cubra pollo y cerdo dejaría de medir la sustitución hacia
-    esas carnes cuando la vacuna cae — que es la mitad del punto de la ficha
-    de proteína animal (ADR-0217)."""
+    Puntuó de ADR-0322 a ADR-0339; hoy no puntúa (lo reemplaza el total de las
+    tres carnes) y se conserva como serie de contexto de la composición."""
     return _fetch_faena_indice(("aviar", "porcina"))
 
 
 def fetch_carnes_total_serie() -> list:
     """Índice base 100 = 4T-2023 de la faena TOTAL (vacuna+aviar+porcina)
-    per cápita. Ya NO puntúa (ADR-0322: reemplazada por `consumo_carne_vacuna`
-    + `consumo_carnes_otras`); se conserva como serie de contexto para la
-    matriz de la ficha y para `validacion_externa.py`."""
+    per cápita. Puntúa (ADR-0339) junto con `consumo_carne_vacuna`, que se
+    sigue aparte como indicador aspiracional."""
     return _fetch_faena_indice(tuple(FAENA_TONELADAS))
 
 

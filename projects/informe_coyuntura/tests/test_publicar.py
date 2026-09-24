@@ -400,12 +400,12 @@ def test_publicar_genera_snapshot(tmp_path):
     # vida_cotidiana enriquecido: al menos 10 indicadores (no los 3 legacy)
     vida = informe["cinturones"]["vida_cotidiana"]["indicadores"]
     assert len(vida) >= 10, f"vida cotidiana solo tiene {len(vida)} indicadores"
-    # ADR-0322: vacuna y el resto (aviar+porcina) publican card cada uno por
-    # separado; `consumo_carnes_total` (ADR-0217) ya no es card.
+    # ADR-0339: el total de las tres carnes y la vacuna publican card cada uno;
+    # aviar + porcina ya no es card.
     # ADR-0314: `icc_utdt` salió del índice y pasó a VIDA_OCULTOS —igual que
     # `indice_lider`—, así que ya no es card.
-    assert "consumo_carne_vacuna" in vida and "consumo_carnes_otras" in vida
-    assert "consumo_carnes_total" not in vida and "icc_utdt" not in vida
+    assert "consumo_carne_vacuna" in vida and "consumo_carnes_total" in vida
+    assert "consumo_carnes_otras" not in vida and "icc_utdt" not in vida
 
     # cada indicador tiene la forma mínima
     for cint in informe["cinturones"].values():
@@ -725,7 +725,8 @@ def test_vida_itvc_reconcilia():
     # 19 → 18: salió `sentimiento_digital` (ADR-0248)
     # 18 → 17: salió `icc_utdt`, que pasó a ancla externa (ADR-0314)
     # 17 → 18: `consumo_carnes_total` se parte en `consumo_carne_vacuna` +
-    # `consumo_carnes_otras`, que puntúan cada uno por su cuenta (ADR-0322)
+    # `consumo_carnes_otras`, que puntúan cada uno por su cuenta (ADR-0322;
+    # desde ADR-0339 son el total y la vacuna — la cuenta no cambia)
     # 18 → 21: entran `tasa_homicidios` + `tasa_robos` (ADR-0327, dimensión de
     # seguridad) y `ratio_motos_autos` (ADR-0328, dimensión de ingresos).
     assert len(en_indice) == 21, f"esperaba 21 componentes en el índice, hay {len(en_indice)}"
@@ -1031,4 +1032,4 @@ def test_carne_separa_nivel_variacion_y_fuente_del_color(total, var_total, posic
 ])
 def test_carne_no_inventa_lectura_sin_composicion_valida(vacuna, otras, total, variaciones):
     assert publicar._por_que_carne("consumo_carne_vacuna", vacuna, otras, total, variaciones) is None
-    assert publicar._por_que_carne("consumo_carnes_otras", vacuna, otras, total, variaciones) is None
+    assert publicar._por_que_carne("consumo_carnes_total", vacuna, otras, total, variaciones) is None

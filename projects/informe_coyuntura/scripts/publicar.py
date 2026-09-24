@@ -158,23 +158,25 @@ def build_vida(raw):
     else:
         _add(out, "consumo_carne_vacuna", carne.get("valor"),
              "kg/hab/año", "CICCRA", carne.get("fecha"))
+    # ADR-0339: puntúan el TOTAL de las tres carnes y la vacuna sola
+    # (aspiracional). Aviar + porcina deja de ser card: su nivel viaja colgado
+    # del total, que es donde se lee la composición.
+    _add(out, "consumo_carnes_total", carnes.get("total"),
+         "kg/hab/año",
+         "SAGYP — tablero consumo per cápita de carnes (vacuna + aviar + porcina, promedio móvil 12m)",
+         f"{carnes['mes']}-01" if carnes.get("mes") else None)
     otras = None
     if carnes.get("aviar") is not None and carnes.get("porcina") is not None:
         otras = round(carnes["aviar"] + carnes["porcina"], 2)
-    _add(out, "consumo_carnes_otras", otras,
-         "kg/hab/año",
-         "SAGYP — tablero consumo per cápita de carnes (aviar + porcina, promedio móvil 12m)",
-         f"{carnes['mes']}-01" if carnes.get("mes") else None)
     # Las variaciones i.a. las publica la misma fuente y las consume la matriz
-    # que arma `_por_que_carne`. Viajan COLGADAS de los DOS indicadores —no de
-    # un tercero "consumo_carnes_total", que ya no es card (ADR-0322)—, como
+    # que arma `_por_que_carne`. Viajan COLGADAS de los dos indicadores, como
     # ya hacen `componentes` en el IAI o `regimen` en otros: meterlas como
     # clave suelta del dict las convertiría en un indicador fantasma.
     variaciones = carnes.get("variaciones") or {}
     out["consumo_carne_vacuna"]["variaciones"] = variaciones
-    out["consumo_carnes_otras"]["variaciones"] = variaciones
-    out["consumo_carnes_otras"]["total_kg"] = carnes.get("total")
-    out["consumo_carnes_otras"]["ratio_bovina"] = carnes.get("ratio_bovina")
+    out["consumo_carnes_total"]["variaciones"] = variaciones
+    out["consumo_carnes_total"]["otras_kg"] = otras
+    out["consumo_carnes_total"]["ratio_bovina"] = carnes.get("ratio_bovina")
     inf = indec.get("informalidad_trimestral") or indec.get("informalidad_anual", {})
     _add(out, "informalidad", _red(inf.get("valor"), 1, 100),
          "%", "INDEC EPH", inf.get("fecha"))
@@ -2321,12 +2323,10 @@ def _por_que_carne(ikey, vacuna, otras, total, variaciones):
     El color usa la evolución de faena per cápita contra 4T-2023. El consumo
     aparente oficial y su referencia histórica se explican como contexto.
 
-    Las dos cards que puntúan (`consumo_carne_vacuna` y `consumo_carnes_otras`)
-    comparten la MISMA matriz de nivel/variación —cada una necesita el número
-    de la otra para que la composición completa se vea desde cualquiera de las
-    dos—, pero el párrafo propio de cada una tiene que hablar de SU nivel y SUS
-    componentes, no repetir el de la otra (antes las dos publicaban el texto
-    de la vacuna, verificado en `dist/`).
+    Las dos cards que puntúan (`consumo_carnes_total` y `consumo_carne_vacuna`,
+    ADR-0339) comparten los mismos números, pero el párrafo de cada una habla
+    de SU nivel: el total cuenta la composición de las tres carnes, la vacuna
+    su nivel contra ese total.
     """
     import math
 
@@ -2344,12 +2344,12 @@ def _por_que_carne(ikey, vacuna, otras, total, variaciones):
     ratio_otras = 100 - ratio_vacuna
     posicion = ("por encima de" if total > CARNES_TOTAL_REFERENCIA else
                 "por debajo de" if total < CARNES_TOTAL_REFERENCIA else "igual a")
-    contexto_total = (
-        f"total de las tres carnes {coma(round(total, 1))} kg por habitante y "
-        f"año ({coma(round(var_t, 1))}% interanual). El nivel total está "
-        f"{posicion} la referencia histórica de {coma(CARNES_TOTAL_REFERENCIA)} "
-        f"kg; esa comparación no indica si subió o bajó respecto del año "
-        f"anterior.")
+    nivel_total = (f"{coma(round(total, 1))} kg por habitante y año "
+                   f"({coma(round(var_t, 1))}% interanual)")
+    referencia = (f"El nivel total está {posicion} la referencia histórica de "
+                  f"{coma(CARNES_TOTAL_REFERENCIA)} kg; esa comparación no indica si "
+                  f"subió o bajó respecto del año anterior.")
+    contexto_total = f"total de las tres carnes, {nivel_total}. {referencia}"
     cierre = (" Estos agregados no identifican sustitución dentro de los "
               "mismos hogares ni proteína ingerida. El color y el aporte al "
               "índice usan la evolución de faena por habitante frente a "
@@ -2367,12 +2367,12 @@ def _por_que_carne(ikey, vacuna, otras, total, variaciones):
         var_a_txt = f"{coma(round(var_a, 1))}%" if isinstance(var_a, (int, float)) else "s/d"
         var_p_txt = f"{coma(round(var_p, 1))}%" if isinstance(var_p, (int, float)) else "s/d"
         cuerpo = (
-            f"Consumo aparente de aviar y porcina: {coma(round(otras, 1))} kg "
-            f"por habitante y año, el {coma(round(ratio_otras, 1))}% del "
-            f"{contexto_total} Aviar {var_a_txt} interanual y porcina "
-            f"{var_p_txt} interanual. La carne vacuna suma "
-            f"{coma(round(vacuna, 1))} kg aparte, el "
-            f"{coma(round(ratio_vacuna, 1))}% del total.")
+            f"Consumo aparente de las tres carnes: {nivel_total}. {referencia} La carne "
+            f"vacuna aporta {coma(round(vacuna, 1))} kg, el "
+            f"{coma(round(ratio_vacuna, 1))}%, y se sigue además como indicador "
+            f"propio; aviar y porcina suman {coma(round(otras, 1))} kg, el "
+            f"{coma(round(ratio_otras, 1))}% (aviar {var_a_txt} y porcina "
+            f"{var_p_txt} interanual).")
     return cuerpo + cierre
 
 
@@ -2483,14 +2483,13 @@ def _semaforos(informe):
                                            ind.get("valor"))
             # El consumo aparente y su composición dan contexto agregado.
             # El texto distingue ese contexto del color basado en faena.
-            # ADR-0322: las DOS cards que puntúan (vacuna y el resto) muestran
-            # la MISMA matriz — cada una necesita el nivel de la otra para que
-            # el lector vea la composición completa, no sólo su mitad.
-            if ikey in ("consumo_carne_vacuna", "consumo_carnes_otras"):
+            # ADR-0339: las dos cards que puntúan (el total y la vacuna) leen
+            # los mismos números; cada una cuenta su parte.
+            if ikey in ("consumo_carne_vacuna", "consumo_carnes_total"):
                 vacuna_ind = bloque["indicadores"].get("consumo_carne_vacuna") or {}
-                otras_ind = bloque["indicadores"].get("consumo_carnes_otras") or {}
-                por_que = _por_que_carne(ikey, vacuna_ind.get("valor"), otras_ind.get("valor"),
-                                         otras_ind.get("total_kg"), ind.get("variaciones"))
+                total_ind = bloque["indicadores"].get("consumo_carnes_total") or {}
+                por_que = _por_que_carne(ikey, vacuna_ind.get("valor"), total_ind.get("otras_kg"),
+                                         total_ind.get("valor"), ind.get("variaciones"))
                 if por_que:
                     ind["semaforo"]["por_que"] = por_que
             # Lo mismo para la motorización (ADR-0224): el color dice "subió
@@ -2624,10 +2623,9 @@ def aplicar_scoring(informe, series):
 
     # REGLA (ADR-0153/0216): o integra el índice, o no es card.
     #
-    # ADR-0322: la vacuna dejó de ser sólo diagnóstico y pasó a puntuar junto
-    # con `consumo_carnes_otras` (aviar+porcina) — las DOS son cards ahora, así
-    # que ninguna se descarta acá. `consumo_carnes_total` nunca se agrega a
-    # `out` (no hay `_add` para esa clave), así que no hace falta popearla.
+    # ADR-0339: puntúan el total de las tres carnes y la vacuna; las DOS son
+    # cards. Aviar + porcina no tiene `_add` (su nivel viaja en `otras_kg` del
+    # total), así que no hace falta popearla.
     #
     # ADR-0224: la motorización sigue con el patrón viejo. El que puntúa es
     # el total; autos y motos son los Componentes A y B de su matriz A×B, o sea

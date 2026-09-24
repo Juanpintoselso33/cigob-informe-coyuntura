@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-09-24T03:27:35.735404+00:00",
+    "snapshot": "2026-09-24T14:54:19.987425-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -117,7 +117,7 @@
       },
       "combinado": {
         "media": 92.5,
-        "p05": 90.5,
+        "p05": 90.4,
         "p95": 94.5,
         "desvio": 1.21
       }
@@ -126,9 +126,9 @@
       "alquiler_real": 95.6,
       "peso_tarifas": 90.1,
       "mora_familias": 94.4,
+      "pobreza_nowcast": 90.7,
       "ipc_alimentos": 90.7,
-      "pobreza_nowcast": 90.8,
-      "consumo_supermercados": 94.2,
+      "consumo_supermercados": 94.1,
       "carga_servicio_deuda_hogares": 91.7,
       "inseguridad": 93.3,
       "despacho_cemento": 93.1,
@@ -139,8 +139,8 @@
       "ratio_motos_autos": 92.7,
       "brecha_salario_cbt": 92.4,
       "mortalidad_pymes": 92.4,
+      "consumo_carnes_total": 92.6,
       "consumo_carne_vacuna": 92.6,
-      "consumo_carnes_otras": 92.6,
       "subocupacion_demandante": 92.6,
       "trabajo_independiente": 92.5,
       "tasa_robos": 92.5

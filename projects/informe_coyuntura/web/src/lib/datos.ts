@@ -421,7 +421,7 @@ export const LABELS: Record<string, string> = {
   carga_servicio_deuda_hogares: "Carga del servicio de deuda",
   peso_tarifas: "Canasta de servicios públicos / salario", alquiler_real: "Costo real del alquiler", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
   consumo_carne_vacuna: "Consumo de carne vacuna per cápita",
-  consumo_carnes_otras: "Consumo de carne aviar y porcina per cápita", informalidad: "Informalidad laboral",
+  consumo_carnes_total: "Consumo total de carnes per cápita", consumo_carnes_otras: "Consumo de carne aviar y porcina per cápita", informalidad: "Informalidad laboral",
   mortalidad_pymes: "Empleadores PyME activos", trabajo_independiente: "Peso del trabajo independiente", despacho_cemento: "Construcción",
   subocupacion_demandante: "Subocupación demandante", inseguridad: "Victimización",
   icc_utdt: "Confianza del consumidor", sentimiento_digital: "Sentimiento digital (Trends)",
@@ -504,7 +504,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
   mora_familias: "%",
   carga_servicio_deuda_hogares: "%",
-  peso_tarifas: "% salario", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne_vacuna: "kg/hab", consumo_carnes_otras: "kg/hab", informalidad: "%", mortalidad_pymes: "empleadores", trabajo_independiente: "%",
+  peso_tarifas: "% salario", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne_vacuna: "kg/hab", consumo_carnes_total: "kg/hab", consumo_carnes_otras: "kg/hab", informalidad: "%", mortalidad_pymes: "empleadores", trabajo_independiente: "%",
   despacho_cemento: "índice", subocupacion_demandante: "% de la PEA", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.", patentamiento_autos: "u.",
   motorizacion_total: "c/1.000 hab.",
@@ -576,7 +576,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   endeudamiento_familiar: "Billones de pesos", mora_familias: "% de la cartera en situación irregular",
   carga_servicio_deuda_hogares: "% de la masa salarial registrada comprometida en servicios de deuda",
   peso_tarifas: "% de un salario RIPTE", alquiler_real: "% mensual", pobreza_nowcast: "% de personas en hogares pobres", indice_lider: "Índice (nivel)",
-  consumo_carne_vacuna: "kg por habitante/año", consumo_carnes_otras: "kg por habitante/año (aviar + porcina)",
+  consumo_carne_vacuna: "kg por habitante/año", consumo_carnes_total: "kg por habitante/año (vacuna + aviar + porcina)", consumo_carnes_otras: "kg por habitante/año (aviar + porcina)",
   informalidad: "% de asalariados",
   mortalidad_pymes: "Empleadores de hasta 50 trabajadores con cobertura de ART",
   trabajo_independiente: "% del empleo registrado SIPA que son autónomos o monotributistas del régimen general (sin monotributo social)", despacho_cemento: "Índice", subocupacion_demandante: "% de la PEA",
@@ -622,6 +622,7 @@ export const UNIDADES_SERIE: Record<string, string> = {
   // separó el compuesto en vacuna y el resto (aviar+porcina); las dos heredan
   // la misma excepción.
   consumo_carne_vacuna: "índice (100 = 4T-2023)",
+  consumo_carnes_total: "índice (100 = 4T-2023)",
   consumo_carnes_otras: "índice (100 = 4T-2023)",
   // ADR-0224: mismo caso. La card publica el NIVEL —vehículos 0km por cada mil
   // habitantes, que es el número que le dice algo al lector— y la serie el

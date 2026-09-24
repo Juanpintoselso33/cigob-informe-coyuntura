@@ -201,6 +201,13 @@ DIMENSIONES_ITVC = {
         # ×0,80 de más abajo, redondeada a 4 decimales EN CADA COMPONENTE por
         # separado, siga sumando exactamente 1,0 en la dimensión — con
         # 0,0204/0,0188 la suma da 0,9999 por el redondeo independiente.
+        # ADR-0339 (revisión de Luis, 23-sep-2026): lo que se pidió era el
+        # TOTAL de las tres carnes y, aparte, la vacuna como indicador
+        # aspiracional. Puntúan `consumo_carnes_total` y `consumo_carne_vacuna`,
+        # mitad y mitad del mismo 0,0392; `consumo_carnes_otras` sale del
+        # índice. La vacuna entra dos veces —dentro del total y sola— A
+        # PROPÓSITO: es lo que la vuelve aspiracional. 0,0196/0,0196 siguen
+        # sumando 1,0 tras las dos cesiones redondeadas a 4 decimales.
         # ADR-0328: entra `ratio_motos_autos` con 2,5%, cesión proporcional
         # sobre los seis que ya había (ADR-0130/0153, `alta_proporcional`).
         # Motos por cada auto patentado, INVERTIDO — más motos por auto es
@@ -234,8 +241,8 @@ DIMENSIONES_ITVC = {
             alta_proporcional(
                 {"brecha_salario_cbt": 0.5959,
                  "pobreza_nowcast": 0.3253,
-                 "consumo_carne_vacuna": 0.0205,
-                 "consumo_carnes_otras": 0.0187,
+                 "consumo_carnes_total": 0.0196,
+                 "consumo_carne_vacuna": 0.0196,
                  "motorizacion_total": 0.0396},
                 "consumo_supermercados", 0.20),
             "ratio_motos_autos", 0.025),
@@ -641,10 +648,10 @@ SERIES_REBASEADAS = {
     "itvc_isac":          "despacho_cemento",
     "itvc_pobreza":       "pobreza_nowcast",
     # Reconstruidas desde la faena INDEC por categoría: ya llegan en base 100
-    # = 4T-2023, así que no se re-rebasean (ADR-0322, reemplaza a la fusión
-    # única `consumo_carnes_total` de ADR-0217).
+    # = 4T-2023, así que no se re-rebasean (ADR-0322). Puntúan el total de las
+    # tres carnes y la vacuna sola (ADR-0339).
+    "consumo_carnes_total": "consumo_carnes_total",
     "consumo_carne_vacuna": "consumo_carne_vacuna",
-    "consumo_carnes_otras": "consumo_carnes_otras",
     # Autos + motos per cápita por acumulado móvil 12m: el colector ya la
     # entrega en base 100 = 4T-2023 (ADR-0224), como la de carnes.
     "motorizacion_total": "motorizacion_total",

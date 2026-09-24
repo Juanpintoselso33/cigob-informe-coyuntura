@@ -237,9 +237,9 @@ PROCEDENCIA = {
     "consumo_carne_vacuna": ("conceptual",
                              "faena de vacunos per cápita rebaseada a 4T-2023 "
                              "desde el INDEC; ancla en fecha fija (ADR-0322)"),
-    "consumo_carnes_otras": ("conceptual",
-                             "faena de aviar+porcina per cápita rebaseada a 4T-2023 "
-                             "desde el INDEC; ancla en fecha fija (ADR-0322)"),
+    "consumo_carnes_total": ("conceptual",
+                             "faena de vacunos, porcinos y aves per cápita rebaseada a "
+                             "4T-2023 desde el INDEC; ancla en fecha fija (ADR-0339)"),
     "motorizacion_total": ("conceptual",
                           "autos + motos per cápita, móvil 12m rebaseado a 4T-2023 "
                           "(ADR-0224); ancla en fecha fija. EXENTO del tope de 140: "

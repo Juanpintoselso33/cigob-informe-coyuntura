@@ -1,11 +1,9 @@
-"""El indicador de carne del ITCIS vuelve a separar VACUNA de OTRAS (ADR-0322).
+"""Puntúan el TOTAL de las tres carnes y, aparte, la VACUNA (ADR-0339).
 
-ADR-0217 fusionó vacuna+aviar+porcina en un único componente que puntúa
-(`consumo_carnes_total`) porque la vacuna sola exageraba el deterioro del
-acceso a proteína. Juan pidió sumarla "por separado" (15-sep-2026). Este
-archivo cuida que eso no reabra el problema que ADR-0217 cerró: la faena
-vacuna no puede entrar dos veces al índice, y la distinción
-sustitución/pérdida de acceso no puede perderse.
+ADR-0217 fusionó vacuna+aviar+porcina en un único componente; ADR-0322 lo
+partió en vacuna y aviar+porcina. El equipo pedía otra cosa: conservar el total
+y sumar la vacuna como indicador aspiracional. La vacuna entra dos veces —dentro
+del total y sola— a propósito, con el mismo peso total que ya tenían las carnes.
 """
 import json
 import sys
@@ -30,80 +28,57 @@ IND = SNAPSHOT["cinturones"]["vida_cotidiana"]["indicadores"]
 BRECHA_MAX_PP = 3.0
 
 
-def test_puntuan_vacuna_y_otras_no_el_total_fusionado():
+def test_puntuan_el_total_y_la_vacuna():
     ingresos = itvc.DIMENSIONES_ITVC["ingresos"]["indicadores"]
-    assert "consumo_carne_vacuna" in ingresos, "la vacuna dejó de puntuar"
-    assert "consumo_carnes_otras" in ingresos, "el resto (aviar+porcina) dejó de puntuar"
-    assert "consumo_carnes_total" not in ingresos, (
-        "el total fusionado volvió a puntuar: duplicaría la faena vacuna, que "
-        "ya puntúa en consumo_carne_vacuna")
+    assert "consumo_carnes_total" in ingresos, "el total de las tres carnes dejó de puntuar"
+    assert "consumo_carne_vacuna" in ingresos, "la vacuna (aspiracional) dejó de puntuar"
+    assert "consumo_carnes_otras" not in ingresos, (
+        "aviar + porcina volvió a puntuar: ya cuenta dentro del total (ADR-0339)")
 
 
-def test_no_duplica_el_peso_del_total_anterior():
-    """El peso nominal de las dos partes tiene que sumar EXACTAMENTE el que
-    tenía el total fusionado (0,0392): ni más (doble conteo) ni menos (le
-    resta peso al resto de la dimensión sin que nadie lo haya decidido)."""
+def test_las_carnes_conservan_el_peso_de_antes_mitad_y_mitad():
+    """El total y la vacuna reparten el MISMO 0,0392 que tenían las carnes,
+    mitad y mitad: ni más (le quitaría peso al resto de la dimensión sin que
+    nadie lo decidiera) ni menos."""
     ingresos = itvc.DIMENSIONES_ITVC["ingresos"]["indicadores"]
-    vacuna_efectivo = ingresos["consumo_carne_vacuna"]
-    otras_efectivo = ingresos["consumo_carnes_otras"]
-    # Los dos vienen de la MISMA cesión ×0,80 que sufrió el total antes de
-    # partirse (ADR-0225): comparar contra la razón de motorización, que no
-    # se tocó, aísla si la cesión se aplicó bien a las dos partes.
+    total, vacuna = ingresos["consumo_carnes_total"], ingresos["consumo_carne_vacuna"]
+    assert total == vacuna, f"no es mitad y mitad: total {total}, vacuna {vacuna}"
     motor = ingresos["motorizacion_total"]
-    razon_vieja = 0.0396 / 0.0392   # motorización / carne, antes del split
-    razon_nueva = motor / (vacuna_efectivo + otras_efectivo)
+    razon_vieja = 0.0396 / 0.0392   # motorización / carnes, antes y después
+    razon_nueva = motor / (total + vacuna)
     assert abs(razon_nueva - razon_vieja) < 1e-3, (
-        f"la suma de vacuna+otras no conserva el peso del total anterior: "
-        f"razón {razon_nueva:.6f}, esperada {razon_vieja:.6f}")
+        f"las carnes no conservan su peso: razón {razon_nueva:.6f}, esperada {razon_vieja:.6f}")
 
 
 def test_las_dos_cards_existen_y_puntuan():
     """Regla ADR-0153/0216: ninguna card puede quedar sin puntuar."""
+    assert "consumo_carnes_total" in IND
     assert "consumo_carne_vacuna" in IND
-    assert "consumo_carnes_otras" in IND
-    assert "consumo_carnes_total" not in IND, (
-        "el total fusionado volvió como card: ya no puntúa (ADR-0322), así "
-        "que sería una card de contexto — prohibido por ADR-0153/0216")
+    assert "consumo_carnes_otras" not in IND, (
+        "aviar + porcina volvió como card: ya no puntúa (ADR-0339), así que "
+        "sería una card de contexto — prohibido por ADR-0153/0216")
     assert all(i.get("en_indice") for i in IND.values()), (
         "hay cards que no integran el índice: " +
         ", ".join(k for k, i in IND.items() if not i.get("en_indice")))
 
 
 def test_la_matriz_explica_el_color_de_las_dos_con_texto_propio():
-    """Las dos cards que puntúan comparten la composición (vacuna Y el resto
-    aparecen en las dos, para que el lector vea el total desde cualquiera),
-    pero el texto de CADA UNA tiene que hablar de SU propio nivel: antes de
-    este fix las dos cards publicaban el mismo párrafo, el de la vacuna
-    (verificado en `dist/`: ninguna mención a aviar, porcina ni al valor
-    67,19 de `consumo_carnes_otras`)."""
+    """Las dos cards comparten los números, pero cada texto habla de SU nivel:
+    el total cuenta la composición de las tres carnes; la vacuna, su nivel
+    contra ese total. Control negativo: no pueden publicar el mismo párrafo."""
     por_que_vacuna = (IND["consumo_carne_vacuna"].get("semaforo") or {}).get("por_que")
-    por_que_otras = (IND["consumo_carnes_otras"].get("semaforo") or {}).get("por_que")
+    por_que_total = (IND["consumo_carnes_total"].get("semaforo") or {}).get("por_que")
     assert por_que_vacuna, "consumo_carne_vacuna perdió la matriz que explica su color"
-    assert por_que_otras, "consumo_carnes_otras perdió la matriz que explica su color"
+    assert por_que_total, "consumo_carnes_total perdió la matriz que explica su color"
+    assert por_que_vacuna != por_que_total, "las dos cards publican el MISMO texto"
 
-    # Las dos mencionan la vacuna (aparece en las dos como parte del total),
-    # pero NO pueden ser el mismo texto: cada una tiene que hablar de lo suyo.
-    assert "vacuna" in por_que_vacuna
-    assert "vacuna" in por_que_otras
-    assert por_que_vacuna != por_que_otras, (
-        "las dos cards publican el MISMO texto — control negativo: éste es "
-        "exactamente el bug que se está arreglando")
-
-    # La card de otras carnes tiene que nombrar su propio nivel y componentes.
-    otras_valor = IND["consumo_carnes_otras"].get("valor")
-    assert otras_valor is not None
-    assert publicar.coma(round(otras_valor, 1)) in por_que_otras, (
-        f"consumo_carnes_otras no menciona su propio valor ({otras_valor}): "
-        "sigue publicando el nivel de la vacuna")
-    assert "aviar" in por_que_otras.lower(), por_que_otras
-    assert "porcina" in por_que_otras.lower(), por_que_otras
-
-    # Control negativo explícito: la card de otras NO puede ser el párrafo
-    # "Consumo aparente de carne vacuna" que le corresponde a la otra card.
-    assert not por_que_otras.startswith("Consumo aparente de carne vacuna"), (
-        "consumo_carnes_otras publica el párrafo de apertura de la vacuna")
+    total_valor = IND["consumo_carnes_total"].get("valor")
+    assert total_valor is not None
+    assert publicar.coma(round(total_valor, 1)) in por_que_total, (
+        f"consumo_carnes_total no menciona su propio valor ({total_valor})")
+    assert "aviar" in por_que_total.lower() and "porcina" in por_que_total.lower(), por_que_total
     assert por_que_vacuna.startswith("Consumo aparente de carne vacuna")
-    assert por_que_otras.startswith("Consumo aparente de aviar")
+    assert por_que_total.startswith("Consumo aparente de las tres carnes")
 
 
 def test_las_series_se_reconstruyen_desde_la_faena_del_indec():

@@ -233,7 +233,7 @@ def test_entra_con_20_por_ciento_y_los_previos_cedieron():
     # primera (entra `ratio_motos_autos`), así que el valor vigente de cada
     # previo es ×0,80×0,975 y no sólo ×0,80.
     previos = {"brecha_salario_cbt": 0.5959, "pobreza_nowcast": 0.3253,
-               "consumo_carne_vacuna": 0.0205, "consumo_carnes_otras": 0.0187,
+               "consumo_carne_vacuna": 0.0196, "consumo_carnes_total": 0.0196,
                "motorizacion_total": 0.0396}
     for k, v in previos.items():
         assert abs(ind[k] - round(round(v * 0.80, 4) * 0.975, 4)) < 1e-9, f"{k} no cedió ×0,80×0,975"

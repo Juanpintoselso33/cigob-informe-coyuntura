@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-24 03:27:35"
+generado: "2026-09-24 14:54:19"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -124,4 +124,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:votometro_ventaja_lla,bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-24 03:27:35 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-24 14:54:19 — schema 1.2.0*

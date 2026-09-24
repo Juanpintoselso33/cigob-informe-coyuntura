@@ -1,12 +1,14 @@
 ---
 madr: 4
 id: '0322'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'SUPERSEDIDO por el [ADR-0339](0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) el 24-sep-2026: puntúan el total de las tres carnes y la vacuna aparte; aviar + porcina deja de puntuar.'
 fecha: 2026-09-15
 cinturon: 'vida'
 indicadores: [consumo_carne_vacuna, consumo_carnes_otras, consumo_carnes_total]
 archivos: ['scripts/itvc.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'scripts/gate_calidad.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'tests/test_carne_compuesto.py']
 relacionado: ['0153', '0216', '0217', '0224', '0325', '0326', '0328']
+superado_por: ['0339']
 ambito: 'ITCIS · componente de proteína animal · qué puntúa la carne'
 origen: 'Juan, Slack #monitor-de-proyecto-de-gobierno, 15-sep-2026: "en impacto social, sumar indicador carne vacuna por separado"'
 ---

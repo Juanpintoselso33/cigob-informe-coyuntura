@@ -2771,9 +2771,9 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menor faena por habitante = deterioro en el proxy).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo, puntuando por separado del resto de las carnes (ADR-0322).",
+      "Pertenece a la dimensión de ingresos y consumo (1,53% interno · 0,43% del ITCIS). Puntúa como indicador aspiracional junto al total de las tres carnes, mitad y mitad del mismo peso (ADR-0339): la vacuna cuenta dentro del total y además sola, a propósito.",
       "Mide específicamente la vacuna porque es el corte aspiracional del consumo argentino: el nivel oficial más reciente (SAGYP, jul-2026) es 46,75 kg/hab/año, con una caída interanual de −8,4%, cercana al «casi 10%» que reporta el equipo.",
-      "Se publica junto al total de las tres carnes y a `consumo_carnes_otras`, para que el lector vea si la caída de la vacuna se compensa con aviar+porcina (sustitución) o no (menos proteína en total).",
+      "Se publica junto al total de las tres carnes, para que el lector vea si la caída de la vacuna se compensa con aviar y porcina (sustitución) o no (menos carne en total).",
       "CICCRA respalda el mismo mes con un número distinto (46,0 kg, ago-2026, contra 46,75 de SAGYP): ninguna de las dos es \"la\" cifra oficial, son dos relevamientos con metodología propia. El titular usa SAGYP porque es la fuente con la que se reconstruye la serie completa del componente (ver `transformaciones`); CICCRA queda de respaldo si el tablero de SAGYP no trae el mes.",
     ],
     limitaciones: [
@@ -2790,6 +2790,45 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-20", cambio: "Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023 (ADR-0217). La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón." },
       { fecha: "2026-09-15", cambio: "Vuelve a puntuar por separado (ADR-0322), a pedido explícito de sumar la carne vacuna como indicador propio. El componente `consumo_carnes_total` deja de puntuar y se reemplaza por ésta y por `consumo_carnes_otras`, con el peso nominal repartido en la misma proporción con la que cada una pesaba en el total al 4T-2023 (52,3% / 47,7%), sin tocar el peso de ningún otro componente." },
       { fecha: "2026-09-16", cambio: "ADR-0325: se retira el «promedio histórico ~73 kg» sin fuente citable, se declara la divergencia SAGYP/CICCRA (46,75 vs 46,0 kg) y se corrige el 52,0%/48,0% de la entrada anterior por el 52,3%/47,7% que efectivamente usa el reparto de pesos." },
+      { fecha: "2026-09-24", cambio: "ADR-0339: sigue puntuando, ahora como indicador aspiracional junto al total de las tres carnes (mitad y mitad del mismo peso), que vuelve a puntuar a pedido del equipo. Aviar + porcina deja de puntuar." },
+    ],
+  },
+  consumo_carnes_total: {
+    tipo: "indicador",
+    id: "consumo_carnes_total",
+    cinturon: "vida_cotidiana",
+    rezago: "El tablero oficial publica el mes con unas semanas de demora; la faena del INDEC, con dos meses. El titular avanza con el tablero y el índice con la faena.",
+    fuente: {
+      organismo: "SAGYP (nivel) e INDEC (evolución)",
+      operacion: "Nivel: SAGYP — Dirección Nacional de Producción Ganadera, tablero de consumo per cápita de carnes, promedio móvil de 12 meses. Evolución: faena mensual en toneladas de vacunos, porcinos y aves (INDEC, series 40.3_VT_0_M_17 · 40.3_PT_0_M_18 · 40.3_AT_0_M_14), per cápita con la población proyectada del INDEC.",
+      url: "https://www.magyp.gob.ar/sitio/areas/bovinos/informacion_sectorial",
+      acceso: "Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC.",
+    },
+    transformaciones: [
+      "Suma de las tres carnes —vacuna, aviar y porcina— en toneladas, promedio móvil de 12 meses: la misma ventana con la que la fuente oficial publica su per cápita, y la que saca la estacionalidad fuerte de la faena.",
+      "Pasaje a per cápita con la población total proyectada del INDEC, interpolada a meses desde su serie trimestral.",
+      "Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menor faena por habitante = deterioro en el proxy).",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de ingresos y consumo (1,53% interno · 0,43% del ITCIS), mitad y mitad con la carne vacuna, que se sigue aparte como indicador aspiracional (ADR-0339).",
+      "Reúne tres carnes para evitar interpretar la vacuna de forma aislada. El total y su composición son agregados: no identifican sustitución dentro de los mismos hogares ni distribución del acceso. Los kilos de carne tampoco equivalen a una medición de proteína ingerida.",
+      "La composición se publica junto al color: qué parte del consumo sigue siendo vacuna, y si el total se sostiene o cae con ella.",
+    ],
+    limitaciones: [
+      "El nivel es consumo «aparente», no medición de hogares: no observa lo que come una familia, sino lo que queda en el mercado interno.",
+      "La evolución se reconstruye desde la FAENA, que es producción y no netea exportaciones. Rebasar a 100 no elimina diferencias de evolución entre producción y consumo; esas diferencias pueden afectar al puntaje. Una distancia superior a tres puntos porcentuales se usa como aviso de divergencia, no como prueba de equivalencia cuando queda por debajo.",
+      "Sólo cubre las tres carnes. Huevo, lácteos, pescado y legumbres también son proteína y también muestran sustitución; sus fuentes no tienen la frecuencia necesaria para un seguimiento mensual.",
+      "El pasaje a per cápita usa una proyección de población, no un censo del mes.",
+    ],
+    faltantes: "Un mes sin tablero legible deja el titular en el último valor publicado; la serie del índice sigue avanzando con la faena, que es independiente.",
+    revisiones: "La faena del INDEC se revisa hacia atrás y la serie se reconstruye entera en cada corrida, así que las revisiones entran solas.",
+    cambios: [
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS el consumo de carne VACUNA (CICCRA), con línea de base documentada." },
+      { fecha: "2026-08-12", cambio: "Se suma el consumo total de las tres carnes y la matriz que distingue sustitución de pérdida de acceso; el nivel pasa al tablero de SAGYP." },
+      { fecha: "2026-08-20", cambio: "Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023 (ADR-0217). La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón." },
+      { fecha: "2026-08-25", cambio: "ADR-0267: cambia qué pasa con la card cuando la fuente no contesta, no cómo se mide. Su publicación vivía dentro de la rama que comprueba si SAGYP trajo el mes, así que un corte de la fuente no la degradaba: la hacía desaparecer del tablero. A diferencia del consumo de carne vacuna, este componente no tiene respaldo en CICCRA, y la rama de respaldo publicaba la vacuna y se olvidaba del total. Pasó de verdad ese mismo día: el colector devolvió vacío y el informe salió con un indicador menos, sin que ninguna verificación lo notara. Desde ahora se publica siempre, con el valor en blanco si la fuente falló, y el mecanismo que arrastra el último dato bueno lo marca como desactualizado. El valor, la serie y el método no cambian." },
+      { fecha: "2026-09-15", cambio: "Deja de puntuar: se reemplaza por la carne vacuna y aviar + porcina por separado (ADR-0322)." },
+      { fecha: "2026-09-24", cambio: "ADR-0339: vuelve a puntuar el total de las tres carnes, a pedido del equipo, junto con la carne vacuna como indicador aspiracional (mitad y mitad del mismo peso). Aviar + porcina deja de puntuar y su nivel se lee dentro de esta card." },
     ],
   },
   consumo_carnes_otras: {
@@ -2824,6 +2863,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-09-15", cambio: "Nace del reemplazo de `consumo_carnes_total` (ADR-0322): antes el aviar y la porcina sólo entraban sumados a la vacuna en un único compuesto; ahora tienen componente propio con el peso proporcional que tenían dentro de ese total." },
       { fecha: "2026-09-16", cambio: "ADR-0325: se corrige el 48,0%/52,0% de la entrada anterior por el 47,7%/52,3% real, y el texto que explica el color deja de repetir el párrafo de `consumo_carne_vacuna` — ahora nombra su propio nivel (aviar+porcina) y sus componentes." },
+      { fecha: "2026-09-24", cambio: "ADR-0339: deja de puntuar. Lo reemplaza el total de las tres carnes, que vuelve a puntuar junto con la carne vacuna; el nivel de aviar + porcina se lee dentro de la card del total." },
     ],
   },
   pobreza_nowcast: {

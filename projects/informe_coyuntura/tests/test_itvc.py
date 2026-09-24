@@ -35,11 +35,11 @@ EJEMPLO = {
     # declara más.
     "inseguridad": 104.0,
     "sentimiento_digital": 110.0,
-    # ADR-0322: `consumo_carnes_total` (ADR-0217) se partió en dos. Se
-    # conservan valores que promedian igual al 92,0 del doc para que la
-    # aritmética del ejemplo (peso combinado 0,0392) siga siendo comparable.
+    # ADR-0339: puntúan el total y la vacuna (aspiracional). Los dos con el
+    # 92,0 del doc para que la aritmética del ejemplo (peso combinado 0,0392)
+    # siga siendo comparable.
+    "consumo_carnes_total": 92.0,
     "consumo_carne_vacuna": 92.0,
-    "consumo_carnes_otras": 92.0,
     # ADR-0224: era `patentamiento_motos`. Se conserva el MISMO valor del doc
     # para que la aritmética del ejemplo siga siendo comparable: lo que cambió
     # es qué componente lo lleva, no el número.
@@ -146,13 +146,15 @@ def test_pesos_del_documento():
     # componentes que puntúan por separado, repartidos 0,0205/0,0187 nominal
     # (52,3%/47,7%, la proporción real de la faena al 4T-2023, ajustada en el
     # último dígito para que la cesión ×0,80 siga sumando 1,0 exacto).
+    # ADR-0339: vuelven a puntuar el total y la vacuna, 0,0196/0,0196 nominal
+    # (mitad y mitad del mismo 0,0392); aviar + porcina sale.
     # ADR-0328: entra `ratio_motos_autos` con 2,5% y los seis anteriores ceden
     # ×0,975 (mismo requisito de exactitud: 2,5% y no 3% es lo que hace que el
     # redondeo a 4 decimales de cada componente siga sumando 1,0 exacto).
     assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.4648,
                                             "pobreza_nowcast": 0.2537,
-                                            "consumo_carne_vacuna": 0.0160,
-                                            "consumo_carnes_otras": 0.0146,
+                                            "consumo_carnes_total": 0.0153,
+                                            "consumo_carne_vacuna": 0.0153,
                                             "motorizacion_total": 0.0309,
                                             "consumo_supermercados": 0.1950,
                                             "ratio_motos_autos": 0.0250}
@@ -241,7 +243,7 @@ def test_renormalizacion_ante_faltantes():
     siendo lo que este test comprueba, y lo verifica la suma de efectivos."""
     valores = dict(EJEMPLO)
     valores["consumo_carne_vacuna"] = None
-    valores["consumo_carnes_otras"] = None
+    valores["consumo_carnes_total"] = None
     valores["motorizacion_total"] = None
     r = itvc.calcular_itvc(valores)
     ing = r["dimensiones"]["ingresos"]

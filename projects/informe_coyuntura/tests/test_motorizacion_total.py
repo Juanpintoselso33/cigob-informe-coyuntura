@@ -250,10 +250,10 @@ def test_el_peso_es_la_suma_de_los_dos_que_reemplaza():
     # ADR-0322: `consumo_carnes_total` (0,0392) se partió en dos componentes
     # que puntúan por separado; la razón que importa es contra la SUMA, que es
     # lo que preserva el invariante de reparto que este test protege.
-    carne_total = ingresos["consumo_carne_vacuna"] + ingresos["consumo_carnes_otras"]
+    carne_total = ingresos["consumo_carne_vacuna"] + ingresos["consumo_carnes_total"]
     esperadas = {"brecha_salario_cbt": (0.0396 / 0.5959, ingresos["brecha_salario_cbt"]),
                  "pobreza_nowcast": (0.0396 / 0.3253, ingresos["pobreza_nowcast"]),
-                 "consumo_carnes (vacuna+otras)": (0.0396 / 0.0392, carne_total)}
+                 "consumo_carnes (vacuna+total)": (0.0396 / 0.0392, carne_total)}
     for otro, (razon, valor) in esperadas.items():
         assert motor / valor == pytest.approx(razon, rel=1e-3), (
             f"la motorización dejó de pesar lo de los dos vehículos en relación "

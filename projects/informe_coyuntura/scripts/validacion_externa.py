@@ -122,11 +122,11 @@ COMPONENTES = {
     # ADR-0130: empleo registrado privado (SIPA). NO invertido — más empleo es
     # mejor. Entra a la reconstrucción como los demás componentes de rebase.
     "empleo_registrado":      ("empleo_registrado", False, False, False),
-    # ADR-0322: puntúan la vacuna y el resto (aviar+porcina) por separado, no
-    # el total fusionado (ADR-0217). Las dos series se reconstruyen desde la
-    # faena del INDEC y YA llegan en base 100.
+    # ADR-0339: puntúan el total de las tres carnes y la vacuna sola
+    # (aspiracional). Las dos series se reconstruyen desde la faena del INDEC y
+    # YA llegan en base 100.
+    "consumo_carnes_total":   ("consumo_carnes_total", False, False, True),
     "consumo_carne_vacuna":   ("consumo_carne_vacuna", False, False, True),
-    "consumo_carnes_otras":   ("consumo_carnes_otras", False, False, True),
     # ADR-0224: el que puntúa es la motorización TOTAL —autos + motos per
     # cápita—, no cada vehículo por su lado. Su serie YA llega en base 100 y
     # con el móvil de 12 meses aplicado a la suma, así que entra como la de
