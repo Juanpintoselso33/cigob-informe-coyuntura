@@ -35,7 +35,7 @@
           "aporte_score": 1.8,
           "aporte_formula": "Anclas ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntaje interpolado entre anclas: 81.8; pesa 15,6% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 1,8/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -90,7 +90,7 @@
           "aporte_score": 3.0,
           "aporte_formula": "Anclas ITCM: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntaje interpolado entre anclas: 70.5; pesa 5,4% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 3,0/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "netas 12661 = SDDS estricto 7745 + Tesoro 2779 + tramo II.1 >3 meses–1 año 2136 (M USD; fórmula CIGOB)",
           "semaforo": {
             "color": "verde",
@@ -145,7 +145,7 @@
           "aporte_score": 4.8,
           "aporte_formula": "Anclas ITCM: >1 → 100 · 0,5–1 → 85 · -0,5 a 0,5 → 60 · -1 a -0,5 → 35 · ≤-1 → 10 (puntaje interpolado entre anclas: 51.7; pesa 3,4% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 4,8/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "−0,25 σ = precio 0,56 · volumen −0,15 · asignación −1,2 (banda propia de este indicador: amarillo) — niveles: tasa real 0,08 pp · depósitos −1,8% i.a. real · holgura 16,0%",
           "semaforo": {
             "color": "amarillo",
@@ -192,7 +192,7 @@
           "aporte_score": 3.0,
           "aporte_formula": "Anclas ITCM: >5 → 100 · 3–5 → 80 · 0–3 → 60 · -2 a 0 → 40 · -5 a -2 → 20 · ≤-5 → 5 (puntaje interpolado entre anclas: 69.5; pesa 5,8% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 3,0/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -304,7 +304,7 @@
           "aporte_score": 2.0,
           "aporte_formula": "Anclas ITCM: >90 → 100 · 70–90 → 80 · 50–70 → 60 · 30–50 → 35 · ≤30 → 10 (puntaje interpolado entre anclas: 80.0; pesa 1,9% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 2,0/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -351,7 +351,7 @@
           "aporte_score": 7.5,
           "aporte_formula": "Anclas ITCM: >5 → 100 · 3–5 → 80 · 0–3 → 60 · -2 a 0 → 40 · -5 a -2 → 20 · ≤-5 → 5 (puntaje interpolado entre anclas: 25.4; pesa 1,9% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 7,5/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en naranja (tensión alta).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "naranja",
@@ -401,7 +401,7 @@
           "aporte_score": 7.2,
           "aporte_formula": "Anclas ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5 a 0 → 40 · -10 a -5 → 20 · ≤-10 → 5 (puntaje interpolado entre anclas: 28.4; pesa 1,3% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 7,2/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en naranja (tensión alta).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "naranja",
@@ -456,7 +456,7 @@
           "aporte_score": 1.5,
           "aporte_formula": "Anclas ITCM: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000 a 5000 → 50 · -15000 a -5000 → 30 · ≤-15000 → 10 (puntaje interpolado entre anclas: 85.0; pesa 4,8% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 1,5/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -508,7 +508,7 @@
           "aporte_score": 4.9,
           "aporte_formula": "Anclas ITCM: >110 → 100 · 100–110 → 85 · 90–100 → 60 · 80–90 → 35 · ≤80 → 10 (puntaje interpolado entre anclas: 50.7; pesa 7,2% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 4,9/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "amarillo",
@@ -555,7 +555,7 @@
           "aporte_score": 5.1,
           "aporte_formula": "Anclas ITCM: >110 → 100 · 95–110 → 80 · 85–95 → 60 · 75–85 → 35 · ≤75 → 10 (puntaje interpolado entre anclas: 48.8; pesa 11,0% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 5,1/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "amarillo",
@@ -604,7 +604,7 @@
           "aporte_score": 1.7,
           "aporte_formula": "Anclas ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntaje interpolado entre anclas: 83.0; pesa 5,2% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 1,7/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "equiv. mensual 1,6% (raíz-12 del 21,0% anual)",
           "semaforo": {
             "color": "verde",
@@ -656,7 +656,7 @@
           "aporte_score": 5.8,
           "aporte_formula": "Anclas ITCM: ≤20 → 100 · 20–50 → 60 · 50–80 → 35 · >80 → 10 (puntaje interpolado entre anclas: 41.8; pesa 5,2% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 5,8/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "tensión 58,19 pts = liquidez privada en pesos transaccionales 32,93% × compra neta de divisas del sector privado US$ 3152,0 M — presión compradora alta pese a liquidez transaccional alta, medidos contra el régimen abierto",
           "semaforo": {
             "color": "amarillo",
@@ -709,7 +709,7 @@
           "aporte_score": 6.4,
           "aporte_formula": "Anclas ITCM: >10 → 100 · 2–10 → 80 · -2 a 2 → 60 · -10 a -2 → 35 · ≤-10 → 10 (puntaje interpolado entre anclas: 36.4; pesa 12,0% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 6,4/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en naranja (tensión alta).",
           "aporte_input_txt": "−5,66% i.a. = ISAC −4,5% · BK importados −7,7%",
           "semaforo": {
             "color": "naranja",
@@ -763,7 +763,7 @@
           "aporte_score": 6.6,
           "aporte_formula": "Anclas ITCM: >40 → 100 · 20–40 → 85 · 8–20 → 65 · 0–8 → 45 · -10 a 0 → 25 · ≤-10 → 10 (puntaje interpolado entre anclas: 33.7; pesa 3,2% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 6,6/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en naranja (tensión alta).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "naranja",
@@ -852,7 +852,7 @@
           "aporte_score": 1.8,
           "aporte_formula": "Anclas ITCM: >20 → 15 · 12–20 → 45 · 6–12 → 75 · 0–6 → 100 · -5 a 0 → 55 · ≤-5 → 20 (puntaje interpolado entre anclas: 82.1; pesa 4,0% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 1,8/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -910,7 +910,7 @@
           "aporte_score": 1.5,
           "aporte_formula": "Anclas ITCM: >8 → 100 · 4–8 → 85 · 0–4 → 60 · -5 a 0 → 30 · ≤-5 → 10 (puntaje interpolado entre anclas: 85.1; pesa 12,0% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 1,5/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -1115,7 +1115,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 74,0/100, equivale a una tensión de 2,6/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 74,0/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 2.6
             }
           },
@@ -1286,7 +1286,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 74,8/100, equivale a una tensión de 2,5/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 74,8/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 2.5
             }
           },
@@ -1464,7 +1464,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 62,1/100, equivale a una tensión de 3,8/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 62,1/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 3.8
             }
           },
@@ -1642,7 +1642,7 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 58,7/100, equivale a una tensión de 4,1/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 58,7/100, está en amarillo (tensión moderada) en la escala del informe.",
               "tension": 4.1
             }
           },
@@ -1799,7 +1799,7 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 48,8/100, equivale a una tensión de 5,1/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 48,8/100, está en amarillo (tensión moderada) en la escala del informe.",
               "tension": 5.1
             }
           },
@@ -1952,7 +1952,7 @@
               "color": "naranja",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 36,4/100, equivale a una tensión de 6,4/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 36,4/100, está en naranja (tensión alta) en la escala del informe.",
               "tension": 6.4
             }
           }
@@ -2480,7 +2480,7 @@
           "aporte_score": 6.3,
           "aporte_formula": "Anclas ITCP: >14 → 100 · 8–14 → 80 · 2–8 → 40 · -2 a 2 → 20 · ≤-2 → 0 (puntaje interpolado entre anclas: 37.2; pesa 7,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 6,3/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en naranja (tensión alta).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "naranja",
@@ -2671,7 +2671,7 @@
           "aporte_score": 3.9,
           "aporte_formula": "Anclas ITCP: ≤0,3 → 100 · 0,3–0,7 → 85 · 0,7–1,2 → 65 · 1,2–2 → 40 · >2 → 10 (puntaje interpolado entre anclas: 60.7; pesa 4,8% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 3,9/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "34 DNU y 32 leyes publicados en el Boletín Oficial entre 2025-09-25 y 2026-09-24 → 1.06 DNU por ley",
           "semaforo": {
             "color": "verde",
@@ -2722,7 +2722,7 @@
           "aporte_score": 2.9,
           "aporte_formula": "Anclas ITCP: >10 → 100 · 0–10 → 85 · -10 a 0 → 65 · -20 a -10 → 40 · ≤-20 → 10 (puntaje interpolado entre anclas: 71.4; pesa 6,5% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 2,9/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "Brecha de -1,8 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Último horizonte consultado: 2026-08 a 2026-10; la fecha identifica su inicio, no una realización observada ni la fecha de publicación. Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
           "semaforo": {
             "color": "verde",
@@ -2775,7 +2775,7 @@
           "aporte_score": 5.6,
           "aporte_formula": "Anclas ITCP: >0,6 → 100 · 0,2–0,6 → 85 · -0,2 a 0,2 → 65 · -0,6 a -0,2 → 40 · ≤-0,6 → 10 (puntaje interpolado entre anclas: 44.2; pesa 6,5% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 5,6/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "En los últimos doce meses la UIA se pronunció 9 veces sobre medidas del Gobierno nacional: 3 de apoyo y 6 de crítica. Saldo −0,333 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
           "semaforo": {
             "color": "amarillo",
@@ -2827,7 +2827,7 @@
           "aporte_score": 4.8,
           "aporte_formula": "Anclas ITCP: ≤-32 → 100 · -32 a -29 → 85 · -29 a -26 → 65 · -26 a -15 → 40 · >-15 → 10 (puntaje interpolado entre anclas: 52.5; pesa 6,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 4,8/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "1981 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-08) vs 2605 en la base 2023 (-24,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
           "semaforo": {
             "color": "amarillo",
@@ -2875,7 +2875,7 @@
           "aporte_score": 0.0,
           "aporte_formula": "Anclas ITCP: ≤5e+06 → 100 · 5e+06–6,5e+06 → 85 · 6,5e+06–8e+06 → 65 · 8e+06–1e+07 → 40 · >1e+07 → 10 (puntaje interpolado entre anclas: 100.0; pesa 4,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "4.760.195 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
           "semaforo": {
             "color": "verde",
@@ -2923,7 +2923,7 @@
           "aporte_score": 2.2,
           "aporte_formula": "Anclas ITCP: >10 → 100 · 0–10 → 85 · -10 a 0 → 65 · -20 a -10 → 40 · ≤-20 → 10 (puntaje interpolado entre anclas: 78.2; pesa 7,6% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 2,2/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "2025: +43.1% nominal contra un deflactor de 40.8% ponderado por el flujo de cada mes → +1.6% real",
           "semaforo": {
             "color": "verde",
@@ -2975,7 +2975,7 @@
           "aporte_score": 4.0,
           "aporte_formula": "Anclas ITCP: >50 → 100 · 30–50 → 85 · 15–30 → 65 · 5–15 → 40 · ≤5 → 10 (puntaje interpolado entre anclas: 60.0; pesa 6,3% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 4,0/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -3026,7 +3026,7 @@
           "aporte_score": 1.9,
           "aporte_formula": "Anclas ITCP: ≤5 → 100 · 5–10 → 85 · 10–20 → 65 · 20–30 → 40 · >30 → 10 (puntaje interpolado entre anclas: 80.7; pesa 3,1% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 1,9/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "1 de 11 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. Última reunión: 2026-09-09. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas.",
           "semaforo": {
             "color": "verde",
@@ -3095,7 +3095,7 @@
           "aporte_score": 0.8,
           "aporte_formula": "Anclas ITCP: >80 → 100 · 60–80 → 85 · 40–60 → 65 · 20–40 → 40 · ≤20 → 10 (puntaje interpolado entre anclas: 92.5; pesa 5,7% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 0,8/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.",
           "semaforo": {
             "color": "verde",
@@ -3159,7 +3159,7 @@
           "aporte_score": 0.0,
           "aporte_formula": "Anclas ITCP: >99,9 → 100 · 99–99,9 → 85 · 97–99 → 65 · 95–97 → 40 · ≤95 → 10 (puntaje interpolado entre anclas: 100.0; pesa 15,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "100,0% = Diputados 100,0% (peso 65%, 44 actas) · última acta 2026-09-09 · Senado 100,0% (peso 35%, 40 actas) · última acta 2026-09-17",
           "semaforo": {
             "color": "verde",
@@ -3210,7 +3210,7 @@
           "aporte_score": 0.0,
           "aporte_formula": "Anclas ITCP: ≤2 → 100 · 2–5 → 85 · 5–9 → 65 · 9–12 → 40 · >12 → 10 (puntaje interpolado entre anclas: 100.0; pesa 3,1% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "Ninguna norma del Ejecutivo fue desafiada en el recinto en los últimos 12 meses — cero desafíos es la señal, no un dato faltante. Cuando los hubo (histórico completo: 16 normas desde marzo de 2024), el 43,8% siguió en pie (7 de 16).",
           "semaforo": {
             "color": "verde",
@@ -3260,7 +3260,7 @@
           "aporte_score": 5.8,
           "aporte_formula": "Anclas ITCP: >74 → 100 · 50–74 → 85 · 35–50 → 65 · 20–35 → 40 · ≤20 → 10 (puntaje interpolado entre anclas: 42.5; pesa 3,6% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 5,8/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "29 leyes distintas en los 12 meses completos hasta 2026-08. Última sanción registrada: 2026-08-27; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
           "semaforo": {
             "color": "amarillo",
@@ -3308,7 +3308,7 @@
           "aporte_score": 0.5,
           "aporte_formula": "Anclas ITCP: ≤40 → 100 · 40–70 → 85 · 70–100 → 65 · 100–130 → 40 · >130 → 10 (puntaje interpolado entre anclas: 94.6; pesa 3,8% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 0,5/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
           "semaforo": {
             "color": "verde",
@@ -3463,7 +3463,7 @@
           "aporte_score": 9.0,
           "aporte_formula": "Anclas ITCP: ≤2 → 100 · 2–4 → 85 · 4–6 → 65 · 6–9 → 40 · >9 → 10 (puntaje interpolado entre anclas: 10.0; pesa 3,8% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 9,0/10: puntaje mínimo — este frente concentra la tensión del cinturón.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en rojo (tensión crítica): puntaje mínimo — este frente concentra la tensión del cinturón.",
           "aporte_input_txt": "13 sesiones de las comisiones de Acusación y Disciplina en los últimos 12 meses, incluidas ordinarias, extraordinarias y las publicadas junto con otras comisiones; las audiencias no cuentan (rango de la serie: 13 a 18, promedio 15.2).",
           "semaforo": {
             "color": "rojo",
@@ -3532,7 +3532,7 @@
           "aporte_score": 3.8,
           "aporte_formula": "Anclas ITCP: >90 → 100 · 80–90 → 85 · 70–80 → 65 · 60–70 → 40 · ≤60 → 10 (puntaje interpolado entre anclas: 62.0; pesa 7,5% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 3,8/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "Cobertura estimada: 705 de 955 cargos al 2026-09-20. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +103 altas netas, −6 renuncias y −1 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen. Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales. Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos.",
           "semaforo": {
             "color": "verde",
@@ -3580,7 +3580,7 @@
           "aporte_score": 2.3,
           "aporte_formula": "Anclas ITCP: >70 → 100 · 60–70 → 85 · 50–60 → 65 · 40–50 → 40 · ≤40 → 10 (puntaje interpolado entre anclas: 76.6; pesa 5,7% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 2,3/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -3795,7 +3795,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 66,3/100, equivale a una tensión de 3,4/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 66,3/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 3.4
             }
           },
@@ -3958,7 +3958,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 82,0/100, equivale a una tensión de 1,8/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 82,0/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 1.8
             }
           },
@@ -4111,7 +4111,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 100,0/100, equivale a una tensión de 0,0/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 100,0/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 0.0
             }
           },
@@ -4271,7 +4271,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 71,5/100, equivale a una tensión de 2,9/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 71,5/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 2.9
             }
           },
@@ -4424,7 +4424,7 @@
               "color": "naranja",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 37,2/100, equivale a una tensión de 6,3/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 37,2/100, está en naranja (tensión alta) en la escala del informe.",
               "tension": 6.3
             }
           },
@@ -4591,7 +4591,7 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 57,1/100, equivale a una tensión de 4,3/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 57,1/100, está en amarillo (tensión moderada) en la escala del informe.",
               "tension": 4.3
             }
           },
@@ -4751,7 +4751,7 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 57,8/100, equivale a una tensión de 4,2/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 57,8/100, está en amarillo (tensión moderada) en la escala del informe.",
               "tension": 4.2
             }
           }
@@ -5545,9 +5545,9 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.1422,
           "aporte_score": 2.7,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 111,6 (100 = arranque del mandato; más = mejora); pesa 14,2% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 111,6 (100 = arranque del mandato; más = mejora); pesa 14,2% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 2,7/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
             "color": "verde",
             "tension": 2.7,
@@ -5570,9 +5570,9 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0954,
           "aporte_score": 3.5,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 107,6 (100 = arranque del mandato; más = mejora); pesa 9,5% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 107,6 (100 = arranque del mandato; más = mejora); pesa 9,5% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 3,5/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
             "color": "verde",
             "tension": 3.5,
@@ -5601,7 +5601,7 @@
           "aporte_score": 3.7,
           "aporte_formula": "Canasta IIEP/RIPTE: 14,6% = agua+energía 7,7% + transporte 6,9%. Se toma la mayor tensión contra sus límites (10% y 5%): índice 106,4. Pesa 12,3% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "Agua y energía representan 7,7% del salario; transporte, 6,9%. La mayor de las dos señales fija la tensión equivalente en 3,7/10.",
+          "aporte_lectura": "Agua y energía representan 7,7% del salario; transporte, 6,9%. La mayor de las dos señales fija el color: verde (sin tensión relevante).",
           "semaforo": {
             "color": "verde",
             "tension": 3.7,
@@ -5625,9 +5625,9 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0545,
           "aporte_score": 10.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 50,0 (100 = arranque del mandato; más = mejora); pesa 5,5% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 50,0 (100 = arranque del mandato; más = mejora); pesa 5,5% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "La tensión equivalente excede el tope de la escala (15,0) y se corta en 10: deterioro profundo contra el arranque del mandato.",
+          "aporte_lectura": "Este componente está en rojo (tensión crítica), más allá del tope de la escala: deterioro profundo contra el arranque del mandato.",
           "semaforo": {
             "color": "rojo",
             "tension": 10.0,
@@ -5656,9 +5656,9 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0049,
           "aporte_score": 7.3,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 88,5 (100 = arranque del mandato; más = mejora); pesa 0,5% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 88,5 (100 = arranque del mandato; más = mejora); pesa 0,5% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 7,3/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
             "color": "naranja",
             "tension": 7.3,
@@ -5689,9 +5689,9 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.0045,
           "aporte_score": 5.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 100,0 (100 = arranque del mandato; más = mejora); pesa 0,4% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 100,0 (100 = arranque del mandato; más = mejora); pesa 0,4% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 5,0/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en amarillo (tensión moderada).",
           "semaforo": {
             "color": "amarillo",
             "tension": 5.0,
@@ -5714,9 +5714,9 @@
           "fecha_indice_itvc": "2026-04-01",
           "peso_efectivo": 0.0901,
           "aporte_score": 6.2,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 94,2 (100 = arranque del mandato; más = mejora); pesa 9,0% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 94,2 (100 = arranque del mandato; más = mejora); pesa 9,0% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 6,2/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
             "color": "naranja",
             "tension": 6.2,
@@ -5754,9 +5754,9 @@
           "fecha_indice_itvc": "2026-06-01",
           "peso_efectivo": 0.0264,
           "aporte_score": 6.5,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 92,4 (100 = arranque del mandato; más = mejora); pesa 2,6% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 92,4 (100 = arranque del mandato; más = mejora); pesa 2,6% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 6,5/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
             "color": "naranja",
             "tension": 6.5,
@@ -5779,9 +5779,9 @@
           "fecha_indice_itvc": "2026-06-01",
           "peso_efectivo": 0.0389,
           "aporte_score": 6.3,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 93,6 (100 = arranque del mandato; más = mejora); pesa 3,9% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 93,6 (100 = arranque del mandato; más = mejora); pesa 3,9% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 6,3/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
             "color": "naranja",
             "tension": 6.3,
@@ -5804,9 +5804,9 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.0355,
           "aporte_score": 9.4,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 77,8 (100 = arranque del mandato; más = mejora); pesa 3,5% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 77,8 (100 = arranque del mandato; más = mejora); pesa 3,5% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 9,4/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en rojo (tensión crítica).",
           "semaforo": {
             "color": "rojo",
             "tension": 9.4,
@@ -5829,9 +5829,9 @@
           "fecha_indice_itvc": "2026-04-01",
           "peso_efectivo": 0.0135,
           "aporte_score": 8.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 85,0 (100 = arranque del mandato; más = mejora); pesa 1,4% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 85,0 (100 = arranque del mandato; más = mejora); pesa 1,4% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 8,0/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
             "color": "naranja",
             "tension": 8.0,
@@ -5854,9 +5854,9 @@
           "fecha_indice_itvc": "2026-06-01",
           "peso_efectivo": 0.0592,
           "aporte_score": 5.9,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 95,5 (100 = arranque del mandato; más = mejora); pesa 5,9% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 95,5 (100 = arranque del mandato; más = mejora); pesa 5,9% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 5,9/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en amarillo (tensión moderada).",
           "semaforo": {
             "color": "amarillo",
             "tension": 5.9,
@@ -5880,9 +5880,9 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.0292,
           "aporte_score": 4.0,
-          "aporte_formula": "Índice base-100 vs ene-2024 (base declarada conservada; archivo 2023 recuperado en septiembre de 2026): 104,8 (100 = arranque del mandato; más = mejora); pesa 2,9% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs ene-2024 (base declarada conservada; archivo 2023 recuperado en septiembre de 2026): 104,8 (100 = arranque del mandato; más = mejora); pesa 2,9% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 4,0/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
             "color": "amarillo",
             "tension": 4.0,
@@ -5907,9 +5907,9 @@
           "indice_itvc_crudo": 165.6,
           "recorte_itvc": 25.6,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 140,0 (100 = arranque del mandato; más = mejora); pesa 1,2% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 140,0 (100 = arranque del mandato; más = mejora); pesa 1,2% del ITCIS.",
           "aporte_nota": "Winsorizado (tratamiento de outliers): índice crudo 165,6 acotado al techo de 140,0 — un boom puntual de un componente no compra compensación ilimitada en el promedio. El tope es solo hacia arriba: las caídas no se recortan, se señalizan como dimensión crítica.",
-          "aporte_lectura": "Este componente está en 140,0 contra una base de 100: su tensión equivalente daría negativa (−3,0) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0.",
+          "aporte_lectura": "Este componente está en 140,0 contra una base de 100: mejora tanto que no solo no suma tensión — empuja el índice del cinturón hacia arriba.",
           "semaforo": {
             "color": "verde",
             "tension": 0.0,
@@ -5933,9 +5933,9 @@
           "fecha_indice_itvc": "2025-12-01",
           "peso_efectivo": 0.0074,
           "aporte_score": 1.2,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 118,9 (100 = arranque del mandato; más = mejora); pesa 0,7% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 118,9 (100 = arranque del mandato; más = mejora); pesa 0,7% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 1,2/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
             "color": "verde",
             "tension": 1.2,
@@ -5958,9 +5958,9 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0776,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 128,1 (100 = arranque del mandato; más = mejora); pesa 7,8% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 128,1 (100 = arranque del mandato; más = mejora); pesa 7,8% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "Este componente está en 128,1 contra una base de 100: su tensión equivalente daría negativa (−0,6) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0.",
+          "aporte_lectura": "Este componente está en 128,1 contra una base de 100: mejora tanto que no solo no suma tensión — empuja el índice del cinturón hacia arriba.",
           "semaforo": {
             "color": "verde",
             "tension": 0.0,
@@ -5996,9 +5996,9 @@
           "peso_efectivo": 0.0095,
           "winsor_exento": true,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 144,4 (100 = arranque del mandato; más = mejora); pesa 0,9% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 144,4 (100 = arranque del mandato; más = mejora); pesa 0,9% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "Este componente está en 144,4 contra una base de 100: su tensión equivalente daría negativa (−3,9) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0.",
+          "aporte_lectura": "Este componente está en 144,4 contra una base de 100: mejora tanto que no solo no suma tensión — empuja el índice del cinturón hacia arriba.",
           "semaforo": {
             "color": "verde",
             "tension": 0.0,
@@ -6022,9 +6022,9 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0076,
           "aporte_score": 7.8,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 86,0 (100 = arranque del mandato; más = mejora); pesa 0,8% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 86,0 (100 = arranque del mandato; más = mejora); pesa 0,8% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 7,8/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
             "color": "naranja",
             "tension": 7.8,
@@ -6047,9 +6047,9 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.0596,
           "aporte_score": 7.2,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 89,1 (100 = arranque del mandato; más = mejora); pesa 6,0% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 89,1 (100 = arranque del mandato; más = mejora); pesa 6,0% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 7,2/10.",
+          "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
             "color": "naranja",
             "tension": 7.2,
@@ -6072,9 +6072,9 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.0763,
           "aporte_score": 10.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 16,9 (100 = arranque del mandato; más = mejora); pesa 7,6% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 16,9 (100 = arranque del mandato; más = mejora); pesa 7,6% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "La tensión equivalente excede el tope de la escala (21,6) y se corta en 10: deterioro profundo contra el arranque del mandato.",
+          "aporte_lectura": "Este componente está en rojo (tensión crítica), más allá del tope de la escala: deterioro profundo contra el arranque del mandato.",
           "semaforo": {
             "color": "rojo",
             "tension": 10.0,
@@ -6097,9 +6097,9 @@
           "fecha_indice_itvc": "2026-04-01",
           "peso_efectivo": 0.0327,
           "aporte_score": 10.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 42,3 (100 = arranque del mandato; más = mejora); pesa 3,3% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 42,3 (100 = arranque del mandato; más = mejora); pesa 3,3% del ITCIS.",
           "aporte_nota": null,
-          "aporte_lectura": "La tensión equivalente excede el tope de la escala (16,5) y se corta en 10: deterioro profundo contra el arranque del mandato.",
+          "aporte_lectura": "Este componente está en rojo (tensión crítica), más allá del tope de la escala: deterioro profundo contra el arranque del mandato.",
           "semaforo": {
             "color": "rojo",
             "tension": 10.0,
@@ -6307,7 +6307,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 111,2, equivale a una tensión de 2,8/10 en la escala del informe.",
+              "por_que": "El índice de la dimensión, 111,2, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 2.8
             }
           },
@@ -6479,7 +6479,7 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 95,5, equivale a una tensión de 5,9/10 en la escala del informe.",
+              "por_que": "El índice de la dimensión, 95,5, está en amarillo (tensión moderada) en la escala del informe.",
               "tension": 5.9
             }
           },
@@ -6645,7 +6645,7 @@
               "color": "rojo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 24,5, equivale a una tensión de 10,0/10 en la escala del informe.",
+              "por_que": "El índice de la dimensión, 24,5, está en rojo (tensión crítica) en la escala del informe.",
               "tension": 10.0
             }
           },
@@ -6835,7 +6835,7 @@
               "color": "naranja",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 91,5, equivale a una tensión de 6,7/10 en la escala del informe.",
+              "por_que": "El índice de la dimensión, 91,5, está en naranja (tensión alta) en la escala del informe.",
               "tension": 6.7
             }
           },
@@ -7007,7 +7007,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 115,9, equivale a una tensión de 1,8/10 en la escala del informe.",
+              "por_que": "El índice de la dimensión, 115,9, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 1.8
             }
           }
@@ -8561,7 +8561,7 @@
           "aporte_score": 0.6,
           "aporte_formula": "Anclas ITCG: ≤5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · >25 → 10 (puntaje interpolado entre anclas: 93.9; pesa 14,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador equivale a una tensión de 0,6/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "CCL venta 1607.10 (2026-09-23T17:59:00-03:00) / mayorista venta 1516.00 (2026-09-23T13:14:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
           "semaforo": {
             "color": "verde",
@@ -8611,7 +8611,7 @@
           "aporte_score": 4.7,
           "aporte_formula": "Anclas ITCG: ≤1 → 100 · 1–3,5 → 85 · 3,5–7 → 65 · 7–11 → 40 · >11 → 10 (puntaje interpolado entre anclas: 53.3; pesa 14,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador equivale a una tensión de 4,7/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "US$ 1.091 M recaudados por derechos de impo+expo y tasa de estadística sobre US$ 15.579 M de intercambio (2026-08) · canal aduanero sin fuente pública",
           "semaforo": {
             "color": "amarillo",
@@ -8662,7 +8662,7 @@
           "aporte_score": 2.7,
           "aporte_formula": "Anclas ITCG: >30000 → 100 · 15000–30000 → 85 · 7000–15000 → 60 · 2500–7000 → 35 · ≤2500 → 10 (puntaje interpolado entre anclas: 73.3; pesa 7,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador equivale a una tensión de 2,7/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "17.115 artículos modificados o eliminados desde el 10 de diciembre de 2023 (+267 en el mes) · los produjeron 770 normas de desregulación, que modificaron o eliminaron 2841 normas anteriores",
           "semaforo": {
             "color": "verde",
@@ -8712,7 +8712,7 @@
           "aporte_score": 0.0,
           "aporte_formula": "Anclas ITCG: ≤-12 → 100 · -12 a -8 → 85 · -8 a -4 → 65 · -4 a 0 → 40 · >0 → 10 (puntaje interpolado entre anclas: 100.0; pesa 14,6% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "183.520 agentes (2026-07) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,74% aparte; el universo completo varía -20,68%",
           "semaforo": {
             "color": "verde",
@@ -8760,7 +8760,7 @@
           "aporte_score": 0.0,
           "aporte_formula": "Anclas ITCG: ≤-25 → 100 · -25 a -15 → 85 · -15 a -5 → 65 · -5 a 0 → 40 · >0 → 10 (puntaje interpolado entre anclas: 100.0; pesa 10,4% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "$ 2,05 bn. base caja (2026-08) vs $ 0,53 bn (2023-08) · inflación del período ×6,0",
           "semaforo": {
             "color": "verde",
@@ -8854,7 +8854,7 @@
           "aporte_score": 4.5,
           "aporte_formula": "Anclas ITCG: >90 → 100 · 62,5–90 → 80 · 37,5–62,5 → 55 · 10–37,5 → 30 · ≤10 → 10 (puntaje interpolado entre anclas: 55.0; pesa 7,5% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador equivale a una tensión de 4,5/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "Evaluación al 2026-09-24; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 5 menciones del FAL en el BO desde mar-2026",
           "semaforo": {
             "color": "amarillo",
@@ -8903,7 +8903,7 @@
           "aporte_score": 4.0,
           "aporte_formula": "Anclas ITCG: ≤-15 → 100 · -15 a -5 → 85 · -5 a 5 → 65 · 5–20 → 40 · >20 → 10 (puntaje interpolado entre anclas: 60.4; pesa 7,5% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador equivale a una tensión de 4,0/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "128.674 juicios en 12m (hasta 2026-06) vs 125.771 previos",
           "semaforo": {
             "color": "verde",
@@ -9047,7 +9047,7 @@
           "aporte_score": 2.4,
           "aporte_formula": "Anclas ITCG: >75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤15 → 10 (puntaje interpolado entre anclas: 75.6; pesa 6,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador equivale a una tensión de 2,4/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "9 empresas · etapa promedio 2,22/4 · cerradas: Transener",
           "semaforo": {
             "color": "verde",
@@ -9100,7 +9100,7 @@
           "aporte_score": 5.0,
           "aporte_formula": "Anclas ITCG: >60 → 100 · 40–60 → 85 · 25–40 → 65 · 10–25 → 40 · ≤10 → 10 (puntaje interpolado entre anclas: 50.5; pesa 6,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador equivale a una tensión de 5,0/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "23 proyectos aprobados (US$ 49.766M) / 24 en evaluación (US$ 159.480M) → 23,8% de la inversión total ya aprobada",
           "semaforo": {
             "color": "amarillo",
@@ -9199,7 +9199,7 @@
           "aporte_score": 0.0,
           "aporte_formula": "Anclas ITCG: >75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤15 → 10 (puntaje interpolado entre anclas: 100.0; pesa 3,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "9.091 de 9.091 km adjudicados · I: adjudicada (CONTRAT.AR) · II-B: adjudicada (CONTRAT.AR) · II: adjudicada (CONTRAT.AR) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24) · CONTRAT.AR todavía no refleja la adjudicación de III, que constan en el Boletín Oficial",
           "semaforo": {
             "color": "verde",
@@ -9253,7 +9253,7 @@
           "aporte_score": 0.0,
           "aporte_formula": "Anclas ITCG: >95 → 100 · 85–95 → 85 · 60–85 → 65 · 30–60 → 40 · ≤30 → 10 (puntaje interpolado entre anclas: 100.0; pesa 4,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "Devengado 2026: $ 558.060M en ayudas a personas (5.1.4) / $ 558.060M en transferencias · baseline Potenciar 2023: 98,3% (con $ 17.224M en otras partidas) · Clasificación del devengado; no acredita pago efectivo ni ausencia de intermediación.",
           "semaforo": {
             "color": "verde",
@@ -9306,7 +9306,7 @@
           "aporte_score": 0.1,
           "aporte_formula": "Anclas ITCG: >75 → 100 · 50–75 → 85 · 25–50 → 65 · 0–25 → 40 · ≤0 → 10 (puntaje interpolado entre anclas: 99.0; pesa 4,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,1/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "240 cortes en CABA en 2025 vs 931 en 2023 (Diagnóstico Político; base 2023 estimada desde participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.",
           "semaforo": {
             "color": "verde",
@@ -9369,7 +9369,7 @@
           "aporte_score": 4.4,
           "aporte_formula": "Anclas ITCG: >70 → 100 · 50–70 → 85 · 30–50 → 65 · 10–30 → 40 · ≤10 → 10 (puntaje interpolado entre anclas: 56.4; pesa 2,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador equivale a una tensión de 4,4/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "2.754.461 beneficiarios derivados directo a 65 prepagas inscriptas (06/2026) / 8.332.458 usuarios de prepagas (RNEMP 06/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.",
           "semaforo": {
             "color": "amarillo",
@@ -9574,7 +9574,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 73,5/100, equivale a una tensión de 2,6/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 73,5/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 2.6
             }
           },
@@ -9738,7 +9738,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 100,0/100, equivale a una tensión de 0,0/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 100,0/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 0.0
             }
           },
@@ -9902,7 +9902,7 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 57,7/100, equivale a una tensión de 4,2/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 57,7/100, está en amarillo (tensión moderada) en la escala del informe.",
               "tension": 4.2
             }
           },
@@ -10073,7 +10073,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 70,4/100, equivale a una tensión de 3,0/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 70,4/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 3.0
             }
           },
@@ -10244,7 +10244,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 90,9/100, equivale a una tensión de 0,9/10 en la escala del informe.",
+              "por_que": "El puntaje de la dimensión, 90,9/100, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 0.9
             }
           }

@@ -8,7 +8,7 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import katex from "katex";
 import seriesRaw from "../../data/series.json";
-import { informe, CINTURONES, label, presentacion, badgeEstado, UNIDADES_LARGAS, indiceDe, mesLegible, num } from "../../lib/datos.ts";
+import { informe, CINTURONES, label, presentacion, badgeEstado, UNIDADES_LARGAS, indiceDe, mesLegible, num, colorPorTension, LECTURA_SEMAFORO } from "../../lib/datos.ts";
 import { rangoLegible } from "../../lib/formato.ts";
 import { DESCRIPCIONES } from "../../lib/descripciones.ts";
 import { FORMULAS } from "../../lib/formulas.ts";
@@ -221,8 +221,9 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
         {!esIndicador && it && (
           <span class="cg-detalle-chip">Hoy <strong>{coma(it.valor)}{fx.base100 ? "" : "/100"}</strong>{it.banda_legible ? ` · ${it.banda_legible}` : ""}{fx.base100 ? " · escala de referencia 100" : ""}</span>
         )}
-        {!esIndicador && tension !== null && (
-          <span class="cg-detalle-chip">Tensión <strong>{coma(tension)}/10</strong></span>
+        {/* Sin número de tensión (ADR-0337): la palabra del tramo. */}
+        {!esIndicador && tension !== null && colorPorTension(tension) && (
+          <span class="cg-detalle-chip">Tensión <strong>{LECTURA_SEMAFORO[colorPorTension(tension)!].toLowerCase()}</strong></span>
         )}
         {!esIndicador && rob && (
           <span class="cg-detalle-chip">90% de escenarios <strong>{coma(rob.p05)}–{coma(rob.p95)}</strong></span>
@@ -357,7 +358,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
                     : `El indicador representa ${pct(pesoEfectivo)} efectivo del ${indice.sigla}; los pesos nominales se ajustan cuando faltan datos.`}
                   {aporteIndice !== null && puntajeHoy !== null && (
                     <Fragment>{" "}{indice.base100
-                      ? `Nivel aplicado ${coma(puntajeHoy)} (${f.id === "peso_tarifas" ? "100 = tensión 5" : "100 = 4T-2023"}) × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.sigla}.`
+                      ? `Nivel aplicado ${coma(puntajeHoy)} (${f.id === "peso_tarifas" ? "100 = punto medio de la escala" : "100 = 4T-2023"}) × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.sigla}.`
                       : `Puntaje aplicado ${coma(puntajeHoy)}/100 × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.sigla}.`}</Fragment>
                   )}
                 </div>

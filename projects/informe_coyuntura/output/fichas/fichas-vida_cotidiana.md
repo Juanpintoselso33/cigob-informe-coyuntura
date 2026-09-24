@@ -330,7 +330,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 14,6 % del salario RIPTE (2026-09).
 
-Agua y energía representan 7,7% del salario; transporte, 6,9%. La mayor de las dos señales fija la tensión equivalente en 3,7/10. El índice de asequibilidad resultante es 106,4 — 105 o más —, que corresponde al tramo VERDE. 100 equivale a tensión 5; no al nivel tarifario del 4º trimestre de 2023.
+Agua y energía representan 7,7% del salario; transporte, 6,9%. La mayor de las dos señales fija el color: verde (sin tensión relevante). El índice de asequibilidad resultante es 106,4 — 105 o más —, que corresponde al tramo VERDE. 100 equivale a tensión 5; no al nivel tarifario del 4º trimestre de 2023.
 
 **Color vigente: VERDE**
 

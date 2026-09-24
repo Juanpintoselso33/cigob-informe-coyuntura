@@ -211,7 +211,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La matriz de validación cruzada verifica además el poder discriminante: que cada índice del informe correlacione más con su ancla propia que con las ajenas (que el ITCM mida lo macroeconómico y no «el humor general»). La matriz completa, con sus límites declarados, se publica en la página del cinturón.",
     ],
     comunicacion: [
-      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCM) / 10. Los cortes globales son continuos: hasta 4, estable; más de 4 y hasta 6, en tensión; más de 6, tensionado (ADR-0333).",
+      "El color del cinturón sale del ITCM: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Son los mismos cortes para los cuatro cinturones, y la web los muestra con el color y su palabra, sin número de tensión (ADR-0333, ADR-0337).",
       "Cada indicador del cinturón publica su propia ficha, su fórmula y su tensión equivalente — cómo se leería el cinturón si solo existiera ese indicador —, junto con los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
@@ -3380,7 +3380,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La solidez del índice se sostiene en los otros dos controles que se publican en cada edición: cuánta información distinta aporta cada componente (redundancia) y cuánto se mueve el resultado si cambian los pesos (sensibilidad). Por el mismo motivo el ITCG no figura en la matriz de validación cruzada.",
     ],
     comunicacion: [
-      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCG) / 10. Los cortes globales son continuos: hasta 4, estable; más de 4 y hasta 6, en tensión; más de 6, tensionado (ADR-0333).",
+      "El color del cinturón sale del ITCG: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Son los mismos cortes para los cuatro cinturones, y la web los muestra con el color y su palabra, sin número de tensión (ADR-0333, ADR-0337).",
       "Cada indicador publica su ficha, su fórmula, su tensión equivalente y los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
@@ -3440,7 +3440,7 @@ export const FICHAS: Record<string, Ficha> = {
       parrafos: [
         "La agregación es compensatoria y el flag de dimensión crítica lo declara cuando una dimensión cae por debajo del umbral. Cuáles están marcadas se lee en la tabla de composición, que se recalcula con cada actualización: nombrarlas acá dejaría el texto viejo al mes siguiente.",
         "El índice y la tensión son DOS ESCALAS DISTINTAS y conviene no confundirlas. El índice suma niveles: cada componente vale lo que vale contra su base de 2023, y esos números se promedian. La tensión es una lectura del resultado —5 − (índice − 100) × 0,2, recortada al rango 0-10— pensada para ponerlo en la misma vara que los otros cinturones. La tensión que aparece en la ficha de cada componente aplica esa misma fórmula a ese componente solo, y sirve para leerlo, no para calcular: al índice entra el nivel, nunca la tensión.",
-        "Eso explica algo que sorprende: varios componentes muestran una tensión de 0 o de 10 a la vez. No es que midan lo mismo — es que la escala 0-10 se corta ahí, y su tensión sin recortar seguiría subiendo o bajando. Cada ficha publica ese valor sin recortar junto al recortado, para que el techo no esconda la diferencia.",
+        "Eso explica algo que sorprende: varios componentes aparecen a la vez en el extremo verde o en el rojo. No es que midan lo mismo — es que el color se satura en los extremos, y el componente seguiría mejorando o empeorando más allá. El índice de cada componente, que no se recorta, muestra la diferencia.",
         "Hay además un segundo recorte, éste sí sobre el número que entra al índice: salvo motorización total, ningún componente puede superar 140 (un salto puntual de uno solo no compra compensación ilimitada en el promedio). El recorte es sólo hacia arriba: las caídas no se recortan, se señalizan con el flag de dimensión crítica. La tabla de composición identifica cada componente recortado, su nivel crudo y cuánto resta el recorte; también marca la excepción cuando supera 140.",
         "Cada dimensión publica además su SERIE MENSUAL, y sale del mismo cálculo que el índice: es el promedio ponderado de sus indicadores, renormalizado por el peso que tiene dato ese mes, aplicado a la reconstrucción histórica. No es una cuenta aparte — es el paso intermedio del índice hecho visible. Sirve para distinguir dos situaciones que el valor agregado confunde: un índice quieto porque nada se mueve, y un índice quieto porque dos dimensiones se mueven en direcciones opuestas y se compensan.",
         "Esa serie hereda la procedencia de la reconstrucción, y conviene leerla con eso puesto: se calcula sin los ajustes del analista y llega hasta el último mes que supera el piso de cobertura, que puede ser anterior al mes de la tarjeta. Un mes en el que ningún indicador de la dimensión tiene dato no deja punto: el hueco se publica como hueco, sin arrastre ni interpolación, y el panel declara desde qué mes arranca cada una.",
@@ -3463,7 +3463,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La matriz de validación cruzada compara además cada índice del informe contra todos los contrastes a la vez, para ver si correlaciona más con el propio que con los ajenos. No se cumple en todos los casos y la matriz lo declara.",
     ],
     comunicacion: [
-      "El resto del informe consume el índice como tensión 0–10 con su propia fórmula: tensión = 5 − (ITCIS − 100) × 0,2. Un índice en 100 (sin cambios contra el arranque) equivale a tensión 5; cada 5 puntos de índice mueven un punto de tensión.",
+      "El color del cinturón sale del ITCIS: verde con 105 o más, amarillo de 95 a 105, naranja de 85 a 95 y rojo por debajo de 85. Un índice en 100 (sin cambios contra el arranque) queda en amarillo. Son los mismos cortes que en los otros tres cinturones, llevados a la escala base 100, y la web los muestra con el color y su palabra, sin número de tensión (ADR-0337).",
       "Cada componente publica su ficha con la transformación exacta, su nivel actual y su peso.",
     ],
     interpretacion: [
@@ -3541,7 +3541,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Participa además de la matriz de validación cruzada que compara a la vez los tres índices del informe que tienen contraste externo —ITCM, ITCIS e ITCP— contra sus tres anclas, publicada en la página del cinturón. El ITCG no participa: un índice de ejecución no tiene contraste externo (ADR-0336).",
     ],
     comunicacion: [
-      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCP) / 10. Los cortes globales son continuos: hasta 4, estable; más de 4 y hasta 6, en tensión; más de 6, tensionado (ADR-0333).",
+      "El color del cinturón sale del ITCP: verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por debajo de 20. Son los mismos cortes para los cuatro cinturones, y la web los muestra con el color y su palabra, sin número de tensión (ADR-0333, ADR-0337).",
       "Cada indicador del cinturón publica su ficha, su fórmula y su tensión equivalente, junto con los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [

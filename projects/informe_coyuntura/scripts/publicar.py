@@ -793,18 +793,17 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
             # número es la tensión EQUIVALENTE del indicador leído solo — y el
             # texto lo dice, con lectura especial en los extremos (un "0" pelado
             # parecía dato roto y un logro terminado leía como irrelevante).
-            cm = lambda x: str(x).replace(".", ",")
             if p >= 95:
-                lectura = (f"Leído solo en la escala del {sigla}, equivale a una tensión de "
-                           f"{cm(aporte)}/10: puntaje pleno o casi pleno — este frente está "
-                           f"logrado y hoy no agrega tensión al índice.")
+                lectura = (f"Leído solo en la escala del {sigla}, este indicador está en "
+                           f"{_lectura_tension(aporte)}: puntaje pleno o casi pleno — este "
+                           f"frente está logrado y hoy no agrega tensión al índice.")
             elif p <= 15:
-                lectura = (f"Leído solo en la escala del {sigla}, equivale a una tensión de "
-                           f"{cm(aporte)}/10: puntaje mínimo — este frente concentra la "
-                           f"tensión del cinturón.")
+                lectura = (f"Leído solo en la escala del {sigla}, este indicador está en "
+                           f"{_lectura_tension(aporte)}: puntaje mínimo — este frente "
+                           f"concentra la tensión del cinturón.")
             else:
-                lectura = (f"Leído solo en la escala del {sigla}, este indicador equivale a "
-                           f"una tensión de {cm(aporte)}/10.")
+                lectura = (f"Leído solo en la escala del {sigla}, este indicador está en "
+                           f"{_lectura_tension(aporte)}.")
             peso = ind.get("peso_efectivo")
             peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + f" del {sigla}" if peso else ""
             formula = (f"Anclas {sigla}: {mod.texto_bandas(ikey)} "
@@ -2094,24 +2093,20 @@ def _scoring_vida_itvc(c, series):
             cruda = round(5 - (info["puntaje_aplicado"] - 100) * 0.2, 1)
             if cruda < 0:
                 lectura = (f"Este componente está en {coma(info['puntaje_aplicado'])} contra una "
-                           f"base de 100: su tensión equivalente daría negativa "
-                           f"({coma(cruda)}) y la escala se corta en 0. No solo no suma "
-                           f"tensión — empuja el índice del cinturón hacia arriba. Por eso "
-                           f"más de un componente en mejora fuerte puede mostrar el mismo 0.")
+                           f"base de 100: mejora tanto que no solo no suma tensión — empuja el "
+                           f"índice del cinturón hacia arriba.")
             elif cruda > 10:
-                lectura = (f"La tensión equivalente excede el tope de la escala "
-                           f"({coma(cruda)}) y se corta en 10: deterioro profundo contra el "
-                           f"arranque del mandato.")
+                lectura = (f"Este componente está en {_lectura_tension(aporte)}, más allá del "
+                           f"tope de la escala: deterioro profundo contra el arranque del mandato.")
             else:
-                lectura = (f"En la escala del cinturón, este componente equivale a una "
-                           f"tensión de {coma(aporte)}/10.")
+                lectura = (f"En la escala del cinturón, este componente está en "
+                           f"{_lectura_tension(aporte)}.")
             # bases DECLARADAS distintas del 4T-2023 (fuente sin medición en la base del doc)
             base_lbl = {"inseguridad": "ene-2024 (base declarada conservada; archivo 2023 recuperado en septiembre de 2026)"} \
                 .get(ikey, "4T-2023")
             formula = (f"Índice base-100 vs {base_lbl}: {coma(info['puntaje_aplicado'])} "
                        f"(100 = arranque del mandato; más = mejora); pesa "
-                       f"{coma(round(info['peso_efectivo'] * 100, 1))}% del ITCIS. "
-                       f"Tensión = 5 − (índice − 100) × 0,2.")
+                       f"{coma(round(info['peso_efectivo'] * 100, 1))}% del ITCIS.")
             if ikey == "peso_tarifas":
                 carga = ind.get("valor")
                 proporcion_t = ind.get("transporte_pct_canasta")
@@ -2125,7 +2120,7 @@ def _scoring_vida_itvc(c, series):
                                f"Pesa {coma(round(info['peso_efectivo'] * 100, 1))}% del ITCIS.")
                     lectura = (f"Agua y energía representan {coma(round(carga_ae, 1))}% del salario; "
                                f"transporte, {coma(round(carga_t, 1))}%. La mayor de las dos "
-                               f"señales fija la tensión equivalente en {coma(aporte)}/10.")
+                               f"señales fija el color: {_lectura_tension(aporte)}.")
                 else:
                     formula = (f"Índice de asequibilidad por rubro: "
                                f"{coma(info['puntaje_aplicado'])}; pesa "
@@ -2265,6 +2260,19 @@ def _semaforo_de(color, tension, umbrales, unidad, valor):
             "por_que": _por_que(color, valor, unidad, umbrales)}
 
 
+# Cómo se dice un tramo en los textos publicados. La web no muestra la tensión
+# como número (ADR-0337): los textos nombran el color y su palabra, las mismas
+# que `LECTURA_SEMAFORO` en web/src/lib/datos.ts.
+_LECTURA_COLOR = {"verde": "sin tensión relevante", "amarillo": "tensión moderada",
+                  "naranja": "tensión alta", "rojo": "tensión crítica"}
+
+
+def _lectura_tension(tension) -> str:
+    """«amarillo (tensión moderada)» para una tensión 0-10."""
+    color = parametrica.color_de_tension(float(tension))
+    return f"{color} ({_LECTURA_COLOR[color]})"
+
+
 def _por_que_dimension(puntaje, tension, base100):
     """`por_que` de una DIMENSIÓN: no hay tabla de tramos como la de un
     indicador (ADR-0182) porque el puntaje de una dimensión YA está en la
@@ -2277,8 +2285,8 @@ def _por_que_dimension(puntaje, tension, base100):
     """
     etiqueta = "El índice de la dimensión" if base100 else "El puntaje de la dimensión"
     sufijo = "" if base100 else "/100"
-    return (f"{etiqueta}, {coma(round(float(puntaje), 1))}{sufijo}, equivale a una "
-            f"tensión de {coma(tension)}/10 en la escala del informe.")
+    return (f"{etiqueta}, {coma(round(float(puntaje), 1))}{sufijo}, está en "
+            f"{_lectura_tension(tension)} en la escala del informe.")
 
 
 # Referencia descriptiva del nivel de consumo aparente (BCR, promedio de diez
@@ -2600,9 +2608,7 @@ def aplicar_scoring(informe, series):
                     aporte = _clamp10(fn(float(entrada)))
                     formula = mapa
                     # acá el score del cinturón SÍ es el promedio de estas tensiones
-                    cm = lambda x: str(x).replace(".", ",")
-                    lectura = (f"Entra al promedio del cinturón con una tensión de "
-                               f"{cm(aporte)}/10." +
+                    lectura = (f"Entra al promedio del cinturón en {_lectura_tension(aporte)}." +
                                (" Hoy no registra tensión." if aporte == 0 else ""))
                     if campo == "var_real_12m":                  # mostrar el input real, no el stock
                         ind["aporte_input_txt"] = f"{entrada:+.1f}% interanual real (no el stock nominal)".replace(".", ",")

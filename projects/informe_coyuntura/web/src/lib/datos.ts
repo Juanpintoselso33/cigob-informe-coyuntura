@@ -298,6 +298,25 @@ export const LECTURA_SEMAFORO: Record<ColorSemaforo, string> = {
 export function tensionDeDimension(puntaje: number, base100: boolean): number {
   return base100 ? 5 - (puntaje - 100) * 0.2 : (100 - puntaje) / 10;
 }
+// El inverso de `tensionDeDimension`: en qué valor del ÍNDICE cae cada corte
+// de color. La web no muestra la tensión como número (ADR-0337), así que para
+// explicar el color se lo dice en la escala del índice, que sí se publica. Sale
+// de los cortes del snapshot: no hay un umbral escrito acá.
+export function indiceDeTension(tension: number, base100: boolean): number {
+  return base100 ? 100 - (tension - 5) * 5 : 100 - tension * 10;
+}
+/** "verde con 60 o más, amarillo de 40 a 60, naranja de 20 a 40 y rojo por
+    debajo de 20" — en la escala del índice del cinturón. */
+export function coloresEnIndice(base100: boolean): string {
+  const tramos = tramosSemaforo();
+  if (!tramos.length) return "";
+  const v = (t: number) => num(indiceDeTension(t, base100));
+  const partes = tramos.map((t, i) =>
+    i === 0 ? `${t.color} con ${v(t.hasta)} o más`
+    : i === tramos.length - 1 ? `${t.color} por debajo de ${v(t.desde)}`
+    : `${t.color} de ${v(t.hasta)} a ${v(t.desde)}`);
+  return partes.slice(0, -1).join(", ") + " y " + partes.at(-1);
+}
 export interface PeorDim {
   key: string; nombre: string; puntaje: number; peso: number;
   base100: boolean; critica: boolean; tension: number;

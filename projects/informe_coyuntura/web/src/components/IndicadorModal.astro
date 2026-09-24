@@ -297,6 +297,12 @@ const dimsJson = JSON.stringify(dims);
   // en X y el vector-effect) tienen que seguir a los de NivelTension.astro: si
   // se cambian allá y no acá, el modal dibuja otra barra. Están explicados en
   // el encabezado de ese archivo.
+  function lecturaDe(tension) {
+    if (typeof tension !== "number" || !isFinite(tension) || !NIVEL.tramos.length) return "";
+    const t = NIVEL.tramos.find(x => tension <= x.hasta) || NIVEL.tramos[NIVEL.tramos.length - 1];
+    return NIVEL.lectura[t.color] || "";
+  }
+
   function nivelHTML(tension) {
     if (typeof tension !== "number" || !isFinite(tension) || !NIVEL.tramos.length) return "";
     const ANCHO = 280, ALTO = 40, Y = ALTO / 2, G = 12, GA = 18, MAX = NIVEL.max;
@@ -310,20 +316,19 @@ const dimsJson = JSON.stringify(dims);
       ` class="cg-nivel-tick" vector-effect="non-scaling-stroke"/>`;
     const tramos = NIVEL.tramos.map(t =>
       pista(t.desde, t.hasta, `cg-nivel-tramo sem-${t.color}${t.color === activo.color ? " is-activo" : ""}`, G)).join("");
+    // Sin número (ADR-0337): la lectura, el color y la posición, como en
+    // NivelTension.astro.
     const lectura = NIVEL.lectura[activo.color] || "";
-    const valor = String(Math.round(tension * 10) / 10).replace(".", ",");
     return `<figure class="cg-nivel cg-nivel--chica sem-${activo.color}" style="--cg-nivel-alto:${ALTO}px">` +
-      `<figcaption class="cg-nivel-cap"><span class="cg-nivel-lectura">${lectura}</span>` +
-      `<span class="cg-nivel-valor">${valor}<span class="cg-nivel-valor-max">/${MAX}</span></span></figcaption>` +
+      `<figcaption class="cg-nivel-cap"><span class="cg-nivel-lectura">${lectura}</span></figcaption>` +
       `<svg viewBox="0 0 ${ANCHO} ${ALTO}" preserveAspectRatio="none" role="img"` +
-      ` aria-label="Tensión ${valor} de ${MAX} — ${lectura} (${activo.color})" class="cg-nivel-svg">` +
+      ` aria-label="${lectura} (${activo.color})" class="cg-nivel-svg">` +
         pista(0, MAX, "cg-nivel-base", G) +
         tramos +
         NIVEL.tramos.map(t => tick(t.desde)).join("") + tick(MAX) +
         `<line x1="${x(tension).toFixed(2)}" y1="${Y - GA / 2 - 5}" x2="${x(tension).toFixed(2)}" y2="${Y + GA / 2 + 5}"` +
         ` class="cg-nivel-marca" vector-effect="non-scaling-stroke"/>` +
-      `</svg>` +
-      `<div class="cg-nivel-escala" aria-hidden="true"><span>0</span><span>${MAX}</span></div></figure>`;
+      `</svg></figure>`;
   }
 
   const INFO = JSON.parse(document.getElementById("cg-info-data").textContent);
@@ -379,7 +384,7 @@ const dimsJson = JSON.stringify(dims);
     }
     const aporte = typeof meta.aporteIndice === "number" && typeof meta.puntajeAplicado === "number"
       ? `<p class="cg-score-map"><strong>Aporte actual:</strong> ` +
-        `${meta.base100 ? `nivel aplicado ${nf.format(meta.puntajeAplicado)} (${meta.indicador === "peso_tarifas" ? "100 = tensión 5" : "100 = 4T-2023"})` : `puntaje aplicado ${nf.format(meta.puntajeAplicado)}/100`} ` +
+        `${meta.base100 ? `nivel aplicado ${nf.format(meta.puntajeAplicado)} (${meta.indicador === "peso_tarifas" ? "100 = punto medio de la escala" : "100 = 4T-2023"})` : `puntaje aplicado ${nf.format(meta.puntajeAplicado)}/100`} ` +
         `× ${pctIndice(meta.pesoEfectivo)} ≈ <strong>${nf.format(meta.aporteIndice)} puntos del ${esc(meta.sigla)}</strong>.</p>`
       : "";
     return `<h4 class="cg-modal-h4">Cómo entra al ${esc(meta.sigla)}</h4>` +
@@ -589,19 +594,15 @@ const dimsJson = JSON.stringify(dims);
       const indiceHtml = incidenciaIndiceHtml(d.indiceMeta);
       let tensionHtml = "";
       if (d.aporteScore != null) {
-        const pct = Math.max(0, Math.min(100, d.aporteScore * 10));
+        // Sin número de tensión (ADR-0337): la misma barra de tramos que el
+        // resto del sitio, con su palabra.
         tensionHtml =
           `<h4 class="cg-modal-h4">${d.indiceMeta ? "Tensión equivalente del indicador" : "Cómo incide en el score"}</h4>` +
-          `<div class="cg-score-row">` +
-            `<div class="cg-score-val">${nf.format(d.aporteScore)}<span>/10</span></div>` +
-            `<div class="cg-score-track"><div class="cg-score-fill" style="width:${pct}%"></div>` +
-              `<span class="cg-score-c0">sin tensión</span><span class="cg-score-c10">tensión máx.</span>` +
-            `</div>` +
-          `</div>` +
+          nivelHTML(d.aporteScore) +
           (d.aporteInputTxt ? `<p class="cg-score-map"><strong>Valor usado:</strong> ${esc(d.aporteInputTxt)}</p>` : "") +
           (d.aporteFormula ? `<p class="cg-score-map"><strong>Cómo se calcula:</strong> ${esc(d.aporteFormula)}</p>` : "") +
-          `<p class="cg-score-note">${esc(d.aporteLectura || `Este indicador equivale a una tensión de ${nf.format(d.aporteScore)} de 10.`)} ` +
-            `Score del cinturón: <strong>${nf.format(d.scoreCint)}/10</strong>. ` +
+          `<p class="cg-score-note">${esc(d.aporteLectura || "")} ` +
+            (lecturaDe(d.scoreCint) ? `El cinturón está en <strong>${lecturaDe(d.scoreCint).toLowerCase()}</strong>. ` : "") +
             `${esc(d.scoreExpl || "Promedio de las tensiones de sus indicadores.")}` +
             (d.indiceMeta ? ` Esta tensión equivalente no es el aporte aritmético al ${esc(d.indiceMeta.sigla)} mostrado arriba.` : "") +
           `</p>`;
@@ -811,7 +812,7 @@ const dimsJson = JSON.stringify(dims);
       evoMontado = true; io.disconnect();
       const C = await ensureCharts();
       evoGrid.querySelectorAll("[data-evo-key]").forEach(el => {
-        // data-evo-serie: serie embebida inline (tiles de tensión por
+        // data-evo-serie: serie embebida inline (tiles del índice de cada
         // cinturón, que no viven en series.json) — tiene prioridad.
         const inline = el.getAttribute("data-evo-serie");
         const serie = inline ? JSON.parse(inline) : SERIES[el.getAttribute("data-evo-key")];
@@ -819,7 +820,11 @@ const dimsJson = JSON.stringify(dims);
         C.sparkChart(el, serie, {
           color: C.colorDe(el.getAttribute("data-evo-slug")),
           unidad: el.getAttribute("data-evo-unidad") || "",
-          ...(el.getAttribute("data-evo-key")?.startsWith("__tension_") ? { rango: [0, 10] as [number, number] } : {}),
+          // tiles de índice por cinturón: los de puntaje 0-100 traen su rango
+          // fijo; el ITCIS (base-100) no tiene techo y usa el de la serie
+          ...(el.getAttribute("data-evo-rango")
+            ? { rango: el.getAttribute("data-evo-rango")!.split(",").map(Number) as [number, number] }
+            : {}),
         });
       });
     }, { rootMargin: "250px" });

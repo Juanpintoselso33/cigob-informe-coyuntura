@@ -1,5 +1,8 @@
 ---
-import { informe, cinturonesRojos, cinturonDominante, mesLegible, num } from "../lib/datos.ts";
+import { informe, cinturonesRojos, cinturonDominante, mesLegible, colorPorTension, LECTURA_SEMAFORO } from "../lib/datos.ts";
+// Sin número de tensión (ADR-0337): la palabra del tramo, como en las barras.
+const colorGlobal = colorPorTension(informe.score_global);
+const lecturaGlobal = colorGlobal ? LECTURA_SEMAFORO[colorGlobal].toLowerCase() : "sin clasificar";
 const rojos = cinturonesRojos(informe);
 // Nombrar el cinturón, no sólo el barbarismo (ADR-0237).
 const dominante = cinturonDominante(informe);
@@ -13,7 +16,7 @@ const dominante = cinturonDominante(informe);
   <div class="cg-archive">
     <article class="cg-archive-card current">
       <div class="cg-archive-period">{mesLegible(informe.period)}</div>
-      <div class="cg-archive-bluf">Resumen editorial pendiente. Score global {num(informe.score_global)}/10, riesgo dominante {informe.barbarismo_activo}{dominante && ` (${dominante.nombre})`}.</div>
+      <div class="cg-archive-bluf">Resumen editorial pendiente. Tensión global: {lecturaGlobal}, riesgo dominante {informe.barbarismo_activo}{dominante && ` (${dominante.nombre})`}.</div>
       <div class="cg-archive-foot">
         <span class:list={["cg-archive-score", `rojos-${rojos}`]}>{rojos} en rojo</span>
       </div>

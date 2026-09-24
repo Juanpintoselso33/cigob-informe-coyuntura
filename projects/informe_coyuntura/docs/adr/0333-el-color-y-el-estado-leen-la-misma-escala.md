@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-09-20
 cinturon: 'transversal'
 archivos: ['config.py', 'scripts/parametrica.py', 'tests/test_color_y_estado_no_se_contradicen.py']
-relacionado: ['0181', '0195']
+relacionado: ['0181', '0195', '0337']
 ambito: 'Umbral `ESTABLE_MAX` y `CORTES_SEMAFORO` — cómo se nombra la tensión 0-10, no cómo se calcula'
 origen: 'Juan, 20-sep-2026: «¿por qué macro pasó a tensión?». Macro no había pasado a nada —está en `en_tension` desde agosto— pero al ir a explicarlo apareció que el titular decía «3,7 — Sin tensión relevante» y el cinturón, con el mismo 3,7, decía «en tensión».'
 ---

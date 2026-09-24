@@ -9,7 +9,7 @@
 // -- es la única fuente de verdad y este componente solo la lee, para no
 // desincronizarse si algún día CORTES_SEMAFORO cambia (ver
 // tests/test_web_semaforo.py y test_publicar_semaforo.py::TestCortesExpuestos).
-import { informe, cap } from "../lib/datos.ts";
+import { informe, cap, num, tramosSemaforo, LECTURA_SEMAFORO, indiceDeTension } from "../lib/datos.ts";
 
 // Optional en el tipo: un snapshot generado antes de que `publicar._semaforos()`
 // empezara a publicar este campo (el commiteado hoy) todavía no lo trae. No
@@ -20,19 +20,25 @@ const cortes = informe.semaforo_cortes ?? [];
 {cortes.length > 0 && (
 <div class="cg-sem-leyenda">
   <p class="cg-sem-leyenda-intro">
-    El color es la misma tensión 0–10 que ya publica el informe, partida en cuatro tramos — no es una escala nueva.
+    El color resume en cuatro tramos cuánta tensión tiene cada índice, dimensión o indicador. En los
+    índices y sus dimensiones los cortes son los mismos para los cuatro cinturones: acá van en la escala
+    del puntaje (0 a 100) y, entre paréntesis, en la del índice de impacto social (100 = fines de 2023).
+    Cada indicador trae además su propia tabla, en su unidad, en la ficha.
   </p>
   <ul class="cg-sem-leyenda-list">
-    {cortes.map((corte, i) => {
-      const anterior = i > 0 ? cortes[i - 1].hasta : null;
-      const lectura = corte.hasta !== null
-        ? `tensión ≤ ${corte.hasta}`
-        : `tensión > ${anterior}`;
+    {tramosSemaforo().map((t, i, todos) => {
+      // Sin número de tensión (ADR-0337): el corte se dice en la escala del
+      // puntaje, que sí se publica, y sale de los cortes del snapshot.
+      const rango = (b: boolean) => i === todos.length - 1
+        ? `menos de ${num(indiceDeTension(t.desde, b))}`
+        : i === 0
+          ? `${num(indiceDeTension(t.hasta, b))} o más`
+          : `de ${num(indiceDeTension(t.hasta, b))} a ${num(indiceDeTension(t.desde, b))}`;
       return (
         <li>
-          <span class:list={["cg-tile-dot", `sem-${corte.color}`]} aria-hidden="true"></span>
-          <strong>{cap(corte.color)}</strong>
-          <span class="cg-sem-leyenda-lectura">{lectura}</span>
+          <span class:list={["cg-tile-dot", `sem-${t.color}`]} aria-hidden="true"></span>
+          <strong>{cap(t.color)}</strong>
+          <span class="cg-sem-leyenda-lectura">{LECTURA_SEMAFORO[t.color]} · {rango(false)} ({rango(true)})</span>
         </li>
       );
     })}

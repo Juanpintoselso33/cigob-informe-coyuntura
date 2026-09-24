@@ -145,9 +145,6 @@ const eyebrow = `Informe de coyuntura · CiGob · ${mesLegible(informe.period)}`
               <span class="diag-status" id="dStatus"><span class="d"></span><span id="dStatusTxt">{LABEL[sel.st]}</span></span>
             </div>
             <p class="diag-line" id="dLine">{sel.line}</p>
-            <div class="diag-metrics">
-              <div class="metric"><div class="n" id="dScore">{sel.score} <small>/10</small></div><div class="l">Tensión / 10</div></div>
-            </div>
             <a class="diag-cta" id="dCta" href={sel.href}><span id="dCtaTxt">Ver el detalle de {sel.belt}</span> <span class="arw">→</span></a>
           </div>
           <div class="legend" id="legend">
@@ -310,7 +307,7 @@ const eyebrow = `Informe de coyuntura · CiGob · ${mesLegible(informe.period)}`
     var el = {
       part: document.getElementById("dPart"), belt: document.getElementById("dBelt"),
       statusTxt: document.getElementById("dStatusTxt"), line: document.getElementById("dLine"),
-      score: document.getElementById("dScore"), cta: document.getElementById("dCta"),
+      cta: document.getElementById("dCta"),
       ctaTxt: document.getElementById("dCtaTxt"), diag: document.getElementById("diag"),
     };
     var selected = DEFAULT;
@@ -322,7 +319,6 @@ const eyebrow = `Informe de coyuntura · CiGob · ${mesLegible(informe.period)}`
       el.diag.style.setProperty("--dot-soft", SOFT[s.st]);
       el.part.textContent = s.part; el.belt.textContent = "· " + s.belt;
       el.statusTxt.textContent = LABEL[s.st]; el.line.textContent = s.line;
-      el.score.innerHTML = s.score + ' <small>/10</small>';
       el.cta.setAttribute("href", s.href); el.ctaTxt.textContent = "Ver el detalle de " + s.belt;
       document.querySelectorAll(".lg-row").forEach(function (r) {
         r.classList.toggle("active", r.getAttribute("data-id") === id);

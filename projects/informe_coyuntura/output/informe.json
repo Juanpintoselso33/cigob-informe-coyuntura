@@ -1724,7 +1724,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 111,2, equivale a una tensión de 2,8/10 en la escala del informe.",
+              "por_que": "El índice de la dimensión, 111,2, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 2.8
             }
           },
@@ -1896,7 +1896,7 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 95,5, equivale a una tensión de 5,9/10 en la escala del informe.",
+              "por_que": "El índice de la dimensión, 95,5, está en amarillo (tensión moderada) en la escala del informe.",
               "tension": 5.9
             }
           },
@@ -2062,7 +2062,7 @@
               "color": "rojo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 24,5, equivale a una tensión de 10,0/10 en la escala del informe.",
+              "por_que": "El índice de la dimensión, 24,5, está en rojo (tensión crítica) en la escala del informe.",
               "tension": 10.0
             }
           },
@@ -2252,7 +2252,7 @@
               "color": "naranja",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 91,5, equivale a una tensión de 6,7/10 en la escala del informe.",
+              "por_que": "El índice de la dimensión, 91,5, está en naranja (tensión alta) en la escala del informe.",
               "tension": 6.7
             }
           },
@@ -2424,7 +2424,7 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 115,9, equivale a una tensión de 1,8/10 en la escala del informe.",
+              "por_que": "El índice de la dimensión, 115,9, está en verde (sin tensión relevante) en la escala del informe.",
               "tension": 1.8
             }
           }

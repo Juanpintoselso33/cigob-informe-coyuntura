@@ -34,7 +34,7 @@ const nombresTensionados = filas.filter(f => f.tensionado).map(f => f.nombre);
 ---
 <div class="cg-panel" id="cg-tension">
   <p class="cg-eyebrow">Tensión sistémica</p>
-  <h3>Riesgo dominante: {cap(informe.barbarismo_activo)}{dominante && ` — ${dominante.nombre} (${num(dominante.score)}/10)`}</h3>
+  <h3>Riesgo dominante: {cap(informe.barbarismo_activo)}{dominante && ` — ${dominante.nombre}`}</h3>
   <ul class="cg-matriz" role="list">
     {filas.map(f => (
       <li class:list={["cg-matriz-item", { "is-tensionado": f.tensionado }]}>

@@ -1747,3 +1747,8 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
     display: inline-block; width: 16px; height: 0; vertical-align: middle;
     border-top: 1px dashed var(--muted-soft); margin-right: 5px;
 }
+
+/* Evolución por índice (ADR-0337): subir es mejorar, al revés que la tensión,
+   así que la variación se colorea por sentido y no por dirección. */
+.cg-chart-mini-delta.mejora  { background: #DCFCE7; color: #14532D; }
+.cg-chart-mini-delta.empeora { background: #FEE2E2; color: #7F1D1D; }

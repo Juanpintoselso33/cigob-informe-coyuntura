@@ -415,3 +415,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0320](0320-la-portada-no-explica-el-metodo-lo-enlaza.md) | La portada no explica el método: lo enlaza |  | vigente |
 | [0326](0326-el-marco-dice-como-comunica-no-solo-que-mide.md) | El marco dice cómo comunica, no sólo qué mide |  | vigente |
 | [0333](0333-el-color-y-el-estado-leen-la-misma-escala.md) | El color y el estado leen la misma escala y tienen que decir lo mismo |  | vigente |
+| [0337](0337-la-tension-se-lee-por-color-sin-numero.md) | La tensión se lee por color, sin número |  | vigente |

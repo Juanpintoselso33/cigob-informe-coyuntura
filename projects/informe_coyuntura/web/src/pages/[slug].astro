@@ -9,7 +9,7 @@ import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
 import DimensionesEvolucion from "../components/DimensionesEvolucion.astro";
 import {
   informe, CINTURONES, indicadoresOrdenados, tensionDeDimension,
-  fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel,
+  fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel, coloresEnIndice,
 } from "../lib/datos.ts";
 
 export function getStaticPaths() {
@@ -864,9 +864,8 @@ const robChartData = rob?.hist && indice ? {
           base explícita. La auditoría de septiembre recuperó informes de 2023 y rectificó
           la supuesta suspensión de la encuesta (ADR-0273). El registro SNIC es un
           contraste de distinto universo y frecuencia. El agregado no representa un
-          porcentaje de bienestar ni un pronóstico electoral. El{" "}
-          <strong>score {num(c.score)}/10</strong> deriva del <strong>ITCIS {num(c.itvc?.valor)}</strong>:
-          tensión = 5 − (ITCIS − 100) × 0,2.
+          porcentaje de bienestar ni un pronóstico electoral. El color del cinturón
+          sale del <strong>ITCIS {num(c.itvc?.valor)}</strong>: {coloresEnIndice(true)}.
         </p>
       </section>
     )}
@@ -891,9 +890,8 @@ const robChartData = rob?.hist && indice ? {
           <strong>asistencia directa</strong> mide la desintermediación del gasto social (TDPS) y
           el <strong>orden público</strong>, la reducción de cortes en CABA vs. 2023 — con su
           validez judicial restablecida: la Cámara revocó en marzo de 2026 la nulidad de primera
-          instancia. El <strong>score {num(c.score)}/10</strong> y el{" "}
-          <strong>ITCG {num(c.itcg?.valor)}/100</strong> son la misma medición en dos escalas:
-          tensión = (100 − ITCG) / 10.
+          instancia. El color del cinturón sale del <strong>ITCG {num(c.itcg?.valor)}/100</strong>:{" "}
+          {coloresEnIndice(false)}.
         </p>
       </section>
     )}
@@ -910,10 +908,10 @@ const robChartData = rob?.hist && indice ? {
           en el detalle del índice.
           Cada indicador se puntúa por <strong>interpolación entre las anclas</strong> de su
           tabla de umbrales (sin escalones de banda: dos valores casi iguales reciben
-          puntajes casi iguales). El <strong>score {num(c.score)}/10</strong> y
-          el <strong>ITCM {num(c.itcm?.valor)}/100</strong> son la misma medición en dos escalas:
-          tensión = (100 − ITCM) / 10; la escala 0–10 permite comparar macro con los otros
-          tres cinturones y componer el score global.
+          puntajes casi iguales). El color del cinturón sale del{" "}
+          <strong>ITCM {num(c.itcm?.valor)}/100</strong>: {coloresEnIndice(false)}. Los cuatro
+          cinturones comparten los mismos cortes de color, que es lo que permite compararlos
+          y componer la tensión global.
         </p>
       </section>
     )}
@@ -947,7 +945,6 @@ const robChartData = rob?.hist && indice ? {
         <div><dt>Valor publicado</dt><dd>{num(indice.data.valor)}</dd></div>
         <div><dt>90% de los casos</dt><dd>{num(rob.p05)} – {num(rob.p95)}</dd></div>
         <div><dt>Amplitud</dt><dd>{num(robAmplitud!)} puntos</dd></div>
-        <div><dt>En tensión (0-10)</dt><dd>{num(rob.tension_rango[0])} – {num(rob.tension_rango[1])}</dd></div>
       </dl>
       <p class="cg-modal-h4">La distribución de los {rob.n_draws.toLocaleString("es-AR")} escenarios</p>
       <div id="cg-det-rob-chart" data-sigla={indice.sigla}></div>

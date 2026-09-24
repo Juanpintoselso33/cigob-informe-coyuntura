@@ -11,8 +11,8 @@
 // La barra va de BANDA bajo el lead, no en una segunda columna: es ancha y
 // baja, y metida en una columna propia quedaba apretada contra el título
 // (ADR-0204). La aguja de arco que estaba antes sí pedía columna.
-import { informe, cap, mesLegible, indicadoresRezagados, num,
-         cinturonDominante, cinturonesRojos } from "../lib/datos.ts";
+import { informe, cap, mesLegible, indicadoresRezagados,
+         cinturonDominante, cinturonesRojos, colorPorTension, LECTURA_SEMAFORO } from "../lib/datos.ts";
 import NivelTension from "./NivelTension.astro";
 
 const f = informe.generated_at;
@@ -28,13 +28,12 @@ const rezagados = indicadoresRezagados(informe);
 // `politica` y `vida_cotidiana` comparten barbarismo. El veredicto era
 // correcto y parecía contradecir a su propia tabla.
 const dominante = cinturonDominante(informe);
-// Sin "/10" (ADR-0311). El pie vive DENTRO de la misma figura que el titular
-// sin escala: un "6,4/10" a cuarenta píxeles del "3,7" pelado devuelve la
-// escala que se acaba de sacar y, peor, hace parecer que son dos magnitudes
-// distintas. El score del cinturón sí conserva su escala en su propia card,
-// que es el nivel donde el lector baja a buscar el detalle.
+// Sin número (ADR-0337): el cinturón dominante se nombra con la palabra de su
+// tramo, igual que la barra que tiene arriba.
+const colorDominante = dominante ? colorPorTension(dominante.score) : null;
+const lecturaDominante = colorDominante ? LECTURA_SEMAFORO[colorDominante] : null;
 const pieRiesgo = `Riesgo dominante: ${cap(informe.barbarismo_activo)}`
-  + (dominante ? ` — ${dominante.nombre} (${num(dominante.score)})` : "");
+  + (dominante ? ` — ${dominante.nombre}${lecturaDominante ? ` (${lecturaDominante.toLowerCase()})` : ""}` : "");
 
 // La píldora decía "Estable" mientras un cinturón estaba en tensión alta.
 // No mentía —significa "no hay alerta multicinturón"— pero pegada a la barra
@@ -74,7 +73,6 @@ const pildoraClase = informe.alerta_multicinturon
         titulo="Tensión general"
         tamano="grande"
         pie={pieRiesgo}
-        mostrarEscala={false}
       />
     </div>
   </div>

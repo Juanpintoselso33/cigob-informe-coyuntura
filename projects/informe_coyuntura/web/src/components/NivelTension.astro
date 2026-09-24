@@ -16,24 +16,19 @@
 // concretas: hay lectores que no distinguen rojo de verde, el informe se
 // imprime y se fotocopia en gris, y un lector de pantalla no ve nada de esto.
 // Así que cada barra lleva, además del color: una PISTA BASE neutra con
-// marcas en cada corte y números en los extremos —que sobrevive a la escala
-// de grises y le da referencia a la posición del marcador—, una ETIQUETA con
-// el nombre del tramo, y un `aria-label` que dice todo en una frase.
+// marcas en cada corte —que sobrevive a la escala de grises y le da
+// referencia a la posición del marcador—, una ETIQUETA con el nombre del
+// tramo, y un `aria-label` que dice todo en una frase.
+//
+// Sin número (ADR-0337, extiende ADR-0311): la tensión se lee con el color, la
+// palabra del tramo y la posición del marcador, en todos los niveles. El 0-10
+// no es un tope natural —es el rango de la matriz de tensión— y mostrarlo como
+// "3,7/10" sugiere una escala científica que el método no promete.
 //
 // Las dos ausencias siguen separadas, como las dejó la revisión adversarial de
-// ago-2026: que no haya TENSIÓN y que no haya ESCALA. Sin cortes publicados el
-// valor se sigue mostrando —el dato existe, lo que falta es cómo clasificarlo—
-// y lo que se nombra es la falta de escala.
-//
-// `mostrarEscala` (ADR-0311) es una TERCERA ausencia, deliberada en vez de por
-// falta de datos: en el titular (Hero, tensión general) el número sale sin
-// "/10" ni los rótulos 0/10 bajo la pista, porque ese 10 no es un tope natural
-// —es el rango de la matriz de tensión— y mostrarlo ahí sugiere una escala
-// científica que el método no promete. La barra, los tramos de color y el
-// marcador NO cambian: lo que se saca es sólo el número de la escala, no la
-// posición relativa. A nivel de cinturón, dimensión e indicador la escala se
-// mantiene (ahí es donde el lector baja a buscar el detalle numérico) — por
-// eso el default es `true` y sólo el Hero lo apaga.
+// ago-2026: que no haya TENSIÓN y que no haya ESCALA. Sin cortes publicados
+// no hay color ni palabra que mostrar, así que ahí —y sólo ahí— el valor sale
+// como número: el dato existe, lo que falta es cómo clasificarlo.
 //
 // ── Por qué el SVG se dibuja así ────────────────────────────────────────────
 // La barra tiene que ocupar el ancho que le den (280 px en una card, 720 en el
@@ -44,8 +39,6 @@
 //     resuelven en píxeles de pantalla y no se deforman con ese estirado,
 //   · el viewBox mide ALTO unidades y el CSS le fija ALTO px → la escala
 //     vertical es exactamente 1, así que las `y` son píxeles reales,
-//   · y los rótulos 0/10 son HTML, no `<text>`: dentro del SVG el estirado
-//     horizontal los dejaría anchos y chatos.
 import { tramosSemaforo, colorPorTension, LECTURA_SEMAFORO, TENSION_MAX, num } from "../lib/datos.ts";
 
 interface Props {
@@ -59,14 +52,8 @@ interface Props {
       se dibuja. Para cuando el contexto ya lo dice (la card del cinturón ya
       lleva su nombre arriba y repetirlo es ruido). */
   ocultarTitulo?: boolean;
-  /** `false` saca el "/10" del valor y los rótulos 0/10 bajo la pista — para
-      el titular (tensión general), donde ese tope no debe leerse como una
-      escala científica. La barra, los tramos y el marcador no cambian.
-      Default `true`: a nivel de cinturón, dimensión e indicador la escala
-      se mantiene. */
-  mostrarEscala?: boolean;
 }
-const { tension, titulo, tamano = "chica", pie, ocultarTitulo = false, mostrarEscala = true } = Astro.props as Props;
+const { tension, titulo, tamano = "chica", pie, ocultarTitulo = false } = Astro.props as Props;
 
 const tramos = tramosSemaforo();
 const hayEscala = tramos.length > 0;
@@ -100,12 +87,11 @@ const Y_MARCA_1 = (Y - GROSOR_ACTIVO / 2 - 5).toFixed(2);
 const Y_MARCA_2 = (Y + GROSOR_ACTIVO / 2 + 5).toFixed(2);
 
 const lectura = color ? LECTURA_SEMAFORO[color] : null;
-const deValor = mostrarEscala ? ` de ${TENSION_MAX}` : "";
 const aria = valor === null
   ? `${titulo}: sin dato`
   : lectura
-    ? `${titulo}: tensión ${num(valor)}${deValor} — ${lectura} (${color})`
-    : `${titulo}: tensión ${num(valor)}${deValor} — escala de colores no disponible`;
+    ? `${titulo}: ${lectura} (${color})`
+    : `${titulo}: tensión ${num(valor)} — escala de colores no disponible`;
 ---
 <figure
   class:list={["cg-nivel", `cg-nivel--${tamano}`, color ? `sem-${color}` : "is-sinescala"]}
@@ -121,9 +107,7 @@ const aria = valor === null
       : lectura
         ? <span class="cg-nivel-lectura">{lectura}</span>
         : <span class="cg-nivel-lectura is-sinescala">Escala no disponible</span>}
-    {valor !== null && (
-      <span class="cg-nivel-valor">{num(valor)}{mostrarEscala && <span class="cg-nivel-valor-max">/{TENSION_MAX}</span>}</span>
-    )}
+    {valor !== null && !lectura && <span class="cg-nivel-valor">{num(valor)}</span>}
   </figcaption>
   <svg
     viewBox={`0 0 ${ANCHO} ${ALTO}`}
@@ -160,15 +144,5 @@ const aria = valor === null
       />
     )}
   </svg>
-  {/* Los extremos de la escala, en HTML: dentro del SVG el estirado horizontal
-      los dejaría anchos y chatos. Se ocultan en el titular (mostrarEscala=false):
-      la pista y el marcador siguen mostrando la posición relativa, lo que se
-      saca es sólo el número. */}
-  {mostrarEscala && (
-    <div class="cg-nivel-escala" aria-hidden="true">
-      <span>0</span>
-      <span>{TENSION_MAX}</span>
-    </div>
-  )}
   {pie && <p class="cg-nivel-pie">{pie}</p>}
 </figure>
