@@ -1484,7 +1484,7 @@ def fetch_iaf_transferencias() -> dict | None:
             "periodo": f"{year_ref} vs {year_ref - 1}",
             "ipc_aplicado_pct": round(deflactor * 100.0, 1),
             "unidad": "% interanual real",
-            "fuente": ("Sec. Hacienda — RON, planilla mensual consolidada + IPC "
+            "fuente": ("Sec. Hacienda — transferencias de recursos de origen nacional, planilla mensual consolidada + IPC "
                        "INDEC (deflactado mes a mes)"),
             "detalle_txt": (
                 f"{year_ref}: {var_nominal * 100:+.1f}% nominal contra un deflactor "

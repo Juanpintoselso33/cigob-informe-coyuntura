@@ -131,3 +131,94 @@ def test_ninguna_sigla_ajena_se_publica_sin_su_dueno():
     assert not sueltas, (
         "siglas de terceros publicadas sin decir de quién son:\n  "
         + "\n  ".join(sueltas))
+
+
+# ── El Monitor habla sin siglas (ADR-0340) ───────────────────────────────────
+# Las siglas de los cuatro índices quedaron para la capa metodológica: las
+# fichas (`fichas.ts` y la página que las renderiza) las conservan porque ahí
+# se documenta el índice como objeto técnico. En todo lo demás que ve el lector
+# el índice se nombra por lo que mide. Tampoco se muestran referencias a ADR ni
+# el formato de archivo («CSV»): son vocabulario interno.
+
+INDICES = ("ITCM", "ITCP", "ITCIS", "ITCG")
+PROHIBIDAS = re.compile(r"\b(?:ITCM|ITCP|ITCIS|ITCG|ITVC|ADR-\d{4}|CSV)\b")
+CAPA_METODOLOGICA = {
+    ROOT / "web" / "src" / "lib" / "fichas.ts",
+    ROOT / "web" / "src" / "pages" / "metodologia" / "[id].astro",
+}
+VISIBLES = [p for p in DISPLAY if p not in CAPA_METODOLOGICA]
+
+
+def _sin_comentarios(texto: str) -> str:
+    """Saca los comentarios de .ts/.astro: ahí la clave técnica y el número de
+    ADR se nombran con todo derecho. `//` precedido de `:` es una URL."""
+    texto = re.sub(r"\{/\*.*?\*/\}", " ", texto, flags=re.S)
+    texto = re.sub(r"/\*.*?\*/", " ", texto, flags=re.S)
+    texto = re.sub(r"<!--.*?-->", " ", texto, flags=re.S)
+    return re.sub(r"(?<![:\\])//.*", " ", texto)
+
+
+def test_la_capa_metodologica_existe():
+    """Si un archivo de la excepción se renombra, la excepción deja de
+    exceptuar y este test lo dice antes que el de abajo falle por él."""
+    for p in CAPA_METODOLOGICA:
+        assert p.exists(), f"{p.relative_to(ROOT)} no existe: ¿se movió la capa de fichas?"
+
+
+@pytest.mark.parametrize("ruta", VISIBLES, ids=lambda p: p.name)
+def test_la_web_no_muestra_siglas_internas(ruta):
+    texto = _sin_comentarios(ruta.read_text(encoding="utf-8"))
+    # La sigla sigue declarada como identificador del índice (`indiceDe`): es
+    # la clave con la que la matriz cruzada marca su fila, no texto de pantalla.
+    texto = re.sub(r'sigla: "(?:ITCM|ITCP|ITCIS|ITCG)"', " ", texto)
+    encontradas = sorted(set(PROHIBIDAS.findall(texto)))
+    assert not encontradas, (
+        f"{ruta.relative_to(ROOT)} muestra {encontradas}: el índice se nombra en llano "
+        f"(«índice macroeconómico»), sin ADR ni «CSV» (ADR-0340)")
+
+
+def test_el_snapshot_no_publica_siglas_internas():
+    """La prosa que escribe publicar.py tampoco. `validacion_cruzada.filas[].indice`
+    es la clave de la fila (la usan la web para marcar «este cinturón» y
+    bigquery_export); lo que se lee es `nombre`."""
+    import json
+    snapshot = json.loads(
+        (ROOT / "web" / "src" / "data" / "informe.json").read_text(encoding="utf-8"))
+    sucios = [(r, PROHIBIDAS.findall(t), t[:90])
+              for r, t in _textos_del_snapshot(snapshot)
+              if PROHIBIDAS.search(t)
+              and not re.fullmatch(r"\.validacion_cruzada\.filas\[\d+\]\.indice", r)
+              # Citas de archivos de la fuente cargadas a mano (datos.jus.gob.ar
+              # publica CSV): no es un rótulo del Monitor. Viajan del colector.
+              and ".limites_metodologicos" not in r
+              and not r.endswith((".detalle_txt", ".aporte_input_txt"))]
+    assert not sucios, (
+        f"{len(sucios)} texto(s) del snapshot con siglas internas — ¿se corrió "
+        f"publicar.py?\n" + "\n".join(f"  {r}: {s} → {t}" for r, s, t in sucios[:8]))
+
+
+def test_la_matriz_cruzada_trae_el_nombre_que_se_lee():
+    import json
+    snapshot = json.loads(
+        (ROOT / "web" / "src" / "data" / "informe.json").read_text(encoding="utf-8"))
+    filas = (snapshot.get("validacion_cruzada") or {}).get("filas") or []
+    assert filas, "no hay matriz cruzada en el snapshot"
+    for f in filas:
+        assert f.get("nombre") and not PROHIBIDAS.search(f["nombre"]), f
+
+
+def test_los_nombres_llanos_son_los_mismos_en_config_y_en_la_web():
+    """Tres lugares declaran el nombre llano: config (prosa de publicar.py),
+    `datos.ts::indiceDe` (páginas) y el `INDICE_CFG` del modal. Si divergen, el
+    mismo índice se llama de dos maneras en la misma pantalla."""
+    import sys
+    sys.path.insert(0, str(ROOT))
+    from config import NOMBRES_PUBLICOS, SIGLAS_PUBLICAS
+    assert set(NOMBRES_PUBLICOS) == set(SIGLAS_PUBLICAS)
+    datos = (ROOT / "web" / "src" / "lib" / "datos.ts").read_text(encoding="utf-8")
+    modal = (ROOT / "web" / "src" / "components" / "IndicadorModal.astro").read_text(encoding="utf-8")
+    for clave, nombre in NOMBRES_PUBLICOS.items():
+        assert f'corto: "{nombre}"' in datos, f"datos.ts no declara {nombre!r}"
+        assert f'Corto: "{nombre[0].upper() + nombre[1:]}"' in datos, f"datos.ts: falta la mayúscula de {nombre!r}"
+        assert f'key: "{clave}", nombre: "{nombre}"' in modal, f"IndicadorModal no declara {nombre!r}"
+        assert not PROHIBIDAS.search(nombre)

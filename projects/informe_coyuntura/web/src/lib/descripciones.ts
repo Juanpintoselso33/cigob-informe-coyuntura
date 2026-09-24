@@ -18,13 +18,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación",
   },
   reservas_bcra: {
-    que: "Estimación CIGOB de reservas netas: combina activos y flujos de corto plazo de la planilla SDDS, y agrega depósitos del Tesoro y un tramo de vencimientos excluido por el diseño. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.",
+    que: "Estimación de CiGob de reservas netas: combina activos y flujos de corto plazo de la planilla de reservas internacionales que publica el Banco Central, y agrega depósitos del Tesoro y un tramo de vencimientos excluido por el diseño. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.",
     aporta: "Aproxima el margen externo con una definición explícita. Su lectura depende de los pasivos excluidos y debe contrastarse con otras medidas de reservas y liquidez.",
     frecuencia: "Mensual", tipo: "Nivel neto (stock)",
   },
   idc: {
     que: "Índice de Capacidad Prestable: mide si el sistema financiero tiene fondos y margen para prestar, comparando tres niveles contra su propia historia — la tasa real que reciben los depositantes (precio), el crecimiento interanual real de los depósitos privados (volumen) y la holgura entre depósitos y préstamos (asignación).",
-    aporta: "Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico · por encima de +0,5 expansión (verde) · por debajo de −0,5 contracción (rojo). Datos del BCRA (BADLAR, depósitos y préstamos privados) e IPC del INDEC.",
+    aporta: "Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico · por encima de +0,5 expansión (verde) · por debajo de −0,5 contracción (rojo). Datos del Banco Central de la República Argentina (BCRA) —tasa de plazos fijos mayoristas (BADLAR), depósitos y préstamos privados— e índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC).",
     frecuencia: "Mensual", tipo: "Índice (σ)",
   },
   badlar: {
@@ -34,7 +34,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   emae_ia: {
     que: "El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás.",
-    aporta: "Adelanta el ritmo del PBI: si la economía se expande o se contrae.",
+    aporta: "Adelanta el ritmo del producto interno bruto: si la economía se expande o se contrae.",
     frecuencia: "Mensual", tipo: "Variación i.a.",
   },
   empleo_registrado: {
@@ -53,8 +53,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Conteo en ventana móvil",
   },
   judicializacion: {
-    que: "Qué porcentaje de los sumarios publicados por SAIJ en jurisdicción federal y nacional menciona una medida cautelar. Ya NO puntúa en el ITCP: salió del índice en ADR-0255 porque ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda —una cautelar entre privados cuenta igual—, así que la proporción no mide judicialización de la agenda de gobierno. Se sigue relevando.",
-    aporta: "Da la densidad de menciones cautelares en la jurisprudencia publicada, que es un dato sobre el corpus de SAIJ y no sobre el Ejecutivo. Se publica como proporción y no como conteo porque el número de fallos publicados depende del volumen editorial de la base de jurisprudencia: el conteo crudo se quintuplica entre 2016 y 2021 sin que las cautelares se hayan quintuplicado.",
+    que: "Qué porcentaje de los sumarios publicados por el Sistema Argentino de Información Jurídica (SAIJ) en jurisdicción federal y nacional menciona una medida cautelar. Ya no puntúa en el índice político: salió del índice porque ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda —una cautelar entre privados cuenta igual—, así que la proporción no mide judicialización de la agenda de gobierno. Se sigue relevando.",
+    aporta: "Da la densidad de menciones cautelares en la jurisprudencia publicada, que es un dato sobre el corpus del Sistema Argentino de Información Jurídica (SAIJ) y no sobre el Ejecutivo. Se publica como proporción y no como conteo porque el número de fallos publicados depende del volumen editorial de la base de jurisprudencia: el conteo crudo se quintuplica entre 2016 y 2021 sin que las cautelares se hayan quintuplicado.",
     frecuencia: "Anual", tipo: "% de fallos",
   },
   velocidad_resolucion: {
@@ -68,18 +68,18 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Conteo en ventana móvil",
   },
   emae_difusion: {
-    que: "De los quince sectores en que el INDEC divide la actividad económica, cuántos crecen respecto de un año atrás.",
-    aporta: "Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El EMAE informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.",
+    que: "De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica, cuántos crecen respecto de un año atrás.",
+    aporta: "Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El estimador mensual de actividad económica (EMAE) informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.",
     frecuencia: "Mensual", tipo: "Índice de difusión",
   },
   ipi_manufacturero: {
     que: "Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses.",
-    aporta: "Segunda lectura de la actividad, junto al EMAE: mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.",
+    aporta: "Segunda lectura de la actividad, junto al estimador mensual de actividad económica (EMAE): mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.",
     frecuencia: "Mensual", tipo: "Variación i.a. (promedio 3 meses)",
   },
   actividad_tributaria: {
-    que: "Cuánto crecieron, en términos reales y respecto de un año atrás, el IVA-DGI y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.",
-    aporta: "La lectura más fresca de la dimensión: Hacienda informa estos dos tributos antes de que el INDEC cierre el EMAE del mismo mes. El IVA sigue de cerca el consumo interno; el cheque sigue toda transacción bancaria, así que además de actividad capta bancarización.",
+    que: "Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la Dirección General Impositiva y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.",
+    aporta: "La lectura más fresca de la dimensión: Hacienda informa estos dos tributos antes de que el Instituto Nacional de Estadística y Censos (INDEC) cierre el estimador mensual de actividad económica (EMAE) del mismo mes. El impuesto al valor agregado (IVA) sigue de cerca el consumo interno; el cheque sigue toda transacción bancaria, así que además de actividad capta bancarización.",
     frecuencia: "Mensual", tipo: "Variación i.a. real (compuesto)",
   },
   saldo_comercial_12m: {
@@ -88,7 +88,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Nivel (acum. 12m)",
   },
   recaudacion: {
-    que: "Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de 2023, que vale 100. Combina tributos internos nacionales e Ingresos Brutos recaudado por los regímenes de COMARB; excluye los tributos aduaneros.",
+    que: "Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de 2023, que vale 100. Combina tributos internos nacionales e Ingresos Brutos recaudado por los regímenes de la Comisión Arbitral del Convenio Multilateral; excluye los tributos aduaneros.",
     aporta: "Aproxima la evolución de la base imponible mediante ingresos cobrados. También responde a cambios de alícuotas, vencimientos, pagos atrasados y reasignaciones tributarias. Un nivel menor que 100 indica menor recaudación real ajustada respecto de la base; no prueba por sí solo que haya menos actividad formal.",
     frecuencia: "Mensual", tipo: "Índice de base imponible real (100 = 4T-2023)",
   },
@@ -103,23 +103,23 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Expectativa",
   },
   idm: {
-    que: "Brecha de crecimiento real M3–M2: compara cuánto crece el agregado amplio de pesos del sector privado (M3 privado) con cuánto crece el transaccional (M2 privado), ambos en términos reales e interanuales. Los dos son agregados monetarios, así que la brecha NO es oferta menos demanda de dinero: estimar una demanda pide variables, forma funcional y validación, y nada de eso hay acá (ADR-0254). El M2 transaccional incluye el circulante en poder del público, las cuentas corrientes privadas en pesos y las cajas de ahorro privadas en pesos; excluye los depósitos a la vista remunerados de personas jurídicas. Ya NO puntúa en el ITCM: salió del índice en agosto de 2026 porque su banda castigaba la brecha positiva apoyada en la lectura que ADR-0254 dio por muerta, y ninguna referencia externa del proyecto pudo firmar esa dirección. Se sigue calculando y su serie histórica se conserva, pero ya no se publica como tarjeta del tablero.",
+    que: "Brecha de crecimiento real entre dos agregados monetarios: compara cuánto crece el agregado amplio de pesos del sector privado (el que se conoce como M3 privado) con cuánto crece el transaccional (M2 privado), ambos en términos reales e interanuales. Los dos son agregados monetarios, así que la brecha no es oferta menos demanda de dinero: estimar una demanda pide variables, forma funcional y validación, y nada de eso hay acá. El agregado transaccional incluye el circulante en poder del público, las cuentas corrientes privadas en pesos y las cajas de ahorro privadas en pesos; excluye los depósitos a la vista remunerados de personas jurídicas. Ya no puntúa en el índice macroeconómico: salió del índice en agosto de 2026 porque su banda castigaba la brecha positiva apoyada en esa lectura de oferta contra demanda, que el proyecto descartó, y ninguna referencia externa del proyecto pudo firmar esa dirección. Se sigue calculando y su serie histórica se conserva, pero ya no se publica como tarjeta del tablero.",
     aporta: "Muestra hacia dónde se mueven los pesos dentro del sistema: una brecha positiva dice que el agregado amplio corre más rápido que el transaccional —los pesos se van a plazo y a instrumentos remunerados en vez de quedarse en transacciones—; una negativa, lo contrario. Es un dato sobre la velocidad relativa de dos agregados, no un diagnóstico de exceso monetario — y por eso se publica como dato y no como puntaje.",
     frecuencia: "Mensual", tipo: "Brecha i.a. real",
   },
   desequilibrio_monetario: {
-    que: "Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso (ADR-0252): el BCRA estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.",
+    que: "Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso: el Banco Central estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.",
     aporta: "Los dos componentes se leen juntos porque uno solo alcanza para engañar: la composición de la liquidez puede verse estable mientras crece la compra de divisas, y a la inversa. El resultado sale de cruzarlos en una matriz, no de promediarlos. Mayor tensión reduce el puntaje de estabilidad monetaria.",
     frecuencia: "Mensual", tipo: "Tensión 0–100",
   },
   iai: {
-    que: "Índice Anticipador de Inversión: mide la inversión física/tradicional combinando la actividad de la construcción que releva el INDEC (ISAC) y la importación de bienes de capital, en variación interanual.",
+    que: "Índice Anticipador de Inversión: mide la inversión física/tradicional combinando el indicador sintético de la actividad de la construcción (ISAC) que releva el Instituto Nacional de Estadística y Censos (INDEC) y la importación de bienes de capital, en variación interanual.",
     aporta: "Resume señales de construcción e importación de bienes de capital frente al mismo mes del año anterior. No mide depreciación ni inversión neta: una caída interanual no demuestra que se consuma más capital del que se repone. Los bienes importados se miden en dólares corrientes, por lo que también influyen sus precios.",
     frecuencia: "Mensual", tipo: "Variación i.a. ponderada",
   },
   icip: {
-    que: "Pagos de servicios digitales y productividad: combina los pagos al exterior por servicios de informática (software, nube, IA) con la productividad laboral (IPI/empleo), en variación interanual. NO es inversión digital ni capitalización (ADR-0253): en cuentas nacionales esos pagos transfronterizos son consumo intermedio, no formación bruta de capital — pagar la licencia de la nube todos los meses no capitaliza a nadie. Ya NO puntúa en el ITCM: salió del índice en agosto de 2026 porque suma con el mismo signo dos insumos que necesitarían signos opuestos —más pagos al exterior por informática suben el puntaje, y son gasto corriente en divisas—, así que ninguna dimensión lo arreglaba. Se sigue calculando y su serie histórica se conserva, pero ya no se publica como tarjeta del tablero.",
-    aporta: "Sigue el gasto en tecnología que no pasa por aduana como bien de capital. Leído junto al IAI apunta a la 'trampa de la madurez': un país puede invertir en ladrillos y camiones pero estancarse si no se digitaliza. Con una advertencia declarada en la ficha: un aumento de los pagos al exterior por software admite leerse como digitalización o como dependencia tecnológica, y el indicador puntúa la primera. Medir inversión digital de verdad pediría software, bases de datos y equipos TIC según cuentas nacionales: eso es un indicador nuevo, no otro rótulo sobre éste. Se construye con datos del INDEC (balanza de servicios + IPI/empleo).",
+    que: "Pagos de servicios digitales y productividad: combina los pagos al exterior por servicios de informática (software, nube, inteligencia artificial) con la productividad laboral (producción industrial por ocupado), en variación interanual. No es inversión digital ni capitalización: en cuentas nacionales esos pagos transfronterizos son consumo intermedio, no formación bruta de capital — pagar la licencia de la nube todos los meses no capitaliza a nadie. Ya no puntúa en el índice macroeconómico: salió del índice en agosto de 2026 porque suma con el mismo signo dos insumos que necesitarían signos opuestos —más pagos al exterior por informática suben el puntaje, y son gasto corriente en divisas—, así que ninguna dimensión lo arreglaba. Se sigue calculando y su serie histórica se conserva, pero ya no se publica como tarjeta del tablero.",
+    aporta: "Sigue el gasto en tecnología que no pasa por aduana como bien de capital. Leído junto al índice anticipador de inversión apunta a la 'trampa de la madurez': un país puede invertir en ladrillos y camiones pero estancarse si no se digitaliza. Con una advertencia declarada en la ficha: un aumento de los pagos al exterior por software admite leerse como digitalización o como dependencia tecnológica, y el indicador puntúa la primera. Medir inversión digital de verdad pediría software, bases de datos y equipos de informática y comunicaciones según cuentas nacionales: eso es un indicador nuevo, no otro rótulo sobre éste. Se construye con datos del Instituto Nacional de Estadística y Censos (INDEC): balanza de servicios y producción industrial por ocupado.",
     frecuencia: "Mensual", tipo: "Variación i.a. ponderada",
   },
   prestamos_privados: {
@@ -150,12 +150,12 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (12m)", tipo: "Conteo",
   },
   brecha_obra_publica: {
-    que: "La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que trabajan para clientes privados. El INDEC les pregunta todos los meses si creen que su actividad va a subir o bajar en el trimestre siguiente, y publica las dos respuestas por separado. El indicador resta una de la otra y promedia los últimos doce meses.",
+    que: "La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que trabajan para clientes privados. El Instituto Nacional de Estadística y Censos (INDEC) les pregunta todos los meses si creen que su actividad va a subir o bajar en el trimestre siguiente, y publica las dos respuestas por separado. El indicador resta una de la otra y promedia los últimos doce meses.",
     aporta: "Compara las expectativas de constructoras orientadas a obra pública y privada. Una brecha negativa indica un saldo de expectativas menor en el primer grupo. Compartir sector no garantiza iguales costos, acceso al crédito ni composición de proyectos: la diferencia no aísla el efecto causal de la política pública ni elimina el ciclo económico. Su interpretación como tensión política debe contrastarse con la agenda y las condiciones del período.",
     frecuencia: "Mensual (12m)", tipo: "Brecha (pp)",
   },
   apoyo_empresario: {
-    que: "Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Puntúa en el ITCP con la mitad de la dimensión de sector privado. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados. Hasta septiembre de 2026 el indicador promediaba dos cámaras, con la Asociación Empresaria Argentina; salió del cálculo porque dejó de publicar comunicados el 31 de marzo de 2026 y un rótulo no puede prometer dos cámaras midiendo una. Sus comunicados quedan guardados y clasificados: si vuelve a publicar, vuelve a entrar. Desde el recorte, un mes se publica sólo si tiene al menos tres comunicados computables en la ventana — con una sola cámara, dos comunicados alcanzaban para dar un saldo de −1,0 que no describe nada.",
+    que: "Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Puntúa en el índice político con la mitad de la dimensión de sector privado. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados. Hasta septiembre de 2026 el indicador promediaba dos cámaras, con la Asociación Empresaria Argentina; salió del cálculo porque dejó de publicar comunicados el 31 de marzo de 2026 y un rótulo no puede prometer dos cámaras midiendo una. Sus comunicados quedan guardados y clasificados: si vuelve a publicar, vuelve a entrar. Desde el recorte, un mes se publica sólo si tiene al menos tres comunicados computables en la ventana — con una sola cámara, dos comunicados alcanzaban para dar un saldo de −1,0 que no describe nada.",
     aporta: "Es la única medida directa de la relación entre el Gobierno y el empresariado organizado: las demás miran el clima de negocios o los datos de un sector, y de ahí infieren el vínculo. Acá el vínculo está dicho. Conviene saber qué no dice: no mide el humor del empresariado en general ni la opinión de sus asociados, sino lo que una asociación decidió declarar públicamente — una cámara puede callar por conveniencia y ese silencio no aparece. Desde septiembre de 2026 el silencio sí aparece: hay un aviso automático cuando una cámara deja de publicar por más tiempo que el que se tomó nunca. La clasificación la hace una persona siguiendo reglas escritas de antemano, y dos personas distintas la hicieron por separado para verificar que las reglas no dejan lugar a la interpretación.",
     frecuencia: "Continua (12m)", tipo: "Saldo (−1 a +1)",
   },
@@ -165,17 +165,17 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (12m)", tipo: "Ratio",
   },
   conflictividad_nacional: {
-    que: "Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el total de 2023 (el año base del mandato). Cuenta marchas, concentraciones y disturbios registrados por ACLED, el relevamiento académico internacional estándar de conflicto social, en las 24 jurisdicciones.",
+    que: "Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el total de 2023 (el año base del mandato). Cuenta marchas, concentraciones y disturbios registrados por Armed Conflict Location & Event Data (ACLED), el relevamiento académico internacional estándar de conflicto social, en las 24 jurisdicciones.",
     aporta: "Aproxima la tensión en la calle a escala nacional, un límite real al margen de maniobra del Gobierno. Menos conflicto que en 2023 significa menos tensión; la comparación de 12 meses contra el año completo absorbe la estacionalidad del calendario de protestas.",
-    frecuencia: "Semanal (ACLED)", tipo: "Variación (%)",
+    frecuencia: "Semanal", tipo: "Variación (%)",
   },
   jornadas_individuales_no_trabajadas_12m: {
     que: "Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. La Secretaría de Trabajo las estima multiplicando la cantidad de huelguistas por la duración de cada paro.",
-    aporta: "Agrega intensidad a la frecuencia de eventos que mide ACLED: distingue un conflicto breve y pequeño de uno largo o masivo. Es una estadística laboral oficial y sus valores mensuales pueden sumarse sin duplicar conflictos ni personas.",
+    aporta: "Agrega intensidad a la frecuencia de eventos que mide el relevamiento internacional Armed Conflict Location & Event Data (ACLED): distingue un conflicto breve y pequeño de uno largo o masivo. Es una estadística laboral oficial y sus valores mensuales pueden sumarse sin duplicar conflictos ni personas.",
     frecuencia: "Mensual (12m)", tipo: "Conteo de jornadas",
   },
   movilizacion_cepa: {
-    que: "El nivel de conflictividad social y laboral: paros, protestas y cortes, según los informes del centro CEPA.",
+    que: "El nivel de conflictividad social y laboral: paros, protestas y cortes, según los informes del Centro de Economía Política Argentina.",
     aporta: "Aproxima la tensión en la calle. Desde julio de 2026 no integra el índice del cinturón ni se publica en el tablero: su fuente publica informes recién desde fines de 2025 (sin serie histórica posible) y su cifra acumula conflictos desde el inicio de cada año, lo que impide comparar meses entre sí — la medición continúa como contraste interno del indicador nacional de conflictividad.",
     frecuencia: "Por informe", tipo: "Índice (0–100)",
   },
@@ -239,14 +239,14 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   // ADR-0033: en el ITCIS puntúa el encarecimiento RELATIVO (alimentos vs IPC
   // general) — la versión salario/alimentos duplicaba la brecha (r = 0,985)
   ipc_alimentos: {
-    que: "Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa por el NIVEL acumulado del índice de alimentos relativo al IPC general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.",
+    que: "Cuánto suben en el mes los precios de alimentos y bebidas. En el índice de impacto social puntúa por el nivel acumulado del índice de alimentos relativo al índice de precios al consumidor (IPC) general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.",
     aporta: "Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.",
-    frecuencia: "Mensual", tipo: "Variación (card) · nivel vs IPC general (índice)",
+    frecuencia: "Mensual", tipo: "Variación (card) · nivel vs índice general de precios (índice)",
   },
   endeudamiento_familiar: {
-    que: "Cuánto deben las familias por consumo (tarjetas + personales), en nivel de deuda REAL (descontada la inflación). Ya NO puntúa en el ITCIS: salió del índice en ADR-0154 porque el stock de deuda por sí solo no distingue acceso al crédito de fragilidad. Se sigue relevando y su serie se publica.",
+    que: "Cuánto deben las familias por consumo (tarjetas + personales), en nivel de deuda real (descontada la inflación). Ya no puntúa en el índice de impacto social: salió del índice porque el stock de deuda por sí solo no distingue acceso al crédito de fragilidad. Se sigue relevando y su serie se publica.",
     aporta: "Mide el acceso al crédito de los hogares como stock puro, y esa es justamente su limitación: sin saber si esa deuda se puede pagar, más crédito no dice si es acceso o necesidad. Lo que quedó midiendo la dimensión de vulnerabilidad es la mora de esa cartera, que sí lo distingue.",
-    frecuencia: "Mensual (~2 meses de rezago)", tipo: "Índice de deuda real (B100)",
+    frecuencia: "Mensual (~2 meses de rezago)", tipo: "Índice de deuda real (base 100)",
   },
   mora_familias: {
     que: "Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular — con atrasos de pago —, ponderado por el saldo de cada línea.",
@@ -254,32 +254,32 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (~2 meses de rezago)", tipo: "Nivel (%)",
   },
   carga_servicio_deuda_hogares: {
-    que: "Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus deudas. El BCRA calcula promedios de tres meses para el servicio de deuda y para la masa salarial.",
+    que: "Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus deudas. El Banco Central calcula promedios de tres meses para el servicio de deuda y para la masa salarial.",
     aporta: "Mide capacidad comprometida antes de que aparezca el incumplimiento. Complementa a la mora: una observa la presión de pagos y la otra los atrasos ya materializados.",
     frecuencia: "Mensual (publicación semestral)", tipo: "Nivel (%)",
   },
   peso_tarifas: {
-    que: "Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del AMBA.",
+    que: "Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE) cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del Área Metropolitana de Buenos Aires (AMBA).",
     aporta: "Mide directamente la asequibilidad de los servicios públicos y puntúa con 45% de la dimensión de precios. Agua+energía y transporte se comparan por separado con referencias internacionales de 10% y 5% del ingreso; entra la mayor tensión para que un rubro caro no quede oculto por otro barato.",
     frecuencia: "Mensual", tipo: "Canasta de servicios / salario · ancla internacional",
   },
   pobreza_nowcast: {
-    que: "El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del INDEC, que se publica dos veces al año: es una proyección que se actualiza todos los meses.",
+    que: "El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del Instituto Nacional de Estadística y Censos (INDEC), que se publica dos veces al año: es una proyección que se actualiza todos los meses.",
     aporta: "Permite seguir una estimación de pobreza entre publicaciones oficiales. Integra la dimensión de ingresos y consumo con signo invertido: más pobreza reduce el componente. Su peso efectivo se muestra en la composición del índice y no convierte la estimación en una medición oficial mensual.",
     frecuencia: "Mensual (semestre móvil)", tipo: "Estimación de terceros",
   },
   indice_lider: {
-    que: "Un índice que combina señales tempranas de la economía —financieras, de expectativas y de actividad— para anticipar los cambios de rumbo antes de que aparezcan en los datos corrientes. Ya NO puntúa en el ITCIS: salió del índice en ADR-0154 y pasó a ser el ancla externa contra la que se valida el ITCM.",
+    que: "Un índice que combina señales tempranas de la economía —financieras, de expectativas y de actividad— para anticipar los cambios de rumbo antes de que aparezcan en los datos corrientes. Ya no puntúa en el índice de impacto social: salió del índice y pasó a ser el ancla externa contra la que se valida el índice macroeconómico.",
     aporta: "Mira hacia adelante, que es lo que ningún componente del cinturón hace: los demás describen lo que ya ocurrió. Por eso su lugar pasó a ser el de contraste externo — un índice líder que se da vuelta anticipa el punto de giro que la marcha de la actividad va a registrar meses después.",
     frecuencia: "Mensual", tipo: "Nivel (índice base 100)",
   },
   alquiler_real: {
-    que: "Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el ITCIS puntúa por el NIVEL del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.",
+    que: "Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.",
     aporta: "La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.",
-    frecuencia: "Mensual", tipo: "Variación (card) · nivel relativo al IPC (índice)",
+    frecuencia: "Mensual", tipo: "Variación (card) · nivel relativo al índice general de precios (índice)",
   },
   consumo_carne_vacuna: {
-    que: "Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de SAGYP. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Desde ADR-0322 puntúa por separado, como corte aspiracional del consumo argentino.",
+    que: "Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de la Secretaría de Agricultura, Ganadería y Pesca. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Puntúa por separado, como corte aspiracional del consumo argentino.",
     aporta: "Mide específicamente la carne vacuna, que es la que el consumo aparente argentino trata como aspiracional y la que más cae. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena de vacunos por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones: una divergencia respecto del consumo puede afectar la interpretación y el puntaje.",
     frecuencia: "Mensual (unos 2 meses de rezago)", tipo: "Nivel (kg/hab) · índice base-100 en el gráfico",
   },
@@ -289,68 +289,68 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (unos 2 meses de rezago)", tipo: "Nivel (kg/hab) · índice base-100 en el gráfico",
   },
   consumo_carnes_otras: {
-    que: "Consumo aparente por habitante de carne aviar y porcina combinadas, en promedio móvil de doce meses, según el tablero oficial de SAGYP. Puntúa junto con `consumo_carne_vacuna` (ADR-0322), en reemplazo del compuesto único de las tres carnes (ADR-0217): separadas, una cae mientras la otra puede sostenerse o subir por sustitución.",
+    que: "Consumo aparente por habitante de carne aviar y porcina combinadas, en promedio móvil de doce meses, según el tablero oficial de la Secretaría de Agricultura, Ganadería y Pesca. Puntúa junto con el consumo de carne vacuna, en reemplazo del compuesto único de las tres carnes: separadas, una cae mientras la otra puede sostenerse o subir por sustitución.",
     aporta: "Complementa a la vacuna: si sube mientras la vacuna cae, describe sustitución hacia pollo y cerdo, no necesariamente menos proteína en total. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena de aviar+porcina por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones.",
     frecuencia: "Mensual (unos 2 meses de rezago)", tipo: "Nivel (kg/hab) · índice base-100 en el gráfico",
   },
   informalidad: {
-    que: "Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC.",
-    aporta: "Mide la precariedad laboral y la exclusión de la red de protección social. En el ITCIS su base es el 4T-2023 exacto (el trimestre de arranque del mandato).",
-    frecuencia: "Trimestral (EPH)", tipo: "Nivel (%)",
+    que: "Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC).",
+    aporta: "Mide la precariedad laboral y la exclusión de la red de protección social. En el índice de impacto social su base es el 4T-2023 exacto (el trimestre de arranque del mandato).",
+    frecuencia: "Trimestral (encuesta de hogares)", tipo: "Nivel (%)",
   },
   trabajo_independiente: {
-    que: "Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el ITCIS puntúa INVERTIDA: más peso independiente es peor.",
+    que: "Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el índice de impacto social puntúa invertida: más peso independiente es peor.",
     aporta: "Describe la composición del empleo registrado, excluido el monotributo social. Puede aumentar porque crecen los independientes o porque caen los asalariados. Complementa el número de empleadores, pero no permite identificar si quienes perdieron un empleo pasaron a facturar por su cuenta. El signo invertido expresa el criterio del monitor sobre protección laboral; no mide la calidad de cada trabajo independiente.",
     frecuencia: "Mensual (unos 3 meses de rezago)", tipo: "Participación (%)",
   },
   mortalidad_pymes: {
-    que: "Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART. En el ITCIS puntúa por el nivel rebaseado a 100 = 4T-2023: menos empleadores es peor.",
+    que: "Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de una aseguradora de riesgos del trabajo. En el índice de impacto social puntúa por el nivel rebaseado a 100 = 4T-2023: menos empleadores es peor.",
     aporta: "Observa la cantidad de empleadores dentro de ese universo. Una baja puede corresponder a un cierre, a dejar de tener personal declarado o a superar los 50 trabajadores; una entrada puede provenir de una empresa que reduce su nómina. La serie agregada no separa esos movimientos ni acredita quiebras.",
     frecuencia: "Mensual (unos 3 meses de rezago)", tipo: "Cantidad de empleadores",
   },
   despacho_cemento: {
-    que: "Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.",
+    que: "Nivel de actividad de la construcción medido por el indicador sintético de la actividad de la construcción (ISAC), desestacionalizado, del Instituto Nacional de Estadística y Censos (INDEC). La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.",
     aporta: "Termómetro de la obra pública y privada, sensible al ciclo económico.",
     frecuencia: "Mensual", tipo: "Índice",
   },
   subocupacion_demandante: {
-    que: "Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando otro empleo. Es la tasa de subocupación demandante de la EPH, y el INDEC la calcula sobre la PEA —no sobre los ocupados—, que es lo que la vuelve comparable con la tasa de desocupación.",
+    que: "Qué porcentaje de la población económicamente activa (PEA) trabaja menos horas de las que quisiera y además está buscando otro empleo. Es la tasa de subocupación demandante de la Encuesta Permanente de Hogares (EPH), y el Instituto Nacional de Estadística y Censos (INDEC) la calcula sobre la PEA —no sobre los ocupados—, que es lo que la vuelve comparable con la tasa de desocupación.",
     aporta: "Señala empleo insuficiente: gente que ya tiene trabajo y sale igual a buscar más horas. Es la presión sobre el mercado laboral que la desocupación no ve, porque a estas personas las cuenta como ocupadas.",
     frecuencia: "Trimestral", tipo: "Nivel (%)",
   },
   inseguridad: {
-    que: "Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del LICIP (Universidad Di Tella) en 40 centros urbanos.",
-    aporta: "Recoge hechos de victimización declarados por los hogares, incluidos casos no denunciados. Sigue sujeto a cobertura, recuerdo y error muestral de la encuesta. Comparte dimensión con `tasa_homicidios` y `tasa_robos` (SNIC): son complementarios, no redundantes — este capta la cifra negra pero no distingue tipo de delito.",
+    que: "Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del Laboratorio de Investigaciones sobre Crimen, Instituciones y Políticas de la Universidad Torcuato Di Tella, en 40 centros urbanos.",
+    aporta: "Recoge hechos de victimización declarados por los hogares, incluidos casos no denunciados. Sigue sujeto a cobertura, recuerdo y error muestral de la encuesta. Comparte dimensión con las tasas de homicidios y de robos del Sistema Nacional de Información Criminal: son complementarios, no redundantes — este capta la cifra negra pero no distingue tipo de delito.",
     frecuencia: "Mensual (encuesta)", tipo: "Nivel (%)",
   },
   tasa_homicidios: {
-    que: "Homicidios dolosos cada 100.000 habitantes, tasa YA CALCULADA por el SNIC (Ministerio de Seguridad) sobre su registro anual de denuncias, serie oficial 2000-2025.",
-    aporta: "Es el tipo de delito con menos subregistro del desglose —hay un cuerpo, así que casi no depende de que alguien denuncie— y complementa al IVI (`inseguridad`), que es mensual pero no distingue tipo de delito. Es anual, con ~8,5 meses de rezago desde el cierre del año.",
+    que: "Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC) del Ministerio de Seguridad sobre su registro anual de denuncias, serie oficial 2000-2025.",
+    aporta: "Es el tipo de delito con menos subregistro del desglose —hay un cuerpo, así que casi no depende de que alguien denuncie— y complementa al índice de victimización de la Universidad Torcuato Di Tella, que es mensual pero no distingue tipo de delito. Es anual, con ~8,5 meses de rezago desde el cierre del año.",
     frecuencia: "Anual (~8,5 meses de rezago)", tipo: "Tasa cada 100.000 hab. · índice base-100 en el gráfico",
   },
   tasa_robos: {
-    que: "Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa YA CALCULADA por el SNIC. Es el equivalente del SNIC a lo que suele llamarse «rapiña».",
-    aporta: "A diferencia de los homicidios, depende de que la víctima denuncie. La tasa 2025 (778,1) cae 22,4% contra 2024 sin un evento conocido que lo explique, y el patrón —Hurtos cae parecido mientras Robos agravados SUBE el mismo año— no se pudo confirmar ni descartar contra un informe metodológico público del SNIC: se publica el dato oficial con esta limitación declarada.",
+    que: "Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC). Es el equivalente del SNIC a lo que suele llamarse «rapiña».",
+    aporta: "A diferencia de los homicidios, depende de que la víctima denuncie. La tasa 2025 (778,1) cae 22,4% contra 2024 sin un evento conocido que lo explique, y el patrón —Hurtos cae parecido mientras Robos agravados sube el mismo año— no se pudo confirmar ni descartar contra un informe metodológico público del Sistema Nacional de Información Criminal: se publica el dato oficial con esta limitación declarada.",
     frecuencia: "Anual (~8,5 meses de rezago)", tipo: "Tasa cada 100.000 hab. · índice base-100 en el gráfico",
   },
   icc_utdt: {
-    que: "El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor, UTDT). Ya NO puntúa en el ITCIS: salió del índice en ADR-0314 porque un indicador no puede ser componente y juez del mismo índice a la vez. Pasó a ser el ANCLA de validación externa del ITCIS —el mismo rol que cumple el Índice Líder para el ITCM—, así que ahora se lo contrasta contra el índice en vez de promediarse adentro.",
-    aporta: "Describe percepciones y expectativas económicas de los encuestados, y sirve para leer si la percepción sigue a las condiciones materiales que mide el ITCIS. No mide intención de voto ni demuestra por sí solo capacidad de anticipar consumo o resultados electorales.",
+    que: "El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor de la Universidad Torcuato Di Tella). Ya no puntúa en el índice de impacto social: salió del índice porque un indicador no puede ser componente y juez del mismo índice a la vez. Pasó a ser el ancla de validación externa del índice de impacto social —el mismo rol que cumple el Índice Líder para el índice macroeconómico—, así que ahora se lo contrasta contra el índice en vez de promediarse adentro.",
+    aporta: "Describe percepciones y expectativas económicas de los encuestados, y sirve para leer si la percepción sigue a las condiciones materiales que mide el índice de impacto social. No mide intención de voto ni demuestra por sí solo capacidad de anticipar consumo o resultados electorales.",
     frecuencia: "Mensual", tipo: "Índice",
   },
   sentimiento_digital: {
-    que: "Cuánta atención pública se llevan seis problemas, medida por lo que se busca en internet: inflación, precios, dólar, empleo, inseguridad y corrupción. Ya NO puntúa en el ITCIS: salió del índice en ADR-0248 porque el volumen de búsquedas no distingue si un tema preocupa o alegra, y la validación externa dio el signo contrario al esperado. Se sigue relevando y su serie se publica.",
+    que: "Cuánta atención pública se llevan seis problemas, medida por lo que se busca en internet: inflación, precios, dólar, empleo, inseguridad y corrupción. Ya no puntúa en el índice de impacto social: salió del índice porque el volumen de búsquedas no distingue si un tema preocupa o alegra, y la validación externa dio el signo contrario al esperado. Se sigue relevando y su serie se publica.",
     aporta: "Describe atención relativa a seis términos de búsqueda. El volumen no revela si la búsqueda expresa preocupación, interés o una valoración positiva; por eso permanece fuera del índice. Un aumento de búsquedas sobre corrupción tampoco mide directamente su incidencia.",
     frecuencia: "Mensual", tipo: "Índice (100 = 4T-2023)",
   },
   motorizacion_total: {
-    que: "Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de doce meses. En el ITCIS se compara contra el promedio del 4º trimestre de 2023.",
+    que: "Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de doce meses. En el índice de impacto social se compara contra el promedio del 4º trimestre de 2023.",
     aporta: "Mide patentamientos totales por habitante y muestra la composición entre autos y motos. Es un proxy de consumo durable: el registro no distingue primeras compras, reposición, flotas ni sustitución entre vehículos de un mismo hogar.",
     frecuencia: "Mensual (primeros días del mes siguiente)", tipo: "Nivel per cápita · índice base-100 en el gráfico",
   },
   ratio_motos_autos: {
-    que: "Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. Puntúa INVERTIDO: más motos por auto es deterioro.",
-    aporta: "Aísla la COMPOSICIÓN del flujo de patentamientos que la motorización total mide en NIVEL: un total que crece mientras este ratio también sube dice que el crecimiento viene de la moto —el vehículo más barato— y no de una mejora pareja. La polaridad es una decisión de contenido, no un hecho aritmético.",
+    que: "Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. Puntúa invertido: más motos por auto es deterioro.",
+    aporta: "Aísla la composición del flujo de patentamientos que la motorización total mide en nivel: un total que crece mientras este ratio también sube dice que el crecimiento viene de la moto —el vehículo más barato— y no de una mejora pareja. La polaridad es una decisión de contenido, no un hecho aritmético.",
     frecuencia: "Mensual (primeros días del mes siguiente)", tipo: "Cociente (motos/auto) · índice base-100 en el gráfico",
   },
   patentamiento_motos: {
@@ -364,9 +364,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (el mes se publica en los primeros días del siguiente)", tipo: "Conteo",
   },
   consumo_supermercados: {
-    que: "Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el INDEC en su serie desestacionalizada. En el ITCIS puntúa rebaseado a 100 = 4T-2023.",
+    que: "Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el Instituto Nacional de Estadística y Censos (INDEC) en su serie desestacionalizada. En el índice de impacto social puntúa rebaseado a 100 = 4T-2023.",
     aporta: "Mide ventas reales de los supermercados relevados. Complementa ingresos, precios y otros consumos; no cubre toda la compra de alimentos ni el comercio minorista. Los cambios de canal de compra también pueden mover la serie.",
-    frecuencia: "Mensual (el INDEC lo publica unos dos meses después del mes de referencia)", tipo: "Índice",
+    frecuencia: "Mensual (el Instituto Nacional de Estadística y Censos lo publica unos dos meses después del mes de referencia)", tipo: "Índice",
   },
 
   // ── Espíritu de época (el humor social) ─────────────────────────
@@ -383,7 +383,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
 
   // ── Gestión (la capacidad de ejecutar) ──────────────────────────
   cepo_mulc: {
-    que: "Cuánto se separa el dólar financiero (CCL) del dólar mayorista de referencia: la brecha cambiaria.",
+    que: "Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria.",
     aporta: "Mide el grado de normalización cambiaria, uno de los ejes del programa económico.",
     frecuencia: "Diaria", tipo: "Brecha (%)",
   },
@@ -393,17 +393,17 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Quincenal prevista (curaduría)", tipo: "Avance por etapas",
   },
   concesiones_infraestructura: {
-    que: "Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada proceso sale de CONTRAT.AR y el kilometraje por tramo de la página oficial de la RFC (16 tramos, ~9.100 km en 4 etapas).",
+    que: "Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada proceso sale del sistema de contrataciones del Estado (CONTRAT.AR) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).",
     aporta: "Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su licitación figura Adjudicada en el sistema de contrataciones.",
-    frecuencia: "Continua (CONTRAT.AR)", tipo: "Avance de reforma",
+    frecuencia: "Continua (sistema de contrataciones)", tipo: "Avance de reforma",
   },
   reduccion_estado: {
-    que: "Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del mandato), según la serie mensual oficial del INDEC.",
+    que: "Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del mandato), según la serie mensual oficial del Instituto Nacional de Estadística y Censos (INDEC).",
     aporta: "La métrica insignia de la reforma del Estado: personas, no pesos. Universo: Administración Pública Nacional — incluye fuerzas armadas y de seguridad (~10% de la dotación) y no incluye empresas del Estado ni provincias/municipios.",
     frecuencia: "Mensual", tipo: "Variación vs. dic-2023",
   },
   reestructuracion_organismos: {
-    que: "Cuántos organismos públicos se disolvieron o cerraron desde diciembre de 2023, con ese cierre todavía vigente. Ya NO puntúa en el ITCG: salió del índice en ADR-0247 porque el porcentaje dividía normas por una meta documental —dos unidades distintas— y el buscador se salteaba cierres conocidos. Se sigue relevando como inventario.",
+    que: "Cuántos organismos públicos se disolvieron o cerraron desde diciembre de 2023, con ese cierre todavía vigente. Ya no puntúa en el índice de gestión: salió del índice porque el porcentaje dividía normas por una meta documental —dos unidades distintas— y el buscador se salteaba cierres conocidos. Se sigue relevando como inventario.",
     aporta: "Mide el avance concreto de la reforma del aparato estatal por la vía más dura y verificable: el cierre. No cuenta fusiones, transformaciones ni reorganizaciones que no impliquen disolver un organismo — esas son difíciles de verificar caso por caso y quedan fuera de lo que este indicador afirma medir. Tampoco cuenta un hallazgo de la búsqueda que, revisado caso por caso, resultó ajeno a un organismo público o fue revertido después: cada norma se contrasta contra un registro curado antes de sumar.",
     frecuencia: "Mensual", tipo: "Avance de reforma",
   },
@@ -418,14 +418,14 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Conteo acumulado oficial",
   },
   apertura_comercial: {
-    que: "La recaudación de derechos de importación, exportación y tasa de estadística (ARCA) por cada dólar de intercambio (expo+impo del ICA). Es una aproximación a la carga tributaria efectiva; también depende de la composición del comercio y de los momentos de pago.",
+    que: "La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y Control Aduanero, por cada dólar de intercambio (exportaciones más importaciones, según el Intercambio Comercial Argentino que publica el Instituto Nacional de Estadística y Censos). Es una aproximación a la carga tributaria efectiva; también depende de la composición del comercio y de los momentos de pago.",
     aporta: "Aproxima la carga tributaria sobre el intercambio. Una baja del cociente puede acompañar una reducción de impuestos, pero también responder a cambios en la composición o valoración del comercio y en los pagos. No identifica por sí sola el desmantelamiento de barreras comerciales. La brecha cambiaria se mide aparte.",
     frecuencia: "Mensual", tipo: "Nivel (%)",
   },
   credito_privado: {
-    que: "Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el IPC).",
-    aporta: "Es el crédito REALIZADO — complementa a la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto.",
-    frecuencia: "Diaria (BCRA)", tipo: "Variación real",
+    que: "Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el índice de precios al consumidor).",
+    aporta: "Es el crédito realizado — complementa a la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto.",
+    frecuencia: "Diaria (Banco Central)", tipo: "Variación real",
   },
   resultado_primario: {
     que: "Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda, acumulado en doce meses y medido como porcentaje de lo que recauda.",
@@ -453,13 +453,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Avance de reforma",
   },
   fal_modernizacion_laboral: {
-    que: "Cuánto de la reforma laboral RIGE, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).",
-    aporta: "Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar CNV no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de noviembre de 2026; el cálculo reserva esa etapa hasta entonces. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.",
+    que: "Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).",
+    aporta: "Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de noviembre de 2026; el cálculo reserva esa etapa hasta entonces. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.",
     frecuencia: "Mensual", tipo: "Reforma vigente (0–100)",
   },
   libertad_opcion_salud: {
-    que: "Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el DNU 70/2023 al eliminar la triangulación obligatoria por una obra social.",
-    aporta: "Mide la adopción real de la libre elección con los padrones oficiales de la SSS (RNAS y RNEMP): antes de la reforma este canal no existía; a marzo de 2026 lo usan 2,66 millones de personas en 59 prepagas inscriptas.",
+    que: "Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el decreto de necesidad y urgencia (DNU) 70/2023 al eliminar la triangulación obligatoria por una obra social.",
+    aporta: "Mide la adopción real de la libre elección con los padrones oficiales de la Superintendencia de Servicios de Salud (el Registro Nacional de Agentes del Seguro de Salud y el de entidades de medicina prepaga): antes de la reforma este canal no existía; a marzo de 2026 lo usan 2,66 millones de personas en 59 prepagas inscriptas.",
     frecuencia: "Mensual (~2 meses de rezago)", tipo: "Avance de reforma",
   },
   protocolo_antipiquetes: {
@@ -468,7 +468,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Anual", tipo: "Variación vs. base 2023",
   },
   litigiosidad_laboral: {
-    que: "Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.",
+    que: "Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del Trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.",
     aporta: "Aporta la evolución de litigios por riesgos del trabajo. Comparte dimensión con el Fondo de Asistencia Laboral, pero pertenece a otro universo de reclamos: no demuestra el resultado de ese instrumento ni atribuye a la reforma las subas o bajas observadas.",
     frecuencia: "Mensual (~3 meses de rezago)", tipo: "Variación 12m",
   },
@@ -478,9 +478,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (muestreo 3×/día)", tipo: "Conteo mensual",
   },
   protestas_caba: {
-    que: "Cuántos eventos de protesta (marchas, concentraciones, disturbios) registró ACLED en la Ciudad de Buenos Aires en los últimos 12 meses, con serie semanal desde 2018.",
-    aporta: "Complementa el conteo de cortes con eventos de protesta registrados por ACLED a partir de fuentes públicas. Son universos y métodos distintos: una divergencia entre las series no demuestra que las mismas protestas se hayan transformado en marchas sin corte ni identifica el efecto del protocolo. La cobertura informativa condiciona qué eventos se registran.",
-    frecuencia: "Semanal (ACLED)", tipo: "Conteo (12 meses)",
+    que: "Cuántos eventos de protesta (marchas, concentraciones, disturbios) registró Armed Conflict Location & Event Data (ACLED) en la Ciudad de Buenos Aires en los últimos 12 meses, con serie semanal desde 2018.",
+    aporta: "Complementa el conteo de cortes con eventos de protesta registrados por el relevamiento internacional Armed Conflict Location & Event Data (ACLED) a partir de fuentes públicas. Son universos y métodos distintos: una divergencia entre las series no demuestra que las mismas protestas se hayan transformado en marchas sin corte ni identifica el efecto del protocolo. La cobertura informativa condiciona qué eventos se registran.",
+    frecuencia: "Semanal", tipo: "Conteo (12 meses)",
   },
 };
 
@@ -488,31 +488,31 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
 // Claves únicas entre ITCM/ITCG/ITCIS.
 export const DIM_DESCRIPCIONES: Record<string, string> = {
   // ITCM
-  estabilidad_monetaria: "La estabilidad de la moneda desde tres señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM) y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.",
+  estabilidad_monetaria: "La estabilidad de la moneda desde tres señales complementarias: la inflación actual, según el índice de precios al consumidor (IPC); la esperada por el mercado, según el Relevamiento de Expectativas de Mercado (REM), y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.",
   viabilidad_fiscal_comercial: "Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real es el sostén del ancla fiscal y el saldo comercial, los dólares genuinos del intercambio.",
   financiamiento: "Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.",
-  actividad: "Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.",
-  competitividad_externa: "Si el tipo de cambio real alcanza para competir: el ITCRM oficial del BCRA contra su propia historia.",
+  actividad: "Si la economía crece o se contrae, y en cuántas partes: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.",
+  competitividad_externa: "Si el tipo de cambio real alcanza para competir: el índice de tipo de cambio real multilateral oficial del Banco Central contra su propia historia.",
   inversion: "Si alguien está apostando al futuro: la inversión física —construcción y bienes de capital—, que desde agosto de 2026 es el único componente que puntúa. El gasto en servicios digitales acompañaba como segundo componente hasta agosto de 2026, cuando pasó a calcularse fuera del índice: los pagos al exterior por informática y nube son consumo intermedio, no formación de capital, y el compuesto sumaba con el mismo signo dos insumos que necesitarían signos opuestos.",
   // ITCG
   reformas_economicas: "El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.",
   reforma_estado: "El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario.",
-  reforma_laboral: "Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. Estos litigios pertenecen a otro universo de reclamos: no miden el resultado del FAL ni permiten atribuir sus variaciones a la reforma.",
-  privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales.",
+  reforma_laboral: "Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. Estos litigios pertenecen a otro universo de reclamos: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.",
+  privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.",
   social_orden: "Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.",
   // ITCIS
   ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.",
-  precios: "Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.",
+  precios: "Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.",
   vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo. Combina la mora de la cartera —incumplimiento ya materializado— con la carga del servicio de deuda sobre la masa salarial —capacidad de pago comprometida antes del atraso—.",
-  empleo: "Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.",
-  percepcion: "El ánimo con que se vive el momento, medido preguntando: el Índice de Confianza del Consumidor de la UTDT, que desde agosto de 2026 es el único componente de la dimensión. La segunda vía —observar qué busca la gente en internet— salió del índice porque el volumen de búsquedas no distingue si un tema preocupa o alegra; se sigue relevando y su serie se publica.",
+  empleo: "Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.",
+  percepcion: "El ánimo con que se vive el momento, medido preguntando: el Índice de Confianza del Consumidor de la Universidad Torcuato Di Tella, que desde agosto de 2026 es el único componente de la dimensión. La segunda vía —observar qué busca la gente en internet— salió del índice porque el volumen de búsquedas no distingue si un tema preocupa o alegra; se sigue relevando y su serie se publica.",
   seguridad: "Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. Describe victimización reportada, con sus límites muestrales y de recuerdo; no es un censo de delitos ni una medida de sensación de inseguridad.",
   // ITCP
   imagen_voto: "La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.",
-  sector_privado: "Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La completa, con el mismo peso, la postura pública de la UIA hacia el Gobierno nacional —el saldo de apoyos y críticas en sus comunicados—, que volvió al índice en septiembre de 2026 con el inventario de comunicados completo.",
-  poder_judicial: "Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. No mide juras certificadas, duración de causas ni resultados favorables al Gobierno. Las menciones cautelares de SAIJ permanecen fuera del índice porque ese corpus no identifica litigios contra la agenda del Ejecutivo.",
-  poder_legislativo: "La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.",
-  alianzas_territoriales: "El sostén federal del gobierno, visto desde tres señales: las transferencias a las provincias, el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al RIGI. Conviene una precisión sobre qué mide y qué no: ninguna de las tres observa directamente la conducta de los gobernadores. La primera describe lo que hace el Gobierno nacional; la segunda, cómo votan los senadores de cada provincia; la tercera, una decisión legislativa provincial ya tomada. No se encontró una fuente pública que midiera de forma automatizable la postura de los ejecutivos provinciales, así que la dimensión se lee como respaldo territorial observado por sus efectos, no como una medición de la relación con cada gobernador.",
+  sector_privado: "Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La completa, con el mismo peso, la postura pública de la Unión Industrial Argentina (UIA) hacia el Gobierno nacional —el saldo de apoyos y críticas en sus comunicados—, que volvió al índice en septiembre de 2026 con el inventario de comunicados completo.",
+  poder_judicial: "Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. No mide juras certificadas, duración de causas ni resultados favorables al Gobierno. Las menciones cautelares del Sistema Argentino de Información Jurídica permanecen fuera del índice porque ese corpus no identifica litigios contra la agenda del Ejecutivo.",
+  poder_legislativo: "La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia (DNU) en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.",
+  alianzas_territoriales: "El sostén federal del gobierno, visto desde tres señales: las transferencias a las provincias, el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al Régimen de Incentivo para Grandes Inversiones (RIGI). Conviene una precisión sobre qué mide y qué no: ninguna de las tres observa directamente la conducta de los gobernadores. La primera describe lo que hace el Gobierno nacional; la segunda, cómo votan los senadores de cada provincia; la tercera, una decisión legislativa provincial ya tomada. No se encontró una fuente pública que midiera de forma automatizable la postura de los ejecutivos provinciales, así que la dimensión se lee como respaldo territorial observado por sus efectos, no como una medición de la relación con cada gobernador.",
   cohesion_interna: "Qué tan unido está el oficialismo puertas adentro: la disciplina de voto del bloque propio de La Libertad Avanza, medida en un único indicador bicameral (Diputados 65%, Senado 35%).",
-  conflicto_social: "La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. Los eventos de protesta y disturbios de todo el país registrados por ACLED, acumulados en 12 meses y comparados contra 2023 —la línea de base del mandato—, se completan con las jornadas individuales no trabajadas por conflicto laboral que publica la Secretaría de Trabajo, también acumuladas en 12 meses: huelguistas por duración del paro, que agrega el tamaño y la persistencia que el conteo de eventos no distingue.",
+  conflicto_social: "La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. Los eventos de protesta y disturbios de todo el país registrados por Armed Conflict Location & Event Data (ACLED), acumulados en 12 meses y comparados contra 2023 —la línea de base del mandato—, se completan con las jornadas individuales no trabajadas por conflicto laboral que publica la Secretaría de Trabajo, también acumuladas en 12 meses: huelguistas por duración del paro, que agrega el tamaño y la persistencia que el conteo de eventos no distingue.",
 };

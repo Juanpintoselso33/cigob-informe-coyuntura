@@ -170,7 +170,7 @@ const cruz = cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice
 // etiquetas cortas de las anclas externas para la matriz en mobile
 const CRUZ_CORTAS: Record<string, string> = {
   lider: "Actividad",
-  volumen_hogar: "Volumen del hogar", epu: "EPU Argentina",
+  volumen_hogar: "Volumen del hogar", epu: "Incertidumbre",
 };
 let valSvg: {
   W: number; H: number; base: number; top: number;
@@ -185,7 +185,7 @@ let valSvg: {
 const vplot = val?.panel?.factor?.pares_grafico
   ? { pares: val.panel.factor.pares_grafico, plot: "minmax",
       serie_label: val.panel.factor.plano === "diferencias"
-        ? `${indice?.sigla ?? "índice"} — variación mes a mes`
+        ? `${indice?.Corto ?? "Índice"} — variación mes a mes`
         : val.serie_label,
       externa_label: `Factor común: ${Object.keys(val.panel.factor.cargas)
           .map(k => val.panel.factor.etiquetas[k] ?? k).join(" · ")}`
@@ -233,7 +233,7 @@ if (vplot?.pares && vplot.pares.length >= 12) {
 // las normalizadas) con el valor real de cada mes en el tooltip.
 const valChartData = val?.pares && indice ? {
   slug: meta.slug,
-  indice: { nombre: `${indice.sigla} (reconstrucción)`, unidad: "puntos" },
+  indice: { nombre: `${indice.Corto} (reconstrucción)`, unidad: "puntos" },
   externa: {
     nombre: val.externa_label.replace(", invertido", ""),
     unidad: ({ macro: "pb", gestion: "puntos", vida_cotidiana: "puntos", politica: "puntos" } as Record<string, string>)[meta.key] ?? "",
@@ -243,7 +243,7 @@ const valChartData = val?.pares && indice ? {
 } : null;
 // Distribución interactiva del modal de robustez
 const robChartData = rob?.hist && indice ? {
-  slug: meta.slug, sigla: indice.sigla,
+  slug: meta.slug, nombre: indice.Corto,
   hist: rob.hist, hist_min: rob.hist_min, hist_max: rob.hist_max,
   p05: rob.p05, p95: rob.p95, valor: indice.data.valor,
   n_draws: rob.n_draws, base100: !!indice.base100,
@@ -261,7 +261,7 @@ const robChartData = rob?.hist && indice ? {
       <div class="cg-detalle-meta">
         {/* La barra reemplaza al chip de score, que repetía su número. El
             estado queda al lado, en texto: es otro concepto, no otro color. */}
-        {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
+        {indice && <span class="cg-detalle-chip">{indice.Corto} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
         <span class="cg-detalle-chip">{filas.length} {filas.length === 1 ? "indicador" : "indicadores"}</span>
       </div>
@@ -277,7 +277,7 @@ const robChartData = rob?.hist && indice ? {
       <section class="cg-section">
         <div class="cg-section-head">
           <p class="cg-eyebrow">Índice paramétrico</p>
-          <h2 class="cg-h2">{indice.sigla}: {num(indice.data.valor as number)}{indice.base100 ? " (escala de referencia 100)" : "/100"} — {indice.data.banda_legible}</h2>
+          <h2 class="cg-h2">{indice.Corto}: {num(indice.data.valor as number)}{indice.base100 ? " (escala de referencia 100)" : "/100"} — {indice.data.banda_legible}</h2>
           <p class="cg-h2-sub">{indice.descripcion}</p>
         </div>
         <div class="cg-itcm-dims">
@@ -312,7 +312,7 @@ const robChartData = rob?.hist && indice ? {
         )}
       </section>
     )}
-    {indice && <DimensionesEvolucion indice={indice.data} sigla={indice.sigla} slug={meta.slug} />}
+    {indice && <DimensionesEvolucion indice={indice.data} nombre={indice.corto} slug={meta.slug} />}
     <section class="cg-section">
       <div class="cg-section-head">
         <p class="cg-eyebrow">Indicadores</p>
@@ -396,7 +396,7 @@ const robChartData = rob?.hist && indice ? {
         <div class="cg-section-head">
           <p class="cg-eyebrow">Contexto</p>
           <h2 class="cg-h2">No integran el índice</h2>
-          <p class="cg-h2-sub">Datos de seguimiento que ayudan a leer el cinturón pero <strong>no construyen la tensión</strong> del {indice?.sigla ?? "índice"}: quedan fuera del cálculo para que el indicador sea transparente.</p>
+          <p class="cg-h2-sub">Datos de seguimiento que ayudan a leer el cinturón pero <strong>no construyen la tensión</strong> del {indice?.corto ?? "índice"}: quedan fuera del cálculo para que el indicador sea transparente.</p>
         </div>
         <div class="cg-tile-grid">
           {filasContexto.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} compacto />)}
@@ -408,7 +408,7 @@ const robChartData = rob?.hist && indice ? {
       <section class="cg-section">
         <div class="cg-section-head">
           <p class="cg-eyebrow">Robustez</p>
-          <h2 class="cg-h2">¿Cuánto depende el {indice.sigla} de la ponderación elegida?</h2>
+          <h2 class="cg-h2">¿Cuánto depende el {indice.corto} de la ponderación elegida?</h2>
           <p class="cg-h2-sub">
             {rob.n_draws.toLocaleString("es-AR")} escenarios perturbando{" "}
             {indice.base100 ? "los pesos ±20%" : "los pesos ±20% y las entradas ±5%"}.
@@ -418,11 +418,11 @@ const robChartData = rob?.hist && indice ? {
         <div class={`cg-rob cg-rob--${meta.slug}`} data-det="rob" role="button" tabindex="0"
              aria-label="Ver el detalle del análisis de robustez">
           <div class="cg-rob-head">
-            <span>Distribución simulada del {indice.sigla}</span>
+            <span>Distribución simulada del {indice.corto}</span>
             <span>90% de los casos: <strong>{num(rob.p05)} – {num(rob.p95)}</strong></span>
           </div>
           <svg class="cg-rob-svg" viewBox={`0 0 ${robSvg.W} ${robSvg.H}`} role="img"
-               aria-label={`Distribución simulada del ${indice.sigla}: entre ${num(rob.p05)} y ${num(rob.p95)} en el 90% de los escenarios`}>
+               aria-label={`Distribución simulada del ${indice.corto}: entre ${num(rob.p05)} y ${num(rob.p95)} en el 90% de los escenarios`}>
             <defs>
               <clipPath id="rob-clip">
                 <rect x={robSvg.x05} y="0" width={robSvg.x95 - robSvg.x05} height={robSvg.H} />
@@ -450,7 +450,7 @@ const robChartData = rob?.hist && indice ? {
             )}
           </div>
           <p class="cg-h2-sub">
-            El {indice.sigla} queda entre <strong>{num(rob.p05)}</strong> y{" "}
+            El {indice.corto} queda entre <strong>{num(rob.p05)}</strong> y{" "}
             <strong>{num(rob.p95)}</strong> en el 90% de los casos (tensión{" "}
             {num(rob.tension_rango[0])}–{num(rob.tension_rango[1])}): la lectura del
             cinturón no depende de la ponderación exacta ni del error de medición de las fuentes.
@@ -479,7 +479,7 @@ const robChartData = rob?.hist && indice ? {
             <div class={`cg-rob cg-rob--${meta.slug} cg-val`} data-det="val" role="button" tabindex="0"
                  aria-label="Ver el detalle de la validación externa">
               <div class="cg-rob-head">
-                <span>El {indice.sigla} y su contraste externo, mes a mes</span>
+                <span>El {indice.corto} y su contraste externo, mes a mes</span>
                 {val.panel?.factor ? (
                   <span>contra el factor común de {val.panel.factor.n_series} estadísticas ·
                     <strong> {num(val.panel.factor.r_niveles)}</strong> en niveles
@@ -561,7 +561,7 @@ const robChartData = rob?.hist && indice ? {
                 <tbody>
                   {cruz.filas.map(f => (
                     <tr class:list={[f.indice === indice.sigla && "es-actual"]}>
-                      <th>{f.indice}{f.indice === indice.sigla && <span class="cg-cruz-este"> (este cinturón)</span>}</th>
+                      <th>{f.nombre ?? f.indice}{f.indice === indice.sigla && <span class="cg-cruz-este"> (este cinturón)</span>}</th>
                       {cruz.externas.map(e => (
                         // sin espacios entre el número y el span: el salto de línea
                         // quedaba como espacio final y descentraba el número ~6px
@@ -849,8 +849,8 @@ const robChartData = rob?.hist && indice ? {
       <section class="cg-section cg-nota-met">
         <p class="cg-eyebrow">Nota metodológica</p>
         <p>
-          El cinturón se puntúa con el <strong>ITCIS-B100</strong>, un índice de{" "}
-          <strong>impacto social</strong>: sus componentes se comparan con referencias
+          El cinturón se puntúa con el <strong>índice de impacto social</strong>, un índice
+          de seguimiento: sus componentes se comparan con referencias
           declaradas, mayormente el <strong>promedio del 4º trimestre de 2023</strong>.
           La canasta de servicios
           públicos: se mide sobre el salario y usa anclas internacionales fijas de
@@ -860,12 +860,14 @@ const robChartData = rob?.hist && indice ? {
           miden contra el índice general de precios de su misma cobertura. La vulnerabilidad
           financiera combina <strong>mora de personales y tarjetas</strong> (70%) y
           <strong> carga del servicio de deuda</strong> (30%); no premia el crecimiento
-          del endeudamiento. La victimización (LICIP-UTDT) conserva enero de 2024 como
-          base explícita. La auditoría de septiembre recuperó informes de 2023 y rectificó
-          la supuesta suspensión de la encuesta (ADR-0273). El registro SNIC es un
-          contraste de distinto universo y frecuencia. El agregado no representa un
+          del endeudamiento. La victimización —la encuesta del Laboratorio de
+          Investigaciones sobre Crimen, Instituciones y Políticas de la Universidad
+          Torcuato Di Tella— conserva enero de 2024 como base explícita. La auditoría de
+          septiembre recuperó informes de 2023 y rectificó la supuesta suspensión de la
+          encuesta. El registro oficial de delitos, el Sistema Nacional de Información
+          Criminal, es un contraste de distinto universo y frecuencia. El agregado no representa un
           porcentaje de bienestar ni un pronóstico electoral. El color del cinturón
-          sale del <strong>ITCIS {num(c.itvc?.valor)}</strong>: {coloresEnIndice(true)}.
+          sale del <strong>índice de impacto social, hoy en {num(c.itvc?.valor)}</strong>: {coloresEnIndice(true)}.
         </p>
       </section>
     )}
@@ -887,10 +889,10 @@ const robChartData = rob?.hist && indice ? {
           <strong>reforma laboral</strong> sigue el <strong>Fondo de Asistencia Laboral</strong> (creado
           por la Ley de Modernización Laboral 27.802, que el Gobierno presenta como su herramienta central
           contra la litigiosidad). La{" "}
-          <strong>asistencia directa</strong> mide la desintermediación del gasto social (TDPS) y
+          <strong>asistencia directa</strong> mide la desintermediación del gasto social y
           el <strong>orden público</strong>, la reducción de cortes en CABA vs. 2023 — con su
           validez judicial restablecida: la Cámara revocó en marzo de 2026 la nulidad de primera
-          instancia. El color del cinturón sale del <strong>ITCG {num(c.itcg?.valor)}/100</strong>:{" "}
+          instancia. El color del cinturón sale del <strong>índice de gestión, hoy en {num(c.itcg?.valor)}/100</strong>:{" "}
           {coloresEnIndice(false)}.
         </p>
       </section>
@@ -900,16 +902,17 @@ const robChartData = rob?.hist && indice ? {
       <section class="cg-section cg-nota-met">
         <p class="cg-eyebrow">Nota metodológica</p>
         <p>
-          El ITCM combina seis dimensiones. Las fichas de cada indicador detallan
-          sus fuentes, transformaciones, anclas y límites. La estimación de
-          reservas usa la fórmula CIGOB basada en la planilla SDDS y el balance
-          del BCRA; no equivale a una medición oficial de libre disponibilidad.
+          El índice macroeconómico combina seis dimensiones. Las fichas de cada indicador
+          detallan sus fuentes, transformaciones, anclas y límites. La estimación de
+          reservas usa la fórmula de CiGob, basada en la planilla de reservas
+          internacionales y el balance del Banco Central; no equivale a una medición
+          oficial de libre disponibilidad.
           La composición vigente y el aporte de cada componente se muestran
           en el detalle del índice.
           Cada indicador se puntúa por <strong>interpolación entre las anclas</strong> de su
           tabla de umbrales (sin escalones de banda: dos valores casi iguales reciben
           puntajes casi iguales). El color del cinturón sale del{" "}
-          <strong>ITCM {num(c.itcm?.valor)}/100</strong>: {coloresEnIndice(false)}. Los cuatro
+          <strong>índice macroeconómico, hoy en {num(c.itcm?.valor)}/100</strong>: {coloresEnIndice(false)}. Los cuatro
           cinturones comparten los mismos cortes de color, que es lo que permite compararlos
           y componer la tensión global.
         </p>
@@ -930,12 +933,12 @@ const robChartData = rob?.hist && indice ? {
 
   {rob && indice && (
     <template id="cg-det-rob">
-      <p class="cg-eyebrow">Robustez · {indice.sigla}</p>
+      <p class="cg-eyebrow">Robustez · {indice.Corto}</p>
       <h3 class="cg-modal-title">¿Cuánto puede moverse el índice sin que cambie la historia?</h3>
       <p class="cg-modal-desc">
         Ningún índice compuesto es inocente: depende de qué pesos se eligieron y de la
         precisión de las fuentes. Este ejercicio mide cuánto importa eso acá: el{" "}
-        {indice.sigla} se recalcula <strong>{rob.n_draws.toLocaleString("es-AR")} veces</strong>,
+        {indice.corto} se recalcula <strong>{rob.n_draws.toLocaleString("es-AR")} veces</strong>,
         perturbando al azar en cada repetición los pesos de dimensiones e indicadores
         (hasta ±20% de su valor) y las mediciones de entrada (hasta ±5% del ancho entre
         sus umbrales de puntuación, para que el ruido sea proporcional a lo que de verdad
@@ -947,7 +950,7 @@ const robChartData = rob?.hist && indice ? {
         <div><dt>Amplitud</dt><dd>{num(robAmplitud!)} puntos</dd></div>
       </dl>
       <p class="cg-modal-h4">La distribución de los {rob.n_draws.toLocaleString("es-AR")} escenarios</p>
-      <div id="cg-det-rob-chart" data-sigla={indice.sigla}></div>
+      <div id="cg-det-rob-chart" data-nombre={indice.Corto}></div>
       <p class="cg-formula-leyenda">
         Pasá el cursor (o el dedo) por la campana: cada punto dice cuántos escenarios
         simulados dieron ese valor del índice.
@@ -957,7 +960,7 @@ const robChartData = rob?.hist && indice ? {
           <p class="cg-modal-h4">El componente que más pesa hoy</p>
           <p class="cg-modal-desc">
             <strong>{domLabel}</strong> es el indicador que más arrastra el resultado: si se
-            lo quitara del índice (repartiendo su peso entre los demás), el {indice.sigla}{" "}
+            lo quitara del índice (repartiendo su peso entre los demás), el {indice.corto}{" "}
             sería <strong>{num(rob.dominante.indice_sin)}</strong> —{" "}
             {domDelta! > 0 ? "una mejora" : "un deterioro"} de {num(Math.abs(domDelta!))} puntos.
             Que un solo componente explique una diferencia así no invalida el índice, pero es
@@ -976,10 +979,10 @@ const robChartData = rob?.hist && indice ? {
 
   {val?.pares && indice && (
     <template id="cg-det-val">
-      <p class="cg-eyebrow">Validación externa · {indice.sigla}</p>
+      <p class="cg-eyebrow">Validación externa · {indice.Corto}</p>
       <h3 class="cg-modal-title">{val.titulo}</h3>
       <p class="cg-modal-desc">
-        El {indice.sigla} se reconstruye hacia atrás, mes a mes, con las mismas reglas de
+        El {indice.corto} se reconstruye hacia atrás, mes a mes, con las mismas reglas de
         cálculo y <strong>sin ajustes del analista</strong>, y se compara contra{" "}
         <strong>{val.externa_label}</strong>: una medición externa e independiente que no
         alimenta al índice. Si el índice midiera algo real, ambas series deberían moverse
@@ -1016,8 +1019,8 @@ const robChartData = rob?.hist && indice ? {
       <h3 class="cg-modal-title">{cruz.titulo}</h3>
       <p class="cg-modal-desc">
         Los tres índices que tienen contraste externo se reconstruyen mes a mes y se comparan
-        contra los tres contrastes <strong>a la vez</strong>. La gestión (ITCG) no participa: mide
-        lo que el gobierno hace y no tiene contraste externo posible (ADR-0336). La pregunta: ¿cada índice se parece más
+        contra los tres contrastes <strong>a la vez</strong>. El índice de gestión no participa: mide
+        lo que el gobierno hace y no tiene contraste externo posible. La pregunta: ¿cada índice se parece más
         a su contraste natural que a los ajenos, o todos miden lo mismo con distinto nombre?
       </p>
       <div id="cg-det-cruz-tabla"></div>
@@ -1025,8 +1028,8 @@ const robChartData = rob?.hist && indice ? {
       <p class="cg-modal-desc">
         Cada fila es un índice; cada columna, una vara externa. Las celdas sombreadas marcan
         el par natural: la macroeconomía con la marcha de la actividad, el impacto social con el
-        volumen que consume el hogar y la política con la incertidumbre de política en la prensa
-        (EPU). Una fila cuyo par natural es el más
+        volumen que consume el hogar y la política con la incertidumbre de política en la prensa.
+        Una fila cuyo par natural es el más
         fuerte de su fila está midiendo algo propio.
       </p>
       <p class="cg-modal-h4">Los límites, declarados</p>

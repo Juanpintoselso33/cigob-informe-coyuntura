@@ -19,8 +19,8 @@ import { num } from "../lib/formato.ts";
 import { panelPath, yDe } from "../lib/sparkline.ts";
 import type { IndiceParametrico } from "../lib/datos.ts";
 
-interface Props { indice: IndiceParametrico; sigla: string; slug: string; }
-const { indice, sigla, slug } = Astro.props as Props;
+interface Props { indice: IndiceParametrico; nombre: string; slug: string; }
+const { indice, nombre, slug } = Astro.props as Props;
 
 const meta = indice.dimensiones_serie;
 

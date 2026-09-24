@@ -261,7 +261,7 @@ export function distChart(el: HTMLElement,
     grid: { borderColor: COL.grid, strokeDashArray: 4, xaxis: { lines: { show: false } },
             padding: { left: 8, right: 12, top: 12 } },
     tooltip: { theme: "light", intersect: false, shared: true,
-               x: { formatter: (v: number) => `${(el.closest("[data-sigla]") as HTMLElement)?.dataset.sigla ?? "índice"} ≈ ${NF.format(Math.round(v * 10) / 10)}` },
+               x: { formatter: (v: number) => `${(el.closest("[data-nombre]") as HTMLElement)?.dataset.nombre ?? "Índice"} ≈ ${NF.format(Math.round(v * 10) / 10)}` },
                y: { formatter: (v: number) => `${Math.round(v)} de ${d.n_draws.toLocaleString("es-AR")} escenarios` } },
     annotations: { xaxis: anotaciones },
   } as any);

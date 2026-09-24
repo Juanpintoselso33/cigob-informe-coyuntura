@@ -46,8 +46,8 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 74,8 | VERDE | 24,0 % |
 | Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 62,1 | VERDE | 16,0 % |
 | Inversión | Si alguien está apostando al futuro: la inversión física —construcción y bienes de capital—, que desde agosto de 2026 es el único componente que puntúa. | 36,4 | NARANJA | 12,0 % |
-| Actividad económica | Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. | 58,7 | AMARILLO | 11,0 % |
-| Competitividad externa | Si el tipo de cambio real alcanza para competir: el ITCRM oficial del BCRA contra su propia historia. | 48,8 | AMARILLO | 11,0 % |
+| Actividad económica | Si la economía crece o se contrae, y en cuántas partes. | 58,7 | AMARILLO | 11,0 % |
+| Competitividad externa | Si el tipo de cambio real alcanza para competir: el índice de tipo de cambio real multilateral oficial del Banco Central contra su propia historia. | 48,8 | AMARILLO | 11,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -70,7 +70,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Base imponible real (nación + provincias) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 91,3 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
 | Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acum. 12 meses) | VERDE | 12,0 % |
 | **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
-| Reservas netas | Estimación CIGOB de reservas netas. | 12.661 Millones de USD | VERDE | 5,4 % |
+| Reservas netas | Estimación de CiGob de reservas netas. | 12.661 Millones de USD | VERDE | 5,4 % |
 | Capacidad prestable | Índice de Capacidad Prestable. | −0,25 σ vs. su historia | AMARILLO | 3,4 % |
 | Crédito privado real | Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el… | −1,1 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
 | Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 7,29 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
@@ -78,9 +78,9 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Inversión física | Índice Anticipador de Inversión. | −5,66 % i.a. ponderado | NARANJA | 12,0 % |
 | **DIMENSIÓN: Actividad económica** | | | | |
 | Actividad económica (EMAE i.a.) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | 2,69 % i.a. | VERDE | 5,8 % |
-| Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el INDEC divide la actividad económica, cuántos crecen respecto de un año atrás. | 80 % de sectores en crecimiento i.a. | VERDE | 1,9 % |
+| Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica… | 80 % de sectores en crecimiento i.a. | VERDE | 1,9 % |
 | Producción industrial (IPI i.a.) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,82 % i.a. (promedio 3 meses) | NARANJA | 1,9 % |
-| Actividad tributaria (IVA-DGI + cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el IVA-DGI y el impuesto a los créditos y débitos… | −5,41 % i.a. real (compuesto IVA-DGI/cheque) | NARANJA | 1,3 % |
+| Actividad tributaria (IVA-DGI + cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la… | −5,41 % i.a. real (compuesto IVA-DGI/cheque) | NARANJA | 1,3 % |
 | **DIMENSIÓN: Competitividad externa** | | | | |
 | Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). | 85,53 Índice (base dic-2015=100) | AMARILLO | 11,0 % |
 
@@ -118,7 +118,7 @@ Cuánto suben en el mes los precios al consumidor en general.
 
 Es el termómetro central de la estabilización: marca si el programa antiinflacionario avanza o se estanca.
 
-**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM) y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
+**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual, según el índice de precios al consumidor (IPC); la esperada por el mercado, según el Relevamiento de Expectativas de Mercado (REM), y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
 
 ## Método de cómputo
 
@@ -185,7 +185,7 @@ Ponderación vigente en el ITCM: 15,6 % efectivo. El color es una lectura adicio
 
 # Reservas netas
 
-Estimación CIGOB de reservas netas: combina activos y flujos de corto plazo de la planilla SDDS, y agrega depósitos del Tesoro y un tramo de vencimientos excluido por el diseño. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.
+Estimación de CiGob de reservas netas: combina activos y flujos de corto plazo de la planilla de reservas internacionales que publica el Banco Central, y agrega depósitos del Tesoro y un tramo de vencimientos excluido por el diseño. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.
 
 | | | | |
 |---|---|---|---|
@@ -203,7 +203,7 @@ Estimación CIGOB de reservas netas: combina activos y flujos de corto plazo de 
 
 ## Definición — qué mide y por qué importa
 
-Estimación CIGOB de reservas netas: combina activos y flujos de corto plazo de la planilla SDDS, y agrega depósitos del Tesoro y un tramo de vencimientos excluido por el diseño. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.
+Estimación de CiGob de reservas netas: combina activos y flujos de corto plazo de la planilla de reservas internacionales que publica el Banco Central, y agrega depósitos del Tesoro y un tramo de vencimientos excluido por el diseño. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.
 
 Aproxima el margen externo con una definición explícita. Su lectura depende de los pasivos excluidos y debe contrastarse con otras medidas de reservas y liquidez.
 
@@ -296,7 +296,7 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 
 Índice de Capacidad Prestable: mide si el sistema financiero tiene fondos y margen para prestar, comparando tres niveles contra su propia historia — la tasa real que reciben los depositantes (precio), el crecimiento interanual real de los depósitos privados (volumen) y la holgura entre depósitos y préstamos (asignación).
 
-Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico · por encima de +0,5 expansión (verde) · por debajo de −0,5 contracción (rojo). Datos del BCRA (BADLAR, depósitos y préstamos privados) e IPC del INDEC.
+Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico · por encima de +0,5 expansión (verde) · por debajo de −0,5 contracción (rojo). Datos del Banco Central de la República Argentina (BCRA) —tasa de plazos fijos mayoristas (BADLAR), depósitos y préstamos privados— e índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC).
 
 **Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
 
@@ -389,9 +389,9 @@ El pulso mensual de la actividad económica: cuánto creció o cayó respecto de
 
 El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás.
 
-Adelanta el ritmo del PBI: si la economía se expande o se contrae.
+Adelanta el ritmo del producto interno bruto: si la economía se expande o se contrae.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.
+**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.
 
 ## Método de cómputo
 
@@ -459,7 +459,7 @@ Ponderación vigente en el ITCM: 5,8 % efectivo. El color es una lectura adicion
 
 # Amplitud del crecimiento (sectores en alza)
 
-De los quince sectores en que el INDEC divide la actividad económica, cuántos crecen respecto de un año atrás.
+De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica, cuántos crecen respecto de un año atrás.
 
 | | | | |
 |---|---|---|---|
@@ -477,11 +477,11 @@ De los quince sectores en que el INDEC divide la actividad económica, cuántos 
 
 ## Definición — qué mide y por qué importa
 
-De los quince sectores en que el INDEC divide la actividad económica, cuántos crecen respecto de un año atrás.
+De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica, cuántos crecen respecto de un año atrás.
 
-Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El EMAE informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.
+Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El estimador mensual de actividad económica (EMAE) informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.
+**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.
 
 ## Método de cómputo
 
@@ -565,9 +565,9 @@ Cuánto produce la industria manufacturera respecto de un año atrás, promediad
 
 Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses.
 
-Segunda lectura de la actividad, junto al EMAE: mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.
+Segunda lectura de la actividad, junto al estimador mensual de actividad económica (EMAE): mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.
+**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.
 
 ## Método de cómputo
 
@@ -638,7 +638,7 @@ Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicion
 
 # Actividad tributaria (IVA-DGI + cheque)
 
-Cuánto crecieron, en términos reales y respecto de un año atrás, el IVA-DGI y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.
+Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la Dirección General Impositiva y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.
 
 | | | | |
 |---|---|---|---|
@@ -656,11 +656,11 @@ Cuánto crecieron, en términos reales y respecto de un año atrás, el IVA-DGI 
 
 ## Definición — qué mide y por qué importa
 
-Cuánto crecieron, en términos reales y respecto de un año atrás, el IVA-DGI y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.
+Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la Dirección General Impositiva y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.
 
-La lectura más fresca de la dimensión: Hacienda informa estos dos tributos antes de que el INDEC cierre el EMAE del mismo mes. El IVA sigue de cerca el consumo interno; el cheque sigue toda transacción bancaria, así que además de actividad capta bancarización.
+La lectura más fresca de la dimensión: Hacienda informa estos dos tributos antes de que el Instituto Nacional de Estadística y Censos (INDEC) cierre el estimador mensual de actividad económica (EMAE) del mismo mes. El impuesto al valor agregado (IVA) sigue de cerca el consumo interno; el cheque sigue toda transacción bancaria, así que además de actividad capta bancarización.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.
+**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.
 
 ## Método de cómputo
 
@@ -827,7 +827,7 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 
 # Base imponible real (nación + provincias)
 
-Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de 2023, que vale 100. Combina tributos internos nacionales e Ingresos Brutos recaudado por los regímenes de COMARB; excluye los tributos aduaneros.
+Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de 2023, que vale 100. Combina tributos internos nacionales e Ingresos Brutos recaudado por los regímenes de la Comisión Arbitral del Convenio Multilateral; excluye los tributos aduaneros.
 
 | | | | |
 |---|---|---|---|
@@ -845,7 +845,7 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 
 ## Definición — qué mide y por qué importa
 
-Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de 2023, que vale 100. Combina tributos internos nacionales e Ingresos Brutos recaudado por los regímenes de COMARB; excluye los tributos aduaneros.
+Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de 2023, que vale 100. Combina tributos internos nacionales e Ingresos Brutos recaudado por los regímenes de la Comisión Arbitral del Convenio Multilateral; excluye los tributos aduaneros.
 
 Aproxima la evolución de la base imponible mediante ingresos cobrados. También responde a cambios de alícuotas, vencimientos, pagos atrasados y reasignaciones tributarias. Un nivel menor que 100 indica menor recaudación real ajustada respecto de la base; no prueba por sí solo que haya menos actividad formal.
 
@@ -968,7 +968,7 @@ Si el peso está caro o barato frente a los socios comerciales, en términos rea
 
 Una apreciación real (peso caro) frena exportaciones y la acumulación de reservas, y suele anticipar presión cambiaria: cuanto más apreciado, más tensión. Un peso más competitivo afloja esa restricción.
 
-**Dimensión que integra — Competitividad externa.** Si el tipo de cambio real alcanza para competir: el ITCRM oficial del BCRA contra su propia historia.
+**Dimensión que integra — Competitividad externa.** Si el tipo de cambio real alcanza para competir: el índice de tipo de cambio real multilateral oficial del Banco Central contra su propia historia.
 
 ## Método de cómputo
 
@@ -1061,7 +1061,7 @@ La inflación que el mercado espera para los próximos 12 meses.
 
 Captura la credibilidad del programa: si el mercado espera que la inflación siga bajando, el ancla de expectativas funciona; si la ve acelerarse, hay desconfianza.
 
-**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM) y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
+**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual, según el índice de precios al consumidor (IPC); la esperada por el mercado, según el Relevamiento de Expectativas de Mercado (REM), y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
 
 ## Método de cómputo
 
@@ -1133,7 +1133,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 # Liquidez en pesos y presión compradora de divisas
 
-Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso (ADR-0252): el BCRA estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.
+Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso: el Banco Central estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.
 
 | | | | |
 |---|---|---|---|
@@ -1151,11 +1151,11 @@ Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez pr
 
 ## Definición — qué mide y por qué importa
 
-Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso (ADR-0252): el BCRA estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.
+Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso: el Banco Central estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.
 
 Los dos componentes se leen juntos porque uno solo alcanza para engañar: la composición de la liquidez puede verse estable mientras crece la compra de divisas, y a la inversa. El resultado sale de cruzarlos en una matriz, no de promediarlos. Mayor tensión reduce el puntaje de estabilidad monetaria.
 
-**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM) y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
+**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual, según el índice de precios al consumidor (IPC); la esperada por el mercado, según el Relevamiento de Expectativas de Mercado (REM), y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
 
 ## Método de cómputo
 
@@ -1237,7 +1237,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 # Inversión física
 
-Índice Anticipador de Inversión: mide la inversión física/tradicional combinando la actividad de la construcción que releva el INDEC (ISAC) y la importación de bienes de capital, en variación interanual.
+Índice Anticipador de Inversión: mide la inversión física/tradicional combinando el indicador sintético de la actividad de la construcción (ISAC) que releva el Instituto Nacional de Estadística y Censos (INDEC) y la importación de bienes de capital, en variación interanual.
 
 | | | | |
 |---|---|---|---|
@@ -1255,7 +1255,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 ## Definición — qué mide y por qué importa
 
-Índice Anticipador de Inversión: mide la inversión física/tradicional combinando la actividad de la construcción que releva el INDEC (ISAC) y la importación de bienes de capital, en variación interanual.
+Índice Anticipador de Inversión: mide la inversión física/tradicional combinando el indicador sintético de la actividad de la construcción (ISAC) que releva el Instituto Nacional de Estadística y Censos (INDEC) y la importación de bienes de capital, en variación interanual.
 
 Resume señales de construcción e importación de bienes de capital frente al mismo mes del año anterior. No mide depreciación ni inversión neta: una caída interanual no demuestra que se consuma más capital del que se repone. Los bienes importados se miden en dólares corrientes, por lo que también influyen sus precios.
 
@@ -1336,7 +1336,7 @@ Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adiciona
 
 # Crédito privado real
 
-Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el IPC).
+Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el índice de precios al consumidor).
 
 | | | | |
 |---|---|---|---|
@@ -1354,9 +1354,9 @@ Cuánto crece el crédito al sector privado en términos reales (variación inte
 
 ## Definición — qué mide y por qué importa
 
-Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el IPC).
+Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el índice de precios al consumidor).
 
-Es el crédito REALIZADO — complementa a la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto.
+Es el crédito realizado — complementa a la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto.
 
 **Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
 

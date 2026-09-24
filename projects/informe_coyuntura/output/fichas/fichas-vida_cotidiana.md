@@ -44,7 +44,7 @@ Componentes que puntúan en este corte: 21 de 21 publicados.
 |---|---|---|---|---|
 | Ingresos y consumo | Si el sueldo alcanza y qué compra. | 111,2 | VERDE | 28,1 % |
 | Presión de precios | Tres gastos sensibles. | 95,5 | AMARILLO | 25,0 % |
-| Prospectivas de empleo | Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el… | 91,5 | NARANJA | 24,2 % |
+| Prospectivas de empleo | Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el… | 91,5 | NARANJA | 24,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,5 | ROJO | 10,0 % |
 | Seguridad | Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. | 115,9 | VERDE | 4,5 % |
 
@@ -62,7 +62,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 |---|---|---|---|---|
 | **DIMENSIÓN: Ingresos y consumo** | | | | |
 | Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,84 canastas (RIPTE/CBT) | VERDE | 14,2 % |
-| Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de SAGYP. | 46,75 kg/hab/año | NARANJA | 0,5 % |
+| Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de la… | 46,75 kg/hab/año | NARANJA | 0,5 % |
 | Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero… | 113,94 kg/hab/año | NARANJA | 0,5 % |
 | Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,3 % de personas | VERDE | 7,8 % |
 | Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 31,25 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
@@ -70,22 +70,22 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 81,2 índice (2017 = 100, desestacionalizado) | NARANJA | 6,0 % |
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % m/m | VERDE | 9,5 % |
-| Canasta de servicios públicos / salario | Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar… | 14,6 % del salario RIPTE | VERDE | 12,3 % |
+| Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 14,6 % del salario RIPTE | VERDE | 12,3 % |
 | Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 2,34 % m/m alquileres | ROJO | 5,5 % |
 | **DIMENSIÓN: Prospectivas de empleo** | | | | |
-| Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC. | 37,9 % | NARANJA | 9,0 % |
+| Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de… | 37,9 % | NARANJA | 9,0 % |
 | Peso del trabajo independiente | Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los… | 20,69 % del empleo registrado SIPA, sin monotributo social | NARANJA | 2,6 % |
-| Empleadores PyME activos | Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART. | 460.165 empleadores | NARANJA | 3,9 % |
-| Construcción | Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. | 140,2 índice ISAC | ROJO | 3,5 % |
-| Subocupación demandante | Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando… | 8 % de la PEA | NARANJA | 1,4 % |
+| Empleadores PyME activos | Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de una aseguradora de riesgos del trabajo. | 460.165 empleadores | NARANJA | 3,9 % |
+| Construcción | Nivel de actividad de la construcción medido por el indicador sintético de la actividad de la construcción (ISAC)… | 140,2 índice ISAC | ROJO | 3,5 % |
+| Subocupación demandante | Qué porcentaje de la población económicamente activa (PEA) trabaja menos horas de las que quisiera y además está… | 8 % de la PEA | NARANJA | 1,4 % |
 | Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.095,84 miles de puestos | AMARILLO | 5,9 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
 | Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,72 % de la cartera en situación irregular | ROJO | 7,6 % |
 | Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | ROJO | 3,3 % |
 | **DIMENSIÓN: Seguridad** | | | | |
 | Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 2,9 % |
-| Tasa de homicidios dolosos | Homicidios dolosos cada 100.000 habitantes, tasa YA CALCULADA por el SNIC (Ministerio de Seguridad) sobre su registro… | 3,48 homicidios dolosos cada 100.000 hab. | VERDE | 1,2 % |
-| Tasa de robos | Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa YA CALCULADA por el SNIC. | 778,1 robos (excl. agravados) cada 100.000 hab. | VERDE | 0,7 % |
+| Tasa de homicidios dolosos | Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC)… | 3,48 homicidios dolosos cada 100.000 hab. | VERDE | 1,2 % |
+| Tasa de robos | Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema… | 778,1 robos (excl. agravados) cada 100.000 hab. | VERDE | 0,7 % |
 
 *Datos al 2026-09-24.*
 
@@ -188,7 +188,7 @@ Ponderación vigente en el ITCIS: 14,2 % efectivo. El color es una lectura adici
 
 # Inflación de alimentos
 
-Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa por el NIVEL acumulado del índice de alimentos relativo al IPC general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
+Cuánto suben en el mes los precios de alimentos y bebidas. En el índice de impacto social puntúa por el nivel acumulado del índice de alimentos relativo al índice de precios al consumidor (IPC) general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
 
 | | | | |
 |---|---|---|---|
@@ -206,11 +206,11 @@ Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa 
 
 ## Definición — qué mide y por qué importa
 
-Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa por el NIVEL acumulado del índice de alimentos relativo al IPC general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
+Cuánto suben en el mes los precios de alimentos y bebidas. En el índice de impacto social puntúa por el nivel acumulado del índice de alimentos relativo al índice de precios al consumidor (IPC) general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
 
 Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.
 
-**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
@@ -275,7 +275,7 @@ Ponderación vigente en el ITCIS: 9,5 % efectivo. El color es una lectura adicio
 
 # Canasta de servicios públicos / salario
 
-Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del AMBA.
+Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE) cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del Área Metropolitana de Buenos Aires (AMBA).
 
 | | | | |
 |---|---|---|---|
@@ -293,11 +293,11 @@ Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, g
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del AMBA.
+Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE) cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del Área Metropolitana de Buenos Aires (AMBA).
 
 Mide directamente la asequibilidad de los servicios públicos y puntúa con 45% de la dimensión de precios. Agua+energía y transporte se comparan por separado con referencias internacionales de 10% y 5% del ingreso; entra la mayor tensión para que un rubro caro no quede oculto por otro barato.
 
-**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
@@ -365,7 +365,7 @@ Ponderación vigente en el ITCIS: 12,3 % efectivo. El color es una lectura adici
 
 # Costo real del alquiler
 
-Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el ITCIS puntúa por el NIVEL del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.
+Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.
 
 | | | | |
 |---|---|---|---|
@@ -383,11 +383,11 @@ Cuánto se encareció el alquiler de la vivienda por encima del resto de los pre
 
 ## Definición — qué mide y por qué importa
 
-Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el ITCIS puntúa por el NIVEL del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.
+Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.
 
 La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.
 
-**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
@@ -454,7 +454,7 @@ Ponderación vigente en el ITCIS: 5,5 % efectivo. El color es una lectura adicio
 
 # Consumo de carne vacuna per cápita
 
-Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de SAGYP. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Desde ADR-0322 puntúa por separado, como corte aspiracional del consumo argentino.
+Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de la Secretaría de Agricultura, Ganadería y Pesca. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Puntúa por separado, como corte aspiracional del consumo argentino.
 
 | | | | |
 |---|---|---|---|
@@ -472,7 +472,7 @@ Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses
 
 ## Definición — qué mide y por qué importa
 
-Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de SAGYP. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Desde ADR-0322 puntúa por separado, como corte aspiracional del consumo argentino.
+Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de la Secretaría de Agricultura, Ganadería y Pesca. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Puntúa por separado, como corte aspiracional del consumo argentino.
 
 Mide específicamente la carne vacuna, que es la que el consumo aparente argentino trata como aspiracional y la que más cae. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena de vacunos por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones: una divergencia respecto del consumo puede afectar la interpretación y el puntaje.
 
@@ -650,7 +650,7 @@ Ponderación vigente en el ITCIS: 0,5 % efectivo. El color es una lectura adicio
 
 # Informalidad laboral
 
-Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC.
+Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC).
 
 | | | | |
 |---|---|---|---|
@@ -668,11 +668,11 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC.
+Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC).
 
-Mide la precariedad laboral y la exclusión de la red de protección social. En el ITCIS su base es el 4T-2023 exacto (el trimestre de arranque del mandato).
+Mide la precariedad laboral y la exclusión de la red de protección social. En el índice de impacto social su base es el 4T-2023 exacto (el trimestre de arranque del mandato).
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -737,7 +737,7 @@ Ponderación vigente en el ITCIS: 9 % efectivo. El color es una lectura adiciona
 
 # Peso del trabajo independiente
 
-Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el ITCIS puntúa INVERTIDA: más peso independiente es peor.
+Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el índice de impacto social puntúa invertida: más peso independiente es peor.
 
 | | | | |
 |---|---|---|---|
@@ -755,11 +755,11 @@ Qué proporción del empleo registrado son trabajadores independientes —autón
 
 ## Definición — qué mide y por qué importa
 
-Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el ITCIS puntúa INVERTIDA: más peso independiente es peor.
+Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el índice de impacto social puntúa invertida: más peso independiente es peor.
 
 Describe la composición del empleo registrado, excluido el monotributo social. Puede aumentar porque crecen los independientes o porque caen los asalariados. Complementa el número de empleadores, pero no permite identificar si quienes perdieron un empleo pasaron a facturar por su cuenta. El signo invertido expresa el criterio del monitor sobre protección laboral; no mide la calidad de cada trabajo independiente.
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -829,7 +829,7 @@ Ponderación vigente en el ITCIS: 2,6 % efectivo. El color es una lectura adicio
 
 # Empleadores PyME activos
 
-Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART. En el ITCIS puntúa por el nivel rebaseado a 100 = 4T-2023: menos empleadores es peor.
+Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de una aseguradora de riesgos del trabajo. En el índice de impacto social puntúa por el nivel rebaseado a 100 = 4T-2023: menos empleadores es peor.
 
 | | | | |
 |---|---|---|---|
@@ -847,11 +847,11 @@ Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART
 
 ## Definición — qué mide y por qué importa
 
-Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de ART. En el ITCIS puntúa por el nivel rebaseado a 100 = 4T-2023: menos empleadores es peor.
+Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de una aseguradora de riesgos del trabajo. En el índice de impacto social puntúa por el nivel rebaseado a 100 = 4T-2023: menos empleadores es peor.
 
 Observa la cantidad de empleadores dentro de ese universo. Una baja puede corresponder a un cierre, a dejar de tener personal declarado o a superar los 50 trabajadores; una entrada puede provenir de una empresa que reduce su nómina. La serie agregada no separa esos movimientos ni acredita quiebras.
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -921,7 +921,7 @@ Ponderación vigente en el ITCIS: 3,9 % efectivo. El color es una lectura adicio
 
 # Construcción
 
-Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.
+Nivel de actividad de la construcción medido por el indicador sintético de la actividad de la construcción (ISAC), desestacionalizado, del Instituto Nacional de Estadística y Censos (INDEC). La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.
 
 | | | | |
 |---|---|---|---|
@@ -939,11 +939,11 @@ Nivel de actividad de la construcción medido por el ISAC desestacionalizado del
 
 ## Definición — qué mide y por qué importa
 
-Nivel de actividad de la construcción medido por el ISAC desestacionalizado del INDEC. La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.
+Nivel de actividad de la construcción medido por el indicador sintético de la actividad de la construcción (ISAC), desestacionalizado, del Instituto Nacional de Estadística y Censos (INDEC). La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.
 
 Termómetro de la obra pública y privada, sensible al ciclo económico.
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -1009,7 +1009,7 @@ Ponderación vigente en el ITCIS: 3,5 % efectivo. El color es una lectura adicio
 
 # Subocupación demandante
 
-Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando otro empleo. Es la tasa de subocupación demandante de la EPH, y el INDEC la calcula sobre la PEA —no sobre los ocupados—, que es lo que la vuelve comparable con la tasa de desocupación.
+Qué porcentaje de la población económicamente activa (PEA) trabaja menos horas de las que quisiera y además está buscando otro empleo. Es la tasa de subocupación demandante de la Encuesta Permanente de Hogares (EPH), y el Instituto Nacional de Estadística y Censos (INDEC) la calcula sobre la PEA —no sobre los ocupados—, que es lo que la vuelve comparable con la tasa de desocupación.
 
 | | | | |
 |---|---|---|---|
@@ -1027,11 +1027,11 @@ Qué porcentaje de la población económicamente activa trabaja menos horas de l
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de la población económicamente activa trabaja menos horas de las que quisiera y además está buscando otro empleo. Es la tasa de subocupación demandante de la EPH, y el INDEC la calcula sobre la PEA —no sobre los ocupados—, que es lo que la vuelve comparable con la tasa de desocupación.
+Qué porcentaje de la población económicamente activa (PEA) trabaja menos horas de las que quisiera y además está buscando otro empleo. Es la tasa de subocupación demandante de la Encuesta Permanente de Hogares (EPH), y el Instituto Nacional de Estadística y Censos (INDEC) la calcula sobre la PEA —no sobre los ocupados—, que es lo que la vuelve comparable con la tasa de desocupación.
 
 Señala empleo insuficiente: gente que ya tiene trabajo y sale igual a buscar más horas. Es la presión sobre el mercado laboral que la desocupación no ve, porque a estas personas las cuenta como ocupadas.
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -1121,7 +1121,7 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 
 Cuenta puestos asalariados privados registrados. Complementa las medidas de actividad e informalidad; no cubre empleo público, independiente o no registrado ni describe por sí solo la calidad de esos puestos. La serie permite seguir el nivel y sus variaciones con la fecha de cada observación.
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por ART, actividad de la construcción que releva el INDEC (ISAC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
 
 ## Método de cómputo
 
@@ -1187,7 +1187,7 @@ Ponderación vigente en el ITCIS: 5,9 % efectivo. El color es una lectura adicio
 
 # Victimización
 
-Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del LICIP (Universidad Di Tella) en 40 centros urbanos.
+Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del Laboratorio de Investigaciones sobre Crimen, Instituciones y Políticas de la Universidad Torcuato Di Tella, en 40 centros urbanos.
 
 | | | | |
 |---|---|---|---|
@@ -1205,9 +1205,9 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del LICIP (Universidad Di Tella) en 40 centros urbanos.
+Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del Laboratorio de Investigaciones sobre Crimen, Instituciones y Políticas de la Universidad Torcuato Di Tella, en 40 centros urbanos.
 
-Recoge hechos de victimización declarados por los hogares, incluidos casos no denunciados. Sigue sujeto a cobertura, recuerdo y error muestral de la encuesta. Comparte dimensión con `tasa_homicidios` y `tasa_robos` (SNIC): son complementarios, no redundantes — este capta la cifra negra pero no distingue tipo de delito.
+Recoge hechos de victimización declarados por los hogares, incluidos casos no denunciados. Sigue sujeto a cobertura, recuerdo y error muestral de la encuesta. Comparte dimensión con las tasas de homicidios y de robos del Sistema Nacional de Información Criminal: son complementarios, no redundantes — este capta la cifra negra pero no distingue tipo de delito.
 
 **Dimensión que integra — Seguridad.** Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. Describe victimización reportada, con sus límites muestrales y de recuerdo; no es un censo de delitos ni una medida de sensación de inseguridad.
 
@@ -1284,7 +1284,7 @@ Ponderación vigente en el ITCIS: 2,9 % efectivo. El color es una lectura adicio
 
 # Tasa de homicidios dolosos
 
-Homicidios dolosos cada 100.000 habitantes, tasa YA CALCULADA por el SNIC (Ministerio de Seguridad) sobre su registro anual de denuncias, serie oficial 2000-2025.
+Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC) del Ministerio de Seguridad sobre su registro anual de denuncias, serie oficial 2000-2025.
 
 | | | | |
 |---|---|---|---|
@@ -1302,9 +1302,9 @@ Homicidios dolosos cada 100.000 habitantes, tasa YA CALCULADA por el SNIC (Minis
 
 ## Definición — qué mide y por qué importa
 
-Homicidios dolosos cada 100.000 habitantes, tasa YA CALCULADA por el SNIC (Ministerio de Seguridad) sobre su registro anual de denuncias, serie oficial 2000-2025.
+Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC) del Ministerio de Seguridad sobre su registro anual de denuncias, serie oficial 2000-2025.
 
-Es el tipo de delito con menos subregistro del desglose —hay un cuerpo, así que casi no depende de que alguien denuncie— y complementa al IVI (`inseguridad`), que es mensual pero no distingue tipo de delito. Es anual, con ~8,5 meses de rezago desde el cierre del año.
+Es el tipo de delito con menos subregistro del desglose —hay un cuerpo, así que casi no depende de que alguien denuncie— y complementa al índice de victimización de la Universidad Torcuato Di Tella, que es mensual pero no distingue tipo de delito. Es anual, con ~8,5 meses de rezago desde el cierre del año.
 
 **Dimensión que integra — Seguridad.** Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. Describe victimización reportada, con sus límites muestrales y de recuerdo; no es un censo de delitos ni una medida de sensación de inseguridad.
 
@@ -1374,7 +1374,7 @@ Ponderación vigente en el ITCIS: 1,2 % efectivo. El color es una lectura adicio
 
 # Tasa de robos
 
-Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa YA CALCULADA por el SNIC. Es el equivalente del SNIC a lo que suele llamarse «rapiña».
+Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC). Es el equivalente del SNIC a lo que suele llamarse «rapiña».
 
 | | | | |
 |---|---|---|---|
@@ -1392,9 +1392,9 @@ Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes
 
 ## Definición — qué mide y por qué importa
 
-Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa YA CALCULADA por el SNIC. Es el equivalente del SNIC a lo que suele llamarse «rapiña».
+Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC). Es el equivalente del SNIC a lo que suele llamarse «rapiña».
 
-A diferencia de los homicidios, depende de que la víctima denuncie. La tasa 2025 (778,1) cae 22,4% contra 2024 sin un evento conocido que lo explique, y el patrón —Hurtos cae parecido mientras Robos agravados SUBE el mismo año— no se pudo confirmar ni descartar contra un informe metodológico público del SNIC: se publica el dato oficial con esta limitación declarada.
+A diferencia de los homicidios, depende de que la víctima denuncie. La tasa 2025 (778,1) cae 22,4% contra 2024 sin un evento conocido que lo explique, y el patrón —Hurtos cae parecido mientras Robos agravados sube el mismo año— no se pudo confirmar ni descartar contra un informe metodológico público del Sistema Nacional de Información Criminal: se publica el dato oficial con esta limitación declarada.
 
 **Dimensión que integra — Seguridad.** Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. Describe victimización reportada, con sus límites muestrales y de recuerdo; no es un censo de delitos ni una medida de sensación de inseguridad.
 
@@ -1465,7 +1465,7 @@ Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicio
 
 # Pobreza (estimación mensual)
 
-El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del INDEC, que se publica dos veces al año: es una proyección que se actualiza todos los meses.
+El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del Instituto Nacional de Estadística y Censos (INDEC), que se publica dos veces al año: es una proyección que se actualiza todos los meses.
 
 | | | | |
 |---|---|---|---|
@@ -1483,7 +1483,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 
 ## Definición — qué mide y por qué importa
 
-El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del INDEC, que se publica dos veces al año: es una proyección que se actualiza todos los meses.
+El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del Instituto Nacional de Estadística y Censos (INDEC), que se publica dos veces al año: es una proyección que se actualiza todos los meses.
 
 Permite seguir una estimación de pobreza entre publicaciones oficiales. Integra la dimensión de ingresos y consumo con signo invertido: más pobreza reduce el componente. Su peso efectivo se muestra en la composición del índice y no convierte la estimación en una medición oficial mensual.
 
@@ -1554,7 +1554,7 @@ Ponderación vigente en el ITCIS: 7,8 % efectivo. El color es una lectura adicio
 
 # Motorización total
 
-Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de doce meses. En el ITCIS se compara contra el promedio del 4º trimestre de 2023.
+Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de doce meses. En el índice de impacto social se compara contra el promedio del 4º trimestre de 2023.
 
 | | | | |
 |---|---|---|---|
@@ -1572,7 +1572,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 
 ## Definición — qué mide y por qué importa
 
-Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de doce meses. En el ITCIS se compara contra el promedio del 4º trimestre de 2023.
+Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de doce meses. En el índice de impacto social se compara contra el promedio del 4º trimestre de 2023.
 
 Mide patentamientos totales por habitante y muestra la composición entre autos y motos. Es un proxy de consumo durable: el registro no distingue primeras compras, reposición, flotas ni sustitución entre vehículos de un mismo hogar.
 
@@ -1659,7 +1659,7 @@ Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicio
 
 # Ratio motos/autos
 
-Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. Puntúa INVERTIDO: más motos por auto es deterioro.
+Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. Puntúa invertido: más motos por auto es deterioro.
 
 | | | | |
 |---|---|---|---|
@@ -1677,9 +1677,9 @@ Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil d
 
 ## Definición — qué mide y por qué importa
 
-Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. Puntúa INVERTIDO: más motos por auto es deterioro.
+Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. Puntúa invertido: más motos por auto es deterioro.
 
-Aísla la COMPOSICIÓN del flujo de patentamientos que la motorización total mide en NIVEL: un total que crece mientras este ratio también sube dice que el crecimiento viene de la moto —el vehículo más barato— y no de una mejora pareja. La polaridad es una decisión de contenido, no un hecho aritmético.
+Aísla la composición del flujo de patentamientos que la motorización total mide en nivel: un total que crece mientras este ratio también sube dice que el crecimiento viene de la moto —el vehículo más barato— y no de una mejora pareja. La polaridad es una decisión de contenido, no un hecho aritmético.
 
 **Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
@@ -1750,7 +1750,7 @@ Ponderación vigente en el ITCIS: 0,8 % efectivo. El color es una lectura adicio
 
 # Ventas en supermercados
 
-Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el INDEC en su serie desestacionalizada. En el ITCIS puntúa rebaseado a 100 = 4T-2023.
+Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el Instituto Nacional de Estadística y Censos (INDEC) en su serie desestacionalizada. En el índice de impacto social puntúa rebaseado a 100 = 4T-2023.
 
 | | | | |
 |---|---|---|---|
@@ -1768,7 +1768,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 
 ## Definición — qué mide y por qué importa
 
-Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el INDEC en su serie desestacionalizada. En el ITCIS puntúa rebaseado a 100 = 4T-2023.
+Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el Instituto Nacional de Estadística y Censos (INDEC) en su serie desestacionalizada. En el índice de impacto social puntúa rebaseado a 100 = 4T-2023.
 
 Mide ventas reales de los supermercados relevados. Complementa ingresos, precios y otros consumos; no cubre toda la compra de alimentos ni el comercio minorista. Los cambios de canal de compra también pueden mover la serie.
 
@@ -1933,7 +1933,7 @@ Ponderación vigente en el ITCIS: 7,6 % efectivo. El color es una lectura adicio
 
 # Carga del servicio de deuda
 
-Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus deudas. El BCRA calcula promedios de tres meses para el servicio de deuda y para la masa salarial.
+Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus deudas. El Banco Central calcula promedios de tres meses para el servicio de deuda y para la masa salarial.
 
 | | | | |
 |---|---|---|---|
@@ -1951,7 +1951,7 @@ Qué porcentaje de la masa salarial registrada destinan las familias al pago men
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus deudas. El BCRA calcula promedios de tres meses para el servicio de deuda y para la masa salarial.
+Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus deudas. El Banco Central calcula promedios de tres meses para el servicio de deuda y para la masa salarial.
 
 Mide capacidad comprometida antes de que aparezca el incumplimiento. Complementa a la mora: una observa la presión de pagos y la otra los atrasos ya materializados.
 

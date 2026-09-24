@@ -26,7 +26,7 @@ DATA.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 from config import (PESOS_CINTURONES, UMBRALES, SIGLAS_PUBLICAS,  # pesos, umbrales y siglas
-                    estado_de_score)
+                    estado_de_score, nombre_publico)
 import itcm                                           # bandas y pesos del ITCM macro
 import itcg                                           # bandas y pesos del ITCG gestión
 import itcp                                           # bandas y pesos del ITCP política
@@ -83,7 +83,7 @@ def agregar_carga_servicio_deuda(enriquecido, series):
     ultimo = serie[-1]
     _add(enriquecido, "carga_servicio_deuda_hogares",
          ultimo["valor"], "% de la masa salarial registrada",
-         "BCRA — Informe de Estabilidad Financiera (CDF/MS)",
+         "BCRA — Informe de Estabilidad Financiera (carga de la deuda sobre la masa salarial)",
          ultimo["fecha"][:7],
          detalle_txt=("Cuotas de capital e intereses de las familias como "
                       "porcentaje de la masa salarial registrada; el BCRA "
@@ -308,7 +308,7 @@ def build_vida(raw):
          detalle_txt=("Promedio simple de seis términos de búsqueda —inflación, precios, "
                       "dólar, empleo, inseguridad y corrupción—, cada uno comparado contra "
                       "su propio 4º trimestre de 2023 en una ventana fija desde 2021. "
-                      "Mayor = más búsquedas de urgencia. El ITCIS lo puntúa invertido."))
+                      "Mayor = más búsquedas de urgencia. El índice de impacto social lo puntúa invertido."))
     # ADR-0224: el que PUNTÚA es la motorización total —autos + motos 0km per
     # cápita—, no cada vehículo por su lado. Las dos patas se siguen relevando
     # y se agregan acá abajo porque son los Componentes A y B de la matriz A×B
@@ -519,31 +519,31 @@ SCORING = {
     "endeudamiento_familiar": (lambda v: 5 + v / 4,     "−20% real → 0 · 0% → 5 · +20% real → 10 (var. interanual real del crédito)", "var_real_12m"),
 }
 
-VIDA_CONTEXTO = ("Indicador de contexto — no integra el ITCIS (paramétrica CIGOB jul-2026) "
+VIDA_CONTEXTO = ("Indicador de contexto — no integra el índice de impacto social (paramétrica CIGOB jul-2026) "
                  "o su componente no pudo calcularse en esta corrida.")
 
-MACRO_CONTEXTO = "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
-GESTION_CONTEXTO = "Indicador de contexto — no integra el ITCG (paramétrica CIGOB jul-2026)."
+MACRO_CONTEXTO = "Indicador de contexto — no integra el índice macroeconómico (paramétrica CIGOB may-2026)."
+GESTION_CONTEXTO = "Indicador de contexto — no integra el índice de gestión (paramétrica CIGOB jul-2026)."
 # Texto de respaldo para una card de política que no integre el índice. Los
 # seguimientos internos vigentes se excluyen mediante POLITICA_OCULTOS.
-POLITICA_CONTEXTO = "Indicador de contexto — no integra el ITCP (paramétrica CIGOB jul-2026)."
+POLITICA_CONTEXTO = "Indicador de contexto — no integra el índice político (paramétrica CIGOB jul-2026)."
 
 SCORE_EXPLICACION = {
-    "macro":          ("ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: "
+    "macro":          ("Índice macroeconómico (paramétrico, 0–100, mayor = menos tensión) ponderado por 6 dimensiones: "
                        "estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, "
-                       "actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."),
-    "politica":       ("ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 7 dimensiones: "
+                       "actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − índice) / 10."),
+    "politica":       ("Índice político (paramétrico, 0–100, mayor = más capital político) ponderado por 7 dimensiones: "
                        "poder legislativo 21%, alianzas territoriales 19%, cohesión interna del oficialismo 15%, "
                        "conflicto social 10%, imagen y voto 7%, poder judicial 15%, sector privado 13%. "
-                       "La tensión del cinturón es (100 − ITCP) / 10."),
-    "gestion":        ("ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: "
+                       "La tensión del cinturón es (100 − índice) / 10."),
+    "gestion":        ("Índice de gestión (paramétrico, 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: "
                        "reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, "
-                       "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."),
-    "vida_cotidiana": ("ITCIS-B100 (índice de seguimiento: los componentes usan 100 = promedio del 4T-2023, salvo "
+                       "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − índice) / 10."),
+    "vida_cotidiana": ("Índice de impacto social (de seguimiento: los componentes usan 100 = promedio del 4º trimestre de 2023, salvo "
                        "servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) "
                        "ponderado por 6 dimensiones: ingresos y consumo 28%, precios 25%, "
                        "vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. "
-                       "La tensión del cinturón es 5 − (ITCIS − 100) × 0,2."),
+                       "La tensión del cinturón es 5 − (índice − 100) × 0,2."),
 }
 
 
@@ -767,6 +767,7 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
     con en_indice=false son contexto y no aportan."""
     ajustes = {a["indicador"]: a for a in (c.get(clave) or {}).get("ajustes_aplicados", [])}
     sigla = clave.upper()
+    nombre = nombre_publico(clave)   # lo que lee el lector (ADR-0340)
     # Rango de robustez (ADR-0019): pesos ±20% + bandas vecinas, MC con semilla
     # fija → p05-p95 publicado junto al valor puntual del índice.
     bloque = c.get(clave)
@@ -796,19 +797,19 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
             # texto lo dice, con lectura especial en los extremos (un "0" pelado
             # parecía dato roto y un logro terminado leía como irrelevante).
             if p >= 95:
-                lectura = (f"Leído solo en la escala del {sigla}, este indicador está en "
+                lectura = (f"Leído solo en la escala del {nombre}, este indicador está en "
                            f"{_lectura_tension(aporte)}: puntaje pleno o casi pleno — este "
                            f"frente está logrado y hoy no agrega tensión al índice.")
             elif p <= 15:
-                lectura = (f"Leído solo en la escala del {sigla}, este indicador está en "
+                lectura = (f"Leído solo en la escala del {nombre}, este indicador está en "
                            f"{_lectura_tension(aporte)}: puntaje mínimo — este frente "
                            f"concentra la tensión del cinturón.")
             else:
-                lectura = (f"Leído solo en la escala del {sigla}, este indicador está en "
+                lectura = (f"Leído solo en la escala del {nombre}, este indicador está en "
                            f"{_lectura_tension(aporte)}.")
             peso = ind.get("peso_efectivo")
-            peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + f" del {sigla}" if peso else ""
-            formula = (f"Anclas {sigla}: {mod.texto_bandas(ikey)} "
+            peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + f" del {nombre}" if peso else ""
+            formula = (f"Anclas del {nombre}: {mod.texto_bandas(ikey)} "
                        f"(puntaje interpolado entre anclas: {p}{peso_txt})")
             if ikey in ajustes:
                 aj = ajustes[ikey]
@@ -1029,7 +1030,8 @@ def _validacion_itvc(bloque, series):
         "resultado. La que cumplía ese papel —las ventas en supermercados a precios "
         "constantes— mide condiciones materiales del hogar, así que pasó a integrar el "
         "índice: un indicador no puede ser componente y juez del mismo índice.",
-        "El reemplazo natural sería el consumo privado que publica el INDEC en las Cuentas "
+        "El reemplazo natural sería el consumo privado que publica el Instituto Nacional de "
+        "Estadística y Censos (INDEC) en las Cuentas "
         "Nacionales, que no es un canal del consumo del hogar sino su total; pero es "
         "trimestral y arranca junto con el índice, así que todavía son nueve trimestres y "
         "la correlación se mueve demasiado según cuál se saque. Queda declarado como la "
@@ -1042,8 +1044,8 @@ def _validacion_itvc(bloque, series):
     ]
     if icc_niv is not None:
         partes.append(
-            f"La confianza del consumidor (ICC de UTDT) sigue publicándose como contraste que "
-            f"DISTINGUE en vez de confirmar: contra ella la correlación es {coma(icc_niv)}. Un "
+            f"El Índice de Confianza del Consumidor (ICC) de la Universidad Torcuato Di Tella sigue "
+            f"publicándose como contraste que distingue en vez de confirmar: contra ella la correlación es {coma(icc_niv)}. Un "
             f"número más bajo ahí no es una falla del índice, es el resultado — este cinturón "
             f"mide lo que les pasa a los hogares, no lo que opinan.")
 
@@ -1051,8 +1053,10 @@ def _validacion_itvc(bloque, series):
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": factor.get("n"),
         "pares": pares,
         "plot": "minmax",
-        "titulo": "¿El ITCIS acompaña lo que el hogar efectivamente consume?",
-        "sub": ("Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables "
+        "titulo": "¿El índice de impacto social acompaña lo que el hogar efectivamente consume?",
+        "sub": ("Paso 9 del manual de indicadores compuestos de la Organización para la "
+                "Cooperación y el Desarrollo Económicos (OCDE) y el Centro Común de Investigación "
+                "de la Comisión Europea (JRC): un índice válido debe co-moverse con variables "
                 "externas relacionadas que no lo componen. Para confirmar el índice no hay una "
                 "única serie de referencia —la que hacía ese papel pasó a ser componente del "
                 "índice, y su reemplazo natural, el consumo privado de las Cuentas Nacionales, "
@@ -1061,10 +1065,10 @@ def _validacion_itvc(bloque, series):
                 "a las ajenas. El gráfico muestra el factor común de las que miden volúmenes "
                 "consumidos por los hogares —luz, gas, transporte, combustible—: lo que todas "
                 "ellas comparten, en vez de una sola. Para discriminar sí hay una serie externa "
-                "dedicada, la confianza del consumidor (ICC de UTDT), que salió del índice y "
+                "dedicada, el Índice de Confianza del Consumidor de la Universidad Torcuato Di Tella, que salió del índice y "
                 "pasó a ser su ancla. El detalle —las cargas de cada una, el panel completo y "
                 "la referencia en formación— está en la ficha metodológica."),
-        "serie_label": "ITCIS (reconstrucción mensual)",
+        "serie_label": "Índice de impacto social (reconstrucción mensual)",
         "externa_label": "factor común de los volúmenes consumidos por el hogar",
         "trans_label": ("series normalizadas al rango del período; el factor es un puntaje "
                         "estandarizado y cruza el cero"),
@@ -1117,7 +1121,7 @@ def _validacion_itcm(bloque):
     # externo, así que se publica explícita — y sólo si los números la sostienen.
     if (itcm_ade is not None and lider_ade is not None and itcm_ade > r_niv > lider_ade):
         partes.append(f"Un punto que conviene no leer al revés: el ajuste mejora cuando se "
-                      f"adelanta el ITCM ({coma(itcm_ade)}) y empeora cuando se adelanta el "
+                      f"adelanta el índice macroeconómico ({coma(itcm_ade)}) y empeora cuando se adelanta el "
                       f"índice externo ({coma(lider_ade)}). Pese a su nombre, acá funciona como "
                       f"validación del mismo mes y no como alerta temprana.")
     # Puntos de giro (ADR-0158): el régimen de validación que corresponde a un
@@ -1174,16 +1178,16 @@ def _validacion_itcm(bloque):
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
         "pares": [[m, serie[m], lider[m]] for m in comunes],
         "plot": "minmax",
-        "titulo": "¿El ITCM se mueve con la marcha de la actividad?",
+        "titulo": "¿El índice macroeconómico se mueve con la marcha de la actividad?",
         "sub": ("El contraste del cinturón macro es el Índice Líder de la Universidad Torcuato "
                 "Di Tella, que resume la marcha de la actividad económica y no integra el "
-                f"índice. El ITCM se reconstruye mes a mes desde las series de {_componentes} "
+                f"índice. El índice macroeconómico se reconstruye mes a mes desde las series de {_componentes} "
                 f"(sin serie histórica: {', '.join(k.upper() for k in _sin_serie) or 'ninguno'}; tampoco ingresan los "
                 "ajustes del analista; la cobertura varía entre meses: el nivel puede diferir del publicado — lo que valida es "
                 "su evolución). La correlación esperada es positiva: menos tensión "
                 "macroeconómica, más actividad."),
-        "serie_label": "ITCM (reconstrucción mensual)",
-        "externa_label": "Índice Líder (UTDT)",
+        "serie_label": "Índice macroeconómico (reconstrucción mensual)",
+        "externa_label": "Índice Líder (Di Tella)",
         "trans_label": "series normalizadas al rango del período",
         "conclusion": conclusion,
     }
@@ -1745,7 +1749,11 @@ def _validacion_cruzada(informe):
     PAR_PROPIO = {"ITCM": "lider", "ITVC": "volumen_hogar", "ITCP": "epu"}
     filas = []
     for ik in ("ITCM", "ITVC", "ITCP"):
-        fila = {"indice": SIGLAS_PUBLICAS[ik.lower()], "propio": PAR_PROPIO[ik]}
+        # `indice` es la clave de la fila (la sigla: la usan la matriz de la web
+        # para marcar «este cinturón» y bigquery_export); `nombre` es lo que se
+        # lee en pantalla (ADR-0340).
+        fila = {"indice": SIGLAS_PUBLICAS[ik.lower()],
+                "nombre": nombre_publico(ik, mayuscula=True), "propio": PAR_PROPIO[ik]}
         for ek, ext in externas.items():
             r, n = _r(indices[ik], ext)
             # rd: correlación de los cambios mes a mes — la prueba exigente,
@@ -1774,9 +1782,9 @@ def _validacion_cruzada(informe):
         ajenas = {k: abs(f[k]["r"]) for k in externas if k != f["propio"]}
         mayor = max(ajenas, key=ajenas.get)
         if ajenas[mayor] > propio:
-            superados.append((f["indice"], ETIQ[mayor], f[mayor]["r"], f[f["propio"]]["r"]))
+            superados.append((f["nombre"], ETIQ[mayor], f[mayor]["r"], f[f["propio"]]["r"]))
     if superados:
-        detalle = "; ".join(f"{ik} correlaciona {fmt(r_aj)} con {lbl} contra {fmt(r_pr)} con su "
+        detalle = "; ".join(f"el {ik[:1].lower() + ik[1:]} correlaciona {fmt(r_aj)} con {lbl} contra {fmt(r_pr)} con su "
                             f"propio par" for ik, lbl, r_aj, r_pr in superados)
         discriminante = (f"La separación es parcial, y se declara: en {len(superados)} de los "
                          f"{len(filas)} índices la correlación más fuerte no es con su par propio "
@@ -1790,26 +1798,27 @@ def _validacion_cruzada(informe):
                          "es la prueba de que cada índice mide su terreno y no «todo junto».")
     informe["validacion_cruzada"] = {
         "filas": filas,
-        "externas": [["lider", "Actividad (Índice Líder UTDT)"],
+        "externas": [["lider", "Actividad (Índice Líder de Di Tella)"],
                      ["volumen_hogar", "Volumen consumido por el hogar (factor común)"],
-                     ["epu", "Incertidumbre de política (EPU Argentina)"]],
+                     ["epu", "Incertidumbre de política en la prensa"]],
         "titulo": "¿Cada índice mide lo suyo?",
         "sub": ("Los tres índices que tienen contraste externo se reconstruyen mes a mes y se "
                 "comparan contra los tres contrastes a la vez. Cada uno tiene el propio: la "
-                "macroeconomía (ITCM) con la marcha de la actividad, el impacto social (ITCIS) "
+                "macroeconomía con la marcha de la actividad, el impacto social "
                 "con el factor común de los "
                 "volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política "
-                "(ITCP) con la incertidumbre de política que mide la "
-                "prensa (EPU Argentina). La gestión (ITCG) no figura: mide lo que el gobierno "
+                "con la incertidumbre de política que mide la prensa argentina (el índice de "
+                "incertidumbre de política económica, EPU por su sigla en inglés). La gestión no "
+                "figura: mide lo que el gobierno "
                 "hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería "
                 "correlacionar con su par natural al menos tanto como con los ajenos. Es la "
                 "prueba clásica de que un indicador no mide \"todo junto\"."),
         # La primera oración es la que va sola en la card (ADR-0165): corta y con
         # el veredicto. El detalle par por par queda para el desarrollo.
-        "conclusion": (f"Los tres pares propios dan el signo esperado. ITCM "
-                       f"{fmt(f_itcm['lider']['r'])} con la actividad, ITCIS "
+        "conclusion": (f"Los tres pares propios dan el signo esperado. Índice macroeconómico "
+                       f"{fmt(f_itcm['lider']['r'])} con la actividad, índice de impacto social "
                        f"{fmt(f_itvc['volumen_hogar']['r'])} con el volumen que consume el "
-                       f"hogar, ITCP "
+                       f"hogar, índice político "
                        f"{fmt(f_itcp['epu']['r'])} con la incertidumbre de política — este último "
                        f"más moderado que los otros dos, coherente con un índice con varios "
                        f"componentes recién automatizados y con historia corta. "
@@ -1894,24 +1903,28 @@ def _validacion_itcp(bloque):
         "plot": "minmax_inv",
         "titulo": "¿El capital político se refleja en menos incertidumbre de política percibida?",
         "sub": ("El contraste natural del cinturón político no es un precio de mercado sino la "
-                "lectura pública de la política misma: el EPU (Economic Policy Uncertainty) de "
-                "Argentina mide, con minería de texto sobre diarios locales (Banco de España y "
-                "SECMCA, la misma familia metodológica que el índice de Baker/Bloom/Davis), "
-                "cuánto se habla de incertidumbre alrededor del gobierno y sus políticas. El "
-                "ITCP se reconstruye mes a mes desde las series de sus componentes (sin los "
+                "lectura pública de la política misma: el índice de incertidumbre de política "
+                "económica (EPU, por su sigla en inglés) de la Argentina mide, con minería de "
+                "texto sobre diarios locales, cuánto se habla de incertidumbre alrededor del "
+                "gobierno y sus políticas. Lo elaboran el Banco de España y el Consejo Monetario "
+                "Centroamericano con la misma familia metodológica que el índice de Baker, Bloom "
+                "y Davis. El índice político se reconstruye mes a mes desde las series de sus componentes (sin los "
                 "ajustes del analista: el nivel puede diferir del publicado — lo que valida es "
                 f"su evolución); varios de los {n_componentes} componentes tienen historia corta o recién "
                 "se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento "
-                "de senadores por provincia, adhesión provincial al RIGI), así que la reconstrucción de los "
+                "de senadores por provincia, adhesión provincial al Régimen de Incentivo para "
+                "Grandes Inversiones), así que la reconstrucción de los "
                 "meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la "
                 "protesta social — límite que se declara, no se esconde."),
-        "serie_label": "ITCP (reconstrucción mensual)",
-        "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
-        "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
+        "serie_label": "Índice político (reconstrucción mensual)",
+        "externa_label": "Incertidumbre de política en la prensa (EPU, invertido)",
+        "trans_label": ("series normalizadas al rango del período; la incertidumbre de política "
+                        "se muestra invertida"),
         "r_sin_sector_privado": r_sin_priv,
         "por_gobierno": val.get("brecha_obra_publica_por_gobierno") or {},
         "conclusion": (
-            f"Contra el EPU solo —una de las tres— la correlación es {coma(r_niv)} en niveles y "
+            f"Contra la incertidumbre de política en la prensa sola —una de las tres estadísticas "
+            f"del panel— la correlación es {coma(r_niv)} en niveles y "
             f"{coma(r_dif)} en los cambios mes a mes: el signo negativo es el esperado, más "
             f"moderado que en macro o gestión."
             + (f" Sin la dimensión de sector privado —incorporada en julio de 2026— la "
@@ -2108,25 +2121,26 @@ def _scoring_vida_itvc(c, series):
                 .get(ikey, "4T-2023")
             formula = (f"Índice base-100 vs {base_lbl}: {coma(info['puntaje_aplicado'])} "
                        f"(100 = arranque del mandato; más = mejora); pesa "
-                       f"{coma(round(info['peso_efectivo'] * 100, 1))}% del ITCIS.")
+                       f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
             if ikey == "peso_tarifas":
                 carga = ind.get("valor")
                 proporcion_t = ind.get("transporte_pct_canasta")
                 carga_t = carga * proporcion_t / 100 if carga is not None and proporcion_t is not None else None
                 carga_ae = carga - carga_t if carga is not None and carga_t is not None else None
                 if carga_ae is not None and carga_t is not None:
-                    formula = (f"Canasta IIEP/RIPTE: {coma(carga)}% = agua+energía "
+                    formula = (f"Canasta de servicios públicos del Instituto Interdisciplinario de Economía "
+                               f"Política sobre el salario registrado promedio: {coma(carga)}% = agua+energía "
                                f"{coma(round(carga_ae, 1))}% + transporte {coma(round(carga_t, 1))}%. "
                                f"Se toma la mayor tensión contra sus límites (10% y 5%): "
                                f"índice {coma(info['puntaje_aplicado'])}. "
-                               f"Pesa {coma(round(info['peso_efectivo'] * 100, 1))}% del ITCIS.")
+                               f"Pesa {coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
                     lectura = (f"Agua y energía representan {coma(round(carga_ae, 1))}% del salario; "
                                f"transporte, {coma(round(carga_t, 1))}%. La mayor de las dos "
                                f"señales fija el color: {_lectura_tension(aporte)}.")
                 else:
                     formula = (f"Índice de asequibilidad por rubro: "
                                f"{coma(info['puntaje_aplicado'])}; pesa "
-                               f"{coma(round(info['peso_efectivo'] * 100, 1))}% del ITCIS.")
+                               f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
             if ikey in winsorizados:
                 nota = (f"Winsorizado (tratamiento de outliers): índice crudo "
                         f"{coma(winsorizados[ikey])} acotado al techo de {coma(ITVC_WINSOR_TOPE)} "

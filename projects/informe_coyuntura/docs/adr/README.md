@@ -418,3 +418,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0333](0333-el-color-y-el-estado-leen-la-misma-escala.md) | El color y el estado leen la misma escala y tienen que decir lo mismo |  | vigente |
 | [0337](0337-la-tension-se-lee-por-color-sin-numero.md) | La tensión se lee por color, sin número |  | vigente |
 | [0338](0338-el-marco-abre-con-el-texto-de-luis.md) | El marco abre con el texto de Luis y explica los colores |  | vigente |
+| [0340](0340-el-monitor-habla-sin-siglas.md) | El Monitor habla sin siglas |  | vigente |

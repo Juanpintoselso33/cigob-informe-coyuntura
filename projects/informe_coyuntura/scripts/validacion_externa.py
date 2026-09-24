@@ -549,8 +549,9 @@ def construir_serie_itcm(dimensiones: dict | None = None) -> dict:
 # demás induce a leer como defecto lo que es intencional.
 ACOPLADOS_POR_DISENO = {
     frozenset(("ipc_total", "rem_ipc_12m")):
-        "el REM es la inflación esperada: un pronóstico del IPC, en la misma "
-        "dimensión y a propósito, para leer la misma magnitud en dos momentos",
+        "las expectativas relevadas por el Banco Central son la inflación esperada: "
+        "un pronóstico de la inflación minorista, en la misma dimensión y a propósito, "
+        "para leer la misma magnitud en dos momentos",
     frozenset(("credito_privado", "idc")):
         "los dos se construyen sobre depósitos y préstamos del sistema "
         "bancario; la superposición está declarada desde su diseño",

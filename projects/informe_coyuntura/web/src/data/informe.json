@@ -33,9 +33,9 @@
           "peso_efectivo": 0.156,
           "metodo_obtencion": "automatico",
           "aporte_score": 1.8,
-          "aporte_formula": "Anclas ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntaje interpolado entre anclas: 81.8; pesa 15,6% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntaje interpolado entre anclas: 81.8; pesa 15,6% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -88,9 +88,9 @@
           "peso_efectivo": 0.0544,
           "metodo_obtencion": "automatico",
           "aporte_score": 3.0,
-          "aporte_formula": "Anclas ITCM: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntaje interpolado entre anclas: 70.5; pesa 5,4% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntaje interpolado entre anclas: 70.5; pesa 5,4% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "netas 12661 = SDDS estricto 7745 + Tesoro 2779 + tramo II.1 >3 meses–1 año 2136 (M USD; fórmula CIGOB)",
           "semaforo": {
             "color": "verde",
@@ -143,9 +143,9 @@
           "peso_efectivo": 0.0336,
           "metodo_obtencion": "automatico",
           "aporte_score": 4.8,
-          "aporte_formula": "Anclas ITCM: >1 → 100 · 0,5–1 → 85 · -0,5 a 0,5 → 60 · -1 a -0,5 → 35 · ≤-1 → 10 (puntaje interpolado entre anclas: 51.7; pesa 3,4% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >1 → 100 · 0,5–1 → 85 · -0,5 a 0,5 → 60 · -1 a -0,5 → 35 · ≤-1 → 10 (puntaje interpolado entre anclas: 51.7; pesa 3,4% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en amarillo (tensión moderada).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "−0,25 σ = precio 0,56 · volumen −0,15 · asignación −1,2 (banda propia de este indicador: amarillo) — niveles: tasa real 0,08 pp · depósitos −1,8% i.a. real · holgura 16,0%",
           "semaforo": {
             "color": "amarillo",
@@ -190,9 +190,9 @@
           "peso_efectivo": 0.0581,
           "metodo_obtencion": "automatico",
           "aporte_score": 3.0,
-          "aporte_formula": "Anclas ITCM: >5 → 100 · 3–5 → 80 · 0–3 → 60 · -2 a 0 → 40 · -5 a -2 → 20 · ≤-5 → 5 (puntaje interpolado entre anclas: 69.5; pesa 5,8% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >5 → 100 · 3–5 → 80 · 0–3 → 60 · -2 a 0 → 40 · -5 a -2 → 20 · ≤-5 → 5 (puntaje interpolado entre anclas: 69.5; pesa 5,8% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -302,9 +302,9 @@
           "peso_efectivo": 0.0194,
           "metodo_obtencion": "automatico",
           "aporte_score": 2.0,
-          "aporte_formula": "Anclas ITCM: >90 → 100 · 70–90 → 80 · 50–70 → 60 · 30–50 → 35 · ≤30 → 10 (puntaje interpolado entre anclas: 80.0; pesa 1,9% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >90 → 100 · 70–90 → 80 · 50–70 → 60 · 30–50 → 35 · ≤30 → 10 (puntaje interpolado entre anclas: 80.0; pesa 1,9% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -349,9 +349,9 @@
           "peso_efectivo": 0.0194,
           "metodo_obtencion": "automatico",
           "aporte_score": 7.5,
-          "aporte_formula": "Anclas ITCM: >5 → 100 · 3–5 → 80 · 0–3 → 60 · -2 a 0 → 40 · -5 a -2 → 20 · ≤-5 → 5 (puntaje interpolado entre anclas: 25.4; pesa 1,9% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >5 → 100 · 3–5 → 80 · 0–3 → 60 · -2 a 0 → 40 · -5 a -2 → 20 · ≤-5 → 5 (puntaje interpolado entre anclas: 25.4; pesa 1,9% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en naranja (tensión alta).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en naranja (tensión alta).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "naranja",
@@ -399,9 +399,9 @@
           "peso_efectivo": 0.0132,
           "metodo_obtencion": "automatico",
           "aporte_score": 7.2,
-          "aporte_formula": "Anclas ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5 a 0 → 40 · -10 a -5 → 20 · ≤-10 → 5 (puntaje interpolado entre anclas: 28.4; pesa 1,3% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5 a 0 → 40 · -10 a -5 → 20 · ≤-10 → 5 (puntaje interpolado entre anclas: 28.4; pesa 1,3% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en naranja (tensión alta).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en naranja (tensión alta).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "naranja",
@@ -454,9 +454,9 @@
           "peso_efectivo": 0.048,
           "metodo_obtencion": "automatico",
           "aporte_score": 1.5,
-          "aporte_formula": "Anclas ITCM: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000 a 5000 → 50 · -15000 a -5000 → 30 · ≤-15000 → 10 (puntaje interpolado entre anclas: 85.0; pesa 4,8% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000 a 5000 → 50 · -15000 a -5000 → 30 · ≤-15000 → 10 (puntaje interpolado entre anclas: 85.0; pesa 4,8% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -506,9 +506,9 @@
           "peso_efectivo": 0.072,
           "metodo_obtencion": "automatico",
           "aporte_score": 4.9,
-          "aporte_formula": "Anclas ITCM: >110 → 100 · 100–110 → 85 · 90–100 → 60 · 80–90 → 35 · ≤80 → 10 (puntaje interpolado entre anclas: 50.7; pesa 7,2% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >110 → 100 · 100–110 → 85 · 90–100 → 60 · 80–90 → 35 · ≤80 → 10 (puntaje interpolado entre anclas: 50.7; pesa 7,2% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en amarillo (tensión moderada).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "amarillo",
@@ -553,9 +553,9 @@
           "peso_efectivo": 0.11,
           "metodo_obtencion": "automatico",
           "aporte_score": 5.1,
-          "aporte_formula": "Anclas ITCM: >110 → 100 · 95–110 → 80 · 85–95 → 60 · 75–85 → 35 · ≤75 → 10 (puntaje interpolado entre anclas: 48.8; pesa 11,0% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >110 → 100 · 95–110 → 80 · 85–95 → 60 · 75–85 → 35 · ≤75 → 10 (puntaje interpolado entre anclas: 48.8; pesa 11,0% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en amarillo (tensión moderada).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "amarillo",
@@ -602,9 +602,9 @@
           "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.6% mensual, en la misma escala que el IPC.",
           "metodo_obtencion": "automatico",
           "aporte_score": 1.7,
-          "aporte_formula": "Anclas ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntaje interpolado entre anclas: 83.0; pesa 5,2% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntaje interpolado entre anclas: 83.0; pesa 5,2% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "equiv. mensual 1,6% (raíz-12 del 21,0% anual)",
           "semaforo": {
             "color": "verde",
@@ -654,9 +654,9 @@
           "peso_efectivo": 0.052,
           "metodo_obtencion": "automatico",
           "aporte_score": 5.8,
-          "aporte_formula": "Anclas ITCM: ≤20 → 100 · 20–50 → 60 · 50–80 → 35 · >80 → 10 (puntaje interpolado entre anclas: 41.8; pesa 5,2% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: ≤20 → 100 · 20–50 → 60 · 50–80 → 35 · >80 → 10 (puntaje interpolado entre anclas: 41.8; pesa 5,2% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en amarillo (tensión moderada).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "tensión 58,19 pts = liquidez privada en pesos transaccionales 32,93% × compra neta de divisas del sector privado US$ 3152,0 M — presión compradora alta pese a liquidez transaccional alta, medidos contra el régimen abierto",
           "semaforo": {
             "color": "amarillo",
@@ -707,9 +707,9 @@
           "peso_efectivo": 0.12,
           "metodo_obtencion": "automatico",
           "aporte_score": 6.4,
-          "aporte_formula": "Anclas ITCM: >10 → 100 · 2–10 → 80 · -2 a 2 → 60 · -10 a -2 → 35 · ≤-10 → 10 (puntaje interpolado entre anclas: 36.4; pesa 12,0% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >10 → 100 · 2–10 → 80 · -2 a 2 → 60 · -10 a -2 → 35 · ≤-10 → 10 (puntaje interpolado entre anclas: 36.4; pesa 12,0% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en naranja (tensión alta).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en naranja (tensión alta).",
           "aporte_input_txt": "−5,66% i.a. = ISAC −4,5% · BK importados −7,7%",
           "semaforo": {
             "color": "naranja",
@@ -761,9 +761,9 @@
           "peso_efectivo": 0.032,
           "metodo_obtencion": "automatico",
           "aporte_score": 6.6,
-          "aporte_formula": "Anclas ITCM: >40 → 100 · 20–40 → 85 · 8–20 → 65 · 0–8 → 45 · -10 a 0 → 25 · ≤-10 → 10 (puntaje interpolado entre anclas: 33.7; pesa 3,2% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >40 → 100 · 20–40 → 85 · 8–20 → 65 · 0–8 → 45 · -10 a 0 → 25 · ≤-10 → 10 (puntaje interpolado entre anclas: 33.7; pesa 3,2% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en naranja (tensión alta).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en naranja (tensión alta).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "naranja",
@@ -850,9 +850,9 @@
           "peso_efectivo": 0.04,
           "metodo_obtencion": "automatico",
           "aporte_score": 1.8,
-          "aporte_formula": "Anclas ITCM: >20 → 15 · 12–20 → 45 · 6–12 → 75 · 0–6 → 100 · -5 a 0 → 55 · ≤-5 → 20 (puntaje interpolado entre anclas: 82.1; pesa 4,0% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >20 → 15 · 12–20 → 45 · 6–12 → 75 · 0–6 → 100 · -5 a 0 → 55 · ≤-5 → 20 (puntaje interpolado entre anclas: 82.1; pesa 4,0% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -908,9 +908,9 @@
           "peso_efectivo": 0.12,
           "metodo_obtencion": "automatico",
           "aporte_score": 1.5,
-          "aporte_formula": "Anclas ITCM: >8 → 100 · 4–8 → 85 · 0–4 → 60 · -5 a 0 → 30 · ≤-5 → 10 (puntaje interpolado entre anclas: 85.1; pesa 12,0% del ITCM)",
+          "aporte_formula": "Anclas del índice macroeconómico: >8 → 100 · 4–8 → 85 · 0–4 → 60 · -5 a 0 → 30 · ≤-5 → 10 (puntaje interpolado entre anclas: 85.1; pesa 12,0% del índice macroeconómico)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -2329,16 +2329,16 @@
             ]
           ],
           "plot": "minmax",
-          "titulo": "¿El ITCM se mueve con la marcha de la actividad?",
-          "sub": "El contraste del cinturón macro es el Índice Líder de la Universidad Torcuato Di Tella, que resume la marcha de la actividad económica y no integra el índice. El ITCM se reconstruye mes a mes desde las series de 16 de sus 16 componentes (sin serie histórica: ninguno; tampoco ingresan los ajustes del analista; la cobertura varía entre meses: el nivel puede diferir del publicado — lo que valida es su evolución). La correlación esperada es positiva: menos tensión macroeconómica, más actividad.",
-          "serie_label": "ITCM (reconstrucción mensual)",
-          "externa_label": "Índice Líder (UTDT)",
+          "titulo": "¿El índice macroeconómico se mueve con la marcha de la actividad?",
+          "sub": "El contraste del cinturón macro es el Índice Líder de la Universidad Torcuato Di Tella, que resume la marcha de la actividad económica y no integra el índice. El índice macroeconómico se reconstruye mes a mes desde las series de 16 de sus 16 componentes (sin serie histórica: ninguno; tampoco ingresan los ajustes del analista; la cobertura varía entre meses: el nivel puede diferir del publicado — lo que valida es su evolución). La correlación esperada es positiva: menos tensión macroeconómica, más actividad.",
+          "serie_label": "Índice macroeconómico (reconstrucción mensual)",
+          "externa_label": "Índice Líder (Di Tella)",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Correlación 0,722 en niveles y 0,434 en los cambios mes a mes: cuando la tensión macroeconómica afloja, la actividad acompaña — y lo hace también en el corto plazo, no sólo en la tendencia del período. Que el co-movimiento aguante mes a mes es lo que se le pide a un ancla externa: es la parte que no se explica por la tendencia común del período, que en estos años arrastró a casi todas las series argentinas en la misma dirección. Un punto que conviene no leer al revés: el ajuste mejora cuando se adelanta el ITCM (0,732) y empeora cuando se adelanta el índice externo (0,49). Pese a su nombre, acá funciona como validación del mismo mes y no como alerta temprana. Además del co-movimiento, se mira si los dos ciclos giran juntos, que es la prueba que usan los sistemas de indicadores líderes: el índice y la actividad están en la misma fase —las dos subiendo o las dos bajando— en el 75% de los 32 meses comparados, contra el 50% que daría el azar. Los cambios de dirección confirmados llegan 2,0 meses después que los de la actividad. Queda una pregunta más, que es la que justifica construir un índice en vez de mirar los indicadores sueltos: ¿se equivoca menos el conjunto que cada una de sus partes? Contando los cambios de dirección que cada serie marca sin que la actividad los acompañe, y los que la actividad marca sin que la serie los registre, el índice no acumula ninguno; de sus 15 componentes medidos, 14 se equivocan más, 1 empatan y 0 lo superan.",
+          "conclusion": "Correlación 0,722 en niveles y 0,434 en los cambios mes a mes: cuando la tensión macroeconómica afloja, la actividad acompaña — y lo hace también en el corto plazo, no sólo en la tendencia del período. Que el co-movimiento aguante mes a mes es lo que se le pide a un ancla externa: es la parte que no se explica por la tendencia común del período, que en estos años arrastró a casi todas las series argentinas en la misma dirección. Un punto que conviene no leer al revés: el ajuste mejora cuando se adelanta el índice macroeconómico (0,732) y empeora cuando se adelanta el índice externo (0,49). Pese a su nombre, acá funciona como validación del mismo mes y no como alerta temprana. Además del co-movimiento, se mira si los dos ciclos giran juntos, que es la prueba que usan los sistemas de indicadores líderes: el índice y la actividad están en la misma fase —las dos subiendo o las dos bajando— en el 75% de los 32 meses comparados, contra el 50% que daría el azar. Los cambios de dirección confirmados llegan 2,0 meses después que los de la actividad. Queda una pregunta más, que es la que justifica construir un índice en vez de mirar los indicadores sueltos: ¿se equivoca menos el conjunto que cada una de sus partes? Contando los cambios de dirección que cada serie marca sin que la actividad los acompañe, y los que la actividad marca sin que la serie los registre, el índice no acumula ninguno; de sus 15 componentes medidos, 14 se equivocan más, 1 empatan y 0 lo superan.",
           "resumen": "Correlación 0,722 en niveles y 0,434 en los cambios mes a mes: cuando la tensión macroeconómica afloja, la actividad acompaña — y lo hace también en el corto plazo, no sólo en la tendencia del período.",
-          "detalle_texto": "Que el co-movimiento aguante mes a mes es lo que se le pide a un ancla externa: es la parte que no se explica por la tendencia común del período, que en estos años arrastró a casi todas las series argentinas en la misma dirección. Un punto que conviene no leer al revés: el ajuste mejora cuando se adelanta el ITCM (0,732) y empeora cuando se adelanta el índice externo (0,49). Pese a su nombre, acá funciona como validación del mismo mes y no como alerta temprana. Además del co-movimiento, se mira si los dos ciclos giran juntos, que es la prueba que usan los sistemas de indicadores líderes: el índice y la actividad están en la misma fase —las dos subiendo o las dos bajando— en el 75% de los 32 meses comparados, contra el 50% que daría el azar. Los cambios de dirección confirmados llegan 2,0 meses después que los de la actividad. Queda una pregunta más, que es la que justifica construir un índice en vez de mirar los indicadores sueltos: ¿se equivoca menos el conjunto que cada una de sus partes? Contando los cambios de dirección que cada serie marca sin que la actividad los acompañe, y los que la actividad marca sin que la serie los registre, el índice no acumula ninguno; de sus 15 componentes medidos, 14 se equivocan más, 1 empatan y 0 lo superan.",
+          "detalle_texto": "Que el co-movimiento aguante mes a mes es lo que se le pide a un ancla externa: es la parte que no se explica por la tendencia común del período, que en estos años arrastró a casi todas las series argentinas en la misma dirección. Un punto que conviene no leer al revés: el ajuste mejora cuando se adelanta el índice macroeconómico (0,732) y empeora cuando se adelanta el índice externo (0,49). Pese a su nombre, acá funciona como validación del mismo mes y no como alerta temprana. Además del co-movimiento, se mira si los dos ciclos giran juntos, que es la prueba que usan los sistemas de indicadores líderes: el índice y la actividad están en la misma fase —las dos subiendo o las dos bajando— en el 75% de los 32 meses comparados, contra el 50% que daría el azar. Los cambios de dirección confirmados llegan 2,0 meses después que los de la actividad. Queda una pregunta más, que es la que justifica construir un índice en vez de mirar los indicadores sueltos: ¿se equivoca menos el conjunto que cada una de sus partes? Contando los cambios de dirección que cada serie marca sin que la actividad los acompañe, y los que la actividad marca sin que la serie los registre, el índice no acumula ninguno; de sus 15 componentes medidos, 14 se equivocan más, 1 empatan y 0 lo superan.",
           "sub_resumen": "El contraste del cinturón macro es el Índice Líder de la Universidad Torcuato Di Tella, que resume la marcha de la actividad económica y no integra el índice.",
-          "sub_detalle": "El ITCM se reconstruye mes a mes desde las series de 16 de sus 16 componentes (sin serie histórica: ninguno; tampoco ingresan los ajustes del analista; la cobertura varía entre meses: el nivel puede diferir del publicado — lo que valida es su evolución). La correlación esperada es positiva: menos tensión macroeconómica, más actividad."
+          "sub_detalle": "El índice macroeconómico se reconstruye mes a mes desde las series de 16 de sus 16 componentes (sin serie histórica: ninguno; tampoco ingresan los ajustes del analista; la cobertura varía entre meses: el nivel puede diferir del publicado — lo que valida es su evolución). La correlación esperada es positiva: menos tensión macroeconómica, más actividad."
         },
         "redundancia": {
           "n_indicadores": 16,
@@ -2454,7 +2454,7 @@
           "tension": null
         }
       },
-      "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."
+      "score_explicacion": "Índice macroeconómico (paramétrico, 0–100, mayor = menos tensión) ponderado por 6 dimensiones: estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − índice) / 10."
     },
     "politica": {
       "score": 3.0,
@@ -2478,9 +2478,9 @@
           "peso_efectivo": 0.07,
           "metodo_obtencion": "automatico",
           "aporte_score": 6.3,
-          "aporte_formula": "Anclas ITCP: >14 → 100 · 8–14 → 80 · 2–8 → 40 · -2 a 2 → 20 · ≤-2 → 0 (puntaje interpolado entre anclas: 37.2; pesa 7,0% del ITCP)",
+          "aporte_formula": "Anclas del índice político: >14 → 100 · 8–14 → 80 · 2–8 → 40 · -2 a 2 → 20 · ≤-2 → 0 (puntaje interpolado entre anclas: 37.2; pesa 7,0% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en naranja (tensión alta).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en naranja (tensión alta).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "naranja",
@@ -2669,9 +2669,9 @@
           "peso_efectivo": 0.0483,
           "metodo_obtencion": "automatico",
           "aporte_score": 3.9,
-          "aporte_formula": "Anclas ITCP: ≤0,3 → 100 · 0,3–0,7 → 85 · 0,7–1,2 → 65 · 1,2–2 → 40 · >2 → 10 (puntaje interpolado entre anclas: 60.7; pesa 4,8% del ITCP)",
+          "aporte_formula": "Anclas del índice político: ≤0,3 → 100 · 0,3–0,7 → 85 · 0,7–1,2 → 65 · 1,2–2 → 40 · >2 → 10 (puntaje interpolado entre anclas: 60.7; pesa 4,8% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "34 DNU y 32 leyes publicados en el Boletín Oficial entre 2025-09-25 y 2026-09-24 → 1.06 DNU por ley",
           "semaforo": {
             "color": "verde",
@@ -2720,9 +2720,9 @@
           "peso_efectivo": 0.065,
           "metodo_obtencion": "automatico",
           "aporte_score": 2.9,
-          "aporte_formula": "Anclas ITCP: >10 → 100 · 0–10 → 85 · -10 a 0 → 65 · -20 a -10 → 40 · ≤-20 → 10 (puntaje interpolado entre anclas: 71.4; pesa 6,5% del ITCP)",
+          "aporte_formula": "Anclas del índice político: >10 → 100 · 0–10 → 85 · -10 a 0 → 65 · -20 a -10 → 40 · ≤-20 → 10 (puntaje interpolado entre anclas: 71.4; pesa 6,5% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "Brecha de -1,8 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Último horizonte consultado: 2026-08 a 2026-10; la fecha identifica su inicio, no una realización observada ni la fecha de publicación. Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
           "semaforo": {
             "color": "verde",
@@ -2773,9 +2773,9 @@
           "peso_efectivo": 0.065,
           "metodo_obtencion": "semiautomatico",
           "aporte_score": 5.6,
-          "aporte_formula": "Anclas ITCP: >0,6 → 100 · 0,2–0,6 → 85 · -0,2 a 0,2 → 65 · -0,6 a -0,2 → 40 · ≤-0,6 → 10 (puntaje interpolado entre anclas: 44.2; pesa 6,5% del ITCP)",
+          "aporte_formula": "Anclas del índice político: >0,6 → 100 · 0,2–0,6 → 85 · -0,2 a 0,2 → 65 · -0,6 a -0,2 → 40 · ≤-0,6 → 10 (puntaje interpolado entre anclas: 44.2; pesa 6,5% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en amarillo (tensión moderada).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "En los últimos doce meses la UIA se pronunció 9 veces sobre medidas del Gobierno nacional: 3 de apoyo y 6 de crítica. Saldo −0,333 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
           "semaforo": {
             "color": "amarillo",
@@ -2825,9 +2825,9 @@
           "peso_efectivo": 0.06,
           "metodo_obtencion": "automatico",
           "aporte_score": 4.8,
-          "aporte_formula": "Anclas ITCP: ≤-32 → 100 · -32 a -29 → 85 · -29 a -26 → 65 · -26 a -15 → 40 · >-15 → 10 (puntaje interpolado entre anclas: 52.5; pesa 6,0% del ITCP)",
+          "aporte_formula": "Anclas del índice político: ≤-32 → 100 · -32 a -29 → 85 · -29 a -26 → 65 · -26 a -15 → 40 · >-15 → 10 (puntaje interpolado entre anclas: 52.5; pesa 6,0% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en amarillo (tensión moderada).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "1981 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-08) vs 2605 en la base 2023 (-24,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
           "semaforo": {
             "color": "amarillo",
@@ -2873,9 +2873,9 @@
           "peso_efectivo": 0.04,
           "metodo_obtencion": "automatico",
           "aporte_score": 0.0,
-          "aporte_formula": "Anclas ITCP: ≤5e+06 → 100 · 5e+06–6,5e+06 → 85 · 6,5e+06–8e+06 → 65 · 8e+06–1e+07 → 40 · >1e+07 → 10 (puntaje interpolado entre anclas: 100.0; pesa 4,0% del ITCP)",
+          "aporte_formula": "Anclas del índice político: ≤5e+06 → 100 · 5e+06–6,5e+06 → 85 · 6,5e+06–8e+06 → 65 · 8e+06–1e+07 → 40 · >1e+07 → 10 (puntaje interpolado entre anclas: 100.0; pesa 4,0% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "4.760.195 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
           "semaforo": {
             "color": "verde",
@@ -2921,9 +2921,9 @@
           "peso_efectivo": 0.076,
           "metodo_obtencion": "automatico",
           "aporte_score": 2.2,
-          "aporte_formula": "Anclas ITCP: >10 → 100 · 0–10 → 85 · -10 a 0 → 65 · -20 a -10 → 40 · ≤-20 → 10 (puntaje interpolado entre anclas: 78.2; pesa 7,6% del ITCP)",
+          "aporte_formula": "Anclas del índice político: >10 → 100 · 0–10 → 85 · -10 a 0 → 65 · -20 a -10 → 40 · ≤-20 → 10 (puntaje interpolado entre anclas: 78.2; pesa 7,6% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "2025: +43.1% nominal contra un deflactor de 40.8% ponderado por el flujo de cada mes → +1.6% real",
           "semaforo": {
             "color": "verde",
@@ -2973,9 +2973,9 @@
           "peso_efectivo": 0.063,
           "metodo_obtencion": "automatico",
           "aporte_score": 4.0,
-          "aporte_formula": "Anclas ITCP: >50 → 100 · 30–50 → 85 · 15–30 → 65 · 5–15 → 40 · ≤5 → 10 (puntaje interpolado entre anclas: 60.0; pesa 6,3% del ITCP)",
+          "aporte_formula": "Anclas del índice político: >50 → 100 · 30–50 → 85 · 15–30 → 65 · 5–15 → 40 · ≤5 → 10 (puntaje interpolado entre anclas: 60.0; pesa 6,3% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -3024,9 +3024,9 @@
           "peso_efectivo": 0.0315,
           "metodo_obtencion": "automatico",
           "aporte_score": 1.9,
-          "aporte_formula": "Anclas ITCP: ≤5 → 100 · 5–10 → 85 · 10–20 → 65 · 20–30 → 40 · >30 → 10 (puntaje interpolado entre anclas: 80.7; pesa 3,1% del ITCP)",
+          "aporte_formula": "Anclas del índice político: ≤5 → 100 · 5–10 → 85 · 10–20 → 65 · 20–30 → 40 · >30 → 10 (puntaje interpolado entre anclas: 80.7; pesa 3,1% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "1 de 11 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. Última reunión: 2026-09-09. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas.",
           "semaforo": {
             "color": "verde",
@@ -3093,9 +3093,9 @@
           "peso_efectivo": 0.057,
           "metodo_obtencion": "automatico",
           "aporte_score": 0.8,
-          "aporte_formula": "Anclas ITCP: >80 → 100 · 60–80 → 85 · 40–60 → 65 · 20–40 → 40 · ≤20 → 10 (puntaje interpolado entre anclas: 92.5; pesa 5,7% del ITCP)",
+          "aporte_formula": "Anclas del índice político: >80 → 100 · 60–80 → 85 · 40–60 → 65 · 20–40 → 40 · ≤20 → 10 (puntaje interpolado entre anclas: 92.5; pesa 5,7% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.",
           "semaforo": {
             "color": "verde",
@@ -3157,9 +3157,9 @@
           "peso_efectivo": 0.15,
           "metodo_obtencion": "automatico",
           "aporte_score": 0.0,
-          "aporte_formula": "Anclas ITCP: >99,9 → 100 · 99–99,9 → 85 · 97–99 → 65 · 95–97 → 40 · ≤95 → 10 (puntaje interpolado entre anclas: 100.0; pesa 15,0% del ITCP)",
+          "aporte_formula": "Anclas del índice político: >99,9 → 100 · 99–99,9 → 85 · 97–99 → 65 · 95–97 → 40 · ≤95 → 10 (puntaje interpolado entre anclas: 100.0; pesa 15,0% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "100,0% = Diputados 100,0% (peso 65%, 44 actas) · última acta 2026-09-09 · Senado 100,0% (peso 35%, 40 actas) · última acta 2026-09-17",
           "semaforo": {
             "color": "verde",
@@ -3208,9 +3208,9 @@
           "peso_efectivo": 0.0315,
           "metodo_obtencion": "semiautomatico",
           "aporte_score": 0.0,
-          "aporte_formula": "Anclas ITCP: ≤2 → 100 · 2–5 → 85 · 5–9 → 65 · 9–12 → 40 · >12 → 10 (puntaje interpolado entre anclas: 100.0; pesa 3,1% del ITCP)",
+          "aporte_formula": "Anclas del índice político: ≤2 → 100 · 2–5 → 85 · 5–9 → 65 · 9–12 → 40 · >12 → 10 (puntaje interpolado entre anclas: 100.0; pesa 3,1% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "Ninguna norma del Ejecutivo fue desafiada en el recinto en los últimos 12 meses — cero desafíos es la señal, no un dato faltante. Cuando los hubo (histórico completo: 16 normas desde marzo de 2024), el 43,8% siguió en pie (7 de 16).",
           "semaforo": {
             "color": "verde",
@@ -3258,9 +3258,9 @@
           "peso_efectivo": 0.0357,
           "metodo_obtencion": "automatico",
           "aporte_score": 5.8,
-          "aporte_formula": "Anclas ITCP: >74 → 100 · 50–74 → 85 · 35–50 → 65 · 20–35 → 40 · ≤20 → 10 (puntaje interpolado entre anclas: 42.5; pesa 3,6% del ITCP)",
+          "aporte_formula": "Anclas del índice político: >74 → 100 · 50–74 → 85 · 35–50 → 65 · 20–35 → 40 · ≤20 → 10 (puntaje interpolado entre anclas: 42.5; pesa 3,6% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en amarillo (tensión moderada).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "29 leyes distintas en los 12 meses completos hasta 2026-08. Última sanción registrada: 2026-08-27; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
           "semaforo": {
             "color": "amarillo",
@@ -3306,9 +3306,9 @@
           "peso_efectivo": 0.0375,
           "metodo_obtencion": "manual",
           "aporte_score": 0.5,
-          "aporte_formula": "Anclas ITCP: ≤40 → 100 · 40–70 → 85 · 70–100 → 65 · 100–130 → 40 · >130 → 10 (puntaje interpolado entre anclas: 94.6; pesa 3,8% del ITCP)",
+          "aporte_formula": "Anclas del índice político: ≤40 → 100 · 40–70 → 85 · 70–100 → 65 · 100–130 → 40 · >130 → 10 (puntaje interpolado entre anclas: 94.6; pesa 3,8% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
           "semaforo": {
             "color": "verde",
@@ -3461,9 +3461,9 @@
           "peso_efectivo": 0.0375,
           "metodo_obtencion": "automatico",
           "aporte_score": 9.0,
-          "aporte_formula": "Anclas ITCP: ≤2 → 100 · 2–4 → 85 · 4–6 → 65 · 6–9 → 40 · >9 → 10 (puntaje interpolado entre anclas: 10.0; pesa 3,8% del ITCP)",
+          "aporte_formula": "Anclas del índice político: ≤2 → 100 · 2–4 → 85 · 4–6 → 65 · 6–9 → 40 · >9 → 10 (puntaje interpolado entre anclas: 10.0; pesa 3,8% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en rojo (tensión crítica): puntaje mínimo — este frente concentra la tensión del cinturón.",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en rojo (tensión crítica): puntaje mínimo — este frente concentra la tensión del cinturón.",
           "aporte_input_txt": "13 sesiones de las comisiones de Acusación y Disciplina en los últimos 12 meses, incluidas ordinarias, extraordinarias y las publicadas junto con otras comisiones; las audiencias no cuentan (rango de la serie: 13 a 18, promedio 15.2).",
           "semaforo": {
             "color": "rojo",
@@ -3530,9 +3530,9 @@
           "peso_efectivo": 0.075,
           "metodo_obtencion": "semiautomatico",
           "aporte_score": 3.8,
-          "aporte_formula": "Anclas ITCP: >90 → 100 · 80–90 → 85 · 70–80 → 65 · 60–70 → 40 · ≤60 → 10 (puntaje interpolado entre anclas: 62.0; pesa 7,5% del ITCP)",
+          "aporte_formula": "Anclas del índice político: >90 → 100 · 80–90 → 85 · 70–80 → 65 · 60–70 → 40 · ≤60 → 10 (puntaje interpolado entre anclas: 62.0; pesa 7,5% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "Cobertura estimada: 705 de 955 cargos al 2026-09-20. Padrón original al 2026-06-05: 610 no vacantes; menos 1 bajas omitidas en esa foto = 609. Después: +103 altas netas, −6 renuncias y −1 otras bajas. Traslados y renovaciones no suman una nueva cobertura. Universo fijo; no certifica juras ni exhaustividad de fallecimientos. No incorpora órganos no habilitados en el padrón sin una fuente de habilitación. No certifica el calendario de juras ni la exhaustividad de fallecimientos. Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen. Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales. Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos.",
           "semaforo": {
             "color": "verde",
@@ -3578,9 +3578,9 @@
           "peso_efectivo": 0.057,
           "metodo_obtencion": "automatico",
           "aporte_score": 2.3,
-          "aporte_formula": "Anclas ITCP: >70 → 100 · 60–70 → 85 · 50–60 → 65 · 40–50 → 40 · ≤40 → 10 (puntaje interpolado entre anclas: 76.6; pesa 5,7% del ITCP)",
+          "aporte_formula": "Anclas del índice político: >70 → 100 · 60–70 → 85 · 50–60 → 65 · 40–50 → 40 · ≤40 → 10 (puntaje interpolado entre anclas: 76.6; pesa 5,7% del índice político)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
           "semaforo": {
             "color": "verde",
@@ -5120,10 +5120,10 @@
           ],
           "plot": "minmax_inv",
           "titulo": "¿El capital político se refleja en menos incertidumbre de política percibida?",
-          "sub": "El contraste natural del cinturón político no es un precio de mercado sino la lectura pública de la política misma: el EPU (Economic Policy Uncertainty) de Argentina mide, con minería de texto sobre diarios locales (Banco de España y SECMCA, la misma familia metodológica que el índice de Baker/Bloom/Davis), cuánto se habla de incertidumbre alrededor del gobierno y sus políticas. El ITCP se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución); varios de los 17 componentes tienen historia corta o recién se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento de senadores por provincia, adhesión provincial al RIGI), así que la reconstrucción de los meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la protesta social — límite que se declara, no se esconde.",
-          "serie_label": "ITCP (reconstrucción mensual)",
-          "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
-          "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
+          "sub": "El contraste natural del cinturón político no es un precio de mercado sino la lectura pública de la política misma: el índice de incertidumbre de política económica (EPU, por su sigla en inglés) de la Argentina mide, con minería de texto sobre diarios locales, cuánto se habla de incertidumbre alrededor del gobierno y sus políticas. Lo elaboran el Banco de España y el Consejo Monetario Centroamericano con la misma familia metodológica que el índice de Baker, Bloom y Davis. El índice político se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución); varios de los 17 componentes tienen historia corta o recién se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento de senadores por provincia, adhesión provincial al Régimen de Incentivo para Grandes Inversiones), así que la reconstrucción de los meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la protesta social — límite que se declara, no se esconde.",
+          "serie_label": "Índice político (reconstrucción mensual)",
+          "externa_label": "Incertidumbre de política en la prensa (EPU, invertido)",
+          "trans_label": "series normalizadas al rango del período; la incertidumbre de política se muestra invertida",
           "r_sin_sector_privado": -0.504,
           "por_gobierno": {
             "Macri (desde el inicio de la serie)": {
@@ -5139,7 +5139,7 @@
               "n": 33
             }
           },
-          "conclusion": "Contra el EPU solo —una de las tres— la correlación es −0,309 en niveles y −0,3 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,504, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide. El contraste propio de expectativas de construcción con el volumen de insumos vendidos (Construya), ambas series suavizadas a doce meses, da 0,807 en niveles y 0,298 en cambios mensuales. La fecha de expectativas representa el inicio de su horizonte trimestral; el contraste retrospectivo no demuestra anticipación ni causalidad. La comparación por gobierno permite examinar la estabilidad del signo. Una asociación distinta no identifica por sí sola su causa: el recorte de obra pública puede formar parte del programa y afectar las expectativas del sector. Esa interpretación debe contrastarse con evidencia adicional.",
+          "conclusion": "Contra la incertidumbre de política en la prensa sola —una de las tres estadísticas del panel— la correlación es −0,309 en niveles y −0,3 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,504, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide. El contraste propio de expectativas de construcción con el volumen de insumos vendidos (Construya), ambas series suavizadas a doce meses, da 0,807 en niveles y 0,298 en cambios mensuales. La fecha de expectativas representa el inicio de su horizonte trimestral; el contraste retrospectivo no demuestra anticipación ni causalidad. La comparación por gobierno permite examinar la estabilidad del signo. Una asociación distinta no identifica por sí sola su causa: el recorte de obra pública puede formar parte del programa y afectar las expectativas del sector. Esa interpretación debe contrastarse con evidencia adicional.",
           "panel": {
             "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 2 estadísticas de su propio terreno es 0,171 y con las 12 ajenas es 0,184. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,323 con lo propio contra 0,17 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva.",
             "nota_factor": "El peso y el signo de cada estadística los fija el cálculo, no el autor: a la que se mueve al revés le sale carga negativa sola. Se estiman con las estadísticas externas únicamente —el índice no participa—, y por eso el contraste no se puede acomodar.",
@@ -5284,10 +5284,10 @@
             "n_propias": 2,
             "n_ajenas": 12
           },
-          "resumen": "Contra el EPU solo —una de las tres— la correlación es −0,309 en niveles y −0,3 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión.",
+          "resumen": "Contra la incertidumbre de política en la prensa sola —una de las tres estadísticas del panel— la correlación es −0,309 en niveles y −0,3 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión.",
           "detalle_texto": "Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,504, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide. El contraste propio de expectativas de construcción con el volumen de insumos vendidos (Construya), ambas series suavizadas a doce meses, da 0,807 en niveles y 0,298 en cambios mensuales. La fecha de expectativas representa el inicio de su horizonte trimestral; el contraste retrospectivo no demuestra anticipación ni causalidad. La comparación por gobierno permite examinar la estabilidad del signo. Una asociación distinta no identifica por sí sola su causa: el recorte de obra pública puede formar parte del programa y afectar las expectativas del sector. Esa interpretación debe contrastarse con evidencia adicional.",
-          "sub_resumen": "El contraste natural del cinturón político no es un precio de mercado sino la lectura pública de la política misma: el EPU (Economic Policy Uncertainty) de Argentina mide, con minería de texto sobre diarios locales (Banco de España y SECMCA, la misma familia metodológica que el índice de Baker/Bloom/Davis), cuánto se habla de incertidumbre alrededor del gobierno y sus políticas.",
-          "sub_detalle": "El ITCP se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución); varios de los 17 componentes tienen historia corta o recién se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento de senadores por provincia, adhesión provincial al RIGI), así que la reconstrucción de los meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la protesta social — límite que se declara, no se esconde."
+          "sub_resumen": "El contraste natural del cinturón político no es un precio de mercado sino la lectura pública de la política misma: el índice de incertidumbre de política económica (EPU, por su sigla en inglés) de la Argentina mide, con minería de texto sobre diarios locales, cuánto se habla de incertidumbre alrededor del gobierno y sus políticas.",
+          "sub_detalle": "Lo elaboran el Banco de España y el Consejo Monetario Centroamericano con la misma familia metodológica que el índice de Baker, Bloom y Davis. El índice político se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución); varios de los 17 componentes tienen historia corta o recién se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento de senadores por provincia, adhesión provincial al Régimen de Incentivo para Grandes Inversiones), así que la reconstrucción de los meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la protesta social — límite que se declara, no se esconde."
         },
         "redundancia": {
           "n_indicadores": 16,
@@ -5523,7 +5523,7 @@
           "tension": null
         }
       },
-      "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 7 dimensiones: poder legislativo 21%, alianzas territoriales 19%, cohesión interna del oficialismo 15%, conflicto social 10%, imagen y voto 7%, poder judicial 15%, sector privado 13%. La tensión del cinturón es (100 − ITCP) / 10."
+      "score_explicacion": "Índice político (paramétrico, 0–100, mayor = más capital político) ponderado por 7 dimensiones: poder legislativo 21%, alianzas territoriales 19%, cohesión interna del oficialismo 15%, conflicto social 10%, imagen y voto 7%, poder judicial 15%, sector privado 13%. La tensión del cinturón es (100 − índice) / 10."
     },
     "vida_cotidiana": {
       "score": 6.5,
@@ -5545,7 +5545,7 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.1422,
           "aporte_score": 2.7,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 111,6 (100 = arranque del mandato; más = mejora); pesa 14,2% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 111,6 (100 = arranque del mandato; más = mejora); pesa 14,2% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
@@ -5570,7 +5570,7 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0954,
           "aporte_score": 3.5,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 107,6 (100 = arranque del mandato; más = mejora); pesa 9,5% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 107,6 (100 = arranque del mandato; más = mejora); pesa 9,5% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
@@ -5599,7 +5599,7 @@
           "fecha_indice_itvc": "2026-09-01",
           "peso_efectivo": 0.1226,
           "aporte_score": 3.7,
-          "aporte_formula": "Canasta IIEP/RIPTE: 14,6% = agua+energía 7,7% + transporte 6,9%. Se toma la mayor tensión contra sus límites (10% y 5%): índice 106,4. Pesa 12,3% del ITCIS.",
+          "aporte_formula": "Canasta de servicios públicos del Instituto Interdisciplinario de Economía Política sobre el salario registrado promedio: 14,6% = agua+energía 7,7% + transporte 6,9%. Se toma la mayor tensión contra sus límites (10% y 5%): índice 106,4. Pesa 12,3% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Agua y energía representan 7,7% del salario; transporte, 6,9%. La mayor de las dos señales fija el color: verde (sin tensión relevante).",
           "semaforo": {
@@ -5625,7 +5625,7 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0545,
           "aporte_score": 10.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 50,0 (100 = arranque del mandato; más = mejora); pesa 5,5% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 50,0 (100 = arranque del mandato; más = mejora); pesa 5,5% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Este componente está en rojo (tensión crítica), más allá del tope de la escala: deterioro profundo contra el arranque del mandato.",
           "semaforo": {
@@ -5656,7 +5656,7 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0047,
           "aporte_score": 7.3,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 88,5 (100 = arranque del mandato; más = mejora); pesa 0,5% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 88,5 (100 = arranque del mandato; más = mejora); pesa 0,5% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -5689,7 +5689,7 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.0047,
           "aporte_score": 6.1,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 94,4 (100 = arranque del mandato; más = mejora); pesa 0,5% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 94,4 (100 = arranque del mandato; más = mejora); pesa 0,5% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -5714,7 +5714,7 @@
           "fecha_indice_itvc": "2026-04-01",
           "peso_efectivo": 0.0901,
           "aporte_score": 6.2,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 94,2 (100 = arranque del mandato; más = mejora); pesa 9,0% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 94,2 (100 = arranque del mandato; más = mejora); pesa 9,0% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -5754,7 +5754,7 @@
           "fecha_indice_itvc": "2026-06-01",
           "peso_efectivo": 0.0264,
           "aporte_score": 6.5,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 92,4 (100 = arranque del mandato; más = mejora); pesa 2,6% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 92,4 (100 = arranque del mandato; más = mejora); pesa 2,6% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -5779,7 +5779,7 @@
           "fecha_indice_itvc": "2026-06-01",
           "peso_efectivo": 0.0389,
           "aporte_score": 6.3,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 93,6 (100 = arranque del mandato; más = mejora); pesa 3,9% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 93,6 (100 = arranque del mandato; más = mejora); pesa 3,9% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -5804,7 +5804,7 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.0355,
           "aporte_score": 9.4,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 77,8 (100 = arranque del mandato; más = mejora); pesa 3,5% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 77,8 (100 = arranque del mandato; más = mejora); pesa 3,5% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en rojo (tensión crítica).",
           "semaforo": {
@@ -5829,7 +5829,7 @@
           "fecha_indice_itvc": "2026-04-01",
           "peso_efectivo": 0.0135,
           "aporte_score": 8.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 85,0 (100 = arranque del mandato; más = mejora); pesa 1,4% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 85,0 (100 = arranque del mandato; más = mejora); pesa 1,4% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -5854,7 +5854,7 @@
           "fecha_indice_itvc": "2026-06-01",
           "peso_efectivo": 0.0592,
           "aporte_score": 5.9,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 95,5 (100 = arranque del mandato; más = mejora); pesa 5,9% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 95,5 (100 = arranque del mandato; más = mejora); pesa 5,9% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en amarillo (tensión moderada).",
           "semaforo": {
@@ -5880,7 +5880,7 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.0292,
           "aporte_score": 4.0,
-          "aporte_formula": "Índice base-100 vs ene-2024 (base declarada conservada; archivo 2023 recuperado en septiembre de 2026): 104,8 (100 = arranque del mandato; más = mejora); pesa 2,9% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs ene-2024 (base declarada conservada; archivo 2023 recuperado en septiembre de 2026): 104,8 (100 = arranque del mandato; más = mejora); pesa 2,9% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
@@ -5907,7 +5907,7 @@
           "indice_itvc_crudo": 165.6,
           "recorte_itvc": 25.6,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 140,0 (100 = arranque del mandato; más = mejora); pesa 1,2% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 140,0 (100 = arranque del mandato; más = mejora); pesa 1,2% del índice de impacto social.",
           "aporte_nota": "Winsorizado (tratamiento de outliers): índice crudo 165,6 acotado al techo de 140,0 — un boom puntual de un componente no compra compensación ilimitada en el promedio. El tope es solo hacia arriba: las caídas no se recortan, se señalizan como dimensión crítica.",
           "aporte_lectura": "Este componente está en 140,0 contra una base de 100: mejora tanto que no solo no suma tensión — empuja el índice del cinturón hacia arriba.",
           "semaforo": {
@@ -5933,7 +5933,7 @@
           "fecha_indice_itvc": "2025-12-01",
           "peso_efectivo": 0.0074,
           "aporte_score": 1.2,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 118,9 (100 = arranque del mandato; más = mejora); pesa 0,7% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 118,9 (100 = arranque del mandato; más = mejora); pesa 0,7% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en verde (sin tensión relevante).",
           "semaforo": {
@@ -5958,7 +5958,7 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0776,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 128,1 (100 = arranque del mandato; más = mejora); pesa 7,8% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 128,1 (100 = arranque del mandato; más = mejora); pesa 7,8% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Este componente está en 128,1 contra una base de 100: mejora tanto que no solo no suma tensión — empuja el índice del cinturón hacia arriba.",
           "semaforo": {
@@ -5996,7 +5996,7 @@
           "peso_efectivo": 0.0095,
           "winsor_exento": true,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 144,4 (100 = arranque del mandato; más = mejora); pesa 0,9% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 144,4 (100 = arranque del mandato; más = mejora); pesa 0,9% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Este componente está en 144,4 contra una base de 100: mejora tanto que no solo no suma tensión — empuja el índice del cinturón hacia arriba.",
           "semaforo": {
@@ -6022,7 +6022,7 @@
           "fecha_indice_itvc": "2026-08-01",
           "peso_efectivo": 0.0076,
           "aporte_score": 7.8,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 86,0 (100 = arranque del mandato; más = mejora); pesa 0,8% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 86,0 (100 = arranque del mandato; más = mejora); pesa 0,8% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -6047,7 +6047,7 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.0596,
           "aporte_score": 7.2,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 89,1 (100 = arranque del mandato; más = mejora); pesa 6,0% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 89,1 (100 = arranque del mandato; más = mejora); pesa 6,0% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente está en naranja (tensión alta).",
           "semaforo": {
@@ -6072,7 +6072,7 @@
           "fecha_indice_itvc": "2026-07-01",
           "peso_efectivo": 0.0763,
           "aporte_score": 10.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 16,9 (100 = arranque del mandato; más = mejora); pesa 7,6% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 16,9 (100 = arranque del mandato; más = mejora); pesa 7,6% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Este componente está en rojo (tensión crítica), más allá del tope de la escala: deterioro profundo contra el arranque del mandato.",
           "semaforo": {
@@ -6086,7 +6086,7 @@
         "carga_servicio_deuda_hogares": {
           "valor": 24.076,
           "unidad": "% de la masa salarial registrada",
-          "fuente": "BCRA — Informe de Estabilidad Financiera (CDF/MS)",
+          "fuente": "BCRA — Informe de Estabilidad Financiera (carga de la deuda sobre la masa salarial)",
           "fecha_dato": "2026-04",
           "desactualizado": false,
           "detalle_txt": "Cuotas de capital e intereses de las familias como porcentaje de la masa salarial registrada; el BCRA promedia tres meses tanto en el numerador como en el denominador. Más carga implica menor capacidad de pago.",
@@ -6097,7 +6097,7 @@
           "fecha_indice_itvc": "2026-04-01",
           "peso_efectivo": 0.0327,
           "aporte_score": 10.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 42,3 (100 = arranque del mandato; más = mejora); pesa 3,3% del ITCIS.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 42,3 (100 = arranque del mandato; más = mejora); pesa 3,3% del índice de impacto social.",
           "aporte_nota": null,
           "aporte_lectura": "Este componente está en rojo (tensión crítica), más allá del tope de la escala: deterioro profundo contra el arranque del mandato.",
           "semaforo": {
@@ -7378,12 +7378,12 @@
             ]
           ],
           "plot": "minmax",
-          "titulo": "¿El ITCIS acompaña lo que el hogar efectivamente consume?",
-          "sub": "Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables externas relacionadas que no lo componen. Para confirmar el índice no hay una única serie de referencia —la que hacía ese papel pasó a ser componente del índice, y su reemplazo natural, el consumo privado de las Cuentas Nacionales, todavía tiene nueve trimestres—, así que se compara contra un panel de estadísticas externas y se mira si acompaña más a las de su propio terreno que a las ajenas. El gráfico muestra el factor común de las que miden volúmenes consumidos por los hogares —luz, gas, transporte, combustible—: lo que todas ellas comparten, en vez de una sola. Para discriminar sí hay una serie externa dedicada, la confianza del consumidor (ICC de UTDT), que salió del índice y pasó a ser su ancla. El detalle —las cargas de cada una, el panel completo y la referencia en formación— está en la ficha metodológica.",
-          "serie_label": "ITCIS (reconstrucción mensual)",
+          "titulo": "¿El índice de impacto social acompaña lo que el hogar efectivamente consume?",
+          "sub": "Paso 9 del manual de indicadores compuestos de la Organización para la Cooperación y el Desarrollo Económicos (OCDE) y el Centro Común de Investigación de la Comisión Europea (JRC): un índice válido debe co-moverse con variables externas relacionadas que no lo componen. Para confirmar el índice no hay una única serie de referencia —la que hacía ese papel pasó a ser componente del índice, y su reemplazo natural, el consumo privado de las Cuentas Nacionales, todavía tiene nueve trimestres—, así que se compara contra un panel de estadísticas externas y se mira si acompaña más a las de su propio terreno que a las ajenas. El gráfico muestra el factor común de las que miden volúmenes consumidos por los hogares —luz, gas, transporte, combustible—: lo que todas ellas comparten, en vez de una sola. Para discriminar sí hay una serie externa dedicada, el Índice de Confianza del Consumidor de la Universidad Torcuato Di Tella, que salió del índice y pasó a ser su ancla. El detalle —las cargas de cada una, el panel completo y la referencia en formación— está en la ficha metodológica.",
+          "serie_label": "Índice de impacto social (reconstrucción mensual)",
           "externa_label": "factor común de los volúmenes consumidos por el hogar",
           "trans_label": "series normalizadas al rango del período; el factor es un puntaje estandarizado y cruza el cero",
-          "conclusion": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,012 en niveles y 0,254 en los cambios mes a mes: menos que la mejor de ellas por separado. No hay una sola serie externa que confirme el índice, y el motivo es parte del resultado. La que cumplía ese papel —las ventas en supermercados a precios constantes— mide condiciones materiales del hogar, así que pasó a integrar el índice: un indicador no puede ser componente y juez del mismo índice. El reemplazo natural sería el consumo privado que publica el INDEC en las Cuentas Nacionales, que no es un canal del consumo del hogar sino su total; pero es trimestral y arranca junto con el índice, así que todavía son nueve trimestres y la correlación se mueve demasiado según cuál se saque. Queda declarado como la referencia que va a reemplazar a este panel cuando tenga historia, con el umbral fijado de antemano para que la decisión no dependa de mirar el número. Mientras tanto el contraste es el panel completo, y el gráfico compara el índice contra el factor común de lo que el hogar consume en volumen físico —luz, gas, transporte, combustible—, que es lo que esas series comparten en vez de cualquiera de ellas suelta. La confianza del consumidor (ICC de UTDT) sigue publicándose como contraste que DISTINGUE en vez de confirmar: contra ella la correlación es −0,239. Un número más bajo ahí no es una falla del índice, es el resultado — este cinturón mide lo que les pasa a los hogares, no lo que opinan.",
+          "conclusion": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,012 en niveles y 0,254 en los cambios mes a mes: menos que la mejor de ellas por separado. No hay una sola serie externa que confirme el índice, y el motivo es parte del resultado. La que cumplía ese papel —las ventas en supermercados a precios constantes— mide condiciones materiales del hogar, así que pasó a integrar el índice: un indicador no puede ser componente y juez del mismo índice. El reemplazo natural sería el consumo privado que publica el Instituto Nacional de Estadística y Censos (INDEC) en las Cuentas Nacionales, que no es un canal del consumo del hogar sino su total; pero es trimestral y arranca junto con el índice, así que todavía son nueve trimestres y la correlación se mueve demasiado según cuál se saque. Queda declarado como la referencia que va a reemplazar a este panel cuando tenga historia, con el umbral fijado de antemano para que la decisión no dependa de mirar el número. Mientras tanto el contraste es el panel completo, y el gráfico compara el índice contra el factor común de lo que el hogar consume en volumen físico —luz, gas, transporte, combustible—, que es lo que esas series comparten en vez de cualquiera de ellas suelta. El Índice de Confianza del Consumidor (ICC) de la Universidad Torcuato Di Tella sigue publicándose como contraste que distingue en vez de confirmar: contra ella la correlación es −0,239. Un número más bajo ahí no es una falla del índice, es el resultado — este cinturón mide lo que les pasa a los hogares, no lo que opinan.",
           "panel": {
             "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,282 y con las 7 ajenas es 0,356. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,164 con lo propio contra 0,139 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva.",
             "nota_factor": "El peso y el signo de cada estadística los fija el cálculo, no el autor: a la que se mueve al revés le sale carga negativa sola. Se estiman con las estadísticas externas únicamente —el índice no participa—, y por eso el contraste no se puede acomodar.",
@@ -7886,9 +7886,9 @@
             }
           },
           "resumen": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,012 en niveles y 0,254 en los cambios mes a mes: menos que la mejor de ellas por separado.",
-          "detalle_texto": "No hay una sola serie externa que confirme el índice, y el motivo es parte del resultado. La que cumplía ese papel —las ventas en supermercados a precios constantes— mide condiciones materiales del hogar, así que pasó a integrar el índice: un indicador no puede ser componente y juez del mismo índice. El reemplazo natural sería el consumo privado que publica el INDEC en las Cuentas Nacionales, que no es un canal del consumo del hogar sino su total; pero es trimestral y arranca junto con el índice, así que todavía son nueve trimestres y la correlación se mueve demasiado según cuál se saque. Queda declarado como la referencia que va a reemplazar a este panel cuando tenga historia, con el umbral fijado de antemano para que la decisión no dependa de mirar el número. Mientras tanto el contraste es el panel completo, y el gráfico compara el índice contra el factor común de lo que el hogar consume en volumen físico —luz, gas, transporte, combustible—, que es lo que esas series comparten en vez de cualquiera de ellas suelta. La confianza del consumidor (ICC de UTDT) sigue publicándose como contraste que DISTINGUE en vez de confirmar: contra ella la correlación es −0,239. Un número más bajo ahí no es una falla del índice, es el resultado — este cinturón mide lo que les pasa a los hogares, no lo que opinan.",
-          "sub_resumen": "Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables externas relacionadas que no lo componen.",
-          "sub_detalle": "Para confirmar el índice no hay una única serie de referencia —la que hacía ese papel pasó a ser componente del índice, y su reemplazo natural, el consumo privado de las Cuentas Nacionales, todavía tiene nueve trimestres—, así que se compara contra un panel de estadísticas externas y se mira si acompaña más a las de su propio terreno que a las ajenas. El gráfico muestra el factor común de las que miden volúmenes consumidos por los hogares —luz, gas, transporte, combustible—: lo que todas ellas comparten, en vez de una sola. Para discriminar sí hay una serie externa dedicada, la confianza del consumidor (ICC de UTDT), que salió del índice y pasó a ser su ancla. El detalle —las cargas de cada una, el panel completo y la referencia en formación— está en la ficha metodológica."
+          "detalle_texto": "No hay una sola serie externa que confirme el índice, y el motivo es parte del resultado. La que cumplía ese papel —las ventas en supermercados a precios constantes— mide condiciones materiales del hogar, así que pasó a integrar el índice: un indicador no puede ser componente y juez del mismo índice. El reemplazo natural sería el consumo privado que publica el Instituto Nacional de Estadística y Censos (INDEC) en las Cuentas Nacionales, que no es un canal del consumo del hogar sino su total; pero es trimestral y arranca junto con el índice, así que todavía son nueve trimestres y la correlación se mueve demasiado según cuál se saque. Queda declarado como la referencia que va a reemplazar a este panel cuando tenga historia, con el umbral fijado de antemano para que la decisión no dependa de mirar el número. Mientras tanto el contraste es el panel completo, y el gráfico compara el índice contra el factor común de lo que el hogar consume en volumen físico —luz, gas, transporte, combustible—, que es lo que esas series comparten en vez de cualquiera de ellas suelta. El Índice de Confianza del Consumidor (ICC) de la Universidad Torcuato Di Tella sigue publicándose como contraste que distingue en vez de confirmar: contra ella la correlación es −0,239. Un número más bajo ahí no es una falla del índice, es el resultado — este cinturón mide lo que les pasa a los hogares, no lo que opinan.",
+          "sub_resumen": "Paso 9 del manual de indicadores compuestos de la Organización para la Cooperación y el Desarrollo Económicos (OCDE) y el Centro Común de Investigación de la Comisión Europea (JRC): un índice válido debe co-moverse con variables externas relacionadas que no lo componen.",
+          "sub_detalle": "Para confirmar el índice no hay una única serie de referencia —la que hacía ese papel pasó a ser componente del índice, y su reemplazo natural, el consumo privado de las Cuentas Nacionales, todavía tiene nueve trimestres—, así que se compara contra un panel de estadísticas externas y se mira si acompaña más a las de su propio terreno que a las ajenas. El gráfico muestra el factor común de las que miden volúmenes consumidos por los hogares —luz, gas, transporte, combustible—: lo que todas ellas comparten, en vez de una sola. Para discriminar sí hay una serie externa dedicada, el Índice de Confianza del Consumidor de la Universidad Torcuato Di Tella, que salió del índice y pasó a ser su ancla. El detalle —las cargas de cada una, el panel completo y la referencia en formación— está en la ficha metodológica."
         },
         "redundancia": {
           "n_indicadores": 21,
@@ -8527,7 +8527,7 @@
         }
       },
       "fuente_enriquecida": "vida_cotidiana_20260924_0310.json",
-      "score_explicacion": "ITCIS-B100 (índice de seguimiento: los componentes usan 100 = promedio del 4T-2023, salvo servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 28%, precios 25%, vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (ITCIS − 100) × 0,2."
+      "score_explicacion": "Índice de impacto social (de seguimiento: los componentes usan 100 = promedio del 4º trimestre de 2023, salvo servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 28%, precios 25%, vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (índice − 100) × 0,2."
     },
     "gestion": {
       "score": 2.1,
@@ -8559,9 +8559,9 @@
           "peso_efectivo": 0.14,
           "metodo_obtencion": "automatico",
           "aporte_score": 0.6,
-          "aporte_formula": "Anclas ITCG: ≤5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · >25 → 10 (puntaje interpolado entre anclas: 93.9; pesa 14,0% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: ≤5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · >25 → 10 (puntaje interpolado entre anclas: 93.9; pesa 14,0% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "CCL venta 1607.10 (2026-09-23T17:59:00-03:00) / mayorista venta 1516.00 (2026-09-23T13:14:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
           "semaforo": {
             "color": "verde",
@@ -8609,9 +8609,9 @@
           "peso_efectivo": 0.14,
           "metodo_obtencion": "automatico",
           "aporte_score": 4.7,
-          "aporte_formula": "Anclas ITCG: ≤1 → 100 · 1–3,5 → 85 · 3,5–7 → 65 · 7–11 → 40 · >11 → 10 (puntaje interpolado entre anclas: 53.3; pesa 14,0% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: ≤1 → 100 · 1–3,5 → 85 · 3,5–7 → 65 · 7–11 → 40 · >11 → 10 (puntaje interpolado entre anclas: 53.3; pesa 14,0% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en amarillo (tensión moderada).",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "US$ 1.091 M recaudados por derechos de impo+expo y tasa de estadística sobre US$ 15.579 M de intercambio (2026-08) · canal aduanero sin fuente pública",
           "semaforo": {
             "color": "amarillo",
@@ -8660,9 +8660,9 @@
           "peso_efectivo": 0.07,
           "metodo_obtencion": "automatico",
           "aporte_score": 2.7,
-          "aporte_formula": "Anclas ITCG: >30000 → 100 · 15000–30000 → 85 · 7000–15000 → 60 · 2500–7000 → 35 · ≤2500 → 10 (puntaje interpolado entre anclas: 73.3; pesa 7,0% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: >30000 → 100 · 15000–30000 → 85 · 7000–15000 → 60 · 2500–7000 → 35 · ≤2500 → 10 (puntaje interpolado entre anclas: 73.3; pesa 7,0% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "17.115 artículos modificados o eliminados desde el 10 de diciembre de 2023 (+267 en el mes) · los produjeron 770 normas de desregulación, que modificaron o eliminaron 2841 normas anteriores",
           "semaforo": {
             "color": "verde",
@@ -8710,9 +8710,9 @@
           "peso_efectivo": 0.1458,
           "metodo_obtencion": "automatico",
           "aporte_score": 0.0,
-          "aporte_formula": "Anclas ITCG: ≤-12 → 100 · -12 a -8 → 85 · -8 a -4 → 65 · -4 a 0 → 40 · >0 → 10 (puntaje interpolado entre anclas: 100.0; pesa 14,6% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: ≤-12 → 100 · -12 a -8 → 85 · -8 a -4 → 65 · -4 a 0 → 40 · >0 → 10 (puntaje interpolado entre anclas: 100.0; pesa 14,6% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "183.520 agentes (2026-07) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,74% aparte; el universo completo varía -20,68%",
           "semaforo": {
             "color": "verde",
@@ -8758,9 +8758,9 @@
           "peso_efectivo": 0.1042,
           "metodo_obtencion": "automatico",
           "aporte_score": 0.0,
-          "aporte_formula": "Anclas ITCG: ≤-25 → 100 · -25 a -15 → 85 · -15 a -5 → 65 · -5 a 0 → 40 · >0 → 10 (puntaje interpolado entre anclas: 100.0; pesa 10,4% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: ≤-25 → 100 · -25 a -15 → 85 · -15 a -5 → 65 · -5 a 0 → 40 · >0 → 10 (puntaje interpolado entre anclas: 100.0; pesa 10,4% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "$ 2,05 bn. base caja (2026-08) vs $ 0,53 bn (2023-08) · inflación del período ×6,0",
           "semaforo": {
             "color": "verde",
@@ -8852,9 +8852,9 @@
           "peso_efectivo": 0.075,
           "metodo_obtencion": "semiautomatico",
           "aporte_score": 4.5,
-          "aporte_formula": "Anclas ITCG: >90 → 100 · 62,5–90 → 80 · 37,5–62,5 → 55 · 10–37,5 → 30 · ≤10 → 10 (puntaje interpolado entre anclas: 55.0; pesa 7,5% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: >90 → 100 · 62,5–90 → 80 · 37,5–62,5 → 55 · 10–37,5 → 30 · ≤10 → 10 (puntaje interpolado entre anclas: 55.0; pesa 7,5% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en amarillo (tensión moderada).",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "Evaluación al 2026-09-24; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 5 menciones del FAL en el BO desde mar-2026",
           "semaforo": {
             "color": "amarillo",
@@ -8901,9 +8901,9 @@
           "peso_efectivo": 0.075,
           "metodo_obtencion": "automatico",
           "aporte_score": 4.0,
-          "aporte_formula": "Anclas ITCG: ≤-15 → 100 · -15 a -5 → 85 · -5 a 5 → 65 · 5–20 → 40 · >20 → 10 (puntaje interpolado entre anclas: 60.4; pesa 7,5% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: ≤-15 → 100 · -15 a -5 → 85 · -5 a 5 → 65 · 5–20 → 40 · >20 → 10 (puntaje interpolado entre anclas: 60.4; pesa 7,5% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "128.674 juicios en 12m (hasta 2026-06) vs 125.771 previos",
           "semaforo": {
             "color": "verde",
@@ -9045,9 +9045,9 @@
           "peso_efectivo": 0.06,
           "metodo_obtencion": "manual",
           "aporte_score": 2.4,
-          "aporte_formula": "Anclas ITCG: >75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤15 → 10 (puntaje interpolado entre anclas: 75.6; pesa 6,0% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: >75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤15 → 10 (puntaje interpolado entre anclas: 75.6; pesa 6,0% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante).",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "9 empresas · etapa promedio 2,22/4 · cerradas: Transener",
           "semaforo": {
             "color": "verde",
@@ -9098,9 +9098,9 @@
           "peso_efectivo": 0.06,
           "metodo_obtencion": "automatico",
           "aporte_score": 5.0,
-          "aporte_formula": "Anclas ITCG: >60 → 100 · 40–60 → 85 · 25–40 → 65 · 10–25 → 40 · ≤10 → 10 (puntaje interpolado entre anclas: 50.5; pesa 6,0% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: >60 → 100 · 40–60 → 85 · 25–40 → 65 · 10–25 → 40 · ≤10 → 10 (puntaje interpolado entre anclas: 50.5; pesa 6,0% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en amarillo (tensión moderada).",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "23 proyectos aprobados (US$ 49.766M) / 24 en evaluación (US$ 159.480M) → 23,8% de la inversión total ya aprobada",
           "semaforo": {
             "color": "amarillo",
@@ -9197,9 +9197,9 @@
           "peso_efectivo": 0.03,
           "metodo_obtencion": "automatico",
           "aporte_score": 0.0,
-          "aporte_formula": "Anclas ITCG: >75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤15 → 10 (puntaje interpolado entre anclas: 100.0; pesa 3,0% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: >75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤15 → 10 (puntaje interpolado entre anclas: 100.0; pesa 3,0% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "9.091 de 9.091 km adjudicados · I: adjudicada (CONTRAT.AR) · II-B: adjudicada (CONTRAT.AR) · II: adjudicada (CONTRAT.AR) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24) · CONTRAT.AR todavía no refleja la adjudicación de III, que constan en el Boletín Oficial",
           "semaforo": {
             "color": "verde",
@@ -9251,9 +9251,9 @@
           "peso_efectivo": 0.04,
           "metodo_obtencion": "automatico",
           "aporte_score": 0.0,
-          "aporte_formula": "Anclas ITCG: >95 → 100 · 85–95 → 85 · 60–85 → 65 · 30–60 → 40 · ≤30 → 10 (puntaje interpolado entre anclas: 100.0; pesa 4,0% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: >95 → 100 · 85–95 → 85 · 60–85 → 65 · 30–60 → 40 · ≤30 → 10 (puntaje interpolado entre anclas: 100.0; pesa 4,0% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "Devengado 2026: $ 558.060M en ayudas a personas (5.1.4) / $ 558.060M en transferencias · baseline Potenciar 2023: 98,3% (con $ 17.224M en otras partidas) · Clasificación del devengado; no acredita pago efectivo ni ausencia de intermediación.",
           "semaforo": {
             "color": "verde",
@@ -9304,9 +9304,9 @@
           "peso_efectivo": 0.04,
           "metodo_obtencion": "semiautomatico",
           "aporte_score": 0.1,
-          "aporte_formula": "Anclas ITCG: >75 → 100 · 50–75 → 85 · 25–50 → 65 · 0–25 → 40 · ≤0 → 10 (puntaje interpolado entre anclas: 99.0; pesa 4,0% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: >75 → 100 · 50–75 → 85 · 25–50 → 65 · 0–25 → 40 · ≤0 → 10 (puntaje interpolado entre anclas: 99.0; pesa 4,0% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "240 cortes en CABA en 2025 vs 931 en 2023 (Diagnóstico Político; base 2023 estimada desde participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.",
           "semaforo": {
             "color": "verde",
@@ -9367,9 +9367,9 @@
           "peso_efectivo": 0.02,
           "metodo_obtencion": "automatico",
           "aporte_score": 4.4,
-          "aporte_formula": "Anclas ITCG: >70 → 100 · 50–70 → 85 · 30–50 → 65 · 10–30 → 40 · ≤10 → 10 (puntaje interpolado entre anclas: 56.4; pesa 2,0% del ITCG)",
+          "aporte_formula": "Anclas del índice de gestión: >70 → 100 · 50–70 → 85 · 30–50 → 65 · 10–30 → 40 · ≤10 → 10 (puntaje interpolado entre anclas: 56.4; pesa 2,0% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador está en amarillo (tensión moderada).",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en amarillo (tensión moderada).",
           "aporte_input_txt": "2.754.461 beneficiarios derivados directo a 65 prepagas inscriptas (06/2026) / 8.332.458 usuarios de prepagas (RNEMP 06/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.",
           "semaforo": {
             "color": "amarillo",
@@ -10559,7 +10559,7 @@
           "tension": null
         }
       },
-      "score_explicacion": "ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."
+      "score_explicacion": "Índice de gestión (paramétrico, 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − índice) / 10."
     }
   },
   "barbarismo_activo": "político",
@@ -10590,6 +10590,7 @@
     "filas": [
       {
         "indice": "ITCM",
+        "nombre": "Índice macroeconómico",
         "propio": "lider",
         "lider": {
           "r": 0.72,
@@ -10609,6 +10610,7 @@
       },
       {
         "indice": "ITCIS",
+        "nombre": "Índice de impacto social",
         "propio": "volumen_hogar",
         "lider": {
           "r": -0.46,
@@ -10628,6 +10630,7 @@
       },
       {
         "indice": "ITCP",
+        "nombre": "Índice político",
         "propio": "epu",
         "lider": {
           "r": -0.18,
@@ -10649,7 +10652,7 @@
     "externas": [
       [
         "lider",
-        "Actividad (Índice Líder UTDT)"
+        "Actividad (Índice Líder de Di Tella)"
       ],
       [
         "volumen_hogar",
@@ -10657,15 +10660,15 @@
       ],
       [
         "epu",
-        "Incertidumbre de política (EPU Argentina)"
+        "Incertidumbre de política en la prensa"
       ]
     ],
     "titulo": "¿Cada índice mide lo suyo?",
-    "sub": "Los tres índices que tienen contraste externo se reconstruyen mes a mes y se comparan contra los tres contrastes a la vez. Cada uno tiene el propio: la macroeconomía (ITCM) con la marcha de la actividad, el impacto social (ITCIS) con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). La gestión (ITCG) no figura: mide lo que el gobierno hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los tres pares propios dan el signo esperado. ITCM +0,72 con la actividad, ITCIS +0,01 con el volumen que consume el hogar, ITCP -0,31 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 3 índices la correlación más fuerte no es con su par propio (ITCIS correlaciona -0,46 con la actividad contra +0,01 con su propio par; ITCP correlaciona +0,42 con el volumen que consume el hogar contra -0,31 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
+    "sub": "Los tres índices que tienen contraste externo se reconstruyen mes a mes y se comparan contra los tres contrastes a la vez. Cada uno tiene el propio: la macroeconomía con la marcha de la actividad, el impacto social con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política con la incertidumbre de política que mide la prensa argentina (el índice de incertidumbre de política económica, EPU por su sigla en inglés). La gestión no figura: mide lo que el gobierno hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
+    "conclusion": "Los tres pares propios dan el signo esperado. Índice macroeconómico +0,72 con la actividad, índice de impacto social +0,01 con el volumen que consume el hogar, índice político -0,31 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,46 con la actividad contra +0,01 con su propio par; el índice político correlaciona +0,42 con el volumen que consume el hogar contra -0,31 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
     "resumen": "Los tres pares propios dan el signo esperado.",
-    "detalle_texto": "ITCM +0,72 con la actividad, ITCIS +0,01 con el volumen que consume el hogar, ITCP -0,31 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 3 índices la correlación más fuerte no es con su par propio (ITCIS correlaciona -0,46 con la actividad contra +0,01 con su propio par; ITCP correlaciona +0,42 con el volumen que consume el hogar contra -0,31 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
+    "detalle_texto": "Índice macroeconómico +0,72 con la actividad, índice de impacto social +0,01 con el volumen que consume el hogar, índice político -0,31 con la incertidumbre de política — este último más moderado que los otros dos, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 3 índices la correlación más fuerte no es con su par propio (el índice de impacto social correlaciona -0,46 con la actividad contra +0,01 con su propio par; el índice político correlaciona +0,42 con el volumen que consume el hogar contra -0,31 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
     "sub_resumen": "Los tres índices que tienen contraste externo se reconstruyen mes a mes y se comparan contra los tres contrastes a la vez.",
-    "sub_detalle": "Cada uno tiene el propio: la macroeconomía (ITCM) con la marcha de la actividad, el impacto social (ITCIS) con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). La gestión (ITCG) no figura: mide lo que el gobierno hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\"."
+    "sub_detalle": "Cada uno tiene el propio: la macroeconomía con la marcha de la actividad, el impacto social con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política con la incertidumbre de política que mide la prensa argentina (el índice de incertidumbre de política económica, EPU por su sigla en inglés). La gestión no figura: mide lo que el gobierno hace y no tiene contraste externo posible. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\"."
   }
 }

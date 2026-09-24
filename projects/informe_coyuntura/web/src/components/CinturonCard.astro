@@ -48,7 +48,7 @@ const peor = peorDimension(cinturon);
   <NivelTension tension={cinturon.score} titulo={`Tensión de ${nombre}`} ocultarTitulo />
   {dims.length > 0 && (
     <>
-      <div class="cg-genoma" role="group" aria-label={`Dimensiones del ${indice.sigla}: el ancho de cada tramo es su peso en el índice`}>
+      <div class="cg-genoma" role="group" aria-label={`Dimensiones del ${indice.corto}: el ancho de cada tramo es su peso en el índice`}>
         {dims.map(([dkey, dim]) => (
           <>
             <button

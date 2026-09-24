@@ -49,7 +49,7 @@ const trayectorias = CINTURONES
     <div class="cg-chart-grid" id="cg-chart-grid">
       {trayectorias.map(t => (
         <div class:list={["cg-chart-mini-card", t.meta.slug]}>
-          <h3>{t.meta.nombre} · {t.idx.sigla}</h3>
+          <h3>{t.idx.Corto}</h3>
           <div class="cg-sub">{t.desde} → {t.hasta} · {t.serie.length} meses</div>
           <div class="cg-chart-mini" data-evo-key={`__indice_${t.meta.slug}`}
                data-evo-rango={t.idx.base100 ? undefined : "0,100"}

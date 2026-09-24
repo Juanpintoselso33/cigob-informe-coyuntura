@@ -503,7 +503,7 @@ def fetch_reservas_netas() -> dict | None:
         return {
             "valor": round(netas, 0),
             "unidad": "Millones de USD",
-            "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
+            "fuente": "BCRA — Planilla de reservas internacionales y Balance Consolidado",
             "fecha_dato": fecha_sdds.date().isoformat(),
             "netas_sdds_estricto": round(s["netas"], 0),
             "depositos_tesoro": round(tesoro, 0),
@@ -1241,7 +1241,7 @@ def fetch_resultado_primario() -> dict | None:
         return {
             "valor": round(valor, 2),
             "unidad": "% de la recaudación (acum. 12 meses)",
-            "fuente": "Sec. de Hacienda — IMIG (resultado primario) + recaudación (vía datos.gob.ar)",
+            "fuente": "Sec. de Hacienda — informe mensual de ingresos y gastos (resultado primario) + recaudación (vía datos.gob.ar)",
             "fecha_dato": f"{ym}-01",
             "detalle_txt": (
                 f"{ym}: {signo} primario de {abs(valor):.1f}% de la recaudación "

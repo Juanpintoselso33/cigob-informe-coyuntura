@@ -45,7 +45,7 @@ Componentes que puntúan en este corte: 13 de 13 publicados.
 | Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 73,5 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 100,0 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. | 57,7 | AMARILLO | 15,0 % |
-| Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales. | 70,4 | VERDE | 15,0 % |
+| Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 70,4 | VERDE | 15,0 % |
 | Reforma social y orden | Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes… | 90,9 | VERDE | 10,0 % |
 
 ```{=openxml}
@@ -61,15 +61,15 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (CCL) del dólar mayorista de referencia: la brecha cambiaria. | 6,01 % de brecha CCL/mayorista | VERDE | 14,0 % |
-| Apertura comercial (alícuota) | La recaudación de derechos de importación, exportación y tasa de estadística (ARCA) por cada dólar de intercambio… | 7 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
+| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 6,01 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Apertura comercial (alícuota) | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.115 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
 | Dotación del Estado (APN) | Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del… | −20,66 % de variación vs dic-2023 (dotación APN) | VERDE | 14,6 % |
 | Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023. | −35,92 % de variación real vs 2023-08 (IMIG funcionamiento) | VERDE | 10,4 % |
 | **DIMENSIÓN: Reforma laboral** | | | | |
-| Fondo de Asistencia Laboral | Cuánto de la reforma laboral RIGE, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el… | 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | AMARILLO | 7,5 % |
-| Litigiosidad laboral (SRT) | Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT). | 2,3 % variación juicios SRT (12m vs 12m previos) | VERDE | 7,5 % |
+| Fondo de Asistencia Laboral | Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el… | 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | AMARILLO | 7,5 % |
+| Litigiosidad laboral (SRT) | Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del… | 2,3 % variación juicios SRT (12m vs 12m previos) | VERDE | 7,5 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
 | Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 55,6 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
 | Inversiones RIGI | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 23,8 % de inversión aprobada sobre el pipeline | AMARILLO | 6,0 % |
@@ -91,7 +91,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 
 # Brecha cambiaria (cepo)
 
-Cuánto se separa el dólar financiero (CCL) del dólar mayorista de referencia: la brecha cambiaria.
+Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria.
 
 | | | | |
 |---|---|---|---|
@@ -109,7 +109,7 @@ Cuánto se separa el dólar financiero (CCL) del dólar mayorista de referencia:
 
 ## Definición — qué mide y por qué importa
 
-Cuánto se separa el dólar financiero (CCL) del dólar mayorista de referencia: la brecha cambiaria.
+Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria.
 
 Mide el grado de normalización cambiaria, uno de los ejes del programa económico.
 
@@ -182,7 +182,7 @@ Ponderación vigente en el ITCG: 14 % efectivo. El color es una lectura adiciona
 
 # Apertura comercial (alícuota)
 
-La recaudación de derechos de importación, exportación y tasa de estadística (ARCA) por cada dólar de intercambio (expo+impo del ICA). Es una aproximación a la carga tributaria efectiva; también depende de la composición del comercio y de los momentos de pago.
+La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y Control Aduanero, por cada dólar de intercambio (exportaciones más importaciones, según el Intercambio Comercial Argentino que publica el Instituto Nacional de Estadística y Censos). Es una aproximación a la carga tributaria efectiva; también depende de la composición del comercio y de los momentos de pago.
 
 | | | | |
 |---|---|---|---|
@@ -200,7 +200,7 @@ La recaudación de derechos de importación, exportación y tasa de estadística
 
 ## Definición — qué mide y por qué importa
 
-La recaudación de derechos de importación, exportación y tasa de estadística (ARCA) por cada dólar de intercambio (expo+impo del ICA). Es una aproximación a la carga tributaria efectiva; también depende de la composición del comercio y de los momentos de pago.
+La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y Control Aduanero, por cada dólar de intercambio (exportaciones más importaciones, según el Intercambio Comercial Argentino que publica el Instituto Nacional de Estadística y Censos). Es una aproximación a la carga tributaria efectiva; también depende de la composición del comercio y de los momentos de pago.
 
 Aproxima la carga tributaria sobre el intercambio. Una baja del cociente puede acompañar una reducción de impuestos, pero también responder a cambios en la composición o valoración del comercio y en los pagos. No identifica por sí sola el desmantelamiento de barreras comerciales. La brecha cambiaria se mide aparte.
 
@@ -379,7 +379,7 @@ Ponderación vigente en el ITCG: 7 % efectivo. El color es una lectura adicional
 
 # Dotación del Estado (APN)
 
-Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del mandato), según la serie mensual oficial del INDEC.
+Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del mandato), según la serie mensual oficial del Instituto Nacional de Estadística y Censos (INDEC).
 
 | | | | |
 |---|---|---|---|
@@ -397,7 +397,7 @@ Cuánto varía la dotación de personal de la Administración Pública Nacional 
 
 ## Definición — qué mide y por qué importa
 
-Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del mandato), según la serie mensual oficial del INDEC.
+Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del mandato), según la serie mensual oficial del Instituto Nacional de Estadística y Censos (INDEC).
 
 La métrica insignia de la reforma del Estado: personas, no pesos. Universo: Administración Pública Nacional — incluye fuerzas armadas y de seguridad (~10% de la dotación) y no incluye empresas del Estado ni provincias/municipios.
 
@@ -558,7 +558,7 @@ Ponderación vigente en el ITCG: 10,4 % efectivo. El color es una lectura adicio
 
 # Fondo de Asistencia Laboral
 
-Cuánto de la reforma laboral RIGE, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).
+Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).
 
 | | | | |
 |---|---|---|---|
@@ -576,11 +576,11 @@ Cuánto de la reforma laboral RIGE, y no sólo cuánto se dictó, para el Fondo 
 
 ## Definición — qué mide y por qué importa
 
-Cuánto de la reforma laboral RIGE, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).
+Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).
 
-Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar CNV no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de noviembre de 2026; el cálculo reserva esa etapa hasta entonces. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.
+Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de noviembre de 2026; el cálculo reserva esa etapa hasta entonces. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.
 
-**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. Estos litigios pertenecen a otro universo de reclamos: no miden el resultado del FAL ni permiten atribuir sus variaciones a la reforma.
+**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. Estos litigios pertenecen a otro universo de reclamos: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.
 
 ## Método de cómputo
 
@@ -665,7 +665,7 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 
 # Litigiosidad laboral (SRT)
 
-Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.
+Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del Trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.
 
 | | | | |
 |---|---|---|---|
@@ -683,11 +683,11 @@ Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT): 
 
 ## Definición — qué mide y por qué importa
 
-Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.
+Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del Trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.
 
 Aporta la evolución de litigios por riesgos del trabajo. Comparte dimensión con el Fondo de Asistencia Laboral, pero pertenece a otro universo de reclamos: no demuestra el resultado de ese instrumento ni atribuye a la reforma las subas o bajas observadas.
 
-**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. Estos litigios pertenecen a otro universo de reclamos: no miden el resultado del FAL ni permiten atribuir sus variaciones a la reforma.
+**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. Estos litigios pertenecen a otro universo de reclamos: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.
 
 ## Método de cómputo
 
@@ -775,7 +775,7 @@ Cuánto avanza la privatización de la cartera de empresas públicas habilitada 
 
 Describe el avance documentado de cada proceso: una operación cerrada recibe etapa 4 y los pliegos etapa 2. Las nueve empresas pesan igual; el promedio no mide valor de activos vendido ni dinero cobrado. Se mantiene mediante curaduría de normas y comunicaciones primarias; una revisión parcial o una búsqueda sin novedades no certifica exhaustividad.
 
-**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales.
+**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
 ## Método de cómputo
 
@@ -867,7 +867,7 @@ Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) 
 
 Mide si el régimen convierte las promesas en inversión ratificada, con la plataforma oficial del Ministerio de Economía. La evolución histórica grafica la inversión aprobada acumulada en dólares.
 
-**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales.
+**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
 ## Método de cómputo
 
@@ -934,7 +934,7 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 
 # Concesiones viales
 
-Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada proceso sale de CONTRAT.AR y el kilometraje por tramo de la página oficial de la RFC (16 tramos, ~9.100 km en 4 etapas).
+Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada proceso sale del sistema de contrataciones del Estado (CONTRAT.AR) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).
 
 | | | | |
 |---|---|---|---|
@@ -952,11 +952,11 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada proceso sale de CONTRAT.AR y el kilometraje por tramo de la página oficial de la RFC (16 tramos, ~9.100 km en 4 etapas).
+Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada proceso sale del sistema de contrataciones del Estado (CONTRAT.AR) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).
 
 Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su licitación figura Adjudicada en el sistema de contrataciones.
 
-**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales.
+**Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
 ## Método de cómputo
 
@@ -1212,7 +1212,7 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 # Libertad de opción en salud
 
-Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el DNU 70/2023 al eliminar la triangulación obligatoria por una obra social.
+Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el decreto de necesidad y urgencia (DNU) 70/2023 al eliminar la triangulación obligatoria por una obra social.
 
 | | | | |
 |---|---|---|---|
@@ -1230,9 +1230,9 @@ Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados 
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el DNU 70/2023 al eliminar la triangulación obligatoria por una obra social.
+Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el decreto de necesidad y urgencia (DNU) 70/2023 al eliminar la triangulación obligatoria por una obra social.
 
-Mide la adopción real de la libre elección con los padrones oficiales de la SSS (RNAS y RNEMP): antes de la reforma este canal no existía; a marzo de 2026 lo usan 2,66 millones de personas en 59 prepagas inscriptas.
+Mide la adopción real de la libre elección con los padrones oficiales de la Superintendencia de Servicios de Salud (el Registro Nacional de Agentes del Seguro de Salud y el de entidades de medicina prepaga): antes de la reforma este canal no existía; a marzo de 2026 lo usan 2,66 millones de personas en 59 prepagas inscriptas.
 
 **Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
 

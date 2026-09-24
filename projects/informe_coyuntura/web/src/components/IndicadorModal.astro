@@ -18,18 +18,20 @@ const SLUG_DE: Record<string, string> =
 const INDICE_KEY: Record<string, string> = {
   macro: "itcm", gestion: "itcg", vida_cotidiana: "itvc", politica: "itcp",
 };
-const INDICE_CFG: Record<string, { key: string; sigla: string; base100: boolean }> = {
-  macro: { key: "itcm", sigla: "ITCM", base100: false },
-  gestion: { key: "itcg", sigla: "ITCG", base100: false },
-  vida_cotidiana: { key: "itvc", sigla: "ITCIS", base100: true },
-  politica: { key: "itcp", sigla: "ITCP", base100: false },
+// `nombre` es el nombre llano del índice, que es lo que lee el lector: la
+// sigla quedó para las fichas metodológicas (ADR-0340).
+const INDICE_CFG: Record<string, { key: string; nombre: string; base100: boolean }> = {
+  macro: { key: "itcm", nombre: "índice macroeconómico", base100: false },
+  gestion: { key: "itcg", nombre: "índice de gestión", base100: false },
+  vida_cotidiana: { key: "itvc", nombre: "índice de impacto social", base100: true },
+  politica: { key: "itcp", nombre: "índice político", base100: false },
 };
 const numero = (valor: unknown): number | null =>
   typeof valor === "number" && Number.isFinite(valor) ? valor : null;
 type MetaIndiceIndicador = {
   indicador: string;
   dimNombre: string;
-  sigla: string;
+  nombre: string;
   base100: boolean;
   pesoInternoNominal: number | null;
   pesoDimensionNominal: number | null;
@@ -64,7 +66,7 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       indiceMetaDe[`${SLUG_DE[ckey] ?? ckey}.${ikey}`] = {
         indicador: ikey,
         dimNombre: dim.nombre,
-        sigla: cfg.sigla,
+        nombre: cfg.nombre,
         base100: cfg.base100,
         pesoInternoNominal,
         pesoDimensionNominal,
@@ -205,7 +207,7 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
     });
     const miembros = new Set(comps.map(x => x.key));
     dims[`${SLUG_DE[ckey] ?? ckey}.${dkey}`] = {
-      sigla: cfg.sigla, base100: cfg.base100,
+      nombre: cfg.nombre, base100: cfg.base100,
       cinturon: CINT_NOMBRE[ckey] ?? ckey, slug: SLUG_DE[ckey] ?? ckey,
       nombre: dim.nombre, puntaje: dim.puntaje,
       peso: dim.peso_efectivo ?? dim.peso, critica: !!dim.critica,
@@ -248,7 +250,7 @@ const dimsJson = JSON.stringify(dims);
     <p class="cg-modal-sub" id="cg-modal-sub"></p>
     <table class="cg-modal-table" id="cg-modal-table"></table>
     <button class="cg-modal-csv" id="cg-modal-csv" type="button" hidden>
-      <span aria-hidden="true">↓</span> Descargar serie (CSV)
+      <span aria-hidden="true">↓</span> Descargar los datos (planilla)
     </button>
   </div>
 </div>
@@ -369,7 +371,7 @@ const dimsJson = JSON.stringify(dims);
     if (sinRenormalizacion) {
       ponderacion = `${pctIndice(meta.pesoInternoNominal)} interno × ` +
         `${pctIndice(meta.pesoDimensionNominal)} de la dimensión = ` +
-        `<strong>${pctIndice(meta.pesoEfectivo)} efectivo del ${esc(meta.sigla)}</strong>.`;
+        `<strong>${pctIndice(meta.pesoEfectivo)} efectivo del ${esc(meta.nombre)}</strong>.`;
     } else {
       const nominales = typeof meta.pesoInternoNominal === "number" && typeof meta.pesoDimensionNominal === "number"
         ? ` Pesos nominales: ${pctIndice(meta.pesoInternoNominal)} interno y ${pctIndice(meta.pesoDimensionNominal)} de la dimensión.`
@@ -379,15 +381,15 @@ const dimsJson = JSON.stringify(dims);
         && Math.abs(meta.pesoDimensionNominal - meta.pesoDimensionEfectivo) >= 0.0005
         ? ` La dimensión pesa ${pctIndice(meta.pesoDimensionEfectivo)} tras la renormalización.`
         : "";
-      ponderacion = `<strong>${pctIndice(meta.pesoEfectivo)} efectivo del ${esc(meta.sigla)}</strong>.` +
+      ponderacion = `<strong>${pctIndice(meta.pesoEfectivo)} efectivo del ${esc(meta.nombre)}</strong>.` +
         `${nominales}${dimensionEfectiva} La ponderación efectiva refleja los datos disponibles en el período.`;
     }
     const aporte = typeof meta.aporteIndice === "number" && typeof meta.puntajeAplicado === "number"
       ? `<p class="cg-score-map"><strong>Aporte actual:</strong> ` +
         `${meta.base100 ? `nivel aplicado ${nf.format(meta.puntajeAplicado)} (${meta.indicador === "peso_tarifas" ? "100 = punto medio de la escala" : "100 = 4T-2023"})` : `puntaje aplicado ${nf.format(meta.puntajeAplicado)}/100`} ` +
-        `× ${pctIndice(meta.pesoEfectivo)} ≈ <strong>${nf.format(meta.aporteIndice)} puntos del ${esc(meta.sigla)}</strong>.</p>`
+        `× ${pctIndice(meta.pesoEfectivo)} ≈ <strong>${nf.format(meta.aporteIndice)} puntos del ${esc(meta.nombre)}</strong>.</p>`
       : "";
-    return `<h4 class="cg-modal-h4">Cómo entra al ${esc(meta.sigla)}</h4>` +
+    return `<h4 class="cg-modal-h4">Cómo entra al ${esc(meta.nombre)}</h4>` +
       `<p class="cg-score-map"><strong>Ponderación vigente:</strong> ${ponderacion}</p>${aporte}`;
   }
 
@@ -419,16 +421,16 @@ const dimsJson = JSON.stringify(dims);
     // multilateral junto a los bilaterales, la presentación del BCRA) con
     // una referencia histórica punteada.
     const MULTI = {
-      tcrm: { series: [["tcrm", "Multilateral"], ["tcrm_bilateral_brasil", "Bilateral Brasil"], ["tcrm_bilateral_eeuu", "Bilateral EE.UU."]],
+      tcrm: { series: [["tcrm", "Multilateral"], ["tcrm_bilateral_brasil", "Bilateral Brasil"], ["tcrm_bilateral_eeuu", "Bilateral Estados Unidos"]],
               refY: 106, refLabel: "mediana histórica 1997-2026" },
       // El general junto al núcleo: un mes de corrección tarifaria y uno de
       // núcleo alta dan la misma inflación general y significan lo contrario.
-      ipc_total: { series: [["ipc_total", "IPC general"], ["ipc_nucleo", "Núcleo"]] },
+      ipc_total: { series: [["ipc_total", "Inflación general"], ["ipc_nucleo", "Núcleo"]] },
       // La estimación mensual junto a la medición oficial: el nowcast da el
       // pulso —un punto por mes— y el INDEC la referencia autorizada y la
       // historia larga, que al nowcast le falta (sus informes arrancan en 2025).
-      pobreza_nowcast: { series: [["pobreza_nowcast", "Estimación mensual (UTDT)"],
-                                  ["pobreza_indec", "Oficial (INDEC)"]] },
+      pobreza_nowcast: { series: [["pobreza_nowcast", "Estimación mensual (Di Tella)"],
+                                  ["pobreza_indec", "Oficial (Instituto Nacional de Estadística y Censos)"]] },
       // El saldo de bienes junto a la cuenta corriente: el primero puede estar
       // en superávit mientras el país sigue drenando dólares por servicios,
       // intereses y utilidades. La línea del cero marca la frontera.
@@ -516,7 +518,7 @@ const dimsJson = JSON.stringify(dims);
           </tr>`).join("");
         detalleEl.innerHTML = `
           <p class="cg-det-titulo">Detalle por empresa</p>
-          <p class="cg-det-nota">La etapa de cada empresa la asigna el equipo con documentos primarios, como normas del Boletín Oficial y comunicaciones del emisor en CNV. Se muestra el respaldo de la etapa vigente; una autorización o adjudicación no equivale por sí sola al cierre de la operación.</p>
+          <p class="cg-det-nota">La etapa de cada empresa la asigna el equipo con documentos primarios, como normas del Boletín Oficial y comunicaciones del emisor a la Comisión Nacional de Valores. Se muestra el respaldo de la etapa vigente; una autorización o adjudicación no equivale por sí sola al cierre de la operación.</p>
           <table class="cg-det-tabla"><tbody>${filas}</tbody></table>`;
         detalleEl.style.display = "";
       } else {
@@ -604,7 +606,7 @@ const dimsJson = JSON.stringify(dims);
           `<p class="cg-score-note">${esc(d.aporteLectura || "")} ` +
             (lecturaDe(d.scoreCint) ? `El cinturón está en <strong>${lecturaDe(d.scoreCint).toLowerCase()}</strong>. ` : "") +
             `${esc(d.scoreExpl || "Promedio de las tensiones de sus indicadores.")}` +
-            (d.indiceMeta ? ` Esta tensión equivalente no es el aporte aritmético al ${esc(d.indiceMeta.sigla)} mostrado arriba.` : "") +
+            (d.indiceMeta ? ` Esta tensión equivalente no es el aporte aritmético al ${esc(d.indiceMeta.nombre)} mostrado arriba.` : "") +
           `</p>`;
       } else if (d.aporteNota) {
         tensionHtml =
@@ -658,7 +660,7 @@ const dimsJson = JSON.stringify(dims);
       if (serie.length >= 1) {
         sub.style.display = "";
         sub.textContent = (d.datoFuenteDifiere
-          ? `El ITCIS usa el ${d.key === "peso_tarifas" ? "índice de asequibilidad" : "nivel base 100"} mostrado arriba. `
+          ? `El índice de impacto social usa el ${d.key === "peso_tarifas" ? "índice de asequibilidad" : "nivel base 100"} mostrado arriba. `
           : "") + (serie.length >= 2
           ? `${serie.length} datos · se muestran los últimos ${Math.min(12, serie.length)}`
           : "1 dato · el histórico se va acumulando mes a mes");
@@ -698,15 +700,15 @@ const dimsJson = JSON.stringify(dims);
       });
       const uni = d.base100 ? "" : "/100";
       const aporte = +(d.peso * d.puntaje).toFixed(1);
-      document.getElementById("cg-modal-eyebrow").textContent = `Dimensión · ${d.sigla} · ${d.cinturon}`;
+      document.getElementById("cg-modal-eyebrow").textContent = `Dimensión · ${d.cinturon}`;
       document.getElementById("cg-modal-title").textContent = d.nombre;
       document.getElementById("cg-modal-que").textContent = d.que;
 
       const aporta = document.getElementById("cg-modal-aporta");
       aporta.innerHTML =
-        `<strong>Cómo entra al ${esc(d.sigla)}:</strong> pesa ${Math.round(d.peso * 100)}% del índice — ` +
+        `<strong>Cómo entra al ${esc(d.nombre)}:</strong> pesa ${Math.round(d.peso * 100)}% del índice — ` +
         `su puntaje ${nf.format(d.puntaje)}${uni} aporta <strong>${nf.format(aporte)}</strong> ` +
-        `de los ${nf.format(d.indiceValor)} puntos del ${esc(d.sigla)}.` +
+        `de los ${nf.format(d.indiceValor)} puntos del ${esc(d.nombre)}.` +
         (d.critica
           ? `<br><br><span class="cg-dim-critica-chip">Dimensión crítica</span> Puntaje debajo del umbral ` +
             `(${d.base100 ? 85 : 30}): el promedio del índice la compensa aritméticamente con las dimensiones ` +
@@ -749,7 +751,7 @@ const dimsJson = JSON.stringify(dims);
         (ajTxt ? `<p class="cg-score-map"><strong>Justificación del ajuste:</strong> ${ajTxt}</p>` : "") +
         `<p class="cg-score-note">El puntaje de la dimensión es la suma ponderada de los puntajes ` +
         `interpolados de sus indicadores (pesos internos de la paramétrica; si un indicador se queda sin ` +
-        `dato, los pesos se renormalizan). El ${esc(d.sigla)} compone sus dimensiones igual: ` +
+        `dato, los pesos se renormalizan). El ${esc(d.nombre)} compone sus dimensiones igual: ` +
         `${Math.round(d.peso * 100)}% × ${nf.format(d.puntaje)} = <strong>${nf.format(aporte)}</strong> puntos.</p>`;
       document.getElementById("cg-modal-score").style.display = "";
 

@@ -63,6 +63,28 @@ PESOS_CINTURONES = pesos_cinturones()
 # tests/test_siglas_publicas.py es el que impide que quede una vieja suelta.
 SIGLAS_PUBLICAS = {"itcm": "ITCM", "itcg": "ITCG", "itvc": "ITCIS", "itcp": "ITCP"}
 
+# ── Nombre LLANO de cada índice, el que lee el lector del Monitor (ADR-0340) ──
+# La sigla quedó para la capa metodológica (fichas, manuales, BigQuery): en la
+# web y en la prosa que publicar.py escribe al snapshot, el índice se nombra
+# por lo que mide. En minúscula porque casi siempre va a mitad de frase («pesa
+# 12% del índice político»); `nombre_publico(clave, mayuscula=True)` lo
+# capitaliza para títulos y comienzos de oración. web/src/lib/datos.ts::indiceDe
+# declara los mismos cuatro en su campo `corto`, y
+# tests/test_siglas_publicas.py verifica que coincidan.
+NOMBRES_PUBLICOS = {
+    "itcm": "índice macroeconómico",
+    "itcg": "índice de gestión",
+    "itvc": "índice de impacto social",
+    "itcp": "índice político",
+}
+
+
+def nombre_publico(clave: str, mayuscula: bool = False) -> str:
+    """Nombre llano del índice (`itcm`, `ITCM`, `itvc`…); con `mayuscula`,
+    para abrir una oración o un título."""
+    n = NOMBRES_PUBLICOS[clave.lower()]
+    return n[:1].upper() + n[1:] if mayuscula else n
+
 # Umbrales de clasificación de estado por cinturón (score 0-10)
 # score <= ESTABLE_MAX → "estable" | <= EN_TENSION_MAX → "en_tension" | > EN_TENSION_MAX → "tensionado"
 # ESTABLE_MAX pasó de 3 a 4 el 20-sep-2026 (ADR-0333). Los dos valores son los

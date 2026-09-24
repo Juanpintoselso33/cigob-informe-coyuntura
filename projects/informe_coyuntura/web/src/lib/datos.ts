@@ -105,8 +105,18 @@ export interface Cinturon {
 
 // Índice paramétrico del cinturón (si tiene): sigla, nombre y descripción
 // para que la página de detalle lo renderice de forma genérica.
+//
+// La SIGLA no se muestra (ADR-0340): queda como identificador —la matriz de
+// validación cruzada marca su fila con ella— y para la capa metodológica de
+// las fichas. Lo que lee el lector es `corto`, el nombre llano del índice en
+// minúscula, para ir a mitad de frase («pesa 12% del índice político»);
+// `Corto` es el mismo con mayúscula inicial, para títulos y chips. Tienen que
+// coincidir con config.NOMBRES_PUBLICOS: tests/test_siglas_publicas.py lo
+// verifica.
 export interface IndiceInfo {
   sigla: string;
+  corto: string;
+  Corto: string;
   fichaId: string;
   nombre: string;
   descripcion: string;
@@ -116,6 +126,8 @@ export interface IndiceInfo {
 export function indiceDe(c: Cinturon): IndiceInfo | null {
   if (c.itcm) return {
     sigla: "ITCM",
+    corto: "índice macroeconómico",
+    Corto: "Índice macroeconómico",
     fichaId: "itcm",
     nombre: "Índice de Tensión del Cinturón Macroeconómico",
     descripcion: "0 = cinturón severamente apretado, 100 = aflojado. Pondera seis dimensiones.",
@@ -123,6 +135,8 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
   };
   if (c.itcg) return {
     sigla: "ITCG",
+    corto: "índice de gestión",
+    Corto: "Índice de gestión",
     fichaId: "itcg",
     nombre: "Índice de Tensión del Cinturón de Gestión",
     descripcion: "0 = se prometen reformas y no se ejecutan; 100 = agenda ejecutándose. Pondera cinco dimensiones.",
@@ -130,6 +144,8 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
   };
   if (c.itvc) return {
     sigla: "ITCIS",
+    corto: "índice de impacto social",
+    Corto: "Índice de impacto social",
     fichaId: "itvc",
     base100: true,   // índice de seguimiento sin techo en 100 (no mostrar "/100")
     nombre: "Índice de Tensión del Cinturón de Impacto Social",
@@ -138,6 +154,8 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
   };
   if (c.itcp) return {
     sigla: "ITCP",
+    corto: "índice político",
+    Corto: "Índice político",
     fichaId: "itcp",
     nombre: "Índice de Tensión del Cinturón Político",
     descripcion: "0 = mínimo capital político, 100 = máximo. Capacidad de gobernar, no popularidad.",
@@ -536,9 +554,9 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   ipc_total: "% mensual", reservas_bcra: "Millones de USD",
   idc: "Desvíos estándar vs. su historia (σ)",
   badlar: "% anual", emae_ia: "% interanual",
-  emae_difusion: "% de los 15 sectores del EMAE que crecen interanualmente",
+  emae_difusion: "% de los 15 sectores del estimador mensual de actividad que crecen interanualmente",
   ipi_manufacturero: "% interanual (promedio 3 meses)",
-  actividad_tributaria: "% interanual real (compuesto 0,6×IVA-DGI + 0,4×impuesto al cheque)",
+  actividad_tributaria: "% interanual real (compuesto 0,6×IVA impositivo + 0,4×impuesto al cheque)",
   ipc_nucleo: "% mensual",
   pobreza_indec: "% de personas (medición oficial semestral)",
   cuenta_corriente: "millones de dólares (acumulado 4 trimestres)",
@@ -548,7 +566,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   idm: "Puntos porcentuales (brecha i.a. real)",
   desequilibrio_monetario: "Puntos de tensión (0–100)",
   iai: "% interanual (índice ponderado)", icip: "% interanual (índice ponderado)",
-  credito_privado: "% interanual real (deflactado por IPC)",
+  credito_privado: "% interanual real (deflactado por inflación)",
   costo_financiamiento_tesoro: "% real anual (tasa efectiva de colocación menos inflación esperada)",
   resultado_primario: "% de la recaudación (resultado primario acumulado 12 meses)",
   prestamos_privados: "% mensual", base_monetaria: "% mensual", tc_mayorista: "% mensual",
@@ -575,37 +593,37 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
   endeudamiento_familiar: "Billones de pesos", mora_familias: "% de la cartera en situación irregular",
   carga_servicio_deuda_hogares: "% de la masa salarial registrada comprometida en servicios de deuda",
-  peso_tarifas: "% de un salario RIPTE", alquiler_real: "% mensual", pobreza_nowcast: "% de personas en hogares pobres", indice_lider: "Índice (nivel)",
+  peso_tarifas: "% del salario registrado promedio", alquiler_real: "% mensual", pobreza_nowcast: "% de personas en hogares pobres", indice_lider: "Índice (nivel)",
   consumo_carne_vacuna: "kg por habitante/año", consumo_carnes_total: "kg por habitante/año (vacuna + aviar + porcina)", consumo_carnes_otras: "kg por habitante/año (aviar + porcina)",
   informalidad: "% de asalariados",
   mortalidad_pymes: "Empleadores de hasta 50 trabajadores con cobertura de ART",
-  trabajo_independiente: "% del empleo registrado SIPA que son autónomos o monotributistas del régimen general (sin monotributo social)", despacho_cemento: "Índice", subocupacion_demandante: "% de la PEA",
+  trabajo_independiente: "% del empleo registrado que son autónomos o monotributistas del régimen general (sin monotributo social)", despacho_cemento: "Índice", subocupacion_demandante: "% de la PEA",
   inseguridad: "% de hogares víctimas (últimos 12 meses)", icc_utdt: "Índice",
   sentimiento_digital: "Índice (100 = 4T-2023)",
   patentamiento_motos: "Unidades",
   patentamiento_autos: "Unidades (autos 0km inscriptos en el mes)",
   motorizacion_total: "Vehículos 0km (autos + motos) por cada 1.000 habitantes, acumulado de 12 meses",
-  tasa_homicidios: "Homicidios dolosos por cada 100.000 habitantes (tasa oficial SNIC, anual)",
-  tasa_robos: "Robos, excluidos los agravados por lesiones o muertes, por cada 100.000 habitantes (tasa oficial SNIC, anual)",
+  tasa_homicidios: "Homicidios dolosos por cada 100.000 habitantes (tasa oficial del Sistema Nacional de Información Criminal, anual)",
+  tasa_robos: "Robos, excluidos los agravados por lesiones o muertes, por cada 100.000 habitantes (tasa oficial del Sistema Nacional de Información Criminal, anual)",
   ratio_motos_autos: "Motos patentadas por cada auto patentado, acumulado móvil de 12 meses",
   consumo_supermercados: "Índice de ventas a precios constantes (2017 = 100, desestacionalizado)",
   // gestion
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
-  concesiones_infraestructura: "% de km adjudicados (RFC)", reduccion_estado: "% de variación vs dic-2023",
-  reestructuracion_organismos: "% de avance", rigi_inversiones: "% de la inversión de la cartera RIGI ya aprobada",
+  concesiones_infraestructura: "% de km adjudicados (Red Federal de Concesiones)", reduccion_estado: "% de variación vs dic-2023",
+  reestructuracion_organismos: "% de avance", rigi_inversiones: "% de la inversión de la cartera del régimen de grandes inversiones ya aprobada",
   cobertura_judicial: "% de cargos de juez habilitados con juez designado",
   produccion_legislativa: "leyes sancionadas en los últimos 12 meses",
   judicializacion: "sumarios con medida cautelar sobre el total, jurisdicción Federal + Nacional",
-  velocidad_resolucion: "expedientes resueltos sobre ingresados en el año (CSJN)",
+  velocidad_resolucion: "expedientes resueltos sobre ingresados en el año (Corte Suprema)",
   paralisis_denuncias: "sesiones documentadas de las comisiones de Acusación y Disciplina en 12 meses",
-  empleo_registrado: "Miles de asalariados registrados del sector privado (SIPA)",
+  empleo_registrado: "Miles de asalariados registrados del sector privado",
   desregulacion_normativa: "Artículos modificados o eliminados desde dic-2023", apertura_comercial: "% del intercambio (alícuota efectiva)",
   gasto_funcionamiento: "% de variación real vs 2023", masa_salarial: "% de variación real vs 2023",
   asistencia_directa: "% del gasto social sin intermediación", fal_modernizacion_laboral: "Reforma laboral vigente (0–100)",
   libertad_opcion_salud: "% de usuarios de prepagas con derivación directa", protocolo_antipiquetes: "% de reducción de cortes vs 2023",
   litigiosidad_laboral: "% variación (12m vs 12m previos)",
-  alertas_manifestacion: "Alertas únicas en el mes (GTFS-RT)",
-  protestas_caba: "Eventos de protesta (acum. 12 meses, ACLED)",
+  alertas_manifestacion: "Alertas únicas en el mes (avisos del transporte público porteño)",
+  protestas_caba: "Eventos de protesta (acum. 12 meses)",
 };
 
 // Unidad de la SERIE del gráfico cuando difiere de la unidad de la card
@@ -637,8 +655,8 @@ export const UNIDADES_SERIE: Record<string, string> = {
 // genérico y estas etiquetas son las únicas que hay escritas — si nadie lo usa
 // en unos meses, se borra.
 export const CONTEXTO_DURO_META: Record<string, { label: string; freq: "mensual" | "anual"; nota?: string }> = {
-  eeuu_niv: { label: "EE.UU. — visas de no inmigrante emitidas a argentinos", freq: "mensual", nota: "incluye turismo y negocios" },
-  eeuu_iv: { label: "EE.UU. — visas de inmigrante (residencia permanente)", freq: "mensual" },
+  eeuu_niv: { label: "Estados Unidos — visas de no inmigrante emitidas a argentinos", freq: "mensual", nota: "incluye turismo y negocios" },
+  eeuu_iv: { label: "Estados Unidos — visas de inmigrante (residencia permanente)", freq: "mensual" },
   canada_pr: { label: "Canadá — nuevos residentes permanentes argentinos", freq: "mensual", nota: "la fuente redondea a múltiplos de 5" },
   espana_nacionalidad: { label: "España — nacionalidad española otorgada a argentinos", freq: "anual" },
   italia_aire: { label: "Italia — ciudadanía italiana otorgada a argentinos", freq: "anual" },

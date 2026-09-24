@@ -374,7 +374,7 @@ def fetch_cepo_mulc() -> dict | None:
         return {
             "valor":          brecha,
             "unidad":         "% de brecha CCL/mayorista",
-            "fuente":         "dolarapi.com — CCL y mayorista (el mayorista replica la referencia A3500 del BCRA)",
+            "fuente":         "dolarapi.com — contado con liquidación y mayorista (el mayorista replica la referencia oficial del BCRA)",
             "fecha_dato":     fecha_dato,
             "cotizaciones": {
                 "ccl": {"venta": float(ccl), "actualizado_en": fechas["contadoconliqui"].isoformat()},
@@ -462,7 +462,7 @@ def fetch_apertura_comercial(brecha_pct: float | None = None) -> dict | None:
         return {
             "valor":          fila['valor'],
             "unidad":         "% del intercambio (alícuota efectiva)",
-            "fuente":         "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500",
+            "fuente":         "ARCA (derechos de exportación e importación) + INDEC (intercambio comercial) + BCRA (dólar mayorista de referencia)",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": not datos['ica']['consulta_oficial_exitosa'],
             "fuente_url": datos['ica']['url'],
@@ -1195,8 +1195,8 @@ def fetch_gasto_funcionamiento() -> dict | None:
         infl = ipc[ym] / ipc[base_ym]
         return {
             "valor":          var_pct,
-            "unidad":         f"% de variación real vs {base_ym} (IMIG funcionamiento)",
-            "fuente":         "Sec. Hacienda IMIG (datos.gob.ar) + IPC INDEC",
+            "unidad":         f"% de variación real vs {base_ym} (gastos de funcionamiento)",
+            "fuente":         "Sec. Hacienda — ingresos y gastos del sector público nacional (datos.gob.ar) + IPC INDEC",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": False,
             "detalle_txt":    (f"$ {total[ym]/1e6:,.2f} bn, base caja ({ym}) vs "

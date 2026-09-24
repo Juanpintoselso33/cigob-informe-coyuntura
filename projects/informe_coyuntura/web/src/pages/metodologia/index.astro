@@ -43,7 +43,7 @@ const rs = indices
   .filter(x => typeof x.indice!.data.validacion?.r_niveles === "number")
   .map(x => {
     const r = x.indice!.data.validacion!.r_niveles;
-    return `${x.indice!.sigla} ${(r > 0 ? "+" : "\u2212")}${Math.abs(r).toFixed(2).replace(".", ",")}`;
+    return `${x.indice!.Corto} ${(r > 0 ? "+" : "\u2212")}${Math.abs(r).toFixed(2).replace(".", ",")}`;
   });
 const fase = (informe as any).ponderacion?.fase === "temprana"
   ? "fase temprana del mandato" : "fase de consolidación";
@@ -156,8 +156,8 @@ const tensionados = cinturonesRojos(informe);
           El encuadre es el marco <strong>CIGOB-Matus</strong>, que la Fundación CiGob amplía de tres cinturones
           a cuatro. Un cinturón no es un área temática: es un frente donde el gobierno gasta y repone capacidad
           de gobernar. Macroeconomía, política, gestión estatal e impacto social miden el intercambio entre lo
-          que el gobierno decide y lo que el entorno le devuelve. Cada uno tiene su índice (ITCM, ITCP, ITCIS,
-          ITCG), documentado más abajo.
+          que el gobierno decide y lo que el entorno le devuelve. Cada uno tiene su índice —macroeconómico,
+          político, de impacto social y de gestión—, documentado más abajo.
         </p>
 
         <h3 class="cg-marco-h3">Qué dicen los colores</h3>
@@ -195,8 +195,8 @@ const tensionados = cinturonesRojos(informe);
         <p class="cg-h2-sub">El formato adapta los estándares de la estadística pública al tamaño de este informe.</p>
       </div>
       <div class="cg-method-grid">
-        <article><h3>Una ficha por indicador</h3><p>Estructura fija tomada del <strong>template de metadatos ODS</strong> (Naciones Unidas) y de las fichas metodológicas de los institutos de estadística: definición, fuente exacta, método de cómputo, limitaciones declaradas y tratamiento de datos faltantes.</p></article>
-        <article><h3>Índices según OCDE/JRC</h3><p>Los índices compuestos (ITCM, ITCP, ITCIS, ITCG) se documentan con el <strong>checklist del Handbook on Constructing Composite Indicators</strong> (OCDE/JRC, 2008): marco conceptual, normalización, agregación, robustez y validación, paso por paso.</p></article>
+        <article><h3>Una ficha por indicador</h3><p>Estructura fija tomada de la <strong>plantilla de metadatos de los Objetivos de Desarrollo Sostenible</strong> (Naciones Unidas) y de las fichas metodológicas de los institutos de estadística: definición, fuente exacta, método de cómputo, limitaciones declaradas y tratamiento de datos faltantes.</p></article>
+        <article><h3>Índices según el manual internacional</h3><p>Los cuatro índices compuestos se documentan con la <strong>lista de control del Handbook on Constructing Composite Indicators</strong>, el manual que publicaron en 2008 la Organización para la Cooperación y el Desarrollo Económicos (OCDE) y el Centro Común de Investigación de la Comisión Europea: marco conceptual, normalización, agregación, robustez y validación, paso por paso.</p></article>
         <article><h3>Generada desde los datos</h3><p>Los números de cada ficha (valores, puntajes, pesos, bandas de robustez) <strong>no se transcriben</strong>: salen del mismo archivo de datos que alimenta las cards del informe y se reconstruyen con cada actualización.</p></article>
         <article><h3>Decisiones con registro</h3><p>Cada cambio de método queda asentado con fecha en un <strong>registro de decisiones</strong>: qué se cambió, por qué, qué alternativas se descartaron y cómo afectó al valor publicado. Cada ficha publica su historial.</p></article>
       </div>
@@ -215,7 +215,7 @@ const tensionados = cinturonesRojos(informe);
         </article>
         <article>
           <h3>Validación externa</h3>
-          <p>Tres de los cuatro índices se contrastan contra un ancla externa que nadie del proyecto controla — marcha de la actividad (ITCM), incertidumbre de política EPU (ITCP) y el factor común de un panel donde no existe una serie de referencia única (ITCIS) — y la matriz cruzada compara cada uno contra las tres a la vez, para ver si correlaciona más con la propia que con las ajenas. Hoy no se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período. El de gestión (ITCG) no tiene contraste externo, por definición: mide lo que el gobierno hace, y una estadística de afuera o es parte de la misma agenda o mezcla la ejecución con todo lo demás que mueve a la economía.{rs.length > 0 && <Fragment> Hoy: <strong>r {rs.join(" · ")}</strong>.</Fragment>}</p>
+          <p>Tres de los cuatro índices se contrastan contra un ancla externa que nadie del proyecto controla — marcha de la actividad (índice macroeconómico), incertidumbre de política en la prensa (índice político) y el factor común de un panel donde no existe una serie de referencia única (índice de impacto social) — y la matriz cruzada compara cada uno contra las tres a la vez, para ver si correlaciona más con la propia que con las ajenas. Hoy no se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período. El índice de gestión no tiene contraste externo, por definición: mide lo que el gobierno hace, y una estadística de afuera o es parte de la misma agenda o mezcla la ejecución con todo lo demás que mueve a la economía.{rs.length > 0 && <Fragment> Hoy: <strong>r {rs.join(" · ")}</strong>.</Fragment>}</p>
         </article>
         <article>
           <h3>Ponderación por fase</h3>
@@ -241,7 +241,7 @@ const tensionados = cinturonesRojos(informe);
           return (
             <Row class:list={["cg-dicc-row", { "is-pend": !tieneFicha }]} href={tieneFicha ? href : undefined}>
               <div class="cg-dicc-main">
-                <span class="cg-dicc-name">{indice!.sigla} — {indice!.nombre}</span>
+                <span class="cg-dicc-name">{indice!.Corto}</span>
                 <span class="cg-dicc-que">Cinturón {meta.nombre.toLowerCase()} · hoy {num(indice!.data.valor as number)}{indice!.base100 ? "" : "/100"} · {indice!.data.banda_legible}</span>
               </div>
               <div class="cg-dicc-chips">
@@ -300,9 +300,9 @@ const tensionados = cinturonesRojos(informe);
         <h2 class="cg-h2">Los estándares que siguen estas fichas</h2>
       </div>
       <ul class="cg-ficha-ul">
-        <li><strong>Template de metadatos de indicadores ODS</strong> (IAEG-SDGs, Naciones Unidas): la estructura de las fichas de indicador — definición, fuentes, método de cómputo, limitaciones, tratamiento de faltantes.</li>
-        <li><strong>Handbook on Constructing Composite Indicators: Methodology and User Guide</strong> (OCDE / JRC de la Comisión Europea, 2008): el checklist de construcción y documentación de los índices compuestos.</li>
-        <li><strong>Fichas metodológicas de la estadística oficial</strong> (lineamientos DANE; informes metodológicos estandarizados del sistema estadístico europeo): el formato de ficha única por operación estadística.</li>
+        <li><strong>Plantilla de metadatos de los indicadores de los Objetivos de Desarrollo Sostenible</strong> (grupo de expertos de Naciones Unidas): la estructura de las fichas de indicador — definición, fuentes, método de cómputo, limitaciones, tratamiento de faltantes.</li>
+        <li><strong>Handbook on Constructing Composite Indicators: Methodology and User Guide</strong> (Organización para la Cooperación y el Desarrollo Económicos y Centro Común de Investigación de la Comisión Europea, 2008): el checklist de construcción y documentación de los índices compuestos.</li>
+        <li><strong>Fichas metodológicas de la estadística oficial</strong> (lineamientos del Departamento Administrativo Nacional de Estadística de Colombia; informes metodológicos estandarizados del sistema estadístico europeo): el formato de ficha única por operación estadística.</li>
       </ul>
     </section>
   </main>
