@@ -387,6 +387,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2024-01-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2023-12-01,libertad_opcion_salud,0.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2026-07-01,indice_salarios_publico,8123.88,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-06-01,indice_salarios_publico,7889.4,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-05-01,indice_salarios_publico,7628.3,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-04-01,indice_salarios_publico,7515.45,indice base oct-2016=100,INDEC/datos.gob.ar
@@ -434,7 +435,6 @@ fecha,indicador,valor,unidad,fuente
 2022-10-01,indice_salarios_publico,827.5,indice base oct-2016=100,INDEC/datos.gob.ar
 2022-09-01,indice_salarios_publico,780.81,indice base oct-2016=100,INDEC/datos.gob.ar
 2022-08-01,indice_salarios_publico,724.84,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-07-01,indice_salarios_publico,695.34,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-08-01,icg_utdt,2.059,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2026-07-01,icg_utdt,1.936,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2026-06-01,icg_utdt,2.07,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
@@ -865,7 +865,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2024-01-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2023-12-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
-2026-09-01,cepo_mulc,5.49,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
+2026-09-01,cepo_mulc,5.5,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-08-01,cepo_mulc,5.73,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-07-01,cepo_mulc,5.9,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-06-01,cepo_mulc,4.65,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
