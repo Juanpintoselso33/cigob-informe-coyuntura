@@ -444,7 +444,7 @@ export const LABELS: Record<string, string> = {
   subocupacion_demandante: "Subocupación demandante", inseguridad: "Victimización",
   icc_utdt: "Confianza del consumidor", sentimiento_digital: "Sentimiento digital (Trends)",
   motorizacion_total: "Motorización total",
-  tasa_homicidios: "Tasa de homicidios dolosos", tasa_robos: "Tasa de robos",
+  tasa_homicidios: "Tasa de homicidios dolosos", tasa_robos: "Tasa de robos (rapiñas)",
   ratio_motos_autos: "Ratio motos/autos",
   patentamiento_motos: "Patentamiento de motos", patentamiento_autos: "Patentamiento de autos",
   consumo_supermercados: "Ventas en supermercados",

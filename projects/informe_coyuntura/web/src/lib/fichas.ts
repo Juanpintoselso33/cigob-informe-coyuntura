@@ -1754,12 +1754,12 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (21% del total), con un peso nominal de 13% junto al ratio DNU, la eficacia legislativa, los desafíos legislativos, el bloqueo sostenido y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (21% del total), con un peso nominal de 15% junto al ratio DNU, la eficacia legislativa, los desafíos legislativos y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Las citadas no efectuadas aparecen en el índice pero se excluyen mientras su rótulo no acredite falta de quórum. Tampoco se cuentan negociaciones o convocatorias retiradas sin registro: no es una medida exhaustiva del bloqueo parlamentario.",
       "El denominador es pequeño y cambia con cada reunión; una sola reunión en minoría puede mover varios puntos porcentuales. Deben leerse juntos porcentaje, numerador, denominador y ventana.",
-      "No distingue el quórum frustrado por la oposición de la inasistencia propia — decisión metodológica declarada.",
+      "No distingue quién convocó la sesión: la Cámara de Diputados no publica el convocante ni en el índice de sesiones, ni en el detalle de cada reunión, ni en el temario (ADR-0313). Por eso se cuentan todas las sesiones caídas, y una sesión que convoca la oposición y se cae —un bloqueo exitoso del oficialismo— suma igual que una propia que no reúne quórum. Hasta que la fuente publique el convocante, el indicador mide cuántas veces la cámara no se reúne, no de quién es el fracaso.",
     ],
     faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "El índice de sesiones se reconsulta en cada actualización. Las correcciones de fecha, nuevas reuniones publicadas o cambios de clasificación pueden revisar la historia; no se aplica un desplazamiento fijo a los datos del catálogo anterior.",
@@ -1769,6 +1769,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-06-30", cambio: "Serie por período legislativo desde 2024." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
       { fecha: "2026-07-20", cambio: "Corrección de fondo del criterio de conteo, a partir de una revisión de los registros crudos del dataset oficial. La versión anterior identificaba las sesiones caídas buscando la palabra «fracasada» en el tipo de reunión, lo que dejaba fuera las once sesiones clasificadas «en minoría» —que son el fracaso de quórum propiamente dicho— y en cambio contaba dos sesiones informativas del artículo 71 de la Constitución que no se realizaron, un fenómeno distinto. La ventana pasó además de período legislativo a doce meses móviles, y la serie de anual a mensual." },
+      { fecha: "2026-09-24", cambio: "La ficha declara que no se puede separar quién convocó cada sesión (la fuente no lo publica, ADR-0313) y qué implica para la lectura; se corrige el peso nominal (15%, tras la salida del bloqueo sostenido en ADR-0330)." },
     ],
   },
 
@@ -3176,6 +3177,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-15", cambio: "ADR-0324/0325: robos se conserva por NOMBRE en `tipos_principales`, sólo como contraste de `inseguridad` — no puntúa." },
       { fecha: "2026-09-16", cambio: "ADR-0327 revierte a ADR-0324/0325: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula, y con la limitación de la caída de 2025 declarada en la ficha. 15% interno de la dimensión (0,68% del ITCIS)." },
       { fecha: "2026-09-16", cambio: "Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» (percentil 69, sesgaba a verde) a la mediana de los 26 años." },
+      { fecha: "2026-09-24", cambio: "La card pasa a llamarse «Tasa de robos (rapiñas)», como lo nombra el equipo. Mide lo mismo." },
     ],
   },
 

@@ -85,7 +85,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Seguridad** | | | | |
 | Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 2,9 % |
 | Tasa de homicidios dolosos | Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC)… | 3,48 homicidios dolosos cada 100.000 hab. | VERDE | 1,2 % |
-| Tasa de robos | Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema… | 778,1 robos (excl. agravados) cada 100.000 hab. | VERDE | 0,7 % |
+| Tasa de robos (rapiñas) | Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema… | 778,1 robos (excl. agravados) cada 100.000 hab. | VERDE | 0,7 % |
 
 *Datos al 2026-09-24.*
 
@@ -1372,7 +1372,7 @@ Ponderación vigente en el ITCIS: 1,2 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Tasa de robos
+# Tasa de robos (rapiñas)
 
 Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC). Es el equivalente del SNIC a lo que suele llamarse «rapiña».
 
@@ -1454,6 +1454,8 @@ Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicio
 **2026-09-16** — ADR-0327 revierte a ADR-0324/0325: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula, y con la limitación de la caída de 2025 declarada en la ficha. 15% interno de la dimensión (0,68% del ITCIS).
 
 **2026-09-16** — Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» (percentil 69, sesgaba a verde) a la mediana de los 26 años.
+
+**2026-09-24** — La card pasa a llamarse «Tasa de robos (rapiñas)», como lo nombra el equipo. Mide lo mismo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

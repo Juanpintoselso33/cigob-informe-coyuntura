@@ -944,7 +944,7 @@ Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicion
 
 - Las citadas no efectuadas aparecen en el índice pero se excluyen mientras su rótulo no acredite falta de quórum. Tampoco se cuentan negociaciones o convocatorias retiradas sin registro: no es una medida exhaustiva del bloqueo parlamentario.
 - El denominador es pequeño y cambia con cada reunión; una sola reunión en minoría puede mover varios puntos porcentuales. Deben leerse juntos porcentaje, numerador, denominador y ventana.
-- No distingue el quórum frustrado por la oposición de la inasistencia propia — decisión metodológica declarada.
+- No distingue quién convocó la sesión: la Cámara de Diputados no publica el convocante ni en el índice de sesiones, ni en el detalle de cada reunión, ni en el temario (ADR-0313). Por eso se cuentan todas las sesiones caídas, y una sesión que convoca la oposición y se cae —un bloqueo exitoso del oficialismo— suma igual que una propia que no reúne quórum. Hasta que la fuente publique el convocante, el indicador mide cuántas veces la cámara no se reúne, no de quién es el fracaso.
 
 ## Si falta el dato / Política de revisiones
 
@@ -963,6 +963,8 @@ Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicion
 **2026-07-07** — Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
 
 **2026-07-20** — Corrección de fondo del criterio de conteo, a partir de una revisión de los registros crudos del dataset oficial. La versión anterior identificaba las sesiones caídas buscando la palabra «fracasada» en el tipo de reunión, lo que dejaba fuera las once sesiones clasificadas «en minoría» —que son el fracaso de quórum propiamente dicho— y en cambio contaba dos sesiones informativas del artículo 71 de la Constitución que no se realizaron, un fenómeno distinto. La ventana pasó además de período legislativo a doce meses móviles, y la serie de anual a mensual.
+
+**2026-09-24** — La ficha declara que no se puede separar quién convocó cada sesión (la fuente no lo publica, ADR-0313) y qué implica para la lectura; se corrige el peso nominal (15%, tras la salida del bloqueo sostenido en ADR-0330).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
