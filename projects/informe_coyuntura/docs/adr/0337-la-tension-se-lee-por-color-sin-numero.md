@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-09-24
 cinturon: 'transversal'
 archivos: ['web/src/components/NivelTension.astro', 'web/src/components/Hero.astro', 'web/src/components/Bluf.astro', 'web/src/components/TensionPanel.astro', 'web/src/components/Archivo.astro', 'web/src/components/Evolucion.astro', 'web/src/components/IndicadorModal.astro', 'web/src/components/SemaforoLeyenda.astro', 'web/src/pages/[slug].astro', 'web/src/pages/frontada.astro', 'web/src/pages/metodologia/[id].astro', 'web/src/pages/metodologia/index.astro', 'web/src/lib/datos.ts', 'web/src/lib/fichas.ts', 'scripts/publicar.py']
-relacionado: ['0181', '0311', '0333']
+relacionado: ['0181', '0311', '0333', '0338']
 ambito: 'Presentación · cómo se muestra la tensión en toda la web'
 origen: 'Revisión de Luis del 23-sep-2026 sobre los apuntes del 15-sep: «se sacó [la escala de 10 del titular], pero hay que sacarlo en todo, nos quedamos con los colores para mostrar la tensión». Juan eligió «número y escala» en toda la web y graficar el índice en la evolución.'
 ---

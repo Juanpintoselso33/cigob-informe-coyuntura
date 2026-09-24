@@ -58,7 +58,10 @@ FRAGMENTOS_DEL_PARRAFO_ORIGINAL = [
 # escala aparecen en cada aguja, "cinturón" en toda la navegación, y "barbarismo"
 # en el BLUF de la portada, en cada card y en cada página de cinturón. El marco
 # es el único lugar donde se explican.
-NOCIONES_QUE_EL_MARCO_DEFINE = ["tensión", "cinturón", "0 a 10", "barbarismo"]
+# Desde ADR-0337 la web muestra la tensión por color, no como número 0-10: lo
+# que el marco tiene que definir son los colores y de qué puntaje salen.
+NOCIONES_QUE_EL_MARCO_DEFINE = ["tensión", "cinturón", "verde", "amarillo", "naranja", "rojo",
+                                "coloresEnIndice", "barbarismo"]
 
 
 def test_el_parrafo_original_sigue_publicado():
@@ -110,15 +113,15 @@ def test_la_portada_dice_que_mide_cada_cinturon():
 
 
 def test_la_escala_sigue_explicada_en_metodologia():
-    """La dirección de la escala salió de la portada (ADR-0213), y eso sólo es
-    aceptable mientras siga explicada en algún lado: cada aguja publica un
-    número /10 que no significa nada por su cuenta. Si esta frase también se
-    va, el sitio vuelve a publicar una escala muda -- que es exactamente el
-    agujero que abrió ADR-0199."""
+    """La explicación de la escala salió de la portada (ADR-0213), y eso sólo es
+    aceptable mientras siga explicada en algún lado. Desde ADR-0337 la escala
+    que se publica son los colores: el marco tiene que decir qué significa cada
+    uno y de qué cortes salen, o el sitio vuelve a publicar una escala muda --
+    el agujero que abrió ADR-0199."""
     texto = _texto_normalizado(METODOLOGIA_INDEX)
-    assert "0 a 10" in texto, (
-        "/metodologia dejó de explicar la dirección de la escala, y la portada "
-        "ya no la explica (ADR-0213): no queda ninguna página que lo diga."
+    assert "Qué dicen los colores" in texto and "coloresEnIndice(" in texto, (
+        "/metodologia dejó de explicar qué significa cada color y de qué cortes "
+        "sale, y la portada ya no lo explica (ADR-0213, ADR-0337)."
     )
 
 

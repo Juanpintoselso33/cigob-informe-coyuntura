@@ -10,7 +10,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
-import { informe, CINTURONES, label, badgeEstado, indiceDe, indicadoresOrdenados, mesLegible, num, cap, cinturonesRojos } from "../../lib/datos.ts";
+import { informe, CINTURONES, label, badgeEstado, indiceDe, indicadoresOrdenados, mesLegible, num, cap, cinturonesRojos, coloresEnIndice, LECTURA_SEMAFORO } from "../../lib/datos.ts";
 import { DESCRIPCIONES } from "../../lib/descripciones.ts";
 import { FICHAS } from "../../lib/fichas.ts";
 
@@ -59,7 +59,7 @@ const tensionados = cinturonesRojos(informe);
       <p class="cg-eyebrow"><a href={`${base}/`}>← Resumen</a></p>
       <h1 class="cg-hero-title cg-detalle-title">Metodología</h1>
       <p class="cg-hero-lead cg-detalle-lead">
-        Primero el marco: qué es la tensión que mide el informe y de dónde salen los cuatro cinturones.
+        Primero el marco: cómo comunica el Monitor la complejidad, qué mide y qué dicen sus colores.
         Después, una ficha metodológica por indicador, con estructura estándar: qué mide, de dónde sale,
         cómo se calcula, cómo incide en el índice, qué limitaciones tiene y qué decisiones de
         método se tomaron. Para leer el informe alcanza con el marco; para auditarlo, está todo.
@@ -77,16 +77,74 @@ const tensionados = cinturonesRojos(informe);
         sin mudarlo: durante un día el sitio publicó una tensión 0-10 sin decir
         en ningún lado qué es esa tensión. Vuelve donde el rediseño dijo que
         estaba, y antes que nada: se explica qué se mide antes de explicar cómo
-        se documenta (ADR-0199). El párrafo de apertura es el original, palabra
-        por palabra. */}
+        se documenta (ADR-0199). Desde ADR-0338 abre con el texto de Luis y la
+        definición del informe va en «Qué mide el informe», palabra por
+        palabra. */}
     <section class="cg-section cg-method" id="marco">
       <div class="cg-section-head">
         <p class="cg-eyebrow">El marco</p>
-        <h2 class="cg-h2">Qué es la tensión que mide el informe</h2>
-        <p class="cg-h2-sub">El encuadre del que salen los cuatro cinturones y sus colores.</p>
+        <h2 class="cg-h2">Reducir sin simplificar</h2>
+        <p class="cg-h2-sub">Cómo comunica el Monitor la complejidad, qué mide y qué dicen sus colores.</p>
       </div>
       <div class="cg-marco">
+        {/* ADR-0338: el marco abre con el texto de Luis Babino («Reducir sin
+            simplificar», documento de trabajo del equipo, sep-2026), como pedía
+            el apunte del 15-sep («cambiar el texto del marco por el
+            proporcionado por Luis»). Van las partes escritas para el lector
+            —la síntesis, la diferencia entre reducir y simplificar y los
+            ejemplos del propio Monitor—; el vocabulario para posteos y las
+            instrucciones de uso son internas del equipo y no se publican.
+
+            Un ejemplo del original NO va: «la decisión de no fusionar tipo de
+            cambio multilateral con saldo comercial». Esa decisión no existe
+            (ningún ADR la evalúa ni la descarta; en el documento del equipo del
+            15-sep era una pregunta abierta), así que publicarla sería afirmar
+            algo que el informe no hizo (ADR-0326). */}
+        <p class="cg-marco-cita">
+          «No creemos en respuestas simples a preguntas complejas, pero tampoco en la complejidad como
+          excusa para no responder. En este sentido, el método es lo que permite las dos cosas a la vez:
+          mostrar un número que se entiende de un vistazo, y que ese número nunca esconda lo que hace
+          falta ver.»
+        </p>
         <p class="cg-marco-lead">
+          Hay dos operaciones que se confunden todo el tiempo y conviene separar con nombres distintos. El
+          <strong>reduccionismo</strong> —lo que hay que evitar— trata un fenómeno con varias causas o
+          dimensiones como si tuviera una sola: colapsa la complejidad en una sola variable y pierde
+          información real que importa para decidir. Por ejemplo, leer «superávit comercial» como sinónimo de
+          «competitividad», cuando puede ser compresión de importaciones por recesión.
+        </p>
+        <p>
+          La <strong>simplificación con método</strong> —lo que sí se busca— elige qué mostrar primero y qué
+          dejar en un segundo plano, sin destruir la posibilidad de recuperar el detalle completo si hace
+          falta. El cinturón macroeconómico, por ejemplo, da un color del semáforo para saber de un vistazo
+          si está en tensión o no, pero de ahí se puede bajar a sus seis dimensiones, de ahí a cada
+          indicador y de ahí a la ficha completa.
+        </p>
+        <p>
+          El Monitor no le miente a la complejidad diciendo que no existe, pero tampoco se rinde ante ella
+          devolviéndole al lector quince indicadores sueltos sin ninguna jerarquía. La ordena en capas
+          navegables —semáforo, dimensión, indicador, ficha—: <strong>reduce, sin simplificar</strong>.
+        </p>
+        <p>
+          Dos decisiones de diseño del propio Monitor son la aplicación concreta del principio. El
+          indicador de <strong>desequilibrio monetario</strong> no promedia sus dos componentes: los cruza en
+          una matriz de cuatro esquinas, para que un componente sano no tape a uno degradado. Da un número
+          único de tensión sin perder la información de que un componente está mal aunque el otro esté
+          bien. Y las <strong>fichas metodológicas</strong> declaran sus limitaciones y su historial de
+          cambios: cada indicador se muestra con un número y un color, pero nunca oculta cómo se llegó ahí ni
+          qué no puede medir.
+        </p>
+        <p>
+          Esta idea está en el modo de trabajo de la Fundación. <strong>Reconocer el conflicto</strong> es
+          asumir que gobernar es difícil porque hay variables en tensión, no una sola cosa que arreglar;
+          mostrar tensiones en vez de un veredicto único sigue la misma lógica. Y ser <strong>técnico sin ser
+          opaco</strong> no es evitar los conceptos técnicos: es explicarlos en la misma oración en que
+          aparecen. El antídoto a la jerga que aleja no es bajar el contenido, es traducirlo sin perder
+          precisión.
+        </p>
+
+        <h3 class="cg-marco-h3">Qué mide el informe</h3>
+        <p>
           La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos, sino por su
           capacidad para <strong>procesar la tensión</strong> entre las demandas del entorno y los recursos de
           acción disponibles. Este monitor del plan de gobierno sistematiza el mapa de tensiones de la Argentina actual
@@ -98,69 +156,34 @@ const tensionados = cinturonesRojos(informe);
           El encuadre es el marco <strong>CIGOB-Matus</strong>, que la Fundación CiGob amplía de tres cinturones
           a cuatro. Un cinturón no es un área temática: es un frente donde el gobierno gasta y repone capacidad
           de gobernar. Macroeconomía, política, gestión estatal e impacto social miden el intercambio entre lo
-          que el gobierno decide y lo que el entorno le devuelve. El marco contempla además un cinturón de
-          espíritu de época —la sintonía emocional con el humor social—, que este informe dejó de publicar en
-          agosto de 2026 porque su operacionalización no estaba a la altura de pesar como los otros cuatro.
+          que el gobierno decide y lo que el entorno le devuelve. Cada uno tiene su índice (ITCM, ITCP, ITCIS,
+          ITCG), documentado más abajo.
+        </p>
+
+        <h3 class="cg-marco-h3">Qué dicen los colores</h3>
+        <p>
+          Cada cinturón, cada dimensión y cada indicador se muestra con uno de cuatro colores. En
+          <strong>verde</strong> ({LECTURA_SEMAFORO.verde.toLowerCase()}) el gobierno procesa las demandas
+          con los recursos que tiene; en <strong>amarillo</strong> ({LECTURA_SEMAFORO.amarillo.toLowerCase()})
+          y <strong>naranja</strong> ({LECTURA_SEMAFORO.naranja.toLowerCase()}) la presión crece y el margen se
+          achica; en <strong>rojo</strong> ({LECTURA_SEMAFORO.rojo.toLowerCase()}) cada decisión se paga con
+          otra.
         </p>
         <p>
-          Cada cinturón publica su tensión en una <strong>escala de 0 a 10</strong>: 0 es un cinturón aflojado
-          —el gobierno procesa las demandas con los recursos que tiene— y 10 uno apretado, donde cada decisión
-          se paga con otra. Los cuatro derivan esa tensión de un índice paramétrico propio (ITCM, ITCP, ITCIS,
-          ITCG), documentado más abajo. Las palabras y los colores que acompañan a cada barra de tensión salen
-          de los cortes que se publican junto con los datos, no del texto de esta página.
+          El color de un cinturón sale del puntaje de su índice, con los mismos cortes para los cuatro:{" "}
+          {coloresEnIndice(false)}. El índice de impacto social toma 100 como el nivel de fines de 2023, y en
+          su escala los cortes son: {coloresEnIndice(true)}. Cada indicador tiene además su propia tabla de
+          cortes, en su unidad, en su ficha. Los cortes se publican junto con los datos: si cambian, esta
+          página los repite sola.
         </p>
+
+        <h3 class="cg-marco-h3">Por qué los cuatro juntos</h3>
         <p>
           Mirar un solo cinturón es el riesgo que el marco llama <strong>barbarismo</strong>: gobernar mirando
           nada más que los indicadores económicos (tecnocrático), la imagen (político) o la eficiencia operativa
           (gerencial), mientras el cinturón que nadie mira se rompe sin aviso. Por eso los cuatro se publican
           juntos, cada uno declara a qué barbarismo está expuesto, y la regla de lectura cuenta cuántos están
           tensionados a la vez.
-        </p>
-
-        {/* "Reducir sin simplificar" — marco de comunicación aportado por Luis
-            Babino (documento de trabajo del equipo, sep-2026) e incorporado acá
-            por ADR-0326. Va al final del marco a propósito: primero qué se
-            mide, después por qué se muestra así.
-
-            Los ejemplos son SÓLO los que el repo puede respaldar. El documento
-            original citaba además "la decisión de no fusionar tipo de cambio
-            multilateral con saldo comercial", y esa decisión no existe: no hay
-            ningún ADR que la evalúe ni la descarte (lo más cercano, ADR-0073,
-            rechaza copiar otra regla distinta). Venía planteada como pregunta
-            abierta en el documento del equipo. En su lugar van dos casos
-            verificables y recientes. */}
-        <h3 class="cg-marco-h3">Reducir sin simplificar</h3>
-        <p class="cg-marco-cita">
-          «No creemos en respuestas simples a preguntas complejas, pero tampoco en la complejidad como
-          excusa para no responder. El método es lo que permite las dos cosas a la vez: mostrar un número
-          que se entiende de un vistazo, y que ese número nunca esconda lo que hace falta ver.»
-        </p>
-        <p>
-          Conviene separar dos operaciones que se confunden. El <strong>reduccionismo</strong> trata un
-          fenómeno con varias causas como si tuviera una sola, y pierde información que importa para
-          decidir: leer «superávit comercial» como sinónimo de competitividad, cuando puede ser compresión
-          de importaciones por recesión. La <strong>simplificación con método</strong> elige qué mostrar
-          primero y qué dejar en segundo plano, sin destruir la posibilidad de recuperar el detalle. Este
-          informe se ordena en capas navegables —cinturón, dimensión, indicador, ficha—: cada una reduce, y
-          ninguna cierra la puerta a la de abajo.
-        </p>
-        <p>
-          Tres decisiones de este informe son la aplicación concreta del principio. El indicador de
-          <strong>desequilibrio monetario</strong> no promedia sus dos componentes: los cruza en una matriz,
-          para que un componente sano no tape a uno degradado (ADR-0192). El <strong>consumo de carne</strong>
-          dejó de publicarse como un compuesto único de tres carnes, porque el total fusionado mostraba un
-          nivel razonable mientras la vacuna estaba en su mínimo histórico: hoy la vacuna y el resto puntúan
-          por separado (ADR-0322). Y la <strong>recaudación</strong> se descompone en los tributos ligados a
-          la actividad en vez de leerse como un agregado, porque el agregado puede subir mientras la parte
-          que sigue a la actividad cae (ADR-0321).
-        </p>
-        <p>
-          Nada de esto es un agregado externo al modo de trabajo de la Fundación. «Reconocer el conflicto»
-          es asumir que gobernar es difícil porque hay variables en tensión, no una sola cosa que arreglar;
-          comunicar tensiones en vez de un veredicto único sigue esa lógica. Y ser
-          <strong>técnico sin ser opaco</strong> no es evitar los conceptos técnicos: es explicarlos en la
-          misma oración en que aparecen. El antídoto a la jerga que aleja no es bajar el contenido, es
-          traducirlo sin perder precisión.
         </p>
       </div>
     </section>
