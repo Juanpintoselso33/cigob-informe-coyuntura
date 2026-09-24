@@ -287,7 +287,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   apoyo_empresario: {
     latex: String.raw`\frac{\text{apoyos}_{\text{12 m}}-\text{cr\'iticas}_{\text{12 m}}}{\text{apoyos}_{\text{12 m}}+\text{cr\'iticas}_{\text{12 m}}}`,
-    leyenda: "Comunicados institucionales fechados de la Asociación Empresaria Argentina (AEA) y la Unión Industrial Argentina (UIA). Cada comunicado se clasifica a mano en dos ejes: si respalda o critica lo que comenta, y a quién le habla. Sólo entran al cálculo los que se pronuncian sobre una medida del Gobierno nacional: los que informan una reunión, un acto o un cambio de autoridades no toman posición y quedan afuera, igual que los dirigidos al Congreso, a una provincia o a la Justicia. El resultado va de −1, si en doce meses todo fue crítica, a +1 si todo fue apoyo; cero significa que las cámaras apoyaron tanto como criticaron.",
+    leyenda: "Comunicados institucionales fechados de la Unión Industrial Argentina (UIA). La Asociación Empresaria Argentina (AEA) salió del cálculo porque dejó de publicar; sus comunicados siguen registrados. Cada comunicado se clasifica a mano en dos ejes: si respalda o critica lo que comenta, y a quién le habla. Sólo entran al cálculo los que se pronuncian sobre una medida del Gobierno nacional: los que informan una reunión, un acto o un cambio de autoridades no toman posición y quedan afuera, igual que los dirigidos al Congreso, a una provincia o a la Justicia. El resultado va de −1, si en doce meses todo fue crítica, a +1 si todo fue apoyo; cero significa que la UIA apoyó tanto como criticó.",
   },
   ratio_dnu: {
     latex: String.raw`\frac{\text{DNU publicados en el B.O., \'ultimos 365 d\'ias}}{\text{leyes publicadas en el B.O., \'ultimos 365 d\'ias}}`,
