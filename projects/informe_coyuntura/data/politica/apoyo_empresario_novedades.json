@@ -1,16 +1,28 @@
 {
  "_meta": {
-  "comunicados_vistos": 46,
+  "comunicados_vistos": 47,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie del indicador en el mes anterior al más viejo, y `inventario_verificado` es la última corrida en la que respondieron las dos cámaras (ADR-0310). Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
-  "inventario_verificado": "2026-09-24",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-09-24"
+  "inventario_verificado": "2026-09-28",
+  "nuevos_en_la_corrida": 1,
+  "ultima_corrida": "2026-09-28"
  },
- "pendientes": {},
+ "pendientes": {
+  "UIA|la-uia-designo-a-sus-representantes-en-el-consejo": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-09-23",
+   "id": "la-uia-designo-a-sus-representantes-en-el-consejo",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "El 19 de junio, la Agencia Nacional de Puertos y Navegación (ANPyN) adjudicó la licitación del dragado y balizado de la Vía Navegable Troncal (VNT). Esta adjudicación abrió una nueva etapa del comercio exterior argentino y la UIA junto a otras entidades del sector privado ha colaborado durante mucho tiempo para que ello sea posible.   En ese marco, se creó un Consejo de Control de la VNT del que la UIA será miembro permanente junto a otros usuarios del sistema. Por tal razón, hemos designado al Ing. Juan Iocco y al Lic. Horacio Dias Hermelo, Vicepresidente y Presidente del Departamento de Transporte y Logística, para que representen a la industria nacional en el Consejo de Control de la VNT, en carácter de \"apoderado titular\" y \"apoderado suplente\", respectivamente.  Esta decisión es solo otra demostración de nuestra voluntad para continuar trabajando en la reducción de los costos logísticos de la industria argentina, a fin de facilitar la apertura de nuevos mercados y disminuir los costos de transporte de los insumos para la producción.",
+   "titulo": "La UIA designó a sus representantes en el Consejo de Control de la Vía Navegable Troncal",
+   "url": "https://www.uia.org.ar/uia/novedades/la-uia-designo-a-sus-representantes-en-el-consejo"
+  }
+ },
  "revisadas": {
   "AEA|2020-03-21-union-y-responsabilidad-ante-el-desafio-": {
    "origen": "codificacion ADR-0148"
@@ -379,6 +391,10 @@
    "fecha": "2026-05-07",
    "origen": "codificado 2026-09-14 (tanda en apoyo_empresario_codificacion.json)",
    "titulo": "La UIA continuó con su agenda federal en San Juan"
+  },
+  "UIA|la-uia-designo-a-sus-representantes-en-el-consejo": {
+   "fecha": "2026-09-23",
+   "titulo": "La UIA designó a sus representantes en el Consejo de Control de la Vía Navegable Troncal"
   },
   "UIA|la-uia-destaco-en-ginebra-la-importancia-de-la-mod": {
    "fecha": "2026-06-05",

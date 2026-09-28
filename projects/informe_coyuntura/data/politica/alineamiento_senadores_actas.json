@@ -27874,6 +27874,257 @@
       }
     },
     {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          3,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          3,
+          3
+        ],
+        "CHUBUT": [
+          3,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          2,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          3,
+          3
+        ],
+        "LA RIOJA": [
+          2,
+          2
+        ],
+        "SAN LUIS": [
+          1,
+          1
+        ],
+        "ENTRE RÍOS": [
+          1,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          1,
+          1
+        ],
+        "FORMOSA": [
+          2,
+          2
+        ],
+        "CHACO": [
+          2,
+          2
+        ],
+        "SAN JUAN": [
+          2,
+          2
+        ],
+        "SANTA CRUZ": [
+          1,
+          3
+        ],
+        "RÍO NEGRO": [
+          2,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          1,
+          1
+        ],
+        "BUENOS AIRES": [
+          3,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "TUCUMÁN": [
+          1,
+          2
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "CATAMARCA": [
+          1,
+          2
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          0,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          2
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          2
+        ],
+        "CHUBUT": [
+          2,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          1,
+          2
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SANTA CRUZ": [
+          0,
+          2
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          1
+        ],
+        "BUENOS AIRES": [
+          0,
+          1
+        ],
+        "MENDOZA": [
+          0,
+          2
+        ]
+      }
+    },
+    {
       "fecha": "2026-09-17",
       "provincias": {
         "TUCUMÁN": [
@@ -28880,6 +29131,200 @@
       }
     },
     {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
       "fecha": "2026-07-16",
       "provincias": {
         "TUCUMÁN": [
@@ -29567,6 +30012,394 @@
       }
     },
     {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          3,
+          3
+        ],
+        "JUJUY": [
+          0,
+          1
+        ],
+        "CATAMARCA": [
+          3,
+          3
+        ],
+        "CHUBUT": [
+          3,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          2,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          3,
+          3
+        ],
+        "LA RIOJA": [
+          2,
+          2
+        ],
+        "SAN LUIS": [
+          1,
+          1
+        ],
+        "ENTRE RÍOS": [
+          1,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          1,
+          1
+        ],
+        "FORMOSA": [
+          2,
+          2
+        ],
+        "CHACO": [
+          2,
+          2
+        ],
+        "SAN JUAN": [
+          2,
+          2
+        ],
+        "SANTA CRUZ": [
+          3,
+          3
+        ],
+        "RÍO NEGRO": [
+          2,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          1,
+          1
+        ],
+        "BUENOS AIRES": [
+          3,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          0,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
       "fecha": "2026-07-16",
       "provincias": {
         "TUCUMÁN": [
@@ -30157,6 +30990,293 @@
       }
     },
     {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "TUCUMÁN": [
+          1,
+          2
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "CATAMARCA": [
+          1,
+          2
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
       "fecha": "2026-09-17",
       "provincias": {
         "TUCUMÁN": [
@@ -30545,6 +31665,394 @@
         "MENDOZA": [
           1,
           1
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          0,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
         ]
       }
     },
@@ -31127,6 +32635,297 @@
         "MENDOZA": [
           1,
           1
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          0,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "fecha": "2026-09-24",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ],
+        "SANTA FE": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          2
         ]
       }
     }
