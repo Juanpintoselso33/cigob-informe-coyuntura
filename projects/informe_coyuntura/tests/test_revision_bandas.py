@@ -28,10 +28,15 @@ def test_el_diagnostico_puntua_igual_que_el_indice_publicado():
     publica el snapshot. Si alguien agrega una transformación previa al
     puntaje y no la refleja acá, este test la delata.
     """
-    bloque = json.loads(SNAPSHOT.read_text(encoding="utf-8"))["cinturones"]["macro"]["itcm"]
+    macro = json.loads(SNAPSHOT.read_text(encoding="utf-8"))["cinturones"]["macro"]
+    bloque = macro["itcm"]
+    # Las cards en carry-forward quedan afuera: son un valor de otro mes y la
+    # diferencia contra la serie es el carry-forward funcionando (mismo criterio
+    # que G3 en gate_calidad.py; la demora la vigila G2).
+    arrastradas = {ik for ik, i in macro["indicadores"].items() if i.get("desactualizado")}
     publicados = {ik: i["puntaje_banda"]
                   for d in bloque["dimensiones"].values()
-                  for ik, i in d["indicadores"].items()}
+                  for ik, i in d["indicadores"].items() if ik not in arrastradas}
 
     import json as _json
     series = _json.loads((Path(__file__).parent.parent / "web" / "src" / "data"

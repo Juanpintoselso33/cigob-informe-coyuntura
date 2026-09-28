@@ -225,7 +225,13 @@ def test_un_pendiente_sin_codificar_ya_cuenta_como_publicar(corpus):
 # ── el caso vivo, contra el corpus versionado ───────────────────────────────
 
 def test_el_caso_real_de_aea_dispara_hoy():
-    s = politica.silencio_por_camara(HOY)
+    # Contra el inventario VIVO, la fecha de evaluación no puede quedar antes del
+    # último comunicado registrado: con HOY fijo en el 20-sep, el comunicado de
+    # la UIA del 23-sep daba silencio negativo («fecha futura», no evaluable) y
+    # tiró la corrida nocturna del 26 al 28-sep sin que nada estuviera mal.
+    ultimos = [max(f) for f in politica._apoyo_fechas_del_inventario().values() if f]
+    hoy = max([HOY] + [date.fromisoformat(u) for u in ultimos])
+    s = politica.silencio_por_camara(hoy)
     assert s["AEA"]["evaluable"], f"AEA quedó sin evaluar: {s['AEA'].get('motivo')}"
     assert s["AEA"]["ultimo"] == "2026-03-31"
     assert s["AEA"]["silencio"] > s["AEA"]["umbral"], (

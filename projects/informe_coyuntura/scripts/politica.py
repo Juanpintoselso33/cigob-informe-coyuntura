@@ -2450,11 +2450,14 @@ def _avisar_camara_muda(hoy: date | None = None) -> list:
             f"{cam} lleva {s['silencio']} días sin publicar un comunicado. Su umbral "
             f"es {s['umbral']} días —el percentil 95 de sus {s['huecos']} huecos, "
             f"mediana {s['mediana']}, máximo {s['maximo_historico']}—, así que el "
-            f"silencio no tiene precedente. El saldo se sigue calculando con la otra "
-            f"cámara y el rótulo de la card sigue diciendo «las cámaras empresarias». "
-            f"Verificar en la fuente si dejó de publicar, si cambió la sección o si el "
-            f"extractor se rompió; si dejó de publicar de verdad, decidirlo en un ADR y "
-            f"no dejarlo pasar en silencio.", fuente)
+            f"silencio no tiene precedente. "
+            + (f"Ya está fuera del cálculo (ADR-0334): este aviso se resuelve solo el "
+               f"día que vuelva a publicar, y esa es la señal para reponerla en "
+               f"APOYO_CAMARAS_PERIMETRO."
+               if cam not in APOYO_CAMARAS_PERIMETRO else
+               f"Verificar en la fuente si dejó de publicar, si cambió la sección o si "
+               f"el extractor se rompió; si dejó de publicar de verdad, decidirlo en un "
+               f"ADR y no dejarlo pasar en silencio."), fuente)
     return avisadas
 
 

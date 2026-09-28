@@ -147,6 +147,14 @@ def test_ninguna_serie_mide_otra_magnitud_que_la_que_puntua_su_indice():
                 pts = series.get(ind) or []
                 if not pts or not escala.puntuable(ind):
                     continue
+                # Card en carry-forward (la fuente falló del lado de la card y
+                # no del de la serie): es un valor de otro mes, y la diferencia
+                # es el carry-forward funcionando. Mismo criterio que G3 en
+                # gate_calidad.py; la demora la vigila G2. Pasó el 28-sep-2026
+                # con emae_ia (datos.gob.ar cortó por tiempo la consulta de la
+                # card, la serie trajo julio).
+                if (snap[ckey]["indicadores"].get(ind) or {}).get("desactualizado"):
+                    continue
                 ultimo = pts[-1].get("valor")
                 if ultimo is None:
                     continue
