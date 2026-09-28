@@ -77,3 +77,16 @@ def test_el_conteo_de_la_ventana_sale_del_mismo_perimetro_que_el_saldo():
     assert round((a - c) / (a + c), 3) == card["valor"], (
         f"el saldo publicado ({card['valor']}) no sale de los comunicados que la "
         f"card declara ({a} apoyo, {c} crítica): uno de los dos usa otro perímetro")
+
+
+def test_la_serie_declara_la_misma_fuente_que_la_card():
+    """La serie de `output/series/politica.csv` lleva su propio `fuente`, escrito
+    aparte en descargar_series.py: al sacar AEA del perímetro la card se corrigió
+    y la serie siguió diciendo «Comunicados de AEA y UIA» ocho días más."""
+    import descargar_series
+    fuentes = [f for ind, _u, f, _fn in descargar_series.POLITICA_DERIVADAS
+               if ind == "apoyo_empresario"]
+    assert fuentes, "apoyo_empresario no está en POLITICA_DERIVADAS"
+    card = politica.fetch_apoyo_empresario()
+    assert fuentes[0] == card["fuente"], (
+        f"la serie dice «{fuentes[0]}» y la card «{card['fuente']}»")
