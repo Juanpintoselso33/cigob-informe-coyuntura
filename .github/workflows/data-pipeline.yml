@@ -381,8 +381,23 @@ jobs:
           # Los pasos ya corridos tienen conclusión aunque el job siga abierto,
           # así que se puede nombrar el culpable en el aviso mismo. Sin esto el
           # issue diría sólo "falló" y habría que entrar a leer el log igual.
-          pasos=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/jobs" \
-                    --jq '.jobs[].steps[] | select(.conclusion=="failure" or .conclusion=="cancelled") | "- " + .name' 2>/dev/null || true)
+          # Pero la API los publica con un retraso: este paso arranca en el
+          # mismo segundo en que termina el que falló, y la mitad de las veces
+          # la conclusión todavía no está (issues #25, #39, #40 y #41: «no se
+          # pudo determinar el paso» con el paso de tests en rojo). Se
+          # reintenta (15 s como mucho: en un job cancelado por el tope cada
+          # segundo cuenta), y el error de la API queda en el log en vez de /dev/null.
+          pasos=""
+          for intento in 1 2 3 4; do
+            if pasos=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/jobs" \
+                         --jq '.jobs[].steps[] | select(.conclusion=="failure" or .conclusion=="cancelled") | "- " + .name'); then
+              [ -n "$pasos" ] && break
+            else
+              echo "::warning::no se pudo leer los pasos del job (intento $intento)"
+              pasos=""
+            fi
+            [ "$intento" -lt 4 ] && sleep 5
+          done
           [ -z "$pasos" ] && pasos="- (no se pudo determinar el paso)"
 
           gh label create pipeline-caido --color B60205 \
