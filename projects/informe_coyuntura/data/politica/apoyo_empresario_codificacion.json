@@ -121,24 +121,47 @@
      128
     ],
     "efecto": "de los 4, sólo 1 es computable (la crítica del 15-sep); los otros 3 son neutro y el manual excluye al neutro del conteo. La serie deja de estar topeada en 2026-05."
+   },
+   {
+    "fecha": "2026-09-28",
+    "casos": 1,
+    "indices": [
+     129,
+     129
+    ],
+    "origen": "1 comunicado UIA del 23-sep-2026 detectado en la corrida del 28-sep; cortaba la serie en 2026-08 por el corpus cerrado de ADR-0310",
+    "protocolo": "dos codificadores ciegos entre sí con sólo el manual v2 y el texto crudo; sin desacuerdos, no hubo adjudicación",
+    "naturaleza_de_los_codificadores": "pasada 1 Claude Opus 5.5, pasada 2 Codex (gpt-6-astra): no comparten modelo base",
+    "concordancia": {
+     "acuerdo_postura": 1.0,
+     "acuerdo_destinatario": 1.0,
+     "kappa_postura": null,
+     "kappa_destinatario": null,
+     "umbral_minimo": 0.7,
+     "estado": "NO MEDIBLE",
+     "desacuerdos": 0,
+     "por_que_no_medible": "con n=1 el kappa está indefinido. Las mediciones con potencia siguen siendo las del corpus completo (0,918 sobre n=125) y la tanda de 22 casos (0,85)."
+    },
+    "adjudicados": [],
+    "efecto": "no computa (el manual excluye al neutro del conteo); la serie deja de estar topeada en 2026-08."
    }
   ]
  },
  "resultado": {
-  "total": 129,
+  "total": 130,
   "por_camara": {
    "AEA": 46,
-   "UIA": 83
+   "UIA": 84
   },
   "postura": {
    "apoyo": 19,
    "critica": 34,
-   "neutro": 73,
+   "neutro": 74,
    "dudoso": 3
   },
   "destinatario": {
    "ejecutivo_nacional": 60,
-   "externo_o_propio": 41,
+   "externo_o_propio": 42,
    "congreso": 17,
    "judicial": 4,
    "provincias_municipios": 7
@@ -2081,6 +2104,21 @@
     "destinatario": "ejecutivo_nacional"
    },
    "id": "la-uia-volvio-a-pedir-en-entre-rios-un-puente-para"
+  },
+  {
+   "fecha": "2026-09-23",
+   "titulo": "La UIA designó a sus representantes en el Consejo de Control de la Vía Navegable Troncal",
+   "camara": "UIA",
+   "texto": "El 19 de junio, la Agencia Nacional de Puertos y Navegación (ANPyN) adjudicó la licitación del dragado y balizado de la Vía Navegable Troncal (VNT). Esta adjudicación abrió una nueva etapa del comercio exterior argentino y la UIA junto a otras entidades del sector privado ha colaborado durante mucho tiempo para que ello sea posible.   En ese marco, se creó un Consejo de Control de la VNT del que la UIA será miembro permanente junto a otros usuarios del sistema. Por tal razón, hemos designado al Ing. Juan Iocco y al Lic. Horacio Dias Hermelo, Vicepresidente y Presidente del Departamento de Transporte y Logística, para que representen a la industria nacional en el Consejo de Control de la VNT, en carácter de \"apoderado titular\" y \"apoderado suplente\", respectivamente.  Esta decisión es solo otra demostración de nuestra voluntad para continuar trabajando en la reducción de los costos logísticos de la industria argentina, a fin de facilitar la apertura de nuevos mercados y disminuir los costos de transporte de los insumos para la producción.",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "acto institucional: la UIA informa que designó a sus representantes en el Consejo de Control de la Vía Navegable Troncal. No toma posición sobre ninguna medida; la mención elogiosa de la adjudicación del dragado no convierte en apoyo el hecho informado (caso límite de la reunión con un funcionario). No interpela a ningún poder.",
+   "concordancia": "acuerdo",
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio"
+   },
+   "id": "la-uia-designo-a-sus-representantes-en-el-consejo"
   }
  ]
 }

@@ -35,7 +35,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 70,4** | **VERDE** | Moderadamente aflojado | 17 indicadores: 11 en verde · 4 en amarillo · 1 en naranja · 1 en rojo |
+| **ITCP: 70,0** | **VERDE** | Moderadamente aflojado | 17 indicadores: 11 en verde · 4 en amarillo · 1 en naranja · 1 en rojo |
 Componentes que puntúan en este corte: 17 de 17 publicados.
 
 ## Dimensiones
@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 17 de 17 publicados.
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 80,7 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 15,0 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,1 | AMARILLO | 15,0 % |
-| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 60,4 | VERDE | 13,0 % |
+| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 57,8 | AMARILLO | 13,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 71,5 | VERDE | 10,0 % |
 | Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 37,2 | NARANJA | 7,0 % |
 
@@ -80,7 +80,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,82 % estimado de cargos con juez designado | VERDE | 7,5 % |
 | **DIMENSIÓN: Sector privado** | | | | |
 | Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,8 pp de brecha (obra pública − privada, 12m) | VERDE | 6,5 % |
-| Postura pública de la UIA | Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del… | −0,25 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 6,5 % |
+| Postura pública de la UIA | Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del… | −0,33 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 6,5 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24 % vs 2023 | AMARILLO | 6,0 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.820.775 jornadas individuales no trabajadas (12m) | VERDE | 4,0 % |
@@ -398,7 +398,7 @@ Qué dice en público, por escrito y con firma institucional, la Unión Industri
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,25 saldo de postura (−1 a +1, 12m móviles)** (2026-08) | **AMARILLO** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
+| **Hoy: −0,33 saldo de postura (−1 a +1, 12m móviles)** (2026-09) | **AMARILLO** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -406,9 +406,9 @@ Qué dice en público, por escrito y con firma institucional, la Unión Industri
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_empresario | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2024-04 → 2026-08 (29 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
+| **SERIE DISPONIBLE** | 2024-04 → 2026-09 (30 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Unión Industrial Argentina (UIA) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de ambas entidades |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-28 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-28 |
 
 ## Definición — qué mide y por qué importa
 
@@ -443,13 +443,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses la UIA se pronunció 8 veces sobre medidas del Gobierno nacional: 3 de apoyo y 5 de crítica. Saldo −0,25 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.
+- En los últimos doce meses la UIA se pronunció 9 veces sobre medidas del Gobierno nacional: 3 de apoyo y 6 de crítica. Saldo −0,333 en una escala de −1 (todo crítica) a +1 (todo apoyo).
 
 ## Color vigente y por qué
 
-Dato vigente: −0,25 saldo de postura (−1 a +1, 12m móviles) (2026-08).
+Dato vigente: −0,33 saldo de postura (−1 a +1, 12m móviles) (2026-09).
 
-−0,25 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,15 del corte más cercano.
+−0,333 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,07 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -1112,7 +1112,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 100,0% = Diputados 100,0% (peso 65%, 44 actas) · última acta 2026-09-09 · Senado 100,0% (peso 35%, 59 actas) · última acta 2026-09-24
+- 100,0% = Diputados 100,0% (peso 65%, 31 actas) · última acta 2026-09-09 · Senado 100,0% (peso 35%, 59 actas) · última acta 2026-09-24
 
 ## Color vigente y por qué
 

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-09-28T17:54:56.507482+00:00",
+  "generated_at": "2026-09-28T15:19:16.708267-03:00",
   "period": "2026-09",
   "score_global": 3.9,
   "ponderacion": {
@@ -2459,7 +2459,7 @@
           "fuente": "Votómetro CIGOB",
           "fecha_dato": "2026-07-22",
           "desactualizado": true,
-          "obtenido_en": "2026-09-28T17:24:48",
+          "obtenido_en": "2026-09-28T15:14:19",
           "en_indice": true,
           "dimension": "imagen_voto",
           "puntaje_itcp": 37.2,
@@ -2654,7 +2654,7 @@
             }
           ],
           "detalle_txt": "35 DNU y 32 leyes publicados en el Boletín Oficial entre 2025-09-29 y 2026-09-28 → 1.09 DNU por ley",
-          "obtenido_en": "2026-09-28T17:24:51",
+          "obtenido_en": "2026-09-28T15:14:21",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 59.5,
@@ -2705,7 +2705,7 @@
           "desactualizado": false,
           "variacion_12m": 2.0,
           "detalle_txt": "Brecha de -1,8 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Último horizonte consultado: 2026-08 a 2026-10; la fecha identifica su inicio, no una realización observada ni la fecha de publicación. Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
-          "obtenido_en": "2026-09-28T17:24:54",
+          "obtenido_en": "2026-09-28T15:14:21",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 71.4,
@@ -2747,32 +2747,32 @@
           }
         },
         "apoyo_empresario": {
-          "valor": -0.25,
+          "valor": -0.333,
           "unidad": "saldo de postura (−1 a +1, 12m móviles)",
           "fuente": "Comunicados de la UIA — codificación CIGOB",
-          "fecha_dato": "2026-08-01",
-          "desactualizado": true,
-          "variacion_12m": -0.25,
-          "comunicados_ventana": 8,
+          "fecha_dato": "2026-09-01",
+          "desactualizado": false,
+          "variacion_12m": -0.666,
+          "comunicados_ventana": 9,
           "apoyos_ventana": 3,
-          "criticas_ventana": 5,
-          "pendientes_de_codificar": 1,
-          "detalle_txt": "En los últimos doce meses la UIA se pronunció 8 veces sobre medidas del Gobierno nacional: 3 de apoyo y 5 de crítica. Saldo −0,25 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.",
-          "obtenido_en": "2026-09-28T17:24:54",
+          "criticas_ventana": 6,
+          "pendientes_de_codificar": 0,
+          "detalle_txt": "En los últimos doce meses la UIA se pronunció 9 veces sobre medidas del Gobierno nacional: 3 de apoyo y 6 de crítica. Saldo −0,333 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
+          "obtenido_en": "2026-09-28T15:14:21",
           "en_indice": true,
           "dimension": "sector_privado",
-          "puntaje_itcp": 49.4,
-          "puntaje_banda": 49.4,
+          "puntaje_itcp": 44.2,
+          "puntaje_banda": 44.2,
           "peso_efectivo": 0.065,
           "metodo_obtencion": "semiautomatico",
-          "aporte_score": 5.1,
-          "aporte_formula": "Anclas del índice político: >0,6 → 100 · 0,2–0,6 → 85 · -0,2 a 0,2 → 65 · -0,6 a -0,2 → 40 · ≤-0,6 → 10 (puntaje interpolado entre anclas: 49.4; pesa 6,5% del índice político)",
+          "aporte_score": 5.6,
+          "aporte_formula": "Anclas del índice político: >0,6 → 100 · 0,2–0,6 → 85 · -0,2 a 0,2 → 65 · -0,6 a -0,2 → 40 · ≤-0,6 → 10 (puntaje interpolado entre anclas: 44.2; pesa 6,5% del índice político)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en amarillo (tensión moderada).",
-          "aporte_input_txt": "En los últimos doce meses la UIA se pronunció 8 veces sobre medidas del Gobierno nacional: 3 de apoyo y 5 de crítica. Saldo −0,25 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.",
+          "aporte_input_txt": "En los últimos doce meses la UIA se pronunció 9 veces sobre medidas del Gobierno nacional: 3 de apoyo y 6 de crítica. Saldo −0,333 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
           "semaforo": {
             "color": "amarillo",
-            "tension": 5.1,
+            "tension": 5.6,
             "umbrales": [
               {
                 "color": "rojo",
@@ -2796,7 +2796,7 @@
               }
             ],
             "unidad": "saldo de postura (−1 a +1, 12m móviles)",
-            "por_que": "−0,25 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,15 del corte más cercano."
+            "por_que": "−0,333 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,07 del corte más cercano."
           }
         },
         "conflictividad_nacional": {
@@ -2809,7 +2809,7 @@
           "cobertura_hasta": "2026-09-18",
           "referencia_temporal": "mes de inicio de las semanas ACLED",
           "desactualizado": false,
-          "obtenido_en": "2026-09-28T17:25:10",
+          "obtenido_en": "2026-09-28T15:14:30",
           "detalle_txt": "1981 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-08) vs 2605 en la base 2023 (-24,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
           "en_indice": true,
           "dimension": "conflicto_social",
@@ -2858,7 +2858,7 @@
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "detalle_txt": "4.820.775 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
-          "obtenido_en": "2026-09-28T17:25:14",
+          "obtenido_en": "2026-09-28T15:14:31",
           "en_indice": true,
           "dimension": "conflicto_social",
           "puntaje_itcp": 100.0,
@@ -2906,7 +2906,7 @@
           "detalle_txt": "2025: +43.1% nominal contra un deflactor de 40.8% ponderado por el flujo de cada mes → +1.6% real",
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
-          "obtenido_en": "2026-09-28T17:25:42",
+          "obtenido_en": "2026-09-28T15:14:35",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 78.2,
@@ -2958,7 +2958,7 @@
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
           "fecha_dato": "2026-09-28",
           "desactualizado": false,
-          "obtenido_en": "2026-09-28T17:25:52",
+          "obtenido_en": "2026-09-28T15:14:36",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 60.0,
@@ -3009,7 +3009,7 @@
           "desactualizado": false,
           "ultima_reunion_registrada": "2026-09-09",
           "detalle_txt": "1 de 11 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. Última reunión: 2026-09-09. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas.",
-          "obtenido_en": "2026-09-28T17:25:55",
+          "obtenido_en": "2026-09-28T15:14:37",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 80.7,
@@ -3078,7 +3078,7 @@
           ],
           "detalle_txt": "18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.",
           "desactualizado": false,
-          "obtenido_en": "2026-09-28T17:26:11",
+          "obtenido_en": "2026-09-28T15:14:39",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 92.5,
@@ -3124,14 +3124,14 @@
           "unidad": "% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)",
           "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
           "fecha_dato": "2026-09-24",
-          "n_actas": 103,
+          "n_actas": 90,
           "desactualizado": false,
           "componentes": {
             "diputados": {
               "valor": 100.0,
               "fecha_dato": "2026-09-09",
-              "n_actas": 44,
-              "corrida_exitosa_en": "2026-09-22",
+              "n_actas": 31,
+              "corrida_exitosa_en": "2026-09-28",
               "desactualizado": false
             },
             "senado": {
@@ -3142,7 +3142,7 @@
               "desactualizado": false
             }
           },
-          "obtenido_en": "2026-09-28T17:28:10",
+          "obtenido_en": "2026-09-28T15:18:25",
           "en_indice": true,
           "dimension": "cohesion_interna",
           "puntaje_itcp": 100.0,
@@ -3153,7 +3153,7 @@
           "aporte_formula": "Anclas del índice político: >99,9 → 100 · 99–99,9 → 85 · 97–99 → 65 · 95–97 → 40 · ≤95 → 10 (puntaje interpolado entre anclas: 100.0; pesa 15,0% del índice político)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
-          "aporte_input_txt": "100,0% = Diputados 100,0% (peso 65%, 44 actas) · última acta 2026-09-09 · Senado 100,0% (peso 35%, 59 actas) · última acta 2026-09-24",
+          "aporte_input_txt": "100,0% = Diputados 100,0% (peso 65%, 31 actas) · última acta 2026-09-09 · Senado 100,0% (peso 35%, 59 actas) · última acta 2026-09-24",
           "semaforo": {
             "color": "verde",
             "tension": 0.0,
@@ -3190,10 +3190,10 @@
           "ultimo_desafio": null,
           "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
           "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-          "fecha_dato": "2026-09-22",
-          "desactualizado": true,
+          "fecha_dato": "2026-09-28",
+          "desactualizado": false,
           "detalle_txt": "Ninguna norma del Ejecutivo fue desafiada en el recinto en los últimos 12 meses — cero desafíos es la señal, no un dato faltante. Cuando los hubo (histórico completo: 16 normas desde marzo de 2024), el 43,8% siguió en pie (7 de 16).",
-          "obtenido_en": "2026-09-22T23:59:29",
+          "obtenido_en": "2026-09-28T15:18:34",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 100.0,
@@ -3243,7 +3243,7 @@
           "ultima_sancion_registrada": "2026-08-27",
           "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
           "detalle_txt": "29 leyes distintas en los 12 meses completos hasta 2026-08. Última sanción registrada: 2026-08-27; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
-          "obtenido_en": "2026-09-28T17:28:14",
+          "obtenido_en": "2026-09-28T15:18:34",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 42.5,
@@ -3291,7 +3291,7 @@
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
           "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
-          "obtenido_en": "2026-09-28T17:28:15",
+          "obtenido_en": "2026-09-28T15:18:37",
           "en_indice": true,
           "dimension": "poder_judicial",
           "puntaje_itcp": 94.6,
@@ -3446,7 +3446,7 @@
           ],
           "criterio_conjuntas": "Cada comisión que sesiona aporta un evento, aunque la nota agrupe varias comisiones o documente una sesión conjunta; fecha y comisión se deduplican. Las audiencias no cuentan.",
           "detalle_txt": "13 sesiones de las comisiones de Acusación y Disciplina en los últimos 12 meses, incluidas ordinarias, extraordinarias y las publicadas junto con otras comisiones; las audiencias no cuentan (rango de la serie: 13 a 18, promedio 15.2).",
-          "obtenido_en": "2026-09-28T17:28:22",
+          "obtenido_en": "2026-09-28T15:18:39",
           "en_indice": true,
           "dimension": "poder_judicial",
           "puntaje_itcp": 10.0,
@@ -3607,7 +3607,7 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 70.4,
+        "valor": 70.0,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -4591,7 +4591,7 @@
           "sector_privado": {
             "nombre": "Sector privado",
             "peso": 0.13,
-            "puntaje": 60.4,
+            "puntaje": 57.8,
             "indicadores": {
               "brecha_obra_publica": {
                 "peso": 0.5,
@@ -4602,9 +4602,9 @@
               },
               "apoyo_empresario": {
                 "peso": 0.5,
-                "puntaje_banda": 49.4,
-                "puntaje_aplicado": 49.4,
-                "valor": -0.25,
+                "puntaje_banda": 44.2,
+                "puntaje_aplicado": 44.2,
+                "valor": -0.333,
                 "peso_efectivo": 0.065
               }
             },
@@ -4741,67 +4741,67 @@
               ]
             ],
             "semaforo": {
-              "color": "verde",
+              "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 60,4/100, está en verde (sin tensión relevante) en la escala del informe.",
-              "tension": 4.0
+              "por_que": "El puntaje de la dimensión, 57,8/100, está en amarillo (tensión moderada) en la escala del informe.",
+              "tension": 4.2
             }
           }
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 68.6,
-          "p95": 71.6,
+          "p05": 68.2,
+          "p95": 71.3,
           "tension_rango": [
-            2.8,
-            3.1
+            2.9,
+            3.2
           ],
           "dominante": {
             "indicador": "cohesion_bloque",
-            "indice_sin": 65.1
+            "indice_sin": 64.7
           },
           "n_draws": 1000,
           "hist": [
-            1,
-            1,
-            3,
-            0,
-            3,
-            7,
-            3,
-            11,
-            13,
-            13,
-            15,
-            26,
-            26,
-            35,
-            43,
-            60,
-            62,
-            52,
-            66,
-            63,
-            64,
-            77,
-            57,
-            52,
-            50,
-            45,
-            45,
-            24,
-            28,
-            20,
-            9,
-            9,
-            8,
-            4,
             2,
+            0,
+            2,
+            1,
+            2,
+            6,
+            4,
+            11,
+            12,
+            12,
+            17,
+            22,
+            28,
+            28,
+            42,
+            63,
+            56,
+            58,
+            57,
+            74,
+            55,
+            81,
+            59,
+            52,
+            55,
+            45,
+            46,
+            27,
+            31,
+            15,
+            9,
+            9,
+            9,
+            3,
+            4,
             3
           ],
-          "hist_min": 67.03,
-          "hist_max": 72.73,
+          "hist_min": 66.61,
+          "hist_max": 72.41,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "serie_mensual": [
@@ -5396,7 +5396,7 @@
               "clave": "tension",
               "nombre": "Tensión externa",
               "glosa": "lo que otros actores le hacen al Gobierno",
-              "puntaje": 68.6,
+              "puntaje": 68.0,
               "share": 0.518,
               "componentes": [
                 {
@@ -5409,7 +5409,7 @@
                 },
                 {
                   "indicador": "apoyo_empresario",
-                  "puntaje": 49.4
+                  "puntaje": 44.2
                 },
                 {
                   "indicador": "conflictividad_nacional",
@@ -5480,7 +5480,7 @@
           "sub_detalle": "El promedio de las tres no responde ninguna por separado, así que acá se muestran abiertas. Es una separación de lectura: el índice se calcula igual y los pesos no cambian. Cada familia muestra qué porción del índice carga, porque ese reparto se mueve cuando entran o salen indicadores y explica parte de lo que cambia entre lecturas."
         },
         "vintages": {
-          "dias_promedio": 56,
+          "dias_promedio": 54,
           "meses_promedio": 1.8,
           "fecha_mas_vieja": "31 de diciembre de 2025",
           "fecha_mas_nueva": "28 de septiembre de 2026",
@@ -10554,7 +10554,7 @@
   "cinturon_dominante": "vida_cotidiana",
   "alerta_multicinturon": false,
   "flags": [
-    "desactualizado:politica:votometro_ventaja_lla,apoyo_empresario,bloqueo_sostenido,desafios_legislativos,cobertura_judicial"
+    "desactualizado:politica:votometro_ventaja_lla,cobertura_judicial"
   ],
   "semaforo_cortes": [
     {
