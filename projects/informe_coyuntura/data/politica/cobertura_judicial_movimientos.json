@@ -1,6 +1,6 @@
 {
   "fecha_padron": "2026-06-05",
-  "revisado_hasta": "2026-09-20",
+  "revisado_hasta": "2026-09-29",
   "estado": "reconstruccion_estimada_con_limites",
   "criterio": "Ajustes documentados del flujo de titulares sobre el universo habilitado del padrón. No equivalen a cargos en ejercicio: el momento de jura puede diferir del nombramiento.",
   "limites": [
@@ -8,7 +8,8 @@
     "No certifica el calendario de juras ni la exhaustividad de fallecimientos.",
     "Cambios de persona entre cargos se tratan como continuidad neta del titular; el caso de destino fuera del universo requiere verificar el cargo de origen.",
     "Revisión del 2026-09-20: cotejadas las tres fuentes y además la ventana del Boletín Oficial que la revisión anterior había dejado sin cubrir. Los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada; de las 66 normas de septiembre, las 21 ausentes de este registro son todas Ministerio Público, fuera del universo del padrón). El archivo de septiembre del Consejo de la Magistratura sólo tiene juras y notas administrativas, sin destituciones. En la Primera Sección del Boletín Oficial entre el 12 y el 20 de septiembre hay 8 avisos que nombran jueces: 6 de aduana, concursos o selección de magistrados, y 2 leyes que crean cargos judiciales.",
-    "Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos."
+    "Leyes 27.821 y 27.822 (BO 15-sep-2026): crean un cargo de Juez de Cámara en la Cámara Federal de Apelaciones de Tucumán —llevándola a seis miembros— y una segunda Sala con sus cargos en la de Mar del Plata. NO entran al universo todavía, y no es una omisión: las dos condicionan la toma de posesión al crédito presupuestario («tomará posesión una vez acreditada la existencia del crédito presupuestario correspondiente», ley 27.821 art. 2; «sólo tomarán posesión cuando se produzca aquella condición de índole financiera», ley 27.822 art. 6), así que son cargos creados y no habilitados. Cuando el crédito exista, el denominador de este indicador crece y hay que sumarlos.",
+    "Revisión del 2026-09-29: los CSV de designaciones y renuncias de datos.jus.gob.ar siguen siendo el snapshot del 2026-09-11 (última norma_fecha 2026-09-07, ya registrada). El Consejo de la Magistratura entre el 19 y el 29 de septiembre sólo publicó juras y notas administrativas, sin destituciones; la jura del 21-sep en la Sala II del Trabajo corresponde al decreto 632/2026, ya registrado. En la Primera Sección del Boletín Oficial del 21 al 29 de septiembre hay seis decretos de jueces, cargados desde el aviso porque todavía no están en el CSV: los nombramientos 1092/2026 y 1093/2026 son promociones de titulares de juzgados en lo Penal Económico a la Cámara del fuero (efecto neto nulo), el 1094/2026 es un alta en el Tribunal Oral en lo Criminal y Correccional N° 8, y las renuncias 1065, 1066 y 1067/2026 restan desde su fecha de efecto (11-oct, 1-dic y 1-nov de 2026). El decreto 1066 nombra el cargo como «Tribunal Federal de Juicio de Corrientes», que en el padrón figura como Tribunal Oral en lo Criminal Federal de Corrientes, con el mismo titular."
   ],
   "movimientos": [
     {
@@ -850,6 +851,74 @@
       "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/344335/20260715",
       "clasificacion": "designacion",
       "cargo_previo": []
+    },
+    {
+      "norma": "1092/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-25",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "CATANIA, Alejandro Javier",
+      "cargo_previo": "Juzgado Nacional de Primera Instancia en lo Penal Económico Nº 4",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Penal Económico, Sala B",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/348030/20260928"
+    },
+    {
+      "norma": "1093/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-25",
+      "delta": 0,
+      "motivo": "Titular ya presente en el universo del padrón; cambio de cargo, no nueva persona titular.",
+      "persona": "GALVÁN GREENWAY, Juan Pedro",
+      "cargo_previo": "Juzgado Nacional de Primera Instancia en lo Penal Económico Nº 7",
+      "cargo_nuevo": "Vocal de la Cámara Nacional de Apelaciones en lo Penal Económico, Sala A",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/348032/20260928"
+    },
+    {
+      "norma": "1094/2026",
+      "tipo": "designacion",
+      "fecha": "2026-09-25",
+      "delta": 1,
+      "motivo": "Designación de un nuevo titular en el universo de órganos habilitados del padrón.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/348031/20260928",
+      "clasificacion": "designacion",
+      "cargo_previo": []
+    },
+    {
+      "norma": "1065/2026",
+      "tipo": "renuncia",
+      "fecha": "2026-10-11",
+      "delta": -1,
+      "motivo": "Renuncia efectiva desde la fecha del artículo 1.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347779/20260922",
+      "clasificacion": "renuncia",
+      "cargo_previo": [
+        "Juzgado Nacional en lo Criminal y Correccional N° 9"
+      ]
+    },
+    {
+      "norma": "1066/2026",
+      "tipo": "renuncia",
+      "fecha": "2026-12-01",
+      "delta": -1,
+      "motivo": "Renuncia efectiva desde la fecha del artículo 1.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347778/20260922",
+      "clasificacion": "renuncia",
+      "cargo_previo": [
+        "Tribunal Oral en lo Criminal Federal de Corrientes"
+      ]
+    },
+    {
+      "norma": "1067/2026",
+      "tipo": "renuncia",
+      "fecha": "2026-11-01",
+      "delta": -1,
+      "motivo": "Renuncia efectiva desde la fecha del artículo 1.",
+      "fuente": "https://www.boletinoficial.gob.ar/detalleAviso/primera/347780/20260922",
+      "clasificacion": "renuncia",
+      "cargo_previo": [
+        "Juzgado Nacional de Primera Instancia del Trabajo N° 4"
+      ]
     }
   ]
 }

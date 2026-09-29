@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-29 03:35:52"
+generado: "2026-09-29 12:18:54"
 score_global: 3.9
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -54,7 +54,7 @@ schema_version: "1.2.0"
 | conflictividad_nacional | -24.0 | % vs 2023 | 2026-08-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
-| iaf_transferencias | 1.6 | % interanual real | 2025-12-31 | fresco |
+| iaf_transferencias | 1.6 | % interanual real | 2025-12-31 | ⚠ cache |
 | eficacia_legislativa | 20.0 | % de proyectos | 2026-09-29 | fresco |
 | veto_quorum | 9.1 | % de sesiones | 2026-09-29 | fresco |
 | comisiones_caidas | 96.2 | % de proyectos | 2026-09-29 | fresco |
@@ -63,12 +63,12 @@ schema_version: "1.2.0"
 | rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-09-29 | fresco |
 | protestas_caba | 281 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
 | cohesion_bloque | 100.0 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-09-24 | fresco |
-| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-28 | ⚠ cache |
-| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-28 | ⚠ cache |
+| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-29 | fresco |
+| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-29 | fresco |
 | produccion_legislativa | 29 | leyes sancionadas (12m) | 2026-08-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-09-01 | fresco |
-| cobertura_judicial | 73.82 | % estimado de cargos con juez designado | 2026-09-01 | ⚠ cache |
+| cobertura_judicial | 73.93 | % estimado de cargos con juez designado | 2026-09-01 | fresco |
 | alineamiento_senadores_prov | 58.6 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-09-24 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
@@ -121,8 +121,8 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:votometro_ventaja_lla,bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
+- `desactualizado:politica:votometro_ventaja_lla,iaf_transferencias`
 - `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-09-29 03:35:52 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-29 12:18:54 — schema 1.2.0*
