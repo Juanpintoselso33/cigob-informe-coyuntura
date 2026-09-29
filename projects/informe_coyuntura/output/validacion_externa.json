@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-28T15:19:12.953075-03:00",
+    "generated_at": "2026-09-29T03:35:31.102766+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -432,12 +432,12 @@
       "credito_privado": {
         "actividad_tributaria": 0.826,
         "costo_financiamiento_tesoro": -0.108,
-        "desequilibrio_monetario": 0.038,
+        "desequilibrio_monetario": 0.037,
         "emae_difusion": 0.707,
         "emae_ia": 0.795,
         "iai": 0.872,
         "idc": 0.888,
-        "ipc_total": 0.717,
+        "ipc_total": 0.718,
         "ipi_manufacturero": 0.723,
         "recaudacion": -0.371,
         "rem_ipc_12m": 0.772,
@@ -449,7 +449,7 @@
       "desequilibrio_monetario": {
         "actividad_tributaria": 0.137,
         "costo_financiamiento_tesoro": 0.383,
-        "credito_privado": 0.038,
+        "credito_privado": 0.037,
         "emae_difusion": 0.02,
         "emae_ia": 0.234,
         "iai": 0.117,
@@ -534,7 +534,7 @@
       "ipc_total": {
         "actividad_tributaria": 0.674,
         "costo_financiamiento_tesoro": 0.279,
-        "credito_privado": 0.717,
+        "credito_privado": 0.718,
         "desequilibrio_monetario": -0.144,
         "emae_difusion": 0.634,
         "emae_ia": 0.7,
@@ -972,7 +972,7 @@
       {
         "a": "credito_privado",
         "b": "ipc_total",
-        "r": 0.717,
+        "r": 0.718,
         "n": 32,
         "dimension_a": "financiamiento",
         "dimension_b": "estabilidad_monetaria",
@@ -3108,7 +3108,7 @@
     "2026-06": 2087.8,
     "2026-07": 2090.0,
     "2026-08": 1913.0,
-    "2026-09": 1765.3
+    "2026-09": 1751.2
   },
   "serie_itcp": {
     "2024-01": 69.4,
@@ -5395,8 +5395,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": -0.515,
-          "r_diferencias": -0.094,
+          "r_niveles": -0.513,
+          "r_diferencias": -0.092,
           "n": 34
         },
         {
@@ -5422,8 +5422,8 @@
       "n_ajenas": 7,
       "niveles": {
         "convergente": 0.277,
-        "discriminante": 0.359,
-        "brecha": -0.082
+        "discriminante": 0.358,
+        "brecha": -0.081
       },
       "diferencias": {
         "convergente": 0.164,
@@ -5782,7 +5782,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,277 y con las 7 ajenas es 0,359. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,164 con lo propio contra 0,139 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,277 y con las 7 ajenas es 0,358. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,164 con lo propio contra 0,139 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     },
     "itcp": {
       "indice": "itcp",
