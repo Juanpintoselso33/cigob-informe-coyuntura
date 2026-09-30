@@ -142,6 +142,11 @@ BANDAS_ANTES["idm"] = [(-INF, -2.0, 100), (-2.0, 2.0, 85), (2.0, 5.0, 60),
                        (5.0, 8.0, 35), (8.0, INF, 10)]
 BANDAS_ANTES["icip"] = [(20.0, INF, 100), (5.0, 20.0, 80), (-5.0, 5.0, 60),
                         (-20.0, -5.0, 35), (-INF, -20.0, 10)]
+# Las de `iai` también se congelan en su forma de agosto: ADR-0341 corrió su
+# escala al crecimiento de la población, y eso es otra decisión que no se
+# atribuye acá.
+BANDAS_ANTES["iai"] = [(10.0, INF, 100), (2.0, 10.0, 80), (-2.0, 2.0, 60),
+                       (-10.0, -2.0, 35), (-INF, -10.0, 10)]
 
 
 def _itcm_antes() -> float:
@@ -166,7 +171,11 @@ def test_el_efecto_de_las_dos_decisiones_sobre_el_itcm():
     suya) lo baja. Que el neto sea medio punto no es diseño ni es un argumento a
     favor de ninguna de las dos."""
     antes = _itcm_antes()
-    despues = itcm.calcular_itcm(dict(VALORES_260825))["valor"]
+    despues = parametrica.calcular_indice(
+        dict(VALORES_260825), None, BANDAS_ANTES, itcm.DIMENSIONES_ITCM,
+        itcm.BANDAS_INTERPRETACION, itcm.INTERPRETACION_LEGIBLE,
+        anclas_por_indicador=itcm.ANCLAS_ITCM,
+        transformaciones_por_indicador=itcm.TRANSFORMACIONES_ITCM)["valor"]
     assert antes == 64.8
     assert despues == 65.3
     # y la tensión publicada del cinturón no se mueve: 3,5 en los dos

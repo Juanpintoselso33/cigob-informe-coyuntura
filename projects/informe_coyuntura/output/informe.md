@@ -1,6 +1,6 @@
 ---
 periodo: "2026-09"
-generado: "2026-09-30 03:32:44"
+generado: "2026-09-30 15:03:18"
 score_global: 3.9
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -125,4 +125,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-09-30 03:32:44 — schema 1.2.0*
+*Generado por CIGOB — 2026-09-30 15:03:18 — schema 1.2.0*

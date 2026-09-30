@@ -89,6 +89,13 @@ import parametrica
 
 INF = float("inf")
 
+# Crecimiento anual de la población del país, en %: 46.387.098 (2025) →
+# 46.466.688 (2026), INDEC, «Estimaciones y proyecciones de población. Total del
+# país. Años 2022-2040», Cuadro 1 (base Censo 2022). La inversión física se
+# puntúa contra este piso y no contra 0 (ADR-0341): crecer menos que la
+# población es invertir menos por habitante, y eso no puede salir en verde.
+CRECIMIENTO_POBLACION_PCT = 0.17
+
 # Tablas de bandas de la sección IV del documento. (low, high, puntaje).
 BANDAS_ITCM = {
     "ipc_total": [                      # % mensual
@@ -294,12 +301,18 @@ BANDAS_ITCM = {
         (20.0, INF, 15), (12.0, 20.0, 45), (6.0, 12.0, 75),
         (0.0, 6.0, 100), (-5.0, 0.0, 55), (-INF, -5.0, 20),
     ],
-    "iai": [                            # IAI — Índice Anticipador de Inversión (% i.a. ponderado)
+    # IAI — Índice Anticipador de Inversión (% i.a. ponderado).
+    "iai": [
         # Inversión física (ISAC + bienes de capital importados). Más = expansión.
         # El umbral ±2% del doc no sobrevive al dato (las series i.a. de inversión
         # argentina se mueven ±30-180% por la base 2024); bandas ANCHAS calibradas a
         # la realidad 2024-2026 conservando la lógica contracción/neutro/expansión.
-        (10.0, INF, 100), (2.0, 10.0, 80), (-2.0, 2.0, 60), (-10.0, -2.0, 35), (-INF, -10.0, 10),
+        # ADR-0341: la escala entera se corre al crecimiento de la población, así
+        # que el tramo neutro se centra en invertir lo mismo por habitante y el
+        # verde arranca en +0,17 %, no en 0.
+        (lo + CRECIMIENTO_POBLACION_PCT, hi + CRECIMIENTO_POBLACION_PCT, p)
+        for lo, hi, p in ((10.0, INF, 100), (2.0, 10.0, 80), (-2.0, 2.0, 60),
+                          (-10.0, -2.0, 35), (-INF, -10.0, 10))
     ],
     "credito_privado": [                # Crédito al sector privado, % i.a. REAL (ADR-0022)
         # Crédito REALIZADO (complementa la capacidad del IdC). Bandas anchas

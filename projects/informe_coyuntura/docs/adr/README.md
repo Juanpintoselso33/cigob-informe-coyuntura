@@ -120,6 +120,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0321](0321-descomposicion-no-control-independiente.md) | Es una descomposición del agregado, no un control independiente | `recaudacion` | vigente |
 | [0329](0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) | IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal | `actividad_tributaria` | vigente |
 | [0331](0331-la-inversion-tecnologica-no-tiene-serie-que-la-sostenga.md) | La inversión tecnológica no tiene serie que la sostenga | `icip`, `iai` | rechazado |
+| [0341](0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) | La inversión física se mide contra el crecimiento de la población | `iai` | vigente |
 
 ### Política (ITCP)
 

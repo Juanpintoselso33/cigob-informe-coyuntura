@@ -156,7 +156,7 @@ PROCEDENCIA = {
     # los dos caen en bandas abiertas. Estaban ahí para comprobar que la banda
     # los rotulaba como los rotulaba la prensa, no para fijarla.
     "costo_financiamiento_tesoro": ("conceptual", "umbrales normativos de una tasa REAL: 0 = frontera de la licuación · 6 ≈ crecimiento potencial (r < g) · 12 y 20 hacia la dinámica explosiva (ADR-0071); dic-2023 y ago-2025 se usaron para validar el rótulo, no para fijar los cortes"),
-    "iai": ("convencion", "el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026"),
+    "iai": ("convencion", "el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026, corridas +0,17 al crecimiento de la población del INDEC (ADR-0341)"),
     "credito_privado": ("convencion", "«calibradas a la remonetización 2024-2026» (ADR-0022)"),
 
     # ── ITCG ────────────────────────────────────────────────────────────────

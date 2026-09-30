@@ -7,7 +7,7 @@ fecha: 2026-09-19
 cinturon: 'macro'
 indice: 'ITCM'
 indicadores: [icip, iai]
-relacionado: ['0253', '0262']
+relacionado: ['0253', '0262', '0341']
 ambito: 'Cinturón macro · ITCM · dimensión `inversion` · si existe una serie que mida inversión tecnológica sin duplicar el componente BK del IAI'
 origen: 'Apuntes de Juan del 15-sep-2026 (#monitor-de-proyecto-de-gobierno): «Revisar Indicador de inversión tecnológica diferenciada de la IAI». Es la opción B que ADR-0253 aplazó explícitamente.'
 ---

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-09-30T03:32:44.351016+00:00",
+  "generated_at": "2026-09-30T15:03:18.462006-03:00",
   "period": "2026-09",
   "score_global": 3.9,
   "ponderacion": {
@@ -324,8 +324,8 @@
           "obtenido_en": "2026-09-30T03:03:31",
           "en_indice": true,
           "dimension": "inversion",
-          "puntaje_itcm": 36.4,
-          "puntaje_banda": 36.4,
+          "puntaje_itcm": 35.7,
+          "puntaje_banda": 35.7,
           "peso_efectivo": 0.12
         },
         "icip": {
@@ -614,12 +614,12 @@
           "inversion": {
             "nombre": "Inversión",
             "peso": 0.12,
-            "puntaje": 36.4,
+            "puntaje": 35.7,
             "indicadores": {
               "iai": {
                 "peso": 1.0,
-                "puntaje_banda": 36.4,
-                "puntaje_aplicado": 36.4,
+                "puntaje_banda": 35.7,
+                "puntaje_aplicado": 35.7,
                 "valor": -5.66,
                 "peso_efectivo": 0.12
               }
@@ -2803,7 +2803,7 @@
           "trans_label": "series normalizadas al rango del período; el factor es un puntaje estandarizado y cruza el cero",
           "conclusion": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,013 en niveles y 0,256 en los cambios mes a mes: menos que la mejor de ellas por separado. No hay una sola serie externa que confirme el índice, y el motivo es parte del resultado. La que cumplía ese papel —las ventas en supermercados a precios constantes— mide condiciones materiales del hogar, así que pasó a integrar el índice: un indicador no puede ser componente y juez del mismo índice. El reemplazo natural sería el consumo privado que publica el Instituto Nacional de Estadística y Censos (INDEC) en las Cuentas Nacionales, que no es un canal del consumo del hogar sino su total; pero es trimestral y arranca junto con el índice, así que todavía son nueve trimestres y la correlación se mueve demasiado según cuál se saque. Queda declarado como la referencia que va a reemplazar a este panel cuando tenga historia, con el umbral fijado de antemano para que la decisión no dependa de mirar el número. Mientras tanto el contraste es el panel completo, y el gráfico compara el índice contra el factor común de lo que el hogar consume en volumen físico —luz, gas, transporte, combustible—, que es lo que esas series comparten en vez de cualquiera de ellas suelta. El Índice de Confianza del Consumidor (ICC) de la Universidad Torcuato Di Tella sigue publicándose como contraste que distingue en vez de confirmar: contra ella la correlación es −0,239. Un número más bajo ahí no es una falla del índice, es el resultado — este cinturón mide lo que les pasa a los hogares, no lo que opinan.",
           "panel": {
-            "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,277 y con las 7 ajenas es 0,358. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,164 con lo propio contra 0,139 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva.",
+            "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,277 y con las 7 ajenas es 0,359. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,164 con lo propio contra 0,139 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva.",
             "nota_factor": "El peso y el signo de cada estadística los fija el cálculo, no el autor: a la que se mueve al revés le sale carga negativa sola. Se estiman con las estadísticas externas únicamente —el índice no participa—, y por eso el contraste no se puede acomodar.",
             "perfil": [
               {
@@ -2910,8 +2910,8 @@
                 "etiqueta": "Merval en dólares",
                 "fuente": "BYMA / CCL",
                 "propia": false,
-                "r_niveles": -0.511,
-                "r_diferencias": -0.091,
+                "r_niveles": -0.514,
+                "r_diferencias": -0.093,
                 "n": 34
               },
               {
@@ -2935,8 +2935,8 @@
             ],
             "niveles": {
               "convergente": 0.277,
-              "discriminante": 0.358,
-              "brecha": -0.081
+              "discriminante": 0.359,
+              "brecha": -0.082
             },
             "diferencias": {
               "convergente": 0.164,

@@ -45,7 +45,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 72,7 | VERDE | 26,0 % |
 | Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 74,8 | VERDE | 24,0 % |
 | Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 62,0 | VERDE | 16,0 % |
-| Inversión | Si alguien está apostando al futuro: la inversión física —construcción y bienes de capital—, que desde agosto de 2026 es el único componente que puntúa. | 36,4 | NARANJA | 12,0 % |
+| Inversión | Si alguien está apostando al futuro: la inversión física —construcción y bienes de capital—, que desde agosto de 2026 es el único componente que puntúa. | 35,7 | NARANJA | 12,0 % |
 | Actividad económica | Si la economía crece o se contrae, y en cuántas partes. | 34,8 | NARANJA | 11,0 % |
 | Competitividad externa | Si el tipo de cambio real alcanza para competir: el índice de tipo de cambio real multilateral oficial del Banco Central contra su propia historia. | 48,8 | AMARILLO | 11,0 % |
 
@@ -1274,10 +1274,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% i.a. ponderado) | Color |
 |---|---|
-| ≥ 0 | VERDE |
-| −4,8 – 0 | AMARILLO |
-| −8,4 – −4,8 | NARANJA |
-| ≤ −8,4 | ROJO |
+| ≥ 0,17 | VERDE |
+| −4,63 – 0,17 | AMARILLO |
+| −8,23 – −4,63 | NARANJA |
+| ≤ −8,23 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1289,7 +1289,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −5,66 % i.a. ponderado (2026-07).
 
-−5,66 % i.a. ponderado cae en el tramo que corresponde a Naranja, a 0,86 del corte más cercano.
+−5,66 % i.a. ponderado cae en el tramo que corresponde a Naranja, a 1,03 del corte más cercano.
 
 **Color vigente: NARANJA**
 
@@ -1303,6 +1303,7 @@ Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adiciona
 - Los bienes de capital se miden en dólares corrientes e incluyen el efecto de los precios internacionales: el índice de cantidades oficial es solo trimestral.
 - El tercer componente (patentamientos comerciales) no tiene serie histórica pública: se acumula desde mediados de 2026 y recién tendrá comparación interanual a mediados de 2027.
 - Las bandas anchas son calibración propia declarada: el umbral fino del documento no sobrevivía a la volatilidad del dato argentino reciente.
+- El piso de crecimiento de la población es fijo (0,17% anual, proyección del INDEC para 2025-2026): no se actualiza solo. La proyección vigente, basada en el Censo 2022, espera un crecimiento promedio de 0,16% por año hasta 2040, así que el corrimiento es chico y casi no cambia la lectura.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1325,6 +1326,8 @@ Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adiciona
 **2026-09-08** — ADR-0293: tarjeta e historial comparten la regla de incorporación de patentamientos y exigen el mismo mes de referencia. Se evita una divergencia futura de fórmula; los tres meses actualmente acumulados no activan todavía ese componente.
 
 **2026-09-15** — ADR-0311: el rótulo de la card pasa de «Inversión física (IAI)» a «Inversión física». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+
+**2026-09-30** — ADR-0341: la escala se corre al crecimiento de la población (+0,17% anual según la proyección del INDEC con base en el Censo 2022). El verde ya no arranca en 0% sino en +0,17%: crecer menos que la población es invertir menos por habitante. Todas las anclas se corren lo mismo; el −5,66% de julio pasa de 36,4 a 35,7 puntos y sigue en naranja.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
