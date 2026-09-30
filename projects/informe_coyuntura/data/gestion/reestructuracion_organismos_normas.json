@@ -1,9 +1,9 @@
 {
  "_meta": {
   "conteo": {
-   "excluido_falso_positivo": 3,
+   "excluido_falso_positivo": 5,
    "excluido_rechazado_congreso": 4,
-   "total": 18,
+   "total": 20,
    "vigente": 11
   },
   "descripcion": "Clasificación caso por caso (CIGOB pidió 'ir caso por caso', ago-2026) de las normas que la búsqueda de InfoLeg texto=\"disolucion\" devuelve desde el 01/12/2023. Registro CURADO: el colector (gestion.py, fetch_reestructuracion_organismos) solo LO LEE, nunca lo escribe. 'vigente' cuenta en el indicador. 'excluido' no cuenta y lleva 'motivo' ('falso_positivo' o 'rechazado_congreso') más 'detalle' con la evidencia. Una norma que la búsqueda encuentre y no esté acá se trata como SIN CLASIFICAR: no cuenta y la corrida avisa (campo 'sin_clasificar' de la card), hasta que alguien la agregue con su motivo. Ver ADR-0185 (lectura caso por caso original) y ADR-0188 (por qué se corrige el numerador).",
@@ -118,6 +118,18 @@
    "estado": "excluido",
    "motivo": "falso_positivo",
    "titulo": "Disposición 2491/2026"
+  },
+  "428999": {
+   "detalle": "Superintendencia de Servicios de Salud: inicio del proceso de disolución y liquidación de la Obra Social de Agentes de Propaganda Médica de Entre Ríos (R.N.A.S. 1-1840-8) — obra social SINDICAL PRIVADA regulada por el Estado, no un organismo de la Administración Pública Nacional (mismo caso que la Resolución 1056/2025). Leído en InfoLeg el 30-sep-2026.",
+   "estado": "excluido",
+   "motivo": "falso_positivo",
+   "titulo": "Resolución 1525/2026"
+  },
+  "429307": {
+   "detalle": "Registro de la Propiedad Inmueble de la Capital Federal: extiende una disposición técnico-registral a la inscripción de adjudicaciones por disolución y liquidación de la sociedad conyugal por divorcio. Coincidencia léxica ('disolución' de un régimen patrimonial privado) — no hay ningún organismo público disolviéndose. Leído en InfoLeg el 30-sep-2026.",
+   "estado": "excluido",
+   "motivo": "falso_positivo",
+   "titulo": "Disposición 8/2026"
   }
  }
 }

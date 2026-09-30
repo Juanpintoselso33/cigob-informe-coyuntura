@@ -30,20 +30,22 @@ def _registro() -> dict:
 # ── El registro curado ───────────────────────────────────────────────────────
 
 def test_el_registro_curado_pinea_las_exclusiones():
-    """La lectura caso por caso de ADR-0185/ADR-0188: 18 normas, 11 cuentan,
-    7 no (3 falsos positivos + 4 actos rechazados por el Congreso)."""
+    """La lectura caso por caso de ADR-0185/ADR-0188: 20 normas, 11 cuentan,
+    9 no (5 falsos positivos + 4 actos rechazados por el Congreso). Las dos
+    últimas —Disposición 8/2026 del Registro de la Propiedad y Resolución
+    1525/2026 de la SSS— son falsos positivos agregados el 30-sep-2026."""
     normas = _registro()
-    assert len(normas) == 18, sorted(normas)
+    assert len(normas) == 20, sorted(normas)
 
     vigentes = [nid for nid, d in normas.items() if d.get("estado") == "vigente"]
     excluidas = [nid for nid, d in normas.items() if d.get("estado") == "excluido"]
     assert len(vigentes) == 11, sorted(vigentes)
-    assert len(excluidas) == 7, sorted(excluidas)
+    assert len(excluidas) == 9, sorted(excluidas)
 
     motivos = {nid: normas[nid].get("motivo") for nid in excluidas}
     falsos_positivos = [n for n, m in motivos.items() if m == "falso_positivo"]
     rechazados = [n for n, m in motivos.items() if m == "rechazado_congreso"]
-    assert len(falsos_positivos) == 3, sorted(falsos_positivos)
+    assert len(falsos_positivos) == 5, sorted(falsos_positivos)
     assert len(rechazados) == 4, sorted(rechazados)
 
 
