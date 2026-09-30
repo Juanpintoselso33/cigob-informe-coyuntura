@@ -9,11 +9,42 @@
    "textos_fallidos": []
   },
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
-  "nuevas_en_la_corrida": 0,
+  "nuevas_en_la_corrida": 3,
   "revision_manual_en": "2026-09-08",
-  "ultima_corrida": "2026-09-29"
+  "ultima_corrida": "2026-09-30"
  },
- "pendientes": {},
+ "pendientes": {
+  "429509": {
+   "coincidencia": "pliego",
+   "empresa": "Transener",
+   "empresas_mencionadas": [
+    "Transener"
+   ],
+   "periodo": "2026-09",
+   "titulo": "Resolución 218 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429509"
+  },
+  "429905": {
+   "coincidencia": "privatiza",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [
+    "Belgrano Cargas"
+   ],
+   "periodo": "2026-09",
+   "titulo": "Resolución 1498 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429905"
+  },
+  "430589": {
+   "coincidencia": "privatiza",
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [
+    "Enarsa"
+   ],
+   "periodo": "2026-09",
+   "titulo": "Decreto 1107 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=430589"
+  }
+ },
  "revisadas": {
   "425373": {
    "del_proceso": true,
@@ -2247,6 +2278,581 @@
    "empresa": "Enarsa",
    "empresas_mencionadas": [],
    "periodo": "2026-08",
+   "version_filtro": 2
+  },
+  "429436": {
+   "del_proceso": false,
+   "empresa": "Transener",
+   "empresas_mencionadas": [
+    "Transener"
+   ],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429509": {
+   "del_proceso": true,
+   "empresa": "Transener",
+   "empresas_mencionadas": [
+    "Transener"
+   ],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429567": {
+   "del_proceso": false,
+   "empresa": "AySA",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429577": {
+   "del_proceso": false,
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429634": {
+   "del_proceso": false,
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429649": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429693": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429708": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429834": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429835": {
+   "del_proceso": false,
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [
+    "Corredores Viales"
+   ],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429836": {
+   "del_proceso": false,
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [
+    "Corredores Viales"
+   ],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429837": {
+   "del_proceso": false,
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [
+    "Corredores Viales"
+   ],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429848": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429905": {
+   "del_proceso": true,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [
+    "Belgrano Cargas"
+   ],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429961": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "429986": {
+   "del_proceso": false,
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [
+    "Corredores Viales"
+   ],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430020": {
+   "del_proceso": false,
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [
+    "Corredores Viales"
+   ],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430021": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430073": {
+   "del_proceso": false,
+   "empresa": "YCRT",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430234": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430259": {
+   "del_proceso": false,
+   "empresa": "Corredores Viales",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430404": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430431": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430486": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430490": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430491": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430494": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430502": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430503": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430504": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430505": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430506": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430511": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430512": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430516": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430517": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430520": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430522": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430524": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430525": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430530": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430534": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430537": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430569": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430570": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430571": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430572": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "empresas_mencionadas": [
+    "SOFSE"
+   ],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430573": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [
+    "Belgrano Cargas"
+   ],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430574": {
+   "del_proceso": false,
+   "empresa": "SOFSE",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430575": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430576": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430577": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430578": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430580": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430582": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430583": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430584": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430585": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430586": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430587": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430588": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430589": {
+   "del_proceso": true,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [
+    "Enarsa"
+   ],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430590": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430591": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430592": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430594": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430601": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430603": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430619": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430620": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430621": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430624": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430625": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430626": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430634": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430647": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430659": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430663": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430664": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
    "version_filtro": 2
   }
  },

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-09-29T12:18:29.662085-03:00",
+    "generated_at": "2026-09-30T03:32:31.825780+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -398,7 +398,7 @@
       "actividad_tributaria": {
         "costo_financiamiento_tesoro": 0.159,
         "credito_privado": 0.826,
-        "desequilibrio_monetario": 0.137,
+        "desequilibrio_monetario": 0.135,
         "emae_difusion": 0.704,
         "emae_ia": 0.829,
         "iai": 0.851,
@@ -415,7 +415,7 @@
       "costo_financiamiento_tesoro": {
         "actividad_tributaria": 0.159,
         "credito_privado": -0.108,
-        "desequilibrio_monetario": 0.383,
+        "desequilibrio_monetario": 0.385,
         "emae_difusion": 0.19,
         "emae_ia": 0.167,
         "iai": 0.065,
@@ -432,7 +432,7 @@
       "credito_privado": {
         "actividad_tributaria": 0.826,
         "costo_financiamiento_tesoro": -0.108,
-        "desequilibrio_monetario": 0.037,
+        "desequilibrio_monetario": 0.035,
         "emae_difusion": 0.707,
         "emae_ia": 0.795,
         "iai": 0.872,
@@ -447,21 +447,21 @@
         "tcrm": -0.414
       },
       "desequilibrio_monetario": {
-        "actividad_tributaria": 0.137,
-        "costo_financiamiento_tesoro": 0.383,
-        "credito_privado": 0.037,
+        "actividad_tributaria": 0.135,
+        "costo_financiamiento_tesoro": 0.385,
+        "credito_privado": 0.035,
         "emae_difusion": 0.02,
         "emae_ia": 0.234,
         "iai": 0.117,
-        "idc": 0.159,
-        "ipc_total": -0.144,
+        "idc": 0.158,
+        "ipc_total": -0.142,
         "ipi_manufacturero": 0.242,
-        "recaudacion": 0.033,
-        "rem_ipc_12m": -0.289,
-        "reservas_bcra": -0.008,
-        "resultado_primario": -0.073,
-        "saldo_comercial_12m": 0.177,
-        "tcrm": -0.433
+        "recaudacion": 0.032,
+        "rem_ipc_12m": -0.288,
+        "reservas_bcra": -0.004,
+        "resultado_primario": -0.075,
+        "saldo_comercial_12m": 0.179,
+        "tcrm": -0.435
       },
       "emae_difusion": {
         "actividad_tributaria": 0.704,
@@ -518,7 +518,7 @@
         "actividad_tributaria": 0.81,
         "costo_financiamiento_tesoro": 0.16,
         "credito_privado": 0.888,
-        "desequilibrio_monetario": 0.159,
+        "desequilibrio_monetario": 0.158,
         "emae_difusion": 0.638,
         "emae_ia": 0.827,
         "iai": 0.812,
@@ -535,7 +535,7 @@
         "actividad_tributaria": 0.674,
         "costo_financiamiento_tesoro": 0.279,
         "credito_privado": 0.718,
-        "desequilibrio_monetario": -0.144,
+        "desequilibrio_monetario": -0.142,
         "emae_difusion": 0.634,
         "emae_ia": 0.7,
         "iai": 0.691,
@@ -569,7 +569,7 @@
         "actividad_tributaria": -0.333,
         "costo_financiamiento_tesoro": 0.023,
         "credito_privado": -0.371,
-        "desequilibrio_monetario": 0.033,
+        "desequilibrio_monetario": 0.032,
         "emae_difusion": -0.625,
         "emae_ia": -0.291,
         "iai": -0.455,
@@ -586,7 +586,7 @@
         "actividad_tributaria": 0.666,
         "costo_financiamiento_tesoro": 0.326,
         "credito_privado": 0.772,
-        "desequilibrio_monetario": -0.289,
+        "desequilibrio_monetario": -0.288,
         "emae_difusion": 0.702,
         "emae_ia": 0.651,
         "iai": 0.711,
@@ -603,7 +603,7 @@
         "actividad_tributaria": 0.13,
         "costo_financiamiento_tesoro": -0.097,
         "credito_privado": -0.002,
-        "desequilibrio_monetario": -0.008,
+        "desequilibrio_monetario": -0.004,
         "emae_difusion": 0.212,
         "emae_ia": 0.153,
         "iai": 0.307,
@@ -620,7 +620,7 @@
         "actividad_tributaria": 0.635,
         "costo_financiamiento_tesoro": 0.374,
         "credito_privado": 0.722,
-        "desequilibrio_monetario": -0.073,
+        "desequilibrio_monetario": -0.075,
         "emae_difusion": 0.455,
         "emae_ia": 0.682,
         "iai": 0.586,
@@ -637,7 +637,7 @@
         "actividad_tributaria": 0.522,
         "costo_financiamiento_tesoro": 0.637,
         "credito_privado": 0.465,
-        "desequilibrio_monetario": 0.177,
+        "desequilibrio_monetario": 0.179,
         "emae_difusion": 0.383,
         "emae_ia": 0.566,
         "iai": 0.408,
@@ -654,7 +654,7 @@
         "actividad_tributaria": -0.568,
         "costo_financiamiento_tesoro": -0.621,
         "credito_privado": -0.414,
-        "desequilibrio_monetario": -0.433,
+        "desequilibrio_monetario": -0.435,
         "emae_difusion": -0.299,
         "emae_ia": -0.626,
         "iai": -0.394,
@@ -3108,7 +3108,7 @@
     "2026-06": 2087.8,
     "2026-07": 2090.0,
     "2026-08": 1913.0,
-    "2026-09": 1745.3
+    "2026-09": 1740.2
   },
   "serie_itcp": {
     "2024-01": 69.4,
@@ -3384,7 +3384,7 @@
           "2026-05": 68.6,
           "2026-06": 75.0,
           "2026-07": 68.4,
-          "2026-08": 72.6
+          "2026-08": 72.7
         }
       },
       "viabilidad_fiscal_comercial": {
@@ -5395,8 +5395,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": -0.512,
-          "r_diferencias": -0.092,
+          "r_niveles": -0.511,
+          "r_diferencias": -0.091,
           "n": 34
         },
         {
