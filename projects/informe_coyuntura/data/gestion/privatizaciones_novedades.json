@@ -9,9 +9,9 @@
    "textos_fallidos": []
   },
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
-  "nuevas_en_la_corrida": 3,
+  "nuevas_en_la_corrida": 0,
   "revision_manual_en": "2026-09-08",
-  "ultima_corrida": "2026-09-30"
+  "ultima_corrida": "2026-10-01"
  },
  "pendientes": {
   "429509": {
@@ -2849,6 +2849,90 @@
    "version_filtro": 2
   },
   "430664": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430665": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430666": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430667": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430668": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430670": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430678": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430681": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430684": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430689": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430697": {
+   "del_proceso": false,
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430698": {
+   "del_proceso": false,
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [],
+   "periodo": "2026-09",
+   "version_filtro": 2
+  },
+  "430708": {
    "del_proceso": false,
    "empresa": "Enarsa",
    "empresas_mencionadas": [],

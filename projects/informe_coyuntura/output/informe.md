@@ -1,6 +1,6 @@
 ---
-periodo: "2026-09"
-generado: "2026-09-30 15:03:18"
+periodo: "2026-10"
+generado: "2026-10-01 03:31:51"
 score_global: 3.9
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -8,7 +8,7 @@ alerta_multicinturon: false
 schema_version: "1.2.0"
 ---
 
-# Informe de Coyuntura — 2026-09
+# Informe de Coyuntura — 2026-10
 
 **Score global:** 3.9/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.5/10)
 
@@ -21,26 +21,26 @@ schema_version: "1.2.0"
 |---|---|---|---|---|
 | ipc_total | 1.66 | % mensual | 2026-08-01 | fresco |
 | reservas_bcra | 12661.0 | Millones de USD | 2026-08-31 | fresco |
-| idc | -0.26 | σ vs. su historia | 2026-08-01 | fresco |
-| badlar | 22.06 | % anual | 2026-09-28 | fresco |
+| idc | -0.27 | σ vs. su historia | 2026-08-01 | fresco |
+| badlar | 23.38 | % anual | 2026-09-29 | fresco |
 | emae_ia | -1.44 | % i.a. | 2026-07-01 | fresco |
 | emae_difusion | 46.67 | % de sectores en crecimiento i.a. | 2026-07-01 | fresco |
 | ipi_manufacturero | -2.82 | % i.a. (promedio 3 meses) | 2026-07-01 | fresco |
 | actividad_tributaria | -5.41 | % i.a. real (compuesto IVA-DGI/cheque) | 2026-08-01 | fresco |
 | saldo_comercial_12m | 24460.0 | Millones de USD (acum. 12 meses) | 2026-08-01 | fresco |
 | recaudacion | 91.3 | índice (100 = 4T-2023) | 2026-08-01 | fresco |
-| tcrm | 85.53 | Índice (base dic-2015=100) | 2026-08-01 | fresco |
+| tcrm | 85.84 | Índice (base dic-2015=100) | 2026-09-01 | fresco |
 | rem_ipc_12m | 21.0 | % anual esperado | 2026-08-31 | fresco |
 | idm | 2.33 | pp (brecha i.a. real) | 2026-08-01 | fresco |
-| desequilibrio_monetario | 65.05 | pts de tensión (0-100) | 2026-08-01 | fresco |
+| desequilibrio_monetario | 65.07 | pts de tensión (0-100) | 2026-08-01 | fresco |
 | iai | -5.66 | % i.a. ponderado | 2026-07-01 | fresco |
 | icip | 13.67 | % i.a. ponderado | 2026-07-01 | fresco |
-| credito_privado | -1.0 | % i.a. real (crédito en pesos) | 2026-08-01 | fresco |
+| credito_privado | -0.3 | % i.a. real (crédito en pesos) | 2026-08-01 | fresco |
 | costo_financiamiento_tesoro | 7.29 | % real anual (TIREA vs. inflación esperada REM) | 2026-08-01 | fresco |
 | resultado_primario | 6.02 | % de la recaudación (acum. 12 meses) | 2026-08-01 | fresco |
-| prestamos_privados | 0.86 | % mensual nominal | 2026-09-24 | fresco |
-| base_monetaria | -0.06 | % mensual nominal | 2026-09-25 | fresco |
-| tc_mayorista | 0.74 | % mensual | 2026-09-29 | fresco |
+| prestamos_privados | 0.77 | % mensual nominal | 2026-09-25 | fresco |
+| base_monetaria | -2.99 | % mensual nominal | 2026-09-28 | fresco |
+| tc_mayorista | 0.39 | % mensual | 2026-09-30 | fresco |
 
 ### 🟢 Politica — score 3.0/10 (estable)
 *Riesgo de barbarismo: político*
@@ -48,26 +48,26 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | votometro_ventaja_lla | 4.3 | Puntos porcentuales | 2026-07-22 | ⚠ cache |
-| ratio_dnu | 1.062 | DNUs publicados por ley publicada | 2026-09-30 | fresco |
+| ratio_dnu | 1.062 | DNUs publicados por ley publicada | 2026-10-01 | fresco |
 | brecha_obra_publica | -1.8 | pp de brecha (obra pública − privada, 12m) | 2026-08-01 | fresco |
-| apoyo_empresario | -0.333 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | fresco |
+| apoyo_empresario | -0.25 | saldo de postura (−1 a +1, 12m móviles) | 2026-08-01 | ⚠ cache |
 | conflictividad_nacional | -24.0 | % vs 2023 | 2026-08-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
 | iaf_transferencias | 1.6 | % interanual real | 2025-12-31 | fresco |
-| eficacia_legislativa | 20.0 | % de proyectos | 2026-09-30 | fresco |
-| veto_quorum | 9.1 | % de sesiones | 2026-09-30 | fresco |
-| comisiones_caidas | 96.2 | % de proyectos | 2026-09-30 | fresco |
-| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-09-30 | fresco |
-| derrotas_legislativas | 2 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-09-30 | fresco |
-| rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-09-30 | fresco |
+| eficacia_legislativa | 20.0 | % de proyectos | 2026-10-01 | fresco |
+| veto_quorum | 10.0 | % de sesiones | 2026-10-01 | fresco |
+| comisiones_caidas | 96.2 | % de proyectos | 2026-10-01 | fresco |
+| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-10-01 | fresco |
+| derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-10-01 | fresco |
+| rotacion_gabinete | 6 | salidas de rango ministerial (acum. 12 meses) | 2026-10-01 | fresco |
 | protestas_caba | 281 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
 | cohesion_bloque | 100.0 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-09-24 | fresco |
 | bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-29 | ⚠ cache |
 | desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-29 | ⚠ cache |
-| produccion_legislativa | 29 | leyes sancionadas (12m) | 2026-08-01 | fresco |
+| produccion_legislativa | 28 | leyes sancionadas (12m) | 2026-09-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
-| paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-09-01 | fresco |
+| paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-10-01 | fresco |
 | cobertura_judicial | 73.93 | % estimado de cargos con juez designado | 2026-09-01 | ⚠ cache |
 | alineamiento_senadores_prov | 58.6 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-09-24 | fresco |
 
@@ -96,20 +96,20 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 6.27 | % de brecha CCL/mayorista | 2026-09-29 | fresco |
+| cepo_mulc | 6.41 | % de brecha CCL/mayorista | 2026-09-30 | fresco |
 | apertura_comercial | 7.0 | % del intercambio (alícuota efectiva) | 2026-08-01 | fresco |
 | desregulacion_normativa | 17115.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-08-01 | fresco |
-| reduccion_estado | -20.66 | % de variación vs dic-2023 (dotación APN) | 2026-07-01 | fresco |
+| reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
 | gasto_funcionamiento | -35.92 | % de variación real vs 2023-08 (gastos de funcionamiento) | 2026-08-01 | fresco |
-| fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-09-30 | fresco |
+| fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-10-01 | fresco |
 | litigiosidad_laboral | 2.3 | % variación juicios SRT (12m vs 12m previos) | 2026-06-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
-| rigi_inversiones | 23.8 | % de inversión aprobada sobre el pipeline | 2026-09-30 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-09-28 | ⚠ cache |
-| asistencia_directa | 100.0 | % del devengado de transferencias en ayudas a personas (5.1.4) | 2026-09-30 | fresco |
+| rigi_inversiones | 23.8 | % de inversión aprobada sobre el pipeline | 2026-10-01 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-10-01 | fresco |
+| asistencia_directa | 100.0 | % del devengado de transferencias en ayudas a personas (5.1.4) | 2026-10-01 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 33.1 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-06-01 | fresco |
-| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-09-30 | fresco |
+| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-10-01 | fresco |
 | protestas_caba | 281 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
@@ -117,12 +117,11 @@ schema_version: "1.2.0"
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
 | masa_salarial | -32.65 | % de variación real vs 2023-08 (SPN remuneraciones) | 2026-08-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. La card se sigue publicando con su valor mensual — lo que se retira es el puntaje, no el dato. |
-| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-09-30 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
+| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-10-01 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 
 ## Advertencias
 
-- `desactualizado:politica:votometro_ventaja_lla,bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
-- `desactualizado:gestion:concesiones_infraestructura`
+- `desactualizado:politica:votometro_ventaja_lla,apoyo_empresario,bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
 
 ---
-*Generado por CIGOB — 2026-09-30 15:03:18 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-01 03:31:51 — schema 1.2.0*

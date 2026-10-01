@@ -1,4 +1,5 @@
 fecha,indicador,valor,unidad,fuente
+2026-10-01,votometro_ventaja_lla,4.3,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-09-01,votometro_ventaja_lla,4.3,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-08-01,votometro_ventaja_lla,4.3,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-07-01,votometro_ventaja_lla,4.3,pp (brecha LLA−PJ),Votómetro CIGOB
@@ -33,6 +34,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,votometro_ventaja_lla,12.3,pp (brecha LLA−PJ),Votómetro CIGOB
 2024-01-01,votometro_ventaja_lla,14.2,pp (brecha LLA−PJ),Votómetro CIGOB
 2023-12-01,votometro_ventaja_lla,16.1,pp (brecha LLA−PJ),Votómetro CIGOB
+2026-10-01,veto_quorum,10.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
 2026-09-30,veto_quorum,9.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
 2026-08-31,veto_quorum,9.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
 2026-07-31,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
@@ -79,6 +81,7 @@ fecha,indicador,valor,unidad,fuente
 2016-12-31,velocidad_resolucion,84.4,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
 2015-12-31,velocidad_resolucion,110.5,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
 2014-12-31,velocidad_resolucion,141.8,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2026-10-01,rotacion_gabinete,6,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2026-09-01,rotacion_gabinete,7,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2026-08-01,rotacion_gabinete,7,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2026-07-01,rotacion_gabinete,7,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
@@ -113,6 +116,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rotacion_gabinete,1,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2024-01-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2023-12-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
+2026-10-01,ratio_dnu,1.062,DNUs publicados por ley publicada,InfoLeg
 2026-09-01,ratio_dnu,1.062,DNUs publicados por ley publicada,InfoLeg
 2026-08-01,ratio_dnu,1.48,DNUs publicados por ley publicada,InfoLeg
 2026-07-01,ratio_dnu,1.4,DNUs publicados por ley publicada,InfoLeg
@@ -147,6 +151,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,ratio_dnu,1.147,DNUs publicados por ley publicada,InfoLeg
 2024-01-01,ratio_dnu,1.088,DNUs publicados por ley publicada,InfoLeg
 2023-12-01,ratio_dnu,1.029,DNUs publicados por ley publicada,InfoLeg
+2026-09-01,produccion_legislativa,28,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2026-08-01,produccion_legislativa,29,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2026-07-01,produccion_legislativa,25,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2026-06-01,produccion_legislativa,28,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
@@ -180,6 +185,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,produccion_legislativa,32,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2024-01-01,produccion_legislativa,34,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2023-12-01,produccion_legislativa,34,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-10-01,paralisis_denuncias,13,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-09-01,paralisis_denuncias,13,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-08-01,paralisis_denuncias,14,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-07-01,paralisis_denuncias,15,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
@@ -472,6 +478,7 @@ fecha,indicador,valor,unidad,fuente
 2020-12-01,iaf_transferencias,-4.1,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
 2019-12-01,iaf_transferencias,-1.4,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
 2018-12-01,iaf_transferencias,6.7,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2026-10-01,eficacia_legislativa,20.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2026-09-01,eficacia_legislativa,20.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2026-08-01,eficacia_legislativa,14.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2026-07-01,eficacia_legislativa,14.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
@@ -506,6 +513,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,eficacia_legislativa,31.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,eficacia_legislativa,30.4,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,eficacia_legislativa,36.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2026-10-01,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-09-30,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-08-31,desafios_legislativos,3.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-07-31,desafios_legislativos,10.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
@@ -540,6 +548,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-01-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2023-12-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-10-01,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-09-30,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-08-31,derrotas_legislativas,3,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-07-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
@@ -607,6 +616,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,conflictividad_nacional,-0.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2024-01-01,conflictividad_nacional,2.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2023-12-01,conflictividad_nacional,0.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-10-01,comisiones_caidas,96.2,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2026-09-01,comisiones_caidas,96.2,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2026-08-01,comisiones_caidas,97.0,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2026-07-01,comisiones_caidas,97.2,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
@@ -641,6 +651,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2026-10-01,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-09-30,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-08-31,cohesion_bloque,99.9,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-07-31,cohesion_bloque,99.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
@@ -849,7 +860,6 @@ fecha,indicador,valor,unidad,fuente
 2024-05-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-04-30,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-03-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
-2026-09-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2026-08-01,apoyo_empresario,-0.25,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2026-07-01,apoyo_empresario,-0.25,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2026-06-01,apoyo_empresario,-0.429,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
@@ -879,6 +889,7 @@ fecha,indicador,valor,unidad,fuente
 2024-06-01,apoyo_empresario,-1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2024-05-01,apoyo_empresario,-1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2024-04-01,apoyo_empresario,-1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
+2026-10-01,alineamiento_senadores_prov,58.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-09-30,alineamiento_senadores_prov,58.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-08-31,alineamiento_senadores_prov,62.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-07-31,alineamiento_senadores_prov,70.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB

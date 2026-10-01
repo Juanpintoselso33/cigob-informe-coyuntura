@@ -35,14 +35,14 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 78,8** | **VERDE** | Moderadamente aflojado | 13 indicadores: 9 en verde · 4 en amarillo |
+| **ITCG: 78,7** | **VERDE** | Moderadamente aflojado | 13 indicadores: 9 en verde · 4 en amarillo |
 Componentes que puntúan en este corte: 13 de 13 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 72,9 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 72,6 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 100,0 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. | 57,7 | AMARILLO | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 70,4 | VERDE | 15,0 % |
@@ -61,11 +61,11 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 6,27 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 6,41 % de brecha CCL/mayorista | VERDE | 14,0 % |
 | Apertura comercial (alícuota) | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.115 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
-| Dotación del Estado (APN) | Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del… | −20,66 % de variación vs dic-2023 (dotación APN) | VERDE | 14,6 % |
+| Dotación del Estado (APN) | Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del… | −21,37 % de variación vs dic-2023 (dotación APN) | VERDE | 14,6 % |
 | Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023. | −35,92 % de variación real vs 2023-08 (gastos de funcionamiento) | VERDE | 10,4 % |
 | **DIMENSIÓN: Reforma laboral** | | | | |
 | Fondo de Asistencia Laboral | Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el… | 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | AMARILLO | 7,5 % |
@@ -79,7 +79,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Orden público (piquetes) | En qué porcentaje se redujo el número de cortes por manifestación relevados en CABA respecto de una base estimada para… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
 | Libertad de opción en salud | Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como… | 33,1 % de usuarios de prepagas con aportes derivados directo (sin triangulación) | AMARILLO | 2,0 % |
 
-*Datos al 2026-09-30.*
+*Datos al 2026-10-01.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -95,7 +95,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 6,27 % de brecha CCL/mayorista** (2026-09) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 6,41 % de brecha CCL/mayorista** (2026-09) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -105,7 +105,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 | **DIMENSIÓN EN EL ITCG** | Reformas económicas fundamentales | **UNIDAD DE MEDIDA** | % de brecha CCL/mayorista |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Cotizaciones intradiarias: se conservan las marcas de actualización de ambas patas y el corte es el día argentino de la más antigua. La serie mensual usa promedios. |
 | **PRODUCTOR DEL DATO** | dolarapi.com (agregador de cotizaciones; el mayorista replica la referencia oficial A3500 del BCRA) | **OPERACIÓN ESTADÍSTICA** | Cotizaciones del dólar contado con liquidación (CCL) y del mayorista; brecha porcentual entre ambos |
-| **MODO DE ACCESO** | Automático: API pública de cotizaciones; la serie histórica se reconstruye con el CCL promedio del mes sobre el mayorista promedio. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Automático: API pública de cotizaciones; la serie histórica se reconstruye con el CCL promedio del mes sobre el mayorista promedio. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -138,13 +138,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1617.40 (2026-09-29T17:57:00-03:00) / mayorista venta 1522.00 (2026-09-29T13:20:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1614.20 (2026-09-30T17:59:00-03:00) / mayorista venta 1517.00 (2026-09-30T13:27:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 6,27 % de brecha CCL/mayorista (2026-09).
+Dato vigente: 6,41 % de brecha CCL/mayorista (2026-09).
 
-6,27 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 7,73 del corte más cercano.
+6,41 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 7,59 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -196,7 +196,7 @@ La recaudación de derechos de importación, exportación y tasa de estadística
 | **DIMENSIÓN EN EL ITCG** | Reformas económicas fundamentales | **UNIDAD DE MEDIDA** | % del intercambio (alícuota efectiva) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El titular usa el último mes común entre cinco series oficiales con rezagos distintos: ~2 meses. |
 | **PRODUCTOR DEL DATO** | ARCA (recaudación de derechos) + INDEC (intercambio comercial) + BCRA (tipo de cambio) | **OPERACIÓN ESTADÍSTICA** | Alícuota efectiva del comercio exterior: derechos de exportación, importación y tasa de estadística recaudados sobre el intercambio total |
-| **MODO DE ACCESO** | Automático: APIs públicas de series de tiempo y del BCRA; el ICA se completa con la planilla original descubierta en el catálogo INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Automático: APIs públicas de series de tiempo y del BCRA; el ICA se completa con la planilla original descubierta en el catálogo INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -286,7 +286,7 @@ Cuántos artículos de normas quedaron modificados o eliminados por el programa 
 | **DIMENSIÓN EN EL ITCG** | Reformas económicas fundamentales | **UNIDAD DE MEDIDA** | artículos de normas modificados o eliminados, acumulados desde dic-2023 |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El ministerio publica el informe de cada mes durante las primeras semanas del siguiente (~1 mes). |
 | **PRODUCTOR DEL DATO** | Ministerio de Desregulación y Transformación del Estado — Unidad de Evaluación de Impacto | **OPERACIÓN ESTADÍSTICA** | Análisis de la desregulación implementada, informe mensual — artículos de normas modificados o eliminados, acumulados desde el 10 de diciembre de 2023 |
-| **MODO DE ACCESO** | Automático: se leen los enlaces de la página oficial y se extraen las cifras de portada y las etiquetas del gráfico de los últimos tres meses. Los nombres de archivo son irregulares, por lo que se descubren en el portal. Se conserva cada edición con URL y huella del PDF cuando se vuelve a consultar; la última edición se consulta nuevamente para detectar revisiones. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Automático: se leen los enlaces de la página oficial y se extraen las cifras de portada y las etiquetas del gráfico de los últimos tres meses. Los nombres de archivo son irregulares, por lo que se descubren en el portal. Se conserva cada edición con URL y huella del PDF cuando se vuelve a consultar; la última edición se consulta nuevamente para detectar revisiones. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -383,7 +383,7 @@ Cuánto varía la dotación de personal de la Administración Pública Nacional 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −20,66 % de variación vs dic-2023 (dotación APN)** (2026-07) | **VERDE** | Peso efectivo 14,6 % del ITCG | Cinturón Gestión |
+| **Hoy: −21,37 % de variación vs dic-2023 (dotación APN)** (2026-08) | **VERDE** | Peso efectivo 14,6 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -391,9 +391,9 @@ Cuánto varía la dotación de personal de la Administración Pública Nacional 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | reduccion_estado | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Reforma del Estado | **UNIDAD DE MEDIDA** | % de variación vs dic-2023 (dotación APN) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-07 (32 puntos) | **REZAGO DE PUBLICACIÓN** | La serie de dotación se publica con ~2 meses de rezago; los últimos meses aparecen imputados y se revisan. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | La serie de dotación se publica con ~2 meses de rezago; los últimos meses aparecen imputados y se revisan. |
 | **PRODUCTOR DEL DATO** | INDEC + Secretaría de Transformación del Estado | **OPERACIÓN ESTADÍSTICA** | Dotación de personal del Estado nacional (serie mensual). La planilla abre el total en dos universos: la Administración Pública Nacional y las empresas y sociedades del Estado; este indicador usa el primero |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -427,13 +427,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 183.520 agentes (2026-07) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,74% aparte; el universo completo varía -20,68%
+- 181.880 agentes (2026-08) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,89% aparte; el universo completo varía -21,21%
 
 ## Color vigente y por qué
 
-Dato vigente: −20,66 % de variación vs dic-2023 (dotación APN) (2026-07).
+Dato vigente: −21,37 % de variación vs dic-2023 (dotación APN) (2026-08).
 
-−20,66 % de variación vs dic-2023 (dotación APN) cae en el tramo que corresponde a Verde, a 15,46 del corte más cercano.
+−21,37 % de variación vs dic-2023 (dotación APN) cae en el tramo que corresponde a Verde, a 16,17 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -485,7 +485,7 @@ Cuánto varía en términos reales el gasto de funcionamiento del Estado naciona
 | **DIMENSIÓN EN EL ITCG** | Reforma del Estado | **UNIDAD DE MEDIDA** | % de variación real vs 2023-08 (gastos de funcionamiento) |
 | **SERIE DISPONIBLE** | 2024-01 → 2026-08 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Las series de gasto se publican con ~2 meses de rezago. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda; deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | Gastos de funcionamiento del Estado nacional (salarios + otros gastos), variación real contra el mismo mes de 2023 |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -562,7 +562,7 @@ Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)** (2026-09) | **AMARILLO** | Peso efectivo 7,5 % del ITCG | Cinturón Gestión |
+| **Hoy: 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)** (2026-10) | **AMARILLO** | Peso efectivo 7,5 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -570,9 +570,9 @@ Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | fal_modernizacion_laboral | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | La CNV se consulta automáticamente; las normas y el estado judicial dependen de revisiones manuales fechadas. Que una resolución esté publicada no garantiza que el registro local ya la incorpore. La tarjeta distingue las tres fechas y la fecha de evaluación no certifica una revisión integral de ese día. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | La CNV se consulta automáticamente; las normas y el estado judicial dependen de revisiones manuales fechadas. Que una resolución esté publicada no garantiza que el registro local ya la incorpore. La tarjeta distingue las tres fechas y la fecha de evaluación no certifica una revisión integral de ese día. |
 | **PRODUCTOR DEL DATO** | InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de fondos comunes de inversión) | **OPERACIÓN ESTADÍSTICA** | Avance del Fondo de Asistencia Laboral por lo que rige: construcción normativa vigente (50%) + entrada en vigencia del régimen (20%) + adopción efectiva (30%) |
-| **MODO DE ACCESO** | Semiautomático: los actos normativos y las suspensiones judiciales se verifican y asientan en un registro versionado; los fondos registrados en la Comisión Nacional de Valores se leen automáticamente. Las menciones del instrumento en el Boletín Oficial y el conteo amplio de fondos de cese se muestran como contexto y no inciden en el puntaje. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Semiautomático: los actos normativos y las suspensiones judiciales se verifican y asientan en un registro versionado; los fondos registrados en la Comisión Nacional de Valores se leen automáticamente. Las menciones del instrumento en el Boletín Oficial y el conteo amplio de fondos de cese se muestran como contexto y no inciden en el puntaje. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -606,11 +606,11 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-09-30; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 5 menciones del FAL en el BO desde mar-2026
+- Evaluación al 2026-10-01; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 5 menciones del FAL en el BO desde mar-2026
 
 ## Color vigente y por qué
 
-Dato vigente: 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) (2026-09).
+Dato vigente: 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) (2026-10).
 
 50,0 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) cae en el tramo que corresponde a Amarillo, a 5,25 del corte más cercano.
 
@@ -679,7 +679,7 @@ Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según
 | **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | % variación juicios SRT (12m vs 12m previos) |
 | **SERIE DISPONIBLE** | 2021-07 → 2026-06 (60 puntos) | **REZAGO DE PUBLICACIÓN** | La serie oficial de juicios se publica con 3-4 meses de rezago. |
 | **PRODUCTOR DEL DATO** | SRT — Superintendencia de Riesgos del Trabajo | **OPERACIÓN ESTADÍSTICA** | Serie histórica de litigiosidad: ingresos de juicios del sistema de riesgos del trabajo, total sistema |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -765,9 +765,9 @@ Cuánto avanza la privatización de la cartera de empresas públicas habilitada 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | privatizaciones | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de avance (etapas 0-4, cartera Ley Bases) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Fecha de la última modificación del registro curado. El seguimiento quincenal es la frecuencia prevista; una revisión parcial no acredita actualidad de todas las empresas. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Fecha de la última modificación del registro curado. El seguimiento quincenal es la frecuencia prevista; una revisión parcial no acredita actualidad de todas las empresas. |
 | **PRODUCTOR DEL DATO** | Boletín Oficial y CNV (hechos) + Fundación CIGOB (curaduría del registro) | **OPERACIÓN ESTADÍSTICA** | Avance de la cartera de privatizaciones de la Ley Bases por etapas 0-4 (sin definir → preparatoria → pliegos → licitación/adjudicación → cerrada), nueve empresas |
-| **MODO DE ACCESO** | Registro curado a mano con normas del Boletín Oficial, comunicaciones del emisor en CNV y detector de posibles novedades. El detector no asigna etapas; sus hallazgos necesitan revisión y pueden incluir falsos positivos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Registro curado a mano con normas del Boletín Oficial, comunicaciones del emisor en CNV y detector de posibles novedades. El detector no asigna etapas; sus hallazgos necesitan revisión y pueden incluir falsos positivos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -849,7 +849,7 @@ Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 23,8 % de inversión aprobada sobre el pipeline** (2026-09) | **AMARILLO** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
+| **Hoy: 23,8 % de inversión aprobada sobre el pipeline** (2026-10) | **AMARILLO** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -859,7 +859,7 @@ Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) 
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de inversión aprobada sobre el pipeline |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (28 puntos) | **REZAGO DE PUBLICACIÓN** | Sin rezago: foto de la plataforma oficial al día de la actualización. |
 | **PRODUCTOR DEL DATO** | Ministerio de Economía — plataforma oficial del RIGI | **OPERACIÓN ESTADÍSTICA** | Cartera del Régimen de Incentivo a Grandes Inversiones: inversión aprobada sobre el total de la cartera (aprobada + en evaluación) |
-| **MODO DE ACCESO** | Automático: lectura de la planilla pública de la plataforma oficial; las fechas de aprobación se toman del Boletín Oficial solo para proyectos nuevos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla pública de la plataforma oficial; las fechas de aprobación se toman del Boletín Oficial solo para proyectos nuevos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -896,7 +896,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 23,8 % de inversión aprobada sobre el pipeline (2026-09).
+Dato vigente: 23,8 % de inversión aprobada sobre el pipeline (2026-10).
 
 23,8 % de inversión aprobada sobre el pipeline cae en el tramo que corresponde a Amarillo, a 5,7 del corte más cercano.
 
@@ -938,7 +938,7 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-09) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
+| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-10) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -946,9 +946,9 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | concesiones_infraestructura | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de km adjudicados / km del plan (Red Federal de Concesiones) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Se consulta el estado del expediente y se contrasta con actos de adjudicación publicados. CONTRAT.AR puede demorar en reflejar una resolución; la fecha de consulta no equivale a la fecha del acto ni al inicio de la operación. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Se consulta el estado del expediente y se contrasta con actos de adjudicación publicados. CONTRAT.AR puede demorar en reflejar una resolución; la fecha de consulta no equivale a la fecha del acto ni al inicio de la operación. |
 | **PRODUCTOR DEL DATO** | CONTRAT.AR + Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones) | **OPERACIÓN ESTADÍSTICA** | Tasa de adjudicación de la Red Federal de Concesiones, en kilómetros: km bajo concesión adjudicada sobre km totales del plan |
-| **MODO DE ACCESO** | Automático: lee el estado de cada proceso en CONTRAT.AR y el kilometraje en Vialidad. Si el portal no declara adjudicación, busca su resolución en el Boletín Oficial mediante InfoLeg; un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Automático: lee el estado de cada proceso en CONTRAT.AR y el kilometraje en Vialidad. Si el portal no declara adjudicación, busca su resolución en el Boletín Oficial mediante InfoLeg; un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -984,7 +984,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-09).
+Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-10).
 
 100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) cae en el tramo que corresponde a Verde, a 59,0 del corte más cercano.
 
@@ -1031,7 +1031,7 @@ Aproxima la desintermediación mediante la composición presupuestaria: devengad
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 % del devengado de transferencias en ayudas a personas (5.1.4)** (2026-09) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
+| **Hoy: 100 % del devengado de transferencias en ayudas a personas (5.1.4)** (2026-10) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -1041,7 +1041,7 @@ Aproxima la desintermediación mediante la composición presupuestaria: devengad
 | **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % del devengado de transferencias en ayudas a personas (5.1.4) |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-08 (41 puntos) | **REZAGO DE PUBLICACIÓN** | Semanas: el devengado del ejercicio corriente se carga de forma continua. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda — Presupuesto Abierto | **OPERACIÓN ESTADÍSTICA** | TDPS — aproximación presupuestaria a la desintermediación: porcentaje del devengado de transferencias de Volver al Trabajo y Acompañamiento Social clasificado como ayudas a personas (5.1.4) |
-| **MODO DE ACCESO** | Automático: API oficial con credencial de acceso; la línea de base 2023 (ejercicio cerrado) se calculó una vez y quedó fijada. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Automático: API oficial con credencial de acceso; la línea de base 2023 (ejercicio cerrado) se calculó una vez y quedó fijada. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1077,7 +1077,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 100 % del devengado de transferencias en ayudas a personas (5.1.4) (2026-09).
+Dato vigente: 100 % del devengado de transferencias en ayudas a personas (5.1.4) (2026-10).
 
 100,0 % del devengado de transferencias en ayudas a personas (5.1.4) cae en el tramo que corresponde a Verde, a 33,0 del corte más cercano.
 
@@ -1129,9 +1129,9 @@ En qué porcentaje se redujo el número de cortes por manifestación relevados e
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | protocolo_antipiquetes | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) |
-| **SERIE DISPONIBLE** | 2024-01 → 2026-08 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un año: los anclajes públicos de la fuente son por año cerrado. |
+| **SERIE DISPONIBLE** | 2024-01 → 2026-09 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un año: los anclajes públicos de la fuente son por año cerrado. |
 | **PRODUCTOR DEL DATO** | Diagnóstico Político (consultora; relevamiento diario de cortes sobre más de cien medios desde 2009) | **OPERACIÓN ESTADÍSTICA** | Reducción porcentual de los cortes por manifestación en CABA contra 2023, con anclajes públicos: 2023 aproximadamente 931 (estimado), 2024 440 y 2025 240. |
-| **MODO DE ACCESO** | Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el anclaje anual con su fuente pública. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el anclaje anual con su fuente pública. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1226,7 +1226,7 @@ Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados 
 | **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % de usuarios de prepagas con aportes derivados directo (sin triangulación) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-06 (31 puntos) | **REZAGO DE PUBLICACIÓN** | Las fechas de numerador y denominador se publican por separado. Se usa el último RNEMP disponible que no sea posterior al mes del RNAS; si se arrastra un denominador, la razón combina fechas distintas. |
 | **PRODUCTOR DEL DATO** | Superintendencia de Servicios de Salud | **OPERACIÓN ESTADÍSTICA** | Padrones oficiales: beneficiarios por Agente del Seguro de Salud (RNAS) y usuarios de entidades de medicina prepaga (RNEMP) |
-| **MODO DE ACCESO** | Automático: descubre las planillas referenciadas por el portal oficial, incluidas versiones con fecha en el nombre. Las referencias inactivas cuyo archivo público responde se identifican expresamente. Las prepagas inscriptas como Agentes del Seguro se identifican por su rango de código de registro (canal creado por el DNU 70/2023). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-09-30 |
+| **MODO DE ACCESO** | Automático: descubre las planillas referenciadas por el portal oficial, incluidas versiones con fecha en el nombre. Las referencias inactivas cuyo archivo público responde se identifican expresamente. Las prepagas inscriptas como Agentes del Seguro se identifican por su rango de código de registro (canal creado por el DNU 70/2023). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-01 |
 
 ## Definición — qué mide y por qué importa
 
