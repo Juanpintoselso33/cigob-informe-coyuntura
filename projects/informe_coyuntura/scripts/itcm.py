@@ -94,7 +94,7 @@ INF = float("inf")
 # país. Años 2022-2040», Cuadro 1 (base Censo 2022). La inversión física se
 # puntúa contra este piso y no contra 0 (ADR-0341): crecer menos que la
 # población es invertir menos por habitante, y eso no puede salir en verde.
-CRECIMIENTO_POBLACION_PCT = 0.17
+CRECIMIENTO_POBLACION_PCT = 0.17  # prueba del conector, se deshace
 
 # Tablas de bandas de la sección IV del documento. (low, high, puntaje).
 BANDAS_ITCM = {
