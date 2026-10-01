@@ -1046,7 +1046,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     dobleUso: "La operación ISAC también alimenta (en su variante desestacionalizada) un componente del ITCIS; los bienes de capital son una subserie del ICA que alimenta el saldo comercial.",
     limitaciones: [
-      "(Prueba del conector.) No mide depreciación ni inversión neta de reposición. Una variación interanual negativa de sus componentes no demuestra una disminución del stock de capital.",
+      "No mide depreciación ni inversión neta de reposición. Una variación interanual negativa de sus componentes no demuestra una disminución del stock de capital.",
       "Los bienes de capital se miden en dólares corrientes e incluyen el efecto de los precios internacionales: el índice de cantidades oficial es solo trimestral.",
       "El tercer componente (patentamientos comerciales) no tiene serie histórica pública: se acumula desde mediados de 2026 y recién tendrá comparación interanual a mediados de 2027.",
       "Las bandas anchas son calibración propia declarada: el umbral fino del documento no sobrevivía a la volatilidad del dato argentino reciente.",
