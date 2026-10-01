@@ -116,7 +116,6 @@ jobs:
       PR: ${{ github.event.pull_request.number }}
       SHA: ${{ needs.validar.outputs.sha }}
       BASE: ${{ github.event.pull_request.base.sha }}
-      RAMA: ${{ github.head_ref }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -138,28 +137,40 @@ jobs:
             exit 1
           fi
 
-      # Con la lista verificada, scripts/ es el de main: correr generar.py
-      # acá no ejecuta nada que haya escrito el PR.
-      - name: Fichas al día
-        working-directory: projects/informe_coyuntura
-        run: |
-          python3 scripts/fichas/generar.py --todos
-          if [ -n "$(git status --porcelain output/fichas)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898+github-actions[bot]@users.noreply.github.com"
-            git add output/fichas
-            git commit -q -m "fichas: regeneradas desde el cambio de texto"
-            git -c core.hooksPath=/dev/null push -q \
-              "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" "HEAD:refs/heads/$RAMA"
-          fi
-          echo "FINAL=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
-
       # --match-head-commit: si alguien empujó otra cosa después de los
-      # tests, el merge falla en vez de publicar algo que nadie probó.
+      # tests, el merge falla en vez de publicar algo que nadie probó. GitHub
+      # calcula si un PR se puede mergear en diferido, así que se reintenta.
       - name: Mergear
         run: |
-          gh pr merge "$PR" --squash --delete-branch --match-head-commit "$FINAL"
+          for intento in 1 2 3 4 5 6; do
+            gh pr merge "$PR" --squash --delete-branch --match-head-commit "$SHA" && break
+            [ "$intento" = 6 ] && exit 1
+            sleep 10
+          done
           gh pr comment "$PR" --body "✅ Pasaron los tests, los tipos y el build. Publicado: en un par de minutos se ve en https://informe.cigob.org/"
+
+      # Las fichas en markdown van DESPUÉS y directo a main, como las sube el
+      # cron: empujarlas a la rama del PR disparaba otra corrida y cambiaba la
+      # cabeza que se había validado. Con la lista verificada, scripts/ es el
+      # de main, así que correr generar.py acá no ejecuta nada del PR.
+      - name: Fichas al día en main
+        working-directory: projects/informe_coyuntura
+        run: |
+          git fetch -q "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" main
+          git checkout -q FETCH_HEAD
+          python3 scripts/fichas/generar.py --todos > /dev/null
+          [ -n "$(git status --porcelain output/fichas)" ] || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add output/fichas
+          git commit -q -m "fichas: regeneradas tras el #$PR"
+          for intento in 1 2 3; do
+            git -c core.hooksPath=/dev/null push -q \
+              "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" HEAD:refs/heads/main && exit 0
+            git -c core.hooksPath=/dev/null pull -q --rebase \
+              "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" main
+          done
+          exit 1
 
   avisar:
     needs: validar
