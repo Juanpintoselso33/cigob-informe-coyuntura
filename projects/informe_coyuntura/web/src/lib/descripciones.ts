@@ -113,7 +113,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Tensión 0–100",
   },
   iai: {
-    que: "Índice Anticipador de Inversión: mide la inversión física/tradicional combinando el indicador sintético de la actividad de la construcción (ISAC) que releva el Instituto Nacional de Estadística y Censos (INDEC) y la importación de bienes de capital, en variación interanual.",
+    que: "Índice Anticipador de Inversión (prueba del conector): mide la inversión física/tradicional combinando el indicador sintético de la actividad de la construcción (ISAC) que releva el Instituto Nacional de Estadística y Censos (INDEC) y la importación de bienes de capital, en variación interanual.",
     aporta: "Resume señales de construcción e importación de bienes de capital frente al mismo mes del año anterior. No mide depreciación ni inversión neta: una caída interanual no demuestra que se consuma más capital del que se repone. Los bienes importados se miden en dólares corrientes, por lo que también influyen sus precios.",
     frecuencia: "Mensual", tipo: "Variación i.a. ponderada",
   },
