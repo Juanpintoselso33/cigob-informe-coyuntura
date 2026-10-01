@@ -98,6 +98,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,tcrm,132.79,índice (base dic-2015),BCRA ITCRM
 2023-12-01,tcrm,124.88,índice (base dic-2015),BCRA ITCRM
 2023-11-01,tcrm,83.2,índice (base dic-2015),BCRA ITCRM
+2026-10-01,tc_mayorista,1523.2254,ARS/USD,BCRA
 2026-09-30,tc_mayorista,1517.5209,ARS/USD,BCRA
 2026-09-29,tc_mayorista,1523.9697,ARS/USD,BCRA
 2026-09-28,tc_mayorista,1528.7563,ARS/USD,BCRA
@@ -979,11 +980,12 @@ fecha,indicador,valor,unidad,fuente
 2022-03-01,recaudacion,99.7,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-02-01,recaudacion,101.1,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-01-01,recaudacion,100.2,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-09-28,prestamos_privados,147651132.0,M ARS,BCRA
-2026-09-25,prestamos_privados,147097669.0,M ARS,BCRA
+2026-09-29,prestamos_privados,148593391.0,M ARS,BCRA
+2026-09-28,prestamos_privados,147663643.0,M ARS,BCRA
+2026-09-25,prestamos_privados,147096584.0,M ARS,BCRA
 2026-09-24,prestamos_privados,147366247.0,M ARS,BCRA
-2026-09-23,prestamos_privados,146450854.0,M ARS,BCRA
-2026-09-22,prestamos_privados,146196499.0,M ARS,BCRA
+2026-09-23,prestamos_privados,146523533.0,M ARS,BCRA
+2026-09-22,prestamos_privados,146196407.0,M ARS,BCRA
 2026-09-21,prestamos_privados,145752716.0,M ARS,BCRA
 2026-09-18,prestamos_privados,145283785.0,M ARS,BCRA
 2026-09-17,prestamos_privados,144588927.0,M ARS,BCRA
@@ -998,8 +1000,8 @@ fecha,indicador,valor,unidad,fuente
 2026-09-04,prestamos_privados,143637192.0,M ARS,BCRA
 2026-09-03,prestamos_privados,143698373.0,M ARS,BCRA
 2026-09-02,prestamos_privados,144141476.0,M ARS,BCRA
-2026-09-01,prestamos_privados,144736614.0,M ARS,BCRA
-2026-08-31,prestamos_privados,145400051.0,M ARS,BCRA
+2026-09-01,prestamos_privados,144742613.0,M ARS,BCRA
+2026-08-31,prestamos_privados,145404369.0,M ARS,BCRA
 2026-08-28,prestamos_privados,144469837.0,M ARS,BCRA
 2026-08-27,prestamos_privados,144422827.0,M ARS,BCRA
 2026-08-26,prestamos_privados,144083184.0,M ARS,BCRA
@@ -1987,7 +1989,8 @@ fecha,indicador,valor,unidad,fuente
 2025-06-01,desequilibrio_monetario,46.17,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
 2025-05-01,desequilibrio_monetario,48.06,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
 2025-04-01,desequilibrio_monetario,24.9,pts de tensión (0-100),"BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)"
-2026-01-01,cuenta_corriente,-4281.1,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
+2026-04-01,cuenta_corriente,-375.5,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
+2026-01-01,cuenta_corriente,-5041.7,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
 2025-10-01,cuenta_corriente,-7788.1,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
 2025-07-01,cuenta_corriente,-8004.8,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
 2025-04-01,cuenta_corriente,-5278.8,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
@@ -2059,6 +2062,7 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,costo_financiamiento_tesoro,-10.39,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2024-03-01,costo_financiamiento_tesoro,-13.58,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-09-29,base_monetaria,46262060.0,M ARS,BCRA
 2026-09-28,base_monetaria,46033138.0,M ARS,BCRA
 2026-09-25,base_monetaria,45747929.0,M ARS,BCRA
 2026-09-24,base_monetaria,46058967.0,M ARS,BCRA
@@ -2694,6 +2698,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-16,base_monetaria,10397490.0,M ARS,BCRA
 2024-02-15,base_monetaria,10391159.0,M ARS,BCRA
 2024-02-14,base_monetaria,10493206.0,M ARS,BCRA
+2026-09-30,badlar,22.8125,% anual,BCRA
 2026-09-29,badlar,23.375,% anual,BCRA
 2026-09-28,badlar,22.0625,% anual,BCRA
 2026-09-25,badlar,21.9375,% anual,BCRA

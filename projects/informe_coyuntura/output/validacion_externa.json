@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-01T03:31:37.195310+00:00",
+    "generated_at": "2026-10-01T23:08:39.662717+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -1062,21 +1062,21 @@
       },
       "cepo_mulc": {
         "apertura_comercial": 0.344,
-        "concesiones_infraestructura": 0.322,
+        "concesiones_infraestructura": 0.344,
         "desregulacion_normativa": 0.918,
         "fal_modernizacion_laboral": 0.366,
         "gasto_funcionamiento": 0.274,
         "libertad_opcion_salud": 0.899,
         "litigiosidad_laboral": 0.425,
         "masa_salarial": 0.474,
-        "privatizaciones": 0.829,
+        "privatizaciones": 0.828,
         "protocolo_antipiquetes": 0.872,
         "reduccion_estado": 0.762,
-        "reestructuracion_organismos": 0.452
+        "reestructuracion_organismos": 0.468
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.079,
-        "cepo_mulc": 0.322,
+        "cepo_mulc": 0.344,
         "desregulacion_normativa": 0.456,
         "fal_modernizacion_laboral": 0.92,
         "gasto_funcionamiento": 0.281,
@@ -1174,7 +1174,7 @@
       },
       "privatizaciones": {
         "apertura_comercial": 0.495,
-        "cepo_mulc": 0.829,
+        "cepo_mulc": 0.828,
         "concesiones_infraestructura": 0.584,
         "desregulacion_normativa": 0.946,
         "fal_modernizacion_laboral": 0.603,
@@ -1216,7 +1216,7 @@
       },
       "reestructuracion_organismos": {
         "apertura_comercial": 0.299,
-        "cepo_mulc": 0.452,
+        "cepo_mulc": 0.468,
         "concesiones_infraestructura": 0.76,
         "desregulacion_normativa": 0.646,
         "fal_modernizacion_laboral": 0.844,
@@ -1323,8 +1323,8 @@
       {
         "a": "cepo_mulc",
         "b": "privatizaciones",
-        "r": 0.829,
-        "n": 34,
+        "r": 0.828,
+        "n": 35,
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
         "misma_dimension": false,
@@ -1427,19 +1427,19 @@
   "redundancia_itcp": {
     "diferencias": {
       "n_pares": 91,
-      "r_abs_medio": 0.172,
+      "r_abs_medio": 0.173,
       "share_altos": 0.0
     },
     "umbral": 0.7,
     "n_indicadores": 16,
     "n_pares": 91,
-    "r_abs_medio": 0.373,
+    "r_abs_medio": 0.374,
     "share_altos": 0.121,
     "share_bajos": 0.418,
     "matriz": {
       "adhesion_reformas_provincial": {
         "alineamiento_senadores_prov": -0.068,
-        "apoyo_empresario": 0.522,
+        "apoyo_empresario": 0.529,
         "brecha_obra_publica": 0.653,
         "cobertura_judicial": -0.44,
         "cohesion_bloque": 0.23,
@@ -1454,7 +1454,7 @@
       },
       "alineamiento_senadores_prov": {
         "adhesion_reformas_provincial": -0.068,
-        "apoyo_empresario": -0.385,
+        "apoyo_empresario": -0.387,
         "brecha_obra_publica": -0.348,
         "cobertura_judicial": 0.415,
         "cohesion_bloque": 0.437,
@@ -1468,19 +1468,19 @@
         "votometro_ventaja_lla": -0.165
       },
       "apoyo_empresario": {
-        "adhesion_reformas_provincial": 0.522,
-        "alineamiento_senadores_prov": -0.385,
+        "adhesion_reformas_provincial": 0.529,
+        "alineamiento_senadores_prov": -0.387,
         "brecha_obra_publica": 0.597,
-        "cobertura_judicial": -0.349,
-        "cohesion_bloque": -0.197,
+        "cobertura_judicial": -0.372,
+        "cohesion_bloque": -0.206,
         "conflictividad_nacional": 0.498,
-        "desafios_legislativos": -0.563,
-        "eficacia_legislativa": 0.132,
+        "desafios_legislativos": -0.579,
+        "eficacia_legislativa": 0.13,
         "jornadas_individuales_no_trabajadas_12m": 0.435,
         "produccion_legislativa": 0.084,
         "ratio_dnu": 0.176,
-        "veto_quorum": -0.305,
-        "votometro_ventaja_lla": 0.404
+        "veto_quorum": -0.314,
+        "votometro_ventaja_lla": 0.417
       },
       "brecha_obra_publica": {
         "adhesion_reformas_provincial": 0.653,
@@ -1500,7 +1500,7 @@
       "cobertura_judicial": {
         "adhesion_reformas_provincial": -0.44,
         "alineamiento_senadores_prov": 0.415,
-        "apoyo_empresario": -0.349,
+        "apoyo_empresario": -0.372,
         "brecha_obra_publica": -0.782,
         "cohesion_bloque": -0.09,
         "conflictividad_nacional": -0.546,
@@ -1515,7 +1515,7 @@
       "cohesion_bloque": {
         "adhesion_reformas_provincial": 0.23,
         "alineamiento_senadores_prov": 0.437,
-        "apoyo_empresario": -0.197,
+        "apoyo_empresario": -0.206,
         "brecha_obra_publica": 0.252,
         "cobertura_judicial": -0.09,
         "conflictividad_nacional": -0.443,
@@ -1545,7 +1545,7 @@
       "desafios_legislativos": {
         "adhesion_reformas_provincial": -0.502,
         "alineamiento_senadores_prov": 0.576,
-        "apoyo_empresario": -0.563,
+        "apoyo_empresario": -0.579,
         "brecha_obra_publica": -0.818,
         "cobertura_judicial": 0.849,
         "cohesion_bloque": 0.067,
@@ -1560,7 +1560,7 @@
       "eficacia_legislativa": {
         "adhesion_reformas_provincial": -0.742,
         "alineamiento_senadores_prov": -0.743,
-        "apoyo_empresario": 0.132,
+        "apoyo_empresario": 0.13,
         "brecha_obra_publica": 0.737,
         "cobertura_judicial": -0.371,
         "cohesion_bloque": -0.206,
@@ -1620,7 +1620,7 @@
       "veto_quorum": {
         "adhesion_reformas_provincial": 0.012,
         "alineamiento_senadores_prov": 0.305,
-        "apoyo_empresario": -0.305,
+        "apoyo_empresario": -0.314,
         "brecha_obra_publica": 0.253,
         "cobertura_judicial": -0.07,
         "cohesion_bloque": 0.855,
@@ -1635,7 +1635,7 @@
       "votometro_ventaja_lla": {
         "adhesion_reformas_provincial": 0.254,
         "alineamiento_senadores_prov": -0.165,
-        "apoyo_empresario": 0.404,
+        "apoyo_empresario": 0.417,
         "brecha_obra_publica": 0.273,
         "cobertura_judicial": -0.227,
         "cohesion_bloque": 0.179,
@@ -3098,7 +3098,8 @@
     "2026-06": 2087.8,
     "2026-07": 2090.0,
     "2026-08": 1913.0,
-    "2026-09": 1763.2
+    "2026-09": 1763.2,
+    "2026-10": 1709.1
   },
   "serie_itcp": {
     "2024-01": 69.4,
@@ -3133,7 +3134,7 @@
     "2026-06": 66.3,
     "2026-07": 66.7,
     "2026-08": 65.0,
-    "2026-09": 66.2
+    "2026-09": 69.9
   },
   "series_dimensiones": {
     "itvc": {
@@ -4000,8 +4001,7 @@
           "2026-05": 57.6,
           "2026-06": 55.6,
           "2026-07": 61.1,
-          "2026-08": 60.4,
-          "2026-09": 44.2
+          "2026-08": 60.4
         }
       },
       "alianzas_territoriales": {
@@ -4346,7 +4346,7 @@
       "n": 31
     },
     "EPU adelantado 1 mes vs ITCP": {
-      "r": -0.102,
+      "r": -0.087,
       "n": 33
     },
     "niveles, sin la dimensión de sector privado": {
@@ -5194,17 +5194,17 @@
     "inversion_directa_externa": {
       "antes_pct": 50.3,
       "despues_pct": 0.2,
-      "n_meses": 283
+      "n_meses": 284
     },
     "inversion_portafolio_externa": {
       "antes_pct": 124.0,
       "despues_pct": 7.8,
-      "n_meses": 283
+      "n_meses": 284
     },
     "financiamiento_externo_privado": {
       "antes_pct": 110.2,
       "despues_pct": 11.9,
-      "n_meses": 283
+      "n_meses": 284
     }
   },
   "panel_anclas": {
@@ -5239,24 +5239,24 @@
       "avanzo": "2026-09-28"
     },
     "merval_usd": {
-      "ultimo": "2026-09",
-      "n": 35,
-      "avanzo": "2026-09-03"
+      "ultimo": "2026-10",
+      "n": 36,
+      "avanzo": "2026-10-01"
     },
     "inversion_directa_externa": {
-      "ultimo": "2026-07",
-      "n": 283,
-      "avanzo": "2026-09-15"
+      "ultimo": "2026-08",
+      "n": 284,
+      "avanzo": "2026-10-01"
     },
     "inversion_portafolio_externa": {
-      "ultimo": "2026-07",
-      "n": 283,
-      "avanzo": "2026-09-15"
+      "ultimo": "2026-08",
+      "n": 284,
+      "avanzo": "2026-10-01"
     },
     "financiamiento_externo_privado": {
-      "ultimo": "2026-07",
-      "n": 283,
-      "avanzo": "2026-09-15"
+      "ultimo": "2026-08",
+      "n": 284,
+      "avanzo": "2026-10-01"
     },
     "epu_argentina": {
       "ultimo": "2026-08",
@@ -5329,9 +5329,9 @@
           "etiqueta": "Financiamiento externo a empresas",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": -0.247,
-          "r_diferencias": 0.05,
-          "n": 32
+          "r_niveles": -0.253,
+          "r_diferencias": 0.046,
+          "n": 33
         },
         {
           "estadistica": "gas_residencial",
@@ -5374,18 +5374,18 @@
           "etiqueta": "Inversión directa de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": 0.046,
-          "r_diferencias": -0.128,
-          "n": 32
+          "r_niveles": 0.125,
+          "r_diferencias": -0.117,
+          "n": 33
         },
         {
           "estadistica": "inversion_portafolio_externa",
           "etiqueta": "Inversión de cartera de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": -0.267,
-          "r_diferencias": 0.06,
-          "n": 32
+          "r_niveles": -0.247,
+          "r_diferencias": 0.065,
+          "n": 33
         },
         {
           "estadistica": "merval_usd",
@@ -5419,13 +5419,13 @@
       "n_ajenas": 7,
       "niveles": {
         "convergente": 0.277,
-        "discriminante": 0.359,
-        "brecha": -0.082
+        "discriminante": 0.368,
+        "brecha": -0.091
       },
       "diferencias": {
         "convergente": 0.164,
-        "discriminante": 0.139,
-        "brecha": 0.025
+        "discriminante": 0.138,
+        "brecha": 0.026
       },
       "factor": {
         "cargas": {
@@ -5779,7 +5779,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,277 y con las 7 ajenas es 0,359. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,164 con lo propio contra 0,139 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,277 y con las 7 ajenas es 0,368. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,164 con lo propio contra 0,138 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     },
     "itcp": {
       "indice": "itcp",
@@ -5825,9 +5825,9 @@
           "etiqueta": "Financiamiento externo a empresas",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": 0.019,
-          "r_diferencias": 0.177,
-          "n": 31
+          "r_niveles": 0.026,
+          "r_diferencias": 0.169,
+          "n": 32
         },
         {
           "estadistica": "gas_residencial",
@@ -5843,8 +5843,8 @@
           "etiqueta": "Confianza del Consumidor (ICC de la UTDT)",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": -0.091,
-          "r_diferencias": 0.466,
+          "r_niveles": -0.093,
+          "r_diferencias": 0.469,
           "n": 32
         },
         {
@@ -5852,8 +5852,8 @@
           "etiqueta": "Confianza en el Gobierno (ICG de la UTDT)",
           "fuente": "UTDT",
           "propia": true,
-          "r_niveles": -0.047,
-          "r_diferencias": 0.335,
+          "r_niveles": -0.069,
+          "r_diferencias": 0.318,
           "n": 33
         },
         {
@@ -5870,26 +5870,26 @@
           "etiqueta": "Inversión directa de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": 0.125,
-          "r_diferencias": 0.043,
-          "n": 31
+          "r_niveles": 0.065,
+          "r_diferencias": 0.054,
+          "n": 32
         },
         {
           "estadistica": "inversion_portafolio_externa",
           "etiqueta": "Inversión de cartera de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": -0.049,
-          "r_diferencias": -0.261,
-          "n": 31
+          "r_niveles": -0.056,
+          "r_diferencias": -0.192,
+          "n": 32
         },
         {
           "estadistica": "merval_usd",
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": 0.022,
-          "r_diferencias": 0.104,
+          "r_niveles": 0.024,
+          "r_diferencias": 0.089,
           "n": 33
         },
         {
@@ -5914,16 +5914,16 @@
       "n_propias": 2,
       "n_ajenas": 12,
       "niveles": {
-        "convergente": 0.175,
-        "discriminante": 0.184,
-        "brecha": -0.009
+        "convergente": 0.186,
+        "discriminante": 0.181,
+        "brecha": 0.005
       },
       "diferencias": {
-        "convergente": 0.321,
-        "discriminante": 0.173,
-        "brecha": 0.148
+        "convergente": 0.312,
+        "discriminante": 0.167,
+        "brecha": 0.145
       },
-      "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 2 estadísticas de su propio terreno es 0,175 y con las 12 ajenas es 0,184. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,321 con lo propio contra 0,173 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 2 estadísticas de su propio terreno es 0,186 y con las 12 ajenas es 0,181. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,312 con lo propio contra 0,167 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     }
   }
 }

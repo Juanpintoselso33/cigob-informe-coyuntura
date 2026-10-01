@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-01 03:31:51"
+generado: "2026-10-01 23:09:13"
 score_global: 3.9
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -22,7 +22,7 @@ schema_version: "1.2.0"
 | ipc_total | 1.66 | % mensual | 2026-08-01 | fresco |
 | reservas_bcra | 12661.0 | Millones de USD | 2026-08-31 | fresco |
 | idc | -0.27 | σ vs. su historia | 2026-08-01 | fresco |
-| badlar | 23.38 | % anual | 2026-09-29 | fresco |
+| badlar | 22.81 | % anual | 2026-09-30 | fresco |
 | emae_ia | -1.44 | % i.a. | 2026-07-01 | fresco |
 | emae_difusion | 46.67 | % de sectores en crecimiento i.a. | 2026-07-01 | fresco |
 | ipi_manufacturero | -2.82 | % i.a. (promedio 3 meses) | 2026-07-01 | fresco |
@@ -38,9 +38,9 @@ schema_version: "1.2.0"
 | credito_privado | -0.3 | % i.a. real (crédito en pesos) | 2026-08-01 | fresco |
 | costo_financiamiento_tesoro | 7.29 | % real anual (TIREA vs. inflación esperada REM) | 2026-08-01 | fresco |
 | resultado_primario | 6.02 | % de la recaudación (acum. 12 meses) | 2026-08-01 | fresco |
-| prestamos_privados | 0.77 | % mensual nominal | 2026-09-25 | fresco |
-| base_monetaria | -2.99 | % mensual nominal | 2026-09-28 | fresco |
-| tc_mayorista | 0.39 | % mensual | 2026-09-30 | fresco |
+| prestamos_privados | 0.19 | % mensual nominal | 2026-09-28 | fresco |
+| base_monetaria | -2.02 | % mensual nominal | 2026-09-29 | fresco |
+| tc_mayorista | 1.0 | % mensual | 2026-10-01 | fresco |
 
 ### 🟢 Politica — score 3.0/10 (estable)
 *Riesgo de barbarismo: político*
@@ -96,7 +96,7 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 6.41 | % de brecha CCL/mayorista | 2026-09-30 | fresco |
+| cepo_mulc | 6.68 | % de brecha CCL/mayorista | 2026-10-01 | fresco |
 | apertura_comercial | 7.0 | % del intercambio (alícuota efectiva) | 2026-08-01 | fresco |
 | desregulacion_normativa | 17115.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-08-01 | fresco |
 | reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
@@ -105,7 +105,7 @@ schema_version: "1.2.0"
 | litigiosidad_laboral | 2.3 | % variación juicios SRT (12m vs 12m previos) | 2026-06-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 23.8 | % de inversión aprobada sobre el pipeline | 2026-10-01 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-10-01 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-10-01 | ⚠ cache |
 | asistencia_directa | 100.0 | % del devengado de transferencias en ayudas a personas (5.1.4) | 2026-10-01 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 33.1 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-06-01 | fresco |
@@ -122,6 +122,7 @@ schema_version: "1.2.0"
 ## Advertencias
 
 - `desactualizado:politica:votometro_ventaja_lla,apoyo_empresario,bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
+- `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-10-01 03:31:51 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-01 23:09:13 — schema 1.2.0*
