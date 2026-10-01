@@ -1,4 +1,5 @@
 // Formateo de números y rangos para pantalla, SIN depender del snapshot
+// Prueba del conector de claude.ai (se deshace enseguida).
 // (informe.json/series.json). Ese es el motivo de que este módulo exista
 // separado de datos.ts: datos.ts importa informe.json/series.json completos
 // al tope del archivo, así que cualquier <script> client-side que lo
