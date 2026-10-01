@@ -6,10 +6,19 @@ name: Cambios desde Claude
 # 3 de la mañana, con la corrida caída y la web congelada.
 #
 # Dos etiquetas, puestas por el conector según qué archivos toca el cambio:
-#   · `texto`  — web/src/: si todo pasa, se mergea solo. Nadie lo aprueba.
-#   · `metodo` — scripts, config, datos, ADRs, tests: espera a Juan. Al
-#     mergearlo se lanza la corrida de datos, porque un umbral o un peso nuevo
-#     no se ve hasta que se regenera el snapshot.
+#   · `texto`  — rótulos, descripciones, fórmulas, fichas, el marco y la
+#     lectura del mes: si todo pasa, se mergea solo. Nadie lo aprueba.
+#   · `metodo` — scripts, config, datos, ADRs, tests y el resto de la web:
+#     espera a Juan. Al mergearlo se lanza la corrida de datos, porque un
+#     umbral o un peso nuevo no se ve hasta que se regenera el snapshot.
+#
+# Por qué jobs separados y no uno: hasta los archivos de texto son código que
+# el build ejecuta (fichas.ts, datos.ts, un .astro). Si validar y mergear
+# compartieran máquina, ese código podría dejarle algo envenenado al paso que
+# tiene el token —un `gh` falso en $GITHUB_PATH, un hook de git— y mergear lo
+# que quisiera. Así que `validar` corre el código del PR SIN ningún permiso de
+# escritura, y `publicar` arranca en una máquina limpia, no ejecuta nada del
+# PR salvo leerlo como texto, y mergea sólo el commit exacto que pasó.
 
 on:
   pull_request:
@@ -19,10 +28,7 @@ on:
     types: [closed]
     branches: [main]
 
-permissions:
-  contents: write
-  pull-requests: write
-  actions: write
+permissions: {}
 
 concurrency:
   group: cambios-desde-claude-${{ github.event.pull_request.number }}
@@ -35,19 +41,21 @@ jobs:
       startsWith(github.head_ref, 'claude/')
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: read
     defaults:
       run:
         working-directory: projects/informe_coyuntura
-    env:
-      GH_TOKEN: ${{ github.token }}
-      PR: ${{ github.event.pull_request.number }}
+    outputs:
+      sha: ${{ github.event.pull_request.head.sha }}
     steps:
       # Historia completa: test_bigquery_backfill recorre las corridas en git
       # y se niega a pasar sobre un checkout superficial.
       - uses: actions/checkout@v6
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
+          persist-credentials: false
 
       - uses: actions/setup-python@v6
         with:
@@ -64,71 +72,142 @@ jobs:
       - run: npm ci
         working-directory: projects/informe_coyuntura/web
 
-      # Las fichas en markdown salen de fichas.ts y del snapshot; un test exige
-      # que estén al día. Se regeneran acá para que un cambio de texto en una
-      # ficha no falle por un archivo que nadie le pidió a Luis que tocara.
-      - name: Fichas generadas al día
+      # Las fichas en markdown salen de fichas.ts y del snapshot, y un test
+      # exige que estén al día. Se regeneran acá sólo para probar; las sube
+      # `publicar`, que es el único que puede escribir.
+      - run: python scripts/fichas/generar.py --todos
+
+      - name: Tests
         run: |
-          python scripts/fichas/generar.py --todos
+          set -o pipefail
+          mkdir -p "$RUNNER_TEMP/logs"
+          python -m pytest tests -q -p no:cacheprovider 2>&1 | tee "$RUNNER_TEMP/logs/pytest.log"
+
+      - name: Tipos
+        working-directory: projects/informe_coyuntura/web
+        run: |
+          set -o pipefail
+          npx tsc --noEmit 2>&1 | tee "$RUNNER_TEMP/logs/tsc.log"
+
+      - name: Build
+        working-directory: projects/informe_coyuntura/web
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tail -40 | tee "$RUNNER_TEMP/logs/build.log"
+
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs
+          path: ${{ runner.temp }}/logs
+          if-no-files-found: ignore
+
+  publicar:
+    needs: validar
+    if: >-
+      contains(github.event.pull_request.labels.*.name, 'texto') &&
+      !contains(github.event.pull_request.labels.*.name, 'metodo')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR: ${{ github.event.pull_request.number }}
+      SHA: ${{ needs.validar.outputs.sha }}
+      BASE: ${{ github.event.pull_request.base.sha }}
+      RAMA: ${{ github.head_ref }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.validar.outputs.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      # Segunda llave: la etiqueta la pone el conector, pero el merge sólo
+      # ocurre si de verdad todos los archivos son textos. Espeja la lista
+      # TEXTO de cigob-landing/src/lib/monitor-reglas.ts; si cambia allá, se
+      # cambia acá. Se mira el diff del commit validado, no el del PR de ahora.
+      - name: Sólo textos
+        run: |
+          fuera=$(git diff --name-only "$(git merge-base "$BASE" "$SHA")" "$SHA" | grep -vE '^projects/informe_coyuntura/(web/src/lib/(datos|descripciones|formulas|fichas)\.ts|web/src/components/MarcoTension\.astro|web/src/pages/metodologia/index\.astro|web/src/contenido/[^.][^/]*(/[^.][^/]*)*\.md|output/fichas/[^/]+\.md)$' || true)
+          if [ -n "$fuera" ]; then
+            gh pr edit "$PR" --remove-label texto --add-label metodo
+            printf 'Tiene la etiqueta de texto pero toca archivos que no son textos, así que no se publica solo: queda esperando a Juan.\n\n%s\n' "$(echo "$fuera" | sed 's/^/- /')" > "$RUNNER_TEMP/c.md"
+            gh pr comment "$PR" --body-file "$RUNNER_TEMP/c.md"
+            exit 1
+          fi
+
+      # Con la lista verificada, scripts/ es el de main: correr generar.py
+      # acá no ejecuta nada que haya escrito el PR.
+      - name: Fichas al día
+        working-directory: projects/informe_coyuntura
+        run: |
+          python3 scripts/fichas/generar.py --todos
           if [ -n "$(git status --porcelain output/fichas)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898+github-actions[bot]@users.noreply.github.com"
             git add output/fichas
-            git commit -m "fichas: regeneradas desde el cambio de texto"
-            git push
+            git commit -q -m "fichas: regeneradas desde el cambio de texto"
+            git -c core.hooksPath=/dev/null push -q \
+              "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" "HEAD:refs/heads/$RAMA"
           fi
+          echo "FINAL=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
 
-      - name: Tests
-        id: tests
+      # --match-head-commit: si alguien empujó otra cosa después de los
+      # tests, el merge falla en vez de publicar algo que nadie probó.
+      - name: Mergear
         run: |
-          set -o pipefail
-          python -m pytest tests -q -p no:cacheprovider 2>&1 | tee "$RUNNER_TEMP/pytest.log"
+          gh pr merge "$PR" --squash --delete-branch --match-head-commit "$FINAL"
+          gh pr comment "$PR" --body "✅ Pasaron los tests, los tipos y el build. Publicado: en un par de minutos se ve en https://informe.cigob.org/"
 
-      - name: Tipos
-        id: tipos
-        working-directory: projects/informe_coyuntura/web
+  avisar:
+    needs: validar
+    if: >-
+      always() && github.event_name == 'pull_request' &&
+      startsWith(github.head_ref, 'claude/') &&
+      (needs.validar.result == 'failure' ||
+       (needs.validar.result == 'success' && contains(github.event.pull_request.labels.*.name, 'metodo')))
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR: ${{ github.event.pull_request.number }}
+    steps:
+      - if: needs.validar.result == 'success'
         run: |
-          set -o pipefail
-          npx tsc --noEmit 2>&1 | tee "$RUNNER_TEMP/tsc.log"
+          gh pr comment "$PR" --repo "${{ github.repository }}" --body "✅ Pasaron los tests, los tipos y el build. Es un cambio de método: espera la aprobación de Juan. Al mergearlo se lanza la corrida de datos."
 
-      - name: Build
-        id: build
-        working-directory: projects/informe_coyuntura/web
-        run: |
-          set -o pipefail
-          npm run build 2>&1 | tail -40 | tee "$RUNNER_TEMP/build.log"
+      - if: needs.validar.result == 'failure'
+        uses: actions/download-artifact@v4
+        with:
+          name: logs
+          path: logs
+        continue-on-error: true
 
-      - name: Mergear si es texto
-        if: contains(github.event.pull_request.labels.*.name, 'texto')
-        run: |
-          gh pr comment "$PR" --body "✅ Pasaron los tests, los tipos y el build. Se publica solo: en un par de minutos se ve en https://informe.cigob.org/"
-          gh pr merge "$PR" --squash --delete-branch
-
-      - name: Avisar que el método espera aprobación
-        if: contains(github.event.pull_request.labels.*.name, 'metodo')
-        run: |
-          gh pr comment "$PR" --body "✅ Pasaron los tests, los tipos y el build. Es un cambio de método: espera la aprobación de Juan. Al mergearlo se lanza la corrida de datos."
-
-      - name: Explicar qué falló
-        if: failure()
+      # Los logs se leen como texto y se citan dentro de un bloque de código:
+      # nada de lo que diga un test se ejecuta.
+      - if: needs.validar.result == 'failure'
         run: |
           {
             echo "❌ El cambio no se publicó: la web sigue como estaba."
             echo
             for paso in pytest tsc build; do
-              f="$RUNNER_TEMP/$paso.log"
+              f="logs/$paso.log"
               [ -s "$f" ] || continue
               fallas=$(grep -E "^(FAILED|ERROR)|error TS|\[ERROR\]|AssertionError" "$f" | head -15)
               [ -n "$fallas" ] || continue
               echo "**$paso**"
               echo '```'
-              echo "$fallas"
+              echo "$fallas" | sed 's/```/ʼʼʼ/g'
               echo '```'
             done
             echo
             echo "Detalle: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          } > "$RUNNER_TEMP/comentario.md"
-          gh pr comment "$PR" --body-file "$RUNNER_TEMP/comentario.md"
+          } > comentario.md
+          gh pr comment "$PR" --repo "${{ github.repository }}" --body-file comentario.md
 
   corrida-tras-metodo:
     if: >-
@@ -137,6 +216,9 @@ jobs:
       startsWith(github.event.pull_request.head.ref, 'claude/') &&
       contains(github.event.pull_request.labels.*.name, 'metodo')
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      pull-requests: write
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
