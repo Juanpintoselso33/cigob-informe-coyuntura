@@ -496,6 +496,27 @@ del tiempo. Por eso hace dos cosas y ninguna es un resumen diario:
 cada noche sin el ts y publicaría un mensaje nuevo en vez de editar. Por eso el
 paso va **antes** de commitear, no después.
 
+## Cambios pedidos desde claude.ai (ramas `claude/…`)
+
+Desde el 1-oct-2026, Luis y el equipo piden cambios al Monitor conversando en
+claude.ai, a través del conector de la landing (`cigob-landing`, herramientas
+`monitor_*`, código en `src/lib/monitor.ts` y `monitor-reglas.ts`). **Nada
+entra directo a main**: cada pedido abre un PR desde `claude/…` y lo procesa
+`.github/workflows/cambios-desde-claude.yml`.
+
+- Etiqueta `texto` (lista cerrada: `datos.ts`, `descripciones.ts`,
+  `formulas.ts`, `fichas.ts`, el marco y `web/src/contenido/*.md`): si pasan
+  pytest, tsc y el build, **se mergea solo**, y las fichas en markdown se
+  regeneran después en un commit aparte del bot.
+- Etiqueta `metodo` (todo lo demás): espera a Juan; al mergearlo se lanza
+  `data-pipeline.yml`.
+- La lista de textos vive en DOS lugares que se espejan: `TEXTO` en
+  `monitor-reglas.ts` y la regex del paso «Sólo textos» del workflow. Si se
+  cambia una, se cambia la otra.
+- Validar corre el código del PR **sin permisos de escritura**; publicar
+  arranca en otra máquina y mergea con `--match-head-commit`. No juntarlos en
+  un job: hasta `fichas.ts` es código que el build ejecuta.
+
 ## When a GitHub Actions run fails
 
 **Don't reflexively call it "transient, just `gh run rerun`."** Check first:
