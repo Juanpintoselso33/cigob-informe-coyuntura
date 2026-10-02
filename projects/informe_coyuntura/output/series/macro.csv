@@ -735,7 +735,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-19,tc_mayorista,836.75,ARS/USD,BCRA
 2024-02-16,tc_mayorista,835.05,ARS/USD,BCRA
 2024-02-15,tc_mayorista,834.5667,ARS/USD,BCRA
-2024-02-14,tc_mayorista,833.95,ARS/USD,BCRA
 2026-08-01,saldo_comercial_12m,24460.0,M USD (acum. 12 meses),INDEC — cuadro original ICA + historia datos.gob.ar
 2026-07-01,saldo_comercial_12m,23713.7,M USD (acum. 12 meses),INDEC — cuadro original ICA + historia datos.gob.ar
 2026-06-01,saldo_comercial_12m,22522.5,M USD (acum. 12 meses),INDEC — cuadro original ICA + historia datos.gob.ar
@@ -1615,7 +1614,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-19,prestamos_privados,20842630.0,M ARS,BCRA
 2024-02-16,prestamos_privados,20666189.0,M ARS,BCRA
 2024-02-15,prestamos_privados,20777434.0,M ARS,BCRA
-2024-02-14,prestamos_privados,20542255.0,M ARS,BCRA
 2026-07-01,ipi_manufacturero,-2.82,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (planilla original vigente)
 2026-06-01,ipi_manufacturero,-1.99,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (planilla original vigente)
 2026-05-01,ipi_manufacturero,-1.0,% i.a. (promedio 3 meses),INDEC — IPI manufacturero (planilla original vigente)
@@ -2697,7 +2695,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-19,base_monetaria,11111551.0,M ARS,BCRA
 2024-02-16,base_monetaria,10397490.0,M ARS,BCRA
 2024-02-15,base_monetaria,10391159.0,M ARS,BCRA
-2024-02-14,base_monetaria,10493206.0,M ARS,BCRA
 2026-09-30,badlar,22.8125,% anual,BCRA
 2026-09-29,badlar,23.375,% anual,BCRA
 2026-09-28,badlar,22.0625,% anual,BCRA
@@ -3334,7 +3331,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-19,badlar,109.3125,% anual,BCRA
 2024-02-16,badlar,109.125,% anual,BCRA
 2024-02-15,badlar,109.625,% anual,BCRA
-2024-02-14,badlar,108.1875,% anual,BCRA
 2026-08-01,actividad_tributaria,-5.41,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2026-07-01,actividad_tributaria,-1.14,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"
 2026-06-01,actividad_tributaria,-2.56,% i.a. real (compuesto IVA-DGI/cheque),"Sec. Hacienda — IVA-DGI y créditos/débitos bancarios (vía datos.gob.ar) + INDEC (IPC, deflactor)"

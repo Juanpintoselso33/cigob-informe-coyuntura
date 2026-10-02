@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-01T23:08:39.662717+00:00",
+    "generated_at": "2026-10-02T03:29:43.699115+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -1062,21 +1062,21 @@
       },
       "cepo_mulc": {
         "apertura_comercial": 0.344,
-        "concesiones_infraestructura": 0.344,
+        "concesiones_infraestructura": 0.34,
         "desregulacion_normativa": 0.918,
         "fal_modernizacion_laboral": 0.366,
         "gasto_funcionamiento": 0.274,
         "libertad_opcion_salud": 0.899,
         "litigiosidad_laboral": 0.425,
         "masa_salarial": 0.474,
-        "privatizaciones": 0.828,
+        "privatizaciones": 0.827,
         "protocolo_antipiquetes": 0.872,
         "reduccion_estado": 0.762,
-        "reestructuracion_organismos": 0.468
+        "reestructuracion_organismos": 0.465
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.079,
-        "cepo_mulc": 0.344,
+        "cepo_mulc": 0.34,
         "desregulacion_normativa": 0.456,
         "fal_modernizacion_laboral": 0.92,
         "gasto_funcionamiento": 0.281,
@@ -1174,7 +1174,7 @@
       },
       "privatizaciones": {
         "apertura_comercial": 0.495,
-        "cepo_mulc": 0.828,
+        "cepo_mulc": 0.827,
         "concesiones_infraestructura": 0.584,
         "desregulacion_normativa": 0.946,
         "fal_modernizacion_laboral": 0.603,
@@ -1216,7 +1216,7 @@
       },
       "reestructuracion_organismos": {
         "apertura_comercial": 0.299,
-        "cepo_mulc": 0.468,
+        "cepo_mulc": 0.465,
         "concesiones_infraestructura": 0.76,
         "desregulacion_normativa": 0.646,
         "fal_modernizacion_laboral": 0.844,
@@ -1323,7 +1323,7 @@
       {
         "a": "cepo_mulc",
         "b": "privatizaciones",
-        "r": 0.828,
+        "r": 0.827,
         "n": 35,
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
@@ -3098,8 +3098,7 @@
     "2026-06": 2087.8,
     "2026-07": 2090.0,
     "2026-08": 1913.0,
-    "2026-09": 1763.2,
-    "2026-10": 1709.1
+    "2026-09": 1763.2
   },
   "serie_itcp": {
     "2024-01": 69.4,
@@ -5239,9 +5238,9 @@
       "avanzo": "2026-09-28"
     },
     "merval_usd": {
-      "ultimo": "2026-10",
-      "n": 36,
-      "avanzo": "2026-10-01"
+      "ultimo": "2026-09",
+      "n": 35,
+      "avanzo": "2026-10-02"
     },
     "inversion_directa_externa": {
       "ultimo": "2026-08",
