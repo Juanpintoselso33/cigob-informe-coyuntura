@@ -154,11 +154,10 @@ Decidido (Juan, 6-oct):
   mínimo, que no la indexen los buscadores (`noindex` y fuera del sitemap). Si tiene que
   ser privada de verdad, la protección de deploys de Vercel ya pide login en las URLs por
   deploy, aunque solo dejaría entrar a quienes estén en el equipo de Vercel.
+- **El muro de acceso (punto 1) va sobre el mensual.**
 
 Falta definir:
 
-- **Qué día del mes siguiente** se publica.
+- **Qué día del mes siguiente** se publica (se define más adelante).
 - **Qué lleva el mensual además de los datos**: texto de análisis, comparación con el mes
   anterior, el PDF o el informe en un solo archivo (`emitir-artifact.mjs`).
-- **El muro de acceso (punto 1) va sobre el mensual**, que es lo único público. Falta
-  confirmarlo.
