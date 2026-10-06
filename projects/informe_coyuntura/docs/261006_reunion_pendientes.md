@@ -146,12 +146,19 @@ Decidido (Juan, 6-oct):
 - **Las fotos anteriores quedan disponibles**: cada mes con la suya. Todas las corridas ya
   quedan en git y en BigQuery (`corridas`, `origen = 'cron'`), así que las viejas se pueden
   reconstruir.
+- **La URL actual (`cigob-informe-coyuntura.vercel.app`) queda para el mensual.**
+- **El seguimiento diario pasa a una URL larga y difícil de adivinar** (de Vercel, GitHub
+  o similar) y por ahora es **solo para uso interno**.
+
+  Una URL difícil de adivinar no es privada: alguien la reenvía y queda abierta. Como
+  mínimo, que no la indexen los buscadores (`noindex` y fuera del sitemap). Si tiene que
+  ser privada de verdad, la protección de deploys de Vercel ya pide login en las URLs por
+  deploy, aunque solo dejaría entrar a quienes estén en el equipo de Vercel.
 
 Falta definir:
 
 - **Qué día del mes siguiente** se publica.
-- **Cuál de las dos caras queda en la URL actual**, la del mes o la diaria.
 - **Qué lleva el mensual además de los datos**: texto de análisis, comparación con el mes
   anterior, el PDF o el informe en un solo archivo (`emitir-artifact.mjs`).
-- **Cómo se cruza con el muro de acceso (punto 1)**: cuál de las dos caras queda detrás
-  del mail.
+- **El muro de acceso (punto 1) va sobre el mensual**, que es lo único público. Falta
+  confirmarlo.
