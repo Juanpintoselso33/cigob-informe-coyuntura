@@ -504,7 +504,14 @@ claude.ai, a través del conector de la landing (`cigob-landing`, herramientas
 `claude/…` y `.github/workflows/cambios-desde-claude.yml` **lo mergea solo**:
 corre pytest, tsc y el build y, al terminar, mergea pase lo que pase (decisión
 de Juan del 6-oct-2026: con aprobación previa el conector «no tiene gracia»).
-Si algo falló, lo comenta en el PR y la corrida nocturna lo avisa en Slack.
+Si algo falló, lo comenta en el PR y avisa **en el momento** en
+#monitor-alertas (`scripts/aviso_cambio_claude.py`): pruebas/tipos/build en
+rojo, deploy de Vercel caído o página que no carga, corrida de datos fallida,
+cálculo/bandas/cards tocados, o un cambio grande (más de 5 archivos o 300
+líneas). Cada aviso dice quién lo pidió, qué cambió y el link al PR; lo que
+pasa después del merge va en el hilo del primer aviso. Un cambio de texto que
+pasa todo no avisa nada. El script es autónomo y se corre desde la versión de
+`main` anterior al merge: el job que lo corre tiene el token.
 
 - Si el cambio toca algo fuera de `web/src/` (cálculo, config, datos, ADRs),
   lanza además `data-pipeline.yml`.

@@ -92,12 +92,18 @@ jobs:
       contents: write
       pull-requests: write
       actions: write
+    outputs:
+      metodo: ${{ steps.archivos.outputs.metodo }}
+      hilo: ${{ steps.evaluar.outputs.hilo }}
+      despacho: ${{ steps.corrida.outputs.despacho }}
     env:
       GH_TOKEN: ${{ github.token }}
       PR: ${{ github.event.pull_request.number }}
       SHA: ${{ github.event.pull_request.head.sha }}
       BASE: ${{ github.event.pull_request.base.sha }}
       TESTS: ${{ needs.validar.result }}
+      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      SLACK_CANAL_ALERTAS: ${{ secrets.SLACK_CANAL_ALERTAS }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -118,6 +124,15 @@ jobs:
           metodo=$(echo "$cambiados" | grep -vE '^projects/informe_coyuntura/(web/src/|output/fichas/)' | grep -v '^$' || true)
           [ -n "$metodo" ] && echo "metodo=si" >> "$GITHUB_OUTPUT" || echo "metodo=no" >> "$GITHUB_OUTPUT"
 
+      # El script de avisos sale de main ANTES del merge (`$BASE`), nunca del
+      # PR: este job tiene el token y no ejecuta nada que haya escrito el PR.
+      - name: Preparar el aviso
+        run: |
+          mkdir -p "$RUNNER_TEMP/aviso"
+          git show "$BASE:projects/informe_coyuntura/scripts/aviso_cambio_claude.py" > "$RUNNER_TEMP/aviso/aviso.py" \
+            || echo "[aviso] main todavía no tiene el script: este cambio no avisa"
+          gh pr view "$PR" --json title,url,body,files,additions,deletions > "$RUNNER_TEMP/aviso/pr.json"
+
       # --match-head-commit: si alguien empujó otra cosa en el medio, el merge
       # falla en vez de publicar algo distinto de lo pedido. GitHub calcula si
       # un PR se puede mergear en diferido, así que se reintenta.
@@ -130,8 +145,11 @@ jobs:
           done
 
       - name: Corrida de datos si tocó el cálculo
+        id: corrida
         if: steps.archivos.outputs.metodo == 'si'
-        run: gh workflow run data-pipeline.yml --repo "${{ github.repository }}" --ref main
+        run: |
+          echo "despacho=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+          gh workflow run data-pipeline.yml --repo "${{ github.repository }}" --ref main
 
       - if: env.TESTS == 'failure'
         uses: actions/download-artifact@v4
@@ -166,6 +184,40 @@ jobs:
           } > comentario.md
           gh pr comment "$PR" --body-file comentario.md
 
+      # Slack: pruebas en rojo, cálculo/bandas/cards tocados o un cambio grande.
+      - name: Avisar en Slack
+        id: evaluar
+        continue-on-error: true
+        run: |
+          [ -s "$RUNNER_TEMP/aviso/aviso.py" ] || exit 0
+          python3 "$RUNNER_TEMP/aviso/aviso.py" evaluar --pr "$PR" --datos-pr "$RUNNER_TEMP/aviso/pr.json" \
+            --pruebas "$TESTS" --logs logs
+
+      # Espera el deploy de Vercel del merge y abre la página. Avisa si el
+      # deploy falló, no terminó en 10 minutos o la página no carga.
+      - name: Seguir el deploy
+        continue-on-error: true
+        run: |
+          [ -s "$RUNNER_TEMP/aviso/aviso.py" ] || exit 0
+          merge=$(gh pr view "$PR" --json mergeCommit --jq .mergeCommit.oid)
+          estado=""
+          for i in $(seq 1 40); do
+            estado=$(gh api "repos/${{ github.repository }}/commits/$merge/status" \
+              --jq '[.statuses[]|select(.context|test("Vercel"))][0].state // ""')
+            [ "$estado" = success ] || [ "$estado" = failure ] || [ "$estado" = error ] && break
+            sleep 15
+          done
+          http=$(curl -s -o /dev/null -w "%{http_code}" "https://informe.cigob.org/?cb=$RANDOM" || echo "")
+          python3 "$RUNNER_TEMP/aviso/aviso.py" deploy --pr "$PR" --datos-pr "$RUNNER_TEMP/aviso/pr.json" \
+            --hilo "${{ steps.evaluar.outputs.hilo }}" --estado "$estado" --http "$http"
+
+      - name: Guardar el aviso para seguir la corrida
+        if: steps.archivos.outputs.metodo == 'si'
+        uses: actions/upload-artifact@v4
+        with:
+          name: aviso
+          path: ${{ runner.temp }}/aviso
+
       # Las fichas en markdown se regeneran después y directo a main, como las
       # sube el cron. Si falla, la corrida nocturna las regenera igual.
       - name: Fichas al día en main
@@ -182,3 +234,43 @@ jobs:
           git commit -q -m "fichas: regeneradas tras el #$PR"
           git -c core.hooksPath=/dev/null push -q \
             "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" HEAD:refs/heads/main
+
+  # La corrida de datos que lanzó un cambio de cálculo: se la sigue hasta que
+  # termina y, si no sale bien, se avisa en el hilo del cambio.
+  seguir-corrida:
+    needs: publicar
+    if: ${{ !cancelled() && needs.publicar.outputs.metodo == 'si' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR: ${{ github.event.pull_request.number }}
+      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      SLACK_CANAL_ALERTAS: ${{ secrets.SLACK_CANAL_ALERTAS }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: aviso
+          path: aviso
+      - name: Esperar la corrida y avisar si falla
+        run: |
+          [ -s aviso/aviso.py ] || exit 0
+          desde="${{ needs.publicar.outputs.despacho }}"
+          id=""
+          for i in $(seq 1 20); do
+            id=$(gh run list --repo "${{ github.repository }}" --workflow data-pipeline.yml --event workflow_dispatch \
+              --limit 5 --json databaseId,createdAt --jq "[.[]|select(.createdAt >= \"$desde\")]|last|.databaseId // empty")
+            [ -n "$id" ] && break
+            sleep 15
+          done
+          if [ -z "$id" ]; then
+            python3 aviso/aviso.py corrida --pr "$PR" --datos-pr aviso/pr.json --hilo "${{ needs.publicar.outputs.hilo }}" \
+              --conclusion "no arrancó" --corrida-url "${{ github.server_url }}/${{ github.repository }}/actions/workflows/data-pipeline.yml"
+            exit 0
+          fi
+          gh run watch "$id" --repo "${{ github.repository }}" > /dev/null 2>&1 || true
+          conclusion=$(gh run view "$id" --repo "${{ github.repository }}" --json conclusion --jq .conclusion)
+          python3 aviso/aviso.py corrida --pr "$PR" --datos-pr aviso/pr.json --hilo "${{ needs.publicar.outputs.hilo }}" \
+            --conclusion "$conclusion" --corrida-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/$id"
