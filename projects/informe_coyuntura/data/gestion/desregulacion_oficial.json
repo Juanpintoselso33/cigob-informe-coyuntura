@@ -141,6 +141,19 @@
    "normas_afectadas": 1306,
    "periodo": "2025-09"
   },
+  "informe_analisis_de_la_desregulacion_implementada_septiembre_0.pdf": {
+   "articulos": 17606,
+   "articulos_recientes": {
+    "2026-07": 16848,
+    "2026-08": 17115,
+    "2026-09": 17606
+   },
+   "normas": 807,
+   "normas_afectadas": 2891,
+   "periodo": "2026-09",
+   "sha256": "1bccbe5446ca637bc3f3d9c9971fe53c13b293b22ae1fab54b61566907879766",
+   "url": "https://www.argentina.gob.ar/sites/default/files/2025/06/informe_analisis_de_la_desregulacion_implementada_septiembre_0.pdf"
+  },
   "informe_analsisi_de_la_desregulacion_implementada_julio.pdf": {
    "articulos": 8090,
    "normas": 396,
