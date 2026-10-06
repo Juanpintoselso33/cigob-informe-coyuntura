@@ -6,10 +6,9 @@ name: Cambios desde Claude
 # 3 de la mañana, con la corrida caída y la web congelada.
 #
 # Dos etiquetas, puestas por el conector según qué archivos toca el cambio:
-#   · `texto`  — rótulos, descripciones, fórmulas, fichas, el marco y la
-#     lectura del mes: si todo pasa, se mergea solo. Nadie lo aprueba.
-#   · `metodo` — scripts, config, datos, ADRs, tests y el resto de la web:
-#     espera a Juan. Al mergearlo se lanza la corrida de datos, porque un
+#   · `texto`  — todo lo de la web (web/src/, salvo los datos generados):
+#     si todo pasa, se mergea solo. Nadie lo aprueba. Ampliado el 6-oct-2026.
+#   · `metodo` — scripts, config, datos, ADRs y tests: espera a Juan. Al mergearlo se lanza la corrida de datos, porque un
 #     umbral o un peso nuevo no se ve hasta que se regenera el snapshot.
 #
 # Por qué jobs separados y no uno: hasta los archivos de texto son código que
@@ -124,12 +123,13 @@ jobs:
           persist-credentials: false
 
       # Segunda llave: la etiqueta la pone el conector, pero el merge sólo
-      # ocurre si de verdad todos los archivos son textos. Espeja la lista
-      # TEXTO de cigob-landing/src/lib/monitor-reglas.ts; si cambia allá, se
-      # cambia acá. Se mira el diff del commit validado, no el del PR de ahora.
+      # ocurre si de verdad todos los archivos son de la web. Espeja esTexto()
+      # de cigob-landing/src/lib/monitor-reglas.ts; si cambia allá, se cambia
+      # acá. Se mira el diff del commit validado, no el del PR de ahora.
       - name: Sólo textos
         run: |
-          fuera=$(git diff --name-only "$(git merge-base "$BASE" "$SHA")" "$SHA" | grep -vE '^projects/informe_coyuntura/(web/src/lib/(datos|descripciones|formulas|fichas)\.ts|web/src/components/MarcoTension\.astro|web/src/pages/metodologia/index\.astro|web/src/contenido/[^.][^/]*(/[^.][^/]*)*\.md|output/fichas/[^/]+\.md)$' || true)
+          cambiados=$(git diff --name-only "$(git merge-base "$BASE" "$SHA")" "$SHA")
+          fuera=$( { echo "$cambiados" | grep -vE '^projects/informe_coyuntura/(web/src/|output/fichas/[^/]+\.md$)' ; echo "$cambiados" | grep -E '^projects/informe_coyuntura/web/src/data/|/\.' ; } | sort -u | grep -v '^$' || true)
           if [ -n "$fuera" ]; then
             gh pr edit "$PR" --remove-label texto --add-label metodo
             printf 'Tiene la etiqueta de texto pero toca archivos que no son textos, así que no se publica solo: queda esperando a Juan.\n\n%s\n' "$(echo "$fuera" | sed 's/^/- /')" > "$RUNNER_TEMP/c.md"
