@@ -139,13 +139,18 @@ El Monitor del Plan de Gobierno pasa a tener dos caras:
 - **El informe del mes**: la foto fija del mes anterior. Es la versión principal.
 - **El seguimiento diario**: en otro link, lo que hoy publica la corrida de cada noche.
 
+Decidido (Juan, 6-oct):
+
+- **La foto del mes es la última corrida nocturna del mes.**
+- **Se publica un día fijo del mes siguiente**, todavía por definir.
+- **Las fotos anteriores quedan disponibles**: cada mes con la suya. Todas las corridas ya
+  quedan en git y en BigQuery (`corridas`, `origen = 'cron'`), así que las viejas se pueden
+  reconstruir.
+
 Falta definir:
 
-- **Qué corrida es la foto del mes**: la última del nocturno de cada mes, o una fecha de
-  corte fija. Todas las corridas ya quedan en git y en BigQuery (tabla `corridas`,
-  filtrando `origen = 'cron'`), así que una foto se puede reconstruir aunque llegue tarde.
-- **Cómo se publica**: una página por mes con su propia URL, para que la foto vieja siga
-  disponible, o una sola página que se reemplaza. Y cuál de los dos queda en la URL actual.
+- **Qué día del mes siguiente** se publica.
+- **Cuál de las dos caras queda en la URL actual**, la del mes o la diaria.
 - **Qué lleva el mensual además de los datos**: texto de análisis, comparación con el mes
   anterior, el PDF o el informe en un solo archivo (`emitir-artifact.mjs`).
 - **Cómo se cruza con el muro de acceso (punto 1)**: cuál de las dos caras queda detrás
