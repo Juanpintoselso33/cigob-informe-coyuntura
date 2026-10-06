@@ -500,23 +500,22 @@ paso va **antes** de commitear, no después.
 
 Desde el 1-oct-2026, Luis y el equipo piden cambios al Monitor conversando en
 claude.ai, a través del conector de la landing (`cigob-landing`, herramientas
-`monitor_*`, código en `src/lib/monitor.ts` y `monitor-reglas.ts`). **Nada
-entra directo a main**: cada pedido abre un PR desde `claude/…` y lo procesa
-`.github/workflows/cambios-desde-claude.yml`.
+`monitor_*`, código en `src/lib/monitor.ts` y `monitor-reglas.ts`). Cada pedido abre un PR desde
+`claude/…` y `.github/workflows/cambios-desde-claude.yml` **lo mergea solo**:
+corre pytest, tsc y el build y, al terminar, mergea pase lo que pase (decisión
+de Juan del 6-oct-2026: con aprobación previa el conector «no tiene gracia»).
+Si algo falló, lo comenta en el PR y la corrida nocturna lo avisa en Slack.
 
-- Etiqueta `texto` (todo `web/src/` salvo `web/src/data/` y archivos ocultos;
-  hasta el 6-oct-2026 era una lista cerrada de cinco archivos y Juan la amplió
-  porque así el conector no servía): si pasan pytest, tsc y el build, **se
-  mergea solo**, y las fichas en markdown se regeneran después en un commit
-  aparte del bot.
-- Etiqueta `metodo` (scripts, config, datos, ADRs, tests): espera a Juan; al
-  mergearlo se lanza `data-pipeline.yml`.
-- La regla vive en DOS lugares que se espejan: `esTexto()` en
-  `monitor-reglas.ts` y el filtro del paso «Sólo textos» del workflow. Si se
-  cambia uno, se cambia el otro.
+- Si el cambio toca algo fuera de `web/src/` (cálculo, config, datos, ADRs),
+  lanza además `data-pipeline.yml`.
+- Lo único que frena el merge: `.github/`, cualquier `.env` y
+  `web/src/data/` (generado). Las etiquetas `texto`/`metodo` quedaron como
+  información, no como compuerta.
 - Validar corre el código del PR **sin permisos de escritura**; publicar
   arranca en otra máquina y mergea con `--match-head-commit`. No juntarlos en
   un job: hasta `fichas.ts` es código que el build ejecuta.
+- Las fichas en markdown se regeneran después del merge, en un commit aparte
+  del bot directo a main.
 
 ## When a GitHub Actions run fails
 
