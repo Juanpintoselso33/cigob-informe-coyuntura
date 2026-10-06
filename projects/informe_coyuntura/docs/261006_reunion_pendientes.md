@@ -131,3 +131,22 @@ Falta completar:
   runners, Google Trends y lo que use cache seguido en los logs del nocturno.
 - `docs/pendientes-datos.md` tiene una lista parecida pero está vencida (30-jun):
   actualizarla en vez de armar otra.
+
+## 8. Concretar el informe mensual
+
+El Monitor del Plan de Gobierno pasa a tener dos caras:
+
+- **El informe del mes**: la foto fija del mes anterior. Es la versión principal.
+- **El seguimiento diario**: en otro link, lo que hoy publica la corrida de cada noche.
+
+Falta definir:
+
+- **Qué corrida es la foto del mes**: la última del nocturno de cada mes, o una fecha de
+  corte fija. Todas las corridas ya quedan en git y en BigQuery (tabla `corridas`,
+  filtrando `origen = 'cron'`), así que una foto se puede reconstruir aunque llegue tarde.
+- **Cómo se publica**: una página por mes con su propia URL, para que la foto vieja siga
+  disponible, o una sola página que se reemplaza. Y cuál de los dos queda en la URL actual.
+- **Qué lleva el mensual además de los datos**: texto de análisis, comparación con el mes
+  anterior, el PDF o el informe en un solo archivo (`emitir-artifact.mjs`).
+- **Cómo se cruza con el muro de acceso (punto 1)**: cuál de las dos caras queda detrás
+  del mail.
