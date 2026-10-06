@@ -52,8 +52,12 @@ interface Props {
       se dibuja. Para cuando el contexto ya lo dice (la card del cinturón ya
       lleva su nombre arriba y repetirlo es ruido). */
   ocultarTitulo?: boolean;
+  /** No dibuja la palabra del tramo («Sin tensión relevante», etc.) sobre la
+      barra. Pedido editorial para el hero del inicio: la barra se lee por
+      color y posición. */
+  ocultarLectura?: boolean;
 }
-const { tension, titulo, tamano = "chica", pie, ocultarTitulo = false } = Astro.props as Props;
+const { tension, titulo, tamano = "chica", pie, ocultarTitulo = false, ocultarLectura = false } = Astro.props as Props;
 
 const tramos = tramosSemaforo();
 const hayEscala = tramos.length > 0;
@@ -90,7 +94,7 @@ const lectura = color ? LECTURA_SEMAFORO[color] : null;
 const aria = valor === null
   ? `${titulo}: sin dato`
   : lectura
-    ? `${titulo}: ${lectura} (${color})`
+    ? (ocultarLectura ? `${titulo}: tramo ${color}` : `${titulo}: ${lectura} (${color})`)
     : `${titulo}: tensión ${num(valor)} — escala de colores no disponible`;
 ---
 <figure
@@ -105,7 +109,7 @@ const aria = valor === null
     {valor === null
       ? <span class="cg-nivel-lectura is-sindato">Sin dato</span>
       : lectura
-        ? <span class="cg-nivel-lectura">{lectura}</span>
+        ? (!ocultarLectura && <span class="cg-nivel-lectura">{lectura}</span>)
         : <span class="cg-nivel-lectura is-sinescala">Escala no disponible</span>}
     {valor !== null && !lectura && <span class="cg-nivel-valor">{num(valor)}</span>}
   </figcaption>
