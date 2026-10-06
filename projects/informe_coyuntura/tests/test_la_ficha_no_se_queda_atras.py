@@ -277,7 +277,8 @@ def test_hay_adrs_que_verificar():
 def test_un_adr_que_toca_un_indicador_lo_cuenta_en_su_ficha():
     """El disparador. Un ADR aceptado que nombra un indicador es, por
     definición, una decisión sobre ese indicador: su ficha tiene que registrarla
-    —citando el ADR o con una entrada de `cambios` de esa fecha o posterior—.
+    —citando el ADR en el campo `adr` de una entrada, o con una entrada de
+    `cambios` de esa fecha o posterior—.
 
     Se exige sólo a los indicadores que TIENEN ficha: el frontmatter
     `indicadores:` también se usó para nombrar funciones del colector, y el
@@ -293,7 +294,10 @@ def test_un_adr_que_toca_un_indicador_lo_cuenta_en_su_ficha():
             m = re.search(r"cambios:\s*\[(.*?)\n    \]", b, re.S)
             cambios = m.group(1) if m else ""
             fechas = re.findall(r'fecha:\s*"([0-9]{4}-[0-9]{2}(?:-[0-9]{2})?)"', cambios)
-            if f"ADR-{num}" in cambios or any(f >= fecha[:len(f)] for f in fechas):
+            # El número del ADR va en el campo `adr` de la entrada, que la web no
+            # muestra (ADR-0340): la ficha pública no lleva números de ADR.
+            adrs = {n for g in re.findall(r'adr:\s*"([0-9,]+)"', cambios) for n in g.split(",")}
+            if num in adrs or f"ADR-{num}" in cambios or any(f >= fecha[:len(f)] for f in fechas):
                 continue
             faltan.append(f"ADR-{num} ({fecha}) decide sobre «{clave}» y su ficha "
                           f"no lo registra")

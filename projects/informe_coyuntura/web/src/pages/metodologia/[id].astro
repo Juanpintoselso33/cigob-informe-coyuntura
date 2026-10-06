@@ -197,8 +197,8 @@ const pasosIndice = !esIndicador ? [
   { paso: "Paso 5 · OCDE/JRC", titulo: fx.base100 ? "Normalización: base 100" : "Normalización: anclas interpoladas", parrafos: fx.normalizacion },
 ] : [];
 
-const titulo = esIndicador ? label(f.id) : `${fx.sigla} — ${fx.nombreLargo}`;
-const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
+const titulo = esIndicador ? label(f.id) : fx.nombreLargo;
+const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo);
 ---
 <Layout title={`Ficha metodológica: ${titulo} · Monitor del Plan de Gobierno · CiGob`}>
   <Nav />
@@ -212,10 +212,10 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
           <span class="cg-detalle-chip">Hoy <strong>{pres.texto}{pres.unidad ? ` ${pres.unidad}` : ""}</strong> ({periodoVigente})</span>
         )}
         {esIndicador && puntajeHoy !== null && indice && (
-          <span class="cg-detalle-chip">{indice.base100 ? "Componente" : `Puntaje en el ${indice.sigla}`} <strong>{coma(puntajeHoy)}{indice.base100 ? "" : "/100"}</strong>{indice.base100 ? (f.id === "peso_tarifas" ? " · 100 = tensión 5" : " · 100 = 4T-2023") : ""}</span>
+          <span class="cg-detalle-chip">{indice.base100 ? "Componente" : `Puntaje en el ${indice.corto}`} <strong>{coma(puntajeHoy)}{indice.base100 ? "" : "/100"}</strong>{indice.base100 ? (f.id === "peso_tarifas" ? " · 100 = tensión 5" : " · 100 = 4T-2023") : ""}</span>
         )}
         {esIndicador && integraIndice && pesoEfectivo !== null && pesoEfectivo > 0 && indice && (
-          <span class="cg-detalle-chip">Peso efectivo <strong>{pct(pesoEfectivo)}</strong> del {indice.sigla}</span>
+          <span class="cg-detalle-chip">Peso efectivo <strong>{pct(pesoEfectivo)}</strong> del {indice.corto}</span>
         )}
         {esIndicador && ind && <span class="cg-detalle-chip"><strong>{badgeEstado(ind)}</strong></span>}
         {!esIndicador && it && (
@@ -284,12 +284,12 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
             <div><dt>Cinturón</dt><dd>{CINT_NOMBRE[f.cinturon]}</dd></div>
             {dimNombre && indice && integraIndice && (
               <div>
-                <dt>Dimensión en el {indice.sigla}</dt>
+                <dt>Dimensión en el {indice.corto}</dt>
                 <dd>
                   {dimNombre}
                   {pesoDimNominal !== null && ` · ${pct(pesoDimNominal)} de peso nominal en el índice`}
                   {pesoInternoNominal !== null && ` · ${pct(pesoInternoNominal)} interno`}
-                  {pesoEfectivo !== null && ` · ${pct(pesoEfectivo)} efectivo del ${indice.sigla}`}
+                  {pesoEfectivo !== null && ` · ${pct(pesoEfectivo)} efectivo del ${indice.corto}`}
                   {!sinRenormalizacion && pesoEfectivo !== null && " · ponderación efectiva ajustada a los datos disponibles"}
                 </dd>
               </div>
@@ -342,7 +342,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
           <section class="cg-section">
             <div class="cg-section-head">
               <p class="cg-eyebrow">Puntaje</p>
-              <h2 class="cg-h2">{indice ? `Cómo entra al ${indice.sigla}` : "Cómo se convierte en tensión"}</h2>
+              <h2 class="cg-h2">{indice ? `Cómo entra al ${indice.corto}` : "Cómo se convierte en tensión"}</h2>
               {fi.anclas && (
                 <p class="cg-h2-sub">{integraIndice
                   ? "Los umbrales son institucionales (paramétrica CIGOB); el motor los lee como anclas y el puntaje se interpola linealmente entre ellas."
@@ -354,12 +354,12 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
                 <div class="cg-ficha-callout">
                   <strong>Ponderación y aporte vigentes.</strong>{" "}
                   {sinRenormalizacion && pesoInternoNominal !== null && pesoDimNominal !== null
-                    ? `${pct(pesoInternoNominal)} interno × ${pct(pesoDimNominal)} de la dimensión = ${pct(pesoEfectivo)} efectivo del ${indice.sigla}.`
-                    : `El indicador representa ${pct(pesoEfectivo)} efectivo del ${indice.sigla}; los pesos nominales se ajustan cuando faltan datos.`}
+                    ? `${pct(pesoInternoNominal)} interno × ${pct(pesoDimNominal)} de la dimensión = ${pct(pesoEfectivo)} efectivo del ${indice.corto}.`
+                    : `El indicador representa ${pct(pesoEfectivo)} efectivo del ${indice.corto}; los pesos nominales se ajustan cuando faltan datos.`}
                   {aporteIndice !== null && puntajeHoy !== null && (
                     <Fragment>{" "}{indice.base100
-                      ? `Nivel aplicado ${coma(puntajeHoy)} (${f.id === "peso_tarifas" ? "100 = punto medio de la escala" : "100 = 4T-2023"}) × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.sigla}.`
-                      : `Puntaje aplicado ${coma(puntajeHoy)}/100 × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.sigla}.`}</Fragment>
+                      ? `Nivel aplicado ${coma(puntajeHoy)} (${f.id === "peso_tarifas" ? "100 = punto medio de la escala" : "100 = 4T-2023"}) × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.corto}.`
+                      : `Puntaje aplicado ${coma(puntajeHoy)}/100 × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.corto}.`}</Fragment>
                   )}
                 </div>
               )}
@@ -410,7 +410,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
               {fi.anclas && indice && (
                 <p class="cg-ficha-p" style="margin:0 0 14px;">
                   Esta tabla no es una escala nueva ni una segunda opinión: es la de más
-                  arriba ("Cómo entra al {indice.sigla}") leída al revés. Ahí un valor se
+                  arriba ("Cómo entra al {indice.corto}") leída al revés. Ahí un valor se
                   convierte en puntaje; acá se muestra en qué valor concreto ese mismo
                   puntaje cruza cada corte de color.
                 </p>
@@ -565,7 +565,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
             {fx.robustez.map(p => <p class="cg-ficha-p">{p}</p>)}
             <div class="cg-ficha-callout">
               <strong>Edición vigente ({mesLegible(informe.period)}).</strong>{" "}
-              {fx.sigla} publicado: {coma(it.valor)}. En {rob.n_draws.toLocaleString("es-AR")} escenarios simulados,
+              {indice?.Corto ?? fx.nombreLargo} publicado: {coma(it.valor)}. En {rob.n_draws.toLocaleString("es-AR")} escenarios simulados,
               el 90% cae entre {coma(rob.p05)} y {coma(rob.p95)} (tensión {coma(rob.tension_rango[0])}–{coma(rob.tension_rango[1])}).
               {rob.dominante && ` Componente dominante: ${label(rob.dominante.indicador)} — sin él, el índice sería ${coma(rob.dominante.indice_sin)}.`}
             </div>
@@ -655,7 +655,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
           <div class="cg-ficha-card" style="margin-top:14px; max-width:480px;">
             <div class="cg-ficha-tablewrap">
               <table class="cg-ficha-tabla">
-                <thead><tr><th>{fx.sigla}</th><th>Lectura</th></tr></thead>
+                <thead><tr><th>Valor</th><th>Lectura</th></tr></thead>
                 <tbody>
                   {fx.interpretacion.map(r => (
                     <tr><td class="num">{r.rango}</td><td>{r.lectura}</td></tr>

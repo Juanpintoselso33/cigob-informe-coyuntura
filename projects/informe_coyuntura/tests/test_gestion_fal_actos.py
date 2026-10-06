@@ -13,6 +13,7 @@ Cuatro guardas, cada una contra una forma distinta de perder esa corrección:
 3. la adopción no se contamina             → «cese laboral» ≠ «asistencia laboral»
 4. la reversión está dicha en la ficha     → un lector tiene que poder discutirla
 """
+import re
 import json
 import sys
 from datetime import date
@@ -183,7 +184,9 @@ def test_la_reversion_editorial_esta_declarada_en_la_ficha():
     ficha = (RAIZ / "web" / "src" / "lib" / "fichas.ts").read_text(encoding="utf-8")
     i = ficha.index("fal_modernizacion_laboral: {")
     bloque = ficha[i:i + 12000]
-    assert "ADR-0228" in bloque
+    # El número va en el campo `adr` del historial: la ficha pública no
+    # muestra números de ADR (ADR-0340), pero la entrada sigue atada a él.
+    assert re.search(r'adr: "[0-9,]*0228', bloque)
     assert "revierte la decisión editorial" in bloque
     assert "empeora el número" in bloque
     for hecho in ("Chequeado", "Heritage", "30 de marzo"):

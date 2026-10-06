@@ -134,19 +134,16 @@ def test_ninguna_sigla_ajena_se_publica_sin_su_dueno():
 
 
 # ── El Monitor habla sin siglas (ADR-0340) ───────────────────────────────────
-# Las siglas de los cuatro índices quedaron para la capa metodológica: las
-# fichas (`fichas.ts` y la página que las renderiza) las conservan porque ahí
-# se documenta el índice como objeto técnico. En todo lo demás que ve el lector
-# el índice se nombra por lo que mide. Tampoco se muestran referencias a ADR ni
-# el formato de archivo («CSV»): son vocabulario interno.
+# En todo lo que ve el lector, fichas metodológicas incluidas, el índice se
+# nombra por lo que mide. Tampoco se muestran referencias a ADR ni el formato
+# de archivo («CSV»): son vocabulario interno. Las fichas quedaron exceptuadas
+# del 24-sep al 6-oct-2026 sin un motivo que lo sostuviera; ver ADR-0340. El
+# número de ADR de cada cambio sigue en `fichas.ts`, en el campo `adr`, que la
+# página no muestra.
 
 INDICES = ("ITCM", "ITCP", "ITCIS", "ITCG")
 PROHIBIDAS = re.compile(r"\b(?:ITCM|ITCP|ITCIS|ITCG|ITVC|ADR-\d{4}|CSV)\b")
-CAPA_METODOLOGICA = {
-    ROOT / "web" / "src" / "lib" / "fichas.ts",
-    ROOT / "web" / "src" / "pages" / "metodologia" / "[id].astro",
-}
-VISIBLES = [p for p in DISPLAY if p not in CAPA_METODOLOGICA]
+VISIBLES = list(DISPLAY)
 
 
 def _sin_comentarios(texto: str) -> str:
@@ -158,19 +155,14 @@ def _sin_comentarios(texto: str) -> str:
     return re.sub(r"(?<![:\\])//.*", " ", texto)
 
 
-def test_la_capa_metodologica_existe():
-    """Si un archivo de la excepción se renombra, la excepción deja de
-    exceptuar y este test lo dice antes que el de abajo falle por él."""
-    for p in CAPA_METODOLOGICA:
-        assert p.exists(), f"{p.relative_to(ROOT)} no existe: ¿se movió la capa de fichas?"
-
-
 @pytest.mark.parametrize("ruta", VISIBLES, ids=lambda p: p.name)
 def test_la_web_no_muestra_siglas_internas(ruta):
     texto = _sin_comentarios(ruta.read_text(encoding="utf-8"))
     # La sigla sigue declarada como identificador del índice (`indiceDe`): es
     # la clave con la que la matriz cruzada marca su fila, no texto de pantalla.
     texto = re.sub(r'sigla: "(?:ITCM|ITCP|ITCIS|ITCG)"', " ", texto)
+    # El número de ADR de cada cambio de ficha: trazabilidad, no se muestra.
+    texto = re.sub(r'adr: "[0-9,]+"', " ", texto)
     encontradas = sorted(set(PROHIBIDAS.findall(texto)))
     assert not encontradas, (
         f"{ruta.relative_to(ROOT)} muestra {encontradas}: el índice se nombra en llano "

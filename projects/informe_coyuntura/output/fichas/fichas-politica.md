@@ -179,11 +179,11 @@ Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional
 
 **2026-06-30** — Serie mensual reconstruida hacia atrás hasta diciembre de 2023, evaluando la misma ponderación al cierre de cada mes.
 
-**2026-07-07** — Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
+**2026-07-07** — Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
 
-**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Ventaja LLA−PJ (Votómetro)» a «Ventaja LLA−PJ». Se saca «Votómetro» por nombrar el método, no el dato; LLA y PJ se conservan porque son las siglas públicas de las fuerzas.
+**2026-09-15** — El rótulo de la card pasa de «Ventaja LLA−PJ (Votómetro)» a «Ventaja LLA−PJ». Se saca «Votómetro» por nombrar el método, no el dato; LLA y PJ se conservan porque son las siglas públicas de las fuerzas.
 
-**2026-09-15** — ADR-0312 (corrige ADR-0121): anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El indicador conserva el rango 0-100 (una quinta banda arriba de +8 pp evita bajar el techo a 60, como hacía la primera versión de este ADR).
+**2026-09-15** — Corrige la decisión anterior: anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El indicador conserva el rango 0-100 (una quinta banda arriba de +8 pp evita bajar el techo a 60, como hacía la primera versión de este ADR).
 
 **2026-09-22** — Las encuestas se leen de la edición vigente del Votómetro en la web de CiGob, donde se publica por ediciones mensuales desde el 16 de septiembre de 2026. El sitio anterior queda como respaldo.
 
@@ -273,21 +273,21 @@ Ponderación vigente en el ITCP: 4,8 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0307: se corrige el día adicional que introducían los extremos inclusivos. Se contrastan el inventario completo de decretos y los originales; se retiran garantías de actualización y detección que la fuente no asegura.
+**2026-09-08** — Se corrige el día adicional que introducían los extremos inclusivos. Se contrastan el inventario completo de decretos y los originales; se retiran garantías de actualización y detección que la fuente no asegura.
 
 **2026-05** — Entra al cinturón en reemplazo del índice de confianza en el gobierno (UTDT): el cinturón mide capacidad de gobernar, no popularidad.
 
 **2026-06-30** — Serie anual desde 2020 para dar contexto histórico al ratio del año en curso.
 
-**2026-07-07** — Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
+**2026-07-07** — Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
 
 **2026-07-19** — Se explicita en la ficha qué pregunta responde el indicador y cuál es la lectura contraria, a pedido de una revisión externa del cinturón. El cálculo y las anclas no cambian. Se evaluó además incorporar un indicador separado de éxito de ejecución por decreto y se descartó con datos: como el 95% de los decretos nunca se vota, esa medida quedaría permanentemente cerca del 100% y no distinguiría nada.
 
 **2026-07-15** — El cociente pasó de acumulado del año calendario (un punto por año, reseteaba en enero) a ventana móvil de 365 días (un punto por mes, comparable mes a mes). Las anclas del puntaje NO cambiaron: siguen ancladas a la práctica histórica 2011-2024, no al rango observado bajo esta gestión.
 
-**2026-08-25** — ADR-0241: los DNU se cuentan por el tipo jurídico que declara InfoLeg (`Decreto DNU`) y no por la coincidencia textual de «necesidad y urgencia», que aparece también en decretos que no son DNU —prórrogas de intervenciones, reglamentarios, un veto—. En la ventana auditada eran 37 y se contaban 48: el ratio pasa de 1,92 a 1,48. Los dos lados usan publicación en el Boletín Oficial. La serie mensual se rehízo con el mismo filtro.
+**2026-08-25** — Los DNU se cuentan por el tipo jurídico que declara InfoLeg (`Decreto DNU`) y no por la coincidencia textual de «necesidad y urgencia», que aparece también en decretos que no son DNU —prórrogas de intervenciones, reglamentarios, un veto—. En la ventana auditada eran 37 y se contaban 48: el ratio pasa de 1,92 a 1,48. Los dos lados usan publicación en el Boletín Oficial. La serie mensual se rehízo con el mismo filtro.
 
-**2026-08-25** — ADR-0263: la ficha, la fórmula y la descripción pública se sincronizan con el cálculo que efectivamente corre. Decían «DNU dictados / leyes sancionadas» y describían la búsqueda textual descartada; ahora dicen lo único que el indicador hace: DNU publicados sobre leyes publicadas en el Boletín Oficial, ventana móvil de 365 días, con los DNU identificados por el tipo jurídico de la grilla. Ningún valor cambia — cambia lo que el texto afirma que se midió.
+**2026-08-25** — La ficha, la fórmula y la descripción pública se sincronizan con el cálculo que efectivamente corre. Decían «DNU dictados / leyes sancionadas» y describían la búsqueda textual descartada; ahora dicen lo único que el indicador hace: DNU publicados sobre leyes publicadas en el Boletín Oficial, ventana móvil de 365 días, con los DNU identificados por el tipo jurídico de la grilla. Ningún valor cambia — cambia lo que el texto afirma que se midió.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -378,7 +378,7 @@ Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0302: referencia al inicio del horizonte de expectativas y extremos explícitos en tarjeta. Se recuperan filas históricas que incluían la preposición «de» antes del año y se exige calendario consecutivo para el promedio de doce meses. Se recalculan historia y contrastes; no cambian pesos ni bandas.
+**2026-09-08** — Referencia al inicio del horizonte de expectativas y extremos explícitos en tarjeta. Se recuperan filas históricas que incluían la preposición «de» antes del año y se exige calendario consecutivo para el promedio de doce meses. Se recalculan historia y contrastes; no cambian pesos ni bandas.
 
 **2026-07-19** — Entra al cinturón como primer indicador de la nueva dimensión de sector privado. Una revisión externa del cinturón señaló que de los tres actores que el índice se propone medir —legisladores, gobernadores y empresarios— el tercero no tenía ningún indicador propio.
 
@@ -476,15 +476,15 @@ Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicion
 
 **2026-07-27** — Al verificar la clasificación con dos codificadores independientes se descubrió que los cincuenta y siete comunicados de la Unión Industrial se habían leído sin su texto: el proceso de descarga se quedaba con el menú de navegación del sitio y esos casos se habían clasificado sólo por el título. Se corrigió la descarga y se rehízo la clasificación completa sobre el texto real, descartando la primera. El hallazgo no vino de ninguna verificación automática sino de que los dos codificadores, por separado, avisaron que los textos venían todos iguales.
 
-**2026-08-25** — ADR-0246: sale del ITCP hasta cerrar el corpus. El saldo −0,429 salía de siete comunicados codificados con catorce detectados sin codificar, y entre esos catorce había apoyos y críticas de peso: el número medía qué se alcanzó a clasificar, no la postura del sector. Libera su 50% de la dimensión de sector privado, que queda con `brecha_obra_publica` como único componente. Se sigue relevando y su serie se sigue publicando. Vuelve al índice con corpus cerrado y publicado, criterios fijados de antemano y doble codificación con control de concordancia.
+**2026-08-25** — Sale del índice político hasta cerrar el corpus. El saldo −0,429 salía de siete comunicados codificados con catorce detectados sin codificar, y entre esos catorce había apoyos y críticas de peso: el número medía qué se alcanzó a clasificar, no la postura del sector. Libera su 50% de la dimensión de sector privado, que queda con `brecha_obra_publica` como único componente. Se sigue relevando y su serie se sigue publicando. Vuelve al índice con corpus cerrado y publicado, criterios fijados de antemano y doble codificación con control de concordancia.
 
-**2026-09-14** — ADR-0310: vuelve al ITCP con el 50% de diseño de la dimensión de sector privado. Se clasificaron los veintidós comunicados de la Unión Industrial detectados entre abril y septiembre con el mismo protocolo de doble codificación ciega —concordancia de 0,85 en postura y 0,93 en destinatario, por encima del mínimo de 0,70— y el inventario quedó sin pendientes. Con eso el saldo pasó de −0,429 a −0,111: dos de los nuevos respaldan medidas del Gobierno nacional, la reducción de retenciones y la concesión de la Hidrovía. La condición de corpus cerrado que faltaba se fija como regla de cálculo: la serie se detiene en el último mes con todos los comunicados clasificados, y cada comunicado nuevo se avisa como pendiente.
+**2026-09-14** — Vuelve al índice político con el 50% de diseño de la dimensión de sector privado. Se clasificaron los veintidós comunicados de la Unión Industrial detectados entre abril y septiembre con el mismo protocolo de doble codificación ciega —concordancia de 0,85 en postura y 0,93 en destinatario, por encima del mínimo de 0,70— y el inventario quedó sin pendientes. Con eso el saldo pasó de −0,429 a −0,111: dos de los nuevos respaldan medidas del Gobierno nacional, la reducción de retenciones y la concesión de la Hidrovía. La condición de corpus cerrado que faltaba se fija como regla de cálculo: la serie se detiene en el último mes con todos los comunicados clasificados, y cada comunicado nuevo se avisa como pendiente.
 
-**2026-09-20** — ADR-0334: la Asociación Empresaria Argentina sale del cálculo y el indicador pasa a llamarse por la cámara que efectivamente mide, la Unión Industrial. El motivo es que dejó de publicar comunicados el 31 de marzo de 2026 y el rótulo prometía dos cámaras midiendo una: de los diez comunicados que entraban en el promedio de los últimos doce meses, nueve eran de la Unión Industrial y uno solo de la otra. El recorte tiene un costo y conviene decirlo: la serie pasa de treinta y cuatro meses a treinta y empieza en abril de 2024 en vez de diciembre de 2023, porque la Unión Industrial tiene menos historia relevada. El saldo del mes pasa de −0,20 a −0,333. Queda un punto flojo anotado a propósito: con una sola cámara, nueve de los treinta meses quedan con uno o dos comunicados en su ventana y los primeros dan −1,0 sobre dos, una base demasiado chica para leerla como una postura. Los comunicados de la Asociación Empresaria quedan guardados y clasificados; si vuelve a publicar, vuelve a entrar al cálculo.
+**2026-09-20** — La Asociación Empresaria Argentina sale del cálculo y el indicador pasa a llamarse por la cámara que efectivamente mide, la Unión Industrial. El motivo es que dejó de publicar comunicados el 31 de marzo de 2026 y el rótulo prometía dos cámaras midiendo una: de los diez comunicados que entraban en el promedio de los últimos doce meses, nueve eran de la Unión Industrial y uno solo de la otra. El recorte tiene un costo y conviene decirlo: la serie pasa de treinta y cuatro meses a treinta y empieza en abril de 2024 en vez de diciembre de 2023, porque la Unión Industrial tiene menos historia relevada. El saldo del mes pasa de −0,20 a −0,333. Queda un punto flojo anotado a propósito: con una sola cámara, nueve de los treinta meses quedan con uno o dos comunicados en su ventana y los primeros dan −1,0 sobre dos, una base demasiado chica para leerla como una postura. Los comunicados de la Asociación Empresaria quedan guardados y clasificados; si vuelve a publicar, vuelve a entrar al cálculo.
 
-**2026-09-20** — ADR-0332: se agrega un aviso para cuando una de las dos cámaras deja de publicar. Al clasificar cuatro comunicados que estaban pendientes se midió de dónde salen los datos que sostienen el saldo, y apareció que la Asociación Empresaria Argentina no emite un comunicado desde el 31 de marzo: ciento setenta y tres días, cuando su pausa más larga hasta entonces había sido de ciento cincuenta y cuatro. De los diez comunicados que entran en el promedio de los últimos doce meses, nueve son de la Unión Industrial y uno solo de la otra cámara. Nada lo advertía: las dos verificaciones que ya existían comprueban que no queden comunicados sin clasificar y que las dos páginas respondan, y una cámara cuya página contesta sin publicar novedades pasa las dos sin activarlas. Desde ahora el sistema avisa cuando el silencio de una cámara supera su propia pausa más larga, un umbral que se calcula solo y es distinto para cada una porque publican a ritmos muy diferentes. El saldo, el peso y la banda no cambian: que una cámara calle es un hecho del mundo y no un error de cálculo, y si el silencio resulta definitivo, cambiar qué mide el indicador será otra decisión.
+**2026-09-20** — Se agrega un aviso para cuando una de las dos cámaras deja de publicar. Al clasificar cuatro comunicados que estaban pendientes se midió de dónde salen los datos que sostienen el saldo, y apareció que la Asociación Empresaria Argentina no emite un comunicado desde el 31 de marzo: ciento setenta y tres días, cuando su pausa más larga hasta entonces había sido de ciento cincuenta y cuatro. De los diez comunicados que entran en el promedio de los últimos doce meses, nueve son de la Unión Industrial y uno solo de la otra cámara. Nada lo advertía: las dos verificaciones que ya existían comprueban que no queden comunicados sin clasificar y que las dos páginas respondan, y una cámara cuya página contesta sin publicar novedades pasa las dos sin activarlas. Desde ahora el sistema avisa cuando el silencio de una cámara supera su propia pausa más larga, un umbral que se calcula solo y es distinto para cada una porque publican a ritmos muy diferentes. El saldo, el peso y la banda no cambian: que una cámara calle es un hecho del mundo y no un error de cálculo, y si el silencio resulta definitivo, cambiar qué mide el indicador será otra decisión.
 
-**2026-08-25** — ADR-0259: se completa la despublicación. El artefacto crudo del informe lo seguía declarando componente vigente del ITCP después de haber salido del índice, porque el colector de Política no marcaba las suspensiones y su respaldo las leía de la tabla de bandas, que a propósito no se borra. Desde ahora todo indicador suspendido se publica como archivo y no como componente: conserva su último valor, su fuente, su fecha y la dimensión donde pesaba, y pierde el estado activo, el peso y el puntaje, que pasan a ser un bloque con el motivo de la suspensión y su condición de reingreso. La marca la pone el generador del informe recorriendo la tabla de suspendidos de cada índice, así que no depende de que cada colector se acuerde.
+**2026-08-25** — Se completa la despublicación. El artefacto crudo del informe lo seguía declarando componente vigente del índice político después de haber salido del índice, porque el colector de Política no marcaba las suspensiones y su respaldo las leía de la tabla de bandas, que a propósito no se borra. Desde ahora todo indicador suspendido se publica como archivo y no como componente: conserva su último valor, su fuente, su fecha y la dimensión donde pesaba, y pierde el estado activo, el peso y el puntaje, que pasan a ser un bloque con el motivo de la suspensión y su condición de reingreso. La marca la pone el generador del informe recorriendo la tabla de suspendidos de cada índice, así que no depende de que cada colector se acuerde.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -573,9 +573,9 @@ Ponderación vigente en el ITCP: 6 % efectivo. El color es una lectura adicional
 
 **2026-07-11** — Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes de CEPA, que no permitía una serie mensual comparable.
 
-**2026-09-08** — ADR-0303: week es el sábado inicial, no el final de la cobertura. Se incorpora agosto, ya cubierto hasta el viernes 4-sep, y se comparte el calendario entre tarjeta e historia. Se explicita la agrupación por inicio de semana y se conserva el sello del archivo cuando falla la descarga.
+**2026-09-08** — Week es el sábado inicial, no el final de la cobertura. Se incorpora agosto, ya cubierto hasta el viernes 4-sep, y se comparte el calendario entre tarjeta e historia. Se explicita la agrupación por inicio de semana y se conserva el sello del archivo cuando falla la descarga.
 
-**2026-08-21** — Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral (ADR-0232).
+**2026-08-21** — Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -662,7 +662,7 @@ Ponderación vigente en el ITCP: 4 % efectivo. El color es una lectura adicional
 
 **2026-08-21** — Incorporado como segunda pata de conflicto social para medir tamaño y duración de los paros, con 40% interno; ACLED conserva 60%.
 
-**2026-09-08** — ADR-0295: la suma exige continuidad mensual y valores válidos. Se corroboran las doce filas originales que suman 4.760.195 jornadas hasta mayo de 2026; no cambia el valor publicado.
+**2026-09-08** — La suma exige continuidad mensual y valores válidos. Se corroboran las doce filas originales que suman 4.760.195 jornadas hasta mayo de 2026; no cambia el valor publicado.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -754,15 +754,15 @@ Ponderación vigente en el ITCP: 7,6 % efectivo. El color es una lectura adicion
 
 **2026-06-30** — El deflactor pasó de una proyección fija al índice IPC oficial del INDEC: la variación real publicada se corrigió de +1,8% a +7,0%.
 
-**2026-07-07** — Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de alianzas territoriales — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
+**2026-07-07** — Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de alianzas territoriales — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
 
 **2026-07-15** — El deflactor pasó de la variación diciembre contra diciembre a la inflación promedio anual, el criterio correcto para sumas anuales de flujos y el que usan los análisis fiscales de referencia — con inflación en baja, la punta de diciembre subdeflactaba: la variación real de 2025 se corrigió de +7,0% a un valor en línea con los informes externos (~0/+2% real).
 
 **2026-07-15** — Se excluyeron del cálculo las porciones del archivo oficial que no son transferencias a provincias (Tesoro Nacional, Seguridad Social, Fondo ATN): el nivel anual pasó a coincidir con los informes fiscales de referencia (~$60 billones en 2025) y la variación quedó medida solo sobre lo que efectivamente reciben las jurisdicciones.
 
-**2026-08-25** — ADR-0239: cada flujo mensual se deflacta por el IPC de su propio mes antes de sumarse, en vez de dividir el cociente de dos sumas nominales por un único IPC promedio anual. Los montos pasan a salir de la planilla mensual consolidada de Hacienda, que reconcilia peso por peso con el CSV anual. 2025 pasa de +0,8% a +1,6% real, que es lo que informan IARAF y Politikon. La serie 2018-2025 se rehízo entera: se mueve poco en años de inflación pareja y hasta 1,5 puntos en los de inflación cambiante.
+**2026-08-25** — Cada flujo mensual se deflacta por el IPC de su propio mes antes de sumarse, en vez de dividir el cociente de dos sumas nominales por un único IPC promedio anual. Los montos pasan a salir de la planilla mensual consolidada de Hacienda, que reconcilia peso por peso con la planilla anual. 2025 pasa de +0,8% a +1,6% real, que es lo que informan IARAF y Politikon. La serie 2018-2025 se rehízo entera: se mueve poco en años de inflación pareja y hasta 1,5 puntos en los de inflación cambiante.
 
-**2026-08-25** — ADR-0263: la fórmula y la ficha se sincronizan con esa deflación. Seguían describiendo una suma anual dividida por un IPC promedio —el método reemplazado— y la fuente anual que dejó de usarse. Ahora quedan explícitos los cinco términos del contrato: qué jurisdicciones entran (Provincias, Ciudad de Buenos Aires y Fondo Compensador, con la compensación del Consenso Fiscal) y cuáles no, qué clase de transferencia (automáticas, no discrecionales), la ventana (dos años calendario completos), el deflactor (IPC nacional del INDEC, mes a mes) y la base común a la que se llevan los doce flujos antes de sumarse. Ningún valor cambia.
+**2026-08-25** — La fórmula y la ficha se sincronizan con esa deflación. Seguían describiendo una suma anual dividida por un IPC promedio —el método reemplazado— y la fuente anual que dejó de usarse. Ahora quedan explícitos los cinco términos del contrato: qué jurisdicciones entran (Provincias, Ciudad de Buenos Aires y Fondo Compensador, con la compensación del Consenso Fiscal) y cuáles no, qué clase de transferencia (automáticas, no discrecionales), la ventana (dos años calendario completos), el deflactor (IPC nacional del INDEC, mes a mes) y la base común a la que se llevan los doce flujos antes de sumarse. Ningún valor cambia.
 
 **2026-09-08** — El cotejo de los 24 flujos originales reproduce 1,6365% real para 2025 y coincide con 1,6% de la OPC. Se aclara que el deflactor implícito es un cociente, no la resta de tasas; el cálculo ya usaba la fórmula correcta.
 
@@ -861,7 +861,7 @@ Ponderación vigente en el ITCP: 6,3 % efectivo. El color es una lectura adicion
 
 **2026-06-30** — Serie mensual de ventanas móviles de 12 meses desde diciembre de 2023.
 
-**2026-07-07** — Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
+**2026-07-07** — Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
 
 **2026-07-11** — Umbrales de puntaje recalibrados contra la serie mensual real del indicador (32 meses): los anteriores describían la tasa de aprobación de un congreso teórico y dejaban el puntaje en el mínimo casi todos los meses, sin discriminar. Se documenta además que, por construcción de la ventana única de 12 meses, el techo alcanzable del porcentaje es más bajo que una tasa de aprobación de manual.
 
@@ -944,7 +944,7 @@ Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicion
 
 - Las citadas no efectuadas aparecen en el índice pero se excluyen mientras su rótulo no acredite falta de quórum. Tampoco se cuentan negociaciones o convocatorias retiradas sin registro: no es una medida exhaustiva del bloqueo parlamentario.
 - El denominador es pequeño y cambia con cada reunión; una sola reunión en minoría puede mover varios puntos porcentuales. Deben leerse juntos porcentaje, numerador, denominador y ventana.
-- No distingue quién convocó la sesión: la Cámara de Diputados no publica el convocante ni en el índice de sesiones, ni en el detalle de cada reunión, ni en el temario (ADR-0313). Por eso se cuentan todas las sesiones caídas, y una sesión que convoca la oposición y se cae —un bloqueo exitoso del oficialismo— suma igual que una propia que no reúne quórum. Hasta que la fuente publique el convocante, el indicador mide cuántas veces la cámara no se reúne, no de quién es el fracaso.
+- No distingue quién convocó la sesión: la Cámara de Diputados no publica el convocante ni en el índice de sesiones, ni en el detalle de cada reunión, ni en el temario. Por eso se cuentan todas las sesiones caídas, y una sesión que convoca la oposición y se cae —un bloqueo exitoso del oficialismo— suma igual que una propia que no reúne quórum. Hasta que la fuente publique el convocante, el indicador mide cuántas veces la cámara no se reúne, no de quién es el fracaso.
 
 ## Si falta el dato / Política de revisiones
 
@@ -954,17 +954,17 @@ Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0308: el índice oficial reemplaza al catálogo, cuyas 72 fechas cotejadas estaban desplazadas dos días. Recupera la reunión del 26 de agosto y excluye la convocatoria futura del 9 de septiembre. Se conserva el criterio de minoría y se deduplica por reunión.
+**2026-09-08** — El índice oficial reemplaza al catálogo, cuyas 72 fechas cotejadas estaban desplazadas dos días. Recupera la reunión del 26 de agosto y excluye la convocatoria futura del 9 de septiembre. Se conserva el criterio de minoría y se deduplica por reunión.
 
 **2026-05** — Incorporado al cinturón político como medida del bloqueo parlamentario.
 
 **2026-06-30** — Serie por período legislativo desde 2024.
 
-**2026-07-07** — Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
+**2026-07-07** — Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
 
 **2026-07-20** — Corrección de fondo del criterio de conteo, a partir de una revisión de los registros crudos del dataset oficial. La versión anterior identificaba las sesiones caídas buscando la palabra «fracasada» en el tipo de reunión, lo que dejaba fuera las once sesiones clasificadas «en minoría» —que son el fracaso de quórum propiamente dicho— y en cambio contaba dos sesiones informativas del artículo 71 de la Constitución que no se realizaron, un fenómeno distinto. La ventana pasó además de período legislativo a doce meses móviles, y la serie de anual a mensual.
 
-**2026-09-24** — La ficha declara que no se puede separar quién convocó cada sesión (la fuente no lo publica, ADR-0313) y qué implica para la lectura; se corrige el peso nominal (15%, tras la salida del bloqueo sostenido en ADR-0330).
+**2026-09-24** — La ficha declara que no se puede separar quién convocó cada sesión (la fuente no lo publica) y qué implica para la lectura; se corrige el peso nominal (15%, tras la salida del bloqueo sostenido el 16-sep-2026).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1049,7 +1049,7 @@ Ponderación vigente en el ITCP: 5,7 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0304: se incorporan Santa Fe y CABA, omitidas por el catálogo nacional, en tarjeta e historia; se retiran las afirmaciones de actualización inmediata e irreversibilidad jurídica.
+**2026-09-08** — Se incorporan Santa Fe y CABA, omitidas por el catálogo nacional, en tarjeta e historia; se retiran las afirmaciones de actualización inmediata e irreversibilidad jurídica.
 
 **2026-07-07** — Alta como indicador de la dimensión de alianzas territoriales: mide adhesión fiscal al RIGI, distinta del alineamiento político general que ya capta el indicador de gobernadores.
 
@@ -1142,7 +1142,7 @@ Ponderación vigente en el ITCP: 15 % efectivo. El color es una lectura adiciona
 
 **2026-09-08** — Senado: una descarga fallida o una página sin votos invalida la lectura completa, en la tarjeta y en la reconstrucción anual. La tarjeta excluye actas posteriores al corte; no se publica un promedio parcial como actualización exitosa.
 
-**2026-09-08** — El desglose público incorpora fechas de actas y caché por cámara; explica la renormalización al 100% cuando sólo aporta una. Se conserva la fórmula (ADR-0284).
+**2026-09-08** — El desglose público incorpora fechas de actas y caché por cámara; explica la renormalización al 100% cuando sólo aporta una. Se conserva la fórmula.
 
 **2026-05** — Incorporado al cinturón como estimación manual, a la espera de una fuente estructurada de votaciones vigente.
 
@@ -1191,7 +1191,7 @@ Mide con qué frecuencia el Congreso decide dar la pelea, sin importar cómo ter
 - Una norma cuenta como desafiada cuando el Congreso la somete a votación en el recinto: un veto presidencial sobre el que se vota una insistencia, o un decreto puesto a consideración bajo el procedimiento de la ley 26.122.
 - Cada norma se cuenta una sola vez, en el mes de su primer desafío, aunque después vuelva al recinto.
 - Se suman las de los últimos doce meses calendario. No importa el resultado: entran tanto las que el Gobierno terminó perdiendo como las que logró sostener.
-- Cuando la ventana da cero, la card agrega —del registro histórico completo, no de un número fijo— qué proporción de las normas desafiadas en algún momento desde marzo de 2024 sigue en pie: es el dato que hasta el 16 de septiembre de 2026 publicaba el bloqueo sostenido (ADR-0330).
+- Cuando la ventana da cero, la card agrega —del registro histórico completo, no de un número fijo— qué proporción de las normas desafiadas en algún momento desde marzo de 2024 sigue en pie: es el dato que hasta el 16 de septiembre de 2026 publicaba el bloqueo sostenido.
 
 ## Semáforo — valores que determinan el color
 
@@ -1226,7 +1226,7 @@ Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicion
 
 - La ventana contiene pocos eventos —entre cuatro y trece en el período disponible—, así que un solo desafío que entra o sale mueve el indicador de manera perceptible.
 - Cuenta el acto de desafiar, no su importancia: una norma central y una menor pesan igual.
-- Comparte registro de eventos con el bloqueo sostenido (ADR-0069), que dejó de publicarse como card el 16 de septiembre de 2026 (ADR-0330) por enmudecer justo cuando la ventana da cero desafíos — su tasa de supervivencia histórica es la que esta card cita cuando el conteo es cero.
+- Comparte registro de eventos con el bloqueo sostenido, que dejó de publicarse como card el 16 de septiembre de 2026 por enmudecer justo cuando la ventana da cero desafíos — su tasa de supervivencia histórica es la que esta card cita cuando el conteo es cero.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1236,9 +1236,9 @@ Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-16** — ADR-0330: la card agrega, cuando el conteo da cero, la tasa histórica de supervivencia de las normas desafiadas —el dato que publicaba el bloqueo sostenido, que sale del índice y del tablero por enmudecer justo en ese caso.
+**2026-09-16** — La card agrega, cuando el conteo da cero, la tasa histórica de supervivencia de las normas desafiadas —el dato que publicaba el bloqueo sostenido, que sale del índice y del tablero por enmudecer justo en ese caso.
 
-**2026-09-08** — ADR-0276: cero desafíos es válido sólo con cobertura completa del universo compartido. Una consulta fallida no acredita ausencia de eventos.
+**2026-09-08** — Cero desafíos es válido sólo con cobertura completa del universo compartido. Una consulta fallida no acredita ausencia de eventos.
 
 **2026-07-19** — Entra al índice en reemplazo de las derrotas legislativas, que medían casi exactamente lo mismo que el bloqueo sostenido: desde marzo de 2025 ambos indicadores arrojaban mes a mes el mismo número, y entre los dos se llevaban el 40% de la dimensión para responder una sola pregunta. Las derrotas se siguen relevando y quedan a la vista como dato dentro de la ficha del bloqueo.
 
@@ -1324,9 +1324,9 @@ Ponderación vigente en el ITCP: 3,6 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0308: siete sanciones definitivas de agosto omitidas en el catálogo, 27.819 a 27.825; identidad por expediente/proyecto hasta verificar número de ley y deduplicación al incorporarse a CKAN.
+**2026-09-08** — Siete sanciones definitivas de agosto omitidas en el catálogo, 27.819 a 27.825; identidad por expediente/proyecto hasta verificar número de ley y deduplicación al incorporarse a CKAN.
 
-**2026-09-08** — ADR-0306: doce meses completos, deduplicación por ley, corrección del promedio histórico y puntos de interpolación de la ficha alineados con el motor; se conservan las bandas de diseño.
+**2026-09-08** — Doce meses completos, deduplicación por ley, corrección del promedio histórico y puntos de interpolación de la ficha alineados con el motor; se conservan las bandas de diseño.
 
 **2026-07-31** — Entra al índice. Se decidió medir el total de leyes sancionadas y no la proporción de origen del Ejecutivo, porque esa proporción se mueve por el denominador: el numerador es estable entre cinco y diez leyes en todo el período.
 
@@ -1413,7 +1413,7 @@ Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — Se presenta como tasa de resolución: el cociente anual de expedientes resueltos e ingresados no mide duración judicial ni demuestra ventaja para el Gobierno. Se conserva el cálculo y se explicita la hipótesis del signo (ADR-0281).
+**2026-09-08** — Se presenta como tasa de resolución: el cociente anual de expedientes resueltos e ingresados no mide duración judicial ni demuestra ventaja para el Gobierno. Se conserva el cálculo y se explicita la hipótesis del signo.
 
 **2026-07-31** — Entra al índice. El veredicto anterior lo daba por imposible por falta de fecha de inicio de causa; la corrección encontró que el anuario publica ingresos y resueltos por año, que es lo que el indicador necesita.
 
@@ -1531,7 +1531,7 @@ Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % estimado de cargos con juez designado |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Actualización irregular. La serie sólo avanza hasta la fecha revisada de los registros complementarios; ejecutar el colector no extiende esa fecha. Un nuevo padrón requiere volver a conciliar los ajustes. |
 | **PRODUCTOR DEL DATO** | Ministerio de Justicia, Boletín Oficial y Consejo de la Magistratura | **OPERACIÓN ESTADÍSTICA** | Padrón de magistrados, designaciones y renuncias, conciliados con normas y bajas documentadas |
-| **MODO DE ACCESO** | Mixto: descarga automática de CSV y revisión documentada de movimientos netos, actos posteriores y bajas. Los ajustes se conservan en data/politica/cobertura_judicial_movimientos.json y cobertura_judicial_bajas.json. No se amplía el corte sin revisar esos registros. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-05 |
+| **MODO DE ACCESO** | Mixto: descarga automática de planillas y revisión documentada de movimientos netos, actos posteriores y bajas. Los ajustes se conservan en data/politica/cobertura_judicial_movimientos.json y cobertura_judicial_bajas.json. No se amplía el corte sin revisar esos registros. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-05 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1546,7 +1546,7 @@ Describe la capacidad de integrar el Poder Judicial mediante un proceso que requ
 - Se consideran únicamente los cargos de juez en órganos habilitados: los tribunales creados por ley pero todavía no puestos en funcionamiento no forman parte del denominador, porque no hay nada que cubrir.
 - Un cargo marcado como vacante cuenta como no cubierto aunque tenga subrogante a cargo. La subrogancia se publica aparte, en el detalle de la card.
 - Hay una excepción, y la fuente la distingue bien: un puñado de cargos tiene juez designado que está de licencia, con un subrogante a cargo mientras tanto. Ese cargo no figura como vacante, porque el juez existe y el cargo es suyo, aunque quien firme sea el subrogante. Al cinco de junio de 2026 son seis casos.
-- La serie mensual se reconstruye desde el padrón con movimientos netos de jueces de tribunales inferiores. Se excluyen fiscales, defensores, Corte Suprema, renovaciones y conjueces. Una promoción de un titular ya contado no suma una persona nueva. Las normas complementarias reemplazan el efecto del mismo registro si después aparece en el CSV; no se duplican.
+- La serie mensual se reconstruye desde el padrón con movimientos netos de jueces de tribunales inferiores. Se excluyen fiscales, defensores, Corte Suprema, renovaciones y conjueces. Una promoción de un titular ya contado no suma una persona nueva. Las normas complementarias reemplazan el efecto del mismo registro si después aparece en la planilla; no se duplican.
 - Las bajas comprobadas que seguían figurando como no vacantes corrigen el ancla sin modificar la fuente original. Hacia atrás se resta el flujo neto entre el mes y el padrón; hacia adelante se suma. El 5 de junio de 2026 la foto original tiene 610 cargos no vacantes: una baja omitida lleva el ancla estimada a 609. La composición original se conserva por separado.
 
 ## Semáforo — valores que determinan el color
@@ -1594,13 +1594,13 @@ Ponderación vigente en el ITCP: 7,5 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0298: reconstrucción con altas netas, normas posteriores al CSV y bajas documentadas; ancla original separada de la corregida, corte limitado a la revisión y límites explícitos sobre juras, habilitaciones y fallecimientos.
+**2026-09-08** — Reconstrucción con altas netas, normas posteriores a la planilla y bajas documentadas; ancla original separada de la corregida, corte limitado a la revisión y límites explícitos sobre juras, habilitaciones y fallecimientos.
 
-**2026-09-08** — ADR-0297: se excluyen movimientos de la Corte Suprema y renovaciones verificadas, que no son altas netas de tribunales inferiores. La conciliación integral de promociones, nuevas normas y universo habilitado continúa abierta; todavía no se certifica el stock reconstruido.
+**2026-09-08** — Se excluyen movimientos de la Corte Suprema y renovaciones verificadas, que no son altas netas de tribunales inferiores. La conciliación integral de promociones, nuevas normas y universo habilitado continúa abierta; todavía no se certifica el stock reconstruido.
 
 **2026-07-25** — Entra al índice como único indicador de la dimensión nueva del Poder Judicial, con el quince por ciento del cinturón. La serie se reconstruyó completa desde diciembre de 2023.
 
-**2026-08-25** — ADR-0240: la card publica numerador, denominador y la fecha de cada uno. El valor no cambió —69,63%— pero antes se explicaba con «604 de 955 cargos», que es 63,25%: el porcentaje contaba cargos no vacantes al corte de la corrida y el texto contaba cargos con titular a la fecha del padrón. Ahora se publican los dos cortes por separado y el inventario de designaciones y renuncias que los une. Se descartan además los registros con fecha posterior a hoy.
+**2026-08-25** — La card publica numerador, denominador y la fecha de cada uno. El valor no cambió —69,63%— pero antes se explicaba con «604 de 955 cargos», que es 63,25%: el porcentaje contaba cargos no vacantes al corte de la corrida y el texto contaba cargos con titular a la fecha del padrón. Ahora se publican los dos cortes por separado y el inventario de designaciones y renuncias que los une. Se descartan además los registros con fecha posterior a hoy.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1688,7 +1688,7 @@ Ponderación vigente en el ITCP: 5,7 % efectivo. El color es una lectura adicion
 
 **2026-09-08** — Una descarga fallida o una página sin votos invalida la lectura completa, también en la reconstrucción anual. La tarjeta excluye actas futuras; ante lectura incompleta se aplica la conservación del dato anterior, sin marcar como exitoso un promedio parcial.
 
-**2026-09-08** — Se aclara que el recálculo requiere actas y que ante fallos o receso puede conservarse el promedio anterior; se elimina la afirmación incompatible con esa regla (ADR-0284).
+**2026-09-08** — Se aclara que el recálculo requiere actas y que ante fallos o receso puede conservarse el promedio anterior; se elimina la afirmación incompatible con esa regla.
 
 **2026-07-08** — Alta como reemplazo de \"alineamiento de gobernadores\" (indicador de carga manual, sin fuente automatizable encontrada): mide coincidencia de voto de senadores no oficialistas con la posición del bloque de gobierno, por provincia.
 

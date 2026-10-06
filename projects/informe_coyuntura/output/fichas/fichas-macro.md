@@ -171,7 +171,7 @@ Ponderación vigente en el ITCM: 15,6 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-06** — El indicador deja de promediarse directamente como tensión 0–10 y pasa a puntuar dentro del ITCM según los umbrales institucionales de la paramétrica CIGOB (documento de mayo de 2026).
+**2026-06** — El indicador deja de promediarse directamente como tensión 0–10 y pasa a puntuar dentro del índice macroeconómico según los umbrales institucionales de la paramétrica CIGOB (documento de mayo de 2026).
 
 **2026-07-03** — El puntaje escalonado por banda se reemplaza por interpolación lineal entre anclas: se eliminan los saltos de 15–25 puntos entre valores casi iguales a ambos lados de un umbral. Los umbrales institucionales no cambian.
 
@@ -260,9 +260,9 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 
 **2026-06-26** — El indicador deja las reservas brutas del documento original y pasa a las netas «a secas», con los tres términos calculados de fuentes oficiales y escala propia.
 
-**2026-09-08** — ADR-0286: se explicita la fórmula CIGOB y se retiran las equivalencias no demostradas entre el tramo II.1 de más de tres meses a un año y BOPREAL, y entre el resultado y libre disponibilidad. No cambian el cálculo, las bandas ni los pesos; la conciliación por instrumento sigue pendiente.
+**2026-09-08** — Se explicita la fórmula CIGOB y se retiran las equivalencias no demostradas entre el tramo II.1 de más de tres meses a un año y BOPREAL, y entre el resultado y libre disponibilidad. No cambian el cálculo, las bandas ni los pesos; la conciliación por instrumento sigue pendiente.
 
-**2026-09-08** — ADR-0287: se retira el respaldo que omitía un sumando. Sin insumos completos se conserva el último resultado como desactualizado; historia y parser distinguen dato faltante de cero observado.
+**2026-09-08** — Se retira el respaldo que omitía un sumando. Sin insumos completos se conserva el último resultado como desactualizado; historia y parser distinguen dato faltante de cero observado.
 
 **2026-07-03** — Puntaje interpolado entre anclas en lugar de escalones por banda.
 
@@ -357,7 +357,7 @@ Ponderación vigente en el ITCM: 3,4 % efectivo. El color es una lectura adicion
 
 **2026-07-04** — Rediseño de la métrica: pasa de ratios mes a mes a niveles estandarizados contra la propia historia, publicados en desvíos estándar.
 
-**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Capacidad prestable (IdC)» a «Capacidad prestable». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna, que ya estaba traducida en el texto.
+**2026-09-15** — El rótulo de la card pasa de «Capacidad prestable (IdC)» a «Capacidad prestable». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna, que ya estaba traducida en el texto.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -622,7 +622,7 @@ Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0299: IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.
+**2026-09-08** — IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.
 
 **2026-07-18** — Alta del indicador como segunda señal de actividad junto al EMAE, tras una auditoría de consistencia que señaló que el 11% del índice colgaba de un único dato.
 
@@ -665,7 +665,7 @@ La lectura más fresca de la dimensión: Hacienda informa estos dos tributos ant
 ## Método de cómputo
 
 - Cada serie se lleva a variación interanual real: nominal contra el mismo mes del año anterior, deflactada por el IPC del mismo período (mismo método que el resto del cinturón).
-- Las dos variaciones se promedian con ponderación 0,6 para IVA-DGI y 0,4 para el cheque. No se cruzan en una matriz (como sí hace `desequilibrio_monetario`): esa construcción existe cuando dos componentes miden fenómenos DISTINTOS que se refuerzan o se contrarrestan de forma declarada; acá las dos series miden el mismo constructo —actividad— con ruido propio cada una, la misma situación que ya conviven `emae_ia` e `ipi_manufacturero` en esta dimensión, sin matriz. Medido, no supuesto: r(IVA-DGI, cheque) = 0,617 (105 meses, dic-2017/ago-2026; 0,645 desde dic-2023) — ni el 'mismo dato con otro nombre' (r>0,9) ni fenómenos independientes; en 41 de los 105 meses el compuesto puntúa distinto que el IVA-DGI solo, incluido el mes vigente (IVA-DGI −3,0%, cheque −9,1%, compuesto en banda 20 contra la banda 40 que daría el IVA solo). Esa divergencia se atiende bajando el peso del indicador dentro de la dimensión, no cruzándolo en matriz (ADR-0329).
+- Las dos variaciones se promedian con ponderación 0,6 para IVA-DGI y 0,4 para el cheque. No se cruzan en una matriz (como sí hace `desequilibrio_monetario`): esa construcción existe cuando dos componentes miden fenómenos DISTINTOS que se refuerzan o se contrarrestan de forma declarada; acá las dos series miden el mismo constructo —actividad— con ruido propio cada una, la misma situación que ya conviven `emae_ia` e `ipi_manufacturero` en esta dimensión, sin matriz. Medido, no supuesto: r(IVA-DGI, cheque) = 0,617 (105 meses, dic-2017/ago-2026; 0,645 desde dic-2023) — ni el 'mismo dato con otro nombre' (r>0,9) ni fenómenos independientes; en 41 de los 105 meses el compuesto puntúa distinto que el IVA-DGI solo, incluido el mes vigente (IVA-DGI −3,0%, cheque −9,1%, compuesto en banda 20 contra la banda 40 que daría el IVA solo). Esa divergencia se atiende bajando el peso del indicador dentro de la dimensión, no cruzándolo en matriz.
 - El IVA pesa más porque es un impuesto al consumo interno, más cercano a 'actividad'; el cheque grava toda transacción bancaria y además de actividad capta bancarización —más o menos pagos por transferencia—, un fenómeno que no se puede restar de la serie.
 
 ## Semáforo — valores que determinan el color
@@ -697,7 +697,7 @@ Dato vigente: −5,41 % i.a. real (compuesto IVA-DGI/cheque) (2026-08).
 
 Ponderación vigente en el ITCM: 1,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa card ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con el peso vigente (0,12, bajado de 0,20 el 2026-09-16, ver más abajo), este indicador aporta 1,32% al ITCM (0,11×0,12) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el ITCM tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador. `recaudacion` declara lo mismo desde su propia ficha (revisión adversarial, 2026-09-16). Además —y esto pesó más en el ajuste de peso que el doble uso con `recaudacion`— es redundante con sus PROPIOS compañeros de dimensión: r=0,840 con `emae_ia`, 0,828 con `ipi_manufacturero`, 0,725 con `emae_difusion` (los tres sobre el umbral 0,7 del repo, y más que lo que `ipi_manufacturero` ya correlaciona con `emae_ia`, r=0,765). La correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y BAJA al adelantarla un mes o dos, así que no anticipa el ciclo: entra por ser la lectura más fresca, no por aportar señal nueva, y el peso de entrada (0,12, por debajo del de `ipi_manufacturero`) se fijó en consecuencia (ADR-0329, revisado 2026-09-16).
+- **Participación en otros indicadores.** Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa card ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con el peso vigente (0,12, bajado de 0,20 el 2026-09-16, ver más abajo), este indicador aporta 1,32% al índice macroeconómico (0,11×0,12) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador. `recaudacion` declara lo mismo desde su propia ficha (revisión adversarial, 2026-09-16). Además —y esto pesó más en el ajuste de peso que el doble uso con `recaudacion`— es redundante con sus PROPIOS compañeros de dimensión: r=0,840 con `emae_ia`, 0,828 con `ipi_manufacturero`, 0,725 con `emae_difusion` (los tres sobre el umbral 0,7 del repo, y más que lo que `ipi_manufacturero` ya correlaciona con `emae_ia`, r=0,765). La correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y BAJA al adelantarla un mes o dos, así que no anticipa el ciclo: entra por ser la lectura más fresca, no por aportar señal nueva, y el peso de entrada (0,12, por debajo del de `ipi_manufacturero`) se fijó en consecuencia (revisado el 16-sep-2026).
 
 ## Transparencia — limitaciones declaradas
 
@@ -718,7 +718,7 @@ Ponderación vigente en el ITCM: 1,3 % efectivo. El color es una lectura adicion
 
 **2026-09-16** — Revisión adversarial (primera ronda): el peso de entrada baja de 0,20 a 0,12 (los otros tres INDEC pasan a recortarse ×0,88 en vez de ×0,80). Motivo medido: redundancia con sus tres compañeros de dimensión por encima del umbral 0,7 del repo (r=0,840 emae_ia, 0,828 ipi_manufacturero, 0,725 emae_difusion) y sin evidencia de que anticipe el ciclo del EMAE — la correlación adelantada es máxima en el mes corriente, no en t+1/t+2, contra emae_ia y emae_difusion. Se declara también r(IVA-DGI, cheque)=0,617 (antes ausente), el número que decidía entre promediar y cruzar en matriz.
 
-**2026-09-16** — Alta del indicador (ADR-0329). Corrige el alcance de una implementación anterior (ADR-0318/0319/0321) que había convertido este mismo par de series en un control dentro del detalle de `recaudacion` (dimensión fiscal): el pedido original era un proxy de ACTIVIDAD, y como tal pasa a puntuar en esa dimensión. El texto de `recaudacion` no se toca — sigue siendo útil para leer de dónde vino un movimiento del agregado DGI.
+**2026-09-16** — Alta del indicador. Corrige el alcance de una implementación anterior que había convertido este mismo par de series en un control dentro del detalle de `recaudacion` (dimensión fiscal): el pedido original era un proxy de ACTIVIDAD, y como tal pasa a puntuar en esa dimensión. El texto de `recaudacion` no se toca — sigue siendo útil para leer de dónde vino un movimiento del agregado DGI.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -889,7 +889,7 @@ Dato vigente: 91,3 índice (100 = 4T-2023) (2026-08).
 
 Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta card, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica (ADR-0329). Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al ITCM (0,24×0,30) contra 1,32% de `actividad_tributaria` (0,11×0,12). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el ITCM tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcrm` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.
+- **Participación en otros indicadores.** IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta card, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica. Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al índice macroeconómico (0,24×0,30) contra 1,32% de `actividad_tributaria` (0,11×0,12). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcrm` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.
 
 ## Transparencia — limitaciones declaradas
 
@@ -912,13 +912,13 @@ Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-16** — Se agrega `dobleUso`: esta card es el lado PESADO (7,2% del ITCM) del solapamiento con `actividad_tributaria` (1,32%), que ya lo declaraba desde su propia ficha pero no aparecía acá (revisión adversarial de ADR-0329).
+**2026-09-16** — Se agrega `dobleUso`: esta card es el lado PESADO (7,2% del índice macroeconómico) del solapamiento con `actividad_tributaria` (1,32%), que ya lo declaraba desde su propia ficha pero no aparecía acá (revisión adversarial).
 
-**2026-09-15** — Corrige el encuadre del punto anterior: IVA-DGI y cheque no son un control independiente, son dos de los propios componentes del agregado DGI (entre 30% y 62% del total según el mes). Se renombra a descomposición, se acota a tres meses el retroceso si esas series se retrasan (antes sin límite, con la ficha afirmando lo contrario), se agrega banda muerta para que valores que redondean a 0,0% no marquen divergencia, y se baja la afirmación de que divergir «sí es señal» de algo ajeno a la actividad (ADR-0321).
+**2026-09-15** — Corrige el encuadre del punto anterior: IVA-DGI y cheque no son un control independiente, son dos de los propios componentes del agregado DGI (entre 30% y 62% del total según el mes). Se renombra a descomposición, se acota a tres meses el retroceso si esas series se retrasan (antes sin límite, con la ficha afirmando lo contrario), se agrega banda muerta para que valores que redondean a 0,0% no marquen divergencia, y se baja la afirmación de que divergir «sí es señal» de algo ajeno a la actividad.
 
-**2026-09-15** — Suma un control tributario en el detalle (no en el puntaje): la variación interanual real de IVA-DGI y de créditos/débitos bancarios (impuesto al cheque), deflactadas con el mismo IPC, contra el sentido del agregado. Sirve para distinguir si un movimiento del agregado viene de más o menos actividad o de otro factor —vencimientos trasladados, cambios normativos, reasignaciones— y para no sobreponderar el efecto estacional (ADR-0318, ADR-0319).
+**2026-09-15** — Suma un control tributario en el detalle (no en el puntaje): la variación interanual real de IVA-DGI y de créditos/débitos bancarios (impuesto al cheque), deflactadas con el mismo IPC, contra el sentido del agregado. Sirve para distinguir si un movimiento del agregado viene de más o menos actividad o de otro factor —vencimientos trasladados, cambios normativos, reasignaciones— y para no sobreponderar el efecto estacional.
 
-**2026-09-08** — Tarjeta e historia actualizan las gacetillas COMARB antes de calcular. Se rechazan catálogos vacíos, errores HTTP y nuevos PDFs sin conciliación de componentes; se conserva el último mes común con IPC (ADR-0283).
+**2026-09-08** — Tarjeta e historia actualizan las gacetillas COMARB antes de calcular. Se rechazan catálogos vacíos, errores HTTP y nuevos PDFs sin conciliación de componentes; se conserva el último mes común con IPC.
 
 **2026-09-08** — El cotejo original de ARCA y la reconstrucción independiente confirman julio. Se explicita que vencimientos excepcionales y reasignaciones fiscales pueden mover la recaudación aun después del ajuste estacional; no cambia el puntaje.
 
@@ -1027,7 +1027,7 @@ Ponderación vigente en el ITCM: 11 % efectivo. El color es una lectura adiciona
 
 **2026-07-03** — Puntaje interpolado entre anclas.
 
-**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Tipo de cambio real (TCRM)» a «Tipo de cambio real». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+**2026-09-15** — El rótulo de la card pasa de «Tipo de cambio real (TCRM)» a «Tipo de cambio real». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1111,7 +1111,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0289: el informe separado de sensibilidad aplica la misma conversión anual a mensual que el índice y la web. Se corrige su simulación; el valor y el puntaje del indicador no cambian.
+**2026-09-08** — El informe separado de sensibilidad aplica la misma conversión anual a mensual que el índice y la web. Se corrige su simulación; el valor y el puntaje del indicador no cambian.
 
 **2026-06** — En el índice desde la paramétrica original, con bandas absolutas sobre el nivel anual.
 
@@ -1165,8 +1165,8 @@ Los dos componentes se leen juntos porque uno solo alcanza para engañar: la com
 - Cada componente se convierte en una posición de 0 a 1 interpolando entre los percentiles de su ventana de calibración, con saturación fuera de los extremos. Componente A: 30,6 → 0; 32,05 → 0,25; 32,83 → 0,50; 34,46 → 0,75; 37,65 → 1. Componente B: 1.122 → 0; 1.954 → 0,25; 2.363 → 0,50; 3.644 → 0,75; 6.545 → 1.
 - Las dos posiciones se cruzan entre las cuatro esquinas de la matriz, expresadas en tensión de 0 a 100: liquidez transaccional alta y poca compra de divisas da 0; menos pesos transaccionales, sin presión compradora da 58,75; presión compradora alta pese a liquidez transaccional alta da 58,75; menos pesos transaccionales y presión compradora alta da 90.
 - Las dos esquinas cruzadas valen lo mismo. La ficha original las había fijado en 40 y 77,5, apoyada en una inferencia no observable sobre el destino del dinero; como el componente B sólo observa compra de divisas, esa asimetría se quedó sin fundamento y el dato no pudo reponerlo — contra tres referencias externas cada componente sale con el signo invertido en al menos una. Cuando no se puede determinar un orden, no se codifica uno. Lo que se reparte en partes iguales es la misma severidad total que la ficha les había asignado a las dos juntas (40 más 77,5), así que cambia el orden y no el nivel: 58,75 queda por encima de 45, que es donde la matriz se volvería un promedio liso y un componente sano taparía al otro en su peor valor.
-- La tensión se traduce al ITCM con anclas explícitas que son su inversión exacta: 0 da 100 y 100 da 0. Las cuatro esquinas caen sobre esa recta, de modo que no hay una segunda escala que se pueda desincronizar de la del cálculo.
-- Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del ITCM: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su 11% viene de ser el único indicador de su dimensión y no de un juicio sobre su importancia relativa.
+- La tensión se traduce al índice macroeconómico con anclas explícitas que son su inversión exacta: 0 da 100 y 100 da 0. Las cuatro esquinas caen sobre esa recta, de modo que no hay una segunda escala que se pueda desincronizar de la del cálculo.
+- Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del índice macroeconómico: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su 11% viene de ser el único indicador de su dimensión y no de un juicio sobre su importancia relativa.
 
 ## Semáforo — valores que determinan el color
 
@@ -1213,7 +1213,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Un mes entra sólo si tiene los cinco insumos. Si falta cualquiera, ese punto no se calcula: nunca se imputa cero. La card conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el ITCM renormaliza los componentes disponibles.
+- **Si falta el dato:** Un mes entra sólo si tiene los cinco insumos. Si falta cualquiera, ese punto no se calcula: nunca se imputa cero. La card conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.
 
 - **Política de revisiones:** Las revisiones de la planilla del mercado de cambios se incorporan en la siguiente actualización. Los cortes por percentiles quedan congelados: no se recalculan con cada corrida, porque si se movieran con el último dato el puntaje de un mes dejaría de ser reproducible y la serie cambiaría hacia atrás sin que nadie tocara nada.
 
@@ -1295,7 +1295,7 @@ Dato vigente: −5,66 % i.a. ponderado (2026-07).
 
 Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** La operación ISAC también alimenta (en su variante desestacionalizada) un componente del ITCIS; los bienes de capital son una subserie del ICA que alimenta el saldo comercial.
+- **Participación en otros indicadores.** La operación ISAC también alimenta (en su variante desestacionalizada) un componente del índice de impacto social; los bienes de capital son una subserie del ICA que alimenta el saldo comercial.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1313,9 +1313,9 @@ Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adiciona
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0300: la planilla original de bienes de capital completa julio y reemplaza revisiones, conservando la API para años anteriores. Tarjeta e historia avanzan al mismo mes común con ISAC; el IAI de julio es −5,66%.
+**2026-09-08** — La planilla original de bienes de capital completa julio y reemplaza revisiones, conservando la API para años anteriores. Tarjeta e historia avanzan al mismo mes común con ISAC; el IAI de julio es −5,66%.
 
-**2026-09-08** — ADR-0299: IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.
+**2026-09-08** — IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.
 
 **2026-06-30** — Nace y entra al índice como parte de la sexta dimensión (inversión, 12%), sin el componente de patentamientos por falta de historia.
 
@@ -1323,11 +1323,11 @@ Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adiciona
 
 **2026-07-04** — El titular pasa al último mes común de las fuentes (antes podía mezclar meses distintos bajo una sola etiqueta); el componente fresco queda como provisorio.
 
-**2026-09-08** — ADR-0293: tarjeta e historial comparten la regla de incorporación de patentamientos y exigen el mismo mes de referencia. Se evita una divergencia futura de fórmula; los tres meses actualmente acumulados no activan todavía ese componente.
+**2026-09-08** — Tarjeta e historial comparten la regla de incorporación de patentamientos y exigen el mismo mes de referencia. Se evita una divergencia futura de fórmula; los tres meses actualmente acumulados no activan todavía ese componente.
 
-**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Inversión física (IAI)» a «Inversión física». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+**2026-09-15** — El rótulo de la card pasa de «Inversión física (IAI)» a «Inversión física». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
-**2026-09-30** — ADR-0341: la escala se corre al crecimiento de la población (+0,17% anual según la proyección del INDEC con base en el Censo 2022). El verde ya no arranca en 0% sino en +0,17%: crecer menos que la población es invertir menos por habitante. Todas las anclas se corren lo mismo; el −5,66% de julio pasa de 36,4 a 35,7 puntos y sigue en naranja.
+**2026-09-30** — La escala se corre al crecimiento de la población (+0,17% anual según la proyección del INDEC con base en el Censo 2022). El verde ya no arranca en 0% sino en +0,17%: crecer menos que la población es invertir menos por habitante. Todas las anclas se corren lo mismo; el −5,66% de julio pasa de 36,4 a 35,7 puntos y sigue en naranja.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1397,7 +1397,7 @@ Dato vigente: −0,3 % i.a. real (crédito en pesos) (2026-08).
 
 Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** La misma serie se sigue extrayendo como contexto no publicado. El cinturón de impacto social usó las líneas a familias (tarjetas y personales) para un componente de endeudamiento que dejó de integrar el ITCIS en julio de 2026: leía el crecimiento de la deuda real como mayor acceso al crédito. Esa dimensión la mide la mora desde entonces.
+- **Participación en otros indicadores.** La misma serie se sigue extrayendo como contexto no publicado. El cinturón de impacto social usó las líneas a familias (tarjetas y personales) para un componente de endeudamiento que dejó de integrar el índice de impacto social en julio de 2026: leía el crecimiento de la deuda real como mayor acceso al crédito. Esa dimensión la mide la mora desde entonces.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1416,7 +1416,7 @@ Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicion
 
 **2026-07-04** — El titular pasa al último mes con IPC cerrado; el dato diario fresco queda como provisorio (antes se deflactaba el préstamo del día con un IPC de dos meses atrás).
 
-**2026-08-25** — ADR-0251: el titular pasa a medir sólo el crédito EN PESOS (BCRA var. 117). Usaba la var. 26, que el propio catálogo del BCRA declara `MEyML`: pesos más la cartera en dólares valuada en pesos. Con esa serie una devaluación revaluaba la cartera sin que se prestara un peso más y entraba como crecimiento real: en julio de 2026 publicaba +2,5% mientras el crédito en pesos caía 1,5%. La cartera en moneda extranjera no se descarta —se publica en el desglose, en dólares y en pesos, junto con el total— pero deja de decidir el titular. La serie se rehace entera: las dos variables no son empalmables porque no comparten universo.
+**2026-08-25** — El titular pasa a medir sólo el crédito EN PESOS (BCRA var. 117). Usaba la var. 26, que el propio catálogo del BCRA declara `MEyML`: pesos más la cartera en dólares valuada en pesos. Con esa serie una devaluación revaluaba la cartera sin que se prestara un peso más y entraba como crecimiento real: en julio de 2026 publicaba +2,5% mientras el crédito en pesos caía 1,5%. La cartera en moneda extranjera no se descarta —se publica en el desglose, en dólares y en pesos, junto con el total— pero deja de decidir el titular. La serie se rehace entera: las dos variables no son empalmables porque no comparten universo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1509,11 +1509,11 @@ Ponderación vigente en el ITCM: 4 % efectivo. El color es una lectura adicional
 
 **2026-07-18** — Nace y entra al índice con el 25% de la dimensión de financiamiento, que pasa a llamarse capacidad y costo del financiamiento; los otros tres componentes se recortan en proporción. Cubre el precio del financiamiento del Estado, que la dimensión no medía.
 
-**2026-08-25** — ADR-0238: la TIREA deja de reconstruirse desde precio y fechas y se lee del cupón, que es donde la Secretaría la publica —(1+TEM)^12−1—. La reconstrucción anterior capitalizaba por meses de calendario enteros en vez del plazo real: en la LECAP S13N6 publicaba 32,17% donde la fuente informó 28,32%, y el indicador daba 8,07% real en lugar de 4,92%. Toda la serie desde diciembre de 2023 se recalculó; el desvío iba de −17,8 a +22,0 puntos según el mes, así que un valor anterior a esta fecha no se compara con uno posterior.
+**2026-08-25** — La TIREA deja de reconstruirse desde precio y fechas y se lee del cupón, que es donde la Secretaría la publica —(1+TEM)^12−1—. La reconstrucción anterior capitalizaba por meses de calendario enteros en vez del plazo real: en la LECAP S13N6 publicaba 32,17% donde la fuente informó 28,32%, y el indicador daba 8,07% real en lugar de 4,92%. Toda la serie desde diciembre de 2023 se recalculó; el desvío iba de −17,8 a +22,0 puntos según el mes, así que un valor anterior a esta fecha no se compara con uno posterior.
 
-**2026-08-25** — ADR-0258: la tasa de cada colocación pasa a ser la TIREA de corte —el rendimiento que fija el precio al que se colocó— y no la tasa contractual del instrumento. Leer el cupón sólo es correcto en una emisión nueva a la par; en una reapertura el cupón fija el flujo y el precio fija el rendimiento. En la reapertura de la LECAP S30N6 del 15 de julio de 2026, colocada a $1.194, el indicador informaba 31,37% donde la Secretaría publicó 25,59%, y julio salía 5,80% real en vez de 4,13%. La convención de días se calibró contra catorce tasas de corte publicadas entre julio de 2025 y agosto de 2026. Toda la serie desde diciembre de 2023 se recalculó: cambian 22 de los 40 meses con colocaciones, así que un valor anterior a esta fecha no se compara con uno posterior.
+**2026-08-25** — La tasa de cada colocación pasa a ser la TIREA de corte —el rendimiento que fija el precio al que se colocó— y no la tasa contractual del instrumento. Leer el cupón sólo es correcto en una emisión nueva a la par; en una reapertura el cupón fija el flujo y el precio fija el rendimiento. En la reapertura de la LECAP S30N6 del 15 de julio de 2026, colocada a $1.194, el indicador informaba 31,37% donde la Secretaría publicó 25,59%, y julio salía 5,80% real en vez de 4,13%. La convención de días se calibró contra catorce tasas de corte publicadas entre julio de 2025 y agosto de 2026. Toda la serie desde diciembre de 2023 se recalculó: cambian 22 de los 40 meses con colocaciones, así que un valor anterior a esta fecha no se compara con uno posterior.
 
-**2026-09-08** — ADR-0288: agosto se completa con cuatro colocaciones de las gacetillas oficiales. Un complemento incompleto falla entero; se separa la caché por ventana histórica para que la consulta corta no recorte el backfill.
+**2026-09-08** — Agosto se completa con cuatro colocaciones de las gacetillas oficiales. Un complemento incompleto falla entero; se separa la caché por ventana histórica para que la consulta corta no recorte el backfill.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

@@ -487,7 +487,7 @@ def test_el_peso_efectivo_que_declara_una_ficha_es_el_del_snapshot():
     comparados, malos = 0, []
     for ck, clave, _ in _indicadores_publicados():
         cuerpo = _bloque(LIB["fichas.ts"], clave)
-        m = re.search(r"(\d{1,2}(?:,\d)?)% efectivo del (ITC[MPG]|ITCIS)", cuerpo)
+        m = re.search(r"(\d{1,2}(?:,\d)?)% efectivo del (ITC[MPG]|ITCIS|índice (?:macroeconómico|político|de gestión|de impacto social))", cuerpo)
         if not m:
             continue
         sigla = INDICES[ck][0]

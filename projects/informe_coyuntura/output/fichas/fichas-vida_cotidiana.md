@@ -174,7 +174,7 @@ Ponderación vigente en el ITCIS: 14,2 % efectivo. El color es una lectura adici
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITCIS base-100 como rebase directo del cociente, con 22,75% de peso efectivo.
+**2026-07-03** — Entra al índice de impacto social base-100 como rebase directo del cociente, con 22,75% de peso efectivo.
 
 **2026-07-04** — Alineación estricta por mes común: antes podía mezclar el salario de un mes con la canasta de otro. Además queda como única medición del ratio ingresos/comida del índice.
 
@@ -261,7 +261,7 @@ Ponderación vigente en el ITCIS: 9,5 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITCIS base-100 (entonces como nivel contra el salario).
+**2026-07-03** — Entra al índice de impacto social base-100 (entonces como nivel contra el salario).
 
 **2026-07-04** — Rediseño: nivel contra el IPC general, eliminando el doble conteo con la brecha salario/canasta.
 
@@ -303,7 +303,7 @@ Mide directamente la asequibilidad de los servicios públicos y puntúa con 45% 
 
 - El IIEP suma las facturas mensuales de electricidad, gas, agua y transporte para un hogar representativo del AMBA.
 - La card publica esa canasta como porcentaje del salario RIPTE estimado por el propio reporte.
-- El total se separa usando la participación del transporte que publica el IIEP. Agua+energía se compara con 10% del ingreso y transporte con 5%; cada exceso de 2,5 puntos agrega 5 de tensión. Se toma el peor grupo y el índice que entra al ITCIS es 125 − 5 × tensión.
+- El total se separa usando la participación del transporte que publica el IIEP. Agua+energía se compara con 10% del ingreso y transporte con 5%; cada exceso de 2,5 puntos agrega 5 de tensión. Se toma el peor grupo y el índice que entra al índice de impacto social es 125 − 5 × tensión.
 
 ## Semáforo — valores que determinan el color
 
@@ -353,7 +353,7 @@ Ponderación vigente en el ITCIS: 12,3 % efectivo. El color es una lectura adici
 
 **2026-08-21** — IPC Regulados/RIPTE se reemplaza por la canasta efectiva IIEP/RIPTE. Conserva su peso; agua+energía y transporte pasan a anclas internacionales propias, sin usar como vara el 4T-2023 subsidiado.
 
-**2026-07-03** — Entra al ITCIS base-100 como nivel de regulados contra el salario (decisión superada por ADR-0232).
+**2026-07-03** — Entra al índice de impacto social base-100 como nivel de regulados contra el salario (decisión superada el 21-ago-2026).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -442,7 +442,7 @@ Ponderación vigente en el ITCIS: 5,5 % efectivo. El color es una lectura adicio
 
 **2026-07-20** — Alta del indicador: la dimensión de precios no medía el costo de la vivienda.
 
-**2026-09-08** — ADR-0291: la API discrepaba del original sin que lo explicara un rebase. Se reconstruyen tarjeta e historia desde la planilla INDEC, conservando GBA, base 4T-2023 y pesos. La revisión del ITCIS no representa una variación económica nueva.
+**2026-09-08** — La API discrepaba del original sin que lo explicara un rebase. Se reconstruyen tarjeta e historia desde la planilla INDEC, conservando GBA, base 4T-2023 y pesos. La revisión del índice de impacto social no representa una variación económica nueva.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -530,17 +530,17 @@ Ponderación vigente en el ITCIS: 0,5 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITCIS el consumo de carne VACUNA (CICCRA), con línea de base documentada.
+**2026-07-03** — Entra al índice de impacto social el consumo de carne VACUNA (CICCRA), con línea de base documentada.
 
 **2026-08-12** — Se suma el consumo total de las tres carnes y la matriz que distingue sustitución de pérdida de acceso; el nivel pasa al tablero de SAGYP.
 
-**2026-08-20** — Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023 (ADR-0217). La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.
+**2026-08-20** — Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023. La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.
 
-**2026-09-15** — Vuelve a puntuar por separado (ADR-0322), a pedido explícito de sumar la carne vacuna como indicador propio. El componente `consumo_carnes_total` deja de puntuar y se reemplaza por ésta y por `consumo_carnes_otras`, con el peso nominal repartido en la misma proporción con la que cada una pesaba en el total al 4T-2023 (52,3% / 47,7%), sin tocar el peso de ningún otro componente.
+**2026-09-15** — Vuelve a puntuar por separado, a pedido explícito de sumar la carne vacuna como indicador propio. El componente `consumo_carnes_total` deja de puntuar y se reemplaza por ésta y por `consumo_carnes_otras`, con el peso nominal repartido en la misma proporción con la que cada una pesaba en el total al 4T-2023 (52,3% / 47,7%), sin tocar el peso de ningún otro componente.
 
-**2026-09-16** — ADR-0325: se retira el «promedio histórico ~73 kg» sin fuente citable, se declara la divergencia SAGYP/CICCRA (46,75 vs 46,0 kg) y se corrige el 52,0%/48,0% de la entrada anterior por el 52,3%/47,7% que efectivamente usa el reparto de pesos.
+**2026-09-16** — Se retira el «promedio histórico ~73 kg» sin fuente citable, se declara la divergencia SAGYP/CICCRA (46,75 vs 46,0 kg) y se corrige el 52,0%/48,0% de la entrada anterior por el 52,3%/47,7% que efectivamente usa el reparto de pesos.
 
-**2026-09-24** — ADR-0339: sigue puntuando, ahora como indicador aspiracional junto al total de las tres carnes (mitad y mitad del mismo peso), que vuelve a puntuar a pedido del equipo. Aviar + porcina deja de puntuar.
+**2026-09-24** — Sigue puntuando, ahora como indicador aspiracional junto al total de las tres carnes (mitad y mitad del mismo peso), que vuelve a puntuar a pedido del equipo. Aviar + porcina deja de puntuar.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -628,17 +628,17 @@ Ponderación vigente en el ITCIS: 0,5 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITCIS el consumo de carne VACUNA (CICCRA), con línea de base documentada.
+**2026-07-03** — Entra al índice de impacto social el consumo de carne VACUNA (CICCRA), con línea de base documentada.
 
 **2026-08-12** — Se suma el consumo total de las tres carnes y la matriz que distingue sustitución de pérdida de acceso; el nivel pasa al tablero de SAGYP.
 
-**2026-08-20** — Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023 (ADR-0217). La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.
+**2026-08-20** — Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023. La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.
 
-**2026-08-25** — ADR-0267: cambia qué pasa con la card cuando la fuente no contesta, no cómo se mide. Su publicación vivía dentro de la rama que comprueba si SAGYP trajo el mes, así que un corte de la fuente no la degradaba: la hacía desaparecer del tablero. A diferencia del consumo de carne vacuna, este componente no tiene respaldo en CICCRA, y la rama de respaldo publicaba la vacuna y se olvidaba del total. Pasó de verdad ese mismo día: el colector devolvió vacío y el informe salió con un indicador menos, sin que ninguna verificación lo notara. Desde ahora se publica siempre, con el valor en blanco si la fuente falló, y el mecanismo que arrastra el último dato bueno lo marca como desactualizado. El valor, la serie y el método no cambian.
+**2026-08-25** — Cambia qué pasa con la card cuando la fuente no contesta, no cómo se mide. Su publicación vivía dentro de la rama que comprueba si SAGYP trajo el mes, así que un corte de la fuente no la degradaba: la hacía desaparecer del tablero. A diferencia del consumo de carne vacuna, este componente no tiene respaldo en CICCRA, y la rama de respaldo publicaba la vacuna y se olvidaba del total. Pasó de verdad ese mismo día: el colector devolvió vacío y el informe salió con un indicador menos, sin que ninguna verificación lo notara. Desde ahora se publica siempre, con el valor en blanco si la fuente falló, y el mecanismo que arrastra el último dato bueno lo marca como desactualizado. El valor, la serie y el método no cambian.
 
-**2026-09-15** — Deja de puntuar: se reemplaza por la carne vacuna y aviar + porcina por separado (ADR-0322).
+**2026-09-15** — Deja de puntuar: se reemplaza por la carne vacuna y aviar + porcina por separado.
 
-**2026-09-24** — ADR-0339: vuelve a puntuar el total de las tres carnes, a pedido del equipo, junto con la carne vacuna como indicador aspiracional (mitad y mitad del mismo peso). Aviar + porcina deja de puntuar y su nivel se lee dentro de esta card.
+**2026-09-24** — Vuelve a puntuar el total de las tres carnes, a pedido del equipo, junto con la carne vacuna como indicador aspiracional (mitad y mitad del mismo peso). Aviar + porcina deja de puntuar y su nivel se lee dentro de esta card.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -723,7 +723,7 @@ Ponderación vigente en el ITCIS: 9 % efectivo. El color es una lectura adiciona
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITCIS vía la serie anual disponible, invertida, con base en el año 2023.
+**2026-07-03** — Entra al índice de impacto social vía la serie anual disponible, invertida, con base en el año 2023.
 
 **2026-07-04** — Pasa a la serie trimestral con base exacta en el 4º trimestre de 2023 (la anual solo se actualizaba una vez al año y planchaba el componente).
 
@@ -813,11 +813,11 @@ Ponderación vigente en el ITCIS: 2,6 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0279: se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.
+**2026-09-08** — Se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.
 
-**2026-08-21** — Entra al ITCIS (ADR-0219) como la contracara del cierre de PyMEs, con 10% de la dimensión; los cinco componentes previos ceden proporcionalmente y conservan su orden relativo. El componente entra en 92,8 y el peso nominal de la dimensión no se toca.
+**2026-08-21** — Entra al índice de impacto social como la contracara del cierre de PyMEs, con 10% de la dimensión; los cinco componentes previos ceden proporcionalmente y conservan su orden relativo. El componente entra en 92,8 y el peso nominal de la dimensión no se toca.
 
-**2026-08-25** — ADR-0250: la card declara el universo restringido que siempre usó. Decía «% del empleo registrado» y dejaba al monotributo social afuera de los dos lados del cociente. La exclusión sigue —el padrón cayó de 653 a 259 mil personas entre noviembre y diciembre de 2024 por un cambio de régimen, y con ese salto adentro el indicador daría vuelta el signo del período— pero ahora la unidad dice «sin monotributo social», la card enumera las categorías del numerador y del denominador, y publica cuánto daría con el régimen incluido (22,1% contra 20,6%). El valor no cambia.
+**2026-08-25** — La card declara el universo restringido que siempre usó. Decía «% del empleo registrado» y dejaba al monotributo social afuera de los dos lados del cociente. La exclusión sigue —el padrón cayó de 653 a 259 mil personas entre noviembre y diciembre de 2024 por un cambio de régimen, y con ese salto adentro el indicador daría vuelta el signo del período— pero ahora la unidad dice «sin monotributo social», la card enumera las categorías del numerador y del denominador, y publica cuánto daría con el régimen incluido (22,1% contra 20,6%). El valor no cambia.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -905,11 +905,11 @@ Ponderación vigente en el ITCIS: 3,9 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0279: se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.
+**2026-09-08** — Se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.
 
-**2026-07-03** — Entra al ITCIS como nivel desestacionalizado base-100 (antes puntuaba por variación mensual de la serie original, dominada por estacionalidad).
+**2026-07-03** — Entra al índice de impacto social como nivel desestacionalizado base-100 (antes puntuaba por variación mensual de la serie original, dominada por estacionalidad).
 
-**2026-08-21** — Pasa a medir lo que su nombre promete (ADR-0218): empleadores PyME activos de la SRT, en lugar del IPI manufacturero del INDEC, que era una aproximación declarada por producción industrial. El componente pasa de 97,4 a 93,8 — la producción había recuperado más que el número de empresas. El rótulo público pasa de «Actividad industrial (IPI)» a «Empleadores PyME activos» y el tope de frescura sube de 140 a 165 días.
+**2026-08-21** — Pasa a medir lo que su nombre promete: empleadores PyME activos de la SRT, en lugar del IPI manufacturero del INDEC, que era una aproximación declarada por producción industrial. El componente pasa de 97,4 a 93,8 — la producción había recuperado más que el número de empresas. El rótulo público pasa de «Actividad industrial (IPI)» a «Empleadores PyME activos» y el tope de frescura sube de 140 a 165 días.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -993,11 +993,11 @@ Ponderación vigente en el ITCIS: 3,5 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0299: IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.
+**2026-09-08** — IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.
 
-**2026-07-03** — Entra al ITCIS como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias).
+**2026-07-03** — Entra al índice de impacto social como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias).
 
-**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+**2026-09-15** — El rótulo de la card pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1071,7 +1071,7 @@ Ponderación vigente en el ITCIS: 1,4 % efectivo. El color es una lectura adicio
 
 ## Transparencia — limitaciones declaradas
 
-- Mide gente que trabaja menos horas de las que quisiera y busca más, no la tenencia de múltiples empleos. Hasta agosto de 2026 el indicador se llamaba `pluriempleo`, que es otro fenómeno (ADR-0249).
+- Mide gente que trabaja menos horas de las que quisiera y busca más, no la tenencia de múltiples empleos. Hasta agosto de 2026 el indicador se llamaba `pluriempleo`, que es otro fenómeno.
 - Es porcentaje de la POBLACIÓN ECONÓMICAMENTE ACTIVA, no de los ocupados: así la define INDEC y así hay que compararla con la desocupación.
 - Trimestral contra base de un trimestre: sesgo estacional chico aceptado.
 
@@ -1083,11 +1083,11 @@ Ponderación vigente en el ITCIS: 1,4 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITCIS con rebase invertido base-100.
+**2026-07-03** — Entra al índice de impacto social con rebase invertido base-100.
 
-**2026-08-25** — ADR-0249: el indicador pasa a llamarse `subocupacion_demandante`. Se llamaba `pluriempleo` y medía otra cosa: la fuente siempre fue la tasa de subocupación demandante de la EPH (serie 47.2), que cuenta a quienes trabajan menos horas de las que quisieran y buscan más, no a quienes tienen más de un empleo. La unidad pasa de «%» y «% de ocupados» a «% de la PEA», que es como INDEC la calcula. El valor, la serie y el peso no cambian: cambia el nombre y la unidad declarada.
+**2026-08-25** — El indicador pasa a llamarse `subocupacion_demandante`. Se llamaba `pluriempleo` y medía otra cosa: la fuente siempre fue la tasa de subocupación demandante de la EPH (serie 47.2), que cuenta a quienes trabajan menos horas de las que quisieran y buscan más, no a quienes tienen más de un empleo. La unidad pasa de «%» y «% de ocupados» a «% de la PEA», que es como INDEC la calcula. El valor, la serie y el peso no cambian: cambia el nombre y la unidad declarada.
 
-**2026-08-25** — ADR-0263: la descripción pública decía «qué porcentaje de los ocupados» y el INDEC calcula la tasa sobre la población económicamente activa. El denominador correcto queda dicho en las tres capas —descripción, transformaciones y limitaciones— y no sólo en la unidad. Ningún valor cambia: cambia de qué universo se afirma que sale el 7,5%.
+**2026-08-25** — La descripción pública decía «qué porcentaje de los ocupados» y el INDEC calcula la tasa sobre la población económicamente activa. El denominador correcto queda dicho en las tres capas —descripción, transformaciones y limitaciones— y no sólo en la unidad. Ningún valor cambia: cambia de qué universo se afirma que sale el 7,5%.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1249,10 +1249,10 @@ Ponderación vigente en el ITCIS: 2,9 % efectivo. El color es una lectura adicio
 
 ## Transparencia — limitaciones declaradas
 
-- La auditoría del 8-sep-2026 recuperó informes de 2020–2023, incluido el 4º trimestre de 2023: la afirmación anterior de suspensión era incorrecta. Se mantiene explícita la base de enero de 2024; una eventual armonización con 4T-2023 requiere documentar su efecto sobre el índice (ADR-0273).
+- La auditoría del 8-sep-2026 recuperó informes de 2020–2023, incluido el 4º trimestre de 2023: la afirmación anterior de suspensión era incorrecta. Se mantiene explícita la base de enero de 2024; una eventual armonización con 4T-2023 requiere documentar su efecto sobre el índice.
 - Error muestral de ±3 puntos por mes (~1.000 hogares) y cobertura solo urbana.
 - La divergencia con el registro de denuncias requiere contrastar universos, períodos y error muestral: por sí sola no demuestra crecimiento del delito no denunciado.
-- El SNIC (registro oficial de delitos) sigue apareciendo como contraste por tipo en el detalle, además de puntuar por separado como `tasa_homicidios` y `tasa_robos` desde ADR-0327.
+- El SNIC (registro oficial de delitos) sigue apareciendo como contraste por tipo en el detalle, además de puntuar por separado como `tasa_homicidios` y `tasa_robos` desde el 16-sep-2026.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1262,17 +1262,17 @@ Ponderación vigente en el ITCIS: 2,9 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITCIS vía el registro anual de delitos, invertido, con base 2023.
+**2026-07-03** — Entra al índice de impacto social vía el registro anual de delitos, invertido, con base 2023.
 
 **2026-07-04** — La métrica pasa a la encuesta mensual de victimización (con la base declarada en enero de 2024); el registro de denuncias queda como serie de contraste.
 
-**2026-09-08** — Se actualiza el portal de descubrimiento y se admiten enlaces relativos a PDF; se recupera julio de 2026 y se explicita el límite del contraste con denuncias (ADR-0273).
+**2026-09-08** — Se actualiza el portal de descubrimiento y se admiten enlaces relativos a PDF; se recupera julio de 2026 y se explicita el límite del contraste con denuncias.
 
-**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+**2026-09-15** — El rótulo de la card pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
-**2026-09-16** — ADR-0325/0324: el desglose del SNIC por tipo de delito (homicidios, robos, hurtos, etc.), que se descargaba pero se quedaba en el snapshot interno del colector, se suma al contraste SNIC del detalle. Se restituyen Amenazas y Lesiones dolosas a la lista de tipos conservados.
+**2026-09-16** — El desglose del SNIC por tipo de delito (homicidios, robos, hurtos, etc.), que se descargaba pero se quedaba en el snapshot interno del colector, se suma al contraste SNIC del detalle. Se restituyen Amenazas y Lesiones dolosas a la lista de tipos conservados.
 
-**2026-09-16** — ADR-0327 revierte a ADR-0324/0325: el argumento de que el SNIC «es anual, no puede puntuar en un tablero mensual» era falso — el snapshot ya tenía cinco indicadores vigentes con 243-244 días de rezago del dato. Entran `tasa_homicidios` y `tasa_robos` como componentes propios de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. El peso interno de este indicador baja de 100% a 59,5% (2,68% del ITCIS).
+**2026-09-16** — Se revierte la decisión anterior: el argumento de que el SNIC «es anual, no puede puntuar en un tablero mensual» era falso — el snapshot ya tenía cinco indicadores vigentes con 243-244 días de rezago del dato. Entran `tasa_homicidios` y `tasa_robos` como componentes propios de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. El peso interno de este indicador baja de 100% a 59,5% (2,68% del índice de impacto social).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1296,9 +1296,9 @@ Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nac
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | tasa_homicidios | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | homicidios dolosos cada 100.000 hab. |
-| **SERIE DISPONIBLE** | 2000-12 → 2025-12 (26 puntos) | **REZAGO DE PUBLICACIÓN** | ANUAL, con ~8,5 meses de rezago desde el cierre del año: el CSV del año N aparece bien entrado N+1 (el de 2025 se verificó disponible el 16-sep-2026). Mismo ciclo que `iaf_transferencias`/`velocidad_resolucion`, que también son anuales con `fecha_dato` al 31 de diciembre. |
+| **SERIE DISPONIBLE** | 2000-12 → 2025-12 (26 puntos) | **REZAGO DE PUBLICACIÓN** | ANUAL, con ~8,5 meses de rezago desde el cierre del año: la planilla del año N aparece bien entrado N+1 (el de 2025 se verificó disponible el 16-sep-2026). Mismo ciclo que `iaf_transferencias`/`velocidad_resolucion`, que también son anuales con `fecha_dato` al 31 de diciembre. |
 | **PRODUCTOR DEL DATO** | SNIC — Sistema Nacional de Información Criminal, Ministerio de Seguridad | **OPERACIÓN ESTADÍSTICA** | Homicidios dolosos, tasa cada 100.000 habitantes YA CALCULADA por la fuente (columna `tasa_hechos` de snic-pais.csv, filtrada por `codigo_delito_snic_nombre = "Homicidios dolosos"`). No se reconstruye con población propia. |
-| **MODO DE ACCESO** | Automático: CSV público sin credenciales. Con store persistente en `data/vida/snic_serie.json`: el host cae por días enteros y cada refresco exitoso pisa la serie completa porque la fuente revisa retroactivamente. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-05 |
+| **MODO DE ACCESO** | Automático: planilla pública sin credenciales. Con store persistente en `data/vida/snic_serie.json`: el host cae por días enteros y cada refresco exitoso pisa la serie completa porque la fuente revisa retroactivamente. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-05 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1354,13 +1354,13 @@ Ponderación vigente en el ITCIS: 1,2 % efectivo. El color es una lectura adicio
 
 - **Si falta el dato:** Con el host de cloud-snic caído, la serie sale del store persistente (`data/vida/snic_serie.json`) con su fecha de último refresco declarada; sin componente, renormalización dentro de la dimensión de seguridad.
 
-- **Política de revisiones:** El CSV oficial se revisa retroactivamente y cada refresco exitoso pisa la serie completa (mismo criterio que `inseguridad_snic`).
+- **Política de revisiones:** La planilla oficial se revisa retroactivamente y cada refresco exitoso pisa la serie completa (mismo criterio que `inseguridad_snic`).
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-15** — ADR-0324: homicidios se conserva por NOMBRE en `tipos_principales`, dentro del desglose SNIC que sólo alimenta el contraste de `inseguridad` — no puntúa.
+**2026-09-15** — Homicidios se conserva por NOMBRE en `tipos_principales`, dentro del desglose SNIC que sólo alimenta el contraste de `inseguridad` — no puntúa.
 
-**2026-09-16** — ADR-0327 revierte a ADR-0324/0325: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. 25,5% interno de la dimensión (1,15% del ITCIS).
+**2026-09-16** — Se revierte la decisión anterior: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. 25,5% interno de la dimensión (1,15% del índice de impacto social).
 
 **2026-09-16** — Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» a la mediana de los 26 años — la afirmación de que 2023 caía «cerca de la mediana» era falsa (percentil 11, no ~50).
 
@@ -1437,7 +1437,7 @@ Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicio
 ## Transparencia — limitaciones declaradas
 
 - Depende de la denuncia: a diferencia del homicidio, un robo no denunciado no entra a esta serie. El IVI (`inseguridad`) es el componente del cinturón que sí capta la cifra negra, y por eso pesa más en la dimensión.
-- LA CAÍDA DE 2025 NO ESTÁ EXPLICADA, Y EL COLOR VERDE DE ESTA CARD DESCANSA SOBRE ELLA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada (ADR-0327), no se lo corrige ni se lo omite — pero el lector de la card, no sólo el de esta ficha, tiene que poder verla.
+- LA CAÍDA DE 2025 NO ESTÁ EXPLICADA, Y EL COLOR VERDE DE ESTA CARD DESCANSA SOBRE ELLA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada, no se lo corrige ni se lo omite — pero el lector de la card, no sólo el de esta ficha, tiene que poder verla.
 - Anual con ~8,5 meses de rezago, igual que `tasa_homicidios`.
 - Serie NACIONAL, sin apertura provincial ni por modalidad (arma, vía pública, vivienda).
 
@@ -1445,13 +1445,13 @@ Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicio
 
 - **Si falta el dato:** Mismo store persistente que `tasa_homicidios`; sin componente, renormalización dentro de la dimensión de seguridad.
 
-- **Política de revisiones:** El CSV oficial se revisa retroactivamente y cada refresco exitoso pisa la serie completa.
+- **Política de revisiones:** La planilla oficial se revisa retroactivamente y cada refresco exitoso pisa la serie completa.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-15** — ADR-0324/0325: robos se conserva por NOMBRE en `tipos_principales`, sólo como contraste de `inseguridad` — no puntúa.
+**2026-09-15** — Robos se conserva por NOMBRE en `tipos_principales`, sólo como contraste de `inseguridad` — no puntúa.
 
-**2026-09-16** — ADR-0327 revierte a ADR-0324/0325: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula, y con la limitación de la caída de 2025 declarada en la ficha. 15% interno de la dimensión (0,68% del ITCIS).
+**2026-09-16** — Se revierte la decisión anterior: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula, y con la limitación de la caída de 2025 declarada en la ficha. 15% interno de la dimensión (0,68% del índice de impacto social).
 
 **2026-09-16** — Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» (percentil 69, sesgaba a verde) a la mediana de los 26 años.
 
@@ -1570,7 +1570,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | vehículos 0km por cada 1.000 habitantes (12 meses) |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-08 (44 puntos) | **REZAGO DE PUBLICACIÓN** | Menos de un mes: el registro publica cada mes en los primeros días del siguiente. Se toma el último mes calendario completo. |
 | **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (unidades) e INDEC (población) | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de automotores y de motovehículos (0 kilómetro), por mes y jurisdicción del registro seccional, sumadas y divididas por la población urbana total proyectada del INDEC. |
-| **MODO DE ACCESO** | Automático: CSV abierto sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-05 |
+| **MODO DE ACCESO** | Automático: planilla abierta sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-05 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1639,17 +1639,17 @@ Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicio
 
 **2026-09-08** — Se limita la interpretación al flujo y la composición de patentamientos. El registro no identifica primeras compras ni transiciones entre vehículos de un mismo hogar. No cambian el cálculo, el peso ni la serie.
 
-**2026-07-03** — Entra al ITCIS el patentamiento de motos con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad.
+**2026-07-03** — Entra al índice de impacto social el patentamiento de motos con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad.
 
 **2026-07-04** — Se aplica al componente de motos el techo de recorte 140 y su peso interno baja de 10% a 5%.
 
-**2026-08-21** — Entra el patentamiento de autos como componente espejo, con el mismo peso y la misma transformación que motos (ADR-0223).
+**2026-08-21** — Entra el patentamiento de autos como componente espejo, con el mismo peso y la misma transformación que motos.
 
-**2026-08-21** — Los dos vehículos se funden en la motorización total per cápita, que toma el peso combinado de ambos; autos y motos dejan de ser tarjetas y pasan a explicar el color desde adentro (ADR-0224). La decisión original atribuyó al total la capacidad de distinguir acceso de descenso de categoría; esa interpretación se rectificó el 8 de septiembre de 2026 porque el registro no identifica trayectorias de hogares. Con el cambio, el componente deja de estar apoyado contra el techo de recorte —del que queda exento— y vuelve a moverse con la fuente. La fuente de motos pasa de la cámara al registro, que es lo único que permite excluir el movimiento registral de Tierra del Fuego.
+**2026-08-21** — Los dos vehículos se funden en la motorización total per cápita, que toma el peso combinado de ambos; autos y motos dejan de ser tarjetas y pasan a explicar el color desde adentro. La decisión original atribuyó al total la capacidad de distinguir acceso de descenso de categoría; esa interpretación se rectificó el 8 de septiembre de 2026 porque el registro no identifica trayectorias de hogares. Con el cambio, el componente deja de estar apoyado contra el techo de recorte —del que queda exento— y vuelve a moverse con la fuente. La fuente de motos pasa de la cámara al registro, que es lo único que permite excluir el movimiento registral de Tierra del Fuego.
 
-**2026-09-15** — Se agrega el ratio motos/autos a la composición publicada (ADR-0323), pedido explícito de Juan como control de lectura. No cambia el puntaje, el peso ni la card: es una magnitud más dentro de la misma matriz.
+**2026-09-15** — Se agrega el ratio motos/autos a la composición publicada, pedido explícito de Juan como control de lectura. No cambia el puntaje, el peso ni la card: es una magnitud más dentro de la misma matriz.
 
-**2026-09-16** — ADR-0328 revierte a ADR-0323: el ratio deja de ser una magnitud colgada de esta card y pasa a puntuar como indicador propio (`ratio_motos_autos`), con 2,5% de la dimensión de ingresos y consumo cedido proporcionalmente por los siete componentes que ya había. No cambia el cálculo ni el peso de ESTE indicador.
+**2026-09-16** — Se revierte la decisión anterior: el ratio deja de ser una magnitud colgada de esta card y pasa a puntuar como indicador propio (`ratio_motos_autos`), con 2,5% de la dimensión de ingresos y consumo cedido proporcionalmente por los siete componentes que ya había. No cambia el cálculo ni el peso de ESTE indicador.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1675,7 +1675,7 @@ Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil d
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | motos por cada auto patentado (móvil 12m) |
 | **SERIE DISPONIBLE** | 2007-12 → 2026-08 (225 puntos) | **REZAGO DE PUBLICACIÓN** | Mismo calendario que `motorizacion_total`: menos de un mes, el registro publica cada mes en los primeros días del siguiente. |
 | **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de motovehículos dividido inscripciones iniciales de automotores (0 kilómetro), acumulado móvil de 12 meses, sin Tierra del Fuego. Mismo colector y misma descarga que `motorizacion_total`. |
-| **MODO DE ACCESO** | Automático: CSV abierto sin credenciales, descubierto por catálogo en cada corrida. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-05 |
+| **MODO DE ACCESO** | Automático: planilla abierta sin credenciales, descubierto por catálogo en cada corrida. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-05 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1736,11 +1736,11 @@ Ponderación vigente en el ITCIS: 0,8 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-15** — Nace como magnitud colgada de la card de `motorizacion_total` (ADR-0323): control de lectura pedido por Juan, sin puntaje propio.
+**2026-09-15** — Nace como magnitud colgada de la card de `motorizacion_total`: control de lectura pedido por Juan, sin puntaje propio.
 
-**2026-09-16** — Corrección post-merge (revisión adversarial): se amortigua la distancia a 100 a la mitad (factor 0,5) porque el índice nacía saturado en el extremo de la escala con apenas +38,8% de crecimiento sobre la base; se declara la auto-cancelación medida contra `motorizacion_total` (r=+0,40 en niveles, r=−0,251 en la matriz de redundancia) y se cita ADR-0321 como precedente de encuadre.
+**2026-09-16** — Corrección post-merge (revisión adversarial): se amortigua la distancia a 100 a la mitad (factor 0,5) porque el índice nacía saturado en el extremo de la escala con apenas +38,8% de crecimiento sobre la base; se declara la auto-cancelación medida contra `motorizacion_total` (r=+0,40 en niveles, r=−0,251 en la matriz de redundancia) y se cita como precedente la corrección de encuadre de `recaudacion`.
 
-**2026-09-16** — ADR-0328 revierte a ADR-0323: pasa a puntuar como indicador propio, con card, ficha y peso propios (2,5% interno de la dimensión de ingresos y consumo · 0,7% del ITCIS). Polaridad confirmada por el usuario: más motos por auto es deterioro.
+**2026-09-16** — Se revierte la decisión anterior: pasa a puntuar como indicador propio, con card, ficha y peso propios (2,5% interno de la dimensión de ingresos y consumo · 0,7% del índice de impacto social). Polaridad confirmada por el usuario: más motos por auto es deterioro.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1828,11 +1828,11 @@ Ponderación vigente en el ITCIS: 6 % efectivo. El color es una lectura adiciona
 
 ## Historial — cambios metodológicos documentados
 
-**2026-08-21** — Entra al ITCIS con 20% de la dimensión de ingresos y consumo, y los cinco componentes previos ceden proporcionalmente conservando su orden relativo (ADR-0225). Venía de ser el ancla de validación externa del cinturón: mide condiciones materiales del hogar, así que integra el índice en vez de juzgarlo — la misma regla que había sacado a la confianza del consumidor de ese papel.
+**2026-08-21** — Entra al índice de impacto social con 20% de la dimensión de ingresos y consumo, y los cinco componentes previos ceden proporcionalmente conservando su orden relativo. Venía de ser el ancla de validación externa del cinturón: mide condiciones materiales del hogar, así que integra el índice en vez de juzgarlo — la misma regla que había sacado a la confianza del consumidor de ese papel.
 
-**2026-08-25** — ADR-0243: la base del índice se lee de los metadatos de la fuente en vez de escribirse a mano. La card la rotulaba «2004 = 100» y la Encuesta de Supermercados usa base 2017=100 —la serie ni siquiera tiene puntos antes de enero de 2017—. El valor y el puntaje no cambian: el rebase del cinturón es contra el 4º trimestre de 2023 y nunca usó la base de la fuente. Queda pendiente el rezago del espejo: el INDEC publicó junio de 2026 el 21 de agosto y la API de series todavía no lo refleja.
+**2026-08-25** — La base del índice se lee de los metadatos de la fuente en vez de escribirse a mano. La card la rotulaba «2004 = 100» y la Encuesta de Supermercados usa base 2017=100 —la serie ni siquiera tiene puntos antes de enero de 2017—. El valor y el puntaje no cambian: el rebase del cinturón es contra el 4º trimestre de 2023 y nunca usó la base de la fuente. Queda pendiente el rezago del espejo: el INDEC publicó junio de 2026 el 21 de agosto y la API de series todavía no lo refleja.
 
-**2026-08-25** — ADR-0256: la serie deja de bajarse de la API de datos.gob.ar y sale de la planilla de serie histórica del propio INDEC (Cuadro 1, columna desestacionalizada). La API era un espejo con atraso propio y encadenaba dos rezagos: la card mostraba mayo de 2026 mientras el INDEC ya había publicado junio el día 21. Con el cambio la card pasa a junio (82,1) y el tope de rezago del gate baja de 140 a 130 días, ahora medido sobre 14 publicaciones reales del calendario del INDEC en vez de estimado. El espejo se conserva como contraste del número leído, no como fuente.
+**2026-08-25** — La serie deja de bajarse de la API de datos.gob.ar y sale de la planilla de serie histórica del propio INDEC (Cuadro 1, columna desestacionalizada). La API era un espejo con atraso propio y encadenaba dos rezagos: la card mostraba mayo de 2026 mientras el INDEC ya había publicado junio el día 21. Con el cambio la card pasa a junio (82,1) y el tope de rezago del gate baja de 140 a 130 días, ahora medido sobre 14 publicaciones reales del calendario del INDEC en vez de estimado. El espejo se conserva como contraste del número leído, no como fuente.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1871,7 +1871,7 @@ Es la señal directa de estrés financiero de los hogares: la deuda puede crecer
 ## Método de cómputo
 
 - Mora ponderada: el ratio de irregularidad de préstamos personales y el de tarjetas de crédito se combinan según el saldo de cada línea.
-- En el ITCIS puntúa por el nivel relativo al 4º trimestre de 2023 (índice base 100), invertido: más mora que en la base, peor puntaje.
+- En el índice de impacto social puntúa por el nivel relativo al 4º trimestre de 2023 (índice base 100), invertido: más mora que en la base, peor puntaje.
 - Sin piso de recorte, igual que el resto de los componentes: el deterioro no se maquilla.
 
 ## Semáforo — valores que determinan el color
@@ -1919,11 +1919,11 @@ Ponderación vigente en el ITCIS: 7,6 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-15** — Entra al ITCIS como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa.
+**2026-07-15** — Entra al índice de impacto social como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa.
 
-**2026-08-21** — Conserva 70% de vulnerabilidad al incorporarse la carga del servicio de deuda como señal previa al incumplimiento (ADR-0231).
+**2026-08-21** — Conserva 70% de vulnerabilidad al incorporarse la carga del servicio de deuda como señal previa al incumplimiento.
 
-**2026-09-08** — Se corrige el enlace del anexo: el archivo anterior respondía HTTP 200 con datos atrasados. Se conserva la ponderación por saldo y se incorpora junio de 2026 (ADR-0272).
+**2026-09-08** — Se corrige el enlace del anexo: el archivo anterior respondía HTTP 200 con datos atrasados. Se conserva la ponderación por saldo y se incorpora junio de 2026.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1963,7 +1963,7 @@ Mide capacidad comprometida antes de que aparezca el incumplimiento. Complementa
 
 - Toma la carga de capital e intereses sobre la masa salarial registrada de los sectores público y privado.
 - El BCRA usa promedios de tres meses tanto para la carga como para la masa salarial.
-- En el ITCIS se rebasa al promedio del 4º trimestre de 2023 y se invierte: más ingreso comprometido en deuda significa peor capacidad de pago.
+- En el índice de impacto social se rebasa al promedio del 4º trimestre de 2023 y se invierte: más ingreso comprometido en deuda significa peor capacidad de pago.
 
 ## Semáforo — valores que determinan el color
 

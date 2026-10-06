@@ -131,7 +131,7 @@ def _declarados(texto: str) -> list[tuple[str, float]]:
 # y son registro histórico, no declaración vigente.
 PERTENECE = re.compile(
     r"Pertenece a la dimensión de ([^(]+?)\s*"
-    r"\((\d+(?:,\d+)?)% interno · (\d+(?:,\d+)?)% del ITCIS\)")
+    r"\((\d+(?:,\d+)?)% interno · (\d+(?:,\d+)?)% del (?:ITCIS|índice de impacto social)\)")
 
 
 def _pertenencias(texto: str):

@@ -166,9 +166,9 @@ Ponderación vigente en el ITCG: 14 % efectivo. El color es una lectura adiciona
 
 **2026-05** — Versión inicial del indicador sobre la brecha CCL/oficial minorista, en la escala de avance del cinturón anterior.
 
-**2026-09-08** — ADR-0280: la fecha proviene de la cotización más antigua, no del día de consulta. Se conservan precios y marcas de tiempo; fechas ausentes o inválidas y precios no positivos o no finitos provocan fallback al cache existente.
+**2026-09-08** — La fecha proviene de la cotización más antigua, no del día de consulta. Se conservan precios y marcas de tiempo; fechas ausentes o inválidas y precios no positivos o no finitos provocan fallback al cache existente.
 
-**2026-07-02** — Entra al ITCG con umbrales institucionales sobre la brecha CCL/mayorista.
+**2026-07-02** — Entra al índice de gestión con umbrales institucionales sobre la brecha CCL/mayorista.
 
 **2026-07-03** — Puntaje interpolado entre anclas. Además, la brecha deja de puntuar una segunda vez dentro del compuesto de apertura comercial: puntúa una sola vez, acá.
 
@@ -254,11 +254,11 @@ Ponderación vigente en el ITCG: 14 % efectivo. El color es una lectura adiciona
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — Tarjeta e historia comparten el ICA original vigente y el mismo cálculo; se explicita la tasa de estadística incluida en la serie de importación y el alcance de las anclas (ADR-0282).
+**2026-09-08** — Tarjeta e historia comparten el ICA original vigente y el mismo cálculo; se explicita la tasa de estadística incluida en la serie de importación y el alcance de las anclas.
 
 **2026-05** — Versión inicial como variación interanual de importaciones (aproximación de apertura).
 
-**2026-07-02** — Pasa a un compuesto de liberalización (brecha cambiaria + alícuota) con el ITCG.
+**2026-07-02** — Pasa a un compuesto de liberalización (brecha cambiaria + alícuota) con el índice de gestión.
 
 **2026-07-03** — Queda la alícuota efectiva sola: la brecha cambiaria ya puntuaba como indicador propio y el compuesto la hacía pesar dos veces en la dimensión. Las anclas se eligieron sobre la recta del documento (0% → 100 · 15% → 0).
 
@@ -355,7 +355,7 @@ Ponderación vigente en el ITCG: 7 % efectivo. El color es una lectura adicional
 
 **2026-05** — Automatizado desde el inicio del cinturón con la misma búsqueda, en escala lineal.
 
-**2026-07-02** — Umbrales institucionales del ITCG.
+**2026-07-02** — Umbrales institucionales del índice de gestión.
 
 **2026-07-03** — Puntaje interpolado entre anclas.
 
@@ -365,9 +365,9 @@ Ponderación vigente en el ITCG: 7 % efectivo. El color es una lectura adicional
 
 **2026-08-21** — Se amplió lo que la ficha declara sobre sí misma, sin tocar el indicador, su peso ni su cálculo. Quedó dicho que el recuento mide actos y no efectos —un artículo derogado que la Justicia suspende suma igual que uno que rige— y que quien lo publica es el ministerio que ejecuta el programa que el recuento mide. Se sumó como contraste la investigación de Chequeado y elDiarioAR difundida en diciembre de 2025, que clasificó por impacto real las medidas dictadas hasta mayo de 2025; sus cifras se recalcularon sobre la planilla original de la investigación y no sobre su resumen periodístico. Esa base se cita como anotación de lectura: es un corte único y no un seguimiento vivo, así que no puede ser componente del índice ni validación externa recurrente.
 
-**2026-08-29** — ADR-0269: el valor de respaldo seguía en 57 «% de avance desregulatorio», la unidad anterior a ADR-0143, que pasó la escala de normas a artículos. Contra la banda de hoy esos 57 se leían como 57 artículos. Se corrigió a 16.771 artículos, la última lectura verificada del informe ministerial, y el respaldo dejó de tener prioridad sobre el último valor en vivo.
+**2026-08-29** — El valor de respaldo seguía en 57 «% de avance desregulatorio», la unidad anterior al cambio del 26-jul-2026, que pasó la escala de normas a artículos. Contra la banda de hoy esos 57 se leían como 57 artículos. Se corrigió a 16.771 artículos, la última lectura verificada del informe ministerial, y el respaldo dejó de tener prioridad sobre el último valor en vivo.
 
-**2026-09-08** — ADR-0292: se incorporan las revisiones impresas en el gráfico de los últimos tres meses. Agosto revisa julio a 16.848 artículos; con agosto en 17.115, la variación es 267. Se corrigen tarjeta e historia, conservando la procedencia de las ediciones.
+**2026-09-08** — Se incorporan las revisiones impresas en el gráfico de los últimos tres meses. Agosto revisa julio a 16.848 artículos; con agosto en 17.115, la variación es 267. Se corrigen tarjeta e historia, conservando la procedencia de las ediciones.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -439,7 +439,7 @@ Dato vigente: −21,37 % de variación vs dic-2023 (dotación APN) (2026-08).
 
 Ponderación vigente en el ITCG: 14,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Mide personas; el costo de la nómina lo mide por separado el gasto de funcionamiento — dos patas complementarias declaradas de la misma dimensión. La masa salarial las acompañó hasta agosto de 2026, cuando salió del ITCG por ADR-0186.
+- **Participación en otros indicadores.** Mide personas; el costo de la nómina lo mide por separado el gasto de funcionamiento — dos patas complementarias declaradas de la misma dimensión. La masa salarial las acompañó hasta agosto de 2026, cuando salió del índice de gestión.
 
 ## Transparencia — limitaciones declaradas
 
@@ -457,7 +457,7 @@ Ponderación vigente en el ITCG: 14,6 % efectivo. El color es una lectura adicio
 
 **2026-05** — Versión inicial sobre la serie previsional trimestral, con meta de largo plazo.
 
-**2026-07-02** — Pasa a la planilla mensual de dotación APN contra diciembre de 2023, con umbrales del ITCG.
+**2026-07-02** — Pasa a la planilla mensual de dotación APN contra diciembre de 2023, con umbrales del índice de gestión.
 
 **2026-07-03** — Puntaje interpolado entre anclas.
 
@@ -529,7 +529,7 @@ Dato vigente: −35,92 % de variación real vs 2023-08 (gastos de funcionamiento
 
 Ponderación vigente en el ITCG: 10,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Su componente de salarios se solapa conceptualmente con la masa salarial (fuente distinta), que el marco trataba como pata complementaria hasta que salió del ITCG por ADR-0186. Desde entonces es la única lectura del costo de la nómina dentro de la dimensión, y acompaña a la dotación de personal, que mide cuánta gente hay y no cuánto cuesta.
+- **Participación en otros indicadores.** Su componente de salarios se solapa conceptualmente con la masa salarial (fuente distinta), que el marco trataba como pata complementaria hasta que salió del índice de gestión, en agosto de 2026. Desde entonces es la única lectura del costo de la nómina dentro de la dimensión, y acompaña a la dotación de personal, que mide cuánta gente hay y no cuánto cuesta.
 
 ## Transparencia — limitaciones declaradas
 
@@ -544,7 +544,7 @@ Ponderación vigente en el ITCG: 10,4 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-02** — Indicador nuevo, creado con el ITCG.
+**2026-07-02** — Indicador nuevo, creado con el índice de gestión.
 
 **2026-07-03** — Puntaje interpolado entre anclas.
 
@@ -635,11 +635,11 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — ADR-0305: se muestran fechas separadas de revisión normativa, judicial y consulta CNV; se retiran las garantías de ausencia de rezago y de integridad del archivo local. Se corrige la presentación de litigiosidad SRT como resultado directo del FAL.
+**2026-09-08** — Se muestran fechas separadas de revisión normativa, judicial y consulta CNV; se retiran las garantías de ausencia de rezago y de integridad del archivo local. Se corrige la presentación de litigiosidad SRT como resultado directo del FAL.
 
-**2026-08-21** — Vuelve a medir si la reforma rige y no sólo si se dictó, en tres etapas: construcción normativa vigente, entrada en vigencia y adopción. Un acto suspendido judicialmente deja de contar mientras dure la suspensión. El cambio revierte la decisión editorial de julio, que había dado el máximo puntaje por haber dictado la ley y su reglamentación: aquella decisión se tomó sin la evidencia que apareció después. La base de desregulaciones de Chequeado y elDiarioAR califica de impacto nulo a las doce medidas del sector Trabajo y Seguridad Social —el capítulo laboral del decreto 70/2023, frenado en tribunales—, el subíndice de libertad laboral de Heritage no registra variación neta en tres ediciones, y la propia Ley 27.802 estuvo suspendida con alcance general entre el 30 de marzo y el 23 de abril de 2026, con la acción de inconstitucionalidad todavía en trámite. El indicador pasa de cien a cincuenta, su puntaje de cien a cincuenta y cinco, la dimensión de 80,4 a 57,9 y el índice de gestión baja 3,4 puntos: el cambio empeora el número y se registra con la misma vara con la que se registró la subida. Ver ADR-0228.
+**2026-08-21** — Vuelve a medir si la reforma rige y no sólo si se dictó, en tres etapas: construcción normativa vigente, entrada en vigencia y adopción. Un acto suspendido judicialmente deja de contar mientras dure la suspensión. El cambio revierte la decisión editorial de julio, que había dado el máximo puntaje por haber dictado la ley y su reglamentación: aquella decisión se tomó sin la evidencia que apareció después. La base de desregulaciones de Chequeado y elDiarioAR califica de impacto nulo a las doce medidas del sector Trabajo y Seguridad Social —el capítulo laboral del decreto 70/2023, frenado en tribunales—, el subíndice de libertad laboral de Heritage no registra variación neta en tres ediciones, y la propia Ley 27.802 estuvo suspendida con alcance general entre el 30 de marzo y el 23 de abril de 2026, con la acción de inconstitucionalidad todavía en trámite. El indicador pasa de cien a cincuenta, su puntaje de cien a cincuenta y cinco, la dimensión de 80,4 a 57,9 y el índice de gestión baja 3,4 puntos: el cambio empeora el número y se registra con la misma vara con la que se registró la subida.
 
-**2026-07-26** — Pasa a contar los dos actos fundamentales del Fondo —la ley y su reglamentación—, cincuenta puntos cada uno, por decisión editorial y a propuesta de una revisión externa del cinturón, que sostenía que sancionar y reglamentar agotaba lo que el Gobierno podía cumplir hasta la vigencia. El valor saltó de 40,2 a cien y el puntaje de 30,8 a cien. Quedó declarado que el indicador dejaba de discriminar, porque los dos actos ya habían ocurrido y no podían deshacerse. Ver ADR-0142.
+**2026-07-26** — Pasa a contar los dos actos fundamentales del Fondo —la ley y su reglamentación—, cincuenta puntos cada uno, por decisión editorial y a propuesta de una revisión externa del cinturón, que sostenía que sancionar y reglamentar agotaba lo que el Gobierno podía cumplir hasta la vigencia. El valor saltó de 40,2 a cien y el puntaje de 30,8 a cien. Quedó declarado que el indicador dejaba de discriminar, porque los dos actos ya habían ocurrido y no podían deshacerse.
 
 **2026-07-20** — Pasa a medirse en tres etapas —construcción normativa, vigencia y adopción— a partir de una revisión externa del cinturón, que observó que el indicador informaba un valor cercano a cero por una razón de cronograma legal y no de gestión: medía la adopción de un instrumento que todavía no podía adoptarse. Con la escala anterior el valor era 0,4 sobre 100; con la nueva es 40,2, que corresponde a un instrumento íntegramente construido y en espera de entrar en vigencia. Las bandas se recalibraron porque cambió lo que la escala mide, no para mover el puntaje: sobre la escala nueva, las anclas viejas habrían dado 75 a un instrumento que nadie usa.
 
@@ -653,7 +653,7 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 
 **2026-07-25** — Su peso dentro de la dimensión baja del setenta al cincuenta por ciento, a propuesta de una revisión externa: la dimensión mide un instrumento y su resultado, y no había razón para que el instrumento pesara más del doble que el resultado. El cambio mejora el puntaje de la dimensión, porque la litigiosidad venía puntuando más alto que el fondo; se deja dicho para que la decisión pueda discutirse por su argumento y no por su efecto.
 
-**2026-08-29** — ADR-0269: el valor de respaldo seguía en 0,4, de la fórmula anterior a la recalibración de ADR-0228. Se corrigió a 50 sobre el índice 0-100 vigente —los dos actos fundamentales vigentes, el régimen todavía sin regir y sin FAL registrado en la CNV— y el respaldo dejó de tener prioridad sobre el último valor en vivo.
+**2026-08-29** — El valor de respaldo seguía en 0,4, de la fórmula anterior a la recalibración del 21-ago-2026. Se corrigió a 50 sobre el índice 0-100 vigente —los dos actos fundamentales vigentes, el régimen todavía sin regir y sin FAL registrado en la CNV— y el respaldo dejó de tener prioridad sobre el último valor en vivo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -737,11 +737,11 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — Tarjeta e historia exigen 24 meses consecutivos y valores válidos. Se aclara que los juicios SRT no identifican resultados del FAL ni el mérito de los reclamos (ADR-0285).
+**2026-09-08** — Tarjeta e historia exigen 24 meses consecutivos y valores válidos. Se aclara que los juicios SRT no identifican resultados del FAL ni el mérito de los reclamos.
 
 **2026-07-02** — Alta como indicador de contexto, fuera del índice.
 
-**2026-07-03** — Entra al ITCG (reforma laboral, 30% interno): es el resultado que la reforma persigue y complementa al instrumento.
+**2026-07-03** — Entra al índice de gestión (reforma laboral, 30% interno): es el resultado que la reforma persigue y complementa al instrumento.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -827,7 +827,7 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 
 **2026-09-08** — Transener: el cierre comunicado en CNV el 28-ago se incorpora en agosto, no junio. La autorización regulatoria de junio no acreditaba perfeccionamiento. Se conserva la etapa actual 4 y se corrigen junio y julio históricos.
 
-**2026-09-08** — ADR-0277: el detector verifica menciones de empresas en el texto de la norma y reintenta lecturas vacías; los avisos no actualizan etapas automáticamente.
+**2026-09-08** — El detector verifica menciones de empresas en el texto de la norma y reintenta lecturas vacías; los avisos no actualizan etapas automáticamente.
 
 **2026-05** — Versión inicial como carga manual (porcentaje de empresas privatizadas).
 
@@ -922,7 +922,7 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 
 **2026-06-30** — Pasa a la plataforma oficial del Ministerio de Economía: inversión aprobada sobre la cartera total, con montos reales.
 
-**2026-07-02** — Umbrales institucionales del ITCG; después, puntaje interpolado entre anclas.
+**2026-07-02** — Umbrales institucionales del índice de gestión; después, puntaje interpolado entre anclas.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1013,9 +1013,9 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 
 **2026-07-03** — Serie escalonada por hitos fechados. Puntaje interpolado entre anclas.
 
-**2026-08-25** — ADR-0244: una etapa cuenta como adjudicada si CONTRAT.AR lo declara o si hay una resolución publicada que adjudique su proceso. CONTRAT.AR se queda viejo: al 25 de agosto de 2026 mostraba «Disponible Para Adjudicar» la Etapa II-B, adjudicada por Resolución 1149/2026 el 28 de julio, y la Etapa III, adjudicada por Resolución 1379/2026 el 24 de agosto. El indicador pasa de 28,7% a 100%. La card publica el inventario por etapa con los km, la fuente del estado y la resolución que lo respalda.
+**2026-08-25** — Una etapa cuenta como adjudicada si CONTRAT.AR lo declara o si hay una resolución publicada que adjudique su proceso. CONTRAT.AR se queda viejo: al 25 de agosto de 2026 mostraba «Disponible Para Adjudicar» la Etapa II-B, adjudicada por Resolución 1149/2026 el 28 de julio, y la Etapa III, adjudicada por Resolución 1379/2026 el 24 de agosto. El indicador pasa de 28,7% a 100%. La card publica el inventario por etapa con los km, la fuente del estado y la resolución que lo respalda.
 
-**2026-08-29** — ADR-0269: el valor de respaldo escrito a mano dejó de tener prioridad sobre el último valor que sí salió de la fuente. Con CONTRAT.AR caído, la card publicaba 28,7% —la foto del 2 de julio, con dos etapas sin adjudicar— teniendo el 100% en el cache de la noche anterior. Una fuente caída ahora envejece el número, no lo hace retroceder. El respaldo se actualizó a 100% con las cuatro resoluciones.
+**2026-08-29** — El valor de respaldo escrito a mano dejó de tener prioridad sobre el último valor que sí salió de la fuente. Con CONTRAT.AR caído, la card publicaba 28,7% —la foto del 2 de julio, con dos etapas sin adjudicar— teniendo el 100% en el cache de la noche anterior. Una fuente caída ahora envejece el número, no lo hace retroceder. El respaldo se actualizó a 100% con las cuatro resoluciones.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1103,9 +1103,9 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 **2026-07-02** — Pasa a la tasa real contra la ejecución presupuestaria, con línea de base 2023 verificada.
 
-**2026-09-08** — ADR-0296: se distingue devengado de pagado y se acota el universo a las dos actividades. Se retiran inferencias de ausencia de intermediación y la afirmación de una base 2023 mayoritariamente intermediada: la API confirma 98,312% en 5.1.4. No cambia la fórmula ni el 100% actual.
+**2026-09-08** — Se distingue devengado de pagado y se acota el universo a las dos actividades. Se retiran inferencias de ausencia de intermediación y la afirmación de una base 2023 mayoritariamente intermediada: la API confirma 98,312% en 5.1.4. No cambia la fórmula ni el 100% actual.
 
-**2026-09-15** — ADR-0311: el rótulo de la card pasa de «Asistencia directa (TDPS)» a «Asistencia directa». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+**2026-09-15** — El rótulo de la card pasa de «Asistencia directa (TDPS)» a «Asistencia directa». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1200,7 +1200,7 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 **2026-07-03** — Automatizado con los anclajes anuales públicos de Diagnóstico Político; la corrección del año cerrado 2025 llevó el valor de 55% a 74,2%.
 
-**2026-09-08** — ADR-0294: se explicita que la base 2023 es estimada y se muestra una advertencia cuando el detector no logra comprobar nuevas publicaciones; se retira la inferencia de que los mismos eventos se reconvirtieron en marchas sin corte.
+**2026-09-08** — Se explicita que la base 2023 es estimada y se muestra una advertencia cuando el detector no logra comprobar nuevas publicaciones; se retira la inferencia de que los mismos eventos se reconvirtieron en marchas sin corte.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
