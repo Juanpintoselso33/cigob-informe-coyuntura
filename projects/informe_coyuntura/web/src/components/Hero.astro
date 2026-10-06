@@ -11,16 +11,16 @@
 // La barra va de BANDA bajo el lead, no en una segunda columna: es ancha y
 // baja, y metida en una columna propia quedaba apretada contra el título
 // (ADR-0204). La aguja de arco que estaba antes sí pedía columna.
-import { informe, cap, mesLegible, indicadoresRezagados,
-         cinturonDominante, cinturonesRojos, colorPorTension, LECTURA_SEMAFORO } from "../lib/datos.ts";
+import { informe, cap, mesLegible,
+         cinturonDominante, colorPorTension, LECTURA_SEMAFORO } from "../lib/datos.ts";
 import NivelTension from "./NivelTension.astro";
 
 const f = informe.generated_at;
 const datosAl = `${f.slice(8, 10)}/${f.slice(5, 7)}/${f.slice(0, 4)}`;
-// Frescura honesta (revisión adversarial 2026-07-11): generated_at es la
-// fecha del ARMADO del snapshot, no de todos los datos — cada fuente tiene
-// su propio rezago (visible por indicador) y los desactualizados se cuentan.
-const rezagados = indicadoresRezagados(informe);
+// generated_at es la fecha del ARMADO del snapshot, no de todos los datos:
+// cada fuente tiene su propio rezago, que sigue visible por indicador. Desde
+// oct-2026 la línea del inicio muestra sólo la fecha (pedido editorial): salen
+// la píldora de cinturones tensionados y el conteo de indicadores con rezago.
 
 // El pie de la barra NOMBRA al cinturón dominante, no sólo al barbarismo
 // (ADR-0237). "Riesgo dominante: Político" mandaba al lector a la card
@@ -35,21 +35,6 @@ const lecturaDominante = colorDominante ? LECTURA_SEMAFORO[colorDominante] : nul
 const pieRiesgo = `Riesgo dominante: ${cap(informe.barbarismo_activo)}`
   + (dominante ? ` — ${dominante.nombre}${lecturaDominante ? ` (${lecturaDominante.toLowerCase()})` : ""}` : "");
 
-// La píldora decía "Estable" mientras un cinturón estaba en tensión alta.
-// No mentía —significa "no hay alerta multicinturón"— pero pegada a la barra
-// se lee como veredicto del país. Ahora dice lo que cuenta: cuántos hay
-// tensionados, que es el insumo de la regla matusiana (ADR-0237).
-const rojos = cinturonesRojos(informe);
-const estadoSistemico = informe.alerta_multicinturon
-  ? "Alerta sistémica"
-  : rojos === 0
-    ? "Sin cinturones tensionados"
-    : `${rojos} cinturón tensionado`;
-// `is-draft` (ámbar) ya existía en dashboard.css sin usarse. El verde con
-// pulso quedaba para el caso de un cinturón tensionado, que no es el mismo
-// estado que ninguno.
-const pildoraClase = informe.alerta_multicinturon
-  ? "is-err" : rojos === 0 ? "is-signed" : "is-draft";
 ---
 <header class="cg-hero" id="top">
   <div class="cg-hero-inner cg-hero-inner--nivel">
@@ -59,12 +44,13 @@ const pildoraClase = informe.alerta_multicinturon
       <p class="cg-hero-lead">
         Monitor de evaluación de Proyectos de Gobierno basado en la metodología CIGOB-MATUS.
       </p>
+      {/* Sólo la fecha. Toma la forma de la píldora que ocupaba este lugar
+          (mismo borde, sombra y radio) para no dejar un texto suelto de 12px
+          bajo un título de 64: la línea conserva su peso visual. */}
       <p class="cg-hero-meta">
-        <span class:list={["cg-status-pill", pildoraClase]}>
-          <span class="cg-status-dot"></span>
-          <span class="cg-status-text">{estadoSistemico}</span>
+        <span class="cg-status-pill cg-hero-fecha">
+          Actualizado el <time datetime={f.slice(0, 10)}>{datosAl}</time>
         </span>
-        <span class="cg-hero-since">Actualizado el {datosAl}{rezagados > 0 ? ` · ${rezagados} indicador${rezagados === 1 ? "" : "es"} con rezago declarado` : ""}</span>
       </p>
     </div>
     <div class="cg-hero-nivel">
@@ -78,3 +64,15 @@ const pildoraClase = informe.alerta_multicinturon
     </div>
   </div>
 </header>
+
+<style>
+  .cg-hero-fecha {
+    font-weight: 600;
+    letter-spacing: .01em;
+  }
+  .cg-hero-fecha time {
+    font-weight: 800;
+    color: var(--dark);
+    font-variant-numeric: tabular-nums;
+  }
+</style>
