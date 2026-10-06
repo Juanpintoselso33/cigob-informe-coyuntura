@@ -32,8 +32,12 @@ const dominante = cinturonDominante(informe);
 // tramo, igual que la barra que tiene arriba.
 const colorDominante = dominante ? colorPorTension(dominante.score) : null;
 const lecturaDominante = colorDominante ? LECTURA_SEMAFORO[colorDominante] : null;
-const pieRiesgo = `Riesgo dominante: ${cap(informe.barbarismo_activo)}`
-  + (dominante ? ` — ${dominante.nombre}${lecturaDominante ? ` (${lecturaDominante.toLowerCase()})` : ""}` : "");
+// Desde oct-2026 (pedido editorial) el pie nombra sólo al cinturón dominante,
+// sin el barbarismo delante. Si no hay cinturón dominante, vuelve a nombrar
+// el barbarismo para no dejar el pie vacío.
+const pieRiesgo = dominante
+  ? `Riesgo dominante: ${dominante.nombre}${lecturaDominante ? ` (${lecturaDominante.toLowerCase()})` : ""}`
+  : `Riesgo dominante: ${cap(informe.barbarismo_activo)}`;
 
 ---
 <header class="cg-hero" id="top">
