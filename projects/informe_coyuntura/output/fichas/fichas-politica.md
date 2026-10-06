@@ -35,7 +35,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 70,5** | **VERDE** | Moderadamente aflojado | 17 indicadores: 12 en verde · 3 en amarillo · 1 en naranja · 1 en rojo |
+| **ITCP: 71,2** | **VERDE** | Moderadamente aflojado | 17 indicadores: 13 en verde · 2 en amarillo · 1 en naranja · 1 en rojo |
 Componentes que puntúan en este corte: 17 de 17 publicados.
 
 ## Dimensiones
@@ -47,7 +47,7 @@ Componentes que puntúan en este corte: 17 de 17 publicados.
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 15,0 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,3 | AMARILLO | 15,0 % |
 | Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 60,4 | VERDE | 13,0 % |
-| Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 71,5 | VERDE | 10,0 % |
+| Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 78,6 | VERDE | 10,0 % |
 | Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 37,2 | NARANJA | 7,0 % |
 
 ```{=openxml}
@@ -82,7 +82,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,8 pp de brecha (obra pública − privada, 12m) | VERDE | 6,5 % |
 | Postura pública de la UIA | Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del… | −0,25 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 6,5 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
-| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24 % vs 2023 | AMARILLO | 6,0 % |
+| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −27,3 % vs 2023 | VERDE | 6,0 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.820.775 jornadas individuales no trabajadas (12m) | VERDE | 4,0 % |
 | **DIMENSIÓN: Imagen y voto** | | | | |
 | Ventaja LLA−PJ | La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles. | 4,3 Puntos porcentuales | NARANJA | 7,0 % |
@@ -500,7 +500,7 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −24 % vs 2023** (2026-08) | **AMARILLO** | Peso efectivo 6 % del ITCP | Cinturón Política |
+| **Hoy: −27,3 % vs 2023** (2026-09) | **VERDE** | Peso efectivo 6 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -508,9 +508,9 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | conflictividad_nacional | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | % vs 2023 |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de ACLED se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de ACLED se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
 | **PRODUCTOR DEL DATO** | ACLED — Armed Conflict Location & Event Data | **OPERACIÓN ESTADÍSTICA** | Agregado semanal de eventos por provincia para América Latina — eventos de protesta y disturbios (Protests y Riots) en la Argentina |
-| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-06 |
+| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-06 |
 
 ## Definición — qué mide y por qué importa
 
@@ -543,15 +543,15 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 1981 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-08) vs 2605 en la base 2023 (-24,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.
+- 1895 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-09) vs 2605 en la base 2023 (-27,3%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.
 
 ## Color vigente y por qué
 
-Dato vigente: −24 % vs 2023 (2026-08).
+Dato vigente: −27,3 % vs 2023 (2026-09).
 
-−24,0 % vs 2023 cae en el tramo que corresponde a Amarillo, a 2,1 del corte más cercano.
+−27,3 % vs 2023 cae en el tramo que corresponde a Verde, a 1,2 del corte más cercano.
 
-**Color vigente: AMARILLO**
+**Color vigente: VERDE**
 
 Ponderación vigente en el ITCP: 6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 

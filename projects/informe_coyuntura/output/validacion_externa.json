@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-06T03:40:21.943211+00:00",
+    "generated_at": "2026-10-06T16:52:00.857774+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -1078,12 +1078,12 @@
         "apertura_comercial": 0.079,
         "cepo_mulc": 0.338,
         "desregulacion_normativa": 0.499,
-        "fal_modernizacion_laboral": 0.92,
+        "fal_modernizacion_laboral": 0.919,
         "gasto_funcionamiento": 0.281,
         "libertad_opcion_salud": 0.267,
         "litigiosidad_laboral": 0.172,
-        "masa_salarial": 0.15,
-        "privatizaciones": 0.584,
+        "masa_salarial": 0.149,
+        "privatizaciones": 0.583,
         "protocolo_antipiquetes": 0.294,
         "reduccion_estado": 0.203,
         "reestructuracion_organismos": 0.76
@@ -1105,7 +1105,7 @@
       "fal_modernizacion_laboral": {
         "apertura_comercial": 0.132,
         "cepo_mulc": 0.366,
-        "concesiones_infraestructura": 0.92,
+        "concesiones_infraestructura": 0.919,
         "desregulacion_normativa": 0.562,
         "gasto_funcionamiento": 0.2,
         "libertad_opcion_salud": 0.307,
@@ -1161,7 +1161,7 @@
       "masa_salarial": {
         "apertura_comercial": 0.035,
         "cepo_mulc": 0.474,
-        "concesiones_infraestructura": 0.15,
+        "concesiones_infraestructura": 0.149,
         "desregulacion_normativa": 0.465,
         "fal_modernizacion_laboral": 0.175,
         "gasto_funcionamiento": 0.444,
@@ -1175,7 +1175,7 @@
       "privatizaciones": {
         "apertura_comercial": 0.495,
         "cepo_mulc": 0.826,
-        "concesiones_infraestructura": 0.584,
+        "concesiones_infraestructura": 0.583,
         "desregulacion_normativa": 0.949,
         "fal_modernizacion_laboral": 0.603,
         "gasto_funcionamiento": 0.445,
@@ -1263,7 +1263,7 @@
       {
         "a": "concesiones_infraestructura",
         "b": "fal_modernizacion_laboral",
-        "r": 0.92,
+        "r": 0.919,
         "n": 34,
         "dimension_a": "privatizaciones_inversion",
         "dimension_b": "reforma_laboral",
@@ -1427,13 +1427,13 @@
   "redundancia_itcp": {
     "diferencias": {
       "n_pares": 91,
-      "r_abs_medio": 0.173,
+      "r_abs_medio": 0.174,
       "share_altos": 0.0
     },
     "umbral": 0.7,
     "n_indicadores": 16,
     "n_pares": 91,
-    "r_abs_medio": 0.374,
+    "r_abs_medio": 0.373,
     "share_altos": 0.121,
     "share_bajos": 0.418,
     "matriz": {
@@ -1443,7 +1443,7 @@
         "brecha_obra_publica": 0.653,
         "cobertura_judicial": -0.44,
         "cohesion_bloque": 0.23,
-        "conflictividad_nacional": -0.041,
+        "conflictividad_nacional": -0.056,
         "desafios_legislativos": -0.502,
         "eficacia_legislativa": -0.742,
         "jornadas_individuales_no_trabajadas_12m": 0.202,
@@ -1503,7 +1503,7 @@
         "apoyo_empresario": -0.372,
         "brecha_obra_publica": -0.782,
         "cohesion_bloque": -0.09,
-        "conflictividad_nacional": -0.546,
+        "conflictividad_nacional": -0.526,
         "desafios_legislativos": 0.849,
         "eficacia_legislativa": -0.371,
         "jornadas_individuales_no_trabajadas_12m": -0.453,
@@ -1518,7 +1518,7 @@
         "apoyo_empresario": -0.206,
         "brecha_obra_publica": 0.252,
         "cobertura_judicial": -0.09,
-        "conflictividad_nacional": -0.443,
+        "conflictividad_nacional": -0.434,
         "desafios_legislativos": 0.067,
         "eficacia_legislativa": -0.206,
         "jornadas_individuales_no_trabajadas_12m": 0.283,
@@ -1528,19 +1528,19 @@
         "votometro_ventaja_lla": 0.179
       },
       "conflictividad_nacional": {
-        "adhesion_reformas_provincial": -0.041,
+        "adhesion_reformas_provincial": -0.056,
         "alineamiento_senadores_prov": -0.483,
         "apoyo_empresario": 0.498,
         "brecha_obra_publica": 0.322,
-        "cobertura_judicial": -0.546,
-        "cohesion_bloque": -0.443,
-        "desafios_legislativos": -0.535,
+        "cobertura_judicial": -0.526,
+        "cohesion_bloque": -0.434,
+        "desafios_legislativos": -0.525,
         "eficacia_legislativa": 0.852,
         "jornadas_individuales_no_trabajadas_12m": 0.153,
         "produccion_legislativa": -0.116,
-        "ratio_dnu": -0.263,
-        "veto_quorum": -0.42,
-        "votometro_ventaja_lla": 0.093
+        "ratio_dnu": -0.258,
+        "veto_quorum": -0.414,
+        "votometro_ventaja_lla": 0.089
       },
       "desafios_legislativos": {
         "adhesion_reformas_provincial": -0.502,
@@ -1549,7 +1549,7 @@
         "brecha_obra_publica": -0.818,
         "cobertura_judicial": 0.849,
         "cohesion_bloque": 0.067,
-        "conflictividad_nacional": -0.535,
+        "conflictividad_nacional": -0.525,
         "eficacia_legislativa": -0.549,
         "jornadas_individuales_no_trabajadas_12m": -0.457,
         "produccion_legislativa": 0.472,
@@ -1609,7 +1609,7 @@
         "brecha_obra_publica": -0.28,
         "cobertura_judicial": 0.534,
         "cohesion_bloque": -0.306,
-        "conflictividad_nacional": -0.263,
+        "conflictividad_nacional": -0.258,
         "desafios_legislativos": 0.435,
         "eficacia_legislativa": -0.489,
         "jornadas_individuales_no_trabajadas_12m": -0.284,
@@ -1624,7 +1624,7 @@
         "brecha_obra_publica": 0.253,
         "cobertura_judicial": -0.07,
         "cohesion_bloque": 0.855,
-        "conflictividad_nacional": -0.42,
+        "conflictividad_nacional": -0.414,
         "desafios_legislativos": -0.01,
         "eficacia_legislativa": -0.56,
         "jornadas_individuales_no_trabajadas_12m": 0.304,
@@ -1639,7 +1639,7 @@
         "brecha_obra_publica": 0.273,
         "cobertura_judicial": -0.227,
         "cohesion_bloque": 0.179,
-        "conflictividad_nacional": 0.093,
+        "conflictividad_nacional": 0.089,
         "desafios_legislativos": -0.124,
         "eficacia_legislativa": 0.84,
         "jornadas_individuales_no_trabajadas_12m": 0.376,
@@ -1673,7 +1673,7 @@
         "a": "conflictividad_nacional",
         "b": "eficacia_legislativa",
         "r": 0.852,
-        "n": 9,
+        "n": 10,
         "dimension_a": "conflicto_social",
         "dimension_b": "poder_legislativo",
         "misma_dimension": false,
@@ -3099,7 +3099,7 @@
     "2026-07": 2090.0,
     "2026-08": 1913.0,
     "2026-09": 1763.2,
-    "2026-10": 1771.1
+    "2026-10": 1783.3
   },
   "serie_itcp": {
     "2024-01": 69.4,
@@ -3134,7 +3134,7 @@
     "2026-06": 66.3,
     "2026-07": 66.7,
     "2026-08": 65.0,
-    "2026-09": 69.9
+    "2026-09": 69.3
   },
   "series_dimensiones": {
     "itvc": {
@@ -3727,7 +3727,7 @@
           "2026-04": 47.2,
           "2026-05": 60.6,
           "2026-06": 60.6,
-          "2026-07": 71.4,
+          "2026-07": 71.3,
           "2026-08": 83.7
         }
       },
@@ -3885,7 +3885,8 @@
           "2026-05": 65.9,
           "2026-06": 69.3,
           "2026-07": 71.5,
-          "2026-08": 52.5
+          "2026-08": 52.5,
+          "2026-09": 64.3
         }
       },
       "imagen_voto": {
@@ -4346,7 +4347,7 @@
       "n": 31
     },
     "EPU adelantado 1 mes vs ITCP": {
-      "r": -0.087,
+      "r": -0.089,
       "n": 33
     },
     "niveles, sin la dimensión de sector privado": {
@@ -5852,8 +5853,8 @@
           "etiqueta": "Confianza en el Gobierno (ICG de la UTDT)",
           "fuente": "UTDT",
           "propia": true,
-          "r_niveles": -0.069,
-          "r_diferencias": 0.318,
+          "r_niveles": -0.065,
+          "r_diferencias": 0.321,
           "n": 33
         },
         {
@@ -5889,7 +5890,7 @@
           "fuente": "BYMA / CCL",
           "propia": false,
           "r_niveles": 0.024,
-          "r_diferencias": 0.089,
+          "r_diferencias": 0.091,
           "n": 33
         },
         {
@@ -5914,16 +5915,16 @@
       "n_propias": 2,
       "n_ajenas": 12,
       "niveles": {
-        "convergente": 0.186,
+        "convergente": 0.184,
         "discriminante": 0.181,
-        "brecha": 0.005
+        "brecha": 0.003
       },
       "diferencias": {
-        "convergente": 0.312,
+        "convergente": 0.314,
         "discriminante": 0.167,
-        "brecha": 0.145
+        "brecha": 0.147
       },
-      "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 2 estadísticas de su propio terreno es 0,186 y con las 12 ajenas es 0,181. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,312 con lo propio contra 0,167 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 14 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 2 estadísticas de su propio terreno es 0,184 y con las 12 ajenas es 0,181. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,314 con lo propio contra 0,167 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     }
   }
 }

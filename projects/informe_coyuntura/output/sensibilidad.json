@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-06T03:40:43.517619+00:00",
+    "snapshot": "2026-10-06T16:52:20.176823+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -58,49 +58,49 @@
     }
   },
   "itcg": {
-    "valor_publicado": 79.2,
-    "valor_recomputado": 79.2,
+    "valor_publicado": 79.4,
+    "valor_recomputado": 79.4,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 79.2,
-        "p05": 77.6,
-        "p95": 80.7,
+        "media": 79.4,
+        "p05": 77.9,
+        "p95": 80.9,
         "desvio": 0.93
       },
       "combinado": {
-        "media": 79.2,
-        "p05": 77.3,
-        "p95": 81.0,
-        "desvio": 1.11
+        "media": 79.4,
+        "p05": 77.5,
+        "p95": 81.2,
+        "desvio": 1.1
       },
       "insumos": {
-        "media": 79.2,
-        "p05": 78.1,
-        "p95": 80.1,
-        "desvio": 0.62
+        "media": 79.4,
+        "p05": 78.4,
+        "p95": 80.3,
+        "desvio": 0.6
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 84.0,
       "cepo_mulc": 74.4,
-      "rigi_inversiones": 81.2,
-      "concesiones_infraestructura": 78.1,
-      "libertad_opcion_salud": 80.0,
-      "asistencia_directa": 78.6,
-      "protocolo_antipiquetes": 78.6,
-      "privatizaciones": 78.7,
-      "fal_modernizacion_laboral": 79.6,
-      "litigiosidad_laboral": 78.8,
-      "desregulacion_normativa": 79.1,
-      "reduccion_estado": 79.2,
-      "gasto_funcionamiento": 79.2
+      "apertura_comercial": 84.4,
+      "rigi_inversiones": 81.4,
+      "concesiones_infraestructura": 78.3,
+      "libertad_opcion_salud": 80.3,
+      "asistencia_directa": 78.8,
+      "privatizaciones": 78.9,
+      "protocolo_antipiquetes": 78.9,
+      "litigiosidad_laboral": 79.0,
+      "fal_modernizacion_laboral": 79.8,
+      "desregulacion_normativa": 79.5,
+      "reduccion_estado": 79.4,
+      "gasto_funcionamiento": 79.4
     },
     "tension": {
       "base": 2.1,
       "rango_combinado": [
         1.9,
-        2.3
+        2.2
       ]
     }
   },
@@ -154,53 +154,53 @@
     }
   },
   "itcp": {
-    "valor_publicado": 70.5,
-    "valor_recomputado": 70.5,
+    "valor_publicado": 71.2,
+    "valor_recomputado": 71.2,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 70.5,
-        "p05": 69.1,
-        "p95": 71.8,
-        "desvio": 0.82
+        "media": 71.2,
+        "p05": 69.8,
+        "p95": 72.5,
+        "desvio": 0.81
       },
       "combinado": {
-        "media": 70.3,
-        "p05": 68.8,
-        "p95": 71.8,
+        "media": 71.1,
+        "p05": 69.5,
+        "p95": 72.6,
         "desvio": 0.93
       },
       "insumos": {
-        "media": 70.3,
-        "p05": 69.5,
-        "p95": 71.1,
+        "media": 71.1,
+        "p05": 70.2,
+        "p95": 71.8,
         "desvio": 0.49
       }
     },
     "leave_one_out": {
-      "cohesion_bloque": 65.3,
+      "cohesion_bloque": 66.1,
+      "votometro_ventaja_lla": 73.8,
+      "paralisis_denuncias": 73.6,
       "conflictividad_nacional": 73.3,
-      "votometro_ventaja_lla": 73.0,
-      "paralisis_denuncias": 72.9,
-      "jornadas_individuales_no_trabajadas_12m": 68.6,
-      "velocidad_resolucion": 68.6,
-      "apoyo_empresario": 71.9,
-      "brecha_obra_publica": 69.1,
-      "desafios_legislativos": 69.3,
-      "produccion_legislativa": 71.6,
-      "adhesion_reformas_provincial": 69.5,
-      "cobertura_judicial": 69.7,
-      "alineamiento_senadores_prov": 71.2,
-      "ratio_dnu": 70.9,
-      "veto_quorum": 70.1,
-      "eficacia_legislativa": 70.8,
-      "iaf_transferencias": 70.8
+      "velocidad_resolucion": 69.3,
+      "jornadas_individuales_no_trabajadas_12m": 69.8,
+      "brecha_obra_publica": 69.8,
+      "apoyo_empresario": 72.6,
+      "desafios_legislativos": 70.0,
+      "produccion_legislativa": 72.3,
+      "adhesion_reformas_provincial": 70.2,
+      "cobertura_judicial": 70.5,
+      "alineamiento_senadores_prov": 71.9,
+      "veto_quorum": 70.8,
+      "ratio_dnu": 71.6,
+      "eficacia_legislativa": 71.5,
+      "iaf_transferencias": 71.5
     },
     "tension": {
-      "base": 3.0,
+      "base": 2.9,
       "rango_combinado": [
-        2.8,
-        3.1
+        2.7,
+        3.0
       ]
     }
   }

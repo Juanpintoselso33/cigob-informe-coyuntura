@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-06 03:40:43"
+generado: "2026-10-06 16:52:20"
 score_global: 3.9
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -42,7 +42,7 @@ schema_version: "1.2.0"
 | base_monetaria | -1.33 | % mensual nominal | 2026-10-01 | fresco |
 | tc_mayorista | 0.54 | % mensual | 2026-10-05 | fresco |
 
-### 🟢 Politica — score 3.0/10 (estable)
+### 🟢 Politica — score 2.9/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -51,17 +51,17 @@ schema_version: "1.2.0"
 | ratio_dnu | 1.062 | DNUs publicados por ley publicada | 2026-10-06 | fresco |
 | brecha_obra_publica | -1.8 | pp de brecha (obra pública − privada, 12m) | 2026-08-01 | fresco |
 | apoyo_empresario | -0.25 | saldo de postura (−1 a +1, 12m móviles) | 2026-08-01 | ⚠ cache |
-| conflictividad_nacional | -24.0 | % vs 2023 | 2026-08-01 | fresco |
+| conflictividad_nacional | -27.3 | % vs 2023 | 2026-09-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
 | iaf_transferencias | 1.6 | % interanual real | 2025-12-31 | fresco |
 | eficacia_legislativa | 21.4 | % de proyectos | 2026-10-06 | fresco |
 | veto_quorum | 10.0 | % de sesiones | 2026-10-06 | fresco |
 | comisiones_caidas | 95.8 | % de proyectos | 2026-10-06 | fresco |
-| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-10-05 | ⚠ cache |
+| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-10-06 | fresco |
 | derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-10-06 | fresco |
 | rotacion_gabinete | 6 | salidas de rango ministerial (acum. 12 meses) | 2026-10-06 | fresco |
-| protestas_caba | 281 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
+| protestas_caba | 263 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
 | cohesion_bloque | 100.0 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-09-24 | fresco |
 | bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-09-29 | ⚠ cache |
 | desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-09-29 | ⚠ cache |
@@ -96,7 +96,7 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 5.97 | % de brecha CCL/mayorista | 2026-10-05 | fresco |
+| cepo_mulc | 5.67 | % de brecha CCL/mayorista | 2026-10-06 | fresco |
 | apertura_comercial | 7.0 | % del intercambio (alícuota efectiva) | 2026-08-01 | fresco |
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
@@ -110,7 +110,7 @@ schema_version: "1.2.0"
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 33.1 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-06-01 | fresco |
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-10-06 | fresco |
-| protestas_caba | 281 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-08-01 | fresco |
+| protestas_caba | 263 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
 
@@ -121,8 +121,8 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:votometro_ventaja_lla,apoyo_empresario,adhesion_reformas_provincial,bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
+- `desactualizado:politica:votometro_ventaja_lla,apoyo_empresario,bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
 - `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-10-06 03:40:43 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-06 16:52:20 — schema 1.2.0*

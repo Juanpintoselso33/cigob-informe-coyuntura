@@ -942,7 +942,11 @@
     },
     {
       "fecha": "2026-08-01",
-      "valor": 27.0
+      "valor": 26.0
+    },
+    {
+      "fecha": "2026-09-01",
+      "valor": 20.0
     }
   ],
   "privatizaciones": [
@@ -3478,51 +3482,51 @@
     },
     {
       "fecha": "2025-11-01",
-      "valor": 8.2
+      "valor": 8.1
     },
     {
       "fecha": "2025-12-01",
-      "valor": 8.2
+      "valor": 8.1
     },
     {
       "fecha": "2026-01-01",
-      "valor": 8.2
+      "valor": 8.1
     },
     {
       "fecha": "2026-02-01",
-      "valor": 8.2
+      "valor": 8.1
     },
     {
       "fecha": "2026-03-01",
-      "valor": 8.2
+      "valor": 8.1
     },
     {
       "fecha": "2026-04-01",
-      "valor": 8.2
+      "valor": 8.1
     },
     {
       "fecha": "2026-05-01",
-      "valor": 28.7
+      "valor": 28.6
     },
     {
       "fecha": "2026-06-01",
-      "valor": 28.7
+      "valor": 28.6
     },
     {
       "fecha": "2026-07-01",
-      "valor": 56.9
+      "valor": 56.6
     },
     {
       "fecha": "2026-08-01",
-      "valor": 100.0
+      "valor": 99.5
     },
     {
       "fecha": "2026-09-01",
-      "valor": 100.0
+      "valor": 99.5
     },
     {
       "fecha": "2026-10-01",
-      "valor": 100.0
+      "valor": 99.5
     }
   ],
   "cepo_mulc": [
@@ -20269,6 +20273,10 @@
     {
       "fecha": "2026-08-01",
       "valor": -24.0
+    },
+    {
+      "fecha": "2026-09-01",
+      "valor": -27.3
     }
   ],
   "comisiones_caidas": [
