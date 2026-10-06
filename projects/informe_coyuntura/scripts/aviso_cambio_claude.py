@@ -128,7 +128,7 @@ def texto_cambio(pr: int, url: str, titulo: str, quien: str, archivos: list[str]
                  lista: list[tuple[str, str]]) -> str:
     glifo = "🔴" if any(g == "🔴" for g, _ in lista) else "🟡"
     cabecera = ("un cambio pedido desde claude.ai se publicó con algo roto" if glifo == "🔴"
-                else "un cambio pedido desde claude.ai toca algo sensible")
+                else "un cambio pedido desde claude.ai conviene mirarlo")
     lineas = [
         f"{glifo} *{MONITOR} — {cabecera}*",
         f"*Lo pidió:* {quien} · *Cambio:* {titulo} (<{url}|#{pr}>)",
