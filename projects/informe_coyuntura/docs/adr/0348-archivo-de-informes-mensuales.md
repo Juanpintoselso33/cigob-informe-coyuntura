@@ -58,6 +58,23 @@ Control: septiembre reconstruido da política 2,7 e impacto social 6,3; con el
 método de entonces había dado 3,0 y 6,5. Es el mismo corrimiento que ADR-0344 y
 ADR-0345 produjeron sobre los datos de octubre (2,9 → 2,7 y 6,5 → 6,3).
 
+### Diseño de /archivo/ (7-oct-2026)
+
+La primera versión fue una grilla de tarjetas, y a Juan no le gustó. Se relevaron
+50 productos parecidos (`docs/261007_archivo_referencias_diseno.md`) y eligió
+**franja de meses + tabla de ediciones**:
+
+- Arriba, una franja con un bloque por mes en el color de la tensión general,
+  que sirve de índice: el clic baja a la fila y la abre.
+- Abajo, una tabla con una fila por mes: tensión general, **cuatro celdas de
+  color, una por cinturón, alineadas en columna**, riesgo dominante y cambio
+  contra el mes anterior. Leídas de arriba abajo, las columnas son el recorrido
+  de cada cinturón (#ShowYourStripes). La ★ marca los meses en que cambió el
+  riesgo dominante o el color de algún cinturón.
+- Al desplegar una fila se ven un titular, cada cinturón con su lectura, qué
+  cambió y el enlace al informe completo. En celular queda mes, tensión y las
+  cuatro celdas. GA4: `desplegar_mes_archivo` (`mes`).
+
 ### Consecuencias
 
 - Cada mes pesa unos 4 MB en el repo y en el deploy.
