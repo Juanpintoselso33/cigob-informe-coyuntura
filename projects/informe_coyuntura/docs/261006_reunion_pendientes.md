@@ -13,21 +13,13 @@ Falta definir:
 - **Qué tan cerrado**: un muro "blando" solo tapa la pantalla (los datos siguen en el
   JSON público); uno "duro" los esconde en el servidor.
 
-## 2. Cambios al Monitor desde claude.ai: conector, Proyecto y repo
+## 2. ✅ Cambios al Monitor desde claude.ai: conector, Proyecto y repo
 
-Que el equipo pida cambios al Monitor conversando en claude.ai. Esto ya está hecho y
-probado: el conector de la landing (herramientas `monitor_*`) y el workflow
-`cambios-desde-claude.yml`, que mergea solo. Quedó en pausa el 1-oct. Para cerrarlo falta:
+Que el equipo pida cambios al Monitor conversando en claude.ai. **Cerrado el 7-oct**: el
+conector de la landing (herramientas `monitor_*`) y el workflow `cambios-desde-claude.yml`,
+que mergea solo, andan en producción (#54, #55 y #56 entraron por ahí). El Proyecto de
+claude.ai del Monitor está armado y Luis ya lo usó.
 
-- **Probarlo desde claude.ai** (por ejemplo, `monitor_ver_dato iai`). Si responde
-  «GitHub respondió 404», el token de producción no llega al repo del informe: hay que
-  crear un token fine-grained (Contents + Pull requests, lectura y escritura, en los dos
-  repos) y cargarlo en Vercel.
-- **Armar el Proyecto de claude.ai** para el Monitor, aparte del de la landing, con sus
-  instrucciones: consultar el dato antes de opinar sobre un número, después
-  buscar → leer → proponer el cambio, y `monitor_ver_cambios` para saber si ya salió.
-  Desde el 6-oct todo se publica solo, sin esperar aprobación.
-- **Avisarle a Luis** y al equipo cómo se usa.
 - ✅ **Que un merge con algo roto avise en el momento.** Ya está hecho: `dd85d9f4`
   (`scripts/aviso_cambio_claude.py`), en `main`. Avisa en `#monitor-alertas` cuando:
   - pruebas, tipos o build en rojo;
