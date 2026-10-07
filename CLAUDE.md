@@ -29,8 +29,8 @@ Monorepo for CIGOB/UBA political analysis tools.
 - `.github/workflows/`: daily data pipeline (`data-pipeline.yml`, 00:00 ART,
   commits as `github-actions[bot]`). GitHub Pages was retired in July 2026 and
   there is no `pages.yml` anymore. **The site deploys through Vercel, which
-  builds every push to `main`** (production alias:
-  `https://cigob-informe-coyuntura.vercel.app/`; the Astro app under
+  builds every push to `main`** (production: `https://informe.cigob.org/`;
+  since 7-oct-2026 `cigob-informe-coyuntura.vercel.app` redirects there, ADR-0342; the Astro app under
   `projects/informe_coyuntura/web/` is what it builds). Per-deploy
   `…-<hash>.vercel.app` URLs sit behind a login wall, so they are useless for
   showing anything to the user — always check the production alias.
@@ -397,7 +397,8 @@ Dos cosas al consultar el archivo:
   ("this stays in the PR and will NOT show on the web until we merge") — never
   report "pushed" and let them find out by looking at an unchanged page.
 - **Check production, not the intermediate artefact.** Fetch
-  `https://cigob-informe-coyuntura.vercel.app/` (add `?cb=<n>` to dodge cache)
+  `https://informe.cigob.org/` (add `?cb=<n>` to dodge cache; the old
+  `vercel.app` alias now answers with a 308 redirect)
   and grep for the new value. The Vercel MCP (`list_deployments`) confirms
   READY/ERROR and the commit SHA of the deploy that is actually live.
 - Verifying that a value landed in `output/validacion_externa.json`, or in the

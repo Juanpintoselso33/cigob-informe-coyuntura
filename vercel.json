@@ -2,5 +2,18 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "npm --prefix projects/informe_coyuntura/web ci",
   "buildCommand": "npm --prefix projects/informe_coyuntura/web run build",
-  "outputDirectory": "projects/informe_coyuntura/web/dist"
+  "outputDirectory": "projects/informe_coyuntura/web/dist",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "cigob-informe-coyuntura.vercel.app"
+        }
+      ],
+      "destination": "https://informe.cigob.org/$1",
+      "permanent": true
+    }
+  ]
 }

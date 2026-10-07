@@ -73,6 +73,30 @@ Juan pidió el formato de los popups de diarios y newsletters:
   a pedir. Esto relaja la regla 3: cerrar con la cruz también deja leer, sin
   dejar el mail.
 
+### Persistencia (7-oct-2026, tercera vuelta)
+
+Investigación completa en `docs/261007_muro_persistencia_opciones.md` (38
+opciones). El hallazgo: Safari borra a los 7 días sin visitas el `localStorage`
+y las cookies escritas por JavaScript, así que en iPhone el muro volvía a
+aparecer todos los meses. Juan eligió cuatro piezas:
+
+1. **Cookie del servidor del propio sitio.** El popup manda el mail a
+   `/api/lector` del Monitor (función de Vercel en `api/lector.ts`, raíz del
+   repo), que lo reenvía al bot y responde con `cigob_lector`, 400 días. JS
+   nunca la escribe. `api/acceso.ts` la renueva una vez por visita y la crea a
+   quien sólo tenía el `localStorage` de antes.
+2. **Link de difusión con token.** El `/r/<token>` del bot manda a
+   `/api/acceso?t=<token>&next=…`; si el bot reconoce el token, se deja la
+   cookie y se redirige a la página limpia. Vale en cualquier dispositivo,
+   también en incógnito.
+3. **«¿Ya te registraste? Con tu mail alcanza»** en el popup, y el aviso
+   mínimo de la Ley 25.326 (responsable, finalidad, cómo pedir acceso o baja).
+4. **Un solo dominio:** `cigob-informe-coyuntura.vercel.app` redirige a
+   `informe.cigob.org` (las cookies son por dominio).
+
+GA4: `muro_reconocido` con `via` = `cookie` (la cookie salvó a quien Safari le
+borró el `localStorage`) o `difusion`. Queda para después el ingreso con Google.
+
 ### Consecuencias
 
 - Buena: sale en días, sin tocar el deploy ni el conector, y la portada sigue

@@ -42,16 +42,24 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
     <link rel="stylesheet" href={`${base}/overrides.css`} />
     {muro && (
       <script is:inline define:vars={{ modoMuro }}>
-        // Antes de pintar: quien ya dejó el mail no ve el muro; en modo
-        // inmediato, el contenido no llega a verse sin tapar. La clave es la
-        // misma que usa MuroAcceso.astro.
-        try {
-          // La cruz lo cierra por el resto de la visita (sessionStorage).
-          if (localStorage.getItem("cigob-muro-v1") || sessionStorage.getItem("cigob-muro-cerrado")) document.documentElement.classList.add("muro-ok");
-          else if (modoMuro === "inmediato") document.documentElement.classList.add("muro-activo");
-        } catch (e) {
-          if (modoMuro === "inmediato") document.documentElement.classList.add("muro-activo");
-        }
+        // Antes de pintar: quien ya pasó el muro no lo ve; en modo inmediato,
+        // el contenido no llega a verse sin tapar. Se reconoce por la cookie
+        // `cigob_lector` (la escribe el servidor, api/_acceso.ts: Safari no la
+        // borra a los 7 días) o, de respaldo, por el localStorage de antes.
+        // `data-muro-via` le dice a MuroAcceso.astro por dónde se reconoció,
+        // para renovar la cookie y medirlo. Las claves son las mismas que usa
+        // MuroAcceso.astro.
+        (function () {
+          var html = document.documentElement, via = "";
+          if (/(?:^|;\s*)cigob_lector=/.test(document.cookie)) via = "cookie";
+          try {
+            if (localStorage.getItem("cigob-muro-v1")) via = via ? "ambos" : "local";
+            // La cruz lo cierra por el resto de la visita (sessionStorage).
+            if (!via && sessionStorage.getItem("cigob-muro-cerrado")) via = "cerrado";
+          } catch (e) {}
+          if (via) { html.classList.add("muro-ok"); html.setAttribute("data-muro-via", via); }
+          else if (modoMuro === "inmediato") html.classList.add("muro-activo");
+        })();
       </script>
     )}
     {gaId && (

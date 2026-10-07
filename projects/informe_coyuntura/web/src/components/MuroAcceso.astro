@@ -24,7 +24,9 @@
 // inmediato no se llega a ver el contenido sin tapar. Sin JavaScript no hay muro.
 interface Props { modo: "inmediato" | "al-bajar" }
 const { modo } = Astro.props;
-const ENDPOINT = import.meta.env.PUBLIC_MURO_ENDPOINT?.trim() || "https://cigob-bot.vercel.app/api/lector";
+// Mismo dominio que el Monitor (api/lector.ts en la raíz del repo): así la
+// cookie que recuerda el acceso la escribe el servidor del propio sitio.
+const ENDPOINT = import.meta.env.PUBLIC_MURO_ENDPOINT?.trim() || "/api/lector";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 <div class="muro" id="cg-muro" role="dialog" aria-modal="true" aria-labelledby="cg-muro-titulo">
@@ -51,7 +53,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
     <form class="muro-form" id="cg-muro-form" data-endpoint={ENDPOINT} data-modo={modo} novalidate>
       <h2 id="cg-muro-titulo">Seguí leyendo el Monitor</h2>
-      <p class="muro-texto">Dejanos tus datos una sola vez para entrar al informe completo.</p>
+      <p class="muro-texto">Dejanos tus datos una sola vez para entrar al informe completo.
+        <span class="muro-ya">¿Ya te registraste? Con tu mail alcanza.</span></p>
 
       <label class="muro-label" for="cg-muro-mail">Mail <span class="muro-obl">*</span></label>
       <input id="cg-muro-mail" name="mail" type="email" autocomplete="email" inputmode="email"
@@ -71,7 +74,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
       <button type="submit" class="muro-boton" id="cg-muro-boton">Entrar al informe</button>
       <p class="muro-legal">
-        Ver la <a href="https://cigob-bot.vercel.app/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.
+        La Fundación CiGob usa tus datos para enviarte novedades por mail y WhatsApp. Podés pedir verlos
+        o darlos de baja en <a href="mailto:info@cigob.org.ar">info@cigob.org.ar</a>. Ver la
+        <a href="https://cigob-bot.vercel.app/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.
       </p>
     </form>
   </div>
@@ -117,6 +122,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     // que el próximo Tab arranque desde el contenido.
     (document.activeElement as HTMLElement | null)?.blur();
   };
+
+  // Reconocido antes de pintar (script de <head>): se renueva la cookie una
+  // vez por visita —Chrome la corta a los 400 días de escrita, y quien sólo
+  // tenía el localStorage de antes pasa a tener cookie— y se mide por dónde
+  // entró sin muro. «cookie» sola es el caso que se arregló: Safari borró el
+  // localStorage y la cookie del servidor lo reconoció igual.
+  const via = html.getAttribute("data-muro-via");
+  if (via === "cookie" || via === "local" || via === "ambos") {
+    let renovada = false;
+    try { renovada = Boolean(sessionStorage.getItem("cigob-muro-renovada")); } catch {}
+    if (!renovada) {
+      fetch("/api/acceso", { credentials: "same-origin", cache: "no-store" }).catch(() => {});
+      try { sessionStorage.setItem("cigob-muro-renovada", "1"); } catch {}
+    }
+    if (new URLSearchParams(location.search).get("utm_medium") === "difusion") {
+      track("muro_reconocido", { via: "difusion" });
+    } else if (via === "cookie") {
+      track("muro_reconocido", { via: "cookie" });
+    }
+  }
 
   if (muro && form && input && nombre && tel && error && boton && cerrar && !html.classList.contains("muro-ok")) {
     if (form.dataset.modo === "al-bajar") {
@@ -282,6 +307,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     margin: 0 0 8px;
     font-family: var(--ff-titulo); font-weight: 700; font-size: 28px; line-height: 1.2;
   }
+  .muro-ya { display: block; margin-top: 4px; font-size: 14px; color: var(--azul-oscuro, #2878AB); }
   .muro-texto { margin: 0 0 22px; font-size: 15.5px; line-height: 1.5; color: var(--tinta-suave, #5E7A8A); }
   .muro-label { display: block; margin: 0 0 6px; font-family: var(--ff-ui); font-weight: 500; font-size: 13px; }
   .muro-obl { color: #B01B1B; }
