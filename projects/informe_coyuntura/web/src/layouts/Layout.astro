@@ -1,5 +1,6 @@
 ---
 import Analytics from "@vercel/analytics/astro";
+import MuroAcceso from "../components/MuroAcceso.astro";
 
 const { title = "Realidad Política Argentina · Observatorio CIGOB" } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // "/biblitotecario-ai/informe"
@@ -10,6 +11,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // "/biblitotecario-ai
 // interpolada dentro del <script>.
 const rawGaId = import.meta.env.PUBLIC_GA_ID?.trim();
 const gaId = rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
+
+// Muro de acceso (ADR-0342). PUBLIC_MURO=0 lo apaga: es lo que usa el
+// seguimiento diario interno y el informe en un solo archivo. En la portada
+// salta al salir del hero; en el resto, al entrar.
+const muro = import.meta.env.PUBLIC_MURO?.trim() !== "0";
+const esPortada = Astro.url.pathname.replace(/\/$/, "") === base;
+const modoMuro = esPortada ? "al-bajar" : "inmediato";
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -32,6 +40,19 @@ const gaId = rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
     <link rel="stylesheet" href={`${base}/marca.css`} />
     <link rel="stylesheet" href={`${base}/dashboard.css`} />
     <link rel="stylesheet" href={`${base}/overrides.css`} />
+    {muro && (
+      <script is:inline define:vars={{ modoMuro }}>
+        // Antes de pintar: quien ya dejó el mail no ve el muro; en modo
+        // inmediato, el contenido no llega a verse sin tapar. La clave es la
+        // misma que usa MuroAcceso.astro.
+        try {
+          if (localStorage.getItem("cigob-muro-v1")) document.documentElement.classList.add("muro-ok");
+          else if (modoMuro === "inmediato") document.documentElement.classList.add("muro-activo");
+        } catch (e) {
+          if (modoMuro === "inmediato") document.documentElement.classList.add("muro-activo");
+        }
+      </script>
+    )}
     {gaId && (
       <Fragment>
         <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
@@ -46,6 +67,7 @@ const gaId = rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
   </head>
   <body>
     <slot />
+    {muro && <MuroAcceso modo={modoMuro} />}
     <Analytics />
   </body>
 </html>

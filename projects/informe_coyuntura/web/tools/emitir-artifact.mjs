@@ -460,6 +460,9 @@ const externas = [...new Set([...html.matchAll(/https?:\/\/[a-z0-9.-]+/gi)].map(
   .filter(u => !u.startsWith('http://www.w3.org'));
 const terceros = externas.filter(u => /va\.vercel-scripts|googletagmanager|google-analytics|fonts\.googleapis|fonts\.gstatic/.test(u));
 if (terceros.length) problemas.push(`quedaron llamadas a terceros: ${terceros.join(', ')}`);
+// El muro de acceso (ADR-0342) pide el mail y lo manda al bot: un archivo que
+// se reparte no puede hacer ninguna de las dos cosas.
+if (/id="cg-muro"/.test(html)) problemas.push('quedó el muro de acceso: armá el build con PUBLIC_MURO=0 npm run build');
 
 const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
 const anclasMuertas = [...new Set([...html.matchAll(/href="#([^"]+)"/g)].map(m => m[1]))]

@@ -5,13 +5,19 @@
 Poner un muro delante del contenido del informe de coyuntura. La idea inicial es un
 popup que pida el mail para dejar ver el contenido.
 
-Falta definir:
+Decidido (Juan, 7-oct):
 
-- **Dónde va**: qué páginas o secciones quedan detrás del muro y cuáles siguen abiertas.
-- **Cómo se recuerda el acceso**: que quien ya dejó el mail no tenga que volver a dejarlo.
-- **Dónde se guardan los mails** que se juntan.
-- **Qué tan cerrado**: un muro "blando" solo tapa la pantalla (los datos siguen en el
-  JSON público); uno "duro" los esconde en el servidor.
+- **Dónde va**: en todo el sitio **menos la portada**. La portada con el resumen y el
+  score global queda abierta; cinturones, fichas y metodología piden el mail.
+- **Qué tan cerrado**: **solo tapa la pantalla**. Los datos siguen en el HTML y el JSON
+  públicos; alcanza para juntar mails y no cambia cómo se publica.
+- **Cómo se recuerda**: **en el navegador**. Quien deja el mail no lo vuelve a dejar en
+  ese navegador; si cambia de dispositivo o borra los datos, lo deja de nuevo.
+- **Dónde se guardan los mails**: en **Neon, la base del bot de WhatsApp**, tabla
+  `lectores`, junto a los contactos de la difusión.
+
+Pendiente para después (Juan, 7-oct): **mejorar la persistencia**, que quien ya dejó el
+mail no tenga que volver a dejarlo al cambiar de navegador o de dispositivo.
 
 ## 2. ✅ Cambios al Monitor desde claude.ai: conector, Proyecto y repo
 

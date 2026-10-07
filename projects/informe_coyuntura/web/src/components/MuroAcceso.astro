@@ -1,0 +1,173 @@
+---
+// Muro de acceso (ADR-0342): pide el mail antes de dejar ver el informe.
+//
+// Dos modos (decisión de Juan del 7-oct-2026):
+// - «inmediato»: cinturones, fichas y metodología. Aparece al entrar.
+// - «al-bajar»: la portada. El hero se lee libre; el muro salta cuando la
+//   persona baja y el hero sale de la pantalla.
+//
+// Sólo tapa la pantalla: el contenido sigue en el HTML, así que los buscadores
+// lo indexan igual y quien sepa abrir la consola lo ve. Es para juntar mails,
+// no para proteger datos.
+//
+// El acceso se recuerda en el navegador (localStorage). Si el guardado del
+// mail falla, la persona entra igual: el muro no puede dejar a nadie afuera
+// por un error nuestro.
+//
+// El script de <head> (en Layout.astro) decide antes de pintar: quien ya dejó
+// el mail no ve el muro ni un instante, y en modo inmediato no se llega a ver
+// el contenido sin tapar. Sin JavaScript no hay muro.
+interface Props { modo: "inmediato" | "al-bajar" }
+const { modo } = Astro.props;
+const ENDPOINT = import.meta.env.PUBLIC_MURO_ENDPOINT?.trim() || "https://cigob-bot.vercel.app/api/lector";
+---
+<div class="muro" id="cg-muro" role="dialog" aria-modal="true" aria-labelledby="cg-muro-titulo">
+  <form class="muro-caja" id="cg-muro-form" data-endpoint={ENDPOINT} data-modo={modo} novalidate>
+    <p class="muro-marca">Monitor del Plan de Gobierno</p>
+    <h2 id="cg-muro-titulo">Dejanos tu mail para seguir leyendo</h2>
+    <p class="muro-texto">El informe completo es gratuito. Te pedimos el mail una sola vez, para saber quién lo lee.</p>
+    <label class="muro-label" for="cg-muro-mail">Tu mail</label>
+    <input id="cg-muro-mail" name="mail" type="email" autocomplete="email" inputmode="email"
+      placeholder="nombre@ejemplo.com" required />
+    <p class="muro-error" id="cg-muro-error" role="alert" hidden></p>
+    <button type="submit" id="cg-muro-boton">Entrar al informe</button>
+    <p class="muro-legal">
+      No te suscribe a ninguna lista.
+      <a href="https://cigob-bot.vercel.app/privacidad.html" target="_blank" rel="noopener">Política de privacidad</a>
+    </p>
+  </form>
+</div>
+
+<script>
+  const muro = document.getElementById("cg-muro");
+  const form = document.getElementById("cg-muro-form") as HTMLFormElement | null;
+  const input = document.getElementById("cg-muro-mail") as HTMLInputElement | null;
+  const error = document.getElementById("cg-muro-error");
+  const boton = document.getElementById("cg-muro-boton") as HTMLButtonElement | null;
+  const html = document.documentElement;
+
+  const CLAVE = "cigob-muro-v1"; // la misma que lee el script de <head> en Layout.astro
+
+  // Con el muro abierto, el resto de la página queda inerte: ni el teclado ni
+  // un lector de pantalla pueden irse detrás del diálogo.
+  const fondo = () => [...document.body.children].filter((el) => el !== muro);
+  const mostrar = () => {
+    html.classList.add("muro-activo");
+    fondo().forEach((el) => el.setAttribute("inert", ""));
+    input?.focus({ preventScroll: true });
+  };
+
+  if (muro && form && input && error && boton && !html.classList.contains("muro-ok")) {
+    if (form.dataset.modo === "al-bajar") {
+      // Salta cuando el hero sale por arriba de la pantalla. Si no hay hero,
+      // se comporta como el modo inmediato.
+      const hero = document.querySelector(".cg-hero");
+      if (hero) {
+        const obs = new IntersectionObserver((entradas) => {
+          const e = entradas[0];
+          if (!e.isIntersecting && e.boundingClientRect.bottom <= 0) {
+            obs.disconnect();
+            mostrar();
+          }
+        });
+        obs.observe(hero);
+      } else mostrar();
+    } else mostrar();
+
+    const entrar = () => {
+      try { localStorage.setItem(CLAVE, new Date().toISOString()); } catch {}
+      html.classList.remove("muro-activo");
+      html.classList.add("muro-ok");
+      fondo().forEach((el) => el.removeAttribute("inert"));
+    };
+
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const mail = input.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(mail)) {
+        error.textContent = "Revisá el mail: parece que le falta algo.";
+        error.hidden = false;
+        input.focus();
+        return;
+      }
+      error.hidden = true;
+      boton.disabled = true;
+      boton.textContent = "Entrando…";
+      try {
+        const r = await fetch(form.dataset.endpoint!, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mail, pagina: location.pathname }),
+          signal: AbortSignal.timeout(6000),
+        });
+        // Un mail que el servidor rechaza se corrige; cualquier otro error
+        // (caída, red, freno) deja entrar igual.
+        if (r.status === 400) {
+          error.textContent = "Ese mail no parece válido. Revisalo, por favor.";
+          error.hidden = false;
+          boton.disabled = false;
+          boton.textContent = "Entrar al informe";
+          input.focus();
+          return;
+        }
+      } catch {}
+      entrar();
+    });
+  }
+</script>
+
+<style is:global>
+  .muro { display: none; }
+  html.muro-activo:not(.muro-ok) .muro {
+    position: fixed; inset: 0; z-index: 9999;
+    /* La caja se centra con margin auto y el muro scrollea por su cuenta: en
+       una pantalla baja o con el teclado del celular abierto, el botón nunca
+       queda cortado fuera de alcance. */
+    display: flex; overflow-y: auto; overscroll-behavior: contain;
+    padding: 16px;
+    background: rgba(27, 46, 60, 0.55);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  html.muro-activo:not(.muro-ok), html.muro-activo:not(.muro-ok) body { overflow: hidden; }
+
+  .muro-caja {
+    margin: auto;
+    width: 100%; max-width: 420px;
+    background: var(--blanco, #fff);
+    border-radius: 14px;
+    padding: 28px 26px 22px;
+    box-shadow: 0 20px 50px rgba(27, 46, 60, 0.28);
+    font-family: var(--ff-cuerpo);
+    color: var(--tinta, #1B2E3C);
+  }
+  .muro-marca {
+    margin: 0 0 6px;
+    font-family: var(--ff-ui); font-weight: 600; font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase;
+    color: var(--azul-oscuro, #2878AB);
+  }
+  .muro-caja h2 {
+    margin: 0 0 10px;
+    font-family: var(--ff-titulo); font-weight: 700; font-size: 22px; line-height: 1.25;
+  }
+  .muro-texto { margin: 0 0 18px; font-size: 15px; line-height: 1.5; color: var(--tinta-suave, #5E7A8A); }
+  .muro-label { display: block; margin-bottom: 6px; font-family: var(--ff-ui); font-weight: 500; font-size: 13px; }
+  .muro-caja input {
+    width: 100%; box-sizing: border-box;
+    padding: 11px 12px; font-size: 16px; font-family: var(--ff-cuerpo);
+    border: 1px solid var(--linea, #D8E6ED); border-radius: 8px;
+    color: var(--tinta, #1B2E3C); background: var(--fondo-limpio, #F6FAFB);
+  }
+  .muro-caja input:focus { outline: 2px solid var(--azul, #3D9AD1); outline-offset: 1px; border-color: transparent; }
+  .muro-error { margin: 8px 0 0; font-size: 13px; color: #B01B1B; }
+  .muro-caja button {
+    width: 100%; margin-top: 14px; padding: 12px;
+    font-family: var(--ff-ui); font-weight: 600; font-size: 15px;
+    color: #fff; background: var(--azul-oscuro, #2878AB);
+    border: 0; border-radius: 8px; cursor: pointer;
+  }
+  .muro-caja button:hover { background: var(--azul-profundo, #1A4F72); }
+  .muro-caja button:disabled { opacity: .7; cursor: default; }
+  .muro-legal { margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: var(--tinta-tenue, #8FA6B2); text-align: center; }
+  .muro-legal a { color: inherit; text-decoration: underline; }
+</style>

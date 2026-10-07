@@ -420,3 +420,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0337](0337-la-tension-se-lee-por-color-sin-numero.md) | La tensión se lee por color, sin número |  | vigente |
 | [0338](0338-el-marco-abre-con-el-texto-de-luis.md) | El marco abre con el texto de Luis y explica los colores |  | vigente |
 | [0340](0340-el-monitor-habla-sin-siglas.md) | El Monitor habla sin siglas |  | vigente |
+| [0342](0342-muro-de-acceso-que-pide-el-mail.md) | Un muro de acceso que pide el mail |  | vigente |
