@@ -21,9 +21,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 <aside class="cg-marco-home" aria-labelledby="cg-marco-home-t">
   <div class="cg-marco-home-txt">
-    <p class="cg-eyebrow">El marco</p>
-    <h2 class="cg-marco-home-h" id="cg-marco-home-t">Qué es la tensión</h2>
-    <div class="cg-marco-home-cuerpo">
+    {/* Oct-2026 (pedido editorial): sale el título «Qué es la tensión», el
+        rótulo pasa a «Marco conceptual» y el cuerpo va en una sola columna. */}
+    <p class="cg-eyebrow" id="cg-marco-home-t">Marco conceptual</p>
+    <div class="cg-marco-home-cuerpo cg-marco-home-cuerpo--una">
       {/* La síntesis de Luis Babino, «Reducir sin simplificar» (ADR-0326).
           Abre el bloque: es la respuesta a las dos objeciones que el Monitor
           recibe —que un número aplana, que sesenta indicadores no dicen nada—
@@ -39,8 +40,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         capacidad para <strong>procesar la tensión</strong> entre las demandas del entorno y los recursos
         disponibles por el gobierno. Los cuatro cinturones son las dimensiones donde medimos esa tensión:
         <strong>MACRO</strong> mide la sustentabilidad intertemporal del proyecto de gobierno.
-      </p>
-      <p>
         <strong>POLÍTICA</strong> mide la capacidad de validar las normas y regulaciones que demanda el proyecto.
         <strong>GESTIÓN</strong> mide la capacidad de cumplir con sus compromisos. Y, por último
         —pero con particular relevancia en los tramos cercanos a una elección—, <strong>IMPACTO SOCIAL</strong>
@@ -50,3 +49,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   </div>
   <a class="cg-marco-home-cta" href={`${base}/metodologia/#marco`}>El marco completo →</a>
 </aside>
+
+<style>
+  /* Una sola columna, gane lo que gane en dashboard.css / overrides.css
+     (grilla o columnas de texto). */
+  .cg-marco-home-cuerpo--una {
+    display: block !important;
+    column-count: 1 !important;
+    columns: auto !important;
+    grid-template-columns: none !important;
+    max-width: 820px;
+  }
+  .cg-marco-home-cuerpo--una > * {
+    grid-column: auto !important;
+  }
+  .cg-marco-home-cuerpo--una > p + p {
+    margin-top: 14px;
+  }
+</style>
