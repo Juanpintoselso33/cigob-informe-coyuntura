@@ -39,7 +39,9 @@ claude.ai del Monitor está armado y Luis ya lo usó.
   Cada aviso dice quién lo pidió, qué cambió, qué falló y el link al PR. Lo que pase
   después del merge va en el hilo del primer aviso. Un cambio de texto que pasa todo no avisa.
 
-## 3. Entregarle a Luis el listado de cambios del informe
+## 3. ✅ Entregarle a Luis el listado de cambios del informe
+
+Entregado por Juan (confirmado el 7-oct).
 
 Luis lo pidió hace un tiempo y todavía no se entregó. Hay que armar el listado de cambios
 del informe (qué cambió y desde cuándo) y mandárselo.
@@ -49,6 +51,8 @@ del informe (qué cambió y desde cuándo) y mandárselo.
 - De dónde sale el material: el historial de git de `main` y los ADR aceptados en el período.
 
 ## 4. Retomar el Votómetro hecho por nosotros: ver si es viable
+
+**Fuera del Monitor** (Juan, 7-oct): es otro producto y se sigue aparte.
 
 Retomar el Votómetro armado por nosotros y ver si se puede sostener.
 
@@ -87,6 +91,8 @@ Qué tiene que tener el Votómetro propio:
 
 ## 6. Sesiones caídas: el dato de las que llegan al recinto
 
+**En pausa** (Juan, 7-oct).
+
 Comentario de la reunión: en «Sesiones caídas por falta de quórum» (`veto_quorum`,
 Política) tendría que estar el dato de las sesiones que van al recinto.
 
@@ -101,6 +107,8 @@ sesiones convocadas al recinto, o sumar al Senado. Lo primero cambia la ficha; l
 cambia el indicador y necesita un ADR.
 
 ## 7. Listado de fuentes a revisar, para buscarles alternativa
+
+**En pausa, no lo toma Juan** (7-oct).
 
 Armar la lista de las fuentes flojas (carga manual, datos atrasados, que se caen) y
 buscarle a cada una una alternativa.
