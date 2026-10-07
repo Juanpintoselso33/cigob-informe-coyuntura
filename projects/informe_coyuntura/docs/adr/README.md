@@ -427,3 +427,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0343](0343-la-portada-sin-lectura-cruzada-y-el-marco-como-lectura.md) | La portada sin «Lectura cruzada», y el marco conceptual con formato de lectura |  | vigente |
 | [0346](0346-el-hero-ocupa-la-pantalla.md) | El hero ocupa la pantalla |  | vigente |
 | [0347](0347-el-monitor-se-publica-como-informe-mensual.md) | El Monitor se publica como informe mensual |  | vigente |
+| [0348](0348-archivo-de-informes-mensuales.md) | Archivo de informes mensuales |  | vigente |

@@ -67,7 +67,27 @@ jobs:
           fi
           git tag "mensual-$MES" "$SHA"
           git push origin "mensual-$MES"
+          echo "MES=$MES" >> "$GITHUB_ENV"
           echo "::notice::Publicado mensual-$MES con la foto de ${SHA:0:10}"
+
+      - uses: actions/setup-node@v4
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.publicar }}
+        with:
+          node-version: "22"
+
+      # El mes publicado entra al archivo (ADR-0348): su foto navegable en
+      # /archivo/AAAA-MM/ y su tarjeta en /archivo/. Se commitea a main ANTES de
+      # componer la rama mensual, así el mensual ya lo muestra.
+      - name: Sumar el mes al archivo
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.publicar }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python projects/informe_coyuntura/scripts/archivo.py construir "$MES"
+          git add projects/informe_coyuntura/web/public/archivo/ projects/informe_coyuntura/web/src/contenido/archivo.json
+          git commit -q -m "archivo: suma el informe de $MES (ADR-0348)"
+          git pull -q --rebase origin main
+          git push origin HEAD:main
 
       - name: Componer la rama mensual
         run: |

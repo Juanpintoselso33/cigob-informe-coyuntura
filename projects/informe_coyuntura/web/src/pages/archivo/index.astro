@@ -1,0 +1,97 @@
+---
+// Archivo de informes mensuales (ADR-0348). Una tarjeta por mes publicado, con
+// su resumen, y el enlace a la FOTO navegable de ese mes: el informe entero en
+// un solo archivo, con el código y los datos del día de la foto
+// (`public/archivo/AAAA-MM/index.html`, armado por scripts/archivo.py).
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import archivo from "../../contenido/archivo.json";
+import { informe, CINTURONES, mesLegible, colorPorTension, LECTURA_SEMAFORO } from "../../lib/datos.ts";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const meses = (archivo as { meses: any[] }).meses;
+const NOMBRE = Object.fromEntries(CINTURONES.map(c => [c.key, c.nombre]));
+const fecha = (iso?: string) =>
+  iso ? new Date(iso).toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric", timeZone: "America/Argentina/Buenos_Aires" }) : "";
+---
+<Layout title="Archivo · Monitor del Plan de Gobierno · CiGob">
+  <Nav />
+  <main class="cg-main">
+    <section class="cg-section cg-archivo">
+      <div class="cg-section-head">
+        <p class="cg-eyebrow">Informes anteriores</p>
+        <h1 class="cg-h2">Archivo</h1>
+        <p class="cg-h2-sub">Cada mes queda guardado tal como se publicó: el informe completo, navegable, con los datos de su último día.</p>
+      </div>
+      {meses.length === 0 ? (
+        <p class="cg-archivo-vacio">Todavía no hay meses archivados.</p>
+      ) : (
+        <div class="cg-archivo-grilla">
+          {meses.map(m => {
+            const color = colorPorTension(m.score_global);
+            return (
+              <article class="cg-archivo-mes">
+                <header>
+                  <h2>{mesLegible(m.mes)}</h2>
+                  {m.mes === informe.period && <span class="cg-archivo-vigente">Vigente</span>}
+                </header>
+                <p class="cg-archivo-global">
+                  <span class:list={["cg-archivo-dot", color && `sem-${color}`]} aria-hidden="true"></span>
+                  {color ? LECTURA_SEMAFORO[color] : "Sin clasificar"}
+                </p>
+                {m.riesgo_dominante && (
+                  <p class="cg-archivo-riesgo">Riesgo dominante: {m.riesgo_dominante}{m.cinturon_dominante && NOMBRE[m.cinturon_dominante] && ` (${NOMBRE[m.cinturon_dominante]})`}</p>
+                )}
+                <ul class="cg-archivo-cint">
+                  {Object.entries(m.cinturones ?? {}).map(([k, c]: [string, any]) => {
+                    const cc = colorPorTension(c.score);
+                    return <li><span class:list={["cg-archivo-dot", cc && `sem-${cc}`]} aria-hidden="true"></span>{NOMBRE[k] ?? k}</li>;
+                  })}
+                </ul>
+                <a class="cg-archivo-ver" href={`${base}/archivo/${m.mes}/`} data-mes={m.mes}>Ver el informe de {mesLegible(m.mes).toLowerCase()} →</a>
+                <p class="cg-archivo-nota">
+                  Datos al {fecha(m.generado)}.
+                  {m.modo === "codigo_actual" && " Reconstruido con la versión actual del sitio: la metodología que se lee es la de hoy."}
+                </p>
+              </article>
+            );
+          })}
+        </div>
+      )}
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  // GA4 (regla del repo: toda funcionalidad nueva deja su huella).
+  import { track } from "../../lib/analytics.ts";
+  track("ver_archivo");
+  document.querySelectorAll<HTMLAnchorElement>(".cg-archivo-ver").forEach(a =>
+    a.addEventListener("click", () => track("abrir_mes_archivo", { mes: a.dataset.mes })));
+</script>
+
+<style>
+  .cg-archivo-grilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .cg-archivo-mes {
+    display: flex; flex-direction: column; gap: 10px;
+    background: var(--paper); border: 1px solid var(--bd); border-radius: var(--radius-big);
+    padding: 22px 22px 18px; box-shadow: var(--shadow-card);
+  }
+  .cg-archivo-mes header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .cg-archivo-mes h2 { margin: 0; font-family: var(--ff-titulo); font-size: 22px; color: var(--dark); }
+  .cg-archivo-vigente { font-family: var(--ff-ui); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--verde-profundo, #2D6655); background: var(--verde-palido, #EEF7F3); padding: 3px 8px; border-radius: 999px; }
+  .cg-archivo-global { margin: 0; font-weight: 700; color: var(--dark); display: flex; align-items: center; gap: 8px; }
+  .cg-archivo-riesgo { margin: 0; font-size: 14px; color: var(--muted); }
+  .cg-archivo-cint { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; font-size: 14px; color: var(--dark); }
+  .cg-archivo-cint li { display: flex; align-items: center; gap: 6px; }
+  .cg-archivo-ver { margin-top: 6px; font-weight: 700; color: var(--teal-ink); }
+  .cg-archivo-nota { margin: 0; font-size: 12px; line-height: 1.5; color: var(--muted); }
+  .cg-archivo-vacio { color: var(--muted); }
+  .cg-archivo-dot { width: 10px; height: 10px; border-radius: 50%; flex: none; background: var(--bd); }
+  .cg-archivo-dot.sem-verde    { background: var(--verde); }
+  .cg-archivo-dot.sem-amarillo { background: var(--amarillo); }
+  .cg-archivo-dot.sem-naranja  { background: var(--naranja); }
+  .cg-archivo-dot.sem-rojo     { background: var(--rojo); }
+</style>
