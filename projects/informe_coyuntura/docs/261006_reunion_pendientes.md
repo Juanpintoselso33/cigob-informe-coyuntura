@@ -93,7 +93,10 @@ Qué tiene que tener el Votómetro propio:
   similares) sobre elecciones argentinas. Ver si hay mercados con volumen suficiente y
   qué dice la ley local.
 
-## 5. Monitor: sacar el Votómetro y sumar el ICG de Di Tella a vida cotidiana
+## 5. ✅ Monitor: sacar el Votómetro y sumar el ICG de Di Tella a vida cotidiana (publicado el 7-oct, ADR-0344 y ADR-0345)
+
+Hecho en `96c88398`, con la corrida manual `e174aeb0`. El 7-oct el seguimiento diario ya
+muestra «Confianza en el Gobierno» y no muestra el Votómetro.
 
 - **Sacar el Votómetro de todos los cinturones.** Hoy aparece solo en Política: es la
   card `votometro_ventaja_lla` y puntúa en el ITCP, dentro de la dimensión
