@@ -74,6 +74,26 @@ La primera versión fue una grilla de tarjetas, y a Juan no le gustó. Se releva
 - Al desplegar una fila se ven un titular, cada cinturón con su lectura, qué
   cambió y el enlace al informe completo. En celular queda mes, tensión y las
   cuatro celdas. GA4: `desplegar_mes_archivo` (`mes`).
+- Las barras son las de `NivelTension` del Resumen, no bloques de color propios.
+
+### La tabla sale de la serie mensual de hoy (7-oct-2026)
+
+Reconstruir un mes desde los crudos guardados ese mes no alcanza: los crudos viejos
+usan definiciones viejas (`mortalidad_pymes` era producción industrial hasta
+ADR-0218, la canasta de tarifas era otra) y, sin fijar `web/src/data/`, se colaban
+datos de hoy. Junio salía súper tensionado por esas dos razones, no por la coyuntura.
+
+- `archivo.py resumen` calcula la tensión de cada cinturón y mes desde la
+  `serie_mensual` vigente de cada índice (la misma de «cómo va la película»), con
+  `calcular_score_global` y `detectar_barbarismo` de hoy. Con eso: junio 3,6 ·
+  julio 3,8 · agosto 3,7 · septiembre 3,9.
+- Un mes sin dato de un índice (piso de cobertura del 60 %, ADR-0197) queda como
+  «Dato pendiente»; si el mes tiene informe completo verificado, se toma de él.
+  Por eso septiembre muestra Macro y Gestión aunque la serie todavía no los cubra.
+- El informe completo de un mes (`pagina`) se publica sólo si la reconstrucción
+  no tiene datos posteriores al mes. Hoy lo tiene septiembre; junio, julio y
+  agosto quedan en la tabla sin enlace hasta reconstruirlos desde las series
+  cortadas a fin de mes.
 
 ### Consecuencias
 
@@ -87,7 +107,7 @@ La primera versión fue una grilla de tarjetas, y a Juan no le gustó. Se releva
 
 ### Confirmación
 
-`tests/test_archivo.py`: toda tarjeta tiene su foto y viceversa, y ninguna foto
+`tests/test_archivo.py`: las fotos publicadas son exactamente los meses con `pagina`, y ninguna foto
 quedó con el muro o con GA.
 
 ## Pros y contras de las opciones

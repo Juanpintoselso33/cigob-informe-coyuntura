@@ -205,6 +205,13 @@ def construir(mes: str) -> dict:
     salida.parent.mkdir(parents=True, exist_ok=True)
     salida.write_bytes(datos)
     tarjeta = _resumen(snap, mes, sha, "reconstruido")
+    # La foto completa sólo se enlaza si no trae ningún dato con fecha posterior
+    # al mes (la verificación que faltó el 7-oct-2026).
+    futuros = [i for c in snap.get("cinturones", {}).values() for i, v in c.get("indicadores", {}).items()
+               if str(v.get("fecha_dato") or "")[:7] > mes]
+    tarjeta["pagina"] = not futuros
+    if futuros:
+        print(f"    ⚠ datos con fecha posterior al mes: {', '.join(futuros[:6])} — la foto no se enlaza")
     tarjeta["quitados"] = fuera
     tarjeta["peso_kb"] = round(len(datos) / 1024)
     indice = json.loads(INDICE.read_text(encoding="utf-8")) if INDICE.exists() else {"meses": []}
@@ -215,8 +222,66 @@ def construir(mes: str) -> dict:
     return tarjeta
 
 
+# ── Tarjetas del archivo desde la serie de hoy ─────────────────────────────────
+# La tabla de /archivo/ toma la tensión de cada cinturón de la SERIE MENSUAL que
+# arma validacion_externa con la metodología vigente (la de «Cómo va la
+# película»): es la única vara que es la misma para todos los meses. Reconstruir
+# un mes desde sus datos crudos no sirve cuando un indicador cambió de fuente o
+# de definición (mortalidad_pymes, la canasta de tarifas): el cálculo de hoy
+# sobre el dato viejo da cualquier cosa (7-oct-2026, junio salía muy tenso).
+INDICES = {"macro": ("itcm", "itcm"), "politica": ("itcp", "itcp"),
+           "vida_cotidiana": ("itvc", "itvc"), "gestion": ("itcg", "itcg")}
+
+
+def _tension(cint: str, valor: float) -> float:
+    sys.path.insert(0, str(RAIZ / "projects" / "informe_coyuntura" / "scripts"))
+    import itvc, parametrica  # noqa: E402
+    return itvc.tension_de_itvc(valor) if cint == "vida_cotidiana" else parametrica.tension_de_indice(valor)
+
+
+def resumen(meses: list[str]) -> None:
+    """Rehace las tarjetas de `meses` desde la serie mensual del snapshot de hoy.
+    Un cinturón sin el mes en la serie (la fuente todavía no publicó o no pasa
+    el piso de cobertura) toma el valor de la reconstrucción del mes si existe
+    y quedó verificada (`pagina`), y si no queda pendiente."""
+    sys.path.insert(0, str(RAIZ / "projects" / "informe_coyuntura"))
+    sys.path.insert(0, str(RAIZ / "projects" / "informe_coyuntura" / "scripts"))
+    import generar_informe as gi  # noqa: E402
+    hoy = json.loads((WEB / "src" / "data" / "informe.json").read_text(encoding="utf-8"))["cinturones"]
+    series = {k: dict(hoy[k][ik].get("serie_mensual") or []) for k, (ik, _) in INDICES.items() if k in hoy and ik in hoy[k]}
+    indice = json.loads(INDICE.read_text(encoding="utf-8"))
+    previas = {m["mes"]: m for m in indice["meses"]}
+    for mes in meses:
+        tarjeta = dict(previas.get(mes, {"mes": mes}))
+        cints, pendientes = {}, []
+        for k in INDICES:
+            v = series.get(k, {}).get(mes)
+            if v is not None:
+                cints[k] = {"score": _tension(k, v), "fuente": "serie"}
+            elif tarjeta.get("pagina") and (tarjeta.get("cinturones") or {}).get(k, {}).get("score") is not None:
+                cints[k] = {"score": tarjeta["cinturones"][k]["score"], "fuente": "reconstruccion"}
+            else:
+                cints[k] = {"score": None, "fuente": "pendiente"}
+                pendientes.append(k)
+        datos = {k: {"score": c["score"]} for k, c in cints.items() if c["score"] is not None}
+        completo = len(datos) == len(INDICES)
+        tarjeta["cinturones"] = cints
+        tarjeta["score_global"] = gi.calcular_score_global(datos) if completo else None
+        barb, dom, alerta = gi.detectar_barbarismo(datos) if completo else (None, None, False)
+        tarjeta["riesgo_dominante"], tarjeta["cinturon_dominante"], tarjeta["alerta_multicinturon"] = barb, dom, alerta
+        tarjeta["pendientes"] = pendientes
+        tarjeta["modo"] = "serie_vigente"
+        previas[mes] = tarjeta
+        print(f"· {mes}: " + " · ".join(f"{k} {c['score']}" for k, c in cints.items()) + f" → global {tarjeta['score_global']}")
+    indice["meses"] = sorted(previas.values(), key=lambda m: m["mes"], reverse=True)
+    INDICE.write_text(json.dumps(indice, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+
 if __name__ == "__main__":
-    if len(sys.argv) < 3 or sys.argv[1] != "construir" or not all(re.fullmatch(r"\d{4}-\d{2}", m) for m in sys.argv[2:]):
+    if len(sys.argv) < 3 or sys.argv[1] not in ("construir", "resumen") or not all(re.fullmatch(r"\d{4}-\d{2}", m) for m in sys.argv[2:]):
         raise SystemExit(__doc__)
-    for m in sys.argv[2:]:
-        construir(m)
+    if sys.argv[1] == "resumen":
+        resumen(sys.argv[2:])
+    else:
+        for m in sys.argv[2:]:
+            construir(m)

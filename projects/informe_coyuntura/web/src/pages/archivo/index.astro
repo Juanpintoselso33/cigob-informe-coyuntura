@@ -36,7 +36,7 @@ const filas = meses.map((m, i) => {
   const cint = ORDEN.map(k => {
     const c = m.cinturones?.[k];
     const col = colorPorTension(c?.score);
-    return { k, score: c?.score, color: col, lectura: col ? LECTURA_SEMAFORO[col] : "Sin dato" };
+    return { k, score: c?.score, color: col, lectura: col ? LECTURA_SEMAFORO[col] : "Dato pendiente" };
   });
   const delta = ant && typeof m.score_global === "number" && typeof ant.score_global === "number"
     ? Math.round((m.score_global - ant.score_global) * 10) / 10 : null;
@@ -71,7 +71,7 @@ const titular = (f: typeof filas[number]) => {
       <div class="cg-section-head">
         <p class="cg-eyebrow">Ediciones anteriores</p>
         <h1 class="cg-h2">Archivo</h1>
-        <p class="cg-h2-sub">Cada mes, reconstruido con el Monitor de hoy sobre los datos de su último día: la misma vara para todos, así se pueden comparar.</p>
+        <p class="cg-h2-sub">La tensión de cada mes, medida con el Monitor de hoy sobre las series completas: la misma vara para todos, así se pueden comparar con el mes vigente.</p>
       </div>
 
       {filas.length === 0 ? (
@@ -128,7 +128,9 @@ const titular = (f: typeof filas[number]) => {
                     </ul>
                     {f.cambios.length > 0 && <p class="ar-cambios">Qué cambió frente al mes anterior: {f.cambios.join("; ")}.</p>}
                     <p class="ar-pie">
-                      <a class="ar-ver" href={`${base}/archivo/${f.mes}/`} data-mes={f.mes}>Ver el informe completo de {mesLegible(f.mes).toLowerCase()} →</a>
+                      {f.pagina
+                        ? <a class="ar-ver" href={`${base}/archivo/${f.mes}/`} data-mes={f.mes}>Ver el informe completo de {mesLegible(f.mes).toLowerCase()} →</a>
+                        : <span class="ar-sin-pagina">El informe completo de este mes se está reconstruyendo con el Monitor de hoy.</span>}
                       <span>Datos al {fecha(f.generado)}</span>
                     </p>
                   </div>
@@ -235,6 +237,7 @@ const titular = (f: typeof filas[number]) => {
   .ar-cambios { margin: 0 0 12px; font-size: 14px; color: var(--dark); }
   .ar-pie { margin: 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--muted); }
   .ar-ver { font-weight: 700; font-size: 15px; color: var(--teal-ink); }
+  .ar-sin-pagina { font-size: 14px; color: var(--muted); }
 
   /* Celular: mes, tensión y las cuatro celdas; el resto va al desplegable. */
   @media (max-width: 720px) {
