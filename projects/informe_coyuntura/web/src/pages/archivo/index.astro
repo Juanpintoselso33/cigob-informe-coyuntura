@@ -11,6 +11,9 @@
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
+// La misma barra de nivel del Resumen (pedido de Juan, 7-oct-2026): los cuatro
+// tramos pálidos, el tramo que corresponde lleno y la marca donde cae el valor.
+import NivelTension from "../../components/NivelTension.astro";
 import archivo from "../../contenido/archivo.json";
 import { CINTURONES, mesLegible, colorPorTension, LECTURA_SEMAFORO } from "../../lib/datos.ts";
 
@@ -89,7 +92,7 @@ const titular = (f: typeof filas[number]) => {
           <div class="ar-tabla" role="table" aria-label="Ediciones del Monitor">
             <div class="ar-cab" role="row">
               <span role="columnheader">Mes</span>
-              <span role="columnheader" class="ar-num">Tensión</span>
+              <span role="columnheader">Tensión general</span>
               {ORDEN.map(k => <span role="columnheader" class="ar-c" title={NOMBRE[k]}>{CORTO[k]}</span>)}
               <span role="columnheader" class="ar-riesgo">Riesgo dominante</span>
               <span role="columnheader" class="ar-num ar-delta">Cambio</span>
@@ -102,12 +105,12 @@ const titular = (f: typeof filas[number]) => {
                       {mesLegible(f.mes)}
                       {f.cambios.length > 0 && <span class="ar-hito" title={f.cambios.join(" · ")}>★</span>}
                     </span>
-                    <span class="ar-num ar-score" role="cell">
-                      <span class:list={["ar-punto", f.color && `sem-${f.color}`]} aria-hidden="true"></span>{coma(f.score_global)}
+                    <span class="ar-global" role="cell">
+                      <NivelTension tension={f.score_global} titulo={`Tensión general de ${mesLegible(f.mes)}`} ocultarTitulo />
                     </span>
                     {f.cint.map(c => (
-                      <span class="ar-c" role="cell" title={`${NOMBRE[c.k]}: ${c.lectura.toLowerCase()} (${coma(c.score)})`}>
-                        <span class:list={["ar-celda", c.color && `sem-${c.color}`]}></span>
+                      <span class="ar-c" role="cell" title={`${NOMBRE[c.k]}: ${c.lectura.toLowerCase()}`}>
+                        <NivelTension tension={c.score} titulo={`${NOMBRE[c.k]} en ${mesLegible(f.mes)}`} ocultarTitulo ocultarLectura />
                       </span>
                     ))}
                     <span class="ar-riesgo" role="cell">{f.riesgo_dominante ?? "—"}</span>
@@ -166,19 +169,22 @@ const titular = (f: typeof filas[number]) => {
 
   /* Franja índice */
   .ar-franja { display: flex; gap: 4px; margin: 8px 0 10px; }
+  /* Los tonos pálidos del semáforo con un filete del color fuerte, como los
+     tramos de la barra de nivel del Resumen: nunca un bloque macizo. */
   .ar-franja-mes {
-    flex: 1 1 0; min-width: 0; max-width: 110px; padding: 14px 8px 10px;
+    flex: 1 1 0; min-width: 0; max-width: 120px; padding: 10px 8px 8px;
     display: flex; flex-direction: column; align-items: center; gap: 2px;
-    border-radius: 6px; text-decoration: none; color: #fff; background: var(--bd);
+    border-radius: 4px; text-decoration: none; color: var(--dark);
+    background: var(--bg-tint); border-bottom: 4px solid var(--bd);
     transition: transform .12s ease, box-shadow .12s ease;
   }
   .ar-franja-mes:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(27,46,60,.18); text-decoration: none; }
   .ar-franja-m { font-family: var(--ff-ui); font-weight: 600; font-size: 14px; text-transform: capitalize; }
   .ar-franja-a { font-family: var(--ff-dato); font-size: 11px; opacity: .85; }
-  .ar-franja-mes.sem-verde { background: var(--sem-verde); }
-  .ar-franja-mes.sem-amarillo { background: var(--sem-amarillo); color: var(--dark); }
-  .ar-franja-mes.sem-naranja { background: var(--sem-naranja); }
-  .ar-franja-mes.sem-rojo { background: var(--sem-rojo); }
+  .ar-franja-mes.sem-verde { background: var(--verde-soft); border-bottom-color: var(--sem-verde); }
+  .ar-franja-mes.sem-amarillo { background: var(--amarillo-soft); border-bottom-color: var(--sem-amarillo); }
+  .ar-franja-mes.sem-naranja { background: var(--naranja-soft); border-bottom-color: var(--sem-naranja); }
+  .ar-franja-mes.sem-rojo { background: var(--rojo-soft); border-bottom-color: var(--sem-rojo); }
   .ar-ayuda { margin: 0 0 22px; font-size: 13px; color: var(--muted); }
   .ar-hito-ej { color: var(--naranja); }
 
@@ -186,13 +192,15 @@ const titular = (f: typeof filas[number]) => {
   .ar-tabla { border-top: 2px solid var(--dark); }
   .ar-cab, .ar-fila > summary {
     display: grid;
-    grid-template-columns: minmax(150px, 1.6fr) 90px repeat(4, 64px) minmax(120px, 1.2fr) 80px;
+    grid-template-columns: 170px minmax(170px, 1.3fr) repeat(4, minmax(90px, 1fr)) 120px 70px;
     align-items: center; gap: 0 8px; padding: 0 12px;
   }
   .ar-cab { padding-top: 10px; padding-bottom: 10px; font-family: var(--ff-ui); font-size: 11px; font-weight: 600;
             letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--bd); }
   .ar-fila { border-bottom: 1px solid var(--bd); }
-  .ar-fila > summary { list-style: none; cursor: pointer; min-height: 56px; }
+  .ar-fila > summary { list-style: none; cursor: pointer; min-height: 64px; padding-top: 10px; padding-bottom: 10px; }
+  .ar-global, .ar-c { min-width: 0; }
+  .ar-cab .ar-c { text-align: left; }
   .ar-fila > summary::-webkit-details-marker { display: none; }
   .ar-fila > summary:hover { background: var(--fondo-hover, #FAFDFE); }
   .ar-fila[open] > summary { background: var(--bg-tint); }
@@ -209,7 +217,7 @@ const titular = (f: typeof filas[number]) => {
   .ar-celda.sem-naranja { background: var(--sem-naranja); }
   .ar-celda.sem-rojo { background: var(--sem-rojo); }
   .ar-fila .ar-riesgo { font-size: 14px; color: var(--dark); text-transform: capitalize; }
-  .ar-delta { font-size: 13px; color: var(--muted); }
+  .ar-fila .ar-delta { font-size: 13px; color: var(--muted); }
   .ar-delta .sube { color: var(--naranja); }
   .ar-delta .baja { color: var(--verde); }
   .ar-punto { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--bd); flex: none; }
@@ -230,9 +238,9 @@ const titular = (f: typeof filas[number]) => {
 
   /* Celular: mes, tensión y las cuatro celdas; el resto va al desplegable. */
   @media (max-width: 720px) {
-    .ar-cab, .ar-fila > summary { grid-template-columns: 1fr 64px repeat(4, 22px); gap: 0 6px; padding: 0 8px; }
-    .ar-riesgo, .ar-delta { display: none; }
-    .ar-cab .ar-c { font-size: 9px; letter-spacing: 0; writing-mode: vertical-rl; transform: rotate(180deg); height: 48px; }
+    /* Celular: el mes y la barra general; los cuatro cinturones van al desplegable. */
+    .ar-cab, .ar-fila > summary { grid-template-columns: 110px 1fr; gap: 0 10px; padding-left: 8px; padding-right: 8px; }
+    .ar-riesgo, .ar-delta, .ar-c { display: none; }
     .ar-mes { font-size: 15px; }
     .ar-celda { height: 22px; }
     .ar-franja-mes { padding: 10px 2px 8px; }
