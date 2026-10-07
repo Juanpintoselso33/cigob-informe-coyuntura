@@ -125,9 +125,15 @@ _d.date = _Date
 # Lo que se trae de la corrida de cierre: los datos crudos que leen
 # generar_informe.py y publicar.py. La metodología (scripts, config, bandas,
 # data/vida/*.json) es la de HOY: eso es lo que hace comparables los meses.
+#
+# web/src/data/ también: publicar.py completa con el snapshot ANTERIOR lo que no
+# tiene dato nuevo, y validacion_externa fusiona sus series. Sin traerlo, ese
+# «anterior» era el de hoy y se colaban datos del futuro en el mes (7-oct-2026:
+# junio salía con valores de septiembre y muy tensionado por eso).
 CRUDOS = ("projects/informe_coyuntura/output",
           "projects/informe_coyuntura/scripts/vida_cotidiana/data",
-          "projects/informe_coyuntura/data/historico")
+          "projects/informe_coyuntura/data/historico",
+          "projects/informe_coyuntura/web/src/data")
 
 
 def construir(mes: str) -> dict:
