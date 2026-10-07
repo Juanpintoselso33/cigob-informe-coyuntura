@@ -19,6 +19,20 @@ Decidido (Juan, 7-oct):
 Pendiente para después (Juan, 7-oct): **mejorar la persistencia**, que quien ya dejó el
 mail no tenga que volver a dejarlo al cambiar de navegador o de dispositivo.
 
+Persistencia: resuelta el 7-oct (ADR-0342, investigación en
+`docs/261007_muro_persistencia_opciones.md`): cookie del propio sitio de 400 días, link de
+difusión que deja entrar directo, «con tu mail alcanza» y un solo dominio.
+
+**Pendiente, para que Juan lo mire después:**
+
+- **Lo legal (Ley 25.326):** inscribir la base de lectores en el Registro Nacional de Bases de
+  Datos, y resolver el consentimiento de la transferencia a EE.UU. (Neon y Vercel guardan ahí los
+  datos), con consentimiento expreso o cláusulas contractuales.
+- **Ingreso con Google (One Tap)**, la opción 21 de la investigación: un toque en Android y el mail
+  verificado.
+- **Probar de punta a punta el link de difusión** (`/r/` del bot → `/api/acceso` del Monitor)
+  con la primera difusión real del Monitor; el tramo del Monitor ya se probó con un token real.
+
 ## 2. ✅ Cambios al Monitor desde claude.ai: conector, Proyecto y repo
 
 Que el equipo pida cambios al Monitor conversando en claude.ai. **Cerrado el 7-oct**: el
