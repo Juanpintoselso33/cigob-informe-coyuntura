@@ -78,6 +78,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 </div>
 
 <script>
+  // Medición (GA4, src/lib/analytics.ts): cuántos ven el muro, cuántos dejan
+  // el mail, cuántos lo cierran y cuántos guardados fallan. NUNCA se manda el
+  // mail, el nombre ni el teléfono: GA prohíbe datos personales, y para eso
+  // está la base. Sólo si se dejaron (sí/no).
+  import { track } from "../lib/analytics.ts";
   const muro = document.getElementById("cg-muro");
   const form = document.getElementById("cg-muro-form") as HTMLFormElement | null;
   const input = document.getElementById("cg-muro-mail") as HTMLInputElement | null;
@@ -101,6 +106,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     inertes = [...document.body.children].filter((el) => el !== muro && !el.hasAttribute("inert"));
     inertes.forEach((el) => el.setAttribute("inert", ""));
     input?.focus({ preventScroll: true });
+    track("muro_visto", { modo: form?.dataset.modo });
   };
   const ocultar = () => {
     html.classList.remove("muro-activo");
@@ -130,13 +136,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     } else mostrar();
 
     // La cruz (y Escape) cierran por el resto de la visita.
-    const cerrarVisita = () => {
+    const cerrarVisita = (como: "cruz" | "escape") => {
       try { sessionStorage.setItem(CERRADO, "1"); } catch {}
+      track("muro_cerrado", { como, modo: form.dataset.modo });
       ocultar();
     };
-    cerrar.addEventListener("click", cerrarVisita);
+    cerrar.addEventListener("click", () => cerrarVisita("cruz"));
     document.addEventListener("keydown", (ev) => {
-      if (ev.key === "Escape" && html.classList.contains("muro-activo")) cerrarVisita();
+      if (ev.key === "Escape" && html.classList.contains("muro-activo") && !html.classList.contains("muro-ok")) cerrarVisita("escape");
     });
 
     form.addEventListener("submit", async (ev) => {
@@ -155,6 +162,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       boton.textContent = "Entrando…";
       // AbortController y no AbortSignal.timeout(): éste no existe en
       // navegadores viejos, y fallar ahí haría entrar sin mandar el mail.
+      let guardado = false;
       const corte = new AbortController();
       const reloj = setTimeout(() => corte.abort(), 6000);
       try {
@@ -180,7 +188,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           input.focus();
           return;
         }
+        guardado = r.ok;
       } catch {} finally { clearTimeout(reloj); }
+      track("muro_enviado", {
+        modo: form.dataset.modo,
+        con_nombre: Boolean(nombre.value.trim()),
+        con_telefono: Boolean(tel.value.trim()),
+      });
+      if (!guardado) track("muro_fallo_guardado", { modo: form.dataset.modo });
       try { localStorage.setItem(CLAVE, new Date().toISOString()); } catch {}
       ocultar();
     });
