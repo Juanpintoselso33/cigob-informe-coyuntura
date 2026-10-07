@@ -136,31 +136,150 @@ CRUDOS = ("projects/informe_coyuntura/output",
           "projects/informe_coyuntura/web/src/data")
 
 
-def construir(mes: str) -> dict:
-    """Reconstruye el mes con el Monitor de HOY (código, metodología y diseño)
-    sobre los datos crudos de la última corrida de ese mes."""
-    sha = mensual.elegir(mes)
-    snap_viejo = json.loads(mensual._git("show", f"{sha}:{mensual.DATOS}/informe.json"))
-    ahora = snap_viejo.get("generated_at")
-    print(f"· {mes}: datos de la corrida {sha[:10]} ({ahora})")
+# ── Reconstrucción desde las series de hoy cortadas a fin de mes ───────────────
+# Cada card toma el ÚLTIMO punto de su serie hasta el fin del mes (el mismo dato
+# que la card mostraba ese día, porque el gate G3 exige card = último punto) y
+# pierde el desglose del día (detalle_txt, inventarios, cotizaciones): ese texto
+# describe HOY, no el mes. Una card sin ningún punto hasta ese mes no se muestra.
+CAMPOS_CARD = ("valor", "unidad", "fuente", "fecha_dato", "en_indice", "dimension", "suspendido")
+CACHES = ("macro", "politica", "gestion", "vida_cotidiana", "espiritu_epoca")
+
+
+def _fin_de_mes(mes: str) -> str:
+    import calendar
+    a, m = map(int, mes.split("-"))
+    return f"{mes}-{calendar.monthrange(a, m)[1]:02d}"
+
+
+def _cortar(proyecto: Path, mes: str) -> None:
+    import csv
+    ultimo: dict[str, tuple[str, float]] = {}
+    for ruta in sorted((proyecto / "output" / "series").glob("*.csv")):
+        with open(ruta, encoding="utf-8", newline="") as f:
+            lector = csv.DictReader(f)
+            campos, filas = lector.fieldnames, [r for r in lector if r["fecha"][:7] <= mes]
+        with open(ruta, "w", encoding="utf-8", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=campos)
+            w.writeheader()
+            w.writerows(filas)
+        for r in filas:
+            try:
+                v = float(r["valor"])
+            except (TypeError, ValueError):
+                continue
+            if r["indicador"] not in ultimo or r["fecha"] >= ultimo[r["indicador"]][0]:
+                ultimo[r["indicador"]] = (r["fecha"], v)
+    # validacion_externa lee las series del snapshot publicado (el de hoy).
+    ruta_s = proyecto / "web" / "src" / "data" / "series.json"
+    if ruta_s.exists():
+        sj = json.loads(ruta_s.read_text(encoding="utf-8"))
+        sj = {k: [p for p in v if str(p.get("fecha", ""))[:7] <= mes] for k, v in sj.items()}
+        ruta_s.write_text(json.dumps(sj, ensure_ascii=False), encoding="utf-8")
+    ruta_h = proyecto / "data" / "historico" / "indicadores.json"
+    if ruta_h.exists():
+        store = json.loads(ruta_h.read_text(encoding="utf-8"))
+        store = {k: {m: v for m, v in vals.items() if m <= mes} for k, vals in store.items()}
+        ruta_h.write_text(json.dumps(store, ensure_ascii=False, indent=1), encoding="utf-8")
+    (proyecto / "output" / "archivo_corte.json").write_text(
+        json.dumps({k: list(v) for k, v in ultimo.items()}), encoding="utf-8")
+    for nombre in CACHES:
+        ruta = proyecto / "output" / "cache" / f"{nombre}.json"
+        if not ruta.exists():
+            continue
+        cache = json.loads(ruta.read_text(encoding="utf-8"))
+        cache["indicadores"] = cortar_indicadores(cache.get("indicadores", {}), ultimo, mes)
+        ruta.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def cortar_indicadores(inds: dict, ultimo: dict, mes: str) -> dict:
+    """Lleva cada indicador a su último punto hasta `mes` (ver arriba)."""
+    salida = {}
+    for k, ind in inds.items():
+        if not isinstance(ind, dict):
+            continue
+        nuevo = {c: ind[c] for c in CAMPOS_CARD if c in ind}
+        if k in ultimo:
+            fecha, valor = ultimo[k]
+            nuevo["valor"], nuevo["fecha_dato"] = valor, fecha
+        elif not str(ind.get("fecha_dato") or "9")[:7] <= mes:
+            continue
+        nuevo["desactualizado"] = False
+        salida[k] = nuevo
+    return salida
+
+
+# publicar.py con el corte aplicado a lo que NO sale de los cachés: el bloque de
+# vida (se arma desde el crudo del colector), el histórico que fusiona a las
+# series y el arrastre desde el snapshot anterior (que es el de hoy).
+PUBLICAR_CORTE = """
+import json, os, sys
+from pathlib import Path
+sys.path.insert(0, str(Path.cwd()))
+sys.argv = ["publicar.py"]
+import importlib.util
+_spec = importlib.util.spec_from_file_location("archivo_corte", Path(__file__).with_name("archivo.py"))
+archivo = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(archivo)
+import publicar
+MES = os.environ["ARCHIVO_MES"]
+ULTIMO = {k: tuple(v) for k, v in json.loads((Path.cwd() / "output" / "archivo_corte.json").read_text()).items()}
+def _corte(series):
+    return {k: [p for p in v if str(p.get("fecha", ""))[:7] <= MES] for k, v in series.items()}
+_bs, _fh, _as = publicar.build_series, publicar.fusionar_historico, publicar.aplicar_scoring
+publicar.build_series = lambda: _corte(_bs())
+publicar.fusionar_historico = lambda series, store: _corte(_fh(series, store))
+publicar._carry_forward = lambda enriquecido, previo: enriquecido
+def _aplicar(informe, series):
+    vida = informe["cinturones"].get("vida_cotidiana") or {}
+    vida["indicadores"] = archivo.cortar_indicadores(vida.get("indicadores") or {}, ULTIMO, MES)
+    return _as(informe, series)
+publicar.aplicar_scoring = _aplicar
+publicar.main()
+"""
+
+
+def construir(mes: str, desde: str = "series") -> dict:
+    """Reconstruye el mes con el Monitor de HOY (código, metodología y diseño).
+
+    desde="series" (el modo de hoy): los datos de HOY cortados a fin del mes
+    (`_cortar`). desde="corrida": los datos crudos de la última corrida de ese
+    mes; sólo sirve si ningún indicador cambió de fuente o de definición desde
+    entonces (7-oct-2026: junio salía muy tenso por eso)."""
+    if desde == "corrida":
+        sha = mensual.elegir(mes)
+        snap_viejo = json.loads(mensual._git("show", f"{sha}:{mensual.DATOS}/informe.json"))
+        ahora = snap_viejo.get("generated_at")
+        print(f"· {mes}: datos de la corrida {sha[:10]} ({ahora})")
+    else:
+        sha = mensual._git("rev-parse", "HEAD").strip()
+        ahora = f"{_fin_de_mes(mes)}T23:00:00"
+        print(f"· {mes}: datos de hoy ({sha[:10]}) cortados al {_fin_de_mes(mes)}")
     with tempfile.TemporaryDirectory(prefix=f"archivo-{mes}-") as tmp:
         arbol = Path(tmp) / "arbol"
         mensual._git("worktree", "add", "--detach", str(arbol), "HEAD")
         try:
-            for ruta in CRUDOS:
-                shutil.rmtree(arbol / ruta, ignore_errors=True)
-                tar = subprocess.run(["git", "archive", sha, ruta], cwd=RAIZ, capture_output=True, check=True).stdout
-                subprocess.run(["tar", "-x", "-C", str(arbol)], input=tar, check=True)
             reloj = Path(tmp) / "reloj"
             reloj.mkdir()
             (reloj / "sitecustomize.py").write_text(RELOJ, encoding="utf-8")
             proyecto = arbol / "projects" / "informe_coyuntura"
+            if desde == "corrida":
+                for ruta in CRUDOS:
+                    shutil.rmtree(arbol / ruta, ignore_errors=True)
+                    tar = subprocess.run(["git", "archive", sha, ruta], cwd=RAIZ, capture_output=True, check=True).stdout
+                    subprocess.run(["tar", "-x", "-C", str(arbol)], input=tar, check=True)
+                publicar = "scripts/publicar.py"
+            else:
+                _cortar(proyecto, mes)
+                (reloj / "publicar_corte.py").write_text(PUBLICAR_CORTE, encoding="utf-8")
+                # cortar_indicadores sale de ESTE archivo, no del de HEAD.
+                shutil.copy(__file__, reloj / "archivo.py")
+                publicar = str(reloj / "publicar_corte.py")
             py = RAIZ / "projects" / "informe_coyuntura" / ".venv" / "bin" / "python"
-            env = {"ARCHIVO_AHORA": ahora, "PYTHONPATH": str(reloj), "PYTHONDONTWRITEBYTECODE": "1"}
+            env = {"ARCHIVO_AHORA": ahora, "ARCHIVO_MES": mes, "PYTHONPATH": f"{reloj}:{proyecto / 'scripts'}",
+                   "PYTHONDONTWRITEBYTECODE": "1"}
             # El mismo orden que el pipeline: validacion_externa arma la serie
             # mensual de cada índice («Cómo va la película»); sin ella, el mes
             # salía con la sección vacía.
-            for script in ("scripts/validacion_externa.py", "scripts/generar_informe.py", "scripts/publicar.py"):
+            for script in ("scripts/validacion_externa.py", "scripts/generar_informe.py", publicar):
                 r = _run([str(py), script], proyecto, env)
                 if r.returncode:
                     raise SystemExit(f"{mes}: {script} falló:\n{(r.stderr or r.stdout)[-1500:]}")
@@ -204,7 +323,7 @@ def construir(mes: str) -> dict:
     salida = WEB / "public" / "archivo" / mes / "index.html"
     salida.parent.mkdir(parents=True, exist_ok=True)
     salida.write_bytes(datos)
-    tarjeta = _resumen(snap, mes, sha, "reconstruido")
+    tarjeta = _resumen(snap, mes, sha, "reconstruido" if desde == "corrida" else "series_cortadas")
     # La foto completa sólo se enlaza si no trae ningún dato con fecha posterior
     # al mes (la verificación que faltó el 7-oct-2026).
     futuros = [i for c in snap.get("cinturones", {}).values() for i, v in c.get("indicadores", {}).items()
@@ -284,4 +403,4 @@ if __name__ == "__main__":
         resumen(sys.argv[2:])
     else:
         for m in sys.argv[2:]:
-            construir(m)
+            construir(m, os.environ.get("ARCHIVO_DESDE", "series"))

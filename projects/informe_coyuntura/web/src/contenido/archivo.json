@@ -2,112 +2,102 @@
  "meses": [
   {
    "mes": "2026-09",
-   "corrida": "85f76d3144",
-   "generado": "2026-09-30T00:32:44.351016-03:00",
-   "modo": "serie_vigente",
-   "score_global": 3.9,
-   "riesgo_dominante": "político",
-   "cinturon_dominante": "vida_cotidiana",
-   "alerta_multicinturon": false,
-   "cinturones": {
-    "macro": {
-     "score": 4.0,
-     "fuente": "reconstruccion"
-    },
-    "politica": {
-     "score": 3.2,
-     "fuente": "serie"
-    },
-    "vida_cotidiana": {
-     "score": 6.2,
-     "fuente": "serie"
-    },
-    "gestion": {
-     "score": 2.1,
-     "fuente": "reconstruccion"
-    }
-   },
-   "quitados": [
-    "votometro_ventaja_lla"
-   ],
-   "peso_kb": 4132,
-   "pagina": true,
-   "pendientes": []
-  },
-  {
-   "mes": "2026-08",
-   "corrida": "c2e114e1b4",
-   "generado": "2026-08-31T00:29:30.984598-03:00",
-   "modo": "serie_vigente",
+   "corrida": "85efe3cea4",
+   "generado": "2026-09-30T20:00:00-03:00",
+   "modo": "series_cortadas",
    "score_global": 3.7,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
    "cinturones": {
     "macro": {
-     "score": 3.7,
-     "fuente": "serie"
+     "score": 4.0,
+     "estado": "estable"
     },
     "politica": {
-     "score": 3.3,
-     "fuente": "serie"
+     "score": 2.7,
+     "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 6.0,
-     "fuente": "serie"
+     "score": 6.3,
+     "estado": "tensionado"
     },
     "gestion": {
      "score": 1.8,
-     "fuente": "serie"
+     "estado": "estable"
     }
    },
-   "quitados": [
-    "votometro_ventaja_lla"
-   ],
-   "peso_kb": 4007,
-   "pagina": false,
-   "pendientes": []
+   "pagina": true,
+   "quitados": [],
+   "peso_kb": 4016
+  },
+  {
+   "mes": "2026-08",
+   "corrida": "85efe3cea4",
+   "generado": "2026-08-31T20:00:00-03:00",
+   "modo": "series_cortadas",
+   "score_global": 3.7,
+   "riesgo_dominante": "político",
+   "cinturon_dominante": "vida_cotidiana",
+   "alerta_multicinturon": false,
+   "cinturones": {
+    "macro": {
+     "score": 4.0,
+     "estado": "estable"
+    },
+    "politica": {
+     "score": 2.9,
+     "estado": "estable"
+    },
+    "vida_cotidiana": {
+     "score": 6.0,
+     "estado": "en_tension"
+    },
+    "gestion": {
+     "score": 1.8,
+     "estado": "estable"
+    }
+   },
+   "pagina": true,
+   "quitados": [],
+   "peso_kb": 3988
   },
   {
    "mes": "2026-07",
-   "corrida": "44ef37fd1f",
-   "generado": "2026-07-30T01:20:39.686163-03:00",
-   "modo": "serie_vigente",
-   "score_global": 3.8,
+   "corrida": "85efe3cea4",
+   "generado": "2026-07-31T20:00:00-03:00",
+   "modo": "series_cortadas",
+   "score_global": 3.7,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
    "cinturones": {
     "macro": {
      "score": 3.8,
-     "fuente": "serie"
+     "estado": "estable"
     },
     "politica": {
-     "score": 3.1,
-     "fuente": "serie"
+     "score": 3.0,
+     "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 6.0,
-     "fuente": "serie"
+     "score": 6.1,
+     "estado": "tensionado"
     },
     "gestion": {
-     "score": 2.1,
-     "fuente": "serie"
+     "score": 2.0,
+     "estado": "estable"
     }
    },
-   "quitados": [
-    "presion_dolarizacion",
-    "votometro_ventaja_lla"
-   ],
-   "peso_kb": 3726,
-   "pagina": false,
-   "pendientes": []
+   "pagina": true,
+   "quitados": [],
+   "peso_kb": 3959
   },
   {
    "mes": "2026-06",
-   "corrida": "01dce1e937",
-   "generado": "2026-06-30T03:47:30.637405-03:00",
-   "modo": "serie_vigente",
+   "corrida": "85efe3cea4",
+   "generado": "2026-06-30T20:00:00-03:00",
+   "modo": "series_cortadas",
    "score_global": 3.6,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
@@ -115,28 +105,24 @@
    "cinturones": {
     "macro": {
      "score": 3.5,
-     "fuente": "serie"
+     "estado": "estable"
     },
     "politica": {
      "score": 3.1,
-     "fuente": "serie"
+     "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 5.8,
-     "fuente": "serie"
+     "score": 5.9,
+     "estado": "en_tension"
     },
     "gestion": {
-     "score": 2.1,
-     "fuente": "serie"
+     "score": 1.9,
+     "estado": "estable"
     }
    },
-   "quitados": [
-    "votometro_ventaja_lla",
-    "gobernadores_alineamiento"
-   ],
-   "peso_kb": 2713,
-   "pagina": false,
-   "pendientes": []
+   "pagina": true,
+   "quitados": [],
+   "peso_kb": 3917
   }
  ]
 }

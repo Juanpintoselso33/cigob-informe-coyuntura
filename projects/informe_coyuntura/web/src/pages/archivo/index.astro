@@ -24,12 +24,15 @@ const CORTO: Record<string, string> = { macro: "Macro", politica: "Política", v
 const coma = (n: number | null | undefined) => (typeof n === "number" ? n.toFixed(1).replace(".", ",") : "—");
 const fecha = (iso?: string) =>
   iso ? new Date(iso).toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric", timeZone: "America/Argentina/Buenos_Aires" }) : "";
-const mesCorto = (m: string) => mesLegible(m).split(" ")[0].slice(0, 3);
 const anio = (m: string) => m.slice(0, 4);
 
 // Del más nuevo al más viejo; para el cambio y los hitos, se compara cada mes
 // con el anterior en el tiempo (el siguiente en la lista).
 const meses = (archivo as { meses: any[] }).meses;
+// El riesgo dominante se nombra por el CINTURÓN que lo produce, como el pie del
+// Hero (ADR-0237): «Político» a secas mandaba a la card de Política cuando el que
+// tensa es Impacto social.
+const riesgo = (m: any) => (m?.cinturon_dominante ? NOMBRE[m.cinturon_dominante] : m?.riesgo_dominante) ?? null;
 const filas = meses.map((m, i) => {
   const ant = meses[i + 1];
   const color = colorPorTension(m.score_global);
@@ -42,14 +45,14 @@ const filas = meses.map((m, i) => {
     ? Math.round((m.score_global - ant.score_global) * 10) / 10 : null;
   const cambios: string[] = [];
   if (ant) {
-    if (ant.riesgo_dominante && m.riesgo_dominante !== ant.riesgo_dominante)
-      cambios.push(`el riesgo dominante pasa de ${ant.riesgo_dominante} a ${m.riesgo_dominante}`);
+    if (riesgo(ant) && riesgo(m) !== riesgo(ant))
+      cambios.push(`el riesgo dominante pasa de ${riesgo(ant)} a ${riesgo(m)}`);
     for (const c of cint) {
       const prev = colorPorTension(ant.cinturones?.[c.k]?.score);
       if (prev && c.color && prev !== c.color) cambios.push(`${NOMBRE[c.k]}: de ${LECTURA_SEMAFORO[prev].toLowerCase()} a ${c.lectura.toLowerCase()}`);
     }
   }
-  return { ...m, color, cint, delta, cambios };
+  return { ...m, riesgo_dominante: riesgo(m), color, cint, delta, cambios };
 });
 const masTenso = (f: typeof filas[number]) =>
   f.cint.filter(c => typeof c.score === "number").sort((a, b) => (b.score as number) - (a.score as number))[0];
@@ -59,8 +62,8 @@ const titular = (f: typeof filas[number]) => {
   const t = masTenso(f);
   return [
     `${f.color ? LECTURA_SEMAFORO[f.color] : "Sin dato"} en el conjunto`,
-    f.riesgo_dominante && `riesgo dominante ${f.riesgo_dominante}`,
-    t && `el cinturón más tenso fue ${NOMBRE[t.k]}`,
+    f.riesgo_dominante && `riesgo dominante: ${f.riesgo_dominante}`,
+    t && t.k !== f.cinturon_dominante && `el cinturón más tenso fue ${NOMBRE[t.k]}`,
   ].filter(Boolean).join("; ") + ".";
 };
 ---
@@ -71,7 +74,7 @@ const titular = (f: typeof filas[number]) => {
       <div class="cg-section-head">
         <p class="cg-eyebrow">Ediciones anteriores</p>
         <h1 class="cg-h2">Archivo</h1>
-        <p class="cg-h2-sub">La tensión de cada mes, medida con el Monitor de hoy sobre las series completas: la misma vara para todos, así se pueden comparar con el mes vigente.</p>
+        <p class="cg-h2-sub">La tensión de cada mes, medida con el Monitor de hoy sobre los datos que había al cierre de ese mes: la misma vara para todos, así se pueden comparar con el mes vigente.</p>
       </div>
 
       {filas.length === 0 ? (
@@ -82,12 +85,13 @@ const titular = (f: typeof filas[number]) => {
             {[...filas].reverse().map(f => (
               <a href={`#mes-${f.mes}`} class:list={["ar-franja-mes", f.color && `sem-${f.color}`]} data-mes={f.mes}
                  title={`${mesLegible(f.mes)}: ${f.color ? LECTURA_SEMAFORO[f.color].toLowerCase() : "sin dato"} (${coma(f.score_global)})`}>
-                <span class="ar-franja-m">{mesCorto(f.mes)}</span>
-                <span class="ar-franja-a">{anio(f.mes)}</span>
+                <span class="ar-franja-m">{mesLegible(f.mes).split(" ")[0]} <span class="ar-franja-a">{anio(f.mes)}</span></span>
+                <span class="ar-franja-n">{coma(f.score_global)}</span>
+                <span class="ar-franja-l">{f.color ? LECTURA_SEMAFORO[f.color] : "Dato pendiente"}</span>
               </a>
             ))}
           </nav>
-          <p class="ar-ayuda">Color: tensión general del mes. Las columnas de cada cinturón se leen de arriba abajo como su recorrido. <span class="ar-hito-ej">★</span> marca los meses en que algo cambió.</p>
+          <p class="ar-ayuda">Tensión general de cada mes, de 0 a 10. En la tabla, cada columna se lee de arriba abajo como el recorrido de ese cinturón; <span class="ar-hito-ej">★</span> marca los meses en que algo cambió.</p>
 
           <div class="ar-tabla" role="table" aria-label="Ediciones del Monitor">
             <div class="ar-cab" role="row">
@@ -102,15 +106,17 @@ const titular = (f: typeof filas[number]) => {
                 <details class="ar-fila" id={`mes-${f.mes}`} data-mes={f.mes}>
                   <summary role="row">
                     <span class="ar-mes" role="cell">
-                      {mesLegible(f.mes)}
+                      <span class="ar-mes-t"><span class="ar-mes-n">{mesLegible(f.mes).split(" ")[0]}</span><span class="ar-mes-a">{anio(f.mes)}</span></span>
                       {f.cambios.length > 0 && <span class="ar-hito" title={f.cambios.join(" · ")}>★</span>}
                     </span>
-                    <span class="ar-global" role="cell">
-                      <NivelTension tension={f.score_global} titulo={`Tensión general de ${mesLegible(f.mes)}`} ocultarTitulo />
+                    <span class="ar-global ar-barra" role="cell" title={f.color ? LECTURA_SEMAFORO[f.color] : "Dato pendiente"}>
+                      <NivelTension tension={f.score_global} titulo={`Tensión general de ${mesLegible(f.mes)}`} ocultarTitulo ocultarLectura />
+                      <span class="ar-n ar-n-g">{coma(f.score_global)}</span>
                     </span>
                     {f.cint.map(c => (
-                      <span class="ar-c" role="cell" title={`${NOMBRE[c.k]}: ${c.lectura.toLowerCase()}`}>
+                      <span class="ar-c ar-barra" role="cell" title={`${NOMBRE[c.k]}: ${c.lectura.toLowerCase()}`}>
                         <NivelTension tension={c.score} titulo={`${NOMBRE[c.k]} en ${mesLegible(f.mes)}`} ocultarTitulo ocultarLectura />
+                        <span class="ar-n">{coma(c.score)}</span>
                       </span>
                     ))}
                     <span class="ar-riesgo" role="cell">{f.riesgo_dominante ?? "—"}</span>
@@ -170,19 +176,21 @@ const titular = (f: typeof filas[number]) => {
   .ar-vacio { color: var(--muted); }
 
   /* Franja índice */
-  .ar-franja { display: flex; gap: 4px; margin: 8px 0 10px; }
+  .ar-franja { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 8px 0 12px; }
   /* Los tonos pálidos del semáforo con un filete del color fuerte, como los
      tramos de la barra de nivel del Resumen: nunca un bloque macizo. */
   .ar-franja-mes {
-    flex: 1 1 0; min-width: 0; max-width: 120px; padding: 10px 8px 8px;
-    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    min-width: 0; padding: 12px 14px 10px;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
     border-radius: 4px; text-decoration: none; color: var(--dark);
     background: var(--bg-tint); border-bottom: 4px solid var(--bd);
     transition: transform .12s ease, box-shadow .12s ease;
   }
   .ar-franja-mes:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(27,46,60,.18); text-decoration: none; }
-  .ar-franja-m { font-family: var(--ff-ui); font-weight: 600; font-size: 14px; text-transform: capitalize; }
-  .ar-franja-a { font-family: var(--ff-dato); font-size: 11px; opacity: .85; }
+  .ar-franja-m { font-family: var(--ff-ui); font-weight: 600; font-size: 13px; text-transform: capitalize; }
+  .ar-franja-a { font-weight: 400; color: var(--muted); }
+  .ar-franja-n { font-family: var(--ff-dato); font-weight: 700; font-size: 26px; line-height: 1.1; color: var(--dark); font-variant-numeric: tabular-nums; }
+  .ar-franja-l { font-size: 12px; color: var(--muted); }
   .ar-franja-mes.sem-verde { background: var(--verde-soft); border-bottom-color: var(--sem-verde); }
   .ar-franja-mes.sem-amarillo { background: var(--amarillo-soft); border-bottom-color: var(--sem-amarillo); }
   .ar-franja-mes.sem-naranja { background: var(--naranja-soft); border-bottom-color: var(--sem-naranja); }
@@ -194,8 +202,8 @@ const titular = (f: typeof filas[number]) => {
   .ar-tabla { border-top: 2px solid var(--dark); }
   .ar-cab, .ar-fila > summary {
     display: grid;
-    grid-template-columns: 170px minmax(170px, 1.3fr) repeat(4, minmax(90px, 1fr)) 120px 70px;
-    align-items: center; gap: 0 8px; padding: 0 12px;
+    grid-template-columns: 120px minmax(170px, 1.4fr) repeat(4, minmax(100px, 1fr)) 90px 52px;
+    align-items: center; gap: 0 26px; padding: 0 12px;
   }
   .ar-cab { padding-top: 10px; padding-bottom: 10px; font-family: var(--ff-ui); font-size: 11px; font-weight: 600;
             letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--bd); }
@@ -207,18 +215,27 @@ const titular = (f: typeof filas[number]) => {
   .ar-fila > summary:hover { background: var(--fondo-hover, #FAFDFE); }
   .ar-fila[open] > summary { background: var(--bg-tint); }
   .ar-mes { font-family: var(--ff-titulo); font-weight: 700; font-size: 17px; color: var(--dark); display: flex; align-items: center; gap: 8px; }
+  .ar-mes-t { display: flex; flex-direction: column; line-height: 1.15; }
+  .ar-mes-n { text-transform: capitalize; }
+  .ar-mes-a { font-family: var(--ff-ui); font-weight: 400; font-size: 12px; color: var(--muted); }
+  /* Barra del Resumen + el número, alineados en una línea. */
+  .ar-barra { display: flex; align-items: center; gap: 8px; }
+  .ar-barra > :global(.cg-nivel) { flex: 1 1 auto; min-width: 0; margin: 0; }
+  .ar-barra > :global(.cg-nivel) :global(.cg-nivel-cap) { display: none; }
+  .ar-n { flex: none; min-width: 2.2em; text-align: right; font-family: var(--ff-dato); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .ar-n-g { font-size: 16px; font-weight: 700; color: var(--dark); }
   .ar-mes::before { content: "▸"; font-size: 11px; color: var(--muted); transition: transform .15s; }
   .ar-fila[open] .ar-mes::before { transform: rotate(90deg); }
   .ar-hito { color: var(--naranja); font-size: 14px; }
   .ar-num { text-align: right; font-family: var(--ff-dato); font-variant-numeric: tabular-nums; }
   .ar-score { font-weight: 700; font-size: 16px; color: var(--dark); display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
-  .ar-c { text-align: center; }
+  .ar-c { text-align: left; }
   .ar-celda { display: block; height: 28px; border-radius: 3px; background: var(--bd); }
   .ar-celda.sem-verde { background: var(--sem-verde); }
   .ar-celda.sem-amarillo { background: var(--sem-amarillo); }
   .ar-celda.sem-naranja { background: var(--sem-naranja); }
   .ar-celda.sem-rojo { background: var(--sem-rojo); }
-  .ar-fila .ar-riesgo { font-size: 14px; color: var(--dark); text-transform: capitalize; }
+  .ar-fila .ar-riesgo { font-size: 14px; color: var(--dark); }
   .ar-fila .ar-delta { font-size: 13px; color: var(--muted); }
   .ar-delta .sube { color: var(--naranja); }
   .ar-delta .baja { color: var(--verde); }
@@ -242,7 +259,8 @@ const titular = (f: typeof filas[number]) => {
   /* Celular: mes, tensión y las cuatro celdas; el resto va al desplegable. */
   @media (max-width: 720px) {
     /* Celular: el mes y la barra general; los cuatro cinturones van al desplegable. */
-    .ar-cab, .ar-fila > summary { grid-template-columns: 110px 1fr; gap: 0 10px; padding-left: 8px; padding-right: 8px; }
+    .ar-cab, .ar-fila > summary { grid-template-columns: 116px 1fr; gap: 0 10px; padding-left: 8px; padding-right: 8px; }
+    .ar-franja { grid-template-columns: repeat(2, 1fr); }
     .ar-riesgo, .ar-delta, .ar-c { display: none; }
     .ar-mes { font-size: 15px; }
     .ar-celda { height: 22px; }

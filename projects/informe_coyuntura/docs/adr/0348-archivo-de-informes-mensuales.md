@@ -91,9 +91,29 @@ datos de hoy. Junio salía súper tensionado por esas dos razones, no por la coy
   «Dato pendiente»; si el mes tiene informe completo verificado, se toma de él.
   Por eso septiembre muestra Macro y Gestión aunque la serie todavía no los cubra.
 - El informe completo de un mes (`pagina`) se publica sólo si la reconstrucción
-  no tiene datos posteriores al mes. Hoy lo tiene septiembre; junio, julio y
-  agosto quedan en la tabla sin enlace hasta reconstruirlos desde las series
-  cortadas a fin de mes.
+  no tiene datos posteriores al mes.
+
+### Cada mes, desde los datos de hoy cortados a fin de mes (7-oct-2026)
+
+`archivo.py construir` (modo por defecto; `ARCHIVO_DESDE=corrida` vuelve al de
+los crudos de la corrida) toma el código **y los datos de hoy** y los corta al
+último día del mes:
+
+- Las series (`output/series/*.csv`, `web/src/data/series.json` y el histórico)
+  quedan hasta ese mes.
+- Cada card toma el **último punto de su serie hasta fin de mes**, que es lo que
+  la card mostraba ese día (el gate G3 exige card = último punto). Pierde el
+  desglose del día (`detalle_txt`, inventarios, cotizaciones), que describe hoy
+  y no el mes. Una card sin ningún punto hasta ese mes no aparece.
+- El bloque de Impacto social, que se arma desde el crudo del colector, se corta
+  igual dentro de `publicar.py`, y no se arrastra nada del snapshot de hoy.
+- El reloj queda en el último día del mes a las 23 h.
+
+Así se reconstruyeron junio, julio, agosto y septiembre, ninguno con datos
+posteriores a su mes: 3,6 · 3,7 · 3,7 · 3,7 de tensión general. La tabla muestra
+los números de cada informe, así coinciden con lo que se ve al abrirlo, y el
+riesgo dominante se nombra por el cinturón que lo produce, como en el inicio
+(ADR-0237).
 
 ### Consecuencias
 
