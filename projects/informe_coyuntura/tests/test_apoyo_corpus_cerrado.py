@@ -35,8 +35,14 @@ def _caso(fecha, postura):
 @pytest.fixture
 def registro(tmp_path, monkeypatch):
     cod = tmp_path / "cod.json"
-    cod.write_text(json.dumps({"casos": [_caso("2025-06-02", "apoyo"), _caso("2026-03-10", "critica"),
-                                         _caso("2026-07-14", "apoyo")]}))
+    # Cada corte que estos tests afirman —2025-12, 2026-07, 2026-09— necesita al
+    # menos APOYO_MIN_OBSERVACIONES computables en SU ventana de doce meses
+    # (ADR-0335). Antes alcanzaba con tres casos en total; ahora el fixture tiene
+    # que ser realista o los tests medirían el mínimo en vez del corte.
+    cod.write_text(json.dumps({"casos": [
+        _caso("2025-02-11", "critica"), _caso("2025-06-02", "apoyo"),
+        _caso("2025-10-08", "critica"), _caso("2025-11-19", "apoyo"),
+        _caso("2026-03-10", "critica"), _caso("2026-07-14", "apoyo")]}))
     nov = tmp_path / "nov.json"
     nov.write_text(json.dumps({"pendientes": {}, "revisadas": {}}))
     monkeypatch.setattr(politica, "APOYO_CODIFICACION_PATH", cod)
@@ -108,7 +114,9 @@ def test_sin_comprobar_el_inventario_este_mes_no_avanza(registro):
 
 def test_la_card_cortada_se_declara_desactualizada_y_no_cuenta_lo_posterior(registro, tmp_path, monkeypatch):
     cod = tmp_path / "cod2.json"
-    cod.write_text(json.dumps({"casos": [_caso("2026-03-10", "critica"),
+    cod.write_text(json.dumps({"casos": [_caso("2025-10-08", "critica"),
+                                         _caso("2025-12-05", "apoyo"),
+                                         _caso("2026-03-10", "critica"),
                                          _caso("2026-07-14", "apoyo"),
                                          _caso("2026-09-01", "apoyo")]}))
     monkeypatch.setattr(politica, "APOYO_CODIFICACION_PATH", cod)
@@ -116,7 +124,9 @@ def test_la_card_cortada_se_declara_desactualizada_y_no_cuenta_lo_posterior(regi
     _pendiente(registro, "2026-08-20")
     card = politica.fetch_apoyo_empresario()
     assert card["fecha_dato"] == "2026-07-01" and card["desactualizado"] is True
-    assert card["comunicados_ventana"] == 2        # el apoyo de septiembre no descompone el saldo de julio
+    # Los cuatro de la ventana jul-2025..jul-2026, y NO el apoyo de septiembre:
+    # eso es lo que este test cuida, que un comunicado posterior al corte no entre.
+    assert card["comunicados_ventana"] == 4
 
 
 @pytest.mark.parametrize("cae,verificado", [(None, "2026-09-14"), ("uia", "2026-06-30"), ("aea", "2026-06-30")])

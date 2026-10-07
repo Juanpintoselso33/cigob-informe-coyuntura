@@ -220,6 +220,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0330](0330-bloqueo-sostenido-sale-del-indice-y-del-tablero.md) | bloqueo_sostenido sale del índice y del tablero: enmudecer en el extremo no es una card | `bloqueo_sostenido`, `desafios_legislativos` | vigente |
 | [0332](0332-una-camara-que-calla-no-dispara-nada.md) | Una cámara que calla no dispara nada, y el saldo sigue saliendo | `apoyo_empresario` | vigente |
 | [0334](0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md) | AEA sale del perímetro y el rótulo dice lo que mide | `apoyo_empresario` | vigente |
+| [0335](0335-el-saldo-empresario-necesita-tres-comunicados.md) | El saldo empresario necesita al menos tres comunicados | `apoyo_empresario` | vigente |
 
 ### Gestión (ITCG)
 

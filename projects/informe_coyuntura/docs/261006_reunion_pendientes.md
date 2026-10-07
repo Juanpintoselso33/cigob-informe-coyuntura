@@ -162,8 +162,8 @@ Decidido (Juan, 6-oct):
   deploy, aunque solo dejaría entrar a quienes estén en el equipo de Vercel.
 - **El muro de acceso (punto 1) va sobre el mensual.**
 
-Falta definir:
+Decidido (Juan, 7-oct): el mensual lleva **los datos y la lectura editorial del equipo**
+(el lugar ya existe: `web/src/contenido/lectura-del-mes/<mes>.md`; sin texto, va la síntesis
+automática). Comparación con el mes anterior y descargas, después.
 
-- **Qué día del mes siguiente** se publica (se define más adelante).
-- **Qué lleva el mensual además de los datos**: texto de análisis, comparación con el mes
-  anterior, el PDF o el informe en un solo archivo (`emitir-artifact.mjs`).
+Falta definir, **más adelante** (no es decisión de ahora): qué día del mes siguiente se publica.

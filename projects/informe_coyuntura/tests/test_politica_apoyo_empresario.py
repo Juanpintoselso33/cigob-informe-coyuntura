@@ -106,13 +106,18 @@ def test_la_serie_no_empieza_antes_del_periodo_y_es_mensual_ascendente():
     fechas = [f for f, _ in serie]
     # NUNCA antes de la asunción: ahí arranca el período que el indicador mide.
     assert fechas[0] >= f"{politica.APOYO_DESDE}-01", "la serie se fue antes del período"
-    # Puede arrancar DESPUÉS, y desde ADR-0334 arranca: con AEA fuera del
-    # perímetro el corpus es el de UIA, cuyo primer comunicado es de dic-2023, así
-    # que la primera ventana móvil de doce meses con comunicados computables cae
-    # en abr-2024. Antes empezaba en dic-2023 porque AEA traía historia de 2020.
-    assert fechas[0] == "2024-04-01", (
+    # Puede arrancar DESPUÉS, y arranca, por dos recortes acumulados: con AEA
+    # fuera del perímetro el corpus es el de UIA, cuyo primer comunicado es de
+    # dic-2023 (ADR-0334), y un mes se publica sólo si su ventana tiene al menos
+    # APOYO_MIN_OBSERVACIONES computables (ADR-0335). La primera ventana que
+    # cumple las dos cosas cae en ago-2024; antes de ADR-0334 empezaba en dic-2023
+    # porque AEA traía historia de 2020.
+    assert fechas[0] == "2024-08-01", (
         "cambió el arranque de la serie: si se repuso AEA en APOYO_CAMARAS_PERIMETRO "
-        "vuelve a 2023-12-01 y hay que revisar ADR-0334")
+        "o se bajó APOYO_MIN_OBSERVACIONES, revisar ADR-0334 y ADR-0335")
+    # Y ningún punto publicado puede salir de una ventana por debajo del mínimo.
+    card = politica.fetch_apoyo_empresario()
+    assert card["comunicados_ventana"] >= politica.APOYO_MIN_OBSERVACIONES
     assert fechas == sorted(fechas) and len(fechas) == len(set(fechas))
     # Sin exigir un largo: el corte por pendientes (ADR-0310) acorta la serie
     # legítimamente el día que haya un comunicado atrasado sin codificar.

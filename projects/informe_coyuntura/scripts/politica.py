@@ -2132,6 +2132,14 @@ APOYO_DESDE = "2023-12"        # arranque del período (asunción Milei)
 # Sus 46 comunicados codificados NO se borran —siguen en el registro y la guarda
 # de ADR-0332 la sigue vigilando—, así que reponerla es volver a nombrarla acá.
 APOYO_CAMARAS_PERIMETRO = ("UIA",)
+
+# Mínimo de comunicados computables en la ventana móvil para publicar el saldo
+# (ADR-0335). El saldo es (apoyos − críticas) / (apoyos + críticas): con dos
+# observaciones sólo puede valer −1, 0 o +1, así que su precisión aparente —tres
+# decimales— no existe. Nació con el recorte de ADR-0334: con las dos cámaras
+# había un mes frágil de 34 y con una sola quedaban nueve de treinta, los tres
+# primeros en −1,0 sobre dos comunicados.
+APOYO_MIN_OBSERVACIONES = 3
 def apoyo_empresario_serie() -> list:
     """Saldo de postura empresaria hacia el Ejecutivo nacional, ventana móvil
     de 12 meses: (apoyos − críticas) / (apoyos + críticas).
@@ -2173,7 +2181,7 @@ def apoyo_empresario_serie() -> list:
         ini, fin = f"{y - 1:04d}-{m:02d}-01", f"{y:04d}-{m:02d}-31"
         v = [p for f, p in comp if ini <= f <= fin]
         a, c = v.count("apoyo"), v.count("critica")
-        if a + c:
+        if a + c >= APOYO_MIN_OBSERVACIONES:
             out.append([f"{y:04d}-{m:02d}-01", round((a - c) / (a + c), 3)])
         m += 1
         if m == 13:

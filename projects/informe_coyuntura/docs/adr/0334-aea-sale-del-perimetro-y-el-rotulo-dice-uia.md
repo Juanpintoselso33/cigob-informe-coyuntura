@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [apoyo_empresario]
 archivos: ['scripts/politica.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/fichas.ts']
-relacionado: ['0310', '0332']
+relacionado: ['0310', '0332', '0335']
 ambito: 'Cinturón política · ITCP · `apoyo_empresario` · qué cámaras entran al cálculo y cómo se llama la card'
 origen: 'Juan, 20-sep-2026, después de que ADR-0332 midiera el silencio de AEA: «sacale AEA al rótulo entonces, que diga solo UIA».'
 ---
