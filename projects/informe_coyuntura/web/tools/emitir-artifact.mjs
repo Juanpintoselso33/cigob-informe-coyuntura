@@ -65,7 +65,14 @@ const APEX_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.54.1/apexc
 
 /** Las ~70 fichas de metodología son 1,2 MB aparte: van sólo si se piden. */
 const CON_FICHAS = args.includes('--con-fichas');
+// `--sin-aviso`: sin el renglón «Archivo único y autocontenido…». Lo usa el
+// archivo de meses del sitio (scripts/archivo.py), donde el lector llega desde
+// el Monitor y el aviso sobra; en el informe que se reparte suelto sí va.
+const SIN_AVISO = args.includes('--sin-aviso');
 const EXCLUIDAS = new Set((opcion('sin', '') || '').split(',').map(s => s.trim()).filter(Boolean));
+// El archivo de meses (/archivo/, ADR-0348) no va nunca adentro de un informe en
+// un solo archivo: son otras ediciones, y sus enlaces no se pueden empotrar.
+EXCLUIDAS.add('archivo');
 
 if (!fs.existsSync(DIST)) {
   console.error('✗ falta web/dist/. Corré primero:  npm run build');
@@ -433,7 +440,7 @@ const html = `<!DOCTYPE html>
 </head>
 <body>
 ${nav}
-<p class="cg-artifact-aviso">${aviso}</p>
+${SIN_AVISO ? "" : `<p class="cg-artifact-aviso">${aviso}</p>`}
 ${cuerpo}
 ${LITE ? `<script src="${APEX_CDN}"></script>` : ''}
 ${modulos.map(m => `<script type="module">${m.src}</script>`).join('\n')}

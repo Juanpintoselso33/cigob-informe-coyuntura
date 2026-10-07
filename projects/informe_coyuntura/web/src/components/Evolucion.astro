@@ -37,15 +37,15 @@ const trayectorias = CINTURONES
   })
   .filter((x): x is NonNullable<typeof x> => !!x);
 ---
+{/* Sin serie no hay sección: un cartel de «en construcción» no le dice nada a
+    quien lee (pedido de Juan, 7-oct-2026, al verlo en el archivo de junio). */}
+{trayectorias.length > 0 && (
 <section class="cg-section" id="evolucion">
   <div class="cg-section-head">
     <p class="cg-eyebrow">Cómo va la película</p>
     <h2 class="cg-h2">El índice de cada cinturón, mes a mes</h2>
     <p class="cg-h2-sub">El índice de cada cinturón desde diciembre de 2023. En los cuatro, subir es mejorar: el de impacto social toma 100 como el nivel de fines de 2023 y los otros tres van de 0 a 100.</p>
   </div>
-  {trayectorias.length === 0 ? (
-    <div class="cg-chart-card"><p class="cg-chart-sub">Histórico en construcción: se necesita más de un período para graficar tendencias.</p></div>
-  ) : (
     <div class="cg-chart-grid" id="cg-chart-grid">
       {trayectorias.map(t => (
         <div class:list={["cg-chart-mini-card", t.meta.slug]}>
@@ -68,6 +68,6 @@ const trayectorias = CINTURONES
         </div>
       ))}
     </div>
-  )}
   <p class="cg-evolucion-nota">Series reconstruidas con los datos disponibles en cada mes, sin ajustes del analista. Los componentes con datos pueden cambiar entre meses: las variaciones combinan cambios de valores y de cobertura. El nivel puede diferir del informe publicado en su momento.</p>
 </section>
+)}

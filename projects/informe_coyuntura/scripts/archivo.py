@@ -74,7 +74,8 @@ def _empaquetar(web: Path, emisor: Path) -> Path | None:
     if not destino.exists():
         destino.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(emisor, destino)
-    r = _run(["node", "tools/emitir-artifact.mjs"], web, env)
+    # --sin-aviso: en el archivo del sitio no va el renglón del informe suelto.
+    r = _run(["node", "tools/emitir-artifact.mjs", "--sin-aviso"], web, env)
     html = web / "dist-artifact" / "informe-artifact.html"
     if r.returncode or not html.exists():
         print(f"    ✗ emisor: {(r.stderr or r.stdout)[-400:]}")
@@ -150,7 +151,10 @@ def construir(mes: str) -> dict:
             proyecto = arbol / "projects" / "informe_coyuntura"
             py = RAIZ / "projects" / "informe_coyuntura" / ".venv" / "bin" / "python"
             env = {"ARCHIVO_AHORA": ahora, "PYTHONPATH": str(reloj), "PYTHONDONTWRITEBYTECODE": "1"}
-            for script in ("scripts/generar_informe.py", "scripts/publicar.py"):
+            # El mismo orden que el pipeline: validacion_externa arma la serie
+            # mensual de cada índice («Cómo va la película»); sin ella, el mes
+            # salía con la sección vacía.
+            for script in ("scripts/validacion_externa.py", "scripts/generar_informe.py", "scripts/publicar.py"):
                 r = _run([str(py), script], proyecto, env)
                 if r.returncode:
                     raise SystemExit(f"{mes}: {script} falló:\n{(r.stderr or r.stdout)[-1500:]}")
@@ -176,6 +180,9 @@ def construir(mes: str) -> dict:
             if fuera:
                 ruta_snap.write_text(json.dumps(snap, ensure_ascii=False, indent=1), encoding="utf-8")
                 print(f"    · sin card hoy, se quitan: {', '.join(fuera)}")
+            if os.environ.get("ARCHIVO_GUARDAR"):
+                destino_snap = Path(os.environ["ARCHIVO_GUARDAR"]) / f"{mes}.informe.json"
+                destino_snap.write_text(json.dumps(snap, ensure_ascii=False, indent=1), encoding="utf-8")
             if snap.get("period") != mes:
                 raise SystemExit(f"{mes}: la reconstrucción salió con period={snap.get('period')}")
             # La foto de un mes no lleva el archivo adentro: ni las fotos de los
