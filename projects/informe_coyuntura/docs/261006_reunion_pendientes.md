@@ -30,6 +30,10 @@ difusión que deja entrar directo, «con tu mail alcanza» y un solo dominio.
   datos), con consentimiento expreso o cláusulas contractuales.
 - **Ingreso con Google (One Tap)**, la opción 21 de la investigación: un toque en Android y el mail
   verificado.
+- **Marcar `muro_enviado` como evento clave en GA** (Administrar → Eventos → Eventos recientes →
+  estrella). El 7-oct se mandó un evento de prueba desde la torre (`modo=prueba`, porque esta Mac
+  bloquea Google Analytics en `/etc/hosts`); GA lo registró en tiempo real, pero la lista de eventos
+  recientes tarda hasta 24 h en mostrarlo.
 - **Probar de punta a punta el link de difusión** (`/r/` del bot → `/api/acceso` del Monitor)
   con la primera difusión real del Monitor; el tramo del Monitor ya se probó con un token real.
 
