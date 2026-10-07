@@ -49,8 +49,8 @@ datos se publican en HTML y JSON abiertos.
    un mail que el servidor rechaza por mal escrito se corrige.
 4. **Dónde se guardan los mails.** En Neon, la base del bot de WhatsApp
    (repo `cigob-bot`, tabla `lectores`, endpoint `POST /api/lector`), junto a
-   los contactos de la difusión. Dejar el mail no suscribe a nada; la política
-   de privacidad del bot lo dice.
+   los contactos de la difusión. Desde el 7-oct (Juan) los mails se guardan
+   también para difusión; la política de privacidad del bot lo dice.
 
 `PUBLIC_MURO=0` apaga el muro en el build. Lo usan el seguimiento diario interno
 (el muro va sobre el informe mensual) y el informe en un solo archivo, cuyo
