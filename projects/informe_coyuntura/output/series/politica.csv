@@ -1,39 +1,4 @@
 fecha,indicador,valor,unidad,fuente
-2026-10-01,votometro_ventaja_lla,4.3,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-09-01,votometro_ventaja_lla,4.3,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-08-01,votometro_ventaja_lla,4.3,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-07-01,votometro_ventaja_lla,4.3,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-06-01,votometro_ventaja_lla,4.0,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-05-01,votometro_ventaja_lla,4.5,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-04-01,votometro_ventaja_lla,6.9,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-03-01,votometro_ventaja_lla,13.3,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-02-01,votometro_ventaja_lla,12.8,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-01-01,votometro_ventaja_lla,13.0,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-12-01,votometro_ventaja_lla,11.0,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-11-01,votometro_ventaja_lla,7.7,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-10-01,votometro_ventaja_lla,6.8,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-09-01,votometro_ventaja_lla,6.3,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-08-01,votometro_ventaja_lla,9.2,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-07-01,votometro_ventaja_lla,10.2,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-06-01,votometro_ventaja_lla,11.3,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-05-01,votometro_ventaja_lla,10.2,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-04-01,votometro_ventaja_lla,11.0,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-03-01,votometro_ventaja_lla,10.1,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-02-01,votometro_ventaja_lla,10.1,pp (brecha LLA−PJ),Votómetro CIGOB
-2025-01-01,votometro_ventaja_lla,8.0,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-12-01,votometro_ventaja_lla,4.0,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-11-01,votometro_ventaja_lla,4.9,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-10-01,votometro_ventaja_lla,3.4,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-09-01,votometro_ventaja_lla,3.1,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-08-01,votometro_ventaja_lla,5.1,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-07-01,votometro_ventaja_lla,6.5,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-06-01,votometro_ventaja_lla,8.1,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-05-01,votometro_ventaja_lla,9.0,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-04-01,votometro_ventaja_lla,7.0,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-03-01,votometro_ventaja_lla,8.1,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-02-01,votometro_ventaja_lla,12.3,pp (brecha LLA−PJ),Votómetro CIGOB
-2024-01-01,votometro_ventaja_lla,14.2,pp (brecha LLA−PJ),Votómetro CIGOB
-2023-12-01,votometro_ventaja_lla,16.1,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-10-07,veto_quorum,10.0,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
 2026-09-30,veto_quorum,9.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
 2026-08-31,veto_quorum,9.1,% sesiones en minoría (12m móviles),Cámara de Diputados — índice oficial de sesiones
@@ -223,7 +188,7 @@ fecha,indicador,valor,unidad,fuente
 2026-08-23,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-06-09,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-04-09,movilizacion_cepa,46.0,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
-2026-01-01,judicializacion,1.74,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2026-01-01,judicializacion,1.73,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2025-01-01,judicializacion,1.72,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2024-01-01,judicializacion,1.97,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2023-01-01,judicializacion,1.52,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
@@ -861,17 +826,14 @@ fecha,indicador,valor,unidad,fuente
 2024-05-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-04-30,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-03-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-10-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
+2026-09-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2026-08-01,apoyo_empresario,-0.25,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2026-07-01,apoyo_empresario,-0.25,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2026-06-01,apoyo_empresario,-0.429,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2026-05-01,apoyo_empresario,-0.429,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2026-04-01,apoyo_empresario,-0.667,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2026-03-01,apoyo_empresario,-0.6,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
-2026-02-01,apoyo_empresario,0.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
-2026-01-01,apoyo_empresario,1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
-2025-12-01,apoyo_empresario,0.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
-2025-11-01,apoyo_empresario,0.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
-2025-10-01,apoyo_empresario,0.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2025-09-01,apoyo_empresario,0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2025-08-01,apoyo_empresario,0.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2025-07-01,apoyo_empresario,0.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
@@ -886,10 +848,6 @@ fecha,indicador,valor,unidad,fuente
 2024-10-01,apoyo_empresario,-0.5,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2024-09-01,apoyo_empresario,-0.5,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2024-08-01,apoyo_empresario,-1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
-2024-07-01,apoyo_empresario,-1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
-2024-06-01,apoyo_empresario,-1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
-2024-05-01,apoyo_empresario,-1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
-2024-04-01,apoyo_empresario,-1.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de la UIA — codificación CIGOB
 2026-10-07,alineamiento_senadores_prov,58.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-09-30,alineamiento_senadores_prov,58.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-08-31,alineamiento_senadores_prov,62.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB

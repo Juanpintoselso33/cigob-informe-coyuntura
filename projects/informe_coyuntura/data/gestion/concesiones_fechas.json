@@ -3,7 +3,7 @@
     "descripcion": "Hitos de adjudicación de la Red Federal de Concesiones (RFC) para reconstruir la serie del indicador concesiones_infraestructura como función escalonada (ADR-0012/0016). Sembrado con las fechas oficiales verificadas 2026-07-03; descargar_series.fetch_concesiones_serie agrega automáticamente las etapas nuevas cuando CONTRAT.AR las muestra ADJUDICADO (con el mes corriente) y refresca los km desde la página oficial de la RFC.",
     "regla": "% del mes = 100 × Σ km de etapas con fecha ≤ mes / km_totales"
   },
-  "km_totales": 9091,
+  "km_totales": 9133,
   "etapas": {
     "I": {
       "fecha": "2025-11",
@@ -17,7 +17,7 @@
     },
     "III": {
       "fecha": "2026-08",
-      "km": 3920.21,
+      "km": 3962.49,
       "fuente": "Resolución 1379 / 2026, BO 2026-08-24 — 504-0001-LPU26 (detectado por el Boletín; CONTRAT.AR informaba «Disponible Para Adjudicar»)"
     },
     "II-B": {

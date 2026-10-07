@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Política — resumen
 
-Este documento tiene una ficha por indicador — son 17 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 16 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,20 +35,19 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 71,2** | **VERDE** | Moderadamente aflojado | 17 indicadores: 13 en verde · 2 en amarillo · 1 en naranja · 1 en rojo |
-Componentes que puntúan en este corte: 17 de 17 publicados.
+| **ITCP: 73,4** | **VERDE** | Moderadamente aflojado | 16 indicadores: 13 en verde · 2 en amarillo · 1 en rojo |
+Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 66,5 | VERDE | 21,0 % |
-| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 80,7 | VERDE | 19,0 % |
-| Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 15,0 % |
-| Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,3 | AMARILLO | 15,0 % |
-| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 60,4 | VERDE | 13,0 % |
-| Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 78,6 | VERDE | 10,0 % |
-| Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 37,2 | NARANJA | 7,0 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 66,5 | VERDE | 22,6 % |
+| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 80,7 | VERDE | 20,4 % |
+| Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 16,1 % |
+| Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,3 | AMARILLO | 16,1 % |
+| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 57,8 | AMARILLO | 14,0 % |
+| Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 78,6 | VERDE | 10,8 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -63,129 +62,29 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Ratio DNU / leyes | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,06 DNUs publicados por ley publicada | VERDE | 4,8 % |
-| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 21,4 % de proyectos | VERDE | 6,3 % |
-| Sesiones caídas por falta de quórum | Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum… | 10 % de sesiones | VERDE | 3,1 % |
-| Normas desafiadas en el recinto | Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses. | 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | VERDE | 3,1 % |
-| Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. | 28 leyes sancionadas (12m) | AMARILLO | 3,6 % |
+| Ratio DNU / leyes | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,06 DNUs publicados por ley publicada | VERDE | 5,2 % |
+| Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 21,4 % de proyectos | VERDE | 6,8 % |
+| Sesiones caídas por falta de quórum | Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum… | 10 % de sesiones | VERDE | 3,4 % |
+| Normas desafiadas en el recinto | Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses. | 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | VERDE | 3,4 % |
+| Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. | 28 leyes sancionadas (12m) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
-| Armonía federal (transferencias) | Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante un… | 1,6 % interanual real | VERDE | 7,6 % |
-| Adhesión provincial al RIGI | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 5,7 % |
-| Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 58,6 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 5,7 % |
+| Armonía federal (transferencias) | Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante un… | 1,6 % interanual real | VERDE | 8,2 % |
+| Adhesión provincial al RIGI | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 6,1 % |
+| Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 58,6 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 6,1 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
-| Cohesión del bloque LLA (bicameral) | Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones divididas de los últimos 90 días de ambas… | 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | VERDE | 15,0 % |
+| Cohesión del bloque LLA (bicameral) | Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones divididas de los últimos 90 días de ambas… | 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | VERDE | 16,1 % |
 | **DIMENSIÓN: Poder judicial** | | | | |
-| Tasa de resolución de la Corte | Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los que le ingresan. | 45,4 % de expedientes resueltos sobre ingresados | VERDE | 3,8 % |
-| Actividad de las comisiones de control | Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las… | 13 sesiones de las comisiones de control (12m) | ROJO | 3,8 % |
-| Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,93 % estimado de cargos con juez designado | VERDE | 7,5 % |
+| Tasa de resolución de la Corte | Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los que le ingresan. | 45,4 % de expedientes resueltos sobre ingresados | VERDE | 4,0 % |
+| Actividad de las comisiones de control | Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las… | 13 sesiones de las comisiones de control (12m) | ROJO | 4,0 % |
+| Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,93 % estimado de cargos con juez designado | VERDE | 8,1 % |
 | **DIMENSIÓN: Sector privado** | | | | |
-| Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,8 pp de brecha (obra pública − privada, 12m) | VERDE | 6,5 % |
-| Postura pública de la UIA | Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del… | −0,25 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 6,5 % |
+| Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,8 pp de brecha (obra pública − privada, 12m) | VERDE | 7,0 % |
+| Postura pública de la UIA | Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del… | −0,33 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 7,0 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
-| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −27,3 % vs 2023 | VERDE | 6,0 % |
-| Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.820.775 jornadas individuales no trabajadas (12m) | VERDE | 4,0 % |
-| **DIMENSIÓN: Imagen y voto** | | | | |
-| Ventaja LLA−PJ | La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles. | 4,3 Puntos porcentuales | NARANJA | 7,0 % |
+| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −27,3 % vs 2023 | VERDE | 6,5 % |
+| Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.820.775 jornadas individuales no trabajadas (12m) | VERDE | 4,3 % |
 
 *Datos al 2026-10-07.*
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
-
-# Ventaja LLA−PJ
-
-La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: 4,3 Puntos porcentuales** (2026-07) | **NARANJA** | Peso efectivo 7 % del ITCP | Cinturón Política |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | votometro_ventaja_lla | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Imagen y voto | **UNIDAD DE MEDIDA** | Puntos porcentuales |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | El Votómetro se actualiza cuando las consultoras publican encuestas nuevas (cadencia irregular, típicamente semanas); el informe recalcula la ventaja todos los días con lo cargado. |
-| **PRODUCTOR DEL DATO** | Fundación CIGOB — Votómetro | **OPERACIÓN ESTADÍSTICA** | Agregador de encuestas de intención de voto: sondeos incluidos en la curaduría desde diciembre de 2023, con calificación de calidad por consultora; no acredita exhaustividad de todos los estudios publicados |
-| **MODO DE ACCESO** | Automático: lee el listado de encuestas que publica el Votómetro; si el sitio no responde, usa la última copia local. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-07 |
-
-## Definición — qué mide y por qué importa
-
-La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles.
-
-Mide el capital electoral del oficialismo, base de su poder de negociación.
-
-**Dimensión que integra — Imagen y voto.** La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.
-
-## Método de cómputo
-
-- Solo cuentan las encuestas de los últimos 60 días desde el sondeo más reciente.
-- Cada encuesta pondera por recencia (el peso decae con los días) y por la calificación de calidad de la consultora (A pesa 3, B pesa 2, C pesa 1).
-- El indicador es la diferencia LLA − PJ de esas intenciones ponderadas, en puntos porcentuales.
-
-## Semáforo — valores que determinan el color
-
-Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
-
-**Valores que definen cada color**
-
-| Rango (Puntos porcentuales) | Color |
-|---|---|
-| ≥ 8 | VERDE |
-| 5 – 8 | AMARILLO |
-| 0 – 5 | NARANJA |
-| ≤ 0 | ROJO |
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- El informe publica el valor (4,3 Puntos porcentuales) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
-
-## Color vigente y por qué
-
-Dato vigente: 4,3 Puntos porcentuales (2026-07).
-
-4,3 Puntos porcentuales cae en el tramo que corresponde a Naranja, a 0,7 del corte más cercano.
-
-**Color vigente: NARANJA**
-
-Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-- **Participación en otros indicadores.** El mismo dato alimentó el indicador de clima electoral del antiguo cinturón espíritu de época. Ese cinturón salió del monitor el 14 de agosto de 2026, eliminando el segundo aporte de este indicador al índice global.
-
-## Transparencia — limitaciones declaradas
-
-- La fuente es una curaduría propia de encuestas de terceros, no un registro oficial.
-- Sin encuestas nuevas ni revisiones, el valor permanece constante: todos los pesos exponenciales reciben el mismo factor diario, que se cancela al normalizar. La ventana de 60 días está anclada en el último sondeo, no en el día de consulta.
-- El monitor usa recencia y calidad sobre sondeos de espacios políticos. No reproduce el modelo completo de cinco factores, candidatos y simulaciones del Votómetro; su ventaja no equivale a una probabilidad electoral ni sirve como validación externa independiente del propio CIGOB.
-- Si pasan más de 60 días sin sondeos, el indicador se marca como desactualizado.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Si la lectura falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.
-
-- **Política de revisiones:** La serie mensual completa se rederiva de las encuestas en cada actualización: un sondeo cargado con retraso corrige los meses que toca. No es un archivo de lo conocido en cada fecha. La serie evalúa el mismo esquema al cierre de cada mes; consultar otro día no cambia por sí solo el promedio. Titular e historia pueden diferir en una décima por el orden de redondeo de LLA y PJ.
-
-## Historial — cambios metodológicos documentados
-
-**2026-05** — Incorporado al cinturón político como medida del capital electoral del oficialismo.
-
-**2026-06-30** — Serie mensual reconstruida hacia atrás hasta diciembre de 2023, evaluando la misma ponderación al cierre de cada mes.
-
-**2026-07-07** — Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores.
-
-**2026-09-15** — El rótulo de la card pasa de «Ventaja LLA−PJ (Votómetro)» a «Ventaja LLA−PJ». Se saca «Votómetro» por nombrar el método, no el dato; LLA y PJ se conservan porque son las siglas públicas de las fuerzas.
-
-**2026-09-15** — Corrige la decisión anterior: anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El indicador conserva el rango 0-100 (una quinta banda arriba de +8 pp evita bajar el techo a 60, como hacía la primera versión de este ADR).
-
-**2026-09-22** — Las encuestas se leen de la edición vigente del Votómetro en la web de CiGob, donde se publica por ediciones mensuales desde el 16 de septiembre de 2026. El sitio anterior queda como respaldo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -201,7 +100,7 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,06 DNUs publicados por ley publicada** (2026-10) | **VERDE** | Peso efectivo 4,8 % del ITCP | Cinturón Política |
+| **Hoy: 1,06 DNUs publicados por ley publicada** (2026-10) | **VERDE** | Peso efectivo 5,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -255,7 +154,7 @@ Dato vigente: 1,06 DNUs publicados por ley publicada (2026-10).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 4,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -303,7 +202,7 @@ La diferencia entre lo que esperan las empresas constructoras que trabajan para 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −1,8 pp de brecha (obra pública − privada, 12m)** (2026-08) | **VERDE** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
+| **Hoy: −1,8 pp de brecha (obra pública − privada, 12m)** (2026-08) | **VERDE** | Peso efectivo 7 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -357,7 +256,7 @@ Dato vigente: −1,8 pp de brecha (obra pública − privada, 12m) (2026-08).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -398,7 +297,7 @@ Qué dice en público, por escrito y con firma institucional, la Unión Industri
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,25 saldo de postura (−1 a +1, 12m móviles)** (2026-08) | **AMARILLO** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
+| **Hoy: −0,33 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **AMARILLO** | Peso efectivo 7 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -406,9 +305,9 @@ Qué dice en público, por escrito y con firma institucional, la Unión Industri
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_empresario | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2024-04 → 2026-08 (29 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
+| **SERIE DISPONIBLE** | 2024-08 → 2026-10 (22 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Unión Industrial Argentina (UIA) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de ambas entidades |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-07 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-07 |
 
 ## Definición — qué mide y por qué importa
 
@@ -443,17 +342,17 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses la UIA se pronunció 8 veces sobre medidas del Gobierno nacional: 3 de apoyo y 5 de crítica. Saldo −0,25 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 2 comunicados detectados sin codificar.
+- En los últimos doce meses la UIA se pronunció 9 veces sobre medidas del Gobierno nacional: 3 de apoyo y 6 de crítica. Saldo −0,333 en una escala de −1 (todo crítica) a +1 (todo apoyo).
 
 ## Color vigente y por qué
 
-Dato vigente: −0,25 saldo de postura (−1 a +1, 12m móviles) (2026-08).
+Dato vigente: −0,33 saldo de postura (−1 a +1, 12m móviles) (2026-10).
 
-−0,25 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,15 del corte más cercano.
+−0,333 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,07 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -482,6 +381,8 @@ Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicion
 
 **2026-09-20** — La Asociación Empresaria Argentina sale del cálculo y el indicador pasa a llamarse por la cámara que efectivamente mide, la Unión Industrial. El motivo es que dejó de publicar comunicados el 31 de marzo de 2026 y el rótulo prometía dos cámaras midiendo una: de los diez comunicados que entraban en el promedio de los últimos doce meses, nueve eran de la Unión Industrial y uno solo de la otra. El recorte tiene un costo y conviene decirlo: la serie pasa de treinta y cuatro meses a treinta y empieza en abril de 2024 en vez de diciembre de 2023, porque la Unión Industrial tiene menos historia relevada. El saldo del mes pasa de −0,20 a −0,333. Queda un punto flojo anotado a propósito: con una sola cámara, nueve de los treinta meses quedan con uno o dos comunicados en su ventana y los primeros dan −1,0 sobre dos, una base demasiado chica para leerla como una postura. Los comunicados de la Asociación Empresaria quedan guardados y clasificados; si vuelve a publicar, vuelve a entrar al cálculo.
 
+**2026-10-07** — Un mes se publica sólo si su ventana de doce meses tiene al menos tres comunicados computables. Con dos, el saldo sólo puede valer −1, 0 o +1, y así salían los primeros meses: −1,0 sobre dos comunicados. La serie pasa de veintinueve meses a veinte y arranca en agosto de 2024; los meses sin base quedan como huecos en vez de rellenarse. El dato vigente no cambia: agosto de 2026, −0,25.
+
 **2026-09-20** — Se agrega un aviso para cuando una de las dos cámaras deja de publicar. Al clasificar cuatro comunicados que estaban pendientes se midió de dónde salen los datos que sostienen el saldo, y apareció que la Asociación Empresaria Argentina no emite un comunicado desde el 31 de marzo: ciento setenta y tres días, cuando su pausa más larga hasta entonces había sido de ciento cincuenta y cuatro. De los diez comunicados que entran en el promedio de los últimos doce meses, nueve son de la Unión Industrial y uno solo de la otra cámara. Nada lo advertía: las dos verificaciones que ya existían comprueban que no queden comunicados sin clasificar y que las dos páginas respondan, y una cámara cuya página contesta sin publicar novedades pasa las dos sin activarlas. Desde ahora el sistema avisa cuando el silencio de una cámara supera su propia pausa más larga, un umbral que se calcula solo y es distinto para cada una porque publican a ritmos muy diferentes. El saldo, el peso y la banda no cambian: que una cámara calle es un hecho del mundo y no un error de cálculo, y si el silencio resulta definitivo, cambiar qué mide el indicador será otra decisión.
 
 **2026-08-25** — Se completa la despublicación. El artefacto crudo del informe lo seguía declarando componente vigente del índice político después de haber salido del índice, porque el colector de Política no marcaba las suspensiones y su respaldo las leía de la tabla de bandas, que a propósito no se borra. Desde ahora todo indicador suspendido se publica como archivo y no como componente: conserva su último valor, su fuente, su fecha y la dimensión donde pesaba, y pierde el estado activo, el peso y el puntaje, que pasan a ser un bloque con el motivo de la suspensión y su condición de reingreso. La marca la pone el generador del informe recorriendo la tabla de suspendidos de cada índice, así que no depende de que cada colector se acuerde.
@@ -500,7 +401,7 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −27,3 % vs 2023** (2026-09) | **VERDE** | Peso efectivo 6 % del ITCP | Cinturón Política |
+| **Hoy: −27,3 % vs 2023** (2026-09) | **VERDE** | Peso efectivo 6,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -553,7 +454,7 @@ Dato vigente: −27,3 % vs 2023 (2026-09).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -591,7 +492,7 @@ Cuántas jornadas individuales de trabajo se perdieron por paros en todo el paí
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 4.820.775 jornadas individuales no trabajadas (12m)** (2026-07) | **VERDE** | Peso efectivo 4 % del ITCP | Cinturón Política |
+| **Hoy: 4.820.775 jornadas individuales no trabajadas (12m)** (2026-07) | **VERDE** | Peso efectivo 4,3 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -644,7 +545,7 @@ Dato vigente: 4.820.775 jornadas individuales no trabajadas (12m) (2026-07).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 4,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -678,7 +579,7 @@ Cuánto varían, en términos reales, los recursos de origen nacional que la Nac
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,6 % interanual real** (2025-12) | **VERDE** | Peso efectivo 7,6 % del ITCP | Cinturón Política |
+| **Hoy: 1,6 % interanual real** (2025-12) | **VERDE** | Peso efectivo 8,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -733,7 +634,7 @@ Dato vigente: 1,6 % interanual real (2025-12).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 7,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 8,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -780,7 +681,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 21,4 % de proyectos** (2026-10) | **VERDE** | Peso efectivo 6,3 % del ITCP | Cinturón Política |
+| **Hoy: 21,4 % de proyectos** (2026-10) | **VERDE** | Peso efectivo 6,8 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -835,7 +736,7 @@ Dato vigente: 21,4 % de proyectos (2026-10).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 6,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 6,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -885,7 +786,7 @@ Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 10 % de sesiones** (2026-10) | **VERDE** | Peso efectivo 3,1 % del ITCP | Cinturón Política |
+| **Hoy: 10 % de sesiones** (2026-10) | **VERDE** | Peso efectivo 3,4 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -938,7 +839,7 @@ Dato vigente: 10 % de sesiones (2026-10).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -980,7 +881,7 @@ Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 75 % de jurisdicciones (sobre 24) adheridas al RIGI** (2026-10) | **VERDE** | Peso efectivo 5,7 % del ITCP | Cinturón Política |
+| **Hoy: 75 % de jurisdicciones (sobre 24) adheridas al RIGI** (2026-10) | **VERDE** | Peso efectivo 6,1 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1033,7 +934,7 @@ Dato vigente: 75 % de jurisdicciones (sobre 24) adheridas al RIGI (2026-10).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 5,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1069,7 +970,7 @@ Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones d
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)** (2026-09) | **VERDE** | Peso efectivo 15 % del ITCP | Cinturón Política |
+| **Hoy: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)** (2026-09) | **VERDE** | Peso efectivo 16,1 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1122,7 +1023,7 @@ Dato vigente: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 15 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 16,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1166,7 +1067,7 @@ Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses** (2026-09) | **VERDE** | Peso efectivo 3,1 % del ITCP | Cinturón Política |
+| **Hoy: 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses** (2026-10) | **VERDE** | Peso efectivo 3,4 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1176,7 +1077,7 @@ Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación se publican con algunos días de demora respecto de la sesión; InfoLeg carga los vetos al ritmo del Boletín Oficial. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados · Senado de la Nación · InfoLeg | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras y base de legislación nacional — normas del Poder Ejecutivo sometidas a votación en el recinto |
-| **MODO DE ACCESO** | Semiautomático: clasifica las actas de votación de ambas cámaras y las cruza con los vetos de InfoLeg; los casos ambiguos del registro compartido con bloqueo sostenido quedan pendientes de revisión humana. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-07 |
+| **MODO DE ACCESO** | Semiautomático: clasifica las actas de votación de ambas cámaras y las cruza con los vetos de InfoLeg; los casos ambiguos del registro compartido con bloqueo sostenido quedan pendientes de revisión humana. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-07 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1214,13 +1115,13 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses (2026-09).
+Dato vigente: 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses (2026-10).
 
 0,0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses cae en el tramo que corresponde a Verde, a 7,7 del corte más cercano.
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 3,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1256,7 +1157,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 28 leyes sancionadas (12m)** (2026-09) | **AMARILLO** | Peso efectivo 3,6 % del ITCP | Cinturón Política |
+| **Hoy: 28 leyes sancionadas (12m)** (2026-09) | **AMARILLO** | Peso efectivo 3,8 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1308,7 +1209,7 @@ Dato vigente: 28 leyes sancionadas (12m) (2026-09).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCP: 3,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1344,7 +1245,7 @@ Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 45,4 % de expedientes resueltos sobre ingresados** (2025-12) | **VERDE** | Peso efectivo 3,8 % del ITCP | Cinturón Política |
+| **Hoy: 45,4 % de expedientes resueltos sobre ingresados** (2025-12) | **VERDE** | Peso efectivo 4 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1396,7 +1297,7 @@ Dato vigente: 45,4 % de expedientes resueltos sobre ingresados (2025-12).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1431,7 +1332,7 @@ Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Cons
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 13 sesiones de las comisiones de control (12m)** (2026-10) | **ROJO** | Peso efectivo 3,8 % del ITCP | Cinturón Política |
+| **Hoy: 13 sesiones de las comisiones de control (12m)** (2026-10) | **ROJO** | Peso efectivo 4 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1484,7 +1385,7 @@ Dato vigente: 13 sesiones de las comisiones de control (12m) (2026-10).
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1521,7 +1422,7 @@ Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 73,93 % estimado de cargos con juez designado** (2026-09) | **VERDE** | Peso efectivo 7,5 % del ITCP | Cinturón Política |
+| **Hoy: 73,93 % estimado de cargos con juez designado** (2026-09) | **VERDE** | Peso efectivo 8,1 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1576,7 +1477,7 @@ Dato vigente: 73,93 % estimado de cargos con juez designado (2026-09).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 7,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1616,7 +1517,7 @@ Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Li
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 58,6 % votos de senadores no-LLA alineados con LLA, por provincia** (2026-09) | **VERDE** | Peso efectivo 5,7 % del ITCP | Cinturón Política |
+| **Hoy: 58,6 % votos de senadores no-LLA alineados con LLA, por provincia** (2026-09) | **VERDE** | Peso efectivo 6,1 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1669,7 +1570,7 @@ Dato vigente: 58,6 % votos de senadores no-LLA alineados con LLA, por provincia 
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 5,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 

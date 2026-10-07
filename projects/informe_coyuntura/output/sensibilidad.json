@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-07T03:36:58.349466+00:00",
+    "snapshot": "2026-10-07T11:37:46.572659-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -58,14 +58,14 @@
     }
   },
   "itcg": {
-    "valor_publicado": 79.2,
-    "valor_recomputado": 79.2,
+    "valor_publicado": 79.1,
+    "valor_recomputado": 79.1,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
         "media": 79.2,
         "p05": 77.6,
-        "p95": 80.7,
+        "p95": 80.6,
         "desvio": 0.93
       },
       "combinado": {
@@ -75,26 +75,26 @@
         "desvio": 1.11
       },
       "insumos": {
-        "media": 79.2,
+        "media": 79.1,
         "p05": 78.1,
         "p95": 80.1,
         "desvio": 0.62
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 84.0,
+      "apertura_comercial": 83.9,
       "cepo_mulc": 74.4,
-      "rigi_inversiones": 81.2,
-      "concesiones_infraestructura": 78.1,
+      "rigi_inversiones": 81.1,
+      "concesiones_infraestructura": 78.0,
       "libertad_opcion_salud": 80.0,
-      "asistencia_directa": 78.6,
+      "asistencia_directa": 78.5,
+      "privatizaciones": 78.6,
       "protocolo_antipiquetes": 78.6,
-      "privatizaciones": 78.7,
-      "fal_modernizacion_laboral": 79.6,
-      "litigiosidad_laboral": 78.8,
+      "litigiosidad_laboral": 78.7,
+      "fal_modernizacion_laboral": 79.5,
       "desregulacion_normativa": 79.1,
-      "reduccion_estado": 79.2,
-      "gasto_funcionamiento": 79.2
+      "reduccion_estado": 79.1,
+      "gasto_funcionamiento": 79.1
     },
     "tension": {
       "base": 2.1,
@@ -105,102 +105,102 @@
     }
   },
   "itvc": {
-    "valor_publicado": 92.5,
-    "valor_recomputado": 92.5,
+    "valor_publicado": 93.6,
+    "valor_recomputado": 93.6,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 92.5,
-        "p05": 90.6,
-        "p95": 94.5,
-        "desvio": 1.19
+        "media": 93.5,
+        "p05": 91.7,
+        "p95": 95.3,
+        "desvio": 1.11
       },
       "combinado": {
-        "media": 92.5,
-        "p05": 90.4,
-        "p95": 94.5,
-        "desvio": 1.21
+        "media": 93.6,
+        "p05": 91.7,
+        "p95": 95.4,
+        "desvio": 1.11
       }
     },
     "leave_one_out": {
-      "alquiler_real": 95.6,
-      "peso_tarifas": 90.1,
-      "mora_familias": 94.4,
-      "pobreza_nowcast": 90.7,
-      "ipc_alimentos": 90.7,
-      "consumo_supermercados": 94.1,
-      "carga_servicio_deuda_hogares": 91.7,
-      "inseguridad": 93.3,
-      "despacho_cemento": 93.1,
-      "tasa_homicidios": 92.1,
-      "motorizacion_total": 92.2,
-      "informalidad": 92.2,
-      "empleo_registrado": 92.2,
-      "ratio_motos_autos": 92.7,
-      "brecha_salario_cbt": 92.4,
-      "mortalidad_pymes": 92.4,
-      "consumo_carnes_total": 92.6,
-      "consumo_carne_vacuna": 92.6,
-      "subocupacion_demandante": 92.6,
-      "trabajo_independiente": 92.5,
-      "tasa_robos": 92.5
+      "alquiler_real": 96.5,
+      "peso_tarifas": 91.4,
+      "mora_familias": 95.4,
+      "pobreza_nowcast": 92.0,
+      "ipc_alimentos": 92.0,
+      "consumo_supermercados": 95.1,
+      "icg_utdt": 92.5,
+      "carga_servicio_deuda_hogares": 92.8,
+      "inseguridad": 94.3,
+      "despacho_cemento": 94.1,
+      "tasa_homicidios": 93.2,
+      "motorizacion_total": 93.3,
+      "informalidad": 93.3,
+      "empleo_registrado": 93.3,
+      "ratio_motos_autos": 93.8,
+      "brecha_salario_cbt": 93.5,
+      "mortalidad_pymes": 93.5,
+      "consumo_carnes_total": 93.7,
+      "consumo_carne_vacuna": 93.7,
+      "subocupacion_demandante": 93.7,
+      "trabajo_independiente": 93.6,
+      "tasa_robos": 93.6
     },
     "tension": {
-      "base": 6.5,
+      "base": 6.3,
       "rango_combinado": [
-        6.1,
-        6.9
+        5.9,
+        6.7
       ]
     }
   },
   "itcp": {
-    "valor_publicado": 71.2,
-    "valor_recomputado": 71.2,
+    "valor_publicado": 73.4,
+    "valor_recomputado": 73.4,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 71.2,
-        "p05": 69.8,
-        "p95": 72.5,
-        "desvio": 0.81
+        "media": 73.4,
+        "p05": 72.0,
+        "p95": 74.7,
+        "desvio": 0.82
       },
       "combinado": {
-        "media": 71.1,
-        "p05": 69.5,
-        "p95": 72.6,
-        "desvio": 0.93
+        "media": 73.3,
+        "p05": 71.7,
+        "p95": 74.8,
+        "desvio": 0.95
       },
       "insumos": {
-        "media": 71.1,
-        "p05": 70.2,
-        "p95": 71.8,
-        "desvio": 0.49
+        "media": 73.3,
+        "p05": 72.4,
+        "p95": 74.1,
+        "desvio": 0.53
       }
     },
     "leave_one_out": {
-      "cohesion_bloque": 66.1,
-      "votometro_ventaja_lla": 73.8,
-      "paralisis_denuncias": 73.6,
-      "conflictividad_nacional": 73.3,
-      "velocidad_resolucion": 69.3,
-      "jornadas_individuales_no_trabajadas_12m": 69.8,
-      "brecha_obra_publica": 69.8,
-      "apoyo_empresario": 72.6,
-      "desafios_legislativos": 70.0,
-      "produccion_legislativa": 72.3,
-      "adhesion_reformas_provincial": 70.2,
-      "cobertura_judicial": 70.5,
-      "alineamiento_senadores_prov": 71.9,
-      "veto_quorum": 70.8,
-      "ratio_dnu": 71.6,
-      "eficacia_legislativa": 71.5,
-      "iaf_transferencias": 71.5
+      "cohesion_bloque": 68.3,
+      "paralisis_denuncias": 76.0,
+      "conflictividad_nacional": 75.7,
+      "velocidad_resolucion": 71.4,
+      "brecha_obra_publica": 71.5,
+      "apoyo_empresario": 75.3,
+      "jornadas_individuales_no_trabajadas_12m": 71.9,
+      "desafios_legislativos": 72.1,
+      "produccion_legislativa": 74.6,
+      "adhesion_reformas_provincial": 72.4,
+      "cobertura_judicial": 72.6,
+      "alineamiento_senadores_prov": 74.1,
+      "veto_quorum": 72.9,
+      "ratio_dnu": 73.8,
+      "eficacia_legislativa": 73.8,
+      "iaf_transferencias": 73.7
     },
     "tension": {
-      "base": 2.9,
+      "base": 2.7,
       "rango_combinado": [
-        2.7,
-        3.0
+        2.5,
+        2.8
       ]
     }
   }

@@ -35,14 +35,14 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 79,2** | **VERDE** | Moderadamente aflojado | 13 indicadores: 9 en verde · 4 en amarillo |
+| **ITCG: 79,1** | **VERDE** | Moderadamente aflojado | 13 indicadores: 9 en verde · 4 en amarillo |
 Componentes que puntúan en este corte: 13 de 13 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 73,9 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 73,8 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 100,0 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. | 57,7 | AMARILLO | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 70,4 | VERDE | 15,0 % |
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 5,97 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 5,98 % de brecha CCL/mayorista | VERDE | 14,0 % |
 | Apertura comercial (alícuota) | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -95,7 +95,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 5,97 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 5,98 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -138,13 +138,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1610.80 (2026-10-06T17:56:00-03:00) / mayorista venta 1520.00 (2026-10-06T13:02:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1610.90 (2026-10-07T10:58:00-03:00) / mayorista venta 1520.00 (2026-10-07T07:07:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 5,97 % de brecha CCL/mayorista (2026-10).
+Dato vigente: 5,98 % de brecha CCL/mayorista (2026-10).
 
-5,97 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 8,03 del corte más cercano.
+5,98 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 8,02 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -980,7 +980,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 9.091 de 9.091 km adjudicados · I: adjudicada (CONTRAT.AR) · II-B: adjudicada (CONTRAT.AR) · II: adjudicada (CONTRAT.AR) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24) · CONTRAT.AR todavía no refleja la adjudicación de III, que constan en el Boletín Oficial
+- 9.133 de 9.133 km adjudicados · I: adjudicada (CONTRAT.AR) · II-B: adjudicada (CONTRAT.AR) · II: adjudicada (CONTRAT.AR) · III: adjudicada (CONTRAT.AR)
 
 ## Color vigente y por qué
 
