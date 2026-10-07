@@ -1,13 +1,13 @@
 # Reunión del 6-oct-2026: pendientes del Monitor del Plan de Gobierno
 
-## 1. Muro de acceso al informe (vence el 13-oct-2026)
+## 1. ✅ Muro de acceso al informe (vence el 13-oct-2026; publicado el 7-oct, ADR-0342)
 
 Poner un muro delante del contenido del informe de coyuntura. La idea inicial es un
 popup que pida el mail para dejar ver el contenido.
 
 Decidido (Juan, 7-oct):
 
-- **Dónde va**: en todo el sitio **menos la portada**. La portada con el resumen y el
+- **Dónde va**: en la **portada salta al salir del hero**; en el resto, al entrar. La portada con el resumen y el
   score global queda abierta; cinturones, fichas y metodología piden el mail.
 - **Qué tan cerrado**: **solo tapa la pantalla**. Los datos siguen en el HTML y el JSON
   públicos; alcanza para juntar mails y no cambia cómo se publica.
