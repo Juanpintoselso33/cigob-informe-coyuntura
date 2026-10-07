@@ -7,8 +7,8 @@ popup que pida el mail para dejar ver el contenido.
 
 Decidido (Juan, 7-oct):
 
-- **Dónde va**: en la **portada salta al salir del hero**; en el resto, al entrar. La portada con el resumen y el
-  score global queda abierta; cinturones, fichas y metodología piden el mail.
+- **Dónde va**: en la portada, el hero con el score global se lee libre y el muro **salta al
+  bajar y salir del hero**; cinturones, fichas y metodología lo muestran al entrar.
 - **Qué tan cerrado**: **solo tapa la pantalla**. Los datos siguen en el HTML y el JSON
   públicos; alcanza para juntar mails y no cambia cómo se publica.
 - **Cómo se recuerda**: **en el navegador**. Quien deja el mail no lo vuelve a dejar en
