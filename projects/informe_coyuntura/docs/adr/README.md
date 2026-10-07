@@ -421,3 +421,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0338](0338-el-marco-abre-con-el-texto-de-luis.md) | El marco abre con el texto de Luis y explica los colores |  | vigente |
 | [0340](0340-el-monitor-habla-sin-siglas.md) | El Monitor habla sin siglas |  | vigente |
 | [0342](0342-muro-de-acceso-que-pide-el-mail.md) | Un muro de acceso que pide el mail |  | vigente |
+| [0343](0343-la-portada-sin-lectura-cruzada-y-el-marco-como-lectura.md) | La portada sin «Lectura cruzada», y el marco conceptual con formato de lectura |  | vigente |

@@ -6,7 +6,7 @@ nota_estado: 'SUPERSEDIDO por el [ADR-0338](0338-el-marco-abre-con-el-texto-de-l
 fecha: 2026-09-16
 cinturon: 'transversal'
 archivos: ['web/src/pages/metodologia/index.astro', 'web/public/overrides.css']
-relacionado: ['0199', '0192', '0321', '0322']
+relacionado: ['0192', '0199', '0321', '0322', '0343']
 superado_por: ['0338']
 ambito: 'Sección «El marco» de `/metodologia` — texto público, no cálculo'
 origen: 'Apuntes de Juan del 15-sep-2026 (#monitor-de-proyecto-de-gobierno): «cambiar el texto del marco por el proporcionado por Luis». El texto viene del documento de trabajo «Reducir sin simplificar: cómo comunica el Monitor la complejidad», de Luis Babino.'

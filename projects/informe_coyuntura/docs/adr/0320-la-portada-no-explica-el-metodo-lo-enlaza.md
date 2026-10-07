@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-09-15
 cinturon: 'transversal'
 archivos: ['web/src/pages/index.astro', 'web/src/components/Metodologia.astro']
-relacionado: ['0202', '0311']
+relacionado: ['0202', '0311', '0343']
 ambito: 'Portada (`index.astro`) — qué secciones se muestran, no qué se calcula'
 origen: 'Apuntes de Juan del 15-sep-2026 (#monitor-de-proyecto-de-gobierno): «ver el tema de acotar lo que se muestra en el home». Elegida la opción «Cómo se construye» entre tres candidatas relevadas.'
 ---
