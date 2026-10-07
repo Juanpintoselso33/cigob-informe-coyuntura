@@ -1366,6 +1366,23 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
    el lead en vez de pelear por una columna propia como hacía la aguja. Se le
    pone techo para que la lectura y el número no queden a un palmo uno de otro
    en pantallas anchas. */
+/* El hero ocupa la pantalla (ADR-0346, pedido de Juan 7-oct-2026): en
+   escritorio llena el alto de la ventana menos el menú pegajoso (75 px medidos)
+   y centra el contenido en vertical, así la portada abre con el veredicto solo
+   y no asoma media sección de abajo. Sólo con pantalla ancha Y alta: en celular
+   o en una ventana baja, forzar una pantalla entera empujaría la lectura del mes
+   fuera de vista sin ganar nada. `dashboard.css` deja `.cg-hero` en bloque, así
+   que el flex de acá no pisa ningún display previo. */
+@media (min-width: 900px) and (min-height: 640px) {
+  .cg-hero {
+    min-height: calc(100vh - 75px);
+    min-height: calc(100svh - 75px);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .cg-hero > .cg-hero-inner { width: 100%; }
+}
 .cg-hero-inner--nivel {
   display: flex;
   flex-direction: column;

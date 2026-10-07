@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-10-07
 cinturon: 'transversal'
 archivos: ['web/src/pages/index.astro', 'web/src/components/MarcoTension.astro', 'web/src/components/TensionPanel.astro', 'web/src/components/Recomendaciones.astro', 'web/public/overrides.css']
-relacionado: ['0320', '0326', '0237', '0200']
+relacionado: ['0200', '0237', '0320', '0326', '0346']
 ambito: 'Portada (`index.astro`) — qué secciones se muestran y cómo se ve el marco conceptual, no qué se calcula'
 origen: 'Pedido de Juan del 7-oct-2026: «la card de marco conceptual en el home, que tenga el mismo estilo que la lectura del mes» y «se va toda la parte de lectura cruzada».'
 ---

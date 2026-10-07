@@ -423,3 +423,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0340](0340-el-monitor-habla-sin-siglas.md) | El Monitor habla sin siglas |  | vigente |
 | [0342](0342-muro-de-acceso-que-pide-el-mail.md) | Un muro de acceso que pide el mail |  | vigente |
 | [0343](0343-la-portada-sin-lectura-cruzada-y-el-marco-como-lectura.md) | La portada sin «Lectura cruzada», y el marco conceptual con formato de lectura |  | vigente |
+| [0346](0346-el-hero-ocupa-la-pantalla.md) | El hero ocupa la pantalla |  | vigente |
