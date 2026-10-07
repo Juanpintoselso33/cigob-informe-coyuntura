@@ -189,7 +189,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       // navegadores viejos, y fallar ahí haría entrar sin mandar el mail.
       let guardado = false;
       const corte = new AbortController();
-      const reloj = setTimeout(() => corte.abort(), 6000);
+      // Más que la espera de api/lector.ts al bot (4 s): así la respuesta, con
+      // la cookie, llega aunque el bot cuelgue.
+      const reloj = setTimeout(() => corte.abort(), 9000);
       try {
         const r = await fetch(form.dataset.endpoint!, {
           method: "POST",

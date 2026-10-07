@@ -55,29 +55,30 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Publicar un mes nuevo
+      # Publicar un mes es atómico en este orden: primero se arma y se sube su
+      # archivo a main y RECIÉN DESPUÉS se pone la etiqueta. Al revés, un fallo
+      # del archivo dejaba la etiqueta puesta, el reintento la rechazaba y el
+      # mes quedaba publicado sin archivar (revisión de Codex, 7-oct-2026).
+      - name: Elegir el mes a publicar
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.publicar }}
         run: |
           MES="${{ inputs.mes }}"
           [ -n "$MES" ] || MES=$(date -u -d "$(date -u +%Y-%m-01) -1 day" +%Y-%m)
-          SHA=$(python projects/informe_coyuntura/scripts/mensual.py elegir "$MES")
           if git rev-parse -q --verify "refs/tags/mensual-$MES" >/dev/null; then
             echo "::error::mensual-$MES ya existe: un mes publicado no se pisa (borrar la etiqueta a mano si hay que rehacerlo)"
             exit 1
           fi
-          git tag "mensual-$MES" "$SHA"
-          git push origin "mensual-$MES"
+          SHA=$(python projects/informe_coyuntura/scripts/mensual.py elegir "$MES")
           echo "MES=$MES" >> "$GITHUB_ENV"
-          echo "::notice::Publicado mensual-$MES con la foto de ${SHA:0:10}"
+          echo "SHA=$SHA" >> "$GITHUB_ENV"
 
       - uses: actions/setup-node@v4
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.publicar }}
         with:
           node-version: "22"
 
-      # El mes publicado entra al archivo (ADR-0348): su foto navegable en
-      # /archivo/AAAA-MM/ y su tarjeta en /archivo/. Se commitea a main ANTES de
-      # componer la rama mensual, así el mensual ya lo muestra.
+      # El mes entra al archivo (ADR-0348): su foto navegable en /archivo/AAAA-MM/
+      # y su tarjeta en /archivo/. Si falla, no hay etiqueta y se puede reintentar.
       - name: Sumar el mes al archivo
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.publicar }}
         run: |
@@ -85,9 +86,18 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           python projects/informe_coyuntura/scripts/archivo.py construir "$MES"
           git add projects/informe_coyuntura/web/public/archivo/ projects/informe_coyuntura/web/src/contenido/archivo.json
-          git commit -q -m "archivo: suma el informe de $MES (ADR-0348)"
-          git pull -q --rebase origin main
-          git push origin HEAD:main
+          git commit -q -m "archivo: suma el informe de $MES (ADR-0348)" || true
+          for intento in 1 2 3; do
+            git pull -q --rebase origin main && git push origin HEAD:main && break
+            sleep 10
+          done
+
+      - name: Etiquetar el mes publicado
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.publicar }}
+        run: |
+          git tag "mensual-$MES" "$SHA"
+          git push origin "mensual-$MES"
+          echo "::notice::Publicado mensual-$MES con la foto de ${SHA:0:10}"
 
       - name: Componer la rama mensual
         run: |

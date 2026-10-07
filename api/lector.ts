@@ -23,7 +23,10 @@ export default async function handler(req: any, res: any) {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-lector-ip": ip },
       body: typeof req.body === "string" ? req.body : JSON.stringify(req.body ?? {}),
-      signal: AbortSignal.timeout(8000),
+      // Menos que el corte del navegador (9 s en MuroAcceso.astro): si el bot
+      // cuelga, la respuesta con la cookie tiene que llegar antes de que el
+      // navegador se rinda y deje entrar sin ella.
+      signal: AbortSignal.timeout(4000),
     });
     estado = r.status;
     cuerpo = await r.json().catch(() => ({}));
