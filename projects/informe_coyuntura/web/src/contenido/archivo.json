@@ -3,9 +3,9 @@
   {
    "mes": "2026-09",
    "corrida": "85f76d3144",
-   "generado": "2026-09-30T03:32:44.351016+00:00",
-   "modo": "exacta",
-   "score_global": 3.9,
+   "generado": "2026-09-30T00:32:44.351016-03:00",
+   "modo": "reconstruido",
+   "score_global": 3.8,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
@@ -15,11 +15,11 @@
      "estado": "estable"
     },
     "politica": {
-     "score": 3.0,
+     "score": 2.7,
      "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 6.5,
+     "score": 6.3,
      "estado": "tensionado"
     },
     "gestion": {
@@ -27,28 +27,31 @@
      "estado": "estable"
     }
    },
-   "peso_kb": 4124
+   "quitados": [
+    "votometro_ventaja_lla"
+   ],
+   "peso_kb": 4132
   },
   {
    "mes": "2026-08",
    "corrida": "c2e114e1b4",
-   "generado": "2026-08-31T03:29:30.984598+00:00",
-   "modo": "exacta",
-   "score_global": 3.6,
+   "generado": "2026-08-31T00:29:30.984598-03:00",
+   "modo": "reconstruido",
+   "score_global": 3.8,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
    "cinturones": {
     "macro": {
-     "score": 3.5,
-     "estado": "en_tension"
+     "score": 3.6,
+     "estado": "estable"
     },
     "politica": {
-     "score": 2.9,
+     "score": 3.1,
      "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 6.2,
+     "score": 6.3,
      "estado": "tensionado"
     },
     "gestion": {
@@ -56,65 +59,76 @@
      "estado": "estable"
     }
    },
-   "peso_kb": 3920
+   "quitados": [
+    "votometro_ventaja_lla"
+   ],
+   "peso_kb": 4007
   },
   {
    "mes": "2026-07",
    "corrida": "44ef37fd1f",
-   "generado": "2026-07-30T04:20:39.686163",
-   "modo": "exacta",
-   "score_global": 3.2,
-   "riesgo_dominante": "tecnocrático",
-   "cinturon_dominante": "",
+   "generado": "2026-07-30T01:20:39.686163-03:00",
+   "modo": "reconstruido",
+   "score_global": 4.2,
+   "riesgo_dominante": "político",
+   "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
    "cinturones": {
     "macro": {
-     "score": 3.7,
-     "estado": "en_tension"
+     "score": 3.9,
+     "estado": "estable"
     },
     "politica": {
-     "score": 3.6,
-     "estado": "en_tension"
+     "score": 3.5,
+     "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 6.1,
+     "score": 7.5,
      "estado": "tensionado"
     },
     "gestion": {
-     "score": 2.2,
+     "score": 1.9,
      "estado": "estable"
     }
    },
-   "peso_kb": 3848
+   "quitados": [
+    "presion_dolarizacion",
+    "votometro_ventaja_lla"
+   ],
+   "peso_kb": 3726
   },
   {
    "mes": "2026-06",
    "corrida": "01dce1e937",
-   "generado": "2026-06-30T06:47:30.637405",
-   "modo": "exacta",
-   "score_global": 4.3,
-   "riesgo_dominante": "gerencial",
-   "cinturon_dominante": "",
-   "alerta_multicinturon": false,
+   "generado": "2026-06-30T03:47:30.637405-03:00",
+   "modo": "reconstruido",
+   "score_global": 5.8,
+   "riesgo_dominante": "político",
+   "cinturon_dominante": "vida_cotidiana",
+   "alerta_multicinturon": true,
    "cinturones": {
     "macro": {
-     "score": 4.1,
+     "score": 4.5,
      "estado": "en_tension"
     },
     "politica": {
-     "score": 4.6,
+     "score": 5.0,
      "estado": "en_tension"
     },
     "vida_cotidiana": {
-     "score": 3.5,
-     "estado": "en_tension"
+     "score": 7.5,
+     "estado": "tensionado"
     },
     "gestion": {
-     "score": 5.9,
-     "estado": "en_tension"
+     "score": 6.4,
+     "estado": "tensionado"
     }
    },
-   "peso_kb": 1698
+   "quitados": [
+    "votometro_ventaja_lla",
+    "gobernadores_alineamiento"
+   ],
+   "peso_kb": 2713
   }
  ]
 }
