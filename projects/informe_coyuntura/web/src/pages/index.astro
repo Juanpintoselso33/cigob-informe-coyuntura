@@ -7,8 +7,6 @@ import MarcoTension from "../components/MarcoTension.astro";
 import CinturonCard from "../components/CinturonCard.astro";
 import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
 import Evolucion from "../components/Evolucion.astro";
-import TensionPanel from "../components/TensionPanel.astro";
-import Recomendaciones from "../components/Recomendaciones.astro";
 import Footer from "../components/Footer.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
 import { informe, CINTURONES } from "../lib/datos.ts";
@@ -33,13 +31,9 @@ import { informe, CINTURONES } from "../lib/datos.ts";
       </div>
     </section>
     <Evolucion />
-    <section class="cg-section">
-      <div class="cg-section-head"><p class="cg-eyebrow">Lectura cruzada</p><h2 class="cg-h2">Tensión sistémica</h2></div>
-      <div class="cg-twocol">
-        <TensionPanel />
-        <Recomendaciones />
-      </div>
-    </section>
+    {/* «Lectura cruzada · Tensión sistémica» (TensionPanel + Recomendaciones)
+        retirada de la portada a pedido de Juan, 7-oct-2026. Los componentes se
+        borraron con ella; si alguna vez vuelve, sale de `git show`. */}
     {/* Archivo retirado hasta que exista al menos una edición anterior
         (revisión adversarial 2026-07-11: mostraba solo la edición vigente
         con un placeholder — hemeroteca sin hemeroteca). Reincorporar con

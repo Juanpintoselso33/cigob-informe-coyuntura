@@ -19,51 +19,47 @@
 // (ADR-0181/0194).
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
-<aside class="cg-marco-home" aria-labelledby="cg-marco-home-t">
-  <div class="cg-marco-home-txt">
-    {/* Oct-2026 (pedido editorial): sale el título «Qué es la tensión», el
-        rótulo pasa a «Marco conceptual» y el cuerpo va en una sola columna. */}
-    <p class="cg-eyebrow" id="cg-marco-home-t">Marco conceptual</p>
-    <div class="cg-marco-home-cuerpo cg-marco-home-cuerpo--una">
-      {/* La síntesis de Luis Babino, «Reducir sin simplificar» (ADR-0326).
-          Abre el bloque: es la respuesta a las dos objeciones que el Monitor
-          recibe —que un número aplana, que sesenta indicadores no dicen nada—
-          y contestarlas antes de definir la tensión ordena la lectura.
-          El desarrollo completo del encuadre vive en /metodologia#marco. */}
-      <p class="cg-marco-home-cita">
-        «No creemos en respuestas simples a preguntas complejas, pero tampoco en la complejidad como
-        excusa para no responder. El método es lo que permite las dos cosas a la vez: mostrar un número
-        que se entiende de un vistazo, y que ese número nunca esconda lo que hace falta ver.»
-      </p>
-      <p>
-        La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos, sino por su
-        capacidad para <strong>procesar la tensión</strong> entre las demandas del entorno y los recursos
-        disponibles por el gobierno. Los cuatro cinturones son las dimensiones donde medimos esa tensión:
-        <strong>MACRO</strong> mide la sustentabilidad intertemporal del proyecto de gobierno.
-        <strong>POLÍTICA</strong> mide la capacidad de validar las normas y regulaciones que demanda el proyecto.
-        <strong>GESTIÓN</strong> mide la capacidad de cumplir con sus compromisos. Y, por último
-        —pero con particular relevancia en los tramos cercanos a una elección—, <strong>IMPACTO SOCIAL</strong>
-        mide condiciones materiales y percepciones de los hogares que pueden influir en el apoyo al gobierno; no estima resultados electorales.
-      </p>
-    </div>
+{/* Oct-2026 (pedido de Juan, 7-oct): la card toma el formato de «La lectura
+    del mes» —misma caja, mismo cuerpo de 17px y texto a todo el ancho— para
+    que las dos lecturas de la portada se vean como un par. */}
+<section class="cg-section cg-bluf cg-marco-lectura" aria-labelledby="cg-marco-home-t">
+  <p class="cg-eyebrow" id="cg-marco-home-t">Marco conceptual</p>
+  <div class="cg-bluf-editorial">
+    {/* La síntesis de Luis Babino, «Reducir sin simplificar» (ADR-0326).
+        Abre el bloque: es la respuesta a las dos objeciones que el Monitor
+        recibe —que un número aplana, que sesenta indicadores no dicen nada—
+        y contestarlas antes de definir la tensión ordena la lectura.
+        El desarrollo completo del encuadre vive en /metodologia#marco. */}
+    <p class="cg-marco-lectura-cita">
+      «No creemos en respuestas simples a preguntas complejas, pero tampoco en la complejidad como
+      excusa para no responder. El método es lo que permite las dos cosas a la vez: mostrar un número
+      que se entiende de un vistazo, y que ese número nunca esconda lo que hace falta ver.»
+    </p>
+    <p>
+      La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos, sino por su
+      capacidad para <strong>procesar la tensión</strong> entre las demandas del entorno y los recursos
+      disponibles por el gobierno. Los cuatro cinturones son las dimensiones donde medimos esa tensión:
+      <strong>MACRO</strong> mide la sustentabilidad intertemporal del proyecto de gobierno.
+      <strong>POLÍTICA</strong> mide la capacidad de validar las normas y regulaciones que demanda el proyecto.
+      <strong>GESTIÓN</strong> mide la capacidad de cumplir con sus compromisos. Y, por último
+      —pero con particular relevancia en los tramos cercanos a una elección—, <strong>IMPACTO SOCIAL</strong>
+      mide condiciones materiales y percepciones de los hogares que pueden influir en el apoyo al gobierno; no estima resultados electorales.
+    </p>
   </div>
-  <a class="cg-marco-home-cta" href={`${base}/metodologia/#marco`}>El marco completo →</a>
-</aside>
+  <a class="cg-marco-lectura-cta" href={`${base}/metodologia/#marco`}>El marco completo →</a>
+</section>
 
 <style>
-  /* Una sola columna, gane lo que gane en dashboard.css / overrides.css
-     (grilla o columnas de texto). */
-  .cg-marco-home-cuerpo--una {
-    display: block !important;
-    column-count: 1 !important;
-    columns: auto !important;
-    grid-template-columns: none !important;
-    max-width: 820px;
+  /* La caja, el filete de colores y el cuerpo los pone .cg-bluf /
+     .cg-bluf-editorial (dashboard.css). Acá sólo lo propio del marco. */
+  .cg-marco-lectura { margin-top: 24px; }
+  .cg-marco-lectura-cita {
+    border-left: 3px solid var(--teal-ink);
+    padding-left: 16px;
   }
-  .cg-marco-home-cuerpo--una > * {
-    grid-column: auto !important;
-  }
-  .cg-marco-home-cuerpo--una > p + p {
-    margin-top: 14px;
+  .cg-marco-lectura-cta {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 14px; font-weight: 700; color: var(--teal-ink);
   }
 </style>
