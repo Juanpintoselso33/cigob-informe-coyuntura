@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-06T16:52:20.176823+00:00",
+    "snapshot": "2026-10-07T03:36:58.349466+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -25,7 +25,7 @@
         "desvio": 1.23
       },
       "insumos": {
-        "media": 60.4,
+        "media": 60.3,
         "p05": 59.0,
         "p95": 61.7,
         "desvio": 0.82
@@ -33,19 +33,19 @@
     },
     "leave_one_out": {
       "ipc_total": 56.8,
-      "iai": 63.8,
-      "recaudacion": 62.9,
+      "iai": 63.7,
       "resultado_primario": 57.9,
       "desequilibrio_monetario": 62.8,
+      "recaudacion": 62.8,
       "tcrm": 61.7,
-      "credito_privado": 61.5,
       "costo_financiamiento_tesoro": 59.3,
+      "credito_privado": 61.4,
       "rem_ipc_12m": 59.7,
+      "saldo_comercial_12m": 59.7,
       "reservas_bcra": 59.7,
-      "saldo_comercial_12m": 59.8,
-      "idc": 60.9,
+      "idc": 60.8,
+      "emae_ia": 60.1,
       "ipi_manufacturero": 60.6,
-      "emae_ia": 60.2,
       "emae_difusion": 60.2,
       "actividad_tributaria": 60.5
     },
@@ -58,49 +58,49 @@
     }
   },
   "itcg": {
-    "valor_publicado": 79.4,
-    "valor_recomputado": 79.4,
+    "valor_publicado": 79.2,
+    "valor_recomputado": 79.2,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 79.4,
-        "p05": 77.9,
-        "p95": 80.9,
+        "media": 79.2,
+        "p05": 77.6,
+        "p95": 80.7,
         "desvio": 0.93
       },
       "combinado": {
-        "media": 79.4,
-        "p05": 77.5,
-        "p95": 81.2,
-        "desvio": 1.1
+        "media": 79.2,
+        "p05": 77.3,
+        "p95": 81.0,
+        "desvio": 1.11
       },
       "insumos": {
-        "media": 79.4,
-        "p05": 78.4,
-        "p95": 80.3,
-        "desvio": 0.6
+        "media": 79.2,
+        "p05": 78.1,
+        "p95": 80.1,
+        "desvio": 0.62
       }
     },
     "leave_one_out": {
+      "apertura_comercial": 84.0,
       "cepo_mulc": 74.4,
-      "apertura_comercial": 84.4,
-      "rigi_inversiones": 81.4,
-      "concesiones_infraestructura": 78.3,
-      "libertad_opcion_salud": 80.3,
-      "asistencia_directa": 78.8,
-      "privatizaciones": 78.9,
-      "protocolo_antipiquetes": 78.9,
-      "litigiosidad_laboral": 79.0,
-      "fal_modernizacion_laboral": 79.8,
-      "desregulacion_normativa": 79.5,
-      "reduccion_estado": 79.4,
-      "gasto_funcionamiento": 79.4
+      "rigi_inversiones": 81.2,
+      "concesiones_infraestructura": 78.1,
+      "libertad_opcion_salud": 80.0,
+      "asistencia_directa": 78.6,
+      "protocolo_antipiquetes": 78.6,
+      "privatizaciones": 78.7,
+      "fal_modernizacion_laboral": 79.6,
+      "litigiosidad_laboral": 78.8,
+      "desregulacion_normativa": 79.1,
+      "reduccion_estado": 79.2,
+      "gasto_funcionamiento": 79.2
     },
     "tension": {
       "base": 2.1,
       "rango_combinado": [
         1.9,
-        2.2
+        2.3
       ]
     }
   },
