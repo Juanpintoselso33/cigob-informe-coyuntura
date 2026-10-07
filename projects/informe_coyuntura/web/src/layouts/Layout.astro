@@ -46,7 +46,8 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
         // inmediato, el contenido no llega a verse sin tapar. La clave es la
         // misma que usa MuroAcceso.astro.
         try {
-          if (localStorage.getItem("cigob-muro-v1")) document.documentElement.classList.add("muro-ok");
+          // La cruz lo cierra por el resto de la visita (sessionStorage).
+          if (localStorage.getItem("cigob-muro-v1") || sessionStorage.getItem("cigob-muro-cerrado")) document.documentElement.classList.add("muro-ok");
           else if (modoMuro === "inmediato") document.documentElement.classList.add("muro-activo");
         } catch (e) {
           if (modoMuro === "inmediato") document.documentElement.classList.add("muro-activo");

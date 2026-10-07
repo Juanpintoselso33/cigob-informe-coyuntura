@@ -56,6 +56,23 @@ datos se publican en HTML y JSON abiertos.
 (el muro va sobre el informe mensual) y el informe en un solo archivo, cuyo
 emisor aborta si encuentra el muro.
 
+### Segunda vuelta (7-oct-2026, el mismo día)
+
+Juan pidió el formato de los popups de diarios y newsletters:
+
+- **Más grande y en dos paneles.** A la izquierda, un panel de marca con el logo
+  de CiGob (los anillos, «CiGob» y «Ciencias para gobernar», como en el menú),
+  el nombre del Monitor y lo que trae. A la derecha, el formulario. En celular
+  se apila, con la marca arriba y compacta.
+- **Mail obligatorio; nombre y teléfono optativos.** Van a `lectores.nombre` y
+  `lectores.telefono`. Un dato vacío no borra el que ya estaba; uno nuevo pisa
+  al anterior. El teléfono se guarda como se escribió, sin validar el formato,
+  si tiene al menos seis dígitos.
+- **Una cruz para cerrar, y Escape.** Cierran el muro por el resto de la visita
+  (`sessionStorage`, clave `cigob-muro-cerrado`); en la próxima visita lo vuelve
+  a pedir. Esto relaja la regla 3: cerrar con la cruz también deja leer, sin
+  dejar el mail.
+
 ### Consecuencias
 
 - Buena: sale en días, sin tocar el deploy ni el conector, y la portada sigue

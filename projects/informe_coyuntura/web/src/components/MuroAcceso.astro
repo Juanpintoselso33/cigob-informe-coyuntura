@@ -6,6 +6,11 @@
 // - «al-bajar»: la portada. El hero se lee libre; el muro salta cuando la
 //   persona baja y el hero sale de la pantalla.
 //
+// Formato de popup de diario o newsletter (segunda vuelta del 7-oct): panel de
+// marca con el logo a la izquierda, formulario a la derecha; mail obligatorio,
+// nombre y teléfono optativos, y una cruz que lo cierra por el resto de la
+// visita (sessionStorage): en la próxima visita lo vuelve a pedir.
+//
 // Sólo tapa la pantalla: el contenido sigue en el HTML, así que los buscadores
 // lo indexan igual y quien sepa abrir la consola lo ve. Es para juntar mails,
 // no para proteger datos.
@@ -15,38 +20,79 @@
 // por un error nuestro.
 //
 // El script de <head> (en Layout.astro) decide antes de pintar: quien ya dejó
-// el mail no ve el muro ni un instante, y en modo inmediato no se llega a ver
-// el contenido sin tapar. Sin JavaScript no hay muro.
+// el mail o cerró el muro en esta visita no lo ve ni un instante, y en modo
+// inmediato no se llega a ver el contenido sin tapar. Sin JavaScript no hay muro.
 interface Props { modo: "inmediato" | "al-bajar" }
 const { modo } = Astro.props;
 const ENDPOINT = import.meta.env.PUBLIC_MURO_ENDPOINT?.trim() || "https://cigob-bot.vercel.app/api/lector";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 <div class="muro" id="cg-muro" role="dialog" aria-modal="true" aria-labelledby="cg-muro-titulo">
-  <form class="muro-caja" id="cg-muro-form" data-endpoint={ENDPOINT} data-modo={modo} novalidate>
-    <p class="muro-marca">Monitor del Plan de Gobierno</p>
-    <h2 id="cg-muro-titulo">Dejanos tu mail para seguir leyendo</h2>
-    <p class="muro-texto">El informe completo es gratuito. Te pedimos el mail una sola vez, para saber quién lo lee.</p>
-    <label class="muro-label" for="cg-muro-mail">Tu mail</label>
-    <input id="cg-muro-mail" name="mail" type="email" autocomplete="email" inputmode="email"
-      placeholder="nombre@ejemplo.com" required />
-    <p class="muro-error" id="cg-muro-error" role="alert" hidden></p>
-    <button type="submit" id="cg-muro-boton">Entrar al informe</button>
-    <p class="muro-legal">
-      No te suscribe a ninguna lista.
-      <a href="https://cigob-bot.vercel.app/privacidad.html" target="_blank" rel="noopener">Política de privacidad</a>
-    </p>
-  </form>
+  <div class="muro-caja">
+    <button type="button" class="muro-cerrar" id="cg-muro-cerrar" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="muro-marca">
+      {/* El logo como en el menú (Nav.astro): los anillos, «CiGob» en la tipografía
+          de marca y el lema. logo-cigob.png trae sólo los anillos. */}
+      <div class="muro-logo">
+        <img src={`${base}/cigob-icono.png`} alt="" width="56" height="36" />
+        <span><strong>CiGob</strong><small>Ciencias para gobernar</small></span>
+      </div>
+      <p class="muro-volanta">Observatorio · Fundación CiGob</p>
+      <p class="muro-producto">Monitor del Plan de Gobierno</p>
+      <ul class="muro-trae">
+        <li>La lectura del mes sobre el proyecto de gobierno</li>
+        <li>Cuatro cinturones: macro, política, gestión e impacto social</li>
+        <li>Más de 60 indicadores con fuentes y metodología abiertas</li>
+      </ul>
+    </div>
+
+    <form class="muro-form" id="cg-muro-form" data-endpoint={ENDPOINT} data-modo={modo} novalidate>
+      <p class="muro-gratis">Acceso gratuito</p>
+      <h2 id="cg-muro-titulo">Seguí leyendo el Monitor</h2>
+      <p class="muro-texto">Dejanos tus datos una sola vez para entrar al informe completo.</p>
+
+      <label class="muro-label" for="cg-muro-mail">Mail <span class="muro-obl">*</span></label>
+      <input id="cg-muro-mail" name="mail" type="email" autocomplete="email" inputmode="email"
+        placeholder="nombre@ejemplo.com" required aria-describedby="cg-muro-error" />
+      <p class="muro-error" id="cg-muro-error" role="alert" hidden></p>
+
+      <div class="muro-fila">
+        <div>
+          <label class="muro-label" for="cg-muro-nombre">Nombre <span class="muro-opt">(optativo)</span></label>
+          <input id="cg-muro-nombre" name="nombre" type="text" autocomplete="name" maxlength="120" />
+        </div>
+        <div>
+          <label class="muro-label" for="cg-muro-tel">Teléfono <span class="muro-opt">(optativo)</span></label>
+          <input id="cg-muro-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" maxlength="40" />
+        </div>
+      </div>
+
+      <button type="submit" class="muro-boton" id="cg-muro-boton">Entrar al informe</button>
+      <p class="muro-legal">
+        No te suscribe a ninguna lista. Ver la
+        <a href="https://cigob-bot.vercel.app/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.
+      </p>
+    </form>
+  </div>
 </div>
 
 <script>
   const muro = document.getElementById("cg-muro");
   const form = document.getElementById("cg-muro-form") as HTMLFormElement | null;
   const input = document.getElementById("cg-muro-mail") as HTMLInputElement | null;
+  const nombre = document.getElementById("cg-muro-nombre") as HTMLInputElement | null;
+  const tel = document.getElementById("cg-muro-tel") as HTMLInputElement | null;
   const error = document.getElementById("cg-muro-error");
   const boton = document.getElementById("cg-muro-boton") as HTMLButtonElement | null;
+  const cerrar = document.getElementById("cg-muro-cerrar");
   const html = document.documentElement;
 
-  const CLAVE = "cigob-muro-v1"; // la misma que lee el script de <head> en Layout.astro
+  // Las mismas claves que lee el script de <head> en Layout.astro.
+  const CLAVE = "cigob-muro-v1";
+  const CERRADO = "cigob-muro-cerrado";
 
   // Con el muro abierto, el resto de la página queda inerte: ni el teclado ni
   // un lector de pantalla pueden irse detrás del diálogo.
@@ -56,8 +102,13 @@ const ENDPOINT = import.meta.env.PUBLIC_MURO_ENDPOINT?.trim() || "https://cigob-
     fondo().forEach((el) => el.setAttribute("inert", ""));
     input?.focus({ preventScroll: true });
   };
+  const ocultar = () => {
+    html.classList.remove("muro-activo");
+    html.classList.add("muro-ok");
+    fondo().forEach((el) => el.removeAttribute("inert"));
+  };
 
-  if (muro && form && input && error && boton && !html.classList.contains("muro-ok")) {
+  if (muro && form && input && nombre && tel && error && boton && cerrar && !html.classList.contains("muro-ok")) {
     if (form.dataset.modo === "al-bajar") {
       // Salta cuando el hero sale por arriba de la pantalla. Si no hay hero,
       // se comporta como el modo inmediato.
@@ -74,12 +125,15 @@ const ENDPOINT = import.meta.env.PUBLIC_MURO_ENDPOINT?.trim() || "https://cigob-
       } else mostrar();
     } else mostrar();
 
-    const entrar = () => {
-      try { localStorage.setItem(CLAVE, new Date().toISOString()); } catch {}
-      html.classList.remove("muro-activo");
-      html.classList.add("muro-ok");
-      fondo().forEach((el) => el.removeAttribute("inert"));
+    // La cruz (y Escape) cierran por el resto de la visita.
+    const cerrarVisita = () => {
+      try { sessionStorage.setItem(CERRADO, "1"); } catch {}
+      ocultar();
     };
+    cerrar.addEventListener("click", cerrarVisita);
+    document.addEventListener("keydown", (ev) => {
+      if (ev.key === "Escape" && html.classList.contains("muro-activo")) cerrarVisita();
+    });
 
     form.addEventListener("submit", async (ev) => {
       ev.preventDefault();
@@ -87,17 +141,24 @@ const ENDPOINT = import.meta.env.PUBLIC_MURO_ENDPOINT?.trim() || "https://cigob-
       if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(mail)) {
         error.textContent = "Revisá el mail: parece que le falta algo.";
         error.hidden = false;
+        input.setAttribute("aria-invalid", "true");
         input.focus();
         return;
       }
       error.hidden = true;
+      input.removeAttribute("aria-invalid");
       boton.disabled = true;
       boton.textContent = "Entrando…";
       try {
         const r = await fetch(form.dataset.endpoint!, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ mail, pagina: location.pathname }),
+          body: JSON.stringify({
+            mail,
+            nombre: nombre.value.trim(),
+            telefono: tel.value.trim(),
+            pagina: location.pathname,
+          }),
           signal: AbortSignal.timeout(6000),
         });
         // Un mail que el servidor rechaza se corrige; cualquier otro error
@@ -105,13 +166,15 @@ const ENDPOINT = import.meta.env.PUBLIC_MURO_ENDPOINT?.trim() || "https://cigob-
         if (r.status === 400) {
           error.textContent = "Ese mail no parece válido. Revisalo, por favor.";
           error.hidden = false;
+          input.setAttribute("aria-invalid", "true");
           boton.disabled = false;
           boton.textContent = "Entrar al informe";
           input.focus();
           return;
         }
       } catch {}
-      entrar();
+      try { localStorage.setItem(CLAVE, new Date().toISOString()); } catch {}
+      ocultar();
     });
   }
 </script>
@@ -125,49 +188,121 @@ const ENDPOINT = import.meta.env.PUBLIC_MURO_ENDPOINT?.trim() || "https://cigob-
        queda cortado fuera de alcance. */
     display: flex; overflow-y: auto; overscroll-behavior: contain;
     padding: 16px;
-    background: rgba(27, 46, 60, 0.55);
+    background: rgba(27, 46, 60, 0.6);
     backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   }
   html.muro-activo:not(.muro-ok), html.muro-activo:not(.muro-ok) body { overflow: hidden; }
 
   .muro-caja {
+    position: relative;
     margin: auto;
-    width: 100%; max-width: 420px;
+    width: 100%; max-width: 880px;
+    display: grid; grid-template-columns: 5fr 7fr;
     background: var(--blanco, #fff);
-    border-radius: 14px;
-    padding: 28px 26px 22px;
-    box-shadow: 0 20px 50px rgba(27, 46, 60, 0.28);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(27, 46, 60, 0.35);
     font-family: var(--ff-cuerpo);
     color: var(--tinta, #1B2E3C);
+    animation: muro-entra .28s ease-out;
   }
+  @keyframes muro-entra { from { opacity: 0; transform: translateY(12px) scale(.98); } }
+  @media (prefers-reduced-motion: reduce) { .muro-caja { animation: none; } }
+
+  .muro-cerrar {
+    position: absolute; top: 12px; right: 12px; z-index: 1;
+    width: 36px; height: 36px; display: grid; place-items: center;
+    border: 0; border-radius: 50%; cursor: pointer;
+    background: transparent; color: var(--tinta-suave, #5E7A8A);
+  }
+  .muro-cerrar:hover { background: var(--linea-suave, #EAF2F6); color: var(--tinta, #1B2E3C); }
+  .muro-cerrar:focus-visible { outline: 2px solid var(--azul, #3D9AD1); outline-offset: 2px; }
+
+  /* Panel de marca */
   .muro-marca {
+    position: relative;
+    padding: 36px 32px;
+    color: #fff;
+    background:
+      radial-gradient(120% 80% at 100% 100%, rgba(123, 191, 170, .35), transparent 60%),
+      linear-gradient(160deg, var(--azul-profundo, #1A4F72), var(--azul-oscuro, #2878AB));
+  }
+  .muro-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+  .muro-logo img { display: block; height: 36px; width: auto; }
+  .muro-logo span { display: flex; flex-direction: column; }
+  .muro-logo strong { font-family: var(--ff-marca); font-weight: 700; font-size: 26px; line-height: 1; letter-spacing: -.015em; }
+  .muro-logo small { margin-top: 3px; font-family: var(--ff-ui); font-weight: 500; font-size: 11px; color: var(--azul-medio, #C8E5F4); }
+  .muro-volanta {
     margin: 0 0 6px;
     font-family: var(--ff-ui); font-weight: 600; font-size: 12px;
-    letter-spacing: .06em; text-transform: uppercase;
-    color: var(--azul-oscuro, #2878AB);
+    letter-spacing: .08em; text-transform: uppercase; color: var(--azul-medio, #C8E5F4);
   }
-  .muro-caja h2 {
-    margin: 0 0 10px;
-    font-family: var(--ff-titulo); font-weight: 700; font-size: 22px; line-height: 1.25;
+  .muro-producto {
+    margin: 0 0 22px;
+    font-family: var(--ff-titulo); font-weight: 700; font-size: 26px; line-height: 1.2;
   }
-  .muro-texto { margin: 0 0 18px; font-size: 15px; line-height: 1.5; color: var(--tinta-suave, #5E7A8A); }
-  .muro-label { display: block; margin-bottom: 6px; font-family: var(--ff-ui); font-weight: 500; font-size: 13px; }
-  .muro-caja input {
+  .muro-trae { margin: 0; padding: 0; list-style: none; }
+  .muro-trae li {
+    position: relative; padding-left: 24px; margin-bottom: 12px;
+    font-size: 14.5px; line-height: 1.45; color: rgba(255, 255, 255, .92);
+  }
+  .muro-trae li::before {
+    content: ''; position: absolute; left: 0; top: 5px;
+    width: 12px; height: 7px;
+    border-left: 2px solid var(--verde-marca, #7BBFAA); border-bottom: 2px solid var(--verde-marca, #7BBFAA);
+    transform: rotate(-45deg);
+  }
+
+  /* Formulario */
+  .muro-form { padding: 40px 36px 28px; }
+  .muro-gratis {
+    display: inline-block; margin: 0 0 12px; padding: 4px 10px;
+    font-family: var(--ff-ui); font-weight: 600; font-size: 12px;
+    color: var(--verde-profundo, #2D6655); background: var(--verde-palido, #EEF7F3);
+    border-radius: 999px;
+  }
+  .muro-form h2 {
+    margin: 0 0 8px;
+    font-family: var(--ff-titulo); font-weight: 700; font-size: 28px; line-height: 1.2;
+  }
+  .muro-texto { margin: 0 0 22px; font-size: 15.5px; line-height: 1.5; color: var(--tinta-suave, #5E7A8A); }
+  .muro-label { display: block; margin: 0 0 6px; font-family: var(--ff-ui); font-weight: 500; font-size: 13px; }
+  .muro-obl { color: #B01B1B; }
+  .muro-opt { color: var(--tinta-tenue, #8FA6B2); font-weight: 400; }
+  .muro-form input {
     width: 100%; box-sizing: border-box;
-    padding: 11px 12px; font-size: 16px; font-family: var(--ff-cuerpo);
+    padding: 12px 13px; font-size: 16px; font-family: var(--ff-cuerpo);
     border: 1px solid var(--linea, #D8E6ED); border-radius: 8px;
     color: var(--tinta, #1B2E3C); background: var(--fondo-limpio, #F6FAFB);
   }
-  .muro-caja input:focus { outline: 2px solid var(--azul, #3D9AD1); outline-offset: 1px; border-color: transparent; }
+  .muro-form input:focus { outline: 2px solid var(--azul, #3D9AD1); outline-offset: 1px; border-color: transparent; background: #fff; }
+  .muro-form input[aria-invalid="true"] { border-color: #B01B1B; }
+  .muro-fila { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
   .muro-error { margin: 8px 0 0; font-size: 13px; color: #B01B1B; }
-  .muro-caja button {
-    width: 100%; margin-top: 14px; padding: 12px;
-    font-family: var(--ff-ui); font-weight: 600; font-size: 15px;
+  .muro-boton {
+    width: 100%; margin-top: 20px; padding: 14px;
+    font-family: var(--ff-ui); font-weight: 600; font-size: 16px;
     color: #fff; background: var(--azul-oscuro, #2878AB);
     border: 0; border-radius: 8px; cursor: pointer;
   }
-  .muro-caja button:hover { background: var(--azul-profundo, #1A4F72); }
-  .muro-caja button:disabled { opacity: .7; cursor: default; }
+  .muro-boton:hover { background: var(--azul-profundo, #1A4F72); }
+  .muro-boton:disabled { opacity: .7; cursor: default; }
   .muro-legal { margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: var(--tinta-tenue, #8FA6B2); text-align: center; }
   .muro-legal a { color: inherit; text-decoration: underline; }
+
+  /* Celular: apilado, la marca arriba y compacta. */
+  @media (max-width: 720px) {
+    .muro-caja { grid-template-columns: 1fr; max-width: 460px; }
+    .muro-marca { padding: 22px 22px 20px; }
+    .muro-logo { margin-bottom: 14px; }
+    .muro-logo img { height: 30px; }
+    .muro-logo strong { font-size: 22px; }
+    .muro-producto { font-size: 20px; margin-bottom: 0; }
+    .muro-trae { display: none; }
+    .muro-form { padding: 24px 22px 20px; }
+    .muro-form h2 { font-size: 23px; }
+    .muro-fila { grid-template-columns: 1fr; gap: 14px; }
+    .muro-cerrar { color: #fff; }
+    .muro-cerrar:hover { background: rgba(255, 255, 255, .15); color: #fff; }
+  }
 </style>
