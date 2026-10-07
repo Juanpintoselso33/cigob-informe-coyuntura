@@ -16,6 +16,10 @@ const gaId = rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
 // seguimiento diario interno y el informe en un solo archivo. En la portada
 // salta al salir del hero; en el resto, al entrar.
 const muro = import.meta.env.PUBLIC_MURO?.trim() !== "0";
+// Seguimiento diario interno (punto 8 de la reunión del 6-oct, ADR-0347): el
+// mismo sitio con los datos de cada noche, en una URL larga que no se difunde.
+// Una URL difícil de adivinar no es privada, así que al menos no se indexa.
+const esDiario = import.meta.env.PUBLIC_SITIO?.trim() === "diario";
 const esPortada = Astro.url.pathname.replace(/\/$/, "") === base;
 const modoMuro = esPortada ? "al-bajar" : "inmediato";
 ---
@@ -27,6 +31,7 @@ const modoMuro = esPortada ? "al-bajar" : "inmediato";
     <link rel="icon" type="image/png" sizes="192x192" href={`${base}/favicon.png`} />
     <link rel="apple-touch-icon" href={`${base}/favicon.png`} />
     <title>{title}</title>
+    {esDiario && <meta name="robots" content="noindex, nofollow" />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Las cuatro familias del Manual de Marca que existen en Google Fonts,

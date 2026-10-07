@@ -164,9 +164,9 @@ jobs:
         run: |
           {
             if [ "${{ steps.archivos.outputs.metodo }}" = si ]; then
-              echo "✅ Publicado. Como toca el cálculo, se lanzó la corrida de datos: llega a https://informe.cigob.org/ en unos 40 minutos."
+              echo "✅ Publicado. Como toca el cálculo, se lanzó la corrida de datos: en unos 40 minutos se ve en el seguimiento diario (https://cigob-seguimiento-a941210feb.vercel.app/). El informe mensual (https://informe.cigob.org/) toma los datos nuevos recién en la próxima publicación del mes."
             else
-              echo "✅ Publicado: en un par de minutos se ve en https://informe.cigob.org/"
+              echo "✅ Publicado: en un par de minutos se ve en https://informe.cigob.org/ (el mensual se rearma con el código nuevo) y en el seguimiento diario."
             fi
             if [ "$TESTS" = failure ]; then
               echo

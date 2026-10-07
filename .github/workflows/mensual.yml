@@ -1,0 +1,86 @@
+name: Informe mensual
+
+# El Monitor tiene dos caras (punto 8 de la reunión del 6-oct-2026, ADR-0347):
+#
+#   informe.cigob.org        → el INFORME DEL MES: el código de main con los dos
+#                              archivos de datos del sitio congelados en la última
+#                              corrida nocturna del mes. Vercel lo publica desde la
+#                              rama `mensual`, que arma este workflow.
+#   cigob-seguimiento-….app  → el seguimiento DIARIO interno: main tal cual, sin muro.
+#
+# Dos trabajos:
+#   - Publicar un mes nuevo (a mano: «Run workflow» con publicar=true). Elige la
+#     foto del mes, la marca con la etiqueta mensual-AAAA-MM y rearma la rama.
+#     El día fijo de publicación todavía no está decidido; cuando lo esté, se
+#     suma un `schedule` acá.
+#   - Rearmar la rama con el código nuevo y la MISMA foto: en cada push a main
+#     (diseño, textos) y al terminar un cambio pedido desde claude.ai, para que
+#     lo que corrige el equipo también se vea en el mensual. Las corridas del
+#     bot no disparan esto (GitHub no encadena pushes hechos con GITHUB_TOKEN) y
+#     no hace falta: sólo cambian datos, y los del mensual están congelados.
+
+on:
+  workflow_dispatch:
+    inputs:
+      publicar:
+        description: "Publicar un mes nuevo (si no, sólo rearma con el código de main)"
+        type: boolean
+        default: false
+      mes:
+        description: "Mes a publicar, AAAA-MM (vacío = el mes anterior)"
+        required: false
+  push:
+    branches: [main]
+  workflow_run:
+    workflows: ["Cambios desde Claude"]
+    types: [completed]
+
+concurrency:
+  group: mensual
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  componer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Publicar un mes nuevo
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.publicar }}
+        run: |
+          MES="${{ inputs.mes }}"
+          [ -n "$MES" ] || MES=$(date -u -d "$(date -u +%Y-%m-01) -1 day" +%Y-%m)
+          SHA=$(python projects/informe_coyuntura/scripts/mensual.py elegir "$MES")
+          if git rev-parse -q --verify "refs/tags/mensual-$MES" >/dev/null; then
+            echo "::error::mensual-$MES ya existe: un mes publicado no se pisa (borrar la etiqueta a mano si hay que rehacerlo)"
+            exit 1
+          fi
+          git tag "mensual-$MES" "$SHA"
+          git push origin "mensual-$MES"
+          echo "::notice::Publicado mensual-$MES con la foto de ${SHA:0:10}"
+
+      - name: Componer la rama mensual
+        run: |
+          TAG=$(python projects/informe_coyuntura/scripts/mensual.py vigente)
+          python projects/informe_coyuntura/scripts/mensual.py congelar "$TAG"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B mensual
+          git add projects/informe_coyuntura/web/src/data/informe.json projects/informe_coyuntura/web/src/data/series.json
+          git commit -q -m "mensual: código de main $(git rev-parse --short main) con la foto de $TAG" || true
+          if git rev-parse -q --verify origin/mensual >/dev/null && git diff --quiet origin/mensual HEAD; then
+            echo "::notice::La rama mensual ya tenía este código y esta foto: no se publica de nuevo"
+            exit 0
+          fi
+          git push -f origin mensual
+          echo "::notice::Rama mensual rearmada: $TAG con el código de main $(git rev-parse --short main)"

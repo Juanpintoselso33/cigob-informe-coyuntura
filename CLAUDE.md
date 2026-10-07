@@ -355,6 +355,27 @@ what makes Vercel rebuild; it is not a duplicate of the nightly cron.
 Then finish the job per **Definition of done** below. A pipeline run that ends
 in a commit has changed nothing the user can see.
 
+## Dos caras: el informe mensual y el seguimiento diario (ADR-0347)
+
+Desde el 7-oct-2026 el Monitor se publica en **dos proyectos de Vercel**:
+
+| URL | Qué muestra | Desde dónde |
+|---|---|---|
+| `https://informe.cigob.org/` | **El informe del mes**: el código de `main` con `web/src/data/informe.json` y `series.json` **congelados** en la última corrida nocturna del mes. Con muro. | Rama `mensual`, que arma `.github/workflows/mensual.yml` |
+| `https://cigob-seguimiento-a941210feb.vercel.app/` | **El seguimiento diario** (interno, no se difunde, `noindex`): `main` tal cual, con los datos de cada noche. Sin muro. | `main` (proyecto `cigob-seguimiento-a941210feb`) |
+
+- **Un dato nuevo se verifica en el diario, no en `informe.cigob.org`**: ahí recién
+  aparece cuando se publica el mes siguiente.
+- **Un cambio de diseño o de texto se ve en los dos**: cada push humano a `main` (y cada
+  cambio pedido desde claude.ai) rearma la rama `mensual` con el código nuevo y la misma
+  foto. Las corridas del bot no la rearman, y no hace falta.
+- **Publicar el mes**: Actions → «Informe mensual» → Run workflow con `publicar=true`
+  (mes vacío = el anterior). Elige la última corrida cuyo `period` es ese mes, la etiqueta
+  `mensual-AAAA-MM` y rearma la rama. Un mes ya etiquetado no se pisa. El día fijo de
+  publicación está pendiente; cuando se decida, va un `schedule` en ese workflow.
+- **Ojo**: los textos de metodología describen el método **vigente**; la foto de un mes
+  viejo se calculó con el de entonces.
+
 ## Definition of done: the live site, not the commit
 
 **This project exists to show data on a web page. A number that is in a commit
@@ -362,8 +383,9 @@ and not on the page is not delivered.** Before telling the user something is
 ready, the whole chain has to hold:
 
     code → snapshot (`web/src/data/informe.json`) → `npm run build`
-         → **merged/pushed to `main`** → Vercel deploy → **production URL opened
-           and the number actually read there**
+         → **merged/pushed to `main`** → Vercel deploy → **the number actually
+           read on the DAILY site** (`cigob-seguimiento-a941210feb.vercel.app`; `informe.cigob.org`
+           is the frozen monthly photo, see "Dos caras" above)
          → `bigquery_export.py` → la corrida queda en el archivo histórico
 
 Verifying a link in the middle does not authorise saying "done".

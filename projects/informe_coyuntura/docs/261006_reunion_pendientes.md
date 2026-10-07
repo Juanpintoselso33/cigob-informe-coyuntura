@@ -152,7 +152,7 @@ Falta completar:
 - `docs/pendientes-datos.md` tiene una lista parecida pero está vencida (30-jun):
   actualizarla en vez de armar otra.
 
-## 8. Concretar el informe mensual
+## 8. ✅ Concretar el informe mensual (publicado el 7-oct con la foto de septiembre, ADR-0347)
 
 El Monitor del Plan de Gobierno pasa a tener dos caras:
 
