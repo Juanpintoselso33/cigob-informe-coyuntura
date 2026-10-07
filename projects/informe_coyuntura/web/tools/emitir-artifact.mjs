@@ -451,7 +451,10 @@ const problemas = [];
 const rutasVivas = [...new Set([...html.matchAll(/\s(?:src|href)="(\/[^"]*)"/g)].map(m => m[1]))];
 if (rutasVivas.length) problemas.push(`rutas absolutas sin empotrar: ${rutasVivas.slice(0, 6).join(', ')}`);
 if (/export\{/.test(html)) problemas.push('quedó un `export{…}` en un <script type="module"> inline: ese módulo no ejecuta');
-const importesVivos = [...new Set([...html.matchAll(/import[\s{(]["'.][^"']*from"(\.[^"]*)"/g)].map(m => m[1]))];
+// Cualquier import relativo que haya sobrevivido, con o sin llaves: el patrón
+// anterior no veía `import{t as H}from"./hoisted…"` y dejó salir un archivo en
+// blanco (7-oct-2026, el script del muro volvió compartido a track()).
+const importesVivos = [...new Set([...html.matchAll(/import\s*(?:[\w$*\s{},]*\s*from\s*)?["'](\.[^"']*)["']/g)].map(m => m[1]))];
 if (importesVivos.length) problemas.push(`imports relativos sin resolver: ${importesVivos.join(', ')}`);
 if (/import\("\.\//.test(html)) problemas.push('quedó un import() dinámico con ruta relativa');
 if (!/window\.__cgApex=/.test(html)) problemas.push('ApexCharts no quedó expuesto: ningún gráfico va a pintar');

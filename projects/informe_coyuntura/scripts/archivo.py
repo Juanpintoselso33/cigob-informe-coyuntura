@@ -1,21 +1,20 @@
 """Archivo de informes mensuales del Monitor (ADR-0348).
 
-Cada mes publicado queda como una FOTO navegable en `/archivo/AAAA-MM/`: el
-informe entero en un solo archivo (`web/tools/emitir-artifact.mjs`), con el
-código y los datos del día de la foto, y una tarjeta con su resumen en la página
-`/archivo/`.
+Cada mes se RECONSTRUYE CON EL MONITOR DE HOY (código, metodología y diseño)
+sobre los datos crudos de su última corrida nocturna, y queda navegable en
+`/archivo/AAAA-MM/` (el informe entero en un solo archivo, con
+`web/tools/emitir-artifact.mjs`), con una tarjeta en `/archivo/`. Así los meses
+se leen y se comparan con la misma vara que el mes vigente.
 
-La foto de un mes es la última corrida nocturna cuyo snapshot dice ese `period`
-(`mensual.elegir`). Se reconstruye así, en orden de preferencia:
-
-1. «exacta»: el sitio de ESE commit, empaquetado con el emisor de ese commit o,
-   si todavía no existía (antes del 16-ago-2026), con el de hoy.
-2. «código actual»: si el código viejo no se deja empaquetar, el código de hoy
-   con los dos archivos de datos de ese commit, como el mensual (ADR-0347).
-   Queda marcado en la tarjeta: la metodología que se lee es la de hoy.
+Cómo: una copia del código de hoy recibe de la corrida de cierre (`mensual.elegir`)
+sólo los datos crudos —`output/` (cachés de los colectores y series),
+`scripts/vida_cotidiana/data/` y `data/historico/`— y corre `generar_informe.py`
+y `publicar.py` con el reloj de Python fijado en el instante de esa corrida
+(sitecustomize), así el mes, la fecha y la antigüedad de cada dato son los de
+entonces. Después construye el sitio sin muro y lo empaqueta.
 
 Uso:
-    python scripts/archivo.py construir 2026-09     # arma la foto y la tarjeta
+    python scripts/archivo.py construir 2026-09
     python scripts/archivo.py construir 2026-06 2026-07 2026-08 2026-09
 """
 from __future__ import annotations
@@ -67,7 +66,9 @@ def _empaquetar(web: Path, emisor: Path) -> Path | None:
     for paso in (["npm", "ci", "--prefer-offline", "--no-audit", "--no-fund"], ["npm", "run", "build"]):
         r = _run(paso, web, env)
         if r.returncode:
-            print(f"    ✗ {' '.join(paso)}: {(r.stderr or r.stdout)[-400:]}")
+            salida = r.stderr + r.stdout
+            causa = [l for l in salida.splitlines() if re.search(r"rror|Cannot|undefined|sin ficha|vivos", l) and not l.strip().startswith("at ")]
+            print(f"    ✗ {' '.join(paso)}: " + (" | ".join(causa[:6]) or salida[-400:]))
             return None
     destino = web / "tools" / "emitir-artifact.mjs"
     if not destino.exists():
@@ -98,44 +99,106 @@ def _resumen(snap: dict, mes: str, sha: str, modo: str) -> dict:
     }
 
 
+RELOJ = """
+# Fija el reloj de Python en el instante de la corrida que se reconstruye
+# (archivo.py, ADR-0348): el mes del informe, la fecha de generación y los días
+# de antigüedad de cada dato salen de datetime.now()/date.today().
+import datetime as _d, os as _os
+_T = _d.datetime.fromisoformat(_os.environ["ARCHIVO_AHORA"])
+class _Dt(_d.datetime):
+    @classmethod
+    def now(cls, tz=None):
+        t = _T if _T.tzinfo else _T.replace(tzinfo=_d.timezone.utc)
+        return t.astimezone(tz) if tz else t.astimezone().replace(tzinfo=None)
+    @classmethod
+    def today(cls):
+        return cls.now()
+class _Date(_d.date):
+    @classmethod
+    def today(cls):
+        return _Dt.now().date()
+_d.datetime = _Dt
+_d.date = _Date
+"""
+
+# Lo que se trae de la corrida de cierre: los datos crudos que leen
+# generar_informe.py y publicar.py. La metodología (scripts, config, bandas,
+# data/vida/*.json) es la de HOY: eso es lo que hace comparables los meses.
+CRUDOS = ("projects/informe_coyuntura/output",
+          "projects/informe_coyuntura/scripts/vida_cotidiana/data",
+          "projects/informe_coyuntura/data/historico")
+
+
 def construir(mes: str) -> dict:
+    """Reconstruye el mes con el Monitor de HOY (código, metodología y diseño)
+    sobre los datos crudos de la última corrida de ese mes."""
     sha = mensual.elegir(mes)
-    snap = json.loads(mensual._git("show", f"{sha}:{mensual.DATOS}/informe.json"))
-    print(f"· {mes}: corrida {sha[:10]} ({snap.get('generated_at')})")
-    html, modo = None, None
+    snap_viejo = json.loads(mensual._git("show", f"{sha}:{mensual.DATOS}/informe.json"))
+    ahora = snap_viejo.get("generated_at")
+    print(f"· {mes}: datos de la corrida {sha[:10]} ({ahora})")
     with tempfile.TemporaryDirectory(prefix=f"archivo-{mes}-") as tmp:
         arbol = Path(tmp) / "arbol"
-        mensual._git("worktree", "add", "--detach", str(arbol), sha)
+        mensual._git("worktree", "add", "--detach", str(arbol), "HEAD")
         try:
+            for ruta in CRUDOS:
+                shutil.rmtree(arbol / ruta, ignore_errors=True)
+                tar = subprocess.run(["git", "archive", sha, ruta], cwd=RAIZ, capture_output=True, check=True).stdout
+                subprocess.run(["tar", "-x", "-C", str(arbol)], input=tar, check=True)
+            reloj = Path(tmp) / "reloj"
+            reloj.mkdir()
+            (reloj / "sitecustomize.py").write_text(RELOJ, encoding="utf-8")
+            proyecto = arbol / "projects" / "informe_coyuntura"
+            py = RAIZ / "projects" / "informe_coyuntura" / ".venv" / "bin" / "python"
+            env = {"ARCHIVO_AHORA": ahora, "PYTHONPATH": str(reloj), "PYTHONDONTWRITEBYTECODE": "1"}
+            for script in ("scripts/generar_informe.py", "scripts/publicar.py"):
+                r = _run([str(py), script], proyecto, env)
+                if r.returncode:
+                    raise SystemExit(f"{mes}: {script} falló:\n{(r.stderr or r.stdout)[-1500:]}")
+            ruta_snap = proyecto / "web" / "src" / "data" / "informe.json"
+            snap = json.loads(ruta_snap.read_text(encoding="utf-8"))
+            # Los cachés viejos traen cards de indicadores que el Monitor de hoy
+            # ya no tiene (dados de baja o renombrados, como presion_dolarizacion →
+            # desequilibrio_monetario). No puntúan en la metodología de hoy, así
+            # que sacarlas no mueve ningún índice: sólo deja el mes con las cards
+            # que hoy existen. Se registran en la tarjeta.
+            vigentes = json.loads((WEB / "src" / "data" / "informe.json").read_text(encoding="utf-8"))["cinturones"]
+            fuera = []
+            for ck in list(snap.get("cinturones", {})):
+                if ck not in vigentes:
+                    fuera.append(ck)
+                    del snap["cinturones"][ck]
+                    continue
+                inds = snap["cinturones"][ck].get("indicadores", {})
+                for ik in list(inds):
+                    if ik not in vigentes[ck].get("indicadores", {}):
+                        fuera.append(ik)
+                        del inds[ik]
+            if fuera:
+                ruta_snap.write_text(json.dumps(snap, ensure_ascii=False, indent=1), encoding="utf-8")
+                print(f"    · sin card hoy, se quitan: {', '.join(fuera)}")
+            if snap.get("period") != mes:
+                raise SystemExit(f"{mes}: la reconstrucción salió con period={snap.get('period')}")
+            # La foto de un mes no lleva el archivo adentro: ni las fotos de los
+            # otros meses ni sus enlaces (el emisor exige un archivo autocontenido).
+            shutil.rmtree(arbol / WEB_REL / "public" / "archivo", ignore_errors=True)
+            (arbol / WEB_REL / "src" / "contenido" / "archivo.json").write_text('{"meses": []}\n', encoding="utf-8")
             html = _empaquetar(arbol / WEB_REL, EMISOR_HOY)
-            if html:
-                modo = "exacta"
-                datos = html.read_bytes()
-            else:
-                print("    → código viejo no empaquetable: código de hoy con los datos de ese día")
-                mensual._git("worktree", "remove", "--force", str(arbol))
-                mensual._git("worktree", "add", "--detach", str(arbol), "HEAD")
-                for nombre in mensual.ARCHIVOS:
-                    contenido = subprocess.run(["git", "show", f"{sha}:{mensual.DATOS}/{nombre}"], cwd=RAIZ,
-                                               check=True, capture_output=True).stdout
-                    (arbol / mensual.DATOS / nombre).write_bytes(contenido)
-                html = _empaquetar(arbol / WEB_REL, EMISOR_HOY)
-                if not html:
-                    raise SystemExit(f"{mes}: no se pudo armar la foto ni con el código de hoy")
-                modo = "codigo_actual"
-                datos = html.read_bytes()
+            if not html:
+                raise SystemExit(f"{mes}: no se pudo empaquetar el sitio reconstruido")
+            datos = html.read_bytes()
         finally:
             mensual._git("worktree", "remove", "--force", str(arbol))
     salida = WEB / "public" / "archivo" / mes / "index.html"
     salida.parent.mkdir(parents=True, exist_ok=True)
     salida.write_bytes(datos)
-    tarjeta = _resumen(snap, mes, sha, modo)
+    tarjeta = _resumen(snap, mes, sha, "reconstruido")
+    tarjeta["quitados"] = fuera
     tarjeta["peso_kb"] = round(len(datos) / 1024)
     indice = json.loads(INDICE.read_text(encoding="utf-8")) if INDICE.exists() else {"meses": []}
     indice["meses"] = sorted([m for m in indice["meses"] if m["mes"] != mes] + [tarjeta],
                              key=lambda m: m["mes"], reverse=True)
     INDICE.write_text(json.dumps(indice, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    print(f"    ✓ {modo}, {tarjeta['peso_kb']} KB → {salida.relative_to(RAIZ)}")
+    print(f"    ✓ reconstruido con el Monitor de hoy, {tarjeta['peso_kb']} KB → {salida.relative_to(RAIZ)}")
     return tarjeta
 
 

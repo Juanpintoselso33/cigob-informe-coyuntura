@@ -87,7 +87,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   // el mail, cuántos lo cierran y cuántos guardados fallan. NUNCA se manda el
   // mail, el nombre ni el teléfono: GA prohíbe datos personales, y para eso
   // está la base. Sólo si se dejaron (sí/no).
-  import { track } from "../lib/analytics.ts";
+  // GA4 directo (mismas reglas que src/lib/analytics.ts: sin datos personales,
+  // sin valores vacíos). NO se importa analytics.ts: este script va en TODAS las
+  // páginas, y el import hacía que Vite sacara track() a un módulo compartido que
+  // el emisor del informe en un solo archivo no sabe resolver (7-oct-2026: la
+  // foto del archivo salía en blanco).
+  const track = (evento: string, params: Record<string, unknown> = {}) => {
+    const limpio = Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined && v !== null && v !== ""));
+    try { (window as any).gtag?.("event", evento, limpio); } catch {}
+  };
   const muro = document.getElementById("cg-muro");
   const form = document.getElementById("cg-muro-form") as HTMLFormElement | null;
   const input = document.getElementById("cg-muro-mail") as HTMLInputElement | null;

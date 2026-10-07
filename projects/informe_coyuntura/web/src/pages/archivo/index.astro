@@ -22,7 +22,7 @@ const fecha = (iso?: string) =>
       <div class="cg-section-head">
         <p class="cg-eyebrow">Informes anteriores</p>
         <h1 class="cg-h2">Archivo</h1>
-        <p class="cg-h2-sub">Cada mes queda guardado tal como se publicó: el informe completo, navegable, con los datos de su último día.</p>
+        <p class="cg-h2-sub">Cada mes, reconstruido con el Monitor de hoy sobre los datos de su último día: la misma vara para todos, así se pueden comparar.</p>
       </div>
       {meses.length === 0 ? (
         <p class="cg-archivo-vacio">Todavía no hay meses archivados.</p>
@@ -52,7 +52,7 @@ const fecha = (iso?: string) =>
                 <a class="cg-archivo-ver" href={`${base}/archivo/${m.mes}/`} data-mes={m.mes}>Ver el informe de {mesLegible(m.mes).toLowerCase()} →</a>
                 <p class="cg-archivo-nota">
                   Datos al {fecha(m.generado)}.
-                  {m.modo === "codigo_actual" && " Reconstruido con la versión actual del sitio: la metodología que se lee es la de hoy."}
+
                 </p>
               </article>
             );
@@ -66,7 +66,15 @@ const fecha = (iso?: string) =>
 
 <script>
   // GA4 (regla del repo: toda funcionalidad nueva deja su huella).
-  import { track } from "../../lib/analytics.ts";
+  // GA4 directo (mismas reglas que src/lib/analytics.ts: sin datos personales,
+  // sin valores vacíos). NO se importa analytics.ts: este script va en TODAS las
+  // páginas, y el import hacía que Vite sacara track() a un módulo compartido que
+  // el emisor del informe en un solo archivo no sabe resolver (7-oct-2026: la
+  // foto del archivo salía en blanco).
+  const track = (evento: string, params: Record<string, unknown> = {}) => {
+    const limpio = Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined && v !== null && v !== ""));
+    try { (window as any).gtag?.("event", evento, limpio); } catch {}
+  };
   track("ver_archivo");
   document.querySelectorAll<HTMLAnchorElement>(".cg-archivo-ver").forEach(a =>
     a.addEventListener("click", () => track("abrir_mes_archivo", { mes: a.dataset.mes })));
