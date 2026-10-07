@@ -214,6 +214,14 @@ indicador congelado.
   saliendo 3+1 en desktop, con una regla puesta justamente para arreglarla
   (verificado 2026-08-21). Antes de escribir grilla en `overrides.css`, mirá qué
   `display` le pone `dashboard.css` a ese selector.
+- **Toda funcionalidad nueva del sitio lleva su huella en GA4** (pedido de Juan,
+  7-oct-2026). Antes de dar por terminado algo que la gente usa —un botón, un
+  popup, un filtro, una descarga—, revisá si manda su evento con `track()` de
+  `web/src/lib/analytics.ts`, como ya hacen `ver_ficha`, `ver_cinturon` y los
+  `muro_*` del muro de acceso (ADR-0342). Nombres en snake_case, y **nunca datos
+  personales** (mail, nombre, teléfono): GA los prohíbe; a lo sumo, si se dejaron.
+  Un parámetro nuevo sólo sirve en los informes si además se da de alta como
+  dimensión personalizada en GA (Administrar → Definiciones personalizadas).
 - Validate with the narrowest useful command: `.venv/bin/python -m pytest
   tests/ -k ...`, `npx tsc --noEmit`, `npm run build` — not a full pipeline re-run
   unless the task actually needs fresh live data.
