@@ -47,6 +47,10 @@ TOKEN = os.environ.get("SLACK_BOT_TOKEN", "")
 # producto se habla, así que todo aviso lo nombra en la cabecera.
 MONITOR = "Monitor del Plan de Gobierno"
 MONITOR_URL = "https://informe.cigob.org/"          # la misma que aviso_informe.URL_PUBLICA
+# Desde el 7-oct-2026 (ADR-0347) informe.cigob.org es el INFORME DEL MES, con
+# los datos congelados: una corrida nocturna no lo cambia. Lo de cada noche se
+# ve en el seguimiento diario interno, y es lo que una corrida caída deja viejo.
+DIARIO_URL = "https://cigob-seguimiento-a941210feb.vercel.app/"   # la misma que aviso_informe.URL_DIARIO
 
 
 def _cabecera(glifo: str, texto: str) -> str:
@@ -391,8 +395,9 @@ def _reporte(a, pasos, motivos, cols, resumen, fin, cotejos=()) -> int:
         out.append("_Sin log de colectores: la corrida se cortó antes o no se pudo leer._")
 
     out.append("\n## Qué está viendo la gente\n")
-    out.append("El snapshot **no se publicó**: producción sigue sirviendo el anterior"
-               + (f", generado el {a.sirviendo}" if a.sirviendo else "") + ".")
+    out.append("El snapshot **no se publicó**: el seguimiento diario sigue mostrando el anterior"
+               + (f", generado el {a.sirviendo}" if a.sirviendo else "") + f" ({DIARIO_URL}).")
+    out.append(f"El informe del mes ({MONITOR_URL}) no cambia con esto: es la foto congelada del mes.")
     out.append("No hay un dato malo publicado — hay un dato viejo.")
     out.append(f"\n{a.url}\n\nEste issue se cierra solo cuando una corrida vuelva a "
                "terminar bien.")
@@ -517,7 +522,7 @@ def problemas_degradado(log: str, log_bq: str = "", estado_bq: str = "") -> list
     if archivo:
         out.append(_problema(
             "bigquery", "🟡", "la corrida no queda en el archivo histórico (BigQuery)",
-            "la corrida vuelve a quedar en el archivo histórico", ["*Qué ve la gente:* nada, la web está al día."] + [f"*Por qué:* {m}" for m in archivo],
+            "la corrida vuelve a quedar en el archivo histórico", ["*Qué ve la gente:* nada: el seguimiento diario está al día y el informe del mes no depende de esta corrida."] + [f"*Por qué:* {m}" for m in archivo],
             huella="bigquery"))
     return out
 
@@ -619,7 +624,7 @@ def _corte_despues_de_publicar(a, pasos: list[str]) -> dict:
     Por eso es 🟡 y cierra el hilo `corrida` si había uno abierto."""
     pendientes = ", ".join(pasos) or "no se pudo determinar"
     cuerpo = [
-        f"*Qué ve la gente:* <{MONITOR_URL}|el Monitor> está al día"
+        f"*Qué ve la gente:* <{DIARIO_URL}|el seguimiento diario> está al día"
         + (f" (corrida {a.sirviendo})" if a.sirviendo else "") + ": la corrida sí publicó.",
         f"*Qué quedó sin hacer:* {pendientes}.",
         "*Qué hacer:* si faltó BigQuery, la corrida se recupera con `bigquery_backfill.py`. "
@@ -687,9 +692,10 @@ def main() -> int:
             cuerpo.append(f"*Colectores:* {_linea_colectores(cols)}.")
         _seccion(cuerpo, "*Cotejo manual pendiente:*", cotejos, TOPE_COTEJOS)
         cuerpo.append(
-            f"*Qué ve la gente:* <{MONITOR_URL}|el Monitor> sigue mostrando la corrida anterior"
+            f"*Qué ve la gente:* <{DIARIO_URL}|el seguimiento diario> sigue mostrando la corrida anterior"
             + (f" ({a.sirviendo})" if a.sirviendo else "")
-            + ". No hay dato malo publicado: hay dato viejo."
+            + f". <{MONITOR_URL}|El informe del mes> no cambia: es la foto congelada del mes."
+            + " No hay dato malo publicado: hay dato viejo."
         )
         cuerpo.append("*Qué hacer:* el diagnóstico completo está en el issue `pipeline-caido` y en el run.")
         titulo = ("la corrida nocturna se corta sin publicar" if cancelado

@@ -29,6 +29,10 @@ RAIZ = Path(__file__).resolve().parents[1]
 SNAPSHOT = RAIZ / "web" / "src" / "data" / "informe.json"
 ESTADO = RAIZ / "output" / "estado_slack.json"
 URL_PUBLICA = "https://informe.cigob.org/"
+# Lo que resume este canal son los datos de CADA NOCHE, que desde el 7-oct-2026
+# (ADR-0347) se ven en el seguimiento diario interno; informe.cigob.org es la
+# foto congelada del mes. Los mensajes enlazan los dos.
+URL_DIARIO = "https://cigob-seguimiento-a941210feb.vercel.app/"
 
 TOKEN = os.environ.get("SLACK_BOT_TOKEN", "")
 CANAL = os.environ.get("SLACK_CANAL_INFORME", "")
@@ -84,7 +88,7 @@ def texto_fijo(d: dict, e: dict) -> str:
         f"Score global *{num(e['score_global'])}* · riesgo dominante "
         f"*{e['riesgo']}*, desde *{NOMBRES.get(e['cinturon_dominante'], e['cinturon_dominante'])}*"
         f"{alerta}\n\n{linea}\n\n"
-        f"<{URL_PUBLICA}|Ver el Monitor> · actualizado {fecha}\n"
+        f"<{URL_DIARIO}|Ver el seguimiento diario> · actualizado {fecha} · <{URL_PUBLICA}|Informe del mes>\n"
         f"_Este mensaje se actualiza solo. Cuando algo cambie de verdad, aviso aparte._"
     )
 
@@ -153,7 +157,7 @@ def main() -> int:
         slack("chat.postMessage", channel=CANAL, unfurl_links=False, text=(
             ":large_blue_circle: *El Monitor se movió.*\n"
             + "\n".join(f"• {n}" for n in novedades)
-            + f"\n\n<{URL_PUBLICA}|Ver el Monitor>"
+            + f"\n\n<{URL_DIARIO}|Ver el seguimiento diario> · <{URL_PUBLICA}|Informe del mes>"
         ))
         print(f"[informe] avisados {len(novedades)} cambio(s)")
     else:
