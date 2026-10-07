@@ -12,6 +12,30 @@ import { informe, CINTURONES, indiceDe, num } from "../lib/datos.ts";
 // La reconstrucción completa se publica separada de los pares del panel:
 // series de componentes SIN ajustes del analista — el nivel puede diferir
 // del publicado. La evolución también puede cambiar por cobertura (nota abajo).
+// Oct-2026 (pedido editorial): cada tile se titula por su cinturón.
+const TITULO_TILE: Record<string, string> = {
+  macro: "Cinturón Macro",
+  politica: "Cinturón de la Política",
+  vida: "Cinturón del Impacto Social",
+  gestion: "Cinturón de la Gestión",
+};
+// Eje vertical en degradado de semáforo (oct-2026): verde arriba, rojo abajo,
+// con cada color centrado en su banda. Los cortes son los de CORTES_SEMAFORO
+// (parametrica.py) en la escala de cada índice; si cambian allá, cambiar acá.
+// El de impacto social pasa a rango fijo 80-110 para que la franja de color
+// coincida con la altura real de la línea (con rango automático no coincidía).
+const RANGO_BASE100: [number, number] = [80, 110];
+function ejeSemaforo(rango: [number, number], cortes: [number, number, number]) {
+  const [lo, hi] = rango;
+  const pos = (v: number) => Math.max(0, Math.min(100, ((hi - v) / (hi - lo)) * 100));
+  const [c1, c2, c3] = cortes; // verde≥c1, amarillo c2-c1, naranja c3-c2, rojo<c3
+  const p = (n: number) => `${n.toFixed(1)}%`;
+  const verde = pos((hi + c1) / 2), amarillo = pos((c1 + c2) / 2),
+        naranja = pos((c2 + c3) / 2), rojo = pos((c3 + lo) / 2);
+  return `linear-gradient(to bottom, #2E9E5B 0%, #2E9E5B ${p(verde)}, #E8C547 ${p(amarillo)}, `
+       + `#EE8A2F ${p(naranja)}, #D64541 ${p(rojo)}, #D64541 100%)`;
+}
+
 const MES_ABREV = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
 const mesCorto = (ym: string) => `${MES_ABREV[+ym.slice(5, 7) - 1]}-${ym.slice(0, 4)}`;
 
@@ -42,19 +66,23 @@ const trayectorias = CINTURONES
 {trayectorias.length > 0 && (
 <section class="cg-section" id="evolucion">
   <div class="cg-section-head">
-    <p class="cg-eyebrow">Cómo va la película</p>
-    <h2 class="cg-h2">El índice de cada cinturón, mes a mes</h2>
-    <p class="cg-h2-sub">El índice de cada cinturón desde diciembre de 2023. En los cuatro, subir es mejorar: el de impacto social toma 100 como el nivel de fines de 2023 y los otros tres van de 0 a 100.</p>
+    <h2 class="cg-h2">La evolución de cada cinturón, mes a mes</h2>
+    <p class="cg-h2-sub">Se muestra la evolución de cada cinturón desde diciembre de 2023. En los cuatro, subir es mejorar: el Cinturón del Impacto Social parte de 100 como nivel del último trimestre del 2023 y los otros tres van de 0 a 100.</p>
   </div>
     <div class="cg-chart-grid" id="cg-chart-grid">
       {trayectorias.map(t => (
         <div class:list={["cg-chart-mini-card", t.meta.slug]}>
-          <h3>{t.idx.Corto}</h3>
+          <h3>{TITULO_TILE[t.meta.slug] ?? t.idx.Corto}</h3>
           <div class="cg-sub">{t.desde} → {t.hasta} · {t.serie.length} meses</div>
-          <div class="cg-chart-mini" data-evo-key={`__indice_${t.meta.slug}`}
-               data-evo-rango={t.idx.base100 ? undefined : "0,100"}
-               data-evo-slug={t.meta.slug} data-evo-unidad={t.idx.base100 ? "índice (100 = 4T-2023)" : "puntos (0-100)"}
-               data-evo-serie={JSON.stringify(t.serie)}></div>
+          <div class="cg-evo-eje-wrap">
+            <span class="cg-evo-eje" aria-hidden="true"
+                  title="Verde arriba (mejor), rojo abajo (peor)"
+                  style={`background: ${t.idx.base100 ? ejeSemaforo(RANGO_BASE100, [105, 95, 85]) : ejeSemaforo([0, 100], [60, 40, 20])}`}></span>
+            <div class="cg-chart-mini" data-evo-key={`__indice_${t.meta.slug}`}
+                 data-evo-rango={t.idx.base100 ? RANGO_BASE100.join(",") : "0,100"}
+                 data-evo-slug={t.meta.slug} data-evo-unidad={t.idx.base100 ? "índice (100 = 4T-2023)" : "puntos (0-100)"}
+                 data-evo-serie={JSON.stringify(t.serie)}></div>
+          </div>
           <div class="cg-chart-mini-foot">
             <div class="cg-chart-mini-now">{num(t.ahora)}</div>
             <span class:list={["cg-chart-mini-delta", t.delta > 0 ? "mejora" : t.delta < 0 ? "empeora" : "flat"]}>
@@ -68,6 +96,22 @@ const trayectorias = CINTURONES
         </div>
       ))}
     </div>
+  <style>
+    .cg-evo-eje-wrap {
+      display: flex;
+      align-items: stretch;
+      gap: 8px;
+    }
+    .cg-evo-eje {
+      flex: 0 0 6px;
+      border-radius: 3px;
+      opacity: .9;
+    }
+    .cg-evo-eje-wrap > .cg-chart-mini {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+  </style>
   <p class="cg-evolucion-nota">Series reconstruidas con los datos disponibles en cada mes, sin ajustes del analista. Los componentes con datos pueden cambiar entre meses: las variaciones combinan cambios de valores y de cobertura. El nivel puede diferir del informe publicado en su momento.</p>
 </section>
 )}
