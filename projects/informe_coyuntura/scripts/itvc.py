@@ -382,9 +382,15 @@ DIMENSIONES_ITVC = {
         # decisión, no por olvido, y para que un futuro componente de
         # confianza (ver ADR-0314) tenga dónde entrar sin inventar una
         # dimensión nueva.
+        # ADR-0345 (7-oct-2026): entra la confianza en el Gobierno de la UTDT
+        # (`icg_utdt`), el componente de confianza para el que se dejó
+        # reservada esta dimensión. Parte en 0,5/0,5 con `sentimiento_digital`,
+        # que sigue suspendido: el mecanismo de ADR-0245 lo saca del cálculo y
+        # el ICG absorbe su mitad, así que hoy pesa el 8,25% entero. Si el
+        # sentimiento reingresa, el reparto lo fija su propio ADR.
         "nombre": "Confianza y percepción",
         "peso": 0.0825,
-        "indicadores": {"sentimiento_digital": 1.0},
+        "indicadores": {"icg_utdt": 0.5, "sentimiento_digital": 0.5},
     },
     "seguridad": {
         # ADR-0115. Dimensión propia porque la victimización no es percepción ni
@@ -788,9 +794,13 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # más ingreso comprometido en cuotas e intereses = peor capacidad de pago.
     idx["carga_servicio_deuda_hogares"] = rebase_de_serie(
         series, "carga_servicio_deuda_hogares", invertido=True)
+    # Confianza en el Gobierno de la UTDT (ADR-0345): escala 0-5, NO invertida
+    # (más confianza es mejor), rebaseada a 4T-2023 como todos los componentes.
+    idx["icg_utdt"] = rebase_de_serie(series, "icg_utdt")
     # `icc_utdt` YA NO se rebasea acá (ADR-0314): salió de DIMENSIONES_ITVC y
     # pasó a ancla de validación externa en validacion_externa.py, que lee su
-    # serie cruda —no este índice base-100— igual que hace con `icg_utdt`.
+    # serie cruda —no este índice base-100—. (`icg_utdt`, que también era ancla
+    # externa, es componente desde ADR-0345: se rebasea arriba.)
     idx["subocupacion_demandante"] = rebase_de_serie(series, "subocupacion_demandante", invertido=True)
     # Empleo registrado privado (ADR-0130): NO invertido — más empleo es mejor.
     # Es el único componente de la dimensión que mide empleo de verdad; los

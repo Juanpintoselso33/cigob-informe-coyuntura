@@ -7,6 +7,7 @@ cinturon: 'politica'
 indicadores: [votometro_ventaja_lla]
 archivos: ['scripts/itcp.py', 'web/src/lib/fichas.ts']
 corrige: ['0121']
+relacionado: ['0344']
 ambito: 'ITCP · `votometro_ventaja_lla` · semáforo'
 origen: 'Doc «260915 Ajuste de los Indicadores» — umbrales de Luis, en colores de semáforo'
 ---

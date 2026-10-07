@@ -69,9 +69,9 @@ def test_anclas_frescas_pasan(tmp_path):
 def test_un_ancla_sin_datos_bloquea(tmp_path):
     """El factor común se calcularía sobre menos series que las declaradas."""
     anclas = _todas_frescas()
-    anclas["icg_utdt"] = None
+    anclas["epu_argentina"] = None
     cod, salida = _correr(_snapshot(tmp_path), _validacion(tmp_path, anclas))
-    assert "[FALLA] G7 icg_utdt" in salida, salida
+    assert "[FALLA] G7 epu_argentina" in salida, salida
     assert "SIN datos" in salida
     assert cod != 0, "un ancla ausente tiene que bloquear la publicación"
 
@@ -80,9 +80,9 @@ def test_un_ancla_congelada_avisa_pero_no_bloquea(tmp_path):
     """Es una fuente demorada (ADR-0133), pero queda NOMBRADA en cada corrida:
     exactamente lo que le faltó al ICG durante meses."""
     anclas = _todas_frescas()
-    anclas["icg_utdt"] = {"ultimo": _mes(400), "n": 296}
+    anclas["epu_argentina"] = {"ultimo": _mes(400), "n": 296}
     cod, salida = _correr(_snapshot(tmp_path), _validacion(tmp_path, anclas))
-    assert "G7-frescura icg_utdt" in salida, salida
+    assert "G7-frescura epu_argentina" in salida, salida
     assert "se congeló" in salida
     assert "[FALLA]" not in salida, "una fuente demorada no debe bloquear:\n" + salida
     assert cod == 0, salida

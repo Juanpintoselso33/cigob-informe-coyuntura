@@ -5,43 +5,8 @@ import itcp
 import parametrica
 
 
-def test_banda_votometro_extremos():
-    # (14,inf,100)·(8,14,80)·(2,8,40)·(-2,2,20)·(-inf,-2,0) — ADR-0312
-    # (revisión: techo 0-100, no 60 — ver comentario en BANDAS_ITCP).
-    # Convención low exclusivo/high inclusivo (parametrica.puntaje_banda): en
-    # el límite compartido 8.0 el punto cae en la banda que lo incluye por
-    # high inclusivo (2,8,40], NO en la banda que lo excluye por low
-    # exclusivo (8,14) — mismo criterio que itcg pinea (ver test_itcg.py,
-    # p.ej. protocolo_antipiquetes en 75.01 y no en 75.0 exacto).
-    assert itcp.puntaje_banda(20.0, itcp.BANDAS_ITCP["votometro_ventaja_lla"]) == 100
-    assert itcp.puntaje_banda(8.0, itcp.BANDAS_ITCP["votometro_ventaja_lla"]) == 40
-    assert itcp.puntaje_banda(7.9, itcp.BANDAS_ITCP["votometro_ventaja_lla"]) == 40
-    assert itcp.puntaje_banda(-20.0, itcp.BANDAS_ITCP["votometro_ventaja_lla"]) == 0
-
-
-def test_banda_votometro_semaforo_traduce_umbrales_de_luis():
-    """ADR-0312: los cortes de Luis son de COLOR (verde/amarillo/naranja/rojo),
-    no de puntaje. El color no se declara: sale de la tensión equivalente del
-    puntaje interpolado (parametrica.color_de_puntaje, cortes de tensión
-    4/6/8 → puntaje 60/40/20). Prueba los 8 valores que pide el issue,
-    incluidos los DOS cortes exactos (+5 y 0) para fijar de qué lado caen."""
-    bandas = itcp.BANDAS_ITCP["votometro_ventaja_lla"]
-    casos = [
-        (12.0, "verde"),     # más de +8
-        (8.0, "verde"),      # +8 exacto: cae en verde, no en amarillo
-        (6.0, "amarillo"),   # entre +8 y +5
-        (5.0, "amarillo"),   # +5 exacto: límite amarillo/naranja, cae en amarillo
-        (2.0, "naranja"),    # entre +5 y 0
-        (0.0, "naranja"),    # 0 exacto: límite naranja/rojo, cae en naranja
-        (-1.0, "rojo"),      # negativa
-        (-10.0, "rojo"),     # muy negativa
-    ]
-    for ventaja, color_esperado in casos:
-        puntaje = parametrica.puntaje_interpolado(ventaja, bandas)
-        color = parametrica.color_de_puntaje(puntaje)
-        assert color == color_esperado, (
-            f"ventaja={ventaja} dio puntaje={puntaje} → color={color}, "
-            f"esperaba {color_esperado}")
+# Los dos tests de la banda del Votómetro (ADR-0312) salieron con el
+# indicador (ADR-0344).
 
 
 def test_banda_low_exclusivo_high_inclusivo():
@@ -282,7 +247,7 @@ def test_dimension_cohesion_interna_es_solo_el_compuesto():
     # ENTRE dimensiones (ADR-0036) no se tocan.
     dim = itcp.DIMENSIONES_ITCP["cohesion_interna"]
     assert dim["indicadores"] == {"cohesion_bloque": 1.0}
-    assert dim["peso"] == 0.15   # 0.20 → 0.18 (ADR-0088) → 0.15 (ADR-0126)
+    assert dim["peso"] == 0.1613   # 0.20 → 0.18 (ADR-0088) → 0.15 (ADR-0126) → 0.1613 (ADR-0344)
 
 
 def test_dimension_conflicto_social_combina_extension_e_intensidad():
@@ -295,7 +260,7 @@ def test_dimension_conflicto_social_combina_extension_e_intensidad():
         "conflictividad_nacional": 0.60,
         "jornadas_individuales_no_trabajadas_12m": 0.40,
     }
-    assert dim["peso"] == 0.10   # 0.15 → 0.12 (ADR-0088) → 0.10 (ADR-0126)
+    assert dim["peso"] == 0.1075   # 0.15 → 0.12 (ADR-0088) → 0.10 (ADR-0126) → 0.1075 (ADR-0344)
 
 
 def test_indicadores_contexto_declarados_y_fuera_de_las_dimensiones():
@@ -347,7 +312,6 @@ def test_pesos_itcp_suman_uno_en_cada_dimension():
 
 def test_calcular_itcp_pondera_dimensiones():
     valores = {
-        "votometro_ventaja_lla": 15.0,       # imagen_voto, puntaje 100 (techo 0-100, ADR-0312)
         "ratio_dnu": 0.2,                    # poder_legislativo, puntaje 100
         "eficacia_legislativa": 60.0,        # poder_legislativo, puntaje 100
         "veto_quorum": 2.0,                  # poder_legislativo, puntaje 100
@@ -368,19 +332,16 @@ def test_calcular_itcp_pondera_dimensiones():
     }
     resultado = itcp.calcular_itcp(valores)
     assert resultado is not None
-    # imagen_voto llega a 100 con ventaja=15 (>14, ancla superior) — techo
-    # 0-100 restaurado tras la revisión del corte 60 (ADR-0312): con todas
-    # las demás dimensiones también en 100, el índice da 100 parejo.
+    # Con todas las dimensiones presentes en su óptimo, el índice da 100
+    # parejo (la dimensión imagen_voto salió en ADR-0344).
     assert resultado["valor"] == 100.0
     assert resultado["banda"] == "aflojado"
 
 
 def test_calcular_itcp_renormaliza_ante_faltantes():
-    # Solo imagen_voto disponible -> esa dimensión sola determina el índice.
-    # Techo 0-100 (ADR-0312, revisión): con ventaja=15 (>14) el indicador
-    # satura en el puntaje pleno, igual que cualquier otro indicador del
-    # ITCP en su óptimo.
-    resultado = itcp.calcular_itcp({"votometro_ventaja_lla": 15.0})
+    # Sólo cohesión interna disponible -> esa dimensión sola determina el
+    # índice (antes se probaba con el Votómetro, que salió en ADR-0344).
+    resultado = itcp.calcular_itcp({"cohesion_bloque": 100.0})
     assert resultado is not None
     assert resultado["valor"] == 100.0
 

@@ -55,6 +55,7 @@ DESDE_SERIES = {
     # bug que esta guarda persigue (ADR-0067 y el patrón de la card del IVI).
     "carga_servicio_deuda_hogares",
     "mora_familias",
+    "icg_utdt",   # ADR-0345: la card sale de la serie de la UTDT ya descargada
 }
 
 

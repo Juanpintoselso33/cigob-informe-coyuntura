@@ -147,7 +147,6 @@ G7_MAX_SIN_AVANZAR = 80
 G7_MAX_DIAS_DEFAULT = 150
 G7_MAX_DIAS = {
     "merval_usd": 45,                       # mercado, cierra todos los meses
-    "clima_electoral": 75,                  # Votómetro, mensual propio
     # `consumo_supermercados` salió del panel en ADR-0225 (pasó a componente):
     # su frescura la vigila `MAX_DIAS`, como la de cualquier otro componente.
     "consumo_mayoristas": 190,             # INDEC, publica con 2-3 meses

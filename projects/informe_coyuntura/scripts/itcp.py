@@ -93,35 +93,8 @@ import parametrica
 INF = float("inf")
 
 BANDAS_ITCP = {
-    "votometro_ventaja_lla": [           # pp gap LLA-PJ, mayor = mejor
-        # CONCEPTUAL (ADR-0312, corrige ADR-0121): los cortes traducen el
-        # semáforo que pidió Luis (verde/amarillo/naranja/rojo), no ya los
-        # márgenes simétricos ±5/±15 de ADR-0121. El semáforo del motor no se
-        # declara: se DERIVA del puntaje 0-100 vía la tensión equivalente
-        # (parametrica.CORTES_SEMAFORO, cortes de tensión 4/6/8 → puntaje
-        # 60/40/20). Las anclas de abajo se eligieron para que esos cruces de
-        # color caigan en los pp que pidió Luis SIN bajar el techo del
-        # indicador (revisión adversarial del corte 60→100, misma corrida
-        # ADR-0312): la primera versión usaba 4 bandas con ancla superior
-        # abierta en 8 → puntaje 60, lo que convertía el techo REAL del
-        # indicador en 60 y rompía la polaridad de la tensión (ver el ADR:
-        # con techo 60, la tensión mínima es exactamente 4,0, el borde
-        # inclusivo del verde, así que el indicador sólo llega a "sin
-        # tensión" saturado, nunca antes, y no distingue una ventaja de +8
-        # de una de +40). Agregando una QUINTA banda arriba (14, INF) el
-        # mismo barrido de colores se logra con techo 100:
-        #   ventaja > 8      → puntaje ≥ 60 → verde   (igual que antes)
-        #   entre  8 y 5     → puntaje [40,60) → amarillo
-        #   entre  5 y 0     → puntaje [20,40) → naranja
-        #   0 o negativa     → puntaje < 20  → rojo (saturado en 0 desde -2)
-        # Las anclas (edge de banda abierta, punto medio de banda cerrada)
-        # quedan en 14, 11 (medio de 8-14), 5 (medio de 2-8), 0 (medio de
-        # -2-2) y -2 (edge) — ver test_banda_votometro_semaforo en
-        # tests/test_itcp.py, que prueba los 4 colores contra 8 valores, y
-        # test_banda_votometro_extremos para los escalones crudos.
-        (14.0, INF, 100), (8.0, 14.0, 80), (2.0, 8.0, 40), (-2.0, 2.0, 20),
-        (-INF, -2.0, 0),
-    ],
+    # `votometro_ventaja_lla` salió del ITCP el 7-oct-2026 (ADR-0344) y con él su
+    # banda (ADR-0312). Si vuelve, sale de `git show`.
     "cobertura_judicial": [              # % de cargos de juez con juez designado
         # CONCEPTUAL (ADR-0126): los cortes son niveles redondos de cobertura de
         # un cuerpo, con lectura propia y sin referencia al rango observado —
@@ -561,7 +534,9 @@ DIMENSIONES_ITCP = {
         # —legisladores, gobernadores, empresarios— el tercero no tenía ningún
         # indicador, y llamó a eso "la recomendación de mayor prioridad de todo
         # el documento". El orden relativo de las cinco se conserva intacto.
-        "peso": 0.21,   # 0.25 → 0.21 (ADR-0126)
+        # 0.25 → 0.21 (ADR-0126) → 0.2258 (ADR-0344: sale imagen_voto y las
+        # seis restantes absorben su 0.07 proporcionalmente, ÷0.93).
+        "peso": 0.2258,
         # Pesos internos redistribuidos 2026-07-16 al entrar bloqueo_sostenido
         # (ADR-0069): cada indicador cede 0.05 y el nuevo toma 0.20 — la
         # dimensión gana la cara ganada del bloqueo (derrotas solo cuenta la
@@ -601,13 +576,13 @@ DIMENSIONES_ITCP = {
     },
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
-        "peso": 0.19,   # 0.25 → 0.22 (ADR-0088) → 0.19 (ADR-0126)
+        "peso": 0.2043,   # 0.25 → 0.22 (ADR-0088) → 0.19 (ADR-0126) → 0.2043 (ADR-0344)
         "indicadores": {"iaf_transferencias": 0.40, "alineamiento_senadores_prov": 0.30,
                         "adhesion_reformas_provincial": 0.30},
     },
     "cohesion_interna": {
         "nombre": "Cohesión interna del oficialismo",
-        "peso": 0.15,   # 0.20 → 0.18 (ADR-0088) → 0.15 (ADR-0126)
+        "peso": 0.1613,   # 0.20 → 0.18 (ADR-0088) → 0.15 (ADR-0126) → 0.1613 (ADR-0344)
         # 2026-07-10 (ADR-0048): la dimensión queda en un solo indicador — el
         # compuesto bicameral (Diputados 65% + Senado 35% adentro de la
         # fórmula). rotacion_gabinete (que había entrado el 09-jul por
@@ -617,7 +592,7 @@ DIMENSIONES_ITCP = {
     },
     "conflicto_social": {
         "nombre": "Conflicto social",
-        "peso": 0.10,   # 0.15 → 0.12 (ADR-0088) → 0.10 (ADR-0126)
+        "peso": 0.1075,   # 0.15 → 0.12 (ADR-0088) → 0.10 (ADR-0126) → 0.1075 (ADR-0344)
         # 2026-07-11 (ADR-0052): conflictividad_nacional (ACLED país
         # entero, 30 puntos reales) reemplaza a movilizacion_cepa (2
         # puntos, acumulado YTD no comparable, sin backfill posible), que
@@ -631,14 +606,13 @@ DIMENSIONES_ITCP = {
         "indicadores": {"conflictividad_nacional": 0.60,
                         "jornadas_individuales_no_trabajadas_12m": 0.40},
     },
-    "imagen_voto": {
-        "nombre": "Imagen y voto",
-        "peso": 0.07,   # 0.10 → 0.08 (ADR-0088) → 0.07 (ADR-0126)
-        "indicadores": {"votometro_ventaja_lla": 1.0},
-    },
+    # «Imagen y voto» (votometro_ventaja_lla, 0.07) salió el 7-oct-2026
+    # (ADR-0344): el Votómetro deja el Monitor y pasa a ser otro producto. Su
+    # peso se repartió entre las seis restantes en proporción (÷0.93), el mismo
+    # procedimiento inverso que ADR-0330 usó dentro del poder legislativo.
     "poder_judicial": {
         "nombre": "Poder judicial",
-        "peso": 0.15,
+        "peso": 0.1613,   # 0.15 → 0.1613 (ADR-0344)
         # Dimensión nueva 2026-07-25 (ADR-0126), a partir del aporte externo
         # sobre el cinturón político. Cierra el mismo tipo de hueco que ADR-0088
         # cerró con el sector privado: el índice medía en detalle al Congreso y
@@ -675,7 +649,7 @@ DIMENSIONES_ITCP = {
     },
     "sector_privado": {
         "nombre": "Sector privado",
-        "peso": 0.13,   # 0.15 → 0.13 (ADR-0126)
+        "peso": 0.1398,   # 0.15 → 0.13 (ADR-0126) → 0.1398 (ADR-0344)
         # Dimensión nueva 2026-07-19 (ADR-0088). Cierra el hueco que la
         # auditoría externa marcó como prioridad 1: el cinturón medía en
         # detalle al Congreso, de forma indirecta a los gobernadores y no
@@ -791,7 +765,6 @@ FAMILIAS_ITCP = {
     "cobertura_judicial": "capacidad",
 
     # Recursos de negociación: no son conducta de nadie, son activos.
-    "votometro_ventaja_lla": "recursos",       # capital electoral
     "iaf_transferencias": "recursos",          # el giro fiscal como instrumento
 }
 
@@ -857,9 +830,6 @@ REZAGO_MESES_ITCP = {
     # Ventanas de 90 días.
     "alineamiento_senadores_prov": 1.5,
     "cohesion_bloque": 1.5,
-    # Encuestas ponderadas por recencia: el peso se concentra en las últimas
-    # semanas, así que el centroide efectivo es de alrededor de un mes.
-    "votometro_ventaja_lla": 1.0,
     # Stock acumulado de adhesiones: describe el estado vigente, no un promedio.
     "adhesion_reformas_provincial": 0.0,
 }

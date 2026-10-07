@@ -57,10 +57,11 @@ FAMILIA = {
     "inversion_directa_externa": "itcg",
     "inversion_portafolio_externa": "itcg",
     "financiamiento_externo_privado": "itcg",
-    # política: incertidumbre, capital político y expectativa electoral
+    # política: incertidumbre. La confianza en el Gobierno (icg_utdt) salió el
+    # 7-oct-2026 porque pasó a ser componente del ITCIS (ADR-0345): una
+    # estadística del panel no puede ser componente de ningún índice. El clima
+    # electoral salió con el Votómetro (ADR-0344).
     "epu_argentina": "itcp",
-    "icg_utdt": "itcp",
-    "clima_electoral": "itcp",
     # ciclo de la actividad: es el ancla del ITCM, que tiene su propio régimen
     # (ADR-0158). Acá entra sólo como contraste AJENO para los otros tres.
     "indice_lider": "itcm",
@@ -87,8 +88,6 @@ ETIQUETAS = {
     "inversion_portafolio_externa": "Inversión de cartera de no residentes",
     "financiamiento_externo_privado": "Financiamiento externo a empresas",
     "epu_argentina": "Incertidumbre de política (EPU)",
-    "icg_utdt": "Confianza en el Gobierno (ICG de la UTDT)",
-    "clima_electoral": "Clima electoral",
     "indice_lider": "Índice Líder de actividad",
     "icc_utdt": "Confianza del Consumidor (ICC de la UTDT)",
 }
@@ -105,8 +104,6 @@ FUENTES = {
     "inversion_portafolio_externa": "BCRA",
     "financiamiento_externo_privado": "BCRA",
     "epu_argentina": "Banco de España / SECMCA",
-    "icg_utdt": "UTDT",
-    "clima_electoral": "Votómetro",
     "indice_lider": "UTDT",
     "icc_utdt": "UTDT",
 }
@@ -135,10 +132,12 @@ FUENTES = {
 # ITCG → sin factor ni perfil propio (ADR-0336): un índice de ejecución no tiene
 # contraste externo por definición. Las cuatro estadísticas del capital privado
 # siguen en FAMILIA como contraste AJENO para los otros índices.
+# ITCP → sin factor común desde ADR-0345: con la confianza en el Gobierno
+# adentro del ITCIS y el clima electoral fuera con el Votómetro, le queda una
+# sola estadística propia (EPU), que se sigue publicando como correlación.
 FACTOR = {
     "itvc": ["electricidad_residencial", "gas_residencial",
              "transporte_pasajeros", "ventas_naftas"],
-    "itcp": ["epu_argentina", "icg_utdt", "clima_electoral"],
 }
 
 

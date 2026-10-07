@@ -169,7 +169,22 @@ def _filas_previas(cinturon: str, indicadores: set) -> list:
     if not path.exists() or not indicadores:
         return []
     with open(path, newline="", encoding="utf-8-sig") as f:
-        return [r for r in list(csv.reader(f))[1:] if len(r) > 1 and r[1] in indicadores]
+        filas = [r for r in list(csv.reader(f))[1:] if len(r) > 1 and r[1] in indicadores]
+    # Una serie que cambió de cinturón trae su historia en el CSV viejo: si el
+    # primer fetch después de la mudanza falla, se busca allá (icg_utdt pasó de
+    # gestión a vida_cotidiana en ADR-0345).
+    faltan = indicadores - {r[1] for r in filas}
+    for viejo, claves in MUDANZAS_DE_CINTURON.get(cinturon, {}).items():
+        buscar = faltan & claves
+        vpath = OUTPUT_DIR / f"{viejo}.csv"
+        if buscar and vpath.exists():
+            with open(vpath, newline="", encoding="utf-8-sig") as f:
+                filas += [r for r in list(csv.reader(f))[1:] if len(r) > 1 and r[1] in buscar]
+    return filas
+
+
+# Series que se mudaron de CSV: cinturón nuevo → {cinturón viejo: claves}.
+MUDANZAS_DE_CINTURON = {"vida_cotidiana": {"gestion": {"icg_utdt"}}}
 
 
 def fetch_indec(series_id: str, limit: int = 48) -> list:
@@ -892,13 +907,10 @@ MACRO_BCRA = [
 ]
 
 POLITICA_INDEC = []
-# Cinturón político: sin series INDEC, pero el Votómetro reconstruye su histórico.
+# Cinturón político: sin series INDEC.
 
 
-def fetch_votometro_serie() -> list:
-    """Serie histórica de la brecha LLA−PJ del Votómetro (reconstruida desde
-    encuestasRaw). [[YYYY-MM-01, gap]]."""
-    return [[f"{ym}-01", g] for ym, g in politica.votometro_serie_mensual()]
+# fetch_votometro_serie salió con el Votómetro (ADR-0344).
 
 
 def fetch_iaf_serie() -> list:
@@ -1619,7 +1631,6 @@ def fetch_conflictividad_nacional_mensual() -> list:
 
 
 POLITICA_DERIVADAS = [
-    ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
     ("iaf_transferencias", "% i.a. real",
      "RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes", fetch_iaf_serie),
     ("ratio_dnu", "DNUs publicados por ley publicada", "InfoLeg", fetch_ratio_dnu_serie),
@@ -3534,10 +3545,16 @@ def fetch_desregulacion_serie() -> list:
     return out
 
 
+# Confianza en el Gobierno (UTDT): componente del ITCIS desde ADR-0345, así que
+# su serie vive en vida_cotidiana.csv. Antes estaba en gestión como insumo de
+# validación (del ITCG primero, del ITCP después).
+VIDA_DERIVADAS.append(
+    ("icg_utdt", "índice 0-5 (confianza en el gobierno)", "UTDT (ICG, serie XLS)", fetch_icg_serie))
+
+
 GESTION_DERIVADAS = [
     ("protocolo_antipiquetes", "% reducción de cortes CABA vs 2023 (IRPC, anual)",
      "Diagnóstico Político (monitoreos públicos)", fetch_protocolo_serie),
-    ("icg_utdt", "índice 0-5 (confianza en el gobierno)", "UTDT (ICG, serie XLS)", fetch_icg_serie),
     ("apertura_comercial", "% alícuota efectiva del comercio exterior", "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500", fetch_alicuota_serie),
     ("concesiones_infraestructura", "% km adjudicados RFC", "CONTRAT.AR + RFC (hitos fechados)", fetch_concesiones_serie),
     ("privatizaciones", "% avance (etapas 0-4, cartera Ley Bases)", "BO — hitos fechados (elab. CIGOB)", fetch_privatizaciones_serie),

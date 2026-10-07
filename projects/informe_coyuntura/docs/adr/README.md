@@ -221,6 +221,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0332](0332-una-camara-que-calla-no-dispara-nada.md) | Una cámara que calla no dispara nada, y el saldo sigue saliendo | `apoyo_empresario` | vigente |
 | [0334](0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md) | AEA sale del perímetro y el rótulo dice lo que mide | `apoyo_empresario` | vigente |
 | [0335](0335-el-saldo-empresario-necesita-tres-comunicados.md) | El saldo empresario necesita al menos tres comunicados | `apoyo_empresario` | vigente |
+| [0344](0344-el-votometro-sale-del-monitor.md) | El Votómetro sale del Monitor | `votometro_ventaja_lla` | vigente |
 
 ### Gestión (ITCG)
 
@@ -341,6 +342,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0327](0327-homicidios-y-robos-del-snic-puntuan-en-seguridad.md) | Homicidios y robos del SNIC entran a puntuar en la dimensión de seguridad | `inseguridad`, `tasa_homicidios`, `tasa_robos` | vigente |
 | [0328](0328-ratio-motos-autos-puntua-como-indicador-propio.md) | El ratio motos/autos entra a puntuar como indicador propio | `ratio_motos_autos` | vigente |
 | [0339](0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) | Puntúan el total de las tres carnes y, aparte, la vacuna | `consumo_carnes_total`, `consumo_carne_vacuna`, `consumo_carnes_otras` | vigente |
+| [0345](0345-la-confianza-en-el-gobierno-entra-al-indice-de-impacto-social.md) | La confianza en el Gobierno entra al índice de impacto social | `icg_utdt` | vigente |
 
 ### Espíritu de época
 

@@ -21,7 +21,7 @@ def test_la_dimension_existe_con_sus_indicadores():
     CAPACIDAD de integrar el Poder Judicial, no su COMPORTAMIENTO. ADR-0168 la
     cierra sumando los tres que medían comportamiento."""
     d = itcp.DIMENSIONES_ITCP["poder_judicial"]
-    assert d["peso"] == 0.15
+    assert d["peso"] == 0.1613   # 0.15 → 0.1613 (ADR-0344)
     assert d["indicadores"] == {
         "cobertura_judicial": 0.40, "judicializacion": 0.20,
         "velocidad_resolucion": 0.20, "paralisis_denuncias": 0.20,
@@ -41,8 +41,9 @@ def test_el_orden_relativo_de_las_dimensiones_previas_se_conservo():
     aprovecha el cambio para reordenarlas, este test lo marca: mover pesos
     entre dimensiones es una decisión editorial con ADR propio (ADR-0036)."""
     p = {k: v["peso"] for k, v in itcp.DIMENSIONES_ITCP.items()}
+    # imagen_voto salió en ADR-0344; las cinco que quedan conservan el orden.
     orden = ["poder_legislativo", "alianzas_territoriales", "cohesion_interna",
-             "sector_privado", "conflicto_social", "imagen_voto"]
+             "sector_privado", "conflicto_social"]
     valores = [p[k] for k in orden]
     assert valores == sorted(valores, reverse=True), p
 

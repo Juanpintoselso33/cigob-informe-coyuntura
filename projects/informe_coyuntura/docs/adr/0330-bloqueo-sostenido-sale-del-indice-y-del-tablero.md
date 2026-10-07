@@ -7,7 +7,7 @@ cinturon: 'politica'
 indicadores: [bloqueo_sostenido, desafios_legislativos]
 archivos: ['scripts/itcp.py', 'scripts/politica.py', 'scripts/publicar.py', 'scripts/procedencia_anclas.py', 'scripts/validacion_externa.py', 'web/src/lib/fichas.ts', 'tests/test_itcp.py', 'tests/test_publicar.py', 'tests/test_validacion_externa.py', 'tests/test_procedencia_anclas.py']
 corrige: ['0069', '0276']
-relacionado: ['0021', '0046', '0062', '0070', '0089', '0153', '0216', '0230']
+relacionado: ['0021', '0046', '0062', '0070', '0089', '0153', '0216', '0230', '0344']
 ambito: 'Cinturón política · ITCP · dimensión Poder legislativo · `bloqueo_sostenido` sale, `desafios_legislativos` absorbe su contenido'
 origen: 'Auditoría editorial: bloqueo_sostenido es el único indicador del tablero que se publica sin puntuar (SIN UNIVERSO), y lo hace justo cuando el fenómeno que mide llega a su extremo'
 ---

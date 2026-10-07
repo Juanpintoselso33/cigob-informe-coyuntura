@@ -91,6 +91,26 @@ def agregar_carga_servicio_deuda(enriquecido, series):
                       "denominador. Más carga implica menor capacidad de pago."))
 
 
+def agregar_icg(enriquecido, series):
+    """Confianza en el Gobierno (UTDT), componente del ITCIS desde ADR-0345.
+    Se publica con tres decimales, los mismos que la serie, para que la card y
+    el último punto coincidan (G3)."""
+    serie = series.get("icg_utdt") or []
+    if not serie:
+        return
+    ultimo = serie[-1]
+    _add(enriquecido, "icg_utdt",
+         round(ultimo["valor"], 3), "índice 0-5",
+         "Universidad Torcuato Di Tella — Índice de Confianza en el Gobierno",
+         ultimo["fecha"][:7],
+         detalle_txt=("Encuesta mensual de la UTDT que promedia cinco "
+                      "atributos del Gobierno nacional —imagen general, "
+                      "eficiencia, honestidad, capacidad para resolver los "
+                      "problemas y preocupación por el interés general— en una "
+                      "escala de 0 a 5. Más confianza implica más apoyo "
+                      "disponible para sostener el rumbo."))
+
+
 def build_vida(raw):
     """Mapea el JSON crudo (por fuente) a indicadores estilo informe.json."""
     indec = raw.get("indec", {}); bcra = raw.get("bcra", {})
@@ -1914,7 +1934,7 @@ def _validacion_itcp(bloque):
                 "se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento "
                 "de senadores por provincia, adhesión provincial al Régimen de Incentivo para "
                 "Grandes Inversiones), así que la reconstrucción de los "
-                "meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la "
+                "meses más antiguos se apoya sobre todo en poder legislativo y la "
                 "protesta social — límite que se declara, no se esconde."),
         "serie_label": "Índice político (reconstrucción mensual)",
         "externa_label": "Incertidumbre de política en la prensa (EPU, invertido)",
@@ -1923,8 +1943,8 @@ def _validacion_itcp(bloque):
         "r_sin_sector_privado": r_sin_priv,
         "por_gobierno": val.get("brecha_obra_publica_por_gobierno") or {},
         "conclusion": (
-            f"Contra la incertidumbre de política en la prensa sola —una de las tres estadísticas "
-            f"del panel— la correlación es {coma(r_niv)} en niveles y "
+            f"Contra la incertidumbre de política en la prensa —la única estadística propia "
+            f"del panel desde octubre de 2026— la correlación es {coma(r_niv)} en niveles y "
             f"{coma(r_dif)} en los cambios mes a mes: el signo negativo es el esperado, más "
             f"moderado que en macro o gestión."
             + (f" Sin la dimensión de sector privado —incorporada en julio de 2026— la "
@@ -2856,6 +2876,9 @@ def main():
             # aunque el BCRA la libera por lotes semestrales; por eso el dato
             # se fecha con el último mes observado y no con la publicación.
             agregar_carga_servicio_deuda(enriquecido, series)
+            # Confianza en el Gobierno (ADR-0345): la dimensión «Confianza y
+            # percepción» del ITCIS, que estaba vacía.
+            agregar_icg(enriquecido, series)
             # Inseguridad: la card muestra el IVI mensual (LICIP-UTDT), la
             # métrica del ITVC desde el ADR-0032. El SNIC anual (denuncias
             # registradas) queda como contraste declarado en el detalle.

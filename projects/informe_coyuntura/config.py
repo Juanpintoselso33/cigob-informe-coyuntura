@@ -220,6 +220,10 @@ MAX_DIAS = {
     # IEF: la serie es mensual, pero el BCRA libera la planilla por lote
     # semestral. 300 días cubre el ciclo sin presentarla como fuente mensual.
     "carga_servicio_deuda_hogares": 300,
+    # ADR-0345: el ICG sale con fecha del 1 del mes y la UTDT lo publica 3-4
+    # semanas después, así que llega normalmente a 55-60 días; 90 deja pasar
+    # una publicación demorada y avisa si se saltea una entera.
+    "icg_utdt": 90,
     # Trabajo: planilla mensual con 2-3 meses de rezago observado.
     "jornadas_individuales_no_trabajadas_12m": 150,
 }

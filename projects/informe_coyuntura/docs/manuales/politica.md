@@ -14,19 +14,18 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `poder_legislativo` | 21% | `ratio_dnu`, `eficacia_legislativa`, `veto_quorum`, `desafios_legislativos`, `produccion_legislativa` |
-| `alianzas_territoriales` | 19% | `iaf_transferencias`, `alineamiento_senadores_prov`, `adhesion_reformas_provincial` |
-| `cohesion_interna` | 15% | `cohesion_bloque` |
-| `conflicto_social` | 10% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
-| `imagen_voto` | 7% | `votometro_ventaja_lla` |
-| `poder_judicial` | 15% | `cobertura_judicial`, `velocidad_resolucion`, `paralisis_denuncias` |
-| `sector_privado` | 13% | `brecha_obra_publica`, `apoyo_empresario` |
+| `poder_legislativo` | 23% | `ratio_dnu`, `eficacia_legislativa`, `veto_quorum`, `desafios_legislativos`, `produccion_legislativa` |
+| `alianzas_territoriales` | 20% | `iaf_transferencias`, `alineamiento_senadores_prov`, `adhesion_reformas_provincial` |
+| `cohesion_interna` | 16% | `cohesion_bloque` |
+| `conflicto_social` | 11% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
+| `poder_judicial` | 16% | `cobertura_judicial`, `velocidad_resolucion`, `paralisis_denuncias` |
+| `sector_privado` | 14% | `brecha_obra_publica`, `apoyo_empresario` |
 
 Suma de pesos: 100%.
 
 ## Qué mide cada indicador
 
-### Dimensión `poder_legislativo` (21%)
+### Dimensión `poder_legislativo` (23%)
 
 #### Ratio DNU / leyes
 
@@ -35,7 +34,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 23% |
-| Peso efectivo en el índice | **4.8%** |
+| Peso efectivo en el índice | **5.2%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `externa` — ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059) |
@@ -51,7 +50,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 30% |
-| Peso efectivo en el índice | **6.3%** |
+| Peso efectivo en el índice | **6.8%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 18 meses |
 | Procedencia del ancla | `externa` — Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061) |
@@ -67,7 +66,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 15% |
-| Peso efectivo en el índice | **3.1%** |
+| Peso efectivo en el índice | **3.4%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121) |
@@ -83,7 +82,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 15% |
-| Peso efectivo en el índice | **3.1%** |
+| Peso efectivo en el índice | **3.4%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `convencion` — anclas sobre el conteo observado (4 a 13 en 22 meses), leído contra el carácter excepcional del acto (ADR-0089) |
@@ -99,7 +98,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 17% |
-| Peso efectivo en el índice | **3.6%** |
+| Peso efectivo en el índice | **3.8%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 1.5 meses |
 | Procedencia del ancla | `externa` — umbral de diseño conservado en 74 leyes/año; referencia corregida al 2026-09-08: 1.320 leyes distintas de 2008-2025 / 18 = 73,3 por año; no es el promedio exacto ni un óptimo normativo (ADR-0168/0306) |
@@ -108,7 +107,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0306](../adr/0306-produccion-legislativa-meses-completos.md) Producción legislativa: doce meses completos y leyes distintas · [ADR-0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) Sesiones y sanciones fuera del catálogo
 
-### Dimensión `alianzas_territoriales` (19%)
+### Dimensión `alianzas_territoriales` (20%)
 
 #### Armonía federal (transferencias)
 
@@ -117,7 +116,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 40% |
-| Peso efectivo en el índice | **7.6%** |
+| Peso efectivo en el índice | **8.2%** |
 | Familia de lectura | recursos |
 | Rezago declarado | 12 meses |
 | Procedencia del ancla | `conceptual` — variación real anclada en el cero con cortes simétricos de 10 pp, como recaudacion/emae del ITCM (ADR-0121) |
@@ -133,7 +132,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 30% |
-| Peso efectivo en el índice | **5.7%** |
+| Peso efectivo en el índice | **6.1%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 1.5 meses |
 | Procedencia del ancla | `convencion` — recalibrada con 29 puntos propios de feb-2024 en adelante (ADR-0038) |
@@ -149,7 +148,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 30% |
-| Peso efectivo en el índice | **5.7%** |
+| Peso efectivo en el índice | **6.1%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 0 meses |
 | Procedencia del ancla | `conceptual` — anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044) |
@@ -158,7 +157,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0044](../adr/0044-adhesion-reformas-provincial-serie-mensual.md) adhesion_reformas_provincial: serie mensual real vía investigación manual de fechas provinciales · [ADR-0304](../adr/0304-adhesion-rigi-completa-catalogo-con-leyes.md) La ley publicada completa el catálogo de adhesiones
 
-### Dimensión `cohesion_interna` (15%)
+### Dimensión `cohesion_interna` (16%)
 
 #### Cohesión del bloque LLA (bicameral)
 
@@ -167,7 +166,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **15.0%** |
+| Peso efectivo en el índice | **16.1%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 1.5 meses |
 | Procedencia del ancla | `convencion` — calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048) |
@@ -176,7 +175,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0041](../adr/0041-cohesion-bloque-diputados-cache-permanente-y-serie-mensual.md) cohesion_bloque (Diputados): caché permanente por acta y serie mensual real · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara
 
-### Dimensión `conflicto_social` (10%)
+### Dimensión `conflicto_social` (11%)
 
 #### Conflictividad social (país)
 
@@ -185,7 +184,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 60% |
-| Peso efectivo en el índice | **6.0%** |
+| Peso efectivo en el índice | **6.5%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `convencion` — calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052) |
@@ -201,7 +200,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 40% |
-| Peso efectivo en el índice | **4.0%** |
+| Peso efectivo en el índice | **4.3%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `historia_larga` — anclas fijadas sobre los 17 años completos 2006-2022 de la serie oficial, anteriores al mandato (ADR-0232) |
@@ -210,25 +209,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0295](../adr/0295-jornadas-exige-doce-meses-calendario.md) Jornadas exige doce meses calendario
 
-### Dimensión `imagen_voto` (7%)
-
-#### Ventaja LLA−PJ
-
-`votometro_ventaja_lla`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **7.0%** |
-| Familia de lectura | recursos |
-| Rezago declarado | 1 meses |
-| Procedencia del ancla | `conceptual` — ventaja electoral anclada en el cero (empate); cortes ajustados para que el semáforo cambie exactamente en +8/+5/0 pp, los umbrales de Luis (ADR-0312, corrige ADR-0121) |
-
-**Bandas**: > 14 → 100 · 8–14 → 80 · 2–8 → 40 · -2–2 → 20 · ≤ -2 → 0
-
-**Lo gobiernan**: [ADR-0312](../adr/0312-votometro-traduce-el-semaforo-de-luis.md) El votómetro traduce el semáforo que pidió Luis, no ya los márgenes simétricos
-
-### Dimensión `poder_judicial` (15%)
+### Dimensión `poder_judicial` (16%)
 
 #### Cobertura de cargos judiciales
 
@@ -237,7 +218,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 50% |
-| Peso efectivo en el índice | **7.5%** |
+| Peso efectivo en el índice | **8.1%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 1 meses |
 | Procedencia del ancla | `conceptual` — niveles redondos de cobertura de un cuerpo (>90 completa · 80-90 buena · 70-80 aceptable · 60-70 deficitaria · ≤60 crítica), explícitamente NO calibrados contra el rango observado 64-73%, que es desempeño real y bajo (ADR-0126) |
@@ -253,7 +234,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 25% |
-| Peso efectivo en el índice | **3.8%** |
+| Peso efectivo en el índice | **4.0%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 12 meses |
 | Procedencia del ancla | `conceptual` — el 100% es el punto donde la Corte resuelve exactamente lo que le entra, sin acumular ni descargar atraso; los cortes son márgenes redondos alrededor de ese valor y no el rango observado 26-142 (ADR-0168) |
@@ -269,7 +250,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 25% |
-| Peso efectivo en el índice | **3.8%** |
+| Peso efectivo en el índice | **4.0%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 2 meses |
 | Procedencia del ancla | `conceptual` — cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, preservados al corregir el universo de slugs numerados (rango 13-18; ADR-0168/0268) |
@@ -278,7 +259,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0170](../adr/0170-judicializacion-y-paralisis-pasan-a-fuente-viva.md) Judicialización y parálisis de denuncias pasan a fuente viva · [ADR-0268](../adr/0268-el-slug-no-define-una-sesion.md) El slug no define una sesión
 
-### Dimensión `sector_privado` (13%)
+### Dimensión `sector_privado` (14%)
 
 #### Brecha de expectativas: obra pública vs. privada
 
@@ -287,7 +268,7 @@ Suma de pesos: 100%.
 | | |
 |---|---|
 | Peso dentro de la dimensión | 50% |
-| Peso efectivo en el índice | **6.5%** |
+| Peso efectivo en el índice | **7.0%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 7.5 meses |
 | Procedencia del ancla | `conceptual` — números redondos alrededor del cero, explícitamente NO calibrados contra el rango observado (ADR-0088) |
@@ -296,21 +277,21 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0088](../adr/0088-dimension-sector-privado.md) El ITCP incorpora una dimensión de sector privado · [ADR-0095](../adr/0095-la-brecha-cambia-de-signo-segun-el-gobierno.md) La brecha de obra pública cambia de signo según el gobierno · [ADR-0302](../adr/0302-expectativas-construccion-fecha-y-calendario.md) Expectativas de construcción: horizonte y calendario
 
-#### Postura pública de las cámaras empresarias
+#### Postura pública de la UIA
 
 `apoyo_empresario`
 
 | | |
 |---|---|
 | Peso dentro de la dimensión | 50% |
-| Peso efectivo en el índice | **6.5%** |
+| Peso efectivo en el índice | **7.0%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150) |
 
 **Bandas**: > 0.6 → 100 · 0.2–0.6 → 85 · -0.2–0.2 → 65 · -0.6–-0.2 → 40 · ≤ -0.6 → 10
 
-**Lo gobiernan**: [ADR-0145](../adr/0145-apoyo-empresario-la-fuente-sirve-la-metrica-no.md) Apoyo empresario: la fuente sirve, la métrica no · [ADR-0148](../adr/0148-apoyo-empresario-con-uia-la-metrica-funciona.md) Apoyo empresario: con UIA, la métrica funciona · [ADR-0149](../adr/0149-detector-de-postura-empresaria.md) Detector de postura empresaria · [ADR-0150](../adr/0150-apoyo-empresario-entra-al-itcp.md) Apoyo empresario entra al ITCP, y el bug que lo encontró · [ADR-0151](../adr/0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) El corpus estaba truncado: `apoyo_empresario` se recodifica entero · [ADR-0265](../adr/0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) Una dimensión no promete vías que ya no puntúan · [ADR-0310](../adr/0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) El saldo empresario vuelve al ITCP con el corpus cerrado
+**Lo gobiernan**: [ADR-0145](../adr/0145-apoyo-empresario-la-fuente-sirve-la-metrica-no.md) Apoyo empresario: la fuente sirve, la métrica no · [ADR-0148](../adr/0148-apoyo-empresario-con-uia-la-metrica-funciona.md) Apoyo empresario: con UIA, la métrica funciona · [ADR-0149](../adr/0149-detector-de-postura-empresaria.md) Detector de postura empresaria · [ADR-0150](../adr/0150-apoyo-empresario-entra-al-itcp.md) Apoyo empresario entra al ITCP, y el bug que lo encontró · [ADR-0151](../adr/0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) El corpus estaba truncado: `apoyo_empresario` se recodifica entero · [ADR-0265](../adr/0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) Una dimensión no promete vías que ya no puntúan · [ADR-0310](../adr/0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) El saldo empresario vuelve al ITCP con el corpus cerrado · [ADR-0332](../adr/0332-una-camara-que-calla-no-dispara-nada.md) Una cámara que calla no dispara nada, y el saldo sigue saliendo · [ADR-0334](../adr/0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md) AEA sale del perímetro y el rótulo dice lo que mide · [ADR-0335](../adr/0335-el-saldo-empresario-necesita-tres-comunicados.md) El saldo empresario necesita al menos tres comunicados
 
 ## Se releva y no puntúa
 
@@ -330,7 +311,7 @@ histórica.
 
 ## Decisiones abiertas
 
-10 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
+11 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
 
 > La detección lee la prosa, así que **sobre-reporta a propósito**: si un ADR anota un pendiente y lo resuelve unos párrafos más abajo, sigue apareciendo acá. Se prefiere ese error al contrario —perder una decisión realmente abierta—. La marca ⚠️ sí es firme: sale de las relaciones declaradas entre ADR, no de adivinar sobre el texto.
 
@@ -362,10 +343,12 @@ histórica.
 - **[ADR-0166](../adr/0166-regla-de-orientacion-para-indicadores-de-control.md)** — La orientación de un indicador sale de la pregunta que responde
   <br>dice explícitamente: *"No se incorpora todavía ninguno, por la misma razón que
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0168. Verificar antes de tratarlo como abierto.
+- **[ADR-0334](../adr/0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md)** — AEA sale del perímetro y el rótulo dice lo que mide
+  <br>otra decisión (ver arriba) y queda pendiente.
 
 ## Todos los ADR vigentes de este cinturón
 
-85 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+89 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -452,3 +435,7 @@ histórica.
 - [0310](../adr/0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) — El saldo empresario vuelve al ITCP con el corpus cerrado
 - [0312](../adr/0312-votometro-traduce-el-semaforo-de-luis.md) — El votómetro traduce el semáforo que pidió Luis, no ya los márgenes simétricos
 - [0330](../adr/0330-bloqueo-sostenido-sale-del-indice-y-del-tablero.md) — bloqueo_sostenido sale del índice y del tablero: enmudecer en el extremo no es una card
+- [0332](../adr/0332-una-camara-que-calla-no-dispara-nada.md) — Una cámara que calla no dispara nada, y el saldo sigue saliendo
+- [0334](../adr/0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md) — AEA sale del perímetro y el rótulo dice lo que mide
+- [0335](../adr/0335-el-saldo-empresario-necesita-tres-comunicados.md) — El saldo empresario necesita al menos tres comunicados
+- [0344](../adr/0344-el-votometro-sale-del-monitor.md) — El Votómetro sale del Monitor

@@ -180,11 +180,10 @@ def test_pesos_del_documento():
                                           "despacho_cemento": 0.1347,
                                           "subocupacion_demandante": 0.0512,
                                           "trabajo_independiente": 0.1000}
-    # ADR-0314: sale `icc_utdt`. Queda declarado sólo `sentimiento_digital`
-    # (suspendido desde ADR-0248), así que la dimensión no tiene HOY ningún
-    # componente activo — su 8,25% nominal se redistribuye entre las cinco
-    # que quedan (ver test_itvc_reproduce_ejemplo).
-    assert d["percepcion"]["indicadores"] == {"sentimiento_digital": 1.0}
+    # ADR-0314: sale `icc_utdt`. ADR-0345: entra `icg_utdt` en 0,5/0,5 con
+    # `sentimiento_digital`, que sigue suspendido (ADR-0248): mientras lo esté,
+    # el ICG absorbe su mitad y se lleva la dimensión entera.
+    assert d["percepcion"]["indicadores"] == {"icg_utdt": 0.5, "sentimiento_digital": 0.5}
     # ADR-0327: entran `tasa_homicidios` (30% de cesión) y `tasa_robos` (15%
     # de la cesión resultante) del SNIC. inseguridad (IVI, mensual) conserva
     # la mayoría; homicidios pesa más que robos por ser la medida sin

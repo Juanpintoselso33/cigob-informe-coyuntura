@@ -6,7 +6,7 @@ fecha: 2026-09-15
 cinturon: 'vida'
 indicadores: [icc_utdt, sentimiento_digital]
 archivos: ['scripts/itvc.py', 'scripts/validacion_externa.py', 'scripts/panel_validacion.py', 'scripts/publicar.py', 'scripts/procedencia_anclas.py', 'web/src/lib/descripciones.ts', 'web/src/lib/fichas.ts', 'tests/test_itvc.py', 'tests/test_redundancia_itvc.py', 'tests/test_suspension_libera_el_peso.py', 'tests/test_publicar.py', 'tests/test_motorizacion_total.py', 'tests/test_procedencia_anclas.py', 'tests/test_politica_sin_universo.py']
-relacionado: ['0034', '0108', '0115', '0154', '0155', '0225', '0245', '0248']
+relacionado: ['0034', '0108', '0115', '0154', '0155', '0225', '0245', '0248', '0345']
 ambito: 'ITCIS · dimensión de confianza y percepción · el ICC deja de puntuar y pasa a ancla de validación externa'
 origen: 'Juan, Slack #monitor-de-proyecto-de-gobierno, 15-sep-2026: "Sacar el ICC de Impacto Social, probarlo como validación externa; para confianza usar votómetro y alguna cosa más"'
 ---

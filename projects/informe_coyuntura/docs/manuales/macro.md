@@ -257,9 +257,9 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **12.0%** |
 | Procedencia del ancla | `convencion` — el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026 |
 
-**Bandas**: > 10 → 100 · 2–10 → 80 · -2–2 → 60 · -10–-2 → 35 · ≤ -10 → 10
+**Bandas**: > 10.17 → 100 · 2.17–10.17 → 80 · -1.83–2.17 → 60 · -9.83–-1.83 → 35 · ≤ -9.83 → 10
 
-**Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM · [ADR-0293](../adr/0293-iai-comparte-la-composicion-mensual.md) IAI comparte la composición mensual · [ADR-0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) Actividad usa las planillas originales vigentes · [ADR-0300](../adr/0300-iai-completa-bienes-de-capital-originales.md) IAI completa los bienes de capital originales · [ADR-0301](../adr/0301-historia-macro-deriva-componentes-del-motor.md) La historia macro deriva sus componentes del motor
+**Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM · [ADR-0293](../adr/0293-iai-comparte-la-composicion-mensual.md) IAI comparte la composición mensual · [ADR-0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) Actividad usa las planillas originales vigentes · [ADR-0300](../adr/0300-iai-completa-bienes-de-capital-originales.md) IAI completa los bienes de capital originales · [ADR-0301](../adr/0301-historia-macro-deriva-componentes-del-motor.md) La historia macro deriva sus componentes del motor · [ADR-0341](../adr/0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) La inversión física se mide contra el crecimiento de la población
 
 ## Se releva y no puntúa
 
@@ -294,7 +294,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-56 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+57 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -352,3 +352,4 @@ histórica.
 - [0319](../adr/0319-control-tributario-mismo-deflactor-mismo-sentido.md) — El control tributario usa el mismo deflactor y compara el mismo sentido
 - [0321](../adr/0321-descomposicion-no-control-independiente.md) — Es una descomposición del agregado, no un control independiente
 - [0329](../adr/0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) — IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal
+- [0341](../adr/0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) — La inversión física se mide contra el crecimiento de la población

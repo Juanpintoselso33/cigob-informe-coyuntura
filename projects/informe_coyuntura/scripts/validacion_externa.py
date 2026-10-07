@@ -113,6 +113,7 @@ COMPONENTES = {
     # oct-2025 ignoraba la mora disparándose en plena crisis)
     "carga_servicio_deuda_hogares": (
         "carga_servicio_deuda_hogares", True, False, False),  # ADR-0231
+    "icg_utdt":               ("icg_utdt", False, False, False),        # ADR-0345
     "brecha_salario_cbt":     ("brecha_salario_cbt", False, False, False),
     # `icc_utdt` YA NO es componente (ADR-0314): salió de DIMENSIONES_ITVC y
     # pasó a ancla externa (ver el bloque "ITCIS vs ICC UTDT" más abajo, que
@@ -853,7 +854,7 @@ def construir_serie_itcp(dimensiones: dict | None = None) -> dict:
     (mismo motor, puntaje interpolado, sin overrides del analista) — bastante
     más ruidosa que la de ITCM/ITCG porque la cobertura histórica real de
     política es dispareja:
-    - Con historia mensual sólida desde dic-2023: votometro_ventaja_lla,
+    - Con historia mensual sólida desde dic-2023:
       eficacia_legislativa, (desde 2026-07-09, ADR-0046)
       desafios_legislativos —cuya serie se deriva del registro
       versionado de eventos— y (desde 2026-07-15, ADR-0058) ratio_dnu, que
@@ -1522,8 +1523,7 @@ def main():
             "merval_usd": resultados.get("merval_usd_mensual") or {},
             "epu_argentina": resultados.get("epu_argentina_mensual") or {},
             "indice_lider": resultados.get("indice_lider_mensual") or {},
-            "icg_utdt": _mensual(series_json.get("icg_utdt") or []),
-            "clima_electoral": _mensual(series_json.get("clima_electoral") or []),
+            # icg_utdt y clima_electoral salieron del panel (ADR-0344/0345).
             # ADR-0314: ancla propia del ITCIS, mismo motivo que indice_lider
             # arriba — ya se calculó como `icc` más arriba en esta función.
             "icc_utdt": icc,

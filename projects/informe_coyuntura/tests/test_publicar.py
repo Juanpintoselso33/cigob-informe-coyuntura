@@ -478,9 +478,11 @@ def test_politica_itcp_reconcilia():
     # 18 → 17 (ADR-0330): sale `bloqueo_sostenido` — un indicador que enmudece
     # en el extremo del fenómeno que mide (cero desafíos en la ventana) no es
     # una card; su contenido pasa a la explicación de `desafios_legislativos`.
-    assert len(c["indicadores"]) == 17
+    # 17 → 16 (ADR-0344): sale `votometro_ventaja_lla` con su dimensión.
+    assert len(c["indicadores"]) == 16
     assert "bloqueo_sostenido" not in c["indicadores"]
-    assert len(en_indice) == 17
+    assert "votometro_ventaja_lla" not in c["indicadores"]
+    assert len(en_indice) == 16
     for _nuevo in ("produccion_legislativa",
                    "velocidad_resolucion", "paralisis_denuncias"):
         assert _nuevo in en_indice, f"{_nuevo} tendría que puntuar (ADR-0168)"
@@ -493,7 +495,7 @@ def test_politica_itcp_reconcilia():
     # ADR-0089: derrotas sale del índice, entra desafíos en su lugar
     assert "desafios_legislativos" in en_indice
     assert "derrotas_legislativas" not in en_indice
-    faltantes = {"votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
+    faltantes = {"ratio_dnu", "eficacia_legislativa", "veto_quorum",
                  "iaf_transferencias", "alineamiento_senadores_prov",
                  "adhesion_reformas_provincial", "cohesion_bloque", "conflictividad_nacional",
                  "jornadas_individuales_no_trabajadas_12m",
@@ -516,10 +518,11 @@ def test_politica_itcp_reconcilia():
     # incorporarse el Poder Judicial. En los dos casos las dimensiones previas
     # cedieron PROPORCIONALMENTE, de modo que su orden relativo se conserva.
     pesos = {k: d["peso"] for k, d in c["itcp"]["dimensiones"].items()}
-    assert pesos == {"poder_legislativo": 0.21, "alianzas_territoriales": 0.19,
-                     "cohesion_interna": 0.15, "conflicto_social": 0.10,
-                     "imagen_voto": 0.07, "sector_privado": 0.13,
-                     "poder_judicial": 0.15}
+    # ADR-0344: sale imagen_voto (0,07) y las seis restantes la absorben en
+    # proporción (÷0,93); el orden relativo no cambia.
+    assert pesos == {"poder_legislativo": 0.2258, "alianzas_territoriales": 0.2043,
+                     "cohesion_interna": 0.1613, "conflicto_social": 0.1075,
+                     "sector_privado": 0.1398, "poder_judicial": 0.1613}
     assert abs(sum(pesos.values()) - 1.0) < 1e-9
 
     for k, i in en_indice.items():
@@ -729,7 +732,8 @@ def test_vida_itvc_reconcilia():
     # desde ADR-0339 son el total y la vacuna — la cuenta no cambia)
     # 18 → 21: entran `tasa_homicidios` + `tasa_robos` (ADR-0327, dimensión de
     # seguridad) y `ratio_motos_autos` (ADR-0328, dimensión de ingresos).
-    assert len(en_indice) == 21, f"esperaba 21 componentes en el índice, hay {len(en_indice)}"
+    # 21 → 22: entra `icg_utdt` en la dimensión de percepción (ADR-0345).
+    assert len(en_indice) == 22, f"esperaba 22 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"
@@ -750,10 +754,12 @@ def test_vida_itvc_reconcilia():
     # se reparte a mano— así que la suma de los `peso` NOMINALES publicados
     # queda en 0,9175 y no en 1,0: es `peso_efectivo` el que renormaliza y
     # sigue sumando uno (se verifica más abajo).
+    # ADR-0345: `percepcion` vuelve a publicarse con `icg_utdt`, así que los
+    # nominales publicados vuelven a sumar 1,0.
     pesos = {k: d["peso"] for k, d in c["itvc"]["dimensiones"].items()}
     assert pesos == {"ingresos": 0.2806, "precios": 0.25, "vulnerabilidad": 0.10,
-                     "empleo": 0.2419, "seguridad": 0.045}
-    assert abs(sum(pesos.values()) - 0.9175) < 1e-9
+                     "empleo": 0.2419, "percepcion": 0.0825, "seguridad": 0.045}
+    assert abs(sum(pesos.values()) - 1.0) < 1e-9
     pesos_efectivos = {k: d["peso_efectivo"] for k, d in c["itvc"]["dimensiones"].items()}
     assert abs(sum(pesos_efectivos.values()) - 1.0) < 1e-3
 
@@ -767,9 +773,9 @@ def test_vida_itvc_reconcilia():
     assert servicios["unidad"] == "% del salario RIPTE"
     assert servicios["en_indice"] is True
     assert isinstance(servicios["indice_itvc"], (int, float))
-    # 0,1125 → 0,1226 con ADR-0314: `precios` renormaliza sobre 0,2725 en vez
-    # de 0,25 al absorber el hueco que dejó `percepcion` (0,45 × 0,2725).
-    assert servicios["peso_efectivo"] == 0.1226
+    # 0,1125 → 0,1226 con ADR-0314 (`precios` absorbía el hueco de
+    # `percepcion`) → 0,1125 de nuevo con ADR-0345, que la vuelve a llenar.
+    assert servicios["peso_efectivo"] == 0.1125
     assert servicios["aporte_score"] is not None
     assert isinstance(servicios["transporte_pct_canasta"], (int, float))
     assert "agua+energía" in servicios["aporte_formula"] and "transporte" in servicios["aporte_formula"]

@@ -1237,6 +1237,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
       { fecha: "2026-09-15", cambio: "El rótulo de la card pasa de «Ventaja LLA−PJ (Votómetro)» a «Ventaja LLA−PJ». Se saca «Votómetro» por nombrar el método, no el dato; LLA y PJ se conservan porque son las siglas públicas de las fuerzas.", adr: "0311" },
       { fecha: "2026-09-15", cambio: "Corrige la decisión anterior: anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El indicador conserva el rango 0-100 (una quinta banda arriba de +8 pp evita bajar el techo a 60, como hacía la primera versión de este ADR).", adr: "0312,0121" },
+      { fecha: "2026-10-07", cambio: "Sale del Monitor. El Votómetro pasa a ser un producto aparte de CiGob y deja de puntuar en el índice político, donde era el único indicador de la dimensión de imagen y voto (7%). Su último dato publicado fue una ventaja de 4,3 puntos, de la edición del 22 de julio de 2026. Esta ficha queda como registro de cómo se construyó el indicador mientras estuvo.", adr: "0344" },
       { fecha: "2026-09-22", cambio: "Las encuestas se leen de la edición vigente del Votómetro en la web de CiGob, donde se publica por ediciones mensuales desde el 16 de septiembre de 2026. El sitio anterior queda como respaldo." },
     ],
   },
@@ -1260,7 +1261,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del conteo, interpolado entre anclas: 2 desafíos o menos en doce meses → el más alto; entre 2 y 5 → alto; entre 5 y 9 → moderado; entre 9 y 12 → bajo; más de 12 → el más bajo. Las anclas parten de que desafiar una norma del Ejecutivo en el recinto es un acto excepcional, que exige mayorías especiales o un procedimiento específico: un puñado al año ya es confrontación abierta.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (21% del total), con un peso nominal de 15% junto a la eficacia parlamentaria, el ratio DNU, las sesiones caídas por quórum y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 15% junto a la eficacia parlamentaria, el ratio DNU, las sesiones caídas por quórum y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
       "Un cero en esta card no es ausencia de señal: es la lectura más favorable del par (nadie desafió ninguna norma), y desde el 16-sep-2026 la card lo dice así en vez de leerlo como «no pasó nada».",
     ],
     limitaciones: [
@@ -1296,7 +1297,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la brecha, interpolado entre anclas: +10 puntos porcentuales o más → el más alto; entre 0 y +10 → alto; entre −10 y 0 → moderado; entre −20 y −10 → bajo; menos de −20 → el más bajo. Las anclas se fijaron en números redondos alrededor del cero, que es el valor con significado propio: brecha nula significa igualdad de los saldos de expectativas de los dos grupos; no ausencia de incertidumbre ni de efectos de la política pública.",
-      "Su peso de diseño es el 50% de la dimensión de sector privado del índice del cinturón, incorporada en julio de 2026. El otro 50% es la postura pública de la UIA, que estuvo suspendida de agosto a septiembre de 2026 —en ese lapso este indicador absorbió la dimensión entera— y volvió al índice: 50% interno · 6,5% efectivo del índice político.",
+      "Su peso de diseño es el 50% de la dimensión de sector privado del índice del cinturón, incorporada en julio de 2026. El otro 50% es la postura pública de la UIA, que estuvo suspendida de agosto a septiembre de 2026 —en ese lapso este indicador absorbió la dimensión entera— y volvió al índice: 50% interno · 7% efectivo del índice político (6,5% hasta que salió el Votómetro en octubre de 2026).",
     ],
     limitaciones: [
       "Las submuestras no constituyen un experimento: pueden diferir en proyectos, financiamiento y exposición al ciclo. Restar sus saldos no identifica el efecto causal del Estado ni elimina esas diferencias.",
@@ -1381,7 +1382,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 0,3 o menos → el más alto; entre 0,3 y 0,7 → alto; entre 0,7 y 1,2 → moderado; entre 1,2 y 2 → bajo; más de 2 → el más bajo. Estas anclas están ancladas a la práctica histórica 2011-2024 (cuatro presidencias distintas): en promedio, hubo un DNU por cada tres leyes — ratio ≈0,3.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (21% del total), con un peso nominal de 20% junto a la eficacia legislativa, las sesiones caídas por quórum, los desafíos legislativos, el bloqueo sostenido y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 20% junto a la eficacia legislativa, las sesiones caídas por quórum, los desafíos legislativos, el bloqueo sostenido y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.",
@@ -1507,7 +1508,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la variación real, interpolado entre anclas: más de +10% → el más alto; entre 0% y +10% → alto; entre −10% y 0% → moderado; entre −20% y −10% → bajo; −20% o menos → el más bajo.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (19% del total), donde pesa 40% junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (20,4% del total), donde pesa 40% junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI.",
     ],
     limitaciones: [
       "Granularidad anual: no capta la tensión federal dentro del año.",
@@ -1550,7 +1551,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre anclas: más de 50% → el más alto; entre 30% y 50% → alto; entre 15% y 30% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo. Los umbrales son una estimación razonada apoyada en tasas históricas de éxito del Ejecutivo. Esas tasas no usan necesariamente la misma cohorte de 365–730 días: no constituyen una calibración estadística comparable. La validación con cohortes equivalentes sigue pendiente.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (21% del total), con un peso nominal de 27% junto al ratio DNU, las sesiones caídas por quórum, los desafíos legislativos, el bloqueo sostenido y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 27% junto al ratio DNU, las sesiones caídas por quórum, los desafíos legislativos, el bloqueo sostenido y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.",
@@ -1593,7 +1594,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Mide qué tan unido vota el bloque oficialista puertas adentro de las dos cámaras — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
       "El puntaje del índice se asigna por bandas del compuesto, interpolado entre anclas: más de 99,9% → el más alto; entre 99% y 99,9% → alto; entre 97% y 99% → moderado; entre 95% y 97% → bajo; 95% o menos → el más bajo. Los umbrales se calibraron contra la serie mensual del propio compuesto (dic-2023 en adelante, rango observado 90,3–100): las cinco bandas tienen meses reales observados.",
-      "Es el único indicador de la dimensión de cohesión interna del oficialismo del índice del cinturón (15% del total).",
+      "Es el único indicador de la dimensión de cohesión interna del oficialismo del índice del cinturón (16,1% del total).",
     ],
     limitaciones: [
       "Solo cuenta al bloque propio de LLA: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.",
@@ -1634,7 +1635,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Reemplaza, desde julio de 2026, a un indicador de carga manual (\"alineamiento de gobernadores\") que quedó congelado por meses sin una fuente pública estructurada para actualizarlo — dos rondas de búsqueda de fuentes automatizables no encontraron ninguna que midiera directamente la postura del Poder Ejecutivo provincial.",
       "Caveat importante: este indicador mide comportamiento de voto de SENADORES, no la postura pública del gobernador de la provincia — un senador no depende del gobernador de turno, puede responder a la estrategia nacional de su propio partido. Es la mejor señal automatizable disponible hoy, no una medición directa del Poder Ejecutivo provincial.",
       "El puntaje del índice se asigna por bandas de ese porcentaje, interpolado entre anclas: más de 70% de coincidencia → el más alto; entre 60% y 70% → alto; entre 50% y 60% → moderado; entre 40% y 50% → bajo; 40% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (feb-2024 en adelante).",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (19% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% de adhesión al RIGI.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (20,4% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% de adhesión al RIGI.",
     ],
     limitaciones: [
       "Proxy de comportamiento legislativo, no medición directa de la postura del gobernador (Poder Ejecutivo provincial) — ver caveat arriba.",
@@ -1682,7 +1683,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Mide adhesión a un régimen fiscal y de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de alineamiento de senadores por provincia. Una provincia puede adherir al RIGI por conveniencia fiscal aun con un gobernador crítico del gobierno nacional, y a la inversa.",
       "El puntaje se interpola entre las anclas del porcentaje de adhesiones. Se conservan las bandas del diseño; corregir el catálogo no modifica sus pesos ni umbrales. La historia reconstruida de un proceso de adhesión todavía abierto no constituye por sí sola una muestra representativa para calibrar anclas permanentes.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (19% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de senadores por provincia.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (20,4% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de senadores por provincia.",
     ],
     limitaciones: [
       "Cuenta la adhesión formal, no la inversión efectiva que esa adhesión termina generando en cada provincia.",
@@ -1758,7 +1759,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (21% del total), con un peso nominal de 15% junto al ratio DNU, la eficacia legislativa, los desafíos legislativos y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 15% junto al ratio DNU, la eficacia legislativa, los desafíos legislativos y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Las citadas no efectuadas aparecen en el índice pero se excluyen mientras su rótulo no acredite falta de quórum. Tampoco se cuentan negociaciones o convocatorias retiradas sin registro: no es una medida exhaustiva del bloqueo parlamentario.",
@@ -2656,6 +2657,38 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  icg_utdt: {
+    tipo: "indicador",
+    id: "icg_utdt",
+    cinturon: "vida_cotidiana",
+    rezago: "El dato se fecha el 1 de cada mes y la UTDT lo publica unas tres o cuatro semanas después: normalmente llega con 55 a 60 días.",
+    fuente: {
+      organismo: "UTDT",
+      operacion: "Universidad Torcuato Di Tella — Índice de Confianza en el Gobierno (encuesta mensual)",
+      serie: "ICG: promedio de cinco atributos del Gobierno nacional, escala 0 a 5, desde noviembre de 2001",
+      url: "https://www.utdt.edu/ver_contenido.php?id_contenido=1439&id_item_menu=2964",
+      acceso: "Automático: lectura de la planilla histórica que publica la universidad.",
+    },
+    transformaciones: [
+      "Toma el índice general de confianza, que promedia imagen del Gobierno, eficiencia en el gasto, honestidad, capacidad para resolver los problemas del país y si gobierna pensando en el interés general.",
+      "En el índice de impacto social se rebasa al promedio del 4º trimestre de 2023, como el resto de los componentes, y no se invierte: más confianza da mejor puntaje.",
+    ],
+    incidenciaTexto: [
+      "Es el único componente activo de la dimensión de confianza y percepción, que pesa 8,25% del índice de impacto social; comparte la dimensión con el sentimiento digital, suspendido desde agosto de 2026, y mientras siga suspendido se lleva la dimensión entera.",
+      "El promedio de la base mezcla dos gobiernos: octubre y noviembre de 2023 rondaban 1,2 a 1,4 y diciembre, ya con el nuevo Gobierno, 2,86. Pasa lo mismo con todos los componentes rebaseados al 4º trimestre de 2023.",
+    ],
+    limitaciones: [
+      "Mide percepción, no condiciones materiales: es la única opinión dentro de un índice hecho de hechos, y por eso pesa poco.",
+      "Se mueve parecido a la confianza del consumidor de la misma universidad, que es la referencia externa del índice de impacto social: en cambios mensuales correlacionan 0,78 desde diciembre de 2023, así que esa validación queda en parte contaminada.",
+      "Es una encuesta con muestra de alrededor de mil casos: sus movimientos de una décima pueden ser ruido.",
+    ],
+    faltantes: "Si la universidad no publica un mes, la card conserva el último dato y la frescura avisa a los 90 días. Si faltara, la dimensión queda sin componentes y su peso se reparte entre las otras cinco.",
+    revisiones: "Cada planilla nueva reemplaza la serie completa; la universidad no suele revisar meses anteriores.",
+    cambios: [
+      { fecha: "2026-10-07", cambio: "Entra al índice de impacto social como componente de la dimensión de confianza y percepción, que estaba vacía desde agosto. Hasta ahora la serie se usaba sólo para validar el índice político; deja de hacerlo porque una estadística que integra un índice no puede validar otro. Con los datos de septiembre (1,937) el componente vale 105,8 y el índice de impacto social pasa de 92,5 a cerca de 93,6.", adr: "0345" },
+    ],
+  },
+
   carga_servicio_deuda_hogares: {
     tipo: "indicador",
     id: "carga_servicio_deuda_hogares",
@@ -3362,7 +3395,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de ingresos y consumo (19,5% interno · 5,47% del índice de impacto social).",
-      "Es el único componente del índice que mide VOLUMEN EFECTIVAMENTE COMPRADO. Los otros diecisiete miden lo que entra al hogar (ingresos), lo que cuesta (precios), de dónde sale ese ingreso (empleo), lo que no se llega a pagar (mora), lo que se opina (percepción) o el delito sufrido. Ninguno mira lo que el hogar se llevó de la góndola.",
+      "Es el único componente del índice que mide VOLUMEN EFECTIVAMENTE COMPRADO. Los otros dieciocho miden lo que entra al hogar (ingresos), lo que cuesta (precios), de dónde sale ese ingreso (empleo), lo que no se llega a pagar (mora), lo que se opina (percepción) o el delito sufrido. Ninguno mira lo que el hogar se llevó de la góndola.",
       "El peso surge de esa jerarquía: por encima de los dos proxies de compra realizada que ya había —una proteína y la motorización, que juntos no llegan al 8% de la dimensión— y por debajo de las dos medidas estructurales, la brecha entre salario y canasta y el conteo de pobreza.",
     ],
     limitaciones: [
@@ -3478,7 +3511,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Recorte asimétrico declarado: todos los componentes salvo motorización total se acotan a un techo de 140 (un boom puntual no compra compensación ilimitada) y deliberadamente NO tienen piso — el deterioro no se recorta, se señaliza con el flag de dimensión crítica. Motorización total está exenta porque su peso efectivo limita el aporte y 140 no es un extremo frente a su historia; la ficha del componente cuantifica ambos argumentos.",
     ],
     normalizacion: [
-      "Cada componente es un índice continuo. Diecisiete se rebasean a 100 = promedio del 4º trimestre de 2023 (o su base declarada); servicios públicos transforma la mayor tensión entre agua+energía y transporte, con 100 = tensión 5. Las transformaciones están documentadas en cada ficha.",
+      "Cada componente es un índice continuo. Dieciocho se rebasean a 100 = promedio del 4º trimestre de 2023 (o su base declarada); servicios públicos transforma la mayor tensión entre agua+energía y transporte, con 100 = tensión 5. Las transformaciones están documentadas en cada ficha.",
     ],
     agregacion: {
       latex: String.raw`\begin{gathered}\text{índice de impacto social}=\sum_d w_d\sum_{i\in d}w_i\,\operatorname{cap}_i(x_i)\\[3pt]\operatorname{cap}_i(x)=\begin{cases}x,&i=\text{motorización total}\\\min(x,140),&\text{resto}\end{cases}\end{gathered}`,
@@ -3538,6 +3571,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-21", cambio: "Las ventas en supermercados a precios constantes dejan de ser el ancla de validación externa y entran como componente de la dimensión de ingresos y consumo, con 20% interno. El índice queda con dieciocho componentes y es la primera vez que uno mide volumen efectivamente comprado. En el mismo movimiento el cinturón deja de tener ancla única y su contraste pasa a ser el panel: el reemplazo natural —el consumo privado de las Cuentas Nacionales— existe pero todavía tiene nueve trimestres, y queda declarado como referencia en formación con su umbral de promoción fijado de antemano.", adr: "0225" },
       { fecha: "2026-08-21", cambio: "La carga del servicio de deuda de las familias entra como segunda pata de vulnerabilidad financiera, con 30% interno; la mora conserva 70%. El índice queda con diecinueve componentes." },
       { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses. No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes.", adr: "0233" },
+      { fecha: "2026-10-07", cambio: "Entra la confianza en el Gobierno de la Universidad Torcuato Di Tella a la dimensión de confianza y percepción, que estaba vacía desde que se suspendió el sentimiento digital en agosto. Recupera su 8,25% y el índice queda con dieciocho componentes rebaseados a 2023. Con los datos de septiembre el índice pasa de 92,5 a cerca de 93,6. La misma serie deja de usarse para validar el índice político.", adr: "0345" },
     ],
   },
 
@@ -3552,8 +3586,8 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "politica",
     resumen: "Mide el capital político del gobierno —la capacidad de gobernar con otros actores, no la popularidad— en una escala 0–100: 0 = mínimo capital político, 100 = máximo. Los pesos son editoriales y explícitos.",
     marcoConceptual: [
-      "El cinturón político mide el capital político del gobierno según el marco de Carlos Matus (Política, Planificación y Gobierno): la capacidad de gobernar con otros actores —el Congreso, las provincias, el propio bloque legislativo, la calle, el Poder Judicial y el sector privado—, no la popularidad medida en encuestas. Se organiza en siete dimensiones: poder legislativo, alianzas territoriales, cohesión interna del oficialismo, conflicto social, imagen y voto, poder judicial y sector privado.",
-      "A diferencia del índice macroeconómico, el índice de gestión y el índice de impacto social, no existe un documento institucional previo que fije estos pesos. Son una decisión editorial explícita: poder legislativo 21%, alianzas territoriales 19%, cohesión interna 15%, conflicto social 10%, imagen y voto 7%, poder judicial 15% y sector privado 13%. La imagen electoral pesa deliberadamente menos porque el proyecto distingue capital político de popularidad.",
+      "El cinturón político mide el capital político del gobierno según el marco de Carlos Matus (Política, Planificación y Gobierno): la capacidad de gobernar con otros actores —el Congreso, las provincias, el propio bloque legislativo, la calle, el Poder Judicial y el sector privado—, no la popularidad medida en encuestas. Se organiza en seis dimensiones: poder legislativo, alianzas territoriales, cohesión interna del oficialismo, conflicto social, poder judicial y sector privado.",
+      "A diferencia del índice macroeconómico, el índice de gestión y el índice de impacto social, no existe un documento institucional previo que fije estos pesos. Son una decisión editorial explícita: poder legislativo 22,58%, alianzas territoriales 20,43%, cohesión interna 16,13%, conflicto social 10,75%, poder judicial 16,13% y sector privado 13,98%. Desde octubre de 2026 el índice no incluye intención de voto: el proyecto distingue capital político de popularidad.",
     ],
     seleccion: [
       "El tablero publica solo lo que integra el índice: cuatro indicadores retirados conservan ficha histórica y otros seguimientos no puntuables permanecen internos, sin tarjeta pública. El esquema reemplazó a un promedio simple que pesaba todo por igual, sin distinguir actores ni mecanismos de poder.",
@@ -3570,8 +3604,8 @@ export const FICHAS: Record<string, Ficha> = {
       "A diferencia de índice macroeconómico/índice de gestión, cuyos umbrales provienen de un documento institucional, acá los umbrales de los indicadores originales heredan el criterio de la fórmula que reemplazan, y los de los indicadores incorporados en julio de 2026 se calibraron contra la serie mensual reconstruida de cada uno (la ficha de cada indicador documenta sus cortes y su calibración).",
     ],
     agregacion: {
-      latex: String.raw`\text{índice político}=\sum_{\text{7 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)`,
-      leyenda: "Promedio ponderado en dos niveles: 21% poder legislativo · 19% alianzas territoriales · 15% cohesión interna · 10% conflicto social · 7% imagen y voto · 15% poder judicial · 13% sector privado.",
+      latex: String.raw`\text{índice político}=\sum_{\text{6 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)`,
+      leyenda: "Promedio ponderado en dos niveles: 22,58% poder legislativo · 20,43% alianzas territoriales · 16,13% cohesión interna · 10,75% conflicto social · 16,13% poder judicial · 13,98% sector privado.",
       parrafos: [
         "La agregación es compensatoria: una dimensión alta puede tapar una baja. Por eso el índice incluye el flag de dimensión crítica: si una dimensión cae por debajo de su umbral, se declara junto al valor publicado en lugar de dejar que el promedio la esconda.",
         "Cada dimensión publica además su SERIE MENSUAL, y sale del mismo cálculo que el índice: es el promedio ponderado de sus indicadores, renormalizado por el peso que tiene dato ese mes, aplicado a la reconstrucción histórica. No es una cuenta aparte — es el paso intermedio del índice hecho visible. Sirve para distinguir dos situaciones que el valor agregado confunde: un índice quieto porque nada se mueve, y un índice quieto porque dos dimensiones se mueven en direcciones opuestas y se compensan.",
@@ -3598,7 +3632,7 @@ export const FICHAS: Record<string, Ficha> = {
       { rango: "81 – 100", lectura: "Aflojado" },
     ],
     limitaciones: [
-      "Los pesos de las siete dimensiones no provienen de un documento institucional previo, a diferencia de los otros tres índices del informe: son una decisión editorial explícita, declarada como tal.",
+      "Los pesos de las seis dimensiones no provienen de un documento institucional previo, a diferencia de los otros tres índices del informe: son una decisión editorial explícita, declarada como tal.",
       "Varios de los indicadores son incorporaciones de julio de 2026: sus umbrales se calibraron contra series mensuales reconstruidas de unos dos años — una historia real pero corta, que cubre un solo gobierno.",
       "Su validación externa es la más reciente del sistema: varios componentes tienen historia corta y la reconstrucción de los meses más antiguos se apoya en los indicadores de serie más larga (con un piso de cobertura declarado) — las correlaciones se leen como consistencia, no como prueba.",
       "El alineamiento territorial se mide por el comportamiento de voto de los senadores, no por la postura del Poder Ejecutivo provincial: no existe todavía una fuente pública estructurada que mida directamente el alineamiento de los gobernadores.",
@@ -3615,6 +3649,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-16", cambio: "Se incorpora el bloqueo legislativo sostenido a la dimensión de poder legislativo: la contracara de las derrotas (qué porción de las normas propias desafiadas en el recinto sigue en pie). El índice pasa a once indicadores puntuables y los pesos internos de la dimensión se redistribuyen." },
       { fecha: "2026-07-31", cambio: "El índice alcanza su estructura vigente de siete dimensiones y dieciocho indicadores: incorpora el Poder Judicial y el sector privado como actores diferenciados, y amplía la medición legislativa. La composición y los pesos vigentes quedan publicados en la tabla del índice." },
       { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses. No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes.", adr: "0231" },
+      { fecha: "2026-10-07", cambio: "Sale la dimensión de imagen y voto, cuyo único indicador era la ventaja electoral del Votómetro: el Votómetro deja el Monitor y pasa a ser un producto aparte. Su 7% se reparte entre las seis dimensiones restantes en proporción a su peso, así que el orden entre ellas no cambia. El índice queda en seis dimensiones y sube de 71,2 a 73,8 con los datos del 7 de octubre. La validación externa deja de usar la confianza en el Gobierno de Di Tella, que pasa a integrar el índice de impacto social, y el índice político se queda sin factor común: se sigue publicando su correlación con la incertidumbre de política.", adr: "0344,0345" },
     ],
   },
 };

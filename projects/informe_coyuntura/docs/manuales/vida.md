@@ -12,15 +12,16 @@ al ADR.
 
 ## Dimensiones y pesos
 
-| Dimensión | Peso nominal | Peso efectivo | Indicadores |
-|---|---:|---:|---|
-| `ingresos` | 28% | 30.6% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `consumo_carne_vacuna`, `motorizacion_total`, `consumo_supermercados`, `ratio_motos_autos` |
-| `precios` | 25% | 27.2% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
-| `vulnerabilidad` | 10% | 10.9% | `mora_familias`, `carga_servicio_deuda_hogares` |
-| `empleo` | 24% | 26.4% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `subocupacion_demandante`, `trabajo_independiente` |
-| `seguridad` | 4% | 4.9% | `inseguridad`, `tasa_homicidios`, `tasa_robos` |
+| Dimensión | Peso | Indicadores |
+|---|---:|---|
+| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `consumo_carne_vacuna`, `motorizacion_total`, `consumo_supermercados`, `ratio_motos_autos` |
+| `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
+| `vulnerabilidad` | 10% | `mora_familias`, `carga_servicio_deuda_hogares` |
+| `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `subocupacion_demandante`, `trabajo_independiente` |
+| `percepcion` | 8% | `icg_utdt` |
+| `seguridad` | 4% | `inseguridad`, `tasa_homicidios`, `tasa_robos` |
 
-Suma de pesos nominales: 92%. El resto (dimensiones sin ningún indicador vigente, todos suspendidos) no se publica, y su peso se redistribuye proporcionalmente entre las que quedan — es la misma renormalización que el motor aplica dimensión a dimensión; acá se aplica una vez más entre dimensiones para que la columna «Peso efectivo» sume 100%.
+Suma de pesos: 100%.
 
 ## Cómo puntúa este cinturón
 
@@ -295,6 +296,22 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) La contracara del cierre: el trabajo independiente · [ADR-0250](../adr/0250-el-universo-restringido-se-enumera.md) El universo restringido se enumera · [ADR-0279](../adr/0279-las-series-laborales-no-identifican-transiciones.md) Las series laborales no identifican transiciones
 
+### Dimensión `percepcion` (8%)
+
+#### Confianza en el Gobierno
+
+`icg_utdt`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 100% |
+| Peso efectivo en el índice | **8.2%** |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
+
+**Lo gobiernan**: [ADR-0345](../adr/0345-la-confianza-en-el-gobierno-entra-al-indice-de-impacto-social.md) La confianza en el Gobierno entra al índice de impacto social
+
 ### Dimensión `seguridad` (4%)
 
 #### Victimización
@@ -325,7 +342,7 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0327](../adr/0327-homicidios-y-robos-del-snic-puntuan-en-seguridad.md) Homicidios y robos del SNIC entran a puntuar en la dimensión de seguridad
 
-#### Tasa de robos
+#### Tasa de robos (rapiñas)
 
 `tasa_robos`
 
@@ -375,7 +392,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-53 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+54 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -430,3 +447,4 @@ histórica.
 - [0327](../adr/0327-homicidios-y-robos-del-snic-puntuan-en-seguridad.md) — Homicidios y robos del SNIC entran a puntuar en la dimensión de seguridad
 - [0328](../adr/0328-ratio-motos-autos-puntua-como-indicador-propio.md) — El ratio motos/autos entra a puntuar como indicador propio
 - [0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) — Puntúan el total de las tres carnes y, aparte, la vacuna
+- [0345](../adr/0345-la-confianza-en-el-gobierno-entra-al-indice-de-impacto-social.md) — La confianza en el Gobierno entra al índice de impacto social

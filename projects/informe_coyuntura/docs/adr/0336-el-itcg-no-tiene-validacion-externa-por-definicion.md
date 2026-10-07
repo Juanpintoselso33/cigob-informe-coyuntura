@@ -7,7 +7,7 @@ cinturon: 'gestion'
 indice: 'ITCG'
 archivos: ['scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/panel_validacion.py', 'web/src/pages/[slug].astro', 'web/src/pages/metodologia/index.astro', 'web/src/pages/metodologia/[id].astro', 'web/src/lib/fichas.ts', 'tests/test_itcg_sin_validacion_externa.py']
 supersede: ['0226']
-relacionado: ['0031', '0164']
+relacionado: ['0031', '0164', '0345']
 ambito: 'ITCG · validación externa · si un índice de ejecución puede tener un contraste externo'
 origen: 'Juan, 22-sep-2026: «sacá validación externa del índice de gestión, por propia definición no tiene validación externa».'
 ---

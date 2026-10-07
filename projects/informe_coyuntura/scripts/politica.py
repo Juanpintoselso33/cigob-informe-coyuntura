@@ -4,7 +4,6 @@ Capital político según Carlos Matus: capacidad de gobernar (no popularidad).
 Ejecutar desde projects/informe_coyuntura/: python scripts/politica.py
 
 Indicadores:
-  votometro_ventaja_lla     — Brecha LLA−PJ en intención de voto (Votómetro CIGOB, auto)
   ratio_dnu                 — DNUs / leyes sancionadas, ventana móvil 365 días (InfoLeg, auto;
                                ADR-0058 — antes acumulado del año calendario, resetaba en enero)
   conflictividad_nacional   — % var. eventos de protesta y disturbios en TODO el país vs. base
@@ -99,21 +98,10 @@ DERROTAS_EVENTOS_PATH = PROJECT_DIR / "data" / "politica" / "derrotas_legislativ
 GABINETE_SALIDAS_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_salidas.json"
 GABINETE_DECRETOS_CACHE_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_decretos_cache.json"
 CSJN_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "csjn_novedades.json"
-# El Votómetro se publica por ediciones mensuales en la web de CiGob desde el
-# 16-sep-2026: el índice lista `/votometro/<mes>-<año>` y cada edición sirve su
-# HTML en `/votometro/contenido/<mes>-<año>.html`. El sitio viejo de GitHub
-# Pages dejó de actualizarse el 22-jul-2026 y queda sólo como respaldo.
-VOTOMETRO_WEB        = "https://cigob-landing.vercel.app"
-VOTOMETRO_INDICE_URL = f"{VOTOMETRO_WEB}/votometro/"
-VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # sitio viejo, respaldo
-VOTOMETRO_HTML = PROJECT_DIR / "data" / "politica" / "votometro_fallback.html"  # fallback local
-_MESES_EDICION = {m: i for i, m in enumerate(
-    ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
-     "septiembre", "octubre", "noviembre", "diciembre"), start=1)}
+# El Votómetro salió del Monitor el 7-oct-2026 (ADR-0344): es otro producto.
 
 CINTURON              = "politica"
 INDICADORES_ESPERADOS = [
-    "votometro_ventaja_lla",
     "ratio_dnu",
     "brecha_obra_publica",
     "apoyo_empresario",
@@ -150,7 +138,6 @@ JUS_DESIGNACIONES_Q = "Designaciones de magistrados de la Justicia Federal"
 JUS_RENUNCIAS_Q   = "Renuncias de magistrados de la Justicia Federal"
 
 STALE_MANUAL_DAYS    = 45
-STALE_VOTOMETRO_DAYS = 60
 STALE_DNU_DAYS       = 30
 STALE_IAF_DAYS       = 365  # dato anual — válido todo el año
 
@@ -589,196 +576,6 @@ def _days_old(fecha_str: str) -> int:
         return (date.today() - fecha).days
     except Exception:
         return 999
-
-
-# ── Votómetro parser ──────────────────────────────────────────────────────────
-
-def _edicion_vigente_votometro(indice_html: str) -> str | None:
-    """Id de la edición más reciente (`agosto-2026`) entre las que enlaza el
-    índice del Votómetro. Se ordena por fecha, no por orden de aparición: el
-    índice es contenido editable y no promete ningún orden."""
-    ediciones = set()
-    for mes, anio in re.findall(r'href="/votometro/([a-z]+)-(\d{4})"', indice_html):
-        if mes in _MESES_EDICION:
-            ediciones.add((int(anio), _MESES_EDICION[mes], f"{mes}-{anio}"))
-    return max(ediciones)[2] if ediciones else None
-
-
-def _cargar_votometro_html() -> str:
-    """HTML de la edición vigente del Votómetro en la web de CiGob.
-
-    Respaldos, en orden: el sitio viejo de GitHub Pages y el archivo local. Cada
-    caída se avisa, porque el respaldo publica encuestas más viejas sin que el
-    número se vea raro — pasó del 16-ago al 22-sep-2026 leyendo el sitio viejo."""
-    def _con_encuestas(url: str) -> str:
-        r = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
-        r.raise_for_status()
-        if "encuestasRaw" not in r.text:
-            raise ValueError(f"encuestasRaw ausente en {url}")
-        return r.text
-
-    try:
-        r = requests.get(VOTOMETRO_INDICE_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
-        r.raise_for_status()
-        edicion = _edicion_vigente_votometro(r.text)
-        if not edicion:
-            raise ValueError("el índice del Votómetro no enlaza ninguna edición")
-        return _con_encuestas(f"{VOTOMETRO_WEB}/votometro/contenido/{edicion}.html")
-    except Exception as e:
-        _warn("votometro (web de CiGob falló, uso el sitio viejo)", str(e))
-    try:
-        return _con_encuestas(VOTOMETRO_URL)
-    except Exception as e:
-        if VOTOMETRO_HTML.exists():
-            _warn("votometro (sitio viejo falló, uso archivo local)", str(e))
-            return VOTOMETRO_HTML.read_text(encoding="utf-8")
-        raise
-
-
-def fetch_votometro() -> dict | None:
-    """
-    Parsea encuestasRaw del Votómetro CIGOB y calcula la brecha ponderada LLA−PJ.
-
-    Filtros:
-    - tipo='espacio' (porcentajes de espacio político, no candidatos individuales)
-    - últimos STALE_VOTOMETRO_DAYS días desde la encuesta más reciente
-
-    Peso = exp(−0.015 × días) × calidad_mult  donde A=3, B=2, C=1
-    """
-    try:
-        html = _cargar_votometro_html()
-
-        m = re.search(r"const\s+encuestasRaw\s*=\s*\[(.*?)\];", html, re.DOTALL)
-        if not m:
-            raise ValueError("No se encontró encuestasRaw en el HTML")
-
-        raw_block = m.group(1)
-
-        entries = []
-        for obj in re.finditer(r"\{([^}]+)\}", raw_block):
-            fields = {}
-            for kv in re.finditer(r"(\w+)\s*:\s*'([^']*)'|(\w+)\s*:\s*([\d.]+)", obj.group(1)):
-                if kv.group(1):
-                    fields[kv.group(1)] = kv.group(2)
-                else:
-                    fields[kv.group(3)] = float(kv.group(4))
-            if fields:
-                entries.append(fields)
-
-        espacios = [e for e in entries if str(e.get("tipo", "")).strip() == "espacio"]
-        if not espacios:
-            raise ValueError("Sin encuestas tipo='espacio' en Votómetro")
-
-        fechas = []
-        for e in espacios:
-            try:
-                fechas.append(date.fromisoformat(str(e["fecha"])[:10]))
-            except Exception:
-                pass
-        if not fechas:
-            raise ValueError("Sin fechas válidas en encuestas espacio")
-        fecha_max = max(fechas)
-
-        cutoff = (fecha_max - timedelta(days=STALE_VOTOMETRO_DAYS)).isoformat()
-        recientes = [e for e in espacios if str(e.get("fecha", "")) >= cutoff]
-        if not recientes:
-            raise ValueError("Sin encuestas espacio recientes en ventana de tiempo")
-
-        CALIDAD_MULT = {"A": 3.0, "B": 2.0, "C": 1.0}
-        LAMBDA = 0.015
-
-        suma_peso = 0.0
-        suma_lla  = 0.0
-        suma_pj   = 0.0
-
-        for e in recientes:
-            try:
-                fecha_enc = date.fromisoformat(str(e["fecha"])[:10])
-                dias = (date.today() - fecha_enc).days
-                wT = math.exp(-LAMBDA * dias)
-                cal = str(e.get("calidad", "B")).strip().upper()
-                wC = CALIDAD_MULT.get(cal, 2.0)
-                w  = wT * wC
-
-                lla = float(e.get("LLA", 0))
-                pj  = float(e.get("PJ", 0))
-
-                suma_peso += w
-                suma_lla  += w * lla
-                suma_pj   += w * pj
-            except Exception:
-                continue
-
-        if suma_peso == 0:
-            raise ValueError("Suma de pesos = 0")
-
-        lla_pond = round(suma_lla / suma_peso, 1)
-        pj_pond  = round(suma_pj / suma_peso, 1)
-        gap      = round(lla_pond - pj_pond, 1)
-
-        return {
-            "valor": gap,
-            "lla_ponderado": lla_pond,
-            "pj_ponderado": pj_pond,
-            "n_encuestas": len(recientes),
-            "unidad": "Puntos porcentuales",
-            "fuente": "Votómetro CIGOB",
-            "fecha_dato": str(fecha_max),
-            "desactualizado": _days_old(str(fecha_max)) > STALE_VOTOMETRO_DAYS,
-        }
-
-    except Exception as e:
-        _warn("votometro_ventaja_lla", str(e))
-        return None
-
-
-def votometro_serie_mensual() -> list:
-    """Serie histórica mensual de la brecha LLA−PJ del Votómetro, reconstruida desde
-    encuestasRaw (que trae todos los sondeos desde dic-2023). Para cada mes se aplica
-    la MISMA ponderación que fetch_votometro (recencia exp(−0,015·días) × calidad,
-    ventana de STALE_VOTOMETRO_DAYS anclada en el último sondeo del mes), evaluada al
-    cierre del mes. Devuelve [(YYYY-MM, gap)] ascendente."""
-    html = _cargar_votometro_html()
-    m = re.search(r"const\s+encuestasRaw\s*=\s*\[(.*?)\];", html, re.DOTALL)
-    if not m:
-        raise ValueError("No se encontró encuestasRaw en el HTML")
-    esp = []
-    for obj in re.finditer(r"\{([^}]+)\}", m.group(1)):
-        f = {}
-        for kv in re.finditer(r"(\w+)\s*:\s*'([^']*)'|(\w+)\s*:\s*([\d.]+)", obj.group(1)):
-            f[kv.group(1) or kv.group(3)] = kv.group(2) if kv.group(1) else float(kv.group(4))
-        if f and str(f.get("tipo", "")).strip() == "espacio" and f.get("fecha"):
-            esp.append(f)
-    fechas = sorted(date.fromisoformat(str(e["fecha"])[:10]) for e in esp)
-    if not fechas:
-        raise ValueError("Sin encuestas tipo='espacio'")
-    CAL = {"A": 3.0, "B": 2.0, "C": 1.0}; LAMBDA = 0.015
-
-    def gap_al(asof: date):
-        fmax = max((f for f in fechas if f <= asof), default=None)
-        if not fmax:
-            return None
-        cutoff = fmax.toordinal() - STALE_VOTOMETRO_DAYS
-        sw = sl = sp = 0.0
-        for e in esp:
-            fe = date.fromisoformat(str(e["fecha"])[:10])
-            if fe > asof or fe.toordinal() < cutoff:
-                continue
-            w = math.exp(-LAMBDA * (asof - fe).days) * CAL.get(str(e.get("calidad", "B")).strip().upper(), 2.0)
-            sw += w; sl += w * float(e.get("LLA", 0)); sp += w * float(e.get("PJ", 0))
-        return round((sl - sp) / sw, 1) if sw else None
-
-    out = []
-    y, mo = fechas[0].year, fechas[0].month
-    while (y, mo) <= (date.today().year, date.today().month):
-        asof = min(date(y, mo, calendar.monthrange(y, mo)[1]), date.today())
-        g = gap_al(asof)
-        if g is not None:
-            out.append((f"{y}-{mo:02d}", g))
-        mo += 1
-        if mo > 12:
-            mo = 1; y += 1
-    return out
 
 
 # ── Ratio DNU ─────────────────────────────────────────────────────────────────
@@ -6005,7 +5802,6 @@ def main() -> None:
         print(f"  [WARN] detector de postura empresaria no corrió ({e})")
 
     colectores = [
-        ("votometro_ventaja_lla",         fetch_votometro),
         ("ratio_dnu",                     fetch_ratio_dnu),
         ("brecha_obra_publica",           fetch_brecha_obra_publica),
         ("apoyo_empresario",              fetch_apoyo_empresario),

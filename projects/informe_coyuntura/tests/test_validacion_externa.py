@@ -82,9 +82,11 @@ def test_reconstruccion_itcp_mascara_de_era_para_eficacia(monkeypatch, tmp_path)
             {"fecha": "2025-11-01", "valor": 30.0},
             {"fecha": "2025-12-01", "valor": 25.0},
         ],
-        "votometro_ventaja_lla": [
-            {"fecha": "2025-11-01", "valor": 5.0},
-            {"fecha": "2025-12-01", "valor": 6.0},
+        # Otro componente con dato en los dos meses (antes era el Votómetro,
+        # que salió en ADR-0344): sin él 2025-11 quedaría vacío.
+        "cohesion_bloque": [
+            {"fecha": "2025-11-01", "valor": 95.0},
+            {"fecha": "2025-12-01", "valor": 96.0},
         ],
     }), encoding="utf-8")
     monkeypatch.setattr(validacion_externa, "SERIES", snapshot)

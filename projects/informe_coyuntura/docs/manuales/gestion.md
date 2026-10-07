@@ -273,7 +273,6 @@ histórica.
 - [0188](../adr/0188-reestructuracion-organismos-numerador-caso-por-caso.md) — `reestructuracion_organismos`: el numerador cuenta solo cierres vigentes de organismos públicos, caso por caso
 - [0189](../adr/0189-si-no-puntua-no-se-muestra.md) — Si no puntúa no se muestra, y una promesa cumplida sí puntúa
 - [0221](../adr/0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) — Un cable trampa mira la banda, no el puntaje
-- [0226](../adr/0226-el-itcg-se-queda-sin-validacion-externa-y-lo-declara.md) — El ITCG se queda sin validación externa única, y lo declara
 - [0228](../adr/0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) — El FAL puntúa lo que rige, no lo que se dictó
 - [0229](../adr/0229-la-desregulacion-cuenta-actos-no-efectos.md) — La desregulación cuenta actos, no efectos, y la ficha lo dice
 - [0244](../adr/0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) — El acto jurídico manda sobre el estado del portal
@@ -288,3 +287,4 @@ histórica.
 - [0294](../adr/0294-cortes-explicita-base-estimada-y-fuente-no-verificable.md) — Cortes explicita base estimada y fuente no verificable
 - [0296](../adr/0296-tdps-distingue-devengado-de-pago.md) — TDPS distingue devengado de pago
 - [0305](../adr/0305-fal-separa-consulta-y-revision-curada.md) — Consultar CNV no actualiza la revisión judicial
+- [0336](../adr/0336-el-itcg-no-tiene-validacion-externa-por-definicion.md) — El ITCG no tiene validación externa, por definición

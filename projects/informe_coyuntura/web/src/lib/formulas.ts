@@ -207,6 +207,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\frac{\text{mora}_{\text{pers}}\cdot\text{saldo}_{\text{pers}}+\text{mora}_{\text{tarj}}\cdot\text{saldo}_{\text{tarj}}}{\text{saldo}_{\text{pers}}+\text{saldo}_{\text{tarj}}}`,
     leyenda: "Porcentaje de la cartera de consumo de las familias en situación irregular (Informe sobre Bancos del Banco Central de la República Argentina), ponderando la mora de personales y tarjetas por el saldo de cada línea. En el índice de impacto social puntúa por el nivel relativo al 4T-2023. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100.",
   },
+  icg_utdt: {
+    latex: String.raw`100\cdot\frac{\text{ICG}_{\text{hoy}}}{\overline{\text{ICG}}_{\text{4T-23}}}`,
+    leyenda: "Índice de Confianza en el Gobierno de la Universidad Torcuato Di Tella (escala 0 a 5), rebaseado a 100 con el promedio de octubre a diciembre de 2023, como el resto de los componentes del índice. No se invierte: más confianza da mejor puntaje.",
+  },
   carga_servicio_deuda_hogares: {
     latex: String.raw`100\cdot\frac{\left(\frac{\text{servicio de deuda}}{\text{masa salarial registrada}}\right)_{\text{4T-23}}}{\left(\frac{\text{servicio de deuda}}{\text{masa salarial registrada}}\right)_{\text{hoy}}}`,
     leyenda: "Carga mensual de capital e intereses de las familias sobre la masa salarial registrada, tal como la publica el Banco Central de la República Argentina (BCRA), con promedio móvil de tres meses en numerador y denominador. Se invierte al rebasear: más ingreso comprometido en deuda significa menor capacidad de pago y peor puntaje.",

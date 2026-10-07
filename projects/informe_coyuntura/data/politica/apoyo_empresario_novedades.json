@@ -1,39 +1,16 @@
 {
  "_meta": {
-  "comunicados_vistos": 47,
+  "comunicados_vistos": 46,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie del indicador en el mes anterior al más viejo, y `inventario_verificado` es la última corrida en la que respondieron las dos cámaras (ADR-0310). Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
   "inventario_verificado": "2026-10-07",
-  "nuevos_en_la_corrida": 1,
+  "nuevos_en_la_corrida": 0,
   "ultima_corrida": "2026-10-07"
  },
- "pendientes": {
-  "UIA|adherimos-al-compromiso-prioridades-en-la-agenda-e": {
-   "camara": "UIA",
-   "destinatario": null,
-   "fecha": "2026-10-05",
-   "id": "adherimos-al-compromiso-prioridades-en-la-agenda-e",
-   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
-   "postura": null,
-   "texto": "Nos sumamos al compromiso promovido por Argentinos por la Educación e IDEA que establece un conjunto de Prioridades para la agenda educativa 2026 en 6 ejes que incluyen la recuperación de aprendizajes fundamentales, mejores sistemas de información, condiciones adecuadas para enseñar y aprender, revisión del federalismo educativo, fortalecimiento de la carrera docente y adaptación del sistema educativo a la inteligencia artificial y cambios en el mundo del trabajo.  Las iniciativas fueron presentadas públicamente en el marco del Coloquio de IDEA durante el día 1° de octubre y contaron con la adhesión de más de 50 entidades de representación empresarial y de la sociedad civil, entre las que se encuentran varias cámaras socias de UIA y otras entidades tales como AEA, CIPPEC, ABA, Argentina Debate, Argencom, entre otras. El compromiso surge de una síntesis de un documento marco elaborado durante 2024 junto a especialistas, ex funcionarios y referentes del sistema educativo argentino. A partir de las seis prioridades allí consensuadas, este documento sintetiza una agenda operativa de corto y largo plazo, con foco en su viabilidad política y en la capacidad de traccionar acuerdos concretos entre los distintos niveles de gobierno y actores del sistema.   Conocé el compromiso   Asimismo, en la última reunión del Dto. de Educación, Tecnología e Innovación Productiva, Argentinos por la Educación presentó los resultados principales de las pruebas estandarizadas Aprender 2025, evaluación censal aplicada a estudiantes de 6º de primaria, y PISA 2025, evaluación internacional que mide habilidades en Lectura, Matemática y Ciencias en jóvenes de 15 años. En conjunto, los resultados muestran brechas persistentes y dificultades en aprendizajes fundamentales, con una proporción muy elevada de estudiantes que no alcanzan los niveles mínimos esperados, principalmente en matemática. Los resultados refuerzan un desafío prioritario para la industria: asegurar aprendizajes transversales y reducir brechas para que los jóvenes puedan desarrollar las capacidades que requiere un mundo productivo en transformación.   Mirá los principales resultados",
-   "titulo": "Adherimos al Compromiso Prioridades en la agenda educativa 2026",
-   "url": "https://www.uia.org.ar/uia/novedades/adherimos-al-compromiso-prioridades-en-la-agenda-e"
-  },
-  "UIA|continuamos-la-agenda-federal-con-una-visita-a-cat": {
-   "camara": "UIA",
-   "destinatario": null,
-   "fecha": "2026-09-25",
-   "id": "continuamos-la-agenda-federal-con-una-visita-a-cat",
-   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
-   "postura": null,
-   "texto": "Autoridades de la Unión Industrial Argentina mantuvieron encuentros con los gobernadores de Catamarca y San Luis, representantes de los sectores productivos y autoridades locales para abordar la situación de la industria y avanzar en una agenda de competitividad, infraestructura, desarrollo de proveedores y fortalecimiento de las PyMEs.    La Unión Industrial Argentina (UIA) llevó adelante una nueva etapa de su agenda federal en Catamarca y San Luis, donde mantuvo encuentros con autoridades provinciales, referentes empresarios y representantes de las uniones industriales locales. La recorrida permitió relevar las principales necesidades de los sectores productivos de ambas provincias y avanzar en una agenda de trabajo orientada a mejorar las condiciones para producir, invertir y generar empleo.   A lo largo de las distintas actividades, la UIA abordó los principales desafíos para la competitividad industrial en cada región, entre ellos la infraestructura y la logística, la carga tributaria, el acceso al financiamiento para las PyMEs, la educación técnica y el desarrollo de proveedores locales. Los encuentros también permitieron analizar las oportunidades productivas específicas de cada provincia y fortalecer la articulación con las entidades territoriales.  El presidente de la UIA, Martín Rappallini, destacó la importancia de que la Argentina en todo su territorio conserve su capacidad de transformar sus materias primas y preserve todo el conocimiento que posee en sus industrias, ya que esa es la forma de asegurar el desarrollo y la creación de riqueza.  En Catamarca, la delegación de la UIA se reunió con el gobernador Raúl Jalil para analizar la situación de la industria provincial y los principales desafíos para fortalecer la competitividad, impulsar nuevas inversiones y potenciar el desarrollo de proveedores locales. El encuentro también permitió abordar temas vinculados con infraestructura y logística, energía y financiamiento.   Uno de los ejes estuvo puesto en las oportunidades que abre el crecimiento de la actividad minera y en la necesidad de que los nuevos proyectos se traduzcan en una mayor participación de proveedores industriales nacionales. Catamarca cuenta con 272 empresas industriales y más de 6.000 puestos de trabajo en el sector.   Como parte de la agenda, la UIA también visitó las plantas textiles de CONFECAT S.A. -donde se fabrica la ropa industrial de la marca Ombú- y Algodonera del Valle, y mantuvo un encuentro con autoridades provinciales y empresariales en la sede de la Unión Industrial de Catamarca.  En San Luis, la agenda se concentró en los desafíos de una provincia en la que la industria tiene un peso especialmente significativo: representa alrededor del 36% de la actividad económica provincial. La provincia cuenta con unas 490 empresas industriales y más de 15.000 puestos de trabajo en el sector, con una estructura productiva diversificada y una fuerte presencia de las industrias de alimentos y bebidas, productos químicos y plásticos, y papel y cartón.   Como parte de la recorrida, la delegación de la UIA mantuvo un encuentro con el gobernador Claudio Poggi, y conoció de primera mano la actividad de empresas vinculadas a distintas cadenas productivas de la provincia: Puntapel -del Grupo Arcor-, Diaser y Bandex.   Durante los encuentros, la UIA y los representantes locales analizaron las condiciones necesarias para sostener la actividad, promover nuevas inversiones y fortalecer a las PyMEs, con especial atención en el acceso al financiamiento, la infraestructura logística y vial y la carga tributaria.   Acompañaron a Martín Rappallini los integrantes del Comité Ejecutivo de la UIA David Uriburu, Modesto Magadán, Elio Del Re, Eduardo Nougués, Mauricio Badaloni y Diego Leal; la Directora Ejecutiva, Laura Bermúdez, y el Director de Comunicación y Relaciones Institucionales, Ignacio Duelo.",
-   "titulo": "Continuamos la agenda federal con una visita a Catamarca y San Luis",
-   "url": "https://www.uia.org.ar/uia/novedades/continuamos-la-agenda-federal-con-una-visita-a-cat"
-  }
- },
+ "pendientes": {},
  "revisadas": {
   "AEA|2020-03-21-union-y-responsabilidad-ante-el-desafio-": {
    "origen": "codificacion ADR-0148"
