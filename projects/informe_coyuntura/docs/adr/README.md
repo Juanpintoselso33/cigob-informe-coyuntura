@@ -428,3 +428,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0346](0346-el-hero-ocupa-la-pantalla.md) | El hero ocupa la pantalla |  | vigente |
 | [0347](0347-el-monitor-se-publica-como-informe-mensual.md) | El Monitor se publica como informe mensual |  | vigente |
 | [0348](0348-archivo-de-informes-mensuales.md) | Archivo de informes mensuales |  | vigente |
+| [0349](0349-el-texto-del-marco-conceptual-validado.md) | El texto del marco conceptual: versión validada del 8-oct-2026 |  | vigente |

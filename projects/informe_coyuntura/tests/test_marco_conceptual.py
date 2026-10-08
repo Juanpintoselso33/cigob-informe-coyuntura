@@ -41,10 +41,13 @@ def _texto_normalizado(path: Path) -> str:
 # El párrafo original de la Fundación, tal como estaba en Hero.astro antes de
 # 1f6aa0e. Se busca por fragmentos porque el marcado intercala <strong>.
 FRAGMENTOS_DEL_PARRAFO_ORIGINAL = [
-    "La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos",
+    # Desde ADR-0349 (8-oct-2026) el párrafo va precedido de «En nuestro marco
+    # conceptual,» y dice «intenta sistematizar»: texto validado por LB y MJ, cargado
+    # a pedido de Juan. Cambian dos palabras; el resto sigue palabra por palabra.
+    "la gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos",
     "procesar la tensión",
     "entre las demandas del entorno y los recursos de acción disponibles",
-    "sistematiza el mapa de tensiones de la Argentina actual",
+    "sistematizar el mapa de tensiones de la Argentina actual",
     # Decía "cinco cinturones analíticos" hasta ADR-0205, que sacó espíritu de
     # época del tablero. Es el ÚNICO cambio al párrafo de la Fundación y es una
     # decisión editorial, no una poda: el resto sigue palabra por palabra, y
@@ -119,7 +122,8 @@ def test_la_escala_sigue_explicada_en_metodologia():
     uno y de qué cortes salen, o el sitio vuelve a publicar una escala muda --
     el agujero que abrió ADR-0199."""
     texto = _texto_normalizado(METODOLOGIA_INDEX)
-    assert "Qué dicen los colores" in texto and "coloresEnIndice(" in texto, (
+    # El título pasó de «Qué dicen los colores» a «Qué nos dicen los colores» (ADR-0349).
+    assert re.search(r"Qué (?:nos )?dicen los colores", texto) and "coloresEnIndice(" in texto, (
         "/metodologia dejó de explicar qué significa cada color y de qué cortes "
         "sale, y la portada ya no lo explica (ADR-0213, ADR-0337)."
     )
