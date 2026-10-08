@@ -1,16 +1,28 @@
 {
  "_meta": {
-  "comunicados_vistos": 46,
+  "comunicados_vistos": 47,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie del indicador en el mes anterior al más viejo, y `inventario_verificado` es la última corrida en la que respondieron las dos cámaras (ADR-0310). Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
-  "inventario_verificado": "2026-10-07",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-10-07"
+  "inventario_verificado": "2026-10-08",
+  "nuevos_en_la_corrida": 1,
+  "ultima_corrida": "2026-10-08"
  },
- "pendientes": {},
+ "pendientes": {
+  "UIA|la-uia-busco-alianzas-en-paris-para-integrar-caden": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-10-02",
+   "id": "la-uia-busco-alianzas-en-paris-para-integrar-caden",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Martín Rappallini representó a la Unión Industrial Argentina en la primera edición europea de la Argentina Week. Mantuvo encuentros con el MEDEF, empresas francesas y gobernadores, y ratificó la oportunidad que representa el Acuerdo Mercosur–UE como plataforma de integración productiva.    París, 2 de octubre de 2026.  La Unión Industrial Argentina (UIA) llevó la voz de la industria a la Argentina Week París, la primera edición europea de esta iniciativa de promoción de inversiones, del 30 de septiembre al 2 de octubre. Su presidente, Martín Rappallini, se reunió con representantes del Mouvement des Entreprises de France (MEDEF) y con los CEO de diversas empresas francesas líderes. Su objetivo fue transformar el vínculo empresarial en nuevas oportunidades de negocios y crecimiento para el entramado industrial argentino. Rappallini estuvo acompañado por Rodrigo Pérez Graziano, vicepresidente sectorial de la UIA, y Gastón Guarino, miembro de la Junta Directiva de UIPBA (Unión Industrial de la Provincia de Buenos Aires).  \"El Acuerdo Mercosur–UE es una plataforma de integración productiva, no sólo de acceso a mercados. Queremos que se traduzca en una hoja de ruta con proyectos concretos, oportunidades de financiamiento e inversión. Más empleo y más ventas externas para las empresas argentinas que se inserten en nuevas cadenas de valor\", afirmó Rappallini.  La industria nacional es una socia estratégica de las inversiones en energía, minería, agroindustria e infraestructura, pero también en otros segmentos del entramado industrial en los que Argentina tiene probada capacidad y prestigio. Para lograrlo, la UIA impulsa asociaciones comerciales y productivas entre empresas argentinas y francesas, basadas en el desarrollo de proveedores locales, la transferencia de tecnología y la innovación. La entidad fabril también promueve el desarrollo conjunto de instrumentos de financiamiento para acompañarlas.  Ese diálogo tiene una base institucional: el Memorando de Entendimiento que la UIA y el MEDEF firmaron en octubre de 2025 con el objetivo de impulsar la cooperación en integración comercial e inversiones, transferencia tecnológica y formación, y la construcción de posiciones comunes en el ámbito birregional.  La agenda también ratificó la fuerte mirada federal que viene impulsando la entidad. Rappallini dialogó con gobernadores presentes en París sobre cómo lograr que las inversiones en energía y minería se traduzcan en más proveedores locales, mejor infraestructura regional y más exportaciones de las economías regionales.  Los representantes de la UIA participaron del plenario multisectorial en la sede de la OCDE, y del segmento sobre comercio internacional y seguridad jurídica, organizado con la Cámara de Comercio Internacional en el que se abordaron las oportunidades del Acuerdo Mercosur–UE.  Francia es el octavo origen de la inversión extranjera directa en la Argentina: más de un centenar de empresas con capital francés o con participación francesa operan en el país y emplean a más de 60.000 personas.",
+   "titulo": "La UIA buscó alianzas en París para integrar cadenas de valor",
+   "url": "https://www.uia.org.ar/uia/novedades/la-uia-busco-alianzas-en-paris-para-integrar-caden"
+  }
+ },
  "revisadas": {
   "AEA|2020-03-21-union-y-responsabilidad-ante-el-desafio-": {
    "origen": "codificacion ADR-0148"
@@ -377,6 +389,10 @@
    "fecha": "2026-06-23",
    "origen": "codificado 2026-09-14 (tanda en apoyo_empresario_codificacion.json)",
    "titulo": "La UIA analizó el impacto del “Súper RIGI” en el desarrollo productivo"
+  },
+  "UIA|la-uia-busco-alianzas-en-paris-para-integrar-caden": {
+   "fecha": "2026-10-02",
+   "titulo": "La UIA buscó alianzas en París para integrar cadenas de valor"
   },
   "UIA|la-uia-celebra-la-reduccion-de-retenciones-a-produ": {
    "fecha": "2026-05-23",
