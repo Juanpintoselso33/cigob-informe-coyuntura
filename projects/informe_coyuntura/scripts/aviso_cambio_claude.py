@@ -8,11 +8,25 @@ quién lo pidió ni qué cambió. Lo corre `.github/workflows/cambios-desde-clau
 
 Avisa sólo cuando hay algo que mirar (la regla del canal: sólo lo accionable):
 
-  🔴 las pruebas, los tipos o el build quedaron en rojo
+  🔴 el cambio dejó en rojo pruebas, tipos o build que antes andaban
   🔴 el deploy de Vercel falló o la página no carga
   🔴 la corrida de datos que lanzó el cambio falló
   🟡 se tocó el cálculo, las bandas, los pesos o qué indicadores son card
   🟡 cambiaron muchas cosas de golpe
+  🟡 main ya tenía pruebas en rojo y el cambio se publicó encima (un solo
+     hilo para todos los cambios que caen encima, no uno por cambio)
+  🟡 Vercel llegó al tope de deploys del día: el cambio espera, no está roto
+
+Las dos últimas son de ADR-0350. El 8-oct-2026 cuatro cambios de Luis
+dispararon cuatro 🔴 «se publicó con algo roto», y dos de ellos culpaban a un
+cambio que no había roto nada: las pruebas ya estaban rojas desde los dos
+anteriores. Y el 7-oct un 🔴 «el deploy falló» pedía deshacer un cambio cuando
+lo que había pasado era el tope diario del plan Hobby.
+
+Para saber qué ya estaba rojo, cada cambio guarda al final el conjunto de
+pruebas rojas con que quedó main (se mergea igual, así que es el estado de
+main), en un artifact de Actions (`estado-avisos-cambios`), y el siguiente lo
+compara. No se corre pytest dos veces. La corrida nocturna en verde lo vacía.
 
 Cada aviso dice quién lo pidió, qué cambió, qué falló y el link al PR. El
 primero abre un mensaje; lo que pase después (deploy, corrida) va en su hilo.
@@ -28,6 +42,7 @@ Modos:
   evaluar  después del merge: pruebas en rojo, cambios sensibles o grandes
   deploy   después del deploy: el estado de Vercel y si la página carga
   corrida  cuando termina la corrida de datos que lanzó el cambio
+  verde    la corrida nocturna pasó las pruebas: main está en verde
 """
 from __future__ import annotations
 
@@ -37,7 +52,9 @@ import os
 import re
 import sys
 import urllib.request
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 MONITOR = "Monitor del Plan de Gobierno"
 WEB = "https://informe.cigob.org/"
@@ -61,6 +78,13 @@ MAX_ARCHIVOS = 5
 MAX_LINEAS = 300
 
 TOPE_FALLAS = 8
+
+# El status que deja Vercel en el commit cuando el plan llega al tope diario de
+# deploys (7-oct-2026: «Deployment rate limited — retry in 24 hours»). Si la
+# descripción no dice esto con todas las letras, se avisa como antes.
+TOPE_VERCEL = re.compile(r"rate[ -]?limited|Resource is limited|api-deployments-free-per-day", re.I)
+ART = ZoneInfo("America/Argentina/Buenos_Aires")
+MESES = "ene feb mar abr may jun jul ago sep oct nov dic".split()
 
 
 def _relativa(ruta: str) -> str:
@@ -102,13 +126,37 @@ def fallas(dir_logs: str | None) -> list[str]:
     return out
 
 
-def motivos(archivos: list[str], lineas: int, pruebas: str, lineas_falla: list[str]) -> list[tuple[str, str]]:
-    """(glifo, texto) por cada cosa que hay que avisar. Vacío = no se avisa."""
+def id_falla(linea: str) -> str:
+    """Lo que identifica una falla entre dos cambios: el nombre de la prueba
+    (el motivo puede cambiar de texto sin que sea otra falla)."""
+    m = re.match(r"^pytest: (?:FAILED|ERROR)\s+(\S+)", linea)
+    return f"pytest: {m.group(1)}" if m else linea
+
+
+def separar(actuales: list[str], previas: list[str] | None) -> tuple[list[str], list[str]]:
+    """(nuevas, heredadas). Sin estado previo conocido, todas son nuevas: se
+    culpa al cambio como antes de ADR-0350, que es lo seguro."""
+    if previas is None:
+        return list(actuales), []
+    ya = set(previas)
+    return ([l for l in actuales if id_falla(l) not in ya],
+            [l for l in actuales if id_falla(l) in ya])
+
+
+def motivos(archivos: list[str], lineas: int, pruebas: str, lineas_falla: list[str],
+            heredadas: list[str] = ()) -> list[tuple[str, str]]:
+    """(glifo, texto) por cada cosa que hay que avisar. Vacío = no se avisa.
+
+    `lineas_falla` son las fallas NUEVAS; `heredadas`, las que main ya tenía
+    antes de este cambio. Si todas son heredadas, el cambio no rompió nada.
+    """
     out: list[tuple[str, str]] = []
-    if pruebas == "failure":
+    if pruebas == "failure" and (lineas_falla or not heredadas):
         detalle = "; ".join(lineas_falla[:TOPE_FALLAS]) or "ver el detalle en el PR"
         resto = f" (y {len(lineas_falla) - TOPE_FALLAS} más)" if len(lineas_falla) > TOPE_FALLAS else ""
-        out.append(("🔴", f"Se publicó con pruebas en rojo: {detalle}{resto}."))
+        ya = (f" Además, {len(heredadas)} ya estaba{'n' if len(heredadas) > 1 else ''} en rojo en main "
+              f"antes de este cambio: no son de él." if heredadas else "")
+        out.append(("🔴", f"Se publicó con pruebas en rojo: {detalle}{resto}.{ya}"))
     zonas = sensibles(archivos)
     if zonas:
         out.append(("🟡", "Toca " + ", ".join(zonas) + "."))
@@ -192,11 +240,159 @@ def _slack(metodo: str, **datos) -> dict:
     return r
 
 
-def publicar(texto: str, hilo: str = "") -> str:
-    """Postea (en el hilo `hilo` si hay, y también en el canal) y devuelve el ts."""
-    extra = {"thread_ts": hilo, "reply_broadcast": True} if hilo else {}
+def publicar(texto: str, hilo: str = "", al_canal: bool = True) -> str:
+    """Postea (en el hilo `hilo` si hay, y también en el canal salvo
+    `al_canal=False`) y devuelve el ts."""
+    extra = {"thread_ts": hilo, **({"reply_broadcast": True} if al_canal else {})} if hilo else {}
     r = _slack("chat.postMessage", text=texto, **extra)
     return r.get("ts", "") if r.get("ok") else ""
+
+
+def editar(ts: str, texto: str) -> bool:
+    """Edita un mensaje en su lugar: `chat.update` no notifica a nadie."""
+    return bool(ts) and bool(_slack("chat.update", ts=ts, text=texto).get("ok"))
+
+
+# ── Estado entre cambios (ADR-0350) ─────────────────────────────────────
+
+def cargar_estado(ruta: str) -> dict:
+    try:
+        return json.loads(Path(ruta).read_text(encoding="utf-8")) if ruta else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def guardar_estado(ruta: str, estado: dict) -> None:
+    if ruta:
+        Path(ruta).parent.mkdir(parents=True, exist_ok=True)
+        Path(ruta).write_text(json.dumps(estado, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def _fecha(d: datetime) -> str:
+    d = d.astimezone(ART)
+    return f"{d.day}-{MESES[d.month - 1]}"
+
+
+# ── main tiene pruebas rojas: un hilo, no un 🔴 por cambio ──────────────
+
+def texto_main_rojas(p: dict) -> str:
+    lista = p["lista"]
+    n, c = len(lista), len(p["cambios"])
+    items = [f"• `{x}`" for x in lista[:TOPE_FALLAS]]
+    if n > TOPE_FALLAS:
+        items.append(f"  …y {n - TOPE_FALLAS} más.")
+    return "\n".join([
+        f"🟡 *{MONITOR} — main tiene {n} prueba{'s' if n > 1 else ''} en rojo de antes*",
+        *items,
+        f"*Lleva {c} cambio{'s' if c > 1 else ''} encima:* " + ", ".join(f"#{x}" for x in p["cambios"])
+        + f". Se publicaron igual y no rompieron esto{'s' if n > 1 else ''}: no hay que deshacerlos.",
+        "*Qué ve la gente:* los cambios, publicados. Pero mientras main tenga pruebas en rojo la corrida "
+        "nocturna no publica datos nuevos (eso avisa en su propio hilo).",
+        f"*Qué hacer:* arreglar {'esas pruebas' if n > 1 else 'esa prueba'}, o el cambio que "
+        f"{'las' if n > 1 else 'la'} rompió. Este aviso se cierra solo cuando main vuelve a verde.",
+        f"_Desde el {p['desde']}._",
+    ])
+
+
+def _cerrar_main_rojas(estado: dict, como: str, ahora: datetime) -> None:
+    p = estado.pop("main_rojas", None)
+    if not p:
+        return
+    n = len(p["lista"])
+    editar(p["ts"], "\n".join([
+        f"✅ *{MONITOR} — main vuelve a tener las pruebas en verde*",
+        f"_Estuvo abierto del {p['desde']} al {_fecha(ahora)} · {len(p['cambios'])} cambio(s) encima._",
+        f"> _Era:_ main tenía {n} prueba{'s' if n > 1 else ''} en rojo de antes.",
+    ]))
+    # 🟡: el ✅ queda en el hilo, sin salir al canal (ADR-0350).
+    publicar(f"✅ Main vuelve a verde: {como}.", p["ts"], al_canal=False)
+
+
+def seguir_main_rojas(estado: dict, pr: int, nuevas: list[str], heredadas: list[str],
+                      ahora: datetime) -> None:
+    """Abre, actualiza o cierra el hilo «main tiene pruebas rojas».
+
+    La clave es el conjunto de pruebas heredadas. Mismo conjunto (o uno que se
+    achica) → se edita la raíz y se suma el cambio a «lleva N encima», sin
+    mensaje nuevo. Pruebas heredadas que el hilo no tenía → es otro problema:
+    la raíz vieja se cierra y se abre otra. Si el cambio rompió algo propio, su
+    🔴 ya menciona las heredadas y no se abre un hilo aparte por él.
+    """
+    p = estado.get("main_rojas")
+    ids = sorted({id_falla(x) for x in heredadas})
+    if not ids:
+        _cerrar_main_rojas(estado, f"las pruebas que estaban en rojo ya pasan con el #{pr}", ahora)
+        return
+    if p and set(ids) <= set(p["lista"]):
+        p.update(lista=ids, clave="\n".join(ids))
+        p["cambios"].append(pr)
+        editar(p["ts"], texto_main_rojas(p))
+        return
+    if p:
+        _cerrar_main_rojas(estado, "lo reemplaza un aviso nuevo, con otro conjunto de pruebas en rojo", ahora)
+    elif nuevas:
+        return
+    p = dict(clave="\n".join(ids), lista=ids, cambios=[pr], desde=_fecha(ahora), ts="")
+    p["ts"] = publicar(texto_main_rojas(p))
+    if p["ts"]:
+        estado["main_rojas"] = p
+
+
+# ── Tope de deploys de Vercel ───────────────────────────────────────────
+
+def es_tope_vercel(estado: str, descripcion: str) -> bool:
+    return estado in ("failure", "error") and bool(TOPE_VERCEL.search(descripcion or ""))
+
+
+def fin_del_tope(descripcion: str, fecha_status: str) -> datetime | None:
+    """Cuándo se libera, si el status lo dice («retry in 24 hours»)."""
+    m = re.search(r"retry in (\d+)\s*(hours?|h|minutes?|mins?|m)\b", descripcion or "", re.I)
+    try:
+        base = datetime.fromisoformat((fecha_status or "").replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if not m or base.tzinfo is None:
+        return None
+    n = int(m.group(1))
+    return base + (timedelta(hours=n) if m.group(2).lower().startswith("h") else timedelta(minutes=n))
+
+
+def texto_tope(t: dict) -> str:
+    if t.get("hasta"):
+        h = datetime.fromisoformat(t["hasta"]).astimezone(ART)
+        cuando = f"cerca de las {h:%H:%M} del {_fecha(h)} (hora argentina)"
+    else:
+        cuando = "en ≈24 h"
+    return "\n".join([
+        f"🟡 *{MONITOR} — Vercel llegó al tope de deploys del día: los cambios esperan, no hay nada roto*",
+        "*Cambios que esperan publicarse:* " + ", ".join(f"<{u}|#{n}>" for n, u in t["prs"]) + ".",
+        "*Qué ve la gente:* la versión anterior, sin estos cambios. No se rompió nada.",
+        f"*Qué hacer:* nada que deshacer. El tope se libera solo {cuando}; después, el próximo push a "
+        "main (alcanza con la corrida nocturna) publica todo lo pendiente junto. Si urge, re-desplegar "
+        "a mano desde Vercel una vez liberado.",
+    ])
+
+
+def avisar_tope(estado: dict, pr: int, url: str, descripcion: str, fecha_status: str,
+                ahora: datetime) -> None:
+    """Un 🟡 por tope, no uno por cambio: los que caen dentro se suman a la raíz."""
+    t = estado.get("tope_vercel")
+    vigente = False
+    if t:
+        hasta = datetime.fromisoformat(t["hasta"]) if t.get("hasta") else \
+            datetime.fromisoformat(t["desde"]) + timedelta(hours=24)
+        vigente = ahora < hasta
+    if vigente:
+        if pr not in [n for n, _ in t["prs"]]:
+            t["prs"].append([pr, url])
+            editar(t["ts"], texto_tope(t))
+        return
+    fin = fin_del_tope(descripcion, fecha_status)
+    t = dict(desde=ahora.isoformat(), hasta=fin.isoformat() if fin else "", prs=[[pr, url]], ts="")
+    t["clave"] = f"tope-vercel:{(fin or ahora):%Y-%m-%dT%H}"
+    t["ts"] = publicar(texto_tope(t))
+    if t["ts"]:
+        estado["tope_vercel"] = t
 
 
 def _salida(clave: str, valor: str) -> None:
@@ -206,12 +402,16 @@ def _salida(clave: str, valor: str) -> None:
             fh.write(f"{clave}={valor}\n")
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv: list[str] | None = None, ahora: datetime | None = None) -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("modo", choices=["evaluar", "deploy", "corrida"])
-    ap.add_argument("--pr", type=int, required=True)
-    ap.add_argument("--datos-pr", required=True,
+    ap.add_argument("modo", choices=["evaluar", "deploy", "corrida", "verde"])
+    ap.add_argument("--pr", type=int, default=0)
+    ap.add_argument("--datos-pr", default="",
                     help="JSON de `gh pr view --json title,url,body,files,additions,deletions`")
+    ap.add_argument("--archivo-estado", default="",
+                    help="JSON con las pruebas rojas de main y los hilos abiertos (ADR-0350)")
+    ap.add_argument("--descripcion", default="", help="descripción del status de Vercel")
+    ap.add_argument("--fecha-status", default="", help="updated_at del status de Vercel")
     ap.add_argument("--pruebas", default="success")
     ap.add_argument("--logs")
     ap.add_argument("--hilo", default="")
@@ -220,6 +420,17 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--conclusion", default="")
     ap.add_argument("--corrida-url", default="")
     a = ap.parse_args(argv)
+    ahora = ahora or datetime.now(timezone.utc)
+    estado = cargar_estado(a.archivo_estado)
+
+    if a.modo == "verde":
+        # La corrida nocturna pasó pytest sobre main: no queda nada heredado.
+        _cerrar_main_rojas(estado, "la corrida nocturna pasó todas las pruebas", ahora)
+        estado["rojas"] = []
+        guardar_estado(a.archivo_estado, estado)
+        return 0
+    if not a.pr or not a.datos_pr:
+        ap.error(f"{a.modo} necesita --pr y --datos-pr")
 
     d = json.loads(Path(a.datos_pr).read_text(encoding="utf-8"))
     titulo, url, quien = d.get("title", ""), d.get("url", ""), pedido_por(d.get("body", ""))
@@ -227,7 +438,19 @@ def main(argv: list[str] | None = None) -> int:
     lineas = int(d.get("additions", 0)) + int(d.get("deletions", 0))
 
     if a.modo == "evaluar":
-        lista = motivos(archivos, lineas, a.pruebas, fallas(a.logs))
+        todas = fallas(a.logs)
+        # Con qué pruebas rojas quedó main: ninguna si pasó todo; las del log si
+        # falló y se pudo leer; desconocido si falló sin log legible.
+        actuales = [] if a.pruebas == "success" else (todas if a.pruebas == "failure" and todas else None)
+        if actuales is None:
+            nuevas, heredadas = todas, []
+            estado["rojas"] = None
+        else:
+            nuevas, heredadas = separar(actuales, estado.get("rojas"))
+            seguir_main_rojas(estado, a.pr, nuevas, heredadas, ahora)
+            estado["rojas"] = sorted({id_falla(x) for x in actuales})
+        guardar_estado(a.archivo_estado, estado)
+        lista = motivos(archivos, lineas, a.pruebas, nuevas, heredadas)
         if not lista:
             print("[aviso] nada que avisar")
             return 0
@@ -235,7 +458,13 @@ def main(argv: list[str] | None = None) -> int:
         _salida("hilo", ts)
         return 0
     if a.modo == "deploy":
-        texto = texto_deploy(a.pr, url, titulo, quien, a.estado, a.http)
+        vercel = a.estado
+        if es_tope_vercel(a.estado, a.descripcion):
+            # No es falla del cambio: aviso aparte, uno por tope (ADR-0350).
+            avisar_tope(estado, a.pr, url, a.descripcion, a.fecha_status, ahora)
+            guardar_estado(a.archivo_estado, estado)
+            vercel = "success"              # sigue avisando si además la página no carga
+        texto = texto_deploy(a.pr, url, titulo, quien, vercel, a.http)
     else:
         texto = texto_corrida(a.pr, url, titulo, quien, a.conclusion, a.corrida_url)
     if texto:

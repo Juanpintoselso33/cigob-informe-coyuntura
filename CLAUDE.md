@@ -448,8 +448,10 @@ alcanza.**
 
 **Un hilo por problema (ADR-0309).** Cada problema tiene clave estable y un
 mensaje raíz: aparece → mensaje nuevo; sigue → se edita la raíz («lleva N
-corridas»), sin mensaje nuevo en el canal; se resuelve → respuesta en el hilo
-que también sale en el canal («✅ se resolvió…») y la raíz pasa a ✅. Del 12 al
+corridas»), sin mensaje nuevo en el canal; se resuelve → la raíz pasa a ✅ y
+se responde en el hilo («✅ se resolvió…»). Esa respuesta sale **también al
+canal sólo si el problema era 🔴** (incluye «la corrida nocturna vuelve a
+publicar»); la de un 🟡 queda en el hilo (ADR-0350). Del 12 al
 14-sep-2026 el mismo 🟡 salió tres noches como tres mensajes y, al arreglarse,
 no dijo nada. El estado vive en la **cache de Actions**, no en git: una corrida
 caída no commitea y es la que abre el hilo. Una corrida caída sólo cierra el
@@ -464,10 +466,10 @@ Los avisos, y ninguno se manda porque sí:
 | Cuándo | Qué dice |
 |---|---|
 | La corrida falló **o la cancelaron** | 🔴 el paso, **la prueba que falló con su assertion**, cuántas corridas caídas seguidas lleva, qué colectores sí anduvieron y qué snapshot está sirviendo producción |
-| Publicó pero degradada de forma inesperada | 🟡 con el indicador y el motivo |
-| Un colector registró una incidencia `[COTEJO_MANUAL]` (publique o no) | 🟡 o, dentro del 🔴, una sección aparte de las causas con tope propio. Qué incidencias existen y cómo se corrige cada una: sección "Avisos de datos que requieren cotejo manual" de `projects/informe_coyuntura/README.md` |
+| Publicó pero degradada de forma inesperada | 🟡 con el indicador y el motivo. Si 3 o más indicadores fallan con el mismo error de código, **un solo** 🟡 con la lista de cards. Una fuente caída entera o un presupuesto agotado, recién en la **tercera** corrida seguida |
+| Un colector registró una incidencia `[COTEJO_MANUAL]` (publique o no) | 🟡 o, dentro del 🔴, una sección aparte de las causas con tope propio, salvo las de `COTEJO_SE_RESUELVE_SOLO`. Qué incidencias existen y cómo se corrige cada una: sección "Avisos de datos que requieren cotejo manual" de `projects/informe_coyuntura/README.md` |
 | Publicó pero **no quedó en BigQuery** (o falta `GCP_SA_KEY`) | 🟡 con el error del export, la pista (facturación suspendida, clave vencida) y cómo se recupera con `bigquery_backfill.py`. El paso corre con `continue-on-error`, así que sin este aviso el workflow sale en verde: pasó el 9 y 10-sep-2026 |
-| Cualquiera de los anteriores deja de pasar | ✅ en el hilo del problema, con broadcast al canal, y la raíz editada a resuelto |
+| Cualquiera de los anteriores deja de pasar | La raíz editada a ✅ y una respuesta en el hilo; la respuesta sale al canal sólo si era 🔴 |
 
 El 🔴 y el cuerpo del issue salen del **mismo parser** (`aviso_slack.py`, modos
 `fallo` y `reporte`): un solo lugar que sabe leer un log de corrida, dos
@@ -487,8 +489,29 @@ fuente a esa lista, verificá que su degradación sea realmente conocida y
 decidida** — la lista existe para lo que ya se resolvió no mirar, no para
 silenciar lo que molesta.
 
-Lo que sí grita: una fuente caída entera (exit=2), un presupuesto agotado, y
-sobre todo **un error que NO es de red**. Esa última clase es la que se
+Lo mismo para los cotejos: `COTEJO_SE_RESUELVE_SOLO` calla en Slack (no en el
+log ni en el issue) las incidencias cuyo propio texto dice que se resuelven
+solas y que ya están fuera del cálculo. Hoy tiene una sola: «AEA muda»
+(ADR-0334). Cada entrada lleva el ADR que la decidió, y el motivo tiene que
+seguir diciendo «fuera del cálculo» y «se resuelve solo»: si AEA vuelve al
+perímetro, el texto cambia y el aviso vuelve a sonar. Misma regla: nada entra
+a esa lista sin estar decidido.
+
+**Menos ruido (ADR-0350).** Medido el 8-oct-2026, 52 de las 91 notificaciones
+del canal no pedían nada. Además del ✅ sin broadcast para los 🟡 y de la lista
+de cotejos callados:
+
+- **Una causa, un aviso.** Si 3 indicadores o más (`UMBRAL_CAUSA_COMUN`) fallan
+  en la misma corrida con el mismo error de código —mismo error sin rutas,
+  números ni el nombre concreto que falta—, sale un solo 🟡 «N indicadores no
+  se actualizan por el mismo error de código», con los nombres de las cards.
+  El 22-sep un `config` roto había mandado 21 🟡 y 21 ✅.
+- **Lo que suele arreglarse solo espera.** Una fuente caída entera (exit=2) o
+  un colector sin tiempo llegan al canal recién en la tercera corrida seguida
+  (`UMBRAL_CORRIDAS_FUENTE`); antes quedan en el log. Si vuelven antes, no se
+  dice nada.
+
+Lo que sí grita en la primera corrida: **un error que NO es de red**. Esa última clase es la que se
 disfraza de "fuente caída" y congela una serie sin que nada falle: pasó con
 `icg_utdt`, cuatro días (ADR-0175). `tests/test_aviso_slack.py` prueba el
 clasificador, y sobre todo prueba lo que NO tiene que avisar.
@@ -543,6 +566,22 @@ líneas). Cada aviso dice quién lo pidió, qué cambió y el link al PR; lo que
 pasa después del merge va en el hilo del primer aviso. Un cambio de texto que
 pasa todo no avisa nada. El script es autónomo y se corre desde la versión de
 `main` anterior al merge: el job que lo corre tiene el token.
+
+Dos reglas para no culpar a un cambio por lo que no hizo (ADR-0350):
+
+- **El 🔴 de pruebas sólo nombra lo que el cambio rompió.** Cada cambio guarda
+  con qué pruebas rojas quedó `main` (artifact `estado-avisos-cambios`; no se
+  corre pytest de nuevo) y el siguiente compara contra eso. Si un cambio cae
+  encima de pruebas que ya estaban rojas y no rompe nada propio, no hay 🔴:
+  hay **un** 🟡 «main tiene N pruebas en rojo de antes» que cada cambio nuevo
+  edita («lleva N cambios encima») y que se cierra cuando un cambio pasa todo
+  o la corrida nocturna pasa las pruebas. El 8-oct, #61 y #62 habían recibido
+  un 🔴 por pruebas que rompieron #59 y #60.
+- **El tope de deploys de Vercel no es una falla.** Si el status del commit
+  dice que fue el tope diario del plan («rate limited»), sale un 🟡 aparte,
+  uno por tope: la gente ve la versión anterior, no hay nada que deshacer y se
+  libera solo (con la hora, si el status la da). Si el status no se puede
+  leer, el 🔴 de siempre.
 
 - Si el cambio toca algo fuera de `web/src/` (cálculo, config, datos, ADRs),
   lanza además `data-pipeline.yml`.

@@ -20,6 +20,7 @@ concurrency:
 permissions:
   contents: write   # commitear el snapshot + caches de vuelta a main
   issues: write     # abrir/actualizar el issue de aviso cuando la corrida falla
+  actions: read     # leer el estado de los avisos de los cambios desde claude.ai (ADR-0350)
 
 jobs:
   run:
@@ -486,6 +487,38 @@ jobs:
                        --json number --jq '.[].number'); do
             gh issue close "$n" --comment "Resuelto: la corrida terminó bien y publicó. $RUN_URL"
           done
+
+      # Las pruebas pasaron sobre main: si un cambio desde claude.ai había dejado
+      # abierto «main tiene pruebas rojas», se cierra, y el próximo cambio ya no
+      # hereda nada (ADR-0350). El estado vive en el artifact que escribe
+      # cambios-desde-claude.yml; acá se lee el último y se sube vacío.
+      - name: Main en verde para los avisos de cambios
+        id: main_verde
+        if: success() && github.ref == 'refs/heads/main'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CANAL_ALERTAS: ${{ secrets.SLACK_CANAL_ALERTAS }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/estado-cambios"
+          id=$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=estado-avisos-cambios&per_page=30" \
+                 --jq '[.artifacts[] | select(.expired == false)] | sort_by(.created_at) | last | .id // empty') || id=""
+          if [ -n "$id" ]; then
+            gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/$id/zip" > "$RUNNER_TEMP/estado-cambios.zip" \
+              && unzip -o -q "$RUNNER_TEMP/estado-cambios.zip" -d "$RUNNER_TEMP/estado-cambios"
+          fi
+          python scripts/aviso_cambio_claude.py verde --archivo-estado "$RUNNER_TEMP/estado-cambios/estado.json"
+
+      - name: Guardar el estado de los avisos de cambios
+        if: success() && github.ref == 'refs/heads/main' && steps.main_verde.outcome == 'success'
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: estado-avisos-cambios
+          path: ${{ runner.temp }}/estado-cambios/estado.json
+          if-no-files-found: ignore
+          retention-days: 90
 
       # Siempre, también si la corrida falló o la cancelaron: es la corrida
       # caída la que abre el hilo que la próxima tiene que cerrar.

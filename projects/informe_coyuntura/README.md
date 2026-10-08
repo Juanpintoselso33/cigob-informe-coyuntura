@@ -222,6 +222,15 @@ pytrends>=4.9.2
 
 El pipeline envía al canal `SLACK_CANAL_ALERTAS` las incidencias `[COTEJO_MANUAL]` emitidas por los colectores, tanto si la corrida termina bien como si falla. Cada aviso identifica indicador, registro, problema y fuente; el mensaje incluye el enlace a la corrida. Repeticiones idénticas se agrupan dentro de esa corrida. Mientras no se corrija el dato, puede volver a avisar en la corrida siguiente. En el 🔴 de una corrida caída los cotejos van en una sección aparte de las causas de la falla, con presupuesto propio (5 causas y 3 cotejos, el resto en el run): muchos de una clase nunca esconden a la otra.
 
+Una excepción, y sólo en Slack: las incidencias de `COTEJO_SE_RESUELVE_SOLO` (en `scripts/aviso_slack.py`) no se mandan al canal, porque su propio texto dice que se resuelven solas y el dato ya está fuera del cálculo. Hoy es una sola, «AEA muda» de `apoyo_empresario` (ADR-0334). Siguen en el log de la corrida y en el issue. Para sumar otra hace falta un ADR que lo decida (ADR-0350).
+
+Qué más llega al canal y qué no, en corto (ADR-0309 y ADR-0350; detalle en la sección «Avisos del pipeline» del `CLAUDE.md` de la raíz):
+
+- Tres indicadores o más que fallan con el mismo error de código son **un** aviso, no uno por indicador.
+- Una fuente caída entera o un colector que se queda sin tiempo avisan recién en la tercera corrida seguida; un error de código avisa en la primera.
+- Cuando un problema se resuelve, el mensaje original pasa a ✅. La respuesta «se resolvió» sale también al canal sólo si el problema era 🔴; si era 🟡, queda en el hilo.
+- Los cambios pedidos desde claude.ai sólo se culpan por las pruebas que rompieron ellos; si `main` ya tenía pruebas rojas, hay un único aviso «main tiene pruebas en rojo» que se actualiza. El tope diario de deploys de Vercel avisa en 🟡 y aclara que no hay nada que deshacer.
+
 El primer detector revisa fechas de sanción ausentes, `NA` o inválidas en el catálogo de HCDN. Solicita cotejar expediente o ley y registrar la fecha real con respaldo; no asigna la fecha de consulta ni modifica valores automáticamente. Otros colectores pueden registrar incidencias con `cotejo_manual.registrar`; esta infraestructura no detecta por sí sola todas las posibles inconsistencias. Sin incidencias, no genera avisos adicionales. Las pruebas del transporte usan un emisor simulado.
 
 Incidencias que hoy avisan, y qué hace el colector mientras tanto:

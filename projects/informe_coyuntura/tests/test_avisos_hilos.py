@@ -4,7 +4,8 @@ Hasta el 14-sep-2026 la misma falla salía como un mensaje nuevo cada noche y,
 cuando se arreglaba, no avisaba nada: una corrida limpia no manda mensajes, y
 ese silencio no se distingue de un bot que no corrió. Estas pruebas fijan el
 ciclo: aparece → mensaje; sigue → se edita, sin mensaje nuevo; se resuelve →
-respuesta en el hilo que también sale en el canal, y la raíz pasa a ✅.
+respuesta en el hilo y la raíz pasa a ✅. Desde ADR-0350 esa respuesta sale
+también al canal sólo si el problema era 🔴.
 """
 import itertools
 import json
@@ -89,12 +90,13 @@ def test_si_cambia_el_diagnostico_responde_en_el_hilo_sin_ensuciar_el_canal(slac
     assert 'fecha futura' in respuesta['texto']
 
 
-def test_al_resolverse_avisa_en_el_canal_y_la_raiz_pasa_a_resuelto(slack, monkeypatch, tmp_path):
+def test_al_resolverse_un_amarillo_responde_en_el_hilo_sin_salir_al_canal(slack, monkeypatch, tmp_path):
     correr(monkeypatch, tmp_path, 'degradado', ERR)
     correr(monkeypatch, tmp_path, 'degradado', ERR)
     correr(monkeypatch, tmp_path, 'degradado', '')                   # corrida limpia
     cierre = slack.posts[-1]
-    assert cierre['thread_ts'] == slack.posts[0]['ts'] and cierre['reply_broadcast'] is True
+    # ADR-0350: un 🟡 resuelto no le pide nada a nadie; su ✅ queda en el hilo.
+    assert cierre['thread_ts'] == slack.posts[0]['ts'] and not cierre.get('reply_broadcast')
     assert cierre['texto'].startswith('✅ *Monitor del Plan de Gobierno — «Producción legislativa del Congreso» vuelve a actualizarse*')
     assert 'después de 2 corridas' in cierre['texto']
     raiz = slack.ediciones[-1]['texto']
@@ -155,7 +157,7 @@ def test_si_falla_solo_la_edicion_del_cierre_se_reintenta_sin_repetir_el_aviso(s
     correr(monkeypatch, tmp_path, 'degradado', '')
     assert estado(tmp_path)['err:produccion_legislativa']['cierre_publicado'] is True
     correr(monkeypatch, tmp_path, 'degradado', '')
-    assert sum(bool(p.get('reply_broadcast')) for p in slack.posts) == 1   # el ✅ salió una vez
+    assert sum(p['texto'].startswith('✅') for p in slack.posts) == 1   # el ✅ salió una vez
     assert slack.ediciones[-1]['texto'].startswith('✅') and estado(tmp_path) == {}
 
 
