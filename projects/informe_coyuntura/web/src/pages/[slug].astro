@@ -18,6 +18,11 @@ export function getStaticPaths() {
 
 const { meta } = Astro.props;
 const c = informe.cinturones[meta.key];
+// Pedido editorial del 8-oct-2026, sólo para el cinturón macro: cabecera sin
+// banda ni riesgo, barra sin la palabra del tramo y con un texto propio debajo,
+// subtítulos a todo el ancho y sin la validación cruzada.
+const esMacro = meta.key === "macro";
+const PIE_MACRO = "El cinturón macro encuentra sus puntos de tensión en las dimensiones que expresan el nivel de la actividad económica y de la inversión. Para cada una de dichas dimensiones puede profundizarse su análisis recorriendo los indicadores que las sustentan.";
 // La cabecera del cinturón se lee por la barra, igual que en la portada: una
 // sola vara de color en todo el sitio (los cortes publicados). El `estado` de
 // tres valores no se pierde —sigue mandando en la regla sistémica— pero no se
@@ -165,7 +170,7 @@ const rez = indice?.data.rezago ?? null;
 const lb = indice?.data.linea_base ?? null;
 const fam = indice?.data.familias ?? null;
 const vin = indice?.data.vintages ?? null;
-const cruz = cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice!.sigla)
+const cruz = !esMacro && cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice!.sigla)
   ? cruzRaw : null;
 // etiquetas cortas de las anclas externas para la matriz en mobile
 const CRUZ_CORTAS: Record<string, string> = {
@@ -261,23 +266,24 @@ const robChartData = rob?.hist && indice ? {
       <div class="cg-detalle-meta">
         {/* La barra reemplaza al chip de score, que repetía su número. El
             estado queda al lado, en texto: es otro concepto, no otro color. */}
-        {indice && <span class="cg-detalle-chip">{indice.Corto} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
-        <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
+        {indice && <span class="cg-detalle-chip">{indice.Corto} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong>{!esMacro && <> · {indice.data.banda_legible}</>}</span>}
+        {!esMacro && <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>}
         <span class="cg-detalle-chip">{filas.length} {filas.length === 1 ? "indicador" : "indicadores"}</span>
       </div>
       </div>
       <div class="cg-detalle-nivel">
-        <NivelTension tension={c.score} titulo={`Tensión de ${meta.nombre}`} tamano="grande" />
+        <NivelTension tension={c.score} titulo={`Tensión de ${meta.nombre}`} tamano="grande"
+          ocultarLectura={esMacro} pie={esMacro ? PIE_MACRO : undefined} />
       </div>
       </div>
     </div>
   </header>
-  <main class="cg-main">
+  <main class:list={["cg-main", { "cg-main--macro": esMacro }]}>
     {indice && (
       <section class="cg-section">
         <div class="cg-section-head">
           <p class="cg-eyebrow">Índice paramétrico</p>
-          <h2 class="cg-h2">{indice.Corto}: {num(indice.data.valor as number)}{indice.base100 ? " (escala de referencia 100)" : "/100"} — {indice.data.banda_legible}</h2>
+          <h2 class="cg-h2">{indice.Corto}: {num(indice.data.valor as number)}{indice.base100 ? " (escala de referencia 100)" : "/100"}{!esMacro && <> — {indice.data.banda_legible}</>}</h2>
           <p class="cg-h2-sub">{indice.descripcion}</p>
         </div>
         <div class="cg-itcm-dims">
@@ -1193,3 +1199,14 @@ const robChartData = rob?.hist && indice ? {
   })();
 </script>
 </Layout>
+
+<style is:global>
+  /* Cinturón macro: los textos bajo los títulos ocupan el mismo ancho que la
+     grilla de dimensiones (de la primera a la última), como el marco. */
+  .cg-main--macro .cg-h2-sub,
+  .cg-main--macro .cg-dimserie-lede,
+  .cg-main--macro .cg-dimserie-nota,
+  .cg-main--macro .cg-sem-leyenda-intro { max-width: none; }
+  .cg-detalle-hero--macroeconomia .cg-nivel-pie,
+  .cg-detalle-hero--macro .cg-nivel-pie { max-width: none; font-size: 15px; line-height: 1.55; }
+</style>
