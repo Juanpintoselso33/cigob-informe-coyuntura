@@ -133,6 +133,25 @@ jobs:
             || echo "[aviso] main todavía no tiene el script: este cambio no avisa"
           gh pr view "$PR" --json title,url,body,files,additions,deletions > "$RUNNER_TEMP/aviso/pr.json"
 
+      # Con qué pruebas rojas quedó main después del último cambio, y los hilos
+      # abiertos (ADR-0350). Va en un artifact y no en la cache: la cache de un
+      # `pull_request` sólo la ve ese mismo PR, y esto lo tiene que leer el
+      # siguiente. Lo escribe cada cambio al final y lo vacía la corrida
+      # nocturna en verde. Sin artifact (el primero, o vencido a los 90 días)
+      # el aviso culpa al cambio por todo, como antes.
+      - name: Traer el estado de los avisos
+        continue-on-error: true
+        run: |
+          mkdir -p "$RUNNER_TEMP/estado-avisos"
+          id=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=estado-avisos-cambios&per_page=30" \
+                 --jq '[.artifacts[] | select(.expired == false)] | sort_by(.created_at) | last | .id // empty') || id=""
+          if [ -n "$id" ]; then
+            gh api "repos/${{ github.repository }}/actions/artifacts/$id/zip" > "$RUNNER_TEMP/estado-avisos.zip" \
+              && unzip -o -q "$RUNNER_TEMP/estado-avisos.zip" -d "$RUNNER_TEMP/estado-avisos"
+          else
+            echo "[aviso] no hay estado previo: se compara contra nada"
+          fi
+
       # --match-head-commit: si alguien empujó otra cosa en el medio, el merge
       # falla en vez de publicar algo distinto de lo pedido. GitHub calcula si
       # un PR se puede mergear en diferido, así que se reintenta.
@@ -191,25 +210,47 @@ jobs:
         run: |
           [ -s "$RUNNER_TEMP/aviso/aviso.py" ] || exit 0
           python3 "$RUNNER_TEMP/aviso/aviso.py" evaluar --pr "$PR" --datos-pr "$RUNNER_TEMP/aviso/pr.json" \
-            --pruebas "$TESTS" --logs logs
+            --pruebas "$TESTS" --logs logs --archivo-estado "$RUNNER_TEMP/estado-avisos/estado.json"
 
       # Espera el deploy de Vercel del merge y abre la página. Avisa si el
-      # deploy falló, no terminó en 10 minutos o la página no carga.
+      # deploy falló, no terminó en 10 minutos o la página no carga. Si el
+      # status dice que fue el tope diario de deploys del plan (7-oct-2026:
+      # «Deployment rate limited — retry in 24 hours»), no es una falla del
+      # cambio: 🟡 aparte, uno por tope (ADR-0350). Por eso se pasa también la
+      # descripción del status y su hora.
       - name: Seguir el deploy
         continue-on-error: true
         run: |
           [ -s "$RUNNER_TEMP/aviso/aviso.py" ] || exit 0
           merge=$(gh pr view "$PR" --json mergeCommit --jq .mergeCommit.oid)
+          vercel='[.statuses[]|select(.context|test("Vercel"))][0]'
           estado=""
           for i in $(seq 1 40); do
-            estado=$(gh api "repos/${{ github.repository }}/commits/$merge/status" \
-              --jq '[.statuses[]|select(.context|test("Vercel"))][0].state // ""')
+            gh api "repos/${{ github.repository }}/commits/$merge/status" > "$RUNNER_TEMP/status.json" \
+              || echo '{"statuses":[]}' > "$RUNNER_TEMP/status.json"
+            estado=$(jq -r "$vercel.state // \"\"" "$RUNNER_TEMP/status.json")
             [ "$estado" = success ] || [ "$estado" = failure ] || [ "$estado" = error ] && break
             sleep 15
           done
+          descripcion=$(jq -r "$vercel.description // \"\"" "$RUNNER_TEMP/status.json")
+          fecha=$(jq -r "$vercel.updated_at // \"\"" "$RUNNER_TEMP/status.json")
           http=$(curl -s -o /dev/null -w "%{http_code}" "https://informe.cigob.org/?cb=$RANDOM" || echo "")
           python3 "$RUNNER_TEMP/aviso/aviso.py" deploy --pr "$PR" --datos-pr "$RUNNER_TEMP/aviso/pr.json" \
-            --hilo "${{ steps.evaluar.outputs.hilo }}" --estado "$estado" --http "$http"
+            --hilo "${{ steps.evaluar.outputs.hilo }}" --estado "$estado" --http "$http" \
+            --descripcion "$descripcion" --fecha-status "$fecha" \
+            --archivo-estado "$RUNNER_TEMP/estado-avisos/estado.json"
+
+      # Siempre: el siguiente cambio compara contra esto. Si el job se cortó
+      # antes de evaluar, se vuelve a subir el mismo estado que se trajo.
+      - name: Guardar el estado de los avisos
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: estado-avisos-cambios
+          path: ${{ runner.temp }}/estado-avisos/estado.json
+          if-no-files-found: ignore
+          retention-days: 90
 
       - name: Guardar el aviso para seguir la corrida
         if: steps.archivos.outputs.metodo == 'si'

@@ -119,4 +119,8 @@ Useful current docs:
   local changes.
 - Validate with the narrowest useful command: targeted Python script, unit test,
   `npm run build`, or workflow-equivalent command depending on the touched area.
+- Slack alerts (#monitor-alertas: `aviso_slack.py`, `aviso_cambio_claude.py`):
+  the rules live in the «Avisos del pipeline» and «Cambios pedidos desde
+  claude.ai» sections of `CLAUDE.md` (ADR-0309, ADR-0350). Read them there
+  before touching either script; do not restate them here.
 

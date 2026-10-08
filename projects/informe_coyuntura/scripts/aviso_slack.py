@@ -65,6 +65,86 @@ def _cabecera(glifo: str, texto: str) -> str:
 # que el canal se vuelva ruido en una semana y deje de leerse.
 DEGRADACION_ESPERADA = {"judicializacion"}
 
+# Cotejos que se resuelven solos y ya están fuera del cálculo (ADR-0350).
+#
+# Es la misma idea que DEGRADACION_ESPERADA, pero para los `[COTEJO_MANUAL]`:
+# una incidencia que nadie puede corregir a mano, porque su propio texto dice que
+# se cierra sola y porque el dato ya no entra al índice. «AEA muda» llevaba
+# abierta desde el 17-sep-2026 diciendo justamente eso (ADR-0334 la sacó del
+# perímetro y decidió que la guarda la siga vigilando como señal de regreso).
+#
+# Se calla SÓLO en Slack: sigue en el log de la corrida y en el issue. Y hace
+# falta que coincidan las tres cosas —indicador, registro y que el motivo diga
+# «fuera del cálculo» y «se resuelve solo»—: si mañana AEA vuelve al perímetro,
+# el colector escribe otro motivo («Verificar en la fuente…») y el aviso vuelve
+# a sonar sin tocar esta lista. Antes de sumar una entrada, que esté decidida en
+# un ADR: esta lista es para lo que ya se resolvió no mirar, no para silenciar
+# lo que molesta.
+COTEJO_SE_RESUELVE_SOLO = (
+    # (indicador, patrón del registro, ADR que lo decidió)
+    ("apoyo_empresario", re.compile(r"^AEA muda desde "), "0334"),
+)
+_DICE_QUE_SE_RESUELVE_SOLO = re.compile(r"se resuelve sol[oa]", re.I)
+_DICE_QUE_ESTA_FUERA = re.compile(r"fuera del c[aá]lculo", re.I)
+
+
+def cotejo_callado(d: dict) -> bool:
+    """¿Este cotejo es de los que se resuelven solos y no van a Slack?"""
+    return (any(d["indicador"] == ind and patron.search(d["registro"])
+                for ind, patron, _ in COTEJO_SE_RESUELVE_SOLO)
+            and bool(_DICE_QUE_SE_RESUELVE_SOLO.search(d["motivo"]))
+            and bool(_DICE_QUE_ESTA_FUERA.search(d["motivo"])))
+
+
+def avisos_cotejo_slack(log: str) -> list[str]:
+    """Los cotejos del log que sí van a Slack (el issue usa `avisos_cotejo`)."""
+    return [texto for d, texto in zip(datos_cotejo(log), avisos_cotejo(log))
+            if not cotejo_callado(d)]
+
+
+# Una fuente caída entera (exit=2) o un colector que agota su presupuesto de
+# tiempo sólo llegan a Slack desde la TERCERA corrida seguida (ADR-0350). Del
+# 25-ago al 8-oct-2026 los dos casos se arreglaron solos en una o dos noches y
+# nadie podía hacer nada en el medio. Antes de la tercera quedan en el log de
+# la corrida (y, si la corrida cae, en el issue). Los errores de código siguen
+# avisando en la primera: ésos no se arreglan solos (ADR-0175).
+UMBRAL_CORRIDAS_FUENTE = 3
+
+# Si este número de indicadores o más falla en la misma corrida con el mismo
+# error de código, es UN problema, no N (ADR-0350). El 22-sep-2026 un `config`
+# roto tumbó 21 indicadores a la vez: 21 🟡 y, al arreglarse, 21 ✅.
+UMBRAL_CAUSA_COMUN = 3
+TOPE_ROTULOS = 8
+
+
+def _sin_rutas(texto: str) -> str:
+    texto = re.sub(r"https?://\S+", "<url>", texto)
+    texto = re.sub(r"\s*\(\s*(?:[A-Za-z]:)?[/\\][^)]*\)?", "", texto)    # «(/home/runner/…/config.py)»
+    return re.sub(r"(?:[A-Za-z]:)?(?:[/\\][\w.\-]+){2,}[/\\]?", "<ruta>", texto)
+
+
+def firma_error(mensaje: str) -> str:
+    """El error sin lo que cambia de un indicador a otro.
+
+    Se borran las rutas absolutas, las URLs, los ids y los números, y el
+    nombre concreto que falta en `name '…'` / `attribute '…'`: el 22-sep los 21
+    indicadores fallaron con `cannot import name 'X' from 'config'` y once X
+    distintas, y era un solo `config` roto. Si el mensaje trae el tipo de la
+    excepción adelante (`KeyError: …`), forma parte de la firma; los colectores
+    hoy escriben `str(e)`, sin tipo, y entonces la firma es el mensaje.
+    """
+    texto = (mensaje or "").strip()
+    tipo = ""
+    m = re.match(r"^([A-Z]\w*(?:Error|Exception|Exit|Interrupt)):\s*(.*)$", texto, re.S)
+    if m:
+        tipo, texto = m.group(1), m.group(2)
+    texto = _sin_rutas(texto)
+    texto = re.sub(r"\b(name|attribute) '[^']*'", r"\1 '…'", texto)
+    texto = re.sub(r"\b[0-9a-f]{8,}\b", "<id>", texto)
+    texto = re.sub(r"\d+(?:[.,]\d+)*", "N", texto)
+    texto = re.sub(r"\s+", " ", texto).strip()
+    return f"{tipo}: {texto}" if tipo else texto
+
 # Un error de fuente es de red. Todo lo demás que aparezca en un [ERR] es del
 # código nuestro, y ésa es la clase que se disfraza de "fuente caída": pasó con
 # `icg_utdt`, que levantaba NameError y el log culpaba a la UTDT (ADR-0175).
@@ -417,8 +497,17 @@ def _reporte(a, pasos, motivos, cols, resumen, fin, cotejos=()) -> int:
 #   · aparece        → mensaje nuevo en el canal
 #   · sigue abierto  → se EDITA la raíz ("lleva N corridas"); si cambia el
 #                      diagnóstico, respuesta en el hilo. Nada nuevo en el canal.
-#   · desaparece     → respuesta en el hilo que también sale en el canal
-#                      («✅ se resolvió…») y la raíz pasa a ✅.
+#   · desaparece     → la raíz pasa a ✅ y se responde en el hilo («✅ se
+#                      resolvió…»). La respuesta sale TAMBIÉN al canal sólo si
+#                      el problema era 🔴 (ADR-0350): un 🟡 resuelto no le pide
+#                      nada a nadie.
+#
+# Y tres reglas de ADR-0350 para que al canal llegue sólo lo accionable:
+#   · ≥ UMBRAL_CAUSA_COMUN indicadores con el mismo error de código son UN
+#     problema (`causa:<firma>`), no N;
+#   · una fuente caída entera o un presupuesto agotado salen al canal recién
+#     en la corrida UMBRAL_CORRIDAS_FUENTE seguida (antes: sólo log/issue);
+#   · los cotejos de COTEJO_SE_RESUELVE_SOLO no van a Slack.
 #
 # El estado (clave → ts, desde, corridas, huella) vive en la cache de Actions y
 # no en git: una corrida caída no llega a commitear y es justo la que avisa.
@@ -463,16 +552,63 @@ def _ultimo_dato(indicador: str) -> str:
     return ""
 
 
-def _problema(clave, glifo, titulo, resuelto, cuerpo, huella=None) -> dict:
-    """`titulo` dice el problema; `resuelto`, cómo se lee cuando se arregla."""
+def _problema(clave, glifo, titulo, resuelto, cuerpo, huella=None, umbral=1) -> dict:
+    """`titulo` dice el problema; `resuelto`, cómo se lee cuando se arregla.
+
+    `umbral`: desde qué corrida seguida sale al canal (1 = en la primera).
+    """
     return dict(clave=clave, glifo=glifo, titulo=titulo, resuelto=resuelto, cuerpo=list(cuerpo),
-                huella=huella if huella is not None else "\n".join(cuerpo))
+                huella=huella if huella is not None else "\n".join(cuerpo), umbral=umbral)
 
 
-def problemas_degradado(log: str, log_bq: str = "", estado_bq: str = "") -> list[dict]:
-    """Cada degradación inesperada como un problema con clave estable."""
+def _problema_causa_comun(firma: str, miembros: list[tuple[str, str]]) -> dict:
+    """N indicadores frenados por el mismo error de código: un solo problema."""
+    n = len(miembros)
+    rotulos = [f"«{rotulo(s)}»" for s, _ in miembros]
+    lista = ", ".join(rotulos[:TOPE_ROTULOS])
+    if n > TOPE_ROTULOS:
+        lista += f" y {n - TOPE_ROTULOS} más"
+    sujeto, detalle = miembros[0]
+    titulo = (f"{n} indicadores no se actualizan por el mismo error de código: `{firma[:120]}`"
+              if n > 1 else
+              f"1 indicador no se actualiza por un error de código: `{firma[:120]}`")
+    return _problema(
+        f"causa:{firma}", "🟡", titulo,
+        "vuelven a actualizarse los indicadores frenados por un mismo error de código", [
+            f"*Qué ve la gente:* {lista} {'siguen' if n > 1 else 'sigue'} mostrando su último dato bueno. "
+            "No hay dato malo: hay dato viejo.",
+            f"*Por qué:* {'todos fallaron' if n > 1 else 'falló'} con el mismo error, que no es de red: "
+            f"es un solo problema del código, no {n} fuentes caídas. Por ejemplo, `{sujeto}`: `{_sin_rutas(detalle)[:150]}`.",
+            "*Qué hacer:* arreglar ese error una vez, en el código. Las series quedan congeladas hasta entonces.",
+        ], huella=f"causa:{firma}")
+
+
+def problemas_degradado(log: str, log_bq: str = "", estado_bq: str = "",
+                        abiertos=()) -> list[dict]:
+    """Cada degradación inesperada como un problema con clave estable.
+
+    `abiertos` son las claves con hilo abierto: un grupo por causa común que ya
+    tiene hilo sigue agrupado aunque se achique por debajo del umbral, así se
+    edita su raíz en vez de cerrarlo y abrir un hilo por indicador.
+    """
+    eventos = list(_eventos(log))
+    por_firma: dict[str, list[tuple[str, str]]] = {}
+    for tipo, sujeto, detalle in eventos:
+        if tipo == "err":
+            por_firma.setdefault(firma_error(detalle), []).append((sujeto, detalle))
+    agrupadas = {f for f, ms in por_firma.items()
+                 if len(ms) >= UMBRAL_CAUSA_COMUN or f"causa:{f}" in abiertos}
+    # Un colector que agota el presupuesto se mapea a exit=2 en el workflow: es
+    # el mismo evento, no una fuente caída aparte.
+    sin_tiempo = {s for t, s, _ in eventos if t == "presupuesto"}
+
     out = []
-    for tipo, sujeto, detalle in _eventos(log):
+    for tipo, sujeto, detalle in eventos:
+        if tipo == "err" and firma_error(detalle) in agrupadas:
+            firma = firma_error(detalle)
+            if por_firma.get(firma) is not None:
+                out.append(_problema_causa_comun(firma, por_firma.pop(firma)))
+            continue
         if tipo == "err":
             dato = _ultimo_dato(sujeto)
             out.append(_problema(
@@ -485,24 +621,29 @@ def problemas_degradado(log: str, log_bq: str = "", estado_bq: str = "") -> list
                     "*Qué hacer:* revisar el colector en el run. La serie queda congelada hasta que se arregle.",
                 ], huella=f"{sujeto}:{detalle[:150]}"))
         elif tipo == "caida":
+            if sujeto in sin_tiempo:
+                continue
             out.append(_problema(
                 f"caida:{sujeto}", "🟡", f"el colector `{sujeto}` no trae nada fresco",
                 f"el colector `{sujeto}` vuelve a traer datos", [
                     f"*Qué ve la gente:* las cards de `{sujeto}` muestran su último dato bueno.",
                     "*Por qué:* no pudo traer ningún dato nuevo (exit=2): la fuente está caída entera.",
-                    "*Qué hacer:* si sigue en la próxima corrida, mirar la fuente en el run.",
-                ], huella=sujeto))
+                    "*Qué hacer:* mirar la fuente en el run: ya no es un corte de una noche.",
+                ], huella=sujeto, umbral=UMBRAL_CORRIDAS_FUENTE))
         else:
             out.append(_problema(
                 f"presupuesto:{sujeto}", "🟡", f"`{sujeto}` se queda sin tiempo y usa caché",
                 f"`{sujeto}` vuelve a terminar a tiempo", [
                     "*Qué ve la gente:* lo que no llegó a traer queda con el dato anterior.",
                     f"*Por qué:* `{sujeto}` agotó su presupuesto de tiempo.",
-                    "*Qué hacer:* si se repite, ver en el run qué fuente se colgó.",
-                ], huella=sujeto))
+                    "*Qué hacer:* ver en el run qué fuente se colgó: ya no es un corte de una noche.",
+                ], huella=sujeto, umbral=UMBRAL_CORRIDAS_FUENTE))
 
     por_indicador: dict[str, list[dict]] = {}
     for d in datos_cotejo(log):
+        if cotejo_callado(d):
+            print(f"[aviso] cotejo que se resuelve solo, no va a Slack: {d['indicador']} · {d['registro']}")
+            continue
         por_indicador.setdefault(d["indicador"], []).append(d)
     for ind, items in por_indicador.items():
         n = len(items)
@@ -561,6 +702,14 @@ def _texto_resuelto(reg: dict) -> str:
     ])
 
 
+def _destino_cierre(reg: dict) -> dict:
+    """Dónde va el ✅ (ADR-0350). La raíz se edita siempre; la respuesta sale
+    también al canal sólo si el problema era 🔴 (la corrida nocturna caída es
+    🔴). Un 🟡 que se resuelve no le pide nada a nadie: su ✅ queda en el hilo,
+    y la raíz editada alcanza para el que lo esté siguiendo."""
+    return {"thread_ts": reg["ts"], **({"reply_broadcast": True} if reg.get("glifo") == "🔴" else {})}
+
+
 def sincronizar(ruta: str, actuales: list[dict], alcance, url: str = "") -> int:
     """Lleva cada problema a su hilo. `alcance(clave)` dice qué claves pudo
     medir esta corrida: sólo esas se pueden dar por resueltas. Una corrida
@@ -572,12 +721,20 @@ def sincronizar(ruta: str, actuales: list[dict], alcance, url: str = "") -> int:
         clave = p["clave"]
         vistas.add(clave)
         reg = abiertos.get(clave)
+        umbral = p.get("umbral", 1)
         if reg:
             reg["corridas"] += 1
             reg.pop("cierre_publicado", None)       # volvió antes de terminar de cerrarse
             cambio = p["huella"] != reg["huella"]
             reg.update(glifo=p["glifo"], titulo=p["titulo"], resuelto=p["resuelto"],
-                       cuerpo=p["cuerpo"], huella=p["huella"])
+                       cuerpo=p["cuerpo"], huella=p["huella"], umbral=umbral)
+            if not reg.get("ts"):
+                # Todavía no salió al canal (ADR-0350): sale cuando llega al umbral.
+                if reg["corridas"] >= umbral:
+                    reg["ts"] = publicar(_texto_raiz(reg, url))
+                else:
+                    print(f"[aviso] {clave}: corrida {reg['corridas']} de {umbral}; todavía no va a Slack")
+                continue
             if editar(reg["ts"], _texto_raiz(reg, url)) in RAIZ_PERDIDA:
                 # Sin raíz el problema quedaría mudo: se abre otra con todo el cuerpo.
                 ts = publicar(_texto_raiz(reg, url))
@@ -590,13 +747,22 @@ def sincronizar(ruta: str, actuales: list[dict], alcance, url: str = "") -> int:
                          thread_ts=reg["ts"])
             continue
         reg = dict(desde=_fecha(), corridas=1, glifo=p["glifo"], titulo=p["titulo"],
-                   resuelto=p["resuelto"], cuerpo=p["cuerpo"], huella=p["huella"])
+                   resuelto=p["resuelto"], cuerpo=p["cuerpo"], huella=p["huella"], umbral=umbral)
+        if umbral > 1:
+            abiertos[clave] = {**reg, "ts": ""}
+            print(f"[aviso] {clave}: corrida 1 de {umbral}; todavía no va a Slack")
+            continue
         ts = publicar(_texto_raiz(reg, url))
         if ts:                              # si Slack no respondió, se reintenta como nuevo
             abiertos[clave] = {**reg, "ts": ts}
 
     for clave in [c for c in abiertos if alcance(c) and c not in vistas]:
         reg = abiertos[clave]
+        if not reg.get("ts"):
+            # Se fue antes de llegar al canal: no hay nada que cerrar.
+            print(f"[aviso] {clave}: se resolvió solo antes del umbral, sin aviso")
+            del abiertos[clave]
+            continue
         # Dos pasos, y cada uno se reintenta por separado: el aviso en el canal
         # no se repite si lo que falló fue sólo la edición de la raíz.
         if not reg.get("cierre_publicado"):
@@ -604,7 +770,7 @@ def sincronizar(ruta: str, actuales: list[dict], alcance, url: str = "") -> int:
                 _cabecera("✅", reg.get("resuelto") or f"se resolvió: {reg['titulo']}")
                 + f"\nAnduvo en la corrida del {_fecha()}, después de {_corridas(reg['corridas'])} con el problema."
                 + (f" <{url}|ver la corrida>" if url else ""),
-                thread_ts=reg["ts"], reply_broadcast=True):
+                **_destino_cierre(reg)):
                 continue                    # sin confirmación queda abierto y se reintenta
             reg["cierre_publicado"] = True
         error = editar(reg["ts"], _texto_resuelto(reg))
@@ -666,8 +832,11 @@ def main() -> int:
         resumen = resumen_pytest(texto_gates)
 
         if a.modo == "reporte":
+            # El issue es el registro: lleva todos los cotejos, también los que
+            # se resuelven solos y no van a Slack.
             return _reporte(a, pasos, motivos, cols, resumen,
                             cola(texto_gates or texto_cols), cotejos)
+        cotejos = avisos_cotejo_slack(texto_gates + "\n" + texto_cols)
 
         cancelado = a.estado == "cancelled"
         if a.publico:
@@ -711,7 +880,8 @@ def main() -> int:
     # corrida caída de antes, se da por resuelto.
     return sincronizar(
         a.archivo_estado,
-        problemas_degradado(_leer(a.log), _leer(a.bigquery), a.bigquery_estado),
+        problemas_degradado(_leer(a.log), _leer(a.bigquery), a.bigquery_estado,
+                            abiertos=set(_cargar(a.archivo_estado).get("problemas", {}))),
         lambda c: True, a.url)
 
 
