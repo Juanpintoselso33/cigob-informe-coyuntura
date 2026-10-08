@@ -575,7 +575,8 @@ Dos reglas para no culpar a un cambio por lo que no hizo (ADR-0350):
   encima de pruebas que ya estaban rojas y no rompe nada propio, no hay 🔴:
   hay **un** 🟡 «main tiene N pruebas en rojo de antes» que cada cambio nuevo
   edita («lleva N cambios encima») y que se cierra cuando un cambio pasa todo
-  o la corrida nocturna pasa las pruebas. El 8-oct, #61 y #62 habían recibido
+  o la corrida nocturna pasa pytest (ésta no corre tipos ni build: esas fallas
+  las limpia el próximo cambio en verde). El 8-oct, #61 y #62 habían recibido
   un 🔴 por pruebas que rompieron #59 y #60.
 - **El tope de deploys de Vercel no es una falla.** Si el status del commit
   dice que fue el tope diario del plan («rate limited»), sale un 🟡 aparte,
