@@ -294,18 +294,51 @@ def texto_main_rojas(p: dict) -> str:
     ])
 
 
-def _cerrar_main_rojas(estado: dict, como: str, ahora: datetime) -> None:
+def _cerrar_main_rojas(estado: dict, como: str, ahora: datetime, reemplazo: list[str] | None = None) -> None:
+    """Cierra el hilo. Con `reemplazo`, main SIGUE en rojo (otro conjunto, con
+    su propio hilo) y el texto no puede decir que volvió a verde.
+
+    Los dos pasos (editar la raíz, responder en el hilo) quedan en
+    `cierres_pendientes` hasta que Slack confirme cada uno: si falla, se
+    reintentan en la próxima corrida en vez de dejar una raíz 🟡 abierta para
+    siempre (hallazgo de Codex)."""
     p = estado.pop("main_rojas", None)
     if not p:
         return
     n = len(p["lista"])
-    editar(p["ts"], "\n".join([
-        f"✅ *{MONITOR} — main vuelve a tener las pruebas en verde*",
-        f"_Estuvo abierto del {p['desde']} al {_fecha(ahora)} · {len(p['cambios'])} cambio(s) encima._",
-        f"> _Era:_ main tenía {n} prueba{'s' if n > 1 else ''} en rojo de antes.",
-    ]))
-    # 🟡: el ✅ queda en el hilo, sin salir al canal (ADR-0350).
-    publicar(f"✅ Main vuelve a verde: {como}.", p["ts"], al_canal=False)
+    era = f"> _Era:_ main tenía {n} prueba{'s' if n > 1 else ''} en rojo de antes."
+    duro = f"_Estuvo abierto del {p['desde']} al {_fecha(ahora)} · {len(p['cambios'])} cambio(s) encima._"
+    if reemplazo:
+        nuevas = [f"• `{x}`" for x in reemplazo[:TOPE_FALLAS]]
+        if len(reemplazo) > TOPE_FALLAS:
+            nuevas.append(f"  …y {len(reemplazo) - TOPE_FALLAS} más.")
+        raiz = "\n".join([
+            f"↪️ *{MONITOR} — main sigue con pruebas en rojo: se reemplaza por un conjunto distinto*",
+            duro, era, "*Ahora están en rojo:*", *nuevas, "_Sigue en el aviso nuevo._"])
+        respuesta = f"↪️ Main sigue en rojo: {como}."
+    else:
+        raiz = "\n".join([f"✅ *{MONITOR} — main vuelve a tener las pruebas en verde*", duro, era])
+        respuesta = f"✅ Main vuelve a verde: {como}."
+    estado.setdefault("cierres_pendientes", []).append(
+        dict(ts=p["ts"], raiz=raiz, respuesta=respuesta, raiz_ok=False, respuesta_ok=False))
+    reintentar_cierres(estado)
+
+
+def reintentar_cierres(estado: dict) -> None:
+    """Termina los cierres que Slack no confirmó. 🟡: la respuesta queda en el
+    hilo, sin salir al canal (ADR-0350)."""
+    quedan = []
+    for c in estado.get("cierres_pendientes", []):
+        if not c["raiz_ok"]:
+            c["raiz_ok"] = editar(c["ts"], c["raiz"])
+        if not c["respuesta_ok"]:
+            c["respuesta_ok"] = bool(publicar(c["respuesta"], c["ts"], al_canal=False))
+        if not (c["raiz_ok"] and c["respuesta_ok"]):
+            quedan.append(c)
+    if quedan:
+        estado["cierres_pendientes"] = quedan
+    else:
+        estado.pop("cierres_pendientes", None)
 
 
 def seguir_main_rojas(estado: dict, pr: int, nuevas: list[str], heredadas: list[str],
@@ -329,7 +362,8 @@ def seguir_main_rojas(estado: dict, pr: int, nuevas: list[str], heredadas: list[
         editar(p["ts"], texto_main_rojas(p))
         return
     if p:
-        _cerrar_main_rojas(estado, "lo reemplaza un aviso nuevo, con otro conjunto de pruebas en rojo", ahora)
+        _cerrar_main_rojas(estado, "lo reemplaza un aviso nuevo, con otro conjunto de pruebas en rojo",
+                           ahora, reemplazo=ids)
     elif nuevas:
         return
     p = dict(clave="\n".join(ids), lista=ids, cambios=[pr], desde=_fecha(ahora), ts="")
@@ -423,10 +457,22 @@ def main(argv: list[str] | None = None, ahora: datetime | None = None) -> int:
     ahora = ahora or datetime.now(timezone.utc)
     estado = cargar_estado(a.archivo_estado)
 
+    reintentar_cierres(estado)
+
     if a.modo == "verde":
-        # La corrida nocturna pasó pytest sobre main: no queda nada heredado.
-        _cerrar_main_rojas(estado, "la corrida nocturna pasó todas las pruebas", ahora)
-        estado["rojas"] = []
+        # La corrida nocturna pasó pytest sobre main. Sólo pytest: no corre tsc
+        # ni el build, así que esas fallas siguen en el estado (hallazgo de
+        # Codex). Si el hilo tenía sólo pruebas de pytest, se cierra.
+        if estado.get("rojas") is not None:
+            estado["rojas"] = [x for x in estado["rojas"] if not x.startswith("pytest: ")]
+        p = estado.get("main_rojas")
+        if p:
+            resto = [x for x in p["lista"] if not x.startswith("pytest: ")]
+            if not resto:
+                _cerrar_main_rojas(estado, "la corrida nocturna pasó todas las pruebas", ahora)
+            elif resto != p["lista"]:
+                p.update(lista=resto, clave="\n".join(resto))
+                editar(p["ts"], texto_main_rojas(p))
         guardar_estado(a.archivo_estado, estado)
         return 0
     if not a.pr or not a.datos_pr:

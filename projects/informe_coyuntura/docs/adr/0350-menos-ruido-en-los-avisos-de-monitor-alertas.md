@@ -87,9 +87,14 @@ indicadores, un hilo por indicador como hasta ahora.
   abre **un** hilo 🟡 «main tiene N pruebas en rojo de antes» (clave = el
   conjunto), y cada cambio que cae encima edita la raíz («lleva N cambios
   encima: #61, #62») sin mensaje nuevo. Si el conjunto se achica, se edita;
-  si aparecen heredadas que el hilo no tenía, el viejo se cierra y se abre
-  otro. Se cierra cuando un cambio pasa todo o cuando la corrida nocturna pasa
-  pytest sobre `main` (modo `verde`, que deja el estado vacío).
+  si aparecen heredadas que el hilo no tenía, el viejo se cierra con «main
+  sigue con pruebas en rojo» (no con ✅) y se abre otro. Se cierra cuando un
+  cambio pasa todo o cuando la corrida nocturna pasa pytest sobre `main` (modo
+  `verde`). La corrida nocturna sólo corre pytest, así que borra del estado
+  únicamente las fallas de pytest: las de tipos o build las limpia el próximo
+  cambio en verde. Si Slack no confirma un cierre, queda en
+  `cierres_pendientes` y se reintenta en la próxima corrida (estos tres
+  ajustes vienen de la revisión de Codex, después del merge).
 - Si el status de Vercel del commit dice que fue el tope de deploys («rate
   limited», «Resource is limited» o «api-deployments-free-per-day»), no es una
   falla del cambio: 🟡 aparte, uno por tope (los cambios que caen dentro se

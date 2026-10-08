@@ -235,6 +235,44 @@ def test_otro_conjunto_heredado_reemplaza_el_hilo(slack, tmp_path):
     assert estado(tmp_path)["main_rojas"]["cambios"] == [63]
 
 
+def test_reemplazar_el_hilo_no_dice_que_main_volvio_a_verde(slack, tmp_path):
+    cambio(tmp_path, 60, [], [SEMAFORO])
+    cambio(tmp_path, 61, ["web/src/pages/x.astro"], [SEMAFORO])
+    cambio(tmp_path, 62, ["web/src/pages/x.astro"], [SEMAFORO, PARRAFO])
+    cambio(tmp_path, 63, ["web/src/pages/x.astro"], [SEMAFORO, PARRAFO])
+    textos = [c["text"] for c in slack.llamadas]
+    assert not any(t.startswith("✅") or "Main vuelve a verde" in t for t in textos)
+    [reemplazo] = [t for t in textos if "se reemplaza por un conjunto distinto" in t]
+    assert "test_el_parrafo_original_sigue_publicado" in reemplazo     # la lista nueva
+
+
+def test_un_cierre_que_slack_no_confirma_se_reintenta(slack, tmp_path, monkeypatch):
+    cambio(tmp_path, 60, [], [SEMAFORO])
+    cambio(tmp_path, 61, ["web/src/pages/x.astro"], [SEMAFORO])
+    ts = estado(tmp_path)["main_rojas"]["ts"]
+    monkeypatch.setattr(av, "_slack", lambda metodo, **d: {"ok": False, "error": "ratelimited"})
+    cambio(tmp_path, 62, ["web/src/pages/x.astro"], [])
+    assert estado(tmp_path)["cierres_pendientes"][0]["ts"] == ts
+    monkeypatch.setattr(av, "_slack", slack)
+    assert av.main(["verde", "--archivo-estado", str(tmp_path / "estado" / "estado.json")], ahora=AHORA) == 0
+    assert "cierres_pendientes" not in estado(tmp_path)
+    assert slack.ediciones()[-1]["ts"] == ts and slack.ediciones()[-1]["text"].startswith("✅")
+
+
+def test_la_corrida_nocturna_no_borra_fallas_de_tipos_ni_de_build(slack, tmp_path):
+    # De noche sólo corre pytest: lo que dijo tsc no se puede dar por arreglado.
+    tsc = "web/src/lib/x.ts(3,5): error TS2322: Type 'string' is not assignable"
+    for pr in (60, 61):
+        d = tmp_path / f"pr{pr}"
+        d.mkdir()
+        (d / "tsc.log").write_text(tsc + "\n", encoding="utf-8")
+        cambio(tmp_path, pr, ["web/src/pages/x.astro"], [SEMAFORO])
+    assert len(estado(tmp_path)["main_rojas"]["lista"]) == 2
+    assert av.main(["verde", "--archivo-estado", str(tmp_path / "estado" / "estado.json")], ahora=AHORA) == 0
+    assert estado(tmp_path)["rojas"] == [f"tsc: {tsc}"]
+    assert estado(tmp_path)["main_rojas"]["lista"] == [f"tsc: {tsc}"]
+
+
 def test_sin_estado_previo_se_culpa_como_antes(slack, tmp_path):
     cambio(tmp_path, 61, ["web/src/pages/x.astro"], [PARRAFO, SEMAFORO])
     [r] = slack.en_el_canal()
