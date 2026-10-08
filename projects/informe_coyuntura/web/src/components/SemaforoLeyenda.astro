@@ -16,14 +16,17 @@ import { informe, cap, num, tramosSemaforo, LECTURA_SEMAFORO, indiceDeTension } 
 // romper el build por eso -- simplemente no hay leyenda hasta la próxima
 // corrida del pipeline, que sí lo va a traer.
 const cortes = informe.semaforo_cortes ?? [];
+// Texto de entrada opcional: la portada pasa el suyo; las páginas de cada
+// cinturón siguen con el texto por defecto.
+const { intro } = Astro.props as { intro?: string };
 ---
 {cortes.length > 0 && (
 <div class="cg-sem-leyenda">
   <p class="cg-sem-leyenda-intro">
-    El color resume en cuatro tramos cuánta tensión tiene cada índice, dimensión o indicador. En los
+    {intro ? intro : <>El color resume en cuatro tramos cuánta tensión tiene cada índice, dimensión o indicador. En los
     índices y sus dimensiones los cortes son los mismos para los cuatro cinturones: acá van en la escala
     del puntaje (0 a 100) y, entre paréntesis, en la del índice de impacto social (100 = fines de 2023).
-    Cada indicador trae además su propia tabla, en su unidad, en la ficha.
+    Cada indicador trae además su propia tabla, en su unidad, en la ficha.</>}
   </p>
   <ul class="cg-sem-leyenda-list">
     {tramosSemaforo().map((t, i, todos) => {

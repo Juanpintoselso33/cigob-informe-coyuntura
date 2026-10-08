@@ -21,9 +21,9 @@ import { informe, CINTURONES } from "../lib/datos.ts";
       <div class="cg-section-head">
         <p class="cg-eyebrow">Diagnóstico por capa</p>
         <h2 class="cg-h2">Los cinturones, hoy</h2>
-        <p class="cg-h2-sub">Cada card: la tensión del cinturón y el peso de sus dimensiones.</p>
+        <p class="cg-h2-sub">La tensión de cada cinturón y el peso de sus dimensiones.</p>
       </div>
-      <SemaforoLeyenda />
+      <SemaforoLeyenda intro="En esta primera mirada agregada se puede observar el color que representa el estado de tensión de cada cinturón, el de las dimensiones que lo componen, como así también los indicadores seleccionados para caracterizarlos. Se utiliza un semáforo de cuatro colores que resume en cuatro tramos cuánta tensión tiene cada cinturón, dimensión o indicador." />
       <div class="cg-grid cg-grid--4">
         {CINTURONES.map(c => (
           <CinturonCard slug={c.slug} nombre={c.nombre} sub={c.sub} cinturon={informe.cinturones[c.key]} />
