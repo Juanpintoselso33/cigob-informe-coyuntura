@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-08T03:33:02.131837+00:00",
+    "generated_at": "2026-10-09T03:33:54.801606+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -3155,7 +3155,7 @@
     "2026-07": 2090.0,
     "2026-08": 1913.0,
     "2026-09": 1763.2,
-    "2026-10": 1745.9
+    "2026-10": 1751.5
   },
   "serie_itcp": {
     "2024-02": 71.1,
@@ -4702,16 +4702,17 @@
     "2026-05": 1.58,
     "2026-06": -0.57,
     "2026-07": -6.51,
-    "2026-08": -5.27
+    "2026-08": -5.27,
+    "2026-09": -2.94
   },
   "correlaciones_brecha_obra_publica": {
     "niveles (brecha obra pública vs Construya var. i.a., ambas 12m)": {
       "r": 0.807,
-      "n": 110
+      "n": 111
     },
     "primeras diferencias (brecha vs Construya)": {
       "r": 0.298,
-      "n": 109
+      "n": 110
     }
   },
   "dispersion_itvc": {
