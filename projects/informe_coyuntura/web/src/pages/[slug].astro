@@ -9,6 +9,7 @@ import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
 import {
   informe, CINTURONES, indicadoresOrdenados, tensionDeDimension,
   fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel, coloresEnIndice,
+  tramosSemaforo, LECTURA_SEMAFORO,
 } from "../lib/datos.ts";
 
 export function getStaticPaths() {
@@ -155,6 +156,18 @@ const robBajoBase = !!(rob && indice?.base100 && rob.hist_max! < 100);
 const domLabel = rob?.dominante ? (label(rob.dominante.indicador) ?? rob.dominante.indicador) : null;
 const domDelta = rob?.dominante && indice
   ? Math.round((rob.dominante.indice_sin - indice.data.valor) * 10) / 10 : null;
+// Color del cinturón en cada punta del rango del 90%: si no coinciden, la
+// lectura SÍ depende de los pesos y hay que decirlo (pasó con impacto social,
+// 91,7–95,4 cruza el corte de 95).
+const colorDeValor = (v: number) => {
+  const t = tensionDeDimension(v, !!indice?.base100);
+  return tramosSemaforo().find(tr => t >= tr.desde && t < tr.hasta)?.color
+    ?? tramosSemaforo().at(-1)?.color;
+};
+const robColores = rob ? [...new Set([colorDeValor(rob.p95), colorDeValor(rob.p05)])] : [];
+const robLecturas = robColores.map(c => (c && LECTURA_SEMAFORO[c as keyof typeof LECTURA_SEMAFORO])?.toLowerCase() ?? c);
+const robEstable = robColores.length === 1;
+const robQueCambia = indice?.base100 ? "los pesos de cada dimensión e indicador" : "los pesos de cada dimensión e indicador y los datos de entrada";
 const robAmplitud = rob ? Math.round((rob.p95 - rob.p05) * 10) / 10 : null;
 
 // Validación externa (una por cinturón con paramétrica): co-movimiento del
@@ -459,18 +472,20 @@ const robChartData = rob?.hist && indice ? {
       <section class="cg-section">
         <div class="cg-section-head">
           <p class="cg-eyebrow">Robustez</p>
-          <h2 class="cg-h2">¿Cuánto depende el {indice.corto} de la ponderación elegida?</h2>
+          <h2 class="cg-h2">¿Qué tan firme es este número?</h2>
           <p class="cg-h2-sub">
-            {rob.n_draws.toLocaleString("es-AR")} escenarios perturbando{" "}
-            {indice.base100 ? "los pesos ±20%" : "los pesos ±20% y las entradas ±5%"}.
-            La franja sombreada es donde cae el 90%.
+            El {indice.corto} depende de decisiones del equipo, como cuánto pesa cada
+            dimensión, y de datos que pueden traer pequeños errores. Para saber cuánto
+            importa eso, lo recalculamos {rob.n_draws.toLocaleString("es-AR")} veces
+            cambiando un poco, al azar, {robQueCambia}. El gráfico muestra qué valores
+            dieron esos cálculos: cuanto más angosta la campana, más firme el número.
           </p>
         </div>
         <div class={`cg-rob cg-rob--${meta.slug}`} data-det="rob" role="button" tabindex="0"
              aria-label="Ver el detalle del análisis de robustez">
           <div class="cg-rob-head">
-            <span>Distribución simulada del {indice.corto}</span>
-            <span>90% de los casos: <strong>{num(rob.p05)} – {num(rob.p95)}</strong></span>
+            <span>Los {rob.n_draws.toLocaleString("es-AR")} cálculos del {indice.corto}</span>
+            <span>9 de cada 10 dieron entre <strong>{num(rob.p05)} y {num(rob.p95)}</strong></span>
           </div>
           <svg class="cg-rob-svg" viewBox={`0 0 ${robSvg.W} ${robSvg.H}`} role="img"
                aria-label={`Distribución simulada del ${indice.corto}: entre ${num(rob.p05)} y ${num(rob.p95)} en el 90% de los escenarios`}>
@@ -497,18 +512,19 @@ const robChartData = rob?.hist && indice ? {
             <span class="cg-rob-tick cg-rob-tick--val" style={`left:${robSvg.pct(robSvg.xval)}%`}>{num(indice.data.valor)}</span>
             <span class="cg-rob-tick" style={`left:${robSvg.pct(robSvg.x95)}%`}>{num(rob.p95)}</span>
             {robSvg.x100 !== null && (
-              <span class="cg-rob-tick cg-rob-tick--ext" style={`left:${robSvg.pct(robSvg.x100)}%`}>100 = 4T-23</span>
+              <span class="cg-rob-tick cg-rob-tick--ext" style={`left:${robSvg.pct(robSvg.x100)}%`}>100 = fines de 2023</span>
             )}
           </div>
           <p class="cg-h2-sub">
-            El {indice.corto} queda entre <strong>{num(rob.p05)}</strong> y{" "}
-            <strong>{num(rob.p95)}</strong> en el 90% de los casos (tensión{" "}
-            {num(rob.tension_rango[0])}–{num(rob.tension_rango[1])}): la lectura del
-            cinturón no depende de la ponderación exacta ni del error de medición de las fuentes.
+            En 9 de cada 10 cálculos el {indice.corto} dio entre <strong>{num(rob.p05)}</strong> y{" "}
+            <strong>{num(rob.p95)}</strong>; el valor publicado es <strong>{num(indice.data.valor)}</strong>.{" "}
+            {robEstable
+              ? <Fragment>En todo ese rango el cinturón queda en el mismo color (<strong>{robLecturas[0]}</strong>): la lectura no depende de cómo se eligieron los pesos ni de pequeños errores en los datos.</Fragment>
+              : <Fragment>Ese rango cruza un corte de color, entre <strong>{robLecturas[0]}</strong> y <strong>{robLecturas[1]}</strong>: el cinturón está cerca del límite y un pequeño cambio en {indice.base100 ? "los pesos" : "los pesos o en los datos"} podría cambiarle el color. Conviene leer el color con esa cautela.</Fragment>}
             {robBajoBase && (
               <Fragment>
-                {" "}Incluso el escenario más favorable queda <strong>debajo de la línea
-                de base</strong> (100 = promedio 4T-2023).
+                {" "}Incluso el cálculo más favorable queda <strong>debajo de 100</strong>, el nivel de
+                fines de 2023: que la situación empeoró desde entonces no depende de los pesos.
               </Fragment>
             )}
           </p>
@@ -540,45 +556,47 @@ const robChartData = rob?.hist && indice ? {
   {rob && indice && (
     <template id="cg-det-rob">
       <p class="cg-eyebrow">Robustez · {indice.Corto}</p>
-      <h3 class="cg-modal-title">¿Cuánto puede moverse el índice sin que cambie la historia?</h3>
+      <h3 class="cg-modal-title">¿Qué tan firme es este número?</h3>
       <p class="cg-modal-desc">
-        Ningún índice compuesto es inocente: depende de qué pesos se eligieron y de la
-        precisión de las fuentes. Este ejercicio mide cuánto importa eso acá: el{" "}
-        {indice.corto} se recalcula <strong>{rob.n_draws.toLocaleString("es-AR")} veces</strong>,
-        perturbando al azar en cada repetición los pesos de dimensiones e indicadores
-        (hasta ±20% de su valor) y las mediciones de entrada (hasta ±5% del ancho entre
-        sus umbrales de puntuación, para que el ruido sea proporcional a lo que de verdad
-        puede mover un puntaje). El ejercicio es reproducible: el azar parte siempre del mismo punto.
+        Todo índice que junta muchos datos depende de cuánto se decidió que pese cada uno
+        y de qué tan precisas son las fuentes. Para medir cuánto importa eso, el{" "}
+        {indice.corto} se recalcula <strong>{rob.n_draws.toLocaleString("es-AR")} veces</strong>.
+        En cada cálculo, los pesos de las dimensiones y de los indicadores se mueven al azar
+        hasta un 20% para arriba o para abajo{indice.base100 ? "" : ", y cada dato de entrada se mueve un poco, en proporción a lo que de verdad puede cambiar su puntaje"}.
+        El azar arranca siempre del mismo punto, así que cualquiera puede repetir el ejercicio
+        y obtener lo mismo.
       </p>
       <dl class="cg-modal-ficha">
         <div><dt>Valor publicado</dt><dd>{num(indice.data.valor)}</dd></div>
-        <div><dt>90% de los casos</dt><dd>{num(rob.p05)} – {num(rob.p95)}</dd></div>
-        <div><dt>Amplitud</dt><dd>{num(robAmplitud!)} puntos</dd></div>
+        <div><dt>9 de cada 10 cálculos</dt><dd>{num(rob.p05)} – {num(rob.p95)}</dd></div>
+        <div><dt>Ancho del rango</dt><dd>{num(robAmplitud!)} puntos</dd></div>
       </dl>
-      <p class="cg-modal-h4">La distribución de los {rob.n_draws.toLocaleString("es-AR")} escenarios</p>
+      <p class="cg-modal-h4">Qué dieron los {rob.n_draws.toLocaleString("es-AR")} cálculos</p>
       <div id="cg-det-rob-chart" data-nombre={indice.Corto}></div>
       <p class="cg-formula-leyenda">
-        Pasá el cursor (o el dedo) por la campana: cada punto dice cuántos escenarios
-        simulados dieron ese valor del índice.
+        Pasá el cursor (o el dedo) por la campana: cada punto dice cuántos de los cálculos
+        dieron ese valor del índice.
       </p>
       {domLabel && (
         <Fragment>
           <p class="cg-modal-h4">El componente que más pesa hoy</p>
           <p class="cg-modal-desc">
-            <strong>{domLabel}</strong> es el indicador que más arrastra el resultado: si se
-            lo quitara del índice (repartiendo su peso entre los demás), el {indice.corto}{" "}
-            sería <strong>{num(rob.dominante.indice_sin)}</strong> —{" "}
-            {domDelta! > 0 ? "una mejora" : "un deterioro"} de {num(Math.abs(domDelta!))} puntos.
-            Que un solo componente explique una diferencia así no invalida el índice, pero es
-            la señal a vigilar: su dato manda sobre la lectura del mes.
+            <strong>{domLabel}</strong> es el indicador que más mueve el resultado: si se lo
+            sacara del índice y su peso se repartiera entre los demás, el {indice.corto}{" "}
+            daría <strong>{num(rob.dominante.indice_sin)}</strong>, {num(Math.abs(domDelta!))} puntos{" "}
+            {domDelta! > 0 ? "más" : "menos"}. Eso no invalida el índice, pero dice qué dato
+            conviene mirar de cerca: es el que más pesa en la lectura del mes.
           </p>
         </Fragment>
       )}
       <p class="cg-modal-h4">Cómo leerlo</p>
       <p class="cg-modal-desc">
-        La franja sombreada del gráfico concentra el 90% de los escenarios simulados. Si esa
-        franja no cruza un umbral de lectura, la historia que cuenta el cinturón no depende
-        de la cocina del índice.{robBajoBase ? " En este caso, incluso el escenario más favorable queda debajo de la línea de base (100 = promedio del 4º trimestre de 2023): el signo del resultado no es discutible por ponderación." : " Hoy la lectura es estable en todo el rango simulado."}
+        La parte más oscura del gráfico junta 9 de cada 10 cálculos. Si todo ese tramo queda
+        dentro de un mismo color, lo que dice el cinturón no depende de cómo se armó el índice.{" "}
+        {robEstable
+          ? `Hoy pasa eso: en todo el tramo el cinturón queda en ${robLecturas[0]}.`
+          : `Hoy no: el tramo cruza el corte entre ${robLecturas[0]} y ${robLecturas[1]}, así que el color está cerca del límite.`}
+        {robBajoBase ? " Y aun el cálculo más favorable queda debajo de 100, el nivel de fines de 2023: que la situación empeoró no depende de los pesos." : ""}
       </p>
     </template>
   )}
