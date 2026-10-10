@@ -399,8 +399,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   concesiones_infraestructura: {
     que: "Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada etapa sale de las resoluciones de adjudicación del Boletín Oficial (el sistema de contrataciones del Estado, CONTRAT.AR, se usa para detectar procesos nuevos) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).",
-    aporta: "Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su licitación figura Adjudicada en el sistema de contrataciones.",
-    frecuencia: "Continua (sistema de contrataciones)", tipo: "Avance de reforma",
+    aporta: "Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su resolución de adjudicación está publicada en el Boletín Oficial; que el sistema de contrataciones la muestre adjudicada no alcanza (sólo avisa).",
+    frecuencia: "Diaria (Boletín Oficial)", tipo: "Avance de reforma",
   },
   reduccion_estado: {
     que: "Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del mandato), según la serie mensual oficial del Instituto Nacional de Estadística y Censos (INDEC).",
