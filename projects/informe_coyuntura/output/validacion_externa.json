@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-09T03:33:54.801606+00:00",
+    "generated_at": "2026-10-10T03:43:25.660471+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -3155,7 +3155,7 @@
     "2026-07": 2090.0,
     "2026-08": 1913.0,
     "2026-09": 1763.2,
-    "2026-10": 1751.5
+    "2026-10": 1749.9
   },
   "serie_itcp": {
     "2024-02": 71.1,
@@ -5240,7 +5240,7 @@
     "transporte_pasajeros": {
       "antes_pct": 22.9,
       "despues_pct": 0.0,
-      "n_meses": 174
+      "n_meses": 175
     },
     "ventas_naftas": {
       "antes_pct": 17.7,
@@ -5285,9 +5285,9 @@
       "avanzo": "2026-09-23"
     },
     "transporte_pasajeros": {
-      "ultimo": "2026-06",
-      "n": 174,
-      "avanzo": "2026-09-11"
+      "ultimo": "2026-07",
+      "n": 175,
+      "avanzo": "2026-10-10"
     },
     "ventas_naftas": {
       "ultimo": "2026-08",
@@ -5438,9 +5438,9 @@
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
           "propia": true,
-          "r_niveles": 0.133,
-          "r_diferencias": 0.044,
-          "n": 31
+          "r_niveles": 0.194,
+          "r_diferencias": 0.07,
+          "n": 32
         },
         {
           "estadistica": "ventas_naftas",
@@ -5455,20 +5455,20 @@
       "n_propias": 7,
       "n_ajenas": 6,
       "niveles": {
-        "convergente": 0.237,
+        "convergente": 0.245,
         "discriminante": 0.309,
-        "brecha": -0.072
+        "brecha": -0.064
       },
       "diferencias": {
-        "convergente": 0.189,
+        "convergente": 0.192,
         "discriminante": 0.122,
-        "brecha": 0.067
+        "brecha": 0.07
       },
       "factor": {
         "cargas": {
           "electricidad_residencial": 0.719,
           "gas_residencial": 0.207,
-          "transporte_pasajeros": -0.073,
+          "transporte_pasajeros": -0.074,
           "ventas_naftas": 0.659
         },
         "etiquetas": {
@@ -5495,7 +5495,7 @@
           [
             "2024-01",
             100.7,
-            1.166
+            1.165
           ],
           [
             "2024-02",
@@ -5515,7 +5515,7 @@
           [
             "2024-05",
             101.7,
-            2.8
+            2.801
           ],
           [
             "2024-06",
@@ -5555,7 +5555,7 @@
           [
             "2025-01",
             101.0,
-            1.679
+            1.678
           ],
           [
             "2025-02",
@@ -5615,7 +5615,7 @@
           [
             "2026-01",
             98.6,
-            1.401
+            1.4
           ],
           [
             "2026-02",
@@ -5644,7 +5644,7 @@
           ]
         ],
         "r_niveles": 0.022,
-        "r_diferencias": 0.19,
+        "r_diferencias": 0.188,
         "mejor_sola_niveles": 0.422,
         "mejor_sola_diferencias": 0.411,
         "aporte_sobre_tendencia": {
@@ -5667,7 +5667,7 @@
           [
             "2024-01",
             100.7,
-            1.166
+            1.165
           ],
           [
             "2024-02",
@@ -5687,7 +5687,7 @@
           [
             "2024-05",
             101.7,
-            2.8
+            2.801
           ],
           [
             "2024-06",
@@ -5727,7 +5727,7 @@
           [
             "2025-01",
             101.0,
-            1.679
+            1.678
           ],
           [
             "2025-02",
@@ -5787,7 +5787,7 @@
           [
             "2026-01",
             98.6,
-            1.401
+            1.4
           ],
           [
             "2026-02",
@@ -5816,7 +5816,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,237 y con las 6 ajenas es 0,309. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,189 con lo propio contra 0,122 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,245 y con las 6 ajenas es 0,309. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,192 con lo propio contra 0,122 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     },
     "itcp": {
       "indice": "itcp",
@@ -5925,9 +5925,9 @@
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.151,
-          "r_diferencias": -0.218,
-          "n": 29
+          "r_niveles": -0.199,
+          "r_diferencias": -0.21,
+          "n": 30
         },
         {
           "estadistica": "ventas_naftas",
@@ -5943,15 +5943,15 @@
       "n_ajenas": 12,
       "niveles": {
         "convergente": 0.217,
-        "discriminante": 0.19,
-        "brecha": 0.027
+        "discriminante": 0.194,
+        "brecha": 0.023
       },
       "diferencias": {
         "convergente": 0.27,
-        "discriminante": 0.169,
-        "brecha": 0.101
+        "discriminante": 0.168,
+        "brecha": 0.102
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,217 y con las 12 ajenas es 0,19. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,27 con lo propio contra 0,169 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,217 y con las 12 ajenas es 0,194. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,27 con lo propio contra 0,168 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     }
   }
 }
