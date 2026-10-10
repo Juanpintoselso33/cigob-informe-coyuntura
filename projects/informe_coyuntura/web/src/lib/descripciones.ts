@@ -180,9 +180,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Por informe", tipo: "Índice (0–100)",
   },
   iaf_transferencias: {
-    que: "Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante un año calendario completo, comparado con el año anterior. Entra lo transferido a las provincias, a la Ciudad de Buenos Aires y al Fondo Compensador, incluida la compensación del Consenso Fiscal; quedan afuera las porciones que se quedan en la Nación —Tesoro Nacional, Seguridad Social y Fondo A.T.N.—. Son las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones), no los giros discrecionales.",
+    que: "Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante los últimos 12 meses, comparado con los 12 meses anteriores (la ventana termina en el último mes con IPC publicado). Entra lo transferido a las provincias, a la Ciudad de Buenos Aires y al Fondo Compensador, incluida la compensación del Consenso Fiscal; quedan afuera las porciones que se quedan en la Nación —Tesoro Nacional, Seguridad Social y Fondo A.T.N.—. Son las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones), no los giros discrecionales.",
     aporta: "Mide el gesto fiscal de la Nación hacia las provincias: cuánto gira por encima o por debajo de lo que giraba antes, en términos reales. Es un insumo de la relación federal, no la respuesta de los gobernadores: informa lo que hace el Gobierno nacional, no cómo reaccionan las provincias.",
-    frecuencia: "Anual", tipo: "Variación real",
+    frecuencia: "Mensual (12 meses móviles)", tipo: "Variación real",
   },
   eficacia_legislativa: {
     que: "Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. Cada proyecto tuvo al menos un año para tramitarse.",

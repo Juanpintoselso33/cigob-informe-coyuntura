@@ -763,11 +763,10 @@ export function badgeEstado(ind: Indicador): "Automático" | "Semiautomático" |
 // anuales → el año del dato. Para los indicadores de ventana móvil viva
 // (ratio_dnu, derrotas, cepo, etc.) fecha_dato es la fecha de la corrida y el
 // mes corriente ES el período correcto ("dato al día"). Dos excepciones con
-// dato anual: iaf_transferencias (variación real del último año calendario
-// completo contra el anterior, deflactada mes a mes — el año sale del campo
-// `periodo` del colector, "2025 vs 2024", y su fecha_dato es el cierre de ese
-// año, no la fecha de corrida) y veto_quorum (período legislativo en curso =
-// año calendario de la corrida).
+// dato anual: veto_quorum (período legislativo en curso = año calendario de
+// la corrida). iaf_transferencias dejó de serlo (ADR-0353): son 12 meses
+// móviles y su fecha_dato es el fin del último mes con IPC, así que sigue la
+// regla mensual de abajo.
 const MESES_CORTOS = ["ene", "feb", "mar", "abr", "may", "jun",
                       "jul", "ago", "sep", "oct", "nov", "dic"];
 const PERIODO_TRIMESTRAL = new Set(["informalidad", "subocupacion_demandante"]);
@@ -777,12 +776,6 @@ export function periodoDato(key: string, ind: Indicador): string {
   const f = String(ind.fecha_dato ?? "");
   const anio = parseInt(f.slice(0, 4), 10);
   if (!anio) return "—";
-  if (key === "iaf_transferencias") {
-    const p = String(ind.periodo ?? "");
-    // fecha_dato del colector es "<año de referencia>-12-31" (no la corrida),
-    // así que el respaldo es ese año y no el anterior.
-    return /^\d{4}/.test(p) ? p.slice(0, 4) : String(anio);
-  }
   if (PERIODO_ANUAL.has(key)) return String(anio);
   const mes = parseInt(f.slice(5, 7), 10);
   if (!mes) return String(anio);

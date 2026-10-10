@@ -20,7 +20,7 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 | `rigi_inversiones` | Inversión aprobada acumulada por fecha de sanción del BO ([ADR-0011](adr/0011-rigi-plataforma-oficial.md)) | 12 |
 | `votometro_ventaja_lla` · `clima_electoral` | Brecha LLA−PJ ponderada recalculada mes a mes desde `encuestasRaw` (todos los sondeos desde dic-2023) | 31 |
 | `ipc_alimentos` · `peso_tarifas` · `mortalidad_pymes` | Variación m/m % reconstruida de la serie índice INDEC (146.3 / 148.3 / 453.1) con `fetch_indec_var_mensual` | 47 c/u |
-| `iaf_transferencias` | Variación real i.a. anual (RON Hacienda) deflactada por el **IPC dic-dic oficial de INDEC** (se de-hardcodeó `IPC_ANUAL`, corrigió la card 1,8% → 7,0%) | 9 (anual) |
+| `iaf_transferencias` | Variación real de 12 meses móviles (RON Hacienda), cada flujo deflactado por el IPC de su mes (ADR-0239, ADR-0353; antes anual dic-dic) | 94 (mensual, desde nov-2018) |
 | `desregulacion_normativa` · `reestructuracion_organismos` | Conteo acumulado de normas InfoLeg ("deroga"/"disolucion") reconsultado a fin de cada mes | 31 / 24 |
 | `icc_utdt` (vida + espíritu) | Todas las filas del XLS oficial UTDT (no solo la última), acotado a los últimos 60 meses | 60 |
 | `sentimiento_digital` (vida + espíritu) | Serie diaria de Google Trends en la **misma ventana 'today 3-m'** que el live (Trends es relativo al período → ventana más larga re-normaliza; se acota a 3m para no cambiar el valor) | ~90 (diaria) |

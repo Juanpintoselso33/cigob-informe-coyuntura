@@ -299,13 +299,17 @@ BANDAS_ITCP = {
         # provisional. Tramos extremos abiertos (ADR-0021).
         (-INF, 1.0, 100), (1.0, 3.0, 85), (3.0, 8.0, 65), (8.0, 14.0, 40), (14.0, INF, 10),
     ],
-    "iaf_transferencias": [               # % var real YoY transferencias federales, mayor = mejor
+    "iaf_transferencias": [               # % var real 12m móviles transferencias federales, mayor = mejor
         # CONCEPTUAL (ADR-0121): variación real interanual anclada en el CERO
         # —transferencias a provincias mantenidas en términos reales— con cortes
         # simétricos redondos de a 10 pp, mismo criterio que recaudacion/emae en
         # el ITCM (ADR-0120). La serie propia es anual desde 2018 (cinco puntos
         # previos, ADR-0065/0066): insuficiente para anclar a la historia, pero
         # el cero no lo necesita — es un umbral con significado, no un percentil.
+        # ADR-0353: la ventana pasó de año calendario a 12 meses móviles. Es la
+        # misma escala (en diciembre coinciden), así que los cortes no se
+        # tocan; con la serie mensual (94 puntos) el rango es -12,9…+11,7 y la
+        # banda discrimina dentro y fuera de muestra (out_of_sample.py).
         (10.0, INF, 100), (0.0, 10.0, 85), (-10.0, 0.0, 65), (-20.0, -10.0, 40), (-INF, -20.0, 10),
     ],
     "bloqueo_sostenido": [
@@ -809,8 +813,10 @@ REZAGO_MESES_ITCP = {
     # más rezagado del índice por construcción, y no hay forma de acelerarlo
     # sin volver a introducir el sesgo que ese ADR sacó.
     "eficacia_legislativa": 18.0,
-    # Comparación anual dic-dic: hasta 12 meses de rezago por diseño.
-    "iaf_transferencias": 12.0,
+    # 12 meses móviles contra los 12 previos (ADR-0353): la variación describe,
+    # en promedio, lo ocurrido 6 meses atrás (centroide de la ventana), más ~1,5
+    # del IPC del INDEC. Mismo criterio que brecha_obra_publica.
+    "iaf_transferencias": 7.5,
     # Promedio móvil de 12 meses (6) más el rezago de publicación del INDEC.
     "brecha_obra_publica": 7.5,
     # Ventana móvil de 12 meses sobre comunicados fechados: el rezago de

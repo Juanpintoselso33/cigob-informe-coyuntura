@@ -914,16 +914,17 @@ POLITICA_INDEC = []
 
 
 def fetch_iaf_serie() -> list:
-    """Serie ANUAL de la variación real i.a. de las transferencias federales
-    (RON Hacienda). El punto YYYY-12-01 es el año calendario cerrado, no el
-    presupuesto del siguiente.
+    """Serie MENSUAL de la variación real de las transferencias federales
+    (RON Hacienda): el punto YYYY-MM-01 es la ventana de 12 meses que termina en
+    ese mes contra los 12 anteriores (ADR-0353). Antes era un punto por año
+    calendario cerrado, en diciembre.
 
-    Misma fórmula que la card (ADR-0239): cada flujo mensual se lleva a precios
-    de su propio mes antes de sumar. Arranca en 2018, el primer año que tiene
-    los doce meses publicados y un año anterior contra el cual compararse.
-    [[YYYY-12-01, %]]."""
-    return [[f"{y}-12-01", round(v[0] * 100.0, 1)]
-            for y, v in sorted(politica._iaf_real_por_anio().items())]
+    Misma función que la card (`_iaf_12m_moviles`) y misma fórmula (ADR-0239):
+    cada flujo mensual a precios de su propio mes. Los puntos de diciembre
+    coinciden con la serie anual anterior. Arranca en nov-2018, el primer mes con
+    24 meses de planilla. [[YYYY-MM-01, %]]."""
+    return [[f"{fin}-01", round(v[0] * 100.0, 1)]
+            for fin, v in sorted(politica._iaf_12m_moviles().items())]
 
 
 def fetch_ratio_dnu_serie() -> list:
@@ -1631,7 +1632,7 @@ def fetch_conflictividad_nacional_mensual() -> list:
 
 
 POLITICA_DERIVADAS = [
-    ("iaf_transferencias", "% i.a. real",
+    ("iaf_transferencias", "% i.a. real (12m móviles)",
      "RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes", fetch_iaf_serie),
     ("ratio_dnu", "DNUs publicados por ley publicada", "InfoLeg", fetch_ratio_dnu_serie),
     ("desafios_legislativos", "normas desafiadas en el recinto (12m)",

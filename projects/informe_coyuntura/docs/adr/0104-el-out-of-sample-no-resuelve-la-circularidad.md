@@ -7,6 +7,7 @@ fecha: 2026-07-20
 cinturon: 'transversal'
 archivos: ['scripts/out_of_sample.py']
 continua: ['0103']
+relacionado: ['0353']
 ambito: 'Validación del método · `scripts/out_of_sample.py`'
 ---
 
