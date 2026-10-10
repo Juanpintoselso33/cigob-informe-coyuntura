@@ -63,6 +63,17 @@ const filasSuspendidas = filas.filter(({ ind }) => ind.en_indice === false && in
 const filasSinUniverso = filas.filter(({ ind }) => ind.en_indice === false && ind.estado === "sin_universo");
 const filasContexto = filas.filter(({ ind }) => ind.en_indice === false && !ind.cumplido && !ind.suspendido && ind.estado !== "sin_universo");
 const fuentes = fuentesDeCinturon(c);
+// Textos en llano de «Cómo se calcula este número» (ADR-0352).
+const RESUMEN_INDICE: Record<string, string> = {
+  macro: "qué tan firme está la economía: la inflación, las cuentas públicas, el financiamiento, la actividad, la competitividad y la inversión.",
+  politica: "cuánto poder real tiene el Gobierno para llevar adelante su proyecto: sacar leyes, sostener alianzas con las provincias, mantener unida a su fuerza y manejar el conflicto social, la Justicia y el sector privado. Mide capacidad de gobernar, no popularidad ni intención de voto.",
+  gestion: "cuánto de la agenda de reformas prometida se está ejecutando de verdad.",
+};
+const PARTICULAR_INDICE: Record<string, string> = {
+  macro: "Las reservas del Banco Central son una estimación propia de CiGob hecha con los datos que publica el Banco; no equivalen al dato oficial de reservas de libre disponibilidad.",
+  gestion: "Las reformas se siguen por pasos que se pueden comprobar, no por anuncios. Las privatizaciones, por ejemplo, van de 0 (sin definir) a 4 (operación cerrada) para cada empresa habilitada por la Ley Bases, y la apertura comercial se mide por lo que efectivamente se cobra de impuestos al comercio exterior.",
+  vida_cotidiana: "Algunos indicadores no se comparan con 2023 porque ese punto de partida no era normal. Las tarifas de luz, gas, agua y transporte se miden como parte del salario, contra topes internacionales (10% del ingreso para agua y energía, 5% para transporte), porque en 2023 estaban subsidiadas. Los precios de los alimentos y del alquiler se comparan con la inflación general. El número no es un porcentaje de bienestar ni un pronóstico electoral.",
+};
 const indice = indiceDe(c);   // ITCM / ITCG / ITCIS / ITCP, o null (espíritu)
 // Los indicadores del índice se muestran AGRUPADOS por dimensión, en el mismo
 // orden en que se listan las dimensiones arriba: leer el detalle deja de ser
@@ -315,6 +326,42 @@ const robChartData = rob?.hist && indice ? {
             {indice.data.ajustes_aplicados.map(a => `${a.indicador}: ${a.de} → ${a.a} (${a.justificacion})`).join(" · ")}
           </p>
         )}
+        {/* Cómo se calcula, en llano y al pie de las dimensiones (ADR-0352): antes
+            era una nota técnica al final de la página. */}
+        <div class="cg-como-se-calcula">
+          <h3 class="cg-como-se-calcula-h">Cómo se calcula este número</h3>
+          {indice.base100 ? (
+            <p>
+              El {indice.corto} compara cómo están hoy los hogares con cómo estaban al
+              empezar el mandato. <strong>100 es el promedio del último trimestre de 2023</strong>:
+              más de 100 quiere decir que la situación mejoró desde entonces, y menos de 100,
+              que empeoró. No tiene techo. Hoy marca <strong>{num(indice.data.valor as number)}</strong>.
+            </p>
+          ) : (
+            <p>
+              El {indice.corto} resume en un número de 0 a 100 {RESUMEN_INDICE[meta.key]}{" "}
+              <strong>0 es la peor situación y 100 la mejor</strong>. Hoy marca{" "}
+              <strong>{num(indice.data.valor as number)}</strong>.
+            </p>
+          )}
+          <p>
+            Se arma en tres pasos. Primero, cada indicador recibe un puntaje: {indice.base100
+              ? "se lo pone en la misma escala, donde 100 es su valor de fines de 2023."
+              : "su valor se compara con una tabla fija de referencias, igual para todos los meses, y se traduce a un puntaje de 0 a 100."}{" "}
+            Después, los indicadores se agrupan en las {Object.keys(indice.data.dimensiones).length} dimensiones
+            de las tarjetas de arriba, y cada una promedia los puntajes de sus indicadores. Por último,
+            el índice promedia las dimensiones según su peso:{" "}
+            {Object.values(indice.data.dimensiones).map((d, i, a) =>
+              `${d.nombre.charAt(0).toLowerCase()}${d.nombre.slice(1)} (${Math.round(d.peso * 100)}%)${i < a.length - 2 ? ", " : i === a.length - 2 ? " y " : "."}`).join("")}{" "}
+            Si una dimensión cae muy abajo, se marca como crítica: el promedio no alcanza a compensarla.
+          </p>
+          {PARTICULAR_INDICE[meta.key] && <p>{PARTICULAR_INDICE[meta.key]}</p>}
+          <p>
+            El color del cinturón sale de este número: {coloresEnIndice(!!indice.base100)}. Los
+            cuatro cinturones usan los mismos cortes de color, y por eso se pueden comparar entre sí.
+            Cada indicador tiene su ficha con la fuente, el cálculo y sus límites.
+          </p>
+        </div>
       </section>
     )}
     <section class="cg-section">
@@ -467,91 +514,6 @@ const robChartData = rob?.hist && indice ? {
           </p>
           <div class="cg-det-cta">Ver el detalle →</div>
         </div>
-        {lb && (
-          <Fragment>
-            <div class="cg-section-head cg-val-head">
-              <p class="cg-eyebrow">Punto de partida</p>
-              <h2 class="cg-h2">{lb.titulo}</h2>
-              <p class="cg-h2-sub">{lb.sub_resumen ?? lb.sub}</p>
-              {lb.sub_detalle && (
-                <details class="cg-mas">
-                  <summary>Cómo se construye</summary>
-                  <p class="cg-h2-sub">{lb.sub_detalle}</p>
-                </details>
-              )}
-            </div>
-            <div class={`cg-rob cg-rob--${meta.slug} cg-rez cg-lb`}>
-              <div class="cg-rez-hero">
-                <span class="cg-rez-num">{lb.brecha >= 0 ? "+" : "−"}{num(Math.abs(lb.brecha))}</span>
-                <span class="cg-rez-unidad">puntos</span>
-                <span class="cg-rez-lbl">de distancia entre el índice de hoy<br/>y el del mes del traspaso</span>
-              </div>
-              <p class="cg-rez-titulo">El índice en los dos extremos</p>
-              <ul class="cg-lb-par">
-                <li>
-                  <span class="cg-lb-ym">Diciembre 2023</span>
-                  <span class="cg-lb-val">{num(lb.valor)}</span>
-                </li>
-                <li>
-                  <span class="cg-lb-ym">Hoy</span>
-                  <span class="cg-lb-val cg-lb-val--hoy">{num(Math.round((indice!.data.valor as number) * 10) / 10)}</span>
-                </li>
-              </ul>
-              <p class="cg-h2-sub">{lb.resumen ?? lb.conclusion}</p>
-              {lb.detalle_texto && (
-                <details class="cg-mas">
-                  <summary>Leer el análisis completo</summary>
-                  <p class="cg-h2-sub">{lb.detalle_texto}</p>
-                </details>
-              )}
-            </div>
-          </Fragment>
-        )}
-        {fam && (
-          <Fragment>
-            <div class="cg-section-head cg-val-head">
-              <p class="cg-eyebrow">Lectura por partes</p>
-              <h2 class="cg-h2">{fam.titulo}</h2>
-              <p class="cg-h2-sub">{fam.sub_resumen ?? fam.sub}</p>
-              {fam.sub_detalle && (
-                <details class="cg-mas">
-                  <summary>Cómo se construye</summary>
-                  <p class="cg-h2-sub">{fam.sub_detalle}</p>
-                </details>
-              )}
-            </div>
-            <div class={`cg-rob cg-rob--${meta.slug} cg-fam`}>
-              <div class="cg-fam-grid">
-                {fam.familias.map((f: any) => (
-                  <div class="cg-fam-col">
-                    <p class="cg-fam-nombre">{f.nombre}</p>
-                    <p class="cg-fam-glosa">{f.glosa}</p>
-                    <p class="cg-fam-num">{f.puntaje.toFixed(1).replace(".", ",")}</p>
-                    <div class="cg-fam-barra">
-                      <span class="cg-fam-fill" style={`width:${f.puntaje}%`}></span>
-                    </div>
-                    <p class="cg-fam-share">{Math.round(f.share * 100)}% del índice</p>
-                    <ul class="cg-fam-inds">
-                      {f.componentes.map((c: any) => (
-                        <li>
-                          <span class="cg-fam-ind">{label(c.indicador)}</span>
-                          <span class="cg-fam-pts">{c.puntaje.toFixed(1).replace(".", ",")}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-              <p class="cg-h2-sub">{fam.resumen ?? fam.conclusion}</p>
-              {fam.detalle_texto && (
-                <details class="cg-mas">
-                  <summary>Leer el análisis completo</summary>
-                  <p class="cg-h2-sub">{fam.detalle_texto}</p>
-                </details>
-              )}
-            </div>
-          </Fragment>
-        )}
       </section>
     )}
 
@@ -560,79 +522,8 @@ const robChartData = rob?.hist && indice ? {
       <ul>{fuentes.map(f => <li>{f}</li>)}</ul>
     </section>
 
-    {meta.key === "vida_cotidiana" && (
-      <section class="cg-section cg-nota-met">
-        <p class="cg-eyebrow">Nota metodológica</p>
-        <p>
-          El cinturón se puntúa con el <strong>índice de impacto social</strong>, un índice
-          de seguimiento: sus componentes se comparan con referencias
-          declaradas, mayormente el <strong>promedio del 4º trimestre de 2023</strong>.
-          La canasta de servicios
-          públicos: se mide sobre el salario y usa anclas internacionales fijas de
-          asequibilidad —10% del ingreso para agua+energía y 5% para transporte,
-          tomando la peor de las dos señales—,
-          para no tomar como normal el precio subsidiado de 2023. Alimentos y alquiler se
-          miden contra el índice general de precios de su misma cobertura. La vulnerabilidad
-          financiera combina <strong>mora de personales y tarjetas</strong> (70%) y
-          <strong> carga del servicio de deuda</strong> (30%); no premia el crecimiento
-          del endeudamiento. La victimización —la encuesta del Laboratorio de
-          Investigaciones sobre Crimen, Instituciones y Políticas de la Universidad
-          Torcuato Di Tella— conserva enero de 2024 como base explícita. La auditoría de
-          septiembre recuperó informes de 2023 y rectificó la supuesta suspensión de la
-          encuesta. El registro oficial de delitos, el Sistema Nacional de Información
-          Criminal, es un contraste de distinto universo y frecuencia. El agregado no representa un
-          porcentaje de bienestar ni un pronóstico electoral. El color del cinturón
-          sale del <strong>índice de impacto social, hoy en {num(c.itvc?.valor)}</strong>: {coloresEnIndice(true)}.
-        </p>
-      </section>
-    )}
 
-    {meta.key === "gestion" && (
-      <section class="cg-section cg-nota-met">
-        <p class="cg-eyebrow">Nota metodológica</p>
-        <p>
-          El cinturón mide la <strong>brecha entre lo prometido y lo ejecutado</strong> de la
-          agenda de reformas, en cinco dimensiones (paramétrica CIGOB, jul-2026; puntaje{" "}
-          <strong>interpolado</strong> entre los umbrales institucionales — sin escalones de
-          banda). La <strong>apertura comercial</strong> se puntúa por la{" "}
-          <strong>alícuota efectiva</strong> del comercio exterior (recaudación de derechos de
-          importación y exportación sobre el intercambio total); la brecha cambiaria puntúa una
-          sola vez, en su propio indicador, y el componente aduanero (canal verde) no tiene
-          fuente pública estructurada y queda fuera. Las <strong>privatizaciones</strong> avanzan
-          por <strong>etapas verificables</strong> (0 = sin definir → 4 = operación cerrada) sobre
-          la cartera habilitada por la Ley Bases, no por conteo de anuncios. La{" "}
-          <strong>reforma laboral</strong> sigue el <strong>Fondo de Asistencia Laboral</strong> (creado
-          por la Ley de Modernización Laboral 27.802, que el Gobierno presenta como su herramienta central
-          contra la litigiosidad). La{" "}
-          <strong>asistencia directa</strong> mide la desintermediación del gasto social y
-          el <strong>orden público</strong>, la reducción de cortes en CABA vs. 2023 — con su
-          validez judicial restablecida: la Cámara revocó en marzo de 2026 la nulidad de primera
-          instancia. El color del cinturón sale del <strong>índice de gestión, hoy en {num(c.itcg?.valor)}/100</strong>:{" "}
-          {coloresEnIndice(false)}.
-        </p>
-      </section>
-    )}
 
-    {meta.key === "macro" && (
-      <section class="cg-section cg-nota-met">
-        <p class="cg-eyebrow">Nota metodológica</p>
-        <p>
-          El índice macroeconómico combina seis dimensiones. Las fichas de cada indicador
-          detallan sus fuentes, transformaciones, anclas y límites. La estimación de
-          reservas usa la fórmula de CiGob, basada en la planilla de reservas
-          internacionales y el balance del Banco Central; no equivale a una medición
-          oficial de libre disponibilidad.
-          La composición vigente y el aporte de cada componente se muestran
-          en el detalle del índice.
-          Cada indicador se puntúa por <strong>interpolación entre las anclas</strong> de su
-          tabla de umbrales (sin escalones de banda: dos valores casi iguales reciben
-          puntajes casi iguales). El color del cinturón sale del{" "}
-          <strong>índice macroeconómico, hoy en {num(c.itcm?.valor)}/100</strong>: {coloresEnIndice(false)}. Los cuatro
-          cinturones comparten los mismos cortes de color, que es lo que permite compararlos
-          y componer la tensión global.
-        </p>
-      </section>
-    )}
   </main>
   <Footer />
   <IndicadorModal />

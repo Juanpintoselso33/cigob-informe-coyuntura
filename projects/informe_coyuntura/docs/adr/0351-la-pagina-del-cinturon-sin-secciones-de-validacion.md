@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-10-10
 cinturon: 'transversal'
 archivos: ['web/src/pages/[slug].astro']
-relacionado: ['0031', '0075', '0092', '0099', '0233', '0336']
+relacionado: ['0031', '0075', '0092', '0099', '0233', '0336', '0352']
 ambito: 'Web · qué secciones muestra la página de cada cinturón'
 origen: 'Juan, 10-oct-2026: corrección del informe mensual'
 ---

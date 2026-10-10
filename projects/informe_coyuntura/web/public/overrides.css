@@ -1694,3 +1694,14 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
    así que la variación se colorea por sentido y no por dirección. */
 .cg-chart-mini-delta.mejora  { background: #DCFCE7; color: #14532D; }
 .cg-chart-mini-delta.empeora { background: #FEE2E2; color: #7F1D1D; }
+
+/* «Cómo se calcula este número» al pie de las dimensiones (ADR-0352): la
+   explicación del índice para el lector común, a todo el ancho. */
+.cg-como-se-calcula {
+  margin: 22px 0 0; padding: 18px 20px;
+  background: var(--paper); border: 1px solid var(--bd); border-left: 3px solid var(--teal);
+  border-radius: var(--radius-card);
+}
+.cg-como-se-calcula-h { margin: 0 0 8px; font-size: 15px; font-weight: 800; color: var(--dark); }
+.cg-como-se-calcula p { margin: 0 0 10px; font-size: 14.5px; line-height: 1.65; color: var(--dark); text-align: left; }
+.cg-como-se-calcula p:last-child { margin-bottom: 0; color: var(--muted); font-size: 13.5px; }
