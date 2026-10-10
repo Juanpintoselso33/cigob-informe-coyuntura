@@ -40,10 +40,10 @@ GENERAL DE LA ADMINISTRACIÓN NACIONAL.
 BICAMERAL PERMANENTE DE TRAMITE LEGISLATIVO - LEY 26122
 3918-D-2024 DE RESOLUCIÓN. DECLARAR NULO DE NULIDAD ABSOLUTA E
 INSANABLE EL DECRETO DE NECESIDAD Y URGENCIA Nº
-656/2024 POR FALTA DE ADECUACIÓN.
+111/2024 POR FALTA DE ADECUACIÓN.
 ASUNTOS CONSTITUCIONALES Y PRESUPUESTO Y HACIENDA
 3903-D-2024 DE RESOLUCIÓN. EXPRESAR RECHAZO AL DECRETO DE
-NECESIDAD Y URGENCIA N° 656/2024 QUE DISPONE UNA
+NECESIDAD Y URGENCIA N° 222/2024 QUE DISPONE UNA
 ASIGNACIÓN ADICIONAL."""
 
 TEMARIO_DNU_NUEVO = """TEMARIO
@@ -52,6 +52,14 @@ DE NECESIDAD Y URGENCIA 999/26, SOBRE ALGO.
 (BICAMERAL PERMANENTE DE TRÁMITE LEGISLATIVO)
 4018-D-2026 DE LEY. LEY 27.793, DE EMERGENCIA NACIONAL EN
 DISCAPACIDAD. PRÓRROGA HASTA EL 31 DE DICIEMBRE DE 2027."""
+
+
+HTML_SESION_REALIZADA = (
+    '<iframe src="https://www3.hcdn.gob.ar/visor/pdf/v2.5/web/viewer.html?file='
+    'https://www3.hcdn.gob.ar/dependencias/dtaquigrafos/diarios/periodo-144/diario_x.pdf">')
+HTML_SESION_SIN_DIARIO = '<html>Usar http para poder ver la versión taquigráfica</html>'
+DIARIO_COMPLETO = ("Se vota el decreto 999/26 y 656/2024. Ley 27.792 y 27.790. "
+                   "DNU 111/2026 DNU 222/2026 DNU 333/2026")
 
 
 # ── 1. El fallo de las actas deja rastro en el log ───────────────────────────
@@ -159,11 +167,14 @@ def entorno(monkeypatch, registro_semilla):
     monkeypatch.setattr(politica, "_bloqueo_detectar_insistencias_senado", lambda r: None)
     monkeypatch.setattr(politica, "_corte_actas_diputados", lambda r: "2026-06-24")
     monkeypatch.setattr(politica, "_sesiones_diputados_registros", lambda: [
+        {"id": "0", "fecha": "2026-06-24", "en_minoria": False, "titulo": "ancla",
+         "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=0"},
         {"id": "1", "fecha": "2026-09-09", "en_minoria": False, "titulo": "t",
          "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=1"}])
+    monkeypatch.setattr(politica, "_texto_diario_taquigrafico", lambda url: DIARIO_COMPLETO)
 
     class R:
-        text = "html"
+        text = HTML_SESION_REALIZADA
         def raise_for_status(self): pass
     monkeypatch.setattr(politica.requests, "get", lambda *a, **k: R())
     return guardados
@@ -187,9 +198,12 @@ def test_sin_actas_el_indicador_igual_se_calcula_y_cuenta_el_dnu_nuevo(
     assert r["valor"] == base["valor"] + 1
     assert r["caidas_12m"] == base["caidas_12m"]          # sin acta no se inventa una caída
     assert r["provisorio"] is True and r["provisorio_n"] == 1
+    assert r["provisorio_n"] == r["valor"] - base["valor"]       # normas únicas, como valor
+    assert "temario" in r["fuente"] and "taquigr" in r["fuente"]
     assert "999/2026" in r["detalle_txt"] and "Provisorio" in r["detalle_txt"]
     assert "desafío PROVISORIO" in capsys.readouterr().out
     # el registro en disco no recibe el dato provisorio
+    assert len(entorno) >= 1      # hubo al menos un guardado: la aserción no es vacua
     for guardado in entorno:
         assert "provisorio_sin_acta" not in str(guardado)
 
@@ -258,3 +272,83 @@ def test_compuerta_sin_bloqueo_usa_el_camino_sin_actas_solo_con_registro_al_dia(
     monkeypatch.setattr(politica, "fetch_desafios_legislativos_sin_actas", lambda: {"v": 1})
     assert politica.resolver_desafios_legislativos(None, True) == {"v": 1}
     assert politica.resolver_desafios_legislativos(None, False) is None
+
+
+# ── 5. Hallazgos de Codex sobre el #67 ───────────────────────────────────────
+
+def test_item_del_temario_en_sesion_sin_version_taquigrafica_no_cuenta(monkeypatch, entorno):
+    # P1: el temario existe antes de la sesión; sin diario no hay prueba de que se votó
+    _hoy(monkeypatch, date(2026, 10, 10))
+    base = politica.fetch_desafios_legislativos()
+
+    class R:
+        text = HTML_SESION_SIN_DIARIO
+        def raise_for_status(self): pass
+    monkeypatch.setattr(politica.requests, "get", lambda *a, **k: R())
+    monkeypatch.setattr(politica, "_temario_pdf_desde_sesion_html", lambda h: TEMARIO_DNU_NUEVO)
+    r = politica.fetch_desafios_legislativos_sin_actas()
+    assert r["valor"] == base["valor"] and r["provisorio_n"] == 0
+    assert "sin versión taquigráfica" in r["detalle_txt"]     # no afirma "no hubo nada"
+    assert "ninguna sesión" not in r["detalle_txt"]
+
+
+def test_item_agendado_pero_no_tratado_en_el_diario_no_cuenta(monkeypatch, entorno):
+    # P1: el caso ley 27.790 (20-ago-2025): figura en el temario, la cámara nunca la trató
+    _hoy(monkeypatch, date(2026, 10, 10))
+    base = politica.fetch_desafios_legislativos()
+    monkeypatch.setattr(politica, "_temario_pdf_desde_sesion_html", lambda h: TEMARIO_DNU_NUEVO)
+    monkeypatch.setattr(politica, "_texto_diario_taquigrafico",
+                        lambda url: "se trató otra cosa, el decreto 70/2023 y la ley 27.793")
+    r = politica.fetch_desafios_legislativos_sin_actas()
+    assert r["valor"] == base["valor"] and r["provisorio_n"] == 0
+    # control positivo: con el decreto en el diario, el mismo temario sí cuenta
+    monkeypatch.setattr(politica, "_texto_diario_taquigrafico",
+                        lambda url: "se trató el decreto 999/26")
+    assert politica.fetch_desafios_legislativos_sin_actas()["provisorio_n"] == 1
+
+
+def test_diario_ilegible_no_acredita_el_tramo(monkeypatch, entorno):
+    monkeypatch.setattr(politica, "_temario_pdf_desde_sesion_html", lambda h: TEMARIO_DNU_NUEVO)
+
+    def cae(url):
+        raise ConnectionError("diario caído")
+    monkeypatch.setattr(politica, "_texto_diario_taquigrafico", cae)
+    assert politica.fetch_desafios_legislativos_sin_actas() is None
+
+
+def test_indice_parcial_sin_la_sesion_del_corte_devuelve_none(monkeypatch, entorno, capsys):
+    # P1: un índice truncado que no llega al corte no prueba que el tramo esté vacío
+    monkeypatch.setattr(politica, "_sesiones_diputados_registros", lambda: [
+        {"id": "9", "fecha": "2026-01-15", "en_minoria": False, "titulo": "vieja",
+         "url": "https://www.hcdn.gob.ar/sesiones/sesion.html?id=9"}])
+    assert politica.fetch_desafios_legislativos_sin_actas() is None
+    assert "tramo sin actas no acreditado" in capsys.readouterr().out
+
+
+def test_indice_con_la_sesion_del_corte_si_acredita(monkeypatch, entorno):
+    # control positivo del anterior: el índice del fixture trae la sesión del corte
+    _hoy(monkeypatch, date(2026, 10, 10))
+    monkeypatch.setattr(politica, "_temario_pdf_desde_sesion_html",
+                        lambda h: "TEMARIO\n1-D-2026 DE LEY. OTRA COSA.")
+    assert politica.fetch_desafios_legislativos_sin_actas() is not None
+
+
+def test_misma_norma_en_dos_temarios_cuenta_una_vez(monkeypatch, entorno):
+    # P2: provisorio_n cuenta normas únicas, como `valor`
+    _hoy(monkeypatch, date(2026, 10, 10))
+    base = politica.fetch_desafios_legislativos()
+    monkeypatch.setattr(politica, "_temario_pdf_desde_sesion_html", lambda h: TEMARIO_DNU_NUEVO)
+    r = politica.fetch_desafios_legislativos_sin_actas()   # sesiones del 24-jun y 9-sep
+    assert r["provisorio_n"] == 1 and r["valor"] == base["valor"] + 1
+    assert len(r["provisorio_normas"]) == 1
+
+
+def test_norma_ya_desafiada_antes_no_es_provisoria(monkeypatch, entorno, registro_semilla):
+    _hoy(monkeypatch, date(2026, 10, 10))
+    reg = copy.deepcopy(registro_semilla)
+    reg["decretos"].append({"clave": "999/2026", "etiqueta": "DNU 999/2026", "tipo": "DNU",
+                            "rechazos": [{"fecha": "2026-07-01", "camara": "Senado"}]})
+    monkeypatch.setattr(politica, "_cargar_derrotas_registro", lambda: copy.deepcopy(reg))
+    monkeypatch.setattr(politica, "_temario_pdf_desde_sesion_html", lambda h: TEMARIO_DNU_NUEVO)
+    r = politica.fetch_desafios_legislativos_sin_actas()
+    assert r["provisorio_n"] == 0 and r["provisorio_normas"] == []
