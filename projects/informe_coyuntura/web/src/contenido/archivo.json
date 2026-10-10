@@ -2,7 +2,7 @@
  "meses": [
   {
    "mes": "2026-09",
-   "corrida": "5d8ac6b825",
+   "corrida": "793e4d6971",
    "generado": "2026-09-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.6,
@@ -29,11 +29,11 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 3940
+   "peso_kb": 3941
   },
   {
    "mes": "2026-08",
-   "corrida": "5d8ac6b825",
+   "corrida": "793e4d6971",
    "generado": "2026-08-31T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.6,
@@ -60,11 +60,11 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 3912
+   "peso_kb": 3913
   },
   {
    "mes": "2026-07",
-   "corrida": "5d8ac6b825",
+   "corrida": "793e4d6971",
    "generado": "2026-07-31T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.7,
@@ -91,11 +91,11 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 3886
+   "peso_kb": 3887
   },
   {
    "mes": "2026-06",
-   "corrida": "5d8ac6b825",
+   "corrida": "793e4d6971",
    "generado": "2026-06-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.6,
@@ -122,7 +122,7 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 3844
+   "peso_kb": 3846
   }
  ]
 }

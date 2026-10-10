@@ -127,9 +127,16 @@ hubo quórum, con cuántos presentes y quién la pidió. O cambiar qué se cuent
 sesiones convocadas al recinto, o sumar al Senado. Lo primero cambia la ficha; lo segundo
 cambia el indicador y necesita un ADR.
 
-## 7. Listado de fuentes a revisar, para buscarles alternativa
+## 7. ✅ Listado de fuentes a revisar, para buscarles alternativa (relevado el 10-oct)
 
-**En pausa, no lo toma Juan** (7-oct).
+**Hecho el 10-oct**: el barrido completo de los 67 indicadores, cruzado con 46 corridas
+nocturnas en BigQuery y 33 logs de Actions, y las alternativas de cada fuente floja están en
+`docs/pendientes-datos.md` §1 (que reemplaza la lista vencida del 30-jun). Lo que surgió:
+en seis de las trece la fuente anda y lo que falla es el colector; y `desafios_legislativos`
+no se actualiza desde CI desde el 31-jul (sólo con corridas manuales), justo antes de la
+sesión del 15-oct por el DNU 70/2023. Falta decidir qué se arregla primero.
+
+Lo que sigue es el planteo original del 6-oct.
 
 Armar la lista de las fuentes flojas (carga manual, datos atrasados, que se caen) y
 buscarle a cada una una alternativa.
