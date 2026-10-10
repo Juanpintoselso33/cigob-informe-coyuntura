@@ -54,6 +54,7 @@ def test_no_vuelve_a_bajar_las_leyes_ya_verificadas(rigi):
     assert politica.fetch_adhesion_reformas_provincial()["n_provincias"] == 3
     pedidos.clear()
     assert politica.fetch_adhesion_reformas_provincial()["n_provincias"] == 3
+    assert pedidos == [politica.MAGYP_RIGI_URL]  # sigue consultando la fuente viva
     assert "https://test/sf" not in pedidos and "https://test/caba" not in pedidos
 
 
@@ -91,6 +92,34 @@ def test_cambiar_los_textos_a_comprobar_invalida_lo_guardado(rigi):
     assert politica.fetch_adhesion_reformas_provincial() is None  # re-verifica y no confirma
 
 
+def test_cambiar_los_textos_revalida_contra_la_fuente_y_tiene_exito(rigi):
+    pedidos, _, cont = rigi
+    politica.fetch_adhesion_reformas_provincial()
+    reg = json.loads(politica.ADHESION_COMPLEMENTARIAS_PATH.read_text())
+    reg["CABA"]["comprobar_textos"] = ["texto nuevo"]
+    politica.ADHESION_COMPLEMENTARIAS_PATH.write_text(json.dumps(reg))
+    cont["https://test/caba"] = "<p>LEY 6949 con texto nuevo</p>"
+    pedidos.clear()
+    r = politica.fetch_adhesion_reformas_provincial()
+    assert r is not None and "CABA" in r["jurisdicciones"]
+    assert "https://test/caba" in pedidos  # revalidó, no cayó por la firma
+    guardado = json.loads(politica.ADHESION_VERIFICACION_PATH.read_text())
+    assert guardado["CABA"]["textos_confirmados"] == 1
+
+
+@pytest.mark.parametrize("sello", ["2026-10-11", "2099-01-01", "ayer", None, 5, ""])
+def test_sello_futuro_o_malformado_no_es_fresco(rigi, sello):
+    pedidos, _, _ = rigi
+    politica.fetch_adhesion_reformas_provincial()
+    g = json.loads(politica.ADHESION_VERIFICACION_PATH.read_text())
+    g["CABA"]["verificado_en"] = sello
+    politica.ADHESION_VERIFICACION_PATH.write_text(json.dumps(g))
+    pedidos.clear()
+    r = politica.fetch_adhesion_reformas_provincial()
+    assert r is not None and "CABA" in r["jurisdicciones"]
+    assert "https://test/caba" in pedidos  # vencido: se vuelve a verificar
+
+
 # ── 2. producción legislativa: una fila sin número no tumba el indicador ────
 
 def _filas():
@@ -126,6 +155,14 @@ def test_si_todas_las_filas_son_invalidas_sigue_fallando(sin_cotejo):
         politica._leyes_fechadas([_filas()[2]])
 
 
+@pytest.mark.parametrize("ley", ["S/N", "27.001", "27001a", "-5"])
+def test_ley_presente_pero_malformada_sigue_levantando_error(sin_cotejo, ley):
+    filas = _filas()[:2] + [{"LEY": ley, "SANCION_DEFINITIVA": "2026-09-02",
+                             "EXPEDIENTE_INICIAL": "", "PROYECTO_ID": ""}]
+    with pytest.raises(ValueError):
+        politica._leyes_fechadas(filas)
+
+
 # ── 3. cobertura judicial: desactualizado = conciliación vencida ────────────
 
 def _card(monkeypatch, dias_atras):
@@ -145,4 +182,10 @@ def _card(monkeypatch, dias_atras):
 def test_desactualizado_es_vencimiento_no_paso_de_un_dia(monkeypatch, dias, esperado):
     from config import dias_sin_fetch_tolerados
     assert dias_sin_fetch_tolerados("cobertura_judicial") == 14
+    assert _card(monkeypatch, dias)["desactualizado"] is esperado
+
+
+@pytest.mark.parametrize("dias,esperado", [(3, False), (4, True), (14, True)])
+def test_el_tope_sale_del_gate_no_esta_cableado(monkeypatch, dias, esperado):
+    monkeypatch.setattr(politica, "_tope_judicial", lambda: 3)
     assert _card(monkeypatch, dias)["desactualizado"] is esperado

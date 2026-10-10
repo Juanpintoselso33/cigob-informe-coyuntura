@@ -2819,11 +2819,11 @@ def _leyes_fechadas(filas: list[dict]) -> list[tuple[str, date]]:
     for fila in filas:
         ley = str(fila.get("LEY") or "").strip()
         refs = referencias(fila)
-        if not ley.isdigit() and not (
-                not ley and refs and (any(r in aliases for r in refs)
+        if not ley and not (refs and (any(r in aliases for r in refs)
                                       or fila.get("sancion_definitiva_verificada") is True)):
-            # CKAN publica la sanción antes de numerarla (ADR-0308): una fila así no
-            # tumba el indicador; se deja afuera y se dice cuál es.
+            # CKAN publica la sanción antes de numerarla (ADR-0308): SÓLO la fila sin
+            # número (vacía) se deja afuera. Una LEY presente pero no numérica
+            # ("S/N", "27.001") es dato corrupto y cae al error de abajo.
             print(f"  [WARN] produccion_legislativa: fila sin ley ni expediente verificado, "
                   f"excluida (sanción {str(fila.get('SANCION_DEFINITIVA', ''))[:10]}, "
                   f"expediente {fila.get('EXPEDIENTE_INICIAL')!r}, proyecto {fila.get('PROYECTO_ID')!r})")
@@ -4288,6 +4288,15 @@ def _firma_complementaria(entrada: dict) -> str:
     return hashlib.sha256(base.encode("utf-8")).hexdigest()
 
 
+def _verificacion_fresca(sello) -> bool:
+    """Un sello futuro o malformado cuenta como vencido: se vuelve a verificar."""
+    try:
+        dias = (date.today() - date.fromisoformat(sello)).days
+    except (TypeError, ValueError):
+        return False
+    return 0 <= dias < ADHESION_REVERIFICAR_DIAS
+
+
 def _rigi_complementarias_verificadas() -> set[str]:
     """Adhesiones omitidas por MAGyP, comprobadas en sus leyes (ADR-0304).
 
@@ -4316,8 +4325,7 @@ def _rigi_complementarias_verificadas() -> set[str]:
         previa = guardadas.get(nombre)
         if not (isinstance(previa, dict) and previa.get("firma") == firma):
             previa = None  # registro editado: lo guardado ya no vale
-        if previa and (date.today() - date.fromisoformat(previa["verificado_en"])
-                       ).days < ADHESION_REVERIFICAR_DIAS:
+        if previa and _verificacion_fresca(previa.get("verificado_en")):
             provincias.add(nombre)
             continue
         try:
@@ -4327,7 +4335,7 @@ def _rigi_complementarias_verificadas() -> set[str]:
             if not previa:
                 raise
             print(f"  [WARN] adhesion_reformas_provincial: no se pudo re-verificar {nombre} "
-                  f"({type(e).__name__}); se usa la verificación del {previa['verificado_en']}")
+                  f"({type(e).__name__}); se usa la verificación del {previa.get('verificado_en')}")
             provincias.add(nombre)
             continue
         original = texto(BeautifulSoup(r.text, "html.parser").get_text(" ", strip=True))
