@@ -2387,10 +2387,10 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "CONTRAT.AR + Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones)",
       operacion: "Tasa de adjudicación de la Red Federal de Concesiones, en kilómetros: km bajo concesión adjudicada sobre km totales del plan",
       url: "https://www.argentina.gob.ar/transporte/vialidad-nacional/red-federal-de-concesiones",
-      acceso: "Automático: lee el estado de cada proceso en CONTRAT.AR y el kilometraje en Vialidad. Si el portal no declara adjudicación, busca su resolución en el Boletín Oficial mediante InfoLeg; un acto publicado prevalece sobre el estado atrasado del portal.",
+      acceso: "Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal.",
     },
     transformaciones: [
-      "Una etapa cuenta con el 100% de sus kilómetros cuando su proceso figura adjudicado o existe una resolución de adjudicación publicada para ese proceso.",
+      "Una etapa cuenta con el 100% de sus kilómetros cuando existe una resolución de adjudicación publicada para su proceso (o, para un proceso nuevo todavía no registrado, cuando CONTRAT.AR lo declara adjudicado).",
       "La serie histórica es escalonada, por hitos de adjudicación fechados con su norma.",
     ],
     anclas: {
@@ -2418,6 +2418,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Serie escalonada por hitos fechados. Puntaje interpolado entre anclas." },
       { fecha: "2026-08-25", cambio: "Una etapa cuenta como adjudicada si CONTRAT.AR lo declara o si hay una resolución publicada que adjudique su proceso. CONTRAT.AR se queda viejo: al 25 de agosto de 2026 mostraba «Disponible Para Adjudicar» la Etapa II-B, adjudicada por Resolución 1149/2026 el 28 de julio, y la Etapa III, adjudicada por Resolución 1379/2026 el 24 de agosto. El indicador pasa de 28,7% a 100%. La card publica el inventario por etapa con los km, la fuente del estado y la resolución que lo respalda.", adr: "0244" },
       { fecha: "2026-08-29", cambio: "El valor de respaldo escrito a mano dejó de tener prioridad sobre el último valor que sí salió de la fuente. Con CONTRAT.AR caído, la card publicaba 28,7% —la foto del 2 de julio, con dos etapas sin adjudicar— teniendo el 100% en el cache de la noche anterior. Una fuente caída ahora envejece el número, no lo hace retroceder. El respaldo se actualizó a 100% con las cuatro resoluciones.", adr: "0269" },
+      { fecha: "2026-10-10", cambio: "El estado de cada etapa pasa a salir de las resoluciones del Boletín Oficial registradas, y CONTRAT.AR queda como detector de procesos nuevos que no frena el indicador. Desde los servidores de la publicación el portal no respondía en 15 de 33 noches y la card quedaba desactualizada. No cambia lo que mide ni su valor." },
     ],
   },
 

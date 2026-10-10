@@ -2670,35 +2670,80 @@ def _fecha_infoleg_rfc(texto: str) -> str | None:
     return f"{m.group(3)}-{mes:02d}-{int(m.group(1)):02d}" if mes else None
 
 
+CONCESIONES_FECHAS_PATH = PROJECT_DIR / "data" / "gestion" / "concesiones_fechas.json"
+
+
+def _etapas_adjudicadas_store() -> dict:
+    """{etapa: {km, proceso, resolucion, fecha_pub, fecha, fuente}} del store
+    fechado: las resoluciones del Boletín Oficial ya registradas."""
+    store = json.loads(CONCESIONES_FECHAS_PATH.read_text(encoding="utf-8-sig"))
+    return store["etapas"]
+
+
 def fetch_concesiones_infraestructura() -> dict | None:
     """
     Tasa de adjudicación de la Red Federal de Concesiones, en KM (doc 260702:
-    'km bajo concesión adjudicada / km totales del proceso'): el kilometraje por
-    etapa sale de la página oficial de la RFC y el estado de cada proceso, de
-    **dos** fuentes que se complementan (ADR-0244):
+    'km bajo concesión adjudicada / km totales del proceso').
 
-    - **CONTRAT.AR**, que informa el estado del expediente;
-    - **el Boletín Oficial vía InfoLeg**, que publica la resolución que adjudica.
+    **La fuente del estado es el store fechado** (`data/gestion/concesiones_fechas.json`:
+    una resolución del Boletín Oficial por etapa) y el kilometraje, la página
+    oficial de la RFC (con el store de respaldo). El acto jurídico manda sobre el
+    portal (ADR-0244).
 
-    Hacen falta las dos porque CONTRAT.AR se queda viejo: al 25-ago-2026 seguía
-    mostrando «Disponible Para Adjudicar» dos etapas ya adjudicadas por
-    resolución —la II-B desde el 28-jul y la III desde el 24-ago—, y el
-    indicador publicaba 28,7% cuando el plan estaba entero adjudicado. El acto
-    jurídico manda sobre el estado del portal.
+    **CONTRAT.AR es un detector NO fatal**, como el de Diagnóstico Político en
+    piquetes: si responde, se usa para descubrir procesos que el store no
+    conoce (una Etapa IV) y avisar; si da timeout —15 de 33 noches desde los
+    runners de GitHub— se loguea un [WARN] y el indicador sale igual, fresco.
+    Antes el orden era el inverso y un timeout dejaba el indicador entero en
+    cache (16 de 46 noches desactualizado).
+
+    Para un proceso que el store NO conoce vale la regla de siempre: cuenta si
+    CONTRAT.AR lo declara Adjudicado o si InfoLeg tiene la resolución; en ambos
+    casos se avisa para cargarlo en el store.
     """
     try:
-        procesos = _contratar_procesos_rfc()
-        km = _rfc_km_por_etapa()
+        store = _etapas_adjudicadas_store()
+        km = {e: float(d["km"]) for e, d in store.items()}
+        try:
+            km.update(_rfc_km_por_etapa())
+        except Exception as e:                              # km de respaldo: el store
+            print(f"  [WARN] concesiones: página RFC no respondió ({e}); "
+                  f"se usan los km del store")
         km_total = sum(km.values())
 
         inventario, adjudicadas, detalle_p = [], set(), []
+        for etapa, d in store.items():
+            adjudicadas.add(etapa)
+            inventario.append({
+                "etapa": etapa, "proceso": d.get("proceso"), "km": km.get(etapa),
+                "adjudicado": True, "estado_contratar": None,
+                "fuente_estado": "Boletín Oficial",
+                "resolucion": d.get("resolucion"),
+                "fecha_adjudicacion": d.get("fecha_pub") or d.get("fecha"),
+            })
+            detalle_p.append(f"{etapa}: adjudicada por {d.get('resolucion') or 'resolución'}"
+                             f" ({d.get('fecha_pub') or d.get('fecha')})")
+
+        # ── Detector (no fatal): CONTRAT.AR ───────────────────────────────────
+        procesos, atrasadas, nuevos = [], [], []
+        advertencia = ""
+        try:
+            procesos = _contratar_procesos_rfc()
+        except Exception as e:
+            advertencia = ("No se pudo contrastar con CONTRAT.AR (sin respuesta); "
+                           "el estado sale de las resoluciones del Boletín Oficial registradas.")
+            print(f"  [WARN] concesiones: CONTRAT.AR no respondió ({e}); "
+                  f"el indicador sale del store fechado")
         for proceso, nombre, estado in procesos:
             etapa = _etapa_de_proceso(nombre)
+            if etapa in store:
+                if not _esta_adjudicado(estado):
+                    atrasadas.append(etapa)     # el portal se queda viejo (ADR-0244)
+                continue
+            # proceso que el store no conoce
             por_portal = _esta_adjudicado(estado)
             resolucion = None
             if not por_portal:
-                # sólo se consulta el Boletín cuando el portal NO lo declara:
-                # si ya dice Adjudicado no hay nada que dirimir
                 try:
                     resolucion = _adjudicacion_publicada(proceso)
                 except Exception as e:                      # la RFC no depende de InfoLeg
@@ -2706,49 +2751,48 @@ def fetch_concesiones_infraestructura() -> dict | None:
             adjudicado = por_portal or resolucion is not None
             if etapa and adjudicado and etapa in km:
                 adjudicadas.add(etapa)
+            nuevos.append(f"{proceso} (Etapa {etapa or '?'}, «{estado}»)")
             inventario.append({
-                "etapa": etapa, "proceso": proceso,
-                "km": km.get(etapa),
-                "adjudicado": adjudicado,
-                "estado_contratar": estado,
+                "etapa": etapa, "proceso": proceso, "km": km.get(etapa),
+                "adjudicado": adjudicado, "estado_contratar": estado,
                 "fuente_estado": "CONTRAT.AR" if por_portal
                                  else ("Boletín Oficial" if resolucion else "sin adjudicar"),
                 "resolucion": (resolucion or {}).get("norma"),
                 "fecha_adjudicacion": (resolucion or {}).get("fecha_pub"),
             })
-            if adjudicado and resolucion:
-                detalle_p.append(f"{etapa or proceso}: adjudicada por "
-                                 f"{resolucion['norma']} ({resolucion['fecha_pub']})")
-            elif adjudicado:
-                detalle_p.append(f"{etapa or proceso}: adjudicada (CONTRAT.AR)")
-            else:
-                detalle_p.append(f"{etapa or proceso}: {estado}")
+            detalle_p.append(f"{etapa or proceso}: "
+                             f"{'adjudicada' if adjudicado else estado}")
+        if nuevos:
+            advertencia = ("CONTRAT.AR lista procesos que el store no registra: "
+                           + "; ".join(nuevos)
+                           + ". Revisar y cargar en data/gestion/concesiones_fechas.json.")
+            print(f"  [AVISO] concesiones: {advertencia}")
+        elif atrasadas:
+            advertencia = (f"CONTRAT.AR todavía no refleja la adjudicación de "
+                           f"{', '.join(sorted(set(atrasadas)))}, que constan en el Boletín Oficial")
 
-        km_adj = sum(km[e] for e in adjudicadas)
+        km_adj = sum(km[e] for e in adjudicadas if e in km)
         avance = round(100.0 * km_adj / km_total, 1)
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
         etapa_key = {"I": "etapa_i", "II": "etapa_ii", "II-B": "etapa_ii_b", "III": "etapa_iii"}
-        por_boletin = [i for i in inventario if i["fuente_estado"] == "Boletín Oficial"]
-        nota = ""
-        if por_boletin:
-            etapas = ", ".join(sorted(str(i["etapa"]) for i in por_boletin))
-            nota = (f" · CONTRAT.AR todavía no refleja la adjudicación de "
-                    f"{etapas}, que constan en el Boletín Oficial")
+        publico = advertencia if (nuevos or atrasadas) else ""
         return {
             "valor":          avance,
             "unidad":         "% de km adjudicados / km del plan (Red Federal de Concesiones)",
-            "fuente":         "CONTRAT.AR (UOC 504) + Boletín Oficial (InfoLeg) + página oficial RFC",
+            "fuente":         "Boletín Oficial (resoluciones de adjudicación) + página oficial RFC; CONTRAT.AR (UOC 504) como detector",
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,
             "km_adjudicados": round(km_adj),
             "km_totales":     round(km_total),
-            "procesos":       len(procesos),
+            "procesos":       len(procesos) if procesos else len(inventario),
             "inventario_etapas": inventario,
+            "advertencia_fuente": advertencia,
             # % adjudicado por etapa → gráfico de barras del modal
             "componentes":    {etapa_key.get(e, e): (100.0 if e in adjudicadas else 0.0)
                                for e in km},
             "detalle_txt": (f"{miles(km_adj)} de {miles(km_total)} km adjudicados · "
-                            + " · ".join(sorted(set(detalle_p))) + nota),
+                            + " · ".join(sorted(set(detalle_p)))
+                            + (f" · {publico}" if publico else "")),
         }
     except Exception as e:
         _warn("concesiones_infraestructura", e)

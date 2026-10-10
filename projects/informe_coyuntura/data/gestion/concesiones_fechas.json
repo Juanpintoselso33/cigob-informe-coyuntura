@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "descripcion": "Hitos de adjudicación de la Red Federal de Concesiones (RFC) para reconstruir la serie del indicador concesiones_infraestructura como función escalonada (ADR-0012/0016). Sembrado con las fechas oficiales verificadas 2026-07-03; descargar_series.fetch_concesiones_serie agrega automáticamente las etapas nuevas cuando CONTRAT.AR las muestra ADJUDICADO (con el mes corriente) y refresca los km desde la página oficial de la RFC.",
+    "descripcion": "Hitos de adjudicación de la Red Federal de Concesiones (RFC) para reconstruir la serie del indicador concesiones_infraestructura como función escalonada (ADR-0012/0016). Sembrado con las fechas oficiales verificadas 2026-07-03; descargar_series.fetch_concesiones_serie agrega automáticamente las etapas nuevas cuando CONTRAT.AR las muestra ADJUDICADO (con el mes corriente) y refresca los km desde la página oficial de la RFC. Desde el 10-oct-2026 este store es la FUENTE del estado de la card concesiones_infraestructura (no CONTRAT.AR, que desde los runners de GitHub da timeout ~1 de cada 2 noches): cada etapa trae proceso, resolución y fecha_pub; CONTRAT.AR sólo detecta procesos nuevos y avisa.",
     "regla": "% del mes = 100 × Σ km de etapas con fecha ≤ mes / km_totales"
   },
   "km_totales": 9133,
@@ -8,22 +8,34 @@
     "I": {
       "fecha": "2025-11",
       "km": 741.71,
-      "fuente": "RESOL-2025-80-ST#MEC, BO 19-nov-2025 (boletinoficial.gob.ar/detalleAviso/primera/334748/20251119) — Tramos Oriental (Autovía Construcciones y Servicios) y Conexión (Obring-Rovial-Edeca-Pitón-Pietroboni). La vinculación del documento en CONTRAT.AR fue 05/01/2026; manda el BO."
+      "fuente": "RESOL-2025-80-ST#MEC, BO 19-nov-2025 (boletinoficial.gob.ar/detalleAviso/primera/334748/20251119) — Tramos Oriental (Autovía Construcciones y Servicios) y Conexión (Obring-Rovial-Edeca-Pitón-Pietroboni). La vinculación del documento en CONTRAT.AR fue 05/01/2026; manda el BO.",
+      "proceso": "504-0007-LPU25",
+      "resolucion": "Resolución 80 / 2025",
+      "fecha_pub": "2025-11-19"
     },
     "II": {
       "fecha": "2026-05",
       "km": 1871.82,
-      "fuente": "Resolución 706/2026 MEC (BO ~15/05/2026) — Etapa II-A: Tramo Sur-Atlántico-Acceso Sur (Concret Nor-Marcalba-Pose-Coarco) y Tramo Pampa (Construcciones Electromecánicas del Oeste)"
+      "fuente": "Resolución 706/2026 MEC (BO ~15/05/2026) — Etapa II-A: Tramo Sur-Atlántico-Acceso Sur (Concret Nor-Marcalba-Pose-Coarco) y Tramo Pampa (Construcciones Electromecánicas del Oeste)",
+      "proceso": "504-0013-LPU25",
+      "resolucion": "Resolución 706 / 2026",
+      "fecha_pub": null
     },
     "III": {
       "fecha": "2026-08",
       "km": 3962.49,
-      "fuente": "Resolución 1379 / 2026, BO 2026-08-24 — 504-0001-LPU26 (detectado por el Boletín; CONTRAT.AR informaba «Disponible Para Adjudicar»)"
+      "fuente": "Resolución 1379 / 2026, BO 2026-08-24 — 504-0001-LPU26 (detectado por el Boletín; CONTRAT.AR informaba «Disponible Para Adjudicar»)",
+      "proceso": "504-0001-LPU26",
+      "resolucion": "Resolución 1379 / 2026",
+      "fecha_pub": "2026-08-24"
     },
     "II-B": {
       "fecha": "2026-07",
       "km": 2557.11,
-      "fuente": "Resolución 1149 / 2026, BO 2026-07-28 — 504-0015-LPU25 (detectado por el Boletín; CONTRAT.AR informaba «Disponible Para Adjudicar»)"
+      "fuente": "Resolución 1149 / 2026, BO 2026-07-28 — 504-0015-LPU25 (detectado por el Boletín; CONTRAT.AR informaba «Disponible Para Adjudicar»)",
+      "proceso": "504-0015-LPU25",
+      "resolucion": "Resolución 1149 / 2026",
+      "fecha_pub": "2026-07-28"
     }
   },
   "_corregido_2026-07-19": "Se eliminó la etapa II-B (2557,11 km, fecha 2026-07). La detección automática la había dado por adjudicada porque el chequeo de estado usaba 'ADJUDICADO' in estado, y CONTRAT.AR informa 'Preadjudicado' — que contiene la palabra. La etapa está PREADJUDICADA, no adjudicada. Volverá a entrar sola cuando el portal la muestre adjudicada de verdad (ADR-0087)."
