@@ -6,6 +6,7 @@ import Footer from "../components/Footer.astro";
 import IndicadorTile from "../components/IndicadorTile.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
 import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
+import { DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import {
   informe, CINTURONES, indicadoresOrdenados, tensionDeDimension,
   fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel, coloresEnIndice,
@@ -167,6 +168,15 @@ const colorDeValor = (v: number) => {
 const robColores = rob ? [...new Set([colorDeValor(rob.p95), colorDeValor(rob.p05)])] : [];
 const robLecturas = robColores.map(c => (c && LECTURA_SEMAFORO[c as keyof typeof LECTURA_SEMAFORO])?.toLowerCase() ?? c);
 const robEstable = robColores.length === 1;
+// Lectura del tooltip de cada card de dimensión (10-oct-2026).
+const tipLectura: Record<string, string> = Object.fromEntries(
+  Object.entries(indice?.data.dimensiones ?? {}).map(([dkey, dim]) => {
+    const t = dim.semaforo?.tension ?? tensionDeDimension(dim.puntaje, !!indice?.base100);
+    const lectura = LECTURA_SEMAFORO[semaforoDe(dim) as keyof typeof LECTURA_SEMAFORO];
+    const extra = t >= 10 ? ": queda por debajo del último corte de la escala, por eso la barra se ve llena."
+      : t <= 0 ? ": queda por encima del mejor corte de la escala." : ".";
+    return [dkey, lectura + extra];
+  }));
 const robAmplitud = rob ? Math.round((rob.p95 - rob.p05) * 10) / 10 : null;
 
 // Validación externa (una por cinturón con paramétrica): co-movimiento del
@@ -322,6 +332,17 @@ const robChartData = rob?.hist && indice ? {
                 titulo={dim.nombre}
                 ocultarTitulo
               />
+              {/* Tooltip al pasar el mouse (pedido de Juan, 10-oct-2026): qué mide la
+                  dimensión y cómo leerla, sin sumar texto fijo a la card. */}
+              <span class="cg-dimcard-tip" aria-hidden="true">
+                <span class="cg-dimcard-tip-head">
+                  {dim.nombre} · <strong>{num(dim.puntaje)}</strong>{indice.base100 ? " (100 = fines de 2023)" : "/100"}
+                  · pesa {Math.round(dim.peso * 100)}% · {Object.keys(dim.indicadores ?? {}).length} {Object.keys(dim.indicadores ?? {}).length === 1 ? "indicador" : "indicadores"}
+                </span>
+                {DIM_DESCRIPCIONES[dkey] && <span class="cg-dimcard-tip-desc">{DIM_DESCRIPCIONES[dkey]}</span>}
+                <span class="cg-dimcard-tip-desc">{tipLectura[dkey]}</span>
+                <span class="cg-dimcard-tip-cta">Tocá para ver la composición completa</span>
+              </span>
             </div>
           ))}
         </div>
@@ -614,6 +635,23 @@ const robChartData = rob?.hist && indice ? {
   )}
   <script>
     import { track } from "../lib/analytics.ts";
+    // Huella del tooltip de dimensión: una vez por dimensión y página, y sólo si el
+    // mouse se quedó medio segundo (pasar de largo no es leerlo).
+    {
+      const vistos = new Set<string>();
+      document.querySelectorAll<HTMLElement>(".cg-itcm-dim").forEach(card => {
+        let t: ReturnType<typeof setTimeout> | undefined;
+        card.addEventListener("mouseenter", () => {
+          const dim = card.dataset.dimension || "";
+          if (vistos.has(dim)) return;
+          t = setTimeout(() => {
+            vistos.add(dim);
+            track("ver_dimension_tooltip", { cinturon: card.dataset.cinturon, dimension: dim });
+          }, 500);
+        });
+        card.addEventListener("mouseleave", () => clearTimeout(t));
+      });
+    }
 
     // El slug sale de la URL y no del frontmatter: este <script> lo bundlea
     // Astro, así que no ve las props del componente. La ruta es /macro/,

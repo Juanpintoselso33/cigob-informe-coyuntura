@@ -1705,3 +1705,23 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-como-se-calcula-h { margin: 0 0 8px; font-size: 15px; font-weight: 800; color: var(--dark); }
 .cg-como-se-calcula p { margin: 0 0 10px; font-size: 14.5px; line-height: 1.65; color: var(--dark); text-align: left; }
 .cg-como-se-calcula p:last-child { margin-bottom: 0; color: var(--muted); font-size: 13.5px; }
+
+/* Tooltip de las cards de dimensión del cinturón (10-oct-2026): mismo estilo que
+   el de los tramos del genoma, debajo de la card para no tapar el título. */
+.cg-itcm-dim { position: relative; }
+.cg-dimcard-tip {
+  position: absolute; left: 0; right: 0; top: calc(100% + 8px);
+  background: var(--paper); border: 1px solid var(--bd); border-radius: 8px;
+  box-shadow: var(--shadow-hover);
+  padding: 10px 12px; font-size: 12px; line-height: 1.5; color: var(--dark);
+  opacity: 0; pointer-events: none; transform: translateY(-3px);
+  transition: opacity .13s ease, transform .13s ease;
+  z-index: 30; text-align: left;
+}
+.cg-itcm-dim:hover .cg-dimcard-tip,
+.cg-itcm-dim:focus-visible .cg-dimcard-tip { opacity: 1; transform: translateY(0); }
+.cg-dimcard-tip-head { display: block; font-weight: 700; }
+.cg-dimcard-tip-head strong { font-family: var(--ff-dato); font-variant-numeric: tabular-nums; }
+.cg-dimcard-tip-desc { display: block; margin-top: 4px; color: var(--muted); font-size: 11.5px; }
+.cg-dimcard-tip-cta { display: block; margin-top: 6px; font-size: 10px; font-weight: 700; color: var(--teal-ink); text-transform: uppercase; letter-spacing: .05em; }
+@media (hover: none) { .cg-dimcard-tip { display: none; } }
