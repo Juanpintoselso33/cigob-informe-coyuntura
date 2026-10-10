@@ -398,7 +398,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Quincenal prevista (curaduría)", tipo: "Avance por etapas",
   },
   concesiones_infraestructura: {
-    que: "Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada proceso sale del sistema de contrataciones del Estado (CONTRAT.AR) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).",
+    que: "Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada etapa sale de las resoluciones de adjudicación del Boletín Oficial (el sistema de contrataciones del Estado, CONTRAT.AR, se usa para detectar procesos nuevos) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).",
     aporta: "Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su licitación figura Adjudicada en el sistema de contrataciones.",
     frecuencia: "Continua (sistema de contrataciones)", tipo: "Avance de reforma",
   },

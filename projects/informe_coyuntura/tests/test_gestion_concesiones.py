@@ -75,14 +75,12 @@ def test_la_suma_es_trazable_tramo_por_tramo(sin_red, datos):
 
 
 def test_cada_etapa_declara_de_donde_sale_su_estado(sin_red):
-    """Dos etapas por CONTRAT.AR y dos por el Boletín. Si el indicador no dijera
-    cuál es cuál, la discrepancia entre las dos fuentes sería invisible."""
+    """El estado sale del store fechado (resoluciones del Boletín), no del portal.
+    Las cuatro etapas citan el Boletín; CONTRAT.AR sólo aparece como dato aparte."""
     card = gestion.fetch_concesiones_infraestructura()
-    por_fuente = {}
-    for i in card["inventario_etapas"]:
-        por_fuente.setdefault(i["fuente_estado"], []).append(i["etapa"])
-    assert sorted(por_fuente["CONTRAT.AR"]) == ["I", "II"]
-    assert sorted(por_fuente["Boletín Oficial"]) == ["II-B", "III"]
+    assert {i["etapa"]: i["fuente_estado"] for i in card["inventario_etapas"]} == {
+        "I": "Boletín Oficial", "II": "Boletín Oficial",
+        "II-B": "Boletín Oficial", "III": "Boletín Oficial"}
 
 
 def test_las_adjudicadas_por_boletin_citan_su_resolucion(sin_red):
@@ -104,47 +102,80 @@ def test_la_card_avisa_que_el_portal_esta_atrasado(sin_red):
     assert "CONTRAT.AR todavía no refleja" in card["detalle_txt"]
 
 
-def test_sin_resolucion_publicada_una_etapa_no_cuenta(sin_red, datos, monkeypatch):
-    """La otra dirección: el Boletín SUMA etapas, no las regala.
-
-    Si InfoLeg no encuentra la resolución, la etapa vuelve a valer lo que diga
-    CONTRAT.AR — que para la III y la II-B es «Disponible Para Adjudicar»."""
-    monkeypatch.setattr(gestion, "_adjudicacion_publicada", lambda proc: None)
+def test_las_adjudicadas_por_boletin_citan_su_resolucion_incluso_las_viejas(sin_red):
     card = gestion.fetch_concesiones_infraestructura()
-    assert card["km_adjudicados"] == datos["esperado"]["km_adjudicados_erroneo"]
-    assert abs(card["valor"] - datos["esperado"]["valor_erroneo"]) < 0.2
+    res = {i["etapa"]: i["resolucion"] for i in card["inventario_etapas"]}
+    assert "80" in res["I"] and "706" in res["II"]
 
 
-def test_infoleg_caido_no_tumba_el_indicador(sin_red, datos, monkeypatch):
-    """La RFC no puede depender de que InfoLeg conteste: si falla, el indicador
-    informa lo que sabe —el estado del portal— en vez de no publicar nada."""
-    def _explota(proc):
-        raise RuntimeError("InfoLeg no responde")
+def test_contratar_caido_el_indicador_sale_fresco(sin_red, datos, monkeypatch, capsys):
+    """El caso de 15 de 33 noches: CONTRAT.AR da ConnectTimeout desde los runners.
+    El estado sale del store fechado: el indicador se calcula, NO queda
+    desactualizado y el timeout es una línea [WARN], no una caída."""
+    import requests
 
-    monkeypatch.setattr(gestion, "_adjudicacion_publicada", _explota)
+    def _timeout():
+        raise requests.exceptions.ConnectTimeout("contratar.gob.ar timeout")
+
+    llamadas = []
+    monkeypatch.setattr(gestion, "_contratar_procesos_rfc", _timeout)
+    monkeypatch.setattr(gestion, "_adjudicacion_publicada",
+                        lambda proc: llamadas.append(proc))
     card = gestion.fetch_concesiones_infraestructura()
     assert card is not None
-    assert card["km_adjudicados"] == datos["esperado"]["km_adjudicados_erroneo"]
+    assert card["desactualizado"] is False
+    assert card["valor"] == 100.0
+    assert card["km_adjudicados"] == datos["esperado"]["km_adjudicados"]
+    assert len(card["inventario_etapas"]) == 4
+    assert "[WARN]" in capsys.readouterr().out
+    assert llamadas == []                    # sin detector no hay nada que consultar
+    assert "no se pudo contrastar" in card["advertencia_fuente"].lower()
 
 
-def test_no_se_consulta_el_boletin_si_el_portal_ya_lo_declara(sin_red):
-    """Cuatro procesos, dos consultas: si CONTRAT.AR ya dice Adjudicado no hay
-    nada que dirimir, y cada consulta abre una sesión contra InfoLeg."""
-    consultados = []
+def test_contratar_arriba_el_resultado_es_el_mismo(sin_red, datos, capsys):
+    card = gestion.fetch_concesiones_infraestructura()
+    assert card["valor"] == 100.0
+    assert card["advertencia_fuente"] == "CONTRAT.AR todavía no refleja la adjudicación de II-B, III, que constan en el Boletín Oficial"
+    assert "[AVISO]" not in capsys.readouterr().out
 
-    import types
-    original = gestion._adjudicacion_publicada
 
-    def _espia(proc):
-        consultados.append(proc)
-        return original(proc)
+def test_un_proceso_nuevo_en_contratar_produce_aviso(sin_red, monkeypatch, capsys):
+    """Una Etapa IV que aparece en el portal y no está en el store: no suma km
+    (nadie la adjudicó), pero hay que enterarse."""
+    base = [(p["proceso"], p["nombre"], p["estado_contratar"])
+            for p in sin_red["procesos"]]
+    base.append(("504-0020-LPU26", "RED FEDERAL DE CONCESIONES - ETAPA IV -", "Publicado"))
+    monkeypatch.setattr(gestion, "_contratar_procesos_rfc", lambda: list(base))
+    monkeypatch.setattr(gestion, "_adjudicacion_publicada",
+                        lambda proc: sin_red["adjudicaciones_boletin"].get(proc))
+    card = gestion.fetch_concesiones_infraestructura()
+    salida = capsys.readouterr().out
+    assert "[AVISO]" in salida and "504-0020-LPU26" in salida and "IV" in salida
+    assert "504-0020-LPU26" in card["advertencia_fuente"]
+    assert card["valor"] == 100.0               # no regala km
+    assert card["procesos"] == 5
 
-    gestion._adjudicacion_publicada = _espia
-    try:
-        gestion.fetch_concesiones_infraestructura()
-    finally:
-        gestion._adjudicacion_publicada = original
-    assert sorted(consultados) == ["504-0001-LPU26", "504-0015-LPU25"]
+
+def test_una_etapa_nueva_adjudicada_en_el_portal_cuenta_y_avisa(sin_red, monkeypatch, capsys):
+    """Mismo criterio de hoy para lo que el store no conoce: el portal que dice
+    Adjudicado suma. Y pide cargarla en el store."""
+    monkeypatch.setattr(gestion, "_rfc_km_por_etapa",
+                        lambda: {**sin_red["km_por_etapa"], "IV": 1000.0})
+    base = [(p["proceso"], p["nombre"], p["estado_contratar"]) for p in sin_red["procesos"]]
+    base.append(("504-0020-LPU26", "RED FEDERAL DE CONCESIONES - ETAPA IV -", "Adjudicado"))
+    monkeypatch.setattr(gestion, "_contratar_procesos_rfc", lambda: list(base))
+    card = gestion.fetch_concesiones_infraestructura()
+    assert "[AVISO]" in capsys.readouterr().out
+    iv = [i for i in card["inventario_etapas"] if i["etapa"] == "IV"][0]
+    assert iv["adjudicado"] and iv["fuente_estado"] == "CONTRAT.AR"
+
+
+def test_etapa_del_store_no_consulta_infoleg(sin_red, monkeypatch):
+    """Las cuatro etapas ya están en el store: InfoLeg no se toca."""
+    def _no(proc):
+        raise AssertionError("InfoLeg no debía consultarse")
+    monkeypatch.setattr(gestion, "_adjudicacion_publicada", _no)
+    assert gestion.fetch_concesiones_infraestructura()["valor"] == 100.0
 
 
 def test_preadjudicado_sigue_sin_contar():
