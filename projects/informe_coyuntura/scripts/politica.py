@@ -2540,6 +2540,14 @@ def _jus_registros_conciliados():
 JUDICIAL_AVISO_DIAS_ANTES = 5
 
 
+def _tope_judicial() -> int:
+    raiz = str(Path(__file__).resolve().parents[1])
+    if raiz not in sys.path:
+        sys.path.insert(0, raiz)
+    from config import dias_sin_fetch_tolerados
+    return dias_sin_fetch_tolerados("cobertura_judicial")
+
+
 def _avisar_vencimiento_judicial(corte: str) -> None:
     raiz = str(Path(__file__).resolve().parents[1])
     if raiz not in sys.path:
@@ -2668,7 +2676,10 @@ def fetch_cobertura_judicial() -> dict | None:
             "fuente":         "Ministerio de Justicia — padrón de magistrados, "
                               "designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura",
             "fecha_dato":     f"{ym}-01",
-            "desactualizado": meta["fecha_corte"] < date.today().isoformat(),
+            # Vencida = pasó el tope que el gate G2b tolera sin fetch, no "pasó un
+            # día": la revisión es manual y antes sólo estaba fresca el día exacto.
+            "desactualizado": (date.today() - date.fromisoformat(meta["fecha_corte"])).days
+                              > _tope_judicial(),
             # El corte de la conciliación no avanza por releer sus archivos.
             "obtenido_en": meta["fecha_corte"],
             "estimado": True,
@@ -2755,6 +2766,21 @@ def _leyes_fechadas(filas: list[dict]) -> list[tuple[str, date]]:
                     raise ValueError("un expediente identifica dos números de ley")
                 aliases[ref] = ley
     leyes: dict[str, set[date]] = {}
+    validas = []
+    for fila in filas:
+        ley = str(fila.get("LEY") or "").strip()
+        refs = referencias(fila)
+        if not ley.isdigit() and not (
+                not ley and refs and (any(r in aliases for r in refs)
+                                      or fila.get("sancion_definitiva_verificada") is True)):
+            # CKAN publica la sanción antes de numerarla (ADR-0308): una fila así no
+            # tumba el indicador; se deja afuera y se dice cuál es.
+            print(f"  [WARN] produccion_legislativa: fila sin ley ni expediente verificado, "
+                  f"excluida (sanción {str(fila.get('SANCION_DEFINITIVA', ''))[:10]}, "
+                  f"expediente {fila.get('EXPEDIENTE_INICIAL')!r}, proyecto {fila.get('PROYECTO_ID')!r})")
+            continue
+        validas.append(fila)
+    filas = validas
     for fila in filas:
         ley = str(fila.get("LEY") or "").strip()
         refs = referencias(fila)
@@ -4202,6 +4228,17 @@ def _agregar_alineamiento_ventana(detalle: list[dict], referencia: datetime, dia
 ADHESION_COMPLEMENTARIAS_PATH = PROJECT_DIR / "data/politica/adhesion_reformas_complementarias.json"
 
 
+ADHESION_VERIFICACION_PATH = PROJECT_DIR / "output/cache/adhesion_reformas_verificacion.json"
+ADHESION_REVERIFICAR_DIAS = 30
+
+
+def _firma_complementaria(entrada: dict) -> str:
+    import hashlib
+    base = json.dumps([entrada["fuente"], entrada["fecha"], entrada["comprobar_textos"]],
+                      ensure_ascii=False)
+    return hashlib.sha256(base.encode("utf-8")).hexdigest()
+
+
 def _rigi_complementarias_verificadas() -> set[str]:
     """Adhesiones omitidas por MAGyP, comprobadas en sus leyes (ADR-0304).
 
@@ -4212,6 +4249,10 @@ def _rigi_complementarias_verificadas() -> set[str]:
     def texto(s):
         return " ".join(unicodedata.normalize("NFKC", s).casefold().split())
     registro = json.loads(ADHESION_COMPLEMENTARIAS_PATH.read_text(encoding="utf-8-sig"))
+    try:
+        guardadas = json.loads(ADHESION_VERIFICACION_PATH.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        guardadas = {}
     provincias = set()
     for nombre, entrada in registro.items():
         if nombre.startswith("_"):
@@ -4222,12 +4263,38 @@ def _rigi_complementarias_verificadas() -> set[str]:
         patrones = entrada["comprobar_textos"]
         if not patrones or not all(isinstance(x, str) and x.strip() for x in patrones):
             raise ValueError(f"RIGI: falta evidencia normativa de {nombre}")
-        r = requests.get(entrada["fuente"], headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
-        r.raise_for_status()
+        firma = _firma_complementaria(entrada)
+        previa = guardadas.get(nombre)
+        if not (isinstance(previa, dict) and previa.get("firma") == firma):
+            previa = None  # registro editado: lo guardado ya no vale
+        if previa and (date.today() - date.fromisoformat(previa["verificado_en"])
+                       ).days < ADHESION_REVERIFICAR_DIAS:
+            provincias.add(nombre)
+            continue
+        try:
+            r = requests.get(entrada["fuente"], headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+            r.raise_for_status()
+        except requests.RequestException as e:
+            if not previa:
+                raise
+            print(f"  [WARN] adhesion_reformas_provincial: no se pudo re-verificar {nombre} "
+                  f"({type(e).__name__}); se usa la verificación del {previa['verificado_en']}")
+            provincias.add(nombre)
+            continue
         original = texto(BeautifulSoup(r.text, "html.parser").get_text(" ", strip=True))
         if not all(texto(x) in original for x in patrones):
             raise ValueError(f"RIGI: el original de {nombre} no confirma la adhesión")
+        guardadas[nombre] = {"firma": firma, "verificado_en": date.today().isoformat(),
+                             "textos_confirmados": len(patrones)}
         provincias.add(nombre)
+    if guardadas:
+        try:
+            ADHESION_VERIFICACION_PATH.parent.mkdir(parents=True, exist_ok=True)
+            ADHESION_VERIFICACION_PATH.write_text(
+                json.dumps(guardadas, ensure_ascii=False, indent=2, sort_keys=True),
+                encoding="utf-8")
+        except OSError as e:
+            print(f"  [WARN] adhesion_reformas_provincial: no se guardó la verificación ({e})")
     return provincias
 
 
