@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-18
 cinturon: 'macro'
 archivos: ['scripts/validacion_externa.py', 'scripts/publicar.py']
-relacionado: ['0019', '0021', '0031', '0078']
+relacionado: ['0019', '0021', '0031', '0078', '0351']
 ambito: 'Cinturón macro · ITCM · validación · `scripts/validacion_externa.py` · `scripts/publicar.py` · página del cinturón'
 origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección IV.3'
 ---

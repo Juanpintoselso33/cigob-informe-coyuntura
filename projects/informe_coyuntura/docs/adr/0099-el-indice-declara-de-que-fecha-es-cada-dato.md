@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'politica'
 archivos: ['publicar._vintages']
+relacionado: ['0351']
 extendido_por: ['0107']
 ambito: 'ITCM · ITCG · ITCP · card pública "Fechas de los datos" · `publicar._vintages`'
 origen: 'Auditoría externa del cinturón de gestión (doc 1), punto 3.3'
