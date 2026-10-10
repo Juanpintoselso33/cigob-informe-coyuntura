@@ -440,13 +440,17 @@ def _mes_siguiente(ym: str, n: int) -> str:
     return f"{t // 12}-{t % 12 + 1:02d}"
 
 
+def _anio_corriente() -> int:
+    return date.today().year
+
+
 def _factores_unidad(mensual: dict, anual_csv: dict) -> dict:
     """{año: factor} que lleva las hojas mensuales de cada año a la unidad del CSV.
 
     Un año con los doce meses y presente en el CSV se ancla contra él
     (`_factor_unidad`). El año en curso no está en el CSV —se publica cuando
     cierra— y la unidad de la planilla no cambia dentro de su formato, así que
-    hereda el factor del año anterior. Esa herencia se controla: si el promedio
+    hereda el factor del año anterior (sólo el año calendario corriente). Esa herencia se controla: si el promedio
     mensual del año se aleja más de 5 veces del del anterior, es un cambio de
     unidad (mil veces) y no inflación, y el cálculo falla antes que publicar."""
     factores = {}
@@ -455,7 +459,7 @@ def _factores_unidad(mensual: dict, anual_csv: dict) -> dict:
         meses = [f"{y}-{k:02d}" for k in range(1, 13)]
         if y in anual_csv and all(m in mensual for m in meses):
             factores[y] = _factor_unidad(sum(mensual[m] for m in meses), anual_csv[y])
-        elif y - 1 in factores:
+        elif y - 1 in factores and y == _anio_corriente():
             prop = [mensual[m] for m in mensual if m[:4] == str(y)]
             prev = [mensual[m] for m in mensual if m[:4] == str(y - 1)]
             media = sum(prop) / len(prop) * factores[y - 1]
@@ -465,6 +469,9 @@ def _factores_unidad(mensual: dict, anual_csv: dict) -> dict:
                     f"{y} no tiene ancla en el CSV anual y su nivel mensual no es "
                     f"compatible con el de {y - 1}: ¿cambió la unidad de la planilla?")
             factores[y] = factores[y - 1]
+        # Un año CERRADO sin ancla en el CSV no hereda: queda fuera y las
+        # ventanas que lo necesitan no se calculan, en vez de apoyarse en una
+        # unidad supuesta.
     return factores
 
 

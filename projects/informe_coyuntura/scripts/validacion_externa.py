@@ -846,6 +846,7 @@ ITCP_SERIES = [k for d in parametrica.indicadores_vigentes(
 # ponderados mayormente por expedientes pre-gestión. Solo afecta la serie
 # reconstruida de validación; la card publicada no se toca (hoy su cohorte
 # ya es 100% de esta gestión).
+IAF_VENTANA_100PCT_MILEI_DESDE = "2024-12"   # primera ventana de 12 meses toda de la gestión (ADR-0353)
 EFICACIA_COHORTE_100PCT_MILEI_DESDE = "2025-12"
 
 
@@ -950,6 +951,11 @@ def _valores_itcp_por_mes(directos: dict | None = None, ult: str | None = None) 
         valores = {k: v.get(ym) for k, v in directos.items()}
         if ym < EFICACIA_COHORTE_100PCT_MILEI_DESDE:
             valores["eficacia_legislativa"] = None   # máscara de era (ADR-0070)
+        if ym < IAF_VENTANA_100PCT_MILEI_DESDE:
+            # ADR-0353: con la serie mensual, la ventana de 12 meses que termina
+            # antes de dic-2024 todavía incluye meses de la gestión anterior. Es
+            # lo que ya hacía la serie anual (dic-2023 afuera, dic-2024 adentro).
+            valores["iaf_transferencias"] = None
         out[ym] = valores
     return out
 

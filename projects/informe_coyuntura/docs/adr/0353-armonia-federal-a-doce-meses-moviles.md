@@ -98,9 +98,12 @@ Opción 2.
   cada diciembre. ADR-0092 y ADR-0104 decían, hasta hoy, que era anual y no
   evaluable: dejan de ser ciertos en esos puntos (no se reescriben, ver la
   política de este directorio). `tests/test_out_of_sample.py` deja de exigir a
-  este indicador como ejemplo de ventana chica. Los r de
+  este indicador como ejemplo de ventana chica. Para no mezclar gestiones, la reconstrucción enmascara
+  el indicador antes de dic-2024 (la primera ventana toda de la gestión actual,
+  como ya ocurría con la serie anual). Los r de
   `validacion_externa.json` cambian en la próxima corrida; no se regeneraron en
-  este cambio.
+  este cambio. Tampoco la card, la serie ni el snapshot: hasta la próxima
+  corrida de datos la web muestra el valor anual anterior con la ficha nueva.
 
 ### Confirmación
 

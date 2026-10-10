@@ -46,6 +46,7 @@ def sin_red(monkeypatch):
         ron = _planilla(real_por_mes, ipc, ron_hasta)
         csv = {y: sum(ron[f"{y}-{k:02d}"] for k in range(1, 13)) for y in (2024, 2025)
                if all(f"{y}-{k:02d}" in ron for k in range(1, 13))}
+        monkeypatch.setattr(politica, "_anio_corriente", lambda: 2026)
         monkeypatch.setattr(politica, "_ron_mensual", lambda desde=2016: dict(ron))
         monkeypatch.setattr(politica, "_ipc_indice_mensual", lambda: dict(ipc))
         monkeypatch.setattr(politica, "_ron_total_anual_csv", lambda: dict(csv))
@@ -84,7 +85,9 @@ def test_flujo_constante_en_terminos_reales_da_cero(sin_red):
     """Control positivo: sin cambio real la variación es 0 aunque el nominal sea
     ~27%; un deflactor mal aplicado no daría cero."""
     sin_red(lambda m: 100.0)
-    for fin, (real, nom, *_) in politica._iaf_12m_moviles().items():
+    ventanas = politica._iaf_12m_moviles()
+    assert len(ventanas) >= 9, "sin ventanas el control pasaría vacío"
+    for fin, (real, nom, *_) in ventanas.items():
         assert real == pytest.approx(0.0, abs=1e-9), fin
         assert nom > 0.2
 
@@ -128,3 +131,13 @@ def test_sin_24_meses_de_planilla_no_hay_ventana(sin_red):
     sin_red(lambda m: 100.0, ipc_hasta="2025-11", ron_hasta="2025-11")
     assert politica._iaf_12m_moviles() == {}
     assert politica.fetch_iaf_transferencias() is None
+
+
+def test_un_ano_cerrado_sin_ancla_no_hereda_la_unidad(sin_red, monkeypatch):
+    """La herencia es sólo para el año en curso. Si el CSV anual no se actualiza
+    y 2026 ya cerró, las ventanas que lo necesitan no se calculan: antes que
+    apoyarse en una unidad supuesta."""
+    sin_red(lambda m: 100.0)
+    monkeypatch.setattr(politica, "_anio_corriente", lambda: 2027)
+    v = politica._iaf_12m_moviles()
+    assert v and max(v) == "2025-12", "2026 sin ancla no puede tener ventanas"
