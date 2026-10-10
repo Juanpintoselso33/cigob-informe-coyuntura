@@ -155,20 +155,16 @@ MAX_DIAS = {
     # ese ritmo sin dejar de avisar si la fuente se muere de verdad.
     "empleo_registrado": 150,
     # fuentes con rezago estructural largo
-    # ANUAL: la serie RON de Hacienda es por año calendario ejecutado y el
-    # archivo del año nuevo aparece bien entrado el año siguiente. La fecha del
-    # dato es el cierre del año de referencia (31-dic), así que el rezago crece
-    # todo el año hasta que se publica el archivo siguiente: 560 días cubre ese
-    # ciclo completo sin dejar de avisar si la fuente se muere de verdad. Hasta
-    # el 29-jul-2026 la card declaraba `date.today()` y este tope no existía
-    # porque el indicador se mostraba fresco siempre.
-    "iaf_transferencias": 560,
+    # iaf_transferencias: ya NO es anual (ADR-0353). Son 12 meses móviles y la
+    # fecha del dato es el fin del último mes con IPC publicado; el rezago es el
+    # del INDEC (~45 días) más el mes que falta para el IPC siguiente (~75 máx.),
+    # dentro del default. Hasta el 10-oct-2026 llevaba 560 acá por el ciclo anual.
     # ANUALES del bloque judicial (ADR-0168). Sin tope propio, un indicador
     # anual queda marcado como desactualizado siempre, que es exactamente el
     # falso positivo que ADR-0133 separó de una falla de integridad.
     # velocidad_resolucion: el anuario del año N sale bien entrado N+1, y la
-    # fecha del dato es el cierre del año de referencia — mismo ciclo que
-    # iaf_transferencias.
+    # fecha del dato es el cierre del año de referencia — ciclo anual,
+    # como lo era el de iaf_transferencias hasta ADR-0353.
     "velocidad_resolucion": 560,
     # judicializacion: el punto del año en curso se recalcula en cada corrida y
     # se fecha al 1-ene de ese año, así que el rezago crece hasta 365 días antes

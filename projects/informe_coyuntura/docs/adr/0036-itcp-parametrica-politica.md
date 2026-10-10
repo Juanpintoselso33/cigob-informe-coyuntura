@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-07
 cinturon: 'politica'
 archivos: ['scripts/itcp.py', 'scripts/politica.py', 'scripts/parametrica.py', 'scripts/descargar_series.py', 'data/politica/*', 'tests/test_itcp.py']
-relacionado: ['0058', '0059']
+relacionado: ['0058', '0059', '0353']
 modificado_por: ['0088']
 ambito: '`scripts/itcp.py` (nuevo) · `scripts/politica.py` · `scripts/parametrica.py` · `scripts/descargar_series.py` · `data/politica/*` · `tests/test_itcp.py` · web'
 ---

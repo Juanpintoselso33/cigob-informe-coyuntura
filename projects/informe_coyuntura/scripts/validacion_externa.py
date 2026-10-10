@@ -861,9 +861,9 @@ def construir_serie_itcp(dimensiones: dict | None = None) -> dict:
       pasó de un punto por año calendario a ventana móvil de 365 días
       recalculada al fin de cada mes.
     - veto_quorum se reconstruye mensualmente con ventana móvil de doce
-      meses. iaf_transferencias es anual (dic-dic): solo participa en los
-      meses exactos con dato; el motor renormaliza los pesos cuando faltan
-      componentes. Por eso un cambio mensual puede incluir composición,
+      meses. iaf_transferencias fue anual (dic-dic) hasta ADR-0353; desde
+      entonces es mensual (12 meses móviles) y participa todos los meses; el
+      motor renormaliza los pesos cuando faltan componentes. Por eso un cambio mensual puede incluir composición,
       además de variación de los indicadores presentes en ambos meses.
     - Desde 2026-07-09 la cobertura mejoró de verdad: cohesion_bloque
       (desde ADR-0048 la serie del compuesto bicameral 65/35, construida

@@ -43,13 +43,17 @@ def test_toda_ventana_publica_su_rango_crudo():
 def test_no_se_concluye_sobre_ventanas_diminutas():
     """Nada evaluado con menos de un año fuera de muestra.
 
-    `iaf_transferencias` tiene serie desde dic-2018 pero es ANUAL: cinco puntos
-    previos. Concluir de ahí sería peor que no medir.
+    Hasta ADR-0353 `iaf_transferencias` era el ejemplo: serie ANUAL con cinco
+    puntos previos. Ahora es mensual (12m móviles) y entra al análisis, así que
+    el ejemplo pasa a ser cualquier descartado: tiene que estarlo por tener menos
+    de MIN_PUNTOS, no por otra razón.
     """
     r = oos.analizar()
     for f in r["evaluados"]:
         assert f["fuera_de_muestra"]["n"] >= oos.MIN_PUNTOS
-    assert any(d["indicador"] == "iaf_transferencias" for d in r["no_evaluables"])
+    assert r["no_evaluables"], "el control de ventanas chicas quedó sin casos"
+    for d in r["no_evaluables"]:
+        assert d["n_fuera"] < oos.MIN_PUNTOS, d
 
 
 def test_el_alcance_declarado_es_minoritario_y_se_dice():

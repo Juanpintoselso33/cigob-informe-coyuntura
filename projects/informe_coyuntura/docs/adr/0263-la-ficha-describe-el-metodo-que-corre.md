@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'politica'
 indicadores: [ratio_dnu, iaf_transferencias, subocupacion_demandante]
 archivos: ['web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'web/src/lib/datos.ts', 'tests/test_contrato_publico_dice_lo_que_corre.py']
-relacionado: ['0239', '0241', '0249', '0220']
+relacionado: ['0220', '0239', '0241', '0249', '0353']
 corregido_por: ['0307']
 ambito: 'Capa pública · `ratio_dnu`, `iaf_transferencias`, `subocupacion_demandante` · sincronizar la descripción, la fórmula y la ficha con el cálculo que efectivamente corre'
 origen: 'Reauditoría post-cambios, 25-ago-2026: discrepancias 2, 3 y 9 — «números corregidos, contrato público todavía viejo»'

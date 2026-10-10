@@ -1491,7 +1491,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "iaf_transferencias",
     cinturon: "politica",
-    rezago: "Por diseño compara el último año cerrado contra el anterior: durante 2026 se lee «2025 contra 2024» — el dato puede tener hasta un año de rezago.",
+    rezago: "Compara los últimos 12 meses con los 12 anteriores y termina en el último mes que tiene IPC publicado: unos 45 días de rezago del INDEC, más lo que tarde Hacienda en subir la planilla del mes (la planilla suele llegar antes que el IPC, que es el que fija el último mes).",
     fuente: {
       organismo: "Ministerio de Economía (Secretaría de Hacienda); deflactor: INDEC",
       operacion: "RON — recursos de origen nacional girados a las jurisdicciones, planilla mensual consolidada (una hoja por mes), con el archivo anual oficial como ancla de unidad; deflactor: IPC nacional del INDEC",
@@ -1502,16 +1502,18 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Universo: lo girado a las jurisdicciones —Provincias, Ciudad de Buenos Aires y Fondo Compensador—, incluida la compensación del Consenso Fiscal, que el cuadro publica en su propia columna y sí forma parte de lo transferido (sin ella el total no cierra contra el archivo anual). Quedan afuera las porciones que se quedan en la Nación: Tesoro Nacional, Seguridad Social y Fondo A.T.N. Es ejecución, no presupuesto: lo que la Nación giró ese año calendario.",
       "Deflación mes a mes: cada flujo mensual se divide por el índice IPC nacional de su propio mes, con base común diciembre de 2016 = 100, antes de sumarse. La variación real es el cociente entre ambas sumas a precios comparables menos uno. Un promedio anual simple de precios puede sesgar el resultado cuando los flujos no se distribuyen uniformemente. El deflactor implícito es (1 + variación nominal) / (1 + variación real) − 1, con tasas expresadas como fracción; no es la resta entre ambas tasas. La tarjeta publica ese deflactor para permitir reproducir la cuenta.",
-      "Sólo entran los años con los doce meses publicados: un año a medias compararía nueve meses contra doce.",
+      "Ventana: los 12 meses móviles que terminan en el último mes con IPC publicado, contra los 12 meses previos. Sólo hay ventana si los 24 meses tienen planilla e IPC, de modo que nunca se compara un tramo incompleto contra uno entero. La planilla puede traer un mes más que el IPC; ese mes todavía no entra.",
       "Las hojas mensuales pasaron de miles a millones de pesos entre 2022 y 2023 sin declararlo en ningún lado. El archivo anual oficial, que cubre 2003-2025 en una sola unidad, hace de ancla: el factor entre ambos tiene que ser exactamente una potencia de mil y el residuo, menor al 1%. Si no lo es, el cálculo falla en vez de publicar una variación armada sobre dos unidades distintas.",
-      "En el gráfico, cada punto anual se ubica en diciembre del año que cierra: el valor fechado en diciembre de 2025 es la variación del año 2025 completo contra 2024.",
+      "En el gráfico hay un punto por mes, ubicado en el último mes de la ventana: el valor de diciembre de 2025 es la variación del año 2025 completo contra 2024 (igual que antes); el de agosto de 2026 compara septiembre 2025–agosto 2026 con septiembre 2024–agosto 2025.",
+      "El archivo anual oficial, que sólo llega hasta 2025, ancla la unidad de cada año cerrado. El año en curso no está en él: hereda la unidad del anterior y el cálculo se detiene si el nivel mensual no es compatible (un cambio de miles a millones no pasa por inflación).",
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la variación real, interpolado entre anclas: más de +10% → el más alto; entre 0% y +10% → alto; entre −10% y 0% → moderado; entre −20% y −10% → bajo; −20% o menos → el más bajo.",
       "Integra la dimensión de alianzas territoriales del índice del cinturón (20,4% del total), donde pesa 40% junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI.",
     ],
     limitaciones: [
-      "Granularidad anual: no capta la tensión federal dentro del año.",
+      "Una ventana de 12 meses promedia lo ocurrido: un giro de pocas semanas se diluye y la medida describe, en promedio, lo de hace unos seis meses. Mira la tendencia, no el último mes.",
+      "Compara contra un año que puede traer su propia irregularidad: la variación hereda ese efecto de base durante los doce meses siguientes.",
       "Depende del formato del cuadro consolidado: la columna del total y los rótulos de fila se localizan por encabezado y no por posición —el cuadro fue ganando columnas con los años y los rótulos viejos venían espaciados letra por letra—, pero un rediseño de la planilla interrumpe el indicador hasta adaptarlo.",
       "Mide el flujo fiscal hacia las provincias — una aproximación parcial a la relación política con los gobernadores.",
       "La serie cubre las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones del Consenso Fiscal); no incluye los giros discrecionales —las transferencias no automáticas—, que otros informes agregan por separado.",
@@ -1527,6 +1529,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-25", cambio: "Cada flujo mensual se deflacta por el IPC de su propio mes antes de sumarse, en vez de dividir el cociente de dos sumas nominales por un único IPC promedio anual. Los montos pasan a salir de la planilla mensual consolidada de Hacienda, que reconcilia peso por peso con la planilla anual. 2025 pasa de +0,8% a +1,6% real, que es lo que informan IARAF y Politikon. La serie 2018-2025 se rehízo entera: se mueve poco en años de inflación pareja y hasta 1,5 puntos en los de inflación cambiante.", adr: "0239" },
       { fecha: "2026-08-25", cambio: "La fórmula y la ficha se sincronizan con esa deflación. Seguían describiendo una suma anual dividida por un IPC promedio —el método reemplazado— y la fuente anual que dejó de usarse. Ahora quedan explícitos los cinco términos del contrato: qué jurisdicciones entran (Provincias, Ciudad de Buenos Aires y Fondo Compensador, con la compensación del Consenso Fiscal) y cuáles no, qué clase de transferencia (automáticas, no discrecionales), la ventana (dos años calendario completos), el deflactor (IPC nacional del INDEC, mes a mes) y la base común a la que se llevan los doce flujos antes de sumarse. Ningún valor cambia.", adr: "0263" },
       { fecha: "2026-09-08", cambio: "El cotejo de los 24 flujos originales reproduce 1,6365% real para 2025 y coincide con 1,6% de la OPC. Se aclara que el deflactor implícito es un cociente, no la resta de tasas; el cálculo ya usaba la fórmula correcta." },
+      { fecha: "2026-10-10", cambio: "Pasa de comparar el último año calendario cerrado contra el anterior (el dato se quedaba en diciembre de 2025, con diez meses de rezago) a los últimos 12 meses móviles contra los 12 previos, con fecha en el último mes con IPC publicado (agosto de 2026: −1,8% real). La planilla de Hacienda ya traía enero a septiembre de 2026. Es la misma escala y las mismas bandas: el valor de diciembre coincide con el anual de antes. La serie pasa de un punto por año a uno por mes.", adr: "0353" },
     ],
   },
 

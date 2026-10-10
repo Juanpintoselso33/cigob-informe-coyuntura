@@ -16,7 +16,7 @@ Indicadores:
                                posible (CEPA publica desde fines de 2025) y con fórmula de
                                acumulado YTD no comparable mes a mes — queda como contraste
                                oculto del snapshot
-  iaf_transferencias        — Variación real YoY transferencias federales RON (Hacienda, auto)
+  iaf_transferencias        — Variación real 12 meses móviles de transferencias federales RON (Hacienda, auto; ADR-0353)
   eficacia_legislativa      — % proyectos PE aprobados, ventana 12m (datos.hcdn.gob.ar CKAN, auto)
   cohesion_bloque           — % cohesión (Rice) del bloque LLA, COMPUESTO bicameral desde
                                2026-07-10 (ADR-0048): Diputados 65% (scrape votaciones.hcdn.gob.ar)
@@ -139,7 +139,7 @@ JUS_RENUNCIAS_Q   = "Renuncias de magistrados de la Justicia Federal"
 
 STALE_MANUAL_DAYS    = 45
 STALE_DNU_DAYS       = 30
-STALE_IAF_DAYS       = 365  # dato anual — válido todo el año
+STALE_IAF_DAYS       = 365  # sin uso desde ADR-0353 (el dato dejó de ser anual); se conserva por compatibilidad
 
 HTTP_TIMEOUT = 20
 HTTP_HEADERS = {"User-Agent": "CIGOB-InformeCoyuntura/1.0"}
@@ -434,45 +434,80 @@ def _factor_unidad(suma_mensual: float, total_csv: float) -> float:
     return factor
 
 
-def _iaf_real_por_anio(desde: int = 2016) -> dict:
-    """{año: (var_real, var_nominal, deflactor, total_ref, total_ant)}.
+def _mes_siguiente(ym: str, n: int) -> str:
+    """`ym` desplazado `n` meses (n puede ser negativo)."""
+    t = int(ym[:4]) * 12 + int(ym[5:7]) - 1 + n
+    return f"{t // 12}-{t % 12 + 1:02d}"
 
-    Cada flujo mensual se lleva a precios de una base común dividiéndolo por el
-    IPC de SU mes, y recién ahí se suman los doce. Es la diferencia entre medir
-    la variación real y medir la variación nominal con un deflactor promedio:
-    para 2025 la primera da +1,6% —lo mismo que IARAF y Politikon— y la segunda
-    daba +0,8% (ADR-0239).
 
-    Sólo entran los años con los doce meses publicados: un año a medias
-    compararía nueve meses contra doce."""
+def _factores_unidad(mensual: dict, anual_csv: dict) -> dict:
+    """{año: factor} que lleva las hojas mensuales de cada año a la unidad del CSV.
+
+    Un año con los doce meses y presente en el CSV se ancla contra él
+    (`_factor_unidad`). El año en curso no está en el CSV —se publica cuando
+    cierra— y la unidad de la planilla no cambia dentro de su formato, así que
+    hereda el factor del año anterior. Esa herencia se controla: si el promedio
+    mensual del año se aleja más de 5 veces del del anterior, es un cambio de
+    unidad (mil veces) y no inflación, y el cálculo falla antes que publicar."""
+    factores = {}
+    anios = sorted({int(ym[:4]) for ym in mensual})
+    for y in anios:
+        meses = [f"{y}-{k:02d}" for k in range(1, 13)]
+        if y in anual_csv and all(m in mensual for m in meses):
+            factores[y] = _factor_unidad(sum(mensual[m] for m in meses), anual_csv[y])
+        elif y - 1 in factores:
+            prop = [mensual[m] for m in mensual if m[:4] == str(y)]
+            prev = [mensual[m] for m in mensual if m[:4] == str(y - 1)]
+            media = sum(prop) / len(prop) * factores[y - 1]
+            media_ant = sum(prev) / len(prev) * factores[y - 1]
+            if not (0.2 <= media / media_ant <= 5.0):
+                raise ValueError(
+                    f"{y} no tiene ancla en el CSV anual y su nivel mensual no es "
+                    f"compatible con el de {y - 1}: ¿cambió la unidad de la planilla?")
+            factores[y] = factores[y - 1]
+    return factores
+
+
+def _iaf_12m_moviles(desde: int = 2016) -> dict:
+    """{YYYY-MM: (var_real, var_nominal, deflactor, total_ref, total_ant)}.
+
+    Variación real de los 12 meses que terminan en YYYY-MM contra los 12
+    anteriores (ADR-0353). Cada flujo mensual se lleva a precios de SU mes
+    dividiéndolo por el IPC de ese mes y recién ahí se suman los doce (ADR-0239).
+
+    Sólo hay ventana para los meses que tienen sus 24 meses de planilla Y de IPC:
+    el último es el último mes con IPC publicado, no el último con planilla."""
     mensual = _ron_mensual(desde)
     ipc = _ipc_indice_mensual()
-    anual_csv = _ron_total_anual_csv()
-    completos = {}
-    for y in sorted({int(ym[:4]) for ym in mensual}):
-        meses = [f"{y}-{k:02d}" for k in range(1, 13)]
-        if not all(m in mensual and m in ipc for m in meses):
-            continue
-        if y not in anual_csv:
-            continue                       # sin ancla no se sabe en qué unidad está
-        factor = _factor_unidad(sum(mensual[m] for m in meses), anual_csv[y])
-        completos[y] = (meses, factor)
+    factores = _factores_unidad(mensual, _ron_total_anual_csv())
     out = {}
-    for y in sorted(completos):
-        if y - 1 not in completos:
+    for fin in sorted(mensual):
+        meses_ref = [_mes_siguiente(fin, -k) for k in range(11, -1, -1)]
+        meses_ant = [_mes_siguiente(fin, -k) for k in range(23, 11, -1)]
+        todos = meses_ref + meses_ant
+        if not all(m in mensual and m in ipc and int(m[:4]) in factores for m in todos):
             continue
-        (meses_ref, f_ref), (meses_ant, f_ant) = completos[y], completos[y - 1]
-        nom_ref = sum(mensual[m] * f_ref for m in meses_ref)
-        nom_ant = sum(mensual[m] * f_ant for m in meses_ant)
-        real_ref = sum(mensual[m] * f_ref / ipc[m] for m in meses_ref)
-        real_ant = sum(mensual[m] * f_ant / ipc[m] for m in meses_ant)
+        f = lambda m: mensual[m] * factores[int(m[:4])]
+        nom_ref, nom_ant = sum(f(m) for m in meses_ref), sum(f(m) for m in meses_ant)
+        real_ref = sum(f(m) / ipc[m] for m in meses_ref)
+        real_ant = sum(f(m) / ipc[m] for m in meses_ant)
         if not nom_ant or not real_ant:
             continue
         var_real = real_ref / real_ant - 1.0
         var_nom = nom_ref / nom_ant - 1.0
-        deflactor = (1.0 + var_nom) / (1.0 + var_real) - 1.0
-        out[y] = (var_real, var_nom, deflactor, nom_ref, nom_ant)
+        out[fin] = (var_real, var_nom, (1.0 + var_nom) / (1.0 + var_real) - 1.0,
+                    nom_ref, nom_ant)
     return out
+
+
+def _iaf_real_por_anio(desde: int = 2016) -> dict:
+    """{año: (var_real, var_nom, deflactor, total_ref, total_ant)} del año calendario.
+
+    Es la ventana de 12 meses que termina en diciembre: el año completo contra el
+    anterior. Un año a medias no entra. Conserva el contrato histórico (ADR-0239)
+    para los tests y los cotejos contra IARAF/Politikon, que informan años cerrados."""
+    return {int(fin[:4]): v for fin, v in _iaf_12m_moviles(desde).items()
+            if fin.endswith("-12")}
 
 
 logging.basicConfig(level=logging.WARNING, format="%(message)s")
@@ -1244,9 +1279,24 @@ def fetch_jornadas_individuales_no_trabajadas() -> dict | None:
 
 # ── IAF — Índice de Armonía Federal (transferencias) ─────────────────────────
 
+_MESES_ES = ["ene", "feb", "mar", "abr", "may", "jun",
+             "jul", "ago", "sep", "oct", "nov", "dic"]
+
+
+def _etiqueta_mes(ym: str) -> str:
+    return f"{_MESES_ES[int(ym[5:7]) - 1]} {ym[:4]}"
+
+
+def _periodo_12m(fin: str) -> str:
+    """«sep 2025–ago 2026 vs sep 2024–ago 2025» para la ventana que termina en `fin`."""
+    return (f"{_etiqueta_mes(_mes_siguiente(fin, -11))}–{_etiqueta_mes(fin)} vs "
+            f"{_etiqueta_mes(_mes_siguiente(fin, -23))}–{_etiqueta_mes(_mes_siguiente(fin, -12))}")
+
+
 def fetch_iaf_transferencias() -> dict | None:
     """
-    Variación real i.a. de las transferencias federales (RON Hacienda).
+    Variación real de los últimos 12 meses móviles de las transferencias
+    federales (RON Hacienda) contra los 12 previos (ADR-0353).
     Dimensión: armonía fiscal federal (Luis Babino: Agregados de Poder — IAF).
 
     Universo (ADR-0066): lo girado a jurisdicciones —Provincias, C.A.B.A. y
@@ -1254,48 +1304,40 @@ def fetch_iaf_transferencias() -> dict | None:
     afuera Tesoro Nacional, Seguridad Social y Fondo A.T.N., que no salen de la
     Nación.
 
-    Deflactor (ADR-0239): **cada flujo mensual a precios de su propio mes**. El
-    método anterior dividía el cociente de dos sumas nominales por un único IPC
-    promedio anual, que puede sesgar el resultado si el gasto no se reparte parejo por
-    el calendario: para 2025 publicaba +0,8% donde IARAF y Politikon informaban
-    +1,6/1,7%. Mes a mes da +1,64%.
+    Deflactor (ADR-0239): **cada flujo mensual a precios de su propio mes**.
 
-    La serie es de transferencias EJECUTADAS del año calendario: el año de
-    referencia es el último cerrado, no el presupuesto del siguiente.
+    Ventana (ADR-0353): hasta el último mes que tiene IPC publicado. Antes se
+    comparaban años calendario cerrados (en octubre de 2026, 2025 contra 2024:
+    diez meses de rezago) y la planilla ya traía enero a septiembre de 2026.
     """
     try:
-        year_ref = date.today().year - 1   # último año completo
-        por_anio = _iaf_real_por_anio()
-        if year_ref not in por_anio:
-            disponibles = sorted(por_anio)
-            if not disponibles:
-                raise ValueError("sin años completos en la planilla mensual de RON")
-            year_ref = disponibles[-1]
-        var_real, var_nominal, deflactor, tot_ref, tot_ant = por_anio[year_ref]
+        ventanas = _iaf_12m_moviles()
+        if not ventanas:
+            raise ValueError("sin ventanas de 24 meses con planilla e IPC")
+        fin = max(ventanas)
+        var_real, var_nominal, deflactor, tot_ref, tot_ant = ventanas[fin]
+        ultimo_dia = (date(int(fin[:4]) + (int(fin[5:7]) == 12), int(fin[5:7]) % 12 + 1, 1)
+                      - timedelta(days=1))
 
         return {
             "valor": round(var_real * 100.0, 1),
             "var_nominal_pct": round(var_nominal * 100.0, 1),
             "total_ref_mm": round(tot_ref / 1e6, 0),
             "total_ant_mm": round(tot_ant / 1e6, 0),
-            "periodo": f"{year_ref} vs {year_ref - 1}",
+            "periodo": _periodo_12m(fin),
             "ipc_aplicado_pct": round(deflactor * 100.0, 1),
             "unidad": "% interanual real",
             "fuente": ("Sec. Hacienda — transferencias de recursos de origen nacional, planilla mensual consolidada + IPC "
                        "INDEC (deflactado mes a mes)"),
             "detalle_txt": (
-                f"{year_ref}: {var_nominal * 100:+.1f}% nominal contra un deflactor "
+                f"12 meses a {_etiqueta_mes(fin)}: {var_nominal * 100:+.1f}% nominal contra un deflactor "
                 f"de {deflactor * 100:.1f}% ponderado por el flujo de cada mes "
                 f"→ {var_real * 100:+.1f}% real"
             ),
-            # La fecha del DATO es el cierre del año de referencia, no la de la
-            # corrida. Antes acá iba `date.today()`: la card se mostraba fresca
-            # todos los días mientras comparaba dos años calendario cerrados —en
-            # julio de 2026 estaba informando 2025 contra 2024— y G2 no podía
-            # avisar nada porque la fecha declaraba hoy. Con la fecha real, el
-            # rezago queda a la vista y su tolerancia se declara en
-            # gate_calidad.MAX_DIAS, que es donde va el criterio por indicador.
-            "fecha_dato": f"{year_ref}-12-31",
+            # La fecha del DATO es el cierre del último mes de la ventana (el
+            # último con IPC publicado), no la de la corrida: G2 mide el rezago
+            # con este campo y una fecha de hoy lo esconde (29-jul-2026).
+            "fecha_dato": ultimo_dia.isoformat(),
             "desactualizado": False,
         }
 
