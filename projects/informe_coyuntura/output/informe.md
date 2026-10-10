@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-10 03:44:00"
+generado: "2026-10-10 17:38:21"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -24,7 +24,7 @@ schema_version: "1.2.0"
 | idc | -0.27 | σ vs. su historia | 2026-08-01 | fresco |
 | badlar | 22.38 | % anual | 2026-10-08 | fresco |
 | emae_ia | -1.44 | % i.a. | 2026-07-01 | fresco |
-| emae_difusion | 46.67 | % de sectores en crecimiento i.a. | 2026-07-01 | fresco |
+| emae_difusion | 46.67 | % de sectores en crecimiento i.a. | 2026-07-01 | ⚠ cache |
 | ipi_manufacturero | -2.04 | % i.a. (promedio 3 meses) | 2026-08-01 | fresco |
 | actividad_tributaria | -5.41 | % i.a. real (compuesto IVA-DGI/cheque) | 2026-08-01 | fresco |
 | saldo_comercial_12m | 24460.0 | Millones de USD (acum. 12 meses) | 2026-08-01 | fresco |
@@ -42,7 +42,7 @@ schema_version: "1.2.0"
 | base_monetaria | 2.18 | % mensual nominal | 2026-10-07 | fresco |
 | tc_mayorista | 0.4 | % mensual | 2026-10-09 | fresco |
 
-### 🟢 Politica — score 2.6/10 (estable)
+### 🟢 Politica — score 2.7/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -52,22 +52,22 @@ schema_version: "1.2.0"
 | apoyo_empresario | -0.333 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
 | conflictividad_nacional | -27.3 | % vs 2023 | 2026-09-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
-| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
-| iaf_transferencias | 1.6 | % interanual real | 2025-12-31 | fresco |
+| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | ⚠ cache |
+| iaf_transferencias | -1.8 | % interanual real | 2026-08-31 | fresco |
 | eficacia_legislativa | 21.4 | % de proyectos | 2026-10-10 | fresco |
 | veto_quorum | 10.0 | % de sesiones | 2026-10-10 | fresco |
 | comisiones_caidas | 96.7 | % de proyectos | 2026-10-10 | fresco |
-| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-10-08 | ⚠ cache |
+| adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-10-10 | fresco |
 | derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-10-10 | fresco |
 | rotacion_gabinete | 6 | salidas de rango ministerial (acum. 12 meses) | 2026-10-10 | fresco |
 | protestas_caba | 263 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
 | cohesion_bloque | 100.0 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-09-24 | fresco |
-| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-10-07 | ⚠ cache |
-| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-10-07 | ⚠ cache |
+| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-10-10 | fresco |
+| desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-10-10 | fresco |
 | produccion_legislativa | 31 | leyes sancionadas (12m) | 2026-09-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-10-01 | fresco |
-| cobertura_judicial | 73.93 | % estimado de cargos con juez designado | 2026-10-01 | ⚠ cache |
+| cobertura_judicial | 73.93 | % estimado de cargos con juez designado | 2026-10-01 | fresco |
 | alineamiento_senadores_prov | 58.6 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-09-24 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
@@ -104,7 +104,7 @@ schema_version: "1.2.0"
 | litigiosidad_laboral | 2.3 | % variación juicios SRT (12m vs 12m previos) | 2026-06-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 26.9 | % de inversión aprobada sobre el pipeline | 2026-10-10 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-10-09 | ⚠ cache |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-10-10 | fresco |
 | asistencia_directa | 100.0 | % del devengado de transferencias en ayudas a personas (5.1.4) | 2026-10-10 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 33.1 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-06-01 | fresco |
@@ -120,8 +120,8 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:apoyo_empresario,adhesion_reformas_provincial,bloqueo_sostenido,desafios_legislativos,cobertura_judicial`
-- `desactualizado:gestion:concesiones_infraestructura`
+- `desactualizado:macro:emae_difusion`
+- `desactualizado:politica:apoyo_empresario,movilizacion_cepa`
 
 ---
-*Generado por CIGOB — 2026-10-10 03:44:00 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-10 17:38:21 — schema 1.2.0*

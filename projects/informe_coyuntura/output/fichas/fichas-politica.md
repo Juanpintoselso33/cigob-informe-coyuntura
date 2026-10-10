@@ -35,7 +35,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 73,6** | **VERDE** | Moderadamente aflojado | 16 indicadores: 13 en verde · 2 en amarillo · 1 en rojo |
+| **ITCP: 73,0** | **VERDE** | Moderadamente aflojado | 16 indicadores: 13 en verde · 2 en amarillo · 1 en rojo |
 Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
@@ -43,7 +43,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
 | Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 67,3 | VERDE | 22,6 % |
-| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 80,7 | VERDE | 20,4 % |
+| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 78,0 | VERDE | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 16,1 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,3 | AMARILLO | 16,1 % |
 | Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 57,7 | AMARILLO | 14,0 % |
@@ -68,7 +68,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Normas desafiadas en el recinto | Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses. | 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | VERDE | 3,4 % |
 | Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. | 31 leyes sancionadas (12m) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
-| Armonía federal (transferencias) | Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante un… | 1,6 % interanual real | VERDE | 8,2 % |
+| Armonía federal (transferencias) | Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante los… | −1,8 % interanual real | VERDE | 8,2 % |
 | Adhesión provincial al RIGI | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 6,1 % |
 | Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 58,6 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 6,1 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
@@ -575,11 +575,11 @@ Ponderación vigente en el ITCP: 4,3 % efectivo. El color es una lectura adicion
 
 # Armonía federal (transferencias)
 
-Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante un año calendario completo, comparado con el año anterior. Entra lo transferido a las provincias, a la Ciudad de Buenos Aires y al Fondo Compensador, incluida la compensación del Consenso Fiscal; quedan afuera las porciones que se quedan en la Nación —Tesoro Nacional, Seguridad Social y Fondo A.T.N.—. Son las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones), no los giros discrecionales.
+Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante los últimos 12 meses, comparado con los 12 meses anteriores (la ventana termina en el último mes con IPC publicado). Entra lo transferido a las provincias, a la Ciudad de Buenos Aires y al Fondo Compensador, incluida la compensación del Consenso Fiscal; quedan afuera las porciones que se quedan en la Nación —Tesoro Nacional, Seguridad Social y Fondo A.T.N.—. Son las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones), no los giros discrecionales.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,6 % interanual real** (2025-12) | **VERDE** | Peso efectivo 8,2 % del ITCP | Cinturón Política |
+| **Hoy: −1,8 % interanual real** (2026-08) | **VERDE** | Peso efectivo 8,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -587,13 +587,13 @@ Cuánto varían, en términos reales, los recursos de origen nacional que la Nac
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | iaf_transferencias | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % interanual real |
-| **SERIE DISPONIBLE** | 2018-12 → 2025-12 (8 puntos) | **REZAGO DE PUBLICACIÓN** | Por diseño compara el último año cerrado contra el anterior: durante 2026 se lee «2025 contra 2024» — el dato puede tener hasta un año de rezago. |
+| **SERIE DISPONIBLE** | 2018-11 → 2026-08 (94 puntos) | **REZAGO DE PUBLICACIÓN** | Compara los últimos 12 meses con los 12 anteriores y termina en el último mes que tiene IPC publicado: unos 45 días de rezago del INDEC, más lo que tarde Hacienda en subir la planilla del mes (la planilla suele llegar antes que el IPC, que es el que fija el último mes). |
 | **PRODUCTOR DEL DATO** | Ministerio de Economía (Secretaría de Hacienda); deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | RON — recursos de origen nacional girados a las jurisdicciones, planilla mensual consolidada (una hoja por mes), con el archivo anual oficial como ancla de unidad; deflactor: IPC nacional del INDEC |
-| **MODO DE ACCESO** | Automático: resuelve desde la página oficial la planilla consolidada de cada año (el nombre del archivo no es estable), suma en cada hoja mensual las filas de jurisdicción y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-10 |
+| **MODO DE ACCESO** | Automático: resuelve desde la página oficial la planilla consolidada de cada año (el nombre del archivo no es estable), suma en cada hoja mensual las filas de jurisdicción y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-10 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante un año calendario completo, comparado con el año anterior. Entra lo transferido a las provincias, a la Ciudad de Buenos Aires y al Fondo Compensador, incluida la compensación del Consenso Fiscal; quedan afuera las porciones que se quedan en la Nación —Tesoro Nacional, Seguridad Social y Fondo A.T.N.—. Son las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones), no los giros discrecionales.
+Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante los últimos 12 meses, comparado con los 12 meses anteriores (la ventana termina en el último mes con IPC publicado). Entra lo transferido a las provincias, a la Ciudad de Buenos Aires y al Fondo Compensador, incluida la compensación del Consenso Fiscal; quedan afuera las porciones que se quedan en la Nación —Tesoro Nacional, Seguridad Social y Fondo A.T.N.—. Son las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones), no los giros discrecionales.
 
 Mide el gesto fiscal de la Nación hacia las provincias: cuánto gira por encima o por debajo de lo que giraba antes, en términos reales. Es un insumo de la relación federal, no la respuesta de los gobernadores: informa lo que hace el Gobierno nacional, no cómo reaccionan las provincias.
 
@@ -601,11 +601,12 @@ Mide el gesto fiscal de la Nación hacia las provincias: cuánto gira por encima
 
 ## Método de cómputo
 
-- Universo: lo girado a las jurisdicciones —Provincias, Ciudad de Buenos Aires y Fondo Compensador—, incluida la compensación del Consenso Fiscal, que el cuadro publica en su propia columna y sí forma parte de lo transferido (sin ella el total no cierra contra el archivo anual). Quedan afuera las porciones que se quedan en la Nación: Tesoro Nacional, Seguridad Social y Fondo A.T.N. Es ejecución, no presupuesto: lo que la Nación giró ese año calendario.
+- Universo: lo girado a las jurisdicciones —Provincias, Ciudad de Buenos Aires y Fondo Compensador—, incluida la compensación del Consenso Fiscal, que el cuadro publica en su propia columna y sí forma parte de lo transferido (sin ella el total no cierra contra el archivo anual). Quedan afuera las porciones que se quedan en la Nación: Tesoro Nacional, Seguridad Social y Fondo A.T.N. Es ejecución, no presupuesto: lo que la Nación giró en cada mes.
 - Deflación mes a mes: cada flujo mensual se divide por el índice IPC nacional de su propio mes, con base común diciembre de 2016 = 100, antes de sumarse. La variación real es el cociente entre ambas sumas a precios comparables menos uno. Un promedio anual simple de precios puede sesgar el resultado cuando los flujos no se distribuyen uniformemente. El deflactor implícito es (1 + variación nominal) / (1 + variación real) − 1, con tasas expresadas como fracción; no es la resta entre ambas tasas. La tarjeta publica ese deflactor para permitir reproducir la cuenta.
-- Sólo entran los años con los doce meses publicados: un año a medias compararía nueve meses contra doce.
+- Ventana: los 12 meses móviles que terminan en el último mes con IPC publicado, contra los 12 meses previos. Sólo hay ventana si los 24 meses tienen planilla e IPC, de modo que nunca se compara un tramo incompleto contra uno entero. La planilla puede traer un mes más que el IPC; ese mes todavía no entra.
 - Las hojas mensuales pasaron de miles a millones de pesos entre 2022 y 2023 sin declararlo en ningún lado. El archivo anual oficial, que cubre 2003-2025 en una sola unidad, hace de ancla: el factor entre ambos tiene que ser exactamente una potencia de mil y el residuo, menor al 1%. Si no lo es, el cálculo falla en vez de publicar una variación armada sobre dos unidades distintas.
-- En el gráfico, cada punto anual se ubica en diciembre del año que cierra: el valor fechado en diciembre de 2025 es la variación del año 2025 completo contra 2024.
+- En el gráfico hay un punto por mes, ubicado en el último mes de la ventana: el valor de diciembre de 2025 es la variación del año 2025 completo contra 2024 (igual que antes); el de agosto de 2026 compara septiembre 2025–agosto 2026 con septiembre 2024–agosto 2025.
+- El archivo anual oficial, que sólo llega hasta 2025, ancla la unidad de cada año cerrado. El año en curso no está en él: hereda la unidad del anterior y el cálculo se detiene si el nivel mensual no es compatible (un cambio de miles a millones no pasa por inflación).
 
 ## Semáforo — valores que determinan el color
 
@@ -624,13 +625,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 2025: +43.1% nominal contra un deflactor de 40.8% ponderado por el flujo de cada mes → +1.6% real
+- 12 meses a ago 2026: +30.5% nominal contra un deflactor de 32.9% ponderado por el flujo de cada mes → -1.8% real
 
 ## Color vigente y por qué
 
-Dato vigente: 1,6 % interanual real (2025-12).
+Dato vigente: −1,8 % interanual real (2026-08).
 
-1,6 % interanual real cae en el tramo que corresponde a Verde, a 8,6 del corte más cercano.
+−1,8 % interanual real cae en el tramo que corresponde a Verde, a 5,2 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -638,7 +639,8 @@ Ponderación vigente en el ITCP: 8,2 % efectivo. El color es una lectura adicion
 
 ## Transparencia — limitaciones declaradas
 
-- Granularidad anual: no capta la tensión federal dentro del año.
+- Una ventana de 12 meses promedia lo ocurrido: un giro de pocas semanas se diluye y la medida describe, en promedio, lo de hace unos seis meses. Mira la tendencia, no el último mes.
+- Compara contra un año que puede traer su propia irregularidad: la variación hereda ese efecto de base durante los doce meses siguientes.
 - Depende del formato del cuadro consolidado: la columna del total y los rótulos de fila se localizan por encabezado y no por posición —el cuadro fue ganando columnas con los años y los rótulos viejos venían espaciados letra por letra—, pero un rediseño de la planilla interrumpe el indicador hasta adaptarlo.
 - Mide el flujo fiscal hacia las provincias — una aproximación parcial a la relación política con los gobernadores.
 - La serie cubre las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones del Consenso Fiscal); no incluye los giros discrecionales —las transferencias no automáticas—, que otros informes agregan por separado.
@@ -666,6 +668,8 @@ Ponderación vigente en el ITCP: 8,2 % efectivo. El color es una lectura adicion
 **2026-08-25** — La fórmula y la ficha se sincronizan con esa deflación. Seguían describiendo una suma anual dividida por un IPC promedio —el método reemplazado— y la fuente anual que dejó de usarse. Ahora quedan explícitos los cinco términos del contrato: qué jurisdicciones entran (Provincias, Ciudad de Buenos Aires y Fondo Compensador, con la compensación del Consenso Fiscal) y cuáles no, qué clase de transferencia (automáticas, no discrecionales), la ventana (dos años calendario completos), el deflactor (IPC nacional del INDEC, mes a mes) y la base común a la que se llevan los doce flujos antes de sumarse. Ningún valor cambia.
 
 **2026-09-08** — El cotejo de los 24 flujos originales reproduce 1,6365% real para 2025 y coincide con 1,6% de la OPC. Se aclara que el deflactor implícito es un cociente, no la resta de tasas; el cálculo ya usaba la fórmula correcta.
+
+**2026-10-10** — Pasa de comparar el último año calendario cerrado contra el anterior (el dato se quedaba en diciembre de 2025, con diez meses de rezago) a los últimos 12 meses móviles contra los 12 previos, con fecha en el último mes con IPC publicado (agosto de 2026: −1,8% real). La planilla de Hacienda ya traía enero a septiembre de 2026. Es la misma escala y las mismas bandas: el valor de diciembre coincide con el anual de antes. La serie pasa de un punto por año a uno por mes.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

@@ -138,7 +138,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1606.60 (2026-10-09T18:00:00-03:00) / mayorista venta 1517.00 (2026-10-09T12:52:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1606.60 (2026-10-10T15:00:00-03:00) / mayorista venta 1517.00 (2026-10-09T12:52:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
@@ -606,7 +606,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-10-10; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV
+- Evaluación al 2026-10-10; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 6 menciones del FAL en el BO desde mar-2026
 
 ## Color vigente y por qué
 
@@ -934,7 +934,7 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 
 # Concesiones viales
 
-Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada proceso sale del sistema de contrataciones del Estado (CONTRAT.AR) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).
+Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada etapa sale de las resoluciones de adjudicación del Boletín Oficial (el sistema de contrataciones del Estado, CONTRAT.AR, se usa para detectar procesos nuevos) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).
 
 | | | | |
 |---|---|---|---|
@@ -948,19 +948,19 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de km adjudicados / km del plan (Red Federal de Concesiones) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Se consulta el estado del expediente y se contrasta con actos de adjudicación publicados. CONTRAT.AR puede demorar en reflejar una resolución; la fecha de consulta no equivale a la fecha del acto ni al inicio de la operación. |
 | **PRODUCTOR DEL DATO** | CONTRAT.AR + Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones) | **OPERACIÓN ESTADÍSTICA** | Tasa de adjudicación de la Red Federal de Concesiones, en kilómetros: km bajo concesión adjudicada sobre km totales del plan |
-| **MODO DE ACCESO** | Automático: lee el estado de cada proceso en CONTRAT.AR y el kilometraje en Vialidad. Si el portal no declara adjudicación, busca su resolución en el Boletín Oficial mediante InfoLeg; un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-10 |
+| **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-10 |
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada proceso sale del sistema de contrataciones del Estado (CONTRAT.AR) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).
+Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada etapa sale de las resoluciones de adjudicación del Boletín Oficial (el sistema de contrataciones del Estado, CONTRAT.AR, se usa para detectar procesos nuevos) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).
 
-Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su licitación figura Adjudicada en el sistema de contrataciones.
+Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su resolución de adjudicación está publicada en el Boletín Oficial; que el sistema de contrataciones la muestre adjudicada no alcanza (sólo avisa).
 
 **Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
 ## Método de cómputo
 
-- Una etapa cuenta con el 100% de sus kilómetros cuando su proceso figura adjudicado o existe una resolución de adjudicación publicada para ese proceso.
+- Una etapa cuenta con el 100% de sus kilómetros cuando existe una resolución de adjudicación publicada para su proceso (o, para un proceso nuevo todavía no registrado, cuando CONTRAT.AR lo declara adjudicado).
 - La serie histórica es escalonada, por hitos de adjudicación fechados con su norma.
 
 ## Semáforo — valores que determinan el color
@@ -980,7 +980,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 9.133 de 9.133 km adjudicados · I: adjudicada (CONTRAT.AR) · II-B: adjudicada (CONTRAT.AR) · II: adjudicada (CONTRAT.AR) · III: adjudicada (CONTRAT.AR)
+- 9.133 de 9.133 km adjudicados · I: adjudicada por Resolución 80 / 2025 (2025-11-19) · II-B: adjudicada por Resolución 1149 / 2026 (2026-07-28) · II: adjudicada por Resolución 706 / 2026 (2026-05-15) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24)
 
 ## Color vigente y por qué
 
@@ -1016,6 +1016,8 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 **2026-08-25** — Una etapa cuenta como adjudicada si CONTRAT.AR lo declara o si hay una resolución publicada que adjudique su proceso. CONTRAT.AR se queda viejo: al 25 de agosto de 2026 mostraba «Disponible Para Adjudicar» la Etapa II-B, adjudicada por Resolución 1149/2026 el 28 de julio, y la Etapa III, adjudicada por Resolución 1379/2026 el 24 de agosto. El indicador pasa de 28,7% a 100%. La card publica el inventario por etapa con los km, la fuente del estado y la resolución que lo respalda.
 
 **2026-08-29** — El valor de respaldo escrito a mano dejó de tener prioridad sobre el último valor que sí salió de la fuente. Con CONTRAT.AR caído, la card publicaba 28,7% —la foto del 2 de julio, con dos etapas sin adjudicar— teniendo el 100% en el cache de la noche anterior. Una fuente caída ahora envejece el número, no lo hace retroceder. El respaldo se actualizó a 100% con las cuatro resoluciones.
+
+**2026-10-10** — El estado de cada etapa pasa a salir de las resoluciones del Boletín Oficial registradas, y CONTRAT.AR queda como detector de procesos nuevos que no frena el indicador. Desde los servidores de la publicación el portal no respondía en 15 de 33 noches y la card quedaba desactualizada. No cambia lo que mide ni su valor.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

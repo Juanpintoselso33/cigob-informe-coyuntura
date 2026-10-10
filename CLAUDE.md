@@ -340,6 +340,16 @@ rabbit-hole into "why don't these match" for indicators outside the task's
 scope; run the full sequence again instead. Set the expectation up front
 (~15-20 min).
 
+**Never run pytest in the same checkout while a manual pipeline is running.**
+The test guardian (`tests/conftest.py`, ADR-0179) snapshots every versioned
+output at session start and, if a file changes mid-session, blames the test
+that was running and **restores the snapshot** — so a collector's fresh output
+gets silently overwritten with the old one. Hit 2026-10-10: `politica.py` wrote
+the new `iaf_transferencias`, a parallel pytest put the nightly's value back,
+and the gate caught card ≠ series. The nightly is immune (steps are
+sequential); a manual run is not. Run manual pipelines and anything else
+(web edits, pytest) in **separate worktrees**, or strictly one after the other.
+
 **After ANY manual pipeline run (full or scoped), before pushing**: run
 `.venv/bin/python -m pytest tests -q` in addition to `gate_calidad.py` — the real CI
 runs both as separate sequential gates (G1-G3/G6 via gate_calidad.py, G4-G5

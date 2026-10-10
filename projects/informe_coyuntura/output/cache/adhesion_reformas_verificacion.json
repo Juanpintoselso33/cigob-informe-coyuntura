@@ -1,0 +1,12 @@
+{
+  "CABA": {
+    "firma": "549fd32fef0e8df355218caf898e5a5925166f2854cc2fd78c5b98099afbb04b",
+    "textos_confirmados": 4,
+    "verificado_en": "2026-10-10"
+  },
+  "SANTA FE": {
+    "firma": "efa39f478c8e508e9c1d9d597567058a4b64dbff4c83a3b664c503c9839dab05",
+    "textos_confirmados": 4,
+    "verificado_en": "2026-10-10"
+  }
+}

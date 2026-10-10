@@ -435,14 +435,100 @@ fecha,indicador,valor,unidad,fuente
 2007-02-01,jornadas_individuales_no_trabajadas_12m,5950101,jornadas individuales no trabajadas (12m móviles),Secretaría de Trabajo — Estadísticas de conflictos laborales
 2007-01-01,jornadas_individuales_no_trabajadas_12m,5935151,jornadas individuales no trabajadas (12m móviles),Secretaría de Trabajo — Estadísticas de conflictos laborales
 2006-12-01,jornadas_individuales_no_trabajadas_12m,5972813,jornadas individuales no trabajadas (12m móviles),Secretaría de Trabajo — Estadísticas de conflictos laborales
-2025-12-01,iaf_transferencias,1.6,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
-2024-12-01,iaf_transferencias,-9.8,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
-2023-12-01,iaf_transferencias,-4.4,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
-2022-12-01,iaf_transferencias,6.3,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
-2021-12-01,iaf_transferencias,7.3,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
-2020-12-01,iaf_transferencias,-4.1,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
-2019-12-01,iaf_transferencias,-1.4,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
-2018-12-01,iaf_transferencias,6.7,% i.a. real,RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2026-08-01,iaf_transferencias,-1.8,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2026-07-01,iaf_transferencias,-1.6,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2026-06-01,iaf_transferencias,-1.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2026-05-01,iaf_transferencias,-0.6,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2026-04-01,iaf_transferencias,-4.1,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2026-03-01,iaf_transferencias,-3.2,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2026-02-01,iaf_transferencias,-2.0,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2026-01-01,iaf_transferencias,-0.0,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-12-01,iaf_transferencias,1.6,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-11-01,iaf_transferencias,1.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-10-01,iaf_transferencias,2.2,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-09-01,iaf_transferencias,1.6,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-08-01,iaf_transferencias,2.4,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-07-01,iaf_transferencias,0.3,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-06-01,iaf_transferencias,-2.1,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-05-01,iaf_transferencias,-5.1,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-04-01,iaf_transferencias,-0.2,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-03-01,iaf_transferencias,-2.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-02-01,iaf_transferencias,-5.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2025-01-01,iaf_transferencias,-8.0,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-12-01,iaf_transferencias,-9.8,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-11-01,iaf_transferencias,-11.4,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-10-01,iaf_transferencias,-12.6,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-09-01,iaf_transferencias,-12.9,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-08-01,iaf_transferencias,-12.8,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-07-01,iaf_transferencias,-10.8,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-06-01,iaf_transferencias,-9.6,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-05-01,iaf_transferencias,-7.4,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-04-01,iaf_transferencias,-9.7,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-03-01,iaf_transferencias,-8.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-02-01,iaf_transferencias,-6.4,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2024-01-01,iaf_transferencias,-5.3,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-12-01,iaf_transferencias,-4.4,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-11-01,iaf_transferencias,-2.7,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-10-01,iaf_transferencias,-1.1,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-09-01,iaf_transferencias,0.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-08-01,iaf_transferencias,0.8,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-07-01,iaf_transferencias,0.2,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-06-01,iaf_transferencias,1.7,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-05-01,iaf_transferencias,3.1,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-04-01,iaf_transferencias,4.7,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-03-01,iaf_transferencias,5.4,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-02-01,iaf_transferencias,5.4,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2023-01-01,iaf_transferencias,6.0,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-12-01,iaf_transferencias,6.3,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-11-01,iaf_transferencias,6.8,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-10-01,iaf_transferencias,6.0,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-09-01,iaf_transferencias,4.8,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-08-01,iaf_transferencias,5.1,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-07-01,iaf_transferencias,5.9,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-06-01,iaf_transferencias,5.0,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-05-01,iaf_transferencias,4.3,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-04-01,iaf_transferencias,3.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-03-01,iaf_transferencias,5.6,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-02-01,iaf_transferencias,7.0,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2022-01-01,iaf_transferencias,7.1,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-12-01,iaf_transferencias,7.3,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-11-01,iaf_transferencias,8.3,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-10-01,iaf_transferencias,9.9,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-09-01,iaf_transferencias,11.7,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-08-01,iaf_transferencias,11.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-07-01,iaf_transferencias,11.3,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-06-01,iaf_transferencias,9.4,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-05-01,iaf_transferencias,7.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-04-01,iaf_transferencias,3.9,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-03-01,iaf_transferencias,0.2,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-02-01,iaf_transferencias,-2.1,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2021-01-01,iaf_transferencias,-2.9,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-12-01,iaf_transferencias,-4.1,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-11-01,iaf_transferencias,-5.8,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-10-01,iaf_transferencias,-6.8,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-09-01,iaf_transferencias,-8.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-08-01,iaf_transferencias,-9.1,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-07-01,iaf_transferencias,-9.3,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-06-01,iaf_transferencias,-7.7,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-05-01,iaf_transferencias,-7.2,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-04-01,iaf_transferencias,-3.9,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-03-01,iaf_transferencias,-2.3,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-02-01,iaf_transferencias,-2.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2020-01-01,iaf_transferencias,-2.3,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-12-01,iaf_transferencias,-1.4,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-11-01,iaf_transferencias,-1.7,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-10-01,iaf_transferencias,-2.2,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-09-01,iaf_transferencias,-1.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-08-01,iaf_transferencias,-1.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-07-01,iaf_transferencias,-0.8,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-06-01,iaf_transferencias,-1.2,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-05-01,iaf_transferencias,0.9,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-04-01,iaf_transferencias,2.0,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-03-01,iaf_transferencias,2.0,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-02-01,iaf_transferencias,4.6,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2019-01-01,iaf_transferencias,5.9,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2018-12-01,iaf_transferencias,6.7,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
+2018-11-01,iaf_transferencias,7.6,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
 2026-10-01,eficacia_legislativa,21.4,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2026-09-01,eficacia_legislativa,20.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2026-08-01,eficacia_legislativa,14.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
