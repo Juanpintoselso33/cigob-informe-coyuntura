@@ -3275,47 +3275,39 @@ def fetch_concesiones_serie() -> list:
     adjudicación. El store concesiones_fechas.json trae las fechas oficiales
     verificadas (Etapa I: RESOL-2025-80-ST ene-2026 · II-A: Res. 706/2026
     may-2026) y se auto-actualiza con la MISMA regla que la card (ADR-0244):
-    una etapa entra cuando CONTRAT.AR la muestra ADJUDICADO o cuando hay una
-    resolución publicada que la adjudique. En el segundo caso el escalón se
-    fecha con la publicación en el Boletín, no con el mes en que se detectó.
+    una etapa entra SÓLO cuando hay una resolución del Boletín que la adjudique
+    (CONTRAT.AR es un aviso, no un hito), y el escalón se fecha con la
+    publicación, no con el mes en que se detectó.
     Antes de la primera adjudicación el avance es 0. [[YYYY-MM-01, %]]."""
     store = json.loads(CONCESIONES_FECHAS_STORE.read_text(encoding="utf-8-sig"))
     etapas = store["etapas"]
     try:
         km = gestion._rfc_km_por_etapa()
         store["km_totales"] = round(sum(km.values()))
-        hoy_ym = date.today().strftime("%Y-%m")
         for proceso, nombre, estado in gestion._contratar_procesos_rfc():
             etapa = gestion._etapa_de_proceso(nombre)
             if not etapa or etapa not in km:
                 continue
-            # MISMA regla que la card (ADR-0244): adjudica el acto publicado, no
-            # el estado del portal. La detección anterior miraba sólo
-            # CONTRAT.AR y por eso la serie se quedó en 28,7% mientras la card
-            # daba 100% — el gate G3 lo marcó.
-            #
-            # Y cuando el hito viene del Boletín, la fecha es la de la
-            # publicación y no "el mes en que lo detectamos": para una función
-            # escalonada eso no es un detalle, es el escalón puesto donde va.
-            # El propio store ya lo decía de la Etapa I: «manda el BO».
-            resolucion = None
-            if not gestion._esta_adjudicado(estado):
+            # MISMA regla que la card (ADR-0244): una etapa entra al store SOLO
+            # con la resolución del Boletín. Que CONTRAT.AR diga «Adjudicado»
+            # es un aviso (lo imprime la card), no un hito: antes la serie
+            # fechaba esa detección con el mes corriente y sin resolución.
+            # La fecha del escalón es la de la publicación, no la de detección.
+            if etapa not in etapas:
                 try:
                     resolucion = gestion._adjudicacion_publicada(proceso)
                 except Exception as e:                      # noqa: BLE001
                     print(f"  [WARN] concesiones serie {proceso}: InfoLeg no respondió ({e})")
+                    continue
                 if resolucion is None:
                     continue
-            if etapa not in etapas:
-                if resolucion:
-                    etapas[etapa] = {
-                        "fecha": resolucion["fecha_pub"][:7], "km": km[etapa],
-                        "fuente": (f"{resolucion['norma']}, BO {resolucion['fecha_pub']} "
-                                   f"— {proceso} (detectado por el Boletín; CONTRAT.AR "
-                                   f"informaba «{estado}»)")}
-                else:
-                    etapas[etapa] = {"fecha": hoy_ym, "km": km[etapa],
-                                     "fuente": f"CONTRAT.AR {proceso} (detectado {hoy_ym})"}
+                etapas[etapa] = {
+                    "fecha": resolucion["fecha_pub"][:7], "km": km[etapa],
+                    "fuente": (f"{resolucion['norma']}, BO {resolucion['fecha_pub']} "
+                               f"— {proceso} (detectado por el Boletín; CONTRAT.AR "
+                               f"informaba «{estado}»)"),
+                    "proceso": proceso, "resolucion": resolucion["norma"],
+                    "fecha_pub": resolucion["fecha_pub"]}
             else:
                 etapas[etapa]["km"] = km[etapa]
         CONCESIONES_FECHAS_STORE.write_text(
@@ -3557,7 +3549,7 @@ GESTION_DERIVADAS = [
     ("protocolo_antipiquetes", "% reducción de cortes CABA vs 2023 (IRPC, anual)",
      "Diagnóstico Político (monitoreos públicos)", fetch_protocolo_serie),
     ("apertura_comercial", "% alícuota efectiva del comercio exterior", "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500", fetch_alicuota_serie),
-    ("concesiones_infraestructura", "% km adjudicados RFC", "CONTRAT.AR + RFC (hitos fechados)", fetch_concesiones_serie),
+    ("concesiones_infraestructura", "% km adjudicados RFC", "Boletín Oficial + RFC (hitos fechados)", fetch_concesiones_serie),
     ("privatizaciones", "% avance (etapas 0-4, cartera Ley Bases)", "BO — hitos fechados (elab. CIGOB)", fetch_privatizaciones_serie),
     ("fal_modernizacion_laboral", "Índice 0–100 (FAL vigente)", "InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)", fetch_fal_serie),
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),

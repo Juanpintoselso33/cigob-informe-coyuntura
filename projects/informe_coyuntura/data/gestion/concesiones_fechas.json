@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "descripcion": "Hitos de adjudicación de la Red Federal de Concesiones (RFC) para reconstruir la serie del indicador concesiones_infraestructura como función escalonada (ADR-0012/0016). Sembrado con las fechas oficiales verificadas 2026-07-03; descargar_series.fetch_concesiones_serie agrega automáticamente las etapas nuevas cuando CONTRAT.AR las muestra ADJUDICADO (con el mes corriente) y refresca los km desde la página oficial de la RFC. Desde el 10-oct-2026 este store es la FUENTE del estado de la card concesiones_infraestructura (no CONTRAT.AR, que desde los runners de GitHub da timeout ~1 de cada 2 noches): cada etapa trae proceso, resolución y fecha_pub; CONTRAT.AR sólo detecta procesos nuevos y avisa.",
+    "descripcion": "Hitos de adjudicación de la Red Federal de Concesiones (RFC) para reconstruir la serie del indicador concesiones_infraestructura como función escalonada (ADR-0012/0016). Sembrado con las fechas oficiales verificadas 2026-07-03; descargar_series.fetch_concesiones_serie agrega las etapas nuevas SÓLO cuando hay resolución de adjudicación en el Boletín (con su fecha de publicación; CONTRAT.AR sólo avisa) y refresca los km desde la página oficial de la RFC. Desde el 10-oct-2026 este store es la FUENTE del estado de la card concesiones_infraestructura (no CONTRAT.AR, que desde los runners de GitHub da timeout ~1 de cada 2 noches): cada etapa trae proceso, resolución y fecha_pub; CONTRAT.AR sólo detecta procesos nuevos y avisa.",
     "regla": "% del mes = 100 × Σ km de etapas con fecha ≤ mes / km_totales"
   },
   "km_totales": 9133,
@@ -16,10 +16,10 @@
     "II": {
       "fecha": "2026-05",
       "km": 1871.82,
-      "fuente": "Resolución 706/2026 MEC (BO ~15/05/2026) — Etapa II-A: Tramo Sur-Atlántico-Acceso Sur (Concret Nor-Marcalba-Pose-Coarco) y Tramo Pampa (Construcciones Electromecánicas del Oeste)",
+      "fuente": "Resolución 706/2026 MEC (BO 2026-05-15, InfoLeg id 425890) — Etapa II-A: Tramo Sur-Atlántico-Acceso Sur (Concret Nor-Marcalba-Pose-Coarco) y Tramo Pampa (Construcciones Electromecánicas del Oeste)",
       "proceso": "504-0013-LPU25",
       "resolucion": "Resolución 706 / 2026",
-      "fecha_pub": null
+      "fecha_pub": "2026-05-15"
     },
     "III": {
       "fecha": "2026-08",

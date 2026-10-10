@@ -25,37 +25,54 @@ def test_preadjudicado_no_cuenta_como_adjudicado():
     assert not gestion._esta_adjudicado(None)
 
 
-def test_toda_etapa_del_store_de_concesiones_declara_de_donde_salio():
-    """Una etapa entra al store por un ACTO, y el store dice cuál.
-
-    Nació (ADR-0087) como «II-B no puede estar acá»: había entrado sola porque
-    el chequeo de estado usaba `'ADJUDICADO' in estado` y CONTRAT.AR informa
-    «Preadjudicado», que contiene la palabra. Verificar la ausencia alcanzaba
-    mientras la única vía de entrada fuera el portal.
-
-    Ya no lo es: desde ADR-0244 una etapa también entra por una resolución
-    publicada, y II-B entró así —Resolución 1149/2026, BO 28-jul-2026— que es
-    una razón más fuerte que el estado del portal, no más débil. Así que lo que
-    hay que cuidar no es que II-B falte, sino que **ninguna etapa esté sin una
-    procedencia que la justifique**. Un `fuente` que no nombre ni una resolución
-    ni una detección explícita de CONTRAT.AR es la firma de que algo entró solo.
-    """
-    import json
+def _problemas_store_concesiones(store: dict) -> list:
+    """Integridad del store de concesiones (ADR-0244): toda etapa entra por una
+    resolución del Boletín, con su fecha de publicación real, y el mes del
+    escalón es el de esa publicación. Devuelve la lista de problemas; vacía
+    sólo si hay etapas y todas cumplen (un store vacío NO cumple)."""
     import re
+    etapas = store.get("etapas") or {}
+    if not etapas:
+        return ["el store no tiene ninguna etapa"]
+    out = []
+    for etapa, m in etapas.items():
+        if not (m.get("resolucion") and m.get("proceso")):
+            out.append(f"{etapa}: sin resolución o sin proceso")
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", m.get("fecha_pub") or ""):
+            out.append(f"{etapa}: fecha_pub ausente o no YYYY-MM-DD ({m.get('fecha_pub')!r})")
+        elif m.get("fecha") != m["fecha_pub"][:7]:
+            out.append(f"{etapa}: fecha {m.get('fecha')} no es el mes de fecha_pub {m['fecha_pub']}")
+        if not m.get("km"):
+            out.append(f"{etapa}: sin km")
+        if not re.search(r"(RESOL|Resoluci[oó]n)", m.get("fuente") or "", re.I):
+            out.append(f"{etapa}: la fuente no nombra la resolución")
+    return out
+
+
+def _store_concesiones() -> dict:
+    import json
     from pathlib import Path
-    store = json.loads((Path(__file__).resolve().parents[1] / "data" / "gestion" /
-                        "concesiones_fechas.json").read_text(encoding="utf-8-sig"))
-    sin_respaldo = []
-    for etapa, meta in store["etapas"].items():
-        fuente = meta.get("fuente") or ""
-        por_norma = re.search(r"(RESOL|Resoluci[oó]n)", fuente, re.I)
-        por_portal = "CONTRAT.AR" in fuente and "detectado" in fuente
-        if not (por_norma or por_portal):
-            sin_respaldo.append(f"{etapa}: {fuente[:70]!r}")
-        assert meta.get("fecha") and meta.get("km"), f"{etapa} sin fecha o sin km"
-    assert not sin_respaldo, (
-        "estas etapas están en el store sin declarar el acto que las adjudicó: "
-        + "; ".join(sin_respaldo))
+    return json.loads((Path(__file__).resolve().parents[1] / "data" / "gestion" /
+                       "concesiones_fechas.json").read_text(encoding="utf-8-sig"))
+
+
+def test_toda_etapa_del_store_de_concesiones_declara_de_donde_salio():
+    """Una etapa entra al store por una resolución, y el store dice cuál (ADR-0087
+    nació como «II-B no puede estar acá»; ADR-0244 lo generalizó).
+
+    Discrimina: el store real tiene que traer las 4 etapas y cumplir, y el mismo
+    chequeo falla con un store vacío, con una fecha_pub ausente y con un mes que
+    no coincide con la publicación."""
+    store = _store_concesiones()
+    assert len(store["etapas"]) >= 4
+    assert _problemas_store_concesiones(store) == []
+    assert _problemas_store_concesiones({"etapas": {}})
+    sin_fecha = {"etapas": {**store["etapas"], "II": {**store["etapas"]["II"], "fecha_pub": None}}}
+    assert any("fecha_pub" in p for p in _problemas_store_concesiones(sin_fecha))
+    mes_mal = {"etapas": {**store["etapas"], "III": {**store["etapas"]["III"], "fecha": "2026-09"}}}
+    assert any("no es el mes" in p for p in _problemas_store_concesiones(mes_mal))
+    solo_portal = {"etapas": {"IV": {"fecha": "2026-10", "km": 1, "fuente": "CONTRAT.AR x (detectado 2026-10)"}}}
+    assert _problemas_store_concesiones(solo_portal)
 
 
 def test_preadjudicado_nunca_alcanza_para_entrar_al_store():
@@ -68,21 +85,14 @@ def test_preadjudicado_nunca_alcanza_para_entrar_al_store():
     assert gestion._esta_adjudicado("Adjudicado")
 
 
-def test_las_etapas_que_entraron_por_el_boletin_se_fechan_con_la_publicacion():
-    """Para una función escalonada, la fecha ES el escalón. Poner el mes en que
-    se detectó en vez del de la publicación corre el salto de la serie."""
-    import json
-    import re
-    from pathlib import Path
-    store = json.loads((Path(__file__).resolve().parents[1] / "data" / "gestion" /
-                        "concesiones_fechas.json").read_text(encoding="utf-8-sig"))
+def test_las_etapas_del_store_se_fechan_con_la_publicacion():
+    """Para una función escalonada, la fecha ES el escalón. La Etapa II tenía
+    fecha_pub null y el código la rellenaba con «2026-05» cableado; ahora la fecha
+    de InfoLeg (2026-05-15) vive en el store y se valida contra `fecha`."""
+    store = _store_concesiones()
+    assert store["etapas"]["II"]["fecha_pub"] == "2026-05-15"
     for etapa, meta in store["etapas"].items():
-        m = re.search(r"BO (\d{4})-(\d{2})-\d{2}", meta.get("fuente") or "")
-        if not m:
-            continue
-        assert meta["fecha"] == f"{m.group(1)}-{m.group(2)}", (
-            f"{etapa}: el store la fecha en {meta['fecha']} y el BO la publicó "
-            f"en {m.group(1)}-{m.group(2)}")
+        assert meta["fecha"] == meta["fecha_pub"][:7], etapa
 
 
 # ── Desregulación: sólo cuenta lo que deroga de verdad (ADR-0096) ───────────

@@ -2536,11 +2536,20 @@ def _contratar_procesos_rfc() -> list:
 
 def _rfc_km_por_etapa() -> dict:
     """{etapa: km} desde las tablas de la página oficial de la RFC (una tabla
-    por etapa, en orden I · II · II-B · III). Los km vienen 'es-AR' (682,28)."""
+    por etapa). La etapa sale del encabezado «Etapa X» que precede a cada tabla,
+    no de una lista fija: una Etapa IV tiene que poder entrar. «II-A» es la «II»
+    del store. Los km vienen 'es-AR' (682,28)."""
     from bs4 import BeautifulSoup
     html = _http_get_resiliente(RFC_PAGE_URL).decode("utf-8", errors="replace")
     tablas = BeautifulSoup(html, "html.parser").find_all("table")
-    etiquetas = ("I", "II", "II-B", "III")
+
+    def _etapa_del_encabezado(tabla) -> str | None:
+        enc = tabla.find_previous(
+            string=re.compile(r"^\s*Etapa\s+[IVX]+(?:\s*-\s*[AB])?\s*$", re.I))
+        if enc is None:
+            return None
+        et = re.sub(r"\s+", "", re.sub(r"(?i)etapa", "", enc)).upper()
+        return et[:-2] if et.endswith("-A") else et
 
     def _km(s: str) -> float | None:
         """'682,28' (es-AR) · '681.92' (punto decimal, tabla Etapa III) · '720'."""
@@ -2552,7 +2561,10 @@ def _rfc_km_por_etapa() -> dict:
         return None
 
     km_por_etapa = {}
-    for etiqueta, tabla in zip(etiquetas, tablas):
+    for tabla in tablas:
+        etiqueta = _etapa_del_encabezado(tabla)
+        if etiqueta is None:
+            continue
         km_total = 0.0
         for fila in tabla.find_all("tr"):
             celdas = [c.get_text(" ", strip=True) for c in fila.find_all("td")]
@@ -2561,7 +2573,7 @@ def _rfc_km_por_etapa() -> dict:
                 if v is not None:
                     km_total += v
         if km_total > 0:
-            km_por_etapa[etiqueta] = round(km_total, 2)
+            km_por_etapa[etiqueta] = round(km_por_etapa.get(etiqueta, 0.0) + km_total, 2)
     if len(km_por_etapa) < 3:
         raise ValueError(f"página RFC: se esperaban ≥3 etapas con km, hay {len(km_por_etapa)}")
     return km_por_etapa
@@ -2697,9 +2709,14 @@ def fetch_concesiones_infraestructura() -> dict | None:
     Antes el orden era el inverso y un timeout dejaba el indicador entero en
     cache (16 de 46 noches desactualizado).
 
-    Para un proceso que el store NO conoce vale la regla de siempre: cuenta si
-    CONTRAT.AR lo declara Adjudicado o si InfoLeg tiene la resolución; en ambos
-    casos se avisa para cargarlo en el store.
+    Para un proceso que el store NO conoce cuenta sólo si InfoLeg tiene la
+    resolución del Boletín (ADR-0244); que CONTRAT.AR diga «Adjudicado» no
+    alcanza y es sólo un aviso para cargarlo en el store.
+
+    `fecha_dato`: si CONTRAT.AR respondió, es hoy (el estado se contrastó hoy).
+    Si no se consultó ninguna fuente de estado, es la fecha de la última
+    resolución del store y `desactualizado` sale del tope de frescura de la card
+    (`config.MAX_DIAS`), no de que el script haya corrido.
     """
     try:
         store = _etapas_adjudicadas_store()
@@ -2719,10 +2736,10 @@ def fetch_concesiones_infraestructura() -> dict | None:
                 "adjudicado": True, "estado_contratar": None,
                 "fuente_estado": "Boletín Oficial",
                 "resolucion": d.get("resolucion"),
-                "fecha_adjudicacion": d.get("fecha_pub") or d.get("fecha"),
+                "fecha_adjudicacion": d.get("fecha_pub"),
             })
             detalle_p.append(f"{etapa}: adjudicada por {d.get('resolucion') or 'resolución'}"
-                             f" ({d.get('fecha_pub') or d.get('fecha')})")
+                             f" ({d.get('fecha_pub')})")
 
         # ── Detector (no fatal): CONTRAT.AR ───────────────────────────────────
         procesos, atrasadas, nuevos = [], [], []
@@ -2741,22 +2758,22 @@ def fetch_concesiones_infraestructura() -> dict | None:
                     atrasadas.append(etapa)     # el portal se queda viejo (ADR-0244)
                 continue
             # proceso que el store no conoce
-            por_portal = _esta_adjudicado(estado)
+            por_portal = _esta_adjudicado(estado)   # sólo informativo
             resolucion = None
-            if not por_portal:
-                try:
-                    resolucion = _adjudicacion_publicada(proceso)
-                except Exception as e:                      # la RFC no depende de InfoLeg
-                    print(f"  [WARN] concesiones {proceso}: InfoLeg no respondió ({e})")
-            adjudicado = por_portal or resolucion is not None
+            try:
+                resolucion = _adjudicacion_publicada(proceso)
+            except Exception as e:                      # la RFC no depende de InfoLeg
+                print(f"  [WARN] concesiones {proceso}: InfoLeg no respondió ({e})")
+            adjudicado = resolucion is not None
             if etapa and adjudicado and etapa in km:
                 adjudicadas.add(etapa)
             nuevos.append(f"{proceso} (Etapa {etapa or '?'}, «{estado}»)")
             inventario.append({
                 "etapa": etapa, "proceso": proceso, "km": km.get(etapa),
                 "adjudicado": adjudicado, "estado_contratar": estado,
-                "fuente_estado": "CONTRAT.AR" if por_portal
-                                 else ("Boletín Oficial" if resolucion else "sin adjudicar"),
+                "fuente_estado": "Boletín Oficial" if resolucion
+                                 else ("CONTRAT.AR dice adjudicado, sin resolución" if por_portal
+                                       else "sin adjudicar"),
                 "resolucion": (resolucion or {}).get("norma"),
                 "fecha_adjudicacion": (resolucion or {}).get("fecha_pub"),
             })
@@ -2776,12 +2793,21 @@ def fetch_concesiones_infraestructura() -> dict | None:
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
         etapa_key = {"I": "etapa_i", "II": "etapa_ii", "II-B": "etapa_ii_b", "III": "etapa_iii"}
         publico = advertencia if (nuevos or atrasadas) else ""
+        if procesos:
+            fecha_dato, desactualizado = date.today().isoformat(), False
+        else:
+            fechas = [d.get("fecha_pub") or d["fecha"] + "-01" for d in store.values()]
+            fecha_dato = max(fechas)
+            sys.path.insert(0, str(PROJECT_DIR))
+            from config import MAX_DIAS, MAX_DIAS_DEFAULT
+            tope = MAX_DIAS.get("concesiones_infraestructura", MAX_DIAS_DEFAULT)
+            desactualizado = (date.today() - date.fromisoformat(fecha_dato)).days > tope
         return {
             "valor":          avance,
             "unidad":         "% de km adjudicados / km del plan (Red Federal de Concesiones)",
             "fuente":         "Boletín Oficial (resoluciones de adjudicación) + página oficial RFC; CONTRAT.AR (UOC 504) como detector",
-            "fecha_dato":     date.today().isoformat(),
-            "desactualizado": False,
+            "fecha_dato":     fecha_dato,
+            "desactualizado": desactualizado,
             "km_adjudicados": round(km_adj),
             "km_totales":     round(km_total),
             "procesos":       len(procesos) if procesos else len(inventario),
