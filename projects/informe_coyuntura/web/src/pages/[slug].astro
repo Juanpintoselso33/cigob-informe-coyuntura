@@ -1201,12 +1201,7 @@ const robChartData = rob?.hist && indice ? {
 </Layout>
 
 <style is:global>
-  /* Cinturón macro: los textos bajo los títulos ocupan el mismo ancho que la
-     grilla de dimensiones (de la primera a la última), como el marco. */
-  .cg-main--macro .cg-h2-sub,
-  .cg-main--macro .cg-dimserie-lede,
-  .cg-main--macro .cg-dimserie-nota,
-  .cg-main--macro .cg-sem-leyenda-intro { max-width: none; }
+  /* Cinturón macro: el pie de la barra es un párrafo de lectura, no una nota. */
   .cg-detalle-hero--macroeconomia .cg-nivel-pie,
-  .cg-detalle-hero--macro .cg-nivel-pie { max-width: none; font-size: 15px; line-height: 1.55; }
+  .cg-detalle-hero--macro .cg-nivel-pie { font-size: 15px; line-height: 1.55; }
 </style>
