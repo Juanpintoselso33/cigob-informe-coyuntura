@@ -123,3 +123,15 @@ def _ningun_test_escribe_en_el_arbol(request, _linea_base):
         f"publicar.py). Si escribir ahí es realmente inevitable, declararlo con "
         f"@pytest.mark.{MARCA}('motivo').",
         pytrace=False)
+
+
+@pytest.fixture(autouse=True)
+def _verificacion_rigi_aislada(monkeypatch, tmp_path):
+    """La verificación de leyes del RIGI se guarda en output/cache (versionado):
+    ningún test puede escribir ahí ni leer la de producción."""
+    try:
+        import politica
+    except Exception:
+        return
+    monkeypatch.setattr(politica, "ADHESION_VERIFICACION_PATH",
+                        tmp_path / "adhesion_reformas_verificacion.json", raising=False)
