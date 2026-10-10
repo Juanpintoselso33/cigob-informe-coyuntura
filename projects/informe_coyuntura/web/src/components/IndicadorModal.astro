@@ -708,13 +708,7 @@ const dimsJson = JSON.stringify(dims);
       aporta.innerHTML =
         `<strong>Cómo entra al ${esc(d.nombre)}:</strong> pesa ${Math.round(d.peso * 100)}% del índice — ` +
         `su puntaje ${nf.format(d.puntaje)}${uni} aporta <strong>${nf.format(aporte)}</strong> ` +
-        `de los ${nf.format(d.indiceValor)} puntos del ${esc(d.nombre)}.` +
-        (d.critica
-          ? `<br><br><span class="cg-dim-critica-chip">Dimensión crítica</span> Puntaje debajo del umbral ` +
-            `(${d.base100 ? 85 : 30}): el promedio del índice la compensa aritméticamente con las dimensiones ` +
-            `fuertes, pero en la realidad los frentes no se sustituyen — el flag evita que el titular esconda ` +
-            `este agujero.`
-          : "");
+        `de los ${nf.format(d.indiceValor)} puntos del ${esc(d.nombre)}.`;
       aporta.style.display = "";
 
       document.getElementById("cg-modal-ficha").innerHTML = [

@@ -58,7 +58,7 @@ const peor = peorDimension(cinturon);
               style={`flex-grow:${pesoPct(dim)};`}
               aria-label={`${dim.nombre}: puntaje ${num(dim.puntaje)}, pesa ${pesoPct(dim)}% del índice — tocá para ver qué mide`}></button>
             <span class="cg-genoma-tip" aria-hidden="true">
-              <span class="cg-genoma-tip-head">{dim.nombre} · <strong>{num(dim.puntaje)}{indice.base100 ? "" : "/100"}</strong> · pesa {pesoPct(dim)}%{dim.critica ? " · dimensión crítica" : ""}</span>
+              <span class="cg-genoma-tip-head">{dim.nombre} · <strong>{num(dim.puntaje)}{indice.base100 ? "" : "/100"}</strong> · pesa {pesoPct(dim)}%</span>
               {DIM_DESCRIPCIONES[dkey] && <span class="cg-genoma-tip-desc">{DIM_DESCRIPCIONES[dkey]}</span>}
               <span class="cg-genoma-tip-cta">Tocá para ver la composición completa</span>
             </span>
