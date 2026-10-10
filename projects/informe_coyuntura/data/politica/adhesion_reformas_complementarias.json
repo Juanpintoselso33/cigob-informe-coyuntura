@@ -1,7 +1,7 @@
 {
   "_meta": {
     "verificado": "2026-09-08",
-    "descripcion": "Adhesiones formales omitidas por el catálogo MAGyP. Se reconsulta el texto original de cada ley al calcular tarjeta e historia. Este registro requiere revisión de novedades y no certifica ausencia de derogaciones posteriores. ADR-0304."
+    "descripcion": "Adhesiones formales omitidas por el catálogo MAGyP. Se comprueba el texto original de cada ley y la verificación queda guardada en output/cache/adhesion_reformas_verificacion.json; se repite cada 30 días o si cambia la fuente o los textos, y si la red falla se usa la guardada. Este registro requiere revisión de novedades y no certifica ausencia de derogaciones posteriores. ADR-0304."
   },
   "SANTA FE": {
     "fecha": "2025-01-01",
