@@ -489,6 +489,18 @@ def _hcdn_votaciones_session() -> requests.Session:
     return s
 
 
+# Último motivo de fallo de un GET pausado. Hasta 2026-10 `_paced_get` devolvía
+# None sin dejar rastro, y el recorrido de actas de Diputados fallaba desde CI
+# (anda desde la Mac) sin una sola línea en el log: el bloqueo por IP era
+# hipótesis, no dato. Ahora cada fallo deja URL y código/excepción.
+_ULTIMO_FALLO_HTTP: dict = {"url": None, "motivo": None}
+
+
+def _registrar_fallo_http(url: str, motivo: str) -> None:
+    _ULTIMO_FALLO_HTTP["url"] = url
+    _ULTIMO_FALLO_HTTP["motivo"] = motivo
+
+
 def _paced_get(session: requests.Session, base_url: str, path: str, aceptar_404: bool = False, **kwargs):
     """GET con pacing fijo y retry/backoff ante 403 (hasta 3 intentos).
     Generaliza el helper de HCDN para reusar sesión/pacing contra Senado.
@@ -502,14 +514,17 @@ def _paced_get(session: requests.Session, base_url: str, path: str, aceptar_404:
         time.sleep(_HCDN_VOTACIONES_DELAY)
         try:
             r = session.get(url, timeout=HTTP_TIMEOUT, **kwargs)
-        except requests.RequestException:
+        except requests.RequestException as e:
+            _registrar_fallo_http(url, f"excepción {type(e).__name__}: {e}")
             return None
         if r.status_code == 200:
             return r
         if r.status_code == 403:
+            _registrar_fallo_http(url, f"HTTP 403 (intento {intento + 1} de 3)")
             continue
         if r.status_code == 404 and aceptar_404:
             return r
+        _registrar_fallo_http(url, f"HTTP {r.status_code}")
         return None
     return None
 
@@ -3427,15 +3442,43 @@ _ACTA_NO_EXISTE = object()
 _ACTA_FALLO = object()
 
 
+# Cuántas actas de Diputados fallaron en esta corrida y cuántas líneas se
+# imprimieron: con el endpoint caído un recorrido de cientos de ids imprimiría
+# cientos de líneas iguales, así que se detalla a las primeras y el resto se
+# resume al final (`_resumen_fallos_actas_diputados`).
+_FALLOS_ACTAS_DIPUTADOS: dict = {"total": 0}
+_MAX_AVISOS_ACTA = 3
+
+
+def _avisar_fallo_acta_diputados(id_acta: int) -> None:
+    _FALLOS_ACTAS_DIPUTADOS["total"] += 1
+    if _FALLOS_ACTAS_DIPUTADOS["total"] > _MAX_AVISOS_ACTA:
+        return
+    url = _ULTIMO_FALLO_HTTP.get("url") or (
+        HCDN_VOTACIONES_BASE + _DIPUTADOS_ACTA_PDF_PATH.format(id=id_acta))
+    motivo = _ULTIMO_FALLO_HTTP.get("motivo") or "sin respuesta"
+    print(f"[WARN] {CINTURON}.desafios_legislativos: acta {id_acta} de Diputados inaccesible — "
+          f"{url} → {motivo}")
+
+
+def _resumen_fallos_actas_diputados() -> None:
+    n = _FALLOS_ACTAS_DIPUTADOS["total"]
+    if n:
+        print(f"[WARN] {CINTURON}.desafios_legislativos: {n} descarga(s) de actas de Diputados "
+              f"fallaron en esta corrida (detalle de las primeras {_MAX_AVISOS_ACTA} arriba)")
+
+
 def _diputados_acta_pdf(session: requests.Session, id_acta: int):
     """GET pausado del PDF de una acta puntual. Devuelve los bytes del PDF,
     `_ACTA_NO_EXISTE` si el servidor respondió 404 (hueco de id genuino), o
     `_ACTA_FALLO` si el request falló de forma transitoria (error de red,
     403 agotado, 5xx) -- los callers que cachean por año necesitan la
     distinción para no congelar un fallo como si fuera un hueco."""
+    _registrar_fallo_http(None, None)
     r = _paced_get(session, HCDN_VOTACIONES_BASE, _DIPUTADOS_ACTA_PDF_PATH.format(id=id_acta),
                    aceptar_404=True)
     if r is None:
+        _avisar_fallo_acta_diputados(id_acta)
         return _ACTA_FALLO
     if r.status_code == 404:
         return _ACTA_NO_EXISTE
@@ -3757,6 +3800,8 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
     session = _hcdn_votaciones_session()
     id_maximo = _diputados_acta_id_maximo(session)
     if id_maximo is None:
+        print(f"[WARN] {CINTURON}.desafios_legislativos: no se pudo determinar el acta más "
+              f"reciente de Diputados (ver líneas anteriores); el recorrido no corre")
         return None
 
     # Referencia SIEMPRE a medianoche: el backfill mensual ancla sus ventanas
@@ -5141,7 +5186,229 @@ def _bloqueo_tasa_12m(desafios: list, referencia: date):
             max(e["fecha_desafio"] for e in en_ventana))
 
 
-def fetch_desafios_legislativos() -> dict | None:
+# ── desafios_legislativos sin las actas de Diputados: tramo PROVISORIO ───────
+#
+# El recorrido de actas de Diputados (PDFs de votaciones.hcdn.gob.ar) falla
+# desde los runners de CI y anda desde la Mac; desde el 31-jul-2026 eso dejaba
+# a `desafios_legislativos` sin calcular (la compuerta de `main` exigía el
+# recorrido completo), aunque Senado e InfoLeg —de donde sale el resto del
+# registro— responden bien. La regla de qué cuenta como desafío NO cambia
+# (`_bloqueo_desafios`): una insistencia de veto votada o un decreto puesto a
+# votación bajo la ley 26.122. Lo que cambia es de dónde se sabe, para el
+# tramo posterior a la última acta de Diputados que se pudo clasificar:
+#
+#   * Se detectan, en el temario de cada sesión de Diputados de ese tramo
+#     (www.hcdn.gob.ar, mismo host del índice que ya lee `veto_quorum` desde
+#     CI), los ítems que tratan una insistencia de veto o un DNU de la 26.122.
+#   * Cada uno entra como DESAFÍO (se llevó al recinto: eso es lo que cuenta
+#     este indicador, "sin importar cómo termine") pero NUNCA como caída: sin el
+#     acta no se sabe el resultado, y declarar una caída sin verla sería
+#     inventarla. Es el único dato provisorio: `caidas_12m` y
+#     `sostenidas_12m` de la corrida pueden estar sub/sobre-contadas en esos
+#     ítems hasta que el acta se pueda leer.
+#   * El registro en disco NO se toca con ellos: cuando el acta vuelve a ser
+#     legible, el clasificador normal los registra con su resultado real y el
+#     provisorio desaparece solo (se deduplica por cámara + fecha).
+#   * Si el índice o el temario de una sesión del tramo no se pueden leer, no
+#     se acredita nada: se devuelve None y rige el cache del snapshot anterior.
+
+_RE_TEMARIO_INICIO_ITEM = re.compile(
+    r"(?m)^(?=\d{1,5}-[A-Z]{1,4}-\d{4}\b|PE\s+\d+/\d+\b)")
+_RE_TEMARIO_DNU = re.compile(
+    r"(?:DECRETO(?:\s+DE\s+NECESIDAD\s+Y\s+URGENCIA)?|DNU)\s*(?:N\s*[º°O.]*\s*)?"
+    r"(\d{1,4})\s*/\s*(\d{2,4})\b")
+_RE_TEMARIO_VETO_TOTAL = re.compile(r"\bOBSERVA\s+TOTALMENTE\b|\bINSISTIR\s+EN\b")
+_RE_TEMARIO_LEY_VETADA = re.compile(r"\b(2[5-9])\.?(\d{3})\b")
+
+
+def _plano_mayusculas(texto: str) -> str:
+    sin_tildes = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode()
+    return re.sub(r"[ \t]+", " ", sin_tildes.upper())
+
+
+def _temario_pdf_desde_sesion_html(html: str) -> str | None:
+    """Texto del temario de una sesión de Diputados. La página de la sesión trae
+    el PDF del temario embebido en base64 (`var pdl = "…"`); None si la sesión
+    no tiene temario publicado (p. ej. la página existe pero aún no lo cargaron)."""
+    m = re.search(r'var pdl = "([^"]+)"', html)
+    if not m:
+        return None
+    import base64
+    pdf = base64.b64decode(re.sub(r"\s+", "", m.group(1)))
+    with pdfplumber.open(io.BytesIO(pdf)) as doc:
+        return "\n".join(pg.extract_text() or "" for pg in doc.pages)
+
+
+def _normas_desafiadas_en_temario(texto: str) -> list[dict]:
+    """[{"tipo": "decreto", "clave": "70/2023"} | {"tipo": "veto", "ley": "27.793"}]
+    de los ítems del temario que traen al recinto una norma del Ejecutivo.
+
+    Mismo criterio que el clasificador de actas: un DNU cuenta si el ítem es el
+    de la bicameral/ley 26.122 (los proyectos de resolución que sólo declaran
+    la nulidad de un decreto NO son su votación), y se omite el que parece una
+    aprobación (dirección de la moción ambigua: queda para triage, como en las
+    actas). Un veto cuenta si el ítem es la comunicación de la observación
+    TOTAL ("se observa totalmente y se devuelve…") o "insistir en la sanción
+    original"; las observaciones parciales no."""
+    out, vistos = [], set()
+    for item in _RE_TEMARIO_INICIO_ITEM.split(_plano_mayusculas(texto)):
+        txt = re.sub(r"\s+", " ", item)
+        if _RE_TEMARIO_VETO_TOTAL.search(txt):
+            m = _RE_TEMARIO_LEY_VETADA.search(txt.split("REGISTRAD")[-1])
+            if m and "HABILITACI" not in txt and "SOBRE TABLAS" not in txt:
+                clave = ("veto", f"{m.group(1)}.{m.group(2)}")
+                if clave not in vistos:
+                    vistos.add(clave)
+                    out.append({"tipo": "veto", "ley": clave[1]})
+            continue
+        if "BICAMERAL" in txt or "26122" in txt or "26.122" in txt:
+            m = _RE_TEMARIO_DNU.search(txt)
+            if not m:
+                continue
+            if "APRUEBA" in txt or "VALIDEZ" in txt:
+                print(f"[WARN] {CINTURON}.desafios_legislativos: el temario trae el decreto "
+                      f"{m.group(1)}/{m.group(2)} con aire de dictamen de APROBACIÓN — "
+                      f"no se cuenta en el tramo provisorio (triage manual)")
+                continue
+            anio = m.group(2)
+            anio = f"20{anio}" if len(anio) == 2 else anio
+            clave = ("decreto", f"{int(m.group(1))}/{anio}")
+            if clave not in vistos:
+                vistos.add(clave)
+                out.append({"tipo": "decreto", "clave": clave[1]})
+    return out
+
+
+def _corte_actas_diputados(registro: dict) -> str:
+    """Fecha (YYYY-MM-DD) hasta la cual las actas de Diputados están
+    clasificadas en el registro: la del acta del watermark en el caché
+    permanente. Sin dato, la era de la gestión (se revisa todo el tramo)."""
+    estado = registro.get("actas_diputados_bloqueo", {})
+    wm = str(int(estado.get("clasificadas_hasta_id") or 0))
+    entrada = _cargar_cache_cohesion_diputados().get(wm)
+    if isinstance(entrada, dict) and entrada.get("fecha"):
+        return entrada["fecha"]
+    return _BLOQUEO_ERA_DESDE
+
+
+def _fecha_ya_votada_en_diputados(entry: dict, campos: tuple, fecha: str) -> bool:
+    return any(x.get("camara") == "Diputados" and x.get("fecha") == fecha
+               for campo in campos for x in entry.get(campo, []))
+
+
+def _desafios_provisorios_diputados(registro: dict, hoy: date | None = None) -> list[dict]:
+    """Desafíos del tramo sin acta legible (ver bloque de comentario arriba):
+    [{"tipo", "clave"|"ley", "fecha", "sesion"}]. Levanta si no puede acreditar
+    el tramo (índice o temario ilegible): sin eso, un cero no probaría nada."""
+    hoy = hoy or date.today()
+    corte = _corte_actas_diputados(registro)
+    candidatas = [r for r in _sesiones_diputados_registros()
+                  if r["fecha"] >= corte and r["fecha"] <= hoy.isoformat()
+                  and not r["en_minoria"]]
+    provisorios = []
+    for ses in candidatas:
+        r = requests.get(ses["url"], headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+        r.raise_for_status()
+        texto = _temario_pdf_desde_sesion_html(r.text)
+        if texto is None:
+            raise ValueError(f"la sesión del {ses['fecha']} ({ses['url']}) no tiene temario "
+                             f"legible: no se acredita el tramo sin actas")
+        for norma in _normas_desafiadas_en_temario(texto):
+            if norma["tipo"] == "decreto":
+                entry = next((d for d in registro["decretos"]
+                              if d.get("clave") == norma["clave"]), None)
+                if entry and _fecha_ya_votada_en_diputados(
+                        entry, ("rechazos", "sostenimientos"), ses["fecha"]):
+                    continue
+            else:
+                entry = next((v for v in registro["vetos"]
+                              if v.get("proyecto") == norma["ley"]), None)
+                if entry is None:
+                    print(f"[WARN] {CINTURON}.desafios_legislativos: el temario del "
+                          f"{ses['fecha']} trae el veto de la ley {norma['ley']} que el "
+                          f"registro no conoce — no se cuenta (triage manual)")
+                    continue
+                if _fecha_ya_votada_en_diputados(entry, ("insistencias_votadas",), ses["fecha"]):
+                    continue
+            provisorios.append({**norma, "fecha": ses["fecha"], "sesion": ses["url"]})
+    return provisorios
+
+
+def _registro_con_provisorios(registro: dict, provisorios: list[dict]) -> dict:
+    """Copia del registro con los desafíos provisorios agregados como votación
+    de Diputados SIN resultado conocido: cuentan como desafío (primera votación
+    en el recinto) y no como caída (la caída exige rechazo o insistencia
+    completa, que sólo el acta puede probar). No muta el original."""
+    import copy
+    reg = copy.deepcopy(registro)
+    for p in provisorios:
+        if p["tipo"] == "decreto":
+            entry = next((d for d in reg["decretos"] if d.get("clave") == p["clave"]), None)
+            if entry is None:
+                entry = {"clave": p["clave"], "etiqueta": f"DNU {p['clave']}", "tipo": "DNU",
+                         "rechazos": [], "sostenimientos": []}
+                reg["decretos"].append(entry)
+            entry.setdefault("sostenimientos", []).append({
+                "fecha": p["fecha"], "camara": "Diputados", "tipo": "provisorio_sin_acta"})
+        else:
+            entry = next(v for v in reg["vetos"] if v.get("proyecto") == p["ley"])
+            entry.setdefault("insistencias_votadas", []).append({
+                "fecha": p["fecha"], "camara": "Diputados", "resultado": "provisorio_sin_acta"})
+    return reg
+
+
+def fetch_desafios_legislativos_sin_actas() -> dict | None:
+    """`desafios_legislativos` cuando las actas de Diputados no se pudieron
+    recorrer (ver el bloque de comentario de arriba). Refresca antes lo que sí
+    llega —insistencias del Senado— y arma el resultado con el tramo provisorio
+    marcado en el propio dato (`provisorio`, `provisorio_n`) y en el texto."""
+    try:
+        registro = _cargar_derrotas_registro()
+        if registro is None:
+            raise ValueError(f"registro de eventos ausente o ilegible ({DERROTAS_EVENTOS_PATH})")
+        try:
+            _bloqueo_detectar_insistencias_senado(registro)
+        finally:
+            _guardar_derrotas_registro(registro)
+        provisorios = _desafios_provisorios_diputados(registro)
+        resultado = fetch_desafios_legislativos(
+            registro=_registro_con_provisorios(registro, provisorios))
+        if resultado is None:
+            return None
+        resultado["provisorio"] = True
+        resultado["provisorio_n"] = len(provisorios)
+        resultado["provisorio_normas"] = [
+            f"{p.get('clave') or 'ley ' + p['ley']} ({p['fecha']})" for p in provisorios]
+        aviso = ("Provisorio: las actas de Diputados no pudieron leerse en esta corrida; "
+                 + (f"{len(provisorios)} desafío(s) salen del temario de las sesiones "
+                    f"({', '.join(resultado['provisorio_normas'])}) y no se cuentan como "
+                    f"caídas hasta verificar el acta."
+                    if provisorios else
+                    "ninguna sesión del tramo sin acta trató un veto o un DNU."))
+        resultado["detalle_txt"] = f"{resultado['detalle_txt'].rstrip('.')}. {aviso}"
+        for p in provisorios:
+            print(f"[WARN] {CINTURON}.desafios_legislativos: desafío PROVISORIO "
+                  f"{p.get('clave') or 'ley ' + p['ley']} en la sesión del {p['fecha']} "
+                  f"(temario; acta de Diputados no leída)")
+        return resultado
+    except Exception as e:
+        _warn("desafios_legislativos", f"tramo sin actas no acreditado ({e})")
+        return None
+
+
+def resolver_desafios_legislativos(resultado_bloqueo: dict | None,
+                                   registro_actualizado: bool) -> dict | None:
+    """Compuerta de `main`: con el bloqueo calculado (actas de Diputados
+    completas) rige el camino de siempre; si no, y mientras el registro de
+    eventos (Senado + InfoLeg) esté al día, el camino sin actas."""
+    if resultado_bloqueo is not None:
+        return fetch_desafios_legislativos()
+    if registro_actualizado:
+        return fetch_desafios_legislativos_sin_actas()
+    return None
+
+
+def fetch_desafios_legislativos(registro: dict | None = None) -> dict | None:
     """
     Cuántas normas propias del Ejecutivo fueron DESAFIADAS en el recinto en los
     últimos 12 meses calendario (insistencias de veto votadas + decretos puestos
@@ -5178,7 +5445,8 @@ def fetch_desafios_legislativos() -> dict | None:
     salió del índice y del tablero por enmudecer justo en este caso.
     """
     try:
-        registro = _cargar_derrotas_registro()
+        if registro is None:
+            registro = _cargar_derrotas_registro()
         if registro is None:
             raise ValueError(f"registro de eventos ausente o ilegible ({DERROTAS_EVENTOS_PATH})")
         # No reclasifica: corre después de fetch_bloqueo_sostenido, que ya dejó
@@ -5882,7 +6150,9 @@ def main() -> None:
     # los haría inconsistentes entre sí.
     # Sólo se declara el conteo actual si terminó la consulta compartida.
     # Un registro guardado parcialmente no prueba ausencia de desafíos nuevos.
-    resultado_desafios = fetch_desafios_legislativos() if resultado_bloqueo is not None else None
+    _resumen_fallos_actas_diputados()
+    resultado_desafios = resolver_desafios_legislativos(resultado_bloqueo,
+                                                         registro_eventos_actualizado)
     if _resultado_utilizable("desafios_legislativos", resultado_desafios):
         frescos["desafios_legislativos"] = _sellar(resultado_desafios)
         frescos_count += 1
