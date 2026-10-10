@@ -9,7 +9,7 @@ import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
 import {
   informe, CINTURONES, indicadoresOrdenados, tensionDeDimension,
   fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel, coloresEnIndice,
-  tramosSemaforo, LECTURA_SEMAFORO,
+  tramosSemaforo, LECTURA_SEMAFORO, TENSION_MAX,
 } from "../lib/datos.ts";
 
 export function getStaticPaths() {
@@ -322,6 +322,14 @@ const robChartData = rob?.hist && indice ? {
                 titulo={dim.nombre}
                 ocultarTitulo
               />
+              {/* El valor de la dimensión, con su escala: sin él, una barra llena
+                  (fuera de escala) no dice cuánto (pedido de Juan, 10-oct-2026). */}
+              <p class="cg-dim-valor">
+                <strong>{num(dim.puntaje)}</strong>{indice.base100 ? " (100 = fines de 2023)" : "/100"}
+                {(dim.semaforo?.tension ?? tensionDeDimension(dim.puntaje, !!indice.base100)) >= TENSION_MAX && (
+                  <span class="cg-dim-fuera"> · fuera de escala: la barra no alcanza a mostrar cuánto está por debajo del último corte</span>
+                )}
+              </p>
               {dim.critica && (
                 <p class="cg-dim-critica">
                   <span class="cg-dim-critica-chip">Dimensión crítica</span>
@@ -403,7 +411,7 @@ const robChartData = rob?.hist && indice ? {
                   {g.nombre}
                 </h3>
                 <span class="cg-dim-group-meta">
-                  <strong>{num(g.puntaje)}</strong>{indice!.base100 ? "" : "/100"} · pesa {Math.round(g.peso * 100)}% · {g.filas.filter(f => !f.ind.cumplido && !f.ind.suspendido).length} {g.filas.filter(f => !f.ind.cumplido && !f.ind.suspendido).length === 1 ? "indicador" : "indicadores"}{g.filas.some(f => f.ind.cumplido) && ` + ${g.filas.filter(f => f.ind.cumplido).length} logrado`}{g.filas.some(f => f.ind.suspendido) && ` + ${g.filas.filter(f => f.ind.suspendido).length} en revisión`}
+                  <strong>{num(g.puntaje)}</strong>{indice!.base100 ? " (100 = fines de 2023)" : "/100"} · pesa {Math.round(g.peso * 100)}% · {g.filas.filter(f => !f.ind.cumplido && !f.ind.suspendido).length} {g.filas.filter(f => !f.ind.cumplido && !f.ind.suspendido).length === 1 ? "indicador" : "indicadores"}{g.filas.some(f => f.ind.cumplido) && ` + ${g.filas.filter(f => f.ind.cumplido).length} logrado`}{g.filas.some(f => f.ind.suspendido) && ` + ${g.filas.filter(f => f.ind.suspendido).length} en revisión`}
                 </span>
               </div>
               <div class="cg-tile-grid">
