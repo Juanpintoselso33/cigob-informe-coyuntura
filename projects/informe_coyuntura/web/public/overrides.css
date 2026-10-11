@@ -1415,7 +1415,7 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
    de la cabecera (pedido de Juan, 10-oct-2026: ningún texto en columna angosta). */
 .cg-detalle-nivel { width: 100%; }
 .cg-detalle-nivel .cg-nivel-cap,
-.cg-detalle-nivel .cg-nivel-svg,
+.cg-detalle-nivel .cg-nivel-pista,
 .cg-detalle-nivel .cg-nivel-escala { max-width: 720px; }
 .cg-detalle-meta { align-items: center; }
 
@@ -1524,7 +1524,7 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-tile--compacto .cg-tile-name { font-size: 12.5px; line-height: 1.3; }
 .cg-tile--compacto .cg-tile-num { font-size: 19px; }
 .cg-tile--compacto .cg-tile-vis { margin-top: 2px; }
-.cg-tile--compacto .cg-tile-vis svg { height: 28px; }
+.cg-tile--compacto .cg-tile-vis:not(.cg-tile-vis--apex) svg { height: 28px; }
 /* Con tiles compactos entran más por fila: el objetivo es ver el estado del
    cinturón entero junto, no recorrerlo en cinco pantallas. `.cg-tile-grid` es
    flex, así que lo que manda es la base, no grid-template-columns. */
@@ -1716,7 +1716,7 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-rob-apex { display: none; }
 .cg-rob--apex .cg-rob-apex { display: block; margin-top: 6px; }
 .cg-rob--apex .cg-rob-estatico { display: none; }
-.cg-tile-vis--apex { min-height: 52px; margin-left: -2px; margin-right: -2px; }
+.cg-tile-vis--apex { min-height: 44px; margin-left: -2px; margin-right: -2px; }
 
 /* Globo de la aguja de NivelTension (11-oct-2026): mismo aspecto que el
    tooltip claro de ApexCharts, para que todos los hovers se vean iguales. */
@@ -1736,9 +1736,10 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 }
 .cg-nivel-aguja.is-izq .cg-nivel-tip { left: -4px; transform: translate(0, 4px); }
 .cg-nivel-aguja.is-der .cg-nivel-tip { left: auto; right: -4px; transform: translate(0, 4px); }
-.cg-nivel-aguja:hover .cg-nivel-tip { opacity: 1; transform: translate(-50%, 0); }
-.cg-nivel-aguja.is-izq:hover .cg-nivel-tip,
-.cg-nivel-aguja.is-der:hover .cg-nivel-tip { transform: translate(0, 0); }
+.cg-nivel-aguja:hover .cg-nivel-tip,
+.cg-itcm-dim:focus-visible .cg-nivel-tip { opacity: 1; transform: translate(-50%, 0); }
+.cg-nivel-aguja.is-izq:hover .cg-nivel-tip, .cg-itcm-dim:focus-visible .is-izq .cg-nivel-tip,
+.cg-nivel-aguja.is-der:hover .cg-nivel-tip, .cg-itcm-dim:focus-visible .is-der .cg-nivel-tip { transform: translate(0, 0); }
 .cg-nivel-tip-titulo { display: block; padding: 5px 9px; background: #ECEFF1; border-bottom: 1px solid #ddd; }
 .cg-nivel-tip-cuerpo { display: flex; align-items: center; gap: 7px; padding: 6px 9px; font-weight: 600; }
 .cg-nivel-tip-dot { flex: 0 0 10px; height: 10px; border-radius: 50%; }

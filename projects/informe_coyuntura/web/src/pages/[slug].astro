@@ -505,7 +505,7 @@ const robChartData = rob?.hist && indice ? {
           </div>
           {/* El SVG queda como respaldo sin JS; con JS lo reemplaza la misma campana
               de ApexCharts del detalle, con tooltip por punto (11-oct-2026). */}
-          <div class="cg-rob-apex" id="cg-rob-inline"></div>
+          <div class="cg-rob-apex" id="cg-rob-inline" data-nombre={indice.Corto}></div>
           <div class="cg-rob-estatico">
           <svg class="cg-rob-svg" viewBox={`0 0 ${robSvg.W} ${robSvg.H}`} role="img"
                aria-label={`Distribución simulada del ${indice.corto}: entre ${num(rob.p05)} y ${num(rob.p95)} en el 90% de los escenarios`}>

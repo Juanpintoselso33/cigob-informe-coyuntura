@@ -121,7 +121,7 @@ const aria = valor === null
     viewBox={`0 0 ${ANCHO} ${ALTO}`}
     preserveAspectRatio="none"
     role="img"
-    aria-label={aria}
+    aria-label={tip && valor !== null ? `${aria}. ${tip}` : aria}
     class="cg-nivel-svg"
   >
     {/* Pista base neutra: es la referencia que queda cuando el color no llega
