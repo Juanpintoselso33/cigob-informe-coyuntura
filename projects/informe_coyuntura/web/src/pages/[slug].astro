@@ -340,7 +340,7 @@ const robChartData = rob?.hist && indice ? {
         {/* Cómo se calcula, en llano (ADR-0352), y ANTES de las dimensiones (ADR-0354):
             el valor del índice y su color ya se dijeron en la cabecera. */}
         <div class="cg-como-se-calcula">
-          <h3 class="cg-como-se-calcula-h">Cómo se calcula este número</h3>
+          <h2 class="cg-como-se-calcula-h">Cómo se calcula este número</h2>
           <p>
             Se arma en tres pasos. Primero, cada indicador recibe un puntaje: {indice.base100
               ? "se lo pone en la misma escala, donde 100 es su valor de fines de 2023."
@@ -410,7 +410,7 @@ const robChartData = rob?.hist && indice ? {
             : "Tocá un indicador para ver qué mide y cómo viene."}
         </p>
       </div>
-      <SemaforoLeyenda base100={!!indice?.base100} />
+      <SemaforoLeyenda base100={indice ? !!indice.base100 : undefined} />
       {gruposDim.length > 0 ? (
         <div class={`cg-dim-groups cg-dim-groups--${meta.slug}`} id="cg-dim-groups">
           {gruposDim.map(g => (
