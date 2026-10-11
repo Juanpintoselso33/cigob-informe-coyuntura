@@ -1718,6 +1718,9 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   transition: opacity .13s ease, transform .13s ease;
   z-index: 30; text-align: left;
 }
+/* El hover levanta la card con transform, que encierra el z-index del tooltip
+   dentro de ella: sin subir la card entera, las de la fila de abajo lo tapan. */
+.cg-itcm-dim:hover, .cg-itcm-dim:focus-visible { z-index: 31; }
 .cg-itcm-dim:hover .cg-dimcard-tip,
 .cg-itcm-dim:focus-visible .cg-dimcard-tip { opacity: 1; transform: translateY(0); }
 .cg-dimcard-tip-head { display: block; font-weight: 700; }
