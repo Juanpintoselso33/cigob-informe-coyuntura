@@ -222,7 +222,7 @@ export function distChart(el: HTMLElement,
                           d: { hist: number[]; hist_min: number; hist_max: number;
                                p05: number; p95: number; valor: number;
                                n_draws: number; base100?: boolean },
-                          opts: { color?: string } = {}) {
+                          opts: { color?: string; alto?: number } = {}) {
   const color = opts.color ?? "#5A9D87";
   const n = d.hist.length;
   const bw = (d.hist_max - d.hist_min) / n;
@@ -244,7 +244,7 @@ export function distChart(el: HTMLElement,
     anotaciones.push(anot(100, "100 = base", COL.muted, 6));
   }
   const chart = new ApexCharts(el, {
-    chart: { type: "area", height: 260, width: "100%", fontFamily: FONT,
+    chart: { type: "area", height: opts.alto ?? 260, width: "100%", fontFamily: FONT,
              toolbar: { show: false }, zoom: { enabled: false }, animations: { enabled: true, speed: 450 } },
     series: [{ name: "Escenarios", data: puntos }],
     colors: [color],
@@ -270,10 +270,10 @@ export function distChart(el: HTMLElement,
 }
 
 // Mini gráfico (sparkline con tooltip) para las cards de la home.
-export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string; rango?: [number, number] } = {}) {
+export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string; rango?: [number, number]; alto?: number } = {}) {
   const color = opts.color ?? "#3D9AD1";
   const chart = new ApexCharts(el, {
-    chart: { type: "area", height: 92, sparkline: { enabled: true }, fontFamily: FONT, animations: { enabled: true, speed: 400 } },
+    chart: { type: "area", height: opts.alto ?? 92, sparkline: { enabled: true }, fontFamily: FONT, animations: { enabled: true, speed: 400 } },
     series: [{ name: opts.nombre ?? "Valor", data: serie.map(p => ({ x: aTimestamp(p.fecha), y: p.valor })) }],
     colors: [color],
     stroke: { curve: "smooth", width: 2 },

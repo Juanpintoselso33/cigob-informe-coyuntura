@@ -268,6 +268,7 @@ const dimsJson = JSON.stringify(dims);
   // mismos datos vía <script type="application/json"> más abajo -- importar
   // datos.ts acá los duplicaría enteros en el bundle del navegador.
   import { rangoLegible } from "../lib/formato.ts";
+  import { VENTANA_SPARK } from "../lib/sparkline.ts";
   // ApexCharts se carga en demanda (import dinámico) la primera vez que se abre un
   // indicador, para no pesar en la carga de página cuando nadie abre el modal.
   let CHARTS = null;
@@ -825,5 +826,29 @@ const dimsJson = JSON.stringify(dims);
       });
     }, { rootMargin: "250px" });
     io.observe(evoGrid);
+  }
+
+  // Sparklines de las tiles de indicador (páginas de cinturón): el SVG estático
+  // se reemplaza por el mismo mini gráfico de ApexCharts de la evolución —
+  // animado y con tooltip por punto— cuando la tile entra en pantalla (pedido de
+  // Juan, 11-oct-2026). Misma ventana que el SVG (VENTANA_SPARK).
+  const sparks = document.querySelectorAll<HTMLElement>("[data-spark-key]");
+  if (sparks.length) {
+    const ioSpark = new IntersectionObserver(async (es) => {
+      const visibles = es.filter(e => e.isIntersecting).map(e => e.target as HTMLElement);
+      if (!visibles.length) return;
+      visibles.forEach(el => ioSpark.unobserve(el));
+      const C = await ensureCharts();
+      visibles.forEach(el => {
+        const serie = (SERIES[el.dataset.sparkKey!] || []).slice(-VENTANA_SPARK);
+        if (serie.length < 2) return;
+        el.innerHTML = "";
+        el.classList.add("cg-tile-vis--apex");
+        C.sparkChart(el, serie, {
+          color: C.colorDe(el.dataset.sparkSlug), unidad: el.dataset.sparkUnidad || "", alto: 52,
+        });
+      });
+    }, { rootMargin: "80px" });
+    sparks.forEach(el => ioSpark.observe(el));
   }
 </script>

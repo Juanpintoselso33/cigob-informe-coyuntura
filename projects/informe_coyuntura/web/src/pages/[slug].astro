@@ -6,7 +6,6 @@ import Footer from "../components/Footer.astro";
 import IndicadorTile from "../components/IndicadorTile.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
 import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
-import { DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import {
   informe, CINTURONES, indicadoresOrdenados, tensionDeDimension,
   fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel, coloresEnIndice,
@@ -185,15 +184,6 @@ const colorDeValor = (v: number) => {
 const robColores = rob ? [...new Set([colorDeValor(rob.p95), colorDeValor(rob.p05)])] : [];
 const robLecturas = robColores.map(c => (c && LECTURA_SEMAFORO[c as keyof typeof LECTURA_SEMAFORO])?.toLowerCase() ?? c);
 const robEstable = robColores.length === 1;
-// Lectura del tooltip de cada card de dimensión (10-oct-2026).
-const tipLectura: Record<string, string> = Object.fromEntries(
-  Object.entries(indice?.data.dimensiones ?? {}).map(([dkey, dim]) => {
-    const t = dim.semaforo?.tension ?? tensionDeDimension(dim.puntaje, !!indice?.base100);
-    const lectura = LECTURA_SEMAFORO[semaforoDe(dim) as keyof typeof LECTURA_SEMAFORO];
-    const extra = t >= 10 ? ": queda por debajo del último corte de la escala, por eso la barra se ve llena."
-      : t <= 0 ? ": queda por encima del mejor corte de la escala." : ".";
-    return [dkey, lectura + extra];
-  }));
 const robAmplitud = rob ? Math.round((rob.p95 - rob.p05) * 10) / 10 : null;
 
 // Validación externa (una por cinturón con paramétrica): co-movimiento del
@@ -319,7 +309,8 @@ const robChartData = rob?.hist && indice ? {
       </div>
       <div class="cg-detalle-nivel">
         <NivelTension tension={c.score} titulo={`Tensión del cinturón ${meta.nombre}`} tamano="grande"
-          ocultarLectura />
+          ocultarLectura
+          tip={indice ? `${num(indice.data.valor as number)}${indice.base100 ? " (100 = fines de 2023)" : "/100"} · ${LECTURA_SEMAFORO[colorCinturon as keyof typeof LECTURA_SEMAFORO] ?? ""}` : undefined} />
         {indice && (indice.base100 ? (
           <p class="cg-nivel-pie">
             El {indice.corto} compara cómo están hoy los hogares con cómo estaban al
@@ -380,18 +371,8 @@ const robChartData = rob?.hist && indice ? {
                 tension={dim.semaforo?.tension ?? tensionDeDimension(dim.puntaje, !!indice.base100)}
                 titulo={dim.nombre}
                 ocultarTitulo
+                tip={`${num(dim.puntaje)}${indice.base100 ? " (100 = fines de 2023)" : "/100"} · ${LECTURA_SEMAFORO[semaforoDe(dim) as keyof typeof LECTURA_SEMAFORO] ?? ""}`}
               />
-              {/* Tooltip al pasar el mouse (pedido de Juan, 10-oct-2026): qué mide la
-                  dimensión y cómo leerla, sin sumar texto fijo a la card. */}
-              <span class="cg-dimcard-tip" aria-hidden="true">
-                <span class="cg-dimcard-tip-head">
-                  {dim.nombre} · <strong>{num(dim.puntaje)}</strong>{indice.base100 ? " (100 = fines de 2023)" : "/100"}
-                  · pesa {Math.round(dim.peso * 100)}% · {Object.keys(dim.indicadores ?? {}).length} {Object.keys(dim.indicadores ?? {}).length === 1 ? "indicador" : "indicadores"}
-                </span>
-                {DIM_DESCRIPCIONES[dkey] && <span class="cg-dimcard-tip-desc">{DIM_DESCRIPCIONES[dkey]}</span>}
-                <span class="cg-dimcard-tip-desc">{tipLectura[dkey]}</span>
-                <span class="cg-dimcard-tip-cta">Tocá para ver la composición completa</span>
-              </span>
             </div>
           ))}
         </div>
@@ -522,6 +503,10 @@ const robChartData = rob?.hist && indice ? {
             <span>Distribución de las {rob.n_draws.toLocaleString("es-AR")} simulaciones del {indice.corto}</span>
             <span>90% central: entre <strong>{num(rob.p05)} y {num(rob.p95)}</strong></span>
           </div>
+          {/* El SVG queda como respaldo sin JS; con JS lo reemplaza la misma campana
+              de ApexCharts del detalle, con tooltip por punto (11-oct-2026). */}
+          <div class="cg-rob-apex" id="cg-rob-inline"></div>
+          <div class="cg-rob-estatico">
           <svg class="cg-rob-svg" viewBox={`0 0 ${robSvg.W} ${robSvg.H}`} role="img"
                aria-label={`Distribución simulada del ${indice.corto}: entre ${num(rob.p05)} y ${num(rob.p95)} en el 90% de los escenarios`}>
             <defs>
@@ -549,6 +534,7 @@ const robChartData = rob?.hist && indice ? {
             {robSvg.x100 !== null && (
               <span class="cg-rob-tick cg-rob-tick--ext" style={`left:${robSvg.pct(robSvg.x100)}%`}>100 = fines de 2023</span>
             )}
+          </div>
           </div>
           <p class="cg-h2-sub">
             El 90% de las simulaciones dio entre <strong>{num(rob.p05)}</strong> y{" "}
@@ -650,13 +636,16 @@ const robChartData = rob?.hist && indice ? {
   )}
   <script>
     import { track } from "../lib/analytics.ts";
-    // Huella del tooltip de dimensión: una vez por dimensión y página, y sólo si el
-    // mouse se quedó medio segundo (pasar de largo no es leerlo).
+    // Huella del globo de la aguja de cada dimensión (antes, el tooltip de la
+    // card): una vez por dimensión y página, y sólo si el mouse se quedó medio
+    // segundo (pasar de largo no es leerlo).
     {
       const vistos = new Set<string>();
       document.querySelectorAll<HTMLElement>(".cg-itcm-dim").forEach(card => {
+        const aguja = card.querySelector<HTMLElement>(".cg-nivel-aguja");
+        if (!aguja) return;
         let t: ReturnType<typeof setTimeout> | undefined;
-        card.addEventListener("mouseenter", () => {
+        aguja.addEventListener("mouseenter", () => {
           const dim = card.dataset.dimension || "";
           if (vistos.has(dim)) return;
           t = setTimeout(() => {
@@ -664,8 +653,25 @@ const robChartData = rob?.hist && indice ? {
             track("ver_dimension_tooltip", { cinturon: card.dataset.cinturon, dimension: dim });
           }, 500);
         });
-        card.addEventListener("mouseleave", () => clearTimeout(t));
+        aguja.addEventListener("mouseleave", () => clearTimeout(t));
       });
+    }
+
+    // Campana de robustez en la página: ApexCharts al entrar en pantalla.
+    {
+      const dest = document.getElementById("cg-rob-inline");
+      const dataEl = document.getElementById("cg-det-rob-data");
+      if (dest && dataEl) {
+        const io = new IntersectionObserver(async (es) => {
+          if (!es.some(e => e.isIntersecting)) return;
+          io.disconnect();
+          const d = JSON.parse(dataEl.textContent!);
+          const { distChart, colorDe } = await import("../lib/charts.ts");
+          dest.closest(".cg-rob")?.classList.add("cg-rob--apex");
+          distChart(dest, d, { color: colorDe(d.slug), alto: 220 });
+        }, { rootMargin: "120px" });
+        io.observe(dest.closest(".cg-rob") ?? dest);
+      }
     }
 
     // El slug sale de la URL y no del frontmatter: este <script> lo bundlea

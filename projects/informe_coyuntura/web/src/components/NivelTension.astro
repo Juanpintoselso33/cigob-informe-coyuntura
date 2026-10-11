@@ -56,8 +56,11 @@ interface Props {
       barra. Pedido editorial para el hero del inicio: la barra se lee por
       color y posición. */
   ocultarLectura?: boolean;
+  /** Texto del globo que aparece al pasar el mouse por el marcador (la aguja),
+      con el estilo de los tooltips de ApexCharts. Sin él, no hay globo. */
+  tip?: string;
 }
-const { tension, titulo, tamano = "chica", pie, ocultarTitulo = false, ocultarLectura = false } = Astro.props as Props;
+const { tension, titulo, tamano = "chica", pie, ocultarTitulo = false, ocultarLectura = false, tip } = Astro.props as Props;
 
 const tramos = tramosSemaforo();
 const hayEscala = tramos.length > 0;
@@ -113,6 +116,7 @@ const aria = valor === null
         : <span class="cg-nivel-lectura is-sinescala">Escala no disponible</span>}
     {valor !== null && !lectura && <span class="cg-nivel-valor">{num(valor)}</span>}
   </figcaption>
+  <div class="cg-nivel-pista">
   <svg
     viewBox={`0 0 ${ANCHO} ${ALTO}`}
     preserveAspectRatio="none"
@@ -148,5 +152,20 @@ const aria = valor === null
       />
     )}
   </svg>
+  {/* Globo de la aguja (pedido de Juan, 11-oct-2026): reemplaza al tooltip de
+      la card de dimensión. El área sensible es una franja angosta sobre el
+      marcador; el globo se ancla a izquierda/derecha cerca de los bordes. */}
+  {tip && valor !== null && (
+    <span class:list={["cg-nivel-aguja", px / ANCHO < 0.2 ? "is-izq" : px / ANCHO > 0.8 ? "is-der" : ""]}
+          style={`left:${((px / ANCHO) * 100).toFixed(2)}%`} aria-hidden="true">
+      <span class="cg-nivel-tip">
+        <span class="cg-nivel-tip-titulo">{titulo}</span>
+        <span class="cg-nivel-tip-cuerpo">
+          {color && <span class:list={["cg-nivel-tip-dot", `sem-${color}`]}></span>}{tip}
+        </span>
+      </span>
+    </span>
+  )}
+  </div>
   {pie && <p class="cg-nivel-pie">{pie}</p>}
 </figure>

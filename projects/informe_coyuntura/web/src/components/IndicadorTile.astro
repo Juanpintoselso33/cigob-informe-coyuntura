@@ -1,5 +1,5 @@
 ---
-import { presentacion, label, visualDe, badgeEstado, periodoDato, series, formatValor, semaforoDe, semaforoAriaLabel } from "../lib/datos.ts";
+import { presentacion, label, visualDe, badgeEstado, periodoDato, series, formatValor, semaforoDe, semaforoAriaLabel, UNIDADES_SERIE, UNIDADES_CORTAS } from "../lib/datos.ts";
 import { DESCRIPCIONES } from "../lib/descripciones.ts";
 import { chartPath } from "../lib/sparkline.ts";
 
@@ -79,7 +79,13 @@ const sp = vis.tipo === "sparkline" ? chartPath(series[ikey] ?? [], 240, 44, 5) 
     {unidad && <span class="cg-tile-unit">{unidad}</span>}
     {micro && <span class="cg-tile-micro">{micro}</span>}
   </div>
-  <div class:list={["cg-tile-vis", `cg-tile-vis--${slug}`]}>
+  {/* La sparkline se dibuja en SVG y, con JS, la reemplaza un mini gráfico de
+      ApexCharts animado y con tooltip por punto (IndicadorModal.astro), el mismo
+      de «La evolución de cada cinturón» (pedido de Juan, 11-oct-2026). */}
+  <div class:list={["cg-tile-vis", `cg-tile-vis--${slug}`]}
+       data-spark-key={vis.tipo === "sparkline" && sp && !sp.vacio ? ikey : undefined}
+       data-spark-slug={slug}
+       data-spark-unidad={UNIDADES_SERIE[ikey] ?? UNIDADES_CORTAS[ikey] ?? ""}>
     {vis.tipo === "sparkline" && sp && !sp.vacio && (
       <svg viewBox="0 0 240 44" width="100%" height="44" preserveAspectRatio="none" aria-hidden="true">
         <path class="cg-spark-area" d={sp.area} />
