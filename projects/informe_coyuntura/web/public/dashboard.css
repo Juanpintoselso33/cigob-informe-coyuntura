@@ -52,11 +52,14 @@
     /* IDENTIFICADORES DE CINTURÓN — tampoco son marca: son cinco categorías
        que tienen que distinguirse ENTRE SÍ de un vistazo, y cinco tonos
        dentro de la gama azul+verde del manual no se distinguen. Misma
-       razón que el semáforo. */
-    --c-macro:     #1E40AF;
-    --c-politica:  #B91C1C;
-    --c-vida:      #92400E;
-    --c-gestion:   #4338CA;
+       razón que el semáforo.
+       Ninguno puede rozar el semáforo (verde, amarillo, naranja, rojo): la
+       política en rojo y el impacto social en marrón anaranjado se leían
+       como «está mal» (pedido de Juan, 11-oct-2026). */
+    --c-macro:     #1E40AF;   /* azul */
+    --c-politica:  #6D28D9;   /* violeta */
+    --c-vida:      #0E7490;   /* petróleo */
+    --c-gestion:   #475569;   /* pizarra */
     --c-humor:     #9D174D;
 
     --radius-card: 14px;
