@@ -1698,7 +1698,7 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 /* «Cómo se calcula este número» al pie de las dimensiones (ADR-0352): la
    explicación del índice para el lector común, a todo el ancho. */
 .cg-como-se-calcula {
-  margin: 22px 0 0; padding: 18px 20px;
+  margin: 22px 0 36px; padding: 18px 20px;  /* abajo: separa de «Estado de tensión…» (ADR-0354) */
   background: var(--paper); border: 1px solid var(--bd); border-left: 3px solid var(--teal);
   border-radius: var(--radius-card);
 }
