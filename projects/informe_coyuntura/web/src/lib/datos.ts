@@ -498,12 +498,12 @@ export function aclaracion(b: Bucket, ind: Indicador): string | null {
 // entera desborda la card. Sólo para indicadores con valor numérico.
 export const UNIDADES_CORTAS: Record<string, string> = {
   // macro
-  ipc_total: "%", reservas_bcra: "US$ M netas", idc: "índice", badlar: "%", emae_ia: "% i.a.",
+  ipc_total: "%", reservas_bcra: "US$ M", idc: "desvíos vs. su historia", badlar: "%", emae_ia: "% i.a.",
   emae_difusion: "% sectores",
-  ipi_manufacturero: "% i.a.", actividad_tributaria: "% i.a. real",
+  ipi_manufacturero: "% i.a. (prom. 3 meses)", actividad_tributaria: "% i.a. real",
   ipc_nucleo: "%", cuenta_corriente: "US$ M", pobreza_indec: "%",
-  saldo_comercial_12m: "US$ M", recaudacion: "base 100", tcrm: "índice", rem_ipc_12m: "%",
-  idm: "pp", desequilibrio_monetario: "pts",
+  saldo_comercial_12m: "US$ M", recaudacion: "base 100 = fines de 2023", tcrm: "dic-2015 = 100", rem_ipc_12m: "%",
+  idm: "pp", desequilibrio_monetario: "pts de tensión",
   iai: "% i.a.", icip: "% i.a.", credito_privado: "% i.a. real", costo_financiamiento_tesoro: "% real", resultado_primario: "% de la recaudación",
   prestamos_privados: "% m/m", base_monetaria: "% m/m", tc_mayorista: "% m/m",
   // politica

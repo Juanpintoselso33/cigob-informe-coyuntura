@@ -433,3 +433,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0350](0350-menos-ruido-en-los-avisos-de-monitor-alertas.md) | Menos ruido en los avisos de #monitor-alertas |  | vigente |
 | [0351](0351-la-pagina-del-cinturon-sin-secciones-de-validacion.md) | La página del cinturón sin las secciones de validación |  | vigente |
 | [0352](0352-como-se-calcula-el-indice-en-llano.md) | Cómo se calcula el índice, en llano y debajo de sus dimensiones |  | vigente |
+| [0354](0354-pagina-de-cinturon-segun-la-propuesta-de-macro.md) | La página de cada cinturón, según la propuesta de macro |  | vigente |

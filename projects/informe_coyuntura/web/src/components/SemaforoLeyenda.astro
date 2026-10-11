@@ -18,12 +18,24 @@ import { informe, cap, num, tramosSemaforo, LECTURA_SEMAFORO, indiceDeTension } 
 const cortes = informe.semaforo_cortes ?? [];
 // Texto de entrada opcional: la portada pasa el suyo; las páginas de cada
 // cinturón siguen con el texto por defecto.
-const { intro } = Astro.props as { intro?: string };
+// `base100`: la página de un cinturón muestra sólo la escala de SU índice
+// (ADR-0354): los cortes 0-100 en macro, política y gestión; los de base 100
+// en impacto social. Sin el prop (portada) van las dos, como antes.
+const { intro, base100 } = Astro.props as { intro?: string; base100?: boolean };
+const unaEscala = base100 !== undefined;
 ---
 {cortes.length > 0 && (
 <div class="cg-sem-leyenda">
   {intro ? (
     <div class="cg-bluf-editorial cg-sem-leyenda-intro--portada"><p>{intro}</p></div>
+  ) : (
+  unaEscala ? (
+  <p class="cg-sem-leyenda-intro">
+    El color resume en cuatro tramos cuánta tensión tiene cada índice, dimensión o indicador. En el
+    índice y sus dimensiones los cortes son los mismos para los cuatro cinturones; acá van en la escala
+    {base100 ? " de este índice (100 = fines de 2023)" : " del puntaje (0 a 100)"}. Cada indicador trae
+    además su propia tabla, en su unidad, en la ficha.
+  </p>
   ) : (
   <p class="cg-sem-leyenda-intro">
     El color resume en cuatro tramos cuánta tensión tiene cada índice, dimensión o indicador. En los
@@ -31,6 +43,7 @@ const { intro } = Astro.props as { intro?: string };
     del puntaje (0 a 100) y, entre paréntesis, en la del índice de impacto social (100 = fines de 2023).
     Cada indicador trae además su propia tabla, en su unidad, en la ficha.
   </p>
+  )
   )}
   <ul class="cg-sem-leyenda-list">
     {tramosSemaforo().map((t, i, todos) => {
@@ -45,7 +58,7 @@ const { intro } = Astro.props as { intro?: string };
         <li>
           <span class:list={["cg-tile-dot", `sem-${t.color}`]} aria-hidden="true"></span>
           <strong>{cap(t.color)}</strong>
-          <span class="cg-sem-leyenda-lectura">{LECTURA_SEMAFORO[t.color]} · {rango(false)} ({rango(true)})</span>
+          <span class="cg-sem-leyenda-lectura">{LECTURA_SEMAFORO[t.color]} · {unaEscala ? rango(!!base100) : <>{rango(false)} ({rango(true)})</>}</span>
         </li>
       );
     })}

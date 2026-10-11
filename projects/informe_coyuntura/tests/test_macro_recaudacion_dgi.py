@@ -70,7 +70,7 @@ def test_la_metrica_es_un_nivel_y_no_una_variacion():
     dominios son incompatibles, así que la unidad publicada tiene que decirlo."""
     assert parametrica.puntaje_banda(3.0, itcm.BANDAS_ITCM["recaudacion"]) == 10
     unidades = Path(REPO / "web/src/lib/datos.ts").read_text(encoding="utf-8")
-    assert "recaudacion: \"base 100\"" in unidades, (
+    assert "recaudacion: \"base 100" in unidades, (  # ADR-0354: puede decir su base
         "la unidad corta de la web tiene que declarar que es un nivel base-100")
 
 

@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-10-10
 cinturon: 'transversal'
 archivos: ['web/src/pages/[slug].astro', 'web/public/overrides.css']
-relacionado: ['0094', '0106', '0351']
+relacionado: ['0094', '0106', '0351', '0354']
 ambito: 'Web · cómo se explica el índice en la página de cada cinturón'
 origen: 'Juan, 10-oct-2026: corrección del informe mensual, «esto es para el lector común»'
 ---

@@ -10,7 +10,7 @@ import { DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import {
   informe, CINTURONES, indicadoresOrdenados, tensionDeDimension,
   fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel, coloresEnIndice,
-  tramosSemaforo, LECTURA_SEMAFORO,
+  tramosSemaforo, LECTURA_SEMAFORO, colorPorTension,
 } from "../lib/datos.ts";
 
 export function getStaticPaths() {
@@ -23,7 +23,15 @@ const c = informe.cinturones[meta.key];
 // banda ni riesgo, barra sin la palabra del tramo y con un texto propio debajo,
 // subtítulos a todo el ancho y sin la validación cruzada.
 const esMacro = meta.key === "macro";
-const PIE_MACRO = "El cinturón macro encuentra sus puntos de tensión en las dimensiones que expresan el nivel de la actividad económica y de la inversión. Para cada una de dichas dimensiones puede profundizarse su análisis recorriendo los indicadores que las sustentan.";
+// Página de cinturón según la propuesta de macro (11-oct-2026, ADR-0354): una
+// introducción del cinturón, «Tensión del cinturón» con el índice dicho en
+// llano y su color, cómo se calcula ANTES de las dimensiones, y el estado de
+// cada dimensión. Riesgo y banda ya no se muestran en ningún cinturón.
+// La introducción es propia de cada cinturón; el que no la tenga escrita sigue
+// con su subtítulo.
+const INTRO_CINTURON: Record<string, string> = {
+  macro: "En este apartado se pone foco en la consistencia y sustentabilidad del proyecto de gobierno en sus aspectos económicos y financieros.",
+};
 // La cabecera del cinturón se lee por la barra, igual que en la portada: una
 // sola vara de color en todo el sitio (los cortes publicados). El `estado` de
 // tres valores no se pierde —sigue mandando en la regla sistémica— pero no se
@@ -77,6 +85,11 @@ const PARTICULAR_INDICE: Record<string, string> = {
   vida_cotidiana: "Algunos indicadores no se comparan con 2023 porque ese punto de partida no era normal. Las tarifas de luz, gas, agua y transporte se miden como parte del salario, contra topes internacionales (10% del ingreso para agua y energía, 5% para transporte), porque en 2023 estaban subsidiadas. Los precios de los alimentos y del alquiler se comparan con la inflación general. El número no es un porcentaje de bienestar ni un pronóstico electoral.",
 };
 const indice = indiceDe(c);   // ITCM / ITCG / ITCIS / ITCP, o null (espíritu)
+// La lectura del color del cinturón, en texto, junto al valor del índice: el
+// título dice «tensión» y el número va al revés (100 = mejor), así que la
+// palabra del tramo es la que evita leer 60/100 como «mucha tensión».
+const colorCinturon = colorPorTension(c.score);
+const lecturaCinturon = colorCinturon ? LECTURA_SEMAFORO[colorCinturon].toLowerCase() : null;
 // Los indicadores del índice se muestran AGRUPADOS por dimensión, en el mismo
 // orden en que se listan las dimensiones arriba: leer el detalle deja de ser
 // una grilla plana de quince cards y pasa a seguir la estructura del índice.
@@ -294,18 +307,29 @@ const robChartData = rob?.hist && indice ? {
       <div class="cg-detalle-texto">
       <p class="cg-eyebrow"><a href={`${base}/`}>← Resumen</a> · Cinturón</p>
       <h1 class="cg-hero-title cg-detalle-title">{meta.nombre}</h1>
-      <p class="cg-hero-lead cg-detalle-lead">{meta.sub}.</p>
+      <p class="cg-hero-lead cg-detalle-lead">{INTRO_CINTURON[meta.key] ?? `${meta.sub}.`}</p>
       <div class="cg-detalle-meta">
-        {/* La barra reemplaza al chip de score, que repetía su número. El
-            estado queda al lado, en texto: es otro concepto, no otro color. */}
-        {indice && <span class="cg-detalle-chip">{indice.Corto} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong>{!esMacro && <> · {indice.data.banda_legible}</>}</span>}
-        {!esMacro && <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>}
+        {/* El valor del índice se dice en el texto bajo la barra (ADR-0354). */}
         <span class="cg-detalle-chip">{filas.length} {filas.length === 1 ? "indicador" : "indicadores"}</span>
       </div>
       </div>
       <div class="cg-detalle-nivel">
-        <NivelTension tension={c.score} titulo={`Tensión de ${meta.nombre}`} tamano="grande"
-          ocultarLectura={esMacro} pie={esMacro ? PIE_MACRO : undefined} />
+        <NivelTension tension={c.score} titulo={`Tensión del cinturón ${meta.nombre}`} tamano="grande"
+          ocultarLectura />
+        {indice && (indice.base100 ? (
+          <p class="cg-nivel-pie">
+            El {indice.corto} compara cómo están hoy los hogares con cómo estaban al
+            empezar el mandato. <strong>100 es el promedio del último trimestre de 2023</strong>:
+            más de 100 quiere decir que la situación mejoró desde entonces, y menos de 100,
+            que empeoró. No tiene techo. Hoy marca <strong>{num(indice.data.valor as number)}</strong>{lecturaCinturon && <>: <strong>{lecturaCinturon}</strong></>}.
+          </p>
+        ) : (
+          <p class="cg-nivel-pie">
+            El {indice.corto} resume en un número de 0 a 100 {RESUMEN_INDICE[meta.key]}{" "}
+            <strong>0 es la peor situación y 100 la mejor.</strong> Hoy marca{" "}
+            <strong>{num(indice.data.valor as number)}/100</strong>{lecturaCinturon && <>: <strong>{lecturaCinturon}</strong></>}.
+          </p>
+        ))}
       </div>
       </div>
     </div>
@@ -313,10 +337,31 @@ const robChartData = rob?.hist && indice ? {
   <main class:list={["cg-main", { "cg-main--macro": esMacro }]}>
     {indice && (
       <section class="cg-section">
+        {/* Cómo se calcula, en llano (ADR-0352), y ANTES de las dimensiones (ADR-0354):
+            el valor del índice y su color ya se dijeron en la cabecera. */}
+        <div class="cg-como-se-calcula">
+          <h3 class="cg-como-se-calcula-h">Cómo se calcula este número</h3>
+          <p>
+            Se arma en tres pasos. Primero, cada indicador recibe un puntaje: {indice.base100
+              ? "se lo pone en la misma escala, donde 100 es su valor de fines de 2023."
+              : "su valor se compara con una tabla fija de referencias, igual para todos los meses, y se traduce a un puntaje de 0 a 100."}{" "}
+            Después, los indicadores se agrupan en las {Object.keys(indice.data.dimensiones).length} dimensiones
+            que se detallan abajo, y cada una promedia los puntajes de sus indicadores. Por último,
+            el índice promedia las dimensiones según su peso:{" "}
+            {Object.values(indice.data.dimensiones).map((d, i, a) =>
+              `${d.nombre.charAt(0).toLowerCase()}${d.nombre.slice(1)} (${Math.round(d.peso * 100)}%)${i < a.length - 2 ? ", " : i === a.length - 2 ? " y " : "."}`).join("")}
+          </p>
+          {PARTICULAR_INDICE[meta.key] && <p>{PARTICULAR_INDICE[meta.key]}</p>}
+          <p>
+            El color del cinturón sale de este número: {coloresEnIndice(!!indice.base100)}. Los
+            cuatro cinturones usan los mismos cortes de color, y por eso se pueden comparar entre sí.
+            Cada indicador tiene su ficha con la fuente, el cálculo y sus límites.
+          </p>
+        </div>
         <div class="cg-section-head">
-          <p class="cg-eyebrow">Índice paramétrico</p>
-          <h2 class="cg-h2">{indice.Corto}: {num(indice.data.valor as number)}{indice.base100 ? " (escala de referencia 100)" : "/100"}{!esMacro && <> — {indice.data.banda_legible}</>}</h2>
-          <p class="cg-h2-sub">{indice.descripcion}</p>
+          <p class="cg-eyebrow">Dimensiones</p>
+          <h2 class="cg-h2">Estado de tensión de cada dimensión del cinturón</h2>
+          <p class="cg-h2-sub"><strong>{indice.Corto}: {num(indice.data.valor as number)}{indice.base100 ? " (100 = fines de 2023)" : "/100"}.</strong> {indice.descripcion}</p>
         </div>
         <div class="cg-itcm-dims">
           {Object.entries(indice.data.dimensiones).map(([dkey, dim]) => (
@@ -353,41 +398,6 @@ const robChartData = rob?.hist && indice ? {
             {indice.data.ajustes_aplicados.map(a => `${a.indicador}: ${a.de} → ${a.a} (${a.justificacion})`).join(" · ")}
           </p>
         )}
-        {/* Cómo se calcula, en llano y al pie de las dimensiones (ADR-0352): antes
-            era una nota técnica al final de la página. */}
-        <div class="cg-como-se-calcula">
-          <h3 class="cg-como-se-calcula-h">Cómo se calcula este número</h3>
-          {indice.base100 ? (
-            <p>
-              El {indice.corto} compara cómo están hoy los hogares con cómo estaban al
-              empezar el mandato. <strong>100 es el promedio del último trimestre de 2023</strong>:
-              más de 100 quiere decir que la situación mejoró desde entonces, y menos de 100,
-              que empeoró. No tiene techo. Hoy marca <strong>{num(indice.data.valor as number)}</strong>.
-            </p>
-          ) : (
-            <p>
-              El {indice.corto} resume en un número de 0 a 100 {RESUMEN_INDICE[meta.key]}{" "}
-              <strong>0 es la peor situación y 100 la mejor</strong>. Hoy marca{" "}
-              <strong>{num(indice.data.valor as number)}</strong>.
-            </p>
-          )}
-          <p>
-            Se arma en tres pasos. Primero, cada indicador recibe un puntaje: {indice.base100
-              ? "se lo pone en la misma escala, donde 100 es su valor de fines de 2023."
-              : "su valor se compara con una tabla fija de referencias, igual para todos los meses, y se traduce a un puntaje de 0 a 100."}{" "}
-            Después, los indicadores se agrupan en las {Object.keys(indice.data.dimensiones).length} dimensiones
-            de las tarjetas de arriba, y cada una promedia los puntajes de sus indicadores. Por último,
-            el índice promedia las dimensiones según su peso:{" "}
-            {Object.values(indice.data.dimensiones).map((d, i, a) =>
-              `${d.nombre.charAt(0).toLowerCase()}${d.nombre.slice(1)} (${Math.round(d.peso * 100)}%)${i < a.length - 2 ? ", " : i === a.length - 2 ? " y " : "."}`).join("")}
-          </p>
-          {PARTICULAR_INDICE[meta.key] && <p>{PARTICULAR_INDICE[meta.key]}</p>}
-          <p>
-            El color del cinturón sale de este número: {coloresEnIndice(!!indice.base100)}. Los
-            cuatro cinturones usan los mismos cortes de color, y por eso se pueden comparar entre sí.
-            Cada indicador tiene su ficha con la fuente, el cálculo y sus límites.
-          </p>
-        </div>
       </section>
     )}
     <section class="cg-section">
@@ -400,7 +410,7 @@ const robChartData = rob?.hist && indice ? {
             : "Tocá un indicador para ver qué mide y cómo viene."}
         </p>
       </div>
-      <SemaforoLeyenda />
+      <SemaforoLeyenda base100={!!indice?.base100} />
       {gruposDim.length > 0 ? (
         <div class={`cg-dim-groups cg-dim-groups--${meta.slug}`} id="cg-dim-groups">
           {gruposDim.map(g => (
@@ -492,7 +502,8 @@ const robChartData = rob?.hist && indice ? {
             El {indice.corto} descansa en dos clases de supuestos: los pesos de cada dimensión
             y de cada indicador, que son una decisión metodológica, y los valores que entregan
             las fuentes, que traen error de medición. Para ver cuánto depende el resultado de
-            esos supuestos se simulan {rob.n_draws.toLocaleString("es-AR")} versiones del índice.
+            esos supuestos se simulan {rob.n_draws.toLocaleString("es-AR")} versiones del índice
+            (método de Monte Carlo).
             En cada una, todos los pesos se multiplican por un factor al azar entre 0,8 y 1,2
             (hasta un 20% más o menos) y se vuelven a normalizar para que sigan sumando 100%{indice.base100
               ? "; en este índice se perturban sólo los pesos"
@@ -788,6 +799,5 @@ const robChartData = rob?.hist && indice ? {
 
 <style is:global>
   /* Cinturón macro: el pie de la barra es un párrafo de lectura, no una nota. */
-  .cg-detalle-hero--macroeconomia .cg-nivel-pie,
-  .cg-detalle-hero--macro .cg-nivel-pie { font-size: 15px; line-height: 1.55; }
+  .cg-detalle-nivel .cg-nivel-pie { font-size: 15px; line-height: 1.55; margin-top: 8px; }
 </style>
