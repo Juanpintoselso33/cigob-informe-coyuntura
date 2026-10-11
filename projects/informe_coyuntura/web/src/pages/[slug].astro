@@ -343,7 +343,7 @@ const robChartData = rob?.hist && indice ? {
           <h2 class="cg-como-se-calcula-h">Cómo se calcula este número</h2>
           <p>
             Se arma en tres pasos. Primero, cada indicador recibe un puntaje: {indice.base100
-              ? "se lo pone en la misma escala, donde 100 es su valor de fines de 2023."
+              ? "casi todos se ponen en la misma escala, donde 100 es su valor de fines de 2023 (las excepciones se explican abajo)."
               : "su valor se compara con una tabla fija de referencias, igual para todos los meses, y se traduce a un puntaje de 0 a 100."}{" "}
             Después, los indicadores se agrupan en las {Object.keys(indice.data.dimensiones).length} dimensiones
             que se detallan abajo, y cada una promedia los puntajes de sus indicadores. Por último,

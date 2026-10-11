@@ -332,7 +332,7 @@ export function coloresEnIndice(base100: boolean): string {
   const partes = tramos.map((t, i) =>
     i === 0 ? `${t.color} con ${v(t.hasta)} o más`
     : i === tramos.length - 1 ? `${t.color} por debajo de ${v(t.desde)}`
-    : `${t.color} de ${v(t.hasta)} a ${v(t.desde)}`);
+    : `${t.color} de ${v(t.hasta)} a menos de ${v(t.desde)}`);
   return partes.slice(0, -1).join(", ") + " y " + partes.at(-1);
 }
 export interface PeorDim {

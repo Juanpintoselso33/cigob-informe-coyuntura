@@ -53,7 +53,7 @@ const unaEscala = base100 !== undefined;
         ? `menos de ${num(indiceDeTension(t.desde, b))}`
         : i === 0
           ? `${num(indiceDeTension(t.hasta, b))} o más`
-          : `de ${num(indiceDeTension(t.hasta, b))} a ${num(indiceDeTension(t.desde, b))}`;
+          : `de ${num(indiceDeTension(t.hasta, b))} a menos de ${num(indiceDeTension(t.desde, b))}`;
       return (
         <li>
           <span class:list={["cg-tile-dot", `sem-${t.color}`]} aria-hidden="true"></span>
