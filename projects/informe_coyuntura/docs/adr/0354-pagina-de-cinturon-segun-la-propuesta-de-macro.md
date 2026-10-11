@@ -55,8 +55,9 @@ Para el título, que fue lo único con alternativas reales:
 
 Opción 1, elegida por Juan. En los cuatro cinturones:
 
-- **Cabecera**: la introducción del cinturón (macro tiene la suya; los demás
-  siguen con su subtítulo hasta que se escriba), la barra «Tensión del
+- **Cabecera**: la introducción del cinturón (la de macro es la de la
+  propuesta; las de política, impacto social y gestión se escribieron con el
+  mismo molde, nombrando sus dimensiones), la barra «Tensión del
   cinturón …» sin la palabra del tramo encima, y debajo el texto del índice
   —qué mide, 0 peor y 100 mejor (o 100 = fines de 2023 en impacto social)— que
   termina «Hoy marca 60,3/100: sin tensión relevante». El chip del índice sale
@@ -80,7 +81,6 @@ Opción 1, elegida por Juan. En los cuatro cinturones:
   leen igual.
 - Mala: política y gestión pierden el riesgo dominante en la cabecera; sigue
   en la portada.
-- Pendiente: la introducción de política, impacto social y gestión.
 
 ### Confirmación
 

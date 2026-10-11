@@ -27,10 +27,14 @@ const esMacro = meta.key === "macro";
 // introducción del cinturón, «Tensión del cinturón» con el índice dicho en
 // llano y su color, cómo se calcula ANTES de las dimensiones, y el estado de
 // cada dimensión. Riesgo y banda ya no se muestran en ningún cinturón.
-// La introducción es propia de cada cinturón; el que no la tenga escrita sigue
-// con su subtítulo.
+// La introducción es propia de cada cinturón (la de macro viene de la
+// propuesta; las otras tres se escribieron siguiéndola); el que no la tenga
+// escrita sigue con su subtítulo.
 const INTRO_CINTURON: Record<string, string> = {
   macro: "En este apartado se pone foco en la consistencia y sustentabilidad del proyecto de gobierno en sus aspectos económicos y financieros.",
+  politica: "En este apartado se pone foco en la capacidad política del Gobierno para sostener su proyecto: su fuerza en el Congreso, sus alianzas con las provincias, la cohesión de su propia fuerza y su relación con el conflicto social, la Justicia y el sector privado.",
+  vida_cotidiana: "En este apartado se pone foco en cómo llega el proyecto de gobierno al día a día de los hogares: sus ingresos y su consumo, los precios, el endeudamiento, el empleo, la confianza en el Gobierno y la seguridad.",
+  gestion: "En este apartado se pone foco en la capacidad del Gobierno para ejecutar las reformas de su proyecto: las económicas, la del Estado, la laboral, las privatizaciones y la inversión, y las reformas sociales y de orden.",
 };
 // La cabecera del cinturón se lee por la barra, igual que en la portada: una
 // sola vara de color en todo el sitio (los cortes publicados). El `estado` de
