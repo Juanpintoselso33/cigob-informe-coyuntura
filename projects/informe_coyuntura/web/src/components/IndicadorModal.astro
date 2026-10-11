@@ -606,8 +606,9 @@ const dimsJson = JSON.stringify(dims);
         // se puntúa el valor, a continuación de «Cómo entra al índice».
         tensionHtml =
           (d.aporteInputTxt ? `<p class="cg-score-map"><strong>Valor usado:</strong> ${esc(d.aporteInputTxt)}</p>` : "") +
-          // El paréntesis final (puntaje y peso) repite «Aporte actual».
-          (d.aporteFormula ? `<p class="cg-score-map"><strong>Cómo se puntúa:</strong> ${esc(d.aporteFormula.replace(/\s*\(puntaje interpolado[^)]*\)\s*$/, ""))}.</p>` : "");
+          // El paréntesis final (puntaje y peso) repite «Aporte actual»; en los
+          // base 100 la línea entera es ese nivel y ese peso, así que no va.
+          (d.aporteFormula && !d.indiceMeta.base100 ? `<p class="cg-score-map"><strong>Cómo se puntúa:</strong> ${esc(d.aporteFormula.replace(/\s*\(puntaje interpolado[^)]*\)\s*$/, ""))}.</p>` : "");
       } else if (d.aporteScore != null) {
         // Sin número de tensión (ADR-0337): la misma barra de tramos que el
         // resto del sitio, con su palabra.
