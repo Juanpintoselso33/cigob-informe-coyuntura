@@ -4,7 +4,7 @@ id: '0355'
 estado: 'aceptado'
 fecha: 2026-10-13
 cinturon: 'transversal'
-archivos: ['web/src/components/Bluf.astro', 'web/src/contenido/lectura-del-mes/2026-10.md', 'web/public/dashboard.css']
+archivos: ['web/src/components/Bluf.astro', 'web/src/contenido/lectura-del-mes/2026-10.md', 'web/src/contenido/lectura-del-mes/2026-09.md', 'web/public/dashboard.css']
 relacionado: ['0211']
 ambito: 'Web · la lectura del mes en la portada'
 origen: 'Editorial «Lectura sistémica, octubre 2026» que mandó Luis el 13-oct-2026, con un «leer más» para la lectura por cinturón'
@@ -57,9 +57,11 @@ confianza 105,8.
 - Buena: la portada lleva el texto firmado del equipo y la lectura larga no
   empuja el resto del tablero hacia abajo.
 - Buena: un mes sin archivo sigue cayendo a la síntesis automática (ADR-0211).
-- A tener en cuenta: el texto es del período `2026-10`. Se ve ya en el
-  seguimiento diario; en `informe.cigob.org` aparece cuando se publique la
-  foto de octubre, porque hoy esa página muestra septiembre.
+- A tener en cuenta: el mismo texto va como `2026-10.md` (seguimiento
+  diario) y como `2026-09.md`, para que salga ya en `informe.cigob.org`, que
+  muestra la foto de septiembre (pedido de Juan, 13-oct). Sus cifras son las
+  del 11 de octubre y la nota al pie lo dice; pueden diferir un poco de las
+  tarjetas de esa foto.
 
 ### Confirmación
 
