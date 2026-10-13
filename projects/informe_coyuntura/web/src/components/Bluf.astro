@@ -49,9 +49,13 @@ const fraseFoco = foco
 // El barbarismo no nombra a su cinturón: dos comparten "político" (ADR-0237).
 const dominante = cinturonDominante(informe);
 
-const editoriales = import.meta.glob<{ Content: any }>("../contenido/lectura-del-mes/*.md", { eager: true });
-const Editorial = Object.entries(editoriales)
-  .find(([ruta]) => ruta.endsWith(`/${informe.period}.md`))?.[1]?.Content;
+const editoriales = import.meta.glob<{ Content: any; frontmatter: { corte?: string } }>("../contenido/lectura-del-mes/*.md", { eager: true });
+const archivo = Object.entries(editoriales)
+  .find(([ruta]) => ruta.endsWith(`/${informe.period}.md`))?.[1];
+const Editorial = archivo?.Content;
+// El tablero se actualiza cada noche y el texto no: el corte dice con qué
+// datos se escribió, para que nadie lo lea contra los de hoy (ADR-0355).
+const corte = archivo?.frontmatter?.corte;
 ---
 <section class="cg-section cg-bluf" id="snapshot">
   <p class="cg-eyebrow">La lectura del mes</p>
@@ -62,7 +66,7 @@ const Editorial = Object.entries(editoriales)
   {Editorial ? (
     <Fragment>
       <div class="cg-bluf-text cg-bluf-editorial"><Editorial /></div>
-      <p class="cg-bluf-nota">Lectura editorial del equipo CiGob · {mesLegible(informe.period)}</p>
+      <p class="cg-bluf-nota">Lectura editorial del equipo CiGob · {mesLegible(informe.period)}{corte && ` · Datos del Monitor al ${corte}`}</p>
     </Fragment>
   ) : (
     <Fragment>
@@ -76,3 +80,17 @@ const Editorial = Object.entries(editoriales)
     </Fragment>
   )}
 </section>
+
+<script>
+  // «Leer más» de la lectura editorial (ADR-0355): un <details> en el markdown
+  // del mes. Se mide cuánta gente despliega la lectura por cinturón.
+  import { track } from "../lib/analytics.ts";
+  document.querySelectorAll<HTMLDetailsElement>(".cg-bluf-mas").forEach((el) => {
+    let contado = false;
+    el.addEventListener("toggle", () => {
+      if (!el.open || contado) return;
+      contado = true;
+      track("ver_lectura_cinturones");
+    });
+  });
+</script>

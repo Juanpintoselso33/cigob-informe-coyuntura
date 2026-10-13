@@ -329,6 +329,29 @@ em { font-family: var(--ff-cuerpo); font-style: italic; color: var(--cta-dark); 
 }
 .cg-bluf-editorial p:last-child { margin-bottom: 0; }
 .cg-bluf-editorial strong { color: var(--dark); font-weight: 700; }
+/* Subtítulos del editorial (Resumen, Lectura de conjunto, cada cinturón). */
+.cg-bluf-editorial h3 {
+    margin: 22px 0 8px;
+    font-size: 15px; font-weight: 700; letter-spacing: .01em;
+    color: var(--dark);
+}
+.cg-bluf-editorial > h3:first-child { margin-top: 4px; }
+/* «Leer más»: la lectura por cinturón se despliega (ADR-0355). El <details>
+   viene del markdown; el resumen cambia de texto al abrirse. */
+.cg-bluf-mas { margin-top: 18px; border-top: 1px solid var(--bd); padding-top: 14px; }
+.cg-bluf-mas > summary {
+    display: inline-flex; align-items: center; gap: 6px;
+    cursor: pointer; list-style: none;
+    font-size: 14.5px; font-weight: 700; color: var(--c-macro);
+}
+.cg-bluf-mas > summary::-webkit-details-marker { display: none; }
+.cg-bluf-mas > summary::after { content: '▾'; font-size: 12px; transition: transform .15s; }
+.cg-bluf-mas[open] > summary::after { transform: rotate(180deg); }
+.cg-bluf-mas > summary:hover { text-decoration: underline; }
+.cg-bluf-mas > summary:focus-visible { outline: 2px solid var(--c-macro); outline-offset: 3px; border-radius: 4px; }
+.cg-bluf-mas-cerrar, .cg-bluf-mas[open] .cg-bluf-mas-abrir { display: none; }
+.cg-bluf-mas[open] .cg-bluf-mas-cerrar { display: inline; }
+.cg-bluf-mas[open] > summary { margin-bottom: 4px; }
 
 /* ── Grid de cinturones ───────────────────────── */
 .cg-grid {
