@@ -352,6 +352,21 @@ em { font-family: var(--ff-cuerpo); font-style: italic; color: var(--cta-dark); 
 .cg-bluf-mas-cerrar, .cg-bluf-mas[open] .cg-bluf-mas-abrir { display: none; }
 .cg-bluf-mas[open] .cg-bluf-mas-cerrar { display: inline; }
 .cg-bluf-mas[open] > summary { margin-bottom: 4px; }
+.cg-bluf-mas--js[open] > summary { display: none; }
+.cg-bluf-mas-fin {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
+    padding: 0; border: 0; background: none; cursor: pointer;
+    font: inherit; font-size: 14.5px; font-weight: 700; color: var(--c-macro);
+}
+.cg-bluf-mas-fin::after { content: '▴'; font-size: 12px; }
+.cg-bluf-mas-fin:hover { text-decoration: underline; }
+.cg-bluf-mas-fin:focus-visible { outline: 2px solid var(--c-macro); outline-offset: 3px; border-radius: 4px; }
+/* Subtítulo de cada cinturón con su color (estilo automático, ADR-0355). */
+.cg-bluf-editorial h3.cg-bluf-cin { padding-left: 10px; border-left: 3px solid currentColor; }
+.cg-bluf-editorial h3.cg-bluf-cin--macro { color: var(--c-macro); }
+.cg-bluf-editorial h3.cg-bluf-cin--politica { color: var(--c-politica); }
+.cg-bluf-editorial h3.cg-bluf-cin--vida { color: var(--c-vida); }
+.cg-bluf-editorial h3.cg-bluf-cin--gestion { color: var(--c-gestion); }
 
 /* ── Grid de cinturones ───────────────────────── */
 .cg-grid {

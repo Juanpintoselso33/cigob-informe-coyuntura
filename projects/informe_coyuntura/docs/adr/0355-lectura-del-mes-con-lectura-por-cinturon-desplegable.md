@@ -20,14 +20,13 @@ entera de entrada sino que se despliegue «al hacer clic», con un «leer más»
 
 La lectura del mes ya tenía su lugar (ADR-0211): un archivo `AAAA-MM.md` por
 período que reemplaza a la síntesis automática. Faltaban dos cosas: una forma
-de esconder una parte del texto y algo que diga con qué datos se escribió,
-porque el tablero diario cambia todas las noches y el texto queda fijo.
+de esconder una parte del texto y darle estilo sin marcarlo a mano.
 
 ## Factores de decisión
 
 - Que lo escriba el equipo sin tocar código: el markdown del mes manda.
 - Que funcione sin JavaScript y con teclado.
-- Que las cifras del texto no se lean contra datos más nuevos sin aviso.
+- Que el texto se vea con estilo sin que nadie tenga que marcarlo.
 
 ## Opciones consideradas
 
@@ -38,10 +37,14 @@ porque el tablero diario cambia todas las noches y el texto queda fijo.
 
 Opción 1. El archivo del mes puede encerrar en un
 `<details class="cg-bluf-mas">` lo que va detrás del «Leer más»; el resumen
-dice «Leer más: la lectura por cinturón» y, abierto, «Ver menos». El
-frontmatter admite `corte`, que se suma a la nota al pie: «Datos del Monitor
-al 11 de octubre de 2026». Al desplegarse se manda el evento
-`ver_lectura_cinturones` a GA4, una vez por visita a la página.
+dice «Leer más: la lectura por cinturón». Abierto, el «Ver menos» va al final
+del texto desplegado y, al cerrarlo, la página vuelve al botón. Al desplegarse
+se manda el evento `ver_lectura_cinturones` a GA4, una vez por visita.
+
+El texto tiene **estilo automático**: quien escribe el markdown no marca nada.
+`Bluf.astro` pone cada subtítulo de cinturón con el color de su cinturón y las
+cifras en negrita (no los años sueltos). Sin nota al pie: el texto va solo
+(pedido de Juan, 13-oct).
 
 Se publica `2026-10.md` con el texto de Luis, con retoques de puntuación. Cada
 cifra se cotejó contra el snapshot del 11 de octubre: inflación 1,66 %, REM
@@ -60,14 +63,14 @@ confianza 105,8.
 - A tener en cuenta: el mismo texto va como `2026-10.md` (seguimiento
   diario) y como `2026-09.md`, para que salga ya en `informe.cigob.org`, que
   muestra la foto de septiembre (pedido de Juan, 13-oct). Sus cifras son las
-  del 11 de octubre y la nota al pie lo dice; pueden diferir un poco de las
-  tarjetas de esa foto.
+  del 11 de octubre y pueden diferir un poco de las tarjetas de esa foto.
 
 ### Confirmación
 
 En la portada del diario, «La lectura del mes» muestra Resumen y Lectura de
 conjunto, un «Leer más: la lectura por cinturón» cerrado que al abrirse muestra
-los cuatro cinturones, y la nota «Datos del Monitor al 11 de octubre de 2026».
+los cuatro cinturones con su color, las cifras en negrita y el «Ver menos» al
+final; sin nota al pie.
 
 ## Pros y contras de las opciones
 
