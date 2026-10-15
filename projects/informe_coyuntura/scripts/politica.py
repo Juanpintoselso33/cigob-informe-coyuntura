@@ -70,6 +70,8 @@ import time
 import unicodedata
 import warnings
 import requests
+
+import datos_gob
 import urllib3
 import pdfplumber
 import openpyxl
@@ -377,7 +379,7 @@ def _ron_mensual(desde: int) -> dict:
 
 def _ipc_indice_mensual() -> dict:
     """{YYYY-MM: índice IPC nivel general} de INDEC, base dic-2016=100."""
-    r = requests.get(INDEC_SERIES_URL,
+    r = datos_gob.get(INDEC_SERIES_URL,
                      params={"ids": INDEC_IPC_INDICE, "format": "json",
                              "limit": 1000, "sort": "desc"},
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)

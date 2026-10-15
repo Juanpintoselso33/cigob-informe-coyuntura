@@ -33,6 +33,12 @@ import time
 
 import requests
 
+import sys as _sys
+from pathlib import Path as _Path
+if str(_Path(__file__).resolve().parents[2]) not in _sys.path:
+    _sys.path.append(str(_Path(__file__).resolve().parents[2]))  # scripts/: datos_gob
+import datos_gob  # noqa: E402
+
 logger = logging.getLogger(__name__)
 
 SERIES_BASE = "https://apis.datos.gob.ar/series/api/series/"
@@ -65,7 +71,7 @@ CATEGORIAS_DENOMINADOR = ("autónomos", "monotributo general",
 def _serie(series_id: str) -> dict:
     for intento in range(REINTENTOS):
         try:
-            r = requests.get(SERIES_BASE,
+            r = datos_gob.get(SERIES_BASE,
                              params={"ids": series_id, "format": "json",
                                      "limit": 200, "sort": "desc"},
                              timeout=HTTP_TIMEOUT)

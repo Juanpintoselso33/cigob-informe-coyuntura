@@ -7,6 +7,8 @@ import sys
 import re
 import json
 import requests
+
+import datos_gob
 import urllib3
 import logging
 from datetime import datetime, timedelta, date
@@ -187,7 +189,7 @@ def _indec_serie(series_id: str, limit: int = 2) -> list:
     if series_id in indec_actividad.SERIES:
         return indec_actividad.filas(series_id, limit)
     params = {"ids": series_id, "format": "json", "limit": limit, "sort": "desc"}
-    r = requests.get(INDEC_SERIES_BASE, params=params, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r = datos_gob.get(INDEC_SERIES_BASE, params=params, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
     if series_id == INDEC_BK_IMPO_ID:
         import bienes_capital
@@ -671,7 +673,7 @@ def _emae_sectores_niveles(limit: int = 300) -> dict:
     """
     ids = list(INDEC_EMAE_SECTORES)
     params = {"ids": ",".join(ids), "format": "json", "limit": limit, "sort": "desc"}
-    r = requests.get(INDEC_SERIES_BASE, params=params,
+    r = datos_gob.get(INDEC_SERIES_BASE, params=params,
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
     payload = r.json()

@@ -40,6 +40,12 @@ from collections import defaultdict
 
 import requests
 
+import sys as _sys
+from pathlib import Path as _Path
+if str(_Path(__file__).resolve().parents[2]) not in _sys.path:
+    _sys.path.append(str(_Path(__file__).resolve().parents[2]))  # scripts/: datos_gob
+import datos_gob  # noqa: E402
+
 logger = logging.getLogger(__name__)
 
 # Constantes propias y no importadas de `config`, por el mismo motivo que en
@@ -242,7 +248,7 @@ def _poblacion_mensual(puntos: list):
 
 
 def _fetch_poblacion() -> list:
-    r = requests.get(DATOS_GOB_BASE,
+    r = datos_gob.get(DATOS_GOB_BASE,
                      params={"ids": POBLACION_ID, "format": "json", "limit": 80},
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()

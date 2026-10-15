@@ -435,3 +435,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0352](0352-como-se-calcula-el-indice-en-llano.md) | Cómo se calcula el índice, en llano y debajo de sus dimensiones |  | vigente |
 | [0354](0354-pagina-de-cinturon-segun-la-propuesta-de-macro.md) | La página de cada cinturón, según la propuesta de macro |  | vigente |
 | [0355](0355-lectura-del-mes-con-lectura-por-cinturon-desplegable.md) | La lectura del mes con la lectura por cinturón desplegable |  | vigente |
+| [0356](0356-lectura-mas-completa-de-datos-gob.md) | De datos.gob.ar vale la lectura más completa de varias |  | vigente |

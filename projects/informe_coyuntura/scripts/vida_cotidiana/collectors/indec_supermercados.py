@@ -58,6 +58,12 @@ import statistics
 
 import requests
 
+import sys as _sys
+from pathlib import Path as _Path
+if str(_Path(__file__).resolve().parents[2]) not in _sys.path:
+    _sys.path.append(str(_Path(__file__).resolve().parents[2]))  # scripts/: datos_gob
+import datos_gob  # noqa: E402
+
 logger = logging.getLogger(__name__)
 
 # Constantes propias y no importadas de `config`, por el mismo motivo que en
@@ -214,7 +220,7 @@ def _serie_del_espejo() -> dict | None:
     Es un contraste, no una fuente: nunca levanta. Que el espejo esté caído no
     es motivo para no publicar lo que el INDEC ya publicó."""
     try:
-        r = requests.get(ESPEJO_API,
+        r = datos_gob.get(ESPEJO_API,
                          params={"ids": ESPEJO_ID, "format": "json", "limit": 5000},
                          headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
         r.raise_for_status()

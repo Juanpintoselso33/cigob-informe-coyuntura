@@ -22,6 +22,8 @@ from pathlib import Path
 
 import requests
 
+import datos_gob
+
 sys.path.insert(0, str(Path(__file__).parent))
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -986,7 +988,7 @@ def _sin_tendencia(serie: dict) -> dict:
 
 def _serie_datos_gob(sid: str) -> dict:
     """{YYYY-MM: valor} de una serie de datos.gob.ar."""
-    r = requests.get(SERIES_API, params={"ids": sid, "limit": 5000,
+    r = datos_gob.get(SERIES_API, params={"ids": sid, "limit": 5000,
                                          "format": "json"}, timeout=60)
     r.raise_for_status()
     return {f[:7]: float(v) for f, v in r.json()["data"] if v is not None}

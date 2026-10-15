@@ -54,6 +54,8 @@ import calendar
 import json
 import subprocess
 import requests
+
+import datos_gob
 import logging
 import unicodedata
 from datetime import datetime, date
@@ -265,7 +267,7 @@ def _manual_entry(nombre: str, manuales: dict, cache_anterior: dict) -> dict | N
 
 def _indec_serie(series_id: str, limit: int = 16) -> list:
     params = {"ids": series_id, "format": "json", "limit": limit, "sort": "desc"}
-    r = requests.get(INDEC_SERIES_BASE, params=params, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r = datos_gob.get(INDEC_SERIES_BASE, params=params, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
     return r.json()["data"]
 

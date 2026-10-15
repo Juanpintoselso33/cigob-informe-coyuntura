@@ -15,6 +15,8 @@ import calendar
 import functools
 from urllib.parse import urljoin
 import requests
+
+import datos_gob
 import urllib3
 from contextlib import contextmanager
 from datetime import datetime, timedelta, date
@@ -191,7 +193,7 @@ def fetch_indec(series_id: str, limit: int = 48) -> list:
     import indec_actividad
     if series_id in indec_actividad.SERIES:
         return indec_actividad.filas(series_id, limit)
-    r = requests.get(INDEC_BASE, params={"ids": series_id, "format": "json",
+    r = datos_gob.get(INDEC_BASE, params={"ids": series_id, "format": "json",
                      "limit": limit, "sort": "desc"},
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()

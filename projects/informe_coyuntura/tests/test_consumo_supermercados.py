@@ -371,6 +371,7 @@ def test_el_espejo_caido_no_impide_publicar(monkeypatch):
     motivo para no publicar lo que el INDEC ya publicó. Son dos mitades — que
     `_serie_del_espejo` se trague el fallo, y que sin contraste igual haya card."""
     monkeypatch.setattr(_col, "requests", _RequestsQueExplota())
+    monkeypatch.setattr(_col.datos_gob, "requests", _RequestsQueExplota())
     assert _ESPEJO_REAL() is None
 
     _con_libro(monkeypatch, BASE_OK + [("2026-06", 82.1)])

@@ -5,6 +5,12 @@ Sin autenticacion. Todos los IDs verificados al 2026-05-10.
 import logging
 import requests
 
+import sys as _sys
+from pathlib import Path as _Path
+if str(_Path(__file__).resolve().parents[2]) not in _sys.path:
+    _sys.path.append(str(_Path(__file__).resolve().parents[2]))  # scripts/: datos_gob
+import datos_gob  # noqa: E402
+
 from config import DATOS_GOB_BASE, DATOS_GOB_SEARCH, INDEC_SERIES, RIPTE_CSV, HTTP_HEADERS, HTTP_TIMEOUT
 
 logger = logging.getLogger(__name__)
@@ -18,7 +24,7 @@ def _get_serie(series_id: str, limit: int = 2) -> list:
     if series_id in indec_actividad.SERIES:
         return indec_actividad.filas(series_id, limit)
     params = {"ids": series_id, "format": "json", "limit": limit, "sort": "desc"}
-    r = requests.get(DATOS_GOB_BASE, params=params, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r = datos_gob.get(DATOS_GOB_BASE, params=params, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
     return r.json()["data"]
 
