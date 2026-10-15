@@ -6,6 +6,7 @@ fecha: 2026-09-14
 cinturon: 'transversal'
 archivos: ['scripts/aviso_slack.py', 'scripts/cotejo_manual.py', '.github/workflows/data-pipeline.yml', 'tests/test_avisos_hilos.py']
 relacionado: ['0270', '0350']
+modificado_por: ['0357']
 ambito: 'Operación · ciclo de vida de los avisos del Monitor en Slack'
 origen: 'Tres noches seguidas del mismo 🟡 sin decir de qué producto ni que era la misma falla, y ningún aviso cuando se resolvió'
 ---

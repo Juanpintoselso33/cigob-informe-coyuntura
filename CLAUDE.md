@@ -458,7 +458,8 @@ alcanza.**
 
 **Un hilo por problema (ADR-0309).** Cada problema tiene clave estable y un
 mensaje raíz: aparece → mensaje nuevo; sigue → se edita la raíz («lleva N
-corridas»), sin mensaje nuevo en el canal; se resuelve → la raíz pasa a ✅ y
+corridas»), sin mensaje nuevo en el canal —salvo un 🔴, que cada tres corridas
+responde en el hilo también al canal, porque una edición no notifica (ADR-0357); se resuelve → la raíz pasa a ✅ y
 se responde en el hilo («✅ se resolvió…»). Esa respuesta sale **también al
 canal sólo si el problema era 🔴** (incluye «la corrida nocturna vuelve a
 publicar»); la de un 🟡 queda en el hilo (ADR-0350). Del 12 al

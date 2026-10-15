@@ -496,7 +496,8 @@ def _reporte(a, pasos, motivos, cols, resumen, fin, cotejos=()) -> int:
 # Ahora cada problema tiene una clave estable y un mensaje raíz:
 #   · aparece        → mensaje nuevo en el canal
 #   · sigue abierto  → se EDITA la raíz ("lleva N corridas"); si cambia el
-#                      diagnóstico, respuesta en el hilo. Nada nuevo en el canal.
+#                      diagnóstico, respuesta en el hilo. Nada nuevo en el canal,
+#                      salvo el recordatorio de un 🔴 cada RECORDAR_CADA corridas.
 #   · desaparece     → la raíz pasa a ✅ y se responde en el hilo («✅ se
 #                      resolvió…»). La respuesta sale TAMBIÉN al canal sólo si
 #                      el problema era 🔴 (ADR-0350): un 🟡 resuelto no le pide
@@ -702,6 +703,26 @@ def _texto_resuelto(reg: dict) -> str:
     ])
 
 
+# Una edición no notifica a nadie: del 12 al 15-oct-2026 la corrida nocturna
+# cayó cuatro noches y el 🔴 se fue editando («lleva 4 corridas») sin que nadie
+# se enterara (ADR-0357). Un 🔴 que sigue abierto responde en su hilo, también
+# al canal, en la corrida RECORDAR_CADA y en cada múltiplo. Un 🟡 no: su raíz
+# editada alcanza.
+RECORDAR_CADA = 3
+
+
+def _recordatorio(reg: dict, url: str) -> str | None:
+    if reg.get("glifo") != "🔴" or reg["corridas"] % RECORDAR_CADA:
+        return None
+    gente = [l for l in reg["cuerpo"] if l.startswith("*Qué ve la gente:*")]
+    return "\n".join([
+        _cabecera("🔴", f"sigue: {reg['titulo']}"),
+        f"_Lleva {_corridas(reg['corridas'])} seguidas, desde el {reg['desde']}._",
+        *gente,
+        *([f"<{url}|ver la corrida>"] if url else []),
+    ])
+
+
 def _destino_cierre(reg: dict) -> dict:
     """Dónde va el ✅ (ADR-0350). La raíz se edita siempre; la respuesta sale
     también al canal sólo si el problema era 🔴 (la corrida nocturna caída es
@@ -745,6 +766,9 @@ def sincronizar(ruta: str, actuales: list[dict], alcance, url: str = "") -> int:
                 publicar("\n".join(["*Cambió el diagnóstico:*", *p["cuerpo"]]
                                    + ([f"<{url}|ver la corrida>"] if url else [])),
                          thread_ts=reg["ts"])
+            recordatorio = _recordatorio(reg, url)
+            if recordatorio:
+                publicar(recordatorio, thread_ts=reg["ts"], reply_broadcast=True)
             continue
         reg = dict(desde=_fecha(), corridas=1, glifo=p["glifo"], titulo=p["titulo"],
                    resuelto=p["resuelto"], cuerpo=p["cuerpo"], huella=p["huella"], umbral=umbral)

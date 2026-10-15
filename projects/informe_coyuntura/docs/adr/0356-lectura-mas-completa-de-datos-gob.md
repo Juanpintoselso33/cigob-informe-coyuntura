@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-10-15
 cinturon: 'transversal'
 archivos: ['scripts/datos_gob.py', 'scripts/macro.py', 'scripts/gestion.py', 'scripts/politica.py', 'scripts/descargar_series.py', 'scripts/validacion_externa.py', 'scripts/vida_cotidiana/collectors/indec_series.py', 'scripts/vida_cotidiana/collectors/trabajo_independiente.py', 'scripts/vida_cotidiana/collectors/motorizacion.py', 'scripts/vida_cotidiana/collectors/indec_supermercados.py', 'tests/test_datos_gob_lecturas.py']
+relacionado: ['0357']
 ambito: 'Colectores · lecturas de la API de series de datos.gob.ar'
 origen: 'Cuatro corridas nocturnas caídas del 12 al 15-oct-2026'
 ---

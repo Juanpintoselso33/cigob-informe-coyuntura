@@ -217,3 +217,30 @@ def test_el_workflow_restaura_pasa_y_guarda_el_estado_siempre():
     # Y dos corridas a la vez leerían el mismo estado y duplicarían hilos.
     flujo = yaml.safe_load(wf.read_text(encoding='utf-8'))
     assert flujo.get('concurrency', {}).get('cancel-in-progress') is False
+
+
+FALLA = 'FAILED tests/test_x.py::test_a - boom\n'
+
+
+def test_un_rojo_que_sigue_avisa_en_el_canal_cada_tres_corridas(slack, monkeypatch, tmp_path):
+    """12 al 15-oct-2026: la corrida cayó cuatro noches y el 🔴 sólo se editó.
+    Una edición no notifica; la respuesta con broadcast, sí (ADR-0357)."""
+    for _ in range(2):
+        correr(monkeypatch, tmp_path, 'fallo', gates=FALLA)
+    assert not any(p.get('reply_broadcast') for p in slack.posts)    # 2 corridas: sólo la raíz
+    correr(monkeypatch, tmp_path, 'fallo', gates=FALLA)
+    [aviso] = [p for p in slack.posts if p.get('reply_broadcast')]
+    assert aviso['thread_ts'] == slack.raices()[0]['ts']
+    assert aviso['texto'].startswith('🔴 *Monitor del Plan de Gobierno — sigue: ')
+    assert 'Lleva 3 corridas seguidas' in aviso['texto']
+    assert '*Qué ve la gente:*' in aviso['texto']
+    for _ in range(3):
+        correr(monkeypatch, tmp_path, 'fallo', gates=FALLA)
+    assert len([p for p in slack.posts if p.get('reply_broadcast')]) == 2   # la 6.ª
+    assert len(slack.raices()) == 1
+
+
+def test_un_amarillo_que_sigue_no_avisa_en_el_canal(slack, monkeypatch, tmp_path):
+    for _ in range(6):
+        correr(monkeypatch, tmp_path, 'degradado', ERR)
+    assert len(slack.posts) == 1

@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-10-08
 cinturon: 'transversal'
 archivos: ['scripts/aviso_slack.py', 'scripts/aviso_cambio_claude.py', '.github/workflows/data-pipeline.yml', '.github/workflows/cambios-desde-claude.yml', 'tests/test_avisos_menos_ruido.py', 'tests/test_aviso_cambio_claude.py', 'tests/test_avisos_hilos.py']
-relacionado: ['0175', '0270', '0309', '0334']
+relacionado: ['0175', '0270', '0309', '0334', '0357']
 ambito: 'Operación · qué llega al canal #monitor-alertas y qué se queda en el log, el issue o el hilo'
 origen: 'Juan, 8-oct-2026: de las 91 notificaciones del canal desde el 25-ago, 52 no le pedían nada a nadie'
 ---
