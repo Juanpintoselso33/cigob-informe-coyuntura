@@ -42,7 +42,7 @@ Componentes que puntúan en este corte: 13 de 13 publicados.
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 71,7 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 71,6 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 100,0 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. | 59,9 | AMARILLO | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 72,5 | VERDE | 15,0 % |
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 6,88 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 6,94 % de brecha CCL/mayorista | VERDE | 14,0 % |
 | Apertura comercial (alícuota) | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -95,7 +95,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 6,88 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 6,94 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -138,13 +138,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1619.30 (2026-10-15T13:57:00-03:00) / mayorista venta 1515.00 (2026-10-15T07:37:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1619.10 (2026-10-15T14:57:00-03:00) / mayorista venta 1514.00 (2026-10-15T11:57:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 6,88 % de brecha CCL/mayorista (2026-10).
+Dato vigente: 6,94 % de brecha CCL/mayorista (2026-10).
 
-6,88 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 7,12 del corte más cercano.
+6,94 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 7,06 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -606,7 +606,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-10-15; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV
+- Evaluación al 2026-10-15; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 7 menciones del FAL en el BO desde mar-2026
 
 ## Color vigente y por qué
 
