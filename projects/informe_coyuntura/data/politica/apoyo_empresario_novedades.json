@@ -1,16 +1,27 @@
 {
  "_meta": {
-  "comunicados_vistos": 46,
+  "comunicados_vistos": 47,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie del indicador en el mes anterior al más viejo, y `inventario_verificado` es la última corrida en la que respondieron las dos cámaras (ADR-0310). Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
-  "inventario_verificado": "2026-10-11",
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-10-11"
+  "inventario_verificado": "2026-10-15",
+  "nuevos_en_la_corrida": 1,
+  "ultima_corrida": "2026-10-15"
  },
  "pendientes": {
+  "UIA|industria-inspira-2026-anunciamos-a-los-ganadores": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-10-13",
+   "id": "industria-inspira-2026-anunciamos-a-los-ganadores",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "El equipo de la  Escuela Industrial N.º 1 General Enrique Mosconi de Caleta Olivia  presentó una propuesta para aprovechar los descartes orgánicos de la industria pesquera mediante digestión anaerobia. El proceso permite producir biogás para generar energía eléctrica y térmica, y obtener un material aprovechable como biofertilizante.  Los estudiantes desarrollaron un banco piloto con ocho reactores y un sistema de monitoreo en tiempo real. La iniciativa integra la gestión de residuos, el cuidado ambiental y la generación local de energía.   Un reconocimiento a los cinco equipos finalistas   La UIA destacó el trabajo de los cinco equipos que llegaron a la final nacional, por la calidad de sus propuestas y su compromiso con los desafíos de sus comunidades. Además de los tres proyectos premiados, participaron  Bioterra , del  IPET N.º 76 Gustavo Riemann de Villa Rumipal, Córdoba , que propone recuperar suelos degradados mediante cápsulas biodegradables, y  M A R - Matrices Adsorbentes de Remediación , de la  EEST N.º 1 ARA General Belgrano de Ingeniero White, Buenos Aires , que desarrolla barreras para mitigar derrames de hidrocarburos utilizando carbón activado obtenido de yerba mate usada.  Las cinco propuestas reflejan el potencial de la educación técnica para integrar conocimientos, creatividad y capacidades de producción en soluciones para el entorno.  La selección estuvo a cargo de un jurado integrado por  Martín Rappallini , presidente de la UIA;  Silvio Zurzolo , presidente del Departamento de Educación, Tecnología e Innovación Productiva de la UIA;  Emmanuel Peña Álvarez , director de Divulgación y Transferencia Científica de la Universidad Siglo 21;  Irini Wentinck , presidenta de Diversidad, Equidad e Inclusión de la UIA y presidenta de IRAM; y  María Furtado , presidenta de UIA Joven. El jurado evaluó el carácter industrial, el impacto social, la innovación y sustentabilidad, la escalabilidad y la viabilidad de las propuestas.  La  entrega de premios tendrá lugar el 3 de noviembre , en el marco de la Conferencia Industrial de la UIA, donde se reconocerá a los equipos ganadores de esta edición.",
+   "titulo": "Industria Inspira 2026: anunciamos a los ganadores",
+   "url": "https://www.uia.org.ar/uia/novedades/industria-inspira-2026-anunciamos-a-los-ganadores"
+  },
   "UIA|la-uia-busco-alianzas-en-paris-para-integrar-caden": {
    "camara": "UIA",
    "destinatario": null,
@@ -374,6 +385,10 @@
    "fecha": "2026-08-25",
    "origen": "codificado 2026-09-14 (tanda en apoyo_empresario_codificacion.json)",
    "titulo": "Grupo de Trabajo de Innovación Abierta Argentina de IBERINNOVA"
+  },
+  "UIA|industria-inspira-2026-anunciamos-a-los-ganadores": {
+   "fecha": "2026-10-13",
+   "titulo": "Industria Inspira 2026: anunciamos a los ganadores"
   },
   "UIA|industria-inspira-entra-en-su-ultima-semana-de-ins": {
    "fecha": "2026-08-24",

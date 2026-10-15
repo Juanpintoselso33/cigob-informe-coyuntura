@@ -129,7 +129,7 @@ fecha,indicador,valor,unidad,fuente
 2024-03-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2024-02-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2024-01-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
-2026-09-01,protestas_caba,20,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
+2026-09-01,protestas_caba,21,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-08-01,protestas_caba,26,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-07-01,protestas_caba,7,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-06-01,protestas_caba,25,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
@@ -302,6 +302,7 @@ fecha,indicador,valor,unidad,fuente
 2024-03-01,masa_salarial,-19.13,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2024-02-01,masa_salarial,-10.68,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2024-01-01,masa_salarial,-27.15,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2026-07-01,litigiosidad_laboral,0.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-06-01,litigiosidad_laboral,2.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-05-01,litigiosidad_laboral,2.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-04-01,litigiosidad_laboral,2.8,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
@@ -314,16 +315,16 @@ fecha,indicador,valor,unidad,fuente
 2025-09-01,litigiosidad_laboral,5.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2025-08-01,litigiosidad_laboral,4.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2025-07-01,litigiosidad_laboral,6.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2025-06-01,litigiosidad_laboral,6.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2025-05-01,litigiosidad_laboral,5.5,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2025-04-01,litigiosidad_laboral,6.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-06-01,litigiosidad_laboral,7.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-05-01,litigiosidad_laboral,5.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-04-01,litigiosidad_laboral,6.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2025-03-01,litigiosidad_laboral,7.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2025-02-01,litigiosidad_laboral,5.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2025-01-01,litigiosidad_laboral,5.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2024-12-01,litigiosidad_laboral,5.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2024-11-01,litigiosidad_laboral,6.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2024-10-01,litigiosidad_laboral,4.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2024-09-01,litigiosidad_laboral,3.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-09-01,litigiosidad_laboral,3.5,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2024-08-01,litigiosidad_laboral,1.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2024-07-01,litigiosidad_laboral,1.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2024-06-01,litigiosidad_laboral,1.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
@@ -349,19 +350,18 @@ fecha,indicador,valor,unidad,fuente
 2022-10-01,litigiosidad_laboral,16.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2022-09-01,litigiosidad_laboral,14.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2022-08-01,litigiosidad_laboral,15.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2022-07-01,litigiosidad_laboral,16.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-07-01,litigiosidad_laboral,16.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2022-06-01,litigiosidad_laboral,17.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2022-05-01,litigiosidad_laboral,30.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2022-04-01,litigiosidad_laboral,47.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2022-03-01,litigiosidad_laboral,69.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2022-02-01,litigiosidad_laboral,80.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2022-01-01,litigiosidad_laboral,76.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2021-12-01,litigiosidad_laboral,77.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2021-11-01,litigiosidad_laboral,70.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-04-01,litigiosidad_laboral,47.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-03-01,litigiosidad_laboral,69.5,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-02-01,litigiosidad_laboral,80.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-01-01,litigiosidad_laboral,76.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2021-12-01,litigiosidad_laboral,77.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2021-11-01,litigiosidad_laboral,70.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2021-10-01,litigiosidad_laboral,66.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2021-09-01,litigiosidad_laboral,60.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2021-08-01,litigiosidad_laboral,42.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2021-07-01,litigiosidad_laboral,31.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2026-06-01,libertad_opcion_salud,33.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2026-05-01,libertad_opcion_salud,32.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2026-04-01,libertad_opcion_salud,31.7,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
