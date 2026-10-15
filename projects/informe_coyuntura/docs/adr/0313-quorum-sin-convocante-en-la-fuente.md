@@ -7,7 +7,7 @@ fecha: 2026-09-15
 cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [veto_quorum]
-relacionado: ['0091', '0308']
+relacionado: ['0091', '0308', '0358']
 ambito: 'ITCP · `veto_quorum` · fuente HCDN'
 origen: 'Juan (Slack, 15-sep): "Sesiones caídas, que solo cuenten las sesiones caídas PROPUESTAS por el oficialismo"'
 ---

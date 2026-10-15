@@ -299,7 +299,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   veto_quorum: {
     latex: String.raw`\frac{\text{sesiones en minor\'ia}_{\text{12 m}}}{\text{sesiones convocadas}_{\text{12 m}}}\times 100`,
-    leyenda: "Sesiones plenarias de Diputados de los últimos doce meses (datos abiertos de la Cámara de Diputados). Una sesión cuenta como caída cuando el registro oficial la clasifica «en minoría»: fue convocada, esperó y nunca llegó a constituirse, de modo que no recibió número de sesión. El denominador son las sesiones convocadas para tratar temas —las especiales y las que quedaron en minoría—; quedan afuera las informativas, la preparatoria y la presentación del presupuesto, donde el oficialismo no necesita juntar quórum para avanzar su agenda.",
+    leyenda: "Sesiones plenarias de Diputados de los últimos doce meses (datos abiertos de la Cámara de Diputados). Una sesión cuenta como caída cuando el registro oficial la clasifica «en minoría»: fue convocada, esperó y nunca llegó a constituirse, de modo que no recibió número de sesión. El denominador son las sesiones convocadas para tratar temas —las especiales y las que quedaron en minoría—; quedan afuera las informativas, la preparatoria y la presentación del presupuesto, donde el oficialismo no necesita juntar quórum para avanzar su agenda. Tampoco cuentan las sesiones que pidió la oposición y quedaron en minoría: ahí el que gana es el oficialismo.",
   },
   comisiones_caidas: {
     latex: String.raw`\frac{\text{proyectos con dictamen sin sanci\'on}_{\text{12 m}}}{\text{proyectos con dictamen}_{\text{12 m}}}\times 100`,

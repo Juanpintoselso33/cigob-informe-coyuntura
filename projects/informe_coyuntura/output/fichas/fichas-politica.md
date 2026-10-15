@@ -35,14 +35,14 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 73,4** | **VERDE** | Moderadamente aflojado | 16 indicadores: 13 en verde · 2 en amarillo · 1 en rojo |
+| **ITCP: 74,1** | **VERDE** | Moderadamente aflojado | 16 indicadores: 13 en verde · 2 en amarillo · 1 en rojo |
 Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 70,3 | VERDE | 22,6 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 73,2 | VERDE | 22,6 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 76,7 | VERDE | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 16,1 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,3 | AMARILLO | 16,1 % |
@@ -64,7 +64,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Poder legislativo** | | | | |
 | Ratio DNU / leyes | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,03 DNUs publicados por ley publicada | VERDE | 5,2 % |
 | Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 6,8 % |
-| Sesiones caídas por falta de quórum | Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum… | 9,1 % de sesiones | VERDE | 3,4 % |
+| Sesiones caídas por falta de quórum | Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum… | 0 % de sesiones | VERDE | 3,4 % |
 | Normas desafiadas en el recinto | Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses. | 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | VERDE | 3,4 % |
 | Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. | 31 leyes sancionadas (12m) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
@@ -786,11 +786,11 @@ Ponderación vigente en el ITCP: 6,8 % efectivo. El color es una lectura adicion
 
 # Sesiones caídas por falta de quórum
 
-Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum necesario para sesionar. Se miden los últimos doce meses.
+Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum necesario para sesionar. Se miden los últimos doce meses. No cuentan las sesiones que pidió la oposición y no juntaron quórum, porque ahí el que gana es el oficialismo.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 9,1 % de sesiones** (2026-10) | **VERDE** | Peso efectivo 3,4 % del ITCP | Cinturón Política |
+| **Hoy: 0 % de sesiones** (2026-10) | **VERDE** | Peso efectivo 3,4 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -800,11 +800,11 @@ Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de sesiones |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Se consulta el índice oficial de sesiones, que puede incluir convocatorias futuras: se excluyen por fecha. El rezago de publicación no está garantizado; se informa la última reunión registrada. |
 | **PRODUCTOR DEL DATO** | HCDN — Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Índice oficial de sesiones plenarias y versiones taquigráficas |
-| **MODO DE ACCESO** | Automático: lectura del índice de reuniones desde 2023, con deduplicación por identidad, exclusión de fechas futuras y selección de la ventana mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Semiautomático: lectura del índice de reuniones desde 2023, con deduplicación por identidad, exclusión de fechas futuras y selección de la ventana mensual. Quién convocó cada sesión caída se carga a mano con su fuente. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-15 |
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum necesario para sesionar. Se miden los últimos doce meses.
+Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum necesario para sesionar. Se miden los últimos doce meses. No cuentan las sesiones que pidió la oposición y no juntaron quórum, porque ahí el que gana es el oficialismo.
 
 El quórum es el primer filtro de cualquier agenda legislativa: sin él no se debate ni se vota nada. Una tasa alta indica que el oficialismo no logra reunir a la cámara, sea porque la oposición se ausenta deliberadamente o porque sus propios aliados no acompañan.
 
@@ -813,6 +813,7 @@ El quórum es el primer filtro de cualquier agenda legislativa: sin él no se de
 ## Método de cómputo
 
 - El numerador cuenta las reuniones que el índice oficial clasifica como expresiones en minoría. No se infiere su condición por la duración ni se equipara cualquier sesión no efectuada con falta de quórum.
+- Una sesión que pidió la oposición y quedó en minoría no cuenta, ni en el numerador ni en el denominador: ahí el oficialismo no fracasó en reunir a la cámara, sino que ganó quedándose afuera. Quién convocó cada sesión caída se toma de un registro cargado a mano con su fuente.
 - El denominador reúne sesiones legislativas ordinarias, extraordinarias o especiales y reuniones en minoría. Excluye informativas, preparatorias, asambleas, homenajes, presentaciones de presupuesto y citadas no efectuadas. Dos reuniones distintas del mismo día se conservan; dos enlaces de la misma reunión se cuentan una sola vez.
 - La ventana comprende el mes informado y los once anteriores. Los meses históricos cierran al último día; el mes en curso es parcial hasta el día de consulta. No se reinicia el conteo al cambiar de período legislativo.
 
@@ -833,13 +834,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 1 de 11 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. Última reunión: 2026-10-15. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas.
+- 0 de 9 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. No cuentan 2 sesiones que pidió la oposición y no juntaron quórum: ahí el que gana es el oficialismo. Última reunión: 2026-10-15. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas.
 
 ## Color vigente y por qué
 
-Dato vigente: 9,1 % de sesiones (2026-10).
+Dato vigente: 0 % de sesiones (2026-10).
 
-9,1 % de sesiones cae en el tramo que corresponde a Verde, a 7,9 del corte más cercano.
+0,0 % de sesiones cae en el tramo que corresponde a Verde, a 17,0 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -849,7 +850,7 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 
 - Las citadas no efectuadas aparecen en el índice pero se excluyen mientras su rótulo no acredite falta de quórum. Tampoco se cuentan negociaciones o convocatorias retiradas sin registro: no es una medida exhaustiva del bloqueo parlamentario.
 - El denominador es pequeño y cambia con cada reunión; una sola reunión en minoría puede mover varios puntos porcentuales. Deben leerse juntos porcentaje, numerador, denominador y ventana.
-- No distingue quién convocó la sesión: la Cámara de Diputados no publica el convocante ni en el índice de sesiones, ni en el detalle de cada reunión, ni en el temario. Por eso se cuentan todas las sesiones caídas, y una sesión que convoca la oposición y se cae —un bloqueo exitoso del oficialismo— suma igual que una propia que no reúne quórum. Hasta que la fuente publique el convocante, el indicador mide cuántas veces la cámara no se reúne, no de quién es el fracaso.
+- La Cámara de Diputados no publica quién convocó cada sesión. El convocante de las sesiones caídas se carga a mano, con la nota de prensa o el documento que lo dice; una sesión caída que todavía no está cargada cuenta como caída del oficialismo hasta que se registre. Las sesiones que sí se realizaron se cuentan todas en el denominador, sin distinguir quién las pidió.
 
 ## Si falta el dato / Política de revisiones
 
@@ -870,6 +871,8 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 **2026-07-20** — Corrección de fondo del criterio de conteo, a partir de una revisión de los registros crudos del dataset oficial. La versión anterior identificaba las sesiones caídas buscando la palabra «fracasada» en el tipo de reunión, lo que dejaba fuera las once sesiones clasificadas «en minoría» —que son el fracaso de quórum propiamente dicho— y en cambio contaba dos sesiones informativas del artículo 71 de la Constitución que no se realizaron, un fenómeno distinto. La ventana pasó además de período legislativo a doce meses móviles, y la serie de anual a mensual.
 
 **2026-09-24** — La ficha declara que no se puede separar quién convocó cada sesión (la fuente no lo publica) y qué implica para la lectura; se corrige el peso nominal (15%, tras la salida del bloqueo sostenido el 16-sep-2026).
+
+**2026-10-15** — Las sesiones caídas que pidió la oposición dejan de contar: no juntar quórum para una sesión opositora es una victoria del oficialismo, no un Congreso trabado. El convocante se carga a mano con su fuente. Disparó el cambio la sesión del 15-oct-2026 para derogar el DNU 70/2023, que cayó con 121 de los 129 diputados necesarios.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1115,7 +1118,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Ninguna norma del Ejecutivo fue desafiada en el recinto en los últimos 12 meses — cero desafíos es la señal, no un dato faltante. Cuando los hubo (histórico completo: 16 normas desde marzo de 2024), el 43,8% siguió en pie (7 de 16). Provisorio: las actas de Diputados no pudieron leerse en esta corrida; no hay veto ni DNU confirmado en el tramo sin acta. 1 sesión(es) con veto o DNU en el temario siguen sin versión taquigráfica y no se cuentan hasta confirmarlas.
+- Ninguna norma del Ejecutivo fue desafiada en el recinto en los últimos 12 meses — cero desafíos es la señal, no un dato faltante. Cuando los hubo (histórico completo: 16 normas desde marzo de 2024), el 43,8% siguió en pie (7 de 16).
 
 ## Color vigente y por qué
 

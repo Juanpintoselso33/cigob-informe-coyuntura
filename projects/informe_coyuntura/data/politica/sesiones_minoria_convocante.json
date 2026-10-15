@@ -1,0 +1,114 @@
+{
+  "revisado_en": "2026-10-15",
+  "criterio": "Quién pidió cada sesión de Diputados que quedó en minoría (ADR-0358). oposicion = la pidieron bloques no oficialistas: no cuenta en veto_quorum. oficialismo = la pidió LLA o un aliado con apoyo de LLA (Ficha Limpia, PRO): cuenta. Cada entrada lleva la fuente que lo dice.",
+  "sesiones": [
+    {
+      "id": "3517",
+      "fecha": "2024-03-13",
+      "convocante": "oposicion",
+      "tema": "Nueva fórmula de movilidad jubilatoria",
+      "quien": "Hacemos Coalición Federal (firmante citado: Ignacio García Aresca); UxP acompañó en el recinto",
+      "fuente": "https://www.infobae.com/politica/2024/03/13/el-oficialismo-logro-desactivar-la-sesion-especial-para-debatir-la-formula-jubilatoria-el-rol-clave-de-los-gobernadores/",
+      "cita": "Hacemos Coalición Federal, que había pedido la sesión"
+    },
+    {
+      "id": "3518",
+      "fecha": "2024-04-24",
+      "convocante": "oposicion",
+      "tema": "Financiamiento universitario, reposición del FONID, movilidad jubilatoria",
+      "quien": "Bloque Unión por la Patria (presidente Germán Martínez)",
+      "fuente": "https://eleconomista.com.ar/politica/por-cayo-sesion-especial-pedida-union-patria-diputados-n73003",
+      "cita": "por qué cayó la sesión especial pedida por Unión por la Patria (124 presentes, 5 menos que 129)"
+    },
+    {
+      "id": "3525",
+      "fecha": "2024-08-07",
+      "convocante": "oficialismo",
+      "tema": "Repudio a Venezuela y a la visita de libertarios a represores en Ezeiza, ley de Armas, Registro de Datos Genéticos",
+      "quien": "La Libertad Avanza y aliados (PRO); UxP y HCF no dieron quórum",
+      "fuente": "https://www.cadena3.com/noticia/politica-y-economia/por-falta-de-quorum-se-cayo-la-sesion-especial-de-diputados_394022",
+      "cita": "Estamos ante una situación fracasada convocada exclusivamente por el bloque oficialista (G. Martínez)"
+    },
+    {
+      "id": "3542",
+      "fecha": "2024-11-12",
+      "convocante": "oposicion",
+      "tema": "Reforma de la ley de DNU y rechazo/derogación del DNU 846/24 (canje de deuda)",
+      "quien": "Encuentro Federal, Unión por la Patria y Democracia para Siempre",
+      "fuente": "https://www.ambito.com/politica/con-incertidumbre-el-quorum-la-oposicion-diputados-buscara-aprobar-la-reforma-la-ley-dnu-n6080917/amp",
+      "cita": "la reunión convocada por Encuentro Federal, Unión por la Patria (UP) y Democracia para Siempre (nota previa; el fracaso: https://www.minutouno.com/politica/diputados-fracaso-la-sesion-la-oposicion-modificar-la-ley-dnu-n6080972)"
+    },
+    {
+      "id": "3543",
+      "fecha": "2024-11-20",
+      "convocante": "oficialismo",
+      "tema": "Ficha Limpia (+ voto en el exterior, reincidencia en Código Penal)",
+      "quien": "PRO (Ritondo/Lospennato), junto a La Libertad Avanza y UCR (aliados del gobierno). Nota: el pedido lo formalizó el PRO",
+      "fuente": "https://www.perfil.com/noticias/politica/diputados-el-pro-convoco-a-una-sesion-especial-para-tratar-ficha-limpia-en-la-previa-a-la-sentencia-contra-cristina-kirchner.phtml",
+      "cita": "sesión impulsada por el PRO junto a los bloques de La Libertad Avanza y la UCR (128 presentes de 129; https://eleconomista.com.ar/politica/no-hubo-quorum-cayo-sesion-tratar-proyecto-ficha-limpia-diputados-n79627)"
+    },
+    {
+      "id": "3544",
+      "fecha": "2024-11-26",
+      "convocante": "oposicion",
+      "tema": "democracia sindical (pedida por la UCR) o DNU 846/2024 de canje de deuda (pedida por Unión por la Patria)",
+      "quien": "oposición en las dos: ninguna fuente dice cuál de las dos reuniones del día es cuál, pero ambas son opositoras",
+      "fuente": "https://www.hcdn.gob.ar/prensa/noticia/FRACASARON-SESIONES-PARA-TRATAR-LA-LEY-SINDICAL-Y-EL-DNU-DE-CANJE-DE-DEUDA/",
+      "cita": ""
+    },
+    {
+      "id": "3545",
+      "fecha": "2024-11-26",
+      "convocante": "oposicion",
+      "tema": "democracia sindical (pedida por la UCR) o DNU 846/2024 de canje de deuda (pedida por Unión por la Patria)",
+      "quien": "oposición en las dos: ninguna fuente dice cuál de las dos reuniones del día es cuál, pero ambas son opositoras",
+      "fuente": "https://www.hcdn.gob.ar/prensa/noticia/FRACASARON-SESIONES-PARA-TRATAR-LA-LEY-SINDICAL-Y-EL-DNU-DE-CANJE-DE-DEUDA/",
+      "cita": ""
+    },
+    {
+      "id": "3547",
+      "fecha": "2024-11-28",
+      "convocante": "oficialismo",
+      "tema": "Ficha Limpia (segundo intento) y voto de argentinos en el exterior",
+      "quien": "PRO (Cristian Ritondo); LLA no confirmado como firmante (8 de 39 libertarios faltaron). Aliado del gobierno, no LLA",
+      "fuente": "https://www.c5n.com/politica/sesion-diputados-ficha-limpia-28-noviembre-2024",
+      "cita": "sesión convocada tras un pedido del titular del bloque PRO, Cristian Ritondo; 116 presentes"
+    },
+    {
+      "id": "3555",
+      "fecha": "2025-03-19",
+      "convocante": "oposicion",
+      "tema": "Prórroga de la moratoria previsional, aumento de haberes, medicamentos PAMI",
+      "quien": "Unión por la Patria (kirchnerismo); 124 presentes de 129. Bloques firmantes exactos no confirmados",
+      "fuente": "https://www.cronista.com/economia-politica/por-falta-de-quorum-se-cayo-la-sesion-pedido-para-prorrogar-la-moratoria-previsional/",
+      "cita": "sesión pedida por el kirchnerismo para tratar la prórroga de la moratoria previsional"
+    },
+    {
+      "id": "3560",
+      "fecha": "2025-05-21",
+      "convocante": "oposicion",
+      "tema": "Jubilaciones (bono y moratoria), caso $LIBRA, emergencia inundaciones bonaerenses, AGN",
+      "quien": "Oposición (UxP, Democracia para Siempre, Encuentro Federal, Coalición Cívica, izquierda); firmantes exactos no listados",
+      "fuente": "https://www.c5n.com/politica/diputados-sesion-especial-moratoria-libra-agn-21-mayo-2025",
+      "cita": "La oposición pidió la sesión especial; tuvo dificultades para reunir las firmas"
+    },
+    {
+      "id": "3582",
+      "fecha": "2026-06-23",
+      "convocante": "oposicion",
+      "tema": "Interpelación y moción de censura contra el jefe de Gabinete Manuel Adorni",
+      "quien": "Oposición (UxP presente con G. Martínez); firmantes exactos no listados; 117 presentes de 129",
+      "fuente": "https://www.c5n.com/politica/camara-diputados-sesion-especial-interpelacion-manuel-adorni-23-junio-2026",
+      "cita": "sesión impulsada por la oposición; no logró quórum tras convocatoria a comisión de Menem"
+    },
+    {
+      "id": "3586",
+      "fecha": "2026-10-15",
+      "convocante": "oposicion",
+      "tema": "Rechazo al DNU 70/23, endeudamiento familiar, emergencia en discapacidad",
+      "quien": "8 bloques (32 diputados firmantes): UxP, Provincias Unidas, Frente de Izquierda, Coalición Cívica, Encuentro Federal, Primero San Luis, Defendamos Córdoba, Coherencia. Resultado (121 presentes) no verificado en fuente, viene del pedido",
+      "fuente": "https://www.perfil.com/noticias/politica/diputados-la-oposicion-pidio-sesion-para-tratar-el-dnu-7023-discapacidad-y-endeudamiento-familiar.phtml",
+      "cita": "Ocho bloques firmaron el pedido; sumados reúnen 122 legisladores, siete menos que los 129 necesarios"
+    }
+  ]
+}

@@ -1753,10 +1753,11 @@ export const FICHAS: Record<string, Ficha> = {
       operacion: "Índice oficial de sesiones plenarias y versiones taquigráficas",
       serie: "Reuniones identificadas por su enlace individual y fecha",
       url: "https://www.hcdn.gob.ar/sesiones/",
-      acceso: "Automático: lectura del índice de reuniones desde 2023, con deduplicación por identidad, exclusión de fechas futuras y selección de la ventana mensual.",
+      acceso: "Semiautomático: lectura del índice de reuniones desde 2023, con deduplicación por identidad, exclusión de fechas futuras y selección de la ventana mensual. Quién convocó cada sesión caída se carga a mano con su fuente.",
     },
     transformaciones: [
       "El numerador cuenta las reuniones que el índice oficial clasifica como expresiones en minoría. No se infiere su condición por la duración ni se equipara cualquier sesión no efectuada con falta de quórum.",
+      "Una sesión que pidió la oposición y quedó en minoría no cuenta, ni en el numerador ni en el denominador: ahí el oficialismo no fracasó en reunir a la cámara, sino que ganó quedándose afuera. Quién convocó cada sesión caída se toma de un registro cargado a mano con su fuente.",
       "El denominador reúne sesiones legislativas ordinarias, extraordinarias o especiales y reuniones en minoría. Excluye informativas, preparatorias, asambleas, homenajes, presentaciones de presupuesto y citadas no efectuadas. Dos reuniones distintas del mismo día se conservan; dos enlaces de la misma reunión se cuentan una sola vez.",
       "La ventana comprende el mes informado y los once anteriores. Los meses históricos cierran al último día; el mes en curso es parcial hasta el día de consulta. No se reinicia el conteo al cambiar de período legislativo.",
     ],
@@ -1767,7 +1768,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Las citadas no efectuadas aparecen en el índice pero se excluyen mientras su rótulo no acredite falta de quórum. Tampoco se cuentan negociaciones o convocatorias retiradas sin registro: no es una medida exhaustiva del bloqueo parlamentario.",
       "El denominador es pequeño y cambia con cada reunión; una sola reunión en minoría puede mover varios puntos porcentuales. Deben leerse juntos porcentaje, numerador, denominador y ventana.",
-      "No distingue quién convocó la sesión: la Cámara de Diputados no publica el convocante ni en el índice de sesiones, ni en el detalle de cada reunión, ni en el temario. Por eso se cuentan todas las sesiones caídas, y una sesión que convoca la oposición y se cae —un bloqueo exitoso del oficialismo— suma igual que una propia que no reúne quórum. Hasta que la fuente publique el convocante, el indicador mide cuántas veces la cámara no se reúne, no de quién es el fracaso.",
+      "La Cámara de Diputados no publica quién convocó cada sesión. El convocante de las sesiones caídas se carga a mano, con la nota de prensa o el documento que lo dice; una sesión caída que todavía no está cargada cuenta como caída del oficialismo hasta que se registre. Las sesiones que sí se realizaron se cuentan todas en el denominador, sin distinguir quién las pidió.",
     ],
     faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "El índice de sesiones se reconsulta en cada actualización. Las correcciones de fecha, nuevas reuniones publicadas o cambios de clasificación pueden revisar la historia; no se aplica un desplazamiento fijo a los datos del catálogo anterior.",
@@ -1778,6 +1779,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
       { fecha: "2026-07-20", cambio: "Corrección de fondo del criterio de conteo, a partir de una revisión de los registros crudos del dataset oficial. La versión anterior identificaba las sesiones caídas buscando la palabra «fracasada» en el tipo de reunión, lo que dejaba fuera las once sesiones clasificadas «en minoría» —que son el fracaso de quórum propiamente dicho— y en cambio contaba dos sesiones informativas del artículo 71 de la Constitución que no se realizaron, un fenómeno distinto. La ventana pasó además de período legislativo a doce meses móviles, y la serie de anual a mensual." },
       { fecha: "2026-09-24", cambio: "La ficha declara que no se puede separar quién convocó cada sesión (la fuente no lo publica) y qué implica para la lectura; se corrige el peso nominal (15%, tras la salida del bloqueo sostenido el 16-sep-2026).", adr: "0313,0330" },
+      { fecha: "2026-10-15", cambio: "Las sesiones caídas que pidió la oposición dejan de contar: no juntar quórum para una sesión opositora es una victoria del oficialismo, no un Congreso trabado. El convocante se carga a mano con su fuente. Disparó el cambio la sesión del 15-oct-2026 para derogar el DNU 70/2023, que cayó con 121 de los 129 diputados necesarios.", adr: "0358" },
     ],
   },
 

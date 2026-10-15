@@ -1,7 +1,7 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-15 18:56:41"
-score_global: 3.8
+generado: "2026-10-15 17:58:08"
+score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
 alerta_multicinturon: false
@@ -10,7 +10,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-10
 
-**Score global:** 3.8/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.4/10)
+**Score global:** 3.7/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.4/10)
 
 ## Cinturones
 
@@ -42,7 +42,7 @@ schema_version: "1.2.0"
 | base_monetaria | 1.42 | % mensual nominal | 2026-10-09 | fresco |
 | tc_mayorista | 0.36 | % mensual | 2026-10-14 | fresco |
 
-### 🟢 Politica — score 2.7/10 (estable)
+### 🟢 Politica — score 2.6/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -55,14 +55,14 @@ schema_version: "1.2.0"
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
 | iaf_transferencias | -1.8 | % interanual real | 2026-08-31 | fresco |
 | eficacia_legislativa | 27.3 | % de proyectos | 2026-10-15 | fresco |
-| veto_quorum | 9.1 | % de sesiones | 2026-10-15 | fresco |
+| veto_quorum | 0.0 | % de sesiones | 2026-10-15 | fresco |
 | comisiones_caidas | 96.7 | % de proyectos | 2026-10-15 | fresco |
 | adhesion_reformas_provincial | 75.0 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-10-15 | fresco |
 | derrotas_legislativas | 0 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-10-15 | fresco |
 | rotacion_gabinete | 6 | salidas de rango ministerial (acum. 12 meses) | 2026-10-15 | fresco |
 | protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
 | cohesion_bloque | 100.0 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-09-24 | fresco |
-| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-10-10 | ⚠ cache |
+| bloqueo_sostenido | None | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-10-15 | fresco |
 | desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-10-15 | fresco |
 | produccion_legislativa | 31 | leyes sancionadas (12m) | 2026-09-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
@@ -74,7 +74,7 @@ schema_version: "1.2.0"
 
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
-| judicializacion | 1.82 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
+| judicializacion | 1.81 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
 
 ### 🔴 Vida Cotidiana — score 6.4/10 (tensionado)
 *Riesgo de barbarismo: político*
@@ -120,7 +120,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:apoyo_empresario,bloqueo_sostenido`
+- `desactualizado:politica:apoyo_empresario`
 
 ---
-*Generado por CIGOB — 2026-10-15 18:56:41 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-15 17:58:08 — schema 1.2.0*

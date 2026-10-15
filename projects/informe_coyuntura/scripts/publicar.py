@@ -2687,6 +2687,9 @@ METODO_OBTENCION_EXCEPCIONES = {
     # Los dos leen el mismo registro legislativo: las actas inequívocas se
     # clasifican solas y las ambiguas no avanzan hasta el triage humano.
     "desafios_legislativos": "semiautomatico",
+    # El índice de sesiones se lee solo; quién convocó cada caída se carga a
+    # mano con su fuente (ADR-0358).
+    "veto_quorum": "semiautomatico",
     # bloqueo_sostenido comparte el registro pero salió del tablero (ADR-0330,
     # ver POLITICA_OCULTOS) — no se publica, así que no necesita excepción acá
     # (mismo criterio que derrotas_legislativas, comisiones_caidas, etc.).

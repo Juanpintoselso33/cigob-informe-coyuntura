@@ -164,6 +164,7 @@ def test_el_snapshot_declara_la_procedencia_de_cada_indicador():
                 "apoyo_empresario": {"valor": 0.0},
                 "desafios_legislativos": {"valor": 3.0},
                 "velocidad_resolucion": {"valor": 85.7},
+                "veto_quorum": {"valor": 0.0},
             }},
             "gestion": {"indicadores": {
                 "reestructuracion_organismos": {"valor": 24.4},
@@ -188,6 +189,7 @@ def test_el_snapshot_declara_la_procedencia_de_cada_indicador():
         "reestructuracion_organismos",
         "fal_modernizacion_laboral",
         "protocolo_antipiquetes",
+        "veto_quorum",
     }
     assert {k for k, v in metodos.items() if v == "manual"} == {
         "velocidad_resolucion",

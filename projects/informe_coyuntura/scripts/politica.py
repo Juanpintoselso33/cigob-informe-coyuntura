@@ -98,6 +98,9 @@ AJUSTES_ITCP_PATH = PROJECT_DIR / "data" / "politica" / "ajustes_itcp.json"
 # corrida nocturna (lección 2026-07-09, ver CLAUDE.md).
 DERROTAS_EVENTOS_PATH = PROJECT_DIR / "data" / "politica" / "derrotas_legislativas_eventos.json"
 GABINETE_SALIDAS_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_salidas.json"
+# Quién convocó cada sesión de Diputados que quedó en minoría (ADR-0358): el
+# índice oficial no lo dice, así que se carga a mano con la fuente.
+QUORUM_CONVOCANTE_PATH = PROJECT_DIR / "data" / "politica" / "sesiones_minoria_convocante.json"
 GABINETE_DECRETOS_CACHE_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_decretos_cache.json"
 CSJN_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "csjn_novedades.json"
 # El Votómetro salió del Monitor el 7-oct-2026 (ADR-0344): es otro producto.
@@ -1631,9 +1634,50 @@ def _sesiones_diputados_registros() -> list[dict]:
     return _sesiones_desde_indice(r.text)
 
 
+def _convocantes_minoria() -> dict[str, dict]:
+    """{id de reunión → entrada} del registro de convocantes (ADR-0358)."""
+    registro = json.loads(QUORUM_CONVOCANTE_PATH.read_text(encoding="utf-8"))
+    out = {}
+    for e in registro["sesiones"]:
+        if e.get("convocante") not in ("oposicion", "oficialismo") or not str(e.get("fuente") or "").strip():
+            raise ValueError(f"convocante de la reunión {e.get('id')} sin valor válido o sin fuente")
+        if str(e["id"]) in out:
+            raise ValueError(f"reunión {e['id']} repetida en el registro de convocantes")
+        out[str(e["id"])] = e
+    return out
+
+
+def _sesiones_para_veto(registros: list[dict], avisar: bool = False) -> tuple[list[tuple[str, bool]], int]:
+    """(fecha, en_minoría) del universo de veto_quorum y cuántas caídas quedaron
+    afuera por haberlas convocado la oposición (ADR-0358).
+
+    Una sesión que la oposición pidió y no juntó quórum es una votación que el
+    oficialismo ganó quedándose afuera, no un Congreso que el gobierno no puede
+    reunir: sale del numerador y del denominador. Una caída que todavía no está
+    en el registro cuenta como hasta ahora y, con `avisar`, pide cotejo."""
+    convocantes = _convocantes_minoria()
+    sesiones, excluidas = [], 0
+    for r in registros:
+        if r["en_minoria"]:
+            e = convocantes.get(r["id"])
+            if e is None:
+                if avisar:
+                    from cotejo_manual import registrar
+                    registrar("veto_quorum", f"reunión {r['id']} del {r['fecha']}",
+                              "sesión en minoría sin convocante cargado: cuenta como caída del "
+                              "oficialismo hasta que se registre en "
+                              "data/politica/sesiones_minoria_convocante.json", r["url"])
+            elif e["convocante"] == "oposicion":
+                excluidas += 1
+                continue
+        sesiones.append((r["fecha"], r["en_minoria"]))
+    return sesiones, excluidas
+
+
 def _hcdn_sesiones_legislativas() -> list[tuple[str, bool]]:
-    """Compatibilidad del descargador: conserva reuniones distintas del mismo día."""
-    return [(r["fecha"], r["en_minoria"]) for r in _sesiones_diputados_registros()]
+    """Compatibilidad del descargador: conserva reuniones distintas del mismo día
+    y aplica la misma regla de convocante que la card (ADR-0358)."""
+    return _sesiones_para_veto(_sesiones_diputados_registros())[0]
 
 
 def _veto_quorum_tasa_12m(sesiones: list, referencia: date):
@@ -1667,6 +1711,7 @@ def fetch_veto_quorum() -> dict | None:
     las reuniones en minoría identifican las frustradas por quórum.
 
     Las citadas no efectuadas se excluyen: su rótulo no prueba falta de quórum.
+    Las caídas que convocó la oposición tampoco cuentan (ADR-0358).
 
     Fuente: hcdn.gob.ar/sesiones/ (ADR-0308), con fechas y reuniones vigentes.
     El puntaje se obtiene de las bandas vigentes del motor ITCP; este
@@ -1674,8 +1719,14 @@ def fetch_veto_quorum() -> dict | None:
     """
     try:
         registros = _sesiones_diputados_registros()
-        sesiones = [(r["fecha"], r["en_minoria"]) for r in registros]
+        sesiones, _ = _sesiones_para_veto(registros, avisar=True)
         tasa = _veto_quorum_tasa_12m(sesiones, date.today())
+        # Las de la oposición que caen en la misma ventana, sólo para el texto.
+        convocantes = _convocantes_minoria()
+        excluidas_n = (_veto_quorum_tasa_12m(
+            [(r["fecha"], True) for r in registros if r["en_minoria"]
+             and convocantes.get(r["id"], {}).get("convocante") == "oposicion"],
+            date.today()) or (0, 0, 0))[1]
         if tasa is None:
             raise ValueError("sin sesiones legislativas en la ventana de 12 meses")
         pct, total_n, fracasadas_n = tasa
@@ -1683,6 +1734,7 @@ def fetch_veto_quorum() -> dict | None:
             "valor":        pct,
             "fracasadas_n": fracasadas_n,
             "total_n":      total_n,
+            "excluidas_oposicion_n": excluidas_n,
             "unidad":       "% de sesiones",
             "fuente":       "Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas",
             "fecha_dato":   str(date.today()),
@@ -1690,7 +1742,11 @@ def fetch_veto_quorum() -> dict | None:
             "ultima_reunion_registrada": registros[-1]["fecha"],
             "detalle_txt": (f"{fracasadas_n} de {total_n} reuniones legislativas registradas en "
                             f"los 12 meses calendario hasta la fecha de consulta quedaron en minoría. "
-                            f"Última reunión: {registros[-1]['fecha']}. El mes en curso es parcial; "
+                            + ((f"No cuenta 1 sesión que pidió la oposición y no juntó quórum: "
+                                if excluidas_n == 1 else
+                                f"No cuentan {excluidas_n} sesiones que pidió la oposición y no juntaron quórum: ")
+                               + "ahí el que gana es el oficialismo. " if excluidas_n else "")
+                            + f"Última reunión: {registros[-1]['fecha']}. El mes en curso es parcial; "
                             f"se excluyen convocatorias futuras y citadas no efectuadas."),
         }
 
