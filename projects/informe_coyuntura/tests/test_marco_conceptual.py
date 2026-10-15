@@ -54,7 +54,9 @@ FRAGMENTOS_DEL_PARRAFO_ORIGINAL = [
     # este guard sigue vigilando que así siga.
     "cuatro cinturones analíticos",
     "operan un constante intercambio de problemas",
-    "la viabilidad fiscal, cambiaria, social y política se recalculan en tiempo real",
+    # Desde el 15-oct-2026 (texto nuevo del marco, pedido de Juan): «se deben
+    # recalcular de forma permanente».
+    "la viabilidad fiscal, cambiaria, social y política se deben recalcular de forma permanente",
 ]
 
 # Nociones que el sitio usa en otras páginas sin definirlas ahí: la tensión y su
@@ -63,8 +65,9 @@ FRAGMENTOS_DEL_PARRAFO_ORIGINAL = [
 # es el único lugar donde se explican.
 # Desde ADR-0337 la web muestra la tensión por color, no como número 0-10: lo
 # que el marco tiene que definir son los colores y de qué puntaje salen.
+# «barbarismo» salió del marco con el texto del 15-oct-2026 (pedido de Juan).
 NOCIONES_QUE_EL_MARCO_DEFINE = ["tensión", "cinturón", "verde", "amarillo", "naranja", "rojo",
-                                "coloresEnIndice", "barbarismo"]
+                                "coloresEnIndice"]
 
 
 def test_el_parrafo_original_sigue_publicado():

@@ -101,7 +101,10 @@ const tensionados = cinturonesRojos(informe);
             15-sep era una pregunta abierta), así que publicarla sería afirmar
             algo que el informe no hizo (ADR-0326). */}
         {/* 8-oct-2026: texto del marco reemplazado por la versión validada por LB y MJ
-            (pedido de Juan). Los cortes de color siguen saliendo de los datos. */}
+            (pedido de Juan). Los cortes de color siguen saliendo de los datos.
+            15-oct-2026: reemplazado por «261015_para_optimizar_el_marco.docx»
+            (pedido de Juan): suma «Cómo se evalúa el estado de tensión», reordena
+            las secciones y saca el párrafo de las dos decisiones de diseño. */}
         <p class="cg-marco-cita">
           «No creemos en respuestas simples a preguntas complejas, pero tampoco en la complejidad como
           excusa para no responder. En este sentido, el método es lo que permite las dos cosas a la vez:
@@ -128,17 +131,6 @@ const tensionados = cinturonesRojos(informe);
           cinturón, dimensión, indicador y una ficha explicativa, esto es, <strong>reducir, sin simplificar</strong>.
         </p>
         <p>
-          Dos decisiones de diseño del propio Monitor son la aplicación concreta del principio. A modo de
-          ejemplo, la dimensión Actividad económica no promedia sus cuatro componentes: los presenta para que
-          un indicador degradado no quede tapado por uno positivo. Da un número único de tensión, sin perder la
-          información respecto a un indicador que está mal, aunque otro esté bien. Y las <strong>fichas
-          metodológicas</strong> declaran sus limitaciones y su historial de cambios: cada indicador se muestra
-          con un número y un color, sin ocultar cómo se llegó ahí ni aquello que no puede medir.
-        </p>
-        <p>
-          Esta idea define el modo de trabajo de la Fundación.
-        </p>
-        <p>
           <strong>Reconocer el conflicto</strong> es asumir que gobernar es difícil porque hay variables en
           tensión; mostrar tensiones en vez de un veredicto único sigue la misma lógica.
         </p>
@@ -156,9 +148,9 @@ const tensionados = cinturonesRojos(informe);
         </p>
         <p>
           Este monitor del plan de gobierno intenta sistematizar el mapa de tensiones de la Argentina actual a
-          través de <strong>cuatro cinturones analíticos</strong>, examinando cómo las decisiones oficiales
+          través de <strong>cuatro cinturones analíticos</strong>, examinando cómo las decisiones del gobierno
           operan un constante intercambio de problemas donde la viabilidad fiscal, cambiaria, social y política
-          se recalculan en tiempo real.
+          se deben recalcular de forma permanente.
         </p>
         <p>
           El encuadre es el método <strong>CIGOB-Matus</strong>, que la Fundación CiGob amplía de los tres
@@ -168,26 +160,11 @@ const tensionados = cinturonesRojos(informe);
           gobierno decide y lo que el entorno le devuelve.
         </p>
 
-        <h3 class="cg-marco-h3">Qué nos dicen los colores</h3>
-        <p>
-          Cada cinturón, cada dimensión y cada indicador se muestra con uno de cuatro colores. En
-          <strong>verde</strong> ({LECTURA_SEMAFORO.verde.toLowerCase()}) el gobierno procesa de manera positiva
-          las demandas con los recursos que tiene; le siguen <strong>amarillo</strong>
-          ({LECTURA_SEMAFORO.amarillo.toLowerCase()}), <strong>naranja</strong>
-          ({LECTURA_SEMAFORO.naranja.toLowerCase()}) y <strong>rojo</strong> ({LECTURA_SEMAFORO.rojo.toLowerCase()}).
-        </p>
-        <p>
-          El color de un cinturón resulta de un puntaje asignado a cada indicador, con los mismos cuatro
-          cortes: {coloresEnIndice(false)}. Diferente es el caso de los indicadores que sostienen el cinturón
-          del impacto social, que toma 100 como el nivel de fines de 2023, y sus cortes son:{" "}
-          {coloresEnIndice(true)}.
-        </p>
-
         <h3 class="cg-marco-h3">Por qué un balance sobre los cuatro cinturones</h3>
         <p>
-          Reducir el balance de gobierno a una sola variable entraña un riesgo conceptual severo: el
-          barbarismo de gestionar con foco exclusivo en los indicadores económicos, el capital político o la
-          métrica operativa, mientras otra dimensión crítica colapsa fuera del radar.
+          Reducir el balance de gobierno a una sola variable entraña un riesgo conceptual severo: gestionar con
+          foco exclusivo en los indicadores económicos o políticos, o por encuestas, presume un reduccionismo que
+          impide activar alertas y tomar decisiones oportunas.
         </p>
         <p>
           Para evitar esta miopía, los cuatro cinturones se analizan de manera conjunta.
@@ -199,12 +176,37 @@ const tensionados = cinturonesRojos(informe);
         <p>
           Bajo este enfoque, la gobernabilidad de un proyecto no radica en la inexistencia de tensiones, sino
           en su aptitud para procesar el desfase entre las demandas sociales y las capacidades de respuesta
-          estatal.
+          gubernamental.
         </p>
         <p>
           Así, este monitor releva el mapa de tensiones de la Argentina a través de cuatro cinturones,
           postulando la necesidad de tomar un análisis abarcativo en su conjunto, sobre cómo se desenvuelve la
           gestión del proyecto de gobierno en un entorno complejo y en constante cambio.
+        </p>
+
+        <h3 class="cg-marco-h3">Cómo se evalúa el estado de tensión</h3>
+        <p>
+          Un cinturón es un frente donde el gobierno pone en juego su capacidad de gobernar. Cada uno se abre en
+          dimensiones, que son las preguntas que hay que responder para saber cómo está ese aspecto del proyecto
+          de gobierno, y cada dimensión se apoya en dos o más indicadores, que son los datos que responden esa
+          pregunta. A cada cinturón, dimensión e indicador se le asigna un puntaje y un color, y desde cualquiera
+          se puede bajar al de abajo hasta llegar a la ficha de cada dato.
+        </p>
+
+        <h3 class="cg-marco-h3">Qué nos dicen los colores</h3>
+        <p>
+          Cada cinturón, cada dimensión y cada indicador se muestra con uno de cuatro colores. En
+          <strong>verde</strong> ({LECTURA_SEMAFORO.verde.toLowerCase()}) el gobierno procesa de manera positiva
+          las demandas con los recursos que tiene; le siguen <strong>amarillo</strong>
+          ({LECTURA_SEMAFORO.amarillo.toLowerCase()}), <strong>naranja</strong>
+          ({LECTURA_SEMAFORO.naranja.toLowerCase()}) y <strong>rojo</strong> ({LECTURA_SEMAFORO.rojo.toLowerCase()}).
+        </p>
+        <p>
+          El color de un cinturón resulta de un puntaje asignado a cada indicador; los criterios de ponderación
+          son aportes y criterios desarrollados por el equipo de la Fundación, con los mismos cuatro cortes:{" "}
+          {coloresEnIndice(false)}. Diferente es el caso de los indicadores que sostienen el cinturón del impacto
+          social, que toma 100 como el nivel de fines de 2023, y sus cortes son:{" "}
+          {coloresEnIndice(true)}.
         </p>
       </div>
     </section>
@@ -334,4 +336,8 @@ const tensionados = cinturonesRojos(informe);
   /* El marco en una sola columna, a todo el ancho de la caja (pedido de Juan,
      8-oct-2026). Pisa las dos columnas de overrides.css (.cg-marco, >=900px). */
   .cg-marco { columns: auto; column-gap: normal; max-width: none; }
+  /* Menos aire entre el lead del título y el marco (pedido de Juan, 15-oct-2026):
+     el hero de esta página no ocupa la pantalla entera como el de la portada. */
+  .cg-detalle-hero { min-height: 0; padding-bottom: 24px; }
+  #marco { padding-top: 28px; }
 </style>
