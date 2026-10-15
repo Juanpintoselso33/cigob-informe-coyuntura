@@ -20,13 +20,19 @@ macro, gestión e impacto social, y anclas del panel de impacto social sin el
 4T-2023. Ningún indicador cambia de cálculo con esta decisión.
 
 La causa es la API de series de datos.gob.ar: contesta 200 con la misma serie de
-tres maneras según el servidor que atienda — completa, vacía (`count` 0) o
-recortada. Medido el 15-oct con diez pedidos frescos por serie: el EMAE vino 7
-veces con 271 filas y 3 con 167; la faena vacuna, 6 veces vacía. La misma URL
-repetida devuelve la misma respuesta, buena o mala, así que repetir el pedido no
-alcanza. Como la card y la serie de un indicador se piden en momentos distintos,
-cada una puede caer en un servidor distinto, y el gate las encuentra desparejas.
-El gate hizo bien en frenar: un recorte silencioso publicaría una serie corta.
+maneras distintas según el servidor que atienda — completa, vacía (`count` 0) o
+recortada, a veces con filas vacías intercaladas. Medido el 15-oct: el EMAE vino
+3 de 10 veces con 167 filas (103 vacías) en vez de 271, la faena vacuna 6 de 10
+vacía, y hay series que ningún servidor devuelve enteras («otros gastos de
+funcionamiento» del IMIG, 28 de 128 filas, hasta 2018). La misma URL repetida
+devuelve la misma respuesta, buena o mala. Como la card y la serie de un indicador
+se piden en momentos distintos, cada una cae en un servidor distinto y el gate las
+encuentra desparejas. Hizo bien en frenar: con «otros gastos» recortado, la serie
+de gasto de funcionamiento de agosto se calculaba sólo con salarios (−49,9).
+
+Lo que no está roto es el catálogo, que con `metadata=full` dice cuántas filas tiene
+cada serie (`time_index_size`), ni el CSV oficial de cada distribución, que las trae
+todas (el de salarios coincide con la API al decimal).
 
 ## Factores de decisión
 
@@ -40,27 +46,33 @@ El gate hizo bien en frenar: un recorte silencioso publicaría una serie corta.
 
 1. Reintentar sólo cuando la respuesta viene vacía.
 2. Pedir hasta que dos lecturas de la misma URL coincidan.
-3. Varias lecturas, cada una con un parámetro propio que la manda a un servidor
-   al azar, y quedarse con la de más filas.
-4. Guardar el largo de cada serie y rechazar una lectura más corta que la anterior.
+3. Varias lecturas a servidores al azar y quedarse con la de más filas.
+4. Aceptar sólo la lectura con todas las filas que declara el catálogo y, si no
+   llega, leer el CSV oficial.
 
 ## Decisión
 
-Opción 3, en `scripts/datos_gob.py` (`get`), por donde pasan las diez llamadas:
-se juntan tres lecturas no vacías (hasta ocho pedidos) y gana la de más filas,
-porque un servidor roto puede quitar filas pero no agregarlas. Si todas vienen
-vacías, la última, y el colector sigue como antes (cache o error). Un error de
-red se reintenta una sola vez, para no comerse el tope de tiempo de la corrida.
-La 1 no detecta el recorte; la 2 se confirmaba con la caché (probada: devolvió
-dos veces el EMAE de 167 filas); la 4 necesita estado entre corridas y falla
-cuando una serie se revisa hacia atrás.
+Opción 4, en `scripts/datos_gob.py` (`get`), por donde pasan las diez llamadas.
+Cada lectura lleva un parámetro propio (si no, contesta la misma respuesta);
+hasta seis lecturas, y la primera completa gana. Si ninguna lo es, la respuesta se
+arma desde el CSV de la distribución (`downloadURL`, columna `title`) con la misma
+forma, orden y límite que la de la API. Un pedido de varias series (las quince
+sectoriales del EMAE) se parte en pedidos de una y se vuelve a armar. Sin catálogo
+en la respuesta, rige la opción 3. Un error de red se reintenta una sola vez, para
+no comerse el tope de tiempo de la corrida.
+
+La 1 no detecta el recorte; la 2 se confirmaba con la caché (devolvió dos veces el
+EMAE de 167 filas); la 3 no alcanza cuando ningún servidor tiene la serie entera.
 
 ### Consecuencias
 
 - Buena: una respuesta vacía o recortada no llega a la card ni a la serie.
-- Mala: cada pedido a la API se hace al menos tres veces.
+- Buena: series que la API ya no servía enteras vuelven a estar al día (la faena
+  vacuna llega a agosto de 2026; por la API, a junio).
+- Mala: mientras la API siga así, varios pedidos por serie y algunos CSV por corrida.
 
 ### Confirmación
 
 `tests/test_datos_gob_lecturas.py`: una lectura vacía o recortada no se
-devuelve, cada lectura es un pedido distinto, la red caída se reintenta una vez.
+acepta, cada lectura es un pedido distinto, sin lectura completa se usa el CSV,
+varias series se piden de a una, la red caída se reintenta una vez.
