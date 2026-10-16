@@ -45,8 +45,8 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 72,6 | VERDE | 26,0 % |
 | Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 74,8 | VERDE | 24,0 % |
 | Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 62,3 | VERDE | 16,0 % |
-| Inversión | Si alguien está apostando al futuro: la inversión física —construcción y bienes de capital—, que desde agosto de 2026 es el único componente que puntúa. | 52,0 | AMARILLO | 12,0 % |
-| Actividad económica | Si la economía crece o se contrae, y en cuántas partes. | 35,9 | NARANJA | 11,0 % |
+| Inversión | — | 52,0 | AMARILLO | 12,0 % |
+| Actividad económica | Si la economía crece y si alguien apuesta al futuro. | 35,9 | NARANJA | 11,0 % |
 | Competitividad externa | Si el tipo de cambio real alcanza para competir: el índice de tipo de cambio real multilateral oficial del Banco Central contra su propia historia. | 49,7 | AMARILLO | 11,0 % |
 
 ```{=openxml}
@@ -391,7 +391,7 @@ El pulso mensual de la actividad económica: cuánto creció o cayó respecto de
 
 Adelanta el ritmo del producto interno bruto: si la economía se expande o se contrae.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la actividad que se lee en la recaudación (IVA e impuesto al cheque). El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato.
+**Dimensión que integra — Actividad económica.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -449,6 +449,8 @@ Ponderación vigente en el ITCM: 5,8 % efectivo. El color es una lectura adicion
 
 **2026-07-25** — Su peso dentro de la dimensión baja de 80% a 60% al incorporarse la amplitud del crecimiento, que lee la misma fuente en su apertura por sectores.
 
+**2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 52,8% a 37,0%, conservando la proporción con los otros tres indicadores de actividad; en el índice sube de 5,8% a 8,5%.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -481,7 +483,7 @@ De los quince sectores en que el Instituto Nacional de Estadística y Censos (IN
 
 Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El estimador mensual de actividad económica (EMAE) informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la actividad que se lee en la recaudación (IVA e impuesto al cheque). El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato.
+**Dimensión que integra — Actividad económica.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -535,6 +537,8 @@ Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicion
 
 **2026-07-25** — Entra al índice con 20% de la dimensión de actividad, tomado del peso del EMAE agregado. La serie se reconstruyó completa desde 2005.
 
+**2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -567,7 +571,7 @@ Cuánto produce la industria manufacturera respecto de un año atrás, promediad
 
 Segunda lectura de la actividad, junto al estimador mensual de actividad económica (EMAE): mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la actividad que se lee en la recaudación (IVA e impuesto al cheque). El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato.
+**Dimensión que integra — Actividad económica.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -628,6 +632,8 @@ Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicion
 
 **2026-07-18** — Su peso baja de 35% a 20% de la dimensión: al ser la industria parte del propio estimador agregado, el reparto anterior dejaba a la dimensión con casi la mitad de su exposición en un solo sector.
 
+**2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. La proporción 80/20 entre el EMAE y la industria no cambia.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -660,7 +666,7 @@ Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto
 
 La lectura más fresca de la dimensión: Hacienda informa estos dos tributos antes de que el Instituto Nacional de Estadística y Censos (INDEC) cierre el estimador mensual de actividad económica (EMAE) del mismo mes. El impuesto al valor agregado (IVA) sigue de cerca el consumo interno; el cheque sigue toda transacción bancaria, así que además de actividad capta bancarización.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la actividad que se lee en la recaudación (IVA e impuesto al cheque). El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato.
+**Dimensión que integra — Actividad económica.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -719,6 +725,8 @@ Ponderación vigente en el ITCM: 1,3 % efectivo. El color es una lectura adicion
 **2026-09-16** — Revisión adversarial (primera ronda): el peso de entrada baja de 0,20 a 0,12 (los otros tres INDEC pasan a recortarse ×0,88 en vez de ×0,80). Motivo medido: redundancia con sus tres compañeros de dimensión por encima del umbral 0,7 del repo (r=0,840 emae_ia, 0,828 ipi_manufacturero, 0,725 emae_difusion) y sin evidencia de que anticipe el ciclo del EMAE — la correlación adelantada es máxima en el mes corriente, no en t+1/t+2, contra emae_ia y emae_difusion. Se declara también r(IVA-DGI, cheque)=0,617 (antes ausente), el número que decidía entre promediar y cruzar en matriz.
 
 **2026-09-16** — Alta del indicador. Corrige el alcance de una implementación anterior que había convertido este mismo par de series en un control dentro del detalle de `recaudacion` (dimensión fiscal): el pedido original era un proxy de ACTIVIDAD, y como tal pasa a puntuar en esa dimensión. El texto de `recaudacion` no se toca — sigue siendo útil para leer de dónde vino un movimiento del agregado DGI.
+
+**2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 12% a 8,4%; en el índice sube de 1,3% a 1,9%.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1259,8 +1267,6 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 Resume señales de construcción e importación de bienes de capital frente al mismo mes del año anterior. No mide depreciación ni inversión neta: una caída interanual no demuestra que se consuma más capital del que se repone. Los bienes importados se miden en dólares corrientes, por lo que también influyen sus precios.
 
-**Dimensión que integra — Inversión.** Si alguien está apostando al futuro: la inversión física —construcción y bienes de capital—, que desde agosto de 2026 es el único componente que puntúa. El gasto en servicios digitales acompañaba como segundo componente hasta agosto de 2026, cuando pasó a calcularse fuera del índice: los pagos al exterior por informática y nube son consumo intermedio, no formación de capital, y el compuesto sumaba con el mismo signo dos insumos que necesitarían signos opuestos.
-
 ## Método de cómputo
 
 - Variación interanual de cada componente al mes común, con niveles de precisión completa. La columna Bienes de capital (BK) excluye piezas y accesorios (PyA); se leen meses individuales, no acumulados del año.
@@ -1328,6 +1334,8 @@ Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adiciona
 **2026-09-15** — El rótulo de la card pasa de «Inversión física (IAI)» a «Inversión física». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 **2026-09-30** — La escala se corre al crecimiento de la población (+0,17% anual según la proyección del INDEC con base en el Censo 2022). El verde ya no arranca en 0% sino en +0,17%: crecer menos que la población es invertir menos por habitante. Todas las anclas se corren lo mismo; el −5,66% de julio pasa de 36,4 a 35,7 puntos y sigue en naranja.
+
+**2026-10-16** — La dimensión propia de inversión (12% del índice macroeconómico) se fusiona con la de actividad: nace «Actividad e inversión», con 23%, y la inversión física pesa 30% de ella. Su peso en el índice baja de 12% a 6,9%: un solo indicador muy volátil ya no decide por sí solo más que toda la actividad junta.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
