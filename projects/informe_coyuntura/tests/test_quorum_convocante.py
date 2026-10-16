@@ -1,4 +1,4 @@
-"""veto_quorum: una sesión que pidió la oposición y no juntó quórum no cuenta (ADR-0358)."""
+"""veto_quorum: una sesión caída que pidió la oposición no cuenta (ADR-0358)."""
 import json
 from datetime import date
 from pathlib import Path
