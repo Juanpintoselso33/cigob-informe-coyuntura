@@ -13,11 +13,12 @@ name: Informe mensual
 #     foto del mes, la marca con la etiqueta mensual-AAAA-MM y rearma la rama.
 #     El día fijo de publicación todavía no está decidido; cuando lo esté, se
 #     suma un `schedule` acá.
-#   - Rearmar la rama con el código nuevo y la MISMA foto: en cada push a main
+#   - Rearmar la rama con el código nuevo y el MISMO mes, rehecho con el método
+#     vigente (como su foto del archivo, ADR-0348): en cada push a main
 #     (diseño, textos) y al terminar un cambio pedido desde claude.ai, para que
 #     lo que corrige el equipo también se vea en el mensual. Las corridas del
 #     bot no disparan esto (GitHub no encadena pushes hechos con GITHUB_TOKEN) y
-#     no hace falta: sólo cambian datos, y los del mensual están congelados.
+#     no hace falta: sólo cambian datos, y el mensual está cortado a su mes.
 
 on:
   workflow_dispatch:
@@ -54,6 +55,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
+          cache-dependency-path: projects/informe_coyuntura/requirements.txt
+      # El mes publicado se rehace con el método de hoy (archivo.py datos), y eso
+      # corre generar_informe/publicar: necesitan las dependencias del proyecto.
+      - run: pip install -q -r projects/informe_coyuntura/requirements.txt
 
       # Publicar un mes es atómico en este orden: primero se arma y se sube su
       # archivo a main y RECIÉN DESPUÉS se pone la etiqueta. Al revés, un fallo
@@ -102,12 +108,17 @@ jobs:
       - name: Componer la rama mensual
         run: |
           TAG=$(python projects/informe_coyuntura/scripts/mensual.py vigente)
-          python projects/informe_coyuntura/scripts/mensual.py congelar "$TAG"
+          # Los datos del mes publicado, rehechos con el código y la METODOLOGÍA
+          # de hoy (los de main cortados al fin de ese mes, como su foto en
+          # /archivo/). Antes se copiaba el snapshot de la última corrida del
+          # mes tal cual, con el método de entonces: un cambio de pesos (el #75,
+          # 16-oct-2026) llegaba al diario y no a informe.cigob.org.
+          python projects/informe_coyuntura/scripts/archivo.py datos "${TAG#mensual-}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B mensual
           git add projects/informe_coyuntura/web/src/data/informe.json projects/informe_coyuntura/web/src/data/series.json
-          git commit -q -m "mensual: código de main $(git rev-parse --short main) con la foto de $TAG" || true
+          git commit -q -m "mensual: código y método de main $(git rev-parse --short main), datos de $TAG" || true
           if git rev-parse -q --verify origin/mensual >/dev/null && git diff --quiet origin/mensual HEAD; then
             echo "::notice::La rama mensual ya tenía este código y esta foto: no se publica de nuevo"
             exit 0

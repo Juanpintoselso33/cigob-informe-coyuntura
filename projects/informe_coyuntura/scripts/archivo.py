@@ -16,9 +16,11 @@ entonces. Después construye el sitio sin muro y lo empaqueta.
 Uso:
     python scripts/archivo.py construir 2026-09
     python scripts/archivo.py construir 2026-06 2026-07 2026-08 2026-09
+    python scripts/archivo.py datos 2026-09     # sólo informe.json/series.json, para la rama mensual
 """
 from __future__ import annotations
 
+import contextlib
 import json
 import os
 import re
@@ -237,8 +239,11 @@ publicar.main()
 """
 
 
-def construir(mes: str, desde: str = "series") -> dict:
-    """Reconstruye el mes con el Monitor de HOY (código, metodología y diseño).
+@contextlib.contextmanager
+def _reconstruido(mes: str, desde: str = "series"):
+    """Arma en un árbol temporal el snapshot del mes con el Monitor de HOY y
+    lo entrega como (arbol, proyecto, snap, fuera, sha). Lo usan el archivo
+    (que además lo empaqueta) y la rama mensual (que sólo toma los datos).
 
     desde="series" (el modo de hoy): los datos de HOY cortados a fin del mes
     (`_cortar`). desde="corrida": los datos crudos de la última corrida de ese
@@ -273,7 +278,11 @@ def construir(mes: str, desde: str = "series") -> dict:
                 # cortar_indicadores sale de ESTE archivo, no del de HEAD.
                 shutil.copy(__file__, reloj / "archivo.py")
                 publicar = str(reloj / "publicar_corte.py")
+            # En GitHub no hay .venv: el job instala las dependencias en el
+            # Python del runner, que es el que corre este script.
             py = RAIZ / "projects" / "informe_coyuntura" / ".venv" / "bin" / "python"
+            if not py.exists():
+                py = Path(sys.executable)
             env = {"ARCHIVO_AHORA": ahora, "ARCHIVO_MES": mes, "PYTHONPATH": f"{reloj}:{proyecto / 'scripts'}",
                    "PYTHONDONTWRITEBYTECODE": "1"}
             # El mismo orden que el pipeline: validacion_externa arma la serie
@@ -310,16 +319,36 @@ def construir(mes: str, desde: str = "series") -> dict:
                 destino_snap.write_text(json.dumps(snap, ensure_ascii=False, indent=1), encoding="utf-8")
             if snap.get("period") != mes:
                 raise SystemExit(f"{mes}: la reconstrucción salió con period={snap.get('period')}")
-            # La foto de un mes no lleva el archivo adentro: ni las fotos de los
-            # otros meses ni sus enlaces (el emisor exige un archivo autocontenido).
-            shutil.rmtree(arbol / WEB_REL / "public" / "archivo", ignore_errors=True)
-            (arbol / WEB_REL / "src" / "contenido" / "archivo.json").write_text('{"meses": []}\n', encoding="utf-8")
-            html = _empaquetar(arbol / WEB_REL, EMISOR_HOY)
-            if not html:
-                raise SystemExit(f"{mes}: no se pudo empaquetar el sitio reconstruido")
-            datos = html.read_bytes()
+            yield arbol, proyecto, snap, fuera, sha
         finally:
             mensual._git("worktree", "remove", "--force", str(arbol))
+
+
+def datos_del_mes(mes: str, destino: Path) -> dict:
+    """informe.json y series.json del mes con la metodología de HOY, para la
+    rama mensual: el informe del mes publicado se lee con el método vigente,
+    igual que su foto en /archivo/ (16-oct-2026: el #75 cambió el índice macro
+    y informe.cigob.org seguía mostrando el de antes)."""
+    with _reconstruido(mes) as (_arbol, proyecto, snap, _fuera, _sha):
+        datos = proyecto / "web" / "src" / "data"
+        (destino / "informe.json").write_text(json.dumps(snap, ensure_ascii=False, indent=1), encoding="utf-8")
+        shutil.copy(datos / "series.json", destino / "series.json")
+    print(f"· {mes}: datos del mensual rehechos con la metodología de hoy")
+    return snap
+
+
+def construir(mes: str, desde: str = "series") -> dict:
+    """Reconstruye el mes con el Monitor de HOY (código, metodología y diseño)
+    y lo suma al archivo, empaquetado en un solo HTML."""
+    with _reconstruido(mes, desde) as (arbol, proyecto, snap, fuera, sha):
+        # La foto de un mes no lleva el archivo adentro: ni las fotos de los
+        # otros meses ni sus enlaces (el emisor exige un archivo autocontenido).
+        shutil.rmtree(arbol / WEB_REL / "public" / "archivo", ignore_errors=True)
+        (arbol / WEB_REL / "src" / "contenido" / "archivo.json").write_text('{"meses": []}\n', encoding="utf-8")
+        html = _empaquetar(arbol / WEB_REL, EMISOR_HOY)
+        if not html:
+            raise SystemExit(f"{mes}: no se pudo empaquetar el sitio reconstruido")
+        datos = html.read_bytes()
     salida = WEB / "public" / "archivo" / mes / "index.html"
     salida.parent.mkdir(parents=True, exist_ok=True)
     salida.write_bytes(datos)
@@ -397,9 +426,12 @@ def resumen(meses: list[str]) -> None:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3 or sys.argv[1] not in ("construir", "resumen") or not all(re.fullmatch(r"\d{4}-\d{2}", m) for m in sys.argv[2:]):
+    if len(sys.argv) < 3 or sys.argv[1] not in ("construir", "resumen", "datos") or not all(re.fullmatch(r"\d{4}-\d{2}", m) for m in sys.argv[2:]):
         raise SystemExit(__doc__)
-    if sys.argv[1] == "resumen":
+    if sys.argv[1] == "datos":
+        # Rama mensual: los datos del mes publicado, rehechos con el método de hoy.
+        datos_del_mes(sys.argv[2], RAIZ / mensual.DATOS)
+    elif sys.argv[1] == "resumen":
         resumen(sys.argv[2:])
     else:
         for m in sys.argv[2:]:

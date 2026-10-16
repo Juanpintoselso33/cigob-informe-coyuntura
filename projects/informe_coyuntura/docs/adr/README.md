@@ -438,3 +438,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0355](0355-lectura-del-mes-con-lectura-por-cinturon-desplegable.md) | La lectura del mes con la lectura por cinturón desplegable |  | vigente |
 | [0356](0356-lectura-mas-completa-de-datos-gob.md) | De datos.gob.ar vale la lectura más completa de varias |  | vigente |
 | [0357](0357-un-rojo-que-sigue-avisa-cada-tres-corridas.md) | Un 🔴 que sigue abierto avisa en el canal cada tres corridas |  | vigente |
+| [0359](0359-el-mensual-se-lee-con-el-metodo-vigente.md) | El informe del mes se lee con la metodología vigente |  | vigente |

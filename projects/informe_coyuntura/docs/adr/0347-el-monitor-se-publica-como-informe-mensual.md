@@ -6,6 +6,7 @@ fecha: 2026-10-07
 cinturon: 'transversal'
 archivos: ['scripts/mensual.py', 'web/src/layouts/Layout.astro']
 relacionado: ['0342', '0348']
+modificado_por: ['0359']
 ambito: 'Publicación · el Monitor como informe mensual en informe.cigob.org y seguimiento diario interno aparte'
 origen: 'Reunión del 6-oct-2026 (punto 8 de docs/261006_reunion_pendientes.md). Juan, 7-oct: arrancar ya, con la foto de septiembre.'
 ---

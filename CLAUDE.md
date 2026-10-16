@@ -371,20 +371,24 @@ Desde el 7-oct-2026 el Monitor se publica en **dos proyectos de Vercel**:
 
 | URL | Qué muestra | Desde dónde |
 |---|---|---|
-| `https://informe.cigob.org/` | **El informe del mes**: el código de `main` con `web/src/data/informe.json` y `series.json` **congelados** en la última corrida nocturna del mes. Con muro. | Rama `mensual`, que arma `.github/workflows/mensual.yml` |
+| `https://informe.cigob.org/` | **El informe del mes**: el código y la **metodología** de `main`, con los datos cortados al fin del mes publicado (`archivo.py datos`, ADR-0359; antes, el snapshot de la última corrida del mes tal cual). Con muro. | Rama `mensual`, que arma `.github/workflows/mensual.yml` |
 | `https://cigob-seguimiento-a941210feb.vercel.app/` | **El seguimiento diario** (interno, no se difunde, `noindex`): `main` tal cual, con los datos de cada noche. Sin muro. | `main` (proyecto `cigob-seguimiento-a941210feb`) |
 
 - **Un dato nuevo se verifica en el diario, no en `informe.cigob.org`**: ahí recién
   aparece cuando se publica el mes siguiente.
-- **Un cambio de diseño o de texto se ve en los dos**: cada push humano a `main` (y cada
-  cambio pedido desde claude.ai) rearma la rama `mensual` con el código nuevo y la misma
-  foto. Las corridas del bot no la rearman, y no hace falta.
+- **Un cambio de diseño, de texto o de MÉTODO se ve en los dos**: cada push humano a
+  `main` (y cada cambio pedido desde claude.ai) rearma la rama `mensual` rehaciendo el mes
+  publicado con el código y la metodología nuevos, igual que su foto en `/archivo/`
+  (ADR-0359). Un cambio de pesos o de bandas llega a informe.cigob.org en ese mismo
+  rearmado; un dato nuevo, no (los datos están cortados al mes). Las corridas del bot no
+  la rearman, y no hace falta.
 - **Publicar el mes**: Actions → «Informe mensual» → Run workflow con `publicar=true`
   (mes vacío = el anterior). Elige la última corrida cuyo `period` es ese mes, la etiqueta
   `mensual-AAAA-MM` y rearma la rama. Un mes ya etiquetado no se pisa. El día fijo de
   publicación está pendiente; cuando se decida, va un `schedule` en ese workflow.
-- **Ojo**: los textos de metodología describen el método **vigente**; la foto de un mes
-  viejo se calculó con el de entonces.
+- **Ojo**: el mes publicado y los del archivo se leen con el método **vigente**, así que
+  un cambio de método mueve también los números de meses ya publicados (decisión de Juan,
+  16-oct-2026: «son cambios metodológicos»).
 
 ## Definition of done: the live site, not the commit
 

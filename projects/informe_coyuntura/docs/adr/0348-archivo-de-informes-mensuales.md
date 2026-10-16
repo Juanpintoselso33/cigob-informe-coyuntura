@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-10-07
 cinturon: 'transversal'
 archivos: ['scripts/archivo.py', 'web/src/pages/archivo/index.astro', 'web/src/components/Nav.astro', 'tests/test_archivo.py']
-relacionado: ['0347']
+relacionado: ['0347', '0359']
 ambito: 'Publicación · archivo navegable de los informes mensuales en /archivo/'
 origen: 'Reunión del 6-oct-2026, punto 8: «las fotos anteriores quedan disponibles, cada mes con la suya». Juan, 7-oct: reconstruir los meses anteriores.'
 ---
