@@ -401,8 +401,20 @@ DIMENSIONES_ITCM = {
         },
     },
     "actividad": {
-        "nombre": "Actividad económica",
-        "peso": 0.11,
+        "nombre": "Actividad e inversión",
+        # 16-oct-2026 (pedido de Juan): la inversión física deja su dimensión
+        # propia y entra acá. La dimensión pesa 0,23 = 0,11 (actividad) + 0,12
+        # (inversión), así que ninguna otra dimensión se mueve. Dentro, la
+        # inversión física pesa 0,30 —el doble de su participación aproximada
+        # en el PIB, porque es la parte que anticipa, y por debajo de la
+        # actividad agregada porque es mucho más volátil— y los cuatro de
+        # actividad se reparten el 0,70 conservando EXACTAMENTE su proporción
+        # interna (0,528/0,176/0,176/0,12 × 0,70 = 0,3696/0,1232/0,1232/0,084;
+        # redondeado, 37/12/12/9 %), así siguen valiendo el 80/20 EMAE/IPI de
+        # ADR-0124 y el recorte de ADR-0329. El peso efectivo de la inversión
+        # física en el índice baja de 12% a 6,9%. La clave sigue siendo
+        # "actividad" para no romper series ni historia.
+        "peso": 0.23,
         # ADR-0076 + ADR-0079: la dimensión dejó de colgar de un único dato, pero
         # el IPI entra como RESPALDO, no como medida principal. El EMAE ya
         # contiene a la industria (~17% del agregado), así que subirle el peso
@@ -443,29 +455,18 @@ DIMENSIONES_ITCM = {
         # proporcional), no más: entra por frescura de publicación, no por
         # señal nueva. ×0,88, preservando la proporción interna 80/20
         # EMAE/IPI: 0,60→0,528, 0,20→0,176, 0,20→0,176.
-        "indicadores": {"emae_ia": 0.528, "emae_difusion": 0.176,
-                        "ipi_manufacturero": 0.176, "actividad_tributaria": 0.12},
+        # Pesos anteriores al 16-oct-2026: 0,528/0,176/0,176/0,12 (sin inversión).
+        "indicadores": {"emae_ia": 0.3696, "emae_difusion": 0.1232,
+                        "ipi_manufacturero": 0.1232, "actividad_tributaria": 0.084,
+                        "iai": 0.30},
     },
     "competitividad_externa": {
         "nombre": "Competitividad externa",
         "peso": 0.11,
         "indicadores": {"tcrm": 1.0},
     },
-    "inversion": {
-        "nombre": "Inversión",
-        "peso": 0.12,
-        # Un solo indicador desde ADR-0262: `icip` salió del índice y el IAI
-        # —ISAC + bienes de capital importados— se queda con la dimensión
-        # entera, que es lo que hace `parametrica.calcular_indice` al
-        # renormalizar. No es la primera dimensión de un indicador solo:
-        # competitividad_externa ya lo era.
-        #
-        # El PESO de la dimensión no se toca. Lo que perdió justificación es que
-        # unos pagos al exterior por servicios digitales midan formación de
-        # capital, no que la inversión física valga menos del 12% del ITCM.
-        # Revisarlo sería otra decisión y pide su propio ADR.
-        "indicadores": {"iai": 1.0},
-    },
+    # La dimensión "inversion" (12%, sólo el IAI desde ADR-0262) se fusionó con
+    # "actividad" el 16-oct-2026: ver el comentario de esa dimensión.
 }
 
 # Interpretación del ITCM (sección VI del documento). (low, high, etiqueta).

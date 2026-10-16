@@ -106,7 +106,11 @@ TECHOS = {
     #     los cortes. La glosa vieja confundía la validación con el origen.
     # El resultado medido es 32,4%. El techo queda en 0,33 y a partir de acá el
     # ITCM no puede volver a subir sin que alguien lo firme.
-    "ITCM": {"circular": 0.33, "sin_declarar": 0.01},
+    # BAJA a 0,28 el 2026-10-16 (fusión de inversión con actividad, pedido de
+    # Juan): el IAI, de ancla de convención, pasa de pesar 12% del ITCM a 6,9%,
+    # y su lugar lo toman los indicadores de actividad, de ancla conceptual.
+    # Ninguna banda cambió: es puro repeso. Medido: 27,3%.
+    "ITCM": {"circular": 0.28, "sin_declarar": 0.01},
     # ITCG y ITCP bajaron el 2026-07-20 (ADR-0121) al declarar el origen de sus
     # bandas sin_declarar: los medidores de avance 0-100 (ITCG) y los indicadores
     # anclados al cero (ITCP: ventaja electoral, quórum, transferencias) eran

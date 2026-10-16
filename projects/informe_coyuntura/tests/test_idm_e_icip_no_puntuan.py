@@ -71,13 +71,15 @@ def test_icip_no_puede_volver_sin_cambiar_su_insumo():
             "con el mismo signo dos insumos que necesitarían signos opuestos")
 
 
-def test_la_dimension_inversion_no_cambio_de_peso():
-    """Al irse `icip`, el IAI se lleva la dimensión entera y la dimensión sigue
-    valiendo 12% del ITCM. Lo que perdió justificación es que unos pagos al
-    exterior midan formación de capital, no cuánto vale la inversión física."""
-    inv = itcm.DIMENSIONES_ITCM["inversion"]
-    assert inv["peso"] == 0.12
-    assert inv["indicadores"] == {"iai": 1.0}
+def test_la_inversion_fisica_conserva_su_lugar_al_fusionarse_con_actividad():
+    """Al irse `icip`, el IAI se llevó la dimensión inversión entera (12%). El
+    16-oct-2026 esa dimensión se fusionó con actividad («Actividad e
+    inversión»): la dimensión nueva pesa la suma de las dos (0,11 + 0,12) y el
+    IAI sigue puntuando, ahora con 30% de ella."""
+    assert "inversion" not in itcm.DIMENSIONES_ITCM
+    act = itcm.DIMENSIONES_ITCM["actividad"]
+    assert act["peso"] == 0.23
+    assert act["indicadores"]["iai"] == 0.30
 
 
 def test_estabilidad_monetaria_conserva_el_ancla_nominal_del_desequilibrio():
@@ -149,9 +151,22 @@ BANDAS_ANTES["iai"] = [(10.0, INF, 100), (2.0, 10.0, 80), (-2.0, 2.0, 60),
                        (-10.0, -2.0, 35), (-INF, -10.0, 10)]
 
 
-def _itcm_antes() -> float:
+def _dimensiones_agosto() -> dict:
+    """La estructura de dimensiones vigente al 25-ago-2026, antes de que la
+    inversión se fusionara con actividad (16-oct-2026). Se congela acá para que
+    estos tests sigan midiendo el efecto de ADR-0261/0262 y no el de la fusión."""
     dims = {k: dict(v, indicadores=dict(v["indicadores"]))
             for k, v in itcm.DIMENSIONES_ITCM.items()}
+    dims["actividad"] = dict(dims["actividad"], peso=0.11, indicadores={
+        "emae_ia": 0.528, "emae_difusion": 0.176,
+        "ipi_manufacturero": 0.176, "actividad_tributaria": 0.12})
+    dims["inversion"] = {"nombre": "Inversión", "peso": 0.12,
+                         "indicadores": {"iai": 1.0}}
+    return dims
+
+
+def _itcm_antes() -> float:
+    dims = _dimensiones_agosto()
     dims["estabilidad_monetaria"]["indicadores"] = {
         "ipc_total": 0.40, "rem_ipc_12m": 0.20, "idm": 0.20,
         "desequilibrio_monetario": 0.20,
@@ -172,7 +187,7 @@ def test_el_efecto_de_las_dos_decisiones_sobre_el_itcm():
     favor de ninguna de las dos."""
     antes = _itcm_antes()
     despues = parametrica.calcular_indice(
-        dict(VALORES_260825), None, BANDAS_ANTES, itcm.DIMENSIONES_ITCM,
+        dict(VALORES_260825), None, BANDAS_ANTES, _dimensiones_agosto(),
         itcm.BANDAS_INTERPRETACION, itcm.INTERPRETACION_LEGIBLE,
         anclas_por_indicador=itcm.ANCLAS_ITCM,
         transformaciones_por_indicador=itcm.TRANSFORMACIONES_ITCM)["valor"]
@@ -186,8 +201,7 @@ def test_cada_retiro_por_separado():
     """Atribución: cuánto mueve cada uno solo, para que nadie lea el neto de
     medio punto como si las dos decisiones fueran chicas."""
     def con(dims_estab, dims_inv, valores):
-        dims = {k: dict(v, indicadores=dict(v["indicadores"]))
-                for k, v in itcm.DIMENSIONES_ITCM.items()}
+        dims = _dimensiones_agosto()
         dims["estabilidad_monetaria"]["indicadores"] = dims_estab
         dims["inversion"]["indicadores"] = dims_inv
         return parametrica.calcular_indice(
