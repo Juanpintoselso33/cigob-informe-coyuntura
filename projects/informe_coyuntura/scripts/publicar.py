@@ -4,7 +4,7 @@ Lee output/informe.json + el ultimo vida_cotidiana_*.json + output/series/*.csv
 y escribe web/src/data/informe.json (con vida cotidiana enriquecido con los
 indicadores automáticos vigentes) y web/src/data/series.json.
 """
-import csv, glob, json, os, re, statistics, sys
+import csv, glob, json, math, os, re, statistics, sys
 from datetime import date, datetime
 from pathlib import Path
 
@@ -548,23 +548,38 @@ GESTION_CONTEXTO = "Indicador de contexto — no integra el índice de gestión 
 # seguimientos internos vigentes se excluyen mediante POLITICA_OCULTOS.
 POLITICA_CONTEXTO = "Indicador de contexto — no integra el índice político (paramétrica CIGOB jul-2026)."
 
+# Qué es cada índice y cómo se traduce a tensión. Las dimensiones y sus pesos
+# NO se escriben acá: salen del índice publicado (`_explicacion_score`). Escritos
+# a mano quedaron viejos dos veces: política siguió listando «imagen y voto» y
+# 7 dimensiones meses después de ADR-0344, y el #75 de Luis tuvo que retocar
+# el texto de macro a mano al mover la inversión (16-oct-2026).
 SCORE_EXPLICACION = {
-    "macro":          ("Índice macroeconómico (paramétrico, 0–100, mayor = menos tensión) ponderado por 5 dimensiones: "
-                       "estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, "
-                       "actividad e inversión 23%, competitividad externa 11%. La tensión del cinturón es (100 − índice) / 10."),
-    "politica":       ("Índice político (paramétrico, 0–100, mayor = más capital político) ponderado por 7 dimensiones: "
-                       "poder legislativo 21%, alianzas territoriales 19%, cohesión interna del oficialismo 15%, "
-                       "conflicto social 10%, imagen y voto 7%, poder judicial 15%, sector privado 13%. "
+    "macro":          ("itcm", "Índice macroeconómico (paramétrico, 0–100, mayor = menos tensión)",
                        "La tensión del cinturón es (100 − índice) / 10."),
-    "gestion":        ("Índice de gestión (paramétrico, 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: "
-                       "reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, "
-                       "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − índice) / 10."),
-    "vida_cotidiana": ("Índice de impacto social (de seguimiento: los componentes usan 100 = promedio del 4º trimestre de 2023, salvo "
-                       "servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) "
-                       "ponderado por 6 dimensiones: ingresos y consumo 28%, precios 25%, "
-                       "vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. "
+    "politica":       ("itcp", "Índice político (paramétrico, 0–100, mayor = más capital político)",
+                       "La tensión del cinturón es (100 − índice) / 10."),
+    "gestion":        ("itcg", "Índice de gestión (paramétrico, 0–100, mayor = agenda de reformas ejecutándose)",
+                       "La tensión del cinturón es (100 − índice) / 10."),
+    "vida_cotidiana": ("itvc", "Índice de impacto social (de seguimiento: los componentes usan 100 = promedio del 4º "
+                       "trimestre de 2023, salvo servicios públicos, que usa umbrales internacionales por rubro; "
+                       "mayor = mejores condiciones de vida)",
                        "La tensión del cinturón es 5 − (índice − 100) × 0,2."),
 }
+
+
+def _explicacion_score(ckey, c):
+    """El texto de cómo se compone el score, con las dimensiones y los pesos
+    que el índice publicó en esta corrida (los efectivos, como en la página)."""
+    if ckey not in SCORE_EXPLICACION:
+        return ""
+    sigla, que, tension = SCORE_EXPLICACION[ckey]
+    dims = list(((c.get(sigla) or {}).get("dimensiones") or {}).values())
+    if not dims:
+        return f"{que}. {tension}"
+    partes = ", ".join(
+        f"{d['nombre'][:1].lower()}{d['nombre'][1:]} {math.floor(100 * (d.get('peso_efectivo') or d['peso']) + 0.5 + 1e-9)}%"
+        for d in dims)
+    return f"{que} ponderado por {len(dims)} dimensiones: {partes}. {tension}"
 
 
 # Era una "réplica" escrita a mano de generar_informe._estado. Una réplica es
@@ -2582,7 +2597,6 @@ def aplicar_scoring(informe, series):
     """Anota cada indicador con su aporte de tensión (0–10) y el mapeo que lo
     explica, y cada cinturón con cómo se compone su score."""
     for ckey, c in informe["cinturones"].items():
-        c["score_explicacion"] = SCORE_EXPLICACION.get(ckey, "")
         if ckey == "macro":
             for oculto in MACRO_OCULTOS:
                 c["indicadores"].pop(oculto, None)
@@ -2672,6 +2686,8 @@ def aplicar_scoring(informe, series):
     vida = informe["cinturones"].get("vida_cotidiana", {})
     for descartada in ("patentamiento_autos", "patentamiento_motos"):
         vida.get("indicadores", {}).pop(descartada, None)
+    for ckey, c in informe["cinturones"].items():
+        c["score_explicacion"] = _explicacion_score(ckey, c)
     return informe
 
 

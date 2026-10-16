@@ -2308,7 +2308,7 @@
           "tension": null
         }
       },
-      "score_explicacion": "Índice macroeconómico (paramétrico, 0–100, mayor = menos tensión) ponderado por 5 dimensiones: estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, actividad e inversión 23%, competitividad externa 11%. La tensión del cinturón es (100 − índice) / 10."
+      "score_explicacion": "Índice macroeconómico (paramétrico, 0–100, mayor = menos tensión) ponderado por 5 dimensiones: estabilidad monetaria-inflacionaria 26%, viabilidad fiscal-comercial 24%, capacidad y costo del financiamiento 16%, actividad e inversión 23%, competitividad externa 11%. La tensión del cinturón es (100 − índice) / 10."
     },
     "politica": {
       "score": 2.6,
@@ -5166,7 +5166,7 @@
           "tension": null
         }
       },
-      "score_explicacion": "Índice político (paramétrico, 0–100, mayor = más capital político) ponderado por 7 dimensiones: poder legislativo 21%, alianzas territoriales 19%, cohesión interna del oficialismo 15%, conflicto social 10%, imagen y voto 7%, poder judicial 15%, sector privado 13%. La tensión del cinturón es (100 − índice) / 10."
+      "score_explicacion": "Índice político (paramétrico, 0–100, mayor = más capital político) ponderado por 6 dimensiones: poder legislativo 23%, alianzas territoriales 20%, cohesión interna del oficialismo 16%, conflicto social 11%, poder judicial 16%, sector privado 14%. La tensión del cinturón es (100 − índice) / 10."
     },
     "vida_cotidiana": {
       "score": 6.4,
@@ -8371,7 +8371,7 @@
         }
       },
       "fuente_enriquecida": "vida_cotidiana_20261016_1548.json",
-      "score_explicacion": "Índice de impacto social (de seguimiento: los componentes usan 100 = promedio del 4º trimestre de 2023, salvo servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 28%, precios 25%, vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (índice − 100) × 0,2."
+      "score_explicacion": "Índice de impacto social (de seguimiento: los componentes usan 100 = promedio del 4º trimestre de 2023, salvo servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 28%, presión de precios 25%, vulnerabilidad financiera 10%, prospectivas de empleo 24%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (índice − 100) × 0,2."
     },
     "gestion": {
       "score": 2.1,
@@ -10435,7 +10435,7 @@
           "tension": null
         }
       },
-      "score_explicacion": "Índice de gestión (paramétrico, 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − índice) / 10."
+      "score_explicacion": "Índice de gestión (paramétrico, 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas fundamentales 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − índice) / 10."
     }
   },
   "barbarismo_activo": "político",
