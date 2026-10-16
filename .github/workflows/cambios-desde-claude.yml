@@ -58,6 +58,9 @@ jobs:
       - run: npm ci
         working-directory: projects/informe_coyuntura/web
       - run: python scripts/fichas/generar.py --todos
+      # El manual se regenera desde el código igual que las fichas: si no, todo
+      # cambio de pesos sale con una prueba en rojo que no es de nadie (#75).
+      - run: python scripts/manual_cinturon.py --todos
       - name: Tests
         run: |
           set -o pipefail

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-10-15T17:58:08.210917-03:00",
+  "generated_at": "2026-10-16T11:42:34.788850-03:00",
   "period": "2026-10",
   "score_global": 3.7,
   "ponderacion": {
@@ -25,7 +25,7 @@
           "fuente": "INDEC — IPC nacional (vía datos.gob.ar)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:24:46",
+          "obtenido_en": "2026-10-16T11:19:40",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 81.8,
@@ -46,7 +46,7 @@
           "drenaje_repos": -2484.0,
           "metodo": "sdds+tesoro+bopreal",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:24:58",
+          "obtenido_en": "2026-10-16T11:19:45",
           "en_indice": true,
           "dimension": "financiamiento",
           "puntaje_itcm": 70.5,
@@ -54,38 +54,38 @@
           "peso_efectivo": 0.0544
         },
         "idc": {
-          "valor": -0.27,
+          "valor": -0.26,
           "unidad": "σ vs. su historia",
           "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
           "fecha_dato": "2026-08-01",
           "componentes": {
             "precio": 0.56,
-            "volumen": -0.16,
-            "asignacion": -1.24
+            "volumen": -0.14,
+            "asignacion": -1.23
           },
           "niveles": {
             "tasa_real_pp": 0.08,
-            "dep_real_ia_pct": -1.8,
-            "holgura_pct": 15.3
+            "dep_real_ia_pct": -1.6,
+            "holgura_pct": 15.4
           },
           "ventana": "2017-12 → 2026-08 (105 meses)",
           "badlar_real_mensual": 0.08,
           "banda_idc": "amarillo",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:25:01",
+          "obtenido_en": "2026-10-16T11:19:45",
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 51.0,
-          "puntaje_banda": 51.0,
+          "puntaje_itcm": 51.3,
+          "puntaje_banda": 51.3,
           "peso_efectivo": 0.0336
         },
         "badlar": {
-          "valor": 21.69,
+          "valor": 22.5,
           "unidad": "% anual",
           "fuente": "BCRA — BADLAR bancos privados (API monetarias)",
-          "fecha_dato": "2026-10-13",
+          "fecha_dato": "2026-10-14",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:25:02",
+          "obtenido_en": "2026-10-16T11:19:45",
           "en_indice": false
         },
         "emae_ia": {
@@ -94,12 +94,12 @@
           "fuente": "INDEC — EMAE (vía datos.gob.ar)",
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:25:04",
+          "obtenido_en": "2026-10-16T11:19:47",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 36.5,
           "puntaje_banda": 36.5,
-          "peso_efectivo": 0.0581
+          "peso_efectivo": 0.085
         },
         "emae_difusion": {
           "valor": 46.67,
@@ -172,12 +172,12 @@
             }
           ],
           "detalle_txt": "7 de 15 sectores crecen · lidera Pesca (424,51%) · el que más cae es Comercio mayorista, minorista y reparaciones (-5,05%)",
-          "obtenido_en": "2026-10-15T18:25:25",
+          "obtenido_en": "2026-10-16T11:19:55",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 43.3,
           "puntaje_banda": 43.3,
-          "peso_efectivo": 0.0194
+          "peso_efectivo": 0.0283
         },
         "ipi_manufacturero": {
           "valor": -2.04,
@@ -185,12 +185,12 @@
           "fuente": "INDEC — IPI manufacturero, nivel general (planilla original vigente)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:25:31",
+          "obtenido_en": "2026-10-16T11:19:56",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 31.7,
           "puntaje_banda": 31.7,
-          "peso_efectivo": 0.0194
+          "peso_efectivo": 0.0283
         },
         "actividad_tributaria": {
           "valor": -5.41,
@@ -201,12 +201,12 @@
           "iva_var_ia_real": -3.0,
           "cheque_var_ia_real": -9.1,
           "detalle_txt": "Compuesto 0,6×IVA-DGI + 0,4×cheque, ambos en variación interanual real: IVA-DGI -3,0%, cheque -9,1%, compuesto -5,4%. El cheque capta además bancarización, no sólo actividad; el IVA responde también a evasión y cambios de alícuota.",
-          "obtenido_en": "2026-10-15T18:25:32",
+          "obtenido_en": "2026-10-16T11:19:57",
           "en_indice": true,
           "dimension": "actividad",
           "puntaje_itcm": 28.4,
           "puntaje_banda": 28.4,
-          "peso_efectivo": 0.0132
+          "peso_efectivo": 0.0193
         },
         "saldo_comercial_12m": {
           "valor": 24460.0,
@@ -214,7 +214,7 @@
           "fuente": "INDEC — ICA, cuadro original vigente + historia datos.gob.ar",
           "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_18_09_26.xls",
           "advertencia_fuente": null,
-          "obtenido_en": "2026-10-15T18:25:36",
+          "obtenido_en": "2026-10-16T11:19:58",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
           "expo_12m": 98954.0,
@@ -236,7 +236,7 @@
           "fecha_dato": "2026-08-01",
           "aporte_provincial_pct": 16.4,
           "detalle_txt": "La base imponible real está en 91,3 sobre una base de 100 en el cuarto trimestre de 2023, es decir 8,7% por debajo. Meses previos: 2026-05: 97,7 · 2026-06: 88,2 · 2026-07: 102,1. Los impuestos provinciales del Convenio Multilateral aportan 16,4% de la base medida. Composición (2026-08, var. i.a. real): IVA-DGI -3,0%, cheque -9,1%, agregado -0,8%. La porción ligada a actividad fue en el mismo sentido que el agregado. IVA-DGI y cheque son, ellos mismos, dos de los componentes del agregado —no una fuente independiente— y tampoco miden actividad de forma directa (hay evasión, cambios de alícuota y anticipos), y el cheque además capta bancarización, no sólo producto.",
-          "desactualizado": false,
+          "desactualizado": true,
           "control_tributario": {
             "fecha": "2026-08",
             "agregado_var_ia_real": -0.8,
@@ -258,7 +258,7 @@
           "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
           "fecha_dato": "2026-09-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:25:54",
+          "obtenido_en": "2026-10-16T11:20:00",
           "en_indice": true,
           "dimension": "competitividad_externa",
           "puntaje_itcm": 49.7,
@@ -271,7 +271,7 @@
           "fuente": "BCRA — REM, expectativas de inflación (API monetarias)",
           "fecha_dato": "2026-09-30",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:25:55",
+          "obtenido_en": "2026-10-16T11:20:00",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 82.8,
@@ -281,32 +281,32 @@
           "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.61% mensual, en la misma escala que el IPC."
         },
         "idm": {
-          "valor": 2.34,
+          "valor": 2.15,
           "unidad": "pp (brecha i.a. real)",
           "fuente": "BCRA (M3 privado = circulante var. 17 + depósitos privados var. 100; M2 privado transaccional var. 197) + IPC INDEC",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "m3_real_ia": -2.92,
-          "m2_real_ia": -5.25,
-          "obtenido_en": "2026-10-15T18:25:58",
+          "m3_real_ia": -2.76,
+          "m2_real_ia": -4.91,
+          "obtenido_en": "2026-10-16T11:20:20",
           "en_indice": false
         },
         "desequilibrio_monetario": {
-          "valor": 65.1,
+          "valor": 64.01,
           "unidad": "pts de tensión (0-100)",
           "fuente": "BCRA (M2 transaccional privado, circulante, depósitos privados en pesos y en dólares, y Mercado de Cambios)",
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
-          "puntaje_itcm": 34.9,
-          "componente_a": 32.08,
+          "puntaje_itcm": 36.0,
+          "componente_a": 32.16,
           "componente_b": 2682.1,
-          "posicion_a": 0.2591,
+          "posicion_a": 0.2843,
           "posicion_b": 0.5622,
           "celda": "liquidez_y_presion",
-          "obtenido_en": "2026-10-15T18:26:27",
+          "obtenido_en": "2026-10-16T11:20:27",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_banda": 34.9,
+          "puntaje_banda": 36.0,
           "peso_efectivo": 0.052
         },
         "iai": {
@@ -321,12 +321,12 @@
           },
           "pesos_nota": "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)",
           "detalle_txt": "-1.7 % i.a. = ISAC -4.4% · BK importados +3.1% (mes común: 2026-08)",
-          "obtenido_en": "2026-10-15T18:26:39",
+          "obtenido_en": "2026-10-16T11:20:30",
           "en_indice": true,
-          "dimension": "inversion",
+          "dimension": "actividad",
           "puntaje_itcm": 52.0,
           "puntaje_banda": 52.0,
-          "peso_efectivo": 0.12
+          "peso_efectivo": 0.069
         },
         "icip": {
           "valor": 13.67,
@@ -340,7 +340,7 @@
           },
           "pesos_nota": "Servicios tech 57% · productividad (IPI/empleo) 43%",
           "detalle_txt": "+13.7 % i.a. = servicios tech +26.8% · productividad -3.8% (mes común: 2026-07) — servicios tech 2026-08 (provisorio, no puntúa): +27.6%",
-          "obtenido_en": "2026-10-15T18:26:45",
+          "obtenido_en": "2026-10-16T11:20:36",
           "en_indice": false
         },
         "credito_privado": {
@@ -351,12 +351,12 @@
           "desactualizado": false,
           "nominal_ia": 33.2,
           "moneda": "pesos",
-          "usd_ia": 37.8,
-          "usd_saldo_mm": 25227,
-          "me_en_pesos_ia_real": 17.6,
-          "total_ia_real": 3.6,
-          "detalle_txt": "nominal 33,2% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-08) · aparte, la cartera en moneda extranjera 17,6% real medida en pesos y 37,8% en dólares; los dos universos juntos, 3,6% real — al 2026-10-08 (provisorio, no puntúa): -2,7% real con deflactor de 2026-08",
-          "obtenido_en": "2026-10-15T18:26:51",
+          "usd_ia": 39.1,
+          "usd_saldo_mm": 25474,
+          "me_en_pesos_ia_real": 18.8,
+          "total_ia_real": 3.9,
+          "detalle_txt": "nominal 33,2% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-08) · aparte, la cartera en moneda extranjera 18,8% real medida en pesos y 39,1% en dólares; los dos universos juntos, 3,9% real — al 2026-10-09 (provisorio, no puntúa): -3,0% real con deflactor de 2026-08",
+          "obtenido_en": "2026-10-16T11:20:37",
           "en_indice": true,
           "dimension": "financiamiento",
           "puntaje_itcm": 35.4,
@@ -411,7 +411,7 @@
           ],
           "detalle_txt": "2026-08: TIREA de corte 29.8% en 4 colocación/es a tasa fija en pesos contra inflación esperada 21.0% → +7.3% real",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:26:52",
+          "obtenido_en": "2026-10-16T11:20:38",
           "en_indice": true,
           "dimension": "financiamiento",
           "puntaje_itcm": 82.1,
@@ -424,7 +424,7 @@
           "fuente": "Sec. de Hacienda — informe mensual de ingresos y gastos (resultado primario) + recaudación (vía datos.gob.ar)",
           "fecha_dato": "2026-08-01",
           "detalle_txt": "2026-08: superávit primario de 6.0% de la recaudación acumulada de doce meses",
-          "desactualizado": false,
+          "desactualizado": true,
           "obtenido_en": "2026-10-15T18:26:55",
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
@@ -433,43 +433,43 @@
           "peso_efectivo": 0.12
         },
         "prestamos_privados": {
-          "valor": 3.7,
+          "valor": 3.19,
           "unidad": "% mensual nominal",
           "fuente": "BCRA — préstamos al sector privado (API monetarias)",
-          "fecha_dato": "2026-10-08",
+          "fecha_dato": "2026-10-09",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:26:55",
+          "obtenido_en": "2026-10-16T11:21:38",
           "en_indice": false
         },
         "base_monetaria": {
-          "valor": 1.42,
+          "valor": 2.66,
           "unidad": "% mensual nominal",
           "fuente": "BCRA — base monetaria (API monetarias)",
-          "fecha_dato": "2026-10-09",
+          "fecha_dato": "2026-10-13",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:26:56",
+          "obtenido_en": "2026-10-16T11:21:38",
           "en_indice": false
         },
         "tc_mayorista": {
-          "valor": 0.36,
+          "valor": 0.26,
           "unidad": "% mensual",
           "fuente": "BCRA — TC mayorista A3500 (API monetarias)",
-          "fecha_dato": "2026-10-14",
+          "fecha_dato": "2026-10-15",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:26:57",
+          "obtenido_en": "2026-10-16T11:21:38",
           "en_indice": false
         }
       },
       "alerta": null,
       "itcm": {
-        "valor": 62.5,
+        "valor": 61.7,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "estabilidad_monetaria": {
             "nombre": "Estabilidad monetaria-inflacionaria",
             "peso": 0.26,
-            "puntaje": 72.6,
+            "puntaje": 72.8,
             "indicadores": {
               "ipc_total": {
                 "peso": 0.6,
@@ -487,9 +487,9 @@
               },
               "desequilibrio_monetario": {
                 "peso": 0.2,
-                "puntaje_banda": 34.9,
-                "puntaje_aplicado": 34.9,
-                "valor": 65.1,
+                "puntaje_banda": 36.0,
+                "puntaje_aplicado": 36.0,
+                "valor": 64.01,
                 "peso_efectivo": 0.052
               }
             },
@@ -538,9 +538,9 @@
               },
               "idc": {
                 "peso": 0.21,
-                "puntaje_banda": 51.0,
-                "puntaje_aplicado": 51.0,
-                "valor": -0.27,
+                "puntaje_banda": 51.3,
+                "puntaje_aplicado": 51.3,
+                "valor": -0.26,
                 "peso_efectivo": 0.0336
               },
               "costo_financiamiento_tesoro": {
@@ -561,40 +561,47 @@
             "peso_efectivo": 0.16
           },
           "actividad": {
-            "nombre": "Actividad económica",
-            "peso": 0.11,
-            "puntaje": 35.9,
+            "nombre": "Actividad e inversión",
+            "peso": 0.23,
+            "puntaje": 40.7,
             "indicadores": {
               "emae_ia": {
-                "peso": 0.528,
+                "peso": 0.3696,
                 "puntaje_banda": 36.5,
                 "puntaje_aplicado": 36.5,
                 "valor": -1.44,
-                "peso_efectivo": 0.0581
+                "peso_efectivo": 0.085
               },
               "emae_difusion": {
-                "peso": 0.176,
+                "peso": 0.1232,
                 "puntaje_banda": 43.3,
                 "puntaje_aplicado": 43.3,
                 "valor": 46.67,
-                "peso_efectivo": 0.0194
+                "peso_efectivo": 0.0283
               },
               "ipi_manufacturero": {
-                "peso": 0.176,
+                "peso": 0.1232,
                 "puntaje_banda": 31.7,
                 "puntaje_aplicado": 31.7,
                 "valor": -2.04,
-                "peso_efectivo": 0.0194
+                "peso_efectivo": 0.0283
               },
               "actividad_tributaria": {
-                "peso": 0.12,
+                "peso": 0.084,
                 "puntaje_banda": 28.4,
                 "puntaje_aplicado": 28.4,
                 "valor": -5.41,
-                "peso_efectivo": 0.0132
+                "peso_efectivo": 0.0193
+              },
+              "iai": {
+                "peso": 0.3,
+                "puntaje_banda": 52.0,
+                "puntaje_aplicado": 52.0,
+                "valor": -1.74,
+                "peso_efectivo": 0.069
               }
             },
-            "peso_efectivo": 0.11
+            "peso_efectivo": 0.23
           },
           "competitividad_externa": {
             "nombre": "Competitividad externa",
@@ -610,21 +617,6 @@
               }
             },
             "peso_efectivo": 0.11
-          },
-          "inversion": {
-            "nombre": "Inversión",
-            "peso": 0.12,
-            "puntaje": 52.0,
-            "indicadores": {
-              "iai": {
-                "peso": 1.0,
-                "puntaje_banda": 52.0,
-                "puntaje_aplicado": 52.0,
-                "valor": -1.74,
-                "peso_efectivo": 0.12
-              }
-            },
-            "peso_efectivo": 0.12
           }
         },
         "ajustes_aplicados": []
@@ -642,10 +634,10 @@
           "ventana_dias": 365,
           "unidad": "DNUs publicados por ley publicada",
           "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
-          "ventana_desde": "2025-10-16",
-          "ventana_hasta": "2026-10-15",
+          "ventana_desde": "2025-10-17",
+          "ventana_hasta": "2026-10-16",
           "inventario_dnu": [
             {
               "norma": "Decreto DNU 1157 / 2026",
@@ -788,8 +780,8 @@
               "fecha_pub": "2025-11-11"
             }
           ],
-          "detalle_txt": "35 DNU y 34 leyes publicados en el Boletín Oficial entre 2025-10-16 y 2026-10-15 → 1.03 DNU por ley",
-          "obtenido_en": "2026-10-15T17:52:55",
+          "detalle_txt": "35 DNU y 34 leyes publicados en el Boletín Oficial entre 2025-10-17 y 2026-10-16 → 1.03 DNU por ley",
+          "obtenido_en": "2026-10-16T11:21:46",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 62.0,
@@ -806,7 +798,7 @@
           "desactualizado": false,
           "variacion_12m": -0.8,
           "detalle_txt": "Brecha de -1,9 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Último horizonte consultado: 2026-09 a 2026-11; la fecha identifica su inicio, no una realización observada ni la fecha de publicación. Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
-          "obtenido_en": "2026-10-15T17:52:55",
+          "obtenido_en": "2026-10-16T11:21:46",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 71.2,
@@ -825,7 +817,7 @@
           "criticas_ventana": 6,
           "pendientes_de_codificar": 2,
           "detalle_txt": "En los últimos doce meses la UIA se pronunció 9 veces sobre medidas del Gobierno nacional: 3 de apoyo y 6 de crítica. Saldo −0,333 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 2 comunicados detectados sin codificar.",
-          "obtenido_en": "2026-10-15T17:52:55",
+          "obtenido_en": "2026-10-16T11:21:46",
           "en_indice": true,
           "dimension": "sector_privado",
           "puntaje_itcp": 44.2,
@@ -842,7 +834,7 @@
           "cobertura_hasta": "2026-10-09",
           "referencia_temporal": "mes de inicio de las semanas ACLED",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T17:53:06",
+          "obtenido_en": "2026-10-16T11:21:58",
           "detalle_txt": "1896 eventos de protesta y disturbios en el país en 12m (grupos hasta 2026-09) vs 2605 en la base 2023 (-27,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones. Agrupa semanas sábado–viernes por su mes de inicio; las semanas que cruzan de mes no se dividen.",
           "en_indice": true,
           "dimension": "conflicto_social",
@@ -857,7 +849,7 @@
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "detalle_txt": "4.820.775 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
-          "obtenido_en": "2026-10-15T17:53:07",
+          "obtenido_en": "2026-10-16T11:22:00",
           "en_indice": true,
           "dimension": "conflicto_social",
           "puntaje_itcp": 100.0,
@@ -873,7 +865,7 @@
           "fuente": "https://centrocepa.com.ar/documentos/informes/837-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial-2",
           "fecha_dato": "2026-08-23",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T17:53:10",
+          "obtenido_en": "2026-10-16T11:22:03",
           "en_indice": false
         },
         "iaf_transferencias": {
@@ -888,7 +880,7 @@
           "detalle_txt": "12 meses a ago 2026: +30.5% nominal contra un deflactor de 32.9% ponderado por el flujo de cada mes → -1.8% real",
           "fecha_dato": "2026-08-31",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T17:53:13",
+          "obtenido_en": "2026-10-16T11:22:04",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 71.4,
@@ -899,14 +891,14 @@
           "valor": 27.3,
           "aprobados_n": 3,
           "enviados_n": 11,
-          "cohorte_desde": "2024-10-15",
-          "cohorte_hasta": "2025-10-15",
+          "cohorte_desde": "2024-10-16",
+          "cohorte_hasta": "2025-10-16",
           "dias_madurado_min": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T17:53:14",
+          "obtenido_en": "2026-10-16T11:22:05",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 70.5,
@@ -920,11 +912,11 @@
           "excluidas_oposicion_n": 2,
           "unidad": "% de sesiones",
           "fuente": "Cámara de Diputados — índice oficial de sesiones y versiones taquigráficas",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
           "ultima_reunion_registrada": "2026-10-15",
           "detalle_txt": "0 de 9 reuniones legislativas registradas en los 12 meses calendario hasta la fecha de consulta quedaron en minoría. No cuentan 2 sesiones que pidió la oposición y no juntaron quórum: ahí el que gana es el oficialismo. Última reunión: 2026-10-15. El mes en curso es parcial; se excluyen convocatorias futuras y citadas no efectuadas.",
-          "obtenido_en": "2026-10-15T17:53:14",
+          "obtenido_en": "2026-10-16T11:22:06",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 100.0,
@@ -939,16 +931,16 @@
           "ventana_dias": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T17:53:15",
+          "obtenido_en": "2026-10-16T11:22:07",
           "en_indice": false
         },
         "adhesion_reformas_provincial": {
           "valor": 75.0,
           "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
           "fuente": "MAGyP — catálogo de adhesiones · leyes provinciales complementarias verificadas",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "n_provincias": 18,
           "jurisdicciones": [
             "CABA",
@@ -972,7 +964,7 @@
           ],
           "detalle_txt": "18 de 24 jurisdicciones con adhesión formal documentada. Catálogo MAGyP complementado con leyes publicadas de Santa Fe y CABA, omitidas en esa tabla al 8-sep-2026. No mide inversiones realizadas ni certifica ausencia de cambios normativos posteriores.",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T17:53:15",
+          "obtenido_en": "2026-10-16T11:22:07",
           "en_indice": true,
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 92.5,
@@ -988,22 +980,22 @@
           "detalle_txt": "sin derrotas legislativas en los últimos 12 meses (ni vetos insistidos ni decretos rechazados en el recinto)",
           "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
           "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T17:53:44",
+          "obtenido_en": "2026-10-16T11:22:37",
           "en_indice": false
         },
         "rotacion_gabinete": {
           "valor": 6,
           "unidad": "salidas de rango ministerial (acum. 12 meses)",
           "fuente": "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
           "salidas_politicas": 4,
           "salidas_estructurales": 2,
           "ultima_salida": "Manuel Adorni — Jefe de Gabinete de Ministros (2026-06)",
           "detalle_txt": "6 salidas en 12 meses = 4 políticas · 2 por bancas electorales — Guillermo Francos (2025-11), Lisandro Catalan (2025-11), Patricia Bullrich (2025-12), Luis Petri (2025-12), Mariano Cuneo Libarona (2026-03), Manuel Adorni (2026-06)",
-          "obtenido_en": "2026-10-15T17:53:49",
+          "obtenido_en": "2026-10-16T11:22:42",
           "en_indice": false
         },
         "protestas_caba": {
@@ -1014,7 +1006,7 @@
           "cobertura_hasta": "2026-10-09",
           "referencia_temporal": "mes de inicio de las semanas ACLED",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T17:53:49",
+          "obtenido_en": "2026-10-16T11:22:42",
           "eventos_2023": 240,
           "var_vs_2023": 10.0,
           "detalle_txt": "264 eventos en 12m (grupos hasta 2026-09) vs 240 en la base 2023 (+10,0%) — semanas sábado–viernes agrupadas por su mes de inicio. Cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
@@ -1032,18 +1024,18 @@
               "valor": 100.0,
               "fecha_dato": "2026-09-09",
               "n_actas": 31,
-              "corrida_exitosa_en": "2026-10-15",
+              "corrida_exitosa_en": "2026-10-16",
               "desactualizado": false
             },
             "senado": {
               "valor": 100.0,
               "fecha_dato": "2026-09-24",
               "n_actas": 53,
-              "corrida_exitosa_en": "2026-10-15",
+              "corrida_exitosa_en": "2026-10-16",
               "desactualizado": false
             }
           },
-          "obtenido_en": "2026-10-15T17:56:55",
+          "obtenido_en": "2026-10-16T11:26:07",
           "en_indice": true,
           "dimension": "cohesion_interna",
           "puntaje_itcp": 100.0,
@@ -1058,10 +1050,10 @@
           "sostenidas_12m": 0,
           "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
           "fuente": "Actas de votación de Diputados y Senado + InfoLeg — elaboración CIGOB",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
           "detalle_txt": "No hubo normas desafiadas en la ventana de doce meses. Sin denominador no hay tasa de bloqueo: no se asigna cero ni se conserva una tasa de otra ventana. El peso se redistribuye entre los componentes observados de la dimensión legislativa.",
-          "obtenido_en": "2026-10-15T17:57:03",
+          "obtenido_en": "2026-10-16T11:26:24",
           "en_indice": false,
           "dimension": "poder_legislativo"
         },
@@ -1072,10 +1064,10 @@
           "ultimo_desafio": null,
           "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
           "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
           "detalle_txt": "Ninguna norma del Ejecutivo fue desafiada en el recinto en los últimos 12 meses — cero desafíos es la señal, no un dato faltante. Cuando los hubo (histórico completo: 16 normas desde marzo de 2024), el 43,8% siguió en pie (7 de 16).",
-          "obtenido_en": "2026-10-15T17:57:03",
+          "obtenido_en": "2026-10-16T11:26:24",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 100.0,
@@ -1091,7 +1083,7 @@
           "ultima_sancion_registrada": "2026-09-24",
           "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
           "detalle_txt": "31 leyes distintas en los 12 meses completos hasta 2026-09. Última sanción registrada: 2026-09-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.",
-          "obtenido_en": "2026-10-15T17:57:04",
+          "obtenido_en": "2026-10-16T11:26:24",
           "en_indice": true,
           "dimension": "poder_legislativo",
           "puntaje_itcp": 45.8,
@@ -1104,8 +1096,8 @@
           "fuente": "SAIJ — buscador de jurisprudencia (Federal + Nacional)",
           "fecha_dato": "2026-01-01",
           "desactualizado": false,
-          "detalle_txt": "195 de 10763 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
-          "obtenido_en": "2026-10-15T17:57:06",
+          "detalle_txt": "195 de 10781 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
+          "obtenido_en": "2026-10-16T11:26:27",
           "en_indice": false,
           "dimension": "poder_judicial",
           "suspendido": {
@@ -1124,7 +1116,7 @@
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
           "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
-          "obtenido_en": "2026-10-15T17:57:06",
+          "obtenido_en": "2026-10-16T11:26:27",
           "en_indice": true,
           "dimension": "poder_judicial",
           "puntaje_itcp": 94.6,
@@ -1245,7 +1237,7 @@
           ],
           "criterio_conjuntas": "Cada comisión que sesiona aporta un evento, aunque la nota agrupe varias comisiones o documente una sesión conjunta; fecha y comisión se deduplican. Las audiencias no cuentan.",
           "detalle_txt": "13 sesiones de las comisiones de Acusación y Disciplina en los últimos 12 meses, incluidas ordinarias, extraordinarias y las publicadas junto con otras comisiones; las audiencias no cuentan (rango de la serie: 13 a 18, promedio 15.1).",
-          "obtenido_en": "2026-10-15T17:57:09",
+          "obtenido_en": "2026-10-16T11:26:29",
           "en_indice": true,
           "dimension": "poder_judicial",
           "puntaje_itcp": 10.0,
@@ -1258,7 +1250,7 @@
           "fuente": "Ministerio de Justicia — padrón de magistrados, designaciones y renuncias; Boletín Oficial y Consejo de la Magistratura",
           "fecha_dato": "2026-10-01",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T17:57:10",
+          "obtenido_en": "2026-10-16T11:26:30",
           "estimado": true,
           "limites_metodologicos": [
             "No incorpora órganos no habilitados en el padrón sin una fuente de habilitación.",
@@ -1295,7 +1287,7 @@
           "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
           "fecha_dato": "2026-09-24",
           "n_provincias": 24,
-          "corrida_exitosa_en": "2026-10-15",
+          "corrida_exitosa_en": "2026-10-16",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
@@ -4009,7 +4001,7 @@
           "movimiento_neto": 8.1
         },
         "vintages": {
-          "dias_promedio": 97,
+          "dias_promedio": 98,
           "meses_promedio": 3.2,
           "fecha_mas_vieja": "31 de diciembre de 2025",
           "fecha_mas_nueva": "1 de septiembre de 2026",
@@ -4102,27 +4094,27 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 6.94,
+          "valor": 6.85,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "dolarapi.com — contado con liquidación y mayorista (el mayorista replica la referencia oficial del BCRA)",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "cotizaciones": {
             "ccl": {
-              "venta": 1619.1,
-              "actualizado_en": "2026-10-15T14:57:00-03:00"
+              "venta": 1616.7,
+              "actualizado_en": "2026-10-16T10:56:00-03:00"
             },
             "mayorista": {
-              "venta": 1514.0,
-              "actualizado_en": "2026-10-15T11:57:00-03:00"
+              "venta": 1513.0,
+              "actualizado_en": "2026-10-16T07:11:00-03:00"
             }
           },
-          "detalle_txt": "CCL venta 1619.10 (2026-10-15T14:57:00-03:00) / mayorista venta 1514.00 (2026-10-15T11:57:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
+          "detalle_txt": "CCL venta 1616.70 (2026-10-16T10:56:00-03:00) / mayorista venta 1513.00 (2026-10-16T07:11:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:32:17",
+          "obtenido_en": "2026-10-16T11:27:38",
           "en_indice": true,
           "dimension": "reformas_economicas",
-          "puntaje_itcg": 88.4,
-          "puntaje_banda": 88.4,
+          "puntaje_itcg": 88.9,
+          "puntaje_banda": 88.9,
           "peso_efectivo": 0.14
         },
         "apertura_comercial": {
@@ -4133,7 +4125,7 @@
           "desactualizado": false,
           "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_18_09_26.xls",
           "advertencia_fuente": null,
-          "obtenido_en": "2026-10-15T18:32:27",
+          "obtenido_en": "2026-10-16T11:27:39",
           "detalle_txt": "US$ 1.091 M recaudados por derechos de impo+expo y tasa de estadística sobre US$ 15.579 M de intercambio (2026-08) · canal aduanero sin fuente pública",
           "en_indice": true,
           "dimension": "reformas_economicas",
@@ -4151,7 +4143,7 @@
           "normas_afectadas": 2891,
           "alta_del_mes": 491,
           "detalle_txt": "17.606 artículos modificados o eliminados desde el 10 de diciembre de 2023 (+491 en el mes) · los produjeron 807 normas de desregulación, que modificaron o eliminaron 2891 normas anteriores",
-          "obtenido_en": "2026-10-15T18:32:34",
+          "obtenido_en": "2026-10-16T11:27:42",
           "en_indice": true,
           "dimension": "reformas_economicas",
           "puntaje_itcg": 74.4,
@@ -4172,7 +4164,7 @@
           "var_planta_civil": -19.0,
           "fecha_desglose_fuerzas": "2026-02",
           "detalle_txt": "181.880 agentes (2026-08) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,89% aparte; el universo completo varía -21,21%",
-          "obtenido_en": "2026-10-15T18:32:39",
+          "obtenido_en": "2026-10-16T11:27:43",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 100.0,
@@ -4186,7 +4178,7 @@
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
           "detalle_txt": "$ 2,05 bn. base caja (2026-08) vs $ 0,53 bn (2023-08) · inflación del período ×6,0",
-          "obtenido_en": "2026-10-15T18:32:47",
+          "obtenido_en": "2026-10-16T11:27:47",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 100.0,
@@ -4200,7 +4192,7 @@
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
           "detalle_txt": "$ 1,60 bn. base caja (2026-08) vs $ 0,40 bn (2023-08) · inflación del período ×6,0",
-          "obtenido_en": "2026-10-15T18:32:48",
+          "obtenido_en": "2026-10-16T11:27:47",
           "en_indice": false,
           "dimension": "reforma_estado",
           "suspendido": {
@@ -4214,7 +4206,7 @@
           "valor": 24.4,
           "unidad": "% de avance (proxy InfoLeg, caso por caso)",
           "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
           "conteo_normas": 11,
           "excluidas": [
@@ -4284,7 +4276,7 @@
           ],
           "sin_clasificar": [],
           "detalle_txt": "11 actos de disolución o cierre de organismos desde dic-2023 (45 = plan completo) · 9 excluidos por falso positivo o por revertidos por el Congreso",
-          "obtenido_en": "2026-10-15T18:33:11",
+          "obtenido_en": "2026-10-16T11:27:54",
           "en_indice": false,
           "dimension": "reforma_estado",
           "suspendido": {
@@ -4300,10 +4292,10 @@
           "valor": 50.0,
           "unidad": "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
           "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "referencia_temporal": "evaluación con registros de distintas fechas",
-          "evaluado_en": "2026-10-15",
-          "consulta_cnv_en": "2026-10-15",
+          "evaluado_en": "2026-10-16",
+          "consulta_cnv_en": "2026-10-16",
           "revision_normativa_en": "2026-07-20",
           "revision_judicial_en": "2026-08-21",
           "desactualizado": false,
@@ -4348,8 +4340,8 @@
           "causa_de_fondo": "CGTRA c/ Estado Nacional s/ Acción Declarativa",
           "fci_cese_registrados": 0,
           "menciones_bo": 7,
-          "detalle_txt": "Evaluación al 2026-10-15; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 7 menciones del FAL en el BO desde mar-2026",
-          "obtenido_en": "2026-10-15T18:33:19",
+          "detalle_txt": "Evaluación al 2026-10-16; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 7 menciones del FAL en el BO desde mar-2026",
+          "obtenido_en": "2026-10-16T11:27:55",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 55.0,
@@ -4364,7 +4356,7 @@
           "desactualizado": false,
           "juicios_12m": 126819,
           "detalle_txt": "126.819 juicios en 12m (hasta 2026-07) vs 126.700 previos",
-          "obtenido_en": "2026-10-15T18:33:20",
+          "obtenido_en": "2026-10-16T11:27:55",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 64.8,
@@ -4505,7 +4497,7 @@
             "relectura_pendiente": []
           },
           "detalle_txt": "9 empresas · etapa promedio 2,22/4 · cerradas: Transener · 3 norma(s) nueva(s) del Boletín Oficial sin revisar",
-          "obtenido_en": "2026-10-15T18:33:35",
+          "obtenido_en": "2026-10-16T11:28:00",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 75.6,
@@ -4516,7 +4508,7 @@
           "valor": 26.9,
           "unidad": "% de inversión aprobada sobre el pipeline",
           "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
           "proyectos_aprobados": 24,
           "inversion_aprobada_musd": 56198,
@@ -4524,7 +4516,7 @@
           "inversion_evaluacion_musd": 152784,
           "nota_denominador": null,
           "detalle_txt": "24 proyectos aprobados (US$ 56.198M) / 23 en evaluación (US$ 152.784M) → 26,9% de la inversión total ya aprobada",
-          "obtenido_en": "2026-10-15T18:33:36",
+          "obtenido_en": "2026-10-16T11:28:00",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 55.7,
@@ -4535,7 +4527,7 @@
           "valor": 100.0,
           "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
           "fuente": "Boletín Oficial (resoluciones de adjudicación) + página oficial RFC; CONTRAT.AR (UOC 504) como detector",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
           "km_adjudicados": 9133,
           "km_totales": 9133,
@@ -4590,7 +4582,7 @@
             "etapa_ii_b": 100.0
           },
           "detalle_txt": "9.133 de 9.133 km adjudicados · I: adjudicada por Resolución 80 / 2025 (2025-11-19) · II-B: adjudicada por Resolución 1149 / 2026 (2026-07-28) · II: adjudicada por Resolución 706 / 2026 (2026-05-15) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24)",
-          "obtenido_en": "2026-10-15T18:33:41",
+          "obtenido_en": "2026-10-16T11:28:02",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 100.0,
@@ -4601,7 +4593,7 @@
           "valor": 100.0,
           "unidad": "% del devengado de transferencias en ayudas a personas (5.1.4)",
           "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
           "ejercicio": 2026,
           "componentes": {
@@ -4610,7 +4602,7 @@
             "tdps_2023": 98.3
           },
           "detalle_txt": "Devengado 2026: $ 573.102M en ayudas a personas (5.1.4) / $ 573.102M en transferencias · baseline Potenciar 2023: 98,3% (con $ 17.224M en otras partidas) · Clasificación del devengado; no acredita pago efectivo ni ausencia de intermediación.",
-          "obtenido_en": "2026-10-15T18:34:19",
+          "obtenido_en": "2026-10-16T11:28:36",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 100.0,
@@ -4629,7 +4621,7 @@
           },
           "advertencia_fuente": "No se pudo verificar si el portal publicó anclajes más recientes.",
           "detalle_txt": "240 cortes en CABA en 2025 vs 931 en 2023 (Diagnóstico Político; base 2023 estimada desde participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.",
-          "obtenido_en": "2026-10-15T18:34:22",
+          "obtenido_en": "2026-10-16T11:28:37",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 99.0,
@@ -4658,7 +4650,7 @@
             }
           },
           "detalle_txt": "2.754.461 beneficiarios derivados directo a 65 prepagas inscriptas (06/2026) / 8.332.458 usuarios de prepagas (RNEMP 06/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.",
-          "obtenido_en": "2026-10-15T18:34:26",
+          "obtenido_en": "2026-10-16T11:28:37",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 56.4,
@@ -4669,11 +4661,11 @@
           "valor": 0,
           "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
           "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
-          "fecha_dato": "2026-10-15",
+          "fecha_dato": "2026-10-16",
           "desactualizado": false,
-          "dias_muestreados_mes": 15,
-          "detalle_txt": "0 alertas en 15 días muestreados de 2026-10 · acumula desde 2026-07-02 (sin baseline 2023)",
-          "obtenido_en": "2026-10-15T18:35:40",
+          "dias_muestreados_mes": 16,
+          "detalle_txt": "0 alertas en 16 días muestreados de 2026-10 · acumula desde 2026-07-02 (sin baseline 2023)",
+          "obtenido_en": "2026-10-16T11:28:49",
           "en_indice": false
         },
         "protestas_caba": {
@@ -4684,7 +4676,7 @@
           "cobertura_hasta": "2026-10-09",
           "referencia_temporal": "mes de inicio de las semanas ACLED",
           "desactualizado": false,
-          "obtenido_en": "2026-10-15T18:35:57",
+          "obtenido_en": "2026-10-16T11:29:00",
           "eventos_2023": 240,
           "var_vs_2023": 10.0,
           "detalle_txt": "264 eventos en 12m (grupos hasta 2026-09) vs 240 en la base 2023 (+10,0%) — semanas sábado–viernes agrupadas por su mes de inicio. Cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
@@ -4693,20 +4685,20 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 79.0,
+        "valor": 79.1,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "reformas_economicas": {
             "nombre": "Reformas económicas fundamentales",
             "peso": 0.35,
-            "puntaje": 71.6,
+            "puntaje": 71.8,
             "indicadores": {
               "cepo_mulc": {
                 "peso": 0.4,
-                "puntaje_banda": 88.4,
-                "puntaje_aplicado": 88.4,
-                "valor": 6.94,
+                "puntaje_banda": 88.9,
+                "puntaje_aplicado": 88.9,
+                "valor": 6.85,
                 "peso_efectivo": 0.14
               },
               "apertura_comercial": {
@@ -4837,6 +4829,7 @@
   "cinturon_dominante": "vida_cotidiana",
   "alerta_multicinturon": false,
   "flags": [
+    "desactualizado:macro:recaudacion,resultado_primario",
     "desactualizado:politica:apoyo_empresario"
   ]
 }

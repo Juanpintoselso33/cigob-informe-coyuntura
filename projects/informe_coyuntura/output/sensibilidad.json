@@ -4,97 +4,97 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-15T17:58:08.210917-03:00",
+    "snapshot": "2026-10-16T11:42:34.788850-03:00",
     "adr": "0019"
   },
   "itcm": {
-    "valor_publicado": 62.5,
-    "valor_recomputado": 62.5,
+    "valor_publicado": 61.7,
+    "valor_recomputado": 61.7,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 62.4,
-        "p05": 61.2,
-        "p95": 63.7,
-        "desvio": 0.74
+        "media": 61.7,
+        "p05": 60.2,
+        "p95": 63.1,
+        "desvio": 0.88
       },
       "combinado": {
-        "media": 62.4,
-        "p05": 60.6,
-        "p95": 64.3,
-        "desvio": 1.13
+        "media": 61.8,
+        "p05": 59.8,
+        "p95": 63.7,
+        "desvio": 1.18
       },
       "insumos": {
-        "media": 62.5,
-        "p05": 61.2,
-        "p95": 63.8,
+        "media": 61.7,
+        "p05": 60.4,
+        "p95": 63.0,
         "desvio": 0.8
       }
     },
     "leave_one_out": {
-      "ipc_total": 58.9,
-      "resultado_primario": 60.0,
-      "desequilibrio_monetario": 64.9,
-      "recaudacion": 64.9,
-      "tcrm": 64.0,
-      "iai": 63.9,
-      "costo_financiamiento_tesoro": 61.4,
-      "credito_privado": 63.5,
-      "rem_ipc_12m": 61.8,
-      "saldo_comercial_12m": 61.8,
-      "reservas_bcra": 61.8,
-      "idc": 62.9,
-      "emae_difusion": 62.3,
-      "ipi_manufacturero": 62.6,
-      "actividad_tributaria": 62.6,
-      "emae_ia": 62.4
+      "ipc_total": 58.2,
+      "resultado_primario": 59.2,
+      "desequilibrio_monetario": 64.1,
+      "recaudacion": 64.1,
+      "tcrm": 63.2,
+      "credito_privado": 62.8,
+      "costo_financiamiento_tesoro": 60.6,
+      "iai": 60.6,
+      "rem_ipc_12m": 61.0,
+      "reservas_bcra": 61.0,
+      "emae_ia": 62.3,
+      "saldo_comercial_12m": 61.1,
+      "idc": 62.2,
+      "ipi_manufacturero": 62.0,
+      "actividad_tributaria": 61.9,
+      "emae_difusion": 61.6
     },
     "tension": {
       "base": 3.8,
       "rango_combinado": [
         3.6,
-        3.9
+        4.0
       ]
     }
   },
   "itcg": {
-    "valor_publicado": 79.0,
-    "valor_recomputado": 79.0,
+    "valor_publicado": 79.1,
+    "valor_recomputado": 79.1,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 79.0,
-        "p05": 77.5,
-        "p95": 80.4,
+        "media": 79.1,
+        "p05": 77.6,
+        "p95": 80.5,
         "desvio": 0.9
       },
       "combinado": {
-        "media": 79.0,
-        "p05": 77.2,
-        "p95": 80.8,
+        "media": 79.1,
+        "p05": 77.3,
+        "p95": 80.9,
         "desvio": 1.08
       },
       "insumos": {
-        "media": 79.0,
-        "p05": 78.0,
+        "media": 79.1,
+        "p05": 78.1,
         "p95": 80.0,
-        "desvio": 0.61
+        "desvio": 0.62
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 83.2,
+      "apertura_comercial": 83.4,
       "cepo_mulc": 75.1,
-      "rigi_inversiones": 80.7,
-      "concesiones_infraestructura": 78.0,
+      "rigi_inversiones": 80.8,
+      "concesiones_infraestructura": 78.1,
       "libertad_opcion_salud": 79.9,
       "litigiosidad_laboral": 78.3,
-      "fal_modernizacion_laboral": 79.7,
-      "asistencia_directa": 78.4,
+      "fal_modernizacion_laboral": 79.8,
+      "asistencia_directa": 78.5,
       "protocolo_antipiquetes": 78.5,
-      "desregulacion_normativa": 78.7,
-      "privatizaciones": 78.7,
-      "reduccion_estado": 79.0,
-      "gasto_funcionamiento": 79.0
+      "desregulacion_normativa": 78.8,
+      "privatizaciones": 78.8,
+      "reduccion_estado": 79.1,
+      "gasto_funcionamiento": 79.1
     },
     "tension": {
       "base": 2.1,

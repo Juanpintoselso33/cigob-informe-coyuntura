@@ -17,9 +17,8 @@ al ADR.
 | `estabilidad_monetaria` | 26% | `ipc_total`, `rem_ipc_12m`, `desequilibrio_monetario` |
 | `viabilidad_fiscal_comercial` | 24% | `resultado_primario`, `recaudacion`, `saldo_comercial_12m` |
 | `financiamiento` | 16% | `reservas_bcra`, `idc`, `costo_financiamiento_tesoro`, `credito_privado` |
-| `actividad` | 11% | `emae_ia`, `emae_difusion`, `ipi_manufacturero`, `actividad_tributaria` |
+| `actividad` | 23% | `emae_ia`, `emae_difusion`, `ipi_manufacturero`, `actividad_tributaria`, `iai` |
 | `competitividad_externa` | 11% | `tcrm` |
-| `inversion` | 12% | `iai` |
 
 Suma de pesos: 100%.
 
@@ -171,7 +170,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0074](../adr/0074-rebalanceo-idc-credito.md) El crédito otorgado deja de pesar un tercio de la capacidad de prestar · [ADR-0251](../adr/0251-el-credito-en-pesos-no-se-mezcla-con-el-tipo-de-cambio.md) El crédito en pesos no se mezcla con el tipo de cambio
 
-### Dimensión `actividad` (11%)
+### Dimensión `actividad` (23%)
 
 #### Actividad económica (EMAE i.a.)
 
@@ -179,8 +178,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 53% |
-| Peso efectivo en el índice | **5.8%** |
+| Peso dentro de la dimensión | 37% |
+| Peso efectivo en el índice | **8.5%** |
 | Procedencia del ancla | `conceptual` — bandas de crecimiento en torno al cero; el corte de crecimiento nulo cae en p26 de la historia 2021-2023 (ADR-0120) |
 
 **Bandas**: > 5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤ -5 → 5
@@ -193,8 +192,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 18% |
-| Peso efectivo en el índice | **1.9%** |
+| Peso dentro de la dimensión | 12% |
+| Peso efectivo en el índice | **2.8%** |
 | Procedencia del ancla | `conceptual` — cortes por CANTIDAD DE SECTORES (14-15 generalizado · 11-13 mayoría amplia · 8-10 ajustada · 5-7 minoría · 0-4 contracción), puestos en el hueco entre valores alcanzables; explícitamente NO se ancló en el 50% de manual porque la mediana histórica argentina es 73,3% (ADR-0124) |
 
 **Bandas**: > 90 → 100 · 70–90 → 80 · 50–70 → 60 · 30–50 → 35 · ≤ 30 → 10
@@ -207,8 +206,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 18% |
-| Peso efectivo en el índice | **1.9%** |
+| Peso dentro de la dimensión | 12% |
+| Peso efectivo en el índice | **2.8%** |
 | Procedencia del ancla | `conceptual` — hereda las bandas del EMAE a propósito para dejar ver la brecha industria-actividad, con cita a ADR-0045 (ADR-0076/0079) |
 
 **Bandas**: > 5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤ -5 → 5
@@ -221,13 +220,27 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 12% |
-| Peso efectivo en el índice | **1.3%** |
+| Peso dentro de la dimensión | 8% |
+| Peso efectivo en el índice | **1.9%** |
 | Procedencia del ancla | `historia_larga` — cortes redondos de 5 puntos en torno al cero, calibrados contra los 105 meses de la serie propia (dic-2017/ago-2026, la ventana que permite el IPC como deflactor) para que ninguno de los seis tramos concentre más de la quinta parte de la historia (ADR-0329) |
 
 **Bandas**: > 10 → 100 · 5–10 → 80 · 0–5 → 60 · -5–0 → 40 · -10–-5 → 20 · ≤ -10 → 5
 
 **Lo gobiernan**: [ADR-0329](../adr/0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal
+
+#### Inversión física
+
+`iai`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 30% |
+| Peso efectivo en el índice | **6.9%** |
+| Procedencia del ancla | `convencion` — el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026 |
+
+**Bandas**: > 10.17 → 100 · 2.17–10.17 → 80 · -1.83–2.17 → 60 · -9.83–-1.83 → 35 · ≤ -9.83 → 10
+
+**Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM · [ADR-0293](../adr/0293-iai-comparte-la-composicion-mensual.md) IAI comparte la composición mensual · [ADR-0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) Actividad usa las planillas originales vigentes · [ADR-0300](../adr/0300-iai-completa-bienes-de-capital-originales.md) IAI completa los bienes de capital originales · [ADR-0301](../adr/0301-historia-macro-deriva-componentes-del-motor.md) La historia macro deriva sus componentes del motor · [ADR-0341](../adr/0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) La inversión física se mide contra el crecimiento de la población
 
 ### Dimensión `competitividad_externa` (11%)
 
@@ -244,22 +257,6 @@ Suma de pesos: 100%.
 **Bandas**: > 110 → 100 · 95–110 → 80 · 85–95 → 60 · 75–85 → 35 · ≤ 75 → 10
 
 **Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón.
-
-### Dimensión `inversion` (12%)
-
-#### Inversión física
-
-`iai`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **12.0%** |
-| Procedencia del ancla | `convencion` — el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026 |
-
-**Bandas**: > 10.17 → 100 · 2.17–10.17 → 80 · -1.83–2.17 → 60 · -9.83–-1.83 → 35 · ≤ -9.83 → 10
-
-**Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM · [ADR-0293](../adr/0293-iai-comparte-la-composicion-mensual.md) IAI comparte la composición mensual · [ADR-0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) Actividad usa las planillas originales vigentes · [ADR-0300](../adr/0300-iai-completa-bienes-de-capital-originales.md) IAI completa los bienes de capital originales · [ADR-0301](../adr/0301-historia-macro-deriva-componentes-del-motor.md) La historia macro deriva sus componentes del motor · [ADR-0341](../adr/0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) La inversión física se mide contra el crecimiento de la población
 
 ## Se releva y no puntúa
 

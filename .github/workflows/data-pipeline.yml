@@ -173,6 +173,12 @@ jobs:
       - name: Regenerar las fichas metodológicas
         run: python scripts/fichas/generar.py --todos
 
+      # El manual de cada cinturón también sale del código del cálculo
+      # (test_manual_cinturon.py lo exige al día). Un cambio de pesos pedido
+      # desde claude.ai no puede regenerarlo: lo hace la corrida (16-oct-2026, #75).
+      - name: Regenerar los manuales de los cinturones
+        run: python scripts/manual_cinturon.py --todos
+
       # Gates de calidad. Desde ADR-0133 el gate distingue:
       #   * INTEGRIDAD (G1 campos faltantes · G3 card≠serie · G6 jerga interna)
       #     → corta. El snapshot afirmaría algo que no es cierto.
@@ -232,6 +238,7 @@ jobs:
                   projects/informe_coyuntura/output/informe.json \
                   projects/informe_coyuntura/output/informe.md \
                   projects/informe_coyuntura/output/fichas/*.md \
+                  projects/informe_coyuntura/docs/manuales/*.md \
                   projects/informe_coyuntura/output/validacion_externa.json \
                   projects/informe_coyuntura/web/src/data/informe.json \
                   projects/informe_coyuntura/web/src/data/series.json \

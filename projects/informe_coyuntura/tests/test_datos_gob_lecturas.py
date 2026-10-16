@@ -126,3 +126,16 @@ def test_sin_count_es_una_sola_lectura(monkeypatch):
     pedidos = _servidor(monkeypatch, [_SinCount(1)])
     _pedir()
     assert len(pedidos) == 1
+
+
+def test_el_csv_se_corta_en_el_fin_que_declara_el_catalogo(monkeypatch):
+    """El CSV se actualiza antes que la API: el mes que el catálogo todavía no
+    declara no entra, o dos series del mismo indicador terminan en meses
+    distintos (16-oct-2026, SIPA: 174 filas por la API, 175 en el CSV)."""
+    _servidor(monkeypatch, [_R(0, 128)] * datos_gob.LECTURAS_MAX)
+    monkeypatch.setattr(datos_gob, "_campo",
+                        lambda c: {"downloadURL": "csv://imig", "title": "salarios",
+                                   "time_index_size": "128", "time_index_end": "2026-07-01"})
+    d = _pedir()
+    assert d["data"] == [["2026-06-01", 10.0], ["2026-07-01", 20.0]]
+    assert d["count"] == 2

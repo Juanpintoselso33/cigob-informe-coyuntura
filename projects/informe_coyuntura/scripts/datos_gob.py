@@ -90,11 +90,17 @@ def _desde_csv(cuerpo_api, params: dict, timeout):
         r = requests.get(url, timeout=timeout or 60)
         r.raise_for_status()
         _csvs[url] = r.content.decode("utf-8-sig")
+    # El CSV se actualiza antes que la API: puede traer un mes que el catálogo
+    # todavía no declara. Se corta en `time_index_end` para que la lectura desde
+    # el CSV sea la misma que una completa de la API; si no, dos series del mismo
+    # indicador terminan en meses distintos (16-oct: SIPA con 174 y 175 filas).
+    fin = str(campo.get("time_index_end") or "")[:10]
     filas = []
     for fila in csv.DictReader(io.StringIO(_csvs[url])):
         valor = (fila.get(columna) or "").strip()
-        if valor:
-            filas.append([fila["indice_tiempo"][:10], float(valor)])
+        fecha = fila["indice_tiempo"][:10]
+        if valor and (not fin or fecha <= fin):
+            filas.append([fecha, float(valor)])
     filas.sort(key=lambda f: f[0], reverse=params.get("sort") == "desc")
     limite = int(params.get("limit", LIMITE_API))
     return _DesdeCSV({"data": filas[:limite], "count": len(filas),

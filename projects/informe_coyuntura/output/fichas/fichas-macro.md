@@ -35,18 +35,17 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 62,5** | **VERDE** | Moderadamente aflojado | 16 indicadores: 6 en verde · 5 en amarillo · 5 en naranja |
+| **ITCM: 61,7** | **VERDE** | Moderadamente aflojado | 16 indicadores: 6 en verde · 5 en amarillo · 5 en naranja |
 Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 72,6 | VERDE | 26,0 % |
+| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 72,8 | VERDE | 26,0 % |
 | Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 74,8 | VERDE | 24,0 % |
+| Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 40,7 | AMARILLO | 23,0 % |
 | Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 62,3 | VERDE | 16,0 % |
-| Inversión | — | 52,0 | AMARILLO | 12,0 % |
-| Actividad económica | Si la economía crece y si alguien apuesta al futuro. | 35,9 | NARANJA | 11,0 % |
 | Competitividad externa | Si el tipo de cambio real alcanza para competir: el índice de tipo de cambio real multilateral oficial del Banco Central contra su propia historia. | 49,7 | AMARILLO | 11,0 % |
 
 ```{=openxml}
@@ -64,27 +63,26 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Estabilidad monetaria-inflacionaria** | | | | |
 | Inflación mensual (IPC) | Cuánto suben en el mes los precios al consumidor en general. | 1,66 % mensual | VERDE | 15,6 % |
 | Expectativas inflación (REM 12m) | La inflación que el mercado espera para los próximos 12 meses. | 21,1 % anual esperado | VERDE | 5,2 % |
-| Liquidez en pesos y presión compradora de divisas | Una medida de 0 a 100 que cruza dos cosas observables. | 65,1 pts de tensión (0-100) | NARANJA | 5,2 % |
+| Liquidez en pesos y presión compradora de divisas | Una medida de 0 a 100 que cruza dos cosas observables. | 64,01 pts de tensión (0-100) | NARANJA | 5,2 % |
 | **DIMENSIÓN: Viabilidad fiscal-comercial** | | | | |
 | Saldo comercial 12m | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses. | 24.460 Millones de USD (acum. 12 meses) | VERDE | 4,8 % |
 | Base imponible real (nación + provincias) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 91,3 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
 | Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acum. 12 meses) | VERDE | 12,0 % |
+| **DIMENSIÓN: Actividad e inversión** | | | | |
+| Actividad económica (EMAE i.a.) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | −1,44 % i.a. | NARANJA | 8,5 % |
+| Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica… | 46,67 % de sectores en crecimiento i.a. | AMARILLO | 2,8 % |
+| Producción industrial (IPI i.a.) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,04 % i.a. (promedio 3 meses) | NARANJA | 2,8 % |
+| Actividad tributaria (IVA-DGI + cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la… | −5,41 % i.a. real (compuesto IVA-DGI/cheque) | NARANJA | 1,9 % |
+| Inversión física | Índice Anticipador de Inversión. | −1,74 % i.a. ponderado | AMARILLO | 6,9 % |
 | **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
 | Reservas netas | Estimación de CiGob de reservas netas. | 12.661 Millones de USD | VERDE | 5,4 % |
-| Capacidad prestable | Índice de Capacidad Prestable. | −0,27 σ vs. su historia | AMARILLO | 3,4 % |
+| Capacidad prestable | Índice de Capacidad Prestable. | −0,26 σ vs. su historia | AMARILLO | 3,4 % |
 | Crédito privado real | Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el… | −0,3 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
 | Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 7,29 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
-| **DIMENSIÓN: Inversión** | | | | |
-| Inversión física | Índice Anticipador de Inversión. | −1,74 % i.a. ponderado | AMARILLO | 12,0 % |
-| **DIMENSIÓN: Actividad económica** | | | | |
-| Actividad económica (EMAE i.a.) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | −1,44 % i.a. | NARANJA | 5,8 % |
-| Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica… | 46,67 % de sectores en crecimiento i.a. | AMARILLO | 1,9 % |
-| Producción industrial (IPI i.a.) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,04 % i.a. (promedio 3 meses) | NARANJA | 1,9 % |
-| Actividad tributaria (IVA-DGI + cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la… | −5,41 % i.a. real (compuesto IVA-DGI/cheque) | NARANJA | 1,3 % |
 | **DIMENSIÓN: Competitividad externa** | | | | |
 | Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). | 85,87 Índice (base dic-2015=100) | AMARILLO | 11,0 % |
 
-*Datos al 2026-10-15.*
+*Datos al 2026-10-16.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -110,7 +108,7 @@ Cuánto suben en el mes los precios al consumidor en general.
 | **DIMENSIÓN EN EL ITCM** | Estabilidad monetaria-inflacionaria | **UNIDAD DE MEDIDA** | % mensual |
 | **SERIE DISPONIBLE** | 2021-10 → 2026-08 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC difunde el IPC de cada mes a mediados del mes siguiente, según su calendario oficial. El informe lo incorpora en forma automática el mismo día de la publicación. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Índice de Precios al Consumidor (IPC) — cobertura nacional, nivel general, variación mensual |
-| **MODO DE ACCESO** | Automático: el dato se extrae de la API pública y se publica sin intervención manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: el dato se extrae de la API pública y se publica sin intervención manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -199,7 +197,7 @@ Estimación de CiGob de reservas netas: combina activos y flujos de corto plazo 
 | **DIMENSIÓN EN EL ITCM** | Capacidad y costo del financiamiento | **UNIDAD DE MEDIDA** | Millones de USD |
 | **SERIE DISPONIBLE** | 2024-06 → 2026-08 (27 puntos) | **REZAGO DE PUBLICACIÓN** | La planilla de reservas y liquidez del BCRA se publica unas tres semanas después del cierre de cada mes; el informe la incorpora automáticamente. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Planilla SDDS «Reservas internacionales y liquidez en moneda extranjera» + Balance Consolidado del BCRA (depósitos del Tesoro en dólares) |
-| **MODO DE ACCESO** | Automático: se leen la planilla oficial del mes y el Balance Consolidado; el resultado se valida contra las reservas brutas de la API de estadísticas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: se leen la planilla oficial del mes y el Balance Consolidado; el resultado se valida contra las reservas brutas de la API de estadísticas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -280,7 +278,7 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,27 σ vs. su historia** (2026-08) | **AMARILLO** | Peso efectivo 3,4 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −0,26 σ vs. su historia** (2026-08) | **AMARILLO** | Peso efectivo 3,4 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -290,7 +288,7 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 | **DIMENSIÓN EN EL ITCM** | Capacidad y costo del financiamiento | **UNIDAD DE MEDIDA** | σ vs. su historia |
 | **SERIE DISPONIBLE** | 2023-10 → 2026-08 (35 puntos) | **REZAGO DE PUBLICACIÓN** | El IdC se publica para el último mes con IPC cerrado: unas dos semanas después de mediados del mes siguiente. |
 | **PRODUCTOR DEL DATO** | BCRA (tasa BADLAR, depósitos y préstamos privados) + INDEC (IPC como deflactor) | **OPERACIÓN ESTADÍSTICA** | Estadísticas monetarias del BCRA: BADLAR bancos privados, depósitos del sector privado y préstamos al sector privado; índice compuesto de elaboración propia |
-| **MODO DE ACCESO** | Automático: API pública del BCRA y API de series de datos.gob.ar; el índice se calcula en el propio informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: API pública del BCRA y API de series de datos.gob.ar; el índice se calcula en el propio informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -323,13 +321,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- −0,27 σ = precio 0,56 · volumen −0,16 · asignación −1,24 (banda propia de este indicador: amarillo) — niveles: tasa real 0,08 pp · depósitos −1,8% i.a. real · holgura 15,3%
+- −0,26 σ = precio 0,56 · volumen −0,14 · asignación −1,23 (banda propia de este indicador: amarillo) — niveles: tasa real 0,08 pp · depósitos −1,6% i.a. real · holgura 15,4%
 
 ## Color vigente y por qué
 
-Dato vigente: −0,27 σ vs. su historia (2026-08).
+Dato vigente: −0,26 σ vs. su historia (2026-08).
 
-−0,27 σ vs. su historia cae en el tramo que corresponde a Amarillo, a 0,27 del corte más cercano.
+−0,26 σ vs. su historia cae en el tramo que corresponde a Amarillo, a 0,26 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -373,17 +371,17 @@ El pulso mensual de la actividad económica: cuánto creció o cayó respecto de
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −1,44 % i.a.** (2026-07) | **NARANJA** | Peso efectivo 5,8 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −1,44 % i.a.** (2026-07) | **NARANJA** | Peso efectivo 8,5 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | emae_ia | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Actividad económica | **UNIDAD DE MEDIDA** | % i.a. |
+| **DIMENSIÓN EN EL ITCM** | Actividad e inversión | **UNIDAD DE MEDIDA** | % i.a. |
 | **SERIE DISPONIBLE** | 2021-08 → 2026-07 (60 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC publica el EMAE de cada mes hacia fines del segundo mes siguiente: es el indicador simple más rezagado del índice (~2 meses). |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | EMAE — Estimador Mensual de Actividad Económica, variación interanual de la serie original (base 2004) |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -391,7 +389,7 @@ El pulso mensual de la actividad económica: cuánto creció o cayó respecto de
 
 Adelanta el ritmo del producto interno bruto: si la economía se expande o se contrae.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -424,7 +422,7 @@ Dato vigente: −1,44 % i.a. (2026-07).
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCM: 5,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 8,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** La misma serie se extrae también como insumo de contexto en el cinturón de impacto social.
 
@@ -465,17 +463,17 @@ De los quince sectores en que el Instituto Nacional de Estadística y Censos (IN
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 46,67 % de sectores en crecimiento i.a.** (2026-07) | **AMARILLO** | Peso efectivo 1,9 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 46,67 % de sectores en crecimiento i.a.** (2026-07) | **AMARILLO** | Peso efectivo 2,8 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | emae_difusion | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Actividad económica | **UNIDAD DE MEDIDA** | % de sectores en crecimiento i.a. |
+| **DIMENSIÓN EN EL ITCM** | Actividad e inversión | **UNIDAD DE MEDIDA** | % de sectores en crecimiento i.a. |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-07 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Se publica junto con el EMAE agregado, hacia fines del segundo mes siguiente al de referencia (~2 meses). La apertura sectorial sale el mismo día que el nivel general, de modo que este indicador no agrega rezago sobre el que ya tiene la dimensión. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | EMAE — Estimador Mensual de Actividad Económica, apertura sectorial (índices por sector, base 2004) |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar, en una única consulta con las quince series. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar, en una única consulta con las quince series. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -483,7 +481,7 @@ De los quince sectores en que el Instituto Nacional de Estadística y Censos (IN
 
 Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El estimador mensual de actividad económica (EMAE) informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -518,7 +516,7 @@ Dato vigente: 46,67 % de sectores en crecimiento i.a. (2026-07).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 2,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -553,17 +551,17 @@ Cuánto produce la industria manufacturera respecto de un año atrás, promediad
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −2,04 % i.a. (promedio 3 meses)** (2026-08) | **NARANJA** | Peso efectivo 1,9 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −2,04 % i.a. (promedio 3 meses)** (2026-08) | **NARANJA** | Peso efectivo 2,8 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | ipi_manufacturero | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Actividad económica | **UNIDAD DE MEDIDA** | % i.a. (promedio 3 meses) |
+| **DIMENSIÓN EN EL ITCM** | Actividad e inversión | **UNIDAD DE MEDIDA** | % i.a. (promedio 3 meses) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC publica el IPI hacia el inicio del segundo mes posterior al de referencia, antes que el EMAE del mismo período. La ganancia de frescura es real pero acotada: como el indicador promedia tres meses, su centro de masa queda un mes atrás del último dato, de modo que incorpora el mes más reciente con un tercio del peso en lugar de reflejarlo por completo. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | IPI manufacturero — Índice de Producción Industrial, nivel general, serie original (base 2004 = 100) |
-| **MODO DE ACCESO** | Automático: descubre el enlace a la planilla anual vigente desde la página oficial de la operación. Usa niveles originales a precisión completa y exige meses consecutivos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: descubre el enlace a la planilla anual vigente desde la página oficial de la operación. Usa niveles originales a precisión completa y exige meses consecutivos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -571,7 +569,7 @@ Cuánto produce la industria manufacturera respecto de un año atrás, promediad
 
 Segunda lectura de la actividad, junto al estimador mensual de actividad económica (EMAE): mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -605,7 +603,7 @@ Dato vigente: −2,04 % i.a. (promedio 3 meses) (2026-08).
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 2,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** Usa las mismas bandas que el EMAE, deliberadamente y con una consecuencia que conviene declarar: sobre la historia disponible, un mes mediano del índice industrial puntúa 39 y uno del estimador de actividad agregada puntúa 71. La brecha no es un defecto de calibración sino desempeño real —la industria argentina creció menos que el conjunto de la economía durante el período—, y ensanchar las bandas para cerrarla borraría esa señal. El arrastre que produce se compensa limitando su peso dentro de la dimensión, no retocando las anclas.
 
@@ -648,17 +646,17 @@ Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −5,41 % i.a. real (compuesto IVA-DGI/cheque)** (2026-08) | **NARANJA** | Peso efectivo 1,3 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −5,41 % i.a. real (compuesto IVA-DGI/cheque)** (2026-08) | **NARANJA** | Peso efectivo 1,9 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | actividad_tributaria | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Actividad económica | **UNIDAD DE MEDIDA** | % i.a. real (compuesto IVA-DGI/cheque) |
+| **DIMENSIÓN EN EL ITCM** | Actividad e inversión | **UNIDAD DE MEDIDA** | % i.a. real (compuesto IVA-DGI/cheque) |
 | **SERIE DISPONIBLE** | 2017-12 → 2026-08 (105 puntos) | **REZAGO DE PUBLICACIÓN** | Es la lectura más fresca de la dimensión de actividad: la Secretaría de Hacienda/ARCA informa IVA-DGI y créditos/débitos bancarios de un mes dentro del mes siguiente, antes de que el INDEC cierre el EMAE del mismo período. Medido el 16-sep-2026 contra el último mes calendario cerrado (agosto): este indicador publica ese mismo mes (0 de atraso), el IPI manufacturero un mes de atraso, y el EMAE y su difusión sectorial dos. Frescura de PUBLICACIÓN, no anticipación de ciclo: la correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y baja al adelantarla (ver `dobleUso`), así que lo que entrega antes es la MISMA lectura de actividad, no una señal nueva. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda / ARCA (dato primario), deflactor INDEC | **OPERACIÓN ESTADÍSTICA** | IVA-DGI y créditos y débitos bancarios (impuesto al cheque), dos de los componentes del agregado de recaudación DGI, en pesos corrientes llevados a pesos constantes con el IPC nacional |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar, misma fuente que alimenta la descomposición del detalle de `recaudacion`. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar, misma fuente que alimenta la descomposición del detalle de `recaudacion`. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -666,7 +664,7 @@ Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto
 
 La lectura más fresca de la dimensión: Hacienda informa estos dos tributos antes de que el Instituto Nacional de Estadística y Censos (INDEC) cierre el estimador mensual de actividad económica (EMAE) del mismo mes. El impuesto al valor agregado (IVA) sigue de cerca el consumo interno; el cheque sigue toda transacción bancaria, así que además de actividad capta bancarización.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -701,7 +699,7 @@ Dato vigente: −5,41 % i.a. real (compuesto IVA-DGI/cheque) (2026-08).
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCM: 1,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa card ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con el peso vigente (0,12, bajado de 0,20 el 2026-09-16, ver más abajo), este indicador aporta 1,32% al índice macroeconómico (0,11×0,12) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador. `recaudacion` declara lo mismo desde su propia ficha (revisión adversarial, 2026-09-16). Además —y esto pesó más en el ajuste de peso que el doble uso con `recaudacion`— es redundante con sus PROPIOS compañeros de dimensión: r=0,840 con `emae_ia`, 0,828 con `ipi_manufacturero`, 0,725 con `emae_difusion` (los tres sobre el umbral 0,7 del repo, y más que lo que `ipi_manufacturero` ya correlaciona con `emae_ia`, r=0,765). La correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y BAJA al adelantarla un mes o dos, así que no anticipa el ciclo: entra por ser la lectura más fresca, no por aportar señal nueva, y el peso de entrada (0,12, por debajo del de `ipi_manufacturero`) se fijó en consecuencia (revisado el 16-sep-2026).
 
@@ -752,7 +750,7 @@ El balance entre lo que el país exporta y lo que importa, acumulado en los últ
 | **DIMENSIÓN EN EL ITCM** | Viabilidad fiscal-comercial | **UNIDAD DE MEDIDA** | Millones de USD (acum. 12 meses) |
 | **SERIE DISPONIBLE** | 2022-08 → 2026-08 (49 puntos) | **REZAGO DE PUBLICACIÓN** | El cuadro original del ICA se publica durante el mes siguiente al dato; la API histórica puede incorporarlo después. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | ICA — Intercambio Comercial Argentino: exportaciones e importaciones totales mensuales, en millones de dólares |
-| **MODO DE ACCESO** | Automático: se descubre la planilla vigente desde el catálogo INDEC y se completa la historia de la API; la tarjeta y el gráfico comparten esa serie. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: se descubre la planilla vigente desde el catálogo INDEC y se completa la historia de la API; la tarjeta y el gráfico comparten esa serie. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -849,7 +847,7 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 | **DIMENSIÓN EN EL ITCM** | Viabilidad fiscal-comercial | **UNIDAD DE MEDIDA** | índice (100 = 4T-2023) |
 | **SERIE DISPONIBLE** | 2022-01 → 2026-08 (56 puntos) | **REZAGO DE PUBLICACIÓN** | Las dos fuentes publican en los primeros días del mes siguiente, y el indicador espera el índice de precios que lleva las cifras a pesos constantes: el último punto es el del último mes con inflación publicada. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda (dato primario de ARCA) y Comisión Arbitral del Convenio Multilateral; deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | Recaudación mensual de la Dirección General Impositiva (impuestos internos) más la de los sistemas de la Comisión Arbitral —Ingresos Brutos de los contribuyentes de Convenio Multilateral y sus regímenes de retención—, en pesos corrientes, llevadas a pesos constantes con el índice de precios |
-| **MODO DE ACCESO** | Automático. La parte nacional sale de la interfaz pública de series de tiempo. La provincial se lee de la gacetilla mensual en PDF: los nombres de archivo no siguen un patrón fijo, así que se recorre el listado publicado en lugar de construir la dirección, y cada informe se procesa una sola vez y queda guardado. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático. La parte nacional sale de la interfaz pública de series de tiempo. La provincial se lee de la gacetilla mensual en PDF: los nombres de archivo no siguen un patrón fijo, así que se recorre el listado publicado en lugar de construir la dirección, y cada informe se procesa una sola vez y queda guardado. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -968,7 +966,7 @@ Si el peso está caro o barato frente a los socios comerciales, en términos rea
 | **DIMENSIÓN EN EL ITCM** | Competitividad externa | **UNIDAD DE MEDIDA** | Índice (base dic-2015=100) |
 | **SERIE DISPONIBLE** | 2023-11 → 2026-09 (35 puntos) | **REZAGO DE PUBLICACIÓN** | La planilla oficial se actualiza a diario; el promedio mensual del mes cerrado está disponible en los primeros días del mes siguiente. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | ITCRM — Índice de Tipo de Cambio Real Multilateral (base 17-dic-2015 = 100), promedios mensuales |
-| **MODO DE ACCESO** | Automático: descarga y lectura de la planilla oficial; una sola descarga por actualización sirve al índice y a los bilaterales de contexto. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: descarga y lectura de la planilla oficial; una sola descarga por actualización sirve al índice y a los bilaterales de contexto. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1061,7 +1059,7 @@ La inflación que el mercado espera para los próximos 12 meses.
 | **DIMENSIÓN EN EL ITCM** | Estabilidad monetaria-inflacionaria | **UNIDAD DE MEDIDA** | % anual esperado |
 | **SERIE DISPONIBLE** | 2024-02 → 2026-09 (32 puntos) | **REZAGO DE PUBLICACIÓN** | El BCRA releva el REM los últimos días de cada mes y publica los resultados en los primeros días hábiles del mes siguiente. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | REM — Relevamiento de Expectativas de Mercado: mediana de la inflación esperada para los próximos 12 meses |
-| **MODO DE ACCESO** | Automático: API pública del BCRA. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: API pública del BCRA. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1145,7 +1143,7 @@ Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez pr
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 65,1 pts de tensión (0-100)** (2026-08) | **NARANJA** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 64,01 pts de tensión (0-100)** (2026-08) | **NARANJA** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1155,7 +1153,7 @@ Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez pr
 | **DIMENSIÓN EN EL ITCM** | Estabilidad monetaria-inflacionaria | **UNIDAD DE MEDIDA** | pts de tensión (0-100) |
 | **SERIE DISPONIBLE** | 2025-04 → 2026-08 (17 puntos) | **REZAGO DE PUBLICACIÓN** | Se publica para el último mes con los cinco insumos completos. El cierre lo marca la planilla mensual del mercado de cambios, que sale con hasta dos meses de rezago; los agregados monetarios del BCRA son diarios. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | M2 transaccional del sector privado (var. 197), billetes y monedas en poder del público (17), depósitos del sector privado no financiero en pesos (100) y en moneda extranjera expresados en pesos (104), y el concepto 03 del Mercado de Cambios |
-| **MODO DE ACCESO** | Automático: API monetaria del BCRA y planilla acumulativa del anexo estadístico del mercado de cambios y balance cambiario. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: API monetaria del BCRA y planilla acumulativa del anexo estadístico del mercado de cambios y balance cambiario. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1193,13 +1191,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- tensión 65,1 pts = liquidez privada en pesos transaccionales 32,08% × compra neta de divisas del sector privado US$ 2682,1 M — menos pesos transaccionales y presión compradora alta, medidos contra el régimen abierto
+- tensión 64,01 pts = liquidez privada en pesos transaccionales 32,16% × compra neta de divisas del sector privado US$ 2682,1 M — menos pesos transaccionales y presión compradora alta, medidos contra el régimen abierto
 
 ## Color vigente y por qué
 
-Dato vigente: 65,1 pts de tensión (0-100) (2026-08).
+Dato vigente: 64,01 pts de tensión (0-100) (2026-08).
 
-65,1 pts de tensión (0-100) cae en el tramo que corresponde a Naranja, a 5,1 del corte más cercano.
+64,01 pts de tensión (0-100) cae en el tramo que corresponde a Naranja, a 4,01 del corte más cercano.
 
 **Color vigente: NARANJA**
 
@@ -1249,23 +1247,25 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −1,74 % i.a. ponderado** (2026-08) | **AMARILLO** | Peso efectivo 12 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −1,74 % i.a. ponderado** (2026-08) | **AMARILLO** | Peso efectivo 6,9 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | iai | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Inversión | **UNIDAD DE MEDIDA** | % i.a. ponderado |
+| **DIMENSIÓN EN EL ITCM** | Actividad e inversión | **UNIDAD DE MEDIDA** | % i.a. ponderado |
 | **SERIE DISPONIBLE** | 2023-10 → 2026-08 (35 puntos) | **REZAGO DE PUBLICACIÓN** | El titular se calcula al último mes común de la construcción (ISAC) y los bienes de capital importados (~2 meses y medio); el componente más fresco se muestra como provisorio sin puntuar. |
 | **PRODUCTOR DEL DATO** | INDEC (construcción y bienes de capital) + DNRPA (patentamientos comerciales, en acumulación) | **OPERACIÓN ESTADÍSTICA** | ISAC nivel general (serie original) + importaciones de bienes de capital del ICA + inscripciones iniciales de vehículos comerciales |
-| **MODO DE ACCESO** | Automático: descubre las planillas originales vigentes del ISAC y del ICA; para BK, el original reemplaza íntegramente su ventana y la API conserva sólo la historia anterior; los patentamientos comerciales se acumulan mes a mes desde el portal de datos de justicia (la fuente solo publica el mes corriente). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: descubre las planillas originales vigentes del ISAC y del ICA; para BK, el original reemplaza íntegramente su ventana y la API conserva sólo la historia anterior; los patentamientos comerciales se acumulan mes a mes desde el portal de datos de justicia (la fuente solo publica el mes corriente). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
 Índice Anticipador de Inversión: mide la inversión física/tradicional combinando el indicador sintético de la actividad de la construcción (ISAC) que releva el Instituto Nacional de Estadística y Censos (INDEC) y la importación de bienes de capital, en variación interanual.
 
 Resume señales de construcción e importación de bienes de capital frente al mismo mes del año anterior. No mide depreciación ni inversión neta: una caída interanual no demuestra que se consuma más capital del que se repone. Los bienes importados se miden en dólares corrientes, por lo que también influyen sus precios.
+
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -1299,7 +1299,7 @@ Dato vigente: −1,74 % i.a. ponderado (2026-08).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 6,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** La operación ISAC también alimenta (en su variante desestacionalizada) un componente del índice de impacto social; los bienes de capital son una subserie del ICA que alimenta el saldo comercial.
 
@@ -1361,7 +1361,7 @@ Cuánto crece el crédito al sector privado en términos reales (variación inte
 | **DIMENSIÓN EN EL ITCM** | Capacidad y costo del financiamiento | **UNIDAD DE MEDIDA** | % i.a. real (crédito en pesos) |
 | **SERIE DISPONIBLE** | 2024-02 → 2026-08 (31 puntos) | **REZAGO DE PUBLICACIÓN** | El stock del BCRA es diario, pero el titular espera el IPC que lo deflacta: el dato fresco se muestra como provisorio sin puntuar. |
 | **PRODUCTOR DEL DATO** | BCRA (stock de préstamos) + INDEC (IPC como deflactor) | **OPERACIÓN ESTADÍSTICA** | Préstamos al sector privado (saldos a fin de mes), variación interanual real |
-| **MODO DE ACCESO** | Automático: API pública del BCRA y API de series de datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: API pública del BCRA y API de series de datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1393,7 +1393,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- nominal 33,2% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-08) · aparte, la cartera en moneda extranjera 17,6% real medida en pesos y 37,8% en dólares; los dos universos juntos, 3,6% real — al 2026-10-08 (provisorio, no puntúa): -2,7% real con deflactor de 2026-08
+- nominal 33,2% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-08) · aparte, la cartera en moneda extranjera 18,8% real medida en pesos y 39,1% en dólares; los dos universos juntos, 3,9% real — al 2026-10-09 (provisorio, no puntúa): -3,0% real con deflactor de 2026-08
 
 ## Color vigente y por qué
 
@@ -1450,7 +1450,7 @@ Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos: la tas
 | **DIMENSIÓN EN EL ITCM** | Capacidad y costo del financiamiento | **UNIDAD DE MEDIDA** | % real anual (TIREA vs. inflación esperada REM) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (31 puntos) | **REZAGO DE PUBLICACIÓN** | La planilla anual se completa con gacetillas de meses cerrados cuya cobertura fue revisada. Un mes sin cierre documentado espera a la planilla; no se publica una muestra de licitaciones como mes completo. |
 | **PRODUCTOR DEL DATO** | Secretaría de Finanzas (colocaciones de deuda) + BCRA (expectativas de inflación) | **OPERACIÓN ESTADÍSTICA** | Colocaciones de letras y bonos del Tesoro en el mercado local, y expectativa de inflación a doce meses |
-| **MODO DE ACCESO** | Automático: planilla anual, gacetillas incluidas en el registro de meses completos y expectativas BCRA. Incorporar otro mes al registro requiere revisar su cobertura. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: planilla anual, gacetillas incluidas en el registro de meses completos y expectativas BCRA. Incorporar otro mes al registro requiere revisar su cobertura. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1547,7 +1547,7 @@ Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto
 | **DIMENSIÓN EN EL ITCM** | Viabilidad fiscal-comercial | **UNIDAD DE MEDIDA** | % de la recaudación (acum. 12 meses) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Un mes: el informe de ingresos y gastos se publica en la segunda quincena del mes siguiente. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda (resultado primario) + recaudación nacional | **OPERACIÓN ESTADÍSTICA** | Informe mensual de ingresos y gastos del Sector Público Nacional, y recaudación tributaria total |
-| **MODO DE ACCESO** | Automático: API de series de tiempo del Estado nacional. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-15 |
+| **MODO DE ACCESO** | Automático: API de series de tiempo del Estado nacional. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-16 |
 
 ## Definición — qué mide y por qué importa
 
