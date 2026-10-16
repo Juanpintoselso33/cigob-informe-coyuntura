@@ -73,7 +73,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 5 → 100 · 5–10 → 85 · 10–20 → 65 · 20–30 → 40 · > 30 → 10
 
-**Lo gobiernan**: [ADR-0091](../adr/0091-veto-quorum-contaba-mal-el-fracaso.md) El indicador de quórum contaba mal el fracaso · [ADR-0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) Sesiones y sanciones fuera del catálogo
+**Lo gobiernan**: [ADR-0091](../adr/0091-veto-quorum-contaba-mal-el-fracaso.md) El indicador de quórum contaba mal el fracaso · [ADR-0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) Sesiones y sanciones fuera del catálogo · [ADR-0358](../adr/0358-quorum-caido-de-la-oposicion-no-cuenta.md) Una sesión caída que pidió la oposición no cuenta como Congreso trabado
 
 #### Normas desafiadas en el recinto
 
@@ -118,12 +118,12 @@ Suma de pesos: 100%.
 | Peso dentro de la dimensión | 40% |
 | Peso efectivo en el índice | **8.2%** |
 | Familia de lectura | recursos |
-| Rezago declarado | 12 meses |
+| Rezago declarado | 7.5 meses |
 | Procedencia del ancla | `conceptual` — variación real anclada en el cero con cortes simétricos de 10 pp, como recaudacion/emae del ITCM (ADR-0121) |
 
 **Bandas**: > 10 → 100 · 0–10 → 85 · -10–0 → 65 · -20–-10 → 40 · ≤ -20 → 10
 
-**Lo gobiernan**: [ADR-0066](../adr/0066-iaf-transferencias-solo-provincias.md) iaf_transferencias: el CSV RON incluye la porción del Tesoro Nacional y la ANSES — se filtra a provincias · [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide · [ADR-0239](../adr/0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) El deflactor lo pondera el flujo, no el calendario · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre
+**Lo gobiernan**: [ADR-0066](../adr/0066-iaf-transferencias-solo-provincias.md) iaf_transferencias: el CSV RON incluye la porción del Tesoro Nacional y la ANSES — se filtra a provincias · [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide · [ADR-0239](../adr/0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) El deflactor lo pondera el flujo, no el calendario · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre · [ADR-0353](../adr/0353-armonia-federal-a-doce-meses-moviles.md) La armonía federal se mide a doce meses móviles
 
 #### Alineamiento de senadores por provincia
 
@@ -348,7 +348,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-89 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+91 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -439,3 +439,5 @@ histórica.
 - [0334](../adr/0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md) — AEA sale del perímetro y el rótulo dice lo que mide
 - [0335](../adr/0335-el-saldo-empresario-necesita-tres-comunicados.md) — El saldo empresario necesita al menos tres comunicados
 - [0344](../adr/0344-el-votometro-sale-del-monitor.md) — El Votómetro sale del Monitor
+- [0353](../adr/0353-armonia-federal-a-doce-meses-moviles.md) — La armonía federal se mide a doce meses móviles
+- [0358](../adr/0358-quorum-caido-de-la-oposicion-no-cuenta.md) — Una sesión caída que pidió la oposición no cuenta como Congreso trabado
