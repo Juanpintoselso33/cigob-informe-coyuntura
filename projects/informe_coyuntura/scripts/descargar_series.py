@@ -404,19 +404,25 @@ def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: lis
         """Corre un fetcher con su presupuesto y acumula filas. Devuelve True si
         aportó datos; si no, deja el nombre en `fallidos` para que sus filas
         previas se arrastren en vez de borrarse."""
+        # Cada línea lleva lo que tardó y sale en el momento (flush): si el
+        # presupuesto del job la corta, el log dice hasta dónde llegó y qué
+        # indicador se comió el tiempo (16-oct-2026, 25 min sin una línea).
+        t0 = time.monotonic()
         try:
             with presupuesto(PRESUPUESTO_INDICADOR.get(nombre, PRESUPUESTO_INDICADOR_DEFAULT)):
                 data = fetch()
             for fecha, valor in data:
                 rows.append([fecha, nombre, valor, unidad, fuente])
-            print(f"  [OK] {nombre}: {len(data)} puntos  ({data[-1][0]} → {data[0][0]})")
+            print(f"  [OK] {nombre}: {len(data)} puntos  ({data[-1][0]} → {data[0][0]})"
+                  f"  {time.monotonic() - t0:.0f}s", flush=True)
             return True
         except TiempoAgotado as e:
             fallidos.add(nombre)
-            print(f"  [LENTO] {nombre}: {e} -- se conservan las filas anteriores")
+            print(f"  [LENTO] {nombre}: {e} -- se conservan las filas anteriores", flush=True)
         except Exception as e:
             fallidos.add(nombre)
-            print(f"  [ERR] {nombre}: {e} -- se conservan las filas anteriores")
+            print(f"  [ERR] {nombre}: {e} -- se conservan las filas anteriores"
+                  f"  {time.monotonic() - t0:.0f}s", flush=True)
         return False
 
     for nombre, unidad, fuente, fetch_fn in derivadas:

@@ -25,7 +25,10 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 45   # cota dura: pytrends/scrapers pueden colgar en rate-limit.
+    timeout-minutes: 60   # cota dura: pytrends/scrapers pueden colgar en rate-limit.
+                          # 16-oct-2026: 45 quedó al ras. Las series tardan 21-25 min
+                          # en el runner (11 en local: los sitios del Congreso le
+                          # contestan lento) y la corrida del #75 murió en los tests.
                           # 20 quedó al ras (corridas reales de 19m32s/20m2s) y el
                           # probeo terminal de id_maximo de Diputados (margen de
                           # huecos 450, una vez por día vía store) suma ~2-3 min.
@@ -139,7 +142,7 @@ jobs:
           correr scripts/gestion.py             gestion     12m
           correr scripts/vida_cotidiana/main.py vida_main   8m
           correr scripts/vida_cotidiana.py      vida_cache  5m
-          correr scripts/descargar_series.py    series      25m
+          correr scripts/descargar_series.py    series      35m
           correr scripts/validacion_externa.py  validacion  5m
           correr scripts/generar_informe.py     generar     5m
           if [ $crashes -gt 0 ]; then
