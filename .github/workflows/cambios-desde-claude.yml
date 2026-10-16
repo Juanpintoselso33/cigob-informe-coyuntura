@@ -339,7 +339,22 @@ jobs:
           persist-credentials: false
           sparse-checkout: projects/informe_coyuntura/scripts/aviso_cambio_claude.py
           sparse-checkout-cone-mode: false
-      - run: |
+      # Cada pedido dispara el workflow dos veces (`opened` y `labeled`) y la
+      # segunda cancela a la primera por la concurrencia del PR: esa
+      # cancelación no es un pedido caído. Si hay una ejecución más nueva del
+      # mismo PR, ella se ocupa del estado; escribir «no se publicó» acá sería
+      # mentirle al conector (pasó en la prueba #77, 16-oct-2026).
+      - name: ¿Lo sigue otra ejecución?
+        id: otra
+        env:
+          RAMA: ${{ github.event.pull_request.head.ref }}
+        run: |
+          n=$(gh run list -R "${{ github.repository }}" --workflow cambios-desde-claude.yml \
+                --branch "$RAMA" --limit 20 --json databaseId \
+                -q "[.[] | select(.databaseId > ${{ github.run_id }})] | length")
+          echo "mas_nuevas=${n:-0}" >> "$GITHUB_OUTPUT"
+      - if: steps.otra.outputs.mas_nuevas == '0'
+        run: |
           python3 projects/informe_coyuntura/scripts/aviso_cambio_claude.py estado \
             --pr "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" \
             --merge-si-pendiente fallo \
