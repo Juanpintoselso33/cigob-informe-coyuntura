@@ -15,8 +15,9 @@ def test_la_historia_incluye_inversion_con_el_valor_de_su_serie(monkeypatch):
     assert valores["2026-06"]["iai"] == -0.06
     assert valores["2026-07"]["iai"] == -5.66
     r = itcm.calcular_itcm(valores["2026-07"])
-    assert r["dimensiones"]["inversion"]["indicadores"]["iai"]["valor"] == -5.66
-    assert r["dimensiones"]["inversion"]["peso"] == 0.12
+    # Desde el 16-oct-2026 la inversión física puntúa en «Actividad e inversión».
+    assert r["dimensiones"]["actividad"]["indicadores"]["iai"]["valor"] == -5.66
+    assert r["dimensiones"]["actividad"]["peso"] == 0.23
 
 
 def test_todos_los_componentes_activos_se_buscan_en_la_historia(monkeypatch):

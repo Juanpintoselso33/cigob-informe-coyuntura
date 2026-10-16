@@ -92,7 +92,9 @@ def test_bandas_actividad_tributaria():
 
 def test_peso_de_la_dimension_actividad_suma_uno():
     ind = itcm.DIMENSIONES_ITCM["actividad"]["indicadores"]
-    assert set(ind) == {"emae_ia", "emae_difusion", "ipi_manufacturero", "actividad_tributaria"}
+    # Desde el 16-oct-2026 la inversión física (iai) también puntúa acá.
+    assert set(ind) == {"emae_ia", "emae_difusion", "ipi_manufacturero",
+                        "actividad_tributaria", "iai"}
     assert abs(sum(ind.values()) - 1.0) < 1e-9
 
 
@@ -104,12 +106,18 @@ def test_actividad_tributaria_pesa_012_de_la_dimension():
     `emae_ia` (0,765), y la correlación adelantada no muestra que anticipe el
     ciclo (máxima en t, no en t+1/t+2, contra emae_ia y emae_difusion). Los
     tres INDEC se recortan proporcionalmente (×0,88) preservando su
-    proporción interna 80/20 EMAE/IPI (ADR-0124)."""
+    proporción interna 80/20 EMAE/IPI (ADR-0124).
+
+    El 16-oct-2026 entró la inversión física con 0,30 y los cuatro se
+    recortaron ×0,70: lo que se protege es que la tributaria siga valiendo 0,12
+    de la PARTE de actividad, no de la dimensión entera."""
     ind = itcm.DIMENSIONES_ITCM["actividad"]["indicadores"]
-    assert ind["actividad_tributaria"] == 0.12
-    assert ind["emae_ia"] == 0.528
-    assert ind["emae_difusion"] == 0.176
-    assert ind["ipi_manufacturero"] == 0.176
+    parte_actividad = 1.0 - ind["iai"]
+    assert ind["iai"] == 0.30
+    assert abs(ind["actividad_tributaria"] / parte_actividad - 0.12) < 1e-9
+    assert abs(ind["emae_ia"] / parte_actividad - 0.528) < 1e-9
+    assert abs(ind["emae_difusion"] / parte_actividad - 0.176) < 1e-9
+    assert abs(ind["ipi_manufacturero"] / parte_actividad - 0.176) < 1e-9
     # Entra por debajo de ipi_manufacturero, no por encima: es MÁS redundante
     # con sus compañeros que el propio IPI, y no gana la premium de "adelanta".
     assert ind["actividad_tributaria"] < ind["ipi_manufacturero"]

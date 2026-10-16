@@ -549,9 +549,9 @@ GESTION_CONTEXTO = "Indicador de contexto — no integra el índice de gestión 
 POLITICA_CONTEXTO = "Indicador de contexto — no integra el índice político (paramétrica CIGOB jul-2026)."
 
 SCORE_EXPLICACION = {
-    "macro":          ("Índice macroeconómico (paramétrico, 0–100, mayor = menos tensión) ponderado por 6 dimensiones: "
+    "macro":          ("Índice macroeconómico (paramétrico, 0–100, mayor = menos tensión) ponderado por 5 dimensiones: "
                        "estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, "
-                       "actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − índice) / 10."),
+                       "actividad e inversión 23%, competitividad externa 11%. La tensión del cinturón es (100 − índice) / 10."),
     "politica":       ("Índice político (paramétrico, 0–100, mayor = más capital político) ponderado por 7 dimensiones: "
                        "poder legislativo 21%, alianzas territoriales 19%, cohesión interna del oficialismo 15%, "
                        "conflicto social 10%, imagen y voto 7%, poder judicial 15%, sector privado 13%. "

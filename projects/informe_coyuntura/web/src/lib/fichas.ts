@@ -175,7 +175,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "macro",
     resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Usa umbrales y pesos de la paramétrica institucional CIGOB.",
     marcoConceptual: [
-      "El informe lee la realidad como un sistema de cuatro cinturones que rodean al gobierno (Planificación Estratégica Situacional de Carlos Matus). El cinturón macroeconómico agrupa los indicadores del motor económico: precios, cuentas fiscales y externas, financiamiento, actividad, competitividad e inversión.",
+      "El informe lee la realidad como un sistema de cuatro cinturones que rodean al gobierno (Planificación Estratégica Situacional de Carlos Matus). El cinturón macroeconómico agrupa los indicadores del motor económico: precios, cuentas fiscales y externas, financiamiento, actividad e inversión, y competitividad.",
       "El marco, las dimensiones, los umbrales y los pesos provienen de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). El índice no estima esos parámetros a partir de los datos: los toma del marco y luego mide — con las herramientas de robustez de abajo — cuánto dependen las conclusiones de esa elección.",
     ],
     seleccion: [
@@ -192,8 +192,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Hasta julio de 2026 el puntaje era escalonado (toda la banda valía lo mismo). El análisis de sensibilidad midió que esos escalones aportaban el doble de incertidumbre que los pesos y creaban saltos de 15–25 puntos entre valores casi iguales; la interpolación los elimina sin tocar los umbrales institucionales.",
     ],
     agregacion: {
-      latex: String.raw`\text{índice macroeconómico}=\sum_{\text{6 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)`,
-      leyenda: "Promedio ponderado en dos niveles: primero dentro de cada dimensión (pesos internos), después entre dimensiones (pesos institucionales: 26 / 24 / 16 / 11 / 11 / 12 %).",
+      latex: String.raw`\text{índice macroeconómico}=\sum_{\text{5 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)`,
+      leyenda: "Promedio ponderado en dos niveles: primero dentro de cada dimensión (pesos internos), después entre dimensiones (pesos institucionales: 26 / 24 / 16 / 23 / 11 %).",
       parrafos: [
         "No hay pesos implícitos: la composición completa — dimensiones, pesos, puntajes del mes — se publica en la tabla de abajo y en la página del cinturón.",
         "La agregación es compensatoria: una dimensión buena puede tapar una mala. Por eso el índice incluye el flag de dimensión crítica: si una dimensión cae por debajo de su umbral crítico, se declara junto al valor publicado. La compensación se señaliza, no se corrige.",
@@ -250,6 +250,7 @@ export const FICHAS: Record<string, Ficha> = {
         cambio: "IdC rediseñado por comparación estandarizada contra su propia historia, recaudación como promedio móvil trimestral real y matriz de validación cruzada como tercer pilar de robustez.",
       },
       { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses. No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes.", adr: "0231" },
+      { fecha: "2026-10-16", cambio: "La dimensión de inversión (12%, sólo la inversión física) se fusiona con la de actividad (11%) en «Actividad e inversión», con 23%: el índice pasa de seis a cinco dimensiones (26 / 24 / 16 / 23 / 11 %). Dentro, la inversión física pesa 30% y los cuatro de actividad conservan su proporción. Con los datos de octubre, el índice pasa de 62,5 a 61,6." },
     ],
   },
 
@@ -384,6 +385,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-18", cambio: "Deja de ser la única variable de la dimensión: pasa a pesar 65% junto al IPI manufacturero (35%)." },
       { fecha: "2026-07-25", cambio: "Su peso dentro de la dimensión baja de 80% a 60% al incorporarse la amplitud del crecimiento, que lee la misma fuente en su apertura por sectores." },
+      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 52,8% a 37,0%, conservando la proporción con los otros tres indicadores de actividad; en el índice sube de 5,8% a 8,5%." },
     ],
   },
 
@@ -673,6 +675,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "El INDEC revisa las series sectoriales hacia atrás junto con el EMAE agregado; el informe regenera la serie completa en cada actualización, de modo que una revisión puede cambiar retroactivamente el conteo de un mes ya publicado.",
     cambios: [
       { fecha: "2026-07-25", cambio: "Entra al índice con 20% de la dimensión de actividad, tomado del peso del EMAE agregado. La serie se reconstruyó completa desde 2005." },
+      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%." },
     ],
   },
 
@@ -719,6 +722,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
       { fecha: "2026-07-18", cambio: "Alta del indicador como segunda señal de actividad junto al EMAE, tras una auditoría de consistencia que señaló que el 11% del índice colgaba de un único dato." },
       { fecha: "2026-07-18", cambio: "Su peso baja de 35% a 20% de la dimensión: al ser la industria parte del propio estimador agregado, el reparto anterior dejaba a la dimensión con casi la mitad de su exposición en un solo sector." },
+      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. La proporción 80/20 entre el EMAE y la industria no cambia." },
     ],
   },
 
@@ -764,6 +768,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-16", cambio: "Revisión adversarial (segunda ronda): la serie publicada llegaba sólo a 68 meses (2021-01/2026-08) porque `descargar_series.py` reusaba `comarb.LIMITE_MESES=80` —un límite compartido con `recaudacion`, que sí necesita esa ventana exacta para desestacionalizar—, mientras las bandas de arriba se habían calibrado contra 105 meses (dic-2017/ago-2026). El reparto declarado describía una historia que el tablero no publicaba. Se agrega `macro.LIMITE_MESES_ACTIVIDAD_TRIBUTARIA=200`, propia de este indicador (no desestacionaliza, así que no hereda la restricción de `recaudacion`), y la serie publicada pasa a cubrir los 105 meses reales. Verificado: el reparto sobre la serie ya publicada (19,0/14,3/18,1/20,0/14,3/14,3%) coincide exacto con el declarado. No cambia ninguna otra serie — sólo se agregó una constante nueva, no se tocó `comarb.LIMITE_MESES`." },
       { fecha: "2026-09-16", cambio: "Revisión adversarial (primera ronda): el peso de entrada baja de 0,20 a 0,12 (los otros tres INDEC pasan a recortarse ×0,88 en vez de ×0,80). Motivo medido: redundancia con sus tres compañeros de dimensión por encima del umbral 0,7 del repo (r=0,840 emae_ia, 0,828 ipi_manufacturero, 0,725 emae_difusion) y sin evidencia de que anticipe el ciclo del EMAE — la correlación adelantada es máxima en el mes corriente, no en t+1/t+2, contra emae_ia y emae_difusion. Se declara también r(IVA-DGI, cheque)=0,617 (antes ausente), el número que decidía entre promediar y cruzar en matriz." },
       { fecha: "2026-09-16", cambio: "Alta del indicador. Corrige el alcance de una implementación anterior que había convertido este mismo par de series en un control dentro del detalle de `recaudacion` (dimensión fiscal): el pedido original era un proxy de ACTIVIDAD, y como tal pasa a puntuar en esa dimensión. El texto de `recaudacion` no se toca — sigue siendo útil para leer de dónde vino un movimiento del agregado DGI.", adr: "0329,0318,0319,0321" },
+      { fecha: "2026-10-16", cambio: "Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 12% a 8,4%; en el índice sube de 1,3% a 1,9%." },
     ],
   },
 
@@ -1064,6 +1069,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "Tarjeta e historial comparten la regla de incorporación de patentamientos y exigen el mismo mes de referencia. Se evita una divergencia futura de fórmula; los tres meses actualmente acumulados no activan todavía ese componente.", adr: "0293" },
       { fecha: "2026-09-15", cambio: "El rótulo de la card pasa de «Inversión física (IAI)» a «Inversión física». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
       { fecha: "2026-09-30", cambio: "La escala se corre al crecimiento de la población (+0,17% anual según la proyección del INDEC con base en el Censo 2022). El verde ya no arranca en 0% sino en +0,17%: crecer menos que la población es invertir menos por habitante. Todas las anclas se corren lo mismo; el −5,66% de julio pasa de 36,4 a 35,7 puntos y sigue en naranja.", adr: "0341" },
+      { fecha: "2026-10-16", cambio: "La dimensión propia de inversión (12% del índice macroeconómico) se fusiona con la de actividad: nace «Actividad e inversión», con 23%, y la inversión física pesa 30% de ella. Su peso en el índice baja de 12% a 6,9%: un solo indicador muy volátil ya no decide por sí solo más que toda la actividad junta." },
     ],
   },
 

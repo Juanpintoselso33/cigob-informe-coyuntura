@@ -130,7 +130,7 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
     Corto: "Índice macroeconómico",
     fichaId: "itcm",
     nombre: "Índice de Tensión del Cinturón Macroeconómico",
-    descripcion: "0 = cinturón severamente apretado, 100 = aflojado. Pondera seis dimensiones.",
+    descripcion: "0 = cinturón severamente apretado, 100 = aflojado. Pondera cinco dimensiones.",
     data: c.itcm,
   };
   if (c.itcg) return {
