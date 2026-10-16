@@ -365,3 +365,271 @@ def test_la_corrida_nocturna_en_verde_vacia_las_pruebas_rojas_de_main():
     assert verde["if"].startswith("success()") and "refs/heads/main" in verde["if"]
     assert any(p.get("uses", "").startswith("actions/upload-artifact@")
                and p["with"]["name"] == "estado-avisos-cambios" for p in pasos)
+
+
+# ── Estado del pedido en el PR (contrato que lee el conector) ──────────────
+#
+# Un comentario por PR que empieza con `<!-- estado-pedido -->` y lleva un
+# bloque ```json. Se crea una vez y se edita: nunca se acumulan.
+
+import re as _re  # noqa: E402
+
+AHORA_ISO = "2026-10-16T15:00:00+00:00"
+
+
+def _json_del(cuerpo):
+    m = _re.search(r"```json\n(.*?)\n```", cuerpo, _re.S)
+    assert m, cuerpo
+    return json.loads(m.group(1))
+
+
+def test_el_comentario_de_estado_cumple_el_contrato():
+    e = av.nuevo_estado_pedido(AHORA)
+    cuerpo = av.comentario_estado(e)
+    assert cuerpo.splitlines()[0] == "<!-- estado-pedido -->"
+    # Una línea legible en castellano antes del JSON.
+    legible = cuerpo.splitlines()[1]
+    assert legible and not legible.startswith("```")
+    d = _json_del(cuerpo)
+    assert set(d) >= {"merge", "deploy_diario", "corrida", "actualizado"}
+    assert d["merge"] == "pendiente" and d["deploy_diario"] == "pendiente"
+    assert d["corrida"] == {"estado": "no_aplica", "url": None, "snapshot_publicado": None, "generated_at": None}
+    assert d["actualizado"].startswith("2026-10-08T19:00")
+
+
+def test_el_estado_se_lee_de_vuelta_del_comentario():
+    e = av.actualizar_estado_pedido(av.nuevo_estado_pedido(AHORA), AHORA, merge="ok",
+                                    corrida={"estado": "en_curso", "url": "https://run/1"})
+    assert av.leer_estado_pedido(av.comentario_estado(e)) == e
+    # Un comentario cualquiera no es el de estado.
+    assert av.leer_estado_pedido("✅ Publicado: ```json\n{}\n```") is None
+
+
+@pytest.mark.parametrize("campo, valor", [
+    ("merge", "bloqueado"), ("deploy_diario", "roto"), ("corrida", {"estado": "terminada"}),
+])
+def test_valores_fuera_del_contrato_no_se_escriben(campo, valor):
+    with pytest.raises(ValueError):
+        av.actualizar_estado_pedido(av.nuevo_estado_pedido(AHORA), AHORA, **{campo: valor})
+
+
+def test_actualizar_conserva_lo_que_no_se_toca_y_el_motivo():
+    e = av.actualizar_estado_pedido(av.nuevo_estado_pedido(AHORA), AHORA, merge="ok", deploy_diario="ok")
+    e = av.actualizar_estado_pedido(e, AHORA, corrida={"estado": "ok", "snapshot_publicado": True,
+                                                       "generated_at": "2026-10-16T14:00:00"})
+    assert e["merge"] == "ok" and e["deploy_diario"] == "ok"
+    assert e["corrida"]["snapshot_publicado"] is True and e["corrida"]["url"] is None
+    f = av.actualizar_estado_pedido(av.nuevo_estado_pedido(AHORA), AHORA, merge="fallo",
+                                    motivo="bloqueado: toca .github/workflows/x.yml")
+    assert f["motivo"].startswith("bloqueado") and "no se publicó" in av.linea_estado(f)
+
+
+@pytest.mark.parametrize("cambios, dice", [
+    (dict(merge="pendiente"), "en curso"),
+    (dict(merge="fallo", motivo="GitHub no dejó mergear"), "no se publicó"),
+    (dict(merge="ok", deploy_diario="ok"), "seguimiento diario"),
+    (dict(merge="ok", deploy_diario="rate_limited"), "tope"),
+    (dict(merge="ok", deploy_diario="ok", corrida={"estado": "no_despachada"}), "no se pudo lanzar"),
+    (dict(merge="ok", deploy_diario="ok", corrida={"estado": "timeout"}), "dejó de seguir"),
+    (dict(merge="ok", deploy_diario="ok", corrida={"estado": "fallo", "snapshot_publicado": True}),
+     "después de publicar"),
+    (dict(merge="ok", deploy_diario="ok", corrida={"estado": "fallo", "snapshot_publicado": False}),
+     "no publicó datos"),
+])
+def test_la_linea_legible_dice_lo_que_pasa(cambios, dice):
+    e = av.actualizar_estado_pedido(av.nuevo_estado_pedido(AHORA), AHORA, **cambios)
+    assert dice in av.linea_estado(e)
+
+
+class GitHubFalso:
+    """Los comentarios del PR, en memoria."""
+
+    def __init__(self, comentarios=()):
+        self.comentarios = [dict(c) for c in comentarios]
+        self.llamadas = []
+
+    def __call__(self, metodo, ruta, datos=None):
+        self.llamadas.append((metodo, ruta, datos))
+        if metodo == "GET":
+            pagina = int(_re.search(r"[?&]page=(\d+)", ruta).group(1))
+            return self.comentarios if pagina == 1 else []
+        if metodo == "POST":
+            c = {"id": 900 + len(self.comentarios), "user": {"login": "github-actions[bot]"}, **datos}
+            self.comentarios.append(c)
+            return c
+        if metodo == "PATCH":
+            cid = int(ruta.rsplit("/", 1)[1])
+            c = next(c for c in self.comentarios if c["id"] == cid)
+            c.update(datos)
+            return c
+        raise AssertionError(metodo)
+
+
+def _estado_cli(gh, monkeypatch, *args):
+    monkeypatch.setattr(av, "_github", gh)
+    assert av.main(["estado", "--pr", "7", "--repo", "o/r", *args], ahora=AHORA) == 0
+
+
+def test_el_comentario_se_crea_una_vez_y_despues_se_edita(monkeypatch):
+    gh = GitHubFalso([{"id": 1, "user": {"login": "luis"}, "body": "<!-- estado-pedido -->\nfalso"}])
+    _estado_cli(gh, monkeypatch, "--merge", "pendiente")
+    _estado_cli(gh, monkeypatch, "--merge", "ok", "--deploy", "ok")
+    _estado_cli(gh, monkeypatch, "--corrida-estado", "en_curso", "--corrida-url", "https://run/5")
+    nuestros = [c for c in gh.comentarios if c["user"]["login"] == "github-actions[bot]"]
+    assert len(nuestros) == 1                                    # se edita, no se acumula
+    assert [m for m, _, _ in gh.llamadas if m != "GET"] == ["POST", "PATCH", "PATCH"]
+    d = _json_del(nuestros[0]["body"])
+    assert d["merge"] == "ok" and d["deploy_diario"] == "ok"
+    assert d["corrida"] == {"estado": "en_curso", "url": "https://run/5", "snapshot_publicado": None,
+                            "generated_at": None}
+    # El comentario de otra persona que imita la marca no se toca.
+    assert gh.comentarios[0]["body"] == "<!-- estado-pedido -->\nfalso"
+
+
+def test_si_pendiente_no_pisa_un_merge_que_ya_salio(monkeypatch):
+    gh = GitHubFalso()
+    _estado_cli(gh, monkeypatch, "--merge", "ok")
+    _estado_cli(gh, monkeypatch, "--merge-si-pendiente", "fallo", "--motivo", "se canceló")
+    d = _json_del(gh.comentarios[0]["body"])
+    assert d["merge"] == "ok" and d.get("motivo") is None
+    gh2 = GitHubFalso()
+    _estado_cli(gh2, monkeypatch, "--merge", "pendiente")
+    _estado_cli(gh2, monkeypatch, "--merge-si-pendiente", "fallo", "--motivo", "se canceló")
+    assert _json_del(gh2.comentarios[0]["body"])["merge"] == "fallo"
+
+
+def test_sin_token_de_github_el_estado_no_rompe_el_job(monkeypatch):
+    monkeypatch.delenv("GH_TOKEN", raising=False)
+    monkeypatch.delenv("GITHUB_TOKEN", raising=False)
+    assert av.main(["estado", "--pr", "7", "--repo", "o/r", "--merge", "ok"], ahora=AHORA) == 0
+
+
+# ── Estado del deploy del seguimiento diario ───────────────────────────────
+
+@pytest.mark.parametrize("estado, descripcion, http, sale", [
+    ("success", "Deployment has completed", "200", "ok"),
+    ("success", "", "500", "fallo"),
+    ("failure", "Deployment failed", "200", "fallo"),
+    ("failure", "Deployment rate limited — retry in 24 hours", "200", "rate_limited"),
+    ("pending", "", "200", "pendiente"),
+    ("", "", "200", "desconocido"),
+])
+def test_estado_del_deploy_diario(estado, descripcion, http, sale):
+    assert av.estado_deploy(estado, descripcion, http) == sale
+
+
+def test_el_workflow_verifica_el_seguimiento_diario_no_el_mensual():
+    pasos = _flujo("cambios-desde-claude.yml")["jobs"]["publicar"]["steps"]
+    deploy = next(p for p in pasos if p.get("name") == "Seguir el deploy")["run"]
+    assert "cigob-seguimiento-a941210feb.vercel.app" in deploy
+    assert "informe.cigob.org" not in deploy
+    # Cada commit tiene DOS status de Vercel (mensual y diario): el filtro
+    # tiene que elegir el del diario, no el primero que aparezca.
+    filtro = next(l for l in deploy.splitlines() if l.strip().startswith("vercel="))
+    assert 'test("cigob-seguimiento")' in filtro and "and" in filtro
+
+
+def test_el_modo_estado_calcula_el_deploy_desde_el_status(monkeypatch):
+    gh = GitHubFalso()
+    _estado_cli(gh, monkeypatch, "--merge", "ok", "--estado", "failure",
+                "--descripcion", "Deployment rate limited — retry in 24 hours", "--http", "200")
+    assert _json_del(gh.comentarios[0]["body"])["deploy_diario"] == "rate_limited"
+    _estado_cli(gh, monkeypatch, "--estado", "success", "--http", "200")
+    assert _json_del(gh.comentarios[0]["body"])["deploy_diario"] == "ok"
+
+
+# ── Qué dejó la corrida de datos ───────────────────────────────────────────
+
+def _jobs(conclusion_commit):
+    pasos = [{"name": "Correr colectores", "conclusion": "success"}]
+    if conclusion_commit is not None:
+        pasos.append({"name": "Commitear snapshot + caches a main", "conclusion": conclusion_commit})
+    return {"jobs": [{"name": "run", "steps": pasos}]}
+
+
+@pytest.mark.parametrize("jobs, generated, creada, sale", [
+    (_jobs("success"), "2026-10-16T15:20:00-03:00", "2026-10-16T18:00:00Z", True),
+    (_jobs("success"), "2026-10-15T00:20:00-03:00", "2026-10-16T18:00:00Z", None),
+    (_jobs("skipped"), "", "2026-10-16T18:00:00Z", False),
+    (_jobs("failure"), "", "2026-10-16T18:00:00Z", False),
+    (_jobs(None), "", "2026-10-16T18:00:00Z", False),
+    ({}, "", "", None),
+    ({"jobs": []}, "", "", None),
+])
+def test_si_la_corrida_publico_snapshot(jobs, generated, creada, sale):
+    assert av.snapshot_publicado(jobs, generated, creada) is sale
+
+
+def test_texto_corrida_distingue_los_tres_desenlaces():
+    sin = av.texto_corrida(3, "u", "t", "q", "failure", "https://run", snapshot=False)
+    despues = av.texto_corrida(3, "u", "t", "q", "failure", "https://run", snapshot=True)
+    nose = av.texto_corrida(3, "u", "t", "q", "failure", "https://run", snapshot=None)
+    assert sin.startswith("🔴") and "no produjo snapshot" in sin
+    assert despues.startswith("🟡") and "publicó los datos pero falló después" in despues
+    assert nose.startswith("🔴") and "resultado desconocido" in nose
+    assert len({sin, despues, nose}) == 3
+    # Control positivo: una corrida que salió bien sigue sin avisar.
+    assert av.texto_corrida(3, "u", "t", "q", "success", "https://run", snapshot=True) is None
+    # Y la que no se pudo lanzar lo dice con esas palabras.
+    assert "no se pudo lanzar" in av.texto_corrida(3, "u", "t", "q", "no se pudo lanzar", "https://run")
+
+
+def test_el_modo_corrida_pasa_el_snapshot_al_texto(slack, tmp_path):
+    cambio(tmp_path, 70, ["scripts/itcm.py"], [], modo="corrida",
+           extra=["--conclusion", "failure", "--corrida-url", "https://run/9", "--snapshot", "si"])
+    [post] = slack.posts()
+    assert "publicó los datos pero falló después" in post["text"]
+
+
+# ── El workflow: secretos, carreras y corrida ──────────────────────────────
+
+def test_las_fichas_se_generan_sin_secretos_y_se_commitean_sin_ejecutar_codigo():
+    jobs = _flujo("cambios-desde-claude.yml")["jobs"]
+    publicar = "\n".join(p.get("run", "") for p in jobs["publicar"]["steps"])
+    assert "generar.py" not in publicar
+    gen = next(n for n, j in jobs.items() if any("fichas/generar.py" in p.get("run", "") for p in j["steps"])
+               and n != "validar")
+    j = jobs[gen]
+    assert j["permissions"] == {"contents": "read"}
+    assert "secrets." not in json.dumps(j) and "env" not in j
+    commit = next(n for n, x in jobs.items() if gen in (x.get("needs") or []))
+    c = jobs[commit]
+    texto = json.dumps(c)
+    assert c["permissions"].get("contents") == "write"
+    assert "python" not in texto and "npm" not in texto and "generar.py" not in texto
+    assert "output/fichas" in texto
+
+
+def test_ningun_job_con_secretos_ejecuta_codigo_del_repo():
+    """Un job con secretos sólo corre el script de avisos copiado de main
+    antes del merge ($RUNNER_TEMP/aviso, o el artifact `aviso/`); nunca un
+    `scripts/...` del checkout, ni instala dependencias del repo."""
+    jobs = _flujo("cambios-desde-claude.yml")["jobs"]
+    con_secretos = [n for n, j in jobs.items() if "secrets." in json.dumps(j)]
+    assert {"publicar", "seguir-corrida"} <= set(con_secretos)
+    for nombre in con_secretos:
+        for p in jobs[nombre]["steps"]:
+            run = p.get("run", "")
+            assert not _re.search(r"python3?\s+[\"']?(\./)?(projects/|scripts/|-m\b)", run), (nombre, run)
+            assert "pip install" not in run and "npm " not in run and "npx " not in run, nombre
+
+
+def test_publicar_va_en_un_grupo_global_sin_cancelar():
+    j = _flujo("cambios-desde-claude.yml")["jobs"]["publicar"]
+    assert "github.event" not in j["concurrency"]["group"]
+    assert j["concurrency"]["cancel-in-progress"] is False
+
+
+def test_la_corrida_se_lanza_y_se_busca_por_el_numero_del_pedido():
+    jobs = _flujo("cambios-desde-claude.yml")["jobs"]
+    corridas = "\n".join(p.get("run", "") for j in jobs.values() for p in j["steps"])
+    assert "-f pedido=" in corridas and "Corrida de datos del pedido $PR" in corridas
+    assert "displayTitle" in corridas and "createdAt >=" not in corridas
+    dp = _flujo("data-pipeline.yml")
+    on = dp.get("on", dp.get(True))
+    assert "pedido" in on["workflow_dispatch"]["inputs"]
+    assert "inputs.pedido" in dp["run-name"] and "Corrida de datos del pedido {0}" in dp["run-name"]
+    seguir = jobs["seguir-corrida"]
+    finales = [p for p in seguir["steps"] if str(p.get("if", "")).startswith("always()")]
+    assert finales and "estado" in finales[-1]["run"]
+    assert any("timeout" in p.get("run", "") for p in seguir["steps"])

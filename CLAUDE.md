@@ -604,7 +604,55 @@ Dos reglas para no culpar a un cambio por lo que no hizo (ADR-0350):
   arranca en otra máquina y mergea con `--match-head-commit`. No juntarlos en
   un job: hasta `fichas.ts` es código que el build ejecuta.
 - Las fichas en markdown se regeneran después del merge, en un commit aparte
-  del bot directo a main.
+  del bot directo a main. Se generan en un job **sin secretos ni escritura**
+  (`fichas`) y las commitea otro (`fichas-commit`) que no ejecuta nada del repo
+  y aborta si el commit tocaría algo fuera de `output/fichas/*.md`. Regla del
+  workflow: el job que ejecuta código del repo no tiene secretos, y el que los
+  tiene sólo corre `aviso_cambio_claude.py` tal como estaba en main **antes**
+  del merge. `tests/test_aviso_cambio_claude.py` lo verifica.
+- La fase de merge/avisos (`publicar`) va en un grupo de concurrencia global
+  (`cancel-in-progress: false`): dos pedidos seguidos ya no se pisan el
+  artifact `estado-avisos-cambios`. La corrida de datos se lanza con
+  `-f pedido=<PR>` y se busca por su nombre («Corrida de datos del pedido N»,
+  `run-name` de `data-pipeline.yml`), no por hora.
+
+### Estado del pedido en el PR: el contrato que lee el conector
+
+Cada PR de un pedido tiene **un solo** comentario de estado, escrito por
+`github-actions[bot]`, que se crea y se **edita** (no se acumulan). El conector
+lo lee para contestar «¿ya se ve?». Un comentario con la marca escrito por otro
+usuario no cuenta. Formato exacto:
+
+````
+<!-- estado-pedido -->
+✅ Mergeado. Ya se ve en el seguimiento diario (…). La corrida de datos está en curso (unos 40 minutos).
+
+```json
+{
+  "merge": "ok",
+  "deploy_diario": "ok",
+  "corrida": {"estado": "en_curso", "url": "https://github.com/…/actions/runs/…",
+              "snapshot_publicado": null, "generated_at": null},
+  "motivo": null,
+  "actualizado": "2026-10-16T15:00:00+00:00"
+}
+```
+````
+
+| Campo | Valores | Qué significa |
+|---|---|---|
+| `merge` | `ok` · `fallo` · `pendiente` | `fallo` lleva el porqué en `motivo`: la guarda de archivos lo frenó (`"bloqueado: …"`), GitHub no dejó mergear tras 6 intentos, o la publicación se canceló en la cola |
+| `deploy_diario` | `ok` · `fallo` · `rate_limited` · `pendiente` · `desconocido` | El status de Vercel del proyecto **cigob-seguimiento** y un 200 de `https://cigob-seguimiento-a941210feb.vercel.app/`. `pendiente` = no terminó en 10 min; `desconocido` = no hubo status |
+| `corrida.estado` | `no_aplica` · `no_despachada` · `en_curso` · `ok` · `fallo` · `cancelada` · `timeout` | Sólo si el pedido tocó algo fuera de `web/src/`. `timeout` = se dejó de seguir a los 80 min (o se cortó el job que la seguía), no que la corrida haya fallado |
+| `corrida.url` | URL o `null` | La corrida de `data-pipeline.yml` de este pedido |
+| `corrida.snapshot_publicado` | `true` · `false` · `null` | Leído del estado, no del log: `true` si el paso «Commitear snapshot + caches a main» salió bien y el `generated_at` de main es posterior al arranque de la corrida; `false` si ese paso no salió bien; `null` si no se pudo saber |
+| `corrida.generated_at` | ISO o `null` | El `generated_at` del snapshot en main al terminar la corrida |
+| `motivo` | texto o `null` | Por qué `merge` es `fallo` |
+| `actualizado` | ISO UTC | Última edición |
+
+Lo escribe el modo `estado` de `aviso_cambio_claude.py`, que rechaza valores
+fuera de esta tabla. Cambiar un campo o un valor rompe al conector: se cambia en
+los dos repos a la vez. Slack sigue siendo el canal secundario, como antes.
 
 ## When a GitHub Actions run fails
 

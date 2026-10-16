@@ -1,4 +1,8 @@
 name: Daily data pipeline
+# Con `pedido`, la corrida lleva el número del PR en el nombre: así
+# cambios-desde-claude.yml sigue la corrida de SU pedido y no la de otro que se
+# lanzó al mismo tiempo. `inputs.pedido` sólo se usa acá, nunca en un `run:`.
+run-name: ${{ inputs.pedido && format('Corrida de datos del pedido {0}', inputs.pedido) || 'Daily data pipeline' }}
 
 # Corre el pipeline completo de los 4 cinturones del Informe de Coyuntura una
 # vez al día y commitea el snapshot a main. El deploy de la web (Vercel) lo
@@ -9,7 +13,13 @@ name: Daily data pipeline
 on:
   schedule:
     - cron: "0 3 * * *"
-  workflow_dispatch: {}   # permite dispararlo a mano desde la pestaña Actions
+  workflow_dispatch:      # permite dispararlo a mano desde la pestaña Actions
+    inputs:
+      pedido:
+        description: "Número del PR del pedido desde claude.ai que lanzó la corrida (vacío = corrida a mano)"
+        required: false
+        default: ""
+        type: string
 
 # Una corrida a la vez: dos solapadas leerían el mismo estado de los avisos y
 # duplicarían hilos en Slack (ADR-0309). La segunda espera, no cancela.

@@ -43,6 +43,15 @@ Modos:
   deploy   después del deploy: el estado de Vercel y si la página carga
   corrida  cuando termina la corrida de datos que lanzó el cambio
   verde    la corrida nocturna pasó las pruebas: main está en verde
+  estado   crea o edita el comentario de estado del PR (`<!-- estado-pedido -->`)
+  snapshot imprime si/no/desconocido: si la corrida publicó su snapshot
+
+El comentario de estado es un contrato: lo lee el conector de claude.ai para
+contestarle a quien pidió el cambio si ya se ve. Uno por PR, se edita en su
+lugar, empieza con `<!-- estado-pedido -->`, sigue una línea legible y un
+bloque ```json con `merge`, `deploy_diario`, `corrida` (estado, url,
+snapshot_publicado, generated_at), `motivo` y `actualizado`. Está documentado
+en el CLAUDE.md del repo («Cambios pedidos desde claude.ai»).
 """
 from __future__ import annotations
 
@@ -58,6 +67,9 @@ from zoneinfo import ZoneInfo
 
 MONITOR = "Monitor del Plan de Gobierno"
 WEB = "https://informe.cigob.org/"
+# El seguimiento diario: lo único donde un pedido se puede verificar el mismo
+# día. informe.cigob.org es la foto del mes (ADR-0347).
+SEGUIMIENTO = "https://cigob-seguimiento-a941210feb.vercel.app/"
 PROYECTO = "projects/informe_coyuntura/"
 
 # Lo que cambia un número del tablero o qué se muestra. Tocarlo no es un
@@ -205,16 +217,229 @@ def texto_deploy(pr: int, url: str, titulo: str, quien: str, estado: str, http: 
     ])
 
 
-def texto_corrida(pr: int, url: str, titulo: str, quien: str, conclusion: str, corrida_url: str) -> str | None:
+def texto_corrida(pr: int, url: str, titulo: str, quien: str, conclusion: str, corrida_url: str,
+                  snapshot: bool | None = None) -> str | None:
+    """Tres desenlaces que piden cosas distintas: la corrida no produjo
+    snapshot (🔴, el cambio no llegó), lo publicó y falló después (🟡, los
+    datos ya están en la web) o no se sabe (🔴, hay que mirar)."""
     if conclusion == "success":
         return None
+    pidio = f"*Lo pidió:* {quien} · *Cambio:* {titulo} (<{url}|#{pr}>)"
+    ver = f"<{corrida_url}|ver la corrida>"
+    if conclusion in ("no arrancó", "no se pudo lanzar"):
+        return "\n".join([
+            f"🔴 *{MONITOR} — la corrida de datos del cambio #{pr} {conclusion}*",
+            pidio,
+            "*Qué ve la gente:* los datos de la corrida anterior; el cambio de cálculo todavía no llegó.",
+            f"*Qué hacer:* lanzar «Daily data pipeline» a mano desde Actions ({ver}) o esperar la nocturna.",
+        ])
+    res = conclusion or "sin resultado"
+    if snapshot is True:
+        return "\n".join([
+            f"🟡 *{MONITOR} — la corrida del cambio #{pr} publicó los datos pero falló después ({res})*",
+            pidio,
+            "*Qué ve la gente:* los datos nuevos, con el cambio de cálculo. Lo que falló vino después "
+            "del commit del snapshot (archivo en BigQuery, avisos).",
+            f"*Qué hacer:* mirar qué paso falló: {ver}. No hay que deshacer el cambio por esto.",
+        ])
+    if snapshot is False:
+        return "\n".join([
+            f"🔴 *{MONITOR} — la corrida de datos del cambio #{pr} no produjo snapshot ({res})*",
+            pidio,
+            "*Qué ve la gente:* los datos de la corrida anterior; el cambio de cálculo todavía no llegó.",
+            f"*Qué hacer:* el diagnóstico está en la corrida: {ver}. "
+            f"La corrida también avisa por su cuenta en su propio hilo.",
+        ])
     return "\n".join([
-        f"🔴 *{MONITOR} — la corrida de datos que lanzó el cambio #{pr} no terminó bien ({conclusion or 'sin resultado'})*",
-        f"*Lo pidió:* {quien} · *Cambio:* {titulo} (<{url}|#{pr}>)",
-        "*Qué ve la gente:* los datos de la corrida anterior; el cambio de cálculo todavía no llegó.",
-        f"*Qué hacer:* el diagnóstico está en la corrida: <{corrida_url}|ver la corrida>. "
-        f"La corrida también avisa por su cuenta en su propio hilo.",
+        f"🔴 *{MONITOR} — la corrida de datos del cambio #{pr} terminó con resultado desconocido ({res})*",
+        pidio,
+        "*Qué ve la gente:* no se pudo leer si publicó: puede ser la corrida anterior o la nueva.",
+        f"*Qué hacer:* abrir la corrida y mirar el paso «Commitear snapshot + caches a main»: {ver}.",
     ])
+
+
+PASO_COMMIT = "Commitear snapshot + caches a main"
+
+
+def _fecha_iso(texto: str) -> datetime | None:
+    try:
+        d = datetime.fromisoformat((texto or "").replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return d if d.tzinfo else None
+
+
+def snapshot_publicado(jobs: dict, generated_at: str, creada: str) -> bool | None:
+    """Si la corrida publicó su snapshot, leyendo el estado y no el log.
+
+    `jobs` es la respuesta de `GET /actions/runs/{id}/jobs`. True: el paso de
+    commit salió bien y el `generated_at` de main es posterior al arranque de la
+    corrida. False: la corrida terminó sin que ese paso saliera bien (falló, se
+    saltó o nunca llegó). None: no se pudo leer, o el commit salió bien pero
+    main no tiene un snapshot de esta corrida."""
+    lista = (jobs or {}).get("jobs") or []
+    if not lista:
+        return None
+    pasos = [p for j in lista for p in (j.get("steps") or [])]
+    commit = [p for p in pasos if p.get("name") == PASO_COMMIT]
+    if not commit or commit[-1].get("conclusion") != "success":
+        return False
+    g, c = _fecha_iso(generated_at), _fecha_iso(creada)
+    if g and c and g >= c:
+        return True
+    return None
+
+
+# ── Estado del pedido en el PR (contrato con el conector) ───────────────
+
+MARCA = "<!-- estado-pedido -->"
+MERGE = ("ok", "fallo", "pendiente")
+DEPLOY = ("ok", "fallo", "rate_limited", "pendiente", "desconocido")
+CORRIDA = ("no_aplica", "no_despachada", "en_curso", "ok", "fallo", "cancelada", "timeout")
+BOT = "github-actions[bot]"
+
+
+def nuevo_estado_pedido(ahora: datetime) -> dict:
+    return {"merge": "pendiente", "deploy_diario": "pendiente",
+            "corrida": {"estado": "no_aplica", "url": None, "snapshot_publicado": None, "generated_at": None},
+            "motivo": None, "actualizado": ahora.isoformat(timespec="seconds")}
+
+
+def actualizar_estado_pedido(previo: dict | None, ahora: datetime, *, merge: str | None = None,
+                             deploy_diario: str | None = None, corrida: dict | None = None,
+                             motivo: str | None = None) -> dict:
+    """Mezcla los cambios sobre el estado previo. Un valor fuera del contrato
+    es un error: el conector no sabría leerlo."""
+    e = nuevo_estado_pedido(ahora)
+    if previo:
+        e.update({k: v for k, v in previo.items() if k != "corrida"})
+        e["corrida"].update(previo.get("corrida") or {})
+    if merge is not None:
+        if merge not in MERGE:
+            raise ValueError(f"merge fuera del contrato: {merge!r}")
+        e["merge"] = merge
+    if deploy_diario is not None:
+        if deploy_diario not in DEPLOY:
+            raise ValueError(f"deploy_diario fuera del contrato: {deploy_diario!r}")
+        e["deploy_diario"] = deploy_diario
+    if corrida:
+        if "estado" in corrida and corrida["estado"] not in CORRIDA:
+            raise ValueError(f"corrida.estado fuera del contrato: {corrida['estado']!r}")
+        desconocidos = set(corrida) - {"estado", "url", "snapshot_publicado", "generated_at"}
+        if desconocidos:
+            raise ValueError(f"corrida con campos fuera del contrato: {sorted(desconocidos)}")
+        e["corrida"].update(corrida)
+    if motivo is not None:
+        e["motivo"] = motivo or None
+    e["actualizado"] = ahora.isoformat(timespec="seconds")
+    return e
+
+
+def linea_estado(e: dict) -> str:
+    """Lo mismo que el JSON, en una línea para quien abre el PR."""
+    if e["merge"] == "pendiente":
+        return "⏳ Publicación en curso: todavía no se mergeó."
+    if e["merge"] == "fallo":
+        return f"🔴 El cambio no se publicó: {e.get('motivo') or 'el merge falló'}."
+    partes = ["✅ Mergeado."]
+    partes.append({
+        "ok": f"Ya se ve en el seguimiento diario ({SEGUIMIENTO}).",
+        "fallo": "El deploy del seguimiento diario falló o la página no carga: la web sigue con la versión anterior.",
+        "rate_limited": "Vercel llegó al tope de deploys del día: se publica solo cuando se libere.",
+        "pendiente": "Esperando el deploy del seguimiento diario.",
+        "desconocido": "No se pudo leer el estado del deploy del seguimiento diario.",
+    }[e["deploy_diario"]])
+    c = e["corrida"]
+    partes.append({
+        "no_aplica": "",
+        "no_despachada": "La corrida de datos no se pudo lanzar: los datos nuevos llegan con la nocturna.",
+        "en_curso": "La corrida de datos está en curso (unos 40 minutos).",
+        "ok": "La corrida de datos terminó y publicó los datos nuevos.",
+        "fallo": ("La corrida de datos falló después de publicar: los datos nuevos ya están."
+                  if c.get("snapshot_publicado") is True else
+                  "La corrida de datos falló y no publicó datos nuevos."
+                  if c.get("snapshot_publicado") is False else
+                  "La corrida de datos falló; no se sabe si llegó a publicar."),
+        "cancelada": "La corrida de datos se canceló.",
+        "timeout": "Se dejó de seguir la corrida de datos por tiempo: mirar la corrida.",
+    }[c["estado"]])
+    return " ".join(p for p in partes if p)
+
+
+def comentario_estado(e: dict) -> str:
+    return "\n".join([MARCA, linea_estado(e), "", "```json",
+                      json.dumps(e, ensure_ascii=False, indent=2), "```", ""])
+
+
+def leer_estado_pedido(cuerpo: str) -> dict | None:
+    if not (cuerpo or "").startswith(MARCA):
+        return None
+    m = re.search(r"```json\n(.*?)\n```", cuerpo, re.S)
+    try:
+        return json.loads(m.group(1)) if m else None
+    except ValueError:
+        return None
+
+
+def estado_deploy(estado: str, descripcion: str, http: str) -> str:
+    """El valor de `deploy_diario` a partir del status de Vercel y el HTTP."""
+    if es_tope_vercel(estado, descripcion):
+        return "rate_limited"
+    if estado in ("failure", "error"):
+        return "fallo"
+    if estado == "success":
+        return "ok" if http == "200" else "fallo"
+    if estado == "pending":
+        return "pendiente"
+    return "desconocido"
+
+
+def _github(metodo: str, ruta: str, datos: dict | None = None):
+    token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN") or ""
+    if not token:
+        raise RuntimeError("sin GH_TOKEN")
+    base = os.environ.get("GITHUB_API_URL", "https://api.github.com")
+    req = urllib.request.Request(
+        f"{base}{ruta}", method=metodo,
+        data=json.dumps(datos).encode() if datos is not None else None,
+        headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json",
+                 "Content-Type": "application/json"})
+    return json.load(urllib.request.urlopen(req, timeout=20))
+
+
+def escribir_estado_pedido(repo: str, pr: int, ahora: datetime, *, merge_si_pendiente: str | None = None,
+                           **cambios) -> dict | None:
+    """Crea o edita EL comentario de estado del PR. Sólo cuenta uno escrito
+    por el bot: un comentario de otra persona con la marca no se toca."""
+    try:
+        propio = None
+        for pagina in range(1, 11):
+            lote = _github("GET", f"/repos/{repo}/issues/{pr}/comments?per_page=100&page={pagina}")
+            for c in lote:
+                if (c.get("user") or {}).get("login") == BOT and leer_estado_pedido(c.get("body", "")) is not None:
+                    propio = c
+            if len(lote) < 100:
+                break
+        previo = leer_estado_pedido(propio["body"]) if propio else None
+        if merge_si_pendiente and (previo or {}).get("merge", "pendiente") == "pendiente":
+            cambios["merge"] = merge_si_pendiente
+        elif merge_si_pendiente:
+            cambios.pop("motivo", None)
+        e = actualizar_estado_pedido(previo, ahora, **cambios)
+        cuerpo = {"body": comentario_estado(e)}
+        if propio:
+            _github("PATCH", f"/repos/{repo}/issues/comments/{propio['id']}", cuerpo)
+        else:
+            _github("POST", f"/repos/{repo}/issues/{pr}/comments", cuerpo)
+        print(f"[estado] {linea_estado(e)}")
+        return e
+    except ValueError:
+        raise
+    except Exception as ex:                                 # noqa: BLE001
+        # El estado nunca cambia el resultado del job; el error no lleva el token.
+        print(f"[estado] no se pudo escribir el comentario de estado: {type(ex).__name__}: {ex}",
+              file=sys.stderr)
+        return None
 
 
 # ── Slack ────────────────────────────────────────────────────────────────
@@ -438,7 +663,7 @@ def _salida(clave: str, valor: str) -> None:
 
 def main(argv: list[str] | None = None, ahora: datetime | None = None) -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("modo", choices=["evaluar", "deploy", "corrida", "verde"])
+    ap.add_argument("modo", choices=["evaluar", "deploy", "corrida", "verde", "estado", "snapshot"])
     ap.add_argument("--pr", type=int, default=0)
     ap.add_argument("--datos-pr", default="",
                     help="JSON de `gh pr view --json title,url,body,files,additions,deletions`")
@@ -453,8 +678,48 @@ def main(argv: list[str] | None = None, ahora: datetime | None = None) -> int:
     ap.add_argument("--http", default="")
     ap.add_argument("--conclusion", default="")
     ap.add_argument("--corrida-url", default="")
+    ap.add_argument("--snapshot", choices=["si", "no", "desconocido"], default="desconocido",
+                    help="si la corrida publicó su snapshot (modo corrida/estado)")
+    # Modo estado: el comentario `<!-- estado-pedido -->` del PR.
+    ap.add_argument("--repo", default=os.environ.get("GITHUB_REPOSITORY", ""))
+    ap.add_argument("--merge", choices=MERGE)
+    ap.add_argument("--merge-si-pendiente", choices=MERGE,
+                    help="como --merge, pero sólo si el merge todavía figura pendiente")
+    ap.add_argument("--motivo")
+    ap.add_argument("--deploy", choices=DEPLOY)
+    ap.add_argument("--corrida-estado", choices=CORRIDA)
+    ap.add_argument("--generated-at", default="")
+    # Modo snapshot.
+    ap.add_argument("--jobs", default="", help="JSON de GET /actions/runs/{id}/jobs")
+    ap.add_argument("--corrida-creada", default="", help="created_at de la corrida")
     a = ap.parse_args(argv)
     ahora = ahora or datetime.now(timezone.utc)
+
+    if a.modo == "snapshot":
+        try:
+            jobs = json.loads(Path(a.jobs).read_text(encoding="utf-8")) if a.jobs else {}
+        except (OSError, ValueError):
+            jobs = {}
+        r = snapshot_publicado(jobs, a.generated_at, a.corrida_creada)
+        print({True: "si", False: "no", None: "desconocido"}[r])
+        return 0
+    if a.modo == "estado":
+        if not a.pr or not a.repo:
+            ap.error("estado necesita --pr y --repo")
+        corrida = {}
+        if a.corrida_estado:
+            corrida["estado"] = a.corrida_estado
+        if a.corrida_url:
+            corrida["url"] = a.corrida_url
+        if a.snapshot != "desconocido" or a.corrida_estado in ("ok", "fallo", "cancelada", "timeout"):
+            corrida["snapshot_publicado"] = {"si": True, "no": False, "desconocido": None}[a.snapshot]
+        if a.generated_at:
+            corrida["generated_at"] = a.generated_at
+        deploy = a.deploy or (estado_deploy(a.estado, a.descripcion, a.http) if a.estado or a.http else None)
+        escribir_estado_pedido(a.repo, a.pr, ahora, merge_si_pendiente=a.merge_si_pendiente,
+                               merge=a.merge, deploy_diario=deploy, corrida=corrida or None,
+                               motivo=a.motivo)
+        return 0
     estado = cargar_estado(a.archivo_estado)
 
     reintentar_cierres(estado)
@@ -512,7 +777,8 @@ def main(argv: list[str] | None = None, ahora: datetime | None = None) -> int:
             vercel = "success"              # sigue avisando si además la página no carga
         texto = texto_deploy(a.pr, url, titulo, quien, vercel, a.http)
     else:
-        texto = texto_corrida(a.pr, url, titulo, quien, a.conclusion, a.corrida_url)
+        texto = texto_corrida(a.pr, url, titulo, quien, a.conclusion, a.corrida_url,
+                              snapshot={"si": True, "no": False, "desconocido": None}[a.snapshot])
     if texto:
         publicar(texto, a.hilo)
     else:
