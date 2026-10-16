@@ -16,7 +16,7 @@ on:
   workflow_dispatch:      # permite dispararlo a mano desde la pestaña Actions
     inputs:
       pedido:
-        description: "Número del PR del pedido desde claude.ai que lanzó la corrida (vacío = corrida a mano)"
+        description: "Pedido desde claude.ai que lanzó la corrida, «PR.run» (vacío = corrida a mano)"
         required: false
         default: ""
         type: string

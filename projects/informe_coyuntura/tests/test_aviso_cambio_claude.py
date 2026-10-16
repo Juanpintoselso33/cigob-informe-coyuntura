@@ -633,3 +633,32 @@ def test_la_corrida_se_lanza_y_se_busca_por_el_numero_del_pedido():
     finales = [p for p in seguir["steps"] if str(p.get("if", "")).startswith("always()")]
     assert finales and "estado" in finales[-1]["run"]
     assert any("timeout" in p.get("run", "") for p in seguir["steps"])
+
+
+# ── Revisión de Codex del #76 ────────────────────────────────────────────────
+
+@pytest.mark.parametrize("estado,descripcion", [
+    ("pending", ""), ("failure", "Deployment rate limited — retry in 24 hours"), ("success", ""),
+])
+def test_el_diario_caido_manda_sobre_el_status_de_vercel(estado, descripcion):
+    """Un tope de Vercel o un deploy pendiente no tapan que la página no carga."""
+    assert av.estado_deploy(estado, descripcion, "500") == "fallo"
+    assert av.estado_deploy(estado, descripcion, "000") == "fallo"
+
+
+@pytest.mark.parametrize("snapshot,esperado", [
+    (True, "publicó los datos nuevos"),
+    (False, "no publicó datos nuevos"),
+    (None, "no se pudo confirmar"),
+])
+def test_corrida_ok_solo_afirma_publicacion_con_snapshot_verificado(snapshot, esperado):
+    e = av.actualizar_estado_pedido(None, datetime(2026, 10, 16, tzinfo=timezone.utc),
+                                    merge="ok", deploy_diario="ok",
+                                    corrida={"estado": "ok", "snapshot_publicado": snapshot})
+    assert esperado in av.linea_estado(e)
+
+
+def test_corrida_exitosa_sin_snapshot_avisa():
+    assert av.texto_corrida(1, "u", "t", "Luis", "success", "c", snapshot=None) is None
+    assert av.texto_corrida(1, "u", "t", "Luis", "success", "c", snapshot=True) is None
+    assert "no produjo snapshot" in av.texto_corrida(1, "u", "t", "Luis", "success", "c", snapshot=False)

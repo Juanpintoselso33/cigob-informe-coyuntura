@@ -222,7 +222,7 @@ def texto_corrida(pr: int, url: str, titulo: str, quien: str, conclusion: str, c
     """Tres desenlaces que piden cosas distintas: la corrida no produjo
     snapshot (🔴, el cambio no llegó), lo publicó y falló después (🟡, los
     datos ya están en la web) o no se sabe (🔴, hay que mirar)."""
-    if conclusion == "success":
+    if conclusion == "success" and snapshot is not False:
         return None
     pidio = f"*Lo pidió:* {quien} · *Cambio:* {titulo} (<{url}|#{pr}>)"
     ver = f"<{corrida_url}|ver la corrida>"
@@ -354,7 +354,11 @@ def linea_estado(e: dict) -> str:
         "no_aplica": "",
         "no_despachada": "La corrida de datos no se pudo lanzar: los datos nuevos llegan con la nocturna.",
         "en_curso": "La corrida de datos está en curso (unos 40 minutos).",
-        "ok": "La corrida de datos terminó y publicó los datos nuevos.",
+        "ok": ("La corrida de datos terminó y publicó los datos nuevos."
+               if c.get("snapshot_publicado") is True else
+               "La corrida de datos terminó, pero no publicó datos nuevos: el número sigue siendo el de antes."
+               if c.get("snapshot_publicado") is False else
+               "La corrida de datos terminó; no se pudo confirmar que publicó los datos nuevos."),
         "fallo": ("La corrida de datos falló después de publicar: los datos nuevos ya están."
                   if c.get("snapshot_publicado") is True else
                   "La corrida de datos falló y no publicó datos nuevos."
@@ -382,7 +386,11 @@ def leer_estado_pedido(cuerpo: str) -> dict | None:
 
 
 def estado_deploy(estado: str, descripcion: str, http: str) -> str:
-    """El valor de `deploy_diario` a partir del status de Vercel y el HTTP."""
+    """El valor de `deploy_diario` a partir del status de Vercel y el HTTP.
+    Si la página no responde 200, eso manda: un tope o un deploy pendiente no
+    tapan que el diario esté caído."""
+    if http and http != "200":
+        return "fallo"
     if es_tope_vercel(estado, descripcion):
         return "rate_limited"
     if estado in ("failure", "error"):

@@ -206,7 +206,7 @@ jobs:
             --motivo "GitHub no dejó mergear después de 6 intentos: ${error:-sin detalle}" || true
           exit 1
 
-      # El input `pedido` le pone el número del PR al nombre de la corrida
+      # El input `pedido` («PR.run») le pone el pedido y este run al nombre de la corrida
       # (run-name de data-pipeline.yml): así `seguir-corrida` encuentra ESTA
       # corrida y no la de otro pedido que se lanzó al mismo tiempo.
       - name: Corrida de datos si tocó el cálculo
@@ -214,7 +214,7 @@ jobs:
         if: steps.archivos.outputs.metodo == 'si'
         run: |
           aviso="$RUNNER_TEMP/aviso/aviso.py"
-          if gh workflow run data-pipeline.yml --repo "$REPO" --ref main -f pedido="$PR"; then
+          if gh workflow run data-pipeline.yml --repo "$REPO" --ref main -f pedido="$PR.${{ github.run_id }}"; then
             echo "despacho=ok" >> "$GITHUB_OUTPUT"
             [ -s "$aviso" ] && python3 "$aviso" estado --pr "$PR" --repo "$REPO" --corrida-estado en_curso \
               --corrida-url "${{ github.server_url }}/$REPO/actions/workflows/data-pipeline.yml" || true
@@ -238,8 +238,10 @@ jobs:
       - name: Avisar en el PR
         run: |
           {
-            if [ "${{ steps.archivos.outputs.metodo }}" = si ]; then
-              echo "✅ Publicado. Como toca el cálculo, se lanzó la corrida de datos: en unos 40 minutos se ve en el seguimiento diario (https://cigob-seguimiento-a941210feb.vercel.app/). El informe mensual (https://informe.cigob.org/) toma los datos nuevos recién en la próxima publicación del mes."
+            if [ "${{ steps.archivos.outputs.metodo }}" = si ] && [ "${{ steps.corrida.outputs.despacho }}" = ok ]; then
+              echo "✅ Publicado. Como toca el cálculo, se lanzó la corrida de datos: el número nuevo se ve en el seguimiento diario (https://cigob-seguimiento-a941210feb.vercel.app/) cuando termine bien. El informe mensual (https://informe.cigob.org/) toma los datos nuevos recién en la próxima publicación del mes."
+            elif [ "${{ steps.archivos.outputs.metodo }}" = si ]; then
+              echo "⚠️ Publicado, pero la corrida de datos no se pudo lanzar: el número de la web sigue siendo el de antes hasta la corrida nocturna."
             else
               echo "✅ Publicado: en un par de minutos se ve en https://informe.cigob.org/ (el mensual se rearma con el código nuevo) y en el seguimiento diario."
             fi
@@ -324,7 +326,7 @@ jobs:
   # script sale de main ANTES del merge, como en `publicar`.
   cerrar-estado:
     needs: publicar
-    if: ${{ always() && needs.publicar.result == 'cancelled' }}
+    if: ${{ always() && (needs.publicar.result == 'cancelled' || needs.publicar.result == 'failure') }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
@@ -358,7 +360,7 @@ jobs:
           python3 projects/informe_coyuntura/scripts/aviso_cambio_claude.py estado \
             --pr "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" \
             --merge-si-pendiente fallo \
-            --motivo "la publicación se canceló antes de mergear (otro pedido en la cola o se canceló a mano): volver a correr «Cambios desde Claude» en este PR"
+            --motivo "la publicación ${{ needs.publicar.result == 'failure' && 'falló' || 'se canceló' }} antes de mergear: volver a correr «Cambios desde Claude» en este PR"
 
   # Las fichas en markdown se regeneran después y directo a main, como las
   # sube el cron. Esto EJECUTA código del main recién mergeado, que pudo
@@ -469,7 +471,9 @@ jobs:
         run: |
           [ -s aviso/aviso.py ] || exit 0
           res="$RUNNER_TEMP/corrida.env"
-          titulo="Corrida de datos del pedido $PR"
+          # El número del PR más el run de ESTE workflow: un reintento o un
+          # push nuevo del mismo pedido no puede tomar la corrida de antes.
+          titulo="Corrida de datos del pedido $PR.${{ github.run_id }}"
           fin=$(( $(date +%s) + 80 * 60 ))
           id=""
           for _ in $(seq 1 20); do
