@@ -1,16 +1,27 @@
 {
  "_meta": {
-  "comunicados_vistos": 47,
+  "comunicados_vistos": 48,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie del indicador en el mes anterior al más viejo, y `inventario_verificado` es la última corrida en la que respondieron las dos cámaras (ADR-0310). Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
-  "inventario_verificado": "2026-10-16",
-  "nuevos_en_la_corrida": 1,
-  "ultima_corrida": "2026-10-16"
+  "inventario_verificado": "2026-10-17",
+  "nuevos_en_la_corrida": 2,
+  "ultima_corrida": "2026-10-17"
  },
  "pendientes": {
+  "UIA|el-g-6-se-reunio-con-el-nuncio-apostolico-en-la-2": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-10-15",
+   "id": "el-g-6-se-reunio-con-el-nuncio-apostolico-en-la-2",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Los representantes del G-6 mantuvieron un encuentro protocolar con monseñor Michael Wallace Banach, Nuncio Apostólico en la República Argentina, como parte de su agenda de vinculación institucional con referentes de diversos ámbitos de la sociedad. Durante la reunión, dialogaron sobre una eventual visita del Papa al país y analizaron posibles iniciativas de cooperación a futuro.  La comitiva estuvo integrada por autoridades de seis de las principales organizaciones empresariales argentinas, vinculadas con sectores estratégicos de la economía nacional: las finanzas, el mercado de capitales, el comercio y los servicios, la construcción, la actividad agropecuaria y la industria. La ocasión propició un intercambio institucional con el representante diplomático de la Santa Sede.  Asistieron Javier Bolzico, en representación de la Asociación de Bancos Argentinos (ADEBA); Adelmo Gabbi, por la Bolsa de Comercio de Buenos Aires (BCBA); Mario Grinman, por la Cámara Argentina de Comercio y Servicios (CAC); Gustavo Weiss, por la Cámara Argentina de la Construcción (Camarco); Nicolás Pino, por la Sociedad Rural Argentina (SRA); y Martín Rappallini, por la Unión Industrial Argentina (UIA). Asimismo, participó Bettina Bulgheroni, titular del Consejo Interamericano de Comercio y Producción (CICyP).  La Nunciatura Apostólica es la misión diplomática de la Santa Sede ante el Estado argentino. En este contexto, la reunión favoreció el acercamiento entre representantes del ámbito productivo nacional y la delegación vaticana. La reunión transcurrió en un marco de cordialidad y respeto mutuo, en línea con el propósito del G-6 de fortalecer los vínculos con distintos referentes de la vida pública del país.",
+   "titulo": "El G-6 se reunió con el Nuncio Apostólico en la Argentina",
+   "url": "https://www.uia.org.ar/uia/novedades/el-g-6-se-reunio-con-el-nuncio-apostolico-en-la-2"
+  },
   "UIA|industria-inspira-2026-anunciamos-a-los-ganadores": {
    "camara": "UIA",
    "destinatario": null,
@@ -21,6 +32,17 @@
    "texto": "El equipo de la  Escuela Industrial N.º 1 General Enrique Mosconi de Caleta Olivia  presentó una propuesta para aprovechar los descartes orgánicos de la industria pesquera mediante digestión anaerobia. El proceso permite producir biogás para generar energía eléctrica y térmica, y obtener un material aprovechable como biofertilizante.  Los estudiantes desarrollaron un banco piloto con ocho reactores y un sistema de monitoreo en tiempo real. La iniciativa integra la gestión de residuos, el cuidado ambiental y la generación local de energía.   Un reconocimiento a los cinco equipos finalistas   La UIA destacó el trabajo de los cinco equipos que llegaron a la final nacional, por la calidad de sus propuestas y su compromiso con los desafíos de sus comunidades. Además de los tres proyectos premiados, participaron  Bioterra , del  IPET N.º 76 Gustavo Riemann de Villa Rumipal, Córdoba , que propone recuperar suelos degradados mediante cápsulas biodegradables, y  M A R - Matrices Adsorbentes de Remediación , de la  EEST N.º 1 ARA General Belgrano de Ingeniero White, Buenos Aires , que desarrolla barreras para mitigar derrames de hidrocarburos utilizando carbón activado obtenido de yerba mate usada.  Las cinco propuestas reflejan el potencial de la educación técnica para integrar conocimientos, creatividad y capacidades de producción en soluciones para el entorno.  La selección estuvo a cargo de un jurado integrado por  Martín Rappallini , presidente de la UIA;  Silvio Zurzolo , presidente del Departamento de Educación, Tecnología e Innovación Productiva de la UIA;  Emmanuel Peña Álvarez , director de Divulgación y Transferencia Científica de la Universidad Siglo 21;  Irini Wentinck , presidenta de Diversidad, Equidad e Inclusión de la UIA y presidenta de IRAM; y  María Furtado , presidenta de UIA Joven. El jurado evaluó el carácter industrial, el impacto social, la innovación y sustentabilidad, la escalabilidad y la viabilidad de las propuestas.  La  entrega de premios tendrá lugar el 3 de noviembre , en el marco de la Conferencia Industrial de la UIA, donde se reconocerá a los equipos ganadores de esta edición.",
    "titulo": "Industria Inspira 2026: anunciamos a los ganadores",
    "url": "https://www.uia.org.ar/uia/novedades/industria-inspira-2026-anunciamos-a-los-ganadores"
+  },
+  "UIA|industria-inspira-2026-la-uia-premio-a-estudiant-2": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-10-14",
+   "id": "industria-inspira-2026-la-uia-premio-a-estudiant-2",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "La iniciativa de UIA Joven, que promueve el vínculo entre la educación técnica y la industria, reunió 462 proyectos de estudiantes de todo el país, un 24% más que en 2025. Los ganadores desarrollaron soluciones para combatir incendios forestales, mejorar el reciclaje y generar energía a partir de residuos de la industria pesquera.    14 de octubre de 2026.  La Unión Industrial Argentina (UIA) anunció los tres proyectos ganadores de Industria Inspira 2026, el concurso federal impulsado por UIA Joven que invita a estudiantes de escuelas técnicas de todo el país a desarrollar soluciones innovadoras, sustentables y con perspectiva industrial para los desafíos de sus comunidades.  En esta edición se presentaron 462 proyectos, un 23,5% más que en 2025, cuando se habían registrado 374 propuestas. Como parte del nuevo esquema federal implementado este año, mentores provinciales acompañaron a los equipos y participaron en la selección de los proyectos de cada jurisdicción, fortaleciendo el vínculo entre las escuelas técnicas y el entramado productivo local. De las propuestas presentadas, 62 fueron seleccionadas en las instancias provinciales y cinco llegaron a la final nacional.  El primer puesto fue para “Baliza inteligente para el combate de incendios\", desarrollado por estudiantes de las EPET N.º 21 y N.º 30 de Neuquén. El proyecto consiste en un dispositivo portátil que mide variables climáticas como temperatura, humedad y velocidad y dirección del viento, y transmite la información automáticamente mediante mensajes de voz por radio VHF. La tecnología permite asistir a las brigadas que combaten incendios forestales, incluso en zonas sin cobertura celular, y reducir la exposición de personas en puntos críticos. La propuesta fue desarrollada junto con el grupo de Incendios, Comunicaciones y Emergencias de Parques Nacionales.  El segundo lugar correspondió a “Opti Tap”, de la EETP N.º 643 Granaderos de San Lorenzo, de Roldán, Santa Fe. Los estudiantes crearon un sistema electromecánico que utiliza visión artificial para clasificar tapitas plásticas por color. El prototipo combina una cinta transportadora, procesamiento de imágenes y mecanismos automatizados para agilizar el trabajo en plantas recicladoras, cooperativas y puntos verdes, mediante una tecnología accesible y reparable localmente.  El tercer premio fue para “Bioenergía Austral\", de la Escuela Industrial N.º 1 General Enrique Mosconi, de Caleta Olivia, Santa Cruz. La propuesta busca aprovechar los residuos orgánicos de la industria pesquera para producir biogás y generar energía eléctrica y térmica, además de obtener biofertilizantes. Para ello, los estudiantes desarrollaron un banco piloto con ocho reactores y un sistema de monitoreo en tiempo real.  Los otros dos proyectos que llegaron a la final nacional fueron “Bioterra”, del IPET N.º 76 Gustavo Riemann, de Villa Rumipal, Córdoba, que propone recuperar suelos degradados mediante cápsulas biodegradables; y “M A R – Matrices Adsorbentes de Remediación”, de la EEST N.º 1 ARA General Belgrano, de Ingeniero White, Buenos Aires, que desarrolla barreras para mitigar derrames de hidrocarburos utilizando carbón activado obtenido de yerba mate usada.  La selección de los ganadores estuvo a cargo de un jurado integrado por Martín Rappallini, presidente de la UIA; Silvio Zurzolo, presidente del Departamento de Educación, Tecnología e Innovación Productiva de la UIA; Emmanuel Peña Álvarez, director de Divulgación y Transferencia Científica de la Universidad Siglo 21; Irini Wentinck, presidenta de Diversidad, Equidad e Inclusión de la UIA y presidenta de IRAM; y María Furtado, presidenta de UIA Joven. Los proyectos fueron evaluados según su carácter industrial, impacto social, innovación, sustentabilidad, escalabilidad y viabilidad.  Los equipos ganadores recibirán equipamiento tecnológico para sus escuelas, acceso a programas de educación continua desarrollados junto con la Universidad Siglo 21 y kits de materiales para los estudiantes.  La entrega de premios tendrá lugar el próximo 3 de noviembre, durante la 32.ª Conferencia Industrial de la UIA, que se realizará bajo el lema  “Talento argentino: la fuerza que transforma” . La jornada permitirá reconocer el potencial de los jóvenes y de la educación técnica para impulsar la innovación y el desarrollo industrial del país.",
+   "titulo": "Industria Inspira 2026: la UIA premió a estudiantes que desarrollaron tecnología para combatir incendios forestales",
+   "url": "https://www.uia.org.ar/uia/novedades/industria-inspira-2026-la-uia-premio-a-estudiant-2"
   },
   "UIA|la-uia-busco-alianzas-en-paris-para-integrar-caden": {
    "camara": "UIA",
@@ -378,6 +400,10 @@
    "origen": "codificado 2026-09-14 (tanda en apoyo_empresario_codificacion.json)",
    "titulo": "Curso de Fortalecimiento Industrial: finalizó la edición 2026 con más de 850 participantes"
   },
+  "UIA|el-g-6-se-reunio-con-el-nuncio-apostolico-en-la-2": {
+   "fecha": "2026-10-15",
+   "titulo": "El G-6 se reunió con el Nuncio Apostólico en la Argentina"
+  },
   "UIA|el-mercosur-y-confindustria-avanzan-en-una-agenda": {
    "fecha": "2026-04-23",
    "origen": "migración de URL; ya codificado",
@@ -400,6 +426,10 @@
   "UIA|industria-inspira-2026-anunciamos-a-los-ganadores": {
    "fecha": "2026-10-13",
    "titulo": "Industria Inspira 2026: anunciamos a los ganadores"
+  },
+  "UIA|industria-inspira-2026-la-uia-premio-a-estudiant-2": {
+   "fecha": "2026-10-14",
+   "titulo": "Industria Inspira 2026: la UIA premió a estudiantes que desarrollaron tecnología para combatir incendios forestales"
   },
   "UIA|industria-inspira-entra-en-su-ultima-semana-de-ins": {
    "fecha": "2026-08-24",
