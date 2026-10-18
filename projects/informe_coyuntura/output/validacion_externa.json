@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-17T03:32:24.897713+00:00",
+    "generated_at": "2026-10-18T03:47:36.566008+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -385,14 +385,14 @@
   "redundancia_itcm": {
     "diferencias": {
       "n_pares": 120,
-      "r_abs_medio": 0.196,
+      "r_abs_medio": 0.197,
       "share_altos": 0.008
     },
     "umbral": 0.7,
     "n_indicadores": 16,
     "n_pares": 120,
-    "r_abs_medio": 0.476,
-    "share_altos": 0.275,
+    "r_abs_medio": 0.473,
+    "share_altos": 0.267,
     "share_bajos": 0.342,
     "matriz": {
       "actividad_tributaria": {
@@ -406,7 +406,7 @@
         "ipc_total": 0.674,
         "ipi_manufacturero": 0.826,
         "recaudacion": -0.333,
-        "rem_ipc_12m": 0.666,
+        "rem_ipc_12m": 0.668,
         "reservas_bcra": 0.13,
         "resultado_primario": 0.635,
         "saldo_comercial_12m": 0.522,
@@ -440,7 +440,7 @@
         "ipc_total": 0.696,
         "ipi_manufacturero": 0.712,
         "recaudacion": -0.435,
-        "rem_ipc_12m": 0.775,
+        "rem_ipc_12m": 0.757,
         "reservas_bcra": 0.003,
         "resultado_primario": 0.742,
         "saldo_comercial_12m": 0.406,
@@ -474,7 +474,7 @@
         "ipc_total": 0.634,
         "ipi_manufacturero": 0.529,
         "recaudacion": -0.625,
-        "rem_ipc_12m": 0.702,
+        "rem_ipc_12m": 0.727,
         "reservas_bcra": 0.212,
         "resultado_primario": 0.455,
         "saldo_comercial_12m": 0.383,
@@ -491,7 +491,7 @@
         "ipc_total": 0.7,
         "ipi_manufacturero": 0.762,
         "recaudacion": -0.291,
-        "rem_ipc_12m": 0.651,
+        "rem_ipc_12m": 0.625,
         "reservas_bcra": 0.153,
         "resultado_primario": 0.682,
         "saldo_comercial_12m": 0.566,
@@ -508,7 +508,7 @@
         "ipc_total": 0.672,
         "ipi_manufacturero": 0.798,
         "recaudacion": -0.45,
-        "rem_ipc_12m": 0.699,
+        "rem_ipc_12m": 0.687,
         "reservas_bcra": 0.24,
         "resultado_primario": 0.584,
         "saldo_comercial_12m": 0.398,
@@ -525,7 +525,7 @@
         "ipc_total": 0.884,
         "ipi_manufacturero": 0.739,
         "recaudacion": -0.228,
-        "rem_ipc_12m": 0.866,
+        "rem_ipc_12m": 0.837,
         "reservas_bcra": 0.336,
         "resultado_primario": 0.864,
         "saldo_comercial_12m": 0.673,
@@ -542,7 +542,7 @@
         "idc": 0.884,
         "ipi_manufacturero": 0.555,
         "recaudacion": -0.253,
-        "rem_ipc_12m": 0.914,
+        "rem_ipc_12m": 0.896,
         "reservas_bcra": 0.644,
         "resultado_primario": 0.825,
         "saldo_comercial_12m": 0.735,
@@ -559,7 +559,7 @@
         "idc": 0.739,
         "ipc_total": 0.555,
         "recaudacion": -0.293,
-        "rem_ipc_12m": 0.491,
+        "rem_ipc_12m": 0.474,
         "reservas_bcra": 0.293,
         "resultado_primario": 0.46,
         "saldo_comercial_12m": 0.362,
@@ -576,28 +576,28 @@
         "idc": -0.228,
         "ipc_total": -0.253,
         "ipi_manufacturero": -0.293,
-        "rem_ipc_12m": -0.379,
+        "rem_ipc_12m": -0.415,
         "reservas_bcra": -0.21,
         "resultado_primario": -0.056,
         "saldo_comercial_12m": -0.008,
         "tcrm": -0.052
       },
       "rem_ipc_12m": {
-        "actividad_tributaria": 0.666,
+        "actividad_tributaria": 0.668,
         "costo_financiamiento_tesoro": 0.326,
-        "credito_privado": 0.775,
+        "credito_privado": 0.757,
         "desequilibrio_monetario": -0.287,
-        "emae_difusion": 0.702,
-        "emae_ia": 0.651,
-        "iai": 0.699,
-        "idc": 0.866,
-        "ipc_total": 0.914,
-        "ipi_manufacturero": 0.491,
-        "recaudacion": -0.379,
+        "emae_difusion": 0.727,
+        "emae_ia": 0.625,
+        "iai": 0.687,
+        "idc": 0.837,
+        "ipc_total": 0.896,
+        "ipi_manufacturero": 0.474,
+        "recaudacion": -0.415,
         "reservas_bcra": 0.376,
-        "resultado_primario": 0.892,
-        "saldo_comercial_12m": 0.758,
-        "tcrm": -0.543
+        "resultado_primario": 0.877,
+        "saldo_comercial_12m": 0.692,
+        "tcrm": -0.411
       },
       "reservas_bcra": {
         "actividad_tributaria": 0.13,
@@ -628,7 +628,7 @@
         "ipc_total": 0.825,
         "ipi_manufacturero": 0.46,
         "recaudacion": -0.056,
-        "rem_ipc_12m": 0.892,
+        "rem_ipc_12m": 0.877,
         "reservas_bcra": -0.15,
         "saldo_comercial_12m": 0.871,
         "tcrm": -0.806
@@ -645,7 +645,7 @@
         "ipc_total": 0.735,
         "ipi_manufacturero": 0.362,
         "recaudacion": -0.008,
-        "rem_ipc_12m": 0.758,
+        "rem_ipc_12m": 0.692,
         "reservas_bcra": -0.073,
         "resultado_primario": 0.871,
         "tcrm": -0.908
@@ -662,23 +662,13 @@
         "ipc_total": -0.634,
         "ipi_manufacturero": -0.53,
         "recaudacion": -0.052,
-        "rem_ipc_12m": -0.543,
+        "rem_ipc_12m": -0.411,
         "reservas_bcra": 0.067,
         "resultado_primario": -0.806,
         "saldo_comercial_12m": -0.908
       }
     },
     "pares_altos": [
-      {
-        "a": "ipc_total",
-        "b": "rem_ipc_12m",
-        "r": 0.914,
-        "n": 31,
-        "dimension_a": "estabilidad_monetaria",
-        "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": true,
-        "por_diseno": "las expectativas relevadas por el Banco Central son la inflación esperada: un pronóstico de la inflación minorista, en la misma dimensión y a propósito, para leer la misma magnitud en dos momentos"
-      },
       {
         "a": "saldo_comercial_12m",
         "b": "tcrm",
@@ -690,14 +680,14 @@
         "por_diseno": null
       },
       {
-        "a": "rem_ipc_12m",
-        "b": "resultado_primario",
-        "r": 0.892,
-        "n": 31,
+        "a": "ipc_total",
+        "b": "rem_ipc_12m",
+        "r": 0.896,
+        "n": 30,
         "dimension_a": "estabilidad_monetaria",
-        "dimension_b": "viabilidad_fiscal_comercial",
-        "misma_dimension": false,
-        "por_diseno": null
+        "dimension_b": "estabilidad_monetaria",
+        "misma_dimension": true,
+        "por_diseno": "las expectativas relevadas por el Banco Central son la inflación esperada: un pronóstico de la inflación minorista, en la misma dimensión y a propósito, para leer la misma magnitud en dos momentos"
       },
       {
         "a": "credito_privado",
@@ -720,6 +710,16 @@
         "por_diseno": null
       },
       {
+        "a": "rem_ipc_12m",
+        "b": "resultado_primario",
+        "r": 0.877,
+        "n": 30,
+        "dimension_a": "estabilidad_monetaria",
+        "dimension_b": "viabilidad_fiscal_comercial",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "emae_ia",
         "b": "iai",
         "r": 0.872,
@@ -737,16 +737,6 @@
         "dimension_a": "viabilidad_fiscal_comercial",
         "dimension_b": "viabilidad_fiscal_comercial",
         "misma_dimension": true,
-        "por_diseno": null
-      },
-      {
-        "a": "idc",
-        "b": "rem_ipc_12m",
-        "r": 0.866,
-        "n": 31,
-        "dimension_a": "financiamiento",
-        "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": false,
         "por_diseno": null
       },
       {
@@ -777,6 +767,16 @@
         "dimension_a": "actividad",
         "dimension_b": "actividad",
         "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
+        "a": "idc",
+        "b": "rem_ipc_12m",
+        "r": 0.837,
+        "n": 30,
+        "dimension_a": "financiamiento",
+        "dimension_b": "estabilidad_monetaria",
+        "misma_dimension": false,
         "por_diseno": null
       },
       {
@@ -900,16 +900,6 @@
         "por_diseno": null
       },
       {
-        "a": "credito_privado",
-        "b": "rem_ipc_12m",
-        "r": 0.775,
-        "n": 31,
-        "dimension_a": "financiamiento",
-        "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "emae_ia",
         "b": "ipi_manufacturero",
         "r": 0.762,
@@ -920,12 +910,12 @@
         "por_diseno": null
       },
       {
-        "a": "rem_ipc_12m",
-        "b": "saldo_comercial_12m",
-        "r": 0.758,
-        "n": 31,
-        "dimension_a": "estabilidad_monetaria",
-        "dimension_b": "viabilidad_fiscal_comercial",
+        "a": "credito_privado",
+        "b": "rem_ipc_12m",
+        "r": 0.757,
+        "n": 30,
+        "dimension_a": "financiamiento",
+        "dimension_b": "estabilidad_monetaria",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -960,6 +950,16 @@
         "por_diseno": null
       },
       {
+        "a": "emae_difusion",
+        "b": "rem_ipc_12m",
+        "r": 0.727,
+        "n": 29,
+        "dimension_a": "actividad",
+        "dimension_b": "estabilidad_monetaria",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "credito_privado",
         "b": "ipi_manufacturero",
         "r": 0.712,
@@ -980,16 +980,6 @@
         "por_diseno": null
       },
       {
-        "a": "emae_difusion",
-        "b": "rem_ipc_12m",
-        "r": 0.702,
-        "n": 30,
-        "dimension_a": "actividad",
-        "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "emae_ia",
         "b": "ipc_total",
         "r": 0.7,
@@ -1000,8 +990,8 @@
         "por_diseno": null
       }
     ],
-    "pares_cruzados": 21,
-    "pares_no_explicados": 21
+    "pares_cruzados": 20,
+    "pares_no_explicados": 20
   },
   "redundancia_itcg": {
     "diferencias": {
