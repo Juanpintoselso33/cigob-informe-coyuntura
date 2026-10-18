@@ -59,10 +59,28 @@ const tensionados = cinturonesRojos(informe);
       <p class="cg-eyebrow"><a href={`${base}/`}>← Resumen</a></p>
       <h1 class="cg-hero-title cg-detalle-title">Metodología</h1>
       <p class="cg-hero-lead cg-detalle-lead">
-        Primero el marco: cómo comunica el Monitor la complejidad, qué mide y qué dicen sus colores.
-        Después, una ficha metodológica por indicador, con estructura estándar: qué mide, de dónde sale,
-        cómo se calcula, cómo incide en el índice, qué limitaciones tiene y qué decisiones de
-        método se tomaron. Para leer el informe alcanza con el marco; para auditarlo, está todo.
+        El Monitor se apoya en una metodología que busca ofrecer una lectura clara, fundamentada y verificable
+        del grado de avance del proyecto de gobierno y su capacidad para afrontar y gestionar las tensiones entre
+        las demandas de la sociedad y las posibilidades y recursos con que cuenta para darles respuesta.
+      </p>
+      <p class="cg-hero-lead cg-detalle-lead">
+        Para facilitar su comprensión, se presenta inicialmente el marco metodológico general, que explica qué se
+        mide, cómo se interpretan los resultados y qué significado tienen los colores utilizados para representar
+        los distintos niveles de avance.
+      </p>
+      <p class="cg-hero-lead cg-detalle-lead">
+        A continuación, se desarrolla una ficha metodológica para cada indicador, en la que se detallan su alcance,
+        las fuentes de información, los criterios de cálculo y ponderación, las limitaciones y las decisiones
+        metodológicas adoptadas.
+      </p>
+      <p class="cg-hero-lead cg-detalle-lead">
+        De esta manera, el Monitor ofrece en primer término una lectura sencilla de sus resultados, como también
+        permite al lector, efectuar un análisis más detallado de los fundamentos que los sustentan, asegurando
+        transparencia y trazabilidad en las evaluaciones.
+      </p>
+      <p class="cg-hero-lead cg-detalle-lead">
+        Como toda construcción humana, este Monitor es una herramienta abierta a su revisión y perfeccionamiento,
+        que podrá enriquecerse en futuras entregas a partir de las críticas, observaciones y aportes de sus lectores.
       </p>
       <div class="cg-detalle-meta">
         <span class="cg-detalle-chip">Edición <strong>{mesLegible(informe.period)}</strong></span>
@@ -186,11 +204,16 @@ const tensionados = cinturonesRojos(informe);
 
         <h3 class="cg-marco-h3">Cómo se evalúa el estado de tensión</h3>
         <p>
-          Un cinturón es un frente donde el gobierno pone en juego su capacidad de gobernar. Cada uno se abre en
-          dimensiones, que son las preguntas que hay que responder para saber cómo está ese aspecto del proyecto
-          de gobierno, y cada dimensión se apoya en dos o más indicadores, que son los datos que responden esa
-          pregunta. A cada cinturón, dimensión e indicador se le asigna un puntaje y un color, y desde cualquiera
-          se puede bajar al de abajo hasta llegar a la ficha de cada dato.
+          Cada cinturón representa un ámbito estratégico en el que el gobierno pone a prueba su capacidad para
+          conducir y sostener su proyecto de gobierno.
+        </p>
+        <p>
+          Para evaluar su situación, cada cinturón se organiza en dimensiones, que permiten analizar los aspectos
+          centrales de ese ámbito. A su vez, cada dimensión se examina mediante dos o más indicadores, que aportan
+          información concreta para valorar su estado y evolución. Los resultados se expresan mediante puntajes y
+          colores asignados a cada indicador, dimensión y cinturón, facilitando una lectura progresiva: desde una
+          visión general del estado del proyecto de gobierno hasta el análisis detallado de los datos y criterios
+          que sustentan cada evaluación.
         </p>
 
         <h3 class="cg-marco-h3">Qué nos dicen los colores</h3>
@@ -208,46 +231,6 @@ const tensionados = cinturonesRojos(informe);
           social, que toma 100 como el nivel de fines de 2023, y sus cortes son:{" "}
           {coloresEnIndice(true)}.
         </p>
-      </div>
-    </section>
-
-    <section class="cg-section">
-      <div class="cg-section-head">
-        <p class="cg-eyebrow">El estándar</p>
-        <h2 class="cg-h2">Cómo se documenta cada indicador</h2>
-        <p class="cg-h2-sub">El formato adapta los estándares de la estadística pública al tamaño de este informe.</p>
-      </div>
-      <div class="cg-method-grid">
-        <article><h3>Una ficha por indicador</h3><p>Estructura fija tomada de la <strong>plantilla de metadatos de los Objetivos de Desarrollo Sostenible</strong> (Naciones Unidas) y de las fichas metodológicas de los institutos de estadística: definición, fuente exacta, método de cómputo, limitaciones declaradas y tratamiento de datos faltantes.</p></article>
-        <article><h3>Índices según el manual internacional</h3><p>Los cuatro índices compuestos se documentan con la <strong>lista de control del Handbook on Constructing Composite Indicators</strong>, el manual que publicaron en 2008 la Organización para la Cooperación y el Desarrollo Económicos (OCDE) y el Centro Común de Investigación de la Comisión Europea: marco conceptual, normalización, agregación, robustez y validación, paso por paso.</p></article>
-        <article><h3>Generada desde los datos</h3><p>Los números de cada ficha (valores, puntajes, pesos, bandas de robustez) <strong>no se transcriben</strong>: salen del mismo archivo de datos que alimenta las cards del informe y se reconstruyen con cada actualización.</p></article>
-        <article><h3>Decisiones con registro</h3><p>Cada cambio de método queda asentado con fecha en un <strong>registro de decisiones</strong>: qué se cambió, por qué, qué alternativas se descartaron y cómo afectó al valor publicado. Cada ficha publica su historial.</p></article>
-      </div>
-    </section>
-
-    <section class="cg-section">
-      <div class="cg-section-head">
-        <p class="cg-eyebrow">Por qué creerle</p>
-        <h2 class="cg-h2">Los controles que se publican</h2>
-        <p class="cg-h2-sub">Cada uno se puede auditar contra los datos que alimentan el informe.</p>
-      </div>
-      <div class="cg-method-grid">
-        <article>
-          <h3>Robustez publicada</h3>
-          <p>Cada índice se recalcula en <strong>1.000 escenarios</strong> perturbando pesos e insumos (Monte Carlo); la banda donde cae el 90% de los casos se publica junto al valor. Si la lectura dependiera de la ponderación exacta, se vería.</p>
-        </article>
-        <article>
-          <h3>Validación externa</h3>
-          <p>Tres de los cuatro índices se contrastan contra un ancla externa que nadie del proyecto controla — marcha de la actividad (índice macroeconómico), incertidumbre de política en la prensa (índice político) y el factor común de un panel donde no existe una serie de referencia única (índice de impacto social) — y la matriz cruzada compara cada uno contra las tres a la vez, para ver si correlaciona más con la propia que con las ajenas. Hoy no se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período. El índice de gestión no tiene contraste externo, por definición: mide lo que el gobierno hace, y una estadística de afuera o es parte de la misma agenda o mezcla la ejecución con todo lo demás que mueve a la economía.{rs.length > 0 && <Fragment> Hoy: <strong>r {rs.join(" · ")}</strong>.</Fragment>}</p>
-        </article>
-        <article>
-          <h3>Ponderación por fase</h3>
-          <p>El global pondera los cuatro cinturones según el momento del mandato ({fase}): al principio pesan todos igual, porque el mandato todavía está construyendo credibilidad; en la consolidación, macro y política pesan más que gestión. Cada cinturón vigila además su <strong>riesgo de barbarismo</strong> (hoy: {cap(informe.barbarismo_activo)}).</p>
-        </article>
-        <article>
-          <h3>Regla de lectura</h3>
-          <p>Un cinturón tensionado es manejable; <strong>dos o más simultáneos</strong> señalan inestabilidad sistémica. Hoy: {tensionados === 0 ? "ninguno tensionado" : tensionados === 1 ? "1 tensionado" : `${tensionados} tensionados`}.</p>
-        </article>
       </div>
     </section>
 
@@ -316,6 +299,48 @@ const tensionados = cinturonesRojos(informe);
         </section>
       );
     })}
+
+    {/* 18-oct-2026: «El estándar» y «Por qué creerle» bajaron acá, después del
+        último cinturón y antes de Referencias (pedido de Juan). */}
+    <section class="cg-section">
+      <div class="cg-section-head">
+        <p class="cg-eyebrow">El estándar</p>
+        <h2 class="cg-h2">Cómo se documenta cada indicador</h2>
+        <p class="cg-h2-sub">El formato adapta los estándares de la estadística pública al tamaño de este informe.</p>
+      </div>
+      <div class="cg-method-grid">
+        <article><h3>Una ficha por indicador</h3><p>Estructura fija tomada de la <strong>plantilla de metadatos de los Objetivos de Desarrollo Sostenible</strong> (Naciones Unidas) y de las fichas metodológicas de los institutos de estadística: definición, fuente exacta, método de cómputo, limitaciones declaradas y tratamiento de datos faltantes.</p></article>
+        <article><h3>Índices según el manual internacional</h3><p>Los cuatro índices compuestos se documentan con la <strong>lista de control del Handbook on Constructing Composite Indicators</strong>, el manual que publicaron en 2008 la Organización para la Cooperación y el Desarrollo Económicos (OCDE) y el Centro Común de Investigación de la Comisión Europea: marco conceptual, normalización, agregación, robustez y validación, paso por paso.</p></article>
+        <article><h3>Generada desde los datos</h3><p>Los números de cada ficha (valores, puntajes, pesos, bandas de robustez) <strong>no se transcriben</strong>: salen del mismo archivo de datos que alimenta las cards del informe y se reconstruyen con cada actualización.</p></article>
+        <article><h3>Decisiones con registro</h3><p>Cada cambio de método queda asentado con fecha en un <strong>registro de decisiones</strong>: qué se cambió, por qué, qué alternativas se descartaron y cómo afectó al valor publicado. Cada ficha publica su historial.</p></article>
+      </div>
+    </section>
+
+    <section class="cg-section">
+      <div class="cg-section-head">
+        <p class="cg-eyebrow">Por qué creerle</p>
+        <h2 class="cg-h2">Los controles que se publican</h2>
+        <p class="cg-h2-sub">Cada uno se puede auditar contra los datos que alimentan el informe.</p>
+      </div>
+      <div class="cg-method-grid">
+        <article>
+          <h3>Robustez publicada</h3>
+          <p>Cada índice se recalcula en <strong>1.000 escenarios</strong> perturbando pesos e insumos (Monte Carlo); la banda donde cae el 90% de los casos se publica junto al valor. Si la lectura dependiera de la ponderación exacta, se vería.</p>
+        </article>
+        <article>
+          <h3>Validación externa</h3>
+          <p>Tres de los cuatro índices se contrastan contra un ancla externa que nadie del proyecto controla — marcha de la actividad (índice macroeconómico), incertidumbre de política en la prensa (índice político) y el factor común de un panel donde no existe una serie de referencia única (índice de impacto social) — y la matriz cruzada compara cada uno contra las tres a la vez, para ver si correlaciona más con la propia que con las ajenas. Hoy no se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período. El índice de gestión no tiene contraste externo, por definición: mide lo que el gobierno hace, y una estadística de afuera o es parte de la misma agenda o mezcla la ejecución con todo lo demás que mueve a la economía.{rs.length > 0 && <Fragment> Hoy: <strong>r {rs.join(" · ")}</strong>.</Fragment>}</p>
+        </article>
+        <article>
+          <h3>Ponderación por fase</h3>
+          <p>El global pondera los cuatro cinturones según el momento del mandato ({fase}): al principio pesan todos igual, porque el mandato todavía está construyendo credibilidad; en la consolidación, macro y política pesan más que gestión. Cada cinturón vigila además su <strong>riesgo de barbarismo</strong> (hoy: {cap(informe.barbarismo_activo)}).</p>
+        </article>
+        <article>
+          <h3>Regla de lectura</h3>
+          <p>Un cinturón tensionado es manejable; <strong>dos o más simultáneos</strong> señalan inestabilidad sistémica. Hoy: {tensionados === 0 ? "ninguno tensionado" : tensionados === 1 ? "1 tensionado" : `${tensionados} tensionados`}.</p>
+        </article>
+      </div>
+    </section>
 
     <section class="cg-section">
       <div class="cg-section-head">
