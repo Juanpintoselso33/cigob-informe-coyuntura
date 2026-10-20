@@ -74,7 +74,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 2% |
 | Peso efectivo en el índice | **0.4%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `conceptual` — faena de vacunos, porcinos y aves per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0339) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -306,7 +306,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 100% |
 | Peso efectivo en el índice | **8.2%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `conceptual` — confianza en el Gobierno rebaseada a la fecha fija 4T-2023, sin invertir (ADR-0345) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 

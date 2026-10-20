@@ -125,7 +125,12 @@ def test_ficha_markdown_de_tarifas_no_recae_en_la_base_temporal():
     )[0]
     card = json.loads((ROOT / "web/src/data/informe.json").read_text(encoding="utf-8"))[
         "cinturones"]["vida_cotidiana"]["indicadores"]["peso_tarifas"]
-    hoy = f"{card['valor']:.1f}".replace(".", ",")
+    # Con el mismo formato que el generador: `coma` recorta los ceros, así que
+    # 13,0 se escribe «13». Con `:.1f` la prueba fallaba el mes que el valor
+    # caía redondo (20-oct-2026), sin que la ficha dijera nada distinto.
+    sys.path.insert(0, str(ROOT / "scripts" / "fichas"))
+    from comun import coma
+    hoy = coma(card["valor"])
     assert f"**Hoy: {hoy} % del salario RIPTE** ({card['fecha_dato'][:7]})" in bloque
     assert "**Color vigente: VERDE**" in bloque
     assert "100 equivale a tensión 5" in bloque
