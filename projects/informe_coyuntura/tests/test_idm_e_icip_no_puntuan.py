@@ -149,6 +149,10 @@ BANDAS_ANTES["icip"] = [(20.0, INF, 100), (5.0, 20.0, 80), (-5.0, 5.0, 60),
 # atribuye acá.
 BANDAS_ANTES["iai"] = [(10.0, INF, 100), (2.0, 10.0, 80), (-2.0, 2.0, 60),
                        (-10.0, -2.0, 35), (-INF, -10.0, 10)]
+# Y el `tcrm` como puntuaba en agosto, solo en su dimensión: ADR-0360 lo
+# reemplazó por el compuesto con los términos del intercambio.
+import terminos_intercambio  # noqa: E402
+BANDAS_ANTES["tcrm"] = list(terminos_intercambio.BANDAS_TCR)
 
 
 def _dimensiones_agosto() -> dict:
@@ -162,6 +166,8 @@ def _dimensiones_agosto() -> dict:
         "ipi_manufacturero": 0.176, "actividad_tributaria": 0.12})
     dims["inversion"] = {"nombre": "Inversión", "peso": 0.12,
                          "indicadores": {"iai": 1.0}}
+    dims["competitividad_externa"] = dict(dims["competitividad_externa"],
+                                          indicadores={"tcrm": 1.0})
     return dims
 
 

@@ -18,6 +18,7 @@ from statistics import fmean, pstdev
 sys.path.insert(0, str(Path(__file__).parent))
 import comarb
 import desequilibrio_monetario
+import terminos_intercambio
 import itcm
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -141,7 +142,7 @@ CINTURON = "macro"
 INDICADORES_ESPERADOS = [
     "ipc_total", "reservas_bcra", "idc", "badlar",
     "emae_ia", "emae_difusion", "ipi_manufacturero", "actividad_tributaria",
-    "saldo_comercial_12m", "recaudacion", "tcrm",
+    "saldo_comercial_12m", "recaudacion", "tcrm", "tcr_terminos_intercambio",
     "rem_ipc_12m", "idm", "desequilibrio_monetario", "iai", "icip",
     "credito_privado", "prestamos_privados", "base_monetaria", "tc_mayorista",
     "costo_financiamiento_tesoro", "resultado_primario",
@@ -1611,6 +1612,51 @@ def fetch_tcrm() -> dict | None:
         return None
 
 
+def _tcr_terminos_intercambio_serie_mensual() -> list[dict]:
+    """Serie común del compuesto tipo de cambio real × términos del intercambio
+    para el titular y el backfill (ADR-0360)."""
+    tcrm = {fecha[:7]: valor for fecha, valor in fetch_itcrm_serie()}
+    return terminos_intercambio.construir_serie(
+        tcrm=tcrm, terminos=terminos_intercambio.fetch_terminos(),
+    )
+
+
+def fetch_tcr_terminos_intercambio() -> dict | None:
+    """Competitividad externa: tipo de cambio real cruzado con los términos del
+    intercambio en una matriz (ADR-0360). Publica el puntaje 0-100."""
+    try:
+        serie = _tcr_terminos_intercambio_serie_mensual()
+        if not serie:
+            raise ValueError("sin meses con los dos componentes")
+        fila = serie[-1]
+        rezago = _rezago_mensual(fila["mes"])
+        if not 0 <= rezago <= DESEQUILIBRIO_MAX_REZAGO_MESES:
+            raise ValueError(f'último mes del tipo de cambio real {fila["mes"]} '
+                             f"fuera del rezago admisible")
+        # Si los términos del intercambio quedaron congelados (más de
+        # MAX_REZAGO_TI_MESES), construir_serie ya descartó los meses
+        # recientes y el último que queda falla el rezago de arriba.
+        return {
+            "valor": fila["puntaje"],
+            "unidad": "puntaje (0-100)",
+            "fuente": ("BCRA (Índice de Tipo de Cambio Real Multilateral) + INDEC "
+                       "(términos del intercambio, vía datos.gob.ar)"),
+            "fecha_dato": f'{fila["mes"]}-01',
+            "desactualizado": False,
+            # Los dos componentes y su posición en la matriz: los consume el
+            # detalle de la card y la ficha metodológica.
+            "tcrm": fila["tcrm"],
+            "terminos_intercambio": fila["terminos_intercambio"],
+            "trimestre_ti": fila["trimestre_ti"],
+            "posicion_tcr": fila["posicion_tcr"],
+            "posicion_ti": fila["posicion_ti"],
+            "celda": fila["celda"],
+        }
+    except Exception as e:
+        _warn("tcr_terminos_intercambio", e)
+        return None
+
+
 def fetch_rem_ipc_12m() -> dict | None:
     try:
         ultimo = _bcra_ultimo(BCRA_REM_IPC_ID)
@@ -2166,6 +2212,7 @@ def main() -> None:
         ("saldo_comercial_12m", fetch_saldo_comercial_12m),
         ("recaudacion",        fetch_recaudacion),
         ("tcrm",               fetch_tcrm),
+        ("tcr_terminos_intercambio", fetch_tcr_terminos_intercambio),
         ("rem_ipc_12m",        fetch_rem_ipc_12m),
         ("idm",                fetch_idm),
         ("desequilibrio_monetario", fetch_desequilibrio_monetario),

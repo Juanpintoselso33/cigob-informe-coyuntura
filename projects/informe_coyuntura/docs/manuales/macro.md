@@ -18,7 +18,7 @@ al ADR.
 | `viabilidad_fiscal_comercial` | 24% | `resultado_primario`, `recaudacion`, `saldo_comercial_12m` |
 | `financiamiento` | 16% | `reservas_bcra`, `idc`, `costo_financiamiento_tesoro`, `credito_privado` |
 | `actividad` | 23% | `emae_ia`, `emae_difusion`, `ipi_manufacturero`, `actividad_tributaria`, `iai` |
-| `competitividad_externa` | 11% | `tcrm` |
+| `competitividad_externa` | 11% | `tcr_terminos_intercambio` |
 
 Suma de pesos: 100%.
 
@@ -236,7 +236,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 30% |
 | Peso efectivo en el índice | **6.9%** |
-| Procedencia del ancla | `convencion` — el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026 |
+| Procedencia del ancla | `convencion` — el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026, corridas +0,17 al crecimiento de la población del INDEC (ADR-0341) |
 
 **Bandas**: > 10.17 → 100 · 2.17–10.17 → 80 · -1.83–2.17 → 60 · -9.83–-1.83 → 35 · ≤ -9.83 → 10
 
@@ -244,19 +244,19 @@ Suma de pesos: 100%.
 
 ### Dimensión `competitividad_externa` (11%)
 
-#### Tipo de cambio real
+#### Tipo de cambio real y términos del intercambio
 
-`tcrm`
+`tcr_terminos_intercambio`
 
 | | |
 |---|---|
 | Peso dentro de la dimensión | 100% |
 | Peso efectivo en el índice | **11.0%** |
-| Procedencia del ancla | `historia_larga` — historia 1997-2026: p10≈75, p25≈87, mediana≈106 — 29 años, cinco gobiernos |
+| Procedencia del ancla | `convencion` — matriz de cuatro esquinas (85/50/30/10) fijada por ADR-0360; posición del tipo de cambio real por sus umbrales de historia 1997-2026 (p10≈75, p25≈87, mediana≈106), pero posición de los términos del intercambio por percentiles p0/p25/p50/p75/p100 de 4T-2023 / 2T-2026 —11 trimestres del período medido— (ADR-0360) |
 
-**Bandas**: > 110 → 100 · 95–110 → 80 · 85–95 → 60 · 75–85 → 35 · ≤ 75 → 10
+**Bandas**: > 60 → 85 · 40–60 → 50 · 20–40 → 30 · ≤ 20 → 10
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón.
+**Lo gobiernan**: [ADR-0360](../adr/0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) La competitividad externa cruza el tipo de cambio real con los términos del intercambio
 
 ## Se releva y no puntúa
 
@@ -270,6 +270,7 @@ histórica.
 - `idm` — Brecha de crecimiento real M3–M2 (declarado como contexto)
 - `prestamos_privados` — Préstamos al sector privado (declarado como contexto)
 - `tc_mayorista` — Tipo de cambio mayorista (declarado como contexto)
+- `tcrm` — Tipo de cambio real (declarado como contexto)
 
 ## Decisiones abiertas
 
@@ -291,7 +292,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-57 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+58 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -350,3 +351,4 @@ histórica.
 - [0321](../adr/0321-descomposicion-no-control-independiente.md) — Es una descomposición del agregado, no un control independiente
 - [0329](../adr/0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) — IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal
 - [0341](../adr/0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) — La inversión física se mide contra el crecimiento de la población
+- [0360](../adr/0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) — La competitividad externa cruza el tipo de cambio real con los términos del intercambio

@@ -921,6 +921,22 @@ def _macro_input_txt(ikey, ind):
                 f"divisas del sector privado US$ {coma(ind['componente_b'])} M"
                 + (f" — {lectura}, medidos contra el régimen abierto"
                    if lectura else ""))
+    if ikey == "tcr_terminos_intercambio" and ind.get("tcrm") is not None:
+        # ADR-0360. «Altos» y «bajos» son posiciones de los términos del
+        # intercambio dentro de su ventana desde fines de 2023, no niveles
+        # absolutos; «competitivo» y «apreciado» salen de los umbrales del tipo
+        # de cambio real (75 a 110).
+        celdas = {
+            "competitivo_ti_altos": "peso competitivo y términos del intercambio altos",
+            "competitivo_ti_bajos": "peso competitivo con términos del intercambio bajos",
+            "apreciado_ti_altos": "peso apreciado sostenido por términos del intercambio altos",
+            "apreciado_ti_bajos": "peso apreciado y términos del intercambio bajos",
+        }
+        lectura = celdas.get(ind.get("celda"), "")
+        return (f"puntaje {coma(ind.get('valor'))} = tipo de cambio real "
+                f"{coma(ind['tcrm'])} × términos del intercambio "
+                f"{coma(ind.get('terminos_intercambio'))} ({ind.get('trimestre_ti')})"
+                + (f" — {lectura}" if lectura else ""))
     if ikey == "iai" and ind.get("componentes"):
         c = ind["componentes"]
         partes = [f"ISAC {coma(c.get('isac'))}%", f"BK importados {coma(c.get('bk_importados'))}%"]

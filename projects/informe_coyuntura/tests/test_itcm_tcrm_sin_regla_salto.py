@@ -15,6 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import itcm
+import terminos_intercambio
 import validacion_externa
 
 
@@ -48,7 +49,12 @@ def test_el_mes_de_la_devaluacion_ya_era_el_peor_de_la_serie():
         f"revisarlo. Los cinco peores: {[(m, serie[m]) for m in orden[:5]]}")
 
     dims = _reconstruido("2023-12")["dimensiones"]
-    assert dims["competitividad_externa"]["puntaje"] == 100.0
+    # Desde ADR-0360 la dimensión cruza el tipo de cambio real con los términos
+    # del intercambio: el salto lleva la posición del tipo de cambio real a su
+    # techo (a = 1), y la dimensión queda en la fila de «peso competitivo»
+    # (50 a 85 según los términos del intercambio). Antes daba 100.
+    assert terminos_intercambio.posicion_tcr(124.88) == 1.0
+    assert dims["competitividad_externa"]["puntaje"] >= 50.0
     assert dims["estabilidad_monetaria"]["puntaje"] < 25.0
     assert (itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]["peso"]
             > itcm.DIMENSIONES_ITCM["competitividad_externa"]["peso"]), (
@@ -68,11 +74,15 @@ def test_no_existe_regla_automatica_para_el_tcrm():
 def test_el_indice_registra_por_si_solo_la_evaporacion_del_salto():
     """La otra mitad del argumento: el índice no necesita anticipar que el
     salto se va a licuar, porque lo ve cuando ocurre. Entre dic-2023 y abr-2024
-    la competitividad baja sola de 100 a ~71 — el ITCRM cayó de 124,9 a 97,0
-    porque la inflación se comió la devaluación."""
+    el ITCRM cayó de 124,9 a 97,0 porque la inflación se comió la devaluación,
+    y la posición del tipo de cambio real en la matriz (ADR-0360) baja sola de
+    1 a ~0,68. Con los términos del intercambio del mismo trimestre en los dos
+    meses, la dimensión baja también (57,5 → 52,3 con el dato de oct-2026)."""
+    assert terminos_intercambio.posicion_tcr(124.88) == 1.0
+    assert 0.6 < terminos_intercambio.posicion_tcr(97.03) < 0.75
     dic = _reconstruido("2023-12")["dimensiones"]["competitividad_externa"]["puntaje"]
     abr = _reconstruido("2024-04")["dimensiones"]["competitividad_externa"]["puntaje"]
-    assert dic == 100.0 and 65.0 < abr < 80.0, (dic, abr)
+    assert dic > abr, (dic, abr)
 
 
 def test_la_regla_del_saldo_comercial_sigue_viva():

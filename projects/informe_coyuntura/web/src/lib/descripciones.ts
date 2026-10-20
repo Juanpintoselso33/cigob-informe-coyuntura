@@ -93,9 +93,14 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Índice de base imponible real (100 = 4T-2023)",
   },
   tcrm: {
-    que: "Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). Mide la dimensión de competitividad externa del índice.",
+    que: "Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). Desde octubre de 2026 no puntúa solo: es uno de los dos componentes del indicador de competitividad externa, junto con los términos del intercambio.",
     aporta: "Una apreciación real (peso caro) frena exportaciones y la acumulación de reservas, y suele anticipar presión cambiaria: cuanto más apreciado, más tensión. Un peso más competitivo afloja esa restricción.",
     frecuencia: "Mensual", tipo: "Índice",
+  },
+  tcr_terminos_intercambio: {
+    que: "Una medida de 0 a 100 que cruza dos datos: si el peso está caro o barato frente a los socios comerciales en términos reales (el tipo de cambio real multilateral del Banco Central) y cuánto valen las exportaciones argentinas frente a lo que se importa (los términos del intercambio del Instituto Nacional de Estadística y Censos). Mide la dimensión de competitividad externa del índice. Hasta octubre de 2026 esa dimensión miraba sólo el tipo de cambio real.",
+    aporta: "El tipo de cambio real dice si el peso está caro, pero no si ese nivel se sostiene. Un peso apreciado con buenos precios de exportación no es la misma situación que el mismo peso con precios en caída. Por eso los dos se cruzan en una matriz y no se promedian: con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil. Los términos del intercambio se publican por trimestre, con unos dos meses y medio de demora: cada mes usa el último trimestre publicado.",
+    frecuencia: "Mensual (términos del intercambio, trimestral)", tipo: "Puntaje 0–100",
   },
   rem_ipc_12m: {
     que: "La inflación que el mercado espera para los próximos 12 meses.",
@@ -497,7 +502,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   viabilidad_fiscal_comercial: "Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real es el sostén del ancla fiscal y el saldo comercial, los dólares genuinos del intercambio.",
   financiamiento: "Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.",
   actividad: "Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.",
-  competitividad_externa: "Si el tipo de cambio real alcanza para competir: el índice de tipo de cambio real multilateral oficial del Banco Central contra su propia historia.",
+  competitividad_externa: "Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene: el tipo de cambio real multilateral oficial del Banco Central cruzado con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación).",
   // ITCG
   reformas_economicas: "El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.",
   reforma_estado: "El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario.",

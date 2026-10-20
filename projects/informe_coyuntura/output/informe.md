@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-20 03:30:39"
+generado: "2026-10-20 12:12:06"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -30,6 +30,7 @@ schema_version: "1.2.0"
 | saldo_comercial_12m | 26472.0 | Millones de USD (acum. 12 meses) | 2026-09-01 | fresco |
 | recaudacion | 91.3 | índice (100 = 4T-2023) | 2026-08-01 | fresco |
 | tcrm | 85.87 | Índice (base dic-2015=100) | 2026-09-01 | fresco |
+| tcr_terminos_intercambio | 49.8 | puntaje (0-100) | 2026-09-01 | fresco |
 | rem_ipc_12m | 21.1 | % anual esperado | 2026-09-30 | fresco |
 | idm | 2.15 | pp (brecha i.a. real) | 2026-08-01 | fresco |
 | desequilibrio_monetario | 64.01 | pts de tensión (0-100) | 2026-08-01 | fresco |
@@ -123,4 +124,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,veto_quorum,bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-10-20 03:30:39 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-20 12:12:06 — schema 1.2.0*

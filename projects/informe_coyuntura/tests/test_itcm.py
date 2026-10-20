@@ -18,7 +18,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import itcm
 
 # Fixture mayo 2026 con la metodología REVISADA. Los valores de rem_ipc_12m,
-# reservas_bcra, recaudacion, idc y tcrm son los que el colector alimenta.
+# reservas_bcra, recaudacion e idc son los que el colector alimenta.
 # `idm` e `icip` NO están: salieron del índice el 25-ago-2026 (ADR-0261/0262) y
 # pasaron a contexto, así que ya no tienen banda ni peso que pinear.
 # Desde el ADR-0021 el puntaje es INTERPOLADO entre las anclas de las bandas
@@ -33,7 +33,10 @@ import itcm
 #   * reservas_bcra= NETAS (Machado). 1.881M → 25,0 (banda 30).
 #   * idc          = IdC en z-scores (σ vs. historia, ADR-0028). −0,31 → 49,7 (banda 60).
 #   * presión dolarización = presión 0-100 sensible al régimen. 45,24 → 64,8.
-#   * tcrm         = ITCRM (base 2015=100). 84,3 → 45,7 (banda 35).
+#   * tcr_terminos_intercambio = puntaje 0-100 de la matriz tipo de cambio
+#     real × términos del intercambio (ADR-0360); el valor YA es el puntaje:
+#     45,7 → 45,7. Hasta el 20-oct-2026 la dimensión puntuaba el ITCRM solo
+#     (84,3 → 45,7), y el fixture conserva ese número para no mover el ITCM.
 #   * iai          = inversión física (% i.a.). −4,2 → 41,8 (banda 35; escala
 #     corrida +0,17 al crecimiento de la población, ADR-0341). Desde el
 #     16-oct-2026 puntúa dentro de «Actividad e inversión» con 30%.
@@ -58,7 +61,7 @@ EJEMPLO = {
     "credito_privado": 26.0,       # % i.a. real: 80,0 (banda 85)
     "costo_financiamiento_tesoro": 8.07,  # tasa real: 78,9 (U invertida, tramo 6-12)
     "emae_ia": 5.48,               # más allá de la última ancla → 100 plano
-    "tcrm": 84.3,                  # ITCRM: 45,7 (banda 35)
+    "tcr_terminos_intercambio": 45.7,  # puntaje de la matriz (anclas identidad)
     "iai": -4.2,                   # inversión física: 41,8 (banda 35)
 }
 
@@ -223,11 +226,12 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(50.01, b["desequilibrio_monetario"]) == 35
     assert itcm.puntaje_banda(80.0, b["desequilibrio_monetario"]) == 35
     assert itcm.puntaje_banda(80.01, b["desequilibrio_monetario"]) == 10
-    # TCRM: apreciación (nivel bajo) = más tensión
-    assert itcm.puntaje_banda(110.1, b["tcrm"]) == 100         # competitivo
-    assert itcm.puntaje_banda(110.0, b["tcrm"]) == 80          # high inclusivo
-    assert itcm.puntaje_banda(85.0, b["tcrm"]) == 35           # apreciación marcada
-    assert itcm.puntaje_banda(74.9, b["tcrm"]) == 10           # atraso severo
+    # Competitividad externa (ADR-0360): los tramos son los cuatro colores y su
+    # puntaje, la esquina de la matriz que cae en cada uno.
+    assert itcm.puntaje_banda(60.1, b["tcr_terminos_intercambio"]) == 85
+    assert itcm.puntaje_banda(60.0, b["tcr_terminos_intercambio"]) == 50   # high inclusivo
+    assert itcm.puntaje_banda(40.0, b["tcr_terminos_intercambio"]) == 30
+    assert itcm.puntaje_banda(20.0, b["tcr_terminos_intercambio"]) == 10
     # IAI: mayor crecimiento de inversión física = menos tensión, bandas anchas
     # corridas +0,17 al crecimiento de la población (ADR-0341)
     assert itcm.puntaje_banda(10.17, b["iai"]) == 80           # high inclusivo
@@ -294,10 +298,10 @@ def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
 
 
 def test_renormalizacion_dimension_faltante():
-    """Sin TCRM, la dimensión competitividad desaparece y los pesos se
+    """Sin el compuesto de competitividad externa, la dimensión competitividad desaparece y los pesos se
     renormalizan. (Antes se probaba sin EMAE, pero desde el 16-oct-2026 la
     actividad no se queda vacía sin él: le queda la inversión física.)"""
-    valores = dict(EJEMPLO, tcrm=None)
+    valores = dict(EJEMPLO, tcr_terminos_intercambio=None)
     r = itcm.calcular_itcm(valores)
     assert "competitividad_externa" not in r["dimensiones"]
     # estab=67.1 fiscal=78.5 financ=54.7 actividad e inversión=73.9, sin competitividad (0.11)
@@ -317,9 +321,10 @@ def test_sin_indicadores_devuelve_none():
     assert itcm.calcular_itcm({}) is None
     # base_monetaria es contexto: no integra el índice
     assert itcm.calcular_itcm({"base_monetaria": 0.7}) is None
-    # tcrm AHORA integra el índice (competitividad externa): ya no devuelve None
-    # (84,3 interpolado entre las anclas 80(35) y 102,5(80) → 45,7)
-    assert itcm.calcular_itcm({"tcrm": 84.3})["valor"] == 45.7
+    # el tcrm volvió a contexto (ADR-0360): solo, no integra el índice
+    assert itcm.calcular_itcm({"tcrm": 84.3}) is None
+    # el compuesto sí, y su valor ya es el puntaje
+    assert itcm.calcular_itcm({"tcr_terminos_intercambio": 45.7})["valor"] == 45.7
 
 
 def test_contexto_no_altera_el_indice():

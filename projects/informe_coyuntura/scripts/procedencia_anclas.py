@@ -110,7 +110,14 @@ TECHOS = {
     # Juan): el IAI, de ancla de convención, pasa de pesar 12% del ITCM a 6,9%,
     # y su lugar lo toman los indicadores de actividad, de ancla conceptual.
     # Ninguna banda cambió: es puro repeso. Medido: 27,3%.
-    "ITCM": {"circular": 0.28, "sin_declarar": 0.01},
+    # SUBE a 0,39 el 2026-10-20 (ADR-0360), y es una decisión tomada: la
+    # competitividad externa (11%) pasa del tipo de cambio real solo, calibrado
+    # con 29 años de historia, a un compuesto cuya posición de términos del
+    # intercambio sale de percentiles de la ventana desde dic-2023. La
+    # dimensión entera pasa de historia larga a convención. Se baja de nuevo
+    # si los cortes de los términos del intercambio se recalibran con la
+    # historia desde 2004.
+    "ITCM": {"circular": 0.39, "sin_declarar": 0.01},
     # ITCG y ITCP bajaron el 2026-07-20 (ADR-0121) al declarar el origen de sus
     # bandas sin_declarar: los medidores de avance 0-100 (ITCG) y los indicadores
     # anclados al cero (ITCP: ventaja electoral, quórum, transferencias) eran
@@ -149,7 +156,13 @@ PROCEDENCIA = {
     "emae_difusion": ("conceptual", "cortes por CANTIDAD DE SECTORES (14-15 generalizado · 11-13 mayoría amplia · 8-10 ajustada · 5-7 minoría · 0-4 contracción), puestos en el hueco entre valores alcanzables; explícitamente NO se ancló en el 50% de manual porque la mediana histórica argentina es 73,3% (ADR-0124)"),
     "ipi_manufacturero": ("conceptual", "hereda las bandas del EMAE a propósito para dejar ver la brecha industria-actividad, con cita a ADR-0045 (ADR-0076/0079)"),
     "actividad_tributaria": ("historia_larga", "cortes redondos de 5 puntos en torno al cero, calibrados contra los 105 meses de la serie propia (dic-2017/ago-2026, la ventana que permite el IPC como deflactor) para que ninguno de los seis tramos concentre más de la quinta parte de la historia (ADR-0329)"),
-    "tcrm": ("historia_larga", "historia 1997-2026: p10≈75, p25≈87, mediana≈106 — 29 años, cinco gobiernos"),
+    # ADR-0360: el tipo de cambio real dejó de puntuar solo. Su posición «a»
+    # en la matriz sigue saliendo de los umbrales de historia larga
+    # (1997-2026), pero la posición «b» de los términos del intercambio sale de
+    # percentiles de la ventana 4T-2023 / 2T-2026: el compuesto hereda la
+    # categoría más circular de sus dos componentes, igual que el
+    # desequilibrio monetario.
+    "tcr_terminos_intercambio": ("convencion", "matriz de cuatro esquinas (85/50/30/10) fijada por ADR-0360; posición del tipo de cambio real por sus umbrales de historia 1997-2026 (p10≈75, p25≈87, mediana≈106), pero posición de los términos del intercambio por percentiles p0/p25/p50/p75/p100 de 4T-2023 / 2T-2026 —11 trimestres del período medido— (ADR-0360)"),
     "resultado_primario": ("convencion", "referencias dic-2023 (−12,0%) y el programa estabilizado en +6/+8% (ADR-0072)"),
     # ADR-0266: decía `convencion` y "extremos tomados de dic-2023 y ago-2025",
     # que confundía la VALIDACIÓN con el ORIGEN. Los cortes de ADR-0071 son

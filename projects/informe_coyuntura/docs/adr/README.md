@@ -121,6 +121,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0329](0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) | IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal | `actividad_tributaria` | vigente |
 | [0331](0331-la-inversion-tecnologica-no-tiene-serie-que-la-sostenga.md) | La inversión tecnológica no tiene serie que la sostenga | `icip`, `iai` | rechazado |
 | [0341](0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) | La inversión física se mide contra el crecimiento de la población | `iai` | vigente |
+| [0360](0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) | La competitividad externa cruza el tipo de cambio real con los términos del intercambio | `tcrm`, `tcr_terminos_intercambio` | vigente |
 
 ### Política (ITCP)
 

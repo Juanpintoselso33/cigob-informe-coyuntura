@@ -249,12 +249,16 @@ BANDAS_ITCM = {
         (10.0, INF, 100), (5.0, 10.0, 80), (0.0, 5.0, 60),
         (-5.0, 0.0, 40), (-10.0, -5.0, 20), (-INF, -10.0, 5),
     ],
-    "tcrm": [                           # ITCRM oficial del BCRA (base 17-dic-2015=100)
-        # Apreciación real = pérdida de competitividad y atraso cambiario = más tensión.
-        # Bandas calibradas con la historia 1997-2026 (p10≈75, p25≈87, mediana≈106):
-        # >110 competitivo · 95-110 cómodo (~nivel 2015) · 85-95 apreciación moderada ·
-        # 75-85 apreciación marcada · ≤75 atraso severo.
-        (110.0, INF, 100), (95.0, 110.0, 80), (85.0, 95.0, 60), (75.0, 85.0, 35), (-INF, 75.0, 10),
+    # tcrm dejó de puntuar solo (ADR-0360): sus umbrales institucionales viven
+    # ahora en terminos_intercambio.BANDAS_TCR y dan la posición «a» del
+    # compuesto de abajo.
+    "tcr_terminos_intercambio": [       # puntaje 0-100 de la matriz TCR × TI (ADR-0360)
+        # El valor crudo YA ES el puntaje: terminos_intercambio.py resuelve la
+        # matriz por interpolación bilineal entre 10 · 30 · 50 · 85, que caen en
+        # el medio de cada color del Monitor. Estos tramos son la escala de
+        # severidad y nada más; el puntaje continuo sale de ANCLAS_ITCM, que es
+        # la identidad.
+        (60.0, INF, 85), (40.0, 60.0, 50), (20.0, 40.0, 30), (-INF, 20.0, 10),
     ],
     "resultado_primario": [             # % de la recaudación (acum. 12 meses)
         # ADR-0072. Superávit primario del SPN sobre recaudación, ventana de 12
@@ -331,6 +335,8 @@ ANCLAS_ITCM = {
     # cruzadas valen lo mismo desde ADR-0257: la recta no se entera, porque
     # traduce tensión a puntaje y no depende de cuántos valores distintos haya.
     "desequilibrio_monetario": ((0.0, 100.0), (100.0, 0.0)),
+    # ADR-0360: el compuesto publica directamente el puntaje de la matriz.
+    "tcr_terminos_intercambio": ((0.0, 0.0), (100.0, 100.0)),
 }
 
 # Dimensiones del índice con su peso y la ponderación interna de indicadores.
@@ -463,7 +469,9 @@ DIMENSIONES_ITCM = {
     "competitividad_externa": {
         "nombre": "Competitividad externa",
         "peso": 0.11,
-        "indicadores": {"tcrm": 1.0},
+        # ADR-0360: el tipo de cambio real cruzado con los términos del
+        # intercambio. Antes, el tipo de cambio real solo (ADR-0009).
+        "indicadores": {"tcr_terminos_intercambio": 1.0},
     },
     # La dimensión "inversion" (12%, sólo el IAI desde ADR-0262) se fusionó con
     # "actividad" el 16-oct-2026: ver el comentario de esa dimensión.
@@ -489,7 +497,9 @@ INTERPRETACION_LEGIBLE = {
 # Indicadores macro que se publican pero no integran el índice.
 # badlar: ya no integra el índice (la dimensión de financiamiento usa el IdC);
 # se sigue publicando como contexto e insumo del IdC (tasa pasiva de referencia).
-# tcrm SALIÓ de contexto: ahora puntúa en la dimensión competitividad_externa.
+# tcrm volvió a contexto con ADR-0360: no puntúa solo, entra como componente del
+# compuesto tcr_terminos_intercambio (se sigue bajando, publicando en series y
+# mostrando dentro del modal del compuesto).
 #
 # idm (ADR-0261) e icip (ADR-0262) ENTRARON acá el 25-ago-2026. Los dos siguen
 # calculándose, publicándose en `output/series/macro.csv` y viajando a BigQuery:
@@ -500,7 +510,7 @@ INTERPRETACION_LEGIBLE = {
 #     con el mismo, así que ninguna dimensión lo arregla.
 # Ver los dos ADR: no alcanzaba con moverlos ni con recalibrarlos.
 INDICADORES_CONTEXTO = ["badlar", "prestamos_privados", "base_monetaria", "tc_mayorista",
-                        "idm", "icip"]
+                        "idm", "icip", "tcrm"]
 
 
 def puntaje_banda(valor: float, bandas: list) -> int:

@@ -6,6 +6,7 @@ nota_estado: '**Rechazado** (implementado y revertido el 18-jul-2026)'
 fecha: 2026-07-18
 cinturon: 'macro'
 indicadores: [tcrm]
+relacionado: ['0360']
 ambito: 'Cinturón macro · ITCM · dimensión Competitividad externa · `tcrm`'
 origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 5'
 ---

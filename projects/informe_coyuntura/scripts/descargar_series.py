@@ -365,6 +365,24 @@ def fetch_desequilibrio_monetario_serie(
     ][-meses:]
 
 
+def fetch_tcr_terminos_intercambio_serie(meses: int | None = None) -> list:
+    """Serie del puntaje 0-100 del compuesto tipo de cambio real × términos del
+    intercambio, construida por el mismo helper que alimenta el titular
+    (ADR-0360). Arranca en diciembre de 2023."""
+    meses = meses or _meses_desde_asuncion()
+    serie = macro._tcr_terminos_intercambio_serie_mensual()
+    return [[f'{fila["mes"]}-01', fila["puntaje"]] for fila in serie][-meses:]
+
+
+def fetch_terminos_intercambio_serie(meses: int | None = None) -> list:
+    """Términos del intercambio del INDEC (base 2004=100), un punto por
+    trimestre fechado en su primer mes. Acompaña al compuesto en el modal
+    (ADR-0360), no puntúa solo."""
+    import terminos_intercambio
+    serie = terminos_intercambio.fetch_terminos()
+    return [[f"{q}-01", round(v, 2)] for q, v in serie.items() if q >= "2016-01"]
+
+
 def fetch_idc_serie(meses: int | None = None) -> list:
     """Serie mensual del Índice de Capacidad Prestable, con la misma fórmula que el
     indicador en macro.py (_idc_componentes) sobre stocks de fin de mes. Devuelve
@@ -892,6 +910,13 @@ MACRO_DERIVADAS = [
     ("cuenta_corriente", "M USD (acum. 4 trimestres)", "INDEC — balanza de pagos (vía datos.gob.ar)", fetch_cuenta_corriente_serie),
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
     ("tcrm", "índice (base dic-2015)", "BCRA ITCRM", fetch_tcrm_serie),
+    ("tcr_terminos_intercambio", "puntaje (0-100)",
+     "BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)",
+     fetch_tcr_terminos_intercambio_serie),
+    # acompaña al compuesto en el modal, no puntúa solo (ADR-0360)
+    ("terminos_intercambio", "índice (base 2004=100)",
+     "INDEC — términos del intercambio (vía datos.gob.ar)",
+     fetch_terminos_intercambio_serie),
     # bilaterales oficiales de la misma planilla (descarga memoizada): el
     # gráfico comparado del modal del TCRM, como lo presenta el propio BCRA
     ("tcrm_bilateral_brasil", "índice (base dic-2015)", "BCRA ITCRM",

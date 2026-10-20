@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 74,8 | VERDE | 24,0 % |
 | Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 40,7 | AMARILLO | 23,0 % |
 | Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 63,5 | VERDE | 16,0 % |
-| Competitividad externa | Si el tipo de cambio real alcanza para competir: el índice de tipo de cambio real multilateral oficial del Banco Central contra su propia historia. | 49,7 | AMARILLO | 11,0 % |
+| Competitividad externa | Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene. | 49,8 | AMARILLO | 11,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -80,7 +80,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Crédito privado real | Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el… | −0,3 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
 | Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 6,22 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
 | **DIMENSIÓN: Competitividad externa** | | | | |
-| Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). | 85,87 Índice (base dic-2015=100) | AMARILLO | 11,0 % |
+| Tipo de cambio real y términos del intercambio | Una medida de 0 a 100 que cruza dos datos. | 49,8 puntaje (0-100) | AMARILLO | 11,0 % |
 
 *Datos al 2026-10-20.*
 
@@ -895,7 +895,7 @@ Dato vigente: 91,3 índice (100 = 4T-2023) (2026-08).
 
 Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta card, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica. Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al índice macroeconómico (0,24×0,30) contra 1,32% de `actividad_tributaria` (0,11×0,12). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcrm` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.
+- **Participación en otros indicadores.** IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta card, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica. Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al índice macroeconómico (0,24×0,30) contra 1,32% de `actividad_tributaria` (0,11×0,12). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcr_terminos_intercambio` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.
 
 ## Transparencia — limitaciones declaradas
 
@@ -950,36 +950,40 @@ Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Tipo de cambio real
+# Tipo de cambio real y términos del intercambio
 
-Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). Mide la dimensión de competitividad externa del índice.
+Una medida de 0 a 100 que cruza dos datos: si el peso está caro o barato frente a los socios comerciales en términos reales (el tipo de cambio real multilateral del Banco Central) y cuánto valen las exportaciones argentinas frente a lo que se importa (los términos del intercambio del Instituto Nacional de Estadística y Censos). Mide la dimensión de competitividad externa del índice. Hasta octubre de 2026 esa dimensión miraba sólo el tipo de cambio real.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 85,87 Índice (base dic-2015=100)** (2026-09) | **AMARILLO** | Peso efectivo 11 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 49,8 puntaje (0-100)** (2026-09) | **AMARILLO** | Peso efectivo 11 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | tcrm | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Competitividad externa | **UNIDAD DE MEDIDA** | Índice (base dic-2015=100) |
-| **SERIE DISPONIBLE** | 2023-11 → 2026-09 (35 puntos) | **REZAGO DE PUBLICACIÓN** | La planilla oficial se actualiza a diario; el promedio mensual del mes cerrado está disponible en los primeros días del mes siguiente. |
-| **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | ITCRM — Índice de Tipo de Cambio Real Multilateral (base 17-dic-2015 = 100), promedios mensuales |
-| **MODO DE ACCESO** | Automático: descarga y lectura de la planilla oficial; una sola descarga por actualización sirve al índice y a los bilaterales de contexto. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-20 |
+| **IDENTIFICADOR TÉCNICO** | tcr_terminos_intercambio | **CINTURÓN** | Macroeconomía |
+| **DIMENSIÓN EN EL ITCM** | Competitividad externa | **UNIDAD DE MEDIDA** | puntaje (0-100) |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El tipo de cambio real se publica a diario y su promedio mensual está disponible en los primeros días del mes siguiente. Los términos del intercambio son trimestrales y salen con unos dos meses y medio de demora: cada mes usa el último trimestre publicado, y la card lo declara. |
+| **PRODUCTOR DEL DATO** | BCRA e INDEC | **OPERACIÓN ESTADÍSTICA** | ITCRM — Índice de Tipo de Cambio Real Multilateral del BCRA (base 17-dic-2015 = 100), promedios mensuales; e índice de términos del intercambio del INDEC (índices de precios y cantidades del comercio exterior, base 2004 = 100), trimestral |
+| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del BCRA y de la serie del INDEC publicada en datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-20 |
 
 ## Definición — qué mide y por qué importa
 
-Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). Mide la dimensión de competitividad externa del índice.
+Una medida de 0 a 100 que cruza dos datos: si el peso está caro o barato frente a los socios comerciales en términos reales (el tipo de cambio real multilateral del Banco Central) y cuánto valen las exportaciones argentinas frente a lo que se importa (los términos del intercambio del Instituto Nacional de Estadística y Censos). Mide la dimensión de competitividad externa del índice. Hasta octubre de 2026 esa dimensión miraba sólo el tipo de cambio real.
 
-Una apreciación real (peso caro) frena exportaciones y la acumulación de reservas, y suele anticipar presión cambiaria: cuanto más apreciado, más tensión. Un peso más competitivo afloja esa restricción.
+El tipo de cambio real dice si el peso está caro, pero no si ese nivel se sostiene. Un peso apreciado con buenos precios de exportación no es la misma situación que el mismo peso con precios en caída. Por eso los dos se cruzan en una matriz y no se promedian: con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil. Los términos del intercambio se publican por trimestre, con unos dos meses y medio de demora: cada mes usa el último trimestre publicado.
 
-**Dimensión que integra — Competitividad externa.** Si el tipo de cambio real alcanza para competir: el índice de tipo de cambio real multilateral oficial del Banco Central contra su propia historia.
+**Dimensión que integra — Competitividad externa.** Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene: el tipo de cambio real multilateral oficial del Banco Central cruzado con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación).
 
 ## Método de cómputo
 
-- Ninguna sobre el valor: se publica el promedio mensual oficial tal cual.
-- La lectura del puntaje es invertida: un índice más bajo (peso más caro en términos reales) significa menos competitividad y más tensión.
+- Posición del tipo de cambio real (de 0 a 1): sale de sus umbrales de siempre, calibrados con la historia 1997-2026. El valor se lleva primero a su puntaje institucional —75 o menos da 10, 80 da 35, 90 da 60, 102,5 da 80 y 110 o más da 100, interpolado entre esos puntos— y después a la posición: puntaje menos 10, dividido 90. No usa una ventana estadística, para no depender de su punto de arranque: diciembre de 2023 fue el pico de la devaluación y la habría vuelto la referencia de «competitivo».
+- Posición de los términos del intercambio (de 0 a 1): el índice del último trimestre publicado se ubica entre los percentiles de la serie desde el cuarto trimestre de 2023 hasta el segundo de 2026, con saturación fuera de los extremos: 129,7 → 0; 138,1 → 0,25; 140,4 → 0,50; 143,63 → 0,75; 148,15 → 1. Los cortes quedan congelados.
+- Un trimestre cuenta como publicado a partir del tercer mes posterior a su cierre: el segundo trimestre (abril a junio) entra en septiembre. No se imputa ni se anticipa con otra serie.
+- Las dos posiciones se cruzan entre las cuatro esquinas de la matriz, por interpolación bilineal: peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Las cuatro esquinas caen en el medio de cada color del Monitor.
+- La matriz es asimétrica a propósito: un peso competitivo con términos bajos puntúa mejor que uno apreciado con términos altos. Con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil, y si los precios se dan vuelta no queda colchón.
+- El valor publicado ya es el puntaje que entra al índice macroeconómico. Es el único indicador de la dimensión competitividad externa, que pesa 11%.
 
 ## Semáforo — valores que determinan el color
 
@@ -987,41 +991,43 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (Índice (base dic-2015=100)) | Color |
+| Rango (puntaje (0-100)) | Color |
 |---|---|
-| ≥ 90 | VERDE |
-| 82 – 90 | AMARILLO |
-| 77 – 82 | NARANJA |
-| ≤ 77 | ROJO |
+| ≥ 60 | VERDE |
+| 40 – 60 | AMARILLO |
+| 20 – 40 | NARANJA |
+| ≤ 20 | ROJO |
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (85,87 Índice (base dic-2015=100)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- puntaje 49,8 = tipo de cambio real 85,87 × términos del intercambio 145,14 (2T-2026) — peso apreciado sostenido por términos del intercambio altos
 
 ## Color vigente y por qué
 
-Dato vigente: 85,87 Índice (base dic-2015=100) (2026-09).
+Dato vigente: 49,8 puntaje (0-100) (2026-09).
 
-85,87 Índice (base dic-2015=100) cae en el tramo que corresponde a Amarillo, a 3,87 del corte más cercano.
+49,8 puntaje (0-100) cae en el tramo que corresponde a Amarillo, a 9,8 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCM: 11 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Los tipos de cambio bilaterales con Brasil y Estados Unidos, de la misma planilla, se publican como series de contexto en el gráfico del indicador.
+- **Participación en otros indicadores.** El tipo de cambio real y los términos del intercambio se siguen bajando y publicando como series. Los tipos de cambio bilaterales con Brasil y Estados Unidos, de la misma planilla del BCRA, también.
 
 ## Transparencia — limitaciones declaradas
 
-- Depende de una planilla con dirección y formato fijos: si el BCRA los cambia, el indicador cae a una serie alternativa discontinuada, marcada como desactualizada.
-- Las bandas y el peso de la dimensión (11%) son operacionalización propia calibrada con la historia 1997-2026 — el documento institucional no los define.
+- La ventana de los términos del intercambio es corta: once trimestres. Los cortes pueden ser inestables y se revisan cuando la serie crezca. Como se calibran contra el período que se está midiendo, son una convención del Monitor y no un umbral externo.
+- Repetir el último trimestre publicado hace que la parte de los términos del intercambio se mueva por saltos, una vez cada tres meses.
+- «Términos altos» y «bajos» son posiciones dentro de la ventana desde fines de 2023, no niveles en abstracto: la lectura del cuadrante toma como altos los trimestres de la mitad superior (desde la mediana, 140,4), y el puntaje usa la posición continua.
+- Los umbrales del tipo de cambio real y el peso de la dimensión (11%) son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Con la planilla caída, cae a la serie histórica alternativa (discontinuada a fines de 2024, marcada desactualizada); agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.
+- **Si falta el dato:** Un mes entra sólo si tiene tipo de cambio real y algún trimestre de términos del intercambio publicado. Si los términos del intercambio quedan más de nueve meses detrás del mes que se puntúa, el indicador no se actualiza y la card conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.
 
-- **Política de revisiones:** El índice oficial no se revisa hacia atrás de forma habitual; la serie del informe se reconstruye completa de la planilla en cada actualización.
+- **Política de revisiones:** Las revisiones del INDEC y del BCRA se incorporan en la siguiente actualización, porque la serie se reconstruye completa en cada corrida. Los cortes de los términos del intercambio quedan congelados: no se recalculan con cada corrida, para que el puntaje de un mes sea reproducible.
 
 ## Historial — cambios metodológicos documentados
 
@@ -1034,6 +1040,8 @@ Ponderación vigente en el ITCM: 11 % efectivo. El color es una lectura adiciona
 **2026-07-03** — Puntaje interpolado entre anclas.
 
 **2026-09-15** — El rótulo de la card pasa de «Tipo de cambio real (TCRM)» a «Tipo de cambio real». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+
+**2026-10-20** — La dimensión competitividad externa deja de puntuar el tipo de cambio real solo y pasa a cruzarlo con los términos del intercambio del INDEC en una matriz. El tipo de cambio real dice si el peso está caro o barato; los términos del intercambio, si ese nivel se sostiene. El tipo de cambio real se sigue publicando como serie, pero ya no como card propia, y conserva sus umbrales de siempre como uno de los dos componentes. El peso de la dimensión no cambia (11%). Con los datos de septiembre de 2026, el tipo de cambio real solo daba 49,7 puntos y el compuesto da 49,8.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1212,7 +1220,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 - La ventana con la que se lo CALIBRA, en cambio, es la misma que la del componente B: desde abril de 2025, la apertura del cepo a personas humanas. Es una distinción que importa. Bajo cepo, un ratio alto de pesos transaccionales no mide confianza en el peso: mide que no había otro lugar donde ponerlos, igual que la compra de divisas daba casi cero por falta de acceso y no por tranquilidad. Calibrar contra 2021-2026 mezclaba los dos regímenes, y las distribuciones casi no se tocan: bajo cepo el ratio corría entre 33,1% y 50,0% con una mediana de 40,3%, y en régimen abierto corre entre 30,6% y 37,7% con una mediana de 32,8% — el máximo del régimen abierto queda por debajo de la mediana del cepo. El efecto era que el componente A quedaba pegado a su piso casi todos los meses y el indicador funcionaba, en los hechos, con uno solo de sus dos componentes.
 - El componente B tiene sólo quince meses de historia bajo el régimen abierto. Los cortes por percentiles deberán revisarse cuando haya más evidencia posterior a la apertura del cepo.
 - Los cortes por percentiles hacen que verde signifique el mejor cuarto de la ventana de calibración, que es un período de dolarización alta, y no un nivel deseable en abstracto. Cuando un componente se mueve cerca del extremo de su ventana, su posición se satura y el indicador deja de distinguir entre meses: la tabla de anclas y la serie muestran dónde está cayendo.
-- El denominador del componente A incluye depósitos en dólares valuados en pesos, así que una devaluación baja el ratio aunque nadie cambie de cartera. El efecto es visible en diciembre de 2023 y en julio de 2025. La tensión cambiaria que eso refleja ya puntúa además por su cuenta en el TCRM.
+- El denominador del componente A incluye depósitos en dólares valuados en pesos, así que una devaluación baja el ratio aunque nadie cambie de cartera. El efecto es visible en diciembre de 2023 y en julio de 2025. La tensión cambiaria que eso refleja ya puntúa además por su cuenta en la competitividad externa, a través del tipo de cambio real.
 - El componente A tiene estacionalidad de aguinaldo: junio promedia 1,7 puntos porcentuales por encima de la media y diciembre 1,2. Es chico frente al rango del indicador y no se corrige.
 - La ficha original nombra el componente B como formación de activos externos del sector privado no financiero. El BCRA ya no publica ese rubro con ese nombre —reserva esa etiqueta para el sector financiero y el público— y lo del privado no financiero sale bajo el concepto 03, que es el que se usa.
 - El componente B no distingue los dólares que quedan depositados en el sistema local de los que van al colchón. La ficha original describía esa distinción, pero ninguna serie publicada del balance cambiario la hace.
