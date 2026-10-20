@@ -41,7 +41,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   idc: {
     latex: String.raw`\begin{gathered}0{,}30\cdot\underbrace{z_{\text{tasa real}}}_{\text{precio}}\;+\;0{,}40\cdot\underbrace{z_{\text{dep\'ositos}}}_{\text{volumen}}\;+\;0{,}30\cdot\underbrace{z_{\text{holgura}}}_{\text{asignaci\'on}}\\[4pt] z=\frac{\text{nivel de hoy}-\text{promedio hist\'orico}}{\text{desv\'io hist\'orico}}\end{gathered}`,
-    leyenda: "Cada componente se compara con su propia historia (2018 a hoy) y se expresa en desvíos estándar: la tasa real que reciben los depositantes, el crecimiento interanual real de los depósitos privados (la comparación interanual absorbe la estacionalidad) y la holgura que queda para prestar (1 − préstamos/depósitos). Cero es el mes histórico típico; por encima de +0,5 la capacidad de fondeo es mayor a la habitual, por debajo de −0,5, menor.",
+    leyenda: "Cada componente se compara con su propia historia (2018 a hoy) y se expresa en desvíos estándar: la tasa real que reciben los depositantes, el crecimiento interanual real de los depósitos privados (la comparación interanual absorbe la estacionalidad) y la holgura que queda para prestar (1 − préstamos/depósitos). Cero es el mes histórico típico; por encima, la capacidad de fondeo es mayor a la habitual, y por debajo, menor. En el semáforo de la tarjeta, desde 0 es verde, de −0,6 a 0 amarillo, de −0,9 a −0,6 naranja y por debajo de −0,9 rojo.",
   },
   credito_privado: {
     latex: String.raw`\left(\frac{1+\text{crecim. nominal del cr\'edito}}{1+\text{inflaci\'on}}-1\right)\times 100`,

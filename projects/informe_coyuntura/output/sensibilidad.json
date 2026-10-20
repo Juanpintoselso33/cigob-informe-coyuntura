@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-20T13:33:23.245594-03:00",
+    "snapshot": "2026-10-20T14:33:07.399118-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -14,40 +14,40 @@
     "experimentos": {
       "pesos": {
         "media": 61.9,
-        "p05": 60.4,
+        "p05": 60.6,
         "p95": 63.3,
-        "desvio": 0.88
+        "desvio": 0.81
       },
       "combinado": {
-        "media": 61.9,
-        "p05": 59.9,
+        "media": 62.0,
+        "p05": 60.1,
         "p95": 63.9,
-        "desvio": 1.2
+        "desvio": 1.15
       },
       "insumos": {
-        "media": 61.9,
+        "media": 62.0,
         "p05": 60.6,
-        "p95": 63.2,
-        "desvio": 0.81
+        "p95": 63.3,
+        "desvio": 0.8
       }
     },
     "leave_one_out": {
-      "ipc_total": 58.4,
-      "recaudacion": 64.4,
-      "resultado_primario": 59.4,
-      "desequilibrio_monetario": 64.3,
+      "ipc_total": 59.3,
+      "desequilibrio_monetario": 64.1,
+      "recaudacion": 63.9,
+      "resultado_primario": 60.0,
       "tcr_terminos_intercambio": 63.4,
-      "costo_financiamiento_tesoro": 60.6,
-      "credito_privado": 63.0,
-      "iai": 60.8,
-      "rem_ipc_12m": 61.2,
-      "emae_ia": 62.5,
-      "saldo_comercial_12m": 61.3,
+      "costo_financiamiento_tesoro": 60.7,
+      "credito_privado": 63.1,
+      "iai": 61.0,
+      "emae_ia": 62.8,
+      "rem_ipc_12m": 61.1,
       "reservas_bcra": 61.3,
-      "idc": 62.4,
-      "ipi_manufacturero": 62.2,
-      "actividad_tributaria": 62.1,
-      "emae_difusion": 61.8
+      "idc": 62.5,
+      "saldo_comercial_12m": 61.5,
+      "ipi_manufacturero": 62.3,
+      "actividad_tributaria": 61.7,
+      "emae_difusion": 61.9
     },
     "tension": {
       "base": 3.8,
@@ -58,18 +58,18 @@
     }
   },
   "itcg": {
-    "valor_publicado": 79.6,
-    "valor_recomputado": 79.6,
+    "valor_publicado": 79.5,
+    "valor_recomputado": 79.5,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 79.6,
+        "media": 79.5,
         "p05": 78.1,
         "p95": 81.0,
         "desvio": 0.89
       },
       "combinado": {
-        "media": 79.6,
+        "media": 79.5,
         "p05": 77.7,
         "p95": 81.3,
         "desvio": 1.08
@@ -82,19 +82,19 @@
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 84.1,
+      "apertura_comercial": 84.0,
       "cepo_mulc": 75.4,
-      "rigi_inversiones": 80.7,
-      "concesiones_infraestructura": 78.7,
+      "rigi_inversiones": 80.6,
+      "concesiones_infraestructura": 78.6,
       "libertad_opcion_salud": 80.4,
       "litigiosidad_laboral": 78.8,
-      "fal_modernizacion_laboral": 80.3,
-      "asistencia_directa": 79.0,
+      "fal_modernizacion_laboral": 80.2,
+      "asistencia_directa": 78.9,
       "protocolo_antipiquetes": 79.0,
       "desregulacion_normativa": 79.3,
-      "privatizaciones": 79.7,
-      "reduccion_estado": 79.6,
-      "gasto_funcionamiento": 79.6
+      "privatizaciones": 79.6,
+      "reduccion_estado": 79.5,
+      "gasto_funcionamiento": 79.5
     },
     "tension": {
       "base": 2.0,
@@ -105,102 +105,102 @@
     }
   },
   "itvc": {
-    "valor_publicado": 93.1,
-    "valor_recomputado": 93.1,
+    "valor_publicado": 93.6,
+    "valor_recomputado": 93.6,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 93.0,
-        "p05": 91.2,
-        "p95": 94.7,
-        "desvio": 1.08
+        "media": 93.5,
+        "p05": 91.8,
+        "p95": 95.3,
+        "desvio": 1.09
       },
       "combinado": {
-        "media": 93.0,
-        "p05": 91.2,
-        "p95": 94.8,
+        "media": 93.6,
+        "p05": 91.7,
+        "p95": 95.4,
         "desvio": 1.08
       }
     },
     "leave_one_out": {
-      "alquiler_real": 95.9,
+      "alquiler_real": 96.6,
       "peso_tarifas": 90.9,
-      "pobreza_nowcast": 91.3,
-      "mora_familias": 94.8,
-      "ipc_alimentos": 91.5,
-      "consumo_supermercados": 94.4,
-      "icg_utdt": 91.9,
-      "carga_servicio_deuda_hogares": 92.3,
-      "inseguridad": 93.8,
-      "despacho_cemento": 93.6,
-      "brecha_salario_cbt": 93.5,
-      "informalidad": 92.7,
-      "tasa_homicidios": 92.7,
-      "motorizacion_total": 92.8,
-      "empleo_registrado": 92.8,
-      "ratio_motos_autos": 93.3,
-      "consumo_carne_vacuna": 93.2,
-      "subocupacion_demandante": 93.2,
-      "mortalidad_pymes": 93.0,
-      "consumo_carnes_total": 93.1,
-      "trabajo_independiente": 93.1,
-      "tasa_robos": 93.1
+      "pobreza_nowcast": 91.8,
+      "mora_familias": 95.4,
+      "consumo_supermercados": 95.0,
+      "ipc_alimentos": 92.3,
+      "icg_utdt": 92.5,
+      "inseguridad": 94.4,
+      "carga_servicio_deuda_hogares": 92.9,
+      "brecha_salario_cbt": 94.1,
+      "despacho_cemento": 94.1,
+      "motorizacion_total": 93.3,
+      "informalidad": 93.3,
+      "empleo_registrado": 93.3,
+      "tasa_homicidios": 93.3,
+      "ratio_motos_autos": 93.8,
+      "mortalidad_pymes": 93.5,
+      "consumo_carnes_total": 93.7,
+      "consumo_carne_vacuna": 93.7,
+      "subocupacion_demandante": 93.7,
+      "trabajo_independiente": 93.6,
+      "tasa_robos": 93.6
     },
     "tension": {
-      "base": 6.4,
+      "base": 6.3,
       "rango_combinado": [
-        6.0,
-        6.8
+        5.9,
+        6.7
       ]
     }
   },
   "itcp": {
-    "valor_publicado": 74.0,
-    "valor_recomputado": 74.0,
+    "valor_publicado": 74.2,
+    "valor_recomputado": 74.2,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 74.0,
-        "p05": 72.7,
-        "p95": 75.3,
+        "media": 74.2,
+        "p05": 72.9,
+        "p95": 75.5,
         "desvio": 0.79
       },
       "combinado": {
-        "media": 73.9,
-        "p05": 72.4,
-        "p95": 75.4,
+        "media": 74.1,
+        "p05": 72.7,
+        "p95": 75.6,
         "desvio": 0.91
       },
       "insumos": {
-        "media": 73.9,
-        "p05": 73.1,
-        "p95": 74.7,
+        "media": 74.1,
+        "p05": 73.3,
+        "p95": 74.9,
         "desvio": 0.49
       }
     },
     "leave_one_out": {
-      "cohesion_bloque": 69.0,
-      "paralisis_denuncias": 76.6,
-      "conflictividad_nacional": 76.4,
-      "velocidad_resolucion": 72.0,
-      "brecha_obra_publica": 72.1,
-      "apoyo_empresario": 75.9,
-      "jornadas_individuales_no_trabajadas_12m": 72.5,
-      "adhesion_reformas_provincial": 72.6,
-      "produccion_legislativa": 75.3,
-      "veto_quorum": 73.0,
-      "desafios_legislativos": 73.0,
-      "cobertura_judicial": 73.2,
-      "ratio_dnu": 74.8,
-      "alineamiento_senadores_prov": 74.8,
+      "cohesion_bloque": 69.3,
+      "paralisis_denuncias": 76.8,
+      "conflictividad_nacional": 76.6,
+      "velocidad_resolucion": 72.2,
+      "brecha_obra_publica": 72.3,
+      "apoyo_empresario": 76.1,
+      "jornadas_individuales_no_trabajadas_12m": 72.7,
+      "adhesion_reformas_provincial": 72.9,
+      "produccion_legislativa": 75.5,
+      "veto_quorum": 73.2,
+      "desafios_legislativos": 73.2,
+      "alineamiento_senadores_prov": 75.1,
+      "ratio_dnu": 75.0,
+      "cobertura_judicial": 73.5,
       "iaf_transferencias": 74.7,
-      "eficacia_legislativa": 74.3
+      "eficacia_legislativa": 74.5
     },
     "tension": {
       "base": 2.6,
       "rango_combinado": [
-        2.5,
-        2.8
+        2.4,
+        2.7
       ]
     }
   }

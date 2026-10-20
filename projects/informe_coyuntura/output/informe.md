@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-20 13:33:23"
+generado: "2026-10-20 14:33:07"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -10,7 +10,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-10
 
-**Score global:** 3.7/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.4/10)
+**Score global:** 3.7/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.3/10)
 
 ## Cinturones
 
@@ -19,24 +19,24 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| ipc_total | 1.66 | % mensual | 2026-08-01 | fresco |
+| ipc_total | 1.93 | % mensual | 2026-09-01 | fresco |
 | reservas_bcra | 12661.0 | Millones de USD | 2026-08-31 | fresco |
-| idc | -0.26 | σ vs. su historia | 2026-08-01 | fresco |
+| idc | -0.34 | σ vs. su historia | 2026-09-01 | fresco |
 | badlar | 23.62 | % anual | 2026-10-16 | fresco |
 | emae_ia | -1.44 | % i.a. | 2026-07-01 | fresco |
 | emae_difusion | 46.67 | % de sectores en crecimiento i.a. | 2026-07-01 | fresco |
 | ipi_manufacturero | -2.04 | % i.a. (promedio 3 meses) | 2026-08-01 | fresco |
-| actividad_tributaria | -5.41 | % i.a. real (compuesto IVA-DGI/cheque) | 2026-08-01 | fresco |
+| actividad_tributaria | 0.86 | % i.a. real (compuesto IVA-DGI/cheque) | 2026-09-01 | fresco |
 | saldo_comercial_12m | 26472.0 | Millones de USD (acum. 12 meses) | 2026-09-01 | fresco |
-| recaudacion | 91.3 | índice (100 = 4T-2023) | 2026-08-01 | fresco |
+| recaudacion | 94.4 | índice (100 = 4T-2023) | 2026-09-01 | fresco |
 | tcrm | 85.87 | Índice (base dic-2015=100) | 2026-09-01 | fresco |
 | tcr_terminos_intercambio | 49.8 | puntaje (0-100) | 2026-09-01 | fresco |
 | rem_ipc_12m | 21.1 | % anual esperado | 2026-09-30 | fresco |
-| idm | 2.15 | pp (brecha i.a. real) | 2026-08-01 | fresco |
+| idm | 1.82 | pp (brecha i.a. real) | 2026-09-01 | fresco |
 | desequilibrio_monetario | 64.01 | pts de tensión (0-100) | 2026-08-01 | fresco |
 | iai | -1.74 | % i.a. ponderado | 2026-08-01 | fresco |
 | icip | 13.67 | % i.a. ponderado | 2026-07-01 | fresco |
-| credito_privado | -0.3 | % i.a. real (crédito en pesos) | 2026-08-01 | fresco |
+| credito_privado | -1.0 | % i.a. real (crédito en pesos) | 2026-09-01 | fresco |
 | costo_financiamiento_tesoro | 6.22 | % real anual (TIREA vs. inflación esperada REM) | 2026-09-01 | fresco |
 | resultado_primario | 6.02 | % de la recaudación (acum. 12 meses) | 2026-08-01 | fresco |
 | prestamos_privados | 2.59 | % mensual nominal | 2026-10-14 | fresco |
@@ -54,7 +54,7 @@ schema_version: "1.2.0"
 | conflictividad_nacional | -27.2 | % vs 2023 | 2026-09-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
-| iaf_transferencias | -1.8 | % interanual real | 2026-08-31 | fresco |
+| iaf_transferencias | -0.6 | % interanual real | 2026-09-30 | fresco |
 | eficacia_legislativa | 27.3 | % de proyectos | 2026-10-20 | fresco |
 | veto_quorum | 0.0 | % de sesiones | 2026-10-20 | fresco |
 | comisiones_caidas | 96.7 | % de proyectos | 2026-10-20 | fresco |
@@ -77,12 +77,12 @@ schema_version: "1.2.0"
 |---|---|---|---|---|---|
 | judicializacion | 1.8 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
 
-### 🔴 Vida Cotidiana — score 6.4/10 (tensionado)
+### 🔴 Vida Cotidiana — score 6.3/10 (tensionado)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| ipc_total | 1.66 | % mensual | 2026-08-01 | fresco |
+| ipc_total | 1.93 | % mensual | 2026-09-01 | fresco |
 | desocupacion | 0.1 | % | 2026-04-01 | fresco |
 
 **Retirados del índice — el colector lo sigue relevando pero ya NO compone el índice ni el score de arriba** (distinto de suspendido: no tiene motivo de reingreso porque no va a volver a puntuar; puede ser ancla de validación externa. Ver `publicar.VIDA_OCULTOS` y la ficha metodológica del indicador):
@@ -96,7 +96,7 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 6.77 | % de brecha CCL/mayorista | 2026-10-20 | fresco |
+| cepo_mulc | 6.82 | % de brecha CCL/mayorista | 2026-10-20 | fresco |
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
@@ -120,4 +120,4 @@ schema_version: "1.2.0"
 | reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-10-20 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 
 ---
-*Generado por CIGOB — 2026-10-20 13:33:23 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-20 14:33:07 — schema 1.2.0*

@@ -156,7 +156,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0071](../adr/0071-costo-financiamiento-tesoro.md) costo_financiamiento_tesoro: el precio del financiamiento soberano entra al ITCM · [ADR-0258](../adr/0258-la-reapertura-rinde-su-precio-no-su-cupon.md) Una reapertura rinde lo que dice su precio, no lo que dice su cupón · [ADR-0288](../adr/0288-financiamiento-completa-meses-con-gacetillas.md) Financiamiento completa meses con gacetillas
 
-#### Crédito privado real
+#### Crédito privado real en pesos
 
 `credito_privado`
 

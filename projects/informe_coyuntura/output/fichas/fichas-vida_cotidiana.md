@@ -35,7 +35,7 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 93,1** | **NARANJA** | Deterioro moderado frente a las referencias | 22 indicadores: 8 en verde · 2 en amarillo · 7 en naranja · 5 en rojo |
+| **ITCIS: 93,6** | **NARANJA** | Deterioro moderado frente a las referencias | 22 indicadores: 8 en verde · 2 en amarillo · 7 en naranja · 5 en rojo |
 Componentes que puntúan en este corte: 22 de 22 publicados.
 
 ## Dimensiones
@@ -43,7 +43,7 @@ Componentes que puntúan en este corte: 22 de 22 publicados.
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
 | Ingresos y consumo | Si el sueldo alcanza y qué compra. | 109,2 | VERDE | 28,1 % |
-| Presión de precios | Tres gastos sensibles. | 95,5 | AMARILLO | 25,0 % |
+| Presión de precios | Tres gastos sensibles. | 97,7 | AMARILLO | 25,0 % |
 | Prospectivas de empleo | Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el… | 91,6 | NARANJA | 24,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,7 | ROJO | 10,0 % |
 | Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 105,8 | VERDE | 8,2 % |
@@ -71,7 +71,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 81,2 índice (2017 = 100, desestacionalizado) | NARANJA | 5,5 % |
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % m/m | VERDE | 8,8 % |
-| Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 14,6 % del salario RIPTE | VERDE | 11,2 % |
+| Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario RIPTE | VERDE | 11,2 % |
 | Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,88 % m/m alquileres | ROJO | 5,0 % |
 | **DIMENSIÓN: Prospectivas de empleo** | | | | |
 | Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de… | 37,9 % | NARANJA | 8,3 % |
@@ -282,7 +282,7 @@ Qué porcentaje del salario registrado promedio (la remuneración imponible prom
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 14,6 % del salario RIPTE** (2026-09) | **VERDE** | Peso efectivo 11,2 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 13 % del salario RIPTE** (2026-10) | **VERDE** | Peso efectivo 11,2 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -290,9 +290,9 @@ Qué porcentaje del salario registrado promedio (la remuneración imponible prom
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | peso_tarifas | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % del salario RIPTE |
-| **SERIE DISPONIBLE** | 2025-12 → 2026-09 (10 puntos) | **REZAGO DE PUBLICACIÓN** | El IIEP publica durante el mismo mes una estimación de la canasta y del RIPTE del período. |
+| **SERIE DISPONIBLE** | 2025-12 → 2026-10 (11 puntos) | **REZAGO DE PUBLICACIÓN** | El IIEP publica durante el mismo mes una estimación de la canasta y del RIPTE del período. |
 | **PRODUCTOR DEL DATO** | IIEP UBA-CONICET, Observatorio de Tarifas y Subsidios | **OPERACIÓN ESTADÍSTICA** | Canasta de Servicios Públicos del AMBA sobre salario RIPTE |
-| **MODO DE ACCESO** | Automático: páginas mensuales del reporte de Tarifas y Subsidios. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-20 |
+| **MODO DE ACCESO** | Automático: páginas mensuales del reporte de Tarifas y Subsidios. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-20 |
 
 ## Definición — qué mide y por qué importa
 
@@ -321,19 +321,19 @@ Este componente no usa como vara las tarifas subsidiadas de 2023. Agua y energí
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **106,4**.
+Este componente está hoy en **111,3**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (14,6 % del salario RIPTE) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (13 % del salario RIPTE) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 14,6 % del salario RIPTE (2026-09).
+Dato vigente: 13 % del salario RIPTE (2026-10).
 
-Agua y energía representan 7,7% del salario; transporte, 6,9%. La mayor de las dos señales fija el color: verde (sin tensión relevante). El índice de asequibilidad resultante es 106,4 — 105 o más —, que corresponde al tramo VERDE. 100 equivale a tensión 5; no al nivel tarifario del 4º trimestre de 2023.
+Agua y energía representan 6,6% del salario; transporte, 6,4%. La mayor de las dos señales fija el color: verde (sin tensión relevante). El índice de asequibilidad resultante es 111,3 — 105 o más —, que corresponde al tramo VERDE. 100 equivale a tensión 5; no al nivel tarifario del 4º trimestre de 2023.
 
 **Color vigente: VERDE**
 

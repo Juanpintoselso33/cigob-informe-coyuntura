@@ -35,7 +35,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 74,0** | **VERDE** | Moderadamente aflojado | 16 indicadores: 13 en verde · 2 en amarillo · 1 en rojo |
+| **ITCP: 74,2** | **VERDE** | Moderadamente aflojado | 16 indicadores: 13 en verde · 2 en amarillo · 1 en rojo |
 Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
@@ -43,7 +43,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
 | Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 73,2 | VERDE | 22,6 % |
-| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 76,7 | VERDE | 20,4 % |
+| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 77,7 | VERDE | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 16,1 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,1 | AMARILLO | 16,1 % |
 | Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 57,7 | AMARILLO | 14,0 % |
@@ -68,7 +68,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Normas desafiadas en el recinto | Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses. | 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | VERDE | 3,4 % |
 | Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. | 31 leyes sancionadas (12m) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
-| Armonía federal (transferencias) | Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante los… | −1,8 % interanual real | VERDE | 8,2 % |
+| Armonía federal (transferencias) | Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante los… | −0,6 % interanual real | VERDE | 8,2 % |
 | Adhesión provincial al RIGI | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 6,1 % |
 | Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 56,5 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 6,1 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
@@ -579,7 +579,7 @@ Cuánto varían, en términos reales, los recursos de origen nacional que la Nac
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −1,8 % interanual real** (2026-08) | **VERDE** | Peso efectivo 8,2 % del ITCP | Cinturón Política |
+| **Hoy: −0,6 % interanual real** (2026-09) | **VERDE** | Peso efectivo 8,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -587,9 +587,9 @@ Cuánto varían, en términos reales, los recursos de origen nacional que la Nac
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | iaf_transferencias | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % interanual real |
-| **SERIE DISPONIBLE** | 2018-11 → 2026-08 (94 puntos) | **REZAGO DE PUBLICACIÓN** | Compara los últimos 12 meses con los 12 anteriores y termina en el último mes que tiene IPC publicado: unos 45 días de rezago del INDEC, más lo que tarde Hacienda en subir la planilla del mes (la planilla suele llegar antes que el IPC, que es el que fija el último mes). |
+| **SERIE DISPONIBLE** | 2018-11 → 2026-09 (95 puntos) | **REZAGO DE PUBLICACIÓN** | Compara los últimos 12 meses con los 12 anteriores y termina en el último mes que tiene IPC publicado: unos 45 días de rezago del INDEC, más lo que tarde Hacienda en subir la planilla del mes (la planilla suele llegar antes que el IPC, que es el que fija el último mes). |
 | **PRODUCTOR DEL DATO** | Ministerio de Economía (Secretaría de Hacienda); deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | RON — recursos de origen nacional girados a las jurisdicciones, planilla mensual consolidada (una hoja por mes), con el archivo anual oficial como ancla de unidad; deflactor: IPC nacional del INDEC |
-| **MODO DE ACCESO** | Automático: resuelve desde la página oficial la planilla consolidada de cada año (el nombre del archivo no es estable), suma en cada hoja mensual las filas de jurisdicción y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-20 |
+| **MODO DE ACCESO** | Automático: resuelve desde la página oficial la planilla consolidada de cada año (el nombre del archivo no es estable), suma en cada hoja mensual las filas de jurisdicción y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-20 |
 
 ## Definición — qué mide y por qué importa
 
@@ -625,13 +625,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 12 meses a ago 2026: +30.5% nominal contra un deflactor de 32.9% ponderado por el flujo de cada mes → -1.8% real
+- 12 meses a sep 2026: +32.2% nominal contra un deflactor de 33.0% ponderado por el flujo de cada mes → -0.6% real
 
 ## Color vigente y por qué
 
-Dato vigente: −1,8 % interanual real (2026-08).
+Dato vigente: −0,6 % interanual real (2026-09).
 
-−1,8 % interanual real cae en el tramo que corresponde a Verde, a 5,2 del corte más cercano.
+−0,6 % interanual real cae en el tramo que corresponde a Verde, a 6,4 del corte más cercano.
 
 **Color vigente: VERDE**
 

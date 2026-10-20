@@ -365,7 +365,7 @@ def fetch_ipc() -> dict | None:
         return {
             "valor": round(var, 2) if var is not None else None,
             "unidad": "% mensual",
-            "fuente": "INDEC — IPC nacional (vía datos.gob.ar)",
+            "fuente": "INDEC — IPC nacional (vía datos.gob.ar, completado con la planilla del INDEC cuando la API se atrasa)",
             "fecha_dato": data[0][0],
             "desactualizado": False,
         }

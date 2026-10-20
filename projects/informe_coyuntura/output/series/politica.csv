@@ -188,7 +188,7 @@ fecha,indicador,valor,unidad,fuente
 2026-08-23,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-06-09,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-04-09,movilizacion_cepa,46.0,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
-2026-01-01,judicializacion,1.78,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2026-01-01,judicializacion,1.8,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2025-01-01,judicializacion,1.72,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2024-01-01,judicializacion,1.97,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2023-01-01,judicializacion,1.52,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
@@ -435,6 +435,7 @@ fecha,indicador,valor,unidad,fuente
 2007-02-01,jornadas_individuales_no_trabajadas_12m,5950101,jornadas individuales no trabajadas (12m móviles),Secretaría de Trabajo — Estadísticas de conflictos laborales
 2007-01-01,jornadas_individuales_no_trabajadas_12m,5935151,jornadas individuales no trabajadas (12m móviles),Secretaría de Trabajo — Estadísticas de conflictos laborales
 2006-12-01,jornadas_individuales_no_trabajadas_12m,5972813,jornadas individuales no trabajadas (12m móviles),Secretaría de Trabajo — Estadísticas de conflictos laborales
+2026-09-01,iaf_transferencias,-0.6,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
 2026-08-01,iaf_transferencias,-1.8,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
 2026-07-01,iaf_transferencias,-1.6,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes
 2026-06-01,iaf_transferencias,-1.5,% i.a. real (12m móviles),RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes

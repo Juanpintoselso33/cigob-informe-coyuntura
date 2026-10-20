@@ -124,9 +124,71 @@ def _juntar(url: str, params: dict, **kwargs):
                       "meta": [{"frequency": None}] + metas})
 
 
+# Parámetros con los que la respuesta ya no es la serie tal cual (una variación,
+# un promedio, un corte de fechas): ahí no se completa con el original.
+# `start` y `last` paginan la respuesta: completarla se saltearía la página.
+_NO_COMPLETAR = {"representation_mode", "collapse", "collapse_aggregation", "end_date",
+                 "start", "last"}
+
+
+def _completar_ipc(r, params: dict):
+    """La API replica el IPC con días de atraso respecto del INDEC (ipc_indec.py).
+    Si la planilla original ya tiene meses nuevos, se agregan a la respuesta con
+    su misma forma. Ante cualquier duda, la respuesta de la API tal como vino."""
+    if _NO_COMPLETAR & set(params) or str(params.get("format", "json")) != "json":
+        return r
+    try:
+        cuerpo = r.json()
+        filas = cuerpo.get("data") or []
+        desc = params.get("sort") == "desc"
+        limite = int(params.get("limit", LIMITE_API))
+        # Con orden ascendente y la serie recortada por `limit`, lo que vino no
+        # llega al final: agregarle meses dejaría un hueco en el medio.
+        if not desc and cuerpo.get("count", len(filas)) > len(filas):
+            return r
+        import ipc_indec
+        nuevas = ipc_indec.completar(filas, ipc_indec.serie())
+        desde = str(params.get("start_date") or "")[:10]
+        nuevas = [f for f in nuevas if f[0] >= desde]
+        if not nuevas:
+            return r
+        # Un mes que la API trae vacío y el original sí tiene se reemplaza: si
+        # quedaran los dos, la fecha saldría duplicada (revisión de Codex).
+        fechas_nuevas = {f[0][:10] for f in nuevas}
+        filas = [f for f in filas if str(f[0])[:10] not in fechas_nuevas]
+        todas = sorted(filas + nuevas, key=lambda f: f[0], reverse=desc)
+        meta = []
+        for m in cuerpo.get("meta") or []:
+            if isinstance(m, dict) and isinstance(m.get("field"), dict):
+                campo = dict(m["field"])
+                if "time_index_end" in campo:
+                    campo["time_index_end"] = nuevas[-1][0]
+                if "time_index_size" in campo:
+                    try:
+                        campo["time_index_size"] = int(campo["time_index_size"]) + len(nuevas)
+                    except (TypeError, ValueError):
+                        pass
+                m = {**m, "field": campo}
+            meta.append(m)
+        logger.warning("datos.gob.ar: %s llega a %s; el INDEC ya publicó hasta %s, "
+                       "se completa desde su planilla", ipc_indec.SERIE_ID,
+                       max(f[0] for f in filas)[:7], nuevas[-1][0][:7])
+        return _DesdeCSV({**cuerpo, "data": todas[:limite], "meta": meta,
+                          "count": cuerpo.get("count", len(filas)) + len(nuevas)})
+    except Exception as e:                                    # noqa: BLE001
+        logger.warning("IPC: no se pudo completar desde la planilla del INDEC (%s)", e)
+        return r
+
+
 def get(url: str, params: dict | None = None, **kwargs):
     """Como `requests.get`, pero devuelve una lectura completa de la serie."""
     params = dict(params or {})
+    if str(params.get("ids", "")) == "148.3_INIVELNAL_DICI_M_26":
+        return _completar_ipc(_get(url, params, **kwargs), params)
+    return _get(url, params, **kwargs)
+
+
+def _get(url: str, params: dict, **kwargs):
     ids = str(params.get("ids", ""))
     if "," in ids:
         return _juntar(url, params, **kwargs)

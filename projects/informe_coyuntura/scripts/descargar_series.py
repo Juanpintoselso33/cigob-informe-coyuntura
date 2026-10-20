@@ -224,9 +224,14 @@ def _meses_desde_asuncion() -> int:
     return (hoy.year - 2023) * 12 + hoy.month - 11
 
 
-def fetch_bcra(var_id: int, dias: int = 960) -> list:
-    desde = (datetime.today() - timedelta(days=dias)).strftime("%Y-%m-%d")
-    r = requests.get(f"{BCRA_BASE}/{var_id}", params={"desde": desde},
+def fetch_bcra(var_id: int, dias: int | None = None, desde: str = "2023-12-01") -> list:
+    """Detalle diario de una variable del BCRA desde `desde` (por defecto, la
+    asunción: regla de ADR-0012). Era una ventana fija de 960 días, que el
+    20-oct-2026 ya había dejado afuera dic-2023 a feb-2024 del REM y seguía
+    comiéndose un mes por mes. `dias` queda para quien pida una ventana móvil."""
+    if dias is not None:
+        desde = (datetime.today() - timedelta(days=dias)).strftime("%Y-%m-%d")
+    r = requests.get(f"{BCRA_BASE}/{var_id}", params={"desde": desde, "limit": 3000},
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT, verify=False)
     r.raise_for_status()
     detalle = r.json()["results"][0]["detalle"]
@@ -836,7 +841,9 @@ def fetch_credito_privado_serie() -> list:
     valuada en pesos, así que una devaluación entraba como crecimiento real del
     crédito (ADR-0251). [[YYYY-MM-01, %]]."""
     fin_mes = {}
-    for f, v in sorted(fetch_bcra(macro.BCRA_PRESTAMOS_ID, dias=1350)):
+    # Desde dic-2022: el interanual de dic-2023 necesita el mismo mes del año
+    # anterior. Con la ventana fija de 1350 días la serie empezaba en feb-2024.
+    for f, v in sorted(fetch_bcra(macro.BCRA_PRESTAMOS_ID, desde="2022-12-01")):
         fin_mes[f[:7]] = v
     ipc = {f[:7]: v for f, v in fetch_indec("148.3_INIVELNAL_DICI_M_26", limit=60)}
     out = []

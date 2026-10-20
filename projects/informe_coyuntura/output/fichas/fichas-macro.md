@@ -35,17 +35,17 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 61,9** | **VERDE** | Moderadamente aflojado | 16 indicadores: 6 en verde · 5 en amarillo · 5 en naranja |
+| **ITCM: 61,9** | **VERDE** | Moderadamente aflojado | 16 indicadores: 6 en verde · 6 en amarillo · 4 en naranja |
 Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 72,8 | VERDE | 26,0 % |
-| Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 74,8 | VERDE | 24,0 % |
-| Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 40,7 | AMARILLO | 23,0 % |
-| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 63,5 | VERDE | 16,0 % |
+| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 69,6 | VERDE | 26,0 % |
+| Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 77,1 | VERDE | 24,0 % |
+| Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 42,8 | AMARILLO | 23,0 % |
+| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 62,6 | VERDE | 16,0 % |
 | Competitividad externa | Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene. | 49,8 | AMARILLO | 11,0 % |
 
 ```{=openxml}
@@ -61,23 +61,23 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCM |
 |---|---|---|---|---|
 | **DIMENSIÓN: Estabilidad monetaria-inflacionaria** | | | | |
-| Inflación mensual (IPC) | Cuánto suben en el mes los precios al consumidor en general. | 1,66 % mensual | VERDE | 15,6 % |
+| Inflación mensual (IPC) | Cuánto suben en el mes los precios al consumidor en general. | 1,93 % mensual | VERDE | 15,6 % |
 | Expectativas inflación (REM 12m) | La inflación que el mercado espera para los próximos 12 meses. | 21,1 % anual esperado | VERDE | 5,2 % |
 | Liquidez en pesos y presión compradora de divisas | Una medida de 0 a 100 que cruza dos cosas observables. | 64,01 pts de tensión (0-100) | NARANJA | 5,2 % |
 | **DIMENSIÓN: Viabilidad fiscal-comercial** | | | | |
 | Saldo comercial 12m | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses. | 26.472 Millones de USD (acum. 12 meses) | VERDE | 4,8 % |
-| Base imponible real (nación + provincias) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 91,3 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
+| Base imponible real (nación + provincias) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 94,4 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
 | Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acum. 12 meses) | VERDE | 12,0 % |
 | **DIMENSIÓN: Actividad e inversión** | | | | |
 | Actividad económica (EMAE i.a.) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | −1,44 % i.a. | NARANJA | 8,5 % |
 | Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica… | 46,67 % de sectores en crecimiento i.a. | AMARILLO | 2,8 % |
 | Producción industrial (IPI i.a.) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,04 % i.a. (promedio 3 meses) | NARANJA | 2,8 % |
-| Actividad tributaria (IVA-DGI + cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la… | −5,41 % i.a. real (compuesto IVA-DGI/cheque) | NARANJA | 1,9 % |
+| Actividad tributaria (IVA-DGI + cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la… | 0,86 % i.a. real (compuesto IVA-DGI/cheque) | AMARILLO | 1,9 % |
 | Inversión física | Índice Anticipador de Inversión. | −1,74 % i.a. ponderado | AMARILLO | 6,9 % |
 | **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
 | Reservas netas | Estimación de CiGob de reservas netas. | 12.661 Millones de USD | VERDE | 5,4 % |
-| Capacidad prestable | Índice de Capacidad Prestable. | −0,26 σ vs. su historia | AMARILLO | 3,4 % |
-| Crédito privado real | Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el… | −0,3 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
+| Capacidad prestable | Índice de Capacidad Prestable. | −0,34 σ vs. su historia | AMARILLO | 3,4 % |
+| Crédito privado real en pesos | Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el… | −1 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
 | Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 6,22 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
 | **DIMENSIÓN: Competitividad externa** | | | | |
 | Tipo de cambio real y términos del intercambio | Una medida de 0 a 100 que cruza dos datos. | 49,8 puntaje (0-100) | AMARILLO | 11,0 % |
@@ -98,7 +98,7 @@ Cuánto suben en el mes los precios al consumidor en general.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,66 % mensual** (2026-08) | **VERDE** | Peso efectivo 15,6 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 1,93 % mensual** (2026-09) | **VERDE** | Peso efectivo 15,6 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -106,9 +106,9 @@ Cuánto suben en el mes los precios al consumidor en general.
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | ipc_total | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Estabilidad monetaria-inflacionaria | **UNIDAD DE MEDIDA** | % mensual |
-| **SERIE DISPONIBLE** | 2021-10 → 2026-08 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC difunde el IPC de cada mes a mediados del mes siguiente, según su calendario oficial. El informe lo incorpora en forma automática el mismo día de la publicación. |
+| **SERIE DISPONIBLE** | 2021-11 → 2026-09 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC difunde el IPC de cada mes a mediados del mes siguiente, según su calendario oficial. El informe lo incorpora en forma automática el mismo día de la publicación. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Índice de Precios al Consumidor (IPC) — cobertura nacional, nivel general, variación mensual |
-| **MODO DE ACCESO** | Automático: el dato se extrae de la API pública y se publica sin intervención manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-20 |
+| **MODO DE ACCESO** | Automático: el dato se extrae de la API pública y se publica sin intervención manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-20 |
 
 ## Definición — qué mide y por qué importa
 
@@ -140,13 +140,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (1,66 % mensual) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (1,93 % mensual) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 1,66 % mensual (2026-08).
+Dato vigente: 1,93 % mensual (2026-09).
 
-1,66 % mensual cae en el tramo que corresponde a Verde, a 1,14 del corte más cercano.
+1,93 % mensual cae en el tramo que corresponde a Verde, a 0,87 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -278,7 +278,7 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,26 σ vs. su historia** (2026-08) | **AMARILLO** | Peso efectivo 3,4 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −0,34 σ vs. su historia** (2026-09) | **AMARILLO** | Peso efectivo 3,4 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -286,15 +286,15 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | idc | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Capacidad y costo del financiamiento | **UNIDAD DE MEDIDA** | σ vs. su historia |
-| **SERIE DISPONIBLE** | 2023-10 → 2026-08 (35 puntos) | **REZAGO DE PUBLICACIÓN** | El IdC se publica para el último mes con IPC cerrado: unas dos semanas después de mediados del mes siguiente. |
+| **SERIE DISPONIBLE** | 2023-11 → 2026-09 (35 puntos) | **REZAGO DE PUBLICACIÓN** | El IdC se publica para el último mes con IPC cerrado: unas dos semanas después de mediados del mes siguiente. |
 | **PRODUCTOR DEL DATO** | BCRA (tasa BADLAR, depósitos y préstamos privados) + INDEC (IPC como deflactor) | **OPERACIÓN ESTADÍSTICA** | Estadísticas monetarias del BCRA: BADLAR bancos privados, depósitos del sector privado y préstamos al sector privado; índice compuesto de elaboración propia |
-| **MODO DE ACCESO** | Automático: API pública del BCRA y API de series de datos.gob.ar; el índice se calcula en el propio informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-20 |
+| **MODO DE ACCESO** | Automático: API pública del BCRA y API de series de datos.gob.ar; el índice se calcula en el propio informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-20 |
 
 ## Definición — qué mide y por qué importa
 
 Índice de Capacidad Prestable: mide si el sistema financiero tiene fondos y margen para prestar, comparando tres niveles contra su propia historia — la tasa real que reciben los depositantes (precio), el crecimiento interanual real de los depósitos privados (volumen) y la holgura entre depósitos y préstamos (asignación).
 
-Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico · por encima de +0,5 expansión (verde) · por debajo de −0,5 contracción (rojo). Datos del Banco Central de la República Argentina (BCRA) —tasa de plazos fijos mayoristas (BADLAR), depósitos y préstamos privados— e índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC).
+Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico; por encima, más capacidad que la habitual, y por debajo, menos. En el semáforo de la tarjeta, desde 0 es verde, de −0,6 a 0 amarillo, de −0,9 a −0,6 naranja y por debajo de −0,9 rojo. Datos del Banco Central de la República Argentina (BCRA) —tasa de plazos fijos mayoristas (BADLAR), depósitos y préstamos privados— e índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC).
 
 **Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
 
@@ -302,7 +302,7 @@ Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la
 
 - Tres niveles mensuales: la tasa real que reciben los depositantes (precio), el crecimiento interanual real de los depósitos privados (volumen) y la holgura entre depósitos y préstamos (asignación).
 - Cada nivel se compara contra toda su propia historia (2018 en adelante) y se expresa en desvíos estándar: 0 es el mes histórico típico.
-- Combinación 30% precio + 40% volumen + 30% asignación; semáforo: por encima de +0,5 desvíos, capacidad mayor a la habitual; por debajo de −0,5, menor.
+- Combinación 30% precio + 40% volumen + 30% asignación; por encima de 0 la capacidad es mayor a la habitual y por debajo, menor. Con las anclas de abajo, en el semáforo de la tarjeta, desde 0 es verde, de −0,6 a 0 amarillo, de −0,9 a −0,6 naranja y por debajo de −0,9 rojo.
 
 ## Semáforo — valores que determinan el color
 
@@ -321,13 +321,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- −0,26 σ = precio 0,56 · volumen −0,14 · asignación −1,23 (banda propia de este indicador: amarillo) — niveles: tasa real 0,08 pp · depósitos −1,6% i.a. real · holgura 15,5%
+- −0,34 σ = precio 0,45 · volumen −0,3 · asignación −1,2 (banda propia de este indicador: amarillo) — niveles: tasa real −0,21 pp · depósitos −4,1% i.a. real · holgura 15,8%
 
 ## Color vigente y por qué
 
-Dato vigente: −0,26 σ vs. su historia (2026-08).
+Dato vigente: −0,34 σ vs. su historia (2026-09).
 
-−0,26 σ vs. su historia cae en el tramo que corresponde a Amarillo, a 0,26 del corte más cercano.
+−0,34 σ vs. su historia cae en el tramo que corresponde a Amarillo, a 0,26 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -433,7 +433,7 @@ Ponderación vigente en el ITCM: 8,5 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros dos indicadores de la dimensión.
+- **Si falta el dato:** Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros indicadores de la dimensión.
 
 - **Política de revisiones:** La fuente revisa (serie provisoria); el informe regenera la serie completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.
 
@@ -527,7 +527,7 @@ Ponderación vigente en el ITCM: 2,8 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros dos indicadores de la dimensión.
+- **Si falta el dato:** Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros indicadores de la dimensión.
 
 - **Política de revisiones:** El INDEC revisa las series sectoriales hacia atrás junto con el EMAE agregado; el informe regenera la serie completa en cada actualización, de modo que una revisión puede cambiar retroactivamente el conteo de un mes ya publicado.
 
@@ -646,7 +646,7 @@ Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −5,41 % i.a. real (compuesto IVA-DGI/cheque)** (2026-08) | **NARANJA** | Peso efectivo 1,9 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 0,86 % i.a. real (compuesto IVA-DGI/cheque)** (2026-09) | **AMARILLO** | Peso efectivo 1,9 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -654,9 +654,9 @@ Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | actividad_tributaria | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Actividad e inversión | **UNIDAD DE MEDIDA** | % i.a. real (compuesto IVA-DGI/cheque) |
-| **SERIE DISPONIBLE** | 2017-12 → 2026-08 (105 puntos) | **REZAGO DE PUBLICACIÓN** | Es la lectura más fresca de la dimensión de actividad: la Secretaría de Hacienda/ARCA informa IVA-DGI y créditos/débitos bancarios de un mes dentro del mes siguiente, antes de que el INDEC cierre el EMAE del mismo período. Medido el 16-sep-2026 contra el último mes calendario cerrado (agosto): este indicador publica ese mismo mes (0 de atraso), el IPI manufacturero un mes de atraso, y el EMAE y su difusión sectorial dos. Frescura de PUBLICACIÓN, no anticipación de ciclo: la correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y baja al adelantarla (ver `dobleUso`), así que lo que entrega antes es la MISMA lectura de actividad, no una señal nueva. |
+| **SERIE DISPONIBLE** | 2017-12 → 2026-09 (106 puntos) | **REZAGO DE PUBLICACIÓN** | Es la lectura más fresca de la dimensión de actividad: la Secretaría de Hacienda/ARCA informa IVA-DGI y créditos/débitos bancarios de un mes dentro del mes siguiente, antes de que el INDEC cierre el EMAE del mismo período. Medido el 16-sep-2026 contra el último mes calendario cerrado (agosto): este indicador publica ese mismo mes (0 de atraso), el IPI manufacturero un mes de atraso, y el EMAE y su difusión sectorial dos. Frescura de PUBLICACIÓN, no anticipación de ciclo: la correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y baja al adelantarla (ver `dobleUso`), así que lo que entrega antes es la MISMA lectura de actividad, no una señal nueva. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda / ARCA (dato primario), deflactor INDEC | **OPERACIÓN ESTADÍSTICA** | IVA-DGI y créditos y débitos bancarios (impuesto al cheque), dos de los componentes del agregado de recaudación DGI, en pesos corrientes llevados a pesos constantes con el IPC nacional |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar, misma fuente que alimenta la descomposición del detalle de `recaudacion`. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-20 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar, misma fuente que alimenta la descomposición del detalle de `recaudacion`. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-20 |
 
 ## Definición — qué mide y por qué importa
 
@@ -689,19 +689,19 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Compuesto 0,6×IVA-DGI + 0,4×cheque, ambos en variación interanual real: IVA-DGI -3,0%, cheque -9,1%, compuesto -5,4%. El cheque capta además bancarización, no sólo actividad; el IVA responde también a evasión y cambios de alícuota.
+- Compuesto 0,6×IVA-DGI + 0,4×cheque, ambos en variación interanual real: IVA-DGI 1,6%, cheque -0,3%, compuesto 0,9%. El cheque capta además bancarización, no sólo actividad; el IVA responde también a evasión y cambios de alícuota.
 
 ## Color vigente y por qué
 
-Dato vigente: −5,41 % i.a. real (compuesto IVA-DGI/cheque) (2026-08).
+Dato vigente: 0,86 % i.a. real (compuesto IVA-DGI/cheque) (2026-09).
 
-−5,41 % i.a. real (compuesto IVA-DGI/cheque) cae en el tramo que corresponde a Naranja, a 2,09 del corte más cercano.
+0,86 % i.a. real (compuesto IVA-DGI/cheque) cae en el tramo que corresponde a Amarillo, a 1,64 del corte más cercano.
 
-**Color vigente: NARANJA**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa card ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con el peso vigente (0,12, bajado de 0,20 el 2026-09-16, ver más abajo), este indicador aporta 1,32% al índice macroeconómico (0,11×0,12) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador. `recaudacion` declara lo mismo desde su propia ficha (revisión adversarial, 2026-09-16). Además —y esto pesó más en el ajuste de peso que el doble uso con `recaudacion`— es redundante con sus PROPIOS compañeros de dimensión: r=0,840 con `emae_ia`, 0,828 con `ipi_manufacturero`, 0,725 con `emae_difusion` (los tres sobre el umbral 0,7 del repo, y más que lo que `ipi_manufacturero` ya correlaciona con `emae_ia`, r=0,765). La correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y BAJA al adelantarla un mes o dos, así que no anticipa el ciclo: entra por ser la lectura más fresca, no por aportar señal nueva, y el peso de entrada (0,12, por debajo del de `ipi_manufacturero`) se fijó en consecuencia (revisado el 16-sep-2026).
+- **Participación en otros indicadores.** Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa card ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con el peso vigente (0,084 dentro de «Actividad e inversión», que pesa 23%, desde la fusión del 16-oct-2026; antes 0,12, bajado de 0,20 el 2026-09-16, ver más abajo), este indicador aporta 1,93% al índice macroeconómico (0,23×0,084) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el índice macroeconómico tenía alrededor de 2,2% de su peso total expuesto, medido con los pesos anteriores a la fusión, al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador. `recaudacion` declara lo mismo desde su propia ficha (revisión adversarial, 2026-09-16). Además —y esto pesó más en el ajuste de peso que el doble uso con `recaudacion`— es redundante con sus PROPIOS compañeros de dimensión: r=0,840 con `emae_ia`, 0,828 con `ipi_manufacturero`, 0,725 con `emae_difusion` (los tres sobre el umbral 0,7 del repo, y más que lo que `ipi_manufacturero` ya correlaciona con `emae_ia`, r=0,765). La correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y BAJA al adelantarla un mes o dos, así que no anticipa el ciclo: entra por ser la lectura más fresca, no por aportar señal nueva, y el peso de entrada (0,12, por debajo del de `ipi_manufacturero`) se fijó en consecuencia (revisado el 16-sep-2026).
 
 ## Transparencia — limitaciones declaradas
 
@@ -837,7 +837,7 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 91,3 índice (100 = 4T-2023)** (2026-08) | **AMARILLO** | Peso efectivo 7,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 94,4 índice (100 = 4T-2023)** (2026-09) | **AMARILLO** | Peso efectivo 7,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -845,9 +845,9 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | recaudacion | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Viabilidad fiscal-comercial | **UNIDAD DE MEDIDA** | índice (100 = 4T-2023) |
-| **SERIE DISPONIBLE** | 2022-01 → 2026-08 (56 puntos) | **REZAGO DE PUBLICACIÓN** | Las dos fuentes publican en los primeros días del mes siguiente, y el indicador espera el índice de precios que lleva las cifras a pesos constantes: el último punto es el del último mes con inflación publicada. |
+| **SERIE DISPONIBLE** | 2022-01 → 2026-09 (57 puntos) | **REZAGO DE PUBLICACIÓN** | Las dos fuentes publican en los primeros días del mes siguiente, y el indicador espera el índice de precios que lleva las cifras a pesos constantes: el último punto es el del último mes con inflación publicada. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda (dato primario de ARCA) y Comisión Arbitral del Convenio Multilateral; deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | Recaudación mensual de la Dirección General Impositiva (impuestos internos) más la de los sistemas de la Comisión Arbitral —Ingresos Brutos de los contribuyentes de Convenio Multilateral y sus regímenes de retención—, en pesos corrientes, llevadas a pesos constantes con el índice de precios |
-| **MODO DE ACCESO** | Automático. La parte nacional sale de la interfaz pública de series de tiempo. La provincial se lee de la gacetilla mensual en PDF: los nombres de archivo no siguen un patrón fijo, así que se recorre el listado publicado en lugar de construir la dirección, y cada informe se procesa una sola vez y queda guardado. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-20 |
+| **MODO DE ACCESO** | Automático. La parte nacional sale de la interfaz pública de series de tiempo. La provincial se lee de la gacetilla mensual en PDF: los nombres de archivo no siguen un patrón fijo, así que se recorre el listado publicado en lugar de construir la dirección, y cada informe se procesa una sola vez y queda guardado. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-20 |
 
 ## Definición — qué mide y por qué importa
 
@@ -883,19 +883,19 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- La base imponible real está en 91,3 sobre una base de 100 en el cuarto trimestre de 2023, es decir 8,7% por debajo. Meses previos: 2026-05: 97,7 · 2026-06: 88,2 · 2026-07: 102,1. Los impuestos provinciales del Convenio Multilateral aportan 16,4% de la base medida. Composición (2026-08, var. i.a. real): IVA-DGI -3,0%, cheque -9,1%, agregado -0,8%. La porción ligada a actividad fue en el mismo sentido que el agregado. IVA-DGI y cheque son, ellos mismos, dos de los componentes del agregado —no una fuente independiente— y tampoco miden actividad de forma directa (hay evasión, cambios de alícuota y anticipos), y el cheque además capta bancarización, no sólo producto.
+- La base imponible real está en 94,4 sobre una base de 100 en el cuarto trimestre de 2023, es decir 5,6% por debajo. Meses previos: 2026-06: 88,2 · 2026-07: 102,1 · 2026-08: 91,3. Los impuestos provinciales del Convenio Multilateral aportan 16,1% de la base medida. Composición (2026-09, var. i.a. real): IVA-DGI 1,6%, cheque -0,3%, agregado 6,8%. La porción ligada a actividad (IVA + cheque) fue en sentido distinto del agregado: el movimiento del agregado no vino (sólo) de esa porción — puede venir del resto (Ganancias, cambios normativos, anticipos, aduana). IVA-DGI y cheque son, ellos mismos, dos de los componentes del agregado —no una fuente independiente— y tampoco miden actividad de forma directa (hay evasión, cambios de alícuota y anticipos), y el cheque además capta bancarización, no sólo producto.
 
 ## Color vigente y por qué
 
-Dato vigente: 91,3 índice (100 = 4T-2023) (2026-08).
+Dato vigente: 94,4 índice (100 = 4T-2023) (2026-09).
 
-91,3 índice (100 = 4T-2023) cae en el tramo que corresponde a Amarillo, a 3,7 del corte más cercano.
+94,4 índice (100 = 4T-2023) cae en el tramo que corresponde a Amarillo, a 0,6 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta card, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica. Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al índice macroeconómico (0,24×0,30) contra 1,32% de `actividad_tributaria` (0,11×0,12). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcr_terminos_intercambio` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.
+- **Participación en otros indicadores.** IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta card, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica. Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al índice macroeconómico (0,24×0,30) contra 1,93% de `actividad_tributaria` (0,23×0,084, desde la fusión del 16-oct-2026; antes 1,32%). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcr_terminos_intercambio` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1065,7 +1065,7 @@ La inflación que el mercado espera para los próximos 12 meses.
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | rem_ipc_12m | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Estabilidad monetaria-inflacionaria | **UNIDAD DE MEDIDA** | % anual esperado |
-| **SERIE DISPONIBLE** | 2024-03 → 2026-09 (31 puntos) | **REZAGO DE PUBLICACIÓN** | El BCRA releva el REM los últimos días de cada mes y publica los resultados en los primeros días hábiles del mes siguiente. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El BCRA releva el REM los últimos días de cada mes y publica los resultados en los primeros días hábiles del mes siguiente. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | REM — Relevamiento de Expectativas de Mercado: mediana de la inflación esperada para los próximos 12 meses |
 | **MODO DE ACCESO** | Automático: API pública del BCRA. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-20 |
 
@@ -1353,13 +1353,13 @@ Ponderación vigente en el ITCM: 6,9 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Crédito privado real
+# Crédito privado real en pesos
 
 Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el índice de precios al consumidor).
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,3 % i.a. real (crédito en pesos)** (2026-08) | **NARANJA** | Peso efectivo 3,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −1 % i.a. real (crédito en pesos)** (2026-09) | **NARANJA** | Peso efectivo 3,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1367,9 +1367,9 @@ Cuánto crece el crédito al sector privado en términos reales (variación inte
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | credito_privado | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Capacidad y costo del financiamiento | **UNIDAD DE MEDIDA** | % i.a. real (crédito en pesos) |
-| **SERIE DISPONIBLE** | 2024-02 → 2026-08 (31 puntos) | **REZAGO DE PUBLICACIÓN** | El stock del BCRA es diario, pero el titular espera el IPC que lo deflacta: el dato fresco se muestra como provisorio sin puntuar. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El stock del BCRA es diario, pero el titular espera el IPC que lo deflacta: el dato fresco se muestra como provisorio sin puntuar. |
 | **PRODUCTOR DEL DATO** | BCRA (stock de préstamos) + INDEC (IPC como deflactor) | **OPERACIÓN ESTADÍSTICA** | Préstamos al sector privado (saldos a fin de mes), variación interanual real |
-| **MODO DE ACCESO** | Automático: API pública del BCRA y API de series de datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-20 |
+| **MODO DE ACCESO** | Automático: API pública del BCRA y API de series de datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-20 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1401,13 +1401,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- nominal 33,2% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-08) · aparte, la cartera en moneda extranjera 18,8% real medida en pesos y 39,1% en dólares; los dos universos juntos, 3,9% real — al 2026-10-14 (provisorio, no puntúa): -2,3% real con deflactor de 2026-08
+- nominal 32,0% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-09) · aparte, la cartera en moneda extranjera 15,5% real medida en pesos y 38,7% en dólares; los dos universos juntos, 2,6% real — al 2026-10-14 (provisorio, no puntúa): -2,2% real con deflactor de 2026-09
 
 ## Color vigente y por qué
 
-Dato vigente: −0,3 % i.a. real (crédito en pesos) (2026-08).
+Dato vigente: −1 % i.a. real (crédito en pesos) (2026-09).
 
-−0,3 % i.a. real (crédito en pesos) cae en el tramo que corresponde a Naranja, a 2,05 del corte más cercano.
+−1,0 % i.a. real (crédito en pesos) cae en el tramo que corresponde a Naranja, a 2,75 del corte más cercano.
 
 **Color vigente: NARANJA**
 

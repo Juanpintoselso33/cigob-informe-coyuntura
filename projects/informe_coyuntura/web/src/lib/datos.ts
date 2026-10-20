@@ -414,7 +414,7 @@ export const LABELS: Record<string, string> = {
   idm: "Brecha de crecimiento real M3–M2",
   desequilibrio_monetario: "Liquidez en pesos y presión compradora de divisas",
   iai: "Inversión física", icip: "Pagos de servicios digitales y productividad",
-  credito_privado: "Crédito privado real",
+  credito_privado: "Crédito privado real en pesos",
   costo_financiamiento_tesoro: "Costo real del financiamiento del Tesoro",
   resultado_primario: "Resultado primario del Estado nacional",
   prestamos_privados: "Préstamos al sector privado", base_monetaria: "Base monetaria",

@@ -328,8 +328,8 @@ BANDAS_ITCM = {
 }
 
 ANCLAS_ITCM = {
-    # Las cuatro esquinas de la matriz del desequilibrio monetario (0 · 45 ·
-    # 45 · 90 de tensión → 100 · 55 · 55 · 10 de puntaje) caen TODAS sobre
+    # Las cuatro esquinas de la matriz del desequilibrio monetario (0 · 58,75 ·
+    # 58,75 · 90 de tensión → 100 · 41,25 · 41,25 · 10 de puntaje) caen TODAS sobre
     # esta recta, así que dos anclas la reproducen exactamente y no hay una
     # segunda escala que se pueda desincronizar de la del módulo. Las dos
     # cruzadas valen lo mismo desde ADR-0257: la recta no se entera, porque
