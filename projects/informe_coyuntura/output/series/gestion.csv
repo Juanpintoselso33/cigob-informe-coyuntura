@@ -1,5 +1,5 @@
 fecha,indicador,valor,unidad,fuente
-2026-10-01,rigi_inversiones,56198,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2026-10-01,rigi_inversiones,68438,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-09-01,rigi_inversiones,49766,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-08-01,rigi_inversiones,47073,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-07-01,rigi_inversiones,46708,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
@@ -576,7 +576,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2024-01-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2023-12-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2026-10-01,cepo_mulc,6.39,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
+2026-10-01,cepo_mulc,6.4,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-09-01,cepo_mulc,5.62,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-08-01,cepo_mulc,5.73,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-07-01,cepo_mulc,5.9,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
@@ -653,6 +653,7 @@ fecha,indicador,valor,unidad,fuente
 2023-03-01,asistencia_directa,95.7,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
 2023-02-01,asistencia_directa,95.1,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
 2023-01-01,asistencia_directa,99.0,% del devengado en ayudas a personas (5.1.4 / inciso 5),API Presupuesto Abierto (SIDIF)
+2026-09-01,apertura_comercial,7.16,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
 2026-08-01,apertura_comercial,7.0,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
 2026-07-01,apertura_comercial,7.62,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
 2026-06-01,apertura_comercial,6.15,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500

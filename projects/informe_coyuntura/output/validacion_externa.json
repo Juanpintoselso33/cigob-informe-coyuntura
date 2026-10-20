@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-19T03:40:42.436725+00:00",
+    "generated_at": "2026-10-20T03:30:18.786498+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -1002,27 +1002,27 @@
     "umbral": 0.7,
     "n_indicadores": 14,
     "n_pares": 78,
-    "r_abs_medio": 0.464,
+    "r_abs_medio": 0.463,
     "share_altos": 0.244,
     "share_bajos": 0.308,
     "matriz": {
       "apertura_comercial": {
-        "cepo_mulc": 0.344,
-        "concesiones_infraestructura": 0.079,
-        "desregulacion_normativa": 0.469,
-        "fal_modernizacion_laboral": 0.132,
+        "cepo_mulc": 0.341,
+        "concesiones_infraestructura": 0.067,
+        "desregulacion_normativa": 0.456,
+        "fal_modernizacion_laboral": 0.12,
         "gasto_funcionamiento": 0.012,
         "libertad_opcion_salud": 0.351,
         "litigiosidad_laboral": 0.489,
         "masa_salarial": 0.035,
-        "privatizaciones": 0.495,
-        "protocolo_antipiquetes": 0.254,
+        "privatizaciones": 0.478,
+        "protocolo_antipiquetes": 0.251,
         "reduccion_estado": 0.394,
-        "reestructuracion_organismos": 0.299
+        "reestructuracion_organismos": 0.284
       },
       "cepo_mulc": {
-        "apertura_comercial": 0.344,
-        "concesiones_infraestructura": 0.339,
+        "apertura_comercial": 0.341,
+        "concesiones_infraestructura": 0.338,
         "desregulacion_normativa": 0.918,
         "fal_modernizacion_laboral": 0.366,
         "gasto_funcionamiento": 0.274,
@@ -1035,8 +1035,8 @@
         "reestructuracion_organismos": 0.465
       },
       "concesiones_infraestructura": {
-        "apertura_comercial": 0.079,
-        "cepo_mulc": 0.339,
+        "apertura_comercial": 0.067,
+        "cepo_mulc": 0.338,
         "desregulacion_normativa": 0.499,
         "fal_modernizacion_laboral": 0.919,
         "gasto_funcionamiento": 0.281,
@@ -1049,7 +1049,7 @@
         "reestructuracion_organismos": 0.76
       },
       "desregulacion_normativa": {
-        "apertura_comercial": 0.469,
+        "apertura_comercial": 0.456,
         "cepo_mulc": 0.918,
         "concesiones_infraestructura": 0.499,
         "fal_modernizacion_laboral": 0.562,
@@ -1063,7 +1063,7 @@
         "reestructuracion_organismos": 0.671
       },
       "fal_modernizacion_laboral": {
-        "apertura_comercial": 0.132,
+        "apertura_comercial": 0.12,
         "cepo_mulc": 0.366,
         "concesiones_infraestructura": 0.919,
         "desregulacion_normativa": 0.562,
@@ -1133,7 +1133,7 @@
         "reestructuracion_organismos": 0.224
       },
       "privatizaciones": {
-        "apertura_comercial": 0.495,
+        "apertura_comercial": 0.478,
         "cepo_mulc": 0.827,
         "concesiones_infraestructura": 0.583,
         "desregulacion_normativa": 0.949,
@@ -1147,7 +1147,7 @@
         "reestructuracion_organismos": 0.732
       },
       "protocolo_antipiquetes": {
-        "apertura_comercial": 0.254,
+        "apertura_comercial": 0.251,
         "cepo_mulc": 0.872,
         "concesiones_infraestructura": 0.294,
         "desregulacion_normativa": 0.873,
@@ -1175,7 +1175,7 @@
         "reestructuracion_organismos": 0.303
       },
       "reestructuracion_organismos": {
-        "apertura_comercial": 0.299,
+        "apertura_comercial": 0.284,
         "cepo_mulc": 0.465,
         "concesiones_infraestructura": 0.76,
         "desregulacion_normativa": 0.671,
@@ -3161,7 +3161,7 @@
     "2026-07": 2090.0,
     "2026-08": 1913.0,
     "2026-09": 1763.2,
-    "2026-10": 1763.8
+    "2026-10": 1763.2
   },
   "serie_itcp": {
     "2024-02": 71.1,
