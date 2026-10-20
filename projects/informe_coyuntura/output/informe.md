@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-20 13:05:27"
+generado: "2026-10-20 13:33:23"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -68,7 +68,7 @@ schema_version: "1.2.0"
 | produccion_legislativa | 31 | leyes sancionadas (12m) | 2026-09-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-10-01 | fresco |
-| cobertura_judicial | 73.93 | % estimado de cargos con juez designado | 2026-10-01 | fresco |
+| cobertura_judicial | 73.82 | % estimado de cargos con juez designado | 2026-10-01 | fresco |
 | alineamiento_senadores_prov | 56.5 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-09-24 | fresco |
 
 **Suspendidos — archivo histórico, NO integran el índice ni el score de arriba:**
@@ -96,7 +96,7 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 6.63 | % de brecha CCL/mayorista | 2026-10-19 | fresco |
+| cepo_mulc | 6.77 | % de brecha CCL/mayorista | 2026-10-20 | fresco |
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
@@ -105,7 +105,7 @@ schema_version: "1.2.0"
 | litigiosidad_laboral | 0.1 | % variación juicios SRT (12m vs 12m previos) | 2026-07-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 32.7 | % de inversión aprobada sobre el pipeline | 2026-10-20 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-24 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-10-20 | fresco |
 | asistencia_directa | 100.0 | % del devengado de transferencias en ayudas a personas (5.1.4) | 2026-10-20 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 33.1 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-06-01 | fresco |
@@ -120,4 +120,4 @@ schema_version: "1.2.0"
 | reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-10-20 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 
 ---
-*Generado por CIGOB — 2026-10-20 13:05:27 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-20 13:33:23 — schema 1.2.0*

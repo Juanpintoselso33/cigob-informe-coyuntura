@@ -1360,7 +1360,8 @@ FCI_CESE_PLENO = 10
 # serie que "crecía" era ruido de fondo acumulado. La Ley 27.802
 # (Modernización Laboral, publicada mar-2026; Dto. 408/2026 reglamentó)
 # renombró el instrumento a "Fondo de Asistencia Laboral" (FAL, Título II;
-# entra en vigencia el 1-nov-2026 según el art. 27 del Dto. 408/2026): se
+# entra en vigencia el 1-dic-2026 según el art. 27 del Dto. 408/2026, en la
+# redacción del Dto. 1228/2026): se
 # cuenta esa frase DESDE la publicación de la ley — el corte de fecha elimina
 # el ruido pre-creación (verificado: 1 mención espuria en ene-2026 queda
 # afuera). Hasta nov-2026 la cobertura mide andamiaje normativo; la adopción
@@ -1482,7 +1483,8 @@ FAL_ACTOS_FUNDAMENTALES = (
 #                      que no rige no es la promesa cumplida.
 #   0,20 vigencia      mismo peso que le dio ADR-0098. Es un hecho fechado y es
 #                      un hecho de gestión: el propio decreto reglamentario
-#                      difirió el arranque cinco meses, del 1-jun al 1-nov-2026.
+#                      difirió el arranque cinco meses, del 1-jun al 1-nov-2026, y el
+#                      1228/2026 lo volvió a correr, al 1-dic-2026.
 #   0,30 adopción      menos que el 0,40 de ADR-0098, porque aquella etapa se
 #                      apoyaba en un pleno provisorio (420 menciones del BO,
 #                      ADR-0068) y ésta se apoya en un hecho duro y binario.
@@ -1559,7 +1561,7 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
         0,50 · construcción normativa vigente  (Ley 27.802 · Decreto 408/2026,
                                                 cada uno vale la mitad, y sólo
                                                 mientras no estén suspendidos)
-        0,20 · régimen en vigencia             (1-nov-2026, art. 27 del decreto)
+        0,20 · régimen en vigencia             (1-dic-2026, art. 27 del decreto, Dto. 1228/2026)
         0,30 · adopción efectiva               (≥1 FAL registrado en la CNV)
 
     QUÉ CAMBIÓ Y POR QUÉ. Reemplaza al conteo de actos de ADR-0142, que valía

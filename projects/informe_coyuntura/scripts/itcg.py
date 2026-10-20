@@ -142,7 +142,7 @@ BANDAS_ITCG = {
         # indicador quedó clavado en 100. Ahora mide si la reforma RIGE:
         #
         #     0,50 · actos fundamentales VIGENTES / 2
-        #     0,20 · régimen en vigencia (1-nov-2026)
+        #     0,20 · régimen en vigencia (1-dic-2026, Dto. 1228/2026)
         #     0,30 · al menos un FAL registrado en la CNV
         #
         # La escala realizable es una escalera con huecos —0 · 20 · 25 · 30 · 45

@@ -71,6 +71,11 @@ jobs:
       # El manual se regenera desde el código igual que las fichas: si no, todo
       # cambio de pesos sale con una prueba en rojo que no es de nadie (#75).
       - run: python scripts/manual_cinturon.py --todos
+      # Y el índice de ADR y sus relaciones inversas: el conector escribe el ADR
+      # pero no puede correr Python, y sin esto todo ADR nuevo sale con
+      # test_indice_del_readme_sincronizado en rojo (#79, 20-oct-2026). Lo
+      # commitea la corrida de datos, que este pedido dispara por tocar docs/adr/.
+      - run: python scripts/adr_coherencia.py
       - name: Tests
         run: |
           set -o pipefail

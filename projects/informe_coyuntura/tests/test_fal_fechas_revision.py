@@ -10,7 +10,9 @@ import gestion
 class Hoy(date):
     dia=8
     @classmethod
-    def today(cls):return cls(2026,9,cls.dia)
+    # Después de la última revisión del registro: una revisión con fecha
+    # futura invalida el dato, que es otra prueba (la de abajo).
+    def today(cls):return cls(2026,10,cls.dia)
 
 
 @pytest.fixture
@@ -19,7 +21,7 @@ def registro(tmp_path,monkeypatch):
     p=tmp_path/'hitos.json';p.write_text(json.dumps(data))
     monkeypatch.setattr(gestion,'FAL_HITOS_PATH',p)
     monkeypatch.setattr(gestion,'date',Hoy)
-    monkeypatch.setattr(Hoy,'dia',8)
+    monkeypatch.setattr(Hoy,'dia',21)
     monkeypatch.setattr(gestion,'_cnv_registro_fci',lambda:[{'Text':'OTRO FONDO'}])
     monkeypatch.setattr(gestion,'_bo_conteo',lambda *a,**k:0)
     return p,data
@@ -27,12 +29,14 @@ def registro(tmp_path,monkeypatch):
 
 def test_consultar_cnv_no_renueva_revisiones_manuales(registro,monkeypatch):
     a=gestion.fetch_fal_modernizacion_laboral()
-    monkeypatch.setattr(Hoy,'dia',9)
+    monkeypatch.setattr(Hoy,'dia',22)
     b=gestion.fetch_fal_modernizacion_laboral()
     assert a['valor']==b['valor']==50
-    assert a['consulta_cnv_en']=='2026-09-08'
-    assert b['consulta_cnv_en']=='2026-09-09'
-    for k,fecha in [('revision_normativa_en','2026-07-20'),('revision_judicial_en','2026-08-21')]:
+    assert a['consulta_cnv_en']=='2026-10-21'
+    assert b['consulta_cnv_en']=='2026-10-22'
+    _,data=registro
+    for k in ('revision_normativa_en','revision_judicial_en'):
+        fecha=data['_meta'][k]
         assert a[k]==b[k]==fecha
         assert fecha in b['detalle_txt']
 

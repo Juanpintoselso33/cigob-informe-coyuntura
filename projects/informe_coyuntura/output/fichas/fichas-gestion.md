@@ -35,14 +35,14 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 79,7** | **VERDE** | Moderadamente aflojado | 13 indicadores: 10 en verde · 3 en amarillo |
+| **ITCG: 79,6** | **VERDE** | Moderadamente aflojado | 13 indicadores: 10 en verde · 3 en amarillo |
 Componentes que puntúan en este corte: 13 de 13 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 71,9 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 71,6 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 100,0 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. | 59,9 | AMARILLO | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 76,3 | VERDE | 15,0 % |
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 6,63 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 6,77 % de brecha CCL/mayorista | VERDE | 14,0 % |
 | Apertura comercial (alícuota) | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -95,7 +95,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 6,63 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 6,77 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -138,13 +138,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1625.60 (2026-10-19T18:00:00-03:00) / mayorista venta 1524.50 (2026-10-19T13:01:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1627.10 (2026-10-20T13:01:00-03:00) / mayorista venta 1524.00 (2026-10-20T09:48:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 6,63 % de brecha CCL/mayorista (2026-10).
+Dato vigente: 6,77 % de brecha CCL/mayorista (2026-10).
 
-6,63 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 7,37 del corte más cercano.
+6,77 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 7,23 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -578,14 +578,14 @@ Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo 
 
 Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).
 
-Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de noviembre de 2026; el cálculo reserva esa etapa hasta entonces. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.
+Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de diciembre de 2026; el cálculo reserva esa etapa hasta entonces. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.
 
 **Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. Estos litigios pertenecen a otro universo de reclamos: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.
 
 ## Método de cómputo
 
 - La construcción normativa vale la mitad del indicador y se reparte en partes iguales entre los dos actos que ponen en pie al Fondo: la Ley 27.802 de Modernización Laboral, con la que el Congreso lo instauró (publicada el 6 de marzo de 2026), y el Decreto 408/2026, con el que el Poder Ejecutivo reglamentó el Título II (publicado el 1 de junio de 2026). Un acto cuenta mientras esté dictado y no suspendido: si un tribunal frena su vigencia con alcance general, deja de sumar mientras dure la suspensión.
-- La entrada en vigencia del régimen vale el veinte por ciento y se cumple el 1 de noviembre de 2026, fecha fijada por el artículo 27 del decreto reglamentario, que difirió cinco meses el arranque previsto originalmente para junio.
+- La entrada en vigencia del régimen vale el veinte por ciento y se cumple el 1 de diciembre de 2026, fecha fijada por el artículo 27 del decreto reglamentario: el arranque estaba previsto para junio, el propio decreto lo pasó a noviembre y el Decreto 1228/2026 lo corrió otra vez, a diciembre.
 - La adopción efectiva vale el treinta por ciento y se cumple cuando existe al menos un Fondo de Asistencia Laboral inscripto en el registro de la Comisión Nacional de Valores. Se cuenta sólo la denominación del régimen de la Ley 27.802: el «fondo de cese laboral» de la industria de la construcción es un régimen homónimo y distinto, que se informa aparte.
 - La serie mensual se reconstruye con la misma regla desde diciembre de 2023 y se evalúa al cierre de cada mes, de modo que un hecho del día 30 cuenta en ese mes.
 
@@ -606,7 +606,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-10-20; consulta CNV de esa fecha. Revisión normativa del 2026-07-20 y judicial del 2026-08-21; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 7 menciones del FAL en el BO desde mar-2026
+- Evaluación al 2026-10-20; consulta CNV de esa fecha. Revisión normativa del 2026-10-20 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 8 menciones del FAL en el BO desde mar-2026
 
 ## Color vigente y por qué
 
@@ -654,6 +654,8 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 **2026-07-25** — Su peso dentro de la dimensión baja del setenta al cincuenta por ciento, a propuesta de una revisión externa: la dimensión mide un instrumento y su resultado, y no había razón para que el instrumento pesara más del doble que el resultado. El cambio mejora el puntaje de la dimensión, porque la litigiosidad venía puntuando más alto que el fondo; se deja dicho para que la decisión pueda discutirse por su argumento y no por su efecto.
 
 **2026-08-29** — El valor de respaldo seguía en 0,4, de la fórmula anterior a la recalibración del 21-ago-2026. Se corrigió a 50 sobre el índice 0-100 vigente —los dos actos fundamentales vigentes, el régimen todavía sin regir y sin FAL registrado en la CNV— y el respaldo dejó de tener prioridad sobre el último valor en vivo.
+
+**2026-10-20** — La entrada en vigencia del régimen pasa del 1 de noviembre al 1 de diciembre de 2026: el Decreto 1228/2026, publicado ese día, la prorrogó un mes y además duplicó el período de carencia, de seis a doce meses, que no incide en el indicador. El puntaje no cambia —la etapa de vigencia seguía sin cumplirse—, pero se cumple un mes más tarde. Se revisó también el estado judicial: no hay sentencia de fondo ni suspensión general de los artículos del fondo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -938,7 +940,7 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-08) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
+| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-10) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -948,7 +950,7 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de km adjudicados / km del plan (Red Federal de Concesiones) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Se consulta el estado del expediente y se contrasta con actos de adjudicación publicados. CONTRAT.AR puede demorar en reflejar una resolución; la fecha de consulta no equivale a la fecha del acto ni al inicio de la operación. |
 | **PRODUCTOR DEL DATO** | CONTRAT.AR + Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones) | **OPERACIÓN ESTADÍSTICA** | Tasa de adjudicación de la Red Federal de Concesiones, en kilómetros: km bajo concesión adjudicada sobre km totales del plan |
-| **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-20 |
+| **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-20 |
 
 ## Definición — qué mide y por qué importa
 
@@ -984,7 +986,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 ## Color vigente y por qué
 
-Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-08).
+Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-10).
 
 100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) cae en el tramo que corresponde a Verde, a 59,0 del corte más cercano.
 

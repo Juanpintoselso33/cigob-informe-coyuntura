@@ -85,19 +85,20 @@ def test_el_indice_cae_mientras_la_ley_esta_suspendida():
 
 
 def test_la_vigencia_del_regimen_no_se_da_por_cumplida_antes_de_tiempo():
-    """El 1-nov-2026 lo fijó el artículo 27 del propio decreto reglamentario, que
-    difirió cinco meses el arranque. No es un supuesto del proyecto."""
-    assert HITOS["vigencia"]["fecha"] == "2026-11-01"
-    antes, _, e_antes = gestion.fal_indice(HITOS, "2026-10-31", 0)
-    despues, _, e_desp = gestion.fal_indice(HITOS, "2026-11-01", 0)
+    """El 1-dic-2026 lo fija el artículo 27 del decreto reglamentario en la
+    redacción del Decreto 1228/2026 (antes, 1-nov). No es un supuesto del
+    proyecto."""
+    assert HITOS["vigencia"]["fecha"] == "2026-12-01"
+    antes, _, e_antes = gestion.fal_indice(HITOS, "2026-11-30", 0)
+    despues, _, e_desp = gestion.fal_indice(HITOS, "2026-12-01", 0)
     assert (e_antes["vigencia"], antes) == (0.0, 50.0)
     assert (e_desp["vigencia"], despues) == (1.0, 70.0)
 
 
 def test_el_techo_solo_se_alcanza_con_fondos_operando():
-    con_fondo, _, _ = gestion.fal_indice(HITOS, "2026-11-01", 1)
+    con_fondo, _, _ = gestion.fal_indice(HITOS, "2026-12-01", 1)
     assert con_fondo == 100.0
-    sin_fondo, _, _ = gestion.fal_indice(HITOS, "2026-11-01", 0)
+    sin_fondo, _, _ = gestion.fal_indice(HITOS, "2026-12-01", 0)
     assert sin_fondo == 70.0, "vigente y sin fondos no es el máximo"
 
 

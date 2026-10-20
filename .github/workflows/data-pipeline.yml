@@ -192,6 +192,13 @@ jobs:
       - name: Regenerar los manuales de los cinturones
         run: python scripts/manual_cinturon.py --todos
 
+      # El índice de docs/adr/README.md y las relaciones inversas también se
+      # generan (adr_coherencia.py). Un ADR que entra desde claude.ai no puede
+      # regenerarlos, y sin este paso la corrida se cae en
+      # test_indice_del_readme_sincronizado (#79, 20-oct-2026).
+      - name: Regenerar el índice de ADR
+        run: python scripts/adr_coherencia.py
+
       # Gates de calidad. Desde ADR-0133 el gate distingue:
       #   * INTEGRIDAD (G1 campos faltantes · G3 card≠serie · G6 jerga interna)
       #     → corta. El snapshot afirmaría algo que no es cierto.
@@ -252,6 +259,7 @@ jobs:
                   projects/informe_coyuntura/output/informe.md \
                   projects/informe_coyuntura/output/fichas/*.md \
                   projects/informe_coyuntura/docs/manuales/*.md \
+                  projects/informe_coyuntura/docs/adr/*.md \
                   projects/informe_coyuntura/output/validacion_externa.json \
                   projects/informe_coyuntura/web/src/data/informe.json \
                   projects/informe_coyuntura/web/src/data/series.json \
