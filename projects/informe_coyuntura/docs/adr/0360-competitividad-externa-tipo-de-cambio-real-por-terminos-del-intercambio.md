@@ -30,13 +30,13 @@ importación, INDEC) aportan esa segunda lectura.
 - Promediar el tipo de cambio real y los términos del intercambio.
 - Cruzarlos en una matriz de cuatro esquinas (elegida): un componente en su
   mejor valor no tapa al otro en el peor, como en
-  [[0257-matriz-simetrica]].
+  [[0257-los-dos-componentes-el-mismo-regimen-y-el-mismo-peso]].
 
 ## Decisión
 
 La dimensión pasa a puntuar un compuesto que cruza los dos datos en una
 matriz, con el mismo patrón que la liquidez en pesos y presión compradora de
-divisas ([[0257-matriz-simetrica]] y scripts/desequilibrio_monetario.py): cada
+divisas ([[0257-los-dos-componentes-el-mismo-regimen-y-el-mismo-peso]] y scripts/desequilibrio_monetario.py): cada
 componente se lleva a una posición 0-1 y el puntaje sale de interpolar
 bilinealmente entre cuatro esquinas. No se promedian.
 
@@ -57,7 +57,7 @@ términos altos (30). Con el peso competitivo el ajuste ya ocurrió y la
 posición es defendible aunque los precios no ayuden. Un peso apreciado
 sostenido por buenos precios depende de una variable externa y volátil: si
 los precios se dan vuelta, no queda colchón. A diferencia de
-[[0257-matriz-simetrica]], acá el orden de las cruzadas tiene fundamento
+[[0257-los-dos-componentes-el-mismo-regimen-y-el-mismo-peso]], acá el orden de las cruzadas tiene fundamento
 conceptual y se codifica.
 
 ### Posición del tipo de cambio real (a)
