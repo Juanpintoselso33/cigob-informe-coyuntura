@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-21 03:43:27"
+generado: "2026-10-21 13:47:03"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -67,7 +67,7 @@ schema_version: "1.2.0"
 | desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-10-21 | fresco |
 | produccion_legislativa | 31 | leyes sancionadas (12m) | 2026-09-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
-| paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-10-01 | ⚠ cache |
+| paralisis_denuncias | 13 | sesiones de las comisiones de control (12m) | 2026-10-01 | fresco |
 | cobertura_judicial | 73.82 | % estimado de cargos con juez designado | 2026-10-01 | fresco |
 | alineamiento_senadores_prov | 56.5 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-09-24 | fresco |
 
@@ -121,7 +121,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:bloqueo_sostenido,paralisis_denuncias`
+- `desactualizado:politica:bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-10-21 03:43:27 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-21 13:47:03 — schema 1.2.0*
