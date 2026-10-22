@@ -4,7 +4,7 @@
   "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
   "nuevas_en_la_corrida": 0,
   "registros_vistos_en_la_corrida": 40,
-  "ultima_corrida": "2026-10-21"
+  "ultima_corrida": "2026-10-22"
  },
  "pendientes": {
   "825492": {
@@ -561,6 +561,11 @@
    "marcado": false,
    "termino": "amparo"
   },
+  "833048": {
+   "fecha": "21/10/2026",
+   "marcado": false,
+   "termino": "amparo"
+  },
   "833196": {
    "fecha": "29/09/2026",
    "marcado": false,
@@ -580,6 +585,11 @@
    "fecha": "09/10/2026",
    "marcado": true,
    "termino": "inconstitucionalidad"
+  },
+  "834377": {
+   "fecha": "21/10/2026",
+   "marcado": false,
+   "termino": "medida cautelar"
   }
  }
 }

@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-21T13:47:03.618733+00:00",
+    "snapshot": "2026-10-22T03:34:33.347819+00:00",
     "adr": "0019"
   },
   "itcm": {
@@ -58,49 +58,49 @@
     }
   },
   "itcg": {
-    "valor_publicado": 79.4,
-    "valor_recomputado": 79.4,
+    "valor_publicado": 79.1,
+    "valor_recomputado": 79.1,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 79.4,
-        "p05": 78.0,
-        "p95": 80.9,
-        "desvio": 0.89
+        "media": 79.1,
+        "p05": 77.6,
+        "p95": 80.6,
+        "desvio": 0.9
       },
       "combinado": {
-        "media": 79.4,
-        "p05": 77.6,
-        "p95": 81.2,
-        "desvio": 1.08
+        "media": 79.1,
+        "p05": 77.3,
+        "p95": 80.9,
+        "desvio": 1.06
       },
       "insumos": {
-        "media": 79.4,
-        "p05": 78.4,
-        "p95": 80.4,
-        "desvio": 0.6
+        "media": 79.1,
+        "p05": 78.2,
+        "p95": 80.0,
+        "desvio": 0.58
       }
     },
     "leave_one_out": {
-      "apertura_comercial": 83.8,
+      "apertura_comercial": 83.3,
       "cepo_mulc": 75.4,
-      "rigi_inversiones": 80.6,
-      "libertad_opcion_salud": 80.3,
-      "concesiones_infraestructura": 78.6,
-      "fal_modernizacion_laboral": 80.2,
-      "litigiosidad_laboral": 78.7,
-      "asistencia_directa": 78.8,
-      "protocolo_antipiquetes": 78.9,
-      "desregulacion_normativa": 79.1,
-      "privatizaciones": 79.5,
-      "reduccion_estado": 79.4,
-      "gasto_funcionamiento": 79.4
+      "rigi_inversiones": 80.2,
+      "libertad_opcion_salud": 80.0,
+      "concesiones_infraestructura": 78.2,
+      "fal_modernizacion_laboral": 79.8,
+      "litigiosidad_laboral": 78.4,
+      "asistencia_directa": 78.5,
+      "protocolo_antipiquetes": 78.5,
+      "desregulacion_normativa": 78.7,
+      "privatizaciones": 79.2,
+      "reduccion_estado": 79.1,
+      "gasto_funcionamiento": 79.1
     },
     "tension": {
       "base": 2.1,
       "rango_combinado": [
         1.9,
-        2.2
+        2.3
       ]
     }
   },

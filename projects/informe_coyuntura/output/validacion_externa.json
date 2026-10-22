@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-21T13:46:45.339536+00:00",
+    "generated_at": "2026-10-22T03:34:12.430173+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -114,87 +114,87 @@
     ]
   },
   "indice_lider_mensual": {
-    "2026-08": 122.5,
-    "2026-07": 122.8,
-    "2026-06": 124.8,
+    "2026-09": 122.9,
+    "2026-08": 123.2,
+    "2026-07": 122.9,
+    "2026-06": 124.9,
     "2026-05": 125.3,
     "2026-04": 124.6,
-    "2026-03": 127.3,
-    "2026-02": 123.8,
-    "2026-01": 124.3,
+    "2026-03": 127.1,
+    "2026-02": 123.6,
+    "2026-01": 124.2,
     "2025-12": 126.6,
-    "2025-11": 124.8,
-    "2025-10": 128.9,
-    "2025-09": 121.0,
-    "2025-08": 123.8,
-    "2025-07": 128.1,
+    "2025-11": 124.9,
+    "2025-10": 129.0,
+    "2025-09": 121.5,
+    "2025-08": 123.7,
+    "2025-07": 128.3,
     "2025-06": 127.0,
     "2025-05": 129.3,
     "2025-04": 131.3,
-    "2025-03": 128.7,
-    "2025-02": 131.8,
-    "2025-01": 129.1,
+    "2025-03": 128.5,
+    "2025-02": 131.7,
+    "2025-01": 129.0,
     "2024-12": 127.0,
     "2024-11": 126.0,
-    "2024-10": 124.6,
-    "2024-09": 123.3,
-    "2024-08": 122.3,
-    "2024-07": 120.4,
+    "2024-10": 124.7,
+    "2024-09": 123.6,
+    "2024-08": 122.4,
+    "2024-07": 120.6,
     "2024-06": 117.7,
     "2024-05": 122.4,
     "2024-04": 116.2,
-    "2024-03": 111.8,
-    "2024-02": 115.6,
+    "2024-03": 111.7,
+    "2024-02": 115.5,
     "2024-01": 124.0,
     "2023-12": 126.2,
     "2023-11": 133.3,
     "2023-10": 136.5,
-    "2023-09": 138.1,
-    "2023-08": 142.0,
-    "2023-07": 137.8,
+    "2023-09": 138.2,
+    "2023-08": 142.1,
+    "2023-07": 138.0,
     "2023-06": 142.1,
     "2023-05": 138.3,
     "2023-04": 139.2,
-    "2023-03": 139.1,
+    "2023-03": 139.0,
     "2023-02": 138.6,
     "2023-01": 137.0,
-    "2022-12": 134.6,
+    "2022-12": 134.7,
     "2022-11": 130.7,
-    "2022-10": 131.0,
+    "2022-10": 131.1,
     "2022-09": 131.6,
-    "2022-08": 131.6,
-    "2022-07": 134.0,
+    "2022-08": 131.8,
+    "2022-07": 134.1,
     "2022-06": 135.4,
     "2022-05": 136.4,
-    "2022-04": 136.6,
+    "2022-04": 136.7,
     "2022-03": 137.7,
     "2022-02": 137.1,
-    "2022-01": 132.9,
+    "2022-01": 133.0,
     "2021-12": 134.0,
     "2021-11": 133.4,
-    "2021-10": 131.6,
-    "2021-09": 131.0
+    "2021-10": 131.6
   },
   "correlaciones_itcm": {
     "niveles (ITCM vs índice líder)": {
-      "r": 0.717,
+      "r": 0.723,
       "n": 33
     },
     "primeras diferencias (ITCM vs líder)": {
-      "r": 0.447,
+      "r": 0.448,
       "n": 32
     },
     "líder adelantado 1 mes vs ITCM": {
-      "r": 0.474,
+      "r": 0.476,
       "n": 33
     },
     "líder adelantado 3 meses vs ITCM": {
-      "r": -0.008,
+      "r": -0.009,
       "n": 33
     },
     "ITCM adelantado 1 mes vs líder": {
       "r": 0.734,
-      "n": 32
+      "n": 33
     }
   },
   "giros_itcm": {
@@ -242,9 +242,13 @@
       {
         "mes": "2025-09",
         "tipo": "valle"
+      },
+      {
+        "mes": "2026-03",
+        "tipo": "pico"
       }
     ],
-    "concordancia": 0.75,
+    "concordancia": 0.562,
     "n_meses": 32,
     "pares": [
       {
@@ -271,115 +275,115 @@
     "provisorios": 1,
     "sin_par": 0,
     "referencia_ventana": {
-      "desde": "2021-09",
-      "hasta": "2026-08",
+      "desde": "2021-10",
+      "hasta": "2026-09",
       "n": 60
     }
   },
   "senales_itcm": {
     "compuesto": {
       "falsas": 0,
-      "perdidos": 0,
+      "perdidos": 1,
       "n_giros": 3,
-      "n_giros_ref": 3,
-      "total": 0
+      "n_giros_ref": 4,
+      "total": 1
     },
     "componentes": [
       {
-        "componente": "iai",
+        "componente": "ipi_manufacturero",
         "falsas": 0,
         "perdidos": 0,
         "total": 0
       },
       {
-        "componente": "actividad_tributaria",
-        "falsas": 0,
-        "perdidos": 1,
-        "total": 1
-      },
-      {
-        "componente": "costo_financiamiento_tesoro",
-        "falsas": 1,
-        "perdidos": 0,
-        "total": 1
-      },
-      {
-        "componente": "ipc_total",
-        "falsas": 0,
-        "perdidos": 1,
-        "total": 1
-      },
-      {
-        "componente": "ipi_manufacturero",
-        "falsas": 1,
-        "perdidos": 0,
-        "total": 1
-      },
-      {
         "componente": "saldo_comercial_12m",
-        "falsas": 1,
+        "falsas": 0,
         "perdidos": 0,
+        "total": 0
+      },
+      {
+        "componente": "iai",
+        "falsas": 0,
+        "perdidos": 1,
         "total": 1
       },
       {
-        "componente": "credito_privado",
-        "falsas": 1,
+        "componente": "reservas_bcra",
+        "falsas": 0,
         "perdidos": 1,
-        "total": 2
+        "total": 1
       },
       {
-        "componente": "rem_ipc_12m",
+        "componente": "actividad_tributaria",
         "falsas": 0,
         "perdidos": 2,
         "total": 2
       },
       {
-        "componente": "reservas_bcra",
+        "componente": "costo_financiamiento_tesoro",
         "falsas": 1,
         "perdidos": 1,
         "total": 2
       },
       {
         "componente": "emae_difusion",
+        "falsas": 0,
+        "perdidos": 2,
+        "total": 2
+      },
+      {
+        "componente": "emae_ia",
+        "falsas": 0,
+        "perdidos": 2,
+        "total": 2
+      },
+      {
+        "componente": "ipc_total",
+        "falsas": 0,
+        "perdidos": 2,
+        "total": 2
+      },
+      {
+        "componente": "credito_privado",
         "falsas": 1,
         "perdidos": 2,
         "total": 3
       },
       {
-        "componente": "emae_ia",
-        "falsas": 1,
-        "perdidos": 2,
+        "componente": "rem_ipc_12m",
+        "falsas": 0,
+        "perdidos": 3,
+        "total": 3
+      },
+      {
+        "componente": "tcr_terminos_intercambio",
+        "falsas": 2,
+        "perdidos": 1,
         "total": 3
       },
       {
         "componente": "idc",
         "falsas": 1,
-        "perdidos": 2,
-        "total": 3
-      },
-      {
-        "componente": "tcr_terminos_intercambio",
-        "falsas": 3,
-        "perdidos": 1,
+        "perdidos": 3,
         "total": 4
       },
       {
         "componente": "recaudacion",
         "falsas": 2,
-        "perdidos": 3,
-        "total": 5
+        "perdidos": 4,
+        "total": 6
       },
       {
         "componente": "resultado_primario",
         "falsas": 2,
-        "perdidos": 3,
-        "total": 5
+        "perdidos": 4,
+        "total": 6
       }
     ],
     "evaluables": 15,
-    "peores": 14,
-    "iguales": 1,
-    "mejores": 0
+    "peores": 11,
+    "iguales": 2,
+    "mejores": 2
   },
   "redundancia_itcm": {
     "diferencias": {
@@ -3160,7 +3164,7 @@
     "2026-07": 2090.0,
     "2026-08": 1913.0,
     "2026-09": 1763.2,
-    "2026-10": 1762.5
+    "2026-10": 1761.4
   },
   "serie_itcp": {
     "2024-02": 71.1,
@@ -5306,9 +5310,9 @@
       "avanzo": "2026-10-07"
     },
     "indice_lider": {
-      "ultimo": "2026-08",
+      "ultimo": "2026-09",
       "n": 60,
-      "avanzo": "2026-09-19"
+      "avanzo": "2026-10-22"
     },
     "icc_utdt": {
       "ultimo": "2026-09",
@@ -5388,9 +5392,9 @@
           "etiqueta": "Índice Líder de actividad",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": -0.268,
-          "r_diferencias": 0.272,
-          "n": 33
+          "r_niveles": -0.244,
+          "r_diferencias": 0.264,
+          "n": 34
         },
         {
           "estadistica": "inversion_directa_externa",
@@ -5442,13 +5446,13 @@
       "n_ajenas": 6,
       "niveles": {
         "convergente": 0.242,
-        "discriminante": 0.307,
-        "brecha": -0.065
+        "discriminante": 0.303,
+        "brecha": -0.061
       },
       "diferencias": {
         "convergente": 0.192,
-        "discriminante": 0.108,
-        "brecha": 0.084
+        "discriminante": 0.107,
+        "brecha": 0.085
       },
       "factor": {
         "cargas": {
@@ -5802,7 +5806,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,242 y con las 6 ajenas es 0,307. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,192 con lo propio contra 0,108 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,242 y con las 6 ajenas es 0,303. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,192 con lo propio contra 0,107 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     },
     "itcp": {
       "indice": "itcp",
@@ -5875,9 +5879,9 @@
           "etiqueta": "Índice Líder de actividad",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": -0.233,
-          "r_diferencias": -0.052,
-          "n": 31
+          "r_niveles": -0.246,
+          "r_diferencias": -0.055,
+          "n": 32
         },
         {
           "estadistica": "inversion_directa_externa",
@@ -5929,15 +5933,15 @@
       "n_ajenas": 12,
       "niveles": {
         "convergente": 0.154,
-        "discriminante": 0.199,
-        "brecha": -0.045
+        "discriminante": 0.2,
+        "brecha": -0.046
       },
       "diferencias": {
         "convergente": 0.273,
         "discriminante": 0.169,
         "brecha": 0.104
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,154 y con las 12 ajenas es 0,199. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,273 con lo propio contra 0,169 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,154 y con las 12 ajenas es 0,2. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,273 con lo propio contra 0,169 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     }
   }
 }
