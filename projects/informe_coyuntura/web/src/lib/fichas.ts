@@ -44,9 +44,9 @@ export interface AnclasFicha {
   bandas: { banda: string; puntaje: number }[];   // la tabla del documento
   puntos: [number, number][];                     // anclas [valor, puntaje], x ascendente
   unidadCorta: string;                            // "% m/m"
-  sinEjemplo?: boolean;                           // el valor de la card NO es el insumo de la
+  sinEjemplo?: boolean;                           // el valor de la tarjeta NO es el insumo de la
                                                   // escala (ej. REM: puntúa el equivalente
-                                                  // mensual, la card muestra el anual)
+                                                  // mensual, la tarjeta muestra el anual)
 }
 
 export interface FichaIndicador {
@@ -343,7 +343,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-06-26", cambio: "Nace el IdC en reemplazo de la tasa BADLAR dentro de la dimensión de financiamiento, como índice de ratios mensuales." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "Rediseño de la métrica: pasa de ratios mes a mes a niveles estandarizados contra la propia historia, publicados en desvíos estándar." },
-      { fecha: "2026-09-15", cambio: "El rótulo de la card pasa de «Capacidad prestable (IdC)» a «Capacidad prestable». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna, que ya estaba traducida en el texto.", adr: "0311" },
+      { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Capacidad prestable (IdC)» a «Capacidad prestable». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna, que ya estaba traducida en el texto.", adr: "0311" },
     ],
   },
 
@@ -403,7 +403,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: API pública de series de tiempo.",
     },
     transformaciones: [
-      "La card publica el nivel en miles de puestos; el índice del cinturón lo expresa en base 100 contra el promedio del último trimestre de 2023, la misma línea de base que el resto de los componentes.",
+      "La tarjeta publica el nivel en miles de puestos; el índice del cinturón lo expresa en base 100 contra el promedio del último trimestre de 2023, la misma línea de base que el resto de los componentes.",
       "Se usa la serie con estacionalidad, no la desestacionalizada, porque la comparación es contra una base fija de tres meses y no contra el mes anterior: la estacionalidad de la base y la del mes corriente se compensan.",
       "No se invierte: más empleo registrado es mejor, de modo que el índice sube cuando la situación mejora.",
     ],
@@ -434,7 +434,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Se consideran únicamente los cargos de juez en órganos habilitados: los tribunales creados por ley pero todavía no puestos en funcionamiento no forman parte del denominador, porque no hay nada que cubrir.",
-      "Un cargo marcado como vacante cuenta como no cubierto aunque tenga subrogante a cargo. La subrogancia se publica aparte, en el detalle de la card.",
+      "Un cargo marcado como vacante cuenta como no cubierto aunque tenga subrogante a cargo. La subrogancia se publica aparte, en el detalle de la tarjeta.",
       "Hay una excepción, y la fuente la distingue bien: un puñado de cargos tiene juez designado que está de licencia, con un subrogante a cargo mientras tanto. Ese cargo no figura como vacante, porque el juez existe y el cargo es suyo, aunque quien firme sea el subrogante. Al cinco de junio de 2026 son seis casos.",
       "La serie mensual se reconstruye desde el padrón con movimientos netos de jueces de tribunales inferiores. Se excluyen fiscales, defensores, Corte Suprema, renovaciones y conjueces. Una promoción de un titular ya contado no suma una persona nueva. Las normas complementarias reemplazan el efecto del mismo registro si después aparece en la planilla; no se duplican.",
       "Las bajas comprobadas que seguían figurando como no vacantes corrigen el ancla sin modificar la fuente original. Hacia atrás se resta el flujo neto entre el mes y el padrón; hacia adelante se suma. El 5 de junio de 2026 la foto original tiene 610 cargos no vacantes: una baja omitida lleva el ancla estimada a 609. La composición original se conserva por separado.",
@@ -463,7 +463,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "Reconstrucción con altas netas, normas posteriores a la planilla y bajas documentadas; ancla original separada de la corregida, corte limitado a la revisión y límites explícitos sobre juras, habilitaciones y fallecimientos.", adr: "0298" },
       { fecha: "2026-09-08", cambio: "Se excluyen movimientos de la Corte Suprema y renovaciones verificadas, que no son altas netas de tribunales inferiores. La conciliación integral de promociones, nuevas normas y universo habilitado continúa abierta; todavía no se certifica el stock reconstruido.", adr: "0297" },
       { fecha: "2026-07-25", cambio: "Entra al índice como único indicador de la dimensión nueva del Poder Judicial, con el quince por ciento del cinturón. La serie se reconstruyó completa desde diciembre de 2023." },
-      { fecha: "2026-08-25", cambio: "La card publica numerador, denominador y la fecha de cada uno. El valor no cambió —69,63%— pero antes se explicaba con «604 de 955 cargos», que es 63,25%: el porcentaje contaba cargos no vacantes al corte de la corrida y el texto contaba cargos con titular a la fecha del padrón. Ahora se publican los dos cortes por separado y el inventario de designaciones y renuncias que los une. Se descartan además los registros con fecha posterior a hoy.", adr: "0240" },
+      { fecha: "2026-08-25", cambio: "La tarjeta publica numerador, denominador y la fecha de cada uno. El valor no cambió —69,63%— pero antes se explicaba con «604 de 955 cargos», que es 63,25%: el porcentaje contaba cargos no vacantes al corte de la corrida y el texto contaba cargos con titular a la fecha del padrón. Ahora se publican los dos cortes por separado y el inventario de designaciones y renuncias que los une. Se descartan además los registros con fecha posterior a hoy.", adr: "0240" },
     ],
   },
 
@@ -756,7 +756,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-10, 5], [-7.5, 20], [-2.5, 40], [2.5, 60], [7.5, 80], [10, 100]],
       unidadCorta: "% i.a. real",
     },
-    dobleUso: "Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa card ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con el peso vigente (0,084 dentro de «Actividad e inversión», que pesa 23%, desde la fusión del 16-oct-2026; antes 0,12, bajado de 0,20 el 2026-09-16, ver más abajo), este indicador aporta 1,93% al índice macroeconómico (0,23×0,084) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el índice macroeconómico tenía alrededor de 2,2% de su peso total expuesto, medido con los pesos anteriores a la fusión, al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador. `recaudacion` declara lo mismo desde su propia ficha (revisión adversarial, 2026-09-16). Además —y esto pesó más en el ajuste de peso que el doble uso con `recaudacion`— es redundante con sus PROPIOS compañeros de dimensión: r=0,840 con `emae_ia`, 0,828 con `ipi_manufacturero`, 0,725 con `emae_difusion` (los tres sobre el umbral 0,7 del repo, y más que lo que `ipi_manufacturero` ya correlaciona con `emae_ia`, r=0,765). La correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y BAJA al adelantarla un mes o dos, así que no anticipa el ciclo: entra por ser la lectura más fresca, no por aportar señal nueva, y el peso de entrada (0,12, por debajo del de `ipi_manufacturero`) se fijó en consecuencia (revisado el 16-sep-2026).",
+    dobleUso: "Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa tarjeta ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con el peso vigente (0,084 dentro de «Actividad e inversión», que pesa 23%, desde la fusión del 16-oct-2026; antes 0,12, bajado de 0,20 el 2026-09-16, ver más abajo), este indicador aporta 1,93% al índice macroeconómico (0,23×0,084) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el índice macroeconómico tenía alrededor de 2,2% de su peso total expuesto, medido con los pesos anteriores a la fusión, al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador. `recaudacion` declara lo mismo desde su propia ficha (revisión adversarial, 2026-09-16). Además —y esto pesó más en el ajuste de peso que el doble uso con `recaudacion`— es redundante con sus PROPIOS compañeros de dimensión: r=0,840 con `emae_ia`, 0,828 con `ipi_manufacturero`, 0,725 con `emae_difusion` (los tres sobre el umbral 0,7 del repo, y más que lo que `ipi_manufacturero` ya correlaciona con `emae_ia`, r=0,765). La correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y BAJA al adelantarla un mes o dos, así que no anticipa el ciclo: entra por ser la lectura más fresca, no por aportar señal nueva, y el peso de entrada (0,12, por debajo del de `ipi_manufacturero`) se fijó en consecuencia (revisado el 16-sep-2026).",
     limitaciones: [
       "Ninguna de las dos series mide actividad de forma directa: la recaudación responde también a evasión, cambios de alícuota, anticipos y vencimientos trasladados, y el impuesto al cheque a la proporción de pagos que pasan por el sistema bancario, no sólo a su volumen.",
       "Las bandas se calibraron contra los 105 meses de historia real del compuesto (dic-2017/ago-2026, la ventana que permite el IPC como deflactor), no contra los 25 años que tienen IVA-DGI y cheque por separado desde 2001: antes de esa fecha no hay IPC nacional comparable para deflactar.",
@@ -852,7 +852,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[80, 10], [85, 35], [95, 60], [105, 85], [110, 100]],
       unidadCorta: "base 100 = 4T-2023",
     },
-    dobleUso: "IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta card, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica. Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al índice macroeconómico (0,24×0,30) contra 1,93% de `actividad_tributaria` (0,23×0,084, desde la fusión del 16-oct-2026; antes 1,32%). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcr_terminos_intercambio` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.",
+    dobleUso: "IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta tarjeta, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica. Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al índice macroeconómico (0,24×0,30) contra 1,93% de `actividad_tributaria` (0,23×0,084, desde la fusión del 16-oct-2026; antes 1,32%). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcr_terminos_intercambio` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.",
     limitaciones: [
       "La parte provincial NO es la recaudación provincial total: son los Ingresos Brutos de los contribuyentes que operan en varias provincias, más los regímenes de retención y percepción. Cada provincia recauda además de sus contribuyentes puramente locales, y eso no pasa por este circuito. Es una porción grande y homogénea de la base imponible provincial, no su universo.",
       "Al medir el nivel mes a mes en lugar de la variación contra el año anterior, el indicador es más nervioso: un mes puede moverlo varios puntos. Es el precio de no diluir la señal en una ventana de doce meses, y se acepta a cambio de que un giro se vea cuando ocurre y no a lo largo del año siguiente.",
@@ -865,10 +865,10 @@ export const FICHAS: Record<string, Ficha> = {
       "Las bandas se fijaron sobre una grilla conceptual —pasos de diez puntos de la base imponible real de la transición— y no sobre la distribución observada. La serie disponible recorre de 88 a 115, así que la banda más baja describe una situación posible y no una observada.",
       "IVA-DGI y cheque son, ellos mismos, dos de los componentes del agregado DGI —no una fuente independiente que lo confirme o lo contradiga— y tampoco miden actividad de forma directa: la recaudación de un impuesto responde también a la evasión, a cambios de alícuota y a anticipos, y el impuesto al cheque además capta bancarización —más o menos operaciones por transferencia— y no sólo producto. Que coincidan en el sentido con el agregado no prueba causalidad; que diverjan tampoco aísla la causa: un cambio de alícuota del cheque o un vaivén de Ganancias (que no entra en esta descomposición) puede producir la misma divergencia que un problema de actividad real.",
     ],
-    faltantes: "Si falta la gacetilla provincial de un mes, ese mes no entra y el indicador mantiene el último punto disponible, señalado como desactualizado. Sin ventana suficiente para corregir estacionalidad, el indicador no publica y el saldo comercial junto con el resultado primario explican la dimensión. Si IVA-DGI o cheque se retrasan hasta tres meses respecto de la card, la descomposición se publica igual pero declarando el desfasaje (\"dato de tal mes, N meses más viejo que la card\"); más allá de tres meses de atraso, la descomposición queda ausente del detalle. En cualquier caso el indicador publica igual: no es un insumo del puntaje.",
+    faltantes: "Si falta la gacetilla provincial de un mes, ese mes no entra y el indicador mantiene el último punto disponible, señalado como desactualizado. Sin ventana suficiente para corregir estacionalidad, el indicador no publica y el saldo comercial junto con el resultado primario explican la dimensión. Si IVA-DGI o cheque se retrasan hasta tres meses respecto de la tarjeta, la descomposición se publica igual pero declarando el desfasaje (\"dato de tal mes, N meses más viejo que la tarjeta\"); más allá de tres meses de atraso, la descomposición queda ausente del detalle. En cualquier caso el indicador publica igual: no es un insumo del puntaje.",
     revisiones: "Los puntos históricos del indicador pueden cambiar por nuevas versiones de los insumos y porque los factores estacionales se recalculan al acumular meses. La reconstrucción de la parte provincial de 2022 está controlada contra el acumulado anual deducido por separado.",
     cambios: [
-      { fecha: "2026-09-16", cambio: "Se agrega `dobleUso`: esta card es el lado PESADO (7,2% del índice macroeconómico) del solapamiento con `actividad_tributaria` (1,32%), que ya lo declaraba desde su propia ficha pero no aparecía acá (revisión adversarial).", adr: "0329" },
+      { fecha: "2026-09-16", cambio: "Se agrega `dobleUso`: esta tarjeta es el lado PESADO (7,2% del índice macroeconómico) del solapamiento con `actividad_tributaria` (1,32%), que ya lo declaraba desde su propia ficha pero no aparecía acá (revisión adversarial).", adr: "0329" },
       { fecha: "2026-09-15", cambio: "Corrige el encuadre del punto anterior: IVA-DGI y cheque no son un control independiente, son dos de los propios componentes del agregado DGI (entre 30% y 62% del total según el mes). Se renombra a descomposición, se acota a tres meses el retroceso si esas series se retrasan (antes sin límite, con la ficha afirmando lo contrario), se agrega banda muerta para que valores que redondean a 0,0% no marquen divergencia, y se baja la afirmación de que divergir «sí es señal» de algo ajeno a la actividad.", adr: "0321" },
       { fecha: "2026-09-15", cambio: "Suma un control tributario en el detalle (no en el puntaje): la variación interanual real de IVA-DGI y de créditos/débitos bancarios (impuesto al cheque), deflactadas con el mismo IPC, contra el sentido del agregado. Sirve para distinguir si un movimiento del agregado viene de más o menos actividad o de otro factor —vencimientos trasladados, cambios normativos, reasignaciones— y para no sobreponderar el efecto estacional.", adr: "0318,0319" },
       { fecha: "2026-09-08", cambio: "Tarjeta e historia actualizan las gacetillas COMARB antes de calcular. Se rechazan catálogos vacíos, errores HTTP y nuevos PDFs sin conciliación de componentes; se conserva el último mes común con IPC.", adr: "0283" },
@@ -887,7 +887,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "tcr_terminos_intercambio",
     cinturon: "macro",
-    rezago: "El tipo de cambio real se publica a diario y su promedio mensual está disponible en los primeros días del mes siguiente. Los términos del intercambio son trimestrales y salen con unos dos meses y medio de demora: cada mes usa el último trimestre publicado, y la card lo declara.",
+    rezago: "El tipo de cambio real se publica a diario y su promedio mensual está disponible en los primeros días del mes siguiente. Los términos del intercambio son trimestrales y salen con unos dos meses y medio de demora: cada mes usa el último trimestre publicado, y la tarjeta lo declara.",
     fuente: {
       organismo: "BCRA e INDEC",
       operacion: "ITCRM — Índice de Tipo de Cambio Real Multilateral del BCRA (base 17-dic-2015 = 100), promedios mensuales; e índice de términos del intercambio del INDEC (índices de precios y cantidades del comercio exterior, base 2004 = 100), trimestral",
@@ -920,15 +920,15 @@ export const FICHAS: Record<string, Ficha> = {
       "«Términos altos» y «bajos» son posiciones dentro de la ventana desde fines de 2023, no niveles en abstracto: la lectura del cuadrante toma como altos los trimestres de la mitad superior (desde la mediana, 140,4), y el puntaje usa la posición continua.",
       "Los umbrales del tipo de cambio real y el peso de la dimensión (11%) son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.",
     ],
-    faltantes: "Un mes entra sólo si tiene tipo de cambio real y algún trimestre de términos del intercambio publicado. Si los términos del intercambio quedan más de nueve meses detrás del mes que se puntúa, el indicador no se actualiza y la card conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.",
+    faltantes: "Un mes entra sólo si tiene tipo de cambio real y algún trimestre de términos del intercambio publicado. Si los términos del intercambio quedan más de nueve meses detrás del mes que se puntúa, el indicador no se actualiza y la tarjeta conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.",
     revisiones: "Las revisiones del INDEC y del BCRA se incorporan en la siguiente actualización, porque la serie se reconstruye completa en cada corrida. Los cortes de los términos del intercambio quedan congelados: no se recalculan con cada corrida, para que el puntaje de un mes sea reproducible.",
     cambios: [
       { fecha: "2026-06-27", cambio: "La fuente pasa de la serie del INDEC (discontinuada en diciembre de 2024, con 18 meses de rezago acumulado) al ITCRM oficial del BCRA. Era un indicador de contexto." },
       { fecha: "2026-06-28", cambio: "Deja de ser contexto y entra al índice como quinta dimensión (competitividad externa)." },
       { fecha: "2026-06-30", cambio: "Peso de la dimensión recortado de 12% a 11% al entrar la dimensión de inversión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
-      { fecha: "2026-09-15", cambio: "El rótulo de la card pasa de «Tipo de cambio real (TCRM)» a «Tipo de cambio real». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
-      { fecha: "2026-10-20", cambio: "La dimensión competitividad externa deja de puntuar el tipo de cambio real solo y pasa a cruzarlo con los términos del intercambio del INDEC en una matriz. El tipo de cambio real dice si el peso está caro o barato; los términos del intercambio, si ese nivel se sostiene. El tipo de cambio real se sigue publicando como serie, pero ya no como card propia, y conserva sus umbrales de siempre como uno de los dos componentes. El peso de la dimensión no cambia (11%). Con los datos de septiembre de 2026, el tipo de cambio real solo daba 49,7 puntos y el compuesto da 49,8.", adr: "0360" },
+      { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Tipo de cambio real (TCRM)» a «Tipo de cambio real». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
+      { fecha: "2026-10-20", cambio: "La dimensión competitividad externa deja de puntuar el tipo de cambio real solo y pasa a cruzarlo con los términos del intercambio del INDEC en una matriz. El tipo de cambio real dice si el peso está caro o barato; los términos del intercambio, si ese nivel se sostiene. El tipo de cambio real se sigue publicando como serie, pero ya no como tarjeta propia, y conserva sus umbrales de siempre como uno de los dos componentes. El peso de la dimensión no cambia (11%). Con los datos de septiembre de 2026, el tipo de cambio real solo daba 49,7 puntos y el compuesto da 49,8.", adr: "0360" },
     ],
   },
 
@@ -945,7 +945,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: API pública del BCRA.",
     },
     transformaciones: [
-      "El valor publicado en la card es el nivel anual esperado, tal cual lo releva el BCRA.",
+      "El valor publicado en la tarjeta es el nivel anual esperado, tal cual lo releva el BCRA.",
       "Para puntuar se convierte a su equivalente mensual (raíz doceava) y se lee con la misma escala mensual que el IPC: expectativas y dato realizado quedan en la misma vara.",
     ],
     anclas: {
@@ -1020,7 +1020,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La ficha original nombra el componente B como formación de activos externos del sector privado no financiero. El BCRA ya no publica ese rubro con ese nombre —reserva esa etiqueta para el sector financiero y el público— y lo del privado no financiero sale bajo el concepto 03, que es el que se usa.",
       "El componente B no distingue los dólares que quedan depositados en el sistema local de los que van al colchón. La ficha original describía esa distinción, pero ninguna serie publicada del balance cambiario la hace.",
     ],
-    faltantes: "Un mes entra sólo si tiene los cinco insumos. Si falta cualquiera, ese punto no se calcula: nunca se imputa cero. La card conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.",
+    faltantes: "Un mes entra sólo si tiene los cinco insumos. Si falta cualquiera, ese punto no se calcula: nunca se imputa cero. La tarjeta conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.",
     revisiones: "Las revisiones de la planilla del mercado de cambios se incorporan en la siguiente actualización. Los cortes por percentiles quedan congelados: no se recalculan con cada corrida, porque si se movieran con el último dato el puntaje de un mes dejaría de ser reproducible y la serie cambiaría hacia atrás sin que nadie tocara nada.",
     cambios: [
       { fecha: "2026-08-11", cambio: "El peso dentro de estabilidad monetaria pasa de 10% a 20%, para que su peso nominal en el índice quede a la altura del de las reservas, como pedía la ficha original. Ceden el REM y el IDM; la inflación realizada conserva su 40%." },
@@ -1074,7 +1074,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "El titular pasa al último mes común de las fuentes (antes podía mezclar meses distintos bajo una sola etiqueta); el componente fresco queda como provisorio." },
       { fecha: "2026-09-08", cambio: "Tarjeta e historial comparten la regla de incorporación de patentamientos y exigen el mismo mes de referencia. Se evita una divergencia futura de fórmula; los tres meses actualmente acumulados no activan todavía ese componente.", adr: "0293" },
-      { fecha: "2026-09-15", cambio: "El rótulo de la card pasa de «Inversión física (IAI)» a «Inversión física». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
+      { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Inversión física (IAI)» a «Inversión física». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
       { fecha: "2026-09-30", cambio: "La escala se corre al crecimiento de la población (+0,17% anual según la proyección del INDEC con base en el Censo 2022). El verde ya no arranca en 0% sino en +0,17%: crecer menos que la población es invertir menos por habitante. Todas las anclas se corren lo mismo; el −5,66% de julio pasa de 36,4 a 35,7 puntos y sigue en naranja.", adr: "0341" },
       { fecha: "2026-10-16", cambio: "La dimensión propia de inversión (12% del índice macroeconómico) se fusiona con la de actividad: nace «Actividad e inversión», con 23%, y la inversión física pesa 30% de ella. Su peso en el índice baja de 12% a 6,9%: un solo indicador muy volátil ya no decide por sí solo más que toda la actividad junta." },
     ],
@@ -1248,7 +1248,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del capital electoral del oficialismo." },
       { fecha: "2026-06-30", cambio: "Serie mensual reconstruida hacia atrás hasta diciembre de 2023, evaluando la misma ponderación al cierre de cada mes." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del índice político (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
-      { fecha: "2026-09-15", cambio: "El rótulo de la card pasa de «Ventaja LLA−PJ (Votómetro)» a «Ventaja LLA−PJ». Se saca «Votómetro» por nombrar el método, no el dato; LLA y PJ se conservan porque son las siglas públicas de las fuerzas.", adr: "0311" },
+      { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Ventaja LLA−PJ (Votómetro)» a «Ventaja LLA−PJ». Se saca «Votómetro» por nombrar el método, no el dato; LLA y PJ se conservan porque son las siglas públicas de las fuerzas.", adr: "0311" },
       { fecha: "2026-09-15", cambio: "Corrige la decisión anterior: anclas recalibradas para traducir el semáforo verde/amarillo/naranja/rojo que pidió Luis, en vez de los márgenes simétricos ±5/±15 pp anteriores. El indicador conserva el rango 0-100 (una quinta banda arriba de +8 pp evita bajar el techo a 60, como hacía la primera versión de este ADR).", adr: "0312,0121" },
       { fecha: "2026-10-07", cambio: "Sale del Monitor. El Votómetro pasa a ser un producto aparte de CiGob y deja de puntuar en el índice político, donde era el único indicador de la dimensión de imagen y voto (7%). Su último dato publicado fue una ventaja de 4,3 puntos, de la edición del 22 de julio de 2026. Esta ficha queda como registro de cómo se construyó el indicador mientras estuvo.", adr: "0344" },
       { fecha: "2026-09-22", cambio: "Las encuestas se leen de la edición vigente del Votómetro en la web de CiGob, donde se publica por ediciones mensuales desde el 16 de septiembre de 2026. El sitio anterior queda como respaldo." },
@@ -1270,22 +1270,22 @@ export const FICHAS: Record<string, Ficha> = {
       "Una norma cuenta como desafiada cuando el Congreso la somete a votación en el recinto: un veto presidencial sobre el que se vota una insistencia, o un decreto puesto a consideración bajo el procedimiento de la ley 26.122.",
       "Cada norma se cuenta una sola vez, en el mes de su primer desafío, aunque después vuelva al recinto.",
       "Se suman las de los últimos doce meses calendario. No importa el resultado: entran tanto las que el Gobierno terminó perdiendo como las que logró sostener.",
-      "Cuando la ventana da cero, la card agrega —del registro histórico completo, no de un número fijo— qué proporción de las normas desafiadas en algún momento desde marzo de 2024 sigue en pie: es el dato que hasta el 16 de septiembre de 2026 publicaba el bloqueo sostenido.",
+      "Cuando la ventana da cero, la tarjeta agrega —del registro histórico completo, no de un número fijo— qué proporción de las normas desafiadas en algún momento desde marzo de 2024 sigue en pie: es el dato que hasta el 16 de septiembre de 2026 publicaba el bloqueo sostenido.",
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del conteo, interpolado entre anclas: 2 desafíos o menos en doce meses → el más alto; entre 2 y 5 → alto; entre 5 y 9 → moderado; entre 9 y 12 → bajo; más de 12 → el más bajo. Las anclas parten de que desafiar una norma del Ejecutivo en el recinto es un acto excepcional, que exige mayorías especiales o un procedimiento específico: un puñado al año ya es confrontación abierta.",
       "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 15% junto a la eficacia parlamentaria, el ratio DNU, las sesiones caídas por quórum y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
-      "Un cero en esta card no es ausencia de señal: es la lectura más favorable del par (nadie desafió ninguna norma), y desde el 16-sep-2026 la card lo dice así en vez de leerlo como «no pasó nada».",
+      "Un cero en esta tarjeta no es ausencia de señal: es la lectura más favorable del par (nadie desafió ninguna norma), y desde el 16-sep-2026 la tarjeta lo dice así en vez de leerlo como «no pasó nada».",
     ],
     limitaciones: [
       "La ventana contiene pocos eventos —entre cuatro y trece en el período disponible—, así que un solo desafío que entra o sale mueve el indicador de manera perceptible.",
       "Cuenta el acto de desafiar, no su importancia: una norma central y una menor pesan igual.",
-      "Comparte registro de eventos con el bloqueo sostenido, que dejó de publicarse como card el 16 de septiembre de 2026 por enmudecer justo cuando la ventana da cero desafíos — su tasa de supervivencia histórica es la que esta card cita cuando el conteo es cero.",
+      "Comparte registro de eventos con el bloqueo sostenido, que dejó de publicarse como tarjeta el 16 de septiembre de 2026 por enmudecer justo cuando la ventana da cero desafíos — su tasa de supervivencia histórica es la que esta tarjeta cita cuando el conteo es cero.",
     ],
     faltantes: "Si el registro de eventos no está disponible, se mantiene el último valor, señalado como desactualizado. Un mes sin desafíos no es un dato faltante: es un cero, e indica que el Congreso no confrontó.",
     revisiones: "El registro se reconstruye completo en cada actualización: si una fuente carga un acta con retraso, el conteo se corrige solo hacia atrás.",
     cambios: [
-      { fecha: "2026-09-16", cambio: "La card agrega, cuando el conteo da cero, la tasa histórica de supervivencia de las normas desafiadas —el dato que publicaba el bloqueo sostenido, que sale del índice y del tablero por enmudecer justo en ese caso.", adr: "0330" },
+      { fecha: "2026-09-16", cambio: "La tarjeta agrega, cuando el conteo da cero, la tasa histórica de supervivencia de las normas desafiadas —el dato que publicaba el bloqueo sostenido, que sale del índice y del tablero por enmudecer justo en ese caso.", adr: "0330" },
       { fecha: "2026-09-08", cambio: "Cero desafíos es válido sólo con cobertura completa del universo compartido. Una consulta fallida no acredita ausencia de eventos.", adr: "0276" },
       { fecha: "2026-07-19", cambio: "Entra al índice en reemplazo de las derrotas legislativas, que medían casi exactamente lo mismo que el bloqueo sostenido: desde marzo de 2025 ambos indicadores arrojaban mes a mes el mismo número, y entre los dos se llevaban el 40% de la dimensión para responder una sola pregunta. Las derrotas se siguen relevando y quedan a la vista como dato dentro de la ficha del bloqueo." },
     ],
@@ -1385,7 +1385,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "InfoLeg (Ministerio de Justicia)",
       operacion: "Buscador oficial de normas — listado de decretos tipificados «Decreto DNU» y conteo de leyes, los dos por fecha de publicación en el Boletín Oficial, en los últimos 365 días",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/",
-      acceso: "Automático: dos consultas al buscador oficial sobre la misma ventana. Del lado de las leyes toma el total de resultados. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia» y se queda con los que la grilla rotula «Decreto DNU»; la card publica el inventario de las normas efectivamente contadas, con su fecha de publicación.",
+      acceso: "Automático: dos consultas al buscador oficial sobre la misma ventana. Del lado de las leyes toma el total de resultados. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia» y se queda con los que la grilla rotula «Decreto DNU»; la tarjeta publica el inventario de las normas efectivamente contadas, con su fecha de publicación.",
     },
     transformaciones: [
       "Ratio = DNU publicados / leyes publicadas en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.",
@@ -1605,7 +1605,7 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Para cada acta con al menos un voto a favor o en contra del bloque propio de La Libertad Avanza (se excluyen deliberadamente los bloques aliados de nombre ambiguo, para no inflar la cohesión medida con votos que no son del oficialismo propiamente dicho), calcula qué tan pareja o dispareja fue esa votación puertas adentro: resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.",
       "Por cámara, el cálculo es el promedio de esa cuenta en las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran.",
-      "El indicador publicado es el compuesto bicameral: Diputados pesa 65% y el Senado 35% — el mismo reparto que las dos cámaras tenían cuando eran indicadores separados. Si una cámara no tiene dato (por ejemplo, receso sin actas divididas), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la card.",
+      "El indicador publicado es el compuesto bicameral: Diputados pesa 65% y el Senado 35% — el mismo reparto que las dos cámaras tenían cuando eran indicadores separados. Si una cámara no tiene dato (por ejemplo, receso sin actas divididas), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la tarjeta.",
     ],
     incidenciaTexto: [
       "Mide qué tan unido vota el bloque oficialista puertas adentro de las dos cámaras — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
@@ -1829,7 +1829,7 @@ export const FICHAS: Record<string, Ficha> = {
       "YA NO PUNTÚA. Salió del índice político en julio de 2026, reemplazado en la dimensión de poder legislativo por los desafíos legislativos: el par derrotas/bloqueo correlacionaba −0,984 y se llevaba el 40% de la dimensión para medir una sola cosa. Su valor se sigue relevando y no se convierte en puntaje; la tabla de arriba es la escala con la que puntuaba —el 20% de una dimensión que entonces pesaba el 25% del índice— y se conserva para poder leer la serie histórica.",
     ],
     limitaciones: [
-      "Es un indicador de eventos raros con ventana móvil: el valor puede saltar varios enteros de un mes al siguiente, tanto cuando ocurre una tanda de derrotas como —en espejo— doce meses después, cuando esa tanda sale de la ventana. El movimiento de salida es mecánico (aritmética de la ventana), no una mejora política nueva; el detalle de la card publica la composición del conteo para leerlo con contexto.",
+      "Es un indicador de eventos raros con ventana móvil: el valor puede saltar varios enteros de un mes al siguiente, tanto cuando ocurre una tanda de derrotas como —en espejo— doce meses después, cuando esa tanda sale de la ventana. El movimiento de salida es mecánico (aritmética de la ventana), no una mejora política nueva; el detalle de la tarjeta publica la composición del conteo para leerlo con contexto.",
       "Un conteo de cero informa ausencia de derrotas, no necesariamente dominio del Ejecutivo: también puede reflejar que no hubo vetos ni tratamientos de decretos en juego en el período (menos confrontación, no más control).",
       "La detección automática de rechazos de decretos mira las actas del Senado: un rechazo que ocurra primero en Diputados se registra recién cuando el Senado también lo vota (o con una corrección manual del registro). En el período histórico eso habría corrido la fecha de cinco decretos apenas dos semanas, sin alterar el conteo anual.",
       "Las insistencias se fechan por la publicación de la ley en el Boletín Oficial, no por el voto de la segunda cámara: una insistencia votada sobre el fin de mes puede registrarse al mes siguiente. En los tres casos reales del período ambos hechos cayeron en el mismo mes.",
@@ -1872,7 +1872,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "Los cortes 90/75/50/25 son decisiones editoriales sobre una tasa de supervivencia: 100% significa que todas las normas desafiadas siguen en pie. No son umbrales calibrados por una fuente externa ni equivalen a la proporción de bancas necesaria para sostener un veto. El universo combina vetos y decretos, con reglas distintas. La afirmación anterior de que no hubo insistencias entre 2003 y 2025 era incorrecta: el Senado documenta la insistencia completada sobre emergencia en discapacidad el 4 de septiembre de 2025. Ese antecedente no permite inferir una tasa histórica para este universo mixto.",
-      "YA NO PUNTÚA. Salió del índice político el 16 de septiembre de 2026: no porque el manejo del denominador vacío estuviera mal —la decisión del 8-sep-2026 hizo bien en no inventar un cero ni arrastrar la tasa de otra ventana— sino porque un indicador cuya única salida posible en el extremo del fenómeno que mide (doce meses sin ningún desafío, la señal más fuerte de gobernabilidad legislativa que puede dar) es enmudecer, no es una card. Su valor se sigue relevando y no se convierte en puntaje; la tabla de arriba es la escala con la que puntuaba —el 12% de una dimensión que pesa el 21% del índice— y se conserva para poder leer la serie histórica. Qué pasó con las normas desafiadas —cuántas hubo y qué proporción sobrevivió— ahora se cuenta en la ficha de «Normas del Ejecutivo desafiadas en el recinto».",
+      "YA NO PUNTÚA. Salió del índice político el 16 de septiembre de 2026: no porque el manejo del denominador vacío estuviera mal —la decisión del 8-sep-2026 hizo bien en no inventar un cero ni arrastrar la tasa de otra ventana— sino porque un indicador cuya única salida posible en el extremo del fenómeno que mide (doce meses sin ningún desafío, la señal más fuerte de gobernabilidad legislativa que puede dar) es enmudecer, no es una tarjeta. Su valor se sigue relevando y no se convierte en puntaje; la tabla de arriba es la escala con la que puntuaba —el 12% de una dimensión que pesa el 21% del índice— y se conserva para poder leer la serie histórica. Qué pasó con las normas desafiadas —cuántas hubo y qué proporción sobrevivió— ahora se cuenta en la ficha de «Normas del Ejecutivo desafiadas en el recinto».",
     ],
     limitaciones: [
       "La ventana de 12 meses retiene las caídas durante un año: la recuperación del bloqueo después de una crisis aparece con rezago mecánico, incluso si el Congreso nuevo dejó de desafiar normas (los desafíos viejos salen de la ventana doce meses después, no antes).",
@@ -1884,7 +1884,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si las actas o InfoLeg fallan, se mantiene el último resultado disponible, señalado como desactualizado. Si la consulta termina y no hay normas desafiadas en la ventana, se publica «Sin universo»: valor nulo, sin puntaje y con redistribución del peso entre los componentes observados de la dimensión. El conteo de desafíos sí vale cero; no se arrastra una tasa de otra ventana.",
     revisiones: "Las votaciones consumadas son inmutables. Los vetos con media insistencia pendiente se re-verifican en cada actualización (no caducan): si la segunda cámara completa la insistencia, la norma pasa a caída desde ese mes en adelante — los puntos históricos ya publicados no se reescriben, porque cada uno evalúa el estado al cierre de su propio mes.",
     cambios: [
-      { fecha: "2026-09-16", cambio: "Sale del índice político y del tablero. Un indicador que enmudece justo en el extremo del fenómeno que mide —cero desafíos en la ventana, la mejor señal posible— no es una card; su contenido pasa a la explicación de «Normas del Ejecutivo desafiadas en el recinto».", adr: "0330,0153,0216" },
+      { fecha: "2026-09-16", cambio: "Sale del índice político y del tablero. Un indicador que enmudece justo en el extremo del fenómeno que mide —cero desafíos en la ventana, la mejor señal posible— no es una tarjeta; su contenido pasa a la explicación de «Normas del Ejecutivo desafiadas en el recinto».", adr: "0330,0153,0216" },
       { fecha: "2026-09-08", cambio: "Una ventana sin desafíos verificados no define una tasa. Se publica sin universo y fuera del cálculo; una consulta incompleta conserva el dato previo con su fecha.", adr: "0276" },
       { fecha: "2026-07-16", cambio: "Incorporado como la cara ganada del pulso legislativo: los vetos sostenidos y la supervivencia de decretos no puntuaban en ningún indicador (el conteo de derrotas solo registra las normas caídas). Serie mensual desde marzo de 2024." },
     ],
@@ -1996,7 +1996,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: se leen los enlaces de la página oficial y se extraen las cifras de portada y las etiquetas del gráfico de los últimos tres meses. Los nombres de archivo son irregulares, por lo que se descubren en el portal. Se conserva cada edición con URL y huella del PDF cuando se vuelve a consultar; la última edición se consulta nuevamente para detectar revisiones.",
     },
     transformaciones: [
-      "El informe publica tres cifras: cuántas normas de desregulación se dictaron, cuántas normas anteriores alcanzaron y cuántos artículos quedaron modificados o eliminados. El indicador usa la tercera; las otras dos se muestran en la card como contexto.",
+      "El informe publica tres cifras: cuántas normas de desregulación se dictaron, cuántas normas anteriores alcanzaron y cuántos artículos quedaron modificados o eliminados. El indicador usa la tercera; las otras dos se muestran en la tarjeta como contexto.",
       "Se eligió el recuento de artículos porque las normas no son equivalentes entre sí: un decreto que reescribe quinientos artículos y una resolución que toca uno cuentan igual si se cuentan normas, y muy distinto si se cuentan artículos. Es la misma objeción que señaló la revisión externa del cinturón.",
       "El valor del mes es la cifra que el propio informe publica. Las etiquetas de los últimos tres meses de la edición más reciente prevalecen sobre los titulares anteriores. El aumento mensual se calcula entre dos acumulados de esa serie revisada: agosto de 2026 publica 17.115 y revisa julio a 16.848, por lo que el incremento es 267, no 344.",
       "El período se toma de la fecha de corte del informe («al 31 de octubre de 2025»), no del mes de su tapa: hay informes cuya portada dice un mes y cuyo corte cae en el siguiente.",
@@ -2055,7 +2055,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Variación porcentual de la dotación contra la línea de base de diciembre de 2023 (231.305 agentes).",
       "A diferencia de las series previsionales, excluye provincias y municipios: es la métrica insignia de la reforma del Estado nacional.",
       "También excluye a las empresas y sociedades del Estado, que la planilla informa por separado. Se eligió la Administración Pública Nacional porque es el universo sobre el que el Poder Ejecutivo decide directamente su planta. La elección no cambia la lectura: al mes de mayo de 2026 la Administración Pública Nacional cae 19,8%, las empresas del Estado 20,2% y el universo completo 19,9%.",
-      "Sí incluye a las fuerzas armadas y de seguridad. Siete entidades informan su dotación dentro de la Administración Pública Nacional: los estados mayores del Ejército, la Armada, la Fuerza Aérea y el Estado Mayor Conjunto, más Gendarmería, Prefectura y la Policía de Seguridad Aeroportuaria. Representan alrededor del diez por ciento del total y se redujeron menos que el resto, de modo que su presencia atenúa levemente el ajuste medido: a febrero de 2026 el conjunto cae 18,6% y la planta civil sola 19,0%. No se las descuenta —son parte del Estado y sostener sus dotaciones también es una decisión de gobierno—, pero el desglose se publica en la card para que cada lector pueda hacer la cuenta que prefiera.",
+      "Sí incluye a las fuerzas armadas y de seguridad. Siete entidades informan su dotación dentro de la Administración Pública Nacional: los estados mayores del Ejército, la Armada, la Fuerza Aérea y el Estado Mayor Conjunto, más Gendarmería, Prefectura y la Policía de Seguridad Aeroportuaria. Representan alrededor del diez por ciento del total y se redujeron menos que el resto, de modo que su presencia atenúa levemente el ajuste medido: a febrero de 2026 el conjunto cae 18,6% y la planta civil sola 19,0%. No se las descuenta —son parte del Estado y sostener sus dotaciones también es una decisión de gobierno—, pero el desglose se publica en la tarjeta para que cada lector pueda hacer la cuenta que prefiera.",
     ],
     anclas: {
       bandas: [
@@ -2159,14 +2159,14 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Base caja: el calendario de pagos puede desalinear meses.",
       "Comparte el deflactor con el gasto de funcionamiento: un error del IPC mueve a los dos a la vez.",
-      "Desde agosto de 2026 no integra el índice de gestión: CIGOB pidió sacarlo del cálculo por dudas sobre la forma de exponer estos datos, hasta tener certeza de las afirmaciones que permiten sostener. La card se sigue publicando con su valor mensual.",
+      "Desde agosto de 2026 no integra el índice de gestión: CIGOB pidió sacarlo del cálculo por dudas sobre la forma de exponer estos datos, hasta tener certeza de las afirmaciones que permiten sostener. La tarjeta se sigue publicando con su valor mensual.",
     ],
     faltantes: "Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "Series revisables por el publicador; recalculada entera en cada actualización.",
     cambios: [
       { fecha: "2026-07-02", cambio: "Indicador nuevo, creado con el índice de gestión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
-      { fecha: "2026-08-09", cambio: "Sale del cálculo del índice de gestión a pedido de CIGOB (dudas sobre la exposición de la fuente); la dimensión reforma_estado renormaliza sus pesos 35/25/20 → 43,75/31,25/25 entre los tres indicadores que quedan. La card se mantiene.", adr: "0186" },
+      { fecha: "2026-08-09", cambio: "Sale del cálculo del índice de gestión a pedido de CIGOB (dudas sobre la exposición de la fuente); la dimensión reforma_estado renormaliza sus pesos 35/25/20 → 43,75/31,25/25 entre los tres indicadores que quedan. La tarjeta se mantiene.", adr: "0186" },
       { fecha: "2026-08-25", cambio: "La ficha deja de presentar su tabla de bandas bajo «Cómo entra al índice». El indicador salió del cálculo del índice de gestión en agosto de 2026 y no puntúa, así que publicar la escala que traduce su valor a un puntaje invitaba a leer un número que ya nadie calcula. En la misma revisión se corrigió que la ficha de un indicador retirado se renderizaba como un cascarón —sin fuente, sin método, sin limitaciones y sin este historial— porque el cuerpo entero dependía de la fila de la corrida vigente, que un retirado no tiene. El valor mensual se sigue publicando y la serie no cambia.", adr: "0265" },
     ],
   },
@@ -2435,9 +2435,9 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Versión inicial como carga manual." },
       { fecha: "2026-07-02", cambio: "Automatizado: estado por CONTRAT.AR y kilometraje por la página oficial de la Red, en km." },
       { fecha: "2026-07-03", cambio: "Serie escalonada por hitos fechados. Puntaje interpolado entre anclas." },
-      { fecha: "2026-08-25", cambio: "Una etapa cuenta como adjudicada si CONTRAT.AR lo declara o si hay una resolución publicada que adjudique su proceso. CONTRAT.AR se queda viejo: al 25 de agosto de 2026 mostraba «Disponible Para Adjudicar» la Etapa II-B, adjudicada por Resolución 1149/2026 el 28 de julio, y la Etapa III, adjudicada por Resolución 1379/2026 el 24 de agosto. El indicador pasa de 28,7% a 100%. La card publica el inventario por etapa con los km, la fuente del estado y la resolución que lo respalda.", adr: "0244" },
-      { fecha: "2026-08-29", cambio: "El valor de respaldo escrito a mano dejó de tener prioridad sobre el último valor que sí salió de la fuente. Con CONTRAT.AR caído, la card publicaba 28,7% —la foto del 2 de julio, con dos etapas sin adjudicar— teniendo el 100% en el cache de la noche anterior. Una fuente caída ahora envejece el número, no lo hace retroceder. El respaldo se actualizó a 100% con las cuatro resoluciones.", adr: "0269" },
-      { fecha: "2026-10-10", cambio: "El estado de cada etapa pasa a salir de las resoluciones del Boletín Oficial registradas, y CONTRAT.AR queda como detector de procesos nuevos que no frena el indicador. Desde los servidores de la publicación el portal no respondía en 15 de 33 noches y la card quedaba desactualizada. No cambia lo que mide ni su valor." },
+      { fecha: "2026-08-25", cambio: "Una etapa cuenta como adjudicada si CONTRAT.AR lo declara o si hay una resolución publicada que adjudique su proceso. CONTRAT.AR se queda viejo: al 25 de agosto de 2026 mostraba «Disponible Para Adjudicar» la Etapa II-B, adjudicada por Resolución 1149/2026 el 28 de julio, y la Etapa III, adjudicada por Resolución 1379/2026 el 24 de agosto. El indicador pasa de 28,7% a 100%. La tarjeta publica el inventario por etapa con los km, la fuente del estado y la resolución que lo respalda.", adr: "0244" },
+      { fecha: "2026-08-29", cambio: "El valor de respaldo escrito a mano dejó de tener prioridad sobre el último valor que sí salió de la fuente. Con CONTRAT.AR caído, la tarjeta publicaba 28,7% —la foto del 2 de julio, con dos etapas sin adjudicar— teniendo el 100% en el cache de la noche anterior. Una fuente caída ahora envejece el número, no lo hace retroceder. El respaldo se actualizó a 100% con las cuatro resoluciones.", adr: "0269" },
+      { fecha: "2026-10-10", cambio: "El estado de cada etapa pasa a salir de las resoluciones del Boletín Oficial registradas, y CONTRAT.AR queda como detector de procesos nuevos que no frena el indicador. Desde los servidores de la publicación el portal no respondía en 15 de 33 noches y la tarjeta quedaba desactualizada. No cambia lo que mide ni su valor." },
     ],
   },
 
@@ -2479,7 +2479,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Versión inicial como carga manual (porcentaje de beneficiarios que cobra directo)." },
       { fecha: "2026-07-02", cambio: "Pasa a la tasa real contra la ejecución presupuestaria, con línea de base 2023 verificada." },
       { fecha: "2026-09-08", cambio: "Se distingue devengado de pagado y se acota el universo a las dos actividades. Se retiran inferencias de ausencia de intermediación y la afirmación de una base 2023 mayoritariamente intermediada: la API confirma 98,312% en 5.1.4. No cambia la fórmula ni el 100% actual.", adr: "0296" },
-      { fecha: "2026-09-15", cambio: "El rótulo de la card pasa de «Asistencia directa (TDPS)» a «Asistencia directa». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
+      { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Asistencia directa (TDPS)» a «Asistencia directa». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
     ],
   },
 
@@ -2623,7 +2623,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: API pública de series de tiempo.",
     },
     transformaciones: [
-      "La card muestra la variación mensual de los alimentos.",
+      "La tarjeta muestra la variación mensual de los alimentos.",
       "El componente del índice mide el encarecimiento RELATIVO de la comida: el nivel de alimentos contra el nivel general de precios, rebaseado a 100 = 4º trimestre de 2023. Por encima de 100, la comida sube menos que el resto de los precios.",
     ],
     incidenciaTexto: [
@@ -2702,7 +2702,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se mueve parecido a la confianza del consumidor de la misma universidad, que es la referencia externa del índice de impacto social: en cambios mensuales correlacionan 0,78 desde diciembre de 2023, así que esa validación queda en parte contaminada.",
       "Es una encuesta con muestra de alrededor de mil casos: sus movimientos de una décima pueden ser ruido.",
     ],
-    faltantes: "Si la universidad no publica un mes, la card conserva el último dato y la frescura avisa a los 90 días. Si faltara, la dimensión queda sin componentes y su peso se reparte entre las otras cinco.",
+    faltantes: "Si la universidad no publica un mes, la tarjeta conserva el último dato y la frescura avisa a los 90 días. Si faltara, la dimensión queda sin componentes y su peso se reparte entre las otras cinco.",
     revisiones: "Cada planilla nueva reemplaza la serie completa; la universidad no suele revisar meses anteriores.",
     cambios: [
       { fecha: "2026-10-07", cambio: "Entra al índice de impacto social como componente de la dimensión de confianza y percepción, que estaba vacía desde agosto. Hasta ahora la serie se usaba sólo para validar el índice político; deja de hacerlo porque una estadística que integra un índice no puede validar otro. Con los datos de septiembre (1,937) el componente vale 105,8 y el índice de impacto social pasa de 92,5 a cerca de 93,6.", adr: "0345" },
@@ -2755,7 +2755,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: planilla histórica original del INDEC, con validación de región, conceptos y continuidad mensual.",
     },
     transformaciones: [
-      "La card muestra la variación mensual del alquiler.",
+      "La tarjeta muestra la variación mensual del alquiler.",
       "El componente mide el encarecimiento RELATIVO del alquiler: nivel del alquiler contra el nivel general de precios del mismo aglomerado, rebaseado a 100 = 4º trimestre de 2023. Por debajo de 100, el alquiler subió más que el resto de los precios desde el arranque.",
       "Se compara contra el índice general del Gran Buenos Aires y no contra el nacional: dividir un precio de una plaza por el índice de otra mezclaría dos mercados en el mismo cociente.",
     ],
@@ -2790,7 +2790,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "El IIEP suma las facturas mensuales de electricidad, gas, agua y transporte para un hogar representativo del AMBA.",
-      "La card publica esa canasta como porcentaje del salario RIPTE estimado por el propio reporte.",
+      "La tarjeta publica esa canasta como porcentaje del salario RIPTE estimado por el propio reporte.",
       "El total se separa usando la participación del transporte que publica el IIEP. Agua+energía se compara con 10% del ingreso y transporte con 5%; cada exceso de 2,5 puntos agrega 5 de tensión. Se toma el peor grupo y el índice que entra al índice de impacto social es 125 − 5 × tensión.",
     ],
     incidenciaTexto: [
@@ -2884,9 +2884,9 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social el consumo de carne VACUNA (CICCRA), con línea de base documentada." },
       { fecha: "2026-08-12", cambio: "Se suma el consumo total de las tres carnes y la matriz que distingue sustitución de pérdida de acceso; el nivel pasa al tablero de SAGYP." },
       { fecha: "2026-08-20", cambio: "Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023. La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.", adr: "0217" },
-      { fecha: "2026-08-25", cambio: "Cambia qué pasa con la card cuando la fuente no contesta, no cómo se mide. Su publicación vivía dentro de la rama que comprueba si SAGYP trajo el mes, así que un corte de la fuente no la degradaba: la hacía desaparecer del tablero. A diferencia del consumo de carne vacuna, este componente no tiene respaldo en CICCRA, y la rama de respaldo publicaba la vacuna y se olvidaba del total. Pasó de verdad ese mismo día: el colector devolvió vacío y el informe salió con un indicador menos, sin que ninguna verificación lo notara. Desde ahora se publica siempre, con el valor en blanco si la fuente falló, y el mecanismo que arrastra el último dato bueno lo marca como desactualizado. El valor, la serie y el método no cambian.", adr: "0267" },
+      { fecha: "2026-08-25", cambio: "Cambia qué pasa con la tarjeta cuando la fuente no contesta, no cómo se mide. Su publicación vivía dentro de la rama que comprueba si SAGYP trajo el mes, así que un corte de la fuente no la degradaba: la hacía desaparecer del tablero. A diferencia del consumo de carne vacuna, este componente no tiene respaldo en CICCRA, y la rama de respaldo publicaba la vacuna y se olvidaba del total. Pasó de verdad ese mismo día: el colector devolvió vacío y el informe salió con un indicador menos, sin que ninguna verificación lo notara. Desde ahora se publica siempre, con el valor en blanco si la fuente falló, y el mecanismo que arrastra el último dato bueno lo marca como desactualizado. El valor, la serie y el método no cambian.", adr: "0267" },
       { fecha: "2026-09-15", cambio: "Deja de puntuar: se reemplaza por la carne vacuna y aviar + porcina por separado.", adr: "0322" },
-      { fecha: "2026-09-24", cambio: "Vuelve a puntuar el total de las tres carnes, a pedido del equipo, junto con la carne vacuna como indicador aspiracional (mitad y mitad del mismo peso). Aviar + porcina deja de puntuar y su nivel se lee dentro de esta card.", adr: "0339" },
+      { fecha: "2026-09-24", cambio: "Vuelve a puntuar el total de las tres carnes, a pedido del equipo, junto con la carne vacuna como indicador aspiracional (mitad y mitad del mismo peso). Aviar + porcina deja de puntuar y su nivel se lee dentro de esta tarjeta.", adr: "0339" },
     ],
   },
   consumo_carnes_otras: {
@@ -2921,7 +2921,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-09-15", cambio: "Nace del reemplazo de `consumo_carnes_total`: antes el aviar y la porcina sólo entraban sumados a la vacuna en un único compuesto; ahora tienen componente propio con el peso proporcional que tenían dentro de ese total.", adr: "0322" },
       { fecha: "2026-09-16", cambio: "Se corrige el 48,0%/52,0% de la entrada anterior por el 47,7%/52,3% real, y el texto que explica el color deja de repetir el párrafo de `consumo_carne_vacuna` — ahora nombra su propio nivel (aviar+porcina) y sus componentes.", adr: "0325" },
-      { fecha: "2026-09-24", cambio: "Deja de puntuar. Lo reemplaza el total de las tres carnes, que vuelve a puntuar junto con la carne vacuna; el nivel de aviar + porcina se lee dentro de la card del total.", adr: "0339" },
+      { fecha: "2026-09-24", cambio: "Deja de puntuar. Lo reemplaza el total de las tres carnes, que vuelve a puntuar junto con la carne vacuna; el nivel de aviar + porcina se lee dentro de la tarjeta del total.", adr: "0339" },
     ],
   },
   pobreza_nowcast: {
@@ -2954,7 +2954,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "La universidad puede revisar meses previos al recalcular su modelo, y el INDEC actualiza la línea de pobreza; se re-descarga la serie completa en cada corrida. Cada informe declara dos veces a qué semestre corresponde —en el título y en el texto— y las dos leyendas se escriben a mano, así que a veces una de ellas quedó del mes anterior; se toma la más reciente de las dos y se verifica que la serie no quede con meses faltantes, porque la publicación es mensual y un mes ausente indicaría una leyenda mal puesta antes que un informe no publicado.",
     cambios: [
       { fecha: "2026-07-16", cambio: "Alta como estimación mensual publicada junto a la medición oficial, sin integrar el índice." },
-      { fecha: "2026-07-30", cambio: "Entra al índice con 25% de la dimensión de ingresos y consumo. Hasta entonces era una card visible que no puntuaba, una categoría que el equipo dio de baja: un indicador integra las dimensiones de su índice o no se publica. Se decidió que corresponde a este cinturón y no al macroeconómico, porque las dimensiones de aquel son condiciones de la economía y la pobreza es el resultado social que este cinturón ya mide. Los cuatro componentes previos de la dimensión cedieron peso proporcionalmente y conservan su orden relativo." },
+      { fecha: "2026-07-30", cambio: "Entra al índice con 25% de la dimensión de ingresos y consumo. Hasta entonces era una tarjeta visible que no puntuaba, una categoría que el equipo dio de baja: un indicador integra las dimensiones de su índice o no se publica. Se decidió que corresponde a este cinturón y no al macroeconómico, porque las dimensiones de aquel son condiciones de la economía y la pobreza es el resultado social que este cinturón ya mide. Los cuatro componentes previos de la dimensión cedieron peso proporcionalmente y conservan su orden relativo." },
     ],
   },
 
@@ -3058,7 +3058,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-09-08", cambio: "Se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.", adr: "0279" },
       { fecha: "2026-08-21", cambio: "Entra al índice de impacto social como la contracara del cierre de PyMEs, con 10% de la dimensión; los cinco componentes previos ceden proporcionalmente y conservan su orden relativo. El componente entra en 92,8 y el peso nominal de la dimensión no se toca.", adr: "0219" },
-      { fecha: "2026-08-25", cambio: "La card declara el universo restringido que siempre usó. Decía «% del empleo registrado» y dejaba al monotributo social afuera de los dos lados del cociente. La exclusión sigue —el padrón cayó de 653 a 259 mil personas entre noviembre y diciembre de 2024 por un cambio de régimen, y con ese salto adentro el indicador daría vuelta el signo del período— pero ahora la unidad dice «sin monotributo social», la card enumera las categorías del numerador y del denominador, y publica cuánto daría con el régimen incluido (22,1% contra 20,6%). El valor no cambia.", adr: "0250" },
+      { fecha: "2026-08-25", cambio: "La tarjeta declara el universo restringido que siempre usó. Decía «% del empleo registrado» y dejaba al monotributo social afuera de los dos lados del cociente. La exclusión sigue —el padrón cayó de 653 a 259 mil personas entre noviembre y diciembre de 2024 por un cambio de régimen, y con ese salto adentro el indicador daría vuelta el signo del período— pero ahora la unidad dice «sin monotributo social», la tarjeta enumera las categorías del numerador y del denominador, y publica cuánto daría con el régimen incluido (22,1% contra 20,6%). El valor no cambia.", adr: "0250" },
     ],
   },
 
@@ -3089,7 +3089,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-09-08", cambio: "IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias)." },
-      { fecha: "2026-09-15", cambio: "El rótulo de la card pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
+      { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
     ],
   },
 
@@ -3158,7 +3158,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social vía el registro anual de delitos, invertido, con base 2023." },
       { fecha: "2026-07-04", cambio: "La métrica pasa a la encuesta mensual de victimización (con la base declarada en enero de 2024); el registro de denuncias queda como serie de contraste." },
       { fecha: "2026-09-08", cambio: "Se actualiza el portal de descubrimiento y se admiten enlaces relativos a PDF; se recupera julio de 2026 y se explicita el límite del contraste con denuncias.", adr: "0273" },
-      { fecha: "2026-09-15", cambio: "El rótulo de la card pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
+      { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
       { fecha: "2026-09-16", cambio: "El desglose del SNIC por tipo de delito (homicidios, robos, hurtos, etc.), que se descargaba pero se quedaba en el snapshot interno del colector, se suma al contraste SNIC del detalle. Se restituyen Amenazas y Lesiones dolosas a la lista de tipos conservados.", adr: "0325,0324" },
       { fecha: "2026-09-16", cambio: "Se revierte la decisión anterior: el argumento de que el SNIC «es anual, no puede puntuar en un tablero mensual» era falso — el snapshot ya tenía cinco indicadores vigentes con 243-244 días de rezago del dato. Entran `tasa_homicidios` y `tasa_robos` como componentes propios de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. El peso interno de este indicador baja de 100% a 59,5% (2,68% del índice de impacto social).", adr: "0327,0324,0325" },
     ],
@@ -3187,7 +3187,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Ancla, CORREGIDA: el ADR original anclaba contra el propio 2023 (4,32 cada 100.000) afirmando que caía «cerca de la mediana» de los 26 años (~5,7). Medido, 4,32 está en el PERCENTIL 11 de la serie —25% por debajo de la mediana—, no cerca de ella, y anclar contra un año puntual elegido es la convención circular que `procedencia_anclas.py` existe para contar. Se ancla ahora contra la MEDIANA de los 26 años (5,76) en vez de un año, sin cambiar el resto del mecanismo.",
     ],
     limitaciones: [
-      "Anual con ~8,5 meses de rezago: el color de esta card puede describir un año que ya terminó hace tiempo. El tope de frescura (560 días) lo declara así en vez de marcarlo como atrasado todos los meses.",
+      "Anual con ~8,5 meses de rezago: el color de esta tarjeta puede describir un año que ya terminó hace tiempo. El tope de frescura (560 días) lo declara así en vez de marcarlo como atrasado todos los meses.",
       "Es un registro de hechos conocidos por la Justicia o la policía, no una encuesta: cambios en la persecución penal o en el registro administrativo pueden mover la tasa sin que cambie la violencia real, aunque el homicidio es el delito con menor margen para ese efecto.",
       "La serie es NACIONAL: no distingue provincias ni tipos de arma, vínculo o contexto del hecho.",
     ],
@@ -3224,7 +3224,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Depende de la denuncia: a diferencia del homicidio, un robo no denunciado no entra a esta serie. El IVI (`inseguridad`) es el componente del cinturón que sí capta la cifra negra, y por eso pesa más en la dimensión.",
-      "LA CAÍDA DE 2025 NO ESTÁ EXPLICADA, Y EL COLOR VERDE DE ESTA CARD DESCANSA SOBRE ELLA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada, no se lo corrige ni se lo omite — pero el lector de la card, no sólo el de esta ficha, tiene que poder verla.",
+      "LA CAÍDA DE 2025 NO ESTÁ EXPLICADA, Y EL COLOR VERDE DE ESTA CARD DESCANSA SOBRE ELLA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada, no se lo corrige ni se lo omite — pero el lector de la tarjeta, no sólo el de esta ficha, tiene que poder verla.",
       "Anual con ~8,5 meses de rezago, igual que `tasa_homicidios`.",
       "Serie NACIONAL, sin apertura provincial ni por modalidad (arma, vía pública, vivienda).",
     ],
@@ -3234,7 +3234,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-15", cambio: "Robos se conserva por NOMBRE en `tipos_principales`, sólo como contraste de `inseguridad` — no puntúa.", adr: "0324,0325" },
       { fecha: "2026-09-16", cambio: "Se revierte la decisión anterior: entra a puntuar como indicador propio de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula, y con la limitación de la caída de 2025 declarada en la ficha. 15% interno de la dimensión (0,68% del índice de impacto social).", adr: "0327,0324,0325" },
       { fecha: "2026-09-16", cambio: "Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» (percentil 69, sesgaba a verde) a la mediana de los 26 años." },
-      { fecha: "2026-09-24", cambio: "La card pasa a llamarse «Tasa de robos (rapiñas)», como lo nombra el equipo. Mide lo mismo." },
+      { fecha: "2026-09-24", cambio: "La tarjeta pasa a llamarse «Tasa de robos (rapiñas)», como lo nombra el equipo. Mide lo mismo." },
     ],
   },
 
@@ -3266,7 +3266,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social base-100 con 50% interno de su dimensión." },
       { fecha: "2026-07-04", cambio: "Cede cinco puntos de peso interno al sentimiento digital, que mide lo mismo por conducta de búsqueda." },
       { fecha: "2026-08-25", cambio: "Se publica la columna del total NACIONAL del cuadro de la UTDT, ubicada por su encabezado. Hasta acá se leía la columna 1 por posición, que es `ICC Capital`: el tablero mostró el índice de la Ciudad de Buenos Aires rotulado como nacional (39,87 contra 40,23 en el corte auditado). Card y serie leían la misma columna equivocada, así que coincidían entre sí. La serie del cinturón se reconstruyó con la nacional, disponible desde marzo de 2001.", adr: "0242" },
-      { fecha: "2026-09-15", cambio: "El rótulo de la card pasa de «Confianza del consumidor (ICC)» a «Confianza del consumidor». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
+      { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Confianza del consumidor (ICC)» a «Confianza del consumidor». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
       { fecha: "2026-09-15", cambio: "Sale de la tabla de dimensiones del índice de impacto social y pasa a ancla de validación externa del índice. La dimensión de confianza y percepción queda sin componente activo; su peso se redistribuye entre las otras cinco.", adr: "0314" },
     ],
   },
@@ -3290,7 +3290,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "NO PESA: está suspendido desde agosto de 2026 y no aporta al índice de impacto social. Su peso de diseño era chico —18,2% interno · 1,5% del índice, acorde a un constructo blando— y lo absorbió el Índice de Confianza del Consumidor, que pasó a ser el único componente de la dimensión de confianza y percepción.",
-      "La card y el gráfico publican el mismo número: el último mes cerrado de la canasta.",
+      "La tarjeta y el gráfico publican el mismo número: el último mes cerrado de la canasta.",
     ],
     dobleUso: "Hasta julio de 2026 integró además el cinturón espíritu de época con fórmula de tensión propia; ese cinturón quedó acotado a la intención migratoria y la lectura duplicada se sigue registrando como seguimiento interno, sin publicarse ni puntuar.",
     limitaciones: [
@@ -3300,12 +3300,12 @@ export const FICHAS: Record<string, Ficha> = {
       "La canasta entera está por debajo de su base: el componente queda recortado en el techo de 140 en buena parte de los meses recientes, así que su movimiento no se refleja completo en el índice.",
       "Fuente no oficial con límites de consulta: si el servicio restringe el acceso, cada término continúa desde el archivo propio.",
     ],
-    faltantes: "Con la fuente caída, cada término conserva su última serie buena y la canasta llega hasta el último mes en que están los seis; la card mantiene el último valor como desactualizado.",
+    faltantes: "Con la fuente caída, cada término conserva su última serie buena y la canasta llega hasta el último mes en que están los seis; la tarjeta mantiene el último valor como desactualizado.",
     revisiones: "Reemplazo total de la serie de cada término en cada descarga sana; la fuente no revisa datos propiamente.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Declarado indicador de contexto: la ventana de tres meses no permitía línea de base 2023." },
       { fecha: "2026-07-04", cambio: "Pasa a componente puntuable tras un banco de pruebas empírico: la canasta de ventana fija con cociente interno resultó estable entre actualizaciones y consistente con la inflación." },
-      { fecha: "2026-08-21", cambio: "La canasta pasa a seis términos con peso igual —entran dólar, empleo y corrupción, y sale trabajo, cuyas búsquedas asociadas son derecho laboral, un plan social, el feriado y la tarea escolar—. Cada término se consulta por separado y se compara contra su propia base, lo que reemplaza al promedio crudo, que pesaba por volumen de búsqueda. La card deja de ser un pulso aparte y publica el mismo último mes cerrado que el gráfico.", adr: "0222" },
+      { fecha: "2026-08-21", cambio: "La canasta pasa a seis términos con peso igual —entran dólar, empleo y corrupción, y sale trabajo, cuyas búsquedas asociadas son derecho laboral, un plan social, el feriado y la tarea escolar—. Cada término se consulta por separado y se compara contra su propia base, lo que reemplaza al promedio crudo, que pesaba por volumen de búsqueda. La tarjeta deja de ser un pulso aparte y publica el mismo último mes cerrado que el gráfico.", adr: "0222" },
       { fecha: "2026-08-25", cambio: "Sale del índice de impacto social. El volumen de búsquedas mide atención y la atención no tiene signo: buscar «inflación» no dice si a uno le preocupa o le conviene. La validación externa lo contradice en cuatro cortes —r = −0,788 contra Ipsos post-base, −0,126 en niveles y +0,082 en cambios contra el ICC de la UTDT en 59 meses, y 34 de 42 ventanas móviles de 18 meses con el signo opuesto—. Libera su 18,18% de la dimensión de percepción, que queda con el ICC como único componente. Se sigue relevando. El reingreso exige términos predeclarados y validación fuera de muestra.", adr: "0248" },
       { fecha: "2026-09-15", cambio: "El ICC —el otro componente de la dimensión de percepción— sale también del índice de impacto social y pasa a ancla de validación externa. La dimensión queda sin ningún componente activo: `sentimiento_digital` sigue suspendido y no hay nadie más declarado ahí. Su peso nominal se redistribuye entre las otras cinco dimensiones.", adr: "0314" },
     ],
@@ -3334,7 +3334,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Pertenece a la dimensión de ingresos y consumo (3,09% interno · 0,87% del índice de impacto social).",
       "Mide el flujo total de patentamientos de vehículos 0 kilómetro por habitante. El total y su composición no identifican hogares: primeras compras, reposición, compras de empresas y sustitución entre autos y motos pueden coexistir. Una suba del total no demuestra por sí sola mayor acceso de hogares ni descarta sustitución descendente.",
       "La composición se publica junto al color: cuántos autos y cuántas motos hay detrás del total, y qué proporción de lo que se patenta son motos contra la proporción del arranque del mandato.",
-      "Se agrega el ratio motos/autos (no motos/total) como control pedido por Juan: sirve para leer si la motorización sube porque se compran más autos o porque se baja a la moto, algo que la participación de motos sobre el TOTAL no distingue de un total que crece parejo en las dos patas. Es una magnitud derivada dentro de esta misma card, no un indicador propio: no puntúa.",
+      "Se agrega el ratio motos/autos (no motos/total) como control pedido por Juan: sirve para leer si la motorización sube porque se compran más autos o porque se baja a la moto, algo que la participación de motos sobre el TOTAL no distingue de un total que crece parejo en las dos patas. Es una magnitud derivada dentro de esta misma tarjeta, no un indicador propio: no puntúa.",
     ],
     limitaciones: [
       "Es un FLUJO de altas, no el parque circulante: cuenta los vehículos que se incorporan, no los que hay. Un hogar que conserva el auto que ya tenía no aparece.",
@@ -3345,7 +3345,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La inscripción es del registro seccional donde se hace el trámite, que no siempre coincide con dónde vive el comprador — la apertura por jurisdicción sirve para composición, no para geografía del consumo.",
       "Es un proxy de consumo durable, no de bienestar general.",
     ],
-    faltantes: "El colector levanta excepción ante cualquier cambio de forma de la fuente —una columna que falta, un mes a medio cargar, una jurisdicción que cambia de nombre— en vez de publicar una serie recortada. Con la fuente caída, la card mantiene el último valor como desactualizado y la serie conserva sus puntos anteriores.",
+    faltantes: "El colector levanta excepción ante cualquier cambio de forma de la fuente —una columna que falta, un mes a medio cargar, una jurisdicción que cambia de nombre— en vez de publicar una serie recortada. Con la fuente caída, la tarjeta mantiene el último valor como desactualizado y la serie conserva sus puntos anteriores.",
     revisiones: "Los dos archivos publican su histórico completo y se releen enteros en cada corrida, así que una corrección de la fuente se incorpora sola.",
     cambios: [
       { fecha: "2026-09-08", cambio: "Se limita la interpretación al flujo y la composición de patentamientos. El registro no identifica primeras compras ni transiciones entre vehículos de un mismo hogar. No cambian el cálculo, el peso ni la serie." },
@@ -3353,8 +3353,8 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-04", cambio: "Se aplica al componente de motos el techo de recorte 140 y su peso interno baja de 10% a 5%." },
       { fecha: "2026-08-21", cambio: "Entra el patentamiento de autos como componente espejo, con el mismo peso y la misma transformación que motos.", adr: "0223" },
       { fecha: "2026-08-21", cambio: "Los dos vehículos se funden en la motorización total per cápita, que toma el peso combinado de ambos; autos y motos dejan de ser tarjetas y pasan a explicar el color desde adentro. La decisión original atribuyó al total la capacidad de distinguir acceso de descenso de categoría; esa interpretación se rectificó el 8 de septiembre de 2026 porque el registro no identifica trayectorias de hogares. Con el cambio, el componente deja de estar apoyado contra el techo de recorte —del que queda exento— y vuelve a moverse con la fuente. La fuente de motos pasa de la cámara al registro, que es lo único que permite excluir el movimiento registral de Tierra del Fuego.", adr: "0224" },
-      { fecha: "2026-09-15", cambio: "Se agrega el ratio motos/autos a la composición publicada, pedido explícito de Juan como control de lectura. No cambia el puntaje, el peso ni la card: es una magnitud más dentro de la misma matriz.", adr: "0323" },
-      { fecha: "2026-09-16", cambio: "Se revierte la decisión anterior: el ratio deja de ser una magnitud colgada de esta card y pasa a puntuar como indicador propio (`ratio_motos_autos`), con 2,5% de la dimensión de ingresos y consumo cedido proporcionalmente por los siete componentes que ya había. No cambia el cálculo ni el peso de ESTE indicador.", adr: "0328,0323" },
+      { fecha: "2026-09-15", cambio: "Se agrega el ratio motos/autos a la composición publicada, pedido explícito de Juan como control de lectura. No cambia el puntaje, el peso ni la tarjeta: es una magnitud más dentro de la misma matriz.", adr: "0323" },
+      { fecha: "2026-09-16", cambio: "Se revierte la decisión anterior: el ratio deja de ser una magnitud colgada de esta tarjeta y pasa a puntuar como indicador propio (`ratio_motos_autos`), con 2,5% de la dimensión de ingresos y consumo cedido proporcionalmente por los siete componentes que ya había. No cambia el cálculo ni el peso de ESTE indicador.", adr: "0328,0323" },
     ],
   },
 
@@ -3387,12 +3387,12 @@ export const FICHAS: Record<string, Ficha> = {
       "Es un proxy de composición del consumo durable, no de bienestar general.",
       "El factor de amortiguación (0,5) es una corrección de escala, no de dato: comprime cuánto mueve la TENSIÓN mostrada un mismo cambio porcentual, no cambia el signo ni el sentido de la lectura.",
     ],
-    faltantes: "Mismo colector que `motorizacion_total`: el colector levanta excepción ante cualquier cambio de forma de la fuente en vez de publicar una serie recortada. Con la fuente caída, la card mantiene el último valor como desactualizado.",
+    faltantes: "Mismo colector que `motorizacion_total`: el colector levanta excepción ante cualquier cambio de forma de la fuente en vez de publicar una serie recortada. Con la fuente caída, la tarjeta mantiene el último valor como desactualizado.",
     revisiones: "Los dos archivos de la DNRPA publican su histórico completo y se releen enteros en cada corrida.",
     cambios: [
-      { fecha: "2026-09-15", cambio: "Nace como magnitud colgada de la card de `motorizacion_total`: control de lectura pedido por Juan, sin puntaje propio.", adr: "0323" },
+      { fecha: "2026-09-15", cambio: "Nace como magnitud colgada de la tarjeta de `motorizacion_total`: control de lectura pedido por Juan, sin puntaje propio.", adr: "0323" },
       { fecha: "2026-09-16", cambio: "Corrección post-merge (revisión adversarial): se amortigua la distancia a 100 a la mitad (factor 0,5) porque el índice nacía saturado en el extremo de la escala con apenas +38,8% de crecimiento sobre la base; se declara la auto-cancelación medida contra `motorizacion_total` (r=+0,40 en niveles, r=−0,251 en la matriz de redundancia) y se cita como precedente la corrección de encuadre de `recaudacion`.", adr: "0321" },
-      { fecha: "2026-09-16", cambio: "Se revierte la decisión anterior: pasa a puntuar como indicador propio, con card, ficha y peso propios (2,5% interno de la dimensión de ingresos y consumo · 0,7% del índice de impacto social). Polaridad confirmada por el usuario: más motos por auto es deterioro.", adr: "0328,0323" },
+      { fecha: "2026-09-16", cambio: "Se revierte la decisión anterior: pasa a puntuar como indicador propio, con tarjeta, ficha y peso propios (2,5% interno de la dimensión de ingresos y consumo · 0,7% del índice de impacto social). Polaridad confirmada por el usuario: más motos por auto es deterioro.", adr: "0328,0323" },
     ],
   },
 
@@ -3400,7 +3400,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "consumo_supermercados",
     cinturon: "vida_cotidiana",
-    rezago: "Medido sobre las 14 publicaciones del calendario del INDEC entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la card sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC.",
+    rezago: "Medido sobre las 14 publicaciones del calendario del INDEC entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la tarjeta sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC.",
     fuente: {
       organismo: "INDEC",
       operacion: "Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada",
@@ -3424,12 +3424,12 @@ export const FICHAS: Record<string, Ficha> = {
       "«A precios constantes» significa deflactado con índices de precios del propio INDEC, así que comparte insumo con el componente de precios de los alimentos. El solapamiento está declarado y medido: entre los dos la correlación es +0,558 en niveles y +0,058 al mirar los cambios mes a mes.",
       "Mide cantidad vendida, no calidad de lo comprado: un carrito que cambia primera marca por segunda a igual volumen se registra igual.",
     ],
-    faltantes: "El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la card mantiene el último valor como desactualizado. No hay respaldo que lea el espejo: publicar desde ahí podría hacer RETROCEDER la card a un mes anterior, que es peor que no actualizarla.",
+    faltantes: "El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la tarjeta mantiene el último valor como desactualizado. No hay respaldo que lea el espejo: publicar desde ahí podría hacer RETROCEDER la tarjeta a un mes anterior, que es peor que no actualizarla.",
     revisiones: "La planilla trae el histórico completo en cada corrida, así que una revisión del INDEC —habituales en las series desestacionalizadas, que se recalculan al agregar meses— se incorpora sola y sin dejar huella de la versión anterior. Al publicar junio de 2026, por ejemplo, mayo pasó de 83,2 a 83,0.",
     cambios: [
       { fecha: "2026-08-21", cambio: "Entra al índice de impacto social con 20% de la dimensión de ingresos y consumo, y los cinco componentes previos ceden proporcionalmente conservando su orden relativo. Venía de ser el ancla de validación externa del cinturón: mide condiciones materiales del hogar, así que integra el índice en vez de juzgarlo — la misma regla que había sacado a la confianza del consumidor de ese papel.", adr: "0225" },
-      { fecha: "2026-08-25", cambio: "La base del índice se lee de los metadatos de la fuente en vez de escribirse a mano. La card la rotulaba «2004 = 100» y la Encuesta de Supermercados usa base 2017=100 —la serie ni siquiera tiene puntos antes de enero de 2017—. El valor y el puntaje no cambian: el rebase del cinturón es contra el 4º trimestre de 2023 y nunca usó la base de la fuente. Queda pendiente el rezago del espejo: el INDEC publicó junio de 2026 el 21 de agosto y la API de series todavía no lo refleja.", adr: "0243" },
-      { fecha: "2026-08-25", cambio: "La serie deja de bajarse de la API de datos.gob.ar y sale de la planilla de serie histórica del propio INDEC (Cuadro 1, columna desestacionalizada). La API era un espejo con atraso propio y encadenaba dos rezagos: la card mostraba mayo de 2026 mientras el INDEC ya había publicado junio el día 21. Con el cambio la card pasa a junio (82,1) y el tope de rezago del gate baja de 140 a 130 días, ahora medido sobre 14 publicaciones reales del calendario del INDEC en vez de estimado. El espejo se conserva como contraste del número leído, no como fuente.", adr: "0256" },
+      { fecha: "2026-08-25", cambio: "La base del índice se lee de los metadatos de la fuente en vez de escribirse a mano. La tarjeta la rotulaba «2004 = 100» y la Encuesta de Supermercados usa base 2017=100 —la serie ni siquiera tiene puntos antes de enero de 2017—. El valor y el puntaje no cambian: el rebase del cinturón es contra el 4º trimestre de 2023 y nunca usó la base de la fuente. Queda pendiente el rezago del espejo: el INDEC publicó junio de 2026 el 21 de agosto y la API de series todavía no lo refleja.", adr: "0243" },
+      { fecha: "2026-08-25", cambio: "La serie deja de bajarse de la API de datos.gob.ar y sale de la planilla de serie histórica del propio INDEC (Cuadro 1, columna desestacionalizada). La API era un espejo con atraso propio y encadenaba dos rezagos: la tarjeta mostraba mayo de 2026 mientras el INDEC ya había publicado junio el día 21. Con el cambio la tarjeta pasa a junio (82,1) y el tope de rezago del gate baja de 140 a 130 días, ahora medido sobre 14 publicaciones reales del calendario del INDEC en vez de estimado. El espejo se conserva como contraste del número leído, no como fuente.", adr: "0256" },
     ],
   },
 
