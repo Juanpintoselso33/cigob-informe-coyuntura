@@ -246,7 +246,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   ipc_alimentos: {
     que: "Cuánto suben en el mes los precios de alimentos y bebidas. En el índice de impacto social puntúa por el nivel acumulado del índice de alimentos relativo al índice de precios al consumidor (IPC) general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.",
     aporta: "Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.",
-    frecuencia: "Mensual", tipo: "Variación (card) · nivel vs índice general de precios (índice)",
+    frecuencia: "Mensual", tipo: "Variación (tarjeta) · nivel vs índice general de precios (índice)",
   },
   endeudamiento_familiar: {
     que: "Cuánto deben las familias por consumo (tarjetas + personales), en nivel de deuda real (descontada la inflación). Ya no puntúa en el índice de impacto social: salió del índice porque el stock de deuda por sí solo no distingue acceso al crédito de fragilidad. Se sigue relevando y su serie se publica.",
@@ -286,7 +286,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   alquiler_real: {
     que: "Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el índice de impacto social puntúa por el nivel del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.",
     aporta: "La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.",
-    frecuencia: "Mensual", tipo: "Variación (card) · nivel relativo al índice general de precios (índice)",
+    frecuencia: "Mensual", tipo: "Variación (tarjeta) · nivel relativo al índice general de precios (índice)",
   },
   consumo_carne_vacuna: {
     que: "Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de la Secretaría de Agricultura, Ganadería y Pesca. Son kilos de carne, no gramos de proteína ni una encuesta de ingesta de los hogares. Puntúa por separado, como corte aspiracional del consumo argentino.",
@@ -387,7 +387,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   indice_intencion_migratoria: {
     que: "Cuánto se busca en internet sobre emigrar de Argentina (por ejemplo \"emigrar de argentina\", \"vivir en el exterior\").",
-    aporta: "Es una señal más estructural que el sentimiento digital: no mide urgencia del momento, sino gente que dejó de creer en un cambio dentro del país. Es un proxy de atención, no de flujo migratorio real; por eso su card lo acompaña con la migración efectiva hacia los destinos principales, como contraste.",
+    aporta: "Es una señal más estructural que el sentimiento digital: no mide urgencia del momento, sino gente que dejó de creer en un cambio dentro del país. Es un proxy de atención, no de flujo migratorio real; por eso su tarjeta lo acompaña con la migración efectiva hacia los destinos principales, como contraste.",
     frecuencia: "Mensual", tipo: "Índice (0–100)",
   },
 
@@ -424,7 +424,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   desregulacion_normativa: {
     que: "Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado.",
-    aporta: "Mide el volumen de articulado que el programa alcanzó, no la cantidad de actos administrativos firmados. La diferencia importa: un decreto que reescribe quinientos artículos y una resolución que toca uno pesan igual si se cuentan normas, y muy distinto si se cuentan artículos. Lo que el recuento no distingue es si lo derogado dejó de regir: un artículo que la Justicia repuso suma igual que uno vigente, de modo que el indicador mide el acto de desregular y no su efecto. Muestra además la forma del programa en el tiempo, que es muy desigual: un arranque acotado, un salto marcado a partir de la Ley Bases y la creación del ministerio, y una aceleración durante 2026. La card publica también las otras dos cifras del mismo informe: cuántas normas de desregulación se dictaron y cuántas normas anteriores alcanzaron.",
+    aporta: "Mide el volumen de articulado que el programa alcanzó, no la cantidad de actos administrativos firmados. La diferencia importa: un decreto que reescribe quinientos artículos y una resolución que toca uno pesan igual si se cuentan normas, y muy distinto si se cuentan artículos. Lo que el recuento no distingue es si lo derogado dejó de regir: un artículo que la Justicia repuso suma igual que uno vigente, de modo que el indicador mide el acto de desregular y no su efecto. Muestra además la forma del programa en el tiempo, que es muy desigual: un arranque acotado, un salto marcado a partir de la Ley Bases y la creación del ministerio, y una aceleración durante 2026. La tarjeta publica también las otras dos cifras del mismo informe: cuántas normas de desregulación se dictaron y cuántas normas anteriores alcanzaron.",
     frecuencia: "Mensual", tipo: "Conteo acumulado oficial",
   },
   apertura_comercial: {
