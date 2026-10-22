@@ -217,7 +217,7 @@ Es la inflación más sensible socialmente: pega directo en la mesa de cada hoga
 
 ## Método de cómputo
 
-- La card muestra la variación mensual de los alimentos.
+- La tarjeta muestra la variación mensual de los alimentos.
 - El componente del índice mide el encarecimiento RELATIVO de la comida: el nivel de alimentos contra el nivel general de precios, rebaseado a 100 = 4º trimestre de 2023. Por encima de 100, la comida sube menos que el resto de los precios.
 
 ## Semáforo — valores que determinan el color
@@ -305,7 +305,7 @@ Mide directamente la asequibilidad de los servicios públicos y puntúa con 45% 
 ## Método de cómputo
 
 - El IIEP suma las facturas mensuales de electricidad, gas, agua y transporte para un hogar representativo del AMBA.
-- La card publica esa canasta como porcentaje del salario RIPTE estimado por el propio reporte.
+- La tarjeta publica esa canasta como porcentaje del salario RIPTE estimado por el propio reporte.
 - El total se separa usando la participación del transporte que publica el IIEP. Agua+energía se compara con 10% del ingreso y transporte con 5%; cada exceso de 2,5 puntos agrega 5 de tensión. Se toma el peor grupo y el índice que entra al índice de impacto social es 125 − 5 × tensión.
 
 ## Semáforo — valores que determinan el color
@@ -394,7 +394,7 @@ La desregulación del mercado de alquileres fue uno de los cambios de política 
 
 ## Método de cómputo
 
-- La card muestra la variación mensual del alquiler.
+- La tarjeta muestra la variación mensual del alquiler.
 - El componente mide el encarecimiento RELATIVO del alquiler: nivel del alquiler contra el nivel general de precios del mismo aglomerado, rebaseado a 100 = 4º trimestre de 2023. Por debajo de 100, el alquiler subió más que el resto de los precios desde el arranque.
 - Se compara contra el índice general del Gran Buenos Aires y no contra el nacional: dividir un precio de una plaza por el índice de otra mezclaría dos mercados en el mismo cociente.
 
@@ -637,11 +637,11 @@ Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicio
 
 **2026-08-20** — Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023. La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.
 
-**2026-08-25** — Cambia qué pasa con la card cuando la fuente no contesta, no cómo se mide. Su publicación vivía dentro de la rama que comprueba si SAGYP trajo el mes, así que un corte de la fuente no la degradaba: la hacía desaparecer del tablero. A diferencia del consumo de carne vacuna, este componente no tiene respaldo en CICCRA, y la rama de respaldo publicaba la vacuna y se olvidaba del total. Pasó de verdad ese mismo día: el colector devolvió vacío y el informe salió con un indicador menos, sin que ninguna verificación lo notara. Desde ahora se publica siempre, con el valor en blanco si la fuente falló, y el mecanismo que arrastra el último dato bueno lo marca como desactualizado. El valor, la serie y el método no cambian.
+**2026-08-25** — Cambia qué pasa con la tarjeta cuando la fuente no contesta, no cómo se mide. Su publicación vivía dentro de la rama que comprueba si SAGYP trajo el mes, así que un corte de la fuente no la degradaba: la hacía desaparecer del tablero. A diferencia del consumo de carne vacuna, este componente no tiene respaldo en CICCRA, y la rama de respaldo publicaba la vacuna y se olvidaba del total. Pasó de verdad ese mismo día: el colector devolvió vacío y el informe salió con un indicador menos, sin que ninguna verificación lo notara. Desde ahora se publica siempre, con el valor en blanco si la fuente falló, y el mecanismo que arrastra el último dato bueno lo marca como desactualizado. El valor, la serie y el método no cambian.
 
 **2026-09-15** — Deja de puntuar: se reemplaza por la carne vacuna y aviar + porcina por separado.
 
-**2026-09-24** — Vuelve a puntuar el total de las tres carnes, a pedido del equipo, junto con la carne vacuna como indicador aspiracional (mitad y mitad del mismo peso). Aviar + porcina deja de puntuar y su nivel se lee dentro de esta card.
+**2026-09-24** — Vuelve a puntuar el total de las tres carnes, a pedido del equipo, junto con la carne vacuna como indicador aspiracional (mitad y mitad del mismo peso). Aviar + porcina deja de puntuar y su nivel se lee dentro de esta tarjeta.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -820,7 +820,7 @@ Ponderación vigente en el ITCIS: 2,4 % efectivo. El color es una lectura adicio
 
 **2026-08-21** — Entra al índice de impacto social como la contracara del cierre de PyMEs, con 10% de la dimensión; los cinco componentes previos ceden proporcionalmente y conservan su orden relativo. El componente entra en 92,8 y el peso nominal de la dimensión no se toca.
 
-**2026-08-25** — La card declara el universo restringido que siempre usó. Decía «% del empleo registrado» y dejaba al monotributo social afuera de los dos lados del cociente. La exclusión sigue —el padrón cayó de 653 a 259 mil personas entre noviembre y diciembre de 2024 por un cambio de régimen, y con ese salto adentro el indicador daría vuelta el signo del período— pero ahora la unidad dice «sin monotributo social», la card enumera las categorías del numerador y del denominador, y publica cuánto daría con el régimen incluido (22,1% contra 20,6%). El valor no cambia.
+**2026-08-25** — La tarjeta declara el universo restringido que siempre usó. Decía «% del empleo registrado» y dejaba al monotributo social afuera de los dos lados del cociente. La exclusión sigue —el padrón cayó de 653 a 259 mil personas entre noviembre y diciembre de 2024 por un cambio de régimen, y con ese salto adentro el indicador daría vuelta el signo del período— pero ahora la unidad dice «sin monotributo social», la tarjeta enumera las categorías del numerador y del denominador, y publica cuánto daría con el régimen incluido (22,1% contra 20,6%). El valor no cambia.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1000,7 +1000,7 @@ Ponderación vigente en el ITCIS: 3,3 % efectivo. El color es una lectura adicio
 
 **2026-07-03** — Entra al índice de impacto social como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias).
 
-**2026-09-15** — El rótulo de la card pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+**2026-09-15** — El rótulo de la tarjeta pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1128,7 +1128,7 @@ Cuenta puestos asalariados privados registrados. Complementa las medidas de acti
 
 ## Método de cómputo
 
-- La card publica el nivel en miles de puestos; el índice del cinturón lo expresa en base 100 contra el promedio del último trimestre de 2023, la misma línea de base que el resto de los componentes.
+- La tarjeta publica el nivel en miles de puestos; el índice del cinturón lo expresa en base 100 contra el promedio del último trimestre de 2023, la misma línea de base que el resto de los componentes.
 - Se usa la serie con estacionalidad, no la desestacionalizada, porque la comparación es contra una base fija de tres meses y no contra el mes anterior: la estacionalidad de la base y la del mes corriente se compensan.
 - No se invierte: más empleo registrado es mejor, de modo que el índice sube cuando la situación mejora.
 
@@ -1271,7 +1271,7 @@ Ponderación vigente en el ITCIS: 2,7 % efectivo. El color es una lectura adicio
 
 **2026-09-08** — Se actualiza el portal de descubrimiento y se admiten enlaces relativos a PDF; se recupera julio de 2026 y se explicita el límite del contraste con denuncias.
 
-**2026-09-15** — El rótulo de la card pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+**2026-09-15** — El rótulo de la tarjeta pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 **2026-09-16** — El desglose del SNIC por tipo de delito (homicidios, robos, hurtos, etc.), que se descargaba pero se quedaba en el snapshot interno del colector, se suma al contraste SNIC del detalle. Se restituyen Amenazas y Lesiones dolosas a la lista de tipos conservados.
 
@@ -1349,7 +1349,7 @@ Ponderación vigente en el ITCIS: 1,1 % efectivo. El color es una lectura adicio
 
 ## Transparencia — limitaciones declaradas
 
-- Anual con ~8,5 meses de rezago: el color de esta card puede describir un año que ya terminó hace tiempo. El tope de frescura (560 días) lo declara así en vez de marcarlo como atrasado todos los meses.
+- Anual con ~8,5 meses de rezago: el color de esta tarjeta puede describir un año que ya terminó hace tiempo. El tope de frescura (560 días) lo declara así en vez de marcarlo como atrasado todos los meses.
 - Es un registro de hechos conocidos por la Justicia o la policía, no una encuesta: cambios en la persecución penal o en el registro administrativo pueden mover la tasa sin que cambie la violencia real, aunque el homicidio es el delito con menor margen para ese efecto.
 - La serie es NACIONAL: no distingue provincias ni tipos de arma, vínculo o contexto del hecho.
 
@@ -1440,7 +1440,7 @@ Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicio
 ## Transparencia — limitaciones declaradas
 
 - Depende de la denuncia: a diferencia del homicidio, un robo no denunciado no entra a esta serie. El IVI (`inseguridad`) es el componente del cinturón que sí capta la cifra negra, y por eso pesa más en la dimensión.
-- LA CAÍDA DE 2025 NO ESTÁ EXPLICADA, Y EL COLOR VERDE DE ESTA CARD DESCANSA SOBRE ELLA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada, no se lo corrige ni se lo omite — pero el lector de la card, no sólo el de esta ficha, tiene que poder verla.
+- LA CAÍDA DE 2025 NO ESTÁ EXPLICADA, Y EL COLOR VERDE DE ESTA CARD DESCANSA SOBRE ELLA. La tasa cae de 1.002,8 (2024) a 778,1 (2025), −22,4% en un año sin pandemia ni evento público conocido que lo justifique. El patrón es sospechoso: Hurtos —el otro delito contra la propiedad de bajo subregistro relativo— cae en proporción similar (805,2 → 665,1, −17,4% el mismo año), mientras que Robos agravados por el resultado de lesiones o muertes SUBE 45,5% (12,3 → 17,9). Una baja real y pareja del delito violento no explica que la categoría más grave se mueva en sentido contrario a las dos más leves. Es compatible con reporte incompleto de alguna jurisdicción al cierre de 2025; no se pudo confirmar ni descartar contra ningún informe metodológico público del SNIC. Se publica el dato oficial vigente con esta limitación declarada, no se lo corrige ni se lo omite — pero el lector de la tarjeta, no sólo el de esta ficha, tiene que poder verla.
 - Anual con ~8,5 meses de rezago, igual que `tasa_homicidios`.
 - Serie NACIONAL, sin apertura provincial ni por modalidad (arma, vía pública, vivienda).
 
@@ -1458,7 +1458,7 @@ Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicio
 
 **2026-09-16** — Corrección post-merge (revisión adversarial): el ancla pasa de «el propio 2023» (percentil 69, sesgaba a verde) a la mediana de los 26 años.
 
-**2026-09-24** — La card pasa a llamarse «Tasa de robos (rapiñas)», como lo nombra el equipo. Mide lo mismo.
+**2026-09-24** — La tarjeta pasa a llamarse «Tasa de robos (rapiñas)», como lo nombra el equipo. Mide lo mismo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1547,7 +1547,7 @@ Ponderación vigente en el ITCIS: 7,1 % efectivo. El color es una lectura adicio
 
 **2026-07-16** — Alta como estimación mensual publicada junto a la medición oficial, sin integrar el índice.
 
-**2026-07-30** — Entra al índice con 25% de la dimensión de ingresos y consumo. Hasta entonces era una card visible que no puntuaba, una categoría que el equipo dio de baja: un indicador integra las dimensiones de su índice o no se publica. Se decidió que corresponde a este cinturón y no al macroeconómico, porque las dimensiones de aquel son condiciones de la economía y la pobreza es el resultado social que este cinturón ya mide. Los cuatro componentes previos de la dimensión cedieron peso proporcionalmente y conservan su orden relativo.
+**2026-07-30** — Entra al índice con 25% de la dimensión de ingresos y consumo. Hasta entonces era una tarjeta visible que no puntuaba, una categoría que el equipo dio de baja: un indicador integra las dimensiones de su índice o no se publica. Se decidió que corresponde a este cinturón y no al macroeconómico, porque las dimensiones de aquel son condiciones de la economía y la pobreza es el resultado social que este cinturón ya mide. Los cuatro componentes previos de la dimensión cedieron peso proporcionalmente y conservan su orden relativo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1634,7 +1634,7 @@ Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicio
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** El colector levanta excepción ante cualquier cambio de forma de la fuente —una columna que falta, un mes a medio cargar, una jurisdicción que cambia de nombre— en vez de publicar una serie recortada. Con la fuente caída, la card mantiene el último valor como desactualizado y la serie conserva sus puntos anteriores.
+- **Si falta el dato:** El colector levanta excepción ante cualquier cambio de forma de la fuente —una columna que falta, un mes a medio cargar, una jurisdicción que cambia de nombre— en vez de publicar una serie recortada. Con la fuente caída, la tarjeta mantiene el último valor como desactualizado y la serie conserva sus puntos anteriores.
 
 - **Política de revisiones:** Los dos archivos publican su histórico completo y se releen enteros en cada corrida, así que una corrección de la fuente se incorpora sola.
 
@@ -1650,9 +1650,9 @@ Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicio
 
 **2026-08-21** — Los dos vehículos se funden en la motorización total per cápita, que toma el peso combinado de ambos; autos y motos dejan de ser tarjetas y pasan a explicar el color desde adentro. La decisión original atribuyó al total la capacidad de distinguir acceso de descenso de categoría; esa interpretación se rectificó el 8 de septiembre de 2026 porque el registro no identifica trayectorias de hogares. Con el cambio, el componente deja de estar apoyado contra el techo de recorte —del que queda exento— y vuelve a moverse con la fuente. La fuente de motos pasa de la cámara al registro, que es lo único que permite excluir el movimiento registral de Tierra del Fuego.
 
-**2026-09-15** — Se agrega el ratio motos/autos a la composición publicada, pedido explícito de Juan como control de lectura. No cambia el puntaje, el peso ni la card: es una magnitud más dentro de la misma matriz.
+**2026-09-15** — Se agrega el ratio motos/autos a la composición publicada, pedido explícito de Juan como control de lectura. No cambia el puntaje, el peso ni la tarjeta: es una magnitud más dentro de la misma matriz.
 
-**2026-09-16** — Se revierte la decisión anterior: el ratio deja de ser una magnitud colgada de esta card y pasa a puntuar como indicador propio (`ratio_motos_autos`), con 2,5% de la dimensión de ingresos y consumo cedido proporcionalmente por los siete componentes que ya había. No cambia el cálculo ni el peso de ESTE indicador.
+**2026-09-16** — Se revierte la decisión anterior: el ratio deja de ser una magnitud colgada de esta tarjeta y pasa a puntuar como indicador propio (`ratio_motos_autos`), con 2,5% de la dimensión de ingresos y consumo cedido proporcionalmente por los siete componentes que ya había. No cambia el cálculo ni el peso de ESTE indicador.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1733,17 +1733,17 @@ Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicio
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Mismo colector que `motorizacion_total`: el colector levanta excepción ante cualquier cambio de forma de la fuente en vez de publicar una serie recortada. Con la fuente caída, la card mantiene el último valor como desactualizado.
+- **Si falta el dato:** Mismo colector que `motorizacion_total`: el colector levanta excepción ante cualquier cambio de forma de la fuente en vez de publicar una serie recortada. Con la fuente caída, la tarjeta mantiene el último valor como desactualizado.
 
 - **Política de revisiones:** Los dos archivos de la DNRPA publican su histórico completo y se releen enteros en cada corrida.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-15** — Nace como magnitud colgada de la card de `motorizacion_total`: control de lectura pedido por Juan, sin puntaje propio.
+**2026-09-15** — Nace como magnitud colgada de la tarjeta de `motorizacion_total`: control de lectura pedido por Juan, sin puntaje propio.
 
 **2026-09-16** — Corrección post-merge (revisión adversarial): se amortigua la distancia a 100 a la mitad (factor 0,5) porque el índice nacía saturado en el extremo de la escala con apenas +38,8% de crecimiento sobre la base; se declara la auto-cancelación medida contra `motorizacion_total` (r=+0,40 en niveles, r=−0,251 en la matriz de redundancia) y se cita como precedente la corrección de encuadre de `recaudacion`.
 
-**2026-09-16** — Se revierte la decisión anterior: pasa a puntuar como indicador propio, con card, ficha y peso propios (2,5% interno de la dimensión de ingresos y consumo · 0,7% del índice de impacto social). Polaridad confirmada por el usuario: más motos por auto es deterioro.
+**2026-09-16** — Se revierte la decisión anterior: pasa a puntuar como indicador propio, con tarjeta, ficha y peso propios (2,5% interno de la dimensión de ingresos y consumo · 0,7% del índice de impacto social). Polaridad confirmada por el usuario: más motos por auto es deterioro.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1767,7 +1767,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | consumo_supermercados | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | índice (2017 = 100, desestacionalizado) |
-| **SERIE DISPONIBLE** | 2017-01 → 2026-07 (115 puntos) | **REZAGO DE PUBLICACIÓN** | Medido sobre las 14 publicaciones del calendario del INDEC entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la card sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC. |
+| **SERIE DISPONIBLE** | 2017-01 → 2026-07 (115 puntos) | **REZAGO DE PUBLICACIÓN** | Medido sobre las 14 publicaciones del calendario del INDEC entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la tarjeta sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada |
 | **MODO DE ACCESO** | Automático: planilla pública sin credenciales. La misma serie espejada en la API de datos.gob.ar se sigue bajando en cada corrida, pero sólo como contraste del número leído. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-21 |
 
@@ -1825,7 +1825,7 @@ Ponderación vigente en el ITCIS: 5,5 % efectivo. El color es una lectura adicio
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la card mantiene el último valor como desactualizado. No hay respaldo que lea el espejo: publicar desde ahí podría hacer RETROCEDER la card a un mes anterior, que es peor que no actualizarla.
+- **Si falta el dato:** El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la tarjeta mantiene el último valor como desactualizado. No hay respaldo que lea el espejo: publicar desde ahí podría hacer RETROCEDER la tarjeta a un mes anterior, que es peor que no actualizarla.
 
 - **Política de revisiones:** La planilla trae el histórico completo en cada corrida, así que una revisión del INDEC —habituales en las series desestacionalizadas, que se recalculan al agregar meses— se incorpora sola y sin dejar huella de la versión anterior. Al publicar junio de 2026, por ejemplo, mayo pasó de 83,2 a 83,0.
 
@@ -1833,9 +1833,9 @@ Ponderación vigente en el ITCIS: 5,5 % efectivo. El color es una lectura adicio
 
 **2026-08-21** — Entra al índice de impacto social con 20% de la dimensión de ingresos y consumo, y los cinco componentes previos ceden proporcionalmente conservando su orden relativo. Venía de ser el ancla de validación externa del cinturón: mide condiciones materiales del hogar, así que integra el índice en vez de juzgarlo — la misma regla que había sacado a la confianza del consumidor de ese papel.
 
-**2026-08-25** — La base del índice se lee de los metadatos de la fuente en vez de escribirse a mano. La card la rotulaba «2004 = 100» y la Encuesta de Supermercados usa base 2017=100 —la serie ni siquiera tiene puntos antes de enero de 2017—. El valor y el puntaje no cambian: el rebase del cinturón es contra el 4º trimestre de 2023 y nunca usó la base de la fuente. Queda pendiente el rezago del espejo: el INDEC publicó junio de 2026 el 21 de agosto y la API de series todavía no lo refleja.
+**2026-08-25** — La base del índice se lee de los metadatos de la fuente en vez de escribirse a mano. La tarjeta la rotulaba «2004 = 100» y la Encuesta de Supermercados usa base 2017=100 —la serie ni siquiera tiene puntos antes de enero de 2017—. El valor y el puntaje no cambian: el rebase del cinturón es contra el 4º trimestre de 2023 y nunca usó la base de la fuente. Queda pendiente el rezago del espejo: el INDEC publicó junio de 2026 el 21 de agosto y la API de series todavía no lo refleja.
 
-**2026-08-25** — La serie deja de bajarse de la API de datos.gob.ar y sale de la planilla de serie histórica del propio INDEC (Cuadro 1, columna desestacionalizada). La API era un espejo con atraso propio y encadenaba dos rezagos: la card mostraba mayo de 2026 mientras el INDEC ya había publicado junio el día 21. Con el cambio la card pasa a junio (82,1) y el tope de rezago del gate baja de 140 a 130 días, ahora medido sobre 14 publicaciones reales del calendario del INDEC en vez de estimado. El espejo se conserva como contraste del número leído, no como fuente.
+**2026-08-25** — La serie deja de bajarse de la API de datos.gob.ar y sale de la planilla de serie histórica del propio INDEC (Cuadro 1, columna desestacionalizada). La API era un espejo con atraso propio y encadenaba dos rezagos: la tarjeta mostraba mayo de 2026 mientras el INDEC ya había publicado junio el día 21. Con el cambio la tarjeta pasa a junio (82,1) y el tope de rezago del gate baja de 140 a 130 días, ahora medido sobre 14 publicaciones reales del calendario del INDEC en vez de estimado. El espejo se conserva como contraste del número leído, no como fuente.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2093,7 +2093,7 @@ Ponderación vigente en el ITCIS: 8,2 % efectivo. El color es una lectura adicio
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si la universidad no publica un mes, la card conserva el último dato y la frescura avisa a los 90 días. Si faltara, la dimensión queda sin componentes y su peso se reparte entre las otras cinco.
+- **Si falta el dato:** Si la universidad no publica un mes, la tarjeta conserva el último dato y la frescura avisa a los 90 días. Si faltara, la dimensión queda sin componentes y su peso se reparte entre las otras cinco.
 
 - **Política de revisiones:** Cada planilla nueva reemplaza la serie completa; la universidad no suele revisar meses anteriores.
 

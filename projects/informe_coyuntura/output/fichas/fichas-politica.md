@@ -110,7 +110,7 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | DNUs publicados por ley publicada |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | InfoLeg incorpora publicaciones del Boletín Oficial con un rezago que no está garantizado. La fecha de consulta no acredita por sí sola exhaustividad ni tipificación correcta. |
 | **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — listado de decretos tipificados «Decreto DNU» y conteo de leyes, los dos por fecha de publicación en el Boletín Oficial, en los últimos 365 días |
-| **MODO DE ACCESO** | Automático: dos consultas al buscador oficial sobre la misma ventana. Del lado de las leyes toma el total de resultados. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia» y se queda con los que la grilla rotula «Decreto DNU»; la card publica el inventario de las normas efectivamente contadas, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-21 |
+| **MODO DE ACCESO** | Automático: dos consultas al buscador oficial sobre la misma ventana. Del lado de las leyes toma el total de resultados. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia» y se queda con los que la grilla rotula «Decreto DNU»; la tarjeta publica el inventario de las normas efectivamente contadas, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1001,7 +1001,7 @@ Mide la cohesión interna del oficialismo en el Congreso, clave para sostener ve
 
 - Para cada acta con al menos un voto a favor o en contra del bloque propio de La Libertad Avanza (se excluyen deliberadamente los bloques aliados de nombre ambiguo, para no inflar la cohesión medida con votos que no son del oficialismo propiamente dicho), calcula qué tan pareja o dispareja fue esa votación puertas adentro: resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.
 - Por cámara, el cálculo es el promedio de esa cuenta en las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran.
-- El indicador publicado es el compuesto bicameral: Diputados pesa 65% y el Senado 35% — el mismo reparto que las dos cámaras tenían cuando eran indicadores separados. Si una cámara no tiene dato (por ejemplo, receso sin actas divididas), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la card.
+- El indicador publicado es el compuesto bicameral: Diputados pesa 65% y el Senado 35% — el mismo reparto que las dos cámaras tenían cuando eran indicadores separados. Si una cámara no tiene dato (por ejemplo, receso sin actas divididas), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la tarjeta.
 
 ## Semáforo — valores que determinan el color
 
@@ -1099,7 +1099,7 @@ Mide con qué frecuencia el Congreso decide dar la pelea, sin importar cómo ter
 - Una norma cuenta como desafiada cuando el Congreso la somete a votación en el recinto: un veto presidencial sobre el que se vota una insistencia, o un decreto puesto a consideración bajo el procedimiento de la ley 26.122.
 - Cada norma se cuenta una sola vez, en el mes de su primer desafío, aunque después vuelva al recinto.
 - Se suman las de los últimos doce meses calendario. No importa el resultado: entran tanto las que el Gobierno terminó perdiendo como las que logró sostener.
-- Cuando la ventana da cero, la card agrega —del registro histórico completo, no de un número fijo— qué proporción de las normas desafiadas en algún momento desde marzo de 2024 sigue en pie: es el dato que hasta el 16 de septiembre de 2026 publicaba el bloqueo sostenido.
+- Cuando la ventana da cero, la tarjeta agrega —del registro histórico completo, no de un número fijo— qué proporción de las normas desafiadas en algún momento desde marzo de 2024 sigue en pie: es el dato que hasta el 16 de septiembre de 2026 publicaba el bloqueo sostenido.
 
 ## Semáforo — valores que determinan el color
 
@@ -1134,7 +1134,7 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 
 - La ventana contiene pocos eventos —entre cuatro y trece en el período disponible—, así que un solo desafío que entra o sale mueve el indicador de manera perceptible.
 - Cuenta el acto de desafiar, no su importancia: una norma central y una menor pesan igual.
-- Comparte registro de eventos con el bloqueo sostenido, que dejó de publicarse como card el 16 de septiembre de 2026 por enmudecer justo cuando la ventana da cero desafíos — su tasa de supervivencia histórica es la que esta card cita cuando el conteo es cero.
+- Comparte registro de eventos con el bloqueo sostenido, que dejó de publicarse como tarjeta el 16 de septiembre de 2026 por enmudecer justo cuando la ventana da cero desafíos — su tasa de supervivencia histórica es la que esta tarjeta cita cuando el conteo es cero.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1144,7 +1144,7 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-16** — La card agrega, cuando el conteo da cero, la tasa histórica de supervivencia de las normas desafiadas —el dato que publicaba el bloqueo sostenido, que sale del índice y del tablero por enmudecer justo en ese caso.
+**2026-09-16** — La tarjeta agrega, cuando el conteo da cero, la tasa histórica de supervivencia de las normas desafiadas —el dato que publicaba el bloqueo sostenido, que sale del índice y del tablero por enmudecer justo en ese caso.
 
 **2026-09-08** — Cero desafíos es válido sólo con cobertura completa del universo compartido. Una consulta fallida no acredita ausencia de eventos.
 
@@ -1452,7 +1452,7 @@ Describe la capacidad de integrar el Poder Judicial mediante un proceso que requ
 ## Método de cómputo
 
 - Se consideran únicamente los cargos de juez en órganos habilitados: los tribunales creados por ley pero todavía no puestos en funcionamiento no forman parte del denominador, porque no hay nada que cubrir.
-- Un cargo marcado como vacante cuenta como no cubierto aunque tenga subrogante a cargo. La subrogancia se publica aparte, en el detalle de la card.
+- Un cargo marcado como vacante cuenta como no cubierto aunque tenga subrogante a cargo. La subrogancia se publica aparte, en el detalle de la tarjeta.
 - Hay una excepción, y la fuente la distingue bien: un puñado de cargos tiene juez designado que está de licencia, con un subrogante a cargo mientras tanto. Ese cargo no figura como vacante, porque el juez existe y el cargo es suyo, aunque quien firme sea el subrogante. Al cinco de junio de 2026 son seis casos.
 - La serie mensual se reconstruye desde el padrón con movimientos netos de jueces de tribunales inferiores. Se excluyen fiscales, defensores, Corte Suprema, renovaciones y conjueces. Una promoción de un titular ya contado no suma una persona nueva. Las normas complementarias reemplazan el efecto del mismo registro si después aparece en la planilla; no se duplican.
 - Las bajas comprobadas que seguían figurando como no vacantes corrigen el ancla sin modificar la fuente original. Hacia atrás se resta el flujo neto entre el mes y el padrón; hacia adelante se suma. El 5 de junio de 2026 la foto original tiene 610 cargos no vacantes: una baja omitida lleva el ancla estimada a 609. La composición original se conserva por separado.
@@ -1508,7 +1508,7 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 
 **2026-07-25** — Entra al índice como único indicador de la dimensión nueva del Poder Judicial, con el quince por ciento del cinturón. La serie se reconstruyó completa desde diciembre de 2023.
 
-**2026-08-25** — La card publica numerador, denominador y la fecha de cada uno. El valor no cambió —69,63%— pero antes se explicaba con «604 de 955 cargos», que es 63,25%: el porcentaje contaba cargos no vacantes al corte de la corrida y el texto contaba cargos con titular a la fecha del padrón. Ahora se publican los dos cortes por separado y el inventario de designaciones y renuncias que los une. Se descartan además los registros con fecha posterior a hoy.
+**2026-08-25** — La tarjeta publica numerador, denominador y la fecha de cada uno. El valor no cambió —69,63%— pero antes se explicaba con «604 de 955 cargos», que es 63,25%: el porcentaje contaba cargos no vacantes al corte de la corrida y el texto contaba cargos con titular a la fecha del padrón. Ahora se publican los dos cortes por separado y el inventario de designaciones y renuncias que los une. Se descartan además los registros con fecha posterior a hoy.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

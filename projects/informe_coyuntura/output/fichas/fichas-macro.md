@@ -355,7 +355,7 @@ Ponderación vigente en el ITCM: 3,4 % efectivo. El color es una lectura adicion
 
 **2026-07-04** — Rediseño de la métrica: pasa de ratios mes a mes a niveles estandarizados contra la propia historia, publicados en desvíos estándar.
 
-**2026-09-15** — El rótulo de la card pasa de «Capacidad prestable (IdC)» a «Capacidad prestable». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna, que ya estaba traducida en el texto.
+**2026-09-15** — El rótulo de la tarjeta pasa de «Capacidad prestable (IdC)» a «Capacidad prestable». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna, que ya estaba traducida en el texto.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -701,7 +701,7 @@ Dato vigente: 0,86 % i.a. real (compuesto IVA-DGI/cheque) (2026-09).
 
 Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa card ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con el peso vigente (0,084 dentro de «Actividad e inversión», que pesa 23%, desde la fusión del 16-oct-2026; antes 0,12, bajado de 0,20 el 2026-09-16, ver más abajo), este indicador aporta 1,93% al índice macroeconómico (0,23×0,084) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el índice macroeconómico tenía alrededor de 2,2% de su peso total expuesto, medido con los pesos anteriores a la fusión, al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador. `recaudacion` declara lo mismo desde su propia ficha (revisión adversarial, 2026-09-16). Además —y esto pesó más en el ajuste de peso que el doble uso con `recaudacion`— es redundante con sus PROPIOS compañeros de dimensión: r=0,840 con `emae_ia`, 0,828 con `ipi_manufacturero`, 0,725 con `emae_difusion` (los tres sobre el umbral 0,7 del repo, y más que lo que `ipi_manufacturero` ya correlaciona con `emae_ia`, r=0,765). La correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y BAJA al adelantarla un mes o dos, así que no anticipa el ciclo: entra por ser la lectura más fresca, no por aportar señal nueva, y el peso de entrada (0,12, por debajo del de `ipi_manufacturero`) se fijó en consecuencia (revisado el 16-sep-2026).
+- **Participación en otros indicadores.** Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa tarjeta ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con el peso vigente (0,084 dentro de «Actividad e inversión», que pesa 23%, desde la fusión del 16-oct-2026; antes 0,12, bajado de 0,20 el 2026-09-16, ver más abajo), este indicador aporta 1,93% al índice macroeconómico (0,23×0,084) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el índice macroeconómico tenía alrededor de 2,2% de su peso total expuesto, medido con los pesos anteriores a la fusión, al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador. `recaudacion` declara lo mismo desde su propia ficha (revisión adversarial, 2026-09-16). Además —y esto pesó más en el ajuste de peso que el doble uso con `recaudacion`— es redundante con sus PROPIOS compañeros de dimensión: r=0,840 con `emae_ia`, 0,828 con `ipi_manufacturero`, 0,725 con `emae_difusion` (los tres sobre el umbral 0,7 del repo, y más que lo que `ipi_manufacturero` ya correlaciona con `emae_ia`, r=0,765). La correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y BAJA al adelantarla un mes o dos, así que no anticipa el ciclo: entra por ser la lectura más fresca, no por aportar señal nueva, y el peso de entrada (0,12, por debajo del de `ipi_manufacturero`) se fijó en consecuencia (revisado el 16-sep-2026).
 
 ## Transparencia — limitaciones declaradas
 
@@ -895,7 +895,7 @@ Dato vigente: 94,4 índice (100 = 4T-2023) (2026-09).
 
 Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta card, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica. Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al índice macroeconómico (0,24×0,30) contra 1,93% de `actividad_tributaria` (0,23×0,084, desde la fusión del 16-oct-2026; antes 1,32%). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcr_terminos_intercambio` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.
+- **Participación en otros indicadores.** IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta tarjeta, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica. Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al índice macroeconómico (0,24×0,30) contra 1,93% de `actividad_tributaria` (0,23×0,084, desde la fusión del 16-oct-2026; antes 1,32%). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcr_terminos_intercambio` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.
 
 ## Transparencia — limitaciones declaradas
 
@@ -912,13 +912,13 @@ Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si falta la gacetilla provincial de un mes, ese mes no entra y el indicador mantiene el último punto disponible, señalado como desactualizado. Sin ventana suficiente para corregir estacionalidad, el indicador no publica y el saldo comercial junto con el resultado primario explican la dimensión. Si IVA-DGI o cheque se retrasan hasta tres meses respecto de la card, la descomposición se publica igual pero declarando el desfasaje ("dato de tal mes, N meses más viejo que la card"); más allá de tres meses de atraso, la descomposición queda ausente del detalle. En cualquier caso el indicador publica igual: no es un insumo del puntaje.
+- **Si falta el dato:** Si falta la gacetilla provincial de un mes, ese mes no entra y el indicador mantiene el último punto disponible, señalado como desactualizado. Sin ventana suficiente para corregir estacionalidad, el indicador no publica y el saldo comercial junto con el resultado primario explican la dimensión. Si IVA-DGI o cheque se retrasan hasta tres meses respecto de la tarjeta, la descomposición se publica igual pero declarando el desfasaje ("dato de tal mes, N meses más viejo que la tarjeta"); más allá de tres meses de atraso, la descomposición queda ausente del detalle. En cualquier caso el indicador publica igual: no es un insumo del puntaje.
 
 - **Política de revisiones:** Los puntos históricos del indicador pueden cambiar por nuevas versiones de los insumos y porque los factores estacionales se recalculan al acumular meses. La reconstrucción de la parte provincial de 2022 está controlada contra el acumulado anual deducido por separado.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-16** — Se agrega `dobleUso`: esta card es el lado PESADO (7,2% del índice macroeconómico) del solapamiento con `actividad_tributaria` (1,32%), que ya lo declaraba desde su propia ficha pero no aparecía acá (revisión adversarial).
+**2026-09-16** — Se agrega `dobleUso`: esta tarjeta es el lado PESADO (7,2% del índice macroeconómico) del solapamiento con `actividad_tributaria` (1,32%), que ya lo declaraba desde su propia ficha pero no aparecía acá (revisión adversarial).
 
 **2026-09-15** — Corrige el encuadre del punto anterior: IVA-DGI y cheque no son un control independiente, son dos de los propios componentes del agregado DGI (entre 30% y 62% del total según el mes). Se renombra a descomposición, se acota a tres meses el retroceso si esas series se retrasan (antes sin límite, con la ficha afirmando lo contrario), se agrega banda muerta para que valores que redondean a 0,0% no marquen divergencia, y se baja la afirmación de que divergir «sí es señal» de algo ajeno a la actividad.
 
@@ -964,7 +964,7 @@ Una medida de 0 a 100 que cruza dos datos: si el peso está caro o barato frente
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | tcr_terminos_intercambio | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Competitividad externa | **UNIDAD DE MEDIDA** | puntaje (0-100) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El tipo de cambio real se publica a diario y su promedio mensual está disponible en los primeros días del mes siguiente. Los términos del intercambio son trimestrales y salen con unos dos meses y medio de demora: cada mes usa el último trimestre publicado, y la card lo declara. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El tipo de cambio real se publica a diario y su promedio mensual está disponible en los primeros días del mes siguiente. Los términos del intercambio son trimestrales y salen con unos dos meses y medio de demora: cada mes usa el último trimestre publicado, y la tarjeta lo declara. |
 | **PRODUCTOR DEL DATO** | BCRA e INDEC | **OPERACIÓN ESTADÍSTICA** | ITCRM — Índice de Tipo de Cambio Real Multilateral del BCRA (base 17-dic-2015 = 100), promedios mensuales; e índice de términos del intercambio del INDEC (índices de precios y cantidades del comercio exterior, base 2004 = 100), trimestral |
 | **MODO DE ACCESO** | Automático: descarga de la planilla oficial del BCRA y de la serie del INDEC publicada en datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-21 |
 
@@ -1025,7 +1025,7 @@ Ponderación vigente en el ITCM: 11 % efectivo. El color es una lectura adiciona
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Un mes entra sólo si tiene tipo de cambio real y algún trimestre de términos del intercambio publicado. Si los términos del intercambio quedan más de nueve meses detrás del mes que se puntúa, el indicador no se actualiza y la card conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.
+- **Si falta el dato:** Un mes entra sólo si tiene tipo de cambio real y algún trimestre de términos del intercambio publicado. Si los términos del intercambio quedan más de nueve meses detrás del mes que se puntúa, el indicador no se actualiza y la tarjeta conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.
 
 - **Política de revisiones:** Las revisiones del INDEC y del BCRA se incorporan en la siguiente actualización, porque la serie se reconstruye completa en cada corrida. Los cortes de los términos del intercambio quedan congelados: no se recalculan con cada corrida, para que el puntaje de un mes sea reproducible.
 
@@ -1039,9 +1039,9 @@ Ponderación vigente en el ITCM: 11 % efectivo. El color es una lectura adiciona
 
 **2026-07-03** — Puntaje interpolado entre anclas.
 
-**2026-09-15** — El rótulo de la card pasa de «Tipo de cambio real (TCRM)» a «Tipo de cambio real». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+**2026-09-15** — El rótulo de la tarjeta pasa de «Tipo de cambio real (TCRM)» a «Tipo de cambio real». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
-**2026-10-20** — La dimensión competitividad externa deja de puntuar el tipo de cambio real solo y pasa a cruzarlo con los términos del intercambio del INDEC en una matriz. El tipo de cambio real dice si el peso está caro o barato; los términos del intercambio, si ese nivel se sostiene. El tipo de cambio real se sigue publicando como serie, pero ya no como card propia, y conserva sus umbrales de siempre como uno de los dos componentes. El peso de la dimensión no cambia (11%). Con los datos de septiembre de 2026, el tipo de cambio real solo daba 49,7 puntos y el compuesto da 49,8.
+**2026-10-20** — La dimensión competitividad externa deja de puntuar el tipo de cambio real solo y pasa a cruzarlo con los términos del intercambio del INDEC en una matriz. El tipo de cambio real dice si el peso está caro o barato; los términos del intercambio, si ese nivel se sostiene. El tipo de cambio real se sigue publicando como serie, pero ya no como tarjeta propia, y conserva sus umbrales de siempre como uno de los dos componentes. El peso de la dimensión no cambia (11%). Con los datos de septiembre de 2026, el tipo de cambio real solo daba 49,7 puntos y el compuesto da 49,8.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1079,7 +1079,7 @@ Captura la credibilidad del programa: si el mercado espera que la inflación sig
 
 ## Método de cómputo
 
-- El valor publicado en la card es el nivel anual esperado, tal cual lo releva el BCRA.
+- El valor publicado en la tarjeta es el nivel anual esperado, tal cual lo releva el BCRA.
 - Para puntuar se convierte a su equivalente mensual (raíz doceava) y se lee con la misma escala mensual que el IPC: expectativas y dato realizado quedan en la misma vara.
 
 ## Semáforo — valores que determinan el color
@@ -1227,7 +1227,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Un mes entra sólo si tiene los cinco insumos. Si falta cualquiera, ese punto no se calcula: nunca se imputa cero. La card conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.
+- **Si falta el dato:** Un mes entra sólo si tiene los cinco insumos. Si falta cualquiera, ese punto no se calcula: nunca se imputa cero. La tarjeta conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.
 
 - **Política de revisiones:** Las revisiones de la planilla del mercado de cambios se incorporan en la siguiente actualización. Los cortes por percentiles quedan congelados: no se recalculan con cada corrida, porque si se movieran con el último dato el puntaje de un mes dejaría de ser reproducible y la serie cambiaría hacia atrás sin que nadie tocara nada.
 
@@ -1339,7 +1339,7 @@ Ponderación vigente en el ITCM: 6,9 % efectivo. El color es una lectura adicion
 
 **2026-09-08** — Tarjeta e historial comparten la regla de incorporación de patentamientos y exigen el mismo mes de referencia. Se evita una divergencia futura de fórmula; los tres meses actualmente acumulados no activan todavía ese componente.
 
-**2026-09-15** — El rótulo de la card pasa de «Inversión física (IAI)» a «Inversión física». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+**2026-09-15** — El rótulo de la tarjeta pasa de «Inversión física (IAI)» a «Inversión física». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 **2026-09-30** — La escala se corre al crecimiento de la población (+0,17% anual según la proyección del INDEC con base en el Censo 2022). El verde ya no arranca en 0% sino en +0,17%: crecer menos que la población es invertir menos por habitante. Todas las anclas se corren lo mismo; el −5,66% de julio pasa de 36,4 a 35,7 puntos y sigue en naranja.
 

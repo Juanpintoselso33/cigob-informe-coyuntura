@@ -292,13 +292,13 @@ Cuántos artículos de normas quedaron modificados o eliminados por el programa 
 
 Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado.
 
-Mide el volumen de articulado que el programa alcanzó, no la cantidad de actos administrativos firmados. La diferencia importa: un decreto que reescribe quinientos artículos y una resolución que toca uno pesan igual si se cuentan normas, y muy distinto si se cuentan artículos. Lo que el recuento no distingue es si lo derogado dejó de regir: un artículo que la Justicia repuso suma igual que uno vigente, de modo que el indicador mide el acto de desregular y no su efecto. Muestra además la forma del programa en el tiempo, que es muy desigual: un arranque acotado, un salto marcado a partir de la Ley Bases y la creación del ministerio, y una aceleración durante 2026. La card publica también las otras dos cifras del mismo informe: cuántas normas de desregulación se dictaron y cuántas normas anteriores alcanzaron.
+Mide el volumen de articulado que el programa alcanzó, no la cantidad de actos administrativos firmados. La diferencia importa: un decreto que reescribe quinientos artículos y una resolución que toca uno pesan igual si se cuentan normas, y muy distinto si se cuentan artículos. Lo que el recuento no distingue es si lo derogado dejó de regir: un artículo que la Justicia repuso suma igual que uno vigente, de modo que el indicador mide el acto de desregular y no su efecto. Muestra además la forma del programa en el tiempo, que es muy desigual: un arranque acotado, un salto marcado a partir de la Ley Bases y la creación del ministerio, y una aceleración durante 2026. La tarjeta publica también las otras dos cifras del mismo informe: cuántas normas de desregulación se dictaron y cuántas normas anteriores alcanzaron.
 
 **Dimensión que integra — Reformas económicas fundamentales.** El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.
 
 ## Método de cómputo
 
-- El informe publica tres cifras: cuántas normas de desregulación se dictaron, cuántas normas anteriores alcanzaron y cuántos artículos quedaron modificados o eliminados. El indicador usa la tercera; las otras dos se muestran en la card como contexto.
+- El informe publica tres cifras: cuántas normas de desregulación se dictaron, cuántas normas anteriores alcanzaron y cuántos artículos quedaron modificados o eliminados. El indicador usa la tercera; las otras dos se muestran en la tarjeta como contexto.
 - Se eligió el recuento de artículos porque las normas no son equivalentes entre sí: un decreto que reescribe quinientos artículos y una resolución que toca uno cuentan igual si se cuentan normas, y muy distinto si se cuentan artículos. Es la misma objeción que señaló la revisión externa del cinturón.
 - El valor del mes es la cifra que el propio informe publica. Las etiquetas de los últimos tres meses de la edición más reciente prevalecen sobre los titulares anteriores. El aumento mensual se calcula entre dos acumulados de esa serie revisada: agosto de 2026 publica 17.115 y revisa julio a 16.848, por lo que el incremento es 267, no 344.
 - El período se toma de la fecha de corte del informe («al 31 de octubre de 2025»), no del mes de su tapa: hay informes cuya portada dice un mes y cuyo corte cae en el siguiente.
@@ -408,7 +408,7 @@ La métrica insignia de la reforma del Estado: personas, no pesos. Universo: Adm
 - Variación porcentual de la dotación contra la línea de base de diciembre de 2023 (231.305 agentes).
 - A diferencia de las series previsionales, excluye provincias y municipios: es la métrica insignia de la reforma del Estado nacional.
 - También excluye a las empresas y sociedades del Estado, que la planilla informa por separado. Se eligió la Administración Pública Nacional porque es el universo sobre el que el Poder Ejecutivo decide directamente su planta. La elección no cambia la lectura: al mes de mayo de 2026 la Administración Pública Nacional cae 19,8%, las empresas del Estado 20,2% y el universo completo 19,9%.
-- Sí incluye a las fuerzas armadas y de seguridad. Siete entidades informan su dotación dentro de la Administración Pública Nacional: los estados mayores del Ejército, la Armada, la Fuerza Aérea y el Estado Mayor Conjunto, más Gendarmería, Prefectura y la Policía de Seguridad Aeroportuaria. Representan alrededor del diez por ciento del total y se redujeron menos que el resto, de modo que su presencia atenúa levemente el ajuste medido: a febrero de 2026 el conjunto cae 18,6% y la planta civil sola 19,0%. No se las descuenta —son parte del Estado y sostener sus dotaciones también es una decisión de gobierno—, pero el desglose se publica en la card para que cada lector pueda hacer la cuenta que prefiera.
+- Sí incluye a las fuerzas armadas y de seguridad. Siete entidades informan su dotación dentro de la Administración Pública Nacional: los estados mayores del Ejército, la Armada, la Fuerza Aérea y el Estado Mayor Conjunto, más Gendarmería, Prefectura y la Policía de Seguridad Aeroportuaria. Representan alrededor del diez por ciento del total y se redujeron menos que el resto, de modo que su presencia atenúa levemente el ajuste medido: a febrero de 2026 el conjunto cae 18,6% y la planta civil sola 19,0%. No se las descuenta —son parte del Estado y sostener sus dotaciones también es una decisión de gobierno—, pero el desglose se publica en la tarjeta para que cada lector pueda hacer la cuenta que prefiera.
 
 ## Semáforo — valores que determinan el color
 
@@ -1015,11 +1015,11 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 
 **2026-07-03** — Serie escalonada por hitos fechados. Puntaje interpolado entre anclas.
 
-**2026-08-25** — Una etapa cuenta como adjudicada si CONTRAT.AR lo declara o si hay una resolución publicada que adjudique su proceso. CONTRAT.AR se queda viejo: al 25 de agosto de 2026 mostraba «Disponible Para Adjudicar» la Etapa II-B, adjudicada por Resolución 1149/2026 el 28 de julio, y la Etapa III, adjudicada por Resolución 1379/2026 el 24 de agosto. El indicador pasa de 28,7% a 100%. La card publica el inventario por etapa con los km, la fuente del estado y la resolución que lo respalda.
+**2026-08-25** — Una etapa cuenta como adjudicada si CONTRAT.AR lo declara o si hay una resolución publicada que adjudique su proceso. CONTRAT.AR se queda viejo: al 25 de agosto de 2026 mostraba «Disponible Para Adjudicar» la Etapa II-B, adjudicada por Resolución 1149/2026 el 28 de julio, y la Etapa III, adjudicada por Resolución 1379/2026 el 24 de agosto. El indicador pasa de 28,7% a 100%. La tarjeta publica el inventario por etapa con los km, la fuente del estado y la resolución que lo respalda.
 
-**2026-08-29** — El valor de respaldo escrito a mano dejó de tener prioridad sobre el último valor que sí salió de la fuente. Con CONTRAT.AR caído, la card publicaba 28,7% —la foto del 2 de julio, con dos etapas sin adjudicar— teniendo el 100% en el cache de la noche anterior. Una fuente caída ahora envejece el número, no lo hace retroceder. El respaldo se actualizó a 100% con las cuatro resoluciones.
+**2026-08-29** — El valor de respaldo escrito a mano dejó de tener prioridad sobre el último valor que sí salió de la fuente. Con CONTRAT.AR caído, la tarjeta publicaba 28,7% —la foto del 2 de julio, con dos etapas sin adjudicar— teniendo el 100% en el cache de la noche anterior. Una fuente caída ahora envejece el número, no lo hace retroceder. El respaldo se actualizó a 100% con las cuatro resoluciones.
 
-**2026-10-10** — El estado de cada etapa pasa a salir de las resoluciones del Boletín Oficial registradas, y CONTRAT.AR queda como detector de procesos nuevos que no frena el indicador. Desde los servidores de la publicación el portal no respondía en 15 de 33 noches y la card quedaba desactualizada. No cambia lo que mide ni su valor.
+**2026-10-10** — El estado de cada etapa pasa a salir de las resoluciones del Boletín Oficial registradas, y CONTRAT.AR queda como detector de procesos nuevos que no frena el indicador. Desde los servidores de la publicación el portal no respondía en 15 de 33 noches y la tarjeta quedaba desactualizada. No cambia lo que mide ni su valor.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1109,7 +1109,7 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 **2026-09-08** — Se distingue devengado de pagado y se acota el universo a las dos actividades. Se retiran inferencias de ausencia de intermediación y la afirmación de una base 2023 mayoritariamente intermediada: la API confirma 98,312% en 5.1.4. No cambia la fórmula ni el 100% actual.
 
-**2026-09-15** — El rótulo de la card pasa de «Asistencia directa (TDPS)» a «Asistencia directa». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
+**2026-09-15** — El rótulo de la tarjeta pasa de «Asistencia directa (TDPS)» a «Asistencia directa». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
