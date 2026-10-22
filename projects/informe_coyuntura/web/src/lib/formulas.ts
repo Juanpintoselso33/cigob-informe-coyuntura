@@ -61,7 +61,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   empleo_registrado: {
     latex: String.raw`\frac{\text{asalariados privados registrados}_{\text{hoy}}}{\text{promedio 4T-2023}}\times 100`,
-    leyenda: "Asalariados del sector privado declarados al Sistema Integrado Previsional Argentino, en miles de personas. La card muestra el nivel; el índice del cinturón lo expresa contra el promedio del último trimestre de 2023, como el resto de los componentes. Por encima de 100 hay más empleo registrado que en la línea de base; por debajo, menos. Se usa la serie con estacionalidad porque la comparación es contra una base fija de tres meses y no contra el mes anterior.",
+    leyenda: "Asalariados del sector privado declarados al Sistema Integrado Previsional Argentino, en miles de personas. La tarjeta muestra el nivel; el índice del cinturón lo expresa contra el promedio del último trimestre de 2023, como el resto de los componentes. Por encima de 100 hay más empleo registrado que en la línea de base; por debajo, menos. Se usa la serie con estacionalidad porque la comparación es contra una base fija de tres meses y no contra el mes anterior.",
   },
   cobertura_judicial: {
     latex: String.raw`\frac{\text{cargos con juez designado}}{\text{cargos de juez habilitados}}\times 100`,
@@ -173,11 +173,11 @@ export const FORMULAS: Record<string, Formula> = {
   },
   ipc_alimentos: {
     latex: String.raw`100\cdot\frac{\left(\text{precios generales}\,/\,\text{precio de alimentos}\right)_{\text{hoy}}}{\left(\text{precios generales}\,/\,\text{precio de alimentos}\right)_{\text{4T-23}}}`,
-    leyenda: "Encarecimiento relativo de la comida: si los alimentos suben más que el resto de los precios, la canasta de los hogares de menores ingresos se castiga aunque la inflación general baje. Más de 100 = la comida sube menos que el promedio (alivio); menos de 100 = la comida encarece por encima del resto. Independiente del salario — el poder de compra ya lo mide la brecha salario/canasta, en Ingresos. (La card muestra la variación mensual del rubro.)",
+    leyenda: "Encarecimiento relativo de la comida: si los alimentos suben más que el resto de los precios, la canasta de los hogares de menores ingresos se castiga aunque la inflación general baje. Más de 100 = la comida sube menos que el promedio (alivio); menos de 100 = la comida encarece por encima del resto. Independiente del salario — el poder de compra ya lo mide la brecha salario/canasta, en Ingresos. (La tarjeta muestra la variación mensual del rubro.)",
   },
   peso_tarifas: {
     latex: String.raw`T=\max\left\{\operatorname{clip}_{0}^{10}\!\left[2(E-10)\right],\operatorname{clip}_{0}^{10}\!\left[2(P-5)\right]\right\},\quad I=125-5T`,
-    leyenda: "E es agua+energía y P es transporte, cada uno como % del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE). Agua+energía: 10% = tensión 0, 12,5% = 5 y 15% = 10. Transporte: 5% = tensión 0, 7,5% = 5 y 10% = 10. Se usa el peor de los dos grupos para impedir compensaciones; la card muestra además el total.",
+    leyenda: "E es agua+energía y P es transporte, cada uno como % del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE). Agua+energía: 10% = tensión 0, 12,5% = 5 y 15% = 10. Transporte: 5% = tensión 0, 7,5% = 5 y 10% = 10. Se usa el peor de los dos grupos para impedir compensaciones; la tarjeta muestra además el total.",
   },
   indice_lider: {
     latex: String.raw`100\cdot\frac{\text{Índice Líder}_{\text{hoy}}}{\text{Índice Líder}_{\text{4T-23}}}`,
@@ -221,7 +221,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   informalidad: {
     latex: String.raw`100\cdot\frac{\text{informalidad}_{\text{4T-23}}}{\text{informalidad}_{\text{hoy}}}`,
-    leyenda: "Asalariados sin descuento jubilatorio (Encuesta Permanente de Hogares, trimestral). En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. La card muestra la tasa del trimestre.",
+    leyenda: "Asalariados sin descuento jubilatorio (Encuesta Permanente de Hogares, trimestral). En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. La tarjeta muestra la tasa del trimestre.",
   },
   consumo_carne_vacuna: {
     latex: String.raw`100\cdot\frac{\text{vacuna por habitante}_{\text{hoy}}}{\text{vacuna por habitante}_{\text{4T-23}}}`,
@@ -241,11 +241,11 @@ export const FORMULAS: Record<string, Formula> = {
   },
   patentamiento_motos: {
     latex: String.raw`100\cdot\frac{\text{patentamientos, promedio 12 meses}_{\text{hoy}}}{\text{promedio 12 meses}_{\text{4T-23}}}`,
-    leyenda: "Motos patentadas, según la Cámara de Fabricantes de Motovehículos (CAFAM), en promedio móvil anual — desestacionalizado: enero patenta ≈ el doble que junio. La card muestra el mes crudo.",
+    leyenda: "Motos patentadas, según la Cámara de Fabricantes de Motovehículos (CAFAM), en promedio móvil anual — desestacionalizado: enero patenta ≈ el doble que junio. La tarjeta muestra el mes crudo.",
   },
   patentamiento_autos: {
     latex: String.raw`100\cdot\frac{\text{inscripciones iniciales, promedio 12 meses}_{\text{hoy}}}{\text{promedio 12 meses}_{\text{4T-23}}}`,
-    leyenda: "Autos 0km inscriptos en los registros de la Dirección Nacional de los Registros de la Propiedad Automotor (DNRPA) en promedio móvil anual — misma transformación que motos, y por el mismo motivo medido: enero pesa 1,36 veces el mes promedio y diciembre 0,57. La card muestra el mes crudo.",
+    leyenda: "Autos 0km inscriptos en los registros de la Dirección Nacional de los Registros de la Propiedad Automotor (DNRPA) en promedio móvil anual — misma transformación que motos, y por el mismo motivo medido: enero pesa 1,36 veces el mes promedio y diciembre 0,57. La tarjeta muestra el mes crudo.",
   },
   consumo_supermercados: {
     latex: String.raw`100\cdot\frac{\text{ventas a precios constantes}_{\text{hoy}}}{\text{ventas a precios constantes}_{\text{4T-23}}}`,
@@ -359,6 +359,6 @@ export const FORMULAS: Record<string, Formula> = {
   },
   indice_intencion_migratoria: {
     latex: String.raw`\text{inter\'es de b\'usqueda mensual}\;(0\text{-}100)`,
-    leyenda: "Canasta de búsquedas en Google sobre intención de emigrar (por ejemplo \"emigrar de argentina\", \"vivir en el exterior\"), promedio mensual en ventana fija desde 2021 — misma técnica que sentimiento digital. Más búsqueda = más tensión: a diferencia de sentimiento digital (urgencia económica del momento), esta es una señal de salida más estructural. Nunca debería leerse sola: por eso la card la acompaña con un contraste de migración efectiva (visas, residencias y ciudadanías otorgadas a argentinos en los destinos principales) que se muestra sin puntuar.",
+    leyenda: "Canasta de búsquedas en Google sobre intención de emigrar (por ejemplo \"emigrar de argentina\", \"vivir en el exterior\"), promedio mensual en ventana fija desde 2021 — misma técnica que sentimiento digital. Más búsqueda = más tensión: a diferencia de sentimiento digital (urgencia económica del momento), esta es una señal de salida más estructural. Nunca debería leerse sola: por eso la tarjeta la acompaña con un contraste de migración efectiva (visas, residencias y ciudadanías otorgadas a argentinos en los destinos principales) que se muestra sin puntuar.",
   },
 };
