@@ -174,6 +174,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
 2024-01-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
 2023-12-01,tcr_terminos_intercambio,57.5,puntaje (0-100),BCRA ITCRM + INDEC términos del intercambio (vía datos.gob.ar)
+2026-10-22,tc_mayorista,1527.8511,ARS/USD,BCRA
 2026-10-21,tc_mayorista,1526.6664,ARS/USD,BCRA
 2026-10-20,tc_mayorista,1524.8401,ARS/USD,BCRA
 2026-10-19,tc_mayorista,1523.3466,ARS/USD,BCRA
@@ -1123,19 +1124,20 @@ fecha,indicador,valor,unidad,fuente
 2022-03-01,recaudacion,100.3,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-02-01,recaudacion,101.1,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-01-01,recaudacion,100.2,índice (100 = 4T-2023),Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-10-19,prestamos_privados,147582927.0,M ARS,BCRA
-2026-10-16,prestamos_privados,147239719.0,M ARS,BCRA
+2026-10-20,prestamos_privados,148199831.0,M ARS,BCRA
+2026-10-19,prestamos_privados,147573696.0,M ARS,BCRA
+2026-10-16,prestamos_privados,147228988.0,M ARS,BCRA
 2026-10-15,prestamos_privados,146787322.0,M ARS,BCRA
-2026-10-14,prestamos_privados,147527710.0,M ARS,BCRA
-2026-10-13,prestamos_privados,147027529.0,M ARS,BCRA
+2026-10-14,prestamos_privados,147543595.0,M ARS,BCRA
+2026-10-13,prestamos_privados,147027468.0,M ARS,BCRA
 2026-10-09,prestamos_privados,146572607.0,M ARS,BCRA
-2026-10-08,prestamos_privados,147685891.0,M ARS,BCRA
+2026-10-08,prestamos_privados,147687735.0,M ARS,BCRA
 2026-10-07,prestamos_privados,147707885.0,M ARS,BCRA
 2026-10-06,prestamos_privados,148568854.0,M ARS,BCRA
 2026-10-05,prestamos_privados,148318394.0,M ARS,BCRA
-2026-10-02,prestamos_privados,148949003.0,M ARS,BCRA
+2026-10-02,prestamos_privados,148951484.0,M ARS,BCRA
 2026-10-01,prestamos_privados,148979575.0,M ARS,BCRA
-2026-09-30,prestamos_privados,148701450.0,M ARS,BCRA
+2026-09-30,prestamos_privados,148709272.0,M ARS,BCRA
 2026-09-29,prestamos_privados,148772839.0,M ARS,BCRA
 2026-09-28,prestamos_privados,147903039.0,M ARS,BCRA
 2026-09-25,prestamos_privados,147162565.0,M ARS,BCRA
@@ -1177,7 +1179,7 @@ fecha,indicador,valor,unidad,fuente
 2026-08-05,prestamos_privados,140756507.0,M ARS,BCRA
 2026-08-04,prestamos_privados,141282282.0,M ARS,BCRA
 2026-08-03,prestamos_privados,141241293.0,M ARS,BCRA
-2026-07-31,prestamos_privados,142238420.0,M ARS,BCRA
+2026-07-31,prestamos_privados,142259567.0,M ARS,BCRA
 2026-07-30,prestamos_privados,141383312.0,M ARS,BCRA
 2026-07-29,prestamos_privados,141085426.0,M ARS,BCRA
 2026-07-28,prestamos_privados,140883095.0,M ARS,BCRA
@@ -1945,7 +1947,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,ipc_nucleo,12.29,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
 2024-01-01,ipc_nucleo,20.22,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
 2023-12-01,ipc_nucleo,28.26,% mensual,INDEC — IPC núcleo nacional (vía datos.gob.ar)
-2026-09-01,idm,1.82,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2026-09-01,idm,1.81,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-08-01,idm,2.15,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-07-01,idm,4.47,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-06-01,idm,6.05,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
@@ -1982,7 +1984,7 @@ fecha,indicador,valor,unidad,fuente
 2023-11-01,idm,-5.24,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-09-01,idc,-0.34,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-08-01,idc,-0.25,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2026-07-01,idc,-0.31,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2026-07-01,idc,-0.32,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-06-01,idc,-0.23,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-05-01,idc,-0.29,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-04-01,idc,-0.28,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
@@ -2270,6 +2272,7 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,costo_financiamiento_tesoro,-10.39,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2024-03-01,costo_financiamiento_tesoro,-13.58,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-10-20,base_monetaria,46996299.0,M ARS,BCRA
 2026-10-19,base_monetaria,46159227.0,M ARS,BCRA
 2026-10-16,base_monetaria,46250658.0,M ARS,BCRA
 2026-10-15,base_monetaria,47972982.0,M ARS,BCRA

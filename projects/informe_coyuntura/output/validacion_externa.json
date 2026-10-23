@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-22T03:34:12.430173+00:00",
+    "generated_at": "2026-10-23T03:32:06.293561+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -38,17 +38,17 @@
     "2026-06": 95.9,
     "2026-07": 94.8,
     "2026-08": 94.5,
-    "2026-09": 93.3,
+    "2026-09": 93.2,
     "2026-10": 93.8
   },
   "correlaciones": {
     "ITCIS vs ICC UTDT (niveles)": {
-      "r": -0.062,
-      "n": 33
+      "r": -0.05,
+      "n": 34
     },
     "ITCIS vs ICC UTDT (diferencias)": {
-      "r": 0.563,
-      "n": 31
+      "r": 0.56,
+      "n": 32
     }
   },
   "serie_itcm": {
@@ -422,7 +422,7 @@
         "emae_difusion": 0.19,
         "emae_ia": 0.167,
         "iai": 0.056,
-        "idc": 0.155,
+        "idc": 0.154,
         "ipc_total": 0.298,
         "ipi_manufacturero": 0.048,
         "recaudacion": 0.018,
@@ -473,7 +473,7 @@
         "desequilibrio_monetario": 0.02,
         "emae_ia": 0.777,
         "iai": 0.809,
-        "idc": 0.64,
+        "idc": 0.641,
         "ipc_total": 0.634,
         "ipi_manufacturero": 0.529,
         "recaudacion": -0.624,
@@ -519,19 +519,19 @@
       },
       "idc": {
         "actividad_tributaria": 0.806,
-        "costo_financiamiento_tesoro": 0.155,
+        "costo_financiamiento_tesoro": 0.154,
         "credito_privado": 0.888,
         "desequilibrio_monetario": 0.16,
-        "emae_difusion": 0.64,
+        "emae_difusion": 0.641,
         "emae_ia": 0.827,
         "iai": 0.812,
         "ipc_total": 0.872,
         "ipi_manufacturero": 0.738,
-        "recaudacion": -0.234,
-        "rem_ipc_12m": 0.894,
-        "reservas_bcra": 0.342,
+        "recaudacion": -0.235,
+        "rem_ipc_12m": 0.893,
+        "reservas_bcra": 0.339,
         "resultado_primario": 0.864,
-        "saldo_comercial_12m": 0.666,
+        "saldo_comercial_12m": 0.665,
         "tcr_terminos_intercambio": -0.291
       },
       "ipc_total": {
@@ -576,7 +576,7 @@
         "emae_difusion": -0.624,
         "emae_ia": -0.29,
         "iai": -0.447,
-        "idc": -0.234,
+        "idc": -0.235,
         "ipc_total": -0.262,
         "ipi_manufacturero": -0.292,
         "rem_ipc_12m": -0.263,
@@ -593,7 +593,7 @@
         "emae_difusion": 0.678,
         "emae_ia": 0.72,
         "iai": 0.722,
-        "idc": 0.894,
+        "idc": 0.893,
         "ipc_total": 0.935,
         "ipi_manufacturero": 0.521,
         "recaudacion": -0.263,
@@ -610,7 +610,7 @@
         "emae_difusion": 0.212,
         "emae_ia": 0.153,
         "iai": 0.24,
-        "idc": 0.342,
+        "idc": 0.339,
         "ipc_total": 0.644,
         "ipi_manufacturero": 0.293,
         "recaudacion": -0.22,
@@ -644,7 +644,7 @@
         "emae_difusion": 0.383,
         "emae_ia": 0.566,
         "iai": 0.398,
-        "idc": 0.666,
+        "idc": 0.665,
         "ipc_total": 0.742,
         "ipi_manufacturero": 0.362,
         "recaudacion": -0.01,
@@ -683,22 +683,22 @@
         "por_diseno": "las expectativas relevadas por el Banco Central son la inflación esperada: un pronóstico de la inflación minorista, en la misma dimensión y a propósito, para leer la misma magnitud en dos momentos"
       },
       {
-        "a": "idc",
-        "b": "rem_ipc_12m",
-        "r": 0.894,
-        "n": 34,
-        "dimension_a": "financiamiento",
-        "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "rem_ipc_12m",
         "b": "resultado_primario",
         "r": 0.894,
         "n": 33,
         "dimension_a": "estabilidad_monetaria",
         "dimension_b": "viabilidad_fiscal_comercial",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "idc",
+        "b": "rem_ipc_12m",
+        "r": 0.893,
+        "n": 34,
+        "dimension_a": "financiamiento",
+        "dimension_b": "estabilidad_monetaria",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -1052,10 +1052,10 @@
         "libertad_opcion_salud": 0.899,
         "litigiosidad_laboral": 0.438,
         "masa_salarial": 0.474,
-        "privatizaciones": 0.827,
+        "privatizaciones": 0.826,
         "protocolo_antipiquetes": 0.872,
         "reduccion_estado": 0.762,
-        "reestructuracion_organismos": 0.465
+        "reestructuracion_organismos": 0.464
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.067,
@@ -1157,7 +1157,7 @@
       },
       "privatizaciones": {
         "apertura_comercial": 0.478,
-        "cepo_mulc": 0.827,
+        "cepo_mulc": 0.826,
         "concesiones_infraestructura": 0.583,
         "desregulacion_normativa": 0.949,
         "fal_modernizacion_laboral": 0.603,
@@ -1199,7 +1199,7 @@
       },
       "reestructuracion_organismos": {
         "apertura_comercial": 0.284,
-        "cepo_mulc": 0.465,
+        "cepo_mulc": 0.464,
         "concesiones_infraestructura": 0.76,
         "desregulacion_normativa": 0.671,
         "fal_modernizacion_laboral": 0.844,
@@ -1306,7 +1306,7 @@
       {
         "a": "cepo_mulc",
         "b": "privatizaciones",
-        "r": 0.827,
+        "r": 0.826,
         "n": 35,
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
@@ -1757,22 +1757,22 @@
   "redundancia_itvc": {
     "diferencias": {
       "n_pares": 228,
-      "r_abs_medio": 0.188,
+      "r_abs_medio": 0.189,
       "share_altos": 0.009
     },
     "umbral": 0.7,
     "n_indicadores": 22,
     "n_pares": 228,
-    "r_abs_medio": 0.524,
+    "r_abs_medio": 0.528,
     "share_altos": 0.36,
-    "share_bajos": 0.276,
+    "share_bajos": 0.272,
     "matriz": {
       "alquiler_real": {
         "brecha_salario_cbt": -0.94,
         "carga_servicio_deuda_hogares": 0.964,
         "consumo_carne_vacuna": 0.68,
         "consumo_carnes_total": 0.614,
-        "consumo_supermercados": -0.434,
+        "consumo_supermercados": -0.365,
         "despacho_cemento": -0.487,
         "empleo_registrado": 0.631,
         "icg_utdt": 0.566,
@@ -1795,7 +1795,7 @@
         "carga_servicio_deuda_hogares": -0.892,
         "consumo_carne_vacuna": -0.509,
         "consumo_carnes_total": -0.441,
-        "consumo_supermercados": 0.553,
+        "consumo_supermercados": 0.509,
         "despacho_cemento": 0.433,
         "empleo_registrado": -0.536,
         "icg_utdt": -0.48,
@@ -1818,7 +1818,7 @@
         "brecha_salario_cbt": -0.892,
         "consumo_carne_vacuna": 0.666,
         "consumo_carnes_total": 0.596,
-        "consumo_supermercados": -0.308,
+        "consumo_supermercados": -0.24,
         "despacho_cemento": -0.473,
         "empleo_registrado": 0.651,
         "icg_utdt": 0.612,
@@ -1841,7 +1841,7 @@
         "brecha_salario_cbt": -0.509,
         "carga_servicio_deuda_hogares": 0.666,
         "consumo_carnes_total": 0.991,
-        "consumo_supermercados": 0.065,
+        "consumo_supermercados": 0.175,
         "despacho_cemento": -0.109,
         "empleo_registrado": 0.929,
         "icg_utdt": 0.73,
@@ -1864,7 +1864,7 @@
         "brecha_salario_cbt": -0.441,
         "carga_servicio_deuda_hogares": 0.596,
         "consumo_carne_vacuna": 0.991,
-        "consumo_supermercados": 0.112,
+        "consumo_supermercados": 0.222,
         "despacho_cemento": -0.064,
         "empleo_registrado": 0.918,
         "icg_utdt": 0.722,
@@ -1883,27 +1883,27 @@
         "trabajo_independiente": 0.786
       },
       "consumo_supermercados": {
-        "alquiler_real": -0.434,
-        "brecha_salario_cbt": 0.553,
-        "carga_servicio_deuda_hogares": -0.308,
-        "consumo_carne_vacuna": 0.065,
-        "consumo_carnes_total": 0.112,
-        "despacho_cemento": 0.43,
-        "empleo_registrado": 0.14,
-        "icg_utdt": 0.041,
-        "informalidad": -0.081,
-        "inseguridad": -0.152,
-        "ipc_alimentos": 0.46,
-        "mora_familias": 0.016,
-        "mortalidad_pymes": 0.015,
-        "motorizacion_total": 0.005,
-        "peso_tarifas": 0.114,
-        "pobreza_nowcast": -0.692,
-        "ratio_motos_autos": 0.205,
-        "subocupacion_demandante": 0.098,
-        "tasa_homicidios": 0.381,
-        "tasa_robos": -0.304,
-        "trabajo_independiente": -0.012
+        "alquiler_real": -0.365,
+        "brecha_salario_cbt": 0.509,
+        "carga_servicio_deuda_hogares": -0.24,
+        "consumo_carne_vacuna": 0.175,
+        "consumo_carnes_total": 0.222,
+        "despacho_cemento": 0.418,
+        "empleo_registrado": 0.234,
+        "icg_utdt": 0.128,
+        "informalidad": 0.01,
+        "inseguridad": -0.122,
+        "ipc_alimentos": 0.404,
+        "mora_familias": 0.083,
+        "mortalidad_pymes": 0.109,
+        "motorizacion_total": -0.08,
+        "peso_tarifas": 0.338,
+        "pobreza_nowcast": -0.631,
+        "ratio_motos_autos": 0.338,
+        "subocupacion_demandante": 0.155,
+        "tasa_homicidios": 0.315,
+        "tasa_robos": -0.373,
+        "trabajo_independiente": 0.059
       },
       "despacho_cemento": {
         "alquiler_real": -0.487,
@@ -1911,7 +1911,7 @@
         "carga_servicio_deuda_hogares": -0.473,
         "consumo_carne_vacuna": -0.109,
         "consumo_carnes_total": -0.064,
-        "consumo_supermercados": 0.43,
+        "consumo_supermercados": 0.418,
         "empleo_registrado": -0.055,
         "icg_utdt": -0.199,
         "informalidad": -0.243,
@@ -1934,7 +1934,7 @@
         "carga_servicio_deuda_hogares": 0.651,
         "consumo_carne_vacuna": 0.929,
         "consumo_carnes_total": 0.918,
-        "consumo_supermercados": 0.14,
+        "consumo_supermercados": 0.234,
         "despacho_cemento": -0.055,
         "icg_utdt": 0.815,
         "informalidad": 0.791,
@@ -1957,7 +1957,7 @@
         "carga_servicio_deuda_hogares": 0.612,
         "consumo_carne_vacuna": 0.73,
         "consumo_carnes_total": 0.722,
-        "consumo_supermercados": 0.041,
+        "consumo_supermercados": 0.128,
         "despacho_cemento": -0.199,
         "empleo_registrado": 0.815,
         "informalidad": 0.676,
@@ -1980,7 +1980,7 @@
         "carga_servicio_deuda_hogares": 0.692,
         "consumo_carne_vacuna": 0.799,
         "consumo_carnes_total": 0.784,
-        "consumo_supermercados": -0.081,
+        "consumo_supermercados": 0.01,
         "despacho_cemento": -0.243,
         "empleo_registrado": 0.791,
         "icg_utdt": 0.676,
@@ -2003,7 +2003,7 @@
         "carga_servicio_deuda_hogares": -0.0,
         "consumo_carne_vacuna": 0.146,
         "consumo_carnes_total": 0.181,
-        "consumo_supermercados": -0.152,
+        "consumo_supermercados": -0.122,
         "despacho_cemento": -0.207,
         "empleo_registrado": -0.086,
         "icg_utdt": 0.033,
@@ -2026,7 +2026,7 @@
         "carga_servicio_deuda_hogares": -0.811,
         "consumo_carne_vacuna": -0.576,
         "consumo_carnes_total": -0.52,
-        "consumo_supermercados": 0.46,
+        "consumo_supermercados": 0.404,
         "despacho_cemento": 0.253,
         "empleo_registrado": -0.552,
         "icg_utdt": -0.438,
@@ -2049,7 +2049,7 @@
         "carga_servicio_deuda_hogares": 0.895,
         "consumo_carne_vacuna": 0.72,
         "consumo_carnes_total": 0.666,
-        "consumo_supermercados": 0.016,
+        "consumo_supermercados": 0.083,
         "despacho_cemento": -0.329,
         "empleo_registrado": 0.792,
         "icg_utdt": 0.724,
@@ -2072,7 +2072,7 @@
         "carga_servicio_deuda_hogares": 0.861,
         "consumo_carne_vacuna": 0.931,
         "consumo_carnes_total": 0.894,
-        "consumo_supermercados": 0.015,
+        "consumo_supermercados": 0.109,
         "despacho_cemento": -0.259,
         "empleo_registrado": 0.923,
         "icg_utdt": 0.781,
@@ -2095,7 +2095,7 @@
         "carga_servicio_deuda_hogares": -0.911,
         "consumo_carne_vacuna": -0.741,
         "consumo_carnes_total": -0.688,
-        "consumo_supermercados": 0.005,
+        "consumo_supermercados": -0.08,
         "despacho_cemento": 0.387,
         "empleo_registrado": -0.766,
         "icg_utdt": -0.746,
@@ -2118,7 +2118,7 @@
         "carga_servicio_deuda_hogares": 0.854,
         "consumo_carne_vacuna": 0.828,
         "consumo_carnes_total": 0.829,
-        "consumo_supermercados": 0.114,
+        "consumo_supermercados": 0.338,
         "despacho_cemento": 0.015,
         "empleo_registrado": 0.849,
         "icg_utdt": 0.907,
@@ -2139,7 +2139,7 @@
         "carga_servicio_deuda_hogares": -0.877,
         "consumo_carne_vacuna": -0.434,
         "consumo_carnes_total": -0.414,
-        "consumo_supermercados": -0.692,
+        "consumo_supermercados": -0.631,
         "despacho_cemento": 0.378,
         "empleo_registrado": -0.645,
         "icg_utdt": -0.489,
@@ -2161,7 +2161,7 @@
         "carga_servicio_deuda_hogares": 0.246,
         "consumo_carne_vacuna": 0.748,
         "consumo_carnes_total": 0.782,
-        "consumo_supermercados": 0.205,
+        "consumo_supermercados": 0.338,
         "despacho_cemento": 0.008,
         "empleo_registrado": 0.603,
         "icg_utdt": 0.537,
@@ -2184,7 +2184,7 @@
         "carga_servicio_deuda_hogares": 0.174,
         "consumo_carne_vacuna": 0.6,
         "consumo_carnes_total": 0.605,
-        "consumo_supermercados": 0.098,
+        "consumo_supermercados": 0.155,
         "despacho_cemento": 0.176,
         "empleo_registrado": 0.706,
         "icg_utdt": 0.453,
@@ -2207,7 +2207,7 @@
         "carga_servicio_deuda_hogares": -0.93,
         "consumo_carne_vacuna": -0.531,
         "consumo_carnes_total": -0.456,
-        "consumo_supermercados": 0.381,
+        "consumo_supermercados": 0.315,
         "despacho_cemento": 0.412,
         "empleo_registrado": -0.505,
         "icg_utdt": -0.483,
@@ -2228,7 +2228,7 @@
         "carga_servicio_deuda_hogares": -0.569,
         "consumo_carne_vacuna": -0.805,
         "consumo_carnes_total": -0.788,
-        "consumo_supermercados": -0.304,
+        "consumo_supermercados": -0.373,
         "despacho_cemento": 0.186,
         "empleo_registrado": -0.732,
         "icg_utdt": -0.576,
@@ -2250,7 +2250,7 @@
         "carga_servicio_deuda_hogares": 0.879,
         "consumo_carne_vacuna": 0.84,
         "consumo_carnes_total": 0.786,
-        "consumo_supermercados": -0.012,
+        "consumo_supermercados": 0.059,
         "despacho_cemento": -0.186,
         "empleo_registrado": 0.869,
         "icg_utdt": 0.721,
@@ -3164,7 +3164,7 @@
     "2026-07": 2090.0,
     "2026-08": 1913.0,
     "2026-09": 1763.2,
-    "2026-10": 1761.4
+    "2026-10": 1760.3
   },
   "serie_itcp": {
     "2024-02": 71.1,
@@ -3224,9 +3224,9 @@
           "2025-03": 106.9,
           "2025-04": 108.5,
           "2025-05": 110.0,
-          "2025-06": 113.8,
+          "2025-06": 113.7,
           "2025-07": 114.6,
-          "2025-08": 114.7,
+          "2025-08": 114.8,
           "2025-09": 115.2,
           "2025-10": 115.4,
           "2025-11": 113.1,
@@ -3236,11 +3236,11 @@
           "2026-03": 113.7,
           "2026-04": 114.1,
           "2026-05": 113.1,
-          "2026-06": 111.5,
-          "2026-07": 111.2,
-          "2026-08": 109.2,
-          "2026-09": 109.2,
-          "2026-10": 109.2
+          "2026-06": 111.4,
+          "2026-07": 111.1,
+          "2026-08": 109.0,
+          "2026-09": 109.0,
+          "2026-10": 109.0
         }
       },
       "precios": {
@@ -3563,7 +3563,7 @@
           "2026-04": 50.5,
           "2026-05": 56.5,
           "2026-06": 55.5,
-          "2026-07": 64.3,
+          "2026-07": 64.2,
           "2026-08": 62.4
         }
       },
@@ -4766,7 +4766,7 @@
       "2024-05": {
         "itvc": 101.7,
         "rango": 66.2,
-        "desvio": 15.9,
+        "desvio": 16.0,
         "min": {
           "componente": "despacho_cemento",
           "valor": 71.1
@@ -5130,7 +5130,7 @@
       "2026-07": {
         "itvc": 94.8,
         "rango": 126.0,
-        "desvio": 28.9,
+        "desvio": 29.0,
         "min": {
           "componente": "mora_familias",
           "valor": 16.9
@@ -5156,7 +5156,7 @@
         "n": 22
       },
       "2026-09": {
-        "itvc": 93.3,
+        "itvc": 93.2,
         "rango": 129.6,
         "desvio": 29.0,
         "min": {
@@ -5315,9 +5315,9 @@
       "avanzo": "2026-10-22"
     },
     "icc_utdt": {
-      "ultimo": "2026-09",
-      "n": 60,
-      "avanzo": "2026-09-19"
+      "ultimo": "2026-10",
+      "n": 61,
+      "avanzo": "2026-10-23"
     }
   },
   "panel_validacion": {
@@ -5383,16 +5383,16 @@
           "etiqueta": "Confianza del Consumidor (ICC de la UTDT)",
           "fuente": "UTDT",
           "propia": true,
-          "r_niveles": -0.062,
-          "r_diferencias": 0.563,
-          "n": 33
+          "r_niveles": -0.05,
+          "r_diferencias": 0.56,
+          "n": 34
         },
         {
           "estadistica": "indice_lider",
           "etiqueta": "Índice Líder de actividad",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": -0.244,
+          "r_niveles": -0.243,
           "r_diferencias": 0.264,
           "n": 34
         },
@@ -5419,8 +5419,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": -0.436,
-          "r_diferencias": 0.186,
+          "r_niveles": -0.435,
+          "r_diferencias": 0.187,
           "n": 35
         },
         {
@@ -5445,9 +5445,9 @@
       "n_propias": 7,
       "n_ajenas": 6,
       "niveles": {
-        "convergente": 0.242,
-        "discriminante": 0.303,
-        "brecha": -0.061
+        "convergente": 0.24,
+        "discriminante": 0.302,
+        "brecha": -0.062
       },
       "diferencias": {
         "convergente": 0.192,
@@ -5806,7 +5806,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,242 y con las 6 ajenas es 0,303. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,192 con lo propio contra 0,107 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con las 7 estadísticas de su propio terreno es 0,24 y con las 6 ajenas es 0,302. En los cambios mes a mes, la asociación media es mayor con lo propio: 0,192 con lo propio contra 0,107 con lo ajeno. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     },
     "itcp": {
       "indice": "itcp",
