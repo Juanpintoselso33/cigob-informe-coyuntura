@@ -459,7 +459,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   asistencia_directa: {
     que: "Si los planes sociales siguen pasando por intermediarios: vale 100 desde que la Resolución 84/2024 del Ministerio de Capital Humano dispuso el cese de las unidades de gestión y de certificación del Potenciar Trabajo (10 de abril de 2024), y 0 antes.",
-    aporta: "Mide lo que el compromiso prometía cambiar. La intermediación no estaba en quién cobraba —en 2023 el 98,3% del gasto ya se pagaba a nombre del titular—, sino en las unidades de gestión: municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista. Es un acto, no un resultado: no acredita cómo se paga cada prestación ni que no quede intermediación informal.",
+    aporta: "Mide lo que el compromiso prometía cambiar. La intermediación no estaba en la clasificación del gasto —en 2023 el 98,3% del devengado ya figuraba como ayudas a personas—, sino en las unidades de gestión: municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista. Es un acto, no un resultado: no acredita cómo se paga cada prestación ni que no quede intermediación informal.",
     frecuencia: "Por acto (Boletín Oficial)", tipo: "Hito de reforma",
   },
   fal_modernizacion_laboral: {

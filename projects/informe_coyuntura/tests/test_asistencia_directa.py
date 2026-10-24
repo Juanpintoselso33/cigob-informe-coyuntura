@@ -21,6 +21,9 @@ def test_la_serie_arranca_en_cero_y_abril_de_2024_ya_cuenta():
     assert list(serie)[0] == "2023-12-01"
     assert [serie[f"2024-{m:02d}-01"] for m in (1, 2, 3, 4, 5, 6)] == [0, 0, 0, 100, 100, 100]
     assert serie["2023-12-01"] == 0
+    # El mes en curso se evalúa hasta hoy: el 9 de abril de 2024 todavía es 0,
+    # igual que la card (Codex, 24-oct-2026).
+    assert gestion.serie_asistencia_directa(date(2024, 4, 9))[-1] == ["2024-04-01", 0.0]
 
 
 def test_la_card_no_depende_de_la_api_de_presupuesto(monkeypatch):

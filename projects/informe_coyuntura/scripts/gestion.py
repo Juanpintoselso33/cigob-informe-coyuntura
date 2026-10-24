@@ -2473,7 +2473,9 @@ def serie_asistencia_directa(hasta: date | None = None) -> list:
     hasta = hasta or date.today()
     serie, a, m = [], 2023, 12
     while (a, m) <= (hasta.year, hasta.month):
-        fin = f"{a}-{m:02d}-{calendar.monthrange(a, m)[1]:02d}"
+        # El mes en curso se evalúa hasta hoy, no hasta su cierre: si no, del 1
+        # al 9 de un mes con hito el día 10 la serie se adelantaba a la card (G3).
+        fin = min(f"{a}-{m:02d}-{calendar.monthrange(a, m)[1]:02d}", hasta.isoformat())
         serie.append([f"{a}-{m:02d}-01", asistencia_directa_valor(fin)])
         a, m = (a + 1, 1) if m == 12 else (a, m + 1)
     return serie

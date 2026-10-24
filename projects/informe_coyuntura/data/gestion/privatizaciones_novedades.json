@@ -10,41 +10,10 @@
   },
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
   "nuevas_en_la_corrida": 0,
-  "revision_manual_en": "2026-09-08",
+  "revision_manual_en": "2026-10-24",
   "ultima_corrida": "2026-10-24"
  },
- "pendientes": {
-  "429509": {
-   "coincidencia": "pliego",
-   "empresa": "Transener",
-   "empresas_mencionadas": [
-    "Transener"
-   ],
-   "periodo": "2026-09",
-   "titulo": "Resolución 218 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429509"
-  },
-  "429905": {
-   "coincidencia": "privatiza",
-   "empresa": "Belgrano Cargas",
-   "empresas_mencionadas": [
-    "Belgrano Cargas"
-   ],
-   "periodo": "2026-09",
-   "titulo": "Resolución 1498 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429905"
-  },
-  "430589": {
-   "coincidencia": "privatiza",
-   "empresa": "Enarsa",
-   "empresas_mencionadas": [
-    "Enarsa"
-   ],
-   "periodo": "2026-09",
-   "titulo": "Decreto 1107 / 2026",
-   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=430589"
-  }
- },
+ "pendientes": {},
  "revisadas": {
   "425373": {
    "del_proceso": true,
@@ -3277,6 +3246,48 @@
    "revisado_en": "2026-09-08",
    "titulo": "Resolución 1386 / 2026",
    "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429239"
+  },
+  "429509": {
+   "clasificacion": "ajena",
+   "coincidencia": "pliego",
+   "empresa": "Transener",
+   "empresas_mencionadas": [
+    "Transener"
+   ],
+   "periodo": "2026-09",
+   "resolucion": "Compra de transformadores por CAMMESA para la obra AMBA I; nombra a Transener sólo como estándar técnico de la concesión. No es la venta de Transener/Citelec.",
+   "revisado_en": "2026-10-24",
+   "sha256_texto": "481ebe3c7b1478746161eae35c91ed4f6fa790bcdab28d93fbdd477b88c86c1d",
+   "titulo": "Resolución 218 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429509"
+  },
+  "429905": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "privatiza",
+   "empresa": "Belgrano Cargas",
+   "empresas_mencionadas": [
+    "Belgrano Cargas"
+   ],
+   "periodo": "2026-09",
+   "resolucion": "Prorroga hasta el 10-sep-2027 la continuidad de las líneas concesionadas (Decreto 2681/1992) para armonizarlas con la privatización de Belgrano Cargas, que sigue en licitación (Res. ME 1350/2026). No cambia la etapa.",
+   "revisado_en": "2026-10-24",
+   "sha256_texto": "c5681e07b592d72ef84bc0159877e61ad876b0611542924d48395bb998046bcb",
+   "titulo": "Resolución 1498 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=429905"
+  },
+  "430589": {
+   "clasificacion": "sin_cambio",
+   "coincidencia": "privatiza",
+   "empresa": "Enarsa",
+   "empresas_mencionadas": [
+    "Enarsa"
+   ],
+   "periodo": "2026-09",
+   "resolucion": "Autoriza la venta de las acciones de Enarsa en Termoeléctrica Manuel Belgrano (65,01 %) y Termoeléctrica José de San Martín (68,83 %). Es una autorización, no una venta ni una adjudicación: paso previo por unidad de negocio, Enarsa sigue en 2,5.",
+   "revisado_en": "2026-10-24",
+   "sha256_texto": "d5936f4ef143326a6d4cb8eadfbae62baf1389c16f710f555944e37281b49d72",
+   "titulo": "Decreto 1107 / 2026",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=430589"
   }
  }
 }
