@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-23T03:32:06.293561+00:00",
+    "generated_at": "2026-10-24T03:30:43.227532+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -84,7 +84,8 @@
     "2026-05": 63.1,
     "2026-06": 65.8,
     "2026-07": 62.2,
-    "2026-08": 62.7
+    "2026-08": 62.7,
+    "2026-09": 64.2
   },
   "componentes_historia_itcm": [
     "actividad_tributaria",
@@ -177,20 +178,20 @@
   },
   "correlaciones_itcm": {
     "niveles (ITCM vs índice líder)": {
-      "r": 0.723,
-      "n": 33
+      "r": 0.714,
+      "n": 34
     },
     "primeras diferencias (ITCM vs líder)": {
-      "r": 0.448,
-      "n": 32
+      "r": 0.447,
+      "n": 33
     },
     "líder adelantado 1 mes vs ITCM": {
-      "r": 0.476,
-      "n": 33
+      "r": 0.469,
+      "n": 34
     },
     "líder adelantado 3 meses vs ITCM": {
-      "r": -0.009,
-      "n": 33
+      "r": -0.01,
+      "n": 34
     },
     "ITCM adelantado 1 mes vs líder": {
       "r": 0.734,
@@ -248,8 +249,8 @@
         "tipo": "pico"
       }
     ],
-    "concordancia": 0.562,
-    "n_meses": 32,
+    "concordancia": 0.545,
+    "n_meses": 33,
     "pares": [
       {
         "mes": "2024-01",
@@ -394,13 +395,13 @@
     "umbral": 0.7,
     "n_indicadores": 16,
     "n_pares": 120,
-    "r_abs_medio": 0.454,
+    "r_abs_medio": 0.453,
     "share_altos": 0.283,
-    "share_bajos": 0.383,
+    "share_bajos": 0.392,
     "matriz": {
       "actividad_tributaria": {
         "costo_financiamiento_tesoro": 0.166,
-        "credito_privado": 0.82,
+        "credito_privado": 0.819,
         "desequilibrio_monetario": 0.131,
         "emae_difusion": 0.704,
         "emae_ia": 0.829,
@@ -410,7 +411,7 @@
         "ipi_manufacturero": 0.826,
         "recaudacion": -0.335,
         "rem_ipc_12m": 0.71,
-        "reservas_bcra": 0.13,
+        "reservas_bcra": 0.129,
         "resultado_primario": 0.635,
         "saldo_comercial_12m": 0.525,
         "tcr_terminos_intercambio": -0.31
@@ -427,13 +428,13 @@
         "ipi_manufacturero": 0.048,
         "recaudacion": 0.018,
         "rem_ipc_12m": 0.407,
-        "reservas_bcra": -0.097,
+        "reservas_bcra": -0.035,
         "resultado_primario": 0.374,
         "saldo_comercial_12m": 0.646,
         "tcr_terminos_intercambio": -0.415
       },
       "credito_privado": {
-        "actividad_tributaria": 0.82,
+        "actividad_tributaria": 0.819,
         "costo_financiamiento_tesoro": -0.052,
         "desequilibrio_monetario": 0.027,
         "emae_difusion": 0.697,
@@ -444,7 +445,7 @@
         "ipi_manufacturero": 0.726,
         "recaudacion": -0.357,
         "rem_ipc_12m": 0.776,
-        "reservas_bcra": 0.003,
+        "reservas_bcra": -0.077,
         "resultado_primario": 0.727,
         "saldo_comercial_12m": 0.486,
         "tcr_terminos_intercambio": -0.31
@@ -529,7 +530,7 @@
         "ipi_manufacturero": 0.738,
         "recaudacion": -0.235,
         "rem_ipc_12m": 0.893,
-        "reservas_bcra": 0.339,
+        "reservas_bcra": 0.271,
         "resultado_primario": 0.864,
         "saldo_comercial_12m": 0.665,
         "tcr_terminos_intercambio": -0.291
@@ -546,7 +547,7 @@
         "ipi_manufacturero": 0.555,
         "recaudacion": -0.262,
         "rem_ipc_12m": 0.935,
-        "reservas_bcra": 0.644,
+        "reservas_bcra": 0.653,
         "resultado_primario": 0.825,
         "saldo_comercial_12m": 0.742,
         "tcr_terminos_intercambio": -0.197
@@ -580,7 +581,7 @@
         "ipc_total": -0.262,
         "ipi_manufacturero": -0.292,
         "rem_ipc_12m": -0.263,
-        "reservas_bcra": -0.22,
+        "reservas_bcra": -0.203,
         "resultado_primario": -0.059,
         "saldo_comercial_12m": -0.01,
         "tcr_terminos_intercambio": -0.166
@@ -597,27 +598,27 @@
         "ipc_total": 0.935,
         "ipi_manufacturero": 0.521,
         "recaudacion": -0.263,
-        "reservas_bcra": 0.376,
+        "reservas_bcra": 0.389,
         "resultado_primario": 0.894,
         "saldo_comercial_12m": 0.83,
         "tcr_terminos_intercambio": -0.315
       },
       "reservas_bcra": {
-        "actividad_tributaria": 0.13,
-        "costo_financiamiento_tesoro": -0.097,
-        "credito_privado": 0.003,
+        "actividad_tributaria": 0.129,
+        "costo_financiamiento_tesoro": -0.035,
+        "credito_privado": -0.077,
         "desequilibrio_monetario": 0.003,
         "emae_difusion": 0.212,
         "emae_ia": 0.153,
         "iai": 0.24,
-        "idc": 0.339,
-        "ipc_total": 0.644,
+        "idc": 0.271,
+        "ipc_total": 0.653,
         "ipi_manufacturero": 0.293,
-        "recaudacion": -0.22,
-        "rem_ipc_12m": 0.376,
+        "recaudacion": -0.203,
+        "rem_ipc_12m": 0.389,
         "resultado_primario": -0.15,
-        "saldo_comercial_12m": -0.073,
-        "tcr_terminos_intercambio": 0.698
+        "saldo_comercial_12m": -0.008,
+        "tcr_terminos_intercambio": 0.697
       },
       "resultado_primario": {
         "actividad_tributaria": 0.635,
@@ -649,7 +650,7 @@
         "ipi_manufacturero": 0.362,
         "recaudacion": -0.01,
         "rem_ipc_12m": 0.83,
-        "reservas_bcra": -0.073,
+        "reservas_bcra": -0.008,
         "resultado_primario": 0.871,
         "tcr_terminos_intercambio": -0.612
       },
@@ -666,7 +667,7 @@
         "ipi_manufacturero": -0.135,
         "recaudacion": -0.166,
         "rem_ipc_12m": -0.315,
-        "reservas_bcra": 0.698,
+        "reservas_bcra": 0.697,
         "resultado_primario": -0.525,
         "saldo_comercial_12m": -0.612
       }
@@ -825,7 +826,7 @@
       {
         "a": "actividad_tributaria",
         "b": "credito_privado",
-        "r": 0.82,
+        "r": 0.819,
         "n": 34,
         "dimension_a": "actividad",
         "dimension_b": "financiamiento",
@@ -1045,7 +1046,7 @@
       },
       "cepo_mulc": {
         "apertura_comercial": 0.341,
-        "concesiones_infraestructura": 0.338,
+        "concesiones_infraestructura": 0.337,
         "desregulacion_normativa": 0.918,
         "fal_modernizacion_laboral": 0.366,
         "gasto_funcionamiento": 0.274,
@@ -1059,7 +1060,7 @@
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.067,
-        "cepo_mulc": 0.338,
+        "cepo_mulc": 0.337,
         "desregulacion_normativa": 0.499,
         "fal_modernizacion_laboral": 0.919,
         "gasto_funcionamiento": 0.281,
@@ -3164,7 +3165,7 @@
     "2026-07": 2090.0,
     "2026-08": 1913.0,
     "2026-09": 1763.2,
-    "2026-10": 1760.3
+    "2026-10": 1758.7
   },
   "serie_itcp": {
     "2024-02": 71.1,
@@ -3486,7 +3487,8 @@
           "2026-05": 68.6,
           "2026-06": 75.0,
           "2026-07": 68.4,
-          "2026-08": 72.9
+          "2026-08": 72.9,
+          "2026-09": 78.0
         }
       },
       "viabilidad_fiscal_comercial": {
@@ -3525,7 +3527,8 @@
           "2026-05": 81.0,
           "2026-06": 71.0,
           "2026-07": 82.7,
-          "2026-08": 74.8
+          "2026-08": 74.8,
+          "2026-09": 69.1
         }
       },
       "financiamiento": {
@@ -3564,7 +3567,8 @@
           "2026-05": 56.5,
           "2026-06": 55.5,
           "2026-07": 64.2,
-          "2026-08": 62.4
+          "2026-08": 62.4,
+          "2026-09": 59.9
         }
       },
       "actividad": {
@@ -3603,7 +3607,8 @@
           "2026-05": 54.2,
           "2026-06": 63.4,
           "2026-07": 36.5,
-          "2026-08": 43.2
+          "2026-08": 43.2,
+          "2026-09": 53.4
         }
       },
       "competitividad_externa": {
@@ -3642,7 +3647,8 @@
           "2026-05": 39.3,
           "2026-06": 52.8,
           "2026-07": 53.6,
-          "2026-08": 53.7
+          "2026-08": 53.7,
+          "2026-09": 49.8
         }
       }
     },
@@ -5316,7 +5322,7 @@
     },
     "icc_utdt": {
       "ultimo": "2026-10",
-      "n": 61,
+      "n": 60,
       "avanzo": "2026-10-23"
     }
   },

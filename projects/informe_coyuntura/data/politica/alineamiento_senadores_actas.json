@@ -19413,10 +19413,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -19442,6 +19438,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -19514,10 +19514,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -19543,6 +19539,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -19611,10 +19611,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -19640,6 +19636,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -19712,10 +19712,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -19741,6 +19737,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -19813,10 +19813,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -19842,6 +19838,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -19914,10 +19914,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -19943,6 +19939,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -20011,10 +20011,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -20043,104 +20039,7 @@
           0,
           2
         ],
-        "SANTA CRUZ": [
-          0,
-          3
-        ],
-        "RÍO NEGRO": [
-          0,
-          2
-        ],
-        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
-          0,
-          1
-        ],
-        "BUENOS AIRES": [
-          1,
-          3
-        ],
-        "MENDOZA": [
-          2,
-          3
-        ],
-        "NEUQUÉN": [
-          1,
-          1
-        ],
-        "SALTA": [
-          1,
-          1
-        ],
-        "CÓRDOBA": [
-          1,
-          1
-        ],
-        "CORRIENTES": [
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "fecha": "2026-02-11",
-      "provincias": {
-        "TUCUMÁN": [
-          1,
-          3
-        ],
-        "JUJUY": [
-          0,
-          1
-        ],
-        "CATAMARCA": [
-          1,
-          3
-        ],
-        "CHUBUT": [
-          2,
-          3
-        ],
-        "SANTIAGO DEL ESTERO": [
-          0,
-          3
-        ],
-        "MISIONES": [
-          3,
-          3
-        ],
-        "LA PAMPA": [
-          2,
-          3
-        ],
         "LA RIOJA": [
-          0,
-          2
-        ],
-        "SAN LUIS": [
-          0,
-          1
-        ],
-        "ENTRE RÍOS": [
-          0,
-          1
-        ],
-        "SANTA FE": [
-          2,
-          3
-        ],
-        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
-          0,
-          1
-        ],
-        "FORMOSA": [
-          0,
-          2
-        ],
-        "CHACO": [
-          1,
-          2
-        ],
-        "SAN JUAN": [
           0,
           2
         ],
@@ -20213,12 +20112,8 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
-          1,
+          0,
           1
         ],
         "ENTRE RÍOS": [
@@ -20242,6 +20137,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -20314,12 +20213,8 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
-          0,
+          1,
           1
         ],
         "ENTRE RÍOS": [
@@ -20343,6 +20238,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -20415,111 +20314,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
-        "SAN LUIS": [
-          0,
-          1
-        ],
-        "ENTRE RÍOS": [
-          0,
-          1
-        ],
-        "SANTA FE": [
-          2,
-          3
-        ],
-        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
-          0,
-          1
-        ],
-        "FORMOSA": [
-          0,
-          2
-        ],
-        "CHACO": [
-          2,
-          2
-        ],
-        "SAN JUAN": [
-          0,
-          2
-        ],
-        "SANTA CRUZ": [
-          1,
-          3
-        ],
-        "RÍO NEGRO": [
-          0,
-          2
-        ],
-        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
-          0,
-          1
-        ],
-        "BUENOS AIRES": [
-          1,
-          3
-        ],
-        "MENDOZA": [
-          2,
-          3
-        ],
-        "NEUQUÉN": [
-          1,
-          1
-        ],
-        "SALTA": [
-          1,
-          1
-        ],
-        "CÓRDOBA": [
-          0,
-          1
-        ],
-        "CORRIENTES": [
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "fecha": "2026-02-11",
-      "provincias": {
-        "TUCUMÁN": [
-          1,
-          3
-        ],
-        "JUJUY": [
-          0,
-          1
-        ],
-        "CATAMARCA": [
-          1,
-          3
-        ],
-        "CHUBUT": [
-          2,
-          3
-        ],
-        "SANTIAGO DEL ESTERO": [
-          0,
-          3
-        ],
-        "MISIONES": [
-          3,
-          3
-        ],
-        "LA PAMPA": [
-          2,
-          3
-        ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -20548,407 +20342,7 @@
           0,
           2
         ],
-        "SANTA CRUZ": [
-          0,
-          3
-        ],
-        "RÍO NEGRO": [
-          0,
-          2
-        ],
-        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
-          0,
-          1
-        ],
-        "BUENOS AIRES": [
-          1,
-          3
-        ],
-        "MENDOZA": [
-          2,
-          3
-        ],
-        "NEUQUÉN": [
-          0,
-          1
-        ],
-        "SALTA": [
-          1,
-          1
-        ],
-        "CÓRDOBA": [
-          0,
-          1
-        ],
-        "CORRIENTES": [
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "fecha": "2026-02-11",
-      "provincias": {
-        "TUCUMÁN": [
-          1,
-          3
-        ],
-        "JUJUY": [
-          0,
-          1
-        ],
-        "CATAMARCA": [
-          1,
-          3
-        ],
-        "CHUBUT": [
-          2,
-          3
-        ],
-        "SANTIAGO DEL ESTERO": [
-          0,
-          3
-        ],
-        "MISIONES": [
-          3,
-          3
-        ],
-        "LA PAMPA": [
-          2,
-          3
-        ],
         "LA RIOJA": [
-          0,
-          2
-        ],
-        "SAN LUIS": [
-          0,
-          1
-        ],
-        "ENTRE RÍOS": [
-          0,
-          1
-        ],
-        "SANTA FE": [
-          2,
-          3
-        ],
-        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
-          0,
-          1
-        ],
-        "FORMOSA": [
-          0,
-          2
-        ],
-        "CHACO": [
-          1,
-          2
-        ],
-        "SAN JUAN": [
-          0,
-          2
-        ],
-        "SANTA CRUZ": [
-          0,
-          3
-        ],
-        "RÍO NEGRO": [
-          0,
-          2
-        ],
-        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
-          0,
-          1
-        ],
-        "BUENOS AIRES": [
-          1,
-          3
-        ],
-        "MENDOZA": [
-          2,
-          3
-        ],
-        "NEUQUÉN": [
-          0,
-          1
-        ],
-        "SALTA": [
-          1,
-          1
-        ],
-        "CÓRDOBA": [
-          1,
-          1
-        ],
-        "CORRIENTES": [
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "fecha": "2026-02-11",
-      "provincias": {
-        "TUCUMÁN": [
-          2,
-          3
-        ],
-        "JUJUY": [
-          0,
-          1
-        ],
-        "CATAMARCA": [
-          1,
-          3
-        ],
-        "CHUBUT": [
-          2,
-          3
-        ],
-        "SANTIAGO DEL ESTERO": [
-          0,
-          3
-        ],
-        "MISIONES": [
-          3,
-          3
-        ],
-        "LA PAMPA": [
-          2,
-          3
-        ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
-        "SAN LUIS": [
-          0,
-          1
-        ],
-        "ENTRE RÍOS": [
-          0,
-          1
-        ],
-        "SANTA FE": [
-          2,
-          3
-        ],
-        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
-          0,
-          1
-        ],
-        "FORMOSA": [
-          0,
-          2
-        ],
-        "CHACO": [
-          1,
-          2
-        ],
-        "SAN JUAN": [
-          0,
-          2
-        ],
-        "SANTA CRUZ": [
-          0,
-          3
-        ],
-        "RÍO NEGRO": [
-          0,
-          2
-        ],
-        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
-          0,
-          1
-        ],
-        "BUENOS AIRES": [
-          1,
-          3
-        ],
-        "MENDOZA": [
-          2,
-          3
-        ],
-        "NEUQUÉN": [
-          1,
-          1
-        ],
-        "SALTA": [
-          1,
-          1
-        ],
-        "CÓRDOBA": [
-          1,
-          1
-        ],
-        "CORRIENTES": [
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "fecha": "2026-02-11",
-      "provincias": {
-        "TUCUMÁN": [
-          1,
-          3
-        ],
-        "JUJUY": [
-          0,
-          1
-        ],
-        "CATAMARCA": [
-          2,
-          3
-        ],
-        "CHUBUT": [
-          2,
-          3
-        ],
-        "SANTIAGO DEL ESTERO": [
-          0,
-          3
-        ],
-        "MISIONES": [
-          3,
-          3
-        ],
-        "LA PAMPA": [
-          2,
-          3
-        ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
-        "SAN LUIS": [
-          0,
-          1
-        ],
-        "ENTRE RÍOS": [
-          0,
-          1
-        ],
-        "SANTA FE": [
-          2,
-          3
-        ],
-        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
-          0,
-          1
-        ],
-        "FORMOSA": [
-          0,
-          2
-        ],
-        "CHACO": [
-          1,
-          2
-        ],
-        "SAN JUAN": [
-          0,
-          2
-        ],
-        "SANTA CRUZ": [
-          2,
-          3
-        ],
-        "RÍO NEGRO": [
-          0,
-          2
-        ],
-        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
-          0,
-          1
-        ],
-        "BUENOS AIRES": [
-          1,
-          3
-        ],
-        "MENDOZA": [
-          2,
-          3
-        ],
-        "NEUQUÉN": [
-          1,
-          1
-        ],
-        "SALTA": [
-          1,
-          1
-        ],
-        "CÓRDOBA": [
-          1,
-          1
-        ],
-        "CORRIENTES": [
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "fecha": "2026-02-11",
-      "provincias": {
-        "TUCUMÁN": [
-          1,
-          3
-        ],
-        "JUJUY": [
-          0,
-          1
-        ],
-        "CATAMARCA": [
-          1,
-          3
-        ],
-        "CHUBUT": [
-          2,
-          3
-        ],
-        "SANTIAGO DEL ESTERO": [
-          0,
-          3
-        ],
-        "MISIONES": [
-          3,
-          3
-        ],
-        "LA PAMPA": [
-          2,
-          3
-        ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
-        "SAN LUIS": [
-          0,
-          1
-        ],
-        "ENTRE RÍOS": [
-          0,
-          1
-        ],
-        "SANTA FE": [
-          2,
-          3
-        ],
-        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
-          0,
-          1
-        ],
-        "FORMOSA": [
-          0,
-          2
-        ],
-        "CHACO": [
-          1,
-          2
-        ],
-        "SAN JUAN": [
           0,
           2
         ],
@@ -21021,9 +20415,106 @@
           2,
           3
         ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "SANTA FE": [
+          2,
+          3
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          2,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
         "LA RIOJA": [
           0,
           2
+        ],
+        "SANTA CRUZ": [
+          1,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "MENDOZA": [
+          2,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CÓRDOBA": [
+          0,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "fecha": "2026-02-11",
+      "provincias": {
+        "TUCUMÁN": [
+          1,
+          3
+        ],
+        "JUJUY": [
+          0,
+          1
+        ],
+        "CATAMARCA": [
+          1,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          3
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
         ],
         "SAN LUIS": [
           0,
@@ -21050,6 +20541,414 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          0,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "MENDOZA": [
+          2,
+          3
+        ],
+        "NEUQUÉN": [
+          0,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CÓRDOBA": [
+          0,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "fecha": "2026-02-11",
+      "provincias": {
+        "TUCUMÁN": [
+          1,
+          3
+        ],
+        "JUJUY": [
+          0,
+          1
+        ],
+        "CATAMARCA": [
+          1,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          3
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "SANTA FE": [
+          2,
+          3
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          0,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "MENDOZA": [
+          2,
+          3
+        ],
+        "NEUQUÉN": [
+          0,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CÓRDOBA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "fecha": "2026-02-11",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          0,
+          1
+        ],
+        "CATAMARCA": [
+          1,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          3
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "SANTA FE": [
+          2,
+          3
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          0,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "MENDOZA": [
+          2,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CÓRDOBA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "fecha": "2026-02-11",
+      "provincias": {
+        "TUCUMÁN": [
+          1,
+          3
+        ],
+        "JUJUY": [
+          0,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          3
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "SANTA FE": [
+          2,
+          3
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "MENDOZA": [
+          2,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CÓRDOBA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "fecha": "2026-02-11",
+      "provincias": {
+        "TUCUMÁN": [
+          1,
+          3
+        ],
+        "JUJUY": [
+          0,
+          1
+        ],
+        "CATAMARCA": [
+          1,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          3
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "SANTA FE": [
+          2,
+          3
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -21122,10 +21021,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -21151,6 +21046,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -21223,10 +21122,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -21252,6 +21147,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -21324,10 +21223,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -21353,6 +21248,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -21425,10 +21324,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -21454,6 +21349,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -21526,9 +21425,106 @@
           2,
           3
         ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "SANTA FE": [
+          2,
+          3
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
         "LA RIOJA": [
           0,
           2
+        ],
+        "SANTA CRUZ": [
+          0,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "MENDOZA": [
+          2,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CÓRDOBA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "fecha": "2026-02-11",
+      "provincias": {
+        "TUCUMÁN": [
+          1,
+          3
+        ],
+        "JUJUY": [
+          0,
+          1
+        ],
+        "CATAMARCA": [
+          1,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          3
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
         ],
         "SAN LUIS": [
           0,
@@ -21555,6 +21551,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -21627,10 +21627,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -21656,6 +21652,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -21724,10 +21724,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -21753,6 +21749,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -21829,10 +21829,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -21858,6 +21854,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -21930,10 +21930,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -21959,6 +21955,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -22031,10 +22031,6 @@
           0,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -22061,6 +22057,10 @@
         ],
         "SAN JUAN": [
           1,
+          2
+        ],
+        "LA RIOJA": [
+          0,
           2
         ],
         "SANTA CRUZ": [
@@ -22128,10 +22128,6 @@
           0,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -22158,6 +22154,10 @@
         ],
         "SAN JUAN": [
           1,
+          2
+        ],
+        "LA RIOJA": [
+          0,
           2
         ],
         "SANTA CRUZ": [
@@ -22225,10 +22225,6 @@
           0,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -22255,6 +22251,10 @@
         ],
         "SAN JUAN": [
           1,
+          2
+        ],
+        "LA RIOJA": [
+          0,
           2
         ],
         "SANTA CRUZ": [
@@ -22322,10 +22322,6 @@
           0,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -22352,6 +22348,10 @@
         ],
         "SAN JUAN": [
           1,
+          2
+        ],
+        "LA RIOJA": [
+          0,
           2
         ],
         "SANTA CRUZ": [
@@ -22419,10 +22419,6 @@
           0,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -22449,6 +22445,10 @@
         ],
         "SAN JUAN": [
           1,
+          2
+        ],
+        "LA RIOJA": [
+          0,
           2
         ],
         "SANTA CRUZ": [
@@ -22516,10 +22516,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -22545,6 +22541,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -22613,10 +22613,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -22642,6 +22638,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -22710,10 +22710,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -22739,6 +22735,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -22807,10 +22807,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -22836,6 +22832,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -22904,10 +22904,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -22933,6 +22929,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -23001,10 +23001,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -23030,6 +23026,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -23098,10 +23098,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -23127,6 +23123,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -23195,10 +23195,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -23224,6 +23220,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -23292,10 +23292,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -23321,6 +23317,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -23393,10 +23393,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -23422,6 +23418,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -23494,10 +23494,6 @@
           1,
           1
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -23523,6 +23519,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -23595,10 +23595,6 @@
           1,
           1
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -23624,6 +23620,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -23696,10 +23696,6 @@
           2,
           2
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -23725,6 +23721,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -23797,10 +23797,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -23826,6 +23822,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -23898,10 +23898,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -23927,6 +23923,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -23999,10 +23999,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -24028,6 +24024,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -24165,10 +24165,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -24194,6 +24190,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -24266,10 +24266,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          1,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -24295,6 +24291,10 @@
           2
         ],
         "SAN JUAN": [
+          1,
+          2
+        ],
+        "LA RIOJA": [
           1,
           2
         ],
@@ -24363,10 +24363,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -24395,208 +24391,10 @@
           1,
           1
         ],
-        "SANTA CRUZ": [
-          3,
-          3
-        ],
-        "CHUBUT": [
-          1,
-          1
-        ],
-        "RÍO NEGRO": [
-          2,
-          2
-        ],
-        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
-          1,
-          1
-        ],
-        "BUENOS AIRES": [
-          3,
-          3
-        ],
-        "MENDOZA": [
-          3,
-          3
-        ],
-        "NEUQUÉN": [
-          1,
-          1
-        ],
-        "SALTA": [
-          1,
-          1
-        ],
-        "CÓRDOBA": [
-          1,
-          1
-        ],
-        "CORRIENTES": [
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "fecha": "2026-05-14",
-      "provincias": {
-        "TUCUMÁN": [
-          0,
-          2
-        ],
-        "JUJUY": [
-          0,
-          1
-        ],
-        "CATAMARCA": [
-          1,
-          2
-        ],
-        "SANTIAGO DEL ESTERO": [
-          0,
-          2
-        ],
-        "MISIONES": [
-          3,
-          3
-        ],
-        "LA PAMPA": [
-          2,
-          3
-        ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
-        "SAN LUIS": [
-          0,
-          1
-        ],
-        "ENTRE RÍOS": [
-          0,
-          1
-        ],
-        "SANTA FE": [
-          2,
-          3
-        ],
-        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
-          0,
-          1
-        ],
-        "FORMOSA": [
-          0,
-          2
-        ],
-        "CHACO": [
-          1,
-          2
-        ],
-        "SAN JUAN": [
-          0,
-          2
-        ],
-        "SANTA CRUZ": [
-          2,
-          3
-        ],
-        "CHUBUT": [
-          0,
-          1
-        ],
-        "RÍO NEGRO": [
-          0,
-          2
-        ],
-        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
-          0,
-          1
-        ],
-        "BUENOS AIRES": [
-          0,
-          2
-        ],
-        "MENDOZA": [
-          2,
-          3
-        ],
-        "NEUQUÉN": [
-          1,
-          1
-        ],
-        "SALTA": [
-          1,
-          1
-        ],
-        "CÓRDOBA": [
-          1,
-          1
-        ],
-        "CORRIENTES": [
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "fecha": "2026-05-14",
-      "provincias": {
-        "TUCUMÁN": [
-          2,
-          2
-        ],
-        "JUJUY": [
-          1,
-          1
-        ],
-        "CATAMARCA": [
-          2,
-          2
-        ],
-        "SANTIAGO DEL ESTERO": [
-          2,
-          2
-        ],
-        "MISIONES": [
-          3,
-          3
-        ],
-        "LA PAMPA": [
-          3,
-          3
-        ],
         "LA RIOJA": [
           2,
           2
         ],
-        "SAN LUIS": [
-          1,
-          1
-        ],
-        "ENTRE RÍOS": [
-          1,
-          1
-        ],
-        "SANTA FE": [
-          3,
-          3
-        ],
-        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
-          1,
-          1
-        ],
-        "FORMOSA": [
-          2,
-          2
-        ],
-        "CHACO": [
-          2,
-          2
-        ],
-        "SAN JUAN": [
-          2,
-          2
-        ],
         "SANTA CRUZ": [
           3,
           3
@@ -24614,8 +24412,8 @@
           1
         ],
         "BUENOS AIRES": [
-          2,
-          2
+          3,
+          3
         ],
         "MENDOZA": [
           3,
@@ -24656,7 +24454,7 @@
         ],
         "SANTIAGO DEL ESTERO": [
           0,
-          1
+          2
         ],
         "MISIONES": [
           3,
@@ -24665,10 +24463,6 @@
         "LA PAMPA": [
           2,
           3
-        ],
-        "LA RIOJA": [
-          0,
-          2
         ],
         "SAN LUIS": [
           0,
@@ -24695,6 +24489,212 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
+          0,
+          2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "CHUBUT": [
+          0,
+          1
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          0,
+          2
+        ],
+        "MENDOZA": [
+          2,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CÓRDOBA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "fecha": "2026-05-14",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          2
+        ],
+        "JUJUY": [
+          1,
+          1
+        ],
+        "CATAMARCA": [
+          2,
+          2
+        ],
+        "SANTIAGO DEL ESTERO": [
+          2,
+          2
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          3,
+          3
+        ],
+        "SAN LUIS": [
+          1,
+          1
+        ],
+        "ENTRE RÍOS": [
+          1,
+          1
+        ],
+        "SANTA FE": [
+          3,
+          3
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          1,
+          1
+        ],
+        "FORMOSA": [
+          2,
+          2
+        ],
+        "CHACO": [
+          2,
+          2
+        ],
+        "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
+          2,
+          2
+        ],
+        "SANTA CRUZ": [
+          3,
+          3
+        ],
+        "CHUBUT": [
+          1,
+          1
+        ],
+        "RÍO NEGRO": [
+          2,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          1,
+          1
+        ],
+        "BUENOS AIRES": [
+          2,
+          2
+        ],
+        "MENDOZA": [
+          3,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CÓRDOBA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "fecha": "2026-05-14",
+      "provincias": {
+        "TUCUMÁN": [
+          0,
+          2
+        ],
+        "JUJUY": [
+          0,
+          1
+        ],
+        "CATAMARCA": [
+          1,
+          2
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          1
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
+        ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "SANTA FE": [
+          2,
+          3
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -24771,10 +24771,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -24800,6 +24796,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -24872,10 +24872,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -24901,6 +24897,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -24973,10 +24973,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -25002,6 +24998,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -25074,10 +25074,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -25103,6 +25099,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -25175,10 +25175,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -25204,6 +25200,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -25268,10 +25268,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -25297,6 +25293,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -25369,10 +25369,6 @@
           0,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -25399,6 +25395,10 @@
         ],
         "SAN JUAN": [
           1,
+          2
+        ],
+        "LA RIOJA": [
+          0,
           2
         ],
         "SANTA CRUZ": [
@@ -25466,10 +25466,6 @@
           0,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -25496,6 +25492,10 @@
         ],
         "SAN JUAN": [
           1,
+          2
+        ],
+        "LA RIOJA": [
+          0,
           2
         ],
         "SANTA CRUZ": [
@@ -25563,10 +25563,6 @@
           0,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -25593,6 +25589,10 @@
         ],
         "SAN JUAN": [
           1,
+          2
+        ],
+        "LA RIOJA": [
+          0,
           2
         ],
         "SANTA CRUZ": [
@@ -25660,10 +25660,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -25692,100 +25688,7 @@
           0,
           2
         ],
-        "SANTA CRUZ": [
-          2,
-          3
-        ],
-        "RÍO NEGRO": [
-          0,
-          2
-        ],
-        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
-          0,
-          1
-        ],
-        "BUENOS AIRES": [
-          1,
-          3
-        ],
-        "MENDOZA": [
-          2,
-          3
-        ],
-        "NEUQUÉN": [
-          1,
-          1
-        ],
-        "SALTA": [
-          1,
-          1
-        ],
-        "CORRIENTES": [
-          3,
-          3
-        ]
-      }
-    },
-    {
-      "fecha": "2026-02-27",
-      "provincias": {
-        "TUCUMÁN": [
-          2,
-          3
-        ],
-        "JUJUY": [
-          0,
-          1
-        ],
-        "CATAMARCA": [
-          1,
-          3
-        ],
-        "CHUBUT": [
-          2,
-          3
-        ],
-        "SANTIAGO DEL ESTERO": [
-          0,
-          3
-        ],
-        "MISIONES": [
-          3,
-          3
-        ],
-        "LA PAMPA": [
-          2,
-          3
-        ],
         "LA RIOJA": [
-          0,
-          2
-        ],
-        "SAN LUIS": [
-          0,
-          1
-        ],
-        "ENTRE RÍOS": [
-          0,
-          1
-        ],
-        "SANTA FE": [
-          2,
-          3
-        ],
-        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
-          0,
-          1
-        ],
-        "FORMOSA": [
-          0,
-          2
-        ],
-        "CHACO": [
-          1,
-          2
-        ],
-        "SAN JUAN": [
           0,
           2
         ],
@@ -25854,10 +25757,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -25883,6 +25782,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -25951,9 +25854,102 @@
           2,
           3
         ],
+        "SAN LUIS": [
+          0,
+          1
+        ],
+        "ENTRE RÍOS": [
+          0,
+          1
+        ],
+        "SANTA FE": [
+          2,
+          3
+        ],
+        "CIUDAD AUTÓNOMA DE BUENOS AIRES": [
+          0,
+          1
+        ],
+        "FORMOSA": [
+          0,
+          2
+        ],
+        "CHACO": [
+          1,
+          2
+        ],
+        "SAN JUAN": [
+          0,
+          2
+        ],
         "LA RIOJA": [
           0,
           2
+        ],
+        "SANTA CRUZ": [
+          2,
+          3
+        ],
+        "RÍO NEGRO": [
+          0,
+          2
+        ],
+        "TIERRA DEL FUEGO, ANTÁRTIDA E ISLAS DEL ATLÁNTICO SUR": [
+          0,
+          1
+        ],
+        "BUENOS AIRES": [
+          1,
+          3
+        ],
+        "MENDOZA": [
+          2,
+          3
+        ],
+        "NEUQUÉN": [
+          1,
+          1
+        ],
+        "SALTA": [
+          1,
+          1
+        ],
+        "CORRIENTES": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "fecha": "2026-02-27",
+      "provincias": {
+        "TUCUMÁN": [
+          2,
+          3
+        ],
+        "JUJUY": [
+          0,
+          1
+        ],
+        "CATAMARCA": [
+          1,
+          3
+        ],
+        "CHUBUT": [
+          2,
+          3
+        ],
+        "SANTIAGO DEL ESTERO": [
+          0,
+          3
+        ],
+        "MISIONES": [
+          3,
+          3
+        ],
+        "LA PAMPA": [
+          2,
+          3
         ],
         "SAN LUIS": [
           0,
@@ -25980,6 +25976,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -26048,10 +26048,6 @@
           1,
           1
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -26077,6 +26073,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -26149,10 +26149,6 @@
           2,
           2
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -26178,6 +26174,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -26246,10 +26246,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -26275,6 +26271,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -26343,10 +26343,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -26372,6 +26368,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -26448,10 +26448,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          1,
-          1
-        ],
         "SAN LUIS": [
           1,
           1
@@ -26476,6 +26472,10 @@
           2,
           2
         ],
+        "LA RIOJA": [
+          1,
+          1
+        ],
         "SANTA CRUZ": [
           1,
           3
@@ -26537,10 +26537,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          1,
-          1
-        ],
         "SAN LUIS": [
           1,
           1
@@ -26556,6 +26552,10 @@
         "SAN JUAN": [
           2,
           2
+        ],
+        "LA RIOJA": [
+          1,
+          1
         ],
         "SANTA CRUZ": [
           3,
@@ -26622,10 +26622,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          1
-        ],
         "SAN LUIS": [
           0,
           1
@@ -26641,6 +26637,10 @@
         "SAN JUAN": [
           0,
           2
+        ],
+        "LA RIOJA": [
+          0,
+          1
         ],
         "SANTA CRUZ": [
           0,
@@ -26707,10 +26707,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          1,
-          1
-        ],
         "SAN LUIS": [
           1,
           1
@@ -26726,6 +26722,10 @@
         "SAN JUAN": [
           2,
           2
+        ],
+        "LA RIOJA": [
+          1,
+          1
         ],
         "SANTA CRUZ": [
           3,
@@ -26792,10 +26792,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          1
-        ],
         "SAN LUIS": [
           0,
           1
@@ -26811,6 +26807,10 @@
         "SAN JUAN": [
           0,
           2
+        ],
+        "LA RIOJA": [
+          0,
+          1
         ],
         "SANTA CRUZ": [
           2,
@@ -26877,10 +26877,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          1,
-          1
-        ],
         "SAN LUIS": [
           1,
           1
@@ -26896,6 +26892,10 @@
         "SAN JUAN": [
           2,
           2
+        ],
+        "LA RIOJA": [
+          1,
+          1
         ],
         "SANTA CRUZ": [
           3,
@@ -26962,10 +26962,6 @@
           0,
           3
         ],
-        "LA RIOJA": [
-          0,
-          1
-        ],
         "SAN LUIS": [
           0,
           1
@@ -26981,6 +26977,10 @@
         "SAN JUAN": [
           0,
           2
+        ],
+        "LA RIOJA": [
+          0,
+          1
         ],
         "SANTA CRUZ": [
           0,
@@ -27047,10 +27047,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          1
-        ],
         "SAN LUIS": [
           0,
           1
@@ -27066,6 +27062,10 @@
         "SAN JUAN": [
           0,
           2
+        ],
+        "LA RIOJA": [
+          0,
+          1
         ],
         "SANTA CRUZ": [
           0,
@@ -27128,10 +27128,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          1,
-          1
-        ],
         "SAN LUIS": [
           1,
           1
@@ -27147,6 +27143,10 @@
         "SAN JUAN": [
           2,
           2
+        ],
+        "LA RIOJA": [
+          1,
+          1
         ],
         "SANTA CRUZ": [
           3,
@@ -27217,10 +27217,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -27246,6 +27242,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -27318,10 +27318,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -27347,6 +27343,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -27419,10 +27419,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -27436,6 +27432,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -27508,10 +27508,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -27533,6 +27529,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -27605,10 +27605,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -27630,6 +27626,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -27702,10 +27702,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -27727,6 +27723,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -27803,10 +27803,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -27828,6 +27824,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -27904,10 +27904,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -27929,6 +27925,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -27993,10 +27993,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -28018,6 +28014,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -28155,10 +28155,6 @@
           2,
           2
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -28180,6 +28176,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -28256,10 +28256,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -28281,6 +28277,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -28357,10 +28357,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -28382,6 +28378,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -28458,10 +28458,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -28483,6 +28479,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -28559,10 +28559,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -28584,6 +28580,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -28656,10 +28656,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -28685,6 +28681,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -28761,10 +28761,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -28790,6 +28786,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -28862,10 +28862,6 @@
           2,
           2
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -28883,6 +28879,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -28959,10 +28959,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -28984,6 +28980,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -29060,10 +29060,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -29085,6 +29081,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -29161,10 +29161,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -29186,6 +29182,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -29258,10 +29258,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -29283,6 +29279,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -29351,10 +29351,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -29380,6 +29376,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -29456,10 +29456,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -29485,6 +29481,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -29557,10 +29557,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -29586,6 +29582,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -29654,10 +29654,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -29687,6 +29683,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -29755,10 +29755,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -29780,6 +29776,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -29852,10 +29852,6 @@
           2,
           2
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -29873,6 +29869,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -29945,10 +29945,6 @@
           2,
           2
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -29966,6 +29962,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -30042,10 +30042,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -30067,6 +30063,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -30139,10 +30139,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -30164,6 +30160,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -30236,10 +30236,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -30261,6 +30257,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -30333,10 +30333,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -30358,6 +30354,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -30426,10 +30426,6 @@
           1,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -30455,6 +30451,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -30527,10 +30527,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -30556,6 +30552,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -30624,10 +30624,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -30653,6 +30649,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -30721,10 +30721,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -30746,6 +30742,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -30818,10 +30818,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -30847,6 +30843,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -30919,10 +30919,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -30944,6 +30940,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -31012,10 +31012,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -31037,6 +31033,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -31113,10 +31113,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -31138,6 +31134,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -31210,10 +31210,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -31235,6 +31231,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -31307,10 +31307,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -31332,6 +31328,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -31404,10 +31404,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -31429,6 +31425,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -31501,10 +31501,6 @@
           2,
           2
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -31522,6 +31518,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -31598,10 +31598,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -31623,6 +31619,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -31699,10 +31699,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -31724,6 +31720,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -31796,10 +31796,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -31821,6 +31817,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -31893,10 +31893,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -31918,6 +31914,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -31990,10 +31990,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -32015,6 +32011,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -32083,10 +32083,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -32116,6 +32112,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -32180,10 +32180,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -32213,6 +32209,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -32277,10 +32277,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -32310,6 +32306,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -32370,10 +32370,6 @@
           3,
           3
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "SAN LUIS": [
           1,
           1
@@ -32399,6 +32395,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -32475,10 +32475,6 @@
           2,
           2
         ],
-        "LA RIOJA": [
-          2,
-          2
-        ],
         "ENTRE RÍOS": [
           1,
           1
@@ -32492,6 +32488,10 @@
           2
         ],
         "SAN JUAN": [
+          2,
+          2
+        ],
+        "LA RIOJA": [
           2,
           2
         ],
@@ -32568,10 +32568,6 @@
           1,
           2
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -32593,6 +32589,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -32669,10 +32669,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -32694,6 +32690,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -32766,10 +32766,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -32791,6 +32787,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
@@ -32863,10 +32863,6 @@
           2,
           3
         ],
-        "LA RIOJA": [
-          0,
-          2
-        ],
         "SAN LUIS": [
           0,
           1
@@ -32888,6 +32884,10 @@
           2
         ],
         "SAN JUAN": [
+          0,
+          2
+        ],
+        "LA RIOJA": [
           0,
           2
         ],
