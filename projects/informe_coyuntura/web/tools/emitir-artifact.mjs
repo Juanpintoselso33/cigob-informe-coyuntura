@@ -272,6 +272,9 @@ const desimportar = src => src
   // Los `import()` dinámicos: el especificador es literal, así que se resuelve contra el global.
   .replace(/import\("\.\/charts\.[^"]+"\)/g, 'Promise.resolve(window.__cgCharts)')
   .replace(/import\("\.\/math\.[^"]+"\)/g, 'Promise.resolve({renderFormula:window.__cgMath})')
+  // Un chunk que trae el helper de preload adentro lo llama con la lista de lo que precargar:
+  // vacía, no pide nada (con la lista, pedía /_assets/charts… y el modal no abría).
+  .replace(/__vite__mapDeps\(\[[^\]]*\]\)/g, '[]')
   // La portada exporta el helper de preload (`export{J as _}`). Nadie se lo pide acá, y un
   // `export` dentro de la función que envuelve al módulo directamente no compila.
   .replace(/export\{[^}]*\};?/g, '');
@@ -300,6 +303,38 @@ else {
  * al global dentro del scope, así que el código de la página sigue creyendo que está solo en
  * su documento — que es exactamente el supuesto con el que fue escrito.
  */
+/**
+ * Cuando dos entradas comparten un script, Rollup lo saca a un chunk propio y las entradas lo
+ * importan: `import"./IndicadorModal…js"` por sus efectos, o `import{_ as E}from"./…"` por el
+ * helper de preload que Vite le metió adentro (24-oct-2026: el archivo dejó de armarse por eso).
+ * El chunk se empotra DENTRO de cada entrada que lo importa, envuelto en una función: así corre
+ * con el `document` acotado de esa sección, como cuando venía inlineado, y sus nombres cortos
+ * no chocan con los de la entrada. El helper de preload no se usa: sus `import()` ya son
+ * promesas resueltas, y el de verdad pediría `<link rel=modulepreload>` a archivos que no están.
+ */
+let chunksEmpotrados = 0;
+const empotrarCompartidos = (src, vistos = []) => src.replace(
+  /import\s*(?:\{([^}]*)\}\s*from\s*)?"\.\/([^"]+\.js)";?/g,
+  (todo, nombres, archivo) => {
+    const f = path.join(ASSETS, archivo);
+    // Las bibliotecas no se duplican por sección; si alguna llegara así, la denuncia el control.
+    if (!existe(f) || vistos.includes(archivo) || /^(vendor-|charts\.|math\.)/.test(archivo)) return todo;
+    const crudo = leer(f);
+    const exp = crudo.match(/export\{([^}]*)\}/);
+    const exportados = Object.fromEntries((exp ? exp[1].split(',') : [])
+      .map(p => p.trim().split(/\s+as\s+/)).filter(p => p.length === 2).map(([local, nombre]) => [nombre, local]));
+    const cuerpo = empotrarCompartidos(desimportar(crudo), [...vistos, archivo]);
+    const ret = Object.entries(exportados).map(([nombre, local]) => `${JSON.stringify(nombre)}:${local}`).join(',');
+    const modulo = `(()=>{\n${cuerpo}\nreturn{${ret}};})()`;
+    if (!nombres) return `${modulo};`;
+    const preload = /modulepreload/.test(crudo);
+    const uno = `__cgChunk${++chunksEmpotrados}`;
+    const ligaduras = nombres.split(',').map(p => p.trim().split(/\s+as\s+/)).filter(p => p[0]).map(([nombre, alias]) =>
+      nombre === '_' && preload ? `${alias || nombre}=(f)=>Promise.resolve(f())` : `${alias || nombre}=${uno}[${JSON.stringify(nombre)}]`);
+    return `const ${uno}=${modulo};const ${ligaduras.join(',')};`;
+  },
+);
+
 const entradas = new Map();
 /**
  * `hoisted.DJFWlTNo.js` es `@vercel/analytics` entero, y resulta ser la entrada declarada de
@@ -319,7 +354,7 @@ for (const pagina of paginas) {
   if (entradas.has(entrada)) continue;
   const f = path.join(ASSETS, entrada);
   if (!existe(f)) { problemasJs.push(`falta ${entrada}`); continue; }
-  entradas.set(entrada, desimportar(leer(f)));
+  entradas.set(entrada, empotrarCompartidos(desimportar(leer(f))));
 }
 
 const iniciadores = [...entradas].map(([nombre, src]) =>

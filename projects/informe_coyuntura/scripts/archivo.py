@@ -171,6 +171,7 @@ def _cortar(proyecto: Path, mes: str) -> None:
                 continue
             if r["indicador"] not in ultimo or r["fecha"] >= ultimo[r["indicador"]][0]:
                 ultimo[r["indicador"]] = (r["fecha"], v)
+    ultimo = con_cards_exentas(ultimo, *_exentas_de_la_foto(mes))
     # validacion_externa lee las series del snapshot publicado (el de hoy).
     ruta_s = proyecto / "web" / "src" / "data" / "series.json"
     if ruta_s.exists():
@@ -191,6 +192,38 @@ def _cortar(proyecto: Path, mes: str) -> None:
         cache = json.loads(ruta.read_text(encoding="utf-8"))
         cache["indicadores"] = cortar_indicadores(cache.get("indicadores", {}), ultimo, mes)
         ruta.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+# Las cards exentas de G3 (gate_calidad.G3_EXCEPCIONES) miden otra cosa que su
+# serie: RIGI publica el % de la cartera aprobada y su serie guarda el MONTO en
+# M USD; carne y motorización publican el nivel y su serie es un índice base
+# 100. Darles el último punto de la serie publicaba septiembre-2026 con RIGI en
+# «49.766 %» (los US$ M aprobados), puntuado 100 contra bandas de porcentaje, e
+# inflaba el ITCG ~3 puntos. Su valor del mes sólo puede salir de la card que
+# publicó la última corrida nocturna de ese mes (la foto, `mensual.elegir`).
+# Sin foto (meses anteriores a las corridas) la card queda como estaba en el
+# caché, y si su dato es posterior al mes no se muestra.
+def _exentas_de_la_foto(mes: str) -> tuple[set, dict]:
+    from gate_calidad import G3_EXCEPCIONES
+    try:
+        sha = mensual.elegir(mes)
+        snap = json.loads(mensual._git("show", f"{sha}:{mensual.DATOS}/informe.json"))
+    except (SystemExit, subprocess.CalledProcessError, json.JSONDecodeError):
+        print(f"    · {mes}: sin corrida nocturna del mes; las cards exentas de G3 no se cortan")
+        snap = {}
+    foto = {}
+    for cint in (snap.get("cinturones") or {}).values():
+        for k, ind in (cint.get("indicadores") or {}).items():
+            if k in G3_EXCEPCIONES and isinstance(ind, dict) and isinstance(ind.get("valor"), (int, float)):
+                foto[k] = (str(ind.get("fecha_dato") or f"{mes}-01"), float(ind["valor"]))
+    return set(G3_EXCEPCIONES), foto
+
+
+def con_cards_exentas(ultimo: dict, exentas: set, foto: dict) -> dict:
+    """`ultimo` sin el último punto de serie de las exentas, y con su card de la foto."""
+    salida = {k: v for k, v in ultimo.items() if k not in exentas}
+    salida.update({k: v for k, v in foto.items() if k in exentas})
+    return salida
 
 
 def cortar_indicadores(inds: dict, ultimo: dict, mes: str) -> dict:
