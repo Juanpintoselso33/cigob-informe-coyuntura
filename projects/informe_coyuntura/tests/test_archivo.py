@@ -77,6 +77,13 @@ def test_un_dato_anual_conserva_su_fecha_en_el_mes_rehecho():
     salud = {"libertad_opcion_salud": {"valor": 33.1, "fecha_dato": "2026-06-01", "derivados": 2754461, "usuarios_prepagas": 8332458}}
     s = archivo.cortar_indicadores(salud, {"libertad_opcion_salud": ("2026-09-01", 33.1)}, "2026-09")["libertad_opcion_salud"]
     assert (s["derivados"], s["usuarios_prepagas"], s["fecha_dato"]) == (2754461, 8332458, "2026-06-01")
+    # Si el padrón de prepagas ya es de octubre, ese total no es el de septiembre.
+    salud["libertad_opcion_salud"]["fecha_denominador"] = "2026-10-01"
+    s = archivo.cortar_indicadores(salud, {"libertad_opcion_salud": ("2026-09-01", 33.1)}, "2026-09")["libertad_opcion_salud"]
+    assert "usuarios_prepagas" not in s and s["valor"] == 33.1
+    # La poda de la validación externa saca los meses posteriores, en cualquier nivel.
+    v = {"merval_usd_mensual": {"2026-09": 1, "2026-10": 2}, "a": {"serie": {"2026-10-03": 3, "2026-08": 4}}, "giros": [{"mes": "2026-10"}]}
+    assert archivo.podar_meses(v, "2026-09") == {"merval_usd_mensual": {"2026-09": 1}, "a": {"serie": {"2026-08": 4}}, "giros": [{"mes": "2026-10"}]}
     assert cortadas["cepo_mulc"] == {"valor": 6.27, "fecha_dato": "2026-09-01", "desactualizado": False}
 
 
@@ -91,6 +98,7 @@ def _arbol_del_corte(raiz: Path, mes: str = "2026-09") -> Path:
     escribir("web/src/data/informe.json", json.dumps(sitio))
     escribir("web/src/data/series.json", json.dumps({"cepo_mulc": [{"fecha": "2026-09-01", "valor": 6.27}]}))
     escribir("output/informe.json", json.dumps({"generated_at": gen}))
+    escribir("output/validacion_externa.json", json.dumps({"_meta": {"generated_at": gen}, "merval_usd_mensual": {"2026-09": 1.0}}))
     escribir("output/sensibilidad.json", json.dumps({"_meta": {"snapshot": gen}, "itcg": {"valor_publicado": 79.1}}))
     escribir("output/series/gestion.csv", "fecha,indicador,valor\n2026-09-01,cepo_mulc,6.27\n")
     escribir("output/fichas/fichas-gestion.md", "*Datos al 2026-09-30.*\n")
@@ -114,6 +122,7 @@ def test_el_control_del_corte_unico_atrapa_cada_archivo_de_otro_mes(tmp_path):
         "output/informe.json de otra corrida": ("output/informe.json", lambda d: d.update(generated_at="2026-10-24T03:31:06")),
         "la robustez de otra corrida": ("output/sensibilidad.json", lambda d: d["_meta"].update(snapshot="2026-10-24T03:31:06")),
         "la robustez con otro índice": ("output/sensibilidad.json", lambda d: d["itcg"].update(valor_publicado=78.6)),
+        "la validación externa con octubre": ("output/validacion_externa.json", lambda d: d["merval_usd_mensual"].update({"2026-10": 1.1})),
         "el histórico con octubre": ("data/historico/indicadores.json", lambda d: d["cepo_mulc"].update({"2026-10": 8.1})),
     }
     for nombre, (rel, romper) in roturas.items():

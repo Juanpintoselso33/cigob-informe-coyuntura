@@ -235,6 +235,31 @@ def con_cards_exentas(ultimo: dict, exentas: set, foto: dict) -> dict:
     return salida
 
 
+_CLAVE_FECHA = re.compile(r"\d{4}-\d{2}")
+
+
+def podar_meses(obj, mes: str):
+    """`obj` sin las entradas de diccionario cuya clave es una fecha posterior a
+    `mes`. validacion_externa.py baja el Merval y el CCL del día, y al rehacer
+    septiembre en octubre las series de contraste traían octubre (Codex,
+    24-oct-2026)."""
+    if isinstance(obj, dict):
+        return {k: podar_meses(v, mes) for k, v in obj.items()
+                if not (_CLAVE_FECHA.match(str(k)) and str(k)[:7] > mes)}
+    if isinstance(obj, list):
+        return [podar_meses(v, mes) for v in obj]
+    return obj
+
+
+def _meses_posteriores(obj, mes: str, ruta: str = "") -> list[str]:
+    if isinstance(obj, dict):
+        tarde = [f"{ruta}/{k}" for k in obj if _CLAVE_FECHA.match(str(k)) and str(k)[:7] > mes]
+        return tarde or [x for k, v in obj.items() for x in _meses_posteriores(v, mes, f"{ruta}/{k}")]
+    if isinstance(obj, list):
+        return [x for v in obj for x in _meses_posteriores(v, mes, ruta)]
+    return []
+
+
 def cortar_indicadores(inds: dict, ultimo: dict, mes: str) -> dict:
     """Lleva cada indicador a su último punto hasta `mes` (ver arriba)."""
     salida = {}
@@ -251,7 +276,10 @@ def cortar_indicadores(inds: dict, ultimo: dict, mes: str) -> dict:
             propia = str(ind.get("fecha_dato") or "")
             if propia and propia[:7] <= mes and ind.get("valor") == valor:
                 fecha = propia
-                nuevo.update({c: ind[c] for c in CAMPOS_MISMO_DATO if c in ind})
+                # El total de salud viaja con las fechas de sus dos padrones: si
+                # alguno ya es posterior al mes, ese total no es el del mes.
+                if all(str(ind.get(c))[:7] <= mes for c in CAMPOS_MISMO_DATO if c.startswith("fecha_") and ind.get(c)):
+                    nuevo.update({c: ind[c] for c in CAMPOS_MISMO_DATO if c in ind})
             nuevo["valor"], nuevo["fecha_dato"] = valor, fecha
         elif not str(ind.get("fecha_dato") or "9")[:7] <= mes:
             continue
@@ -348,6 +376,11 @@ def _reconstruido(mes: str, desde: str = "series", completo: bool = False):
                 r = _run([str(py), *paso], proyecto, env)
                 if r.returncode:
                     raise SystemExit(f"{mes}: {paso[0]} falló:\n{(r.stderr or r.stdout)[-1500:]}")
+                if paso[0].endswith("validacion_externa.py") and desde != "corrida":
+                    ruta_v = proyecto / "output" / "validacion_externa.json"
+                    if ruta_v.exists():
+                        v = podar_meses(json.loads(ruta_v.read_text(encoding="utf-8")), mes)
+                        ruta_v.write_text(json.dumps(v, ensure_ascii=False, indent=2), encoding="utf-8")
             ruta_snap = proyecto / "web" / "src" / "data" / "informe.json"
             snap = json.loads(ruta_snap.read_text(encoding="utf-8"))
             # Los cachés viejos traen cards de indicadores que el Monitor de hoy
@@ -440,6 +473,12 @@ def verificar_corte(proyecto: Path, mes: str) -> list[str]:
     tarde = sorted({m for vals in hist.values() for m in vals if m > mes})
     if tarde:
         errores.append(f"data/historico/indicadores.json: meses {', '.join(tarde[:3])}")
+    val = leer("output/validacion_externa.json")
+    if str((val.get("_meta") or {}).get("generated_at") or "")[:10] > fin:
+        errores.append(f"output/validacion_externa.json: generada el {val['_meta']['generated_at'][:10]}")
+    tarde = _meses_posteriores({k: v for k, v in val.items() if k != "_meta"}, mes)
+    if tarde:
+        errores.append(f"output/validacion_externa.json: {len(tarde)} meses después de {mes} ({tarde[0]})")
     out = leer("output/informe.json")
     if out.get("generated_at") != sitio.get("generated_at"):
         errores.append(f"output/informe.json: generado {out.get('generated_at')}, el sitio {gen}")
