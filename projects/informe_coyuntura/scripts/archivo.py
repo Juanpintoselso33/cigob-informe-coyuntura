@@ -214,8 +214,14 @@ def _exentas_de_la_foto(mes: str) -> tuple[set, dict]:
     foto = {}
     for cint in (snap.get("cinturones") or {}).values():
         for k, ind in (cint.get("indicadores") or {}).items():
-            if k in G3_EXCEPCIONES and isinstance(ind, dict) and isinstance(ind.get("valor"), (int, float)):
-                foto[k] = (str(ind.get("fecha_dato") or f"{mes}-01"), float(ind["valor"]))
+            if k not in G3_EXCEPCIONES or not isinstance(ind, dict):
+                continue
+            # Hasta julio de 2026 la card de RIGI publicaba el monto como texto
+            # («US$ 31.192M aprobados · 17 proyectos») y el % en `avance_pct`,
+            # con la misma fórmula de hoy: aprobada / (aprobada + en evaluación).
+            valor = ind.get("valor") if isinstance(ind.get("valor"), (int, float)) else ind.get("avance_pct")
+            if isinstance(valor, (int, float)):
+                foto[k] = (str(ind.get("fecha_dato") or f"{mes}-01"), float(valor))
     return set(G3_EXCEPCIONES), foto
 
 

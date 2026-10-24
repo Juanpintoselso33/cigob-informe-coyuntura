@@ -95,10 +95,10 @@
   },
   {
    "mes": "2026-06",
-   "corrida": "0c3301a680",
+   "corrida": "e1670fbdae",
    "generado": "2026-06-30T20:00:00-03:00",
    "modo": "series_cortadas",
-   "score_global": 3.6,
+   "score_global": 3.7,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
@@ -116,13 +116,13 @@
      "estado": "en_tension"
     },
     "gestion": {
-     "score": 2.1,
+     "score": 2.2,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 3891
+   "peso_kb": 3908
   }
  ]
 }
