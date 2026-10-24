@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-24 03:31:06"
+generado: "2026-10-24 18:44:02"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -101,12 +101,12 @@ schema_version: "1.2.0"
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
 | gasto_funcionamiento | -35.92 | % de variación real vs 2023-08 (gastos de funcionamiento) | 2026-08-01 | fresco |
-| fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-10-23 | ⚠ cache |
+| fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-10-24 | fresco |
 | litigiosidad_laboral | 0.1 | % variación juicios SRT (12m vs 12m previos) | 2026-07-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 33.3 | % de inversión aprobada sobre el pipeline | 2026-10-24 | fresco |
 | concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-10-24 | fresco |
-| asistencia_directa | 100.0 | % del devengado de transferencias en ayudas a personas (5.1.4) | 2026-10-24 | fresco |
+| asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-10-24 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 33.1 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-06-01 | fresco |
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-10-24 | fresco |
@@ -122,7 +122,6 @@ schema_version: "1.2.0"
 ## Advertencias
 
 - `desactualizado:politica:apoyo_empresario,bloqueo_sostenido`
-- `desactualizado:gestion:fal_modernizacion_laboral`
 
 ---
-*Generado por CIGOB — 2026-10-24 03:31:06 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-24 18:44:02 — schema 1.2.0*

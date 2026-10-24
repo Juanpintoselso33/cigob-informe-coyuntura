@@ -188,9 +188,10 @@ BANDAS_ITCG = {
         # rango observado.
         (75.0, INF, 100), (55.0, 75.0, 85), (35.0, 55.0, 65), (15.0, 35.0, 40), (-INF, 15.0, 10),
     ],
-    "asistencia_directa": [             # TDPS: % del gasto social SIN intermediación (0-100)
-        # Doc: la desintermediación fue un cambio normativo puntual (Dto.
-        # 198/2024); TDPS ≈ 100% = promesa cumplida en el plano financiero.
+    "asistencia_directa": [             # hito de desintermediación: 0 o 100 (ADR-0362)
+        # Desde oct-2026 el valor es binario: 100 desde el cese de las unidades
+        # de gestión (Res. 84/2024), 0 antes. Las bandas no cambian: 100 → 100
+        # y 0 → 10, como cualquier promesa sin cumplir.
         (95.0, INF, 100), (85.0, 95.0, 85), (60.0, 85.0, 65), (30.0, 60.0, 40), (-INF, 30.0, 10),
     ],
     "protocolo_antipiquetes": [         # % de reducción de cortes vs promedio 2023 (IRPC×100)
@@ -336,11 +337,10 @@ INDICADORES_CONTEXTO = ["alertas_manifestacion", "protestas_caba"]
 # avance que descarta las propuestas ya cumplidas informa menos avance del que
 # hubo, y el sesgo crece justamente a medida que el gobierno cumple.
 #
-# Queda pendiente, y es un problema distinto: `asistencia_directa` marcaba
-# 98,3% en la base de agosto de 2023, así que su recorrido dentro del mandato
-# es de menos de dos puntos. Puntúa 100 sobre una escala que no está anclada
-# al punto de partida. Es una discusión de calibración del indicador, no de si
-# corresponde incluirlo.
+# El problema de calibración que quedaba —`asistencia_directa` marcaba 98,3%
+# en la base de agosto de 2023 y puntuaba 100 sobre un tramo ya andado— se
+# resolvió cambiando lo que mide (ADR-0362): ahora es el hito del cese de las
+# unidades de gestión (Res. 84/2024), que vale 0 antes del mandato.
 INDICADORES_CUMPLIDOS = {}
 
 # ── Retirados del índice por decisión editorial, no por techo (ADR-0186) ────

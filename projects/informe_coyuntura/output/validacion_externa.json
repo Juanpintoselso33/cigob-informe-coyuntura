@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-24T03:30:43.227532+00:00",
+    "generated_at": "2026-10-24T18:43:55.783168-03:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -1019,18 +1019,19 @@
   },
   "redundancia_itcg": {
     "diferencias": {
-      "n_pares": 78,
+      "n_pares": 91,
       "r_abs_medio": 0.114,
-      "share_altos": 0.013
+      "share_altos": 0.011
     },
     "umbral": 0.7,
     "n_indicadores": 14,
-    "n_pares": 78,
-    "r_abs_medio": 0.463,
-    "share_altos": 0.244,
+    "n_pares": 91,
+    "r_abs_medio": 0.456,
+    "share_altos": 0.231,
     "share_bajos": 0.308,
     "matriz": {
       "apertura_comercial": {
+        "asistencia_directa": 0.331,
         "cepo_mulc": 0.341,
         "concesiones_infraestructura": 0.067,
         "desregulacion_normativa": 0.456,
@@ -1044,8 +1045,24 @@
         "reduccion_estado": 0.394,
         "reestructuracion_organismos": 0.284
       },
+      "asistencia_directa": {
+        "apertura_comercial": 0.331,
+        "cepo_mulc": 0.528,
+        "concesiones_infraestructura": 0.152,
+        "desregulacion_normativa": 0.465,
+        "fal_modernizacion_laboral": 0.16,
+        "gasto_funcionamiento": 0.133,
+        "libertad_opcion_salud": 0.45,
+        "litigiosidad_laboral": 0.896,
+        "masa_salarial": 0.41,
+        "privatizaciones": 0.353,
+        "protocolo_antipiquetes": 0.418,
+        "reduccion_estado": 0.856,
+        "reestructuracion_organismos": 0.208
+      },
       "cepo_mulc": {
         "apertura_comercial": 0.341,
+        "asistencia_directa": 0.528,
         "concesiones_infraestructura": 0.337,
         "desregulacion_normativa": 0.918,
         "fal_modernizacion_laboral": 0.366,
@@ -1060,6 +1077,7 @@
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.067,
+        "asistencia_directa": 0.152,
         "cepo_mulc": 0.337,
         "desregulacion_normativa": 0.499,
         "fal_modernizacion_laboral": 0.919,
@@ -1074,6 +1092,7 @@
       },
       "desregulacion_normativa": {
         "apertura_comercial": 0.456,
+        "asistencia_directa": 0.465,
         "cepo_mulc": 0.918,
         "concesiones_infraestructura": 0.499,
         "fal_modernizacion_laboral": 0.562,
@@ -1088,6 +1107,7 @@
       },
       "fal_modernizacion_laboral": {
         "apertura_comercial": 0.12,
+        "asistencia_directa": 0.16,
         "cepo_mulc": 0.366,
         "concesiones_infraestructura": 0.919,
         "desregulacion_normativa": 0.562,
@@ -1102,6 +1122,7 @@
       },
       "gasto_funcionamiento": {
         "apertura_comercial": 0.012,
+        "asistencia_directa": 0.133,
         "cepo_mulc": 0.274,
         "concesiones_infraestructura": 0.281,
         "desregulacion_normativa": 0.345,
@@ -1116,6 +1137,7 @@
       },
       "libertad_opcion_salud": {
         "apertura_comercial": 0.351,
+        "asistencia_directa": 0.45,
         "cepo_mulc": 0.899,
         "concesiones_infraestructura": 0.267,
         "desregulacion_normativa": 0.923,
@@ -1130,6 +1152,7 @@
       },
       "litigiosidad_laboral": {
         "apertura_comercial": 0.489,
+        "asistencia_directa": 0.896,
         "cepo_mulc": 0.438,
         "concesiones_infraestructura": 0.235,
         "desregulacion_normativa": 0.455,
@@ -1144,6 +1167,7 @@
       },
       "masa_salarial": {
         "apertura_comercial": 0.035,
+        "asistencia_directa": 0.41,
         "cepo_mulc": 0.474,
         "concesiones_infraestructura": 0.149,
         "desregulacion_normativa": 0.465,
@@ -1158,6 +1182,7 @@
       },
       "privatizaciones": {
         "apertura_comercial": 0.478,
+        "asistencia_directa": 0.353,
         "cepo_mulc": 0.826,
         "concesiones_infraestructura": 0.583,
         "desregulacion_normativa": 0.949,
@@ -1172,6 +1197,7 @@
       },
       "protocolo_antipiquetes": {
         "apertura_comercial": 0.251,
+        "asistencia_directa": 0.418,
         "cepo_mulc": 0.872,
         "concesiones_infraestructura": 0.294,
         "desregulacion_normativa": 0.873,
@@ -1186,6 +1212,7 @@
       },
       "reduccion_estado": {
         "apertura_comercial": 0.394,
+        "asistencia_directa": 0.856,
         "cepo_mulc": 0.762,
         "concesiones_infraestructura": 0.203,
         "desregulacion_normativa": 0.711,
@@ -1200,6 +1227,7 @@
       },
       "reestructuracion_organismos": {
         "apertura_comercial": 0.284,
+        "asistencia_directa": 0.208,
         "cepo_mulc": 0.464,
         "concesiones_infraestructura": 0.76,
         "desregulacion_normativa": 0.671,
@@ -1275,6 +1303,16 @@
         "por_diseno": null
       },
       {
+        "a": "asistencia_directa",
+        "b": "litigiosidad_laboral",
+        "r": 0.896,
+        "n": 32,
+        "dimension_a": "social_orden",
+        "dimension_b": "reforma_laboral",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "desregulacion_normativa",
         "b": "protocolo_antipiquetes",
         "r": 0.873,
@@ -1291,6 +1329,16 @@
         "n": 33,
         "dimension_a": "reformas_economicas",
         "dimension_b": "social_orden",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "asistencia_directa",
+        "b": "reduccion_estado",
+        "r": 0.856,
+        "n": 33,
+        "dimension_a": "social_orden",
+        "dimension_b": "reforma_estado",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -1405,8 +1453,8 @@
         "por_diseno": null
       }
     ],
-    "pares_cruzados": 17,
-    "pares_no_explicados": 17
+    "pares_cruzados": 19,
+    "pares_no_explicados": 19
   },
   "redundancia_itcp": {
     "diferencias": {
@@ -3095,10 +3143,10 @@
     "pares_no_explicados": 68
   },
   "serie_itcg": {
-    "2023-12": 18.7,
-    "2024-01": 29.3,
-    "2024-02": 33.9,
-    "2024-03": 38.4,
+    "2023-12": 12.7,
+    "2024-01": 27.5,
+    "2024-02": 32.1,
+    "2024-03": 36.6,
     "2024-04": 45.0,
     "2024-05": 40.9,
     "2024-06": 45.5,
@@ -3813,10 +3861,10 @@
         "nombre": "Reforma social y orden",
         "peso": 0.1,
         "serie": {
-          "2023-12": 70.0,
-          "2024-01": 54.8,
-          "2024-02": 54.8,
-          "2024-03": 54.8,
+          "2023-12": 10.0,
+          "2024-01": 36.9,
+          "2024-02": 36.9,
+          "2024-03": 36.9,
           "2024-04": 72.9,
           "2024-05": 72.9,
           "2024-06": 72.9,

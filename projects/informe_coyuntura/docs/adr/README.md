@@ -282,6 +282,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0305](0305-fal-separa-consulta-y-revision-curada.md) | Consultar CNV no actualiza la revisión judicial | `fal_modernizacion_laboral` | vigente |
 | [0336](0336-el-itcg-no-tiene-validacion-externa-por-definicion.md) | El ITCG no tiene validación externa, por definición |  | vigente |
 | [0361](0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) | Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) | `cepo_mulc`, `desregulacion_normativa`, `reduccion_estado` | vigente |
+| [0362](0362-planes-sin-intermediarios-mide-el-cese-de-las-unidades-de-gestion.md) | «Planes sin intermediarios» mide el cese de las unidades de gestión | `asistencia_directa` | vigente |
 
 ### Vida cotidiana (ITVC)
 

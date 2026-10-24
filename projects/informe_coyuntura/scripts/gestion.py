@@ -2447,56 +2447,86 @@ def _tdps_baseline_2023(token: str) -> dict | None:
         return None
 
 
-def fetch_asistencia_directa() -> dict | None:
-    """
-    TDPS — Tasa de Desintermediación de Planes Sociales (doc 260702), contra la
-    EJECUCIÓN PRESUPUESTARIA REAL (API Presupuesto Abierto, base SIDIF):
-    qué % del devengado de los programas sucesores del Potenciar Trabajo
-    ("Volver al Trabajo" + "Acompañamiento Social") se clasifica como ayudas a
-    personas (partida 5.1.4) sobre el total de transferencias. Si el ejercicio corriente
-    aún no tiene devengado (enero), cae al ejercicio anterior.
-    """
+# ADR-0362: el indicador mide el acto con el que se eliminó la intermediación,
+# no la clasificación del gasto. La TDPS (partida 5.1.4 sobre el inciso 5) ya
+# marcaba 98,3 % en 2023: la intermediación del Potenciar Trabajo no estaba en
+# quién cobraba sino en las unidades de gestión (municipios, cooperativas,
+# organizaciones) que certificaban la contraprestación y manejaban la lista, y
+# esas unidades cesaron por la Res. 84/2024, art. 6. La TDPS queda en el detalle.
+CESE_INTERMEDIACION = {
+    "fecha": "2024-04-10",
+    "norma": "Resolución 84/2024 del Ministerio de Capital Humano, art. 6",
+    "texto": "cese de las actividades de las Unidades de Gestión y de las Unidades de "
+             "Certificación del Potenciar Trabajo",
+    "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/305588/20240410",
+}
+
+
+def asistencia_directa_valor(dia: str) -> float:
+    """100 desde el cese de las unidades de gestión (Boletín Oficial), 0 antes."""
+    return 100.0 if str(dia)[:10] >= CESE_INTERMEDIACION["fecha"] else 0.0
+
+
+def serie_asistencia_directa(hasta: date | None = None) -> list:
+    """Serie mensual desde dic-2023, evaluada al cierre de cada mes (un acto del
+    día 10 cuenta en ese mes), con la convención AAAA-MM-01 de las series."""
+    hasta = hasta or date.today()
+    serie, a, m = [], 2023, 12
+    while (a, m) <= (hasta.year, hasta.month):
+        fin = f"{a}-{m:02d}-{calendar.monthrange(a, m)[1]:02d}"
+        serie.append([f"{a}-{m:02d}-01", asistencia_directa_valor(fin)])
+        a, m = (a + 1, 1) if m == 12 else (a, m + 1)
+    return serie
+
+
+def _tdps_contexto() -> str:
+    """La TDPS del ejercicio corriente y la de 2023, como contexto del detalle.
+    No puntúa: si la API falla, el indicador se calcula igual."""
     token = _pa_token()
     if not token:
-        print("[WARN] gestion.asistencia_directa: sin PRESUPUESTO_ABIERTO_TOKEN. Usando fallback.")
-        return None
+        return ""
     try:
         anio = date.today().year
-        rows, ejercicio = [], anio
         for ej in (anio, anio - 1):
-            acumulado = []
+            rows = []
             for actividad in TDPS_ACTIVIDADES:
-                acumulado += _pa_credito(token, ej, [
+                rows += _pa_credito(token, ej, [
                     {"column": "actividad_desc", "operator": "like", "value": f"%{actividad}%"},
                 ])
-            if any(float(r.get("credito_devengado") or 0) > 0 for r in acumulado):
-                rows, ejercicio = acumulado, ej
-                break
-        tdps = _tdps_de_partidas(rows)
-        base = _tdps_baseline_2023(token)
-        miles = lambda x: f"{x:,.0f}".replace(",", ".")
-        detalle = (f"Devengado {ejercicio}: $ {miles(tdps['directo_musd'])}M en ayudas a personas "
-                   f"(5.1.4) / $ {miles(tdps['total_musd'])}M en transferencias"
-                   + (f" · baseline Potenciar 2023: {str(base['tdps']).replace('.', ',')}%"
-                      f" (con $ {miles(base['intermediado_musd'])}M en otras partidas)" if base else "")
-                   + " · Clasificación del devengado; no acredita pago efectivo ni ausencia de intermediación.")
-        return {
-            "valor":          tdps["tdps"],
-            # Sin la sigla "TDPS" (ADR-0311): no sobrevive en ningún rótulo
-            # público, así que en la unidad quedaba sin dónde resolverse.
-            "unidad":         "% del devengado de transferencias en ayudas a personas (5.1.4)",
-            "fuente":         "API Presupuesto Abierto (SIDIF) — devengado por partida",
-            "fecha_dato":     date.today().isoformat(),
-            "desactualizado": False,
-            "ejercicio":      ejercicio,
-            "componentes":    {"directo_musd": tdps["directo_musd"],
-                               "intermediado_musd": tdps["intermediado_musd"],
-                               "tdps_2023": base["tdps"] if base else None},
-            "detalle_txt":    detalle,
-        }
+            if any(float(r.get("credito_devengado") or 0) > 0 for r in rows):
+                tdps = _tdps_de_partidas(rows)
+                base = _tdps_baseline_2023(token)
+                num = lambda x: str(x).replace(".", ",")
+                return (f" · Contexto: el devengado {ej} de Volver al Trabajo y Acompañamiento Social "
+                        f"está {num(tdps['tdps'])}% clasificado como ayudas a personas"
+                        + (f" (Potenciar Trabajo 2023: {num(base['tdps'])}%)" if base else "")
+                        + "; ese porcentaje no mide la intermediación y no puntúa.")
     except Exception as e:
-        _warn("asistencia_directa", e)
-        return None
+        print(f"[WARN] gestion.asistencia_directa: TDPS de contexto no disponible ({e})")
+    return ""
+
+
+def fetch_asistencia_directa() -> dict | None:
+    """Desintermediación de los planes sociales (ADR-0362): 100 desde que la
+    Res. 84/2024 hizo cesar las unidades de gestión y de certificación del
+    Potenciar Trabajo, 0 antes. Hecho binario con su norma; la TDPS viaja como
+    contexto."""
+    hoy = date.today().isoformat()
+    c = CESE_INTERMEDIACION
+    valor = asistencia_directa_valor(hoy)
+    estado = (f"Unidades de gestión y de certificación sin actividad desde el {c['fecha']} "
+              f"({c['norma']}: «{c['texto']}»)" if valor else
+              "Las unidades de gestión siguen interviniendo")
+    return {
+        "valor":          valor,
+        "unidad":         "hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja)",
+        "fuente":         "Boletín Oficial — Res. 84/2024 del Ministerio de Capital Humano; contexto: API Presupuesto Abierto",
+        "fecha_dato":     hoy,
+        "desactualizado": False,
+        "hito":           dict(c),
+        "detalle_txt":    estado + _tdps_contexto()
+                          + " · Mide el acto que eliminó a los intermediarios del circuito; no acredita cómo se paga cada prestación ni que no haya intermediación informal.",
+    }
 
 
 # ── D4: concesiones viales — CONTRAT.AR + página RFC (ADR-0016) ───────────────

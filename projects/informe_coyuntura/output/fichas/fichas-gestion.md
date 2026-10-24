@@ -75,7 +75,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Inversiones RIGI aprobadas | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 33,3 % de inversión aprobada sobre el pipeline | VERDE | 6,0 % |
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
-| Asistencia directa | Aproxima la desintermediación mediante la composición presupuestaria. | 100 % del devengado de transferencias en ayudas a personas (5.1.4) | VERDE | 4,0 % |
+| Planes sin intermediarios | Si los planes sociales siguen pasando por intermediarios. | 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | VERDE | 4,0 % |
 | Orden público (piquetes) | En qué porcentaje se redujo el número de cortes por manifestación relevados en CABA respecto de una base estimada para… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
 | Libertad de opción en salud | Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como… | 33,1 % de usuarios de prepagas con aportes derivados directo (sin triangulación) | AMARILLO | 2,0 % |
 
@@ -138,7 +138,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1654.00 (2026-10-23T17:57:00-03:00) / mayorista venta 1529.50 (2026-10-23T13:07:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1654.00 (2026-10-24T17:59:00-03:00) / mayorista venta 1529.50 (2026-10-23T13:07:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
@@ -615,7 +615,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-10-23; consulta CNV de esa fecha. Revisión normativa del 2026-10-20 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV
+- Evaluación al 2026-10-24; consulta CNV de esa fecha. Revisión normativa del 2026-10-20 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 8 menciones del FAL en el BO desde mar-2026
 
 ## Color vigente y por qué
 
@@ -1048,36 +1048,37 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Asistencia directa
+# Planes sin intermediarios
 
-Aproxima la desintermediación mediante la composición presupuestaria: devengado de Volver al Trabajo y Acompañamiento Social clasificado como ayudas a personas (5.1.4) sobre el total de transferencias de esas actividades.
+Si los planes sociales siguen pasando por intermediarios: vale 100 desde que la Resolución 84/2024 del Ministerio de Capital Humano dispuso el cese de las unidades de gestión y de certificación del Potenciar Trabajo (10 de abril de 2024), y 0 antes.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 % del devengado de transferencias en ayudas a personas (5.1.4)** (2026-10) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
+| **Hoy: 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja)** (2026-10) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | asistencia_directa | **CINTURÓN** | Gestión |
-| **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % del devengado de transferencias en ayudas a personas (5.1.4) |
-| **SERIE DISPONIBLE** | 2023-01 → 2026-09 (42 puntos) | **REZAGO DE PUBLICACIÓN** | Semanas: el devengado del ejercicio corriente se carga de forma continua. |
-| **PRODUCTOR DEL DATO** | Secretaría de Hacienda — Presupuesto Abierto | **OPERACIÓN ESTADÍSTICA** | TDPS — aproximación presupuestaria a la desintermediación: porcentaje del devengado de transferencias de Volver al Trabajo y Acompañamiento Social clasificado como ayudas a personas (5.1.4) |
-| **MODO DE ACCESO** | Automático: API oficial con credencial de acceso; la línea de base 2023 (ejercicio cerrado) se calculó una vez y quedó fijada. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-24 |
+| **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno: el hito tiene la fecha de su publicación en el Boletín Oficial. Una norma posterior que restituyera intermediarios se incorpora por revisión, con su fecha. |
+| **PRODUCTOR DEL DATO** | Boletín Oficial — Resolución 84/2024 del Ministerio de Capital Humano; contexto: Secretaría de Hacienda — Presupuesto Abierto | **OPERACIÓN ESTADÍSTICA** | Hito de desintermediación de los planes sociales: 100 desde el cese de las unidades de gestión y de certificación del Potenciar Trabajo, 0 antes |
+| **MODO DE ACCESO** | Semiautomático: la norma y su fecha se asientan en el código del colector (verificadas en el Boletín Oficial); el colector evalúa el hito en cada corrida. El porcentaje del gasto clasificado como ayudas a personas se lee de la API de Presupuesto Abierto y se muestra como contexto, sin puntuar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-24 |
 
 ## Definición — qué mide y por qué importa
 
-Aproxima la desintermediación mediante la composición presupuestaria: devengado de Volver al Trabajo y Acompañamiento Social clasificado como ayudas a personas (5.1.4) sobre el total de transferencias de esas actividades.
+Si los planes sociales siguen pasando por intermediarios: vale 100 desde que la Resolución 84/2024 del Ministerio de Capital Humano dispuso el cese de las unidades de gestión y de certificación del Potenciar Trabajo (10 de abril de 2024), y 0 antes.
 
-Permite seguir esa composición del gasto. La base Potenciar Trabajo 2023 ya era 98,3%; no corresponde presentarla como una transferencia mayoritariamente intermediada. El devengado no acredita pago efectivo, cobro por el beneficiario ni ausencia de intermediación en la implementación.
+Mide lo que el compromiso prometía cambiar. La intermediación no estaba en quién cobraba —en 2023 el 98,3% del gasto ya se pagaba a nombre del titular—, sino en las unidades de gestión: municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista. Es un acto, no un resultado: no acredita cómo se paga cada prestación ni que no quede intermediación informal.
 
 **Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
 
 ## Método de cómputo
 
-- TDPS = 100 × devengado en la partida 5.1.4 / devengado total del inciso 5 de las actividades seleccionadas. Se excluyen otros incisos, incluidos los gastos bancarios. Las demás partidas del inciso 5 se identifican como otras transferencias; su clasificación no demuestra por sí sola intermediación en el cobro.
-- Línea de base 2023 (Potenciar Trabajo): 98,3% directo.
+- Vale 100 desde el 10 de abril de 2024, cuando el artículo 6 de la Resolución 84/2024 dispuso «el cese de las actividades de las Unidades de Gestión y de las Unidades de Certificación» del Potenciar Trabajo, para implementar los programas que lo reemplazan «de manera directa y transparente, eliminando la intermediación». Antes de esa fecha vale 0.
+- La serie mensual se reconstruye desde diciembre de 2023 con la misma regla, evaluada al cierre de cada mes: abril de 2024 ya vale 100.
+- Como contexto, el detalle informa la proporción del devengado de Volver al Trabajo y Acompañamiento Social clasificada como ayudas a personas (partida 5.1.4). No puntúa: ya era 98,3% en el Potenciar Trabajo de 2023.
 
 ## Semáforo — valores que determinan el color
 
@@ -1085,7 +1086,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% del devengado de transferencias en ayudas a personas (5.1.4)) | Color |
+| Rango (hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja)) | Color |
 |---|---|
 | ≥ 67 | VERDE |
 | 45 – 67 | AMARILLO |
@@ -1096,13 +1097,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Devengado 2026: $ 573.102M en ayudas a personas (5.1.4) / $ 573.102M en transferencias · baseline Potenciar 2023: 98,3% (con $ 17.224M en otras partidas) · Clasificación del devengado; no acredita pago efectivo ni ausencia de intermediación.
+- Unidades de gestión y de certificación sin actividad desde el 2024-04-10 (Resolución 84/2024 del Ministerio de Capital Humano, art. 6: «cese de las actividades de las Unidades de Gestión y de las Unidades de Certificación del Potenciar Trabajo») · Contexto: el devengado 2026 de Volver al Trabajo y Acompañamiento Social está 100,0% clasificado como ayudas a personas (Potenciar Trabajo 2023: 98,3%); ese porcentaje no mide la intermediación y no puntúa. · Mide el acto que eliminó a los intermediarios del circuito; no acredita cómo se paga cada prestación ni que no haya intermediación informal.
 
 ## Color vigente y por qué
 
-Dato vigente: 100 % del devengado de transferencias en ayudas a personas (5.1.4) (2026-10).
+Dato vigente: 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) (2026-10).
 
-100,0 % del devengado de transferencias en ayudas a personas (5.1.4) cae en el tramo que corresponde a Verde, a 33,0 del corte más cercano.
+100,0 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) cae en el tramo que corresponde a Verde, a 33,0 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -1110,15 +1111,16 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 ## Transparencia — limitaciones declaradas
 
-- El devengado registra una obligación presupuestaria y es una etapa distinta del pagado. El indicador no acredita pagos efectivos ni cobros individuales, ni la ausencia de intermediación en la implementación; describe la clasificación presupuestaria de dos actividades, no todo el gasto social.
-- La base 2023 ya era 98,3%: el salto normativo fue puntual y el indicador está saturado cerca del máximo desde 2024 (decisión de rediseño abierta con CIGOB).
-- Depende de que los nombres de los programas no cambien en el presupuesto.
+- Es un hecho binario: el valor sólo puede ser 0 o 100, así que las bandas se usan en sus extremos (100 puntúa 100; 0 puntúa 10, como cualquier promesa sin cumplir).
+- Mide el acto que sacó a los intermediarios del circuito formal, no un resultado: no acredita cómo se paga cada prestación, ni que no quede intermediación informal, ni el efecto sobre los titulares.
+- Desintermediar y recortar son promesas distintas: el indicador no dice nada sobre el monto de las prestaciones ni sobre la cantidad de titulares, que en Volver al Trabajo se están reduciendo.
+- Una norma que restituyera intermediarios no se detecta sola: se incorpora por revisión.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Sin acceso a la API, cae al valor de respaldo documentado (el decreto de 2024); agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.
+- **Si falta el dato:** No depende de ninguna consulta en línea para su valor. Si falla la API de Presupuesto Abierto, sólo falta el dato de contexto.
 
-- **Política de revisiones:** El devengado del ejercicio corriente es acumulado en curso, revisable por definición; la base 2023 está congelada.
+- **Política de revisiones:** El hito se revisa si aparece una norma posterior sobre el circuito de pago o certificación de los programas sucesores.
 
 ## Historial — cambios metodológicos documentados
 
@@ -1131,6 +1133,8 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 **2026-09-15** — El rótulo de la tarjeta pasa de «Asistencia directa (TDPS)» a «Asistencia directa». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
 **2026-10-24** — La unidad de la tarjeta pasa de «% del gasto social sin intermediación» a «% de transferencias presupuestarias clasificadas como ayudas a personas», que es lo que la fórmula calcula. No cambia el cálculo.
+
+**2026-10-24** — Pasa a medir el hito que eliminó la intermediación: el cese de las unidades de gestión y de certificación del Potenciar Trabajo por la Resolución 84/2024 (10 de abril de 2024). Vale 100 desde entonces y 0 antes. El rótulo pasa a «Planes sin intermediarios». La medida anterior, el porcentaje del gasto clasificado como ayudas a personas, ya marcaba 98,3% en 2023 y puntuaba 100 por algo que estaba hecho antes del mandato; queda como contexto. El valor de hoy no cambia; la serie histórica sí: de diciembre de 2023 a marzo de 2024 pasa de alrededor de 98 a 0.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

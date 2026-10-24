@@ -154,8 +154,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Red Federal de Concesiones, por etapas con fecha del Boletín Oficial (sistema de contrataciones del Estado, CONTRAT.AR).",
   },
   asistencia_directa: {
-    latex: String.raw`\frac{\text{devengado en partida 5.1.4}}{\text{devengado en inciso 5}}\times 100`,
-    leyenda: "Volver al Trabajo y Acompañamiento Social: proporción del devengado de transferencias clasificada como ayudas a personas. No verifica el pago efectivo ni la ausencia de intermediación.",
+    latex: String.raw`\begin{cases}100 & \text{desde el cese de las unidades de gesti\'on (Res. 84/2024)}\\ 0 & \text{antes}\end{cases}`,
+    leyenda: "La intermediación del Potenciar Trabajo estaba en las unidades de gestión —municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista—. La Resolución 84/2024 del Ministerio de Capital Humano (Boletín Oficial, 10 de abril de 2024) dispuso su cese. El indicador vale 100 desde entonces y 0 antes.",
   },
   protocolo_antipiquetes: {
     latex: String.raw`\left(1-\frac{\text{cortes en CABA, \'ultimo a\~no}}{\text{cortes en CABA en 2023}}\right)\times 100`,

@@ -17,8 +17,9 @@ informe.cigob.org.
 - **Decidido no adoptar, con reserva y aviso a Marcos:** FAL en 90 (queda 50, puntaje 55; el
   1-dic pasa a 70, puntaje 74) · viales en 93 % (queda 100 % de adjudicación; posesión 86 %).
 - **Decidido:** salud sigue 33,1 % con total y fecha; el 5,6 % va como cota en la ficha.
-- **Pendiente de Juan:** asistencia directa: que mida la baja de las unidades de gestión
-  (Res. 84/2024) o sacarla del índice (hoy puntúa 100 con 98,3 % de base en 2023).
+- **Hecho (ADR-0362, opción a de Juan):** asistencia directa pasa a «Planes sin intermediarios»:
+  100 desde el cese de las unidades de gestión (Res. 84/2024, BO 10-abr-2024, art. 6), 0 antes. La
+  TDPS queda como contexto. Hoy sigue en 100; la serie de dic-2023 a mar-2024 baja.
 - **No se puede hoy:** convenios (lista de los 446 no publicada) · RIGI ejecutado · aplicación del
   protocolo · salud como % que se cambió (sólo cota anual).
 

@@ -43,11 +43,11 @@
   },
   "asistencia_directa": {
     "valor": 100,
-    "unidad": "TDPS: % del gasto social de ingreso pagado directo (sin Unidades de Gestión)",
+    "unidad": "hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja)",
     "estado": "estimado",
-    "fuente": "Dto. 198/2024 (Volver al Trabajo / Acompañamiento Social)",
-    "notas": "FALLBACK: el colector AUTO calcula el TDPS real contra la ejecución presupuestaria (API Presupuesto Abierto): devengado 5.1.4 directo a personas / total inciso 5 de Volver al Trabajo + Acompañamiento Social. Verificado 2026: 100,0% directo (baseline Potenciar 2023: 98,3% con ~$16.258M vía organizaciones). Advertencia metodológica del doc: desintermediar y recortar son promesas distintas — esto mide solo la primera.",
-    "fecha_dato": "2026-06-30"
+    "fuente": "Boletín Oficial — Res. 84/2024 del Ministerio de Capital Humano, art. 6",
+    "notas": "FALLBACK: el colector calcula el hito solo (ADR-0362). La Res. 84/2024 (BO 10-abr-2024), art. 6, dispuso el cese de las unidades de gestión y de certificación del Potenciar Trabajo, «eliminando la intermediación». Antes el indicador era la TDPS (5.1.4 sobre inciso 5), que ya marcaba 98,3 % en 2023 y no medía la intermediación.",
+    "fecha_dato": "2026-10-24"
   },
   "protocolo_antipiquetes": {
     "valor": 74.2,

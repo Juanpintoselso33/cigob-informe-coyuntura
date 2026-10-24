@@ -458,9 +458,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación real",
   },
   asistencia_directa: {
-    que: "Aproxima la desintermediación mediante la composición presupuestaria: devengado de Volver al Trabajo y Acompañamiento Social clasificado como ayudas a personas (5.1.4) sobre el total de transferencias de esas actividades.",
-    aporta: "Permite seguir esa composición del gasto. La base Potenciar Trabajo 2023 ya era 98,3%; no corresponde presentarla como una transferencia mayoritariamente intermediada. El devengado no acredita pago efectivo, cobro por el beneficiario ni ausencia de intermediación en la implementación.",
-    frecuencia: "Mensual", tipo: "Avance de reforma",
+    que: "Si los planes sociales siguen pasando por intermediarios: vale 100 desde que la Resolución 84/2024 del Ministerio de Capital Humano dispuso el cese de las unidades de gestión y de certificación del Potenciar Trabajo (10 de abril de 2024), y 0 antes.",
+    aporta: "Mide lo que el compromiso prometía cambiar. La intermediación no estaba en quién cobraba —en 2023 el 98,3% del gasto ya se pagaba a nombre del titular—, sino en las unidades de gestión: municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista. Es un acto, no un resultado: no acredita cómo se paga cada prestación ni que no quede intermediación informal.",
+    frecuencia: "Por acto (Boletín Oficial)", tipo: "Hito de reforma",
   },
   fal_modernizacion_laboral: {
     que: "Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).",
