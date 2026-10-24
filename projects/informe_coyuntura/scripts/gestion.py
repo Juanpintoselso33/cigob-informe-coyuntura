@@ -1424,9 +1424,16 @@ def _cnv_fondos_fal(fondos: list) -> int:
     ADR-0068 sacó de la consulta al Boletín Oficial y que quedó viva acá. Un
     fondo de la construcción que se registre mañana valdría treinta puntos del
     indicador sin tener nada que ver con el FAL. El conteo ancho sigue existiendo
-    y viaja en la card como contexto."""
-    return sum(1 for f in fondos
-               if "ASISTENCIA LABORAL" in str(f.get("Text", "")).upper())
+    y viaja en la card como contexto.
+
+    También cuenta la sigla FAL como palabra suelta: los fondos que anunciaron
+    los bancos se llaman «Pionero FAL Liquidez», «Superfondo Reserva FAL», y la
+    RG CNV 1167/2026 exige identificar el régimen en la denominación, no la
+    frase «Asistencia Laboral». Sin esto, el día que existan no se verían."""
+    return sum(1 for f in fondos if _ES_FONDO_FAL.search(str(f.get("Text", "")).upper()))
+
+
+_ES_FONDO_FAL = re.compile(r"ASISTENCIA LABORAL|\bFAL\b")
 
 
 def _cnv_fondos_cese(fondos: list) -> int:

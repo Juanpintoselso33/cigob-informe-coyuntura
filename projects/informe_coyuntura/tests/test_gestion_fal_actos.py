@@ -169,6 +169,15 @@ def test_la_adopcion_no_cuenta_fondos_de_la_construccion():
     assert gestion._cnv_fondos_fal(registro) == 1
 
 
+def test_la_adopcion_reconoce_los_fondos_que_solo_dicen_fal():
+    """Los fondos anunciados por los bancos llevan la sigla y no la frase:
+    «Pionero FAL Liquidez», «Superfondo Reserva FAL». La sigla tiene que ser
+    palabra suelta: un nombre que la contiene adentro no es un FAL."""
+    registro = [{"Text": "Pionero FAL Liquidez"}, {"Text": "SUPERFONDO RESERVA FAL"},
+                {"Text": "FALCON RENTA FIJA FCI"}, {"Text": "FONDO DE CESE LABORAL CONSTRUCCION FCI"}]
+    assert gestion._cnv_fondos_fal(registro) == 2
+
+
 # ── 4 · Bandas y texto público ─────────────────────────────────────────────
 def test_las_bandas_describen_los_estados_de_la_escala():
     B = itcg.BANDAS_ITCG

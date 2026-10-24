@@ -1,5 +1,5 @@
 ---
-import { presentacion, label, visualDe, badgeEstado, periodoDato, series, formatValor, semaforoDe, semaforoAriaLabel, UNIDADES_SERIE, UNIDADES_CORTAS } from "../lib/datos.ts";
+import { presentacion, label, visualDe, badgeEstado, periodoDato, series, formatValor, num, semaforoDe, semaforoAriaLabel, UNIDADES_SERIE, UNIDADES_CORTAS } from "../lib/datos.ts";
 import { DESCRIPCIONES } from "../lib/descripciones.ts";
 import { chartPath } from "../lib/sparkline.ts";
 
@@ -49,6 +49,18 @@ if (vis.tipo === "barra" && vis.avance) {
   micro = "avance";
 }
 
+// Salud: el porcentaje sin su total no se entiende, y la variante compacta no
+// lleva el chip con el mes (auditoría externa, oct-2026).
+const millones = (n: number) => `${num(n / 1e6)} M`;
+const total = ikey === "libertad_opcion_salud" && typeof ind.derivados === "number" && typeof ind.usuarios_prepagas === "number"
+  ? `${millones(ind.derivados)} de ${millones(ind.usuarios_prepagas)} usuarios de prepagas · ${periodoDato(ikey, ind)}` : "";
+// En gestión el valor (avance, % o variación) y el puntaje del índice son dos
+// números distintos, y los dos parecen porcentajes de cumplimiento: «avance
+// 50» con «puntaje 55» confundía. Se dicen por separado.
+const puntaje = slug === "gestion" && typeof ind.puntaje_banda === "number"
+  && Math.abs(ind.puntaje_banda - Number(ind.valor)) >= 0.05
+  ? `puntaje ${num(ind.puntaje_banda)} / 100` : "";
+
 const sp = vis.tipo === "sparkline" ? chartPath(series[ikey] ?? [], 240, 44, 5) : null;
 ---
 {/* Es un disparador de verdad: `role`, `tabindex` y nombre accesible. Antes
@@ -79,6 +91,8 @@ const sp = vis.tipo === "sparkline" ? chartPath(series[ikey] ?? [], 240, 44, 5) 
     {unidad && <span class="cg-tile-unit">{unidad}</span>}
     {micro && <span class="cg-tile-micro">{micro}</span>}
   </div>
+  {total && <p class="cg-tile-nota">{total}</p>}
+  {puntaje && <p class="cg-tile-nota">{puntaje}</p>}
   {/* La sparkline se dibuja en SVG y, con JS, la reemplaza un mini gráfico de
       ApexCharts animado y con tooltip por punto (IndicadorModal.astro), el mismo
       de «La evolución de cada cinturón» (pedido de Juan, 11-oct-2026). */}

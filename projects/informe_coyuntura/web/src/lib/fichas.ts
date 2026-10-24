@@ -1914,7 +1914,7 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Brecha = (CCL − mayorista) / mayorista × 100.",
       "Se usa el mayorista y no el minorista de pizarra: el minorista incluye el margen bancario y subestima la brecha.",
-      "Una brecha cercana a cero indica proximidad de estos precios; no demuestra ausencia de restricciones legales o administrativas.",
+      "Una brecha reducida indica más proximidad entre las dos cotizaciones: es una señal de normalización cambiaria, pero no permite establecer por sí sola que hayan desaparecido todas las restricciones de acceso al mercado de cambios.",
     ],
     anclas: {
       bandas: [
@@ -1939,6 +1939,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "La fecha proviene de la cotización más antigua, no del día de consulta. Se conservan precios y marcas de tiempo; fechas ausentes o inválidas y precios no positivos o no finitos provocan fallback al cache existente.", adr: "0280" },
       { fecha: "2026-07-02", cambio: "Entra al índice de gestión con umbrales institucionales sobre la brecha CCL/mayorista." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas. Además, la brecha deja de puntuar una segunda vez dentro del compuesto de apertura comercial: puntúa una sola vez, acá." },
+      { fecha: "2026-10-24", cambio: "La explicación de la tarjeta deja de decir que una brecha cerca de cero significa que «el cepo dejó de morder»: es una señal de normalización cambiaria, no prueba que hayan desaparecido todas las restricciones. No cambia el cálculo.", adr: "0361" },
     ],
   },
 
@@ -2036,6 +2037,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-21", cambio: "Se amplió lo que la ficha declara sobre sí misma, sin tocar el indicador, su peso ni su cálculo. Quedó dicho que el recuento mide actos y no efectos —un artículo derogado que la Justicia suspende suma igual que uno que rige— y que quien lo publica es el ministerio que ejecuta el programa que el recuento mide. Se sumó como contraste la investigación de Chequeado y elDiarioAR difundida en diciembre de 2025, que clasificó por impacto real las medidas dictadas hasta mayo de 2025; sus cifras se recalcularon sobre la planilla original de la investigación y no sobre su resumen periodístico. Esa base se cita como anotación de lectura: es un corte único y no un seguimiento vivo, así que no puede ser componente del índice ni validación externa recurrente." },
       { fecha: "2026-08-29", cambio: "El valor de respaldo seguía en 57 «% de avance desregulatorio», la unidad anterior al cambio del 26-jul-2026, que pasó la escala de normas a artículos. Contra la banda de hoy esos 57 se leían como 57 artículos. Se corrigió a 16.771 artículos, la última lectura verificada del informe ministerial, y el respaldo dejó de tener prioridad sobre el último valor en vivo.", adr: "0269,0143" },
       { fecha: "2026-09-08", cambio: "Se incorporan las revisiones impresas en el gráfico de los últimos tres meses. Agosto revisa julio a 16.848 artículos; con agosto en 17.115, la variación es 267. Se corrigen tarjeta e historia, conservando la procedencia de las ediciones.", adr: "0292" },
+      { fecha: "2026-10-24", cambio: "El rótulo aclara que mide volumen de intervención normativa, no la importancia ni la efectividad de cada cambio. No cambia el cálculo.", adr: "0361" },
     ],
   },
 
@@ -2080,6 +2082,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Versión inicial sobre la serie previsional trimestral, con meta de largo plazo." },
       { fecha: "2026-07-02", cambio: "Pasa a la planilla mensual de dotación APN contra diciembre de 2023, con umbrales del índice de gestión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
+      { fecha: "2026-10-24", cambio: "La dimensión Reforma del Estado aclara que su puntaje máximo refleja las referencias de dotación y gasto de funcionamiento, no una reforma del Estado completada. No cambia el cálculo.", adr: "0361" },
     ],
   },
 
@@ -2120,6 +2123,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-02", cambio: "Indicador nuevo, creado con el índice de gestión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
+      { fecha: "2026-10-24", cambio: "La explicación de la tarjeta nombraba Presupuesto Abierto como fuente; el dato sale de la serie de la Secretaría de Hacienda en datos.gob.ar, base caja. La dimensión aclara que su puntaje máximo no implica una reforma del Estado completada. No cambia el cálculo.", adr: "0361" },
     ],
   },
 
@@ -2237,6 +2241,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La entrada en vigencia del régimen vale el veinte por ciento y se cumple el 1 de diciembre de 2026, fecha fijada por el artículo 27 del decreto reglamentario: el arranque estaba previsto para junio, el propio decreto lo pasó a noviembre y el Decreto 1228/2026 lo corrió otra vez, a diciembre.",
       "La adopción efectiva vale el treinta por ciento y se cumple cuando existe al menos un Fondo de Asistencia Laboral inscripto en el registro de la Comisión Nacional de Valores. Se cuenta sólo la denominación del régimen de la Ley 27.802: el «fondo de cese laboral» de la industria de la construcción es un régimen homónimo y distinto, que se informa aparte.",
       "La serie mensual se reconstruye con la misma regla desde diciembre de 2023 y se evalúa al cierre de cada mes, de modo que un hecho del día 30 cuenta en ese mes.",
+      "El avance (0–100) y el puntaje del índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de abajo. Con 50 de avance el puntaje es 55; el 1 de diciembre de 2026, al entrar en vigencia el régimen, el avance pasa a 70 y el puntaje a 74 sin que cambie nada más.",
     ],
     anclas: {
       bandas: [
@@ -2270,6 +2275,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-25", cambio: "Su peso dentro de la dimensión baja del setenta al cincuenta por ciento, a propuesta de una revisión externa: la dimensión mide un instrumento y su resultado, y no había razón para que el instrumento pesara más del doble que el resultado. El cambio mejora el puntaje de la dimensión, porque la litigiosidad venía puntuando más alto que el fondo; se deja dicho para que la decisión pueda discutirse por su argumento y no por su efecto." },
       { fecha: "2026-08-29", cambio: "El valor de respaldo seguía en 0,4, de la fórmula anterior a la recalibración del 21-ago-2026. Se corrigió a 50 sobre el índice 0-100 vigente —los dos actos fundamentales vigentes, el régimen todavía sin regir y sin FAL registrado en la CNV— y el respaldo dejó de tener prioridad sobre el último valor en vivo.", adr: "0269,0228" },
       { fecha: "2026-10-20", cambio: "La entrada en vigencia del régimen pasa del 1 de noviembre al 1 de diciembre de 2026: el Decreto 1228/2026, publicado ese día, la prorrogó un mes y además duplicó el período de carencia, de seis a doce meses, que no incide en el indicador. El puntaje no cambia —la etapa de vigencia seguía sin cumplirse—, pero se cumple un mes más tarde. Se revisó también el estado judicial: no hay sentencia de fondo ni suspensión general de los artículos del fondo." },
+      { fecha: "2026-10-24", cambio: "La tarjeta muestra por separado el avance (50) y el puntaje del índice (55). Una revisión externa propuso llevar el avance a 90 por las normas de la CNV y de ARCA y las ofertas de los bancos; no se adopta: esas normas operativizan un régimen ya construido, y los bancos ofrecen adherirse a fondos que no funcionan hasta el 1 de diciembre (cartas de intención y anuncios, ninguno inscripto). Contarlas como adopción antes de que el régimen rija contradiría la regla del indicador, que cuenta lo que rige y no lo anunciado. Queda en revisión. El detector de fondos inscriptos pasa a reconocer también los nombres con la sigla FAL, como los anunciados, y no sólo los que dicen «Asistencia Laboral».", adr: "0361" },
     ],
   },
 
@@ -2303,6 +2309,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Son juicios del sistema de riesgos del trabajo, no el canal indemnizatorio del Fondo de Asistencia Laboral. No demuestra causalidad entre la reforma y el número de juicios; pueden cambiar exposición al riesgo, empleo, acceso a la justicia y tiempos de notificación.",
       "La ventana de 12 contra 12 meses reacciona lento a los quiebres.",
+      "Julio trae siempre la mitad de juicios que junio por la feria judicial de invierno (la proporción es la misma desde 2016): un mes de julio bajo no es un dato incompleto.",
     ],
     faltantes: "Con la planilla caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "La fuente puede revisar meses; la planilla completa se relee en cada actualización.",
@@ -2310,6 +2317,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "Tarjeta e historia exigen 24 meses consecutivos y valores válidos. Se aclara que los juicios SRT no identifican resultados del FAL ni el mérito de los reclamos.", adr: "0285" },
       { fecha: "2026-07-02", cambio: "Alta como indicador de contexto, fuera del índice." },
       { fecha: "2026-07-03", cambio: "Entra al índice de gestión (reforma laboral, 30% interno): es el resultado que la reforma persigue y complementa al instrumento." },
+      { fecha: "2026-10-24", cambio: "El rótulo pasa de «Litigiosidad laboral (SRT)» a «Juicios por riesgos del trabajo (SRT)», que es lo que la serie cuenta: no incluye los juicios por despido. Se anota la caída estacional de julio por la feria judicial. No cambia el cálculo.", adr: "0361" },
     ],
   },
 
@@ -2394,6 +2402,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Versión inicial por conteo de resoluciones (aproximación)." },
       { fecha: "2026-06-30", cambio: "Pasa a la plataforma oficial del Ministerio de Economía: inversión aprobada sobre la cartera total, con montos reales." },
       { fecha: "2026-07-02", cambio: "Umbrales institucionales del índice de gestión; después, puntaje interpolado entre anclas." },
+      { fecha: "2026-10-24", cambio: "El rótulo pasa a «Inversiones RIGI aprobadas»: mide aprobaciones administrativas, no inversión ejecutada. Se corrige además la edición mensual rehecha, que publicaba el monto aprobado en millones de dólares (49.766) como si fuera el porcentaje de la cartera; la tarjeta vuelve a tomar el porcentaje de su foto del mes.", adr: "0361" },
     ],
   },
 
@@ -2401,15 +2410,15 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "concesiones_infraestructura",
     cinturon: "gestion",
-    rezago: "Se consulta el estado del expediente y se contrasta con actos de adjudicación publicados. CONTRAT.AR puede demorar en reflejar una resolución; la fecha de consulta no equivale a la fecha del acto ni al inicio de la operación.",
+    rezago: "Es el tiempo entre la resolución de adjudicación y su carga en el archivo del proyecto (días). La fecha del dato es la de la resolución más reciente. La firma de contratos y la toma de posesión ocurren semanas después de la adjudicación y no entran en el cálculo.",
     fuente: {
-      organismo: "CONTRAT.AR + Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones)",
-      operacion: "Tasa de adjudicación de la Red Federal de Concesiones, en kilómetros: km bajo concesión adjudicada sobre km totales del plan",
+      organismo: "Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones); CONTRAT.AR sólo como detector",
+      operacion: "Porcentaje de los kilómetros de las etapas licitadas de la Red Federal de Concesiones (I, II, II-B y III; 9.133 km en 16 tramos) cuya adjudicación consta en una resolución del Boletín Oficial. Mide la adjudicación; no la firma del contrato, la toma de posesión ni la obra. No es la red vial nacional: esos kilómetros son cerca del 23% de ella.",
       url: "https://www.argentina.gob.ar/transporte/vialidad-nacional/red-federal-de-concesiones",
       acceso: "Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal.",
     },
     transformaciones: [
-      "Una etapa cuenta con el 100% de sus kilómetros cuando existe una resolución de adjudicación publicada para su proceso (o, para un proceso nuevo todavía no registrado, cuando CONTRAT.AR lo declara adjudicado).",
+      "Una etapa suma el 100% de sus kilómetros cuando existe la resolución del Boletín Oficial que adjudica su proceso, registrada en el archivo fechado del proyecto. Que CONTRAT.AR muestre un proceso adjudicado no suma: sólo avisa de procesos que el archivo todavía no conoce.",
       "La serie histórica es escalonada, por hitos de adjudicación fechados con su norma.",
     ],
     anclas: {
@@ -2424,6 +2433,7 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "% de km",
     },
     limitaciones: [
+      "El 100% significa «todo lo licitado está adjudicado», no «la red está concesionada» ni operando. A octubre de 2026 la toma de posesión consta en 7.885 de los 9.133 km; la de dos tramos de la Etapa II-B (Puntano y Portuario Norte, 1.248 km) no pudo confirmarse en fuente oficial.",
       "Las etapas que adjudican por renglones cuentan hoy solo al cierre total: refinamiento pendiente declarado.",
       "Binario por etapa: 0 o 100% de sus kilómetros.",
       "Depende de los portales de contratación, normativa y kilometraje; una descarga exitosa no garantiza que todos reflejen el mismo estado administrativo.",
@@ -2438,6 +2448,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-25", cambio: "Una etapa cuenta como adjudicada si CONTRAT.AR lo declara o si hay una resolución publicada que adjudique su proceso. CONTRAT.AR se queda viejo: al 25 de agosto de 2026 mostraba «Disponible Para Adjudicar» la Etapa II-B, adjudicada por Resolución 1149/2026 el 28 de julio, y la Etapa III, adjudicada por Resolución 1379/2026 el 24 de agosto. El indicador pasa de 28,7% a 100%. La tarjeta publica el inventario por etapa con los km, la fuente del estado y la resolución que lo respalda.", adr: "0244" },
       { fecha: "2026-08-29", cambio: "El valor de respaldo escrito a mano dejó de tener prioridad sobre el último valor que sí salió de la fuente. Con CONTRAT.AR caído, la tarjeta publicaba 28,7% —la foto del 2 de julio, con dos etapas sin adjudicar— teniendo el 100% en el cache de la noche anterior. Una fuente caída ahora envejece el número, no lo hace retroceder. El respaldo se actualizó a 100% con las cuatro resoluciones.", adr: "0269" },
       { fecha: "2026-10-10", cambio: "El estado de cada etapa pasa a salir de las resoluciones del Boletín Oficial registradas, y CONTRAT.AR queda como detector de procesos nuevos que no frena el indicador. Desde los servidores de la publicación el portal no respondía en 15 de 33 noches y la tarjeta quedaba desactualizada. No cambia lo que mide ni su valor." },
+      { fecha: "2026-10-24", cambio: "Se explicita que el indicador mide la adjudicación formal de las etapas licitadas y se corrige la ficha, que todavía describía la regla anterior (CONTRAT.AR ya no cuenta como adjudicación desde el 10 de octubre). Se agrega la toma de posesión comprobada como reserva: 7.885 de 9.133 km. No cambia el valor.", adr: "0361" },
     ],
   },
 
@@ -2480,6 +2491,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-02", cambio: "Pasa a la tasa real contra la ejecución presupuestaria, con línea de base 2023 verificada." },
       { fecha: "2026-09-08", cambio: "Se distingue devengado de pagado y se acota el universo a las dos actividades. Se retiran inferencias de ausencia de intermediación y la afirmación de una base 2023 mayoritariamente intermediada: la API confirma 98,312% en 5.1.4. No cambia la fórmula ni el 100% actual.", adr: "0296" },
       { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Asistencia directa (TDPS)» a «Asistencia directa». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
+      { fecha: "2026-10-24", cambio: "La unidad de la tarjeta pasa de «% del gasto social sin intermediación» a «% de transferencias presupuestarias clasificadas como ayudas a personas», que es lo que la fórmula calcula. No cambia el cálculo.", adr: "0361" },
     ],
   },
 
@@ -2514,6 +2526,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Fuente privada sin microdatos abiertos: los anclajes se reconstruyen de cifras publicadas.",
       "Al 8 de septiembre de 2026 el portal de la consultora redirige a una página de cuenta suspendida. Los anclajes 2023–2025 se corroboran en La Nación y Chequeado, que citan el mismo relevamiento; no son dos mediciones independientes. La tarjeta advierte cuando el detector no puede verificar nuevas publicaciones.",
       "La reducción observada no identifica el efecto causal del protocolo ni demuestra ausencia de protesta o mejoras en el ejercicio de derechos. También cambiaron la política social, los actores y las modalidades de movilización.",
+      "Mide los cortes observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La vigencia del protocolo es un hecho aparte, que se registra en el estado judicial de abajo.",
       "Granularidad anual: el valor se arrastra todo el año hasta el anclaje siguiente.",
       "Estado judicial verificado: la nulidad de primera instancia fue revocada por la Cámara en lo Contencioso Administrativo Federal (marzo de 2026) — el protocolo es un acto válido y vigente.",
       "El registro histórico oficial de cortes del GCBA está fuera de servicio; el monitoreo propio de alertas de transporte acumula la serie que permitirá automatizar el dato.",
@@ -2525,6 +2538,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-02", cambio: "Se crea el monitoreo propio de alertas de transporte como futura fuente automática." },
       { fecha: "2026-07-03", cambio: "Automatizado con los anclajes anuales públicos de Diagnóstico Político; la corrección del año cerrado 2025 llevó el valor de 55% a 74,2%." },
       { fecha: "2026-09-08", cambio: "Se explicita que la base 2023 es estimada y se muestra una advertencia cuando el detector no logra comprobar nuevas publicaciones; se retira la inferencia de que los mismos eventos se reconvirtieron en marchas sin corte.", adr: "0294" },
+      { fecha: "2026-10-24", cambio: "La unidad de la tarjeta aclara que son cortes en CABA y que no mide la aplicación del protocolo. La edición mensual rehecha fechaba el dato en el mes publicado; vuelve a fecharlo en el año del anclaje (2025).", adr: "0361" },
     ],
   },
 
@@ -2558,6 +2572,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Numerador y denominador salen de registros distintos con rezagos distintos, declarado en el dato.",
       "Mide la derivación directa de aportes, una parte de la «libertad de opción» — no toda la reforma del sistema.",
       "El contador histórico de traspasos del sitio oficial sigue fuera de servicio; este indicador lo reemplaza con otra semántica.",
+      "No mide cuántos se cambiaron de obra social o de prepaga: esa serie no se publica. Con los padrones por entidad sólo se puede acotar: entre junio de 2025 y junio de 2026, al menos un 5,6% de los beneficiarios de agentes del seguro (sin PAMI) terminó en un agente distinto. Es una cota anual que mezcla cambios de agente con altas y bajas por empleo y jubilación, y en mensual el ruido del padrón es del tamaño de la señal.",
     ],
     faltantes: "Si falla el archivo referenciado, se conserva el último resultado con su fecha y marcado como desactualizado. No se vuelve silenciosamente al nombre viejo. Sin resultado previo, el componente queda fuera y los pesos de la dimensión se renormalizan.",
     revisiones: "Las planillas anuales se releen completas en cada actualización (la fuente puede revisar meses hacia atrás).",
@@ -2565,6 +2580,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Versión inicial como carga manual: la fuente en línea estaba bloqueada." },
       { fecha: "2026-07-02", cambio: "Automatizado con los padrones oficiales de beneficiarios y usuarios." },
       { fecha: "2026-09-08", cambio: "Descubrimiento de archivos vigentes en el portal y fechas explícitas de ambos registros; recupera junio de 2026." },
+      { fecha: "2026-10-24", cambio: "La tarjeta muestra el total sobre el que se calcula el porcentaje (usuarios de prepagas) y el mes del dato; se retira un texto que seguía citando el dato de marzo. Se agrega como limitación la cota de cambios de agente que permiten los padrones. No cambia el cálculo.", adr: "0361" },
     ],
   },
 

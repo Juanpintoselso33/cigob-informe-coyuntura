@@ -57,3 +57,73 @@ def test_las_cards_exentas_de_g3_no_salen_del_ultimo_punto_de_su_serie():
 
     sin_foto = archivo.cortar_indicadores(cards, archivo.con_cards_exentas(ultimo, set(G3_EXCEPCIONES), {}), "2026-09")
     assert "rigi_inversiones" not in sin_foto, "sin foto, una card de octubre no puede entrar a septiembre"
+
+
+def test_un_dato_anual_conserva_su_fecha_en_el_mes_rehecho():
+    """La serie de piquetes repite el dato de 2025 mes a mes: el último punto
+    hasta septiembre es 2026-09-01 y la edición de septiembre lo fechaba en
+    2026. Si la card trae el mismo valor con una fecha que no pasa del mes, se
+    queda con la suya; un valor distinto, o una fecha posterior, no."""
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+    import archivo
+
+    ultimo = {"protocolo_antipiquetes": ("2026-09-01", 74.2), "cepo_mulc": ("2026-09-01", 6.27)}
+    cards = {"protocolo_antipiquetes": {"valor": 74.2, "fecha_dato": "2025-12-31"},
+             "cepo_mulc": {"valor": 8.14, "fecha_dato": "2026-10-24"}}
+    cortadas = archivo.cortar_indicadores(cards, ultimo, "2026-09")
+    assert cortadas["protocolo_antipiquetes"]["fecha_dato"] == "2025-12-31"
+    assert cortadas["cepo_mulc"] == {"valor": 6.27, "fecha_dato": "2026-09-01", "desactualizado": False}
+
+
+def _arbol_del_corte(raiz: Path, mes: str = "2026-09") -> Path:
+    """Un proyecto mínimo con los archivos de archivo.CORTE_RAMA, todos del
+    corte del 30-sep-2026."""
+    gen = "2026-09-30T23:00:00+00:00"
+    escribir = lambda rel, txt: ((raiz / rel).parent.mkdir(parents=True, exist_ok=True), (raiz / rel).write_text(txt, encoding="utf-8"))
+    sitio = {"generated_at": gen, "period": mes,
+             "cinturones": {"gestion": {"itcg": {"valor": 79.1},
+                                        "indicadores": {"cepo_mulc": {"valor": 6.27, "fecha_dato": "2026-09-29"}}}}}
+    escribir("web/src/data/informe.json", json.dumps(sitio))
+    escribir("web/src/data/series.json", json.dumps({"cepo_mulc": [{"fecha": "2026-09-01", "valor": 6.27}]}))
+    escribir("output/informe.json", json.dumps({"generated_at": gen}))
+    escribir("output/sensibilidad.json", json.dumps({"_meta": {"snapshot": gen}, "itcg": {"valor_publicado": 79.1}}))
+    escribir("output/series/gestion.csv", "fecha,indicador,valor\n2026-09-01,cepo_mulc,6.27\n")
+    escribir("output/fichas/fichas-gestion.md", "*Datos al 2026-09-30.*\n")
+    escribir("data/historico/indicadores.json", json.dumps({"cepo_mulc": {"2026-09": 6.27}}))
+    return raiz
+
+
+def test_el_control_del_corte_unico_atrapa_cada_archivo_de_otro_mes(tmp_path):
+    """Lo pidió la auditoría externa del cinturón de Gestión (23-oct-2026): la
+    página decía septiembre y las fichas, la robustez y los CSV de la rama
+    decían octubre. Se rompe un archivo por vez y el control tiene que verlo."""
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+    import archivo
+
+    assert archivo.verificar_corte(_arbol_del_corte(tmp_path / "ok"), "2026-09") == []
+
+    roturas = {
+        "una card de octubre": ("web/src/data/informe.json", lambda d: d["cinturones"]["gestion"]["indicadores"]["cepo_mulc"].update(fecha_dato="2026-10-24")),
+        "una serie con octubre": ("web/src/data/series.json", lambda d: d["cepo_mulc"].append({"fecha": "2026-10-01", "valor": 8.1})),
+        "output/informe.json de otra corrida": ("output/informe.json", lambda d: d.update(generated_at="2026-10-24T03:31:06")),
+        "la robustez de otra corrida": ("output/sensibilidad.json", lambda d: d["_meta"].update(snapshot="2026-10-24T03:31:06")),
+        "la robustez con otro índice": ("output/sensibilidad.json", lambda d: d["itcg"].update(valor_publicado=78.6)),
+        "el histórico con octubre": ("data/historico/indicadores.json", lambda d: d["cepo_mulc"].update({"2026-10": 8.1})),
+    }
+    for nombre, (rel, romper) in roturas.items():
+        raiz = _arbol_del_corte(tmp_path / nombre.replace(" ", "_"))
+        datos = json.loads((raiz / rel).read_text(encoding="utf-8"))
+        romper(datos)
+        (raiz / rel).write_text(json.dumps(datos), encoding="utf-8")
+        assert archivo.verificar_corte(raiz, "2026-09"), f"no vio {nombre}"
+
+    raiz = _arbol_del_corte(tmp_path / "csv")
+    with open(raiz / "output/series/gestion.csv", "a", encoding="utf-8") as f:
+        f.write("2026-10-01,cepo_mulc,8.1\n")
+    assert archivo.verificar_corte(raiz, "2026-09"), "no vio un CSV con octubre"
+
+    raiz = _arbol_del_corte(tmp_path / "ficha")
+    (raiz / "output/fichas/fichas-gestion.md").write_text("*Datos al 2026-10-24.*\n", encoding="utf-8")
+    assert archivo.verificar_corte(raiz, "2026-09"), "no vio una ficha de octubre"

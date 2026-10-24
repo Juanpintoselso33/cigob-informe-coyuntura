@@ -117,8 +117,18 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B mensual
-          git add projects/informe_coyuntura/web/src/data/informe.json projects/informe_coyuntura/web/src/data/series.json
+          # Todo lo que la rama lleva del corte del mes (archivo.CORTE_RAMA), no
+          # sólo los dos JSON del sitio: las fichas .md, la robustez y los CSV
+          # de output/ salían de main (auditoría externa, 23-oct-2026).
+          cd projects/informe_coyuntura
+          git add web/src/data/informe.json web/src/data/series.json output/informe.json output/informe.md \
+            output/sensibilidad.json output/validacion_externa.json output/series/*.csv \
+            output/fichas/fichas-*.md data/historico/indicadores.json
+          cd - >/dev/null
           git commit -q -m "mensual: código y método de main $(git rev-parse --short main), datos de $TAG" || true
+          # Si algún archivo no es del corte del mes, la rama no se publica y
+          # informe.cigob.org sigue con la edición anterior.
+          python projects/informe_coyuntura/scripts/archivo.py verificar "${TAG#mensual-}"
           if git rev-parse -q --verify origin/mensual >/dev/null && git diff --quiet origin/mensual HEAD; then
             echo "::notice::La rama mensual ya tenía este código y esta foto: no se publica de nuevo"
             exit 0

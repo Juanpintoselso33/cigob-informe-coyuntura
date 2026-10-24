@@ -8,7 +8,7 @@ indicadores: [fal_modernizacion_laboral]
 archivos: ['scripts/gestion.py', 'scripts/itcg.py', 'scripts/descargar_series.py', 'data/gestion/fal_hitos.json', 'tests/test_gestion_fal_actos.py', 'tests/test_descargar_series_fal.py', 'tests/test_itcg.py', 'tests/test_gestion_dotacion_fuerzas.py']
 supersede: ['0142']
 revierte: ['0142']
-relacionado: ['0042', '0068', '0098', '0121', '0128', '0218', '0221', '0226']
+relacionado: ['0042', '0068', '0098', '0121', '0128', '0218', '0221', '0226', '0361']
 ambito: 'ITCG · `fal_modernizacion_laboral` · bandas · serie · card · ficha · `fal_hitos.json`'
 origen: 'Evidencia externa de tres terceros independientes, revisada a pedido del editor el 21-ago-2026 («¿te parece que hay que incorporarlo?» → «dale, mandá 3 agentes a hacerlo»)'
 ---

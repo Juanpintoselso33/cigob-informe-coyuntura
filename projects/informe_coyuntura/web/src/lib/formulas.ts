@@ -107,7 +107,7 @@ export const FORMULAS: Record<string, Formula> = {
   // ── Gestión (ITCG) ───────────────────────────────────────────────────────
   cepo_mulc: {
     latex: String.raw`\left(\frac{\text{d\'olar CCL}}{\text{d\'olar mayorista}}-1\right)\times 100`,
-    leyenda: "Cuánto más caro es el dólar financiero libre que el oficial. Cerca de 0 = mercado unificado, el cepo dejó de morder.",
+    leyenda: "Cuánto más caro es el dólar financiero libre que el oficial. Una brecha reducida indica más proximidad entre las dos cotizaciones: es una señal de normalización cambiaria, pero no permite establecer por sí sola que hayan desaparecido todas las restricciones de acceso al mercado de cambios.",
   },
   apertura_comercial: {
     latex: String.raw`\frac{\text{impuestos al comercio exterior}}{\text{exportaciones}+\text{importaciones}}\times 100`,
@@ -123,7 +123,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   gasto_funcionamiento: {
     latex: String.raw`\left(\frac{\text{gasto}_{\text{hoy}}}{\text{gasto}_{2023}}\cdot\frac{\text{IPC}_{2023}}{\text{IPC}_{\text{hoy}}}-1\right)\times 100`,
-    leyenda: "Gasto de funcionamiento devengado (Presupuesto Abierto) comparado contra 2023 en términos reales.",
+    leyenda: "Gasto de funcionamiento del Estado nacional (salarios + otros gastos, base caja) de la Secretaría de Hacienda, publicado en datos.gob.ar, contra el mismo mes de 2023, descontada la inflación del Instituto Nacional de Estadística y Censos (INDEC).",
   },
   masa_salarial: {
     latex: String.raw`\left(\frac{\text{masa salarial}_{\text{hoy}}}{\text{masa salarial}_{2023}}\cdot\frac{\text{IPC}_{2023}}{\text{IPC}_{\text{hoy}}}-1\right)\times 100`,

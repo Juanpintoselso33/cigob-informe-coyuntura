@@ -69,10 +69,10 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023. | −35,92 % de variación real vs 2023-08 (gastos de funcionamiento) | VERDE | 10,4 % |
 | **DIMENSIÓN: Reforma laboral** | | | | |
 | Fondo de Asistencia Laboral | Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el… | 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | AMARILLO | 7,5 % |
-| Litigiosidad laboral (SRT) | Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del… | 0,1 % variación juicios SRT (12m vs 12m previos) | VERDE | 7,5 % |
+| Juicios por riesgos del trabajo (SRT) | Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del… | 0,1 % variación juicios SRT (12m vs 12m previos) | VERDE | 7,5 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
 | Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 55,6 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
-| Inversiones RIGI | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 33,3 % de inversión aprobada sobre el pipeline | VERDE | 6,0 % |
+| Inversiones RIGI aprobadas | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 33,3 % de inversión aprobada sobre el pipeline | VERDE | 6,0 % |
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
 | Asistencia directa | Aproxima la desintermediación mediante la composición presupuestaria. | 100 % del devengado de transferencias en ayudas a personas (5.1.4) | VERDE | 4,0 % |
@@ -119,7 +119,7 @@ Mide el grado de normalización cambiaria, uno de los ejes del programa económi
 
 - Brecha = (CCL − mayorista) / mayorista × 100.
 - Se usa el mayorista y no el minorista de pizarra: el minorista incluye el margen bancario y subestima la brecha.
-- Una brecha cercana a cero indica proximidad de estos precios; no demuestra ausencia de restricciones legales o administrativas.
+- Una brecha reducida indica más proximidad entre las dos cotizaciones: es una señal de normalización cambiaria, pero no permite establecer por sí sola que hayan desaparecido todas las restricciones de acceso al mercado de cambios.
 
 ## Semáforo — valores que determinan el color
 
@@ -171,6 +171,8 @@ Ponderación vigente en el ITCG: 14 % efectivo. El color es una lectura adiciona
 **2026-07-02** — Entra al índice de gestión con umbrales institucionales sobre la brecha CCL/mayorista.
 
 **2026-07-03** — Puntaje interpolado entre anclas. Además, la brecha deja de puntuar una segunda vez dentro del compuesto de apertura comercial: puntúa una sola vez, acá.
+
+**2026-10-24** — La explicación de la tarjeta deja de decir que una brecha cerca de cero significa que «el cepo dejó de morder»: es una señal de normalización cambiaria, no prueba que hayan desaparecido todas las restricciones. No cambia el cálculo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -292,7 +294,7 @@ Cuántos artículos de normas quedaron modificados o eliminados por el programa 
 
 Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado.
 
-Mide el volumen de articulado que el programa alcanzó, no la cantidad de actos administrativos firmados. La diferencia importa: un decreto que reescribe quinientos artículos y una resolución que toca uno pesan igual si se cuentan normas, y muy distinto si se cuentan artículos. Lo que el recuento no distingue es si lo derogado dejó de regir: un artículo que la Justicia repuso suma igual que uno vigente, de modo que el indicador mide el acto de desregular y no su efecto. Muestra además la forma del programa en el tiempo, que es muy desigual: un arranque acotado, un salto marcado a partir de la Ley Bases y la creación del ministerio, y una aceleración durante 2026. La tarjeta publica también las otras dos cifras del mismo informe: cuántas normas de desregulación se dictaron y cuántas normas anteriores alcanzaron.
+Mide el volumen de intervención normativa, no la importancia ni la efectividad de cada cambio: un artículo menor cuenta igual que uno que transforma un régimen completo. Tampoco cuenta actos administrativos firmados. La diferencia importa: un decreto que reescribe quinientos artículos y una resolución que toca uno pesan igual si se cuentan normas, y muy distinto si se cuentan artículos. Lo que el recuento no distingue es si lo derogado dejó de regir: un artículo que la Justicia repuso suma igual que uno vigente, de modo que el indicador mide el acto de desregular y no su efecto. Muestra además la forma del programa en el tiempo, que es muy desigual: un arranque acotado, un salto marcado a partir de la Ley Bases y la creación del ministerio, y una aceleración durante 2026. La tarjeta publica también las otras dos cifras del mismo informe: cuántas normas de desregulación se dictaron y cuántas normas anteriores alcanzaron.
 
 **Dimensión que integra — Reformas económicas fundamentales.** El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.
 
@@ -369,6 +371,8 @@ Ponderación vigente en el ITCG: 7 % efectivo. El color es una lectura adicional
 
 **2026-09-08** — Se incorporan las revisiones impresas en el gráfico de los últimos tres meses. Agosto revisa julio a 16.848 artículos; con agosto en 17.115, la variación es 267. Se corrigen tarjeta e historia, conservando la procedencia de las ediciones.
 
+**2026-10-24** — El rótulo aclara que mide volumen de intervención normativa, no la importancia ni la efectividad de cada cambio. No cambia el cálculo.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -401,7 +405,7 @@ Cuánto varía la dotación de personal de la Administración Pública Nacional 
 
 La métrica insignia de la reforma del Estado: personas, no pesos. Universo: Administración Pública Nacional — incluye fuerzas armadas y de seguridad (~10% de la dotación) y no incluye empresas del Estado ni provincias/municipios.
 
-**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario.
+**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario. El puntaje máximo refleja el cumplimiento de las referencias fijadas para esas dos variables; no implica que se haya completado la reforma y transformación del Estado.
 
 ## Método de cómputo
 
@@ -461,6 +465,8 @@ Ponderación vigente en el ITCG: 14,6 % efectivo. El color es una lectura adicio
 
 **2026-07-03** — Puntaje interpolado entre anclas.
 
+**2026-10-24** — La dimensión Reforma del Estado aclara que su puntaje máximo refleja las referencias de dotación y gasto de funcionamiento, no una reforma del Estado completada. No cambia el cálculo.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -493,7 +499,7 @@ Cuánto varía en términos reales el gasto de funcionamiento del Estado naciona
 
 La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal.
 
-**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario.
+**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario. El puntaje máximo refleja el cumplimiento de las referencias fijadas para esas dos variables; no implica que se haya completado la reforma y transformación del Estado.
 
 ## Método de cómputo
 
@@ -548,6 +554,8 @@ Ponderación vigente en el ITCG: 10,4 % efectivo. El color es una lectura adicio
 
 **2026-07-03** — Puntaje interpolado entre anclas.
 
+**2026-10-24** — La explicación de la tarjeta nombraba Presupuesto Abierto como fuente; el dato sale de la serie de la Secretaría de Hacienda en datos.gob.ar, base caja. La dimensión aclara que su puntaje máximo no implica una reforma del Estado completada. No cambia el cálculo.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -578,7 +586,7 @@ Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo 
 
 Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).
 
-Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de diciembre de 2026; el cálculo reserva esa etapa hasta entonces. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.
+Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de diciembre de 2026; el cálculo reserva esa etapa hasta entonces, y ese día el avance pasa de 50 a 70 y el puntaje de 55 a 74 sin que cambie nada más. El avance (0–100) y el puntaje para el índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de la ficha. Las ofertas de los bancos todavía no cuentan como adopción: son anuncios y cartas de intención de fondos que no funcionan hasta que el régimen rija. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.
 
 **Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. Estos litigios pertenecen a otro universo de reclamos: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.
 
@@ -588,6 +596,7 @@ Distingue construcción normativa, entrada en vigencia y registro de fondos. La 
 - La entrada en vigencia del régimen vale el veinte por ciento y se cumple el 1 de diciembre de 2026, fecha fijada por el artículo 27 del decreto reglamentario: el arranque estaba previsto para junio, el propio decreto lo pasó a noviembre y el Decreto 1228/2026 lo corrió otra vez, a diciembre.
 - La adopción efectiva vale el treinta por ciento y se cumple cuando existe al menos un Fondo de Asistencia Laboral inscripto en el registro de la Comisión Nacional de Valores. Se cuenta sólo la denominación del régimen de la Ley 27.802: el «fondo de cese laboral» de la industria de la construcción es un régimen homónimo y distinto, que se informa aparte.
 - La serie mensual se reconstruye con la misma regla desde diciembre de 2023 y se evalúa al cierre de cada mes, de modo que un hecho del día 30 cuenta en ese mes.
+- El avance (0–100) y el puntaje del índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de abajo. Con 50 de avance el puntaje es 55; el 1 de diciembre de 2026, al entrar en vigencia el régimen, el avance pasa a 70 y el puntaje a 74 sin que cambie nada más.
 
 ## Semáforo — valores que determinan el color
 
@@ -657,6 +666,8 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 
 **2026-10-20** — La entrada en vigencia del régimen pasa del 1 de noviembre al 1 de diciembre de 2026: el Decreto 1228/2026, publicado ese día, la prorrogó un mes y además duplicó el período de carencia, de seis a doce meses, que no incide en el indicador. El puntaje no cambia —la etapa de vigencia seguía sin cumplirse—, pero se cumple un mes más tarde. Se revisó también el estado judicial: no hay sentencia de fondo ni suspensión general de los artículos del fondo.
 
+**2026-10-24** — La tarjeta muestra por separado el avance (50) y el puntaje del índice (55). Una revisión externa propuso llevar el avance a 90 por las normas de la CNV y de ARCA y las ofertas de los bancos; no se adopta: esas normas operativizan un régimen ya construido, y los bancos ofrecen adherirse a fondos que no funcionan hasta el 1 de diciembre (cartas de intención y anuncios, ninguno inscripto). Contarlas como adopción antes de que el régimen rija contradiría la regla del indicador, que cuenta lo que rige y no lo anunciado. Queda en revisión. El detector de fondos inscriptos pasa a reconocer también los nombres con la sigla FAL, como los anunciados, y no sólo los que dicen «Asistencia Laboral».
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -665,7 +676,7 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Litigiosidad laboral (SRT)
+# Juicios por riesgos del trabajo (SRT)
 
 Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del Trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.
 
@@ -730,6 +741,7 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 
 - Son juicios del sistema de riesgos del trabajo, no el canal indemnizatorio del Fondo de Asistencia Laboral. No demuestra causalidad entre la reforma y el número de juicios; pueden cambiar exposición al riesgo, empleo, acceso a la justicia y tiempos de notificación.
 - La ventana de 12 contra 12 meses reacciona lento a los quiebres.
+- Julio trae siempre la mitad de juicios que junio por la feria judicial de invierno (la proporción es la misma desde 2016): un mes de julio bajo no es un dato incompleto.
 
 ## Si falta el dato / Política de revisiones
 
@@ -744,6 +756,8 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 **2026-07-02** — Alta como indicador de contexto, fuera del índice.
 
 **2026-07-03** — Entra al índice de gestión (reforma laboral, 30% interno): es el resultado que la reforma persigue y complementa al instrumento.
+
+**2026-10-24** — El rótulo pasa de «Litigiosidad laboral (SRT)» a «Juicios por riesgos del trabajo (SRT)», que es lo que la serie cuenta: no incluye los juicios por despido. Se anota la caída estacional de julio por la feria judicial. No cambia el cálculo.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -845,7 +859,7 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Inversiones RIGI
+# Inversiones RIGI aprobadas
 
 Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total de la cartera (aprobados + en evaluación).
 
@@ -867,7 +881,7 @@ Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) 
 
 Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total de la cartera (aprobados + en evaluación).
 
-Mide si el régimen convierte las promesas en inversión ratificada, con la plataforma oficial del Ministerio de Economía. La evolución histórica grafica la inversión aprobada acumulada en dólares.
+Mide decisiones administrativas de aprobación, con la plataforma oficial del Ministerio de Economía: no cuánto se invirtió efectivamente ni cuánto avanzaron los proyectos, porque no hay una serie pública de inversión ejecutada. La evolución histórica grafica la inversión aprobada acumulada en dólares.
 
 **Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
@@ -926,6 +940,8 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 
 **2026-07-02** — Umbrales institucionales del índice de gestión; después, puntaje interpolado entre anclas.
 
+**2026-10-24** — El rótulo pasa a «Inversiones RIGI aprobadas»: mide aprobaciones administrativas, no inversión ejecutada. Se corrige además la edición mensual rehecha, que publicaba el monto aprobado en millones de dólares (49.766) como si fuera el porcentaje de la cartera; la tarjeta vuelve a tomar el porcentaje de su foto del mes.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -948,21 +964,21 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | concesiones_infraestructura | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de km adjudicados / km del plan (Red Federal de Concesiones) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Se consulta el estado del expediente y se contrasta con actos de adjudicación publicados. CONTRAT.AR puede demorar en reflejar una resolución; la fecha de consulta no equivale a la fecha del acto ni al inicio de la operación. |
-| **PRODUCTOR DEL DATO** | CONTRAT.AR + Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones) | **OPERACIÓN ESTADÍSTICA** | Tasa de adjudicación de la Red Federal de Concesiones, en kilómetros: km bajo concesión adjudicada sobre km totales del plan |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Es el tiempo entre la resolución de adjudicación y su carga en el archivo del proyecto (días). La fecha del dato es la de la resolución más reciente. La firma de contratos y la toma de posesión ocurren semanas después de la adjudicación y no entran en el cálculo. |
+| **PRODUCTOR DEL DATO** | Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones); CONTRAT.AR sólo como detector | **OPERACIÓN ESTADÍSTICA** | Porcentaje de los kilómetros de las etapas licitadas de la Red Federal de Concesiones (I, II, II-B y III; 9.133 km en 16 tramos) cuya adjudicación consta en una resolución del Boletín Oficial. Mide la adjudicación; no la firma del contrato, la toma de posesión ni la obra. No es la red vial nacional: esos kilómetros son cerca del 23% de ella. |
 | **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-24 |
 
 ## Definición — qué mide y por qué importa
 
 Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada etapa sale de las resoluciones de adjudicación del Boletín Oficial (el sistema de contrataciones del Estado, CONTRAT.AR, se usa para detectar procesos nuevos) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).
 
-Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su resolución de adjudicación está publicada en el Boletín Oficial; que el sistema de contrataciones la muestre adjudicada no alcanza (sólo avisa).
+Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su resolución de adjudicación está publicada en el Boletín Oficial; que el sistema de contrataciones la muestre adjudicada no alcanza (sólo avisa). El 100% quiere decir que todo lo licitado está adjudicado, no que la red esté concesionada ni operando: las cuatro etapas suman cerca del 23% de la red vial nacional, y a octubre de 2026 la toma de posesión consta en 7.885 de sus 9.133 km (la de dos tramos de la Etapa II-B, Puntano y Portuario Norte, no pudo confirmarse en fuente oficial).
 
 **Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
 ## Método de cómputo
 
-- Una etapa cuenta con el 100% de sus kilómetros cuando existe una resolución de adjudicación publicada para su proceso (o, para un proceso nuevo todavía no registrado, cuando CONTRAT.AR lo declara adjudicado).
+- Una etapa suma el 100% de sus kilómetros cuando existe la resolución del Boletín Oficial que adjudica su proceso, registrada en el archivo fechado del proyecto. Que CONTRAT.AR muestre un proceso adjudicado no suma: sólo avisa de procesos que el archivo todavía no conoce.
 - La serie histórica es escalonada, por hitos de adjudicación fechados con su norma.
 
 ## Semáforo — valores que determinan el color
@@ -996,6 +1012,7 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 
 ## Transparencia — limitaciones declaradas
 
+- El 100% significa «todo lo licitado está adjudicado», no «la red está concesionada» ni operando. A octubre de 2026 la toma de posesión consta en 7.885 de los 9.133 km; la de dos tramos de la Etapa II-B (Puntano y Portuario Norte, 1.248 km) no pudo confirmarse en fuente oficial.
 - Las etapas que adjudican por renglones cuentan hoy solo al cierre total: refinamiento pendiente declarado.
 - Binario por etapa: 0 o 100% de sus kilómetros.
 - Depende de los portales de contratación, normativa y kilometraje; una descarga exitosa no garantiza que todos reflejen el mismo estado administrativo.
@@ -1020,6 +1037,8 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 **2026-08-29** — El valor de respaldo escrito a mano dejó de tener prioridad sobre el último valor que sí salió de la fuente. Con CONTRAT.AR caído, la tarjeta publicaba 28,7% —la foto del 2 de julio, con dos etapas sin adjudicar— teniendo el 100% en el cache de la noche anterior. Una fuente caída ahora envejece el número, no lo hace retroceder. El respaldo se actualizó a 100% con las cuatro resoluciones.
 
 **2026-10-10** — El estado de cada etapa pasa a salir de las resoluciones del Boletín Oficial registradas, y CONTRAT.AR queda como detector de procesos nuevos que no frena el indicador. Desde los servidores de la publicación el portal no respondía en 15 de 33 noches y la tarjeta quedaba desactualizada. No cambia lo que mide ni su valor.
+
+**2026-10-24** — Se explicita que el indicador mide la adjudicación formal de las etapas licitadas y se corrige la ficha, que todavía describía la regla anterior (CONTRAT.AR ya no cuenta como adjudicación desde el 10 de octubre). Se agrega la toma de posesión comprobada como reserva: 7.885 de 9.133 km. No cambia el valor.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1111,6 +1130,8 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 **2026-09-15** — El rótulo de la tarjeta pasa de «Asistencia directa (TDPS)» a «Asistencia directa». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
 
+**2026-10-24** — La unidad de la tarjeta pasa de «% del gasto social sin intermediación» a «% de transferencias presupuestarias clasificadas como ayudas a personas», que es lo que la fórmula calcula. No cambia el cálculo.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -1141,7 +1162,7 @@ En qué porcentaje se redujo el número de cortes por manifestación relevados e
 
 En qué porcentaje se redujo el número de cortes por manifestación relevados en CABA respecto de una base estimada para 2023.
 
-Describe la evolución de los cortes registrados por Diagnóstico Político. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.
+Describe la evolución de los cortes registrados por Diagnóstico Político. Mide resultados observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.
 
 **Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
 
@@ -1186,6 +1207,7 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 - Fuente privada sin microdatos abiertos: los anclajes se reconstruyen de cifras publicadas.
 - Al 8 de septiembre de 2026 el portal de la consultora redirige a una página de cuenta suspendida. Los anclajes 2023–2025 se corroboran en La Nación y Chequeado, que citan el mismo relevamiento; no son dos mediciones independientes. La tarjeta advierte cuando el detector no puede verificar nuevas publicaciones.
 - La reducción observada no identifica el efecto causal del protocolo ni demuestra ausencia de protesta o mejoras en el ejercicio de derechos. También cambiaron la política social, los actores y las modalidades de movilización.
+- Mide los cortes observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La vigencia del protocolo es un hecho aparte, que se registra en el estado judicial de abajo.
 - Granularidad anual: el valor se arrastra todo el año hasta el anclaje siguiente.
 - Estado judicial verificado: la nulidad de primera instancia fue revocada por la Cámara en lo Contencioso Administrativo Federal (marzo de 2026) — el protocolo es un acto válido y vigente.
 - El registro histórico oficial de cortes del GCBA está fuera de servicio; el monitoreo propio de alertas de transporte acumula la serie que permitirá automatizar el dato.
@@ -1205,6 +1227,8 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 **2026-07-03** — Automatizado con los anclajes anuales públicos de Diagnóstico Político; la corrección del año cerrado 2025 llevó el valor de 55% a 74,2%.
 
 **2026-09-08** — Se explicita que la base 2023 es estimada y se muestra una advertencia cuando el detector no logra comprobar nuevas publicaciones; se retira la inferencia de que los mismos eventos se reconvirtieron en marchas sin corte.
+
+**2026-10-24** — La unidad de la tarjeta aclara que son cortes en CABA y que no mide la aplicación del protocolo. La edición mensual rehecha fechaba el dato en el mes publicado; vuelve a fecharlo en el año del anclaje (2025).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1236,7 +1260,7 @@ Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados 
 
 Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el decreto de necesidad y urgencia (DNU) 70/2023 al eliminar la triangulación obligatoria por una obra social.
 
-Mide la adopción real de la libre elección con los padrones oficiales de la Superintendencia de Servicios de Salud (el Registro Nacional de Agentes del Seguro de Salud y el de entidades de medicina prepaga): antes de la reforma este canal no existía; a marzo de 2026 lo usan 2,66 millones de personas en 59 prepagas inscriptas.
+Mide la adopción real de la libre elección con los padrones oficiales de la Superintendencia de Servicios de Salud (el Registro Nacional de Agentes del Seguro de Salud y el de entidades de medicina prepaga): antes de la reforma este canal no existía. El total de usuarios de prepagas y el mes del dato se muestran en la tarjeta. No mide cuántos se cambiaron de obra social o de prepaga: esa serie no se publica. Con los padrones por entidad sólo se puede acotar: entre junio de 2025 y junio de 2026, al menos un 5,6% de los beneficiarios de agentes del seguro (sin PAMI) terminó en un agente distinto, una cota que mezcla cambios de agente con altas y bajas por empleo y jubilación.
 
 **Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
 
@@ -1278,6 +1302,7 @@ Ponderación vigente en el ITCG: 2 % efectivo. El color es una lectura adicional
 - Numerador y denominador salen de registros distintos con rezagos distintos, declarado en el dato.
 - Mide la derivación directa de aportes, una parte de la «libertad de opción» — no toda la reforma del sistema.
 - El contador histórico de traspasos del sitio oficial sigue fuera de servicio; este indicador lo reemplaza con otra semántica.
+- No mide cuántos se cambiaron de obra social o de prepaga: esa serie no se publica. Con los padrones por entidad sólo se puede acotar: entre junio de 2025 y junio de 2026, al menos un 5,6% de los beneficiarios de agentes del seguro (sin PAMI) terminó en un agente distinto. Es una cota anual que mezcla cambios de agente con altas y bajas por empleo y jubilación, y en mensual el ruido del padrón es del tamaño de la señal.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1292,3 +1317,5 @@ Ponderación vigente en el ITCG: 2 % efectivo. El color es una lectura adicional
 **2026-07-02** — Automatizado con los padrones oficiales de beneficiarios y usuarios.
 
 **2026-09-08** — Descubrimiento de archivos vigentes en el portal y fechas explícitas de ambos registros; recupera junio de 2026.
+
+**2026-10-24** — La tarjeta muestra el total sobre el que se calcula el porcentaje (usuarios de prepagas) y el mes del dato; se retira un texto que seguía citando el dato de marzo. Se agrega como limitación la cota de cambios de agente que permiten los padrones. No cambia el cálculo.

@@ -59,13 +59,18 @@ interface Props {
   /** Texto del globo que aparece al pasar el mouse por el marcador (la aguja),
       con el estilo de los tooltips de ApexCharts. Sin él, no hay globo. */
   tip?: string;
+  /** Color que ya calculó el pipeline (`semaforo.color`). Manda sobre el que
+      sale de la tensión: la tensión publicada viene redondeada a un decimal,
+      y una dimensión con 59,9 daba tensión 4,0 y se pintaba verde siendo
+      amarilla (auditoría externa, oct-2026). */
+  color?: string | null;
 }
-const { tension, titulo, tamano = "chica", pie, ocultarTitulo = false, ocultarLectura = false, tip } = Astro.props as Props;
+const { tension, titulo, tamano = "chica", pie, ocultarTitulo = false, ocultarLectura = false, tip, color: colorDado } = Astro.props as Props;
 
 const tramos = tramosSemaforo();
 const hayEscala = tramos.length > 0;
 const valor = typeof tension === "number" && Number.isFinite(tension) ? tension : null;
-const color = hayEscala ? colorPorTension(tension) : null;
+const color = hayEscala ? ((colorDado as ReturnType<typeof colorPorTension>) || colorPorTension(tension)) : null;
 
 // Geometría. ANCHO es nominal —el eje X se estira al ancho real— y ALTO son
 // píxeles de pantalla, porque el CSS le da al SVG exactamente esta altura.

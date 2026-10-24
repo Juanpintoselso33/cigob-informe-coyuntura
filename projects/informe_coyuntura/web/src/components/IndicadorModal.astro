@@ -307,11 +307,14 @@ const dimsJson = JSON.stringify(dims);
     return NIVEL.lectura[t.color] || "";
   }
 
-  function nivelHTML(tension) {
+  // `color`: el semaforo.color del pipeline, que manda sobre el de la tensión
+  // redondeada (59,9 → tensión 4,0 se pintaba verde; ver NivelTension.astro).
+  function nivelHTML(tension, color) {
     if (typeof tension !== "number" || !isFinite(tension) || !NIVEL.tramos.length) return "";
     const ANCHO = 280, ALTO = 40, Y = ALTO / 2, G = 12, GA = 18, MAX = NIVEL.max;
     const x = t => (Math.min(Math.max(t, 0), MAX) / MAX) * ANCHO;
-    const activo = NIVEL.tramos.find(t => tension <= t.hasta) || NIVEL.tramos[NIVEL.tramos.length - 1];
+    const activo = (color && NIVEL.tramos.find(t => t.color === color))
+      || NIVEL.tramos.find(t => tension <= t.hasta) || NIVEL.tramos[NIVEL.tramos.length - 1];
     const pista = (a, b, cls, grosor) =>
       `<line x1="${x(a).toFixed(2)}" y1="${Y}" x2="${x(b).toFixed(2)}" y2="${Y}" class="${cls}"` +
       ` stroke-width="${grosor}" stroke-linecap="butt" vector-effect="non-scaling-stroke"/>`;
@@ -585,7 +588,7 @@ const dimsJson = JSON.stringify(dims);
         }
         semCaja.innerHTML =
           `<h4 class="cg-modal-h4">Semáforo</h4>` +
-          nivelHTML(d.semaforo.tension) +
+          nivelHTML(d.semaforo.tension, d.semaforo.color) +
           // Sin «Color vigente: VERDE»: la barra ya dice el tramo con su
           // palabra; queda sólo el porqué (pedido de Juan, 11-oct-2026).
           (porQueHtml ? `<p class="cg-score-map">${porQueHtml.replace(/^ — /, "").replace(/^./, c => c.toUpperCase())}</p>` : "") +
@@ -786,7 +789,7 @@ const dimsJson = JSON.stringify(dims);
         // semáforo, sin unidad cruda a la que traducir un corte.
         semCaja.innerHTML =
           `<h4 class="cg-modal-h4">Semáforo</h4>` +
-          nivelHTML(d.semaforo.tension) +
+          nivelHTML(d.semaforo.tension, d.semaforo.color) +
           (d.semaforo.por_que ? `<p class="cg-score-map">${esc(d.semaforo.por_que)}</p>` : "");
         semCaja.style.display = "";
       } else {

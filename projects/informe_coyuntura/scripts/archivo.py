@@ -241,6 +241,13 @@ def cortar_indicadores(inds: dict, ultimo: dict, mes: str) -> dict:
         nuevo = {c: ind[c] for c in CAMPOS_CARD if c in ind}
         if k in ultimo:
             fecha, valor = ultimo[k]
+            # Un dato anual (piquetes) se repite en la serie mes a mes: el
+            # último punto hasta septiembre es «2026-09-01» aunque el dato sea
+            # de 2025. Si la card de hoy trae ese mismo valor con una fecha que
+            # no pasa del mes, la fecha buena es la suya.
+            propia = str(ind.get("fecha_dato") or "")
+            if propia and propia[:7] <= mes and ind.get("valor") == valor:
+                fecha = propia
             nuevo["valor"], nuevo["fecha_dato"] = valor, fecha
         elif not str(ind.get("fecha_dato") or "9")[:7] <= mes:
             continue
@@ -279,7 +286,7 @@ publicar.main()
 
 
 @contextlib.contextmanager
-def _reconstruido(mes: str, desde: str = "series"):
+def _reconstruido(mes: str, desde: str = "series", completo: bool = False):
     """Arma en un árbol temporal el snapshot del mes con el Monitor de HOY y
     lo entrega como (arbol, proyecto, snap, fuera, sha). Lo usan el archivo
     (que además lo empaqueta) y la rama mensual (que sólo toma los datos).
@@ -287,7 +294,10 @@ def _reconstruido(mes: str, desde: str = "series"):
     desde="series" (el modo de hoy): los datos de HOY cortados a fin del mes
     (`_cortar`). desde="corrida": los datos crudos de la última corrida de ese
     mes; sólo sirve si ningún indicador cambió de fuente o de definición desde
-    entonces (7-oct-2026: junio salía muy tenso por eso)."""
+    entonces (7-oct-2026: junio salía muy tenso por eso).
+
+    completo=True corre además sensibilidad y fichas, para que la rama mensual
+    lleve TODOS sus archivos del mismo corte (ver `datos_del_mes`)."""
     if desde == "corrida":
         sha = mensual.elegir(mes)
         snap_viejo = json.loads(mensual._git("show", f"{sha}:{mensual.DATOS}/informe.json"))
@@ -327,10 +337,13 @@ def _reconstruido(mes: str, desde: str = "series"):
             # El mismo orden que el pipeline: validacion_externa arma la serie
             # mensual de cada índice («Cómo va la película»); sin ella, el mes
             # salía con la sección vacía.
-            for script in ("scripts/validacion_externa.py", "scripts/generar_informe.py", publicar):
-                r = _run([str(py), script], proyecto, env)
+            pasos = [["scripts/validacion_externa.py"], ["scripts/generar_informe.py"], [publicar]]
+            if completo:
+                pasos += [["scripts/sensibilidad.py"], ["scripts/fichas/generar.py", "--todos"]]
+            for paso in pasos:
+                r = _run([str(py), *paso], proyecto, env)
                 if r.returncode:
-                    raise SystemExit(f"{mes}: {script} falló:\n{(r.stderr or r.stdout)[-1500:]}")
+                    raise SystemExit(f"{mes}: {paso[0]} falló:\n{(r.stderr or r.stdout)[-1500:]}")
             ruta_snap = proyecto / "web" / "src" / "data" / "informe.json"
             snap = json.loads(ruta_snap.read_text(encoding="utf-8"))
             # Los cachés viejos traen cards de indicadores que el Monitor de hoy
@@ -363,17 +376,83 @@ def _reconstruido(mes: str, desde: str = "series"):
             mensual._git("worktree", "remove", "--force", str(arbol))
 
 
+# Lo que la rama mensual lleva del corte del mes, relativo al proyecto. Hasta
+# oct-2026 llevaba sólo los dos JSON del sitio y el resto era el de main: la
+# página decía septiembre y las fichas .md, la robustez y los CSV de `output/`
+# decían octubre (auditoría externa del cinturón de Gestión, 23-oct-2026).
+# Los cachés no van: el corte los deja sólo con los campos de la card.
+CORTE_RAMA = ("web/src/data/informe.json", "web/src/data/series.json",
+              "output/informe.json", "output/informe.md", "output/sensibilidad.json",
+              "output/validacion_externa.json", "output/series/*.csv",
+              "output/fichas/fichas-*.md", "data/historico/indicadores.json")
+
+
 def datos_del_mes(mes: str, destino: Path) -> dict:
-    """informe.json y series.json del mes con la metodología de HOY, para la
-    rama mensual: el informe del mes publicado se lee con el método vigente,
-    igual que su foto en /archivo/ (16-oct-2026: el #75 cambió el índice macro
-    y informe.cigob.org seguía mostrando el de antes)."""
-    with _reconstruido(mes) as (_arbol, proyecto, snap, _fuera, _sha):
-        datos = proyecto / "web" / "src" / "data"
-        (destino / "informe.json").write_text(json.dumps(snap, ensure_ascii=False, indent=1), encoding="utf-8")
-        shutil.copy(datos / "series.json", destino / "series.json")
+    """Los archivos de CORTE_RAMA del mes con la metodología de HOY, para la
+    rama mensual (`destino` = el proyecto): el informe del mes publicado se lee
+    con el método vigente, igual que su foto en /archivo/ (16-oct-2026: el #75
+    cambió el índice macro y informe.cigob.org seguía mostrando el de antes)."""
+    with _reconstruido(mes, completo=True) as (_arbol, proyecto, snap, _fuera, _sha):
+        (proyecto / "web" / "src" / "data" / "informe.json").write_text(
+            json.dumps(snap, ensure_ascii=False, indent=1), encoding="utf-8")
+        for patron in CORTE_RAMA:
+            for origen in sorted(proyecto.glob(patron)):
+                rel = origen.relative_to(proyecto)
+                (destino / rel).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy(origen, destino / rel)
     print(f"· {mes}: datos del mensual rehechos con la metodología de hoy")
     return snap
+
+
+def verificar_corte(proyecto: Path, mes: str) -> list[str]:
+    """Lo que en los archivos de CORTE_RAMA no es del corte de `mes`: una fecha
+    de dato posterior al mes, o un número que no coincide con el del sitio.
+    Vacía = todo sale del mismo corte. Lo corre mensual.yml antes de publicar
+    la rama: si algo falla, informe.cigob.org sigue con la edición anterior."""
+    import csv
+    errores = []
+    fin = _fin_de_mes(mes)
+    leer = lambda rel: json.loads((proyecto / rel).read_text(encoding="utf-8"))
+    sitio = leer("web/src/data/informe.json")
+    gen = str(sitio.get("generated_at") or "")
+    if sitio.get("period") != mes:
+        errores.append(f"web/src/data/informe.json: period {sitio.get('period')}, no {mes}")
+    if gen[:10] > fin:
+        errores.append(f"web/src/data/informe.json: generado el {gen[:10]}, después del {fin}")
+    for ck, c in (sitio.get("cinturones") or {}).items():
+        for ik, ind in (c.get("indicadores") or {}).items():
+            if isinstance(ind, dict) and str(ind.get("fecha_dato") or "")[:7] > mes:
+                errores.append(f"{ck}.{ik}: dato del {ind['fecha_dato']}")
+    for k, puntos in leer("web/src/data/series.json").items():
+        tarde = [p["fecha"] for p in puntos if str(p.get("fecha", ""))[:7] > mes]
+        if tarde:
+            errores.append(f"series.json {k}: {len(tarde)} puntos después de {mes} ({tarde[-1]})")
+    for ruta in sorted((proyecto / "output" / "series").glob("*.csv")):
+        with open(ruta, encoding="utf-8", newline="") as f:
+            tarde = sum(1 for r in csv.DictReader(f) if r["fecha"][:7] > mes)
+        if tarde:
+            errores.append(f"output/series/{ruta.name}: {tarde} filas después de {mes}")
+    hist = leer("data/historico/indicadores.json")
+    tarde = sorted({m for vals in hist.values() for m in vals if m > mes})
+    if tarde:
+        errores.append(f"data/historico/indicadores.json: meses {', '.join(tarde[:3])}")
+    out = leer("output/informe.json")
+    if out.get("generated_at") != sitio.get("generated_at"):
+        errores.append(f"output/informe.json: generado {out.get('generated_at')}, el sitio {gen}")
+    sens = leer("output/sensibilidad.json")
+    if (sens.get("_meta") or {}).get("snapshot") != sitio.get("generated_at"):
+        errores.append(f"output/sensibilidad.json: de {(sens.get('_meta') or {}).get('snapshot')}, el sitio {gen}")
+    for ck, c in (sitio.get("cinturones") or {}).items():
+        for clave, bloque in c.items():
+            publicado = (sens.get(clave) or {}).get("valor_publicado") if isinstance(sens.get(clave), dict) else None
+            if isinstance(bloque, dict) and isinstance(bloque.get("valor"), (int, float)) and isinstance(publicado, (int, float)):
+                if abs(publicado - bloque["valor"]) > 0.05:
+                    errores.append(f"output/sensibilidad.json {clave}: {publicado}, el sitio {bloque['valor']}")
+    for ruta in sorted((proyecto / "output" / "fichas").glob("fichas-*.md")):
+        m = re.search(r"Datos al (\d{4}-\d{2}-\d{2})", ruta.read_text(encoding="utf-8"))
+        if not m or m.group(1) != gen[:10]:
+            errores.append(f"output/fichas/{ruta.name}: datos al {m.group(1) if m else '?'}, el sitio {gen[:10]}")
+    return errores
 
 
 def construir(mes: str, desde: str = "series") -> dict:
@@ -465,11 +544,18 @@ def resumen(meses: list[str]) -> None:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3 or sys.argv[1] not in ("construir", "resumen", "datos") or not all(re.fullmatch(r"\d{4}-\d{2}", m) for m in sys.argv[2:]):
+    if len(sys.argv) < 3 or sys.argv[1] not in ("construir", "resumen", "datos", "verificar") or not all(re.fullmatch(r"\d{4}-\d{2}", m) for m in sys.argv[2:]):
         raise SystemExit(__doc__)
     if sys.argv[1] == "datos":
         # Rama mensual: los datos del mes publicado, rehechos con el método de hoy.
-        datos_del_mes(sys.argv[2], RAIZ / mensual.DATOS)
+        datos_del_mes(sys.argv[2], RAIZ / "projects" / "informe_coyuntura")
+    elif sys.argv[1] == "verificar":
+        errores = verificar_corte(RAIZ / "projects" / "informe_coyuntura", sys.argv[2])
+        for e in errores:
+            print(f"::error::corte de {sys.argv[2]}: {e}")
+        if errores:
+            raise SystemExit(f"{len(errores)} archivos de la rama mensual no son del corte de {sys.argv[2]}")
+        print(f"· {sys.argv[2]}: todos los archivos de la rama salen del mismo corte")
     elif sys.argv[1] == "resumen":
         resumen(sys.argv[2:])
     else:

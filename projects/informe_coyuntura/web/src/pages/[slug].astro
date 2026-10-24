@@ -33,7 +33,7 @@ const INTRO_CINTURON: Record<string, string> = {
   macro: "En este apartado se pone foco en la consistencia y sustentabilidad del proyecto de gobierno en sus aspectos económicos y financieros.",
   politica: "En este apartado se pone foco en la capacidad política del Gobierno para sostener su proyecto: su fuerza en el Congreso, sus alianzas con las provincias, la cohesión de su propia fuerza y su relación con el conflicto social, la Justicia y el sector privado.",
   vida_cotidiana: "En este apartado se pone foco en cómo llega el proyecto de gobierno al día a día de los hogares: sus ingresos y su consumo, los precios, el endeudamiento, el empleo, la confianza en el Gobierno y la seguridad.",
-  gestion: "En este apartado se pone foco en la capacidad del Gobierno para ejecutar las reformas de su proyecto: las económicas, la del Estado, la laboral, las privatizaciones y la inversión, y las reformas sociales y de orden.",
+  gestion: "Este cinturón evalúa el grado de avance en el cumplimiento de los principales compromisos asumidos por el presidente Javier Milei y su gobierno, mediante decisiones, medidas y resultados verificables: las reformas económicas, la del Estado, la laboral, las privatizaciones y la inversión, y las reformas sociales y de orden. No evalúa la conveniencia de las reformas ni sus efectos económicos y sociales, que se consideran en los otros cinturones del Monitor.",
 };
 // La cabecera del cinturón se lee por la barra, igual que en la portada: una
 // sola vara de color en todo el sitio (los cortes publicados). El `estado` de
@@ -369,6 +369,7 @@ const robChartData = rob?.hist && indice ? {
               </div>
               <NivelTension
                 tension={dim.semaforo?.tension ?? tensionDeDimension(dim.puntaje, !!indice.base100)}
+                color={dim.semaforo?.color ?? null}
                 titulo={dim.nombre}
                 ocultarTitulo
                 tip={`${num(dim.puntaje)}${indice.base100 ? " (100 = fines de 2023)" : "/100"} · ${LECTURA_SEMAFORO[semaforoDe(dim) as keyof typeof LECTURA_SEMAFORO] ?? ""}`}
@@ -541,7 +542,7 @@ const robChartData = rob?.hist && indice ? {
             <strong>{num(rob.p95)}</strong>, un rango de {num(robAmplitud!)} puntos alrededor del valor
             publicado (<strong>{num(indice.data.valor)}</strong>).{" "}
             {robEstable
-              ? <Fragment>Todo ese rango cae dentro del mismo tramo de color (<strong>{robLecturas[0]}</strong>): la lectura del cinturón no depende de la ponderación elegida{indice.base100 ? "" : " ni del error de medición de las fuentes"}.</Fragment>
+              ? <Fragment>Todo ese rango cae dentro del mismo tramo de color (<strong>{robLecturas[0]}</strong>): bajo las variaciones de pesos{indice.base100 ? "" : " y de datos"} ensayadas, el cinturón mantiene su clasificación. Es estabilidad frente a esos escenarios; no elimina otras incertidumbres, como la selección de indicadores, los umbrales o la información disponible.</Fragment>
               : <Fragment>Ese rango cruza un corte de color, entre <strong>{robLecturas[0]}</strong> y <strong>{robLecturas[1]}</strong>: el cinturón está en el límite, y con otra ponderación igual de razonable{indice.base100 ? "" : " o con un pequeño error en los datos"} podría leerse en el tramo vecino. El valor es firme; el color hay que leerlo con esa cautela.</Fragment>}
             {robBajoBase && (
               <Fragment>
@@ -619,8 +620,8 @@ const robChartData = rob?.hist && indice ? {
       <p class="cg-modal-h4">Cómo leerlo</p>
       <p class="cg-modal-desc">
         La franja oscura del gráfico va del percentil 5 al 95 de las simulaciones. Si toda la
-        franja cae dentro de un mismo tramo de color, la lectura del cinturón no depende de los
-        supuestos del índice.{" "}
+        franja cae dentro de un mismo tramo de color, la clasificación es estable frente a las
+        variaciones ensayadas, no frente a cualquier supuesto del índice.{" "}
         {robEstable
           ? `Hoy es así: toda la franja queda en ${robLecturas[0]}.`
           : `Hoy no: la franja cruza el corte entre ${robLecturas[0]} y ${robLecturas[1]}, así que el color está en el límite aunque el valor sea firme.`}

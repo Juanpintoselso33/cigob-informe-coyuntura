@@ -6,7 +6,7 @@ fecha: 2026-10-16
 cinturon: 'transversal'
 archivos: ['scripts/archivo.py', '.github/workflows/mensual.yml']
 modifica: ['0347']
-relacionado: ['0348']
+relacionado: ['0348', '0361']
 ambito: 'Publicación · informe.cigob.org rehace el mes publicado con la metodología vigente'
 origen: 'Juan, 16-oct-2026, tras el #75 de Luis: «el mensual también se tiene que cambiar, son cambios metodológicos»'
 ---

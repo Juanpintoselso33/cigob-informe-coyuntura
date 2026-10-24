@@ -1,0 +1,61 @@
+# Observaciones de Marcos al cinturón de Gestión (oct-2026)
+
+Fuentes: tres documentos que mandó por WhatsApp el 23-oct («IA aporte auditoría Cinturón de
+Gestión», «Para la dimensión Reforma laboral», «Indicador de libertad de opción») y la rev 2 de
+Reforma laboral del 24-oct, que reemplaza a la del 23. Auditó la edición de septiembre de
+informe.cigob.org.
+
+## Estado al 24-oct-2026 (ADR-0361, decisiones de Juan)
+
+- **Hecho en el código** (falta el push): #1 introducción · #2 corte único de la rama mensual +
+  control `archivo.py verificar` · #3 nota en la evolución · #5 brecha · #6 Reforma del Estado ·
+  #7 desregulación «volumen» · #8a avance y puntaje por separado en todas las tarjetas de Gestión ·
+  #9b «Inversiones RIGI aprobadas» · #10 ficha y rótulo de viales con la reserva de posesión ·
+  #11 unidad de asistencia (la de Marcos) · #12 piquetes rótulo y fecha 2025 · #13a total y mes
+  en salud · #14 robustez · L2 «Juicios por riesgos del trabajo» + feria · color de Reforma
+  laboral · fuente de gasto de funcionamiento · detector FAL con la sigla.
+- **Decidido no adoptar, con reserva y aviso a Marcos:** FAL en 90 (queda 50, puntaje 55; el
+  1-dic pasa a 70, puntaje 74) · viales en 93 % (queda 100 % de adjudicación; posesión 86 %).
+- **Decidido:** salud sigue 33,1 % con total y fecha; el 5,6 % va como cota en la ficha.
+- **Pendiente de Juan:** asistencia directa: que mida la baja de las unidades de gestión
+  (Res. 84/2024) o sacarla del índice (hoy puntúa 100 con 98,3 % de base en 2023).
+- **No se puede hoy:** convenios (lista de los 446 no publicada) · RIGI ejecutado · aplicación del
+  protocolo · salud como % que se cambió (sólo cota anual).
+
+Estados: **hecho** · **se puede** (falta hacerlo) · **decide Juan** · **no se puede** (con el motivo)
+· **investigando**.
+
+| # | Observación | Qué es real | Estado | Qué se hace |
+|---|---|---|---|---|
+| 1 | La introducción habla de «capacidad» y el índice mide compromisos | Sí | se puede | Usar su texto |
+| 2 | La portada y la página de Gestión muestran números distintos | Sí: Marcos vio la foto del 30-sep (78,8) contra la edición rehecha con el error de RIGI (82,6) | **hecho** (RIGI) · se puede (control) | Hoy las dos dicen 79,1, y lo que ve la gente (páginas y CSV) sale entero del corte del 30-sep. Lo que mezcla meses son los archivos de la rama `mensual` (fichas .md, sensibilidad.json, CSV de `output/`): `mensual.yml` sólo commitea informe.json y series.json. Arreglo: correr `sensibilidad.py` y `fichas/generar.py` dentro del rearmado y commitear esos archivos (+5-15 s); control `verificar_corte(mes)` antes del push que falle si algo tiene fecha posterior al mes o no coincide con el snapshot. Detalle: `scratchpad/obs/02_corte_unico.md` |
+| 3 | La evolución termina en agosto y la tarjeta es de septiembre | Sí: la serie es una reconstrucción que llega al último mes completo | se puede | Rotular el gráfico con su último mes |
+| 4 | Con los valores de la portada, el índice da 82,6 | Sí, por el error de RIGI | **hecho** | Ver #2 |
+| 5 | Brecha: «el cepo dejó de morder» es demasiado | Sí (`formulas.ts:110`) | se puede | Usar su texto |
+| 6 | Reforma del Estado 100/100 sugiere reforma completa | Sí | se puede (texto) · decide Juan (anclas) | Aclarar qué significa el 100 |
+| 7 | Desregulación cuenta artículos, no importancia | Sí, la ficha ya lo dice | se puede (texto) · decide Juan (clasificación) | Aclarar en el subtítulo que mide volumen |
+| 8a | FAL: avance 50 y puntaje 55 confunden | Sí | se puede | Mostrar «avance 50 · puntaje 55» |
+| 8b | FAL al 90 % con CNV, ARCA y los bancos | Las normas existen; ningún fondo FAL inscripto en la CNV; el régimen rige desde el 1-dic | decide Juan | ADR-0228 cuenta sólo lo que rige. Hoy: avance 50, puntaje 55. Sumar CNV y ARCA a la construcción **no cambia nada** (esa etapa ya está completa). El 90 de Marcos no sale de los pesos; más que lo que da solo el 1-dic al entrar en vigencia (avance 70 → puntaje **74**; el índice interpola entre anclas, el agente había calculado con tramos y daba 80). Contando la oferta de los bancos como adopción: avance 80 → puntaje 85,5. El 90 de Marcos daría puntaje 100. Lo de los bancos es publicidad y cartas de intención (BNA: «sujeta a normativa pendiente»); ninguna fuente dice que haya un fondo funcionando. La RG CNV 1167 da «oferta pública automática» a los fondos FAL (a releer). **Error a corregir (se puede):** `_cnv_fondos_fal` (`gestion.py:1417`) sólo cuenta fondos con «ASISTENCIA LABORAL» en el nombre; los anunciados se llaman «Pionero FAL», «Superfondo Reserva FAL»: el día que existan no los vería. Hay que sumar «FAL» como palabra suelta. cnv.gov.ar no respondió desde la Mac. Detalle: `scratchpad/obs/08_fal.md` |
+| 9a | RIGI publica 49.766 % | Sí: eran los US$ M aprobados | **hecho** (24-oct) | 23,8 % publicado; junio 22,1 % |
+| 9b | RIGI: aprobación no es inversión ejecutada | Sí | se puede (rótulo) · no se puede (ejecución) | «Inversiones RIGI aprobadas». No hay serie pública de inversión ejecutada: la plataforma del MECON sólo publica lo comprometido. Lo único cercano es un gráfico del BCRA (abr-2026) con US$ 762 M netos de divisas RIGI a marzo, sin actualizar y que no cierra (1.205 − 452 = 753): a lo sumo, contexto en la ficha. Pendiente menor: la hoja oficial marca 22 en evaluación y la prensa habla de 23. Detalle: `scratchpad/obs/09_rigi_ejecucion.md` |
+| 10 | Viales: la ficha da dos reglas y el 100 % no dice qué etapa | Sí: el código usa sólo el Boletín Oficial; la ficha quedó con la regla vieja | se puede (ficha) · decide Juan (escalonar o red total) | 100 % = adjudicación formal de las 4 etapas (99,8 % del plan de 18 tramos). Toma de posesión comprobada: I (7-ene), II-A (1-jul), III (7-oct, prensa), parte de II-B (10-sep, prensa): 7.885 km = 86,3 %; falta confirmar Puntano y Portuario Norte (1.248 km). Escalonado 50 % adjudicación + 50 % posesión: 93,2 %. Contra la red nacional (~40.198 km, a cotejar) sería 22,7 % y puntaje ~40: cambia lo que mide. Texto corregido de la ficha listo. Diferencia de ~42 km en la Etapa III sin explicar. Detalle: `scratchpad/obs/10_viales.md` |
+| 11 | Asistencia directa: el rótulo promete otra cosa; ya era 98,3 % en 2023 | Sí | se puede (rótulo) · decide Juan (reemplazar la medida) | La intermediación estaba en las unidades de gestión, no en cómo se paga: por eso el indicador no se mueve. Medida alternativa que sí se puede armar con Presupuesto Abierto: % de las transferencias de Desarrollo Social que va a organizaciones y cooperativas: 4,4 % (2023) → 1,4 % (2024) → 3,3 % (2025); en pesos reales −86 % y −78 % contra 2023. Ojo: lo que queda es casi todo comedores. Hito para la ficha: Res. 84/2024 dio de baja todas las unidades de gestión. Riesgo: Volver al Trabajo se está cerrando. Cálculo propio a confirmar. Detalle: `scratchpad/obs/11_asistencia.md` |
+| 12 | Piquetes: menos cortes no prueba que se aplique el protocolo | Sí | se puede (texto) · no se puede (componente de aplicación) | No hay serie pública de aplicación del protocolo (sólo una cifra suelta: 310 activaciones a ene-2025). Cambiar rótulo a «cortes en CABA vs 2023» y separar cortes de vigencia del protocolo (válido por la Cámara CAF, 31-mar-2026). **Revisado:** el dato es de 2025 (`fecha_dato` 2025-12-31 en el diario); la «fecha 2026-09» del mensual la pone el rearmado del mes, que toma la fecha del último punto de la serie (**se puede** corregir con el arreglo de #2). La página `/monitoreos-politicos` da 404 y el colector ya lo avisa en la card («no se pudo verificar…»); la base 2023 (931 cortes, estimada) podría ser ~1.500 según Infobae, que no da fuente. Detalle: `scratchpad/obs/12_protocolo.md` |
+| 13a | Salud: no se dice sobre qué total es el 33,1 % ni de qué mes | Sí: usuarios de prepagas, junio | se puede | Total y fechas en la tarjeta |
+| 13b | Salud: redefinir como % que se cambió de obra social o prepaga | No hay serie pública de opciones de cambio | no se puede tal cual · se puede como cota anual · decide Juan | Alternativas: (a) el mismo dato sobre quienes pueden elegir: 19,3 %; (b) desde los padrones mensuales de la SSS por agente (ene-2020 a jun-2026), en 12 meses (jun-25 a jun-26, sin PAMI) los agentes que ganan afiliados suman +820 mil = **al menos 5,6 %** terminó en otro agente. Es una cota: mezcla cambios de obra social con altas por empleo y bajas por desempleo o jubilación; mensual no sirve (el ruido es del tamaño de la señal); ~4 meses de rezago; la ventana sólo sirve desde ene-2026 por el pase en bloque de ene-2025. **Lo que dice Marcos del DNU:** los 12 meses de permanencia no se eliminaron en general (Res. SSS 201/2024 los fija; sólo no rigen para quien va a una prepaga inscripta y para los trabajadores nuevos); la «retención» no aparece en ninguna norma revisada; el Fondo Solidario 15-20 % es de la Ley 23.660 para obras sociales (otro agente lo había leído como de prepagas: **sin resolver**). Detalle: `scratchpad/obs/13_salud_movilidad.md` |
+| 14 | Robustez: la conclusión es demasiado categórica | Sí | se puede | Usar su texto en los cuatro cinturones |
+| L1 | Reforma laboral con 3 indicadores: FAL 40, litigiosidad 30, convenios 30 | — | decide Juan: sí, cuando exista la lista | Depende de L3 |
+| L2 | Litigiosidad: juicios iniciados en la Cámara Nacional del Trabajo (55.337 / 58.504) + siniestralidad SRT | Esos números no aparecen en ninguna fuente pública; la Cámara cubre sólo la Capital; la siniestralidad es anual y no mide la reforma | no se puede sin su PDF · se puede (nombre y nota) | Hoy: juicios por riesgos del trabajo de todo el país, mensual. Julio-2026 **no** está incompleto: es la feria judicial (julio/junio = 0,55, igual que 2016-2023); las correcciones del último mes son menores al 0,04 % en 12 meses. Renombrar a «Juicios por riesgos del trabajo» y anotar la feria en la ficha. Detalle: `scratchpad/obs/L_laboral.md` |
+| L3 | Convenios colectivos homologados (búsqueda en Infoleg) | La búsqueda de Infoleg da 19 normas y ninguna es un convenio; la lista de los 446 no está publicada | no se puede hoy | Las homologaciones salen como Disposiciones de la Dirección Nacional de Relaciones del Trabajo (por eso Infoleg no las encuentra). En 2026, 18 citan la Ley 27.802 y 11 su art. 137, pero son **acuerdos salariales** que dicen que la adecuación está «aún pendiente de sustanciación». Convenios adecuados a la reforma comprobados al 24-oct: **ninguno**. La lista de los 446 no está en el Boletín Oficial (sólo el comunicado del 11-jun). Si se suma el indicador hoy, daría 0. |
+
+## Otros errores encontrados en la revisión (no los marcó Marcos)
+
+- La barra de Reforma laboral dice «verde» con 59,9, que es amarillo: se redondea antes de elegir
+  el color (`publicar.py:2591`). **Se puede.**
+- Gasto de funcionamiento: la leyenda nombra la fuente equivocada (`formulas.ts:126`). **Se puede.**
+- Salud: el texto dice «a marzo de 2026, 2,66 millones en 59 prepagas»; el dato vigente es de junio.
+  **Se puede.**
+- La edición mensual mezcla meses en los archivos de la rama (no en las páginas): fichas .md y
+  robustez con datos de octubre. **Se puede** (va con #2). Pendiente de decidir: la ficha del FAL
+  de septiembre muestra un cambio de método del 20-oct, porque el método es siempre el vigente.
+- Privatizaciones: 3 normas del Boletín Oficial sin revisar desde el 8-sep. **Se puede.**
