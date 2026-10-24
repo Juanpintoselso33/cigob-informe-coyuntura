@@ -144,6 +144,9 @@ CRUDOS = ("projects/informe_coyuntura/output",
 # pierde el desglose del día (detalle_txt, inventarios, cotizaciones): ese texto
 # describe HOY, no el mes. Una card sin ningún punto hasta ese mes no se muestra.
 CAMPOS_CARD = ("valor", "unidad", "fuente", "fecha_dato", "en_indice", "dimension", "suspendido")
+# Lo que la tarjeta muestra al lado del valor y describe ESE dato, no el día:
+# se conserva sólo si el dato del mes es el mismo que el de hoy (ver abajo).
+CAMPOS_MISMO_DATO = ("derivados", "usuarios_prepagas", "fecha_numerador", "fecha_denominador")
 CACHES = ("macro", "politica", "gestion", "vida_cotidiana", "espiritu_epoca")
 
 
@@ -248,6 +251,7 @@ def cortar_indicadores(inds: dict, ultimo: dict, mes: str) -> dict:
             propia = str(ind.get("fecha_dato") or "")
             if propia and propia[:7] <= mes and ind.get("valor") == valor:
                 fecha = propia
+                nuevo.update({c: ind[c] for c in CAMPOS_MISMO_DATO if c in ind})
             nuevo["valor"], nuevo["fecha_dato"] = valor, fecha
         elif not str(ind.get("fecha_dato") or "9")[:7] <= mes:
             continue

@@ -70,9 +70,13 @@ def test_un_dato_anual_conserva_su_fecha_en_el_mes_rehecho():
 
     ultimo = {"protocolo_antipiquetes": ("2026-09-01", 74.2), "cepo_mulc": ("2026-09-01", 6.27)}
     cards = {"protocolo_antipiquetes": {"valor": 74.2, "fecha_dato": "2025-12-31"},
-             "cepo_mulc": {"valor": 8.14, "fecha_dato": "2026-10-24"}}
+             "cepo_mulc": {"valor": 8.14, "fecha_dato": "2026-10-24", "usuarios_prepagas": 1}}
     cortadas = archivo.cortar_indicadores(cards, ultimo, "2026-09")
     assert cortadas["protocolo_antipiquetes"]["fecha_dato"] == "2025-12-31"
+    # El total de salud acompaña a su dato; con otro dato no se arrastra.
+    salud = {"libertad_opcion_salud": {"valor": 33.1, "fecha_dato": "2026-06-01", "derivados": 2754461, "usuarios_prepagas": 8332458}}
+    s = archivo.cortar_indicadores(salud, {"libertad_opcion_salud": ("2026-09-01", 33.1)}, "2026-09")["libertad_opcion_salud"]
+    assert (s["derivados"], s["usuarios_prepagas"], s["fecha_dato"]) == (2754461, 8332458, "2026-06-01")
     assert cortadas["cepo_mulc"] == {"valor": 6.27, "fecha_dato": "2026-09-01", "desactualizado": False}
 
 
