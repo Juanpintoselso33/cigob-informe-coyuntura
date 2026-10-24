@@ -42,7 +42,10 @@
        quedan fuera del alcance del manual a propósito. */
     --verde:       #16A34A;
     --verde-soft:  #DCFCE7;
-    --amarillo:    #CA8A04;
+    /* #CA8A04 (mostaza) se leía naranja al lado de la pista clara: la aguja
+       en amarillo parecía naranja (Juan, 24-oct-2026). Es el amarillo del
+       gráfico de evolución. Sólo pinta rellenos, no texto. */
+    --amarillo:    #E8C547;
     --amarillo-soft: #FEF3C7;
     --naranja:      #EA580C;
     --naranja-soft: #FFEDD5;
@@ -259,7 +262,7 @@ em { font-family: var(--ff-cuerpo); font-style: italic; color: var(--cta-dark); 
     box-shadow: 0 0 0 3px rgba(94,122,138,.14);
 }
 .cg-status-pill.is-signed .cg-status-dot { background: var(--verde); box-shadow: 0 0 0 3px rgba(22,163,74,.18); animation: pulse 2.5s ease-in-out infinite; }
-.cg-status-pill.is-draft  .cg-status-dot { background: var(--amarillo); box-shadow: 0 0 0 3px rgba(202,138,4,.18); }
+.cg-status-pill.is-draft  .cg-status-dot { background: var(--amarillo); box-shadow: 0 0 0 3px rgba(232,197,71,.25); }
 .cg-status-pill.is-err    .cg-status-dot { background: var(--rojo); }
 .cg-status-pill.is-signed { color: #14532D; }
 .cg-status-pill.is-draft  { color: #713F12; }
