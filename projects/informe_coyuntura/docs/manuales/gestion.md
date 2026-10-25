@@ -38,7 +38,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · > 25 → 10
 
-**Lo gobiernan**: [ADR-0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista · [ADR-0280](../adr/0280-la-brecha-conserva-la-fecha-de-cotizacion.md) La brecha conserva la fecha de cotización
+**Lo gobiernan**: [ADR-0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista · [ADR-0280](../adr/0280-la-brecha-conserva-la-fecha-de-cotizacion.md) La brecha conserva la fecha de cotización · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
 #### Apertura comercial (alícuota)
 
@@ -66,7 +66,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 30000 → 100 · 15000–30000 → 85 · 7000–15000 → 60 · 2500–7000 → 35 · ≤ 2500 → 10
 
-**Lo gobiernan**: [ADR-0096](../adr/0096-desregulacion-cuenta-normas-no-menciones.md) Desregulación: contar normas derogadas, no menciones de una palabra · [ADR-0125](../adr/0125-la-desregulacion-pasa-a-la-fuente-oficial.md) La desregulación pasa a medirse con la fuente oficial · [ADR-0143](../adr/0143-la-desregulacion-se-mide-en-articulos.md) La desregulación se mide en artículos, no en normas · [ADR-0229](../adr/0229-la-desregulacion-cuenta-actos-no-efectos.md) La desregulación cuenta actos, no efectos, y la ficha lo dice · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0292](../adr/0292-desregulacion-incorpora-revisiones-mensuales.md) Desregulación incorpora las revisiones mensuales
+**Lo gobiernan**: [ADR-0096](../adr/0096-desregulacion-cuenta-normas-no-menciones.md) Desregulación: contar normas derogadas, no menciones de una palabra · [ADR-0125](../adr/0125-la-desregulacion-pasa-a-la-fuente-oficial.md) La desregulación pasa a medirse con la fuente oficial · [ADR-0143](../adr/0143-la-desregulacion-se-mide-en-articulos.md) La desregulación se mide en artículos, no en normas · [ADR-0229](../adr/0229-la-desregulacion-cuenta-actos-no-efectos.md) La desregulación cuenta actos, no efectos, y la ficha lo dice · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0292](../adr/0292-desregulacion-incorpora-revisiones-mensuales.md) Desregulación incorpora las revisiones mensuales · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
 ### Dimensión `reforma_estado` (25%)
 
@@ -82,7 +82,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ -12 → 100 · -12–-8 → 85 · -8–-4 → 65 · -4–0 → 40 · > 0 → 10
 
-**Lo gobiernan**: [ADR-0097](../adr/0097-que-universo-mide-la-dotacion-del-estado.md) Qué universo mide la dotación del Estado · [ADR-0128](../adr/0128-fuerzas-en-la-dotacion-y-peso-del-fal.md) Las fuerzas están en la dotación, y el FAL baja a la mitad de su dimensión
+**Lo gobiernan**: [ADR-0097](../adr/0097-que-universo-mide-la-dotacion-del-estado.md) Qué universo mide la dotación del Estado · [ADR-0128](../adr/0128-fuerzas-en-la-dotacion-y-peso-del-fal.md) Las fuerzas están en la dotación, y el FAL baja a la mitad de su dimensión · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
 #### Gasto de funcionamiento
 
@@ -96,7 +96,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ -25 → 100 · -25–-15 → 85 · -15–-5 → 65 · -5–0 → 40 · > 0 → 10
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0013).
+**Lo gobiernan**: [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
 ### Dimensión `reforma_laboral` (15%)
 
@@ -112,9 +112,9 @@ Suma de pesos: 100%.
 
 **Bandas**: > 90 → 100 · 62.5–90 → 80 · 37.5–62.5 → 55 · 10–37.5 → 30 · ≤ 10 → 10
 
-**Lo gobiernan**: [ADR-0068](../adr/0068-fal-regimen-ley-27802.md) fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802 · [ADR-0098](../adr/0098-fal-en-tres-etapas.md) El FAL se mide en tres etapas: construcción, vigencia y adopción · [ADR-0228](../adr/0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) El FAL puntúa lo que rige, no lo que se dictó · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0305](../adr/0305-fal-separa-consulta-y-revision-curada.md) Consultar CNV no actualiza la revisión judicial
+**Lo gobiernan**: [ADR-0068](../adr/0068-fal-regimen-ley-27802.md) fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802 · [ADR-0098](../adr/0098-fal-en-tres-etapas.md) El FAL se mide en tres etapas: construcción, vigencia y adopción · [ADR-0228](../adr/0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) El FAL puntúa lo que rige, no lo que se dictó · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0305](../adr/0305-fal-separa-consulta-y-revision-curada.md) Consultar CNV no actualiza la revisión judicial · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
-#### Litigiosidad laboral (SRT)
+#### Juicios por riesgos del trabajo (SRT)
 
 `litigiosidad_laboral`
 
@@ -126,7 +126,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ -15 → 100 · -15–-5 → 85 · -5–5 → 65 · 5–20 → 40 · > 20 → 10
 
-**Lo gobiernan**: [ADR-0221](../adr/0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) Un cable trampa mira la banda, no el puntaje · [ADR-0285](../adr/0285-litigiosidad-exige-ventanas-de-calendario.md) Litigiosidad exige ventanas de calendario
+**Lo gobiernan**: [ADR-0221](../adr/0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) Un cable trampa mira la banda, no el puntaje · [ADR-0285](../adr/0285-litigiosidad-exige-ventanas-de-calendario.md) Litigiosidad exige ventanas de calendario · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
 ### Dimensión `privatizaciones_inversion` (15%)
 
@@ -144,7 +144,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0101](../adr/0101-privatizaciones-publica-la-norma-de-cada-etapa.md) Privatizaciones publica la norma que respalda cada etapa · [ADR-0129](../adr/0129-detector-de-novedades-de-privatizaciones.md) Privatizaciones: se automatiza la detección, no la clasificación · [ADR-0277](../adr/0277-novedades-verifican-empresa-y-reintentan-textos-vacios.md) El detector verifica la empresa y reintenta lecturas vacías
 
-#### Inversiones RIGI
+#### Inversiones RIGI aprobadas
 
 `rigi_inversiones`
 
@@ -156,7 +156,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 60 → 100 · 40–60 → 85 · 25–40 → 65 · 10–25 → 40 · ≤ 10 → 10
 
-**Lo gobiernan**: [ADR-0086](../adr/0086-serie-y-banda-tienen-que-medir-lo-mismo.md) La serie de un indicador tiene que medir lo mismo que puntúa su banda · [ADR-0102](../adr/0102-rigi-denominador-movil.md) El RIGI avisa cuando su porcentaje baja por el denominador
+**Lo gobiernan**: [ADR-0086](../adr/0086-serie-y-banda-tienen-que-medir-lo-mismo.md) La serie de un indicador tiene que medir lo mismo que puntúa su banda · [ADR-0102](../adr/0102-rigi-denominador-movil.md) El RIGI avisa cuando su porcentaje baja por el denominador · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
 #### Concesiones viales
 
@@ -170,11 +170,11 @@ Suma de pesos: 100%.
 
 **Bandas**: > 75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤ 15 → 10
 
-**Lo gobiernan**: [ADR-0087](../adr/0087-preadjudicado-no-es-adjudicado.md) "Preadjudicado" contiene "Adjudicado" · [ADR-0244](../adr/0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) El acto jurídico manda sobre el estado del portal · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno
+**Lo gobiernan**: [ADR-0087](../adr/0087-preadjudicado-no-es-adjudicado.md) "Preadjudicado" contiene "Adjudicado" · [ADR-0244](../adr/0244-el-acto-juridico-manda-sobre-el-estado-del-portal.md) El acto jurídico manda sobre el estado del portal · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
 ### Dimensión `social_orden` (10%)
 
-#### Asistencia directa
+#### Planes sin intermediarios
 
 `asistencia_directa`
 
@@ -186,7 +186,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 95 → 100 · 85–95 → 85 · 60–85 → 65 · 30–60 → 40 · ≤ 30 → 10
 
-**Lo gobiernan**: [ADR-0100](../adr/0100-promesa-cumplida-no-es-contexto.md) Una promesa cumplida no es un indicador de contexto · [ADR-0189](../adr/0189-si-no-puntua-no-se-muestra.md) Si no puntúa no se muestra, y una promesa cumplida sí puntúa · [ADR-0296](../adr/0296-tdps-distingue-devengado-de-pago.md) TDPS distingue devengado de pago
+**Lo gobiernan**: [ADR-0100](../adr/0100-promesa-cumplida-no-es-contexto.md) Una promesa cumplida no es un indicador de contexto · [ADR-0189](../adr/0189-si-no-puntua-no-se-muestra.md) Si no puntúa no se muestra, y una promesa cumplida sí puntúa · [ADR-0296](../adr/0296-tdps-distingue-devengado-de-pago.md) TDPS distingue devengado de pago · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0362](../adr/0362-planes-sin-intermediarios-mide-el-cese-de-las-unidades-de-gestion.md) «Planes sin intermediarios» mide el cese de las unidades de gestión
 
 #### Orden público (piquetes)
 
@@ -200,7 +200,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 75 → 100 · 50–75 → 85 · 25–50 → 65 · 0–25 → 40 · ≤ 0 → 10
 
-**Lo gobiernan**: [ADR-0025](../adr/0025-protocolo-diagnostico-politico.md) Protocolo antipiquetes automatizado con Diagnóstico Político (y corrección 55 → 74,2) · [ADR-0294](../adr/0294-cortes-explicita-base-estimada-y-fuente-no-verificable.md) Cortes explicita base estimada y fuente no verificable
+**Lo gobiernan**: [ADR-0025](../adr/0025-protocolo-diagnostico-politico.md) Protocolo antipiquetes automatizado con Diagnóstico Político (y corrección 55 → 74,2) · [ADR-0294](../adr/0294-cortes-explicita-base-estimada-y-fuente-no-verificable.md) Cortes explicita base estimada y fuente no verificable · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
 #### Libertad de opción en salud
 
@@ -214,7 +214,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 70 → 100 · 50–70 → 85 · 30–50 → 65 · 10–30 → 40 · ≤ 10 → 10
 
-**Lo gobiernan**: [ADR-0278](../adr/0278-salud-descubre-los-padrones-referenciados.md) Salud descubre los padrones referenciados por el portal
+**Lo gobiernan**: [ADR-0278](../adr/0278-salud-descubre-los-padrones-referenciados.md) Salud descubre los padrones referenciados por el portal · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
 ## Se releva y no puntúa
 
@@ -241,7 +241,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-45 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+47 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -288,3 +288,5 @@ histórica.
 - [0296](../adr/0296-tdps-distingue-devengado-de-pago.md) — TDPS distingue devengado de pago
 - [0305](../adr/0305-fal-separa-consulta-y-revision-curada.md) — Consultar CNV no actualiza la revisión judicial
 - [0336](../adr/0336-el-itcg-no-tiene-validacion-externa-por-definicion.md) — El ITCG no tiene validación externa, por definición
+- [0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) — Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
+- [0362](../adr/0362-planes-sin-intermediarios-mide-el-cese-de-las-unidades-de-gestion.md) — «Planes sin intermediarios» mide el cese de las unidades de gestión

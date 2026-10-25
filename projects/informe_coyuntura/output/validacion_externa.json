@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-24T18:43:55.783168-03:00",
+    "generated_at": "2026-10-25T03:33:40.659851+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -1063,7 +1063,7 @@
       "cepo_mulc": {
         "apertura_comercial": 0.341,
         "asistencia_directa": 0.528,
-        "concesiones_infraestructura": 0.337,
+        "concesiones_infraestructura": 0.336,
         "desregulacion_normativa": 0.918,
         "fal_modernizacion_laboral": 0.366,
         "gasto_funcionamiento": 0.274,
@@ -1073,12 +1073,12 @@
         "privatizaciones": 0.826,
         "protocolo_antipiquetes": 0.872,
         "reduccion_estado": 0.762,
-        "reestructuracion_organismos": 0.464
+        "reestructuracion_organismos": 0.463
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.067,
         "asistencia_directa": 0.152,
-        "cepo_mulc": 0.337,
+        "cepo_mulc": 0.336,
         "desregulacion_normativa": 0.499,
         "fal_modernizacion_laboral": 0.919,
         "gasto_funcionamiento": 0.281,
@@ -1228,7 +1228,7 @@
       "reestructuracion_organismos": {
         "apertura_comercial": 0.284,
         "asistencia_directa": 0.208,
-        "cepo_mulc": 0.464,
+        "cepo_mulc": 0.463,
         "concesiones_infraestructura": 0.76,
         "desregulacion_normativa": 0.671,
         "fal_modernizacion_laboral": 0.844,
@@ -3213,7 +3213,7 @@
     "2026-07": 2090.0,
     "2026-08": 1913.0,
     "2026-09": 1763.2,
-    "2026-10": 1758.7
+    "2026-10": 1757.3
   },
   "serie_itcp": {
     "2024-02": 71.1,
@@ -5473,7 +5473,7 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": -0.435,
+          "r_niveles": -0.434,
           "r_diferencias": 0.187,
           "n": 35
         },
