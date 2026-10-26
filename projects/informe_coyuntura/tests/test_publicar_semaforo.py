@@ -242,6 +242,23 @@ class TestPorQue:
         assert "a 1,0 del corte de" in frase, frase
 
 
+    def test_nombra_el_limite_y_el_color_del_otro_lado(self):
+        # Revisión de Luis (26-oct-2026): la frase dice qué corte y qué color hay
+        # del otro lado, no «el corte más cercano».
+        tramos = [{"color": "verde", "desde": 95.0, "hasta": None},
+                  {"color": "amarillo", "desde": 85.0, "hasta": 95.0},
+                  {"color": "naranja", "desde": None, "hasta": 85.0}]
+        frase = publicar._por_que("amarillo", 94.4, "", tramos)
+        assert "está en Amarillo, a 0,6 del límite con Verde (95" in frase, frase
+
+    def test_en_el_borde_exacto_respeta_el_color_publicado(self):
+        # Codex, 26-oct-2026: con el valor justo en el corte, la frase no puede
+        # decir «está en Verde, a 0 del límite con Verde».
+        tramos = [{"color": "verde", "desde": 0.0, "hasta": None},
+                  {"color": "amarillo", "desde": -0.6, "hasta": 0.0}]
+        frase = publicar._por_que("verde", 0.0, "σ", tramos)
+        assert "está en Verde" in frase and "límite con Amarillo" in frase, frase
+
 class TestCortesExpuestos:
     """A3 (revisión de coherencia UI, ago-2026): la leyenda web arma su texto
     ("tensión ≤ 4") leyendo `informe.semaforo_cortes`, no escribiendo los
