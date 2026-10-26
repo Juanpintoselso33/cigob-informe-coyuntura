@@ -18,8 +18,8 @@ Lo que dejamos como está, con reserva (queda pendiente):
 • Viales: el 100 % es la adjudicación de las cuatro etapas licitadas, y ahora la tarjeta y la ficha lo dicen así. La toma de posesión está comprobada en 7.843 de 9.091 km (86 %); dos tramos de la Etapa II-B (Puntano y Portuario Norte) no tienen todavía fuente oficial. Lo dejamos como reserva en la ficha.
 
 Lo que no se puede medir hoy:
-• Convenios colectivos: la lista de los 446 no está publicada, y no encontramos ningún convenio adecuado a la reforma (las homologaciones de 2026 son acuerdos salariales). Si lo sumáramos hoy daría 0. Entra cuando exista la lista.
-• Los juicios de la Cámara Nacional del Trabajo que citás (55.337 / 58.504) no los encontramos en ninguna fuente pública. Si tenés el PDF, pasámelo.
+• Convenios colectivos: la lista de los 446 no está publicada (sólo hay un listado de ejemplo de Infobae, 51 actividades sin número de convenio). Los «19 convenios homologados» que anunció Capital Humano el 21-oct todavía no salieron en el Boletín: lo que se publicó entre el 19 y el 26-oct son 51 acuerdos firmados en mayo y junio, casi todos salariales, y los tres que citan el art. 137 de la Ley 27.802 aclaran que no reemplazan la adecuación. Si lo sumáramos hoy daría 0. Entra cuando exista la lista.
+• Los juicios que citás (55.337 / 58.504) los encontramos: son los expedientes entrados en primera instancia de la Justicia Nacional del Trabajo en 2024 y 2025, de la Oficina de Estadísticas del Consejo de la Magistratura (estadisticas.pjn.gov.ar, Fuero del Trabajo). Se publica por semestre: el primero de 2026 trae 28.911, un 13 % más que el primero de 2025 (25.562). Ojo que es sólo la Capital.
 • Salud como «% que se cambió de obra social»: esa serie no se publica. Con los padrones sólo sale una cota anual (al menos 5,6 % en 12 meses), que agregamos a la ficha.
 • Sobre el Fondo Solidario: desde el Decreto 600/2024 (vigente desde agosto de 2024) es un 15 % único de aportes y contribuciones, ya no 15-20 %. Se descuenta también de los aportes que se derivan a una prepaga, no de sus cuotas voluntarias.
 • RIGI ejecutado y aplicación del protocolo: no hay serie pública.
