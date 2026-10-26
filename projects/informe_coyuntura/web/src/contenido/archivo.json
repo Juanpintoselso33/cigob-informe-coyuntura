@@ -2,7 +2,7 @@
  "meses": [
   {
    "mes": "2026-09",
-   "corrida": "46b9d6a4f9",
+   "corrida": "c1fba585a2",
    "generado": "2026-09-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 4.0,
@@ -23,17 +23,17 @@
      "estado": "tensionado"
     },
     "gestion": {
-     "score": 2.4,
+     "score": 2.5,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4127
+   "peso_kb": 4087
   },
   {
    "mes": "2026-08",
-   "corrida": "46b9d6a4f9",
+   "corrida": "c1fba585a2",
    "generado": "2026-08-31T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 4.0,
@@ -54,17 +54,17 @@
      "estado": "tensionado"
     },
     "gestion": {
-     "score": 2.4,
+     "score": 2.5,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4088
+   "peso_kb": 4048
   },
   {
    "mes": "2026-07",
-   "corrida": "46b9d6a4f9",
+   "corrida": "c1fba585a2",
    "generado": "2026-07-31T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 4.0,
@@ -91,11 +91,11 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4044
+   "peso_kb": 4003
   },
   {
    "mes": "2026-06",
-   "corrida": "46b9d6a4f9",
+   "corrida": "c1fba585a2",
    "generado": "2026-06-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.9,
@@ -104,7 +104,7 @@
    "alerta_multicinturon": false,
    "cinturones": {
     "macro": {
-     "score": 4.2,
+     "score": 4.1,
      "estado": "en_tension"
     },
     "politica": {
@@ -116,13 +116,13 @@
      "estado": "en_tension"
     },
     "gestion": {
-     "score": 2.5,
+     "score": 2.6,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 3964
+   "peso_kb": 3924
   }
  ]
 }
