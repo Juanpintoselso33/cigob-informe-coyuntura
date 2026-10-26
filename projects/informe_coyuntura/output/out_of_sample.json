@@ -2,26 +2,51 @@
   "corte": "2023-12",
   "evaluados": [
     {
-      "indicador": "ipc_total",
+      "indicador": "emae_ia",
       "indice": "ITCM",
       "procedencia": "conceptual",
       "fuera_de_muestra": {
         "n": 28,
-        "media": 19.4,
-        "desvio": 17.6,
-        "saturado": 0.714,
-        "crudo_min": 2.47,
-        "crudo_max": 12.81,
-        "crudo_media": 6.42
+        "media": 72.1,
+        "desvio": 33.2,
+        "saturado": 0.643,
+        "crudo_min": -6.61,
+        "crudo_max": 12.61,
+        "crudo_media": 3.75
       },
       "dentro_de_muestra": {
-        "n": 31,
-        "media": 52.6,
-        "desvio": 23.5,
-        "saturado": 0.161,
+        "n": 32,
+        "media": 60.4,
+        "desvio": 30.6,
+        "saturado": 0.281,
+        "crudo_min": -8.17,
+        "crudo_max": 7.93,
+        "crudo_media": 1.41
+      },
+      "señal": "mirar",
+      "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"
+    },
+    {
+      "indicador": "ipc_total",
+      "indice": "ITCM",
+      "procedencia": "conceptual",
+      "fuera_de_muestra": {
+        "n": 25,
+        "media": 10.8,
+        "desvio": 3.8,
+        "saturado": 0.96,
+        "crudo_min": 2.53,
+        "crudo_max": 12.81,
+        "crudo_media": 6.8
+      },
+      "dentro_de_muestra": {
+        "n": 34,
+        "media": 26.0,
+        "desvio": 13.5,
+        "saturado": 0.324,
         "crudo_min": 1.5,
         "crudo_max": 25.47,
-        "crudo_media": 4.87
+        "crudo_media": 4.61
       },
       "señal": "mirar",
       "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"
@@ -31,72 +56,122 @@
       "indice": "ITCG",
       "procedencia": "historia_larga",
       "fuera_de_muestra": {
-        "n": 31,
-        "media": 13.3,
-        "desvio": 6.8,
-        "saturado": 0.806,
+        "n": 28,
+        "media": 12.9,
+        "desvio": 6.4,
+        "saturado": 0.821,
         "crudo_min": 14.4,
-        "crudo_max": 80.0,
-        "crudo_media": 39.22
+        "crudo_max": 80.1,
+        "crudo_media": 40.65
       },
       "dentro_de_muestra": {
-        "n": 29,
-        "media": 50.7,
-        "desvio": 14.4,
-        "saturado": 0.103,
-        "crudo_min": 1.0,
+        "n": 32,
+        "media": 51.7,
+        "desvio": 14.1,
+        "saturado": 0.094,
+        "crudo_min": 0.1,
         "crudo_max": 24.7,
-        "crudo_media": 6.68
+        "crudo_media": 6.21
       },
       "señal": "mirar",
       "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"
+    },
+    {
+      "indicador": "actividad_tributaria",
+      "indice": "ITCM",
+      "procedencia": "historia_larga",
+      "fuera_de_muestra": {
+        "n": 72,
+        "media": 56.9,
+        "desvio": 34.3,
+        "saturado": 0.431,
+        "crudo_min": -25.6,
+        "crudo_max": 30.3,
+        "crudo_media": 1.48
+      },
+      "dentro_de_muestra": {
+        "n": 34,
+        "media": 43.3,
+        "desvio": 27.2,
+        "saturado": 0.235,
+        "crudo_min": -18.39,
+        "crudo_max": 21.74,
+        "crudo_media": -1.98
+      },
+      "señal": "sin señal",
+      "lectura": "discrimina en ambas ventanas"
     },
     {
       "indicador": "brecha_obra_publica",
       "indice": "ITCP",
       "procedencia": "conceptual",
       "fuera_de_muestra": {
-        "n": 67,
-        "media": 75.4,
-        "desvio": 20.1,
-        "saturado": 0.224,
-        "crudo_min": -14.3,
-        "crudo_max": 19.4,
-        "crudo_media": 0.72
+        "n": 77,
+        "media": 76.5,
+        "desvio": 19.1,
+        "saturado": 0.234,
+        "crudo_min": -13.6,
+        "crudo_max": 23.9,
+        "crudo_media": 1.44
       },
       "dentro_de_muestra": {
-        "n": 33,
-        "media": 46.4,
-        "desvio": 29.8,
-        "saturado": 0.333,
+        "n": 34,
+        "media": 47.0,
+        "desvio": 29.5,
+        "saturado": 0.324,
         "crudo_min": -29.8,
         "crudo_max": 3.3,
-        "crudo_media": -11.33
+        "crudo_media": -11.13
       },
       "señal": "sin señal",
       "lectura": "discrimina en ambas ventanas"
     },
     {
-      "indicador": "emae_ia",
-      "indice": "ITCM",
+      "indicador": "iaf_transferencias",
+      "indice": "ITCP",
       "procedencia": "conceptual",
       "fuera_de_muestra": {
-        "n": 31,
-        "media": 74.8,
-        "desvio": 32.7,
-        "saturado": 0.677,
-        "crudo_min": -6.61,
-        "crudo_max": 15.37,
-        "crudo_media": 4.66
+        "n": 61,
+        "media": 79.3,
+        "desvio": 11.9,
+        "saturado": 0.082,
+        "crudo_min": -9.3,
+        "crudo_max": 11.7,
+        "crudo_media": 1.92
       },
       "dentro_de_muestra": {
-        "n": 29,
-        "media": 60.9,
-        "desvio": 31.7,
-        "saturado": 0.31,
-        "crudo_min": -8.17,
-        "crudo_max": 7.93,
-        "crudo_media": 1.45
+        "n": 34,
+        "media": 65.2,
+        "desvio": 10.6,
+        "saturado": 0.0,
+        "crudo_min": -12.9,
+        "crudo_max": 2.4,
+        "crudo_media": -4.44
+      },
+      "señal": "sin señal",
+      "lectura": "discrimina en ambas ventanas"
+    },
+    {
+      "indicador": "jornadas_individuales_no_trabajadas_12m",
+      "indice": "ITCP",
+      "procedencia": "historia_larga",
+      "fuera_de_muestra": {
+        "n": 204,
+        "media": 59.0,
+        "desvio": 30.6,
+        "saturado": 0.333,
+        "crudo_min": 2796828.0,
+        "crudo_max": 13892790.0,
+        "crudo_media": 7573733.68
+      },
+      "dentro_de_muestra": {
+        "n": 32,
+        "media": 94.7,
+        "desvio": 7.6,
+        "saturado": 0.562,
+        "crudo_min": 4188784.0,
+        "crudo_max": 6240205.0,
+        "crudo_media": 5119432.03
       },
       "señal": "sin señal",
       "lectura": "discrimina en ambas ventanas"
@@ -106,22 +181,22 @@
       "indice": "ITCM",
       "procedencia": "conceptual",
       "fuera_de_muestra": {
-        "n": 27,
-        "media": 53.6,
-        "desvio": 31.2,
-        "saturado": 0.296,
-        "crudo_min": -9.87,
-        "crudo_max": 10.79,
-        "crudo_media": 1.7
+        "n": 23,
+        "media": 84.4,
+        "desvio": 12.6,
+        "saturado": 0.174,
+        "crudo_min": 91.8,
+        "crudo_max": 113.5,
+        "crudo_media": 104.65
       },
       "dentro_de_muestra": {
-        "n": 31,
-        "media": 29.0,
-        "desvio": 24.0,
-        "saturado": 0.548,
-        "crudo_min": -12.31,
-        "crudo_max": 8.23,
-        "crudo_media": -4.02
+        "n": 34,
+        "media": 59.5,
+        "desvio": 10.9,
+        "saturado": 0.029,
+        "crudo_min": 88.2,
+        "crudo_max": 114.9,
+        "crudo_media": 94.91
       },
       "señal": "sin señal",
       "lectura": "discrimina en ambas ventanas"
@@ -131,22 +206,22 @@
       "indice": "ITCM",
       "procedencia": "conceptual",
       "fuera_de_muestra": {
-        "n": 19,
-        "media": 54.8,
-        "desvio": 9.2,
+        "n": 16,
+        "media": 52.0,
+        "desvio": 6.8,
         "saturado": 0.0,
-        "crudo_min": -6841.0,
-        "crudo_max": 12286.0,
-        "crudo_media": 3382.54
+        "crudo_min": -6841.1,
+        "crudo_max": 6923.0,
+        "crudo_media": 2005.92
       },
       "dentro_de_muestra": {
-        "n": 30,
-        "media": 70.9,
-        "desvio": 15.0,
-        "saturado": 0.333,
-        "crudo_min": -6925.0,
-        "crudo_max": 21221.0,
-        "crudo_media": 10697.69
+        "n": 34,
+        "media": 72.5,
+        "desvio": 14.8,
+        "saturado": 0.412,
+        "crudo_min": -6925.1,
+        "crudo_max": 26472.2,
+        "crudo_media": 12294.61
       },
       "señal": "sin señal",
       "lectura": "discrimina en ambas ventanas"
@@ -169,12 +244,22 @@
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
-      "indicador": "bloqueo_sostenido",
+      "indicador": "apoyo_empresario",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "asistencia_directa",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
       "indicador": "cepo_mulc",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "cobertura_judicial",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
@@ -209,12 +294,22 @@
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
+      "indicador": "desequilibrio_monetario",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
       "indicador": "desregulacion_normativa",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
       "indicador": "eficacia_legislativa",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "emae_difusion",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
@@ -229,27 +324,12 @@
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
-      "indicador": "iaf_transferencias",
-      "n_fuera": 5,
-      "motivo": "sin ventana fuera de muestra utilizable"
-    },
-    {
       "indicador": "iai",
       "n_fuera": 2,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
-      "indicador": "icip",
-      "n_fuera": 3,
-      "motivo": "sin ventana fuera de muestra utilizable"
-    },
-    {
       "indicador": "idc",
-      "n_fuera": 1,
-      "motivo": "sin ventana fuera de muestra utilizable"
-    },
-    {
-      "indicador": "idm",
       "n_fuera": 1,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
@@ -259,22 +339,32 @@
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
+      "indicador": "judicializacion",
+      "n_fuera": 8,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "juicios_trabajo_capital",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
       "indicador": "libertad_opcion_salud",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
-      "indicador": "masa_salarial",
-      "n_fuera": 0,
-      "motivo": "sin ventana fuera de muestra utilizable"
-    },
-    {
-      "indicador": "presion_dolarizacion",
+      "indicador": "paralisis_denuncias",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
       "indicador": "privatizaciones",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "produccion_legislativa",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
@@ -319,17 +409,17 @@
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
-      "indicador": "tcrm",
-      "n_fuera": 1,
-      "motivo": "sin ventana fuera de muestra utilizable"
-    },
-    {
-      "indicador": "veto_quorum",
+      "indicador": "tcr_terminos_intercambio",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
-      "indicador": "votometro_ventaja_lla",
+      "indicador": "velocidad_resolucion",
+      "n_fuera": 9,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "veto_quorum",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     }

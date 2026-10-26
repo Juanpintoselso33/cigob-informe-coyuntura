@@ -35,7 +35,10 @@ def _ancho_sin_redondeo(exposicion, n=8000):
     import statistics
     import parametrica
     dims = sensibilidad._estructura(_bloque_itcm())
-    escala = parametrica.Escala(itcm.BANDAS_ITCM, None, None)
+    # La misma escala que usa la publicación (anclas explícitas y la
+    # transformación anual→mensual del REM), no una simplificada.
+    escala = parametrica.Escala(itcm.BANDAS_ITCM, itcm.ANCLAS_ITCM,
+                                itcm.TRANSFORMACIONES_ITCM)
     rng = random.Random(sensibilidad.SEMILLA)
     draws = [sensibilidad._perturbar(dims, rng, pesos=True, escala=escala,
                                      exposicion=exposicion) for _ in range(n)]
@@ -51,6 +54,17 @@ def test_compartir_el_deflactor_ensancha_el_rango():
     compartido = _ancho_sin_redondeo(sensibilidad.EXPOSICION_DEFLACTOR_ITCM)
     assert compartido > independiente, (
         f"compartir el deflactor no ensanchó el rango: {compartido} vs {independiente}")
+
+
+def test_la_robustez_publicada_propaga_la_exposicion():
+    """Lo que se publica (`robustez_compacta`) tiene que usar la exposición: si
+    dejara de pasarla a los draws, el histograma sería idéntico al de los
+    errores independientes (Codex, 26-oct-2026)."""
+    def hist(exposicion):
+        return sensibilidad.robustez_compacta(
+            _bloque_itcm(), itcm.BANDAS_ITCM, lambda v: round((100 - v) / 10, 1),
+            n_draws=500, exposicion=exposicion)["hist"]
+    assert hist(None) != hist(sensibilidad.EXPOSICION_DEFLACTOR_ITCM)
 
 
 def test_el_idm_esta_excluido_por_construccion():
