@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-25T03:33:40.659851+00:00",
+    "generated_at": "2026-10-26T03:33:38.172562+00:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -1026,7 +1026,7 @@
     "umbral": 0.7,
     "n_indicadores": 14,
     "n_pares": 91,
-    "r_abs_medio": 0.456,
+    "r_abs_medio": 0.455,
     "share_altos": 0.231,
     "share_bajos": 0.308,
     "matriz": {
@@ -1063,14 +1063,14 @@
       "cepo_mulc": {
         "apertura_comercial": 0.341,
         "asistencia_directa": 0.528,
-        "concesiones_infraestructura": 0.336,
+        "concesiones_infraestructura": 0.335,
         "desregulacion_normativa": 0.918,
         "fal_modernizacion_laboral": 0.366,
         "gasto_funcionamiento": 0.274,
         "libertad_opcion_salud": 0.899,
         "litigiosidad_laboral": 0.438,
         "masa_salarial": 0.474,
-        "privatizaciones": 0.826,
+        "privatizaciones": 0.825,
         "protocolo_antipiquetes": 0.872,
         "reduccion_estado": 0.762,
         "reestructuracion_organismos": 0.463
@@ -1078,7 +1078,7 @@
       "concesiones_infraestructura": {
         "apertura_comercial": 0.067,
         "asistencia_directa": 0.152,
-        "cepo_mulc": 0.336,
+        "cepo_mulc": 0.335,
         "desregulacion_normativa": 0.499,
         "fal_modernizacion_laboral": 0.919,
         "gasto_funcionamiento": 0.281,
@@ -1183,7 +1183,7 @@
       "privatizaciones": {
         "apertura_comercial": 0.478,
         "asistencia_directa": 0.353,
-        "cepo_mulc": 0.826,
+        "cepo_mulc": 0.825,
         "concesiones_infraestructura": 0.583,
         "desregulacion_normativa": 0.949,
         "fal_modernizacion_laboral": 0.603,
@@ -1355,7 +1355,7 @@
       {
         "a": "cepo_mulc",
         "b": "privatizaciones",
-        "r": 0.826,
+        "r": 0.825,
         "n": 35,
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
@@ -3213,7 +3213,7 @@
     "2026-07": 2090.0,
     "2026-08": 1913.0,
     "2026-09": 1763.2,
-    "2026-10": 1757.3
+    "2026-10": 1755.9
   },
   "serie_itcp": {
     "2024-02": 71.1,
