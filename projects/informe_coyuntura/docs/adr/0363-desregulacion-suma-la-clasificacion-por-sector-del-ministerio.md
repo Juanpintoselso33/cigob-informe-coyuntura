@@ -40,7 +40,8 @@ tipos de normas y naturaleza de los cambios.
 
 El colector lee la tabla «Cantidad de normas de desregulación, por sector» de
 cada informe (formato desde mayo de 2026: cifra y rótulo en la misma fila) y la
-publica en la tarjeta como `normas_por_sector` y en el detalle. Agosto de 2026:
+publica como `normas_por_sector`, que la ficha muestra en una sección propia y que
+el corte mensual conserva cuando el dato del mes es el mismo informe. Agosto de 2026:
 770 normas en once sectores, de Agroindustria (125) a Sector Inmobiliario (16).
 
 - **Control:** la tabla se publica sólo si sus sectores suman el total de normas

@@ -933,7 +933,8 @@ def fetch_desregulacion_normativa() -> dict | None:
             "normas_desregulacion": ultimo.get("normas"),
             "normas_afectadas": ultimo.get("normas_afectadas"),
             "alta_del_mes":   None if previo is None else serie[periodo] - previo,
-            # clasificación complementaria del Ministerio (no puntúa, ADR-0363)
+            # clasificación complementaria del Ministerio (no puntúa, ADR-0363);
+            # la ficha la muestra en su propia sección y el mensual la conserva
             "normas_por_sector": sectores or None,
             "detalle_txt": (
                 f"{serie[periodo]:,} artículos modificados o eliminados desde el 10 de "
@@ -943,10 +944,7 @@ def fetch_desregulacion_normativa() -> dict | None:
                 + ("" if not ultimo.get("normas") else
                    f" · los produjeron {ultimo['normas']} normas de desregulación, "
                    f"que modificaron o eliminaron {ultimo.get('normas_afectadas')} "
-                   f"normas anteriores")
-                + ("" if not sectores else
-                   ". Por sector, según el Ministerio: " + ", ".join(
-                       f"{s} {n}" for s, n in sectores.items()))),
+                   f"normas anteriores")),
         }
     except Exception as e:
         _warn("desregulacion_normativa", e)

@@ -453,6 +453,25 @@ const heroTitulo = esIndicador ? label(f.id) : (indice?.Corto ?? fx.nombreLargo)
           </section>
         )}
 
+        <!-- ── Desglose por sector que publica el propio Ministerio (ADR-0363):
+             complementa el conteo y no puntúa ── -->
+        {ind?.normas_por_sector && typeof ind.normas_por_sector === "object" && (
+          <section class="cg-section">
+            <div class="cg-section-head">
+              <p class="cg-eyebrow">Complemento</p>
+              <h2 class="cg-h2">Normas por sector, según el Ministerio</h2>
+              <p class="cg-h2-sub">Clasificación que publica el informe mensual del Ministerio de Desregulación. No puntúa: el valor sigue siendo el conteo de artículos.</p>
+            </div>
+            <div class="cg-ficha-card">
+              <ul class="cg-ficha-p" style="margin:0;">
+                {Object.entries(ind.normas_por_sector)
+                  .sort((a: any, b: any) => b[1] - a[1])
+                  .map(([s, n]) => <li>{s}: {n}</li>)}
+              </ul>
+            </div>
+          </section>
+        )}
+
         <!-- ── Color vigente y por qué: misma aritmética que produjo el color,
              para que la prosa nunca se desincronice del dato ── -->
         {ind?.semaforo?.por_que && (

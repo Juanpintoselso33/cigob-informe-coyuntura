@@ -146,7 +146,9 @@ CRUDOS = ("projects/informe_coyuntura/output",
 CAMPOS_CARD = ("valor", "unidad", "fuente", "fecha_dato", "en_indice", "dimension", "suspendido")
 # Lo que la tarjeta muestra al lado del valor y describe ESE dato, no el día:
 # se conserva sólo si el dato del mes es el mismo que el de hoy (ver abajo).
-CAMPOS_MISMO_DATO = ("derivados", "usuarios_prepagas", "fecha_numerador", "fecha_denominador")
+# normas_por_sector: el desglose del mismo informe del Ministerio (ADR-0363).
+CAMPOS_MISMO_DATO = ("derivados", "usuarios_prepagas", "fecha_numerador", "fecha_denominador",
+                     "normas_por_sector")
 CACHES = ("macro", "politica", "gestion", "vida_cotidiana", "espiritu_epoca")
 
 

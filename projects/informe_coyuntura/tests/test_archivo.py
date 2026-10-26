@@ -81,6 +81,12 @@ def test_un_dato_anual_conserva_su_fecha_en_el_mes_rehecho():
     salud["libertad_opcion_salud"]["fecha_denominador"] = "2026-10-01"
     s = archivo.cortar_indicadores(salud, {"libertad_opcion_salud": ("2026-09-01", 33.1)}, "2026-09")["libertad_opcion_salud"]
     assert "usuarios_prepagas" not in s and s["valor"] == 33.1
+    # El desglose por sector de desregulación acompaña a su informe (ADR-0363).
+    des = {"desregulacion_normativa": {"valor": 17606.0, "fecha_dato": "2026-09-01", "normas_por_sector": {"Agroindustria": 129}}}
+    d = archivo.cortar_indicadores(des, {"desregulacion_normativa": ("2026-09-01", 17606.0)}, "2026-09")["desregulacion_normativa"]
+    assert d["normas_por_sector"] == {"Agroindustria": 129}
+    d = archivo.cortar_indicadores(des, {"desregulacion_normativa": ("2026-08-01", 17115.0)}, "2026-08")["desregulacion_normativa"]
+    assert "normas_por_sector" not in d and d["valor"] == 17115.0
     # La poda de la validación externa saca los meses posteriores, en cualquier nivel.
     v = {"merval_usd_mensual": {"2026-09": 1, "2026-10": 2}, "a": {"serie": {"2026-10-03": 3, "2026-08": 4}}, "giros": [{"mes": "2026-10"}]}
     assert archivo.podar_meses(v, "2026-09") == {"merval_usd_mensual": {"2026-09": 1}, "a": {"serie": {"2026-08": 4}}, "giros": [{"mes": "2026-10"}]}

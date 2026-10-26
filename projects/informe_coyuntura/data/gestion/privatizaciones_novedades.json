@@ -1,10 +1,12 @@
 {
  "_meta": {
   "cobertura": {
-   "consultas_fallidas": [],
+   "consultas_fallidas": [
+    "AySA|2026-08"
+   ],
    "consultas_previstas": 27,
-   "consultas_sin_error": 27,
-   "estado": "sin_fallos_detectados",
+   "consultas_sin_error": 26,
+   "estado": "incompleta",
    "relectura_pendiente": [],
    "textos_fallidos": []
   },

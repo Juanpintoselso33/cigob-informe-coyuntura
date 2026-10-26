@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-26 10:36:06"
+generado: "2026-10-26 11:07:46"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -96,7 +96,7 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 8.14 | % de brecha CCL/mayorista | 2026-10-23 | fresco |
+| cepo_mulc | 8.32 | % de brecha CCL/mayorista | 2026-10-26 | fresco |
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
@@ -124,4 +124,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-10-26 10:36:06 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-26 11:07:46 — schema 1.2.0*
