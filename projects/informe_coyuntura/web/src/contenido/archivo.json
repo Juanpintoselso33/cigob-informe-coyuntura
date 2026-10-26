@@ -2,7 +2,7 @@
  "meses": [
   {
    "mes": "2026-09",
-   "corrida": "024353fe02",
+   "corrida": "aa1ca08b57",
    "generado": "2026-09-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.8,
@@ -15,7 +15,7 @@
      "estado": "estable"
     },
     "politica": {
-     "score": 2.6,
+     "score": 2.7,
      "estado": "estable"
     },
     "vida_cotidiana": {
@@ -33,7 +33,7 @@
   },
   {
    "mes": "2026-08",
-   "corrida": "024353fe02",
+   "corrida": "aa1ca08b57",
    "generado": "2026-08-31T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.8,
@@ -64,7 +64,7 @@
   },
   {
    "mes": "2026-07",
-   "corrida": "024353fe02",
+   "corrida": "aa1ca08b57",
    "generado": "2026-07-31T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.8,
@@ -95,7 +95,7 @@
   },
   {
    "mes": "2026-06",
-   "corrida": "024353fe02",
+   "corrida": "aa1ca08b57",
    "generado": "2026-06-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.7,
