@@ -11,6 +11,18 @@ algo ya hecho o decidido.
 Fechas acordadas (reunión del Votómetro, 21-oct): Monitor general a principios de
 noviembre; Votómetro a fines de noviembre.
 
+## Hecho el 26-oct (ADR-0366, publicado)
+
+Textos y rótulos, sin mover números: 1 (el color se explica), 3 (siglas en rótulos y
+unidades; quedan las de impacto social, que se rehacen con su reestructuración), 4
+(«5e+06»), 2 (fichas de los índices macro y gestión), 8 (escala de expectativas con
+su equivalente anual), 12 y 17 (declarados en la ficha del índice), 14 (textos en
+llano), 15 (31,3 % y excepción de reservas), los textos de 21 (rótulos, descripciones,
+fuentes, decreto del FAL, RIGI, comentarios de `itcg.py`, piquetes con fecha y estado
+judicial) y los rótulos y signos de 27 (Corte, comisiones, leyes sancionadas vs.
+publicadas). Dos datos de Luis no se usaron por falsos: el protocolo no está anulado (la
+Cámara revocó la nulidad) y el pico del costo del Tesoro fue 33,8 % (ago-2025), no 58,8 %.
+
 ## Transversal (todo el sitio)
 
 1. **Que el color se entienda.** La tarjeta muestra la escala de puntaje (100/85/65/40/10)
