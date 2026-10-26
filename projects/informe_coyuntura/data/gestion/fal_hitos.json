@@ -2,8 +2,8 @@
   "_meta": {
     "descripcion": "Hechos fechados del Fondo de Asistencia Laboral (Ley 27.802) para el indicador fal_modernizacion_laboral: los actos normativos que lo construyen, la fecha en que el régimen empieza a regir y el estado judicial de esos actos (ADR-0228). Cada entrada está fechada y respaldada por una norma publicada o por una resolución judicial identificable — mismo patrón que concesiones_fechas.json y privatizaciones_fechas.json.",
     "por_que": "Una norma dictada y una norma que rige son dos estados distintos, y en política laboral argentina divergen: las doce medidas del sector Trabajo y Seguridad Social de la base de desregulaciones de Chequeado y elDiarioAR están calificadas de impacto NULO —son el capítulo laboral del DNU 70/2023, frenado en sede judicial— y la propia Ley 27.802 estuvo suspendida con efecto general entre el 30-mar y el 23-abr-2026. Por eso el indicador puntúa actos VIGENTES, no actos dictados.",
-    "verificado": "2026-07-20 los hitos normativos contra el buscador de InfoLeg, por número de norma. 2026-08-21 el estado judicial contra las resoluciones y su cobertura (ver `fuente` de cada entrada de `judicial`). 2026-10-20: vigencia corregida contra el aviso del BO del Decreto 1228/2026; sin cambios en los actos fundamentales (la Resolución MECON 1276/2026 y la RG CNV 1167/2026 operativizan los fondos, no los construyen). Estado judicial revisado en prensa: sin sentencia de fondo en la causa de la CGT y sin cautelar general sobre el Título II; la suspensión provisoria de los arts. 10 y 56 de la Ley 27.802 (Juzgado CAF 11, 14 y 15-oct-2026, amparos de colegios de abogados) no alcanza al FAL.",
-    "revision_normativa_en": "2026-10-20",
+    "verificado": "2026-07-20 los hitos normativos contra el buscador de InfoLeg, por número de norma. 2026-08-21 el estado judicial contra las resoluciones y su cobertura (ver `fuente` de cada entrada de `judicial`). 2026-10-20: vigencia corregida contra el aviso del BO del Decreto 1228/2026; sin cambios en los actos fundamentales (la Resolución MECON 1276/2026 y la RG CNV 1167/2026 operativizan los fondos, no los construyen). Estado judicial revisado en prensa: sin sentencia de fondo en la causa de la CGT y sin cautelar general sobre el Título II; la suspensión provisoria de los arts. 10 y 56 de la Ley 27.802 (Juzgado CAF 11, 14 y 15-oct-2026, amparos de colegios de abogados) no alcanza al FAL. 2026-10-26 (ADR-0370): RG CNV 1167/2026 y RG ARCA 5907/2026 verificadas en el Boletín Oficial; oferta bancaria en las páginas del Banco Nación y del Banco Ciudad. Desde ADR-0370 cuentan como hitos de construcción.",
+    "revision_normativa_en": "2026-10-26",
     "revision_judicial_en": "2026-10-20"
   },
   "vigencia": {
@@ -31,6 +31,27 @@
       "norma": "Decreto 408/2026",
       "organismo": "Poder Ejecutivo Nacional",
       "fuente": "InfoLeg — Decreto Reglamentario 408/2026, aprueba la reglamentación del Título II (Fondo de Asistencia Laboral) de la Ley 27.802, publicado 01-jun-2026"
+    },
+    {
+      "hito": "Reglamentación de los productos de inversión colectiva del FAL",
+      "fecha": "2026-09-17",
+      "norma": "Resolución General 1167/2026",
+      "organismo": "Comisión Nacional de Valores",
+      "fuente": "Boletín Oficial, aviso 347592, publicado 17-sep-2026 (RESGC-2026-1167-APN-DIR#CNV)"
+    },
+    {
+      "hito": "Recaudación y derivación de los aportes al FAL",
+      "fecha": "2026-10-01",
+      "norma": "Resolución General 5907/2026",
+      "organismo": "Agencia de Recaudación y Control Aduanero",
+      "fuente": "Boletín Oficial, aviso 348365, publicado 01-oct-2026 (RESOG-2026-5907-E-ARCA-ARCA)"
+    },
+    {
+      "hito": "Bancos que ofrecen el producto a las empresas",
+      "fecha": "2026-10-24",
+      "norma": "Oferta bancaria",
+      "organismo": "Entidades financieras",
+      "fuente": "Páginas de producto del Banco de la Nación Argentina (bna.com.ar/home/FAL) y del Banco Ciudad (bancociudad.com.ar, micrositio FAL), verificadas el 26-oct-2026; relevamiento de Marcos (CiGob) del 24-oct-2026 que suma BBVA, Provincia, Santander, Macro, Entre Ríos e ICBC. Son ofertas comerciales: los fondos no operan antes del 1-dic-2026."
     }
   ],
   "judicial": {

@@ -3448,9 +3448,9 @@ def fetch_fal_serie() -> list:
     Desde ADR-0228 el índice mide lo que RIGE y no lo que se dictó, en tres
     etapas fechadas (`gestion.fal_indice`):
 
-        0,50 · actos fundamentales VIGENTES / 2
-        0,20 · régimen en vigencia (1-nov-2026, art. 27 del Decreto 408/2026)
-        0,30 · al menos un FAL registrado en la CNV
+        Desde ADR-0370: cinco hitos de 0,18 (ley y decreto VIGENTES, RG CNV
+        1167, RG ARCA 5907, oferta bancaria) + 0,10 por al menos un FAL
+        registrado en la CNV (antes 0,50 actos / 0,20 vigencia / 0,30 CNV).
 
     El resultado ya no es monótono, y ésa es la corrección: entre el 30-mar y el
     23-abr-2026 la Ley 27.802 estuvo suspendida con efecto general por la
@@ -3492,6 +3492,16 @@ def fetch_fal_serie() -> list:
         m += 1
         if m > 12:
             m, y = 1, y + 1
+    # El mes en curso, evaluado HOY, como la tarjeta: desde ADR-0370 hay hitos
+    # que caen a mitad de mes (RG ARCA 5907 el 1-oct, oferta bancaria) y sin
+    # este punto la serie se quedaba en el mes anterior y no coincidía con la
+    # card (G3). El corte del mes publicado sigue tomando el cierre de su mes.
+    hoy_iso = hoy.isoformat()
+    if hoy_iso >= fecha_vigencia and fondos_fal is None:
+        fondos_fal = gestion._cnv_fondos_fal(gestion._cnv_registro_fci())
+    indice, _, _ = gestion.fal_indice(hitos, hoy_iso,
+                                      fondos_fal if hoy_iso >= fecha_vigencia else 0)
+    out.append([f"{hoy:%Y-%m}-01", indice])
     return out
 
 # ── UTDT · ICG ───────────────────────────────────────────────────────────────

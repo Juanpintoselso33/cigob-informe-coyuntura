@@ -2138,27 +2138,31 @@
     },
     {
       "fecha": "2026-04-01",
-      "valor": 25.0
+      "valor": 18.0
     },
     {
       "fecha": "2026-05-01",
-      "valor": 25.0
+      "valor": 18.0
     },
     {
       "fecha": "2026-06-01",
-      "valor": 50.0
+      "valor": 36.0
     },
     {
       "fecha": "2026-07-01",
-      "valor": 50.0
+      "valor": 36.0
     },
     {
       "fecha": "2026-08-01",
-      "valor": 50.0
+      "valor": 36.0
     },
     {
       "fecha": "2026-09-01",
-      "valor": 50.0
+      "valor": 54.0
+    },
+    {
+      "fecha": "2026-10-01",
+      "valor": 90.0
     }
   ],
   "desregulacion_normativa": [

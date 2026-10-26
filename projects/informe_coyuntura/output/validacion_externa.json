@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-26T19:37:41.195193-03:00",
+    "generated_at": "2026-10-26T20:47:45.041100-03:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -880,13 +880,13 @@
   "redundancia_itcg": {
     "diferencias": {
       "n_pares": 90,
-      "r_abs_medio": 0.113,
+      "r_abs_medio": 0.111,
       "share_altos": 0.011
     },
     "umbral": 0.7,
     "n_indicadores": 14,
     "n_pares": 90,
-    "r_abs_medio": 0.5,
+    "r_abs_medio": 0.495,
     "share_altos": 0.289,
     "share_bajos": 0.244,
     "matriz": {
@@ -895,7 +895,7 @@
         "cepo_mulc": 0.341,
         "concesiones_infraestructura": 0.067,
         "desregulacion_normativa": 0.456,
-        "fal_modernizacion_laboral": 0.12,
+        "fal_modernizacion_laboral": 0.091,
         "gasto_funcionamiento": 0.012,
         "juicios_trabajo_capital": -0.299,
         "libertad_opcion_salud": 0.333,
@@ -910,7 +910,7 @@
         "cepo_mulc": 0.528,
         "concesiones_infraestructura": 0.152,
         "desregulacion_normativa": 0.465,
-        "fal_modernizacion_laboral": 0.16,
+        "fal_modernizacion_laboral": 0.143,
         "gasto_funcionamiento": 0.133,
         "libertad_opcion_salud": 0.461,
         "masa_salarial": 0.41,
@@ -924,7 +924,7 @@
         "asistencia_directa": 0.528,
         "concesiones_infraestructura": 0.335,
         "desregulacion_normativa": 0.918,
-        "fal_modernizacion_laboral": 0.366,
+        "fal_modernizacion_laboral": 0.308,
         "gasto_funcionamiento": 0.274,
         "juicios_trabajo_capital": -0.49,
         "libertad_opcion_salud": 0.906,
@@ -939,7 +939,7 @@
         "asistencia_directa": 0.152,
         "cepo_mulc": 0.335,
         "desregulacion_normativa": 0.499,
-        "fal_modernizacion_laboral": 0.92,
+        "fal_modernizacion_laboral": 0.902,
         "gasto_funcionamiento": 0.281,
         "juicios_trabajo_capital": -0.776,
         "libertad_opcion_salud": 0.351,
@@ -954,7 +954,7 @@
         "asistencia_directa": 0.465,
         "cepo_mulc": 0.918,
         "concesiones_infraestructura": 0.499,
-        "fal_modernizacion_laboral": 0.562,
+        "fal_modernizacion_laboral": 0.533,
         "gasto_funcionamiento": 0.345,
         "juicios_trabajo_capital": -0.883,
         "libertad_opcion_salud": 0.923,
@@ -965,19 +965,19 @@
         "reestructuracion_organismos": 0.671
       },
       "fal_modernizacion_laboral": {
-        "apertura_comercial": 0.12,
-        "asistencia_directa": 0.16,
-        "cepo_mulc": 0.366,
-        "concesiones_infraestructura": 0.92,
-        "desregulacion_normativa": 0.562,
-        "gasto_funcionamiento": 0.2,
-        "juicios_trabajo_capital": -0.825,
-        "libertad_opcion_salud": 0.405,
-        "masa_salarial": 0.175,
-        "privatizaciones": 0.603,
-        "protocolo_antipiquetes": 0.338,
-        "reduccion_estado": 0.466,
-        "reestructuracion_organismos": 0.844
+        "apertura_comercial": 0.091,
+        "asistencia_directa": 0.143,
+        "cepo_mulc": 0.308,
+        "concesiones_infraestructura": 0.902,
+        "desregulacion_normativa": 0.533,
+        "gasto_funcionamiento": 0.218,
+        "juicios_trabajo_capital": -0.727,
+        "libertad_opcion_salud": 0.38,
+        "masa_salarial": 0.17,
+        "privatizaciones": 0.549,
+        "protocolo_antipiquetes": 0.317,
+        "reduccion_estado": 0.454,
+        "reestructuracion_organismos": 0.718
       },
       "gasto_funcionamiento": {
         "apertura_comercial": 0.012,
@@ -985,7 +985,7 @@
         "cepo_mulc": 0.274,
         "concesiones_infraestructura": 0.281,
         "desregulacion_normativa": 0.345,
-        "fal_modernizacion_laboral": 0.2,
+        "fal_modernizacion_laboral": 0.218,
         "juicios_trabajo_capital": -0.478,
         "libertad_opcion_salud": 0.252,
         "masa_salarial": 0.444,
@@ -999,7 +999,7 @@
         "cepo_mulc": -0.49,
         "concesiones_infraestructura": -0.776,
         "desregulacion_normativa": -0.883,
-        "fal_modernizacion_laboral": -0.825,
+        "fal_modernizacion_laboral": -0.727,
         "gasto_funcionamiento": -0.478,
         "libertad_opcion_salud": -0.486,
         "masa_salarial": -0.3,
@@ -1014,7 +1014,7 @@
         "cepo_mulc": 0.906,
         "concesiones_infraestructura": 0.351,
         "desregulacion_normativa": 0.923,
-        "fal_modernizacion_laboral": 0.405,
+        "fal_modernizacion_laboral": 0.38,
         "gasto_funcionamiento": 0.252,
         "juicios_trabajo_capital": -0.486,
         "masa_salarial": 0.428,
@@ -1029,7 +1029,7 @@
         "cepo_mulc": 0.474,
         "concesiones_infraestructura": 0.15,
         "desregulacion_normativa": 0.465,
-        "fal_modernizacion_laboral": 0.175,
+        "fal_modernizacion_laboral": 0.17,
         "gasto_funcionamiento": 0.444,
         "juicios_trabajo_capital": -0.3,
         "libertad_opcion_salud": 0.428,
@@ -1044,7 +1044,7 @@
         "cepo_mulc": 0.825,
         "concesiones_infraestructura": 0.584,
         "desregulacion_normativa": 0.949,
-        "fal_modernizacion_laboral": 0.603,
+        "fal_modernizacion_laboral": 0.549,
         "gasto_funcionamiento": 0.445,
         "juicios_trabajo_capital": -0.856,
         "libertad_opcion_salud": 0.824,
@@ -1059,7 +1059,7 @@
         "cepo_mulc": 0.872,
         "concesiones_infraestructura": 0.294,
         "desregulacion_normativa": 0.873,
-        "fal_modernizacion_laboral": 0.338,
+        "fal_modernizacion_laboral": 0.317,
         "gasto_funcionamiento": 0.205,
         "juicios_trabajo_capital": -0.24,
         "libertad_opcion_salud": 0.992,
@@ -1074,7 +1074,7 @@
         "cepo_mulc": 0.847,
         "concesiones_infraestructura": 0.411,
         "desregulacion_normativa": 0.882,
-        "fal_modernizacion_laboral": 0.466,
+        "fal_modernizacion_laboral": 0.454,
         "gasto_funcionamiento": 0.329,
         "juicios_trabajo_capital": -0.922,
         "libertad_opcion_salud": 0.83,
@@ -1089,7 +1089,7 @@
         "cepo_mulc": 0.463,
         "concesiones_infraestructura": 0.76,
         "desregulacion_normativa": 0.671,
-        "fal_modernizacion_laboral": 0.844,
+        "fal_modernizacion_laboral": 0.718,
         "gasto_funcionamiento": 0.203,
         "juicios_trabajo_capital": -0.859,
         "libertad_opcion_salud": 0.493,
@@ -1141,16 +1141,6 @@
         "por_diseno": null
       },
       {
-        "a": "concesiones_infraestructura",
-        "b": "fal_modernizacion_laboral",
-        "r": 0.92,
-        "n": 34,
-        "dimension_a": "privatizaciones_inversion",
-        "dimension_b": "reforma_laboral",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "cepo_mulc",
         "b": "desregulacion_normativa",
         "r": 0.918,
@@ -1167,6 +1157,16 @@
         "n": 34,
         "dimension_a": "reformas_economicas",
         "dimension_b": "social_orden",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "concesiones_infraestructura",
+        "b": "fal_modernizacion_laboral",
+        "r": 0.902,
+        "n": 35,
+        "dimension_a": "privatizaciones_inversion",
+        "dimension_b": "reforma_laboral",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -1241,16 +1241,6 @@
         "por_diseno": null
       },
       {
-        "a": "fal_modernizacion_laboral",
-        "b": "reestructuracion_organismos",
-        "r": 0.844,
-        "n": 34,
-        "dimension_a": "reforma_laboral",
-        "dimension_b": "reforma_estado",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "protocolo_antipiquetes",
         "b": "reduccion_estado",
         "r": 0.84,
@@ -1278,16 +1268,6 @@
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
         "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "fal_modernizacion_laboral",
-        "b": "juicios_trabajo_capital",
-        "r": -0.825,
-        "n": 22,
-        "dimension_a": "reforma_laboral",
-        "dimension_b": "reforma_laboral",
-        "misma_dimension": true,
         "por_diseno": null
       },
       {
@@ -1356,6 +1336,26 @@
         "r": 0.732,
         "n": 35,
         "dimension_a": "privatizaciones_inversion",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "fal_modernizacion_laboral",
+        "b": "juicios_trabajo_capital",
+        "r": -0.727,
+        "n": 23,
+        "dimension_a": "reforma_laboral",
+        "dimension_b": "reforma_laboral",
+        "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
+        "a": "fal_modernizacion_laboral",
+        "b": "reestructuracion_organismos",
+        "r": 0.718,
+        "n": 35,
+        "dimension_a": "reforma_laboral",
         "dimension_b": "reforma_estado",
         "misma_dimension": false,
         "por_diseno": null
@@ -3089,12 +3089,12 @@
     "2026-01": 69.9,
     "2026-02": 70.1,
     "2026-03": 70.9,
-    "2026-04": 67.8,
-    "2026-05": 73.9,
-    "2026-06": 75.0,
-    "2026-07": 74.8,
-    "2026-08": 77.5,
-    "2026-09": 73.0
+    "2026-04": 67.1,
+    "2026-05": 73.1,
+    "2026-06": 74.0,
+    "2026-07": 73.8,
+    "2026-08": 76.5,
+    "2026-09": 73.4
   },
   "merval_usd_mensual": {
     "2023-11": 918.3,
@@ -3726,12 +3726,12 @@
           "2026-01": 31.8,
           "2026-02": 31.8,
           "2026-03": 31.8,
-          "2026-04": 42.4,
-          "2026-05": 42.4,
-          "2026-06": 47.6,
-          "2026-07": 47.6,
-          "2026-08": 47.6,
-          "2026-09": 47.6
+          "2026-04": 37.6,
+          "2026-05": 37.6,
+          "2026-06": 41.0,
+          "2026-07": 41.0,
+          "2026-08": 41.0,
+          "2026-09": 49.5
         }
       },
       "privatizaciones_inversion": {

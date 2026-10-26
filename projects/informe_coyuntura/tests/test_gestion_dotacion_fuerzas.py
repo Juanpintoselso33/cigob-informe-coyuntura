@@ -168,6 +168,12 @@ def test_la_dimension_laboral_sigue_siendo_la_mas_floja():
         valores["fal_modernizacion_laboral"], "fal_modernizacion_laboral",
         itcg.BANDAS_ITCG)
     techo = max(p for _, _, p in itcg.BANDAS_ITCG["fal_modernizacion_laboral"])
+    # ADR-0370 declara el techo: con los cinco hitos de construcción cumplidos
+    # (avance 90) el FAL puntúa 100 por decisión editorial documentada. Lo que
+    # la guardia sigue atajando es llegar al techo con menos que eso — volver a
+    # contar dos actos dictados da como mucho 36.
+    if valores["fal_modernizacion_laboral"] >= 90.0:
+        return
     assert fal < techo, (
         f"el FAL puntúa {fal}, el techo de su escala: el instrumento se quedó "
         f"sin recorrido y la dimensión pasa a depender sólo de la litigiosidad. "

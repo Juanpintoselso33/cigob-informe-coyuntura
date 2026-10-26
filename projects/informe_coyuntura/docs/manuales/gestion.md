@@ -112,7 +112,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 90 → 100 · 62.5–90 → 80 · 37.5–62.5 → 55 · 10–37.5 → 30 · ≤ 10 → 10
 
-**Lo gobiernan**: [ADR-0068](../adr/0068-fal-regimen-ley-27802.md) fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802 · [ADR-0098](../adr/0098-fal-en-tres-etapas.md) El FAL se mide en tres etapas: construcción, vigencia y adopción · [ADR-0228](../adr/0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) El FAL puntúa lo que rige, no lo que se dictó · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0305](../adr/0305-fal-separa-consulta-y-revision-curada.md) Consultar CNV no actualiza la revisión judicial · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
+**Lo gobiernan**: [ADR-0068](../adr/0068-fal-regimen-ley-27802.md) fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802 · [ADR-0098](../adr/0098-fal-en-tres-etapas.md) El FAL se mide en tres etapas: construcción, vigencia y adopción · [ADR-0228](../adr/0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) El FAL puntúa lo que rige, no lo que se dictó · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0305](../adr/0305-fal-separa-consulta-y-revision-curada.md) Consultar CNV no actualiza la revisión judicial · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0370](../adr/0370-el-fal-cuenta-cinco-hitos-de-construccion.md) El FAL cuenta cinco hitos de construcción
 
 #### Juicios en la Justicia del Trabajo (Capital)
 
@@ -242,7 +242,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-51 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+52 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -295,3 +295,4 @@ histórica.
 - [0364](../adr/0364-la-dotacion-del-estado-se-mide-contra-la-meta-de-2026.md) — La dotación del Estado se mide contra la meta de 2026
 - [0365](../adr/0365-los-juicios-de-la-justicia-del-trabajo-entran-a-la-reforma-laboral.md) — Los juicios de la Justicia del Trabajo entran a la reforma laboral
 - [0369](../adr/0369-los-juicios-por-riesgos-del-trabajo-salen-de-la-reforma-laboral.md) — Los juicios por riesgos del trabajo salen de la reforma laboral
+- [0370](../adr/0370-el-fal-cuenta-cinco-hitos-de-construccion.md) — El FAL cuenta cinco hitos de construcción

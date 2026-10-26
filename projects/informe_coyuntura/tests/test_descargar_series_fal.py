@@ -36,9 +36,11 @@ def test_la_serie_no_toca_la_red(monkeypatch):
     monkeypatch.setattr(gestion, "_cnv_registro_fci", explota)
 
     serie = descargar_series.fetch_fal_serie()
-    assert len(serie) == 31, "dic-2023 hasta el último mes completo (jun-2026)"
+    # dic-2023 hasta el último mes completo (jun-2026) + el mes en curso
+    # evaluado hoy (ADR-0370, para que la serie coincida con la card).
+    assert len(serie) == 32
     assert serie[0][0] == "2023-12-01"
-    assert serie[-1][0] == "2026-06-01"
+    assert serie[-1][0] == "2026-07-01"
 
 
 def test_cada_peldano_cae_en_el_mes_de_su_hecho(monkeypatch):
@@ -50,9 +52,10 @@ def test_cada_peldano_cae_en_el_mes_de_su_hecho(monkeypatch):
 
     assert por_fecha["2026-02-01"] == 0.0    # antes de la ley
     assert por_fecha["2026-03-01"] == 0.0    # publicada el 6, suspendida el 30
-    assert por_fecha["2026-04-01"] == 25.0   # cautelar levantada el 23-abr
-    assert por_fecha["2026-05-01"] == 25.0   # ley firme, sin reglamentar
-    assert por_fecha["2026-06-01"] == 50.0   # Decreto 408/2026 — 01-jun-2026
+    # ADR-0370: cada hito vale 18.
+    assert por_fecha["2026-04-01"] == 18.0   # cautelar levantada el 23-abr
+    assert por_fecha["2026-05-01"] == 18.0   # ley firme, sin reglamentar
+    assert por_fecha["2026-06-01"] == 36.0   # Decreto 408/2026 — 01-jun-2026
 
 
 def test_el_techo_de_la_serie_queda_reservado(monkeypatch):
@@ -61,4 +64,6 @@ def test_el_techo_de_la_serie_queda_reservado(monkeypatch):
     imposibles hasta el 1-nov-2026. Es la propiedad que ADR-0142 perdió."""
     monkeypatch.setattr(descargar_series, "date", _FechaFija)
     serie = descargar_series.fetch_fal_serie()
-    assert max(v for _, v in serie) == 50.0
+    # Con la fecha fija de julio de 2026 sólo están la ley y el decreto.
+    assert max(v for _, v in serie) == 36.0
+    assert max(v for _, v in serie) < 90.0, "el 10 % de adopción queda reservado"

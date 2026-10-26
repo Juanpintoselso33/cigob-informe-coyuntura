@@ -159,8 +159,8 @@ Cámara revocó la nulidad) y el pico del costo del Tesoro fue 33,8 % (ago-2025)
     - Un cuarto del peso clavado en 100 (cohesión, jornadas no trabajadas, veto por
       quórum, desafíos legislativos): ampliar anclas o pasar a contexto. Para cohesión
       propone bajar el peso a 6–8 % y un mínimo de actas divididas. **decidido**
-      (26-oct): cohesión se mantiene con 6–8 % y un mínimo de votaciones divididas para
-      puntuar; el resto se reparte en su dimensión. Los otros tres en 100: sin decidir.
+      (26-oct): cohesión espera al índice de votos por encima de las bancas (22), que
+      entra a su misma dimensión; ahí se reparte el peso. Los otros tres en 100: sin decidir.
       [J, L 1, 2]
     - Renombrar «Velocidad de resolución» → «Tasa de resolución de la Corte» y «Parálisis
       de denuncias» → «Actividad de las comisiones de control del Consejo», explicando el

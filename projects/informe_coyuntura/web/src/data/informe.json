@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-10-26T19:27:50.341233-03:00",
+  "generated_at": "2026-10-26T20:57:10.215104-03:00",
   "period": "2026-10",
-  "score_global": 4.0,
+  "score_global": 3.9,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -8344,42 +8344,42 @@
       "score_explicacion": "Índice de impacto social (de seguimiento: los componentes usan 100 = promedio del 4º trimestre de 2023, salvo servicios públicos, que usa umbrales internacionales por rubro; mayor = mejores condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 28%, presión de precios 25%, vulnerabilidad financiera 10%, prospectivas de empleo 24%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (índice − 100) × 0,2."
     },
     "gestion": {
-      "score": 2.6,
+      "score": 2.3,
       "estado": "estable",
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 8.87,
+          "valor": 9.18,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "dolarapi.com — contado con liquidación y mayorista (el mayorista replica la referencia oficial del BCRA)",
           "fecha_dato": "2026-10-26",
           "cotizaciones": {
             "ccl": {
-              "venta": 1676.6,
-              "actualizado_en": "2026-10-26T14:00:00-03:00"
+              "venta": 1682.5,
+              "actualizado_en": "2026-10-26T18:00:00-03:00"
             },
             "mayorista": {
-              "venta": 1540.0,
-              "actualizado_en": "2026-10-26T07:10:00-03:00"
+              "venta": 1541.0,
+              "actualizado_en": "2026-10-26T12:53:00-03:00"
             }
           },
-          "detalle_txt": "CCL venta 1676.60 (2026-10-26T14:00:00-03:00) / mayorista venta 1540.00 (2026-10-26T07:10:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
+          "detalle_txt": "CCL venta 1682.50 (2026-10-26T18:00:00-03:00) / mayorista venta 1541.00 (2026-10-26T12:53:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
           "desactualizado": false,
-          "obtenido_en": "2026-10-26T14:44:14",
+          "obtenido_en": "2026-10-26T20:08:01",
           "en_indice": true,
           "dimension": "reformas_economicas",
-          "puntaje_itcg": 79.5,
-          "puntaje_banda": 79.5,
+          "puntaje_itcg": 78.3,
+          "puntaje_banda": 78.3,
           "peso_efectivo": 0.14,
           "metodo_obtencion": "automatico",
-          "aporte_score": 2.0,
-          "aporte_formula": "Anclas del índice de gestión: ≤5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · >25 → 10 (puntaje interpolado entre anclas: 79.5; pesa 14,0% del índice de gestión)",
+          "aporte_score": 2.2,
+          "aporte_formula": "Anclas del índice de gestión: ≤5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · >25 → 10 (puntaje interpolado entre anclas: 78.3; pesa 14,0% del índice de gestión)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante).",
-          "aporte_input_txt": "CCL venta 1676.60 (2026-10-26T14:00:00-03:00) / mayorista venta 1540.00 (2026-10-26T07:10:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
+          "aporte_input_txt": "CCL venta 1682.50 (2026-10-26T18:00:00-03:00) / mayorista venta 1541.00 (2026-10-26T12:53:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.",
           "semaforo": {
             "color": "verde",
-            "tension": 2.0,
+            "tension": 2.2,
             "umbrales": [
               {
                 "color": "verde",
@@ -8403,7 +8403,7 @@
               }
             ],
             "unidad": "% de brecha CCL/mayorista",
-            "por_que": "8,87 % de brecha CCL/mayorista está en Verde, a 5,13 del límite con Amarillo (14,0)."
+            "por_que": "9,18 % de brecha CCL/mayorista está en Verde, a 4,82 del límite con Amarillo (14,0)."
           }
         },
         "apertura_comercial": {
@@ -8414,7 +8414,7 @@
           "desactualizado": false,
           "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/ica_cuadros_19_10_26.xls",
           "advertencia_fuente": null,
-          "obtenido_en": "2026-10-26T14:44:17",
+          "obtenido_en": "2026-10-26T20:12:17",
           "detalle_txt": "US$ 1.223 M recaudados por derechos de impo+expo y tasa de estadística sobre US$ 17.095 M de intercambio (2026-09) · canal aduanero sin fuente pública",
           "en_indice": true,
           "dimension": "reformas_economicas",
@@ -8479,7 +8479,7 @@
             "Sector Inmobiliario": 17
           },
           "detalle_txt": "17.606 artículos modificados o eliminados desde el 10 de diciembre de 2023 (+491 en el mes) · los produjeron 807 normas de desregulación, que modificaron o eliminaron 2891 normas anteriores",
-          "obtenido_en": "2026-10-26T14:44:19",
+          "obtenido_en": "2026-10-26T20:12:20",
           "en_indice": true,
           "dimension": "reformas_economicas",
           "puntaje_itcg": 74.4,
@@ -8529,7 +8529,7 @@
           "var_planta_civil": -19.0,
           "fecha_desglose_fuerzas": "2026-02",
           "detalle_txt": "181.880 agentes (2026-08) vs 231.305 en dic-2023 · universo: Administración Pública Nacional, INCLUYE fuerzas armadas y de seguridad (~10% de la dotación), NO incluye empresas del Estado · fuerzas armadas y de seguridad se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02) · empresas del Estado varían -20,89% aparte; el universo completo varía -21,21%",
-          "obtenido_en": "2026-10-26T14:44:19",
+          "obtenido_en": "2026-10-26T20:12:20",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 84.9,
@@ -8577,7 +8577,7 @@
           "fecha_dato": "2026-08-01",
           "desactualizado": false,
           "detalle_txt": "$ 2,05 bn. base caja (2026-08) vs $ 0,53 bn (2023-08) · inflación del período ×6,0",
-          "obtenido_en": "2026-10-26T14:44:26",
+          "obtenido_en": "2026-10-26T20:19:00",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 100.0,
@@ -8619,14 +8619,14 @@
           }
         },
         "fal_modernizacion_laboral": {
-          "valor": 50.0,
-          "unidad": "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
-          "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
+          "valor": 90.0,
+          "unidad": "Índice 0–100 (FAL: cinco hitos de construcción y adopción)",
+          "fuente": "InfoLeg y Boletín Oficial — Ley 27.802, Decreto 408/2026, RG CNV 1167/2026 y RG ARCA 5907/2026 · oferta de los bancos · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
           "fecha_dato": "2026-10-26",
           "referencia_temporal": "evaluación con registros de distintas fechas",
           "evaluado_en": "2026-10-26",
           "consulta_cnv_en": "2026-10-26",
-          "revision_normativa_en": "2026-10-20",
+          "revision_normativa_en": "2026-10-26",
           "revision_judicial_en": "2026-10-20",
           "desactualizado": false,
           "actos": [
@@ -8653,6 +8653,28 @@
           "actos_totales": 2,
           "etapas": {
             "construccion": 1.0,
+            "hitos_cumplidos": 5,
+            "hitos_totales": 5,
+            "operativos": [
+              {
+                "norma": "Resolución General 1167/2026",
+                "descripcion": "Comisión Nacional de Valores — reglamenta los productos de inversión colectiva del FAL",
+                "fecha": "2026-09-17",
+                "dictado": true
+              },
+              {
+                "norma": "Resolución General 5907/2026",
+                "descripcion": "Agencia de Recaudación y Control Aduanero — recaudación y derivación de los aportes",
+                "fecha": "2026-10-01",
+                "dictado": true
+              },
+              {
+                "norma": "Oferta bancaria",
+                "descripcion": "Bancos que ofrecen el producto a las empresas",
+                "fecha": "2026-10-24",
+                "dictado": true
+              }
+            ],
             "vigencia": 0.0,
             "adopcion": 0.0,
             "fecha_vigencia": "2026-12-01"
@@ -8660,7 +8682,9 @@
           "componentes": {
             "ley_27802": 100.0,
             "decreto_408_2026": 100.0,
-            "vigencia": 0.0,
+            "rg_cnv_1167": 100.0,
+            "rg_arca_5907": 100.0,
+            "oferta_bancaria": 100.0,
             "adopcion": 0.0
           },
           "fal_cnv_registrados": 0,
@@ -8670,22 +8694,22 @@
           "causa_de_fondo": "CGTRA c/ Estado Nacional s/ Acción Declarativa",
           "fci_cese_registrados": 0,
           "menciones_bo": 9,
-          "detalle_txt": "Evaluación al 2026-10-26; consulta CNV de esa fecha. Revisión normativa del 2026-10-20 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del FAL en el BO desde mar-2026",
-          "obtenido_en": "2026-10-26T14:44:34",
+          "detalle_txt": "Evaluación al 2026-10-26; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del FAL en el BO desde mar-2026",
+          "obtenido_en": "2026-10-26T20:20:40",
           "en_indice": true,
           "dimension": "reforma_laboral",
-          "puntaje_itcg": 55.0,
-          "puntaje_banda": 55.0,
+          "puntaje_itcg": 100.0,
+          "puntaje_banda": 100.0,
           "peso_efectivo": 0.075,
           "metodo_obtencion": "semiautomatico",
-          "aporte_score": 4.5,
-          "aporte_formula": "Anclas del índice de gestión: >90 → 100 · 62,5–90 → 80 · 37,5–62,5 → 55 · 10–37,5 → 30 · ≤10 → 10 (puntaje interpolado entre anclas: 55.0; pesa 7,5% del índice de gestión)",
+          "aporte_score": 0.0,
+          "aporte_formula": "Anclas del índice de gestión: >90 → 100 · 62,5–90 → 80 · 37,5–62,5 → 55 · 10–37,5 → 30 · ≤10 → 10 (puntaje interpolado entre anclas: 100.0; pesa 7,5% del índice de gestión)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en amarillo (tensión moderada).",
-          "aporte_input_txt": "Evaluación al 2026-10-26; consulta CNV de esa fecha. Revisión normativa del 2026-10-20 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del FAL en el BO desde mar-2026",
+          "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_input_txt": "Evaluación al 2026-10-26; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del FAL en el BO desde mar-2026",
           "semaforo": {
-            "color": "amarillo",
-            "tension": 4.5,
+            "color": "verde",
+            "tension": 0.0,
             "umbrales": [
               {
                 "color": "rojo",
@@ -8708,8 +8732,8 @@
                 "hasta": null
               }
             ],
-            "unidad": "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
-            "por_que": "50,0 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) está en Amarillo, a 5,25 del límite con Verde (55,25)."
+            "unidad": "Índice 0–100 (FAL: cinco hitos de construcción y adopción)",
+            "por_que": "90,0 Índice 0–100 (FAL: cinco hitos de construcción y adopción) está en Verde, a 34,75 del límite con Amarillo (55,25)."
           }
         },
         "juicios_trabajo_capital": {
@@ -8720,7 +8744,7 @@
           "desactualizado": false,
           "juicios_12m": 61853,
           "detalle_txt": "61.853 juicios entrados en 1ª instancia en los 12 meses hasta el 1º semestre de 2026 vs 55.040 en los 12 previos (sólo Capital)",
-          "obtenido_en": "2026-10-26T14:44:36",
+          "obtenido_en": "2026-10-26T20:20:41",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 40.2,
@@ -8864,7 +8888,7 @@
             "relectura_pendiente": []
           },
           "detalle_txt": "9 empresas · etapa promedio 2,22/4 · cerradas: Transener",
-          "obtenido_en": "2026-10-26T14:44:40",
+          "obtenido_en": "2026-10-26T20:20:45",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 75.6,
@@ -8917,7 +8941,7 @@
           "inversion_evaluacion_musd": 139615,
           "nota_denominador": null,
           "detalle_txt": "26 proyectos aprobados (US$ 69.779M) / 22 en evaluación (US$ 139.615M) → 33,3% de la inversión total ya aprobada",
-          "obtenido_en": "2026-10-26T14:44:41",
+          "obtenido_en": "2026-10-26T20:20:46",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 65.9,
@@ -9017,7 +9041,7 @@
             "etapa_ii_b": 100.0
           },
           "detalle_txt": "9.091 de 9.091 km adjudicados · I: adjudicada por Resolución 80 / 2025 (2025-11-19) · II-B: adjudicada por Resolución 1149 / 2026 (2026-07-28) · II: adjudicada por Resolución 706 / 2026 (2026-05-15) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24)",
-          "obtenido_en": "2026-10-26T14:44:43",
+          "obtenido_en": "2026-10-26T20:20:47",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 100.0,
@@ -9071,7 +9095,7 @@
             "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/305588/20240410"
           },
           "detalle_txt": "Unidades de gestión y de certificación sin actividad desde el 2024-04-10 (Resolución 84/2024 del Ministerio de Capital Humano, art. 6: «cese de las actividades de las Unidades de Gestión y de las Unidades de Certificación del Potenciar Trabajo») · Contexto: el devengado 2026 de Volver al Trabajo y Acompañamiento Social está 100,0% clasificado como ayudas a personas (Potenciar Trabajo 2023: 98,3%); ese porcentaje no mide la intermediación y no puntúa. · Mide el acto que eliminó a los intermediarios del circuito; no acredita cómo se paga cada prestación ni que no haya intermediación informal.",
-          "obtenido_en": "2026-10-26T14:45:08",
+          "obtenido_en": "2026-10-26T20:20:59",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 100.0,
@@ -9124,7 +9148,7 @@
           },
           "advertencia_fuente": "No se pudo verificar si el portal publicó anclajes más recientes.",
           "detalle_txt": "240 cortes en CABA en 2025 vs 931 en 2023 (Diagnóstico Político; base 2023 estimada desde participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.",
-          "obtenido_en": "2026-10-26T14:45:09",
+          "obtenido_en": "2026-10-26T20:21:01",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 99.0,
@@ -9187,7 +9211,7 @@
             }
           },
           "detalle_txt": "2.796.899 beneficiarios derivados directo a 72 prepagas inscriptas (09/2026) / 8.693.041 usuarios de prepagas (RNEMP 08/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.",
-          "obtenido_en": "2026-10-26T14:45:10",
+          "obtenido_en": "2026-10-26T20:21:01",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 55.2,
@@ -9231,20 +9255,20 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 74.1,
+        "valor": 77.3,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "reformas_economicas": {
             "nombre": "Reformas económicas fundamentales",
             "peso": 0.35,
-            "puntaje": 67.6,
+            "puntaje": 67.1,
             "indicadores": {
               "cepo_mulc": {
                 "peso": 0.4,
-                "puntaje_banda": 79.5,
-                "puntaje_aplicado": 79.5,
-                "valor": 8.87,
+                "puntaje_banda": 78.3,
+                "puntaje_aplicado": 78.3,
+                "valor": 9.18,
                 "peso_efectivo": 0.14
               },
               "apertura_comercial": {
@@ -9406,8 +9430,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 67,6/100, está en verde (sin tensión relevante) en la escala del informe.",
-              "tension": 3.2
+              "por_que": "El puntaje de la dimensión, 67,1/100, está en verde (sin tensión relevante) en la escala del informe.",
+              "tension": 3.3
             }
           },
           "reforma_estado": {
@@ -9577,13 +9601,13 @@
           "reforma_laboral": {
             "nombre": "Reforma laboral",
             "peso": 0.15,
-            "puntaje": 47.6,
+            "puntaje": 70.1,
             "indicadores": {
               "fal_modernizacion_laboral": {
                 "peso": 0.5,
-                "puntaje_banda": 55.0,
-                "puntaje_aplicado": 55.0,
-                "valor": 50.0,
+                "puntaje_banda": 100.0,
+                "puntaje_aplicado": 100.0,
+                "valor": 90.0,
                 "peso_efectivo": 0.075
               },
               "juicios_trabajo_capital": {
@@ -9711,35 +9735,35 @@
               ],
               [
                 "2026-04",
-                42.4
+                37.6
               ],
               [
                 "2026-05",
-                42.4
+                37.6
               ],
               [
                 "2026-06",
-                47.6
+                41.0
               ],
               [
                 "2026-07",
-                47.6
+                41.0
               ],
               [
                 "2026-08",
-                47.6
+                41.0
               ],
               [
                 "2026-09",
-                47.6
+                49.5
               ]
             ],
             "semaforo": {
-              "color": "amarillo",
+              "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El puntaje de la dimensión, 47,6/100, está en amarillo (tensión moderada) en la escala del informe.",
-              "tension": 5.2
+              "por_que": "El puntaje de la dimensión, 70,1/100, está en verde (sin tensión relevante) en la escala del informe.",
+              "tension": 3.0
             }
           },
           "privatizaciones_inversion": {
@@ -10095,57 +10119,57 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 72.2,
-          "p95": 76.0,
+          "p05": 75.4,
+          "p95": 79.0,
           "tension_rango": [
-            2.4,
-            2.8
+            2.1,
+            2.5
           ],
           "dominante": {
-            "indicador": "apertura_comercial",
-            "indice_sin": 77.7
+            "indicador": "juicios_trabajo_capital",
+            "indice_sin": 81.8
           },
           "n_draws": 1000,
           "hist": [
             1,
-            1,
             0,
-            2,
-            2,
-            6,
-            6,
             3,
-            14,
-            19,
-            22,
-            22,
-            38,
-            41,
-            55,
-            70,
-            69,
-            69,
-            83,
-            68,
-            79,
-            70,
-            52,
-            38,
-            49,
-            25,
-            25,
+            1,
+            4,
+            4,
+            5,
+            8,
             17,
-            18,
-            14,
-            7,
-            9,
-            2,
-            2,
-            0,
-            2
+            13,
+            22,
+            27,
+            36,
+            39,
+            61,
+            61,
+            48,
+            87,
+            69,
+            68,
+            54,
+            43,
+            41,
+            53,
+            55,
+            41,
+            33,
+            27,
+            15,
+            23,
+            8,
+            16,
+            4,
+            5,
+            1,
+            7
           ],
-          "hist_min": 70.24,
-          "hist_max": 77.57,
+          "hist_min": 73.74,
+          "hist_max": 80.11,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "serie_mensual": [
@@ -10263,27 +10287,27 @@
           ],
           [
             "2026-04",
-            67.8
+            67.1
           ],
           [
             "2026-05",
-            73.9
+            73.1
           ],
           [
             "2026-06",
-            75.0
+            74.0
           ],
           [
             "2026-07",
-            74.8
+            73.8
           ],
           [
             "2026-08",
-            77.5
+            76.5
           ],
           [
             "2026-09",
-            73.0
+            73.4
           ]
         ],
         "dimensiones_serie": {
@@ -10310,14 +10334,14 @@
         "redundancia": {
           "n_indicadores": 14,
           "n_pares": 90,
-          "r_abs_medio": 0.5,
+          "r_abs_medio": 0.495,
           "share_altos": 0.289,
           "share_bajos": 0.244,
           "umbral": 0.7,
           "pares_cruzados": 23,
           "diferencias": {
             "n_pares": 90,
-            "r_abs_medio": 0.113,
+            "r_abs_medio": 0.111,
             "share_altos": 0.011
           },
           "top": [
@@ -10350,25 +10374,25 @@
               "por_diseno": null
             },
             {
-              "a": "concesiones_infraestructura",
-              "b": "fal_modernizacion_laboral",
-              "r": 0.92,
-              "cruzado": true,
-              "por_diseno": null
-            },
-            {
               "a": "cepo_mulc",
               "b": "desregulacion_normativa",
               "r": 0.918,
               "cruzado": false,
               "por_diseno": null
+            },
+            {
+              "a": "cepo_mulc",
+              "b": "libertad_opcion_salud",
+              "r": 0.906,
+              "cruzado": true,
+              "por_diseno": null
             }
           ],
           "titulo": "¿Cuánta información distinta aporta cada componente?",
           "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 14 componentes que tienen serie histórica, 90 pares en total, y se mide cuánto se mueven juntos.",
-          "conclusion": "La correlación media entre pares es 0,5: ni componentes independientes ni una sola señal repetida. Un 29% de los pares se mueve muy junto (por encima de 0,7) y un 24% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,113 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 26 pares que superan el umbral en niveles, 23 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado.",
-          "resumen": "La correlación media entre pares es 0,5: ni componentes independientes ni una sola señal repetida. Un 29% de los pares se mueve muy junto (por encima de 0,7) y un 24% es prácticamente independiente.",
-          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,113 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 26 pares que superan el umbral en niveles, 23 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
+          "conclusion": "La correlación media entre pares es 0,495: ni componentes independientes ni una sola señal repetida. Un 29% de los pares se mueve muy junto (por encima de 0,7) y un 24% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,111 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 26 pares que superan el umbral en niveles, 23 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado.",
+          "resumen": "La correlación media entre pares es 0,495: ni componentes independientes ni una sola señal repetida. Un 29% de los pares se mueve muy junto (por encima de 0,7) y un 24% es prácticamente independiente.",
+          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,111 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 26 pares que superan el umbral en niveles, 23 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
         },
         "vintages": {
           "dias_promedio": 60,

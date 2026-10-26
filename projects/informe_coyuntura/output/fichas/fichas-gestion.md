@@ -35,16 +35,16 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 74,1** | **VERDE** | Moderadamente aflojado | 13 indicadores: 9 en verde · 4 en amarillo |
+| **ITCG: 77,3** | **VERDE** | Moderadamente aflojado | 13 indicadores: 10 en verde · 3 en amarillo |
 Componentes que puntúan en este corte: 13 de 13 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica. | 67,6 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica. | 67,1 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 91,2 | VERDE | 25,0 % |
-| Reforma laboral | Combina, mitad y mitad, las etapas del Fondo de Asistencia Laboral con los juicios laborales que se inician en la Justicia Nacional del Trabajo de la Capital, que… | 47,6 | AMARILLO | 15,0 % |
+| Reforma laboral | Combina, mitad y mitad, las etapas del Fondo de Asistencia Laboral con los juicios laborales que se inician en la Justicia Nacional del Trabajo de la Capital, que… | 70,1 | VERDE | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 76,6 | VERDE | 15,0 % |
 | Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes… | 90,6 | VERDE | 10,0 % |
 
@@ -61,14 +61,14 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 8,87 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 9,18 % de brecha CCL/mayorista | VERDE | 14,0 % |
 | Impuestos sobre el comercio exterior | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
 | Empleados de la administración nacional | Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del… | −21,37 % de variación vs dic-2023 (dotación APN) | VERDE | 14,6 % |
 | Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de… | −35,92 % de variación real vs 2023-08 (gastos de funcionamiento) | VERDE | 10,4 % |
 | **DIMENSIÓN: Reforma laboral** | | | | |
-| Fondo de Asistencia Laboral | Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el… | 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | AMARILLO | 7,5 % |
+| Fondo de Asistencia Laboral | Cuánto avanzó la puesta en marcha del Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización… | 90 Índice 0–100 (FAL: cinco hitos de construcción y adopción) | VERDE | 7,5 % |
 | Juicios en la Justicia del Trabajo (Capital) | Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital. | 12,4 % variación juicios entrados (12m vs 12m previos) | AMARILLO | 7,5 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
 | Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 55,6 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
@@ -95,7 +95,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 8,87 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 9,18 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -138,13 +138,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1676.60 (2026-10-26T14:00:00-03:00) / mayorista venta 1540.00 (2026-10-26T07:10:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1682.50 (2026-10-26T18:00:00-03:00) / mayorista venta 1541.00 (2026-10-26T12:53:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 8,87 % de brecha CCL/mayorista (2026-10).
+Dato vigente: 9,18 % de brecha CCL/mayorista (2026-10).
 
-8,87 % de brecha CCL/mayorista está en Verde, a 5,13 del límite con Amarillo (14,0).
+9,18 % de brecha CCL/mayorista está en Verde, a 4,82 del límite con Amarillo (14,0).
 
 **Color vigente: VERDE**
 
@@ -577,37 +577,37 @@ Ponderación vigente en el ITCG: 10,4 % efectivo. El color es una lectura adicio
 
 # Fondo de Asistencia Laboral
 
-Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).
+Cuánto avanzó la puesta en marcha del Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Cinco hitos de construcción valen 18 puntos cada uno: la Ley 27.802, el Decreto 408/2026 que la reglamenta, la resolución de la Comisión Nacional de Valores que reglamenta sus fondos de inversión, la de la Agencia de Recaudación y Control Aduanero que regula los aportes, y la oferta del producto por los bancos. El 10 % restante llega con el primer fondo inscripto en la Comisión Nacional de Valores.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)** (2026-10) | **AMARILLO** | Peso efectivo 7,5 % del ITCG | Cinturón Gestión |
+| **Hoy: 90 Índice 0–100 (FAL: cinco hitos de construcción y adopción)** (2026-10) | **VERDE** | Peso efectivo 7,5 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | fal_modernizacion_laboral | **CINTURÓN** | Gestión |
-| **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | La CNV se consulta automáticamente; las normas y el estado judicial dependen de revisiones manuales fechadas. Que una resolución esté publicada no garantiza que el registro local ya la incorpore. La tarjeta distingue las tres fechas y la fecha de evaluación no certifica una revisión integral de ese día. |
-| **PRODUCTOR DEL DATO** | InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de fondos comunes de inversión) | **OPERACIÓN ESTADÍSTICA** | Avance del Fondo de Asistencia Laboral por lo que rige: construcción normativa vigente (50%) + entrada en vigencia del régimen (20%) + adopción efectiva (30%) |
+| **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | Índice 0–100 (FAL: cinco hitos de construcción y adopción) |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | La CNV se consulta automáticamente; las normas y el estado judicial dependen de revisiones manuales fechadas. Que una resolución esté publicada no garantiza que el registro local ya la incorpore. La tarjeta distingue las tres fechas y la fecha de evaluación no certifica una revisión integral de ese día. |
+| **PRODUCTOR DEL DATO** | InfoLeg y Boletín Oficial — Ley 27.802, Decreto 408/2026, RG CNV 1167/2026 y RG ARCA 5907/2026 · estado judicial de la Ley 27.802 · bancos · CNV (registro de fondos comunes de inversión) | **OPERACIÓN ESTADÍSTICA** | Avance del Fondo de Asistencia Laboral: cinco hitos de construcción del régimen (18% cada uno, 90% en total) + adopción efectiva (10%) |
 | **MODO DE ACCESO** | Semiautomático: los actos normativos y las suspensiones judiciales se verifican y asientan en un registro versionado; los fondos registrados en la Comisión Nacional de Valores se leen automáticamente. Las menciones del instrumento en el Boletín Oficial y el conteo amplio de fondos de cese se muestran como contexto y no inciden en el puntaje. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-26 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).
+Cuánto avanzó la puesta en marcha del Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Cinco hitos de construcción valen 18 puntos cada uno: la Ley 27.802, el Decreto 408/2026 que la reglamenta, la resolución de la Comisión Nacional de Valores que reglamenta sus fondos de inversión, la de la Agencia de Recaudación y Control Aduanero que regula los aportes, y la oferta del producto por los bancos. El 10 % restante llega con el primer fondo inscripto en la Comisión Nacional de Valores.
 
-Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de diciembre de 2026 (la fijó el Decreto 1228/2026, que corrió la del reglamentario 408/2026); el cálculo reserva esa etapa hasta entonces, y ese día el avance pasa de 50 a 70 y el puntaje de 55 a 74 sin que cambie nada más. El avance (0–100) y el puntaje para el índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de la ficha. Las ofertas de los bancos todavía no cuentan como adopción: son anuncios y cartas de intención de fondos que no funcionan hasta que el régimen rija. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.
+Sigue la construcción del régimen paso a paso con normas y hechos fechados, que se muestran en el detalle. La ley y el decreto cuentan sólo si no están suspendidos por la Justicia. Que el régimen esté armado no dice cuántas empresas lo usan: eso recién se puede ver desde el 1 de diciembre de 2026, cuando entra en vigencia (Decreto 1228/2026). El avance (0–100) y el puntaje para el índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de la ficha.
 
 **Dimensión que integra — Reforma laboral.** Combina, mitad y mitad, las etapas del Fondo de Asistencia Laboral con los juicios laborales que se inician en la Justicia Nacional del Trabajo de la Capital, que incluyen los despidos. Esos juicios describen la conflictividad laboral: no permiten atribuir sus variaciones a la reforma.
 
 ## Método de cómputo
 
-- La construcción normativa vale la mitad del indicador y se reparte en partes iguales entre los dos actos que ponen en pie al Fondo: la Ley 27.802 de Modernización Laboral, con la que el Congreso lo instauró (publicada el 6 de marzo de 2026), y el Decreto 408/2026, con el que el Poder Ejecutivo reglamentó el Título II (publicado el 1 de junio de 2026). Un acto cuenta mientras esté dictado y no suspendido: si un tribunal frena su vigencia con alcance general, deja de sumar mientras dure la suspensión.
-- La entrada en vigencia del régimen vale el veinte por ciento y se cumple el 1 de diciembre de 2026, fecha fijada por el artículo 27 del decreto reglamentario: el arranque estaba previsto para junio, el propio decreto lo pasó a noviembre y el Decreto 1228/2026 lo corrió otra vez, a diciembre.
-- La adopción efectiva vale el treinta por ciento y se cumple cuando existe al menos un Fondo de Asistencia Laboral inscripto en el registro de la Comisión Nacional de Valores. Se cuenta sólo la denominación del régimen de la Ley 27.802: el «fondo de cese laboral» de la industria de la construcción es un régimen homónimo y distinto, que se informa aparte.
+- La construcción del régimen vale el noventa por ciento y se reparte en cinco hitos de dieciocho puntos cada uno: la Ley 27.802 de Modernización Laboral (publicada el 6 de marzo de 2026), el Decreto 408/2026 que la reglamenta (1 de junio), la Resolución General 1167/2026 de la Comisión Nacional de Valores que reglamenta los productos de inversión del Fondo (17 de septiembre), la Resolución General 5907/2026 de la Agencia de Recaudación y Control Aduanero que regula la recaudación y la derivación de los aportes (1 de octubre) y la oferta del producto por los bancos (verificada en octubre en las páginas del Banco Nación y del Banco Ciudad).
+- La ley y el decreto cuentan sólo mientras no estén suspendidos por una resolución judicial con efecto general: entre el 30 de marzo y el 23 de abril de 2026 la ley estuvo suspendida y no contó.
+- La adopción efectiva vale el diez por ciento restante y se cumple cuando existe al menos un Fondo de Asistencia Laboral inscripto en el registro de la Comisión Nacional de Valores, lo que sólo puede ocurrir desde que el régimen entra en vigencia, el 1 de diciembre de 2026 (Decreto 1228/2026). Se cuenta sólo la denominación del régimen de la Ley 27.802: el «fondo de cese laboral» de la industria de la construcción no es adopción del Fondo.
 - La serie mensual se reconstruye con la misma regla desde diciembre de 2023 y se evalúa al cierre de cada mes, de modo que un hecho del día 30 cuenta en ese mes.
-- El avance (0–100) y el puntaje del índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de abajo. Con 50 de avance el puntaje es 55; el 1 de diciembre de 2026, al entrar en vigencia el régimen, el avance pasa a 70 y el puntaje a 74 sin que cambie nada más.
+- El avance (0–100) y el puntaje del índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de abajo. Con los cinco hitos cumplidos el avance es 90 y el puntaje, 100.
 
 ## Semáforo — valores que determinan el color
 
@@ -615,7 +615,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)) | Color |
+| Rango (Índice 0–100 (FAL: cinco hitos de construcción y adopción)) | Color |
 |---|---|
 | ≥ 55,25 | VERDE |
 | 34,25 – 55,25 | AMARILLO |
@@ -626,15 +626,15 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-10-26; consulta CNV de esa fecha. Revisión normativa del 2026-10-20 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del FAL en el BO desde mar-2026
+- Evaluación al 2026-10-26; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del FAL en el BO desde mar-2026
 
 ## Color vigente y por qué
 
-Dato vigente: 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) (2026-10).
+Dato vigente: 90 Índice 0–100 (FAL: cinco hitos de construcción y adopción) (2026-10).
 
-50,0 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) está en Amarillo, a 5,25 del límite con Verde (55,25).
+90,0 Índice 0–100 (FAL: cinco hitos de construcción y adopción) está en Verde, a 34,75 del límite con Amarillo (55,25).
 
-**Color vigente: AMARILLO**
+**Color vigente: VERDE**
 
 Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -654,6 +654,8 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Las fechas de revisión normativa y judicial sólo cambian cuando se actualiza el registro curado con evidencia; se conservan al consultar CNV. La reconstrucción de la serie utiliza ese registro, por lo que no garantiza que contenga toda resolución posterior.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — A propuesta de la auditoría de CiGob, la construcción pasa a cinco hitos de 18 % cada uno: a la ley y el decreto se suman la RG CNV 1167/2026, la RG ARCA 5907/2026 y la oferta de los bancos. La adopción (primer fondo inscripto en la CNV) vale el 10 % restante y la entrada en vigencia deja de pesar por sí misma. El avance pasa de 50 a 90 y el puntaje, de 55 a 100. Cambia la regla de agosto, que contaba sólo lo que rige.
 
 **2026-09-08** — Se muestran fechas separadas de revisión normativa, judicial y consulta CNV; se retiran las garantías de ausencia de rezago y de integridad del archivo local. Se corrige la presentación de litigiosidad SRT como resultado directo del FAL.
 

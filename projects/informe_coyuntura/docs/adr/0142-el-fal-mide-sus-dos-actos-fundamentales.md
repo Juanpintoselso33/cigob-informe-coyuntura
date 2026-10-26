@@ -6,7 +6,7 @@ nota_estado: 'Superado por ADR-0228'
 fecha: 2026-07-26
 cinturon: 'gestion'
 indicadores: [fal_modernizacion_laboral]
-relacionado: ['0221']
+relacionado: ['0221', '0370']
 superado_por: ['0228']
 revertido_por: ['0228']
 ambito: 'ITCG · `fal_modernizacion_laboral` · bandas · serie · card · ficha'

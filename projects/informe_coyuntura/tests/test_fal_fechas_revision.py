@@ -21,7 +21,7 @@ def registro(tmp_path,monkeypatch):
     p=tmp_path/'hitos.json';p.write_text(json.dumps(data))
     monkeypatch.setattr(gestion,'FAL_HITOS_PATH',p)
     monkeypatch.setattr(gestion,'date',Hoy)
-    monkeypatch.setattr(Hoy,'dia',21)
+    monkeypatch.setattr(Hoy,'dia',27)   # después de la revisión del 26-oct (ADR-0370)
     monkeypatch.setattr(gestion,'_cnv_registro_fci',lambda:[{'Text':'OTRO FONDO'}])
     monkeypatch.setattr(gestion,'_bo_conteo',lambda *a,**k:0)
     return p,data
@@ -29,11 +29,11 @@ def registro(tmp_path,monkeypatch):
 
 def test_consultar_cnv_no_renueva_revisiones_manuales(registro,monkeypatch):
     a=gestion.fetch_fal_modernizacion_laboral()
-    monkeypatch.setattr(Hoy,'dia',22)
+    monkeypatch.setattr(Hoy,'dia',28)
     b=gestion.fetch_fal_modernizacion_laboral()
-    assert a['valor']==b['valor']==50
-    assert a['consulta_cnv_en']=='2026-10-21'
-    assert b['consulta_cnv_en']=='2026-10-22'
+    assert a['valor']==b['valor']==90   # ADR-0370: los cinco hitos
+    assert a['consulta_cnv_en']=='2026-10-27'
+    assert b['consulta_cnv_en']=='2026-10-28'
     _,data=registro
     for k in ('revision_normativa_en','revision_judicial_en'):
         fecha=data['_meta'][k]

@@ -141,7 +141,13 @@ BANDAS_ITCG = {
         # público. Ver fetch_reestructuracion_organismos() en gestion.py.
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
-    "fal_modernizacion_laboral": [      # FAL vigente, en tres etapas (ADR-0228)
+    "fal_modernizacion_laboral": [      # FAL: cinco hitos de construcción + adopción (ADR-0370)
+        # ADR-0370 (2026-10-26): el avance pasa a cinco hitos de 18 (ley,
+        # decreto, RG CNV 1167, RG ARCA 5907, oferta bancaria) + 10 de
+        # adopción. Escala realizable: 0 · 18 · 36 · 54 · 72 · 90 · 100. Las
+        # bandas no cambian: 90 (los cinco hitos) puntúa 100, como propuso la
+        # auditoría de CiGob. Lo que sigue es la historia de la escala.
+        #
         # RECALIBRADO 2026-08-21 porque volvió a cambiar lo que mide la escala.
         # ADR-0142 la había reducido a contar dos actos dictados (0/50/100) y el
         # indicador quedó clavado en 100. Ahora mide si la reforma RIGE:

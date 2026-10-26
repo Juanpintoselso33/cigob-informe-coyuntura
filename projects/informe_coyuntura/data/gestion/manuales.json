@@ -34,12 +34,12 @@
     "fecha_dato": "2026-08-24"
   },
   "fal_modernizacion_laboral": {
-    "valor": 50.0,
-    "unidad": "Índice 0–100 (FAL vigente: 0,50·actos fundamentales vigentes/2 + 0,20·régimen en vigencia + 0,30·al menos un FAL registrado en la CNV)",
+    "valor": 90.0,
+    "unidad": "Índice 0–100 (FAL: cinco hitos de construcción de 0,18 + 0,10 por al menos un FAL registrado en la CNV, ADR-0370)",
     "estado": "estimado",
     "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
-    "notas": "FALLBACK (ADR-0269): sólo se usa si NUNCA hubo un valor en vivo en el cache. Estaba en 0,4, valor de la fórmula anterior a la recalibración de ADR-0228 (2026-08-21), que dejó el índice como escalera 0·20·25·30·45·50·55·70·75·80·100 = 0,50·actos fundamentales vigentes/2 + 0,20·régimen en vigencia (1-nov-2026) + 0,30·al menos un FAL registrado en la CNV. Hoy: los dos actos vigentes, el régimen todavía no rige y no hay FAL en el registro CNV → 50. Última lectura verificada de la fuente el 25-ago-2026.",
-    "fecha_dato": "2026-08-25"
+    "notas": "FALLBACK (ADR-0269): sólo se usa si NUNCA hubo un valor en vivo en el cache. Estaba en 0,4, valor de la fórmula anterior a la recalibración de ADR-0228 (2026-08-21), que dejó el índice como escalera 0·20·25·30·45·50·55·70·75·80·100 = 0,50·actos fundamentales vigentes/2 + 0,20·régimen en vigencia (1-nov-2026) + 0,30·al menos un FAL registrado en la CNV. Hoy: los dos actos vigentes, el régimen todavía no rige y no hay FAL en el registro CNV → 50. Última lectura verificada de la fuente el 25-ago-2026. ADR-0370 (26-oct-2026): cinco hitos de 0,18 (ley, decreto, RG CNV 1167, RG ARCA 5907, oferta bancaria) + 0,10 adopción; los cinco cumplidos y sin FAL en la CNV → 90.",
+    "fecha_dato": "2026-10-26"
   },
   "asistencia_directa": {
     "valor": 100,

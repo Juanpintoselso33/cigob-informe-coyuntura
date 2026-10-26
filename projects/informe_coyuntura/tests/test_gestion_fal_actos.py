@@ -45,11 +45,21 @@ def test_los_dos_actos_estan_en_el_registro_de_hitos():
         assert por_norma[norma].get("fuente"), "el hito debe declarar su fuente"
 
 
-def test_las_tres_etapas_pesan_lo_que_dice_el_adr():
-    pesos = (gestion.FAL_PESO_CONSTRUCCION, gestion.FAL_PESO_VIGENCIA,
-             gestion.FAL_PESO_ADOPCION)
-    assert pesos == (0.50, 0.20, 0.30)
-    assert round(sum(pesos), 6) == 1.0
+def test_las_etapas_pesan_lo_que_dice_el_adr():
+    """ADR-0370: cinco hitos de 0,18 (0,90) + adopción 0,10; la vigencia ya no
+    pesa por sí misma."""
+    assert gestion.FAL_PESO_HITO == 0.18
+    assert round(gestion.FAL_PESO_CONSTRUCCION, 6) == 0.90
+    assert gestion.FAL_PESO_VIGENCIA == 0.0
+    assert gestion.FAL_PESO_ADOPCION == 0.10
+    assert round(gestion.FAL_PESO_CONSTRUCCION + gestion.FAL_PESO_ADOPCION, 6) == 1.0
+
+
+def test_los_hitos_operativos_estan_en_el_registro_con_su_fuente():
+    por_norma = {h["norma"]: h for h in HITOS["construccion"]}
+    for norma, _ in gestion.FAL_HITOS_OPERATIVOS:
+        assert norma in por_norma, f"{norma} no está en fal_hitos.json"
+        assert por_norma[norma].get("fuente")
 
 
 # ── 1 · Un acto suspendido no cuenta ────────────────────────────────────────
@@ -81,7 +91,7 @@ def test_el_indice_cae_mientras_la_ley_esta_suspendida():
     en_suspension, _, _ = gestion.fal_indice(HITOS, "2026-04-15", 0)
     levantada, _, _ = gestion.fal_indice(HITOS, "2026-05-15", 0)
     assert en_suspension == 0.0, "sin ley vigente no hay construcción que contar"
-    assert levantada == 25.0, "la ley sola es la mitad de la construcción"
+    assert levantada == 18.0, "la ley sola es uno de los cinco hitos"
 
 
 def test_la_vigencia_del_regimen_no_se_da_por_cumplida_antes_de_tiempo():
@@ -91,15 +101,16 @@ def test_la_vigencia_del_regimen_no_se_da_por_cumplida_antes_de_tiempo():
     assert HITOS["vigencia"]["fecha"] == "2026-12-01"
     antes, _, e_antes = gestion.fal_indice(HITOS, "2026-11-30", 0)
     despues, _, e_desp = gestion.fal_indice(HITOS, "2026-12-01", 0)
-    assert (e_antes["vigencia"], antes) == (0.0, 50.0)
-    assert (e_desp["vigencia"], despues) == (1.0, 70.0)
+    # ADR-0370: la vigencia se informa pero no suma por sí misma.
+    assert (e_antes["vigencia"], antes) == (0.0, 90.0)
+    assert (e_desp["vigencia"], despues) == (1.0, 90.0)
 
 
 def test_el_techo_solo_se_alcanza_con_fondos_operando():
     con_fondo, _, _ = gestion.fal_indice(HITOS, "2026-12-01", 1)
     assert con_fondo == 100.0
     sin_fondo, _, _ = gestion.fal_indice(HITOS, "2026-12-01", 0)
-    assert sin_fondo == 70.0, "vigente y sin fondos no es el máximo"
+    assert sin_fondo == 90.0, "sin fondos operando no es el máximo"
 
 
 # ── 2 · La serie puede bajar ────────────────────────────────────────────────
@@ -109,8 +120,9 @@ def test_la_serie_registra_la_caida_de_marzo():
     por_fecha = dict(descargar_series.fetch_fal_serie())
     assert por_fecha["2026-02-01"] == 0.0, "antes de la ley"
     assert por_fecha["2026-03-01"] == 0.0, "ley publicada el 6 y suspendida el 30"
-    assert por_fecha["2026-04-01"] == 25.0, "cautelar levantada el 23-abr"
-    assert por_fecha["2026-06-01"] == 50.0, "Decreto 408/2026 — 01-jun-2026"
+    assert por_fecha["2026-04-01"] == 18.0, "cautelar levantada el 23-abr"
+    assert por_fecha["2026-06-01"] == 36.0, "Decreto 408/2026 — 01-jun-2026"
+    assert por_fecha["2026-09-01"] == 54.0, "RG CNV 1167/2026 — 17-sep-2026"
 
 
 def test_el_indice_puede_bajar():
@@ -133,7 +145,7 @@ def test_el_indice_puede_bajar():
     antes, _, _ = gestion.fal_indice(hipotesis, "2026-06-30", 0)
     despues, _, _ = gestion.fal_indice(hipotesis, "2026-07-01", 0)
     assert despues < antes, "el índice no puede bajar: volvió a contar actos dictados"
-    assert (antes, despues) == (50.0, 25.0)
+    assert (antes, despues) == (36.0, 18.0)   # ADR-0370: cada hito vale 18
 
 
 def test_una_suspension_sin_fecha_de_fin_sigue_vigente():

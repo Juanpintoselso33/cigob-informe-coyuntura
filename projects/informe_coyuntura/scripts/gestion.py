@@ -1539,9 +1539,23 @@ FAL_ACTOS_FUNDAMENTALES = (
 #   0,30 adopción      menos que el 0,40 de ADR-0098, porque aquella etapa se
 #                      apoyaba en un pleno provisorio (420 menciones del BO,
 #                      ADR-0068) y ésta se apoya en un hecho duro y binario.
-FAL_PESO_CONSTRUCCION = 0.50
-FAL_PESO_VIGENCIA = 0.20
-FAL_PESO_ADOPCION = 0.30
+#
+# ADR-0370 (2026-10-26): propuesta de Marcos, decidida por Juan. La
+# construcción pasa a CINCO hitos de 18 % cada uno —los dos actos
+# fundamentales (que siguen contando sólo si no están suspendidos), la RG CNV
+# 1167/2026, la RG ARCA 5907/2026 y la oferta de los bancos— y suman 90 %. El
+# 10 % restante es la adopción: el primer FAL inscripto en la CNV, que sólo
+# puede ocurrir desde el 1-dic-2026. La entrada en vigencia deja de pesar por
+# sí misma (se sigue informando): la adopción ya la presupone.
+FAL_HITOS_OPERATIVOS = (
+    ("Resolución General 1167/2026", "Comisión Nacional de Valores — reglamenta los productos de inversión colectiva del FAL"),
+    ("Resolución General 5907/2026", "Agencia de Recaudación y Control Aduanero — recaudación y derivación de los aportes"),
+    ("Oferta bancaria", "Bancos que ofrecen el producto a las empresas"),
+)
+FAL_PESO_HITO = 0.18
+FAL_PESO_CONSTRUCCION = FAL_PESO_HITO * (len(FAL_ACTOS_FUNDAMENTALES) + len(FAL_HITOS_OPERATIVOS))
+FAL_PESO_VIGENCIA = 0.0
+FAL_PESO_ADOPCION = 0.10
 
 
 def _fal_suspendido(hitos: dict, norma: str, en_fecha: str) -> dict | None:
@@ -1582,6 +1596,19 @@ def fal_estado_actos(hitos: dict, en_fecha: str) -> list:
     return out
 
 
+def fal_estado_operativos(hitos: dict, en_fecha: str) -> list:
+    """Los tres hitos operativos de ADR-0370: cuentan si están fechados en el
+    registro y la fecha ya pasó. No llevan control judicial propio: dependen
+    de la ley y del decreto, que sí lo tienen."""
+    por_norma = {h.get("norma"): h for h in (hitos.get("construccion") or [])}
+    out = []
+    for norma, descripcion in FAL_HITOS_OPERATIVOS:
+        fecha = (por_norma.get(norma) or {}).get("fecha")
+        out.append({"norma": norma, "descripcion": descripcion, "fecha": fecha,
+                    "dictado": bool(fecha and fecha <= en_fecha)})
+    return out
+
+
 def fal_indice(hitos: dict, en_fecha: str, fondos_fal: int) -> tuple:
     """Índice 0-100 del FAL a una fecha, y sus tres etapas.
 
@@ -1591,14 +1618,22 @@ def fal_indice(hitos: dict, en_fecha: str, fondos_fal: int) -> tuple:
 
     Devuelve (indice, actos, etapas)."""
     actos = fal_estado_actos(hitos, en_fecha)
-    construccion = sum(1 for a in actos if a["vigente"]) / len(actos)
+    operativos = fal_estado_operativos(hitos, en_fecha)
+    n_hitos = len(actos) + len(operativos)
+    cumplidos = (sum(1 for a in actos if a["vigente"])
+                 + sum(1 for o in operativos if o["dictado"]))
+    construccion = cumplidos / n_hitos
+    fundamentales = all(a["vigente"] for a in actos)
     fecha_vigencia = (hitos.get("vigencia") or {}).get("fecha", "9999-12-31")
-    vigencia = 1.0 if (en_fecha >= fecha_vigencia and construccion == 1.0) else 0.0
+    vigencia = 1.0 if (en_fecha >= fecha_vigencia and fundamentales) else 0.0
     adopcion = 1.0 if fondos_fal > 0 else 0.0
     indice = round(100.0 * (FAL_PESO_CONSTRUCCION * construccion
                             + FAL_PESO_VIGENCIA * vigencia
                             + FAL_PESO_ADOPCION * adopcion), 1)
     return indice, actos, {"construccion": construccion,
+                           "hitos_cumplidos": cumplidos,
+                           "hitos_totales": n_hitos,
+                           "operativos": operativos,
                            "vigencia": vigencia,
                            "adopcion": adopcion,
                            "fecha_vigencia": fecha_vigencia}
@@ -1663,8 +1698,8 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
 
         return {
             "valor":          indice,
-            "unidad":         "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
-            "fuente":         "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
+            "unidad":         "Índice 0–100 (FAL: cinco hitos de construcción y adopción)",
+            "fuente":         "InfoLeg y Boletín Oficial — Ley 27.802, Decreto 408/2026, RG CNV 1167/2026 y RG ARCA 5907/2026 · oferta de los bancos · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
             "fecha_dato":     hoy_iso,
             "referencia_temporal": "evaluación con registros de distintas fechas",
             "evaluado_en": hoy_iso,
@@ -1678,7 +1713,9 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
             "componentes":    {
                 "ley_27802": 100.0 if actos[0]["vigente"] else 0.0,
                 "decreto_408_2026": 100.0 if actos[1]["vigente"] else 0.0,
-                "vigencia": 100.0 * etapas["vigencia"],
+                "rg_cnv_1167": 100.0 if etapas["operativos"][0]["dictado"] else 0.0,
+                "rg_arca_5907": 100.0 if etapas["operativos"][1]["dictado"] else 0.0,
+                "oferta_bancaria": 100.0 if etapas["operativos"][2]["dictado"] else 0.0,
                 "adopcion": 100.0 * etapas["adopcion"],
             },
             "fal_cnv_registrados":  n_fal,
@@ -1701,6 +1738,8 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
                            f"{(a['suspension'] or {}).get('organo', 'la Justicia')} "
                            f"desde {(a['suspension'] or {}).get('desde')}"
                            for a in suspendidos))
+                + f" · {etapas['hitos_cumplidos']} de {etapas['hitos_totales']} hitos de construcción"
+                + "".join(f" · {o['norma']} {o['fecha']}" for o in etapas["operativos"] if o["dictado"])
                 + (" · régimen VIGENTE" if etapas["vigencia"] else
                    f" · el régimen entra en vigencia el {etapas['fecha_vigencia']}")
                 + f" · {n_fal} fondos de asistencia laboral registrados en CNV"
