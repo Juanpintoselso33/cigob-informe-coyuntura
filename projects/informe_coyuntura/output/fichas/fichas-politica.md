@@ -35,7 +35,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 74,1** | **VERDE** | Moderadamente aflojado | 16 indicadores: 12 en verde · 3 en amarillo · 1 en rojo |
+| **ITCP: 73,8** | **VERDE** | Moderadamente aflojado | 16 indicadores: 12 en verde · 3 en amarillo · 1 en rojo |
 Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 77,7 | VERDE | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 16,1 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,1 | AMARILLO | 16,1 % |
-| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 57,7 | AMARILLO | 14,0 % |
+| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 55,6 | AMARILLO | 14,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 78,3 | VERDE | 10,8 % |
 
 ```{=openxml}
@@ -79,7 +79,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,82 % estimado de cargos con juez designado | VERDE | 8,1 % |
 | **DIMENSIÓN: Sector privado** | | | | |
 | Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,9 pp de brecha (obra pública − privada, 12m) | VERDE | 7,0 % |
-| Postura pública de la UIA | Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del… | −0,33 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 7,0 % |
+| Postura pública de la UIA | Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del… | −0,4 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 7,0 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −27,2 % vs 2023 | VERDE | 6,5 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.820.775 jornadas individuales no trabajadas (12m) | VERDE | 4,3 % |
@@ -297,7 +297,7 @@ Qué dice en público, por escrito y con firma institucional, la Unión Industri
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,33 saldo de postura (−1 a +1, 12m móviles)** (2026-09) | **AMARILLO** | Peso efectivo 7 % del ITCP | Cinturón Política |
+| **Hoy: −0,4 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **AMARILLO** | Peso efectivo 7 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -305,9 +305,9 @@ Qué dice en público, por escrito y con firma institucional, la Unión Industri
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_empresario | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2024-08 → 2026-09 (21 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
+| **SERIE DISPONIBLE** | 2024-08 → 2026-10 (22 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Unión Industrial Argentina (UIA) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de ambas entidades |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-26 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-26 |
 
 ## Definición — qué mide y por qué importa
 
@@ -342,13 +342,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses la UIA se pronunció 9 veces sobre medidas del Gobierno nacional: 3 de apoyo y 6 de crítica. Saldo −0,333 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 2 comunicados detectados sin codificar.
+- En los últimos doce meses la UIA se pronunció 10 veces sobre medidas del Gobierno nacional: 3 de apoyo y 7 de crítica. Saldo −0,4 en una escala de −1 (todo crítica) a +1 (todo apoyo).
 
 ## Color vigente y por qué
 
-Dato vigente: −0,33 saldo de postura (−1 a +1, 12m móviles) (2026-09).
+Dato vigente: −0,4 saldo de postura (−1 a +1, 12m móviles) (2026-10).
 
-−0,333 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,07 del corte más cercano.
+−0,4 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,0 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -386,6 +386,8 @@ Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional
 **2026-09-20** — Se agrega un aviso para cuando una de las dos cámaras deja de publicar. Al clasificar cuatro comunicados que estaban pendientes se midió de dónde salen los datos que sostienen el saldo, y apareció que la Asociación Empresaria Argentina no emite un comunicado desde el 31 de marzo: ciento setenta y tres días, cuando su pausa más larga hasta entonces había sido de ciento cincuenta y cuatro. De los diez comunicados que entran en el promedio de los últimos doce meses, nueve son de la Unión Industrial y uno solo de la otra cámara. Nada lo advertía: las dos verificaciones que ya existían comprueban que no queden comunicados sin clasificar y que las dos páginas respondan, y una cámara cuya página contesta sin publicar novedades pasa las dos sin activarlas. Desde ahora el sistema avisa cuando el silencio de una cámara supera su propia pausa más larga, un umbral que se calcula solo y es distinto para cada una porque publican a ritmos muy diferentes. El saldo, el peso y la banda no cambian: que una cámara calle es un hecho del mundo y no un error de cálculo, y si el silencio resulta definitivo, cambiar qué mide el indicador será otra decisión.
 
 **2026-08-25** — Se completa la despublicación. El artefacto crudo del informe lo seguía declarando componente vigente del índice político después de haber salido del índice, porque el colector de Política no marcaba las suspensiones y su respaldo las leía de la tabla de bandas, que a propósito no se borra. Desde ahora todo indicador suspendido se publica como archivo y no como componente: conserva su último valor, su fuente, su fecha y la dimensión donde pesaba, y pierde el estado activo, el peso y el puntaje, que pasan a ser un bloque con el motivo de la suspensión y su condición de reingreso. La marca la pone el generador del informe recorriendo la tabla de suspendidos de cada índice, así que no depende de que cada colector se acuerde.
+
+**2026-10-26** — Se clasificaron los dos comunicados de la Unión Industrial del 16 y el 21 de octubre (los dos neutros) y se corrigió un error de lectura: el sitio de la cámara parte algunas notas en dos bloques y el colector se quedaba con el más largo. Siete comunicados de mayo a octubre se habían clasificado sobre la mitad de su texto; se volvieron a clasificar enteros, a ciegas y por dos codificadores, y coinciden en todo. Cambia uno: el discurso del Día de la Industria del 2 de septiembre pasa de neutro a crítica al Ejecutivo nacional, porque el texto completo critica la apertura comercial y pide bajar el costo argentino.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

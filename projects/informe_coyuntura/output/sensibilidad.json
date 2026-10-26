@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-26T11:07:46.490924-03:00",
+    "snapshot": "2026-10-26T11:23:37.178035-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -155,46 +155,46 @@
     }
   },
   "itcp": {
-    "valor_publicado": 74.1,
-    "valor_recomputado": 74.1,
+    "valor_publicado": 73.8,
+    "valor_recomputado": 73.8,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 74.1,
-        "p05": 72.8,
-        "p95": 75.4,
-        "desvio": 0.79
+        "media": 73.8,
+        "p05": 72.5,
+        "p95": 75.1,
+        "desvio": 0.81
       },
       "combinado": {
-        "media": 74.0,
-        "p05": 72.5,
-        "p95": 75.5,
-        "desvio": 0.91
+        "media": 73.6,
+        "p05": 72.1,
+        "p95": 75.2,
+        "desvio": 0.96
       },
       "insumos": {
-        "media": 74.0,
-        "p05": 73.2,
-        "p95": 74.8,
-        "desvio": 0.49
+        "media": 73.6,
+        "p05": 72.7,
+        "p95": 74.5,
+        "desvio": 0.54
       }
     },
     "leave_one_out": {
-      "cohesion_bloque": 69.1,
-      "paralisis_denuncias": 76.6,
-      "conflictividad_nacional": 76.4,
-      "velocidad_resolucion": 72.1,
+      "cohesion_bloque": 68.8,
+      "paralisis_denuncias": 76.3,
+      "conflictividad_nacional": 76.1,
       "apoyo_empresario": 76.0,
-      "brecha_obra_publica": 72.2,
-      "jornadas_individuales_no_trabajadas_12m": 72.5,
-      "adhesion_reformas_provincial": 72.8,
-      "produccion_legislativa": 75.3,
-      "veto_quorum": 73.0,
-      "desafios_legislativos": 73.0,
-      "ratio_dnu": 75.0,
-      "alineamiento_senadores_prov": 74.9,
-      "cobertura_judicial": 73.3,
-      "iaf_transferencias": 74.6,
-      "eficacia_legislativa": 74.3
+      "brecha_obra_publica": 71.6,
+      "velocidad_resolucion": 71.8,
+      "jornadas_individuales_no_trabajadas_12m": 72.2,
+      "adhesion_reformas_provincial": 72.5,
+      "produccion_legislativa": 75.0,
+      "veto_quorum": 72.7,
+      "desafios_legislativos": 72.7,
+      "ratio_dnu": 74.7,
+      "alineamiento_senadores_prov": 74.6,
+      "cobertura_judicial": 73.0,
+      "iaf_transferencias": 74.3,
+      "eficacia_legislativa": 74.0
     },
     "tension": {
       "base": 2.6,

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-26 11:07:46"
+generado: "2026-10-26 11:23:37"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -50,7 +50,7 @@ schema_version: "1.2.0"
 |---|---|---|---|---|
 | ratio_dnu | 1.094 | DNUs publicados por ley publicada | 2026-10-26 | fresco |
 | brecha_obra_publica | -1.9 | pp de brecha (obra pública − privada, 12m) | 2026-09-01 | fresco |
-| apoyo_empresario | -0.333 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
+| apoyo_empresario | -0.4 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | fresco |
 | conflictividad_nacional | -27.2 | % vs 2023 | 2026-09-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
@@ -121,7 +121,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:apoyo_empresario,bloqueo_sostenido`
+- `desactualizado:politica:bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-10-26 11:07:46 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-26 11:23:37 — schema 1.2.0*

@@ -1938,9 +1938,19 @@ def _uia_cuerpo(html: str) -> str:
     """Extrae el rich text completo del stream RSC del sitio Next de UIA."""
     bloques = re.findall(
         r'(?:\\u003cp\b.*?\\u003c/p\\u003e)+', html, re.S | re.I)
-    if not bloques:
+    # Desde oct-2026 la nota puede venir partida en varios bloques (una imagen
+    # o un título en el medio): quedarse con el más largo cortaba el texto a
+    # la mitad. Se unen en orden, sin repetidos y sin el texto de «página no
+    # encontrada» que el sitio trae en todas sus páginas.
+    vistos, partes = set(), []
+    for b in bloques:
+        if "enlace sea incorrecto" in b or b in vistos:
+            continue
+        vistos.add(b)
+        partes.append(b)
+    if not partes:
         return ""
-    cuerpo = max(bloques, key=len)
+    cuerpo = " ".join(partes)
     cuerpo = cuerpo.replace(r"\u003c", "<").replace(r"\u003e", ">")
     return _limpio(cuerpo.replace(r'\"', '"'))
 

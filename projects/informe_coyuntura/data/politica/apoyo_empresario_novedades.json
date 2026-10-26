@@ -10,30 +10,7 @@
   "nuevos_en_la_corrida": 0,
   "ultima_corrida": "2026-10-26"
  },
- "pendientes": {
-  "UIA|la-uia-participo-de-la-segunda-cumbre-federal-de-l": {
-   "camara": "UIA",
-   "destinatario": null,
-   "fecha": "2026-10-16",
-   "id": "la-uia-participo-de-la-segunda-cumbre-federal-de-l",
-   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
-   "postura": null,
-   "texto": "El viernes 16 de noviembre participamos de la Segunda Cumbre Federal de Logística, organizada por el Consejo Federal de Inversiones (CFI) bajo el lema “Hacia una logística competitiva para el desarrollo federal”, un espacio que reunió a representantes del sector público, empresas, especialistas y referentes de las principales cadenas productivas del país para debatir los desafíos y oportunidades de la infraestructura y la logística en Argentina para los próximos años.  Entre los participantes se destacaron diversas empresas e instituciones que integran la UIA, entre ellas Andreani, Tecpetrol, Pan American Energy (PAE), YPF, Techint, Holcim y la Asociación Argentina de Logística Empresaria (ARLOG), cuyos representantes aportaron su visión sobre los desafíos logísticos que enfrentan sectores clave como la energía, la minería, la industria y el comercio.  Durante la jornada se abordaron temas vinculados al transporte, la infraestructura, la conectividad, la competitividad y la planificación de inversiones en sectores estratégicos como la agroindustria, la energía, la minería y el comercio electrónico. Asimismo, se destacaron los consensos alcanzados entre los distintos actores para promover una visión de largo plazo que contribuya al desarrollo productivo federal.",
-   "titulo": "La UIA participó de la Segunda Cumbre Federal de Logística para impulsar la competitividad y el desarrollo productivo",
-   "url": "https://www.uia.org.ar/uia/novedades/la-uia-participo-de-la-segunda-cumbre-federal-de-l"
-  },
-  "UIA|la-uia-participo-del-primer-plenario-del-consejo-d": {
-   "camara": "UIA",
-   "destinatario": null,
-   "fecha": "2026-10-21",
-   "id": "la-uia-participo-del-primer-plenario-del-consejo-d",
-   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
-   "postura": null,
-   "texto": "Durante la jornada, los distintos sectores intercambiaron propuestas sobre el funcionamiento del Consejo y sus futuras comisiones de trabajo. Se informó además que próximamente se pondrán en circulación los reglamentos de funcionamiento y que se desarrollará una plataforma de acceso a la documentación e información técnica generada en el marco del Consejo.  Nuestra participación en este ámbito resulta estratégica para acompañar el seguimiento de una infraestructura clave para la competitividad industrial, la logística y las exportaciones argentinas. El Consejo constituye una instancia relevante para canalizar las inquietudes y aportes de los usuarios, fortalecer la transparencia de la gestión y contribuir al desarrollo de mejoras que incrementen la eficiencia del sistema de navegación troncal.  La UIA integra el sector de usuarios junto con otras entidades representativas de la producción, el comercio exterior, los puertos y el transporte, participando activamente en los espacios de diálogo vinculados al desarrollo de la Vía Navegable Troncal.",
-   "titulo": "La UIA participó del primer Plenario del Consejo de Control de la Vía Navegable Troncal",
-   "url": "https://www.uia.org.ar/uia/novedades/la-uia-participo-del-primer-plenario-del-consejo-d"
-  }
- },
+ "pendientes": {},
  "revisadas": {
   "AEA|2020-03-21-union-y-responsabilidad-ante-el-desafio-": {
    "origen": "codificacion ADR-0148"
