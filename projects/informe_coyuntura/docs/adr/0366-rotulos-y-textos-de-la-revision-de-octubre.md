@@ -40,8 +40,8 @@ institucional cosas que son elaboración propia.
 - **Rótulos sin siglas y que dicen lo que miden** en los trece indicadores del
   encabezado, y unidades con su base (`% vs. un año atrás`, `% vs. diciembre de
   2023`, `% sobre el dólar oficial`, «más alto = peor» en la liquidez).
-- **Escalas en la unidad de la tarjeta:** la de expectativas se muestra en tasa
-  anual; los números grandes de las escalas ya no salen en notación científica.
+- **Escalas en la unidad de la tarjeta:** la de expectativas suma entre paréntesis
+  el equivalente anual de cada corte (la interpolación sigue en mensual); los números grandes de las escalas ya no salen en notación científica.
 - **Descripciones:** capacidad prestable, reservas, liquidez, resultado primario
   (con su equivalencia en PBI), crédito privado, inversión física, gasto de
   funcionamiento (incluye salarios; compara con el mismo mes de 2023), fuentes de

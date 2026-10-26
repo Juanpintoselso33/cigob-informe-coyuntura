@@ -240,7 +240,7 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0130](../adr/0130-la-dimension-empleo-pasa-a-medir-empleo.md) La dimensión de empleo pasa a medir empleo
 
-#### Empleadores pyme activos
+#### Empleadores PyME activos
 
 `mortalidad_pymes`
 

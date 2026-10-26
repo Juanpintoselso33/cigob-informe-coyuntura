@@ -202,7 +202,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0100](../adr/0100-promesa-cumplida-no-es-contexto.md) Una promesa cumplida no es un indicador de contexto · [ADR-0189](../adr/0189-si-no-puntua-no-se-muestra.md) Si no puntúa no se muestra, y una promesa cumplida sí puntúa · [ADR-0296](../adr/0296-tdps-distingue-devengado-de-pago.md) TDPS distingue devengado de pago · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0362](../adr/0362-planes-sin-intermediarios-mide-el-cese-de-las-unidades-de-gestion.md) «Planes sin intermediarios» mide el cese de las unidades de gestión
 
-#### Cortes de calle por protestas en la Ciudad
+#### Reducción de cortes de calle en la Ciudad
 
 `protocolo_antipiquetes`
 

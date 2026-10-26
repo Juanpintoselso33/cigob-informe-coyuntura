@@ -466,7 +466,7 @@ export const LABELS: Record<string, string> = {
   desregulacion_normativa: "Desregulación normativa", apertura_comercial: "Impuestos sobre el comercio exterior",
   gasto_funcionamiento: "Gasto de funcionamiento", masa_salarial: "Masa salarial pública",
   asistencia_directa: "Planes sin intermediarios", fal_modernizacion_laboral: "Fondo de Asistencia Laboral",
-  libertad_opcion_salud: "Libertad de opción en salud", protocolo_antipiquetes: "Cortes de calle por protestas en la Ciudad",
+  libertad_opcion_salud: "Libertad de opción en salud", protocolo_antipiquetes: "Reducción de cortes de calle en la Ciudad",
   litigiosidad_laboral: "Juicios por riesgos del trabajo (SRT)", juicios_trabajo_capital: "Juicios en la Justicia del Trabajo (Capital)", alertas_manifestacion: "Alertas de manifestación (GCBA)",
   protestas_caba: "Protestas en CABA (ACLED)",
 };
@@ -547,7 +547,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   gasto_funcionamiento: "% real", masa_salarial: "% real",
   rigi_inversiones: "% de la cartera", privatizaciones: "%", concesiones_infraestructura: "%",
   fal_modernizacion_laboral: "de avance", asistencia_directa: "de 100",
-  protocolo_antipiquetes: "%", libertad_opcion_salud: "%",
+  protocolo_antipiquetes: "% menos que en 2023", libertad_opcion_salud: "%",
   litigiosidad_laboral: "% i.a.", juicios_trabajo_capital: "% vs. un año atrás", alertas_manifestacion: "alertas/mes",
   protestas_caba: "eventos 12m",
 };

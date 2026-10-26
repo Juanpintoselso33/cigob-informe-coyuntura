@@ -77,7 +77,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
 | Planes sin intermediarios | Si los planes sociales siguen pasando por intermediarios. | 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | VERDE | 4,0 % |
-| Cortes de calle por protestas en la Ciudad | En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
+| Reducción de cortes de calle en la Ciudad | En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
 | Libertad de opción en salud | Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como… | 32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) | AMARILLO | 2,0 % |
 
 *Datos al 2026-10-26.*
@@ -1250,7 +1250,7 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Cortes de calle por protestas en la Ciudad
+# Reducción de cortes de calle en la Ciudad
 
 En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de una base estimada para 2023.
 
@@ -1330,7 +1330,7 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 ## Historial — cambios metodológicos documentados
 
-**2026-10-26** — El rótulo pasa a «Cortes de calle por protestas en la Ciudad»; la tarjeta dice que el dato es del año 2025 y que el protocolo está vigente (la Cámara revocó la nulidad). No cambia el cálculo.
+**2026-10-26** — El rótulo pasa a «Reducción de cortes de calle en la Ciudad», con la unidad «% menos que en 2023»; la tarjeta dice que el dato es del año 2025 y que el protocolo está vigente (la Cámara revocó la nulidad). No cambia el cálculo.
 
 **2026-05** — Versión inicial como carga manual (55%, la foto 2024).
 

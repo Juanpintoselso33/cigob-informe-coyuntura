@@ -2305,9 +2305,15 @@ def _por_que(color, valor, unidad, tramos):
     """
     if valor is None or not tramos:
         return None
-    actual = next((t for t in tramos
-                   if (t["desde"] is None or valor > t["desde"])
-                   and (t["hasta"] is None or valor <= t["hasta"])), None)
+    # El color ya lo decidió el motor: en un borde exacto, el tramo es el del
+    # color publicado (si no, la frase podía nombrar como vecino al mismo
+    # color: «0 está en Verde, a 0,0 del límite con Verde», Codex 26-oct).
+    actual = next((t for t in tramos if t["color"] == color
+                   and (t["desde"] is None or valor >= t["desde"])
+                   and (t["hasta"] is None or valor <= t["hasta"])), None) or \
+        next((t for t in tramos
+              if (t["desde"] is None or valor > t["desde"])
+              and (t["hasta"] is None or valor <= t["hasta"])), None)
     if actual is None:
         return None
     bordes = [b for b in (actual["desde"], actual["hasta"]) if b is not None]

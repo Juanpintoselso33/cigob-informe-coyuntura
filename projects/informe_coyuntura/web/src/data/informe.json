@@ -608,7 +608,7 @@
           "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.61% mensual, en la misma escala que el IPC.",
           "metodo_obtencion": "automatico",
           "aporte_score": 1.7,
-          "aporte_formula": "Anclas del índice macroeconómico: ≤12,7 → 100 · 12,7–26,8 → 85 · 26,8–42,6 → 65 · 42,6–79,6 → 40 · >79,6 → 10 (en tasa anual; equivale a ≤1 · 1–2 · 2–3 · 3–5 · >5 % por mes) (puntaje interpolado entre anclas: 82.8; pesa 5,2% del índice macroeconómico)",
+          "aporte_formula": "Anclas del índice macroeconómico: ≤1 (≤12,7 anual) → 100 · 1–2 (12,7–26,8 anual) → 85 · 2–3 (26,8–42,6 anual) → 65 · 3–5 (42,6–79,6 anual) → 40 · >5 (>79,6 anual) → 10 — en % por mes, el equivalente mensual de la expectativa anual (puntaje interpolado entre anclas: 82.8; pesa 5,2% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "equiv. mensual 1,61% (raíz-12 del 21,1% anual)",
@@ -2626,7 +2626,7 @@
               }
             ],
             "unidad": "saldo de postura (−1 a +1, 12m móviles)",
-            "por_que": "−0,4 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,0 del límite con Amarillo (−0,4)."
+            "por_que": "−0,4 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,0 del límite con Naranja (−0,4)."
           }
         },
         "conflictividad_nacional": {

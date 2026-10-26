@@ -350,7 +350,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −0,4 saldo de postura (−1 a +1, 12m móviles) (2026-10).
 
-−0,4 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,0 del límite con Amarillo (−0,4).
+−0,4 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,0 del límite con Naranja (−0,4).
 
 **Color vigente: AMARILLO**
 

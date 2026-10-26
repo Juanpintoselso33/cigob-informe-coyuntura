@@ -593,11 +593,20 @@ def texto_bandas(indicador: str) -> str:
         # equivalente mensual: mostrada en mensual, parecía comparar 21 % contra
         # «1–2» (revisión de Luis, 26-oct-2026). Se muestra en anual, que es la
         # unidad de la tarjeta; el cálculo no cambia.
-        anual = [(lo if lo == -INF else round(((1 + lo / 100) ** 12 - 1) * 100, 1),
-                  hi if hi == INF else round(((1 + hi / 100) ** 12 - 1) * 100, 1), p)
-                 for lo, hi, p in BANDAS_ITCM[indicador]]
-        return (parametrica.texto_bandas(anual)
-                + " (en tasa anual; equivale a ≤1 · 1–2 · 2–3 · 3–5 · >5 % por mes)")
+        # Los cortes se muestran en anual entre paréntesis, pero la escala y la
+        # interpolación siguen en mensual: anualizar los extremos y tomar el
+        # punto medio no reproduce las anclas (Codex, 26-oct).
+        an = lambda m: parametrica._num(round(((1 + m / 100) ** 12 - 1) * 100, 1))
+        partes = []
+        for lo, hi, p in BANDAS_ITCM[indicador]:
+            if lo == -INF:
+                r = f"≤{parametrica._num(hi)} (≤{an(hi)} anual)"
+            elif hi == INF:
+                r = f">{parametrica._num(lo)} (>{an(lo)} anual)"
+            else:
+                r = f"{parametrica._num(lo)}–{parametrica._num(hi)} ({an(lo)}–{an(hi)} anual)"
+            partes.append(f"{r} → {p}")
+        return " · ".join(partes) + " — en % por mes, el equivalente mensual de la expectativa anual"
     return parametrica.texto_bandas(BANDAS_ITCM[indicador])
 
 

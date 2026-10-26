@@ -1133,7 +1133,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-10-26** — El rótulo pasa a «Inflación esperada a 12 meses» y la escala se muestra en tasa anual, la unidad de la tarjeta (12,7 · 26,8 · 42,6 · 79,6 %), con su equivalente mensual. No cambia el cálculo.
+**2026-10-26** — El rótulo pasa a «Inflación esperada a 12 meses» y cada corte de la escala (en % por mes) lleva entre paréntesis su equivalente anual, la unidad de la tarjeta (12,7 · 26,8 · 42,6 · 79,6 %). No cambia el cálculo.
 
 **2026-09-08** — El informe separado de sensibilidad aplica la misma conversión anual a mensual que el índice y la web. Se corrige su simulación; el valor y el puntaje del indicador no cambian.
 
