@@ -144,14 +144,16 @@ def test_la_dimension_laboral_sigue_siendo_la_mas_floja():
     r = itcg.calcular_itcg(valores)
     puntajes = {k: d["puntaje"] for k, d in r["dimensiones"].items()}
     import parametrica
-    variacion = valores["litigiosidad_laboral"]
+    # ADR-0369: el resultado de la reforma lo mide la Justicia del Trabajo; la
+    # SRT quedó suspendida y no puntúa.
+    variacion = valores["juicios_trabajo_capital"]
     litigiosidad = parametrica.puntaje_de(
-        variacion, "litigiosidad_laboral", itcg.BANDAS_ITCG)
+        variacion, "juicios_trabajo_capital", itcg.BANDAS_ITCG)
     # El piso de la banda "sin cambio apreciable" de BANDAS_ITCG, leído de la
     # paramétrica y no escrito a mano acá: si alguien recalibra las bandas, esta
     # guardia se mueve con ellas en vez de quedar apuntando a un número viejo.
     piso_sin_cambio = next(desde for desde, hasta, _ in
-                           itcg.BANDAS_ITCG["litigiosidad_laboral"]
+                           itcg.BANDAS_ITCG["juicios_trabajo_capital"]
                            if desde < 0 < hasta)
     assert variacion > piso_sin_cambio, (
         f"los juicios laborales cayeron {variacion}% interanual, por debajo del "

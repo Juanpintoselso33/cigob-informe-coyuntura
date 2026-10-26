@@ -638,11 +638,11 @@ Dato vigente: 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y a
 
 Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** La dimensión también incluye litigiosidad por riesgos del trabajo de la SRT. Es un universo distinto del FAL y su evolución no constituye una medición directa del resultado del Fondo ni de su efecto causal.
+- **Participación en otros indicadores.** La dimensión también incluye los juicios laborales que se inician en la Justicia Nacional del Trabajo, con igual peso. Describen la conflictividad laboral en la Capital; su evolución no es una medición directa del resultado del Fondo ni de su efecto causal.
 
 ## Transparencia — limitaciones declaradas
 
-- Mide el instrumento, no su efecto sobre el mercado de trabajo. Que el Fondo llegue a existir, rija y tenga vehículos inscriptos no dice cuántos trabajadores quedan cubiertos ni cuánto cambia el costo de despedir. La litigiosidad SRT, aunque integra la misma dimensión con igual peso, no verifica ese resultado: corresponde a riesgos del trabajo.
+- Mide el instrumento, no su efecto sobre el mercado de trabajo. Que el Fondo llegue a existir, rija y tenga vehículos inscriptos no dice cuántos trabajadores quedan cubiertos ni cuánto cambia el costo de despedir. Los juicios de la Justicia del Trabajo, que integran la misma dimensión con igual peso, tampoco lo verifican: cuentan juicios iniciados, no su causa.
 - La adopción entra como un hecho binario —hay al menos un fondo inscripto o no lo hay— y por lo tanto es gruesa: no distingue un fondo de doscientos. Se prefirió así antes que volver a un pleno provisorio como el de las menciones del Boletín Oficial, que fijaba en cuatrocientas veinte el equivalente a una adopción plena sin ninguna serie que lo respaldara.
 - El registro de la Comisión Nacional de Valores publica el stock del día de la consulta y no su historia, de modo que la etapa de adopción no puede reconstruirse hacia atrás. Mientras no exista un primer fondo eso no cambia ningún valor; cuando exista habrá que fechar el alta como están fechadas las normas.
 - Sólo se asientan las suspensiones judiciales de alcance general. Una cautelar de alcance individual no altera si el régimen rige para todos y por lo tanto no mueve el indicador, aunque sí describa un conflicto real.

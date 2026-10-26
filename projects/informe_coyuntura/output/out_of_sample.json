@@ -52,31 +52,6 @@
       "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"
     },
     {
-      "indicador": "litigiosidad_laboral",
-      "indice": "ITCG",
-      "procedencia": "historia_larga",
-      "fuera_de_muestra": {
-        "n": 28,
-        "media": 12.9,
-        "desvio": 6.4,
-        "saturado": 0.821,
-        "crudo_min": 14.4,
-        "crudo_max": 80.1,
-        "crudo_media": 40.65
-      },
-      "dentro_de_muestra": {
-        "n": 32,
-        "media": 51.7,
-        "desvio": 14.1,
-        "saturado": 0.094,
-        "crudo_min": 0.1,
-        "crudo_max": 24.7,
-        "crudo_media": 6.21
-      },
-      "señal": "mirar",
-      "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"
-    },
-    {
       "indicador": "brecha_obra_publica",
       "indice": "ITCP",
       "procedencia": "conceptual",

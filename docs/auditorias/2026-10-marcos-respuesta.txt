@@ -1,7 +1,7 @@
 Marcos, gracias por la auditoría. Fuimos una por una; te cuento qué quedó.
 
 Corregido:
-• RIGI: el 49.766 % eran los millones de dólares aprobados, que se colaban como porcentaje al rehacer el mes. Ya está en 23,8 % (septiembre). Con eso, el cambio de Reforma del Estado y los juicios de la Justicia del Trabajo (abajo), el índice de Gestión de septiembre queda en 76,0. De ahí venía también la diferencia entre la portada y la página (#2 y #4): eran dos ediciones distintas.
+• RIGI: el 49.766 % eran los millones de dólares aprobados, que se colaban como porcentaje al rehacer el mes. Ya está en 23,8 % (septiembre). Con eso, el cambio de Reforma del Estado y los juicios de la Justicia del Trabajo (abajo), el índice de Gestión de septiembre queda en 75,0. De ahí venía también la diferencia entre la portada y la página (#2 y #4): eran dos ediciones distintas.
 • Ahora todos los archivos de la edición mensual salen del mismo corte, y hay un control automático que frena la publicación si algo es de otro mes (tu #4).
 • Tomamos tus textos para la introducción, la brecha, Reforma del Estado y la robustez.
 • Reforma del Estado: tenías razón y era peor de lo que parecía. El 100 de dotación estaba en −12 %, calibrado mirando el propio recorte. Buscamos una meta externa: no hay ninguna oficial con número (ni el Presupuesto 2026 ni el FMI). Tomamos la de recortar otro 10 % de la planta en 2026 que informó la prensa citando fuentes oficiales: −25,7 % contra dic-2023. Con −21,4 % la dotación pasa de 100 a 85 y la dimensión queda en ~91. Gasto de funcionamiento queda igual porque no hay referencia externa, y la tarjeta lo dice.
@@ -10,7 +10,7 @@ Corregido:
 • Asistencia directa: tenías razón en que el 98,3 % → 100 % no mostraba nada. La cambiamos por «Planes sin intermediarios»: mide el cese de las unidades de gestión y de certificación del Potenciar Trabajo (Res. 84/2024, art. 6, BO 10-abr-2024), que es donde estaba la intermediación. Vale 0 antes y 100 desde entonces; el porcentaje presupuestario queda como contexto.
 • FAL: la tarjeta muestra por separado el avance (50) y el puntaje del índice (55).
 • Salud: la tarjeta dice sobre qué total es el porcentaje y de qué mes. Entró el padrón de septiembre: 32,2 % (2,8 M de 8,69 M usuarios de prepagas; el total es de agosto).
-• Litigiosidad pasa a llamarse «Juicios por riesgos del trabajo»: es lo que cuenta la serie. Julio no está incompleto, es la feria judicial.
+• Los juicios por riesgos del trabajo (SRT) salen del índice: son accidentes y enfermedades del trabajo, y la reforma apunta a los despidos. Se siguen relevando, sin puntuar.
 • Viales: corregimos los km de la Etapa III (3.920, no 3.962). La página oficial contaba los 42 km de la Ruta 7 entre Palmira y la Ruta 40, que no se concesionan.
 
 Lo que dejamos como está, con reserva (queda pendiente):
@@ -19,7 +19,7 @@ Lo que dejamos como está, con reserva (queda pendiente):
 
 Lo que no se puede medir hoy:
 • Convenios colectivos: la lista de los 446 no está publicada (sólo hay un listado de ejemplo de Infobae, 51 actividades sin número de convenio). Los «19 convenios homologados» que anunció Capital Humano el 21-oct todavía no salieron en el Boletín: lo que se publicó entre el 19 y el 26-oct son 51 acuerdos firmados en mayo y junio, casi todos salariales, y los tres que citan el art. 137 de la Ley 27.802 aclaran que no reemplazan la adecuación. Si lo sumáramos hoy daría 0. Entra cuando exista la lista.
-• Los juicios que citás (55.337 / 58.504) los encontramos: son los expedientes entrados en primera instancia de la Justicia Nacional del Trabajo en 2024 y 2025, de la Oficina de Estadísticas del Consejo de la Magistratura (estadisticas.pjn.gov.ar, Fuero del Trabajo). Se publica por semestre: el primero de 2026 trae 28.911, un 13 % más que el primero de 2025 (25.562). Lo sumamos a Reforma laboral como segunda medida de juicios, al lado de la de riesgos del trabajo (todo el país): FAL 50 %, cada medida de juicios 25 %. Mide los 12 meses a junio de 2026 contra los 12 previos: +12,4 %. Con eso la dimensión baja de 59,9 a 53,8 y el índice de Gestión, 0,9 puntos. Ojo que es sólo la Capital.
+• Los juicios que citás (55.337 / 58.504) los encontramos: son los expedientes entrados en primera instancia de la Justicia Nacional del Trabajo en 2024 y 2025, de la Oficina de Estadísticas del Consejo de la Magistratura (estadisticas.pjn.gov.ar, Fuero del Trabajo). Se publica por semestre: el primero de 2026 trae 28.911, un 13 % más que el primero de 2025 (25.562). Reemplazan a los juicios por riesgos del trabajo en Reforma laboral: FAL 50 % y juicios de la Justicia del Trabajo 50 %. Miden los 12 meses a junio de 2026 contra los 12 previos: +12,4 %. Con eso la dimensión baja de 59,9 a 47,6 y el índice de Gestión de septiembre queda en 75,0. Ojo que es sólo la Capital.
 • Salud como «% que se cambió de obra social»: esa serie no se publica. Con los padrones sólo sale una cota anual (al menos 5,6 % en 12 meses), que agregamos a la ficha.
 • Sobre el Fondo Solidario: desde el Decreto 600/2024 (vigente desde agosto de 2024) es un 15 % único de aportes y contribuciones, ya no 15-20 %. Se descuenta también de los aportes que se derivan a una prepaga, no de sus cuotas voluntarias.
 • RIGI ejecutado y aplicación del protocolo: no hay serie pública.

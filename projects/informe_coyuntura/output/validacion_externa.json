@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-26T19:27:43.550836-03:00",
+    "generated_at": "2026-10-26T19:37:41.195193-03:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -879,16 +879,16 @@
   },
   "redundancia_itcg": {
     "diferencias": {
-      "n_pares": 104,
-      "r_abs_medio": 0.118,
-      "share_altos": 0.01
+      "n_pares": 90,
+      "r_abs_medio": 0.113,
+      "share_altos": 0.011
     },
     "umbral": 0.7,
-    "n_indicadores": 15,
-    "n_pares": 104,
-    "r_abs_medio": 0.495,
-    "share_altos": 0.279,
-    "share_bajos": 0.25,
+    "n_indicadores": 14,
+    "n_pares": 90,
+    "r_abs_medio": 0.5,
+    "share_altos": 0.289,
+    "share_bajos": 0.244,
     "matriz": {
       "apertura_comercial": {
         "asistencia_directa": 0.331,
@@ -899,7 +899,6 @@
         "gasto_funcionamiento": 0.012,
         "juicios_trabajo_capital": -0.299,
         "libertad_opcion_salud": 0.333,
-        "litigiosidad_laboral": 0.489,
         "masa_salarial": 0.035,
         "privatizaciones": 0.478,
         "protocolo_antipiquetes": 0.251,
@@ -914,7 +913,6 @@
         "fal_modernizacion_laboral": 0.16,
         "gasto_funcionamiento": 0.133,
         "libertad_opcion_salud": 0.461,
-        "litigiosidad_laboral": 0.896,
         "masa_salarial": 0.41,
         "privatizaciones": 0.353,
         "protocolo_antipiquetes": 0.418,
@@ -930,7 +928,6 @@
         "gasto_funcionamiento": 0.274,
         "juicios_trabajo_capital": -0.49,
         "libertad_opcion_salud": 0.906,
-        "litigiosidad_laboral": 0.438,
         "masa_salarial": 0.474,
         "privatizaciones": 0.825,
         "protocolo_antipiquetes": 0.872,
@@ -946,7 +943,6 @@
         "gasto_funcionamiento": 0.281,
         "juicios_trabajo_capital": -0.776,
         "libertad_opcion_salud": 0.351,
-        "litigiosidad_laboral": 0.235,
         "masa_salarial": 0.15,
         "privatizaciones": 0.584,
         "protocolo_antipiquetes": 0.294,
@@ -962,7 +958,6 @@
         "gasto_funcionamiento": 0.345,
         "juicios_trabajo_capital": -0.883,
         "libertad_opcion_salud": 0.923,
-        "litigiosidad_laboral": 0.455,
         "masa_salarial": 0.465,
         "privatizaciones": 0.949,
         "protocolo_antipiquetes": 0.873,
@@ -978,7 +973,6 @@
         "gasto_funcionamiento": 0.2,
         "juicios_trabajo_capital": -0.825,
         "libertad_opcion_salud": 0.405,
-        "litigiosidad_laboral": 0.252,
         "masa_salarial": 0.175,
         "privatizaciones": 0.603,
         "protocolo_antipiquetes": 0.338,
@@ -994,7 +988,6 @@
         "fal_modernizacion_laboral": 0.2,
         "juicios_trabajo_capital": -0.478,
         "libertad_opcion_salud": 0.252,
-        "litigiosidad_laboral": 0.2,
         "masa_salarial": 0.444,
         "privatizaciones": 0.445,
         "protocolo_antipiquetes": 0.205,
@@ -1009,7 +1002,6 @@
         "fal_modernizacion_laboral": -0.825,
         "gasto_funcionamiento": -0.478,
         "libertad_opcion_salud": -0.486,
-        "litigiosidad_laboral": -0.833,
         "masa_salarial": -0.3,
         "privatizaciones": -0.856,
         "protocolo_antipiquetes": -0.24,
@@ -1025,28 +1017,11 @@
         "fal_modernizacion_laboral": 0.405,
         "gasto_funcionamiento": 0.252,
         "juicios_trabajo_capital": -0.486,
-        "litigiosidad_laboral": 0.399,
         "masa_salarial": 0.428,
         "privatizaciones": 0.824,
         "protocolo_antipiquetes": 0.992,
         "reduccion_estado": 0.83,
         "reestructuracion_organismos": 0.493
-      },
-      "litigiosidad_laboral": {
-        "apertura_comercial": 0.489,
-        "asistencia_directa": 0.896,
-        "cepo_mulc": 0.438,
-        "concesiones_infraestructura": 0.235,
-        "desregulacion_normativa": 0.455,
-        "fal_modernizacion_laboral": 0.252,
-        "gasto_funcionamiento": 0.2,
-        "juicios_trabajo_capital": -0.833,
-        "libertad_opcion_salud": 0.399,
-        "masa_salarial": 0.482,
-        "privatizaciones": 0.388,
-        "protocolo_antipiquetes": 0.325,
-        "reduccion_estado": 0.768,
-        "reestructuracion_organismos": 0.29
       },
       "masa_salarial": {
         "apertura_comercial": 0.035,
@@ -1058,7 +1033,6 @@
         "gasto_funcionamiento": 0.444,
         "juicios_trabajo_capital": -0.3,
         "libertad_opcion_salud": 0.428,
-        "litigiosidad_laboral": 0.482,
         "privatizaciones": 0.407,
         "protocolo_antipiquetes": 0.412,
         "reduccion_estado": 0.537,
@@ -1074,7 +1048,6 @@
         "gasto_funcionamiento": 0.445,
         "juicios_trabajo_capital": -0.856,
         "libertad_opcion_salud": 0.824,
-        "litigiosidad_laboral": 0.388,
         "masa_salarial": 0.407,
         "protocolo_antipiquetes": 0.746,
         "reduccion_estado": 0.792,
@@ -1090,7 +1063,6 @@
         "gasto_funcionamiento": 0.205,
         "juicios_trabajo_capital": -0.24,
         "libertad_opcion_salud": 0.992,
-        "litigiosidad_laboral": 0.325,
         "masa_salarial": 0.412,
         "privatizaciones": 0.746,
         "reduccion_estado": 0.84,
@@ -1106,7 +1078,6 @@
         "gasto_funcionamiento": 0.329,
         "juicios_trabajo_capital": -0.922,
         "libertad_opcion_salud": 0.83,
-        "litigiosidad_laboral": 0.768,
         "masa_salarial": 0.537,
         "privatizaciones": 0.792,
         "protocolo_antipiquetes": 0.84,
@@ -1122,7 +1093,6 @@
         "gasto_funcionamiento": 0.203,
         "juicios_trabajo_capital": -0.859,
         "libertad_opcion_salud": 0.493,
-        "litigiosidad_laboral": 0.29,
         "masa_salarial": 0.224,
         "privatizaciones": 0.732,
         "protocolo_antipiquetes": 0.419,
@@ -1197,16 +1167,6 @@
         "n": 34,
         "dimension_a": "reformas_economicas",
         "dimension_b": "social_orden",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "asistencia_directa",
-        "b": "litigiosidad_laboral",
-        "r": 0.896,
-        "n": 32,
-        "dimension_a": "social_orden",
-        "dimension_b": null,
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -1301,16 +1261,6 @@
         "por_diseno": null
       },
       {
-        "a": "juicios_trabajo_capital",
-        "b": "litigiosidad_laboral",
-        "r": -0.833,
-        "n": 20,
-        "dimension_a": "reforma_laboral",
-        "dimension_b": null,
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "libertad_opcion_salud",
         "b": "reduccion_estado",
         "r": 0.83,
@@ -1371,16 +1321,6 @@
         "por_diseno": null
       },
       {
-        "a": "litigiosidad_laboral",
-        "b": "reduccion_estado",
-        "r": 0.768,
-        "n": 32,
-        "dimension_a": null,
-        "dimension_b": "reforma_estado",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "asistencia_directa",
         "b": "reduccion_estado",
         "r": 0.762,
@@ -1421,8 +1361,8 @@
         "por_diseno": null
       }
     ],
-    "pares_cruzados": 26,
-    "pares_no_explicados": 26
+    "pares_cruzados": 23,
+    "pares_no_explicados": 23
   },
   "redundancia_itcp": {
     "diferencias": {
