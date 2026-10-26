@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-10-26T19:20:15.314882-03:00",
+  "generated_at": "2026-10-26T19:27:50.341233-03:00",
   "period": "2026-10",
   "score_global": 4.0,
   "ponderacion": {
@@ -4123,7 +4123,7 @@
       }
     },
     "gestion": {
-      "score": 2.5,
+      "score": 2.6,
       "estado": "estable",
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
@@ -4404,11 +4404,16 @@
           "juicios_12m": 126819,
           "detalle_txt": "126.819 juicios en 12m (hasta 2026-07) vs 126.700 previos",
           "obtenido_en": "2026-10-26T14:44:35",
-          "en_indice": true,
+          "en_indice": false,
           "dimension": "reforma_laboral",
-          "puntaje_itcg": 64.8,
-          "puntaje_banda": 64.8,
-          "peso_efectivo": 0.0375
+          "suspendido": {
+            "dimension": "reforma_laboral",
+            "desde": "2026-10",
+            "desde_txt": "octubre de 2026",
+            "adr": "0369",
+            "por_que": "Son juicios por accidentes y enfermedades del trabajo, y la reforma laboral apunta a las indemnizaciones por despido: no miden su resultado. El resultado queda medido con todos los juicios laborales de la Justicia Nacional del Trabajo.",
+            "condicion_reingreso": "Que la reforma alcance al sistema de riesgos del trabajo, o una serie nacional de juicios por despido que la complemente."
+          }
         },
         "juicios_trabajo_capital": {
           "valor": 12.4,
@@ -4423,7 +4428,7 @@
           "dimension": "reforma_laboral",
           "puntaje_itcg": 40.2,
           "puntaje_banda": 40.2,
-          "peso_efectivo": 0.0375
+          "peso_efectivo": 0.075
         },
         "privatizaciones": {
           "valor": 55.6,
@@ -4716,7 +4721,7 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 75.1,
+        "valor": 74.1,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -4774,7 +4779,7 @@
           "reforma_laboral": {
             "nombre": "Reforma laboral",
             "peso": 0.15,
-            "puntaje": 53.8,
+            "puntaje": 47.6,
             "indicadores": {
               "fal_modernizacion_laboral": {
                 "peso": 0.5,
@@ -4783,19 +4788,12 @@
                 "valor": 50.0,
                 "peso_efectivo": 0.075
               },
-              "litigiosidad_laboral": {
-                "peso": 0.25,
-                "puntaje_banda": 64.8,
-                "puntaje_aplicado": 64.8,
-                "valor": 0.1,
-                "peso_efectivo": 0.0375
-              },
               "juicios_trabajo_capital": {
-                "peso": 0.25,
+                "peso": 0.5,
                 "puntaje_banda": 40.2,
                 "puntaje_aplicado": 40.2,
                 "valor": 12.4,
-                "peso_efectivo": 0.0375
+                "peso_efectivo": 0.075
               }
             },
             "peso_efectivo": 0.15

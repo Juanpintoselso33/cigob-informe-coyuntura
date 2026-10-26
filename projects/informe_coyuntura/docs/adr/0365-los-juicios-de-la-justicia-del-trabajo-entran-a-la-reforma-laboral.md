@@ -7,7 +7,7 @@ cinturon: 'gestion'
 indice: 'ITCG'
 indicadores: [juicios_trabajo_capital, litigiosidad_laboral]
 archivos: ['scripts/gestion.py', 'scripts/descargar_series.py', 'scripts/itcg.py', 'scripts/procedencia_anclas.py', 'config.py', 'web/src/lib/fichas.ts', 'tests/test_juicios_trabajo_capital.py']
-relacionado: ['0023', '0128', '0361']
+relacionado: ['0023', '0128', '0361', '0369']
 ambito: 'Cinturón de gestión · ITCG · dimensión Reforma laboral'
 origen: 'Observación L2 de la auditoría externa del cinturón de Gestión (oct-2026) y decisión de Juan del 26-oct-2026.'
 ---

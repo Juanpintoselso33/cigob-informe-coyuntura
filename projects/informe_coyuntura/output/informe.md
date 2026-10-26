@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-26 19:20:15"
+generado: "2026-10-26 19:27:50"
 score_global: 4.0
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -91,7 +91,7 @@ schema_version: "1.2.0"
 |---|---|---|---|
 | icc_utdt | 41.52 | índice | 2026-10-01 |
 
-### 🟢 Gestion — score 2.5/10 (estable)
+### 🟢 Gestion — score 2.6/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -102,7 +102,6 @@ schema_version: "1.2.0"
 | reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
 | gasto_funcionamiento | -35.92 | % de variación real vs 2023-08 (gastos de funcionamiento) | 2026-08-01 | fresco |
 | fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-10-26 | fresco |
-| litigiosidad_laboral | 0.1 | % variación juicios SRT (12m vs 12m previos) | 2026-07-01 | fresco |
 | juicios_trabajo_capital | 12.4 | % variación juicios entrados (12m vs 12m previos) | 2026-06-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 33.3 | % de inversión aprobada sobre el pipeline | 2026-10-26 | fresco |
@@ -119,10 +118,11 @@ schema_version: "1.2.0"
 |---|---|---|---|---|---|
 | masa_salarial | -32.65 | % de variación real vs 2023-08 (SPN remuneraciones) | 2026-08-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. El dato se sigue relevando cada mes, pero no puntúa ni se publica como tarjeta. |
 | reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-10-26 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
+| litigiosidad_laboral | 0.1 | % variación juicios SRT (12m vs 12m previos) | 2026-07-01 | octubre de 2026 (ADR-0369) | Son juicios por accidentes y enfermedades del trabajo, y la reforma laboral apunta a las indemnizaciones por despido: no miden su resultado. El resultado queda medido con todos los juicios laborales de la Justicia Nacional del Trabajo. |
 
 ## Advertencias
 
 - `desactualizado:politica:bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-10-26 19:20:15 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-26 19:27:50 — schema 1.2.0*

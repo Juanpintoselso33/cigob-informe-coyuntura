@@ -95,7 +95,7 @@ def test_el_fal_y_la_litigiosidad_pesan_igual():
     resultado son dos medidas de juicios, 25 y 25."""
     ind = itcg.DIMENSIONES_ITCG["reforma_laboral"]["indicadores"]
     assert ind["fal_modernizacion_laboral"] == 0.50
-    assert ind["litigiosidad_laboral"] + ind["juicios_trabajo_capital"] == 0.50
+    assert ind["juicios_trabajo_capital"] == 0.50   # ADR-0369: sale la SRT
 
 
 def test_la_dimension_laboral_sigue_siendo_la_mas_floja():

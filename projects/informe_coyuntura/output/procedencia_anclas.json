@@ -108,10 +108,9 @@
       "peso_total": 1.0,
       "categorias": {
         "documento": 0.33999999999999997,
-        "convencion": 0.285625,
+        "convencion": 0.323125,
         "externa": 0.109375,
-        "conceptual": 0.22750000000000004,
-        "historia_larga": 0.0375
+        "conceptual": 0.22750000000000004
       },
       "detalle": [
         {
@@ -169,16 +168,16 @@
           "motivo": "% de usuarios con libre opción; el 100 (libre opción plena) es el ancla (ADR-0121)"
         },
         {
-          "indicador": "litigiosidad_laboral",
-          "categoria": "historia_larga",
-          "peso": 0.0375,
-          "motivo": "calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023)"
-        },
-        {
           "indicador": "gasto_funcionamiento",
           "categoria": "convencion",
           "peso": 0.0781,
           "motivo": "bandas anchas por el ajuste de 2024, que la propia ficha llama históricamente atípico"
+        },
+        {
+          "indicador": "juicios_trabajo_capital",
+          "categoria": "convencion",
+          "peso": 0.075,
+          "motivo": "toma la escala de litigiosidad_laboral, que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365)"
         },
         {
           "indicador": "desregulacion_normativa",
@@ -197,22 +196,15 @@
           "categoria": "convencion",
           "peso": 0.04,
           "motivo": "calibrada con la caída observada en CABA en 2024-2025"
-        },
-        {
-          "indicador": "juicios_trabajo_capital",
-          "categoria": "convencion",
-          "peso": 0.0375,
-          "motivo": "toma la escala de litigiosidad_laboral, que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365)"
         }
       ],
       "share": {
         "documento": 0.34,
-        "convencion": 0.286,
+        "convencion": 0.323,
         "externa": 0.109,
-        "conceptual": 0.228,
-        "historia_larga": 0.037
+        "conceptual": 0.228
       },
-      "share_circular": 0.286
+      "share_circular": 0.323
     },
     "ITCP": {
       "peso_total": 0.9999999999999999,

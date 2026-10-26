@@ -810,7 +810,7 @@ Dato vigente: 94,4 índice (100 = 4T-2023) (2026-09).
 
 Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** IVA-DGI y créditos/débitos bancarios (impuesto al cheque) —cuya descomposición ya publica esta tarjeta, ver `transformaciones`— también puntúan por separado como `actividad_tributaria`, en la dimensión de actividad económica. Es el lado PESADO del doble uso: con los pesos vigentes `recaudacion` aporta 7,2% al índice macroeconómico (0,24×0,30) contra 1,93% de `actividad_tributaria` (0,23×0,084, desde la fusión del 16-oct-2026; antes 1,32%). El solapamiento real es menor de lo que sugiere compartir series: este indicador puntúa un NIVEL real desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este agregado y el compuesto de `actividad_tributaria` mide apenas r=0,355 (105 meses, dic-2017/ago-2026, 13% de varianza compartida). Con esa covarianza medida, el índice macroeconómico tiene alrededor de 2,2% de su peso total expuesto al mismo shock tributario puro (una moratoria, un cambio de alícuota) en las dos dimensiones — chico frente al 11% que ya concentra `competitividad_externa` en `tcr_terminos_intercambio` solo. Ver la ficha de `actividad_tributaria` para la cuantificación completa.
+- **Participación en otros indicadores.** IVA-DGI y créditos/débitos bancarios (impuesto al cheque) son dos componentes de este agregado y la tarjeta publica su descomposición. Hasta octubre de 2026 puntuaban además por separado en la dimensión de actividad; salieron del índice por repetir la lectura del EMAE.
 
 ## Transparencia — limitaciones declaradas
 

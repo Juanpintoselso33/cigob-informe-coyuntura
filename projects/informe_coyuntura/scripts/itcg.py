@@ -285,9 +285,13 @@ DIMENSIONES_ITCG = {
         # entre las dos medidas de juicios, 25 y 25. La SRT cubre todo el país
         # pero sólo riesgos del trabajo; la Justicia del Trabajo cuenta todos
         # los juicios laborales, pero sólo los de la Capital.
+        #
+        # ADR-0369 (2026-10-26): los juicios por riesgos del trabajo salen (a
+        # pedido de Luis): son accidentes y enfermedades, y la reforma apunta a
+        # los despidos. La mitad del resultado queda entera en los juicios de la
+        # Justicia del Trabajo, que sí incluyen despidos.
         "indicadores": {"fal_modernizacion_laboral": 0.50,
-                        "litigiosidad_laboral": 0.25,
-                        "juicios_trabajo_capital": 0.25},
+                        "juicios_trabajo_capital": 0.50},
     },
     "privatizaciones_inversion": {
         "nombre": "Privatizaciones e inversión",
@@ -389,6 +393,19 @@ INDICADORES_SUSPENDIDOS = {
                                "publicado, regla explícita para fusiones, "
                                "absorciones y disoluciones, y una fuente que un "
                                "tercero pueda reproducir.",
+    },
+    "litigiosidad_laboral": {
+        "dimension": "reforma_laboral",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0369",
+        "por_que": "Son juicios por accidentes y enfermedades del trabajo, y la "
+                   "reforma laboral apunta a las indemnizaciones por despido: "
+                   "no miden su resultado. El resultado queda medido con todos "
+                   "los juicios laborales de la Justicia Nacional del Trabajo.",
+        "condicion_reingreso": "Que la reforma alcance al sistema de riesgos "
+                               "del trabajo, o una serie nacional de juicios "
+                               "por despido que la complemente.",
     },
     "masa_salarial": {
         "dimension": "reforma_estado",
