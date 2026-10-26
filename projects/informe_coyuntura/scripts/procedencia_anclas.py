@@ -126,7 +126,10 @@ TECHOS = {
     # quedan como están—, por eso los tres pisos convergen en ~40% y no bajan
     # más: ése es el núcleo irreducible de indicadores que miden lo que este
     # gobierno hizo, calibrados contra lo que se observó.
-    "ITCG": {"circular": 0.40, "sin_declarar": 0.01},
+    # BAJA a 0,25 el 2026-10-26 (ADR-0364): reduccion_estado deja de ser
+    # convención (100 en −12%, el recorte observado) y pasa a la meta externa
+    # de 2026 (−25,7%). Medido: 24,8%.
+    "ITCG": {"circular": 0.25, "sin_declarar": 0.01},
     # ITCP baja a 0,34 el 2026-07-25 (ADR-0126): entra cobertura_judicial con
     # ancla CONCEPTUAL —niveles de cobertura de un cuerpo, no el rango 64-73%
     # observado— y diluye la proporción circular del índice. El techo se baja
@@ -180,7 +183,7 @@ PROCEDENCIA = {
     "cepo_mulc": ("documento", "«brecha sostenida <10-15% = condiciones óptimas de unificación» (doc 260702)"),
     "apertura_comercial": ("documento", "anclas sobre la lineal del documento: 0% → 100 · 15% → 0 (ADR-0021)"),
     "desregulacion_normativa": ("convencion", "el conteo pasa a ser OFICIAL (informe mensual del Min. de Desregulación) pero la vara NO: el organismo no publica meta, así que los cortes 100/300/600/1200 los ponemos nosotros — misma limitación que declaraba ADR-0096, con otra fuente para el número (ADR-0125)"),
-    "reduccion_estado": ("convencion", "«calibrado con el dato real»: el recorte observado de ~10-12% define la banda 85"),
+    "reduccion_estado": ("externa", "meta del Gobierno de recortar otro 10% de la planta en 2026, informada por la prensa citando fuentes oficiales (sin número publicado): −25,7% vs dic-2023 = 100 (ADR-0364). Antes, convención calibrada con el recorte observado"),
     "gasto_funcionamiento": ("convencion", "bandas anchas por el ajuste de 2024, que la propia ficha llama históricamente atípico"),
     # masa_salarial salió del índice por ADR-0186 (a pedido de CIGOB, dudas
     # sobre la exposición de la fuente): su banda sigue existiendo pero ya no

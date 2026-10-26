@@ -97,9 +97,14 @@ BANDAS_ITCG = {
         (2500.0, 7000.0, 35), (-INF, 2500.0, 10),
     ],
     "reduccion_estado": [               # % variación dotación APN vs dic-2023 (− = reducción)
-        # Calibrado con el dato real: la APN civil recortó ~10-12% desde
-        # dic-2023 (~50 mil salidas) → banda 85. Una dotación creciendo = 10.
-        (-INF, -12.0, 100), (-12.0, -8.0, 85), (-8.0, -4.0, 65), (-4.0, 0.0, 40), (0.0, INF, 10),
+        # ADR-0364 (2026-10-26): el 100 sale de la meta de recortar otro 10%
+        # de la planta en 2026 que informó la prensa citando fuentes oficiales
+        # (Clarín vía Cadena 3; el Gobierno no publicó un número): desde
+        # dic-2025 (−17,45% vs dic-2023), 0,8255 × 0,9 = 0,743 → −25,7%. Los
+        # otros cortes conservan la forma anterior (−12/−8/−4/0) estirada a esa
+        # meta. Antes el 100 estaba en −12%, calibrado con el recorte observado
+        # (circular). Una dotación creciendo = 10.
+        (-INF, -25.7, 100), (-25.7, -17.1, 85), (-17.1, -8.6, 65), (-8.6, 0.0, 40), (0.0, INF, 10),
     ],
     "gasto_funcionamiento": [           # % variación REAL del gasto de funcionamiento vs 2023
         # Bandas anchas: el ajuste 2024 fue histórico (−25/−30% real del gasto

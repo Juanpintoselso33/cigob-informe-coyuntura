@@ -116,11 +116,18 @@
       "peso_total": 1.0,
       "categorias": {
         "documento": 0.33999999999999997,
-        "convencion": 0.3975000000000001,
-        "conceptual": 0.1875,
+        "convencion": 0.248125,
+        "externa": 0.109375,
+        "conceptual": 0.22750000000000004,
         "historia_larga": 0.075
       },
       "detalle": [
+        {
+          "indicador": "reduccion_estado",
+          "categoria": "externa",
+          "peso": 0.1094,
+          "motivo": "meta del Gobierno de recortar otro 10% de la planta en 2026, informada por la prensa citando fuentes oficiales (sin número publicado): −25,7% vs dic-2023 = 100 (ADR-0364). Antes, convención calibrada con el recorte observado"
+        },
         {
           "indicador": "cepo_mulc",
           "categoria": "documento",
@@ -152,6 +159,12 @@
           "motivo": "medidor de avance 0-100 hacia el plan de disoluciones/cierres; el 100 es el ancla, no el rango observado (ADR-0121)"
         },
         {
+          "indicador": "asistencia_directa",
+          "categoria": "conceptual",
+          "peso": 0.04,
+          "motivo": "hito binario: 100 desde el cese de las unidades de gestión (Res. 84/2024), 0 antes; las bandas sólo se usan en sus extremos (ADR-0362)"
+        },
+        {
           "indicador": "concesiones_infraestructura",
           "categoria": "conceptual",
           "peso": 0.03,
@@ -168,12 +181,6 @@
           "categoria": "historia_larga",
           "peso": 0.075,
           "motivo": "calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023)"
-        },
-        {
-          "indicador": "reduccion_estado",
-          "categoria": "convencion",
-          "peso": 0.1094,
-          "motivo": "«calibrado con el dato real»: el recorte observado de ~10-12% define la banda 85"
         },
         {
           "indicador": "gasto_funcionamiento",
@@ -194,12 +201,6 @@
           "motivo": "referencia el 22,1% de jun-2026 y la composición del pipeline de ese momento"
         },
         {
-          "indicador": "asistencia_directa",
-          "categoria": "convencion",
-          "peso": 0.04,
-          "motivo": "el corte de «cumplido» en 95% es propio y queda POR DEBAJO de la línea de base: la TDPS ya marcaba 98,3% en ago-2023 y 100,0 todos los meses del mandato, así que el indicador puntúa 100 sobre un tramo que ya estaba andado (calibración pendiente, ADR-0189)"
-        },
-        {
           "indicador": "protocolo_antipiquetes",
           "categoria": "convencion",
           "peso": 0.04,
@@ -208,11 +209,12 @@
       ],
       "share": {
         "documento": 0.34,
-        "convencion": 0.398,
-        "conceptual": 0.188,
+        "convencion": 0.248,
+        "externa": 0.109,
+        "conceptual": 0.228,
         "historia_larga": 0.075
       },
-      "share_circular": 0.398
+      "share_circular": 0.248
     },
     "ITCP": {
       "peso_total": 0.9999999999999999,

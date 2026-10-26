@@ -28,7 +28,9 @@ import gestion
 #     del ejemplo se expresa en la unidad nueva CONSERVANDO su puntaje: lo que
 #     este test fija es el ITCG que produce la combinación de puntajes del
 #     documento, no el valor crudo de cada indicador.
-#   * reduccion_estado −10,5% vs dic-2023 → 88,8 (banda 85).
+#   * reduccion_estado −22,5% vs dic-2023 → 88,8 (banda 85). ADR-0364 movió el
+#     100 de −12% a −25,7%; el insumo se reexpresa en la escala nueva
+#     CONSERVANDO su puntaje (antes −10,5%), como con desregulación.
 #   * gasto_funcionamiento −18% real → 81,0.
 #   * reestructuracion_organismos 40% → 52,5 (borde de banda: promedio 40/65).
 #   * fal_modernizacion_laboral 50 → 55 (FAL vigente en tres etapas, ADR-0228:
@@ -47,7 +49,7 @@ EJEMPLO = {
     "desregulacion_normativa": 16178.0,  # 71,3 — ARTÍCULOS modificados o
     # eliminados, acumulados (ADR-0143). Antes 846 normas → 82,0: cambió la
     # unidad, no la fuente.
-    "reduccion_estado": -10.5,          # 88,8 (banda 85)
+    "reduccion_estado": -22.5,          # 88,8 (banda 85; antes −10,5, ADR-0364)
     "gasto_funcionamiento": -18.0,      # 81,0 (banda 85)
     # masa_salarial YA NO PUNTÚA (ADR-0186, 2026-08-09): sale del cálculo del
     # ITCG a pedido de CIGOB. Se deja el valor acá porque gestion.py lo sigue
@@ -160,8 +162,10 @@ def test_bordes_de_banda():
     assert itcg.puntaje_banda(30000.01, b["desregulacion_normativa"]) == 100
     assert itcg.puntaje_banda(2499.0, b["desregulacion_normativa"]) == 10
     # Dotación APN: reducción fuerte = menos tensión; dotación creciendo = 10.
-    assert itcg.puntaje_banda(-12.0, b["reduccion_estado"]) == 100
-    assert itcg.puntaje_banda(-11.99, b["reduccion_estado"]) == 85
+    # ADR-0364: el 100 es la meta de 2026 (otro 10% sobre dic-2025 = −25,7%).
+    assert itcg.puntaje_banda(-25.7, b["reduccion_estado"]) == 100
+    assert itcg.puntaje_banda(-25.69, b["reduccion_estado"]) == 85
+    assert itcg.puntaje_banda(-21.37, b["reduccion_estado"]) == 85
     assert itcg.puntaje_banda(0.0, b["reduccion_estado"]) == 40
     assert itcg.puntaje_banda(0.01, b["reduccion_estado"]) == 10
     # RIGI: 22,1% del pipeline aprobado (jun-2026) → 40.

@@ -1,7 +1,7 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-26 10:26:21"
-score_global: 3.7
+generado: "2026-10-26 10:36:06"
+score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
 alerta_multicinturon: false
@@ -10,7 +10,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-10
 
-**Score global:** 3.7/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.3/10)
+**Score global:** 3.8/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.3/10)
 
 ## Cinturones
 
@@ -91,7 +91,7 @@ schema_version: "1.2.0"
 |---|---|---|---|
 | icc_utdt | 41.52 | índice | 2026-10-01 |
 
-### 🟢 Gestion — score 2.1/10 (estable)
+### 🟢 Gestion — score 2.4/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -124,4 +124,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-10-26 10:26:21 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-26 10:36:06 — schema 1.2.0*

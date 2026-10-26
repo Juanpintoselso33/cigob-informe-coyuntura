@@ -35,7 +35,7 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 78,6** | **VERDE** | Moderadamente aflojado | 13 indicadores: 10 en verde · 3 en amarillo |
+| **ITCG: 76,4** | **VERDE** | Moderadamente aflojado | 13 indicadores: 10 en verde · 3 en amarillo |
 Componentes que puntúan en este corte: 13 de 13 publicados.
 
 ## Dimensiones
@@ -43,7 +43,7 @@ Componentes que puntúan en este corte: 13 de 13 publicados.
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
 | Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 68,8 | VERDE | 35,0 % |
-| Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 100,0 | VERDE | 25,0 % |
+| Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 91,2 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. | 59,9 | AMARILLO | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 76,6 | VERDE | 15,0 % |
 | Reforma social y orden | Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes… | 90,6 | VERDE | 10,0 % |
@@ -408,7 +408,7 @@ Cuánto varía la dotación de personal de la Administración Pública Nacional 
 
 La métrica insignia de la reforma del Estado: personas, no pesos. Universo: Administración Pública Nacional — incluye fuerzas armadas y de seguridad (~10% de la dotación) y no incluye empresas del Estado ni provincias/municipios.
 
-**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario. El puntaje máximo refleja el cumplimiento de las referencias fijadas para esas dos variables; no implica que se haya completado la reforma y transformación del Estado.
+**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario. El puntaje máximo refleja el cumplimiento de las referencias fijadas para esas dos variables; no implica que se haya completado la reforma y transformación del Estado. La de dotación es la meta de recortar otro 10% de la planta en 2026, que informó la prensa citando fuentes oficiales (el Gobierno no publicó un número); la de gasto de funcionamiento es una referencia propia, porque no hay meta oficial con la que compararlo.
 
 ## Método de cómputo
 
@@ -425,10 +425,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de variación vs dic-2023 (dotación APN)) | Color |
 |---|---|
-| ≤ −5,2 | VERDE |
-| −5,2 – −2 | AMARILLO |
-| −2 – −0,67 | NARANJA |
-| ≥ −0,67 | ROJO |
+| ≤ −11,14 | VERDE |
+| −11,14 – −4,3 | AMARILLO |
+| −4,3 – −1,43 | NARANJA |
+| ≥ −1,43 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -440,7 +440,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −21,37 % de variación vs dic-2023 (dotación APN) (2026-08).
 
-−21,37 % de variación vs dic-2023 (dotación APN) cae en el tramo que corresponde a Verde, a 16,17 del corte más cercano.
+−21,37 % de variación vs dic-2023 (dotación APN) cae en el tramo que corresponde a Verde, a 10,23 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -451,7 +451,7 @@ Ponderación vigente en el ITCG: 14,6 % efectivo. El color es una lectura adicio
 ## Transparencia — limitaciones declaradas
 
 - Los meses recientes vienen imputados y el INDEC los revisa hacia atrás.
-- Las bandas se calibraron a mano contra el recorte observado (~10-12% → banda alta): es una convención propia del proyecto y no una meta oficial.
+- El 100 corresponde a recortar otro 10% de la planta durante 2026 sobre el nivel de diciembre de 2025: −25,7% contra diciembre de 2023. Esa meta la informó la prensa citando fuentes oficiales (Clarín, vía Cadena 3); el Gobierno no publicó un número y evitó confirmarlo. Es la única referencia externa encontrada: ni el Presupuesto 2026 ni el acuerdo con el FMI fijan una meta de planta. Los cortes intermedios conservan la forma de la escala anterior.
 - Mide personas, no costo. La reducción de la planta puede convivir con un gasto salarial que no baje en la misma proporción, y por eso el cinturón sigue ambas cosas por separado.
 
 ## Si falta el dato / Política de revisiones
@@ -469,6 +469,8 @@ Ponderación vigente en el ITCG: 14,6 % efectivo. El color es una lectura adicio
 **2026-07-03** — Puntaje interpolado entre anclas.
 
 **2026-10-24** — La dimensión Reforma del Estado aclara que su puntaje máximo refleja las referencias de dotación y gasto de funcionamiento, no una reforma del Estado completada. No cambia el cálculo.
+
+**2026-10-26** — La escala deja de calibrarse con el recorte observado. El 100 pasa de −12% a −25,7%: la meta de recortar otro 10% de la planta en 2026 que informó la prensa citando fuentes oficiales. Con −21,4% el puntaje baja de 100 a 85 y la dimensión, de 100 a cerca de 91. Responde a la auditoría externa, que objetaba que el 100 se leyera como reforma completa.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -502,7 +504,7 @@ Cuánto varía en términos reales el gasto de funcionamiento del Estado naciona
 
 La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal.
 
-**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario. El puntaje máximo refleja el cumplimiento de las referencias fijadas para esas dos variables; no implica que se haya completado la reforma y transformación del Estado.
+**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario. El puntaje máximo refleja el cumplimiento de las referencias fijadas para esas dos variables; no implica que se haya completado la reforma y transformación del Estado. La de dotación es la meta de recortar otro 10% de la planta en 2026, que informó la prensa citando fuentes oficiales (el Gobierno no publicó un número); la de gasto de funcionamiento es una referencia propia, porque no hay meta oficial con la que compararlo.
 
 ## Método de cómputo
 

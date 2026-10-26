@@ -2063,19 +2063,19 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     anclas: {
       bandas: [
-        { banda: "≤ −12", puntaje: 100 },
-        { banda: "−12 – −8", puntaje: 85 },
-        { banda: "−8 – −4", puntaje: 65 },
-        { banda: "−4 – 0", puntaje: 40 },
+        { banda: "≤ −25,7", puntaje: 100 },
+        { banda: "−25,7 – −17,1", puntaje: 85 },
+        { banda: "−17,1 – −8,6", puntaje: 65 },
+        { banda: "−8,6 – 0", puntaje: 40 },
         { banda: "> 0", puntaje: 10 },
       ],
-      puntos: [[-12, 100], [-10, 85], [-6, 65], [-2, 40], [0, 10]],
+      puntos: [[-25.7, 100], [-21.4, 85], [-12.85, 65], [-4.3, 40], [0, 10]],
       unidadCorta: "% vs dic-2023",
     },
     dobleUso: "Mide personas; el costo de la nómina lo mide por separado el gasto de funcionamiento — dos patas complementarias declaradas de la misma dimensión. La masa salarial las acompañó hasta agosto de 2026, cuando salió del índice de gestión.",
     limitaciones: [
       "Los meses recientes vienen imputados y el INDEC los revisa hacia atrás.",
-      "Las bandas se calibraron a mano contra el recorte observado (~10-12% → banda alta): es una convención propia del proyecto y no una meta oficial.",
+      "El 100 corresponde a recortar otro 10% de la planta durante 2026 sobre el nivel de diciembre de 2025: −25,7% contra diciembre de 2023. Esa meta la informó la prensa citando fuentes oficiales (Clarín, vía Cadena 3); el Gobierno no publicó un número y evitó confirmarlo. Es la única referencia externa encontrada: ni el Presupuesto 2026 ni el acuerdo con el FMI fijan una meta de planta. Los cortes intermedios conservan la forma de la escala anterior.",
       "Mide personas, no costo. La reducción de la planta puede convivir con un gasto salarial que no baje en la misma proporción, y por eso el cinturón sigue ambas cosas por separado.",
     ],
     faltantes: "Con la planilla caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
@@ -2085,6 +2085,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-02", cambio: "Pasa a la planilla mensual de dotación APN contra diciembre de 2023, con umbrales del índice de gestión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-10-24", cambio: "La dimensión Reforma del Estado aclara que su puntaje máximo refleja las referencias de dotación y gasto de funcionamiento, no una reforma del Estado completada. No cambia el cálculo.", adr: "0361" },
+      { fecha: "2026-10-26", cambio: "La escala deja de calibrarse con el recorte observado. El 100 pasa de −12% a −25,7%: la meta de recortar otro 10% de la planta en 2026 que informó la prensa citando fuentes oficiales. Con −21,4% el puntaje baja de 100 a 85 y la dimensión, de 100 a cerca de 91. Responde a la auditoría externa, que objetaba que el 100 se leyera como reforma completa.", adr: "0364" },
     ],
   },
 
