@@ -1,7 +1,7 @@
 Marcos, gracias por la auditoría. Fuimos una por una; te cuento qué quedó.
 
 Corregido:
-• RIGI: el 49.766 % eran los millones de dólares aprobados, que se colaban como porcentaje al rehacer el mes. Ya está en 23,8 % (septiembre). Con eso y el cambio de Reforma del Estado de abajo, el índice de Gestión de septiembre queda en 76,9. De ahí venía también la diferencia entre la portada y la página (#2 y #4): eran dos ediciones distintas.
+• RIGI: el 49.766 % eran los millones de dólares aprobados, que se colaban como porcentaje al rehacer el mes. Ya está en 23,8 % (septiembre). Con eso, el cambio de Reforma del Estado y los juicios de la Justicia del Trabajo (abajo), el índice de Gestión de septiembre queda en 76,0. De ahí venía también la diferencia entre la portada y la página (#2 y #4): eran dos ediciones distintas.
 • Ahora todos los archivos de la edición mensual salen del mismo corte, y hay un control automático que frena la publicación si algo es de otro mes (tu #4).
 • Tomamos tus textos para la introducción, la brecha, Reforma del Estado y la robustez.
 • Reforma del Estado: tenías razón y era peor de lo que parecía. El 100 de dotación estaba en −12 %, calibrado mirando el propio recorte. Buscamos una meta externa: no hay ninguna oficial con número (ni el Presupuesto 2026 ni el FMI). Tomamos la de recortar otro 10 % de la planta en 2026 que informó la prensa citando fuentes oficiales: −25,7 % contra dic-2023. Con −21,4 % la dotación pasa de 100 a 85 y la dimensión queda en ~91. Gasto de funcionamiento queda igual porque no hay referencia externa, y la tarjeta lo dice.
