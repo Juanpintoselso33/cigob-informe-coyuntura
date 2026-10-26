@@ -686,6 +686,43 @@ def _desreg_articulos_recientes(texto: str, periodo: str, total: int) -> dict:
     return dict(zip(periodos, valores))
 
 
+def _desreg_sectores_de_bloques(bloques: list, normas: int | None) -> dict:
+    """{sector: normas} de la tabla «Cantidad de normas de desregulación, por
+    sector» (formato desde may-2026). Cada fila es un bloque con la cifra y otro
+    con el rótulo a la misma altura. La tabla vale sólo si suma el total de
+    normas del informe: si no, {} (la clasificación es del Ministerio y es
+    complementaria, no puntúa)."""
+    titulo = next((b for b in bloques if re.search(r"por sector", b[4], re.I)), None)
+    if titulo is None or not normas:
+        return {}
+    debajo = [b for b in bloques if b[1] > titulo[3]]
+    cifras = [b for b in debajo if re.fullmatch(r"\s*\d{1,4}\s*", b[4])]
+    rotulos = [b for b in debajo if re.search(r"[A-Za-zÁÉÍÓÚáéíóú]", b[4])]
+    sectores = {}
+    for c in cifras:
+        fila = [r for r in rotulos if abs(r[1] - c[1]) < 6 and r[0] > c[2]]
+        if len(fila) != 1:
+            return {}
+        # el PDF trae «Finanzas y Mercado de CapitalesFinanzas»: una palabra
+        # pegada al final sin espacio es un resto del maquetado
+        rotulo = re.sub(r"(?<=[a-záéíóú])[A-ZÁÉÍÓÚ]\w*\s*$", "", fila[0][4].strip()).strip()
+        sectores[rotulo] = int(c[4])
+    if sum(sectores.values()) != normas:
+        print(f"  [WARN] desregulación: los sectores suman {sum(sectores.values())} "
+              f"y el informe dice {normas} normas; no se publica el desglose")
+        return {}
+    return dict(sorted(sectores.items(), key=lambda kv: -kv[1]))
+
+
+def _desreg_sectores(blob: bytes, normas: int | None) -> dict:
+    import fitz
+    for pagina in fitz.open(stream=blob, filetype="pdf"):
+        bloques = [list(b[:5]) for b in pagina.get_text("blocks")]
+        if any(re.search(r"por sector", b[4], re.I) for b in bloques):
+            return _desreg_sectores_de_bloques(bloques, normas)
+    return {}
+
+
 def _desreg_leer_informe(url: str) -> dict | None:
     """Período y cifras de portada de un informe. Cubre los DOS formatos.
 
@@ -745,7 +782,8 @@ def _desreg_leer_informe(url: str) -> dict | None:
     return {"periodo": periodo, "normas": normas,
             "normas_afectadas": modif, "articulos": arts,
             "url": url, "sha256": hashlib.sha256(blob).hexdigest(),
-            "articulos_recientes": recientes}
+            "articulos_recientes": recientes,
+            "sectores": _desreg_sectores(blob, normas)}
 
 
 def _desreg_backfill_grafico(url: str, ancla: int, figura: str = "Figura 1") -> dict:
@@ -881,6 +919,8 @@ def fetch_desregulacion_normativa() -> dict | None:
         ultimo = next((d for d in store.get("informes", {}).values()
                        if d["periodo"] == periodo), {})
         previo = serie.get(_mes_previo_ym(periodo))
+        # el store se guarda con las claves ordenadas: el orden es de mayor a menor
+        sectores = dict(sorted((ultimo.get("sectores") or {}).items(), key=lambda kv: -kv[1]))
         return {
             "valor":          float(serie[periodo]),
             "unidad":         "artículos de normas modificados o eliminados, "
@@ -893,6 +933,8 @@ def fetch_desregulacion_normativa() -> dict | None:
             "normas_desregulacion": ultimo.get("normas"),
             "normas_afectadas": ultimo.get("normas_afectadas"),
             "alta_del_mes":   None if previo is None else serie[periodo] - previo,
+            # clasificación complementaria del Ministerio (no puntúa, ADR-0363)
+            "normas_por_sector": sectores or None,
             "detalle_txt": (
                 f"{serie[periodo]:,} artículos modificados o eliminados desde el 10 de "
                 f"diciembre de 2023".replace(",", ".")
@@ -901,7 +943,10 @@ def fetch_desregulacion_normativa() -> dict | None:
                 + ("" if not ultimo.get("normas") else
                    f" · los produjeron {ultimo['normas']} normas de desregulación, "
                    f"que modificaron o eliminaron {ultimo.get('normas_afectadas')} "
-                   f"normas anteriores")),
+                   f"normas anteriores")
+                + ("" if not sectores else
+                   ". Por sector, según el Ministerio: " + ", ".join(
+                       f"{s} {n}" for s, n in sectores.items()))),
         }
     except Exception as e:
         _warn("desregulacion_normativa", e)

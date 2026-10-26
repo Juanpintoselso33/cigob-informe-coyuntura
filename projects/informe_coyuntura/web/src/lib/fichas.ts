@@ -2001,6 +2001,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se eligió el recuento de artículos porque las normas no son equivalentes entre sí: un decreto que reescribe quinientos artículos y una resolución que toca uno cuentan igual si se cuentan normas, y muy distinto si se cuentan artículos. Es la misma objeción que señaló la revisión externa del cinturón.",
       "El valor del mes es la cifra que el propio informe publica. Las etiquetas de los últimos tres meses de la edición más reciente prevalecen sobre los titulares anteriores. El aumento mensual se calcula entre dos acumulados de esa serie revisada: agosto de 2026 publica 17.115 y revisa julio a 16.848, por lo que el incremento es 267, no 344.",
       "El período se toma de la fecha de corte del informe («al 31 de octubre de 2025»), no del mes de su tapa: hay informes cuya portada dice un mes y cuyo corte cae en el siguiente.",
+      "Como complemento, la tarjeta muestra cuántas normas de desregulación corresponden a cada sector, según la clasificación que publica el propio informe (once sectores, de Agroindustria a Sector Inmobiliario). El desglose se publica sólo si los sectores suman el total de normas del mismo informe. No puntúa: el valor sigue siendo el recuento de artículos. El ministerio no publica clasificación por tipo de norma ni por naturaleza del cambio.",
       "La serie histórica hasta abril de 2026 se reconstruyó midiendo las barras del gráfico de artículos acumulados que publica el informe, porque ese gráfico es la única fuente oficial con detalle mes a mes desde diciembre de 2023. La medición se calibró con la cifra del mismo informe y se contrastó contra los otros nueve informes, que son independientes de ese gráfico.",
     ],
     anclas: {
@@ -2038,6 +2039,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-29", cambio: "El valor de respaldo seguía en 57 «% de avance desregulatorio», la unidad anterior al cambio del 26-jul-2026, que pasó la escala de normas a artículos. Contra la banda de hoy esos 57 se leían como 57 artículos. Se corrigió a 16.771 artículos, la última lectura verificada del informe ministerial, y el respaldo dejó de tener prioridad sobre el último valor en vivo.", adr: "0269,0143" },
       { fecha: "2026-09-08", cambio: "Se incorporan las revisiones impresas en el gráfico de los últimos tres meses. Agosto revisa julio a 16.848 artículos; con agosto en 17.115, la variación es 267. Se corrigen tarjeta e historia, conservando la procedencia de las ediciones.", adr: "0292" },
       { fecha: "2026-10-24", cambio: "El rótulo aclara que mide volumen de intervención normativa, no la importancia ni la efectividad de cada cambio. No cambia el cálculo.", adr: "0361" },
+      { fecha: "2026-10-26", cambio: "Se agrega, como complemento que no puntúa, la cantidad de normas de desregulación por sector que publica el informe del ministerio (agosto de 2026: 770 normas en once sectores, encabezados por Agroindustria con 125). Responde a la auditoría externa, que pedía distinguir el alcance de cada cambio. No cambia el valor.", adr: "0363" },
     ],
   },
 

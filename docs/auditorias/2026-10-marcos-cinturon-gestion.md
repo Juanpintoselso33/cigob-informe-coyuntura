@@ -24,8 +24,9 @@ informe.cigob.org.
 - **Resuelto el 26-oct, sin cambios en el tablero:** RIGI 22 vs 23 en evaluación (ver #9b) · Fondo
   Solidario (ver #13b) · la tipografía Garet de las fotos del archivo no es un error: falta la
   licencia web en todo el sitio (`web/public/fuentes/LEEME.md`).
-- **Pendiente de Juan:** mandar el mensaje a Marcos · decidir #6 (anclas de Reforma del Estado),
-  #7 (clasificación de desregulación) y las fichas mensuales con cambios de método posteriores.
+- **Pendiente de Juan:** mandar el mensaje a Marcos · decidir #6 (anclas de Reforma del Estado:
+  no hay meta oficial con número; la mejor referencia es un 10 % más en 2026 según prensa). #7
+  decidido y hecho. Fichas mensuales: se dejan como están (Juan, 26-oct).
 - **Espera datos:** FAL (1-dic o un fondo inscripto en la CNV) · posesión de Puntano y Portuario
   Norte · lista de los 446 convenios · base 2023 de piquetes · PDF de la Cámara del Trabajo.
 - **No se puede hoy:** convenios (lista de los 446 no publicada) · RIGI ejecutado · aplicación del
@@ -42,7 +43,7 @@ Estados: **hecho** · **se puede** (falta hacerlo) · **decide Juan** · **no se
 | 4 | Con los valores de la portada, el índice da 82,6 | Sí, por el error de RIGI | **hecho** | Ver #2 |
 | 5 | Brecha: «el cepo dejó de morder» es demasiado | Sí (`formulas.ts:110`) | se puede | Usar su texto |
 | 6 | Reforma del Estado 100/100 sugiere reforma completa | Sí | se puede (texto) · decide Juan (anclas) | Aclarar qué significa el 100 |
-| 7 | Desregulación cuenta artículos, no importancia | Sí, la ficha ya lo dice | se puede (texto) · decide Juan (clasificación) | Aclarar en el subtítulo que mide volumen |
+| 7 | Desregulación cuenta artículos, no importancia | Sí, la ficha ya lo dice | **hecho** (texto, 24-oct) · **hecho** (sector, 26-oct, ADR-0363) · no se puede (tipo y naturaleza) | Subtítulo «volumen». Juan decidió clasificar: el informe mensual del Ministerio ya publica las normas por sector (agosto 2026: 770 en 11 sectores, Agroindustria 125 … Inmobiliario 16); el colector la lee y la publica sólo si suma el total. No puntúa. Tipo de norma y naturaleza del cambio no se publican (ni lista norma por norma). |
 | 8a | FAL: avance 50 y puntaje 55 confunden | Sí | se puede | Mostrar «avance 50 · puntaje 55» |
 | 8b | FAL al 90 % con CNV, ARCA y los bancos | Las normas existen; ningún fondo FAL inscripto en la CNV; el régimen rige desde el 1-dic | decide Juan | ADR-0228 cuenta sólo lo que rige. Hoy: avance 50, puntaje 55. Sumar CNV y ARCA a la construcción **no cambia nada** (esa etapa ya está completa). El 90 de Marcos no sale de los pesos; más que lo que da solo el 1-dic al entrar en vigencia (avance 70 → puntaje **74**; el índice interpola entre anclas, el agente había calculado con tramos y daba 80). Contando la oferta de los bancos como adopción: avance 80 → puntaje 85,5. El 90 de Marcos daría puntaje 100. Lo de los bancos es publicidad y cartas de intención (BNA: «sujeta a normativa pendiente»); ninguna fuente dice que haya un fondo funcionando. La RG CNV 1167 da «oferta pública automática» a los fondos FAL (a releer). **Error a corregir (se puede):** `_cnv_fondos_fal` (`gestion.py:1417`) sólo cuenta fondos con «ASISTENCIA LABORAL» en el nombre; los anunciados se llaman «Pionero FAL», «Superfondo Reserva FAL»: el día que existan no los vería. Hay que sumar «FAL» como palabra suelta. cnv.gov.ar no respondió desde la Mac. Detalle: `scratchpad/obs/08_fal.md` |
 | 9a | RIGI publica 49.766 % | Sí: eran los US$ M aprobados | **hecho** (24-oct) | 23,8 % publicado; junio 22,1 % |
