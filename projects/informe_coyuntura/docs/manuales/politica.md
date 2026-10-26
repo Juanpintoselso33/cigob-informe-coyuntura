@@ -27,7 +27,7 @@ Suma de pesos: 100%.
 
 ### Dimensión `poder_legislativo` (23%)
 
-#### Ratio DNU / leyes
+#### Decretos de necesidad y urgencia por ley
 
 `ratio_dnu`
 
@@ -141,7 +141,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara
 
-#### Adhesión provincial al RIGI
+#### Provincias adheridas al régimen de grandes inversiones
 
 `adhesion_reformas_provincial`
 
@@ -159,7 +159,7 @@ Suma de pesos: 100%.
 
 ### Dimensión `cohesion_interna` (16%)
 
-#### Cohesión del bloque LLA (bicameral)
+#### Cohesión del bloque oficialista (ambas cámaras)
 
 `cohesion_bloque`
 

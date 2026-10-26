@@ -18,12 +18,12 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación",
   },
   reservas_bcra: {
-    que: "Estimación de CiGob de reservas netas: combina activos y flujos de corto plazo de la planilla de reservas internacionales que publica el Banco Central, y agrega depósitos del Tesoro y un tramo de vencimientos excluido por el diseño. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.",
+    que: "Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la planilla oficial de reservas. Suma además los depósitos del Tesoro y deja afuera un tramo de vencimientos, por eso da más que otras estimaciones del mercado. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.",
     aporta: "Aproxima el margen externo con una definición explícita. Su lectura depende de los pasivos excluidos y debe contrastarse con otras medidas de reservas y liquidez.",
     frecuencia: "Mensual", tipo: "Nivel neto (stock)",
   },
   idc: {
-    que: "Índice de Capacidad Prestable: mide si el sistema financiero tiene fondos y margen para prestar, comparando tres niveles contra su propia historia — la tasa real que reciben los depositantes (precio), el crecimiento interanual real de los depósitos privados (volumen) y la holgura entre depósitos y préstamos (asignación).",
+    que: "Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. Cero es un mes normal; positivo, más margen; negativo, menos. Combina tres cosas: lo que cobran en términos reales los que depositan, cuánto crecen los depósitos privados y cuánto de esos depósitos queda sin prestar.",
     aporta: "Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico; por encima, más capacidad que la habitual, y por debajo, menos. En el semáforo de la tarjeta, desde 0 es verde, de −0,6 a 0 amarillo, de −0,9 a −0,6 naranja y por debajo de −0,9 rojo. Datos del Banco Central de la República Argentina (BCRA) —tasa de plazos fijos mayoristas (BADLAR), depósitos y préstamos privados— e índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC).",
     frecuencia: "Mensual", tipo: "Índice (σ)",
   },
@@ -48,7 +48,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Irregular (registro revisado)", tipo: "% estimado de cobertura",
   },
   produccion_legislativa: {
-    que: "Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto.",
+    que: "Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta la sanción; el cociente de decretos por ley cuenta la publicación en el Boletín Oficial, que es otro momento del trámite, así que los dos números de leyes no coinciden.",
     aporta: "Describe el volumen total de leyes sancionadas, sin equipararlo a victorias del Ejecutivo. Complementa la eficacia de su agenda y las votaciones que desafían sus normas; ni el origen ni el contenido de cada ley se deducen del total.",
     frecuencia: "Mensual", tipo: "Conteo en ventana móvil",
   },
@@ -59,12 +59,12 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   velocidad_resolucion: {
     que: "Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los que le ingresan.",
-    aporta: "Compara las salidas y entradas anuales de casos: por encima de cien se resuelven más casos de los que ingresan; por debajo, menos. No mide el tiempo que tarda una causa ni si las decisiones favorecen al Gobierno. Su signo en el índice expresa una hipótesis sobre fricción judicial, no una consecuencia demostrada por estos datos.",
+    aporta: "Compara las salidas y entradas anuales de casos: por encima de cien se resuelven más casos de los que ingresan; por debajo, menos. No mide el tiempo que tarda una causa ni si las decisiones favorecen al Gobierno. En el índice, una Corte que resuelve menos de lo que le entra suma puntos para el Gobierno: el índice político mide capacidad de gobernar sin fricción, no la salud de la Justicia. Ese signo es una hipótesis sobre fricción judicial, no una consecuencia demostrada por estos datos.",
     frecuencia: "Anual", tipo: "% resuelto sobre ingresado",
   },
   paralisis_denuncias: {
     que: "Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces: Acusación y Disciplina.",
-    aporta: "Describe la frecuencia de reuniones de Acusación y Disciplina. No informa cuántas denuncias se resolvieron, el sentido de las decisiones ni si hubo sanciones. La ausencia de una nota publicada tampoco certifica que una comisión no se haya reunido.",
+    aporta: "Describe la frecuencia de reuniones de Acusación y Disciplina. No informa cuántas denuncias se resolvieron, el sentido de las decisiones ni si hubo sanciones. La ausencia de una nota publicada tampoco certifica que una comisión no se haya reunido. En el índice, más sesiones restan puntos: se leen como más actividad de control sobre los jueces y, con ella, más fricción entre los poderes.",
     frecuencia: "Mensual", tipo: "Conteo en ventana móvil",
   },
   emae_difusion: {
@@ -103,7 +103,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (términos del intercambio, trimestral)", tipo: "Puntaje 0–100",
   },
   rem_ipc_12m: {
-    que: "La inflación que el mercado espera para los próximos 12 meses.",
+    que: "La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del Banco Central. Para compararla con la inflación del mes, 21 % anual equivale a cerca de 1,6 % por mes.",
     aporta: "Captura la credibilidad del programa: si el mercado espera que la inflación siga bajando, el ancla de expectativas funciona; si la ve acelerarse, hay desconfianza.",
     frecuencia: "Mensual", tipo: "Expectativa",
   },
@@ -113,13 +113,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Brecha i.a. real",
   },
   desequilibrio_monetario: {
-    que: "Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso: el Banco Central estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.",
+    que: "Mira dos cosas a la vez: si la gente sigue usando pesos y cuántos dólares compra; si las dos empeoran juntas, la presión sobre el peso es mayor. Es una medida de tensión de 0 a 100 (más alto es peor) que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso: el Banco Central estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.",
     aporta: "Los dos componentes se leen juntos porque uno solo alcanza para engañar: la composición de la liquidez puede verse estable mientras crece la compra de divisas, y a la inversa. El resultado sale de cruzarlos en una matriz, no de promediarlos. Mayor tensión reduce el puntaje de estabilidad monetaria.",
     frecuencia: "Mensual", tipo: "Tensión 0–100",
   },
   iai: {
     que: "Índice Anticipador de Inversión: mide la inversión física/tradicional combinando el indicador sintético de la actividad de la construcción (ISAC) que releva el Instituto Nacional de Estadística y Censos (INDEC) y la importación de bienes de capital, en variación interanual.",
-    aporta: "Resume señales de construcción e importación de bienes de capital frente al mismo mes del año anterior. No mide depreciación ni inversión neta: una caída interanual no demuestra que se consuma más capital del que se repone. Los bienes importados se miden en dólares corrientes, por lo que también influyen sus precios.",
+    aporta: "Resume señales de construcción e importación de bienes de capital frente al mismo mes del año anterior. Los cortes de su escala se corren 0,17 puntos, lo que crece la población por año: invertir menos que eso es invertir menos por habitante. No mide depreciación ni inversión neta: una caída interanual no demuestra que se consuma más capital del que se repone. Los bienes importados se miden en dólares corrientes, por lo que también influyen sus precios.",
     frecuencia: "Mensual", tipo: "Variación i.a. ponderada",
   },
   icip: {
@@ -195,7 +195,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (cohorte de 365–730 días)", tipo: "Nivel (%)",
   },
   cohesion_bloque: {
-    que: "Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones divididas de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene actas divididas en la ventana, el peso pasa a la otra.",
+    que: "Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene actas divididas en la ventana, el peso pasa a la otra.",
     aporta: "Mide la cohesión interna del oficialismo en el Congreso, clave para sostener vetos y aprobar leyes. La composición por cámara se publica en el detalle.",
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
@@ -394,7 +394,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   // ── Gestión (la capacidad de ejecutar) ──────────────────────────
   cepo_mulc: {
     que: "Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria.",
-    aporta: "Mide el grado de normalización cambiaria, uno de los ejes del programa económico.",
+    aporta: "Es una señal del resultado de la normalización cambiaria, no del desarme del cepo en sí: la brecha puede ser baja con restricciones vigentes y moverse por tasas o elecciones sin que cambie ninguna norma. Las cotizaciones salen de dolarapi.com, un servicio privado que replica las del mercado; el mayorista es el de referencia del Banco Central.",
     frecuencia: "Diaria", tipo: "Brecha (%)",
   },
   privatizaciones: {
@@ -419,11 +419,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   rigi_inversiones: {
     que: "Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total de la cartera (aprobados + en evaluación).",
-    aporta: "Mide decisiones administrativas de aprobación, con la plataforma oficial del Ministerio de Economía: no cuánto se invirtió efectivamente ni cuánto avanzaron los proyectos, porque no hay una serie pública de inversión ejecutada. La evolución histórica grafica la inversión aprobada acumulada en dólares.",
+    aporta: "Mide decisiones administrativas de aprobación, con la plataforma oficial del Ministerio de Economía: no cuánto se invirtió efectivamente ni cuánto avanzaron los proyectos, porque no hay una serie pública de inversión ejecutada. Como el total incluye lo que está en evaluación, el porcentaje baja cuando entran proyectos nuevos aunque no se haya rechazado ninguno. La evolución histórica grafica la inversión aprobada acumulada en dólares.",
     frecuencia: "Continua (plataforma oficial)", tipo: "Avance de reforma",
   },
   desregulacion_normativa: {
-    que: "Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado.",
+    que: "Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado, que es el mismo que ejecuta el programa.",
     aporta: "Mide el volumen de intervención normativa, no la importancia ni la efectividad de cada cambio: un artículo menor cuenta igual que uno que transforma un régimen completo. Tampoco cuenta actos administrativos firmados. La diferencia importa: un decreto que reescribe quinientos artículos y una resolución que toca uno pesan igual si se cuentan normas, y muy distinto si se cuentan artículos. Lo que el recuento no distingue es si lo derogado dejó de regir: un artículo que la Justicia repuso suma igual que uno vigente, de modo que el indicador mide el acto de desregular y no su efecto. Muestra además la forma del programa en el tiempo, que es muy desigual: un arranque acotado, un salto marcado a partir de la Ley Bases y la creación del ministerio, y una aceleración durante 2026. La tarjeta publica también las otras dos cifras del mismo informe: cuántas normas de desregulación se dictaron y cuántas normas anteriores alcanzaron.",
     frecuencia: "Mensual", tipo: "Conteo acumulado oficial",
   },
@@ -433,13 +433,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Nivel (%)",
   },
   credito_privado: {
-    que: "Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el índice de precios al consumidor).",
-    aporta: "Es el crédito realizado — complementa a la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto.",
-    frecuencia: "Diaria (Banco Central)", tipo: "Variación real",
+    que: "Cuánto crecen los préstamos en pesos al sector privado en términos reales (contra un año atrás, descontada la inflación).",
+    aporta: "Es el crédito que efectivamente se dio y complementa a la capacidad prestable: si los bancos tienen margen pero el crédito real no crece, el financiamiento no está llegando a la economía.",
+    frecuencia: "Mensual", tipo: "Variación real",
   },
   resultado_primario: {
     que: "Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda, acumulado en doce meses y medido como porcentaje de lo que recauda.",
-    aporta: "Es el resultado fiscal, no los ingresos. La recaudación puede caer porque la actividad afloja o porque se bajaron impuestos a propósito, y en ninguno de los dos casos eso dice si las cuentas cierran. Este indicador responde esa pregunta directamente: de cada cien pesos recaudados, cuántos quedan.",
+    aporta: "Es el resultado fiscal, no los ingresos. La recaudación puede caer porque la actividad afloja o porque se bajaron impuestos a propósito, y en ninguno de los dos casos eso dice si las cuentas cierran. Este indicador responde esa pregunta directamente: de cada cien pesos recaudados, cuántos quedan. Se mide sobre la recaudación y no sobre el producto porque es un dato mensual que no espera al PBI; como referencia, un 6 % de la recaudación equivale aproximadamente a 1,5 % del PBI. No incluye los intereses: el resultado con intereses (financiero) puede ser menor.",
     frecuencia: "Mensual", tipo: "Resultado fiscal",
   },
   costo_financiamiento_tesoro: {
@@ -448,8 +448,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (licitaciones)", tipo: "Tasa real",
   },
   gasto_funcionamiento: {
-    que: "Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023.",
-    aporta: "La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal.",
+    que: "Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de funcionamiento— contra el mismo mes de 2023.",
+    aporta: "La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal. Incluye las remuneraciones. Un puntaje de 100 quiere decir que alcanzó la referencia fijada, no que la reforma del Estado esté terminada.",
     frecuencia: "Mensual", tipo: "Variación real",
   },
   masa_salarial: {
@@ -464,7 +464,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   fal_modernizacion_laboral: {
     que: "Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).",
-    aporta: "Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de diciembre de 2026; el cálculo reserva esa etapa hasta entonces, y ese día el avance pasa de 50 a 70 y el puntaje de 55 a 74 sin que cambie nada más. El avance (0–100) y el puntaje para el índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de la ficha. Las ofertas de los bancos todavía no cuentan como adopción: son anuncios y cartas de intención de fondos que no funcionan hasta que el régimen rija. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.",
+    aporta: "Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de diciembre de 2026 (la fijó el Decreto 1228/2026, que corrió la del reglamentario 408/2026); el cálculo reserva esa etapa hasta entonces, y ese día el avance pasa de 50 a 70 y el puntaje de 55 a 74 sin que cambie nada más. El avance (0–100) y el puntaje para el índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de la ficha. Las ofertas de los bancos todavía no cuentan como adopción: son anuncios y cartas de intención de fondos que no funcionan hasta que el régimen rija. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.",
     frecuencia: "Mensual", tipo: "Reforma vigente (0–100)",
   },
   libertad_opcion_salud: {
@@ -473,8 +473,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (~2 meses de rezago)", tipo: "Avance de reforma",
   },
   protocolo_antipiquetes: {
-    que: "En qué porcentaje se redujo el número de cortes por manifestación relevados en CABA respecto de una base estimada para 2023.",
-    aporta: "Describe la evolución de los cortes registrados por Diagnóstico Político. Mide resultados observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.",
+    que: "En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de una base estimada para 2023.",
+    aporta: "Describe la evolución de los cortes registrados por Diagnóstico Político; el último dato es el del año 2025. El protocolo está vigente: un juez lo anuló en diciembre de 2025 y la Cámara en lo Contencioso Administrativo Federal revocó esa nulidad. Mide resultados observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.",
     frecuencia: "Anual", tipo: "Variación vs. base 2023",
   },
   litigiosidad_laboral: {
@@ -509,11 +509,11 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   actividad: "Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.",
   competitividad_externa: "Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene: el tipo de cambio real multilateral oficial del Banco Central cruzado con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación).",
   // ITCG
-  reformas_economicas: "El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.",
+  reformas_economicas: "El corazón de la promesa económica: la normalización cambiaria, vista en la brecha entre el dólar financiero y el oficial; la carga de impuestos sobre el comercio exterior, y la desregulación normativa.",
   reforma_estado: "El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario. El puntaje máximo refleja el cumplimiento de las referencias fijadas para esas dos variables; no implica que se haya completado la reforma y transformación del Estado. La de dotación es la meta de recortar otro 10% de la planta en 2026, que informó la prensa citando fuentes oficiales (el Gobierno no publicó un número); la de gasto de funcionamiento es una referencia propia, porque no hay meta oficial con la que compararlo.",
   reforma_laboral: "Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una: los del sistema de riesgos del trabajo en todo el país y todos los que se inician en la Justicia Nacional del Trabajo de la Capital. Esos litigios describen la conflictividad laboral: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.",
   privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.",
-  social_orden: "Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.",
+  social_orden: "Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes a prepagas. La caída de cortes no identifica por sí sola el efecto del protocolo.",
   // ITCIS
   ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.",
   precios: "Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.",

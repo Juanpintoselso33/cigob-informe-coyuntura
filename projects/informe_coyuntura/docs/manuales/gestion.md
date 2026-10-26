@@ -26,7 +26,7 @@ Suma de pesos: 100%.
 
 ### Dimensión `reformas_economicas` (35%)
 
-#### Brecha cambiaria (cepo)
+#### Brecha cambiaria
 
 `cepo_mulc`
 
@@ -40,7 +40,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista · [ADR-0280](../adr/0280-la-brecha-conserva-la-fecha-de-cotizacion.md) La brecha conserva la fecha de cotización · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
-#### Apertura comercial (alícuota)
+#### Impuestos sobre el comercio exterior
 
 `apertura_comercial`
 
@@ -70,7 +70,7 @@ Suma de pesos: 100%.
 
 ### Dimensión `reforma_estado` (25%)
 
-#### Dotación del Estado (APN)
+#### Empleados de la administración nacional
 
 `reduccion_estado`
 
@@ -136,7 +136,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 25% |
 | Peso efectivo en el índice | **3.8%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `convencion` — toma la escala de litigiosidad_laboral, que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365) |
 
 **Bandas**: ≤ -15 → 100 · -15–-5 → 85 · -5–5 → 65 · 5–20 → 40 · > 20 → 10
 
@@ -158,7 +158,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0101](../adr/0101-privatizaciones-publica-la-norma-de-cada-etapa.md) Privatizaciones publica la norma que respalda cada etapa · [ADR-0129](../adr/0129-detector-de-novedades-de-privatizaciones.md) Privatizaciones: se automatiza la detección, no la clasificación · [ADR-0277](../adr/0277-novedades-verifican-empresa-y-reintentan-textos-vacios.md) El detector verifica la empresa y reintenta lecturas vacías
 
-#### Inversiones RIGI aprobadas
+#### Grandes inversiones aprobadas
 
 `rigi_inversiones`
 
@@ -202,7 +202,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0100](../adr/0100-promesa-cumplida-no-es-contexto.md) Una promesa cumplida no es un indicador de contexto · [ADR-0189](../adr/0189-si-no-puntua-no-se-muestra.md) Si no puntúa no se muestra, y una promesa cumplida sí puntúa · [ADR-0296](../adr/0296-tdps-distingue-devengado-de-pago.md) TDPS distingue devengado de pago · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0362](../adr/0362-planes-sin-intermediarios-mide-el-cese-de-las-unidades-de-gestion.md) «Planes sin intermediarios» mide el cese de las unidades de gestión
 
-#### Orden público (piquetes)
+#### Cortes de calle por protestas en la Ciudad
 
 `protocolo_antipiquetes`
 

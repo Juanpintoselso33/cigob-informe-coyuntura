@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-26 14:47:15"
+generado: "2026-10-26 17:48:16"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -117,7 +117,7 @@ schema_version: "1.2.0"
 
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
-| masa_salarial | -32.65 | % de variación real vs 2023-08 (SPN remuneraciones) | 2026-08-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. La card se sigue publicando con su valor mensual — lo que se retira es el puntaje, no el dato. |
+| masa_salarial | -32.65 | % de variación real vs 2023-08 (SPN remuneraciones) | 2026-08-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. El dato se sigue relevando cada mes, pero no puntúa ni se publica como tarjeta. |
 | reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-10-26 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 
 ## Advertencias
@@ -125,4 +125,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-10-26 14:47:15 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-26 17:48:16 — schema 1.2.0*

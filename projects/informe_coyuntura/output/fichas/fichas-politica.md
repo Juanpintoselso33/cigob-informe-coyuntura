@@ -62,17 +62,17 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Ratio DNU / leyes | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,09 DNUs publicados por ley publicada | AMARILLO | 5,2 % |
+| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,09 DNUs publicados por ley publicada | AMARILLO | 5,2 % |
 | Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 6,8 % |
 | Sesiones caídas por falta de quórum | Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum… | 0 % de sesiones | VERDE | 3,4 % |
 | Normas desafiadas en el recinto | Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses. | 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | VERDE | 3,4 % |
 | Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. | 31 leyes sancionadas (12m) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
 | Armonía federal (transferencias) | Cuánto varían, en términos reales, los recursos de origen nacional que la Nación giró a las jurisdicciones durante los… | −0,6 % interanual real | VERDE | 8,2 % |
-| Adhesión provincial al RIGI | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 6,1 % |
+| Provincias adheridas al régimen de grandes inversiones | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 6,1 % |
 | Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 56,5 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 6,1 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
-| Cohesión del bloque LLA (bicameral) | Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones divididas de los últimos 90 días de ambas… | 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | VERDE | 16,1 % |
+| Cohesión del bloque oficialista (ambas cámaras) | Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas de los últimos… | 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | VERDE | 16,1 % |
 | **DIMENSIÓN: Poder judicial** | | | | |
 | Tasa de resolución de la Corte | Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los que le ingresan. | 45,4 % de expedientes resueltos sobre ingresados | VERDE | 4,0 % |
 | Actividad de las comisiones de control | Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las… | 14 sesiones de las comisiones de control (12m) | ROJO | 4,0 % |
@@ -94,7 +94,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 
 *Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
 
-# Ratio DNU / leyes
+# Decretos de necesidad y urgencia por ley
 
 Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
 
@@ -150,7 +150,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 1,09 DNUs publicados por ley publicada (2026-10).
 
-1,094 DNUs publicados por ley publicada cae en el tramo que corresponde a Amarillo, a 0,01 del corte más cercano.
+1,094 DNUs publicados por ley publicada está en Amarillo, a 0,01 del límite con Verde (1,08).
 
 **Color vigente: AMARILLO**
 
@@ -171,6 +171,8 @@ Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Los conteos se reconsultan en cada actualización. Las cargas tardías o correcciones del catálogo pueden revisar los valores; la consulta automática no garantiza detectar errores de rótulo ni omisiones del filtro textual.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — El rótulo pasa a «Decretos de necesidad y urgencia por ley», sin siglas. No cambia el cálculo.
 
 **2026-09-08** — Se corrige el día adicional que introducían los extremos inclusivos. Se contrastan el inventario completo de decretos y los originales; se retiran garantías de actualización y detección que la fuente no asegura.
 
@@ -252,7 +254,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −1,9 pp de brecha (obra pública − privada, 12m) (2026-09).
 
-−1,9 pp de brecha (obra pública − privada, 12m) cae en el tramo que corresponde a Verde, a 5,1 del corte más cercano.
+−1,9 pp de brecha (obra pública − privada, 12m) está en Verde, a 5,1 del límite con Amarillo (−7,0).
 
 **Color vigente: VERDE**
 
@@ -348,7 +350,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −0,4 saldo de postura (−1 a +1, 12m móviles) (2026-10).
 
-−0,4 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,0 del corte más cercano.
+−0,4 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,0 del límite con Amarillo (−0,4).
 
 **Color vigente: AMARILLO**
 
@@ -452,7 +454,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −27,2 % vs 2023 (2026-09).
 
-−27,2 % vs 2023 cae en el tramo que corresponde a Verde, a 1,1 del corte más cercano.
+−27,2 % vs 2023 está en Verde, a 1,1 del límite con Amarillo (−26,1).
 
 **Color vigente: VERDE**
 
@@ -543,7 +545,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 4.820.775 jornadas individuales no trabajadas (12m) (2026-07).
 
-4820775 jornadas individuales no trabajadas (12m) cae en el tramo que corresponde a Verde, a 2779225,0 del corte más cercano.
+4820775 jornadas individuales no trabajadas (12m) está en Verde, a 2779225,0 del límite con Amarillo (7600000,0).
 
 **Color vigente: VERDE**
 
@@ -633,7 +635,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −0,6 % interanual real (2026-09).
 
-−0,6 % interanual real cae en el tramo que corresponde a Verde, a 6,4 del corte más cercano.
+−0,6 % interanual real está en Verde, a 6,4 del límite con Amarillo (−7,0).
 
 **Color vigente: VERDE**
 
@@ -738,7 +740,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 27,3 % de proyectos (2026-10).
 
-27,3 % de proyectos cae en el tramo que corresponde a Verde, a 7,3 del corte más cercano.
+27,3 % de proyectos está en Verde, a 7,3 del límite con Amarillo (20,0).
 
 **Color vigente: VERDE**
 
@@ -842,7 +844,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 0 % de sesiones (2026-10).
 
-0,0 % de sesiones cae en el tramo que corresponde a Verde, a 17,0 del corte más cercano.
+0,0 % de sesiones está en Verde, a 17,0 del límite con Amarillo (17,0).
 
 **Color vigente: VERDE**
 
@@ -884,7 +886,7 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
 
-# Adhesión provincial al RIGI
+# Provincias adheridas al régimen de grandes inversiones
 
 Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI), sobre el total.
 
@@ -939,7 +941,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 75 % de jurisdicciones (sobre 24) adheridas al RIGI (2026-10).
 
-75,0 % de jurisdicciones (sobre 24) adheridas al RIGI cae en el tramo que corresponde a Verde, a 29,0 del corte más cercano.
+75,0 % de jurisdicciones (sobre 24) adheridas al RIGI está en Verde, a 29,0 del límite con Amarillo (46,0).
 
 **Color vigente: VERDE**
 
@@ -959,6 +961,8 @@ Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-26** — El rótulo pasa a «Provincias adheridas al régimen de grandes inversiones»: mide sólo esa adhesión. No cambia el cálculo.
+
 **2026-09-08** — Se incorporan Santa Fe y CABA, omitidas por el catálogo nacional, en tarjeta e historia; se retiran las afirmaciones de actualización inmediata e irreversibilidad jurídica.
 
 **2026-07-07** — Alta como indicador de la dimensión de alianzas territoriales: mide adhesión fiscal al RIGI, distinta del alineamiento político general que ya capta el indicador de gobernadores.
@@ -973,9 +977,9 @@ Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
 
-# Cohesión del bloque LLA (bicameral)
+# Cohesión del bloque oficialista (ambas cámaras)
 
-Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones divididas de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene actas divididas en la ventana, el peso pasa a la otra.
+Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene actas divididas en la ventana, el peso pasa a la otra.
 
 | | | | |
 |---|---|---|---|
@@ -993,7 +997,7 @@ Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones d
 
 ## Definición — qué mide y por qué importa
 
-Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones divididas de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene actas divididas en la ventana, el peso pasa a la otra.
+Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene actas divididas en la ventana, el peso pasa a la otra.
 
 Mide la cohesión interna del oficialismo en el Congreso, clave para sostener vetos y aprobar leyes. La composición por cámara se publica en el detalle.
 
@@ -1028,7 +1032,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) (2026-09).
 
-100,0 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) cae en el tramo que corresponde a Verde, a 2,4 del corte más cercano.
+100,0 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) está en Verde, a 2,4 del límite con Amarillo (97,6).
 
 **Color vigente: VERDE**
 
@@ -1049,6 +1053,8 @@ Ponderación vigente en el ITCP: 16,1 % efectivo. El color es una lectura adicio
 - **Política de revisiones:** Cuando las fuentes responden, se recalcula el promedio de los últimos 90 días. Ante fallos o receso sin actas se aplica la conservación del último promedio descrita en faltantes. El detalle muestra la fecha de última acta y la condición de caché de cada cámara; la fecha más reciente del compuesto no acredita actualización de ambas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — El rótulo pasa a «Cohesión del bloque oficialista (ambas cámaras)», sin siglas. No cambia el cálculo.
 
 **2026-09-08** — Senado: una descarga fallida o una página sin votos invalida la lectura completa, en la tarjeta y en la reconstrucción anual. La tarjeta excluye actas posteriores al corte; no se publica un promedio parcial como actualización exitosa.
 
@@ -1126,7 +1132,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses (2026-10).
 
-0,0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses cae en el tramo que corresponde a Verde, a 7,7 del corte más cercano.
+0,0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses está en Verde, a 7,7 del límite con Amarillo (7,7).
 
 **Color vigente: VERDE**
 
@@ -1162,7 +1168,7 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 
 # Producción legislativa del Congreso
 
-Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto.
+Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta la sanción; el cociente de decretos por ley cuenta la publicación en el Boletín Oficial, que es otro momento del trámite, así que los dos números de leyes no coinciden.
 
 | | | | |
 |---|---|---|---|
@@ -1180,7 +1186,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir 
 
 ## Definición — qué mide y por qué importa
 
-Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto.
+Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta la sanción; el cociente de decretos por ley cuenta la publicación en el Boletín Oficial, que es otro momento del trámite, así que los dos números de leyes no coinciden.
 
 Describe el volumen total de leyes sancionadas, sin equipararlo a victorias del Ejecutivo. Complementa la eficacia de su agenda y las votaciones que desafían sus normas; ni el origen ni el contenido de cada ley se deducen del total.
 
@@ -1214,7 +1220,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 31 leyes sancionadas (12m) (2026-09).
 
-31 leyes sancionadas (12m) cae en el tramo que corresponde a Amarillo, a 3,5 del corte más cercano.
+31 leyes sancionadas (12m) está en Amarillo, a 3,5 del límite con Naranja (27,5).
 
 **Color vigente: AMARILLO**
 
@@ -1270,7 +1276,7 @@ Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los 
 
 Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los que le ingresan.
 
-Compara las salidas y entradas anuales de casos: por encima de cien se resuelven más casos de los que ingresan; por debajo, menos. No mide el tiempo que tarda una causa ni si las decisiones favorecen al Gobierno. Su signo en el índice expresa una hipótesis sobre fricción judicial, no una consecuencia demostrada por estos datos.
+Compara las salidas y entradas anuales de casos: por encima de cien se resuelven más casos de los que ingresan; por debajo, menos. No mide el tiempo que tarda una causa ni si las decisiones favorecen al Gobierno. En el índice, una Corte que resuelve menos de lo que le entra suma puntos para el Gobierno: el índice político mide capacidad de gobernar sin fricción, no la salud de la Justicia. Ese signo es una hipótesis sobre fricción judicial, no una consecuencia demostrada por estos datos.
 
 **Dimensión que integra — Poder judicial.** Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. No mide juras certificadas, duración de causas ni resultados favorables al Gobierno. Las menciones cautelares del Sistema Argentino de Información Jurídica permanecen fuera del índice porque ese corpus no identifica litigios contra la agenda del Ejecutivo.
 
@@ -1302,7 +1308,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 45,4 % de expedientes resueltos sobre ingresados (2025-12).
 
-45,4 % de expedientes resueltos sobre ingresados cae en el tramo que corresponde a Verde, a 45,6 del corte más cercano.
+45,4 % de expedientes resueltos sobre ingresados está en Verde, a 45,6 del límite con Amarillo (91,0).
 
 **Color vigente: VERDE**
 
@@ -1357,7 +1363,7 @@ Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Cons
 
 Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces: Acusación y Disciplina.
 
-Describe la frecuencia de reuniones de Acusación y Disciplina. No informa cuántas denuncias se resolvieron, el sentido de las decisiones ni si hubo sanciones. La ausencia de una nota publicada tampoco certifica que una comisión no se haya reunido.
+Describe la frecuencia de reuniones de Acusación y Disciplina. No informa cuántas denuncias se resolvieron, el sentido de las decisiones ni si hubo sanciones. La ausencia de una nota publicada tampoco certifica que una comisión no se haya reunido. En el índice, más sesiones restan puntos: se leen como más actividad de control sobre los jueces y, con ella, más fricción entre los poderes.
 
 **Dimensión que integra — Poder judicial.** Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. No mide juras certificadas, duración de causas ni resultados favorables al Gobierno. Las menciones cautelares del Sistema Argentino de Información Jurídica permanecen fuera del índice porque ese corpus no identifica litigios contra la agenda del Ejecutivo.
 
@@ -1390,7 +1396,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 14 sesiones de las comisiones de control (12m) (2026-10).
 
-14 sesiones de las comisiones de control (12m) cae en el tramo que corresponde a Rojo, a 5,5 del corte más cercano.
+14 sesiones de las comisiones de control (12m) está en Rojo, a 5,5 del límite con Naranja (8,5).
 
 **Color vigente: ROJO**
 
@@ -1482,7 +1488,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 73,82 % estimado de cargos con juez designado (2026-10).
 
-73,82 % estimado de cargos con juez designado cae en el tramo que corresponde a Verde, a 0,82 del corte más cercano.
+73,82 % estimado de cargos con juez designado está en Verde, a 0,82 del límite con Amarillo (73,0).
 
 **Color vigente: VERDE**
 
@@ -1575,7 +1581,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 56,5 % votos de senadores no-LLA alineados con LLA, por provincia (2026-09).
 
-56,5 % votos de senadores no-LLA alineados con LLA, por provincia cae en el tramo que corresponde a Verde, a 3,5 del corte más cercano.
+56,5 % votos de senadores no-LLA alineados con LLA, por provincia está en Verde, a 3,5 del límite con Amarillo (53,0).
 
 **Color vigente: VERDE**
 

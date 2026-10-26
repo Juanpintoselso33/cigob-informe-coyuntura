@@ -42,11 +42,11 @@ Componentes que puntúan en este corte: 14 de 14 publicados.
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 67,6 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica. | 67,6 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 91,2 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una. | 53,8 | AMARILLO | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 76,6 | VERDE | 15,0 % |
-| Reforma social y orden | Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes… | 90,6 | VERDE | 10,0 % |
+| Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes… | 90,6 | VERDE | 10,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -61,23 +61,23 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 8,87 % de brecha CCL/mayorista | VERDE | 14,0 % |
-| Apertura comercial (alícuota) | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
+| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 8,87 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Impuestos sobre el comercio exterior | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
-| Dotación del Estado (APN) | Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del… | −21,37 % de variación vs dic-2023 (dotación APN) | VERDE | 14,6 % |
-| Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023. | −35,92 % de variación real vs 2023-08 (gastos de funcionamiento) | VERDE | 10,4 % |
+| Empleados de la administración nacional | Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del… | −21,37 % de variación vs dic-2023 (dotación APN) | VERDE | 14,6 % |
+| Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de… | −35,92 % de variación real vs 2023-08 (gastos de funcionamiento) | VERDE | 10,4 % |
 | **DIMENSIÓN: Reforma laboral** | | | | |
 | Fondo de Asistencia Laboral | Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el… | 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | AMARILLO | 7,5 % |
 | Juicios por riesgos del trabajo (SRT) | Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del… | 0,1 % variación juicios SRT (12m vs 12m previos) | VERDE | 3,8 % |
 | Juicios en la Justicia del Trabajo (Capital) | Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital. | 12,4 % variación juicios entrados (12m vs 12m previos) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
 | Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 55,6 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
-| Inversiones RIGI aprobadas | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 33,3 % de inversión aprobada sobre el pipeline | VERDE | 6,0 % |
+| Grandes inversiones aprobadas | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 33,3 % de inversión aprobada sobre el pipeline | VERDE | 6,0 % |
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
 | Planes sin intermediarios | Si los planes sociales siguen pasando por intermediarios. | 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | VERDE | 4,0 % |
-| Orden público (piquetes) | En qué porcentaje se redujo el número de cortes por manifestación relevados en CABA respecto de una base estimada para… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
+| Cortes de calle por protestas en la Ciudad | En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
 | Libertad de opción en salud | Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como… | 32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) | AMARILLO | 2,0 % |
 
 *Datos al 2026-10-26.*
@@ -90,7 +90,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Brecha cambiaria (cepo)
+# Brecha cambiaria
 
 Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria.
 
@@ -112,9 +112,9 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria.
 
-Mide el grado de normalización cambiaria, uno de los ejes del programa económico.
+Es una señal del resultado de la normalización cambiaria, no del desarme del cepo en sí: la brecha puede ser baja con restricciones vigentes y moverse por tasas o elecciones sin que cambie ninguna norma. Las cotizaciones salen de dolarapi.com, un servicio privado que replica las del mercado; el mayorista es el de referencia del Banco Central.
 
-**Dimensión que integra — Reformas económicas fundamentales.** El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.
+**Dimensión que integra — Reformas económicas fundamentales.** El corazón de la promesa económica: la normalización cambiaria, vista en la brecha entre el dólar financiero y el oficial; la carga de impuestos sobre el comercio exterior, y la desregulación normativa.
 
 ## Método de cómputo
 
@@ -145,7 +145,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 8,87 % de brecha CCL/mayorista (2026-10).
 
-8,87 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 5,13 del corte más cercano.
+8,87 % de brecha CCL/mayorista está en Verde, a 5,13 del límite con Amarillo (14,0).
 
 **Color vigente: VERDE**
 
@@ -165,6 +165,8 @@ Ponderación vigente en el ITCG: 14 % efectivo. El color es una lectura adiciona
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-26** — El rótulo pasa a «Brecha cambiaria», sin «cepo»: mide un precio, no el desarme de las restricciones. La descripción declara que las cotizaciones salen de un servicio privado (dolarapi.com). No cambia el cálculo.
+
 **2026-05** — Versión inicial del indicador sobre la brecha CCL/oficial minorista, en la escala de avance del cinturón anterior.
 
 **2026-09-08** — La fecha proviene de la cotización más antigua, no del día de consulta. Se conservan precios y marcas de tiempo; fechas ausentes o inválidas y precios no positivos o no finitos provocan fallback al cache existente.
@@ -183,7 +185,7 @@ Ponderación vigente en el ITCG: 14 % efectivo. El color es una lectura adiciona
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Apertura comercial (alícuota)
+# Impuestos sobre el comercio exterior
 
 La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y Control Aduanero, por cada dólar de intercambio (exportaciones más importaciones, según el Intercambio Comercial Argentino que publica el Instituto Nacional de Estadística y Censos). Es una aproximación a la carga tributaria efectiva; también depende de la composición del comercio y de los momentos de pago.
 
@@ -207,7 +209,7 @@ La recaudación de derechos de importación, exportación y tasa de estadística
 
 Aproxima la carga tributaria sobre el intercambio. Una baja del cociente puede acompañar una reducción de impuestos, pero también responder a cambios en la composición o valoración del comercio y en los pagos. No identifica por sí sola el desmantelamiento de barreras comerciales. La brecha cambiaria se mide aparte.
 
-**Dimensión que integra — Reformas económicas fundamentales.** El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.
+**Dimensión que integra — Reformas económicas fundamentales.** El corazón de la promesa económica: la normalización cambiaria, vista en la brecha entre el dólar financiero y el oficial; la carga de impuestos sobre el comercio exterior, y la desregulación normativa.
 
 ## Método de cómputo
 
@@ -237,7 +239,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 7,16 % del intercambio (alícuota efectiva) (2026-09).
 
-7,16 % del intercambio (alícuota efectiva) cae en el tramo que corresponde a Amarillo, a 1,16 del corte más cercano.
+7,16 % del intercambio (alícuota efectiva) está en Amarillo, a 1,16 del límite con Verde (6,0).
 
 **Color vigente: AMARILLO**
 
@@ -257,6 +259,8 @@ Ponderación vigente en el ITCG: 14 % efectivo. El color es una lectura adiciona
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-26** — El rótulo pasa a «Impuestos sobre el comercio exterior», que es lo que mide: la recaudación aduanera por dólar de intercambio. No cambia el cálculo.
+
 **2026-09-08** — Tarjeta e historia comparten el ICA original vigente y el mismo cálculo; se explicita la tasa de estadística incluida en la serie de importación y el alcance de las anclas.
 
 **2026-05** — Versión inicial como variación interanual de importaciones (aproximación de apertura).
@@ -275,7 +279,7 @@ Ponderación vigente en el ITCG: 14 % efectivo. El color es una lectura adiciona
 
 # Desregulación normativa
 
-Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado.
+Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado, que es el mismo que ejecuta el programa.
 
 | | | | |
 |---|---|---|---|
@@ -293,11 +297,11 @@ Cuántos artículos de normas quedaron modificados o eliminados por el programa 
 
 ## Definición — qué mide y por qué importa
 
-Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado.
+Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado, que es el mismo que ejecuta el programa.
 
 Mide el volumen de intervención normativa, no la importancia ni la efectividad de cada cambio: un artículo menor cuenta igual que uno que transforma un régimen completo. Tampoco cuenta actos administrativos firmados. La diferencia importa: un decreto que reescribe quinientos artículos y una resolución que toca uno pesan igual si se cuentan normas, y muy distinto si se cuentan artículos. Lo que el recuento no distingue es si lo derogado dejó de regir: un artículo que la Justicia repuso suma igual que uno vigente, de modo que el indicador mide el acto de desregular y no su efecto. Muestra además la forma del programa en el tiempo, que es muy desigual: un arranque acotado, un salto marcado a partir de la Ley Bases y la creación del ministerio, y una aceleración durante 2026. La tarjeta publica también las otras dos cifras del mismo informe: cuántas normas de desregulación se dictaron y cuántas normas anteriores alcanzaron.
 
-**Dimensión que integra — Reformas económicas fundamentales.** El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.
+**Dimensión que integra — Reformas económicas fundamentales.** El corazón de la promesa económica: la normalización cambiaria, vista en la brecha entre el dólar financiero y el oficial; la carga de impuestos sobre el comercio exterior, y la desregulación normativa.
 
 ## Método de cómputo
 
@@ -330,7 +334,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 (2026-09).
 
-17606,0 artículos de normas modificados o eliminados, acumulados desde dic-2023 cae en el tramo que corresponde a Verde, a 6606,0 del corte más cercano.
+17606,0 artículos de normas modificados o eliminados, acumulados desde dic-2023 está en Verde, a 6606,0 del límite con Amarillo (11000,0).
 
 **Color vigente: VERDE**
 
@@ -385,7 +389,7 @@ Ponderación vigente en el ITCG: 7 % efectivo. El color es una lectura adicional
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Dotación del Estado (APN)
+# Empleados de la administración nacional
 
 Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del mandato), según la serie mensual oficial del Instituto Nacional de Estadística y Censos (INDEC).
 
@@ -441,7 +445,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −21,37 % de variación vs dic-2023 (dotación APN) (2026-08).
 
-−21,37 % de variación vs dic-2023 (dotación APN) cae en el tramo que corresponde a Verde, a 10,23 del corte más cercano.
+−21,37 % de variación vs dic-2023 (dotación APN) está en Verde, a 10,23 del límite con Amarillo (−11,14).
 
 **Color vigente: VERDE**
 
@@ -463,6 +467,8 @@ Ponderación vigente en el ITCG: 14,6 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-26** — El rótulo pasa a «Empleados de la administración nacional» y la unidad dice la base: «% vs. diciembre de 2023». No cambia el cálculo.
+
 **2026-05** — Versión inicial sobre la serie previsional trimestral, con meta de largo plazo.
 
 **2026-07-02** — Pasa a la planilla mensual de dotación APN contra diciembre de 2023, con umbrales del índice de gestión.
@@ -483,7 +489,7 @@ Ponderación vigente en el ITCG: 14,6 % efectivo. El color es una lectura adicio
 
 # Gasto de funcionamiento
 
-Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023.
+Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de funcionamiento— contra el mismo mes de 2023.
 
 | | | | |
 |---|---|---|---|
@@ -501,9 +507,9 @@ Cuánto varía en términos reales el gasto de funcionamiento del Estado naciona
 
 ## Definición — qué mide y por qué importa
 
-Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023.
+Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de funcionamiento— contra el mismo mes de 2023.
 
-La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal.
+La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal. Incluye las remuneraciones. Un puntaje de 100 quiere decir que alcanzó la referencia fijada, no que la reforma del Estado esté terminada.
 
 **Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario. El puntaje máximo refleja el cumplimiento de las referencias fijadas para esas dos variables; no implica que se haya completado la reforma y transformación del Estado. La de dotación es la meta de recortar otro 10% de la planta en 2026, que informó la prensa citando fuentes oficiales (el Gobierno no publicó un número); la de gasto de funcionamiento es una referencia propia, porque no hay meta oficial con la que compararlo.
 
@@ -535,7 +541,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −35,92 % de variación real vs 2023-08 (gastos de funcionamiento) (2026-08).
 
-−35,92 % de variación real vs 2023-08 (gastos de funcionamiento) cae en el tramo que corresponde a Verde, a 27,42 del corte más cercano.
+−35,92 % de variación real vs 2023-08 (gastos de funcionamiento) está en Verde, a 27,42 del límite con Amarillo (−8,5).
 
 **Color vigente: VERDE**
 
@@ -592,7 +598,7 @@ Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo 
 
 Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Se compone de tres etapas: que los dos actos que lo ponen en pie estén dictados y no suspendidos, la Ley 27.802 y el Decreto 408/2026 (la mitad del indicador); que el régimen haya entrado en vigencia (un quinto); y que exista al menos un fondo inscripto en la Comisión Nacional de Valores (el resto).
 
-Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de diciembre de 2026; el cálculo reserva esa etapa hasta entonces, y ese día el avance pasa de 50 a 70 y el puntaje de 55 a 74 sin que cambie nada más. El avance (0–100) y el puntaje para el índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de la ficha. Las ofertas de los bancos todavía no cuentan como adopción: son anuncios y cartas de intención de fondos que no funcionan hasta que el régimen rija. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.
+Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de diciembre de 2026 (la fijó el Decreto 1228/2026, que corrió la del reglamentario 408/2026); el cálculo reserva esa etapa hasta entonces, y ese día el avance pasa de 50 a 70 y el puntaje de 55 a 74 sin que cambie nada más. El avance (0–100) y el puntaje para el índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de la ficha. Las ofertas de los bancos todavía no cuentan como adopción: son anuncios y cartas de intención de fondos que no funcionan hasta que el régimen rija. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.
 
 **Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una: los del sistema de riesgos del trabajo en todo el país y todos los que se inician en la Justicia Nacional del Trabajo de la Capital. Esos litigios describen la conflictividad laboral: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.
 
@@ -627,7 +633,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) (2026-10).
 
-50,0 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) cae en el tramo que corresponde a Amarillo, a 5,25 del corte más cercano.
+50,0 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) está en Amarillo, a 5,25 del límite con Verde (55,25).
 
 **Color vigente: AMARILLO**
 
@@ -735,7 +741,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 0,1 % variación juicios SRT (12m vs 12m previos) (2026-07).
 
-0,1 % variación juicios SRT (12m vs 12m previos) cae en el tramo que corresponde a Verde, a 2,4 del corte más cercano.
+0,1 % variación juicios SRT (12m vs 12m previos) está en Verde, a 2,4 del límite con Amarillo (2,5).
 
 **Color vigente: VERDE**
 
@@ -791,7 +797,7 @@ Cuánto varían los juicios laborales que se inician en la Justicia Nacional del
 | **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | % variación juicios entrados (12m vs 12m previos) |
 | **SERIE DISPONIBLE** | 2024-12 → 2026-10 (23 puntos) | **REZAGO DE PUBLICACIÓN** | Semestral. El primer semestre se publica en el segundo semestre del mismo año; el segundo, hacia mayo del año siguiente (el de 2025 trae «datos actualizados al 20 de mayo de 2026»). |
 | **PRODUCTOR DEL DATO** | Consejo de la Magistratura — Oficina de Estadísticas del Poder Judicial de la Nación | **OPERACIÓN ESTADÍSTICA** | Justicia Nacional del Trabajo: expedientes entrados en primera instancia (80 juzgados nacionales del trabajo), resumen de trámite de expedientes por semestre |
-| **MODO DE ACCESO** | Automático: lectura de los CSV que ofrece el formulario de la Oficina de Estadísticas (Fuero del Trabajo). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-26 |
+| **MODO DE ACCESO** | Automático: lectura de las planillas de datos abiertos que ofrece el formulario de la Oficina de Estadísticas (Fuero del Trabajo). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-26 |
 
 ## Definición — qué mide y por qué importa
 
@@ -830,7 +836,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 12,4 % variación juicios entrados (12m vs 12m previos) (2026-06).
 
-12,4 % variación juicios entrados (12m vs 12m previos) cae en el tramo que corresponde a Amarillo, a 0,1 del corte más cercano.
+12,4 % variación juicios entrados (12m vs 12m previos) está en Amarillo, a 0,1 del límite con Naranja (12,5).
 
 **Color vigente: AMARILLO**
 
@@ -849,7 +855,7 @@ Ponderación vigente en el ITCG: 3,8 % efectivo. El color es una lectura adicion
 
 - **Si falta el dato:** Con la fuente caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.
 
-- **Política de revisiones:** La Oficina puede corregir semestres ya publicados; todos los CSV se releen en cada actualización.
+- **Política de revisiones:** La Oficina puede corregir semestres ya publicados; todas las planillas se releen en cada actualización.
 
 ## Historial — cambios metodológicos documentados
 
@@ -917,7 +923,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 55,6 % de avance (etapas 0-4, cartera Ley Bases) (2026-09).
 
-55,6 % de avance (etapas 0-4, cartera Ley Bases) cae en el tramo que corresponde a Verde, a 14,6 del corte más cercano.
+55,6 % de avance (etapas 0-4, cartera Ley Bases) está en Verde, a 14,6 del límite con Amarillo (41,0).
 
 **Color vigente: VERDE**
 
@@ -955,7 +961,7 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Inversiones RIGI aprobadas
+# Grandes inversiones aprobadas
 
 Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total de la cartera (aprobados + en evaluación).
 
@@ -977,7 +983,7 @@ Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) 
 
 Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total de la cartera (aprobados + en evaluación).
 
-Mide decisiones administrativas de aprobación, con la plataforma oficial del Ministerio de Economía: no cuánto se invirtió efectivamente ni cuánto avanzaron los proyectos, porque no hay una serie pública de inversión ejecutada. La evolución histórica grafica la inversión aprobada acumulada en dólares.
+Mide decisiones administrativas de aprobación, con la plataforma oficial del Ministerio de Economía: no cuánto se invirtió efectivamente ni cuánto avanzaron los proyectos, porque no hay una serie pública de inversión ejecutada. Como el total incluye lo que está en evaluación, el porcentaje baja cuando entran proyectos nuevos aunque no se haya rechazado ninguno. La evolución histórica grafica la inversión aprobada acumulada en dólares.
 
 **Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
@@ -1010,7 +1016,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 33,3 % de inversión aprobada sobre el pipeline (2026-10).
 
-33,3 % de inversión aprobada sobre el pipeline cae en el tramo que corresponde a Verde, a 3,8 del corte más cercano.
+33,3 % de inversión aprobada sobre el pipeline está en Verde, a 3,8 del límite con Amarillo (29,5).
 
 **Color vigente: VERDE**
 
@@ -1029,6 +1035,8 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** La plataforma se actualiza sin registro de cambios; las fechas de aprobación quedan fijadas con su norma.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — El rótulo pasa a «Grandes inversiones aprobadas», sin sigla, y la descripción aclara que el porcentaje baja cuando entran proyectos nuevos en evaluación. No cambia el cálculo.
 
 **2026-05** — Versión inicial por conteo de resoluciones (aproximación).
 
@@ -1100,7 +1108,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-10).
 
-100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) cae en el tramo que corresponde a Verde, a 59,0 del corte más cercano.
+100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) está en Verde, a 59,0 del límite con Amarillo (41,0).
 
 **Color vigente: VERDE**
 
@@ -1170,7 +1178,7 @@ Si los planes sociales siguen pasando por intermediarios: vale 100 desde que la 
 
 Mide lo que el compromiso prometía cambiar. La intermediación no estaba en la clasificación del gasto —en 2023 el 98,3% del devengado ya figuraba como ayudas a personas—, sino en las unidades de gestión: municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista. Es un acto, no un resultado: no acredita cómo se paga cada prestación ni que no quede intermediación informal.
 
-**Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes a prepagas. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 
@@ -1201,7 +1209,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) (2026-10).
 
-100,0 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) cae en el tramo que corresponde a Verde, a 33,0 del corte más cercano.
+100,0 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) está en Verde, a 33,0 del límite con Amarillo (67,0).
 
 **Color vigente: VERDE**
 
@@ -1242,9 +1250,9 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Orden público (piquetes)
+# Cortes de calle por protestas en la Ciudad
 
-En qué porcentaje se redujo el número de cortes por manifestación relevados en CABA respecto de una base estimada para 2023.
+En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de una base estimada para 2023.
 
 | | | | |
 |---|---|---|---|
@@ -1262,11 +1270,11 @@ En qué porcentaje se redujo el número de cortes por manifestación relevados e
 
 ## Definición — qué mide y por qué importa
 
-En qué porcentaje se redujo el número de cortes por manifestación relevados en CABA respecto de una base estimada para 2023.
+En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de una base estimada para 2023.
 
-Describe la evolución de los cortes registrados por Diagnóstico Político. Mide resultados observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.
+Describe la evolución de los cortes registrados por Diagnóstico Político; el último dato es el del año 2025. El protocolo está vigente: un juez lo anuló en diciembre de 2025 y la Cámara en lo Contencioso Administrativo Federal revocó esa nulidad. Mide resultados observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.
 
-**Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes a prepagas. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 
@@ -1296,7 +1304,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) (2025-12).
 
-74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) cae en el tramo que corresponde a Verde, a 41,7 del corte más cercano.
+74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) está en Verde, a 41,7 del límite con Amarillo (32,5).
 
 **Color vigente: VERDE**
 
@@ -1321,6 +1329,8 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** El registro se actualiza cuando la fuente publica el año nuevo (con aviso automático del detector).
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — El rótulo pasa a «Cortes de calle por protestas en la Ciudad»; la tarjeta dice que el dato es del año 2025 y que el protocolo está vigente (la Cámara revocó la nulidad). No cambia el cálculo.
 
 **2026-05** — Versión inicial como carga manual (55%, la foto 2024).
 
@@ -1364,7 +1374,7 @@ Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados 
 
 Mide la adopción real de la libre elección con los padrones oficiales de la Superintendencia de Servicios de Salud (el Registro Nacional de Agentes del Seguro de Salud y el de entidades de medicina prepaga): antes de la reforma este canal no existía. El total de usuarios de prepagas y el mes del dato se muestran en la tarjeta. No mide cuántos se cambiaron de obra social o de prepaga: esa serie no se publica. Con los padrones por entidad sólo se puede acotar: entre junio de 2025 y junio de 2026, al menos un 5,6% de los beneficiarios de agentes del seguro (sin PAMI) terminó en un agente distinto, una cota que mezcla cambios de agente con altas y bajas por empleo y jubilación.
 
-**Dimensión que integra — Reforma social y orden.** Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes a prepagas. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 
@@ -1393,7 +1403,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) (2026-09).
 
-32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) cae en el tramo que corresponde a Amarillo, a 3,8 del corte más cercano.
+32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) está en Amarillo, a 3,8 del límite con Verde (36,0).
 
 **Color vigente: AMARILLO**
 

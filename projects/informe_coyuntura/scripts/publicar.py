@@ -2314,9 +2314,15 @@ def _por_que(color, valor, unidad, tramos):
     if not bordes:
         return f"{coma(valor)} {unidad}: {color.capitalize()} en todo el rango."
     borde = min(bordes, key=lambda b: abs(valor - b))
-    return (f"{coma(valor)} {unidad} cae en el tramo que corresponde a "
-            f"{color.capitalize()}, a {coma(round(abs(valor - borde), 2))} "
-            f"del corte más cercano.")
+    # Revisión de Luis (26-oct-2026): «a X del corte más cercano» no decía qué
+    # corte ni qué color hay del otro lado, y el lector buscaba el número entre
+    # las anclas del puntaje, que no son los cortes de color.
+    vecino = next((t for t in tramos if t is not actual
+                   and (t["desde"] == borde or t["hasta"] == borde)), None)
+    otro = (f"del límite con {vecino['color'].capitalize()} ({coma(borde)})"
+            if vecino and vecino["color"] != actual["color"] else f"del corte de {coma(borde)}")
+    return (f"{coma(valor)} {unidad} está en {color.capitalize()}, a "
+            f"{coma(round(abs(valor - borde), 2))} {otro}.")
 
 
 def _semaforo_de(color, tension, umbrales, unidad, valor):

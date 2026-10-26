@@ -363,8 +363,9 @@ INDICADORES_CONTEXTO = ["alertas_manifestacion", "protestas_caba"]
 INDICADORES_CUMPLIDOS = {}
 
 # ── Retirados del índice por decisión editorial, no por techo (ADR-0186) ────
-# Mismo mecanismo que INDICADORES_CUMPLIDOS —la card se sigue mostrando dentro
-# de su dimensión, sólo se retira el puntaje— pero por un motivo distinto: acá
+# Mismo mecanismo que INDICADORES_CUMPLIDOS —se retira el puntaje; desde
+# ADR-0189 la card tampoco se publica, el dato se sigue relevando— pero por un
+# motivo distinto: acá
 # no se llegó a un máximo que agotó el recorrido, se sacó porque la forma de
 # exponer la fuente generó dudas que todavía no están saldadas. Llamarlo
 # "cumplido" sería falso — nada se cumplió — así que es un estado propio.
@@ -395,9 +396,9 @@ INDICADORES_SUSPENDIDOS = {
         "desde_txt": "agosto de 2026",
         "por_que": "CIGOB pidió sacarlo del índice: la forma de exponer estos datos "
                    "genera dudas sobre las afirmaciones que permiten sostener, y no "
-                   "conviene incluirlo hasta tener certeza. La card se sigue "
-                   "publicando con su valor mensual — lo que se retira es el "
-                   "puntaje, no el dato.",
+                   "conviene incluirlo hasta tener certeza. El dato se sigue "
+                   "relevando cada mes, pero no puntúa ni se publica como "
+                   "tarjeta.",
     },
 }
 

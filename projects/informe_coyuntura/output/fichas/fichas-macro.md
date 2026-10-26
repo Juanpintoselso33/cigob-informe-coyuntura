@@ -61,23 +61,23 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCM |
 |---|---|---|---|---|
 | **DIMENSIÓN: Estabilidad monetaria-inflacionaria** | | | | |
-| Inflación mensual (IPC) | Cuánto suben en el mes los precios al consumidor en general. | 1,93 % mensual | VERDE | 15,6 % |
-| Expectativas inflación (REM 12m) | La inflación que el mercado espera para los próximos 12 meses. | 21,1 % anual esperado | VERDE | 5,2 % |
-| Liquidez en pesos y presión compradora de divisas | Una medida de 0 a 100 que cruza dos cosas observables. | 64,01 pts de tensión (0-100) | NARANJA | 5,2 % |
+| Inflación del mes | Cuánto suben en el mes los precios al consumidor en general. | 1,93 % mensual | VERDE | 15,6 % |
+| Inflación esperada a 12 meses | La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del… | 21,1 % anual esperado | VERDE | 5,2 % |
+| Liquidez en pesos y presión compradora de divisas | Mira dos cosas a la vez. | 64,01 pts de tensión (0-100) | NARANJA | 5,2 % |
 | **DIMENSIÓN: Viabilidad fiscal-comercial** | | | | |
-| Saldo comercial 12m | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses. | 26.472 Millones de USD (acum. 12 meses) | VERDE | 4,8 % |
+| Saldo comercial (últimos 12 meses) | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses. | 26.472 Millones de USD (acum. 12 meses) | VERDE | 4,8 % |
 | Base imponible real (nación + provincias) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 94,4 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
 | Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acum. 12 meses) | VERDE | 12,0 % |
 | **DIMENSIÓN: Actividad e inversión** | | | | |
-| Actividad económica (EMAE i.a.) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | −1,44 % i.a. | NARANJA | 8,5 % |
+| Actividad económica (vs. un año atrás) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | −1,44 % i.a. | NARANJA | 8,5 % |
 | Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica… | 46,67 % de sectores en crecimiento i.a. | AMARILLO | 2,8 % |
-| Producción industrial (IPI i.a.) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,04 % i.a. (promedio 3 meses) | NARANJA | 2,8 % |
+| Producción industrial (vs. un año atrás) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,04 % i.a. (promedio 3 meses) | NARANJA | 2,8 % |
 | Actividad tributaria (IVA-DGI + cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la… | 0,86 % i.a. real (compuesto IVA-DGI/cheque) | AMARILLO | 1,9 % |
 | Inversión física | Índice Anticipador de Inversión. | −1,74 % i.a. ponderado | AMARILLO | 6,9 % |
 | **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
-| Reservas netas | Estimación de CiGob de reservas netas. | 10.725 Millones de USD | VERDE | 5,4 % |
-| Capacidad prestable | Índice de Capacidad Prestable. | −0,34 σ vs. su historia | AMARILLO | 3,4 % |
-| Crédito privado real en pesos | Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el… | −1,2 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
+| Reservas netas | Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la… | 10.725 Millones de USD | VERDE | 5,4 % |
+| Capacidad prestable | Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. | −0,34 σ vs. su historia | AMARILLO | 3,4 % |
+| Crédito privado real en pesos | Cuánto crecen los préstamos en pesos al sector privado en términos reales (contra un año atrás, descontada la… | −1,2 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
 | Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 6,22 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
 | **DIMENSIÓN: Competitividad externa** | | | | |
 | Tipo de cambio real y términos del intercambio | Una medida de 0 a 100 que cruza dos datos. | 49,8 puntaje (0-100) | AMARILLO | 11,0 % |
@@ -92,7 +92,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Inflación mensual (IPC)
+# Inflación del mes
 
 Cuánto suben en el mes los precios al consumidor en general.
 
@@ -146,7 +146,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 1,93 % mensual (2026-09).
 
-1,93 % mensual cae en el tramo que corresponde a Verde, a 0,87 del corte más cercano.
+1,93 % mensual está en Verde, a 0,87 del límite con Amarillo (2,8).
 
 **Color vigente: VERDE**
 
@@ -169,6 +169,8 @@ Ponderación vigente en el ITCM: 15,6 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-26** — El rótulo pasa a «Inflación del mes», sin sigla. No cambia el cálculo.
+
 **2026-06** — El indicador deja de promediarse directamente como tensión 0–10 y pasa a puntuar dentro del índice macroeconómico según los umbrales institucionales de la paramétrica CIGOB (documento de mayo de 2026).
 
 **2026-07-03** — El puntaje escalonado por banda se reemplaza por interpolación lineal entre anclas: se eliminan los saltos de 15–25 puntos entre valores casi iguales a ambos lados de un umbral. Los umbrales institucionales no cambian.
@@ -183,7 +185,7 @@ Ponderación vigente en el ITCM: 15,6 % efectivo. El color es una lectura adicio
 
 # Reservas netas
 
-Estimación de CiGob de reservas netas: combina activos y flujos de corto plazo de la planilla de reservas internacionales que publica el Banco Central, y agrega depósitos del Tesoro y un tramo de vencimientos excluido por el diseño. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.
+Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la planilla oficial de reservas. Suma además los depósitos del Tesoro y deja afuera un tramo de vencimientos, por eso da más que otras estimaciones del mercado. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.
 
 | | | | |
 |---|---|---|---|
@@ -201,7 +203,7 @@ Estimación de CiGob de reservas netas: combina activos y flujos de corto plazo 
 
 ## Definición — qué mide y por qué importa
 
-Estimación de CiGob de reservas netas: combina activos y flujos de corto plazo de la planilla de reservas internacionales que publica el Banco Central, y agrega depósitos del Tesoro y un tramo de vencimientos excluido por el diseño. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.
+Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la planilla oficial de reservas. Suma además los depósitos del Tesoro y deja afuera un tramo de vencimientos, por eso da más que otras estimaciones del mercado. No es una cifra oficial de reservas netas ni de dólares de libre disponibilidad.
 
 Aproxima el margen externo con una definición explícita. Su lectura depende de los pasivos excluidos y debe contrastarse con otras medidas de reservas y liquidez.
 
@@ -235,7 +237,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 10.725 Millones de USD (2026-09).
 
-10725,0 Millones de USD cae en el tramo que corresponde a Verde, a 725,0 del corte más cercano.
+10725,0 Millones de USD está en Verde, a 725,0 del límite con Amarillo (10000,0).
 
 **Color vigente: VERDE**
 
@@ -274,7 +276,7 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 
 # Capacidad prestable
 
-Índice de Capacidad Prestable: mide si el sistema financiero tiene fondos y margen para prestar, comparando tres niveles contra su propia historia — la tasa real que reciben los depositantes (precio), el crecimiento interanual real de los depósitos privados (volumen) y la holgura entre depósitos y préstamos (asignación).
+Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. Cero es un mes normal; positivo, más margen; negativo, menos. Combina tres cosas: lo que cobran en términos reales los que depositan, cuánto crecen los depósitos privados y cuánto de esos depósitos queda sin prestar.
 
 | | | | |
 |---|---|---|---|
@@ -292,7 +294,7 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 
 ## Definición — qué mide y por qué importa
 
-Índice de Capacidad Prestable: mide si el sistema financiero tiene fondos y margen para prestar, comparando tres niveles contra su propia historia — la tasa real que reciben los depositantes (precio), el crecimiento interanual real de los depósitos privados (volumen) y la holgura entre depósitos y préstamos (asignación).
+Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. Cero es un mes normal; positivo, más margen; negativo, menos. Combina tres cosas: lo que cobran en términos reales los que depositan, cuánto crecen los depósitos privados y cuánto de esos depósitos queda sin prestar.
 
 Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico; por encima, más capacidad que la habitual, y por debajo, menos. En el semáforo de la tarjeta, desde 0 es verde, de −0,6 a 0 amarillo, de −0,9 a −0,6 naranja y por debajo de −0,9 rojo. Datos del Banco Central de la República Argentina (BCRA) —tasa de plazos fijos mayoristas (BADLAR), depósitos y préstamos privados— e índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC).
 
@@ -327,7 +329,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −0,34 σ vs. su historia (2026-09).
 
-−0,34 σ vs. su historia cae en el tramo que corresponde a Amarillo, a 0,26 del corte más cercano.
+−0,34 σ vs. su historia está en Amarillo, a 0,26 del límite con Naranja (−0,6).
 
 **Color vigente: AMARILLO**
 
@@ -365,7 +367,7 @@ Ponderación vigente en el ITCM: 3,4 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Actividad económica (EMAE i.a.)
+# Actividad económica (vs. un año atrás)
 
 El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás.
 
@@ -418,7 +420,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −1,44 % i.a. (2026-07).
 
-−1,44 % i.a. cae en el tramo que corresponde a Naranja, a 0,44 del corte más cercano.
+−1,44 % i.a. está en Naranja, a 0,44 del límite con Amarillo (−1,0).
 
 **Color vigente: NARANJA**
 
@@ -438,6 +440,8 @@ Ponderación vigente en el ITCM: 8,5 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La fuente revisa (serie provisoria); el informe regenera la serie completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — El rótulo pasa a «Actividad económica (vs. un año atrás)» y la unidad a «% vs. un año atrás», sin siglas. No cambia el cálculo.
 
 **2026-06** — En el índice desde la paramétrica original como única variable de actividad; su peso de dimensión bajó de 15% a 13% y luego a 11% al incorporarse las dimensiones de competitividad e inversión.
 
@@ -512,7 +516,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 46,67 % de sectores en crecimiento i.a. (2026-07).
 
-46,67 % de sectores en crecimiento i.a. cae en el tramo que corresponde a Amarillo, a 2,67 del corte más cercano.
+46,67 % de sectores en crecimiento i.a. está en Amarillo, a 2,67 del límite con Naranja (44,0).
 
 **Color vigente: AMARILLO**
 
@@ -545,7 +549,7 @@ Ponderación vigente en el ITCM: 2,8 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Producción industrial (IPI i.a.)
+# Producción industrial (vs. un año atrás)
 
 Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses.
 
@@ -599,7 +603,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −2,04 % i.a. (promedio 3 meses) (2026-08).
 
-−2,04 % i.a. (promedio 3 meses) cae en el tramo que corresponde a Naranja, a 1,04 del corte más cercano.
+−2,04 % i.a. (promedio 3 meses) está en Naranja, a 1,04 del límite con Amarillo (−1,0).
 
 **Color vigente: NARANJA**
 
@@ -623,6 +627,8 @@ Ponderación vigente en el ITCM: 2,8 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La fuente revisa la serie; el informe la regenera completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — El rótulo pasa a «Producción industrial (vs. un año atrás)», sin siglas. No cambia el cálculo.
 
 **2026-09-08** — IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.
 
@@ -695,7 +701,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 0,86 % i.a. real (compuesto IVA-DGI/cheque) (2026-09).
 
-0,86 % i.a. real (compuesto IVA-DGI/cheque) cae en el tramo que corresponde a Amarillo, a 1,64 del corte más cercano.
+0,86 % i.a. real (compuesto IVA-DGI/cheque) está en Amarillo, a 1,64 del límite con Verde (2,5).
 
 **Color vigente: AMARILLO**
 
@@ -734,7 +740,7 @@ Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Saldo comercial 12m
+# Saldo comercial (últimos 12 meses)
 
 El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses.
 
@@ -788,7 +794,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 26.472 Millones de USD (acum. 12 meses) (2026-09).
 
-26472,0 Millones de USD (acum. 12 meses) cae en el tramo que corresponde a Verde, a 18972,0 del corte más cercano.
+26472,0 Millones de USD (acum. 12 meses) está en Verde, a 18972,0 del límite con Amarillo (7500,0).
 
 **Color vigente: VERDE**
 
@@ -810,6 +816,8 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La fuente revisa provisorios; el informe re-descarga la serie completa en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — El rótulo pasa a «Saldo comercial (últimos 12 meses)». No cambia el cálculo.
 
 **2026-09-08** — El cuadro oficial vigente completa la API histórica rezagada. La tarjeta y las series comparten origen y se exigen ventanas consecutivas; se conserva el último cuadro validado ante fallos del portal.
 
@@ -889,7 +897,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 94,4 índice (100 = 4T-2023) (2026-09).
 
-94,4 índice (100 = 4T-2023) cae en el tramo que corresponde a Amarillo, a 0,6 del corte más cercano.
+94,4 índice (100 = 4T-2023) está en Amarillo, a 0,6 del límite con Verde (95,0).
 
 **Color vigente: AMARILLO**
 
@@ -1008,7 +1016,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 49,8 puntaje (0-100) (2026-09).
 
-49,8 puntaje (0-100) cae en el tramo que corresponde a Amarillo, a 9,8 del corte más cercano.
+49,8 puntaje (0-100) está en Amarillo, a 9,8 del límite con Naranja (40,0).
 
 **Color vigente: AMARILLO**
 
@@ -1051,9 +1059,9 @@ Ponderación vigente en el ITCM: 11 % efectivo. El color es una lectura adiciona
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Expectativas inflación (REM 12m)
+# Inflación esperada a 12 meses
 
-La inflación que el mercado espera para los próximos 12 meses.
+La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del Banco Central. Para compararla con la inflación del mes, 21 % anual equivale a cerca de 1,6 % por mes.
 
 | | | | |
 |---|---|---|---|
@@ -1071,7 +1079,7 @@ La inflación que el mercado espera para los próximos 12 meses.
 
 ## Definición — qué mide y por qué importa
 
-La inflación que el mercado espera para los próximos 12 meses.
+La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del Banco Central. Para compararla con la inflación del mes, 21 % anual equivale a cerca de 1,6 % por mes.
 
 Captura la credibilidad del programa: si el mercado espera que la inflación siga bajando, el ancla de expectativas funciona; si la ve acelerarse, hay desconfianza.
 
@@ -1105,7 +1113,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 21,1 % anual esperado (2026-09).
 
-21,1 % anual esperado cae en el tramo que corresponde a Verde, a 18,19 del corte más cercano.
+21,1 % anual esperado está en Verde, a 18,19 del límite con Amarillo (39,2892).
 
 **Color vigente: VERDE**
 
@@ -1124,6 +1132,8 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** El REM publicado no se revisa: cada mes es un relevamiento nuevo.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — El rótulo pasa a «Inflación esperada a 12 meses» y la escala se muestra en tasa anual, la unidad de la tarjeta (12,7 · 26,8 · 42,6 · 79,6 %), con su equivalente mensual. No cambia el cálculo.
 
 **2026-09-08** — El informe separado de sensibilidad aplica la misma conversión anual a mensual que el índice y la web. Se corrige su simulación; el valor y el puntaje del indicador no cambian.
 
@@ -1147,7 +1157,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 # Liquidez en pesos y presión compradora de divisas
 
-Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso: el Banco Central estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.
+Mira dos cosas a la vez: si la gente sigue usando pesos y cuántos dólares compra; si las dos empeoran juntas, la presión sobre el peso es mayor. Es una medida de tensión de 0 a 100 (más alto es peor) que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso: el Banco Central estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.
 
 | | | | |
 |---|---|---|---|
@@ -1165,7 +1175,7 @@ Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez pr
 
 ## Definición — qué mide y por qué importa
 
-Una medida de 0 a 100 que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso: el Banco Central estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.
+Mira dos cosas a la vez: si la gente sigue usando pesos y cuántos dólares compra; si las dos empeoran juntas, la presión sobre el peso es mayor. Es una medida de tensión de 0 a 100 (más alto es peor) que cruza dos cosas observables: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional, y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios. Hasta agosto de 2026 el segundo componente se llamaba «fuga fuera del sistema»; no mide eso: el Banco Central estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos, y acá sólo se observa el primero.
 
 Los dos componentes se leen juntos porque uno solo alcanza para engañar: la composición de la liquidez puede verse estable mientras crece la compra de divisas, y a la inversa. El resultado sale de cruzarlos en una matriz, no de promediarlos. Mayor tensión reduce el puntaje de estabilidad monetaria.
 
@@ -1205,7 +1215,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 64,01 pts de tensión (0-100) (2026-08).
 
-64,01 pts de tensión (0-100) cae en el tramo que corresponde a Naranja, a 4,01 del corte más cercano.
+64,01 pts de tensión (0-100) está en Naranja, a 4,01 del límite con Amarillo (60,0).
 
 **Color vigente: NARANJA**
 
@@ -1271,7 +1281,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 Índice Anticipador de Inversión: mide la inversión física/tradicional combinando el indicador sintético de la actividad de la construcción (ISAC) que releva el Instituto Nacional de Estadística y Censos (INDEC) y la importación de bienes de capital, en variación interanual.
 
-Resume señales de construcción e importación de bienes de capital frente al mismo mes del año anterior. No mide depreciación ni inversión neta: una caída interanual no demuestra que se consuma más capital del que se repone. Los bienes importados se miden en dólares corrientes, por lo que también influyen sus precios.
+Resume señales de construcción e importación de bienes de capital frente al mismo mes del año anterior. Los cortes de su escala se corren 0,17 puntos, lo que crece la población por año: invertir menos que eso es invertir menos por habitante. No mide depreciación ni inversión neta: una caída interanual no demuestra que se consuma más capital del que se repone. Los bienes importados se miden en dólares corrientes, por lo que también influyen sus precios.
 
 **Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
@@ -1303,7 +1313,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −1,74 % i.a. ponderado (2026-08).
 
-−1,74 % i.a. ponderado cae en el tramo que corresponde a Amarillo, a 1,91 del corte más cercano.
+−1,74 % i.a. ponderado está en Amarillo, a 1,91 del límite con Verde (0,17).
 
 **Color vigente: AMARILLO**
 
@@ -1355,7 +1365,7 @@ Ponderación vigente en el ITCM: 6,9 % efectivo. El color es una lectura adicion
 
 # Crédito privado real en pesos
 
-Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el índice de precios al consumidor).
+Cuánto crecen los préstamos en pesos al sector privado en términos reales (contra un año atrás, descontada la inflación).
 
 | | | | |
 |---|---|---|---|
@@ -1373,9 +1383,9 @@ Cuánto crece el crédito al sector privado en términos reales (variación inte
 
 ## Definición — qué mide y por qué importa
 
-Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el índice de precios al consumidor).
+Cuánto crecen los préstamos en pesos al sector privado en términos reales (contra un año atrás, descontada la inflación).
 
-Es el crédito realizado — complementa a la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto.
+Es el crédito que efectivamente se dio y complementa a la capacidad prestable: si los bancos tienen margen pero el crédito real no crece, el financiamiento no está llegando a la economía.
 
 **Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
 
@@ -1407,7 +1417,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −1,2 % i.a. real (crédito en pesos) (2026-09).
 
-−1,2 % i.a. real (crédito en pesos) cae en el tramo que corresponde a Naranja, a 2,95 del corte más cercano.
+−1,2 % i.a. real (crédito en pesos) está en Naranja, a 2,95 del límite con Amarillo (1,75).
 
 **Color vigente: NARANJA**
 
@@ -1501,7 +1511,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 6,22 % real anual (TIREA vs. inflación esperada REM) (2026-09).
 
-6,22 % real anual (TIREA vs. inflación esperada REM) cae en el tramo que corresponde a Verde, a 6,28 del corte más cercano.
+6,22 % real anual (TIREA vs. inflación esperada REM) está en Verde, a 6,28 del límite con Amarillo (12,5).
 
 **Color vigente: VERDE**
 
@@ -1561,7 +1571,7 @@ Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto
 
 Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda, acumulado en doce meses y medido como porcentaje de lo que recauda.
 
-Es el resultado fiscal, no los ingresos. La recaudación puede caer porque la actividad afloja o porque se bajaron impuestos a propósito, y en ninguno de los dos casos eso dice si las cuentas cierran. Este indicador responde esa pregunta directamente: de cada cien pesos recaudados, cuántos quedan.
+Es el resultado fiscal, no los ingresos. La recaudación puede caer porque la actividad afloja o porque se bajaron impuestos a propósito, y en ninguno de los dos casos eso dice si las cuentas cierran. Este indicador responde esa pregunta directamente: de cada cien pesos recaudados, cuántos quedan. Se mide sobre la recaudación y no sobre el producto porque es un dato mensual que no espera al PBI; como referencia, un 6 % de la recaudación equivale aproximadamente a 1,5 % del PBI. No incluye los intereses: el resultado con intereses (financiero) puede ser menor.
 
 **Dimensión que integra — Viabilidad fiscal-comercial.** Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real es el sostén del ancla fiscal y el saldo comercial, los dólares genuinos del intercambio.
 
@@ -1594,7 +1604,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 6,02 % de la recaudación (acum. 12 meses) (2026-08).
 
-6,02 % de la recaudación (acum. 12 meses) cae en el tramo que corresponde a Verde, a 4,02 del corte más cercano.
+6,02 % de la recaudación (acum. 12 meses) está en Verde, a 4,02 del límite con Amarillo (2,0).
 
 **Color vigente: VERDE**
 

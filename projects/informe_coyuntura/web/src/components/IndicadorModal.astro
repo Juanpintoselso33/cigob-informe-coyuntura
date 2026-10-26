@@ -611,7 +611,9 @@ const dimsJson = JSON.stringify(dims);
           (d.aporteInputTxt ? `<p class="cg-score-map"><strong>Valor usado:</strong> ${esc(d.aporteInputTxt)}</p>` : "") +
           // El paréntesis final (puntaje y peso) repite «Aporte actual»; en los
           // base 100 la línea entera es ese nivel y ese peso, así que no va.
-          (d.aporteFormula && !d.indiceMeta.base100 ? `<p class="cg-score-map"><strong>Cómo se puntúa:</strong> ${esc(d.aporteFormula.replace(/\s*\(puntaje interpolado[^)]*\)\s*$/, ""))}.</p>` : "");
+          // Revisión de Luis (26-oct-2026): estas anclas dan el puntaje, no el
+          // color, y el lector buscaba acá el corte que nombra el semáforo.
+          (d.aporteFormula && !d.indiceMeta.base100 ? `<p class="cg-score-map"><strong>Cómo se puntúa:</strong> ${esc(d.aporteFormula.replace(/\s*\(puntaje interpolado[^)]*\)\s*$/, ""))}. Estos valores dan el puntaje; el color sale de la tabla del semáforo.</p>` : "");
       } else if (d.aporteScore != null) {
         // Sin número de tensión (ADR-0337): la misma barra de tramos que el
         // resto del sitio, con su palabra.

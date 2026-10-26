@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-09-24
 cinturon: 'transversal'
 archivos: ['config.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/macro.py', 'scripts/gestion.py', 'scripts/politica.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/charts.ts', 'web/src/components/IndicadorModal.astro', 'web/src/components/CinturonCard.astro', 'web/src/components/Evolucion.astro', 'web/src/components/DimensionesEvolucion.astro', 'web/src/pages/[slug].astro', 'web/src/pages/metodologia/index.astro', 'web/src/lib/fichas.ts', 'web/src/pages/metodologia/[id].astro', 'data/politica/cobertura_judicial_movimientos.json', 'tests/test_siglas_publicas.py', 'tests/test_la_ficha_no_se_queda_atras.py']
-relacionado: ['0190', '0311']
+relacionado: ['0190', '0311', '0366']
 ambito: 'Presentación · cómo se nombran los índices, los organismos y las estadísticas en toda la web, fichas metodológicas incluidas'
 origen: 'Pedido de Luis (equipo CiGob), septiembre de 2026: «sacar todas las siglas y acrónimos innecesarios» del Monitor. Juan fijó las tres reglas de abajo.'
 ---

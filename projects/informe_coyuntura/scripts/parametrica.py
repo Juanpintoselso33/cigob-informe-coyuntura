@@ -280,6 +280,10 @@ def texto_bandas(bandas: list) -> str:
 
 
 def _num(x: float) -> str:
+    # `:g` pasa a notación científica desde el millón: la escala de jornadas no
+    # trabajadas se leía «5e+06» en la web (revisión de Luis, 26-oct-2026).
+    if x == int(x) and abs(x) >= 10_000:
+        return f"{int(x):,}".replace(",", ".")
     s = f"{x:g}"
     return s.replace(".", ",")
 

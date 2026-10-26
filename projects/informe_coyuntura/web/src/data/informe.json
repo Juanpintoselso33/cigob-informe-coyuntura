@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-10-26T14:47:15.370959-03:00",
+  "generated_at": "2026-10-26T17:48:16.775311-03:00",
   "period": "2026-10",
   "score_global": 3.8,
   "ponderacion": {
@@ -63,7 +63,7 @@
               }
             ],
             "unidad": "% mensual",
-            "por_que": "1,93 % mensual cae en el tramo que corresponde a Verde, a 0,87 del corte más cercano."
+            "por_que": "1,93 % mensual está en Verde, a 0,87 del límite con Amarillo (2,8)."
           }
         },
         "reservas_bcra": {
@@ -88,7 +88,7 @@
           "peso_efectivo": 0.0544,
           "metodo_obtencion": "automatico",
           "aporte_score": 3.7,
-          "aporte_formula": "Anclas del índice macroeconómico: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntaje interpolado entre anclas: 62.9; pesa 5,4% del índice macroeconómico)",
+          "aporte_formula": "Anclas del índice macroeconómico: >20.000 → 100 · 15.000–20.000 → 85 · 10.000–15.000 → 70 · 5000–10.000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntaje interpolado entre anclas: 62.9; pesa 5,4% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "netas 10725 = SDDS estricto 7465 + Tesoro 1125 + tramo II.1 >3 meses–1 año 2136 (M USD; fórmula CIGOB)",
@@ -113,7 +113,7 @@
               }
             ],
             "unidad": "Millones de USD",
-            "por_que": "10725,0 Millones de USD cae en el tramo que corresponde a Verde, a 725,0 del corte más cercano."
+            "por_que": "10725,0 Millones de USD está en Verde, a 725,0 del límite con Amarillo (10000,0)."
           }
         },
         "idc": {
@@ -173,7 +173,7 @@
               }
             ],
             "unidad": "σ vs. su historia",
-            "por_que": "−0,34 σ vs. su historia cae en el tramo que corresponde a Amarillo, a 0,26 del corte más cercano."
+            "por_que": "−0,34 σ vs. su historia está en Amarillo, a 0,26 del límite con Naranja (−0,6)."
           }
         },
         "emae_ia": {
@@ -220,7 +220,7 @@
               }
             ],
             "unidad": "% i.a.",
-            "por_que": "−1,44 % i.a. cae en el tramo que corresponde a Naranja, a 0,44 del corte más cercano."
+            "por_que": "−1,44 % i.a. está en Naranja, a 0,44 del límite con Amarillo (−1,0)."
           }
         },
         "emae_difusion": {
@@ -332,7 +332,7 @@
               }
             ],
             "unidad": "% de sectores en crecimiento i.a.",
-            "por_que": "46,67 % de sectores en crecimiento i.a. cae en el tramo que corresponde a Amarillo, a 2,67 del corte más cercano."
+            "por_que": "46,67 % de sectores en crecimiento i.a. está en Amarillo, a 2,67 del límite con Naranja (44,0)."
           }
         },
         "ipi_manufacturero": {
@@ -379,7 +379,7 @@
               }
             ],
             "unidad": "% i.a. (promedio 3 meses)",
-            "por_que": "−2,04 % i.a. (promedio 3 meses) cae en el tramo que corresponde a Naranja, a 1,04 del corte más cercano."
+            "por_que": "−2,04 % i.a. (promedio 3 meses) está en Naranja, a 1,04 del límite con Amarillo (−1,0)."
           }
         },
         "actividad_tributaria": {
@@ -429,7 +429,7 @@
               }
             ],
             "unidad": "% i.a. real (compuesto IVA-DGI/cheque)",
-            "por_que": "0,86 % i.a. real (compuesto IVA-DGI/cheque) cae en el tramo que corresponde a Amarillo, a 1,64 del corte más cercano."
+            "por_que": "0,86 % i.a. real (compuesto IVA-DGI/cheque) está en Amarillo, a 1,64 del límite con Verde (2,5)."
           }
         },
         "saldo_comercial_12m": {
@@ -454,7 +454,7 @@
           "peso_efectivo": 0.048,
           "metodo_obtencion": "automatico",
           "aporte_score": 1.5,
-          "aporte_formula": "Anclas del índice macroeconómico: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000 a 5000 → 50 · -15000 a -5000 → 30 · ≤-15000 → 10 (puntaje interpolado entre anclas: 85.0; pesa 4,8% del índice macroeconómico)",
+          "aporte_formula": "Anclas del índice macroeconómico: >15.000 → 85 · 10.000–15.000 → 75 · 5000–10.000 → 60 · -5000 a 5000 → 50 · -15.000 a -5000 → 30 · ≤-15.000 → 10 (puntaje interpolado entre anclas: 85.0; pesa 4,8% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": null,
@@ -479,7 +479,7 @@
               }
             ],
             "unidad": "Millones de USD (acum. 12 meses)",
-            "por_que": "26472,0 Millones de USD (acum. 12 meses) cae en el tramo que corresponde a Verde, a 18972,0 del corte más cercano."
+            "por_que": "26472,0 Millones de USD (acum. 12 meses) está en Verde, a 18972,0 del límite con Amarillo (7500,0)."
           }
         },
         "recaudacion": {
@@ -536,7 +536,7 @@
               }
             ],
             "unidad": "índice (100 = 4T-2023)",
-            "por_que": "94,4 índice (100 = 4T-2023) cae en el tramo que corresponde a Amarillo, a 0,6 del corte más cercano."
+            "por_que": "94,4 índice (100 = 4T-2023) está en Amarillo, a 0,6 del límite con Verde (95,0)."
           }
         },
         "tcr_terminos_intercambio": {
@@ -589,7 +589,7 @@
               }
             ],
             "unidad": "puntaje (0-100)",
-            "por_que": "49,8 puntaje (0-100) cae en el tramo que corresponde a Amarillo, a 9,8 del corte más cercano."
+            "por_que": "49,8 puntaje (0-100) está en Amarillo, a 9,8 del límite con Naranja (40,0)."
           }
         },
         "rem_ipc_12m": {
@@ -608,7 +608,7 @@
           "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.61% mensual, en la misma escala que el IPC.",
           "metodo_obtencion": "automatico",
           "aporte_score": 1.7,
-          "aporte_formula": "Anclas del índice macroeconómico: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntaje interpolado entre anclas: 82.8; pesa 5,2% del índice macroeconómico)",
+          "aporte_formula": "Anclas del índice macroeconómico: ≤12,7 → 100 · 12,7–26,8 → 85 · 26,8–42,6 → 65 · 42,6–79,6 → 40 · >79,6 → 10 (en tasa anual; equivale a ≤1 · 1–2 · 2–3 · 3–5 · >5 % por mes) (puntaje interpolado entre anclas: 82.8; pesa 5,2% del índice macroeconómico)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice macroeconómico, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "equiv. mensual 1,61% (raíz-12 del 21,1% anual)",
@@ -638,7 +638,7 @@
               }
             ],
             "unidad": "% anual esperado",
-            "por_que": "21,1 % anual esperado cae en el tramo que corresponde a Verde, a 18,19 del corte más cercano."
+            "por_que": "21,1 % anual esperado está en Verde, a 18,19 del límite con Amarillo (39,2892)."
           }
         },
         "desequilibrio_monetario": {
@@ -690,7 +690,7 @@
               }
             ],
             "unidad": "pts de tensión (0-100)",
-            "por_que": "64,01 pts de tensión (0-100) cae en el tramo que corresponde a Naranja, a 4,01 del corte más cercano."
+            "por_que": "64,01 pts de tensión (0-100) está en Naranja, a 4,01 del límite con Amarillo (60,0)."
           }
         },
         "iai": {
@@ -743,7 +743,7 @@
               }
             ],
             "unidad": "% i.a. ponderado",
-            "por_que": "−1,74 % i.a. ponderado cae en el tramo que corresponde a Amarillo, a 1,91 del corte más cercano."
+            "por_que": "−1,74 % i.a. ponderado está en Amarillo, a 1,91 del límite con Verde (0,17)."
           }
         },
         "credito_privado": {
@@ -797,7 +797,7 @@
               }
             ],
             "unidad": "% i.a. real (crédito en pesos)",
-            "por_que": "−1,2 % i.a. real (crédito en pesos) cae en el tramo que corresponde a Naranja, a 2,95 del corte más cercano."
+            "por_que": "−1,2 % i.a. real (crédito en pesos) está en Naranja, a 2,95 del límite con Amarillo (1,75)."
           }
         },
         "costo_financiamiento_tesoro": {
@@ -878,7 +878,7 @@
               }
             ],
             "unidad": "% real anual (TIREA vs. inflación esperada REM)",
-            "por_que": "6,22 % real anual (TIREA vs. inflación esperada REM) cae en el tramo que corresponde a Verde, a 6,28 del corte más cercano."
+            "por_que": "6,22 % real anual (TIREA vs. inflación esperada REM) está en Verde, a 6,28 del límite con Amarillo (12,5)."
           }
         },
         "resultado_primario": {
@@ -926,7 +926,7 @@
               }
             ],
             "unidad": "% de la recaudación (acum. 12 meses)",
-            "por_que": "6,02 % de la recaudación (acum. 12 meses) cae en el tramo que corresponde a Verde, a 4,02 del corte más cercano."
+            "por_que": "6,02 % de la recaudación (acum. 12 meses) está en Verde, a 4,02 del límite con Amarillo (2,0)."
           }
         }
       },
@@ -2522,7 +2522,7 @@
               }
             ],
             "unidad": "DNUs publicados por ley publicada",
-            "por_que": "1,094 DNUs publicados por ley publicada cae en el tramo que corresponde a Amarillo, a 0,01 del corte más cercano."
+            "por_que": "1,094 DNUs publicados por ley publicada está en Amarillo, a 0,01 del límite con Verde (1,08)."
           }
         },
         "brecha_obra_publica": {
@@ -2573,7 +2573,7 @@
               }
             ],
             "unidad": "pp de brecha (obra pública − privada, 12m)",
-            "por_que": "−1,9 pp de brecha (obra pública − privada, 12m) cae en el tramo que corresponde a Verde, a 5,1 del corte más cercano."
+            "por_que": "−1,9 pp de brecha (obra pública − privada, 12m) está en Verde, a 5,1 del límite con Amarillo (−7,0)."
           }
         },
         "apoyo_empresario": {
@@ -2626,7 +2626,7 @@
               }
             ],
             "unidad": "saldo de postura (−1 a +1, 12m móviles)",
-            "por_que": "−0,4 saldo de postura (−1 a +1, 12m móviles) cae en el tramo que corresponde a Amarillo, a 0,0 del corte más cercano."
+            "por_que": "−0,4 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,0 del límite con Amarillo (−0,4)."
           }
         },
         "conflictividad_nacional": {
@@ -2678,7 +2678,7 @@
               }
             ],
             "unidad": "% vs 2023",
-            "por_que": "−27,2 % vs 2023 cae en el tramo que corresponde a Verde, a 1,1 del corte más cercano."
+            "por_que": "−27,2 % vs 2023 está en Verde, a 1,1 del límite con Amarillo (−26,1)."
           }
         },
         "jornadas_individuales_no_trabajadas_12m": {
@@ -2696,7 +2696,7 @@
           "peso_efectivo": 0.043,
           "metodo_obtencion": "automatico",
           "aporte_score": 0.0,
-          "aporte_formula": "Anclas del índice político: ≤5e+06 → 100 · 5e+06–6,5e+06 → 85 · 6,5e+06–8e+06 → 65 · 8e+06–1e+07 → 40 · >1e+07 → 10 (puntaje interpolado entre anclas: 100.0; pesa 4,3% del índice político)",
+          "aporte_formula": "Anclas del índice político: ≤5.000.000 → 100 · 5.000.000–6.500.000 → 85 · 6.500.000–8.000.000 → 65 · 8.000.000–10.000.000 → 40 · >10.000.000 → 10 (puntaje interpolado entre anclas: 100.0; pesa 4,3% del índice político)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice político, este indicador está en verde (sin tensión relevante): puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": "4.820.775 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.",
@@ -2721,7 +2721,7 @@
               }
             ],
             "unidad": "jornadas individuales no trabajadas (12m)",
-            "por_que": "4820775 jornadas individuales no trabajadas (12m) cae en el tramo que corresponde a Verde, a 2779225,0 del corte más cercano."
+            "por_que": "4820775 jornadas individuales no trabajadas (12m) está en Verde, a 2779225,0 del límite con Amarillo (7600000,0)."
           }
         },
         "iaf_transferencias": {
@@ -2774,7 +2774,7 @@
               }
             ],
             "unidad": "% interanual real",
-            "por_que": "−0,6 % interanual real cae en el tramo que corresponde a Verde, a 6,4 del corte más cercano."
+            "por_que": "−0,6 % interanual real está en Verde, a 6,4 del límite con Amarillo (−7,0)."
           }
         },
         "eficacia_legislativa": {
@@ -2826,7 +2826,7 @@
               }
             ],
             "unidad": "% de proyectos",
-            "por_que": "27,3 % de proyectos cae en el tramo que corresponde a Verde, a 7,3 del corte más cercano."
+            "por_que": "27,3 % de proyectos está en Verde, a 7,3 del límite con Amarillo (20,0)."
           }
         },
         "veto_quorum": {
@@ -2878,7 +2878,7 @@
               }
             ],
             "unidad": "% de sesiones",
-            "por_que": "0,0 % de sesiones cae en el tramo que corresponde a Verde, a 17,0 del corte más cercano."
+            "por_que": "0,0 % de sesiones está en Verde, a 17,0 del límite con Amarillo (17,0)."
           }
         },
         "adhesion_reformas_provincial": {
@@ -2947,7 +2947,7 @@
               }
             ],
             "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
-            "por_que": "75,0 % de jurisdicciones (sobre 24) adheridas al RIGI cae en el tramo que corresponde a Verde, a 29,0 del corte más cercano."
+            "por_que": "75,0 % de jurisdicciones (sobre 24) adheridas al RIGI está en Verde, a 29,0 del límite con Amarillo (46,0)."
           }
         },
         "cohesion_bloque": {
@@ -3011,7 +3011,7 @@
               }
             ],
             "unidad": "% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)",
-            "por_que": "100,0 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) cae en el tramo que corresponde a Verde, a 2,4 del corte más cercano."
+            "por_que": "100,0 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) está en Verde, a 2,4 del límite con Amarillo (97,6)."
           }
         },
         "desafios_legislativos": {
@@ -3065,7 +3065,7 @@
               }
             ],
             "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
-            "por_que": "0,0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses cae en el tramo que corresponde a Verde, a 7,7 del corte más cercano."
+            "por_que": "0,0 normas del Ejecutivo desafiadas en el recinto, últimos 12 meses está en Verde, a 7,7 del límite con Amarillo (7,7)."
           }
         },
         "produccion_legislativa": {
@@ -3115,7 +3115,7 @@
               }
             ],
             "unidad": "leyes sancionadas (12m)",
-            "por_que": "31 leyes sancionadas (12m) cae en el tramo que corresponde a Amarillo, a 3,5 del corte más cercano."
+            "por_que": "31 leyes sancionadas (12m) está en Amarillo, a 3,5 del límite con Naranja (27,5)."
           }
         },
         "velocidad_resolucion": {
@@ -3163,7 +3163,7 @@
               }
             ],
             "unidad": "% de expedientes resueltos sobre ingresados",
-            "por_que": "45,4 % de expedientes resueltos sobre ingresados cae en el tramo que corresponde a Verde, a 45,6 del corte más cercano."
+            "por_que": "45,4 % de expedientes resueltos sobre ingresados está en Verde, a 45,6 del límite con Amarillo (91,0)."
           }
         },
         "paralisis_denuncias": {
@@ -3326,7 +3326,7 @@
               }
             ],
             "unidad": "sesiones de las comisiones de control (12m)",
-            "por_que": "14 sesiones de las comisiones de control (12m) cae en el tramo que corresponde a Rojo, a 5,5 del corte más cercano."
+            "por_que": "14 sesiones de las comisiones de control (12m) está en Rojo, a 5,5 del límite con Naranja (8,5)."
           }
         },
         "cobertura_judicial": {
@@ -3398,7 +3398,7 @@
               }
             ],
             "unidad": "% estimado de cargos con juez designado",
-            "por_que": "73,82 % estimado de cargos con juez designado cae en el tramo que corresponde a Verde, a 0,82 del corte más cercano."
+            "por_que": "73,82 % estimado de cargos con juez designado está en Verde, a 0,82 del límite con Amarillo (73,0)."
           }
         },
         "alineamiento_senadores_prov": {
@@ -3446,7 +3446,7 @@
               }
             ],
             "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
-            "por_que": "56,5 % votos de senadores no-LLA alineados con LLA, por provincia cae en el tramo que corresponde a Verde, a 3,5 del corte más cercano."
+            "por_que": "56,5 % votos de senadores no-LLA alineados con LLA, por provincia está en Verde, a 3,5 del límite con Amarillo (53,0)."
           }
         }
       },
@@ -8489,7 +8489,7 @@
               }
             ],
             "unidad": "% de brecha CCL/mayorista",
-            "por_que": "8,87 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 5,13 del corte más cercano."
+            "por_que": "8,87 % de brecha CCL/mayorista está en Verde, a 5,13 del límite con Amarillo (14,0)."
           }
         },
         "apertura_comercial": {
@@ -8539,7 +8539,7 @@
               }
             ],
             "unidad": "% del intercambio (alícuota efectiva)",
-            "por_que": "7,16 % del intercambio (alícuota efectiva) cae en el tramo que corresponde a Amarillo, a 1,16 del corte más cercano."
+            "por_que": "7,16 % del intercambio (alícuota efectiva) está en Amarillo, a 1,16 del límite con Verde (6,0)."
           }
         },
         "desregulacion_normativa": {
@@ -8573,7 +8573,7 @@
           "peso_efectivo": 0.07,
           "metodo_obtencion": "automatico",
           "aporte_score": 2.6,
-          "aporte_formula": "Anclas del índice de gestión: >30000 → 100 · 15000–30000 → 85 · 7000–15000 → 60 · 2500–7000 → 35 · ≤2500 → 10 (puntaje interpolado entre anclas: 74.4; pesa 7,0% del índice de gestión)",
+          "aporte_formula": "Anclas del índice de gestión: >30.000 → 100 · 15.000–30.000 → 85 · 7000–15.000 → 60 · 2500–7000 → 35 · ≤2500 → 10 (puntaje interpolado entre anclas: 74.4; pesa 7,0% del índice de gestión)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del índice de gestión, este indicador está en verde (sin tensión relevante).",
           "aporte_input_txt": "17.606 artículos modificados o eliminados desde el 10 de diciembre de 2023 (+491 en el mes) · los produjeron 807 normas de desregulación, que modificaron o eliminaron 2891 normas anteriores",
@@ -8598,7 +8598,7 @@
               }
             ],
             "unidad": "artículos de normas modificados o eliminados, acumulados desde dic-2023",
-            "por_que": "17606,0 artículos de normas modificados o eliminados, acumulados desde dic-2023 cae en el tramo que corresponde a Verde, a 6606,0 del corte más cercano."
+            "por_que": "17606,0 artículos de normas modificados o eliminados, acumulados desde dic-2023 está en Verde, a 6606,0 del límite con Amarillo (11000,0)."
           }
         },
         "reduccion_estado": {
@@ -8653,7 +8653,7 @@
               }
             ],
             "unidad": "% de variación vs dic-2023 (dotación APN)",
-            "por_que": "−21,37 % de variación vs dic-2023 (dotación APN) cae en el tramo que corresponde a Verde, a 10,23 del corte más cercano."
+            "por_que": "−21,37 % de variación vs dic-2023 (dotación APN) está en Verde, a 10,23 del límite con Amarillo (−11,14)."
           }
         },
         "gasto_funcionamiento": {
@@ -8701,7 +8701,7 @@
               }
             ],
             "unidad": "% de variación real vs 2023-08 (gastos de funcionamiento)",
-            "por_que": "−35,92 % de variación real vs 2023-08 (gastos de funcionamiento) cae en el tramo que corresponde a Verde, a 27,42 del corte más cercano."
+            "por_que": "−35,92 % de variación real vs 2023-08 (gastos de funcionamiento) está en Verde, a 27,42 del límite con Amarillo (−8,5)."
           }
         },
         "fal_modernizacion_laboral": {
@@ -8795,7 +8795,7 @@
               }
             ],
             "unidad": "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
-            "por_que": "50,0 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) cae en el tramo que corresponde a Amarillo, a 5,25 del corte más cercano."
+            "por_que": "50,0 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) está en Amarillo, a 5,25 del límite con Verde (55,25)."
           }
         },
         "litigiosidad_laboral": {
@@ -8844,7 +8844,7 @@
               }
             ],
             "unidad": "% variación juicios SRT (12m vs 12m previos)",
-            "por_que": "0,1 % variación juicios SRT (12m vs 12m previos) cae en el tramo que corresponde a Verde, a 2,4 del corte más cercano."
+            "por_que": "0,1 % variación juicios SRT (12m vs 12m previos) está en Verde, a 2,4 del límite con Amarillo (2,5)."
           }
         },
         "juicios_trabajo_capital": {
@@ -8893,7 +8893,7 @@
               }
             ],
             "unidad": "% variación juicios entrados (12m vs 12m previos)",
-            "por_que": "12,4 % variación juicios entrados (12m vs 12m previos) cae en el tramo que corresponde a Amarillo, a 0,1 del corte más cercano."
+            "por_que": "12,4 % variación juicios entrados (12m vs 12m previos) está en Amarillo, a 0,1 del límite con Naranja (12,5)."
           }
         },
         "privatizaciones": {
@@ -9037,7 +9037,7 @@
               }
             ],
             "unidad": "% de avance (etapas 0-4, cartera Ley Bases)",
-            "por_que": "55,6 % de avance (etapas 0-4, cartera Ley Bases) cae en el tramo que corresponde a Verde, a 14,6 del corte más cercano."
+            "por_que": "55,6 % de avance (etapas 0-4, cartera Ley Bases) está en Verde, a 14,6 del límite con Amarillo (41,0)."
           }
         },
         "rigi_inversiones": {
@@ -9090,7 +9090,7 @@
               }
             ],
             "unidad": "% de inversión aprobada sobre el pipeline",
-            "por_que": "33,3 % de inversión aprobada sobre el pipeline cae en el tramo que corresponde a Verde, a 3,8 del corte más cercano."
+            "por_que": "33,3 % de inversión aprobada sobre el pipeline está en Verde, a 3,8 del límite con Amarillo (29,5)."
           }
         },
         "concesiones_infraestructura": {
@@ -9190,7 +9190,7 @@
               }
             ],
             "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
-            "por_que": "100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) cae en el tramo que corresponde a Verde, a 59,0 del corte más cercano."
+            "por_que": "100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) está en Verde, a 59,0 del límite con Amarillo (41,0)."
           }
         },
         "asistencia_directa": {
@@ -9244,7 +9244,7 @@
               }
             ],
             "unidad": "hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja)",
-            "por_que": "100,0 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) cae en el tramo que corresponde a Verde, a 33,0 del corte más cercano."
+            "por_que": "100,0 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) está en Verde, a 33,0 del límite con Amarillo (67,0)."
           }
         },
         "protocolo_antipiquetes": {
@@ -9297,7 +9297,7 @@
               }
             ],
             "unidad": "% de reducción de cortes por manifestación en CABA vs 2023 (IRPC)",
-            "por_que": "74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) cae en el tramo que corresponde a Verde, a 41,7 del corte más cercano."
+            "por_que": "74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) está en Verde, a 41,7 del límite con Amarillo (32,5)."
           }
         },
         "libertad_opcion_salud": {
@@ -9360,7 +9360,7 @@
               }
             ],
             "unidad": "% de usuarios de prepagas con aportes derivados directo (sin triangulación)",
-            "por_que": "32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) cae en el tramo que corresponde a Amarillo, a 3,8 del corte más cercano."
+            "por_que": "32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) está en Amarillo, a 3,8 del límite con Verde (36,0)."
           }
         }
       },

@@ -224,22 +224,22 @@ class TestPorQue:
         # el corte más cercano es `hasta`, no `desde`.
         tramo = [{"color": "amarillo", "desde": 10.0, "hasta": 20.0}]
         frase = publicar._por_que("amarillo", 19.0, "%", tramo)
-        assert "a 1,0 del corte más cercano" in frase, frase
-        assert "a 9,0 del corte más cercano" not in frase, (
+        assert "a 1,0 del corte de" in frase, frase
+        assert "a 9,0 de" not in frase, (
             "publicó la distancia al borde lejano (desde) en vez del cercano (hasta)")
 
     def test_sigue_tomando_desde_cuando_es_el_mas_cercano(self):
         # Mismo tramo, valor 11: ahora el más cercano es `desde` (distancia 1).
         tramo = [{"color": "amarillo", "desde": 10.0, "hasta": 20.0}]
         frase = publicar._por_que("amarillo", 11.0, "%", tramo)
-        assert "a 1,0 del corte más cercano" in frase, frase
+        assert "a 1,0 del corte de" in frase, frase
 
     def test_borde_abierto_usa_el_unico_borde_finito(self):
         # `desde=None` (tramo abierto por abajo): no hay dos distancias para
         # comparar, tiene que seguir usando el único borde finito (`hasta`).
         tramo = [{"color": "verde", "desde": None, "hasta": 6.0}]
         frase = publicar._por_que("verde", 5.0, "%", tramo)
-        assert "a 1,0 del corte más cercano" in frase, frase
+        assert "a 1,0 del corte de" in frase, frase
 
 
 class TestCortesExpuestos:

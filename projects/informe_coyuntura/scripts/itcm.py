@@ -588,6 +588,16 @@ ESCALA_ITCM = parametrica.Escala(BANDAS_ITCM, ANCLAS_ITCM, TRANSFORMACIONES_ITCM
 
 def texto_bandas(indicador: str) -> str:
     """Texto legible de la tabla de bandas, para transparencia en el frontend."""
+    if indicador == "rem_ipc_12m":
+        # La tarjeta muestra la expectativa en tasa anual y la escala puntúa su
+        # equivalente mensual: mostrada en mensual, parecía comparar 21 % contra
+        # «1–2» (revisión de Luis, 26-oct-2026). Se muestra en anual, que es la
+        # unidad de la tarjeta; el cálculo no cambia.
+        anual = [(lo if lo == -INF else round(((1 + lo / 100) ** 12 - 1) * 100, 1),
+                  hi if hi == INF else round(((1 + hi / 100) ** 12 - 1) * 100, 1), p)
+                 for lo, hi, p in BANDAS_ITCM[indicador]]
+        return (parametrica.texto_bandas(anual)
+                + " (en tasa anual; equivale a ≤1 · 1–2 · 2–3 · 3–5 · >5 % por mes)")
     return parametrica.texto_bandas(BANDAS_ITCM[indicador])
 
 

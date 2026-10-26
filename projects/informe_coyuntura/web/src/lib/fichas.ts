@@ -153,6 +153,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si al calcular el índice el dato del mes no está publicado, el indicador queda fuera de esa actualización y los pesos de su dimensión se renormalizan entre los presentes: la ausencia no puntúa ni a favor ni en contra.",
     revisiones: "El INDEC no revisa retroactivamente el IPC publicado: la serie de la fuente es definitiva. Del lado del informe, la serie se reconstruyó hacia atrás hasta julio de 2021 y todo cambio de método propio queda asentado en el historial de cambios (abajo).",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Inflación del mes», sin sigla. No cambia el cálculo.", adr: "0366" },
       {
         fecha: "2026-06",
         cambio: "El indicador deja de promediarse directamente como tensión 0–10 y pasa a puntuar dentro del índice macroeconómico según los umbrales institucionales de la paramétrica CIGOB (documento de mayo de 2026).",
@@ -173,14 +174,14 @@ export const FICHAS: Record<string, Ficha> = {
     sigla: "ITCM",
     nombreLargo: "Índice de Tensión del Cinturón Macroeconómico",
     cinturon: "macro",
-    resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Usa umbrales y pesos de la paramétrica institucional CIGOB.",
+    resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Parte de sus pesos y escalas vienen del documento institucional de CiGob y el resto es elaboración propia, documentada en cada ficha.",
     marcoConceptual: [
       "El informe lee la realidad como un sistema de cuatro cinturones que rodean al gobierno (Planificación Estratégica Situacional de Carlos Matus). El cinturón macroeconómico agrupa los indicadores del motor económico: precios, cuentas fiscales y externas, financiamiento, actividad e inversión, y competitividad.",
-      "El marco, las dimensiones, los umbrales y los pesos provienen de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). El índice no estima esos parámetros a partir de los datos: los toma del marco y luego mide — con las herramientas de robustez de abajo — cuánto dependen las conclusiones de esa elección.",
+      "El marco viene de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). De ahí salen cuatro de las cinco dimensiones (precios, cuentas, financiamiento y actividad) y los umbrales de los indicadores originales. El resto es elaboración propia: la dimensión de competitividad, la fusión de actividad con inversión, el reparto de pesos entre dimensiones e indicadores nuevos, y las escalas de reservas netas, crédito privado, inversión física, términos del intercambio y costo del Tesoro, que se explican en la ficha de cada uno. Varias de esas escalas se calibraron contra el propio período del mandato: con los pesos de octubre de 2026 suman cerca del 38 % del índice. El índice no estima los parámetros a partir de los datos; mide, con las herramientas de robustez de abajo, cuánto dependen las conclusiones de esa elección.",
     ],
     seleccion: [
-      "Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023).",
-      "Las variables nominales de seguimiento (préstamos y base monetaria nominales, tipo de cambio mayorista, BADLAR) se extraen como insumo de cálculo pero no se publican como indicadores del cinturón: en un régimen de desinflación, su variación nominal confunde más de lo que informa. La BADLAR entra al índice a través de la tasa real del IdC; el crédito entra deflactado.",
+      "Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023), salvo reservas netas: el Banco Central retira las planillas viejas y la serie propia sólo llega hasta mediados de 2024.",
+      "Las variables nominales de seguimiento (préstamos y base monetaria nominales, tipo de cambio mayorista, BADLAR) se extraen como insumo de cálculo pero no se publican como indicadores del cinturón: en un régimen de desinflación, su variación nominal confunde más de lo que informa. La tasa de plazo fijo mayorista entra al índice a través de la capacidad prestable; el crédito entra descontada la inflación.",
     ],
     tratamiento: [
       "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y, si una dimensión queda vacía, entre dimensiones. Las ausencias no puntúan ni a favor ni en contra.",
@@ -188,7 +189,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Deflactores: los indicadores reales esperan el IPC cerrado. La recaudación real, por ejemplo, se computa como promedio móvil de tres meses sobre meses con IPC publicado, para filtrar el calendario tributario.",
     ],
     normalizacion: [
-      "Cada indicador, en su unidad original, se convierte a un puntaje 0–100 mediante los umbrales institucionales del documento CIGOB, leídos como anclas de interpolación: cada banda finita ancla su puntaje en su punto medio, las bandas abiertas en su borde finito; entre anclas el puntaje es lineal y fuera de la primera y la última queda plano.",
+      "Cada indicador, en su unidad original, se convierte a un puntaje 0–100 mediante sus umbrales —los del documento CIGOB para los indicadores originales, propios para los demás—, leídos como anclas de interpolación: cada banda finita ancla su puntaje en su punto medio, las bandas abiertas en su borde finito; entre anclas el puntaje es lineal y fuera de la primera y la última queda plano.",
       "Hasta julio de 2026 el puntaje era escalonado (toda la banda valía lo mismo). El análisis de sensibilidad midió que esos escalones aportaban el doble de incertidumbre que los pesos y creaban saltos de 15–25 puntos entre valores casi iguales; la interpolación los elimina sin tocar los umbrales institucionales.",
     ],
     agregacion: {
@@ -203,7 +204,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     robustez: [
       "Análisis de sensibilidad Monte Carlo: el índice se recalcula en 1.000 escenarios perturbando los pesos ±20% y los insumos ±5% del rango entre anclas, re-puntuados por la escala interpolada. La banda donde cae el 90% de los escenarios (p05–p95) se publica junto al valor en cada edición.",
-      "Se acompaña con un ejercicio leave-one-out: cuánto se movería el índice si se quitara cada componente, para identificar cuál domina la lectura del mes.",
+      "Se acompaña con un ejercicio que saca de a un componente por vez: cuánto se movería el índice si se quitara cada componente, para identificar cuál domina la lectura del mes.",
     ],
     validacion: [
       "El índice se reconstruye mes a mes desde diciembre de 2023 y se contrasta contra un ancla externa que nadie del proyecto controla: el Índice Líder de la Universidad Torcuato Di Tella, que resume la marcha de la actividad económica. Se espera correlación positiva — a menor tensión macroeconómica, más actividad.",
@@ -223,10 +224,11 @@ export const FICHAS: Record<string, Ficha> = {
       { rango: "81 – 100", lectura: "Aflojado" },
     ],
     limitaciones: [
-      "Los umbrales y pesos son institucionales, no estimados: representan el juicio del marco CIGOB. El Monte Carlo mide cuánto dependen las conclusiones de esa elección, pero no la sustituye.",
+      "Los umbrales y pesos no se estiman: son el juicio del marco CIGOB y, donde el marco no llega, elaboración propia declarada en cada ficha. El Monte Carlo mide cuánto dependen las conclusiones de esa elección, pero no la sustituye.",
       "El estándar OCDE/JRC prevé un análisis multivariado previo (paso 4: contrastar la estructura teórica con la correlación real entre los indicadores). Ese contraste está pendiente; la validación cruzada lo aproxima por el lado de las anclas externas.",
+      "El costo del financiamiento del Tesoro satura: todo lo que pasa de 20 % real puntúa igual, así que el pico de la serie (33,8 % real en agosto de 2025) puntúa igual que uno de 21 %.",
       "La ventana de validación es corta — los meses del mandato en curso —, por lo que las correlaciones se leen como consistencia, no como prueba.",
-      "Riesgo sistémico del deflactor: el IPC no sólo es un indicador del índice, también convierte a términos reales a la recaudación, el crédito y la tasa real del clima financiero. Cerca del 24% del índice depende de que la inflación esté bien medida, de modo que un error del INDEC no movería una fuente sino tres a la vez. (El desequilibrio monetario también usa el IPC, pero compara dos series ya deflactadas y el deflactor se cancela, así que es inmune a ese error y no se cuenta acá.) No es corregible —no hay un deflactor mensual alternativo— pero implica que el índice tiene menos fuentes verdaderamente independientes de las que aparenta. El análisis de robustez lo tiene en cuenta: sortea un único error de inflación por escenario y lo propaga a los indicadores que lo heredan, en vez de tratar cada falla como si fuera de una fuente distinta.",
+      "Riesgo sistémico del deflactor: el IPC no sólo es un indicador del índice, también convierte a términos reales la base imponible, el crédito privado, la capacidad prestable y la recaudación de IVA y cheque. Con los pesos de octubre de 2026, el 31,3 % del índice depende de que la inflación esté bien medida (inflación 15,6 + base imponible 7,2 + capacidad prestable 3,4 + crédito 3,2 + IVA y cheque 1,9), y las expectativas alimentan además el costo del Tesoro (4 %). Un error del INDEC no movería una fuente sino varias a la vez. (El desequilibrio monetario también usa el IPC, pero compara dos series ya deflactadas y el deflactor se cancela, así que es inmune a ese error y no se cuenta acá.) No es corregible —no hay un deflactor mensual alternativo— pero implica que el índice tiene menos fuentes verdaderamente independientes de las que aparenta. El análisis de robustez lo tiene en cuenta: sortea un único error de inflación por escenario y lo propaga a los indicadores que lo heredan, en vez de tratar cada falla como si fuera de una fuente distinta.",
     ],
     cambios: [
       {
@@ -235,11 +237,11 @@ export const FICHAS: Record<string, Ficha> = {
       },
       {
         fecha: "2026-06-28",
-        cambio: "Se incorporan el IDM (desequilibrio monetario) a la dimensión de estabilidad y el TCRM como quinta dimensión (competitividad externa).",
+        cambio: "Se incorporan los agregados monetarios a la dimensión de estabilidad y el tipo de cambio real multilateral como quinta dimensión (competitividad externa).",
       },
       {
         fecha: "2026-06-30",
-        cambio: "Capítulo inversión: IAI (física) e ICIP (digital) como sexta dimensión. La estructura de pesos queda 26 / 24 / 16 / 11 / 11 / 12 %.",
+        cambio: "Capítulo inversión: inversión física y pagos de servicios digitales como sexta dimensión. La estructura de pesos queda 26 / 24 / 16 / 11 / 11 / 12 %.",
       },
       {
         fecha: "2026-07-03",
@@ -247,9 +249,14 @@ export const FICHAS: Record<string, Ficha> = {
       },
       {
         fecha: "2026-07-04",
-        cambio: "IdC rediseñado por comparación estandarizada contra su propia historia, recaudación como promedio móvil trimestral real y matriz de validación cruzada como tercer pilar de robustez.",
+        cambio: "La capacidad prestable se rediseña por comparación estandarizada contra su propia historia, recaudación como promedio móvil trimestral real y matriz de validación cruzada como tercer pilar de robustez.",
       },
+      { fecha: "2026-07-18", cambio: "Entran el resultado primario del Estado nacional a la dimensión fiscal y el costo real del financiamiento del Tesoro a la de financiamiento.", adr: "0072" },
+      { fecha: "2026-08-11", cambio: "El indicador de agregados monetarios se reemplaza por «Liquidez en pesos y presión compradora de divisas», que cruza cuánta liquidez sigue en pesos con cuántos dólares compra el sector privado.", adr: "0192" },
+      { fecha: "2026-08-25", cambio: "Los pagos de servicios digitales salen del índice: sus dos insumos necesitaban signos opuestos y el compuesto los sumaba con el mismo. La inversión queda medida sólo por la inversión física.", adr: "0262" },
       { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses. No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes.", adr: "0231" },
+      { fecha: "2026-09-16", cambio: "Entra la recaudación de IVA y del impuesto al cheque, en términos reales, como señal temprana de la actividad.", adr: "0329" },
+      { fecha: "2026-09-30", cambio: "Los cortes de la inversión física se corren 0,17 puntos, lo que crece la población por año: invertir menos que eso es invertir menos por habitante.", adr: "0341" },
       { fecha: "2026-10-16", cambio: "La dimensión de inversión (12%, sólo la inversión física) se fusiona con la de actividad (11%) en «Actividad e inversión», con 23%: el índice pasa de seis a cinco dimensiones (26 / 24 / 16 / 23 / 11 %). Dentro, la inversión física pesa 30% y los cuatro de actividad conservan su proporción. Con los datos de octubre, el índice pasa de 62,5 a 61,6." },
       { fecha: "2026-10-20", cambio: "La dimensión competitividad externa (11%) deja de puntuar el tipo de cambio real solo y pasa a cruzarlo con los términos del intercambio del INDEC en una matriz: el tipo de cambio real dice si el peso está caro o barato, y los términos del intercambio, si ese nivel se sostiene. No cambia ningún peso. Como los cortes de los términos del intercambio se calibran contra la ventana desde fines de 2023, la parte del índice que descansa en anclas calibradas contra el propio período sube de 27% a 38%.", adr: "0360" },
     ],
@@ -382,6 +389,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros indicadores de la dimensión.",
     revisiones: "La fuente revisa (serie provisoria); el informe regenera la serie completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Actividad económica (vs. un año atrás)» y la unidad a «% vs. un año atrás», sin siglas. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original como única variable de actividad; su peso de dimensión bajó de 15% a 13% y luego a 11% al incorporarse las dimensiones de competitividad e inversión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-18", cambio: "Deja de ser la única variable de la dimensión: pasa a pesar 65% junto al IPI manufacturero (35%)." },
@@ -720,6 +728,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión queda con el EMAE y su difusión sectorial, y los pesos se renormalizan.",
     revisiones: "La fuente revisa la serie; el informe la regenera completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Producción industrial (vs. un año atrás)», sin siglas. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
       { fecha: "2026-07-18", cambio: "Alta del indicador como segunda señal de actividad junto al EMAE, tras una auditoría de consistencia que señaló que el 11% del índice colgaba de un único dato." },
       { fecha: "2026-07-18", cambio: "Su peso baja de 35% a 20% de la dimensión: al ser la industria parte del propio estimador agregado, el reparto anterior dejaba a la dimensión con casi la mitad de su exposición en un solo sector." },
@@ -812,6 +821,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si falla el catálogo o la planilla, se conserva el último cuadro validado con advertencia. Sin una ventana íntegra se conserva la tarjeta anterior mediante el caché general; no se publica una suma parcial ni una serie de saldo mucho más vieja como si estuviera actualizada.",
     revisiones: "La fuente revisa provisorios; el informe re-descarga la serie completa en cada actualización.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Saldo comercial (últimos 12 meses)». No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "El cuadro oficial vigente completa la API histórica rezagada. La tarjeta y las series comparten origen y se exigen ventanas consecutivas; se conserva el último cuadro validado ante fallos del portal." },
       { fecha: "2026-07-18", cambio: "Se declara la limitación de cobertura y se publica la cuenta corriente junto a este indicador: el saldo de bienes puede marcar superávit mientras el sector externo en conjunto drena dólares." },
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, calculado por las series de exportaciones e importaciones del ICA (frescas a ~2 meses) en lugar de la serie de saldo directa (~14 meses de rezago), con la regla de superávit por contracción automatizada." },
@@ -968,6 +978,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin dato utilizable, el IPC y el desequilibrio monetario renormalizan entre sí dentro de la dimensión de estabilidad monetaria.",
     revisiones: "El REM publicado no se revisa: cada mes es un relevamiento nuevo.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Inflación esperada a 12 meses» y la escala se muestra en tasa anual, la unidad de la tarjeta (12,7 · 26,8 · 42,6 · 79,6 %), con su equivalente mensual. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "El informe separado de sensibilidad aplica la misma conversión anual a mensual que el índice y la web. Se corrige su simulación; el valor y el puntaje del indicador no cambian.", adr: "0289" },
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, con bandas absolutas sobre el nivel anual." },
       { fecha: "2026-06-26", cambio: "Pasa a puntuarse por el equivalente mensual con las bandas del IPC, tras descartarse una versión intermedia por brecha contra el ritmo corriente." },
@@ -1408,6 +1419,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "Los conteos se reconsultan en cada actualización. Las cargas tardías o correcciones del catálogo pueden revisar los valores; la consulta automática no garantiza detectar errores de rótulo ni omisiones del filtro textual.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Decretos de necesidad y urgencia por ley», sin siglas. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "Se corrige el día adicional que introducían los extremos inclusivos. Se contrastan el inventario completo de decretos y los originales; se retiran garantías de actualización y detección que la fuente no asegura.", adr: "0307" },
       { fecha: "2026-05", cambio: "Entra al cinturón en reemplazo del índice de confianza en el gobierno (UTDT): el cinturón mide capacidad de gobernar, no popularidad." },
       { fecha: "2026-06-30", cambio: "Serie anual desde 2020 para dar contexto histórico al ratio del año en curso." },
@@ -1623,6 +1635,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si la lectura de uno de los portales falla, se conserva el último promedio calculado de esa cámara y el compuesto se arma igual; recién se marca desactualizado si ninguna cámara tuvo una actualización que llegara a su portal en más de 10 días — un receso legislativo sin actas nuevas no cuenta como desactualización.",
     revisiones: "Cuando las fuentes responden, se recalcula el promedio de los últimos 90 días. Ante fallos o receso sin actas se aplica la conservación del último promedio descrita en faltantes. El detalle muestra la fecha de última acta y la condición de caché de cada cámara; la fecha más reciente del compuesto no acredita actualización de ambas.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Cohesión del bloque oficialista (ambas cámaras)», sin siglas. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "Senado: una descarga fallida o una página sin votos invalida la lectura completa, en la tarjeta y en la reconstrucción anual. La tarjeta excluye actas posteriores al corte; no se publica un promedio parcial como actualización exitosa." },
       { fecha: "2026-09-08", cambio: "El desglose público incorpora fechas de actas y caché por cámara; explica la renormalización al 100% cuando sólo aporta una. Se conserva la fórmula.", adr: "0284" },
       { fecha: "2026-05", cambio: "Incorporado al cinturón como estimación manual, a la espera de una fuente estructurada de votaciones vigente." },
@@ -1710,6 +1723,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si falla la tabla o no se puede comprobar una ley complementaria, el colector devuelve ausencia y el proceso conserva la tarjeta anterior como caché, si existe. No publica un descenso calculado con fuentes incompletas.",
     revisiones: "La tabla y los originales complementarios se reconsultan. Las nuevas adhesiones o cambios normativos requieren revisar el catálogo y el registro fechado; una respuesta HTTP 200 no garantiza exhaustividad.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Provincias adheridas al régimen de grandes inversiones»: mide sólo esa adhesión. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "Se incorporan Santa Fe y CABA, omitidas por el catálogo nacional, en tarjeta e historia; se retiran las afirmaciones de actualización inmediata e irreversibilidad jurídica.", adr: "0304" },
       { fecha: "2026-07-07", cambio: "Alta como indicador de la dimensión de alianzas territoriales: mide adhesión fiscal al RIGI, distinta del alineamiento político general que ya capta el indicador de gobernadores." },
       { fecha: "2026-07-09", cambio: "Serie histórica mensual del gráfico: la fecha de adhesión de cada provincia se documentó una por una contra el Boletín Oficial provincial (u otra fuente oficial equivalente)." },
@@ -1936,6 +1950,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si la API falla, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "Cotizaciones intradiarias que pueden actualizarse; el punto del mes corriente se recalcula a diario.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Brecha cambiaria», sin «cepo»: mide un precio, no el desarme de las restricciones. La descripción declara que las cotizaciones salen de un servicio privado (dolarapi.com). No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-05", cambio: "Versión inicial del indicador sobre la brecha CCL/oficial minorista, en la escala de avance del cinturón anterior." },
       { fecha: "2026-09-08", cambio: "La fecha proviene de la cotización más antigua, no del día de consulta. Se conservan precios y marcas de tiempo; fechas ausentes o inválidas y precios no positivos o no finitos provocan fallback al cache existente.", adr: "0280" },
       { fecha: "2026-07-02", cambio: "Entra al índice de gestión con umbrales institucionales sobre la brecha CCL/mayorista." },
@@ -1979,6 +1994,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "Las series oficiales pueden revisarse; la serie propia se recalcula completa en cada actualización.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Impuestos sobre el comercio exterior», que es lo que mide: la recaudación aduanera por dólar de intercambio. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "Tarjeta e historia comparten el ICA original vigente y el mismo cálculo; se explicita la tasa de estadística incluida en la serie de importación y el alcance de las anclas.", adr: "0282" },
       { fecha: "2026-05", cambio: "Versión inicial como variación interanual de importaciones (aproximación de apertura)." },
       { fecha: "2026-07-02", cambio: "Pasa a un compuesto de liberalización (brecha cambiaria + alícuota) con el índice de gestión." },
@@ -2082,6 +2098,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Con la planilla caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "La fuente revisa los meses imputados en cada publicación; la serie propia se relee completa en cada actualización.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Empleados de la administración nacional» y la unidad dice la base: «% vs. diciembre de 2023». No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-05", cambio: "Versión inicial sobre la serie previsional trimestral, con meta de largo plazo." },
       { fecha: "2026-07-02", cambio: "Pasa a la planilla mensual de dotación APN contra diciembre de 2023, con umbrales del índice de gestión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
@@ -2446,6 +2463,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Con la plataforma caída, cae a una aproximación por conteo de resoluciones oficiales (marcada como desactualizada); agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
     revisiones: "La plataforma se actualiza sin registro de cambios; las fechas de aprobación quedan fijadas con su norma.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Grandes inversiones aprobadas», sin sigla, y la descripción aclara que el porcentaje baja cuando entran proyectos nuevos en evaluación. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-05", cambio: "Versión inicial por conteo de resoluciones (aproximación)." },
       { fecha: "2026-06-30", cambio: "Pasa a la plataforma oficial del Ministerio de Economía: inversión aprobada sobre la cartera total, con montos reales." },
       { fecha: "2026-07-02", cambio: "Umbrales institucionales del índice de gestión; después, puntaje interpolado entre anclas." },
@@ -2584,6 +2602,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Cae al valor de respaldo documentado; agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
     revisiones: "El registro se actualiza cuando la fuente publica el año nuevo (con aviso automático del detector).",
     cambios: [
+      { fecha: "2026-10-26", cambio: "El rótulo pasa a «Cortes de calle por protestas en la Ciudad»; la tarjeta dice que el dato es del año 2025 y que el protocolo está vigente (la Cámara revocó la nulidad). No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-05", cambio: "Versión inicial como carga manual (55%, la foto 2024)." },
       { fecha: "2026-07-02", cambio: "Se crea el monitoreo propio de alertas de transporte como futura fuente automática." },
       { fecha: "2026-07-03", cambio: "Automatizado con los anclajes anuales públicos de Diagnóstico Político; la corrección del año cerrado 2025 llevó el valor de 55% a 74,2%." },
@@ -3508,7 +3527,7 @@ export const FICHAS: Record<string, Ficha> = {
     sigla: "ITCG",
     nombreLargo: "Índice de Tensión del Cinturón de Gestión",
     cinturon: "gestion",
-    resumen: "Mide si la agenda de reformas del gobierno se ejecuta, en una escala 0–100: 0 = el gobierno promete reformas pero no las ejecuta; 100 = agenda ejecutándose. Usa umbrales y pesos de la paramétrica institucional CIGOB.",
+    resumen: "Mide si la agenda de reformas del gobierno se ejecuta, en una escala 0–100: 0 = el gobierno promete reformas pero no las ejecuta; 100 = agenda ejecutándose. Los cinco pesos de dimensión vienen del documento institucional de CiGob; los pesos internos y varias escalas son elaboración propia, documentada en cada ficha.",
     marcoConceptual: [
       "El cinturón de gestión mide la capacidad de ejecutar: el cumplimiento efectivo de la agenda de reformas (económicas, del Estado, laboral, privatizaciones, social y de orden público), no la popularidad del gobierno ni el resultado macroeconómico.",
       "El marco proviene de la «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Gestión» (Fundación CIGOB, julio de 2026). Los pesos de las cinco dimensiones y la estructura de la primera vienen del documento; los pesos internos de las restantes son operacionalización propia documentada.",
@@ -3523,8 +3542,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Varios indicadores llevan calibraciones declaradas (por ejemplo, «100 normas derogatorias = plan completo»): cada ficha las documenta.",
     ],
     normalizacion: [
-      "Cada indicador, en su unidad original, se convierte a un puntaje 0–100 mediante los umbrales institucionales leídos como anclas de interpolación: cada banda finita ancla su puntaje en su punto medio, las abiertas en su borde; entre anclas el puntaje es lineal, en los extremos queda plano.",
-      "Hasta julio de 2026 el puntaje era escalonado por banda; la interpolación eliminó los saltos entre valores casi iguales sin tocar los umbrales institucionales.",
+      "Cada indicador, en su unidad original, se convierte a un puntaje 0–100 mediante sus umbrales —del documento institucional cuando los hay, propios y declarados en la ficha cuando no— leídos como anclas de interpolación: cada banda finita ancla su puntaje en su punto medio, las abiertas en su borde; entre anclas el puntaje es lineal, en los extremos queda plano.",
+      "Hasta julio de 2026 el puntaje era escalonado por banda; la interpolación eliminó los saltos entre valores casi iguales sin tocar los umbrales.",
     ],
     agregacion: {
       latex: String.raw`\text{índice de gestión}=\sum_{\text{5 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)`,
@@ -3564,10 +3583,19 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial del cinturón: doce indicadores de cumplimiento de reformas con promedio simple de avances." },
       { fecha: "2026-07-02", cambio: "Nace el índice de gestión: la paramétrica institucional de cinco dimensiones reemplaza el promedio simple. Se automatizan en la misma tanda las concesiones, la desintermediación social y la opción en salud." },
-      { fecha: "2026-07-03", cambio: "Revisión metodológica: puntaje interpolado entre anclas, flag de dimensión crítica, la brecha cambiaria deja de contar dos veces (sale del compuesto de apertura), y la litigiosidad entra al índice como resultado de la reforma laboral. El protocolo de orden público se automatiza con anclajes públicos." },
+      { fecha: "2026-07-03", cambio: "Revisión metodológica: puntaje interpolado entre anclas, flag de dimensión crítica, la brecha cambiaria deja de contar dos veces (sale del compuesto de apertura), y entran al índice los juicios por riesgos del trabajo, entonces leídos como resultado de la reforma laboral (desde septiembre la ficha aclara que pertenecen a otro universo de reclamos y no miden el efecto de la reforma). El protocolo de orden público se automatiza con anclajes públicos." },
       { fecha: "2026-07-04", cambio: "Matriz de validación cruzada como tercer pilar de robustez, con el Merval en dólares como ancla propia del índice." },
+      { fecha: "2026-07-20", cambio: "Planes sin intermediarios sale del índice por estar en 100; el 9 de agosto vuelve, porque un índice de avance no puede descartar las promesas cumplidas.", adr: "0189" },
+      { fecha: "2026-07-25", cambio: "Reforma laboral pasa a repartirse en partes iguales entre el Fondo de Asistencia Laboral y los juicios (antes 70 y 30).", adr: "0128" },
+      { fecha: "2026-07-26", cambio: "La desregulación pasa a contarse en artículos modificados o eliminados, no en normas: un decreto que reescribe quinientos artículos y una resolución que toca uno dejan de pesar igual.", adr: "0143" },
+      { fecha: "2026-08-09", cambio: "La masa salarial pública sale del cálculo por dudas sobre cómo exponerla; los otros indicadores de reforma del Estado conservan su proporción.", adr: "0186" },
+      { fecha: "2026-08-21", cambio: "El Fondo de Asistencia Laboral pasa a puntuar lo que rige y no lo que se dictó: deja de estar en 100 y el índice baja 3,4 puntos.", adr: "0228" },
+      { fecha: "2026-08-25", cambio: "La reestructuración de organismos sale del índice: dividía normas por una meta documental, dos unidades distintas. Se sigue relevando como inventario.", adr: "0247" },
       { fecha: "2026-08-21", cambio: "El Merval en dólares deja de encabezar la validación externa —publicaba +0,75 en niveles y +0,07 al descontar la tendencia— y el cinturón pasa a publicar el panel y su factor común. La validez externa queda declarada como problema abierto, con las cuatro condiciones que tendría que cumplir una candidata fijadas de antemano. Se evaluó y se descartó el gasto en subsidios económicos, como contraste y como componente. No cambia ningún indicador, ningún peso ni ninguna banda." },
       { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses. No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes.", adr: "0231" },
+      { fecha: "2026-10-24", cambio: "Planes sin intermediarios pasa a medir el hito del cese de las unidades de gestión del Potenciar Trabajo (abril de 2024): 0 antes, 100 desde entonces.", adr: "0362" },
+      { fecha: "2026-10-26", cambio: "La dotación del Estado se mide contra la meta de recortar otro 10 % de la planta en 2026 y deja de estar en 100.", adr: "0364" },
+      { fecha: "2026-10-26", cambio: "Entran los juicios de la Justicia Nacional del Trabajo a la reforma laboral, a pedido de la auditoría de CiGob.", adr: "0365" },
       { fecha: "2026-09-22", cambio: "Sale la validación externa. El índice mide lo que el gobierno hace, así que no tiene contraste externo por definición; la sección deja de comparar contra el factor común del capital privado y el índice sale de la matriz de validación cruzada.", adr: "0336" },
     ],
   },
