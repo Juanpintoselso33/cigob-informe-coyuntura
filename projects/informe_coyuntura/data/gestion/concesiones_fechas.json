@@ -3,7 +3,7 @@
     "descripcion": "Hitos de adjudicación de la Red Federal de Concesiones (RFC) para reconstruir la serie del indicador concesiones_infraestructura como función escalonada (ADR-0012/0016). Sembrado con las fechas oficiales verificadas 2026-07-03; descargar_series.fetch_concesiones_serie agrega las etapas nuevas SÓLO cuando hay resolución de adjudicación en el Boletín (con su fecha de publicación; CONTRAT.AR sólo avisa) y refresca los km desde la página oficial de la RFC. Desde el 10-oct-2026 este store es la FUENTE del estado de la card concesiones_infraestructura (no CONTRAT.AR, que desde los runners de GitHub da timeout ~1 de cada 2 noches): cada etapa trae proceso, resolución y fecha_pub; CONTRAT.AR sólo detecta procesos nuevos y avisa.",
     "regla": "% del mes = 100 × Σ km de etapas con fecha ≤ mes / km_totales"
   },
-  "km_totales": 9133,
+  "km_totales": 9091,
   "etapas": {
     "I": {
       "fecha": "2025-11",
@@ -23,7 +23,9 @@
     },
     "III": {
       "fecha": "2026-08",
-      "km": 3962.49,
+      "km": 3920.21,
+      "km_verificado": 3920.21,
+      "km_nota": "Verificado el 26-oct-2026: los ocho tramos del llamado suman 3.920,21 km (página RFC archivada el 13-jun-2026). Desde oct-2026 la página da 371,37 km para Cuyo: la RN 7 de punta a punta, con los 42,28 km entre Palmira (km 1.012,31) y la RN 40 (km 1.054,59), que no se concesionan; lo concesionado son 329,09 km (146,82 + 182,27).",
       "fuente": "Resolución 1379 / 2026, BO 2026-08-24 — 504-0001-LPU26 (detectado por el Boletín; CONTRAT.AR informaba «Disponible Para Adjudicar»)",
       "proceso": "504-0001-LPU26",
       "resolucion": "Resolución 1379 / 2026",

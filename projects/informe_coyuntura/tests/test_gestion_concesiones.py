@@ -306,3 +306,24 @@ def test_la_fecha_de_infoleg_se_parsea():
     assert gestion._fecha_infoleg_rfc("24-ago-2026") == "2026-08-24"
     assert gestion._fecha_infoleg_rfc("5-jul-2026") == "2026-07-05"
     assert gestion._fecha_infoleg_rfc("sin fecha") is None
+
+
+def test_cuyo_de_punta_a_punta_no_infla_la_etapa_iii(sin_red, datos, monkeypatch):
+    """Desde oct-2026 la página RFC da 371,37 km para el tramo Cuyo: la RN 7 de
+    punta a punta, con los 42,28 km entre Palmira y la RN 40 que no se
+    concesionan. La etapa queda en lo verificado del store (3.920,21), no en
+    los 3.962,49 que leía el colector (auditoría de oct-2026)."""
+    pagina = dict(datos["km_por_etapa"], III=3962.49)
+    monkeypatch.setattr(gestion, "_rfc_km_por_etapa", lambda: dict(pagina))
+    card = gestion.fetch_concesiones_infraestructura()
+    iii = next(i for i in card["inventario_etapas"] if i["etapa"] == "III")
+    assert iii["km"] == 3920.21
+    assert card["km_totales"] == 9091
+
+
+def test_el_store_fija_la_etapa_iii_verificada():
+    store = json.loads((RAIZ / "data" / "gestion" / "concesiones_fechas.json")
+                       .read_text(encoding="utf-8-sig"))
+    iii = store["etapas"]["III"]
+    assert iii["km_verificado"] == iii["km"] == 3920.21
+    assert store["km_totales"] == round(sum(e["km"] for e in store["etapas"].values()))

@@ -2413,7 +2413,7 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "Es el tiempo entre la resolución de adjudicación y su carga en el archivo del proyecto (días). La fecha del dato es la de la resolución más reciente. La firma de contratos y la toma de posesión ocurren semanas después de la adjudicación y no entran en el cálculo.",
     fuente: {
       organismo: "Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones); CONTRAT.AR sólo como detector",
-      operacion: "Porcentaje de los kilómetros de las etapas licitadas de la Red Federal de Concesiones (I, II, II-B y III; 9.133 km en 16 tramos) cuya adjudicación consta en una resolución del Boletín Oficial. Mide la adjudicación; no la firma del contrato, la toma de posesión ni la obra. No es la red vial nacional: esos kilómetros son cerca del 23% de ella.",
+      operacion: "Porcentaje de los kilómetros de las etapas licitadas de la Red Federal de Concesiones (I, II, II-B y III; 9.091 km en 16 tramos) cuya adjudicación consta en una resolución del Boletín Oficial. Mide la adjudicación; no la firma del contrato, la toma de posesión ni la obra. No es la red vial nacional: esos kilómetros son cerca del 23% de ella.",
       url: "https://www.argentina.gob.ar/transporte/vialidad-nacional/red-federal-de-concesiones",
       acceso: "Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal.",
     },
@@ -2433,14 +2433,14 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "% de km",
     },
     limitaciones: [
-      "El 100% significa «todo lo licitado está adjudicado», no «la red está concesionada» ni operando. A octubre de 2026 la toma de posesión consta en 7.885 de los 9.133 km; la de dos tramos de la Etapa II-B (Puntano y Portuario Norte, 1.248 km) no pudo confirmarse en fuente oficial.",
+      "El 100% significa «todo lo licitado está adjudicado», no «la red está concesionada» ni operando. A octubre de 2026 la toma de posesión consta en 7.843 de los 9.091 km; la de dos tramos de la Etapa II-B (Puntano y Portuario Norte, 1.248 km) no pudo confirmarse en fuente oficial.",
       "Las etapas que adjudican por renglones cuentan hoy solo al cierre total: refinamiento pendiente declarado.",
       "Binario por etapa: 0 o 100% de sus kilómetros.",
       "Depende de los portales de contratación, normativa y kilometraje; una descarga exitosa no garantiza que todos reflejen el mismo estado administrativo.",
       "El porcentaje mide adjudicación formal del plan seleccionado. No acredita firma de todos los contratos, toma de posesión, obras ejecutadas, calidad vial ni operación efectiva de todos los tramos.",
     ],
     faltantes: "Con los portales caídos, cae al valor de respaldo documentado con fecha; agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
-    revisiones: "Los kilómetros por etapa se refrescan de la página oficial en cada actualización; para las adjudicaciones manda la fecha del Boletín Oficial.",
+    revisiones: "Los kilómetros por etapa se refrescan de la página oficial en cada actualización, salvo los de una etapa verificada a mano, que mandan sobre la página; para las adjudicaciones manda la fecha del Boletín Oficial.",
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial como carga manual." },
       { fecha: "2026-07-02", cambio: "Automatizado: estado por CONTRAT.AR y kilometraje por la página oficial de la Red, en km." },
@@ -2449,6 +2449,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-29", cambio: "El valor de respaldo escrito a mano dejó de tener prioridad sobre el último valor que sí salió de la fuente. Con CONTRAT.AR caído, la tarjeta publicaba 28,7% —la foto del 2 de julio, con dos etapas sin adjudicar— teniendo el 100% en el cache de la noche anterior. Una fuente caída ahora envejece el número, no lo hace retroceder. El respaldo se actualizó a 100% con las cuatro resoluciones.", adr: "0269" },
       { fecha: "2026-10-10", cambio: "El estado de cada etapa pasa a salir de las resoluciones del Boletín Oficial registradas, y CONTRAT.AR queda como detector de procesos nuevos que no frena el indicador. Desde los servidores de la publicación el portal no respondía en 15 de 33 noches y la tarjeta quedaba desactualizada. No cambia lo que mide ni su valor." },
       { fecha: "2026-10-24", cambio: "Se explicita que el indicador mide la adjudicación formal de las etapas licitadas y se corrige la ficha, que todavía describía la regla anterior (CONTRAT.AR ya no cuenta como adjudicación desde el 10 de octubre). Se agrega la toma de posesión comprobada como reserva: 7.885 de 9.133 km. No cambia el valor.", adr: "0361" },
+      { fecha: "2026-10-26", cambio: "Se corrigen los km de la Etapa III: 3.920,21, no 3.962,49. Desde octubre la página oficial da 371,37 km para el tramo Cuyo, que es la Ruta 7 de punta a punta con los 42,28 km entre Palmira y la Ruta 40 que no se concesionan; lo concesionado son 329,09 km. Los km verificados a mano mandan sobre la página. El plan queda en 9.091 km y la posesión comprobada en 7.843 (86,3%, igual que antes). No cambia el valor.", adr: "0361" },
     ],
   },
 

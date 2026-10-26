@@ -2622,6 +2622,24 @@ def _rfc_km_por_etapa() -> dict:
     return km_por_etapa
 
 
+def _km_rfc_con_verificados(km_pagina: dict, etapas: dict) -> dict:
+    """Los km de la página RFC, salvo las etapas del store con `km_verificado`,
+    que mandan. Desde oct-2026 la página da 371,37 km para el tramo Cuyo de la
+    Etapa III: es la Ruta 7 de punta a punta (km 865,49 a 1.236,86), con los
+    42,28 km entre Palmira y la RN 40 que no se concesionan. Lo concesionado
+    son 329,09 km, y la etapa 3.920,21 (auditoría de oct-2026)."""
+    km = dict(km_pagina)
+    for etapa, d in etapas.items():
+        fijo = d.get("km_verificado")
+        if fijo is None:
+            continue
+        if etapa in km and abs(km[etapa] - fijo) > 0.01:
+            print(f"  [WARN] concesiones: la página RFC da {km[etapa]} km para la "
+                  f"etapa {etapa}; se usa el verificado ({fijo})")
+        km[etapa] = float(fijo)
+    return km
+
+
 def _etapa_de_proceso(nombre: str) -> str | None:
     m = re.search(r"ETAPA\s+([IVX]+(?:\s*-\s*B)?)", nombre.upper())
     return m.group(1).replace(" ", "") if m else None
@@ -2769,6 +2787,7 @@ def fetch_concesiones_infraestructura() -> dict | None:
         except Exception as e:                              # km de respaldo: el store
             print(f"  [WARN] concesiones: página RFC no respondió ({e}); "
                   f"se usan los km del store")
+        km = _km_rfc_con_verificados(km, store)
         km_total = sum(km.values())
 
         inventario, adjudicadas, detalle_p = [], set(), []

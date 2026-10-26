@@ -362,6 +362,9 @@ fecha,indicador,valor,unidad,fuente
 2021-10-01,litigiosidad_laboral,66.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2021-09-01,litigiosidad_laboral,60.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2021-08-01,litigiosidad_laboral,42.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2026-09-01,libertad_opcion_salud,32.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2026-08-01,libertad_opcion_salud,32.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2026-07-01,libertad_opcion_salud,32.9,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2026-06-01,libertad_opcion_salud,33.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2026-05-01,libertad_opcion_salud,32.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2026-04-01,libertad_opcion_salud,31.7,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
@@ -544,15 +547,15 @@ fecha,indicador,valor,unidad,fuente
 2026-10-01,concesiones_infraestructura,100.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2026-09-01,concesiones_infraestructura,100.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2026-08-01,concesiones_infraestructura,100.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2026-07-01,concesiones_infraestructura,56.6,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2026-06-01,concesiones_infraestructura,28.6,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2026-05-01,concesiones_infraestructura,28.6,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2026-04-01,concesiones_infraestructura,8.1,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2026-03-01,concesiones_infraestructura,8.1,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2026-02-01,concesiones_infraestructura,8.1,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2026-01-01,concesiones_infraestructura,8.1,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2025-12-01,concesiones_infraestructura,8.1,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
-2025-11-01,concesiones_infraestructura,8.1,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
+2026-07-01,concesiones_infraestructura,56.9,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
+2026-06-01,concesiones_infraestructura,28.7,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
+2026-05-01,concesiones_infraestructura,28.7,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
+2026-04-01,concesiones_infraestructura,8.2,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
+2026-03-01,concesiones_infraestructura,8.2,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
+2026-02-01,concesiones_infraestructura,8.2,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
+2026-01-01,concesiones_infraestructura,8.2,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
+2025-12-01,concesiones_infraestructura,8.2,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
+2025-11-01,concesiones_infraestructura,8.2,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2025-10-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2025-09-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)
 2025-08-01,concesiones_infraestructura,0.0,% km adjudicados RFC,Boletín Oficial + RFC (hitos fechados)

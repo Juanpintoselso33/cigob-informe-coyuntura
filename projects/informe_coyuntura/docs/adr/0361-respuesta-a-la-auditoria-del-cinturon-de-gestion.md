@@ -71,7 +71,7 @@ La pregunta: qué se corrige, qué se aclara y qué se deja como está.
   muestra avance 50 y puntaje 55.
 - Salud muestra el total («2,75 M de 8,33 M usuarios de prepagas») y el mes.
 - Concesiones viales dice que mide adjudicación y no toma de posesión. Lleva
-  como reserva que la toma consta en 7.885 de 9.133 km y que dos tramos de la
+  como reserva que la toma consta en 7.885 de 9.133 km (corregido el 26-oct-2026: 7.843 de 9.091, por los 42,28 km del tramo Cuyo que no se concesionan) y que dos tramos de la
   Etapa II-B no tienen fuente oficial.
 - Otros rótulos nuevos: «Inversiones RIGI aprobadas», «Juicios por riesgos del
   trabajo (SRT)» (con la feria de julio), piquetes «cortes en CABA, no

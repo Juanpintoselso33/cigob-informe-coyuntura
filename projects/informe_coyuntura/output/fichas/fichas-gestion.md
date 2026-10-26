@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 13 de 13 publicados.
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 100,0 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. | 59,9 | AMARILLO | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 76,6 | VERDE | 15,0 % |
-| Reforma social y orden | Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes… | 90,9 | VERDE | 10,0 % |
+| Reforma social y orden | Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes… | 90,6 | VERDE | 10,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -77,7 +77,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Reforma social y orden** | | | | |
 | Planes sin intermediarios | Si los planes sociales siguen pasando por intermediarios. | 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | VERDE | 4,0 % |
 | Orden público (piquetes) | En qué porcentaje se redujo el número de cortes por manifestación relevados en CABA respecto de una base estimada para… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
-| Libertad de opción en salud | Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como… | 33,1 % de usuarios de prepagas con aportes derivados directo (sin triangulación) | AMARILLO | 2,0 % |
+| Libertad de opción en salud | Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como… | 32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) | AMARILLO | 2,0 % |
 
 *Datos al 2026-10-26.*
 
@@ -138,7 +138,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1654.00 (2026-10-25T17:58:00-03:00) / mayorista venta 1529.50 (2026-10-23T13:07:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1654.00 (2026-10-26T09:59:00-03:00) / mayorista venta 1529.50 (2026-10-23T13:07:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
@@ -615,7 +615,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-10-26; consulta CNV de esa fecha. Revisión normativa del 2026-10-20 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV
+- Evaluación al 2026-10-26; consulta CNV de esa fecha. Revisión normativa del 2026-10-20 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del FAL en el BO desde mar-2026
 
 ## Color vigente y por qué
 
@@ -956,7 +956,7 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-08) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
+| **Hoy: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)** (2026-10) | **VERDE** | Peso efectivo 3 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -965,14 +965,14 @@ Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya 
 | **IDENTIFICADOR TÉCNICO** | concesiones_infraestructura | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de km adjudicados / km del plan (Red Federal de Concesiones) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Es el tiempo entre la resolución de adjudicación y su carga en el archivo del proyecto (días). La fecha del dato es la de la resolución más reciente. La firma de contratos y la toma de posesión ocurren semanas después de la adjudicación y no entran en el cálculo. |
-| **PRODUCTOR DEL DATO** | Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones); CONTRAT.AR sólo como detector | **OPERACIÓN ESTADÍSTICA** | Porcentaje de los kilómetros de las etapas licitadas de la Red Federal de Concesiones (I, II, II-B y III; 9.133 km en 16 tramos) cuya adjudicación consta en una resolución del Boletín Oficial. Mide la adjudicación; no la firma del contrato, la toma de posesión ni la obra. No es la red vial nacional: esos kilómetros son cerca del 23% de ella. |
-| **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-26 |
+| **PRODUCTOR DEL DATO** | Boletín Oficial vía InfoLeg + Vialidad Nacional (Red Federal de Concesiones); CONTRAT.AR sólo como detector | **OPERACIÓN ESTADÍSTICA** | Porcentaje de los kilómetros de las etapas licitadas de la Red Federal de Concesiones (I, II, II-B y III; 9.091 km en 16 tramos) cuya adjudicación consta en una resolución del Boletín Oficial. Mide la adjudicación; no la firma del contrato, la toma de posesión ni la obra. No es la red vial nacional: esos kilómetros son cerca del 23% de ella. |
+| **MODO DE ACCESO** | Automático: el estado de cada etapa sale de las resoluciones del Boletín Oficial registradas en un archivo fechado del proyecto, y el kilometraje, de la página de Vialidad. CONTRAT.AR solo se consulta como detector: si lista un proceso que el archivo no conoce (por ejemplo una Etapa IV), avisa; si no responde, el indicador se calcula igual. Un acto publicado prevalece sobre el estado atrasado del portal. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-26 |
 
 ## Definición — qué mide y por qué importa
 
 Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado: el estado de cada etapa sale de las resoluciones de adjudicación del Boletín Oficial (el sistema de contrataciones del Estado, CONTRAT.AR, se usa para detectar procesos nuevos) y el kilometraje por tramo de la página oficial de la Red Federal de Concesiones (16 tramos, ~9.100 km en 4 etapas).
 
-Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su resolución de adjudicación está publicada en el Boletín Oficial; que el sistema de contrataciones la muestre adjudicada no alcanza (sólo avisa). El 100% quiere decir que todo lo licitado está adjudicado, no que la red esté concesionada ni operando: las cuatro etapas suman cerca del 23% de la red vial nacional, y a octubre de 2026 la toma de posesión consta en 7.885 de sus 9.133 km (la de dos tramos de la Etapa II-B, Puntano y Portuario Norte, no pudo confirmarse en fuente oficial).
+Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su resolución de adjudicación está publicada en el Boletín Oficial; que el sistema de contrataciones la muestre adjudicada no alcanza (sólo avisa). El 100% quiere decir que todo lo licitado está adjudicado, no que la red esté concesionada ni operando: las cuatro etapas suman cerca del 23% de la red vial nacional, y a octubre de 2026 la toma de posesión consta en 7.843 de sus 9.091 km (la de dos tramos de la Etapa II-B, Puntano y Portuario Norte, no pudo confirmarse en fuente oficial).
 
 **Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
@@ -998,11 +998,11 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 9.133 de 9.133 km adjudicados · I: adjudicada por Resolución 80 / 2025 (2025-11-19) · II-B: adjudicada por Resolución 1149 / 2026 (2026-07-28) · II: adjudicada por Resolución 706 / 2026 (2026-05-15) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24)
+- 9.091 de 9.091 km adjudicados · I: adjudicada por Resolución 80 / 2025 (2025-11-19) · II-B: adjudicada por Resolución 1149 / 2026 (2026-07-28) · II: adjudicada por Resolución 706 / 2026 (2026-05-15) · III: adjudicada por Resolución 1379 / 2026 (2026-08-24)
 
 ## Color vigente y por qué
 
-Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-08).
+Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones) (2026-10).
 
 100,0 % de km adjudicados / km del plan (Red Federal de Concesiones) cae en el tramo que corresponde a Verde, a 59,0 del corte más cercano.
 
@@ -1012,7 +1012,7 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 
 ## Transparencia — limitaciones declaradas
 
-- El 100% significa «todo lo licitado está adjudicado», no «la red está concesionada» ni operando. A octubre de 2026 la toma de posesión consta en 7.885 de los 9.133 km; la de dos tramos de la Etapa II-B (Puntano y Portuario Norte, 1.248 km) no pudo confirmarse en fuente oficial.
+- El 100% significa «todo lo licitado está adjudicado», no «la red está concesionada» ni operando. A octubre de 2026 la toma de posesión consta en 7.843 de los 9.091 km; la de dos tramos de la Etapa II-B (Puntano y Portuario Norte, 1.248 km) no pudo confirmarse en fuente oficial.
 - Las etapas que adjudican por renglones cuentan hoy solo al cierre total: refinamiento pendiente declarado.
 - Binario por etapa: 0 o 100% de sus kilómetros.
 - Depende de los portales de contratación, normativa y kilometraje; una descarga exitosa no garantiza que todos reflejen el mismo estado administrativo.
@@ -1022,7 +1022,7 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 
 - **Si falta el dato:** Con los portales caídos, cae al valor de respaldo documentado con fecha; agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.
 
-- **Política de revisiones:** Los kilómetros por etapa se refrescan de la página oficial en cada actualización; para las adjudicaciones manda la fecha del Boletín Oficial.
+- **Política de revisiones:** Los kilómetros por etapa se refrescan de la página oficial en cada actualización, salvo los de una etapa verificada a mano, que mandan sobre la página; para las adjudicaciones manda la fecha del Boletín Oficial.
 
 ## Historial — cambios metodológicos documentados
 
@@ -1039,6 +1039,8 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 **2026-10-10** — El estado de cada etapa pasa a salir de las resoluciones del Boletín Oficial registradas, y CONTRAT.AR queda como detector de procesos nuevos que no frena el indicador. Desde los servidores de la publicación el portal no respondía en 15 de 33 noches y la tarjeta quedaba desactualizada. No cambia lo que mide ni su valor.
 
 **2026-10-24** — Se explicita que el indicador mide la adjudicación formal de las etapas licitadas y se corrige la ficha, que todavía describía la regla anterior (CONTRAT.AR ya no cuenta como adjudicación desde el 10 de octubre). Se agrega la toma de posesión comprobada como reserva: 7.885 de 9.133 km. No cambia el valor.
+
+**2026-10-26** — Se corrigen los km de la Etapa III: 3.920,21, no 3.962,49. Desde octubre la página oficial da 371,37 km para el tramo Cuyo, que es la Ruta 7 de punta a punta con los 42,28 km entre Palmira y la Ruta 40 que no se concesionan; lo concesionado son 329,09 km. Los km verificados a mano mandan sobre la página. El plan queda en 9.091 km y la posesión comprobada en 7.843 (86,3%, igual que antes). No cambia el valor.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1248,7 +1250,7 @@ Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 33,1 % de usuarios de prepagas con aportes derivados directo (sin triangulación)** (2026-06) | **AMARILLO** | Peso efectivo 2 % del ITCG | Cinturón Gestión |
+| **Hoy: 32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación)** (2026-09) | **AMARILLO** | Peso efectivo 2 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -1256,9 +1258,9 @@ Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | libertad_opcion_salud | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % de usuarios de prepagas con aportes derivados directo (sin triangulación) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-06 (31 puntos) | **REZAGO DE PUBLICACIÓN** | Las fechas de numerador y denominador se publican por separado. Se usa el último RNEMP disponible que no sea posterior al mes del RNAS; si se arrastra un denominador, la razón combina fechas distintas. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Las fechas de numerador y denominador se publican por separado. Se usa el último RNEMP disponible que no sea posterior al mes del RNAS; si se arrastra un denominador, la razón combina fechas distintas. |
 | **PRODUCTOR DEL DATO** | Superintendencia de Servicios de Salud | **OPERACIÓN ESTADÍSTICA** | Padrones oficiales: beneficiarios por Agente del Seguro de Salud (RNAS) y usuarios de entidades de medicina prepaga (RNEMP) |
-| **MODO DE ACCESO** | Automático: descubre las planillas referenciadas por el portal oficial, incluidas versiones con fecha en el nombre. Las referencias inactivas cuyo archivo público responde se identifican expresamente. Las prepagas inscriptas como Agentes del Seguro se identifican por su rango de código de registro (canal creado por el DNU 70/2023). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-26 |
+| **MODO DE ACCESO** | Automático: descubre las planillas referenciadas por el portal oficial, incluidas versiones con fecha en el nombre. Las referencias inactivas cuyo archivo público responde se identifican expresamente. Las prepagas inscriptas como Agentes del Seguro se identifican por su rango de código de registro (canal creado por el DNU 70/2023). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-26 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1289,13 +1291,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 2.754.461 beneficiarios derivados directo a 65 prepagas inscriptas (06/2026) / 8.332.458 usuarios de prepagas (RNEMP 06/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.
+- 2.796.899 beneficiarios derivados directo a 72 prepagas inscriptas (09/2026) / 8.693.041 usuarios de prepagas (RNEMP 08/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.
 
 ## Color vigente y por qué
 
-Dato vigente: 33,1 % de usuarios de prepagas con aportes derivados directo (sin triangulación) (2026-06).
+Dato vigente: 32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) (2026-09).
 
-33,1 % de usuarios de prepagas con aportes derivados directo (sin triangulación) cae en el tramo que corresponde a Amarillo, a 2,9 del corte más cercano.
+32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) cae en el tramo que corresponde a Amarillo, a 3,8 del corte más cercano.
 
 **Color vigente: AMARILLO**
 

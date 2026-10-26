@@ -3322,7 +3322,7 @@ def fetch_concesiones_serie() -> list:
     store = json.loads(CONCESIONES_FECHAS_STORE.read_text(encoding="utf-8-sig"))
     etapas = store["etapas"]
     try:
-        km = gestion._rfc_km_por_etapa()
+        km = gestion._km_rfc_con_verificados(gestion._rfc_km_por_etapa(), etapas)
         store["km_totales"] = round(sum(km.values()))
         for proceso, nombre, estado in gestion._contratar_procesos_rfc():
             etapa = gestion._etapa_de_proceso(nombre)

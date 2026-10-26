@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-26 03:33:58"
+generado: "2026-10-26 10:06:51"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -105,10 +105,10 @@ schema_version: "1.2.0"
 | litigiosidad_laboral | 0.1 | % variación juicios SRT (12m vs 12m previos) | 2026-07-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 33.3 | % de inversión aprobada sobre el pipeline | 2026-10-26 | fresco |
-| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-24 | fresco |
+| concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-10-26 | fresco |
 | asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-10-26 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
-| libertad_opcion_salud | 33.1 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-06-01 | fresco |
+| libertad_opcion_salud | 32.2 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-09-01 | fresco |
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-10-26 | fresco |
 | protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
 
@@ -124,4 +124,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-10-26 03:33:58 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-26 10:06:51 — schema 1.2.0*
