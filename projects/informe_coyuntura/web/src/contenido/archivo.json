@@ -2,10 +2,10 @@
  "meses": [
   {
    "mes": "2026-09",
-   "corrida": "aa1ca08b57",
+   "corrida": "0ff147d0d7",
    "generado": "2026-09-30T20:00:00-03:00",
    "modo": "series_cortadas",
-   "score_global": 3.8,
+   "score_global": 3.9,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
@@ -23,17 +23,17 @@
      "estado": "tensionado"
     },
     "gestion": {
-     "score": 2.3,
+     "score": 2.4,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4089
+   "peso_kb": 4114
   },
   {
    "mes": "2026-08",
-   "corrida": "aa1ca08b57",
+   "corrida": "0ff147d0d7",
    "generado": "2026-08-31T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.8,
@@ -54,20 +54,20 @@
      "estado": "tensionado"
     },
     "gestion": {
-     "score": 2.3,
+     "score": 2.4,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4050
+   "peso_kb": 4075
   },
   {
    "mes": "2026-07",
-   "corrida": "aa1ca08b57",
+   "corrida": "0ff147d0d7",
    "generado": "2026-07-31T20:00:00-03:00",
    "modo": "series_cortadas",
-   "score_global": 3.8,
+   "score_global": 3.9,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
@@ -85,17 +85,17 @@
      "estado": "tensionado"
     },
     "gestion": {
-     "score": 2.5,
+     "score": 2.6,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4006
+   "peso_kb": 4030
   },
   {
    "mes": "2026-06",
-   "corrida": "aa1ca08b57",
+   "corrida": "0ff147d0d7",
    "generado": "2026-06-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.7,
@@ -116,13 +116,13 @@
      "estado": "en_tension"
     },
     "gestion": {
-     "score": 2.4,
+     "score": 2.5,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 3926
+   "peso_kb": 3950
   }
  ]
 }
