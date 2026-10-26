@@ -134,13 +134,13 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     anclas: {
       bandas: [
-        { banda: "≤ 1", puntaje: 100 },
-        { banda: "1 – 2", puntaje: 85 },
-        { banda: "2 – 3", puntaje: 65 },
-        { banda: "3 – 5", puntaje: 40 },
-        { banda: "> 5", puntaje: 10 },
+        { banda: "≤ 0,5", puntaje: 100 },
+        { banda: "0,5 – 1,5", puntaje: 60 },
+        { banda: "1,5 – 2,5", puntaje: 40 },
+        { banda: "2,5 – 3,5", puntaje: 20 },
+        { banda: "> 3,5", puntaje: 10 },
       ],
-      puntos: [[1, 100], [1.5, 85], [2.5, 65], [4, 40], [5, 10]],
+      puntos: [[0.5, 100], [1, 60], [2, 40], [3, 20], [3.5, 10]],
       unidadCorta: "% m/m",
     },
     dobleUso: "El IPC participa además como deflactor de otros componentes del sistema: la recaudación real, el crédito privado real, el IDM y la tasa real del IdC. Un error de medición de la fuente se propagaría a esos indicadores.",
@@ -153,6 +153,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si al calcular el índice el dato del mes no está publicado, el indicador queda fuera de esa actualización y los pesos de su dimensión se renormalizan entre los presentes: la ausencia no puntúa ni a favor ni en contra.",
     revisiones: "El INDEC no revisa retroactivamente el IPC publicado: la serie de la fuente es definitiva. Del lado del informe, la serie se reconstruyó hacia atrás hasta julio de 2021 y todo cambio de método propio queda asentado en el historial de cambios (abajo).",
     cambios: [
+      { fecha: "2026-10-26", cambio: "La escala se ajusta a los cortes de color: verde hasta 1 % mensual, amarillo hasta 2 %, naranja hasta 3 % y rojo arriba (antes el verde llegaba hasta cerca de 2,8 %). Con 1,93 % el puntaje pasa de 76,4 a 41,4 y el indicador, de verde a amarillo.", adr: "0367" },
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Inflación del mes», sin sigla. No cambia el cálculo.", adr: "0366" },
       {
         fecha: "2026-06",
@@ -960,13 +961,13 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     anclas: {
       bandas: [
-        { banda: "≤ 1", puntaje: 100 },
-        { banda: "1 – 2", puntaje: 85 },
-        { banda: "2 – 3", puntaje: 65 },
-        { banda: "3 – 5", puntaje: 40 },
-        { banda: "> 5", puntaje: 10 },
+        { banda: "≤ 0,5", puntaje: 100 },
+        { banda: "0,5 – 1,5", puntaje: 60 },
+        { banda: "1,5 – 2,5", puntaje: 40 },
+        { banda: "2,5 – 3,5", puntaje: 20 },
+        { banda: "> 3,5", puntaje: 10 },
       ],
-      puntos: [[1, 100], [1.5, 85], [2.5, 65], [4, 40], [5, 10]],
+      puntos: [[0.5, 100], [1, 60], [2, 40], [3, 20], [3.5, 10]],
       unidadCorta: "% mensual equivalente",
       sinEjemplo: true,
     },
@@ -978,6 +979,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin dato utilizable, el IPC y el desequilibrio monetario renormalizan entre sí dentro de la dimensión de estabilidad monetaria.",
     revisiones: "El REM publicado no se revisa: cada mes es un relevamiento nuevo.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "Sigue la escala nueva de la inflación del mes, sobre el equivalente mensual de la expectativa: verde hasta 1 % mensual (12,7 % anual), amarillo hasta 2 % (26,8 %), naranja hasta 3 % (42,6 %). Con 21,1 % anual (1,61 % por mes) el puntaje pasa de 82,8 a 47,8 y el indicador, de verde a amarillo.", adr: "0367" },
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Inflación esperada a 12 meses» y cada corte de la escala (en % por mes) lleva entre paréntesis su equivalente anual, la unidad de la tarjeta (12,7 · 26,8 · 42,6 · 79,6 %). No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "El informe separado de sensibilidad aplica la misma conversión anual a mensual que el índice y la web. Se corrige su simulación; el valor y el puntaje del indicador no cambian.", adr: "0289" },
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, con bandas absolutas sobre el nivel anual." },

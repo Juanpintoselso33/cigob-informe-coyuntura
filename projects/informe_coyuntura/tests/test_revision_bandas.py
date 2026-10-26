@@ -76,7 +76,9 @@ def test_el_rem_se_transforma_dentro_del_puntaje_y_no_antes():
         anual, itcm.BANDAS_ITCM["rem_ipc_12m"])
 
     assert sin_transformacion == 10.0, "sin transformar, el REM cae al piso"
-    assert con_transformacion > 75.0, con_transformacion
+    # 23,3 % anual = 1,76 % mensual → 44,8 con la escala de ADR-0367 (antes
+    # 79,8). Lo que importa es que no caiga al piso de 10.
+    assert con_transformacion > 40.0, con_transformacion
 
 
 def test_el_diagnostico_no_recomienda_recalibrar_por_si_solo():

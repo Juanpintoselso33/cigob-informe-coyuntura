@@ -46,10 +46,11 @@ import itcm
 # actividad e inversión=73,9 (EMAE 100 × 0,3696 + IAI 41,8 × 0,30, renormalizado
 # porque el fixture no trae difusión, industria ni actividad tributaria)
 # competitividad=45,7 → ITCM=67,1. Era 66,1 con la inversión como dimensión
-# propia (hasta el 16-oct-2026).
+# propia (hasta el 16-oct-2026). ADR-0367 (escala de inflación sobre los cortes de
+# color 1/2/3 % mensual): estab 67,1 → 39,0 e ITCM 67,1 → 59,8.
 EJEMPLO = {
-    "ipc_total": 2.58,             # interpolado 63,7 (banda 65)
-    "rem_ipc_12m": 23.3,           # ANUAL crudo → 1,76% mensual → 79,8 (banda 85)
+    "ipc_total": 2.58,             # interpolado 28,4 (entre 2 % → 40 y 3 % → 20, ADR-0367)
+    "rem_ipc_12m": 23.3,           # ANUAL crudo → 1,76% mensual → 44,8 (ADR-0367)
     "desequilibrio_monetario": 35.2,  # tensión 0-100 de la matriz A×B: 64,8
     # ADR-0152: dejó de ser variación i.a. y pasó a NIVEL de base imponible real
     # desestacionalizada (100 = 4T-2023). 94,4 es la mediana de la serie observada.
@@ -69,7 +70,7 @@ EJEMPLO = {
 def test_itcm_reproduce_ejemplo():
     r = itcm.calcular_itcm(EJEMPLO)
     dims = r["dimensiones"]
-    assert dims["estabilidad_monetaria"]["puntaje"] == 67.1
+    assert dims["estabilidad_monetaria"]["puntaje"] == 39.0
     assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 78.5
     assert dims["financiamiento"]["puntaje"] == 54.7
     assert dims["actividad"]["puntaje"] == 73.9
@@ -78,13 +79,13 @@ def test_itcm_reproduce_ejemplo():
     ind = dims["financiamiento"]["indicadores"]["credito_privado"]
     assert ind["puntaje_banda"] == 80.0 and ind["peso"] == 0.20
     assert dims["financiamiento"]["indicadores"]["idc"]["puntaje_aplicado"] == 49.7
-    assert r["valor"] == 67.1
-    assert r["banda"] == "moderadamente_aflojado"
+    assert r["valor"] == 59.8
+    assert r["banda"] == "moderadamente_apretado"
     desequilibrio = dims["estabilidad_monetaria"]["indicadores"]["desequilibrio_monetario"]
     assert desequilibrio["puntaje_aplicado"] == 64.8
     assert desequilibrio["peso"] == 0.20
     assert desequilibrio["peso_efectivo"] == 0.052
-    assert itcm.tension_de_itcm(r["valor"]) == 3.3
+    assert itcm.tension_de_itcm(r["valor"]) == 4.0
     assert r["ajustes_aplicados"] == []
 
 
@@ -93,13 +94,14 @@ def test_puntaje_interpolado():
     las abiertas), plano en los extremos; en cada ancla reproduce el puntaje
     de su banda."""
     import parametrica
-    b = itcm.BANDAS_ITCM["ipc_total"]   # ≤1→100 · 1-2→85 · 2-3→65 · 3-5→35 · >5→10
-    assert parametrica.puntaje_interpolado(0.5, b) == 100.0   # antes de la 1ª ancla
-    assert parametrica.puntaje_interpolado(1.0, b) == 100.0   # ancla (borde abierto)
-    assert parametrica.puntaje_interpolado(1.5, b) == 85.0    # ancla (punto medio)
-    assert parametrica.puntaje_interpolado(2.0, b) == 75.0    # mitad entre 85 y 65
-    assert parametrica.puntaje_interpolado(2.5, b) == 65.0    # ancla
-    assert parametrica.puntaje_interpolado(5.0, b) == 10.0    # última ancla
+    b = itcm.BANDAS_ITCM["ipc_total"]   # ADR-0367: ≤0,5→100 · 0,5-1,5→60 · 1,5-2,5→40 · 2,5-3,5→20 · >3,5→10
+    assert parametrica.puntaje_interpolado(0.3, b) == 100.0   # antes de la 1ª ancla
+    assert parametrica.puntaje_interpolado(0.5, b) == 100.0   # ancla (borde abierto)
+    assert parametrica.puntaje_interpolado(1.0, b) == 60.0    # ancla = corte verde/amarillo
+    assert parametrica.puntaje_interpolado(1.5, b) == 50.0    # mitad entre 60 y 40
+    assert parametrica.puntaje_interpolado(2.0, b) == 40.0    # ancla = corte amarillo/naranja
+    assert parametrica.puntaje_interpolado(3.0, b) == 20.0    # ancla = corte naranja/rojo
+    assert parametrica.puntaje_interpolado(3.5, b) == 10.0    # última ancla
     assert parametrica.puntaje_interpolado(9.0, b) == 10.0    # plano más allá
 
     # Antes acá se pineaban las anclas de `idm`; salió del índice (ADR-0261) y
@@ -189,10 +191,11 @@ def test_pesos_efectivos_reconcilian_con_itcm():
 def test_bordes_de_banda():
     """Convención: low exclusivo, high inclusivo."""
     b = itcm.BANDAS_ITCM
-    assert itcm.puntaje_banda(1.0, b["ipc_total"]) == 100
-    assert itcm.puntaje_banda(2.0, b["ipc_total"]) == 85
-    assert itcm.puntaje_banda(3.0, b["ipc_total"]) == 65
-    assert itcm.puntaje_banda(5.01, b["ipc_total"]) == 10
+    assert itcm.puntaje_banda(0.5, b["ipc_total"]) == 100
+    assert itcm.puntaje_banda(1.5, b["ipc_total"]) == 60
+    assert itcm.puntaje_banda(2.5, b["ipc_total"]) == 40
+    assert itcm.puntaje_banda(3.5, b["ipc_total"]) == 20
+    assert itcm.puntaje_banda(3.51, b["ipc_total"]) == 10
     assert itcm.puntaje_banda(5.0, b["emae_ia"]) == 80     # >5 estricto para 100
     assert itcm.puntaje_banda(-5.0, b["emae_ia"]) == 5
     # ADR-0152: la recaudación es un NIVEL base-100, no una variación. El borde
@@ -202,9 +205,9 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(100.01, b["recaudacion"]) == 85
     assert itcm.puntaje_banda(10.0, b["recaudacion"]) == 10
     # REM: la banda opera sobre el EQUIVALENTE MENSUAL (misma escala que el IPC)
-    assert itcm.puntaje_banda(1.76, b["rem_ipc_12m"]) == 85
-    assert itcm.puntaje_banda(2.0, b["rem_ipc_12m"]) == 85
-    assert itcm.puntaje_banda(2.01, b["rem_ipc_12m"]) == 65
+    assert itcm.puntaje_banda(1.76, b["rem_ipc_12m"]) == 40
+    assert itcm.puntaje_banda(1.5, b["rem_ipc_12m"]) == 60
+    assert itcm.puntaje_banda(2.51, b["rem_ipc_12m"]) == 20
     # Reservas NETAS
     assert itcm.puntaje_banda(20000, b["reservas_bcra"]) == 85   # high inclusivo
     assert itcm.puntaje_banda(20001, b["reservas_bcra"]) == 100
@@ -245,7 +248,7 @@ def test_rem_mensual_equivalente_y_idc():
     # raíz 12 de la expectativa anual → equivalente mensual
     assert abs(itcm.rem_mensual_equivalente(23.3) - 1.7607) < 1e-3
     assert itcm.puntaje_banda(itcm.rem_mensual_equivalente(23.3),
-                              itcm.BANDAS_ITCM["rem_ipc_12m"]) == 85
+                              itcm.BANDAS_ITCM["rem_ipc_12m"]) == 40
     # IdC = 0,30·z_precio + 0,40·z_volumen + 0,30·z_asignación (ADR-0028)
     idc = itcm.indice_capacidad_prestable(0.33, -0.13, -1.18)
     assert abs(idc - (-0.307)) < 1e-3
@@ -259,7 +262,7 @@ def test_ajuste_manual_aplicado():
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
     # fiscal = 0,5×87,9 (resultado primario) + 0,3×58,5 (recaudación) + 0,2×60 (override) = 73,5
     assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 73.5
-    assert r["valor"] == 65.9
+    assert r["valor"] == 58.6
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85.0 and aj["a"] == 60
@@ -283,17 +286,17 @@ def test_renormalizacion_indicador_faltante():
     """Sin REM, la dimensión renormaliza IPC y desequilibrio monetario."""
     valores = dict(EJEMPLO, rem_ipc_12m=None)
     r = itcm.calcular_itcm(valores)
-    # (63,7×0.60 + 64,8×0.20) / 0.80 = 63,975 → 64,0
-    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 64.0
-    assert abs(r["valor"] - 66.3) <= 0.05   # −0,81 = (63,975 − 67,14) × 0,26
+    # (28,4×0.60 + 64,8×0.20) / 0.80 = 37,5 (ADR-0367)
+    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 37.5
+    assert abs(r["valor"] - 59.4) <= 0.05
 
 
 def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
     valores = dict(EJEMPLO, desequilibrio_monetario=None)
     r = itcm.calcular_itcm(valores)
     estabilidad = r["dimensiones"]["estabilidad_monetaria"]
-    # (63,7×0.60 + 79,8×0.20) / 0.80 = 67,725 → 67,7
-    assert estabilidad["puntaje"] == 67.7
+    # (28,4×0.60 + 44,8×0.20) / 0.80 = 32,5 (ADR-0367)
+    assert estabilidad["puntaje"] == 32.5
     assert "desequilibrio_monetario" not in estabilidad["indicadores"]
 
 
@@ -304,8 +307,8 @@ def test_renormalizacion_dimension_faltante():
     valores = dict(EJEMPLO, tcr_terminos_intercambio=None)
     r = itcm.calcular_itcm(valores)
     assert "competitividad_externa" not in r["dimensiones"]
-    # estab=67.1 fiscal=78.5 financ=54.7 actividad e inversión=73.9, sin competitividad (0.11)
-    esperado = (0.26 * 67.1 + 0.24 * 78.5 + 0.16 * 54.7 + 0.23 * 73.9) / 0.89
+    # estab=39.0 fiscal=78.5 financ=54.7 actividad e inversión=73.9, sin competitividad (0.11)
+    esperado = (0.26 * 39.0 + 0.24 * 78.5 + 0.16 * 54.7 + 0.23 * 73.9) / 0.89
     assert abs(r["valor"] - esperado) <= 0.1
 
 

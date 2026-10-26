@@ -27,12 +27,28 @@ def _ancho(exposicion, n=2000):
     return r["p95"] - r["p05"]
 
 
+def _ancho_sin_redondeo(exposicion, n=8000):
+    """p95 − p05 de los draws sin redondear. Desde ADR-0367 (escala de inflación
+    más empinada) la diferencia entre los dos supuestos quedó en ~0,13 puntos:
+    el rango publicado, redondeado a un decimal con 2.000 draws, ya no la ve."""
+    import random
+    import statistics
+    import parametrica
+    dims = sensibilidad._estructura(_bloque_itcm())
+    escala = parametrica.Escala(itcm.BANDAS_ITCM, None, None)
+    rng = random.Random(sensibilidad.SEMILLA)
+    draws = [sensibilidad._perturbar(dims, rng, pesos=True, escala=escala,
+                                     exposicion=exposicion) for _ in range(n)]
+    q = statistics.quantiles(draws, n=20)
+    return q[-1] - q[0]
+
+
 def test_compartir_el_deflactor_ensancha_el_rango():
     """Es el objeto del ADR: si el error del deflactor es común, no se cancela
     en la agregación y el intervalo de robustez tiene que ser MÁS ancho que
     bajo el supuesto de independencia."""
-    independiente = _ancho(None)
-    compartido = _ancho(sensibilidad.EXPOSICION_DEFLACTOR_ITCM)
+    independiente = _ancho_sin_redondeo(None)
+    compartido = _ancho_sin_redondeo(sensibilidad.EXPOSICION_DEFLACTOR_ITCM)
     assert compartido > independiente, (
         f"compartir el deflactor no ensanchó el rango: {compartido} vs {independiente}")
 

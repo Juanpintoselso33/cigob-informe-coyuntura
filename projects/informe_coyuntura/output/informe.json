@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-10-26T17:48:16.775311-03:00",
+  "generated_at": "2026-10-26T18:25:46.965750-03:00",
   "period": "2026-10",
-  "score_global": 3.8,
+  "score_global": 4.0,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -15,8 +15,8 @@
   },
   "cinturones": {
     "macro": {
-      "score": 3.9,
-      "estado": "estable",
+      "score": 4.6,
+      "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
         "ipc_total": {
@@ -28,8 +28,8 @@
           "obtenido_en": "2026-10-26T03:04:12",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_itcm": 76.4,
-          "puntaje_banda": 76.4,
+          "puntaje_itcm": 41.4,
+          "puntaje_banda": 41.4,
           "peso_efectivo": 0.156
         },
         "reservas_bcra": {
@@ -289,8 +289,8 @@
           "obtenido_en": "2026-10-26T03:05:17",
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_itcm": 82.8,
-          "puntaje_banda": 82.8,
+          "puntaje_itcm": 47.8,
+          "puntaje_banda": 47.8,
           "peso_efectivo": 0.052,
           "equivalente_mensual": 1.61,
           "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.61% mensual, en la misma escala que el IPC."
@@ -459,26 +459,26 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 61.5,
-        "banda": "moderadamente_aflojado",
-        "banda_legible": "Moderadamente aflojado",
+        "valor": 54.2,
+        "banda": "moderadamente_apretado",
+        "banda_legible": "Moderadamente apretado",
         "dimensiones": {
           "estabilidad_monetaria": {
             "nombre": "Estabilidad monetaria-inflacionaria",
             "peso": 0.26,
-            "puntaje": 69.6,
+            "puntaje": 41.6,
             "indicadores": {
               "ipc_total": {
                 "peso": 0.6,
-                "puntaje_banda": 76.4,
-                "puntaje_aplicado": 76.4,
+                "puntaje_banda": 41.4,
+                "puntaje_aplicado": 41.4,
                 "valor": 1.93,
                 "peso_efectivo": 0.156
               },
               "rem_ipc_12m": {
                 "peso": 0.2,
-                "puntaje_banda": 82.8,
-                "puntaje_aplicado": 82.8,
+                "puntaje_banda": 47.8,
+                "puntaje_aplicado": 47.8,
                 "valor": 21.1,
                 "peso_efectivo": 0.052
               },

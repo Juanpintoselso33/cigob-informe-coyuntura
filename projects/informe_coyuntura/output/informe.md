@@ -1,7 +1,7 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-26 17:48:16"
-score_global: 3.8
+generado: "2026-10-26 18:25:46"
+score_global: 4.0
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
 alerta_multicinturon: false
@@ -10,11 +10,11 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-10
 
-**Score global:** 3.8/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.3/10)
+**Score global:** 4.0/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.3/10)
 
 ## Cinturones
 
-### 🟢 Macro — score 3.9/10 (estable)
+### 🟡 Macro — score 4.6/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -125,4 +125,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-10-26 17:48:16 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-26 18:25:46 — schema 1.2.0*

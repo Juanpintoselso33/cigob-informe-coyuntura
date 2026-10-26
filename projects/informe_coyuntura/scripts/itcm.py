@@ -107,7 +107,14 @@ BANDAS_ITCM = {
         # pre-mandato en el peor tramo y haría parecer perfecto cualquier mes de
         # hoy sólo porque el punto de partida era catastrófico — el blanqueo de
         # señal que ADR-0045 prohíbe. El umbral es la referencia externa correcta.
-        (-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (3.0, 5.0, 40), (5.0, INF, 10),
+        #
+        # ADR-0367 (26-oct-2026): con las anclas viejas (1→100 · 1,5→85 ·
+        # 2,5→65 · 4→40) el verde llegaba hasta ~2,8 % mensual (≈39 % anual) y
+        # 1,93 % salía «sin tensión relevante». A pedido de Luis (y fiel a la
+        # propia norma: 1 % = éxito), las anclas caen ahora sobre los cortes de
+        # color: verde hasta 1 % mensual (puntaje 60), amarillo hasta 2 % (40),
+        # naranja hasta 3 % (20), rojo arriba; 0,5 % o menos es 100.
+        (-INF, 0.5, 100), (0.5, 1.5, 60), (1.5, 2.5, 40), (2.5, 3.5, 20), (3.5, INF, 10),
     ],
     "rem_ipc_12m": [                    # EQUIVALENTE MENSUAL del REM (% mensual), raíz 12.
         # Valor DERIVADO en macro.py. Misma escala mensual que el IPC: pone la
@@ -116,8 +123,9 @@ BANDAS_ITCM = {
         # el REM es la inflación esperada y se juzga con la misma vara que la
         # realizada, de modo que un mismo puntaje signifique lo mismo en los dos.
         # No tiene historia propia previa a dic-2023 —es la serie derivada— pero
-        # hereda su criterio del IPC, no del período medido.
-        (-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (3.0, 5.0, 40), (5.0, INF, 10),
+        # hereda su criterio del IPC, no del período medido. ADR-0367: sigue a
+        # la escala nueva del IPC (verde hasta 1 % mensual ≈ 12,7 % anual).
+        (-INF, 0.5, 100), (0.5, 1.5, 60), (1.5, 2.5, 40), (2.5, 3.5, 20), (3.5, INF, 10),
     ],
     "desequilibrio_monetario": [        # tensión 0-100 de la matriz A × B (ADR-0192)
         # El valor crudo YA VIENE en unidades de tensión: desequilibrio_monetario.py

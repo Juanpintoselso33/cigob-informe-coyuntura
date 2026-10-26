@@ -12,7 +12,7 @@
           "indicador": "ipc_total",
           "categoria": "conceptual",
           "peso": 0.156,
-          "motivo": "bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120)"
+          "motivo": "bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120); desde ADR-0367 las anclas caen sobre los cortes de color 1/2/3 % mensual"
         },
         {
           "indicador": "emae_ia",

@@ -4,56 +4,56 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-26T17:48:16.775311-03:00",
+    "snapshot": "2026-10-26T18:25:46.965750-03:00",
     "adr": "0019"
   },
   "itcm": {
-    "valor_publicado": 61.5,
-    "valor_recomputado": 61.5,
+    "valor_publicado": 54.2,
+    "valor_recomputado": 54.2,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 61.5,
-        "p05": 60.2,
-        "p95": 62.8,
-        "desvio": 0.82
+        "media": 54.2,
+        "p05": 52.9,
+        "p95": 55.6,
+        "desvio": 0.85
       },
       "combinado": {
-        "media": 61.6,
-        "p05": 59.7,
-        "p95": 63.5,
-        "desvio": 1.15
+        "media": 54.3,
+        "p05": 52.5,
+        "p95": 56.2,
+        "desvio": 1.14
       },
       "insumos": {
-        "media": 61.5,
-        "p05": 60.2,
-        "p95": 62.9,
-        "desvio": 0.81
+        "media": 54.3,
+        "p05": 53.0,
+        "p95": 55.5,
+        "desvio": 0.75
       }
     },
     "leave_one_out": {
-      "ipc_total": 58.9,
-      "desequilibrio_monetario": 63.7,
-      "resultado_primario": 59.6,
-      "recaudacion": 63.4,
-      "tcr_terminos_intercambio": 63.0,
-      "costo_financiamiento_tesoro": 60.1,
-      "credito_privado": 62.6,
-      "rem_ipc_12m": 60.6,
-      "iai": 60.6,
-      "emae_ia": 62.4,
-      "saldo_comercial_12m": 61.0,
-      "idc": 62.0,
-      "ipi_manufacturero": 61.9,
-      "reservas_bcra": 61.3,
-      "actividad_tributaria": 61.3,
-      "emae_difusion": 61.5
+      "resultado_primario": 52.3,
+      "recaudacion": 56.1,
+      "costo_financiamiento_tesoro": 52.8,
+      "credito_privado": 55.3,
+      "iai": 53.3,
+      "emae_ia": 55.1,
+      "tcr_terminos_intercambio": 54.8,
+      "saldo_comercial_12m": 53.7,
+      "idc": 54.7,
+      "rem_ipc_12m": 53.8,
+      "desequilibrio_monetario": 54.6,
+      "ipi_manufacturero": 54.6,
+      "reservas_bcra": 54.0,
+      "actividad_tributaria": 54.0,
+      "ipc_total": 54.3,
+      "emae_difusion": 54.2
     },
     "tension": {
-      "base": 3.8,
+      "base": 4.6,
       "rango_combinado": [
-        3.6,
-        4.0
+        4.4,
+        4.8
       ]
     }
   },

@@ -35,14 +35,14 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 61,5** | **VERDE** | Moderadamente aflojado | 16 indicadores: 6 en verde · 6 en amarillo · 4 en naranja |
+| **ITCM: 54,2** | **AMARILLO** | Moderadamente apretado | 16 indicadores: 4 en verde · 8 en amarillo · 4 en naranja |
 Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 69,6 | VERDE | 26,0 % |
+| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 41,6 | AMARILLO | 26,0 % |
 | Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 77,1 | VERDE | 24,0 % |
 | Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 42,8 | AMARILLO | 23,0 % |
 | Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 59,9 | AMARILLO | 16,0 % |
@@ -61,8 +61,8 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCM |
 |---|---|---|---|---|
 | **DIMENSIÓN: Estabilidad monetaria-inflacionaria** | | | | |
-| Inflación del mes | Cuánto suben en el mes los precios al consumidor en general. | 1,93 % mensual | VERDE | 15,6 % |
-| Inflación esperada a 12 meses | La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del… | 21,1 % anual esperado | VERDE | 5,2 % |
+| Inflación del mes | Cuánto suben en el mes los precios al consumidor en general. | 1,93 % mensual | AMARILLO | 15,6 % |
+| Inflación esperada a 12 meses | La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del… | 21,1 % anual esperado | AMARILLO | 5,2 % |
 | Liquidez en pesos y presión compradora de divisas | Mira dos cosas a la vez. | 64,01 pts de tensión (0-100) | NARANJA | 5,2 % |
 | **DIMENSIÓN: Viabilidad fiscal-comercial** | | | | |
 | Saldo comercial (últimos 12 meses) | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses. | 26.472 Millones de USD (acum. 12 meses) | VERDE | 4,8 % |
@@ -98,7 +98,7 @@ Cuánto suben en el mes los precios al consumidor en general.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,93 % mensual** (2026-09) | **VERDE** | Peso efectivo 15,6 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 1,93 % mensual** (2026-09) | **AMARILLO** | Peso efectivo 15,6 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -131,10 +131,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% mensual) | Color |
 |---|---|
-| ≤ 2,8 | VERDE |
-| 2,8 – 4 | AMARILLO |
-| 4 – 4,67 | NARANJA |
-| ≥ 4,67 | ROJO |
+| ≤ 1 | VERDE |
+| 1 – 2 | AMARILLO |
+| 2 – 3 | NARANJA |
+| ≥ 3 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -146,9 +146,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 1,93 % mensual (2026-09).
 
-1,93 % mensual está en Verde, a 0,87 del límite con Amarillo (2,8).
+1,93 % mensual está en Amarillo, a 0,07 del límite con Naranja (2,0).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCM: 15,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -168,6 +168,8 @@ Ponderación vigente en el ITCM: 15,6 % efectivo. El color es una lectura adicio
 - **Política de revisiones:** El INDEC no revisa retroactivamente el IPC publicado: la serie de la fuente es definitiva. Del lado del informe, la serie se reconstruyó hacia atrás hasta julio de 2021 y todo cambio de método propio queda asentado en el historial de cambios (abajo).
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — La escala se ajusta a los cortes de color: verde hasta 1 % mensual, amarillo hasta 2 %, naranja hasta 3 % y rojo arriba (antes el verde llegaba hasta cerca de 2,8 %). Con 1,93 % el puntaje pasa de 76,4 a 41,4 y el indicador, de verde a amarillo.
 
 **2026-10-26** — El rótulo pasa a «Inflación del mes», sin sigla. No cambia el cálculo.
 
@@ -1065,7 +1067,7 @@ La inflación que el mercado espera para los próximos 12 meses, en tasa anual, 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 21,1 % anual esperado** (2026-09) | **VERDE** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 21,1 % anual esperado** (2026-09) | **AMARILLO** | Peso efectivo 5,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1098,10 +1100,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% anual esperado) | Color |
 |---|---|
-| ≤ 39,29 | VERDE |
-| 39,29 – 60,1 | AMARILLO |
-| 60,1 – 72,86 | NARANJA |
-| ≥ 72,86 | ROJO |
+| ≤ 12,68 | VERDE |
+| 12,68 – 26,82 | AMARILLO |
+| 26,82 – 42,58 | NARANJA |
+| ≥ 42,58 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1113,9 +1115,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 21,1 % anual esperado (2026-09).
 
-21,1 % anual esperado está en Verde, a 18,19 del límite con Amarillo (39,2892).
+21,1 % anual esperado está en Amarillo, a 5,72 del límite con Naranja (26,8242).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -1132,6 +1134,8 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** El REM publicado no se revisa: cada mes es un relevamiento nuevo.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — Sigue la escala nueva de la inflación del mes, sobre el equivalente mensual de la expectativa: verde hasta 1 % mensual (12,7 % anual), amarillo hasta 2 % (26,8 %), naranja hasta 3 % (42,6 %). Con 21,1 % anual (1,61 % por mes) el puntaje pasa de 82,8 a 47,8 y el indicador, de verde a amarillo.
 
 **2026-10-26** — El rótulo pasa a «Inflación esperada a 12 meses» y cada corte de la escala (en % por mes) lleva entre paréntesis su equivalente anual, la unidad de la tarjeta (12,7 · 26,8 · 42,6 · 79,6 %). No cambia el cálculo.
 

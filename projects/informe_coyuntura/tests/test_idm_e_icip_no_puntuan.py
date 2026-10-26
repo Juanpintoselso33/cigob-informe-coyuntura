@@ -147,6 +147,10 @@ BANDAS_ANTES["icip"] = [(20.0, INF, 100), (5.0, 20.0, 80), (-5.0, 5.0, 60),
 # Las de `iai` también se congelan en su forma de agosto: ADR-0341 corrió su
 # escala al crecimiento de la población, y eso es otra decisión que no se
 # atribuye acá.
+# Y la inflación y las expectativas con la escala de agosto: ADR-0367 las movió
+# a los cortes de color 1/2/3 % mensual, otra decisión que no se atribuye acá.
+BANDAS_ANTES["ipc_total"] = [(-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (3.0, 5.0, 40), (5.0, INF, 10)]
+BANDAS_ANTES["rem_ipc_12m"] = list(BANDAS_ANTES["ipc_total"])
 BANDAS_ANTES["iai"] = [(10.0, INF, 100), (2.0, 10.0, 80), (-2.0, 2.0, 60),
                        (-10.0, -2.0, 35), (-INF, -10.0, 10)]
 # Y el `tcrm` como puntuaba en agosto, solo en su dimensión: ADR-0360 lo
