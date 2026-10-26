@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Macroeconomía — resumen
 
-Este documento tiene una ficha por indicador — son 16 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 15 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,8 +35,8 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 54,2** | **AMARILLO** | Moderadamente apretado | 16 indicadores: 4 en verde · 8 en amarillo · 4 en naranja |
-Componentes que puntúan en este corte: 16 de 16 publicados.
+| **ITCM: 53,9** | **AMARILLO** | Moderadamente apretado | 15 indicadores: 4 en verde · 7 en amarillo · 4 en naranja |
+Componentes que puntúan en este corte: 15 de 15 publicados.
 
 ## Dimensiones
 
@@ -44,7 +44,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 |---|---|---|---|---|
 | Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 41,6 | AMARILLO | 26,0 % |
 | Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 77,1 | VERDE | 24,0 % |
-| Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 42,8 | AMARILLO | 23,0 % |
+| Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 41,4 | AMARILLO | 23,0 % |
 | Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 59,9 | AMARILLO | 16,0 % |
 | Competitividad externa | Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene. | 49,8 | AMARILLO | 11,0 % |
 
@@ -69,10 +69,9 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Base imponible real (nación + provincias) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 94,4 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
 | Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acum. 12 meses) | VERDE | 12,0 % |
 | **DIMENSIÓN: Actividad e inversión** | | | | |
-| Actividad económica (vs. un año atrás) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | −1,44 % i.a. | NARANJA | 8,5 % |
-| Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica… | 46,67 % de sectores en crecimiento i.a. | AMARILLO | 2,8 % |
-| Producción industrial (vs. un año atrás) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,04 % i.a. (promedio 3 meses) | NARANJA | 2,8 % |
-| Actividad tributaria (IVA-DGI + cheque) | Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la… | 0,86 % i.a. real (compuesto IVA-DGI/cheque) | AMARILLO | 1,9 % |
+| Actividad económica (vs. un año atrás) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | −1,44 % i.a. | NARANJA | 9,7 % |
+| Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica… | 46,67 % de sectores en crecimiento i.a. | AMARILLO | 3,2 % |
+| Producción industrial (vs. un año atrás) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,04 % i.a. (promedio 3 meses) | NARANJA | 3,2 % |
 | Inversión física | Índice Anticipador de Inversión. | −1,74 % i.a. ponderado | AMARILLO | 6,9 % |
 | **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
 | Reservas netas | Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la… | 10.725 Millones de USD | VERDE | 5,4 % |
@@ -375,7 +374,7 @@ El pulso mensual de la actividad económica: cuánto creció o cayó respecto de
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −1,44 % i.a.** (2026-07) | **NARANJA** | Peso efectivo 8,5 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −1,44 % i.a.** (2026-07) | **NARANJA** | Peso efectivo 9,7 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -393,7 +392,7 @@ El pulso mensual de la actividad económica: cuánto creció o cayó respecto de
 
 Adelanta el ritmo del producto interno bruto: si la economía se expande o se contrae.
 
-**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -426,7 +425,7 @@ Dato vigente: −1,44 % i.a. (2026-07).
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCM: 8,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 9,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** La misma serie se extrae también como insumo de contexto en el cinturón de impacto social.
 
@@ -469,7 +468,7 @@ De los quince sectores en que el Instituto Nacional de Estadística y Censos (IN
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 46,67 % de sectores en crecimiento i.a.** (2026-07) | **AMARILLO** | Peso efectivo 2,8 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 46,67 % de sectores en crecimiento i.a.** (2026-07) | **AMARILLO** | Peso efectivo 3,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -487,7 +486,7 @@ De los quince sectores en que el Instituto Nacional de Estadística y Censos (IN
 
 Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El estimador mensual de actividad económica (EMAE) informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.
 
-**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -522,7 +521,7 @@ Dato vigente: 46,67 % de sectores en crecimiento i.a. (2026-07).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCM: 2,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -557,7 +556,7 @@ Cuánto produce la industria manufacturera respecto de un año atrás, promediad
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −2,04 % i.a. (promedio 3 meses)** (2026-08) | **NARANJA** | Peso efectivo 2,8 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −2,04 % i.a. (promedio 3 meses)** (2026-08) | **NARANJA** | Peso efectivo 3,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -575,7 +574,7 @@ Cuánto produce la industria manufacturera respecto de un año atrás, promediad
 
 Segunda lectura de la actividad, junto al estimador mensual de actividad económica (EMAE): mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.
 
-**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 
@@ -609,7 +608,7 @@ Dato vigente: −2,04 % i.a. (promedio 3 meses) (2026-08).
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCM: 2,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** Usa las mismas bandas que el EMAE, deliberadamente y con una consecuencia que conviene declarar: sobre la historia disponible, un mes mediano del índice industrial puntúa 39 y uno del estimador de actividad agregada puntúa 71. La brecha no es un defecto de calibración sino desempeño real —la industria argentina creció menos que el conjunto de la economía durante el período—, y ensanchar las bandas para cerrarla borraría esa señal. El arrastre que produce se compensa limitando su peso dentro de la dimensión, no retocando las anclas.
 
@@ -639,100 +638,6 @@ Ponderación vigente en el ITCM: 2,8 % efectivo. El color es una lectura adicion
 **2026-07-18** — Su peso baja de 35% a 20% de la dimensión: al ser la industria parte del propio estimador agregado, el reparto anterior dejaba a la dimensión con casi la mitad de su exposición en un solo sector.
 
 **2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 17,6% a 12,3%; en el índice sube de 1,9% a 2,8%. La proporción 80/20 entre el EMAE y la industria no cambia.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
-
-# Actividad tributaria (IVA-DGI + cheque)
-
-Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la Dirección General Impositiva y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: 0,86 % i.a. real (compuesto IVA-DGI/cheque)** (2026-09) | **AMARILLO** | Peso efectivo 1,9 % del ITCM | Cinturón Macroeconomía |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | actividad_tributaria | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Actividad e inversión | **UNIDAD DE MEDIDA** | % i.a. real (compuesto IVA-DGI/cheque) |
-| **SERIE DISPONIBLE** | 2017-12 → 2026-09 (106 puntos) | **REZAGO DE PUBLICACIÓN** | Es la lectura más fresca de la dimensión de actividad: la Secretaría de Hacienda/ARCA informa IVA-DGI y créditos/débitos bancarios de un mes dentro del mes siguiente, antes de que el INDEC cierre el EMAE del mismo período. Medido el 16-sep-2026 contra el último mes calendario cerrado (agosto): este indicador publica ese mismo mes (0 de atraso), el IPI manufacturero un mes de atraso, y el EMAE y su difusión sectorial dos. Frescura de PUBLICACIÓN, no anticipación de ciclo: la correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y baja al adelantarla (ver `dobleUso`), así que lo que entrega antes es la MISMA lectura de actividad, no una señal nueva. |
-| **PRODUCTOR DEL DATO** | Secretaría de Hacienda / ARCA (dato primario), deflactor INDEC | **OPERACIÓN ESTADÍSTICA** | IVA-DGI y créditos y débitos bancarios (impuesto al cheque), dos de los componentes del agregado de recaudación DGI, en pesos corrientes llevados a pesos constantes con el IPC nacional |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo de datos.gob.ar, misma fuente que alimenta la descomposición del detalle de `recaudacion`. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-26 |
-
-## Definición — qué mide y por qué importa
-
-Cuánto crecieron, en términos reales y respecto de un año atrás, el impuesto al valor agregado (IVA) que cobra la Dirección General Impositiva y el impuesto a los créditos y débitos bancarios (impuesto al cheque), promediados con más peso para el IVA.
-
-La lectura más fresca de la dimensión: Hacienda informa estos dos tributos antes de que el Instituto Nacional de Estadística y Censos (INDEC) cierre el estimador mensual de actividad económica (EMAE) del mismo mes. El impuesto al valor agregado (IVA) sigue de cerca el consumo interno; el cheque sigue toda transacción bancaria, así que además de actividad capta bancarización.
-
-**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
-
-## Método de cómputo
-
-- Cada serie se lleva a variación interanual real: nominal contra el mismo mes del año anterior, deflactada por el IPC del mismo período (mismo método que el resto del cinturón).
-- Las dos variaciones se promedian con ponderación 0,6 para IVA-DGI y 0,4 para el cheque. No se cruzan en una matriz (como sí hace `desequilibrio_monetario`): esa construcción existe cuando dos componentes miden fenómenos DISTINTOS que se refuerzan o se contrarrestan de forma declarada; acá las dos series miden el mismo constructo —actividad— con ruido propio cada una, la misma situación que ya conviven `emae_ia` e `ipi_manufacturero` en esta dimensión, sin matriz. Medido, no supuesto: r(IVA-DGI, cheque) = 0,617 (105 meses, dic-2017/ago-2026; 0,645 desde dic-2023) — ni el 'mismo dato con otro nombre' (r>0,9) ni fenómenos independientes; en 41 de los 105 meses el compuesto puntúa distinto que el IVA-DGI solo, incluido el mes vigente (IVA-DGI −3,0%, cheque −9,1%, compuesto en banda 20 contra la banda 40 que daría el IVA solo). Esa divergencia se atiende bajando el peso del indicador dentro de la dimensión, no cruzándolo en matriz.
-- El IVA pesa más porque es un impuesto al consumo interno, más cercano a 'actividad'; el cheque grava toda transacción bancaria y además de actividad capta bancarización —más o menos pagos por transferencia—, un fenómeno que no se puede restar de la serie.
-
-## Semáforo — valores que determinan el color
-
-Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
-
-**Valores que definen cada color**
-
-| Rango (% i.a. real (compuesto IVA-DGI/cheque)) | Color |
-|---|---|
-| ≥ 2,5 | VERDE |
-| −2,5 – 2,5 | AMARILLO |
-| −7,5 – −2,5 | NARANJA |
-| ≤ −7,5 | ROJO |
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- Compuesto 0,6×IVA-DGI + 0,4×cheque, ambos en variación interanual real: IVA-DGI 1,6%, cheque -0,3%, compuesto 0,9%. El cheque capta además bancarización, no sólo actividad; el IVA responde también a evasión y cambios de alícuota.
-
-## Color vigente y por qué
-
-Dato vigente: 0,86 % i.a. real (compuesto IVA-DGI/cheque) (2026-09).
-
-0,86 % i.a. real (compuesto IVA-DGI/cheque) está en Amarillo, a 1,64 del límite con Verde (2,5).
-
-**Color vigente: AMARILLO**
-
-Ponderación vigente en el ITCM: 1,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-- **Participación en otros indicadores.** Comparte materia prima con `recaudacion` (dimensión fiscal): IVA-DGI y cheque son, entre ambos, 30%–62% del agregado DGI que ahí puntúa (53,6% en ago-2026), y esa tarjeta ya publica su propia descomposición de ese agregado en el mismo par de series. El solapamiento es menor de lo que ese porcentaje sugiere: `recaudacion` puntúa un NIVEL desestacionalizado (100 = 4T-2023), no la interanual de sus componentes, y la correlación entre este compuesto y la interanual real del propio agregado DGI mide r=0,355 (105 meses, dic-2017/ago-2026) — apenas 13% de varianza compartida. Con el peso vigente (0,084 dentro de «Actividad e inversión», que pesa 23%, desde la fusión del 16-oct-2026; antes 0,12, bajado de 0,20 el 2026-09-16, ver más abajo), este indicador aporta 1,93% al índice macroeconómico (0,23×0,084) y `recaudacion` 7,2% (0,24×0,30); aun asignándole a `recaudacion` toda su covarianza con IVA+cheque, el índice macroeconómico tenía alrededor de 2,2% de su peso total expuesto, medido con los pesos anteriores a la fusión, al mismo shock tributario en las dos dimensiones — menos que el 11% que ya concentra la dimensión de competitividad externa en un único indicador. `recaudacion` declara lo mismo desde su propia ficha (revisión adversarial, 2026-09-16). Además —y esto pesó más en el ajuste de peso que el doble uso con `recaudacion`— es redundante con sus PROPIOS compañeros de dimensión: r=0,840 con `emae_ia`, 0,828 con `ipi_manufacturero`, 0,725 con `emae_difusion` (los tres sobre el umbral 0,7 del repo, y más que lo que `ipi_manufacturero` ya correlaciona con `emae_ia`, r=0,765). La correlación adelantada contra emae_ia y emae_difusion es máxima en el mes corriente y BAJA al adelantarla un mes o dos, así que no anticipa el ciclo: entra por ser la lectura más fresca, no por aportar señal nueva, y el peso de entrada (0,12, por debajo del de `ipi_manufacturero`) se fijó en consecuencia (revisado el 16-sep-2026).
-
-## Transparencia — limitaciones declaradas
-
-- Ninguna de las dos series mide actividad de forma directa: la recaudación responde también a evasión, cambios de alícuota, anticipos y vencimientos trasladados, y el impuesto al cheque a la proporción de pagos que pasan por el sistema bancario, no sólo a su volumen.
-- Las bandas se calibraron contra los 105 meses de historia real del compuesto (dic-2017/ago-2026, la ventana que permite el IPC como deflactor), no contra los 25 años que tienen IVA-DGI y cheque por separado desde 2001: antes de esa fecha no hay IPC nacional comparable para deflactar.
-- El compuesto oscila más que el EMAE (percentiles 10-90 de aproximadamente ±12 puntos contra ±5-9 del EMAE): reusar las bandas del EMAE tal cual saturaría el 60% de los meses en el mejor o el peor tramo, así que las anclas son propias y no comparables número a número con las de `emae_ia`.
-- Comparte fuente parcial con `recaudacion`: un shock tributario puro (cambio de alícuota, moratoria) puede mover a los dos indicadores en el mismo sentido sin que haya un cambio real de actividad detrás.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Si falta cualquiera de las dos series o el IPC del mes, ese mes no se calcula y el indicador conserva el último valor disponible, señalado como desactualizado.
-
-- **Política de revisiones:** Las dos fuentes primarias pueden revisar meses ya publicados; el informe recalcula la serie completa en cada actualización.
-
-## Historial — cambios metodológicos documentados
-
-**2026-09-16** — Revisión adversarial (segunda ronda): la serie publicada llegaba sólo a 68 meses (2021-01/2026-08) porque `descargar_series.py` reusaba `comarb.LIMITE_MESES=80` —un límite compartido con `recaudacion`, que sí necesita esa ventana exacta para desestacionalizar—, mientras las bandas de arriba se habían calibrado contra 105 meses (dic-2017/ago-2026). El reparto declarado describía una historia que el tablero no publicaba. Se agrega `macro.LIMITE_MESES_ACTIVIDAD_TRIBUTARIA=200`, propia de este indicador (no desestacionaliza, así que no hereda la restricción de `recaudacion`), y la serie publicada pasa a cubrir los 105 meses reales. Verificado: el reparto sobre la serie ya publicada (19,0/14,3/18,1/20,0/14,3/14,3%) coincide exacto con el declarado. No cambia ninguna otra serie — sólo se agregó una constante nueva, no se tocó `comarb.LIMITE_MESES`.
-
-**2026-09-16** — Revisión adversarial (primera ronda): el peso de entrada baja de 0,20 a 0,12 (los otros tres INDEC pasan a recortarse ×0,88 en vez de ×0,80). Motivo medido: redundancia con sus tres compañeros de dimensión por encima del umbral 0,7 del repo (r=0,840 emae_ia, 0,828 ipi_manufacturero, 0,725 emae_difusion) y sin evidencia de que anticipe el ciclo del EMAE — la correlación adelantada es máxima en el mes corriente, no en t+1/t+2, contra emae_ia y emae_difusion. Se declara también r(IVA-DGI, cheque)=0,617 (antes ausente), el número que decidía entre promediar y cruzar en matriz.
-
-**2026-09-16** — Alta del indicador. Corrige el alcance de una implementación anterior que había convertido este mismo par de series en un control dentro del detalle de `recaudacion` (dimensión fiscal): el pedido original era un proxy de ACTIVIDAD, y como tal pasa a puntuar en esa dimensión. El texto de `recaudacion` no se toca — sigue siendo útil para leer de dónde vino un movimiento del agregado DGI.
-
-**2026-10-16** — Desde el 16-oct-2026 la dimensión pasa a llamarse «Actividad e inversión» (23% del índice macroeconómico) y suma la inversión física con 30%. Su peso dentro de la dimensión baja de 12% a 8,4%; en el índice sube de 1,3% a 1,9%.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1287,7 +1192,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 Resume señales de construcción e importación de bienes de capital frente al mismo mes del año anterior. Los cortes de su escala se corren 0,17 puntos, lo que crece la población por año: invertir menos que eso es invertir menos por habitante. No mide depreciación ni inversión neta: una caída interanual no demuestra que se consuma más capital del que se repone. Los bienes importados se miden en dólares corrientes, por lo que también influyen sus precios.
 
-**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera, la actividad que se lee en la recaudación (IVA e impuesto al cheque) y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria y la recaudación aportan lecturas que se publican antes, para que la dimensión no cuelgue de un solo dato. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
+**Dimensión que integra — Actividad e inversión.** Si la economía crece y si alguien apuesta al futuro: el estimador mensual de actividad económica (EMAE) interanual, cuántos de sus quince sectores crecen, la producción industrial manufacturera y la inversión física —construcción y bienes de capital—. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una fuente distinta, para que la dimensión no cuelgue de un solo dato. La recaudación de IVA y cheque salió en octubre de 2026: repetía la lectura del EMAE. La inversión física, con 30% de la dimensión, mira lo que viene: actividad que crece sin inversión es recuperación con techo cercano. Hasta octubre de 2026 la inversión era una dimensión aparte.
 
 ## Método de cómputo
 

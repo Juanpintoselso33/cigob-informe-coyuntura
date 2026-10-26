@@ -267,17 +267,6 @@
     },
     {
       "indice": "ITCM",
-      "indicador": "actividad_tributaria",
-      "n": 106,
-      "piso": 5,
-      "techo": 100,
-      "share_piso": 0.142,
-      "share_techo": 0.189,
-      "estado": "ok",
-      "detalle": "sin saturación relevante"
-    },
-    {
-      "indice": "ITCM",
       "indicador": "costo_financiamiento_tesoro",
       "n": 32,
       "piso": 15,

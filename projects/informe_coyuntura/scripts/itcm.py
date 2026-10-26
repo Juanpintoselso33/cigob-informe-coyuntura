@@ -240,23 +240,6 @@ BANDAS_ITCM = {
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
         (-2.0, 0.0, 40), (-5.0, -2.0, 20), (-INF, -5.0, 5),
     ],
-    "actividad_tributaria": [           # % i.a. real, compuesto 0,6×IVA-DGI + 0,4×cheque
-        # ADR-0329. Bandas calibradas contra la SERIE PROPIA (2017-12/2026-08,
-        # 105 meses — ventana que limita el IPC, deflactor obligatorio), no
-        # elegidas para que el color quede bien (ADR-0045). El compuesto oscila
-        # mucho más que el EMAE (percentiles 10/90 en ±12 contra ±5-9 del EMAE):
-        # reusar las bandas del EMAE tal cual —se probó— satura de los DOS lados
-        # a la vez (60% de los meses cae en el peor o el mejor tramo, contra el
-        # reparto que exige ADR-0042). Estos cortes, sobre pasos redondos de 5
-        # puntos y con el cero como frontera conceptual (igual criterio que
-        # emae_ia/ipi_manufacturero, ADR-0120), reparten 19,0/14,3/18,1/20,0/
-        # 14,3/14,3% de los 105 meses entre los seis tramos, EN EL MISMO ORDEN
-        # que la tabla de arriba (de mejor a peor: >10, 5-10, 0-5, -5-0,
-        # -10 a -5, ≤-10) — ninguno concentra más de la quinta parte de la
-        # historia.
-        (10.0, INF, 100), (5.0, 10.0, 80), (0.0, 5.0, 60),
-        (-5.0, 0.0, 40), (-10.0, -5.0, 20), (-INF, -10.0, 5),
-    ],
     # tcrm dejó de puntuar solo (ADR-0360): sus umbrales institucionales viven
     # ahora en terminos_intercambio.BANDAS_TCR y dan la posición «a» del
     # compuesto de abajo.
@@ -470,9 +453,14 @@ DIMENSIONES_ITCM = {
         # señal nueva. ×0,88, preservando la proporción interna 80/20
         # EMAE/IPI: 0,60→0,528, 0,20→0,176, 0,20→0,176.
         # Pesos anteriores al 16-oct-2026: 0,528/0,176/0,176/0,12 (sin inversión).
-        "indicadores": {"emae_ia": 0.3696, "emae_difusion": 0.1232,
-                        "ipi_manufacturero": 0.1232, "actividad_tributaria": 0.084,
-                        "iai": 0.30},
+        #
+        # ADR-0368 (2026-10-26): `actividad_tributaria` sale, a pedido de Luis
+        # (el mismo que la propuso): repite la lectura de la actividad (r=0,84)
+        # y no la anticipa. Su 0,084 vuelve a los otros tres en proporción, que
+        # recuperan el 60/20/20 original sobre el 70% de actividad. Antes:
+        # 0,3696/0,1232/0,1232/0,084/0,30. Se sigue calculando, oculto.
+        "indicadores": {"emae_ia": 0.42, "emae_difusion": 0.14,
+                        "ipi_manufacturero": 0.14, "iai": 0.30},
     },
     "competitividad_externa": {
         "nombre": "Competitividad externa",
@@ -518,7 +506,8 @@ INTERPRETACION_LEGIBLE = {
 #     con el mismo, así que ninguna dimensión lo arregla.
 # Ver los dos ADR: no alcanzaba con moverlos ni con recalibrarlos.
 INDICADORES_CONTEXTO = ["badlar", "prestamos_privados", "base_monetaria", "tc_mayorista",
-                        "idm", "icip", "tcrm"]
+                        "idm", "icip", "tcrm",
+                        "actividad_tributaria"]   # ADR-0368: sale del índice, se sigue calculando
 
 
 def puntaje_banda(valor: float, bandas: list) -> int:

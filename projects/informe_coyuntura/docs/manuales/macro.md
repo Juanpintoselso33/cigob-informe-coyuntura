@@ -17,7 +17,7 @@ al ADR.
 | `estabilidad_monetaria` | 26% | `ipc_total`, `rem_ipc_12m`, `desequilibrio_monetario` |
 | `viabilidad_fiscal_comercial` | 24% | `resultado_primario`, `recaudacion`, `saldo_comercial_12m` |
 | `financiamiento` | 16% | `reservas_bcra`, `idc`, `costo_financiamiento_tesoro`, `credito_privado` |
-| `actividad` | 23% | `emae_ia`, `emae_difusion`, `ipi_manufacturero`, `actividad_tributaria`, `iai` |
+| `actividad` | 23% | `emae_ia`, `emae_difusion`, `ipi_manufacturero`, `iai` |
 | `competitividad_externa` | 11% | `tcr_terminos_intercambio` |
 
 Suma de pesos: 100%.
@@ -34,11 +34,11 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 60% |
 | Peso efectivo en el índice | **15.6%** |
-| Procedencia del ancla | `conceptual` — bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120) |
+| Procedencia del ancla | `conceptual` — bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120); desde ADR-0367 las anclas caen sobre los cortes de color 1/2/3 % mensual |
 
 **Bandas**: ≤ 0.5 → 100 · 0.5–1.5 → 60 · 1.5–2.5 → 40 · 2.5–3.5 → 20 · > 3.5 → 10
 
-**Lo gobiernan**: [ADR-0077](../adr/0077-ipc-nucleo-serie-acompanante.md) El IPC general se lee junto al núcleo · [ADR-0122](../adr/0122-riesgo-sistemico-del-deflactor-ipc.md) El riesgo sistémico del deflactor IPC, declarado en la metodología · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
+**Lo gobiernan**: [ADR-0077](../adr/0077-ipc-nucleo-serie-acompanante.md) El IPC general se lee junto al núcleo · [ADR-0122](../adr/0122-riesgo-sistemico-del-deflactor-ipc.md) El riesgo sistémico del deflactor IPC, declarado en la metodología · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0367](../adr/0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) La inflación se pinta con los cortes de Luis
 
 #### Inflación esperada a 12 meses
 
@@ -52,7 +52,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 0.5 → 100 · 0.5–1.5 → 60 · 1.5–2.5 → 40 · 2.5–3.5 → 20 · > 3.5 → 10
 
-**Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0289](../adr/0289-sensibilidad-conserva-transformaciones-y-deflactor.md) Sensibilidad conserva transformaciones y deflactor
+**Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0289](../adr/0289-sensibilidad-conserva-transformaciones-y-deflactor.md) Sensibilidad conserva transformaciones y deflactor · [ADR-0367](../adr/0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) La inflación se pinta con los cortes de Luis
 
 #### Liquidez en pesos y presión compradora de divisas
 
@@ -178,8 +178,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 37% |
-| Peso efectivo en el índice | **8.5%** |
+| Peso dentro de la dimensión | 42% |
+| Peso efectivo en el índice | **9.7%** |
 | Procedencia del ancla | `conceptual` — bandas de crecimiento en torno al cero; el corte de crecimiento nulo cae en p26 de la historia 2021-2023 (ADR-0120) |
 
 **Bandas**: > 5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤ -5 → 5
@@ -192,8 +192,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 12% |
-| Peso efectivo en el índice | **2.8%** |
+| Peso dentro de la dimensión | 14% |
+| Peso efectivo en el índice | **3.2%** |
 | Procedencia del ancla | `conceptual` — cortes por CANTIDAD DE SECTORES (14-15 generalizado · 11-13 mayoría amplia · 8-10 ajustada · 5-7 minoría · 0-4 contracción), puestos en el hueco entre valores alcanzables; explícitamente NO se ancló en el 50% de manual porque la mediana histórica argentina es 73,3% (ADR-0124) |
 
 **Bandas**: > 90 → 100 · 70–90 → 80 · 50–70 → 60 · 30–50 → 35 · ≤ 30 → 10
@@ -206,27 +206,13 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 12% |
-| Peso efectivo en el índice | **2.8%** |
+| Peso dentro de la dimensión | 14% |
+| Peso efectivo en el índice | **3.2%** |
 | Procedencia del ancla | `conceptual` — hereda las bandas del EMAE a propósito para dejar ver la brecha industria-actividad, con cita a ADR-0045 (ADR-0076/0079) |
 
 **Bandas**: > 5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤ -5 → 5
 
 **Lo gobiernan**: [ADR-0076](../adr/0076-ipi-segunda-senal-actividad.md) La dimensión de actividad deja de colgar de un único dato · [ADR-0079](../adr/0079-peso-del-ipi-en-actividad.md) El IPI baja de 35% a 20%: es respaldo, no medida principal · [ADR-0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) Actividad usa las planillas originales vigentes
-
-#### Actividad tributaria (IVA-DGI + cheque)
-
-`actividad_tributaria`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 8% |
-| Peso efectivo en el índice | **1.9%** |
-| Procedencia del ancla | `historia_larga` — cortes redondos de 5 puntos en torno al cero, calibrados contra los 105 meses de la serie propia (dic-2017/ago-2026, la ventana que permite el IPC como deflactor) para que ninguno de los seis tramos concentre más de la quinta parte de la historia (ADR-0329) |
-
-**Bandas**: > 10 → 100 · 5–10 → 80 · 0–5 → 60 · -5–0 → 40 · -10–-5 → 20 · ≤ -10 → 5
-
-**Lo gobiernan**: [ADR-0329](../adr/0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal
 
 #### Inversión física
 
@@ -264,6 +250,7 @@ Estos indicadores se siguen scrapeando y cacheando, pero están fuera
 del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
+- `actividad_tributaria` — Actividad tributaria (IVA-DGI + cheque) (declarado como contexto)
 - `badlar` — Tasa BADLAR (declarado como contexto)
 - `base_monetaria` — Base monetaria (declarado como contexto)
 - `icip` — Pagos de servicios digitales y productividad (declarado como contexto)
@@ -292,7 +279,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-58 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+60 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -352,3 +339,5 @@ histórica.
 - [0329](../adr/0329-actividad-tributaria-proxy-de-actividad-no-control-fiscal.md) — IVA-DGI + cheque puntúan como actividad, no sólo como control fiscal
 - [0341](../adr/0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) — La inversión física se mide contra el crecimiento de la población
 - [0360](../adr/0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) — La competitividad externa cruza el tipo de cambio real con los términos del intercambio
+- [0367](../adr/0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) — La inflación se pinta con los cortes de Luis
+- [0368](../adr/0368-la-recaudacion-de-iva-y-cheque-sale-del-indice.md) — La recaudación de IVA y cheque sale del índice

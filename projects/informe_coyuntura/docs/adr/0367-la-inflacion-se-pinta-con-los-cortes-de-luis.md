@@ -7,7 +7,7 @@ cinturon: 'macro'
 indice: 'ITCM'
 indicadores: [ipc_total, rem_ipc_12m]
 archivos: ['scripts/itcm.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts', 'tests/test_itcm.py']
-relacionado: ['0120', '0366']
+relacionado: ['0120', '0366', '0368']
 ambito: 'Cinturón macro · ITCM · dimensión estabilidad monetaria'
 origen: 'Revisión de Luis Babino del 26-oct-2026 (punto 3.1) y decisión de Juan del mismo día.'
 ---

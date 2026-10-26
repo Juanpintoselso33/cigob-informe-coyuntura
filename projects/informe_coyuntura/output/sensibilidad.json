@@ -4,50 +4,49 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-26T18:25:46.965750-03:00",
+    "snapshot": "2026-10-26T19:20:15.314882-03:00",
     "adr": "0019"
   },
   "itcm": {
-    "valor_publicado": 54.2,
-    "valor_recomputado": 54.2,
+    "valor_publicado": 53.9,
+    "valor_recomputado": 53.9,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 54.2,
-        "p05": 52.9,
-        "p95": 55.6,
-        "desvio": 0.85
+        "media": 53.9,
+        "p05": 52.5,
+        "p95": 55.3,
+        "desvio": 0.88
       },
       "combinado": {
-        "media": 54.3,
-        "p05": 52.5,
-        "p95": 56.2,
-        "desvio": 1.14
+        "media": 53.9,
+        "p05": 52.0,
+        "p95": 55.9,
+        "desvio": 1.18
       },
       "insumos": {
-        "media": 54.3,
-        "p05": 53.0,
-        "p95": 55.5,
-        "desvio": 0.75
+        "media": 54.0,
+        "p05": 52.7,
+        "p95": 55.2,
+        "desvio": 0.77
       }
     },
     "leave_one_out": {
-      "resultado_primario": 52.3,
-      "recaudacion": 56.1,
-      "costo_financiamiento_tesoro": 52.8,
-      "credito_privado": 55.3,
-      "iai": 53.3,
-      "emae_ia": 55.1,
-      "tcr_terminos_intercambio": 54.8,
-      "saldo_comercial_12m": 53.7,
-      "idc": 54.7,
-      "rem_ipc_12m": 53.8,
-      "desequilibrio_monetario": 54.6,
-      "ipi_manufacturero": 54.6,
-      "reservas_bcra": 54.0,
-      "actividad_tributaria": 54.0,
-      "ipc_total": 54.3,
-      "emae_difusion": 54.2
+      "resultado_primario": 52.0,
+      "recaudacion": 55.8,
+      "costo_financiamiento_tesoro": 52.5,
+      "credito_privado": 55.0,
+      "iai": 52.9,
+      "emae_ia": 54.7,
+      "saldo_comercial_12m": 53.4,
+      "idc": 54.4,
+      "tcr_terminos_intercambio": 54.4,
+      "rem_ipc_12m": 53.5,
+      "desequilibrio_monetario": 54.3,
+      "ipi_manufacturero": 54.3,
+      "reservas_bcra": 53.7,
+      "emae_difusion": 53.8,
+      "ipc_total": 54.0
     },
     "tension": {
       "base": 4.6,

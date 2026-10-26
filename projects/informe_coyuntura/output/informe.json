@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-10-26T18:25:46.965750-03:00",
+  "generated_at": "2026-10-26T19:20:15.314882-03:00",
   "period": "2026-10",
   "score_global": 4.0,
   "ponderacion": {
@@ -99,7 +99,7 @@
           "dimension": "actividad",
           "puntaje_itcm": 36.5,
           "puntaje_banda": 36.5,
-          "peso_efectivo": 0.085
+          "peso_efectivo": 0.0966
         },
         "emae_difusion": {
           "valor": 46.67,
@@ -177,7 +177,7 @@
           "dimension": "actividad",
           "puntaje_itcm": 43.3,
           "puntaje_banda": 43.3,
-          "peso_efectivo": 0.0283
+          "peso_efectivo": 0.0322
         },
         "ipi_manufacturero": {
           "valor": -2.04,
@@ -190,7 +190,7 @@
           "dimension": "actividad",
           "puntaje_itcm": 31.7,
           "puntaje_banda": 31.7,
-          "peso_efectivo": 0.0283
+          "peso_efectivo": 0.0322
         },
         "actividad_tributaria": {
           "valor": 0.86,
@@ -202,7 +202,7 @@
           "cheque_var_ia_real": -0.3,
           "detalle_txt": "Compuesto 0,6×IVA-DGI + 0,4×cheque, ambos en variación interanual real: IVA-DGI 1,6%, cheque -0,3%, compuesto 0,9%. El cheque capta además bancarización, no sólo actividad; el IVA responde también a evasión y cambios de alícuota.",
           "obtenido_en": "2026-10-26T03:04:53",
-          "en_indice": true,
+          "en_indice": false,
           "dimension": "actividad",
           "puntaje_itcm": 53.4,
           "puntaje_banda": 53.4,
@@ -459,7 +459,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 54.2,
+        "valor": 53.9,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
@@ -560,35 +560,28 @@
           "actividad": {
             "nombre": "Actividad e inversión",
             "peso": 0.23,
-            "puntaje": 42.8,
+            "puntaje": 41.4,
             "indicadores": {
               "emae_ia": {
-                "peso": 0.3696,
+                "peso": 0.42,
                 "puntaje_banda": 36.5,
                 "puntaje_aplicado": 36.5,
                 "valor": -1.44,
-                "peso_efectivo": 0.085
+                "peso_efectivo": 0.0966
               },
               "emae_difusion": {
-                "peso": 0.1232,
+                "peso": 0.14,
                 "puntaje_banda": 43.3,
                 "puntaje_aplicado": 43.3,
                 "valor": 46.67,
-                "peso_efectivo": 0.0283
+                "peso_efectivo": 0.0322
               },
               "ipi_manufacturero": {
-                "peso": 0.1232,
+                "peso": 0.14,
                 "puntaje_banda": 31.7,
                 "puntaje_aplicado": 31.7,
                 "valor": -2.04,
-                "peso_efectivo": 0.0283
-              },
-              "actividad_tributaria": {
-                "peso": 0.084,
-                "puntaje_banda": 53.4,
-                "puntaje_aplicado": 53.4,
-                "valor": 0.86,
-                "peso_efectivo": 0.0193
+                "peso_efectivo": 0.0322
               },
               "iai": {
                 "peso": 0.3,

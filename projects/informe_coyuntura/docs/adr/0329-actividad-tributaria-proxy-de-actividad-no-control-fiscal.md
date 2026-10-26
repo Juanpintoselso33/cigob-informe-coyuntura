@@ -6,7 +6,7 @@ fecha: 2026-09-16
 cinturon: 'macro'
 indicadores: [actividad_tributaria]
 archivos: ['scripts/macro.py', 'scripts/itcm.py', 'scripts/descargar_series.py', 'scripts/procedencia_anclas.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'web/src/lib/charts.ts', 'tests/test_itcm_difusion.py', 'tests/test_macro_actividad_tributaria.py']
-relacionado: ['0045', '0071', '0072', '0074', '0076', '0078', '0079', '0120', '0124', '0127', '0152', '0192', '0239', '0252', '0257', '0318', '0319', '0321']
+relacionado: ['0045', '0071', '0072', '0074', '0076', '0078', '0079', '0120', '0124', '0127', '0152', '0192', '0239', '0252', '0257', '0318', '0319', '0321', '0368']
 ambito: 'Cinturón Macro · dimensión `actividad` del ITCM · nuevo indicador `actividad_tributaria`'
 origen: 'Encargo del editor: el pedido original de ADR-0318/0319/0321 era un proxy de ACTIVIDAD y se había implementado como control dentro de la dimensión FISCAL'
 ---

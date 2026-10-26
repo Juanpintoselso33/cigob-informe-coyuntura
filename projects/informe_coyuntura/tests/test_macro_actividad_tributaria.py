@@ -78,49 +78,29 @@ def test_fetch_actividad_tributaria_publica_los_dos_componentes(monkeypatch):
 
 # ── Bandas (ADR-0329): cero como frontera conceptual, cortes de 5 puntos ────
 
-def test_bandas_actividad_tributaria():
-    b = itcm.BANDAS_ITCM["actividad_tributaria"]
-    assert itcm.puntaje_banda(10.1, b) == 100
-    assert itcm.puntaje_banda(10.0, b) == 80      # low excl./high incl.: 10,0 cae en (5, 10]
-    assert itcm.puntaje_banda(5.1, b) == 80
-    assert itcm.puntaje_banda(0.1, b) == 60
-    assert itcm.puntaje_banda(0.0, b) == 40
-    assert itcm.puntaje_banda(-4.9, b) == 40
-    assert itcm.puntaje_banda(-5.0, b) == 20
-    assert itcm.puntaje_banda(-10.0, b) == 5
+def test_salio_del_indice_y_no_conserva_banda():
+    """ADR-0368: sale del índice y queda calculada pero oculta, sin banda."""
+    assert "actividad_tributaria" not in itcm.BANDAS_ITCM
+    assert "actividad_tributaria" in itcm.INDICADORES_CONTEXTO
 
 
 def test_peso_de_la_dimension_actividad_suma_uno():
     ind = itcm.DIMENSIONES_ITCM["actividad"]["indicadores"]
     # Desde el 16-oct-2026 la inversión física (iai) también puntúa acá.
-    assert set(ind) == {"emae_ia", "emae_difusion", "ipi_manufacturero",
-                        "actividad_tributaria", "iai"}
+    assert set(ind) == {"emae_ia", "emae_difusion", "ipi_manufacturero", "iai"}
     assert abs(sum(ind.values()) - 1.0) < 1e-9
 
 
-def test_actividad_tributaria_pesa_012_de_la_dimension():
-    """ADR-0329, revisado 2026-09-16 (revisión adversarial): entraba con 0,20
-    y se baja a 0,12 — la redundancia medida contra sus tres compañeros
-    (r=0,840 emae_ia, 0,828 ipi_manufacturero, 0,725 emae_difusion, los tres
-    sobre el umbral 0,7) supera la que ya tiene `ipi_manufacturero` con
-    `emae_ia` (0,765), y la correlación adelantada no muestra que anticipe el
-    ciclo (máxima en t, no en t+1/t+2, contra emae_ia y emae_difusion). Los
-    tres INDEC se recortan proporcionalmente (×0,88) preservando su
-    proporción interna 80/20 EMAE/IPI (ADR-0124).
-
-    El 16-oct-2026 entró la inversión física con 0,30 y los cuatro se
-    recortaron ×0,70: lo que se protege es que la tributaria siga valiendo 0,12
-    de la PARTE de actividad, no de la dimensión entera."""
+def test_la_actividad_recupera_el_60_20_20():
+    """ADR-0368: el 0,084 de la tributaria vuelve a los otros tres en
+    proporción, que recuperan el 60/20/20 de ADR-0124 sobre la parte de
+    actividad (lo que no es inversión física)."""
     ind = itcm.DIMENSIONES_ITCM["actividad"]["indicadores"]
     parte_actividad = 1.0 - ind["iai"]
     assert ind["iai"] == 0.30
-    assert abs(ind["actividad_tributaria"] / parte_actividad - 0.12) < 1e-9
-    assert abs(ind["emae_ia"] / parte_actividad - 0.528) < 1e-9
-    assert abs(ind["emae_difusion"] / parte_actividad - 0.176) < 1e-9
-    assert abs(ind["ipi_manufacturero"] / parte_actividad - 0.176) < 1e-9
-    # Entra por debajo de ipi_manufacturero, no por encima: es MÁS redundante
-    # con sus compañeros que el propio IPI, y no gana la premium de "adelanta".
-    assert ind["actividad_tributaria"] < ind["ipi_manufacturero"]
+    assert abs(ind["emae_ia"] / parte_actividad - 0.60) < 1e-9
+    assert abs(ind["emae_difusion"] / parte_actividad - 0.20) < 1e-9
+    assert abs(ind["ipi_manufacturero"] / parte_actividad - 0.20) < 1e-9
 
 
 # ── La serie publicada tiene que cubrir la ventana que calibró las bandas ───

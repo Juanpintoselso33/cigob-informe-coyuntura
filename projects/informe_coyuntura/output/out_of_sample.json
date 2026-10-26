@@ -77,31 +77,6 @@
       "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"
     },
     {
-      "indicador": "actividad_tributaria",
-      "indice": "ITCM",
-      "procedencia": "historia_larga",
-      "fuera_de_muestra": {
-        "n": 72,
-        "media": 56.9,
-        "desvio": 34.3,
-        "saturado": 0.431,
-        "crudo_min": -25.6,
-        "crudo_max": 30.3,
-        "crudo_media": 1.48
-      },
-      "dentro_de_muestra": {
-        "n": 34,
-        "media": 43.3,
-        "desvio": 27.2,
-        "saturado": 0.235,
-        "crudo_min": -18.39,
-        "crudo_max": 21.74,
-        "crudo_media": -1.98
-      },
-      "señal": "sin señal",
-      "lectura": "discrimina en ambas ventanas"
-    },
-    {
       "indicador": "brecha_obra_publica",
       "indice": "ITCP",
       "procedencia": "conceptual",
