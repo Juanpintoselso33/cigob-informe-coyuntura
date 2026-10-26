@@ -16,7 +16,7 @@ al ADR.
 |---|---:|---|
 | `reformas_economicas` | 35% | `cepo_mulc`, `apertura_comercial`, `desregulacion_normativa` |
 | `reforma_estado` | 25% | `reduccion_estado`, `gasto_funcionamiento` |
-| `reforma_laboral` | 15% | `fal_modernizacion_laboral`, `litigiosidad_laboral` |
+| `reforma_laboral` | 15% | `fal_modernizacion_laboral`, `litigiosidad_laboral`, `juicios_trabajo_capital` |
 | `privatizaciones_inversion` | 15% | `privatizaciones`, `rigi_inversiones`, `concesiones_infraestructura` |
 | `social_orden` | 10% | `asistencia_directa`, `protocolo_antipiquetes`, `libertad_opcion_salud` |
 
@@ -66,7 +66,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 30000 → 100 · 15000–30000 → 85 · 7000–15000 → 60 · 2500–7000 → 35 · ≤ 2500 → 10
 
-**Lo gobiernan**: [ADR-0096](../adr/0096-desregulacion-cuenta-normas-no-menciones.md) Desregulación: contar normas derogadas, no menciones de una palabra · [ADR-0125](../adr/0125-la-desregulacion-pasa-a-la-fuente-oficial.md) La desregulación pasa a medirse con la fuente oficial · [ADR-0143](../adr/0143-la-desregulacion-se-mide-en-articulos.md) La desregulación se mide en artículos, no en normas · [ADR-0229](../adr/0229-la-desregulacion-cuenta-actos-no-efectos.md) La desregulación cuenta actos, no efectos, y la ficha lo dice · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0292](../adr/0292-desregulacion-incorpora-revisiones-mensuales.md) Desregulación incorpora las revisiones mensuales · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
+**Lo gobiernan**: [ADR-0096](../adr/0096-desregulacion-cuenta-normas-no-menciones.md) Desregulación: contar normas derogadas, no menciones de una palabra · [ADR-0125](../adr/0125-la-desregulacion-pasa-a-la-fuente-oficial.md) La desregulación pasa a medirse con la fuente oficial · [ADR-0143](../adr/0143-la-desregulacion-se-mide-en-articulos.md) La desregulación se mide en artículos, no en normas · [ADR-0229](../adr/0229-la-desregulacion-cuenta-actos-no-efectos.md) La desregulación cuenta actos, no efectos, y la ficha lo dice · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0292](../adr/0292-desregulacion-incorpora-revisiones-mensuales.md) Desregulación incorpora las revisiones mensuales · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0363](../adr/0363-desregulacion-suma-la-clasificacion-por-sector-del-ministerio.md) Desregulación suma la clasificación por sector del Ministerio
 
 ### Dimensión `reforma_estado` (25%)
 
@@ -78,11 +78,11 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 58% |
 | Peso efectivo en el índice | **14.6%** |
-| Procedencia del ancla | `convencion` — «calibrado con el dato real»: el recorte observado de ~10-12% define la banda 85 |
+| Procedencia del ancla | `externa` — meta del Gobierno de recortar otro 10% de la planta en 2026, informada por la prensa citando fuentes oficiales (sin número publicado): −25,7% vs dic-2023 = 100 (ADR-0364). Antes, convención calibrada con el recorte observado |
 
-**Bandas**: ≤ -12 → 100 · -12–-8 → 85 · -8–-4 → 65 · -4–0 → 40 · > 0 → 10
+**Bandas**: ≤ -25.7 → 100 · -25.7–-17.1 → 85 · -17.1–-8.6 → 65 · -8.6–0 → 40 · > 0 → 10
 
-**Lo gobiernan**: [ADR-0097](../adr/0097-que-universo-mide-la-dotacion-del-estado.md) Qué universo mide la dotación del Estado · [ADR-0128](../adr/0128-fuerzas-en-la-dotacion-y-peso-del-fal.md) Las fuerzas están en la dotación, y el FAL baja a la mitad de su dimensión · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
+**Lo gobiernan**: [ADR-0097](../adr/0097-que-universo-mide-la-dotacion-del-estado.md) Qué universo mide la dotación del Estado · [ADR-0128](../adr/0128-fuerzas-en-la-dotacion-y-peso-del-fal.md) Las fuerzas están en la dotación, y el FAL baja a la mitad de su dimensión · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0364](../adr/0364-la-dotacion-del-estado-se-mide-contra-la-meta-de-2026.md) La dotación del Estado se mide contra la meta de 2026
 
 #### Gasto de funcionamiento
 
@@ -120,13 +120,27 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 50% |
-| Peso efectivo en el índice | **7.5%** |
+| Peso dentro de la dimensión | 25% |
+| Peso efectivo en el índice | **3.8%** |
 | Procedencia del ancla | `historia_larga` — calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023) |
 
 **Bandas**: ≤ -15 → 100 · -15–-5 → 85 · -5–5 → 65 · 5–20 → 40 · > 20 → 10
 
-**Lo gobiernan**: [ADR-0221](../adr/0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) Un cable trampa mira la banda, no el puntaje · [ADR-0285](../adr/0285-litigiosidad-exige-ventanas-de-calendario.md) Litigiosidad exige ventanas de calendario · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
+**Lo gobiernan**: [ADR-0221](../adr/0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) Un cable trampa mira la banda, no el puntaje · [ADR-0285](../adr/0285-litigiosidad-exige-ventanas-de-calendario.md) Litigiosidad exige ventanas de calendario · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0365](../adr/0365-los-juicios-de-la-justicia-del-trabajo-entran-a-la-reforma-laboral.md) Los juicios de la Justicia del Trabajo entran a la reforma laboral
+
+#### Juicios en la Justicia del Trabajo (Capital)
+
+`juicios_trabajo_capital`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 25% |
+| Peso efectivo en el índice | **3.8%** |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Bandas**: ≤ -15 → 100 · -15–-5 → 85 · -5–5 → 65 · 5–20 → 40 · > 20 → 10
+
+**Lo gobiernan**: [ADR-0365](../adr/0365-los-juicios-de-la-justicia-del-trabajo-entran-a-la-reforma-laboral.md) Los juicios de la Justicia del Trabajo entran a la reforma laboral
 
 ### Dimensión `privatizaciones_inversion` (15%)
 
@@ -182,7 +196,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 40% |
 | Peso efectivo en el índice | **4.0%** |
-| Procedencia del ancla | `convencion` — el corte de «cumplido» en 95% es propio y queda POR DEBAJO de la línea de base: la TDPS ya marcaba 98,3% en ago-2023 y 100,0 todos los meses del mandato, así que el indicador puntúa 100 sobre un tramo que ya estaba andado (calibración pendiente, ADR-0189) |
+| Procedencia del ancla | `conceptual` — hito binario: 100 desde el cese de las unidades de gestión (Res. 84/2024), 0 antes; las bandas sólo se usan en sus extremos (ADR-0362) |
 
 **Bandas**: > 95 → 100 · 85–95 → 85 · 60–85 → 65 · 30–60 → 40 · ≤ 30 → 10
 
@@ -241,7 +255,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-47 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+50 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -290,3 +304,6 @@ histórica.
 - [0336](../adr/0336-el-itcg-no-tiene-validacion-externa-por-definicion.md) — El ITCG no tiene validación externa, por definición
 - [0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) — Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 - [0362](../adr/0362-planes-sin-intermediarios-mide-el-cese-de-las-unidades-de-gestion.md) — «Planes sin intermediarios» mide el cese de las unidades de gestión
+- [0363](../adr/0363-desregulacion-suma-la-clasificacion-por-sector-del-ministerio.md) — Desregulación suma la clasificación por sector del Ministerio
+- [0364](../adr/0364-la-dotacion-del-estado-se-mide-contra-la-meta-de-2026.md) — La dotación del Estado se mide contra la meta de 2026
+- [0365](../adr/0365-los-juicios-de-la-justicia-del-trabajo-entran-a-la-reforma-laboral.md) — Los juicios de la Justicia del Trabajo entran a la reforma laboral

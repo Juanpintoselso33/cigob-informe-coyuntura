@@ -141,6 +141,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\left(\frac{\text{juicios \'ultimos 12 meses}}{\text{juicios 12 meses anteriores}}-1\right)\times 100`,
     leyenda: "Variación entre dos acumulados consecutivos de doce meses de juicios del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del Trabajo (SRT). Un resultado negativo indica menos juicios registrados; no determina el mérito de los reclamos ni el efecto del Fondo de Asistencia Laboral.",
   },
+  juicios_trabajo_capital: {
+    latex: String.raw`\left(\frac{\text{juicios entrados, \'ultimos 12 meses}}{\text{juicios entrados, 12 meses anteriores}}-1\right)\times 100`,
+    leyenda: "Variación entre dos acumulados consecutivos de doce meses de los juicios entrados en primera instancia de la Justicia Nacional del Trabajo, que atiende la Capital. Los publica por semestre la Oficina de Estadísticas del Consejo de la Magistratura. Un resultado negativo indica menos juicios iniciados; no dice nada del mérito de los reclamos.",
+  },
   privatizaciones: {
     latex: String.raw`\frac{\text{etapa promedio de la cartera}}{4}\times 100`,
     leyenda: "Cada empresa de la Ley Bases se puntúa por etapa verificable en el Boletín Oficial: 0 sin definir · 1 preparatoria · 2 pliegos · 3 licitación · 4 cerrada. Separa el anuncio del hecho.",

@@ -396,6 +396,29 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2024-01-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2023-12-01,libertad_opcion_salud,0.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2026-10-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2026-09-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2026-08-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2026-07-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2026-06-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2026-05-01,juicios_trabajo_capital,5.7,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2026-04-01,juicios_trabajo_capital,5.7,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2026-03-01,juicios_trabajo_capital,5.7,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2026-02-01,juicios_trabajo_capital,5.7,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2026-01-01,juicios_trabajo_capital,5.7,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-12-01,juicios_trabajo_capital,5.7,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-11-01,juicios_trabajo_capital,-2.0,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-10-01,juicios_trabajo_capital,-2.0,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-09-01,juicios_trabajo_capital,-2.0,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-08-01,juicios_trabajo_capital,-2.0,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-07-01,juicios_trabajo_capital,-2.0,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-06-01,juicios_trabajo_capital,-2.0,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-05-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-04-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-03-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-02-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2025-01-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
+2024-12-01,juicios_trabajo_capital,-5.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2026-07-01,indice_salarios_publico,8123.88,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-06-01,indice_salarios_publico,7889.4,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-05-01,indice_salarios_publico,7628.3,indice base oct-2016=100,INDEC/datos.gob.ar

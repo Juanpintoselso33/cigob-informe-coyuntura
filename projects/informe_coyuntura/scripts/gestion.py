@@ -46,6 +46,7 @@ procedencia de cada dato sale de `METODO_OBTENCION_EXCEPCIONES` en publicar.py
 Nota INDEC www: el WAF de indec.gob.ar resetea el handshake TLS de Python
 (fingerprinting del ClientHello); el fetch del XLSX cae a curl como fallback.
 """
+import csv
 import io
 import os
 import re
@@ -118,8 +119,8 @@ INDICADORES_ESPERADOS = [
     # D2 — Reforma del Estado
     "reduccion_estado", "gasto_funcionamiento", "masa_salarial",
     "reestructuracion_organismos",
-    # D3 — Reforma laboral (+ litigiosidad SRT como contexto, fuera del índice)
-    "fal_modernizacion_laboral", "litigiosidad_laboral",
+    # D3 — Reforma laboral (FAL + juicios SRT + juicios de la Justicia del Trabajo, ADR-0365)
+    "fal_modernizacion_laboral", "litigiosidad_laboral", "juicios_trabajo_capital",
     # D4 — Privatizaciones e inversión
     "privatizaciones", "rigi_inversiones", "concesiones_infraestructura",
     # D5 — Reforma social y orden (+ contexto: alertas GTFS-RT y protestas ACLED)
@@ -1774,6 +1775,123 @@ def fetch_litigiosidad_laboral() -> dict | None:
         }
     except Exception as e:
         _warn("litigiosidad_laboral", e)
+        return None
+
+
+# ADR-0365: juicios entrados en primera instancia de la Justicia Nacional del
+# Trabajo (Capital). Es la cifra que citó la auditoría de CiGob (55.337 en 2024,
+# 58.504 en 2025). La publica la Oficina de Estadísticas del Consejo de la
+# Magistratura por semestre, en CSV, desde 2023; la API que usa su propio
+# formulario no pide sesión.
+PJN_API = "https://estadisticas.pjn.gov.ar/api/estadisticas"
+PJN_JUR_TRABAJO = 23              # «Fuero del Trabajo» en el selector de la Oficina
+PJN_DESDE = 2023                  # primer año con datos por semestre
+_PJN_SEMESTRE = re.compile(r"Tr[aá]mite de expedientes\s+([12])\D+semestre", re.I)
+
+
+def _pjn_opciones(step: str, **params) -> list:
+    r = requests.get(f"{PJN_API}/options.php", params={"step": step, **params},
+                     headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    d = r.json()
+    if not d.get("ok"):
+        raise ValueError(f"PJN options {step}: {d}")
+    return d.get("items") or []
+
+
+def _pjn_entrados_primera(csv_txt: str) -> int:
+    """Total de expedientes entrados en primera instancia de un CSV «Resumen -
+    Trámite de expedientes». La fila trae «Total Primera Instancia» y la columna
+    «Entrados» se ubica por el encabezado, no por posición."""
+    filas = list(csv.reader(io.StringIO(csv_txt), delimiter=";"))
+    enc = next((f for f in filas if any(c.strip().lower() == "entrados" for c in f)), None)
+    total = next((f for f in filas if f and f[0].strip().lower() == "total primera instancia"), None)
+    if enc is None or total is None:
+        raise ValueError("PJN: el CSV no trae la columna «Entrados» o la fila «Total Primera Instancia»")
+    col = next(i for i, c in enumerate(enc) if c.strip().lower() == "entrados")
+    valor = total[col].strip().replace(".", "")
+    if not valor.isdigit():
+        raise ValueError(f"PJN: total de entrados ilegible: {total[col]!r}")
+    return int(valor)
+
+
+def _pjn_juicios_semestrales(hasta: int | None = None) -> dict:
+    """{(año, semestre): entrados en 1ª instancia} de todos los semestres publicados."""
+    hasta = hasta or date.today().year
+    out = {}
+    for anio in range(PJN_DESDE, hasta + 1):
+        titulos = _pjn_opciones("titulo", anio=anio, jur=PJN_JUR_TRABAJO)
+        csv_tit = [t["value"] for t in titulos if "datos abiertos" in str(t.get("label", "")).lower()]
+        for tit in csv_tit:
+            for arch in _pjn_opciones("archivo", anio=anio, jur=PJN_JUR_TRABAJO, tit=tit, sub=0):
+                m = _PJN_SEMESTRE.search(str(arch.get("label", "")))
+                if not m:
+                    continue
+                contenido = _http_get_resiliente(
+                    f"{PJN_API}/file.php?id={arch['value']}&mode=inline")
+                out[(anio, int(m.group(1)))] = _pjn_entrados_primera(contenido.decode("latin-1"))
+    return out
+
+
+def _semestre_previo(s: tuple) -> tuple:
+    anio, sem = s
+    return (anio, 1) if sem == 2 else (anio - 1, 2)
+
+
+def _juicios_trabajo_variacion(semestres: dict, ultimo: tuple) -> tuple:
+    """Variación % de los juicios de los 12 meses que terminan en `ultimo`
+    (ese semestre y el previo) contra los 12 anteriores. Exige los cuatro
+    semestres: no compara un año con medio."""
+    claves = [ultimo]
+    for _ in range(3):
+        claves.append(_semestre_previo(claves[-1]))
+    if any(k not in semestres for k in claves):
+        raise ValueError(f"PJN: faltan semestres para {ultimo}")
+    actual = semestres[claves[0]] + semestres[claves[1]]
+    anterior = semestres[claves[2]] + semestres[claves[3]]
+    return round((actual / anterior - 1) * 100, 1), actual, anterior
+
+
+def _ultimo_semestre_completo(semestres: dict) -> tuple:
+    """El semestre más reciente con sus tres previos publicados. Si falta uno
+    intermedio, se usa la última ventana entera en vez de perder el dato."""
+    for s in sorted(semestres, reverse=True):
+        try:
+            _juicios_trabajo_variacion(semestres, s)
+            return s
+        except ValueError:
+            continue
+    raise ValueError("PJN: ningún semestre con los tres previos publicados")
+
+
+def _fecha_semestre(s: tuple) -> str:
+    """Día 1 del último mes del semestre, como fecha_dato de los mensuales."""
+    return f"{s[0]}-{6 if s[1] == 1 else 12:02d}-01"
+
+
+def fetch_juicios_trabajo_capital() -> dict | None:
+    """ADR-0365. Juicios entrados en primera instancia de la Justicia Nacional
+    del Trabajo (Capital), 12 meses contra los 12 previos. Segunda medida del
+    resultado de la reforma laboral, al lado de `litigiosidad_laboral` (SRT,
+    todo el país, sólo riesgos del trabajo): ésta cuenta todos los juicios
+    laborales, pero sólo los de la Capital y por semestre."""
+    try:
+        semestres = _pjn_juicios_semestrales()
+        ultimo = _ultimo_semestre_completo(semestres)
+        var, actual, anterior = _juicios_trabajo_variacion(semestres, ultimo)
+        return {
+            "valor":          var,
+            "unidad":         "% variación juicios entrados (12m vs 12m previos)",
+            "fuente":         "Consejo de la Magistratura — Oficina de Estadísticas, Justicia Nacional del Trabajo",
+            "fecha_dato":     _fecha_semestre(ultimo),
+            "desactualizado": False,
+            "juicios_12m":    actual,
+            "detalle_txt":    (f"{actual:,} juicios entrados en 1ª instancia en los 12 meses "
+                               f"hasta el {ultimo[1]}º semestre de {ultimo[0]} vs {anterior:,} "
+                               "en los 12 previos (sólo Capital)").replace(",", "."),
+        }
+    except Exception as e:
+        _warn("juicios_trabajo_capital", e)
         return None
 
 
@@ -3537,6 +3655,7 @@ def main() -> None:
         "reestructuracion_organismos":  fetch_reestructuracion_organismos,
         "fal_modernizacion_laboral":    fetch_fal_modernizacion_laboral,
         "litigiosidad_laboral":         fetch_litigiosidad_laboral,
+        "juicios_trabajo_capital":      fetch_juicios_trabajo_capital,
         "privatizaciones":              fetch_privatizaciones,
         "rigi_inversiones":             fetch_rigi_inversiones,
         "concesiones_infraestructura":  fetch_concesiones_infraestructura,

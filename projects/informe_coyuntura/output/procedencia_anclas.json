@@ -116,10 +116,10 @@
       "peso_total": 1.0,
       "categorias": {
         "documento": 0.33999999999999997,
-        "convencion": 0.248125,
+        "convencion": 0.285625,
         "externa": 0.109375,
         "conceptual": 0.22750000000000004,
-        "historia_larga": 0.075
+        "historia_larga": 0.0375
       },
       "detalle": [
         {
@@ -179,7 +179,7 @@
         {
           "indicador": "litigiosidad_laboral",
           "categoria": "historia_larga",
-          "peso": 0.075,
+          "peso": 0.0375,
           "motivo": "calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023)"
         },
         {
@@ -205,16 +205,22 @@
           "categoria": "convencion",
           "peso": 0.04,
           "motivo": "calibrada con la caída observada en CABA en 2024-2025"
+        },
+        {
+          "indicador": "juicios_trabajo_capital",
+          "categoria": "convencion",
+          "peso": 0.0375,
+          "motivo": "toma la escala de litigiosidad_laboral, que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365)"
         }
       ],
       "share": {
         "documento": 0.34,
-        "convencion": 0.248,
+        "convencion": 0.286,
         "externa": 0.109,
         "conceptual": 0.228,
-        "historia_larga": 0.075
+        "historia_larga": 0.037
       },
-      "share_circular": 0.248
+      "share_circular": 0.286
     },
     "ITCP": {
       "peso_total": 0.9999999999999999,

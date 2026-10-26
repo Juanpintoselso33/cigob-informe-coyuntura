@@ -285,6 +285,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0362](0362-planes-sin-intermediarios-mide-el-cese-de-las-unidades-de-gestion.md) | «Planes sin intermediarios» mide el cese de las unidades de gestión | `asistencia_directa` | vigente |
 | [0363](0363-desregulacion-suma-la-clasificacion-por-sector-del-ministerio.md) | Desregulación suma la clasificación por sector del Ministerio | `desregulacion_normativa` | vigente |
 | [0364](0364-la-dotacion-del-estado-se-mide-contra-la-meta-de-2026.md) | La dotación del Estado se mide contra la meta de 2026 | `reduccion_estado` | vigente |
+| [0365](0365-los-juicios-de-la-justicia-del-trabajo-entran-a-la-reforma-laboral.md) | Los juicios de la Justicia del Trabajo entran a la reforma laboral | `juicios_trabajo_capital`, `litigiosidad_laboral` | vigente |
 
 ### Vida cotidiana (ITVC)
 

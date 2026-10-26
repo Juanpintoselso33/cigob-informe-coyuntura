@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Gestión — resumen
 
-Este documento tiene una ficha por indicador — son 13 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 14 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,16 +35,16 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 76,3** | **VERDE** | Moderadamente aflojado | 13 indicadores: 10 en verde · 3 en amarillo |
-Componentes que puntúan en este corte: 13 de 13 publicados.
+| **ITCG: 75,1** | **VERDE** | Moderadamente aflojado | 14 indicadores: 10 en verde · 4 en amarillo |
+Componentes que puntúan en este corte: 14 de 14 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 68,5 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 67,6 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 91,2 | VERDE | 25,0 % |
-| Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. | 59,9 | AMARILLO | 15,0 % |
+| Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una. | 53,8 | AMARILLO | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 76,6 | VERDE | 15,0 % |
 | Reforma social y orden | Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes… | 90,6 | VERDE | 10,0 % |
 
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 8,32 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Brecha cambiaria (cepo) | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 8,87 % de brecha CCL/mayorista | VERDE | 14,0 % |
 | Apertura comercial (alícuota) | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -69,7 +69,8 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023. | −35,92 % de variación real vs 2023-08 (gastos de funcionamiento) | VERDE | 10,4 % |
 | **DIMENSIÓN: Reforma laboral** | | | | |
 | Fondo de Asistencia Laboral | Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo de Asistencia Laboral —el mecanismo con el… | 50 Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | AMARILLO | 7,5 % |
-| Juicios por riesgos del trabajo (SRT) | Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del… | 0,1 % variación juicios SRT (12m vs 12m previos) | VERDE | 7,5 % |
+| Juicios por riesgos del trabajo (SRT) | Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del… | 0,1 % variación juicios SRT (12m vs 12m previos) | VERDE | 3,8 % |
+| Juicios en la Justicia del Trabajo (Capital) | Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital. | 12,4 % variación juicios entrados (12m vs 12m previos) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
 | Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 55,6 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
 | Inversiones RIGI aprobadas | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 33,3 % de inversión aprobada sobre el pipeline | VERDE | 6,0 % |
@@ -95,7 +96,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 8,32 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 8,87 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -138,13 +139,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1668.20 (2026-10-26T10:59:00-03:00) / mayorista venta 1540.00 (2026-10-26T07:10:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1676.60 (2026-10-26T14:00:00-03:00) / mayorista venta 1540.00 (2026-10-26T07:10:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 8,32 % de brecha CCL/mayorista (2026-10).
+Dato vigente: 8,87 % de brecha CCL/mayorista (2026-10).
 
-8,32 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 5,68 del corte más cercano.
+8,87 % de brecha CCL/mayorista cae en el tramo que corresponde a Verde, a 5,13 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -593,7 +594,7 @@ Cuánto de la reforma laboral rige, y no sólo cuánto se dictó, para el Fondo 
 
 Distingue construcción normativa, entrada en vigencia y registro de fondos. La evaluación utiliza un registro normativo y judicial curado, cuyas fechas se muestran en el detalle: consultar el registro de la Comisión Nacional de Valores no actualiza la revisión judicial ni demuestra que no haya resoluciones posteriores. Según ese registro, el régimen tiene prevista su entrada en vigencia el 1 de diciembre de 2026; el cálculo reserva esa etapa hasta entonces, y ese día el avance pasa de 50 a 70 y el puntaje de 55 a 74 sin que cambie nada más. El avance (0–100) y el puntaje para el índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de la ficha. Las ofertas de los bancos todavía no cuentan como adopción: son anuncios y cartas de intención de fondos que no funcionan hasta que el régimen rija. No mide la reducción de litigios ni las indemnizaciones efectivamente pagadas.
 
-**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. Estos litigios pertenecen a otro universo de reclamos: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.
+**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una: los del sistema de riesgos del trabajo en todo el país y todos los que se inician en la Justicia Nacional del Trabajo de la Capital. Esos litigios describen la conflictividad laboral: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.
 
 ## Método de cómputo
 
@@ -687,7 +688,7 @@ Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0,1 % variación juicios SRT (12m vs 12m previos)** (2026-07) | **VERDE** | Peso efectivo 7,5 % del ITCG | Cinturón Gestión |
+| **Hoy: 0,1 % variación juicios SRT (12m vs 12m previos)** (2026-07) | **VERDE** | Peso efectivo 3,8 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -705,7 +706,7 @@ Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según
 
 Aporta la evolución de litigios por riesgos del trabajo. Comparte dimensión con el Fondo de Asistencia Laboral, pero pertenece a otro universo de reclamos: no demuestra el resultado de ese instrumento ni atribuye a la reforma las subas o bajas observadas.
 
-**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. Estos litigios pertenecen a otro universo de reclamos: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.
+**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una: los del sistema de riesgos del trabajo en todo el país y todos los que se inician en la Justicia Nacional del Trabajo de la Capital. Esos litigios describen la conflictividad laboral: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.
 
 ## Método de cómputo
 
@@ -738,7 +739,7 @@ Dato vigente: 0,1 % variación juicios SRT (12m vs 12m previos) (2026-07).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCG: 3,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** Comparte la dimensión de reforma laboral con el Fondo de Asistencia Laboral. La serie SRT no mide directamente el resultado de ese instrumento, porque corresponde a otro universo de litigios.
 
@@ -763,6 +764,96 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 **2026-07-03** — Entra al índice de gestión (reforma laboral, 30% interno): es el resultado que la reforma persigue y complementa al instrumento.
 
 **2026-10-24** — El rótulo pasa de «Litigiosidad laboral (SRT)» a «Juicios por riesgos del trabajo (SRT)», que es lo que la serie cuenta: no incluye los juicios por despido. Se anota la caída estacional de julio por la feria judicial. No cambia el cálculo.
+
+**2026-10-26** — Su peso en la reforma laboral baja de 50% a 25%: el otro 25% lo toman los juicios de la Justicia Nacional del Trabajo (Capital), que pidió la auditoría de CiGob. El Fondo de Asistencia Laboral sigue con la mitad. No cambia el cálculo de este indicador.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
+
+# Juicios en la Justicia del Trabajo (Capital)
+
+Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital: los entrados en primera instancia en los últimos 12 meses contra los 12 previos, según la Oficina de Estadísticas del Consejo de la Magistratura.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: 12,4 % variación juicios entrados (12m vs 12m previos)** (2026-06) | **AMARILLO** | Peso efectivo 3,8 % del ITCG | Cinturón Gestión |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | juicios_trabajo_capital | **CINTURÓN** | Gestión |
+| **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | % variación juicios entrados (12m vs 12m previos) |
+| **SERIE DISPONIBLE** | 2024-12 → 2026-10 (23 puntos) | **REZAGO DE PUBLICACIÓN** | Semestral. El primer semestre se publica en el segundo semestre del mismo año; el segundo, hacia mayo del año siguiente (el de 2025 trae «datos actualizados al 20 de mayo de 2026»). |
+| **PRODUCTOR DEL DATO** | Consejo de la Magistratura — Oficina de Estadísticas del Poder Judicial de la Nación | **OPERACIÓN ESTADÍSTICA** | Justicia Nacional del Trabajo: expedientes entrados en primera instancia (80 juzgados nacionales del trabajo), resumen de trámite de expedientes por semestre |
+| **MODO DE ACCESO** | Automático: lectura de los CSV que ofrece el formulario de la Oficina de Estadísticas (Fuero del Trabajo). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-26 |
+
+## Definición — qué mide y por qué importa
+
+Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital: los entrados en primera instancia en los últimos 12 meses contra los 12 previos, según la Oficina de Estadísticas del Consejo de la Magistratura.
+
+Es la otra cara de la litigiosidad: cuenta todos los juicios laborales —despidos, diferencias salariales, accidentes—, no sólo los de riesgos del trabajo, pero sólo los de la Capital. Lo pidió la auditoría de CiGob. Como la medida de la SRT, describe la evolución de los juicios y no atribuye a la reforma sus subas o bajas.
+
+**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una: los del sistema de riesgos del trabajo en todo el país y todos los que se inician en la Justicia Nacional del Trabajo de la Capital. Esos litigios describen la conflictividad laboral: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.
+
+## Método de cómputo
+
+- Se suma el total de expedientes entrados en primera instancia de los dos últimos semestres publicados y se compara con los dos anteriores: variación porcentual de 12 meses contra 12 meses. Cada semestre trae una feria judicial (enero y julio), así que comparar años móviles no la distorsiona.
+- La serie arranca en diciembre de 2024, porque los datos por semestre empiezan en 2023 y la comparación pide cuatro semestres. Es escalonada: cada mes muestra el último semestre cerrado, hasta que cierra el siguiente.
+- Si falta un semestre intermedio, se usa la última ventana de cuatro semestres completa.
+
+## Semáforo — valores que determinan el color
+
+Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
+
+**Valores que definen cada color**
+
+| Rango (% variación juicios entrados (12m vs 12m previos)) | Color |
+|---|---|
+| ≤ 2,5 | VERDE |
+| 2,5 – 12,5 | AMARILLO |
+| 12,5 – 17,5 | NARANJA |
+| ≥ 17,5 | ROJO |
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- 61.853 juicios entrados en 1ª instancia en los 12 meses hasta el 1º semestre de 2026 vs 55.040 en los 12 previos (sólo Capital)
+
+## Color vigente y por qué
+
+Dato vigente: 12,4 % variación juicios entrados (12m vs 12m previos) (2026-06).
+
+12,4 % variación juicios entrados (12m vs 12m previos) cae en el tramo que corresponde a Amarillo, a 0,1 del corte más cercano.
+
+**Color vigente: AMARILLO**
+
+Ponderación vigente en el ITCG: 3,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+- **Participación en otros indicadores.** Comparte la dimensión de reforma laboral con el Fondo de Asistencia Laboral y con los juicios por riesgos del trabajo de la SRT. Las dos medidas de juicios se complementan: la SRT cubre todo el país pero sólo riesgos del trabajo; ésta cuenta todos los juicios laborales, pero sólo los de la Capital.
+
+## Transparencia — limitaciones declaradas
+
+- Sólo la Capital: la Justicia Nacional del Trabajo no incluye los juzgados laborales de las provincias.
+- Cuenta juicios iniciados, no su resultado ni su mérito, y no permite atribuir a la reforma las subas o bajas: pesan también el empleo, los despidos y los tiempos de los abogados.
+- La escala de puntaje es la de los juicios por riesgos del trabajo. La serie propia arranca en 2023 y no alcanza para calibrar una.
+- Al ser semestral, el dato puede tener casi un año de antigüedad antes de que salga el siguiente.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Con la fuente caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.
+
+- **Política de revisiones:** La Oficina puede corregir semestres ya publicados; todos los CSV se releen en cada actualización.
+
+## Historial — cambios metodológicos documentados
+
+**2026-10-26** — Alta en el índice de gestión, con 25% de la reforma laboral, a pedido de la auditoría de CiGob, que citaba 55.337 juicios en 2024 y 58.504 en 2025: son los entrados en primera instancia de esta fuente.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -820,7 +911,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 9 empresas · etapa promedio 2,22/4 · cerradas: Transener · consulta de novedades incompleta
+- 9 empresas · etapa promedio 2,22/4 · cerradas: Transener
 
 ## Color vigente y por qué
 

@@ -482,6 +482,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Aporta la evolución de litigios por riesgos del trabajo. Comparte dimensión con el Fondo de Asistencia Laboral, pero pertenece a otro universo de reclamos: no demuestra el resultado de ese instrumento ni atribuye a la reforma las subas o bajas observadas.",
     frecuencia: "Mensual (~3 meses de rezago; julio cae todos los años por la feria judicial)", tipo: "Variación 12m",
   },
+  juicios_trabajo_capital: {
+    que: "Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital: los entrados en primera instancia en los últimos 12 meses contra los 12 previos, según la Oficina de Estadísticas del Consejo de la Magistratura.",
+    aporta: "Es la otra cara de la litigiosidad: cuenta todos los juicios laborales —despidos, diferencias salariales, accidentes—, no sólo los de riesgos del trabajo, pero sólo los de la Capital. Lo pidió la auditoría de CiGob. Como la medida de la SRT, describe la evolución de los juicios y no atribuye a la reforma sus subas o bajas.",
+    frecuencia: "Semestral (el 2º semestre sale hacia mayo del año siguiente)", tipo: "Variación 12m",
+  },
   alertas_manifestacion: {
     que: "Cuántas alertas de manifestación únicas reportaron los feeds en tiempo real del transporte porteño (colectivos y subtes) durante el mes.",
     aporta: "Serie propia en construcción (acumula desde jul-2026, muestreada varias veces por día): cuando tenga historia suficiente será la base automatizable del indicador de orden público. Sin línea base 2023 — el registro histórico oficial de cortes fue dado de baja.",
@@ -506,7 +511,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   // ITCG
   reformas_economicas: "El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.",
   reforma_estado: "El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario. El puntaje máximo refleja el cumplimiento de las referencias fijadas para esas dos variables; no implica que se haya completado la reforma y transformación del Estado. La de dotación es la meta de recortar otro 10% de la planta en 2026, que informó la prensa citando fuentes oficiales (el Gobierno no publicó un número); la de gasto de funcionamiento es una referencia propia, porque no hay meta oficial con la que compararlo.",
-  reforma_laboral: "Combina las etapas del Fondo de Asistencia Laboral con la evolución de juicios del sistema de riesgos del trabajo. Estos litigios pertenecen a otro universo de reclamos: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.",
+  reforma_laboral: "Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una: los del sistema de riesgos del trabajo en todo el país y todos los que se inician en la Justicia Nacional del Trabajo de la Capital. Esos litigios describen la conflictividad laboral: no miden el resultado del Fondo ni permiten atribuir sus variaciones a la reforma.",
   privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.",
   social_orden: "Reúne la composición presupuestaria de transferencias de dos programas sociales, la evolución de cortes por manifestación en CABA y la derivación directa de aportes a prepagas. Esa composición no acredita cobros individuales ni ausencia de intermediación, y la caída de cortes no identifica el efecto causal del protocolo.",
   // ITCIS

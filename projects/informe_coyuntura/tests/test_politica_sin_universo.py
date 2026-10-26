@@ -206,6 +206,7 @@ def test_publicacion_y_censo_con_componente_sin_universo(monkeypatch, tmp_path, 
     # 64 → 68: entra `actividad_tributaria` al ITCM (ADR-0329), y al ITCIS
     # entran `tasa_homicidios` + `tasa_robos` (ADR-0327) y `ratio_motos_autos`
     # (ADR-0328) a puntuar como indicadores propios — cuatro cards más.
-    assert resumen["indicadores"] == 68
-    assert resumen["indicadores_observados_en_calculo"] == 67   # 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328)
+    # 68 → 69: entra `juicios_trabajo_capital` al ITCG (ADR-0365).
+    assert resumen["indicadores"] == 69
+    assert resumen["indicadores_observados_en_calculo"] == 68   # 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328) → 68 (ADR-0365)
     assert resumen["indicadores_sin_universo"] == 1

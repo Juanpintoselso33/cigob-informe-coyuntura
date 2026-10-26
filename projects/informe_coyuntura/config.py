@@ -172,6 +172,11 @@ MAX_DIAS = {
     "judicializacion": 430,
     "protocolo_antipiquetes": 430,      # DP publica monitoreos esporádicos
     "litigiosidad_laboral": 220,        # SRT
+    # ADR-0365: semestral. El dato de cada semestre (fecha = día 1 de junio o de
+    # diciembre) queda hasta que sale el siguiente: el 2º semestre de 2025 se
+    # publicó cerca del 20-may-2026 y el 1º de 2026 antes del 26-oct. 400 cubre
+    # junio→mayo con margen y avisa si se saltea una publicación.
+    "juicios_trabajo_capital": 400,
     "libertad_opcion_salud": 220,       # SSS
     # mensuales con ~2-3 meses de rezago de publicación
     "emae_ia": 140, "iai": 140, "icip": 140, "brecha_salario_cbt": 150,

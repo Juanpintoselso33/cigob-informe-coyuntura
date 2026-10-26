@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-26 11:23:37"
+generado: "2026-10-26 14:47:15"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -91,18 +91,19 @@ schema_version: "1.2.0"
 |---|---|---|---|
 | icc_utdt | 41.52 | índice | 2026-10-01 |
 
-### 🟢 Gestion — score 2.4/10 (estable)
+### 🟢 Gestion — score 2.5/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 8.32 | % de brecha CCL/mayorista | 2026-10-26 | fresco |
+| cepo_mulc | 8.87 | % de brecha CCL/mayorista | 2026-10-26 | fresco |
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
 | gasto_funcionamiento | -35.92 | % de variación real vs 2023-08 (gastos de funcionamiento) | 2026-08-01 | fresco |
 | fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-10-26 | fresco |
 | litigiosidad_laboral | 0.1 | % variación juicios SRT (12m vs 12m previos) | 2026-07-01 | fresco |
+| juicios_trabajo_capital | 12.4 | % variación juicios entrados (12m vs 12m previos) | 2026-06-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
 | rigi_inversiones | 33.3 | % de inversión aprobada sobre el pipeline | 2026-10-26 | fresco |
 | concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-10-26 | fresco |
@@ -124,4 +125,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-10-26 11:23:37 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-26 14:47:15 — schema 1.2.0*

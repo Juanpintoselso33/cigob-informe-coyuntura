@@ -737,7 +737,7 @@ ITCG_SERIES = [
     "cepo_mulc", "apertura_comercial", "desregulacion_normativa",
     "reduccion_estado", "gasto_funcionamiento", "masa_salarial",
     "reestructuracion_organismos", "fal_modernizacion_laboral",
-    "litigiosidad_laboral", "privatizaciones", "rigi_inversiones",
+    "litigiosidad_laboral", "juicios_trabajo_capital", "privatizaciones", "rigi_inversiones",
     "concesiones_infraestructura", "asistencia_directa",
     "protocolo_antipiquetes", "libertad_opcion_salud",
 ]

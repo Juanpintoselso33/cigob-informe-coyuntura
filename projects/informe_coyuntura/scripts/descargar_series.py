@@ -3294,6 +3294,34 @@ def fetch_litigiosidad_serie() -> list:
     return out[-60:]   # últimos 5 años (la serie arranca en 2010)
 
 
+def fetch_juicios_trabajo_serie() -> list:
+    """ADR-0365. Juicios entrados en 1ª instancia de la Justicia Nacional del
+    Trabajo, 12 meses vs los 12 previos. La fuente es semestral: la serie es
+    ESCALONADA mensual, como la de concesiones —cada semestre vale desde su
+    último mes hasta el mes anterior al cierre del siguiente, y el último
+    llega al mes en curso—. Con un punto cada seis meses, la reconstrucción
+    mensual del ITCG lo perdía diez meses por año y renormalizaba los pesos.
+    Misma fórmula que la card. [[YYYY-MM-01, var%]]."""
+    semestres = gestion._pjn_juicios_semestrales()
+    escalones = []
+    for s in sorted(semestres):
+        try:
+            variacion, _, _ = gestion._juicios_trabajo_variacion(semestres, s)
+        except ValueError:
+            continue
+        escalones.append((gestion._fecha_semestre(s)[:7], variacion))
+    hoy = date.today().strftime("%Y-%m")
+    out = []
+    for i, (desde, valor) in enumerate(escalones):
+        hasta = escalones[i + 1][0] if i + 1 < len(escalones) else None
+        ym = desde
+        while (ym < hasta) if hasta else (ym <= hoy):
+            out.append([f"{ym}-01", valor])
+            anio, mes = int(ym[:4]), int(ym[5:])
+            ym = f"{anio + mes // 12}-{mes % 12 + 1:02d}"
+    return out
+
+
 def fetch_alicuota_serie() -> list:
     """Serie mensual de la ALÍCUOTA EFECTIVA del comercio exterior
     (apertura_comercial desde el ADR-0021: la brecha salió del compuesto):
@@ -3615,6 +3643,7 @@ GESTION_DERIVADAS = [
      lambda: _serie_var_real_vs_2023([gestion.REMUNERACIONES_ID])),
     ("libertad_opcion_salud", "% usuarios de prepagas con derivación directa", "SSS — RNAS/RNEMP", fetch_opcion_salud_serie),
     ("litigiosidad_laboral", "% i.a. juicios SRT (12m vs 12m)", "SRT — serie de litigiosidad", fetch_litigiosidad_serie),
+    ("juicios_trabajo_capital", "% juicios entrados en 1ª instancia (12m vs 12m, semestral)", "Consejo de la Magistratura — Justicia Nacional del Trabajo", fetch_juicios_trabajo_serie),
     ("cepo_mulc", "% brecha CCL/mayorista (prom. mensual)", "ArgentinaDatos (CCL) + BCRA (A3500)", fetch_brecha_serie),
     ("protestas_caba", "eventos de protesta/mes (CABA)", "ACLED — agregado semanal (acleddata.com)", fetch_protestas_serie),
 ]

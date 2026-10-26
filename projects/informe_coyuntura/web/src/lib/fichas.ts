@@ -2322,6 +2322,49 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-02", cambio: "Alta como indicador de contexto, fuera del índice." },
       { fecha: "2026-07-03", cambio: "Entra al índice de gestión (reforma laboral, 30% interno): es el resultado que la reforma persigue y complementa al instrumento." },
       { fecha: "2026-10-24", cambio: "El rótulo pasa de «Litigiosidad laboral (SRT)» a «Juicios por riesgos del trabajo (SRT)», que es lo que la serie cuenta: no incluye los juicios por despido. Se anota la caída estacional de julio por la feria judicial. No cambia el cálculo.", adr: "0361" },
+      { fecha: "2026-10-26", cambio: "Su peso en la reforma laboral baja de 50% a 25%: el otro 25% lo toman los juicios de la Justicia Nacional del Trabajo (Capital), que pidió la auditoría de CiGob. El Fondo de Asistencia Laboral sigue con la mitad. No cambia el cálculo de este indicador.", adr: "0365" },
+    ],
+  },
+
+  juicios_trabajo_capital: {
+    tipo: "indicador",
+    id: "juicios_trabajo_capital",
+    cinturon: "gestion",
+    rezago: "Semestral. El primer semestre se publica en el segundo semestre del mismo año; el segundo, hacia mayo del año siguiente (el de 2025 trae «datos actualizados al 20 de mayo de 2026»).",
+    fuente: {
+      organismo: "Consejo de la Magistratura — Oficina de Estadísticas del Poder Judicial de la Nación",
+      operacion: "Justicia Nacional del Trabajo: expedientes entrados en primera instancia (80 juzgados nacionales del trabajo), resumen de trámite de expedientes por semestre",
+      serie: "Datos abiertos «Resumen - Trámite de expedientes», por semestre, desde 2023",
+      url: "https://estadisticas.pjn.gov.ar/datos_estadisticos/datos_estadisticos.php",
+      acceso: "Automático: lectura de las planillas de datos abiertos que ofrece el formulario de la Oficina de Estadísticas (Fuero del Trabajo).",
+    },
+    transformaciones: [
+      "Se suma el total de expedientes entrados en primera instancia de los dos últimos semestres publicados y se compara con los dos anteriores: variación porcentual de 12 meses contra 12 meses. Cada semestre trae una feria judicial (enero y julio), así que comparar años móviles no la distorsiona.",
+      "La serie arranca en diciembre de 2024, porque los datos por semestre empiezan en 2023 y la comparación pide cuatro semestres. Es escalonada: cada mes muestra el último semestre cerrado, hasta que cierra el siguiente.",
+      "Si falta un semestre intermedio, se usa la última ventana de cuatro semestres completa.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "≤ −15", puntaje: 100 },
+        { banda: "−15 – −5", puntaje: 85 },
+        { banda: "−5 – 5", puntaje: 65 },
+        { banda: "5 – 20", puntaje: 40 },
+        { banda: "> 20", puntaje: 10 },
+      ],
+      puntos: [[-15, 100], [-10, 85], [0, 65], [12.5, 40], [20, 10]],
+      unidadCorta: "% (12m vs 12m)",
+    },
+    dobleUso: "Comparte la dimensión de reforma laboral con el Fondo de Asistencia Laboral y con los juicios por riesgos del trabajo de la SRT. Las dos medidas de juicios se complementan: la SRT cubre todo el país pero sólo riesgos del trabajo; ésta cuenta todos los juicios laborales, pero sólo los de la Capital.",
+    limitaciones: [
+      "Sólo la Capital: la Justicia Nacional del Trabajo no incluye los juzgados laborales de las provincias.",
+      "Cuenta juicios iniciados, no su resultado ni su mérito, y no permite atribuir a la reforma las subas o bajas: pesan también el empleo, los despidos y los tiempos de los abogados.",
+      "La escala de puntaje es la de los juicios por riesgos del trabajo. La serie propia arranca en 2023 y no alcanza para calibrar una.",
+      "Al ser semestral, el dato puede tener casi un año de antigüedad antes de que salga el siguiente.",
+    ],
+    faltantes: "Con la fuente caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
+    revisiones: "La Oficina puede corregir semestres ya publicados; todas las planillas se releen en cada actualización.",
+    cambios: [
+      { fecha: "2026-10-26", cambio: "Alta en el índice de gestión, con 25% de la reforma laboral, a pedido de la auditoría de CiGob, que citaba 55.337 juicios en 2024 y 58.504 en 2025: son los entrados en primera instancia de esta fuente.", adr: "0365" },
     ],
   },
 

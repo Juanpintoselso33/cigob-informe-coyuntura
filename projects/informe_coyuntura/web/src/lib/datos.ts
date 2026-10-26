@@ -467,7 +467,7 @@ export const LABELS: Record<string, string> = {
   gasto_funcionamiento: "Gasto de funcionamiento", masa_salarial: "Masa salarial pública",
   asistencia_directa: "Planes sin intermediarios", fal_modernizacion_laboral: "Fondo de Asistencia Laboral",
   libertad_opcion_salud: "Libertad de opción en salud", protocolo_antipiquetes: "Orden público (piquetes)",
-  litigiosidad_laboral: "Juicios por riesgos del trabajo (SRT)", alertas_manifestacion: "Alertas de manifestación (GCBA)",
+  litigiosidad_laboral: "Juicios por riesgos del trabajo (SRT)", juicios_trabajo_capital: "Juicios en la Justicia del Trabajo (Capital)", alertas_manifestacion: "Alertas de manifestación (GCBA)",
   protestas_caba: "Protestas en CABA (ACLED)",
 };
 export function label(key: string): string {
@@ -548,7 +548,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   rigi_inversiones: "% de la cartera", privatizaciones: "%", concesiones_infraestructura: "%",
   fal_modernizacion_laboral: "de avance", asistencia_directa: "de 100",
   protocolo_antipiquetes: "%", libertad_opcion_salud: "%",
-  litigiosidad_laboral: "% i.a.", alertas_manifestacion: "alertas/mes",
+  litigiosidad_laboral: "% i.a.", juicios_trabajo_capital: "% i.a.", alertas_manifestacion: "alertas/mes",
   protestas_caba: "eventos 12m",
 };
 
@@ -630,6 +630,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   asistencia_directa: "Unidades de gestión dadas de baja (Res. 84/2024) — 0 o 100", fal_modernizacion_laboral: "Reforma laboral vigente (0–100)",
   libertad_opcion_salud: "% de los usuarios de prepagas que llegan con sus aportes derivados directo", protocolo_antipiquetes: "% de reducción de cortes en CABA vs 2023 (no mide la aplicación del protocolo)",
   litigiosidad_laboral: "% variación (12m vs 12m previos)",
+  juicios_trabajo_capital: "% variación de los juicios entrados (12m vs 12m previos, por semestre)",
   alertas_manifestacion: "Alertas únicas en el mes (avisos del transporte público porteño)",
   protestas_caba: "Eventos de protesta (acum. 12 meses)",
 };

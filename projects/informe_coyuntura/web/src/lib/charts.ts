@@ -35,7 +35,7 @@ const POLARIDAD_SIGNO: Record<string, 1 | -1> = {
   // serie de U invertida del tablero (tasa real muy negativa = licuación;
   // muy alta = bola de nieve). Pintar medio gráfico de verde y medio de rojo
   // diría que "más es mejor", que es justo lo contrario de lo que mide.
-  idm: -1, litigiosidad_laboral: -1, gasto_funcionamiento: -1, masa_salarial: -1,
+  idm: -1, litigiosidad_laboral: -1, juicios_trabajo_capital: -1, gasto_funcionamiento: -1, masa_salarial: -1,
   reduccion_estado: -1,
   // impacto social (series que cruzan el cero). endeudamiento_familiar salió
   // de la lista (ADR-0067): su card es el stock nominal en billones (nunca

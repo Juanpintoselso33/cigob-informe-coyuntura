@@ -129,7 +129,11 @@ TECHOS = {
     # BAJA a 0,25 el 2026-10-26 (ADR-0364): reduccion_estado deja de ser
     # convención (100 en −12%, el recorte observado) y pasa a la meta externa
     # de 2026 (−25,7%). Medido: 24,8%.
-    "ITCG": {"circular": 0.25, "sin_declarar": 0.01},
+    # SUBE a 0,29 el mismo día (ADR-0365), a sabiendas: entra
+    # juicios_trabajo_capital con la escala de litigiosidad_laboral, declarada
+    # convención porque su serie (desde 2023) no alcanza para calibrar una
+    # propia. Medido: 28,6%.
+    "ITCG": {"circular": 0.29, "sin_declarar": 0.01},
     # ITCP baja a 0,34 el 2026-07-25 (ADR-0126): entra cobertura_judicial con
     # ancla CONCEPTUAL —niveles de cobertura de un cuerpo, no el rango 64-73%
     # observado— y diluye la proporción circular del índice. El techo se baja
@@ -200,6 +204,7 @@ PROCEDENCIA = {
     "protocolo_antipiquetes": ("convencion", "calibrada con la caída observada en CABA en 2024-2025"),
     "libertad_opcion_salud": ("conceptual", "% de usuarios con libre opción; el 100 (libre opción plena) es el ancla (ADR-0121)"),
     "litigiosidad_laboral": ("historia_larga", "calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023)"),
+    "juicios_trabajo_capital": ("convencion", "toma la escala de litigiosidad_laboral, que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365)"),
 
     # ── ITCP ────────────────────────────────────────────────────────────────
     "ratio_dnu": ("externa", "ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059)"),

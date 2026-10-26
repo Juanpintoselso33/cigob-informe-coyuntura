@@ -64,7 +64,8 @@ EJEMPLO = {
     # 1-nov-2026 y no hay fondos inscriptos en la CNV: 0,50·1 + 0,20·0 + 0,30·0.
     # ADR-0142 daba 100 → 100 contando los actos DICTADOS, sin poder ver que la
     # ley estuvo suspendida 24 días.
-    "litigiosidad_laboral": 3.6,        # 57,8 (banda 65) — resultado (30%, ADR-0023)
+    "litigiosidad_laboral": 3.6,        # 57,8 (banda 65) — resultado (25%, ADR-0365)
+    "juicios_trabajo_capital": 12.4,    # 40,2 (banda 40) — juicios entrados, Justicia del Trabajo (25%, ADR-0365)
     "privatizaciones": 51.4,            # 71,4 (banda 65)
     "rigi_inversiones": 22.1,           # 47,7 (banda 40)
     "concesiones_infraestructura": 35.0,  # 52,5 (borde 40/65)
@@ -90,13 +91,15 @@ def test_itcg_reproduce_ejemplo():
     # contar sus dos actos DICTADOS y salta de 30,8 a 100) → 56,4 (ADR-0228, el
     # FAL vuelve a medir lo que RIGE y baja de 100 a 55). El de ADR-0142 fue un
     # salto editorial y no empírico; el de ADR-0228 lo revierte con evidencia
-    # externa. Los dos están declarados en su ADR y en la ficha.
-    assert dims["reforma_laboral"]["puntaje"] == 56.4
+    # externa. Los dos están declarados en su ADR y en la ficha. → 52,0
+    # (ADR-0365: entran los juicios de la Justicia del Trabajo, 25%, y la SRT
+    # baja a 25%: 0,50·55 + 0,25·57,8 + 0,25·40,2).
+    assert dims["reforma_laboral"]["puntaje"] == 52.0
     assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
     # ADR-0189: vuelve asistencia_directa y la dimension recupera el 40/40/20
     # del documento. 0,4x100 + 0,4x76,6 + 0,2x65 = 83,6 (antes 72,8 con 67/33).
     assert dims["social_orden"]["puntaje"] == 83.6
-    assert r["valor"] == 75.4          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228) → 75,4 (0247)
+    assert r["valor"] == 74.7          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228) → 75,4 (0247) → 74,7 (0365)
     assert r["banda"] == "moderadamente_aflojado"
     assert itcg.tension_de_itcg(r["valor"]) == 2.5
     assert r["ajustes_aplicados"] == []

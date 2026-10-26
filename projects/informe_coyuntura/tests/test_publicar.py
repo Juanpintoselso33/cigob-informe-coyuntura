@@ -622,10 +622,11 @@ def test_gestion_itcg_reconcilia():
     # cumplidas. `masa_salarial` sigue sin puntuar (duda metodológica sin
     # saldar, ADR-0186) y por eso ahora tampoco se publica.
     # 14 → 13: salió `reestructuracion_organismos` (ADR-0247)
-    assert len(en_indice) == 13, f"esperaba 13 indicadores en el índice, hay {len(en_indice)}"
+    # 13 → 14: entra `juicios_trabajo_capital` (ADR-0365)
+    assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
     assert contexto == {}, ("gestión no publica indicadores que no puntúen: "
                             f"{sorted(contexto)}")
-    assert len(c["indicadores"]) == 13, "el snapshot no debe traer cards sin puntaje"
+    assert len(c["indicadores"]) == 14, "el snapshot no debe traer cards sin puntaje"
     assert "asistencia_directa" in en_indice, "la promesa cumplida puntúa (ADR-0189)"
     assert "litigiosidad_laboral" in en_indice
     # Los cuatro que no puntúan quedan OCULTOS del snapshot (GESTION_OCULTOS):

@@ -218,6 +218,12 @@ BANDAS_ITCG = {
         # desactivándose.
         (-INF, -15.0, 100), (-15.0, -5.0, 85), (-5.0, 5.0, 65), (5.0, 20.0, 40), (20.0, INF, 10),
     ],
+    "juicios_trabajo_capital": [        # juicios entrados en la Justicia del Trabajo, % 12m vs 12m (ADR-0365)
+        # MISMA escala que litigiosidad_laboral: es la misma cuenta (juicios,
+        # 12 meses contra los 12 previos) sobre otro universo. Su serie arranca
+        # en 2023 y da cuatro puntos, que no alcanzan para calibrar una propia.
+        (-INF, -15.0, 100), (-15.0, -5.0, 85), (-5.0, 5.0, 65), (5.0, 20.0, 40), (20.0, INF, 10),
+    ],
 }
 
 # Dimensiones del índice (doc 260702: pesos 35/25/15/15/10). Los pesos internos
@@ -272,8 +278,16 @@ DIMENSIONES_ITCG = {
         # el instrumento. `fal_modernizacion_laboral` vuelve a medir si la
         # reforma rige y deja de estar clavado en 100, con lo que la dimensión
         # baja de 80,4 a 57,9. Sigue siendo la más floja del ITCG.
+        #
+        # ADR-0365 (2026-10-26): a pedido de la auditoría de CiGob entran los
+        # juicios de la Justicia Nacional del Trabajo. Sigue la regla de
+        # ADR-0128 —mitad instrumento, mitad resultado—: el resultado se reparte
+        # entre las dos medidas de juicios, 25 y 25. La SRT cubre todo el país
+        # pero sólo riesgos del trabajo; la Justicia del Trabajo cuenta todos
+        # los juicios laborales, pero sólo los de la Capital.
         "indicadores": {"fal_modernizacion_laboral": 0.50,
-                        "litigiosidad_laboral": 0.50},
+                        "litigiosidad_laboral": 0.25,
+                        "juicios_trabajo_capital": 0.25},
     },
     "privatizaciones_inversion": {
         "nombre": "Privatizaciones e inversión",
