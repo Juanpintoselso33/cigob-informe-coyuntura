@@ -2,7 +2,7 @@
  "meses": [
   {
    "mes": "2026-09",
-   "corrida": "ba90623449",
+   "corrida": "b88e695fae",
    "generado": "2026-09-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.9,
@@ -29,11 +29,11 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4126
+   "peso_kb": 4127
   },
   {
    "mes": "2026-08",
-   "corrida": "ba90623449",
+   "corrida": "b88e695fae",
    "generado": "2026-08-31T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.8,
@@ -60,11 +60,11 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4087
+   "peso_kb": 4088
   },
   {
    "mes": "2026-07",
-   "corrida": "ba90623449",
+   "corrida": "b88e695fae",
    "generado": "2026-07-31T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.9,
@@ -91,11 +91,11 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4043
+   "peso_kb": 4044
   },
   {
    "mes": "2026-06",
-   "corrida": "ba90623449",
+   "corrida": "b88e695fae",
    "generado": "2026-06-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.7,
