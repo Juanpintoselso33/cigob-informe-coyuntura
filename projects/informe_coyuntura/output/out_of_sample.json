@@ -52,26 +52,26 @@
       "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"
     },
     {
-      "indicador": "litigiosidad_laboral",
+      "indicador": "siniestralidad_laboral",
       "indice": "ITCG",
-      "procedencia": "historia_larga",
+      "procedencia": "convencion",
       "fuera_de_muestra": {
-        "n": 28,
-        "media": 12.9,
-        "desvio": 6.4,
-        "saturado": 0.821,
-        "crudo_min": 14.4,
-        "crudo_max": 80.1,
-        "crudo_media": 40.65
+        "n": 36,
+        "media": 52.7,
+        "desvio": 36.9,
+        "saturado": 0.667,
+        "crudo_min": -31.5,
+        "crudo_max": 32.4,
+        "crudo_media": 3.1
       },
       "dentro_de_muestra": {
-        "n": 32,
-        "media": 51.7,
-        "desvio": 14.1,
-        "saturado": 0.094,
-        "crudo_min": 0.1,
-        "crudo_max": 24.7,
-        "crudo_media": 6.21
+        "n": 35,
+        "media": 73.3,
+        "desvio": 12.1,
+        "saturado": 0.0,
+        "crudo_min": -11.3,
+        "crudo_max": 2.6,
+        "crudo_media": -3.94
       },
       "señal": "mirar",
       "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"

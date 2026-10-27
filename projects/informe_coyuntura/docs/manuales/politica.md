@@ -287,7 +287,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **4.7%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `conceptual` — las mismas anclas del saldo de la industria y del comercio —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie del campo (ADR-0150, ADR-0384) |
 
 **Bandas**: > 0.6 → 100 · 0.2–0.6 → 85 · -0.2–0.2 → 65 · -0.6–-0.2 → 40 · ≤ -0.6 → 10
 

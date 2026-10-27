@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Impacto social — resumen
 
-Este documento tiene una ficha por indicador — son 18 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 19 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,14 +35,14 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 95,7** | **AMARILLO** | Sin cambios significativos frente a las referencias | 18 indicadores: 8 en verde · 2 en amarillo · 4 en naranja · 4 en rojo |
-Componentes que puntúan en este corte: 18 de 18 publicados.
+| **ITCIS: 97,2** | **AMARILLO** | Sin cambios significativos frente a las referencias | 19 indicadores: 9 en verde · 2 en amarillo · 4 en naranja · 4 en rojo |
+Componentes que puntúan en este corte: 19 de 19 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
-| Presión de precios | Tres gastos sensibles. | 97,7 | AMARILLO | 25,0 % |
+| Presión de precios | Tres gastos sensibles. | 103,7 | AMARILLO | 25,0 % |
 | Empleo | Cuánta gente trabaja y en qué condiciones. | 100,1 | AMARILLO | 24,2 % |
 | Ingresos | Si el ingreso alcanza. | 114,6 | VERDE | 20,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,7 | ROJO | 10,0 % |
@@ -65,7 +65,8 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % m/m | VERDE | 8,8 % |
 | Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario RIPTE | VERDE | 11,2 % |
-| Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,88 % m/m alquileres | ROJO | 5,0 % |
+| Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,88 % m/m alquileres | ROJO | 2,5 % |
+| Alquiler real (UdeSA – Mercado Libre) | Cuánto subió en el último año el alquiler que se pide por los departamentos de AMBA en los avisos de Mercado Libre… | −9,84 % real interanual | VERDE | 2,5 % |
 | **DIMENSIÓN: Empleo** | | | | |
 | Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de… | 37,9 % | NARANJA | 9,7 % |
 | Ocupación (EPH) | Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo… | 0,4 pp vs. 2023 | AMARILLO | 14,5 % |
@@ -213,7 +214,7 @@ Cuánto suben en el mes los precios de alimentos y bebidas. En el índice de imp
 
 Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.
 
-**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, el alquiler —medido de dos formas: el que releva el índice de precios, contra el resto de los precios, y el que se pide en los avisos de Mercado Libre, descontada la inflación— y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
@@ -300,7 +301,7 @@ Qué porcentaje del salario registrado promedio (la remuneración imponible prom
 
 Mide directamente la asequibilidad de los servicios públicos y puntúa con 45% de la dimensión de precios. Agua+energía y transporte se comparan por separado con referencias internacionales de 10% y 5% del ingreso; entra la mayor tensión para que un rubro caro no quede oculto por otro barato.
 
-**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, el alquiler —medido de dos formas: el que releva el índice de precios, contra el resto de los precios, y el que se pide en los avisos de Mercado Libre, descontada la inflación— y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
@@ -372,7 +373,7 @@ Cuánto se encareció el alquiler de la vivienda por encima del resto de los pre
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,88 % m/m alquileres** (2026-09) | **ROJO** | Peso efectivo 5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 1,88 % m/m alquileres** (2026-09) | **ROJO** | Peso efectivo 2,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -390,7 +391,7 @@ Cuánto se encareció el alquiler de la vivienda por encima del resto de los pre
 
 La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.
 
-**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, el alquiler —medido de dos formas: el que releva el índice de precios, contra el resto de los precios, y el que se pide en los avisos de Mercado Libre, descontada la inflación— y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
@@ -427,7 +428,7 @@ El componente está en 50 sobre la base 100 del 4º trimestre de 2023 — menos 
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITCIS: 5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -446,6 +447,100 @@ Ponderación vigente en el ITCIS: 5 % efectivo. El color es una lectura adiciona
 **2026-07-20** — Alta del indicador: la dimensión de precios no medía el costo de la vivienda.
 
 **2026-09-08** — La API discrepaba del original sin que lo explicara un rebase. Se reconstruyen tarjeta e historia desde la planilla INDEC, conservando GBA, base 4T-2023 y pesos. La revisión del índice de impacto social no representa una variación económica nueva.
+
+**2026-10-27** — Cede la mitad de su peso (de 20% a 10% dentro de precios) al alquiler pedido en los avisos de UdeSA – Mercado Libre, que mide la misma vivienda desde el mercado de contratos nuevos. Alimentos y servicios públicos no cambian.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
+
+# Alquiler real (UdeSA – Mercado Libre)
+
+Cuánto subió en el último año el alquiler que se pide por los departamentos de AMBA en los avisos de Mercado Libre, descontada la inflación del mismo período. En el índice de impacto social puntúa como 100 menos esa variación real: por encima de 100 el alquiler pedido sube menos que los precios; por debajo, más.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: −9,84 % real interanual** (2026-09) | **VERDE** | Peso efectivo 2,5 % del ITCIS | Cinturón Impacto social |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | alquiler_udesa_real | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % real interanual |
+| **SERIE DISPONIBLE** | 2025-06 → 2026-09 (16 puntos) | **REZAGO DE PUBLICACIÓN** | El informe de AMBA sale entre el último día del mes y los primeros del siguiente; el punto necesita además el IPC del mismo mes, que el INDEC publica a mediados del mes siguiente (~1,5 meses). |
+| **PRODUCTOR DEL DATO** | Universidad de San Andrés (Centro de Estudios Cuantitativos en Negocios) y Mercado Libre Inmuebles | **OPERACIÓN ESTADÍSTICA** | Indicadores UdeSA – Mercado Libre: relevamiento de precio de propiedad y alquileres, AMBA |
+| **MODO DE ACCESO** | Manual: una vez por mes se lee el PDF de AMBA y se carga la cifra con su frase textual y el enlace al informe en data/vida/alquiler_udesa.json (guía en scripts/vida_cotidiana/cargar_alquiler_udesa.py). Si pasan 45 días sin carga, el pipeline avisa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-27 |
+
+## Definición — qué mide y por qué importa
+
+Cuánto subió en el último año el alquiler que se pide por los departamentos de AMBA en los avisos de Mercado Libre, descontada la inflación del mismo período. En el índice de impacto social puntúa como 100 menos esa variación real: por encima de 100 el alquiler pedido sube menos que los precios; por debajo, más.
+
+El IPC mide el alquiler de los contratos vigentes, que se ajustan con rezago; los avisos muestran lo que piden quienes ofrecen un departamento para alquilar. Es el costo al que se enfrenta quien se muda, el que más pesa en una decisión de vivienda.
+
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, el alquiler —medido de dos formas: el que releva el índice de precios, contra el resto de los precios, y el que se pide en los avisos de Mercado Libre, descontada la inflación— y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
+
+## Método de cómputo
+
+- La tarjeta muestra la variación real interanual: (1 + alquiler nominal interanual) / (1 + inflación interanual del mismo mes) − 1.
+- El alquiler nominal es el que publica UdeSA – Mercado Libre para departamentos de AMBA en pesos corrientes, tal como figura en la prosa del informe. La inflación es el nivel general del IPC del Gran Buenos Aires del INDEC, la misma planilla que usa el costo del alquiler del IPC.
+- El componente que puntúa es 100 menos la variación real, en puntos: 100 significa que el alquiler pedido subió igual que los precios; por debajo de 100, se encareció en términos reales. No se rebasea al 4º trimestre de 2023 porque la fuente sólo da variaciones interanuales y no se encadenan.
+
+## Semáforo — valores que determinan el color
+
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+
+**Valores que definen cada color**
+
+| Rango (índice base 100 = 4º trim. 2023) | Color |
+|---|---|
+| 105 o más | VERDE |
+| de 95 a 105 | AMARILLO |
+| de 85 a 95 | NARANJA |
+| menos de 85 | ROJO |
+
+Este componente está hoy en **109,8**.
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- El informe publica el valor (−9,84 % real interanual) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+
+## Color vigente y por qué
+
+Dato vigente: −9,84 % real interanual (2026-09).
+
+El componente está en 109,8 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
+
+**Color vigente: VERDE**
+
+Ponderación vigente en el ITCIS: 2,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+- **Participación en otros indicadores.** Mide el mismo gasto que el alquiler del IPC (contratos vigentes) desde el mercado de contratos nuevos; por eso comparten el 20% que la dimensión le asigna a la vivienda.
+
+## Transparencia — limitaciones declaradas
+
+- Son precios de avisos publicados, no de contratos firmados: el alquiler que se pide no es el que se pacta ni el que paga quien ya alquila.
+- Sólo cubre departamentos de AMBA (CABA y Gran Buenos Aires) y no representa el interior del país.
+- Es carga manual: depende de que alguien lea el PDF cada mes. Si no se carga, la tarjeta conserva el último valor como desactualizado.
+- La fuente no publica condiciones de reutilización ni el conjunto de datos (el informe dice que está en la página, pero sólo hay PDF). Las cifras se citan con su frase y su enlace.
+- El informe expresa la variación interanual de AMBA recién desde junio de 2025; antes sólo da la intermensual y, por zona, la interanual. Esos meses no se estiman ni se encadenan, así que la serie arranca en junio de 2025.
+- La mediana de avisos puede cambiar por composición: más avisos de un barrio o tipo de departamento mueven la cifra sin que cambie el precio de un departamento dado.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; si no hay dato utilizable, la dimensión renormaliza entre los otros tres componentes de precios.
+
+- **Política de revisiones:** Cada mes se carga una vez; si UdeSA corrige un informe se reemplaza la entrada con su frase y su fecha de carga. El IPC se recalcula en cada corrida.
+
+## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Alta del indicador por pedido de la reunión del 26 de octubre: suma el costo del alquiler que se pide hoy, no sólo el de los contratos vigentes.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

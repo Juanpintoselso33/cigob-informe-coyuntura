@@ -35,16 +35,16 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 80,1** | **VERDE** | Aflojado | 14 indicadores: 12 en verde · 2 en amarillo |
+| **ITCG: 80,4** | **VERDE** | Aflojado | 14 indicadores: 12 en verde · 2 en amarillo |
 Componentes que puntúan en este corte: 14 de 14 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica. | 69,3 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica. | 69,0 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 91,2 | VERDE | 25,0 % |
-| Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una. | 76,2 | VERDE | 15,0 % |
+| Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un… | 78,8 | VERDE | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 78,0 | VERDE | 15,0 % |
 | Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes… | 99,6 | VERDE | 10,0 % |
 
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 7,81 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 7,99 % de brecha CCL/mayorista | VERDE | 14,0 % |
 | Impuestos sobre el comercio exterior | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -69,7 +69,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional —salarios y otros gastos de… | −35,92 % de variación real vs 2023-08 (gastos de funcionamiento) | VERDE | 10,4 % |
 | **DIMENSIÓN: Reforma laboral** | | | | |
 | Fondo de Asistencia Laboral | Cuánto avanzó la puesta en marcha del Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización… | 90 Índice 0–100 (FAL: cinco hitos de construcción y adopción) | VERDE | 7,5 % |
-| Juicios por riesgos del trabajo (SRT) | Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del… | 0,1 % variación juicios SRT (12m vs 12m previos) | VERDE | 3,8 % |
+| Siniestralidad laboral (SRT) | Cuánto varía la siniestralidad registrada en el sistema de riesgos del trabajo. | −5 % variación del índice de incidencia (mismo período, contra el año anterior) | VERDE | 3,8 % |
 | Juicios en la Justicia del Trabajo (Capital) | Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital. | 12,4 % variación juicios entrados (12m vs 12m previos) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
 | Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 55,6 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
@@ -96,7 +96,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 7,81 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 7,99 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -139,13 +139,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1660.30 (2026-10-27T11:57:00-03:00) / mayorista venta 1540.00 (2026-10-27T07:48:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1658.70 (2026-10-27T14:58:00-03:00) / mayorista venta 1536.00 (2026-10-27T11:08:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 7,81 % de brecha CCL/mayorista (2026-10).
+Dato vigente: 7,99 % de brecha CCL/mayorista (2026-10).
 
-7,81 % de brecha CCL/mayorista está en Verde, a 6,19 del límite con Amarillo (14,0).
+7,99 % de brecha CCL/mayorista está en Verde, a 6,01 del límite con Amarillo (14,0).
 
 **Color vigente: VERDE**
 
@@ -609,7 +609,7 @@ Cuánto avanzó la puesta en marcha del Fondo de Asistencia Laboral —el mecani
 
 Sigue la construcción del régimen paso a paso con normas y hechos fechados, que se muestran en el detalle. La ley y el decreto cuentan sólo si no están suspendidos por la Justicia. Que el régimen esté armado no dice cuántas empresas lo usan: eso recién se puede ver desde el 1 de diciembre de 2026, cuando entra en vigencia (Decreto 1228/2026). El avance (0–100) y el puntaje para el índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de la ficha.
 
-**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una: los del sistema de riesgos del trabajo en todo el país, que cuentan accidentes y enfermedades, y todos los que se inician en la Justicia Nacional del Trabajo de la Capital, que incluyen los despidos. Esos juicios describen la conflictividad laboral: no permiten atribuir sus variaciones a la reforma.
+**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un cuarto: accidentes y enfermedades con días de baja, en todo el país) y con los juicios que se inician en la Justicia Nacional del Trabajo de la Capital (otro cuarto, despidos incluidos). Ni la siniestralidad ni los juicios permiten atribuir sus variaciones a la reforma.
 
 ## Método de cómputo
 
@@ -648,11 +648,11 @@ Dato vigente: 90 Índice 0–100 (FAL: cinco hitos de construcción y adopción)
 
 Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** La dimensión también incluye dos medidas de juicios laborales, un cuarto cada una: los juicios por riesgos del trabajo en todo el país y los que se inician en la Justicia Nacional del Trabajo de la Capital. Describen la conflictividad laboral; su evolución no es una medición directa del resultado del Fondo ni de su efecto causal.
+- **Participación en otros indicadores.** La dimensión también incluye, un cuarto cada una, la siniestralidad laboral registrada en el sistema de riesgos del trabajo (accidentes y enfermedades con días de baja, en todo el país) y los juicios que se inician en la Justicia Nacional del Trabajo de la Capital. Describen la siniestralidad y la conflictividad laboral; su evolución no es una medición directa del resultado del Fondo ni de su efecto causal.
 
 ## Transparencia — limitaciones declaradas
 
-- Mide el instrumento, no su efecto sobre el mercado de trabajo. Que el Fondo llegue a existir, rija y tenga vehículos inscriptos no dice cuántos trabajadores quedan cubiertos ni cuánto cambia el costo de despedir. Las dos medidas de juicios que integran la misma dimensión, un cuarto cada una, tampoco lo verifican: cuentan juicios iniciados, no su causa.
+- Mide el instrumento, no su efecto sobre el mercado de trabajo. Que el Fondo llegue a existir, rija y tenga vehículos inscriptos no dice cuántos trabajadores quedan cubiertos ni cuánto cambia el costo de despedir. Las otras dos medidas de la misma dimensión, un cuarto cada una, tampoco lo verifican: la siniestralidad cuenta accidentes y enfermedades registrados y los juicios de la Capital cuentan juicios iniciados, no su causa.
 - La adopción entra como un hecho binario —hay al menos un fondo inscripto o no lo hay— y por lo tanto es gruesa: no distingue un fondo de doscientos. Se prefirió así antes que volver a un pleno provisorio como el de las menciones del Boletín Oficial, que fijaba en cuatrocientas veinte el equivalente a una adopción plena sin ninguna serie que lo respaldara.
 - El registro de la Comisión Nacional de Valores publica el stock del día de la consulta y no su historia, de modo que la etapa de adopción no puede reconstruirse hacia atrás. Mientras no exista un primer fondo eso no cambia ningún valor; cuando exista habrá que fechar el alta como están fechadas las normas.
 - Sólo se asientan las suspensiones judiciales de alcance general. Una cautelar de alcance individual no altera si el régimen rige para todos y por lo tanto no mueve el indicador, aunque sí describa un conflicto real.
@@ -699,35 +699,38 @@ Ponderación vigente en el ITCG: 7,5 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Juicios por riesgos del trabajo (SRT)
+# Siniestralidad laboral (SRT)
 
-Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del Trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.
+Cuánto varía la siniestralidad registrada en el sistema de riesgos del trabajo: los accidentes de trabajo y enfermedades profesionales con días de baja o secuelas incapacitantes, por cada mil personas trabajadoras cubiertas, en todo el país. Compara lo que va del año con el mismo período del año anterior, según los informes de la Superintendencia de Riesgos del Trabajo (SRT).
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0,1 % variación juicios SRT (12m vs 12m previos)** (2026-07) | **VERDE** | Peso efectivo 3,8 % del ITCG | Cinturón Gestión |
+| **Hoy: −5 % variación del índice de incidencia (mismo período, contra el año anterior)** (2026-06) | **VERDE** | Peso efectivo 3,8 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | litigiosidad_laboral | **CINTURÓN** | Gestión |
-| **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | % variación juicios SRT (12m vs 12m previos) |
-| **SERIE DISPONIBLE** | 2021-08 → 2026-07 (60 puntos) | **REZAGO DE PUBLICACIÓN** | La serie oficial de juicios se publica con 3-4 meses de rezago. |
-| **PRODUCTOR DEL DATO** | SRT — Superintendencia de Riesgos del Trabajo | **OPERACIÓN ESTADÍSTICA** | Serie histórica de litigiosidad: ingresos de juicios del sistema de riesgos del trabajo, total sistema |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-27 |
+| **IDENTIFICADOR TÉCNICO** | siniestralidad_laboral | **CINTURÓN** | Gestión |
+| **DIMENSIÓN EN EL ITCG** | Reforma laboral | **UNIDAD DE MEDIDA** | % variación del índice de incidencia (mismo período, contra el año anterior) |
+| **SERIE DISPONIBLE** | 2020-12 → 2026-10 (71 puntos) | **REZAGO DE PUBLICACIÓN** | Trimestral. El informe provisorio sale entre dos y tres meses después del cierre del período (el de enero a junio de 2026 dice «elaboración: septiembre»; el de enero a marzo de 2025 ya estaba publicado el 13 de julio de 2025). La serie anual se actualiza una vez por año. |
+| **PRODUCTOR DEL DATO** | SRT — Superintendencia de Riesgos del Trabajo | **OPERACIÓN ESTADÍSTICA** | Informe provisorio de accidentabilidad laboral (Cuadro 1: personas trabajadoras cubiertas y casos de accidentes de trabajo y enfermedades profesionales con días de baja o secuelas incapacitantes, sin accidentes in itinere, total del sistema) y Serie histórica de indicadores de AT y EP (índice de incidencia por mil cubiertos, Revisión 4) |
+| **MODO DE ACCESO** | Automático: lectura del PDF vigente y de la planilla anual. El informe se publica siempre en la misma dirección y se sobrescribe, así que cada edición leída se guarda en un registro propio. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-27 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto varían los juicios laborales del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del Trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.
+Cuánto varía la siniestralidad registrada en el sistema de riesgos del trabajo: los accidentes de trabajo y enfermedades profesionales con días de baja o secuelas incapacitantes, por cada mil personas trabajadoras cubiertas, en todo el país. Compara lo que va del año con el mismo período del año anterior, según los informes de la Superintendencia de Riesgos del Trabajo (SRT).
 
-Aporta la evolución de litigios por riesgos del trabajo. Comparte dimensión con el Fondo de Asistencia Laboral, pero pertenece a otro universo de reclamos: no demuestra el resultado de ese instrumento ni atribuye a la reforma las subas o bajas observadas.
+Es el resultado de la reforma en materia de seguridad laboral: si bajan los siniestros por trabajador cubierto, el sistema registra menos accidentes y enfermedades. Dice cuánto cambió, no por qué: no atribuye a la reforma sus subas o bajas, que dependen también del empleo, de la actividad y de cuánto se denuncia. Los informes provisorios pueden revisarse al consolidarse.
 
-**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una: los del sistema de riesgos del trabajo en todo el país, que cuentan accidentes y enfermedades, y todos los que se inician en la Justicia Nacional del Trabajo de la Capital, que incluyen los despidos. Esos juicios describen la conflictividad laboral: no permiten atribuir sus variaciones a la reforma.
+**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un cuarto: accidentes y enfermedades con días de baja, en todo el país) y con los juicios que se inician en la Justicia Nacional del Trabajo de la Capital (otro cuarto, despidos incluidos). Ni la siniestralidad ni los juicios permiten atribuir sus variaciones a la reforma.
 
 ## Método de cómputo
 
-- Variación porcentual del acumulado de 12 meses contra los 12 meses previos, con 24 meses consecutivos y valores válidos. Una caída indica menos juicios notificados en ese universo; no identifica por sí sola su causa ni el mérito de los reclamos.
+- Índice de incidencia = casos de accidentes de trabajo y enfermedades profesionales con días de baja o secuelas incapacitantes (sin in itinere) por cada mil personas trabajadoras cubiertas, total del sistema (unidades productivas más casas particulares).
+- El valor es la variación porcentual del índice del período acumulado del año contra el mismo período del año anterior. Con el informe de enero a junio de 2026: (149.066 / 9.991.247) contra (159.671 / 10.167.202), o sea 14,92 contra 15,70 por mil, una baja del 5,0 %.
+- La serie combina un punto por año (año completo contra el anterior, de la Serie histórica, fechado en diciembre) con un punto por cada informe provisorio leído (período acumulado, fechado el primer día de su último mes). Es escalonada: cada mes muestra el último punto, hasta que sale el siguiente.
+- El colector verifica que unidades productivas más casas particulares den el total y que las variaciones que el propio informe imprime en su Cuadro 2 coincidan con las que salen de sus cifras. Si algo no cierra, no publica un valor dudoso: conserva el último.
 
 ## Semáforo — valores que determinan el color
 
@@ -735,7 +738,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% variación juicios SRT (12m vs 12m previos)) | Color |
+| Rango (% variación del índice de incidencia (mismo período, contra el año anterior)) | Color |
 |---|---|
 | ≤ 2,5 | VERDE |
 | 2,5 – 12,5 | AMARILLO |
@@ -746,47 +749,37 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 126.819 juicios en 12m (hasta 2026-07) vs 126.700 previos
+- Enero a junio de 2026: 149.066 casos de AT y EP con baja (14,92 por mil cubiertos) contra 159.671 (15,7 por mil) en el mismo período del año anterior
 
 ## Color vigente y por qué
 
-Dato vigente: 0,1 % variación juicios SRT (12m vs 12m previos) (2026-07).
+Dato vigente: −5 % variación del índice de incidencia (mismo período, contra el año anterior) (2026-06).
 
-0,1 % variación juicios SRT (12m vs 12m previos) está en Verde, a 2,4 del límite con Amarillo (2,5).
+−5,0 % variación del índice de incidencia (mismo período, contra el año anterior) está en Verde, a 7,5 del límite con Amarillo (2,5).
 
 **Color vigente: VERDE**
 
 Ponderación vigente en el ITCG: 3,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Comparte la dimensión de reforma laboral con el Fondo de Asistencia Laboral y con los juicios de la Justicia Nacional del Trabajo. Las dos medidas de juicios se complementan: ésta cubre todo el país y sale todos los meses, pero sólo cuenta accidentes y enfermedades del trabajo; la otra cuenta todos los juicios laborales, incluidos los despidos, pero sólo los de la Capital y por semestre.
+- **Participación en otros indicadores.** Es un cuarto de la dimensión de reforma laboral, con el Fondo de Asistencia Laboral (la mitad) y los juicios de la Justicia Nacional del Trabajo (otro cuarto). Reemplaza a los juicios del sistema de riesgos del trabajo, que dejaron de integrar el índice.
 
 ## Transparencia — limitaciones declaradas
 
-- Son juicios del sistema de riesgos del trabajo, no el canal indemnizatorio del Fondo de Asistencia Laboral. No demuestra causalidad entre la reforma y el número de juicios; pueden cambiar exposición al riesgo, empleo, acceso a la justicia y tiempos de notificación.
-- La ventana de 12 contra 12 meses reacciona lento a los quiebres.
-- Julio trae siempre la mitad de juicios que junio por la feria judicial de invierno (la proporción es la misma desde 2016): un mes de julio bajo no es un dato incompleto.
+- La escala es una convención, no una calibración: toma los cortes de los juicios (−15, −5, +5 y +20 %) porque la serie de la SRT da sólo seis variaciones anuales (2020-2025) y no alcanza para calibrar una propia. El rango observado va de −31 % (2020, pandemia) a +32 % (2021, rebote) y entre −11 % y +8 % después.
+- Es un indicador de resultado, no de causa: la siniestralidad cambia con el empleo registrado, la composición del empleo, la actividad y la cantidad de casos que se denuncian o se registran. No permite atribuir sus subas o bajas a la reforma laboral.
+- Los informes provisorios no esperan el tiempo de consolidación de los anuales y la SRT los declara provisorios: pueden revisarse al consolidarse. Por eso cada variación compara dentro de la misma edición, y los puntos anuales y los provisorios no se mezclan en una cuenta.
+- Cuenta las personas cubiertas por el sistema (promedio del período), no la población ocupada: el empleo no registrado queda fuera, de modo que una baja puede reflejar menos cobertura y no menos accidentes.
+- Con dos puntos por año a lo sumo, la serie es escalonada y reacciona despacio.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Con la planilla caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.
+- **Si falta el dato:** Si el informe cambia de diseño o sus cifras no cierran, el colector no publica un valor nuevo y se mantiene el último, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.
 
-- **Política de revisiones:** La fuente puede revisar meses; la planilla completa se relee en cada actualización.
+- **Política de revisiones:** El informe provisorio vigente se relee en cada actualización y la edición se guarda en un registro propio, con los tres años de su cuadro. Las ediciones anteriores no se vuelven a pedir a la fuente, que las sobrescribe.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-10-27** — Vuelve al índice y a la tarjeta, con 25% de la reforma laboral: la reunión con la dirección de CiGob acordó medir el resultado con las dos series de juicios, y ésta es la única nacional y mensual. La ficha aclara que cuenta accidentes y enfermedades, no despidos.
-
-**2026-10-26** — Sale del índice y deja de publicarse como tarjeta: son juicios por accidentes y enfermedades del trabajo y la reforma apunta a los despidos. El dato se sigue relevando. Reforma laboral queda 50 % Fondo de Asistencia Laboral y 50 % juicios de la Justicia Nacional del Trabajo.
-
-**2026-09-08** — Tarjeta e historia exigen 24 meses consecutivos y valores válidos. Se aclara que los juicios SRT no identifican resultados del FAL ni el mérito de los reclamos.
-
-**2026-07-02** — Alta como indicador de contexto, fuera del índice.
-
-**2026-07-03** — Entra al índice de gestión (reforma laboral, 30% interno): es el resultado que la reforma persigue y complementa al instrumento.
-
-**2026-10-24** — El rótulo pasa de «Litigiosidad laboral (SRT)» a «Juicios por riesgos del trabajo (SRT)», que es lo que la serie cuenta: no incluye los juicios por despido. Se anota la caída estacional de julio por la feria judicial. No cambia el cálculo.
-
-**2026-10-26** — Su peso en la reforma laboral baja de 50% a 25%: el otro 25% lo toman los juicios de la Justicia Nacional del Trabajo (Capital), que pidió la auditoría de CiGob. El Fondo de Asistencia Laboral sigue con la mitad. No cambia el cálculo de este indicador.
+**2026-10-27** — Alta en el índice de gestión, con 25 % de la reforma laboral, a pedido de la dirección de CiGob (Marcos): mide la siniestralidad registrada en el sistema de riesgos del trabajo y no los juicios que genera. Ocupa el lugar de los juicios por riesgos del trabajo, con la misma escala.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -818,9 +811,9 @@ Cuánto varían los juicios laborales que se inician en la Justicia Nacional del
 
 Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital: los entrados en primera instancia en los últimos 12 meses contra los 12 previos, según la Oficina de Estadísticas del Consejo de la Magistratura.
 
-Es la otra cara de la litigiosidad: cuenta todos los juicios laborales —despidos, diferencias salariales, accidentes—, no sólo los de riesgos del trabajo, pero sólo los de la Capital. Lo pidió la auditoría de CiGob. Como la medida de la SRT, describe la evolución de los juicios y no atribuye a la reforma sus subas o bajas.
+Cuenta todos los juicios laborales —despidos, diferencias salariales, accidentes—, pero sólo los de la Capital. Lo pidió la auditoría de CiGob. Describe la evolución de los juicios y no atribuye a la reforma sus subas o bajas.
 
-**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una: los del sistema de riesgos del trabajo en todo el país, que cuentan accidentes y enfermedades, y todos los que se inician en la Justicia Nacional del Trabajo de la Capital, que incluyen los despidos. Esos juicios describen la conflictividad laboral: no permiten atribuir sus variaciones a la reforma.
+**Dimensión que integra — Reforma laboral.** Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un cuarto: accidentes y enfermedades con días de baja, en todo el país) y con los juicios que se inician en la Justicia Nacional del Trabajo de la Capital (otro cuarto, despidos incluidos). Ni la siniestralidad ni los juicios permiten atribuir sus variaciones a la reforma.
 
 ## Método de cómputo
 
@@ -857,13 +850,13 @@ Dato vigente: 12,4 % variación juicios entrados (12m vs 12m previos) (2026-06).
 
 Ponderación vigente en el ITCG: 3,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Comparte la dimensión de reforma laboral con el Fondo de Asistencia Laboral y con los juicios por riesgos del trabajo de la SRT. Las dos medidas de juicios se complementan: la SRT cubre todo el país pero sólo riesgos del trabajo; ésta cuenta todos los juicios laborales, pero sólo los de la Capital.
+- **Participación en otros indicadores.** Comparte la dimensión de reforma laboral con el Fondo de Asistencia Laboral (la mitad) y con la siniestralidad laboral registrada por la SRT (un cuarto). La siniestralidad cubre todo el país pero cuenta accidentes y enfermedades; ésta cuenta todos los juicios laborales, despidos incluidos, pero sólo los de la Capital.
 
 ## Transparencia — limitaciones declaradas
 
 - Sólo la Capital: la Justicia Nacional del Trabajo no incluye los juzgados laborales de las provincias.
 - Cuenta juicios iniciados, no su resultado ni su mérito, y no permite atribuir a la reforma las subas o bajas: pesan también el empleo, los despidos y los tiempos de los abogados.
-- La escala de puntaje es la de los juicios por riesgos del trabajo. La serie propia arranca en 2023 y no alcanza para calibrar una.
+- La escala de puntaje es la que usaron los juicios por riesgos del trabajo y la que usa la siniestralidad laboral. La serie propia arranca en 2023 y no alcanza para calibrar una.
 - Al ser semestral, el dato puede tener casi un año de antigüedad antes de que salga el siguiente.
 
 ## Si falta el dato / Política de revisiones
@@ -873,6 +866,8 @@ Ponderación vigente en el ITCG: 3,8 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La Oficina puede corregir semestres ya publicados; todas las planillas se releen en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Sigue pesando un cuarto de la reforma laboral; el otro cuarto, que eran los juicios por riesgos del trabajo, pasa a la siniestralidad laboral. No cambia el cálculo de este indicador.
 
 **2026-10-27** — Vuelve a pesar un cuarto de la reforma laboral: regresan los juicios por riesgos del trabajo, como acordó la reunión del 26 de octubre.
 

@@ -15,17 +15,6 @@
     },
     {
       "indice": "ITCG",
-      "indicador": "litigiosidad_laboral",
-      "n": 60,
-      "piso": 10,
-      "techo": 100,
-      "share_piso": 0.417,
-      "share_techo": 0.0,
-      "estado": "revisar",
-      "detalle": "42% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 60 meses"
-    },
-    {
-      "indice": "ITCG",
       "indicador": "privatizaciones",
       "n": 35,
       "piso": 10,
@@ -302,6 +291,17 @@
       "techo": 100,
       "share_piso": 0.03,
       "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "siniestralidad_laboral",
+      "n": 71,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.169,
+      "share_techo": 0.169,
       "estado": "ok",
       "detalle": "sin saturación relevante"
     },

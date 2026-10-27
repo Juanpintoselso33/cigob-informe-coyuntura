@@ -116,10 +116,9 @@
       "peso_total": 1.0,
       "categorias": {
         "documento": 0.33999999999999997,
-        "convencion": 0.285625,
+        "convencion": 0.323125,
         "externa": 0.109375,
-        "conceptual": 0.22750000000000004,
-        "historia_larga": 0.0375
+        "conceptual": 0.22750000000000004
       },
       "detalle": [
         {
@@ -177,12 +176,6 @@
           "motivo": "avance por hitos de implementación (25/20/20/20/15); un ancla por escalón y el 100 es la libre elección implementada y funcionando (ADR-0371)"
         },
         {
-          "indicador": "litigiosidad_laboral",
-          "categoria": "historia_larga",
-          "peso": 0.0375,
-          "motivo": "calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023; vuelve al índice con ADR-0379)"
-        },
-        {
           "indicador": "gasto_funcionamiento",
           "categoria": "convencion",
           "peso": 0.0781,
@@ -207,20 +200,25 @@
           "motivo": "calibrada con la caída observada en CABA en 2024-2025"
         },
         {
+          "indicador": "siniestralidad_laboral",
+          "categoria": "convencion",
+          "peso": 0.0375,
+          "motivo": "toma la convención de variación interanual de los juicios (cortes en −15, −5, +5 y +20 %), que reemplaza; la serie de la SRT sólo da seis variaciones anuales y no alcanza para calibrar una escala propia (ADR-0385)"
+        },
+        {
           "indicador": "juicios_trabajo_capital",
           "categoria": "convencion",
           "peso": 0.0375,
-          "motivo": "toma la escala de litigiosidad_laboral, que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365)"
+          "motivo": "toma la escala de litigiosidad_laboral (hoy suspendida; la misma que usa siniestralidad_laboral), que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365)"
         }
       ],
       "share": {
         "documento": 0.34,
-        "convencion": 0.286,
+        "convencion": 0.323,
         "externa": 0.109,
-        "conceptual": 0.228,
-        "historia_larga": 0.037
+        "conceptual": 0.228
       },
-      "share_circular": 0.286
+      "share_circular": 0.323
     },
     "ITCP": {
       "peso_total": 0.9999999999999999,
@@ -411,12 +409,6 @@
           "motivo": "serie desestacionalizada del INDEC rebaseada a 4T-2023 (ADR-0225); ancla en fecha fija, sin móvil 12m porque la fuente ya la desestacionalizó"
         },
         {
-          "indicador": "alquiler_real",
-          "categoria": "conceptual",
-          "peso": 0.05,
-          "motivo": "encarecimiento relativo del alquiler rebaseado a 4T-2023 (ADR-0111)"
-        },
-        {
           "indicador": "icg_utdt",
           "categoria": "conceptual",
           "peso": 0.0413,
@@ -439,6 +431,18 @@
           "categoria": "conceptual",
           "peso": 0.0268,
           "motivo": "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"
+        },
+        {
+          "indicador": "alquiler_real",
+          "categoria": "conceptual",
+          "peso": 0.025,
+          "motivo": "encarecimiento relativo del alquiler rebaseado a 4T-2023 (ADR-0111)"
+        },
+        {
+          "indicador": "alquiler_udesa_real",
+          "categoria": "conceptual",
+          "peso": 0.025,
+          "motivo": "100 = el alquiler publicado sube igual que los precios en el año: 100 menos la variación real interanual, en puntos; ancla neutra, no calibrada al rango observado (ADR-0386)"
         },
         {
           "indicador": "empleo_registrado",
