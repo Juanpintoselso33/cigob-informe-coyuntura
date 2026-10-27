@@ -56,11 +56,26 @@ consumo aparente (SAGyP), movimiento mensual de faena (producción) — dicho en
   registrado, pymes, subocupación y trabajo independiente.
 - **Entregados:** Excel v6 de gestión y mensaje a Marcos (Juan los manda); revisión macro
   de Luis anotada punto por punto (Descargas).
-- **No se puede medir hoy:** alquiler UdeSA/Mercado Libre (sólo PDF, sin datos ni
-  licencia); padrón de empleadores de ARCA (sin serie pública).
+- **No se puede medir hoy:** padrón de empleadores de ARCA con y sin personal (no es
+  público; lo más cercano es la serie mensual de empleadores afiliados a una ART de la
+  SRT, que sí cuenta los que no tienen personal: **decidir** si entra y cómo).
 
-**Abierto:** cámaras del campo (SRA, CRA, Coninagro; en curso, ADR-0384); verificar antes
-del 1-dic que no haya otra suspensión del FAL; convenios colectivos sin lista publicada.
+## Hecho el 27-oct, tarde (publicado en un push; verificado en el diario; BigQuery cargado)
+
+- **Político (73,6):** postura del campo (Coninagro, SRA, CRA) en sector privado, con los
+  13 desacuerdos que decidían el puntaje adjudicados por Juan (ADR-0384).
+- **Gestión (septiembre 77,5; Reforma laboral 58,2):** la siniestralidad de la SRT
+  reemplaza a los juicios por riesgos del trabajo, FAL 50 / siniestralidad 25 / Justicia
+  del Trabajo 25, como pidió Marcos (ADR-0385).
+- **Impacto social (97,2):** alquiler real de UdeSA–Mercado Libre en precios, 10 % de la
+  dimensión, cargado a mano una vez por mes desde el PDF (ADR-0386; historia desde
+  jun-2025, antes el informe no trae la interanual de AMBA).
+- **Entregados:** Excel v7 de gestión y mensaje a Marcos (reemplazan a la v6, que no se
+  mandó).
+
+**Abierto:** los 69 desacuerdos del campo que no mueven el puntaje; verificar antes
+del 1-dic que no haya otra suspensión del FAL; convenios colectivos sin lista publicada;
+cargar el alquiler de UdeSA cuando salga el PDF de octubre.
 **Decisiones de Juan para después del lanzamiento:** reagrupar macro (9), jornadas no
 trabajadas en 100, conflictividad calibrada contra el mandato, lectura de octubre de Luis
 (6). Votómetro (32 a 34): más adelante.
