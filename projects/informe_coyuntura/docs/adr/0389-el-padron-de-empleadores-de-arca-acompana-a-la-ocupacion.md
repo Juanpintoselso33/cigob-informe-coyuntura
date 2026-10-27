@@ -19,9 +19,10 @@ origen: 'Reunión del 26-oct-2026 (Luis Babino): «el padrón de ARCA de inscrip
 ADR-0383 dejó afuera el padrón de ARCA por creer que no tenía serie pública
 reproducible. Sí hay un archivo público: ARCA publica un zip con un registro por
 CUIT, sin nombres, con la marca de empleador, que reemplaza cada semana. No
-conserva los anteriores, pero el Internet Archive guardó tres copias del archivo
-con nombres (jun-2020, abr-2021, ago-2024), de las que se pueden contar los
-mismos campos.
+conserva los anteriores, pero el Internet Archive guardó cinco copias contables
+(ago-2014 y mar-2015, sin nombres la segunda; jun-2020, abr-2021 y ago-2024, con
+nombres), de las que se pueden contar los mismos campos. Hay copias de 2011-2012
+en otro formato que no se usan: no está verificada la posición de la marca.
 
 ## Factores de decisión
 
@@ -51,7 +52,7 @@ y el pipeline sigue con lo guardado. Nunca se guarda un CUIT.
 **Registro.** `data/vida/arca_empleadores.json`: un valor por mes, el del último
 archivo visto en el mes, con su fecha de archivo. Se commitea en el paso
 «Commitear snapshot + caches a main». Semilla: oct-2026 (archivo del 24-oct) más
-tres puntos del Wayback (`padron_arca_backfill.py`, que cualquiera puede correr
+cinco puntos del Wayback (`padron_arca_backfill.py`, que cualquiera puede correr
 para verificarlos).
 
 **Dónde se ve.** En el detalle de la card `ocupacion_eph`, con el desglose y la

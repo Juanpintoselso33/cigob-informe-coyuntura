@@ -1,7 +1,27 @@
 {
   "fuente": "https://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp",
-  "nota": "Un valor por mes: el del último archivo visto. ARCA reemplaza el archivo cada semana y no conserva historia, por eso el registro mensual arranca en oct-2026; lo anterior son tres copias del Wayback (ver `url`, reproducibles con scripts/vida_cotidiana/padron_arca_backfill.py). Cuenta CUIT con la marca de empleador activa (ADR-0389). Sin CUIT individuales.",
+  "nota": "Un valor por mes: el del último archivo visto. ARCA reemplaza el archivo cada semana y no conserva historia, por eso el registro mensual arranca en oct-2026; lo anterior son cinco copias del Wayback (ver `url`, reproducibles con scripts/vida_cotidiana/padron_arca_backfill.py). Cuenta CUIT con la marca de empleador activa (ADR-0389). Sin CUIT individuales.",
   "meses": {
+    "2014-08": {
+      "fecha_archivo": "2014-08-16",
+      "empleadores": 538393,
+      "juridicas": 252359,
+      "humanas": 286034,
+      "monotributistas": 66320,
+      "blanco": 393110,
+      "cuit_total": 3791697,
+      "url": "https://web.archive.org/web/20140821015650id_/http://www.afip.gob.ar/genericos/cInscripcion/archivos/apellidoNombreDenominacion.zip"
+    },
+    "2015-03": {
+      "fecha_archivo": "2015-03-14",
+      "empleadores": 551443,
+      "juridicas": 262442,
+      "humanas": 289001,
+      "monotributistas": 64412,
+      "blanco": 405024,
+      "cuit_total": 4035023,
+      "url": "https://web.archive.org/web/20150324211736id_/http://www.afip.gob.ar/genericos/cInscripcion/archivos/SINapellidoNombreDenominacion.zip"
+    },
     "2020-06": {
       "fecha_archivo": "2020-06-13",
       "empleadores": 547003,
