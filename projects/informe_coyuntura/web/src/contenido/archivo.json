@@ -2,10 +2,10 @@
  "meses": [
   {
    "mes": "2026-09",
-   "corrida": "117220253a",
+   "corrida": "81bf5a8cf8",
    "generado": "2026-09-30T20:00:00-03:00",
    "modo": "series_cortadas",
-   "score_global": 4.1,
+   "score_global": 3.9,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
@@ -15,28 +15,28 @@
      "estado": "en_tension"
     },
     "politica": {
-     "score": 2.9,
+     "score": 2.8,
      "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 6.4,
-     "estado": "tensionado"
+     "score": 6.0,
+     "estado": "en_tension"
     },
     "gestion": {
-     "score": 2.4,
+     "score": 2.3,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4069
+   "peso_kb": 4092
   },
   {
    "mes": "2026-08",
-   "corrida": "117220253a",
+   "corrida": "81bf5a8cf8",
    "generado": "2026-08-31T20:00:00-03:00",
    "modo": "series_cortadas",
-   "score_global": 4.0,
+   "score_global": 3.9,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
@@ -50,53 +50,22 @@
      "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 6.1,
-     "estado": "tensionado"
+     "score": 5.7,
+     "estado": "en_tension"
     },
     "gestion": {
-     "score": 2.5,
+     "score": 2.4,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4030
+   "peso_kb": 4053
   },
   {
    "mes": "2026-07",
-   "corrida": "117220253a",
+   "corrida": "81bf5a8cf8",
    "generado": "2026-07-31T20:00:00-03:00",
-   "modo": "series_cortadas",
-   "score_global": 4.1,
-   "riesgo_dominante": "político",
-   "cinturon_dominante": "vida_cotidiana",
-   "alerta_multicinturon": false,
-   "cinturones": {
-    "macro": {
-     "score": 4.5,
-     "estado": "en_tension"
-    },
-    "politica": {
-     "score": 3.2,
-     "estado": "estable"
-    },
-    "vida_cotidiana": {
-     "score": 6.1,
-     "estado": "tensionado"
-    },
-    "gestion": {
-     "score": 2.7,
-     "estado": "estable"
-    }
-   },
-   "pagina": true,
-   "quitados": [],
-   "peso_kb": 3986
-  },
-  {
-   "mes": "2026-06",
-   "corrida": "117220253a",
-   "generado": "2026-06-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 4.0,
    "riesgo_dominante": "político",
@@ -104,7 +73,7 @@
    "alerta_multicinturon": false,
    "cinturones": {
     "macro": {
-     "score": 4.1,
+     "score": 4.6,
      "estado": "en_tension"
     },
     "politica": {
@@ -112,7 +81,7 @@
      "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 5.9,
+     "score": 5.7,
      "estado": "en_tension"
     },
     "gestion": {
@@ -122,7 +91,38 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 3906
+   "peso_kb": 4006
+  },
+  {
+   "mes": "2026-06",
+   "corrida": "81bf5a8cf8",
+   "generado": "2026-06-30T20:00:00-03:00",
+   "modo": "series_cortadas",
+   "score_global": 3.9,
+   "riesgo_dominante": "político",
+   "cinturon_dominante": "vida_cotidiana",
+   "alerta_multicinturon": false,
+   "cinturones": {
+    "macro": {
+     "score": 4.1,
+     "estado": "en_tension"
+    },
+    "politica": {
+     "score": 3.4,
+     "estado": "estable"
+    },
+    "vida_cotidiana": {
+     "score": 5.5,
+     "estado": "en_tension"
+    },
+    "gestion": {
+     "score": 2.5,
+     "estado": "estable"
+    }
+   },
+   "pagina": true,
+   "quitados": [],
+   "peso_kb": 3927
   }
  ]
 }
