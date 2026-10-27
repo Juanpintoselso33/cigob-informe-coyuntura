@@ -16,7 +16,7 @@ al ADR.
 |---|---:|---|
 | `reformas_economicas` | 35% | `cepo_mulc`, `apertura_comercial`, `desregulacion_normativa` |
 | `reforma_estado` | 25% | `reduccion_estado`, `gasto_funcionamiento` |
-| `reforma_laboral` | 15% | `fal_modernizacion_laboral`, `litigiosidad_laboral`, `juicios_trabajo_capital` |
+| `reforma_laboral` | 15% | `fal_modernizacion_laboral`, `siniestralidad_laboral`, `juicios_trabajo_capital` |
 | `privatizaciones_inversion` | 15% | `privatizaciones`, `rigi_inversiones`, `concesiones_infraestructura` |
 | `social_orden` | 10% | `asistencia_directa`, `protocolo_antipiquetes`, `libertad_opcion_salud` |
 
@@ -114,19 +114,19 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0068](../adr/0068-fal-regimen-ley-27802.md) fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802 · [ADR-0098](../adr/0098-fal-en-tres-etapas.md) El FAL se mide en tres etapas: construcción, vigencia y adopción · [ADR-0228](../adr/0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) El FAL puntúa lo que rige, no lo que se dictó · [ADR-0269](../adr/0269-la-semilla-a-mano-no-le-gana-al-ultimo-valor-bueno.md) La semilla escrita a mano no le gana al último valor bueno · [ADR-0305](../adr/0305-fal-separa-consulta-y-revision-curada.md) Consultar CNV no actualiza la revisión judicial · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0370](../adr/0370-el-fal-cuenta-cinco-hitos-de-construccion.md) El FAL cuenta cinco hitos de construcción
 
-#### Juicios por riesgos del trabajo (SRT)
+#### Siniestralidad laboral (SRT)
 
-`litigiosidad_laboral`
+`siniestralidad_laboral`
 
 | | |
 |---|---|
 | Peso dentro de la dimensión | 25% |
 | Peso efectivo en el índice | **3.8%** |
-| Procedencia del ancla | `historia_larga` — calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023; vuelve al índice con ADR-0379) |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
 
 **Bandas**: ≤ -15 → 100 · -15–-5 → 85 · -5–5 → 65 · 5–20 → 40 · > 20 → 10
 
-**Lo gobiernan**: [ADR-0221](../adr/0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) Un cable trampa mira la banda, no el puntaje · [ADR-0285](../adr/0285-litigiosidad-exige-ventanas-de-calendario.md) Litigiosidad exige ventanas de calendario · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0365](../adr/0365-los-juicios-de-la-justicia-del-trabajo-entran-a-la-reforma-laboral.md) Los juicios de la Justicia del Trabajo entran a la reforma laboral · [ADR-0379](../adr/0379-vuelven-los-juicios-por-riesgos-del-trabajo.md) Vuelven los juicios por riesgos del trabajo
+**Lo gobiernan**: [ADR-0385](../adr/0385-la-siniestralidad-reemplaza-a-los-juicios-del-sistema-de-riesgos.md) La siniestralidad reemplaza a los juicios del sistema de riesgos
 
 #### Juicios en la Justicia del Trabajo (Capital)
 
@@ -237,6 +237,7 @@ del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
 - `alertas_manifestacion` — Alertas de manifestación (GCBA) (declarado como contexto)
+- `litigiosidad_laboral` — Juicios por riesgos del trabajo (SRT)
 - `masa_salarial` — Masa salarial pública
 - `protestas_caba` — Protestas en CABA (ACLED) (declarado como contexto)
 - `reestructuracion_organismos` — Reestructuración de organismos
@@ -255,7 +256,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-53 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+54 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -310,3 +311,4 @@ histórica.
 - [0370](../adr/0370-el-fal-cuenta-cinco-hitos-de-construccion.md) — El FAL cuenta cinco hitos de construcción
 - [0371](../adr/0371-la-libre-eleccion-en-salud-se-mide-por-hitos.md) — La libre elección en salud se mide por hitos
 - [0379](../adr/0379-vuelven-los-juicios-por-riesgos-del-trabajo.md) — Vuelven los juicios por riesgos del trabajo
+- [0385](../adr/0385-la-siniestralidad-reemplaza-a-los-juicios-del-sistema-de-riesgos.md) — La siniestralidad reemplaza a los juicios del sistema de riesgos

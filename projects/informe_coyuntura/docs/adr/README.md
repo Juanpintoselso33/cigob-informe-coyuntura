@@ -300,6 +300,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0370](0370-el-fal-cuenta-cinco-hitos-de-construccion.md) | El FAL cuenta cinco hitos de construcción | `fal_modernizacion_laboral` | vigente |
 | [0371](0371-la-libre-eleccion-en-salud-se-mide-por-hitos.md) | La libre elección en salud se mide por hitos | `libertad_opcion_salud` | vigente |
 | [0379](0379-vuelven-los-juicios-por-riesgos-del-trabajo.md) | Vuelven los juicios por riesgos del trabajo | `litigiosidad_laboral`, `juicios_trabajo_capital` | vigente |
+| [0385](0385-la-siniestralidad-reemplaza-a-los-juicios-del-sistema-de-riesgos.md) | La siniestralidad reemplaza a los juicios del sistema de riesgos | `siniestralidad_laboral`, `litigiosidad_laboral` | vigente |
 
 ### Vida cotidiana (ITVC)
 

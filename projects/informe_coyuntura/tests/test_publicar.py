@@ -644,18 +644,20 @@ def test_gestion_itcg_reconcilia():
     # 13 → 14: entra `juicios_trabajo_capital` (ADR-0365)
     # 14 → 13: sale `litigiosidad_laboral` (ADR-0369)
     # 13 → 14: vuelve `litigiosidad_laboral` (ADR-0379)
+    # 14 → 14: `litigiosidad_laboral` sale y entra `siniestralidad_laboral` (ADR-0385)
     assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
     assert contexto == {}, ("gestión no publica indicadores que no puntúen: "
                             f"{sorted(contexto)}")
     assert len(c["indicadores"]) == 14, "el snapshot no debe traer cards sin puntaje"
     assert "asistencia_directa" in en_indice, "la promesa cumplida puntúa (ADR-0189)"
-    assert "juicios_trabajo_capital" in en_indice and "litigiosidad_laboral" in en_indice
+    assert "juicios_trabajo_capital" in en_indice and "siniestralidad_laboral" in en_indice
+    assert "litigiosidad_laboral" not in c["indicadores"], "suspendida: no es card (ADR-0385)"
     # Los cuatro que no puntúan quedan OCULTOS del snapshot (GESTION_OCULTOS):
     # los 2 de contexto por ADR-0051, y la promesa cumplida y el suspendido por
     # ADR-0189. Nada de esto deja de medirse — colector, stores y series siguen
     # corriendo como seguimiento interno, y las razones de no puntuar siguen
     # documentadas en itcg.INDICADORES_{CONTEXTO,CUMPLIDOS,SUSPENDIDOS}.
-    for oculto in ("alertas_manifestacion", "protestas_caba", "masa_salarial"):
+    for oculto in ("alertas_manifestacion", "protestas_caba", "masa_salarial", "litigiosidad_laboral"):
         assert oculto not in c["indicadores"], f"{oculto} debería estar oculto del snapshot"
 
     ponderado = sum(i["puntaje_itcg"] * i["peso_efectivo"] for i in en_indice.values())

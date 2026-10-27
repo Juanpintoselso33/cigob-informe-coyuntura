@@ -5,7 +5,7 @@ estado: 'aceptado'
 nota_estado: 'aceptada (decisión del editor: revisar si los contextos de'
 fecha: 2026-07-03
 cinturon: 'gestion'
-relacionado: ['0365', '0369', '0379']
+relacionado: ['0365', '0369', '0379', '0385']
 ---
 
 # ADR-0023 — Litigiosidad SRT al ITCG; protestas y alertas siguen de contexto

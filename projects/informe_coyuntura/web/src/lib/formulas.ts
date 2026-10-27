@@ -141,6 +141,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\left(\frac{\text{juicios \'ultimos 12 meses}}{\text{juicios 12 meses anteriores}}-1\right)\times 100`,
     leyenda: "Variación entre dos acumulados consecutivos de doce meses de juicios del sistema de riesgos del trabajo, según la Superintendencia de Riesgos del Trabajo (SRT). Un resultado negativo indica menos juicios registrados; no determina el mérito de los reclamos ni el efecto del Fondo de Asistencia Laboral.",
   },
+  siniestralidad_laboral: {
+    latex: String.raw`\left(\frac{\text{casos con baja}_{t}/\text{cubiertos}_{t}}{\text{casos con baja}_{t-1}/\text{cubiertos}_{t-1}}-1\right)\times 100`,
+    leyenda: "Variación del índice de incidencia —accidentes de trabajo y enfermedades profesionales con días de baja o secuelas incapacitantes, sin accidentes in itinere, por cada mil personas trabajadoras cubiertas, total del sistema— del período acumulado del año (t) contra el mismo período del año anterior (t-1), según la Superintendencia de Riesgos del Trabajo (SRT). Un resultado negativo indica menos siniestros por trabajador cubierto; no dice por qué ni si se debe a la reforma, y los informes provisorios pueden revisarse al consolidarse.",
+  },
   juicios_trabajo_capital: {
     latex: String.raw`\left(\frac{\text{juicios entrados, \'ultimos 12 meses}}{\text{juicios entrados, 12 meses anteriores}}-1\right)\times 100`,
     leyenda: "Variación entre dos acumulados consecutivos de doce meses de los juicios entrados en primera instancia de la Justicia Nacional del Trabajo, que atiende la Capital. Los publica por semestre la Oficina de Estadísticas del Consejo de la Magistratura. Un resultado negativo indica menos juicios iniciados; no dice nada del mérito de los reclamos.",

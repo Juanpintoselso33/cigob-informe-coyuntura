@@ -36,7 +36,8 @@ import gestion
 #   * fal_modernizacion_laboral 50 → 55 (FAL vigente en tres etapas, ADR-0228:
 #     los dos actos rigen, el régimen todavía no y no hay fondos inscriptos)
 #     · litigiosidad +3,6% → 57,8 (ADR-0023 lo repartía 0,7/0,3; ADR-0128 lo
-#     pasó a 0,5/0,5).
+#     pasó a 0,5/0,5); desde ADR-0385 el cuarto lo ocupa la siniestralidad
+#     laboral, −5,0% → 75,0.
 #   * privatizaciones 51,4% → 71,4 (banda 65).
 #   * rigi_inversiones 22,1% → 47,7 (banda 40).
 #   * concesiones 35% → 52,5 (borde de banda) · asistencia 96% → 100 ·
@@ -64,7 +65,8 @@ EJEMPLO = {
     # 1-nov-2026 y no hay fondos inscriptos en la CNV: 0,50·1 + 0,20·0 + 0,30·0.
     # ADR-0142 daba 100 → 100 contando los actos DICTADOS, sin poder ver que la
     # ley estuvo suspendida 24 días.
-    "litigiosidad_laboral": 3.6,        # 57,8 (banda 65) — resultado (25%, ADR-0365)
+    "siniestralidad_laboral": -5.0,     # 75,0 (en el corte de −5) — resultado (25%, ADR-0385; antes litigiosidad SRT +3,6 → 57,8)
+    "litigiosidad_laboral": 3.6,        # sin efecto: suspendido (ADR-0385), se sigue calculando
     "juicios_trabajo_capital": 12.4,    # 40,2 (banda 40) — juicios entrados, Justicia del Trabajo (25%, ADR-0365)
     "privatizaciones": 51.4,            # 71,4 (banda 65)
     "rigi_inversiones": 22.1,           # 47,7 (banda 40)
@@ -94,15 +96,17 @@ def test_itcg_reproduce_ejemplo():
     # externa. Los dos están declarados en su ADR y en la ficha. → 52,0
     # (ADR-0365: entran los juicios de la Justicia del Trabajo, 25%, y la SRT
     # baja a 25%: 0,50·55 + 0,25·57,8 + 0,25·40,2).
-    # → 47,6 (ADR-0369: sale la SRT, 0,50·55 + 0,50·40,2) → 52,0 (ADR-0379: vuelve).
-    assert dims["reforma_laboral"]["puntaje"] == 52.0
+    # → 47,6 (ADR-0369: sale la SRT, 0,50·55 + 0,50·40,2) → 52,0 (ADR-0379: vuelve)
+    # → 56,3 (ADR-0385: la siniestralidad, −5,0% → 75,0, ocupa el cuarto de la SRT:
+    # 0,50·55 + 0,25·75,0 + 0,25·40,2).
+    assert dims["reforma_laboral"]["puntaje"] == 56.3
     assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
     # ADR-0189: vuelve asistencia_directa y la dimension recupera el 40/40/20
     # del documento. 0,4x100 + 0,4x76,6 + 0,2x65 = 83,6 (antes 72,8 con 67/33).
     assert dims["social_orden"]["puntaje"] == 83.6
-    assert r["valor"] == 74.7          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228) → 75,4 (0247) → 74,7 (0365) → 74,1 (0369) → 74,7 (0379)
+    assert r["valor"] == 75.4          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228) → 75,4 (0247) → 74,7 (0365) → 74,1 (0369) → 74,7 (0379) → 75,4 (0385)
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcg.tension_de_itcg(r["valor"]) == 2.5   # 74,7 (ADR-0379)
+    assert itcg.tension_de_itcg(r["valor"]) == 2.5   # 75,4 (ADR-0385)
     assert r["ajustes_aplicados"] == []
 
 

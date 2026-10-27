@@ -17,7 +17,9 @@ CINCO DIMENSIONES (35/25/15/15/10):
      masa_salarial queda como insumo/contexto, no componente adicional.
   3. Reforma laboral — fal_modernizacion_laboral (Fondo de Asistencia Laboral:
      construcción normativa vigente, vigencia del régimen y registro CNV),
-     litigiosidad_laboral (juicios SRT, acumulado 12 meses contra los 12 previos).
+     siniestralidad_laboral (índice de incidencia de AT y EP de la SRT, ADR-0385)
+     y juicios_trabajo_capital (Justicia del Trabajo, ADR-0365).
+     litigiosidad_laboral (juicios SRT) se sigue calculando, pero no puntúa.
   4. Privatizaciones e inversión — privatizaciones (etapas 0-4 por empresa,
      store data/gestion/privatizaciones.json actualizado con el BO),
      rigi_inversiones (plataforma oficial, ADR-0011),
@@ -119,8 +121,10 @@ INDICADORES_ESPERADOS = [
     # D2 — Reforma del Estado
     "reduccion_estado", "gasto_funcionamiento", "masa_salarial",
     "reestructuracion_organismos",
-    # D3 — Reforma laboral (FAL + juicios SRT + juicios de la Justicia del Trabajo, ADR-0365)
-    "fal_modernizacion_laboral", "litigiosidad_laboral", "juicios_trabajo_capital",
+    # D3 — Reforma laboral (FAL + siniestralidad SRT + juicios de la Justicia del Trabajo,
+    # ADR-0365/0385; litigiosidad_laboral se sigue calculando pero no puntúa)
+    "fal_modernizacion_laboral", "litigiosidad_laboral", "siniestralidad_laboral",
+    "juicios_trabajo_capital",
     # D4 — Privatizaciones e inversión
     "privatizaciones", "rigi_inversiones", "concesiones_infraestructura",
     # D5 — Reforma social y orden (+ contexto: alertas GTFS-RT y protestas ACLED)
@@ -1774,10 +1778,10 @@ def _juicios_variacion_24m(serie: dict, mes: str) -> tuple:
 def fetch_litigiosidad_laboral() -> dict | None:
     """
     Variación % de los juicios laborales del sistema de riesgos del trabajo
-    (SRT), acumulado 12 meses vs los 12 previos. Desde el ADR-0023 INTEGRA el
-    ITCG (reforma laboral, actualmente 50%). Complementa el indicador del
-    Fondo de Asistencia Laboral, pero no identifica sus efectos: SRT mide
-    juicios por riesgos del trabajo y no el canal indemnizatorio del Fondo.
+    (SRT), acumulado 12 meses vs los 12 previos. SUSPENDIDO desde ADR-0385: se
+    sigue calculando pero no puntúa ni se publica; lo reemplaza
+    `siniestralidad_laboral`, que mide los accidentes y enfermedades que
+    registra el sistema y no los juicios que generan.
     """
     try:
         import openpyxl
@@ -1816,6 +1820,305 @@ def fetch_litigiosidad_laboral() -> dict | None:
         }
     except Exception as e:
         _warn("litigiosidad_laboral", e)
+        return None
+
+
+# ADR-0385: siniestralidad laboral registrada en el sistema de riesgos del
+# trabajo. Reemplaza a `litigiosidad_laboral` (juicios del sistema) con el mismo
+# 25 % de Reforma laboral: Marcos pidió medir la siniestralidad, no los juicios.
+#
+# Dos publicaciones de la SRT, con una cuenta común:
+#   · Informe provisorio de accidentabilidad laboral (PDF, trimestral, ACUMULADO
+#     del año): sale unos tres meses después del cierre y se publica SIEMPRE en
+#     la misma URL, que se sobrescribe. Por eso cada corrida guarda en el store
+#     la edición que lee, con los tres años de su Cuadro 1: la fuente no
+#     conserva su propia historia.
+#   · Serie histórica de indicadores de AT y EP (Excel, Revisión 4): un punto
+#     por año, con el índice de incidencia ya calculado por la SRT.
+# El indicador es la variación % del índice de incidencia (casos de AT y EP con
+# días de baja o secuelas, sin in itinere, por mil personas cubiertas, total del
+# sistema) del período acumulado contra el MISMO período del año anterior.
+SRT_PROVISORIO_URL = ("https://www.srt.gob.ar/estadisticas/datos-provisorios/"
+                      "Informe%20provisorio%20de%20accidentabilidad%20laboral.pdf")
+SRT_SERIE_ATEP_URL = ("https://www.srt.gob.ar/estadisticas/series/acc/"
+                      "Serie_historica-Indicadores_de_ATEP_UP-TCP-Rev4.xlsx")
+SRT_SINIESTRALIDAD_PATH = PROJECT_DIR / "data" / "gestion" / "srt_siniestralidad.json"
+
+_MESES_ES_NOMBRE = {"enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5,
+                    "junio": 6, "julio": 7, "agosto": 8, "septiembre": 9,
+                    "setiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12}
+_SRT_NUM = r"\d{1,3}(?:\.\d{3})*"
+# Nueve cifras al final de la línea; algunas filas traen un trozo del rótulo
+# antes («Casos mortales 253 6 259 …») y otras no.
+_SRT_FILA_9 = re.compile(rf"(?<![\d.])((?:{_SRT_NUM}\s+){{8}}{_SRT_NUM})\s*$")
+# Diferencia máxima, en puntos porcentuales, entre la variación que el propio
+# informe imprime en su Cuadro 2 (redondeada a un decimal) y la que sale de los
+# números del Cuadro 1.
+_SRT_TOL_CUADRO2 = 0.15
+
+
+def _srt_entero(txt: str) -> int:
+    return int(txt.replace(".", ""))
+
+
+def _srt_terna(fila: list, tol: int = 0) -> dict:
+    """[unidades productivas, casas particulares, total] con la suma verificada.
+    Los CASOS suman exacto; las PERSONAS CUBIERTAS son promedios redondeados
+    cada uno por su lado y pueden diferir en 1 (enero-junio de 2024: 9.716.834 +
+    532.197 = 10.249.031, el informe imprime 10.249.030), de ahí `tol`."""
+    up, cp, total = fila
+    if abs(up + cp - total) > tol:
+        raise ValueError(f"SRT: unidades productivas ({up}) + casas particulares "
+                         f"({cp}) no suman el total ({total})")
+    return {"unidades": up, "casas": cp, "total": total}
+
+
+def srt_parsear_provisorio(texto: str) -> dict:
+    """Lee el Cuadro 1 del informe provisorio de la SRT (texto ya extraído).
+
+    Falla EN VOZ ALTA (ValueError) si no encuentra el período, las filas, si
+    unidades productivas + casas particulares no suman el total en alguna
+    columna, o si la variación que el informe imprime en su Cuadro 2 no coincide
+    con la que sale de los números: un PDF con otro diseño no puede producir un
+    valor que parezca bueno. Devuelve
+    {"anio", "hasta_mes", "periodo_txt", "elaboracion", "anios": {año: {...}}}.
+    """
+    lineas = [l.strip() for l in texto.splitlines()]
+    plano = re.sub(r"\s+", " ", texto)
+
+    # Período: «Enero a junio de 2024, 2025 y 2026» en el título del Cuadro 1.
+    m = re.search(r"Cuadro 1\..{0,400}?Enero a ([a-záéíóú]+) de (\d{4}), (\d{4}) y (\d{4})",
+                  plano, re.I)
+    if not m:
+        raise ValueError("SRT: no encuentro el período en el título del Cuadro 1")
+    mes = _MESES_ES_NOMBRE.get(m.group(1).lower())
+    anios = [int(m.group(i)) for i in (2, 3, 4)]
+    if not mes or anios != [anios[0], anios[0] + 1, anios[0] + 2]:
+        raise ValueError(f"SRT: período ilegible en el Cuadro 1 ({m.group(0)[-60:]})")
+
+    # Filas numéricas del Cuadro 1: ocho filas de nueve cifras (3 años × UP/CP/total).
+    ini = next((i for i, l in enumerate(lineas) if l.startswith("Cuadro 1.")), None)
+    if ini is None:
+        raise ValueError("SRT: no encuentro el Cuadro 1")
+    fin = next((i for i, l in enumerate(lineas) if i > ini and l.startswith("Cuadro 2.")),
+               len(lineas))
+    filas = [[_srt_entero(t) for t in m9.group(1).split()]
+             for m9 in (_SRT_FILA_9.search(l) for l in lineas[ini:fin]) if m9]
+    if len(filas) < 5:
+        raise ValueError(f"SRT: el Cuadro 1 trae {len(filas)} filas numéricas, esperaba 8")
+    cubiertas, casos = filas[0], filas[4]
+    # Los rótulos tienen que estar: protegen contra un reordenamiento de filas.
+    bloque = " ".join(lineas[ini:fin])
+    if "cubiertas" not in bloque or "itinere" not in bloque:
+        raise ValueError("SRT: faltan los rótulos de las filas esperadas en el Cuadro 1")
+
+    por_anio = {}
+    for k, anio in enumerate(anios):
+        por_anio[str(anio)] = {
+            "cubiertos": _srt_terna(cubiertas[3 * k:3 * k + 3], tol=1),
+            "casos": _srt_terna(casos[3 * k:3 * k + 3]),
+        }
+    # Las demás filas también tienen que cerrar (UP + CP = total).
+    for j, fila in enumerate(filas):
+        for k in range(3):
+            _srt_terna(fila[3 * k:3 * k + 3], tol=1 if j == 0 else 0)
+    if any(por_anio[str(a)]["cubiertos"]["total"] <= 0 or
+           por_anio[str(a)]["casos"]["total"] <= 0 for a in anios):
+        raise ValueError("SRT: cubiertos o casos no positivos")
+    if not (casos[8] <= filas[2][8] <= filas[1][8]):
+        raise ValueError("SRT: los casos AT/EP con baja deben ser parte de los casos con baja "
+                         "y éstos de los notificados; la fila 5 no es la que busco")
+
+    # Cuadro 2: el informe imprime las variaciones; deben coincidir con las propias.
+    def _var_impresa(patron):
+        for l in lineas[fin:]:
+            if re.search(patron, l):
+                pcts = re.findall(r"(-?\d+(?:,\d+)?)\s*%", l)
+                if pcts:
+                    return float(pcts[-1].replace(",", "."))
+        return None
+
+    imp_cub = _var_impresa(r"^Personas trabajadoras cubiertas")
+    imp_cas = _var_impresa(r"^Casos AT y EP con d[ií]as de baja.*incapacitantes\s*\*")
+    if imp_cub is None or imp_cas is None:
+        raise ValueError("SRT: no encuentro en el Cuadro 2 las variaciones para cotejar")
+    a, b = str(anios[2]), str(anios[1])
+    prop_cub = (por_anio[a]["cubiertos"]["total"] / por_anio[b]["cubiertos"]["total"] - 1) * 100
+    prop_cas = (por_anio[a]["casos"]["total"] / por_anio[b]["casos"]["total"] - 1) * 100
+    if abs(prop_cub - imp_cub) > _SRT_TOL_CUADRO2 or abs(prop_cas - imp_cas) > _SRT_TOL_CUADRO2:
+        raise ValueError(f"SRT: el Cuadro 2 imprime {imp_cub}% y {imp_cas}% y el Cuadro 1 "
+                         f"da {prop_cub:.2f}% y {prop_cas:.2f}%")
+
+    elab = re.search(r"Fecha de elaboraci[oó]n:\s*([a-záéíóú]+ de \d{4})", plano, re.I)
+    nombre_mes = next(k for k, v in _MESES_ES_NOMBRE.items() if v == mes and k != "setiembre")
+    return {
+        "anio": anios[2],
+        "hasta_mes": mes,
+        "periodo_txt": f"enero a {nombre_mes} de {anios[2]}",
+        "elaboracion": elab.group(1).lower() if elab else None,
+        "anios": por_anio,
+    }
+
+
+def _srt_leer_provisorio() -> dict:
+    """Baja el informe provisorio vigente y lo parsea (pdfplumber)."""
+    import pdfplumber
+    contenido = _http_get_resiliente(SRT_PROVISORIO_URL)
+    with pdfplumber.open(io.BytesIO(contenido)) as pdf:
+        paginas = [(p.extract_text() or "") for p in pdf.pages[:8]]
+    portada = paginas[0] if paginas else ""
+    for i, pagina in enumerate(paginas):
+        if "Cuadro 1." in pagina:
+            # El Cuadro 2 puede caer en la página siguiente.
+            texto = pagina if "Cuadro 2." in pagina else pagina + "\n" + "\n".join(paginas[i + 1:i + 2])
+            edicion = srt_parsear_provisorio(texto + "\n" + portada)
+            return edicion
+    raise ValueError("SRT: el informe provisorio no tiene un Cuadro 1")
+
+
+def srt_parsear_serie_xlsx(contenido: bytes) -> dict:
+    """{año: {"casos", "incidencia_mil"}} del total del sistema (Rev. 4).
+
+    Cuadro 2 = casos de AT y EP con días de baja o secuelas (sin in itinere);
+    Cuadro 4 = índice de incidencia por mil cubiertos. Los títulos de las hojas
+    se verifican: si la SRT reordena los cuadros, falla en vez de leer otra cosa."""
+    import openpyxl
+    wb = openpyxl.load_workbook(io.BytesIO(contenido), data_only=True)
+
+    def _total_sistema(hoja, exigidos):
+        filas = list(wb[hoja].iter_rows(values_only=True))
+        titulo = " ".join(str(c) for f in filas[:4] for c in f if isinstance(c, str))
+        if not all(s.lower() in titulo.lower() for s in exigidos):
+            raise ValueError(f"SRT: la hoja «{hoja}» ya no es {exigidos}")
+        enc = next(f for f in filas if f[0] == "Sector económico")
+        fila = next(f for f in filas if isinstance(f[0], str) and f[0].strip().lower() == "total sistema")
+        out = {}
+        for h, v in zip(enc[1:], fila[1:]):
+            if isinstance(h, int) and isinstance(v, (int, float)) and v > 0:
+                out[h] = float(v)
+        return out
+
+    casos = _total_sistema("Cuadro 2", ("con días con baja",))
+    incid = _total_sistema("Cuadro 4", ("incidencia", "(por mil)"))
+    anios = sorted(set(casos) & set(incid))
+    if len(anios) < 2 or anios[-1] - anios[0] != len(anios) - 1:
+        raise ValueError(f"SRT: serie anual incompleta ({anios})")
+    out = {}
+    for y in anios:
+        cubiertos = casos[y] / incid[y] * 1000
+        if not (5e6 <= cubiertos <= 15e6):    # el sistema ronda los 10 millones
+            raise ValueError(f"SRT: {y} implica {cubiertos:,.0f} cubiertos; no es el total del sistema")
+        out[str(y)] = {"casos": int(casos[y]), "incidencia_mil": incid[y]}
+    return out
+
+
+def srt_cargar_store() -> dict:
+    try:
+        return json.loads(SRT_SINIESTRALIDAD_PATH.read_text(encoding="utf-8-sig"))
+    except FileNotFoundError:
+        return {"anuales": {}, "ediciones": {}}
+
+
+def srt_guardar_store(store: dict) -> bool:
+    """Escribe sólo si cambió (la corrida es idempotente). True si escribió."""
+    nuevo = json.dumps(store, ensure_ascii=False, indent=2) + "\n"
+    try:
+        if SRT_SINIESTRALIDAD_PATH.read_text(encoding="utf-8-sig") == nuevo:
+            return False
+    except FileNotFoundError:
+        pass
+    SRT_SINIESTRALIDAD_PATH.write_text(nuevo, encoding="utf-8")
+    return True
+
+
+def srt_incorporar_edicion(store: dict, edicion: dict, leida: str | None = None) -> dict:
+    """Suma la edición leída al store. Una edición idéntica a la guardada no
+    cambia nada (ni siquiera la fecha de lectura): la clave es el período."""
+    clave = f"{edicion['anio']}-{edicion['hasta_mes']:02d}"
+    previa = store.setdefault("ediciones", {}).get(clave)
+    nueva = {k: v for k, v in edicion.items()}
+    if previa and {k: v for k, v in previa.items() if k != "leida"} == nueva:
+        return store
+    store["ediciones"][clave] = {**nueva, "leida": leida or date.today().isoformat()}
+    store["ediciones"] = dict(sorted(store["ediciones"].items()))
+    return store
+
+
+def _srt_indice(terna_cubiertos: int, terna_casos: int) -> float:
+    return terna_casos / terna_cubiertos * 1000
+
+
+def siniestralidad_puntos(store: dict) -> list:
+    """TODOS los puntos de la serie, de más viejo a más nuevo. Es la ÚNICA
+    cuenta: la card toma el último y la serie los toma todos (ADR-0385).
+
+    Anual: índice de incidencia del año contra el del año anterior, fechado en
+    diciembre (Serie histórica Rev. 4). Acumulado: índice del período enero-mes
+    contra el mismo período del año anterior (informe provisorio), fechado el
+    primer día del último mes del período. Un acumulado a diciembre cede ante el
+    anual definitivo del mismo año."""
+    puntos = {}
+    anuales = store.get("anuales", {})
+    for y in sorted(int(k) for k in anuales):
+        if str(y - 1) not in anuales:
+            continue
+        a, b = anuales[str(y)], anuales[str(y - 1)]
+        var = (a["incidencia_mil"] / b["incidencia_mil"] - 1) * 100
+        puntos[f"{y}-12-01"] = {
+            "fecha": f"{y}-12-01", "tipo": "anual", "periodo_txt": f"año {y}",
+            "valor": round(var, 1),
+            "indice_actual": round(a["incidencia_mil"], 2),
+            "indice_previo": round(b["incidencia_mil"], 2),
+            "casos_actual": a["casos"], "casos_previo": b["casos"],
+        }
+    for ed in store.get("ediciones", {}).values():
+        y, m = ed["anio"], ed["hasta_mes"]
+        if m == 12 and str(y) in anuales and str(y - 1) in anuales:
+            continue
+        a, b = ed["anios"][str(y)], ed["anios"][str(y - 1)]
+        ia = _srt_indice(a["cubiertos"]["total"], a["casos"]["total"])
+        ib = _srt_indice(b["cubiertos"]["total"], b["casos"]["total"])
+        fecha = f"{y}-{m:02d}-01"
+        puntos[fecha] = {
+            "fecha": fecha, "tipo": "acumulado", "periodo_txt": ed["periodo_txt"],
+            "valor": round((ia / ib - 1) * 100, 1),
+            "indice_actual": round(ia, 2), "indice_previo": round(ib, 2),
+            "casos_actual": a["casos"]["total"], "casos_previo": b["casos"]["total"],
+        }
+    return [puntos[k] for k in sorted(puntos)]
+
+
+def fetch_siniestralidad_laboral() -> dict | None:
+    """ADR-0385. Variación % del índice de incidencia de AT y EP con días de
+    baja o secuelas (sin in itinere, total del sistema, por mil cubiertos): el
+    período acumulado del año contra el mismo período del año anterior. Menos es
+    mejor. Mide lo que registra el sistema de riesgos del trabajo, no los
+    juicios que genera (los medía `litigiosidad_laboral`)."""
+    try:
+        store = srt_cargar_store()
+        srt_incorporar_edicion(store, _srt_leer_provisorio())
+        try:                       # los anuales sólo cambian una vez por año
+            anuales = srt_parsear_serie_xlsx(_http_get_resiliente(SRT_SERIE_ATEP_URL))
+            store["anuales"] = {**store.get("anuales", {}), **anuales}
+        except Exception as e:     # el store ya trae la serie: no frena el dato nuevo
+            print(f"[WARN] {CINTURON}.siniestralidad_laboral: serie anual no actualizada ({e}).")
+        srt_guardar_store(store)
+        p = siniestralidad_puntos(store)[-1]
+        coma = lambda n: f"{n:,}".replace(",", ".")
+        return {
+            "valor":          p["valor"],
+            "unidad":         "% variación del índice de incidencia (mismo período, contra el año anterior)",
+            "fuente":         "SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP",
+            "fecha_dato":     p["fecha"],
+            "desactualizado": False,
+            "indice_por_mil": p["indice_actual"],
+            "detalle_txt":    (f"{p['periodo_txt'].capitalize()}: {coma(p['casos_actual'])} casos de AT y EP con baja "
+                               f"({str(p['indice_actual']).replace('.', ',')} por mil cubiertos) contra "
+                               f"{coma(p['casos_previo'])} ({str(p['indice_previo']).replace('.', ',')} por mil) "
+                               "en el mismo período del año anterior"),
+        }
+    except Exception as e:
+        _warn("siniestralidad_laboral", e)
         return None
 
 
@@ -3744,6 +4047,7 @@ def main() -> None:
         "reestructuracion_organismos":  fetch_reestructuracion_organismos,
         "fal_modernizacion_laboral":    fetch_fal_modernizacion_laboral,
         "litigiosidad_laboral":         fetch_litigiosidad_laboral,
+        "siniestralidad_laboral":       fetch_siniestralidad_laboral,
         "juicios_trabajo_capital":      fetch_juicios_trabajo_capital,
         "privatizaciones":              fetch_privatizaciones,
         "rigi_inversiones":             fetch_rigi_inversiones,

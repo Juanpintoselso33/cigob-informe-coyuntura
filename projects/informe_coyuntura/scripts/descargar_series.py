@@ -3365,6 +3365,30 @@ def fetch_litigiosidad_serie() -> list:
     return out[-60:]   # últimos 5 años (la serie arranca en 2010)
 
 
+def fetch_siniestralidad_serie() -> list:
+    """ADR-0385. Variación % del índice de incidencia de AT y EP de la SRT, con
+    los puntos del store `data/gestion/srt_siniestralidad.json` (anuales de la
+    Serie histórica, fechados en diciembre, y acumulados de cada informe
+    provisorio leído), desde 2020. Son pocos puntos por año, así que la serie es
+    ESCALONADA mensual como la de los juicios de la Capital: cada punto vale
+    hasta el mes anterior al siguiente y el último llega al mes en curso; con un
+    punto cada tres o doce meses, la reconstrucción mensual del ITCG lo perdía
+    casi todos los meses y renormalizaba los pesos. Sale de la MISMA cuenta que
+    la card (`gestion.siniestralidad_puntos`). [[YYYY-MM-01, var%]]."""
+    puntos = [(p["fecha"][:7], p["valor"])
+              for p in gestion.siniestralidad_puntos(gestion.srt_cargar_store())]
+    hoy = date.today().strftime("%Y-%m")
+    out = []
+    for i, (desde, valor) in enumerate(puntos):
+        hasta = puntos[i + 1][0] if i + 1 < len(puntos) else None
+        ym = desde
+        while (ym < hasta) if hasta else (ym <= hoy):
+            out.append([f"{ym}-01", valor])
+            anio, mes = int(ym[:4]), int(ym[5:])
+            ym = f"{anio + mes // 12}-{mes % 12 + 1:02d}"
+    return out
+
+
 def fetch_juicios_trabajo_serie() -> list:
     """ADR-0365. Juicios entrados en 1ª instancia de la Justicia Nacional del
     Trabajo, 12 meses vs los 12 previos. La fuente es semestral: la serie es
@@ -3724,6 +3748,7 @@ GESTION_DERIVADAS = [
      lambda: _serie_var_real_vs_2023([gestion.REMUNERACIONES_ID])),
     ("libertad_opcion_salud", "Avance de la libre elección de cobertura de salud (hitos 0–100)", "Boletín Oficial · ARCA · SSS — RNAS/RNEMP", fetch_opcion_salud_serie),
     ("litigiosidad_laboral", "% i.a. juicios SRT (12m vs 12m)", "SRT — serie de litigiosidad", fetch_litigiosidad_serie),
+    ("siniestralidad_laboral", "% variación del índice de incidencia de AT y EP (mismo período, año contra año)", "SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP", fetch_siniestralidad_serie),
     ("juicios_trabajo_capital", "% juicios entrados en 1ª instancia (12m vs 12m, semestral)", "Consejo de la Magistratura — Justicia Nacional del Trabajo", fetch_juicios_trabajo_serie),
     ("cepo_mulc", "% brecha CCL/mayorista (prom. mensual)", "ArgentinaDatos (CCL) + BCRA (A3500)", fetch_brecha_serie),
     ("protestas_caba", "eventos de protesta/mes (CABA)", "ACLED — agregado semanal (acleddata.com)", fetch_protestas_serie),

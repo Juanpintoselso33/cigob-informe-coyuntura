@@ -473,7 +473,7 @@ export const LABELS: Record<string, string> = {
   gasto_funcionamiento: "Gasto de funcionamiento", masa_salarial: "Masa salarial pública",
   asistencia_directa: "Planes sin intermediarios", fal_modernizacion_laboral: "Fondo de Asistencia Laboral",
   libertad_opcion_salud: "Implementación de la libre elección de cobertura de salud", protocolo_antipiquetes: "Reducción de cortes de calle en la Ciudad",
-  litigiosidad_laboral: "Juicios por riesgos del trabajo (SRT)", juicios_trabajo_capital: "Juicios en la Justicia del Trabajo (Capital)", alertas_manifestacion: "Alertas de manifestación (GCBA)",
+  litigiosidad_laboral: "Juicios por riesgos del trabajo (SRT)", siniestralidad_laboral: "Siniestralidad laboral (SRT)", juicios_trabajo_capital: "Juicios en la Justicia del Trabajo (Capital)", alertas_manifestacion: "Alertas de manifestación (GCBA)",
   protestas_caba: "Protestas en CABA (ACLED)",
 };
 export function label(key: string): string {
@@ -558,7 +558,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   rigi_inversiones: "% de la cartera", privatizaciones: "%", concesiones_infraestructura: "%",
   fal_modernizacion_laboral: "de avance", asistencia_directa: "de 100",
   protocolo_antipiquetes: "% menos que en 2023", libertad_opcion_salud: "de avance",
-  litigiosidad_laboral: "% i.a.", juicios_trabajo_capital: "% vs. un año atrás", alertas_manifestacion: "alertas/mes",
+  litigiosidad_laboral: "% i.a.", siniestralidad_laboral: "% vs. año anterior", juicios_trabajo_capital: "% vs. un año atrás", alertas_manifestacion: "alertas/mes",
   protestas_caba: "eventos 12m",
 };
 
@@ -647,6 +647,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   asistencia_directa: "Unidades de gestión dadas de baja (Res. 84/2024) — 0 o 100", fal_modernizacion_laboral: "Avance de la puesta en marcha del Fondo (0–100)",
   libertad_opcion_salud: "Avance de la libre elección por hitos (0–100)", protocolo_antipiquetes: "% de reducción de cortes en la Ciudad de Buenos Aires vs 2023, dato del año 2025 (no mide la aplicación del protocolo)",
   litigiosidad_laboral: "% variación (12m vs 12m previos)",
+  siniestralidad_laboral: "% variación del índice de incidencia de accidentes y enfermedades laborales con baja (por mil cubiertos), del período acumulado del año contra el mismo período del año anterior",
   juicios_trabajo_capital: "% variación de los juicios entrados (12m vs 12m previos, por semestre)",
   alertas_manifestacion: "Alertas únicas en el mes (avisos del transporte público porteño)",
   protestas_caba: "Eventos de protesta (acum. 12 meses)",

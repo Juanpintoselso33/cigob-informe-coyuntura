@@ -45,7 +45,8 @@ describen componentes vigentes.
 | `reduccion_estado` | INDEC dotación APN | — | % vs dic-2023 |
 | `gasto_funcionamiento` | Sec. Hacienda IMIG/AIF + IPC | — | var. real vs 2023. `masa_salarial` salía de la misma fuente y dejó de puntuar (ADR-0186) |
 | `fal_modernizacion_laboral` | CNV (FCI RG 1071/2025) + Boletín Oficial | — | — |
-| `litigiosidad_laboral` | SRT serie histórica | — | al índice 70/30 |
+| `siniestralidad_laboral` | SRT informe provisorio de accidentabilidad (PDF trimestral) + serie histórica de AT y EP (Excel) | — | al índice, 25 % de Reforma laboral (ADR-0385); store `data/gestion/srt_siniestralidad.json` |
+| `litigiosidad_laboral` | SRT serie histórica de litigiosidad | — | suspendido, se sigue calculando (ADR-0385) |
 | `privatizaciones` | Boletín Oficial + tabla doc CIGOB | — | etapas 0-4 |
 | `rigi_inversiones` | plataforma oficial RIGI (MECON) | — | — |
 | `concesiones_infraestructura` | CONTRAT.AR (UOC 504) + RFC | — | — |

@@ -217,7 +217,17 @@ BANDAS_ITCG = {
         # usuarios de prepagas con derivación directa con cortes 10/30/50/70.
         (95.0, INF, 100), (75.0, 95.0, 85), (55.0, 75.0, 65), (35.0, 55.0, 40), (-INF, 35.0, 10),
     ],
-    "litigiosidad_laboral": [           # juicios SRT, % 12m vs 12m previos (ADR-0023)
+    "siniestralidad_laboral": [         # índice de incidencia de AT y EP, % vs mismo período del año anterior (ADR-0385)
+        # MISMA convención que litigiosidad_laboral, a la que reemplaza: una
+        # variación % interanual en la que menos es mejor, con los mismos cortes
+        # (±5, 15 y 20). Es una convención declarada y no una calibración: la
+        # serie de la SRT sólo permite 6 variaciones anuales (2020-2025) y la del
+        # período acumulado empieza con esta edición. Mirar el rango observado
+        # (−31 % en 2020, +32 % en 2021, entre −11 y +8 % después) para mover
+        # los cortes sería ajustar la escala al resultado.
+        (-INF, -15.0, 100), (-15.0, -5.0, 85), (-5.0, 5.0, 65), (5.0, 20.0, 40), (20.0, INF, 10),
+    ],
+    "litigiosidad_laboral": [           # juicios SRT, % 12m vs 12m previos (ADR-0023; suspendido, ADR-0385)
         # El RESULTADO que la reforma persigue (enfriar la industria del
         # juicio), complementa la adopción del instrumento (Fondo de Cese).
         # Historia: +40/67% (2021-22), +33/37% (2023), +3/7% (2024-26) —
@@ -226,7 +236,7 @@ BANDAS_ITCG = {
         (-INF, -15.0, 100), (-15.0, -5.0, 85), (-5.0, 5.0, 65), (5.0, 20.0, 40), (20.0, INF, 10),
     ],
     "juicios_trabajo_capital": [        # juicios entrados en la Justicia del Trabajo, % 12m vs 12m (ADR-0365)
-        # MISMA escala que litigiosidad_laboral: es la misma cuenta (juicios,
+        # MISMA escala que litigiosidad_laboral (ADR-0385: y que siniestralidad_laboral): es la misma cuenta (juicios,
         # 12 meses contra los 12 previos) sobre otro universo. Su serie arranca
         # en 2023 y da cuatro puntos, que no alcanzan para calibrar una propia.
         (-INF, -15.0, 100), (-15.0, -5.0, 85), (-5.0, 5.0, 65), (5.0, 20.0, 40), (20.0, INF, 10),
@@ -298,8 +308,14 @@ DIMENSIONES_ITCG = {
         # Marcos acordó medir el resultado con las DOS series de juicios (el
         # documento de Marcos también las pedía), y la de la SRT es la única
         # nacional y mensual. Vuelve el 50/25/25 de ADR-0365.
+        #
+        # ADR-0385 (2026-10-27): Marcos pidió medir «la siniestralidad registrada
+        # en el sistema de riesgos del trabajo», no los juicios del sistema.
+        # `litigiosidad_laboral` sale (suspendido, se sigue calculando) y entra
+        # `siniestralidad_laboral` con el MISMO 25 %: el reparto 50/25/25 no
+        # cambia, cambia lo que mide la cuarta parte del resultado.
         "indicadores": {"fal_modernizacion_laboral": 0.50,
-                        "litigiosidad_laboral": 0.25,
+                        "siniestralidad_laboral": 0.25,
                         "juicios_trabajo_capital": 0.25},
     },
     "privatizaciones_inversion": {
@@ -386,6 +402,21 @@ INDICADORES_CUMPLIDOS = {}
 # `desde` es el mes en que salió del cálculo; se publica en la card para que
 # el lector sepa desde cuándo el número que ve no mueve el índice.
 INDICADORES_SUSPENDIDOS = {
+    "litigiosidad_laboral": {
+        "dimension": "reforma_laboral",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0385",
+        "por_que": "Contaba los juicios que llegan al sistema de riesgos del "
+                   "trabajo, no los accidentes y enfermedades que el sistema "
+                   "registra, que es lo que pidió medir la dirección de CiGob. "
+                   "Lo reemplaza la siniestralidad registrada, con el mismo peso "
+                   "en la dimensión. El dato se sigue calculando.",
+        "condicion_reingreso": "Que la dimensión necesite además una lectura de "
+                               "la litigiosidad del sistema de riesgos del "
+                               "trabajo, por ejemplo para ver si la reforma "
+                               "alcanzó el canal judicial por accidentes.",
+    },
     "reestructuracion_organismos": {
         "dimension": "reforma_estado",
         "desde": "2026-08",

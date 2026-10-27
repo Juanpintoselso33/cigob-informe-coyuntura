@@ -175,7 +175,15 @@ MAX_DIAS = {
     # de que aparezca el punto siguiente. 430 cubre el ciclo con margen.
     "judicializacion": 430,
     "protocolo_antipiquetes": 430,      # DP publica monitoreos esporádicos
-    "litigiosidad_laboral": 220,        # SRT
+    "litigiosidad_laboral": 220,        # SRT (suspendido, ADR-0385)
+    # ADR-0385: informe provisorio TRIMESTRAL de la SRT, acumulado del año. El
+    # rezago está medido: la edición enero-junio de 2026 dice «elaboración:
+    # septiembre» y la de enero-marzo de 2025 «junio» (y ya estaba publicada el
+    # 13-jul-2025, captura del archivo web): sale entre 2 y 3 meses después del
+    # cierre, o sea hasta ~125 días después del primer día del último mes del
+    # período, que es la fecha_dato. Justo antes de la edición siguiente la card
+    # tiene 92 días más (~220). 320 deja el margen de UN trimestre salteado.
+    "siniestralidad_laboral": 320,
     # ADR-0365: semestral. El dato de cada semestre (fecha = día 1 de junio o de
     # diciembre) queda hasta que sale el siguiente: el 2º semestre de 2025 se
     # publicó cerca del 20-may-2026 y el 1º de 2026 antes del 26-oct. 400 cubre

@@ -216,6 +216,8 @@ def test_publicacion_y_censo_con_componente_sin_universo(monkeypatch, tmp_path, 
     # los juicios por riesgos del trabajo (ADR-0379), −4 empleo (ADR-0383: salen cinco,
     # entra uno). Vetos/decretos (ADR-0377) y transferencias (ADR-0378) reemplazan 1 a 1.
     # 64 → 65: entra `apoyo_campo` a sector privado (ADR-0384).
+    # 65 → 65: `siniestralidad_laboral` reemplaza a `litigiosidad_laboral` en el ITCG
+    # (ADR-0385): sale uno y entra uno.
     assert resumen["indicadores"] == 65
     assert resumen["indicadores_observados_en_calculo"] == 64   # ... → 66 (ADR-0380) → 63 (tanda 27-oct) | 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328) → 68 (ADR-0365) → 67 (ADR-0368) → 66 (ADR-0369) → 65 (ADR-0372) → 66 (ADR-0380)
     assert resumen["indicadores_sin_universo"] == 1

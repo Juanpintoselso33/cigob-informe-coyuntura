@@ -8,7 +8,7 @@ indice: 'ITCG'
 indicadores: [litigiosidad_laboral, juicios_trabajo_capital]
 archivos: ['scripts/itcg.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts']
 supersede: ['0369']
-relacionado: ['0023', '0365', '0359']
+relacionado: ['0023', '0359', '0365', '0385']
 ambito: 'Cinturón de gestión · ITCG · dimensión Reforma laboral'
 origen: 'Reunión de Juan con Luis Babino y Marcos del 26-oct-2026 (resumen de acuerdos enviado por Luis) y decisión de Juan del 27-oct.'
 ---

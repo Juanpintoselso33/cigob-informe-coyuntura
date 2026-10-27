@@ -1,0 +1,79 @@
+{
+  "anuales": {
+    "2019": {
+      "casos": 355628,
+      "incidencia_mil": 36.52640960388168
+    },
+    "2020": {
+      "casos": 237983,
+      "incidencia_mil": 25.00900489198294
+    },
+    "2021": {
+      "casos": 318067,
+      "incidencia_mil": 33.10226528603561
+    },
+    "2022": {
+      "casos": 359696,
+      "incidencia_mil": 35.86893115454493
+    },
+    "2023": {
+      "casos": 372546,
+      "incidencia_mil": 36.08707836244756
+    },
+    "2024": {
+      "casos": 326004,
+      "incidencia_mil": 32.01894005104061
+    },
+    "2025": {
+      "casos": 332708,
+      "incidencia_mil": 32.849388336782745
+    }
+  },
+  "ediciones": {
+    "2026-06": {
+      "anio": 2026,
+      "hasta_mes": 6,
+      "periodo_txt": "enero a junio de 2026",
+      "elaboracion": "septiembre de 2026",
+      "anios": {
+        "2024": {
+          "cubiertos": {
+            "unidades": 9716834,
+            "casas": 532197,
+            "total": 10249030
+          },
+          "casos": {
+            "unidades": 149600,
+            "casas": 1752,
+            "total": 151352
+          }
+        },
+        "2025": {
+          "cubiertos": {
+            "unidades": 9648619,
+            "casas": 518583,
+            "total": 10167202
+          },
+          "casos": {
+            "unidades": 157766,
+            "casas": 1905,
+            "total": 159671
+          }
+        },
+        "2026": {
+          "cubiertos": {
+            "unidades": 9499688,
+            "casas": 491559,
+            "total": 9991247
+          },
+          "casos": {
+            "unidades": 146899,
+            "casas": 2167,
+            "total": 149066
+          }
+        }
+      },
+      "leida": "2026-10-27"
+    }
+  }
+}
