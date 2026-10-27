@@ -65,9 +65,9 @@ def relevamiento(res):
         "_meta": {
             "descripcion": "Relevamiento del corpus de bancos (ADEBA, ABA, ABAPPRA como un solo sector) y CAMARCO, sin clasificar (ADR-0391).",
             "fecha": date.today().isoformat(),
-            "decision": "Juan, 27-oct-2026: los bancos son un solo sector y cada comunicado cuenta una vez aunque lo firmen varias cámaras; CAMARCO se clasifica pero queda fuera del cálculo, como CAME, hasta llegar a 4 comunicados con postura dirigidos al Ejecutivo nacional en 12 meses.",
+            "decision": "Juan, 27-oct-2026: los bancos son un solo sector y cada comunicado cuenta una vez aunque lo firmen varias cámaras; los bancos quedan clasificados y fuera del cálculo, como CAME, hasta llegar a 4 comunicados con postura dirigidos al Ejecutivo nacional en 12 meses; CAMARCO llegó y entra como construcción (ADR-0391).",
             "desde": politica.APOYO_BANCOS_CAMARCO_DESDE,
-            "estado": "corpus sin clasificar: los dos lectores ciegos todavía no leyeron nada",
+            "estado": "corpus de entrada; la clasificación está en apoyo_construccion_codificacion.json y apoyo_bancos_codificacion.json",
         },
         "camaras": cams,
         "bancos_compuesto": {

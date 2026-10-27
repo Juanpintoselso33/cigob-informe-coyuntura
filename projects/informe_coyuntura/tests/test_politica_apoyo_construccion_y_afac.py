@@ -454,10 +454,12 @@ def det_camarco(tmp_path, monkeypatch):
     return nov, pedidos
 
 
-def test_el_detector_de_camarco_mira_la_primera_pagina_y_archiva_el_indicador(det_camarco):
+def test_el_detector_de_camarco_pagina_todo_y_archiva_el_indicador(det_camarco):
+    # Codex, 27-oct-2026: con sólo la primera página, más de 100 notas entre dos
+    # consultas se perdían y el inventario se daba por verificado igual.
     nov, pedidos = det_camarco
     store = politica.detectar_novedades_construccion()
-    assert pedidos == [1]
+    assert pedidos == [None]
     assert sorted(store["pendientes"]) == ["CAMARCO|44927", "CAMARCO|45726"]
     assert "serie periódica" in store["revisadas"]["CAMARCO|45804"]["origen"]
     assert "categorias" not in store["pendientes"]["CAMARCO|45726"]
@@ -520,3 +522,34 @@ def test_ningun_texto_dice_tercios_ni_nombra_a_la_uia_sola_como_industria():
     desc = (WEB / "descripciones.ts").read_text(encoding="utf-8")
     sp = re.search(r'^\s*sector_privado:\s*"([^"]+)"', desc, re.M).group(1)
     assert "AFAC" in sp and "construcción (CAMARCO)" in sp and "tercio" not in sp
+
+
+def test_un_400_en_la_primera_pagina_es_una_falla():
+    class R:
+        status_code = 400
+        def raise_for_status(self):
+            raise RuntimeError("400")
+    class S:
+        def get(self, *a, **k):
+            return R()
+    with pytest.raises(RuntimeError):
+        politica._wp_posts(S(), "u", "CAMARCO")
+
+
+def test_afac_sin_data_es_una_falla():
+    class R:
+        def raise_for_status(self):
+            pass
+        def json(self):
+            return {"data": None}
+    class S:
+        def post(self, *a, **k):
+            return R()
+    with pytest.raises(RuntimeError):
+        politica._afac_listado(S())
+
+
+def test_la_variacion_anual_compara_el_mismo_mes():
+    serie = [["2025-01-01", 0.5], ["2025-03-01", 0.1], ["2026-02-01", -0.6]]
+    assert politica._valor_un_anio_antes(serie, "2026-02-01") is None
+    assert politica._valor_un_anio_antes(serie + [["2026-03-01", 0.2]], "2026-03-01") == 0.1

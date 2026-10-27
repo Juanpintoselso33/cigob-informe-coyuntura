@@ -880,7 +880,7 @@ def fetch_brecha_obra_publica() -> dict | None:
         inicio = date.fromisoformat(fecha)
         ordinal_fin = inicio.year * 12 + inicio.month - 1 + 2
         fin = f"{ordinal_fin // 12:04d}-{ordinal_fin % 12 + 1:02d}"
-        anterior = serie[-13][1] if len(serie) > 13 else None
+        anterior = _valor_un_anio_antes(serie, fecha)
         return {
             "valor":          valor,
             "unidad":         "pp de brecha (obra pública − privada, 12m)",
@@ -2387,6 +2387,17 @@ def _apoyo_saldos_por_camara(comp: list, ini: str, fin: str) -> dict:
     return out
 
 
+def _valor_un_anio_antes(serie: list, fecha: str):
+    """El punto del MISMO mes del año anterior, o None si la serie no lo tiene.
+    `serie[-13]` contaba observaciones, no meses: con huecos comparaba contra
+    otro mes (Codex, 27-oct-2026)."""
+    objetivo = f"{int(fecha[:4]) - 1:04d}{fecha[4:7]}"
+    for f, v in serie:
+        if str(f)[:7] == objetivo:
+            return v
+    return None
+
+
 def _apoyo_inicio_ventana(ym: str) -> str:
     """Primer día de la ventana de 12 meses calendario que termina en `ym`."""
     y, m = int(ym[:4]), int(ym[5:7])
@@ -2478,7 +2489,7 @@ def fetch_apoyo_empresario() -> dict | None:
     try:
         serie = apoyo_empresario_serie()
         fecha, valor = serie[-1]
-        anterior = serie[-13][1] if len(serie) > 13 else None
+        anterior = _valor_un_anio_antes(serie, fecha)
         ini, fin = _apoyo_inicio_ventana(fecha[:7]), f"{fecha[:7]}-31"
         # La misma ventana que el punto de la serie, con su límite superior: si
         # la serie está cortada, contar lo codificado después descompondría un
@@ -2796,7 +2807,7 @@ def fetch_apoyo_comercio() -> dict | None:
     try:
         serie = apoyo_comercio_serie()
         fecha, valor = serie[-1]
-        anterior = serie[-13][1] if len(serie) > 13 else None
+        anterior = _valor_un_anio_antes(serie, fecha)
         d = json.loads(APOYO_CAMARAS_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
         # MISMO perímetro y MISMA ventana que el punto de la serie (ADR-0334).
         comp = [c for c in d["casos"]
@@ -3138,7 +3149,7 @@ def fetch_apoyo_campo() -> dict | None:
     try:
         serie = apoyo_campo_serie()
         fecha, valor = serie[-1]
-        anterior = serie[-13][1] if len(serie) > 13 else None
+        anterior = _valor_un_anio_antes(serie, fecha)
         d = json.loads(APOYO_CAMPO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
         # MISMO perímetro y MISMA ventana que el punto de la serie (ADR-0334).
         comp = [c for c in d["casos"]
@@ -3420,7 +3431,9 @@ def _wp_posts(session: requests.Session, url: str, camara: str, params: dict | N
         r = session.get(url, timeout=HTTP_TIMEOUT * 3, params={
             **(params or {}), "per_page": 100, "page": p, "after": f"{APOYO_BANCOS_CAMARCO_DESDE}T00:00:00",
             "_fields": "id,date,link,title,content,categories"})
-        if getattr(r, "status_code", 200) == 400:
+        # 400 = página inexistente: fin de la paginación, pero SÓLO después de la
+        # primera; un 400 en la página 1 es una falla y no puede verificar nada.
+        if getattr(r, "status_code", 200) == 400 and p > 1:
             break
         r.raise_for_status()
         lote = r.json()
@@ -3641,8 +3654,13 @@ def _afac_listado(session: requests.Session) -> list[dict]:
     r = session.post(f"{AFAC_API_URL}/GetByFilter", timeout=HTTP_TIMEOUT * 3,
                      json={"idSeccion": AFAC_SECCION_COMUNICADOS, "DateFrom": None, "DateTo": None})
     r.raise_for_status()
+    datos = r.json().get("data")
+    # Sin `data` es una respuesta fallida, no un listado vacío: no puede
+    # dar por verificado el inventario (Codex, 27-oct-2026).
+    if not isinstance(datos, list):
+        raise RuntimeError("AFAC: la API no devolvió el listado")
     salida = []
-    for x in r.json().get("data") or []:
+    for x in datos:
         fecha = str(x.get("fecha", ""))[:10]
         if fecha < APOYO_INDUSTRIA_DESDE:
             continue
@@ -3770,13 +3788,15 @@ APOYO_CONSTRUCCION_CAMARAS = ("CAMARCO",)
 
 
 def detectar_novedades_construccion() -> dict:
-    """Notas nuevas de CAMARCO pendientes de codificar (ADR-0391). Lee la
-    primera página de su WordPress (las 100 más nuevas) y archiva por título o
+    """Notas nuevas de CAMARCO pendientes de codificar (ADR-0391). Pagina TODO
+    el WordPress desde el período: con sólo las 100 más nuevas, si se juntaban
+    más de 100 entre dos consultas las anteriores se perdían y el inventario se
+    daba por verificado igual (Codex, 27-oct-2026). Archiva por título o
     categoría lo que no es comunicado."""
     return _detectar_novedades(
         APOYO_CONSTRUCCION_NOVEDADES_PATH, APOYO_CONSTRUCCION_CODIFICACION_PATH, "ADR-0391",
         APOYO_CONSTRUCCION_CAMARAS, {"CAMARCO": CAMARCO_POSTS_URL},
-        {"CAMARCO": lambda s: _camarco_listado(s, max_paginas=1)}, {"CAMARCO": None},
+        {"CAMARCO": lambda s: _camarco_listado(s)}, {"CAMARCO": None},
         lambda c: _es_archivable_camarco(c.get("titulo", ""), c.get("categorias", ())),
         APOYO_BANCOS_CAMARCO_DESDE, "apoyo_construccion")
 
@@ -3817,7 +3837,7 @@ def fetch_apoyo_construccion() -> dict | None:
     try:
         serie = apoyo_construccion_serie()
         fecha, valor = serie[-1]
-        anterior = serie[-13][1] if len(serie) > 13 else None
+        anterior = _valor_un_anio_antes(serie, fecha)
         ini, fin = _apoyo_inicio_ventana(fecha[:7]), f"{fecha[:7]}-31"
         comp = [c for c in _apoyo_casos(APOYO_CONSTRUCCION_CODIFICACION_PATH)
                 if c["camara"] in APOYO_CONSTRUCCION_CAMARAS and _apoyo_computable(c)
