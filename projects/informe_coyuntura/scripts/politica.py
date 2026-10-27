@@ -6631,6 +6631,8 @@ def _vsb_excedente(entrada: dict, camara: str) -> float | None:
             return None
     elif not _vsb_entrada_senado_es_ley_general(entrada):
         return None
+    if entrada.get("origen_pe") is not True:
+        return None   # sólo cuentan las leyes cuyo proyecto mandó el Poder Ejecutivo (ADR-0376)
     if not entrada["lla_afirm"] > entrada["lla_neg"]:
         return None
     bancas = entrada.get("bancas_camara") or VSB_BANCAS_CAMARA[camara]
@@ -6695,6 +6697,159 @@ def votos_sobre_bancas_valor(cache: dict, referencia: date) -> dict | None:
     return componer_votos_sobre_bancas({
         c: votos_sobre_bancas_camara(cache.get(c, {}), c, referencia)
         for c in COHESION_PESOS_CAMARAS})
+
+
+# -- origen de la ley: sólo cuentan los proyectos del Poder Ejecutivo --------
+#
+# Decisión de Juan (27-oct-2026): las leyes de consenso (tratados, capitales
+# nacionales, reconocimientos) inflaban el indicador. Cuenta una votación sólo si
+# el proyecto de la ley lo mandó el Ejecutivo (expediente PE o JGM), en cada
+# cámara donde se votó en general.
+#
+# - Senado: el acta trae las claves de expediente. Un proyecto del Ejecutivo que
+#   entra por el Senado figura como `PE-159/25-PL`; uno que ya pasó por Diputados
+#   figura como `CD-33/25-PL`, y su origen sale del catálogo de proyectos
+#   parlamentarios de HCDN (el mismo de eficacia_legislativa), que registra el
+#   expediente en cada cámara (`0033-CD-2025` junto a `0020-PE-2025`).
+# - Diputados: el PDF no trae expediente, sólo «O.D. n». Se cruza el número de
+#   Orden del Día con el dataset de dictámenes (el dictamen más reciente con ese
+#   número anterior a la votación) y sus expedientes con el catálogo de proyectos.
+#   Un acta sin número de Orden del Día no se puede cruzar y no cuenta.
+_RE_VSB_EXPEDIENTE = re.compile(r"^([A-Z]+)-(\d+)/(\d{2})(?:-[A-Z]+)?$")
+_RE_VSB_ORDEN_DEL_DIA = re.compile(r"O\.\s*D\.\s*(\d+)")
+
+
+def _vsb_clave_expediente(texto: str) -> tuple | None:
+    """('CD', 33, 2025) desde 'CD-33/25-PL' o desde '0033-CD-2025' (formato HCDN)."""
+    texto = (texto or "").strip()
+    m = _RE_VSB_EXPEDIENTE.match(texto)
+    if m:
+        return (m.group(1), int(m.group(2)), 2000 + int(m.group(3)))
+    m = re.match(r"^(\d+)-([A-Z]+)-(\d{4})$", texto)
+    if m:
+        return (m.group(2), int(m.group(1)), int(m.group(3)))
+    return None
+
+
+def _vsb_indice_origen_pe() -> dict:
+    """Índice de origen desde datos.hcdn.gob.ar: ids de proyectos de ley del
+    Ejecutivo, sus claves de expediente en cada cámara y los dictámenes por
+    número de Orden del Día. Levanta si el CKAN no responde."""
+    raw = (_hcdn_paginate(HCDN_PROYECTOS_RID, q="-PE-") + _hcdn_paginate(HCDN_PROYECTOS_RID, q="-JGM-"))
+    ids, claves = set(), set()
+    for r in raw:
+        if "PROYECTO DE LEY" not in str(r.get("TIPO", "")).upper():
+            continue
+        if not (_RE_PE_EXP.search(r.get("EXP_DIPUTADOS", "") or "")
+                or _RE_PE_EXP.search(r.get("EXP_SENADO", "") or "")):
+            continue
+        ids.add(r["PROYECTO_ID"])
+        # Sólo la clave con que el Senado numera el proyecto que viene de
+        # Diputados (CD) —la del Ejecutivo se reconoce sola por su sigla—. Las
+        # claves `S` que figuran del lado de Diputados son OTRA numeración (la de
+        # su mesa de entradas): S-72/25 de Diputados no es el S-72/25 del Senado.
+        k = _vsb_clave_expediente(r.get("EXP_SENADO"))
+        if k and k[0] == "CD":
+            claves.add(k)
+    dictamenes: dict = {}
+    vistos = set()
+    for anio in range(VSB_INICIO.year - 1, date.today().year + 1):
+        for r in _hcdn_paginate(HCDN_DICTAMENES_RID, q=str(anio)):
+            if r["_id"] in vistos or "orden" not in str(r.get("TIPO", "")).lower():
+                continue
+            vistos.add(r["_id"])
+            dictamenes.setdefault(int(r["NUMERO"]), []).append(
+                (str(r.get("FECHA", ""))[:10], r["EXPEDIENTE"]))
+    return {"ids": ids, "claves": claves, "dictamenes": dictamenes}
+
+
+def _vsb_expedientes_de_od_senado(session, ods: list) -> list | None:
+    """Claves de expediente (proyectos de ley) de los Órdenes del Día del Senado
+    de un acta que no las trae: la página de cada OD las lista. None si falla."""
+    out = []
+    for od in ods:
+        m = re.match(r"O\.D\.\s*(\d+)/(\d{4})", od)
+        if not m:
+            continue
+        r = _paced_get(session, SENADO_BASE,
+                       f"/parlamentario/parlamentaria/ordenDelDiaResultadoLink/{m.group(2)}/{m.group(1)}")
+        if r is None:
+            return None
+        texto = BeautifulSoup(r.text, "html.parser").get_text(" ", strip=True)
+        out += re.findall(r"\b[A-Z]{1,4}-\d+/\d{2}-PL\b", texto)
+    return sorted(set(out))
+
+
+def _vsb_origen_pe_senado(entrada: dict, indice: dict | None) -> bool | None:
+    exps = [x for x in (entrada.get("expedientes") or entrada.get("expedientes_od") or [])
+            if x.endswith("-PL")]
+    claves = [_vsb_clave_expediente(x) for x in exps]
+    if any(k and k[0] in ("PE", "JGM") for k in claves):
+        return True
+    if not exps:
+        return False   # sin expediente no hay con qué cruzar
+    if indice is None:
+        return None
+    return any(k in indice["claves"] for k in claves if k and k[0] == "CD")
+
+
+def _vsb_origen_pe_diputados(entrada: dict, indice: dict | None) -> bool | None:
+    m = _RE_VSB_ORDEN_DEL_DIA.search(entrada.get("titulo", ""))
+    if not m:
+        return False   # sin número de Orden del Día no se puede cruzar
+    if indice is None:
+        return None
+    # La numeración de los Órdenes del Día se reinicia con cada período: un
+    # dictamen con ese número firmado más de un año antes es de otro período.
+    piso = (date.fromisoformat(entrada["fecha"]) - timedelta(days=365)).isoformat()
+    candidatos = [(f, e) for f, e in indice["dictamenes"].get(int(m.group(1)), [])
+                  if piso <= f <= entrada["fecha"]]
+    if not candidatos:
+        return None    # el dictamen puede no estar cargado todavía: se reintenta
+    ultima = max(f for f, _ in candidatos)
+    return any(e in indice["ids"] for f, e in candidatos if f == ultima)
+
+
+def _vsb_resolver_origen(cache: dict) -> bool:
+    """Completa `origen_pe` (True/False, o None si todavía no se puede saber) en
+    cada acta candidata del caché. El índice de origen se baja sólo si hace
+    falta. True si no hubo fallo del CKAN."""
+    pendientes = []
+    for camara, f in (("diputados", _vsb_origen_pe_diputados), ("senado", _vsb_origen_pe_senado)):
+        for e in cache[camara].values():
+            if e.get("origen_pe") is not None or e.get("resultado") != "AFIRMATIVO":
+                continue
+            es_ley = (_vsb_titulo_diputados_es_ley_general(e.get("titulo", "")) if camara == "diputados"
+                      else _vsb_entrada_senado_es_ley_general(e))
+            if es_ley:
+                pendientes.append((e, f))
+    if not pendientes:
+        return True
+    indice, completo = None, True
+    # Actas del Senado sin clave de expediente: se la pide a la página de su OD.
+    session = None
+    for e, f in pendientes:
+        if f is _vsb_origen_pe_senado and not e.get("expedientes") and e.get("ods") \
+                and "expedientes_od" not in e:
+            session = session or _hcdn_votaciones_session()
+            exps = _vsb_expedientes_de_od_senado(session, e["ods"])
+            if exps is None:
+                completo = False
+            else:
+                e["expedientes_od"] = exps
+    if any(f(e, None) is None for e, f in pendientes):
+        try:
+            indice = _vsb_indice_origen_pe()
+        except Exception as ex:
+            print(f"  [WARN] votos_sobre_bancas: no se pudo leer el catálogo de origen ({ex})")
+            completo = False
+    for e, f in pendientes:
+        if f is _vsb_origen_pe_senado and not e.get("expedientes") and e.get("ods") \
+                and "expedientes_od" not in e:
+            continue   # no se pudo leer su OD: queda sin resolver y se reintenta
+        e["origen_pe"] = f(e, indice)
+    _vsb_guardar_cache(cache)
+    return completo
 
 
 # -- caché permanente por acta ----------------------------------------------
@@ -6890,7 +7045,8 @@ def votos_sobre_bancas_actualizar() -> tuple[dict, bool]:
     cache = _vsb_cargar_cache()
     ok_dip = _vsb_actualizar_diputados(cache)
     ok_sen = _vsb_actualizar_senado(cache)
-    return cache, ok_dip and ok_sen
+    ok_ori = _vsb_resolver_origen(cache)
+    return cache, ok_dip and ok_sen and ok_ori
 
 
 def _vsb_detalle(valor: dict) -> str:

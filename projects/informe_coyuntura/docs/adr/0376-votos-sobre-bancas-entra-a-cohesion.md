@@ -42,9 +42,12 @@ unido y aun así necesitar muchos votos de otros bloques para aprobar una ley.
 Nace `votos_sobre_bancas`: **votos a favor con que se aprueba cada ley menos las
 bancas propias de LLA, como % de las bancas de la cámara.**
 
-- Universo: votaciones nominales EN GENERAL de proyectos de ley con resultado
-  afirmativo y con el bloque LLA votando mayoritariamente a favor (más
-  afirmativos que negativos dentro del bloque). Diputados y Senado por separado.
+- Universo: votaciones nominales EN GENERAL de proyectos de ley **cuyo proyecto lo
+  mandó el Poder Ejecutivo** (decisión de Juan del 27-oct-2026, que agregó este
+  filtro), con resultado afirmativo y con el bloque LLA votando mayoritariamente
+  a favor (más afirmativos que negativos dentro del bloque). Diputados y Senado por
+  separado; una ley del Ejecutivo que pasa por las dos cámaras cuenta en cada una
+  donde se votó en general.
 - Por votación: `(afirmativos totales − bancas del bloque LLA en esa acta) /
   bancas de la cámara × 100`. Las bancas del bloque son todos los legisladores
   del bloque que figuran en el acta, hayan votado o no. Bancas de la cámara: 257
@@ -67,7 +70,7 @@ bancas propias de LLA, como % de las bancas de la cámara.**
   el último punto), sobre un caché permanente por acta
   (`data/politica/votos_sobre_bancas_actas.json`) que se escribe de a una acta.
 
-Cómo se decide el universo en cada cámara:
+Cómo se decide el universo en cada cámara y el origen de la ley:
 
 - **Senado**: el acta trae la etapa («en general», «en general y en particular»,
   «en particular»…) y la clave del expediente. Cuenta si la etapa es general (o no
@@ -80,20 +83,35 @@ Cómo se decide el universo en cada cámara:
   mociones, habilitaciones, apartamientos, pedidos de informes, comisiones
   investigadoras, DNU, insistencias ni los títulos con capítulo, título o
   artículo (votaciones en particular).
+- **Origen (Ejecutivo)**. Senado: el expediente del acta. `PE` o `JGM` (el formato real es
+  `PE-159/25-PL`: la sigla va adelante) es del Ejecutivo; `CD-33/25-PL` (viene de
+  Diputados) se cruza con el catálogo de proyectos parlamentarios de HCDN, que registra el
+  mismo proyecto como `0033-CD-2025` junto a su expediente `PE`; las claves `S` no se cruzan
+  (Diputados numera las suyas aparte y `S-72/25` de uno no es el del otro). Un acta sin
+  expediente (votada por Orden del Día) toma los expedientes de la página de su OD.
+  Diputados: el PDF sólo trae «O.D. n». Se cruza ese número con el dataset de dictámenes (el
+  más reciente del último año, porque la numeración se reinicia por período) y los
+  expedientes del dictamen con el catálogo de proyectos del Ejecutivo, el mismo universo de
+  `eficacia_legislativa`. Sin número de OD no se cruza y no cuenta; con OD pero sin dictamen
+  cargado queda sin resolver y se reintenta. El origen se guarda en el caché de actas.
 
 ### Consecuencias
 
-- Con las actas leídas el 27-oct-2026 (103 votaciones del universo: 54 de Diputados
-  desde feb-2025 y 49 del Senado desde mar-2024, de las cuales 72 caen en la ventana
-  de 12 meses): el indicador vale 40,8 % (Diputados 39,7 con 46 votaciones, Senado
-  42,9 con 26) y puntúa 100, el techo de la escala. La serie arranca en 71,9 (mar-2024,
-  sólo Senado), llega a 60,1 en oct-2025 y baja a 40,8 hoy.
-- Ese valor está empujado por las leyes de consenso: en 2026 los tratados, las capitales
-  nacionales y los reconocimientos se aprueban con 40-65 % de la cámara de votos ajenos,
-  mientras que las leyes de la agenda oficial (presupuesto, reforma laboral, inocencia
-  fiscal, propiedad privada) quedan entre 12 % y 35 %. La definición pedida promedia
-  votaciones, no leyes de peso político; si hace falta separar, es una decisión de
-  Luis y de Juan, no de este ADR.
+- Con las actas leídas el 27-oct-2026 y el filtro de origen (ver más abajo): 55 votaciones
+  del universo (31 de Diputados desde feb-2025 y 24 del Senado desde mar-2024), 44 de
+  ellas en la ventana de 12 meses. El indicador vale 38,2 % (Diputados 37,7 con 27
+  votaciones, Senado 39,2 con 17) y puntúa 97,3. Serie de los últimos seis meses:
+  39,6 (may-2026) · 39,5 · 39,5 · 38,9 · 38,2 · 38,2 (oct).
+- Sin el filtro de origen valía 40,8 % y puntuaba 100, el techo: lo empujaban las capitales
+  nacionales, los reconocimientos y otras leyes de legisladores que se aprueban con 40-65 % de
+  la cámara de votos ajenos.
+- Los tratados internacionales los manda siempre el Ejecutivo, así que siguen contando
+  (51-67 % de excedente) y siguen empujando el promedio; las leyes de la agenda oficial
+  (presupuesto, reforma laboral, inocencia fiscal, zona fría, súper RIGI) quedan entre 14 % y 35 %.
+  Separar tratados de leyes políticas sería otra decisión.
+- Tres votaciones de Diputados cuyo Orden del Día todavía no está en el dataset de dictámenes
+  (entre ellas inviolabilidad de la propiedad privada, 21-oct, que daría 11,7 %) quedan sin origen,
+  no cuentan y se reintentan solas en cada actualización: cuando entren, el valor baja.
 - El excedente depende del tamaño del bloque propio. El bloque LLA de Diputados
   pasó de 36-39 a 94 bancas (y el del Senado de 9 a 21) con la renovación de diciembre de 2025: con el
   mismo respaldo total el excedente baja. Se declara como limitación en la ficha.
@@ -112,7 +130,8 @@ Cómo se decide el universo en cada cámara:
 ### Confirmación
 
 `tests/test_votos_sobre_bancas.py` fija el cálculo del excedente, el universo
-(no cuenta lo que no es ley en general, lo rechazado ni lo que LLA votó en contra),
+(no cuenta lo que no es ley en general, lo rechazado, lo que LLA votó en contra ni una ley de
+origen legislativo), el cruce de origen en las dos cámaras,
 la ventana de 12 meses, el 65/35, el caché por acta y la composición 50/50 en el
 ITCP. `tests/test_fichas_bandas.py` y `tests/test_la_ficha_no_se_queda_atras.py`
 cruzan la ficha contra el motor y este ADR.

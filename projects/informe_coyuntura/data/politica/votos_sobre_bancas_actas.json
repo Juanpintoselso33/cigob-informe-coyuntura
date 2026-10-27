@@ -30,6 +30,7 @@
    "lla_afirm": 39,
    "lla_neg": 0,
    "n_filas": 257,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 720 - LEY 26.571, DE DEMOCRAT. DE LA REP. POLÍTICA, LA TRANSP. Y LA EQUIDAD ELECTORAL. MODIF. S/SUSP. DUR. 2025 DE LAS PASO. VOT EN GRAL Y PART."
   },
@@ -42,6 +43,7 @@
    "lla_afirm": 38,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 485 - C. PENAL, C. P. PENAL FED. Y C. P. PENAL. MODIF EN MATERIA DE REINC., REIT., CONCURSO DE DELITOS Y UNIF. DE CONDENAS. VOT EN GRAL."
   },
@@ -61,6 +63,7 @@
    "lla_afirm": 37,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 679 - CÓD. PROCESAL PENAL Y CÓD. PROCESAL FEDERAL. MODIF. SOBRE JUICIO EN AUSENCIA DEL IMPUTADO. VOT. EN GRAL. Y PART."
   },
@@ -136,6 +139,7 @@
    "lla_afirm": 39,
    "lla_neg": 0,
    "n_filas": 257,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 721 - LEY DE FICHA LIMPIA. (24-P.E.-2024). VOT. EN GRAL. Y PART."
   },
@@ -190,6 +194,7 @@
    "lla_afirm": 38,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "EMERGENCIA AMBIENTAL, ECONOM. Y HABIT. EN ZONAS AFECTADAS POR EL TEMPORAL EN BAHÍA BLANCA Y TODA LA REGIÓN. VOT. EN GRAL. Y PART."
   },
@@ -272,6 +277,7 @@
    "lla_afirm": 0,
    "lla_neg": 36,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 790 - INCREMENTO EXCEPCIONAL Y DE EMERGENCIA PARA LAS JUBILACIONES Y PENS. ABONADAS POR LA ANSES. DICT. DE MAYORÍA. VOT. EN GRAL."
   },
@@ -305,6 +311,7 @@
    "lla_afirm": 0,
    "lla_neg": 36,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 791 - LEY 27.705, DE PLAN DE PAGO DE DEUDA PREV. Y LEY 27.260, DE REP. HIST. PARA JUBILADOS Y PENS. DICTAMEN DE MAYORÍA. VOT. EN GRAL. Y PART."
   },
@@ -317,6 +324,7 @@
    "lla_afirm": 0,
    "lla_neg": 35,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 786 - EMERGENCIA EN DISCAPACIDAD EN TODO EL TERRITORIO NAC. VOT. EN GRAL."
   },
@@ -364,6 +372,7 @@
    "lla_afirm": 30,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "VOTACIÓN EN GRAL. Y PARTICULAR EMERGENCIA PROVINCIAS DE BS.AS. Y SANTA FE."
   },
@@ -411,6 +420,7 @@
    "lla_afirm": 0,
    "lla_neg": 37,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 924 - LEY DE FINANCIAMIENTO DE LA EDUCACIÓN UNIVERSITARIA Y RECOMPOSICIÓN DEL SALARIO DOCENTE. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -444,6 +454,7 @@
    "lla_afirm": 0,
    "lla_neg": 37,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 923 - EMERGENCIA SANITARIA DE LA SALUD PEDIÁTRICA Y DE LAS RESIDENCIAS NACIONALES EN SALUD. DECLARACIÓN. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -547,6 +558,7 @@
    "lla_afirm": 2,
    "lla_neg": 35,
    "n_filas": 257,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 949 - LEY 11.672, COMPLEMENTARIA PERM. DEL PRESUPUESTO. MODIFICACIÓN. DICT. DE MAYORÍA. VOT. EN GRAL."
   },
@@ -566,6 +578,7 @@
    "lla_afirm": 2,
    "lla_neg": 31,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "EXPTES. 1110-D-2024 / 6391-D-2024 / 2774-D-2025. HUSO HORARIO. VOT. EN GRAL. Y PART."
   },
@@ -585,6 +598,7 @@
    "lla_afirm": 36,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 719 - LEY 24.769 DE RÉGIMEN PENAL TRIBUTARIO. MODIFICACIÓN S/ACTUALIZACIÓN DE MONTOS POR EL DELITO DE EVASIÓN TRIBUTARIA. VOT. EN GRAL. Y PART."
   },
@@ -723,6 +737,7 @@
    "lla_afirm": 0,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 947 - EMERGENCIA Y FINANCIAMIENTO DEL SISTEMA NACIONAL DE CIENCIA, TECNOLOGÍA E NINOVACIÓN. DECLARACIÓN. DICT. DE MAY. VOT. EN GRAL. Y PART."
   },
@@ -735,6 +750,7 @@
    "lla_afirm": 0,
    "lla_neg": 1,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 950 - PROGRAMA NACIONAL DE LUCHA CONTRA LA ENFERMEDAD DE ALZHEIMER Y OTRAS DEMENCIAS -PLEA-. CREACIÓN. DICT. DE MAY. VOT. EN GRAL. Y PART."
   },
@@ -747,6 +763,7 @@
    "lla_afirm": 0,
    "lla_neg": 31,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "EXPTE. 5408-D-2025. TEXTO PROPUESTO POR DIPUTADA PAGANO, MARCELA. VOT. EN GRAL. Y PART."
   },
@@ -759,6 +776,7 @@
    "lla_afirm": 2,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 718 - BR. ESTANISLAO LÓPEZ \"PATRIARCA DEL FED. ARGENTINO\", DEF. DE LOS IDEALES FED. Y REP. DECL. COMO HÉROE NACIONAL. VOT. EN GRAL. Y PART."
   },
@@ -785,6 +803,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 255,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 1 - PRESUPUESTO GENERAL DE LA ADM. NACIONAL PARA EL E.F. CORRESP. AL AÑO 2026. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -895,6 +914,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 255,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 3 - LEY DE INOCENCIA FISCAL. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -921,6 +941,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 4 - RÉGIMEN PENAL JUVENIL. ESTABLECIMIENTO. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -940,6 +961,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 5 - ACUERDO MERCOSUR - UNIÓN EUROPEA. VOT. EN GRAL. Y PART."
   },
@@ -959,6 +981,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 6 - LEY DE MODERNIZACIÓN LABORAL. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -1230,6 +1253,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 7 - LEY 26.639, DE RÉGIMEN DE PRESUP. MÍN. PARA LA PRESERV. DE LOS GLACIARES Y DEL AMB. PERIGLACIAL. MODIF. DICT. DE MAY. VOT. EN GRAL. Y PART."
   },
@@ -1249,6 +1273,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 25 - LEGISLACIÓN OBSOLETA - \"LEY DE HOJARASCA\". DEROG. Y MODIF. DICT. DE MAY. VOT. EN GRAL. Y PART."
   },
@@ -1261,6 +1286,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 8 - CONVENIO SOBRE COBRO INTERNACIONAL DE ALIMENTOS PARA LOS NIÑOS Y OTROS MIEMBROS DE LA FAMILIA. APROBACIÓN. VOT. EN GRAL. Y PART."
   },
@@ -1273,6 +1299,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 252,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 16 - TRATADO DE EXTRADICIÓN ENTRE LA REP. ARGENTINA Y LA REP. DE POLONIA. APROBACIÓN. VOT. EN GRAL. Y PART."
   },
@@ -1285,6 +1312,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 252,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 17 - TRATADO DE EXTRADICIÓN ENTRE LA REP. ARGENTINA Y LA REP. DE COSTA RICA. APROBACIÓN. VOT. EN GRAL. Y PART."
   },
@@ -1297,6 +1325,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 252,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 18 - TRATADO SOBRE TRASLADO DE PERSONAS CONDENADAS O SUJETAS A MEDIDAS DE SEGURIDAD ENTRE LA REP. ARGENTINA Y LA REP. ITALIANA. APROBACIÓN."
   },
@@ -1309,6 +1338,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 252,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 19 - TRATADO SOBRE ASISTENCIA JURÍDICA MUTUA EN MATERIA PENAL, ENTRE LA REP. ARGENTINA Y LA REP. DE SERBIA. APROBACIÓN. VOT. EN GRAL. Y PART."
   },
@@ -1321,6 +1351,7 @@
    "lla_afirm": 91,
    "lla_neg": 0,
    "n_filas": 252,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 20 - TRATADO SOBRE ASISTENCIA JURÍDICA MUTUA EN MATERIA PENAL, ENTRE LA REP. ARGENTINA Y LA REP. DE CUBA. APROBACIÓN. VOT. EN GRAL. Y PART."
   },
@@ -1333,6 +1364,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 21 - TRATADO DE EXTRADICIÓN ENTRE LA REP. ARGENTINA Y LA REP. DE CHILE. APROBACIÓN. VOT. EN GRAL. Y PART."
   },
@@ -1352,6 +1384,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 252,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 23 - TRATADO RELATIVO A LA TRANSMISIÓN ELECTR. DE SOLIC. DE COOP. JURÍDICA INTERNACIONAL E/ AUTORIDADES CENTRALES -TRATADO DE MEDELLIN-."
   },
@@ -1364,6 +1397,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 252,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 24 - ACUERDO E/ LA REP. ARGENTINA Y LA SEC. DEL CONVENIO DE BASILEA S/ EL CONTROL DE LOS MOVIM. TRANSFRONTERIZOS DE LOS DESECHOS PELIGROSOS."
   },
@@ -1376,6 +1410,7 @@
    "lla_afirm": 92,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 81 - BRIGADIER VGM JORGE FRANCISCO MARTÍNEZ. POR SU PARTICIP. EN LA \"GUERRA DEL ATL. SUR\". RECONOC. Y OTRAS CUESTIONES. VOT. EN GRAL. Y PART."
   },
@@ -1388,6 +1423,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 84 - RÉGIMEN DE ZONA FRÍA. MODIFICACIÓN. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -1470,6 +1506,7 @@
    "lla_afirm": 92,
    "lla_neg": 0,
    "n_filas": 252,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 86 - PROTOCOLO DE ENMIENDA AL CONVENIO ENTRE EL GOBIERNO DE LA REP. ARGENTINA Y EL GOB. DE LA REP. FRANCESA. VOT. EN GRAL. PART."
   },
@@ -1482,6 +1519,7 @@
    "lla_afirm": 92,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 87 - ACUERDO SOBRE MEDIDAS DEL ESTADO RECTOR DEL PUERTO DESTINADAS A PREVENIR, DESALENTAR Y ELIMINAR LA PESCA ILEGAL. VOT. EN GRAL. PART."
   },
@@ -1494,6 +1532,7 @@
    "lla_afirm": 92,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 88 - CONVENIOS DE SEGURIDAD SOCIAL ENTRE LA REPÚBLICA ARGENTINA Y LA CONFEDERACIÓN SUIZA. VOT. EN GRAL. PART."
   },
@@ -1506,6 +1545,7 @@
    "lla_afirm": 92,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 89 - CONVENIOS DE SEGURIDAD SOCIAL ENTRE LA REPÚBLICA ARGENTINA Y LA REPÚBLICA DE SAN MARINO. VOT. EN GRAL. PART."
   },
@@ -1518,6 +1558,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 148 - AC. DE CONCILIACIÓN E/ LA REP. ARG. Y BAINBRIDGE LTD. Y E/ LA REP. ARG. Y EL GRUPO DE ACREED. ENCABEZADO POR ATTESTOR VMF. VOT GRAL Y PART."
   },
@@ -1530,6 +1571,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 149 - RÉGIMEN DE INCENTIVO PARA GRANDES INVERSIONES EN NUEVAS INDUSTRIAS, \"SÚPER RIGI\". CREACIÓN. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -1598,6 +1640,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 211 - CARTA ORGÁNICA DEL BCRA. MODIFICACIÓN. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -1624,6 +1667,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 209 - LEYES 11.683 Y 27.799 RELATIVAS A LA MOD. SIMPL. DE DECL. JURADA DEL IMP. A LAS GANANCIAS. MODIF. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -1671,6 +1715,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 208 - ACUERDO DE LIBRE COMERCIO E/ EL MERCOSUR Y LA REP. DE SINGAPUR. VOT. EN GRAL. Y PART."
   },
@@ -1683,6 +1728,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": null,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 85 - TRATADO DE COOP. EN MATERIA DE PATENTES SUSCRIPTO EN WASHINGTON -EEUU DE AMÉRICA-. APROBACIÓN. DICT. DE MAYORÍA. VOT. EN GRAL. Y PART."
   },
@@ -1695,6 +1741,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 210 - LEY 23.349 DE I.V.A. MODIF. ART. 28 SOBRE LA REDUCCIÓN DE LA ALÍCUOTA A LA FÉCULA DE MANDIOCA. VOT. EN GRAL. Y PART."
   },
@@ -1707,6 +1754,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 250 - C.A.B.A. DECLARACIÓN COMO CAPITAL NACIONAL DEL TEATRO. VOT. EN GRAL. Y PART."
   },
@@ -1719,6 +1767,7 @@
    "lla_afirm": 92,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 249 - CIUDAD DE CHIVILCOY, PROV. DE BS. AS. DECLARACIÓN COMO CAPITAL NACIONAL DEL COLECCIONISMO. VOT. EN GRAL. Y PART."
   },
@@ -1731,6 +1780,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 248 - PROVINCIA DE SAN JUAN, CUNA DE DOMINGO FAUSTINO SARMIENTO Y CAPITAL NACIONAL DE LA EDUCACIÓN. VOT. EN GRAL. Y PART."
   },
@@ -1743,6 +1793,7 @@
    "lla_afirm": 91,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 247 - PROVINCIA DE SANTA CRUZ. DECLARACIÓN COMO CAPITAL NACIONAL DE LA NATACIÓN DE AGUAS FRÍAS Y OTRAS CUESTIONES CONEXAS. VOT. EN GRAL. Y PART."
   },
@@ -1755,6 +1806,7 @@
    "lla_afirm": 91,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 246 - PROVINCIA DE TUCUMÁN. DECLARACIÓN COMO CAPITAL NACIONAL DEL ECOTURISMO, Y OTRAS CUESTIONES CONEXAS. VOT. EN GRAL. Y PART."
   },
@@ -1767,6 +1819,7 @@
    "lla_afirm": 90,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 245 - MUNICIPIO DE SAN JOSÉ DE LOS CERRILLOS, PROV. DE SALTA. DECLARACIÓN COMO CAPITAL NACIONAL DEL CERDO NEGRO. VOT. EN GRAL. Y PART."
   },
@@ -1779,6 +1832,7 @@
    "lla_afirm": 92,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 244 - CIUDAD DE CAÁ CATÍ, PROV. DE CORRIENTES. DECLARACIÓN COMO CAPITAL NACIONAL DE LA PRODUCCIÓN BUBALINA. VOT. EN GRAL. Y PART."
   },
@@ -1791,6 +1845,7 @@
    "lla_afirm": 92,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 243 - CIUDAD DE SAN MIGUEL DE TUCUMÁN. DECLARACIÓN COMO CAPITAL SIMBÓLICA DE LA REP. ARG. EL DÍA 9 DE JULIO DE CADA AÑO. VOT EN GRAL. Y PART."
   },
@@ -1803,6 +1858,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 263 - CÁMARA FEDERAL DE APELACIONES DE TUCUMÁN. REORGANIZACIÓN. VOT. EN GRAL. Y PART."
   },
@@ -1815,6 +1871,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 262 - SALA II EN LA CÁMARA FEDERAL DE APELACIONES DE MAR DEL PLATA, PROV. DE BUENOS AIRES. CREACIÓN. VOT. EN GRAL. Y PART."
   },
@@ -1827,6 +1884,7 @@
    "lla_afirm": 89,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 270 - RITUAL, CELEB.Y PEREGR. DEL \"CAMINO DE BROCHERO\". DECL. COMO PARTE INTEGR. DEL PATRIMONIO INMMATERIAL DE LA REP. ARG. VOT EN G. Y P."
   },
@@ -1839,6 +1897,7 @@
    "lla_afirm": 93,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 207 - \"LEY JOAQUÍN\", OBLIGATORIEDAD DE MEDIDAS DE SEGURIDAD EN EL DEPORTE Y ACTIVIDADES RECREATIVAS. ESTABLECIMIENTO. VOT. EN GRAL. Y PART."
   },
@@ -1921,6 +1980,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": null,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 448 - LEY DE INVIOLABILIDAD DE LA PROPIEDAD PRIVADA. MODIF. DE LA LEY 21.499 Y LEY 24.374. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -1940,6 +2000,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 349 - MÓDULO INFORMÁTICO INTEROPERABLE CON EL SIST. DE TRAZABILIDAD DE MEDICAMENTOS DE ALTO RIESGO Y DE SUS I.F.A. VOT. EN GRAL. Y PART."
   },
@@ -1952,6 +2013,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": null,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 447 - CÓDIGO PENAL. MODIF. SOBRE VANDALISMO RURAL. DICT. DE MAY. VOT. EN GRAL."
   },
@@ -1964,6 +2026,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 442 - INMUEBLE PROP. DEL ESTADO NAC., CAEB, EN BARRANQUERAS, CHACO. TRANSFERENCIA A TÍTULO GRATUITO A LA PROV. DEL CHACO. VOT. EN GRAL. Y PART."
   },
@@ -1976,6 +2039,7 @@
    "lla_afirm": 94,
    "lla_neg": 0,
    "n_filas": 256,
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "O.D. 350 - MODIFICACIONES A LA LEY NACIONAL DE DISCAPACIDAD. VOT. EN GRAL."
   },
@@ -2704,6 +2768,11 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "PE-129/19-PL",
+    "PE-130/19-PL",
+    "PE-180/19-PL"
+   ],
    "fecha": "2024-03-14",
    "lla_afirm": 8,
    "lla_neg": 0,
@@ -2713,6 +2782,7 @@
     "O.D. 428/2023",
     "O.D. 429/2023"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Aprobación de acuerdo con la República de Turquía, de convenio con la República Popular China, de acuerdo con los Emiratos Árabes Unidos.",
    "v": 2
@@ -2724,6 +2794,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "PE-180/19-PL"
+   ],
    "fecha": "2024-03-14",
    "lla_afirm": 8,
    "lla_neg": 0,
@@ -2731,6 +2804,7 @@
    "ods": [
     "O.D. 429/2023"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Aprobación de acuerdo con los Emiratos Árabes Unidos.",
    "v": 2
@@ -2742,6 +2816,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "PE-202/23-PL"
+   ],
    "fecha": "2024-03-14",
    "lla_afirm": 8,
    "lla_neg": 0,
@@ -2749,6 +2826,7 @@
    "ods": [
     "O.D. 430/2023"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Autorización al Presidente para ausentarse del país, durante el año 2024, cuando razones del gobierno así lo requieran.",
    "v": 2
@@ -2760,6 +2838,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-3/23-PL"
+   ],
    "fecha": "2024-03-14",
    "lla_afirm": 8,
    "lla_neg": 0,
@@ -2767,6 +2848,7 @@
    "ods": [
     "O.D. 432/2023"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del Código Penal sobre lavado de activos, financiación del terrorismo y proliferación de armas de destrucción masiva.",
    "v": 2
@@ -2830,6 +2912,7 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [],
    "fecha": "2024-04-18",
    "lla_afirm": 9,
    "lla_neg": 0,
@@ -2837,6 +2920,7 @@
    "ods": [
     "O.D. 10/2024"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo  para designaciones de embajadores extraordinarios y plenipotenciarios.",
    "v": 2
@@ -2848,6 +2932,27 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-11/23-PL",
+    "CD-32/23-PL",
+    "PE-130/23-PL",
+    "PE-131/23-PL",
+    "PE-132/23-PL",
+    "PE-155/22-PL",
+    "PE-196/21-PL",
+    "PE-249/18-PL",
+    "PE-25/22-PL",
+    "PE-26/22-PL",
+    "PE-27/22-PL",
+    "PE-28/22-PL",
+    "PE-295/18-PL",
+    "PE-366/19-PL",
+    "PE-419/19-PL",
+    "PE-44/22-PL",
+    "PE-45/22-PL",
+    "PE-90/23-PL",
+    "PE-99/22-PL"
+   ],
    "fecha": "2024-04-18",
    "lla_afirm": 9,
    "lla_neg": 0,
@@ -2873,6 +2978,7 @@
     "O.D. 20/2024",
     "O.D. 21/2024"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdos internacionales relacionados con el Mercosur, servicios aéreos, asistencia jurídica y tratados de extradición.",
    "v": 2
@@ -3446,6 +3552,10 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL",
    "expedientes": [],
+   "expedientes_od": [
+    "S-1052/24-PL",
+    "S-284/24-PL"
+   ],
    "fecha": "2024-07-04",
    "lla_afirm": 9,
    "lla_neg": 0,
@@ -3453,6 +3563,7 @@
    "ods": [
     "O.D. 39/2024"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del art. 139 del Código Penal tipificando la sustracción y/o comercialización de menores de edad.",
    "v": 2
@@ -3464,6 +3575,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-15/23-PL"
+   ],
    "fecha": "2024-07-04",
    "lla_afirm": 7,
    "lla_neg": 0,
@@ -3471,6 +3585,7 @@
    "ods": [
     "O.D. 40/2024"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración del 18 de julio como Día de Duelo Nacional, en homenaje a las víctimas de AMIA.",
    "v": 2
@@ -3500,6 +3615,13 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "S-1148/23-PL",
+    "S-182/24-PL",
+    "S-377/24-PL",
+    "S-447/24-PL",
+    "S-549/24-PL"
+   ],
    "fecha": "2024-08-22",
    "lla_afirm": 9,
    "lla_neg": 0,
@@ -3511,6 +3633,7 @@
     "O.D. 71/2024",
     "O.D. 75/2024"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Transferencias de inmuebles del Estado Nacional en las provincias de La Pampa, Entre Ríos y Río Negro.",
    "v": 2
@@ -3522,6 +3645,10 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-31/23-PL",
+    "PE-375/19-PL"
+   ],
    "fecha": "2024-08-22",
    "lla_afirm": 9,
    "lla_neg": 0,
@@ -3530,6 +3657,7 @@
     "O.D. 79/2024",
     "O.D. 80/2024"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Aprobación del Convenio Internacional de Nairobi sobre remoción de restos de naufragio.",
    "v": 2
@@ -3559,6 +3687,10 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "S-1052/24-PL",
+    "S-284/24-PL"
+   ],
    "fecha": "2024-08-22",
    "lla_afirm": 9,
    "lla_neg": 0,
@@ -3566,6 +3698,7 @@
    "ods": [
     "O.D. 77/2024"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del Código Penal de la Nación sobre la sustracción y/o comercialización de menores de edad.",
    "v": 2
@@ -3577,6 +3710,11 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-7/24-PL",
+    "S-1132/24-PL",
+    "S-465/24-PL"
+   ],
    "fecha": "2024-08-22",
    "lla_afirm": 1,
    "lla_neg": 8,
@@ -3584,6 +3722,7 @@
    "ods": [
     "O.D. 78/2024"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Movilidad Previsional y de la Seguridad Social.",
    "v": 2
@@ -3811,6 +3950,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-4/22-PL"
+   ],
    "fecha": "2024-09-12",
    "lla_afirm": 9,
    "lla_neg": 0,
@@ -3818,6 +3960,7 @@
    "ods": [
     "O.D. 431/2023"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Boleta Única de Papel",
    "v": 2
@@ -3847,6 +3990,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-14/24-PL"
+   ],
    "fecha": "2024-09-12",
    "lla_afirm": 1,
    "lla_neg": 8,
@@ -3854,6 +4000,7 @@
    "ods": [
     "O.D. 146/2024"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Aumento al financiamiento de las Universidades Nacionales.",
    "v": 2
@@ -4079,6 +4226,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-29/23-PL"
+   ],
    "fecha": "2024-09-26",
    "lla_afirm": 8,
    "lla_neg": 0,
@@ -4086,6 +4236,7 @@
    "ods": [
     "O.D. 145/2024"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Institución del  15 de noviembre de cada año como Día Nacional por la Memoria de los 44 héroes y heroína del Submarino Ara San Juan y la reafirmación y defensa de los Derechos Soberanos del Mar Argentino.",
    "v": 2
@@ -4115,6 +4266,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-10/24-PL"
+   ],
    "fecha": "2024-09-26",
    "lla_afirm": 9,
    "lla_neg": 0,
@@ -4122,6 +4276,7 @@
    "ods": [
     "O.D. 153/2024"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Ampliación del Registro Nacional de Datos Genéticos.",
    "v": 2
@@ -4610,6 +4765,7 @@
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de zona de emergencia y en situación de catástrofe, durante el término de 180 días, del departamento Rivadavia, Salta.",
    "v": 2
@@ -4693,6 +4849,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "S-172/25-PL"
+   ],
    "fecha": "2025-05-07",
    "lla_afirm": 9,
    "lla_neg": 0,
@@ -4700,6 +4859,7 @@
    "ods": [
     "O.D. 5/2025"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de zona de emergencia y en situación de catástrofe a los municipios de Bahía Blanca y Coronel Rosales.",
    "v": 2
@@ -4768,6 +4928,7 @@
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de emergencia en discapacidad hasta el 31 de diciembre de 2026.",
    "v": 2
@@ -4815,6 +4976,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "S-2214/24-PL"
+   ],
    "fecha": "2025-07-10",
    "lla_afirm": 0,
    "lla_neg": 0,
@@ -4822,6 +4986,7 @@
    "ods": [
     "O.D. 139/2025"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de la Ciudad de 28 de Noviembre, provincia de Santa Cruz, como Capital Nacional del Cóndor Andino.",
    "v": 2
@@ -4859,6 +5024,7 @@
    "lla_neg": 1,
    "n_filas": 72,
    "ods": [],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Eliminación de fideicomisos y fondos nacionales. Modificación de la distribución del Impuesto a los Combustibles Líquidos.",
    "v": 2
@@ -4877,6 +5043,7 @@
    "lla_neg": 1,
    "n_filas": 72,
    "ods": [],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Distribución automática del Fondo de los Aportes del Tesoro Nacional.",
    "v": 2
@@ -5022,6 +5189,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-7/25-PL"
+   ],
    "fecha": "2025-08-21",
    "lla_afirm": 1,
    "lla_neg": 8,
@@ -5029,6 +5199,7 @@
    "ods": [
     "O.D. 424/2025"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Financiamiento de la educación universitaria y recomposición del salario docente.",
    "v": 2
@@ -5058,6 +5229,9 @@
    "bancas_lla": 9,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-8/25-PL"
+   ],
    "fecha": "2025-08-21",
    "lla_afirm": 1,
    "lla_neg": 8,
@@ -5065,6 +5239,7 @@
    "ods": [
     "O.D. 425/2025"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Emergencia sanitaria de la salud pediátrica y de los residentes nacionales de salud.",
    "v": 2
@@ -5126,6 +5301,7 @@
    "ods": [
     "O.D. 428/2025"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del régimen legal de los decretos de necesidad y urgencia, delegación legislativa y de promulgación parcial de las leyes.",
    "v": 2
@@ -5236,6 +5412,7 @@
    "ods": [
     "O.D. 197/2024"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Incorporación de la atrofia muscular espinal (AME) al Régimen para la detección y posterior tratamiento de determinadas patologías en el recién nacido.",
    "v": 2
@@ -5256,6 +5433,7 @@
    "ods": [
     "O.D. 194/2024"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de calidad y seguridad sanitaria (Ley Nicolás).",
    "v": 2
@@ -5278,6 +5456,7 @@
    "ods": [
     "O.D. 399/2024"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Reforma del Código Penal de la Nación en materia de siniestros viales.",
    "v": 2
@@ -5340,6 +5519,7 @@
     "O.D. 289/2025",
     "O.D. 299/2025"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de Monumentos Históricos Nacionales en las provincias de Río Negro, Tucumán y La Pampa.",
    "v": 2
@@ -5538,6 +5718,7 @@
    "ods": [
     "O.D. 297/2025"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de Fiesta Nacional a la Fiesta de los Canales de Riego, en la provincia de Río Negro. Proyecto.",
    "v": 2
@@ -5559,6 +5740,7 @@
    "ods": [
     "O.D. 205/2025"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Establecimiento de normas para la facilitación de búsqueda de personas extraviadas o desaparecidas y creación del Sistema de Alerta Rápida Sofía.",
    "v": 2
@@ -5595,6 +5777,7 @@
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración como lugar histórico, estratégico y no enajenable del terreno ocupado por el Regimiento de Infantería N° 1 \"Patricios\".",
    "v": 2
@@ -5647,6 +5830,7 @@
    "ods": [
     "O.D. 702/2025"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
    "v": 2
@@ -5947,6 +6131,7 @@
    "ods": [
     "O.D. 701/2025"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Inocencia Fiscal.",
    "v": 2
@@ -5967,6 +6152,7 @@
    "ods": [
     "O.D. 699/2025"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral.",
    "v": 2
@@ -6575,6 +6761,7 @@
    "ods": [
     "O.D. 703/2025"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo de Libre Comercio entre el Mercosur y la Unión Europea.",
    "v": 2
@@ -6595,6 +6782,7 @@
    "ods": [
     "O.D. 700/2025"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Ley 26.639 de Presupuestos Mínimos para la Protección de Glaciares y del Ambiente Periglacial.",
    "v": 2
@@ -6755,6 +6943,7 @@
    "ods": [
     "O.D. 705/2025"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil.",
    "v": 2
@@ -7011,6 +7200,7 @@
    "ods": [
     "O.D. 706/2025"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Aceptación de las modificaciones introducidas por la Cámara de Diputados al proyecto de Modernización Laboral.",
    "v": 2
@@ -7047,6 +7237,7 @@
    "ods": [
     "O.D. 2/2026"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Protocolo de enmienda al convenio con Francia para eliminar la doble imposición y prevenir la evasión y elusión fiscal en impuestos sobre la renta y el patrimonio.",
    "v": 2
@@ -7067,6 +7258,7 @@
    "ods": [
     "O.D. 3/2026"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo de Roma, sobre medidas destinadas a prevenir, desalentar y eliminar la pesca ilegal, no declarada y no reglamentada.",
    "v": 2
@@ -7262,6 +7454,7 @@
     "O.D. 19/2026",
     "O.D. 20/2026"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Tratados Internacionales con Singapur, Suiza y la República de San Marino que refieren al Tratado de Libre Comercio entre el Mercosur.",
    "v": 2
@@ -7282,6 +7475,7 @@
    "ods": [
     "O.D. 21/2026"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Regularización de armas de fuego y prórroga del Programa Nacional de Entrega Voluntaria de Armas de Fuego.",
    "v": 2
@@ -7545,6 +7739,9 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "PE-98/26-PL"
+   ],
    "fecha": "2026-06-04",
    "lla_afirm": 20,
    "lla_neg": 0,
@@ -7552,6 +7749,7 @@
    "ods": [
     "O.D. 102/2026"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo de conciliación con acreedores de títulos de deuda.",
    "v": 2
@@ -7563,6 +7761,11 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "S-130/26-PL",
+    "S-562/26-PL",
+    "S-96/26-PL"
+   ],
    "fecha": "2026-06-04",
    "lla_afirm": 20,
    "lla_neg": 0,
@@ -7571,6 +7774,7 @@
     "O.D. 103/2026",
     "O.D. 105/2026"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Creación de una nueva sala en la Cámara Federal de Apelaciones de Mar del Plata. Reorganización y ampliación de la Cámara Federal de Apelaciones de Tucumán.",
    "v": 2
@@ -7734,6 +7938,7 @@
    "ods": [
     "O.D. 152/2026"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de la ciudad de San Miguel de Tucumán como capital simbólica de la República Argentina, el 9 de julio de cada año.",
    "v": 2
@@ -7788,6 +7993,7 @@
    "ods": [
     "O.D. 104/2026"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Inviolabilidad de la Propiedad Privada.",
    "v": 2
@@ -7980,6 +8186,13 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-4/26-PL",
+    "CD-5/26-PL",
+    "PE-10/21-PL",
+    "PE-223/26-PL",
+    "PE-97/26-PL"
+   ],
    "fecha": "2026-08-27",
    "lla_afirm": 18,
    "lla_neg": 0,
@@ -7991,6 +8204,7 @@
     "O.D. 121/2026",
     "O.D. 257/2026"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Tratado con Ucrania sobre Traslado de Personas Sentenciadas.",
    "v": 2
@@ -8002,6 +8216,12 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "S-252/26-PL",
+    "S-308/26-PL",
+    "S-311/25-PL",
+    "S-347/25-PL"
+   ],
    "fecha": "2026-08-27",
    "lla_afirm": 18,
    "lla_neg": 0,
@@ -8011,6 +8231,7 @@
     "O.D. 139/2026",
     "O.D. 275/2026"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración como Fiesta Nacional al Festival del Membrillo, Departamento Ambato, provincia de Catamarca.",
    "v": 2
@@ -8060,6 +8281,7 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [],
    "fecha": "2026-09-17",
    "lla_afirm": 20,
    "lla_neg": 0,
@@ -8068,6 +8290,7 @@
     "O.D. 360/2026",
     "O.D. 361/2026"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Traspaso de la Justicia Nacional a la Ciudad Autónoma de Buenos Aires.",
    "v": 2
@@ -8079,6 +8302,9 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-8/26-PL"
+   ],
    "fecha": "2026-09-17",
    "lla_afirm": 20,
    "lla_neg": 0,
@@ -8086,6 +8312,7 @@
    "ods": [
     "O.D. 372/2026"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Inocencia Fiscal II.",
    "v": 2
@@ -8196,6 +8423,9 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "S-1144/26-PL"
+   ],
    "fecha": "2026-09-17",
    "lla_afirm": 16,
    "lla_neg": 0,
@@ -8203,6 +8433,7 @@
    "ods": [
     "O.D. 337/2026"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Reconocimiento a Héroes Nacionales.",
    "v": 2
@@ -8214,6 +8445,9 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-21/25-PL"
+   ],
    "fecha": "2026-09-17",
    "lla_afirm": 16,
    "lla_neg": 0,
@@ -8221,6 +8455,7 @@
    "ods": [
     "O.D. 363/2026"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de Héroe Nacional al Brigadier Estanislao López.",
    "v": 2
@@ -8232,6 +8467,9 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "S-1239/26-PL"
+   ],
    "fecha": "2026-09-17",
    "lla_afirm": 17,
    "lla_neg": 0,
@@ -8239,6 +8477,7 @@
    "ods": [
     "O.D. 365/2026"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Institución de Día Nacional en Honor al Almirante Guillermo Brown.",
    "v": 2
@@ -8250,6 +8489,9 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "S-361/26-PL"
+   ],
    "fecha": "2026-09-17",
    "lla_afirm": 16,
    "lla_neg": 0,
@@ -8257,6 +8499,7 @@
    "ods": [
     "O.D. 339/2026"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Creación del Parque Interjurisdiccional Marino Monte León",
    "v": 2
@@ -8284,6 +8527,15 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL",
    "expedientes": [],
+   "expedientes_od": [
+    "S-1035/26-PL",
+    "S-1246/26-PL",
+    "S-1271/25-PL",
+    "S-1861/25-PL",
+    "S-3/26-PL",
+    "S-809/26-PL",
+    "S-916/26-PL"
+   ],
    "fecha": "2026-09-17",
    "lla_afirm": 19,
    "lla_neg": 0,
@@ -8291,6 +8543,7 @@
    "ods": [
     "O.D. 362/2026"
    ],
+   "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Marco Regulatorio de Biocombustibles.",
    "v": 2
@@ -8464,6 +8717,9 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-7/26-PL"
+   ],
    "fecha": "2026-09-24",
    "lla_afirm": 21,
    "lla_neg": 0,
@@ -8471,6 +8727,7 @@
    "ods": [
     "O.D. 367/2026"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central.",
    "v": 2
@@ -8770,6 +9027,10 @@
    "bancas_lla": 21,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
+   "expedientes_od": [
+    "CD-3/26-PL",
+    "S-909/26-PL"
+   ],
    "fecha": "2026-09-24",
    "lla_afirm": 21,
    "lla_neg": 0,
@@ -8777,6 +9038,7 @@
    "ods": [
     "O.D. 402/2026"
    ],
+   "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del Régimen de Zonas Frías.",
    "v": 2

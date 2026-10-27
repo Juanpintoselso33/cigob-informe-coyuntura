@@ -359,7 +359,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   votos_sobre_bancas: {
     latex: String.raw`\frac{\text{votos afirmativos}-\text{bancas de LLA}}{\text{bancas de la c\'amara}}\times 100`,
-    leyenda: "Por cada votación nominal en general de un proyecto de ley que salió aprobada y en la que el bloque La Libertad Avanza votó mayoritariamente a favor: votos afirmativos totales menos las bancas del bloque LLA (todos los legisladores del bloque en el acta, hayan votado o no), sobre las bancas de la cámara (257 en Diputados, 72 en el Senado). Cada cámara es el promedio simple de sus votaciones de los últimos 12 meses; el indicador pesa Diputados 65% y Senado 35% (si una cámara no tuvo votaciones, queda la otra).",
+    leyenda: "Por cada votación nominal en general de un proyecto de ley del Poder Ejecutivo que salió aprobada y en la que el bloque La Libertad Avanza votó mayoritariamente a favor: votos afirmativos totales menos las bancas del bloque LLA (todos los legisladores del bloque en el acta, hayan votado o no), sobre las bancas de la cámara (257 en Diputados, 72 en el Senado). Cada cámara es el promedio simple de sus votaciones de los últimos 12 meses; el indicador pesa Diputados 65% y Senado 35% (si una cámara no tuvo votaciones, queda la otra).",
   },
   alineamiento_senadores_prov: {
     latex: String.raw`\frac{1}{N_{\text{provincias}}}\sum_{\text{provincias}}\frac{\text{votos no-LLA que coinciden con la posici\'on LLA}}{\text{votos no-LLA}}\times 100`,

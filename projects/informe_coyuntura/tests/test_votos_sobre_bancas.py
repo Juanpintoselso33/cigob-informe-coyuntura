@@ -19,19 +19,20 @@ import politica  # noqa: E402
 
 
 def dip(titulo="O.D. 10 - REGIMEN X. VOT. EN GRAL.", fecha="2026-06-24", afirmativos=131,
-        bancas_lla=94, lla_afirm=93, lla_neg=0, resultado="AFIRMATIVO", bancas_camara=257):
+        bancas_lla=94, lla_afirm=93, lla_neg=0, resultado="AFIRMATIVO", bancas_camara=257,
+        origen_pe=True):
     return {"fecha": fecha, "titulo": titulo, "resultado": resultado, "afirmativos": afirmativos,
             "bancas_lla": bancas_lla, "lla_afirm": lla_afirm, "lla_neg": lla_neg,
-            "bancas_camara": bancas_camara}
+            "bancas_camara": bancas_camara, "origen_pe": origen_pe}
 
 
 def sen(titulo="Inocencia Fiscal II.", fecha="2026-09-17", etapa="EN GENERAL", expedientes=None,
         ods=("O.D. 372/2026",), afirmativos=44, bancas_lla=21, lla_afirm=20, lla_neg=0,
-        resultado="AFIRMATIVO", bancas_camara=72):
+        resultado="AFIRMATIVO", bancas_camara=72, origen_pe=True):
     return {"fecha": fecha, "titulo": titulo, "etapa": etapa, "expedientes": list(expedientes or []),
             "ods": list(ods), "resultado": resultado, "afirmativos": afirmativos,
             "bancas_lla": bancas_lla, "lla_afirm": lla_afirm, "lla_neg": lla_neg,
-            "bancas_camara": bancas_camara}
+            "bancas_camara": bancas_camara, "origen_pe": origen_pe}
 
 
 # ── el excedente de una votación ─────────────────────────────────────────────
@@ -328,7 +329,8 @@ def test_el_senado_se_guarda_de_a_una_acta_y_no_vuelve_a_pedir_lo_cacheado(monke
     assert politica._vsb_actualizar_senado(cache) is True
     e = politica._vsb_cargar_cache()["senado"]["2665"]
     assert (e["bancas_lla"], e["lla_afirm"], e["lla_neg"], e["afirmativos"], e["bancas_camara"]) == (2, 2, 0, 3, 4)
-    assert politica._vsb_excedente(e, "senado") == pytest.approx((3 - 2) / 4 * 100)
+    assert politica._vsb_excedente(e, "senado") is None          # sin origen resuelto no cuenta
+    assert politica._vsb_excedente({**e, "origen_pe": True}, "senado") == pytest.approx((3 - 2) / 4 * 100)
     n = len(pedidos)
     assert politica._vsb_actualizar_senado(politica._vsb_cargar_cache()) is True
     assert len(pedidos) == n, "una acta ya cacheada no se vuelve a descargar"
@@ -427,3 +429,94 @@ def test_el_indicador_pesa_igual_que_la_cohesion_en_el_itcp():
     # si falta uno, el otro lleva la dimensión entera (se renormaliza, no se inventa)
     solo = itcp.calcular_itcp({"cohesion_bloque": 97.0, "ratio_dnu": 0.5})["dimensiones"]["cohesion_interna"]
     assert solo["puntaje"] == ind["cohesion_bloque"]["puntaje_aplicado"]
+
+
+# ── sólo cuentan las leyes cuyo proyecto mandó el Poder Ejecutivo (ADR-0376) ──
+
+def test_una_ley_de_origen_legislativo_no_cuenta():
+    # misma votación, mismos números: sólo cambia quién mandó el proyecto
+    assert politica._vsb_excedente(dip(origen_pe=True), "diputados") is not None
+    assert politica._vsb_excedente(dip(origen_pe=False), "diputados") is None
+    assert politica._vsb_excedente(sen(origen_pe=False), "senado") is None
+    # origen sin resolver (dictamen todavía no cargado) tampoco cuenta
+    assert politica._vsb_excedente(dip(origen_pe=None), "diputados") is None
+    sin_campo = dip()
+    del sin_campo["origen_pe"]
+    assert politica._vsb_excedente(sin_campo, "diputados") is None
+
+
+def test_el_promedio_ignora_las_leyes_de_consenso_de_origen_legislativo():
+    actas = {"1": dip(fecha="2026-06-01", afirmativos=131),
+             "2": dip(fecha="2026-06-02", afirmativos=240, origen_pe=False)}   # capital nacional, 240 votos
+    r = politica.votos_sobre_bancas_camara(actas, "diputados", date(2026, 7, 1))
+    assert r["n_actas"] == 1 and r["valor"] == pytest.approx(37 / 257 * 100)
+
+
+INDICE = {"ids": {"HCDN1"}, "claves": {("CD", 33, 2025)},
+          "dictamenes": {448: [("2026-09-01", "HCDN1")], 7: [("2025-01-10", "HCDN1"), ("2026-03-01", "HCDN9")]}}
+
+
+def test_origen_en_el_senado():
+    f = politica._vsb_origen_pe_senado
+    # el Ejecutivo entra por el Senado: la sigla alcanza, sin catálogo
+    assert f({"expedientes": ["PE-159/25-PL"]}, None) is True
+    assert f({"expedientes": ["JGM-1/25-PL"]}, None) is True
+    # viene de Diputados: se mira cómo numera el catálogo ese proyecto
+    assert f({"expedientes": ["CD-33/25-PL"]}, INDICE) is True
+    assert f({"expedientes": ["CD-34/25-PL"]}, INDICE) is False
+    assert f({"expedientes": ["CD-33/25-PL"]}, None) is None
+    # una S del Senado no es la S de la numeración de Diputados: no se cruza
+    assert f({"expedientes": ["S-33/25-PL"]}, {**INDICE, "claves": {("S", 33, 2025)}}) is False
+    # sin expediente propio, el de su Orden del Día
+    assert f({"expedientes": [], "expedientes_od": ["CD-33/25-PL"]}, INDICE) is True
+    assert f({"expedientes": [], "expedientes_od": []}, INDICE) is False
+    # un pliego (-AC) no es proyecto de ley
+    assert f({"expedientes": ["PE-175/25-AC"]}, INDICE) is False
+
+
+def test_origen_en_diputados_cruza_el_numero_de_orden_del_dia():
+    f = politica._vsb_origen_pe_diputados
+    e = {"titulo": "O.D. 448 - LEY X. VOT. EN GRAL.", "fecha": "2026-10-21"}
+    assert f(e, INDICE) is True                                   # dictamen 448 → HCDN1, del Ejecutivo
+    assert f({**e, "titulo": "O.D. 999 - LEY X. VOT. EN GRAL."}, INDICE) is None   # dictamen no cargado: se reintenta
+    assert f({**e, "titulo": "EMERGENCIA EN BAHÍA BLANCA. VOT. EN GRAL."}, INDICE) is False   # sin O.D. no se cruza
+    assert f(e, None) is None
+    # la numeración se reinicia cada período: el O.D. 7 de 2025 no es el O.D. 7 de 2026
+    assert f({"titulo": "O.D. 7 - LEY Y", "fecha": "2026-04-09"}, INDICE) is False   # dictamen de 2026-03 (HCDN9)
+    assert f({"titulo": "O.D. 7 - LEY Y", "fecha": "2026-12-01"}, {**INDICE, "dictamenes": {7: [("2025-01-10", "HCDN1")]}}) is None
+
+
+def test_el_origen_se_guarda_en_el_cache_y_no_se_vuelve_a_resolver(monkeypatch, tmp_path):
+    monkeypatch.setattr(politica, "VSB_ACTAS_PATH", tmp_path / "vsb.json")
+    llamadas = []
+    monkeypatch.setattr(politica, "_vsb_indice_origen_pe", lambda: llamadas.append(1) or INDICE)
+    cache = {"diputados": {"1": {**dip(titulo="O.D. 448 - LEY X. VOT. EN GRAL.", fecha="2026-10-21"), "origen_pe": None},
+                           "2": {**dip(titulo="MOCIÓN SOLICITADA POR LA DIP. X."), "origen_pe": None}},
+             "senado": {}, "diputados_ausentes": []}
+    del cache["diputados"]["1"]["origen_pe"], cache["diputados"]["2"]["origen_pe"]
+    assert politica._vsb_resolver_origen(cache) is True
+    assert cache["diputados"]["1"]["origen_pe"] is True
+    assert "origen_pe" not in cache["diputados"]["2"]          # no es candidata: no se resuelve
+    assert len(llamadas) == 1
+    assert politica._vsb_resolver_origen(cache) is True
+    assert len(llamadas) == 1, "lo ya resuelto no vuelve a bajar el catálogo"
+
+
+def test_si_el_catalogo_de_origen_falla_la_lectura_queda_incompleta(monkeypatch, tmp_path):
+    monkeypatch.setattr(politica, "VSB_ACTAS_PATH", tmp_path / "vsb.json")
+
+    def roto():
+        raise RuntimeError("CKAN caído")
+
+    monkeypatch.setattr(politica, "_vsb_indice_origen_pe", roto)
+    cache = {"diputados": {"1": dip(titulo="O.D. 448 - LEY X. VOT. EN GRAL.", fecha="2026-10-21")},
+             "senado": {}, "diputados_ausentes": []}
+    del cache["diputados"]["1"]["origen_pe"]
+    assert politica._vsb_resolver_origen(cache) is False
+    assert "origen_pe" not in cache["diputados"]["1"] or cache["diputados"]["1"]["origen_pe"] is None
+
+
+def test_clave_de_expediente_en_los_dos_formatos():
+    assert politica._vsb_clave_expediente("CD-33/25-PL") == ("CD", 33, 2025)
+    assert politica._vsb_clave_expediente("0033-CD-2025") == ("CD", 33, 2025)
+    assert politica._vsb_clave_expediente("") is None
