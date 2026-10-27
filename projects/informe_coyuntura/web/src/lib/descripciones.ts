@@ -108,7 +108,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Trimestral", tipo: "Índice (base 2004 = 100)",
   },
   rem_ipc_12m: {
-    que: "La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del Banco Central. Para compararla con la inflación del mes, 21 % anual equivale a cerca de 1,6 % por mes.",
+    que: "La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del Banco Central. Para compararla con la inflación del mes, 12,7 % anual equivale a 1 % por mes y 26,8 % anual, a 2 % por mes.",
     aporta: "Captura la credibilidad del programa: si el mercado espera que la inflación siga bajando, el ancla de expectativas funciona; si la ve acelerarse, hay desconfianza.",
     frecuencia: "Mensual", tipo: "Expectativa",
   },
