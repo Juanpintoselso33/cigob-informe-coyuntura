@@ -520,3 +520,69 @@ def test_clave_de_expediente_en_los_dos_formatos():
     assert politica._vsb_clave_expediente("CD-33/25-PL") == ("CD", 33, 2025)
     assert politica._vsb_clave_expediente("0033-CD-2025") == ("CD", 33, 2025)
     assert politica._vsb_clave_expediente("") is None
+
+
+# ── tratados y convenios internacionales: fuera, aunque los mande el Ejecutivo ──
+
+@pytest.mark.parametrize("titulo", [
+    "O.D. 16 - TRATADO DE EXTRADICIÓN ENTRE LA REP. ARGENTINA Y LA REP. DE POLONIA. APROBACIÓN. VOT. EN GRAL. Y PART.",
+    "O.D. 8 - CONVENIO SOBRE COBRO INTERNACIONAL DE ALIMENTOS PARA LOS NIÑOS. APROBACIÓN. VOT. EN GRAL. Y PART.",
+    "O.D. 86 - PROTOCOLO DE ENMIENDA AL CONVENIO ENTRE EL GOBIERNO DE LA REP. ARGENTINA Y EL GOB. DE LA REP. FRANCESA. VOT. EN GRAL.",
+    "O.D. 87 - ACUERDO SOBRE MEDIDAS DEL ESTADO RECTOR DEL PUERTO. VOT. EN GRAL. Y PART. ACUERDO INTERNACIONAL",
+    "O.D. 208 - ACUERDO DE LIBRE COMERCIO E/ EL MERCOSUR Y LA REP. DE SINGAPUR. VOT. EN GRAL. Y PART.",
+    "O.D. 88 - CONVENIOS DE SEGURIDAD SOCIAL ENTRE LA REPÚBLICA ARGENTINA Y LA CONFEDERACIÓN SUIZA. VOT. EN GRAL.",
+])
+def test_una_votacion_de_tratado_no_cuenta_en_diputados(titulo):
+    assert politica._vsb_es_tratado(titulo)
+    assert politica._vsb_excedente(dip(titulo=titulo, origen_pe=True), "diputados") is None
+
+
+@pytest.mark.parametrize("titulo", [
+    "Aprobación de acuerdo con la República de Turquía, de convenio con la República Popular China.",
+    "Aprobación del Convenio Internacional de Nairobi sobre remoción de restos de naufragio.",
+    "Protocolo de enmienda al convenio con Francia para eliminar la doble imposición.",
+    "Acuerdo de Roma, sobre medidas destinadas a prevenir, desalentar y eliminar la pesca ilegal.",
+    "Tratado con Ucrania sobre Traslado de Personas Sentenciadas.",
+    "Acuerdo de Libre Comercio entre el Mercosur y la Unión Europea.",
+    "Tratados Internacionales con Singapur, Suiza y la República de San Marino.",
+])
+def test_una_votacion_de_tratado_no_cuenta_en_el_senado(titulo):
+    assert politica._vsb_es_tratado(titulo)
+    assert politica._vsb_excedente(sen(titulo=titulo, expedientes=["PE-1/26-PL"], origen_pe=True), "senado") is None
+
+
+@pytest.mark.parametrize("titulo", [
+    "Acuerdo de conciliación con acreedores de títulos de deuda.",
+    "O.D. 148 - AC. DE CONCILIACIÓN E/ LA REP. ARG. Y BAINBRIDGE LTD. Y E/ LA REP. ARG. Y EL GRUPO DE ACREED. VOT. EN GRAL.",
+    "O.D. 90 - ACUERDO CON EL FONDO MONETARIO INTERNACIONAL. APROBACIÓN. VOT. EN GRAL.",
+    "O.D. 91 - CONVENIO DE PRÉSTAMO ENTRE LA REP. ARGENTINA Y EL BANCO INTERAMERICANO DE DESARROLLO. VOT. EN GRAL.",
+])
+def test_los_acuerdos_de_agenda_economica_no_se_excluyen_como_tratados(titulo):
+    assert not politica._vsb_es_tratado(titulo)
+
+
+def test_el_acuerdo_con_acreedores_y_el_del_fmi_cuentan_y_se_listan_aparte():
+    fmi = "O.D. 90 - ACUERDO CON EL FONDO MONETARIO INTERNACIONAL. APROBACIÓN. VOT. EN GRAL."
+    assert politica._vsb_es_acuerdo_economico(fmi)
+    assert politica._vsb_excedente(dip(titulo=fmi), "diputados") is not None
+    conciliacion = "O.D. 148 - AC. DE CONCILIACIÓN E/ LA REP. ARG. Y BAINBRIDGE LTD. VOT. EN GRAL."
+    assert politica._vsb_es_acuerdo_economico(conciliacion)
+    assert politica._vsb_excedente(dip(titulo=conciliacion), "diputados") is not None
+
+
+@pytest.mark.parametrize("titulo", [
+    "O.D. 442 - INMUEBLE PROP. DEL ESTADO NAC. TRANSFERENCIA A TÍTULO GRATUITO A LA PROV. DEL CHACO.",
+    "O.D. 12 - CONVENIO ENTRE EL ESTADO NACIONAL Y LA CIUDAD AUTÓNOMA DE BUENOS AIRES. RATIFICACIÓN. VOT. EN GRAL.",
+    "O.D. 13 - CONVENIO COLECTIVO DE TRABAJO. HOMOLOGACIÓN. VOT. EN GRAL.",
+    "O.D. 211 - CARTA ORGÁNICA DEL BCRA. MODIFICACIÓN. DICT. DE MAY. VOT. EN GRAL.",
+    "O.D. 3 - LEY DE INOCENCIA FISCAL. DICT. DE MAY. VOT. EN GRAL.",
+])
+def test_los_convenios_internos_y_las_leyes_comunes_no_se_toman_por_tratados(titulo):
+    assert not politica._vsb_es_tratado(titulo)
+
+
+def test_sacar_los_tratados_cambia_el_promedio():
+    actas = {"1": dip(fecha="2026-06-01", afirmativos=131),
+             "2": dip(fecha="2026-06-02", afirmativos=235, titulo="O.D. 17 - TRATADO DE EXTRADICIÓN ENTRE LA REP. ARGENTINA Y LA REP. DE CHILE. VOT. EN GRAL.")}
+    r = politica.votos_sobre_bancas_camara(actas, "diputados", date(2026, 7, 1))
+    assert r["n_actas"] == 1 and r["valor"] == pytest.approx(37 / 257 * 100)

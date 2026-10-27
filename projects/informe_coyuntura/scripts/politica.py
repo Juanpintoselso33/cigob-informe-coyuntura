@@ -6618,6 +6618,53 @@ def _vsb_entrada_senado_es_ley_general(e: dict) -> bool:
     return bool(e.get("ods"))
 
 
+# Tratados y convenios internacionales (decisión de Juan, 27-oct-2026): los manda el
+# Ejecutivo pero se votan casi por unanimidad y no miden cuánto le cuesta al Gobierno
+# aprobar su agenda. Regla sobre el título de la votación (sin tildes, en mayúsculas):
+# un sustantivo de instrumento internacional Y una marca de contraparte internacional.
+# Se exceptúan los acuerdos de agenda económica con acreedores u organismos financieros
+# (p. ej. el acuerdo con acreedores de títulos de deuda): no se excluyen.
+_VSB_TRATADO_FUERTE = re.compile(r"\b(?:TRATADOS?|CONVENCIONES?|PROTOCOLOS?)\b")
+_VSB_TRATADO_DEBIL = re.compile(r"\b(?:CONVENIOS?|ACUERDOS?|ENMIENDAS?)\b|\bAC\.")
+_VSB_TRATADO_CONTRAPARTE = re.compile(
+    r"\bREPUBLICA\b|\bREP\.|\bGOBIERNO\b|MERCOSUR|UNION EUROPEA|EMIRATOS|INTERNACIONAL|"
+    r"ORGANIZACION|\bE/|EEUU|WASHINGTON|SECRETARIA DEL CONVENIO|DOBLE IMPOSICION|"
+    r"\bROMA\b|LIBRE COMERCIO|SERVICIOS AEREOS|EXTRADICION|ASISTENCIA JURIDICA|PESCA ILEGAL")
+_VSB_TRATADO_INTERNO = re.compile(
+    r"\bPROVINCIA DE\b|CIUDAD AUTONOMA|ESTADO NACIONAL|COLECTIVO|MUNICIPI")
+_VSB_ACUERDO_ECONOMICO = re.compile(
+    r"CONCILIACION|ACREEDOR|FONDO MONETARIO|\bFMI\b|BANCO MUNDIAL|BANCO INTERAMERICANO|"
+    r"\bBID\b|\bCAF\b|PRESTAMO|DEUDA|FINANCIAMIENTO")
+
+
+def _vsb_sin_tildes(texto: str) -> str:
+    return "".join(c for c in unicodedata.normalize("NFD", texto or "") if unicodedata.category(c) != "Mn").upper()
+
+
+def _vsb_instrumento_internacional(t: str) -> bool:
+    """t ya sin tildes y en mayúsculas. Tratado, convención o protocolo alcanzan por sí
+    solos; convenio, acuerdo o enmienda necesitan una contraparte internacional en el
+    título. Nada de esto vale si el título es de un convenio interno (provincias,
+    Ciudad, Estado Nacional, convenios colectivos)."""
+    if _VSB_TRATADO_INTERNO.search(t):
+        return False
+    return bool(_VSB_TRATADO_FUERTE.search(t)
+                or (_VSB_TRATADO_DEBIL.search(t) and _VSB_TRATADO_CONTRAPARTE.search(t)))
+
+
+def _vsb_es_acuerdo_economico(titulo: str) -> bool:
+    """Instrumento internacional de agenda económica (acreedores, organismos
+    financieros): NO se excluye como tratado, y se lista aparte."""
+    t = _vsb_sin_tildes(titulo)
+    return _vsb_instrumento_internacional(t) and bool(_VSB_ACUERDO_ECONOMICO.search(t))
+
+
+def _vsb_es_tratado(titulo: str) -> bool:
+    """¿La votación aprueba un tratado, convenio, protocolo o acuerdo internacional?"""
+    t = _vsb_sin_tildes(titulo)
+    return _vsb_instrumento_internacional(t) and not _VSB_ACUERDO_ECONOMICO.search(t)
+
+
 def _vsb_excedente(entrada: dict, camara: str) -> float | None:
     """Excedente de UNA votación, o None si no entra al universo: no es una
     votación en general de una ley, no se aprobó, el bloque LLA no votó
@@ -6631,6 +6678,8 @@ def _vsb_excedente(entrada: dict, camara: str) -> float | None:
             return None
     elif not _vsb_entrada_senado_es_ley_general(entrada):
         return None
+    if _vsb_es_tratado(entrada.get("titulo", "")):
+        return None   # tratados y convenios internacionales: fuera del indicador
     if entrada.get("origen_pe") is not True:
         return None   # sólo cuentan las leyes cuyo proyecto mandó el Poder Ejecutivo (ADR-0376)
     if not entrada["lla_afirm"] > entrada["lla_neg"]:

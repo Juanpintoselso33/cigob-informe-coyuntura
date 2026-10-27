@@ -83,6 +83,15 @@ Cómo se decide el universo en cada cámara y el origen de la ley:
   mociones, habilitaciones, apartamientos, pedidos de informes, comisiones
   investigadoras, DNU, insistencias ni los títulos con capítulo, título o
   artículo (votaciones en particular).
+- **Tratados fuera** (decisión de Juan, 27-oct-2026): aunque los mande el Ejecutivo, los tratados,
+  convenios, protocolos y acuerdos internacionales se votan casi por unanimidad y no miden cuánto
+  le cuesta al Gobierno aprobar su agenda. Regla sobre el título (sin tildes): *tratado*,
+  *convención* o *protocolo* alcanzan solos; *convenio*, *acuerdo* o *enmienda* necesitan una
+  contraparte internacional (república, gobierno, Mercosur, Unión Europea, organismo internacional,
+  doble imposición, libre comercio, extradición, asistencia jurídica, pesca ilegal…); un convenio
+  interno (provincias, Ciudad, Estado Nacional, colectivos) no es tratado. Los acuerdos de agenda
+  económica con acreedores u organismos financieros (conciliación, acreedores, FMI, BID, CAF,
+  Banco Mundial, préstamo, deuda) no se excluyen.
 - **Origen (Ejecutivo)**. Senado: el expediente del acta. `PE` o `JGM` (el formato real es
   `PE-159/25-PL`: la sigla va adelante) es del Ejecutivo; `CD-33/25-PL` (viene de
   Diputados) se cruza con el catálogo de proyectos parlamentarios de HCDN, que registra el
@@ -97,18 +106,26 @@ Cómo se decide el universo en cada cámara y el origen de la ley:
 
 ### Consecuencias
 
-- Con las actas leídas el 27-oct-2026 y el filtro de origen (ver más abajo): 55 votaciones
-  del universo (31 de Diputados desde feb-2025 y 24 del Senado desde mar-2024), 44 de
-  ellas en la ventana de 12 meses. El indicador vale 38,2 % (Diputados 37,7 con 27
-  votaciones, Senado 39,2 con 17) y puntúa 97,3. Serie de los últimos seis meses:
-  39,6 (may-2026) · 39,5 · 39,5 · 38,9 · 38,2 · 38,2 (oct).
-- Sin el filtro de origen valía 40,8 % y puntuaba 100, el techo: lo empujaban las capitales
-  nacionales, los reconocimientos y otras leyes de legisladores que se aprueban con 40-65 % de
-  la cámara de votos ajenos.
-- Los tratados internacionales los manda siempre el Ejecutivo, así que siguen contando
-  (51-67 % de excedente) y siguen empujando el promedio; las leyes de la agenda oficial
-  (presupuesto, reforma laboral, inocencia fiscal, zona fría, súper RIGI) quedan entre 14 % y 35 %.
-  Separar tratados de leyes políticas sería otra decisión.
+- Con las actas leídas el 27-oct-2026, el filtro de origen y la exclusión de tratados: 31
+  votaciones del universo (16 de Diputados y 15 del Senado), 24 en la ventana de 12
+  meses. El indicador vale 22,1 % (Diputados 18,5 con 12 votaciones, Senado 28,9 con 12) y
+  puntúa 69,2. Serie de los últimos seis meses: 22,9 (may-2026) · 22,3 · 22,3 · 22,0 · 22,1 · 22,1 (oct).
+- Valores anteriores: sin filtro de origen 40,8 % (puntaje 100, el techo); con origen Ejecutivo y
+  tratados adentro 38,2 % (97,3). Los tratados salían con 51-83 % de excedente y movían el promedio
+  más que cualquier otra cosa; las leyes de la agenda oficial (presupuesto, reforma laboral,
+  inocencia fiscal, zona fría, súper RIGI, BCRA) quedan entre 14 % y 35 %.
+- Quedaron afuera 24 votaciones por ser tratados: 15 de Diputados (acuerdo Mercosur-UE; el
+  convenio de alimentos; los tratados de extradición con Polonia, Costa Rica y Chile; los de
+  traslado de condenados y asistencia jurídica con Serbia y Cuba; el de transmisión electrónica
+  de exhortos; el acuerdo con la Secretaría del Convenio de Basilea; el protocolo con Francia; el
+  acuerdo de puertos (pesca ilegal); los convenios de seguridad social con Suiza y San Marino; el
+  acuerdo Mercosur-Singapur) y 9 del Senado (Turquía/China/Emiratos, Emiratos, acuerdos
+  internacionales del Mercosur, convenio de Nairobi, Mercosur-UE, protocolo con Francia, Acuerdo
+  de Roma, tratados de Singapur/Suiza/San Marino y tratado con Ucrania). Más el tratado de
+  patentes (O.D. 85), que se excluirá cuando se resuelva su origen.
+- Fuera del filtro, aparte: el acuerdo de conciliación con acreedores de títulos de deuda (una
+  votación en Diputados, O.D. 148, y una en el Senado) es agenda económica y sigue contando. No hubo
+  ley de organismos financieros internacionales (FMI, BID) en el universo.
 - Tres votaciones de Diputados cuyo Orden del Día todavía no está en el dataset de dictámenes
   (entre ellas inviolabilidad de la propiedad privada, 21-oct, que daría 11,7 %) quedan sin origen,
   no cuentan y se reintentan solas en cada actualización: cuando entren, el valor baja.
