@@ -172,7 +172,9 @@ def test_la_dimension_laboral_sigue_siendo_la_mas_floja():
     # (avance 90) el FAL puntúa 100 por decisión editorial documentada. Lo que
     # la guardia sigue atajando es llegar al techo con menos que eso — volver a
     # contar dos actos dictados da como mucho 36.
-    if valores["fal_modernizacion_laboral"] >= 90.0:
+    card_fal = json.loads(cache.read_text(encoding="utf-8"))["indicadores"]["fal_modernizacion_laboral"]
+    etapas = card_fal.get("etapas") or {}
+    if etapas.get("hitos_cumplidos") == etapas.get("hitos_totales") == 5:
         return
     assert fal < techo, (
         f"el FAL puntúa {fal}, el techo de su escala: el instrumento se quedó "

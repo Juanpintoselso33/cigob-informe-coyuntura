@@ -627,7 +627,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   empleo_registrado: "Miles de asalariados registrados del sector privado",
   desregulacion_normativa: "Artículos modificados o eliminados desde dic-2023 (volumen, no importancia)", apertura_comercial: "% del intercambio (alícuota efectiva)",
   gasto_funcionamiento: "% de variación real vs 2023", masa_salarial: "% de variación real vs 2023",
-  asistencia_directa: "Unidades de gestión dadas de baja (Res. 84/2024) — 0 o 100", fal_modernizacion_laboral: "Reforma laboral vigente (0–100)",
+  asistencia_directa: "Unidades de gestión dadas de baja (Res. 84/2024) — 0 o 100", fal_modernizacion_laboral: "Avance de la puesta en marcha del Fondo (0–100)",
   libertad_opcion_salud: "% de los usuarios de prepagas que llegan con sus aportes derivados directo", protocolo_antipiquetes: "% de reducción de cortes en la Ciudad de Buenos Aires vs 2023, dato del año 2025 (no mide la aplicación del protocolo)",
   litigiosidad_laboral: "% variación (12m vs 12m previos)",
   juicios_trabajo_capital: "% variación de los juicios entrados (12m vs 12m previos, por semestre)",

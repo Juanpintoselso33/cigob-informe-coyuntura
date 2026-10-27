@@ -465,7 +465,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   fal_modernizacion_laboral: {
     que: "Cuánto avanzó la puesta en marcha del Fondo de Asistencia Laboral —el mecanismo con el que la Ley de Modernización Laboral financia las indemnizaciones por despido—. Cinco hitos de construcción valen 18 puntos cada uno: la Ley 27.802, el Decreto 408/2026 que la reglamenta, la resolución de la Comisión Nacional de Valores que reglamenta sus fondos de inversión, la de la Agencia de Recaudación y Control Aduanero que regula los aportes, y la oferta del producto por los bancos. El 10 % restante llega con el primer fondo inscripto en la Comisión Nacional de Valores.",
     aporta: "Sigue la construcción del régimen paso a paso con normas y hechos fechados, que se muestran en el detalle. La ley y el decreto cuentan sólo si no están suspendidos por la Justicia. Que el régimen esté armado no dice cuántas empresas lo usan: eso recién se puede ver desde el 1 de diciembre de 2026, cuando entra en vigencia (Decreto 1228/2026). El avance (0–100) y el puntaje para el índice son dos números distintos: el puntaje sale de pasar el avance por las anclas de la ficha.",
-    frecuencia: "Mensual", tipo: "Reforma vigente (0–100)",
+    frecuencia: "Mensual", tipo: "Avance de puesta en marcha (0–100)",
   },
   libertad_opcion_salud: {
     que: "Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el decreto de necesidad y urgencia (DNU) 70/2023 al eliminar la triangulación obligatoria por una obra social.",

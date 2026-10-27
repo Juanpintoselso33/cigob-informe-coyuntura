@@ -1626,7 +1626,9 @@ def fal_indice(hitos: dict, en_fecha: str, fondos_fal: int) -> tuple:
     fundamentales = all(a["vigente"] for a in actos)
     fecha_vigencia = (hitos.get("vigencia") or {}).get("fecha", "9999-12-31")
     vigencia = 1.0 if (en_fecha >= fecha_vigencia and fundamentales) else 0.0
-    adopcion = 1.0 if fondos_fal > 0 else 0.0
+    # La adopción presupone el régimen vigente: antes del 1-dic-2026 un fondo
+    # inscripto no puede operar (Codex, 26-oct; la serie ya lo forzaba a cero).
+    adopcion = 1.0 if (fondos_fal > 0 and en_fecha >= fecha_vigencia) else 0.0
     indice = round(100.0 * (FAL_PESO_CONSTRUCCION * construccion
                             + FAL_PESO_VIGENCIA * vigencia
                             + FAL_PESO_ADOPCION * adopcion), 1)

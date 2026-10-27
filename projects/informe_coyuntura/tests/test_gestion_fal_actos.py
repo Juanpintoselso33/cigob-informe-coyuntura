@@ -111,6 +111,9 @@ def test_el_techo_solo_se_alcanza_con_fondos_operando():
     assert con_fondo == 100.0
     sin_fondo, _, _ = gestion.fal_indice(HITOS, "2026-12-01", 0)
     assert sin_fondo == 90.0, "sin fondos operando no es el máximo"
+    # Codex, 26-oct-2026: un fondo inscripto antes de la vigencia no suma.
+    antes, _, _ = gestion.fal_indice(HITOS, "2026-11-30", 1)
+    assert antes == 90.0
 
 
 # ── 2 · La serie puede bajar ────────────────────────────────────────────────
