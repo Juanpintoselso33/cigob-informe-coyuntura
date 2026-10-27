@@ -481,10 +481,11 @@ def test_politica_itcp_reconcilia():
     # en el extremo del fenómeno que mide (cero desafíos en la ventana) no es
     # una card; su contenido pasa a la explicación de `desafios_legislativos`.
     # 17 → 16 (ADR-0344): sale `votometro_ventaja_lla` con su dimensión.
-    assert len(c["indicadores"]) == 16
+    # 16 → 15 (ADR-0372): sale `brecha_obra_publica` de sector privado.
+    assert len(c["indicadores"]) == 15
     assert "bloqueo_sostenido" not in c["indicadores"]
     assert "votometro_ventaja_lla" not in c["indicadores"]
-    assert len(en_indice) == 16
+    assert len(en_indice) == 15
     for _nuevo in ("produccion_legislativa",
                    "velocidad_resolucion", "paralisis_denuncias"):
         assert _nuevo in en_indice, f"{_nuevo} tendría que puntuar (ADR-0168)"
@@ -493,7 +494,7 @@ def test_politica_itcp_reconcilia():
     # y ADR-0310 lo repuso con el corpus cerrado.
     assert "judicializacion" not in en_indice
     assert "apoyo_empresario" in en_indice
-    assert "brecha_obra_publica" in en_indice
+    assert "brecha_obra_publica" not in en_indice
     # ADR-0089: derrotas sale del índice, entra desafíos en su lugar
     assert "desafios_legislativos" in en_indice
     assert "derrotas_legislativas" not in en_indice

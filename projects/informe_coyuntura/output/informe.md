@@ -1,7 +1,7 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-26 21:46:48"
-score_global: 3.9
+generado: "2026-10-26 22:37:24"
+score_global: 4.0
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
 alerta_multicinturon: false
@@ -10,7 +10,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-10
 
-**Score global:** 3.9/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.3/10)
+**Score global:** 4.0/10  |  **Riesgo dominante:** político (vida_cotidiana, 6.3/10)
 
 ## Cinturones
 
@@ -43,13 +43,12 @@ schema_version: "1.2.0"
 | base_monetaria | 3.08 | % mensual nominal | 2026-10-21 | fresco |
 | tc_mayorista | 0.28 | % mensual | 2026-10-23 | fresco |
 
-### 🟢 Politica — score 2.6/10 (estable)
+### 🟢 Politica — score 2.8/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ratio_dnu | 1.094 | DNUs publicados por ley publicada | 2026-10-26 | fresco |
-| brecha_obra_publica | -1.9 | pp de brecha (obra pública − privada, 12m) | 2026-09-01 | fresco |
 | apoyo_empresario | -0.4 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | fresco |
 | conflictividad_nacional | -27.2 | % vs 2023 | 2026-09-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
@@ -75,6 +74,7 @@ schema_version: "1.2.0"
 
 | Indicador | Último valor | Unidad | Fecha | Suspendido desde | Motivo |
 |---|---|---|---|---|---|
+| brecha_obra_publica | -1.9 | pp de brecha (obra pública − privada, 12m) | 2026-09-01 | octubre de 2026 (ADR-0372) | Compara las expectativas de las constructoras que trabajan para el Estado con las de las que trabajan para privados: es la lectura de un solo sector y de expectativas, no de la relación del empresariado con el Gobierno. La dimensión se rearma con la postura pública de las cámaras. |
 | judicializacion | 1.81 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
 
 ### 🔴 Vida Cotidiana — score 6.3/10 (tensionado)
@@ -126,4 +126,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:gasto_funcionamiento`
 
 ---
-*Generado por CIGOB — 2026-10-26 21:46:48 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-26 22:37:24 — schema 1.2.0*

@@ -227,6 +227,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0344](0344-el-votometro-sale-del-monitor.md) | El Votómetro sale del Monitor | `votometro_ventaja_lla` | vigente |
 | [0353](0353-armonia-federal-a-doce-meses-moviles.md) | La armonía federal se mide a doce meses móviles | `iaf_transferencias` | vigente |
 | [0358](0358-quorum-caido-de-la-oposicion-no-cuenta.md) | Una sesión caída que pidió la oposición no cuenta como Congreso trabado | `veto_quorum` | vigente |
+| [0372](0372-la-brecha-de-obra-publica-sale-del-indice-politico.md) | La brecha de obra pública sale del índice político | `brecha_obra_publica`, `apoyo_empresario` | vigente |
 
 ### Gestión (ITCG)
 

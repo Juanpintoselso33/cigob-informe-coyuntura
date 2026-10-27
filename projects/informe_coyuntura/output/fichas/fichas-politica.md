@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Política — resumen
 
-Este documento tiene una ficha por indicador — son 16 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 15 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,8 +35,8 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 73,8** | **VERDE** | Moderadamente aflojado | 16 indicadores: 12 en verde · 3 en amarillo · 1 en rojo |
-Componentes que puntúan en este corte: 16 de 16 publicados.
+| **ITCP: 71,6** | **VERDE** | Moderadamente aflojado | 15 indicadores: 11 en verde · 3 en amarillo · 1 en rojo |
+Componentes que puntúan en este corte: 15 de 15 publicados.
 
 ## Dimensiones
 
@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 77,7 | VERDE | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 100,0 | VERDE | 16,1 % |
 | Poder judicial | Combina cobertura estimada de cargos, tasa anual de expedientes resueltos sobre ingresados en la Corte y frecuencia de reuniones de Acusación y Disciplina. | 57,1 | AMARILLO | 16,1 % |
-| Sector privado | Compara expectativas de constructoras orientadas a obra pública y privada. | 55,6 | AMARILLO | 14,0 % |
+| Sector privado | La postura pública de la Unión Industrial Argentina (UIA) hacia el Gobierno nacional: el saldo de apoyos y críticas en sus comunicados de los últimos doce meses. | 40,0 | AMARILLO | 14,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 78,3 | VERDE | 10,8 % |
 
 ```{=openxml}
@@ -78,8 +78,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Actividad de las comisiones de control | Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las… | 14 sesiones de las comisiones de control (12m) | ROJO | 4,0 % |
 | Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,82 % estimado de cargos con juez designado | VERDE | 8,1 % |
 | **DIMENSIÓN: Sector privado** | | | | |
-| Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,9 pp de brecha (obra pública − privada, 12m) | VERDE | 7,0 % |
-| Postura pública de la UIA | Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del… | −0,4 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 7,0 % |
+| Postura pública de la UIA | Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del… | −0,4 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 14,0 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −27,2 % vs 2023 | VERDE | 6,5 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.820.775 jornadas individuales no trabajadas (12m) | VERDE | 4,3 % |
@@ -198,108 +197,13 @@ Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
 
-# Brecha de expectativas: obra pública vs. privada
-
-La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que trabajan para clientes privados. El Instituto Nacional de Estadística y Censos (INDEC) les pregunta todos los meses si creen que su actividad va a subir o bajar en el trimestre siguiente, y publica las dos respuestas por separado. El indicador resta una de la otra y promedia los últimos doce meses.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: −1,9 pp de brecha (obra pública − privada, 12m)** (2026-09) | **VERDE** | Peso efectivo 7 % del ITCP | Cinturón Política |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | brecha_obra_publica | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | pp de brecha (obra pública − privada, 12m) |
-| **SERIE DISPONIBLE** | 2017-07 → 2026-09 (111 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC publica la encuesta junto con el informe mensual de la construcción. Su fecha de publicación es distinta del horizonte trimestral de expectativas: la serie identifica el inicio de ese horizonte y no acredita disponibilidad pública en ese mes. |
-| **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta Cualitativa de la Construcción — expectativas de las empresas sobre el nivel de actividad de los próximos tres meses, con respuestas separadas para obra pública y obra privada (Cuadro 7.1) |
-| **MODO DE ACCESO** | Automático: descarga la planilla oficial del indicador sintético de la actividad de la construcción y lee el cuadro de expectativas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-26 |
-
-## Definición — qué mide y por qué importa
-
-La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que trabajan para clientes privados. El Instituto Nacional de Estadística y Censos (INDEC) les pregunta todos los meses si creen que su actividad va a subir o bajar en el trimestre siguiente, y publica las dos respuestas por separado. El indicador resta una de la otra y promedia los últimos doce meses.
-
-Compara las expectativas de constructoras orientadas a obra pública y privada. Una brecha negativa indica un saldo de expectativas menor en el primer grupo. Compartir sector no garantiza iguales costos, acceso al crédito ni composición de proyectos: la diferencia no aísla el efecto causal de la política pública ni elimina el ciclo económico. Su interpretación como tensión política debe contrastarse con la agenda y las condiciones del período.
-
-**Dimensión que integra — Sector privado.** Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La completa, con el mismo peso, la postura pública de la Unión Industrial Argentina (UIA) hacia el Gobierno nacional —el saldo de apoyos y críticas en sus comunicados—, que volvió al índice en septiembre de 2026 con el inventario de comunicados completo.
-
-## Método de cómputo
-
-- Para cada grupo de empresas se calcula un saldo de respuesta: el porcentaje que espera que su actividad aumente menos el porcentaje que espera que disminuya. Quienes esperan que no varíe no suman ni restan.
-- La brecha es el saldo de las empresas de obra pública menos el de las de obra privada. Cero significa que ambos grupos esperan lo mismo; un valor negativo, que las que dependen del Estado esperan peor que sus pares privadas.
-- Se promedian los últimos doce meses. La lectura mensual es volátil —salta unos seis puntos de un mes al siguiente— y el promedio móvil deja ver el movimiento de fondo sin perder capacidad de reacción.
-- La serie se referencia al mes de inicio del horizonte trimestral consultado. La tarjeta también informa su final: no son realizaciones observadas en ese último mes ni fechas de publicación. El promedio exige doce meses consecutivos y la reconstrucción comienza en julio de 2017.
-
-## Semáforo — valores que determinan el color
-
-Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
-
-**Valores que definen cada color**
-
-| Rango (pp de brecha (obra pública − privada, 12m)) | Color |
-|---|---|
-| ≥ −7 | VERDE |
-| −15 – −7 | AMARILLO |
-| −18,33 – −15 | NARANJA |
-| ≤ −18,33 | ROJO |
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- Brecha de -1,9 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Último horizonte consultado: 2026-09 a 2026-11; la fecha identifica su inicio, no una realización observada ni la fecha de publicación. Negativa = las que dependen del Estado esperan peor que sus pares privadas.
-
-## Color vigente y por qué
-
-Dato vigente: −1,9 pp de brecha (obra pública − privada, 12m) (2026-09).
-
-−1,9 pp de brecha (obra pública − privada, 12m) está en Verde, a 5,1 del límite con Amarillo (−7,0).
-
-**Color vigente: VERDE**
-
-Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-## Transparencia — limitaciones declaradas
-
-- Las submuestras no constituyen un experimento: pueden diferir en proyectos, financiamiento y exposición al ciclo. Restar sus saldos no identifica el efecto causal del Estado ni elimina esas diferencias.
-- El vínculo entre expectativas de construcción e incertidumbre de política puede variar entre gobiernos. Las correlaciones se recalculan en el contraste publicado; no identifican su causa. Que el recorte de obra pública forme parte del programa es una explicación posible de esa diferencia, que requiere evidencia adicional.
-- De lo anterior se sigue el límite de fondo: el indicador mide bien la tensión, pero no distingue cuándo esa tensión es un costo que el Gobierno sufre y cuándo es un precio que decide pagar. El índice lo puntúa como costo. Un lector que quiera evaluar capacidad de gobierno debería leerlo junto con lo que el Gobierno logró en el mismo período, no de forma aislada.
-- Mide un solo canal de conflicto: el gasto en infraestructura. Sería ciego a una tensión con el agro, la energía o los bancos, y por eso conviene leerlo como lo que es —la relación del Gobierno con el sector que depende de la obra pública— y no como un termómetro del humor empresario en general.
-- Son expectativas declaradas, no decisiones tomadas. Conviene contrastarlo con el volumen de insumos de construcción efectivamente vendidos: si las expectativas se hunden y las ventas no caen, la tensión es sobre todo discursiva.
-- La pregunta indaga por el cambio esperado, no por el nivel. Un recorte sostenido termina normalizándose: cuando las empresas se acostumbran al presupuesto nuevo dejan de esperar caídas adicionales y la brecha vuelve a cero aunque la obra pública siga en un piso históricamente bajo.
-- La encuesta releva grandes empresas constructoras; las pequeñas y las regionales están subrepresentadas.
-- La fecha de referencia del horizonte no acredita disponibilidad pública en ese mes. La historia se reconstruye retrospectivamente; medir anticipación en tiempo real exige conservar las fechas de publicación de cada edición.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Si la planilla no está disponible, se mantiene el último valor, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y su dimensión no puntúa.
-
-- **Política de revisiones:** El INDEC puede revisar los porcentajes de meses anteriores al ampliarse la muestra respondente. Cada actualización recalcula la serie completa desde el origen, de modo que las revisiones se incorporan solas.
-
-## Historial — cambios metodológicos documentados
-
-**2026-09-08** — Referencia al inicio del horizonte de expectativas y extremos explícitos en tarjeta. Se recuperan filas históricas que incluían la preposición «de» antes del año y se exige calendario consecutivo para el promedio de doce meses. Se recalculan historia y contrastes; no cambian pesos ni bandas.
-
-**2026-07-19** — Entra al cinturón como primer indicador de la nueva dimensión de sector privado. Una revisión externa del cinturón señaló que de los tres actores que el índice se propone medir —legisladores, gobernadores y empresarios— el tercero no tenía ningún indicador propio.
-
-**2026-07-20** — Al revisar el efecto de la incorporación sobre la validación externa del índice apareció que este indicador se comporta de manera distinta según el gobierno: acompaña a la incertidumbre de política económica con las dos administraciones anteriores y se invierte con la actual. Se decidió mantenerlo puntuando y publicar el hallazgo, en lugar de retirarlo o de reducir su peso para que el número diera mejor. La explicación completa quedó en las limitaciones de esta ficha.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
-
 # Postura pública de la UIA
 
 Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Puntúa en el índice político con la mitad de la dimensión de sector privado. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados. Hasta septiembre de 2026 el indicador promediaba dos cámaras, con la Asociación Empresaria Argentina; salió del cálculo porque dejó de publicar comunicados el 31 de marzo de 2026 y un rótulo no puede prometer dos cámaras midiendo una. Sus comunicados quedan guardados y clasificados: si vuelve a publicar, vuelve a entrar. Desde el recorte, un mes se publica sólo si tiene al menos tres comunicados computables en la ventana — con una sola cámara, dos comunicados alcanzaban para dar un saldo de −1,0 que no describe nada.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,4 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **AMARILLO** | Peso efectivo 7 % del ITCP | Cinturón Política |
+| **Hoy: −0,4 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **AMARILLO** | Peso efectivo 14 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -317,7 +221,7 @@ Qué dice en público, por escrito y con firma institucional, la Unión Industri
 
 Es la única medida directa de la relación entre el Gobierno y el empresariado organizado: las demás miran el clima de negocios o los datos de un sector, y de ahí infieren el vínculo. Acá el vínculo está dicho. Conviene saber qué no dice: no mide el humor del empresariado en general ni la opinión de sus asociados, sino lo que una asociación decidió declarar públicamente — una cámara puede callar por conveniencia y ese silencio no aparece. Desde septiembre de 2026 el silencio sí aparece: hay un aviso automático cuando una cámara deja de publicar por más tiempo que el que se tomó nunca. La clasificación la hace una persona siguiendo reglas escritas de antemano, y dos personas distintas la hicieron por separado para verificar que las reglas no dejan lugar a la interpretación.
 
-**Dimensión que integra — Sector privado.** Compara expectativas de constructoras orientadas a obra pública y privada. Es una señal sectorial, no una medición de todo el empresariado ni una identificación causal del efecto del Estado. La completa, con el mismo peso, la postura pública de la Unión Industrial Argentina (UIA) hacia el Gobierno nacional —el saldo de apoyos y críticas en sus comunicados—, que volvió al índice en septiembre de 2026 con el inventario de comunicados completo.
+**Dimensión que integra — Sector privado.** La postura pública de la Unión Industrial Argentina (UIA) hacia el Gobierno nacional: el saldo de apoyos y críticas en sus comunicados de los últimos doce meses. Es lo que dice una cámara, no el humor de todo el empresariado. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
 
 ## Método de cómputo
 
@@ -354,7 +258,7 @@ Dato vigente: −0,4 saldo de postura (−1 a +1, 12m móviles) (2026-10).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 14 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -372,6 +276,8 @@ Ponderación vigente en el ITCP: 7 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — Pasa a ser el único componente de la dimensión de sector privado: sale la brecha de expectativas de la construcción, que medía un solo sector. El saldo, la banda y la clasificación no cambian; la dimensión toma su puntaje entero y pasa de 55,6 a 40,0.
 
 **2026-07-27** — Entra al cinturón como segundo indicador de la dimensión de sector privado, que hasta ahora tenía uno solo. Una revisión externa había señalado que los empresarios eran el actor peor medido del cinturón.
 

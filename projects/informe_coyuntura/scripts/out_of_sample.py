@@ -20,7 +20,9 @@ EL CONTROL. `brecha_obra_publica` es el control positivo del test: tiene 100
 meses de serie y ADR-0088 declara explícitamente que sus anclas NO se
 calibraron contra el rango observado, sino alrededor del cero. Si el método
 sirve, esa banda tiene que discriminar en ambas ventanas. Si el control falla,
-lo que está mal es el test y no la banda.
+lo que está mal es el test y no la banda. Desde ADR-0372 la brecha ya no
+puntúa, pero sigue siendo el control: lo que se prueba es el método, y su
+banda y su serie se conservan.
 
 Uso: python scripts/out_of_sample.py
 """
@@ -45,6 +47,8 @@ SALIDA = RAIZ / "output" / "out_of_sample.json"
 CORTE = "2023-12"      # asunción de Milei: todo lo anterior es fuera de muestra
 MIN_PUNTOS = 12        # menos de un año fuera de muestra no permite concluir nada
 CERCA_DEL_EXTREMO = 2.0   # a cuántos puntos del tope/piso se considera saturado
+
+CONTROL = "brecha_obra_publica"
 
 ESCALAS = {
     "ITCM": parametrica.Escala(itcm.BANDAS_ITCM, getattr(itcm, "ANCLAS_ITCM", None),
@@ -124,6 +128,9 @@ def analizar():
            for b in reg["por_indice"].values() for d in b["detalle"]}
     indice_de = {d["indicador"]: sig
                  for sig, b in reg["por_indice"].items() for d in b["detalle"]}
+    # El control positivo entra aunque ya no integre el índice (ADR-0372).
+    indice_de.setdefault(CONTROL, "ITCP")
+    cat.setdefault(CONTROL, "control")
 
     filas, descartados = [], []
     for ind, sig in sorted(indice_de.items()):

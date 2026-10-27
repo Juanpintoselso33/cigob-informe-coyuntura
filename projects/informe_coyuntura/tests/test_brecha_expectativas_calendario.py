@@ -62,8 +62,7 @@ def test_contraste_publico_usa_la_corrida_y_no_numeros_historicos(monkeypatch, d
     publicar._validacion_itcp(bloque)
     texto=bloque["validacion"]["conclusion"]
     assert "0,79" not in texto and "0,47" not in texto
-    if disponible:
-        assert "0,12" in texto and "0,34" in texto
-        assert "no demuestra anticipación ni causalidad" in texto
-    else:
-        assert "Construya no está disponible" in texto
+    # ADR-0372: la brecha ya no integra el índice, así que su contraste con
+    # Construya no se ofrece como validación del índice político.
+    assert "Construya" not in texto and "0,12" not in texto
+    assert "por_gobierno" not in bloque["validacion"]

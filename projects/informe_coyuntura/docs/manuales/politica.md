@@ -19,7 +19,7 @@ al ADR.
 | `cohesion_interna` | 16% | `cohesion_bloque` |
 | `conflicto_social` | 11% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
 | `poder_judicial` | 16% | `cobertura_judicial`, `velocidad_resolucion`, `paralisis_denuncias` |
-| `sector_privado` | 14% | `brecha_obra_publica`, `apoyo_empresario` |
+| `sector_privado` | 14% | `apoyo_empresario` |
 
 Suma de pesos: 100%.
 
@@ -261,37 +261,21 @@ Suma de pesos: 100%.
 
 ### Dimensión `sector_privado` (14%)
 
-#### Brecha de expectativas: obra pública vs. privada
-
-`brecha_obra_publica`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 50% |
-| Peso efectivo en el índice | **7.0%** |
-| Familia de lectura | tensión externa |
-| Rezago declarado | 7.5 meses |
-| Procedencia del ancla | `conceptual` — números redondos alrededor del cero, explícitamente NO calibrados contra el rango observado (ADR-0088) |
-
-**Bandas**: > 10 → 100 · 0–10 → 85 · -10–0 → 65 · -20–-10 → 40 · ≤ -20 → 10
-
-**Lo gobiernan**: [ADR-0088](../adr/0088-dimension-sector-privado.md) El ITCP incorpora una dimensión de sector privado · [ADR-0095](../adr/0095-la-brecha-cambia-de-signo-segun-el-gobierno.md) La brecha de obra pública cambia de signo según el gobierno · [ADR-0302](../adr/0302-expectativas-construccion-fecha-y-calendario.md) Expectativas de construcción: horizonte y calendario
-
 #### Postura pública de la UIA
 
 `apoyo_empresario`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 50% |
-| Peso efectivo en el índice | **7.0%** |
+| Peso dentro de la dimensión | 100% |
+| Peso efectivo en el índice | **14.0%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150) |
 
 **Bandas**: > 0.6 → 100 · 0.2–0.6 → 85 · -0.2–0.2 → 65 · -0.6–-0.2 → 40 · ≤ -0.6 → 10
 
-**Lo gobiernan**: [ADR-0145](../adr/0145-apoyo-empresario-la-fuente-sirve-la-metrica-no.md) Apoyo empresario: la fuente sirve, la métrica no · [ADR-0148](../adr/0148-apoyo-empresario-con-uia-la-metrica-funciona.md) Apoyo empresario: con UIA, la métrica funciona · [ADR-0149](../adr/0149-detector-de-postura-empresaria.md) Detector de postura empresaria · [ADR-0150](../adr/0150-apoyo-empresario-entra-al-itcp.md) Apoyo empresario entra al ITCP, y el bug que lo encontró · [ADR-0151](../adr/0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) El corpus estaba truncado: `apoyo_empresario` se recodifica entero · [ADR-0265](../adr/0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) Una dimensión no promete vías que ya no puntúan · [ADR-0310](../adr/0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) El saldo empresario vuelve al ITCP con el corpus cerrado · [ADR-0332](../adr/0332-una-camara-que-calla-no-dispara-nada.md) Una cámara que calla no dispara nada, y el saldo sigue saliendo · [ADR-0334](../adr/0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md) AEA sale del perímetro y el rótulo dice lo que mide · [ADR-0335](../adr/0335-el-saldo-empresario-necesita-tres-comunicados.md) El saldo empresario necesita al menos tres comunicados
+**Lo gobiernan**: [ADR-0145](../adr/0145-apoyo-empresario-la-fuente-sirve-la-metrica-no.md) Apoyo empresario: la fuente sirve, la métrica no · [ADR-0148](../adr/0148-apoyo-empresario-con-uia-la-metrica-funciona.md) Apoyo empresario: con UIA, la métrica funciona · [ADR-0149](../adr/0149-detector-de-postura-empresaria.md) Detector de postura empresaria · [ADR-0150](../adr/0150-apoyo-empresario-entra-al-itcp.md) Apoyo empresario entra al ITCP, y el bug que lo encontró · [ADR-0151](../adr/0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) El corpus estaba truncado: `apoyo_empresario` se recodifica entero · [ADR-0265](../adr/0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) Una dimensión no promete vías que ya no puntúan · [ADR-0310](../adr/0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) El saldo empresario vuelve al ITCP con el corpus cerrado · [ADR-0332](../adr/0332-una-camara-que-calla-no-dispara-nada.md) Una cámara que calla no dispara nada, y el saldo sigue saliendo · [ADR-0334](../adr/0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md) AEA sale del perímetro y el rótulo dice lo que mide · [ADR-0335](../adr/0335-el-saldo-empresario-necesita-tres-comunicados.md) El saldo empresario necesita al menos tres comunicados · [ADR-0372](../adr/0372-la-brecha-de-obra-publica-sale-del-indice-politico.md) La brecha de obra pública sale del índice político
 
 ## Se releva y no puntúa
 
@@ -300,6 +284,7 @@ del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
 - `bloqueo_sostenido` — Bloqueo legislativo sostenido (declarado como contexto)
+- `brecha_obra_publica` — Brecha de expectativas: obra pública vs. privada
 - `cohesion_bloque_senado` — Cohesión del bloque LLA (Senado, fusionado)
 - `comisiones_caidas` — Comisiones sin sanción (declarado como contexto)
 - `derrotas_legislativas` — Derrotas legislativas del Ejecutivo (declarado como contexto)
@@ -348,7 +333,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-91 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+92 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -441,3 +426,4 @@ histórica.
 - [0344](../adr/0344-el-votometro-sale-del-monitor.md) — El Votómetro sale del Monitor
 - [0353](../adr/0353-armonia-federal-a-doce-meses-moviles.md) — La armonía federal se mide a doce meses móviles
 - [0358](../adr/0358-quorum-caido-de-la-oposicion-no-cuenta.md) — Una sesión caída que pidió la oposición no cuenta como Congreso trabado
+- [0372](../adr/0372-la-brecha-de-obra-publica-sale-del-indice-politico.md) — La brecha de obra pública sale del índice político

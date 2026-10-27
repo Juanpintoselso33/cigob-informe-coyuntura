@@ -4,17 +4,6 @@
   "filas": [
     {
       "indice": "ITCG",
-      "indicador": "fal_modernizacion_laboral",
-      "n": 34,
-      "piso": 10,
-      "techo": 100,
-      "share_piso": 0.824,
-      "share_techo": 0.0,
-      "estado": "revisar",
-      "detalle": "82% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 34 meses"
-    },
-    {
-      "indice": "ITCG",
       "indicador": "gasto_funcionamiento",
       "n": 32,
       "piso": 10,
@@ -23,28 +12,6 @@
       "share_techo": 0.438,
       "estado": "revisar",
       "detalle": "44% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 32 meses"
-    },
-    {
-      "indice": "ITCG",
-      "indicador": "libertad_opcion_salud",
-      "n": 34,
-      "piso": 10,
-      "techo": 100,
-      "share_piso": 0.382,
-      "share_techo": 0.0,
-      "estado": "revisar",
-      "detalle": "38% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 34 meses"
-    },
-    {
-      "indice": "ITCG",
-      "indicador": "litigiosidad_laboral",
-      "n": 60,
-      "piso": 10,
-      "techo": 100,
-      "share_piso": 0.417,
-      "share_techo": 0.0,
-      "estado": "revisar",
-      "detalle": "42% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 60 meses"
     },
     {
       "indice": "ITCG",
@@ -133,6 +100,28 @@
       "share_techo": 0.086,
       "estado": "saturado",
       "detalle": "83% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "fal_modernizacion_laboral",
+      "n": 35,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.8,
+      "share_techo": 0.029,
+      "estado": "saturado",
+      "detalle": "80% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "libertad_opcion_salud",
+      "n": 34,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.088,
+      "share_techo": 0.618,
+      "estado": "saturado",
+      "detalle": "62% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
     },
     {
       "indice": "ITCG",
@@ -405,17 +394,6 @@
       "techo": 100,
       "share_piso": 0.182,
       "share_techo": 0.0,
-      "estado": "ok",
-      "detalle": "sin saturación relevante"
-    },
-    {
-      "indice": "ITCP",
-      "indicador": "brecha_obra_publica",
-      "n": 111,
-      "piso": 10,
-      "techo": 100,
-      "share_piso": 0.099,
-      "share_techo": 0.144,
       "estado": "ok",
       "detalle": "sin saturación relevante"
     },

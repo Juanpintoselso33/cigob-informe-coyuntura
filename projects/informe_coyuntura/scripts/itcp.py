@@ -678,7 +678,13 @@ DIMENSIONES_ITCP = {
         # Revelada vs. declarada, angosta vs. ancha: el empate es el reparto
         # honesto. El peso se fijó antes de mirar su efecto sobre el ITCP,
         # como exige ADR-0045.
-        "indicadores": {"brecha_obra_publica": 0.5, "apoyo_empresario": 0.5},
+        #
+        # ADR-0372 (2026-10-26): sale `brecha_obra_publica`, a pedido de Juan y
+        # Luis: mide expectativas de un solo sector (constructoras) y no la
+        # relación del empresariado con el Gobierno. La dimensión queda con la
+        # postura pública de la industria hasta que se sumen las cámaras del
+        # campo, el comercio y la tecnología (pendiente decidido).
+        "indicadores": {"apoyo_empresario": 1.0},
     },
 }
 
@@ -712,6 +718,20 @@ INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cep
 # `publicar.py` los suma a POLITICA_OCULTOS, así que tampoco se muestran: la
 # regla del tablero es que si no puntúa, no es card (ADR-0051/0153/0189).
 INDICADORES_SUSPENDIDOS = {
+    "brecha_obra_publica": {
+        "dimension": "sector_privado",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0372",
+        "por_que": "Compara las expectativas de las constructoras que trabajan "
+                   "para el Estado con las de las que trabajan para privados: "
+                   "es la lectura de un solo sector y de expectativas, no de la "
+                   "relación del empresariado con el Gobierno. La dimensión se "
+                   "rearma con la postura pública de las cámaras.",
+        "condicion_reingreso": "Que la dimensión vuelva a necesitar una medida "
+                               "revelada además de las posturas declaradas, y "
+                               "una que cubra más de un sector.",
+    },
     "judicializacion": {
         "dimension": "poder_judicial",
         "desde": "2026-08",
@@ -748,7 +768,6 @@ FAMILIAS_ITCP = {
     "veto_quorum": "tension",                  # la cámara no se reúne
     "conflictividad_nacional": "tension",      # la calle
     "jornadas_individuales_no_trabajadas_12m": "tension",  # intensidad laboral
-    "brecha_obra_publica": "tension",          # los empresarios que dependen del Estado
     "apoyo_empresario": "tension",             # lo que las cámaras dicen del Gobierno
     "alineamiento_senadores_prov": "tension",  # cómo votan los senadores provinciales
     "adhesion_reformas_provincial": "tension", # qué deciden las legislaturas provinciales
@@ -815,10 +834,8 @@ REZAGO_MESES_ITCP = {
     "eficacia_legislativa": 18.0,
     # 12 meses móviles contra los 12 previos (ADR-0353): la variación describe,
     # en promedio, lo ocurrido 6 meses atrás (centroide de la ventana), más ~1,5
-    # del IPC del INDEC. Mismo criterio que brecha_obra_publica.
+    # del IPC del INDEC (el criterio que usaba brecha_obra_publica, ADR-0372).
     "iaf_transferencias": 7.5,
-    # Promedio móvil de 12 meses (6) más el rezago de publicación del INDEC.
-    "brecha_obra_publica": 7.5,
     # Ventana móvil de 12 meses sobre comunicados fechados: el rezago de
     # publicación es cero (salen el día que la cámara los emite), así que queda
     # sólo el centroide de la ventana.

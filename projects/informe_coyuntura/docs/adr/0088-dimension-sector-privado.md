@@ -6,6 +6,7 @@ fecha: 2026-07-19
 cinturon: 'politica'
 indicadores: [sector_privado, brecha_obra_publica]
 modifica: ['0036']
+relacionado: ['0372']
 corregido_por: ['0095']
 ambito: 'ITCP · dimensión `sector_privado` · indicador `brecha_obra_publica` · validación externa'
 origen: 'Auditoría externa del cinturón político, prioridad 1'

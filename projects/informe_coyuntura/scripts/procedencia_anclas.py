@@ -216,7 +216,6 @@ PROCEDENCIA = {
     "judicializacion": ("historia_larga", "el techo es el 0,78% de densidad cautelar promedio de 2016-2019 —dos gobiernos anteriores al medido— contra 1,66% del promedio 2020-2026 (ADR-0168)"),
     "velocidad_resolucion": ("conceptual", "el 100% es el punto donde la Corte resuelve exactamente lo que le entra, sin acumular ni descargar atraso; los cortes son márgenes redondos alrededor de ese valor y no el rango observado 26-142 (ADR-0168)"),
     "paralisis_denuncias": ("conceptual", "cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, preservados al corregir el universo de slugs numerados (rango 13-18; ADR-0168/0268)"),
-    "brecha_obra_publica": ("conceptual", "números redondos alrededor del cero, explícitamente NO calibrados contra el rango observado (ADR-0088)"),
     "apoyo_empresario": ("conceptual", "el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150)"),
     # bloqueo_sostenido salió del índice (ADR-0330): no puntúa más, así que no
     # declara procedencia acá (mismo criterio que derrotas_legislativas).

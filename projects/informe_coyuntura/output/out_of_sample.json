@@ -54,7 +54,7 @@
     {
       "indicador": "brecha_obra_publica",
       "indice": "ITCP",
-      "procedencia": "conceptual",
+      "procedencia": "control",
       "fuera_de_muestra": {
         "n": 77,
         "media": 76.5,

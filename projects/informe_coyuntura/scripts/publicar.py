@@ -1937,17 +1937,9 @@ def _validacion_itcp(bloque):
         len(d.get("indicadores", {}))
         for d in bloque.get("dimensiones", {}).values()
     )
-    corr_brecha = val.get("correlaciones_brecha_obra_publica") or {}
-    brecha_niv = (corr_brecha.get("niveles (brecha obra pública vs Construya var. i.a., ambas 12m)") or {}).get("r")
-    brecha_dif = (corr_brecha.get("primeras diferencias (brecha vs Construya)") or {}).get("r")
-    contraste_brecha = (
-        f" El contraste propio de expectativas de construcción con el volumen de insumos "
-        f"vendidos (Construya), ambas series suavizadas a doce meses, da "
-        f"{coma(brecha_niv)} en niveles y {coma(brecha_dif)} en cambios mensuales. "
-        "La fecha de expectativas representa el inicio de su horizonte trimestral; "
-        "el contraste retrospectivo no demuestra anticipación ni causalidad."
-        if brecha_niv is not None and brecha_dif is not None else
-        " El contraste propio con Construya no está disponible en esta corrida.")
+    # ADR-0372: la brecha de obra pública ya no integra el índice, así que su
+    # contraste con Construya y su lectura por gobierno dejan de validarlo. Se
+    # siguen calculando en validacion_externa.py como diagnóstico del método.
     bloque["validacion"] = {
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
         "pares": [[m, serie[m], epu[m]] for m in comunes],
@@ -1972,7 +1964,6 @@ def _validacion_itcp(bloque):
         "trans_label": ("series normalizadas al rango del período; la incertidumbre de política "
                         "se muestra invertida"),
         "r_sin_sector_privado": r_sin_priv,
-        "por_gobierno": val.get("brecha_obra_publica_por_gobierno") or {},
         "conclusion": (
             f"Contra la incertidumbre de política en la prensa —la única estadística propia "
             f"del panel desde octubre de 2026— la correlación es {coma(r_niv)} en niveles y "
@@ -1984,13 +1975,7 @@ def _validacion_itcp(bloque):
                if r_sin_priv is not None else " ")
             + "El contraste mide incertidumbre de política económica en la prensa, y no cubre "
               "la relación del Gobierno con los empresarios: pedirle que valide una dimensión "
-              "que no abarca es pedirle lo que no mide."
-            + contraste_brecha
-            + (" La comparación por gobierno permite examinar la estabilidad del signo. "
-               "Una asociación distinta no identifica por sí sola su causa: el recorte de "
-               "obra pública puede formar parte del programa y afectar las expectativas "
-               "del sector. Esa interpretación debe contrastarse con evidencia adicional."
-               if val.get("brecha_obra_publica_por_gobierno") else "")),
+              "que no abarca es pedirle lo que no mide."),
     }
 
 
