@@ -329,9 +329,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (unos 2 meses de rezago)", tipo: "Nivel (kg/hab) · índice base-100 en el gráfico",
   },
   ocupacion_eph: {
-    que: "Cuánto cambió, contra el mismo trimestre del año anterior, el porcentaje de la población que tiene empleo (tasa de empleo), según la Encuesta Permanente de Hogares continua del INDEC en los 31 aglomerados urbanos. Se muestra en puntos porcentuales.",
-    aporta: "Es el principal componente de la dimensión de empleo del índice de impacto social: dice si hay más o menos gente trabajando que hace un año, sea o no en empleo registrado. Se compara el mismo trimestre porque la encuesta no está desestacionalizada. No distingue la calidad del empleo.",
-    frecuencia: "Trimestral (unos 80 días de rezago)", tipo: "Variación interanual (puntos porcentuales)",
+    que: "Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo trimestre de 2023, antes del mandato, según la Encuesta Permanente de Hogares continua del INDEC en los 31 aglomerados urbanos. Se muestra en puntos porcentuales.",
+    aporta: "Es el principal componente de la dimensión de empleo del índice de impacto social: dice si hoy trabaja más o menos gente que cuando empezó el Gobierno, sea o no en empleo registrado. Se compara el mismo trimestre porque la encuesta no está desestacionalizada. La tasa se mueve poco, así que cada décima de punto cuenta. No distingue la calidad del empleo.",
+    frecuencia: "Trimestral (unos 80 días de rezago)", tipo: "Diferencia contra 2023 (puntos porcentuales)",
   },
   informalidad: {
     que: "Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC).",

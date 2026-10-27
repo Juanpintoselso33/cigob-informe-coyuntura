@@ -790,18 +790,19 @@ def rebase_de_serie(series, skey, invertido=False, base_meses=None, base_valor=N
     return round((base / ult if invertido else ult / base) * 100.0, 1)
 
 
-# ADR-0383: tasa de empleo de la EPH (total de 31 aglomerados) en el 4T-2023,
-# el trimestre de arranque del mandato. El indicador `ocupacion_eph` es la
-# variación interanual de esa tasa en puntos; para ponerla en base 100 se la
-# expresa como fracción de la tasa del arranque. El valor es el publicado por
-# el INDEC (serie 42.3_EPH_PUNTUATAL_0_M_24, 2023-10-01 = 45,8%).
-TASA_EMPLEO_4T23 = 45.8
+# ADR-0383: el indicador `ocupacion_eph` es la tasa de empleo de la EPH menos
+# la del mismo trimestre de 2023, en puntos porcentuales. Decisión de Juan del
+# 27-oct-2026: la tasa casi no se mueve (en 20 años, salvo la pandemia, cambió
+# menos de un punto por año casi siempre) y la encuesta tiene error de unas
+# décimas, así que se lee con lupa: cada décima de punto vale 1 punto del
+# índice (un punto de tasa, cientos de miles de puestos, vale 10). 0 = 100.
+PUNTOS_POR_PP_EMPLEO = 10.0
 
 
 def indice_de_ocupacion(pp):
-    """Variación interanual de la tasa de empleo (pp) → índice base 100.
-    0 pp = 100 (sin cambio contra un año atrás); +1 pp ≈ 102,2. NO invertido."""
-    return round(100.0 + float(pp) / TASA_EMPLEO_4T23 * 100.0, 1)
+    """Diferencia contra el mismo trimestre de 2023 (pp) → índice base 100.
+    0 pp = 100; +0,4 pp = 104; −0,8 pp = 92. NO invertido."""
+    return round(100.0 + float(pp) * PUNTOS_POR_PP_EMPLEO, 1)
 
 
 def indice_ocupacion_eph(series):

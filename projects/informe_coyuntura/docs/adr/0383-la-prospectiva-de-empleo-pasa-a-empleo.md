@@ -50,14 +50,20 @@ independiente; informalidad «analizar»).
 aglomerados urbanos, trimestral: serie `42.3_EPH_PUNTUATAL_0_M_24` de la API de
 datos.gob.ar (llega a 2T-2026 y está en 94 trimestres desde 2003).
 
-**Qué se mide.** `ocupacion_eph` es la **variación interanual de la tasa de
-empleo, en puntos porcentuales** (2T-2026: 45,0 % contra 44,5 % un año antes,
-+0,5 pp). Se eligió la tasa y no el total de ocupados porque es la cifra que el
-INDEC publica (el total exigiría proyectar la población) y porque absorbe el
-crecimiento demográfico; y se eligió el interanual porque la EPH no viene
-desestacionalizada: contra el 4T-2023 el 2T-2026 se leería 0,8 pp más bajo, y
-no se podría separar cuánto es estación y cuánto tendencia. Para el índice se expresa como fracción de la tasa del
-4T-2023 (45,8 %): `100 + pp ÷ 45,8 × 100`, sin invertir (0 pp = 100).
+**Qué se mide.** `ocupacion_eph` es la **diferencia de la tasa de empleo contra
+el mismo trimestre de 2023, en puntos porcentuales** (2T-2026: 45,0 % contra
+44,6 % en el 2T-2023, +0,4 pp). Se eligió la tasa y no el total de ocupados
+porque es la cifra que el INDEC publica y absorbe el crecimiento demográfico; y
+se compara la misma estación porque la EPH no viene desestacionalizada.
+
+**Escala (decisión de Juan del 27-oct-2026).** La primera versión comparaba
+contra el año anterior y valía `100 + pp ÷ 45,8 × 100`: un punto de tasa movía
+2,2 puntos del índice y el componente quedaba siempre cerca de 100. La tasa se
+mueve poco —en veinte años, salvo la pandemia, cambió menos de un punto por año
+casi siempre— y un punto son cientos de miles de puestos. Por eso se compara
+contra 2023 (si hoy trabaja más o menos gente que cuando empezó el Gobierno,
+mismo criterio que el gasto de funcionamiento) y **cada décima de punto vale 1
+punto del índice**: `100 + 10 × pp`. 2T-2026 da 104; el 4T-2025 (−0,8 pp) daba 92.
 
 **Rezago.** Medido en los snapshots del repo: el 1T-2026 (fecha 2026-01-01)
 apareció entre el 10-may y el 27-jun, y el 2T-2026 (2026-04-01) antes del
@@ -92,8 +98,9 @@ padrón, entra con su propio ADR.
 ### Consecuencias
 
 - Con el snapshot del 27-oct-2026 (ocupación +0,5 pp → índice 101,1; el resto
-  de los índices sin cambio): la dimensión Empleo pasa de 91,6 a 98,3 y el
-  índice de impacto social de 93,6 a 95,3. El salto viene de sacar los
+  de los índices sin cambio): la dimensión Empleo pasa de 91,6 a
+  alrededor de 100 y el índice de impacto social de 93,6 a alrededor de 95,7
+  (con la escala final; el número exacto sale de la corrida). El salto viene de sacar los
   componentes en rojo (construcción 78,1, subocupación 85,0), no de la
   ocupación, que casi no se mueve.
 - El componente nuevo varía poco: la tasa de empleo cambia décimas por año. Es

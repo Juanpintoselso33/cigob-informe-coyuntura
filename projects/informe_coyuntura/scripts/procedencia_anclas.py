@@ -253,7 +253,7 @@ PROCEDENCIA = {
     # (base +40, ADR-0033) es un tope conceptual redondo, no calibrado al
     # boom observado; toca a dos componentes y se anota en su motivo.
     "brecha_salario_cbt": ("conceptual", "rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123)"),
-    "ocupacion_eph": ("conceptual", "variación interanual de la tasa de empleo EPH (0 pp = 100), expresada como fracción de la tasa del 4T-2023 (45,8%); ancla en fecha fija (ADR-0383)"),
+    "ocupacion_eph": ("conceptual", "tasa de empleo contra el mismo trimestre de 2023 (0 pp = 100), cada décima de punto vale 1 punto del índice; ancla en fecha fija antes del mandato (ADR-0383)"),
     "informalidad": ("conceptual", "rebase base-100 a 4T-2023, invertido; ancla en la fecha fija (ADR-0123)"),
     "pobreza_nowcast": ("conceptual", "rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha"),
     "ipc_alimentos": ("conceptual", "encarecimiento relativo rebaseado a 4T-2023 (ADR-0033); ancla en fecha fija"),

@@ -3267,8 +3267,8 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: API pública de series de tiempo.",
     },
     transformaciones: [
-      "La tasa de empleo es la población ocupada sobre la población total. El indicador es su variación interanual en puntos porcentuales: el trimestre contra el MISMO trimestre del año anterior, porque la EPH no viene desestacionalizada y comparar contra el trimestre previo mediría estacionalidad.",
-      "Componente del índice: 100 + variación en puntos ÷ 45,8 × 100, donde 45,8% es la tasa del 4º trimestre de 2023. 0 puntos = 100 (sin cambio contra un año atrás); no se invierte, más ocupación es mejor.",
+      "La tasa de empleo es la población ocupada sobre la población total. El indicador es su diferencia en puntos porcentuales contra el MISMO trimestre de 2023, antes del mandato: se compara la misma estación porque la EPH no viene desestacionalizada.",
+      "Componente del índice: 100 + 10 × la diferencia en puntos. Cada décima de punto vale 1 punto del índice: la tasa se mueve poco (en veinte años, salvo la pandemia, cambió menos de un punto por año casi siempre) y un punto de tasa son cientos de miles de puestos. Igual que en 2023 da 100; no se invierte, más ocupación es mejor.",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de empleo (60% interno · 14,51% del índice de impacto social): es su componente principal.",
@@ -3276,12 +3276,12 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Mide cuánta gente de la población total tiene empleo, no su calidad: no distingue formal de informal ni jornada completa de parcial. Para eso está informalidad.",
       "Cubre los 31 aglomerados urbanos de la EPH, no las zonas rurales ni los pueblos chicos.",
-      "La tasa se mueve despacio (el 2T-2026 es 0,5 puntos más alta que un año atrás), así que el componente varía poco: es una señal de fondo, no de coyuntura.",
-      "La encuesta tiene error muestral; variaciones de unas pocas décimas de punto no son estadísticamente distinguibles de cero.",
+      "La encuesta tiene error muestral de unas décimas de punto: con esta escala, un trimestre puede moverse unos puntos del índice sin que el empleo haya cambiado de verdad. Conviene leer la serie, no un trimestre suelto.",
     ],
     faltantes: "Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso pasa a informalidad, el otro componente de empleo.",
     revisiones: "La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Se compara contra el mismo trimestre de 2023 y no contra el año anterior, y cada décima de punto vale 1 punto del índice (antes, un punto de tasa valía 2,2): con la escala anterior el componente quedaba siempre cerca de 100. Con el 2º trimestre de 2026 (45,0% contra 44,6%) da 104.", adr: "0383" },
       { fecha: "2026-10-27", cambio: "Entra al índice de impacto social como componente principal de la dimensión de empleo (60%), por decisión de la reunión del 26-oct-2026: la dimensión pasa a medir cuánta gente trabaja. El padrón de ARCA de empleadores, previsto como complemento, no tiene serie pública reproducible y queda afuera.", adr: "0383" },
     ],
   },

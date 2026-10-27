@@ -34,23 +34,22 @@ def _ultimo(series_id: str) -> dict:
     return {"valor": data[0][1], "fecha": data[0][0]}
 
 
-def variacion_interanual_empleo(filas: list) -> dict:
-    """Filas [[fecha, tasa en proporción]] (cualquier orden) → variación
-    interanual de la tasa de empleo en puntos porcentuales (ADR-0383).
-
-    Compara el último trimestre con el de hace exactamente un año (misma
-    estación). Si ese trimestre falta, falla en voz alta: restarle el
-    trimestre anterior mediría estacionalidad y la publicaría como empleo."""
+def variacion_empleo_contra_2023(filas: list) -> dict:
+    """Filas [[fecha, tasa en proporción]] (cualquier orden) → diferencia, en
+    puntos porcentuales, entre la tasa de empleo del último trimestre y la del
+    MISMO trimestre de 2023, antes del mandato (ADR-0383, decisión de Juan del
+    27-oct-2026). Se compara la misma estación porque la EPH no viene
+    desestacionalizada; si falta ese trimestre de 2023, falla en voz alta."""
     por_fecha = {f: v for f, v in filas if v is not None}
     if not por_fecha:
         raise ValueError("sin datos de tasa de empleo")
     ultima = max(por_fecha)
-    previa = f"{int(ultima[:4]) - 1}{ultima[4:]}"
-    if previa not in por_fecha:
-        raise ValueError(f"falta el trimestre {previa} para la variación interanual")
-    tasa, tasa_prev = por_fecha[ultima] * 100, por_fecha[previa] * 100
-    return {"valor": round(tasa - tasa_prev, 1), "fecha": ultima,
-            "tasa": round(tasa, 1), "tasa_anio_previo": round(tasa_prev, 1)}
+    base = f"2023{ultima[4:]}"
+    if base not in por_fecha:
+        raise ValueError(f"falta el trimestre {base} para comparar contra 2023")
+    tasa, tasa_base = por_fecha[ultima] * 100, por_fecha[base] * 100
+    return {"valor": round(round(tasa, 1) - round(tasa_base, 1), 1), "fecha": ultima,
+            "tasa": round(tasa, 1), "tasa_2023": round(tasa_base, 1)}
 
 
 def _var_mensual(series_id: str) -> dict:
@@ -184,13 +183,12 @@ def fetch_indec() -> dict:
         except Exception as e:
             logger.error("%s FAIL: %s", key, e)
 
-    # Ocupación EPH (ADR-0383): variación interanual de la tasa de empleo, en
-    # puntos porcentuales, sobre el total de aglomerados urbanos. Se compara
-    # contra el MISMO trimestre del año anterior porque la EPH no viene
-    # desestacionalizada.
+    # Ocupación EPH (ADR-0383): diferencia de la tasa de empleo, en puntos
+    # porcentuales, contra el MISMO trimestre de 2023 (antes del mandato);
+    # la EPH no viene desestacionalizada. 20 trimestres alcanzan hasta 2028.
     try:
-        results["ocupacion_eph"] = variacion_interanual_empleo(
-            _get_serie(INDEC_SERIES["empleo"], limit=8))
+        results["ocupacion_eph"] = variacion_empleo_contra_2023(
+            _get_serie(INDEC_SERIES["empleo"], limit=20))
         logger.info("ocupacion_eph OK: %s", results["ocupacion_eph"])
     except Exception as e:
         logger.error("ocupacion_eph FAIL: %s", e)

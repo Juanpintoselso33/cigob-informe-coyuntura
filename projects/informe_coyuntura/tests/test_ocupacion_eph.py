@@ -30,29 +30,31 @@ def variacion(monkeypatch):
         "indec_series_ocupacion", raiz / "collectors" / "indec_series.py")
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    return mod.variacion_interanual_empleo
+    return mod.variacion_empleo_contra_2023
 
 
 FILAS = [["2026-04-01", 0.45], ["2026-01-01", 0.448], ["2025-10-01", 0.45],
-         ["2025-07-01", 0.454], ["2025-04-01", 0.44483062866737]]
+         ["2025-07-01", 0.454], ["2025-04-01", 0.44483062866737],
+         ["2023-04-01", 0.446]]
 
 
-def test_variacion_interanual_compara_el_mismo_trimestre(variacion):
+def test_compara_contra_el_mismo_trimestre_de_2023(variacion):
     r = variacion(FILAS)
     assert r["fecha"] == "2026-04-01"
-    assert r["valor"] == 0.5          # 45,0 − 44,5
-    assert r["tasa"] == 45.0 and r["tasa_anio_previo"] == 44.5
+    assert r["valor"] == 0.4          # 45,0 − 44,6 (2T-2023)
+    assert r["tasa"] == 45.0 and r["tasa_2023"] == 44.6
 
 
-def test_sin_el_trimestre_del_anio_previo_falla_en_voz_alta(variacion):
-    # restar el trimestre anterior mediría estacionalidad y la publicaría
+def test_sin_el_trimestre_de_2023_falla_en_voz_alta(variacion):
+    # restar otro trimestre mediría estacionalidad y la publicaría
     with pytest.raises(ValueError):
-        variacion(FILAS[:4])
+        variacion(FILAS[:5])
 
 
 def test_indice_base_100():
     assert itvc.indice_de_ocupacion(0) == 100.0
-    assert itvc.indice_de_ocupacion(0.5) == pytest.approx(101.1, abs=0.05)
+    assert itvc.indice_de_ocupacion(0.4) == 104.0       # cada décima vale 1 punto
+    assert itvc.indice_de_ocupacion(-0.8) == 92.0
     assert itvc.indice_de_ocupacion(-0.5) < 100          # no invertido
     assert itvc.indice_ocupacion_eph({}) is None
     assert itvc.indice_ocupacion_eph({"ocupacion_eph": []}) is None

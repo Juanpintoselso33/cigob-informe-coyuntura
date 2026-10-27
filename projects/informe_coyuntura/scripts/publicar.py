@@ -207,12 +207,12 @@ def build_vida(raw):
     # ausente es invisible para `_carry_forward`.
     ocu = indec.get("ocupacion_eph") or {}
     _add(out, "ocupacion_eph", ocu.get("valor"),
-         "pp (interanual)", "INDEC — EPH continua, tasa de empleo, total de 31 aglomerados urbanos",
+         "pp vs. 2023", "INDEC — EPH continua, tasa de empleo, total de 31 aglomerados urbanos",
          ocu.get("fecha"))
-    if ocu.get("valor") is not None and ocu.get("tasa") is not None:
+    if ocu.get("valor") is not None and ocu.get("tasa_2023") is not None:
         out["ocupacion_eph"]["detalle_txt"] = (
             f"Tasa de empleo {ocu['tasa']:.1f}% de la población total, contra "
-            f"{ocu['tasa_anio_previo']:.1f}% en el mismo trimestre del año anterior"
+            f"{ocu['tasa_2023']:.1f}% en el mismo trimestre de 2023"
         ).replace(".", ",")
     # ADR-0218: el indicador pasa a medir lo que su nombre promete — el cierre
     # neto de PyMEs — con la base de empleadores con cobertura de ART de la SRT.
