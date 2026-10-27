@@ -2236,6 +2236,13 @@ def _scoring_vida_itvc(c, series):
             formula = (f"Índice base-100 vs {base_lbl}: {coma(info['puntaje_aplicado'])} "
                        f"(100 = igual que antes del mandato; más = mejora); pesa "
                        f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
+            if ikey == "alquiler_udesa_real":
+                # ADR-0386: la fuente sólo da interanuales, no hay nivel contra 4T-2023
+                lectura = lectura.replace("contra el arranque del mandato", "contra hace un año")
+                formula = (f"Índice = 100 − variación real interanual del alquiler publicado: "
+                           f"{coma(info['puntaje_aplicado'])} (100 = el alquiler real quedó igual que "
+                           f"hace un año; más = bajó en términos reales); pesa "
+                           f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
             if ikey == "peso_tarifas":
                 carga = ind.get("valor")
                 proporcion_t = ind.get("transporte_pct_canasta")

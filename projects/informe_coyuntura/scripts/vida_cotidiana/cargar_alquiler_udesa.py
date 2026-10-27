@@ -64,6 +64,8 @@ def anotar_sin_dato(registro: dict, mes: str, motivo: str) -> dict:
         raise ValueError(f"mes inválido: {mes!r}")
     if not motivo.strip():
         raise ValueError("el motivo no puede estar vacío")
+    # un mes anotado sin dato deja de puntuar: si tenía un valor, se retira
+    registro.get("meses", {}).pop(mes, None)
     registro.setdefault("sin_dato", {})[mes] = motivo.strip()
     registro["sin_dato"] = {k: registro["sin_dato"][k] for k in sorted(registro["sin_dato"])}
     return registro

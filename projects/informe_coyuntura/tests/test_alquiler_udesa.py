@@ -156,6 +156,11 @@ def test_carga_agrega_un_mes_y_lo_saca_de_sin_dato():
     assert list(r["meses"]) == sorted(r["meses"])
 
 
+def test_anotar_sin_dato_retira_el_valor_que_habia():
+    r = carga.anotar_sin_dato(registro_base(), "2026-09", "cifra mal atribuida")
+    assert "2026-09" not in r["meses"] and r["sin_dato"]["2026-09"] == "cifra mal atribuida"
+
+
 def test_carga_rechaza_duplicado_futuro_y_sin_frase():
     with pytest.raises(ValueError, match="ya está cargado"):
         carga.agregar(registro_base(), "2026-09", 20.4, "https://x.y/z", "20.4%", hoy=date(2026, 11, 3))

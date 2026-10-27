@@ -278,6 +278,7 @@ jobs:
                   projects/informe_coyuntura/data/gestion/desregulacion_oficial.json \
                   projects/informe_coyuntura/data/gestion/privatizaciones_novedades.json \
                   projects/informe_coyuntura/data/gestion/fal_hitos.json \
+                  projects/informe_coyuntura/data/gestion/srt_siniestralidad.json \
                   projects/informe_coyuntura/data/politica/csjn_novedades.json \
                   projects/informe_coyuntura/data/politica/apoyo_empresario_novedades.json \
                   projects/informe_coyuntura/data/politica/apoyo_camaras_novedades.json \
