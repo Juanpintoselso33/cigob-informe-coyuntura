@@ -239,6 +239,15 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
     propuesta de un solo modelo queda descartada.
     [J, L 18-oct]
 25. **Menciones de los políticos principales en la prensa.** [J]
+    **Colectado y pendiente** (decisión de Juan, 27-oct). Se midió el tono de los titulares
+    hacia el Presidente: 6.800 títulos de Milei y 1.632 de Macri y Fernández (GDELT), dos
+    lectores ciegos, acuerdo 90 % (kappa 0,82). Con Milei sigue los escándalos y acompaña
+    a la confianza UTDT (r −0,42); la escala no tiene contra qué compararse: con los
+    presidentes anteriores no sigue a la encuesta y comparar contra el arranque depende
+    del mes base. **Tarea mensual**: `scripts/prensa_presidente.py --mes AAAA-MM --lotes DIR`
+    (unos 4 GB de BigQuery) y los dos lectores sobre el lote. Se retoma en oct-2027.
+    Los 818 desacuerdos no se adjudican hasta entonces. Datos en
+    `data/politica/prensa_presidente_*.json`.
 26. **Transferencias no automáticas a provincias**: anticipos financieros (adelantos
     transitorios), ATN, transferencias por programa. Hoy sólo se miden las automáticas.
     Pista: Presupuesto Abierto, inciso 5, partidas 5.7 y 5.8; los anticipos son operaciones
