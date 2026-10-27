@@ -2291,7 +2291,7 @@ def apoyo_empresario_serie() -> list:
 
 
 def _apoyo_saldo_serie(codificacion: Path, camaras: tuple, novedades: Path,
-                       nombre: str) -> list:
+                       nombre: str, cobertura_desde: str | None = None) -> list:
     """El cálculo del saldo, común a todos los sectores (ADR-0380): mismo
     registro, mismas reglas, misma ventana, mismo mínimo y mismo corpus cerrado.
     Lo único que cambia entre `apoyo_empresario` y `apoyo_comercio` es qué
@@ -2315,6 +2315,14 @@ def _apoyo_saldo_serie(codificacion: Path, camaras: tuple, novedades: Path,
         # 27-oct-2026).
         ini = _apoyo_inicio_ventana(f"{y:04d}-{m:02d}")
         fin = f"{y:04d}-{m:02d}-31"
+        # Un mes cuya ventana empieza antes de que exista el archivo de alguna
+        # cámara del perímetro no se calcula: mediría lo que el sitio conserva
+        # y no lo que la cámara dijo (ADR-0384).
+        if cobertura_desde and ini < cobertura_desde:
+            m += 1
+            if m == 13:
+                y, m = y + 1, 1
+            continue
         v = [p for f, p in comp if ini <= f <= fin]
         a, c = v.count("apoyo"), v.count("critica")
         if a + c >= APOYO_MIN_OBSERVACIONES:
@@ -2763,6 +2771,344 @@ def fetch_apoyo_comercio() -> dict | None:
         }
     except Exception as e:
         _warn("apoyo_comercio", str(e))
+        return None
+
+
+# ── Postura pública del campo (ADR-0384) ────────────────────────────────────
+# Tercer sector de la dimensión de sector privado, junto a la industria (UIA) y
+# el comercio (CAC). Mismo protocolo que ADR-0131/0150/0380 —mismas reglas,
+# mismos dos ejes, mismo saldo de 12 meses, mismo mínimo de tres comunicados y
+# mismo corpus cerrado—; lo propio es el registro (otro archivo, para no tocar
+# el de otro sector) y el detector, que vigila las cámaras del perímetro.
+#
+# Las tres cámaras del campo con sección de prensa se relevaron y clasificaron
+# completas (Coninagro, SRA, CRA; la FAA no tiene sección de prensa). Cuáles
+# ENTRAN al cálculo lo fija `APOYO_CAMPO_CAMARAS` con el criterio de entrada de
+# Luis (reunión del 26-oct-2026): mínimo de 4 comunicados con postura dirigidos
+# al Ejecutivo nacional en la ventana de 12 meses calendario. Las que no lo
+# cumplen quedan CODIFICADAS en el registro, como CAME en el comercio
+# (ADR-0380): nombrarlas de nuevo acá las repone en el cálculo y en el detector.
+APOYO_CAMPO_CODIFICACION_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_campo_codificacion.json"
+APOYO_CAMPO_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_campo_novedades.json"
+APOYO_CAMPO_DESACUERDOS_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_campo_desacuerdos.json"
+APOYO_CAMPO_CAMARAS = ("CONINAGRO", "SRA", "CRA")
+
+CONINAGRO_POSTS_URL = "https://www.coninagro.org.ar/wp-json/wp/v2/posts"
+SRA_COMUNICACION_URL = "https://www.sra.ar/comunicacion/"
+CRA_PRENSA_URL = "https://www.cra.org.ar/prensa/"
+APOYO_CAMPO_DESDE = "2023-12-10"      # asunción de Milei: primer día del período
+# Desde cuándo conserva archivo el sitio de cada cámara, si es después del
+# período: el sitio de la SRA empieza el 21-ene-2025 (el anterior,
+# ruralarg.org.ar, no responde). La serie sólo arranca en el primer mes cuya
+# ventana de 12 meses cae entera dentro del archivo de TODAS las del perímetro.
+APOYO_CAMPO_ARCHIVO_DESDE = {"SRA": "2025-01-21"}
+
+# Informes estadísticos periódicos de Coninagro (semáforo de economías
+# regionales, relaciones insumo-producto, «Del sueldo al plato», pulso del agro,
+# datos de inflación, comercialización de granos, financiamiento productivo,
+# poder de compra, galerías de fotos…): la salida de un tablero propio, no una
+# toma de posición. Se archivan sin codificar. La regla se escribió antes de
+# codificar (ADR-0384) y se aplica por título.
+APOYO_CAMPO_ESTADISTICO = re.compile(
+    r"sem[aá]foro|informe t[eé]cnico|insumo.{0,4}producto|relaciones? insumo|del sueldo al plato|"
+    r"pulso del agro|(datos|an[aá]lisis)( de| de los)? inflaci[oó]n|comercializaci[oó]n de granos|"
+    r"financiamiento productivo|(reporte de )?producci[oó]n agropecuaria|poder (de compra|adquisitivo)|"
+    r"relaci[oó]n entre precios|cr[eé]dito al sector|indicadores de actividad|costo de invertir|"
+    r"an[aá]lisis importaci[oó]n|impacto de los precios|as[ií] est[aá]n las econom[ií]as regionales|"
+    r"econom[ií]as regionales seg[uú]n|galer[ií]a de fotos|precio de la leche|tarifa de referencia|"
+    r"informe campa[nñ]a|precio de los alimentos|inflaci[oó]n: ", re.I)
+# Páginas técnicas del sitio de la SRA que no son un comunicado («Banner Inicio»,
+# «Prueba», «Revista La Rural», «Diario de Noticias»): título genérico y menos de
+# 700 caracteres de texto.
+APOYO_CAMPO_SIN_CONTENIDO = re.compile(r"^(banner|prueba$|revista la rural|diario de noticias)", re.I)
+
+
+def _es_archivable_campo(titulo: str, texto: str = "") -> str | None:
+    """Motivo por el que una nota del campo no se codifica, o None si se codifica."""
+    if APOYO_CAMPO_SIN_CONTENIDO.search(titulo) and len(texto) < 700:
+        return "página sin contenido de comunicado"
+    if APOYO_CAMPO_ESTADISTICO.search(titulo):
+        return "informe estadístico periódico"
+    return None
+
+
+def _coninagro_listado(session: requests.Session, paginas: int = 1) -> list[dict]:
+    """Notas de Coninagro con su texto completo, de la API de WordPress del sitio.
+
+    La API devuelve título y cuerpo del MISMO registro, así que no existe el
+    error de emparejamiento que tuvo CAME (ADR-0380). El sitio no separa los
+    comunicados de las notas: se toma todo lo publicado."""
+    salida = []
+    for p in range(1, paginas + 1):
+        r = session.get(CONINAGRO_POSTS_URL, timeout=HTTP_TIMEOUT, params={
+            "per_page": 100, "page": p, "_fields": "id,date,link,title,content"})
+        r.raise_for_status()
+        for x in r.json():
+            salida.append({"camara": "CONINAGRO", "id": str(x["id"]), "fecha": str(x["date"])[:10],
+                           "titulo": _texto_limpio_html(x["title"]["rendered"]),
+                           "texto": _texto_limpio_html(x["content"]["rendered"]), "url": x["link"]})
+    return salida
+
+
+def _sra_listado(session: requests.Session, paginas: int = 2) -> list[dict]:
+    """Tarjetas (id, título, fecha) del listado de comunicación de la SRA. El
+    sitio escapa saltos de línea dentro del `href` (`&#10;&#9;/245-…`): se
+    des-escapa la tarjeta entera antes de leerla."""
+    salida = []
+    for p in range(1, paginas + 1):
+        r = session.get(SRA_COMUNICACION_URL, params={"page": p}, timeout=HTTP_TIMEOUT)
+        r.raise_for_status()
+        for tarjeta in re.findall(r"<article .*?</article>", r.text, re.S):
+            t = unescape(tarjeta)
+            href = re.search(r'<a href="\s*(/[^"]+)"', t)
+            tit = re.search(r"<h2[^>]*>(.*?)</h2>", t, re.S)
+            fec = re.search(r'itemprop="datePublished" content="(\d{4}-\d{2}-\d{2})', t)
+            if not (href and tit and fec):
+                continue
+            ruta = href.group(1).strip()
+            salida.append({"id": ruta.strip("/").split("-")[0], "titulo": _texto_limpio_html(tit.group(1)),
+                           "fecha": fec.group(1), "url": "https://www.sra.ar" + ruta})
+    return list({c["id"]: c for c in salida}.values())
+
+
+def _sra_comunicado(c: dict, session: requests.Session) -> dict | None:
+    r = session.get(c["url"], timeout=HTTP_TIMEOUT)
+    if r.status_code != 200:
+        return None
+    h1 = re.search(r"<h1[^>]*>(.*?)</h1>", r.text, re.S)
+    if not h1:
+        return None
+    titulo = _texto_limpio_html(h1.group(1))
+    # El título de la página tiene que ser el de la tarjeta: si no, el cuerpo es de otra nota.
+    if re.sub(r"\W+", "", titulo.lower()) != re.sub(r"\W+", "", c["titulo"].lower()):
+        return None
+    fin = r.text.find("</article>", h1.end())
+    texto = _texto_limpio_html(r.text[h1.end():fin if fin != -1 else h1.end() + 60000])
+    return {"camara": "SRA", "id": c["id"], "fecha": c["fecha"], "titulo": titulo, "texto": texto, "url": c["url"]}
+
+
+def _cra_listado(session: requests.Session, paginas: int = 1) -> list[dict]:
+    """Enlaces de la portada de «Prensa» de la CRA (los 21 más recientes).
+
+    El listado de la CRA no pagina por URL (el «Ver más» es un POST) y solo
+    llega hasta febrero de 2026; el histórico se recuperó una vez enumerando
+    los ids, y para las novedades alcanza la portada. El título y la fecha se
+    leen de la propia nota."""
+    r = session.get(CRA_PRENSA_URL, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    enlaces = dict.fromkeys(re.findall(r'href="(/prensa/[^"/]+/)"', r.text))
+    return [{"url": "https://www.cra.org.ar" + h, "id": h.strip("/").split("/")[-1]} for h in enlaces]
+
+
+def _cra_comunicado(c: dict, session: requests.Session) -> dict | None:
+    """Una nota de la sección «Prensa» de la CRA, del JSON-LD de la página (el
+    HTML del sitio cierra el `<h1>` con `</h2>`). Devuelve None si la nota no es
+    de la sección Prensa (la CRA comparte los ids con «Actualidad»)."""
+    r = session.get(c["url"], timeout=HTTP_TIMEOUT)
+    if r.status_code != 200:
+        return None
+    raw = r.content.decode("utf-8", "replace")
+    for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', raw, re.S):
+        try:
+            j = json.loads(m.group(1))
+        except ValueError:
+            continue
+        if isinstance(j, dict) and j.get("articleBody") is not None:
+            if j.get("articleSection") != "Prensa":
+                return None
+            texto = re.sub(r"\n\s*\n+", "\n", re.sub(r"[ \t\r\f\v\xa0]+", " ", j["articleBody"])).strip()
+            # Las notas recientes se enlazan por slug; el id numérico (el del
+            # registro) sale del propio botón de compartir de la página.
+            num = re.search(r'data-contentID="(\d+)"', raw)
+            return {"camara": "CRA", "id": num.group(1) if num else c["id"],
+                    "fecha": str(j.get("datePublished", ""))[:10],
+                    "titulo": unescape(j.get("headline", "")), "texto": texto, "url": c["url"]}
+    return None
+
+
+def detectar_novedades_campo() -> dict:
+    """Comunicados nuevos de las cámaras del perímetro del campo, pendientes de
+    codificar (ADR-0384).
+
+    Mismo contrato que `detectar_novedades_comercio` (ADR-0149/0310/0380):
+    detecta, no clasifica; los pendientes cortan la serie de `apoyo_campo` en el
+    mes anterior al más viejo; e `inventario_verificado` sólo avanza en una
+    corrida en la que respondieron todas las cámaras del perímetro."""
+    try:
+        store = json.loads(APOYO_CAMPO_NOVEDADES_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        store = {}
+    revisadas = store.setdefault("revisadas", {})
+    pendientes = store.setdefault("pendientes", {})
+    try:
+        reg = json.loads(APOYO_CAMPO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        reg = {}
+    for c in reg.get("casos", []):
+        revisadas.setdefault(f"{c['camara']}|{c['id']}", {"origen": "codificacion ADR-0384"})
+    for c in reg.get("archivados_estadisticos", []):
+        revisadas.setdefault(f"{c['camara']}|{c['id']}",
+                             {"origen": "no se codifica (ADR-0384): " + c.get("motivo", "informe estadístico periódico")})
+
+    session = requests.Session()
+    session.headers.update(HTTP_HEADERS)
+    nuevas = vistos = respondieron = 0
+
+    def anotar(c: dict, bajar) -> None:
+        nonlocal nuevas, vistos
+        vistos += 1
+        clave = f"{c['camara']}|{c['id']}"
+        if clave in revisadas or c.get("fecha", "9999") < APOYO_CAMPO_DESDE:
+            return
+        if c.get("texto") is None and (motivo := _es_archivable_campo(c.get("titulo", ""))):
+            revisadas[clave] = {"fecha": c["fecha"], "titulo": c.get("titulo", "")[:160],
+                                "origen": f"no se codifica (ADR-0384): {motivo}"}
+            return
+        completo = c if c.get("texto") is not None else bajar(c)
+        if not completo:
+            raise RuntimeError(f"no se pudo leer {c.get('url')}")
+        if completo.get("fecha", "9999") < APOYO_CAMPO_DESDE:
+            revisadas[clave] = {"fecha": completo["fecha"], "titulo": completo.get("titulo", "")[:160]}
+            return
+        motivo = _es_archivable_campo(completo.get("titulo", ""), completo.get("texto", ""))
+        revisadas[clave] = {"fecha": completo["fecha"], "titulo": completo["titulo"][:160]}
+        if motivo:
+            revisadas[clave]["origen"] = f"no se codifica (ADR-0384): {motivo}"
+            return
+        pendientes[clave] = {**completo, "postura": None, "destinatario": None,
+                             "nota": "sin codificar — ver apoyo_empresario_reglas.json"}
+        nuevas += 1
+
+    if "CONINAGRO" in APOYO_CAMPO_CAMARAS:
+        try:
+            for c in _coninagro_listado(session):
+                c["camara"] = "CONINAGRO"
+                anotar(c, None)
+            respondieron += 1
+        except Exception as e:
+            print(f"  [WARN] apoyo/CONINAGRO: {e}")
+    if "SRA" in APOYO_CAMPO_CAMARAS:
+        try:
+            for c in _sra_listado(session):
+                c["camara"] = "SRA"
+                anotar(c, lambda x: _sra_comunicado(x, session))
+            respondieron += 1
+        except Exception as e:
+            print(f"  [WARN] apoyo/SRA: {e}")
+    if "CRA" in APOYO_CAMPO_CAMARAS:
+        try:
+            for c in _cra_listado(session):
+                c["camara"] = "CRA"
+                clave = f"CRA|{c['id']}"
+                if clave in revisadas:
+                    continue
+                completo = _cra_comunicado(c, session)
+                if completo is None:      # otra sección del sitio: no es prensa
+                    revisadas[clave] = {"origen": "no es de la sección Prensa"}
+                    continue
+                if completo["id"] != c["id"]:   # enlace por slug: no volver a bajarla
+                    revisadas[clave] = {"origen": f"slug de CRA|{completo['id']}"}
+                anotar({**completo, "camara": "CRA"}, None)
+            respondieron += 1
+        except Exception as e:
+            print(f"  [WARN] apoyo/CRA: {e}")
+
+    verificado = (store.get("_meta") or {}).get("inventario_verificado")
+    if respondieron == len(APOYO_CAMPO_CAMARAS):
+        verificado = date.today().isoformat()
+    store["_meta"] = {
+        "descripcion": ("Comunicados nuevos de las cámaras del perímetro del campo pendientes de "
+                        "codificar (ADR-0384). Detección automática; la postura y el destinatario "
+                        "los asigna una persona con las reglas de apoyo_empresario_reglas.json. "
+                        "Los pendientes cortan la serie de apoyo_campo en el mes anterior al más "
+                        "viejo, e `inventario_verificado` es la última corrida en la que "
+                        "respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado."),
+        "fuentes": {c: {"CONINAGRO": CONINAGRO_POSTS_URL, "SRA": SRA_COMUNICACION_URL,
+                        "CRA": CRA_PRENSA_URL}[c] for c in APOYO_CAMPO_CAMARAS},
+        "ultima_corrida": date.today().isoformat(),
+        "inventario_verificado": verificado,
+        "comunicados_vistos": vistos,
+        "nuevos_en_la_corrida": nuevas,
+    }
+    APOYO_CAMPO_NOVEDADES_PATH.parent.mkdir(parents=True, exist_ok=True)
+    APOYO_CAMPO_NOVEDADES_PATH.write_text(
+        json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True), encoding="utf-8")
+    return store
+
+
+def avisar_apoyo_campo_pendientes(pendientes: dict) -> None:
+    """Cada comunicado del campo sin codificar va a #monitor-alertas como cotejo
+    manual: mientras haya uno, la serie de `apoyo_campo` se corta."""
+    from cotejo_manual import registrar
+    for clave, p in sorted(pendientes.items()):
+        registrar("apoyo_campo", clave,
+                  "Comunicado sin codificar: la serie se corta en el mes anterior hasta codificarlo "
+                  "con el manual v2 y doble codificación ciega (data/politica/apoyo_campo_codificacion.json).",
+                  p.get("url") or APOYO_CAMPO_NOVEDADES_PATH.name)
+
+
+def apoyo_campo_serie() -> list:
+    """Saldo de postura del campo (cámaras del perímetro) hacia el Ejecutivo
+    nacional, 12 meses móviles. Misma cuenta que `apoyo_empresario_serie`: ver
+    `_apoyo_saldo_serie`. [[YYYY-MM-01, saldo]] ascendente, saldo en [−1, +1]."""
+    return _apoyo_saldo_serie(APOYO_CAMPO_CODIFICACION_PATH, APOYO_CAMPO_CAMARAS,
+                              APOYO_CAMPO_NOVEDADES_PATH, "apoyo_campo",
+                              cobertura_desde=max(APOYO_CAMPO_ARCHIVO_DESDE.get(c, APOYO_CAMPO_DESDE)
+                                                  for c in APOYO_CAMPO_CAMARAS))
+
+
+def fetch_apoyo_campo() -> dict | None:
+    """
+    Postura pública de las cámaras del campo del perímetro hacia el Ejecutivo
+    nacional, saldo en ventana móvil de 12 meses (ADR-0384).
+
+    Más negativo = las cámaras del campo critican más de lo que apoyan.
+    Fuente: comunicados de prensa de los sitios de las cámaras, codificados con
+    el protocolo de ADR-0131 (dos lectores ciegos entre sí, desacuerdos
+    adjudicados por una persona).
+
+    Dimensión: sector privado (ADR-0088).
+    """
+    try:
+        serie = apoyo_campo_serie()
+        fecha, valor = serie[-1]
+        anterior = serie[-13][1] if len(serie) > 13 else None
+        d = json.loads(APOYO_CAMPO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
+        # MISMO perímetro y MISMA ventana que el punto de la serie (ADR-0334).
+        comp = [c for c in d["casos"]
+                if c["camara"] in APOYO_CAMPO_CAMARAS
+                and c["destinatario"] == "ejecutivo_nacional"
+                and c["postura"] in ("apoyo", "critica")
+                and _apoyo_inicio_ventana(fecha[:7]) <= c["fecha"] <= f"{fecha[:7]}-31"]
+        apoyos = sum(1 for c in comp if c["postura"] == "apoyo")
+        try:
+            pend = len(json.loads(APOYO_CAMPO_NOVEDADES_PATH.read_text(
+                encoding="utf-8-sig")).get("pendientes", {}))
+        except (OSError, json.JSONDecodeError):
+            pend = 0
+        return {
+            "valor":          valor,
+            "unidad":         "saldo de postura (−1 a +1, 12m móviles)",
+            # Sin número de ADR: este string se publica (G6).
+            "fuente":         "Comunicados de Coninagro, la SRA y CRA — codificación CIGOB",
+            "fecha_dato":     fecha,
+            "desactualizado": fecha[:7] < date.today().isoformat()[:7],
+            "variacion_12m":  None if anterior is None else round(valor - anterior, 3),
+            "comunicados_ventana": len(comp),
+            "apoyos_ventana":      apoyos,
+            "criticas_ventana":    len(comp) - apoyos,
+            "pendientes_de_codificar": pend,
+            "detalle_txt": (
+                f"En los últimos doce meses {"el conjunto de las cámaras del campo (Coninagro, la SRA y CRA)"} "
+                f"se pronunció {len(comp)} veces sobre medidas del Gobierno nacional: "
+                f"{apoyos} de apoyo y {len(comp) - apoyos} de crítica. Saldo "
+                f"{str(valor).replace('-', '−').replace('.', ',')} en una escala de "
+                f"−1 (todo crítica) a +1 (todo apoyo)."
+                + (f" Hay {pend} comunicado{'s' if pend != 1 else ''} detectado"
+                   f"{'s' if pend != 1 else ''} sin codificar." if pend else "")),
+        }
+    except Exception as e:
+        _warn("apoyo_campo", str(e))
         return None
 
 
@@ -7695,11 +8041,22 @@ def main() -> None:
     except Exception as e:
         print(f"  [WARN] detector de postura del comercio no corrió ({e})")
 
+    # Mismo orden y mismo motivo para el campo (ADR-0384).
+    try:
+        pend_k = detectar_novedades_campo().get("pendientes", {})
+        if pend_k:
+            print(f"  [i] campo: {len(pend_k)} comunicado(s) sin codificar "
+                  f"→ data/politica/apoyo_campo_novedades.json")
+            avisar_apoyo_campo_pendientes(pend_k)
+    except Exception as e:
+        print(f"  [WARN] detector de postura del campo no corrió ({e})")
+
     colectores = [
         ("ratio_dnu",                     fetch_ratio_dnu),
         ("brecha_obra_publica",           fetch_brecha_obra_publica),
         ("apoyo_empresario",              fetch_apoyo_empresario),
         ("apoyo_comercio",                fetch_apoyo_comercio),
+        ("apoyo_campo",                   fetch_apoyo_campo),
         ("conflictividad_nacional",       fetch_conflictividad_nacional),
         ("jornadas_individuales_no_trabajadas_12m",
                                              fetch_jornadas_individuales_no_trabajadas),

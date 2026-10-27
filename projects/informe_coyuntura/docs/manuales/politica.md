@@ -69,7 +69,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **3.4%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 0 meses |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `conceptual` — el ancla es el cero —ningún veto insistido por las dos cámaras en 12 meses—; cada insistencia exige dos tercios en las dos cámaras, así que uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377) |
 
 **Bandas**: ≤ 0 → 100 · 0–2 → 60 · 2–4 → 35 · > 4 → 10
 
@@ -85,7 +85,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **3.4%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 0 meses |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `conceptual` — el ancla es el cero —ningún decreto derogado por las dos cámaras en 12 meses (ley 26.122)—; uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377) |
 
 **Bandas**: ≤ 0 → 100 · 0–2 → 60 · 2–4 → 35 · > 4 → 10
 
@@ -119,7 +119,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **8.2%** |
 | Familia de lectura | recursos |
 | Rezago declarado | 7.5 meses |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `convencion` — cortes -50/-20/+5/+30 pp puestos mirando el rango observado de las 22 ventanas de la gestión (-85% a +38%); sólo el cero como referencia es conceptual (ADR-0378) |
 
 **Bandas**: > 30 → 100 · 5–30 → 85 · -20–5 → 65 · -50–-20 → 40 · ≤ -50 → 10
 
@@ -185,7 +185,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **8.1%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 6 meses |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `convencion` — anclas declaradas por convención —40% de la cámara o más = 100, 30% = 85, 20% = 65, 10% = 40, 5% o menos = 10—, sin calibrar contra el rango observado (ADR-0376) |
 
 **Bandas**: > 45 → 100 · 35–45 → 100 · 25–35 → 85 · 15–25 → 65 · 5–15 → 40 · ≤ 5 → 10
 
@@ -271,7 +271,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **7.0%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `conceptual` — las mismas anclas del saldo de la industria —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie del comercio; no se miró el rango observado, que de hecho toca el extremo +1,0 (ADR-0150, ADR-0380) |
 
 **Bandas**: > 0.6 → 100 · 0.2–0.6 → 85 · -0.2–0.2 → 65 · -0.6–-0.2 → 40 · ≤ -0.6 → 10
 
@@ -283,6 +283,7 @@ Estos indicadores se siguen scrapeando y cacheando, pero están fuera
 del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
+- `apoyo_campo` — Postura pública del campo
 - `bloqueo_sostenido` — Bloqueo legislativo sostenido (declarado como contexto)
 - `brecha_obra_publica` — Brecha de expectativas: obra pública vs. privada
 - `cohesion_bloque_senado` — Cohesión del bloque LLA (Senado, fusionado)
@@ -338,7 +339,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-97 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+98 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -437,3 +438,4 @@ histórica.
 - [0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) — Vetos insistidos y decretos derogados reemplazan a quórum y desafíos
 - [0378](../adr/0378-transferencias-no-automaticas-reemplazan-a-las-automaticas.md) — Las transferencias no automáticas reemplazan a las automáticas
 - [0380](../adr/0380-mas-camaras-en-la-postura-empresaria.md) — Más cámaras en la postura empresaria: entra el comercio
+- [0384](../adr/0384-el-campo-entra-a-la-postura-empresaria.md) — El campo entra a la postura empresaria, pendiente de adjudicación

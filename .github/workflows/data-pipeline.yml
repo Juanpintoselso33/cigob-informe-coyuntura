@@ -281,6 +281,7 @@ jobs:
                   projects/informe_coyuntura/data/politica/csjn_novedades.json \
                   projects/informe_coyuntura/data/politica/apoyo_empresario_novedades.json \
                   projects/informe_coyuntura/data/politica/apoyo_camaras_novedades.json \
+                  projects/informe_coyuntura/data/politica/apoyo_campo_novedades.json \
                   projects/informe_coyuntura/data/vida/carne_serie.json \
                   projects/informe_coyuntura/data/vida/carnes_total_serie.json \
                   projects/informe_coyuntura/data/vida/sentimiento_serie.json \

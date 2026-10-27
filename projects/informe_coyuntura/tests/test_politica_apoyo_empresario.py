@@ -138,7 +138,9 @@ def test_integra_la_dimension_de_sector_privado():
     dim = itcp.DIMENSIONES_ITCP["sector_privado"]["indicadores"]
     # ADR-0372 sacó la brecha de obra pública y dejó la postura sola; ADR-0380
     # suma el comercio, a partes iguales.
-    assert dim == {"apoyo_empresario": 0.5, "apoyo_comercio": 0.5}
+    # ADR-0384: tercios con el campo (suspendido hasta la adjudicación, ADR-0245).
+    assert set(dim) == {"apoyo_empresario", "apoyo_comercio", "apoyo_campo"}
+    assert dim["apoyo_empresario"] == dim["apoyo_comercio"]
     assert abs(sum(dim.values()) - 1.0) < 1e-9
     assert itcp.FAMILIAS_ITCP["apoyo_empresario"] == "tension"
     assert itcp.REZAGO_MESES_ITCP["apoyo_empresario"] == 6.0

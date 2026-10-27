@@ -84,16 +84,23 @@
    "cumple_en_2024_2025_pero_no_en_los_ultimos_12_meses": [
     "CAME"
    ],
-   "candidatas_con_volumen_pero_sin_archivo_completo_o_sin_clasificar": [
-    "Coninagro",
-    "SRA",
-    "CRA"
-   ],
+   "candidatas_con_volumen_pero_sin_archivo_completo_o_sin_clasificar": [],
    "no_cumplen": [
     "CESSI",
     "Argencon",
     "FAA (sin sección de prensa)"
-   ]
+   ],
+   "campo_adr_0384": {
+    "estado": "CLASIFICADAS Y CUMPLEN el mínimo con las lecturas coincidentes; NO ENTRAN al cálculo: hay desacuerdos entre los dos lectores en la ventana que afectan el puntaje y ninguno está adjudicado por una persona (apoyo_campo suspendido).",
+    "cumplen_con_lecturas_coincidentes": [
+     "Coninagro",
+     "SRA",
+     "CRA"
+    ],
+    "no_cumple": [
+     "FAA (sin sección de prensa)"
+    ]
+   }
   },
   "camaras": {
    "CAC": {
@@ -374,45 +381,113 @@
    "Coninagro": {
     "sector": "campo (cooperativas)",
     "url": "https://www.coninagro.org.ar/ (API WordPress /wp-json/wp/v2/posts)",
-    "estado": "CANDIDATA — archivo completo y enumerable, SIN clasificar",
-    "metodo": "preselección por palabras clave (no clasificado)",
+    "estado": "CLASIFICADA (ADR-0384) — cumple el mínimo con las lecturas coincidentes (5 en la ventana), con 3 desacuerdos en la ventana sin adjudicar: fuera del cálculo",
+    "metodo": "clasificada: dos lectores ciegos (Sonnet y Opus), manual v2; los desacuerdos esperan adjudicación humana",
     "comunicados_total": {
      "2023 (desde el 10-dic)": 7,
      "2024": 113,
      "2025": 77,
      "2026": 67
     },
-    "con_postura_preseleccion": {
-     "2023 (desde el 10-dic)": 3,
-     "2024": 17,
-     "2025": 15,
-     "2026": 12
+    "nota": "No separa comunicados de notas: se tomó todo lo publicado (264), con 92 informes estadísticos archivados por regla de título. Mezcla entrevistas y declaraciones de dirigentes.",
+    "descargadas": 264,
+    "informes_estadisticos_archivados": 92,
+    "codificadas": 172,
+    "kappa": {
+     "postura": 0.851,
+     "destinatario": 0.929
     },
-    "ultimos_12_meses_preseleccion": 12,
-    "nota": "Mezcla comunicados con entrevistas y frases de dirigentes («Lo que el campo necesita es una quita de retenciones por ley») y muchos informes técnicos (semáforo de economías regionales, relaciones insumo-producto). La preselección sobreestima; hay que clasificar los ~50 candidatos para saber cuántos son de la cámara y cuántos dirigidos al Ejecutivo."
+    "desacuerdos": {
+     "total": 15,
+     "en_la_ventana_que_afectan_el_puntaje": 3
+    },
+    "con_postura_cualquier_destinatario_por_anio_por_acuerdo": {
+     "2023": 2,
+     "2024": 9,
+     "2025": 10,
+     "2026": 9
+    },
+    "al_ejecutivo_con_postura_por_anio_por_acuerdo": {
+     "2023": 2,
+     "2024": 5,
+     "2025": 7,
+     "2026": 5
+    },
+    "ventana_nov2025_oct2026_por_acuerdo": {
+     "al_ejecutivo_con_postura": 5,
+     "apoyos_al_ejecutivo": 2,
+     "criticas_al_ejecutivo": 3
+    }
    },
    "SRA": {
     "sector": "campo (Sociedad Rural)",
     "url": "https://www.sra.ar/comunicacion/",
-    "estado": "CANDIDATA — el archivo del sitio empieza en enero de 2025, SIN clasificar",
-    "metodo": "preselección por palabras clave (no clasificado)",
+    "estado": "CLASIFICADA (ADR-0384) — cumple el mínimo con las lecturas coincidentes (7 en la ventana), con 1 desacuerdo en la ventana sin adjudicar: fuera del cálculo. El sitio sólo conserva archivo desde el 21-ene-2025",
+    "metodo": "clasificada: dos lectores ciegos (Sonnet y Opus), manual v2; los desacuerdos esperan adjudicación humana",
     "comunicados_total": {
      "2025": 112,
      "2026": 117
     },
-    "con_postura_preseleccion": {
-     "2025": 21,
-     "2026": 9
+    "nota": "Sitio nuevo: no hay nada de dic-2023 a ene-2025 y el sitio anterior (ruralarg.org.ar) no responde. Por eso la serie de apoyo_campo arranca en enero de 2026.",
+    "descargadas": 231,
+    "informes_estadisticos_archivados": 3,
+    "codificadas": 228,
+    "kappa": {
+     "postura": 0.965,
+     "destinatario": 0.966
     },
-    "ultimos_12_meses_preseleccion": 15,
-    "nota": "Sitio nuevo: no hay nada de dic-2023 a dic-2024 y el sitio anterior (ruralarg.org.ar) no respondió en dos pruebas. Entre los candidatos de los últimos 12 meses: «La SRA sobre el anuncio de baja de retenciones» (9-dic-2025), «El Gobierno contempló las propuestas de la SRA sobre reforma laboral» (11-dic-2025), «La SRA se presentó ante la Justicia para apoyar la validez de la Ley de Modernización Laboral» (4-may-2026), «El campo cumple cuando hay previsibilidad: es momento de profundizar el alivio fiscal» (26-mar-2026). Habría que recuperar 2024 del sitio anterior (archivo web) para tener la serie completa."
+    "desacuerdos": {
+     "total": 5,
+     "en_la_ventana_que_afectan_el_puntaje": 1
+    },
+    "con_postura_cualquier_destinatario_por_anio_por_acuerdo": {
+     "2025": 16,
+     "2026": 10
+    },
+    "al_ejecutivo_con_postura_por_anio_por_acuerdo": {
+     "2025": 11,
+     "2026": 4
+    },
+    "ventana_nov2025_oct2026_por_acuerdo": {
+     "al_ejecutivo_con_postura": 7,
+     "apoyos_al_ejecutivo": 6,
+     "criticas_al_ejecutivo": 1
+    }
    },
    "CRA": {
     "sector": "campo (Confederaciones Rurales)",
-    "url": "https://www.cra.org.ar/prensa/",
-    "estado": "CANDIDATA — volumen alto pero el corpus histórico no se puede enumerar desde el listado, SIN clasificar",
-    "metodo": "muestra de la portada de /prensa/ (21 comunicados del 24-ago al 14-sep-2026)",
-    "nota": "En tres semanas publicó 21 comunicados de prensa, al menos 8 con postura sobre proyectos o políticas (rechazo al proyecto de ecocidio, bonos de carbono, vandalismo rural, «eliminar totalmente las retenciones»). El listado no pagina y los ids se comparten con otras secciones: recuperar el histórico exige enumerar ids o usar un archivo web."
+    "url": "https://www.cra.org.ar/prensa/ (listado: solo hasta feb-2026; histórico recuperado enumerando /prensa/<id>/, sección Prensa por articleSection del JSON-LD)",
+    "estado": "CLASIFICADA (ADR-0384) — cumple el mínimo con las lecturas coincidentes (34 en la ventana), con 9 desacuerdos en la ventana sin adjudicar: fuera del cálculo",
+    "metodo": "clasificada: dos lectores ciegos (Sonnet y Opus), manual v2; los desacuerdos esperan adjudicación humana",
+    "nota": "Archivo completo desde dic-2023 recuperado por enumeración de ids (3.300 ids revisados; 364 notas de Prensa, el resto es «Actualidad», redirecciones o 404). Domina el volumen del campo.",
+    "descargadas": 360,
+    "informes_estadisticos_archivados": 0,
+    "codificadas": 360,
+    "kappa": {
+     "postura": 0.796,
+     "destinatario": 0.858
+    },
+    "desacuerdos": {
+     "total": 62,
+     "en_la_ventana_que_afectan_el_puntaje": 9
+    },
+    "con_postura_cualquier_destinatario_por_anio_por_acuerdo": {
+     "2023": 3,
+     "2024": 40,
+     "2025": 36,
+     "2026": 48
+    },
+    "al_ejecutivo_con_postura_por_anio_por_acuerdo": {
+     "2023": 1,
+     "2024": 19,
+     "2025": 31,
+     "2026": 33
+    },
+    "ventana_nov2025_oct2026_por_acuerdo": {
+     "al_ejecutivo_con_postura": 34,
+     "apoyos_al_ejecutivo": 1,
+     "criticas_al_ejecutivo": 33
+    }
    },
    "FAA": {
     "sector": "campo (Federación Agraria)",
@@ -456,6 +531,6 @@
     "nota": "argencon.org.ar no responde; el sitio real es argencon.org. Son encuestas de perspectivas a los socios, un podcast y datos de exportaciones. El único con lectura de política es de marzo de 2025 («la salida del cepo fortalecerá el crecimiento»)."
    }
   },
-  "pendiente_decidido": "Si se quiere sumar el campo con las cámaras que ya están: clasificar Coninagro (archivo completo) con el mismo protocolo, y pedir recuperar el archivo de la SRA de 2024; la CRA exige enumerar ids. Ninguna de las tres se incorporó a este índice porque con el material de hoy no se puede cerrar un corpus completo desde dic-2023 (ADR-0310)."
+  "pendiente_decidido": "Tecnología (CESSI, Argencon): sin comunicados de postura. Campo: adjudicar los 82 desacuerdos de apoyo_campo_desacuerdos.json (13 afectan el puntaje) y sacar apoyo_campo de INDICADORES_SUSPENDIDOS."
  }
 }

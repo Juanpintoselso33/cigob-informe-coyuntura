@@ -230,6 +230,14 @@ BANDAS_ITCP = {
         # saldo sea otro.
         (0.6, INF, 100), (0.2, 0.6, 85), (-0.2, 0.2, 65), (-0.6, -0.2, 40), (-INF, -0.6, 10),
     ],
+    "apoyo_campo": [
+        # Saldo de postura de las cámaras del campo hacia el Ejecutivo nacional,
+        # 12m móviles. Mismas anclas que `apoyo_empresario` y `apoyo_comercio`
+        # (ADR-0150, ADR-0380), fijadas ANTES de ver la serie del campo
+        # (ADR-0045, ADR-0384): el rango teórico (−1 a +1) en cinco tramos
+        # iguales de 0,4 centrados en el cero.
+        (0.6, INF, 100), (0.2, 0.6, 85), (-0.2, 0.2, 65), (-0.6, -0.2, 40), (-INF, -0.6, 10),
+    ],
     "ratio_dnu": [
         # ADR-0058 cambió la ventana (año calendario → móvil de 365 días) SIN
         # tocar estas anclas (ADR-0059 revirtió una recalibración de un día:
@@ -764,7 +772,15 @@ DIMENSIONES_ITCP = {
         # porque ninguna de sus cámaras tiene hoy un corpus completo desde
         # diciembre de 2023 (ver apoyo_camaras_relevamiento.json). 50/50 y no
         # por volumen de comunicados: cada sector es un voto, no cada comunicado.
-        "indicadores": {"apoyo_empresario": 0.5, "apoyo_comercio": 0.5},
+        #
+        # ADR-0384 (2026-10-27): se suma el campo (Coninagro, SRA y CRA) como
+        # tercer sector, un tercio cada uno. El indicador nace SUSPENDIDO
+        # (INDICADORES_SUSPENDIDOS): las tres cámaras cumplen el mínimo de
+        # Luis, pero hay desacuerdos entre los dos lectores en comunicados
+        # dirigidos al Ejecutivo dentro de la ventana, y ninguno está
+        # adjudicado por una persona. Mientras tanto la dimensión se reparte
+        # 50/50 entre industria y comercio, porque un suspendido libera su peso.
+        "indicadores": {"apoyo_empresario": 0.3333, "apoyo_comercio": 0.3333, "apoyo_campo": 0.3334},
     },
 }
 
@@ -798,6 +814,21 @@ INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cep
 # `publicar.py` los suma a POLITICA_OCULTOS, así que tampoco se muestran: la
 # regla del tablero es que si no puntúa, no es card (ADR-0051/0153/0189).
 INDICADORES_SUSPENDIDOS = {
+    "apoyo_campo": {
+        "dimension": "sector_privado",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0384",
+        "por_que": "La postura pública del campo (Coninagro, SRA y CRA) cumple "
+                   "el mínimo de entrada, pero hay desacuerdos entre los dos "
+                   "lectores de los comunicados dirigidos al Ejecutivo dentro "
+                   "de la ventana de doce meses, y ninguno fue adjudicado por "
+                   "una persona: el puntaje dependería de cómo se resuelvan.",
+        "condicion_reingreso": "Que una persona adjudique los desacuerdos de "
+                               "data/politica/apoyo_campo_desacuerdos.json y "
+                               "los traslade al registro; sacar esta entrada "
+                               "es todo lo que falta.",
+    },
     "iaf_transferencias": {
         "dimension": "alianzas_territoriales",
         "desde": "2026-10",
@@ -914,6 +945,7 @@ FAMILIAS_ITCP = {
     "jornadas_individuales_no_trabajadas_12m": "tension",  # intensidad laboral
     "apoyo_empresario": "tension",             # lo que las cámaras dicen del Gobierno
     "apoyo_comercio": "tension",               # lo que las cámaras del comercio dicen del Gobierno
+    "apoyo_campo": "tension",                  # lo que las cámaras del campo dicen del Gobierno
     "alineamiento_senadores_prov": "tension",  # cómo votan los senadores provinciales
     "adhesion_reformas_provincial": "tension", # qué deciden las legislaturas provinciales
     # ADR-0168: los cuatro entran por la regla de ADR-0166 — responden "cuánto
@@ -987,6 +1019,7 @@ REZAGO_MESES_ITCP = {
     # sólo el centroide de la ventana.
     "apoyo_empresario": 6.0,
     "apoyo_comercio": 6.0,        # misma ventana móvil de 12 meses sobre comunicados fechados
+    "apoyo_campo": 6.0,           # ídem (ADR-0384)
     # El padrón se publica con ~1-2 meses de rezago, pero la serie se corrige
     # con los registros de designaciones y renuncias, que están al día: el
     # rezago efectivo del último punto es el de esos registros (ADR-0126).

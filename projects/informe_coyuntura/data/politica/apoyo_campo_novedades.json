@@ -1,0 +1,2645 @@
+{
+ "_meta": {
+  "comunicados_vistos": 124,
+  "descripcion": "Comunicados nuevos de las cámaras del perímetro del campo pendientes de codificar (ADR-0384). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_campo en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
+  "fuentes": {
+   "CONINAGRO": "https://www.coninagro.org.ar/wp-json/wp/v2/posts",
+   "CRA": "https://www.cra.org.ar/prensa/",
+   "SRA": "https://www.sra.ar/comunicacion/"
+  },
+  "inventario_verificado": "2026-10-27",
+  "nuevos_en_la_corrida": 0,
+  "ultima_corrida": "2026-10-27"
+ },
+ "pendientes": {},
+ "revisadas": {
+  "CONINAGRO|68761": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|68955": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|68970": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|68975": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|68982": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|68993": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69030": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69046": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69053": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69059": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69064": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69067": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69074": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69080": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69090": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69102": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69108": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69120": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69126": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69132": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69146": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69150": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69156": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69161": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69174": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69184": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69189": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69197": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69212": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69229": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69235": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69247": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69278": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69287": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69310": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69330": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69340": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69346": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69355": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69376": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69406": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69409": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69419": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69425": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69430": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69435": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69439": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69444": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69448": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69456": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69469": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69476": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69494": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69516": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69531": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69535": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69560": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69576": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69588": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69616": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69638": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69648": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69657": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69673": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69681": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69688": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69701": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69708": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69722": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69739": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69759": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69803": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69813": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69818": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69825": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69829": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69842": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69854": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69859": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69870": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69876": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69884": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69889": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69915": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69960": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69980": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69983": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|69987": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|69992": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70010": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70023": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70035": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70042": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70055": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70063": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70076": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70081": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70085": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70092": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70105": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70111": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70122": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70126": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70139": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70143": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70149": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70161": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70166": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70184": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70189": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70208": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70224": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70241": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70249": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70271": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70285": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70304": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70314": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70318": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70344": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70352": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70364": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70376": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70381": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70388": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70398": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70406": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70419": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70436": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70439": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70448": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70461": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70488": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70537": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70542": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70548": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70581": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70587": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70609": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70617": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70626": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70633": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70637": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70641": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70649": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70658": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70668": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70687": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70704": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70707": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70719": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70725": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70743": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70754": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70791": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70800": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70846": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70855": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70862": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70872": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70877": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|70882": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70885": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|70896": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71032": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71106": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71116": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71121": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71128": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71135": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71145": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71158": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71172": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71180": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71191": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71200": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71203": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71235": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71249": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71255": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71260": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71271": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71311": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71323": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71330": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71334": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71340": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71342": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71346": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71349": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71356": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71371": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71398": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71410": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71425": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71431": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71447": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71458": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71473": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71481": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71487": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71497": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71503": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71516": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71535": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71541": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71551": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71563": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71570": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71580": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71607": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71620": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71625": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71643": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71709": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71734": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71754": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71758": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71768": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71791": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71795": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71807": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71812": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71830": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71839": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71863": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71870": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71875": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71886": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71889": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71896": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71910": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71918": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71922": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71926": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71937": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71942": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71954": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|71969": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|71992": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72005": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72013": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72025": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|72034": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72068": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72088": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72095": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|72100": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72105": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72115": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|72125": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72132": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72140": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|72155": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|72163": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|72199": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72204": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72212": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|72290": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72301": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|72312": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72321": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72325": {
+   "origen": "no se codifica (ADR-0384): informe estadístico periódico"
+  },
+  "CONINAGRO|72347": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28552": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28572": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28573": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28586": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28593": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28594": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28604": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28609": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28615": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28651": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28662": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28671": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28699": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28712": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28728": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28729": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28744": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28746": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28747": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28773": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28786": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28797": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28809": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28816": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28832": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28844": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28846": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28876": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28883": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28884": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28910": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28921": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28922": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28945": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28981": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28988": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|28995": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29000": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29017": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29024": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29041": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29054": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29055": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29084": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29085": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29092": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29098": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29106": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29107": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29114": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29115": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29131": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29132": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29137": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29138": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29145": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29146": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29152": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29168": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29175": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29177": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29183": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29201": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29213": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29226": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29227": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29228": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29229": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29258": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29259": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29266": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29285": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29291": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29298": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29304": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29305": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29322": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29323": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29324": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29325": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29361": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29378": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29379": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29380": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29381": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29382": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29397": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29398": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29427": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29428": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29429": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29430": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29435": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29437": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29438": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29439": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29440": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29441": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29455": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29462": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29463": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29477": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29490": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29515": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29551": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29565": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29574": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29575": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29576": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29589": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29600": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29612": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29616": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29617": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29635": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29646": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29657": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29667": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29689": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29760": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29766": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29767": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29823": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29831": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29849": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29854": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29860": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29861": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29862": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29863": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29864": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29870": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29886": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29893": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29901": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29907": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29930": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29982": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|29995": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30008": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30014": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30031": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30032": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30033": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30034": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30038": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30049": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30071": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30077": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30078": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30091": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30097": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30103": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30115": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30122": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30123": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30160": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30187": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30230": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30249": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30295": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30296": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30303": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30315": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30323": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30324": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30325": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30326": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30327": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30332": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30333": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30334": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30335": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30336": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30344": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30345": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30346": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30350": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30357": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30358": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30386": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30387": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30389": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30390": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30391": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30408": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30409": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30410": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30411": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30426": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30427": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30428": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30429": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30430": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30443": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30444": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30445": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30482": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30483": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30484": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30498": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30499": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30500": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30502": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30503": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30504": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30538": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30561": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30562": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30563": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30564": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30586": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30587": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30588": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30609": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30629": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30630": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30644": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30645": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30646": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30659": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30661": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30683": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30697": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30772": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30773": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30774": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30775": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30780": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30781": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30792": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30803": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30810": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30811": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30812": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30813": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30819": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30820": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30848": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30849": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30850": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30855": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30871": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30872": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30878": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30891": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30909": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30929": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30936": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30948": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|30970": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31021": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31033": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31037": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31048": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31049": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31050": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31057": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31066": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31101": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31124": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31129": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31134": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31152": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31175": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31176": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31177": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31178": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31179": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31180": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31183": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31187": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31226": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31227": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31233": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31260": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31266": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31283": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31300": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31317": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31318": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31319": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31349": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31350": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31351": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31352": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31378": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31379": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31380": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31381": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31403": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31404": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31405": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31406": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31407": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31414": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31433": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31440": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31441": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31453": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31458": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31459": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31460": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31466": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31467": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31468": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31469": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31470": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31476": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31493": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31494": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31495": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31503": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31504": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31541": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31542": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31543": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31544": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31550": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31551": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31552": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31553": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31554": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31566": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31575": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31576": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31584": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31585": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31586": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31604": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31606": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31608": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31620": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31621": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31622": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31623": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31624": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31625": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31641": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31642": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31650": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31651": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31652": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31653": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31658": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31670": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31688": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31694": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31704": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31705": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31706": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31707": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31709": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31710": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31711": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31712": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31713": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31714": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31716": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|31717": {
+   "origen": "codificacion ADR-0384"
+  },
+  "CRA|argencarne-2026-cerro-seis-jornadas-con-una-fuerte-impronta-federal-y-el-protagonismo-de-las-nuevas-generaciones": {
+   "origen": "slug de CRA|31714"
+  },
+  "CRA|argencarne-2026-la-produccion-porcina-puso-en-agenda-la-integracion-y-el-desarrollo-de-la-cadena": {
+   "origen": "slug de CRA|31717"
+  },
+  "CRA|argencarne-2026-la-raza-wagyu-exhibio-sus-bondades-en-un-remate-virtual-de-alfredo-s-mondino": {
+   "origen": "slug de CRA|31711"
+  },
+  "CRA|argencarne-2026-las-provincias-debatieron-el-desarrollo-de-las-cadenas-carnicas-y-quedo-inaugurada-oficialmente-la-exposicion": {
+   "origen": "slug de CRA|31712"
+  },
+  "CRA|argencarne-2026-se-presento-la-raza-ovina-suffolk-y-su-gran-potencial-para-producir-carne": {
+   "origen": "slug de CRA|31709"
+  },
+  "CRA|argencarne-2026-siete-remates-y-una-ganaderia-que-mostro-todo-su-potencial": {
+   "origen": "slug de CRA|31707"
+  },
+  "CRA|argencarne-2026-una-jornada-que-puso-al-consumidor-en-el-centro-y-tendio-puentes-entre-la-produccion-la-alimentacion-y-el-deporte": {
+   "origen": "slug de CRA|31710"
+  },
+  "CRA|castagnani-en-argencarne-las-retenciones-son-una-deuda-pendiente-con-la-produccion-argentina": {
+   "origen": "slug de CRA|31704"
+  },
+  "CRA|castagnani-en-el-congreso-de-ateneos-cra-los-jovenes-son-el-presente-y-la-gran-potencia-del-campo-argentino": {
+   "origen": "slug de CRA|31653"
+  },
+  "CRA|con-un-despliegue-de-genetica-produccion-y-gastronomia-la-produccion-ovina-mostro-su-potencial-en-la-argencarne-que-se-realizo-en-la-sociedad-rural-de-rio-cuarto": {
+   "origen": "slug de CRA|31716"
+  },
+  "CRA|cra-acompana-a-la-sociedad-rural-saltena-y-a-prograno-en-la-solicitud-para-recuperar-los-ramales-c14-y-c15-del-belgrano-cargas": {
+   "origen": "slug de CRA|31670"
+  },
+  "CRA|cra-en-la-expo-rural-de-coronel-suarez-nuestra-unica-bandera-es-la-defensa-del-productor": {
+   "origen": "slug de CRA|31650"
+  },
+  "CRA|cra-impulsa-una-red-federal-de-asistencia-para-productores-afectados-por-las-inundaciones": {
+   "origen": "slug de CRA|31705"
+  },
+  "CRA|cra-para-los-productores-la-vacuna-contra-la-aftosa-no-es-un-costo-es-un-seguro": {
+   "origen": "slug de CRA|31706"
+  },
+  "CRA|cra-rechaza-los-descuentos-al-productor-ganadero-bajo-el-argumento-de-libre-de-deforestacion": {
+   "origen": "slug de CRA|31694"
+  },
+  "CRA|el-ipcva-realizo-el-novillo-challenge-en-argencarne-2026": {
+   "origen": "slug de CRA|31713"
+  },
+  "CRA|el-precedente-que-deja-la-corte-con-la-ley-de-tierras": {
+   "origen": "slug de CRA|31651"
+  },
+  "CRA|fundacion-cra-renovo-sus-autoridades-y-reafirmo-su-compromiso-con-la-formacion-de-nuevos-dirigentes-rurales": {
+   "origen": "slug de CRA|31652"
+  },
+  "CRA|juventud-que-se-capacita-autoridades-presentes-y-cuatro-ejes-tematicos-asi-fue-el-congreso-nacional-de-ateneos-cra-2026-en-tucuman": {
+   "origen": "slug de CRA|31658"
+  },
+  "CRA|mendoza-mas-de-40-productores-participaron-de-la-jornada-tecnica-de-oregano-de-san-carlos": {
+   "origen": "slug de CRA|31688"
+  },
+  "CRA|vandalismo-rural-el-proyecto-impulsado-por-cra-avanza-en-el-congreso": {
+   "origen": "slug de CRA|31642"
+  },
+  "SRA|1": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|10": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|100": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|101": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|102": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|103": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|104": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|105": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|106": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|107": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|108": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|109": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|11": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|110": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|111": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|112": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|113": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|114": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|115": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|116": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|117": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|118": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|119": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|12": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|120": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|121": {
+   "origen": "no se codifica (ADR-0384): página sin contenido de comunicado"
+  },
+  "SRA|122": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|124": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|126": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|128": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|129": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|13": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|130": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|131": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|132": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|133": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|134": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|135": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|136": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|137": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|138": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|139": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|14": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|140": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|141": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|142": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|143": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|144": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|145": {
+   "origen": "no se codifica (ADR-0384): página sin contenido de comunicado"
+  },
+  "SRA|146": {
+   "origen": "no se codifica (ADR-0384): página sin contenido de comunicado"
+  },
+  "SRA|147": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|148": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|149": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|15": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|150": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|151": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|152": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|153": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|154": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|155": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|157": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|158": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|159": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|16": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|160": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|161": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|162": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|163": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|164": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|165": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|166": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|167": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|168": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|169": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|17": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|170": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|171": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|172": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|173": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|174": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|175": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|176": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|177": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|178": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|179": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|18": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|180": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|181": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|182": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|183": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|184": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|185": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|186": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|187": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|188": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|189": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|19": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|190": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|191": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|192": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|193": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|194": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|195": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|196": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|197": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|198": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|199": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|2": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|20": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|200": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|201": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|203": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|204": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|205": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|206": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|207": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|208": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|21": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|210": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|211": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|212": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|213": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|214": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|215": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|217": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|218": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|219": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|22": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|220": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|221": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|222": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|224": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|225": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|226": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|227": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|228": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|229": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|23": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|230": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|231": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|232": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|233": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|234": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|235": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|236": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|237": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|238": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|239": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|240": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|241": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|242": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|244": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|245": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|246": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|249": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|25": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|26": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|29": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|3": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|30": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|31": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|32": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|36": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|37": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|38": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|39": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|4": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|40": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|41": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|42": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|43": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|44": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|45": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|46": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|47": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|48": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|49": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|5": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|50": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|51": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|52": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|53": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|54": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|55": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|56": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|57": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|58": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|59": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|6": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|60": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|61": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|62": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|63": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|64": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|65": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|66": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|67": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|68": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|69": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|7": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|70": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|71": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|72": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|73": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|74": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|75": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|76": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|77": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|78": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|8": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|80": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|81": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|82": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|83": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|84": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|85": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|86": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|87": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|88": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|89": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|9": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|90": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|91": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|92": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|93": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|94": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|95": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|96": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|97": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|98": {
+   "origen": "codificacion ADR-0384"
+  },
+  "SRA|99": {
+   "origen": "codificacion ADR-0384"
+  }
+ }
+}

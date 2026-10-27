@@ -207,7 +207,9 @@ def test_las_bandas_del_comercio_son_las_de_la_industria():
 
 def test_sector_privado_reparte_a_partes_iguales_industria_y_comercio():
     dim = itcp.DIMENSIONES_ITCP["sector_privado"]["indicadores"]
-    assert dim == {"apoyo_empresario": 0.5, "apoyo_comercio": 0.5}
+    # ADR-0384: tercios con el campo, que nace suspendido; industria y comercio
+    # quedan 50/50 efectivo porque un suspendido libera su peso (ADR-0245).
+    assert dim["apoyo_empresario"] == dim["apoyo_comercio"]
     assert abs(sum(dim.values()) - 1.0) < 1e-9
     assert itcp.FAMILIAS_ITCP["apoyo_comercio"] == "tension"
     assert itcp.REZAGO_MESES_ITCP["apoyo_comercio"] == itcp.REZAGO_MESES_ITCP["apoyo_empresario"] == 6.0

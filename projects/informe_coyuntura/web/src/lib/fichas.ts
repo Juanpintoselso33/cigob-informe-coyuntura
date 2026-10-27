@@ -1489,6 +1489,44 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  apoyo_campo: {
+    tipo: "indicador",
+    id: "apoyo_campo",
+    cinturon: "politica",
+    rezago: "Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona.",
+    fuente: {
+      organismo: "Coninagro, Sociedad Rural Argentina (SRA) y Confederaciones Rurales Argentinas (CRA)",
+      operacion: "Notas fechadas de las secciones de prensa de sus sitios",
+      url: "https://www.cra.org.ar/prensa/",
+      acceso: "Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona.",
+    },
+    transformaciones: [
+      "Se toma cada nota publicada en el sitio de las tres cámaras desde el 10 de diciembre de 2023, con su texto completo. Coninagro no separa los comunicados de las notas, así que se toma todo; la SRA conserva archivo sólo desde el 21 de enero de 2025; de la CRA se toma la sección Prensa y no la de noticias de mercado. Los informes estadísticos periódicos de Coninagro —semáforo de economías regionales, relaciones insumo-producto, «Del sueldo al plato», datos de inflación— son la salida de un tablero y no una toma de posición: se archivan sin clasificar, por una regla de título escrita antes de clasificar (92 de 264).",
+      "Cada nota se clasifica en dos ejes, con las mismas reglas escritas antes de mirar el material que usan la industria y el comercio: qué dice sobre lo que comenta —respalda, critica o no toma posición— y a quién le habla, que puede ser el Gobierno nacional, el Congreso, una provincia o municipio, la Justicia, o un asunto externo o de la propia entidad.",
+      "Sólo entran al cálculo las notas dirigidas al Gobierno nacional que respaldan o critican. Las que informan una reunión, un acto institucional, un cambio de autoridades o una condolencia no toman posición y quedan afuera, igual que las dirigidas a los otros poderes y a las provincias.",
+      "El indicador es el saldo de los últimos doce meses con las tres cámaras juntas: apoyos menos críticas, dividido por el total. Va de −1, si todo fue crítica, a +1 si todo fue apoyo. Un mes con menos de tres pronunciamientos queda sin valor y no se rellena con cero, y la serie arranca en enero de 2026, el primer mes cuya ventana cae entera dentro del archivo de la SRA.",
+      "La serie llega sólo hasta el último mes con todas las notas clasificadas. Si aparece una sin clasificar, el mes de esa nota y los siguientes no se calculan hasta clasificarla.",
+    ],
+    incidenciaTexto: [
+      "El puntaje del índice se asigna por bandas del saldo, las mismas que la postura de la industria y del comercio y fijadas antes de ver esta serie: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo.",
+      "Pesaría un tercio de la dimensión de sector privado, junto a la industria y el comercio. Mientras esté suspendido no puntúa: se repone cuando una persona resuelve los desacuerdos entre los dos lectores, y mientras tanto la dimensión se reparte entre industria y comercio. Con las notas en que los dos lectores coinciden el saldo sería −0,61 sobre 46 pronunciamientos (9 de apoyo y 37 de crítica), en el tramo más bajo.",
+    ],
+    limitaciones: [
+      "Mide lo que tres asociaciones decidieron declarar en público, no el humor de los productores ni la opinión de sus asociados.",
+      "Las tres cámaras se suman por nota, no por cámara: la CRA publica mucho más que las otras (34 de los 46 pronunciamientos de la ventana, con casi todas críticas) y domina el saldo. Un reparto por cámara daría otro número. La Federación Agraria no tiene sección de prensa y no está.",
+      "Coninagro mezcla comunicados con entrevistas y declaraciones de sus dirigentes, y algunas notas de la CRA son discursos de sus dirigentes en exposiciones rurales; los lectores las clasifican con las mismas reglas, y son las que más desacuerdo generaron.",
+      "Hay 82 notas en que los dos lectores no coincidieron, 13 de ellas dentro de la ventana y en notas que alguna de las dos lecturas clasifica como dirigidas al Gobierno nacional con postura. Ninguna está resuelta: las resuelve una persona (data/politica/apoyo_campo_desacuerdos.json). Hasta entonces no cuentan y el indicador no puntúa.",
+      "La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta las notas nuevas y avisa cada una como pendiente; mientras haya una sin clasificar la serie no avanza.",
+      "Para verificar que las reglas no dejan lugar a la interpretación, las notas las clasificaron por separado dos lectores independientes que no ven el trabajo del otro: coincidieron en el 92% de las posturas y en el 94% de los destinatarios (kappa de 0,85 y 0,90). Ambos son sistemas de inteligencia artificial, de dos modelos distintos, que comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta.",
+      "La ventana de doce meses hace que el indicador describa, en promedio, la situación de seis meses atrás.",
+    ],
+    faltantes: "Si los sitios de las cámaras no responden, el indicador no cambia: se calcula sobre el registro ya clasificado, que está guardado. Lo que se pierde es el aviso de notas nuevas.",
+    revisiones: "El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.",
+    cambios: [
+      { fecha: "2026-10-27", cambio: "Se releva y se clasifica la postura pública del campo (Coninagro, SRA y CRA) con el mismo método que la industria y el comercio: 760 notas leídas por dos lectores ciegos. Las tres cámaras cumplen el mínimo de cuatro pronunciamientos dirigidos al Gobierno nacional en doce meses, pero hay desacuerdos entre los lectores en notas que cuentan para el saldo, y una persona tiene que resolverlos: el indicador queda suspendido y la dimensión de sector privado sigue entre industria y comercio, sin cambio en el índice.", adr: "0384" },
+    ],
+  },
+
   apoyo_comercio: {
     tipo: "indicador",
     id: "apoyo_comercio",

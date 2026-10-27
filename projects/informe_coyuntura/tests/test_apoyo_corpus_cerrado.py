@@ -96,7 +96,8 @@ def test_ya_no_esta_suspendido():
     import itcp
     assert "apoyo_empresario" not in itcp.INDICADORES_SUSPENDIDOS
     # 1.0 desde ADR-0372; 0.5 desde que el comercio se suma a partes iguales (ADR-0380)
-    assert itcp.DIMENSIONES_ITCP["sector_privado"]["indicadores"]["apoyo_empresario"] == 0.5
+    # 0.3333 desde ADR-0384 (tercios; el campo nace suspendido y libera su peso)
+    assert itcp.DIMENSIONES_ITCP["sector_privado"]["indicadores"]["apoyo_empresario"] == 0.3333
 
 
 # ── Lo que agregó la revisión de Codex ───────────────────────────────────────
