@@ -1633,8 +1633,8 @@ export const FICHAS: Record<string, Ficha> = {
       "El archivo anual oficial, que sólo llega hasta 2025, ancla la unidad de cada año cerrado. El año en curso no está en él: hereda la unidad del anterior y el cálculo se detiene si el nivel mensual no es compatible (un cambio de miles a millones no pasa por inflación).",
     ],
     incidenciaTexto: [
-      "El puntaje del índice se asigna por bandas de la variación real, interpolado entre anclas: más de +10% → el más alto; entre 0% y +10% → alto; entre −10% y 0% → moderado; entre −20% y −10% → bajo; −20% o menos → el más bajo.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (20,4% del total), donde pesa 40% junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI.",
+      "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice: su valor no se convierte en puntaje ni pesa en la dimensión de alianzas territoriales. La escala con que puntuaba hasta entonces se conserva para leer la serie histórica con la misma regla con que se construyó: El puntaje del índice se asigna por bandas de la variación real, interpolado entre anclas, hasta septiembre de 2026: más de +10% → el más alto; entre 0% y +10% → alto; entre −10% y 0% → moderado; entre −20% y −10% → bajo; −20% o menos → el más bajo.",
+      "Hasta septiembre de 2026 pesó 40% de la dimensión, junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI. Ese 40% pasó íntegro a la medida de transferencias no automáticas, que reemplaza a ésta: la reunión del 26 de octubre decidió medir lo que la Nación gira por decisión y no lo que a las provincias les corresponde por ley.",
     ],
     limitaciones: [
       "Una ventana de 12 meses promedia lo ocurrido: un giro de pocas semanas se diluye y la medida describe, en promedio, lo de hace unos seis meses. Mira la tendencia, no el último mes.",
@@ -1655,6 +1655,44 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-25", cambio: "La fórmula y la ficha se sincronizan con esa deflación. Seguían describiendo una suma anual dividida por un IPC promedio —el método reemplazado— y la fuente anual que dejó de usarse. Ahora quedan explícitos los cinco términos del contrato: qué jurisdicciones entran (Provincias, Ciudad de Buenos Aires y Fondo Compensador, con la compensación del Consenso Fiscal) y cuáles no, qué clase de transferencia (automáticas, no discrecionales), la ventana (dos años calendario completos), el deflactor (IPC nacional del INDEC, mes a mes) y la base común a la que se llevan los doce flujos antes de sumarse. Ningún valor cambia.", adr: "0263" },
       { fecha: "2026-09-08", cambio: "El cotejo de los 24 flujos originales reproduce 1,6365% real para 2025 y coincide con 1,6% de la OPC. Se aclara que el deflactor implícito es un cociente, no la resta de tasas; el cálculo ya usaba la fórmula correcta." },
       { fecha: "2026-10-10", cambio: "Pasa de comparar el último año calendario cerrado contra el anterior (el dato se quedaba en diciembre de 2025, con diez meses de rezago) a los últimos 12 meses móviles contra los 12 previos, con fecha en el último mes con IPC publicado (agosto de 2026: −1,8% real). La planilla de Hacienda ya traía enero a septiembre de 2026. Es la misma escala y las mismas bandas: el valor de diciembre coincide con el anual de antes. La serie pasa de un punto por año a uno por mes.", adr: "0353" },
+      { fecha: "2026-10-27", cambio: "Sale del índice político: mide transferencias automáticas (coparticipación y fondos de ley del RON), que son lo que a las provincias les corresponde y no una decisión de la Nación. Lo reemplaza, con el mismo peso, la medida de transferencias no automáticas (ATN y transferencias por programa, de Presupuesto Abierto). La serie y las bandas se conservan.", adr: "0378" },
+    ],
+  },
+
+  transferencias_no_automaticas: {
+    tipo: "indicador",
+    id: "transferencias_no_automaticas",
+    cinturon: "politica",
+    rezago: "Compara los últimos 12 meses con los 12 anteriores y termina en el último mes cerrado que tiene IPC publicado: el devengado de un mes queda en Presupuesto Abierto a fin de ese mes (el mes en curso viene parcial y no se usa) y el IPC del INDEC llega unos 45 días después, que es el que fija el último mes.",
+    fuente: {
+      organismo: "Ministerio de Economía (Presupuesto Abierto); deflactor: INDEC",
+      operacion: "Crédito devengado por mes de impacto presupuestario, inciso 5 (transferencias), partidas principales 7 (a instituciones provinciales y municipales, gastos corrientes) y 8 (ídem, de capital); deflactor: IPC nacional del INDEC",
+      serie: "API de Presupuesto Abierto, endpoint /api/v1/credito (consulta por ejercicio, filtro inciso_id = 5, columnas mes de impacto, jurisdicción, programa, actividad, partida principal y crédito devengado) · IPC nivel general 148.3_INIVELNAL_DICI_M_26 vía API de Series de Tiempo (datos.gob.ar)",
+      url: "https://www.presupuestoabierto.gob.ar/",
+      acceso: "Automático con token de la API de Presupuesto Abierto: una consulta por ejercicio desde 2022, el filtro por partida principal se aplica del lado del cálculo (la API no admite listas de valores) y el IPC se obtiene por API.",
+    },
+    transformaciones: [
+      "Universo: lo que la Nación devenga como transferencia a gobiernos provinciales y municipales por decisión —los Aportes del Tesoro Nacional (ATN), las transferencias corrientes por programa (educación, salud, asistencia financiera, energía, entre otros) y las de capital (obra pública, infraestructura, agua)—. La coparticipación y el resto del RON no pasan por el presupuesto como gasto, porque se detraen de la recaudación antes de girarse: por construcción no están en esta consulta.",
+      "Se excluyen cuatro partidas de esas mismas cuentas que tampoco son una decisión sobre las provincias: la coparticipación de la Ciudad de Buenos Aires fijada por la Ley 27.606 y luego por el fallo de la Corte (programa 67 de Obligaciones a cargo del Tesoro), el Fondo Nacional de Incentivo Docente (por ley), las transferencias a las cajas previsionales provinciales (cobertura de déficit por convenio) y el funcionamiento de los hospitales nacionales (Garrahan, El Cruce, SAMIC). Se identifican por programa o por la descripción de la actividad, porque la jurisdicción cambia con cada reorganización de ministerios (los ATN estuvieron en el Ministerio del Interior y en 2025 en la Jefatura de Gabinete).",
+      "Deflación mes a mes: cada flujo mensual se divide por el IPC nacional de su propio mes, con base común diciembre de 2016 = 100, antes de sumarse. La variación real es el cociente entre ambas sumas a precios comparables menos uno; el deflactor implícito es (1 + variación nominal) / (1 + variación real) − 1. Misma cuenta que usaba la medida de transferencias automáticas.",
+      "Ventana: los 12 meses móviles que terminan en el último mes cerrado con IPC publicado, contra los 12 meses previos. Sólo hay ventana si los 24 meses tienen devengado e IPC; el mes en curso queda afuera porque está a medias. El gráfico tiene un punto por mes, ubicado en el último mes de la ventana, desde diciembre de 2023 (con 2022 como base).",
+      "Quedan afuera los adelantos financieros y anticipos transitorios del Tesoro a las provincias: son operaciones financieras que se dictan por decreto individual en el Boletín Oficial y no existe una serie mensual consolidada que las agrupe, ni en Presupuesto Abierto.",
+    ],
+    incidenciaTexto: [
+      "El puntaje del índice se asigna por bandas de la variación real, interpolado entre anclas: más de +30% → el más alto; entre +5% y +30% → alto; entre −20% y +5% → moderado; entre −50% y −20% → bajo; −50% o menos → el más bajo. Más giro discrecional se lee como más recurso de negociación puesto en juego. Los cortes son una convención de CIGOB fijada mirando el rango observado de las 22 ventanas de la gestión (de −85% a +38%): lo discrecional se concentra en pocos meses y las bandas de ±10 puntos que valían para el flujo automático lo dejarían casi siempre saturado.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (20,4% del total), donde pesa 40% junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI. Tiene el mismo peso que tenía la medida de transferencias automáticas, a la que reemplaza desde octubre de 2026.",
+    ],
+    limitaciones: [
+      "Es crédito devengado, no caja: el Estado reconoce la obligación cuando corresponde pagar, y el giro efectivo a la provincia puede llegar más tarde. Una cuota devengada en diciembre y girada en enero cuenta en diciembre.",
+      "Los giros discrecionales se concentran en pocos meses (diciembre suele multiplicar por varios el promedio mensual), así que la variación hereda un fuerte efecto de base: entre dos ventanas consecutivas puede saltar decenas de puntos aunque la política no haya cambiado.",
+      "No distingue a qué provincia fue cada giro ni su color político: mide cuánto, no a quién. Tampoco separa lo que una partida paga por convenio vigente de lo que se decide caso por caso dentro del mismo programa.",
+      "La lista de partidas excluidas (coparticipación de CABA por fallo, FONID, cajas previsionales, hospitales nacionales) es un criterio de CIGOB; otra clasificación de lo automático daría otro nivel. Si el presupuesto crea un programa nuevo con otra descripción, entra salvo que se lo agregue a la lista.",
+      "Deja afuera los adelantos financieros del Tesoro, que son un instrumento de negociación importante pero no tienen serie mensual.",
+    ],
+    faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
+    revisiones: "Presupuesto Abierto puede ajustar el devengado de meses anteriores (registros tardíos, correcciones de imputación). Se recalcula completo desde la fuente en cada actualización, de modo que las revisiones se absorben solas.",
+    cambios: [
+      { fecha: "2026-10-27", cambio: "Entra al índice político en lugar de la medida de transferencias automáticas, con el mismo peso (40% de alianzas territoriales). La reunión del 26 de octubre decidió medir lo que la Nación gira por decisión —ATN y transferencias corrientes y de capital por programa— y no lo que corresponde por coparticipación. La ventana a septiembre de 2026 da +6,0% real (1,25 billones de pesos contra 0,91 de los 12 meses previos, a valores corrientes).", adr: "0378" },
     ],
   },
 

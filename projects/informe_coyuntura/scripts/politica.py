@@ -16,7 +16,8 @@ Indicadores:
                                posible (CEPA publica desde fines de 2025) y con fórmula de
                                acumulado YTD no comparable mes a mes — queda como contraste
                                oculto del snapshot
-  iaf_transferencias        — Variación real 12 meses móviles de transferencias federales RON (Hacienda, auto; ADR-0353)
+  iaf_transferencias        — Variación real 12 meses móviles de transferencias federales RON (Hacienda, auto; ADR-0353). Fuera del índice desde ADR-0378
+  transferencias_no_automaticas — Variación real 12m de lo que la Nación gira a las provincias por decisión (Presupuesto Abierto; ADR-0378)
   eficacia_legislativa      — % proyectos PE aprobados, ventana 12m (datos.hcdn.gob.ar CKAN, auto)
   cohesion_bloque           — % cohesión (Rice) del bloque LLA, COMPUESTO bicameral desde
                                2026-07-10 (ADR-0048): Diputados 65% (scrape votaciones.hcdn.gob.ar)
@@ -114,6 +115,7 @@ INDICADORES_ESPERADOS = [
     "jornadas_individuales_no_trabajadas_12m",
     "movilizacion_cepa",
     "iaf_transferencias",
+    "transferencias_no_automaticas",
     "cohesion_bloque",
     "rotacion_gabinete",
     "eficacia_legislativa",
@@ -1370,6 +1372,191 @@ def fetch_iaf_transferencias() -> dict | None:
 
     except Exception as e:
         _warn("iaf_transferencias", str(e))
+        return None
+
+
+# ── Transferencias no automáticas a provincias (ADR-0378) ────────────────────
+# Reemplaza a `iaf_transferencias` en alianzas_territoriales. Mide lo que la
+# Nación gira a las provincias por decisión —no lo que les corresponde por ley—:
+# el devengado mensual de las transferencias a instituciones provinciales y
+# municipales (inciso 5, principales 7 corrientes y 8 de capital) de la API de
+# Presupuesto Abierto. La coparticipación y el RON no pasan por el presupuesto
+# como gasto —se detraen de la recaudación—, así que no están en la consulta.
+
+TRANSF_NA_DESDE = 2022            # base de 12 meses previos a la ventana de dic-2023
+TRANSF_NA_ATN = "aportes del tesoro nacional"
+_TRANSF_NA_MEMO: dict = {}
+
+
+def _transf_na_excluida(fila: dict) -> str | None:
+    """Motivo por el que una fila de principal 7/8 es AUTOMÁTICA (o no es
+    política hacia las provincias) y queda afuera; None si entra.
+
+    - 91/67: coparticipación de CABA fijada por ley (27.606) y por fallo de la
+      Corte (CSJN 1864/2022): es lo que le corresponde, no una decisión.
+    - FONID: fondo por ley, repartido por fórmula.
+    - Cajas previsionales provinciales: cobertura de déficit por convenio.
+    - Funcionamiento de hospitales nacionales (Garrahan, El Cruce, SAMIC…):
+      financia entes nacionales o de gestión compartida, no un vínculo político.
+    El programa se identifica por su código sólo para 91/67 (estable); el resto
+    por la descripción de la actividad porque la jurisdicción cambia con cada
+    reorganización de ministerios (ATN estuvo en la 30 y en la 25)."""
+    desc = str(fila.get("actividad_desc") or "").lower()
+    try:
+        if int(fila.get("jurisdiccion_id") or 0) == 91 and int(fila.get("programa_id") or 0) == 67:
+            return "cautelar"
+    except (TypeError, ValueError):
+        pass
+    if "fondo nacional de incentivo docente" in desc:
+        return "fonid"
+    if "cajas previsionales" in desc:
+        return "cajas"
+    if desc.startswith("funcionamiento hospital"):
+        return "hospitales"
+    return None
+
+
+def _transf_na_mensual_de_filas(filas_por_anio: dict) -> dict:
+    """{YYYY-MM: {atn, corrientes, capital}} en millones de pesos corrientes,
+    desde las filas de la API ({anio: [fila…]}). Todo mes de un ejercicio
+    consultado existe en el resultado (en cero si no tuvo devengado)."""
+    out: dict = {}
+    for anio, filas in filas_por_anio.items():
+        for k in range(1, 13):
+            out[f"{anio}-{k:02d}"] = {"atn": 0.0, "corrientes": 0.0, "capital": 0.0}
+        for f in filas:
+            try:
+                principal = int(f.get("principal_id") or 0)
+                mes = int(f.get("impacto_presupuestario_mes") or 0)
+                dev = float(f.get("credito_devengado") or 0)
+            except (TypeError, ValueError):
+                continue
+            if principal not in (7, 8) or not 1 <= mes <= 12:
+                continue
+            if _transf_na_excluida(f):
+                continue
+            d = out[f"{anio}-{mes:02d}"]
+            if principal == 7 and TRANSF_NA_ATN in str(f.get("actividad_desc") or "").lower():
+                d["atn"] += dev
+            elif principal == 7:
+                d["corrientes"] += dev
+            else:
+                d["capital"] += dev
+    return out
+
+
+def _transf_na_mensual(hoy: date | None = None) -> dict:
+    """Devengado mensual no automático desde 2022, SOLO meses cerrados.
+
+    El mes en curso queda afuera: es parcial y comparar 12 meses completos con
+    uno a medias daría una caída falsa. Una consulta por ejercicio (la API no
+    tiene operador `in` y el filtro por principal se hace acá)."""
+    hoy = hoy or date.today()
+    if _TRANSF_NA_MEMO.get("hoy") == hoy:
+        return _TRANSF_NA_MEMO["mensual"]
+    token = gestion._pa_token()
+    if not token:
+        raise ValueError("falta PRESUPUESTO_ABIERTO_TOKEN")
+    columnas = ["impacto_presupuestario_mes", "jurisdiccion_id", "programa_id",
+                "actividad_desc", "principal_id", "credito_devengado"]
+    filas = {}
+    for anio in range(TRANSF_NA_DESDE, hoy.year + 1):
+        filas[anio] = gestion._pa_credito(
+            token, anio, [{"column": "inciso_id", "operator": "equal", "value": "5"}],
+            columns=columnas)
+    mensual = _transf_na_mensual_de_filas(filas)
+    ult_cerrado = _mes_siguiente(f"{hoy.year}-{hoy.month:02d}", -1)
+    mensual = {m: v for m, v in mensual.items() if m <= ult_cerrado}
+    if not any(sum(v.values()) > 0 for v in mensual.values()):
+        raise ValueError("Presupuesto Abierto no devolvió transferencias a provincias")
+    _TRANSF_NA_MEMO.update({"hoy": hoy, "mensual": mensual})
+    return mensual
+
+
+def _transf_na_12m_moviles(mensual: dict | None = None, ipc: dict | None = None) -> dict:
+    """{YYYY-MM: (var_real, var_nominal, deflactor, total_ref, total_ant, comp_ref)}.
+
+    Misma cuenta que `_iaf_12m_moviles` (ADR-0239/0353): los 12 meses que
+    terminan en YYYY-MM contra los 12 anteriores, cada flujo a precios de SU mes
+    (dividido por el IPC de ese mes) antes de sumar. `comp_ref` es la
+    composición nominal de la ventana de referencia {atn, corrientes, capital}.
+    Sólo hay ventana si están los 24 meses de devengado Y de IPC."""
+    mensual = _transf_na_mensual() if mensual is None else mensual
+    ipc = _ipc_indice_mensual() if ipc is None else ipc
+    tot = lambda m: sum(mensual[m].values())
+    out = {}
+    for fin in sorted(mensual):
+        ref = [_mes_siguiente(fin, -k) for k in range(11, -1, -1)]
+        ant = [_mes_siguiente(fin, -k) for k in range(23, 11, -1)]
+        if not all(m in mensual and m in ipc for m in ref + ant):
+            continue
+        nom_ref, nom_ant = sum(tot(m) for m in ref), sum(tot(m) for m in ant)
+        real_ref = sum(tot(m) / ipc[m] for m in ref)
+        real_ant = sum(tot(m) / ipc[m] for m in ant)
+        if nom_ant <= 0 or real_ant <= 0:
+            continue
+        var_real = real_ref / real_ant - 1.0
+        var_nom = nom_ref / nom_ant - 1.0
+        comp = {k: sum(mensual[m][k] for m in ref) for k in ("atn", "corrientes", "capital")}
+        out[fin] = (var_real, var_nom, (1.0 + var_nom) / (1.0 + var_real) - 1.0,
+                    nom_ref, nom_ant, comp)
+    return out
+
+
+def _billones(millones: float) -> str:
+    """Millones de pesos → «1,25» (billones, es-AR)."""
+    return f"{millones / 1e6:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
+def fetch_transferencias_no_automaticas() -> dict | None:
+    """
+    Variación real de los últimos 12 meses móviles de lo que la Nación gira a las
+    provincias y municipios POR DECISIÓN —Aportes del Tesoro Nacional,
+    transferencias corrientes y de capital por programa— contra los 12 previos
+    (ADR-0378). Reemplaza a `iaf_transferencias`, que medía el RON automático.
+
+    Fuente: Presupuesto Abierto (devengado, inciso 5, principales 7 y 8), sin
+    la coparticipación de CABA por fallo, el FONID, las cajas previsionales ni
+    los hospitales nacionales (`_transf_na_excluida`). Deflactor (ADR-0239):
+    cada flujo mensual a precios de su propio mes. Ventana: hasta el último mes
+    cerrado que tiene IPC publicado (ADR-0353).
+
+    Quedan afuera los adelantos financieros del Tesoro: se dictan por decreto
+    individual y no existe una serie mensual consolidada.
+    """
+    try:
+        ventanas = _transf_na_12m_moviles()
+        if not ventanas:
+            raise ValueError("sin ventanas de 24 meses con devengado e IPC")
+        fin = max(ventanas)
+        var_real, var_nominal, deflactor, tot_ref, tot_ant, comp = ventanas[fin]
+        ultimo_dia = (date(int(fin[:4]) + (int(fin[5:7]) == 12), int(fin[5:7]) % 12 + 1, 1)
+                      - timedelta(days=1))
+        return {
+            "valor": round(var_real * 100.0, 1),
+            "var_nominal_pct": round(var_nominal * 100.0, 1),
+            "total_ref_billones": round(tot_ref / 1e6, 2),
+            "total_ant_billones": round(tot_ant / 1e6, 2),
+            "atn_ref_billones": round(comp["atn"] / 1e6, 2),
+            "periodo": _periodo_12m(fin),
+            "ipc_aplicado_pct": round(deflactor * 100.0, 1),
+            "unidad": "% interanual real",
+            "fuente": ("Presupuesto Abierto (Ministerio de Economía) — devengado de transferencias a "
+                       "provincias y municipios, sin las automáticas por ley o fallo; IPC INDEC "
+                       "(deflactado mes a mes)"),
+            "detalle_txt": (
+                f"12 meses a {_etiqueta_mes(fin)}: ${_billones(tot_ref)} billones devengados "
+                f"(ATN ${_billones(comp['atn'])} · transferencias corrientes "
+                f"${_billones(comp['corrientes'])} · de capital ${_billones(comp['capital'])}), "
+                f"{var_nominal * 100:+.1f}% nominal contra un deflactor de {deflactor * 100:.1f}% "
+                f"ponderado por el flujo de cada mes → {var_real * 100:+.1f}% real "
+                f"({_periodo_12m(fin)})"
+            ),
+            "fecha_dato": ultimo_dia.isoformat(),
+            "desactualizado": False,
+        }
+    except Exception as e:
+        _warn("transferencias_no_automaticas", str(e))
         return None
 
 
@@ -6456,6 +6643,7 @@ def main() -> None:
                                              fetch_jornadas_individuales_no_trabajadas),
         ("movilizacion_cepa",             fetch_cepa_movilizacion),
         ("iaf_transferencias",            fetch_iaf_transferencias),
+        ("transferencias_no_automaticas", fetch_transferencias_no_automaticas),
         ("eficacia_legislativa",          fetch_eficacia_legislativa),
         ("veto_quorum",                   fetch_veto_quorum),
         ("comisiones_caidas",             fetch_comisiones_caidas),

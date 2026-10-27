@@ -149,7 +149,13 @@ TECHOS = {
     # BAJA a 0,29 el 2026-10-27 (ADR-0377): `desafios_legislativos`, anclado
     # sobre el conteo observado, lo reemplazan dos conteos con ancla
     # conceptual en el cero (vetos insistidos y decretos derogados).
-    "ITCP": {"circular": 0.29, "sin_declarar": 0.01},
+    # SUBE a 0,37 el mismo día (ADR-0378), a sabiendas: `transferencias_no_automaticas`
+    # reemplaza a `iaf_transferencias` (conceptual, cortes redondos en el cero)
+    # con el mismo 0,40 de la dimensión, y sus cortes -50/-20/+5/+30 se fijaron
+    # mirando el rango observado de la gestión (-85% a +38%): el flujo
+    # discrecional es demasiado volátil para los ±10 pp del automático, y no
+    # hay historia previa comparable ni referencia externa.
+    "ITCP": {"circular": 0.37, "sin_declarar": 0.01},
     # ITVC entró al registro el 2026-07-20 (ADR-0123) con 0% circular. Desde
     # ADR-0235, diecisiete componentes usan fecha fija y tarifas usa un rango
     # externo; ninguno se calibra contra el período. Techo en 0,01: si
@@ -229,7 +235,7 @@ PROCEDENCIA = {
     "apoyo_empresario": ("conceptual", "el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150)"),
     # bloqueo_sostenido salió del índice (ADR-0330): no puntúa más, así que no
     # declara procedencia acá (mismo criterio que derrotas_legislativas).
-    "iaf_transferencias": ("conceptual", "variación real anclada en el cero con cortes simétricos de 10 pp, como recaudacion/emae del ITCM (ADR-0121)"),
+    "transferencias_no_automaticas": ("convencion", "cortes -50/-20/+5/+30 pp puestos mirando el rango observado de las 22 ventanas de la gestión (-85% a +38%); sólo el cero como referencia es conceptual (ADR-0378)"),
     "alineamiento_senadores_prov": ("convencion", "recalibrada con 29 puntos propios de feb-2024 en adelante (ADR-0038)"),
     "adhesion_reformas_provincial": ("conceptual", "anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044)"),
     "cohesion_bloque": ("convencion", "calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048)"),

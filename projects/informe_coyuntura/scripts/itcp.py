@@ -324,6 +324,22 @@ BANDAS_ITCP = {
         # banda discrimina dentro y fuera de muestra (out_of_sample.py).
         (10.0, INF, 100), (0.0, 10.0, 85), (-10.0, 0.0, 65), (-20.0, -10.0, 40), (-INF, -20.0, 10),
     ],
+    "transferencias_no_automaticas": [    # % var real 12m móviles de transferencias discrecionales a provincias, mayor = mejor
+        # CONVENCIÓN (ADR-0378). Reemplaza a iaf_transferencias con la misma
+        # lectura —más recurso fiscal girado a las provincias, mayor puntaje— y
+        # el cero como referencia (lo discrecional se mantiene en términos
+        # reales), pero con cortes MÁS ANCHOS: lo que mide es mucho más
+        # volátil que el RON. Las 22 ventanas de la gestión (dic-2024 a
+        # sep-2026) van de -85% a +38%, porque los giros discrecionales se
+        # concentran en pocos meses (diciembre de 2025 pasó de -34% a +32% de
+        # una ventana a la siguiente). Los cortes -50/-20/+5/+30 parten ese
+        # rango en cinco tramos de significado propio —hundimiento, caída,
+        # estabilidad, alza fuerte—; se fijaron mirando el rango observado, así
+        # que la ficha los declara convención y no ancla externa. Banda
+        # simétrica a la de iaf_transferencias no sirve: con ±10 pp casi toda
+        # la serie quedaría saturada en los extremos.
+        (30.0, INF, 100), (5.0, 30.0, 85), (-20.0, 5.0, 65), (-50.0, -20.0, 40), (-INF, -50.0, 10),
+    ],
     "bloqueo_sostenido": [
         # FUERA DEL ÍNDICE Y DEL TABLERO desde 2026-09-16 (ADR-0330, corrige
         # ADR-0069 y ADR-0276: el denominador vacío estaba bien resuelto, pero
@@ -599,7 +615,11 @@ DIMENSIONES_ITCP = {
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
         "peso": 0.2043,   # 0.25 → 0.22 (ADR-0088) → 0.19 (ADR-0126) → 0.2043 (ADR-0344)
-        "indicadores": {"iaf_transferencias": 0.40, "alineamiento_senadores_prov": 0.30,
+        # ADR-0378 (2026-10-27): `iaf_transferencias` (RON automático) se
+        # reemplaza por `transferencias_no_automaticas` con el mismo 0,40: la
+        # reunión del 26-oct decidió medir lo que la Nación gira por decisión
+        # y no lo que les corresponde por ley.
+        "indicadores": {"transferencias_no_automaticas": 0.40, "alineamiento_senadores_prov": 0.30,
                         "adhesion_reformas_provincial": 0.30},
     },
     "cohesion_interna": {
@@ -743,6 +763,20 @@ INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cep
 # `publicar.py` los suma a POLITICA_OCULTOS, así que tampoco se muestran: la
 # regla del tablero es que si no puntúa, no es card (ADR-0051/0153/0189).
 INDICADORES_SUSPENDIDOS = {
+    "iaf_transferencias": {
+        "dimension": "alianzas_territoriales",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0378",
+        "por_que": "Medía la variación real de las transferencias automáticas "
+                   "(coparticipación y fondos de ley del RON): lo que a las "
+                   "provincias les corresponde, no lo que la Nación decide "
+                   "girarles. Lo reemplaza la medida de transferencias no "
+                   "automáticas, con el mismo peso en la dimensión.",
+        "condicion_reingreso": "Que la dimensión necesite además una lectura "
+                               "del flujo automático, por ejemplo para medir "
+                               "cuánto del giro total depende de la discreción.",
+    },
     "brecha_obra_publica": {
         "dimension": "sector_privado",
         "desde": "2026-10",
@@ -863,7 +897,7 @@ FAMILIAS_ITCP = {
     "cobertura_judicial": "capacidad",
 
     # Recursos de negociación: no son conducta de nadie, son activos.
-    "iaf_transferencias": "recursos",          # el giro fiscal como instrumento
+    "transferencias_no_automaticas": "recursos",   # el giro discrecional como instrumento
 }
 
 FAMILIAS_ITCP_META = {
@@ -907,10 +941,10 @@ REZAGO_MESES_ITCP = {
     # más rezagado del índice por construcción, y no hay forma de acelerarlo
     # sin volver a introducir el sesgo que ese ADR sacó.
     "eficacia_legislativa": 18.0,
-    # 12 meses móviles contra los 12 previos (ADR-0353): la variación describe,
+    # 12 meses móviles contra los 12 previos (ADR-0353/0378): la variación describe,
     # en promedio, lo ocurrido 6 meses atrás (centroide de la ventana), más ~1,5
     # del IPC del INDEC (el criterio que usaba brecha_obra_publica, ADR-0372).
-    "iaf_transferencias": 7.5,
+    "transferencias_no_automaticas": 7.5,
     # Ventana móvil de 12 meses sobre comunicados fechados: el rezago de
     # publicación es cero (salen el día que la cámara los emite), así que queda
     # sólo el centroide de la ventana.

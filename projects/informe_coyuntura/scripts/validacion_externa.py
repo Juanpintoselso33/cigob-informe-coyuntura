@@ -971,6 +971,8 @@ def _valores_itcp_por_mes(directos: dict | None = None, ult: str | None = None) 
             # antes de dic-2024 todavía incluye meses de la gestión anterior. Es
             # lo que ya hacía la serie anual (dic-2023 afuera, dic-2024 adentro).
             valores["iaf_transferencias"] = None
+            # ADR-0378: lo mismo para su reemplazo, con la misma ventana de 12 meses.
+            valores["transferencias_no_automaticas"] = None
         out[ym] = valores
     return out
 

@@ -15,7 +15,7 @@ al ADR.
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
 | `poder_legislativo` | 23% | `ratio_dnu`, `eficacia_legislativa`, `veto_quorum`, `desafios_legislativos`, `produccion_legislativa` |
-| `alianzas_territoriales` | 20% | `iaf_transferencias`, `alineamiento_senadores_prov`, `adhesion_reformas_provincial` |
+| `alianzas_territoriales` | 20% | `transferencias_no_automaticas`, `alineamiento_senadores_prov`, `adhesion_reformas_provincial` |
 | `cohesion_interna` | 16% | `cohesion_bloque` |
 | `conflicto_social` | 11% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
 | `poder_judicial` | 16% | `cobertura_judicial`, `velocidad_resolucion`, `paralisis_denuncias` |
@@ -109,9 +109,9 @@ Suma de pesos: 100%.
 
 ### Dimensión `alianzas_territoriales` (20%)
 
-#### Armonía federal (transferencias)
+#### Transferencias no automáticas a provincias
 
-`iaf_transferencias`
+`transferencias_no_automaticas`
 
 | | |
 |---|---|
@@ -119,11 +119,11 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **8.2%** |
 | Familia de lectura | recursos |
 | Rezago declarado | 7.5 meses |
-| Procedencia del ancla | `conceptual` — variación real anclada en el cero con cortes simétricos de 10 pp, como recaudacion/emae del ITCM (ADR-0121) |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
 
-**Bandas**: > 10 → 100 · 0–10 → 85 · -10–0 → 65 · -20–-10 → 40 · ≤ -20 → 10
+**Bandas**: > 30 → 100 · 5–30 → 85 · -20–5 → 65 · -50–-20 → 40 · ≤ -50 → 10
 
-**Lo gobiernan**: [ADR-0066](../adr/0066-iaf-transferencias-solo-provincias.md) iaf_transferencias: el CSV RON incluye la porción del Tesoro Nacional y la ANSES — se filtra a provincias · [ADR-0093](../adr/0093-la-dimension-federal-dice-que-no-mide.md) La dimensión federal declara lo que no mide · [ADR-0239](../adr/0239-el-deflactor-lo-pondera-el-flujo-no-el-calendario.md) El deflactor lo pondera el flujo, no el calendario · [ADR-0263](../adr/0263-la-ficha-describe-el-metodo-que-corre.md) La ficha describe el método que corre · [ADR-0353](../adr/0353-armonia-federal-a-doce-meses-moviles.md) La armonía federal se mide a doce meses móviles
+**Lo gobiernan**: [ADR-0378](../adr/0378-transferencias-no-automaticas-reemplazan-a-las-automaticas.md) Las transferencias no automáticas reemplazan a las automáticas
 
 #### Alineamiento de senadores por provincia
 
@@ -289,6 +289,7 @@ histórica.
 - `comisiones_caidas` — Comisiones sin sanción (declarado como contexto)
 - `derrotas_legislativas` — Derrotas legislativas del Ejecutivo (declarado como contexto)
 - `gobernadores_alineamiento` — Alineamiento de gobernadores (retirado)
+- `iaf_transferencias` — Armonía federal (transferencias)
 - `judicializacion` — Densidad de menciones cautelares en sumarios SAIJ
 - `movilizacion_cepa` — Tensión social (CEPA) (declarado como contexto)
 - `protestas_caba` — Protestas en CABA (ACLED) (declarado como contexto)
@@ -333,7 +334,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-92 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+93 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -427,3 +428,4 @@ histórica.
 - [0353](../adr/0353-armonia-federal-a-doce-meses-moviles.md) — La armonía federal se mide a doce meses móviles
 - [0358](../adr/0358-quorum-caido-de-la-oposicion-no-cuenta.md) — Una sesión caída que pidió la oposición no cuenta como Congreso trabado
 - [0372](../adr/0372-la-brecha-de-obra-publica-sale-del-indice-politico.md) — La brecha de obra pública sale del índice político
+- [0378](../adr/0378-transferencias-no-automaticas-reemplazan-a-las-automaticas.md) — Las transferencias no automáticas reemplazan a las automáticas

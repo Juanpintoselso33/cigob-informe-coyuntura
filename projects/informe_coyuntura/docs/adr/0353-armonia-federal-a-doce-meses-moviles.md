@@ -6,7 +6,7 @@ fecha: 2026-10-10
 cinturon: 'politica'
 indicadores: [iaf_transferencias]
 archivos: ['scripts/politica.py', 'scripts/descargar_series.py', 'scripts/itcp.py', 'config.py', 'tests/test_politica_iaf_12m.py', 'tests/test_politica_iaf_frescura.py', 'tests/test_politica_iaf_deflactor.py', 'tests/test_out_of_sample.py', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/datos.ts']
-relacionado: ['0036', '0065', '0066', '0092', '0104', '0121', '0239', '0263']
+relacionado: ['0036', '0065', '0066', '0092', '0104', '0121', '0239', '0263', '0378']
 ambito: 'Cinturón política · ITCP · `iaf_transferencias` · ventana de comparación: de año calendario cerrado a 12 meses móviles'
 origen: 'Revisión de fuentes flojas, 10-oct-2026: el indicador estaba al 31-dic-2025, con diez meses de rezago, y la planilla de Hacienda ya traía enero a septiembre de 2026'
 ---

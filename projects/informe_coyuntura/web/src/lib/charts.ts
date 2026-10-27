@@ -48,6 +48,8 @@ const POLARIDAD_SIGNO: Record<string, 1 | -1> = {
   // "crecer igual que la inflación"; arriba las provincias reciben más en
   // términos reales (verde), abajo hay ajuste real (rojo)
   iaf_transferencias: 1,
+  // ídem para las no automáticas (ATN y giros por programa): más giro, más verde
+  transferencias_no_automaticas: 1,
 };
 const VERDE_AREA = "#16A34A";
 const ROJO_AREA = "#DC2626";

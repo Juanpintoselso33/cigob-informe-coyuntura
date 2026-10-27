@@ -967,6 +967,16 @@ def fetch_iaf_serie() -> list:
             for fin, v in sorted(politica._iaf_12m_moviles().items())]
 
 
+def fetch_transferencias_no_automaticas_serie() -> list:
+    """Serie MENSUAL de la variación real de las transferencias no automáticas a
+    provincias (Presupuesto Abierto; ADR-0378): el punto YYYY-MM-01 es la ventana
+    de 12 meses que termina en ese mes contra los 12 anteriores. Misma función que
+    la card (`politica._transf_na_12m_moviles`), así que no pueden divergir.
+    Arranca en dic-2023 (con 2022 como base). [[YYYY-MM-01, %]]."""
+    return [[f"{fin}-01", round(v[0] * 100.0, 1)]
+            for fin, v in sorted(politica._transf_na_12m_moviles().items())]
+
+
 def fetch_ratio_dnu_serie() -> list:
     """Serie MENSUAL del ratio DNUs/leyes (InfoLeg), ventana móvil de 365 días
     al fin de cada mes desde dic-2023 — misma fórmula que el indicador
@@ -1674,6 +1684,9 @@ def fetch_conflictividad_nacional_mensual() -> list:
 POLITICA_DERIVADAS = [
     ("iaf_transferencias", "% i.a. real (12m móviles)",
      "RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes", fetch_iaf_serie),
+    ("transferencias_no_automaticas", "% i.a. real (12m móviles)",
+     "Presupuesto Abierto (devengado, transferencias a provincias sin las automáticas) + IPC INDEC deflactado mes a mes",
+     fetch_transferencias_no_automaticas_serie),
     ("ratio_dnu", "DNUs publicados por ley publicada", "InfoLeg", fetch_ratio_dnu_serie),
     ("desafios_legislativos", "normas desafiadas en el recinto (12m)",
      "Actas de Diputados y Senado + InfoLeg — elaboración CIGOB",
