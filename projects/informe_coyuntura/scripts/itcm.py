@@ -367,24 +367,52 @@ DIMENSIONES_ITCM = {
             "desequilibrio_monetario": 0.20,
         },
     },
-    "viabilidad_fiscal_comercial": {
-        "nombre": "Viabilidad fiscal-comercial",
-        "peso": 0.24,
-        # ADR-0072: entra el RESULTADO primario y pasa a liderar la dimensión.
-        # La recaudación baja de 60% a 30% y se reinterpreta como lo que es —un
-        # indicador de actividad y formalidad de la base imponible—, no como la
-        # medida de la viabilidad fiscal. Composición tomada de la auditoría de
-        # consistencia (50/30/20); verificado que 45/30/25 y 40/30/30 mueven la
-        # dimensión menos de 0,3 puntos con los datos vigentes.
+    "cuentas_fiscales": {
+        "nombre": "Cuentas fiscales",
+        "peso": 0.192,
+        # ADR-0387 (2026-10-27): antes «Viabilidad fiscal-comercial» (0,24), con
+        # el saldo comercial adentro. El saldo comercial pasa a «Sector
+        # externo»; acá quedan las dos lecturas fiscales con su peso efectivo
+        # intacto: 0,12 y 0,072 (0,192 × 0,625 y × 0,375).
+        # ADR-0072: el RESULTADO primario lidera la dimensión y la recaudación
+        # se lee como lo que es —actividad y formalidad de la base imponible—,
+        # no como la medida de la viabilidad fiscal. Proporción 50/30 de la
+        # auditoría de consistencia (ahí con el saldo comercial en 20%).
         "indicadores": {
-            "resultado_primario": 0.5,
-            "recaudacion": 0.3,
-            "saldo_comercial_12m": 0.2,
+            "resultado_primario": 0.625,
+            "recaudacion": 0.375,
         },
+    },
+    "sector_externo": {
+        "nombre": "Sector externo",
+        "peso": 0.2124,
+        # ADR-0387 (2026-10-27), a pedido de Luis: junta lo que estaba disperso
+        # en tres dimensiones —el saldo comercial (de «Viabilidad fiscal-
+        # comercial», 0,048), las reservas netas (de «Capacidad y costo del
+        # financiamiento», 0,0544) y la competitividad externa (0,11, el tipo de
+        # cambio real cruzado con los términos del intercambio, ADR-0360/0375)—.
+        # Es una reorganización: cada indicador conserva su peso efectivo en el
+        # índice (0,048 + 0,0544 + 0,055 + 0,055 = 0,2124), por eso los pesos
+        # internos se escriben como cociente. Sólo cambia el redondeo del
+        # puntaje de dimensión (un decimal) y el reparto ante datos faltantes.
+        "indicadores": {
+            "saldo_comercial_12m": 0.048 / 0.2124,
+            "reservas_bcra": 0.0544 / 0.2124,
+            "tcrm": 0.055 / 0.2124,
+            "terminos_intercambio": 0.055 / 0.2124,
+        },
+        # ADR-0375: tcrm y términos del intercambio no se promedian, se cruzan
+        # con la matriz de cuatro esquinas, y el cruce entra con el peso que
+        # suman los dos (0,11). Sin uno de los dos el cruce no se calcula.
+        "grupos": [{"indicadores": ("tcrm", "terminos_intercambio"),
+                    "combinar": terminos_intercambio.combinar_dimension}],
     },
     "financiamiento": {
         "nombre": "Capacidad y costo del financiamiento",
-        "peso": 0.16,
+        # ADR-0387: 0,16 → 0,1056. Las reservas netas (0,0544) pasan a «Sector
+        # externo»; los otros tres conservan su peso efectivo (0,0336 / 0,04 /
+        # 0,032) y por eso sus pesos internos se reescalan sobre 0,1056.
+        "peso": 0.1056,
         # ADR-0022: crédito privado REAL i.a. (realizado) complementa al IdC
         # (capacidad) y a las reservas — la única señal no redundante de los
         # viejos indicadores de contexto.
@@ -396,10 +424,9 @@ DIMENSIONES_ITCM = {
         # anticipa al crédito. No había razón para que la condición pesara 2,7×
         # al resultado, así que se reparte el 41% conjunto casi en partes iguales.
         "indicadores": {
-            "reservas_bcra": 0.34,
-            "idc": 0.21,
-            "costo_financiamiento_tesoro": 0.25,
-            "credito_privado": 0.20,
+            "idc": 0.0336 / 0.1056,
+            "costo_financiamiento_tesoro": 0.04 / 0.1056,
+            "credito_privado": 0.032 / 0.1056,
         },
     },
     "actividad": {
@@ -466,19 +493,6 @@ DIMENSIONES_ITCM = {
         # 0,3696/0,1232/0,1232/0,084/0,30. Se sigue calculando, oculto.
         "indicadores": {"emae_ia": 0.42, "emae_difusion": 0.14,
                         "ipi_manufacturero": 0.14, "iai": 0.30},
-    },
-    "competitividad_externa": {
-        "nombre": "Competitividad externa",
-        "peso": 0.11,
-        # ADR-0360: el tipo de cambio real cruzado con los términos del
-        # intercambio. Antes, el tipo de cambio real solo (ADR-0009).
-        # ADR-0375 (2026-10-27): los dos son tarjetas que puntúan y el cruce
-        # se hace acá: la dimensión NO es el promedio 50/50 sino la matriz de
-        # cuatro esquinas sobre sus posiciones. Los pesos 0,5 sólo reparten el
-        # peso efectivo que se declara en cada tarjeta. Con uno solo de los
-        # dos, la dimensión no se calcula (como antes, sin el compuesto).
-        "indicadores": {"tcrm": 0.5, "terminos_intercambio": 0.5},
-        "combinar": terminos_intercambio.combinar_dimension,
     },
     # La dimensión "inversion" (12%, sólo el IAI desde ADR-0262) se fusionó con
     # "actividad" el 16-oct-2026: ver el comentario de esa dimensión.

@@ -584,16 +584,18 @@ def test_macro_itcm_reconcilia():
     assert serie_desequilibrio[0]["fecha"][:7] == "2025-04"
     assert serie_desequilibrio[-1]["valor"] == desequilibrio["valor"]
 
-    # ADR-0375: competitividad no es un promedio de sus dos tarjetas (es la
-    # matriz): esa dimensión entra con su puntaje y no con el de sus componentes.
-    dims_itcm = c["itcm"]["dimensiones"]
-    con_regla = {k for dk, d in itcm.DIMENSIONES_ITCM.items() if d.get("combinar")
-                 for k in d["indicadores"]}
-    ponderado = (sum(i["puntaje_itcm"] * i["peso_efectivo"] for k, i in en_indice.items()
-                     if k not in con_regla)
-                 + sum(dims_itcm[dk]["puntaje"] * dims_itcm[dk]["peso_efectivo"]
-                       for dk, d in itcm.DIMENSIONES_ITCM.items()
-                       if d.get("combinar") and dk in dims_itcm))
+    # ADR-0375/0387: el tipo de cambio real y los términos del intercambio no se
+    # promedian, se cruzan: el grupo entra con el puntaje de la matriz y con el
+    # peso que suman sus dos tarjetas, no con el de cada una.
+    grupos = [g for d in itcm.DIMENSIONES_ITCM.values() for g in d.get("grupos", ())]
+    en_grupo = {k for g in grupos for k in g["indicadores"]}
+    ponderado = sum(i["puntaje_itcm"] * i["peso_efectivo"] for k, i in en_indice.items()
+                    if k not in en_grupo)
+    for g in grupos:
+        ids = g["indicadores"]
+        if all(k in en_indice for k in ids):
+            ponderado += (g["combinar"]({k: en_indice[k]["puntaje_itcm"] for k in ids})
+                          * sum(en_indice[k]["peso_efectivo"] for k in ids))
     assert abs(ponderado - itcm_val) <= 0.15, f"ponderado {ponderado} != ITCM {itcm_val}"
     assert abs(c["score"] - round((100 - itcm_val) / 10, 1)) <= 0.05
 

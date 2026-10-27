@@ -90,13 +90,13 @@ INDICES = {
 }
 
 
-# Dimensiones con regla propia en vez del promedio (ADR-0375: la matriz de
-# competitividad externa). Misma regla que parametrica.calcular_indice: sin
-# todos sus componentes, la dimensión no se calcula.
-_COMBINAR = {
-    dk: (d["combinar"], set(d["indicadores"]))
+# Grupos con regla propia en vez del promedio (ADR-0375: la matriz de tipo de
+# cambio real × términos del intercambio, hoy dentro de «Sector externo»,
+# ADR-0387). Misma regla que parametrica.puntaje_dimension.
+_GRUPOS = {
+    dk: d["grupos"]
     for dims in (itcm.DIMENSIONES_ITCM, itcg.DIMENSIONES_ITCG, itcp.DIMENSIONES_ITCP)
-    for dk, d in dims.items() if d.get("combinar")
+    for dk, d in dims.items() if d.get("grupos")
 }
 
 
@@ -121,13 +121,14 @@ def _agregar(dims: dict) -> float:
     for dk, d in dims.items():
         if not d["ind"]:
             continue
-        regla = _COMBINAR.get(dk)
-        if regla is not None:
-            combinar, requeridos = regla
-            if set(d["ind"]) != requeridos:
+        grupos = _GRUPOS.get(dk)
+        if grupos:
+            dscore, _ = parametrica.puntaje_dimension(
+                {ik: i["puntaje"] for ik, i in d["ind"].items()},
+                {ik: i["peso"] for ik, i in d["ind"].items()}, grupos)
+            if dscore is None:
                 continue
-            dscore = round(combinar({ik: i["puntaje"] for ik, i in d["ind"].items()}), 1)
-            total += dscore * d["peso"]
+            total += round(dscore, 1) * d["peso"]
             wsum += d["peso"]
             continue
         pw = sum(i["peso"] for i in d["ind"].values())

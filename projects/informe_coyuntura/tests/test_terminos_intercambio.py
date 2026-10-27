@@ -136,13 +136,16 @@ def test_septiembre_2026_con_el_dato_real():
 
 def test_la_dimension_cruza_las_dos_tarjetas_con_la_matriz():
     """ADR-0375: el cruce pasó del indicador a la dimensión, con el mismo
-    número que el compuesto de ADR-0360."""
-    dim = itcm.DIMENSIONES_ITCM["competitividad_externa"]
-    assert dim["peso"] == 0.11
-    assert dim["indicadores"] == {"tcrm": 0.5, "terminos_intercambio": 0.5}
-    assert dim["combinar"] is ti.combinar_dimension
+    número que el compuesto de ADR-0360. Desde ADR-0387 es un grupo del sector
+    externo, con el mismo peso en el índice (0,11)."""
+    dim = itcm.DIMENSIONES_ITCM["sector_externo"]
+    assert dim["peso"] * (dim["indicadores"]["tcrm"]
+                          + dim["indicadores"]["terminos_intercambio"]) == pytest.approx(0.11)
+    assert dim["indicadores"]["tcrm"] == dim["indicadores"]["terminos_intercambio"]
+    assert dim["grupos"] == [{"indicadores": ("tcrm", "terminos_intercambio"),
+                              "combinar": ti.combinar_dimension}]
     r = itcm.calcular_itcm({"tcrm": 85.87, "terminos_intercambio": 145.1401})
-    d = r["dimensiones"]["competitividad_externa"]
+    d = r["dimensiones"]["sector_externo"]
     assert d["indicadores"]["tcrm"]["puntaje_aplicado"] == pytest.approx(49.7, abs=0.05)
     assert d["indicadores"]["terminos_intercambio"]["puntaje_aplicado"] == pytest.approx(85.0, abs=0.05)
     assert d["puntaje"] == 49.8
@@ -152,7 +155,7 @@ def test_la_dimension_cruza_las_dos_tarjetas_con_la_matriz():
 
 @pytest.mark.parametrize("tcrm,terminos", [(70, 125), (80, 139), (98, 141), (105, 146), (120, 150)])
 def test_la_dimension_es_la_matriz_y_no_el_promedio(tcrm, terminos):
-    d = itcm.calcular_itcm({"tcrm": tcrm, "terminos_intercambio": terminos})["dimensiones"]["competitividad_externa"]
+    d = itcm.calcular_itcm({"tcrm": tcrm, "terminos_intercambio": terminos})["dimensiones"]["sector_externo"]
     esperado = ti.puntaje_matriz(ti.posicion_tcr(tcrm), ti.posicion_ti(terminos))
     assert d["puntaje"] == pytest.approx(esperado, abs=0.051)
 
@@ -163,9 +166,13 @@ def test_los_terminos_puntuan_en_la_escala_del_tcr():
         assert ti.posicion_de_puntaje(p) == pytest.approx(posicion)
 
 
-def test_con_un_solo_componente_la_dimension_no_se_calcula():
+def test_con_un_solo_componente_el_cruce_no_se_calcula():
     r = itcm.calcular_itcm({"tcrm": 90.0, "ipc_total": 2.0})
-    assert "competitividad_externa" not in r["dimensiones"]
+    assert "sector_externo" not in r["dimensiones"]
+    # con otro componente del sector externo, el tipo de cambio real solo queda
+    # afuera: no se promedia lo que la matriz necesita completo (ADR-0387)
+    r = itcm.calcular_itcm({"tcrm": 90.0, "reservas_bcra": 1881})
+    assert set(r["dimensiones"]["sector_externo"]["indicadores"]) == {"reservas_bcra"}
 
 
 def test_un_mes_con_los_terminos_congelados_no_se_calcula():

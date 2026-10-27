@@ -424,11 +424,12 @@ def test_la_dimension_incluye_el_costo_y_suma_uno():
 
 
 def test_el_costo_toma_un_cuarto_de_la_dimension():
-    """ADR-0071: el nuevo indicador toma 25%, y reservas conserva el recorte
-    proporcional (45 × 0,75)."""
-    ind = itcm.DIMENSIONES_ITCM["financiamiento"]["indicadores"]
-    assert ind["costo_financiamiento_tesoro"] == 0.25
-    assert abs(ind["reservas_bcra"] - 0.45 * 0.75) < 0.011
+    """ADR-0071: el nuevo indicador entró con 25% de la dimensión. Desde ADR-0387
+    las reservas pasaron al sector externo y la dimensión pesa 0,1056 en vez de
+    0,16, pero el costo conserva su peso efectivo en el índice: 0,04."""
+    dim = itcm.DIMENSIONES_ITCM["financiamiento"]
+    assert "reservas_bcra" not in dim["indicadores"]
+    assert abs(dim["peso"] * dim["indicadores"]["costo_financiamiento_tesoro"] - 0.04) < 1e-9
 
 
 def test_la_capacidad_de_fondeo_no_pesa_mas_que_el_credito_realizado():
@@ -436,7 +437,9 @@ def test_la_capacidad_de_fondeo_no_pesa_mas_que_el_credito_realizado():
     crédito futuro; es un descriptor de condiciones, no un pronóstico. Que
     pesara 2,7× el crédito efectivamente otorgado invertía la jerarquía."""
     ind = itcm.DIMENSIONES_ITCM["financiamiento"]["indicadores"]
-    assert abs(ind["idc"] - ind["credito_privado"]) <= 0.01, (
+    # casi en partes iguales (0,21 contra 0,20 de la dimensión de antes de
+    # ADR-0387, que los reescaló sin tocar su peso efectivo): lejos de 2,7×
+    assert ind["idc"] / ind["credito_privado"] <= 1.1, (
         f'idc {ind["idc"]} vs credito {ind["credito_privado"]}')
 
 

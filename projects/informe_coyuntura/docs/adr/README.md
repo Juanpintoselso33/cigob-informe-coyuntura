@@ -125,6 +125,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0367](0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) | La inflación se pinta con los cortes de Luis | `ipc_total`, `rem_ipc_12m` | vigente |
 | [0368](0368-la-recaudacion-de-iva-y-cheque-sale-del-indice.md) | La recaudación de IVA y cheque sale del índice | `actividad_tributaria` | vigente |
 | [0375](0375-competitividad-el-cruce-pasa-a-la-dimension.md) | Competitividad: el cruce pasa a la dimensión | `tcrm`, `terminos_intercambio`, `tcr_terminos_intercambio` | vigente |
+| [0387](0387-cuentas-fiscales-y-sector-externo-se-separan.md) | Las cuentas fiscales y el sector externo se separan | `resultado_primario`, `recaudacion`, `saldo_comercial_12m` | vigente |
 
 ### Política (ITCP)
 

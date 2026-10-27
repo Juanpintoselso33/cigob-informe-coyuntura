@@ -7,7 +7,7 @@ cinturon: 'macro'
 indice: 'ITCM'
 indicadores: [tcrm, terminos_intercambio, tcr_terminos_intercambio]
 archivos: ['scripts/parametrica.py', 'scripts/terminos_intercambio.py', 'scripts/itcm.py', 'scripts/macro.py', 'scripts/validacion_externa.py', 'scripts/sensibilidad.py', 'scripts/publicar.py', 'config.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts']
-relacionado: ['0153', '0216', '0360']
+relacionado: ['0153', '0216', '0360', '0387']
 ambito: 'Cinturón macro · ITCM · dimensión Competitividad externa'
 origen: 'Reunión de Juan y Luis Babino del 26-oct-2026 y pedido de Juan del 27-oct («la cuenta que hoy se hace en el indicador se transfiere a la dimensión y quedan los dos indicadores por separado»).'
 ---

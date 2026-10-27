@@ -54,12 +54,25 @@ def test_el_mes_de_la_devaluacion_ya_era_el_peor_de_la_serie():
     # techo (a = 1), y la dimensión queda en la fila de «peso competitivo»
     # (50 a 85 según los términos del intercambio). Antes daba 100.
     assert terminos_intercambio.posicion_tcr(124.88) == 1.0
-    assert dims["competitividad_externa"]["puntaje"] >= 50.0
+    assert _cruce(dims) >= 50.0
     assert dims["estabilidad_monetaria"]["puntaje"] < 25.0
     assert (itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]["peso"]
-            > itcm.DIMENSIONES_ITCM["competitividad_externa"]["peso"]), (
+            > _peso_del_cruce()), (
         "si la competitividad pasara a pesar más que la estabilidad monetaria, "
         "el rechazo de ADR-0073 habría que revisarlo")
+
+
+def _cruce(dims) -> float:
+    """Puntaje del cruce tipo de cambio real × términos del intercambio, que
+    desde ADR-0387 vive dentro del sector externo y no es una dimensión."""
+    ind = dims["sector_externo"]["indicadores"]
+    return terminos_intercambio.combinar_dimension(
+        {k: ind[k]["puntaje_aplicado"] for k in ("tcrm", "terminos_intercambio")})
+
+
+def _peso_del_cruce() -> float:
+    d = itcm.DIMENSIONES_ITCM["sector_externo"]
+    return d["peso"] * (d["indicadores"]["tcrm"] + d["indicadores"]["terminos_intercambio"])
 
 
 def test_no_existe_regla_automatica_para_el_tcrm():
@@ -80,8 +93,8 @@ def test_el_indice_registra_por_si_solo_la_evaporacion_del_salto():
     meses, la dimensión baja también (57,5 → 52,3 con el dato de oct-2026)."""
     assert terminos_intercambio.posicion_tcr(124.88) == 1.0
     assert 0.6 < terminos_intercambio.posicion_tcr(97.03) < 0.75
-    dic = _reconstruido("2023-12")["dimensiones"]["competitividad_externa"]["puntaje"]
-    abr = _reconstruido("2024-04")["dimensiones"]["competitividad_externa"]["puntaje"]
+    dic = _cruce(_reconstruido("2023-12")["dimensiones"])
+    abr = _cruce(_reconstruido("2024-04")["dimensiones"])
     assert dic > abr, (dic, abr)
 
 

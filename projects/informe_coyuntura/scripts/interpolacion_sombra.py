@@ -24,6 +24,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 sys.stdout.reconfigure(encoding="utf-8")
 
+import parametrica
 import itcm
 import itcg
 
@@ -87,11 +88,13 @@ def recalcular(bloque: dict, bandas_mod: dict) -> tuple:
             })
             acc += p_int * info["peso"]
             pw += info["peso"]
-        combinar = (DIMENSIONES_POR_SIGLA.get(dkey) or {}).get("combinar")
-        if combinar is not None and pw:
-            # ADR-0375: la dimensión es la matriz, no el promedio.
-            dscore = combinar({d["indicador"]: d["interpolado"] for d in detalles
-                               if d["dimension"] == dkey})
+        grupos = (DIMENSIONES_POR_SIGLA.get(dkey) or {}).get("grupos")
+        if grupos and pw:
+            # ADR-0375/0387: el cruce de tcrm y términos es la matriz, no el promedio.
+            dscore, _ = parametrica.puntaje_dimension(
+                {d["indicador"]: d["interpolado"] for d in detalles
+                 if d["dimension"] == dkey},
+                {k: i["peso"] for k, i in dim["indicadores"].items()}, grupos)
         else:
             dscore = acc / pw
         dims_out[dkey] = round(dscore, 1)

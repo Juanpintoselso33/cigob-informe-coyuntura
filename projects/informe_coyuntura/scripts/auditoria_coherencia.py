@@ -15,6 +15,7 @@ import sys
 RAIZ = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ))
 import config
+import parametrica
 import itcm
 import itcg
 import itcp
@@ -47,10 +48,12 @@ def auditar():
             if not 0 < pesos <= 1.001:
                 fallas.append(f'{cint}/{dk}: suma nominal inválida {pesos}')
                 continue
-            combinar = nominal.get(dk, {}).get('combinar')
-            if combinar is not None:
-                # ADR-0375: la dimensión no es un promedio (matriz de competitividad).
-                puntaje = combinar({k: x['puntaje_aplicado'] for k, x in internos.items()})
+            grupos = nominal.get(dk, {}).get('grupos')
+            if grupos:
+                # ADR-0375/0387: un grupo de la dimensión se cruza, no se promedia.
+                puntaje, _ = parametrica.puntaje_dimension(
+                    {k: x['puntaje_aplicado'] for k, x in internos.items()},
+                    {k: x['peso'] for k, x in internos.items()}, grupos)
             else:
                 puntaje = sum(x['peso'] * x['puntaje_aplicado'] for x in internos.values()) / pesos
             if abs(puntaje - d['puntaje']) > .11:

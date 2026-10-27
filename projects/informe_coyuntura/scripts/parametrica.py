@@ -430,6 +430,38 @@ def indicadores_vigentes(dimensiones: dict, suspendidos: dict | set | None) -> d
     return out
 
 
+def puntaje_dimension(puntajes: dict, pesos: dict, grupos=()) -> tuple:
+    """Puntaje de una dimensión y los indicadores que realmente entraron.
+
+    Promedio ponderado de `puntajes` con `pesos` (se renormaliza sobre los
+    presentes). Un GRUPO es un conjunto de indicadores que se cruzan con una
+    regla propia en vez de promediarse (ADR-0375: la matriz de tipo de cambio
+    real × términos del intercambio): entra a la dimensión con el peso que
+    suman sus miembros y el puntaje de su `combinar`. Un grupo incompleto no se
+    calcula —un promedio de lo que quede sería otro índice— y sus miembros
+    presentes quedan afuera. Devuelve (puntaje | None, claves usadas).
+    """
+    claves = set(puntajes)
+    for g in grupos:
+        ids = set(g["indicadores"])
+        if claves & ids and not ids <= claves:
+            claves -= ids
+    if not claves:
+        return None, set()
+    suma = sum(pesos[k] for k in claves)
+    total = 0.0
+    cubiertos: set = set()
+    for g in grupos:
+        ids = set(g["indicadores"])
+        if ids <= claves:
+            total += sum(pesos[k] for k in ids) / suma * g["combinar"]({k: puntajes[k] for k in ids})
+            cubiertos |= ids
+    for k in puntajes:
+        if k in claves and k not in cubiertos:
+            total += puntajes[k] * (pesos[k] / suma)
+    return total, claves
+
+
 def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: dict,
                     dimensiones: dict, bandas_interpretacion: list,
                     interpretacion_legible: dict,
@@ -479,19 +511,16 @@ def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: d
                                "valor": round(float(valor), 4)}
         if not presentes:
             continue
-        combinar = dim.get("combinar")
-        if combinar is not None and set(presentes) != set(dim["indicadores"]):
-            # Una dimensión con regla propia (ADR-0375: la matriz de
-            # competitividad) no se calcula con un componente solo: la regla
-            # necesita los dos y un promedio de lo que quede sería otro índice.
+        puntaje_dim, usados = puntaje_dimension(
+            {k: i["puntaje_aplicado"] for k, i in presentes.items()},
+            {k: i["peso"] for k, i in presentes.items()},
+            dim.get("grupos", ()))
+        if puntaje_dim is None:
             continue
+        presentes = {k: i for k, i in presentes.items() if k in usados}
         suma_pesos = sum(i["peso"] for i in presentes.values())
         for info in presentes.values():
             info["peso_renorm"] = info["peso"] / suma_pesos
-        if combinar is not None:
-            puntaje_dim = combinar({k: i["puntaje_aplicado"] for k, i in presentes.items()})
-        else:
-            puntaje_dim = sum(i["puntaje_aplicado"] * i["peso_renorm"] for i in presentes.values())
         resultado_dims[dkey] = {
             "nombre": dim["nombre"],
             "peso": dim["peso"],

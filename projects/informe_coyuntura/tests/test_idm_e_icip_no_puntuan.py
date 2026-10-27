@@ -97,8 +97,8 @@ def test_estabilidad_monetaria_conserva_el_ancla_nominal_del_desequilibrio():
     assert dim["indicadores"]["rem_ipc_12m"] == 0.20
     assert dim["indicadores"]["desequilibrio_monetario"] == 0.20
     nominal_deseq = dim["peso"] * dim["indicadores"]["desequilibrio_monetario"]
-    fin = itcm.DIMENSIONES_ITCM["financiamiento"]
-    nominal_reservas = fin["peso"] * fin["indicadores"]["reservas_bcra"]
+    ext = itcm.DIMENSIONES_ITCM["sector_externo"]
+    nominal_reservas = ext["peso"] * ext["indicadores"]["reservas_bcra"]
     assert abs(nominal_deseq - nominal_reservas) < 0.005
 
 
@@ -170,11 +170,20 @@ def _dimensiones_agosto() -> dict:
         "ipi_manufacturero": 0.176, "actividad_tributaria": 0.12})
     dims["inversion"] = {"nombre": "Inversión", "peso": 0.12,
                          "indicadores": {"iai": 1.0}}
-    # Sin la regla de la matriz (ADR-0375): en agosto la dimensión era el
+    # Las cuatro dimensiones de agosto, antes de ADR-0387 (que reagrupó el
+    # sector externo) y sin la matriz de ADR-0375: la competitividad era el
     # tipo de cambio real solo.
+    for k in ("cuentas_fiscales", "sector_externo"):
+        del dims[k]
+    dims["viabilidad_fiscal_comercial"] = {
+        "nombre": "Viabilidad fiscal-comercial", "peso": 0.24, "indicadores": {
+            "resultado_primario": 0.5, "recaudacion": 0.3, "saldo_comercial_12m": 0.2}}
+    dims["financiamiento"] = {
+        "nombre": "Capacidad y costo del financiamiento", "peso": 0.16, "indicadores": {
+            "reservas_bcra": 0.34, "idc": 0.21,
+            "costo_financiamiento_tesoro": 0.25, "credito_privado": 0.20}}
     dims["competitividad_externa"] = {
-        k: v for k, v in dims["competitividad_externa"].items() if k != "combinar"}
-    dims["competitividad_externa"]["indicadores"] = {"tcrm": 1.0}
+        "nombre": "Competitividad externa", "peso": 0.11, "indicadores": {"tcrm": 1.0}}
     return dims
 
 

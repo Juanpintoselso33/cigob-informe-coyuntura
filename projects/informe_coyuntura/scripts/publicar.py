@@ -833,24 +833,26 @@ _CELDAS_COMPETITIVIDAD = {
 
 
 def _texto_matriz_competitividad(bloque) -> str | None:
-    """ADR-0375: la dimensión de competitividad externa no promedia sus dos
-    tarjetas, las cruza en la matriz de ADR-0360. Las dos tarjetas lo dicen,
-    con el cuadrante de hoy. «Altos» y «bajos» son posiciones de los términos
-    del intercambio dentro de su ventana desde fines de 2023, no niveles
-    absolutos; «competitivo» y «apreciado» salen de los umbrales del tipo de
-    cambio real (75 a 110)."""
-    d = ((bloque or {}).get("dimensiones") or {}).get("competitividad_externa")
-    if not d or set(d.get("indicadores") or {}) != {"tcrm", "terminos_intercambio"}:
+    """ADR-0375: el sector externo no promedia las dos tarjetas de tipo de
+    cambio real y términos del intercambio, las cruza en la matriz de
+    ADR-0360. Las dos tarjetas lo dicen, con el cuadrante de hoy. «Altos» y
+    «bajos» son posiciones de los términos del intercambio dentro de su ventana
+    desde fines de 2023, no niveles absolutos; «competitivo» y «apreciado»
+    salen de los umbrales del tipo de cambio real (75 a 110)."""
+    d = ((bloque or {}).get("dimensiones") or {}).get("sector_externo")
+    if not d or not {"tcrm", "terminos_intercambio"} <= set(d.get("indicadores") or {}):
         return None
     pa = d["indicadores"]["tcrm"]["puntaje_aplicado"]
     pb = d["indicadores"]["terminos_intercambio"]["puntaje_aplicado"]
     cel = terminos_intercambio.celda(terminos_intercambio.posicion_de_puntaje(pa),
                                      terminos_intercambio.posicion_de_puntaje(pb))
-    return ("La dimensión de competitividad externa no promedia este indicador con "
-            "el otro: los cruza. Peso competitivo con términos del intercambio altos "
+    cruce = terminos_intercambio.combinar_dimension(
+        {"tcrm": pa, "terminos_intercambio": pb})
+    return ("El sector externo no promedia este indicador con el otro: los cruza. "
+            "Peso competitivo con términos del intercambio altos "
             "da 85; competitivo con términos bajos, 50; apreciado con términos altos, "
             "30; apreciado con términos bajos, 10, y entre esas esquinas se "
-            f"interpola. Hoy: {_CELDAS_COMPETITIVIDAD[cel]}, {coma(d['puntaje'])} "
+            f"interpola. Hoy: {_CELDAS_COMPETITIVIDAD[cel]}, {coma(round(cruce, 1))} "
             "puntos.")
 
 

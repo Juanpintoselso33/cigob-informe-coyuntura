@@ -9,6 +9,7 @@ dimensiones, el mecanismo de ajuste manual y la renormalización ante
 faltantes.
 """
 import json
+import pytest
 import sys
 from pathlib import Path
 
@@ -74,13 +75,18 @@ def test_itcm_reproduce_ejemplo():
     r = itcm.calcular_itcm(EJEMPLO)
     dims = r["dimensiones"]
     assert dims["estabilidad_monetaria"]["puntaje"] == 39.0
-    assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 78.5
-    assert dims["financiamiento"]["puntaje"] == 54.7
+    # ADR-0387: las tres dimensiones de antes (fiscal-comercial 78,5, financiamiento
+    # 54,7, competitividad 49,8) se reagrupan sin mover el índice.
+    assert dims["cuentas_fiscales"]["puntaje"] == 76.9
+    assert dims["sector_externo"]["puntaje"] == 51.4
+    assert dims["financiamiento"]["puntaje"] == 69.9
     assert dims["actividad"]["puntaje"] == 75.8   # 73,9 → 75,8 (ADR-0368: EMAE 0,42 sin la tributaria)
-    assert dims["competitividad_externa"]["puntaje"] == 49.8   # matriz (ADR-0375)
+    assert "competitividad_externa" not in dims and "viabilidad_fiscal_comercial" not in dims
+    cruce = dims["sector_externo"]["indicadores"]
+    assert cruce["tcrm"]["puntaje_aplicado"] == pytest.approx(49.7, abs=0.05)   # matriz (ADR-0375)
     assert "inversion" not in dims
     ind = dims["financiamiento"]["indicadores"]["credito_privado"]
-    assert ind["puntaje_banda"] == 80.0 and ind["peso"] == 0.20
+    assert ind["puntaje_banda"] == 80.0 and ind["peso"] == pytest.approx(0.032 / 0.1056)
     assert dims["financiamiento"]["indicadores"]["idc"]["puntaje_aplicado"] == 49.7
     assert r["valor"] == 60.6   # 60,2 → 60,6: competitividad 45,7 → 49,8 en el ejemplo (ADR-0375)
     assert r["banda"] == "moderadamente_aflojado"   # 60,2: apenas sobre el corte de 60
@@ -173,7 +179,7 @@ def test_el_desequilibrio_pesa_como_las_reservas_y_no_como_el_tcrm():
         return D[dim]["peso"] * D[dim]["indicadores"][ind]
 
     desequilibrio = nominal("estabilidad_monetaria", "desequilibrio_monetario")
-    reservas = nominal("financiamiento", "reservas_bcra")
+    reservas = nominal("sector_externo", "reservas_bcra")
     assert abs(desequilibrio - reservas) < 0.005, (
         f"desequilibrio {desequilibrio:.2%} debería estar cerca de "
         f"reservas {reservas:.2%}")
@@ -189,7 +195,7 @@ def test_pesos_efectivos_reconcilian_con_itcm():
     total = 0.0
     pesos = []
     for dkey, dim in r["dimensiones"].items():
-        if itcm.DIMENSIONES_ITCM[dkey].get("combinar"):
+        if itcm.DIMENSIONES_ITCM[dkey].get("grupos"):
             total += dim["puntaje"] * dim["peso_efectivo"]
         else:
             total += sum(i["puntaje_aplicado"] * i["peso_efectivo"]
@@ -272,13 +278,14 @@ def test_ajuste_manual_aplicado():
     ajustes = {"saldo_comercial_12m": {
         "puntaje": 60, "justificacion": "Superávit por contracción de importaciones"}}
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
-    # fiscal = 0,5×87,9 (resultado primario) + 0,3×58,5 (recaudación) + 0,2×60 (override) = 73,5
-    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 73.5
+    # sector externo = saldo 60 (override) con reservas 25,0 y el cruce 49,8 → 45,8;
+    # el índice es el mismo que con la dimensión fiscal-comercial de antes (59,4)
+    assert r["dimensiones"]["sector_externo"]["puntaje"] == 45.8
     assert r["valor"] == 59.4
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85.0 and aj["a"] == 60
-    ind = r["dimensiones"]["viabilidad_fiscal_comercial"]["indicadores"]["saldo_comercial_12m"]
+    ind = r["dimensiones"]["sector_externo"]["indicadores"]["saldo_comercial_12m"]
     assert ind["puntaje_banda"] == 85.0 and ind["puntaje_aplicado"] == 60
 
 
@@ -300,7 +307,7 @@ def test_renormalizacion_indicador_faltante():
     r = itcm.calcular_itcm(valores)
     # (28,4×0.60 + 64,8×0.20) / 0.80 = 37,5 (ADR-0367)
     assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 37.5
-    assert abs(r["valor"] - 60.3) <= 0.05
+    assert abs(r["valor"] - 60.2) <= 0.05   # era 60,3: el puntaje de dimensión se redondea distinto (ADR-0387)
 
 
 def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
@@ -313,15 +320,23 @@ def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
 
 
 def test_renormalizacion_dimension_faltante():
-    """Sin el tipo de cambio real, la dimensión competitividad desaparece (la matriz necesita los dos) y los pesos se
-    renormalizan. (Antes se probaba sin EMAE, pero desde el 16-oct-2026 la
+    """Sin el tipo de cambio real el cruce con los términos del intercambio no se
+    calcula (la matriz necesita los dos) y el sector externo se arma con el saldo
+    comercial y las reservas, renormalizados. Los términos del intercambio solos
+    no entran. (Antes se probaba sin EMAE, pero desde el 16-oct-2026 la
     actividad no se queda vacía sin él: le queda la inversión física.)"""
     valores = dict(EJEMPLO, tcrm=None)
     r = itcm.calcular_itcm(valores)
-    assert "competitividad_externa" not in r["dimensiones"]
-    # estab=39.0 fiscal=78.5 financ=54.7 actividad e inversión=75.8, sin competitividad (0.11)
-    esperado = (0.26 * 39.0 + 0.24 * 78.5 + 0.16 * 54.7 + 0.23 * 75.8) / 0.89
-    assert abs(r["valor"] - esperado) <= 0.1
+    ext = r["dimensiones"]["sector_externo"]
+    assert set(ext["indicadores"]) == {"saldo_comercial_12m", "reservas_bcra"}
+    # (0,048 × 85,0 + 0,0544 × 25,0) / 0,1024 = 53,1
+    assert ext["puntaje"] == 53.1
+    assert abs(sum(i["peso_efectivo"] for d in r["dimensiones"].values()
+                   for i in d["indicadores"].values()) - 1.0) <= 0.001
+    # sin ninguno de los tres, la dimensión desaparece y el resto renormaliza
+    sin = itcm.calcular_itcm(dict(EJEMPLO, tcrm=None, saldo_comercial_12m=None,
+                                  reservas_bcra=None))
+    assert "sector_externo" not in sin["dimensiones"]
 
 
 def test_sin_emae_la_actividad_queda_con_la_inversion():
@@ -361,8 +376,10 @@ def test_ajuste_automatico_saldo_por_contraccion():
     assert aj is not None and aj["puntaje"] == 67.1 and aj["origen"] == "automatico"
     assert "contracción de importaciones" in aj["justificacion"]
     r = itcm.calcular_itcm(dict(EJEMPLO), {"saldo_comercial_12m": aj})
-    # fiscal = 0,5×87,9 (resultado primario) + 0,3×58,5 (recaudación) + 0,2×67,1 (ajuste) = 74,9
-    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 74.9
+    # sector externo = saldo 67,1 (ajuste) con reservas 25,0 y el cruce 49,8 → 47,4;
+    # el índice sigue en 59,8, como con la dimensión fiscal-comercial de antes
+    assert r["dimensiones"]["sector_externo"]["puntaje"] == 47.4
+    assert r["valor"] == 59.8
     assert r["ajustes_aplicados"][0]["origen"] == "automatico"
 
 
