@@ -1498,7 +1498,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 
 El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del Instituto Nacional de Estadística y Censos (INDEC), que se publica dos veces al año: es una proyección que se actualiza todos los meses.
 
-Permite seguir una estimación de pobreza entre publicaciones oficiales. Integra la dimensión de ingresos y consumo con signo invertido: más pobreza reduce el componente. Su peso efectivo se muestra en la composición del índice y no convierte la estimación en una medición oficial mensual.
+Permite seguir una estimación de pobreza entre publicaciones oficiales. Integra la dimensión de ingresos con signo invertido: más pobreza reduce el componente. Su peso efectivo se muestra en la composición del índice y no convierte la estimación en una medición oficial mensual.
 
 **Dimensión que integra — Ingresos.** Si el ingreso alcanza: la brecha entre el salario registrado y la canasta de pobreza, y la pobreza estimada mes a mes, que alcanza también a los hogares informales y a los que no viven de un salario.
 

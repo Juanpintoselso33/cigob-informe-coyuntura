@@ -31,6 +31,11 @@ juicios por riesgos del trabajo fuera, Reforma laboral FAL 50 / Justicia del Tra
 juicios de la Justicia del Trabajo al índice (ADR-0365). 22 y cohesión: esperan el índice de
 votos (decisión de Juan).
 
+23 sale la brecha de obra pública: sector privado queda con la UIA, 55,6 → 40,0 e índice
+político 73,8 → 71,6 (ADR-0372) · 28 «Ingresos y consumo» se parte en Ingresos (114,6) y
+Consumo (94,6) sin mover el índice de impacto social, 93,6 (ADR-0373). La carne: nivel de
+consumo aparente (SAGyP), movimiento mensual de faena (producción) — dicho en la ficha.
+
 ## Transversal (todo el sitio)
 
 1. **Que el color se entienda.** La tarjeta muestra la escala de puntaje (100/85/65/40/10)
@@ -145,7 +150,7 @@ votos (decisión de Juan).
 22. **Índice de votos por encima de las bancas propias**: cuántos votos más que sus
     bancas consigue el Gobierno al aprobar leyes. Cohesión de bloque **se mantiene**.
     **decidido** [J]
-23. **Sacar Brecha de obra pública.** **decidido** [J; también L 18-oct]
+23. **Sacar Brecha de obra pública.** **hecho (ADR-0372)** [J; también L 18-oct]
 24. **Postura empresarial con más cámaras.** Luis propone tres sectores con el método de
     la UIA, promediando entidades: campo (SRA, CRA, FAA, Coninagro), comercio (CAC y
     CAME), tecnología (CESSI y Argencon); mínimo 4 comunicados con postura por entidad en
@@ -186,7 +191,7 @@ votos (decisión de Juan).
 
 28. **Separar «Ingresos» en dos**: Ingresos (salario real, pobreza) y Consumo (carnes
     —chequear si es consumo o producción—, motorización, supermercados; ver la
-    publicación de Scienta). **decidido** [J, L]
+    publicación de Scienta). **hecho (ADR-0373)** [J, L]
 29. **«Presión de precios» pasa a «Poder de compra»**: inflación de alimentos, canasta de
     servicios públicos sobre salario y costo real del alquiler con el índice de la
     Universidad de San Andrés y Mercado Libre. [J, L]

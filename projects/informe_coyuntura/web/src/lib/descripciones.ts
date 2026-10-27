@@ -275,7 +275,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   pobreza_nowcast: {
     que: "El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del Instituto Nacional de Estadística y Censos (INDEC), que se publica dos veces al año: es una proyección que se actualiza todos los meses.",
-    aporta: "Permite seguir una estimación de pobreza entre publicaciones oficiales. Integra la dimensión de ingresos y consumo con signo invertido: más pobreza reduce el componente. Su peso efectivo se muestra en la composición del índice y no convierte la estimación en una medición oficial mensual.",
+    aporta: "Permite seguir una estimación de pobreza entre publicaciones oficiales. Integra la dimensión de ingresos con signo invertido: más pobreza reduce el componente. Su peso efectivo se muestra en la composición del índice y no convierte la estimación en una medición oficial mensual.",
     frecuencia: "Mensual (semestre móvil)", tipo: "Estimación de terceros",
   },
   indice_lider: {
