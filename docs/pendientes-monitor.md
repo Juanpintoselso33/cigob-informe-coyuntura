@@ -36,6 +36,35 @@ político 73,8 → 71,6 (ADR-0372) · 28 «Ingresos y consumo» se parte en Ingr
 Consumo (94,6) sin mover el índice de impacto social, 93,6 (ADR-0373). La carne: nivel de
 consumo aparente (SAGyP), movimiento mensual de faena (producción) — dicho en la ficha.
 
+## Hecho el 27-oct (publicado en un push; verificado en el diario; BigQuery cargado)
+
+- **Político (74,3; antes 71,6):** Poder judicial sólo con cobertura de cargos (ADR-0374);
+  vetos insistidos y decretos derogados por las dos cámaras en lugar de quórum y desafíos
+  (ADR-0377, DNU y delegados juntos); votos de otros bloques al aprobar leyes del
+  Ejecutivo, sin tratados, 22,1 % de la cámara (ADR-0376, opción de Juan: votos a favor
+  menos bancas de LLA); transferencias no automáticas en lugar de las automáticas
+  (ADR-0378; Luis revisa los rubros excluidos); postura del comercio (CAC) en sector
+  privado, que sube de 40 a 70 (ADR-0380).
+- **Macro (53,9, igual):** tipo de cambio real y términos del intercambio como dos
+  tarjetas, cruce en la dimensión (ADR-0375); fichas sin cifras fijas; riesgo país y
+  meses mezclados declarados; reservas contrastadas.
+- **Gestión (septiembre 77,1; Reforma laboral 55,6):** vuelven los juicios por riesgos
+  del trabajo, 50/25/25 (ADR-0379, supera a ADR-0369); verificaciones de Luis (brecha,
+  dotación, gasto); explicación del puntaje 100 en todas las tarjetas.
+- **Impacto social (95,7):** «Empleo» con la tasa de empleo de la EPH contra el mismo
+  trimestre de 2023, cada décima = 1 punto (ADR-0383); salen construcción, empleo
+  registrado, pymes, subocupación y trabajo independiente.
+- **Entregados:** Excel v6 de gestión y mensaje a Marcos (Juan los manda); revisión macro
+  de Luis anotada punto por punto (Descargas).
+- **No se puede medir hoy:** alquiler UdeSA/Mercado Libre (sólo PDF, sin datos ni
+  licencia); padrón de empleadores de ARCA (sin serie pública).
+
+**Abierto:** cámaras del campo (SRA, CRA, Coninagro; en curso, ADR-0384); verificar antes
+del 1-dic que no haya otra suspensión del FAL; convenios colectivos sin lista publicada.
+**Decisiones de Juan para después del lanzamiento:** reagrupar macro (9), jornadas no
+trabajadas en 100, conflictividad calibrada contra el mandato, lectura de octubre de Luis
+(6). Votómetro (32 a 34): más adelante.
+
 ## Acuerdos de la reunión Juan–Luis del 26-oct (documento de Luis, 21:00)
 
 Llegó después de armar esta lista (`docs/pedidos/texto/2026-10-26_Luis_261026 decisiones
