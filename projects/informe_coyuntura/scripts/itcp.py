@@ -221,6 +221,15 @@ BANDAS_ITCP = {
         # desempeño real, no un techo de construcción.
         (0.6, INF, 100), (0.2, 0.6, 85), (-0.2, 0.2, 65), (-0.6, -0.2, 40), (-INF, -0.6, 10),
     ],
+    "apoyo_comercio": [
+        # Saldo de postura de la CAC y de CAME hacia el Ejecutivo nacional, 12m
+        # móviles. Mismas anclas que `apoyo_empresario` (ADR-0150), fijadas ANTES
+        # de ver la serie del comercio (ADR-0045, ADR-0380): el rango teórico
+        # (−1 a +1) en cinco tramos iguales de 0,4 centrados en el cero. Un sector
+        # no tiene bandas más indulgentes que otro por el solo hecho de que su
+        # saldo sea otro.
+        (0.6, INF, 100), (0.2, 0.6, 85), (-0.2, 0.2, 65), (-0.6, -0.2, 40), (-INF, -0.6, 10),
+    ],
     "ratio_dnu": [
         # ADR-0058 cambió la ventana (año calendario → móvil de 365 días) SIN
         # tocar estas anclas (ADR-0059 revirtió una recalibración de un día:
@@ -748,7 +757,14 @@ DIMENSIONES_ITCP = {
         # relación del empresariado con el Gobierno. La dimensión queda con la
         # postura pública de la industria hasta que se sumen las cámaras del
         # campo, el comercio y la tecnología (pendiente decidido).
-        "indicadores": {"apoyo_empresario": 1.0},
+        #
+        # ADR-0380 (2026-10-27): se suma el comercio (CAC y CAME), a partes
+        # iguales con la industria. Es el primer paso del pendiente de ADR-0372 —
+        # sumar sectores—; el campo y la tecnología quedan para más adelante
+        # porque ninguna de sus cámaras tiene hoy un corpus completo desde
+        # diciembre de 2023 (ver apoyo_camaras_relevamiento.json). 50/50 y no
+        # por volumen de comunicados: cada sector es un voto, no cada comunicado.
+        "indicadores": {"apoyo_empresario": 0.5, "apoyo_comercio": 0.5},
     },
 }
 
@@ -897,6 +913,7 @@ FAMILIAS_ITCP = {
     "conflictividad_nacional": "tension",      # la calle
     "jornadas_individuales_no_trabajadas_12m": "tension",  # intensidad laboral
     "apoyo_empresario": "tension",             # lo que las cámaras dicen del Gobierno
+    "apoyo_comercio": "tension",               # lo que las cámaras del comercio dicen del Gobierno
     "alineamiento_senadores_prov": "tension",  # cómo votan los senadores provinciales
     "adhesion_reformas_provincial": "tension", # qué deciden las legislaturas provinciales
     # ADR-0168: los cuatro entran por la regla de ADR-0166 — responden "cuánto
@@ -969,6 +986,7 @@ REZAGO_MESES_ITCP = {
     # publicación es cero (salen el día que la cámara los emite), así que queda
     # sólo el centroide de la ventana.
     "apoyo_empresario": 6.0,
+    "apoyo_comercio": 6.0,        # misma ventana móvil de 12 meses sobre comunicados fechados
     # El padrón se publica con ~1-2 meses de rezago, pero la serie se corrige
     # con los registros de designaciones y renuncias, que están al día: el
     # rezago efectivo del último punto es el de esos registros (ADR-0126).

@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-26
 cinturon: 'politica'
 indicadores: [sector_privado]
+relacionado: ['0380']
 corregido_por: ['0139']
 ambito: 'cinturón político (ITCP), dimensión `sector_privado`'
 ---

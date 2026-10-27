@@ -59,7 +59,7 @@ def test_tarjeta_e_historia_comparten_corte_y_cache(monkeypatch,tmp_path,descarg
 def test_main_no_renueva_el_sello_de_la_copia_local(monkeypatch):
     for nombre in dir(politica):
         if nombre.startswith('fetch_'):monkeypatch.setattr(politica,nombre,lambda *a,**kw:None)
-    for nombre in ('detectar_novedades_judiciales','detectar_novedades_empresarias'):
+    for nombre in ('detectar_novedades_judiciales','detectar_novedades_empresarias','detectar_novedades_comercio'):
         monkeypatch.setattr(politica,nombre,lambda:{})
     monkeypatch.setattr(politica,'fetch_conflictividad_nacional',lambda:{
         'valor':-24.1,'desactualizado':True,'obtenido_en':'2026-09-01'})

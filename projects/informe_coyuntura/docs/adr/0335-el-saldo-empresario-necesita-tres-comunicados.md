@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [apoyo_empresario]
 archivos: ['scripts/politica.py', 'web/src/lib/fichas.ts', 'tests/test_politica_apoyo_empresario.py', 'tests/test_apoyo_corpus_cerrado.py']
-relacionado: ['0334']
+relacionado: ['0334', '0380']
 ambito: 'Cinturón política · ITCP · `apoyo_empresario` · cuántos comunicados hacen falta para publicar el saldo de un mes'
 origen: 'Punto flojo que ADR-0334 dejó anotado a propósito: con una sola cámara, nueve de los treinta meses quedaban con uno o dos comunicados en su ventana.'
 ---

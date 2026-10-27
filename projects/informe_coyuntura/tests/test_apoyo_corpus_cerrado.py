@@ -95,7 +95,8 @@ def test_el_detector_corre_antes_que_la_card():
 def test_ya_no_esta_suspendido():
     import itcp
     assert "apoyo_empresario" not in itcp.INDICADORES_SUSPENDIDOS
-    assert itcp.DIMENSIONES_ITCP["sector_privado"]["indicadores"]["apoyo_empresario"] == 1.0
+    # 1.0 desde ADR-0372; 0.5 desde que el comercio se suma a partes iguales (ADR-0380)
+    assert itcp.DIMENSIONES_ITCP["sector_privado"]["indicadores"]["apoyo_empresario"] == 0.5
 
 
 # ── Lo que agregó la revisión de Codex ───────────────────────────────────────

@@ -1755,6 +1755,10 @@ POLITICA_DERIVADAS = [
     ("apoyo_empresario", "saldo de postura (−1 a +1, 12m móviles)",
      "Comunicados de la UIA — codificación CIGOB",
      politica.apoyo_empresario_serie),
+    # Mismo patrón, mismo cálculo, otro sector (ADR-0380).
+    ("apoyo_comercio", "saldo de postura (−1 a +1, 12m móviles)",
+     "Comunicados de la CAC — codificación CIGOB",
+     politica.apoyo_comercio_serie),
     ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_eficacia_serie),
     ("veto_quorum", "% sesiones en minoría (12m móviles)", "Cámara de Diputados — índice oficial de sesiones", fetch_veto_quorum_serie),
     ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_comisiones_serie),

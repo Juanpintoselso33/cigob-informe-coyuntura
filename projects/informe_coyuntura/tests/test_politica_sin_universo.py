@@ -119,7 +119,7 @@ def test_main_actualiza_el_par_solo_con_cobertura(monkeypatch, registro_vacio, r
     for nombre in dir(politica):
         if nombre.startswith("fetch_"):
             monkeypatch.setattr(politica, nombre, lambda *a, **kw: None)
-    for nombre in ("detectar_novedades_judiciales", "detectar_novedades_empresarias"):
+    for nombre in ("detectar_novedades_judiciales", "detectar_novedades_empresarias", "detectar_novedades_comercio"):
         monkeypatch.setattr(politica, nombre, lambda: {})
     monkeypatch.setattr(politica, "fetch_derrotas_legislativas",
                         lambda: {"valor": 0} if registro_ok else None)
@@ -210,6 +210,7 @@ def test_publicacion_y_censo_con_componente_sin_universo(monkeypatch, tmp_path, 
     # 69 → 68: sale `actividad_tributaria` del ITCM (ADR-0368).
     # 68 → 67: sale `litigiosidad_laboral` del ITCG (ADR-0369).
     # 67 → 66: sale `brecha_obra_publica` del ITCP (ADR-0372).
-    assert resumen["indicadores"] == 66
-    assert resumen["indicadores_observados_en_calculo"] == 65   # 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328) → 68 (ADR-0365) → 67 (ADR-0368) → 66 (ADR-0369) → 65 (ADR-0372)
+    # 66 → 67: entra `apoyo_comercio` a sector privado (ADR-0380).
+    assert resumen["indicadores"] == 67
+    assert resumen["indicadores_observados_en_calculo"] == 66   # 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328) → 68 (ADR-0365) → 67 (ADR-0368) → 66 (ADR-0369) → 65 (ADR-0372) → 66 (ADR-0380)
     assert resumen["indicadores_sin_universo"] == 1

@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [brecha_obra_publica, apoyo_empresario]
 archivos: ['scripts/itcp.py', 'scripts/publicar.py', 'scripts/out_of_sample.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts']
-relacionado: ['0088', '0150', '0310', '0359']
+relacionado: ['0088', '0150', '0310', '0359', '0380']
 ambito: 'Cinturón político · ITCP · dimensión Sector privado'
 origen: 'Pedido de Luis Babino (18-oct-2026) y decisión de Juan del 26-oct-2026.'
 ---

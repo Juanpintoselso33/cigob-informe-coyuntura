@@ -136,8 +136,9 @@ def test_las_bandas_puntuan_el_rango_teorico(saldo, esperado):
 
 def test_integra_la_dimension_de_sector_privado():
     dim = itcp.DIMENSIONES_ITCP["sector_privado"]["indicadores"]
-    # ADR-0372: sale la brecha de obra pública y la postura queda sola.
-    assert dim == {"apoyo_empresario": 1.0}
+    # ADR-0372 sacó la brecha de obra pública y dejó la postura sola; ADR-0380
+    # suma el comercio, a partes iguales.
+    assert dim == {"apoyo_empresario": 0.5, "apoyo_comercio": 0.5}
     assert abs(sum(dim.values()) - 1.0) < 1e-9
     assert itcp.FAMILIAS_ITCP["apoyo_empresario"] == "tension"
     assert itcp.REZAGO_MESES_ITCP["apoyo_empresario"] == 6.0

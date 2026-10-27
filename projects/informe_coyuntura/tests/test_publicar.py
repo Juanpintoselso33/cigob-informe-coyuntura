@@ -482,10 +482,12 @@ def test_politica_itcp_reconcilia():
     # una card; su contenido pasa a la explicación de `desafios_legislativos`.
     # 17 → 16 (ADR-0344): sale `votometro_ventaja_lla` con su dimensión.
     # 16 → 15 (ADR-0372): sale `brecha_obra_publica` de sector privado.
-    assert len(c["indicadores"]) == 15
+    # 15 → 16 (ADR-0380): entra `apoyo_comercio` a sector privado.
+    assert len(c["indicadores"]) == 16
     assert "bloqueo_sostenido" not in c["indicadores"]
     assert "votometro_ventaja_lla" not in c["indicadores"]
-    assert len(en_indice) == 15
+    assert len(en_indice) == 16
+    assert "apoyo_comercio" in en_indice
     for _nuevo in ("produccion_legislativa",
                    "velocidad_resolucion", "paralisis_denuncias"):
         assert _nuevo in en_indice, f"{_nuevo} tendría que puntuar (ADR-0168)"

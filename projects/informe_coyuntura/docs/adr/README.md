@@ -233,6 +233,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0376](0376-votos-sobre-bancas-entra-a-cohesion.md) | Los votos ajenos al aprobar leyes entran a la cohesión interna | `votos_sobre_bancas`, `cohesion_bloque` | vigente |
 | [0377](0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) | Vetos insistidos y decretos derogados reemplazan a quórum y desafíos | `insistencias_vetos`, `rechazos_decretos`, `veto_quorum` | vigente |
 | [0378](0378-transferencias-no-automaticas-reemplazan-a-las-automaticas.md) | Las transferencias no automáticas reemplazan a las automáticas | `transferencias_no_automaticas`, `iaf_transferencias` | vigente |
+| [0380](0380-mas-camaras-en-la-postura-empresaria.md) | Más cámaras en la postura empresaria: entra el comercio | `apoyo_comercio`, `apoyo_empresario` | vigente |
 
 ### Gestión (ITCG)
 

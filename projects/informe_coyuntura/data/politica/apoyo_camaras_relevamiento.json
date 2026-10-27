@@ -2,17 +2,56 @@
  "_meta": {
   "descripcion": "Relevamiento de fuente para el indicador 'Apoyo Público' (cámaras empresarias) del aporte externo al cinturón político. ADR-0136. No alimenta ningún índice.",
   "fecha_relevamiento": "2026-07-26",
-  "protocolo": "ADR-0131"
+  "protocolo": "ADR-0131",
+  "actualizacion": {
+   "fecha": "2026-10-27",
+   "adr": "0380",
+   "pedido": "Reunión del 26-oct-2026: sumar otras cámaras además de la UIA si tienen posturas oficiales; criterio de Luis: mínimo 4 comunicados con postura por entidad en 12 meses. La alternativa (análisis de sentimiento de lo que dicen sus referentes en la prensa) no hizo falta: dos cámaras tienen archivo propio de comunicados.",
+   "metodo_del_conteo": "CAC y CAME: todos los comunicados de prensa desde el 10-dic-2023, clasificados por dos lectores ciegos entre sí con el manual de la UIA (ADR-0131/0150) y adjudicados; los números son del registro data/politica/apoyo_camaras_codificacion.json. El resto: PRESELECCIÓN por palabras clave sobre título y arranque del texto (retenciones, Gobierno nacional, reforma, decreto, rechaza, celebra, preocupación…), que sobreestima: NO son comunicados clasificados y no se pueden usar como conteo final.",
+   "criterio_de_entrada": "«Con postura» = el comunicado apoya o critica algo. El criterio de entrada se aplicó a los dirigidos al Ejecutivo nacional (los únicos que puntúan en el saldo, regla de conteo del manual): mínimo 4 en los 12 meses de la ventana de la card (oct-2025 a oct-2026). Con el conteo más amplio —cualquier destinatario— cumplen CAC (16) y CAME (5): el criterio estricto es el que decide, porque es el que alimenta el saldo."
+  }
  },
  "camaras_probadas": [
-  {"camara": "UIA", "seccion": "https://www.uia.org.ar/comunicaciones/noticias/ y /prensa/", "estado": "existe"},
-  {"camara": "CAC", "seccion": "https://www.cac.com.ar/noticias", "estado": "existe, pero el contenido es agenda institucional (visitas, webinars, paritarias), no postura"},
-  {"camara": "CAME", "seccion": "https://www.redcame.org.ar/novedades", "estado": "existe, con IDs correlativos en la URL; contenido dominado por servicios al socio (escalas de convenio, rondas de negocios)"},
-  {"camara": "AEA", "seccion": "https://www.aeanet.net/prensa.html", "estado": "existe"},
-  {"camara": "ADEBA", "seccion": "https://www.adeba.com.ar/category/comunicados/", "estado": "existe y es el mejor caso: categoría de comunicados separada de noticias"},
-  {"camara": "SRA", "seccion": "ruralarg.org.ar", "estado": "ConnectionError en las dos pruebas; no se pudo evaluar"},
-  {"camara": "AmCham", "seccion": "amchamar.com.ar", "estado": "SSLError; no se pudo evaluar"},
-  {"camara": "COPAL", "seccion": "https://www.copal.org.ar/novedades/ + /feed/", "estado": "existe, RSS con 10 items"}
+  {
+   "camara": "UIA",
+   "seccion": "https://www.uia.org.ar/comunicaciones/noticias/ y /prensa/",
+   "estado": "existe"
+  },
+  {
+   "camara": "CAC",
+   "seccion": "https://www.cac.com.ar/noticias",
+   "estado": "existe, pero el contenido es agenda institucional (visitas, webinars, paritarias), no postura"
+  },
+  {
+   "camara": "CAME",
+   "seccion": "https://www.redcame.org.ar/novedades",
+   "estado": "existe, con IDs correlativos en la URL; contenido dominado por servicios al socio (escalas de convenio, rondas de negocios)"
+  },
+  {
+   "camara": "AEA",
+   "seccion": "https://www.aeanet.net/prensa.html",
+   "estado": "existe"
+  },
+  {
+   "camara": "ADEBA",
+   "seccion": "https://www.adeba.com.ar/category/comunicados/",
+   "estado": "existe y es el mejor caso: categoría de comunicados separada de noticias"
+  },
+  {
+   "camara": "SRA",
+   "seccion": "ruralarg.org.ar",
+   "estado": "ConnectionError en las dos pruebas; no se pudo evaluar"
+  },
+  {
+   "camara": "AmCham",
+   "seccion": "amchamar.com.ar",
+   "estado": "SSLError; no se pudo evaluar"
+  },
+  {
+   "camara": "COPAL",
+   "seccion": "https://www.copal.org.ar/novedades/ + /feed/",
+   "estado": "existe, RSS con 10 items"
+  }
  ],
  "advertencia_de_metodo": "El primer intento adivinó rutas (/novedades/, /feed/) y devolvió 404 en casi todas. Eso NO es evidencia de que no haya fuente: leyendo las home aparecieron las secciones reales en 5 de 8 cámaras. Mismo error que el registrado en feedback_no_declarar_fuente_inexistente.",
  "hallazgo_1_el_rss_no_sirve": "El RSS de ADEBA trae 21 items y los 21 son 'Síntesis normativa MBA' — un boletín regulatorio automático diario. Los comunicados institucionales quedan sepultados y no aparecen ni uno solo en el feed. Cualquier colector basado en RSS mediría el boletín, no la postura.",
@@ -36,5 +75,387 @@
  },
  "hallazgo_3_el_destinatario_cambia": "ES EL PROBLEMA QUE HUNDE EL INDICADOR TAL COMO ESTÁ PROPUESTO. De los tres ejemplos de crítica, DOS apuntan a municipios y UNO al Congreso: ninguno al Poder Ejecutivo nacional. Un indicador de 'apoyo público al Gobierno' que cuente comunicados críticos sin codificar a quién critican mediría otra cosa. Es la misma clase de error de ADR-0091 (veto_quorum) y ADR-0068 (fondo de cese): contar lo que no es.",
  "hallazgo_4_volumen": "La categoría comunicados de ADEBA tiene 2 páginas de paginación, del orden de 24 a 48 piezas en TODA su historia, de las cuales una parte es ruido y otra apunta a destinatarios que no son el Gobierno nacional. Quedan unas pocas por año.",
- "costo_recurrente": "A diferencia del veto de constitucionalidad (ADR-0131), donde la codificación es una pasada sobre un universo cerrado, acá la clasificación de postura habría que rehacerla TODOS LOS MESES, con doble codificación y kappa ≥ 0,70 según el protocolo. Es trabajo humano permanente de dos personas, no un costo de arranque."
+ "costo_recurrente": "A diferencia del veto de constitucionalidad (ADR-0131), donde la codificación es una pasada sobre un universo cerrado, acá la clasificación de postura habría que rehacerla TODOS LOS MESES, con doble codificación y kappa ≥ 0,70 según el protocolo. Es trabajo humano permanente de dos personas, no un costo de arranque.",
+ "relevamiento_octubre_2026": {
+  "resumen": {
+   "cumple_y_entra": [
+    "CAC"
+   ],
+   "cumple_en_2024_2025_pero_no_en_los_ultimos_12_meses": [
+    "CAME"
+   ],
+   "candidatas_con_volumen_pero_sin_archivo_completo_o_sin_clasificar": [
+    "Coninagro",
+    "SRA",
+    "CRA"
+   ],
+   "no_cumplen": [
+    "CESSI",
+    "Argencon",
+    "FAA (sin sección de prensa)"
+   ]
+  },
+  "camaras": {
+   "CAC": {
+    "sector": "comercio",
+    "url": "https://www.cac.com.ar/categoria/comunicados-de-prensa",
+    "estado": "CUMPLE — entra al índice (ADR-0380)",
+    "metodo": "clasificada",
+    "comunicados_total": {
+     "2023 (desde el 10-dic)": 1,
+     "2024": 65,
+     "2025": 65,
+     "2026": 52
+    },
+    "informes_estadisticos_archivados": {
+     "2023 (desde el 10-dic)": 1,
+     "2024": 36,
+     "2025": 40,
+     "2026": 32
+    },
+    "codificados": {
+     "2024": 29,
+     "2025": 25,
+     "2026": 20
+    },
+    "con_postura": {
+     "2024": 18,
+     "2025": 14,
+     "2026": 12
+    },
+    "al_ejecutivo_con_postura": {
+     "2024": 11,
+     "2025": 6,
+     "2026": 4
+    },
+    "ultimos_12_meses_oct2025_oct2026": {
+     "con_postura": 16,
+     "al_ejecutivo_con_postura": 4,
+     "apoyos_al_ejecutivo": 4,
+     "criticas_al_ejecutivo": 0
+    },
+    "por_mes_con_postura_y_al_ejecutivo": {
+     "2024-01": [
+      3,
+      2
+     ],
+     "2024-02": [
+      3,
+      1
+     ],
+     "2024-03": [
+      1,
+      0
+     ],
+     "2024-04": [
+      1,
+      0
+     ],
+     "2024-05": [
+      1,
+      0
+     ],
+     "2024-06": [
+      1,
+      0
+     ],
+     "2024-07": [
+      1,
+      1
+     ],
+     "2024-08": [
+      2,
+      2
+     ],
+     "2024-09": [
+      3,
+      3
+     ],
+     "2024-12": [
+      2,
+      2
+     ],
+     "2025-01": [
+      3,
+      2
+     ],
+     "2025-04": [
+      1,
+      1
+     ],
+     "2025-05": [
+      1,
+      1
+     ],
+     "2025-07": [
+      2,
+      0
+     ],
+     "2025-08": [
+      3,
+      2
+     ],
+     "2025-10": [
+      1,
+      0
+     ],
+     "2025-11": [
+      1,
+      0
+     ],
+     "2025-12": [
+      2,
+      0
+     ],
+     "2026-01": [
+      1,
+      0
+     ],
+     "2026-02": [
+      1,
+      0
+     ],
+     "2026-04": [
+      1,
+      0
+     ],
+     "2026-05": [
+      1,
+      0
+     ],
+     "2026-06": [
+      2,
+      0
+     ],
+     "2026-07": [
+      1,
+      1
+     ],
+     "2026-08": [
+      2,
+      2
+     ],
+     "2026-09": [
+      2,
+      1
+     ],
+     "2026-10": [
+      1,
+      0
+     ]
+    },
+    "nota": "Archivo completo y paginado desde antes de dic-2023. 109 de 183 son informes estadísticos propios (consumo, venta ilegal, locales, comercio con Brasil). Todos sus pronunciamientos al Ejecutivo son de apoyo (21 de 21); sus 12 críticas van a provincias, Congreso, Justicia u organismos internacionales."
+   },
+   "CAME": {
+    "sector": "comercio (pymes)",
+    "url": "https://www.redcame.org.ar/prensa/comunicados/",
+    "estado": "CLASIFICADA, NO ENTRA: en los últimos 12 meses sólo 2 comunicados al Ejecutivo (mínimo 4)",
+    "metodo": "clasificada",
+    "comunicados_total": {
+     "2023 (desde el 10-dic)": 12,
+     "2024": 134,
+     "2025": 93,
+     "2026": 72
+    },
+    "informes_estadisticos_archivados": {
+     "2023 (desde el 10-dic)": 3,
+     "2024": 65,
+     "2025": 60,
+     "2026": 45
+    },
+    "codificados": {
+     "2023 (desde el 10-dic)": 9,
+     "2024": 69,
+     "2025": 33,
+     "2026": 27
+    },
+    "con_postura": {
+     "2023 (desde el 10-dic)": 2,
+     "2024": 24,
+     "2025": 13,
+     "2026": 4
+    },
+    "al_ejecutivo_con_postura": {
+     "2023 (desde el 10-dic)": 2,
+     "2024": 15,
+     "2025": 9,
+     "2026": 1
+    },
+    "ultimos_12_meses_oct2025_oct2026": {
+     "con_postura": 5,
+     "al_ejecutivo_con_postura": 2,
+     "apoyos_al_ejecutivo": 1,
+     "criticas_al_ejecutivo": 1
+    },
+    "por_mes_con_postura_y_al_ejecutivo": {
+     "2023-12": [
+      2,
+      2
+     ],
+     "2024-01": [
+      4,
+      2
+     ],
+     "2024-02": [
+      4,
+      3
+     ],
+     "2024-03": [
+      1,
+      1
+     ],
+     "2024-04": [
+      2,
+      2
+     ],
+     "2024-05": [
+      3,
+      1
+     ],
+     "2024-06": [
+      1,
+      0
+     ],
+     "2024-07": [
+      3,
+      2
+     ],
+     "2024-08": [
+      3,
+      2
+     ],
+     "2024-09": [
+      2,
+      2
+     ],
+     "2024-12": [
+      1,
+      0
+     ],
+     "2025-01": [
+      3,
+      3
+     ],
+     "2025-02": [
+      2,
+      0
+     ],
+     "2025-03": [
+      2,
+      2
+     ],
+     "2025-04": [
+      2,
+      1
+     ],
+     "2025-07": [
+      2,
+      1
+     ],
+     "2025-08": [
+      1,
+      1
+     ],
+     "2025-10": [
+      1,
+      1
+     ],
+     "2026-04": [
+      1,
+      0
+     ],
+     "2026-05": [
+      3,
+      1
+     ]
+    },
+    "nota": "Archivo completo (311 comunicados desde dic-2023, 173 son informes estadísticos o sectoriales). Tuvo 24 comunicados al Ejecutivo en 2024-2025 (15 y 9) y 1 en 2026. Queda registrada para reponerla si vuelve a pronunciarse: APOYO_COMERCIO_CAMARAS."
+   },
+   "Coninagro": {
+    "sector": "campo (cooperativas)",
+    "url": "https://www.coninagro.org.ar/ (API WordPress /wp-json/wp/v2/posts)",
+    "estado": "CANDIDATA — archivo completo y enumerable, SIN clasificar",
+    "metodo": "preselección por palabras clave (no clasificado)",
+    "comunicados_total": {
+     "2023 (desde el 10-dic)": 7,
+     "2024": 113,
+     "2025": 77,
+     "2026": 67
+    },
+    "con_postura_preseleccion": {
+     "2023 (desde el 10-dic)": 3,
+     "2024": 17,
+     "2025": 15,
+     "2026": 12
+    },
+    "ultimos_12_meses_preseleccion": 12,
+    "nota": "Mezcla comunicados con entrevistas y frases de dirigentes («Lo que el campo necesita es una quita de retenciones por ley») y muchos informes técnicos (semáforo de economías regionales, relaciones insumo-producto). La preselección sobreestima; hay que clasificar los ~50 candidatos para saber cuántos son de la cámara y cuántos dirigidos al Ejecutivo."
+   },
+   "SRA": {
+    "sector": "campo (Sociedad Rural)",
+    "url": "https://www.sra.ar/comunicacion/",
+    "estado": "CANDIDATA — el archivo del sitio empieza en enero de 2025, SIN clasificar",
+    "metodo": "preselección por palabras clave (no clasificado)",
+    "comunicados_total": {
+     "2025": 112,
+     "2026": 117
+    },
+    "con_postura_preseleccion": {
+     "2025": 21,
+     "2026": 9
+    },
+    "ultimos_12_meses_preseleccion": 15,
+    "nota": "Sitio nuevo: no hay nada de dic-2023 a dic-2024 y el sitio anterior (ruralarg.org.ar) no respondió en dos pruebas. Entre los candidatos de los últimos 12 meses: «La SRA sobre el anuncio de baja de retenciones» (9-dic-2025), «El Gobierno contempló las propuestas de la SRA sobre reforma laboral» (11-dic-2025), «La SRA se presentó ante la Justicia para apoyar la validez de la Ley de Modernización Laboral» (4-may-2026), «El campo cumple cuando hay previsibilidad: es momento de profundizar el alivio fiscal» (26-mar-2026). Habría que recuperar 2024 del sitio anterior (archivo web) para tener la serie completa."
+   },
+   "CRA": {
+    "sector": "campo (Confederaciones Rurales)",
+    "url": "https://www.cra.org.ar/prensa/",
+    "estado": "CANDIDATA — volumen alto pero el corpus histórico no se puede enumerar desde el listado, SIN clasificar",
+    "metodo": "muestra de la portada de /prensa/ (21 comunicados del 24-ago al 14-sep-2026)",
+    "nota": "En tres semanas publicó 21 comunicados de prensa, al menos 8 con postura sobre proyectos o políticas (rechazo al proyecto de ecocidio, bonos de carbono, vandalismo rural, «eliminar totalmente las retenciones»). El listado no pagina y los ids se comparten con otras secciones: recuperar el histórico exige enumerar ids o usar un archivo web."
+   },
+   "FAA": {
+    "sector": "campo (Federación Agraria)",
+    "url": "https://faa.com.ar/",
+    "estado": "NO CUMPLE — el sitio no tiene sección de prensa",
+    "metodo": "inspección del sitio",
+    "nota": "WordPress sin entradas (/wp-json/wp/v2/posts devuelve 0); sólo páginas institucionales y «La Tierra» (el periódico). Los dominios alternativos probados (federacionagraria.org, agraria.org.ar) no responden."
+   },
+   "CESSI": {
+    "sector": "tecnología (software)",
+    "url": "https://cessi.org.ar/novedades/ (API WordPress)",
+    "estado": "NO CUMPLE — 0 comunicados con postura sobre el Gobierno",
+    "metodo": "lectura de los títulos de las 96 notas desde dic-2023",
+    "comunicados_total": {
+     "2024": 46,
+     "2025": 31,
+     "2026": 19
+    },
+    "con_postura": {
+     "2024": 0,
+     "2025": 0,
+     "2026": 0
+    },
+    "nota": "Todo es agenda: webinars, reuniones de espacios de trabajo, premios Sadosky, encuentros. Los webinars «sobre el DNU 70/2023» y «Ley Bases – impacto» son capacitaciones, no tomas de posición."
+   },
+   "Argencon": {
+    "sector": "tecnología (economía del conocimiento)",
+    "url": "https://www.argencon.org/comunicados/",
+    "estado": "NO CUMPLE — 6 comunicados en casi tres años",
+    "metodo": "lectura de los títulos y arranques de la sección completa",
+    "comunicados_total": {
+     "2024": 3,
+     "2025": 1,
+     "2026": 2
+    },
+    "con_postura": {
+     "2024": 0,
+     "2025": 1,
+     "2026": 0
+    },
+    "nota": "argencon.org.ar no responde; el sitio real es argencon.org. Son encuestas de perspectivas a los socios, un podcast y datos de exportaciones. El único con lectura de política es de marzo de 2025 («la salida del cepo fortalecerá el crecimiento»)."
+   }
+  },
+  "pendiente_decidido": "Si se quiere sumar el campo con las cámaras que ya están: clasificar Coninagro (archivo completo) con el mismo protocolo, y pedir recuperar el archivo de la SRA de 2024; la CRA exige enumerar ids. Ninguna de las tres se incorporó a este índice porque con el material de hoy no se puede cerrar un corpus completo desde dic-2023 (ADR-0310)."
+ }
 }

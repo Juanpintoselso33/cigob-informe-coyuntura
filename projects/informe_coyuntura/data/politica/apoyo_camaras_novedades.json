@@ -1,0 +1,1497 @@
+{
+ "_meta": {
+  "comunicados_vistos": 0,
+  "descripcion": "Comunicados nuevos de las cámaras del perímetro del comercio (hoy la CAC) pendientes de codificar (ADR-0380). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_comercio en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
+  "fuentes": {
+   "CAC": "https://www.cac.com.ar/categoria/comunicados-de-prensa"
+  },
+  "inventario_verificado": "2026-10-27",
+  "nuevos_en_la_corrida": 0,
+  "ultima_corrida": "2026-10-27"
+ },
+ "pendientes": {},
+ "revisadas": {
+  "CAC|acuerdo-con-el-fmi-y-liberalizacion-cambiaria-satisfaccion-de-la-cac": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|apoyo-de-la-cac-a-la-reduccion-y-eliminacion-de-retenciones-a-las-exportaciones": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|apoyo-de-la-cac-al-protocolo-antibloqueos": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|aumento-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires-1": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|aumento-la-venta-ilegal-callejera-en-caba-durante-febrero": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|bajo-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires-1": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|bajo-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires-4": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|bajo-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires-5": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|bajo-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires-a": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|bajo-la-venta-ilegal-callejera-en-caba-05": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|celebramos-los-progresos-alcanzados-y-sobre-todo-el-rumbo-elegido": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|consternacion-de-la-cac-ante-el-aval-judicial-a-la-violencia-sindical": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|consumo-en-hogares-en-abril-se-acelero-el-crecimiento-interanual": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|crecio-el-consumo-de-los-hogares-en-bienes-y-servicios-en-septiembre": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|crecio-en-febrero-el-comercio-con-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|credito-hipotecario-la-cac-expresa-su-acompanamiento-a-los-anuncios-gubernamentales": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|dia-del-trabajador-la-busqueda-de-empleo-y-la-capacitacion-como-claves-para-el-futuro-laboral": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|disminuyo-el-comercio-bilateral-con-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|disminuyo-el-comercio-bilateral-con-brasil-en-diciembre": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|disminuyo-el-comercio-de-argentina-con-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|durante-el-primer-semestre-del-ano-el-consumo-de-los-hogares-en-bienes-y-servicios-finales-cayo-un-5-3-interanual": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-ano-se-inicio-con-un-fuerte-incremento-del-comercio-con-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-comercio-con-brasil-crecio-nuevamente-en-agosto": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-comercio-con-brasil-mantuvo-su-crecimiento-en-septiembre": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-comercio-con-brasil-siguio-en-ascenso-en-julio": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-comercio-con-brasil-subio-nuevamente-en-junio": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-consumo-avanzo-4-2-interanual-en-marzo": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-consumo-comienza-a-dar-senales-concretas-de-recuperacion": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-consumo-continuo-en-diciembre-la-tendencia-a-la-baja": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-consumo-de-los-hogares-en-bienes-y-servicios-crecio-1-9-interanual-en-octubre": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-consumo-en-hogares-continuo-su-senda-de-crecimiento-en-febrero-1": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-consumo-en-hogares-registro-un-leve-crecimiento-en-mayo": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-consumo-en-hogares-registro-un-leve-descenso-en-agosto": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-consumo-registro-una-caida-de-3-8-interanual-en-marzo": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-consumo-volvio-a-crecer-en-febrero": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-intercambio-comercial-con-brasil-continuo-su-desaceleracion-en-febrero-y-volvio-a-tener-signo-negativo": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-intercambio-comercial-con-brasil-se-acelero-en-marzo-y-retorno-el-signo-positivo-en-la-relacion-bilateral": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-intercambio-comercial-con-brasil-se-desacelero-en-abril-pero-argentina-mantuvo-el-signo-positivo-en-la-relacion-bilateral": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-intercambio-comercial-con-brasil-se-desacelero-en-diciembre-pero-mostro-su-primer-saldo-positivo-en-once-meses": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-intercambio-comercial-con-brasil-se-desacelero-en-enero-pero-tuvo-saldo-positivo-por-segundo-mes-consecutivo": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-intercambio-comercial-con-brasil-se-desacelero-en-junio-pero-argentina-mantuvo-el-signo-positivo-en-la-relacion-bilateral": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-intercambio-comercial-con-brasil-se-desacelero-en-mayo-pero-argentina-mantuvo-el-signo-positivo-en-la-relacion-bilateral": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-presidente-de-la-republica-checa-y-el-canciller-quirno-expusieron-en-la-cac": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|el-ultimo-mes-de-2025-mostro-una-leve-baja-del-consumo-de-hogares-en-bienes-y-servicios": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-abril-el-consumo-sufrio-una-caida-interanual-del-4-5": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-abril-la-venta-ilegal-callejera-en-caba-cayo-10-9": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-abril-la-venta-ilegal-callejera-en-caba-cayo-un-87-7-en-relacion-al-ano-anterior": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-abril-la-venta-ilegal-callejera-en-caba-registro-una-caida-interanual-del-6-5": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-abril-volvio-a-crecer-el-comercio-bilateral-con-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-abril-volvio-a-crecer-el-consumo-de-hogares-en-bienes-y-servicios": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-agosto-el-consumo-de-los-hogares-de-bienes-y-servicios-cayo-levemente-en-comparacion-con-julio": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-agosto-la-venta-ilegal-callejera-en-caba-registro-una-caida-interanual-del-38-1": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-agosto-la-venta-ilegal-callejera-en-caba-subio-10-3-en-relacion-al-mes-anterior": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-agosto-se-modero-la-venta-ilegal-callejera-en-caba": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-diciembre-la-venta-ilegal-callejera-en-caba-subio-0-7-en-relacion-al-mes-anterior": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-enero-el-consumo-en-bienes-y-servicios-crecio-0-7-respecto-al-cierre-de-2025": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-enero-la-venta-ilegal-callejera-en-caba-bajo-6-2-en-relacion-al-mismo-mes-de-2023": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-febrero-bajo-la-venta-ilegal-callejera-en-caba": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-febrero-la-venta-ilegal-callejera-en-caba-bajo-91-en-relacion-al-ano-anterior": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-febrero-se-profundizo-la-caida-del-consumo-de-los-hogares": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-julio-crecieron-las-exportaciones-a-brasil-un-20-interanual": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-julio-el-consumo-de-los-hogares-en-bienes-y-servicios-registro-un-leve-aumento": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-julio-la-venta-ilegal-callejera-en-caba-bajo-22-8-de-forma-interanual": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-julio-la-venta-ilegal-callejera-en-caba-crecio-13-5-en-relacion-al-ano-anterior": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-junio-crecio-el-consumo-de-los-hogares-en-bienes-y-servicios": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-junio-la-venta-ilegal-callejera-en-caba-registro-una-baja-interanual-del-84-4": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-junio-se-registro-una-leve-suba-de-la-venta-ilegal-callejera-en-caba": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-marzo-aumento-el-comercio-entre-argentina-y-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-marzo-la-venta-ilegal-callejera-en-caba-bajo-1-en-relacion-al-mes-anterior": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-mayo-cayo-un-7-7-interanual-el-consumo-de-los-hogares-en-bienes-y-servicios-finales": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-mayo-continuo-el-alza-de-las-exportaciones-argentinas-hacia-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-mayo-la-venta-ilegal-callejera-en-caba-registro-una-suba-interanual-de-6-4": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-mayo-se-registro-una-leve-caida-de-la-venta-ilegal-callejera-en-caba": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-mayo-se-registro-una-nueva-suba-del-consumo-de-hogares-en-bienes-y-servicios": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-noviembre-la-venta-ilegal-callejera-en-caba-bajo-51-2-en-relacion-a-2023": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-octubre-la-venta-ilegal-callejera-en-caba-cayo-58-2-en-relacion-al-mes-anterior": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-septiembre-la-venta-ilegal-callejera-en-caba-bajo-un-3-1-en-relacion-al-mes-anterior": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|en-su-centenario-la-cac-llamo-a-construir-una-argentina-libre-unida-y-prospera": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|en-una-charla-organizada-por-caece-se-analizo-la-importancia-de-la-inteligencia-artificial-generativa-y-los-datos-para-el-futuro-de-las-empresas": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|fallo-de-la-corte-consideraciones-de-la-cac": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|freno-a-la-economia-informal-la-cac-apoya-la-lucha-contra-la-venta-ilegal-en-caba": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|fuerte-avance-del-comercio-argentina---brasil-en-mayo": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|fuerte-baja-interanual-en-la-cantidad-de-locales-vacios-en-la-ciudad-de-buenos-aires": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|fuerte-caida-en-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|fuerte-crecimiento-de-las-exportaciones-argentinas-hacia-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|fuerte-incremento-del-comercio-bilateral-con-brasil-en-febrero": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|fuerte-incremento-del-comercio-exterior-con-brasil-en-septiembre-de-2024": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|fuerte-incremento-del-consumo-en-enero": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|grinman-destaco-los-desafios-de-la-libertad-economica-y-pidio-mayor-articulacion-publico-privada": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|grinman-el-acuerdo-con-ee-uu-es-una-oportunidad-estrategica-para-el-comercio-y-la-inversion": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|grinman-el-cuidado-ambiental-no-puede-impedir-el-uso-de-los-recursos-de-nuestro-subsuelo": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|grinman-evidenciar-la-excesiva-carga-tributaria-es-el-primer-paso-para-una-futura-reduccion": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|grinman-fue-electo-presidente-de-la-asociacion-iberoamericana-de-camaras-de-comercio-industria-y-servicios-aico": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|grinman-llamo-a-reafirmar-el-cambio-y-superar-la-decadencia-y-la-postracion": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|grinman-los-inversores-tienen-miedo-de-que-vuelvan-aquellos-que-consideran-peligrosos": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|grinman-renovo-su-mandato-como-presidente-de-la-camara-argentina-de-comercio-y-servicios": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|grinman-tengo-la-conviccion-de-que-los-argentinos-estamos-haciendo-progresos-sustantivos": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|implementan-en-argentina-un-programa-global-para-fortalecer-la-presencia-digital-de-pymes-y-emprendedores": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|inacap-consideraciones-de-la-cac": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|ingresos-brutos-rechazo-de-la-cac-a-aduanas-interiores-entre-provincias": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|iniciativas-legislativas-la-cac-exhorta-a-obrar-con-responsabilidad": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|intercambio-con-brasil-el-deficit-anual-se-redujo-96-con-respecto-a-2023": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|intercambio-con-brasil-notable-baja-de-las-importaciones-y-nuevo-crecimiento-de-las-exportaciones": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|la-baja-en-la-conflictividad-laboral-es-un-indicio-de-la-estabilidad-y-el-orden-que-necesitaban-las-empresas": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-barbarie-se-condena-sin-cortapisas": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-a-favor-del-capitulo-laboral-expresado-en-el-dnu-70-2023": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-acompana-el-diagnostico-y-el-curso-de-accion-planteado-por-el-presidente-milei": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-acompana-el-plan-de-reparacion-historica-de-los-ahorros-de-los-argentinos": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-acompana-la-aprobacion-definitiva-de-la-ley-bases-y-el-paquete-fiscal": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-acompana-la-propuesta-de-un-nuevo-regimen-de-actualizacion-de-creditos-laborales": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-acompana-la-reglamentacion-de-la-reforma-laboral": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-advierte-sobre-asimetrias-y-sanciones-excesivas-en-el-proyecto-de-ley-de-lobby": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-analizo-la-evolucion-de-tasa-de-seguridad-e-higiene-de-todo-el-pais": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-apoya-el-acta-de-mayo": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-apoya-la-eliminacion-de-las-retenciones-de-iva-y-ganancias-en-cobros-electronicos": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-apoya-la-reforma-del-banco-central-para-erradicar-la-emision-sin-respaldo": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-apoya-los-proyectos-de-ley-bases-y-de-reforma-fiscal": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-insta-a-implementar-el-plan-de-reparacion-historica-de-los-ahorros-de-los-argentinos": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-insta-a-una-pronta-aprobacion-del-paquete-fiscal": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-manifiesta-su-preocupacion-por-el-ingreso-irregular-de-mercaderias-al-pais": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-presidira-el-consejo-de-asociaciones-empresariales-sudamericanas-por-el-comercio-licito": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-presidira-el-consejo-de-camaras-de-comercio-del-mercosur": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-rechaza-el-incremento-de-impuestos-subnacionales": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-rechaza-el-incremento-de-la-presion-tributaria-subnacional": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-recibio-a-la-ministra-de-capital-humano-y-al-secretario-de-trabajo": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-recibio-al-secretario-general-de-la-ocde-y-a-pablo-quirno": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-renovo-parcialmente-su-consejo-directivo": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-renovo-parcialmente-su-consejo-directivo-1": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-repudia-el-atentado-contra-la-sociedad-rural-argentina": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-repudia-el-fraude-en-venezuela": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-cac-se-reunio-con-el-jefe-de-gabinete-manuel-adorni": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-defensa-a-ultranza-del-equilibrio-en-las-cuentas-publicas-es-muy-saludable": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|la-universidad-caece-presenta-el-indice-de-creatividad-de-argentina": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|las-exportaciones-a-brasil-registraron-en-junio-su-cuarto-mes-consecutivo-de-alza": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|las-exportaciones-argentinas-hacia-brasil-volvieron-a-aumentar-en-agosto": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|leve-crecimiento-del-consumo-de-los-hogares-en-bienes-y-servicios-finales": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|leve-suba-de-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|llamado-de-la-cac-basta-de-inseguridad": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|locales-en-la-ciudad-mas-desocupacion-que-un-ano-atras-pero-con-una-mejora-en-el-bimestre-julio-agosto": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|luego-de-mas-de-un-ano-de-alzas-cayo-el-comercio-bilateral-con-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|malvinas-la-cac-acompana-los-anuncios-del-presidente-milei": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|marzo-registro-un-aumento-en-las-exportaciones-a-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|marzo-registro-una-caida-del-consumo-de-los-hogares": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|medir-con-distintas-varas-a-los-gobiernos-no-es-correcto": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|mensaje-del-presidente-milei-acompanamiento-de-la-cac-a-la-defensa-del-equilibrio-fiscal": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|modernizacion-laboral-la-cac-celebra-la-aprobacion-por-parte-de-diputados": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|modernizacion-laboral-la-cac-se-reunio-en-el-senado-con-los-equipos-de-patricia-bullrich": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|muchos-defectos-pero-no-ese": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|noviembre-fue-el-tercer-mes-consecutivo-de-incremento-del-comercio-exterior-con-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|nueva-contraccion-del-consumo-de-los-hogares-en-bienes-y-servicios": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|nuevamente-crecieron-las-exportaciones-argentinas-a-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|nuevo-crecimiento-de-las-exportaciones-argentinas-a-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|paro-en-la-aduana-preocupacion-de-la-cac": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|peaje-ilegal-en-ramallo-rechazo-de-la-cac-a-las-barreras-al-comercio-y-la-aduana-interior": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|posicion-de-la-cac-sobre-el-proyecto-de-ley-reformas-al-procedimiento-tributario-y-regimen-penal-tributario": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|preocupacion-de-la-cac-ante-el-paro-de-practicos-portuarios": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|preocupacion-de-la-cac-por-el-retroceso-del-proyecto-de-ley-bases": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|proyecto-de-ley-general-de-sociedades-consideraciones-de-la-cac": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|reforma-tributaria-y-recomendaciones-del-fmi-posicion-de-la-cac": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|repudio-de-la-cac-a-los-ataques-del-crimen-organizado-en-ecuador": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|satisfaccion-de-la-cac-por-el-apoyo-financiero-de-estados-unidos": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|satisfaccion-de-la-cac-por-el-fallo-que-limita-los-intereses-por-indemnizaciones": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|satisfaccion-de-la-cac-por-el-nuevo-avance-del-acuerdo-mercosur---union-europea": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|se-firmo-la-paritaria-mercantil-10": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|se-firmo-la-paritaria-mercantil-2026": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|se-firmo-la-revision-de-la-paritaria-mercantil-11": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|se-firmo-la-revision-de-la-paritaria-mercantil-12": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|se-firmo-la-revision-de-la-paritaria-mercantil-13": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|se-firmo-la-revision-paritaria-mercantil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|se-firmo-la-revision-paritaria-mercantil-1": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|se-firmo-la-revision-paritaria-mercantil-32": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|se-mantuvo-el-fuerte-repunte-del-comercio-exterior-con-brasil": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|subio-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|subio-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires-05": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|subio-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires-1": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|subio-la-cantidad-de-locales-en-alquiler-y-venta-en-la-ciudad-de-buenos-aires-3": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|subio-la-cantidad-de-locales-inactivos-en-la-ciudad-de-buenos-aires": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|subio-la-cantidad-de-locales-vacios-en-la-ciudad-de-buenos-aires": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|tributos-locales-y-la-doctrina-de-la-corte-suprema-posicionamiento-de-la-cac": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|unicef-creo-el-consejo-empresarial-por-la-infancia-y-adolescencia": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|venta-ilegal-en-caba-cada-vez-menos-puestos-callejeros": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|violencia-dentro-y-fuera-del-congreso-la-cac-repudia-la-barbarie": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAC|volvio-a-caer-el-consumo-de-los-hogares-en-bienes-y-servicios": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13470": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13482": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13487": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13490": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13500": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13503": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13506": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13507": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13508": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13510": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13513": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13515": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13530": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13531": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13536": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13537": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13539": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13541": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13547": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13548": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13551": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13556": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13557": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13559": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13561": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13563": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13564": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13565": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13566": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13569": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13581": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13582": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13583": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13594": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13595": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13598": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13600": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13606": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13607": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13608": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13611": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13616": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13622": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13625": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13635": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13641": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13647": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13648": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13649": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13652": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13654": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13657": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13658": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13659": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13677": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13678": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13683": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13685": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13689": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13691": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13695": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13696": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13697": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13699": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13704": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13712": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13713": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13717": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13718": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13721": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13727": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13733": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13744": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13745": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13746": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13747": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13749": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13751": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13752": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13753": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13754": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13761": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13764": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13765": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13767": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13777": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13778": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13782": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13785": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13794": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13802": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13809": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13810": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13811": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13812": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13813": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13814": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13826": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13829": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13831": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13837": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13841": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13847": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13851": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13858": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13859": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13868": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13876": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13882": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13890": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13902": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13905": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13909": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13910": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13919": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13920": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13929": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13931": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13934": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13935": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13940": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13947": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13957": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13959": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13965": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|13968": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13971": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13972": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13981": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13989": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|13990": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14002": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14010": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14011": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14015": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14026": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14036": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14039": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14043": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14049": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14052": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14062": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14069": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14070": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14072": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14077": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14080": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14082": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14083": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14087": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14089": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14095": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14096": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14098": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14100": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14101": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14105": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14110": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14115": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14116": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14117": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14118": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14119": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14120": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14126": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14132": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14133": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14134": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14135": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14136": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14138": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14139": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14140": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14151": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14155": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14160": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14170": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14171": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14172": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14175": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14180": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14191": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14192": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14199": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14206": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14207": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14208": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14209": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14216": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14242": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14247": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14252": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14256": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14257": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14266": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14271": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14277": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14278": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14283": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14300": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14302": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14303": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14306": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14313": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14331": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14347": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14348": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14349": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14350": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14351": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14352": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14354": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14355": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14356": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14357": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14358": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14359": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14360": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14364": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14365": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14368": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14369": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14371": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14381": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14382": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14387": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14388": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14390": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14397": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14401": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14408": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14412": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14416": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14418": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14422": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14423": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14424": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14440": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14443": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14445": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14449": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14452": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14456": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14466": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14470": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14475": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14479": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14480": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14491": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14492": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14493": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14497": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14509": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14514": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14515": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14522": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14528": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14530": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14532": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14534": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14535": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14539": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14540": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14549": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14551": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14553": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14557": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14559": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14566": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14567": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14569": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14580": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14582": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14583": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14584": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14594": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14595": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14597": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14599": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14603": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14609": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14612": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14620": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14625": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14629": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14637": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14640": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14654": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14659": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14660": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14663": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14669": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|14670": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14678": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14680": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|14681": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|574311120": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|574311129": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|574311130": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|574311133": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|574311135": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|574311137": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|574311149": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|574311152": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|574311157": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|574311162": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|574311173": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|574311176": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|574311180": {
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAME|574311188": {
+   "origen": "codificacion ADR-0380"
+  },
+  "CAME|574311189": {
+   "origen": "codificacion ADR-0380"
+  }
+ }
+}

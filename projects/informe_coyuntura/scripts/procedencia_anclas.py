@@ -233,6 +233,7 @@ PROCEDENCIA = {
     "velocidad_resolucion": ("conceptual", "el 100% es el punto donde la Corte resuelve exactamente lo que le entra, sin acumular ni descargar atraso; los cortes son márgenes redondos alrededor de ese valor y no el rango observado 26-142 (ADR-0168)"),
     "paralisis_denuncias": ("conceptual", "cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, preservados al corregir el universo de slugs numerados (rango 13-18; ADR-0168/0268)"),
     "apoyo_empresario": ("conceptual", "el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150)"),
+    "apoyo_comercio": ("conceptual", "las mismas anclas del saldo de la industria —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie del comercio; no se miró el rango observado, que de hecho toca el extremo +1,0 (ADR-0150, ADR-0380)"),
     # bloqueo_sostenido salió del índice (ADR-0330): no puntúa más, así que no
     # declara procedencia acá (mismo criterio que derrotas_legislativas).
     "transferencias_no_automaticas": ("convencion", "cortes -50/-20/+5/+30 pp puestos mirando el rango observado de las 22 ventanas de la gestión (-85% a +38%); sólo el cero como referencia es conceptual (ADR-0378)"),
