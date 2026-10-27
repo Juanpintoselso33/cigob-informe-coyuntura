@@ -2220,10 +2220,12 @@ def _scoring_vida_itvc(c, series):
                 lectura = (f"En la escala del cinturón, este componente está en "
                            f"{_lectura_tension(aporte)}.")
             # bases DECLARADAS distintas del 4T-2023 (fuente sin medición en la base del doc)
-            base_lbl = {"inseguridad": "ene-2024 (base declarada conservada; archivo 2023 recuperado en septiembre de 2026)"} \
+            base_lbl = {"inseguridad": "ene-2024 (base declarada conservada; archivo 2023 recuperado en septiembre de 2026)",
+                        # ADR-0383: misma estación de 2023, cada décima de punto = 1
+                        "ocupacion_eph": "el mismo trimestre de 2023, cada décima de punto de tasa de empleo vale 1"} \
                 .get(ikey, "4T-2023")
             formula = (f"Índice base-100 vs {base_lbl}: {coma(info['puntaje_aplicado'])} "
-                       f"(100 = arranque del mandato; más = mejora); pesa "
+                       f"(100 = igual que antes del mandato; más = mejora); pesa "
                        f"{coma(round(info['peso_efectivo'] * 100, 1))}% del índice de impacto social.")
             if ikey == "peso_tarifas":
                 carga = ind.get("valor")

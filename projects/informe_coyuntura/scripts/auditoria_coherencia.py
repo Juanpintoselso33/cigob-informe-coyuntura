@@ -47,7 +47,12 @@ def auditar():
             if not 0 < pesos <= 1.001:
                 fallas.append(f'{cint}/{dk}: suma nominal inválida {pesos}')
                 continue
-            puntaje = sum(x['peso'] * x['puntaje_aplicado'] for x in internos.values()) / pesos
+            combinar = nominal.get(dk, {}).get('combinar')
+            if combinar is not None:
+                # ADR-0375: la dimensión no es un promedio (matriz de competitividad).
+                puntaje = combinar({k: x['puntaje_aplicado'] for k, x in internos.items()})
+            else:
+                puntaje = sum(x['peso'] * x['puntaje_aplicado'] for x in internos.values()) / pesos
             if abs(puntaje - d['puntaje']) > .11:
                 fallas.append(f'{cint}/{dk}: suma {puntaje} != {d["puntaje"]}')
             pd = d.get('peso_efectivo', d['peso'])

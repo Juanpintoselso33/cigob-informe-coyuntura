@@ -87,11 +87,21 @@ def recalcular(bloque: dict, bandas_mod: dict) -> tuple:
             })
             acc += p_int * info["peso"]
             pw += info["peso"]
-        dscore = acc / pw
+        combinar = (DIMENSIONES_POR_SIGLA.get(dkey) or {}).get("combinar")
+        if combinar is not None and pw:
+            # ADR-0375: la dimensión es la matriz, no el promedio.
+            dscore = combinar({d["indicador"]: d["interpolado"] for d in detalles
+                               if d["dimension"] == dkey})
+        else:
+            dscore = acc / pw
         dims_out[dkey] = round(dscore, 1)
         total += dscore * dim["peso"]
         wsum += dim["peso"]
     return round(total / wsum, 1), dims_out, detalles
+
+
+# Dimensiones con regla propia (ADR-0375), por clave de dimensión.
+DIMENSIONES_POR_SIGLA = {**itcm.DIMENSIONES_ITCM, **itcg.DIMENSIONES_ITCG}
 
 
 def main():

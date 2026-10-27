@@ -89,8 +89,8 @@ cámara, con URL, volumen por año y por mes, está en
    comercio».
 4. **CAME queda clasificada fuera del cálculo**, como AEA en la industria:
    `APOYO_COMERCIO_CAMARAS = ("CAC",)`; nombrar a CAME ahí la repone en el
-   cálculo y en el detector. Con CAME el saldo del último mes sería +0,667
-   (5 apoyos y 1 crítica) en vez de +1,0 (4 de 4); el puntaje es 100 en ambos.
+   cálculo y en el detector. Con CAME el saldo del último mes sería +0,6 (ventana de 12 meses calendario, corregida el 27-oct-2026; antes tomaba trece y daba +0,667)
+   (4 apoyos y 1 crítica) en vez de +1,0 (4 de 4); el puntaje es 100 en ambos.
 5. **Campo y tecnología no entran.** CESSI, Argencon y FAA no tienen comunicados de
    postura (o no tienen sección de prensa). Coninagro, SRA y CRA sí parecen tener
    volumen, pero hoy no se puede cerrar un corpus completo desde dic-2023 (el sitio

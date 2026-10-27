@@ -174,11 +174,12 @@ def test_el_saldo_replicado_a_mano_coincide_con_el_ultimo_punto():
 
 def test_repuesta_en_el_perimetro_came_suma_a_la_cuenta(monkeypatch):
     """El reingreso es de verdad una línea: con CAME nombrada, la serie y la card
-    cuentan sus comunicados (la ventana pasa de 4 comunicados a 6: 5 apoyos y 1 crítica)."""
+    cuentan sus comunicados (la ventana de 12 meses calendario pasa de 4
+    comunicados a 5: 4 apoyos y 1 crítica)."""
     solo_cac = politica.fetch_apoyo_comercio()
     monkeypatch.setattr(politica, "APOYO_COMERCIO_CAMARAS", ("CAC", "CAME"))
     con_came = politica.fetch_apoyo_comercio()
-    assert solo_cac["comunicados_ventana"] == 4 and con_came["comunicados_ventana"] == 6
+    assert solo_cac["comunicados_ventana"] == 4 and con_came["comunicados_ventana"] == 5
     assert con_came["criticas_ventana"] == 1
     assert [con_came["fecha_dato"], con_came["valor"]] == politica.apoyo_comercio_serie()[-1]
 

@@ -2310,7 +2310,11 @@ def _apoyo_saldo_serie(codificacion: Path, camaras: tuple, novedades: Path,
     tope = _apoyo_tope(hoy, novedades)
     out = []
     while (y, m) <= tope:
-        ini, fin = f"{y - 1:04d}-{m:02d}-01", f"{y:04d}-{m:02d}-31"
+        # Doce meses calendario: del mes siguiente al de hace un año al mes
+        # de referencia (antes tomaba trece: de oct-2025 a oct-2026; Codex,
+        # 27-oct-2026).
+        ini = _apoyo_inicio_ventana(f"{y:04d}-{m:02d}")
+        fin = f"{y:04d}-{m:02d}-31"
         v = [p for f, p in comp if ini <= f <= fin]
         a, c = v.count("apoyo"), v.count("critica")
         if a + c >= APOYO_MIN_OBSERVACIONES:
@@ -2319,6 +2323,13 @@ def _apoyo_saldo_serie(codificacion: Path, camaras: tuple, novedades: Path,
         if m == 13:
             y, m = y + 1, 1
     return out
+
+
+def _apoyo_inicio_ventana(ym: str) -> str:
+    """Primer día de la ventana de 12 meses calendario que termina en `ym`."""
+    y, m = int(ym[:4]), int(ym[5:7])
+    # oct-2026 → 2025-11-01; dic-2026 → 2026-01-01
+    return f"{y - 1:04d}-{m + 1:02d}-01" if m < 12 else f"{y:04d}-01-01"
 
 
 def _apoyo_tope(hoy: date, novedades: Path | None = None) -> tuple[int, int]:
@@ -2416,7 +2427,7 @@ def fetch_apoyo_empresario() -> dict | None:
                 if c["camara"] in APOYO_CAMARAS_PERIMETRO
                 and c["destinatario"] == "ejecutivo_nacional"
                 and c["postura"] in ("apoyo", "critica")
-                and f"{int(fecha[:4]) - 1}{fecha[4:7]}-01" <= c["fecha"] <= f"{fecha[:7]}-31"]
+                and _apoyo_inicio_ventana(fecha[:7]) <= c["fecha"] <= f"{fecha[:7]}-31"]
         apoyos = sum(1 for c in comp if c["postura"] == "apoyo")
         pend = _apoyo_pendientes()
         return {
@@ -2722,7 +2733,7 @@ def fetch_apoyo_comercio() -> dict | None:
                 if c["camara"] in APOYO_COMERCIO_CAMARAS
                 and c["destinatario"] == "ejecutivo_nacional"
                 and c["postura"] in ("apoyo", "critica")
-                and f"{int(fecha[:4]) - 1}{fecha[4:7]}-01" <= c["fecha"] <= f"{fecha[:7]}-31"]
+                and _apoyo_inicio_ventana(fecha[:7]) <= c["fecha"] <= f"{fecha[:7]}-31"]
         apoyos = sum(1 for c in comp if c["postura"] == "apoyo")
         try:
             pend = len(json.loads(APOYO_CAMARAS_NOVEDADES_PATH.read_text(
@@ -7441,6 +7452,21 @@ def fetch_votos_sobre_bancas() -> dict | None:
         valor = votos_sobre_bancas_valor(cache, date.today())
         if valor is None:
             raise ValueError("sin votaciones del universo en la ventana de 12 meses")
+        # Codex, 27-oct-2026: una ley aprobada cuyo origen todavía no se pudo
+        # resolver (el dictamen de Diputados se carga con rezago) no entra al
+        # promedio, pero tampoco se esconde: la tarjeta dice cuántas faltan.
+        desde = (date.today() - timedelta(days=365)).isoformat()
+        sin_origen = sorted(
+            e.get("fecha", "") for camara in ("diputados", "senado")
+            for e in cache.get(camara, {}).values()
+            if isinstance(e, dict) and e.get("resultado") == "AFIRMATIVO"
+            and "origen_pe" in e and e["origen_pe"] is None and e.get("fecha", "") >= desde)
+        detalle = _vsb_detalle(valor)
+        if sin_origen:
+            detalle += (f" Hay {len(sin_origen)} votaciones de ley de los últimos 12 meses "
+                        "(la más reciente del " + _fecha_dmy(sin_origen[-1]) + ") cuyo origen "
+                        "todavía no se pudo confirmar; no entran al promedio hasta que se "
+                        "confirme, y entonces el valor puede cambiar.")
         return {
             "valor": valor["valor"],
             "unidad": "% de las bancas de la cámara",
@@ -7454,7 +7480,8 @@ def fetch_votos_sobre_bancas() -> dict | None:
             "componentes": valor["componentes"],
             "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
             "desactualizado": False,
-            "detalle_txt": _vsb_detalle(valor),
+            "detalle_txt": detalle,
+            "sin_origen_resuelto": len(sin_origen),
         }
     except Exception as e:
         _warn("votos_sobre_bancas", str(e))
