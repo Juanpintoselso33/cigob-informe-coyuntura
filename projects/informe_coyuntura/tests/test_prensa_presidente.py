@@ -122,3 +122,20 @@ def test_el_corpus_versionado_es_coherente():
     for mes, m in c["_meta"]["meses"].items():
         assert por_mes[mes] == m["muestra"] <= m["universo"]
     assert "2025-06" in c["_meta"]["meses_incompletos"]
+
+
+def test_titulo_desde_url_reconstruye_el_slug_y_descarta_los_cortos():
+    assert pp.titulo_desde_url(
+        "http://www.ambito.com/836139-macri-califico-de-arbitraria-ley-de-la-oposicion-para-frenar-despidos"
+    ) == "Macri califico de arbitraria ley de la oposicion para frenar despidos"
+    assert pp.titulo_desde_url(
+        "http://www.diariouno.com.ar/pais/macri-se-mostro-desacuerdo-legalizar-el-aborto-pero-le-abrio-la-puerta-la-marihuana-20160731-n1200468"
+    ).endswith("la marihuana")
+    assert pp.titulo_desde_url("https://www.lanacion.com.ar/politica/mauricio-macri-nid12345") == ""
+
+
+def test_presidente_de_asigna_por_fecha_y_exige_el_apellido():
+    assert pp.presidente_de("2018-05-01", "https://x.com.ar/macri-anuncio") == "macri"
+    assert pp.presidente_de("2021-05-01", "https://x.com.ar/macri-critico") is None
+    assert pp.presidente_de("2021-05-01", "https://x.com.ar/alberto-fernandez-anuncio") == "fernandez"
+    assert pp.presidente_de("2021-05-01", "https://x.com.ar/cristina-fernandez-hablo") is None

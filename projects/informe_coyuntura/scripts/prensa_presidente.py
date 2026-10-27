@@ -32,6 +32,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 CORPUS = RAIZ / "data" / "politica" / "prensa_presidente_muestra.json"
+CORPUS_HISTORIA = RAIZ / "data" / "politica" / "prensa_presidente_historia.json"
 
 PROYECTO_BQ = "cigob-analytics"
 TABLA_GKG = "gdelt-bq.gdeltv2.gkg_partitioned"
@@ -60,8 +61,21 @@ DOMINIOS_NACIONALES = (
 # mediana de la serie. Junio 2025 tiene ~53 mil contra ~115 mil: 0,46.
 UMBRAL_COBERTURA = 0.75
 
+# Presidentes anteriores, para que los cortes de la escala no salgan sólo del
+# mandato que se evalúa (la regla de ADR-0388 y ADR-0390). Mismo criterio de
+# entrada que Milei: el apellido en la URL. Cada nota se asigna al presidente
+# en funciones el día que se publicó, así una nota sobre Macri ya ex
+# presidente no entra en el período de Fernández. «alberto» va pegado al
+# apellido para no traer a Cristina Fernández de Kirchner.
+PRESIDENTES_PREVIOS = (
+    ("macri", "Mauricio Macri", "2015-12-10", "2019-12-10", r"macri"),
+    ("fernandez", "Alberto Fernández", "2019-12-10", "2023-12-10", r"alberto[-_]?fern"),
+)
+HISTORIA_DESDE, HISTORIA_HASTA = "2015-12-10", "2023-12-01"
+TAMANO_MUESTRA_HISTORIA = 17   # 96 meses x 17 = unos 1.600 títulos
 
-def sql(desde: str, hasta: str) -> str:
+
+def sql(desde: str, hasta: str, patron: str = "milei") -> str:
     """Una sola pasada: una fila por nota con «milei» en la URL, más una fila
     de totales por mes (para marcar cobertura incompleta)."""
     lista = ", ".join(f"'{d}'" for d in DOMINIOS_NO_AR)
@@ -82,7 +96,7 @@ UNION ALL
 SELECT 'nota', CAST(DIV(MIN(fecha_n), 100000000) AS STRING),
        CAST(DIV(MIN(fecha_n), 1000000) AS STRING), ANY_VALUE(dominio), url,
        MAX(NULLIF(TRIM(REGEXP_EXTRACT(extras, r'<PAGE_TITLE>(.*?)</PAGE_TITLE>')), '')), COUNT(*)
-FROM b WHERE REGEXP_CONTAINS(LOWER(url), 'milei')
+FROM b WHERE REGEXP_CONTAINS(LOWER(url), r'{patron}')
 GROUP BY url
 """.strip()
 
@@ -93,17 +107,17 @@ def _cliente():
     return bigquery.Client(project=PROYECTO_BQ)
 
 
-def dry_run(desde: str, hasta: str, cliente=None) -> int:
+def dry_run(desde: str, hasta: str, cliente=None, patron: str = "milei") -> int:
     from google.cloud import bigquery
     cliente = cliente or _cliente()
-    job = cliente.query(sql(desde, hasta), job_config=bigquery.QueryJobConfig(dry_run=True, use_query_cache=False))
+    job = cliente.query(sql(desde, hasta, patron), job_config=bigquery.QueryJobConfig(dry_run=True, use_query_cache=False))
     return int(job.total_bytes_processed)
 
 
-def consultar(desde: str, hasta: str, cliente=None) -> dict:
+def consultar(desde: str, hasta: str, cliente=None, patron: str = "milei") -> dict:
     """Devuelve {'filas': [...], 'bytes_facturados': int}."""
     cliente = cliente or _cliente()
-    job = cliente.query(sql(desde, hasta))
+    job = cliente.query(sql(desde, hasta, patron))
     filas = [dict(r.items()) for r in job.result()]
     return {"filas": filas, "bytes_facturados": int(job.total_bytes_billed or 0)}
 
@@ -252,6 +266,73 @@ def armar_corpus(crudo: dict, desde: str, hasta: str, n: int = TAMANO_MUESTRA,
     }
 
 
+def titulo_desde_url(url: str) -> str:
+    """Título reconstruido del slug de la URL, para las notas sin <PAGE_TITLE>
+    (GDELT lo guarda recién desde sep-2019). Toma el tramo con más palabras
+    separadas por guiones, saca ids, fechas y extensiones. Devuelve "" si
+    quedan menos de cinco palabras: un slug corto no alcanza para leer tono."""
+    u = re.split(r"[?#]", url)[0] if "option=com_content" not in url else url
+    m = re.search(r"id=\d+:([^&]+)", u)
+    tramos = [m.group(1)] if m else re.split(r"/", re.sub(r"^https?://[^/]+", "", u))
+    mejor = ""
+    for t in tramos:
+        t = re.sub(r"\.(html?|phtml|php|aspx?)$", "", t, flags=re.I)
+        t = re.sub(r"_0_\d+$|-[A-Z]{2}\d+$|,[a-z0-9]+$", "", t)
+        palabras = [p for p in re.split(r"[-_]+", t) if p and not re.fullmatch(r"[a-z]?\d+[a-z]?\d*|n\d+", p.lower())]
+        if len(palabras) > len(mejor.split()):
+            mejor = " ".join(palabras)
+    mejor = mejor.lower()
+    return mejor[:1].upper() + mejor[1:] if len(mejor.split()) >= 5 else ""
+
+
+def patron_historia() -> str:
+    return "|".join(p[4] for p in PRESIDENTES_PREVIOS)
+
+
+def presidente_de(fecha: str, url: str) -> str | None:
+    """El presidente en funciones ese día, si la URL lo nombra; si no, None."""
+    for clave, _, desde, hasta, patron in PRESIDENTES_PREVIOS:
+        if desde <= fecha < hasta:
+            return clave if re.search(patron, url.lower()) else None
+    return None
+
+
+def armar_historia(crudo: dict, n: int = TAMANO_MUESTRA_HISTORIA, semilla: str = SEMILLA) -> dict:
+    """Mismo depurado y muestreo que el mandato, con las notas filtradas al
+    presidente en funciones. Se reutiliza armar_corpus para no duplicar reglas."""
+    filas = []
+    for f in crudo["filas"]:
+        if f["tipo"] == "nota":
+            clave = presidente_de(_fecha(f["fecha"]), f["url"])
+            if clave is None:
+                continue
+            f = {**f, "presidente": clave}
+            if not (f.get("titulo") or "").strip():
+                f["titulo"] = titulo_desde_url(f["url"])
+                f["titulo_de_url"] = True
+        filas.append(f)
+    corpus = armar_corpus({**crudo, "filas": filas}, HISTORIA_DESDE, HISTORIA_HASTA, n, semilla)
+    pres = {}
+    for f in filas:
+        if f["tipo"] == "nota":
+            pres[id_nota(f["url"])] = f["presidente"]
+    de_url = {id_nota(f["url"]) for f in filas if f.get("titulo_de_url")}
+    for x in corpus["notas"]:
+        x["presidente"] = pres[x["id"]]
+        if x["id"] in de_url:
+            x["titulo_de_url"] = True
+    m = corpus["_meta"]
+    m["descripcion"] = ("Títulos de notas de medios argentinos que nombran en la URL al presidente en funciones "
+                        "(Macri o Alberto Fernández), muestra mensual para fijar la escala con la historia previa al mandato.")
+    m["consulta"] = sql(HISTORIA_DESDE, HISTORIA_HASTA, patron_historia())
+    m["titulo_de_url"] = ("GDELT guarda <PAGE_TITLE> recién desde sep-2019. Antes, el título se reconstruye del slug "
+                          "de la URL (titulo_desde_url), en minúsculas y sin tildes; los slugs de menos de cinco palabras se "
+                          "descartan. Las notas así marcadas llevan titulo_de_url=true.")
+    m["presidentes"] = [{"clave": c, "nombre": n_, "desde": d, "hasta_exclusivo": h, "patron_url": p}
+                        for c, n_, d, h, p in PRESIDENTES_PREVIOS]
+    return corpus
+
+
 def escribir_lotes(corpus: dict, destino: Path, tamano: int = TAMANO_LOTE, semilla: str = SEMILLA) -> int:
     """Lotes de unos `tamano` títulos, mezclados con la semilla para que un lote
     no sea un solo mes ni un solo medio. Sin URL, para no sesgar por medio."""
@@ -263,7 +344,8 @@ def escribir_lotes(corpus: dict, destino: Path, tamano: int = TAMANO_LOTE, semil
         parte = notas[i::k]
         nombre = f"lote_{i + 1:02d}.json"
         (destino / nombre).write_text(json.dumps(
-            [{"id": x["id"], "mes": x["mes"], "dominio": x["dominio"], "titulo": x["titulo"]} for x in parte],
+            [{"id": x["id"], "mes": x["mes"], "dominio": x["dominio"], "titulo": x["titulo"],
+              **({"presidente": x["presidente"]} if "presidente" in x else {})} for x in parte],
             ensure_ascii=False, indent=1), encoding="utf-8")
         indice.append({"archivo": nombre, "titulos": len(parte)})
     (destino / "INDICE.json").write_text(json.dumps(
@@ -283,20 +365,25 @@ def main(argv=None) -> int:
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--cache", type=Path, help="JSON con el resultado crudo; se reutiliza si existe")
     ap.add_argument("--lotes", type=Path)
-    ap.add_argument("--salida", type=Path, default=CORPUS)
+    ap.add_argument("--salida", type=Path, default=None)
+    ap.add_argument("--historico", action="store_true", help="Macri y Alberto Fernández (2015-12 a 2023-11)")
     a = ap.parse_args(argv)
     hasta = a.hasta or ultimo_mes_cerrado_fin()
+    patron = "milei"
+    if a.historico:
+        a.desde, hasta, patron = HISTORIA_DESDE, HISTORIA_HASTA, patron_historia()
+    a.salida = a.salida or (CORPUS_HISTORIA if a.historico else CORPUS)
     if a.dry_run:
-        b = dry_run(a.desde, hasta)
+        b = dry_run(a.desde, hasta, patron=patron)
         print(f"dry run: {b} bytes ({b / 1e9:.1f} GB)")
         return 0
     if a.cache and a.cache.exists():
         crudo = json.loads(a.cache.read_text(encoding="utf-8"))
     else:
-        crudo = consultar(a.desde, hasta)
+        crudo = consultar(a.desde, hasta, patron=patron)
         if a.cache:
             a.cache.write_text(json.dumps(crudo, ensure_ascii=False, default=str), encoding="utf-8")
-    corpus = armar_corpus(crudo, a.desde, hasta)
+    corpus = armar_historia(crudo) if a.historico else armar_corpus(crudo, a.desde, hasta)
     a.salida.write_text(json.dumps(corpus, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{len(corpus['notas'])} títulos en {a.salida}")
     if a.lotes:

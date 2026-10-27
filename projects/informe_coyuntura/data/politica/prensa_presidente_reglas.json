@@ -4,8 +4,16 @@
   "fecha": "2026-10-27",
   "protocolo": "ADR-0131, ADR-0380 y ADR-0384 (misma estructura que apoyo_empresario_reglas.json)",
   "fuente": "prensa_presidente_muestra.json: títulos de notas de medios argentinos que nombran a Milei en la URL (GDELT GKG), 200 por mes desde 2023-12",
-  "version": 1,
-  "como_se_cerro": "Escrito a partir de la definición del indicador y de la lectura de 55 títulos al azar de la muestra (semilla 1 de random.Random sobre el corpus). Esa lectura sólo sirvió para agregar los casos límite marcados «visto en la muestra»; no se clasificó ningún título."
+  "version": 2,
+  "como_se_cerro": "Escrito a partir de la definición del indicador y de la lectura de 55 títulos al azar de la muestra (semilla 1 de random.Random sobre el corpus). Esa lectura sólo sirvió para agregar los casos límite marcados «visto en la muestra»; no se clasificó ningún título.",
+  "cambios": [
+   {
+    "version": 2,
+    "fecha": "2026-10-27",
+    "antes_de": "la pasada completa (sólo había corrido el piloto de 150 títulos, que no se reutiliza)",
+    "que": "se agrega presidentes_anteriores para clasificar con las mismas reglas los títulos de Macri y Alberto Fernández, que fijan la escala con la historia previa. Las reglas para Milei no cambian."
+   }
+  ]
  },
  "unidad_de_analisis": "un título de nota, tal como figura en el corpus. Se clasifica el titular, no el cuerpo de la nota ni el medio que lo publica. El corpus no trae el texto: si el titular no alcanza, no se busca la nota.",
  "eje_unico_tono": {
@@ -51,5 +59,12 @@
   "kappa_minimo": 0.7,
   "si_no_alcanza": "no se publica el indicador. No se toca el manual para mejorar el número: un hueco encontrado se cierra rehaciendo la pasada entera, nunca reinterpretando la hecha."
  },
- "lo_que_este_indicador_NO_dice": "no mide la opinión pública ni lo que dice el cuerpo de las notas: mide el tono del TITULAR de una muestra de notas con «milei» en la URL, en los medios argentinos que GDELT indexa. Una nota sobre el Presidente que no lo nombra en la URL no entra. La muestra es proporcional a la cobertura: un medio con muchas notas pesa más."
+ "lo_que_este_indicador_NO_dice": "no mide la opinión pública ni lo que dice el cuerpo de las notas: mide el tono del TITULAR de una muestra de notas con «milei» en la URL, en los medios argentinos que GDELT indexa. Una nota sobre el Presidente que no lo nombra en la URL no entra. La muestra es proporcional a la cobertura: un medio con muchas notas pesa más.",
+ "presidentes_anteriores": {
+  "alcance": "lotes de prensa_presidente_historia.json, que traen el campo «presidente» (macri: 10-dic-2015 a 9-dic-2019; fernandez: 10-dic-2019 a 9-dic-2023).",
+  "regla": "Todas las reglas de este manual valen igual, leyendo «el Presidente» como el presidente en funciones que indica el campo «presidente», y «Milei» como su apellido. El Gobierno es su Poder Ejecutivo: él, sus ministros, secretarios, el Jefe de Gabinete y los organismos del PEN.",
+  "vicepresidencia": "Con Fernández, Cristina Fernández de Kirchner es la Vicepresidenta. Un titular donde ella o su sector critica, desautoriza o enfrenta al Presidente es DESFAVORABLE para el Gobierno (interna que lo muestra en problemas). Un titular donde ella respalda al Presidente es FAVORABLE con la misma regla que un aliado. Una nota sobre ella que no involucra al Presidente es NEUTRO.",
+  "ex_presidentes": "El corpus ya asigna cada nota al presidente en funciones el día que salió. Si un titular trata a un ex presidente (por ejemplo, Macri en 2021), el tono se lee hacia el Gobierno en funciones: si no lo involucra, NEUTRO.",
+  "pandemia": "Medidas sanitarias de 2020-2021 (cuarentena, vacunas): mismas reglas que cualquier medida. «Extienden la cuarentena» es NEUTRO; «Vacunatorio VIP» o «la foto de Olivos» son DESFAVORABLE; «llegan las vacunas que consiguió el Gobierno» es FAVORABLE."
+ }
 }
