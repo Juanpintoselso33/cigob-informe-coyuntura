@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "descripcion": "Codificación de postura hacia el Ejecutivo nacional de las cámaras del CAMPO: Coninagro, Sociedad Rural Argentina (SRA) y Confederaciones Rurales Argentinas (CRA) (ADR-0384). Mismo esquema, mismo manual (apoyo_empresario_reglas.json, v2) y mismo protocolo que el registro de la UIA y AEA (ADR-0131/0150) y el del comercio (ADR-0380). Archivo aparte para que sumar un sector no toque el registro de otro. Los casos con lecturas distintas NO están resueltos: tienen postura y destinatario en null y concordancia 'pendiente_adjudicacion'; los resuelve una persona en apoyo_campo_desacuerdos.json y se trasladan acá.",
+  "descripcion": "Codificación de postura hacia el Ejecutivo nacional de las cámaras del CAMPO: Coninagro, Sociedad Rural Argentina (SRA) y Confederaciones Rurales Argentinas (CRA) (ADR-0384). Mismo esquema, mismo manual (apoyo_empresario_reglas.json, v2) y mismo protocolo que el registro de la UIA y AEA (ADR-0131/0150) y el del comercio (ADR-0380). Archivo aparte para que sumar un sector no toque el registro de otro. Los casos con lecturas distintas los resuelve una persona (concordancia 'adjudicado'); los que siguen sin resolver tienen postura y destinatario en null y concordancia 'pendiente_adjudicacion' (apoyo_campo_desacuerdos.json) y no cuentan.",
   "fecha": "2026-10-27",
   "protocolo": "ADR-0131, con el diseño de concordancia de ADR-0150 y ADR-0380",
   "camaras": {
@@ -20,9 +20,14 @@
     "CRA"
    ],
    "criterio": "Mínimo de 4 comunicados dirigidos al Ejecutivo nacional con postura (apoyo o crítica) en la ventana de 12 meses calendario de la card (nov-2025 a oct-2026), criterio de Luis Babino (reunión del 26-oct-2026). Contando solo los casos en que los dos lectores coinciden: Coninagro 5 (2 apoyos, 3 críticas), SRA 7 (6 y 1), CRA 34 (1 y 33).",
-   "entra_al_calculo": [],
-   "motivo": "En las tres cámaras hay desacuerdos entre los lectores dentro de la ventana en comunicados que alguna de las dos lecturas clasifica como dirigidos al Ejecutivo con postura (Coninagro 3, SRA 1, CRA 9): el puntaje depende de cómo los adjudique una persona. Hasta entonces el indicador apoyo_campo está en INDICADORES_SUSPENDIDOS (no puntúa ni se muestra) y la dimensión de sector privado queda en industria y comercio.",
-   "reingreso": "Adjudicar los desacuerdos en data/politica/apoyo_campo_desacuerdos.json, trasladar el resultado a 'casos' y sacar apoyo_campo de itcp.INDICADORES_SUSPENDIDOS: el peso de diseño (un tercio) ya está en la tabla de la dimensión."
+   "entra_al_calculo": [
+    "CONINAGRO",
+    "SRA",
+    "CRA"
+   ],
+   "motivo": "Juan adjudicó el 27-oct-2026 los 13 desacuerdos que afectaban el puntaje (Coninagro 3, SRA 1, CRA 9). Los 69 restantes no afectan el puntaje y siguen pendientes. El saldo del campo es el promedio simple de los saldos de cada cámara con el mínimo de comunicados en la ventana.",
+   "reingreso": "Entran las tres. Si una cámara baja del mínimo de la ventana, deja de promediar ese mes.",
+   "criterio_de_suma": "Promedio simple de los saldos por cámara (propuesta de Luis): cada entidad es un voto, no cada nota."
   },
   "universo": "Todo lo publicado en el sitio de cada cámara desde el 10-dic-2023 (SRA: desde el 21-ene-2025, lo que el sitio conserva), salvo los informes estadísticos periódicos de Coninagro y las páginas técnicas de la SRA, que se archivan sin codificar (ver `regla_informes_estadisticos`). Cada nota se codifica una sola vez, sobre su texto (las notas de más de 4.000 caracteres se leyeron truncadas a los primeros 4.000; el registro guarda el texto completo).",
   "regla_informes_estadisticos": {
@@ -43,94 +48,26 @@
     "completa": true
    },
    "adjudicacion": {
-    "quien": "PENDIENTE: la hace una persona (Luis o Juan). Ningún agente adjudicó ningún caso.",
+    "quien": "Juan (persona), 27-oct-2026, para los 13 casos que afectaban el puntaje. Ningún agente adjudicó ningún caso.",
     "casos": [
-     "CONINAGRO|69174",
-     "CONINAGRO|69330",
-     "CONINAGRO|70063",
-     "CONINAGRO|70224",
-     "CONINAGRO|70314",
-     "CONINAGRO|70406",
-     "CONINAGRO|70626",
-     "CONINAGRO|70668",
-     "CONINAGRO|70800",
-     "CONINAGRO|71255",
-     "CONINAGRO|71535",
      "CONINAGRO|71563",
      "CONINAGRO|71607",
      "CONINAGRO|71992",
-     "CONINAGRO|72100",
-     "CRA|28671",
-     "CRA|28728",
-     "CRA|28729",
-     "CRA|28747",
-     "CRA|28773",
-     "CRA|28786",
-     "CRA|28816",
-     "CRA|28921",
-     "CRA|29175",
-     "CRA|29258",
-     "CRA|29259",
-     "CRA|29304",
-     "CRA|29323",
-     "CRA|29324",
-     "CRA|29325",
-     "CRA|29378",
-     "CRA|29380",
-     "CRA|29382",
-     "CRA|29397",
-     "CRA|29429",
-     "CRA|29435",
-     "CRA|29463",
-     "CRA|29490",
-     "CRA|29667",
-     "CRA|29689",
-     "CRA|29863",
-     "CRA|29864",
-     "CRA|30014",
-     "CRA|30296",
-     "CRA|30336",
-     "CRA|30350",
-     "CRA|30358",
-     "CRA|30389",
-     "CRA|30426",
-     "CRA|30445",
-     "CRA|30498",
-     "CRA|30563",
      "CRA|30564",
      "CRA|30659",
      "CRA|30781",
-     "CRA|30811",
-     "CRA|31066",
      "CRA|31175",
      "CRA|31180",
-     "CRA|31260",
-     "CRA|31404",
-     "CRA|31405",
-     "CRA|31453",
-     "CRA|31459",
-     "CRA|31467",
-     "CRA|31503",
-     "CRA|31504",
-     "CRA|31553",
-     "CRA|31554",
      "CRA|31566",
-     "CRA|31606",
      "CRA|31620",
      "CRA|31621",
-     "CRA|31625",
-     "CRA|31641",
      "CRA|31650",
-     "CRA|31705",
-     "SRA|18",
-     "SRA|73",
-     "SRA|97",
-     "SRA|118",
-     "SRA|242"
+     "SRA|118"
     ],
-    "criterio": "Los tres criterios generales escritos para la UIA (texto mixto: manda la postura dominante; crónica de reunión: el destinatario lo fija el contenido del reclamo; diagnóstico estructural sin medida concreta: neutro), más el caso límite de los hechos que no decidió el Estado."
+    "pendientes_que_no_afectan": 69,
+    "criterio": "Decisión de Juan caso por caso; todos con destinatario ejecutivo_nacional (ver `adjudicacion` de cada uno en apoyo_campo_desacuerdos.json)."
    },
-   "naturaleza_de_los_codificadores": "Ambos son agentes de IA de dos modelos distintos de la misma familia: el kappa prueba que el manual es unívoco, no que dos personas coincidirían. Sin adjudicación humana, el registro no resuelve ningún desacuerdo."
+   "naturaleza_de_los_codificadores": "Los dos lectores son agentes de IA de dos modelos distintos de la misma familia: el kappa prueba que el manual es unívoco, no que dos personas coincidirían. Los 13 desacuerdos que decidían el puntaje los resolvió una persona."
   },
   "concordancia": {
    "kappa_postura": 0.849,
@@ -166,7 +103,7 @@
    }
   },
   "dudosos": [],
-  "serie": "no se guarda acá. La calcula politica.apoyo_campo_serie() a partir de `casos` (los pendientes de adjudicación no cuentan), y la card devuelve su último punto.",
+  "serie": "no se guarda acá. La calcula politica.apoyo_campo_serie() a partir de `casos` (los pendientes no cuentan), promediando los saldos por cámara; la card devuelve su último punto.",
   "resultado": {
    "total": 760,
    "por_camara": {
@@ -175,18 +112,18 @@
     "CRA": 360
    },
    "postura": {
-    "neutro": 475,
-    "critica": 149,
+    "neutro": 482,
+    "critica": 151,
     "dudoso": 20,
-    "pendiente": 82,
-    "apoyo": 34
+    "pendiente": 69,
+    "apoyo": 38
    },
    "destinatario": {
     "externo_o_propio": 413,
-    "ejecutivo_nacional": 180,
+    "ejecutivo_nacional": 193,
     "congreso": 31,
     "provincias_municipios": 49,
-    "pendiente": 82,
+    "pendiente": 69,
     "judicial": 5
    },
    "archivados_estadisticos": 95
@@ -2848,10 +2785,10 @@
     "postura": "dudoso",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2026-02-14",
@@ -2908,10 +2845,10 @@
     "postura": "neutro",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2026-03-02",
@@ -3328,10 +3265,10 @@
     "postura": "dudoso",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2026-07-06",
@@ -7848,10 +7785,10 @@
     "postura": "apoyo",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2025-11-12",
@@ -8048,10 +7985,10 @@
     "postura": "dudoso",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2025-12-15",
@@ -8228,10 +8165,10 @@
     "postura": "apoyo",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2026-02-10",
@@ -8928,10 +8865,10 @@
     "postura": "critica",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2026-06-20",
@@ -9028,10 +8965,10 @@
     "postura": "dudoso",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2026-06-22",
@@ -10108,10 +10045,10 @@
     "postura": "critica",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2026-09-25",
@@ -10288,10 +10225,10 @@
     "postura": "critica",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2026-10-05",
@@ -10308,10 +10245,10 @@
     "postura": "critica",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2026-10-05",
@@ -10448,10 +10385,10 @@
     "postura": "critica",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2026-10-12",
@@ -13048,10 +12985,10 @@
     "postura": "dudoso",
     "destinatario": "ejecutivo_nacional"
    },
-   "postura": null,
-   "destinatario": null,
-   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana (apoyo_campo_desacuerdos.json)",
-   "concordancia": "pendiente_adjudicacion"
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "adjudicación humana de Juan, 27-oct-2026",
+   "concordancia": "adjudicado"
   },
   {
    "fecha": "2025-12-10",

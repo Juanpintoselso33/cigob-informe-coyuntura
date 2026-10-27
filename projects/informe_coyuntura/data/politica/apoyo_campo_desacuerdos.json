@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "descripcion": "Desacuerdos entre los dos lectores ciegos (Sonnet y Opus) en la clasificación del campo (ADR-0384). NINGUNO está adjudicado: los resuelve una persona (Luis o Juan) con los tres criterios generales del manual. Para adjudicar: completar `adjudicacion` ({postura, destinatario, motivo, quien, fecha}) y trasladar postura/destinatario al caso homónimo de apoyo_campo_codificacion.json (concordancia 'adjudicado').",
+  "descripcion": "Desacuerdos entre los dos lectores ciegos (Sonnet y Opus) en la clasificación del campo (ADR-0384). Los 13 que afectaban el puntaje los adjudicó Juan el 27-oct-2026 (campo `adjudicacion`); los 69 restantes no afectan el puntaje y siguen pendientes de una persona. Para adjudicar uno: completar `adjudicacion` ({postura, destinatario, motivo, quien, fecha}) y trasladarlo al caso homónimo de apoyo_campo_codificacion.json (concordancia 'adjudicado').",
   "fecha": "2026-10-27",
   "ventana_de_la_card": "2025-11-01 a 2026-10-31",
   "total": 82,
@@ -19,7 +19,10 @@
     "total": 62,
     "que_afectan": 9
    }
-  }
+  },
+  "adjudicados": 13,
+  "pendientes": 69,
+  "que_afectan_el_puntaje_sin_adjudicar": 0
  },
  "desacuerdos": [
   {
@@ -272,7 +275,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CONINAGRO",
@@ -293,7 +302,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CONINAGRO",
@@ -314,7 +329,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CONINAGRO",
@@ -1133,7 +1154,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CRA",
@@ -1154,7 +1181,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CRA",
@@ -1175,7 +1208,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CRA",
@@ -1238,7 +1277,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CRA",
@@ -1259,7 +1304,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CRA",
@@ -1490,7 +1541,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CRA",
@@ -1532,7 +1589,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CRA",
@@ -1553,7 +1616,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CRA",
@@ -1616,7 +1685,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "CRA",
@@ -1721,7 +1796,13 @@
    },
    "dentro_de_la_ventana": true,
    "afecta_el_puntaje": true,
-   "adjudicacion": null
+   "adjudicacion": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "adjudicación humana de Juan, 27-oct-2026",
+    "quien": "Juan",
+    "fecha": "2026-10-27"
+   }
   },
   {
    "camara": "SRA",

@@ -485,11 +485,12 @@ def test_politica_itcp_reconcilia():
     # 15 → 16 (ADR-0380): entra `apoyo_comercio` a sector privado.
     # 16 → 15 (tanda 27-oct): −2 Poder judicial (ADR-0374), +1 votos_sobre_bancas
     # (ADR-0376); vetos/decretos (ADR-0377) y transferencias (ADR-0378) son 1 a 1.
-    assert len(c["indicadores"]) == 15
+    # 15 → 16 (ADR-0384): entra `apoyo_campo` a sector privado (tercer sector).
+    assert len(c["indicadores"]) == 16
     assert "bloqueo_sostenido" not in c["indicadores"]
     assert "votometro_ventaja_lla" not in c["indicadores"]
-    assert len(en_indice) == 15
-    assert "apoyo_comercio" in en_indice
+    assert len(en_indice) == 16
+    assert "apoyo_comercio" in en_indice and "apoyo_campo" in en_indice
     assert "produccion_legislativa" in en_indice, "tendría que puntuar (ADR-0168)"
     # ADR-0374: la tasa de la Corte y las comisiones del Consejo salen.
     assert "velocidad_resolucion" not in en_indice and "paralisis_denuncias" not in en_indice

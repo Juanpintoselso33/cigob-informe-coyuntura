@@ -1759,7 +1759,7 @@ POLITICA_DERIVADAS = [
     ("apoyo_comercio", "saldo de postura (−1 a +1, 12m móviles)",
      "Comunicados de la CAC — codificación CIGOB",
      politica.apoyo_comercio_serie),
-    # Mismo patrón, tercer sector (ADR-0384). Suspendido hasta la adjudicación.
+    # Mismo patrón, tercer sector (ADR-0384), promediando el saldo de cada cámara.
     ("apoyo_campo", "saldo de postura (−1 a +1, 12m móviles)",
      "Comunicados de Coninagro, la SRA y CRA — codificación CIGOB",
      politica.apoyo_campo_serie),

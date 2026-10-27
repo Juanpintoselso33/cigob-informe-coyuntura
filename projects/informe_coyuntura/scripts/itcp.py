@@ -774,12 +774,10 @@ DIMENSIONES_ITCP = {
         # por volumen de comunicados: cada sector es un voto, no cada comunicado.
         #
         # ADR-0384 (2026-10-27): se suma el campo (Coninagro, SRA y CRA) como
-        # tercer sector, un tercio cada uno. El indicador nace SUSPENDIDO
-        # (INDICADORES_SUSPENDIDOS): las tres cámaras cumplen el mínimo de
-        # Luis, pero hay desacuerdos entre los dos lectores en comunicados
-        # dirigidos al Ejecutivo dentro de la ventana, y ninguno está
-        # adjudicado por una persona. Mientras tanto la dimensión se reparte
-        # 50/50 entre industria y comercio, porque un suspendido libera su peso.
+        # tercer sector, un tercio cada uno. Juan adjudicó el mismo día los 13
+        # desacuerdos entre lectores que decidían el puntaje, y el saldo del
+        # campo es el promedio simple de los saldos de cada cámara (propuesta de
+        # Luis): una entidad, un voto.
         "indicadores": {"apoyo_empresario": 0.3333, "apoyo_comercio": 0.3333, "apoyo_campo": 0.3334},
     },
 }
@@ -814,21 +812,6 @@ INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cep
 # `publicar.py` los suma a POLITICA_OCULTOS, así que tampoco se muestran: la
 # regla del tablero es que si no puntúa, no es card (ADR-0051/0153/0189).
 INDICADORES_SUSPENDIDOS = {
-    "apoyo_campo": {
-        "dimension": "sector_privado",
-        "desde": "2026-10",
-        "desde_txt": "octubre de 2026",
-        "adr": "0384",
-        "por_que": "La postura pública del campo (Coninagro, SRA y CRA) cumple "
-                   "el mínimo de entrada, pero hay desacuerdos entre los dos "
-                   "lectores de los comunicados dirigidos al Ejecutivo dentro "
-                   "de la ventana de doce meses, y ninguno fue adjudicado por "
-                   "una persona: el puntaje dependería de cómo se resuelvan.",
-        "condicion_reingreso": "Que una persona adjudique los desacuerdos de "
-                               "data/politica/apoyo_campo_desacuerdos.json y "
-                               "los traslade al registro; sacar esta entrada "
-                               "es todo lo que falta.",
-    },
     "iaf_transferencias": {
         "dimension": "alianzas_territoriales",
         "desde": "2026-10",

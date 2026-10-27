@@ -2291,14 +2291,19 @@ def apoyo_empresario_serie() -> list:
 
 
 def _apoyo_saldo_serie(codificacion: Path, camaras: tuple, novedades: Path,
-                       nombre: str, cobertura_desde: str | None = None) -> list:
+                       nombre: str, cobertura_desde: str | None = None,
+                       por_camara: bool = False) -> list:
     """El cálculo del saldo, común a todos los sectores (ADR-0380): mismo
     registro, mismas reglas, misma ventana, mismo mínimo y mismo corpus cerrado.
     Lo único que cambia entre `apoyo_empresario` y `apoyo_comercio` es qué
     cámaras entran, de qué archivo salen y qué inventario de pendientes corta
-    la serie."""
+    la serie.
+
+    `por_camara=True` (campo, ADR-0384): el saldo es el promedio simple de los
+    saldos de cada cámara que tenga el mínimo de comunicados en la ventana, y
+    no el saldo de todas las notas juntas."""
     d = json.loads(codificacion.read_text(encoding="utf-8-sig"))
-    comp = [(c["fecha"], c["postura"]) for c in d["casos"]
+    comp = [(c["fecha"], c["postura"], c["camara"]) for c in d["casos"]
             if c["camara"] in camaras
             and c["destinatario"] == "ejecutivo_nacional"
             and c["postura"] in ("apoyo", "critica")]
@@ -2323,13 +2328,32 @@ def _apoyo_saldo_serie(codificacion: Path, camaras: tuple, novedades: Path,
             if m == 13:
                 y, m = y + 1, 1
             continue
-        v = [p for f, p in comp if ini <= f <= fin]
-        a, c = v.count("apoyo"), v.count("critica")
-        if a + c >= APOYO_MIN_OBSERVACIONES:
-            out.append([f"{y:04d}-{m:02d}-01", round((a - c) / (a + c), 3)])
+        if por_camara:
+            saldos = _apoyo_saldos_por_camara(comp, ini, fin)
+            if saldos:
+                out.append([f"{y:04d}-{m:02d}-01",
+                            round(sum(s_ for _, _, s_ in saldos.values()) / len(saldos), 3)])
+        else:
+            v = [p for f, p, _ in comp if ini <= f <= fin]
+            a, c = v.count("apoyo"), v.count("critica")
+            if a + c >= APOYO_MIN_OBSERVACIONES:
+                out.append([f"{y:04d}-{m:02d}-01", round((a - c) / (a + c), 3)])
         m += 1
         if m == 13:
             y, m = y + 1, 1
+    return out
+
+
+def _apoyo_saldos_por_camara(comp: list, ini: str, fin: str) -> dict:
+    """{cámara: (apoyos, críticas, saldo)} de las cámaras con el mínimo de
+    comunicados computables en la ventana. `comp` = [(fecha, postura, cámara)].
+    Una cámara que no llega al mínimo ese mes no promedia (ADR-0384)."""
+    out = {}
+    for cam in sorted({k for _, _, k in comp}):
+        v = [p for f, p, k in comp if k == cam and ini <= f <= fin]
+        a, c = v.count("apoyo"), v.count("critica")
+        if a + c >= APOYO_MIN_OBSERVACIONES:
+            out[cam] = (a, c, (a - c) / (a + c))
     return out
 
 
@@ -2788,6 +2812,11 @@ def fetch_apoyo_comercio() -> dict | None:
 # al Ejecutivo nacional en la ventana de 12 meses calendario. Las que no lo
 # cumplen quedan CODIFICADAS en el registro, como CAME en el comercio
 # (ADR-0380): nombrarlas de nuevo acá las repone en el cálculo y en el detector.
+#
+# Diferencia con la industria y el comercio: el saldo NO es el de todas las
+# notas juntas sino el PROMEDIO SIMPLE de los saldos de cada cámara con el
+# mínimo de comunicados en la ventana (propuesta de Luis, 27-oct-2026). Con las
+# notas juntas la CRA, que publica mucho más, dominaba el resultado.
 APOYO_CAMPO_CODIFICACION_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_campo_codificacion.json"
 APOYO_CAMPO_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_campo_novedades.json"
 APOYO_CAMPO_DESACUERDOS_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_campo_desacuerdos.json"
@@ -3052,7 +3081,7 @@ def apoyo_campo_serie() -> list:
     nacional, 12 meses móviles. Misma cuenta que `apoyo_empresario_serie`: ver
     `_apoyo_saldo_serie`. [[YYYY-MM-01, saldo]] ascendente, saldo en [−1, +1]."""
     return _apoyo_saldo_serie(APOYO_CAMPO_CODIFICACION_PATH, APOYO_CAMPO_CAMARAS,
-                              APOYO_CAMPO_NOVEDADES_PATH, "apoyo_campo",
+                              APOYO_CAMPO_NOVEDADES_PATH, "apoyo_campo", por_camara=True,
                               cobertura_desde=max(APOYO_CAMPO_ARCHIVO_DESDE.get(c, APOYO_CAMPO_DESDE)
                                                   for c in APOYO_CAMPO_CAMARAS))
 
@@ -3080,7 +3109,15 @@ def fetch_apoyo_campo() -> dict | None:
                 and c["destinatario"] == "ejecutivo_nacional"
                 and c["postura"] in ("apoyo", "critica")
                 and _apoyo_inicio_ventana(fecha[:7]) <= c["fecha"] <= f"{fecha[:7]}-31"]
+        saldos = _apoyo_saldos_por_camara([(c["fecha"], c["postura"], c["camara"]) for c in comp],
+                                          _apoyo_inicio_ventana(fecha[:7]), f"{fecha[:7]}-31")
+        # Sólo cuentan las cámaras que promedian: las demás no llegaron al mínimo.
+        comp = [c for c in comp if c["camara"] in saldos]
         apoyos = sum(1 for c in comp if c["postura"] == "apoyo")
+        nombres = {"CONINAGRO": "Coninagro", "SRA": "la SRA", "CRA": "CRA"}
+        por_cam_txt = "; ".join(
+            f"{nombres[k]} {str(round(v[2], 3)).replace('-', '−').replace('.', ',')} ({v[0]} de apoyo, {v[1]} de crítica)"
+            for k, v in saldos.items())
         try:
             pend = len(json.loads(APOYO_CAMPO_NOVEDADES_PATH.read_text(
                 encoding="utf-8-sig")).get("pendientes", {}))
@@ -3098,10 +3135,11 @@ def fetch_apoyo_campo() -> dict | None:
             "apoyos_ventana":      apoyos,
             "criticas_ventana":    len(comp) - apoyos,
             "pendientes_de_codificar": pend,
+            "saldos_por_camara": {k: round(v[2], 3) for k, v in saldos.items()},
             "detalle_txt": (
-                f"En los últimos doce meses {"el conjunto de las cámaras del campo (Coninagro, la SRA y CRA)"} "
-                f"se pronunció {len(comp)} veces sobre medidas del Gobierno nacional: "
-                f"{apoyos} de apoyo y {len(comp) - apoyos} de crítica. Saldo "
+                f"En los últimos doce meses las cámaras del campo se pronunciaron {len(comp)} veces "
+                f"sobre medidas del Gobierno nacional: {apoyos} de apoyo y {len(comp) - apoyos} de crítica. "
+                f"El saldo es el promedio simple de los saldos de cada cámara ({por_cam_txt}): "
                 f"{str(valor).replace('-', '−').replace('.', ',')} en una escala de "
                 f"−1 (todo crítica) a +1 (todo apoyo)."
                 + (f" Hay {pend} comunicado{'s' if pend != 1 else ''} detectado"

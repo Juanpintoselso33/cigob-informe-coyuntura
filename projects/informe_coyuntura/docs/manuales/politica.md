@@ -19,7 +19,7 @@ al ADR.
 | `cohesion_interna` | 16% | `cohesion_bloque`, `votos_sobre_bancas` |
 | `conflicto_social` | 11% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
 | `poder_judicial` | 16% | `cobertura_judicial` |
-| `sector_privado` | 14% | `apoyo_empresario`, `apoyo_comercio` |
+| `sector_privado` | 14% | `apoyo_empresario`, `apoyo_comercio`, `apoyo_campo` |
 
 Suma de pesos: 100%.
 
@@ -251,8 +251,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 50% |
-| Peso efectivo en el índice | **7.0%** |
+| Peso dentro de la dimensión | 33% |
+| Peso efectivo en el índice | **4.7%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150) |
@@ -267,8 +267,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 50% |
-| Peso efectivo en el índice | **7.0%** |
+| Peso dentro de la dimensión | 33% |
+| Peso efectivo en el índice | **4.7%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — las mismas anclas del saldo de la industria —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie del comercio; no se miró el rango observado, que de hecho toca el extremo +1,0 (ADR-0150, ADR-0380) |
@@ -277,13 +277,28 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0380](../adr/0380-mas-camaras-en-la-postura-empresaria.md) Más cámaras en la postura empresaria: entra el comercio
 
+#### Postura pública del campo
+
+`apoyo_campo`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 33% |
+| Peso efectivo en el índice | **4.7%** |
+| Familia de lectura | tensión externa |
+| Rezago declarado | 6 meses |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Bandas**: > 0.6 → 100 · 0.2–0.6 → 85 · -0.2–0.2 → 65 · -0.6–-0.2 → 40 · ≤ -0.6 → 10
+
+**Lo gobiernan**: [ADR-0384](../adr/0384-el-campo-entra-a-la-postura-empresaria.md) El campo entra a la postura empresaria
+
 ## Se releva y no puntúa
 
 Estos indicadores se siguen scrapeando y cacheando, pero están fuera
 del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
-- `apoyo_campo` — Postura pública del campo
 - `bloqueo_sostenido` — Bloqueo legislativo sostenido (declarado como contexto)
 - `brecha_obra_publica` — Brecha de expectativas: obra pública vs. privada
 - `cohesion_bloque_senado` — Cohesión del bloque LLA (Senado, fusionado)
@@ -438,4 +453,4 @@ histórica.
 - [0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) — Vetos insistidos y decretos derogados reemplazan a quórum y desafíos
 - [0378](../adr/0378-transferencias-no-automaticas-reemplazan-a-las-automaticas.md) — Las transferencias no automáticas reemplazan a las automáticas
 - [0380](../adr/0380-mas-camaras-en-la-postura-empresaria.md) — Más cámaras en la postura empresaria: entra el comercio
-- [0384](../adr/0384-el-campo-entra-a-la-postura-empresaria.md) — El campo entra a la postura empresaria, pendiente de adjudicación
+- [0384](../adr/0384-el-campo-entra-a-la-postura-empresaria.md) — El campo entra a la postura empresaria

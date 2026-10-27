@@ -91,8 +91,8 @@
     "FAA (sin sección de prensa)"
    ],
    "campo_adr_0384": {
-    "estado": "CLASIFICADAS Y CUMPLEN el mínimo con las lecturas coincidentes; NO ENTRAN al cálculo: hay desacuerdos entre los dos lectores en la ventana que afectan el puntaje y ninguno está adjudicado por una persona (apoyo_campo suspendido).",
-    "cumplen_con_lecturas_coincidentes": [
+    "estado": "CLASIFICADAS Y ENTRAN (ADR-0384): las tres cumplen el mínimo; Juan adjudicó el 27-oct-2026 los 13 desacuerdos que decidían el puntaje. El saldo es el promedio simple de los saldos de cada cámara.",
+    "cumplen": [
      "Coninagro",
      "SRA",
      "CRA"
@@ -381,7 +381,7 @@
    "Coninagro": {
     "sector": "campo (cooperativas)",
     "url": "https://www.coninagro.org.ar/ (API WordPress /wp-json/wp/v2/posts)",
-    "estado": "CLASIFICADA (ADR-0384) — cumple el mínimo con las lecturas coincidentes (5 en la ventana), con 3 desacuerdos en la ventana sin adjudicar: fuera del cálculo",
+    "estado": "CLASIFICADA y ENTRA (ADR-0384) — 5 pronunciamientos al Ejecutivo en la ventana tras adjudicar 3 desacuerdos",
     "metodo": "clasificada: dos lectores ciegos (Sonnet y Opus), manual v2; los desacuerdos esperan adjudicación humana",
     "comunicados_total": {
      "2023 (desde el 10-dic)": 7,
@@ -399,7 +399,7 @@
     },
     "desacuerdos": {
      "total": 15,
-     "en_la_ventana_que_afectan_el_puntaje": 3
+     "adjudicados_por_juan": 3
     },
     "con_postura_cualquier_destinatario_por_anio_por_acuerdo": {
      "2023": 2,
@@ -417,12 +417,17 @@
      "al_ejecutivo_con_postura": 5,
      "apoyos_al_ejecutivo": 2,
      "criticas_al_ejecutivo": 3
+    },
+    "ventana_nov2025_oct2026_tras_adjudicar": {
+     "apoyos": 2,
+     "criticas": 3,
+     "saldo": -0.2
     }
    },
    "SRA": {
     "sector": "campo (Sociedad Rural)",
     "url": "https://www.sra.ar/comunicacion/",
-    "estado": "CLASIFICADA (ADR-0384) — cumple el mínimo con las lecturas coincidentes (7 en la ventana), con 1 desacuerdo en la ventana sin adjudicar: fuera del cálculo. El sitio sólo conserva archivo desde el 21-ene-2025",
+    "estado": "CLASIFICADA y ENTRA (ADR-0384) — 8 en la ventana tras adjudicar 1 desacuerdo. El sitio sólo conserva archivo desde el 21-ene-2025",
     "metodo": "clasificada: dos lectores ciegos (Sonnet y Opus), manual v2; los desacuerdos esperan adjudicación humana",
     "comunicados_total": {
      "2025": 112,
@@ -438,7 +443,7 @@
     },
     "desacuerdos": {
      "total": 5,
-     "en_la_ventana_que_afectan_el_puntaje": 1
+     "adjudicados_por_juan": 1
     },
     "con_postura_cualquier_destinatario_por_anio_por_acuerdo": {
      "2025": 16,
@@ -452,12 +457,17 @@
      "al_ejecutivo_con_postura": 7,
      "apoyos_al_ejecutivo": 6,
      "criticas_al_ejecutivo": 1
+    },
+    "ventana_nov2025_oct2026_tras_adjudicar": {
+     "apoyos": 6,
+     "criticas": 2,
+     "saldo": 0.5
     }
    },
    "CRA": {
     "sector": "campo (Confederaciones Rurales)",
     "url": "https://www.cra.org.ar/prensa/ (listado: solo hasta feb-2026; histórico recuperado enumerando /prensa/<id>/, sección Prensa por articleSection del JSON-LD)",
-    "estado": "CLASIFICADA (ADR-0384) — cumple el mínimo con las lecturas coincidentes (34 en la ventana), con 9 desacuerdos en la ventana sin adjudicar: fuera del cálculo",
+    "estado": "CLASIFICADA y ENTRA (ADR-0384) — 39 en la ventana tras adjudicar 9 desacuerdos",
     "metodo": "clasificada: dos lectores ciegos (Sonnet y Opus), manual v2; los desacuerdos esperan adjudicación humana",
     "nota": "Archivo completo desde dic-2023 recuperado por enumeración de ids (3.300 ids revisados; 364 notas de Prensa, el resto es «Actualidad», redirecciones o 404). Domina el volumen del campo.",
     "descargadas": 360,
@@ -469,7 +479,7 @@
     },
     "desacuerdos": {
      "total": 62,
-     "en_la_ventana_que_afectan_el_puntaje": 9
+     "adjudicados_por_juan": 9
     },
     "con_postura_cualquier_destinatario_por_anio_por_acuerdo": {
      "2023": 3,
@@ -487,6 +497,11 @@
      "al_ejecutivo_con_postura": 34,
      "apoyos_al_ejecutivo": 1,
      "criticas_al_ejecutivo": 33
+    },
+    "ventana_nov2025_oct2026_tras_adjudicar": {
+     "apoyos": 5,
+     "criticas": 34,
+     "saldo": -0.744
     }
    },
    "FAA": {
@@ -531,6 +546,6 @@
     "nota": "argencon.org.ar no responde; el sitio real es argencon.org. Son encuestas de perspectivas a los socios, un podcast y datos de exportaciones. El único con lectura de política es de marzo de 2025 («la salida del cepo fortalecerá el crecimiento»)."
    }
   },
-  "pendiente_decidido": "Tecnología (CESSI, Argencon): sin comunicados de postura. Campo: adjudicar los 82 desacuerdos de apoyo_campo_desacuerdos.json (13 afectan el puntaje) y sacar apoyo_campo de INDICADORES_SUSPENDIDOS."
+  "pendiente_decidido": "Tecnología (CESSI, Argencon): sin comunicados de postura. Campo: quedan 69 desacuerdos sin adjudicar que no afectan el puntaje de hoy (apoyo_campo_desacuerdos.json)."
  }
 }

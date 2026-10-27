@@ -4,7 +4,9 @@ Todo sin red. Lo que se protege acá es lo de `apoyo_comercio` (que el número
 salga del registro, que card y serie sean la misma cuenta, que el material
 exista de verdad) más lo propio de esta tanda: **los desacuerdos entre los dos
 lectores no los resuelve un agente**. Mientras haya uno sin adjudicar que afecte
-el puntaje, el indicador no puntúa; y adjudicarlo es lo único que lo repone.
+el puntaje, el indicador no puntúa; y adjudicarlo es lo único que lo repone. Los 13 que decidían
+el puntaje los adjudicó Juan (27-oct-2026), y el saldo es el promedio simple de los
+saldos de cada cámara, no el de todas las notas juntas.
 """
 import collections
 import json
@@ -41,7 +43,7 @@ def _comp(p, d):
 def test_el_registro_cubre_las_tres_camaras_y_la_fia_no_esta():
     assert {c["camara"] for c in CASOS} == CAMARAS
     assert set(politica.APOYO_CAMPO_CAMARAS) == CAMARAS
-    assert REGISTRO["_meta"]["perimetro"]["entra_al_calculo"] == []
+    assert REGISTRO["_meta"]["perimetro"]["entra_al_calculo"] == list(politica.APOYO_CAMPO_CAMARAS)
 
 
 def test_ningun_caso_se_repite_y_todos_son_del_periodo():
@@ -144,40 +146,105 @@ def test_las_tres_camaras_cumplen_el_minimo_de_luis_con_las_lecturas_coincidente
     assert _conteo_ventana(camara) >= 4
 
 
-def test_mientras_un_desacuerdo_afecte_el_puntaje_el_indicador_esta_suspendido():
-    """La regla de esta tanda: nadie reintegra el campo al índice sin que una persona
-    adjudique. Si todos los que afectan están adjudicados, el test deja de exigirlo."""
-    afectan_sin_adjudicar = [d for d in DESACUERDOS["desacuerdos"]
-                             if d["afecta_el_puntaje"] and d["adjudicacion"] is None]
-    if afectan_sin_adjudicar:
-        assert "apoyo_campo" in itcp.INDICADORES_SUSPENDIDOS
-        assert itcp.INDICADORES_SUSPENDIDOS["apoyo_campo"]["adr"] == "0384"
-        assert itcp.INDICADORES_SUSPENDIDOS["apoyo_campo"]["dimension"] == "sector_privado"
-    assert len(afectan_sin_adjudicar) == DESACUERDOS["_meta"]["que_afectan_el_puntaje"] == 13
+def test_los_13_desacuerdos_que_decidian_el_puntaje_los_adjudico_una_persona():
+    """La regla de esta tanda: el campo sólo entra con adjudicación humana. Ninguno de los
+    desacuerdos que afectan el puntaje puede quedar pendiente ni haberlo resuelto un agente."""
+    afectan = [d for d in DESACUERDOS["desacuerdos"] if d["afecta_el_puntaje"]]
+    assert len(afectan) == 13 == DESACUERDOS["_meta"]["adjudicados"]
+    por_clave = {(c["camara"], c["id"]): c for c in CASOS}
+    for d in afectan:
+        adj = d["adjudicacion"]
+        assert adj and adj["quien"] == "Juan" and adj["fecha"] == "2026-10-27"
+        assert adj["motivo"] == "adjudicación humana de Juan, 27-oct-2026"
+        assert adj["destinatario"] == "ejecutivo_nacional" and adj["postura"] in ("apoyo", "critica", "neutro")
+        c = por_clave[(d["camara"], d["id"])]
+        assert (c["postura"], c["destinatario"], c["concordancia"]) == (adj["postura"], adj["destinatario"], "adjudicado")
+        assert c["motivo"] == "adjudicación humana de Juan, 27-oct-2026"
+    assert DESACUERDOS["_meta"]["que_afectan_el_puntaje_sin_adjudicar"] == 0
+    # los 69 restantes siguen pendientes y no afectan el puntaje
+    pend = [d for d in DESACUERDOS["desacuerdos"] if d["adjudicacion"] is None]
+    assert len(pend) == 69 == DESACUERDOS["_meta"]["pendientes"] and not any(d["afecta_el_puntaje"] for d in pend)
 
 
-def test_suspendido_el_calculo_de_sector_privado_no_lo_ve():
+def test_la_adjudicacion_humana_decidio_asi():
+    """Lo que decidió Juan, caso por caso (tabla del 27-oct-2026)."""
+    esperado = [("CONINAGRO", "2026-02-13", "neutro"), ("CONINAGRO", "2026-02-17", "neutro"), ("CONINAGRO", "2026-06-30", "neutro"),
+                ("CRA", "2025-11-03", "apoyo"), ("CRA", "2025-12-12", "apoyo"), ("CRA", "2026-02-04", "apoyo"),
+                ("CRA", "2026-06-20", "critica"), ("CRA", "2026-06-20", "apoyo"), ("CRA", "2026-09-22", "neutro"),
+                ("CRA", "2026-10-05", "neutro"), ("CRA", "2026-10-05", "neutro"), ("CRA", "2026-10-12", "neutro"),
+                ("SRA", "2025-12-09", "critica")]
+    real = [(d["camara"], d["fecha"], d["adjudicacion"]["postura"]) for d in DESACUERDOS["desacuerdos"] if d["afecta_el_puntaje"]]
+    assert real == esperado
+
+
+def test_el_indicador_ya_no_esta_suspendido_y_las_tres_camaras_puntuan():
+    assert "apoyo_campo" not in itcp.INDICADORES_SUSPENDIDOS
     efectivos = parametrica.indicadores_vigentes(itcp.DIMENSIONES_ITCP, itcp.INDICADORES_SUSPENDIDOS)
-    assert set(efectivos["sector_privado"]) == {"apoyo_empresario", "apoyo_comercio"}
+    assert set(efectivos["sector_privado"]) == {"apoyo_empresario", "apoyo_comercio", "apoyo_campo"}
 
 
 # ── la cuenta ──────────────────────────────────────────────────────────────
+
+def _saldos_a_mano(fecha):
+    ini, fin = politica._apoyo_inicio_ventana(fecha[:7]), f"{fecha[:7]}-31"
+    out = {}
+    for cam in CAMARAS:
+        a = sum(1 for k in CASOS if k["camara"] == cam and k["postura"] == "apoyo" and k["destinatario"] == "ejecutivo_nacional" and ini <= k["fecha"] <= fin)
+        c = sum(1 for k in CASOS if k["camara"] == cam and k["postura"] == "critica" and k["destinatario"] == "ejecutivo_nacional" and ini <= k["fecha"] <= fin)
+        if a + c >= politica.APOYO_MIN_OBSERVACIONES:
+            out[cam] = (a, c, (a - c) / (a + c))
+    return out
+
 
 def test_la_card_es_el_ultimo_punto_de_la_serie():
     serie = politica.apoyo_campo_serie()
     card = politica.fetch_apoyo_campo()
     assert [card["fecha_dato"], card["valor"]] == serie[-1]
-    a, c = card["apoyos_ventana"], card["criticas_ventana"]
-    assert a + c == card["comunicados_ventana"] >= politica.APOYO_MIN_OBSERVACIONES
-    assert round((a - c) / (a + c), 3) == card["valor"]
 
 
-def test_el_saldo_replicado_a_mano_coincide_con_el_ultimo_punto():
+def test_el_saldo_es_el_promedio_simple_de_los_saldos_de_cada_camara():
+    """Propuesta de Luis («promediando entidades»): cada cámara con el mínimo en la ventana
+    aporta su saldo y el indicador es el promedio. Recuento independiente del código."""
     fecha, valor = politica.apoyo_campo_serie()[-1]
-    ini, fin = politica._apoyo_inicio_ventana(fecha[:7]), f"{fecha[:7]}-31"
-    a = sum(1 for k in CASOS if k["postura"] == "apoyo" and k["destinatario"] == "ejecutivo_nacional" and ini <= k["fecha"] <= fin)
-    c = sum(1 for k in CASOS if k["postura"] == "critica" and k["destinatario"] == "ejecutivo_nacional" and ini <= k["fecha"] <= fin)
-    assert round((a - c) / (a + c), 3) == valor
+    saldos = _saldos_a_mano(fecha)
+    assert set(saldos) == CAMARAS
+    assert round(sum(s for _, _, s in saldos.values()) / len(saldos), 3) == valor
+    card = politica.fetch_apoyo_campo()
+    assert card["saldos_por_camara"] == {k: round(v[2], 3) for k, v in saldos.items()}
+    assert card["apoyos_ventana"] == sum(v[0] for v in saldos.values())
+    assert card["criticas_ventana"] == sum(v[1] for v in saldos.values())
+
+
+def test_el_promedio_por_camara_no_es_el_saldo_de_todas_las_notas_juntas():
+    """La CRA publica varias veces más que las otras dos: sumando todas las notas decidiría
+    sola. El promedio por cámara tiene que dar otra cosa."""
+    card = politica.fetch_apoyo_campo()
+    a, c = card["apoyos_ventana"], card["criticas_ventana"]
+    juntas = round((a - c) / (a + c), 3)
+    assert card["valor"] != juntas and card["valor"] > juntas
+    assert card["saldos_por_camara"]["CRA"] < card["valor"] < card["saldos_por_camara"]["SRA"]
+
+
+def test_una_camara_que_no_llega_al_minimo_no_promedia(tmp_path):
+    reg = tmp_path / "r.json"
+
+    def caso(cam, post, m):
+        return {"fecha": f"2026-{m:02d}-10", "postura": post, "destinatario": "ejecutivo_nacional", "camara": cam}
+    casos = [caso("A", "apoyo", m) for m in (1, 2, 3)] + [caso("B", "critica", 1), caso("B", "critica", 2)]
+    reg.write_text(json.dumps({"casos": casos}), encoding="utf-8")
+    serie = politica._apoyo_saldo_serie(reg, ("A", "B"), tmp_path / "n.json", "t", por_camara=True)
+    assert dict(serie)["2026-03-01"] == 1.0          # B tiene 2 (< 3): no promedia, y no arrastra a A hacia 0
+    juntas = politica._apoyo_saldo_serie(reg, ("A", "B"), tmp_path / "n.json", "t")
+    assert dict(juntas)["2026-03-01"] == 0.2          # (3 − 2) / 5: el saldo de todas las notas juntas
+
+
+def test_dos_camaras_con_el_minimo_promedian(tmp_path):
+    reg = tmp_path / "r.json"
+    casos = ([{"fecha": f"2026-03-{d:02d}", "postura": "apoyo", "destinatario": "ejecutivo_nacional", "camara": "A"} for d in (1, 2, 3, 4)]
+             + [{"fecha": f"2026-03-{d:02d}", "postura": "critica", "destinatario": "ejecutivo_nacional", "camara": "B"} for d in range(1, 21)])
+    reg.write_text(json.dumps({"casos": casos}), encoding="utf-8")
+    serie = politica._apoyo_saldo_serie(reg, ("A", "B"), tmp_path / "n.json", "t", por_camara=True)
+    assert dict(serie)["2026-03-01"] == 0.0           # (+1 y −1) / 2, aunque B publique cinco veces más
 
 
 def test_los_pendientes_de_adjudicacion_no_entran_a_la_cuenta():
@@ -228,13 +295,6 @@ def test_sector_privado_queda_en_tercios_industria_comercio_campo():
     assert max(dim.values()) - min(dim.values()) < 0.001
     assert itcp.FAMILIAS_ITCP["apoyo_campo"] == "tension"
     assert itcp.REZAGO_MESES_ITCP["apoyo_campo"] == itcp.REZAGO_MESES_ITCP["apoyo_empresario"] == 6.0
-
-
-def test_el_campo_suspendido_no_cambia_el_puntaje_de_sector_privado():
-    """Suspender libera el peso (ADR-0245): industria y comercio quedan 50/50."""
-    v = {"apoyo_empresario": -0.4, "apoyo_comercio": 1.0}
-    sin = parametrica.sin_suspendidos({**v, "apoyo_campo": -0.6}, itcp.INDICADORES_SUSPENDIDOS)
-    assert sin == v
 
 
 # ── los rótulos ────────────────────────────────────────────────────────────
@@ -470,3 +530,14 @@ def test_la_formula_y_la_ficha_existen():
     assert re.search(r"^\s*apoyo_campo:\s*\{\s*\n\s*latex:", formulas, re.M)
     bloque = fichas[fichas.index("  apoyo_campo: {"):fichas.index("  apoyo_comercio: {")]
     assert 'adr: "0384"' in bloque
+
+
+def test_la_ficha_el_adr_y_la_formula_declaran_el_promedio_por_camara():
+    fichas = (RAIZ / "web" / "src" / "lib" / "fichas.ts").read_text(encoding="utf-8")
+    formulas = (RAIZ / "web" / "src" / "lib" / "formulas.ts").read_text(encoding="utf-8")
+    adr = (RAIZ / "docs" / "adr" / "0384-el-campo-entra-a-la-postura-empresaria.md").read_text(encoding="utf-8")
+    bloque = fichas[fichas.index("  apoyo_campo: {"):fichas.index("  apoyo_comercio: {")]
+    assert "promedio simple de los saldos de las cámaras" in bloque
+    f = formulas[formulas.index("  apoyo_campo: {"):formulas.index("  apoyo_comercio: {")]
+    assert "promedio simple de los saldos" in f and "\\sum" in f
+    assert "promedio simple de los saldos de cada cámara" in adr and "estado: 'aceptado'" in adr
