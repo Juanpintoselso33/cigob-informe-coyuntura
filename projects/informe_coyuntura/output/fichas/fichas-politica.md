@@ -35,7 +35,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 73,6** | **VERDE** | Moderadamente aflojado | 16 indicadores: 12 en verde · 4 en amarillo |
+| **ITCP: 75,0** | **VERDE** | Moderadamente aflojado | 16 indicadores: 12 en verde · 4 en amarillo |
 Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
@@ -47,7 +47,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 84,6 | VERDE | 16,1 % |
 | Poder judicial | Mide la cobertura estimada de cargos de juez, que depende de los pliegos que eleva el Poder Ejecutivo y del acuerdo del Senado. | 62,0 | VERDE | 16,1 % |
 | Sector privado | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional. | 65,3 | VERDE | 14,0 % |
-| Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 78,3 | VERDE | 10,8 % |
+| Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 91,4 | VERDE | 10,8 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -529,10 +529,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% vs 2023) | Color |
 |---|---|
-| ≤ −26,1 | VERDE |
-| −26,1 – −20,5 | AMARILLO |
-| −20,5 – −16,83 | NARANJA |
-| ≥ −16,83 | ROJO |
+| ≤ 4,5 | VERDE |
+| 4,5 – 22,5 | AMARILLO |
+| 22,5 – 27,5 | NARANJA |
+| ≥ 27,5 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -544,7 +544,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −27,2 % vs 2023 (2026-09).
 
-−27,2 % vs 2023 está en Verde, a 1,1 del límite con Amarillo (−26,1).
+−27,2 % vs 2023 está en Verde, a 31,7 del límite con Amarillo (4,5).
 
 **Color vigente: VERDE**
 
@@ -556,6 +556,7 @@ Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicion
 - La base de comparación es fija (el total de 2023): a medida que pasa el tiempo, la referencia envejece — el mismo criterio declarado que usa el índice de impacto social con su base de fin de 2023.
 - La cobertura de ACLED para la Argentina es confiable desde 2020; los años anteriores registran menos eventos por expansión de la propia cobertura, no por menor conflictividad — por eso ni las bandas ni el gráfico usan datos previos a la base.
 - Depende de la cobertura de prensa que releva ACLED: eventos sin cobertura periodística no entran al registro.
+- La historia previa con la que se fijan los cortes son sólo cuatro años (2020-2023) y tienen la pandemia adentro. Una caída de eventos registrados también puede deberse a menor cobertura de prensa y no a menos conflicto: la de 2024 coincide con el balance oficial de bloqueos, pero 2025-2026 no se contrastó.
 - Las semanas que cruzan de mes o año se asignan enteras a su inicio. Los grupos mensuales no son conteos exactos por fecha del evento: obtenerlos exige microdatos diarios. La base y la ventana usan la misma convención semanal.
 
 ## Si falta el dato / Política de revisiones
@@ -571,6 +572,8 @@ Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicion
 **2026-09-08** — Week es el sábado inicial, no el final de la cobertura. Se incorpora agosto, ya cubierto hasta el viernes 4-sep, y se comparte el calendario entre tarjeta e historia. Se explicita la agrupación por inicio de semana y se conserva el sello del archivo cuando falla la descarga.
 
 **2026-08-21** — Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral.
+
+**2026-10-27** — Escala nueva: los cortes pasan de −32 · −29 · −26 · −15%, que salían del rango del propio mandato (con ellos, cualquier año de 2020 a 2023 habría puntuado 10), a −30 · −15 · +15 · +30%, uno y dos desvíos de la variación previa al mandato. Con el dato de septiembre de 2026 el componente pasa de 63,9 a 94,4.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -611,7 +614,7 @@ Agrega intensidad a la frecuencia de eventos que mide el relevamiento internacio
 - Toma el total mensual nacional de jornadas individuales no trabajadas: cantidad de huelguistas multiplicada por la duración de los paros.
 - Suma los últimos doce meses. La propia metodología de la fuente autoriza esta suma; no se suman conflictos ni huelguistas porque podrían repetirse entre meses.
 - Exige meses consecutivos y únicos y jornadas finitas no negativas. Un hueco o duplicado impide calcular la serie; doce filas no sustituyen doce meses calendario. Se conservan eventuales fracciones de jornada publicadas por la fuente.
-- Menos jornadas significa menos tensión. Las anclas son 5,0 · 6,5 · 8,0 · 10,0 millones, fijadas sobre los diecisiete años completos anteriores al mandato (2006-2022).
+- Menos jornadas significa menos tensión. Los cortes son 4,0 · 5,9 · 7,6 · 9,1 millones: los percentiles 5, 25, 50 y 75 de las 204 ventanas de doce meses anteriores al mandato (diciembre de 2006 a noviembre de 2023). El 100 queda para un año tan calmo como el 5% más calmo de esa historia, que fue el de la pandemia. Entre corte y corte el puntaje se interpola, así que medio millón de jornadas más sobre el dato de julio de 2026 lo baja unos 6 puntos (de 87 a 81).
 
 ## Semáforo — valores que determinan el color
 
@@ -621,9 +624,9 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (jornadas individuales no trabajadas (12m)) | Color |
 |---|---|
-| ≤ 7.600.000 | VERDE |
-| 7.600.000 – 9.000.000 | AMARILLO |
-| ≥ 9.000.000 | NARANJA |
+| ≤ 7.070.000 | VERDE |
+| 7.070.000 – 8.350.000 | AMARILLO |
+| ≥ 8.350.000 | NARANJA |
 
 ## Datos concretos detrás del valor
 
@@ -635,7 +638,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 4.820.775 jornadas individuales no trabajadas (12m) (2026-07).
 
-4820775 jornadas individuales no trabajadas (12m) está en Verde, a 2779225,0 del límite con Amarillo (7600000,0).
+4820775 jornadas individuales no trabajadas (12m) está en Verde, a 2249225,0 del límite con Amarillo (7070000,0).
 
 **Color vigente: VERDE**
 
@@ -645,6 +648,7 @@ Ponderación vigente en el ITCP: 4,3 % efectivo. El color es una lectura adicion
 
 - La cantidad de huelguistas es una estimación construida a partir de múltiples fuentes, no un padrón administrativo exhaustivo.
 - No captura protestas sin paro ni conflicto social fuera de las relaciones laborales; esa cobertura corresponde a ACLED.
+- Los paros generales de las centrales sindicales casi no se ven en la serie. En los cuatro meses con paro general de la CGT durante el mandato (enero y mayo de 2024, abril de 2025 y febrero de 2026), las jornadas del mes quedaron por debajo de la mediana de ese mismo mes en 2006-2023 (sin contar los meses con paro general) en dos casos, y en otro la superaron en apenas 27.000; sólo en mayo de 2024 la superaron en unas 450.000. Ninguna escala puede hacer visible lo que la fuente no registra: un paro general mueve este componente sólo en la medida en que la Secretaría de Trabajo lo cuente.
 - Se usa el nivel absoluto. El crecimiento de largo plazo de la población asalariada puede moverlo aun con una propensión al paro estable; conviene reevaluar una tasa por trabajador cuando exista una serie oficial mensual compatible.
 
 ## Si falta el dato / Política de revisiones
@@ -658,6 +662,8 @@ Ponderación vigente en el ITCP: 4,3 % efectivo. El color es una lectura adicion
 **2026-08-21** — Incorporado como segunda pata de conflicto social para medir tamaño y duración de los paros, con 40% interno; ACLED conserva 60%.
 
 **2026-09-08** — La suma exige continuidad mensual y valores válidos. Se corroboran las doce filas originales que suman 4.760.195 jornadas hasta mayo de 2026; no cambia el valor publicado.
+
+**2026-10-27** — Escala nueva: los cortes pasan de 5,0 · 6,5 · 8,0 · 10,0 millones a 4,0 · 5,9 · 7,6 · 9,1 millones, los percentiles 5, 25, 50 y 75 de las ventanas de doce meses anteriores al mandato. Con la escala vieja el componente marcaba 100 en la mitad de los meses de la gestión y no se movía; ahora va de 71 a 97. Con el dato de julio de 2026 pasa de 100 a 87, la dimensión de conflicto social de 78,3 a 73,1 y el índice político de 73,6 a 73,1.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

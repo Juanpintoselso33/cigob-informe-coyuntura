@@ -43,10 +43,10 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
 | Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 41,6 | AMARILLO | 26,0 % |
-| Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 77,1 | VERDE | 24,0 % |
 | Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 41,4 | AMARILLO | 23,0 % |
-| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 59,9 | AMARILLO | 16,0 % |
-| Competitividad externa | Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene. | 49,8 | AMARILLO | 11,0 % |
+| Sector externo | Qué tan holgada está la economía frente al resto del mundo. | 61,1 | VERDE | 21,2 % |
+| Cuentas fiscales | Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. | 75,1 | VERDE | 19,2 % |
+| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 58,4 | AMARILLO | 10,6 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -64,23 +64,23 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Inflación del mes | Cuánto suben en el mes los precios al consumidor en general. | 1,93 % mensual | AMARILLO | 15,6 % |
 | Inflación esperada a 12 meses | La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del… | 21,1 % anual esperado | AMARILLO | 5,2 % |
 | Liquidez en pesos y presión compradora de divisas | Mira dos cosas a la vez. | 64,01 pts de tensión (0-100) | NARANJA | 5,2 % |
-| **DIMENSIÓN: Viabilidad fiscal-comercial** | | | | |
-| Saldo comercial (últimos 12 meses) | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses. | 26.472 Millones de USD (acum. 12 meses) | VERDE | 4,8 % |
-| Base imponible real (nación + provincias) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 94,4 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
-| Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acum. 12 meses) | VERDE | 12,0 % |
 | **DIMENSIÓN: Actividad e inversión** | | | | |
 | Actividad económica (vs. un año atrás) | El pulso mensual de la actividad económica: cuánto creció o cayó respecto de un año atrás. | −1,44 % i.a. | NARANJA | 9,7 % |
 | Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica… | 46,67 % de sectores en crecimiento i.a. | AMARILLO | 3,2 % |
 | Producción industrial (vs. un año atrás) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,04 % i.a. (promedio 3 meses) | NARANJA | 3,2 % |
 | Inversión física | Índice Anticipador de Inversión. | −1,74 % i.a. ponderado | AMARILLO | 6,9 % |
-| **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
+| **DIMENSIÓN: Sector externo** | | | | |
 | Reservas netas | Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la… | 10.725 Millones de USD | VERDE | 5,4 % |
+| Saldo comercial (últimos 12 meses) | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses. | 26.472 Millones de USD (acum. 12 meses) | VERDE | 4,8 % |
+| Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el… | 85,87 Índice (base dic-2015=100) | AMARILLO | 5,5 % |
+| Términos del intercambio | Cuánto valen las exportaciones argentinas frente a lo que se importa. | 145,14 índice (base 2004 = 100) | VERDE | 5,5 % |
+| **DIMENSIÓN: Cuentas fiscales** | | | | |
+| Base imponible real (nación + provincias) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 94,4 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
+| Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acum. 12 meses) | VERDE | 12,0 % |
+| **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
 | Capacidad prestable | Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. | −0,34 σ vs. su historia | AMARILLO | 3,4 % |
 | Crédito privado real en pesos | Cuánto crecen los préstamos en pesos al sector privado en términos reales (contra un año atrás, descontada la… | −1,2 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
 | Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 6,22 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
-| **DIMENSIÓN: Competitividad externa** | | | | |
-| Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el… | 85,87 Índice (base dic-2015=100) | AMARILLO | 5,5 % |
-| Términos del intercambio | Cuánto valen las exportaciones argentinas frente a lo que se importa. | 145,14 índice (base 2004 = 100) | VERDE | 5,5 % |
 
 *Datos al 2026-10-27.*
 
@@ -198,7 +198,7 @@ Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, se
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | reservas_bcra | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Capacidad y costo del financiamiento | **UNIDAD DE MEDIDA** | Millones de USD |
+| **DIMENSIÓN EN EL ITCM** | Sector externo | **UNIDAD DE MEDIDA** | Millones de USD |
 | **SERIE DISPONIBLE** | 2024-06 → 2026-09 (28 puntos) | **REZAGO DE PUBLICACIÓN** | La planilla de reservas y liquidez del BCRA se publica unas tres semanas después del cierre de cada mes; el informe la incorpora automáticamente. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Planilla SDDS «Reservas internacionales y liquidez en moneda extranjera» + Balance Consolidado del BCRA (depósitos del Tesoro en dólares) |
 | **MODO DE ACCESO** | Automático: se leen la planilla oficial del mes y el Balance Consolidado; el resultado se valida contra las reservas brutas de la API de estadísticas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-27 |
@@ -209,7 +209,7 @@ Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, se
 
 Aproxima el margen externo con una definición explícita. Su lectura depende de los pasivos excluidos y debe contrastarse con otras medidas de reservas y liquidez.
 
-**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
+**Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses, las reservas netas del Banco Central y la competitividad del tipo de cambio. La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
 
 ## Método de cómputo
 
@@ -255,11 +255,13 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Sin planilla completa o depósitos del Tesoro del mismo mes, se conserva el último resultado completo con su fecha y marcado como desactualizado. No se reemplaza por brutas recientes menos pasivos de un config. La historia omite meses sin Tesoro; cero observado se admite. Si no hay resultado utilizable, se redistribuye el peso entre componentes disponibles de la dimensión.
+- **Si falta el dato:** Sin planilla completa o depósitos del Tesoro del mismo mes, se conserva el último resultado completo con su fecha y marcado como desactualizado. No se reemplaza por brutas recientes menos pasivos de un config. La historia omite meses sin Tesoro; cero observado se admite. Si no hay resultado utilizable, se redistribuye el peso entre los componentes disponibles del sector externo.
 
 - **Política de revisiones:** La planilla publicada no se revisa; el informe reconstruye la serie completa releyendo todas las planillas disponibles en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Pasa de «Capacidad y costo del financiamiento» al «Sector externo», junto con el saldo comercial y el cruce del tipo de cambio real con los términos del intercambio. Su peso en el índice macroeconómico no cambia (5,44 %).
 
 **2026-10-27** — Se contrasta el número con tres estimaciones públicas y la ficha lo declara: coincide con la medición convencional del Banco Central y queda muy por encima de las definiciones más exigentes. No cambia el cálculo.
 
@@ -303,7 +305,7 @@ Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual
 
 Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico; por encima, más capacidad que la habitual, y por debajo, menos. En el semáforo de la tarjeta, desde 0 es verde, de −0,6 a 0 amarillo, de −0,9 a −0,6 naranja y por debajo de −0,9 rojo. Datos del Banco Central de la República Argentina (BCRA) —tasa de plazos fijos mayoristas (BADLAR), depósitos y préstamos privados— e índice de precios al consumidor (IPC) del Instituto Nacional de Estadística y Censos (INDEC).
 
-**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
+**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las dos primeras miden cuánta financiación hay —lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla. Hasta octubre de 2026 incluía también las reservas netas, que ahora están en el sector externo.
 
 ## Método de cómputo
 
@@ -355,6 +357,8 @@ Ponderación vigente en el ITCM: 3,4 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Al redefinirse la métrica, el histórico de la versión anterior se purgó: la serie publicada es homogénea. Se regenera completa en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». Su peso en el índice macroeconómico no cambia (3,36 %).
 
 **2026-06-26** — Nace la capacidad prestable en reemplazo de la tasa BADLAR dentro de la dimensión de financiamiento, como índice de ratios mensuales.
 
@@ -664,7 +668,7 @@ El balance entre lo que el país exporta y lo que importa, acumulado en los últ
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | saldo_comercial_12m | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Viabilidad fiscal-comercial | **UNIDAD DE MEDIDA** | Millones de USD (acum. 12 meses) |
+| **DIMENSIÓN EN EL ITCM** | Sector externo | **UNIDAD DE MEDIDA** | Millones de USD (acum. 12 meses) |
 | **SERIE DISPONIBLE** | 2022-08 → 2026-09 (50 puntos) | **REZAGO DE PUBLICACIÓN** | El cuadro original del ICA se publica durante el mes siguiente al dato; la API histórica puede incorporarlo después. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | ICA — Intercambio Comercial Argentino: exportaciones e importaciones totales mensuales, en millones de dólares |
 | **MODO DE ACCESO** | Automático: se descubre la planilla vigente desde el catálogo INDEC y se completa la historia de la API; la tarjeta y el gráfico comparten esa serie. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-27 |
@@ -675,7 +679,7 @@ El balance entre lo que el país exporta y lo que importa, acumulado en los últ
 
 Muestra si el intercambio de bienes aporta o resta dólares. No alcanza para saber si el sector externo en conjunto los genera: faltan los servicios, los intereses y las utilidades giradas, que se ven en la cuenta corriente del gráfico.
 
-**Dimensión que integra — Viabilidad fiscal-comercial.** Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real es el sostén del ancla fiscal y el saldo comercial, los dólares genuinos del intercambio.
+**Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses, las reservas netas del Banco Central y la competitividad del tipo de cambio. La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
 
 ## Método de cómputo
 
@@ -728,6 +732,8 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-27** — Pasa de la dimensión «Viabilidad fiscal-comercial» al «Sector externo», junto con las reservas y el cruce del tipo de cambio real con los términos del intercambio. Su peso en el índice macroeconómico no cambia (4,8 %).
+
 **2026-10-26** — El rótulo pasa a «Saldo comercial (últimos 12 meses)». No cambia el cálculo.
 
 **2026-09-08** — El cuadro oficial vigente completa la API histórica rezagada. La tarjeta y las series comparten origen y se exigen ventanas consecutivas; se conserva el último cuadro validado ante fallos del portal.
@@ -763,7 +769,7 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | recaudacion | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Viabilidad fiscal-comercial | **UNIDAD DE MEDIDA** | índice (100 = 4T-2023) |
+| **DIMENSIÓN EN EL ITCM** | Cuentas fiscales | **UNIDAD DE MEDIDA** | índice (100 = 4T-2023) |
 | **SERIE DISPONIBLE** | 2022-01 → 2026-09 (57 puntos) | **REZAGO DE PUBLICACIÓN** | Las dos fuentes publican en los primeros días del mes siguiente, y el indicador espera el índice de precios que lleva las cifras a pesos constantes: el último punto es el del último mes con inflación publicada. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda (dato primario de ARCA) y Comisión Arbitral del Convenio Multilateral; deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | Recaudación mensual de la Dirección General Impositiva (impuestos internos) más la de los sistemas de la Comisión Arbitral —Ingresos Brutos de los contribuyentes de Convenio Multilateral y sus regímenes de retención—, en pesos corrientes, llevadas a pesos constantes con el índice de precios |
 | **MODO DE ACCESO** | Automático. La parte nacional sale de la interfaz pública de series de tiempo. La provincial se lee de la gacetilla mensual en PDF: los nombres de archivo no siguen un patrón fijo, así que se recorre el listado publicado en lugar de construir la dirección, y cada informe se procesa una sola vez y queda guardado. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-27 |
@@ -774,7 +780,7 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 
 Aproxima la evolución de la base imponible mediante ingresos cobrados. También responde a cambios de alícuotas, vencimientos, pagos atrasados y reasignaciones tributarias. Un nivel menor que 100 indica menor recaudación real ajustada respecto de la base; no prueba por sí solo que haya menos actividad formal.
 
-**Dimensión que integra — Viabilidad fiscal-comercial.** Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real es el sostén del ancla fiscal y el saldo comercial, los dólares genuinos del intercambio.
+**Dimensión que integra — Cuentas fiscales.** Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real mide la base imponible, es decir, cuánta actividad formal sostiene los ingresos. Hasta octubre de 2026 esta dimensión incluía también el saldo comercial, que ahora está en el sector externo.
 
 ## Método de cómputo
 
@@ -831,11 +837,13 @@ Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si falta la gacetilla provincial de un mes, ese mes no entra y el indicador mantiene el último punto disponible, señalado como desactualizado. Sin ventana suficiente para corregir estacionalidad, el indicador no publica y el saldo comercial junto con el resultado primario explican la dimensión. Si IVA-DGI o cheque se retrasan hasta tres meses respecto de la tarjeta, la descomposición se publica igual pero declarando el desfasaje ("dato de tal mes, N meses más viejo que la tarjeta"); más allá de tres meses de atraso, la descomposición queda ausente del detalle. En cualquier caso el indicador publica igual: no es un insumo del puntaje.
+- **Si falta el dato:** Si falta la gacetilla provincial de un mes, ese mes no entra y el indicador mantiene el último punto disponible, señalado como desactualizado. Sin ventana suficiente para corregir estacionalidad, el indicador no publica y el resultado primario explica solo la dimensión de cuentas fiscales. Si IVA-DGI o cheque se retrasan hasta tres meses respecto de la tarjeta, la descomposición se publica igual pero declarando el desfasaje ("dato de tal mes, N meses más viejo que la tarjeta"); más allá de tres meses de atraso, la descomposición queda ausente del detalle. En cualquier caso el indicador publica igual: no es un insumo del puntaje.
 
 - **Política de revisiones:** Los puntos históricos del indicador pueden cambiar por nuevas versiones de los insumos y porque los factores estacionales se recalculan al acumular meses. La reconstrucción de la parte provincial de 2022 está controlada contra el acumulado anual deducido por separado.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — La dimensión «Viabilidad fiscal-comercial» pasa a llamarse «Cuentas fiscales» y se queda con esta y el resultado primario: el saldo comercial se fue al «Sector externo». Su peso en el índice macroeconómico no cambia (7,2 %).
 
 **2026-09-16** — Se agrega `dobleUso`: esta tarjeta es el lado PESADO (7,2% del índice macroeconómico) del solapamiento con `actividad_tributaria` (1,32%), que ya lo declaraba desde su propia ficha pero no aparecía acá (revisión adversarial).
 
@@ -882,7 +890,7 @@ Si el peso está caro o barato frente a los socios comerciales, en términos rea
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | tcrm | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Competitividad externa | **UNIDAD DE MEDIDA** | Índice (base dic-2015=100) |
+| **DIMENSIÓN EN EL ITCM** | Sector externo | **UNIDAD DE MEDIDA** | Índice (base dic-2015=100) |
 | **SERIE DISPONIBLE** | 2023-11 → 2026-09 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Se publica a diario y su promedio mensual está disponible en los primeros días del mes siguiente. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | ITCRM — Índice de Tipo de Cambio Real Multilateral del BCRA (base 17-dic-2015 = 100), promedios mensuales |
 | **MODO DE ACCESO** | Automático: descarga de la planilla oficial del BCRA. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-27 |
@@ -891,14 +899,14 @@ Si el peso está caro o barato frente a los socios comerciales, en términos rea
 
 Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el tipo de cambio real multilateral del Banco Central.
 
-Una apreciación real (peso caro) frena exportaciones y la acumulación de reservas, y suele anticipar presión cambiaria: cuanto más apreciado, más tensión. La dimensión de competitividad externa no lo promedia con los términos del intercambio: los cruza, porque un peso apreciado con buenos precios de exportación no es lo mismo que el mismo peso con precios en caída.
+Una apreciación real (peso caro) frena exportaciones y la acumulación de reservas, y suele anticipar presión cambiaria: cuanto más apreciado, más tensión. El sector externo no lo promedia con los términos del intercambio: los cruza, porque un peso apreciado con buenos precios de exportación no es lo mismo que el mismo peso con precios en caída.
 
-**Dimensión que integra — Competitividad externa.** Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene: el tipo de cambio real multilateral oficial del Banco Central cruzado con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación). No es un promedio: cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
+**Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses, las reservas netas del Banco Central y la competitividad del tipo de cambio. La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
 
 ## Método de cómputo
 
 - El puntaje sale de sus umbrales de siempre, calibrados con la historia 1997-2026: 75 o menos da 10, 80 da 35, 90 da 60, 102,5 da 80 y 110 o más da 100, interpolado entre esos puntos. No usa una ventana estadística, para no depender de su punto de arranque: diciembre de 2023 fue el pico de la devaluación y la habría vuelto la referencia de «competitivo».
-- La dimensión de competitividad externa, que pesa 11% del índice macroeconómico, no promedia este indicador con el otro: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.
+- El sector externo, donde este indicador y el otro pesan 11% del índice macroeconómico entre los dos, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.
 - La matriz es asimétrica a propósito: un peso competitivo con términos bajos puntúa mejor que uno apreciado con términos altos. Con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil.
 
 ## Semáforo — valores que determinan el color
@@ -934,16 +942,18 @@ Ponderación vigente en el ITCM: 5,5 % efectivo. El color es una lectura adicion
 
 ## Transparencia — limitaciones declaradas
 
-- Los umbrales y el peso de la dimensión (11%) son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.
+- Los umbrales y el peso del cruce (11% del índice) son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.
 - Dice si el peso está caro o barato, no si ese nivel se sostiene: para eso está el cruce con los términos del intercambio.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si la planilla del BCRA no está disponible, se mantiene el último valor, señalado como desactualizado. Sin tipo de cambio real o sin términos del intercambio, la dimensión de competitividad externa no se calcula y el índice macroeconómico renormaliza entre las demás.
+- **Si falta el dato:** Si la planilla del BCRA no está disponible, se mantiene el último valor, señalado como desactualizado. Sin tipo de cambio real o sin términos del intercambio, el cruce no se calcula y el sector externo se arma con el saldo comercial y las reservas, que renormalizan entre sí.
 
 - **Política de revisiones:** El BCRA puede revisar los ponderadores del índice; la serie se baja completa en cada corrida y las revisiones entran solas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Su dimensión «Competitividad externa» se junta con el saldo comercial y las reservas en el «Sector externo». El cruce con los términos del intercambio y su peso en el índice (11 % entre los dos) no cambian.
 
 **2026-10-27** — Vuelve a ser tarjeta y a puntuar por su cuenta, igual que los términos del intercambio. El cruce de los dos pasa a hacerse en la dimensión de competitividad externa, con la misma matriz: el número de la dimensión no cambia. Con los datos de septiembre de 2026 el tipo de cambio real puntúa 49,7, los términos del intercambio 85,0 y la dimensión 49,8, igual que el compuesto que reemplaza; el índice macroeconómico sigue en 53,9.
 
@@ -980,7 +990,7 @@ Cuánto valen las exportaciones argentinas frente a lo que se importa: los preci
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | terminos_intercambio | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Competitividad externa | **UNIDAD DE MEDIDA** | índice (base 2004 = 100) |
+| **DIMENSIÓN EN EL ITCM** | Sector externo | **UNIDAD DE MEDIDA** | índice (base 2004 = 100) |
 | **SERIE DISPONIBLE** | 2016-01 → 2026-04 (42 puntos) | **REZAGO DE PUBLICACIÓN** | Trimestral, con unos dos meses y medio de demora: el segundo trimestre (abril a junio) sale a mediados de septiembre. La tarjeta muestra el último trimestre publicado y lo nombra. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Índice de términos del intercambio (precios de exportación sobre precios de importación), de los índices de precios y cantidades del comercio exterior, base 2004 = 100, trimestral |
 | **MODO DE ACCESO** | Automático: serie del INDEC publicada en datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-27 |
@@ -989,15 +999,15 @@ Cuánto valen las exportaciones argentinas frente a lo que se importa: los preci
 
 Cuánto valen las exportaciones argentinas frente a lo que se importa: los precios de exportación sobre los de importación, según el Instituto Nacional de Estadística y Censos.
 
-Dice si el nivel del tipo de cambio real se sostiene: con buenos precios de exportación, un peso caro aguanta más. La dimensión de competitividad externa lo cruza con el tipo de cambio real en vez de promediarlos: con el peso competitivo el ajuste ya ocurrió; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil. Se publica por trimestre, con unos dos meses y medio de demora.
+Dice si el nivel del tipo de cambio real se sostiene: con buenos precios de exportación, un peso caro aguanta más. El sector externo lo cruza con el tipo de cambio real en vez de promediarlos: con el peso competitivo el ajuste ya ocurrió; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil. Se publica por trimestre, con unos dos meses y medio de demora.
 
-**Dimensión que integra — Competitividad externa.** Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene: el tipo de cambio real multilateral oficial del Banco Central cruzado con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación). No es un promedio: cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
+**Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses, las reservas netas del Banco Central y la competitividad del tipo de cambio. La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
 
 ## Método de cómputo
 
 - El puntaje ubica el índice del último trimestre publicado entre los percentiles de la serie desde el cuarto trimestre de 2023 hasta el segundo de 2026, con saturación fuera de los extremos, en la misma escala de 10 a 100 que el tipo de cambio real: 129,7 → 10; 138,1 → 32,5; 140,4 → 55; 143,63 → 77,5; 148,15 → 100. Los cortes quedan congelados.
-- La dimensión de competitividad externa, que pesa 11% del índice macroeconómico, no promedia este indicador con el otro: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.
-- Para la serie histórica de la dimensión, un trimestre cuenta como publicado a partir del tercer mes posterior a su cierre: el segundo trimestre entra en septiembre. No se imputa ni se anticipa con otra serie.
+- El sector externo, donde este indicador y el otro pesan 11% del índice macroeconómico entre los dos, no los promedia: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.
+- Para la serie histórica del cruce, un trimestre cuenta como publicado a partir del tercer mes posterior a su cierre: el segundo trimestre entra en septiembre. No se imputa ni se anticipa con otra serie.
 
 ## Semáforo — valores que determinan el color
 
@@ -1031,16 +1041,18 @@ Ponderación vigente en el ITCM: 5,5 % efectivo. El color es una lectura adicion
 ## Transparencia — limitaciones declaradas
 
 - La ventana es corta: once trimestres. Los cortes pueden ser inestables y se revisan cuando la serie crezca. Como se calibran contra el período que se está midiendo, son una convención del Monitor y no un umbral externo.
-- «Altos» y «bajos» son posiciones dentro de la ventana desde fines de 2023, no niveles en abstracto: el cuadrante de la dimensión toma como altos los trimestres desde la mediana (140,4), y el puntaje usa la posición continua.
+- «Altos» y «bajos» son posiciones dentro de la ventana desde fines de 2023, no niveles en abstracto: el cuadrante del cruce toma como altos los trimestres desde la mediana (140,4), y el puntaje usa la posición continua.
 - Al ser trimestral, se mueve por saltos, una vez cada tres meses.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si el último trimestre publicado queda más de nueve meses atrás, la serie se considera congelada: la tarjeta conserva el último valor, señalado como desactualizado, y la dimensión de competitividad externa no se calcula.
+- **Si falta el dato:** Si el último trimestre publicado queda más de nueve meses atrás, la serie se considera congelada: la tarjeta conserva el último valor, señalado como desactualizado, y el cruce con el tipo de cambio real no se calcula: el sector externo se arma con el saldo comercial y las reservas.
 
 - **Política de revisiones:** El INDEC revisa trimestres anteriores; la serie se baja completa en cada corrida y las revisiones entran solas. Los cortes quedan congelados para que el puntaje de un trimestre sea reproducible.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Su dimensión «Competitividad externa» se junta con el saldo comercial y las reservas en el «Sector externo». El cruce con el tipo de cambio real y su peso en el índice (11 % entre los dos) no cambian.
 
 **2026-10-27** — Pasa a ser tarjeta y a puntuar por su cuenta, en la misma escala de 10 a 100 que el tipo de cambio real. Desde el 20 de octubre de 2026 entraba como componente de un compuesto con el tipo de cambio real; el cruce de los dos pasa a hacerse en la dimensión de competitividad externa, con la misma matriz, y el número de la dimensión no cambia. Con el segundo trimestre de 2026 (145,14) puntúa 85,0.
 
@@ -1384,7 +1396,7 @@ Cuánto crecen los préstamos en pesos al sector privado en términos reales (co
 
 Es el crédito que efectivamente se dio y complementa a la capacidad prestable: si los bancos tienen margen pero el crédito real no crece, el financiamiento no está llegando a la economía.
 
-**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
+**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las dos primeras miden cuánta financiación hay —lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla. Hasta octubre de 2026 incluía también las reservas netas, que ahora están en el sector externo.
 
 ## Método de cómputo
 
@@ -1429,11 +1441,13 @@ Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Sin mes común entre stock e IPC, se mantiene el último valor disponible, señalado como desactualizado; sin dato, reservas y capacidad prestable renormalizan dentro de la dimensión de financiamiento.
+- **Si falta el dato:** Sin mes común entre stock e IPC, se mantiene el último valor disponible, señalado como desactualizado; sin dato, capacidad prestable y costo del Tesoro renormalizan dentro de la dimensión de financiamiento.
 
 - **Política de revisiones:** Los saldos del BCRA no se revisan de forma habitual; la serie se regenera completa (desde diciembre de 2023) en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». Su peso en el índice macroeconómico no cambia (3,2 %).
 
 **2026-07-03** — Nace y entra al índice: rescata la única señal no redundante de los cuatro contextos nominales (que dejan de publicarse); la dimensión de financiamiento queda 45% reservas + 40% capacidad prestable + 15% crédito.
 
@@ -1473,7 +1487,7 @@ Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos: la tas
 
 Es el precio del financiamiento del Estado. Reservas, capacidad prestable y crédito miden cuánta financiación hay; esta mide cuánto cuesta conseguirla. Los dos extremos son malos: una tasa real muy negativa indica que el Tesoro coloca licuando al ahorrista, y una muy alta que la deuda crece más rápido que la economía.
 
-**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
+**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. Las dos primeras miden cuánta financiación hay —lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla. Hasta octubre de 2026 incluía también las reservas netas, que ahora están en el sector externo.
 
 ## Método de cómputo
 
@@ -1524,11 +1538,13 @@ Ponderación vigente en el ITCM: 4 % efectivo. El color es una lectura adicional
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Sin colocaciones a tasa fija en el mes se conserva el último valor disponible, señalado como desactualizado; reservas, capacidad prestable y crédito renormalizan dentro de la dimensión.
+- **Si falta el dato:** Sin colocaciones a tasa fija en el mes se conserva el último valor disponible, señalado como desactualizado; capacidad prestable y crédito renormalizan dentro de la dimensión de financiamiento.
 
 - **Política de revisiones:** Las planillas del año en curso se actualizan a lo largo del año; la serie se regenera completa desde diciembre de 2023 en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». Su peso en el índice macroeconómico no cambia (4 %).
 
 **2026-07-18** — Nace y entra al índice con el 25% de la dimensión de financiamiento, que pasa a llamarse capacidad y costo del financiamiento; los otros tres componentes se recortan en proporción. Cubre el precio del financiamiento del Estado, que la dimensión no medía.
 
@@ -1559,7 +1575,7 @@ Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | resultado_primario | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Viabilidad fiscal-comercial | **UNIDAD DE MEDIDA** | % de la recaudación (acum. 12 meses) |
+| **DIMENSIÓN EN EL ITCM** | Cuentas fiscales | **UNIDAD DE MEDIDA** | % de la recaudación (acum. 12 meses) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Un mes: el informe de ingresos y gastos se publica en la segunda quincena del mes siguiente. |
 | **PRODUCTOR DEL DATO** | Secretaría de Hacienda (resultado primario) + recaudación nacional | **OPERACIÓN ESTADÍSTICA** | Informe mensual de ingresos y gastos del Sector Público Nacional, y recaudación tributaria total |
 | **MODO DE ACCESO** | Automático: API de series de tiempo del Estado nacional. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-27 |
@@ -1570,7 +1586,7 @@ Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto
 
 Es el resultado fiscal, no los ingresos. La recaudación puede caer porque la actividad afloja o porque se bajaron impuestos a propósito, y en ninguno de los dos casos eso dice si las cuentas cierran. Este indicador responde esa pregunta directamente: de cada cien pesos recaudados, cuántos quedan. Se mide sobre la recaudación y no sobre el producto porque es un dato mensual que no espera al PBI; como referencia, un 6 % de la recaudación equivale aproximadamente a 1,5 % del PBI. No incluye los intereses: el resultado con intereses (financiero) puede ser menor.
 
-**Dimensión que integra — Viabilidad fiscal-comercial.** Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real es el sostén del ancla fiscal y el saldo comercial, los dólares genuinos del intercambio.
+**Dimensión que integra — Cuentas fiscales.** Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real mide la base imponible, es decir, cuánta actividad formal sostiene los ingresos. Hasta octubre de 2026 esta dimensión incluía también el saldo comercial, que ahora está en el sector externo.
 
 ## Método de cómputo
 
@@ -1616,10 +1632,12 @@ Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adiciona
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Sin una ventana completa de doce meses se conserva el último valor disponible, señalado como desactualizado; la recaudación y el saldo comercial renormalizan dentro de la dimensión.
+- **Si falta el dato:** Sin una ventana completa de doce meses se conserva el último valor disponible, señalado como desactualizado; la recaudación queda como único indicador de la dimensión de cuentas fiscales.
 
 - **Política de revisiones:** Las cifras fiscales pueden revisarse en publicaciones posteriores; la serie se regenera completa desde diciembre de 2023 en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — La dimensión «Viabilidad fiscal-comercial» pasa a llamarse «Cuentas fiscales» y se queda con este indicador y la recaudación: el saldo comercial se fue al «Sector externo». Su peso en el índice macroeconómico no cambia (12 %).
 
 **2026-07-18** — Nace y entra como componente principal de la dimensión fiscal-comercial (50%), que hasta entonces medía la viabilidad fiscal por los ingresos: la recaudación baja al 30% y el saldo comercial al 20%.

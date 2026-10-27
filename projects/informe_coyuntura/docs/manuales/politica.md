@@ -205,9 +205,9 @@ Suma de pesos: 100%.
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `convencion` — calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052) |
 
-**Bandas**: ≤ -32 → 100 · -32–-29 → 85 · -29–-26 → 65 · -26–-15 → 40 · > -15 → 10
+**Bandas**: ≤ -30 → 100 · -30–-15 → 85 · -15–15 → 65 · 15–30 → 40 · > 30 → 10
 
-**Lo gobiernan**: [ADR-0132](../adr/0132-conflictividad-nacional-de-donde-viene-y-sobre-que-actua.md) Conflictividad nacional: de dónde viene y sobre qué actúa · [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0303](../adr/0303-acled-semana-inicia-el-sabado.md) La semana ACLED empieza el sábado
+**Lo gobiernan**: [ADR-0132](../adr/0132-conflictividad-nacional-de-donde-viene-y-sobre-que-actua.md) Conflictividad nacional: de dónde viene y sobre qué actúa · [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0303](../adr/0303-acled-semana-inicia-el-sabado.md) La semana ACLED empieza el sábado · [ADR-0390](../adr/0390-conflictividad-con-cortes-de-la-historia-previa.md) Conflictividad con cortes de la historia previa
 
 #### Intensidad de los paros
 
@@ -221,9 +221,9 @@ Suma de pesos: 100%.
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `historia_larga` — anclas fijadas sobre los 17 años completos 2006-2022 de la serie oficial, anteriores al mandato (ADR-0232) |
 
-**Bandas**: ≤ 5e+06 → 100 · 5e+06–6.5e+06 → 85 · 6.5e+06–8e+06 → 65 · 8e+06–1e+07 → 40 · > 1e+07 → 10
+**Bandas**: ≤ 4e+06 → 100 · 4e+06–5.9e+06 → 85 · 5.9e+06–7.6e+06 → 65 · 7.6e+06–9.1e+06 → 40 · > 9.1e+06 → 10
 
-**Lo gobiernan**: [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0295](../adr/0295-jornadas-exige-doce-meses-calendario.md) Jornadas exige doce meses calendario
+**Lo gobiernan**: [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle · [ADR-0295](../adr/0295-jornadas-exige-doce-meses-calendario.md) Jornadas exige doce meses calendario · [ADR-0388](../adr/0388-jornadas-no-trabajadas-con-escala-que-se-mueve.md) Jornadas no trabajadas con una escala que se mueve
 
 ### Dimensión `poder_judicial` (16%)
 
@@ -354,7 +354,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-98 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+100 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -454,3 +454,5 @@ histórica.
 - [0378](../adr/0378-transferencias-no-automaticas-reemplazan-a-las-automaticas.md) — Las transferencias no automáticas reemplazan a las automáticas
 - [0380](../adr/0380-mas-camaras-en-la-postura-empresaria.md) — Más cámaras en la postura empresaria: entra el comercio
 - [0384](../adr/0384-el-campo-entra-a-la-postura-empresaria.md) — El campo entra a la postura empresaria
+- [0388](../adr/0388-jornadas-no-trabajadas-con-escala-que-se-mueve.md) — Jornadas no trabajadas con una escala que se mueve
+- [0390](../adr/0390-conflictividad-con-cortes-de-la-historia-previa.md) — Conflictividad con cortes de la historia previa

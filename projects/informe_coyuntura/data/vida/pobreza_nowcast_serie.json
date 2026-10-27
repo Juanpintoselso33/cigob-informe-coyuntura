@@ -1,7 +1,7 @@
 {
   "_meta": {
     "fuente": "UTDT — Nowcast de Pobreza (González-Rozada), informes mensuales PDF",
-    "actualizado": "2026-09-13",
+    "actualizado": "2026-10-27",
     "nota": "Cada informe se lee una sola vez en su vida (ADR-0113); cada corrida valida las URL ya conocidas con un HEAD (Content-Length) y sólo re-lee la que cambió de tamaño — ver docstring de fetch_pobreza_nowcast_serie en descargar_series.py."
   },
   "informes": {
@@ -129,6 +129,11 @@
       "periodo": "2026-08",
       "valor": 31.3,
       "content_length": 943347
+    },
+    "_179312591551796600.pdf": {
+      "periodo": null,
+      "valor": null,
+      "content_length": 996517
     }
   }
 }

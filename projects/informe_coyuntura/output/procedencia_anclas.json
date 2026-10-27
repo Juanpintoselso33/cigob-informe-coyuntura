@@ -225,8 +225,8 @@
       "categorias": {
         "externa": 0.15806,
         "conceptual": 0.39787,
-        "convencion": 0.36881,
-        "historia_larga": 0.07526000000000001
+        "convencion": 0.30431,
+        "historia_larga": 0.13976000000000002
       },
       "detalle": [
         {
@@ -302,10 +302,16 @@
           "motivo": "cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, preservados al corregir el universo de slugs numerados (rango 13-18; ADR-0168/0268)"
         },
         {
+          "indicador": "conflictividad_nacional",
+          "categoria": "historia_larga",
+          "peso": 0.0645,
+          "motivo": "uno y dos desvíos (14,7 pp) de la variación interanual de 2020-2023, previa al mandato (ADR-0390)"
+        },
+        {
           "indicador": "jornadas_individuales_no_trabajadas_12m",
           "categoria": "historia_larga",
           "peso": 0.043,
-          "motivo": "anclas fijadas sobre los 17 años completos 2006-2022 de la serie oficial, anteriores al mandato (ADR-0232)"
+          "motivo": "cortes en los percentiles 5/25/50/75 (4,0 · 5,9 · 7,6 · 9,1 millones) de las 204 ventanas de 12 meses de la serie oficial anteriores al mandato, dic-2006 a nov-2023; no se miró 2024-2026 (ADR-0232, ADR-0388)"
         },
         {
           "indicador": "judicializacion",
@@ -332,12 +338,6 @@
           "motivo": "anclas declaradas por convención —40% de la cámara o más = 100, 30% = 85, 20% = 65, 10% = 40, 5% o menos = 10—, sin calibrar contra el rango observado (ADR-0376)"
         },
         {
-          "indicador": "conflictividad_nacional",
-          "categoria": "convencion",
-          "peso": 0.0645,
-          "motivo": "calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052)"
-        },
-        {
           "indicador": "alineamiento_senadores_prov",
           "categoria": "convencion",
           "peso": 0.0613,
@@ -347,10 +347,10 @@
       "share": {
         "externa": 0.158,
         "conceptual": 0.398,
-        "convencion": 0.369,
-        "historia_larga": 0.075
+        "convencion": 0.304,
+        "historia_larga": 0.14
       },
-      "share_circular": 0.369
+      "share_circular": 0.304
     },
     "ITVC": {
       "peso_total": 1.0,

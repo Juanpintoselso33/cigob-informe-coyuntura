@@ -122,7 +122,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 25% |
 | Peso efectivo en el índice | **3.8%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `convencion` — toma la convención de variación interanual de los juicios (cortes en −15, −5, +5 y +20 %), que reemplaza; la serie de la SRT sólo da seis variaciones anuales y no alcanza para calibrar una escala propia (ADR-0385) |
 
 **Bandas**: ≤ -15 → 100 · -15–-5 → 85 · -5–5 → 65 · 5–20 → 40 · > 20 → 10
 
@@ -136,7 +136,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 25% |
 | Peso efectivo en el índice | **3.8%** |
-| Procedencia del ancla | `convencion` — toma la escala de litigiosidad_laboral, que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365) |
+| Procedencia del ancla | `convencion` — toma la escala de litigiosidad_laboral (hoy suspendida; la misma que usa siniestralidad_laboral), que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365) |
 
 **Bandas**: ≤ -15 → 100 · -15–-5 → 85 · -5–5 → 65 · 5–20 → 40 · > 20 → 10
 

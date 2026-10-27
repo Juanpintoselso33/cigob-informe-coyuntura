@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "comunicados_vistos": 0,
+  "comunicados_vistos": 2,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro del comercio (hoy la CAC) pendientes de codificar (ADR-0380). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_comercio en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAC": "https://www.cac.com.ar/categoria/comunicados-de-prensa"
@@ -101,6 +101,11 @@
   "CAC|el-consumo-de-los-hogares-en-bienes-y-servicios-crecio-1-9-interanual-en-octubre": {
    "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
   },
+  "CAC|el-consumo-de-los-hogares-en-bienes-y-servicios-finales-crecio-2-en-julio": {
+   "fecha": "2026-08-20",
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)",
+   "titulo": "el consumo de los hogares en bienes y servicios finales crecio 2 en julio"
+  },
   "CAC|el-consumo-en-hogares-continuo-su-senda-de-crecimiento-en-febrero-1": {
    "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
   },
@@ -109,6 +114,11 @@
   },
   "CAC|el-consumo-en-hogares-registro-un-leve-descenso-en-agosto": {
    "origen": "informe estadístico periódico, no se codifica (ADR-0380)"
+  },
+  "CAC|el-consumo-mostro-un-estancamiento-en-septiembre-y-retrocedio-0-8-interanual": {
+   "fecha": "2026-08-19",
+   "origen": "informe estadístico periódico, no se codifica (ADR-0380)",
+   "titulo": "el consumo mostro un estancamiento en septiembre y retrocedio 0 8 interanual"
   },
   "CAC|el-consumo-registro-una-caida-de-3-8-interanual-en-marzo": {
    "origen": "informe estadístico periódico, no se codifica (ADR-0380)"

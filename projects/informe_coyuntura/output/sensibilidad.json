@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-27T15:18:22.380112-03:00",
+    "snapshot": "2026-10-27T16:38:28.556557-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -14,38 +14,38 @@
     "experimentos": {
       "pesos": {
         "media": 53.9,
-        "p05": 52.6,
-        "p95": 55.3,
-        "desvio": 0.86
+        "p05": 52.7,
+        "p95": 55.2,
+        "desvio": 0.78
       },
       "combinado": {
         "media": 54.0,
         "p05": 52.2,
-        "p95": 55.9,
-        "desvio": 1.11
+        "p95": 55.7,
+        "desvio": 1.06
       },
       "insumos": {
         "media": 53.9,
-        "p05": 52.7,
+        "p05": 52.8,
         "p95": 55.1,
-        "desvio": 0.72
+        "desvio": 0.69
       }
     },
     "leave_one_out": {
-      "resultado_primario": 52.0,
+      "resultado_primario": 50.7,
+      "tcrm": 56.5,
+      "terminos_intercambio": 56.5,
       "recaudacion": 55.8,
-      "costo_financiamiento_tesoro": 52.5,
-      "credito_privado": 55.0,
+      "costo_financiamiento_tesoro": 52.1,
+      "saldo_comercial_12m": 52.4,
+      "credito_privado": 55.1,
       "iai": 52.9,
       "emae_ia": 54.7,
-      "saldo_comercial_12m": 53.4,
       "idc": 54.4,
-      "tcrm": 54.4,
-      "terminos_intercambio": 54.4,
       "rem_ipc_12m": 53.5,
       "desequilibrio_monetario": 54.3,
       "ipi_manufacturero": 54.3,
-      "reservas_bcra": 53.7,
+      "reservas_bcra": 53.8,
       "emae_difusion": 53.8,
       "ipc_total": 54.0
     },
@@ -78,7 +78,7 @@
         "media": 80.3,
         "p05": 79.3,
         "p95": 81.3,
-        "desvio": 0.63
+        "desvio": 0.62
       }
     },
     "leave_one_out": {
@@ -153,52 +153,52 @@
     }
   },
   "itcp": {
-    "valor_publicado": 73.6,
-    "valor_recomputado": 73.6,
+    "valor_publicado": 75.0,
+    "valor_recomputado": 75.0,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 73.6,
-        "p05": 72.7,
-        "p95": 74.5,
-        "desvio": 0.56
+        "media": 75.0,
+        "p05": 74.0,
+        "p95": 75.9,
+        "desvio": 0.57
       },
       "combinado": {
-        "media": 73.4,
-        "p05": 72.0,
-        "p95": 74.7,
-        "desvio": 0.8
+        "media": 74.8,
+        "p05": 73.5,
+        "p95": 76.2,
+        "desvio": 0.83
       },
       "insumos": {
-        "media": 73.4,
-        "p05": 72.4,
-        "p95": 74.3,
-        "desvio": 0.58
+        "media": 74.8,
+        "p05": 73.8,
+        "p95": 75.8,
+        "desvio": 0.61
       }
     },
     "leave_one_out": {
-      "cohesion_bloque": 71.1,
-      "votos_sobre_bancas": 76.1,
-      "apoyo_comercio": 71.2,
-      "conflictividad_nacional": 76.0,
-      "cobertura_judicial": 75.9,
-      "apoyo_empresario": 75.4,
-      "jornadas_individuales_no_trabajadas_12m": 72.1,
-      "produccion_legislativa": 74.9,
-      "adhesion_reformas_provincial": 72.4,
-      "insistencias_vetos": 72.5,
-      "rechazos_decretos": 72.5,
-      "ratio_dnu": 74.5,
-      "alineamiento_senadores_prov": 74.5,
-      "apoyo_campo": 74.3,
-      "transferencias_no_automaticas": 74.0,
-      "eficacia_legislativa": 73.8
+      "cohesion_bloque": 72.5,
+      "votos_sobre_bancas": 77.5,
+      "cobertura_judicial": 77.5,
+      "apoyo_comercio": 72.6,
+      "apoyo_empresario": 76.8,
+      "produccion_legislativa": 76.3,
+      "adhesion_reformas_provincial": 73.8,
+      "insistencias_vetos": 73.9,
+      "rechazos_decretos": 73.9,
+      "alineamiento_senadores_prov": 76.0,
+      "ratio_dnu": 75.9,
+      "apoyo_campo": 75.7,
+      "conflictividad_nacional": 74.6,
+      "transferencias_no_automaticas": 75.4,
+      "jornadas_individuales_no_trabajadas_12m": 75.4,
+      "eficacia_legislativa": 75.2
     },
     "tension": {
-      "base": 2.6,
+      "base": 2.5,
       "rango_combinado": [
-        2.5,
-        2.8
+        2.4,
+        2.6
       ]
     }
   }

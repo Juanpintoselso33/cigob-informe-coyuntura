@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-27 15:18:22"
+generado: "2026-10-27 16:38:28"
 score_global: 3.7
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -44,7 +44,7 @@ schema_version: "1.2.0"
 | base_monetaria | 2.23 | % mensual nominal | 2026-10-22 | fresco |
 | tc_mayorista | 0.77 | % mensual | 2026-10-26 | fresco |
 
-### 🟢 Politica — score 2.6/10 (estable)
+### 🟢 Politica — score 2.5/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -80,7 +80,7 @@ schema_version: "1.2.0"
 | iaf_transferencias | -0.6 | % interanual real | 2026-09-30 | octubre de 2026 (ADR-0378) | Medía la variación real de las transferencias automáticas (coparticipación y fondos de ley del RON): lo que a las provincias les corresponde, no lo que la Nación decide girarles. Lo reemplaza la medida de transferencias no automáticas, con el mismo peso en la dimensión. |
 | veto_quorum | 0.0 | % de sesiones | 2026-10-27 | octubre de 2026 (ADR-0377) | Las sesiones que caen por falta de quórum miden si la cámara se reúne, no si el Congreso le da vuelta una norma al Ejecutivo; se reemplaza por las insistencias sobre vetos y los rechazos de decretos. |
 | desafios_legislativos | 0.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-10-27 | octubre de 2026 (ADR-0377) | Contaba toda norma del Ejecutivo llevada al recinto, ganara o perdiera: mezclaba el intento con la derrota. Se reemplaza por lo consumado en las dos cámaras: vetos insistidos y decretos derogados. |
-| judicializacion | 1.81 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
+| judicializacion | 1.8 | % de sumarios con medida cautelar | 2026-01-01 | agosto de 2026 (ADR-0255) | El 1,57% son 114 sumarios con la frase «medida cautelar» sobre 7.273 publicados por SAIJ en jurisdicción federal y nacional. Ese corpus no identifica causas contra el Poder Ejecutivo ni contra políticas de su agenda: una cautelar entre privados cuenta igual. El indicador se llamaba «judicialización de la agenda» y medía densidad de menciones en un corpus heterogéneo. |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | octubre de 2026 (ADR-0374) | Mide cuántos expedientes resuelve la Corte Suprema sobre los que le entran: la eficiencia de la Justicia, no algo que dependa del Poder Ejecutivo. |
 | paralisis_denuncias | 14 | sesiones de las comisiones de control (12m) | 2026-10-01 | octubre de 2026 (ADR-0374) | Cuenta las sesiones de las comisiones de disciplina y acusación del Consejo de la Magistratura: el control sobre los jueces, que ejerce el Consejo y no el Poder Ejecutivo. |
 
@@ -103,7 +103,7 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 7.99 | % de brecha CCL/mayorista | 2026-10-27 | fresco |
+| cepo_mulc | 8.01 | % de brecha CCL/mayorista | 2026-10-27 | fresco |
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
@@ -133,4 +133,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario`
 
 ---
-*Generado por CIGOB — 2026-10-27 15:18:22 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-27 16:38:28 — schema 1.2.0*

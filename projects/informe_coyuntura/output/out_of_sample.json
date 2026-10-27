@@ -107,18 +107,18 @@
       "procedencia": "historia_larga",
       "fuera_de_muestra": {
         "n": 204,
-        "media": 59.0,
-        "desvio": 30.6,
-        "saturado": 0.333,
+        "media": 51.1,
+        "desvio": 29.9,
+        "saturado": 0.304,
         "crudo_min": 2796828.0,
         "crudo_max": 13892790.0,
         "crudo_media": 7573733.68
       },
       "dentro_de_muestra": {
         "n": 32,
-        "media": 94.7,
-        "desvio": 7.6,
-        "saturado": 0.562,
+        "media": 83.8,
+        "desvio": 7.1,
+        "saturado": 0.0,
         "crudo_min": 4188784.0,
         "crudo_max": 6240205.0,
         "crudo_media": 5119432.03

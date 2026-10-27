@@ -1,0 +1,528 @@
+{
+  "metadata": {
+    "timestamp": "2026-10-27T16:24:39.570240",
+    "fuentes_automatizadas": [
+      "indec_series (IPC, CBT, salarios, empleo, RIPTE, ISAC, EMAE, IPI, faena, acero)",
+      "bcra (creditos privados, tarjeta, personales, hipotecarios, BADLAR)",
+      "utdt_icc (Indice de Confianza del Consumidor)",
+      "dnrpa (motorizacion total: inscripciones iniciales de automotores y motovehiculos por jurisdiccion)",
+      "indec_supermercados (ventas a precios constantes, serie desestacionalizada)",
+      "ciccra (consumo carne vacuna per capita — PDF mensual)",
+      "consumo_carnes (total vacuna+aviar+porcina per capita — tablero SAGYP)",
+      "srt (empleadores con cobertura de ART por tamano de nomina)",
+      "sipa (autonomos y monotributo sobre el empleo registrado)",
+      "iiep_uba_conicet (canasta de luz, gas, agua y transporte del AMBA / RIPTE)",
+      "snic (estadisticas criminales nacionales + CABA)",
+      "salud (datasets DEIS/SNVS via datos.salud.gob.ar CKAN)",
+      "trends (interes Google: inflacion, precios, dolar, empleo, inseguridad, corrupcion)"
+    ]
+  },
+  "indec": {
+    "ipc_total": {
+      "valor": 12514.1508,
+      "variacion_mensual_pct": 1.9336102032082358,
+      "fecha": "2026-09-01"
+    },
+    "ipc_alimentos": {
+      "valor": 13121.2544,
+      "variacion_mensual_pct": 1.655982665531197,
+      "fecha": "2026-08-01"
+    },
+    "ipc_vivienda": {
+      "valor": 13885.4923,
+      "variacion_mensual_pct": 2.8146407418776276,
+      "fecha": "2026-08-01"
+    },
+    "ipc_regulados": {
+      "valor": 12935.9719,
+      "variacion_mensual_pct": 2.2365656684014246,
+      "fecha": "2026-08-01"
+    },
+    "ipc_alquiler_gba": {
+      "valor": 12229.8338,
+      "fecha": "2026-09-01",
+      "variacion_mensual_pct": 1.8845931781631409,
+      "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_ipc_aperturas.xls"
+    },
+    "cbt": {
+      "valor": 519578.43,
+      "variacion_mensual_pct": 2.606316534076991,
+      "fecha": "2026-08-01"
+    },
+    "cba": {
+      "valor": 235103.36,
+      "variacion_mensual_pct": 2.606315928580205,
+      "fecha": "2026-08-01"
+    },
+    "ripte": {
+      "valor": 1915878.76,
+      "fecha": "2026-08-01"
+    },
+    "brecha_salario_cbt": {
+      "valor": 3.6873716254926134,
+      "ripte_pesos": 1915878.76,
+      "cbt_pesos": 519578.43,
+      "canastas_que_cubre": 3.6873716254926134,
+      "fecha": "2026-08-01",
+      "nota": "RIPTE / CBT del mismo mes (2026-08): canastas cubiertas por el salario imponible promedio"
+    },
+    "isalarios_total": {
+      "valor": 9708.64,
+      "variacion_mensual_pct": 2.8185332274291763,
+      "fecha": "2026-07-01"
+    },
+    "salario_real_indice": {
+      "valor": 77.58129301110867,
+      "fecha": "2026-07-01",
+      "nota": "Salario nominal / IPC * 100"
+    },
+    "desocupacion": {
+      "valor": 0.079,
+      "fecha": "2026-04-01"
+    },
+    "empleo": {
+      "valor": 0.45,
+      "fecha": "2026-04-01"
+    },
+    "subocupacion_demandante": {
+      "valor": 0.08,
+      "fecha": "2026-04-01"
+    },
+    "empleo_registrado": {
+      "valor": 6095.843,
+      "fecha": "2026-06-01"
+    },
+    "ocupacion_eph": {
+      "valor": 0.4,
+      "fecha": "2026-04-01",
+      "tasa": 45.0,
+      "tasa_2023": 44.6
+    },
+    "informalidad_trimestral": {
+      "valor": 0.379,
+      "fecha": "2026-04-01"
+    },
+    "informalidad_anual": {
+      "valor": 0.3675,
+      "fecha": "2025-01-01"
+    },
+    "isac": {
+      "valor": 140.737938979259,
+      "variacion_mensual_pct": 0.4265680941168526,
+      "fecha": "2026-08-01",
+      "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_isac_2026.xls",
+      "obtenido_en": "2026-10-27T16:24:48-03:00"
+    },
+    "emae": {
+      "valor": -0.014417650408067,
+      "variacion_mensual_pct": -145.99263039585244,
+      "fecha": "2026-07-01"
+    },
+    "ipi": {
+      "valor": 114.286133053828,
+      "variacion_mensual_pct": 1.9279290463537047,
+      "fecha": "2026-08-01",
+      "fuente_url": "https://www.indec.gob.ar/ftp/cuadros/economia/sh_ipi_manufacturero_2026.xls",
+      "obtenido_en": "2026-10-27T16:24:50-03:00"
+    },
+    "faena_vacuna": {
+      "valor": 1011.33375,
+      "variacion_mensual_pct": -7.732094438017533,
+      "fecha": "2026-08-01"
+    },
+    "acero_crudo": {
+      "valor": 812.898,
+      "variacion_mensual_pct": 2.3856455702260915,
+      "fecha": "2026-07-01"
+    }
+  },
+  "bcra": {
+    "prestamos_privado_total": {
+      "valor": 149207285.0,
+      "fecha": "2026-10-22"
+    },
+    "prestamos_tarjeta": {
+      "valor": 23852267.0,
+      "fecha": "2026-10-21"
+    },
+    "prestamos_personales": {
+      "valor": 22448639.0,
+      "fecha": "2026-10-21"
+    },
+    "prestamos_hipotecarios": {
+      "valor": 9417908.0,
+      "fecha": "2026-10-21"
+    },
+    "credito_consumo_total": {
+      "valor": 46300906.0,
+      "fecha": "2026-10-21",
+      "unidad": "Millones de pesos",
+      "nota": "Tarjeta + personales. Proxy de endeudamiento familiar de consumo."
+    },
+    "credito_consumo_serie": [
+      {
+        "fecha": "2025-07-31",
+        "valor": 37905847.0
+      },
+      {
+        "fecha": "2025-08-29",
+        "valor": 38920367.0
+      },
+      {
+        "fecha": "2025-09-30",
+        "valor": 39738475.0
+      },
+      {
+        "fecha": "2025-10-31",
+        "valor": 40706698.0
+      },
+      {
+        "fecha": "2025-11-28",
+        "valor": 41813320.0
+      },
+      {
+        "fecha": "2025-12-30",
+        "valor": 42868270.0
+      },
+      {
+        "fecha": "2026-01-30",
+        "valor": 43071509.0
+      },
+      {
+        "fecha": "2026-02-27",
+        "valor": 43510290.0
+      },
+      {
+        "fecha": "2026-03-31",
+        "valor": 44792251.0
+      },
+      {
+        "fecha": "2026-04-30",
+        "valor": 45508193.0
+      },
+      {
+        "fecha": "2026-05-29",
+        "valor": 45930807.0
+      },
+      {
+        "fecha": "2026-06-30",
+        "valor": 47260105.0
+      },
+      {
+        "fecha": "2026-07-31",
+        "valor": 47125153.0
+      },
+      {
+        "fecha": "2026-08-31",
+        "valor": 47861720.0
+      },
+      {
+        "fecha": "2026-09-30",
+        "valor": 47726062.0
+      },
+      {
+        "fecha": "2026-10-21",
+        "valor": 46300906.0
+      }
+    ],
+    "badlar": {
+      "valor": 23.0625,
+      "fecha": "2026-10-23"
+    }
+  },
+  "utdt": {
+    "icc_utdt": {
+      "valor": 41.51762390136719,
+      "fecha": "2026-10-01",
+      "unidad": "Índice",
+      "cobertura": "total nacional"
+    },
+    "indice_lider": {
+      "valor": 122.86541118091564,
+      "fecha": "2026-09-01",
+      "unidad": "Índice",
+      "cobertura": "serie única"
+    }
+  },
+  "pobreza": {},
+  "padron_arca": {
+    "meses": {
+      "2014-08": {
+        "fecha_archivo": "2014-08-16",
+        "empleadores": 538393,
+        "juridicas": 252359,
+        "humanas": 286034,
+        "monotributistas": 66320,
+        "blanco": 393110,
+        "cuit_total": 3791697,
+        "url": "https://web.archive.org/web/20140821015650id_/http://www.afip.gob.ar/genericos/cInscripcion/archivos/apellidoNombreDenominacion.zip"
+      },
+      "2015-03": {
+        "fecha_archivo": "2015-03-14",
+        "empleadores": 551443,
+        "juridicas": 262442,
+        "humanas": 289001,
+        "monotributistas": 64412,
+        "blanco": 405024,
+        "cuit_total": 4035023,
+        "url": "https://web.archive.org/web/20150324211736id_/http://www.afip.gob.ar/genericos/cInscripcion/archivos/SINapellidoNombreDenominacion.zip"
+      },
+      "2020-06": {
+        "fecha_archivo": "2020-06-13",
+        "empleadores": 547003,
+        "juridicas": 274999,
+        "humanas": 272004,
+        "monotributistas": 56301,
+        "blanco": 337506,
+        "cuit_total": 5004816,
+        "url": "https://web.archive.org/web/20200617071722id_/https://www.afip.gob.ar/genericos/cInscripcion/archivos/apellidoNombreDenominacion.zip"
+      },
+      "2021-04": {
+        "fecha_archivo": "2021-04-10",
+        "empleadores": 543986,
+        "juridicas": 281075,
+        "humanas": 262911,
+        "monotributistas": 53987,
+        "blanco": 333030,
+        "cuit_total": 5362699,
+        "url": "https://web.archive.org/web/20210410220523id_/https://www.afip.gob.ar/genericos/cInscripcion/archivos/apellidoNombreDenominacion.zip"
+      },
+      "2024-08": {
+        "fecha_archivo": "2024-08-24",
+        "empleadores": 553057,
+        "juridicas": 293713,
+        "humanas": 259344,
+        "monotributistas": 53355,
+        "blanco": 275007,
+        "cuit_total": 6307779,
+        "url": "https://web.archive.org/web/20240830074549id_/https://www.afip.gob.ar/genericos/cInscripcion/archivos/apellidoNombreDenominacion.zip"
+      },
+      "2026-10": {
+        "fecha_archivo": "2026-10-24",
+        "empleadores": 511847,
+        "juridicas": 290897,
+        "humanas": 220950,
+        "monotributistas": 44720,
+        "blanco": 48391,
+        "cuit_total": 6211641
+      }
+    },
+    "texto": "Empleadores inscriptos en ARCA: 511.847 (24-oct-2026): 290.897 empresas y sociedades y 220.950 personas. El 24-ago-2024 eran 553.057 (−7,5 %). No puntúa todavía.",
+    "fresco": true
+  },
+  "alquiler_udesa": {
+    "alquiler_udesa_real": {
+      "valor": -9.84,
+      "fecha": "2026-09-01",
+      "nominal_pct": 20.4,
+      "ipc_pct": 33.54,
+      "indice": 109.8,
+      "frase": "En AMBA, durante el mes de septiembre de 2026, se registraron variaciones intermensuales (respecto a agosto de 2026) en el precio de alquiler en pesos corrientes de casas y departamentos del 1.3% y 1.4%, respectivamente. Si consideramos la variación interanual (respecto a septiembre de 2025), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 21.2% y 20.4%, respectivamente.",
+      "fuente_url": "https://drive.google.com/file/d/1_Phhg7TAD16bmVjb9XJiX_Wo4w2TSkiX/view"
+    }
+  },
+  "motorizacion": {
+    "motorizacion_total": {
+      "valor": 31.73,
+      "fecha": "2026-09",
+      "unidad": "vehículos 0km por cada 1.000 habitantes (12 meses)",
+      "fuente": "DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC)",
+      "composicion": {
+        "autos_12m": 546283,
+        "motos_12m": 843758,
+        "total_12m": 1390041,
+        "ratio_motos": 60.7,
+        "ratio_motos_base": 51.6,
+        "ratio_motos_autos": 1.545,
+        "ratio_motos_autos_base": 1.065,
+        "autos_var": -8.768241074440619,
+        "motos_var": 38.5569847658553,
+        "total_var": 15.093724099500982
+      }
+    },
+    "patentamiento_autos": {
+      "valor": 50086,
+      "fecha": "2026-09",
+      "provincias": {
+        "Buenos Aires": 13545,
+        "Catamarca": 426,
+        "Chaco": 1076,
+        "Chubut": 1300,
+        "Ciudad Autónoma de Bs.As.": 10017,
+        "Corrientes": 1046,
+        "Córdoba": 5408,
+        "Entre Ríos": 1140,
+        "Formosa": 361,
+        "Jujuy": 601,
+        "La Pampa": 585,
+        "La Rioja": 248,
+        "Mendoza": 2215,
+        "Misiones": 489,
+        "Neuquén": 1630,
+        "Río Negro": 817,
+        "Salta": 1012,
+        "San Juan": 639,
+        "San Luis": 400,
+        "Santa Cruz": 309,
+        "Santa Fe": 4725,
+        "Santiago del Estero": 632,
+        "Tucumán": 1465
+      }
+    },
+    "patentamiento_motos": {
+      "valor": 81613,
+      "fecha": "2026-09",
+      "provincias": {
+        "Buenos Aires": 25900,
+        "Catamarca": 1246,
+        "Chaco": 5000,
+        "Chubut": 402,
+        "Ciudad Autónoma de Bs.As.": 2333,
+        "Corrientes": 3125,
+        "Córdoba": 6985,
+        "Entre Ríos": 2608,
+        "Formosa": 1914,
+        "Jujuy": 2028,
+        "La Pampa": 768,
+        "La Rioja": 840,
+        "Mendoza": 2172,
+        "Misiones": 2064,
+        "Neuquén": 1051,
+        "Río Negro": 1067,
+        "Salta": 2931,
+        "San Juan": 1398,
+        "San Luis": 823,
+        "Santa Cruz": 142,
+        "Santa Fe": 8082,
+        "Santiago del Estero": 3252,
+        "Tucumán": 5482
+      }
+    }
+  },
+  "indec_supermercados": {
+    "consumo_supermercados": {
+      "valor": 80.5,
+      "fecha": "2026-08",
+      "unidad": "índice (2017 = 100, desestacionalizado)",
+      "anio_base": 2017
+    }
+  },
+  "ciccra": {
+    "consumo_carne_per_capita": {
+      "valor": 46.0,
+      "fecha": "2026-08",
+      "unidad": "kg por habitante/año",
+      "fuente": "CICCRA",
+      "url": "https://ciccra.com.ar/wp-content/uploads/2026/09/Inf-No-307-2026-agosto.pdf",
+      "nota": "Consumo aparente per capita anualizado"
+    }
+  },
+  "consumo_carnes": {
+    "mes": "2026-07",
+    "total": 113.94,
+    "vacuna": 46.75,
+    "aviar": 47.06,
+    "porcina": 20.13,
+    "ratio_bovina": 41.03,
+    "variaciones": {
+      "vacuna": -8.44,
+      "aviar": 0.23,
+      "porcina": 10.13,
+      "total": -2.02
+    }
+  },
+  "empleadores_pyme": {
+    "mes": "2026-07",
+    "pyme": 459229,
+    "grandes": 1718
+  },
+  "trabajo_independiente": {
+    "mes": "2026-06",
+    "participacion": 20.69,
+    "independientes": 2596,
+    "asalariados": 9950,
+    "categorias_numerador": [
+      "autónomos",
+      "monotributo general"
+    ],
+    "categorias_denominador": [
+      "autónomos",
+      "monotributo general",
+      "asalariados privados",
+      "asalariados públicos",
+      "casas particulares"
+    ],
+    "excluido": "monotributo_social",
+    "excluido_quiebre": "2024-12",
+    "participacion_con_excluido": 22.1
+  },
+  "iiep_tarifas": {
+    "valor": 13.0,
+    "peso_salario_pct": 13.0,
+    "variacion_mensual_pct": -0.7,
+    "cobertura_costos_pct": 57.0,
+    "transporte_pct_canasta": 49.0,
+    "fecha": "2026-10-01",
+    "url": "https://economicas.uba.ar/iiep/reporte-de-tarifas-y-subsidios-octubre-2026/"
+  },
+  "snic": {
+    "delitos_caba_disponible": {
+      "anio": 2025,
+      "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/ministerio-de-justicia-y-seguridad/delitos/delitos_2025.csv",
+      "size_mb": 17.3,
+      "last_modified": "Wed, 17 Jun 2026 15:10:50 GMT",
+      "nota": "CSV con hechos geolocalizados. Descargar con pd.read_csv(url) para analisis detallado."
+    }
+  },
+  "salud": {
+    "salud_datasets": {
+      "valor": 3,
+      "datasets_disponibles": [
+        {
+          "id": "c1643775-18e1-40fd-9e7f-0cebb5b1abe6",
+          "title": "Defunciones Generales Mensuales ocurridas y registradas en la República Argentina.",
+          "name": "datos-salud-gob-ar-dataset-defunciones-mensuales-ocurridas-en-la-republica-argentina"
+        },
+        {
+          "id": "76ce7d19-921d-4d17-bb20-73c1fe55f07e",
+          "title": "Serie histórica de defunciones ocurridas en Argentina por jurisdicción",
+          "name": "serie-historica-de-defunciones-ocurridas-en-argentina-por-jurisdiccion"
+        },
+        {
+          "id": "7fd3f531-9aeb-45ea-9395-cfcc4af61515",
+          "title": "Tasa de Mortalidad Fetal Total",
+          "name": "tasa-de-mortalidad-fetal-total"
+        }
+      ],
+      "fuente": "datos.salud.gob.ar — CKAN API (busqueda general)",
+      "nota": "Usar las URLs de CKAN para descargar microdatos DEIS o SNVS."
+    }
+  },
+  "trends": {
+    "sentimiento_digital": {
+      "interes_relativo": {
+        "inflacion": 62.1,
+        "precios": 65.1,
+        "dolar": 17.6,
+        "empleo": 74.6,
+        "inseguridad": 108.8,
+        "corrupcion": 81.0
+      },
+      "keywords": [
+        "inflacion",
+        "precios",
+        "dolar",
+        "empleo",
+        "inseguridad",
+        "corrupcion"
+      ],
+      "geo": "AR",
+      "mes": "2026-09",
+      "canasta": 68.2,
+      "timeframe": "ventana fija 2021-01-01→, ultimo mes cerrado",
+      "escala": "indice 100 = 4T-2023 por termino (peso igual, ADR-0222)",
+      "fuente": "Google Trends via pytrends",
+      "nota": "Proxy de urgencia percibida. Mayor = mas busquedas de urgencia = peor. Sujeto a rate limits de Google — cada termino conserva su serie previa."
+    }
+  }
+}

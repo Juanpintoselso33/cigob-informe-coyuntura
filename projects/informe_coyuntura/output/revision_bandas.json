@@ -476,8 +476,8 @@
       "n": 34,
       "piso": 10,
       "techo": 100,
-      "share_piso": 0.176,
-      "share_techo": 0.147,
+      "share_piso": 0.0,
+      "share_techo": 0.294,
       "estado": "ok",
       "detalle": "sin saturación relevante"
     },
@@ -498,8 +498,8 @@
       "n": 236,
       "piso": 10,
       "techo": 100,
-      "share_piso": 0.148,
-      "share_techo": 0.203,
+      "share_piso": 0.216,
+      "share_techo": 0.047,
       "estado": "ok",
       "detalle": "sin saturación relevante"
     },
