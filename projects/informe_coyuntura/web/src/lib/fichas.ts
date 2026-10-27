@@ -433,6 +433,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "La fuente revisa sus series al consolidar declaraciones; el informe regenera la serie completa en cada actualización.",
     cambios: [
       { fecha: "2026-07-25", cambio: "Entra al índice como componente principal de la dimensión de empleo, con el treinta y cinco por ciento. Hasta entonces la dimensión se llamaba así pero ninguno de sus cuatro componentes medía empleo: eran indicadores de producción, de construcción, de subocupacion_demandante y un índice líder." },
+      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26-oct-2026: la dimensión pasa a medirse con la ocupación de la EPH, que cuenta a toda la población ocupada y no sólo al trabajo formal asalariado privado. Se sigue relevando y su serie se publica como archivo.", adr: "0383" },
     ],
   },
 
@@ -3253,6 +3254,38 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  ocupacion_eph: {
+    tipo: "indicador",
+    id: "ocupacion_eph",
+    cinturon: "vida_cotidiana",
+    rezago: "Trimestral. El INDEC publica el trimestre unos 80 días después de su cierre (el 2T-2026 estaba en la API antes del 20-sep-2026); la fecha del dato es el inicio del trimestre, así que el tope de 280 días de la card cubre un ciclo completo de publicación.",
+    fuente: {
+      organismo: "INDEC (EPH continua)",
+      operacion: "EPH — tasa de empleo, total de 31 aglomerados urbanos, trimestral",
+      serie: "42.3_EPH_PUNTUATAL_0_M_24 · API de datos.gob.ar",
+      url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-31-58",
+      acceso: "Automático: API pública de series de tiempo.",
+    },
+    transformaciones: [
+      "La tasa de empleo es la población ocupada sobre la población total. El indicador es su variación interanual en puntos porcentuales: el trimestre contra el MISMO trimestre del año anterior, porque la EPH no viene desestacionalizada y comparar contra el trimestre previo mediría estacionalidad.",
+      "Componente del índice: 100 + variación en puntos ÷ 45,8 × 100, donde 45,8% es la tasa del 4º trimestre de 2023. 0 puntos = 100 (sin cambio contra un año atrás); no se invierte, más ocupación es mejor.",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de empleo (60% interno · 14,51% del índice de impacto social): es su componente principal.",
+    ],
+    limitaciones: [
+      "Mide cuánta gente de la población total tiene empleo, no su calidad: no distingue formal de informal ni jornada completa de parcial. Para eso está informalidad.",
+      "Cubre los 31 aglomerados urbanos de la EPH, no las zonas rurales ni los pueblos chicos.",
+      "La tasa se mueve despacio (el 2T-2026 es 0,5 puntos más alta que un año atrás), así que el componente varía poco: es una señal de fondo, no de coyuntura.",
+      "La encuesta tiene error muestral; variaciones de unas pocas décimas de punto no son estadísticamente distinguibles de cero.",
+    ],
+    faltantes: "Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso pasa a informalidad, el otro componente de empleo.",
+    revisiones: "La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones.",
+    cambios: [
+      { fecha: "2026-10-27", cambio: "Entra al índice de impacto social como componente principal de la dimensión de empleo (60%), por decisión de la reunión del 26-oct-2026: la dimensión pasa a medir cuánta gente trabaja. El padrón de ARCA de empleadores, previsto como complemento, no tiene serie pública reproducible y queda afuera.", adr: "0383" },
+    ],
+  },
+
   informalidad: {
     tipo: "indicador",
     id: "informalidad",
@@ -3269,18 +3302,19 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos informalidad = mejora) contra el trimestre del arranque del mandato (4º trimestre de 2023).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (34,19% interno · 8,27% del índice de impacto social): es su componente más pesado.",
+      "Pertenece a la dimensión de empleo (40% interno · 9,68% del índice de impacto social): es el complemento de la ocupación EPH, que es el principal. Su suerte está en análisis.",
     ],
     limitaciones: [
       "Solo asalariados: no captura la informalidad cuentapropista.",
       "Serie trimestral contra una base de un solo trimestre: sesgo estacional chico, aceptado y declarado.",
       "La serie trimestral pública original se discontinuó en 2020; la vigente la reemplaza desde el rediseño del componente.",
     ],
-    faltantes: "Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso se redistribuye proporcionalmente entre los componentes disponibles de prospectivas de empleo. La brecha salarial pertenece a otra dimensión y no absorbe ese peso.",
+    faltantes: "Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso se redistribuye proporcionalmente entre los componentes disponibles de empleo. La brecha salarial pertenece a otra dimensión y no absorbe ese peso.",
     revisiones: "La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social vía la serie anual disponible, invertida, con base en el año 2023." },
       { fecha: "2026-07-04", cambio: "Pasa a la serie trimestral con base exacta en el 4º trimestre de 2023 (la anual solo se actualizaba una vez al año y planchaba el componente)." },
+      { fecha: "2026-10-27", cambio: "La dimensión de prospectivas de empleo pasa a llamarse Empleo y se replantea: el principal es ahora la ocupación de la EPH (60% de lo que puntúa) e informalidad queda como complemento con el 40%, que sube de 34,19% a 40% interno y de 8,27% a 9,68% del índice mientras el equipo decide qué hacer con ella. El peso nominal de la dimensión no cambia.", adr: "0383" },
     ],
   },
 
@@ -3301,7 +3335,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Una sola serie, en unidades, para el titular y para el índice — el rebase lo hace el motor. Antes se publicaban dos series distintas para el mismo indicador y nunca podían reconciliarse.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (14,76% interno · 3,57% del índice de impacto social).",
+      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo (14,76% interno · 3,57% del índice de impacto social).",
       "Mide el cierre neto de empresas de forma directa: 491.484 empleadores PyME en el 4º trimestre de 2023 contra 460.777 en mayo de 2026, o sea 30.707 menos, un 6,2% de caída.",
       "Contraste que la misma fuente permite: las empresas de más de 500 trabajadores cayeron 3,8% en el mismo período. El fenómeno es del tramo chico, no de toda la economía.",
     ],
@@ -3317,6 +3351,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "Se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.", adr: "0279" },
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social como nivel desestacionalizado base-100 (antes puntuaba por variación mensual de la serie original, dominada por estacionalidad)." },
       { fecha: "2026-08-21", cambio: "Pasa a medir lo que su nombre promete: empleadores PyME activos de la SRT, en lugar del IPI manufacturero del INDEC, que era una aproximación declarada por producción industrial. El componente pasa de 97,4 a 93,8 — la producción había recuperado más que el número de empresas. El rótulo público pasa de «Actividad industrial (IPI)» a «Empleadores PyME activos» y el tope de frescura sube de 140 a 165 días.", adr: "0218" },
+      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26-oct-2026. Los empleadores con cobertura de ART no incluyen a los inscriptos sin personal a cargo, que es lo que se quería observar, y no hay una serie pública del padrón de ARCA que lo reemplace. Se sigue relevando como archivo.", adr: "0383" },
     ],
   },
 
@@ -3338,7 +3373,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la participación rebaseada de forma INVERTIDA contra el promedio del 4º trimestre de 2023 (más peso independiente = deterioro).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (10% interno · 2,42% del índice de impacto social).",
+      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo (10% interno · 2,42% del índice de impacto social).",
       "Complementa el número de empleadores con la composición del trabajo registrado; no identifica si las mismas personas pasan del empleo asalariado al independiente. Entre el 4º trimestre de 2023 y mayo de 2026 los independientes registrados crecen 6,2% mientras los asalariados caen 3,3%.",
       "Lo que costaba no excluir el monotributo social: con ese régimen adentro la participación BAJA de 22,91% a 22,05% y el indicador habría leído una reforma administrativa como una mejora del empleo. Sin él, SUBE de 19,12% a 20,60%. Las dos lecturas corresponden a universos distintos; excluir el régimen reduce el efecto del quiebre administrativo, pero no identifica trayectorias laborales individuales.",
     ],
@@ -3354,6 +3389,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "Se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.", adr: "0279" },
       { fecha: "2026-08-21", cambio: "Entra al índice de impacto social como la contracara del cierre de PyMEs, con 10% de la dimensión; los cinco componentes previos ceden proporcionalmente y conservan su orden relativo. El componente entra en 92,8 y el peso nominal de la dimensión no se toca.", adr: "0219" },
       { fecha: "2026-08-25", cambio: "La tarjeta declara el universo restringido que siempre usó. Decía «% del empleo registrado» y dejaba al monotributo social afuera de los dos lados del cociente. La exclusión sigue —el padrón cayó de 653 a 259 mil personas entre noviembre y diciembre de 2024 por un cambio de régimen, y con ese salto adentro el indicador daría vuelta el signo del período— pero ahora la unidad dice «sin monotributo social», la tarjeta enumera las categorías del numerador y del denominador, y publica cuánto daría con el régimen incluido (22,1% contra 20,6%). El valor no cambia.", adr: "0250" },
+      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26-oct-2026: mide la composición del empleo registrado, no cuánta gente trabaja. Se sigue relevando como archivo.", adr: "0383" },
     ],
   },
 
@@ -3374,7 +3410,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La serie original tiene un desplome estacional en diciembre que contaminaría la base: por eso la desestacionalizada.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (13,47% interno · 3,26% del índice de impacto social).",
+      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo (13,47% interno · 3,26% del índice de impacto social).",
     ],
     limitaciones: [
       "Aproximación al empleo vía actividad de la construcción, no despachos de cemento reales (la serie de insumos existe aparte, como contraste).",
@@ -3385,6 +3421,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias)." },
       { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
+      { fecha: "2026-10-27", cambio: "Sale del índice por decisión de la reunión del 26-oct-2026: la construcción no es empleo y la dimensión pasa a medir la ocupación EPH. Se sigue relevando como archivo.", adr: "0383" },
     ],
   },
 
@@ -3405,7 +3442,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos subocupación demandante = mejora) contra el 4º trimestre de 2023.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (5,12% interno · 1,24% del índice de impacto social).",
+      "NO PESA: desde octubre de 2026 no aporta al índice de impacto social. Hasta entonces pertenecía a la dimensión de prospectivas de empleo (5,12% interno · 1,24% del índice de impacto social).",
     ],
     limitaciones: [
       "Mide gente que trabaja menos horas de las que quisiera y busca más, no la tenencia de múltiples empleos. Hasta agosto de 2026 el indicador se llamaba `pluriempleo`, que es otro fenómeno.",
@@ -3418,6 +3455,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social con rebase invertido base-100." },
       { fecha: "2026-08-25", cambio: "El indicador pasa a llamarse `subocupacion_demandante`. Se llamaba `pluriempleo` y medía otra cosa: la fuente siempre fue la tasa de subocupación demandante de la EPH (serie 47.2), que cuenta a quienes trabajan menos horas de las que quisieran y buscan más, no a quienes tienen más de un empleo. La unidad pasa de «%» y «% de ocupados» a «% de la PEA», que es como INDEC la calcula. El valor, la serie y el peso no cambian: cambia el nombre y la unidad declarada.", adr: "0249" },
       { fecha: "2026-08-25", cambio: "La descripción pública decía «qué porcentaje de los ocupados» y el INDEC calcula la tasa sobre la población económicamente activa. El denominador correcto queda dicho en las tres capas —descripción, transformaciones y limitaciones— y no sólo en la unidad. Ningún valor cambia: cambia de qué universo se afirma que sale el 7,5%.", adr: "0263" },
+      { fecha: "2026-10-27", cambio: "Sale de la dimensión de empleo por decisión de la reunión del 26-oct-2026: la dimensión pasa a medir cuánta gente trabaja (ocupación EPH). Se sigue relevando como archivo.", adr: "0383" },
     ],
   },
 
@@ -3842,7 +3880,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     agregacion: {
       latex: String.raw`\begin{gathered}\text{índice de impacto social}=\sum_d w_d\sum_{i\in d}w_i\,\operatorname{cap}_i(x_i)\\[3pt]\operatorname{cap}_i(x)=\begin{cases}x,&i=\text{motorización total}\\\min(x,140),&\text{resto}\end{cases}\end{gathered}`,
-      leyenda: "Promedio ponderado en dos niveles (20,16% ingresos · 7,9% consumo · 25% presión de precios · 24,19% prospectivas de empleo · 10% vulnerabilidad financiera · 8,25% confianza y percepción · 4,5% seguridad), con el techo de recorte declarado.",
+      leyenda: "Promedio ponderado en dos niveles (20,16% ingresos · 7,9% consumo · 25% presión de precios · 24,19% empleo · 10% vulnerabilidad financiera · 8,25% confianza y percepción · 4,5% seguridad), con el techo de recorte declarado.",
       parrafos: [
         "La agregación es compensatoria y el flag de dimensión crítica lo declara cuando una dimensión cae por debajo del umbral. Cuáles están marcadas se lee en la tabla de composición, que se recalcula con cada actualización: nombrarlas acá dejaría el texto viejo al mes siguiente.",
         "El índice y la tensión son DOS ESCALAS DISTINTAS y conviene no confundirlas. El índice suma niveles: cada componente vale lo que vale contra su base de 2023, y esos números se promedian. La tensión es una lectura del resultado —5 − (índice − 100) × 0,2, recortada al rango 0-10— pensada para ponerlo en la misma vara que los otros cinturones. La tensión que aparece en la ficha de cada componente aplica esa misma fórmula a ese componente solo, y sirve para leerlo, no para calcular: al índice entra el nivel, nunca la tensión.",
@@ -3892,7 +3930,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-04", cambio: "Barrido componente por componente: la victimización pasa de la serie anual de denuncias a la encuesta mensual; se elimina el doble conteo salario/comida (dos componentes correlacionaban 0,985); se aplica el techo de recorte 140 sin piso; el sentimiento digital pasa a puntuar tras un banco de pruebas empírico; y la matriz de validación cruzada queda como tercer pilar de robustez." },
       { fecha: "2026-07-15", cambio: "La mora de las familias se separa como indicador propio de la dimensión de vulnerabilidad financiera (antes iba multiplicada dentro del endeudamiento): la deuda mide el acceso al crédito y la mora, si esa deuda se puede pagar. El índice pasa a catorce indicadores puntuables y la dimensión reparte 50/50." },
       { fecha: "2026-08-19", cambio: "El cinturón pasa a llamarse Impacto Social y el índice, índice de impacto social. Cambia la etiqueta, no la composición: ninguna clave de datos, ninguna serie y ningún peso se tocan.", adr: "0212" },
-      { fecha: "2026-08-20", cambio: "La informalidad se muda de la dimensión de ingresos y consumo a la de prospectivas de empleo, que es donde mide. Los pesos de las dos dimensiones se ajustan para que el peso efectivo de cada componente quede intacto: se mueve de casa, no de importancia. Ingresos pasa de 37% a 28,06% y empleo de 15% a 24,19%.", adr: "0214" },
+      { fecha: "2026-08-20", cambio: "La informalidad se muda de la dimensión de ingresos y consumo a la de prospectivas de empleo (hoy Empleo), que es donde mide. Los pesos de las dos dimensiones se ajustan para que el peso efectivo de cada componente quede intacto: se mueve de casa, no de importancia. Ingresos pasa de 37% a 28,06% y empleo de 15% a 24,19%.", adr: "0214" },
       { fecha: "2026-08-20", cambio: "El componente de proteína animal pasa a puntuar el consumo TOTAL de carnes y no la carne vacuna sola: buena parte de la caída de la vacuna es sustitución hacia pollo y cerdo, y leerla como pérdida de poder adquisitivo era un falso positivo. La vacuna sigue relevándose como diagnóstico, sin tarjeta propia.", adr: "0217" },
       { fecha: "2026-08-21", cambio: "Dos cambios en la dimensión de empleo. El cierre de PyMEs pasa a medirse con los empleadores activos de la SRT en lugar del IPI manufacturero, que era una aproximación por producción industrial. Y entra el peso del trabajo independiente como su contracara. El índice queda con diecisiete componentes y cuatro de los seis de la dimensión miden empleo directamente.", adr: "0218,0219" },
       { fecha: "2026-08-21", cambio: "Entra el patentamiento de autos a la dimensión de ingresos y consumo, con el mismo peso y la misma transformación que el de motos. El índice queda con dieciocho componentes. La razón no es sumar un dato más de consumo: con motos solas, un aumento del patentamiento se lee siempre como mejora, y la moto es además el sustituto barato del auto. Las dos series juntas distinguen más consumo de bajar de categoría.", adr: "0223" },

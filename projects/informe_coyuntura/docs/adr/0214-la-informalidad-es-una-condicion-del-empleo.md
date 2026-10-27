@@ -8,7 +8,7 @@ indicadores: [informalidad]
 archivos: ['scripts/itvc.py', 'scripts/publicar.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'tests/test_web_declara_los_pesos_del_itvc.py']
 modifica: ['0130']
 cierra: ['0033']
-relacionado: ['0115', '0154']
+relacionado: ['0115', '0154', '0383']
 ambito: 'ITCIS · dimensiones de ingresos y consumo y de prospectivas de empleo'
 origen: 'Pendiente abierto de ADR-0033, reclamado por el editor en agosto de 2026'
 ---

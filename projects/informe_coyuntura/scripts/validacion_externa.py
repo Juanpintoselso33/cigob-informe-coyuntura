@@ -141,6 +141,10 @@ COMPONENTES = {
     # igual que en `itvc.indices_desde_series` — la fuente ya la desestacionalizó.
     "consumo_supermercados":  ("consumo_supermercados", False, False, False),
     "informalidad":           ("informalidad", True, True, False),
+    # ADR-0383: variación interanual de la tasa de empleo EPH, en pp. La serie
+    # NO es un nivel: se convierte a base 100 con `itvc.indice_de_ocupacion`
+    # (ver `_indices_itvc_por_componente`), la misma cuenta que la card.
+    "ocupacion_eph":          ("ocupacion_eph", False, False, False),
     # ADR-0219: invertido, igual que informalidad y subocupacion_demandante.
     "trabajo_independiente":  ("trabajo_independiente", True, False, False),
     "inseguridad":            ("inseguridad", True, False, False),      # IVI mensual (ADR-0032)
@@ -283,8 +287,12 @@ def _indices_itvc_por_componente() -> dict:
         vals = _mensual(series.get(skey) or [])
         if comp in MOVIL12:
             vals = _movil12(vals)          # estacionalidad fuerte del flujo crudo
-        idx = (vals if ya_rebaseada
-               else _rebase(vals, invertido, anual, BASES_PROPIAS.get(comp)))
+        if comp == "ocupacion_eph":
+            idx = {ym: itvc.indice_de_ocupacion(v) for ym, v in vals.items()
+                   if v is not None and ym >= "2023-10"}
+        else:
+            idx = (vals if ya_rebaseada
+                   else _rebase(vals, invertido, anual, BASES_PROPIAS.get(comp)))
         # ADR-0327 (corrección): homicidios y robos se anclan contra la MEDIANA
         # de toda su historia (itvc.mediana_de_serie), no contra el año 2023 que
         # `_rebase` usa para las anuales. Sin esto el mismo dato puntuaba 140,0

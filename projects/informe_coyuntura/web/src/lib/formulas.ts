@@ -223,6 +223,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`100\cdot\frac{\text{subocupaci\'on}_{\text{4T-23}}}{\text{subocupaci\'on}_{\text{hoy}}}`,
     leyenda: "Subocupación demandante, según la Encuesta Permanente de Hogares (EPH): gente que necesita trabajar más horas. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100.",
   },
+  ocupacion_eph: {
+    latex: String.raw`100+\frac{\text{tasa de empleo}_{\text{hoy}}-\text{tasa de empleo}_{\text{hace un año}}}{45{,}8}\cdot 100`,
+    leyenda: "Tasa de empleo de la Encuesta Permanente de Hogares (INDEC, 31 aglomerados): variación interanual en puntos porcentuales, expresada como fracción de la tasa del 4T-2023 (45,8%). Sin cambio contra un año atrás da 100; más gente con empleo da más de 100. La tarjeta muestra la variación en puntos.",
+  },
   informalidad: {
     latex: String.raw`100\cdot\frac{\text{informalidad}_{\text{4T-23}}}{\text{informalidad}_{\text{hoy}}}`,
     leyenda: "Asalariados sin descuento jubilatorio (Encuesta Permanente de Hogares, trimestral). En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. La tarjeta muestra la tasa del trimestre.",

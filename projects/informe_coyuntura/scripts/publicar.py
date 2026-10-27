@@ -201,6 +201,19 @@ def build_vida(raw):
     inf = indec.get("informalidad_trimestral") or indec.get("informalidad_anual", {})
     _add(out, "informalidad", _red(inf.get("valor"), 1, 100),
          "%", "INDEC EPH", inf.get("fecha"))
+    # ADR-0383: ocupación según la EPH continua. La card muestra la variación
+    # interanual de la tasa de empleo en pp; el dato de nivel viaja en el
+    # detalle. SIEMPRE se agrega (None si el INDEC no contestó): una clave
+    # ausente es invisible para `_carry_forward`.
+    ocu = indec.get("ocupacion_eph") or {}
+    _add(out, "ocupacion_eph", ocu.get("valor"),
+         "pp (interanual)", "INDEC — EPH continua, tasa de empleo, total de 31 aglomerados urbanos",
+         ocu.get("fecha"))
+    if ocu.get("valor") is not None and ocu.get("tasa") is not None:
+        out["ocupacion_eph"]["detalle_txt"] = (
+            f"Tasa de empleo {ocu['tasa']:.1f}% de la población total, contra "
+            f"{ocu['tasa_anio_previo']:.1f}% en el mismo trimestre del año anterior"
+        ).replace(".", ",")
     # ADR-0218: el indicador pasa a medir lo que su nombre promete — el cierre
     # neto de PyMEs — con la base de empleadores con cobertura de ART de la SRT.
     # Antes publicaba la variación mensual del IPI manufacturero.

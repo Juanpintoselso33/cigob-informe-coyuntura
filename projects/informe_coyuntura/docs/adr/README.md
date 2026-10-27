@@ -364,6 +364,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0339](0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) | Puntúan el total de las tres carnes y, aparte, la vacuna | `consumo_carnes_total`, `consumo_carne_vacuna`, `consumo_carnes_otras` | vigente |
 | [0345](0345-la-confianza-en-el-gobierno-entra-al-indice-de-impacto-social.md) | La confianza en el Gobierno entra al índice de impacto social | `icg_utdt` | vigente |
 | [0373](0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) | Ingresos y consumo se parten en dos dimensiones | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_supermercados` | vigente |
+| [0383](0383-la-prospectiva-de-empleo-pasa-a-empleo.md) | La prospectiva de empleo pasa a «Empleo» | `ocupacion_eph`, `informalidad`, `empleo_registrado` | vigente |
 
 ### Espíritu de época
 

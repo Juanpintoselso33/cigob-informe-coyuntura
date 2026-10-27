@@ -34,6 +34,25 @@ def _ultimo(series_id: str) -> dict:
     return {"valor": data[0][1], "fecha": data[0][0]}
 
 
+def variacion_interanual_empleo(filas: list) -> dict:
+    """Filas [[fecha, tasa en proporción]] (cualquier orden) → variación
+    interanual de la tasa de empleo en puntos porcentuales (ADR-0383).
+
+    Compara el último trimestre con el de hace exactamente un año (misma
+    estación). Si ese trimestre falta, falla en voz alta: restarle el
+    trimestre anterior mediría estacionalidad y la publicaría como empleo."""
+    por_fecha = {f: v for f, v in filas if v is not None}
+    if not por_fecha:
+        raise ValueError("sin datos de tasa de empleo")
+    ultima = max(por_fecha)
+    previa = f"{int(ultima[:4]) - 1}{ultima[4:]}"
+    if previa not in por_fecha:
+        raise ValueError(f"falta el trimestre {previa} para la variación interanual")
+    tasa, tasa_prev = por_fecha[ultima] * 100, por_fecha[previa] * 100
+    return {"valor": round(tasa - tasa_prev, 1), "fecha": ultima,
+            "tasa": round(tasa, 1), "tasa_anio_previo": round(tasa_prev, 1)}
+
+
 def _var_mensual(series_id: str) -> dict:
     data = _get_serie(series_id, limit=2)
     actual, anterior = data[0][1], data[1][1]
@@ -164,6 +183,17 @@ def fetch_indec() -> dict:
             logger.info("%s OK: %s", key, results[key]["valor"])
         except Exception as e:
             logger.error("%s FAIL: %s", key, e)
+
+    # Ocupación EPH (ADR-0383): variación interanual de la tasa de empleo, en
+    # puntos porcentuales, sobre el total de aglomerados urbanos. Se compara
+    # contra el MISMO trimestre del año anterior porque la EPH no viene
+    # desestacionalizada.
+    try:
+        results["ocupacion_eph"] = variacion_interanual_empleo(
+            _get_serie(INDEC_SERIES["empleo"], limit=8))
+        logger.info("ocupacion_eph OK: %s", results["ocupacion_eph"])
+    except Exception as e:
+        logger.error("ocupacion_eph FAIL: %s", e)
 
     # Informalidad: TRIMESTRAL como métrica (52.2, viva hasta el último
     # trimestre EPH; la anual 52.1 planchaba el dato un año) + anual de respaldo

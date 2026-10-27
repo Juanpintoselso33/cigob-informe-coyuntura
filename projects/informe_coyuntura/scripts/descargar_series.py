@@ -201,6 +201,18 @@ def fetch_indec(series_id: str, limit: int = 48) -> list:
     return [[row[0], row[1]] for row in r.json()["data"] if row[1] is not None]
 
 
+def fetch_ocupacion_eph_serie(limit: int = 60) -> list:
+    """Variación interanual de la tasa de empleo EPH (pp), ascendente.
+    Un punto sólo existe si está el mismo trimestre del año anterior."""
+    por_fecha = {f: v * 100 for f, v in fetch_indec("42.3_EPH_PUNTUATAL_0_M_24", limit)}
+    out = []
+    for f in sorted(por_fecha):
+        previa = f"{int(f[:4]) - 1}{f[4:]}"
+        if previa in por_fecha and f >= "2023-10-01":
+            out.append([f, round(por_fecha[f] - por_fecha[previa], 1)])
+    return out
+
+
 def fetch_indec_var_mensual(series_id: str, limit: int = 48) -> list:
     """Serie histórica de la variación m/m % de una serie INDEC de índices:
     (idx_t / idx_{t-1} − 1)×100. Misma fórmula que indec_series._var_mensual, para
@@ -2025,6 +2037,12 @@ VIDA_DERIVADAS.append(
 
 VIDA_DERIVADAS += [
     ("informalidad", "%", "INDEC EPH (52.2, trimestral)", lambda: fetch_indec_x100("52.2_ASDJ_0_0_37")),
+    # ADR-0383: variación interanual de la tasa de empleo, en pp. La serie que
+    # puntúa es ESTA (no la tasa): la EPH no está desestacionalizada y el
+    # interanual compara siempre el mismo trimestre.
+    ("ocupacion_eph", "pp (interanual)",
+     "INDEC — EPH, tasa de empleo, total aglomerados (42.3, trimestral)",
+     lambda: fetch_ocupacion_eph_serie()),
     ("subocupacion_demandante", "% de la PEA",
      "INDEC — EPH, tasa de subocupación demandante (47.2, trimestral)",
      lambda: fetch_indec_x100("47.2_ECTSDT_0_T_47")),

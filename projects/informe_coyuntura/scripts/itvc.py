@@ -309,7 +309,7 @@ DIMENSIONES_ITVC = {
                         "carga_servicio_deuda_hogares": 0.30},
     },
     "empleo": {
-        "nombre": "Prospectivas de empleo",
+        "nombre": "Empleo",
         # ADR-0214: sube de 0,15 a 0,2419 al recibir `informalidad` con su peso
         # efectivo intacto (9,19%). Pasa a ser la segunda dimensión del índice,
         # y eso es la consecuencia buscada: la informalidad es una condición
@@ -363,10 +363,22 @@ DIMENSIONES_ITVC = {
         # ceden proporcionalmente (×0,90), conservando su orden relativo. Es la
         # contracara de `mortalidad_pymes`: una PyME que cierra y reaparece como
         # gente facturando por su cuenta no es lo mismo que una que desaparece.
-        "indicadores": {"informalidad": 0.3419, "empleo_registrado": 0.2246,
-                        "mortalidad_pymes": 0.1476,
-                        "despacho_cemento": 0.1347, "subocupacion_demandante": 0.0512,
-                        "trabajo_independiente": 0.1000},
+        # ADR-0383 (reunión del 26-oct-2026): la dimensión «Prospectivas de
+        # empleo» pasa a llamarse «Empleo» y se replantea. Entra `ocupacion_eph`
+        # —variación interanual de la tasa de empleo de la EPH continua— como
+        # principal (60% de lo que puntúa), y `informalidad` queda con el 40%
+        # mientras se decide su suerte (el documento de Luis dice «analizar»).
+        # Salen, SUSPENDIDOS (ver INDICADORES_SUSPENDIDOS), empleo registrado,
+        # empleadores PyME, subocupación demandante, trabajo independiente y
+        # construcción. `informalidad` conserva su 0,3419 intacto; el nuevo
+        # entra con 0,5128 (= 1,5 × 0,3419, la relación 60/40) y los cinco
+        # suspendidos ceden proporcionalmente (×0,2208) para que la tabla siga
+        # sumando 1. Con ellos fuera del cálculo el peso NOMINAL de la
+        # dimensión (0,2419) no se toca, así que ninguna otra dimensión se mueve.
+        "indicadores": {"ocupacion_eph": 0.5128, "informalidad": 0.3419,
+                        "empleo_registrado": 0.0496, "mortalidad_pymes": 0.0326,
+                        "despacho_cemento": 0.0297, "subocupacion_demandante": 0.0113,
+                        "trabajo_independiente": 0.0221},
     },
     "percepcion": {
         # ADR-0115. Antes se llamaba "confianza" y mezclaba tres cosas: ADR-0110
@@ -485,6 +497,46 @@ INDICADORES_CONTEXTO: list[str] = []
 # quedan en la dimensión lo absorben solos. `publicar.py` los suma a
 # VIDA_OCULTOS, así que tampoco se muestran (ADR-0154: si no puntúa, no es card).
 INDICADORES_SUSPENDIDOS = {
+    "empleo_registrado": {
+        "dimension": "empleo",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0383",
+        "por_que": "En la reunión del 26-oct-2026 se resolvió que la dimensión de empleo se mida con la ocupación de la EPH y no con el empleo registrado del SIPA, que sólo ve el trabajo formal asalariado privado. Se sigue relevando como archivo.",
+        "condicion_reingreso": "Una decisión explícita del equipo que lo vuelva a poner en la dimensión de empleo, con su propio ADR.",
+    },
+    "mortalidad_pymes": {
+        "dimension": "empleo",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0383",
+        "por_que": "Fuera de la dimensión de empleo por decisión de la reunión del 26-oct-2026. Los empleadores PyME con cobertura de ART (SRT) no incluyen a los inscriptos sin personal a cargo, que es lo que se quería medir. Se sigue relevando como archivo.",
+        "condicion_reingreso": "Una decisión explícita del equipo que lo vuelva a poner en la dimensión de empleo, con su propio ADR.",
+    },
+    "subocupacion_demandante": {
+        "dimension": "empleo",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0383",
+        "por_que": "Fuera de la dimensión de empleo por decisión de la reunión del 26-oct-2026: la dimensión pasa a medir cuánta gente trabaja (ocupación EPH). Se sigue relevando como archivo.",
+        "condicion_reingreso": "Una decisión explícita del equipo que lo vuelva a poner en la dimensión de empleo, con su propio ADR.",
+    },
+    "trabajo_independiente": {
+        "dimension": "empleo",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0383",
+        "por_que": "Fuera de la dimensión de empleo por decisión de la reunión del 26-oct-2026. Mide la composición del empleo registrado, no cuánta gente trabaja. Se sigue relevando como archivo.",
+        "condicion_reingreso": "Una decisión explícita del equipo que lo vuelva a poner en la dimensión de empleo, con su propio ADR.",
+    },
+    "despacho_cemento": {
+        "dimension": "empleo",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0383",
+        "por_que": "Fuera del índice por decisión de la reunión del 26-oct-2026: la construcción no es empleo y la dimensión pasa a medir la ocupación EPH. Se sigue relevando como archivo.",
+        "condicion_reingreso": "Una decisión explícita del equipo que lo vuelva a poner en la dimensión de empleo, con su propio ADR.",
+    },
     "sentimiento_digital": {
         "dimension": "percepcion",
         "desde": "2026-08",
@@ -738,6 +790,27 @@ def rebase_de_serie(series, skey, invertido=False, base_meses=None, base_valor=N
     return round((base / ult if invertido else ult / base) * 100.0, 1)
 
 
+# ADR-0383: tasa de empleo de la EPH (total de 31 aglomerados) en el 4T-2023,
+# el trimestre de arranque del mandato. El indicador `ocupacion_eph` es la
+# variación interanual de esa tasa en puntos; para ponerla en base 100 se la
+# expresa como fracción de la tasa del arranque. El valor es el publicado por
+# el INDEC (serie 42.3_EPH_PUNTUATAL_0_M_24, 2023-10-01 = 45,8%).
+TASA_EMPLEO_4T23 = 45.8
+
+
+def indice_de_ocupacion(pp):
+    """Variación interanual de la tasa de empleo (pp) → índice base 100.
+    0 pp = 100 (sin cambio contra un año atrás); +1 pp ≈ 102,2. NO invertido."""
+    return round(100.0 + float(pp) / TASA_EMPLEO_4T23 * 100.0, 1)
+
+
+def indice_ocupacion_eph(series):
+    serie = series.get("ocupacion_eph") or []
+    if not serie or serie[-1].get("valor") is None:
+        return None
+    return indice_de_ocupacion(serie[-1]["valor"])
+
+
 def mediana_de_serie(series, skey):
     """Mediana de TODOS los puntos históricos de una serie (no sólo el
     último). Sirve de ancla para series con historia larga y sin tendencia
@@ -816,6 +889,7 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # pasó a ancla de validación externa en validacion_externa.py, que lee su
     # serie cruda —no este índice base-100—. (`icg_utdt`, que también era ancla
     # externa, es componente desde ADR-0345: se rebasea arriba.)
+    idx["ocupacion_eph"] = indice_ocupacion_eph(series)
     idx["subocupacion_demandante"] = rebase_de_serie(series, "subocupacion_demandante", invertido=True)
     # Empleo registrado privado (ADR-0130): NO invertido — más empleo es mejor.
     # Es el único componente de la dimensión que mide empleo de verdad; los

@@ -39,7 +39,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   empleo_registrado: {
     que: "Cuántos asalariados del sector privado están registrados ante la seguridad social. Es el dato que las empresas declaran mes a mes, no una estimación de encuesta.",
-    aporta: "Cuenta puestos asalariados privados registrados. Complementa las medidas de actividad e informalidad; no cubre empleo público, independiente o no registrado ni describe por sí solo la calidad de esos puestos. La serie permite seguir el nivel y sus variaciones con la fecha de cada observación.",
+    aporta: "Cuenta puestos asalariados privados registrados. Complementa las medidas de actividad e informalidad; no cubre empleo público, independiente o no registrado ni describe por sí solo la calidad de esos puestos. La serie permite seguir el nivel y sus variaciones con la fecha de cada observación. NO puntúa: salió del índice de impacto social en octubre de 2026 y se sigue relevando como archivo.",
     frecuencia: "Mensual", tipo: "Nivel (miles de puestos)",
   },
   cobertura_judicial: {
@@ -328,6 +328,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Complementa a la vacuna: si sube mientras la vacuna cae, describe sustitución hacia pollo y cerdo, no necesariamente menos proteína en total. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena de aviar+porcina por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones.",
     frecuencia: "Mensual (unos 2 meses de rezago)", tipo: "Nivel (kg/hab) · índice base-100 en el gráfico",
   },
+  ocupacion_eph: {
+    que: "Cuánto cambió, contra el mismo trimestre del año anterior, el porcentaje de la población que tiene empleo (tasa de empleo), según la Encuesta Permanente de Hogares continua del INDEC en los 31 aglomerados urbanos. Se muestra en puntos porcentuales.",
+    aporta: "Es el principal componente de la dimensión de empleo del índice de impacto social: dice si hay más o menos gente trabajando que hace un año, sea o no en empleo registrado. Se compara el mismo trimestre porque la encuesta no está desestacionalizada. No distingue la calidad del empleo.",
+    frecuencia: "Trimestral (unos 80 días de rezago)", tipo: "Variación interanual (puntos porcentuales)",
+  },
   informalidad: {
     que: "Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de Hogares, trimestral, del Instituto Nacional de Estadística y Censos (INDEC).",
     aporta: "Mide la precariedad laboral y la exclusión de la red de protección social. En el índice de impacto social su base es el 4T-2023 exacto (el trimestre de arranque del mandato).",
@@ -335,22 +340,22 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   trabajo_independiente: {
     que: "Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el índice de impacto social puntúa invertida: más peso independiente es peor.",
-    aporta: "Describe la composición del empleo registrado, excluido el monotributo social. Puede aumentar porque crecen los independientes o porque caen los asalariados. Complementa el número de empleadores, pero no permite identificar si quienes perdieron un empleo pasaron a facturar por su cuenta. El signo invertido expresa el criterio del monitor sobre protección laboral; no mide la calidad de cada trabajo independiente.",
+    aporta: "Describe la composición del empleo registrado, excluido el monotributo social. Puede aumentar porque crecen los independientes o porque caen los asalariados. Complementa el número de empleadores, pero no permite identificar si quienes perdieron un empleo pasaron a facturar por su cuenta. El signo invertido expresa el criterio del monitor sobre protección laboral; no mide la calidad de cada trabajo independiente. NO puntúa: salió del índice de impacto social en octubre de 2026 y se sigue relevando como archivo.",
     frecuencia: "Mensual (unos 3 meses de rezago)", tipo: "Participación (%)",
   },
   mortalidad_pymes: {
     que: "Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de una aseguradora de riesgos del trabajo. En el índice de impacto social puntúa por el nivel rebaseado a 100 = 4T-2023: menos empleadores es peor.",
-    aporta: "Observa la cantidad de empleadores dentro de ese universo. Una baja puede corresponder a un cierre, a dejar de tener personal declarado o a superar los 50 trabajadores; una entrada puede provenir de una empresa que reduce su nómina. La serie agregada no separa esos movimientos ni acredita quiebras.",
+    aporta: "Observa la cantidad de empleadores dentro de ese universo. Una baja puede corresponder a un cierre, a dejar de tener personal declarado o a superar los 50 trabajadores; una entrada puede provenir de una empresa que reduce su nómina. La serie agregada no separa esos movimientos ni acredita quiebras. NO puntúa: salió del índice de impacto social en octubre de 2026 y se sigue relevando como archivo.",
     frecuencia: "Mensual (unos 3 meses de rezago)", tipo: "Cantidad de empleadores",
   },
   despacho_cemento: {
     que: "Nivel de actividad de la construcción medido por el indicador sintético de la actividad de la construcción (ISAC), desestacionalizado, del Instituto Nacional de Estadística y Censos (INDEC). La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.",
-    aporta: "Termómetro de la obra pública y privada, sensible al ciclo económico.",
+    aporta: "Termómetro de la obra pública y privada, sensible al ciclo económico. NO puntúa: salió del índice de impacto social en octubre de 2026 y se sigue relevando como archivo.",
     frecuencia: "Mensual", tipo: "Índice",
   },
   subocupacion_demandante: {
     que: "Qué porcentaje de la población económicamente activa (PEA) trabaja menos horas de las que quisiera y además está buscando otro empleo. Es la tasa de subocupación demandante de la Encuesta Permanente de Hogares (EPH), y el Instituto Nacional de Estadística y Censos (INDEC) la calcula sobre la PEA —no sobre los ocupados—, que es lo que la vuelve comparable con la tasa de desocupación.",
-    aporta: "Señala empleo insuficiente: gente que ya tiene trabajo y sale igual a buscar más horas. Es la presión sobre el mercado laboral que la desocupación no ve, porque a estas personas las cuenta como ocupadas.",
+    aporta: "Señala empleo insuficiente: gente que ya tiene trabajo y sale igual a buscar más horas. Es la presión sobre el mercado laboral que la desocupación no ve, porque a estas personas las cuenta como ocupadas. NO puntúa: salió del índice de impacto social en octubre de 2026 y se sigue relevando como archivo.",
     frecuencia: "Trimestral", tipo: "Nivel (%)",
   },
   inseguridad: {
@@ -544,7 +549,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   consumo: "Lo que efectivamente se compra: las ventas de supermercados a precios constantes, la motorización total —autos y motos 0 km por habitante— y cuántas motos se patentan por cada auto, y el consumo de carnes. Se mueven con el poder de compra, pero también con el crédito y los precios relativos.",
   precios: "Tres gastos sensibles: alimentos contra el índice general de precios al consumidor, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.",
   vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo. Combina la mora de la cartera —incumplimiento ya materializado— con la carga del servicio de deuda sobre la masa salarial —capacidad de pago comprometida antes del atraso—.",
-  empleo: "Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.",
+  empleo: "Cuánta gente trabaja y en qué condiciones: la variación interanual de la tasa de empleo de la Encuesta Permanente de Hogares (EPH) del INDEC, que es el principal, y el porcentaje de asalariados sin aportes jubilatorios, el complemento. Dejaron de integrarla en octubre de 2026 el empleo registrado, los empleadores PyME, la subocupación demandante, el trabajo independiente y la construcción. La tasa de empleo se mueve despacio y no distingue la calidad del puesto.",
   percepcion: "La confianza de la población en el Gobierno nacional, medida preguntando: el Índice de Confianza en el Gobierno de la Universidad Torcuato Di Tella, único componente de la dimensión desde octubre de 2026. La otra vía —observar qué busca la gente en internet— está fuera del índice porque el volumen de búsquedas no distingue si un tema preocupa o alegra; se sigue relevando y su serie se publica.",
   seguridad: "Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. Describe victimización reportada, con sus límites muestrales y de recuerdo; no es un censo de delitos ni una medida de sensación de inseguridad.",
   // ITCP

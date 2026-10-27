@@ -27,10 +27,12 @@ def test_sigue_pesando_mas_que_los_proxies():
     registrado — es que la dimensión pasó a tener DOS medidas directas de
     empleo, una de volumen y otra de calidad, que es lo que ADR-0033 pedía."""
     ind = _dim()
-    assert ind["empleo_registrado"] == 0.2246   # ADR-0219: cedió ×0,90
+    assert ind["empleo_registrado"] == 0.0496   # ADR-0383: cedió ×0,2208 al suspenderse
     for proxy in ("mortalidad_pymes", "despacho_cemento", "subocupacion_demandante"):
         assert ind["empleo_registrado"] > ind[proxy], f"{proxy} lo pasó"
-    assert max(ind, key=ind.get) == "informalidad", "ADR-0214 la puso primera"
+    # ADR-0383: entra la ocupación EPH como principal; el registrado quedó
+    # suspendido (no puntúa), pero la tabla conserva sus pesos relativos.
+    assert max(ind, key=ind.get) == "ocupacion_eph", "ADR-0383 la puso primera"
 
 
 def test_los_pesos_suman_uno():

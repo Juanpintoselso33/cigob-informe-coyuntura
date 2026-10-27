@@ -447,7 +447,7 @@ export const LABELS: Record<string, string> = {
   icg_utdt: "Confianza en el Gobierno",
   peso_tarifas: "Canasta de servicios públicos / salario", alquiler_real: "Costo real del alquiler", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
   consumo_carne_vacuna: "Consumo de carne vacuna per cápita",
-  consumo_carnes_total: "Consumo total de carnes per cápita", consumo_carnes_otras: "Consumo de carne aviar y porcina per cápita", informalidad: "Informalidad laboral",
+  consumo_carnes_total: "Consumo total de carnes per cápita", consumo_carnes_otras: "Consumo de carne aviar y porcina per cápita", informalidad: "Informalidad laboral", ocupacion_eph: "Ocupación (EPH)",
   mortalidad_pymes: "Empleadores PyME activos", trabajo_independiente: "Peso del trabajo independiente", despacho_cemento: "Construcción",
   subocupacion_demandante: "Subocupación demandante", inseguridad: "Victimización",
   icc_utdt: "Confianza del consumidor", sentimiento_digital: "Sentimiento digital (Trends)",
@@ -534,7 +534,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   mora_familias: "%",
   carga_servicio_deuda_hogares: "%",
   icg_utdt: "0-5",
-  peso_tarifas: "% salario", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne_vacuna: "kg/hab", consumo_carnes_total: "kg/hab", consumo_carnes_otras: "kg/hab", informalidad: "%", mortalidad_pymes: "empleadores", trabajo_independiente: "%",
+  peso_tarifas: "% salario", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne_vacuna: "kg/hab", consumo_carnes_total: "kg/hab", consumo_carnes_otras: "kg/hab", informalidad: "%", ocupacion_eph: "pp", mortalidad_pymes: "empleadores", trabajo_independiente: "%",
   despacho_cemento: "índice", subocupacion_demandante: "% de la PEA", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.", patentamiento_autos: "u.",
   motorizacion_total: "c/1.000 hab.",
@@ -614,6 +614,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   peso_tarifas: "% del salario registrado promedio", alquiler_real: "% mensual", pobreza_nowcast: "% de personas en hogares pobres", indice_lider: "Índice (nivel)",
   consumo_carne_vacuna: "kg por habitante/año", consumo_carnes_total: "kg por habitante/año (vacuna + aviar + porcina)", consumo_carnes_otras: "kg por habitante/año (aviar + porcina)",
   informalidad: "% de asalariados",
+  ocupacion_eph: "Variación interanual de la tasa de empleo (puntos porcentuales)",
   mortalidad_pymes: "Empleadores de hasta 50 trabajadores con cobertura de una aseguradora de riesgos del trabajo",
   trabajo_independiente: "% del empleo registrado que son autónomos o monotributistas del régimen general (sin monotributo social)", despacho_cemento: "Índice", subocupacion_demandante: "% de la PEA",
   inseguridad: "% de hogares víctimas (últimos 12 meses)", icc_utdt: "Índice",
@@ -785,7 +786,7 @@ export function badgeEstado(ind: Indicador): "Automático" | "Semiautomático" |
 // regla mensual de abajo.
 const MESES_CORTOS = ["ene", "feb", "mar", "abr", "may", "jun",
                       "jul", "ago", "sep", "oct", "nov", "dic"];
-const PERIODO_TRIMESTRAL = new Set(["informalidad", "subocupacion_demandante"]);
+const PERIODO_TRIMESTRAL = new Set(["informalidad", "ocupacion_eph", "subocupacion_demandante"]);
 const PERIODO_ANUAL = new Set(["veto_quorum", "protocolo_antipiquetes"]);
 
 export function periodoDato(key: string, ind: Indicador): string {

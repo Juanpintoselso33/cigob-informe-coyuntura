@@ -7,7 +7,7 @@ cinturon: 'vida'
 indicadores: [mortalidad_pymes]
 archivos: ['scripts/vida_cotidiana/collectors/srt_empleadores.py', 'scripts/vida_cotidiana/main.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/gate_calidad.py', 'tests/test_cierre_pymes.py']
 cierra: ['0119']
-relacionado: ['0012', '0018', '0130', '0220', '0226', '0228']
+relacionado: ['0012', '0018', '0130', '0220', '0226', '0228', '0383']
 corregido_por: ['0279']
 complementado_por: ['0219']
 ambito: 'ITCIS · dimensión de prospectivas de empleo · qué mide mortalidad_pymes'

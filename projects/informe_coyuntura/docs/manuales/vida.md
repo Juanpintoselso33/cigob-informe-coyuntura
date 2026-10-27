@@ -18,7 +18,7 @@ al ADR.
 | `consumo` | 8% | `consumo_supermercados`, `motorizacion_total`, `ratio_motos_autos`, `consumo_carnes_total`, `consumo_carne_vacuna` |
 | `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
 | `vulnerabilidad` | 10% | `mora_familias`, `carga_servicio_deuda_hogares` |
-| `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `subocupacion_demandante`, `trabajo_independiente` |
+| `empleo` | 24% | `ocupacion_eph`, `informalidad` |
 | `percepcion` | 8% | `icg_utdt` |
 | `seguridad` | 4% | `inseguridad`, `tasa_homicidios`, `tasa_robos` |
 
@@ -215,89 +215,33 @@ donde colar una calibración (ADR-0123).
 
 ### Dimensión `empleo` (24%)
 
+#### Ocupación (EPH)
+
+`ocupacion_eph`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 60% |
+| Peso efectivo en el índice | **14.5%** |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
+
+**Lo gobiernan**: [ADR-0383](../adr/0383-la-prospectiva-de-empleo-pasa-a-empleo.md) La prospectiva de empleo pasa a «Empleo»
+
 #### Informalidad laboral
 
 `informalidad`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 34% |
-| Peso efectivo en el índice | **8.3%** |
+| Peso dentro de la dimensión | 40% |
+| Peso efectivo en el índice | **9.7%** |
 | Procedencia del ancla | `conceptual` — rebase base-100 a 4T-2023, invertido; ancla en la fecha fija (ADR-0123) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0214](../adr/0214-la-informalidad-es-una-condicion-del-empleo.md) La informalidad es una condición del empleo, no del ingreso
-
-#### Empleo registrado privado
-
-`empleo_registrado`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 22% |
-| Peso efectivo en el índice | **5.4%** |
-| Procedencia del ancla | `conceptual` — asalariados privados registrados (SIPA) rebaseados a 4T-2023, sin invertir (ADR-0130); ancla en fecha fija |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0130](../adr/0130-la-dimension-empleo-pasa-a-medir-empleo.md) La dimensión de empleo pasa a medir empleo
-
-#### Empleadores PyME activos
-
-`mortalidad_pymes`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 15% |
-| Peso efectivo en el índice | **3.6%** |
-| Procedencia del ancla | `conceptual` — nivel del IPI desestacionalizado rebaseado a 4T-2023; ancla en fecha fija |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0218](../adr/0218-el-cierre-de-pymes-se-mide-con-la-srt.md) El cierre de PyMEs se mide con la SRT, no con la producción industrial · [ADR-0279](../adr/0279-las-series-laborales-no-identifican-transiciones.md) Las series laborales no identifican transiciones
-
-#### Construcción
-
-`despacho_cemento`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 13% |
-| Peso efectivo en el índice | **3.3%** |
-| Procedencia del ancla | `conceptual` — nivel del ISAC desestacionalizado rebaseado a 4T-2023; ancla en fecha fija |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0018).
-
-#### Subocupación demandante
-
-`subocupacion_demandante`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 5% |
-| Peso efectivo en el índice | **1.2%** |
-| Procedencia del ancla | `conceptual` — subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0249](../adr/0249-la-subocupacion-demandante-se-llama-por-su-nombre.md) La subocupación demandante se llama por su nombre
-
-#### Peso del trabajo independiente
-
-`trabajo_independiente`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 10% |
-| Peso efectivo en el índice | **2.4%** |
-| Procedencia del ancla | `conceptual` — participación rebaseada a 4T-2023; ancla en fecha fija (ADR-0219) |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) La contracara del cierre: el trabajo independiente · [ADR-0250](../adr/0250-el-universo-restringido-se-enumera.md) El universo restringido se enumera · [ADR-0279](../adr/0279-las-series-laborales-no-identifican-transiciones.md) Las series laborales no identifican transiciones
+**Lo gobiernan**: [ADR-0214](../adr/0214-la-informalidad-es-una-condicion-del-empleo.md) La informalidad es una condición del empleo, no del ingreso · [ADR-0383](../adr/0383-la-prospectiva-de-empleo-pasa-a-empleo.md) La prospectiva de empleo pasa a «Empleo»
 
 ### Dimensión `percepcion` (8%)
 
@@ -365,10 +309,15 @@ Estos indicadores se siguen scrapeando y cacheando, pero están fuera
 del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
+- `despacho_cemento` — Construcción
+- `empleo_registrado` — Empleo registrado privado
 - `endeudamiento_familiar` — Endeudamiento de consumo
 - `icc_utdt` — Confianza del consumidor
 - `indice_lider` — Índice líder (anticipa el ciclo)
+- `mortalidad_pymes` — Empleadores PyME activos
 - `sentimiento_digital` — Sentimiento digital (Trends)
+- `subocupacion_demandante` — Subocupación demandante
+- `trabajo_independiente` — Peso del trabajo independiente
 
 ## Decisiones abiertas
 
@@ -395,7 +344,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-55 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+56 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -452,3 +401,4 @@ histórica.
 - [0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) — Puntúan el total de las tres carnes y, aparte, la vacuna
 - [0345](../adr/0345-la-confianza-en-el-gobierno-entra-al-indice-de-impacto-social.md) — La confianza en el Gobierno entra al índice de impacto social
 - [0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) — Ingresos y consumo se parten en dos dimensiones
+- [0383](../adr/0383-la-prospectiva-de-empleo-pasa-a-empleo.md) — La prospectiva de empleo pasa a «Empleo»

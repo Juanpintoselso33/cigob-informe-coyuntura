@@ -23,6 +23,8 @@ import itvc
 EJEMPLO = {
     "brecha_salario_cbt": 87.5,
     "informalidad": 96.0,
+    # ADR-0383: variación interanual de la ocupación EPH, +0,5 pp ≈ 101,1.
+    "ocupacion_eph": 101.0,
     "ipc_alimentos": 95.0,
     "peso_tarifas": 60.0,
     "mora_familias": 60.0,
@@ -84,7 +86,9 @@ def test_itvc_reproduce_ejemplo():
     # renormalización reparte entre los mismos tres.
     # ADR-0214: 92,2 → 94,1 al recibir `informalidad` (96,0), que está por
     # encima del promedio de los proxies.
-    assert dims["empleo"]["puntaje"] == 94.1
+    # ADR-0383: 94,1 → 99,0. Los cinco proxies están suspendidos y quedan
+    # ocupación (101,0 × 0,6) e informalidad (96,0 × 0,4).
+    assert dims["empleo"]["puntaje"] == 99.0
     # ADR-0115 la había dejado con ICC + Trends (116,5). ADR-0248 sacó
     # `sentimiento_digital` del índice y su 18,18% pasó al ICC, que quedó
     # solo en la dimensión. ADR-0314 saca también al ICC: la dimensión de
@@ -112,8 +116,9 @@ def test_itvc_reproduce_ejemplo():
     # (+0,1; ver ADR-0314 para el detalle).
     # ADR-0373: 84,9 → 86,1. Con datos faltantes la renormalización ocurre
     # dentro de cada mitad de la dimensión partida.
-    assert r["valor"] == 86.1
-    assert r["banda"] == "deterioro_moderado"   # 86,1 cruza el corte de 85
+    # ADR-0383: 86,1 → 87,4 (empleo 94,1 → 99,0 al suspenderse los proxies).
+    assert r["valor"] == 87.4
+    assert r["banda"] == "deterioro_moderado"   # 87,4 sigue sobre el corte de 85
     assert r["ajustes_aplicados"] == []
 
 
@@ -193,12 +198,16 @@ def test_pesos_del_documento():
     # sólo porque el nominal de la dimensión subió a 0,2419.
     # ADR-0219: entra trabajo_independiente con 10% y los cinco ceden ×0,90,
     # conservando su orden relativo.
-    assert d["empleo"]["indicadores"] == {"informalidad": 0.3419,
-                                          "empleo_registrado": 0.2246,
-                                          "mortalidad_pymes": 0.1476,
-                                          "despacho_cemento": 0.1347,
-                                          "subocupacion_demandante": 0.0512,
-                                          "trabajo_independiente": 0.1000}
+    # ADR-0383: entra `ocupacion_eph` (0,5128, 60/40 con informalidad, que
+    # conserva su 0,3419) y los cinco restantes ceden ×0,2208 y quedan
+    # suspendidos: salen del cálculo, no de la tabla.
+    assert d["empleo"]["indicadores"] == {"ocupacion_eph": 0.5128,
+                                          "informalidad": 0.3419,
+                                          "empleo_registrado": 0.0496,
+                                          "mortalidad_pymes": 0.0326,
+                                          "despacho_cemento": 0.0297,
+                                          "subocupacion_demandante": 0.0113,
+                                          "trabajo_independiente": 0.0221}
     # ADR-0314: sale `icc_utdt`. ADR-0345: entra `icg_utdt` en 0,5/0,5 con
     # `sentimiento_digital`, que sigue suspendido (ADR-0248): mientras lo esté,
     # el ICG absorbe su mitad y se lleva la dimensión entera.
@@ -283,7 +292,8 @@ def test_ajuste_manual_del_analista():
     # 90,3 → 90,5 con ADR-0248 → 88,0 con ADR-0314 → 89,2 con ADR-0373: con
     # componentes faltantes, la renormalización ahora ocurre dentro de cada
     # mitad, así que el consumo del EJEMPLO pesa su 7,9% entero.
-    assert r["valor"] == 89.2
+    # ADR-0383: 89,2 → 90,5 por lo mismo que en el ejemplo.
+    assert r["valor"] == 90.5
 
 
 def test_sin_datos_devuelve_none():
