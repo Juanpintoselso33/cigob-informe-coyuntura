@@ -2,7 +2,7 @@
  "meses": [
   {
    "mes": "2026-09",
-   "corrida": "4158403609",
+   "corrida": "3d09f07429",
    "generado": "2026-09-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 3.9,
@@ -19,24 +19,24 @@
      "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 6.0,
+     "score": 5.7,
      "estado": "en_tension"
     },
     "gestion": {
-     "score": 2.3,
+     "score": 2.2,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4120
+   "peso_kb": 4155
   },
   {
    "mes": "2026-08",
-   "corrida": "4158403609",
+   "corrida": "3d09f07429",
    "generado": "2026-08-31T20:00:00-03:00",
    "modo": "series_cortadas",
-   "score_global": 4.0,
+   "score_global": 3.9,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
@@ -50,7 +50,7 @@
      "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 5.7,
+     "score": 5.4,
      "estado": "en_tension"
     },
     "gestion": {
@@ -60,14 +60,14 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4080
+   "peso_kb": 4115
   },
   {
    "mes": "2026-07",
-   "corrida": "4158403609",
+   "corrida": "3d09f07429",
    "generado": "2026-07-31T20:00:00-03:00",
    "modo": "series_cortadas",
-   "score_global": 4.1,
+   "score_global": 4.0,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
@@ -81,24 +81,24 @@
      "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 5.7,
+     "score": 5.4,
      "estado": "en_tension"
     },
     "gestion": {
-     "score": 2.6,
+     "score": 2.5,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4033
+   "peso_kb": 4067
   },
   {
    "mes": "2026-06",
-   "corrida": "4158403609",
+   "corrida": "3d09f07429",
    "generado": "2026-06-30T20:00:00-03:00",
    "modo": "series_cortadas",
-   "score_global": 3.9,
+   "score_global": 3.8,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
@@ -112,7 +112,7 @@
      "estado": "estable"
     },
     "vida_cotidiana": {
-     "score": 5.5,
+     "score": 5.2,
      "estado": "en_tension"
     },
     "gestion": {
@@ -122,7 +122,7 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 3954
+   "peso_kb": 3988
   }
  ]
 }
