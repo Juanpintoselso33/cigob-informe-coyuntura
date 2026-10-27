@@ -151,7 +151,23 @@ def test_publicar_agrega_el_texto_al_detalle_de_ocupacion_eph():
     raw = {"indec": {"ocupacion_eph": {"valor": 0.4, "tasa": 45.0, "tasa_2023": 44.6,
                                        "fecha": "2026-04-01"}},
            "padron_arca": {"texto": "Empleadores inscriptos en ARCA: 1."}}
-    out = publicar.build_vida(raw)
+    out = publicar._sumar_padron_arca(publicar.build_vida(raw), {})
     det = out["ocupacion_eph"]["detalle_txt"]
     assert det.startswith("Tasa de empleo 45,0%") and det.endswith("Empleadores inscriptos en ARCA: 1.")
     assert "padron_arca" not in out and "arca_empleadores" not in out   # no es card propia
+    assert "padron_arca_txt" not in out["ocupacion_eph"]
+
+
+def test_un_indec_caido_no_borra_el_padron():
+    """Codex, 27-oct: si la EPH no contesta, la card recupera su valor y su
+    oración del snapshot anterior, y el padrón nuevo igual se muestra."""
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    import publicar
+    raw = {"indec": {"ocupacion_eph": {"valor": None}},
+           "padron_arca": {"texto": "Empleadores inscriptos en ARCA: 2."}}
+    previo = {"ocupacion_eph": {"valor": 0.4, "fecha_dato": "2026-04-01",
+                                "detalle_txt": "Tasa de empleo 45,0%. Empleadores inscriptos en ARCA: 1."}}
+    out = publicar._carry_forward(publicar.build_vida(raw), previo)
+    out = publicar._sumar_padron_arca(out, previo)
+    assert out["ocupacion_eph"]["valor"] == 0.4
+    assert out["ocupacion_eph"]["detalle_txt"] == "Tasa de empleo 45,0%. Empleadores inscriptos en ARCA: 2."

@@ -226,10 +226,12 @@ def build_vida(raw):
     # ADR-0389: el padrón de empleadores de ARCA acompaña a la ocupación como
     # dato dentro de la explicación; no puntúa ni es card propia. Va aparte de
     # `ocu["valor"]` para que un INDEC caído no lo borre ni al revés.
+    # El texto se guarda aparte y se suma al detalle DESPUÉS de `_carry_forward`
+    # (ver `_sumar_padron_arca`): si el INDEC no contesta, la card recupera su
+    # valor anterior y el padrón igual se muestra.
     arca = raw.get("padron_arca") or {}
-    if arca.get("texto") and ocu.get("valor") is not None:
-        previo = out["ocupacion_eph"].get("detalle_txt")
-        out["ocupacion_eph"]["detalle_txt"] = (previo + ". " if previo else "") + arca["texto"]
+    if arca.get("texto"):
+        out["ocupacion_eph"]["padron_arca_txt"] = arca["texto"]
     # ADR-0218: el indicador pasa a medir lo que su nombre promete — el cierre
     # neto de PyMEs — con la base de empleadores con cobertura de ART de la SRT.
     # Antes publicaba la variación mensual del IPI manufacturero.
@@ -2908,6 +2910,27 @@ def _carry_forward(enriquecido, previo):
     return enriquecido
 
 
+def _sumar_padron_arca(enriquecido, previo):
+    """ADR-0389: suma el texto del padrón de ARCA al detalle de `ocupacion_eph`.
+
+    Corre DESPUÉS de `_carry_forward`, para que las dos fuentes no dependan una
+    de otra: si el INDEC no contestó, la card recupera su valor y la oración de
+    la EPH del snapshot anterior, y el padrón nuevo igual se muestra."""
+    ocu = enriquecido.get("ocupacion_eph")
+    if not ocu:
+        return enriquecido
+    padron = ocu.pop("padron_arca_txt", None)
+    eph = ocu.get("detalle_txt")
+    if not eph and ocu.get("valor") is not None:
+        anterior = (previo.get("ocupacion_eph") or {}).get("detalle_txt") or ""
+        eph = anterior.split("Empleadores inscriptos en ARCA")[0].rstrip(". ") or None
+    if padron:
+        ocu["detalle_txt"] = (eph + ". " if eph else "") + padron
+    elif eph:
+        ocu["detalle_txt"] = eph
+    return enriquecido
+
+
 def _elegir_crudo_vida(vida_files, fuente_previa=None):
     """El crudo local nunca puede hacer retroceder el bloque ya publicado.
 
@@ -2977,6 +3000,7 @@ def main():
         if enriquecido:
             enriquecido = _sellar_vida(enriquecido, raw)
             enriquecido = _carry_forward(enriquecido, prev_vida)
+            _sumar_padron_arca(enriquecido, prev_vida)
             vida = informe["cinturones"]["vida_cotidiana"]
             vida["indicadores"] = enriquecido
             vida["fuente_enriquecida"] = vida_path.name
