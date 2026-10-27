@@ -7,7 +7,7 @@ cinturon: 'vida'
 indice: 'ITCIS'
 indicadores: [ocupacion_eph, informalidad, empleo_registrado, mortalidad_pymes, subocupacion_demandante, trabajo_independiente, despacho_cemento]
 archivos: ['scripts/itvc.py', 'scripts/publicar.py', 'scripts/descargar_series.py', 'scripts/validacion_externa.py', 'scripts/vida_cotidiana/collectors/indec_series.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/datos.ts']
-relacionado: ['0130', '0214', '0218', '0219', '0245', '0373']
+relacionado: ['0130', '0214', '0218', '0219', '0245', '0373', '0389']
 ambito: 'Cinturón de impacto social · ITCIS · dimensión Empleo (ex Prospectivas de empleo)'
 origen: 'Reunión del 26-oct-2026: «se replantea, si se puede. Principal: la variación de la ocupación según la EPH continua (trimestral, 31 aglomerados). Complemento: el padrón de ARCA de inscriptos como empleadores, incluidos los que no tienen personal a cargo.»'
 ---

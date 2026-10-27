@@ -129,6 +129,7 @@ def run_all() -> dict:
     from collectors.trends import fetch_trends
     from collectors.utdt_nowcast_pobreza import fetch_nowcast_pobreza
     from collectors.alquiler_udesa import fetch_alquiler_udesa
+    from collectors.padron_arca import fetch_padron_arca
 
     logger.info("Iniciando recolección — 14 fuentes...")
 
@@ -158,6 +159,10 @@ def run_all() -> dict:
         "bcra":   fetch_bcra(),
         "utdt":   fetch_icc(),
         "pobreza": fetch_nowcast_pobreza(),
+        # ADR-0389: empleadores inscriptos en ARCA. Dato complementario de
+        # ocupacion_eph que NO puntúa: anota el mes en data/vida/arca_empleadores.json
+        # y, si la red falla, sigue con lo guardado.
+        "padron_arca": _seguro(fetch_padron_arca, "padron_arca"),
         # ADR-0386: alquiler de UdeSA - Mercado Libre. CARGA MANUAL mensual
         # (data/vida/alquiler_udesa.json); acá sólo se lee y se deflacta. Falla
         # suave: sin IPC o sin carga queda None y lo repara el carry-forward.

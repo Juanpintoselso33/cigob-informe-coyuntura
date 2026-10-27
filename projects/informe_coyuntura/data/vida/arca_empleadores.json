@@ -1,0 +1,45 @@
+{
+  "fuente": "https://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp",
+  "nota": "Un valor por mes: el del último archivo visto. ARCA reemplaza el archivo cada semana y no conserva historia, por eso el registro mensual arranca en oct-2026; lo anterior son tres copias del Wayback (ver `url`, reproducibles con scripts/vida_cotidiana/padron_arca_backfill.py). Cuenta CUIT con la marca de empleador activa (ADR-0389). Sin CUIT individuales.",
+  "meses": {
+    "2020-06": {
+      "fecha_archivo": "2020-06-13",
+      "empleadores": 547003,
+      "juridicas": 274999,
+      "humanas": 272004,
+      "monotributistas": 56301,
+      "blanco": 337506,
+      "cuit_total": 5004816,
+      "url": "https://web.archive.org/web/20200617071722id_/https://www.afip.gob.ar/genericos/cInscripcion/archivos/apellidoNombreDenominacion.zip"
+    },
+    "2021-04": {
+      "fecha_archivo": "2021-04-10",
+      "empleadores": 543986,
+      "juridicas": 281075,
+      "humanas": 262911,
+      "monotributistas": 53987,
+      "blanco": 333030,
+      "cuit_total": 5362699,
+      "url": "https://web.archive.org/web/20210410220523id_/https://www.afip.gob.ar/genericos/cInscripcion/archivos/apellidoNombreDenominacion.zip"
+    },
+    "2024-08": {
+      "fecha_archivo": "2024-08-24",
+      "empleadores": 553057,
+      "juridicas": 293713,
+      "humanas": 259344,
+      "monotributistas": 53355,
+      "blanco": 275007,
+      "cuit_total": 6307779,
+      "url": "https://web.archive.org/web/20240830074549id_/https://www.afip.gob.ar/genericos/cInscripcion/archivos/apellidoNombreDenominacion.zip"
+    },
+    "2026-10": {
+      "fecha_archivo": "2026-10-24",
+      "empleadores": 511847,
+      "juridicas": 290897,
+      "humanas": 220950,
+      "monotributistas": 44720,
+      "blanco": 48391,
+      "cuit_total": 6211641
+    }
+  }
+}

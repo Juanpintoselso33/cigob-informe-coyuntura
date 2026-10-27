@@ -369,6 +369,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0373](0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) | Ingresos y consumo se parten en dos dimensiones | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_supermercados` | vigente |
 | [0383](0383-la-prospectiva-de-empleo-pasa-a-empleo.md) | La prospectiva de empleo pasa a «Empleo» | `ocupacion_eph`, `informalidad`, `empleo_registrado` | vigente |
 | [0386](0386-el-alquiler-real-entra-a-precios.md) | El alquiler de UdeSA – Mercado Libre entra a precios | `alquiler_udesa_real`, `alquiler_real` | vigente |
+| [0389](0389-el-padron-de-empleadores-de-arca-acompana-a-la-ocupacion.md) | El padrón de empleadores de ARCA acompaña a la ocupación | `ocupacion_eph` | vigente |
 
 ### Espíritu de época
 

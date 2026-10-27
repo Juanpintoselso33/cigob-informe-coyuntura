@@ -223,6 +223,13 @@ def build_vida(raw):
             f"Tasa de empleo {ocu['tasa']:.1f}% de la población total, contra "
             f"{ocu['tasa_2023']:.1f}% en el mismo trimestre de 2023"
         ).replace(".", ",")
+    # ADR-0389: el padrón de empleadores de ARCA acompaña a la ocupación como
+    # dato dentro de la explicación; no puntúa ni es card propia. Va aparte de
+    # `ocu["valor"]` para que un INDEC caído no lo borre ni al revés.
+    arca = raw.get("padron_arca") or {}
+    if arca.get("texto") and ocu.get("valor") is not None:
+        previo = out["ocupacion_eph"].get("detalle_txt")
+        out["ocupacion_eph"]["detalle_txt"] = (previo + ". " if previo else "") + arca["texto"]
     # ADR-0218: el indicador pasa a medir lo que su nombre promete — el cierre
     # neto de PyMEs — con la base de empleadores con cobertura de ART de la SRT.
     # Antes publicaba la variación mensual del IPI manufacturero.

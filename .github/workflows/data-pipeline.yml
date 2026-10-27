@@ -287,6 +287,7 @@ jobs:
                   projects/informe_coyuntura/data/vida/carnes_total_serie.json \
                   projects/informe_coyuntura/data/vida/sentimiento_serie.json \
                   projects/informe_coyuntura/data/vida/ivi_serie.json \
+                  projects/informe_coyuntura/data/vida/arca_empleadores.json \
                   projects/informe_coyuntura/data/vida/snic_serie.json \
                   projects/informe_coyuntura/data/vida/intencion_migratoria_serie.json \
                   projects/informe_coyuntura/data/vida/componente_b_migracion.json \

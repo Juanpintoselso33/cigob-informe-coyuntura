@@ -3437,6 +3437,7 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "La tasa de empleo es la población ocupada sobre la población total. El indicador es su diferencia en puntos porcentuales contra el MISMO trimestre de 2023, antes del mandato: se compara la misma estación porque la EPH no viene desestacionalizada.",
       "Componente del índice: 100 + 10 × la diferencia en puntos. Cada décima de punto vale 1 punto del índice: la tasa se mueve poco (en veinte años, salvo la pandemia, cambió menos de un punto por año casi siempre) y un punto de tasa son cientos de miles de puestos. Igual que en 2023 da 100; no se invierte, más ocupación es mejor.",
+      "Dato complementario que NO puntúa: la cantidad de empleadores inscriptos en ARCA, del padrón público de contribuyentes sin nombres (https://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp). Cuenta los CUIT con la marca de empleador activa, tengan o no personal declarado, y se muestra en el detalle de la card con su desglose (personas jurídicas, personas humanas, monotributistas) y, cuando hay dos meses, la variación contra el anterior. ARCA reemplaza el archivo cada semana; el informe guarda un valor por mes, el del último archivo visto, y nunca guarda un CUIT individual. Hay tres puntos anteriores (jun-2020, abr-2021 y ago-2024) contados de copias del Internet Archive del archivo con nombres, reproducibles con un script del repositorio. Puntuará recién con 12 meses de registro mensual (desde oct-2026), con un ADR propio.",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de empleo (60% interno · 14,51% del índice de impacto social): es su componente principal.",
@@ -3445,12 +3446,14 @@ export const FICHAS: Record<string, Ficha> = {
       "Mide cuánta gente de la población total tiene empleo, no su calidad: no distingue formal de informal ni jornada completa de parcial. Para eso está informalidad.",
       "Cubre los 31 aglomerados urbanos de la EPH, no las zonas rurales ni los pueblos chicos.",
       "La encuesta tiene error muestral de unas décimas de punto: con esta escala, un trimestre puede moverse unos puntos del índice sin que el empleo haya cambiado de verdad. Conviene leer la serie, no un trimestre suelto.",
+      "El padrón de ARCA es una marca de inscripción, no de empleo efectivo: un CUIT puede tener la marca activa sin pagar sueldos, y un monotributista con la marca no necesariamente emplea a alguien. ARCA reemplaza el archivo y no conserva los anteriores: el registro mensual arranca en oct-2026 y lo previo son tres copias sueltas del Internet Archive (jun-2020, abr-2021, ago-2024). No hay copia de dic-2023, así que no existe una base del mandato y no se inventa una. Cuidado con la marca en blanco (CUIT sin datos consistentes): bajó de 275.007 en ago-2024 a 48.391 en oct-2026, y una limpieza del padrón puede mover los conteos. Entre esas dos fechas los empleadores bajan 41.210 (−7,5%), casi todo en personas humanas (259.344 a 220.950); las jurídicas bajan poco (293.713 a 290.897).",
     ],
     faltantes: "Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso pasa a informalidad, el otro componente de empleo.",
-    revisiones: "La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones.",
+    revisiones: "La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones. El padrón de ARCA se actualiza cada semana y el valor del mes se reemplaza por el del archivo más nuevo de ese mes.",
     cambios: [
       { fecha: "2026-10-27", cambio: "Se compara contra el mismo trimestre de 2023 y no contra el año anterior, y cada décima de punto vale 1 punto del índice (antes, un punto de tasa valía 2,2): con la escala anterior el componente quedaba siempre cerca de 100. Con el 2º trimestre de 2026 (45,0% contra 44,6%) da 104.", adr: "0383" },
       { fecha: "2026-10-27", cambio: "Entra al índice de impacto social como componente principal de la dimensión de empleo (60%), por decisión de la reunión del 26-oct-2026: la dimensión pasa a medir cuánta gente trabaja. El padrón de ARCA de empleadores, previsto como complemento, no tiene serie pública reproducible y queda afuera.", adr: "0383" },
+      { fecha: "2026-10-27", cambio: "Se guarda todos los meses la cantidad de empleadores inscriptos en ARCA, incluidos los que no tienen personal declarado, y se muestra dentro de la explicación de esta card. No puntúa: lo hará con 12 meses de registro, con un ADR propio. El registro mensual arranca en oct-2026 porque ARCA no conserva archivos anteriores; se agregan tres puntos de copias del Internet Archive (jun-2020, abr-2021, ago-2024).", adr: "0389" },
     ],
   },
 
