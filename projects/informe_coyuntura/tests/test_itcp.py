@@ -282,20 +282,15 @@ def test_indicadores_contexto_declarados_y_fuera_de_las_dimensiones():
 
 
 def test_banda_conflictividad_nacional():
-    # (-inf,-32,100)·(-32,-29,85)·(-29,-26,65)·(-26,-15,40)·(-15,inf,10) —
-    # % var. eventos Protests+Riots país entero vs total 2023, menor = mejor
-    # (ADR-0052). Anclas calibradas contra la serie real de 30 puntos
-    # (dic-2023→may-2026, rango −34,2 a +2,7): 5/7/8/4/6 por banda, las
-    # cinco pobladas, cada corte en un hueco real de los datos.
+    # ADR-0390: −30/−15/+15/+30, uno y dos desvíos (14,7 pp) de la variación
+    # interanual previa al mandato (2020-2023). Menor = mejor.
     bandas = itcp.BANDAS_ITCP["conflictividad_nacional"]
-    assert itcp.puntaje_banda(-34.2, bandas) == 100   # mínimo real (nov-2025)
-    assert itcp.puntaje_banda(-32.0, bandas) == 100   # high inclusivo
-    assert itcp.puntaje_banda(-30.0, bandas) == 85
-    assert itcp.puntaje_banda(-29.0, bandas) == 85    # high inclusivo
-    assert itcp.puntaje_banda(-27.7, bandas) == 65    # mediana real
-    assert itcp.puntaje_banda(-21.4, bandas) == 40    # valor vigente (may-2026)
-    assert itcp.puntaje_banda(0.0, bandas) == 10      # dic-2023 (= base)
-    assert itcp.puntaje_banda(2.7, bandas) == 10      # máximo real (ene-2024)
+    assert [hi for _lo, hi, _p in bandas[:-1]] == [-30.0, -15.0, 15.0, 30.0]
+    assert itcp.puntaje_banda(-34.2, bandas) == 100   # mínimo del mandato (nov-2025)
+    assert itcp.puntaje_banda(-27.2, bandas) == 85    # sep-2026
+    assert itcp.puntaje_banda(0.0, bandas) == 65      # igual que 2023: año normal
+    assert itcp.puntaje_banda(20.0, bandas) == 40
+    assert itcp.puntaje_banda(31.0, bandas) == 10
 
 
 def test_banda_jornadas_individuales_no_trabajadas():

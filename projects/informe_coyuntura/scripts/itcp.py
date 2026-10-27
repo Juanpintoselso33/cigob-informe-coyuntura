@@ -545,11 +545,17 @@ BANDAS_ITCP = {
         # pre-2020 NO confiable (expansión de cobertura): no se usa ni
         # para calibrar ni para el gráfico. Tramos extremos abiertos
         # (ADR-0021).
-        (-INF, -32.0, 100),
-        (-32.0, -29.0, 85),
-        (-29.0, -26.0, 65),
-        (-26.0, -15.0, 40),
-        (-15.0, INF, 10),
+        # RECALIBRADO 2026-10-27 (ADR-0390): los cortes de arriba salían del
+        # rango del propio mandato y, con ellos, las 36 ventanas de
+        # 2020-2023 puntuaban 10. Ahora salen de la variabilidad previa al
+        # mandato: la variación interanual de las ventanas de 12 meses de
+        # 2020-2023 tiene desvío de 14,7 pp, así que ±15 ≈ un desvío y
+        # ±30 ≈ dos. La banda del medio (−15 a +15) es «un año normal».
+        (-INF, -30.0, 100),
+        (-30.0, -15.0, 85),
+        (-15.0, 15.0, 65),
+        (15.0, 30.0, 40),
+        (30.0, INF, 10),
     ],
     "jornadas_individuales_no_trabajadas_12m": [
         # ADR-0232: intensidad laboral oficial, huelguistas × duración del

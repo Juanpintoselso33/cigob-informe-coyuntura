@@ -1634,7 +1634,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Calcula la variación porcentual contra los grupos de semanas iniciadas en 2023. Un valor negativo indica menos eventos registrados con esa misma convención que en la base.",
     ],
     incidenciaTexto: [
-      "El puntaje del índice se asigna por bandas de la variación, interpolado entre anclas: −32% o menos → el más alto; entre −32% y −29% → alto; entre −29% y −26% → moderado; entre −26% y −15% → bajo; más de −15% → el más bajo. Los umbrales se calibraron con la serie mensual real del indicador (30 meses, dic-2023 en adelante, rango observado −34% a +3%): las cinco bandas tienen meses reales observados.",
+      "El puntaje del índice se asigna por bandas de la variación, interpolado entre anclas: −30% o menos → el más alto; entre −30% y −15% → alto; entre −15% y +15% → moderado (un año normal); entre +15% y +30% → bajo; más de +30% → el más bajo. Los cortes salen de la historia previa al mandato: la variación interanual de las ventanas de doce meses de 2020 a 2023 tiene un desvío de 14,7 puntos, así que ±15% es un desvío y ±30% son dos. Con −27,2% en septiembre de 2026 puntúa 94,4.",
       "Aporta el 60% de la dimensión de conflicto social (6% del índice político). La intensidad laboral oficial aporta el 40% restante.",
     ],
     limitaciones: [
@@ -1642,6 +1642,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La base de comparación es fija (el total de 2023): a medida que pasa el tiempo, la referencia envejece — el mismo criterio declarado que usa el índice de impacto social con su base de fin de 2023.",
       "La cobertura de ACLED para la Argentina es confiable desde 2020; los años anteriores registran menos eventos por expansión de la propia cobertura, no por menor conflictividad — por eso ni las bandas ni el gráfico usan datos previos a la base.",
       "Depende de la cobertura de prensa que releva ACLED: eventos sin cobertura periodística no entran al registro.",
+      "La historia previa con la que se fijan los cortes son sólo cuatro años (2020-2023) y tienen la pandemia adentro. Una caída de eventos registrados también puede deberse a menor cobertura de prensa y no a menos conflicto: la de 2024 coincide con el balance oficial de bloqueos, pero 2025-2026 no se contrastó.",
       "Las semanas que cruzan de mes o año se asignan enteras a su inicio. Los grupos mensuales no son conteos exactos por fecha del evento: obtenerlos exige microdatos diarios. La base y la ventana usan la misma convención semanal.",
     ],
     faltantes: "Si falla la descarga semanal, se usa el último archivo guardado, marcado como desactualizado y conservando su fecha de obtención. También se advierte si el corte cubierto supera treinta días de antigüedad. Sin archivo utilizable, el indicador queda fuera y su peso se renormaliza.",
@@ -1650,6 +1651,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-11", cambio: "Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes de CEPA, que no permitía una serie mensual comparable." },
       { fecha: "2026-09-08", cambio: "Week es el sábado inicial, no el final de la cobertura. Se incorpora agosto, ya cubierto hasta el viernes 4-sep, y se comparte el calendario entre tarjeta e historia. Se explicita la agrupación por inicio de semana y se conserva el sello del archivo cuando falla la descarga.", adr: "0303" },
       { fecha: "2026-08-21", cambio: "Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral.", adr: "0232" },
+      { fecha: "2026-10-27", cambio: "Escala nueva: los cortes pasan de −32 · −29 · −26 · −15%, que salían del rango del propio mandato (con ellos, cualquier año de 2020 a 2023 habría puntuado 10), a −30 · −15 · +15 · +30%, uno y dos desvíos de la variación previa al mandato. Con el dato de septiembre de 2026 el componente pasa de 63,9 a 94,4.", adr: "0390" },
     ],
   },
 

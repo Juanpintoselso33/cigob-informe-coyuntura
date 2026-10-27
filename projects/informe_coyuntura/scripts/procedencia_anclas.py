@@ -158,7 +158,10 @@ TECHOS = {
     # mirando el rango observado de la gestión (-85% a +38%): el flujo
     # discrecional es demasiado volátil para los ±10 pp del automático, y no
     # hay historia previa comparable ni referencia externa.
-    "ITCP": {"circular": 0.37, "sin_declarar": 0.01},
+    # BAJA a 0,31 el 2026-10-27 (ADR-0390): `conflictividad_nacional` deja los
+    # cortes puestos sobre el propio mandato y toma uno y dos desvíos de la
+    # variación previa (2020-2023). Medido: 30,4%.
+    "ITCP": {"circular": 0.31, "sin_declarar": 0.01},
     # ITVC entró al registro el 2026-07-20 (ADR-0123) con 0% circular. Desde
     # ADR-0235, diecisiete componentes usan fecha fija y tarifas usa un rango
     # externo; ninguno se calibra contra el período. Techo en 0,01: si
@@ -245,7 +248,7 @@ PROCEDENCIA = {
     "adhesion_reformas_provincial": ("conceptual", "anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044)"),
     "cohesion_bloque": ("convencion", "calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048)"),
     "votos_sobre_bancas": ("convencion", "anclas declaradas por convención —40% de la cámara o más = 100, 30% = 85, 20% = 65, 10% = 40, 5% o menos = 10—, sin calibrar contra el rango observado (ADR-0376)"),
-    "conflictividad_nacional": ("convencion", "calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052)"),
+    "conflictividad_nacional": ("historia_larga", "uno y dos desvíos (14,7 pp) de la variación interanual de 2020-2023, previa al mandato (ADR-0390)"),
     "jornadas_individuales_no_trabajadas_12m": (
         "historia_larga",
         "cortes en los percentiles 5/25/50/75 (4,0 · 5,9 · 7,6 · 9,1 millones) de las 204 ventanas de 12 meses de la serie oficial anteriores al mandato, dic-2006 a nov-2023; no se miró 2024-2026 (ADR-0232, ADR-0388)"),
