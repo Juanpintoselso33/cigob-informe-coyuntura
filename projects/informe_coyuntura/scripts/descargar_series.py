@@ -122,6 +122,7 @@ PRESUPUESTO_INDICADOR = {
     # Caminan actas de a una desde el id más reciente: son lentas por diseño,
     # no por estar colgadas.
     "cohesion_bloque": 900,
+    "votos_sobre_bancas": 900,
     "alineamiento_senadores_prov": 900,
     "veto_quorum": 600,
     "comisiones_caidas": 600,
@@ -1761,6 +1762,11 @@ POLITICA_DERIVADAS = [
     ("cohesion_bloque", "% cohesión (índice de Rice bicameral 65/35)",
      "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
      fetch_cohesion_bloque_compuesta_mensual),
+    # La card es el último punto de esta lista (mismo cálculo, ADR-0376): el
+    # compuesto 65/35 del excedente de votos ajenos sobre las bancas de LLA.
+    ("votos_sobre_bancas", "% de las bancas de la cámara (votos ajenos, 12m móviles, 65/35)",
+     "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
+     politica.votos_sobre_bancas_serie),
     ("adhesion_reformas_provincial", "% de jurisdicciones (sobre 24) adheridas al RIGI",
      "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
      fetch_adhesion_reformas_provincial_serie),

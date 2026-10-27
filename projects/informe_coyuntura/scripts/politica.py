@@ -22,6 +22,10 @@ Indicadores:
   cohesion_bloque           — % cohesión (Rice) del bloque LLA, COMPUESTO bicameral desde
                                2026-07-10 (ADR-0048): Diputados 65% (scrape votaciones.hcdn.gob.ar)
                                + Senado 35% (scrape senado.gob.ar), renormalizado si falta una cámara
+  votos_sobre_bancas        — votos ajenos con que se aprueban las leyes: (afirmativos − bancas
+                               propias de LLA) / bancas de la cámara, votaciones en general de
+                               leyes aprobadas con el bloque LLA a favor, 12m; compuesto bicameral
+                               65/35 (actas de ambas cámaras, auto; ADR-0376)
   rotacion_gabinete         — salidas de rango ministerial (JGM + ministros) acumuladas 12m
                                (registro curado data/politica/gabinete_salidas.json + detector
                                de alerta InfoLeg, semiauto — patrón privatizaciones del ITCG).
@@ -117,6 +121,7 @@ INDICADORES_ESPERADOS = [
     "iaf_transferencias",
     "transferencias_no_automaticas",
     "cohesion_bloque",
+    "votos_sobre_bancas",
     "rotacion_gabinete",
     "eficacia_legislativa",
     "alineamiento_senadores_prov",
@@ -3678,7 +3683,11 @@ def _parsear_acta(html: str) -> list[dict]:
 # (confirmado: 5955-5959 son 5 votaciones de la sesión del 24-jun-2026); no
 # hay listado público de ids↔fecha, así que el rango se descubre caminando
 # el propio endpoint.
-_DIPUTADOS_ACTA_PDF_PATH = "/pdf/acta/{id}"
+# Desde ~21-oct-2026 el sitio es estático: el PDF vive en /pdf/acta/{id}.pdf (sin
+# la extensión da 404) y sólo quedan publicadas las actas desde el 6-feb-2025
+# (id 5567); las anteriores devuelven 404 y sólo sobreviven en los cachés
+# permanentes del repo. Con la ruta vieja el recorrido entero daba "sin actas".
+_DIPUTADOS_ACTA_PDF_PATH = "/pdf/acta/{id}.pdf"
 _DIPUTADOS_VOTOS_VALIDOS = {"AFIRMATIVO", "NEGATIVO", "ABSTENCION", "AUSENTE"}
 _DIPUTADOS_UMBRAL_COLUMNA = 15.0   # puntos pdfplumber: separa columnas (~50-120pt) de palabras dentro de una columna (~2pt)
 
@@ -6469,6 +6478,498 @@ def _es_cohesion_legado(anterior: dict) -> bool:
 COHESION_PESOS_CAMARAS = {"diputados": 0.65, "senado": 0.35}
 
 
+# ── votos_sobre_bancas: votos ajenos con que se aprueban las leyes (ADR-0376) ─
+#
+# Por cada votación nominal EN GENERAL de un proyecto de LEY que sale
+# AFIRMATIVA y en la que el bloque LLA votó a favor (más afirmativos que
+# negativos dentro del bloque):
+#
+#     excedente = (votos AFIRMATIVO totales − bancas del bloque LLA en el acta)
+#                 / bancas de la cámara × 100
+#
+# O sea: cuántos votos de otros bloques hicieron falta para aprobar, medidos
+# como % de la cámara. Por cámara es el promedio simple de las votaciones de
+# los últimos 12 meses calendario (misma ventana que veto_quorum); el
+# indicador es 65% Diputados + 35% Senado (COHESION_PESOS_CAMARAS).
+#
+# "Bancas del bloque LLA" = todos los legisladores LISTADOS en el acta con
+# bloque LLA, voten o estén ausentes. En Diputados el acta no lista a quien
+# preside (256 filas de 257 bancas; Menem, LLA, figura como "sin votar"): su
+# banca queda afuera del numerador y del bloque, y adentro del total de la
+# cámara (257). En el Senado el acta lista a los 72.
+VSB_ACTAS_PATH = PROJECT_DIR / "data" / "politica" / "votos_sobre_bancas_actas.json"
+# Instalación del Congreso elegido en 2023: antes, LLA tenía 3 bancas en
+# Diputados y ninguna en el Senado, y "el bloque propio" no era el oficialismo.
+VSB_INICIO = date(2023, 12, 10)
+VSB_BANCAS_CAMARA = {"diputados": 257, "senado": 72}
+VSB_MESES_VENTANA = 12
+# Cuántos ids consecutivos sin acta se toleran caminando hacia atrás antes de
+# dar por agotado el sitio de Diputados (la numeración tiene huecos de hasta 202).
+VSB_MARGEN_HUECOS_DIPUTADOS = 450
+
+_VSB_DIP_EXCLUIR = re.compile(
+    r"PEDIDO DE INFORMES|INTERPELACI|COMISI[OÓ]N INVESTIGADORA|\bDNU\b|DECRETO|"
+    r"CONCURSO P[UÚ]BLICO|HABILITACI[OÓ]N|MOCI[OÓ]N|APARTAMIENTO|PLAN DE LABOR|"
+    r"INSISTENCIA|RECONSIDERACI")
+_VSB_DIP_PARTICULAR = re.compile(
+    r"\bT[IÍ]TULO\s+[IVXLC]+\b|\bCAP[IÍ]TULO\s+[IVXLC]+\b|\bARTS?\.\s*\d|"
+    r"\bART[IÍ]CULOS?\s+\d|\bNUEVO ART|\bSECCI[OÓ]N\b|\bANEXO\b")
+_VSB_DIP_GENERAL = re.compile(r"VOT(?:\.|ACI[OÓ]N)\s*EN\s*GRAL")
+_VSB_DIP_ORDEN_DEL_DIA = re.compile(r"O\.\s*D\.\s*\d")
+_VSB_SEN_EXCLUIR = re.compile(
+    r"^(Moci[oó]n|Habilitaci[oó]n|Apartamiento|Cuesti[oó]n de privilegio|Acuerdos? para|"
+    r"Pliego|Designaci[oó]n|Ratificaci[oó]n|Reconocimiento a la labor|Declaraci[oó]n con motivo)",
+    re.IGNORECASE)
+_VSB_SEN_ETAPAS_GENERALES = ("EN GENERAL", "EN GENERAL Y EN PARTICULAR", "")
+
+
+def _quitar_duplicado(texto: str) -> str:
+    """Los PDF de Diputados imprimen en 'negrita simulada' ciertos textos con
+    cada carácter duplicado ('AAFFIIRRMMAATTIIVVOO'); si TODO el texto es así
+    devuelve el original, si no lo deja como está."""
+    if len(texto) >= 2 and len(texto) % 2 == 0 and texto[0::2] == texto[1::2]:
+        return texto[0::2]
+    return texto
+
+
+def _normalizar_linea_pdf(linea: str) -> str:
+    """Línea del PDF con cada palabra desduplicada por separado (los rótulos
+    salen normales y los valores duplicados, en la misma línea)."""
+    return " ".join(_quitar_duplicado(p) for p in linea.split())
+
+
+def _cabecera_acta_diputados_pdf(contenido: bytes) -> dict | None:
+    """Cabecera de un acta de Diputados (primera página del PDF): fecha, título
+    de la votación, resultado, 'Miembros del Cuerpo' y total de afirmativos del
+    encabezado. None si no se reconoce el formato."""
+    with pdfplumber.open(io.BytesIO(contenido)) as pdf:
+        texto = pdf.pages[0].extract_text() or ""
+    lineas = [l.strip() for l in texto.split("\n") if l.strip()]
+    norm = [_normalizar_linea_pdf(l) for l in lineas]
+    i_acta = next((i for i, l in enumerate(norm) if re.match(r"Acta N", l)), None)
+    if i_acta is None:
+        return None
+    i_periodo = next((i for i in range(i_acta) if re.search(r"Per[ií]odo", norm[i])), None)
+    if i_periodo is None:
+        return None
+    titulo = " ".join(_quitar_duplicado(l) for l in lineas[i_periodo + 1:i_acta]).strip()
+    cuerpo = "\n".join(norm)
+    m_fecha = re.search(r"Fecha:\s*(\d{2}/\d{2}/\d{4})", cuerpo)
+    m_res = re.search(r"Resultado de Votaci[oó]n:\s*(\S+)", cuerpo)
+    m_mie = re.search(r"Miembros del Cuerpo:\s*(\d+)", cuerpo)
+    m_afi = re.search(r"Afirmativos\s+\d+\s+\d+\s+\d+\s+(\d+)", cuerpo)
+    if not (titulo and m_res):
+        return None
+    fecha = None
+    if m_fecha:
+        try:
+            fecha = datetime.strptime(m_fecha.group(1), "%d/%m/%Y").strftime("%Y-%m-%d")
+        except ValueError:
+            fecha = None
+    return {
+        "fecha": fecha,
+        "titulo": titulo,
+        "resultado": m_res.group(1).upper(),
+        "bancas_camara": int(m_mie.group(1)) if m_mie else None,
+        "afirmativos_encabezado": int(m_afi.group(1)) if m_afi else None,
+    }
+
+
+def _vsb_conteos(filas: list[dict]) -> dict:
+    """Conteos que usa el excedente, a partir de las filas del acta."""
+    return {
+        "n_filas": len(filas),
+        "afirmativos": sum(1 for f in filas if f["voto"] == "AFIRMATIVO"),
+        "bancas_lla": sum(1 for f in filas if es_bloque_lla(f["bloque"])),
+        "lla_afirm": sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO"),
+        "lla_neg": sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO"),
+    }
+
+
+def _vsb_titulo_diputados_es_ley_general(titulo: str) -> bool:
+    """¿El título del acta de Diputados es una votación EN GENERAL de un
+    proyecto de ley? El PDF no trae el tipo de proyecto, así que se decide por
+    el título (ADR-0376): se acepta lo que dice 'VOT. EN GRAL.' y la
+    votación única de un Orden del Día (sin capítulo/título/artículo en el
+    rótulo), y se descartan mociones, habilitaciones, pedidos de informes,
+    comisiones investigadoras, DNU, insistencias y las votaciones en particular."""
+    t = (titulo or "").upper()
+    if _VSB_DIP_EXCLUIR.search(t):
+        return False
+    if _VSB_DIP_GENERAL.search(t):
+        return True
+    return bool(_VSB_DIP_ORDEN_DEL_DIA.search(t)) and not _VSB_DIP_PARTICULAR.search(t)
+
+
+def _vsb_entrada_senado_es_ley_general(e: dict) -> bool:
+    """¿El acta del Senado es una votación EN GENERAL de un proyecto de ley?
+    El Senado sí publica el tipo: la etapa ('EN GENERAL', 'EN GENERAL Y EN
+    PARTICULAR' o ninguna cuando se vota en bloque) y la clave del expediente
+    (sufijo -PL = proyecto de ley; -AC acuerdos, -PR resoluciones, -PD
+    declaraciones). Sin expediente, sólo se acepta un Orden del Día que no sea
+    designación, moción ni reconocimiento."""
+    if e.get("etapa", "") not in _VSB_SEN_ETAPAS_GENERALES:
+        return False
+    if _VSB_SEN_EXCLUIR.match(e.get("titulo") or ""):
+        return False
+    expedientes = e.get("expedientes") or []
+    if expedientes:
+        return any(x.endswith("-PL") for x in expedientes)
+    return bool(e.get("ods"))
+
+
+def _vsb_excedente(entrada: dict, camara: str) -> float | None:
+    """Excedente de UNA votación, o None si no entra al universo: no es una
+    votación en general de una ley, no se aprobó, el bloque LLA no votó
+    mayoritariamente a favor, o el acta no trae los conteos."""
+    if entrada.get("resultado") != "AFIRMATIVO":
+        return None
+    if entrada.get("afirmativos") is None or entrada.get("bancas_lla") is None:
+        return None
+    if camara == "diputados":
+        if not _vsb_titulo_diputados_es_ley_general(entrada.get("titulo", "")):
+            return None
+    elif not _vsb_entrada_senado_es_ley_general(entrada):
+        return None
+    if not entrada["lla_afirm"] > entrada["lla_neg"]:
+        return None
+    bancas = entrada.get("bancas_camara") or VSB_BANCAS_CAMARA[camara]
+    return (entrada["afirmativos"] - entrada["bancas_lla"]) / bancas * 100.0
+
+
+def _vsb_desde(referencia: date) -> date:
+    """Primer día de la ventana: los 12 meses calendario que terminan en el mes
+    de `referencia` (misma ventana que _veto_quorum_tasa_12m, ADR-0091), sin
+    pasar de la instalación del Congreso."""
+    meses = referencia.year * 12 + (referencia.month - 1) - (VSB_MESES_VENTANA - 1)
+    return max(date(meses // 12, meses % 12 + 1, 1), VSB_INICIO)
+
+
+def votos_sobre_bancas_camara(actas: dict, camara: str, referencia: date) -> dict | None:
+    """Promedio simple del excedente de las votaciones del universo de la
+    cámara en la ventana de 12 meses que termina en `referencia`. `actas` es
+    el dict id → entrada de esa cámara. None si no hay ninguna votación."""
+    desde = _vsb_desde(referencia).isoformat()
+    hasta = referencia.isoformat()
+    excedentes = []
+    for entrada in actas.values():
+        fecha = entrada.get("fecha") or ""
+        if not desde <= fecha <= hasta:
+            continue
+        ex = _vsb_excedente(entrada, camara)
+        if ex is not None:
+            excedentes.append((fecha, ex))
+    if not excedentes:
+        return None
+    return {
+        "valor": sum(e for _, e in excedentes) / len(excedentes),
+        "n_actas": len(excedentes),
+        "fecha_dato": max(f for f, _ in excedentes),
+    }
+
+
+def componer_votos_sobre_bancas(por_camara: dict) -> dict | None:
+    """Compuesto bicameral 65/35 renormalizado sobre las cámaras con dato (si
+    una cámara no tuvo votaciones en la ventana, el indicador es la otra
+    sola). `por_camara` = {camara: salida de votos_sobre_bancas_camara | None}."""
+    con_dato = {c: e for c, e in por_camara.items() if e is not None}
+    if not con_dato:
+        return None
+    peso_total = sum(COHESION_PESOS_CAMARAS[c] for c in con_dato)
+    valor = sum(e["valor"] * COHESION_PESOS_CAMARAS[c] for c, e in con_dato.items()) / peso_total
+    return {
+        "valor": round(valor, 1),
+        "n_actas": sum(e["n_actas"] for e in con_dato.values()),
+        "fecha_dato": max(e["fecha_dato"] for e in con_dato.values()),
+        "componentes": {c: {"valor": round(e["valor"], 1), "n_actas": e["n_actas"],
+                            "fecha_dato": e["fecha_dato"]} for c, e in con_dato.items()},
+        "camaras_sin_dato": [c for c in COHESION_PESOS_CAMARAS if c not in con_dato],
+    }
+
+
+def votos_sobre_bancas_valor(cache: dict, referencia: date) -> dict | None:
+    """Valor del indicador a la fecha `referencia` desde el caché de actas.
+    Es la ÚNICA implementación del cálculo: la card es esto evaluado hoy y la
+    serie mensual es esto evaluado en cada fin de mes (card y serie no pueden
+    divergir, ADR-0088)."""
+    return componer_votos_sobre_bancas({
+        c: votos_sobre_bancas_camara(cache.get(c, {}), c, referencia)
+        for c in COHESION_PESOS_CAMARAS})
+
+
+# -- caché permanente por acta ----------------------------------------------
+
+def _vsb_cargar_cache() -> dict:
+    try:
+        cache = json.loads(VSB_ACTAS_PATH.read_text(encoding="utf-8-sig"))
+        if isinstance(cache, dict):
+            return {"diputados": {}, "senado": {}, "diputados_ausentes": [], **cache}
+    except (OSError, json.JSONDecodeError):
+        pass
+    return {"diputados": {}, "senado": {}, "diputados_ausentes": []}
+
+
+def _vsb_guardar_cache(cache: dict) -> None:
+    """Escribe de a una acta (atómico) para que un corte retome donde quedó."""
+    VSB_ACTAS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    tmp = VSB_ACTAS_PATH.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(cache, indent=1, ensure_ascii=False, sort_keys=True),
+                   encoding="utf-8")
+    tmp.replace(VSB_ACTAS_PATH)
+
+
+def _vsb_entrada_diputados(contenido: bytes) -> dict | None:
+    """Entrada de caché de un acta de Diputados desde su PDF. Las filas (1,4 s
+    de parseo) sólo se leen si el acta es candidata: aprobada y con título de
+    votación en general de una ley. None si el PDF no se reconoce."""
+    entrada = _cabecera_acta_diputados_pdf(contenido)
+    if entrada is None:
+        return None
+    if entrada["resultado"] == "AFIRMATIVO" and _vsb_titulo_diputados_es_ley_general(entrada["titulo"]):
+        entrada.update(_vsb_conteos(_parsear_acta_diputados_pdf(contenido)))
+    return entrada
+
+
+def _vsb_actualizar_diputados(cache: dict) -> bool:
+    """Completa en `cache["diputados"]` las actas de Diputados publicadas.
+    Camina hacia atrás desde el id máximo hasta el piso ya conocido (o hasta
+    agotar VSB_MARGEN_HUECOS_DIPUTADOS ids seguidos sin acta, o 5 actas
+    anteriores a la instalación del Congreso), saltea lo ya cacheado y guarda
+    cada acta apenas la lee. True si no hubo ningún fallo transitorio."""
+    session = _hcdn_votaciones_session()
+    id_maximo = _diputados_acta_id_maximo(session)
+    if id_maximo is None:
+        return False
+    actas = cache["diputados"]
+    ausentes = set(cache.get("diputados_ausentes", []))
+    piso = cache.get("diputados_piso")
+    completo = True
+    huecos_seguidos = 0
+    viejas_seguidas = 0
+    id_actual = id_maximo
+    while id_actual > 0 and (piso is None or id_actual >= piso):
+        entrada = actas.get(str(id_actual))
+        # Una acta candidata cacheada sin filas (criterio de título que cambió
+        # después de leerla) se vuelve a leer.
+        falta_leer = (entrada is not None and entrada.get("resultado") == "AFIRMATIVO"
+                      and entrada.get("bancas_lla") is None
+                      and _vsb_titulo_diputados_es_ley_general(entrada.get("titulo", "")))
+        if entrada is None or falta_leer:
+            if id_actual in ausentes:
+                entrada = None
+            else:
+                contenido = _diputados_acta_pdf(session, id_actual)
+                if contenido is _ACTA_FALLO:
+                    completo = False
+                elif contenido is _ACTA_NO_EXISTE:
+                    if id_actual < id_maximo - 30:   # las más recientes pueden publicarse después
+                        ausentes.add(id_actual)
+                        cache["diputados_ausentes"] = sorted(ausentes)
+                else:
+                    nueva = _vsb_entrada_diputados(contenido)
+                    if nueva is None or nueva.get("fecha") is None:
+                        print(f"  [WARN] votos_sobre_bancas: acta {id_actual} de Diputados sin "
+                              f"cabecera o fecha legible -- se omite")
+                        completo = False
+                    else:
+                        actas[str(id_actual)] = entrada = nueva
+                        _vsb_guardar_cache(cache)
+        huecos_seguidos = 0 if entrada is not None else huecos_seguidos + 1
+        if entrada is not None:
+            viejas_seguidas = viejas_seguidas + 1 if entrada["fecha"] < VSB_INICIO.isoformat() else 0
+        if viejas_seguidas >= 5 or huecos_seguidos >= VSB_MARGEN_HUECOS_DIPUTADOS:
+            break
+        id_actual -= 1
+    if completo and huecos_seguidos >= VSB_MARGEN_HUECOS_DIPUTADOS and actas:
+        cache["diputados_piso"] = min(int(k) for k in actas)
+    _vsb_guardar_cache(cache)
+    return completo
+
+
+def _parsear_cabecera_acta_senado(html: str) -> dict | None:
+    """Cabecera de un acta del Senado (/votaciones/detalleActa/{id}): título,
+    expedientes, órdenes del día, fecha, resultado y etapa ('EN GENERAL', 'EN
+    PARTICULAR', 'OTRA', 'MOCIÓN DE ORDEN', ... o vacío si el acta no la
+    declara) y los conteos del encabezado."""
+    soup = BeautifulSoup(html, "html.parser")
+    lineas = [l.strip() for l in soup.get_text("\n", strip=True).split("\n") if l.strip()]
+    i = next((k for k, l in enumerate(lineas) if l.startswith("Acta Nro")), None)
+    j = next((k for k in range(i or 0, len(lineas)) if lineas[k] == "Datos abiertos:"), None)
+    if i is None or j is None:
+        return None
+    cab = lineas[i + 1:j]
+    i_fecha = next((k for k, l in enumerate(cab) if re.fullmatch(r"\d{2}/\d{2}/\d{4}", l)), None)
+    if i_fecha is None or i_fecha < 1:
+        return None
+    previo = cab[1:i_fecha]
+    expedientes = [l for l in previo if re.fullmatch(r"[A-Z]{1,4}-\d+/\d{2}(-[A-Z]{1,3})?", l)]
+    ods = [l for l in previo if l.startswith("O.D.")]
+    resto = cab[i_fecha + 2:]   # tras la fecha viene la hora
+    i_num = next((k for k, l in enumerate(resto) if l.isdigit()), len(resto))
+    fijos, numeros = resto[:i_num], resto[i_num:]
+    # Tras la hora vienen la mayoría exigida ('SIMPLE', 'DOS TERCIOS DE MIEMBROS
+    # PRESENTES'…), el resultado ('AFIRMATIVO', 'NEGATIVO', 'EMPATE', 'CANCELADA
+    # LEV.VOT.') y, si el acta la declara, la etapa.
+    if len(fijos) < 2:
+        return None
+    i_res = 1
+    etapa = fijos[2] if len(fijos) > 2 else ""
+    conteos = {}
+    for k in range(0, len(numeros) - 1, 2):
+        conteos[numeros[k + 1]] = int(numeros[k])
+    try:
+        fecha = datetime.strptime(cab[i_fecha], "%d/%m/%Y").strftime("%Y-%m-%d")
+    except ValueError:
+        return None
+    return {
+        "fecha": fecha,
+        "titulo": cab[0],
+        "expedientes": expedientes,
+        "ods": ods,
+        "resultado": fijos[i_res].upper(),
+        "etapa": etapa,
+        "afirmativos_encabezado": conteos.get("AFIRMATIVOS"),
+    }
+
+
+# Versión del formato de las entradas del Senado en el caché: la 2 cuenta también a
+# los senadores cuyo bloque figura en blanco en el acta (ver _vsb_filas_senado).
+VSB_VERSION_SENADO = 2
+
+
+def _vsb_filas_senado(html: str) -> list[dict]:
+    """Filas del acta del Senado como _parsear_acta, pero SIN descartar a quien
+    figura con el bloque en blanco (Recalde, p. ej., en varias actas): para
+    contar los votos afirmativos totales hay que contar a los 72."""
+    soup = BeautifulSoup(html, "html.parser")
+    filas = []
+    for tr in soup.select("table tr"):
+        celdas = tr.find_all("td")
+        if len(celdas) < 5:
+            continue
+        nombre = celdas[1].get_text(strip=True)
+        if not nombre:
+            continue
+        filas.append({"nombre": nombre, "bloque": celdas[2].get_text(strip=True),
+                      "provincia": celdas[3].get_text(strip=True),
+                      "voto": celdas[4].get_text(strip=True).upper()})
+    return filas
+
+
+def _vsb_actualizar_senado(cache: dict) -> bool:
+    """Completa en `cache["senado"]` las actas del Senado desde la instalación
+    del Congreso, año por año, usando el listado oficial. True si no hubo
+    ningún fallo (listado o detalle)."""
+    session = _hcdn_votaciones_session()
+    actas = cache["senado"]
+    completo = True
+    for anio in range(VSB_INICIO.year, date.today().year + 1):
+        listado = _descubrir_actas_senado(session, anio)
+        if listado is None:
+            completo = False
+            continue
+        for acta in listado:
+            if acta["fecha"].date() < VSB_INICIO or (
+                    acta["id"] in actas and actas[acta["id"]].get("v") == VSB_VERSION_SENADO):
+                continue
+            r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
+            filas = _vsb_filas_senado(r.text) if r is not None else []
+            cab = _parsear_cabecera_acta_senado(r.text) if r is not None else None
+            if not filas or cab is None:
+                completo = False
+                continue
+            actas[acta["id"]] = {**cab, **_vsb_conteos(filas), "bancas_camara": len(filas),
+                                 "v": VSB_VERSION_SENADO}
+            _vsb_guardar_cache(cache)
+    return completo
+
+
+def votos_sobre_bancas_actualizar() -> tuple[dict, bool]:
+    """(caché al día, completo). `completo` = ninguna descarga falló; con
+    False el caller no debe presentar el resultado como una lectura entera."""
+    cache = _vsb_cargar_cache()
+    ok_dip = _vsb_actualizar_diputados(cache)
+    ok_sen = _vsb_actualizar_senado(cache)
+    return cache, ok_dip and ok_sen
+
+
+def _vsb_detalle(valor: dict) -> str:
+    c = valor["componentes"]
+    partes = [f"{'Diputados' if cam == 'diputados' else 'Senado'}: "
+              f"{c[cam]['valor']:.1f}".replace(".", ",") + f" % ({c[cam]['n_actas']} votaciones)"
+              for cam in ("diputados", "senado") if cam in c]
+    txt = "Promedio de los últimos 12 meses, " + " · ".join(partes) + "."
+    if valor["camaras_sin_dato"]:
+        sin = " y ".join("Diputados" if x == "diputados" else "el Senado"
+                         for x in valor["camaras_sin_dato"])
+        txt += f" Sin votaciones del universo en {sin} en la ventana: el indicador usa sólo la otra cámara."
+    return txt
+
+
+def fetch_votos_sobre_bancas() -> dict | None:
+    """Card de votos_sobre_bancas (ADR-0376): el compuesto evaluado hoy. None
+    si la lectura de actas quedó incompleta o no hay ninguna votación del
+    universo en la ventana (el caller arrastra el último valor y lo marca)."""
+    try:
+        cache, completo = votos_sobre_bancas_actualizar()
+        if not completo:
+            _warn("votos_sobre_bancas", "lectura de actas incompleta -- se conserva el último valor")
+            return None
+        valor = votos_sobre_bancas_valor(cache, date.today())
+        if valor is None:
+            raise ValueError("sin votaciones del universo en la ventana de 12 meses")
+        return {
+            "valor": valor["valor"],
+            "unidad": "% de las bancas de la cámara",
+            "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
+            # Ventana de 12 meses evaluada HOY con la lectura de actas completa:
+            # el dato está al día aunque la última ley votada sea de hace meses
+            # (receso); esa fecha va aparte, para el que quiera verla.
+            "fecha_dato": date.today().isoformat(),
+            "ultima_votacion_incluida": valor["fecha_dato"],
+            "n_actas": valor["n_actas"],
+            "componentes": valor["componentes"],
+            "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
+            "desactualizado": False,
+            "detalle_txt": _vsb_detalle(valor),
+        }
+    except Exception as e:
+        _warn("votos_sobre_bancas", str(e))
+        return None
+
+
+def votos_sobre_bancas_serie() -> list:
+    """Serie mensual [[YYYY-MM-DD, %]] desde dic-2023: el compuesto evaluado en
+    cada fin de mes (y hoy). Es el mismo cálculo que la card."""
+    cache, completo = votos_sobre_bancas_actualizar()
+    if not completo:
+        print("  [WARN] votos_sobre_bancas serie: lectura de actas incompleta -- serie omitida")
+        return []
+    out = []
+    for fin in _fines_de_mes_politica(date(2023, 12, 1), date.today()):
+        valor = votos_sobre_bancas_valor(cache, fin)
+        if valor is not None:
+            out.append([fin.isoformat(), valor["valor"]])
+    return out
+
+
+def _fines_de_mes_politica(desde: date, hasta: date) -> list:
+    """Fines de mes entre `desde` y `hasta` más `hasta` mismo (igual que
+    descargar_series._fines_de_mes(incluir_hoy=True), que no se importa acá
+    para no cruzar dependencias)."""
+    puntos = []
+    anio, mes = desde.year, desde.month
+    while True:
+        fin = date(anio, mes, calendar.monthrange(anio, mes)[1])
+        if fin > hasta:
+            break
+        puntos.append(fin)
+        anio, mes = (anio + 1, 1) if mes == 12 else (anio, mes + 1)
+    if not puntos or puntos[-1] != hasta:
+        puntos.append(hasta)
+    return puntos
+
+
 def componer_cohesion_bloque(dip: dict | None, sen: dict | None) -> dict | None:
     """Card compuesta bicameral de cohesión del bloque LLA (ADR-0048,
     revisión editorial CIGOB 2026-07-10): un solo indicador en lugar de las
@@ -6651,6 +7152,7 @@ def main() -> None:
         ("derrotas_legislativas",         fetch_derrotas_legislativas),
         ("rotacion_gabinete",             fetch_rotacion_gabinete),
         ("protestas_caba",                fetch_protestas_caba),
+        ("votos_sobre_bancas",            fetch_votos_sobre_bancas),
     ]
 
     for nombre, fetcher in colectores:

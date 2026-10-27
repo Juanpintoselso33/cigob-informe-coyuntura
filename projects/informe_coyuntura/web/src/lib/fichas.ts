@@ -1760,7 +1760,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Mide qué tan unido vota el bloque oficialista puertas adentro de las dos cámaras — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
       "El puntaje del índice se asigna por bandas del compuesto, interpolado entre anclas: más de 99,9% → el más alto; entre 99% y 99,9% → alto; entre 97% y 99% → moderado; entre 95% y 97% → bajo; 95% o menos → el más bajo. Los umbrales se calibraron contra la serie mensual del propio compuesto (dic-2023 en adelante, rango observado 90,3–100): las cinco bandas tienen meses reales observados.",
-      "Es el único indicador de la dimensión de cohesión interna del oficialismo del índice del cinturón (16,1% del total).",
+      "Comparte la dimensión de cohesión interna del oficialismo del índice del cinturón (16,1% del total) a partes iguales con los votos ajenos al aprobar leyes: pesa la mitad de la dimensión. Si falta ese otro indicador, la cohesión lleva la dimensión entera.",
     ],
     limitaciones: [
       "Solo cuenta al bloque propio de LLA: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.",
@@ -1772,6 +1772,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si la lectura de uno de los portales falla, se conserva el último promedio calculado de esa cámara y el compuesto se arma igual; recién se marca desactualizado si ninguna cámara tuvo una actualización que llegara a su portal en más de 10 días — un receso legislativo sin actas nuevas no cuenta como desactualización.",
     revisiones: "Cuando las fuentes responden, se recalcula el promedio de los últimos 90 días. Ante fallos o receso sin actas se aplica la conservación del último promedio descrita en faltantes. El detalle muestra la fecha de última acta y la condición de caché de cada cámara; la fecha más reciente del compuesto no acredita actualización de ambas.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Pasa a compartir la dimensión de cohesión interna, a partes iguales, con el indicador nuevo de votos ajenos al aprobar leyes: su peso en el índice baja de 16,1% a unos 8%. No cambia el cálculo ni las anclas.", adr: "0376" },
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Cohesión del bloque oficialista (ambas cámaras)», sin siglas. No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-09-08", cambio: "Senado: una descarga fallida o una página sin votos invalida la lectura completa, en la tarjeta y en la reconstrucción anual. La tarjeta excluye actas posteriores al corte; no se publica un promedio parcial como actualización exitosa." },
       { fecha: "2026-09-08", cambio: "El desglose público incorpora fechas de actas y caché por cámara; explica la renormalización al 100% cuando sólo aporta una. Se conserva la fórmula.", adr: "0284" },
@@ -1779,6 +1780,56 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-07", cambio: "Deja de ser una estimación manual: pasa a calcularse en forma automática desde las votaciones nominales de Diputados, con una definición observable — qué tan pareja o dispareja es la votación interna del bloque propio, acta por acta." },
       { fecha: "2026-07-09", cambio: "Serie histórica mensual del gráfico y umbrales de puntaje recalibrados contra las series reconstruidas de cada cámara (29 a 31 meses reales)." },
       { fecha: "2026-07-10", cambio: "Revisión editorial del cinturón: las dos cámaras se fusionan en este único indicador bicameral (Diputados 65%, Senado 35% — el reparto que ya tenían como indicadores separados), con umbrales recalibrados contra la serie mensual del compuesto (99,9/99,0/97,0/95,0). La serie del gráfico pasa a ser la del compuesto." },
+    ],
+  },
+
+  votos_sobre_bancas: {
+    tipo: "indicador",
+    id: "votos_sobre_bancas",
+    cinturon: "politica",
+    rezago: "Las actas de votación nominal se publican a los pocos días de la sesión. El indicador promedia los últimos 12 meses, así que describe en promedio la situación de hace unos seis meses aunque su último dato sea de la semana pasada.",
+    fuente: {
+      organismo: "Cámara de Diputados y Senado de la Nación",
+      operacion: "Actas de votación nominal de ambas cámaras: título de la votación, resultado, voto de cada legislador y bloque al que pertenece",
+      serie: "Una fila por votación nominal en general de un proyecto de ley aprobado con el bloque La Libertad Avanza a favor",
+      url: "https://votaciones.hcdn.gob.ar",
+      acceso: "Automático: Diputados, el PDF de cada acta del portal de votaciones; Senado, la página de detalle de cada acta del portal de votaciones. Cada acta se guarda una vez en data/politica/votos_sobre_bancas_actas.json y no se vuelve a descargar.",
+    },
+    transformaciones: [
+      "Se toman las votaciones nominales EN GENERAL de proyectos de ley que salieron aprobadas y en las que el bloque La Libertad Avanza (LLA) votó mayoritariamente a favor, es decir, con más votos afirmativos que negativos dentro del bloque. Quedan afuera las votaciones en particular, las mociones, las habilitaciones sobre tablas, los pedidos de informes, las comisiones investigadoras, los decretos, los pliegos y designaciones, las leyes rechazadas y aquellas en las que LLA votó en contra o empató.",
+      "En el Senado el acta declara la etapa (en general, en particular, en general y en particular) y la clave del expediente, y se acepta el sufijo de proyecto de ley. En Diputados el acta no dice qué tipo de proyecto es: se decide por el título de la votación, y una votación única de un Orden del Día cuenta como votación en general.",
+      "Para cada votación: votos afirmativos totales menos las bancas del bloque LLA en esa acta, dividido por las bancas de la cámara (257 en Diputados, 72 en el Senado), por cien. Las bancas del bloque son todos los legisladores del bloque listados en el acta, hayan votado o estén ausentes. El acta de Diputados no lista a quien preside la cámara (256 filas sobre 257 bancas): esa banca no entra al numerador ni al bloque y sí al total de la cámara.",
+      "Por cámara es el promedio simple de las votaciones de los últimos 12 meses calendario, contando cada votación una vez. El indicador pesa Diputados 65% y Senado 35%, el mismo reparto que la cohesión del bloque; si una cámara no tuvo votaciones del universo en la ventana, el indicador es la otra sola y la tarjeta lo dice.",
+      "La ventana no cruza la instalación del Congreso del 10 de diciembre de 2023: antes, LLA tenía tres bancas en Diputados y ninguna en el Senado, y no era el bloque oficialista.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "> 45", puntaje: 100 },
+        { banda: "35 – 45", puntaje: 100 },
+        { banda: "25 – 35", puntaje: 85 },
+        { banda: "15 – 25", puntaje: 65 },
+        { banda: "5 – 15", puntaje: 40 },
+        { banda: "≤ 5", puntaje: 10 },
+      ],
+      puntos: [[5, 10], [10, 40], [20, 65], [30, 85], [40, 100], [45, 100]],
+      unidadCorta: "% de la cámara",
+    },
+    incidenciaTexto: [
+      "El puntaje del índice se interpola entre anclas declaradas por convención, más alto = mejor: 40% de la cámara o más → el más alto; 30% → alto; 20% → moderado; 10% → bajo; 5% o menos → el más bajo. Son anclas de convención, no una calibración contra el rango observado: ningún antecedente externo dice cuántos votos ajenos hacen falta para gobernar bien. La tabla de bandas pone cada ancla en el punto medio de su tramo.",
+      "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (16,1% del total), a partes iguales con la cohesión del bloque: es lo que baja el peso de la cohesión a la mitad de la dimensión. Cuando falta una cámara, el peso pasa a la otra; cuando falta el indicador entero, la dimensión queda en la cohesión.",
+    ],
+    limitaciones: [
+      "Mide cuántos votos ajenos hicieron falta, no quién los puso: una ley aprobada con los votos de un bloque grande aliado cuenta igual que una aprobada con muchos bloques chicos. Tampoco distingue a un aliado estable de uno que vota caso por caso.",
+      "El excedente depende del tamaño del bloque propio. Las bancas de LLA en las actas pasan de 36 a 39 a 94 en Diputados y de 9 a 21 en el Senado con la renovación de diciembre de 2025: con el mismo respaldo total, el excedente baja porque ahora hay más votos propios. El indicador mide la necesidad de votos ajenos, no el éxito de la negociación, y ese salto no es una pérdida de capacidad.",
+      "Las leyes de consenso (tratados, declaraciones de capital nacional, reconocimientos) se aprueban con casi toda la cámara y suben el promedio sin que el Gobierno haya negociado nada: en 2026 esas votaciones rondan 40-65% de la cámara, mientras que las leyes de la agenda oficial (presupuesto, reforma laboral, inocencia fiscal) quedan entre 12% y 35%. Se cuentan por votación, no por ley: una ley con más de una votación en general pesa más.",
+      "El universo de Diputados se decide por el título del acta, que no dice qué clase de proyecto es: una resolución con título de orden del día podría contarse y una ley con un título atípico, quedar afuera. En el Senado, un acta sin clave de expediente se acepta si es un Orden del Día que no es designación ni moción.",
+      "El portal de Diputados publica sólo las actas desde el 6 de febrero de 2025 (en la lectura de octubre de 2026 las anteriores devolvían error). La serie de Diputados arranca ahí; antes de febrero de 2026 la ventana de 12 meses de esa cámara está incompleta, y entre diciembre de 2023 y enero de 2025 el indicador es sólo el Senado. Las actas ya descargadas se conservan en el repositorio.",
+      "Depende de que los portales públicos mantengan su estructura: un cambio de diseño interrumpe la lectura hasta que se ajuste el colector.",
+    ],
+    faltantes: "Si la lectura de alguna acta falla, no se publica un promedio parcial: se conserva el último valor, señalado como desactualizado, y las actas ya leídas no se descargan de nuevo. Sin ningún valor previo, el indicador queda fuera y la dimensión queda con la cohesión del bloque. Una cámara sin votaciones en la ventana (receso) se omite y el indicador usa la otra.",
+    revisiones: "Un acta publicada no cambia, así que la serie es reproducible. El criterio de qué título cuenta como ley puede ajustarse: el caché guarda título y conteos de cada acta, y un cambio de criterio recalcula toda la historia sin volver a descargar.",
+    cambios: [
+      { fecha: "2026-10-27", cambio: "Incorporado al cinturón político: votos de otros bloques con que se aprueban las leyes, como % de las bancas de la cámara, Diputados 65% y Senado 35%. Entra a la dimensión de cohesión interna a partes iguales con la cohesión del bloque, que baja a la mitad de la dimensión.", adr: "0376" },
     ],
   },
 
@@ -3929,6 +3980,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-31", cambio: "El índice alcanza su estructura vigente de siete dimensiones y dieciocho indicadores: incorpora el Poder Judicial y el sector privado como actores diferenciados, y amplía la medición legislativa. La composición y los pesos vigentes quedan publicados en la tabla del índice." },
       { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses. No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes.", adr: "0231" },
       { fecha: "2026-10-07", cambio: "Sale la dimensión de imagen y voto, cuyo único indicador era la ventaja electoral del Votómetro: el Votómetro deja el Monitor y pasa a ser un producto aparte. Su 7% se reparte entre las seis dimensiones restantes en proporción a su peso, así que el orden entre ellas no cambia. El índice queda en seis dimensiones y sube de 71,2 a 73,8 con los datos del 7 de octubre. La validación externa deja de usar la confianza en el Gobierno de Di Tella, que pasa a integrar el índice de impacto social, y el índice político se queda sin factor común: se sigue publicando su correlación con la incertidumbre de política.", adr: "0344,0345" },
+      { fecha: "2026-10-27", cambio: "La dimensión de cohesión interna suma un indicador nuevo, los votos ajenos al aprobar leyes (cuántos votos de otros bloques hicieron falta, como % de las bancas de la cámara), y se reparte a partes iguales con la cohesión del bloque. El peso de la dimensión no cambia; la cohesión pasa de 16,1% a unos 8% del índice.", adr: "0376" },
     ],
   },
 };

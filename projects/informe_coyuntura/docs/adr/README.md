@@ -230,6 +230,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0358](0358-quorum-caido-de-la-oposicion-no-cuenta.md) | Una sesión caída que pidió la oposición no cuenta como Congreso trabado | `veto_quorum` | vigente |
 | [0372](0372-la-brecha-de-obra-publica-sale-del-indice-politico.md) | La brecha de obra pública sale del índice político | `brecha_obra_publica`, `apoyo_empresario` | vigente |
 | [0374](0374-la-tasa-de-la-corte-y-las-comisiones-del-consejo-salen-del-indice-politico.md) | La tasa de la Corte y las comisiones del Consejo salen del índice político | `velocidad_resolucion`, `paralisis_denuncias`, `cobertura_judicial` | vigente |
+| [0376](0376-votos-sobre-bancas-entra-a-cohesion.md) | Los votos ajenos al aprobar leyes entran a la cohesión interna | `votos_sobre_bancas`, `cohesion_bloque` | vigente |
 | [0377](0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) | Vetos insistidos y decretos derogados reemplazan a quórum y desafíos | `insistencias_vetos`, `rechazos_decretos`, `veto_quorum` | vigente |
 | [0378](0378-transferencias-no-automaticas-reemplazan-a-las-automaticas.md) | Las transferencias no automáticas reemplazan a las automáticas | `transferencias_no_automaticas`, `iaf_transferencias` | vigente |
 

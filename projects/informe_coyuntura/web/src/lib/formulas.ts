@@ -353,6 +353,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`0{,}65\times\text{cohesi\'on Diputados}+0{,}35\times\text{cohesi\'on Senado}`,
     leyenda: "Compuesto bicameral. La cohesión de cada cámara es el promedio, sobre las actas divididas de los últimos 90 días, de |votos a favor − votos en contra| dividido por el total de votos que emitió el bloque propio de LLA en cada acta (índice de Rice); abstenciones y ausencias no entran. Si una cámara no tiene actas divididas en la ventana, el peso se reparte sobre la otra.",
   },
+  votos_sobre_bancas: {
+    latex: String.raw`\frac{\text{votos afirmativos}-\text{bancas de LLA}}{\text{bancas de la c\'amara}}\times 100`,
+    leyenda: "Por cada votación nominal en general de un proyecto de ley que salió aprobada y en la que el bloque La Libertad Avanza votó mayoritariamente a favor: votos afirmativos totales menos las bancas del bloque LLA (todos los legisladores del bloque en el acta, hayan votado o no), sobre las bancas de la cámara (257 en Diputados, 72 en el Senado). Cada cámara es el promedio simple de sus votaciones de los últimos 12 meses; el indicador pesa Diputados 65% y Senado 35% (si una cámara no tuvo votaciones, queda la otra).",
+  },
   alineamiento_senadores_prov: {
     latex: String.raw`\frac{1}{N_{\text{provincias}}}\sum_{\text{provincias}}\frac{\text{votos no-LLA que coinciden con la posici\'on LLA}}{\text{votos no-LLA}}\times 100`,
     leyenda: "Actas del Senado de los últimos 90 días: por provincia, qué proporción de los votos de senadores que no son del bloque LLA coincidió con el sentido en que votó ese bloque; el indicador promedia entre provincias con al menos un senador no oficialista.",

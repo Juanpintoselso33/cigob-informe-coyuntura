@@ -425,6 +425,21 @@ BANDAS_ITCP = {
         (95.0, 97.0, 40),
         (-INF, 95.0, 10),
     ],
+    "votos_sobre_bancas": [
+        # ADR-0376 (2026-10-27). CONVENCIÓN declarada, no calibrada contra el
+        # rango observado: más alto = mejor, en % de las bancas de la cámara.
+        # Anclas de interpolación (valor → puntaje): 40 o más → 100 · 30 → 85 ·
+        # 20 → 65 · 10 → 40 · 5 o menos → 10. Las tablas de bandas de este
+        # motor interpolan en el punto medio de cada banda finita y en el borde
+        # de las abiertas, así que para que las anclas caigan EXACTAMENTE en
+        # 10/20/30/40 las bandas son (5,15) (15,25) (25,35) (35,45) y la
+        # abierta (45,+inf) repite el 100: el techo es el 40, no el 45.
+        # Si se prefiere la lectura por cortes (≥40 · 30-40 · 20-30 · 10-20 ·
+        # ≤10), se cambia esta tabla y la ficha, y el puntaje de un 20% pasa
+        # de 65 a ~52.
+        (45.0, INF, 100), (35.0, 45.0, 100), (25.0, 35.0, 85), (15.0, 25.0, 65),
+        (5.0, 15.0, 40), (-INF, 5.0, 10),
+    ],
     "cohesion_bloque_senado": [
         # RETIRADO como indicador propio 2026-07-10 (ADR-0048): absorbido por
         # el compuesto bicameral de cohesion_bloque (35% interno). La banda
@@ -630,7 +645,11 @@ DIMENSIONES_ITCP = {
         # fórmula). rotacion_gabinete (que había entrado el 09-jul por
         # ADR-0047) sale del índice por la revisión editorial; los pesos
         # ENTRE dimensiones (ADR-0036) no se tocan.
-        "indicadores": {"cohesion_bloque": 1.0},
+        # 2026-10-27 (ADR-0376): entra votos_sobre_bancas (cuántos votos AJENOS
+        # hacen falta para aprobar una ley) y la dimensión se reparte 50/50
+        # con la cohesión del bloque. La cohesión baja a ~8% del índice, que
+        # es lo que pidió Luis; el peso de la dimensión no se toca.
+        "indicadores": {"cohesion_bloque": 0.5, "votos_sobre_bancas": 0.5},
     },
     "conflicto_social": {
         "nombre": "Conflicto social",
@@ -892,6 +911,7 @@ FAMILIAS_ITCP = {
     "eficacia_legislativa": "capacidad",       # cuánto de lo que manda se sanciona
     "ratio_dnu": "capacidad",                  # cuánto depende del decreto
     "cohesion_bloque": "capacidad",            # cuán unido vota su propio bloque
+    "votos_sobre_bancas": "capacidad",         # cuántos votos ajenos suma para aprobar una ley
     # Cubrir cargos de juez EXIGE acuerdo del Senado: no es conducta de un
     # tercero sino resultado de lo que el Gobierno consigue negociar (ADR-0126).
     "cobertura_judicial": "capacidad",
@@ -962,6 +982,9 @@ REZAGO_MESES_ITCP = {
     # Ventanas de 90 días.
     "alineamiento_senadores_prov": 1.5,
     "cohesion_bloque": 1.5,
+    # Ventana móvil de 12 meses sobre actas de votación nominal, que se publican
+    # a los pocos días: queda el centroide de la ventana (ADR-0376).
+    "votos_sobre_bancas": 6.0,
     # Stock acumulado de adhesiones: describe el estado vigente, no un promedio.
     "adhesion_reformas_provincial": 0.0,
 }

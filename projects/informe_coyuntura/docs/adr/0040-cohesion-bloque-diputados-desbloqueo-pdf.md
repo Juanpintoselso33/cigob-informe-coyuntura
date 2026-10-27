@@ -6,6 +6,7 @@ fecha: 2026-07-09
 cinturon: 'politica'
 indicadores: [fetch_cohesion_bloque_diputados_actas_anio, fetch_cohesion_bloque]
 archivos: ['scripts/politica.py', _parsear_acta_diputados_pdf, _diputados_acta_fecha, _diputados_acta_pdf, _diputados_acta_id_maximo, _descubrir_actas_diputados_pdf, 'tests/test_politica_cohesion.py', 'tests/fixtures/acta_diputados_5959.pdf']
+relacionado: ['0376']
 ambito: '`scripts/politica.py` (`_parsear_acta_diputados_pdf`, `_diputados_acta_fecha`, `_diputados_acta_pdf`, `_diputados_acta_id_maximo`, `_descubrir_actas_diputados_pdf`, `fetch_cohesion_bloque_diputados_actas_anio`, `fetch_cohesion_bloque` reescrito) · `tests/test_politica_cohesion.py` · `tests/fixtures/acta_diputados_5959.pdf`'
 ---
 

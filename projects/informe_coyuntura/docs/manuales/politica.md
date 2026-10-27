@@ -165,15 +165,31 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **16.1%** |
+| Peso dentro de la dimensión | 50% |
+| Peso efectivo en el índice | **8.1%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 1.5 meses |
 | Procedencia del ancla | `convencion` — calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048) |
 
 **Bandas**: > 99.9 → 100 · 99–99.9 → 85 · 97–99 → 65 · 95–97 → 40 · ≤ 95 → 10
 
-**Lo gobiernan**: [ADR-0041](../adr/0041-cohesion-bloque-diputados-cache-permanente-y-serie-mensual.md) cohesion_bloque (Diputados): caché permanente por acta y serie mensual real · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara
+**Lo gobiernan**: [ADR-0041](../adr/0041-cohesion-bloque-diputados-cache-permanente-y-serie-mensual.md) cohesion_bloque (Diputados): caché permanente por acta y serie mensual real · [ADR-0284](../adr/0284-cohesion-publica-fechas-y-cache-por-camara.md) Cohesión publica fechas y caché por cámara · [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna
+
+#### Votos ajenos al aprobar leyes
+
+`votos_sobre_bancas`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 50% |
+| Peso efectivo en el índice | **8.1%** |
+| Familia de lectura | capacidad propia |
+| Rezago declarado | 6 meses |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Bandas**: > 45 → 100 · 35–45 → 100 · 25–35 → 85 · 15–25 → 65 · 5–15 → 40 · ≤ 5 → 10
+
+**Lo gobiernan**: [ADR-0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) Los votos ajenos al aprobar leyes entran a la cohesión interna
 
 ### Dimensión `conflicto_social` (11%)
 

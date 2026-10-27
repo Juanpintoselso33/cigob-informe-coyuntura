@@ -7,6 +7,7 @@ cinturon: 'politica'
 indicadores: [fetch_cohesion_bloque_diputados_actas_anio, fetch_cohesion_bloque, fetch_cohesion_bloque_diputados_mensual, cohesion_bloque]
 parametros: ['POLITICA_DERIVADAS']
 archivos: ['scripts/politica.py', _acta_diputados_cacheada, '_cargar/_guardar_cache_cohesion_diputados', _descubrir_actas_diputados_pdf, 'scripts/descargar_series.py', _actas_cohesion_diputados_cacheadas, 'tests/test_politica_cohesion.py', 'tests/test_descargar_series_cohesion.py']
+relacionado: ['0376']
 ambito: '`scripts/politica.py` (`_acta_diputados_cacheada`, `_cargar/_guardar_cache_cohesion_diputados`, `fetch_cohesion_bloque_diputados_actas_anio` reescrito, `fetch_cohesion_bloque` reescrito, `_descubrir_actas_diputados_pdf` eliminada) · `scripts/descargar_series.py` (`_actas_cohesion_diputados_cacheadas`, `fetch_cohesion_bloque_diputados_mensual`, `cohesion_bloque` vuelve a `POLITICA_DERIVADAS`) · `tests/test_politica_cohesion.py` · `tests/test_descargar_series_cohesion.py`'
 ---
 

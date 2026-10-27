@@ -242,13 +242,14 @@ def test_banda_rotacion_gabinete_interpolado_discrimina():
     assert parametrica.puntaje_interpolado(7, bandas) == 10.0   # jun-2026 (máximo)
 
 
-def test_dimension_cohesion_interna_es_solo_el_compuesto():
-    # ADR-0048 (revisión editorial 2026-07-10): la dimensión queda en el
-    # compuesto bicameral solo; rotacion_gabinete sale a contexto y
-    # cohesion_bloque_senado se fusiona adentro del compuesto. Los pesos
-    # ENTRE dimensiones (ADR-0036) no se tocan.
+def test_dimension_cohesion_interna_se_reparte_entre_cohesion_y_votos_ajenos():
+    # ADR-0048 (revisión editorial 2026-07-10): la dimensión quedó en el
+    # compuesto bicameral solo; rotacion_gabinete salió a contexto y
+    # cohesion_bloque_senado se fusionó adentro del compuesto. ADR-0376
+    # (2026-10-27): entra votos_sobre_bancas y la dimensión se reparte 50/50.
+    # Los pesos ENTRE dimensiones (ADR-0036) no se tocan.
     dim = itcp.DIMENSIONES_ITCP["cohesion_interna"]
-    assert dim["indicadores"] == {"cohesion_bloque": 1.0}
+    assert dim["indicadores"] == {"cohesion_bloque": 0.5, "votos_sobre_bancas": 0.5}
     assert dim["peso"] == 0.1613   # 0.20 → 0.18 (ADR-0088) → 0.15 (ADR-0126) → 0.1613 (ADR-0344)
 
 

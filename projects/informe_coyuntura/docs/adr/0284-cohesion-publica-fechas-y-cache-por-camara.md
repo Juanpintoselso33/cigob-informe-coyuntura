@@ -6,6 +6,7 @@ fecha: 2026-09-08
 cinturon: 'politica'
 indicadores: [cohesion_bloque, alineamiento_senadores_prov]
 archivos: ['scripts/publicar.py', 'web/src/lib/fichas.ts']
+relacionado: ['0376']
 ambito: 'Presentación de actualización parcial y conservación de datos'
 origen: 'Auditoría integral solicitada por Juan'
 ---
