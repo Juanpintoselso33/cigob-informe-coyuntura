@@ -14,11 +14,11 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `poder_legislativo` | 23% | `ratio_dnu`, `eficacia_legislativa`, `veto_quorum`, `desafios_legislativos`, `produccion_legislativa` |
+| `poder_legislativo` | 23% | `ratio_dnu`, `eficacia_legislativa`, `insistencias_vetos`, `rechazos_decretos`, `produccion_legislativa` |
 | `alianzas_territoriales` | 20% | `transferencias_no_automaticas`, `alineamiento_senadores_prov`, `adhesion_reformas_provincial` |
-| `cohesion_interna` | 16% | `cohesion_bloque` |
+| `cohesion_interna` | 16% | `cohesion_bloque`, `votos_sobre_bancas` |
 | `conflicto_social` | 11% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
-| `poder_judicial` | 16% | `cobertura_judicial`, `velocidad_resolucion`, `paralisis_denuncias` |
+| `poder_judicial` | 16% | `cobertura_judicial` |
 | `sector_privado` | 14% | `apoyo_empresario`, `apoyo_comercio` |
 
 Suma de pesos: 100%.
@@ -59,37 +59,37 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0061](../adr/0061-eficacia-legislativa-cohorte-madura.md) eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo · [ADR-0063](../adr/0063-eficacia-legislativa-expedientes-jgm.md) eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible · [ADR-0070](../adr/0070-eficacia-mascara-era-validacion.md) máscara de era para eficacia_legislativa en la reconstrucción del ITCP
 
-#### Sesiones caídas por falta de quórum
+#### Vetos que el Congreso dio vuelta
 
-`veto_quorum`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 15% |
-| Peso efectivo en el índice | **3.4%** |
-| Familia de lectura | tensión externa |
-| Rezago declarado | 6 meses |
-| Procedencia del ancla | `conceptual` — tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121) |
-
-**Bandas**: ≤ 5 → 100 · 5–10 → 85 · 10–20 → 65 · 20–30 → 40 · > 30 → 10
-
-**Lo gobiernan**: [ADR-0091](../adr/0091-veto-quorum-contaba-mal-el-fracaso.md) El indicador de quórum contaba mal el fracaso · [ADR-0308](../adr/0308-sesiones-y-sanciones-fuera-del-catalogo.md) Sesiones y sanciones fuera del catálogo · [ADR-0358](../adr/0358-quorum-caido-de-la-oposicion-no-cuenta.md) Una sesión caída que pidió la oposición no cuenta como Congreso trabado
-
-#### Normas desafiadas en el recinto
-
-`desafios_legislativos`
+`insistencias_vetos`
 
 | | |
 |---|---|
 | Peso dentro de la dimensión | 15% |
 | Peso efectivo en el índice | **3.4%** |
 | Familia de lectura | tensión externa |
-| Rezago declarado | 6 meses |
-| Procedencia del ancla | `convencion` — anclas sobre el conteo observado (4 a 13 en 22 meses), leído contra el carácter excepcional del acto (ADR-0089) |
+| Rezago declarado | 0 meses |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
 
-**Bandas**: ≤ 2 → 100 · 2–5 → 85 · 5–9 → 65 · 9–12 → 40 · > 12 → 10
+**Bandas**: ≤ 0 → 100 · 0–2 → 60 · 2–4 → 35 · > 4 → 10
 
-**Lo gobiernan**: [ADR-0089](../adr/0089-desafios-en-lugar-de-derrotas.md) Desafíos legislativos en lugar de derrotas legislativas · [ADR-0276](../adr/0276-sin-desafios-no-hay-tasa-de-bloqueo.md) Sin desafíos no hay tasa de bloqueo · [ADR-0330](../adr/0330-bloqueo-sostenido-sale-del-indice-y-del-tablero.md) bloqueo_sostenido sale del índice y del tablero: enmudecer en el extremo no es una card
+**Lo gobiernan**: [ADR-0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) Vetos insistidos y decretos derogados reemplazan a quórum y desafíos
+
+#### Decretos derogados por el Congreso
+
+`rechazos_decretos`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 15% |
+| Peso efectivo en el índice | **3.4%** |
+| Familia de lectura | tensión externa |
+| Rezago declarado | 0 meses |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Bandas**: ≤ 0 → 100 · 0–2 → 60 · 2–4 → 35 · > 4 → 10
+
+**Lo gobiernan**: [ADR-0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) Vetos insistidos y decretos derogados reemplazan a quórum y desafíos
 
 #### Producción legislativa del Congreso
 
@@ -233,47 +233,15 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 50% |
-| Peso efectivo en el índice | **8.1%** |
+| Peso dentro de la dimensión | 100% |
+| Peso efectivo en el índice | **16.1%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 1 meses |
 | Procedencia del ancla | `conceptual` — niveles redondos de cobertura de un cuerpo (>90 completa · 80-90 buena · 70-80 aceptable · 60-70 deficitaria · ≤60 crítica), explícitamente NO calibrados contra el rango observado 64-73%, que es desempeño real y bajo (ADR-0126) |
 
 **Bandas**: > 90 → 100 · 80–90 → 85 · 70–80 → 65 · 60–70 → 40 · ≤ 60 → 10
 
-**Lo gobiernan**: [ADR-0126](../adr/0126-el-itcp-abre-la-dimension-poder-judicial.md) El ITCP abre la dimensión del Poder Judicial · [ADR-0144](../adr/0144-el-piloto-de-concursos-corrobora-cobertura-judicial.md) El piloto de concursos corrobora la cobertura judicial · [ADR-0240](../adr/0240-el-numerador-viaja-con-su-fecha.md) El numerador viaja con su fecha · [ADR-0297](../adr/0297-cobertura-excluye-corte-y-renovaciones.md) Cobertura excluye Corte Suprema y renovaciones · [ADR-0298](../adr/0298-cobertura-concilia-movimientos-netos-y-bajas.md) Cobertura concilia movimientos netos y bajas
-
-#### Tasa de resolución de la Corte
-
-`velocidad_resolucion`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 25% |
-| Peso efectivo en el índice | **4.0%** |
-| Familia de lectura | tensión externa |
-| Rezago declarado | 12 meses |
-| Procedencia del ancla | `conceptual` — el 100% es el punto donde la Corte resuelve exactamente lo que le entra, sin acumular ni descargar atraso; los cortes son márgenes redondos alrededor de ese valor y no el rango observado 26-142 (ADR-0168) |
-
-**Bandas**: ≤ 40 → 100 · 40–70 → 85 · 70–100 → 65 · 100–130 → 40 · > 130 → 10
-
-**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0281](../adr/0281-tasa-de-resolucion-no-es-duracion-judicial.md) Tasa de resolución no es duración judicial
-
-#### Actividad de las comisiones de control
-
-`paralisis_denuncias`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 25% |
-| Peso efectivo en el índice | **4.0%** |
-| Familia de lectura | tensión externa |
-| Rezago declarado | 2 meses |
-| Procedencia del ancla | `conceptual` — cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, preservados al corregir el universo de slugs numerados (rango 13-18; ADR-0168/0268) |
-
-**Bandas**: ≤ 2 → 100 · 2–4 → 85 · 4–6 → 65 · 6–9 → 40 · > 9 → 10
-
-**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0170](../adr/0170-judicializacion-y-paralisis-pasan-a-fuente-viva.md) Judicialización y parálisis de denuncias pasan a fuente viva · [ADR-0268](../adr/0268-el-slug-no-define-una-sesion.md) El slug no define una sesión
+**Lo gobiernan**: [ADR-0126](../adr/0126-el-itcp-abre-la-dimension-poder-judicial.md) El ITCP abre la dimensión del Poder Judicial · [ADR-0144](../adr/0144-el-piloto-de-concursos-corrobora-cobertura-judicial.md) El piloto de concursos corrobora la cobertura judicial · [ADR-0240](../adr/0240-el-numerador-viaja-con-su-fecha.md) El numerador viaja con su fecha · [ADR-0297](../adr/0297-cobertura-excluye-corte-y-renovaciones.md) Cobertura excluye Corte Suprema y renovaciones · [ADR-0298](../adr/0298-cobertura-concilia-movimientos-netos-y-bajas.md) Cobertura concilia movimientos netos y bajas · [ADR-0374](../adr/0374-la-tasa-de-la-corte-y-las-comisiones-del-consejo-salen-del-indice-politico.md) La tasa de la Corte y las comisiones del Consejo salen del índice político
 
 ### Dimensión `sector_privado` (14%)
 
@@ -320,12 +288,16 @@ histórica.
 - `cohesion_bloque_senado` — Cohesión del bloque LLA (Senado, fusionado)
 - `comisiones_caidas` — Comisiones sin sanción (declarado como contexto)
 - `derrotas_legislativas` — Derrotas legislativas del Ejecutivo (declarado como contexto)
+- `desafios_legislativos` — Normas desafiadas en el recinto
 - `gobernadores_alineamiento` — Alineamiento de gobernadores (retirado)
 - `iaf_transferencias` — Armonía federal (transferencias)
 - `judicializacion` — Densidad de menciones cautelares en sumarios SAIJ
 - `movilizacion_cepa` — Tensión social (CEPA) (declarado como contexto)
+- `paralisis_denuncias` — Actividad de las comisiones de control
 - `protestas_caba` — Protestas en CABA (ACLED) (declarado como contexto)
 - `rotacion_gabinete` — Rotación del gabinete (declarado como contexto)
+- `velocidad_resolucion` — Tasa de resolución de la Corte
+- `veto_quorum` — Sesiones caídas por falta de quórum
 
 ## Decisiones abiertas
 
@@ -366,7 +338,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-93 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+97 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -460,4 +432,8 @@ histórica.
 - [0353](../adr/0353-armonia-federal-a-doce-meses-moviles.md) — La armonía federal se mide a doce meses móviles
 - [0358](../adr/0358-quorum-caido-de-la-oposicion-no-cuenta.md) — Una sesión caída que pidió la oposición no cuenta como Congreso trabado
 - [0372](../adr/0372-la-brecha-de-obra-publica-sale-del-indice-politico.md) — La brecha de obra pública sale del índice político
+- [0374](../adr/0374-la-tasa-de-la-corte-y-las-comisiones-del-consejo-salen-del-indice-politico.md) — La tasa de la Corte y las comisiones del Consejo salen del índice político
+- [0376](../adr/0376-votos-sobre-bancas-entra-a-cohesion.md) — Los votos ajenos al aprobar leyes entran a la cohesión interna
+- [0377](../adr/0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) — Vetos insistidos y decretos derogados reemplazan a quórum y desafíos
 - [0378](../adr/0378-transferencias-no-automaticas-reemplazan-a-las-automaticas.md) — Las transferencias no automáticas reemplazan a las automáticas
+- [0380](../adr/0380-mas-camaras-en-la-postura-empresaria.md) — Más cámaras en la postura empresaria: entra el comercio

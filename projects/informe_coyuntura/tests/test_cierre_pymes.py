@@ -13,6 +13,8 @@ Estos tests cuidan que no vuelva a divergir el nombre del contenido.
 """
 import importlib.util
 import json
+
+import pytest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,10 +34,19 @@ SNAPSHOT = json.loads(
 SERIES = json.loads(
     (ROOT / "web" / "src" / "data" / "series.json").read_text(encoding="utf-8"))
 DATOS_TS = (ROOT / "web" / "src" / "lib" / "datos.ts").read_text(encoding="utf-8")
-IND = SNAPSHOT["cinturones"]["vida_cotidiana"]["indicadores"]["mortalidad_pymes"]
+# ADR-0383: suspendido desde octubre de 2026 (sale de la dimensión de empleo):
+# ya no se publica como tarjeta. Las pruebas del cálculo siguen; las de la
+# tarjeta se saltean mientras dure la suspensión.
+IND = SNAPSHOT["cinturones"]["vida_cotidiana"]["indicadores"].get("mortalidad_pymes")
+
+
+def _requiere_card():
+    if IND is None:
+        pytest.skip("mortalidad_pymes está suspendido (ADR-0383): no se publica como tarjeta")
 
 
 def test_la_fuente_es_la_srt_y_no_el_ipi():
+    _requiere_card()
     fuente = IND.get("fuente", "")
     assert "SRT" in fuente, f"la fuente volvió a ser otra: {fuente!r}"
     assert "IPI" not in fuente, "volvió a medir producción industrial"
@@ -44,6 +55,7 @@ def test_la_fuente_es_la_srt_y_no_el_ipi():
 def test_la_card_cuenta_empleadores():
     """Un índice o un porcentaje no serviría: el número que importa es cuántas
     empresas quedan, y su caída en unidades es la noticia."""
+    _requiere_card()
     assert IND.get("unidad") == "empleadores", IND.get("unidad")
     assert IND.get("valor", 0) > 100_000, "la magnitud no es de un padrón de empleadores"
     assert 'mortalidad_pymes: "Empleadores PyME activos"' in DATOS_TS, (
@@ -54,6 +66,7 @@ def test_card_y_serie_son_el_mismo_numero():
     """La versión anterior tenía DOS series para este indicador —la card en %
     m/m del IPI y el índice en base 100— y por eso G3 no podía reconciliarlas.
     Ahora hay una sola, en unidades, y el rebase lo hace el motor."""
+    _requiere_card()
     serie = SERIES.get("mortalidad_pymes") or []
     assert serie, "sin serie publicada"
     assert abs(serie[-1]["valor"] - IND["valor"]) < 1, (

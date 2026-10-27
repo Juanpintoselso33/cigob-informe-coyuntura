@@ -15,6 +15,17 @@
     },
     {
       "indice": "ITCG",
+      "indicador": "litigiosidad_laboral",
+      "n": 60,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.417,
+      "share_techo": 0.0,
+      "estado": "revisar",
+      "detalle": "42% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 60 meses"
+    },
+    {
+      "indice": "ITCG",
       "indicador": "privatizaciones",
       "n": 35,
       "piso": 10,
@@ -59,6 +70,28 @@
     },
     {
       "indice": "ITCP",
+      "indicador": "apoyo_comercio",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 1.0,
+      "estado": "revisar",
+      "detalle": "100% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 31 meses"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "insistencias_vetos",
+      "n": 35,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 0.629,
+      "estado": "revisar",
+      "detalle": "63% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 35 meses"
+    },
+    {
+      "indice": "ITCP",
       "indicador": "paralisis_denuncias",
       "n": 35,
       "piso": 10,
@@ -70,14 +103,14 @@
     },
     {
       "indice": "ITCP",
-      "indicador": "veto_quorum",
-      "n": 35,
+      "indicador": "votos_sobre_bancas",
+      "n": 32,
       "piso": 10,
       "techo": 100,
       "share_piso": 0.0,
-      "share_techo": 0.571,
+      "share_techo": 0.656,
       "estado": "revisar",
-      "detalle": "57% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 35 meses"
+      "detalle": "66% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 32 meses"
     },
     {
       "indice": "ITCG",
@@ -166,6 +199,17 @@
       "share_techo": 0.4,
       "estado": "saturado",
       "detalle": "40% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "transferencias_no_automaticas",
+      "n": 34,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.412,
+      "share_techo": 0.088,
+      "estado": "saturado",
+      "detalle": "41% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
     },
     {
       "indice": "ITCM",
@@ -355,12 +399,23 @@
     },
     {
       "indice": "ITCM",
-      "indicador": "tcr_terminos_intercambio",
-      "n": 34,
-      "piso": 0.0,
-      "techo": 100.0,
+      "indicador": "tcrm",
+      "n": 35,
+      "piso": 10,
+      "techo": 100,
       "share_piso": 0.0,
-      "share_techo": 0.0,
+      "share_techo": 0.086,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "terminos_intercambio",
+      "n": 42,
+      "piso": 10.0,
+      "techo": 100.0,
+      "share_piso": 0.262,
+      "share_techo": 0.071,
       "estado": "ok",
       "detalle": "sin saturación relevante"
     },
@@ -389,10 +444,10 @@
     {
       "indice": "ITCP",
       "indicador": "apoyo_empresario",
-      "n": 22,
+      "n": 21,
       "piso": 10,
       "techo": 100,
-      "share_piso": 0.182,
+      "share_piso": 0.19,
       "share_techo": 0.0,
       "estado": "ok",
       "detalle": "sin saturación relevante"
@@ -421,34 +476,12 @@
     },
     {
       "indice": "ITCP",
-      "indicador": "desafios_legislativos",
-      "n": 35,
-      "piso": 10,
-      "techo": 100,
-      "share_piso": 0.171,
-      "share_techo": 0.314,
-      "estado": "ok",
-      "detalle": "sin saturación relevante"
-    },
-    {
-      "indice": "ITCP",
       "indicador": "eficacia_legislativa",
       "n": 35,
       "piso": 10,
       "techo": 100,
       "share_piso": 0.0,
       "share_techo": 0.0,
-      "estado": "ok",
-      "detalle": "sin saturación relevante"
-    },
-    {
-      "indice": "ITCP",
-      "indicador": "iaf_transferencias",
-      "n": 95,
-      "piso": 10,
-      "techo": 100,
-      "share_piso": 0.0,
-      "share_techo": 0.032,
       "estado": "ok",
       "detalle": "sin saturación relevante"
     },
@@ -482,6 +515,17 @@
       "techo": 100,
       "share_piso": 0.314,
       "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "rechazos_decretos",
+      "n": 35,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.343,
+      "share_techo": 0.343,
       "estado": "ok",
       "detalle": "sin saturación relevante"
     }

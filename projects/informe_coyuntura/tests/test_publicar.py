@@ -483,28 +483,31 @@ def test_politica_itcp_reconcilia():
     # 17 → 16 (ADR-0344): sale `votometro_ventaja_lla` con su dimensión.
     # 16 → 15 (ADR-0372): sale `brecha_obra_publica` de sector privado.
     # 15 → 16 (ADR-0380): entra `apoyo_comercio` a sector privado.
-    assert len(c["indicadores"]) == 16
+    # 16 → 15 (tanda 27-oct): −2 Poder judicial (ADR-0374), +1 votos_sobre_bancas
+    # (ADR-0376); vetos/decretos (ADR-0377) y transferencias (ADR-0378) son 1 a 1.
+    assert len(c["indicadores"]) == 15
     assert "bloqueo_sostenido" not in c["indicadores"]
     assert "votometro_ventaja_lla" not in c["indicadores"]
-    assert len(en_indice) == 16
+    assert len(en_indice) == 15
     assert "apoyo_comercio" in en_indice
-    for _nuevo in ("produccion_legislativa",
-                   "velocidad_resolucion", "paralisis_denuncias"):
-        assert _nuevo in en_indice, f"{_nuevo} tendría que puntuar (ADR-0168)"
+    assert "produccion_legislativa" in en_indice, "tendría que puntuar (ADR-0168)"
+    # ADR-0374: la tasa de la Corte y las comisiones del Consejo salen.
+    assert "velocidad_resolucion" not in en_indice and "paralisis_denuncias" not in en_indice
     # ADR-0255: `judicializacion` sale del índice — el corpus de SAIJ no
     # identifica causas contra el Ejecutivo. ADR-0246 sacó `apoyo_empresario`
     # y ADR-0310 lo repuso con el corpus cerrado.
     assert "judicializacion" not in en_indice
     assert "apoyo_empresario" in en_indice
     assert "brecha_obra_publica" not in en_indice
-    # ADR-0089: derrotas sale del índice, entra desafíos en su lugar
-    assert "desafios_legislativos" in en_indice
+    # ADR-0089: derrotas sale del índice, entra desafíos en su lugar.
+    # ADR-0377: desafíos y quórum salen; entran vetos insistidos y decretos derogados.
+    assert "desafios_legislativos" not in en_indice and "veto_quorum" not in en_indice
     assert "derrotas_legislativas" not in en_indice
-    faltantes = {"ratio_dnu", "eficacia_legislativa", "veto_quorum",
-                 "iaf_transferencias", "alineamiento_senadores_prov",
+    faltantes = {"ratio_dnu", "eficacia_legislativa", "insistencias_vetos",
+                 "transferencias_no_automaticas", "alineamiento_senadores_prov",
                  "adhesion_reformas_provincial", "cohesion_bloque", "conflictividad_nacional",
-                 "jornadas_individuales_no_trabajadas_12m",
-                 "desafios_legislativos"} - set(en_indice)
+                 "jornadas_individuales_no_trabajadas_12m", "votos_sobre_bancas",
+                 "rechazos_decretos", "apoyo_comercio"} - set(en_indice)
     assert not faltantes, f"faltan indicadores que no deberían faltar: {faltantes}"
     assert contexto == {}, f"política no debería publicar contexto: {set(contexto)}"
     for oculto in ("rotacion_gabinete", "protestas_caba", "movilizacion_cepa",
@@ -553,7 +556,9 @@ def test_macro_itcm_reconcilia():
     # necesitarían signos opuestos). **16 desde 2026-09-16** (ADR-0329): entra
     # `actividad_tributaria` (IVA-DGI + cheque como proxy de actividad).
     # **15 desde 2026-10-26** (ADR-0368): vuelve a salir, repetía al EMAE.
-    assert len(en_indice) == 15, f"esperaba 15 indicadores en el índice, hay {len(en_indice)}"
+    # **16 desde 2026-10-27** (ADR-0375): el compuesto de competitividad pasa a
+    # dos tarjetas, tipo de cambio real y términos del intercambio.
+    assert len(en_indice) == 16, f"esperaba 16 indicadores en el índice, hay {len(en_indice)}"
     # ADR-0022: los monetarios nominales quedan OCULTOS del snapshot (siguen en
     # pipeline como insumos de IdC/TCRM); su señal entra vía credito_privado.
     assert contexto == {}, f"macro no debería publicar contexto: {set(contexto)}"
@@ -578,7 +583,16 @@ def test_macro_itcm_reconcilia():
     assert serie_desequilibrio[0]["fecha"][:7] == "2025-04"
     assert serie_desequilibrio[-1]["valor"] == desequilibrio["valor"]
 
-    ponderado = sum(i["puntaje_itcm"] * i["peso_efectivo"] for i in en_indice.values())
+    # ADR-0375: competitividad no es un promedio de sus dos tarjetas (es la
+    # matriz): esa dimensión entra con su puntaje y no con el de sus componentes.
+    dims_itcm = c["itcm"]["dimensiones"]
+    con_regla = {k for dk, d in itcm.DIMENSIONES_ITCM.items() if d.get("combinar")
+                 for k in d["indicadores"]}
+    ponderado = (sum(i["puntaje_itcm"] * i["peso_efectivo"] for k, i in en_indice.items()
+                     if k not in con_regla)
+                 + sum(dims_itcm[dk]["puntaje"] * dims_itcm[dk]["peso_efectivo"]
+                       for dk, d in itcm.DIMENSIONES_ITCM.items()
+                       if d.get("combinar") and dk in dims_itcm))
     assert abs(ponderado - itcm_val) <= 0.15, f"ponderado {ponderado} != ITCM {itcm_val}"
     assert abs(c["score"] - round((100 - itcm_val) / 10, 1)) <= 0.05
 
@@ -742,7 +756,8 @@ def test_vida_itvc_reconcilia():
     # 18 → 21: entran `tasa_homicidios` + `tasa_robos` (ADR-0327, dimensión de
     # seguridad) y `ratio_motos_autos` (ADR-0328, dimensión de ingresos).
     # 21 → 22: entra `icg_utdt` en la dimensión de percepción (ADR-0345).
-    assert len(en_indice) == 22, f"esperaba 22 componentes en el índice, hay {len(en_indice)}"
+    # 22 → 18 (ADR-0383): Empleo; salen cinco y entra la ocupación de la EPH.
+    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"

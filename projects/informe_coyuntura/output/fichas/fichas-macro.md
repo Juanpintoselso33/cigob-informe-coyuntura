@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Macroeconomía — resumen
 
-Este documento tiene una ficha por indicador — son 15 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 16 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,8 +35,8 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 53,9** | **AMARILLO** | Moderadamente apretado | 15 indicadores: 4 en verde · 7 en amarillo · 4 en naranja |
-Componentes que puntúan en este corte: 15 de 15 publicados.
+| **ITCM: 53,9** | **AMARILLO** | Moderadamente apretado | 16 indicadores: 5 en verde · 7 en amarillo · 4 en naranja |
+Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
 
@@ -79,7 +79,8 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Crédito privado real en pesos | Cuánto crecen los préstamos en pesos al sector privado en términos reales (contra un año atrás, descontada la… | −1,2 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
 | Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 6,22 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
 | **DIMENSIÓN: Competitividad externa** | | | | |
-| Tipo de cambio real y términos del intercambio | Una medida de 0 a 100 que cruza dos datos. | 49,8 puntaje (0-100) | AMARILLO | 11,0 % |
+| Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el… | 85,87 Índice (base dic-2015=100) | AMARILLO | 5,5 % |
+| Términos del intercambio | Cuánto valen las exportaciones argentinas frente a lo que se importa. | 145,14 índice (base 2004 = 100) | VERDE | 5,5 % |
 
 *Datos al 2026-10-27.*
 
@@ -151,14 +152,14 @@ Dato vigente: 1,93 % mensual (2026-09).
 
 Ponderación vigente en el ITCM: 15,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** El IPC participa además como deflactor de otros componentes del sistema: la recaudación real, el crédito privado real, el IDM y la tasa real del IdC. Un error de medición de la fuente se propagaría a esos indicadores.
+- **Participación en otros indicadores.** El IPC participa además como deflactor de otros componentes del sistema: la recaudación real, el crédito privado real, la brecha de crecimiento real entre agregados monetarios y la tasa real de la capacidad prestable. Un error de medición de la fuente se propagaría a esos indicadores.
 
 ## Transparencia — limitaciones declaradas
 
 - Mide el promedio nacional del nivel general: no distingue núcleo, regulados y estacionales, ni las diferencias regionales que el propio INDEC publica por separado.
 - Llega con rezago: al momento de cada informe, el último dato disponible puede tener entre dos y seis semanas de antigüedad. Las expectativas del REM, dentro de la misma dimensión, cubren parcialmente ese hueco.
 - La variación de un solo mes es sensible a factores puntuales (correcciones tarifarias, estacionalidad de rubros) que no permiten distinguir el dato suelto de la tendencia.
-- El IPC es además el deflactor de otros tres indicadores del cinturón (recaudación, crédito y tasa real del clima financiero): su peso real en el índice es mayor que su peso nominal, porque un error de medición se propagaría también a ellos. Se documenta como riesgo sistémico en la metodología general del índice.
+- El IPC es además el deflactor de otros tres indicadores del cinturón (recaudación, crédito y capacidad prestable): su peso real en el índice es mayor que su peso nominal, porque un error de medición se propagaría también a ellos. Se documenta como riesgo sistémico en la metodología general del índice.
 
 ## Si falta el dato / Política de revisiones
 
@@ -248,6 +249,7 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 
 - El tramo de vencimientos no identifica por instrumento al BOPREAL ni cubre todos los vencimientos de los próximos doce meses. La etiqueta anterior «BOPREAL a 12 meses» no estaba demostrada. El resultado tampoco certifica dólares de libre disponibilidad: incluye oro y devuelve al cálculo pasivos que siguen existiendo.
 - «Reservas netas» no es un número único: es un espectro según qué pasivos se descuentan. Otras mediciones más exigentes (o la del FMI) pueden diferir en miles de millones por criterio, no por error.
+- Contraste con estimaciones públicas (octubre de 2026): para septiembre de 2026 este indicador da US$ 10.725 millones, en línea con la medición convencional que mostró el propio Banco Central (positiva, cerca de US$ 11.700 millones en octubre). Con definiciones más exigentes da negativo: unos −US$ 1.940 millones según el informe monetario de Criteria y unos −US$ 7.000 millones con el criterio del FMI, según Econviews (citado por La Política Online, 22-oct-2026). El verde de la tarjeta corresponde a esta definición, no a las más exigentes.
 - El dato es a cierre de mes; el número diario que circula en el mercado puede diferir en algunos cientos de millones por la fecha de corte.
 - El BCRA retira las planillas viejas de su sitio: la serie histórica propia solo llega hasta mediados de 2024 hacia atrás.
 
@@ -258,6 +260,8 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La planilla publicada no se revisa; el informe reconstruye la serie completa releyendo todas las planillas disponibles en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Se contrasta el número con tres estimaciones públicas y la ficha lo declara: coincide con la medición convencional del Banco Central y queda muy por encima de las definiciones más exigentes. No cambia el cálculo.
 
 **2026-06-26** — El indicador deja las reservas brutas del documento original y pasa a las netas «a secas», con los tres términos calculados de fuentes oficiales y escala propia.
 
@@ -289,7 +293,7 @@ Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | idc | **CINTURÓN** | Macroeconomía |
 | **DIMENSIÓN EN EL ITCM** | Capacidad y costo del financiamiento | **UNIDAD DE MEDIDA** | σ vs. su historia |
-| **SERIE DISPONIBLE** | 2023-11 → 2026-09 (35 puntos) | **REZAGO DE PUBLICACIÓN** | El IdC se publica para el último mes con IPC cerrado: unas dos semanas después de mediados del mes siguiente. |
+| **SERIE DISPONIBLE** | 2023-11 → 2026-09 (35 puntos) | **REZAGO DE PUBLICACIÓN** | La capacidad prestable se publica para el último mes con IPC cerrado: unas dos semanas después de mediados del mes siguiente. |
 | **PRODUCTOR DEL DATO** | BCRA (tasa BADLAR, depósitos y préstamos privados) + INDEC (IPC como deflactor) | **OPERACIÓN ESTADÍSTICA** | Estadísticas monetarias del BCRA: BADLAR bancos privados, depósitos del sector privado y préstamos al sector privado; índice compuesto de elaboración propia |
 | **MODO DE ACCESO** | Automático: API pública del BCRA y API de series de datos.gob.ar; el índice se calcula en el propio informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-27 |
 
@@ -336,12 +340,12 @@ Dato vigente: −0,34 σ vs. su historia (2026-09).
 
 Ponderación vigente en el ITCM: 3,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Comparte insumos con otros indicadores del sistema: los depósitos privados también entran al IDM, y la tasa BADLAR se sigue extrayendo como insumo aunque no se publique como indicador propio.
+- **Participación en otros indicadores.** Comparte insumos con otros indicadores del sistema: los depósitos privados también entraban a la brecha de crecimiento real entre agregados monetarios (fuera del índice desde agosto de 2026), y la tasa BADLAR se sigue extrayendo como insumo aunque no se publique como indicador propio.
 
 ## Transparencia — limitaciones declaradas
 
 - Queda una correlación residual entre los componentes de volumen y asignación (ambos usan los depósitos), remanente declarado del rediseño.
-- Sin pretensión predictiva, y con la validación en contra documentada: sobre más de cien meses, el IdC no anticipa el crédito futuro. Es un descriptor del estado de las condiciones de fondeo, no un pronóstico.
+- Sin pretensión predictiva, y con la validación en contra documentada: sobre más de cien meses, la capacidad prestable no anticipa el crédito futuro. Es un descriptor del estado de las condiciones de fondeo, no un pronóstico.
 - Los desvíos se recalculan contra la historia completa en cada actualización: los puntos históricos pueden moverse levemente entre ediciones.
 
 ## Si falta el dato / Política de revisiones
@@ -352,7 +356,7 @@ Ponderación vigente en el ITCM: 3,4 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-06-26** — Nace el IdC en reemplazo de la tasa BADLAR dentro de la dimensión de financiamiento, como índice de ratios mensuales.
+**2026-06-26** — Nace la capacidad prestable en reemplazo de la tasa BADLAR dentro de la dimensión de financiamiento, como índice de ratios mensuales.
 
 **2026-07-03** — Puntaje interpolado entre anclas.
 
@@ -707,7 +711,7 @@ Dato vigente: 26.472 Millones de USD (acum. 12 meses) (2026-09).
 
 Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Las mismas series del ICA son insumo de la alícuota de apertura comercial (cinturón gestión), y la subserie de bienes de capital importados alimenta el IAI.
+- **Participación en otros indicadores.** Las mismas series del ICA son insumo de la alícuota de apertura comercial (cinturón gestión), y la subserie de bienes de capital importados alimenta la inversión física.
 
 ## Transparencia — limitaciones declaradas
 
@@ -822,7 +826,7 @@ Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicion
 - Excluir la aduana resuelve el caso más grande de política tributaria contaminando la lectura, pero no todos: la propia DGI contiene impuestos cuyas alícuotas y mínimos cambiaron en el período, y las provincias también movieron alícuotas de Ingresos Brutos. El indicador no es neutral respecto de las decisiones de gobierno; una medición a legislación constante exigiría modelar cada cambio impositivo y no es reproducible de forma automática.
 - Los aportes a la seguridad social también son base imponible doméstica y quedan afuera. Siguen su propia dinámica —cayeron en términos reales desde fines de 2025— y mezclarlos habría sumado el mercado laboral a un indicador que quiere medir actividad y formalidad.
 - Deflactor único (índice de precios nacional), sin deflactor específico de la base imponible ni deflactores provinciales.
-- Las bandas se fijaron sobre una grilla conceptual —pasos de diez puntos de la base imponible real de la transición— y no sobre la distribución observada. La serie disponible recorre de 88 a 115, así que la banda más baja describe una situación posible y no una observada.
+- Las bandas se fijaron sobre una grilla conceptual —pasos de diez puntos de la base imponible real de la transición— y no sobre la distribución observada. La serie publicada (ver el gráfico de la tarjeta) no recorre toda la grilla, así que la banda más baja describe una situación posible y no una observada.
 - IVA-DGI y cheque son, ellos mismos, dos de los componentes del agregado DGI —no una fuente independiente que lo confirme o lo contradiga— y tampoco miden actividad de forma directa: la recaudación de un impuesto responde también a la evasión, a cambios de alícuota y a anticipos, y el impuesto al cheque además capta bancarización —más o menos operaciones por transferencia— y no sólo producto. Que coincidan en el sentido con el agregado no prueba causalidad; que diverjan tampoco aísla la causa: un cambio de alícuota del cheque o un vaivén de Ganancias (que no entra en esta descomposición) puede producir la misma divergencia que un problema de actividad real.
 
 ## Si falta el dato / Política de revisiones
@@ -865,40 +869,37 @@ Ponderación vigente en el ITCM: 7,2 % efectivo. El color es una lectura adicion
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
-# Tipo de cambio real y términos del intercambio
+# Tipo de cambio real
 
-Una medida de 0 a 100 que cruza dos datos: si el peso está caro o barato frente a los socios comerciales en términos reales (el tipo de cambio real multilateral del Banco Central) y cuánto valen las exportaciones argentinas frente a lo que se importa (los términos del intercambio del Instituto Nacional de Estadística y Censos). Mide la dimensión de competitividad externa del índice. Hasta octubre de 2026 esa dimensión miraba sólo el tipo de cambio real.
+Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el tipo de cambio real multilateral del Banco Central.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 49,8 puntaje (0-100)** (2026-09) | **AMARILLO** | Peso efectivo 11 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 85,87 Índice (base dic-2015=100)** (2026-09) | **AMARILLO** | Peso efectivo 5,5 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | tcr_terminos_intercambio | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Competitividad externa | **UNIDAD DE MEDIDA** | puntaje (0-100) |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | El tipo de cambio real se publica a diario y su promedio mensual está disponible en los primeros días del mes siguiente. Los términos del intercambio son trimestrales y salen con unos dos meses y medio de demora: cada mes usa el último trimestre publicado, y la tarjeta lo declara. |
-| **PRODUCTOR DEL DATO** | BCRA e INDEC | **OPERACIÓN ESTADÍSTICA** | ITCRM — Índice de Tipo de Cambio Real Multilateral del BCRA (base 17-dic-2015 = 100), promedios mensuales; e índice de términos del intercambio del INDEC (índices de precios y cantidades del comercio exterior, base 2004 = 100), trimestral |
-| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del BCRA y de la serie del INDEC publicada en datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-27 |
+| **IDENTIFICADOR TÉCNICO** | tcrm | **CINTURÓN** | Macroeconomía |
+| **DIMENSIÓN EN EL ITCM** | Competitividad externa | **UNIDAD DE MEDIDA** | Índice (base dic-2015=100) |
+| **SERIE DISPONIBLE** | 2023-11 → 2026-09 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Se publica a diario y su promedio mensual está disponible en los primeros días del mes siguiente. |
+| **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | ITCRM — Índice de Tipo de Cambio Real Multilateral del BCRA (base 17-dic-2015 = 100), promedios mensuales |
+| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del BCRA. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-27 |
 
 ## Definición — qué mide y por qué importa
 
-Una medida de 0 a 100 que cruza dos datos: si el peso está caro o barato frente a los socios comerciales en términos reales (el tipo de cambio real multilateral del Banco Central) y cuánto valen las exportaciones argentinas frente a lo que se importa (los términos del intercambio del Instituto Nacional de Estadística y Censos). Mide la dimensión de competitividad externa del índice. Hasta octubre de 2026 esa dimensión miraba sólo el tipo de cambio real.
+Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el tipo de cambio real multilateral del Banco Central.
 
-El tipo de cambio real dice si el peso está caro, pero no si ese nivel se sostiene. Un peso apreciado con buenos precios de exportación no es la misma situación que el mismo peso con precios en caída. Por eso los dos se cruzan en una matriz y no se promedian: con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil. Los términos del intercambio se publican por trimestre, con unos dos meses y medio de demora: cada mes usa el último trimestre publicado.
+Una apreciación real (peso caro) frena exportaciones y la acumulación de reservas, y suele anticipar presión cambiaria: cuanto más apreciado, más tensión. La dimensión de competitividad externa no lo promedia con los términos del intercambio: los cruza, porque un peso apreciado con buenos precios de exportación no es lo mismo que el mismo peso con precios en caída.
 
-**Dimensión que integra — Competitividad externa.** Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene: el tipo de cambio real multilateral oficial del Banco Central cruzado con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación).
+**Dimensión que integra — Competitividad externa.** Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene: el tipo de cambio real multilateral oficial del Banco Central cruzado con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación). No es un promedio: cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
 
 ## Método de cómputo
 
-- Posición del tipo de cambio real (de 0 a 1): sale de sus umbrales de siempre, calibrados con la historia 1997-2026. El valor se lleva primero a su puntaje institucional —75 o menos da 10, 80 da 35, 90 da 60, 102,5 da 80 y 110 o más da 100, interpolado entre esos puntos— y después a la posición: puntaje menos 10, dividido 90. No usa una ventana estadística, para no depender de su punto de arranque: diciembre de 2023 fue el pico de la devaluación y la habría vuelto la referencia de «competitivo».
-- Posición de los términos del intercambio (de 0 a 1): el índice del último trimestre publicado se ubica entre los percentiles de la serie desde el cuarto trimestre de 2023 hasta el segundo de 2026, con saturación fuera de los extremos: 129,7 → 0; 138,1 → 0,25; 140,4 → 0,50; 143,63 → 0,75; 148,15 → 1. Los cortes quedan congelados.
-- Un trimestre cuenta como publicado a partir del tercer mes posterior a su cierre: el segundo trimestre (abril a junio) entra en septiembre. No se imputa ni se anticipa con otra serie.
-- Las dos posiciones se cruzan entre las cuatro esquinas de la matriz, por interpolación bilineal: peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Las cuatro esquinas caen en el medio de cada color del Monitor.
-- La matriz es asimétrica a propósito: un peso competitivo con términos bajos puntúa mejor que uno apreciado con términos altos. Con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil, y si los precios se dan vuelta no queda colchón.
-- El valor publicado ya es el puntaje que entra al índice macroeconómico. Es el único indicador de la dimensión competitividad externa, que pesa 11%.
+- El puntaje sale de sus umbrales de siempre, calibrados con la historia 1997-2026: 75 o menos da 10, 80 da 35, 90 da 60, 102,5 da 80 y 110 o más da 100, interpolado entre esos puntos. No usa una ventana estadística, para no depender de su punto de arranque: diciembre de 2023 fue el pico de la devaluación y la habría vuelto la referencia de «competitivo».
+- La dimensión de competitividad externa, que pesa 11% del índice macroeconómico, no promedia este indicador con el otro: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.
+- La matriz es asimétrica a propósito: un peso competitivo con términos bajos puntúa mejor que uno apreciado con términos altos. Con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil.
 
 ## Semáforo — valores que determinan el color
 
@@ -906,45 +907,45 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (puntaje (0-100)) | Color |
+| Rango (Índice (base dic-2015=100)) | Color |
 |---|---|
-| ≥ 60 | VERDE |
-| 40 – 60 | AMARILLO |
-| 20 – 40 | NARANJA |
-| ≤ 20 | ROJO |
+| ≥ 90 | VERDE |
+| 82 – 90 | AMARILLO |
+| 77 – 82 | NARANJA |
+| ≤ 77 | ROJO |
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- puntaje 49,8 = tipo de cambio real 85,87 × términos del intercambio 145,14 (2T-2026) — peso apreciado sostenido por términos del intercambio altos
+- El informe publica el valor (85,87 Índice (base dic-2015=100)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 49,8 puntaje (0-100) (2026-09).
+Dato vigente: 85,87 Índice (base dic-2015=100) (2026-09).
 
-49,8 puntaje (0-100) está en Amarillo, a 9,8 del límite con Naranja (40,0).
+85,87 Índice (base dic-2015=100) está en Amarillo, a 3,87 del límite con Naranja (82,0).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCM: 11 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCM: 5,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** El tipo de cambio real y los términos del intercambio se siguen bajando y publicando como series. Los tipos de cambio bilaterales con Brasil y Estados Unidos, de la misma planilla del BCRA, también.
+- **Participación en otros indicadores.** Los tipos de cambio bilaterales con Brasil y Estados Unidos, de la misma planilla del BCRA, se publican como series de contexto.
 
 ## Transparencia — limitaciones declaradas
 
-- La ventana de los términos del intercambio es corta: once trimestres. Los cortes pueden ser inestables y se revisan cuando la serie crezca. Como se calibran contra el período que se está midiendo, son una convención del Monitor y no un umbral externo.
-- Repetir el último trimestre publicado hace que la parte de los términos del intercambio se mueva por saltos, una vez cada tres meses.
-- «Términos altos» y «bajos» son posiciones dentro de la ventana desde fines de 2023, no niveles en abstracto: la lectura del cuadrante toma como altos los trimestres de la mitad superior (desde la mediana, 140,4), y el puntaje usa la posición continua.
-- Los umbrales del tipo de cambio real y el peso de la dimensión (11%) son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.
+- Los umbrales y el peso de la dimensión (11%) son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.
+- Dice si el peso está caro o barato, no si ese nivel se sostiene: para eso está el cruce con los términos del intercambio.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Un mes entra sólo si tiene tipo de cambio real y algún trimestre de términos del intercambio publicado. Si los términos del intercambio quedan más de nueve meses detrás del mes que se puntúa, el indicador no se actualiza y la tarjeta conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.
+- **Si falta el dato:** Si la planilla del BCRA no está disponible, se mantiene el último valor, señalado como desactualizado. Sin tipo de cambio real o sin términos del intercambio, la dimensión de competitividad externa no se calcula y el índice macroeconómico renormaliza entre las demás.
 
-- **Política de revisiones:** Las revisiones del INDEC y del BCRA se incorporan en la siguiente actualización, porque la serie se reconstruye completa en cada corrida. Los cortes de los términos del intercambio quedan congelados: no se recalculan con cada corrida, para que el puntaje de un mes sea reproducible.
+- **Política de revisiones:** El BCRA puede revisar los ponderadores del índice; la serie se baja completa en cada corrida y las revisiones entran solas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Vuelve a ser tarjeta y a puntuar por su cuenta, igual que los términos del intercambio. El cruce de los dos pasa a hacerse en la dimensión de competitividad externa, con la misma matriz: el número de la dimensión no cambia. Con los datos de septiembre de 2026 el tipo de cambio real puntúa 49,7, los términos del intercambio 85,0 y la dimensión 49,8, igual que el compuesto que reemplaza; el índice macroeconómico sigue en 53,9.
 
 **2026-06-27** — La fuente pasa de la serie del INDEC (discontinuada en diciembre de 2024, con 18 meses de rezago acumulado) al ITCRM oficial del BCRA. Era un indicador de contexto.
 
@@ -966,9 +967,96 @@ Ponderación vigente en el ITCM: 11 % efectivo. El color es una lectura adiciona
 
 *Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
 
+# Términos del intercambio
+
+Cuánto valen las exportaciones argentinas frente a lo que se importa: los precios de exportación sobre los de importación, según el Instituto Nacional de Estadística y Censos.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: 145,14 índice (base 2004 = 100)** (2026-04) | **VERDE** | Peso efectivo 5,5 % del ITCM | Cinturón Macroeconomía |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | terminos_intercambio | **CINTURÓN** | Macroeconomía |
+| **DIMENSIÓN EN EL ITCM** | Competitividad externa | **UNIDAD DE MEDIDA** | índice (base 2004 = 100) |
+| **SERIE DISPONIBLE** | 2016-01 → 2026-04 (42 puntos) | **REZAGO DE PUBLICACIÓN** | Trimestral, con unos dos meses y medio de demora: el segundo trimestre (abril a junio) sale a mediados de septiembre. La tarjeta muestra el último trimestre publicado y lo nombra. |
+| **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Índice de términos del intercambio (precios de exportación sobre precios de importación), de los índices de precios y cantidades del comercio exterior, base 2004 = 100, trimestral |
+| **MODO DE ACCESO** | Automático: serie del INDEC publicada en datos.gob.ar. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-27 |
+
+## Definición — qué mide y por qué importa
+
+Cuánto valen las exportaciones argentinas frente a lo que se importa: los precios de exportación sobre los de importación, según el Instituto Nacional de Estadística y Censos.
+
+Dice si el nivel del tipo de cambio real se sostiene: con buenos precios de exportación, un peso caro aguanta más. La dimensión de competitividad externa lo cruza con el tipo de cambio real en vez de promediarlos: con el peso competitivo el ajuste ya ocurrió; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil. Se publica por trimestre, con unos dos meses y medio de demora.
+
+**Dimensión que integra — Competitividad externa.** Si el tipo de cambio real alcanza para competir y si ese nivel se sostiene: el tipo de cambio real multilateral oficial del Banco Central cruzado con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación). No es un promedio: cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
+
+## Método de cómputo
+
+- El puntaje ubica el índice del último trimestre publicado entre los percentiles de la serie desde el cuarto trimestre de 2023 hasta el segundo de 2026, con saturación fuera de los extremos, en la misma escala de 10 a 100 que el tipo de cambio real: 129,7 → 10; 138,1 → 32,5; 140,4 → 55; 143,63 → 77,5; 148,15 → 100. Los cortes quedan congelados.
+- La dimensión de competitividad externa, que pesa 11% del índice macroeconómico, no promedia este indicador con el otro: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.
+- Para la serie histórica de la dimensión, un trimestre cuenta como publicado a partir del tercer mes posterior a su cierre: el segundo trimestre entra en septiembre. No se imputa ni se anticipa con otra serie.
+
+## Semáforo — valores que determinan el color
+
+Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
+
+**Valores que definen cada color**
+
+| Rango (índice (base 2004 = 100)) | Color |
+|---|---|
+| ≥ 141,12 | VERDE |
+| 138,87 – 141,12 | AMARILLO |
+| 133,43 – 138,87 | NARANJA |
+| ≤ 133,43 | ROJO |
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- índice 145,14 (base 2004 = 100) del 2T-2026, el último trimestre publicado
+
+## Color vigente y por qué
+
+Dato vigente: 145,14 índice (base 2004 = 100) (2026-04).
+
+145,14 índice (base 2004 = 100) está en Verde, a 4,02 del límite con Amarillo (141,1178).
+
+**Color vigente: VERDE**
+
+Ponderación vigente en el ITCM: 5,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+## Transparencia — limitaciones declaradas
+
+- La ventana es corta: once trimestres. Los cortes pueden ser inestables y se revisan cuando la serie crezca. Como se calibran contra el período que se está midiendo, son una convención del Monitor y no un umbral externo.
+- «Altos» y «bajos» son posiciones dentro de la ventana desde fines de 2023, no niveles en abstracto: el cuadrante de la dimensión toma como altos los trimestres desde la mediana (140,4), y el puntaje usa la posición continua.
+- Al ser trimestral, se mueve por saltos, una vez cada tres meses.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Si el último trimestre publicado queda más de nueve meses atrás, la serie se considera congelada: la tarjeta conserva el último valor, señalado como desactualizado, y la dimensión de competitividad externa no se calcula.
+
+- **Política de revisiones:** El INDEC revisa trimestres anteriores; la serie se baja completa en cada corrida y las revisiones entran solas. Los cortes quedan congelados para que el puntaje de un trimestre sea reproducible.
+
+## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Pasa a ser tarjeta y a puntuar por su cuenta, en la misma escala de 10 a 100 que el tipo de cambio real. Desde el 20 de octubre de 2026 entraba como componente de un compuesto con el tipo de cambio real; el cruce de los dos pasa a hacerse en la dimensión de competitividad externa, con la misma matriz, y el número de la dimensión no cambia. Con el segundo trimestre de 2026 (145,14) puntúa 85,0.
+
+**2026-10-20** — Entra al índice como componente del cruce con el tipo de cambio real en la dimensión de competitividad externa.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Macroeconomía · Capa de semáforo (4 colores)*
+
 # Inflación esperada a 12 meses
 
-La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del Banco Central. Para compararla con la inflación del mes, 21 % anual equivale a cerca de 1,6 % por mes.
+La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del Banco Central. Para compararla con la inflación del mes, 12,7 % anual equivale a 1 % por mes y 26,8 % anual, a 2 % por mes.
 
 | | | | |
 |---|---|---|---|
@@ -986,7 +1074,7 @@ La inflación que el mercado espera para los próximos 12 meses, en tasa anual, 
 
 ## Definición — qué mide y por qué importa
 
-La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del Banco Central. Para compararla con la inflación del mes, 21 % anual equivale a cerca de 1,6 % por mes.
+La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del Banco Central. Para compararla con la inflación del mes, 12,7 % anual equivale a 1 % por mes y 26,8 % anual, a 2 % por mes.
 
 Captura la credibilidad del programa: si el mercado espera que la inflación siga bajando, el ancla de expectativas funciona; si la ve acelerarse, hay desconfianza.
 
@@ -1050,7 +1138,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 **2026-06-26** — Pasa a puntuarse por el equivalente mensual con las bandas del IPC, tras descartarse una versión intermedia por brecha contra el ritmo corriente.
 
-**2026-06-28** — Su peso interno baja de 50% a 30% de la dimensión al entrar el IDM.
+**2026-06-28** — Su peso interno baja de 50% a 30% de la dimensión al entrar la brecha de crecimiento real entre agregados monetarios.
 
 **2026-07-03** — Puntaje interpolado entre anclas.
 
@@ -1130,7 +1218,7 @@ Dato vigente: 64,01 pts de tensión (0-100) (2026-08).
 
 Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Comparte insumos monetarios con el IDM y el mismo anexo cambiario que el saldo del mercado de cambios, pero no replica sus cálculos: el IDM compara el crecimiento real de dos agregados en pesos; este indicador cruza el nivel del cociente entre liquidez transaccional y liquidez ampliada con la compra neta de divisas del sector privado no financiero. Reemplaza a la presión de dolarización de carteras, que tomaba por separado el mismo concepto 03 del anexo; retirarla evita que esa compra neta incidiera dos veces dentro de la dimensión.
+- **Participación en otros indicadores.** Comparte insumos monetarios con la brecha de crecimiento real entre agregados monetarios y el mismo anexo cambiario que el saldo del mercado de cambios, pero no replica sus cálculos: esa brecha compara el crecimiento real de dos agregados en pesos; este indicador cruza el nivel del cociente entre liquidez transaccional y liquidez ampliada con la compra neta de divisas del sector privado no financiero. Reemplaza a la presión de dolarización de carteras, que tomaba por separado el mismo concepto 03 del anexo; retirarla evita que esa compra neta incidiera dos veces dentro de la dimensión.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1152,7 +1240,7 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-08-11** — El peso dentro de estabilidad monetaria pasa de 10% a 20%, para que su peso nominal en el índice quede a la altura del de las reservas, como pedía la ficha original. Ceden el REM y el IDM; la inflación realizada conserva su 40%.
+**2026-08-11** — El peso dentro de estabilidad monetaria pasa de 10% a 20%, para que su peso nominal en el índice quede a la altura del de las reservas, como pedía la ficha original. Ceden las expectativas y la brecha de crecimiento real entre agregados monetarios; la inflación realizada conserva su 40%.
 
 **2026-08-11** — Alta del indicador, a partir de la ficha Desequilibrio Monetario. Reemplaza a la presión de dolarización de carteras dentro de estabilidad monetaria. Los cortes de banda preliminares de la ficha se sustituyeron por percentiles reales de cada serie, como la propia ficha preveía: con los preliminares ninguno de los quince meses de la ventana daba verde, y su referencia de que más de 3.000 millones era comparable a julio de 2025 erraba por unos 80%, porque ese mes fueron 5.436 millones.
 
@@ -1240,13 +1328,13 @@ Ponderación vigente en el ITCM: 6,9 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Sin patentamientos, la composición renormaliza a 65/35 (situación actual); sin mes común de las otras dos fuentes, se mantiene el último valor disponible señalado como desactualizado y la dimensión se renormaliza.
+- **Si falta el dato:** Sin patentamientos, la composición renormaliza a 65/35 (lo que ocurre mientras no haya patentamientos); sin mes común de las otras dos fuentes, se mantiene el último valor disponible señalado como desactualizado y la dimensión se renormaliza.
 
 - **Política de revisiones:** Tarjeta e historia se recalculan con los datos revisados de las fuentes y la composición correspondiente a cada mes; no son una reconstrucción de la información conocida originalmente en cada fecha.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-09-08** — La planilla original de bienes de capital completa julio y reemplaza revisiones, conservando la API para años anteriores. Tarjeta e historia avanzan al mismo mes común con ISAC; el IAI de julio es −5,66%.
+**2026-09-08** — La planilla original de bienes de capital completa julio y reemplaza revisiones, conservando la API para años anteriores. Tarjeta e historia avanzan al mismo mes común con ISAC; la inversión física de julio da −5,66%.
 
 **2026-09-08** — IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.
 
@@ -1301,7 +1389,7 @@ Es el crédito que efectivamente se dio y complementa a la capacidad prestable: 
 ## Método de cómputo
 
 - Variación interanual del stock a fin de mes, deflactada por el IPC del mismo período: el crédito que efectivamente llegó, no el que infló la nominalidad.
-- Mide crédito realizado — complementario del IdC, que mide la capacidad de prestar.
+- Mide crédito realizado — complementario de la capacidad prestable, que mide la capacidad de prestar.
 
 ## Semáforo — valores que determinan el color
 
@@ -1341,13 +1429,13 @@ Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Sin mes común entre stock e IPC, se mantiene el último valor disponible, señalado como desactualizado; sin dato, reservas e IdC renormalizan dentro de la dimensión de financiamiento.
+- **Si falta el dato:** Sin mes común entre stock e IPC, se mantiene el último valor disponible, señalado como desactualizado; sin dato, reservas y capacidad prestable renormalizan dentro de la dimensión de financiamiento.
 
 - **Política de revisiones:** Los saldos del BCRA no se revisan de forma habitual; la serie se regenera completa (desde diciembre de 2023) en cada actualización.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Nace y entra al índice: rescata la única señal no redundante de los cuatro contextos nominales (que dejan de publicarse); la dimensión de financiamiento queda 45% reservas + 40% IdC + 15% crédito.
+**2026-07-03** — Nace y entra al índice: rescata la única señal no redundante de los cuatro contextos nominales (que dejan de publicarse); la dimensión de financiamiento queda 45% reservas + 40% capacidad prestable + 15% crédito.
 
 **2026-07-04** — El titular pasa al último mes con IPC cerrado; el dato diario fresco queda como provisorio (antes se deflactaba el préstamo del día con un IPC de dos meses atrás).
 

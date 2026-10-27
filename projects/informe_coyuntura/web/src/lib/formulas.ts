@@ -289,6 +289,14 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\frac{\text{proyectos del Ejecutivo convertidos en ley}}{\text{proyectos de ley enviados hace 12-24 meses}}\times 100`,
     leyenda: "Cohorte madura: solo cuenta proyectos de ley con al menos 12 meses de margen desde que se enviaron, sobre los datos abiertos de la Cámara de Diputados. La cohorte incluye publicaciones de hace 365 a 730 días, ambos límites incluidos. Sólo cuentan sanciones definitivas de esa cohorte fechadas hasta el corte evaluado, verificadas en el registro oficial de ambas cámaras.",
   },
+  insistencias_vetos: {
+    latex: String.raw`\#\{\text{vetos con insistencia de las dos cámaras (dos tercios) en los últimos 12 meses}\}`,
+    leyenda: "Cuenta los vetos del Presidente a los que el Congreso les insistió con dos tercios en las dos cámaras, de modo que la ley quedó promulgada igual (artículo 83 de la Constitución). Se fecha en la insistencia de la segunda cámara. Cero es la lectura más favorable para el Gobierno: uno ya es amarillo, tres naranja y cuatro o más rojo.",
+  },
+  rechazos_decretos: {
+    latex: String.raw`\#\{\text{DNU y decretos delegados rechazados por las dos cámaras en los últimos 12 meses}\}`,
+    leyenda: "Cuenta los decretos de necesidad y urgencia y los decretos delegados que las dos cámaras rechazaron, lo que los deroga (ley 26.122). Se fecha en el rechazo de la segunda cámara; el rechazo de una sola no cuenta. Cero es la lectura más favorable para el Gobierno: uno ya es amarillo, tres naranja y cuatro o más rojo.",
+  },
   desafios_legislativos: {
     latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\left(\text{vetos con insistencia votada}+\text{decretos votados bajo la ley 26.122}\right)`,
     leyenda: "Conteo de normas del Ejecutivo llevadas a votación en el recinto, cada una contada una sola vez en el mes de su primer desafío. No importa el resultado: entran tanto las que el Gobierno terminó perdiendo como las que logró sostener. Fuentes: actas de votación de Diputados y del Senado, y la base InfoLeg de legislación nacional. Menos desafíos = puntaje más alto.",

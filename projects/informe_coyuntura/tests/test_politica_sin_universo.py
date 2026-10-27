@@ -174,7 +174,7 @@ def test_publicacion_y_censo_con_componente_sin_universo(monkeypatch, tmp_path, 
     bloque = snapshot["cinturones"]["politica"]
     indicadores = bloque["indicadores"]
     indicadores["bloqueo_sostenido"] = politica.fetch_bloqueo_sostenido()
-    indicadores["desafios_legislativos"] = politica.fetch_desafios_legislativos()
+    # desafios_legislativos ya no es componente (ADR-0377): no se publica como card.
     indice = politica.calcular_itcp_cinturon(indicadores)
     politica._anotar_indicadores_itcp(indicadores, indice)
     bloque["itcp"] = indice
@@ -211,6 +211,10 @@ def test_publicacion_y_censo_con_componente_sin_universo(monkeypatch, tmp_path, 
     # 68 → 67: sale `litigiosidad_laboral` del ITCG (ADR-0369).
     # 67 → 66: sale `brecha_obra_publica` del ITCP (ADR-0372).
     # 66 → 67: entra `apoyo_comercio` a sector privado (ADR-0380).
-    assert resumen["indicadores"] == 67
-    assert resumen["indicadores_observados_en_calculo"] == 66   # 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328) → 68 (ADR-0365) → 67 (ADR-0368) → 66 (ADR-0369) → 65 (ADR-0372) → 66 (ADR-0380)
+    # 67 → 64 (tanda del 27-oct): −2 Poder judicial (ADR-0374), +1 macro (ADR-0375:
+    # el compuesto pasa a dos tarjetas), +1 votos_sobre_bancas (ADR-0376), +1 vuelven
+    # los juicios por riesgos del trabajo (ADR-0379), −4 empleo (ADR-0383: salen cinco,
+    # entra uno). Vetos/decretos (ADR-0377) y transferencias (ADR-0378) reemplazan 1 a 1.
+    assert resumen["indicadores"] == 64
+    assert resumen["indicadores_observados_en_calculo"] == 63   # ... → 66 (ADR-0380) → 63 (tanda 27-oct) | 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328) → 68 (ADR-0365) → 67 (ADR-0368) → 66 (ADR-0369) → 65 (ADR-0372) → 66 (ADR-0380)
     assert resumen["indicadores_sin_universo"] == 1

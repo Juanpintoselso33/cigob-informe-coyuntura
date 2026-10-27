@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Impacto social — resumen
 
-Este documento tiene una ficha por indicador — son 22 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 18 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,15 +35,15 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 93,6** | **NARANJA** | Deterioro moderado frente a las referencias | 22 indicadores: 8 en verde · 2 en amarillo · 7 en naranja · 5 en rojo |
-Componentes que puntúan en este corte: 22 de 22 publicados.
+| **ITCIS: 95,7** | **AMARILLO** | Sin cambios significativos frente a las referencias | 18 indicadores: 8 en verde · 2 en amarillo · 4 en naranja · 4 en rojo |
+Componentes que puntúan en este corte: 18 de 18 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
 | Presión de precios | Tres gastos sensibles. | 97,7 | AMARILLO | 25,0 % |
-| Prospectivas de empleo | Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el… | 91,6 | NARANJA | 24,2 % |
+| Empleo | Cuánta gente trabaja y en qué condiciones. | 100,1 | AMARILLO | 24,2 % |
 | Ingresos | Si el ingreso alcanza. | 114,6 | VERDE | 20,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,7 | ROJO | 10,0 % |
 | Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 106,7 | VERDE | 8,2 % |
@@ -66,13 +66,9 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % m/m | VERDE | 8,8 % |
 | Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario RIPTE | VERDE | 11,2 % |
 | Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,88 % m/m alquileres | ROJO | 5,0 % |
-| **DIMENSIÓN: Prospectivas de empleo** | | | | |
-| Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de… | 37,9 % | NARANJA | 8,3 % |
-| Peso del trabajo independiente | Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los… | 20,69 % del empleo registrado SIPA, sin monotributo social | NARANJA | 2,4 % |
-| Empleadores PyME activos | Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de una aseguradora de riesgos del trabajo. | 459.229 empleadores | NARANJA | 3,6 % |
-| Construcción | Nivel de actividad de la construcción medido por el indicador sintético de la actividad de la construcción (ISAC)… | 140,7 índice ISAC | ROJO | 3,3 % |
-| Subocupación demandante | Qué porcentaje de la población económicamente activa (PEA) trabaja menos horas de las que quisiera y además está… | 8 % de la PEA | NARANJA | 1,2 % |
-| Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.095,84 miles de puestos | AMARILLO | 5,4 % |
+| **DIMENSIÓN: Empleo** | | | | |
+| Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la Encuesta Permanente de… | 37,9 % | NARANJA | 9,7 % |
+| Ocupación (EPH) | Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo… | 0,4 pp vs. 2023 | AMARILLO | 14,5 % |
 | **DIMENSIÓN: Ingresos** | | | | |
 | Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,69 canastas (RIPTE/CBT) | VERDE | 13,0 % |
 | Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,3 % de personas | VERDE | 7,1 % |
@@ -665,14 +661,14 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 37,9 %** (2026-04) | **NARANJA** | Peso efectivo 8,3 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 37,9 %** (2026-04) | **NARANJA** | Peso efectivo 9,7 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | informalidad | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % |
+| **DIMENSIÓN EN EL ITCIS** | Empleo | **UNIDAD DE MEDIDA** | % |
 | **SERIE DISPONIBLE** | 2016-07 → 2026-04 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
 | **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — asalariados sin descuento jubilatorio, tasa trimestral |
 | **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-27 |
@@ -683,7 +679,7 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 
 Mide la precariedad laboral y la exclusión de la red de protección social. En el índice de impacto social su base es el 4T-2023 exacto (el trimestre de arranque del mandato).
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Empleo.** Cuánta gente trabaja y en qué condiciones: la tasa de empleo de la Encuesta Permanente de Hogares (EPH) del INDEC contra el mismo trimestre de 2023, que es el principal, y el porcentaje de asalariados sin aportes jubilatorios, el complemento. Dejaron de integrarla en octubre de 2026 el empleo registrado, los empleadores PyME, la subocupación demandante, el trabajo independiente y la construcción. La tasa de empleo se mueve despacio y no distingue la calidad del puesto.
 
 ## Método de cómputo
 
@@ -718,7 +714,7 @@ El componente está en 94,2 sobre la base 100 del 4º trimestre de 2023 — de 8
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITCIS: 8,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 9,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -728,7 +724,7 @@ Ponderación vigente en el ITCIS: 8,3 % efectivo. El color es una lectura adicio
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso se redistribuye proporcionalmente entre los componentes disponibles de prospectivas de empleo. La brecha salarial pertenece a otra dimensión y no absorbe ese peso.
+- **Si falta el dato:** Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso se redistribuye proporcionalmente entre los componentes disponibles de empleo. La brecha salarial pertenece a otra dimensión y no absorbe ese peso.
 
 - **Política de revisiones:** La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones.
 
@@ -738,97 +734,7 @@ Ponderación vigente en el ITCIS: 8,3 % efectivo. El color es una lectura adicio
 
 **2026-07-04** — Pasa a la serie trimestral con base exacta en el 4º trimestre de 2023 (la anual solo se actualizaba una vez al año y planchaba el componente).
 
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
-
-# Peso del trabajo independiente
-
-Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el índice de impacto social puntúa invertida: más peso independiente es peor.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: 20,69 % del empleo registrado SIPA, sin monotributo social** (2026-06) | **NARANJA** | Peso efectivo 2,4 % del ITCIS | Cinturón Impacto social |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | trabajo_independiente | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % del empleo registrado SIPA, sin monotributo social |
-| **SERIE DISPONIBLE** | 2019-01 → 2026-06 (90 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses, el mismo del cierre administrativo con que el SIPA publica sus series de trabajo registrado. |
-| **PRODUCTOR DEL DATO** | SIPA — Sistema Integrado Previsional Argentino (Secretaría de Trabajo) | **OPERACIÓN ESTADÍSTICA** | Series mensuales sin estacionalidad de trabajadores registrados: autónomos y monotributistas por un lado; asalariados del sector privado, del sector público y de casas particulares por el otro. |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-27 |
-
-## Definición — qué mide y por qué importa
-
-Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el índice de impacto social puntúa invertida: más peso independiente es peor.
-
-Describe la composición del empleo registrado, excluido el monotributo social. Puede aumentar porque crecen los independientes o porque caen los asalariados. Complementa el número de empleadores, pero no permite identificar si quienes perdieron un empleo pasaron a facturar por su cuenta. El signo invertido expresa el criterio del monitor sobre protección laboral; no mide la calidad de cada trabajo independiente.
-
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
-
-## Método de cómputo
-
-- Participación: autónomos y monotributistas del régimen general sobre esas categorías más asalariados privados, públicos y de casas particulares. Se excluye el monotributo social de ambos lados del cociente.
-- El monotributo social queda EXCLUIDO, y es la decisión que más pesa acá: su serie cae 394 mil personas en un solo mes, diciembre de 2024. Eso no es mercado de trabajo, es una decisión regulatoria sobre el propio régimen.
-- Componente del índice: la participación rebaseada de forma INVERTIDA contra el promedio del 4º trimestre de 2023 (más peso independiente = deterioro).
-
-## Semáforo — valores que determinan el color
-
-Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
-
-**Valores que definen cada color**
-
-| Rango (índice base 100 = 4º trim. 2023) | Color |
-|---|---|
-| 105 o más | VERDE |
-| de 95 a 105 | AMARILLO |
-| de 85 a 95 | NARANJA |
-| menos de 85 | ROJO |
-
-Este componente está hoy en **92,4**.
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- 2,60 millones de independientes sobre 12,55 millones de puestos registrados · numerador: autónomos, monotributo general · denominador: autónomos, monotributo general, asalariados privados, asalariados públicos, casas particulares · queda afuera el monotributo social, cuyo padrón cayó de 653 a 259 mil personas en un solo mes (2024-12) por un cambio de régimen y no del mercado de trabajo · con ese régimen adentro daría 22,1%
-
-## Color vigente y por qué
-
-Dato vigente: 20,69 % del empleo registrado SIPA, sin monotributo social (2026-06).
-
-El componente está en 92,4 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
-
-**Color vigente: NARANJA**
-
-Ponderación vigente en el ITCIS: 2,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-## Transparencia — limitaciones declaradas
-
-- El signo es una decisión de criterio, no un hecho de la fuente. Se puntúa invertido porque un empleo que se corre del salario al trabajo por cuenta propia pierde aportes patronales, indemnización y estabilidad, aunque siga siendo registrado. La lectura contraria —emprendedorismo registrado como mejora— existe y está declarada; cambiarla es cambiar un signo y recalcular.
-- La participación puede subir porque caen los asalariados y no porque crezcan los independientes. Por eso el informe publica las dos variaciones por separado y no sólo el cociente.
-- Sólo ve trabajo REGISTRADO: la informalidad, que es el otro modo de salir de la relación salarial, la mide su propio componente.
-- La exclusión del monotributo social deja fuera un régimen que sí es empleo para quien lo tiene; lo que queda afuera es su serie, por el quiebre regulatorio, no la existencia del fenómeno.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión. Si alguna de las cinco series de SIPA no responde, el colector falla en voz alta: una participación calculada sobre un denominador incompleto sería un número plausible y equivocado.
-
-- **Política de revisiones:** El SIPA revisa hacia atrás con cada edición y las cinco series se releen completas en cada corrida, así que las revisiones entran solas.
-
-## Historial — cambios metodológicos documentados
-
-**2026-09-08** — Se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.
-
-**2026-08-21** — Entra al índice de impacto social como la contracara del cierre de PyMEs, con 10% de la dimensión; los cinco componentes previos ceden proporcionalmente y conservan su orden relativo. El componente entra en 92,8 y el peso nominal de la dimensión no se toca.
-
-**2026-08-25** — La tarjeta declara el universo restringido que siempre usó. Decía «% del empleo registrado» y dejaba al monotributo social afuera de los dos lados del cociente. La exclusión sigue —el padrón cayó de 653 a 259 mil personas entre noviembre y diciembre de 2024 por un cambio de régimen, y con ese salto adentro el indicador daría vuelta el signo del período— pero ahora la unidad dice «sin monotributo social», la tarjeta enumera las categorías del numerador y del denominador, y publica cuánto daría con el régimen incluido (22,1% contra 20,6%). El valor no cambia.
+**2026-10-27** — La dimensión de prospectivas de empleo pasa a llamarse Empleo y se replantea: el principal es ahora la ocupación de la EPH (60% de lo que puntúa) e informalidad queda como complemento con el 40%, que sube de 34,19% a 40% interno y de 8,27% a 9,68% del índice mientras el equipo decide qué hacer con ella. El peso nominal de la dimensión no cambia.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -838,216 +744,36 @@ Ponderación vigente en el ITCIS: 2,4 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Empleadores PyME activos
+# Ocupación (EPH)
 
-Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de una aseguradora de riesgos del trabajo. En el índice de impacto social puntúa por el nivel rebaseado a 100 = 4T-2023: menos empleadores es peor.
+Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo trimestre de 2023, antes del mandato, según la Encuesta Permanente de Hogares continua del INDEC en los 31 aglomerados urbanos. Se muestra en puntos porcentuales.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 459.229 empleadores** (2026-07) | **NARANJA** | Peso efectivo 3,6 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 0,4 pp vs. 2023** (2026-04) | **AMARILLO** | Peso efectivo 14,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | mortalidad_pymes | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | empleadores |
-| **SERIE DISPONIBLE** | 2019-01 → 2026-07 (91 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses. La SRT publica su serie histórica todos los meses, con el rezago del cierre administrativo de las declaraciones. |
-| **PRODUCTOR DEL DATO** | SRT — Superintendencia de Riesgos del Trabajo | **OPERACIÓN ESTADÍSTICA** | Serie histórica de partes empleadoras según tamaño de la nómina, cuadro 4.2: cantidad de empleadores con al menos una persona declarada con cobertura de ART, abierta por tramo de nómina, desde julio de 1996. |
-| **MODO DE ACCESO** | Automático: lectura mensual del XLSX publicado por la SRT. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-27 |
-
-## Definición — qué mide y por qué importa
-
-Cuántos empleadores con nóminas de 1 a 50 trabajadores tienen cobertura de una aseguradora de riesgos del trabajo. En el índice de impacto social puntúa por el nivel rebaseado a 100 = 4T-2023: menos empleadores es peor.
-
-Observa la cantidad de empleadores dentro de ese universo. Una baja puede corresponder a un cierre, a dejar de tener personal declarado o a superar los 50 trabajadores; una entrada puede provenir de una empresa que reduce su nómina. La serie agregada no separa esos movimientos ni acredita quiebras.
-
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
-
-## Método de cómputo
-
-- Recorte PyME: se SUMAN los tramos de 1 · 2 · 3 a 5 · 6 a 10 · 11 a 25 · 26 a 40 · 41 a 50 trabajadores. No se toma el total del sistema aunque el tramo PyME sea la enorme mayoría de los empleadores: el total incluye a las grandes, y el indicador dejaría de decir PyME apenas cambie esa proporción.
-- Componente del índice: el NIVEL de empleadores activos rebaseado a 100 = promedio del 4º trimestre de 2023. No la variación neta del mes: el nivel acumulado dice cuántas empresas quedan respecto del arranque, que es la pregunta del informe, y no depende de la estacionalidad de un mes suelto.
-- Una sola serie, en unidades, para el titular y para el índice — el rebase lo hace el motor. Antes se publicaban dos series distintas para el mismo indicador y nunca podían reconciliarse.
-
-## Semáforo — valores que determinan el color
-
-Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
-
-**Valores que definen cada color**
-
-| Rango (índice base 100 = 4º trim. 2023) | Color |
-|---|---|
-| 105 o más | VERDE |
-| de 95 a 105 | AMARILLO |
-| de 85 a 95 | NARANJA |
-| menos de 85 | ROJO |
-
-Este componente está hoy en **93,4**.
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- El informe publica el valor (459.229 empleadores) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
-
-## Color vigente y por qué
-
-Dato vigente: 459.229 empleadores (2026-07).
-
-El componente está en 93,4 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
-
-**Color vigente: NARANJA**
-
-Ponderación vigente en el ITCIS: 3,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-## Transparencia — limitaciones declaradas
-
-- Sólo ve empleadores con al menos una persona declarada: una empresa que despide a toda su nómina y sigue existiendo cuenta como baja, y una que nunca tuvo empleados no cuenta nunca.
-- Es cobertura de riesgos del trabajo, no padrón tributario: el universo es el de las relaciones laborales registradas con ART.
-- Mide el stock de empleadores en los tramos de 1 a 50 trabajadores, no cierres o quiebras. Una empresa que supera 50 sale del universo y una que reduce su nómina a ese tramo entra; la serie no distingue esos cruces de altas o bajas de cobertura.
-- El equivalente por el lado de AFIP —la base de empleadores de OEDE— dejaría ver el universo tributario completo, pero está congelada en octubre de 2023, justo antes del período que el informe evalúa.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión. Si el cuadro 4.2 deja de traer alguno de los siete tramos, el colector falla en voz alta en vez de publicar una suma incompleta.
-
-- **Política de revisiones:** La SRT reemite el archivo entero cada mes y la serie se relee completa en cada corrida, así que las revisiones hacia atrás entran solas.
-
-## Historial — cambios metodológicos documentados
-
-**2026-09-08** — Se corrigen inferencias sobre cierres y trayectorias individuales que las series agregadas no identifican. Sin cambios en datos, signo, pesos ni cálculo.
-
-**2026-07-03** — Entra al índice de impacto social como nivel desestacionalizado base-100 (antes puntuaba por variación mensual de la serie original, dominada por estacionalidad).
-
-**2026-08-21** — Pasa a medir lo que su nombre promete: empleadores PyME activos de la SRT, en lugar del IPI manufacturero del INDEC, que era una aproximación declarada por producción industrial. El componente pasa de 97,4 a 93,8 — la producción había recuperado más que el número de empresas. El rótulo público pasa de «Actividad industrial (IPI)» a «Empleadores PyME activos» y el tope de frescura sube de 140 a 165 días.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
-
-# Construcción
-
-Nivel de actividad de la construcción medido por el indicador sintético de la actividad de la construcción (ISAC), desestacionalizado, del Instituto Nacional de Estadística y Censos (INDEC). La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: 140,7 índice ISAC** (2026-08) | **ROJO** | Peso efectivo 3,3 % del ITCIS | Cinturón Impacto social |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | despacho_cemento | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | índice ISAC |
-| **SERIE DISPONIBLE** | 2021-09 → 2026-08 (60 puntos) | **REZAGO DE PUBLICACIÓN** | ~2 meses (calendario de difusión de la construcción del INDEC). |
-| **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | ISAC — Indicador Sintético de la Actividad de la Construcción, serie desestacionalizada (el nombre histórico del indicador quedó; la métrica real es el ISAC) |
-| **MODO DE ACCESO** | Automático: descubre la planilla anual vigente desde la página oficial de construcción; usa el mismo lector de niveles que la historia y el componente ISAC del IAI. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-27 |
-
-## Definición — qué mide y por qué importa
-
-Nivel de actividad de la construcción medido por el indicador sintético de la actividad de la construcción (ISAC), desestacionalizado, del Instituto Nacional de Estadística y Censos (INDEC). La clave interna conserva un nombre histórico, pero la observación no es el despacho de cemento.
-
-Termómetro de la obra pública y privada, sensible al ciclo económico.
-
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
-
-## Método de cómputo
-
-- Componente del índice: el nivel desestacionalizado rebaseado a 100 = promedio del 4º trimestre de 2023.
-- La serie original tiene un desplome estacional en diciembre que contaminaría la base: por eso la desestacionalizada.
-
-## Semáforo — valores que determinan el color
-
-Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
-
-**Valores que definen cada color**
-
-| Rango (índice base 100 = 4º trim. 2023) | Color |
-|---|---|
-| 105 o más | VERDE |
-| de 95 a 105 | AMARILLO |
-| de 85 a 95 | NARANJA |
-| menos de 85 | ROJO |
-
-Este componente está hoy en **78,1**.
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- El informe publica el valor (140,7 índice ISAC) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
-
-## Color vigente y por qué
-
-Dato vigente: 140,7 índice ISAC (2026-08).
-
-El componente está en 78,1 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO.
-
-**Color vigente: ROJO**
-
-Ponderación vigente en el ITCIS: 3,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-## Transparencia — limitaciones declaradas
-
-- Aproximación al empleo vía actividad de la construcción, no despachos de cemento reales (la serie de insumos existe aparte, como contraste).
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.
-
-- **Política de revisiones:** Serie desestacionalizada revisable por la fuente; re-descarga completa por actualización.
-
-## Historial — cambios metodológicos documentados
-
-**2026-09-08** — IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.
-
-**2026-07-03** — Entra al índice de impacto social como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias).
-
-**2026-09-15** — El rótulo de la tarjeta pasa de «Construcción (ISAC)» a «Construcción». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
-
-# Subocupación demandante
-
-Qué porcentaje de la población económicamente activa (PEA) trabaja menos horas de las que quisiera y además está buscando otro empleo. Es la tasa de subocupación demandante de la Encuesta Permanente de Hogares (EPH), y el Instituto Nacional de Estadística y Censos (INDEC) la calcula sobre la PEA —no sobre los ocupados—, que es lo que la vuelve comparable con la tasa de desocupación.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: 8 % de la PEA** (2026-04) | **NARANJA** | Peso efectivo 1,2 % del ITCIS | Cinturón Impacto social |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | subocupacion_demandante | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % de la PEA |
-| **SERIE DISPONIBLE** | 2016-07 → 2026-04 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
-| **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — tasa de subocupación demandante, valores trimestrales para el total de aglomerados urbanos relevados |
+| **IDENTIFICADOR TÉCNICO** | ocupacion_eph | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Empleo | **UNIDAD DE MEDIDA** | pp vs. 2023 |
+| **SERIE DISPONIBLE** | 2023-10 → 2026-04 (11 puntos) | **REZAGO DE PUBLICACIÓN** | Trimestral. El INDEC publica el trimestre unos 80 días después de su cierre (el 2T-2026 estaba en la API antes del 20-sep-2026); la fecha del dato es el inicio del trimestre, así que el tope de 280 días de la card cubre un ciclo completo de publicación. |
+| **PRODUCTOR DEL DATO** | INDEC (EPH continua) | **OPERACIÓN ESTADÍSTICA** | EPH — tasa de empleo, total de 31 aglomerados urbanos, trimestral |
 | **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-10-27 |
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de la población económicamente activa (PEA) trabaja menos horas de las que quisiera y además está buscando otro empleo. Es la tasa de subocupación demandante de la Encuesta Permanente de Hogares (EPH), y el Instituto Nacional de Estadística y Censos (INDEC) la calcula sobre la PEA —no sobre los ocupados—, que es lo que la vuelve comparable con la tasa de desocupación.
+Cuánto más alto o más bajo está el porcentaje de la población que tiene empleo (tasa de empleo) que en el mismo trimestre de 2023, antes del mandato, según la Encuesta Permanente de Hogares continua del INDEC en los 31 aglomerados urbanos. Se muestra en puntos porcentuales.
 
-Señala empleo insuficiente: gente que ya tiene trabajo y sale igual a buscar más horas. Es la presión sobre el mercado laboral que la desocupación no ve, porque a estas personas las cuenta como ocupadas.
+Es el principal componente de la dimensión de empleo del índice de impacto social: dice si en el último trimestre publicado trabaja más o menos gente que cuando empezó el Gobierno, sea o no en empleo registrado. Se compara el mismo trimestre porque la encuesta no está desestacionalizada. La tasa se mueve poco, así que cada décima de punto cuenta. No distingue la calidad del empleo.
 
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
+**Dimensión que integra — Empleo.** Cuánta gente trabaja y en qué condiciones: la tasa de empleo de la Encuesta Permanente de Hogares (EPH) del INDEC contra el mismo trimestre de 2023, que es el principal, y el porcentaje de asalariados sin aportes jubilatorios, el complemento. Dejaron de integrarla en octubre de 2026 el empleo registrado, los empleadores PyME, la subocupación demandante, el trabajo independiente y la construcción. La tasa de empleo se mueve despacio y no distingue la calidad del puesto.
 
 ## Método de cómputo
 
-- La tasa se toma tal como la publica el INDEC: el porcentaje de la POBLACIÓN ECONÓMICAMENTE ACTIVA que trabaja menos horas de las que quisiera y además busca otro empleo. El denominador es la PEA, el mismo de la tasa de desocupación, y no el total de ocupados.
-- Componente del índice: la tasa rebaseada de forma invertida (menos subocupación demandante = mejora) contra el 4º trimestre de 2023.
+- La tasa de empleo es la población ocupada sobre la población total. El indicador es su diferencia en puntos porcentuales contra el MISMO trimestre de 2023, antes del mandato: se compara la misma estación porque la EPH no viene desestacionalizada.
+- Componente del índice: 100 + 10 × la diferencia en puntos. Cada décima de punto vale 1 punto del índice: la tasa se mueve poco (en veinte años, salvo la pandemia, cambió menos de un punto por año casi siempre) y un punto de tasa son cientos de miles de puestos. Igual que en 2023 da 100; no se invierte, más ocupación es mejor.
 
 ## Semáforo — valores que determinan el color
 
@@ -1062,131 +788,41 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **85**.
+Este componente está hoy en **104**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (8 % de la PEA) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- Tasa de empleo 45,0% de la población total, contra 44,6% en el mismo trimestre de 2023
 
 ## Color vigente y por qué
 
-Dato vigente: 8 % de la PEA (2026-04).
+Dato vigente: 0,4 pp vs. 2023 (2026-04).
 
-El componente está en 85 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
-
-**Color vigente: NARANJA**
-
-Ponderación vigente en el ITCIS: 1,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
-
-## Transparencia — limitaciones declaradas
-
-- Mide gente que trabaja menos horas de las que quisiera y busca más, no la tenencia de múltiples empleos. Hasta agosto de 2026 el indicador se llamaba `pluriempleo`, que es otro fenómeno.
-- Es porcentaje de la POBLACIÓN ECONÓMICAMENTE ACTIVA, no de los ocupados: así la define INDEC y así hay que compararla con la desocupación.
-- Trimestral contra base de un trimestre: sesgo estacional chico aceptado.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.
-
-- **Política de revisiones:** La encuesta se revisa; re-descarga completa por actualización.
-
-## Historial — cambios metodológicos documentados
-
-**2026-07-03** — Entra al índice de impacto social con rebase invertido base-100.
-
-**2026-08-25** — El indicador pasa a llamarse `subocupacion_demandante`. Se llamaba `pluriempleo` y medía otra cosa: la fuente siempre fue la tasa de subocupación demandante de la EPH (serie 47.2), que cuenta a quienes trabajan menos horas de las que quisieran y buscan más, no a quienes tienen más de un empleo. La unidad pasa de «%» y «% de ocupados» a «% de la PEA», que es como INDEC la calcula. El valor, la serie y el peso no cambian: cambia el nombre y la unidad declarada.
-
-**2026-08-25** — La descripción pública decía «qué porcentaje de los ocupados» y el INDEC calcula la tasa sobre la población económicamente activa. El denominador correcto queda dicho en las tres capas —descripción, transformaciones y limitaciones— y no sólo en la unidad. Ningún valor cambia: cambia de qué universo se afirma que sale el 7,5%.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
-
-# Empleo registrado privado
-
-Cuántos asalariados del sector privado están registrados ante la seguridad social. Es el dato que las empresas declaran mes a mes, no una estimación de encuesta.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: 6.095,84 miles de puestos** (2026-06) | **AMARILLO** | Peso efectivo 5,4 % del ITCIS | Cinturón Impacto social |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | empleo_registrado | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | miles de puestos |
-| **SERIE DISPONIBLE** | 2023-10 → 2026-06 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Los datos del Sistema Integrado Previsional se publican con alrededor de tres meses de rezago: son declaraciones de las empresas que se consolidan y se revisan. |
-| **PRODUCTOR DEL DATO** | Ministerio de Capital Humano — Sistema Integrado Previsional Argentino (SIPA) | **OPERACIÓN ESTADÍSTICA** | Trabajadores registrados según modalidad ocupacional principal — asalariados del sector privado, en miles de personas |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-10-27 |
-
-## Definición — qué mide y por qué importa
-
-Cuántos asalariados del sector privado están registrados ante la seguridad social. Es el dato que las empresas declaran mes a mes, no una estimación de encuesta.
-
-Cuenta puestos asalariados privados registrados. Complementa las medidas de actividad e informalidad; no cubre empleo público, independiente o no registrado ni describe por sí solo la calidad de esos puestos. La serie permite seguir el nivel y sus variaciones con la fecha de cada observación.
-
-**Dimensión que integra — Prospectivas de empleo.** Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el indicador sintético de la actividad de la construcción (ISAC) del Instituto Nacional de Estadística y Censos (INDEC), subocupación demandante y participación del trabajo independiente registrado. El ISAC no cuenta empleos y la variación de empleadores no identifica quiebras ni transiciones individuales.
-
-## Método de cómputo
-
-- La tarjeta publica el nivel en miles de puestos; el índice del cinturón lo expresa en base 100 contra el promedio del último trimestre de 2023, la misma línea de base que el resto de los componentes.
-- Se usa la serie con estacionalidad, no la desestacionalizada, porque la comparación es contra una base fija de tres meses y no contra el mes anterior: la estacionalidad de la base y la del mes corriente se compensan.
-- No se invierte: más empleo registrado es mejor, de modo que el índice sube cuando la situación mejora.
-
-## Semáforo — valores que determinan el color
-
-Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
-
-**Valores que definen cada color**
-
-| Rango (índice base 100 = 4º trim. 2023) | Color |
-|---|---|
-| 105 o más | VERDE |
-| de 95 a 105 | AMARILLO |
-| de 85 a 95 | NARANJA |
-| menos de 85 | ROJO |
-
-Este componente está hoy en **95,5**.
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- El informe publica el valor (6.095,84 miles de puestos) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
-
-## Color vigente y por qué
-
-Dato vigente: 6.095,84 miles de puestos (2026-06).
-
-El componente está en 95,5 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
+El componente está en 104 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCIS: 5,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 14,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
-- Cuenta puestos registrados, no personas ocupadas. Un trabajador con dos empleos registrados cuenta dos veces, y todo el empleo no registrado —alrededor de un tercio del total en la Argentina— queda afuera por definición.
-- Sólo mira al sector privado. El empleo público se publica por separado y no entra: la dimensión describe las condiciones del mercado de trabajo que enfrenta un hogar, y el tamaño del Estado ya se mide en el cinturón de gestión. Sumarlo acá haría que una reducción de la planta estatal empeorara este cinturón al mismo tiempo que mejora el otro, con el mismo dato.
-- Las declaraciones se revisan hacia atrás durante varios meses, de modo que los últimos puntos de la serie pueden moverse.
-- Un puesto registrado no dice nada sobre el salario que paga: el indicador no captura si el empleo que queda está mejor o peor remunerado que el que se perdió.
+- Mide cuánta gente de la población total tiene empleo, no su calidad: no distingue formal de informal ni jornada completa de parcial. Para eso está informalidad.
+- Cubre los 31 aglomerados urbanos de la EPH, no las zonas rurales ni los pueblos chicos.
+- La encuesta tiene error muestral de unas décimas de punto: con esta escala, un trimestre puede moverse unos puntos del índice sin que el empleo haya cambiado de verdad. Conviene leer la serie, no un trimestre suelto.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si falta el dato, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros tres componentes de la dimensión.
+- **Si falta el dato:** Si falla la fuente, se conserva el último valor disponible con su fecha y marcado como desactualizado. Si no hay dato utilizable, el peso pasa a informalidad, el otro componente de empleo.
 
-- **Política de revisiones:** La fuente revisa sus series al consolidar declaraciones; el informe regenera la serie completa en cada actualización.
+- **Política de revisiones:** La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-25** — Entra al índice como componente principal de la dimensión de empleo, con el treinta y cinco por ciento. Hasta entonces la dimensión se llamaba así pero ninguno de sus cuatro componentes medía empleo: eran indicadores de producción, de construcción, de subocupacion_demandante y un índice líder.
+**2026-10-27** — Se compara contra el mismo trimestre de 2023 y no contra el año anterior, y cada décima de punto vale 1 punto del índice (antes, un punto de tasa valía 2,2): con la escala anterior el componente quedaba siempre cerca de 100. Con el 2º trimestre de 2026 (45,0% contra 44,6%) da 104.
+
+**2026-10-27** — Entra al índice de impacto social como componente principal de la dimensión de empleo (60%), por decisión de la reunión del 26-oct-2026: la dimensión pasa a medir cuánta gente trabaja. El padrón de ARCA de empleadores, previsto como complemento, no tiene serie pública reproducible y queda afuera.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

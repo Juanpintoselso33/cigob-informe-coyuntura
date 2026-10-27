@@ -52,6 +52,31 @@
       "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"
     },
     {
+      "indicador": "litigiosidad_laboral",
+      "indice": "ITCG",
+      "procedencia": "historia_larga",
+      "fuera_de_muestra": {
+        "n": 28,
+        "media": 12.9,
+        "desvio": 6.4,
+        "saturado": 0.821,
+        "crudo_min": 14.4,
+        "crudo_max": 80.1,
+        "crudo_media": 40.65
+      },
+      "dentro_de_muestra": {
+        "n": 32,
+        "media": 51.7,
+        "desvio": 14.1,
+        "saturado": 0.094,
+        "crudo_min": 0.1,
+        "crudo_max": 24.7,
+        "crudo_media": 6.21
+      },
+      "señal": "mirar",
+      "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"
+    },
+    {
       "indicador": "brecha_obra_publica",
       "indice": "ITCP",
       "procedencia": "control",
@@ -72,31 +97,6 @@
         "crudo_min": -29.8,
         "crudo_max": 3.3,
         "crudo_media": -11.13
-      },
-      "señal": "sin señal",
-      "lectura": "discrimina en ambas ventanas"
-    },
-    {
-      "indicador": "iaf_transferencias",
-      "indice": "ITCP",
-      "procedencia": "conceptual",
-      "fuera_de_muestra": {
-        "n": 61,
-        "media": 79.3,
-        "desvio": 11.9,
-        "saturado": 0.082,
-        "crudo_min": -9.3,
-        "crudo_max": 11.7,
-        "crudo_media": 1.92
-      },
-      "dentro_de_muestra": {
-        "n": 34,
-        "media": 65.2,
-        "desvio": 10.6,
-        "saturado": 0.0,
-        "crudo_min": -12.9,
-        "crudo_max": 2.4,
-        "crudo_media": -4.44
       },
       "señal": "sin señal",
       "lectura": "discrimina en ambas ventanas"
@@ -175,6 +175,31 @@
       },
       "señal": "sin señal",
       "lectura": "discrimina en ambas ventanas"
+    },
+    {
+      "indicador": "terminos_intercambio",
+      "indice": "ITCM",
+      "procedencia": "convencion",
+      "fuera_de_muestra": {
+        "n": 32,
+        "media": 33.4,
+        "desvio": 29.4,
+        "saturado": 0.375,
+        "crudo_min": 114.11,
+        "crudo_max": 152.28,
+        "crudo_media": 134.16
+      },
+      "dentro_de_muestra": {
+        "n": 10,
+        "media": 53.3,
+        "desvio": 31.8,
+        "saturado": 0.3,
+        "crudo_min": 129.7,
+        "crudo_max": 148.15,
+        "crudo_media": 139.97
+      },
+      "señal": "sin señal",
+      "lectura": "discrimina en ambas ventanas"
     }
   ],
   "no_evaluables": [
@@ -190,6 +215,11 @@
     },
     {
       "indicador": "apertura_comercial",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "apoyo_comercio",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
@@ -239,11 +269,6 @@
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
-      "indicador": "desafios_legislativos",
-      "n_fuera": 0,
-      "motivo": "sin ventana fuera de muestra utilizable"
-    },
-    {
       "indicador": "desequilibrio_monetario",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
@@ -281,6 +306,11 @@
     {
       "indicador": "idc",
       "n_fuera": 1,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "insistencias_vetos",
+      "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
@@ -329,6 +359,11 @@
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
+      "indicador": "rechazos_decretos",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
       "indicador": "reduccion_estado",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
@@ -359,7 +394,12 @@
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
-      "indicador": "tcr_terminos_intercambio",
+      "indicador": "tcrm",
+      "n_fuera": 1,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "transferencias_no_automaticas",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     },
@@ -369,7 +409,7 @@
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
-      "indicador": "veto_quorum",
+      "indicador": "votos_sobre_bancas",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"
     }

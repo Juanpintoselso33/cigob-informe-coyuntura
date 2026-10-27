@@ -27,6 +27,7 @@ Y dos clases más, que son la misma enfermedad en otro órgano:
 Lo que se verifica acá NO es prosa: es que cada afirmación pública tenga detrás
 la línea de colector, la tabla de pesos o el campo del snapshot que la sostiene.
 """
+import pytest
 import json
 import re
 import sys
@@ -243,8 +244,10 @@ def test_las_capas_que_definen_el_universo_dicen_pea():
 def test_la_unidad_de_la_subocupacion_es_la_que_escribio_el_colector():
     """Cierra el otro extremo del denominador: el tablero y el colector tienen
     que decir el mismo universo, no sólo la ficha."""
-    real = (SNAPSHOT["cinturones"]["vida_cotidiana"]["indicadores"]
-            ["subocupacion_demandante"]["unidad"])
+    card = SNAPSHOT["cinturones"]["vida_cotidiana"]["indicadores"].get("subocupacion_demandante")
+    if card is None:
+        pytest.skip("subocupacion_demandante está suspendida (ADR-0383): no se publica como tarjeta")
+    real = card["unidad"]
     assert real == "% de la PEA", f"el colector cambió la unidad: {real!r}"
     for mapa in ("UNIDADES_CORTAS", "UNIDADES_LARGAS"):
         dicha = _bloque_mapa(mapa)["subocupacion_demandante"]

@@ -18,7 +18,7 @@ al ADR.
 | `viabilidad_fiscal_comercial` | 24% | `resultado_primario`, `recaudacion`, `saldo_comercial_12m` |
 | `financiamiento` | 16% | `reservas_bcra`, `idc`, `costo_financiamiento_tesoro`, `credito_privado` |
 | `actividad` | 23% | `emae_ia`, `emae_difusion`, `ipi_manufacturero`, `iai` |
-| `competitividad_externa` | 11% | `tcr_terminos_intercambio` |
+| `competitividad_externa` | 11% | `tcrm`, `terminos_intercambio` |
 
 Suma de pesos: 100%.
 
@@ -230,19 +230,33 @@ Suma de pesos: 100%.
 
 ### Dimensión `competitividad_externa` (11%)
 
-#### Tipo de cambio real y términos del intercambio
+#### Tipo de cambio real
 
-`tcr_terminos_intercambio`
+`tcrm`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **11.0%** |
-| Procedencia del ancla | `convencion` — matriz de cuatro esquinas (85/50/30/10) fijada por ADR-0360; posición del tipo de cambio real por sus umbrales de historia 1997-2026 (p10≈75, p25≈87, mediana≈106), pero posición de los términos del intercambio por percentiles p0/p25/p50/p75/p100 de 4T-2023 / 2T-2026 —11 trimestres del período medido— (ADR-0360) |
+| Peso dentro de la dimensión | 50% |
+| Peso efectivo en el índice | **5.5%** |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
 
-**Bandas**: > 60 → 85 · 40–60 → 50 · 20–40 → 30 · ≤ 20 → 10
+**Bandas**: > 110 → 100 · 95–110 → 80 · 85–95 → 60 · 75–85 → 35 · ≤ 75 → 10
 
-**Lo gobiernan**: [ADR-0360](../adr/0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) La competitividad externa cruza el tipo de cambio real con los términos del intercambio
+**Lo gobiernan**: [ADR-0360](../adr/0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) La competitividad externa cruza el tipo de cambio real con los términos del intercambio · [ADR-0375](../adr/0375-competitividad-el-cruce-pasa-a-la-dimension.md) Competitividad: el cruce pasa a la dimensión
+
+#### Términos del intercambio
+
+`terminos_intercambio`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 50% |
+| Peso efectivo en el índice | **5.5%** |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Bandas**: > 148.15 → 100 · 143.63–148.15 → 78 · 140.4–143.63 → 55 · 138.1–140.4 → 32 · ≤ 138.1 → 10
+
+**Lo gobiernan**: [ADR-0375](../adr/0375-competitividad-el-cruce-pasa-a-la-dimension.md) Competitividad: el cruce pasa a la dimensión
 
 ## Se releva y no puntúa
 
@@ -257,7 +271,7 @@ histórica.
 - `idm` — Brecha de crecimiento real M3–M2 (declarado como contexto)
 - `prestamos_privados` — Préstamos al sector privado (declarado como contexto)
 - `tc_mayorista` — Tipo de cambio mayorista (declarado como contexto)
-- `tcrm` — Tipo de cambio real (declarado como contexto)
+- `tcr_terminos_intercambio` — Tipo de cambio real y términos del intercambio (declarado como contexto)
 
 ## Decisiones abiertas
 
@@ -279,7 +293,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-60 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+61 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -341,3 +355,4 @@ histórica.
 - [0360](../adr/0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) — La competitividad externa cruza el tipo de cambio real con los términos del intercambio
 - [0367](../adr/0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) — La inflación se pinta con los cortes de Luis
 - [0368](../adr/0368-la-recaudacion-de-iva-y-cheque-sale-del-indice.md) — La recaudación de IVA y cheque sale del índice
+- [0375](../adr/0375-competitividad-el-cruce-pasa-a-la-dimension.md) — Competitividad: el cruce pasa a la dimensión
