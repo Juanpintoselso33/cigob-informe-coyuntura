@@ -139,3 +139,17 @@ def test_presidente_de_asigna_por_fecha_y_exige_el_apellido():
     assert pp.presidente_de("2021-05-01", "https://x.com.ar/macri-critico") is None
     assert pp.presidente_de("2021-05-01", "https://x.com.ar/alberto-fernandez-anuncio") == "fernandez"
     assert pp.presidente_de("2021-05-01", "https://x.com.ar/cristina-fernandez-hablo") is None
+
+
+def test_agregar_meses_suma_el_mes_nuevo_sin_pisar_los_viejos():
+    viejo = {"_meta": {"meses": {"2026-08": {"articulos_ar_gdelt": 100}, "2026-09": {"articulos_ar_gdelt": 100}},
+                       "periodo": {"desde": "2023-12-01", "hasta_exclusivo": "2026-10-01"}, "meses_incompletos": {}},
+             "notas": [{"id": "a", "mes": "2026-09"}]}
+    nuevo = {"_meta": {"meses": {"2026-09": {"articulos_ar_gdelt": 1}, "2026-10": {"articulos_ar_gdelt": 40}},
+                       "periodo": {"desde": "2026-09-01", "hasta_exclusivo": "2026-11-01"}},
+             "notas": [{"id": "b", "mes": "2026-09"}, {"id": "c", "mes": "2026-10"}]}
+    r = pp.agregar_meses(viejo, nuevo)
+    assert [x["id"] for x in r["notas"]] == ["a", "c"]
+    assert r["_meta"]["meses"]["2026-09"]["articulos_ar_gdelt"] == 100
+    assert r["_meta"]["meses"]["2026-10"]["cobertura_incompleta"] is True   # 40 < 0,75 x mediana 100
+    assert r["_meta"]["periodo"]["hasta_exclusivo"] == "2026-11-01"

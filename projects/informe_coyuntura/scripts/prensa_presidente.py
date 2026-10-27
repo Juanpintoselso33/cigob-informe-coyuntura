@@ -285,6 +285,29 @@ def titulo_desde_url(url: str) -> str:
     return mejor[:1].upper() + mejor[1:] if len(mejor.split()) >= 5 else ""
 
 
+def agregar_meses(corpus: dict, nuevo: dict) -> dict:
+    """Suma al corpus del mandato los meses de `nuevo` (la carga mensual), sin
+    volver a consultar la serie entera. Un mes ya presente no se pisa. La
+    cobertura incompleta del mes nuevo se juzga contra la mediana de toda la
+    serie, no contra sí mismo."""
+    meta, meses = corpus["_meta"], corpus["_meta"]["meses"]
+    agregados = [m for m in sorted(nuevo["_meta"]["meses"]) if m not in meses]
+    ids = {x["id"] for x in corpus["notas"]}
+    totales = {m: v["articulos_ar_gdelt"] for m, v in meses.items() if v.get("articulos_ar_gdelt")}
+    for m in agregados:
+        meses[m] = nuevo["_meta"]["meses"][m]
+        if meses[m].get("articulos_ar_gdelt"):
+            totales[m] = meses[m]["articulos_ar_gdelt"]
+    incompletos = meses_incompletos(totales)
+    for m in agregados:
+        meses[m]["cobertura_incompleta"] = m in incompletos
+    meta["meses_incompletos"] = {m: v for m, v in incompletos.items()}
+    corpus["notas"].extend(x for x in nuevo["notas"] if x["mes"] in agregados and x["id"] not in ids)
+    meta["periodo"]["hasta_exclusivo"] = max(meta["periodo"]["hasta_exclusivo"], nuevo["_meta"]["periodo"]["hasta_exclusivo"])
+    meta.setdefault("cargas_mensuales", []).append({"meses": agregados, "bytes_facturados": nuevo["_meta"].get("bytes_facturados")})
+    return corpus
+
+
 def patron_historia() -> str:
     return "|".join(p[4] for p in PRESIDENTES_PREVIOS)
 
@@ -367,12 +390,17 @@ def main(argv=None) -> int:
     ap.add_argument("--lotes", type=Path)
     ap.add_argument("--salida", type=Path, default=None)
     ap.add_argument("--historico", action="store_true", help="Macri y Alberto Fernández (2015-12 a 2023-11)")
+    ap.add_argument("--mes", help="carga mensual AAAA-MM: consulta sólo ese mes y lo suma al corpus del mandato")
     a = ap.parse_args(argv)
     hasta = a.hasta or ultimo_mes_cerrado_fin()
     patron = "milei"
     if a.historico:
         a.desde, hasta, patron = HISTORIA_DESDE, HISTORIA_HASTA, patron_historia()
     a.salida = a.salida or (CORPUS_HISTORIA if a.historico else CORPUS)
+    if a.mes:
+        y, m = map(int, a.mes.split("-"))
+        a.desde = f"{y}-{m:02d}-01"
+        hasta = f"{y + (m == 12)}-{m % 12 + 1:02d}-01"
     if a.dry_run:
         b = dry_run(a.desde, hasta, patron=patron)
         print(f"dry run: {b} bytes ({b / 1e9:.1f} GB)")
@@ -384,6 +412,12 @@ def main(argv=None) -> int:
         if a.cache:
             a.cache.write_text(json.dumps(crudo, ensure_ascii=False, default=str), encoding="utf-8")
     corpus = armar_historia(crudo) if a.historico else armar_corpus(crudo, a.desde, hasta)
+    if a.mes:
+        lote = corpus
+        corpus = agregar_meses(json.loads(a.salida.read_text(encoding="utf-8")), corpus)
+        if a.lotes:   # el lote del mes para los dos lectores, no el corpus entero
+            print(f"{escribir_lotes(lote, a.lotes)} lotes del mes en {a.lotes}")
+            a.lotes = None
     a.salida.write_text(json.dumps(corpus, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{len(corpus['notas'])} títulos en {a.salida}")
     if a.lotes:
