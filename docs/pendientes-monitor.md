@@ -23,6 +23,14 @@ judicial) y los rótulos y signos de 27 (Corte, comisiones, leyes sancionadas vs
 publicadas). Dos datos de Luis no se usaron por falsos: el protocolo no está anulado (la
 Cámara revocó la nulidad) y el pico del costo del Tesoro fue 33,8 % (ago-2025), no 58,8 %.
 
+## Hecho el 26-oct, cambios de cálculo (publicado)
+
+7 inflación con los cortes de Luis (ADR-0367) · 10 sale IVA y cheque (ADR-0368) ·
+juicios por riesgos del trabajo fuera, Reforma laboral FAL 50 / Justicia del Trabajo 50
+(ADR-0369) · 20 FAL a cinco hitos (ADR-0370) · 21b salud por hitos (ADR-0371) ·
+juicios de la Justicia del Trabajo al índice (ADR-0365). 22 y cohesión: esperan el índice de
+votos (decisión de Juan).
+
 ## Transversal (todo el sitio)
 
 1. **Que el color se entienda.** La tarjeta muestra la escala de puntaje (100/85/65/40/10)
