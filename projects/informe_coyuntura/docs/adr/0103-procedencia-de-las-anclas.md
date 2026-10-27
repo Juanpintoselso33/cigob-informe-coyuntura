@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'transversal'
 archivos: ['scripts/procedencia_anclas.py']
+relacionado: ['0388']
 continuado_por: ['0104', '0105', '0123']
 cerrado_por: ['0120', '0121']
 ambito: 'Los cuatro índices paramétricos · `scripts/procedencia_anclas.py`'

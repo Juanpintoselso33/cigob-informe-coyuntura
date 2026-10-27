@@ -6,6 +6,7 @@ fecha: 2026-09-08
 cinturon: 'politica'
 indicadores: [jornadas_individuales_no_trabajadas_12m]
 archivos: ['scripts/politica.py', 'web/src/lib/fichas.ts']
+relacionado: ['0388']
 ambito: 'Integridad del acumulado anual de jornadas'
 ---
 

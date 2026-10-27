@@ -554,14 +554,20 @@ BANDAS_ITCP = {
     "jornadas_individuales_no_trabajadas_12m": [
         # ADR-0232: intensidad laboral oficial, huelguistas × duración del
         # paro, acumulada en doce meses. Menor = mejor. Anclas externas al
-        # mandato, fijadas sobre los 17 años completos 2006-2022: 5,0 / 6,5 /
-        # 8,0 / 10,0 millones dejan 4/2/4/3/4 años en las cinco bandas. No se
-        # calibran contra 2024-2026 ni se normalizan por el resultado actual.
-        (-INF, 5_000_000.0, 100),
-        (5_000_000.0, 6_500_000.0, 85),
-        (6_500_000.0, 8_000_000.0, 65),
-        (8_000_000.0, 10_000_000.0, 40),
-        (10_000_000.0, INF, 10),
+        # mandato. RECALIBRADO 2026-10-27 (ADR-0388): las de ADR-0232
+        # (5,0 / 6,5 / 8,0 / 10,0 millones, sobre 17 años calendario) dejaban
+        # todo lo que está por debajo de 5 millones en 100, y la gestión pasó
+        # 16 de sus 32 ventanas ahí (y 9 de las últimas 12). Los cortes nuevos son percentiles de las
+        # 204 ventanas móviles de 12 meses ANTERIORES al mandato (dic-2006 a
+        # nov-2023, Secretaría de Trabajo, cuadro C1): p5 = 4,0 · p25 = 5,9 ·
+        # p50 = 7,6 · p75 = 9,1 millones. 100 queda para un año tan calmo como
+        # el 5% más calmo de 2006-2023 (la pandemia). No se miró 2024-2026
+        # para elegirlos.
+        (-INF, 4_000_000.0, 100),
+        (4_000_000.0, 5_900_000.0, 85),
+        (5_900_000.0, 7_600_000.0, 65),
+        (7_600_000.0, 9_100_000.0, 40),
+        (9_100_000.0, INF, 10),
     ],
     "protestas_caba": [
         # FUERA DEL ÍNDICE Y DEL TABLERO de política desde 2026-07-10

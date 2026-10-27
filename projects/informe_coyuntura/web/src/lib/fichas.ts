@@ -1669,26 +1669,27 @@ export const FICHAS: Record<string, Ficha> = {
       "Toma el total mensual nacional de jornadas individuales no trabajadas: cantidad de huelguistas multiplicada por la duración de los paros.",
       "Suma los últimos doce meses. La propia metodología de la fuente autoriza esta suma; no se suman conflictos ni huelguistas porque podrían repetirse entre meses.",
       "Exige meses consecutivos y únicos y jornadas finitas no negativas. Un hueco o duplicado impide calcular la serie; doce filas no sustituyen doce meses calendario. Se conservan eventuales fracciones de jornada publicadas por la fuente.",
-      "Menos jornadas significa menos tensión. Las anclas son 5,0 · 6,5 · 8,0 · 10,0 millones, fijadas sobre los diecisiete años completos anteriores al mandato (2006-2022).",
+      "Menos jornadas significa menos tensión. Los cortes son 4,0 · 5,9 · 7,6 · 9,1 millones: los percentiles 5, 25, 50 y 75 de las 204 ventanas de doce meses anteriores al mandato (diciembre de 2006 a noviembre de 2023). El 100 queda para un año tan calmo como el 5% más calmo de esa historia, que fue el de la pandemia. Entre corte y corte el puntaje se interpola, así que medio millón de jornadas más sobre el dato de julio de 2026 lo baja unos 6 puntos (de 87 a 81).",
     ],
     anclas: {
       bandas: [
-        { banda: "≤ 5.000.000", puntaje: 100 },
-        { banda: "5.000.000 – 6.500.000", puntaje: 85 },
-        { banda: "6.500.000 – 8.000.000", puntaje: 65 },
-        { banda: "8.000.000 – 10.000.000", puntaje: 40 },
-        { banda: "> 10.000.000", puntaje: 10 },
+        { banda: "≤ 4.000.000", puntaje: 100 },
+        { banda: "4.000.000 – 5.900.000", puntaje: 85 },
+        { banda: "5.900.000 – 7.600.000", puntaje: 65 },
+        { banda: "7.600.000 – 9.100.000", puntaje: 40 },
+        { banda: "> 9.100.000", puntaje: 10 },
       ],
-      puntos: [[5000000, 100], [6500000, 85], [8000000, 65], [10000000, 40]],
+      puntos: [[4000000, 100], [4950000, 85], [6750000, 65], [8350000, 40], [9100000, 10]],
       unidadCorta: "jornadas 12m",
     },
     incidenciaTexto: [
       "Aporta el 40% de la dimensión de conflicto social (4% del índice político); ACLED conserva el 60% por cubrir también protestas y disturbios no laborales.",
-      "Con 4,76 millones de jornadas en el último corte cae en la mejor banda, pero no reemplaza a ACLED: mide intensidad laboral, no toda la conflictividad callejera.",
+      "Con 4,82 millones de jornadas a julio de 2026 puntúa 87: por debajo de la mediana de 2006-2023, pero no en el piso de la historia. No reemplaza a ACLED: mide intensidad laboral, no toda la conflictividad callejera.",
     ],
     limitaciones: [
       "La cantidad de huelguistas es una estimación construida a partir de múltiples fuentes, no un padrón administrativo exhaustivo.",
       "No captura protestas sin paro ni conflicto social fuera de las relaciones laborales; esa cobertura corresponde a ACLED.",
+      "Los paros generales de las centrales sindicales casi no se ven en la serie. En los cuatro meses con paro general de la CGT durante el mandato (enero y mayo de 2024, abril de 2025 y febrero de 2026), las jornadas del mes quedaron por debajo de la mediana de ese mismo mes en 2006-2023 (sin contar los meses con paro general) en dos casos, y en otro la superaron en apenas 27.000; sólo en mayo de 2024 la superaron en unas 450.000. Ninguna escala puede hacer visible lo que la fuente no registra: un paro general mueve este componente sólo en la medida en que la Secretaría de Trabajo lo cuente.",
       "Se usa el nivel absoluto. El crecimiento de largo plazo de la población asalariada puede moverlo aun con una propensión al paro estable; conviene reevaluar una tasa por trabajador cuando exista una serie oficial mensual compatible.",
     ],
     faltantes: "Si la página o la planilla no responden, el colector mantiene el último valor publicado como desactualizado y la serie conserva sus puntos previos.",
@@ -1696,6 +1697,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-08-21", cambio: "Incorporado como segunda pata de conflicto social para medir tamaño y duración de los paros, con 40% interno; ACLED conserva 60%." },
       { fecha: "2026-09-08", cambio: "La suma exige continuidad mensual y valores válidos. Se corroboran las doce filas originales que suman 4.760.195 jornadas hasta mayo de 2026; no cambia el valor publicado.", adr: "0295" },
+      { fecha: "2026-10-27", cambio: "Escala nueva: los cortes pasan de 5,0 · 6,5 · 8,0 · 10,0 millones a 4,0 · 5,9 · 7,6 · 9,1 millones, los percentiles 5, 25, 50 y 75 de las ventanas de doce meses anteriores al mandato. Con la escala vieja el componente marcaba 100 en la mitad de los meses de la gestión y no se movía; ahora va de 71 a 97. Con el dato de julio de 2026 pasa de 100 a 87, la dimensión de conflicto social de 78,3 a 73,1 y el índice político de 73,6 a 73,1.", adr: "0388" },
     ],
   },
 

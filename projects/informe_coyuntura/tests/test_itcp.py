@@ -299,12 +299,30 @@ def test_banda_conflictividad_nacional():
 
 
 def test_banda_jornadas_individuales_no_trabajadas():
+    """ADR-0388: cortes en los percentiles 5/25/50/75 de las ventanas de 12
+    meses anteriores al mandato (dic-2006 a nov-2023)."""
     bandas = itcp.BANDAS_ITCP["jornadas_individuales_no_trabajadas_12m"]
-    assert itcp.puntaje_banda(4_760_195, bandas) == 100
-    assert itcp.puntaje_banda(5_500_000, bandas) == 85
-    assert itcp.puntaje_banda(7_000_000, bandas) == 65
-    assert itcp.puntaje_banda(9_000_000, bandas) == 40
-    assert itcp.puntaje_banda(11_000_000, bandas) == 10
+    cortes = [hi for _lo, hi, _p in bandas[:-1]]
+    assert cortes == [4_000_000.0, 5_900_000.0, 7_600_000.0, 9_100_000.0]
+    assert itcp.puntaje_banda(3_990_000, bandas) == 100   # 2021, pandemia
+    assert itcp.puntaje_banda(4_820_775, bandas) == 85    # jul-2026
+    assert itcp.puntaje_banda(6_670_000, bandas) == 65    # 2010
+    assert itcp.puntaje_banda(8_300_000, bandas) == 40    # 2008
+    assert itcp.puntaje_banda(12_270_000, bandas) == 10   # 2018
+
+
+def test_jornadas_ya_no_satura_en_el_nivel_de_la_gestion():
+    """El problema que motivó ADR-0388: con los cortes viejos todo lo que
+    quedaba debajo de 5 millones daba 100 y el componente no se movía. Con los
+    nuevos, el dato de jul-2026 interpola a 87 y medio millón de jornadas más
+    lo mueve de forma visible."""
+    bandas = itcp.BANDAS_ITCP["jornadas_individuales_no_trabajadas_12m"]
+    anclas = parametrica._anclas(bandas)
+    actual = parametrica.puntaje_desde_anclas(4_820_775, anclas)
+    assert actual == 87.0
+    assert actual - parametrica.puntaje_desde_anclas(5_320_775, anclas) >= 5
+    # el techo sigue existiendo: un año tan calmo como la pandemia da 100
+    assert parametrica.puntaje_desde_anclas(3_990_000, anclas) == 100.0
 
 
 def test_pesos_itcp_suman_uno_en_cada_dimension():

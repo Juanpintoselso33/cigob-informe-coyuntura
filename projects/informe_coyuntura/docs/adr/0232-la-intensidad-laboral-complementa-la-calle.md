@@ -6,7 +6,8 @@ fecha: 2026-08-21
 cinturon: 'politica'
 indicadores: [conflictividad_nacional, jornadas_individuales_no_trabajadas_12m]
 archivos: ['scripts/politica.py', 'scripts/descargar_series.py', 'scripts/itcp.py', 'scripts/gate_calidad.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts']
-relacionado: ['0033', '0045', '0048', '0052', '0092', '0094', '0109', '0182']
+relacionado: ['0033', '0045', '0048', '0052', '0092', '0094', '0109', '0182', '0388']
+modificado_por: ['0388']
 ambito: 'ITCP · dimensión de conflicto social'
 origen: 'Barrido de dimensiones sostenidas por un solo indicador'
 ---

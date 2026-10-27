@@ -248,7 +248,7 @@ PROCEDENCIA = {
     "conflictividad_nacional": ("convencion", "calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052)"),
     "jornadas_individuales_no_trabajadas_12m": (
         "historia_larga",
-        "anclas fijadas sobre los 17 años completos 2006-2022 de la serie oficial, anteriores al mandato (ADR-0232)"),
+        "cortes en los percentiles 5/25/50/75 (4,0 · 5,9 · 7,6 · 9,1 millones) de las 204 ventanas de 12 meses de la serie oficial anteriores al mandato, dic-2006 a nov-2023; no se miró 2024-2026 (ADR-0232, ADR-0388)"),
 
     # ── ITVC (ADR-0123) ──────────────────────────────────────────────────────
     # El ITVC promedia índices en una escala común. Diecisiete componentes usan

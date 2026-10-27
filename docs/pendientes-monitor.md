@@ -248,7 +248,9 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
       quórum, desafíos legislativos): ampliar anclas o pasar a contexto. Para cohesión
       propone bajar el peso a 6–8 % y un mínimo de actas divididas. **decidido**
       (26-oct): cohesión espera al índice de votos por encima de las bancas (22), que
-      entra a su misma dimensión; ahí se reparte el peso. Los otros tres en 100: sin decidir.
+      entra a su misma dimensión; ahí se reparte el peso. Jornadas no trabajadas: **hecho
+      (ADR-0388)**, cortes en percentiles de 2006-2023, pasa de 100 a 87. Veto y desafíos
+      salieron del índice (ADR-0377).
       [J, L 1, 2]
     - Renombrar «Velocidad de resolución» → «Tasa de resolución de la Corte» y «Parálisis
       de denuncias» → «Actividad de las comisiones de control del Consejo», explicando el

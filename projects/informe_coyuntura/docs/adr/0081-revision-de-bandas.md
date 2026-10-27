@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-18
 cinturon: 'transversal'
 archivos: ['scripts/revision_bandas.py']
-relacionado: ['0021', '0045']
+relacionado: ['0021', '0045', '0388']
 ambito: 'Todas las paramétricas · `scripts/revision_bandas.py` (nuevo)'
 origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), observación 9'
 ---
