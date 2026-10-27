@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-26 20:57:10"
+generado: "2026-10-26 21:46:48"
 score_global: 3.9
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -91,7 +91,7 @@ schema_version: "1.2.0"
 |---|---|---|---|
 | icc_utdt | 41.52 | índice | 2026-10-01 |
 
-### 🟢 Gestion — score 2.3/10 (estable)
+### 🟢 Gestion — score 2.2/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -100,7 +100,7 @@ schema_version: "1.2.0"
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
-| gasto_funcionamiento | -35.92 | % de variación real vs 2023-08 (gastos de funcionamiento) | 2026-08-01 | fresco |
+| gasto_funcionamiento | -35.92 | % de variación real vs 2023-08 (gastos de funcionamiento) | 2026-08-01 | ⚠ cache |
 | fal_modernizacion_laboral | 90.0 | Índice 0–100 (FAL: cinco hitos de construcción y adopción) | 2026-10-26 | fresco |
 | juicios_trabajo_capital | 12.4 | % variación juicios entrados (12m vs 12m previos) | 2026-06-01 | fresco |
 | privatizaciones | 55.6 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-09-08 | fresco |
@@ -108,7 +108,7 @@ schema_version: "1.2.0"
 | concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-10-26 | fresco |
 | asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-10-26 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
-| libertad_opcion_salud | 32.2 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-09-01 | fresco |
+| libertad_opcion_salud | 100.0 | Avance de la libre elección de cobertura de salud (hitos 0–100) | 2026-09-01 | fresco |
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-10-26 | fresco |
 | protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
 
@@ -123,6 +123,7 @@ schema_version: "1.2.0"
 ## Advertencias
 
 - `desactualizado:politica:bloqueo_sostenido`
+- `desactualizado:gestion:gasto_funcionamiento`
 
 ---
-*Generado por CIGOB — 2026-10-26 20:57:10 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-26 21:46:48 — schema 1.2.0*

@@ -290,6 +290,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0365](0365-los-juicios-de-la-justicia-del-trabajo-entran-a-la-reforma-laboral.md) | Los juicios de la Justicia del Trabajo entran a la reforma laboral | `juicios_trabajo_capital`, `litigiosidad_laboral` | vigente |
 | [0369](0369-los-juicios-por-riesgos-del-trabajo-salen-de-la-reforma-laboral.md) | Los juicios por riesgos del trabajo salen de la reforma laboral | `litigiosidad_laboral`, `juicios_trabajo_capital` | vigente |
 | [0370](0370-el-fal-cuenta-cinco-hitos-de-construccion.md) | El FAL cuenta cinco hitos de construcción | `fal_modernizacion_laboral` | vigente |
+| [0371](0371-la-libre-eleccion-en-salud-se-mide-por-hitos.md) | La libre elección en salud se mide por hitos | `libertad_opcion_salud` | vigente |
 
 ### Vida cotidiana (ITVC)
 

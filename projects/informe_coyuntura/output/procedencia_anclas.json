@@ -165,7 +165,7 @@
           "indicador": "libertad_opcion_salud",
           "categoria": "conceptual",
           "peso": 0.02,
-          "motivo": "% de usuarios con libre opción; el 100 (libre opción plena) es el ancla (ADR-0121)"
+          "motivo": "avance por hitos de implementación (25/20/20/20/15); un ancla por escalón y el 100 es la libre elección implementada y funcionando (ADR-0371)"
         },
         {
           "indicador": "gasto_funcionamiento",

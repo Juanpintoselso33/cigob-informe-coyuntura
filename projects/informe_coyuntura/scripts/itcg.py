@@ -209,12 +209,13 @@ BANDAS_ITCG = {
         # CABA: caída >50% en 2024 y 240 cortes en 2025 (vs ~11% share 2023).
         (75.0, INF, 100), (50.0, 75.0, 85), (25.0, 50.0, 65), (0.0, 25.0, 40), (-INF, 0.0, 10),
     ],
-    "libertad_opcion_salud": [          # % de avance de la desregulación de obras sociales
-        # CONCEPTUAL (ADR-0121): % de usuarios de prepagas que ya pueden derivar
-        # su aporte directo (desregulación del Dto. 170/2024). El 100 —libre
-        # opción plena— es el ancla; los cortes son grados de avance redondos,
-        # no calibrados al valor observado.
-        (70.0, INF, 100), (50.0, 70.0, 85), (30.0, 50.0, 65), (10.0, 30.0, 40), (-INF, 10.0, 10),
+    "libertad_opcion_salud": [          # avance por hitos de la libre elección de cobertura (ADR-0371)
+        # CONCEPTUAL. Desde ADR-0371 mide implementación por hitos (25/20/20/
+        # 20/15), no el % de usuarios. Escala realizable 0 · 25 · 45 · 65 · 85
+        # · 100; las bandas ponen un ancla en cada escalón (25 → 10, 45 → 40,
+        # 65 → 65, 85 → 85, 100 → 100). Antes (ADR-0121) puntuaba el % de
+        # usuarios de prepagas con derivación directa con cortes 10/30/50/70.
+        (95.0, INF, 100), (75.0, 95.0, 85), (55.0, 75.0, 65), (35.0, 55.0, 40), (-INF, 35.0, 10),
     ],
     "litigiosidad_laboral": [           # juicios SRT, % 12m vs 12m previos (ADR-0023)
         # El RESULTADO que la reforma persigue (enfriar la industria del

@@ -3211,6 +3211,41 @@ def _sss_suma_mes(entidades: list, col: int, solo_prepagas: bool = False) -> tup
     return total, n
 
 
+# ADR-0371 (2026-10-26): propuesta de Marcos, decidida por Juan. El indicador
+# deja de puntuar el % de usuarios de prepagas con derivación directa —que
+# depende de decisiones individuales que el Gobierno no controla— y pasa a
+# medir la IMPLEMENTACIÓN de la libre elección por hitos fechados. El % sigue
+# en la tarjeta como dato de contexto y es la prueba del último hito.
+OPCION_SALUD_HITOS_PATH = PROJECT_DIR / "data" / "gestion" / "opcion_salud_hitos.json"
+
+
+def salud_indice(hitos: dict, en_fecha: str, pct_por_mes: dict) -> tuple:
+    """Avance 0-100 de la libre elección a `en_fecha` (YYYY-MM-DD).
+
+    Los hitos normativos cuentan si su fecha ya pasó. El de funcionamiento se
+    cumple desde el primer mes, no anterior a la derivación directa, en que el
+    padrón muestra al menos el umbral de usuarios de prepagas con aportes
+    derivados directo. `pct_por_mes` = {YYYY-MM: %}. Devuelve (indice, hitos)."""
+    umbral = float(hitos["_meta"]["umbral_funcionamiento_pct"])
+    por_clave = {h["clave"]: h for h in hitos["hitos"]}
+    desde_derivacion = (por_clave["derivacion_directa"]["fecha"] or "9999-12")[:7]
+    cumple = sorted(ym for ym, v in pct_por_mes.items()
+                    if v is not None and v >= umbral and ym >= desde_derivacion)
+    fecha_func = f"{cumple[0]}-01" if cumple else None
+    estado, total = [], 0.0
+    for h in hitos["hitos"]:
+        if h["clave"] == "funcionamiento":
+            fecha = fecha_func
+            hecho = bool(fecha_func and fecha_func[:7] <= en_fecha[:7])
+        else:
+            fecha = h["fecha"]
+            hecho = bool(fecha and fecha <= en_fecha)
+        total += h["peso"] if hecho else 0.0
+        estado.append({"clave": h["clave"], "hito": h["hito"], "norma": h["norma"],
+                       "fecha": fecha, "peso": h["peso"], "cumplido": hecho})
+    return round(100.0 * total, 1), estado
+
+
 def fetch_libertad_opcion_salud() -> dict | None:
     """
     Libertad de opción en salud, contra los XLSX oficiales de la SSS:
@@ -3244,14 +3279,20 @@ def fetch_libertad_opcion_salud() -> dict | None:
         if not usuarios_prepagas or not derivados:
             raise ValueError("RNAS o RNEMP sin datos del período")
 
-        avance = round(100.0 * derivados / usuarios_prepagas, 1)
+        pct = round(100.0 * derivados / usuarios_prepagas, 1)
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
         fecha = f"{anio_rnas}-{mm_rnas}-01"
         mes_rnas, mes_rnemp = f"{mm_rnas}/{anio_rnas}", f"{mm_rnemp}/{anio_rnemp}"
+        hitos = json.loads(OPCION_SALUD_HITOS_PATH.read_text(encoding="utf-8-sig"))
+        # El funcionamiento se cumple si el padrón ya cruzó el umbral; con el
+        # dato de hoy alcanza para la tarjeta (la serie fecha el primer mes).
+        avance, estado = salud_indice(hitos, fecha, {fecha[:7]: pct})
         return {
             "valor":          avance,
-            "unidad":         "% de usuarios de prepagas con aportes derivados directo (sin triangulación)",
-            "fuente":         "SSS — RNAS y RNEMP por entidad (argentina.gob.ar/sssalud/estadisticas)",
+            "unidad":         "Avance de la libre elección de cobertura de salud (hitos 0–100)",
+            "fuente":         "Boletín Oficial (DNU 70/2023, Decreto 170/2024, Resolución SSS 3284/2024) · ARCA y SSS (trámite de opción de cambio) · SSS — RNAS y RNEMP por entidad",
+            "hitos":          estado,
+            "pct_derivados":  pct,
             "fecha_dato":     fecha,
             "desactualizado": False,
             "derivados":            round(derivados),
@@ -3264,7 +3305,9 @@ def fetch_libertad_opcion_salud() -> dict | None:
                          "referencia_inactiva": getattr(wb_rnas, '_cigob_referencia_inactiva', False)},
                 "rnemp": {"url": getattr(wb_rnemp, '_cigob_fuente_url', None),
                           "referencia_inactiva": getattr(wb_rnemp, '_cigob_referencia_inactiva', False)}},
-            "detalle_txt": (f"{miles(derivados)} beneficiarios derivados directo a {prepagas} prepagas "
+            "detalle_txt": (f"{sum(1 for h in estado if h['cumplido'])} de {len(estado)} hitos cumplidos. "
+                            f"Contexto: {pct} % de los usuarios de prepagas con aportes derivados directo — "
+                            f"{miles(derivados)} beneficiarios derivados directo a {prepagas} prepagas "
                             f"inscriptas ({mes_rnas}) / {miles(usuarios_prepagas)} usuarios de "
                             f"prepagas (RNEMP {mes_rnemp}); canal inexistente pre-DNU 70/23"
                             + (". El portal referencia RNEMP con un enlace inactivo; el archivo público responde."

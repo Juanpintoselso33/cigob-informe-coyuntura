@@ -1,0 +1,51 @@
+{
+  "_meta": {
+    "descripcion": "Hitos fechados de la libre elección de cobertura de salud para el indicador libertad_opcion_salud (ADR-0371, propuesta de Marcos del 26-oct-2026). Cada hito normativo tiene su norma publicada; el de funcionamiento se verifica con el padrón de la Superintendencia de Servicios de Salud.",
+    "verificado": "2026-10-26 contra el Boletín Oficial (avisos citados en cada hito) y la publicación de ARCA del 4-dic-2024.",
+    "revision_normativa_en": "2026-10-26",
+    "umbral_funcionamiento_pct": 10.0,
+    "regla_funcionamiento": "Se cumple desde el primer mes, posterior a la habilitación de la derivación directa, en que el padrón de la Superintendencia muestra al menos 10 % de los usuarios de prepagas con aportes derivados directo."
+  },
+  "hitos": [
+    {
+      "clave": "marco_normativo",
+      "hito": "Marco normativo que habilita la elección entre obras sociales y prepagas",
+      "peso": 0.25,
+      "fecha": "2023-12-29",
+      "norma": "Decreto 70/2023 (DNU)",
+      "fuente": "Boletín Oficial, aviso 301122, publicado 21-dic-2023; rige desde el 29-dic-2023. Incorpora a las entidades de medicina prepaga como agentes del seguro de salud (Ley 23.660)."
+    },
+    {
+      "clave": "sin_permanencia_inicial",
+      "hito": "Eliminación de la permanencia obligatoria inicial",
+      "peso": 0.20,
+      "fecha": "2024-03-01",
+      "norma": "Decreto 170/2024",
+      "fuente": "Boletín Oficial, aviso 302864, publicado 21-feb-2024, vigente desde el 1-mar-2024. Sustituye los arts. 1 y 2 del Decreto 504/1998: libre elección entre cualquiera de los agentes desde el inicio de la relación laboral, sin plazo mínimo de permanencia para quien elige una prepaga."
+    },
+    {
+      "clave": "derivacion_directa",
+      "hito": "Derivación directa de aportes sin intermediación obligatoria",
+      "peso": 0.20,
+      "fecha": "2024-12-01",
+      "norma": "Resolución SSS 3284/2024",
+      "fuente": "Boletín Oficial, aviso 315257, publicado 7-oct-2024. Desde el 1-dic-2024 las prepagas que reciben fondos de la seguridad social deben estar inscriptas como agentes del seguro (RNAS), con lo que reciben los aportes en forma directa."
+    },
+    {
+      "clave": "procedimiento_opcion",
+      "hito": "Habilitación del procedimiento de opción de cambio",
+      "peso": 0.20,
+      "fecha": "2024-12-04",
+      "norma": "Trámite de opción de cambio en línea (Superintendencia de Servicios de Salud y ARCA)",
+      "fuente": "ARCA, «Libre elección de Obras Sociales/Prepagas», 04-dic-2024 (argentina.gob.ar/noticias/libre-eleccion-de-obras-socialesprepagas); guía oficial «Realizar opción de cambio» (argentina.gob.ar/servicio/realizar-opcion-de-cambio-libre-eleccion-de-agentes-del-seguro)."
+    },
+    {
+      "clave": "funcionamiento",
+      "hito": "Funcionamiento efectivo y verificable para la población alcanzada",
+      "peso": 0.15,
+      "fecha": null,
+      "norma": "Padrón de la Superintendencia de Servicios de Salud (RNAS y RNEMP)",
+      "fuente": "Se calcula con la serie del padrón: ver regla_funcionamiento en _meta."
+    }
+  ]
+}

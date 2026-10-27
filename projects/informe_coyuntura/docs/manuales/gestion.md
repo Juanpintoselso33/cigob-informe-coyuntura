@@ -202,7 +202,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0025](../adr/0025-protocolo-diagnostico-politico.md) Protocolo antipiquetes automatizado con Diagnóstico Político (y corrección 55 → 74,2) · [ADR-0294](../adr/0294-cortes-explicita-base-estimada-y-fuente-no-verificable.md) Cortes explicita base estimada y fuente no verificable · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
 
-#### Libertad de opción en salud
+#### Implementación de la libre elección de cobertura de salud
 
 `libertad_opcion_salud`
 
@@ -212,9 +212,9 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **2.0%** |
 | Procedencia del ancla | `conceptual` — % de usuarios con libre opción; el 100 (libre opción plena) es el ancla (ADR-0121) |
 
-**Bandas**: > 70 → 100 · 50–70 → 85 · 30–50 → 65 · 10–30 → 40 · ≤ 10 → 10
+**Bandas**: > 95 → 100 · 75–95 → 85 · 55–75 → 65 · 35–55 → 40 · ≤ 35 → 10
 
-**Lo gobiernan**: [ADR-0278](../adr/0278-salud-descubre-los-padrones-referenciados.md) Salud descubre los padrones referenciados por el portal · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026)
+**Lo gobiernan**: [ADR-0278](../adr/0278-salud-descubre-los-padrones-referenciados.md) Salud descubre los padrones referenciados por el portal · [ADR-0361](../adr/0361-respuesta-a-la-auditoria-del-cinturon-de-gestion.md) Respuesta a la auditoría del cinturón de Gestión (septiembre de 2026) · [ADR-0371](../adr/0371-la-libre-eleccion-en-salud-se-mide-por-hitos.md) La libre elección en salud se mide por hitos
 
 ## Se releva y no puntúa
 
@@ -242,7 +242,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-52 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+53 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -296,3 +296,4 @@ histórica.
 - [0365](../adr/0365-los-juicios-de-la-justicia-del-trabajo-entran-a-la-reforma-laboral.md) — Los juicios de la Justicia del Trabajo entran a la reforma laboral
 - [0369](../adr/0369-los-juicios-por-riesgos-del-trabajo-salen-de-la-reforma-laboral.md) — Los juicios por riesgos del trabajo salen de la reforma laboral
 - [0370](../adr/0370-el-fal-cuenta-cinco-hitos-de-construccion.md) — El FAL cuenta cinco hitos de construcción
+- [0371](../adr/0371-la-libre-eleccion-en-salud-se-mide-por-hitos.md) — La libre elección en salud se mide por hitos

@@ -58,11 +58,11 @@
     "fecha_dato": "2026-06-30"
   },
   "libertad_opcion_salud": {
-    "valor": 31.8,
-    "unidad": "% de usuarios de prepagas con aportes derivados directo (sin triangulación)",
+    "valor": 100.0,
+    "unidad": "Avance de la libre elección de cobertura de salud (hitos 0–100)",
     "estado": "estimado",
     "fuente": "SSS — RNAS/RNEMP (argentina.gob.ar/sssalud/estadisticas)",
-    "notas": "FALLBACK: el colector AUTO parsea los XLSX oficiales de la SSS: beneficiarios de prepagas inscriptas como Agentes del Seguro (códigos RNAS 900000+, canal creado por el DNU 70/23) sobre usuarios totales de prepagas (RNEMP). Mar-2026: 2.660.767 derivados a 59 prepagas / 8.369.312 usuarios = 31,8%. El viejo contador de 'opciones de cambio' de sssalud.gob.ar sigue muerto.",
-    "fecha_dato": "2026-07-02"
+    "notas": "FALLBACK: el colector AUTO parsea los XLSX oficiales de la SSS: beneficiarios de prepagas inscriptas como Agentes del Seguro (códigos RNAS 900000+, canal creado por el DNU 70/23) sobre usuarios totales de prepagas (RNEMP). Mar-2026: 2.660.767 derivados a 59 prepagas / 8.369.312 usuarios = 31,8%. El viejo contador de 'opciones de cambio' de sssalud.gob.ar sigue muerto. ADR-0371 (26-oct-2026): el indicador pasa a hitos; los cinco están cumplidos desde ene-2025 → 100.",
+    "fecha_dato": "2026-10-26"
   }
 }

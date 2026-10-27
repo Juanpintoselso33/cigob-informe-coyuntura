@@ -468,9 +468,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Avance de puesta en marcha (0–100)",
   },
   libertad_opcion_salud: {
-    que: "Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el decreto de necesidad y urgencia (DNU) 70/2023 al eliminar la triangulación obligatoria por una obra social.",
-    aporta: "Mide la adopción real de la libre elección con los padrones oficiales de la Superintendencia de Servicios de Salud (el Registro Nacional de Agentes del Seguro de Salud y el de entidades de medicina prepaga): antes de la reforma este canal no existía. El total de usuarios de prepagas y el mes del dato se muestran en la tarjeta. No mide cuántos se cambiaron de obra social o de prepaga: esa serie no se publica. Con los padrones por entidad sólo se puede acotar: entre junio de 2025 y junio de 2026, al menos un 5,6% de los beneficiarios de agentes del seguro (sin PAMI) terminó en un agente distinto, una cota que mezcla cambios de agente con altas y bajas por empleo y jubilación.",
-    frecuencia: "Mensual (~2 meses de rezago)", tipo: "Avance de reforma",
+    que: "Cuánto avanzó la implementación de la libre elección de cobertura de salud: que los trabajadores puedan elegir entre obras sociales y prepagas, sin permanencias ni intermediarios obligatorios. Se mide por cinco hitos: el marco normativo que habilita la elección (DNU 70/2023, 25 puntos), el fin de la permanencia obligatoria inicial (Decreto 170/2024, 20), la derivación directa de aportes a las prepagas (Resolución 3284/2024 de la Superintendencia de Servicios de Salud, 20), el trámite de cambio en línea (diciembre de 2024, 20) y el funcionamiento verificado en el padrón de la Superintendencia (15).",
+    aporta: "Evalúa lo que depende del Gobierno: que la elección esté habilitada y funcione. No cuenta cuántas personas se cambian, porque quedarse en la cobertura actual también es elegir. Como dato de contexto, la tarjeta muestra qué parte de los usuarios de prepagas tiene sus aportes derivados directo. Con los hitos cumplidos el puntaje queda alto y estable: es una promesa cumplida, no un indicador de variación.",
+    frecuencia: "Mensual (padrón) · por acto (normas)", tipo: "Avance de reforma (hitos)",
   },
   protocolo_antipiquetes: {
     que: "En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de una base estimada para 2023.",

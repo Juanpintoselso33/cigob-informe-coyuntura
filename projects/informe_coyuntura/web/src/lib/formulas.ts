@@ -162,8 +162,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Reducción porcentual de cortes contra 2023, con anclajes de Diagnóstico Político (2023: aproximadamente 931, estimado desde participación redondeada; 2025: 240). 100 = cero cortes; 0 = igual que 2023.",
   },
   libertad_opcion_salud: {
-    latex: String.raw`\frac{\text{usuarios con aporte directo a su prepaga}}{\text{usuarios de prepagas}}\times 100`,
-    leyenda: "Padrones oficiales de la Superintendencia de Servicios de Salud (SSS): cuántos usuarios ya derivan sus aportes directo (canal creado por el decreto de necesidad y urgencia 70/2023), sin triangular por una obra social.",
+    latex: String.raw`100\times\left(0{,}25\cdot\text{marco}+0{,}20\cdot\text{sin permanencia}+0{,}20\cdot\text{derivaci\'on directa}+0{,}20\cdot\text{tr\'amite}+0{,}15\cdot\text{funcionamiento}\right)`,
+    leyenda: "Cada hito vale 1 si está cumplido a la fecha y 0 si no: el marco normativo que habilita la elección (DNU 70/2023), el fin de la permanencia obligatoria inicial (Decreto 170/2024), la derivación directa de aportes a las prepagas (Resolución 3284/2024 de la Superintendencia de Servicios de Salud), el trámite de cambio en línea y el funcionamiento verificado en el padrón (al menos 10 % de los usuarios de prepagas con aportes derivados directo).",
   },
 
   // ── Impacto social (ITCIS: 17 bases temporales + tarifas por asequibilidad) ─

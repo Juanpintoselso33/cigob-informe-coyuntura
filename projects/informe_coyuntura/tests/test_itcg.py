@@ -40,7 +40,7 @@ import gestion
 #   * privatizaciones 51,4% → 71,4 (banda 65).
 #   * rigi_inversiones 22,1% → 47,7 (banda 40).
 #   * concesiones 35% → 52,5 (borde de banda) · asistencia 96% → 100 ·
-#     protocolo 52% → 76,6 (banda 85) · libertad_opcion_salud 40% → 65 (ancla).
+#     protocolo 52% → 76,6 (banda 85) · libertad_opcion_salud 65 de avance → 65 (ancla, ADR-0371).
 # Dimensiones: económicas=81,3 estado=77,3 laboral=56,4 privatizaciones=58,1
 # social=83,6 → ITCG = 73,3.
 EJEMPLO = {
@@ -71,7 +71,7 @@ EJEMPLO = {
     "concesiones_infraestructura": 35.0,  # 52,5 (borde 40/65)
     "asistencia_directa": 96.0,         # 100
     "protocolo_antipiquetes": 52.0,     # 76,6 (banda 85)
-    "libertad_opcion_salud": 40.0,      # 65 (ancla exacta)
+    "libertad_opcion_salud": 65.0,      # 65 (ancla exacta del escalón de 65, ADR-0371)
 }
 
 

@@ -7,7 +7,7 @@ cinturon: 'gestion'
 indice: 'ITCG'
 indicadores: [asistencia_directa]
 archivos: ['scripts/gestion.py', 'scripts/descargar_series.py', 'scripts/itcg.py', 'scripts/procedencia_anclas.py', 'data/gestion/manuales.json', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'tests/test_asistencia_directa.py']
-relacionado: ['0189', '0361', '0015']
+relacionado: ['0015', '0189', '0361', '0371']
 ambito: 'Cinturón de gestión · ITCG · dimensión reforma social y orden'
 origen: 'Observación #11 de la auditoría externa del cinturón de Gestión (23-oct-2026) y decisión de Juan del 24-oct-2026 (opción a).'
 ---

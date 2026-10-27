@@ -3206,7 +3206,19 @@ def fetch_opcion_salud_serie() -> list:
     # antes del primer XLSX (ene-2024) los derivados eran 0.
     if out and out[0][0] == "2024-01-01":
         out.insert(0, ["2023-12-01", 0.0])
-    return out
+    # ADR-0371: la serie publicada es el AVANCE por hitos al cierre de cada mes
+    # (misma regla que la tarjeta); el % de usuarios queda como insumo del
+    # hito de funcionamiento.
+    import calendar as _cal
+    hitos = json.loads(gestion.OPCION_SALUD_HITOS_PATH.read_text(encoding="utf-8-sig"))
+    pct = {f[:7]: v for f, v in out}
+    serie = []
+    for f, _ in out:
+        y, m = int(f[:4]), int(f[5:7])
+        cierre = f"{y}-{m:02d}-{_cal.monthrange(y, m)[1]:02d}"
+        idx, _ = gestion.salud_indice(hitos, cierre, {k: v for k, v in pct.items() if k <= f[:7]})
+        serie.append([f, idx])
+    return serie
 
 
 def fetch_protestas_serie() -> list:
@@ -3651,7 +3663,7 @@ GESTION_DERIVADAS = [
      lambda: _serie_var_real_vs_2023([gestion.FUNC_SALARIOS_ID, gestion.FUNC_OTROS_ID])),
     ("masa_salarial", "% real vs mismo mes 2023", "Sec. Hacienda AIF + IPC INDEC",
      lambda: _serie_var_real_vs_2023([gestion.REMUNERACIONES_ID])),
-    ("libertad_opcion_salud", "% usuarios de prepagas con derivación directa", "SSS — RNAS/RNEMP", fetch_opcion_salud_serie),
+    ("libertad_opcion_salud", "Avance de la libre elección de cobertura de salud (hitos 0–100)", "Boletín Oficial · ARCA · SSS — RNAS/RNEMP", fetch_opcion_salud_serie),
     ("litigiosidad_laboral", "% i.a. juicios SRT (12m vs 12m)", "SRT — serie de litigiosidad", fetch_litigiosidad_serie),
     ("juicios_trabajo_capital", "% juicios entrados en 1ª instancia (12m vs 12m, semestral)", "Consejo de la Magistratura — Justicia Nacional del Trabajo", fetch_juicios_trabajo_serie),
     ("cepo_mulc", "% brecha CCL/mayorista (prom. mensual)", "ArgentinaDatos (CCL) + BCRA (A3500)", fetch_brecha_serie),

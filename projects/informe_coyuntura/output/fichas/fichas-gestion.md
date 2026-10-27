@@ -35,7 +35,7 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 77,3** | **VERDE** | Moderadamente aflojado | 13 indicadores: 10 en verde · 3 en amarillo |
+| **ITCG: 78,2** | **VERDE** | Moderadamente aflojado | 13 indicadores: 11 en verde · 2 en amarillo |
 Componentes que puntúan en este corte: 13 de 13 publicados.
 
 ## Dimensiones
@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 13 de 13 publicados.
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 91,2 | VERDE | 25,0 % |
 | Reforma laboral | Combina, mitad y mitad, las etapas del Fondo de Asistencia Laboral con los juicios laborales que se inician en la Justicia Nacional del Trabajo de la Capital, que… | 70,1 | VERDE | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 76,6 | VERDE | 15,0 % |
-| Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes… | 90,6 | VERDE | 10,0 % |
+| Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes… | 99,6 | VERDE | 10,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -77,7 +77,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Reforma social y orden** | | | | |
 | Planes sin intermediarios | Si los planes sociales siguen pasando por intermediarios. | 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | VERDE | 4,0 % |
 | Reducción de cortes de calle en la Ciudad | En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
-| Libertad de opción en salud | Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como… | 32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) | AMARILLO | 2,0 % |
+| Implementación de la libre elección de cobertura de salud | Cuánto avanzó la implementación de la libre elección de cobertura de salud. | 100 Avance de la libre elección de cobertura de salud (hitos 0–100) | VERDE | 2,0 % |
 
 *Datos al 2026-10-26.*
 
@@ -1260,35 +1260,38 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Libertad de opción en salud
+# Implementación de la libre elección de cobertura de salud
 
-Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el decreto de necesidad y urgencia (DNU) 70/2023 al eliminar la triangulación obligatoria por una obra social.
+Cuánto avanzó la implementación de la libre elección de cobertura de salud: que los trabajadores puedan elegir entre obras sociales y prepagas, sin permanencias ni intermediarios obligatorios. Se mide por cinco hitos: el marco normativo que habilita la elección (DNU 70/2023, 25 puntos), el fin de la permanencia obligatoria inicial (Decreto 170/2024, 20), la derivación directa de aportes a las prepagas (Resolución 3284/2024 de la Superintendencia de Servicios de Salud, 20), el trámite de cambio en línea (diciembre de 2024, 20) y el funcionamiento verificado en el padrón de la Superintendencia (15).
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación)** (2026-09) | **AMARILLO** | Peso efectivo 2 % del ITCG | Cinturón Gestión |
+| **Hoy: 100 Avance de la libre elección de cobertura de salud (hitos 0–100)** (2026-09) | **VERDE** | Peso efectivo 2 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | libertad_opcion_salud | **CINTURÓN** | Gestión |
-| **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % de usuarios de prepagas con aportes derivados directo (sin triangulación) |
+| **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | Avance de la libre elección de cobertura de salud (hitos 0–100) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Las fechas de numerador y denominador se publican por separado. Se usa el último RNEMP disponible que no sea posterior al mes del RNAS; si se arrastra un denominador, la razón combina fechas distintas. |
-| **PRODUCTOR DEL DATO** | Superintendencia de Servicios de Salud | **OPERACIÓN ESTADÍSTICA** | Padrones oficiales: beneficiarios por Agente del Seguro de Salud (RNAS) y usuarios de entidades de medicina prepaga (RNEMP) |
+| **PRODUCTOR DEL DATO** | Boletín Oficial · Superintendencia de Servicios de Salud · ARCA | **OPERACIÓN ESTADÍSTICA** | Avance de la libre elección de cobertura por cinco hitos fechados: cuatro normativos y operativos (Boletín Oficial, ARCA) y el funcionamiento verificado en los padrones de la Superintendencia (beneficiarios por Agente del Seguro de Salud y usuarios de entidades de medicina prepaga) |
 | **MODO DE ACCESO** | Automático: descubre las planillas referenciadas por el portal oficial, incluidas versiones con fecha en el nombre. Las referencias inactivas cuyo archivo público responde se identifican expresamente. Las prepagas inscriptas como Agentes del Seguro se identifican por su rango de código de registro (canal creado por el DNU 70/2023). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-26 |
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el decreto de necesidad y urgencia (DNU) 70/2023 al eliminar la triangulación obligatoria por una obra social.
+Cuánto avanzó la implementación de la libre elección de cobertura de salud: que los trabajadores puedan elegir entre obras sociales y prepagas, sin permanencias ni intermediarios obligatorios. Se mide por cinco hitos: el marco normativo que habilita la elección (DNU 70/2023, 25 puntos), el fin de la permanencia obligatoria inicial (Decreto 170/2024, 20), la derivación directa de aportes a las prepagas (Resolución 3284/2024 de la Superintendencia de Servicios de Salud, 20), el trámite de cambio en línea (diciembre de 2024, 20) y el funcionamiento verificado en el padrón de la Superintendencia (15).
 
-Mide la adopción real de la libre elección con los padrones oficiales de la Superintendencia de Servicios de Salud (el Registro Nacional de Agentes del Seguro de Salud y el de entidades de medicina prepaga): antes de la reforma este canal no existía. El total de usuarios de prepagas y el mes del dato se muestran en la tarjeta. No mide cuántos se cambiaron de obra social o de prepaga: esa serie no se publica. Con los padrones por entidad sólo se puede acotar: entre junio de 2025 y junio de 2026, al menos un 5,6% de los beneficiarios de agentes del seguro (sin PAMI) terminó en un agente distinto, una cota que mezcla cambios de agente con altas y bajas por empleo y jubilación.
+Evalúa lo que depende del Gobierno: que la elección esté habilitada y funcione. No cuenta cuántas personas se cambian, porque quedarse en la cobertura actual también es elegir. Como dato de contexto, la tarjeta muestra qué parte de los usuarios de prepagas tiene sus aportes derivados directo. Con los hitos cumplidos el puntaje queda alto y estable: es una promesa cumplida, no un indicador de variación.
 
 **Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes a prepagas. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 
-- Porcentaje = beneficiarios con aportes derivados directo a prepagas inscriptas / usuarios totales de prepagas.
+- Avance = suma de los hitos cumplidos: marco normativo que habilita elegir entre obras sociales y prepagas (DNU 70/2023, rige desde el 29 de diciembre de 2023, 25 %) · fin de la permanencia obligatoria inicial (Decreto 170/2024, desde el 1 de marzo de 2024, 20 %) · derivación directa de aportes a las prepagas inscriptas como agentes del seguro (Resolución 3284/2024 de la Superintendencia, desde el 1 de diciembre de 2024, 20 %) · trámite de opción de cambio en línea (4 de diciembre de 2024, 20 %) · funcionamiento efectivo y verificable (15 %).
+- Regla del último hito, fijada antes de puntuar: se cumple desde el primer mes, no anterior a la derivación directa, en que el padrón de la Superintendencia muestra al menos 10 % de los usuarios de prepagas con aportes derivados directo. Se cumplió en enero de 2025 (24,5 %).
+- Contexto, no puntúa: el porcentaje de usuarios de prepagas con aportes derivados directo (beneficiarios derivados a prepagas inscriptas / usuarios totales de prepagas), que la tarjeta sigue mostrando con su total y su mes.
+- La serie mensual se evalúa al cierre de cada mes con la misma regla que la tarjeta.
 
 ## Semáforo — valores que determinan el color
 
@@ -1296,33 +1299,34 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% de usuarios de prepagas con aportes derivados directo (sin triangulación)) | Color |
+| Rango (Avance de la libre elección de cobertura de salud (hitos 0–100)) | Color |
 |---|---|
-| ≥ 36 | VERDE |
-| 20 – 36 | AMARILLO |
-| 13,33 – 20 | NARANJA |
-| ≤ 13,33 | ROJO |
+| ≥ 61 | VERDE |
+| 45 – 61 | AMARILLO |
+| 38,33 – 45 | NARANJA |
+| ≤ 38,33 | ROJO |
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 2.796.899 beneficiarios derivados directo a 72 prepagas inscriptas (09/2026) / 8.693.041 usuarios de prepagas (RNEMP 08/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.
+- 5 de 5 hitos cumplidos. Contexto: 32.2 % de los usuarios de prepagas con aportes derivados directo — 2.796.899 beneficiarios derivados directo a 72 prepagas inscriptas (09/2026) / 8.693.041 usuarios de prepagas (RNEMP 08/2026); canal inexistente pre-DNU 70/23. El portal referencia RNEMP con un enlace inactivo; el archivo público responde.
 
 ## Color vigente y por qué
 
-Dato vigente: 32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) (2026-09).
+Dato vigente: 100 Avance de la libre elección de cobertura de salud (hitos 0–100) (2026-09).
 
-32,2 % de usuarios de prepagas con aportes derivados directo (sin triangulación) está en Amarillo, a 3,8 del límite con Verde (36,0).
+100,0 Avance de la libre elección de cobertura de salud (hitos 0–100) está en Verde, a 39,0 del límite con Amarillo (61,0).
 
-**Color vigente: AMARILLO**
+**Color vigente: VERDE**
 
 Ponderación vigente en el ITCG: 2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - Numerador y denominador salen de registros distintos con rezagos distintos, declarado en el dato.
-- Mide la derivación directa de aportes, una parte de la «libertad de opción» — no toda la reforma del sistema.
+- Mide la implementación de la libre elección, no cuántas personas la ejercen ni la calidad de la cobertura. Con los cinco hitos cumplidos el puntaje queda en 100 y no se mueve: es una promesa cumplida.
+- Los pesos de los hitos son una propuesta metodológica (de la auditoría de CiGob), no valores normativos.
 - El contador histórico de traspasos del sitio oficial sigue fuera de servicio; este indicador lo reemplaza con otra semántica.
 - No mide cuántos se cambiaron de obra social o de prepaga: esa serie no se publica. Con los padrones por entidad sólo se puede acotar: entre junio de 2025 y junio de 2026, al menos un 5,6% de los beneficiarios de agentes del seguro (sin PAMI) terminó en un agente distinto. Es una cota anual que mezcla cambios de agente con altas y bajas por empleo y jubilación, y en mensual el ruido del padrón es del tamaño de la señal.
 
@@ -1333,6 +1337,8 @@ Ponderación vigente en el ITCG: 2 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** Las planillas anuales se releen completas en cada actualización (la fuente puede revisar meses hacia atrás).
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — A propuesta de la auditoría de CiGob pasa a «Implementación de la libre elección de cobertura de salud»: mide la implementación por cinco hitos (25/20/20/20/15) en lugar del porcentaje de usuarios con derivación directa, que depende de decisiones individuales y queda como dato de contexto. El puntaje pasa de 55,2 a 100.
 
 **2026-05** — Versión inicial como carga manual: la fuente en línea estaba bloqueada.
 

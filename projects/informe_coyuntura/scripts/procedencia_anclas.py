@@ -204,7 +204,7 @@ PROCEDENCIA = {
     # con la TDPS.
     "asistencia_directa": ("conceptual", "hito binario: 100 desde el cese de las unidades de gestión (Res. 84/2024), 0 antes; las bandas sólo se usan en sus extremos (ADR-0362)"),
     "protocolo_antipiquetes": ("convencion", "calibrada con la caída observada en CABA en 2024-2025"),
-    "libertad_opcion_salud": ("conceptual", "% de usuarios con libre opción; el 100 (libre opción plena) es el ancla (ADR-0121)"),
+    "libertad_opcion_salud": ("conceptual", "avance por hitos de implementación (25/20/20/20/15); un ancla por escalón y el 100 es la libre elección implementada y funcionando (ADR-0371)"),
     "juicios_trabajo_capital": ("convencion", "toma la escala de litigiosidad_laboral, que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365)"),
 
     # ── ITCP ────────────────────────────────────────────────────────────────

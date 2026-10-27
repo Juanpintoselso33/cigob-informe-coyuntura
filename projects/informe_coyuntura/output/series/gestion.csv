@@ -362,40 +362,40 @@ fecha,indicador,valor,unidad,fuente
 2021-10-01,litigiosidad_laboral,66.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2021-09-01,litigiosidad_laboral,60.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
 2021-08-01,litigiosidad_laboral,42.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
-2026-09-01,libertad_opcion_salud,32.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2026-08-01,libertad_opcion_salud,32.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2026-07-01,libertad_opcion_salud,32.9,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2026-06-01,libertad_opcion_salud,33.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2026-05-01,libertad_opcion_salud,32.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2026-04-01,libertad_opcion_salud,31.7,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2026-03-01,libertad_opcion_salud,31.6,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2026-02-01,libertad_opcion_salud,31.5,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2026-01-01,libertad_opcion_salud,31.4,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-12-01,libertad_opcion_salud,31.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-11-01,libertad_opcion_salud,30.8,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-10-01,libertad_opcion_salud,30.8,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-09-01,libertad_opcion_salud,30.5,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-08-01,libertad_opcion_salud,30.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-07-01,libertad_opcion_salud,30.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-06-01,libertad_opcion_salud,29.4,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-05-01,libertad_opcion_salud,28.5,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-04-01,libertad_opcion_salud,27.9,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-03-01,libertad_opcion_salud,24.6,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-02-01,libertad_opcion_salud,24.7,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2025-01-01,libertad_opcion_salud,24.5,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-12-01,libertad_opcion_salud,0.7,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-11-01,libertad_opcion_salud,0.3,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-10-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-09-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-08-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-07-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-06-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-05-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-04-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-03-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-02-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2024-01-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2023-12-01,libertad_opcion_salud,0.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2026-09-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2026-08-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2026-07-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2026-06-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2026-05-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2026-04-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2026-03-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2026-02-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2026-01-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-12-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-11-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-10-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-09-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-08-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-07-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-06-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-05-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-04-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-03-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-02-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2025-01-01,libertad_opcion_salud,100.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-12-01,libertad_opcion_salud,85.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-11-01,libertad_opcion_salud,45.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-10-01,libertad_opcion_salud,45.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-09-01,libertad_opcion_salud,45.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-08-01,libertad_opcion_salud,45.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-07-01,libertad_opcion_salud,45.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-06-01,libertad_opcion_salud,45.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-05-01,libertad_opcion_salud,45.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-04-01,libertad_opcion_salud,45.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-03-01,libertad_opcion_salud,45.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-02-01,libertad_opcion_salud,25.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2024-01-01,libertad_opcion_salud,25.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
+2023-12-01,libertad_opcion_salud,25.0,Avance de la libre elección de cobertura de salud (hitos 0–100),Boletín Oficial · ARCA · SSS — RNAS/RNEMP
 2026-10-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2026-09-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
 2026-08-01,juicios_trabajo_capital,12.4,"% juicios entrados en 1ª instancia (12m vs 12m, semestral)",Consejo de la Magistratura — Justicia Nacional del Trabajo
