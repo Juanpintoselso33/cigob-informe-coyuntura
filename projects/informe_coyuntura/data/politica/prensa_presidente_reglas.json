@@ -1,0 +1,55 @@
+{
+ "_meta": {
+  "descripcion": "Reglas de codificación del indicador «tono con que la prensa argentina trata al Presidente» (índice político). Escritas ANTES de que los lectores clasifiquen, como exige ADR-0131. No se tocan una vez que la clasificación empezó: si una regla resulta mal planteada se registra el problema y se rehace la pasada entera.",
+  "fecha": "2026-10-27",
+  "protocolo": "ADR-0131, ADR-0380 y ADR-0384 (misma estructura que apoyo_empresario_reglas.json)",
+  "fuente": "prensa_presidente_muestra.json: títulos de notas de medios argentinos que nombran a Milei en la URL (GDELT GKG), 200 por mes desde 2023-12",
+  "version": 1,
+  "como_se_cerro": "Escrito a partir de la definición del indicador y de la lectura de 55 títulos al azar de la muestra (semilla 1 de random.Random sobre el corpus). Esa lectura sólo sirvió para agregar los casos límite marcados «visto en la muestra»; no se clasificó ningún título."
+ },
+ "unidad_de_analisis": "un título de nota, tal como figura en el corpus. Se clasifica el titular, no el cuerpo de la nota ni el medio que lo publica. El corpus no trae el texto: si el titular no alcanza, no se busca la nota.",
+ "eje_unico_tono": {
+  "_definicion": "qué efecto tiene el titular sobre la imagen del Presidente o de su Gobierno (Poder Ejecutivo nacional: el Presidente, la Vicepresidenta en su rol de gobierno, ministros, secretarios, la Secretaría General a cargo de Karina Milei y los organismos del PEN). La pregunta es «¿le suma o le resta al Gobierno lo que dice este titular?», no «¿es una buena o mala noticia para el país?».",
+  "favorable": "logro, apoyo, éxito, elogio, aprobación o buena noticia atribuida al Presidente o al Gobierno: una medida que resulta, un dato que mejora y el titular lo vincula con su gestión, un respaldo (gobernador, empresario, organismo internacional, líder extranjero), una victoria política o electoral, un reconocimiento.",
+  "desfavorable": "crítica, conflicto, derrota, escándalo, denuncia, mala noticia o fracaso atribuido al Presidente o al Gobierno: una medida cuestionada, una denuncia judicial, un dato que empeora vinculado a su gestión, un rechazo del Congreso o de la Justicia, un cruce que lo muestra en problemas, un reclamo de un sector contra una decisión suya.",
+  "neutro": "informativo, de agenda, cita sin valoración, o un tono que no se puede atribuir al Gobierno: viajes y reuniones, anuncios sin evaluación, declaraciones del Presidente sin que el titular las valore, notas donde Milei es mención lateral, y los titulares donde el nombre «Milei» no refiere al Presidente o al Gobierno.",
+  "dudoso": "el titular no alcanza para decidir entre dos categorías (texto cortado, ironía que no se puede resolver, doble lectura igualmente plausible). Un dudoso no entra al conteo y se adjudica a mano. No es refugio para lo difícil: si hay una lectura más plausible, se usa."
+ },
+ "regla_madre": "Se clasifica la cobertura que recibe el Gobierno, no la verdad de lo que se dice ni la opinión de quien lee. Un titular cuenta por lo que el lector medio se lleva sobre el Gobierno al leerlo, atribuido o no a una voz concreta.",
+ "casos_limite_resueltos_de_antemano": [
+  "OPOSITOR QUE CRITICA A MILEI (visto en la muestra: «Cristina Kirchner: ¡Che Milei! ...», «No vamos a permitir que Milei y Caputo nos vuelvan a poner de rodillas»): DESFAVORABLE. Es la cobertura que recibe el Gobierno: el titular pone la crítica en primer plano. Vale igual para una crítica de un gobernador, un sindicato, un organismo o un medio extranjero.",
+  "ALIADO QUE DEFIENDE O ELOGIA A MILEI (visto: «Cornejo admitió que una alianza electoral con Milei es posible»): FAVORABLE si el titular pone el respaldo en primer plano; NEUTRO si sólo informa una posibilidad, una reunión o una negociación sin valorarla.",
+  "CITA TEXTUAL DE MILEI ATACANDO A OTRO (visto: «Milei tildó a Petro de comunista asesino», «Milei acusó al kirchnerismo de estar detrás de una maniobra»): NEUTRO salvo que el titular valore. Si el verbo o el adjetivo del titular juzga la conducta de Milei («furioso», «descontrol», «escándalo»), DESFAVORABLE. La palabra «cruce» sola no valora. Si lo que se destaca es la reacción adversa de otro («le respondió», «lo cruzó»), se mira quién queda mejor parado en el titular; si no se resuelve, NEUTRO.",
+  "CITA TEXTUAL DE MILEI DEFENDIENDO SU GESTIÓN o enunciando un propósito («Milei: nuestra alianza con EEUU es una declaración para el mundo»): NEUTRO. Es su voz, no una valoración del medio. Pasa a FAVORABLE sólo si el titular la presenta con un logro o un éxito propio («Milei celebró...» es NEUTRO; «El Gobierno logró...» es FAVORABLE).",
+  "DATO ECONÓMICO SIN ATRIBUCIÓN («baja la inflación», «sube el dólar», «cae el desempleo»): NEUTRO. Se vuelve FAVORABLE o DESFAVORABLE sólo si el titular lo atribuye al Gobierno, a su política o a su era: «La inflación bajó gracias al ajuste» o «el Gobierno festeja» es FAVORABLE; «tras el ajuste de Milei cae el consumo» o «en la era Milei se perdieron 48 mil empleos» es DESFAVORABLE. Un dato con matiz mixto («baja el desempleo, pero gracias al cuentapropismo en negro») se clasifica por el tramo final que el titular enfatiza; si no se resuelve, DUDOSO.",
+  "DATO ECONÓMICO QUE EL TITULAR CONTRAPONE A UNA PROMESA DEL GOBIERNO: DESFAVORABLE (el titular señala la brecha).",
+  "ENCUESTAS Y ALINEAMIENTO ELECTORAL: «encuesta alerta a Milei», «la imagen del Presidente cae» → DESFAVORABLE; «la imagen del Presidente sube», «Milei lidera» → FAVORABLE; una encuesta que no mide al Gobierno o es mixta → NEUTRO.",
+  "HUMOR, SÁTIRA, OPINIÓN Y COLUMNAS («el cuento del león herbívoro», «el arte político de odiar lo suficiente»): se clasifica el tono del titular hacia el Gobierno como cualquier otro. Si la ironía es evidente y apunta contra el Gobierno, DESFAVORABLE; si no se puede asegurar la intención, DUDOSO, no neutro. La opinión favorable se trata igual que la crítica, con el mismo umbral.",
+  "MEDIOS OFICIALISTAS U OPOSITORES: se clasifica el TITULAR, no el medio. Un medio crítico que publica «Milei recibió a Kast» es NEUTRO; uno afín que publica «Milei, cuestionado por X» es DESFAVORABLE. El lector no usa el dominio para decidir.",
+  "NOTA INTERNACIONAL SOBRE MILEI (visto: «The Guardian fustigó a Milei...», «Milei se reunió con Trump»): igual que el resto. Una crítica o un elogio de un medio, gobierno o personalidad extranjera citado en el titular: DESFAVORABLE o FAVORABLE. Una cumbre, una visita o una foto sin valoración: NEUTRO. La buena relación con otro líder (apoyo explícito, ayuda financiera, acuerdo logrado) es FAVORABLE; sólo reunirse no lo es.",
+  "RESULTADO ELECTORAL: el triunfo o el avance del oficialismo o de un aliado de Milei es FAVORABLE; la derrota o el retroceso es DESFAVORABLE; una elección donde Milei no es parte del titular es NEUTRO. «Milei festejó el triunfo» de la Selección, un club, etc. es NEUTRO: no es un logro del Gobierno.",
+  "DERROTA O TRIUNFO LEGISLATIVO Y JUDICIAL: veto o ley rechazada, fallo adverso, quórum de la oposición, comisión investigadora → DESFAVORABLE. Ley aprobada con el aval del Gobierno, veto sostenido, fallo favorable → FAVORABLE. Un proyecto ingresado o en debate sin resultado → NEUTRO.",
+  "DENUNCIAS, CAUSAS Y ESCÁNDALOS que involucran a funcionarios, a Karina Milei o al entorno (visto: audios, $LIBRA, denuncias penales): DESFAVORABLE. Lo mismo si el que denuncia es un opositor. Si el titular es el Gobierno denunciando a otro («el Gobierno denunció a...»), NEUTRO salvo que valore.",
+  "KARINA MILEI Y OTROS FUNCIONARIOS: cuentan como Gobierno. Un titular sobre Karina Milei o un ministro se clasifica por su efecto en el Gobierno, con la misma regla que para el Presidente. La vida personal sin efecto de gobierno (una pareja, un cumpleaños) es NEUTRO.",
+  "«MILEI» QUE NO ES EL PRESIDENTE NI EL GOBIERNO (otro Milei, una nota deportiva, un nombre de marca; también «Los Milei y Macri» si es crónica familiar sin efecto político): NEUTRO. No se crea una categoría aparte: el lector no puede asignar tono hacia el Gobierno a algo que no lo trata.",
+  "MENCIÓN LATERAL: si Milei aparece sólo como contexto de una nota sobre otro tema o personaje («Cristina Kirchner confirmó que será candidata...» con Milei como adversario nombrado), la pregunta es el efecto del titular sobre el Gobierno: si es una crítica de la expresidenta, DESFAVORABLE; si es sólo una candidatura, NEUTRO.",
+  "TÍTULO CON SUFIJO DEL MEDIO (visto: «:: Diario Pregon de Jujuy», «| ANR Agencia de Noticias Roca», «- Tribuna de Periodistas»): se ignora el sufijo. Si la parte tras el guion es un subtítulo o bajada, se lee junto al titular.",
+  "TÍTULO DE TRANSMISIÓN EN VIVO O SEGUIMIENTO («Javier Milei y sus medidas, EN VIVO: ...»): se clasifica el contenido que el título enuncia después de los dos puntos; si sólo dice que hay una transmisión, NEUTRO.",
+  "RECEPCIÓN DE FIGURAS Y VIAJES: «Milei recibirá a...», «Milei viaja a...», «Milei se reunió con...» → NEUTRO, salvo un adjetivo, un resultado o una consecuencia explícita en el titular.",
+  "CONFLICTO CON GOBERNADORES, EMPRESARIOS O SINDICATOS: un reclamo, rechazo o enfrentamiento donde el titular pone al otro como el que critica o resiste el ajuste es DESFAVORABLE; un acuerdo, pacto o respaldo es FAVORABLE.",
+  "TEXTO INSUFICIENTE: titular cortado, sólo un nombre, o ilegible. DUDOSO si hay dos lecturas plausibles; NEUTRO si no hay nada que atribuir."
+ ],
+ "regla_de_conteo": "Cuentan favorable y desfavorable. Neutro y dudoso se archivan pero no entran al saldo.",
+ "metrica": {
+  "definicion": "saldo mensual de tono: (favorables − desfavorables) / (favorables + desfavorables) sobre la muestra del mes, con una suavización a decidir en un ADR aparte.",
+  "rango": "−1 (todo desfavorable) a +1 (todo favorable)",
+  "sin_titulos_computables": "si en el mes no hay ningún titular favorable ni desfavorable, el mes queda sin valor; no se rellena con cero.",
+  "meses_incompletos": "los meses con cobertura incompleta del corpus (_meta.meses_incompletos de la muestra) se publican marcados o se excluyen; no se interpolan."
+ },
+ "concordancia": {
+  "diseno": "Dos lectores ciegos entre sí y de modelos distintos clasifican el corpus completo; el kappa se mide ENTRE ELLOS. Quien escribió el manual no clasifica: adjudica los desacuerdos a mano una vez medido el kappa. Los lotes llevan id, mes, dominio y título, sin URL, para no sesgar por medio.",
+  "kappa_minimo": 0.7,
+  "si_no_alcanza": "no se publica el indicador. No se toca el manual para mejorar el número: un hueco encontrado se cierra rehaciendo la pasada entera, nunca reinterpretando la hecha."
+ },
+ "lo_que_este_indicador_NO_dice": "no mide la opinión pública ni lo que dice el cuerpo de las notas: mide el tono del TITULAR de una muestra de notas con «milei» en la URL, en los medios argentinos que GDELT indexa. Una nota sobre el Presidente que no lo nombra en la URL no entra. La muestra es proporcional a la cobertura: un medio con muchas notas pesa más."
+}
