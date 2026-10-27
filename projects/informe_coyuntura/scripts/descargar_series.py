@@ -1678,6 +1678,16 @@ POLITICA_DERIVADAS = [
     ("desafios_legislativos", "normas desafiadas en el recinto (12m)",
      "Actas de Diputados y Senado + InfoLeg — elaboración CIGOB",
      fetch_desafios_legislativos_mensual),
+    # ADR-0377: salen del MISMO registro y la MISMA cuenta que la card
+    # (politica.serie_eventos_12m), así que card y serie no pueden divergir.
+    ("insistencias_vetos", "vetos insistidos por las dos cámaras (12m)",
+     "Actas de Diputados y Senado + InfoLeg — elaboración CIGOB",
+     lambda: [[f"{ym}-01", v] for ym, v in sorted(politica.serie_eventos_12m(
+         politica._insistencias_completas(politica._cargar_derrotas_registro())).items())]),
+    ("rechazos_decretos", "decretos derogados por las dos cámaras (12m)",
+     "Actas de Diputados y Senado + InfoLeg — elaboración CIGOB",
+     lambda: [[f"{ym}-01", v] for ym, v in sorted(politica.serie_eventos_12m(
+         politica._decretos_derogados(politica._cargar_derrotas_registro())).items())]),
     # La serie sale del MISMO cálculo que la card (politica.cobertura_judicial_serie):
     # el padrón ancla el nivel y los registros de designaciones y renuncias lo
     # mueven mes a mes, así que card y serie no pueden divergir (ADR-0126).

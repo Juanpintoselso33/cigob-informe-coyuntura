@@ -36,6 +36,37 @@ político 73,8 → 71,6 (ADR-0372) · 28 «Ingresos y consumo» se parte en Ingr
 Consumo (94,6) sin mover el índice de impacto social, 93,6 (ADR-0373). La carne: nivel de
 consumo aparente (SAGyP), movimiento mensual de faena (producción) — dicho en la ficha.
 
+## Acuerdos de la reunión Juan–Luis del 26-oct (documento de Luis, 21:00)
+
+Llegó después de armar esta lista (`docs/pedidos/texto/2026-10-26_Luis_261026 decisiones
+de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
+
+- **Choca con lo hecho:**
+  - A. Reforma laboral con los DOS juicios (Justicia del Trabajo y riesgos del trabajo);
+    ADR-0369 sacó los de riesgos del trabajo. **decidir**
+  - B. Político: sacar «control sobre los jueces» (`paralisis_denuncias`) y «velocidad
+    de resolución de la Corte» (`velocidad_resolucion`); en ADR-0366 sólo se renombraron.
+  - C. La carne: Luis dice que es consumo per cápita y que la duda era un error. El nivel sí
+    es consumo (SAGyP), pero el movimiento que puntúa sale de la faena del INDEC. Aclarárselo.
+- **Nuevo:**
+  - D. Competitividad: tarjetas separadas de términos del intercambio y tipo de cambio
+    real; el color lo da el cuadrante del cruce de los dos (resuelve el 13). Como no
+    puntúan solas, van dentro de la tarjeta de competitividad (regla ADR-0153/0216).
+  - E. «Veto por quórum» y «desafíos legislativos» se reemplazan por **insistencias sobre
+    vetos** y **rechazos de DNU** (resoluciones de cada cámara; Marcos tiene las fuentes).
+  - F. Fichas: sacar los datos fijos del texto y remitir al último dato publicado (no
+    quedó cerrado).
+  - G. El documento de revisión macro es el documento madre del cinturón: lo no tomado
+    se marca «no considerado».
+- **Confirma lo hecho o lo decidido:** inflación, expectativas, ficha del índice, riesgo
+  país **no** entra (cierra el 11), brecha de obra fuera, cohesión se mantiene, Ingresos y
+  Consumo, FAL al 90 %, salud, Excel. Transferencias: sólo lo no automático (26).
+  Precios: se mantienen alimentos y servicios; el alquiler UdeSA/Mercado Libre, a evaluar
+  (29, sin rebautizar). Empleo: principal, la variación de la ocupación de la EPH;
+  complemento, el padrón de empleadores de ARCA; Luis manda el documento de Ever (30).
+  Cámaras: oficiales si hay; si no, sentimiento en prensa de sus referentes; si nada,
+  queda como está (24). A futuro, consumo por canales de Scentia.
+
 ## Transversal (todo el sitio)
 
 1. **Que el color se entienda.** La tarjeta muestra la escala de puntaje (100/85/65/40/10)

@@ -34,6 +34,7 @@ import itvc                                           # pesos y rebase del ITVC 
 import series_io                                     # lectura de output/series/*.csv
 import sensibilidad                                   # rango de robustez (ADR-0019)
 import parametrica                                    # motor de puntaje y semáforo
+import terminos_intercambio                           # matriz de competitividad (ADR-0375)
 
 
 def coma(x) -> str:
@@ -794,6 +795,65 @@ def _series_dimensiones(bloque, sigla, base100=False):
     }
 
 
+_CELDAS_COMPETITIVIDAD = {
+    "competitivo_ti_altos": "peso competitivo y términos del intercambio altos",
+    "competitivo_ti_bajos": "peso competitivo con términos del intercambio bajos",
+    "apreciado_ti_altos": "peso apreciado sostenido por términos del intercambio altos",
+    "apreciado_ti_bajos": "peso apreciado y términos del intercambio bajos",
+}
+
+
+def _texto_matriz_competitividad(bloque) -> str | None:
+    """ADR-0375: la dimensión de competitividad externa no promedia sus dos
+    tarjetas, las cruza en la matriz de ADR-0360. Las dos tarjetas lo dicen,
+    con el cuadrante de hoy. «Altos» y «bajos» son posiciones de los términos
+    del intercambio dentro de su ventana desde fines de 2023, no niveles
+    absolutos; «competitivo» y «apreciado» salen de los umbrales del tipo de
+    cambio real (75 a 110)."""
+    d = ((bloque or {}).get("dimensiones") or {}).get("competitividad_externa")
+    if not d or set(d.get("indicadores") or {}) != {"tcrm", "terminos_intercambio"}:
+        return None
+    pa = d["indicadores"]["tcrm"]["puntaje_aplicado"]
+    pb = d["indicadores"]["terminos_intercambio"]["puntaje_aplicado"]
+    cel = terminos_intercambio.celda(terminos_intercambio.posicion_de_puntaje(pa),
+                                     terminos_intercambio.posicion_de_puntaje(pb))
+    return ("La dimensión de competitividad externa no promedia este indicador con "
+            "el otro: los cruza. Peso competitivo con términos del intercambio altos "
+            "da 85; competitivo con términos bajos, 50; apreciado con términos altos, "
+            "30; apreciado con términos bajos, 10, y entre esas esquinas se "
+            f"interpola. Hoy: {_CELDAS_COMPETITIVIDAD[cel]}, {coma(d['puntaje'])} "
+            "puntos.")
+
+
+def _por_que_puntaje_pleno(mod, sigla, ikey, valor) -> str:
+    """Revisión de Luis (26-oct-2026, punto 2.5): un 100 sin explicación se
+    lee como «reforma terminada». Dice desde qué valor la escala da el
+    máximo: más allá de ese punto ya no distingue. Vale para todas las
+    tarjetas de los índices paramétricos."""
+    if valor is None or ikey in (getattr(mod, f"TRANSFORMACIONES_{sigla}", None) or {}):
+        return ""
+    anclas = (getattr(mod, f"ANCLAS_{sigla}", None) or {}).get(ikey)
+    if anclas is None:
+        bandas = (getattr(mod, f"BANDAS_{sigla}", None) or {}).get(ikey)
+        if not bandas:
+            return ""
+        anclas = parametrica._anclas(bandas)
+    anclas = sorted((float(x), float(p)) for x, p in anclas)
+    tope = max(p for _, p in anclas)
+    if tope < 100:
+        return ""
+    xs = [x for x, p in anclas if p == tope]
+    if anclas[-1][1] == tope:
+        x, sentido = xs[0], "o más"
+    elif anclas[0][1] == tope:
+        x, sentido = xs[-1], "o menos"
+    else:
+        return ""
+    return (f" Da 100 porque el valor ({coma(valor)}) llega al punto desde el que la "
+            f"escala da el máximo ({coma(x)} {sentido}); más allá de ese punto la escala "
+            f"ya no distingue.")
+
+
 def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
     """Cinturones con índice paramétrico (macro → ITCM, gestión → ITCG,
     política → ITCP): el puntaje lo computa el colector; acá solo se traduce
@@ -833,8 +893,10 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
             # parecía dato roto y un logro terminado leía como irrelevante).
             if p >= 95:
                 lectura = (f"Leído solo en la escala del {nombre}, este indicador está en "
-                           f"{_lectura_tension(aporte)}: puntaje pleno o casi pleno — este "
-                           f"frente está logrado y hoy no agrega tensión al índice.")
+                           f"{_lectura_tension(aporte)}: puntaje pleno o casi pleno — en la "
+                           f"escala del índice este frente hoy no agrega tensión.")
+                if p >= 99.95:
+                    lectura += _por_que_puntaje_pleno(mod, sigla, ikey, ind.get("valor"))
             elif p <= 15:
                 lectura = (f"Leído solo en la escala del {nombre}, este indicador está en "
                            f"{_lectura_tension(aporte)}: puntaje mínimo — este frente "
@@ -846,6 +908,10 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
             peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + f" del {nombre}" if peso else ""
             formula = (f"Anclas del {nombre}: {mod.texto_bandas(ikey)} "
                        f"(puntaje interpolado entre anclas: {p}{peso_txt})")
+            if clave == "itcm" and ikey in ("tcrm", "terminos_intercambio"):
+                cruce = _texto_matriz_competitividad(bloque)
+                if cruce:
+                    formula += ". " + cruce
             if ikey in ajustes:
                 aj = ajustes[ikey]
                 origen = "automático" if aj.get("origen") == "automatico" else "del analista"
@@ -921,22 +987,10 @@ def _macro_input_txt(ikey, ind):
                 f"divisas del sector privado US$ {coma(ind['componente_b'])} M"
                 + (f" — {lectura}, medidos contra el régimen abierto"
                    if lectura else ""))
-    if ikey == "tcr_terminos_intercambio" and ind.get("tcrm") is not None:
-        # ADR-0360. «Altos» y «bajos» son posiciones de los términos del
-        # intercambio dentro de su ventana desde fines de 2023, no niveles
-        # absolutos; «competitivo» y «apreciado» salen de los umbrales del tipo
-        # de cambio real (75 a 110).
-        celdas = {
-            "competitivo_ti_altos": "peso competitivo y términos del intercambio altos",
-            "competitivo_ti_bajos": "peso competitivo con términos del intercambio bajos",
-            "apreciado_ti_altos": "peso apreciado sostenido por términos del intercambio altos",
-            "apreciado_ti_bajos": "peso apreciado y términos del intercambio bajos",
-        }
-        lectura = celdas.get(ind.get("celda"), "")
-        return (f"puntaje {coma(ind.get('valor'))} = tipo de cambio real "
-                f"{coma(ind['tcrm'])} × términos del intercambio "
-                f"{coma(ind.get('terminos_intercambio'))} ({ind.get('trimestre_ti')})"
-                + (f" — {lectura}" if lectura else ""))
+    if ikey == "terminos_intercambio" and ind.get("trimestre"):
+        # ADR-0375: el valor es trimestral; la tarjeta dice de qué trimestre es.
+        return (f"índice {coma(ind.get('valor'))} (base 2004 = 100) del "
+                f"{ind['trimestre']}, el último trimestre publicado")
     if ikey == "iai" and ind.get("componentes"):
         c = ind["componentes"]
         partes = [f"ISAC {coma(c.get('isac'))}%", f"BK importados {coma(c.get('bk_importados'))}%"]

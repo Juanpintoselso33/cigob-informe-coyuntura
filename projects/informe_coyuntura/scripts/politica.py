@@ -5750,6 +5750,126 @@ def fetch_desafios_legislativos(registro: dict | None = None) -> dict | None:
         return None
 
 
+# ── Insistencias sobre vetos y rechazos de decretos (ADR-0377) ─────────────
+# Reemplazan a `veto_quorum` y `desafios_legislativos` (reunión del 26-oct-2026:
+# «están mal formuladas»). Salen del MISMO registro versionado que ya actualiza
+# fetch_derrotas_legislativas, así que no piden red: leen y cuentan. Las dos
+# cuentan sólo lo CONSUMADO en las dos cámaras —la ley promulgada por
+# insistencia (art. 83 CN) y el decreto derogado por el rechazo de la segunda
+# cámara (ley 26.122, art. 24)—, en la ventana de 12 meses calendario que
+# termina en el mes de referencia (la misma que _bloqueo_tasa_12m).
+
+def _insistencias_completas(registro: dict) -> list[dict]:
+    """Vetos con insistencia consumada en las dos cámaras: [{nombre, fecha}]."""
+    return sorted(({"nombre": f"ley {v['proyecto']} ({v.get('tema', '')})",
+                    "fecha": v["insistencia_completa"]}
+                   for v in registro.get("vetos", []) if v.get("insistencia_completa")),
+                  key=lambda e: e["fecha"])
+
+
+def _decretos_derogados(registro: dict) -> list[dict]:
+    """Decretos de la ley 26.122 (DNU y delegados) rechazados por las dos
+    cámaras, fechados en el rechazo de la segunda: [{nombre, fecha}]."""
+    out = []
+    for d in registro.get("decretos", []):
+        camaras = set()
+        for rz in sorted(d.get("rechazos", []), key=lambda r: r.get("fecha") or ""):
+            if not rz.get("fecha"):
+                continue
+            camaras.add(rz.get("camara"))
+            if len(camaras) >= 2:
+                out.append({"nombre": f"{d.get('etiqueta') or d.get('clave', '?')} ({d.get('tema', '')})",
+                            "fecha": rz["fecha"]})
+                break
+    return sorted(out, key=lambda e: e["fecha"])
+
+
+def _eventos_12m(eventos: list[dict], referencia: date) -> list[dict]:
+    """Eventos de los 12 meses calendario que terminan en el mes de
+    `referencia`, sin pasar de la fecha de referencia."""
+    meses = referencia.year * 12 + (referencia.month - 1)
+    desde = meses - 11
+    ym_desde = f"{desde // 12}-{desde % 12 + 1:02d}"
+    ym_hasta = f"{referencia.year}-{referencia.month:02d}"
+    corte = referencia.isoformat()
+    return [e for e in eventos
+            if ym_desde <= e["fecha"][:7] <= ym_hasta and e["fecha"] <= corte]
+
+
+def serie_eventos_12m(eventos: list[dict], desde: str = "2023-12",
+                      hasta: date | None = None) -> dict:
+    """{YYYY-MM: conteo 12m} evaluado al cierre de cada mes, desde `desde`."""
+    hasta = hasta or date.today()
+    out = {}
+    anio, mes = map(int, desde.split("-"))
+    while (anio, mes) <= (hasta.year, hasta.month):
+        ultimo = (date(anio + (mes == 12), mes % 12 + 1, 1) - timedelta(days=1)
+                  if (anio, mes) != (hasta.year, hasta.month) else hasta)
+        out[f"{anio}-{mes:02d}"] = float(len(_eventos_12m(eventos, ultimo)))
+        anio, mes = (anio + 1, 1) if mes == 12 else (anio, mes + 1)
+    return out
+
+
+def _fecha_dmy(iso: str) -> str:
+    return f"{iso[8:10]}/{iso[5:7]}/{iso[:4]}"
+
+
+def _conteo_eventos(nombre: str, eventos: list[dict], unidad: str,
+                    que: str) -> dict:
+    en_ventana = _eventos_12m(eventos, date.today())
+    n = len(en_ventana)
+    if n:
+        detalle_txt = (f"{n} en los últimos 12 meses: "
+                       + "; ".join(f"{e['nombre']}, {_fecha_dmy(e['fecha'])}" for e in en_ventana) + ".")
+    else:
+        ultimo = eventos[-1] if eventos else None
+        detalle_txt = (f"Ninguna en los últimos 12 meses: cero es la señal, no un dato faltante."
+                       + (f" La última fue {ultimo['nombre']}, el {_fecha_dmy(ultimo['fecha'])}." if ultimo else ""))
+    return {
+        "valor":          float(n),
+        "unidad":         unidad,
+        "fuente":         ("Actas de votación de Diputados y Senado + InfoLeg — "
+                           "elaboración CIGOB"),
+        "fecha_dato":     str(date.today()),
+        "desactualizado": False,
+        "detalle_txt":    detalle_txt,
+        "eventos_12m":    en_ventana,
+        "total_mandato":  len(eventos),
+        "que":            que,
+    }
+
+
+def fetch_insistencias_vetos(registro: dict | None = None) -> dict | None:
+    """Vetos del Ejecutivo a los que el Congreso les insistió con los dos
+    tercios de las dos cámaras (ley promulgada por insistencia), 12 meses.
+    Menor = mejor (ADR-0377)."""
+    try:
+        registro = registro if registro is not None else _cargar_derrotas_registro()
+        if registro is None:
+            raise ValueError(f"registro de eventos ausente o ilegible ({DERROTAS_EVENTOS_PATH})")
+        return _conteo_eventos("insistencias_vetos", _insistencias_completas(registro),
+                               "vetos insistidos por las dos cámaras, últimos 12 meses",
+                               "insistencias")
+    except Exception as e:
+        _warn("insistencias_vetos", str(e))
+        return None
+
+
+def fetch_rechazos_decretos(registro: dict | None = None) -> dict | None:
+    """Decretos de necesidad y urgencia y delegados derogados por el rechazo
+    de las dos cámaras (ley 26.122), 12 meses. Menor = mejor (ADR-0377)."""
+    try:
+        registro = registro if registro is not None else _cargar_derrotas_registro()
+        if registro is None:
+            raise ValueError(f"registro de eventos ausente o ilegible ({DERROTAS_EVENTOS_PATH})")
+        return _conteo_eventos("rechazos_decretos", _decretos_derogados(registro),
+                               "decretos derogados por las dos cámaras, últimos 12 meses",
+                               "rechazos")
+    except Exception as e:
+        _warn("rechazos_decretos", str(e))
+        return None
+
+
 def fetch_bloqueo_sostenido() -> dict | None:
     """
     % de normas propias desafiadas en el recinto (insistencias de veto
@@ -6417,6 +6537,22 @@ def main() -> None:
     elif "desafios_legislativos" in indicadores_anteriores:
         frescos["desafios_legislativos"] = {**indicadores_anteriores["desafios_legislativos"],
                                             "desactualizado": True}
+
+    # ADR-0377: insistencias y rechazos leen el mismo registro, ya actualizado
+    # por fetch_derrotas_legislativas. Si esa actualización falló, el conteo
+    # sale del registro versionado y se marca desactualizado: no se puede
+    # afirmar que no hubo eventos nuevos.
+    for nombre, fetcher in (("insistencias_vetos", fetch_insistencias_vetos),
+                            ("rechazos_decretos", fetch_rechazos_decretos)):
+        resultado = fetcher()
+        if _resultado_utilizable(nombre, resultado):
+            if registro_eventos_actualizado:
+                frescos[nombre] = _sellar(resultado)
+                frescos_count += 1
+            else:
+                frescos[nombre] = {**resultado, "desactualizado": True}
+        elif nombre in indicadores_anteriores:
+            frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
 
     # ADR-0168: los tres de comportamiento judicial + la producción legislativa.
     for _clave, _fn in (("produccion_legislativa", fetch_produccion_legislativa),

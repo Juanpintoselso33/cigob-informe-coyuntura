@@ -142,7 +142,7 @@ CINTURON = "macro"
 INDICADORES_ESPERADOS = [
     "ipc_total", "reservas_bcra", "idc", "badlar",
     "emae_ia", "emae_difusion", "ipi_manufacturero", "actividad_tributaria",
-    "saldo_comercial_12m", "recaudacion", "tcrm", "tcr_terminos_intercambio",
+    "saldo_comercial_12m", "recaudacion", "tcrm", "terminos_intercambio", "tcr_terminos_intercambio",
     "rem_ipc_12m", "idm", "desequilibrio_monetario", "iai", "icip",
     "credito_privado", "prestamos_privados", "base_monetaria", "tc_mayorista",
     "costo_financiamiento_tesoro", "resultado_primario",
@@ -1657,6 +1657,31 @@ def fetch_tcr_terminos_intercambio() -> dict | None:
         return None
 
 
+def fetch_terminos_intercambio() -> dict | None:
+    """Términos del intercambio del INDEC, último trimestre publicado
+    (ADR-0375). Puntúa en su propia tarjeta; la dimensión de competitividad lo
+    cruza con el tipo de cambio real en la matriz de ADR-0360."""
+    try:
+        serie = terminos_intercambio.fetch_terminos()
+        q = max(serie)
+        rezago = _rezago_mensual(q)
+        if rezago > terminos_intercambio.MAX_REZAGO_TI_MESES:
+            raise ValueError(f"último trimestre {q} con {rezago} meses de rezago: "
+                             "serie congelada")
+        return {
+            "valor": round(float(serie[q]), 2),
+            "unidad": "índice (base 2004 = 100)",
+            "fuente": "INDEC — términos del intercambio (vía datos.gob.ar)",
+            "fecha_dato": f"{q}-01",
+            "desactualizado": False,
+            "trimestre": terminos_intercambio.etiqueta_trimestre(q),
+            "posicion": round(terminos_intercambio.posicion_ti(serie[q]), 4),
+        }
+    except Exception as e:
+        _warn("terminos_intercambio", e)
+        return None
+
+
 def fetch_rem_ipc_12m() -> dict | None:
     try:
         ultimo = _bcra_ultimo(BCRA_REM_IPC_ID)
@@ -2212,6 +2237,7 @@ def main() -> None:
         ("saldo_comercial_12m", fetch_saldo_comercial_12m),
         ("recaudacion",        fetch_recaudacion),
         ("tcrm",               fetch_tcrm),
+        ("terminos_intercambio", fetch_terminos_intercambio),
         ("tcr_terminos_intercambio", fetch_tcr_terminos_intercambio),
         ("rem_ipc_12m",        fetch_rem_ipc_12m),
         ("idm",                fetch_idm),

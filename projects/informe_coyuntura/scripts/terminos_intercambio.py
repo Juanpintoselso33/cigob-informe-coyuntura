@@ -140,6 +140,30 @@ def puntaje_matriz(a: float, b: float) -> float:
     )
 
 
+# ── Los dos componentes como indicadores (ADR-0375) ──────────────────────────
+# Desde ADR-0375 el tipo de cambio real y los términos del intercambio son dos
+# tarjetas con su propio puntaje, y la matriz pasa a la dimensión. Cada puntaje
+# es la posición llevada a la misma escala 10-100 del tipo de cambio real
+# (puntaje = 10 + 90 × posición), así que la dimensión recupera las posiciones
+# sin una segunda escala y da exactamente el número del compuesto de ADR-0360.
+PUNTAJES_TI = tuple(PUNTAJE_TCR_MIN + (PUNTAJE_TCR_MAX - PUNTAJE_TCR_MIN) * p
+                    for p in POSICIONES)          # 10 · 32,5 · 55 · 77,5 · 100
+ANCLAS_TI = tuple(zip(CORTES_TI, PUNTAJES_TI))
+
+
+def posicion_de_puntaje(puntaje: float) -> float:
+    """Inversa de 10 + 90 × posición, saturada en [0, 1]."""
+    a = (float(puntaje) - PUNTAJE_TCR_MIN) / (PUNTAJE_TCR_MAX - PUNTAJE_TCR_MIN)
+    return min(1.0, max(0.0, a))
+
+
+def combinar_dimension(puntajes: dict) -> float:
+    """Puntaje de la dimensión competitividad externa: la matriz de ADR-0360
+    sobre las posiciones que traen los puntajes de las dos tarjetas."""
+    return puntaje_matriz(posicion_de_puntaje(puntajes["tcrm"]),
+                          posicion_de_puntaje(puntajes["terminos_intercambio"]))
+
+
 def celda(a: float, b: float) -> str:
     """Cuadrante de la matriz donde cae el mes, para la lectura cualitativa."""
     return CELDAS[(a >= 0.5, b >= 0.5)]

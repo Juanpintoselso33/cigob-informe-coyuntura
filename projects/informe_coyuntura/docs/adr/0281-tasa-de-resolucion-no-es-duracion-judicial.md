@@ -6,6 +6,7 @@ fecha: 2026-09-08
 cinturon: 'politica'
 indicadores: [velocidad_resolucion]
 archivos: ['web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/fichas.ts']
+relacionado: ['0374']
 ambito: 'Interpretación de la tasa de resolución judicial'
 origen: 'Auditoría integral solicitada por Juan'
 ---

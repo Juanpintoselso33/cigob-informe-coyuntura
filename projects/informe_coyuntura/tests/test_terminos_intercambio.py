@@ -65,9 +65,11 @@ def test_posicion_del_tcr_sale_de_sus_umbrales_institucionales(tcrm, esperado):
     assert ti.posicion_tcr(tcrm) == pytest.approx(esperado)
 
 
-def test_el_tcr_ya_no_puntua_solo_pero_conserva_sus_umbrales():
-    assert "tcrm" not in itcm.BANDAS_ITCM
-    assert "tcrm" in itcm.INDICADORES_CONTEXTO
+def test_el_tcr_vuelve_a_puntuar_con_sus_umbrales():
+    """ADR-0375: es tarjeta otra vez, con los umbrales de siempre."""
+    assert itcm.BANDAS_ITCM["tcrm"] is ti.BANDAS_TCR
+    assert "tcrm" not in itcm.INDICADORES_CONTEXTO
+    assert "tcr_terminos_intercambio" in itcm.INDICADORES_CONTEXTO
     assert ti.BANDAS_TCR[0] == (110.0, float("inf"), 100)
     assert ti.BANDAS_TCR[-1] == (float("-inf"), 75.0, 10)
 
@@ -132,13 +134,38 @@ def test_septiembre_2026_con_el_dato_real():
     assert fila["puntaje"] == 49.8
 
 
-def test_entra_al_indice_con_el_mismo_peso_que_tenia_el_tcr():
+def test_la_dimension_cruza_las_dos_tarjetas_con_la_matriz():
+    """ADR-0375: el cruce pasó del indicador a la dimensión, con el mismo
+    número que el compuesto de ADR-0360."""
     dim = itcm.DIMENSIONES_ITCM["competitividad_externa"]
     assert dim["peso"] == 0.11
-    assert dim["indicadores"] == {"tcr_terminos_intercambio": 1.0}
-    # el valor publicado ya es el puntaje: las anclas son la identidad
-    assert parametrica.puntaje_de(49.8, "tcr_terminos_intercambio", itcm.BANDAS_ITCM,
-                                  itcm.ANCLAS_ITCM) == 49.8
+    assert dim["indicadores"] == {"tcrm": 0.5, "terminos_intercambio": 0.5}
+    assert dim["combinar"] is ti.combinar_dimension
+    r = itcm.calcular_itcm({"tcrm": 85.87, "terminos_intercambio": 145.1401})
+    d = r["dimensiones"]["competitividad_externa"]
+    assert d["indicadores"]["tcrm"]["puntaje_aplicado"] == pytest.approx(49.7, abs=0.05)
+    assert d["indicadores"]["terminos_intercambio"]["puntaje_aplicado"] == pytest.approx(85.0, abs=0.05)
+    assert d["puntaje"] == 49.8
+    fila = ti.construir_serie(tcrm={"2026-09": 85.87}, terminos=TI_REAL)[0]
+    assert d["puntaje"] == fila["puntaje"]
+
+
+@pytest.mark.parametrize("tcrm,terminos", [(70, 125), (80, 139), (98, 141), (105, 146), (120, 150)])
+def test_la_dimension_es_la_matriz_y_no_el_promedio(tcrm, terminos):
+    d = itcm.calcular_itcm({"tcrm": tcrm, "terminos_intercambio": terminos})["dimensiones"]["competitividad_externa"]
+    esperado = ti.puntaje_matriz(ti.posicion_tcr(tcrm), ti.posicion_ti(terminos))
+    assert d["puntaje"] == pytest.approx(esperado, abs=0.051)
+
+
+def test_los_terminos_puntuan_en_la_escala_del_tcr():
+    for corte, posicion in zip(ti.CORTES_TI, ti.POSICIONES):
+        p = parametrica.puntaje_de(corte, "terminos_intercambio", itcm.BANDAS_ITCM, itcm.ANCLAS_ITCM)
+        assert ti.posicion_de_puntaje(p) == pytest.approx(posicion)
+
+
+def test_con_un_solo_componente_la_dimension_no_se_calcula():
+    r = itcm.calcular_itcm({"tcrm": 90.0, "ipc_total": 2.0})
+    assert "competitividad_externa" not in r["dimensiones"]
 
 
 def test_un_mes_con_los_terminos_congelados_no_se_calcula():

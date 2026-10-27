@@ -86,6 +86,7 @@ macro.py como promedios ponderados de variaciones interanuales:
 from pathlib import Path
 
 import parametrica
+import terminos_intercambio
 
 INF = float("inf")
 
@@ -240,16 +241,17 @@ BANDAS_ITCM = {
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
         (-2.0, 0.0, 40), (-5.0, -2.0, 20), (-INF, -5.0, 5),
     ],
-    # tcrm dejó de puntuar solo (ADR-0360): sus umbrales institucionales viven
-    # ahora en terminos_intercambio.BANDAS_TCR y dan la posición «a» del
-    # compuesto de abajo.
-    "tcr_terminos_intercambio": [       # puntaje 0-100 de la matriz TCR × TI (ADR-0360)
-        # El valor crudo YA ES el puntaje: terminos_intercambio.py resuelve la
-        # matriz por interpolación bilineal entre 10 · 30 · 50 · 85, que caen en
-        # el medio de cada color del Monitor. Estos tramos son la escala de
-        # severidad y nada más; el puntaje continuo sale de ANCLAS_ITCM, que es
-        # la identidad.
-        (60.0, INF, 85), (40.0, 60.0, 50), (20.0, 40.0, 30), (-INF, 20.0, 10),
+    # ADR-0375: el tipo de cambio real y los términos del intercambio vuelven
+    # a puntuar cada uno, y la matriz de ADR-0360 pasa a la dimensión
+    # (`combinar` de competitividad_externa). El compuesto
+    # `tcr_terminos_intercambio` queda como contexto.
+    "tcrm": terminos_intercambio.BANDAS_TCR,   # ITCRM BCRA, umbrales 1997-2026
+    "terminos_intercambio": [           # índice INDEC base 2004 = 100, último trimestre publicado
+        # Tramos entre los percentiles congelados 4T-2023 / 2T-2026 de
+        # terminos_intercambio.CORTES_TI. Son la escala de severidad; el
+        # puntaje continuo sale de ANCLAS_ITCM (10 + 90 × posición).
+        (148.15, INF, 100), (143.63, 148.15, 78), (140.4, 143.63, 55),
+        (138.1, 140.4, 32), (-INF, 138.1, 10),
     ],
     "resultado_primario": [             # % de la recaudación (acum. 12 meses)
         # ADR-0072. Superávit primario del SPN sobre recaudación, ventana de 12
@@ -287,9 +289,11 @@ BANDAS_ITCM = {
         # glosa confunde la validación con el origen y conviene corregirla.
         #
         # QUEDA ABIERTO, y es lo único que ADR-0258 sí toca: con la serie vieja el
-        # techo de 20% era casi inalcanzable; con la nueva, sep-2025 da 58,81% y
-        # todo lo que pase de 20 puntúa 15 por igual. La banda no distingue 21% de
-        # 59% justo en el episodio que la corrección destapó. Que el peor tramo
+        # techo de 20% era casi inalcanzable; con la nueva, el pico es ago-2025 con
+        # 33,75% (sep-2025 30,28%; el 58,81% que decía este comentario era de una
+        # versión anterior de la serie, verificado contra output/series el
+        # 27-oct-2026) y todo lo que pase de 20 puntúa 15 por igual. La banda no
+        # distingue 21% de 34% justo en el episodio que la corrección destapó. Que el peor tramo
         # sature es deliberado (igual que ipc_total por encima de 5% m/m), pero
         # cuánta resolución se pierde sólo se puede medir con la serie nueva
         # publicada. No se recalibra a ciegas ni para conservar un puntaje.
@@ -326,8 +330,9 @@ ANCLAS_ITCM = {
     # cruzadas valen lo mismo desde ADR-0257: la recta no se entera, porque
     # traduce tensión a puntaje y no depende de cuántos valores distintos haya.
     "desequilibrio_monetario": ((0.0, 100.0), (100.0, 0.0)),
-    # ADR-0360: el compuesto publica directamente el puntaje de la matriz.
-    "tcr_terminos_intercambio": ((0.0, 0.0), (100.0, 100.0)),
+    # ADR-0375: la posición de los términos del intercambio en la escala
+    # 10-100 del tipo de cambio real (129,7 → 10 … 148,15 → 100).
+    "terminos_intercambio": terminos_intercambio.ANCLAS_TI,
 }
 
 # Dimensiones del índice con su peso y la ponderación interna de indicadores.
@@ -467,7 +472,13 @@ DIMENSIONES_ITCM = {
         "peso": 0.11,
         # ADR-0360: el tipo de cambio real cruzado con los términos del
         # intercambio. Antes, el tipo de cambio real solo (ADR-0009).
-        "indicadores": {"tcr_terminos_intercambio": 1.0},
+        # ADR-0375 (2026-10-27): los dos son tarjetas que puntúan y el cruce
+        # se hace acá: la dimensión NO es el promedio 50/50 sino la matriz de
+        # cuatro esquinas sobre sus posiciones. Los pesos 0,5 sólo reparten el
+        # peso efectivo que se declara en cada tarjeta. Con uno solo de los
+        # dos, la dimensión no se calcula (como antes, sin el compuesto).
+        "indicadores": {"tcrm": 0.5, "terminos_intercambio": 0.5},
+        "combinar": terminos_intercambio.combinar_dimension,
     },
     # La dimensión "inversion" (12%, sólo el IAI desde ADR-0262) se fusionó con
     # "actividad" el 16-oct-2026: ver el comentario de esa dimensión.
@@ -493,9 +504,9 @@ INTERPRETACION_LEGIBLE = {
 # Indicadores macro que se publican pero no integran el índice.
 # badlar: ya no integra el índice (la dimensión de financiamiento usa el IdC);
 # se sigue publicando como contexto e insumo del IdC (tasa pasiva de referencia).
-# tcrm volvió a contexto con ADR-0360: no puntúa solo, entra como componente del
-# compuesto tcr_terminos_intercambio (se sigue bajando, publicando en series y
-# mostrando dentro del modal del compuesto).
+# tcrm volvió a contexto con ADR-0360 y salió con ADR-0375, que puso en su
+# lugar al compuesto tcr_terminos_intercambio: la matriz pasó a la dimensión y
+# el compuesto se sigue calculando (es el mismo número que la dimensión).
 #
 # idm (ADR-0261) e icip (ADR-0262) ENTRARON acá el 25-ago-2026. Los dos siguen
 # calculándose, publicándose en `output/series/macro.csv` y viajando a BigQuery:
@@ -506,7 +517,7 @@ INTERPRETACION_LEGIBLE = {
 #     con el mismo, así que ninguna dimensión lo arregla.
 # Ver los dos ADR: no alcanzaba con moverlos ni con recalibrarlos.
 INDICADORES_CONTEXTO = ["badlar", "prestamos_privados", "base_monetaria", "tc_mayorista",
-                        "idm", "icip", "tcrm",
+                        "idm", "icip", "tcr_terminos_intercambio",
                         "actividad_tributaria"]   # ADR-0368: sale del índice, se sigue calculando
 
 

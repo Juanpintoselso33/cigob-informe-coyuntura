@@ -143,12 +143,12 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[0.5, 100], [1, 60], [2, 40], [3, 20], [3.5, 10]],
       unidadCorta: "% m/m",
     },
-    dobleUso: "El IPC participa además como deflactor de otros componentes del sistema: la recaudación real, el crédito privado real, el IDM y la tasa real del IdC. Un error de medición de la fuente se propagaría a esos indicadores.",
+    dobleUso: "El IPC participa además como deflactor de otros componentes del sistema: la recaudación real, el crédito privado real, la brecha de crecimiento real entre agregados monetarios y la tasa real de la capacidad prestable. Un error de medición de la fuente se propagaría a esos indicadores.",
     limitaciones: [
       "Mide el promedio nacional del nivel general: no distingue núcleo, regulados y estacionales, ni las diferencias regionales que el propio INDEC publica por separado.",
       "Llega con rezago: al momento de cada informe, el último dato disponible puede tener entre dos y seis semanas de antigüedad. Las expectativas del REM, dentro de la misma dimensión, cubren parcialmente ese hueco.",
       "La variación de un solo mes es sensible a factores puntuales (correcciones tarifarias, estacionalidad de rubros) que no permiten distinguir el dato suelto de la tendencia.",
-      "El IPC es además el deflactor de otros tres indicadores del cinturón (recaudación, crédito y tasa real del clima financiero): su peso real en el índice es mayor que su peso nominal, porque un error de medición se propagaría también a ellos. Se documenta como riesgo sistémico en la metodología general del índice.",
+      "El IPC es además el deflactor de otros tres indicadores del cinturón (recaudación, crédito y capacidad prestable): su peso real en el índice es mayor que su peso nominal, porque un error de medición se propagaría también a ellos. Se documenta como riesgo sistémico en la metodología general del índice.",
     ],
     faltantes: "Si al calcular el índice el dato del mes no está publicado, el indicador queda fuera de esa actualización y los pesos de su dimensión se renormalizan entre los presentes: la ausencia no puntúa ni a favor ni en contra.",
     revisiones: "El INDEC no revisa retroactivamente el IPC publicado: la serie de la fuente es definitiva. Del lado del informe, la serie se reconstruyó hacia atrás hasta julio de 2021 y todo cambio de método propio queda asentado en el historial de cambios (abajo).",
@@ -178,7 +178,7 @@ export const FICHAS: Record<string, Ficha> = {
     resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Parte de sus pesos y escalas vienen del documento institucional de CiGob y el resto es elaboración propia, documentada en cada ficha.",
     marcoConceptual: [
       "El informe lee la realidad como un sistema de cuatro cinturones que rodean al gobierno (Planificación Estratégica Situacional de Carlos Matus). El cinturón macroeconómico agrupa los indicadores del motor económico: precios, cuentas fiscales y externas, financiamiento, actividad e inversión, y competitividad.",
-      "El marco viene de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). De ahí salen cuatro de las cinco dimensiones (precios, cuentas, financiamiento y actividad) y los umbrales de los indicadores originales. El resto es elaboración propia: la dimensión de competitividad, la fusión de actividad con inversión, el reparto de pesos entre dimensiones e indicadores nuevos, y las escalas de reservas netas, crédito privado, inversión física, términos del intercambio y costo del Tesoro, que se explican en la ficha de cada uno. Varias de esas escalas se calibraron contra el propio período del mandato: con los pesos de octubre de 2026 suman cerca del 38 % del índice. El índice no estima los parámetros a partir de los datos; mide, con las herramientas de robustez de abajo, cuánto dependen las conclusiones de esa elección.",
+      "El marco viene de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). De ahí salen cuatro de las cinco dimensiones (precios, cuentas, financiamiento y actividad) y los umbrales de los indicadores originales. El resto es elaboración propia: la dimensión de competitividad, la fusión de actividad con inversión, el reparto de pesos entre dimensiones e indicadores nuevos, y las escalas de reservas netas, crédito privado, inversión física, términos del intercambio y costo del Tesoro, que se explican en la ficha de cada uno. Varias de esas escalas se calibraron contra el propio período del mandato: con los pesos de octubre de 2026 suman cerca del 33 % del índice. El índice no estima los parámetros a partir de los datos; mide, con las herramientas de robustez de abajo, cuánto dependen las conclusiones de esa elección.",
     ],
     seleccion: [
       "Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023), salvo reservas netas: el Banco Central retira las planillas viejas y la serie propia sólo llega hasta mediados de 2024.",
@@ -195,7 +195,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     agregacion: {
       latex: String.raw`\text{índice macroeconómico}=\sum_{\text{5 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)`,
-      leyenda: "Promedio ponderado en dos niveles: primero dentro de cada dimensión (pesos internos), después entre dimensiones (pesos institucionales: 26 / 24 / 16 / 23 / 11 %).",
+      leyenda: "Promedio ponderado en dos niveles: primero dentro de cada dimensión (pesos internos), después entre dimensiones (pesos institucionales: 26 / 24 / 16 / 23 / 11 %). La excepción es competitividad externa, que no promedia sus dos indicadores: los cruza en una matriz de cuatro esquinas.",
       parrafos: [
         "No hay pesos implícitos: la composición completa — dimensiones, pesos, puntajes del mes — se publica en la tabla de abajo y en la página del cinturón.",
         "La agregación es compensatoria: una dimensión buena puede tapar una mala. Por eso el índice incluye el flag de dimensión crítica: si una dimensión cae por debajo de su umbral crítico, se declara junto al valor publicado. La compensación se señaliza, no se corrige.",
@@ -229,6 +229,8 @@ export const FICHAS: Record<string, Ficha> = {
       "El estándar OCDE/JRC prevé un análisis multivariado previo (paso 4: contrastar la estructura teórica con la correlación real entre los indicadores). Ese contraste está pendiente; la validación cruzada lo aproxima por el lado de las anclas externas.",
       "El costo del financiamiento del Tesoro satura: todo lo que pasa de 20 % real puntúa igual, así que el pico de la serie (33,8 % real en agosto de 2025) puntúa igual que uno de 21 %.",
       "La ventana de validación es corta — los meses del mandato en curso —, por lo que las correlaciones se leen como consistencia, no como prueba.",
+      "No incluye el riesgo país ni los vencimientos de deuda en dólares: se decidió no sumarlos (reunión de octubre de 2026) para no duplicar la lectura de reservas y del costo del Tesoro. El resultado primario excluye los intereses de la deuda, así que un superávit primario puede convivir con un déficit financiero.",
+      "Los indicadores no llegan todos con la misma demora: el índice de un mes combina datos de meses de referencia distintos (la actividad suele ir dos meses atrás; la inflación y las expectativas, uno). Cada tarjeta dice de qué mes es su dato; antes de atribuir un cambio del índice a la coyuntura del mes, conviene mirar qué indicador se actualizó.",
       "Riesgo sistémico del deflactor: el IPC no sólo es un indicador del índice, también convierte a términos reales la base imponible, el crédito privado, y la capacidad prestable. Con los pesos de octubre de 2026, el 29,4 % del índice depende de que la inflación esté bien medida (inflación 15,6 + base imponible 7,2 + capacidad prestable 3,4 + crédito 3,2), y las expectativas alimentan además el costo del Tesoro (4 %). Un error del INDEC no movería una fuente sino varias a la vez. (El desequilibrio monetario también usa el IPC, pero compara dos series ya deflactadas y el deflactor se cancela, así que es inmune a ese error y no se cuenta acá.) No es corregible —no hay un deflactor mensual alternativo— pero implica que el índice tiene menos fuentes verdaderamente independientes de las que aparenta. El análisis de robustez lo tiene en cuenta: sortea un único error de inflación por escenario y lo propaga a los indicadores que lo heredan, en vez de tratar cada falla como si fuera de una fuente distinta.",
     ],
     cambios: [
@@ -261,6 +263,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-10-26", cambio: "La inflación del mes y la esperada pasan a la escala de los cortes de color: verde hasta 1 % mensual, amarillo hasta 2 %, naranja hasta 3 %. El índice baja de 61,5 a 54,2.", adr: "0367" },
       { fecha: "2026-09-30", cambio: "Los cortes de la inversión física se corren 0,17 puntos, lo que crece la población por año: invertir menos que eso es invertir menos por habitante.", adr: "0341" },
       { fecha: "2026-10-16", cambio: "La dimensión de inversión (12%, sólo la inversión física) se fusiona con la de actividad (11%) en «Actividad e inversión», con 23%: el índice pasa de seis a cinco dimensiones (26 / 24 / 16 / 23 / 11 %). Dentro, la inversión física pesa 30% y los cuatro de actividad conservan su proporción. Con los datos de octubre, el índice pasa de 62,5 a 61,6." },
+      { fecha: "2026-10-27", cambio: "El tipo de cambio real y los términos del intercambio vuelven a ser dos tarjetas, cada una con su puntaje, y el cruce de los dos en la matriz pasa a hacerse en la dimensión de competitividad externa. El número de la dimensión y el del índice no cambian (49,8 y 53,9 con los datos de septiembre de 2026). Como el tipo de cambio real vuelve a puntuar con sus umbrales de historia larga, la parte del índice que descansa en anclas calibradas contra el propio período baja de 38% a 33%.", adr: "0375" },
       { fecha: "2026-10-20", cambio: "La dimensión competitividad externa (11%) deja de puntuar el tipo de cambio real solo y pasa a cruzarlo con los términos del intercambio del INDEC en una matriz: el tipo de cambio real dice si el peso está caro o barato, y los términos del intercambio, si ese nivel se sostiene. No cambia ningún peso. Como los cortes de los términos del intercambio se calibran contra la ventana desde fines de 2023, la parte del índice que descansa en anclas calibradas contra el propio período sube de 27% a 38%.", adr: "0360" },
     ],
   },
@@ -300,12 +303,14 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "El tramo de vencimientos no identifica por instrumento al BOPREAL ni cubre todos los vencimientos de los próximos doce meses. La etiqueta anterior «BOPREAL a 12 meses» no estaba demostrada. El resultado tampoco certifica dólares de libre disponibilidad: incluye oro y devuelve al cálculo pasivos que siguen existiendo.",
       "«Reservas netas» no es un número único: es un espectro según qué pasivos se descuentan. Otras mediciones más exigentes (o la del FMI) pueden diferir en miles de millones por criterio, no por error.",
+      "Contraste con estimaciones públicas (octubre de 2026): para septiembre de 2026 este indicador da US$ 10.725 millones, en línea con la medición convencional que mostró el propio Banco Central (positiva, cerca de US$ 11.700 millones en octubre). Con definiciones más exigentes da negativo: unos −US$ 1.940 millones según el informe monetario de Criteria y unos −US$ 7.000 millones con el criterio del FMI, según Econviews (citado por La Política Online, 22-oct-2026). El verde de la tarjeta corresponde a esta definición, no a las más exigentes.",
       "El dato es a cierre de mes; el número diario que circula en el mercado puede diferir en algunos cientos de millones por la fecha de corte.",
       "El BCRA retira las planillas viejas de su sitio: la serie histórica propia solo llega hasta mediados de 2024 hacia atrás.",
     ],
     faltantes: "Sin planilla completa o depósitos del Tesoro del mismo mes, se conserva el último resultado completo con su fecha y marcado como desactualizado. No se reemplaza por brutas recientes menos pasivos de un config. La historia omite meses sin Tesoro; cero observado se admite. Si no hay resultado utilizable, se redistribuye el peso entre componentes disponibles de la dimensión.",
     revisiones: "La planilla publicada no se revisa; el informe reconstruye la serie completa releyendo todas las planillas disponibles en cada actualización.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Se contrasta el número con tres estimaciones públicas y la ficha lo declara: coincide con la medición convencional del Banco Central y queda muy por encima de las definiciones más exigentes. No cambia el cálculo." },
       { fecha: "2026-06-26", cambio: "El indicador deja las reservas brutas del documento original y pasa a las netas «a secas», con los tres términos calculados de fuentes oficiales y escala propia." },
       { fecha: "2026-09-08", cambio: "Se explicita la fórmula CIGOB y se retiran las equivalencias no demostradas entre el tramo II.1 de más de tres meses a un año y BOPREAL, y entre el resultado y libre disponibilidad. No cambian el cálculo, las bandas ni los pesos; la conciliación por instrumento sigue pendiente.", adr: "0286" },
       { fecha: "2026-09-08", cambio: "Se retira el respaldo que omitía un sumando. Sin insumos completos se conserva el último resultado como desactualizado; historia y parser distinguen dato faltante de cero observado.", adr: "0287" },
@@ -317,7 +322,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "idc",
     cinturon: "macro",
-    rezago: "El IdC se publica para el último mes con IPC cerrado: unas dos semanas después de mediados del mes siguiente.",
+    rezago: "La capacidad prestable se publica para el último mes con IPC cerrado: unas dos semanas después de mediados del mes siguiente.",
     fuente: {
       organismo: "BCRA (tasa BADLAR, depósitos y préstamos privados) + INDEC (IPC como deflactor)",
       operacion: "Estadísticas monetarias del BCRA: BADLAR bancos privados, depósitos del sector privado y préstamos al sector privado; índice compuesto de elaboración propia",
@@ -341,16 +346,16 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-1, 10], [-0.75, 35], [0, 60], [0.75, 85], [1, 100]],
       unidadCorta: "σ",
     },
-    dobleUso: "Comparte insumos con otros indicadores del sistema: los depósitos privados también entran al IDM, y la tasa BADLAR se sigue extrayendo como insumo aunque no se publique como indicador propio.",
+    dobleUso: "Comparte insumos con otros indicadores del sistema: los depósitos privados también entraban a la brecha de crecimiento real entre agregados monetarios (fuera del índice desde agosto de 2026), y la tasa BADLAR se sigue extrayendo como insumo aunque no se publique como indicador propio.",
     limitaciones: [
       "Queda una correlación residual entre los componentes de volumen y asignación (ambos usan los depósitos), remanente declarado del rediseño.",
-      "Sin pretensión predictiva, y con la validación en contra documentada: sobre más de cien meses, el IdC no anticipa el crédito futuro. Es un descriptor del estado de las condiciones de fondeo, no un pronóstico.",
+      "Sin pretensión predictiva, y con la validación en contra documentada: sobre más de cien meses, la capacidad prestable no anticipa el crédito futuro. Es un descriptor del estado de las condiciones de fondeo, no un pronóstico.",
       "Los desvíos se recalculan contra la historia completa en cada actualización: los puntos históricos pueden moverse levemente entre ediciones.",
     ],
     faltantes: "Si la historia disponible baja de 60 meses o falla algún insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión de financiamiento se renormalizan.",
     revisiones: "Al redefinirse la métrica, el histórico de la versión anterior se purgó: la serie publicada es homogénea. Se regenera completa en cada actualización.",
     cambios: [
-      { fecha: "2026-06-26", cambio: "Nace el IdC en reemplazo de la tasa BADLAR dentro de la dimensión de financiamiento, como índice de ratios mensuales." },
+      { fecha: "2026-06-26", cambio: "Nace la capacidad prestable en reemplazo de la tasa BADLAR dentro de la dimensión de financiamiento, como índice de ratios mensuales." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "Rediseño de la métrica: pasa de ratios mes a mes a niveles estandarizados contra la propia historia, publicados en desvíos estándar." },
       { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Capacidad prestable (IdC)» a «Capacidad prestable». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna, que ya estaba traducida en el texto.", adr: "0311" },
@@ -468,9 +473,10 @@ export const FICHAS: Record<string, Ficha> = {
       "Es una estimación de títulos designados, no un censo de jueces en ejercicio: no certifica fechas de jura ni exhaustividad de fallecimientos. Los traslados se compensan en el agregado bajo continuidad del titular; las fechas de salida y toma de posesión pueden diferir.",
       "Los destinos no habilitados en el padrón no se agregan sin acreditar habilitación. El traslado de Fraga a San Justo (918/2026) requiere verificar cuándo deja el cargo de origen: el ajuste provisional neto cero puede sobreestimar un cargo del universo fijo. Este límite no se presenta como validación cerrada del stock.",
     ],
-    faltantes: "Si los archivos no se pueden leer o el padrón requiere una nueva conciliación, se mantiene el último valor disponible, señalado como desactualizado. Sin valor previo, su peso se redistribuye entre los otros indicadores activos del Poder Judicial; sólo si falta toda la dimensión se redistribuye entre las demás.",
+    faltantes: "Si los archivos no se pueden leer o el padrón requiere una nueva conciliación, se mantiene el último valor disponible, señalado como desactualizado. Sin valor previo, la dimensión del Poder Judicial queda sin dato —es su único componente desde octubre de 2026— y su peso se redistribuye entre las demás dimensiones.",
     revisiones: "Un padrón nuevo obliga a revisar los ajustes antes de reanclar. La corrección de flujos y bajas puede revisar toda la historia; un salto entre versiones no es necesariamente un cambio ocurrido ese mes. La actividad de concursos sirve como contraste institucional de la reactivación, pero no demuestra por sí sola cuántos cargos se cubrieron.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Pasa a ser el único componente de la dimensión del Poder Judicial: salen la tasa de resolución de la Corte y la actividad de las comisiones de control del Consejo, que miden a la Justicia y no al Poder Ejecutivo. La cobertura se mantiene porque el Ejecutivo eleva los pliegos. Con los datos del 27 de octubre de 2026 la dimensión pasa de 57,1 a 62,0 y el índice político de 71,6 a 72,4.", adr: "0374" },
       { fecha: "2026-09-08", cambio: "Reconstrucción con altas netas, normas posteriores a la planilla y bajas documentadas; ancla original separada de la corregida, corte limitado a la revisión y límites explícitos sobre juras, habilitaciones y fallecimientos.", adr: "0298" },
       { fecha: "2026-09-08", cambio: "Se excluyen movimientos de la Corte Suprema y renovaciones verificadas, que no son altas netas de tribunales inferiores. La conciliación integral de promociones, nuevas normas y universo habilitado continúa abierta; todavía no se certifica el stock reconstruido.", adr: "0297" },
       { fecha: "2026-07-25", cambio: "Entra al índice como único indicador de la dimensión nueva del Poder Judicial, con el quince por ciento del cinturón. La serie se reconstruyó completa desde diciembre de 2023." },
@@ -549,7 +555,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "ESTA ESCALA YA NO SE APLICA. Desde agosto de 2026 el indicador está suspendido: su valor no se convierte en puntaje, no pesa en el índice político y no entra en ninguna dimensión. La tabla de arriba es la escala con la que puntuaba hasta entonces, y se conserva para que la serie histórica se pueda leer con la misma regla con que se construyó.",
-      "Su 20% de diseño de la dimensión de Poder Judicial no se borró —queda escrito para que un eventual reingreso no tenga que reinventarlo—, pero mientras dure la suspensión lo absorben los otros tres componentes: cobertura de cargos de juez, velocidad de la Corte y control disciplinario.",
+      "Su 20% de diseño de la dimensión de Poder Judicial no se borró —queda escrito para que un eventual reingreso no tenga que reinventarlo—, pero mientras dure la suspensión lo absorben los componentes activos de la dimensión. Desde octubre de 2026 el único es la cobertura de cargos de juez.",
     ],
     limitaciones: [
       "La proporción corrige el volumen de publicación de la base, pero no un eventual cambio en su mezcla: si la base empezara a publicar sistemáticamente más fallos de un fuero que de otro, el indicador lo leería como un cambio en la judicialización.",
@@ -592,15 +598,20 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[40, 100], [55, 85], [85, 65], [115, 40], [130, 10]],
       unidadCorta: "% resuelto",
     },
+    incidenciaTexto: [
+      "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice político: mide la eficiencia de la Justicia, no algo que dependa del Poder Ejecutivo. La tabla de arriba es la escala con la que puntuaba hasta entonces, y se conserva para leer la serie histórica, que se sigue calculando.",
+      "Hasta septiembre de 2026 pesó el 20% de diseño de la dimensión del Poder Judicial (25% efectivo, con la judicialización suspendida).",
+    ],
     limitaciones: [
       "El signo es una hipótesis del monitor: una menor tasa de resolución aporta más puntaje como aproximación a menor fricción judicial. El cociente no mide la duración de los expedientes, su efecto sobre políticas ni el sentido de las decisiones; por sí solo no demuestra ventaja para el Gobierno.",
       "Cuenta expedientes, no su peso. Una causa que define una política y una queja de trámite cuentan igual.",
       "Los años por encima de cien por ciento son años de descarga de atraso acumulado, no de mayor productividad instantánea.",
       "Es anual. No sirve para leer el pulso de un mes.",
     ],
-    faltantes: "Si el anuario no está disponible, se mantiene el último valor publicado, señalado como desactualizado.",
+    faltantes: "Si el anuario no está disponible, se mantiene el último valor publicado, señalado como desactualizado. Desde octubre de 2026 no integra el índice, así que su falta no afecta a la dimensión.",
     revisiones: "La fuente puede corregir cifras de años anteriores al publicar el anuario siguiente.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Sale del índice político: mide cuántos expedientes resuelve la Corte sobre los que le entran, es decir la eficiencia de la Justicia, no al Poder Ejecutivo. Se sigue calculando y su serie se conserva. La dimensión del Poder Judicial queda con la cobertura de cargos de juez y pasa de 57,1 a 62,0; el índice político, de 71,6 a 72,4.", adr: "0374" },
       { fecha: "2026-09-08", cambio: "Se presenta como tasa de resolución: el cociente anual de expedientes resueltos e ingresados no mide duración judicial ni demuestra ventaja para el Gobierno. Se conserva el cálculo y se explicita la hipótesis del signo.", adr: "0281" },
       { fecha: "2026-07-31", cambio: "Entra al índice. El veredicto anterior lo daba por imposible por falta de fecha de inicio de causa; la corrección encontró que el anuario publica ingresos y resueltos por año, que es lo que el indicador necesita." },
     ],
@@ -634,15 +645,20 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[2, 100], [3, 85], [5, 65], [7, 40], [9, 10]],
       unidadCorta: "sesiones (12m)",
     },
+    incidenciaTexto: [
+      "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice político: el control sobre los jueces lo ejerce el Consejo de la Magistratura, no el Poder Ejecutivo. La tabla de arriba es la escala con la que puntuaba hasta entonces, y se conserva para leer la serie histórica, que se sigue calculando.",
+      "Hasta septiembre de 2026 pesó el 20% de diseño de la dimensión del Poder Judicial (25% efectivo, con la judicialización suspendida).",
+    ],
     limitaciones: [
       "Cuenta que la comisión se reúna, resuelva o no. Una nota cuyo título destaca un dictamen sigue contando si el cuerpo documenta que la decisión se tomó en sesión.",
       "Suma las dos comisiones sin distinguir el contenido ni el resultado de sus decisiones. Ambas publican actuaciones: la cantidad de reuniones no demuestra paralización de denuncias, ausencia de sanciones ni protección del gobierno.",
       "Depende de que el Consejo publique la nota de cada sesión. Una sesión sin nota es invisible para el indicador.",
       "Usa la fecha de publicación de la nota. Si ésta difiere de la fecha de reunión, puede desplazar el evento de mes; tampoco equivale a un inventario certificado de actas. El mes todavía abierto puede aumentar antes de cerrar.",
     ],
-    faltantes: "Si el archivo no se puede leer, se mantiene el último valor disponible, señalado como desactualizado.",
+    faltantes: "Si el archivo no se puede leer, se mantiene el último valor disponible, señalado como desactualizado. Desde octubre de 2026 no integra el índice, así que su falta no afecta a la dimensión.",
     revisiones: "Una nota publicada con retraso puede sumar una sesión a meses ya informados.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Sale del índice político: cuenta las sesiones de las comisiones de Acusación y Disciplina del Consejo de la Magistratura, que es el control sobre los jueces, no algo que haga el Poder Ejecutivo. Se sigue calculando y su serie se conserva. La dimensión del Poder Judicial queda con la cobertura de cargos de juez y pasa de 57,1 a 62,0; el índice político, de 71,6 a 72,4.", adr: "0374" },
       { fecha: "2026-09-08", cambio: "El cotejo del archivo original corrobora 13 sesiones publicadas desde octubre de 2025. Se explicita el mes abierto y la fecha editorial, y se retira la afirmación desactualizada de que Disciplina no publicó acciones. No cambia el conteo ni el puntaje." },
       { fecha: "2026-08-26", cambio: "Se corrige el universo: el número del slug deja de ser requisito. Entran las sesiones con título sustantivo, extraordinarias y publicadas junto con otras comisiones; se deduplican por fecha y comisión y se excluyen audiencias y noticias del Jurado." },
       { fecha: "2026-07-31", cambio: "Entra al índice midiendo las sesiones de ambas comisiones. Con el criterio entonces vigente —sólo slugs numerados— se descartó medir únicamente Disciplina por la escasez de eventos; ese universo fue corregido el 26 de agosto." },
@@ -769,7 +785,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-15000, 10], [-10000, 30], [0, 50], [7500, 60], [12500, 75], [15000, 85]],
       unidadCorta: "M USD (12 meses)",
     },
-    dobleUso: "Las mismas series del ICA son insumo de la alícuota de apertura comercial (cinturón gestión), y la subserie de bienes de capital importados alimenta el IAI.",
+    dobleUso: "Las mismas series del ICA son insumo de la alícuota de apertura comercial (cinturón gestión), y la subserie de bienes de capital importados alimenta la inversión física.",
     limitaciones: [
       "Mide sólo el intercambio de BIENES. Quedan afuera los servicios, los intereses de la deuda y las utilidades giradas al exterior, que en el período reciente drenan alrededor de diecisiete mil millones de dólares por año: mientras el saldo comercial marcaba un superávit de trece mil millones, la cuenta corriente —que sí los incluye— estaba en déficit de cuatro mil millones. Un superávit comercial no equivale, por sí solo, a que el sector externo genere los dólares que el programa necesita. La cuenta corriente se publica junto a este indicador en el gráfico, como contexto.",
       "El acumulado de 12 meses suaviza a costa de reactividad: un vuelco del frente comercial tarda meses en reflejarse por completo.",
@@ -851,52 +867,90 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
-  tcr_terminos_intercambio: {
+  tcrm: {
     tipo: "indicador",
-    id: "tcr_terminos_intercambio",
+    id: "tcrm",
     cinturon: "macro",
-    rezago: "El tipo de cambio real se publica a diario y su promedio mensual está disponible en los primeros días del mes siguiente. Los términos del intercambio son trimestrales y salen con unos dos meses y medio de demora: cada mes usa el último trimestre publicado, y la tarjeta lo declara.",
+    rezago: "Se publica a diario y su promedio mensual está disponible en los primeros días del mes siguiente.",
     fuente: {
-      organismo: "BCRA e INDEC",
-      operacion: "ITCRM — Índice de Tipo de Cambio Real Multilateral del BCRA (base 17-dic-2015 = 100), promedios mensuales; e índice de términos del intercambio del INDEC (índices de precios y cantidades del comercio exterior, base 2004 = 100), trimestral",
-      serie: "Planilla oficial ITCRMSerie.xlsx (hoja de promedios mensuales) y serie 82.2_ITI_2004_T_27 de la API de series de datos.gob.ar",
+      organismo: "BCRA",
+      operacion: "ITCRM — Índice de Tipo de Cambio Real Multilateral del BCRA (base 17-dic-2015 = 100), promedios mensuales",
+      serie: "Planilla oficial ITCRMSerie.xlsx (hoja de promedios mensuales)",
       url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Indices_tipo_cambio_multilateral.asp",
-      acceso: "Automático: descarga de la planilla oficial del BCRA y de la serie del INDEC publicada en datos.gob.ar.",
+      acceso: "Automático: descarga de la planilla oficial del BCRA.",
     },
     transformaciones: [
-      "Posición del tipo de cambio real (de 0 a 1): sale de sus umbrales de siempre, calibrados con la historia 1997-2026. El valor se lleva primero a su puntaje institucional —75 o menos da 10, 80 da 35, 90 da 60, 102,5 da 80 y 110 o más da 100, interpolado entre esos puntos— y después a la posición: puntaje menos 10, dividido 90. No usa una ventana estadística, para no depender de su punto de arranque: diciembre de 2023 fue el pico de la devaluación y la habría vuelto la referencia de «competitivo».",
-      "Posición de los términos del intercambio (de 0 a 1): el índice del último trimestre publicado se ubica entre los percentiles de la serie desde el cuarto trimestre de 2023 hasta el segundo de 2026, con saturación fuera de los extremos: 129,7 → 0; 138,1 → 0,25; 140,4 → 0,50; 143,63 → 0,75; 148,15 → 1. Los cortes quedan congelados.",
-      "Un trimestre cuenta como publicado a partir del tercer mes posterior a su cierre: el segundo trimestre (abril a junio) entra en septiembre. No se imputa ni se anticipa con otra serie.",
-      "Las dos posiciones se cruzan entre las cuatro esquinas de la matriz, por interpolación bilineal: peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Las cuatro esquinas caen en el medio de cada color del Monitor.",
-      "La matriz es asimétrica a propósito: un peso competitivo con términos bajos puntúa mejor que uno apreciado con términos altos. Con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil, y si los precios se dan vuelta no queda colchón.",
-      "El valor publicado ya es el puntaje que entra al índice macroeconómico. Es el único indicador de la dimensión competitividad externa, que pesa 11%.",
+      "El puntaje sale de sus umbrales de siempre, calibrados con la historia 1997-2026: 75 o menos da 10, 80 da 35, 90 da 60, 102,5 da 80 y 110 o más da 100, interpolado entre esos puntos. No usa una ventana estadística, para no depender de su punto de arranque: diciembre de 2023 fue el pico de la devaluación y la habría vuelto la referencia de «competitivo».",
+      "La dimensión de competitividad externa, que pesa 11% del índice macroeconómico, no promedia este indicador con el otro: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.",
+      "La matriz es asimétrica a propósito: un peso competitivo con términos bajos puntúa mejor que uno apreciado con términos altos. Con el peso competitivo el ajuste ya ocurrió y la posición se defiende aunque los precios no ayuden; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil.",
     ],
     anclas: {
       bandas: [
-        { banda: "> 60", puntaje: 85 },
-        { banda: "40 – 60", puntaje: 50 },
-        { banda: "20 – 40", puntaje: 30 },
-        { banda: "≤ 20", puntaje: 10 },
+        { banda: "> 110", puntaje: 100 },
+        { banda: "95 – 110", puntaje: 80 },
+        { banda: "85 – 95", puntaje: 60 },
+        { banda: "75 – 85", puntaje: 35 },
+        { banda: "≤ 75", puntaje: 10 },
       ],
-      puntos: [[0, 0], [100, 100]],
-      unidadCorta: "Puntaje (0–100)",
+      puntos: [[75, 10], [80, 35], [90, 60], [102.5, 80], [110, 100]],
+      unidadCorta: "dic-2015 = 100",
     },
-    dobleUso: "El tipo de cambio real y los términos del intercambio se siguen bajando y publicando como series. Los tipos de cambio bilaterales con Brasil y Estados Unidos, de la misma planilla del BCRA, también.",
+    dobleUso: "Los tipos de cambio bilaterales con Brasil y Estados Unidos, de la misma planilla del BCRA, se publican como series de contexto.",
     limitaciones: [
-      "La ventana de los términos del intercambio es corta: once trimestres. Los cortes pueden ser inestables y se revisan cuando la serie crezca. Como se calibran contra el período que se está midiendo, son una convención del Monitor y no un umbral externo.",
-      "Repetir el último trimestre publicado hace que la parte de los términos del intercambio se mueva por saltos, una vez cada tres meses.",
-      "«Términos altos» y «bajos» son posiciones dentro de la ventana desde fines de 2023, no niveles en abstracto: la lectura del cuadrante toma como altos los trimestres de la mitad superior (desde la mediana, 140,4), y el puntaje usa la posición continua.",
-      "Los umbrales del tipo de cambio real y el peso de la dimensión (11%) son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.",
+      "Los umbrales y el peso de la dimensión (11%) son operacionalización propia calibrada con la historia 1997-2026: el documento institucional no los define.",
+      "Dice si el peso está caro o barato, no si ese nivel se sostiene: para eso está el cruce con los términos del intercambio.",
     ],
-    faltantes: "Un mes entra sólo si tiene tipo de cambio real y algún trimestre de términos del intercambio publicado. Si los términos del intercambio quedan más de nueve meses detrás del mes que se puntúa, el indicador no se actualiza y la tarjeta conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.",
-    revisiones: "Las revisiones del INDEC y del BCRA se incorporan en la siguiente actualización, porque la serie se reconstruye completa en cada corrida. Los cortes de los términos del intercambio quedan congelados: no se recalculan con cada corrida, para que el puntaje de un mes sea reproducible.",
+    faltantes: "Si la planilla del BCRA no está disponible, se mantiene el último valor, señalado como desactualizado. Sin tipo de cambio real o sin términos del intercambio, la dimensión de competitividad externa no se calcula y el índice macroeconómico renormaliza entre las demás.",
+    revisiones: "El BCRA puede revisar los ponderadores del índice; la serie se baja completa en cada corrida y las revisiones entran solas.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Vuelve a ser tarjeta y a puntuar por su cuenta, igual que los términos del intercambio. El cruce de los dos pasa a hacerse en la dimensión de competitividad externa, con la misma matriz: el número de la dimensión no cambia. Con los datos de septiembre de 2026 el tipo de cambio real puntúa 49,7, los términos del intercambio 85,0 y la dimensión 49,8, igual que el compuesto que reemplaza; el índice macroeconómico sigue en 53,9.", adr: "0375" },
       { fecha: "2026-06-27", cambio: "La fuente pasa de la serie del INDEC (discontinuada en diciembre de 2024, con 18 meses de rezago acumulado) al ITCRM oficial del BCRA. Era un indicador de contexto." },
       { fecha: "2026-06-28", cambio: "Deja de ser contexto y entra al índice como quinta dimensión (competitividad externa)." },
       { fecha: "2026-06-30", cambio: "Peso de la dimensión recortado de 12% a 11% al entrar la dimensión de inversión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Tipo de cambio real (TCRM)» a «Tipo de cambio real». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
       { fecha: "2026-10-20", cambio: "La dimensión competitividad externa deja de puntuar el tipo de cambio real solo y pasa a cruzarlo con los términos del intercambio del INDEC en una matriz. El tipo de cambio real dice si el peso está caro o barato; los términos del intercambio, si ese nivel se sostiene. El tipo de cambio real se sigue publicando como serie, pero ya no como tarjeta propia, y conserva sus umbrales de siempre como uno de los dos componentes. El peso de la dimensión no cambia (11%). Con los datos de septiembre de 2026, el tipo de cambio real solo daba 49,7 puntos y el compuesto da 49,8.", adr: "0360" },
+    ],
+  },
+
+  terminos_intercambio: {
+    tipo: "indicador",
+    id: "terminos_intercambio",
+    cinturon: "macro",
+    rezago: "Trimestral, con unos dos meses y medio de demora: el segundo trimestre (abril a junio) sale a mediados de septiembre. La tarjeta muestra el último trimestre publicado y lo nombra.",
+    fuente: {
+      organismo: "INDEC",
+      operacion: "Índice de términos del intercambio (precios de exportación sobre precios de importación), de los índices de precios y cantidades del comercio exterior, base 2004 = 100, trimestral",
+      serie: "Serie 82.2_ITI_2004_T_27 de la API de series de datos.gob.ar",
+      url: "https://datos.gob.ar/series/api/series/?ids=82.2_ITI_2004_T_27",
+      acceso: "Automático: serie del INDEC publicada en datos.gob.ar.",
+    },
+    transformaciones: [
+      "El puntaje ubica el índice del último trimestre publicado entre los percentiles de la serie desde el cuarto trimestre de 2023 hasta el segundo de 2026, con saturación fuera de los extremos, en la misma escala de 10 a 100 que el tipo de cambio real: 129,7 → 10; 138,1 → 32,5; 140,4 → 55; 143,63 → 77,5; 148,15 → 100. Los cortes quedan congelados.",
+      "La dimensión de competitividad externa, que pesa 11% del índice macroeconómico, no promedia este indicador con el otro: los cruza en una matriz de cuatro esquinas sobre sus posiciones de 0 a 1 (posición = puntaje menos 10, dividido 90). Peso competitivo con términos del intercambio altos da 85 (verde); competitivo con términos bajos, 50 (amarillo); apreciado con términos altos, 30 (naranja); apreciado con términos bajos, 10 (rojo). Entre las esquinas se interpola. Las cuatro caen en el medio de cada color del Monitor.",
+      "Para la serie histórica de la dimensión, un trimestre cuenta como publicado a partir del tercer mes posterior a su cierre: el segundo trimestre entra en septiembre. No se imputa ni se anticipa con otra serie.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "> 148,15", puntaje: 100 },
+        { banda: "143,63 – 148,15", puntaje: 78 },
+        { banda: "140,4 – 143,63", puntaje: 55 },
+        { banda: "138,1 – 140,4", puntaje: 32 },
+        { banda: "≤ 138,1", puntaje: 10 },
+      ],
+      puntos: [[129.7, 10], [138.1, 32.5], [140.4, 55], [143.63, 77.5], [148.15, 100]],
+      unidadCorta: "2004 = 100",
+    },
+    limitaciones: [
+      "La ventana es corta: once trimestres. Los cortes pueden ser inestables y se revisan cuando la serie crezca. Como se calibran contra el período que se está midiendo, son una convención del Monitor y no un umbral externo.",
+      "«Altos» y «bajos» son posiciones dentro de la ventana desde fines de 2023, no niveles en abstracto: el cuadrante de la dimensión toma como altos los trimestres desde la mediana (140,4), y el puntaje usa la posición continua.",
+      "Al ser trimestral, se mueve por saltos, una vez cada tres meses.",
+    ],
+    faltantes: "Si el último trimestre publicado queda más de nueve meses atrás, la serie se considera congelada: la tarjeta conserva el último valor, señalado como desactualizado, y la dimensión de competitividad externa no se calcula.",
+    revisiones: "El INDEC revisa trimestres anteriores; la serie se baja completa en cada corrida y las revisiones entran solas. Los cortes quedan congelados para que el puntaje de un trimestre sea reproducible.",
+    cambios: [
+      { fecha: "2026-10-27", cambio: "Pasa a ser tarjeta y a puntuar por su cuenta, en la misma escala de 10 a 100 que el tipo de cambio real. Desde el 20 de octubre de 2026 entraba como componente de un compuesto con el tipo de cambio real; el cruce de los dos pasa a hacerse en la dimensión de competitividad externa, con la misma matriz, y el número de la dimensión no cambia. Con el segundo trimestre de 2026 (145,14) puntúa 85,0.", adr: "0375" },
+      { fecha: "2026-10-20", cambio: "Entra al índice como componente del cruce con el tipo de cambio real en la dimensión de competitividad externa.", adr: "0360" },
     ],
   },
 
@@ -941,7 +995,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-08", cambio: "El informe separado de sensibilidad aplica la misma conversión anual a mensual que el índice y la web. Se corrige su simulación; el valor y el puntaje del indicador no cambian.", adr: "0289" },
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, con bandas absolutas sobre el nivel anual." },
       { fecha: "2026-06-26", cambio: "Pasa a puntuarse por el equivalente mensual con las bandas del IPC, tras descartarse una versión intermedia por brecha contra el ritmo corriente." },
-      { fecha: "2026-06-28", cambio: "Su peso interno baja de 50% a 30% de la dimensión al entrar el IDM." },
+      { fecha: "2026-06-28", cambio: "Su peso interno baja de 50% a 30% de la dimensión al entrar la brecha de crecimiento real entre agregados monetarios." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-13", cambio: "Su peso interno pasa de 30% a 25% al incorporarse una cuarta señal de estabilidad monetaria, hoy medida por la presión de dolarización de carteras." },
     ],
@@ -978,7 +1032,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[0, 100], [58.75, 41.25], [90, 10], [100, 0]],
       unidadCorta: "pts de tensión (0–100)",
     },
-    dobleUso: "Comparte insumos monetarios con el IDM y el mismo anexo cambiario que el saldo del mercado de cambios, pero no replica sus cálculos: el IDM compara el crecimiento real de dos agregados en pesos; este indicador cruza el nivel del cociente entre liquidez transaccional y liquidez ampliada con la compra neta de divisas del sector privado no financiero. Reemplaza a la presión de dolarización de carteras, que tomaba por separado el mismo concepto 03 del anexo; retirarla evita que esa compra neta incidiera dos veces dentro de la dimensión.",
+    dobleUso: "Comparte insumos monetarios con la brecha de crecimiento real entre agregados monetarios y el mismo anexo cambiario que el saldo del mercado de cambios, pero no replica sus cálculos: esa brecha compara el crecimiento real de dos agregados en pesos; este indicador cruza el nivel del cociente entre liquidez transaccional y liquidez ampliada con la compra neta de divisas del sector privado no financiero. Reemplaza a la presión de dolarización de carteras, que tomaba por separado el mismo concepto 03 del anexo; retirarla evita que esa compra neta incidiera dos veces dentro de la dimensión.",
     limitaciones: [
       "La serie arranca en abril de 2025 y no antes. El componente de flujo se puede calcular desde 2003, pero bajo cepo daba prácticamente cero por falta de acceso al dólar, no por confianza: publicarlo hacia atrás haría leer «baja presión compradora» —es decir, verde— justo en los meses de control de cambios.",
       "El componente A se puede calcular desde enero de 2021 y no antes: el M2 transaccional del sector privado no se publica antes de esa fecha, y reconstruirlo con las series sueltas desplazaría el ratio casi nueve puntos porcentuales — por eso no arranca en 2016, como pedía la ficha original.",
@@ -993,7 +1047,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Un mes entra sólo si tiene los cinco insumos. Si falta cualquiera, ese punto no se calcula: nunca se imputa cero. La tarjeta conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el índice macroeconómico renormaliza los componentes disponibles.",
     revisiones: "Las revisiones de la planilla del mercado de cambios se incorporan en la siguiente actualización. Los cortes por percentiles quedan congelados: no se recalculan con cada corrida, porque si se movieran con el último dato el puntaje de un mes dejaría de ser reproducible y la serie cambiaría hacia atrás sin que nadie tocara nada.",
     cambios: [
-      { fecha: "2026-08-11", cambio: "El peso dentro de estabilidad monetaria pasa de 10% a 20%, para que su peso nominal en el índice quede a la altura del de las reservas, como pedía la ficha original. Ceden el REM y el IDM; la inflación realizada conserva su 40%." },
+      { fecha: "2026-08-11", cambio: "El peso dentro de estabilidad monetaria pasa de 10% a 20%, para que su peso nominal en el índice quede a la altura del de las reservas, como pedía la ficha original. Ceden las expectativas y la brecha de crecimiento real entre agregados monetarios; la inflación realizada conserva su 40%." },
       { fecha: "2026-08-11", cambio: "Alta del indicador, a partir de la ficha Desequilibrio Monetario. Reemplaza a la presión de dolarización de carteras dentro de estabilidad monetaria. Los cortes de banda preliminares de la ficha se sustituyeron por percentiles reales de cada serie, como la propia ficha preveía: con los preliminares ninguno de los quince meses de la ventana daba verde, y su referencia de que más de 3.000 millones era comparable a julio de 2025 erraba por unos 80%, porque ese mes fueron 5.436 millones." },
       { fecha: "2026-08-25", cambio: "El componente B pasa a llamarse presión compradora de divisas. Se llamaba «fuga fuera del sistema» y no identifica eso: mide la compra neta de billetes y divisas del sector privado no financiero, y el BCRA estimó que cerca del 80% de esas compras quedó depositado localmente. Comprar divisas y sacarlas del sistema financiero son dos actos distintos. Las cuatro celdas de la matriz pasan a describir la combinación observada en vez del destino del dinero. El valor, la matriz y las bandas no cambian. Queda anotado que la asimetría de la matriz —degradar B cuesta 77,5 puntos y degradar A sólo 40— se justificaba con la tesis de la fuga y merece revisarse en la próxima recalibración." },
       { fecha: "2026-08-25", cambio: "Se salda la deuda anterior y aparece un defecto más grande que la escondía. (1) El componente A se calibraba contra 2021-2026, y 51 de esos 68 meses son de cepo: bajo cepo un ratio alto de pesos transaccionales no mide confianza, mide que no había dónde ir — el mismo argumento que la ficha ya había aceptado para B y no había aplicado a A. Las dos distribuciones casi no se tocan (el máximo del régimen abierto cae por debajo de la mediana del cepo), así que A quedaba clavada contra su piso y el indicador era casi unidimensional. Pasa a calibrarse en la misma ventana que B, desde la apertura del cepo. (2) Las dos esquinas cruzadas de la matriz pasan a valer lo mismo (58,75 cada una, contra 40 y 77,5): la asimetría había perdido su fundamento y el dato no pudo reponerlo. Se reparte en partes iguales la misma severidad total que la ficha les había dado a las dos juntas, así que cambia el orden y no el nivel y la forma de la matriz queda intacta. (3) Los cuadrantes dejan de nombrarse por colores, porque dos de ellos ahora puntúan igual. Junio de 2026 pasa de 50,86 a 38,69 puntos de tensión: +9,70 lo aporta la matriz y −13,67 la ventana." },
@@ -1038,7 +1092,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Sin patentamientos, la composición renormaliza a 65/35 (situación actual); sin mes común de las otras dos fuentes, se mantiene el último valor disponible señalado como desactualizado y la dimensión se renormaliza.",
     revisiones: "Tarjeta e historia se recalculan con los datos revisados de las fuentes y la composición correspondiente a cada mes; no son una reconstrucción de la información conocida originalmente en cada fecha.",
     cambios: [
-      { fecha: "2026-09-08", cambio: "La planilla original de bienes de capital completa julio y reemplaza revisiones, conservando la API para años anteriores. Tarjeta e historia avanzan al mismo mes común con ISAC; el IAI de julio es −5,66%.", adr: "0300" },
+      { fecha: "2026-09-08", cambio: "La planilla original de bienes de capital completa julio y reemplaza revisiones, conservando la API para años anteriores. Tarjeta e historia avanzan al mismo mes común con ISAC; la inversión física de julio da −5,66%.", adr: "0300" },
       { fecha: "2026-09-08", cambio: "IPI e ISAC se leen de las planillas originales vigentes; tarjeta e historia absorben julio y las revisiones anteriores sin depender del atraso de la API.", adr: "0299" },
       { fecha: "2026-06-30", cambio: "Nace y entra al índice como parte de la sexta dimensión (inversión, 12%), sin el componente de patentamientos por falta de historia." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
@@ -1064,7 +1118,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Variación interanual del stock a fin de mes, deflactada por el IPC del mismo período: el crédito que efectivamente llegó, no el que infló la nominalidad.",
-      "Mide crédito realizado — complementario del IdC, que mide la capacidad de prestar.",
+      "Mide crédito realizado — complementario de la capacidad prestable, que mide la capacidad de prestar.",
     ],
     anclas: {
       bandas: [
@@ -1083,10 +1137,10 @@ export const FICHAS: Record<string, Ficha> = {
       "Bandas calibradas a la remonetización 2024-2026 (el crédito real llegó a crecer 90% interanual desde una base ínfima): calibración propia sobre historia corta, declarada.",
       "Agregado total: no distingue empresas de familias ni líneas de crédito.",
     ],
-    faltantes: "Sin mes común entre stock e IPC, se mantiene el último valor disponible, señalado como desactualizado; sin dato, reservas e IdC renormalizan dentro de la dimensión de financiamiento.",
+    faltantes: "Sin mes común entre stock e IPC, se mantiene el último valor disponible, señalado como desactualizado; sin dato, reservas y capacidad prestable renormalizan dentro de la dimensión de financiamiento.",
     revisiones: "Los saldos del BCRA no se revisan de forma habitual; la serie se regenera completa (desde diciembre de 2023) en cada actualización.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Nace y entra al índice: rescata la única señal no redundante de los cuatro contextos nominales (que dejan de publicarse); la dimensión de financiamiento queda 45% reservas + 40% IdC + 15% crédito." },
+      { fecha: "2026-07-03", cambio: "Nace y entra al índice: rescata la única señal no redundante de los cuatro contextos nominales (que dejan de publicarse); la dimensión de financiamiento queda 45% reservas + 40% capacidad prestable + 15% crédito." },
       { fecha: "2026-07-04", cambio: "El titular pasa al último mes con IPC cerrado; el dato diario fresco queda como provisorio (antes se deflactaba el préstamo del día con un IPC de dos meses atrás)." },
       { fecha: "2026-08-25", cambio: "El titular pasa a medir sólo el crédito EN PESOS (BCRA var. 117). Usaba la var. 26, que el propio catálogo del BCRA declara `MEyML`: pesos más la cartera en dólares valuada en pesos. Con esa serie una devaluación revaluaba la cartera sin que se prestara un peso más y entraba como crecimiento real: en julio de 2026 publicaba +2,5% mientras el crédito en pesos caía 1,5%. La cartera en moneda extranjera no se descarta —se publica en el desglose, en dólares y en pesos, junto con el total— pero deja de decidir el titular. La serie se rehace entera: las dos variables no son empalmables porque no comparten universo.", adr: "0251" },
     ],
@@ -1225,6 +1279,88 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  insistencias_vetos: {
+    tipo: "indicador",
+    id: "insistencias_vetos",
+    cinturon: "politica",
+    rezago: "Las actas de votación se publican con algunos días de demora respecto de la sesión; InfoLeg carga las leyes y los decretos al ritmo del Boletín Oficial.",
+    fuente: {
+      organismo: "Cámara de Diputados · Senado de la Nación · InfoLeg",
+      operacion: "Actas de votación nominal de ambas cámaras y base de legislación nacional — vetos presidenciales insistidos por las dos cámaras",
+      url: "https://votaciones.hcdn.gob.ar",
+      acceso: "Semiautomático: registro versionado de vetos y decretos verificado a mano contra InfoLeg y las actas, que la corrida actualiza en cada actualización; es el mismo registro que usaban los desafíos legislativos.",
+    },
+    transformaciones: [
+      "Un veto cuenta cuando las dos cámaras insistieron con dos tercios y la ley quedó promulgada por insistencia (artículo 83 de la Constitución). Se fecha en la insistencia de la segunda cámara. Una insistencia que no alcanza los dos tercios, o que vota una sola cámara, no cuenta.",
+      "Se suman los de los últimos doce meses calendario, hasta el día de la actualización.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "0", puntaje: 100 },
+        { banda: "1 – 2", puntaje: 60 },
+        { banda: "3 – 4", puntaje: 35 },
+        { banda: "más de 4", puntaje: 10 },
+      ],
+      puntos: [[0, 100], [1, 60], [3, 35], [4, 10]],
+      unidadCorta: "vetos (12 meses)",
+    },
+    incidenciaTexto: [
+      "Integra la dimensión de poder legislativo del índice político (22,58% del total) con un peso de 15%, junto a la eficacia legislativa, la relación entre decretos y leyes, la producción legislativa y el otro conteo de derrotas consumadas. Menos es mejor.",
+      "Las anclas son conceptuales: el cero tiene significado propio —el Congreso no le dio vuelta ninguna norma al Ejecutivo— y cada evento es excepcional, así que uno ya es amarillo, tres naranja y cuatro o más rojo. Un cero no es ausencia de dato: es la lectura más favorable.",
+    ],
+    limitaciones: [
+      "Una insistencia aprobada por una sola cámara (el caso del fondo de aportes del Tesoro a provincias, septiembre de 2025) no cuenta, aunque sea una señal política: queda a la vista en el registro.",
+      "Cuenta eventos, no su importancia: una norma central y una menor pesan igual.",
+      "La ventana contiene pocos eventos, así que uno solo que entra o sale mueve el indicador de manera perceptible.",
+    ],
+    faltantes: "Si el registro de eventos no se pudo actualizar, el conteo sale del último registro verificado y la tarjeta lo marca como desactualizado: no se puede afirmar que no hubo eventos nuevos.",
+    revisiones: "El registro se revisa en cada actualización: si una fuente carga un acta con retraso, el conteo se corrige solo hacia atrás.",
+    cambios: [
+      { fecha: "2026-10-27", cambio: "Entra al índice político en reemplazo de las sesiones caídas por falta de quórum y de las normas desafiadas en el recinto, que la revisión del 26 de octubre consideró mal formuladas. Cuenta sólo lo consumado en las dos cámaras. En todo el mandato hubo tres: discapacidad (4 de septiembre de 2025), financiamiento universitario y Garrahan (2 de octubre de 2025). Con los datos del 27 de octubre de 2026 la ventana da cero y el índice político no cambia.", adr: "0377" },
+    ],
+  },
+
+  rechazos_decretos: {
+    tipo: "indicador",
+    id: "rechazos_decretos",
+    cinturon: "politica",
+    rezago: "Las actas de votación se publican con algunos días de demora respecto de la sesión; InfoLeg carga las leyes y los decretos al ritmo del Boletín Oficial.",
+    fuente: {
+      organismo: "Cámara de Diputados · Senado de la Nación · InfoLeg",
+      operacion: "Actas de votación nominal de ambas cámaras y base de legislación nacional — decretos de necesidad y urgencia y delegados rechazados por las dos cámaras",
+      url: "https://votaciones.hcdn.gob.ar",
+      acceso: "Semiautomático: registro versionado de vetos y decretos verificado a mano contra InfoLeg y las actas, que la corrida actualiza en cada actualización; es el mismo registro que usaban los desafíos legislativos.",
+    },
+    transformaciones: [
+      "Un decreto de necesidad y urgencia o delegado cuenta cuando lo rechazaron las dos cámaras, que es lo que lo deroga según la ley 26.122 (artículo 24). Se fecha en el rechazo de la segunda cámara. El rechazo de una sola cámara deja el decreto en pie y no cuenta.",
+      "Se suman los de los últimos doce meses calendario, hasta el día de la actualización.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "0", puntaje: 100 },
+        { banda: "1 – 2", puntaje: 60 },
+        { banda: "3 – 4", puntaje: 35 },
+        { banda: "más de 4", puntaje: 10 },
+      ],
+      puntos: [[0, 100], [1, 60], [3, 35], [4, 10]],
+      unidadCorta: "decretos (12 meses)",
+    },
+    incidenciaTexto: [
+      "Integra la dimensión de poder legislativo del índice político (22,58% del total) con un peso de 15%, junto a la eficacia legislativa, la relación entre decretos y leyes, la producción legislativa y el otro conteo de derrotas consumadas. Menos es mejor.",
+      "Las anclas son conceptuales: el cero tiene significado propio —el Congreso no le dio vuelta ninguna norma al Ejecutivo— y cada evento es excepcional, así que uno ya es amarillo, tres naranja y cuatro o más rojo. Un cero no es ausencia de dato: es la lectura más favorable.",
+    ],
+    limitaciones: [
+      "El rechazo de una sola cámara, como el del Senado al decreto 70/2023 en marzo de 2024, es una derrota política pero no deroga la norma, y no cuenta.",
+      "Cuenta eventos, no su importancia: una norma central y una menor pesan igual.",
+      "La ventana contiene pocos eventos, así que uno solo que entra o sale mueve el indicador de manera perceptible.",
+    ],
+    faltantes: "Si el registro de eventos no se pudo actualizar, el conteo sale del último registro verificado y la tarjeta lo marca como desactualizado: no se puede afirmar que no hubo eventos nuevos.",
+    revisiones: "El registro se revisa en cada actualización: si una fuente carga un acta con retraso, el conteo se corrige solo hacia atrás.",
+    cambios: [
+      { fecha: "2026-10-27", cambio: "Entra al índice político en reemplazo de las sesiones caídas por falta de quórum y de las normas desafiadas en el recinto, que la revisión del 26 de octubre consideró mal formuladas. Cuenta sólo los decretos derogados por las dos cámaras. En todo el mandato hubo seis: los fondos reservados de inteligencia (12 de septiembre de 2024) y cinco el 21 de agosto de 2025 (marina mercante, Cultura, Datos Genéticos, Vialidad, y el de INTA e INTI). Con los datos del 27 de octubre de 2026 la ventana da cero y el índice político no cambia.", adr: "0377" },
+    ],
+  },
+
   desafios_legislativos: {
     tipo: "indicador",
     id: "desafios_legislativos",
@@ -1243,8 +1379,9 @@ export const FICHAS: Record<string, Ficha> = {
       "Cuando la ventana da cero, la tarjeta agrega —del registro histórico completo, no de un número fijo— qué proporción de las normas desafiadas en algún momento desde marzo de 2024 sigue en pie: es el dato que hasta el 16 de septiembre de 2026 publicaba el bloqueo sostenido.",
     ],
     incidenciaTexto: [
+      "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice político: contaba toda norma del Ejecutivo llevada al recinto, ganara o perdiera. Lo reemplazan dos conteos de lo consumado en las dos cámaras: los vetos insistidos y los decretos derogados. Se sigue calculando y su serie se conserva.",
       "El puntaje del índice se asigna por bandas del conteo, interpolado entre anclas: 2 desafíos o menos en doce meses → el más alto; entre 2 y 5 → alto; entre 5 y 9 → moderado; entre 9 y 12 → bajo; más de 12 → el más bajo. Las anclas parten de que desafiar una norma del Ejecutivo en el recinto es un acto excepcional, que exige mayorías especiales o un procedimiento específico: un puñado al año ya es confrontación abierta.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 15% junto a la eficacia parlamentaria, el ratio DNU, las sesiones caídas por quórum y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Hasta septiembre de 2026 integró la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 15% junto a la eficacia parlamentaria, el ratio DNU, las sesiones caídas por quórum y la producción legislativa. Cuando faltaba universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
       "Un cero en esta tarjeta no es ausencia de señal: es la lectura más favorable del par (nadie desafió ninguna norma), y desde el 16-sep-2026 la tarjeta lo dice así en vez de leerlo como «no pasó nada».",
     ],
     limitaciones: [
@@ -1255,6 +1392,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el registro de eventos no está disponible, se mantiene el último valor, señalado como desactualizado. Un mes sin desafíos no es un dato faltante: es un cero, e indica que el Congreso no confrontó.",
     revisiones: "El registro se reconstruye completo en cada actualización: si una fuente carga un acta con retraso, el conteo se corrige solo hacia atrás.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Sale del índice político, junto con las sesiones caídas por falta de quórum: la revisión del 26 de octubre los consideró mal formulados. Contaba el intento y no la derrota. Lo reemplazan los vetos insistidos por las dos cámaras y los decretos derogados por las dos, que toman su 15%. Se sigue calculando. Con los datos del 27 de octubre de 2026 las dos tarjetas nuevas dan cero, como daba ésta, y el índice político no cambia.", adr: "0377" },
       { fecha: "2026-09-16", cambio: "La tarjeta agrega, cuando el conteo da cero, la tasa histórica de supervivencia de las normas desafiadas —el dato que publicaba el bloqueo sostenido, que sale del índice y del tablero por enmudecer justo en ese caso.", adr: "0330" },
       { fecha: "2026-09-08", cambio: "Cero desafíos es válido sólo con cobertura completa del universo compartido. Una consulta fallida no acredita ausencia de eventos.", adr: "0276" },
       { fecha: "2026-07-19", cambio: "Entra al índice en reemplazo de las derrotas legislativas, que medían casi exactamente lo mismo que el bloqueo sostenido: desde marzo de 2025 ambos indicadores arrojaban mes a mes el mismo número, y entre los dos se llevaban el 40% de la dimensión para responder una sola pregunta. Las derrotas se siguen relevando y quedan a la vista como dato dentro de la ficha del bloqueo." },
@@ -1368,7 +1506,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 0,3 o menos → el más alto; entre 0,3 y 0,7 → alto; entre 0,7 y 1,2 → moderado; entre 1,2 y 2 → bajo; más de 2 → el más bajo. Estas anclas están ancladas a la práctica histórica 2011-2024 (cuatro presidencias distintas): en promedio, hubo un DNU por cada tres leyes — ratio ≈0,3.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 20% junto a la eficacia legislativa, las sesiones caídas por quórum, los desafíos legislativos, el bloqueo sostenido y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 23% junto a la eficacia legislativa, los vetos insistidos por el Congreso, los decretos derogados por el Congreso y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.",
@@ -1541,7 +1679,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre anclas: más de 50% → el más alto; entre 30% y 50% → alto; entre 15% y 30% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo. Los umbrales son una estimación razonada apoyada en tasas históricas de éxito del Ejecutivo. Esas tasas no usan necesariamente la misma cohorte de 365–730 días: no constituyen una calibración estadística comparable. La validación con cohortes equivalentes sigue pendiente.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 27% junto al ratio DNU, las sesiones caídas por quórum, los desafíos legislativos, el bloqueo sostenido y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 30% junto al ratio DNU, los vetos insistidos por el Congreso, los decretos derogados por el Congreso y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.",
@@ -1751,8 +1889,9 @@ export const FICHAS: Record<string, Ficha> = {
       "La ventana comprende el mes informado y los once anteriores. Los meses históricos cierran al último día; el mes en curso es parcial hasta el día de consulta. No se reinicia el conteo al cambiar de período legislativo.",
     ],
     incidenciaTexto: [
+      "ESTA ESCALA YA NO SE APLICA. Desde octubre de 2026 el indicador no integra el índice político: mide si la cámara se reúne, no si el Congreso le da vuelta una norma al Ejecutivo. Se sigue calculando y su serie se conserva.",
       "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 15% junto al ratio DNU, la eficacia legislativa, los desafíos legislativos y la producción legislativa. Cuando falta universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
+      "Hasta septiembre de 2026 integró la dimensión de poder legislativo del índice del cinturón (22,6% del total), con un peso nominal de 15% junto al ratio DNU, la eficacia legislativa, los desafíos legislativos y la producción legislativa. Cuando faltaba universo en un componente, su peso se redistribuye entre los que puntúan; la tabla de incidencia muestra el peso efectivo del corte.",
     ],
     limitaciones: [
       "Las citadas no efectuadas aparecen en el índice pero se excluyen mientras su rótulo no acredite falta de quórum. Tampoco se cuentan negociaciones o convocatorias retiradas sin registro: no es una medida exhaustiva del bloqueo parlamentario.",
@@ -1762,6 +1901,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "El índice de sesiones se reconsulta en cada actualización. Las correcciones de fecha, nuevas reuniones publicadas o cambios de clasificación pueden revisar la historia; no se aplica un desplazamiento fijo a los datos del catálogo anterior.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Sale del índice político, junto con las normas desafiadas en el recinto: la revisión del 26 de octubre los consideró mal formulados. Que una sesión caiga por falta de quórum no dice si el Congreso le dio vuelta una norma al Ejecutivo. Lo reemplazan los vetos insistidos y los decretos derogados por las dos cámaras. Se sigue calculando; el índice político no cambia.", adr: "0377" },
       { fecha: "2026-09-08", cambio: "El índice oficial reemplaza al catálogo, cuyas 72 fechas cotejadas estaban desplazadas dos días. Recupera la reunión del 26 de agosto y excluye la convocatoria futura del 9 de septiembre. Se conserva el criterio de minoría y se deduplica por reunión.", adr: "0308" },
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del bloqueo parlamentario." },
       { fecha: "2026-06-30", cambio: "Serie por período legislativo desde 2024." },
@@ -1904,13 +2044,14 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "%",
     },
     limitaciones: [
-      "La fuente es un agregador privado, no un organismo oficial (el mayorista replica la referencia oficial).",
+      "La fuente es un agregador privado, no un organismo oficial. Contrastada el 27 de octubre de 2026 con el cierre del 26: el contado con liquidación da 1.682,50 en dolarapi.com y 1.682,65 en Ámbito; el mayorista, 1.541 en los dos y en la referencia oficial del BCRA (Comunicación A3500). La brecha es la misma con cualquiera de las fuentes (9,2%).",
       "Mide el cepo por su precio (la brecha que paga quien no accede al mercado oficial), no el stock regulatorio de restricciones.",
       "La tarjeta usa las cotizaciones disponibles de CCL y mayorista, que pueden tener horas distintas; la serie usa promedios mensuales. La diferencia puede ser material y no representa una incoherencia aritmética.",
     ],
     faltantes: "Si la API falla, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "Cotizaciones intradiarias que pueden actualizarse; el punto del mes corriente se recalcula a diario.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Se contrastan las cotizaciones con otra fuente (Ámbito y la referencia oficial A3500 del BCRA): coinciden. No cambia el cálculo." },
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Brecha cambiaria», sin «cepo»: mide un precio, no el desarme de las restricciones. La descripción declara que las cotizaciones salen de un servicio privado (dolarapi.com). No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-05", cambio: "Versión inicial del indicador sobre la brecha CCL/oficial minorista, en la escala de avance del cinturón anterior." },
       { fecha: "2026-09-08", cambio: "La fecha proviene de la cotización más antigua, no del día de consulta. Se conservan precios y marcas de tiempo; fechas ausentes o inválidas y precios no positivos o no finitos provocan fallback al cache existente.", adr: "0280" },
@@ -2055,10 +2196,12 @@ export const FICHAS: Record<string, Ficha> = {
       "Los meses recientes vienen imputados y el INDEC los revisa hacia atrás.",
       "El 100 corresponde a recortar otro 10% de la planta durante 2026 sobre el nivel de diciembre de 2025: −25,7% contra diciembre de 2023. Esa meta la informó la prensa citando fuentes oficiales (Clarín, vía Cadena 3); el Gobierno no publicó un número y evitó confirmarlo. Es la única referencia externa encontrada: ni el Presupuesto 2026 ni el acuerdo con el FMI fijan una meta de planta. Los cortes intermedios conservan la forma de la escala anterior.",
       "Mide personas, no costo. La reducción de la planta puede convivir con un gasto salarial que no baje en la misma proporción, y por eso el cinturón sigue ambas cosas por separado.",
+      "La baja no sale de cambios en lo que cuenta la serie. Revisadas las aclaraciones de la planilla del INDEC (octubre de 2026): los organismos que dejan de informar por separado se fusionan o se traspasan dentro de la administración nacional, y su personal se sigue contando; los que se disolvieron (INADI, INJUVE, ENOHSA) son recorte real. La única entidad que salió del conteo sin fusión fue una empresa en liquidación con un empleado, fuera de este universo. Los organismos que no informan un mes llevan su último dato (imputación del INDEC).",
     ],
     faltantes: "Con la planilla caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "La fuente revisa los meses imputados en cada publicación; la serie propia se relee completa en cada actualización.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Se verifica que la baja no sea un efecto de cambios en el universo de la serie (fusiones, traspasos, disoluciones): no lo es, y la ficha lo explica. No cambia el cálculo." },
       { fecha: "2026-10-26", cambio: "El rótulo pasa a «Empleados de la administración nacional» y la unidad dice la base: «% vs. diciembre de 2023». No cambia el cálculo.", adr: "0366" },
       { fecha: "2026-05", cambio: "Versión inicial sobre la serie previsional trimestral, con meta de largo plazo." },
       { fecha: "2026-07-02", cambio: "Pasa a la planilla mensual de dotación APN contra diciembre de 2023, con umbrales del índice de gestión." },
@@ -2098,6 +2241,8 @@ export const FICHAS: Record<string, Ficha> = {
     dobleUso: "Su componente de salarios se solapa conceptualmente con la masa salarial (fuente distinta), que el marco trataba como pata complementaria hasta que salió del índice de gestión, en agosto de 2026. Desde entonces es la única lectura del costo de la nómina dentro de la dimensión, y acompaña a la dotación de personal, que mide cuánta gente hay y no cuánto cuesta.",
     limitaciones: [
       "Bandas calibradas a mano contra el ajuste 2024, un episodio históricamente atípico.",
+      "Incluye los sueldos: es la suma de salarios y otros gastos de funcionamiento. La masa salarial salió del índice en agosto de 2026, así que el costo de la nómina se lee sólo acá; la cantidad de personas, en la dotación.",
+      "Compara contra el mismo mes de 2023 y no contra diciembre de 2023, como la dotación, porque es un flujo con aguinaldos: comparar diciembre contra diciembre o junio contra junio evita leer un medio aguinaldo como recorte o como aumento. La dotación es un stock y no tiene ese problema. Las dos bases son anteriores al mandato.",
       "La fuente es base caja y revisable. No corresponde al devengado de Presupuesto Abierto: cambian el momento de registro y el universo institucional.",
     ],
     faltantes: "Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
@@ -2105,6 +2250,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-02", cambio: "Indicador nuevo, creado con el índice de gestión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
+      { fecha: "2026-10-27", cambio: "La ficha aclara que el gasto incluye los sueldos y por qué compara contra el mismo mes de 2023 y no contra diciembre, como la dotación. No cambia el cálculo." },
       { fecha: "2026-10-24", cambio: "La explicación de la tarjeta nombraba Presupuesto Abierto como fuente; el dato sale de la serie de la Secretaría de Hacienda en datos.gob.ar, base caja. La dimensión aclara que su puntaje máximo no implica una reforma del Estado completada. No cambia el cálculo.", adr: "0361" },
     ],
   },
@@ -3130,7 +3276,7 @@ export const FICHAS: Record<string, Ficha> = {
       operacion: "ISAC — Indicador Sintético de la Actividad de la Construcción, serie desestacionalizada (el nombre histórico del indicador quedó; la métrica real es el ISAC)",
       serie: "Planilla sh_isac_<año>.xls, Cuadro 1, serie desestacionalizada; identificador histórico 33.2_ISAC_SIN_EDAD_0_M_23_56",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-3-42",
-      acceso: "Automático: descubre la planilla anual vigente desde la página oficial de construcción; usa el mismo lector de niveles que la historia y el componente ISAC del IAI.",
+      acceso: "Automático: descubre la planilla anual vigente desde la página oficial de construcción; usa el mismo lector de niveles que la historia y el componente de construcción de la inversión física.",
     },
     transformaciones: [
       "Componente del índice: el nivel desestacionalizado rebaseado a 100 = promedio del 4º trimestre de 2023.",
@@ -3738,6 +3884,8 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-11", cambio: "En la dimensión de conflicto social, la conflictividad nacional (eventos de protesta y disturbios de todo el país, serie mensual completa) reemplaza a la medición anterior basada en informes de conflictividad, que no permitía una serie comparable." },
       { fecha: "2026-07-15", cambio: "Las comisiones sin sanción salen del puntaje: su fuente es ciega a las sanciones del Senado y se solapa con la eficacia legislativa corregida. Poder legislativo queda con cuatro indicadores." },
       { fecha: "2026-07-16", cambio: "Se incorpora el bloqueo legislativo sostenido a la dimensión de poder legislativo: la contracara de las derrotas (qué porción de las normas propias desafiadas en el recinto sigue en pie). El índice pasa a once indicadores puntuables y los pesos internos de la dimensión se redistribuyen." },
+      { fecha: "2026-10-27", cambio: "En poder legislativo, las sesiones caídas por falta de quórum y las normas desafiadas en el recinto salen y entran los vetos que el Congreso dio vuelta con dos tercios en las dos cámaras y los decretos que derogó con el rechazo de las dos. Con los datos de hoy las dos ventanas dan cero, como daban las anteriores, y el índice no cambia." , adr: "0377" },
+      { fecha: "2026-10-27", cambio: "El Poder Judicial queda con la cobertura de cargos de juez: salen la tasa de resolución de la Corte y la actividad de las comisiones de control del Consejo, que miden a la Justicia y no al Ejecutivo. La dimensión pasa de 57,1 a 62,0 y el índice de 71,6 a 72,4.", adr: "0374" },
       { fecha: "2026-07-31", cambio: "El índice alcanza su estructura vigente de siete dimensiones y dieciocho indicadores: incorpora el Poder Judicial y el sector privado como actores diferenciados, y amplía la medición legislativa. La composición y los pesos vigentes quedan publicados en la tabla del índice." },
       { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses. No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes.", adr: "0231" },
       { fecha: "2026-10-07", cambio: "Sale la dimensión de imagen y voto, cuyo único indicador era la ventaja electoral del Votómetro: el Votómetro deja el Monitor y pasa a ser un producto aparte. Su 7% se reparte entre las seis dimensiones restantes en proporción a su peso, así que el orden entre ellas no cambia. El índice queda en seis dimensiones y sube de 71,2 a 73,8 con los datos del 7 de octubre. La validación externa deja de usar la confianza en el Gobierno de Di Tella, que pasa a integrar el índice de impacto social, y el índice político se queda sin factor común: se sigue publicando su correlación con la incertidumbre de política.", adr: "0344,0345" },

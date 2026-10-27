@@ -65,7 +65,8 @@ def test_reconstruccion_itcm_incluye_dolarizacion(monkeypatch):
         "emae_ia": None,
         "emae_difusion": None,          # ADR-0124
         "ipi_manufacturero": None,
-        "tcr_terminos_intercambio": None,   # ADR-0360 (antes, tcrm)
+        "tcrm": None,                   # ADR-0375: vuelven los dos
+        "terminos_intercambio": None,   # (ADR-0360 los había juntado)
         "costo_financiamiento_tesoro": None,
         "resultado_primario": None,
     }]

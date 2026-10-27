@@ -150,6 +150,10 @@ MAX_DIAS_DEFAULT = 110
 MAX_DIAS = {
     # trimestrales EPH (fecha = inicio del trimestre, publica ~70d después del cierre)
     "informalidad": 280, "subocupacion_demandante": 280,   # ADR-0249: se llamaba `pluriempleo`
+    # términos del intercambio INDEC (fecha = inicio del trimestre, ~2,5 meses
+    # de demora tras el cierre; 280 = el tope de 9 meses de
+    # terminos_intercambio.MAX_REZAGO_TI_MESES). Tarjeta desde ADR-0375.
+    "terminos_intercambio": 280,
     # SIPA: son declaraciones de las empresas que se consolidan y se revisan,
     # con ~3 meses de rezago estructural (ADR-0130). 150 días deja margen sobre
     # ese ritmo sin dejar de avisar si la fuente se muere de verdad.

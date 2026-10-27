@@ -189,9 +189,11 @@ def test_pesos_internos_poder_legislativo_sin_bloqueo():
     # llevaba trece meses sin dato, así que el motor ya renormalizaba entre
     # estos cinco todos los meses.
     dim = itcp.DIMENSIONES_ITCP["poder_legislativo"]
+    # 2026-10-27 (ADR-0377): veto_quorum y desafios_legislativos los
+    # reemplazan las insistencias sobre vetos y los decretos derogados.
     assert dim["indicadores"] == {
-        "ratio_dnu": 0.23, "eficacia_legislativa": 0.30, "veto_quorum": 0.15,
-        "desafios_legislativos": 0.15, "produccion_legislativa": 0.17,
+        "ratio_dnu": 0.23, "eficacia_legislativa": 0.30, "insistencias_vetos": 0.15,
+        "rechazos_decretos": 0.15, "produccion_legislativa": 0.17,
     }
     assert "bloqueo_sostenido" not in dim["indicadores"]
     assert dim["indicadores"]["eficacia_legislativa"] > dim["indicadores"]["ratio_dnu"], (

@@ -117,7 +117,10 @@ TECHOS = {
     # dimensión entera pasa de historia larga a convención. Se baja de nuevo
     # si los cortes de los términos del intercambio se recalibran con la
     # historia desde 2004.
-    "ITCM": {"circular": 0.39, "sin_declarar": 0.01},
+    # BAJA a 0,33 el 2026-10-27 (ADR-0375): la matriz pasó a la dimensión y
+    # el tipo de cambio real vuelve a contar como historia larga; sólo los
+    # términos del intercambio (5,5% efectivo) quedan como convención.
+    "ITCM": {"circular": 0.33, "sin_declarar": 0.01},
     # ITCG y ITCP bajaron el 2026-07-20 (ADR-0121) al declarar el origen de sus
     # bandas sin_declarar: los medidores de avance 0-100 (ITCG) y los indicadores
     # anclados al cero (ITCP: ventaja electoral, quórum, transferencias) eran
@@ -141,7 +144,10 @@ TECHOS = {
     # ancla CONCEPTUAL —niveles de cobertura de un cuerpo, no el rango 64-73%
     # observado— y diluye la proporción circular del índice. El techo se baja
     # para fijar la mejora, igual que se hizo con el ITCM en ADR-0120.
-    "ITCP": {"circular": 0.34, "sin_declarar": 0.01},
+    # BAJA a 0,29 el 2026-10-27 (ADR-0377): `desafios_legislativos`, anclado
+    # sobre el conteo observado, lo reemplazan dos conteos con ancla
+    # conceptual en el cero (vetos insistidos y decretos derogados).
+    "ITCP": {"circular": 0.29, "sin_declarar": 0.01},
     # ITVC entró al registro el 2026-07-20 (ADR-0123) con 0% circular. Desde
     # ADR-0235, diecisiete componentes usan fecha fija y tarifas usa un rango
     # externo; ninguno se calibra contra el período. Techo en 0,01: si
@@ -171,7 +177,8 @@ PROCEDENCIA = {
     # percentiles de la ventana 4T-2023 / 2T-2026: el compuesto hereda la
     # categoría más circular de sus dos componentes, igual que el
     # desequilibrio monetario.
-    "tcr_terminos_intercambio": ("convencion", "matriz de cuatro esquinas (85/50/30/10) fijada por ADR-0360; posición del tipo de cambio real por sus umbrales de historia 1997-2026 (p10≈75, p25≈87, mediana≈106), pero posición de los términos del intercambio por percentiles p0/p25/p50/p75/p100 de 4T-2023 / 2T-2026 —11 trimestres del período medido— (ADR-0360)"),
+    "tcrm": ("historia_larga", "historia 1997-2026: p10≈75, p25≈87, mediana≈106 — 29 años, cinco gobiernos (vuelve a puntuar solo con ADR-0375)"),
+    "terminos_intercambio": ("convencion", "percentiles p0/p25/p50/p75/p100 de 4T-2023 / 2T-2026 —11 trimestres del período medido— llevados a 10-100 (ADR-0360, tarjeta propia desde ADR-0375; la matriz de cuatro esquinas pasó a la dimensión)"),
     "resultado_primario": ("convencion", "referencias dic-2023 (−12,0%) y el programa estabilizado en +6/+8% (ADR-0072)"),
     # ADR-0266: decía `convencion` y "extremos tomados de dic-2023 y ago-2025",
     # que confundía la VALIDACIÓN con el ORIGEN. Los cortes de ADR-0071 son
@@ -210,8 +217,8 @@ PROCEDENCIA = {
     # ── ITCP ────────────────────────────────────────────────────────────────
     "ratio_dnu": ("externa", "ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059)"),
     "eficacia_legislativa": ("externa", "Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061)"),
-    "veto_quorum": ("conceptual", "tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121)"),
-    "desafios_legislativos": ("convencion", "anclas sobre el conteo observado (4 a 13 en 22 meses), leído contra el carácter excepcional del acto (ADR-0089)"),
+    "insistencias_vetos": ("conceptual", "el ancla es el cero —ningún veto insistido por las dos cámaras en 12 meses—; cada insistencia exige dos tercios en las dos cámaras, así que uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377)"),
+    "rechazos_decretos": ("conceptual", "el ancla es el cero —ningún decreto derogado por las dos cámaras en 12 meses (ley 26.122)—; uno ya es amarillo, tres naranja y cuatro o más rojo (ADR-0377)"),
     "produccion_legislativa": ("externa", "umbral de diseño conservado en 74 leyes/año; referencia corregida al 2026-09-08: 1.320 leyes distintas de 2008-2025 / 18 = 73,3 por año; no es el promedio exacto ni un óptimo normativo (ADR-0168/0306)"),
     "judicializacion": ("historia_larga", "el techo es el 0,78% de densidad cautelar promedio de 2016-2019 —dos gobiernos anteriores al medido— contra 1,66% del promedio 2020-2026 (ADR-0168)"),
     "velocidad_resolucion": ("conceptual", "el 100% es el punto donde la Corte resuelve exactamente lo que le entra, sin acumular ni descargar atraso; los cortes son márgenes redondos alrededor de ese valor y no el rango observado 26-142 (ADR-0168)"),

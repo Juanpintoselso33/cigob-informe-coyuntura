@@ -256,6 +256,18 @@ BANDAS_ITCP = {
         # mayor = mejor, tramos extremos abiertos (ADR-0021).
         (50.0, INF, 100), (30.0, 50.0, 85), (15.0, 30.0, 65), (5.0, 15.0, 40), (-INF, 5.0, 10),
     ],
+    # ADR-0377: insistencias sobre vetos y rechazos de decretos, conteos de 12
+    # meses, MENOR = mejor. CONCEPTUALES: el ancla es el cero —el Congreso no
+    # le dio vuelta ninguna norma al Ejecutivo— y cada evento es excepcional
+    # (dos tercios en las dos cámaras, o el rechazo de las dos bajo la ley
+    # 26.122). Uno ya es amarillo; tres, naranja; cuatro o más, rojo. Máximos
+    # del mandato: 3 insistencias (sep-oct 2025) y 6 decretos (ago-2025).
+    "insistencias_vetos": [
+        (-INF, 0.0, 100), (0.0, 2.0, 60), (2.0, 4.0, 35), (4.0, INF, 10),
+    ],
+    "rechazos_decretos": [
+        (-INF, 0.0, 100), (0.0, 2.0, 60), (2.0, 4.0, 35), (4.0, INF, 10),
+    ],
     "veto_quorum": [                      # % sesiones fracasadas, menor = mejor
         # CONCEPTUAL (ADR-0121): el ancla es el CERO —ninguna sesión caída por
         # falta de quórum, el Congreso funcionando— y los cortes son tasas de
@@ -574,8 +586,14 @@ DIMENSIONES_ITCP = {
         # universo»), así que el motor ya venía renormalizando el peso entre
         # estos cinco todos los meses; esto sólo fija esa renormalización como
         # peso de diseño en vez de recalcularla en runtime.
+        # 2026-10-27 (ADR-0377): `veto_quorum` y `desafios_legislativos` pasan
+        # a suspendidos (reunión del 26-oct: mal formulados) y su 0,15 + 0,15
+        # lo toman `insistencias_vetos` y `rechazos_decretos`. Como son
+        # REEMPLAZADOS y no sólo suspendidos, salen de la tabla (mismo criterio
+        # que la brecha de obra pública, ADR-0372). Antes:
+        # 0,23/0,30/0,15 (veto_quorum)/0,15 (desafios)/0,17.
         "indicadores": {"ratio_dnu": 0.23, "eficacia_legislativa": 0.30,
-                        "veto_quorum": 0.15, "desafios_legislativos": 0.15,
+                        "insistencias_vetos": 0.15, "rechazos_decretos": 0.15,
                         "produccion_legislativa": 0.17},
     },
     "alianzas_territoriales": {
@@ -646,6 +664,13 @@ DIMENSIONES_ITCP = {
         # los tres nuevos entran parejos en 0.20, sin razón para ordenarlos
         # entre sí — mismo criterio que ADR-0074 usó al repartir la dimensión
         # de financiamiento.
+        #
+        # ADR-0374 (2026-10-27): `velocidad_resolucion` y `paralisis_denuncias`
+        # pasan a INDICADORES_SUSPENDIDOS (reunión del 26-oct): miden la
+        # eficiencia de la Justicia y la actividad del Consejo, no al Poder
+        # Ejecutivo. Con `judicializacion` también suspendida (ADR-0255), la
+        # cobertura de cargos toma la dimensión entera. Los pesos de diseño se
+        # conservan (ADR-0245).
         "indicadores": {"cobertura_judicial": 0.40,
                         "judicializacion": 0.20,
                         "velocidad_resolucion": 0.20,
@@ -732,6 +757,56 @@ INDICADORES_SUSPENDIDOS = {
                                "revelada además de las posturas declaradas, y "
                                "una que cubra más de un sector.",
     },
+    "veto_quorum": {
+        "dimension": "poder_legislativo",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0377",
+        "por_que": "Las sesiones que caen por falta de quórum miden si la "
+                   "cámara se reúne, no si el Congreso le da vuelta una norma "
+                   "al Ejecutivo; se reemplaza por las insistencias sobre vetos "
+                   "y los rechazos de decretos.",
+        "condicion_reingreso": "Que la dimensión vuelva a medir el "
+                               "funcionamiento de las cámaras además de su "
+                               "relación con el Ejecutivo.",
+    },
+    "desafios_legislativos": {
+        "dimension": "poder_legislativo",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0377",
+        "por_que": "Contaba toda norma del Ejecutivo llevada al recinto, ganara "
+                   "o perdiera: mezclaba el intento con la derrota. Se reemplaza "
+                   "por lo consumado en las dos cámaras: vetos insistidos y "
+                   "decretos derogados.",
+        "condicion_reingreso": "Ninguna prevista: sus dos componentes "
+                               "consumados ya puntúan por separado.",
+    },
+    "velocidad_resolucion": {
+        "dimension": "poder_judicial",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0374",
+        "por_que": "Mide cuántos expedientes resuelve la Corte Suprema sobre "
+                   "los que le entran: la eficiencia de la Justicia, no algo "
+                   "que dependa del Poder Ejecutivo.",
+        "condicion_reingreso": "Que la dimensión pase a medir el desempeño del "
+                               "Poder Judicial además de su relación con el "
+                               "Ejecutivo.",
+    },
+    "paralisis_denuncias": {
+        "dimension": "poder_judicial",
+        "desde": "2026-10",
+        "desde_txt": "octubre de 2026",
+        "adr": "0374",
+        "por_que": "Cuenta las sesiones de las comisiones de disciplina y "
+                   "acusación del Consejo de la Magistratura: el control sobre "
+                   "los jueces, que ejerce el Consejo y no el Poder Ejecutivo.",
+        "condicion_reingreso": "Una medida de la presión del Ejecutivo sobre "
+                               "los jueces (denuncias o pedidos de juicio "
+                               "político que impulse), no de la actividad del "
+                               "Consejo.",
+    },
     "judicializacion": {
         "dimension": "poder_judicial",
         "desde": "2026-08",
@@ -764,8 +839,8 @@ INDICADORES_SUSPENDIDOS = {
 #   recursos   — con qué cuenta para negociar
 FAMILIAS_ITCP = {
     # Tensión externa: conducta de terceros.
-    "desafios_legislativos": "tension",        # el Congreso decide dar la pelea
-    "veto_quorum": "tension",                  # la cámara no se reúne
+    "insistencias_vetos": "tension",           # el Congreso le da vuelta un veto (ADR-0377)
+    "rechazos_decretos": "tension",            # el Congreso deroga un decreto (ADR-0377)
     "conflictividad_nacional": "tension",      # la calle
     "jornadas_individuales_no_trabajadas_12m": "tension",  # intensidad laboral
     "apoyo_empresario": "tension",             # lo que las cámaras dicen del Gobierno
@@ -846,8 +921,8 @@ REZAGO_MESES_ITCP = {
     "cobertura_judicial": 1.0,
     # Ventanas móviles de 12 meses / 365 días.
     "ratio_dnu": 6.0,
-    "veto_quorum": 6.0,
-    "desafios_legislativos": 6.0,
+    "insistencias_vetos": 0.0,           # eventos fechados; se leen al día (ADR-0377)
+    "rechazos_decretos": 0.0,
     "conflictividad_nacional": 6.0,
     "jornadas_individuales_no_trabajadas_12m": 6.0,
     # Ventanas de 90 días.

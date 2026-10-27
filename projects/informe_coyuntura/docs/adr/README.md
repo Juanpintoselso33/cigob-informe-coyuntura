@@ -124,6 +124,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0360](0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) | La competitividad externa cruza el tipo de cambio real con los términos del intercambio | `tcrm`, `tcr_terminos_intercambio` | vigente |
 | [0367](0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) | La inflación se pinta con los cortes de Luis | `ipc_total`, `rem_ipc_12m` | vigente |
 | [0368](0368-la-recaudacion-de-iva-y-cheque-sale-del-indice.md) | La recaudación de IVA y cheque sale del índice | `actividad_tributaria` | vigente |
+| [0375](0375-competitividad-el-cruce-pasa-a-la-dimension.md) | Competitividad: el cruce pasa a la dimensión | `tcrm`, `terminos_intercambio`, `tcr_terminos_intercambio` | vigente |
 
 ### Política (ITCP)
 
@@ -228,6 +229,8 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0353](0353-armonia-federal-a-doce-meses-moviles.md) | La armonía federal se mide a doce meses móviles | `iaf_transferencias` | vigente |
 | [0358](0358-quorum-caido-de-la-oposicion-no-cuenta.md) | Una sesión caída que pidió la oposición no cuenta como Congreso trabado | `veto_quorum` | vigente |
 | [0372](0372-la-brecha-de-obra-publica-sale-del-indice-politico.md) | La brecha de obra pública sale del índice político | `brecha_obra_publica`, `apoyo_empresario` | vigente |
+| [0374](0374-la-tasa-de-la-corte-y-las-comisiones-del-consejo-salen-del-indice-politico.md) | La tasa de la Corte y las comisiones del Consejo salen del índice político | `velocidad_resolucion`, `paralisis_denuncias`, `cobertura_judicial` | vigente |
+| [0377](0377-vetos-insistidos-y-decretos-derogados-reemplazan-quorum-y-desafios.md) | Vetos insistidos y decretos derogados reemplazan a quórum y desafíos | `insistencias_vetos`, `rechazos_decretos`, `veto_quorum` | vigente |
 
 ### Gestión (ITCG)
 

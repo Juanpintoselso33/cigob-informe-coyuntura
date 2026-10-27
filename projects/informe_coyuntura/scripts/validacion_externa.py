@@ -32,6 +32,7 @@ import itcm
 import itcp
 import itvc
 import parametrica
+import terminos_intercambio
 import publicar
 
 # Las ventas en supermercados ya no se bajan acá: desde ADR-0225 son un
@@ -381,7 +382,18 @@ def _valores_itcm_por_mes() -> dict:
     # El catálogo del motor gobierna también la historia. Una lista paralela
     # omitió el IAI incluso después de publicarse su serie (ADR-0301).
     activos = {k for d in itcm.DIMENSIONES_ITCM.values() for k in d["indicadores"]}
-    especiales = {"ipc_total", "rem_ipc_12m", "saldo_comercial_12m"}
+    especiales = {"ipc_total", "rem_ipc_12m", "saldo_comercial_12m",
+                  "terminos_intercambio"}
+    # Trimestral, fechada en el primer mes del trimestre: cada mes toma el
+    # último trimestre publicado, con la misma regla que la matriz de ADR-0360
+    # (ADR-0375). Sin trimestre vigente no hay dato y la dimensión no se arma.
+    ti = m("terminos_intercambio")
+
+    def ti_vigente(ym):
+        q = terminos_intercambio.trimestre_vigente(ym, ti)
+        if q is None or terminos_intercambio._meses_entre(q, ym) > terminos_intercambio.MAX_REZAGO_TI_MESES:
+            return None
+        return ti[q]
     directos = {k: m(k) for k in sorted(activos - especiales)}
 
     def saldo_12m(ym):
@@ -398,6 +410,7 @@ def _valores_itcm_por_mes() -> dict:
             "ipc_total": ipc_mm.get(ym),
             "rem_ipc_12m": rem.get(ym),   # crudo: lo transforma el motor
             "saldo_comercial_12m": saldo_12m(ym),
+            "terminos_intercambio": ti_vigente(ym),
             **{k: v.get(ym) for k, v in directos.items()},
         }
         for ym in _meses("2023-12", max(ipc_mm))

@@ -170,8 +170,11 @@ def _dimensiones_agosto() -> dict:
         "ipi_manufacturero": 0.176, "actividad_tributaria": 0.12})
     dims["inversion"] = {"nombre": "Inversión", "peso": 0.12,
                          "indicadores": {"iai": 1.0}}
-    dims["competitividad_externa"] = dict(dims["competitividad_externa"],
-                                          indicadores={"tcrm": 1.0})
+    # Sin la regla de la matriz (ADR-0375): en agosto la dimensión era el
+    # tipo de cambio real solo.
+    dims["competitividad_externa"] = {
+        k: v for k, v in dims["competitividad_externa"].items() if k != "combinar"}
+    dims["competitividad_externa"]["indicadores"] = {"tcrm": 1.0}
     return dims
 
 

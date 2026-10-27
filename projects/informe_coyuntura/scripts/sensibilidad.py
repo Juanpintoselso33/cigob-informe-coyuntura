@@ -90,6 +90,16 @@ INDICES = {
 }
 
 
+# Dimensiones con regla propia en vez del promedio (ADR-0375: la matriz de
+# competitividad externa). Misma regla que parametrica.calcular_indice: sin
+# todos sus componentes, la dimensión no se calcula.
+_COMBINAR = {
+    dk: (d["combinar"], set(d["indicadores"]))
+    for dims in (itcm.DIMENSIONES_ITCM, itcg.DIMENSIONES_ITCG, itcp.DIMENSIONES_ITCP)
+    for dk, d in dims.items() if d.get("combinar")
+}
+
+
 def _estructura(bloque: dict) -> dict:
     """{dkey: {peso, ind: {ikey: {peso, puntaje, banda, valor}}}} desde el
     bloque publicado (valor = insumo crudo, para el experimento de insumos)."""
@@ -108,8 +118,17 @@ def _agregar(dims: dict) -> float:
     """Promedio ponderado con renormalización ante faltantes (la misma
     agregación de parametrica.calcular_indice / itvc.calcular_itvc)."""
     total, wsum = 0.0, 0.0
-    for d in dims.values():
+    for dk, d in dims.items():
         if not d["ind"]:
+            continue
+        regla = _COMBINAR.get(dk)
+        if regla is not None:
+            combinar, requeridos = regla
+            if set(d["ind"]) != requeridos:
+                continue
+            dscore = round(combinar({ik: i["puntaje"] for ik, i in d["ind"].items()}), 1)
+            total += dscore * d["peso"]
+            wsum += d["peso"]
             continue
         pw = sum(i["peso"] for i in d["ind"].values())
         # El motor agrega dimensiones redondeadas a un decimal. Omitir

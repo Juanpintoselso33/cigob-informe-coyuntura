@@ -63,7 +63,9 @@ EJEMPLO = {
     "credito_privado": 26.0,       # % i.a. real: 80,0 (banda 85)
     "costo_financiamiento_tesoro": 8.07,  # tasa real: 78,9 (U invertida, tramo 6-12)
     "emae_ia": 5.48,               # más allá de la última ancla → 100 plano
-    "tcr_terminos_intercambio": 45.7,  # puntaje de la matriz (anclas identidad)
+    "tcrm": 85.87,                 # tipo de cambio real: 49,7 (ADR-0375)
+    "terminos_intercambio": 145.1401,  # términos del intercambio 2T-2026: 85,0
+    # competitividad externa = matriz de los dos (no el promedio): 49,8
     "iai": -4.2,                   # inversión física: 41,8 (banda 35)
 }
 
@@ -75,18 +77,18 @@ def test_itcm_reproduce_ejemplo():
     assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 78.5
     assert dims["financiamiento"]["puntaje"] == 54.7
     assert dims["actividad"]["puntaje"] == 75.8   # 73,9 → 75,8 (ADR-0368: EMAE 0,42 sin la tributaria)
-    assert dims["competitividad_externa"]["puntaje"] == 45.7
+    assert dims["competitividad_externa"]["puntaje"] == 49.8   # matriz (ADR-0375)
     assert "inversion" not in dims
     ind = dims["financiamiento"]["indicadores"]["credito_privado"]
     assert ind["puntaje_banda"] == 80.0 and ind["peso"] == 0.20
     assert dims["financiamiento"]["indicadores"]["idc"]["puntaje_aplicado"] == 49.7
-    assert r["valor"] == 60.2
+    assert r["valor"] == 60.6   # 60,2 → 60,6: competitividad 45,7 → 49,8 en el ejemplo (ADR-0375)
     assert r["banda"] == "moderadamente_aflojado"   # 60,2: apenas sobre el corte de 60
     desequilibrio = dims["estabilidad_monetaria"]["indicadores"]["desequilibrio_monetario"]
     assert desequilibrio["puntaje_aplicado"] == 64.8
     assert desequilibrio["peso"] == 0.20
     assert desequilibrio["peso_efectivo"] == 0.052
-    assert itcm.tension_de_itcm(r["valor"]) == 4.0
+    assert itcm.tension_de_itcm(r["valor"]) == 3.9
     assert r["ajustes_aplicados"] == []
 
 
@@ -178,15 +180,23 @@ def test_el_desequilibrio_pesa_como_las_reservas_y_no_como_el_tcrm():
 
 
 def test_pesos_efectivos_reconcilian_con_itcm():
-    """sum(puntaje × peso_efectivo) ≈ ITCM y los pesos efectivos suman 1."""
+    """sum(puntaje × peso_efectivo) ≈ ITCM y los pesos efectivos suman 1.
+
+    La dimensión con regla propia (competitividad, ADR-0375) no es lineal en
+    sus componentes: ahí la cuenta se hace con el puntaje de la dimensión. Sus
+    pesos efectivos por tarjeta igual suman el de la dimensión."""
     r = itcm.calcular_itcm(EJEMPLO)
-    pares = [
-        (info["puntaje_aplicado"], info["peso_efectivo"])
-        for dim in r["dimensiones"].values()
-        for info in dim["indicadores"].values()
-    ]
-    assert abs(sum(p * w for p, w in pares) - r["valor"]) <= 0.1
-    assert abs(sum(w for _, w in pares) - 1.0) <= 0.001
+    total = 0.0
+    pesos = []
+    for dkey, dim in r["dimensiones"].items():
+        if itcm.DIMENSIONES_ITCM[dkey].get("combinar"):
+            total += dim["puntaje"] * dim["peso_efectivo"]
+        else:
+            total += sum(i["puntaje_aplicado"] * i["peso_efectivo"]
+                         for i in dim["indicadores"].values())
+        pesos += [i["peso_efectivo"] for i in dim["indicadores"].values()]
+    assert abs(total - r["valor"]) <= 0.1
+    assert abs(sum(pesos) - 1.0) <= 0.001
 
 
 def test_bordes_de_banda():
@@ -230,12 +240,13 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(50.01, b["desequilibrio_monetario"]) == 35
     assert itcm.puntaje_banda(80.0, b["desequilibrio_monetario"]) == 35
     assert itcm.puntaje_banda(80.01, b["desequilibrio_monetario"]) == 10
-    # Competitividad externa (ADR-0360): los tramos son los cuatro colores y su
-    # puntaje, la esquina de la matriz que cae en cada uno.
-    assert itcm.puntaje_banda(60.1, b["tcr_terminos_intercambio"]) == 85
-    assert itcm.puntaje_banda(60.0, b["tcr_terminos_intercambio"]) == 50   # high inclusivo
-    assert itcm.puntaje_banda(40.0, b["tcr_terminos_intercambio"]) == 30
-    assert itcm.puntaje_banda(20.0, b["tcr_terminos_intercambio"]) == 10
+    # Competitividad externa (ADR-0375): las dos tarjetas con sus tramos.
+    assert itcm.puntaje_banda(110.1, b["tcrm"]) == 100
+    assert itcm.puntaje_banda(110.0, b["tcrm"]) == 80    # high inclusivo
+    assert itcm.puntaje_banda(75.0, b["tcrm"]) == 10
+    assert itcm.puntaje_banda(148.2, b["terminos_intercambio"]) == 100
+    assert itcm.puntaje_banda(140.4, b["terminos_intercambio"]) == 32
+    assert itcm.puntaje_banda(138.1, b["terminos_intercambio"]) == 10
     # IAI: mayor crecimiento de inversión física = menos tensión, bandas anchas
     # corridas +0,17 al crecimiento de la población (ADR-0341)
     assert itcm.puntaje_banda(10.17, b["iai"]) == 80           # high inclusivo
@@ -263,7 +274,7 @@ def test_ajuste_manual_aplicado():
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
     # fiscal = 0,5×87,9 (resultado primario) + 0,3×58,5 (recaudación) + 0,2×60 (override) = 73,5
     assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 73.5
-    assert r["valor"] == 59.0
+    assert r["valor"] == 59.4
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85.0 and aj["a"] == 60
@@ -289,7 +300,7 @@ def test_renormalizacion_indicador_faltante():
     r = itcm.calcular_itcm(valores)
     # (28,4×0.60 + 64,8×0.20) / 0.80 = 37,5 (ADR-0367)
     assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 37.5
-    assert abs(r["valor"] - 59.8) <= 0.05
+    assert abs(r["valor"] - 60.3) <= 0.05
 
 
 def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
@@ -302,10 +313,10 @@ def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
 
 
 def test_renormalizacion_dimension_faltante():
-    """Sin el compuesto de competitividad externa, la dimensión competitividad desaparece y los pesos se
+    """Sin el tipo de cambio real, la dimensión competitividad desaparece (la matriz necesita los dos) y los pesos se
     renormalizan. (Antes se probaba sin EMAE, pero desde el 16-oct-2026 la
     actividad no se queda vacía sin él: le queda la inversión física.)"""
-    valores = dict(EJEMPLO, tcr_terminos_intercambio=None)
+    valores = dict(EJEMPLO, tcrm=None)
     r = itcm.calcular_itcm(valores)
     assert "competitividad_externa" not in r["dimensiones"]
     # estab=39.0 fiscal=78.5 financ=54.7 actividad e inversión=75.8, sin competitividad (0.11)
@@ -325,10 +336,12 @@ def test_sin_indicadores_devuelve_none():
     assert itcm.calcular_itcm({}) is None
     # base_monetaria es contexto: no integra el índice
     assert itcm.calcular_itcm({"base_monetaria": 0.7}) is None
-    # el tcrm volvió a contexto (ADR-0360): solo, no integra el índice
+    # el tipo de cambio real solo no arma la dimensión: la matriz necesita los
+    # dos (ADR-0375)
     assert itcm.calcular_itcm({"tcrm": 84.3}) is None
-    # el compuesto sí, y su valor ya es el puntaje
-    assert itcm.calcular_itcm({"tcr_terminos_intercambio": 45.7})["valor"] == 45.7
+    # el compuesto pasó a contexto
+    assert itcm.calcular_itcm({"tcr_terminos_intercambio": 45.7}) is None
+    assert itcm.calcular_itcm({"tcrm": 85.87, "terminos_intercambio": 145.1401})["valor"] == 49.8
 
 
 def test_contexto_no_altera_el_indice():

@@ -123,7 +123,10 @@ def test_los_pares_absorben_el_hueco_en_proporcion(mod, indicador, dimension):
     el peso liberado."""
     sigla = _sigla(mod)
     tabla = DIMS[sigla]()[dimension]["indicadores"]
-    vivos = {k: p for k, p in tabla.items() if k != indicador}
+    # Sin el suspendido del caso ni los otros suspendidos de la misma
+    # dimensión (ADR-0374 dejó tres en la del Poder Judicial).
+    vivos = {k: p for k, p in tabla.items()
+             if k != indicador and k not in mod.INDICADORES_SUSPENDIDOS}
     resto = sum(vivos.values())
     d = _resultado(sigla)["dimensiones"][dimension]
     for k, info in d["indicadores"].items():
@@ -164,10 +167,12 @@ def test_reponerlo_devuelve_el_reparto_original(mod, indicador, dimension):
     mod.INDICADORES_SUSPENDIDOS = {k: v for k, v in original.items() if k != indicador}
     try:
         d = _resultado(sigla)["dimensiones"][dimension]
-        tabla = DIMS[sigla]()[dimension]["indicadores"]
+        tabla = {k: p for k, p in DIMS[sigla]()[dimension]["indicadores"].items()
+                 if k not in mod.INDICADORES_SUSPENDIDOS}
         assert set(d["indicadores"]) == set(tabla)
+        resto = sum(tabla.values())
         for k, info in d["indicadores"].items():
-            assert abs(info["peso_efectivo"] / d["peso_efectivo"] - tabla[k]) < 1e-3
+            assert abs(info["peso_efectivo"] / d["peso_efectivo"] - tabla[k] / resto) < 1e-3
     finally:
         mod.INDICADORES_SUSPENDIDOS = original
 

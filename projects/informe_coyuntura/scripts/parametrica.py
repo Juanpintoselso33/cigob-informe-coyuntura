@@ -6,6 +6,9 @@ dimensiones con pesos, bandas de interpretación) en su propio módulo
 
   índice = Σ peso_dimensión × Σ (peso_indicador × puntaje_interpolado(valor))
 
+salvo en una dimensión que declare `combinar` (una función de los puntajes de
+sus indicadores, que reemplaza al promedio: ADR-0375),
+
 con renormalización de pesos ante faltantes (dentro de cada dimensión entre
 los indicadores presentes, y entre dimensiones si alguna queda vacía) y
 overrides del analista con vencimiento.
@@ -476,10 +479,19 @@ def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: d
                                "valor": round(float(valor), 4)}
         if not presentes:
             continue
+        combinar = dim.get("combinar")
+        if combinar is not None and set(presentes) != set(dim["indicadores"]):
+            # Una dimensión con regla propia (ADR-0375: la matriz de
+            # competitividad) no se calcula con un componente solo: la regla
+            # necesita los dos y un promedio de lo que quede sería otro índice.
+            continue
         suma_pesos = sum(i["peso"] for i in presentes.values())
         for info in presentes.values():
             info["peso_renorm"] = info["peso"] / suma_pesos
-        puntaje_dim = sum(i["puntaje_aplicado"] * i["peso_renorm"] for i in presentes.values())
+        if combinar is not None:
+            puntaje_dim = combinar({k: i["puntaje_aplicado"] for k, i in presentes.items()})
+        else:
+            puntaje_dim = sum(i["puntaje_aplicado"] * i["peso_renorm"] for i in presentes.values())
         resultado_dims[dkey] = {
             "nombre": dim["nombre"],
             "peso": dim["peso"],

@@ -7,7 +7,7 @@ cinturon: 'macro'
 indice: 'ITCM'
 indicadores: [tcrm, tcr_terminos_intercambio]
 archivos: ['scripts/terminos_intercambio.py', 'scripts/itcm.py', 'scripts/macro.py', 'scripts/descargar_series.py', 'scripts/procedencia_anclas.py', 'scripts/publicar.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'tests/test_terminos_intercambio.py', 'tests/test_itcm.py']
-relacionado: ['0009', '0073', '0257']
+relacionado: ['0009', '0073', '0257', '0375']
 ambito: 'Cinturón macro · ITCM · dimensión competitividad externa'
 origen: 'Pedido del 20-oct-2026 en el Proyecto del Monitor: sumar los términos del intercambio al tipo de cambio real multilateral y construir entre los dos un índice de competitividad. Diseño acordado en la misma conversación.'
 ---
