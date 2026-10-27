@@ -1,7 +1,7 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-27 16:38:28"
-score_global: 3.7
+generado: "2026-10-27 18:16:50"
+score_global: 3.6
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
 alerta_multicinturon: false
@@ -10,7 +10,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-10
 
-**Score global:** 3.7/10  |  **Riesgo dominante:** político (vida_cotidiana, 5.6/10)
+**Score global:** 3.6/10  |  **Riesgo dominante:** político (vida_cotidiana, 5.6/10)
 
 ## Cinturones
 
@@ -44,15 +44,16 @@ schema_version: "1.2.0"
 | base_monetaria | 2.23 | % mensual nominal | 2026-10-22 | fresco |
 | tc_mayorista | 0.77 | % mensual | 2026-10-26 | fresco |
 
-### 🟢 Politica — score 2.5/10 (estable)
+### 🟢 Politica — score 2.4/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ratio_dnu | 1.094 | DNUs publicados por ley publicada | 2026-10-27 | fresco |
-| apoyo_empresario | -0.4 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
+| apoyo_empresario | -0.45 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
 | apoyo_comercio | 1.0 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | fresco |
 | apoyo_campo | -0.148 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | fresco |
+| apoyo_construccion | 0.5 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | fresco |
 | conflictividad_nacional | -27.2 | % vs 2023 | 2026-09-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
@@ -133,4 +134,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario`
 
 ---
-*Generado por CIGOB — 2026-10-27 16:38:28 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-27 18:16:50 — schema 1.2.0*

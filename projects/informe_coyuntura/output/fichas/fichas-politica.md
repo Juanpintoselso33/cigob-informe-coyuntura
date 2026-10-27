@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Política — resumen
 
-Este documento tiene una ficha por indicador — son 16 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 17 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,8 +35,8 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 75,0** | **VERDE** | Moderadamente aflojado | 16 indicadores: 12 en verde · 4 en amarillo |
-Componentes que puntúan en este corte: 16 de 16 publicados.
+| **ITCP: 75,7** | **VERDE** | Moderadamente aflojado | 17 indicadores: 13 en verde · 3 en amarillo · 1 en naranja |
+Componentes que puntúan en este corte: 17 de 17 publicados.
 
 ## Dimensiones
 
@@ -46,7 +46,7 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 78,5 | VERDE | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 84,6 | VERDE | 16,1 % |
 | Poder judicial | Mide la cobertura estimada de cargos de juez, que depende de los pliegos que eleva el Poder Ejecutivo y del acuerdo del Senado. | 62,0 | VERDE | 16,1 % |
-| Sector privado | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional. | 65,3 | VERDE | 14,0 % |
+| Sector privado | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 70,2 | VERDE | 14,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 91,4 | VERDE | 10,8 % |
 
 ```{=openxml}
@@ -77,9 +77,10 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Poder judicial** | | | | |
 | Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,82 % estimado de cargos con juez designado | VERDE | 16,1 % |
 | **DIMENSIÓN: Sector privado** | | | | |
-| Postura pública de la industria | Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del… | −0,4 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 4,7 % |
-| Postura pública del comercio | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de Comercio y Servicios (CAC) sobre las… | 1 saldo de postura (−1 a +1, 12m móviles) | VERDE | 4,7 % |
-| Postura pública del campo | Qué dicen en público, por escrito y con firma institucional, Coninagro, la Sociedad Rural Argentina (SRA) y las… | −0,15 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 4,7 % |
+| Postura pública de la industria | Qué dicen en público, por escrito y con firma institucional, las cámaras de la industria sobre las medidas del Gobierno… | −0,45 saldo de postura (−1 a +1, 12m móviles) | NARANJA | 3,5 % |
+| Postura pública del comercio | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de Comercio y Servicios (CAC) sobre las… | 1 saldo de postura (−1 a +1, 12m móviles) | VERDE | 3,5 % |
+| Postura pública del campo | Qué dicen en público, por escrito y con firma institucional, Coninagro, la Sociedad Rural Argentina (SRA) y las… | −0,15 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 3,5 % |
+| Postura pública de la construcción | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de la Construcción (CAMARCO) sobre las… | 0,5 saldo de postura (−1 a +1, 12m móviles) | VERDE | 3,5 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −27,2 % vs 2023 | VERDE | 6,5 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.820.775 jornadas individuales no trabajadas (12m) | VERDE | 4,3 % |
@@ -200,11 +201,11 @@ Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicion
 
 # Postura pública de la industria
 
-Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Es el componente de la industria de la dimensión de sector privado del índice político: desde octubre de 2026 fue el único y desde el 27 de octubre comparte la dimensión, a partes iguales, con la postura pública del comercio y la del campo. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados. Hasta septiembre de 2026 el indicador promediaba dos cámaras, con la Asociación Empresaria Argentina; salió del cálculo porque dejó de publicar comunicados el 31 de marzo de 2026 y un rótulo no puede prometer dos cámaras midiendo una. Sus comunicados quedan guardados y clasificados: si vuelve a publicar, vuelve a entrar. Desde el recorte, un mes se publica sólo si tiene al menos tres comunicados computables en la ventana — con una sola cámara, dos comunicados alcanzaban para dar un saldo de −1,0 que no describe nada.
+Qué dicen en público, por escrito y con firma institucional, las cámaras de la industria sobre las medidas del Gobierno nacional: la Unión Industrial Argentina (UIA) y, desde el 27 de octubre de 2026, la Asociación de Fábricas Argentinas de Componentes (AFAC), que reúne a los autopartistas. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional. Cada cámara tiene su saldo entre apoyos y críticas de los últimos doce meses, y el indicador es el promedio simple de los dos: cada cámara pesa lo mismo, publique mucho o poco, y si una no llega a tres pronunciamientos en la ventana cuenta la otra. Los informes estadísticos periódicos de AFAC —actividad y comercio exterior del sector— no son tomas de posición y quedan afuera. Es el componente de la industria de la dimensión de sector privado del índice político, que reparte en partes iguales entre la industria, el comercio, el campo y la construcción. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados. Hasta septiembre de 2026 el indicador promediaba dos cámaras, con la Asociación Empresaria Argentina; salió del cálculo porque dejó de publicar comunicados el 31 de marzo de 2026 y un rótulo no puede prometer dos cámaras midiendo una. Sus comunicados quedan guardados y clasificados: si vuelve a publicar, vuelve a entrar. Desde el recorte, un mes se publica sólo si tiene al menos tres comunicados computables en la ventana — con una sola cámara, dos comunicados alcanzaban para dar un saldo de −1,0 que no describe nada.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,4 saldo de postura (−1 a +1, 12m móviles)** (2026-09) | **AMARILLO** | Peso efectivo 4,7 % del ITCP | Cinturón Política |
+| **Hoy: −0,45 saldo de postura (−1 a +1, 12m móviles)** (2026-09) | **NARANJA** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -212,24 +213,25 @@ Qué dice en público, por escrito y con firma institucional, la Unión Industri
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_empresario | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2024-08 → 2026-09 (20 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
-| **PRODUCTOR DEL DATO** | Unión Industrial Argentina (UIA) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de ambas entidades |
+| **SERIE DISPONIBLE** | 2024-08 → 2026-09 (23 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
+| **PRODUCTOR DEL DATO** | Unión Industrial Argentina (UIA) y Asociación de Fábricas Argentinas de Componentes (AFAC) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de las dos cámaras |
 | **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-27 |
 
 ## Definición — qué mide y por qué importa
 
-Qué dice en público, por escrito y con firma institucional, la Unión Industrial Argentina sobre las medidas del Gobierno nacional. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. Es el componente de la industria de la dimensión de sector privado del índice político: desde octubre de 2026 fue el único y desde el 27 de octubre comparte la dimensión, a partes iguales, con la postura pública del comercio y la del campo. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados. Hasta septiembre de 2026 el indicador promediaba dos cámaras, con la Asociación Empresaria Argentina; salió del cálculo porque dejó de publicar comunicados el 31 de marzo de 2026 y un rótulo no puede prometer dos cámaras midiendo una. Sus comunicados quedan guardados y clasificados: si vuelve a publicar, vuelve a entrar. Desde el recorte, un mes se publica sólo si tiene al menos tres comunicados computables en la ventana — con una sola cámara, dos comunicados alcanzaban para dar un saldo de −1,0 que no describe nada.
+Qué dicen en público, por escrito y con firma institucional, las cámaras de la industria sobre las medidas del Gobierno nacional: la Unión Industrial Argentina (UIA) y, desde el 27 de octubre de 2026, la Asociación de Fábricas Argentinas de Componentes (AFAC), que reúne a los autopartistas. Cada comunicado se lee y se clasifica: si respalda o critica, y a quién le habla. Se cuentan sólo los que se pronuncian sobre una medida del Ejecutivo nacional. Cada cámara tiene su saldo entre apoyos y críticas de los últimos doce meses, y el indicador es el promedio simple de los dos: cada cámara pesa lo mismo, publique mucho o poco, y si una no llega a tres pronunciamientos en la ventana cuenta la otra. Los informes estadísticos periódicos de AFAC —actividad y comercio exterior del sector— no son tomas de posición y quedan afuera. Es el componente de la industria de la dimensión de sector privado del índice político, que reparte en partes iguales entre la industria, el comercio, el campo y la construcción. Estuvo fuera del índice entre agosto y septiembre de 2026 porque el saldo se calculaba con comunicados sin clasificar; volvió con una regla que lo impide: la serie sólo llega hasta el último mes con todos los comunicados clasificados. Hasta septiembre de 2026 el indicador promediaba dos cámaras, con la Asociación Empresaria Argentina; salió del cálculo porque dejó de publicar comunicados el 31 de marzo de 2026 y un rótulo no puede prometer dos cámaras midiendo una. Sus comunicados quedan guardados y clasificados: si vuelve a publicar, vuelve a entrar. Desde el recorte, un mes se publica sólo si tiene al menos tres comunicados computables en la ventana — con una sola cámara, dos comunicados alcanzaban para dar un saldo de −1,0 que no describe nada.
 
 Es la única medida directa de la relación entre el Gobierno y el empresariado organizado: las demás miran el clima de negocios o los datos de un sector, y de ahí infieren el vínculo. Acá el vínculo está dicho. Conviene saber qué no dice: no mide el humor del empresariado en general ni la opinión de sus asociados, sino lo que una asociación decidió declarar públicamente — una cámara puede callar por conveniencia y ese silencio no aparece. Desde septiembre de 2026 el silencio sí aparece: hay un aviso automático cuando una cámara deja de publicar por más tiempo que el que se tomó nunca. La clasificación la hace una persona siguiendo reglas escritas de antemano, y dos personas distintas la hicieron por separado para verificar que las reglas no dejan lugar a la interpretación.
 
-**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional: la Unión Industrial Argentina (industria), la Cámara Argentina de Comercio y Servicios (comercio) y Coninagro, la Sociedad Rural y Confederaciones Rurales (campo), un tercio cada sector. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: el campo está (Coninagro, la SRA y CRA, promediando el saldo de cada una) y la tecnología no, porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
+**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y AFAC, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (CAMARCO). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (ADEBA, ABA y ABAPPRA) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
 
 ## Método de cómputo
 
 - Cada comunicado se clasifica en dos ejes, con reglas escritas antes de mirar el material: qué dice sobre lo que comenta —respalda, critica o no toma posición— y a quién le habla, que puede ser el Gobierno nacional, el Congreso, una provincia o municipio, la Justicia, o un asunto externo o de la propia entidad.
 - Sólo entran al cálculo los comunicados dirigidos al Gobierno nacional que respaldan o critican. Los que informan una reunión, un acto institucional, un cambio de autoridades o una condolencia no toman posición y quedan afuera aunque hablen del Gobierno, y también quedan afuera los dirigidos a los otros poderes.
-- El indicador es el saldo de los últimos doce meses: apoyos menos críticas, dividido por el total. Va de −1, si todo fue crítica, a +1 si todo fue apoyo.
-- La serie llega sólo hasta el último mes con todos los comunicados clasificados. Si aparece uno sin clasificar, el mes de ese comunicado y los siguientes no se calculan hasta clasificarlo: el dato queda quieto en el último mes completo, en vez de calcularse sobre lo que se alcanzó a leer.
+- Desde el 27 de octubre de 2026 la industria suma a la Asociación de Fábricas Argentinas de Componentes (AFAC), los autopartistas. Se toma cada nota de su sección de comunicados de prensa desde el 10 de diciembre de 2023 (41), con el texto de la página y del PDF adjunto. Sus informes estadísticos periódicos —«Informe de Actividad», «Comercio Exterior Autopartista» e «Informe de Comercio Exterior»— son la salida de un tablero y no una toma de posición: se archivan sin clasificar por una regla de título (20 de 41).
+- Cada cámara tiene su saldo de los últimos doce meses: apoyos menos críticas, dividido por el total. Va de −1, si todo fue crítica, a +1 si todo fue apoyo. El indicador es el promedio simple de los saldos de las cámaras con al menos tres pronunciamientos en la ventana —no el saldo de todos los comunicados juntos—: la UIA y AFAC pesan lo mismo, publique cada una mucho o poco, y si una no llega ese mes cuenta la otra.
+- La serie llega sólo hasta el último mes con todos los comunicados clasificados, de las dos cámaras. Si aparece uno sin clasificar, el mes de ese comunicado y los siguientes no se calculan hasta clasificarlo: el dato queda quieto en el último mes completo, en vez de calcularse sobre lo que se alcanzó a leer.
 - Un mes sin ningún comunicado que se pronuncie sobre el Gobierno nacional queda sin valor y no se rellena con cero: cero significa que las cámaras apoyaron tanto como criticaron, que es una afirmación distinta de que no se pronunciaron. En los treinta y dos meses de serie no ocurrió: el mínimo es de tres pronunciamientos por ventana y el promedio, de casi seis.
 
 ## Semáforo — valores que determinan el color
@@ -249,22 +251,23 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses la UIA se pronunció 10 veces sobre medidas del Gobierno nacional: 3 de apoyo y 7 de crítica. Saldo −0,4 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.
+- En los últimos doce meses las cámaras de la industria se pronunciaron 14 veces sobre medidas del Gobierno nacional: 4 de apoyo y 10 de crítica. El saldo es el promedio simple de los saldos de cada cámara (AFAC −0,5 (1 de apoyo, 3 de crítica); la UIA −0,4 (3 de apoyo, 7 de crítica)): −0,45 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.
 
 ## Color vigente y por qué
 
-Dato vigente: −0,4 saldo de postura (−1 a +1, 12m móviles) (2026-09).
+Dato vigente: −0,45 saldo de postura (−1 a +1, 12m móviles) (2026-09).
 
-−0,4 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,0 del límite con Naranja (−0,4).
+−0,45 saldo de postura (−1 a +1, 12m móviles) está en Naranja, a 0,05 del límite con Amarillo (−0,4).
 
-**Color vigente: AMARILLO**
+**Color vigente: NARANJA**
 
-Ponderación vigente en el ITCP: 4,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 3,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - Mide lo que una asociación decidió declarar en público, no el humor del empresariado ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.
-- Es una sola cámara de la industria: el comercio se mide aparte, con su propio indicador. Se revisaron ocho cámaras en julio de 2026 y sólo estas dos tenían comunicados de postura de manera sostenida: el resto publicaba agenda institucional, servicios al socio o boletines regulatorios, o no tenía contenido accesible. En la revisión de octubre se sumó la del comercio, y varias del campo y la tecnología siguen sin un archivo completo de comunicados desde diciembre de 2023. Eso deja fuera al agro, la banca y la tecnología, que en el país tienen conflictos propios con el Estado.
+- Son dos cámaras de la industria: la Unión Industrial, la general, y AFAC, la de los autopartistas, que entró el 27 de octubre de 2026 porque cumple el mínimo para entrar (cuatro pronunciamientos sobre el Gobierno nacional en doce meses). El comercio, el campo y la construcción se miden aparte, con su propio indicador; los bancos están clasificados pero no llegan al mínimo, y la tecnología no tiene comunicados de postura.
+- Varios informes estadísticos de AFAC traen frases críticas sobre la política comercial: como la regla que los archiva mira el título, esas frases no entran. Quedan listados, con las dos lecturas, para poder revisarlos. AFAC se pronuncia poco —cuatro veces en el último año, una de apoyo y tres de crítica—, así que un comunicado más mueve mucho su saldo.
 - La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta los comunicados nuevos y avisa cada uno como pendiente; mientras haya uno sin clasificar la serie no avanza, y si nadie lo clasifica durante meses el índice marca el dato como desactualizado. La cantidad de pendientes se muestra en la ficha del indicador.
 - Para verificar que las reglas de clasificación no dejan lugar a la interpretación, cada tanda de comunicados la clasifican por separado dos codificadores independientes que no ven el trabajo del otro. En la pasada completa sobre ciento tres comunicados coincidieron en el 95% de las posturas y en el 94% de los destinatarios; en la tanda de veintidós de septiembre de 2026, en el 91% y el 95%. Los pocos desacuerdos se resuelven con tres criterios generales escritos, no caso por caso. Cabe una advertencia sobre esa prueba: ambos codificadores son sistemas de inteligencia artificial del mismo tipo, que comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta. La prueba acredita que el manual es unívoco, no que cualquier par de lectores llegaría al mismo número.
 - La ventana de doce meses hace que el indicador describa, en promedio, la situación de seis meses atrás. Un giro brusco en la relación —como el de marzo de 2026— tarda en verse completo.
@@ -277,6 +280,8 @@ Ponderación vigente en el ITCP: 4,7 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Suma a la Asociación de Fábricas Argentinas de Componentes (AFAC), los autopartistas: el indicador pasa a ser el promedio simple del saldo de la Unión Industrial y el de AFAC, como el del campo. Se clasificaron sus 21 comunicados que no son informes estadísticos con dos lectores ciegos, y una persona resolvió los tres desacuerdos. La dimensión de sector privado pasa a cuartos con la construcción. Con los datos del 27 de octubre de 2026 el saldo pasa de −0,40 (sólo la UIA) a −0,45 (UIA −0,40, AFAC −0,50) y el puntaje de 40,0 a 32,5.
 
 **2026-10-27** — Pasa a compartir la dimensión de sector privado, a partes iguales, con la postura pública del comercio y la del campo, y la tarjeta se llama «Postura pública de la industria». El saldo, la banda y la clasificación no cambian: con los datos del 27 de octubre de 2026 el indicador sigue puntuando 40,0.
 
@@ -314,7 +319,7 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **VERDE** | Peso efectivo 4,7 % del ITCP | Cinturón Política |
+| **Hoy: 1 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **VERDE** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -332,7 +337,7 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 
 Suma al comercio a la lectura del vínculo entre el Gobierno y el empresariado organizado, que antes miraba sólo a la industria. Conviene saber qué dice y qué no: la CAC apoyó al Gobierno en cada comunicado que le dedicó, y sus críticas van dirigidas a las provincias, los municipios y el Congreso — no al Ejecutivo nacional —, de modo que el saldo está en el máximo en toda la serie y es difícil que se mueva hacia abajo aunque cambie el humor del sector. Con tan pocos pronunciamientos por año, una sola crítica lo movería mucho. No mide la opinión de los comerciantes ni de las pymes: mide lo que una cámara decidió declarar públicamente. La clasificación la hace una persona siguiendo reglas escritas de antemano; esta vez la hicieron por separado dos lectores de distinto tipo para verificar que las reglas no dejan lugar a la interpretación.
 
-**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional: la Unión Industrial Argentina (industria), la Cámara Argentina de Comercio y Servicios (comercio) y Coninagro, la Sociedad Rural y Confederaciones Rurales (campo), un tercio cada sector. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: el campo está (Coninagro, la SRA y CRA, promediando el saldo de cada una) y la tecnología no, porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
+**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y AFAC, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (CAMARCO). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (ADEBA, ABA y ABAPPRA) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
 
 ## Método de cómputo
 
@@ -369,7 +374,7 @@ Dato vigente: 1 saldo de postura (−1 a +1, 12m móviles) (2026-10).
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCP: 4,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 3,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -388,6 +393,8 @@ Ponderación vigente en el ITCP: 4,7 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-27** — La dimensión de sector privado pasa a cuartos al entrar la construcción: pesa 25% interno y 3,5% efectivo del índice político. El saldo y el puntaje no cambian.
+
 **2026-10-27** — Entra al índice político como segundo componente de la dimensión de sector privado, a partes iguales con la postura de la industria. Con los datos del 27 de octubre de 2026 el saldo es +1,0 sobre cuatro comunicados y puntúa 100, contra 40,0 de la industria: la dimensión pasa de 40,0 a 70,0 y el índice político de 71,6 a 75,8. Es el primer paso para sumar cámaras además de la Unión Industrial; el campo y la tecnología quedan para más adelante porque sus cámaras no tienen hoy un archivo completo de comunicados.
 
 ```{=openxml}
@@ -404,7 +411,7 @@ Qué dicen en público, por escrito y con firma institucional, Coninagro, la Soc
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,15 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **AMARILLO** | Peso efectivo 4,7 % del ITCP | Cinturón Política |
+| **Hoy: −0,15 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **AMARILLO** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -422,7 +429,7 @@ Qué dicen en público, por escrito y con firma institucional, Coninagro, la Soc
 
 Suma al campo, el sector que más pelea con el Estado por impuestos y retenciones, a la lectura del vínculo entre el Gobierno y el empresariado organizado. Conviene saber qué dice y qué no: las tres cámaras publican en sitios con archivos distintos — el de la SRA arranca en enero de 2025, y por eso la serie empieza en enero de 2026 —, y sus posturas son muy distintas entre sí: la CRA critica mucho más de lo que apoya y la SRA apoya más de lo que critica; el promedio las pone en pie de igualdad aunque la CRA publique varias veces más. No mide la opinión de los productores: mide lo que tres entidades decidieron declarar públicamente.
 
-**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional: la Unión Industrial Argentina (industria), la Cámara Argentina de Comercio y Servicios (comercio) y Coninagro, la Sociedad Rural y Confederaciones Rurales (campo), un tercio cada sector. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: el campo está (Coninagro, la SRA y CRA, promediando el saldo de cada una) y la tecnología no, porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
+**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y AFAC, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (CAMARCO). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (ADEBA, ABA y ABAPPRA) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
 
 ## Método de cómputo
 
@@ -459,7 +466,7 @@ Dato vigente: −0,15 saldo de postura (−1 a +1, 12m móviles) (2026-10).
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCP: 4,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 3,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -479,7 +486,100 @@ Ponderación vigente en el ITCP: 4,7 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-27** — La dimensión de sector privado pasa de tercios a cuartos al entrar la construcción: pesa 25% interno y 3,5% efectivo del índice político. El saldo y el puntaje no cambian.
+
 **2026-10-27** — Entra al índice político como tercer componente de la dimensión de sector privado, a partes iguales con la industria y el comercio. Se clasificaron 760 notas de Coninagro, la SRA y la CRA con dos lectores ciegos; las tres cumplen el mínimo de cuatro pronunciamientos dirigidos al Gobierno nacional en doce meses, y una persona resolvió los 13 desacuerdos que decidían el puntaje. El saldo es el promedio simple de los saldos de cada cámara. Con los datos del 27 de octubre de 2026 el saldo es −0,15 (Coninagro −0,20, CRA −0,74, SRA +0,50) y puntúa 55,8: la dimensión pasa de 70,0 a 65,3 y el índice político de 74,3 a 73,6.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
+
+# Postura pública de la construcción
+
+Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de la Construcción (CAMARCO) sobre las medidas del Gobierno nacional. Cada nota se lee y se clasifica con las mismas reglas que las de la industria, el comercio y el campo: si respalda o critica, y a quién le habla. Se cuentan sólo las que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. La cámara publica todo en un mismo lugar —agenda, cursos, delegaciones, su indicador mensual y los acuerdos salariales—; lo que no es un comunicado queda afuera, y la crónica de un acto cuya declaración ya se contó no se cuenta de nuevo.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: 0,5 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **VERDE** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | apoyo_construccion | **CINTURÓN** | Política |
+| **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
+| **SERIE DISPONIBLE** | 2024-02 → 2026-10 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
+| **PRODUCTOR DEL DATO** | Cámara Argentina de la Construcción (CAMARCO) | **OPERACIÓN ESTADÍSTICA** | Notas fechadas de la sección de noticias de su sitio |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-27 |
+
+## Definición — qué mide y por qué importa
+
+Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de la Construcción (CAMARCO) sobre las medidas del Gobierno nacional. Cada nota se lee y se clasifica con las mismas reglas que las de la industria, el comercio y el campo: si respalda o critica, y a quién le habla. Se cuentan sólo las que se pronuncian sobre una medida del Ejecutivo nacional, y el indicador es el saldo entre apoyos y críticas de los últimos doce meses. La cámara publica todo en un mismo lugar —agenda, cursos, delegaciones, su indicador mensual y los acuerdos salariales—; lo que no es un comunicado queda afuera, y la crónica de un acto cuya declaración ya se contó no se cuenta de nuevo.
+
+Suma a la construcción, el sector que más depende de la obra pública, a la lectura del vínculo entre el Gobierno y el empresariado organizado. Conviene saber qué dice y qué no: la cámara se pronuncia poco sobre el Ejecutivo —dieciséis veces en casi tres años, cuatro en el último—, así que cada comunicado mueve mucho el saldo. No mide la opinión de las constructoras: mide lo que una cámara decidió declarar públicamente. Las notas las clasificaron por separado dos lectores, y una persona resolvió los desacuerdos que importaban.
+
+**Dimensión que integra — Sector privado.** Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo mismo: la industria (la Unión Industrial Argentina y AFAC, la cámara de los autopartistas), el comercio (la Cámara Argentina de Comercio y Servicios), el campo (Coninagro, la Sociedad Rural y Confederaciones Rurales) y la construcción (CAMARCO). Donde un sector tiene más de una cámara, se promedia el saldo de cada una. Es lo que dicen las cámaras de cada sector, no el humor de todo el empresariado: los bancos (ADEBA, ABA y ABAPPRA) están clasificados pero no entran, porque en el último año se pronunciaron sobre el Gobierno nacional sólo tres veces y el mínimo es de cuatro; la tecnología no está porque ninguna de sus cámaras tiene comunicados de postura. Hasta septiembre de 2026 la completaba la brecha de expectativas de las constructoras de obra pública y privada, que salió en octubre por medir un solo sector.
+
+## Método de cómputo
+
+- Se toma cada nota publicada en el sitio de la cámara desde el 10 de diciembre de 2023, con su texto completo (891). La cámara publica todo en un mismo lugar: su indicador mensual, los acuerdos salariales de la construcción, cursos, la revista, la bolsa de trabajo, llamados a licitación y la agenda de sus delegaciones. Lo que no es un comunicado se archiva sin clasificar, por una regla de título y de sección del sitio escrita antes de clasificar (291 notas); quedan 600.
+- Cada nota se clasifica en dos ejes, con las mismas reglas escritas antes de mirar el material que usan la industria, el comercio y el campo: qué dice sobre lo que comenta —respalda, critica o no toma posición— y a quién le habla, que puede ser el Gobierno nacional, el Congreso, una provincia o municipio, la Justicia, o un asunto externo o de la propia entidad.
+- Sólo entran al cálculo las notas dirigidas al Gobierno nacional que respaldan o critican. Las que informan una reunión, un acto institucional, un cambio de autoridades o una condolencia no toman posición y quedan afuera, igual que las dirigidas a los otros poderes y a las provincias.
+- La crónica de un acto ya cubierto por su declaración no se cuenta de nuevo: se cuenta una vez, la declaración. La cámara publica la declaración de cada Consejo Federal y, al día siguiente, la crónica del encuentro, que la repite; la crónica queda marcada en el registro como duplicado de la declaración y no suma.
+- El indicador es el saldo de los últimos doce meses: apoyos menos críticas, dividido por el total. Va de −1, si todo fue crítica, a +1 si todo fue apoyo. Un mes con menos de tres pronunciamientos en la ventana queda sin valor y no se rellena con cero.
+- La serie llega sólo hasta el último mes con todas las notas clasificadas. Si aparece una sin clasificar, el mes de esa nota y los siguientes no se calculan hasta clasificarla.
+
+## Semáforo — valores que determinan el color
+
+Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
+
+**Valores que definen cada color**
+
+| Rango (saldo de postura (−1 a +1, 12m móviles)) | Color |
+|---|---|
+| ≥ −0,08 | VERDE |
+| −0,4 – −0,08 | AMARILLO |
+| −0,53 – −0,4 | NARANJA |
+| ≤ −0,53 | ROJO |
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 4 veces sobre medidas del Gobierno nacional: 3 de apoyo y 1 de crítica. Saldo 0,5 en una escala de −1 (todo crítica) a +1 (todo apoyo).
+
+## Color vigente y por qué
+
+Dato vigente: 0,5 saldo de postura (−1 a +1, 12m móviles) (2026-10).
+
+0,5 saldo de postura (−1 a +1, 12m móviles) está en Verde, a 0,58 del límite con Amarillo (−0,08).
+
+**Color vigente: VERDE**
+
+Ponderación vigente en el ITCP: 3,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+## Transparencia — limitaciones declaradas
+
+- Mide lo que una cámara decidió declarar en público, no el humor de las constructoras ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.
+- Se pronuncia poco sobre el Gobierno nacional: dieciséis veces desde diciembre de 2023 y cuatro en los últimos doce meses, el mínimo para entrar. Con tan pocos pronunciamientos un solo comunicado mueve mucho el saldo: la serie fue de −0,43 a +1,0.
+- En 42 de las 600 notas los dos lectores no coincidieron. Dos los resolvió una persona (Juan, el 27 de octubre de 2026); los otros 40 no decidían el puntaje de la ventana en la que se clasificaron, siguen sin resolver y no cuentan hasta que alguien los resuelva. Casi todos son discursos de sus delegaciones en actos provinciales.
+- La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta las notas nuevas y avisa cada una como pendiente; mientras haya una sin clasificar la serie no avanza.
+- Para verificar que las reglas no dejan lugar a la interpretación, las notas las clasificaron por separado dos lectores independientes que no ven el trabajo del otro: coincidieron en el 99% de las posturas y en el 94% de los destinatarios (kappa de 0,90 y 0,85). Ambos son sistemas de inteligencia artificial, de dos modelos distintos, que comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta.
+- La ventana de doce meses hace que el indicador describa, en promedio, la situación de seis meses atrás.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Si el sitio de la cámara no responde, el indicador no cambia: se calcula sobre el registro ya clasificado, que está guardado. Lo que se pierde es el aviso de notas nuevas.
+
+- **Política de revisiones:** El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.
+
+## Historial — cambios metodológicos documentados
+
+**2026-10-27** — Entra al índice político como cuarto componente de la dimensión de sector privado, a partes iguales con la industria, el comercio y el campo. Se clasificaron 600 notas de CAMARCO con dos lectores ciegos; cumple el mínimo de cuatro pronunciamientos dirigidos al Gobierno nacional en doce meses (tres apoyos y una crítica, contando una vez la declaración del 147° Consejo Federal y no su crónica). Con los datos del 27 de octubre de 2026 el saldo es +0,50 y puntúa 92,5: con la industria que suma a AFAC, la dimensión pasa de 65,3 a 70,2 y el índice político de 75,0 a 75,7.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

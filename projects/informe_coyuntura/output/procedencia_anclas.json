@@ -221,10 +221,10 @@
       "share_circular": 0.323
     },
     "ITCP": {
-      "peso_total": 0.9999999999999999,
+      "peso_total": 1.0,
       "categorias": {
         "externa": 0.15806,
-        "conceptual": 0.39787,
+        "conceptual": 0.39786999999999995,
         "convencion": 0.30431,
         "historia_larga": 0.13976000000000002
       },
@@ -262,20 +262,26 @@
         {
           "indicador": "apoyo_empresario",
           "categoria": "conceptual",
-          "peso": 0.0466,
+          "peso": 0.035,
           "motivo": "el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150)"
         },
         {
           "indicador": "apoyo_comercio",
           "categoria": "conceptual",
-          "peso": 0.0466,
+          "peso": 0.035,
           "motivo": "las mismas anclas del saldo de la industria —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie del comercio; no se miró el rango observado, que de hecho toca el extremo +1,0 (ADR-0150, ADR-0380)"
         },
         {
           "indicador": "apoyo_campo",
           "categoria": "conceptual",
-          "peso": 0.0466,
+          "peso": 0.035,
           "motivo": "las mismas anclas del saldo de la industria y del comercio —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie del campo (ADR-0150, ADR-0384)"
+        },
+        {
+          "indicador": "apoyo_construccion",
+          "categoria": "conceptual",
+          "peso": 0.035,
+          "motivo": "las mismas anclas del saldo de la industria, el comercio y el campo —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie de la construcción (ADR-0150, ADR-0391)"
         },
         {
           "indicador": "insistencias_vetos",

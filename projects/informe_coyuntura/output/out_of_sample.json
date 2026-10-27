@@ -229,6 +229,11 @@
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
+      "indicador": "apoyo_construccion",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
       "indicador": "apoyo_empresario",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"

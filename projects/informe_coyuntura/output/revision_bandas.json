@@ -450,11 +450,22 @@
     },
     {
       "indice": "ITCP",
-      "indicador": "apoyo_empresario",
-      "n": 20,
+      "indicador": "apoyo_construccion",
+      "n": 32,
       "piso": 10,
       "techo": 100,
-      "share_piso": 0.2,
+      "share_piso": 0.0,
+      "share_techo": 0.125,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "apoyo_empresario",
+      "n": 23,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.348,
       "share_techo": 0.0,
       "estado": "ok",
       "detalle": "sin saturación relevante"
