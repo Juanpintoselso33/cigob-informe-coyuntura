@@ -135,13 +135,9 @@ def test_fetch_guarda_el_mes_y_si_la_red_falla_sigue_con_lo_guardado(tmp_path):
 
 def test_el_texto_de_la_card_con_los_datos_versionados():
     t = pa.texto_card(pa.leer_registro())
-    assert t.startswith("Empleadores inscriptos en ARCA: 511.847 (24-oct-2026), de los cuales "
-                        "290.897 son personas jurídicas y 220.950 personas humanas "
-                        "(44.720 de ellas monotributistas)")
-    assert "contra 24-ago-2024: −41.210 (−7,5%)" in t
-    assert "275.007 a 48.391" in t and "limpieza del padrón" in t
-    assert "No hay copia de dic-2023" in t
-    assert "No puntúa" in t and "12 meses" in t and "lleva 1" in t
+    assert t == ("Empleadores inscriptos en ARCA: 511.847 (24-oct-2026): 290.897 empresas y "
+                 "sociedades y 220.950 personas. El 24-ago-2024 eran 553.057 (−7,5 %). "
+                 "No puntúa todavía.")
 
 
 def test_el_texto_con_un_solo_mes_no_inventa_variacion():

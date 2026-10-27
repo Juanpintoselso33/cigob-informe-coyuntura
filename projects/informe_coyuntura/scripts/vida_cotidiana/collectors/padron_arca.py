@@ -225,24 +225,18 @@ def texto_card(meses: dict) -> str:
         raise ValueError("registro vacío")
     ult_mes = max(meses)
     u = meses[ult_mes]
-    t = (f"Empleadores inscriptos en ARCA: {_n(u['empleadores'])} ({_fecha(u['fecha_archivo'])}), "
-         f"de los cuales {_n(u['juridicas'])} son personas jurídicas y {_n(u['humanas'])} personas "
-         f"humanas ({_n(u['monotributistas'])} de ellas monotributistas)")
+    t = (f"Empleadores inscriptos en ARCA: {_n(u['empleadores'])} ({_fecha(u['fecha_archivo'])}): "
+         f"{_n(u['juridicas'])} empresas y sociedades y {_n(u['humanas'])} personas")
     previos = [m for m in meses if m < ult_mes]
     if previos:
         p = meses[max(previos)]
         dif = u["empleadores"] - p["empleadores"]
         pct = f"{abs(dif) / p['empleadores'] * 100:.1f}".replace(".", ",")
         signo = "+" if dif >= 0 else "−"
-        t += (f"; contra {_fecha(p['fecha_archivo'])}: {signo}{_n(abs(dif))} ({signo}{pct}%), "
-              f"humanas de {_n(p['humanas'])} a {_n(u['humanas'])} y jurídicas de {_n(p['juridicas'])} a {_n(u['juridicas'])}")
-        if u["blanco"] != p["blanco"]:
-            t += (f". Ojo: la marca en blanco (CUIT sin datos consistentes) pasó de {_n(p['blanco'])} a "
-                  f"{_n(u['blanco'])}, así que una limpieza del padrón puede mover los conteos")
-        t += ". No hay copia de dic-2023, así que no hay base del mandato"
-    mensuales = sum(1 for m in meses if m >= MES_INICIO_MENSUAL)
-    t += (". Es una marca de inscripción, no de empleo efectivo. No puntúa: lo hará con "
-          f"{MESES_PARA_PUNTUAR} meses de registro mensual (lleva {mensuales}), con ADR propio.")
+        t += f". El {_fecha(p['fecha_archivo'])} eran {_n(p['empleadores'])} ({signo}{pct} %)"
+    # las salvedades (limpieza del padrón, sin base del mandato, marca de inscripción)
+    # van en la ficha, no se repiten en la card
+    t += ". No puntúa todavía."
     return t
 
 
