@@ -18,7 +18,7 @@
     {
       "clave": "sin_permanencia_inicial",
       "hito": "Eliminación de la permanencia obligatoria inicial",
-      "peso": 0.20,
+      "peso": 0.2,
       "fecha": "2024-03-01",
       "norma": "Decreto 170/2024",
       "fuente": "Boletín Oficial, aviso 302864, publicado 21-feb-2024, vigente desde el 1-mar-2024. Sustituye los arts. 1 y 2 del Decreto 504/1998: libre elección entre cualquiera de los agentes desde el inicio de la relación laboral, sin plazo mínimo de permanencia para quien elige una prepaga."
@@ -26,7 +26,7 @@
     {
       "clave": "derivacion_directa",
       "hito": "Derivación directa de aportes sin intermediación obligatoria",
-      "peso": 0.20,
+      "peso": 0.2,
       "fecha": "2024-12-01",
       "norma": "Resolución SSS 3284/2024",
       "fuente": "Boletín Oficial, aviso 315257, publicado 7-oct-2024. Desde el 1-dic-2024 las prepagas que reciben fondos de la seguridad social deben estar inscriptas como agentes del seguro (RNAS), con lo que reciben los aportes en forma directa."
@@ -34,7 +34,7 @@
     {
       "clave": "procedimiento_opcion",
       "hito": "Habilitación del procedimiento de opción de cambio",
-      "peso": 0.20,
+      "peso": 0.2,
       "fecha": "2024-12-04",
       "norma": "Trámite de opción de cambio en línea (Superintendencia de Servicios de Salud y ARCA)",
       "fuente": "ARCA, «Libre elección de Obras Sociales/Prepagas», 04-dic-2024 (argentina.gob.ar/noticias/libre-eleccion-de-obras-socialesprepagas); guía oficial «Realizar opción de cambio» (argentina.gob.ar/servicio/realizar-opcion-de-cambio-libre-eleccion-de-agentes-del-seguro)."
@@ -43,9 +43,9 @@
       "clave": "funcionamiento",
       "hito": "Funcionamiento efectivo y verificable para la población alcanzada",
       "peso": 0.15,
-      "fecha": null,
+      "fecha": "2025-01-01",
       "norma": "Padrón de la Superintendencia de Servicios de Salud (RNAS y RNEMP)",
-      "fuente": "Se calcula con la serie del padrón: ver regla_funcionamiento en _meta."
+      "fuente": "Padrón de la Superintendencia (RNAS/RNEMP): en enero de 2025 el 24,5 % de los usuarios de prepagas tenía sus aportes derivados directo (diciembre de 2024: 0,7 %). Una vez cumplido no se pierde: se registra la fecha del primer mes que cruzó el umbral."
     }
   ]
 }

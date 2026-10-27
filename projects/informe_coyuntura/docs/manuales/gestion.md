@@ -210,7 +210,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 20% |
 | Peso efectivo en el índice | **2.0%** |
-| Procedencia del ancla | `conceptual` — % de usuarios con libre opción; el 100 (libre opción plena) es el ancla (ADR-0121) |
+| Procedencia del ancla | `conceptual` — avance por hitos de implementación (25/20/20/20/15); un ancla por escalón y el 100 es la libre elección implementada y funcionando (ADR-0371) |
 
 **Bandas**: > 95 → 100 · 75–95 → 85 · 55–75 → 65 · 35–55 → 40 · ≤ 35 → 10
 

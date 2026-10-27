@@ -64,9 +64,10 @@ def test_tarjeta_y_serie_comparten_archivo_y_no_usan_denominador_futuro(monkeypa
     monkeypatch.setattr(gestion, '_sss_archivo', abrir)
     card = gestion.fetch_libertad_opcion_salud()
     puntos = dict(descargar_series.fetch_opcion_salud_serie())
+    pct_serie = dict(descargar_series.opcion_salud_pct_serie())
     assert card['fecha_dato'] == card['fecha_denominador'] == '2026-06-01'
     # ADR-0371: el valor es el avance por hitos; el % (20/80 = 25) queda en pct_derivados.
-    assert card['pct_derivados'] == 25
+    assert card['pct_derivados'] == pct_serie['2026-06-01'] == 25   # sin denominador futuro
     assert card['valor'] == puntos['2026-06-01'] == 100.0
     assert (gestion.SSS_RNAS_URL, 2024) in llamadas
 

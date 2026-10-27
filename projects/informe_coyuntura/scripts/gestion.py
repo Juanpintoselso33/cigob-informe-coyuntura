@@ -3231,7 +3231,11 @@ def salud_indice(hitos: dict, en_fecha: str, pct_por_mes: dict) -> tuple:
     desde_derivacion = (por_clave["derivacion_directa"]["fecha"] or "9999-12")[:7]
     cumple = sorted(ym for ym, v in pct_por_mes.items()
                     if v is not None and v >= umbral and ym >= desde_derivacion)
-    fecha_func = f"{cumple[0]}-01" if cumple else None
+    # Un hito cumplido no se pierde: si el registro ya fechó el funcionamiento
+    # (primer mes que cruzó el umbral), manda esa fecha; la serie del padrón
+    # sólo la descubre si todavía no está registrada (Codex, 26-oct-2026).
+    registrada = por_clave["funcionamiento"].get("fecha")
+    fecha_func = registrada or (f"{cumple[0]}-01" if cumple else None)
     estado, total = [], 0.0
     for h in hitos["hitos"]:
         if h["clave"] == "funcionamiento":
@@ -3286,7 +3290,8 @@ def fetch_libertad_opcion_salud() -> dict | None:
         hitos = json.loads(OPCION_SALUD_HITOS_PATH.read_text(encoding="utf-8-sig"))
         # El funcionamiento se cumple si el padrón ya cruzó el umbral; con el
         # dato de hoy alcanza para la tarjeta (la serie fecha el primer mes).
-        avance, estado = salud_indice(hitos, fecha, {fecha[:7]: pct})
+        cierre = f"{fecha[:7]}-{calendar.monthrange(int(anio_rnas), int(mm_rnas))[1]:02d}"
+        avance, estado = salud_indice(hitos, cierre, {fecha[:7]: pct})
         return {
             "valor":          avance,
             "unidad":         "Avance de la libre elección de cobertura de salud (hitos 0–100)",

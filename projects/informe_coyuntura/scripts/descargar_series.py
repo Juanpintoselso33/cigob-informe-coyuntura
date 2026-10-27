@@ -3167,6 +3167,22 @@ def _serie_var_real_vs_2023(nominal_ids: list) -> list:
 
 
 def fetch_opcion_salud_serie() -> list:
+    """ADR-0371: avance por hitos al cierre de cada mes, con el % de usuarios
+    (`opcion_salud_pct_serie`) como insumo del hito de funcionamiento."""
+    import calendar as _cal
+    out = opcion_salud_pct_serie()
+    hitos = json.loads(gestion.OPCION_SALUD_HITOS_PATH.read_text(encoding="utf-8-sig"))
+    pct = {f[:7]: v for f, v in out}
+    serie = []
+    for f, _ in out:
+        y, m = int(f[:4]), int(f[5:7])
+        cierre = f"{y}-{m:02d}-{_cal.monthrange(y, m)[1]:02d}"
+        idx, _ = gestion.salud_indice(hitos, cierre, {k: v for k, v in pct.items() if k <= f[:7]})
+        serie.append([f, idx])
+    return serie
+
+
+def opcion_salud_pct_serie() -> list:
     """Serie mensual del % de usuarios de prepagas con aportes derivados
     directo (misma fórmula que el indicador): RNAS 90xxxx / total RNEMP, por
     año desde 2024 (descubre los XLSX referenciados en el portal; usa
@@ -3206,19 +3222,7 @@ def fetch_opcion_salud_serie() -> list:
     # antes del primer XLSX (ene-2024) los derivados eran 0.
     if out and out[0][0] == "2024-01-01":
         out.insert(0, ["2023-12-01", 0.0])
-    # ADR-0371: la serie publicada es el AVANCE por hitos al cierre de cada mes
-    # (misma regla que la tarjeta); el % de usuarios queda como insumo del
-    # hito de funcionamiento.
-    import calendar as _cal
-    hitos = json.loads(gestion.OPCION_SALUD_HITOS_PATH.read_text(encoding="utf-8-sig"))
-    pct = {f[:7]: v for f, v in out}
-    serie = []
-    for f, _ in out:
-        y, m = int(f[:4]), int(f[5:7])
-        cierre = f"{y}-{m:02d}-{_cal.monthrange(y, m)[1]:02d}"
-        idx, _ = gestion.salud_indice(hitos, cierre, {k: v for k, v in pct.items() if k <= f[:7]})
-        serie.append([f, idx])
-    return serie
+    return out
 
 
 def fetch_protestas_serie() -> list:
