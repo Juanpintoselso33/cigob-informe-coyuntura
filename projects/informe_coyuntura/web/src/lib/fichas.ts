@@ -2434,7 +2434,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-15, 100], [-10, 85], [0, 65], [12.5, 40], [20, 10]],
       unidadCorta: "% (12m vs 12m)",
     },
-    dobleUso: "Desde octubre de 2026 no integra el índice y la tabla de bandas de abajo ya no se aplica: se conserva para leer la serie histórica. Son juicios por accidentes y enfermedades del trabajo, y la reforma apunta a los despidos; el resultado de la reforma laboral se mide con los juicios de la Justicia Nacional del Trabajo.",
+    dobleUso: "Comparte la dimensión de reforma laboral con el Fondo de Asistencia Laboral y con los juicios de la Justicia Nacional del Trabajo. Las dos medidas de juicios se complementan: ésta cubre todo el país y sale todos los meses, pero sólo cuenta accidentes y enfermedades del trabajo; la otra cuenta todos los juicios laborales, incluidos los despidos, pero sólo los de la Capital y por semestre.",
     limitaciones: [
       "Son juicios del sistema de riesgos del trabajo, no el canal indemnizatorio del Fondo de Asistencia Laboral. No demuestra causalidad entre la reforma y el número de juicios; pueden cambiar exposición al riesgo, empleo, acceso a la justicia y tiempos de notificación.",
       "La ventana de 12 contra 12 meses reacciona lento a los quiebres.",
@@ -2443,6 +2443,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Con la planilla caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "La fuente puede revisar meses; la planilla completa se relee en cada actualización.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Vuelve al índice y a la tarjeta, con 25% de la reforma laboral: la reunión con la dirección de CiGob acordó medir el resultado con las dos series de juicios, y ésta es la única nacional y mensual. La ficha aclara que cuenta accidentes y enfermedades, no despidos.", adr: "0379" },
       { fecha: "2026-10-26", cambio: "Sale del índice y deja de publicarse como tarjeta: son juicios por accidentes y enfermedades del trabajo y la reforma apunta a los despidos. El dato se sigue relevando. Reforma laboral queda 50 % Fondo de Asistencia Laboral y 50 % juicios de la Justicia Nacional del Trabajo.", adr: "0369" },
       { fecha: "2026-09-08", cambio: "Tarjeta e historia exigen 24 meses consecutivos y valores válidos. Se aclara que los juicios SRT no identifican resultados del FAL ni el mérito de los reclamos.", adr: "0285" },
       { fecha: "2026-07-02", cambio: "Alta como indicador de contexto, fuera del índice." },
@@ -2480,7 +2481,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-15, 100], [-10, 85], [0, 65], [12.5, 40], [20, 10]],
       unidadCorta: "% (12m vs 12m)",
     },
-    dobleUso: "Comparte la dimensión de reforma laboral con el Fondo de Asistencia Laboral, mitad y mitad: el fondo es el instrumento y los juicios, el resultado. Hasta octubre de 2026 la mitad del resultado se repartía con los juicios por riesgos del trabajo de la SRT, que salieron por no incluir los despidos.",
+    dobleUso: "Comparte la dimensión de reforma laboral con el Fondo de Asistencia Laboral y con los juicios por riesgos del trabajo de la SRT. Las dos medidas de juicios se complementan: la SRT cubre todo el país pero sólo riesgos del trabajo; ésta cuenta todos los juicios laborales, pero sólo los de la Capital.",
     limitaciones: [
       "Sólo la Capital: la Justicia Nacional del Trabajo no incluye los juzgados laborales de las provincias.",
       "Cuenta juicios iniciados, no su resultado ni su mérito, y no permite atribuir a la reforma las subas o bajas: pesan también el empleo, los despidos y los tiempos de los abogados.",
@@ -2490,6 +2491,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Con la fuente caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "La Oficina puede corregir semestres ya publicados; todas las planillas se releen en cada actualización.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Vuelve a pesar un cuarto de la reforma laboral: regresan los juicios por riesgos del trabajo, como acordó la reunión del 26 de octubre.", adr: "0379" },
       { fecha: "2026-10-26", cambio: "Pasa a pesar la mitad de la reforma laboral: salen los juicios por riesgos del trabajo, que no incluyen los despidos.", adr: "0369" },
       { fecha: "2026-10-26", cambio: "Alta en el índice de gestión, con 25% de la reforma laboral, a pedido de la auditoría de CiGob, que citaba 55.337 juicios en 2024 y 58.504 en 2025: son los entrados en primera instancia de esta fuente.", adr: "0365" },
     ],

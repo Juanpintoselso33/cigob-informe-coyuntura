@@ -94,15 +94,15 @@ def test_itcg_reproduce_ejemplo():
     # externa. Los dos están declarados en su ADR y en la ficha. → 52,0
     # (ADR-0365: entran los juicios de la Justicia del Trabajo, 25%, y la SRT
     # baja a 25%: 0,50·55 + 0,25·57,8 + 0,25·40,2).
-    # → 47,6 (ADR-0369: sale la SRT, 0,50·55 + 0,50·40,2).
-    assert dims["reforma_laboral"]["puntaje"] == 47.6
+    # → 47,6 (ADR-0369: sale la SRT, 0,50·55 + 0,50·40,2) → 52,0 (ADR-0379: vuelve).
+    assert dims["reforma_laboral"]["puntaje"] == 52.0
     assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
     # ADR-0189: vuelve asistencia_directa y la dimension recupera el 40/40/20
     # del documento. 0,4x100 + 0,4x76,6 + 0,2x65 = 83,6 (antes 72,8 con 67/33).
     assert dims["social_orden"]["puntaje"] == 83.6
-    assert r["valor"] == 74.1          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228) → 75,4 (0247) → 74,7 (0365) → 74,1 (0369)
+    assert r["valor"] == 74.7          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228) → 75,4 (0247) → 74,7 (0365) → 74,1 (0369) → 74,7 (0379)
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcg.tension_de_itcg(r["valor"]) == 2.6   # 74,1 (ADR-0369)
+    assert itcg.tension_de_itcg(r["valor"]) == 2.5   # 74,7 (ADR-0379)
     assert r["ajustes_aplicados"] == []
 
 

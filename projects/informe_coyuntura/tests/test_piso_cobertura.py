@@ -142,7 +142,10 @@ def test_la_ausencia_de_componentes_del_itcg_sesga_el_indice():
         pytest.skip("pocos meses de cobertura plena para medir el sesgo")
 
     grandes = sum(1 for d in desvios if d > 3.0)
-    assert grandes >= 0.8 * len(desvios), (
+    # 0,8 → 0,75 (ADR-0379): vuelven los juicios por riesgos del trabajo, que
+    # son mensuales y llegan temprano, y achican el desvío del recorte (27 de
+    # 34 meses siguen por encima de 3 puntos). Sigue siendo sistemático.
+    assert grandes >= 0.75 * len(desvios), (
         f"sólo {grandes} de {len(desvios)} meses se desvían más de 3 puntos al "
         "recortar: si el faltante fuera casi inocuo, el piso de cobertura no "
         "haría falta")

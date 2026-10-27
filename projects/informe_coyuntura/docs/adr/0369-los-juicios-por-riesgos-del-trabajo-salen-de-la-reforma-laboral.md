@@ -1,13 +1,15 @@
 ---
 madr: 4
 id: '0369'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'Superado por ADR-0379 (27-oct-2026): la reunión del 26-oct acordó las dos series de juicios'
 fecha: 2026-10-26
 cinturon: 'gestion'
 indice: 'ITCG'
 indicadores: [litigiosidad_laboral, juicios_trabajo_capital]
 archivos: ['scripts/itcg.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts']
 relacionado: ['0023', '0128', '0365']
+superado_por: ['0379']
 ambito: 'Cinturón de gestión · ITCG · dimensión Reforma laboral'
 origen: 'Revisión de gestión de Luis Babino del 26-oct-2026 (punto 1.1), reenviada por Marcos, y decisión de Juan del mismo día.'
 ---

@@ -48,12 +48,13 @@ def test_fecha_del_dato_es_el_ultimo_mes_del_semestre():
     assert gestion._fecha_semestre((2025, 2)) == "2025-12-01"
 
 
-def test_pesa_la_mitad_de_la_reforma_laboral():
+def test_pesa_un_cuarto_de_la_reforma_laboral():
     """ADR-0365 lo sumó con 25 %; ADR-0369 sacó los juicios por riesgos del
-    trabajo y queda con la mitad del resultado entera."""
+    trabajo y ADR-0379 los repuso: vuelve el 50/25/25."""
     ind = itcg.DIMENSIONES_ITCG["reforma_laboral"]["indicadores"]
-    assert ind == {"fal_modernizacion_laboral": 0.50, "juicios_trabajo_capital": 0.50}
-    assert "litigiosidad_laboral" in itcg.INDICADORES_SUSPENDIDOS
+    assert ind == {"fal_modernizacion_laboral": 0.50, "litigiosidad_laboral": 0.25,
+                   "juicios_trabajo_capital": 0.25}
+    assert "litigiosidad_laboral" not in itcg.INDICADORES_SUSPENDIDOS
     assert itcg.BANDAS_ITCG["juicios_trabajo_capital"] == itcg.BANDAS_ITCG["litigiosidad_laboral"]
 
 

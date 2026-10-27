@@ -293,12 +293,14 @@ DIMENSIONES_ITCG = {
         # pero sólo riesgos del trabajo; la Justicia del Trabajo cuenta todos
         # los juicios laborales, pero sólo los de la Capital.
         #
-        # ADR-0369 (2026-10-26): los juicios por riesgos del trabajo salen (a
-        # pedido de Luis): son accidentes y enfermedades, y la reforma apunta a
-        # los despidos. La mitad del resultado queda entera en los juicios de la
-        # Justicia del Trabajo, que sí incluyen despidos.
+        # ADR-0369 (2026-10-26) los había sacado por no incluir despidos.
+        # ADR-0379 (2026-10-27) los repone: la reunión del 26-oct con Luis y
+        # Marcos acordó medir el resultado con las DOS series de juicios (el
+        # documento de Marcos también las pedía), y la de la SRT es la única
+        # nacional y mensual. Vuelve el 50/25/25 de ADR-0365.
         "indicadores": {"fal_modernizacion_laboral": 0.50,
-                        "juicios_trabajo_capital": 0.50},
+                        "litigiosidad_laboral": 0.25,
+                        "juicios_trabajo_capital": 0.25},
     },
     "privatizaciones_inversion": {
         "nombre": "Privatizaciones e inversión",
@@ -401,19 +403,7 @@ INDICADORES_SUSPENDIDOS = {
                                "absorciones y disoluciones, y una fuente que un "
                                "tercero pueda reproducir.",
     },
-    "litigiosidad_laboral": {
-        "dimension": "reforma_laboral",
-        "desde": "2026-10",
-        "desde_txt": "octubre de 2026",
-        "adr": "0369",
-        "por_que": "Son juicios por accidentes y enfermedades del trabajo, y la "
-                   "reforma laboral apunta a las indemnizaciones por despido: "
-                   "no miden su resultado. El resultado queda medido con todos "
-                   "los juicios laborales de la Justicia Nacional del Trabajo.",
-        "condicion_reingreso": "Que la reforma alcance al sistema de riesgos "
-                               "del trabajo, o una serie nacional de juicios "
-                               "por despido que la complemente.",
-    },
+
     "masa_salarial": {
         "dimension": "reforma_estado",
         "desde": "2026-08",

@@ -499,7 +499,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   juicios_trabajo_capital: {
     que: "Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital: los entrados en primera instancia en los últimos 12 meses contra los 12 previos, según la Oficina de Estadísticas del Consejo de la Magistratura.",
-    aporta: "Cuenta todos los juicios laborales —despidos, diferencias salariales, accidentes—, pero sólo los de la Capital. Lo pidió la auditoría de CiGob. Describe la evolución de los juicios y no atribuye a la reforma sus subas o bajas.",
+    aporta: "Es la otra cara de la litigiosidad: cuenta todos los juicios laborales —despidos, diferencias salariales, accidentes—, no sólo los de riesgos del trabajo, pero sólo los de la Capital. Lo pidió la auditoría de CiGob. Como la medida de la SRT, describe la evolución de los juicios y no atribuye a la reforma sus subas o bajas.",
     frecuencia: "Semestral (el 2º semestre sale hacia mayo del año siguiente)", tipo: "Variación 12m",
   },
   alertas_manifestacion: {
@@ -526,7 +526,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   // ITCG
   reformas_economicas: "El corazón de la promesa económica: la normalización cambiaria, vista en la brecha entre el dólar financiero y el oficial; la carga de impuestos sobre el comercio exterior, y la desregulación normativa.",
   reforma_estado: "El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario. El puntaje máximo refleja el cumplimiento de las referencias fijadas para esas dos variables; no implica que se haya completado la reforma y transformación del Estado. La de dotación es la meta de recortar otro 10% de la planta en 2026, que informó la prensa citando fuentes oficiales (el Gobierno no publicó un número); la de gasto de funcionamiento es una referencia propia, porque no hay meta oficial con la que compararlo.",
-  reforma_laboral: "Combina, mitad y mitad, las etapas del Fondo de Asistencia Laboral con los juicios laborales que se inician en la Justicia Nacional del Trabajo de la Capital, que incluyen los despidos. Esos juicios describen la conflictividad laboral: no permiten atribuir sus variaciones a la reforma.",
+  reforma_laboral: "Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con dos medidas de juicios laborales, un cuarto cada una: los del sistema de riesgos del trabajo en todo el país, que cuentan accidentes y enfermedades, y todos los que se inician en la Justicia Nacional del Trabajo de la Capital, que incluyen los despidos. Esos juicios describen la conflictividad laboral: no permiten atribuir sus variaciones a la reforma.",
   privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.",
   social_orden: "Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la derivación directa de aportes a prepagas. La caída de cortes no identifica por sí sola el efecto del protocolo.",
   // ITCIS

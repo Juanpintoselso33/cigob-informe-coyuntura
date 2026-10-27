@@ -626,12 +626,13 @@ def test_gestion_itcg_reconcilia():
     # 14 → 13: salió `reestructuracion_organismos` (ADR-0247)
     # 13 → 14: entra `juicios_trabajo_capital` (ADR-0365)
     # 14 → 13: sale `litigiosidad_laboral` (ADR-0369)
-    assert len(en_indice) == 13, f"esperaba 13 indicadores en el índice, hay {len(en_indice)}"
+    # 13 → 14: vuelve `litigiosidad_laboral` (ADR-0379)
+    assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
     assert contexto == {}, ("gestión no publica indicadores que no puntúen: "
                             f"{sorted(contexto)}")
-    assert len(c["indicadores"]) == 13, "el snapshot no debe traer cards sin puntaje"
+    assert len(c["indicadores"]) == 14, "el snapshot no debe traer cards sin puntaje"
     assert "asistencia_directa" in en_indice, "la promesa cumplida puntúa (ADR-0189)"
-    assert "juicios_trabajo_capital" in en_indice and "litigiosidad_laboral" not in en_indice
+    assert "juicios_trabajo_capital" in en_indice and "litigiosidad_laboral" in en_indice
     # Los cuatro que no puntúan quedan OCULTOS del snapshot (GESTION_OCULTOS):
     # los 2 de contexto por ADR-0051, y la promesa cumplida y el suspendido por
     # ADR-0189. Nada de esto deja de medirse — colector, stores y series siguen
