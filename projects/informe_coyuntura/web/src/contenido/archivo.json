@@ -2,7 +2,7 @@
  "meses": [
   {
    "mes": "2026-09",
-   "corrida": "c1fba585a2",
+   "corrida": "9185d0ec07",
    "generado": "2026-09-30T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 4.0,
@@ -29,11 +29,11 @@
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4087
+   "peso_kb": 4085
   },
   {
    "mes": "2026-08",
-   "corrida": "c1fba585a2",
+   "corrida": "9185d0ec07",
    "generado": "2026-08-31T20:00:00-03:00",
    "modo": "series_cortadas",
    "score_global": 4.0,
@@ -54,20 +54,20 @@
      "estado": "tensionado"
     },
     "gestion": {
-     "score": 2.5,
+     "score": 2.6,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4048
+   "peso_kb": 4046
   },
   {
    "mes": "2026-07",
-   "corrida": "c1fba585a2",
+   "corrida": "9185d0ec07",
    "generado": "2026-07-31T20:00:00-03:00",
    "modo": "series_cortadas",
-   "score_global": 4.0,
+   "score_global": 4.1,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
@@ -85,20 +85,20 @@
      "estado": "tensionado"
     },
     "gestion": {
-     "score": 2.6,
+     "score": 2.8,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 4003
+   "peso_kb": 4002
   },
   {
    "mes": "2026-06",
-   "corrida": "c1fba585a2",
+   "corrida": "9185d0ec07",
    "generado": "2026-06-30T20:00:00-03:00",
    "modo": "series_cortadas",
-   "score_global": 3.9,
+   "score_global": 4.0,
    "riesgo_dominante": "político",
    "cinturon_dominante": "vida_cotidiana",
    "alerta_multicinturon": false,
@@ -116,13 +116,13 @@
      "estado": "en_tension"
     },
     "gestion": {
-     "score": 2.6,
+     "score": 2.7,
      "estado": "estable"
     }
    },
    "pagina": true,
    "quitados": [],
-   "peso_kb": 3924
+   "peso_kb": 3922
   }
  ]
 }
