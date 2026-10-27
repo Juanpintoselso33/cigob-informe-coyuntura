@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-27T12:45:09.839070-03:00",
+    "snapshot": "2026-10-27T14:14:17.685680-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -152,51 +152,52 @@
     }
   },
   "itcp": {
-    "valor_publicado": 74.3,
-    "valor_recomputado": 74.3,
+    "valor_publicado": 73.6,
+    "valor_recomputado": 73.6,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 74.3,
-        "p05": 73.3,
-        "p95": 75.2,
-        "desvio": 0.59
+        "media": 73.6,
+        "p05": 72.7,
+        "p95": 74.5,
+        "desvio": 0.56
       },
       "combinado": {
-        "media": 74.0,
-        "p05": 72.6,
-        "p95": 75.3,
-        "desvio": 0.81
+        "media": 73.4,
+        "p05": 72.0,
+        "p95": 74.7,
+        "desvio": 0.8
       },
       "insumos": {
-        "media": 74.0,
-        "p05": 73.0,
-        "p95": 75.0,
-        "desvio": 0.59
+        "media": 73.4,
+        "p05": 72.4,
+        "p95": 74.3,
+        "desvio": 0.58
       }
     },
     "leave_one_out": {
-      "apoyo_empresario": 78.5,
-      "apoyo_comercio": 70.1,
-      "votos_sobre_bancas": 76.8,
-      "cohesion_bloque": 71.8,
-      "conflictividad_nacional": 76.6,
-      "cobertura_judicial": 76.6,
-      "jornadas_individuales_no_trabajadas_12m": 72.7,
-      "produccion_legislativa": 75.5,
-      "adhesion_reformas_provincial": 73.1,
-      "insistencias_vetos": 73.2,
-      "rechazos_decretos": 73.2,
-      "ratio_dnu": 75.2,
-      "alineamiento_senadores_prov": 75.2,
-      "transferencias_no_automaticas": 74.6,
-      "eficacia_legislativa": 74.5
+      "cohesion_bloque": 71.1,
+      "votos_sobre_bancas": 76.1,
+      "apoyo_comercio": 71.2,
+      "conflictividad_nacional": 76.0,
+      "cobertura_judicial": 75.9,
+      "apoyo_empresario": 75.4,
+      "jornadas_individuales_no_trabajadas_12m": 72.1,
+      "produccion_legislativa": 74.9,
+      "adhesion_reformas_provincial": 72.4,
+      "insistencias_vetos": 72.5,
+      "rechazos_decretos": 72.5,
+      "ratio_dnu": 74.5,
+      "alineamiento_senadores_prov": 74.5,
+      "apoyo_campo": 74.3,
+      "transferencias_no_automaticas": 74.0,
+      "eficacia_legislativa": 73.8
     },
     "tension": {
       "base": 2.6,
       "rango_combinado": [
         2.5,
-        2.7
+        2.8
       ]
     }
   }

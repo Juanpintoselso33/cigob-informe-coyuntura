@@ -220,6 +220,13 @@
     },
     {
       "indice": "ITCP",
+      "indicador": "apoyo_campo",
+      "n": 10,
+      "estado": "historia_corta",
+      "detalle": "10 meses: por debajo del mínimo de 18 para diagnosticar"
+    },
+    {
+      "indice": "ITCP",
       "indicador": "judicializacion",
       "n": 11,
       "estado": "historia_corta",
@@ -444,10 +451,10 @@
     {
       "indice": "ITCP",
       "indicador": "apoyo_empresario",
-      "n": 21,
+      "n": 20,
       "piso": 10,
       "techo": 100,
-      "share_piso": 0.19,
+      "share_piso": 0.2,
       "share_techo": 0.0,
       "estado": "ok",
       "detalle": "sin saturación relevante"

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-27 12:45:09"
+generado: "2026-10-27 14:14:17"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -50,8 +50,9 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ratio_dnu | 1.094 | DNUs publicados por ley publicada | 2026-10-27 | fresco |
-| apoyo_empresario | -0.4 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | fresco |
+| apoyo_empresario | -0.4 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
 | apoyo_comercio | 1.0 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | fresco |
+| apoyo_campo | -0.148 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | fresco |
 | conflictividad_nacional | -27.2 | % vs 2023 | 2026-09-01 | fresco |
 | jornadas_individuales_no_trabajadas_12m | 4820775 | jornadas individuales no trabajadas (12m) | 2026-07-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-08-23 | fresco |
@@ -126,5 +127,9 @@ schema_version: "1.2.0"
 | masa_salarial | -32.65 | % de variación real vs 2023-08 (SPN remuneraciones) | 2026-08-01 | agosto de 2026 | CIGOB pidió sacarlo del índice: la forma de exponer estos datos genera dudas sobre las afirmaciones que permiten sostener, y no conviene incluirlo hasta tener certeza. El dato se sigue relevando cada mes, pero no puntúa ni se publica como tarjeta. |
 | reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-10-27 | agosto de 2026 (ADR-0247) | El porcentaje dividía cosas de unidades distintas: 11 son NORMAS —que afectan unas 18 entidades— y 45 es una convención documental, no una meta oficial. Además el buscador se salteaba cierres conocidos como el del ENOHSA. Un avance sobre un denominador que nadie fijó no es un porcentaje de avance. |
 
+## Advertencias
+
+- `desactualizado:politica:apoyo_empresario`
+
 ---
-*Generado por CIGOB — 2026-10-27 12:45:09 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-27 14:14:17 — schema 1.2.0*

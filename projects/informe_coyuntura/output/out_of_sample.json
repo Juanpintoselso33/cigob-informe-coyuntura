@@ -219,6 +219,11 @@
       "motivo": "sin ventana fuera de muestra utilizable"
     },
     {
+      "indicador": "apoyo_campo",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
       "indicador": "apoyo_comercio",
       "n_fuera": 0,
       "motivo": "sin ventana fuera de muestra utilizable"

@@ -122,7 +122,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 25% |
 | Peso efectivo en el índice | **3.8%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `historia_larga` — calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023; vuelve al índice con ADR-0379) |
 
 **Bandas**: ≤ -15 → 100 · -15–-5 → 85 · -5–5 → 65 · 5–20 → 40 · > 20 → 10
 

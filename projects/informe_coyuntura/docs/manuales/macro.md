@@ -238,7 +238,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 50% |
 | Peso efectivo en el índice | **5.5%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `historia_larga` — historia 1997-2026: p10≈75, p25≈87, mediana≈106 — 29 años, cinco gobiernos (vuelve a puntuar solo con ADR-0375) |
 
 **Bandas**: > 110 → 100 · 95–110 → 80 · 85–95 → 60 · 75–85 → 35 · ≤ 75 → 10
 
@@ -252,7 +252,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 50% |
 | Peso efectivo en el índice | **5.5%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `convencion` — percentiles p0/p25/p50/p75/p100 de 4T-2023 / 2T-2026 —11 trimestres del período medido— llevados a 10-100 (ADR-0360, tarjeta propia desde ADR-0375; la matriz de cuatro esquinas pasó a la dimensión) |
 
 **Bandas**: > 148.15 → 100 · 143.63–148.15 → 78 · 140.4–143.63 → 55 · 138.1–140.4 → 32 · ≤ 138.1 → 10
 

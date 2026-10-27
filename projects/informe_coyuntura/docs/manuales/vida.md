@@ -223,7 +223,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 60% |
 | Peso efectivo en el índice | **14.5%** |
-| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+| Procedencia del ancla | `conceptual` — tasa de empleo contra el mismo trimestre de 2023 (0 pp = 100), cada décima de punto vale 1 punto del índice; ancla en fecha fija antes del mandato (ADR-0383) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 

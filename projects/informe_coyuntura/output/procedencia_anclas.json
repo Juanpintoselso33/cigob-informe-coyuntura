@@ -226,7 +226,7 @@
       "peso_total": 0.9999999999999999,
       "categorias": {
         "externa": 0.15806,
-        "conceptual": 0.39787000000000006,
+        "conceptual": 0.39787,
         "convencion": 0.36881,
         "historia_larga": 0.07526000000000001
       },
@@ -250,18 +250,6 @@
           "motivo": "umbral de diseño conservado en 74 leyes/año; referencia corregida al 2026-09-08: 1.320 leyes distintas de 2008-2025 / 18 = 73,3 por año; no es el promedio exacto ni un óptimo normativo (ADR-0168/0306)"
         },
         {
-          "indicador": "apoyo_empresario",
-          "categoria": "conceptual",
-          "peso": 0.0699,
-          "motivo": "el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150)"
-        },
-        {
-          "indicador": "apoyo_comercio",
-          "categoria": "conceptual",
-          "peso": 0.0699,
-          "motivo": "las mismas anclas del saldo de la industria —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie del comercio; no se miró el rango observado, que de hecho toca el extremo +1,0 (ADR-0150, ADR-0380)"
-        },
-        {
           "indicador": "cobertura_judicial",
           "categoria": "conceptual",
           "peso": 0.0645,
@@ -272,6 +260,24 @@
           "categoria": "conceptual",
           "peso": 0.0613,
           "motivo": "anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044)"
+        },
+        {
+          "indicador": "apoyo_empresario",
+          "categoria": "conceptual",
+          "peso": 0.0466,
+          "motivo": "el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150)"
+        },
+        {
+          "indicador": "apoyo_comercio",
+          "categoria": "conceptual",
+          "peso": 0.0466,
+          "motivo": "las mismas anclas del saldo de la industria —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie del comercio; no se miró el rango observado, que de hecho toca el extremo +1,0 (ADR-0150, ADR-0380)"
+        },
+        {
+          "indicador": "apoyo_campo",
+          "categoria": "conceptual",
+          "peso": 0.0466,
+          "motivo": "las mismas anclas del saldo de la industria y del comercio —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie del campo (ADR-0150, ADR-0384)"
         },
         {
           "indicador": "insistencias_vetos",

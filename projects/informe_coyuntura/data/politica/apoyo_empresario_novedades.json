@@ -1,16 +1,28 @@
 {
  "_meta": {
-  "comunicados_vistos": 46,
+  "comunicados_vistos": 47,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie del indicador en el mes anterior al más viejo, y `inventario_verificado` es la última corrida en la que respondieron las dos cámaras (ADR-0310). Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
   "inventario_verificado": "2026-10-27",
-  "nuevos_en_la_corrida": 0,
+  "nuevos_en_la_corrida": 1,
   "ultima_corrida": "2026-10-27"
  },
- "pendientes": {},
+ "pendientes": {
+  "UIA|la-uia-firmo-un-acuerdo-con-la-secretaria-de-indus": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-10-26",
+   "id": "la-uia-firmo-un-acuerdo-con-la-secretaria-de-indus",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "El acuerdo se focaliza en el comercio electrónico y crea una instancia de trabajo permanente para mejorar la detección de prácticas ilegales y la articulación con los organismos de control.    26 de octubre de 2026.  La Unión Industrial Argentina (UIA) y la Secretaría de Industria, Comercio y de la Pequeña y Mediana Empresa firmaron un convenio marco de colaboración para combatir el contrabando, el fraude marcario, la falsificación y las demás formas de comercio ilegítimo. Firmaron el presidente de la UIA, Martín Rappallini, y el secretario de Coordinación de Producción, Pablo Lavigne.  El comercio ilícito representa alrededor del 5% del PBI y genera una pérdida fiscal estimada en USD 2.300 millones al año. Según la III Encuesta UIA, 6 de cada 10 empresas industriales se ven afectadas por el comercio desleal, y 4 de cada 10 sufren la competencia ilegal en la venta electrónica de productos a través de plataformas, redes sociales y marketplaces. El impacto llega a todas las regiones del país y a cada vez más sectores, y pone en riesgo la competencia leal en la industria, sector que genera 1,2 millones de empleos formales y aporta más de la cuarta parte de la recaudación nacional de impuestos.  El convenio firmado prevé instancias de trabajo coordinadas para articular acciones de revisión normativa, y busca incorporar herramientas tecnológicas y controles sistémicos que mejoren la detección de contrabando, fraude marcario y venta de productos fuera de norma, tanto en puntos de venta físicos como en plataformas digitales. También crea mecanismos de intercambio de información con la Secretaría, por categorías de productos sospechosos que compiten deslealmente con la producción local, tanto en puntos de venta físicos como digitales, para identificar a quienes operan de manera ilegítima.   Este convenio se firma en simultáneo con el que la Secretaría refrendó con las principales empresas líderes de plataformas digitales, marketplaces y sus cámaras de representación, como forma de articular las acciones derivadas para mejorar los mecanismos de información y fiscalización. Además, habilita convenios específicos con los organismos de control: ARCA y la Dirección General de Aduanas, la Autoridad Nacional de la Competencia, el INPI, SENASA, ANMAT y las fuerzas de seguridad federales.  La Secretaría y la UIA acordarán un plan de trabajo semestral con monitoreo trimestral, con informes del estado avance de las denuncias recibidas, en forma agregada, y demás acciones desarrolladas. Por la UIA, el seguimiento estará a cargo de la Mesa UIA de Acciones contra el Contrabando, el Comercio Ilegítimo y la Competencia Desleal, que integran cámaras sectoriales y regionales.  “El comercio ilegal destruye empleo formal, evade impuestos y pone en riesgo a los consumidores. La industria, que cumple con todas las normas, no puede competir con productos que ingresan o se venden por fuera de la ley. Con este convenio aunamos esfuerzos, sumamos tecnología, información y articulación con los organismos de control para que la fiscalización llegue a donde tiene que llegar”, señaló Martín Rappallini.  El acuerdo es parte de la agenda que la UIA impulsa desde 2025 junto a sus cámaras socias. Esa agenda ya permitió crear un formulario único de denuncias con Defensa del Consumidor, capacitar a las fuerzas de seguridad de Gendarmería, Prefectura y Policía Federal en distintas provincias y trabajar con el Ministerio de Seguridad en la canalización de denuncias y fortalecer operativos en frontera. Entre sus propuestas, la UIA plantea:",
+   "titulo": "La UIA firmó un acuerdo con la Secretaría de Industria para combatir la venta ilegal",
+   "url": "https://www.uia.org.ar/uia/novedades/la-uia-firmo-un-acuerdo-con-la-secretaria-de-indus"
+  }
+ },
  "revisadas": {
   "AEA|2020-03-21-union-y-responsabilidad-ante-el-desafio-": {
    "origen": "codificacion ADR-0148"
@@ -412,6 +424,10 @@
    "fecha": "2026-06-05",
    "origen": "codificado 2026-09-14 (tanda en apoyo_empresario_codificacion.json)",
    "titulo": "La UIA destacó en Ginebra la importancia de la modernización laboral"
+  },
+  "UIA|la-uia-firmo-un-acuerdo-con-la-secretaria-de-indus": {
+   "fecha": "2026-10-26",
+   "titulo": "La UIA firmó un acuerdo con la Secretaría de Industria para combatir la venta ilegal"
   },
   "UIA|la-uia-lanza-la-primera-edicion-del-curso-de-forta": {
    "fecha": "2026-04-28",
