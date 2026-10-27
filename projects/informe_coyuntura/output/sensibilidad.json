@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-26T22:37:24.210817-03:00",
+    "snapshot": "2026-10-26T22:42:38.827020-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -109,47 +109,47 @@
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 93.5,
-        "p05": 91.7,
+        "media": 93.6,
+        "p05": 91.9,
         "p95": 95.3,
-        "desvio": 1.09
+        "desvio": 1.03
       },
       "combinado": {
-        "media": 93.5,
-        "p05": 91.7,
+        "media": 93.6,
+        "p05": 91.9,
         "p95": 95.3,
-        "desvio": 1.08
+        "desvio": 1.02
       }
     },
     "leave_one_out": {
       "alquiler_real": 96.6,
       "peso_tarifas": 90.8,
-      "pobreza_nowcast": 91.8,
+      "brecha_salario_cbt": 96.3,
       "mora_familias": 95.3,
-      "consumo_supermercados": 95.0,
-      "ipc_alimentos": 92.3,
+      "pobreza_nowcast": 92.1,
+      "ipc_alimentos": 92.2,
+      "consumo_supermercados": 94.7,
       "icg_utdt": 92.5,
       "carga_servicio_deuda_hogares": 92.8,
       "inseguridad": 94.3,
       "despacho_cemento": 94.1,
-      "brecha_salario_cbt": 94.0,
-      "motorizacion_total": 93.2,
+      "motorizacion_total": 93.1,
       "informalidad": 93.2,
       "tasa_homicidios": 93.2,
       "empleo_registrado": 93.3,
-      "ratio_motos_autos": 93.8,
-      "consumo_carne_vacuna": 93.7,
-      "subocupacion_demandante": 93.7,
+      "ratio_motos_autos": 93.7,
       "mortalidad_pymes": 93.5,
+      "trabajo_independiente": 93.5,
       "consumo_carnes_total": 93.6,
-      "trabajo_independiente": 93.6,
+      "consumo_carne_vacuna": 93.6,
+      "subocupacion_demandante": 93.6,
       "tasa_robos": 93.6
     },
     "tension": {
       "base": 6.3,
       "rango_combinado": [
         5.9,
-        6.7
+        6.6
       ]
     }
   },

@@ -69,7 +69,11 @@ def test_itvc_reproduce_ejemplo():
     # ADR-0328: `ratio_motos_autos` no está en EJEMPLO (None → renormaliza),
     # así que el puntaje de la dimensión no se mueve por su entrada — el
     # mismo comportamiento que ya tenían pobreza_nowcast/alquiler_real.
-    assert dims["ingresos"]["puntaje"] == 90.3
+    # ADR-0373: ingresos queda con salario y pobreza; el EJEMPLO no trae
+    # pobreza, así que la dimensión ES la brecha (87,5). Consumo renormaliza
+    # sobre carnes y motorización.
+    assert dims["ingresos"]["puntaje"] == 87.5
+    assert dims["consumo"]["puntaje"] == 111.1
     assert dims["precios"]["puntaje"] == 75.3
     # ADR-0231: mora 70% + carga del servicio de deuda 30%.
     assert dims["vulnerabilidad"]["puntaje"] == 63.0
@@ -106,8 +110,10 @@ def test_itvc_reproduce_ejemplo():
     # índice con huecos pesa más que en la corrida real: sobre el snapshot del
     # 15-sep-2026, con los componentes vigentes, el ITVC pasó de 93,0 a 93,1
     # (+0,1; ver ADR-0314 para el detalle).
-    assert r["valor"] == 84.9
-    assert r["banda"] == "deterioro_sustancial"
+    # ADR-0373: 84,9 → 86,1. Con datos faltantes la renormalización ocurre
+    # dentro de cada mitad de la dimensión partida.
+    assert r["valor"] == 86.1
+    assert r["banda"] == "deterioro_moderado"   # 86,1 cruza el corte de 85
     assert r["ajustes_aplicados"] == []
 
 
@@ -123,9 +129,11 @@ def test_pesos_del_documento():
     quedan ABSORBEN proporcionalmente; las dos operaciones conservan el orden
     relativo y ninguna toca los pesos NOMINALES de dimensión, que no se
     modificaron nunca."""
+    # ADR-0373: «Ingresos y consumo» (0,2806) se parte en ingresos + consumo.
     pesos = {k: d["peso"] for k, d in itvc.DIMENSIONES_ITVC.items()}
-    assert pesos == {"ingresos": 0.2806, "precios": 0.25, "vulnerabilidad": 0.10,
-                     "empleo": 0.2419, "percepcion": 0.0825, "seguridad": 0.045}
+    assert pesos == {"ingresos": 0.2016, "consumo": 0.0790, "precios": 0.25,
+                     "vulnerabilidad": 0.10, "empleo": 0.2419, "percepcion": 0.0825,
+                     "seguridad": 0.045}
     assert abs(sum(pesos.values()) - 1.0) < 1e-9
     d = itvc.DIMENSIONES_ITVC
     # ADR-0153: entra pobreza_nowcast con 25% y los cuatro previos ceden ×0,75
@@ -151,14 +159,25 @@ def test_pesos_del_documento():
     # ADR-0328: entra `ratio_motos_autos` con 2,5% y los seis anteriores ceden
     # ×0,975 (mismo requisito de exactitud: 2,5% y no 3% es lo que hace que el
     # redondeo a 4 decimales de cada componente siga sumando 1,0 exacto).
-    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.4648,
-                                            "pobreza_nowcast": 0.2537,
-                                            "consumo_carnes_total": 0.0153,
-                                            "consumo_carne_vacuna": 0.0153,
-                                            "motorizacion_total": 0.0309,
-                                            "consumo_supermercados": 0.1950,
-                                            "ratio_motos_autos": 0.0250}
-    assert abs(sum(d["ingresos"]["indicadores"].values()) - 1.0) < 1e-9
+    # ADR-0373: la dimensión se parte en dos conservando el peso efectivo de
+    # cada componente (los internos de arriba, reescalados a cada mitad).
+    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.6469,
+                                            "pobreza_nowcast": 0.3531}
+    assert d["consumo"]["indicadores"] == {"consumo_supermercados": 0.6926,
+                                           "motorizacion_total": 0.1098,
+                                           "ratio_motos_autos": 0.0888,
+                                           "consumo_carnes_total": 0.0544,
+                                           "consumo_carne_vacuna": 0.0544}
+    antes = {"brecha_salario_cbt": 0.4648, "pobreza_nowcast": 0.2537,
+             "consumo_carnes_total": 0.0153, "consumo_carne_vacuna": 0.0153,
+             "motorizacion_total": 0.0309, "consumo_supermercados": 0.1950,
+             "ratio_motos_autos": 0.0250}
+    for k, v in antes.items():
+        dim = "ingresos" if k in d["ingresos"]["indicadores"] else "consumo"
+        efectivo = d[dim]["peso"] * d[dim]["indicadores"][k]
+        assert abs(efectivo - 0.2806 * v) < 5e-5, f"{k} cambió su peso efectivo"
+    for dim in ("ingresos", "consumo"):
+        assert abs(sum(d[dim]["indicadores"].values()) - 1.0) < 1e-9
     # ADR-0154 saca endeudamiento; ADR-0231 agrega carga del servicio de deuda,
     # una señal previa al incumplimiento que complementa la mora.
     assert d["vulnerabilidad"]["indicadores"] == {
@@ -261,7 +280,10 @@ def test_ajuste_manual_del_analista():
     # EJEMPLO no trae alquiler_real (ADR-0111), así que precios renormaliza
     # sobre los dos componentes del doc: 0,4375×95 + 0,5625×80 = 86,6
     assert r["dimensiones"]["precios"]["puntaje"] == 86.6
-    assert r["valor"] == 88.0   # 90,3 → 90,5 con ADR-0248 → 88,0 con ADR-0314
+    # 90,3 → 90,5 con ADR-0248 → 88,0 con ADR-0314 → 89,2 con ADR-0373: con
+    # componentes faltantes, la renormalización ahora ocurre dentro de cada
+    # mitad, así que el consumo del EJEMPLO pesa su 7,9% entero.
+    assert r["valor"] == 89.2
 
 
 def test_sin_datos_devuelve_none():

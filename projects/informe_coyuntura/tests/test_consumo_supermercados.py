@@ -123,7 +123,7 @@ def _con_libro(monkeypatch, filas, **kw):
 def test_es_componente_del_indice():
     comp = {i for d in itvc.DIMENSIONES_ITVC.values() for i in d["indicadores"]}
     assert CLAVE in comp, "dejó de ser componente del ITCIS"
-    assert CLAVE in itvc.DIMENSIONES_ITVC["ingresos"]["indicadores"]
+    assert CLAVE in itvc.DIMENSIONES_ITVC["consumo"]["indicadores"]   # ADR-0373
 
 
 def test_no_puede_estar_en_el_panel_de_validacion():
@@ -149,7 +149,7 @@ def test_puntua_y_no_es_card_de_contexto():
     """ADR-0216/0153: o integra el índice, o no es card."""
     assert IND.get("en_indice") is True
     assert IND.get("peso_efectivo", 0) > 0
-    assert IND.get("dimension") == "ingresos"
+    assert IND.get("dimension") == "consumo"   # ADR-0373
 
 
 # ── 2 · El colector revienta en vez de mentir ───────────────────────────────
@@ -214,33 +214,18 @@ def test_la_reconstruccion_lee_la_misma_serie_que_la_card():
 
 # ── 5 · Los pesos: la regla, no los decimales ───────────────────────────────
 def test_entra_con_20_por_ciento_y_los_previos_cedieron():
-    ind = itvc.DIMENSIONES_ITVC["ingresos"]["indicadores"]
-    # Entró con 20% exacto (ADR-0225); ADR-0328 agregó `ratio_motos_autos`
-    # DESPUÉS con una segunda cesión (×0,975) sobre los siete que había en ese
-    # momento, así que el valor VIGENTE de este componente es 19,5% y no 20% —
-    # el 20% de diseño sigue siendo el que corresponde a "recién entrado a la
-    # dimensión", que es lo que se verifica dos líneas más abajo.
-    assert ind[CLAVE] == round(0.20 * 0.975, 4)
-    assert abs(sum(ind.values()) - 1.0) < 1e-9
-    # los CUATRO previos, contra lo que tenían antes de esta alta. Eran cinco
-    # cuando el alta se escribió; ADR-0224 fundió los dos vehículos en
-    # `motorizacion_total` mientras la rama estaba abierta, y la cesión se
-    # recalculó sola sobre lo que quedó — que es para lo que existe
-    # `alta_proporcional`.
-    # ADR-0322 partió `consumo_carnes_total` (0,0392) en dos componentes que
-    # puntúan por separado; la cesión ×0,80 se aplica sobre cada uno.
-    # ADR-0328 aplica una SEGUNDA cesión ×0,975 sobre el resultado de la
-    # primera (entra `ratio_motos_autos`), así que el valor vigente de cada
-    # previo es ×0,80×0,975 y no sólo ×0,80.
-    previos = {"brecha_salario_cbt": 0.5959, "pobreza_nowcast": 0.3253,
-               "consumo_carne_vacuna": 0.0196, "consumo_carnes_total": 0.0196,
-               "motorizacion_total": 0.0396}
-    for k, v in previos.items():
-        assert abs(ind[k] - round(round(v * 0.80, 4) * 0.975, 4)) < 1e-9, f"{k} no cedió ×0,80×0,975"
+    """Entró con 20% de «Ingresos y consumo» (ADR-0225) y ADR-0328 lo llevó a
+    19,5%. ADR-0373 partió la dimensión conservando los pesos efectivos, así
+    que lo que se verifica es que siga aportando 0,2806 × 0,195 del índice."""
+    d = itvc.DIMENSIONES_ITVC["consumo"]
+    assert abs(d["peso"] * d["indicadores"][CLAVE] - 0.2806 * round(0.20 * 0.975, 4)) < 5e-5
+    assert abs(sum(d["indicadores"].values()) - 1.0) < 1e-9
 
 
 def test_el_peso_nominal_de_la_dimension_no_se_toco():
-    assert itvc.DIMENSIONES_ITVC["ingresos"]["peso"] == 0.2806
+    """ADR-0373: las dos mitades suman el 0,2806 de la dimensión original."""
+    d = itvc.DIMENSIONES_ITVC
+    assert d["ingresos"]["peso"] + d["consumo"]["peso"] == pytest.approx(0.2806)
 
 
 # ── 6 · El cinturón sigue sin ancla única ───────────────────────────────────

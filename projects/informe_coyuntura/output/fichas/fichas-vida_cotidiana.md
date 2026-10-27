@@ -42,11 +42,12 @@ Componentes que puntúan en este corte: 22 de 22 publicados.
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
-| Ingresos y consumo | Si el sueldo alcanza y qué compra. | 109,0 | VERDE | 28,1 % |
 | Presión de precios | Tres gastos sensibles. | 97,7 | AMARILLO | 25,0 % |
 | Prospectivas de empleo | Combina informalidad asalariada y empleo privado registrado con empleadores de 1 a 50 trabajadores cubiertos por una aseguradora de riesgos del trabajo, el… | 91,6 | NARANJA | 24,2 % |
+| Ingresos | Si el ingreso alcanza. | 114,6 | VERDE | 20,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,7 | ROJO | 10,0 % |
 | Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 105,8 | VERDE | 8,2 % |
+| Consumo | Lo que efectivamente se compra. | 94,6 | NARANJA | 7,9 % |
 | Seguridad | Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. | 115,9 | VERDE | 4,5 % |
 
 ```{=openxml}
@@ -61,14 +62,6 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCIS |
 |---|---|---|---|---|
-| **DIMENSIÓN: Ingresos y consumo** | | | | |
-| Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,69 canastas (RIPTE/CBT) | VERDE | 13,0 % |
-| Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de la… | 46,75 kg/hab/año | NARANJA | 0,4 % |
-| Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero… | 113,94 kg/hab/año | NARANJA | 0,4 % |
-| Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,3 % de personas | VERDE | 7,1 % |
-| Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 31,73 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
-| Ratio motos/autos | Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. | 1,54 motos por cada auto patentado (móvil 12m) | ROJO | 0,7 % |
-| Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 80,5 índice (2017 = 100, desestacionalizado) | NARANJA | 5,5 % |
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,66 % m/m | VERDE | 8,8 % |
 | Canasta de servicios públicos / salario | Qué porcentaje del salario registrado promedio (la remuneración imponible promedio de los trabajadores estables, RIPTE)… | 13 % del salario RIPTE | VERDE | 11,2 % |
@@ -80,11 +73,20 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Construcción | Nivel de actividad de la construcción medido por el indicador sintético de la actividad de la construcción (ISAC)… | 140,7 índice ISAC | ROJO | 3,3 % |
 | Subocupación demandante | Qué porcentaje de la población económicamente activa (PEA) trabaja menos horas de las que quisiera y además está… | 8 % de la PEA | NARANJA | 1,2 % |
 | Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.095,84 miles de puestos | AMARILLO | 5,4 % |
+| **DIMENSIÓN: Ingresos** | | | | |
+| Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,69 canastas (RIPTE/CBT) | VERDE | 13,0 % |
+| Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,3 % de personas | VERDE | 7,1 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
 | Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,61 % de la cartera en situación irregular | ROJO | 7,0 % |
 | Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | ROJO | 3,0 % |
 | **DIMENSIÓN: Confianza y percepción** | | | | |
 | Confianza en el Gobierno | Cuánta confianza tiene la población en el Gobierno nacional, según la encuesta mensual de la Universidad Torcuato Di… | 1,94 índice 0-5 | VERDE | 8,2 % |
+| **DIMENSIÓN: Consumo** | | | | |
+| Consumo de carne vacuna per cápita | Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses, según el tablero oficial de la… | 46,75 kg/hab/año | NARANJA | 0,4 % |
+| Consumo total de carnes per cápita | Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio móvil de doce meses, según el tablero… | 113,94 kg/hab/año | NARANJA | 0,4 % |
+| Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 31,73 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
+| Ratio motos/autos | Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. | 1,54 motos por cada auto patentado (móvil 12m) | ROJO | 0,7 % |
+| Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 80,5 índice (2017 = 100, desestacionalizado) | NARANJA | 5,5 % |
 | **DIMENSIÓN: Seguridad** | | | | |
 | Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 2,7 % |
 | Tasa de homicidios dolosos | Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC)… | 3,48 homicidios dolosos cada 100.000 hab. | VERDE | 1,1 % |
@@ -113,7 +115,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | brecha_salario_cbt | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | canastas (RIPTE/CBT) |
+| **DIMENSIÓN EN EL ITCIS** | Ingresos | **UNIDAD DE MEDIDA** | canastas (RIPTE/CBT) |
 | **SERIE DISPONIBLE** | 2021-09 → 2026-08 (60 puntos) | **REZAGO DE PUBLICACIÓN** | El salario formal (RIPTE) corre un mes detrás de la canasta: el par común queda ~2 meses atrás del calendario. |
 | **PRODUCTOR DEL DATO** | Secretaría de Trabajo (RIPTE) + INDEC (Canasta Básica Total) | **OPERACIÓN ESTADÍSTICA** | RIPTE — remuneración imponible promedio de los trabajadores estables ÷ Canasta Básica Total por adulto equivalente |
 | **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API de series para la canasta; el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-26 |
@@ -124,7 +126,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 
 Mide el poder adquisitivo real del ingreso, lo que la gente siente en el bolsillo.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos.** Si el ingreso alcanza: la brecha entre el salario registrado y la canasta de pobreza, y la pobreza estimada mes a mes, que alcanza también a los hogares informales y a los que no viven de un salario.
 
 ## Método de cómputo
 
@@ -176,6 +178,8 @@ Ponderación vigente en el ITCIS: 13 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Cada actualización re-descarga las series completas y adopta las revisiones de las fuentes; con canasta fresca sin salario, el par se declara provisorio.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Ingresos» junto a la pobreza. Su peso interno pasa de 46,48% a 64,69% porque la dimensión es más chica; su peso en el índice no cambia (13,04%).
 
 **2026-07-03** — Entra al índice de impacto social base-100 como rebase directo del cociente, con 22,75% de peso efectivo.
 
@@ -468,7 +472,7 @@ Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | consumo_carne_vacuna | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
+| **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-08 (44 puntos) | **REZAGO DE PUBLICACIÓN** | El tablero oficial publica el mes con unas semanas de demora; la faena del INDEC, con dos meses. El titular avanza con el tablero y el índice con la faena. |
 | **PRODUCTOR DEL DATO** | SAGYP (nivel) e INDEC (evolución) | **OPERACIÓN ESTADÍSTICA** | Nivel: SAGYP — Dirección Nacional de Producción Ganadera, tablero de consumo per cápita de carnes, promedio móvil de 12 meses (vacuna). Evolución: faena mensual en toneladas de vacunos (INDEC, serie 40.3_VT_0_M_17), per cápita con la población proyectada del INDEC. |
 | **MODO DE ACCESO** | Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-26 |
@@ -479,7 +483,7 @@ Consumo aparente de carne vacuna por habitante, en promedio móvil de doce meses
 
 Mide específicamente la carne vacuna, que es la que el consumo aparente argentino trata como aspiracional y la que más cae. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena de vacunos por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones: una divergencia respecto del consumo puede afectar la interpretación y el puntaje.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
+**Dimensión que integra — Consumo.** Lo que efectivamente se compra: las ventas de supermercados a precios constantes, la motorización total —autos y motos 0 km por habitante— y cuántas motos se patentan por cada auto, y el consumo de carnes. Se mueven con el poder de compra, pero también con el crédito y los precios relativos.
 
 ## Método de cómputo
 
@@ -533,6 +537,8 @@ Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-26** — La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Consumo». Su peso interno pasa de 1,53% a 5,44%; su peso en el índice no cambia (0,43%).
+
 **2026-07-03** — Entra al índice de impacto social el consumo de carne VACUNA (CICCRA), con línea de base documentada.
 
 **2026-08-12** — Se suma el consumo total de las tres carnes y la matriz que distingue sustitución de pérdida de acceso; el nivel pasa al tablero de SAGYP.
@@ -566,7 +572,7 @@ Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio mó
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | consumo_carnes_total | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
+| **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-08 (44 puntos) | **REZAGO DE PUBLICACIÓN** | El tablero oficial publica el mes con unas semanas de demora; la faena del INDEC, con dos meses. El titular avanza con el tablero y el índice con la faena. |
 | **PRODUCTOR DEL DATO** | SAGYP (nivel) e INDEC (evolución) | **OPERACIÓN ESTADÍSTICA** | Nivel: SAGYP — Dirección Nacional de Producción Ganadera, tablero de consumo per cápita de carnes, promedio móvil de 12 meses. Evolución: faena mensual en toneladas de vacunos, porcinos y aves (INDEC, series 40.3_VT_0_M_17 · 40.3_PT_0_M_18 · 40.3_AT_0_M_14), per cápita con la población proyectada del INDEC. |
 | **MODO DE ACCESO** | Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-10-26 |
@@ -577,7 +583,7 @@ Consumo aparente por habitante de carne vacuna, aviar y porcina, en promedio mó
 
 La suma y el desglose muestran la evolución agregada de las tres carnes, sin identificar sustituciones dentro de los mismos hogares. El titular usa consumo aparente oficial; el gráfico y el puntaje se reconstruyen con faena por habitante, rebaseada a 4T-2023. La faena mide producción y no descuenta exportaciones: una divergencia respecto del consumo puede afectar la interpretación y el puntaje.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
+**Dimensión que integra — Consumo.** Lo que efectivamente se compra: las ventas de supermercados a precios constantes, la motorización total —autos y motos 0 km por habitante— y cuántas motos se patentan por cada auto, y el consumo de carnes. Se mueven con el poder de compra, pero también con el crédito y los precios relativos.
 
 ## Método de cómputo
 
@@ -630,6 +636,8 @@ Ponderación vigente en el ITCIS: 0,4 % efectivo. El color es una lectura adicio
 - **Política de revisiones:** La faena del INDEC se revisa hacia atrás y la serie se reconstruye entera en cada corrida, así que las revisiones entran solas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Consumo». Su peso interno pasa de 1,53% a 5,44%; su peso en el índice no cambia (0,43%). Sobre si mide consumo o producción: el nivel es el consumo aparente por habitante de la Secretaría de Agricultura —producción menos exportaciones más importaciones—, pero el movimiento mes a mes sale de la faena del INDEC, que es producción; un cambio en las exportaciones se lee como cambio de consumo hasta que la Secretaría actualiza su tablero.
 
 **2026-07-03** — Entra al índice de impacto social el consumo de carne VACUNA (CICCRA), con línea de base documentada.
 
@@ -1481,7 +1489,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | pobreza_nowcast | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | % de personas |
+| **DIMENSIÓN EN EL ITCIS** | Ingresos | **UNIDAD DE MEDIDA** | % de personas |
 | **SERIE DISPONIBLE** | 2025-01 → 2026-08 (20 puntos) | **REZAGO DE PUBLICACIÓN** | El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del INDEC llega dos veces al año y con más demora. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella (estimación mensual) e INDEC (base y referencia oficial) | **OPERACIÓN ESTADÍSTICA** | Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para la base y el contraste |
 | **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-26 |
@@ -1492,7 +1500,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 
 Permite seguir una estimación de pobreza entre publicaciones oficiales. Integra la dimensión de ingresos y consumo con signo invertido: más pobreza reduce el componente. Su peso efectivo se muestra en la composición del índice y no convierte la estimación en una medición oficial mensual.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos.** Si el ingreso alcanza: la brecha entre el salario registrado y la canasta de pobreza, y la pobreza estimada mes a mes, que alcanza también a los hogares informales y a los que no viven de un salario.
 
 ## Método de cómputo
 
@@ -1545,6 +1553,8 @@ Ponderación vigente en el ITCIS: 7,1 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-26** — La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Ingresos» junto al salario. Su peso interno pasa de 25,37% a 35,31%; su peso en el índice no cambia (7,12%).
+
 **2026-07-16** — Alta como estimación mensual publicada junto a la medición oficial, sin integrar el índice.
 
 **2026-07-30** — Entra al índice con 25% de la dimensión de ingresos y consumo. Hasta entonces era una tarjeta visible que no puntuaba, una categoría que el equipo dio de baja: un indicador integra las dimensiones de su índice o no se publica. Se decidió que corresponde a este cinturón y no al macroeconómico, porque las dimensiones de aquel son condiciones de la economía y la pobreza es el resultado social que este cinturón ya mide. Los cuatro componentes previos de la dimensión cedieron peso proporcionalmente y conservan su orden relativo.
@@ -1570,7 +1580,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | motorizacion_total | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | vehículos 0km por cada 1.000 habitantes (12 meses) |
+| **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | vehículos 0km por cada 1.000 habitantes (12 meses) |
 | **SERIE DISPONIBLE** | 2023-01 → 2026-09 (45 puntos) | **REZAGO DE PUBLICACIÓN** | Menos de un mes: el registro publica cada mes en los primeros días del siguiente. Se toma el último mes calendario completo. |
 | **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (unidades) e INDEC (población) | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de automotores y de motovehículos (0 kilómetro), por mes y jurisdicción del registro seccional, sumadas y divididas por la población urbana total proyectada del INDEC. |
 | **MODO DE ACCESO** | Automático: planilla abierta sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-26 |
@@ -1581,7 +1591,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 
 Mide patentamientos totales por habitante y muestra la composición entre autos y motos. Es un proxy de consumo durable: el registro no distingue primeras compras, reposición, flotas ni sustitución entre vehículos de un mismo hogar.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
+**Dimensión que integra — Consumo.** Lo que efectivamente se compra: las ventas de supermercados a precios constantes, la motorización total —autos y motos 0 km por habitante— y cuántas motos se patentan por cada auto, y el consumo de carnes. Se mueven con el poder de compra, pero también con el crédito y los precios relativos.
 
 ## Método de cómputo
 
@@ -1640,6 +1650,8 @@ Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-26** — La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Consumo». Su peso interno pasa de 3,09% a 10,98%; su peso en el índice no cambia (0,87%).
+
 **2026-09-08** — Se limita la interpretación al flujo y la composición de patentamientos. El registro no identifica primeras compras ni transiciones entre vehículos de un mismo hogar. No cambian el cálculo, el peso ni la serie.
 
 **2026-07-03** — Entra al índice de impacto social el patentamiento de motos con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad.
@@ -1675,7 +1687,7 @@ Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil d
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | ratio_motos_autos | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | motos por cada auto patentado (móvil 12m) |
+| **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | motos por cada auto patentado (móvil 12m) |
 | **SERIE DISPONIBLE** | 2007-12 → 2026-09 (226 puntos) | **REZAGO DE PUBLICACIÓN** | Mismo calendario que `motorizacion_total`: menos de un mes, el registro publica cada mes en los primeros días del siguiente. |
 | **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de motovehículos dividido inscripciones iniciales de automotores (0 kilómetro), acumulado móvil de 12 meses, sin Tierra del Fuego. Mismo colector y misma descarga que `motorizacion_total`. |
 | **MODO DE ACCESO** | Automático: planilla abierta sin credenciales, descubierto por catálogo en cada corrida. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-26 |
@@ -1686,7 +1698,7 @@ Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil d
 
 Aísla la composición del flujo de patentamientos que la motorización total mide en nivel: un total que crece mientras este ratio también sube dice que el crecimiento viene de la moto —el vehículo más barato— y no de una mejora pareja. La polaridad es una decisión de contenido, no un hecho aritmético.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
+**Dimensión que integra — Consumo.** Lo que efectivamente se compra: las ventas de supermercados a precios constantes, la motorización total —autos y motos 0 km por habitante— y cuántas motos se patentan por cada auto, y el consumo de carnes. Se mueven con el poder de compra, pero también con el crédito y los precios relativos.
 
 ## Método de cómputo
 
@@ -1739,6 +1751,8 @@ Ponderación vigente en el ITCIS: 0,7 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-26** — La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Consumo», junto a la motorización que descompone. Su peso interno pasa de 2,5% a 8,88%; su peso en el índice no cambia (0,7%).
+
 **2026-09-15** — Nace como magnitud colgada de la tarjeta de `motorizacion_total`: control de lectura pedido por Juan, sin puntaje propio.
 
 **2026-09-16** — Corrección post-merge (revisión adversarial): se amortigua la distancia a 100 a la mitad (factor 0,5) porque el índice nacía saturado en el extremo de la escala con apenas +38,8% de crecimiento sobre la base; se declara la auto-cancelación medida contra `motorizacion_total` (r=+0,40 en niveles, r=−0,251 en la matriz de redundancia) y se cita como precedente la corrección de encuadre de `recaudacion`.
@@ -1766,7 +1780,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | consumo_supermercados | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | índice (2017 = 100, desestacionalizado) |
+| **DIMENSIÓN EN EL ITCIS** | Consumo | **UNIDAD DE MEDIDA** | índice (2017 = 100, desestacionalizado) |
 | **SERIE DISPONIBLE** | 2017-01 → 2026-08 (116 puntos) | **REZAGO DE PUBLICACIÓN** | Medido sobre las 14 publicaciones del calendario del INDEC entre julio de 2025 y agosto de 2026: el mes de referencia sale entre 48 y 57 días después de terminado, con una mediana de 53, y las publicaciones se separan entre 23 y 34 días. El último punto disponible tiene entonces entre dos meses y medio y casi cuatro, según en qué parte de ese ciclo caiga la corrida. Hasta agosto de 2026 la tarjeta sumaba encima el atraso del espejo de datos.gob.ar, unas dos semanas más; desde entonces la serie sale de la planilla del propio INDEC. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada |
 | **MODO DE ACCESO** | Automático: planilla pública sin credenciales. La misma serie espejada en la API de datos.gob.ar se sigue bajando en cada corrida, pero sólo como contraste del número leído. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-10-26 |
@@ -1777,7 +1791,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 
 Mide ventas reales de los supermercados relevados. Complementa ingresos, precios y otros consumos; no cubre toda la compra de alimentos ni el comercio minorista. Los cambios de canal de compra también pueden mover la serie.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
+**Dimensión que integra — Consumo.** Lo que efectivamente se compra: las ventas de supermercados a precios constantes, la motorización total —autos y motos 0 km por habitante— y cuántas motos se patentan por cada auto, y el consumo de carnes. Se mueven con el poder de compra, pero también con el crédito y los precios relativos.
 
 ## Método de cómputo
 
@@ -1830,6 +1844,8 @@ Ponderación vigente en el ITCIS: 5,5 % efectivo. El color es una lectura adicio
 - **Política de revisiones:** La planilla trae el histórico completo en cada corrida, así que una revisión del INDEC —habituales en las series desestacionalizadas, que se recalculan al agregar meses— se incorpora sola y sin dejar huella de la versión anterior. Al publicar junio de 2026, por ejemplo, mayo pasó de 83,2 a 83,0.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-26** — La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Consumo», donde es el componente principal. Su peso interno pasa de 19,5% a 69,26%; su peso en el índice no cambia (5,47%).
 
 **2026-08-21** — Entra al índice de impacto social con 20% de la dimensión de ingresos y consumo, y los cinco componentes previos ceden proporcionalmente conservando su orden relativo. Venía de ser el ancla de validación externa del cinturón: mide condiciones materiales del hogar, así que integra el índice en vez de juzgarlo — la misma regla que había sacado a la confianza del consumidor de ese papel.
 

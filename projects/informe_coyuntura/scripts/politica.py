@@ -6299,7 +6299,7 @@ def _anotar_indicadores_itcp(indicadores: dict, resultado: dict | None) -> None:
             ind.update(por_indicador[nombre])
         else:
             ind["en_indice"] = nombre in itcp.BANDAS_ITCP  # del índice pero sin dato
-            if nombre in itcp.INDICADORES_CONTEXTO:
+            if nombre in itcp.INDICADORES_CONTEXTO or nombre in itcp.INDICADORES_SUSPENDIDOS:
                 ind["en_indice"] = False
 
 

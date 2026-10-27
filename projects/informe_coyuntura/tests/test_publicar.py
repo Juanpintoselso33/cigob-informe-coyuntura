@@ -763,8 +763,10 @@ def test_vida_itvc_reconcilia():
     # ADR-0345: `percepcion` vuelve a publicarse con `icg_utdt`, así que los
     # nominales publicados vuelven a sumar 1,0.
     pesos = {k: d["peso"] for k, d in c["itvc"]["dimensiones"].items()}
-    assert pesos == {"ingresos": 0.2806, "precios": 0.25, "vulnerabilidad": 0.10,
-                     "empleo": 0.2419, "percepcion": 0.0825, "seguridad": 0.045}
+    # ADR-0373: «Ingresos y consumo» (0,2806) se parte en ingresos + consumo.
+    assert pesos == {"ingresos": 0.2016, "consumo": 0.0790, "precios": 0.25,
+                     "vulnerabilidad": 0.10, "empleo": 0.2419, "percepcion": 0.0825,
+                     "seguridad": 0.045}
     assert abs(sum(pesos.values()) - 1.0) < 1e-9
     pesos_efectivos = {k: d["peso_efectivo"] for k, d in c["itvc"]["dimensiones"].items()}
     assert abs(sum(pesos_efectivos.values()) - 1.0) < 1e-3

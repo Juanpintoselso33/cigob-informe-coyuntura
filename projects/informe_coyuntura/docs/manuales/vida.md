@@ -14,7 +14,8 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `consumo_carne_vacuna`, `motorizacion_total`, `consumo_supermercados`, `ratio_motos_autos` |
+| `ingresos` | 20% | `brecha_salario_cbt`, `pobreza_nowcast` |
+| `consumo` | 8% | `consumo_supermercados`, `motorizacion_total`, `ratio_motos_autos`, `consumo_carnes_total`, `consumo_carne_vacuna` |
 | `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
 | `vulnerabilidad` | 10% | `mora_familias`, `carga_servicio_deuda_hogares` |
 | `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `subocupacion_demandante`, `trabajo_independiente` |
@@ -36,7 +37,7 @@ donde colar una calibración (ADR-0123).
 
 ## Qué mide cada indicador
 
-### Dimensión `ingresos` (28%)
+### Dimensión `ingresos` (20%)
 
 #### Salario real vs. canasta
 
@@ -44,13 +45,13 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 46% |
+| Peso dentro de la dimensión | 65% |
 | Peso efectivo en el índice | **13.0%** |
 | Procedencia del ancla | `conceptual` — rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0018).
+**Lo gobiernan**: [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones
 
 #### Pobreza (estimación mensual)
 
@@ -58,55 +59,15 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 25% |
+| Peso dentro de la dimensión | 35% |
 | Peso efectivo en el índice | **7.1%** |
 | Procedencia del ancla | `conceptual` — rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0113](../adr/0113-nowcast-de-pobreza.md) La pobreza se publica, con la única fuente mensual que existe · [ADR-0114](../adr/0114-pobreza-oficial-acompana-al-nowcast.md) La pobreza oficial acompaña al nowcast en el mismo gráfico
+**Lo gobiernan**: [ADR-0113](../adr/0113-nowcast-de-pobreza.md) La pobreza se publica, con la única fuente mensual que existe · [ADR-0114](../adr/0114-pobreza-oficial-acompana-al-nowcast.md) La pobreza oficial acompaña al nowcast en el mismo gráfico · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones
 
-#### Consumo total de carnes per cápita
-
-`consumo_carnes_total`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 2% |
-| Peso efectivo en el índice | **0.4%** |
-| Procedencia del ancla | `conceptual` — faena de vacunos, porcinos y aves per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0339) |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card · [ADR-0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) Puntúa el acceso total a proteína, no la carne vacuna · [ADR-0267](../adr/0267-una-fuente-caida-degrada-no-desaparece.md) Una fuente caída degrada el indicador, no lo hace desaparecer · [ADR-0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) Puntúan el total de las tres carnes y, aparte, la vacuna
-
-#### Consumo de carne vacuna per cápita
-
-`consumo_carne_vacuna`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 2% |
-| Peso efectivo en el índice | **0.4%** |
-| Procedencia del ancla | `conceptual` — faena de vacunos per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0322) |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) Puntúan el total de las tres carnes y, aparte, la vacuna
-
-#### Motorización total
-
-`motorizacion_total`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 3% |
-| Peso efectivo en el índice | **0.9%** |
-| Procedencia del ancla | `conceptual` — autos + motos per cápita, móvil 12m rebaseado a 4T-2023 (ADR-0224); ancla en fecha fija. EXENTO del tope de 140: a 0,89% de peso el techo acota una compensación que el peso ya acota, y contra esta base —deprimida— 140 es el nivel de un año normal, no un outlier |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) Puntúa la motorización total, no cada vehículo por su lado · [ADR-0271](../adr/0271-patentamientos-no-identifican-trayectorias-de-hogares.md) Los patentamientos no identifican trayectorias de hogares
+### Dimensión `consumo` (8%)
 
 #### Ventas en supermercados
 
@@ -114,13 +75,27 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
+| Peso dentro de la dimensión | 69% |
 | Peso efectivo en el índice | **5.5%** |
 | Procedencia del ancla | `conceptual` — serie desestacionalizada del INDEC rebaseada a 4T-2023 (ADR-0225); ancla en fecha fija, sin móvil 12m porque la fuente ya la desestacionalizó |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0225](../adr/0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) El supermercado deja de validar el índice y pasa a integrarlo · [ADR-0243](../adr/0243-la-base-del-indice-la-declara-la-fuente.md) La base del índice la declara la fuente · [ADR-0256](../adr/0256-la-serie-sale-del-indec-no-de-su-espejo.md) La serie sale del INDEC, no de su espejo
+**Lo gobiernan**: [ADR-0225](../adr/0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) El supermercado deja de validar el índice y pasa a integrarlo · [ADR-0243](../adr/0243-la-base-del-indice-la-declara-la-fuente.md) La base del índice la declara la fuente · [ADR-0256](../adr/0256-la-serie-sale-del-indec-no-de-su-espejo.md) La serie sale del INDEC, no de su espejo · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones
+
+#### Motorización total
+
+`motorizacion_total`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 11% |
+| Peso efectivo en el índice | **0.9%** |
+| Procedencia del ancla | `conceptual` — autos + motos per cápita, móvil 12m rebaseado a 4T-2023 (ADR-0224); ancla en fecha fija. EXENTO del tope de 140: a 0,89% de peso el techo acota una compensación que el peso ya acota, y contra esta base —deprimida— 140 es el nivel de un año normal, no un outlier |
+
+**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
+
+**Lo gobiernan**: [ADR-0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) Puntúa la motorización total, no cada vehículo por su lado · [ADR-0271](../adr/0271-patentamientos-no-identifican-trayectorias-de-hogares.md) Los patentamientos no identifican trayectorias de hogares · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones
 
 #### Ratio motos/autos
 
@@ -128,13 +103,41 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 2% |
+| Peso dentro de la dimensión | 9% |
 | Peso efectivo en el índice | **0.7%** |
 | Procedencia del ancla | `conceptual` — motos por cada auto patentado, móvil 12m rebaseado a 4T-2023 (el mismo colector y la misma base que `motorizacion_total`); ancla en fecha fija, no rango observado. La distancia a 100 se amortigua a la mitad (factor 0,5) antes de entrar a la escala de tensión: sin amortiguar nace saturado en el techo de la escala con sólo +38,8% de crecimiento sobre la base (ADR-0328, corrección post-merge) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0328](../adr/0328-ratio-motos-autos-puntua-como-indicador-propio.md) El ratio motos/autos entra a puntuar como indicador propio
+**Lo gobiernan**: [ADR-0328](../adr/0328-ratio-motos-autos-puntua-como-indicador-propio.md) El ratio motos/autos entra a puntuar como indicador propio · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones
+
+#### Consumo total de carnes per cápita
+
+`consumo_carnes_total`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 5% |
+| Peso efectivo en el índice | **0.4%** |
+| Procedencia del ancla | `conceptual` — faena de vacunos, porcinos y aves per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0339) |
+
+**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
+
+**Lo gobiernan**: [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card · [ADR-0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) Puntúa el acceso total a proteína, no la carne vacuna · [ADR-0267](../adr/0267-una-fuente-caida-degrada-no-desaparece.md) Una fuente caída degrada el indicador, no lo hace desaparecer · [ADR-0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) Puntúan el total de las tres carnes y, aparte, la vacuna · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones
+
+#### Consumo de carne vacuna per cápita
+
+`consumo_carne_vacuna`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 5% |
+| Peso efectivo en el índice | **0.4%** |
+| Procedencia del ancla | `conceptual` — faena de vacunos per cápita rebaseada a 4T-2023 desde el INDEC; ancla en fecha fija (ADR-0322) |
+
+**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
+
+**Lo gobiernan**: [ADR-0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) Puntúan el total de las tres carnes y, aparte, la vacuna · [ADR-0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) Ingresos y consumo se parten en dos dimensiones
 
 ### Dimensión `precios` (25%)
 
@@ -392,7 +395,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-54 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+55 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -448,3 +451,4 @@ histórica.
 - [0328](../adr/0328-ratio-motos-autos-puntua-como-indicador-propio.md) — El ratio motos/autos entra a puntuar como indicador propio
 - [0339](../adr/0339-puntua-el-total-de-carnes-y-la-vacuna-aparte.md) — Puntúan el total de las tres carnes y, aparte, la vacuna
 - [0345](../adr/0345-la-confianza-en-el-gobierno-entra-al-indice-de-impacto-social.md) — La confianza en el Gobierno entra al índice de impacto social
+- [0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) — Ingresos y consumo se parten en dos dimensiones

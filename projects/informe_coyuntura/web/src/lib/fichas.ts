@@ -1293,7 +1293,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La encuesta releva grandes empresas constructoras; las pequeñas y las regionales están subrepresentadas.",
       "La fecha de referencia del horizonte no acredita disponibilidad pública en ese mes. La historia se reconstruye retrospectivamente; medir anticipación en tiempo real exige conservar las fechas de publicación de cada edición.",
     ],
-    faltantes: "Si la planilla no está disponible, se mantiene el último valor, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y su dimensión no puntúa.",
+    faltantes: "Si la planilla no está disponible, se mantiene el último valor, señalado como desactualizado; sin ningún valor previo, la serie no se calcula. Desde octubre de 2026 no integra el índice, así que su falta no afecta a la dimensión de sector privado.",
     revisiones: "El INDEC puede revisar los porcentajes de meses anteriores al ampliarse la muestra respondente. Cada actualización recalcula la serie completa desde el origen, de modo que las revisiones se incorporan solas.",
     cambios: [
       { fecha: "2026-10-26", cambio: "Sale del índice político. Compara las expectativas de las constructoras que trabajan para el Estado con las de las que trabajan para privados: es la lectura de un solo sector, no la relación del empresariado con el Gobierno. Se sigue calculando y su serie se conserva; la dimensión de sector privado queda con la postura pública de la Unión Industrial hasta que se sumen otras cámaras. Con los datos del 26 de octubre de 2026 la brecha puntuaba 71,2 y la postura de la Unión Industrial 40,0: la dimensión pasa de 55,6 a 40,0 y el índice político de 73,8 a 71,6.", adr: "0372" },
@@ -2647,7 +2647,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023 (más canastas = mejora).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (46,48% interno · 13,04% del índice de impacto social) y sigue siendo el componente más pesado.",
+      "Pertenece a la dimensión de ingresos (64,69% interno · 13,04% del índice de impacto social) y sigue siendo el componente más pesado del índice.",
       "El índice de impacto social promedia sus componentes base-100 por dimensión: por encima de 100, la brecha acumula mejora contra el arranque del mandato.",
     ],
     limitaciones: [
@@ -2659,6 +2659,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si una fuente falla, se mantiene el último valor publicado (marcado como desactualizado); si el componente no calcula, los pesos del índice se renormalizan.",
     revisiones: "Cada actualización re-descarga las series completas y adopta las revisiones de las fuentes; con canasta fresca sin salario, el par se declara provisorio.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Ingresos» junto a la pobreza. Su peso interno pasa de 46,48% a 64,69% porque la dimensión es más chica; su peso en el índice no cambia (13,04%).", adr: "0373" },
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social base-100 como rebase directo del cociente, con 22,75% de peso efectivo." },
       { fecha: "2026-07-04", cambio: "Alineación estricta por mes común: antes podía mezclar el salario de un mes con la canasta de otro. Además queda como única medición del ratio ingresos/comida del índice." },
     ],
@@ -2883,7 +2884,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menor faena por habitante = deterioro en el proxy).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (1,53% interno · 0,43% del índice de impacto social). Puntúa como indicador aspiracional junto al total de las tres carnes, mitad y mitad del mismo peso: la vacuna cuenta dentro del total y además sola, a propósito.",
+      "Pertenece a la dimensión de consumo (5,44% interno · 0,43% del índice de impacto social). Puntúa como indicador aspiracional junto al total de las tres carnes, mitad y mitad del mismo peso: la vacuna cuenta dentro del total y además sola, a propósito.",
       "Mide específicamente la vacuna porque es el corte aspiracional del consumo argentino: el nivel oficial más reciente (SAGYP, jul-2026) es 46,75 kg/hab/año, con una caída interanual de −8,4%, cercana al «casi 10%» que reporta el equipo.",
       "Se publica junto al total de las tres carnes, para que el lector vea si la caída de la vacuna se compensa con aviar y porcina (sustitución) o no (menos carne en total).",
       "CICCRA respalda el mismo mes con un número distinto (46,0 kg, ago-2026, contra 46,75 de SAGYP): ninguna de las dos es \"la\" cifra oficial, son dos relevamientos con metodología propia. El titular usa SAGYP porque es la fuente con la que se reconstruye la serie completa del componente (ver `transformaciones`); CICCRA queda de respaldo si el tablero de SAGYP no trae el mes.",
@@ -2897,6 +2898,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Un mes sin tablero legible deja el titular en el último valor publicado (con respaldo en CICCRA); la serie del índice sigue avanzando con la faena, que es independiente.",
     revisiones: "La faena del INDEC se revisa hacia atrás y la serie se reconstruye entera en cada corrida, así que las revisiones entran solas.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Consumo». Su peso interno pasa de 1,53% a 5,44%; su peso en el índice no cambia (0,43%).", adr: "0373" },
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social el consumo de carne VACUNA (CICCRA), con línea de base documentada." },
       { fecha: "2026-08-12", cambio: "Se suma el consumo total de las tres carnes y la matriz que distingue sustitución de pérdida de acceso; el nivel pasa al tablero de SAGYP." },
       { fecha: "2026-08-20", cambio: "Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023. La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.", adr: "0217" },
@@ -2922,7 +2924,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menor faena por habitante = deterioro en el proxy).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (1,53% interno · 0,43% del índice de impacto social), mitad y mitad con la carne vacuna, que se sigue aparte como indicador aspiracional.",
+      "Pertenece a la dimensión de consumo (5,44% interno · 0,43% del índice de impacto social), mitad y mitad con la carne vacuna, que se sigue aparte como indicador aspiracional.",
       "Reúne tres carnes para evitar interpretar la vacuna de forma aislada. El total y su composición son agregados: no identifican sustitución dentro de los mismos hogares ni distribución del acceso. Los kilos de carne tampoco equivalen a una medición de proteína ingerida.",
       "La composición se publica junto al color: qué parte del consumo sigue siendo vacuna, y si el total se sostiene o cae con ella.",
     ],
@@ -2935,6 +2937,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Un mes sin tablero legible deja el titular en el último valor publicado; la serie del índice sigue avanzando con la faena, que es independiente.",
     revisiones: "La faena del INDEC se revisa hacia atrás y la serie se reconstruye entera en cada corrida, así que las revisiones entran solas.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Consumo». Su peso interno pasa de 1,53% a 5,44%; su peso en el índice no cambia (0,43%). Sobre si mide consumo o producción: el nivel es el consumo aparente por habitante de la Secretaría de Agricultura —producción menos exportaciones más importaciones—, pero el movimiento mes a mes sale de la faena del INDEC, que es producción; un cambio en las exportaciones se lee como cambio de consumo hasta que la Secretaría actualiza su tablero.", adr: "0373" },
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social el consumo de carne VACUNA (CICCRA), con línea de base documentada." },
       { fecha: "2026-08-12", cambio: "Se suma el consumo total de las tres carnes y la matriz que distingue sustitución de pérdida de acceso; el nivel pasa al tablero de SAGYP." },
       { fecha: "2026-08-20", cambio: "Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023. La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.", adr: "0217" },
@@ -2995,7 +2998,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se invierte, como los otros componentes que se leen al revés: más pobreza es peor, así que la base va arriba en el cociente y por encima de 100 significa MENOS pobreza que en la transición.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (25,37% interno · 7,12% del índice de impacto social).",
+      "Pertenece a la dimensión de ingresos (35,31% interno · 7,12% del índice de impacto social).",
       "Cubre lo que el indicador de salario no puede ver: la brecha entre salario y canasta compara salario REGISTRADO, así que sólo alcanza al empleo formal, mientras la pobreza cuenta personas, incluidos los hogares informales y los que no viven de un sueldo.",
     ],
     limitaciones: [
@@ -3007,6 +3010,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si un mes no publica informe, el componente mantiene el último valor disponible y el cinturón renormaliza los pesos de su dimensión.",
     revisiones: "La universidad puede revisar meses previos al recalcular su modelo, y el INDEC actualiza la línea de pobreza; se re-descarga la serie completa en cada corrida. Cada informe declara dos veces a qué semestre corresponde —en el título y en el texto— y las dos leyendas se escriben a mano, así que a veces una de ellas quedó del mes anterior; se toma la más reciente de las dos y se verifica que la serie no quede con meses faltantes, porque la publicación es mensual y un mes ausente indicaría una leyenda mal puesta antes que un informe no publicado.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Ingresos» junto al salario. Su peso interno pasa de 25,37% a 35,31%; su peso en el índice no cambia (7,12%).", adr: "0373" },
       { fecha: "2026-07-16", cambio: "Alta como estimación mensual publicada junto a la medición oficial, sin integrar el índice." },
       { fecha: "2026-07-30", cambio: "Entra al índice con 25% de la dimensión de ingresos y consumo. Hasta entonces era una tarjeta visible que no puntuaba, una categoría que el equipo dio de baja: un indicador integra las dimensiones de su índice o no se publica. Se decidió que corresponde a este cinturón y no al macroeconómico, porque las dimensiones de aquel son condiciones de la economía y la pobreza es el resultado social que este cinturón ya mide. Los cuatro componentes previos de la dimensión cedieron peso proporcionalmente y conservan su orden relativo." },
     ],
@@ -3385,7 +3389,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Es el único componente EXENTO del techo de recorte de 140 que rige para el resto del índice. Con un peso efectivo de 0,89%, si llegara a 170 aportaría 0,27 puntos del índice por encima de ese techo: la compensación ya queda acotada por el peso. Y contra una base tomada en el 4º trimestre de 2023 —el fondo del congelamiento previo a la devaluación— el nivel 140 no marca un valor extremo: dos tercios de los meses de la década anterior lo habrían superado.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (3,09% interno · 0,87% del índice de impacto social).",
+      "Pertenece a la dimensión de consumo (10,98% interno · 0,87% del índice de impacto social).",
       "Mide el flujo total de patentamientos de vehículos 0 kilómetro por habitante. El total y su composición no identifican hogares: primeras compras, reposición, compras de empresas y sustitución entre autos y motos pueden coexistir. Una suba del total no demuestra por sí sola mayor acceso de hogares ni descarta sustitución descendente.",
       "La composición se publica junto al color: cuántos autos y cuántas motos hay detrás del total, y qué proporción de lo que se patenta son motos contra la proporción del arranque del mandato.",
       "Se agrega el ratio motos/autos (no motos/total) como control pedido por Juan: sirve para leer si la motorización sube porque se compran más autos o porque se baja a la moto, algo que la participación de motos sobre el TOTAL no distingue de un total que crece parejo en las dos patas. Es una magnitud derivada dentro de esta misma tarjeta, no un indicador propio: no puntúa.",
@@ -3402,6 +3406,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "El colector levanta excepción ante cualquier cambio de forma de la fuente —una columna que falta, un mes a medio cargar, una jurisdicción que cambia de nombre— en vez de publicar una serie recortada. Con la fuente caída, la tarjeta mantiene el último valor como desactualizado y la serie conserva sus puntos anteriores.",
     revisiones: "Los dos archivos publican su histórico completo y se releen enteros en cada corrida, así que una corrección de la fuente se incorpora sola.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Consumo». Su peso interno pasa de 3,09% a 10,98%; su peso en el índice no cambia (0,87%).", adr: "0373" },
       { fecha: "2026-09-08", cambio: "Se limita la interpretación al flujo y la composición de patentamientos. El registro no identifica primeras compras ni transiciones entre vehículos de un mismo hogar. No cambian el cálculo, el peso ni la serie." },
       { fecha: "2026-07-03", cambio: "Entra al índice de impacto social el patentamiento de motos con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad." },
       { fecha: "2026-07-04", cambio: "Se aplica al componente de motos el techo de recorte 140 y su peso interno baja de 10% a 5%." },
@@ -3429,7 +3434,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023, INVERTIDO — más motos por cada auto es DETERIORO. La distancia a 100 se amortigua a la mitad antes de leerse en la escala de tensión (ver «Ancla y amortiguación» abajo).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (2,5% interno · 0,7% del índice de impacto social).",
+      "Pertenece a la dimensión de consumo (8,88% interno · 0,7% del índice de impacto social).",
       "La polaridad es la decisión de fondo (sacar `invertido=True` en `itvc.indices_desde_series` invierte la lectura completa): `motorizacion_total` cuenta todo patentamiento como señal positiva sin distinguir de qué vehículo viene, y este ratio existe para detectar que ese crecimiento sea un corrimiento hacia la moto —el vehículo más barato— y no una mejora pareja del parque. Un total que sube mientras este ratio también sube dice que el crecimiento viene de la moto, no del auto.",
       "Es una DESCOMPOSICIÓN de `motorizacion_total`, no un control independiente: mismo colector, mismo flujo, mismas ventanas — el mismo encuadre que se corrigió para `recaudacion`/IVA-DGI en el índice macroeconómico. Ese componente mide el NIVEL del flujo combinado, éste mide su COMPOSICIÓN. El peso (2,5%) queda por debajo del que le toca a `motorizacion_total` en la misma dimensión (3,09%).",
       "AUTO-CANCELACIÓN MEDIDA, no doble conteo: en niveles correlaciona +0,40 con `motorizacion_total`, pero en la matriz de redundancia publicada (que mide movimientos) da −0,251. El mismo boom de motos empuja a `motorizacion_total` hacia el verde y a este ratio hacia el rojo al mismo tiempo, en la misma dimensión.",
@@ -3444,6 +3449,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Mismo colector que `motorizacion_total`: el colector levanta excepción ante cualquier cambio de forma de la fuente en vez de publicar una serie recortada. Con la fuente caída, la tarjeta mantiene el último valor como desactualizado.",
     revisiones: "Los dos archivos de la DNRPA publican su histórico completo y se releen enteros en cada corrida.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Consumo», junto a la motorización que descompone. Su peso interno pasa de 2,5% a 8,88%; su peso en el índice no cambia (0,7%).", adr: "0373" },
       { fecha: "2026-09-15", cambio: "Nace como magnitud colgada de la tarjeta de `motorizacion_total`: control de lectura pedido por Juan, sin puntaje propio.", adr: "0323" },
       { fecha: "2026-09-16", cambio: "Corrección post-merge (revisión adversarial): se amortigua la distancia a 100 a la mitad (factor 0,5) porque el índice nacía saturado en el extremo de la escala con apenas +38,8% de crecimiento sobre la base; se declara la auto-cancelación medida contra `motorizacion_total` (r=+0,40 en niveles, r=−0,251 en la matriz de redundancia) y se cita como precedente la corrección de encuadre de `recaudacion`.", adr: "0321" },
       { fecha: "2026-09-16", cambio: "Se revierte la decisión anterior: pasa a puntuar como indicador propio, con tarjeta, ficha y peso propios (2,5% interno de la dimensión de ingresos y consumo · 0,7% del índice de impacto social). Polaridad confirmada por el usuario: más motos por auto es deterioro.", adr: "0328,0323" },
@@ -3468,7 +3474,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Tampoco lleva promedio móvil de 12 meses, a diferencia de los patentamientos: esa transformación existe para sacarle el calendario a un flujo crudo, y acá el calendario ya está sacado.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (19,5% interno · 5,47% del índice de impacto social).",
+      "Pertenece a la dimensión de consumo (69,26% interno · 5,47% del índice de impacto social).",
       "Es el único componente del índice que mide VOLUMEN EFECTIVAMENTE COMPRADO. Los otros dieciocho miden lo que entra al hogar (ingresos), lo que cuesta (precios), de dónde sale ese ingreso (empleo), lo que no se llega a pagar (mora), lo que se opina (percepción) o el delito sufrido. Ninguno mira lo que el hogar se llevó de la góndola.",
       "El peso surge de esa jerarquía: por encima de los dos proxies de compra realizada que ya había —una proteína y la motorización, que juntos no llegan al 8% de la dimensión— y por debajo de las dos medidas estructurales, la brecha entre salario y canasta y el conteo de pobreza.",
     ],
@@ -3481,6 +3487,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la tarjeta mantiene el último valor como desactualizado. No hay respaldo que lea el espejo: publicar desde ahí podría hacer RETROCEDER la tarjeta a un mes anterior, que es peor que no actualizarla.",
     revisiones: "La planilla trae el histórico completo en cada corrida, así que una revisión del INDEC —habituales en las series desestacionalizadas, que se recalculan al agregar meses— se incorpora sola y sin dejar huella de la versión anterior. Al publicar junio de 2026, por ejemplo, mayo pasó de 83,2 a 83,0.",
     cambios: [
+      { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos y éste queda en «Consumo», donde es el componente principal. Su peso interno pasa de 19,5% a 69,26%; su peso en el índice no cambia (5,47%).", adr: "0373" },
       { fecha: "2026-08-21", cambio: "Entra al índice de impacto social con 20% de la dimensión de ingresos y consumo, y los cinco componentes previos ceden proporcionalmente conservando su orden relativo. Venía de ser el ancla de validación externa del cinturón: mide condiciones materiales del hogar, así que integra el índice en vez de juzgarlo — la misma regla que había sacado a la confianza del consumidor de ese papel.", adr: "0225" },
       { fecha: "2026-08-25", cambio: "La base del índice se lee de los metadatos de la fuente en vez de escribirse a mano. La tarjeta la rotulaba «2004 = 100» y la Encuesta de Supermercados usa base 2017=100 —la serie ni siquiera tiene puntos antes de enero de 2017—. El valor y el puntaje no cambian: el rebase del cinturón es contra el 4º trimestre de 2023 y nunca usó la base de la fuente. Queda pendiente el rezago del espejo: el INDEC publicó junio de 2026 el 21 de agosto y la API de series todavía no lo refleja.", adr: "0243" },
       { fecha: "2026-08-25", cambio: "La serie deja de bajarse de la API de datos.gob.ar y sale de la planilla de serie histórica del propio INDEC (Cuadro 1, columna desestacionalizada). La API era un espejo con atraso propio y encadenaba dos rezagos: la tarjeta mostraba mayo de 2026 mientras el INDEC ya había publicado junio el día 21. Con el cambio la tarjeta pasa a junio (82,1) y el tope de rezago del gate baja de 140 a 130 días, ahora medido sobre 14 publicaciones reales del calendario del INDEC en vez de estimado. El espejo se conserva como contraste del número leído, no como fuente.", adr: "0256" },
@@ -3598,7 +3605,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     agregacion: {
       latex: String.raw`\begin{gathered}\text{índice de impacto social}=\sum_d w_d\sum_{i\in d}w_i\,\operatorname{cap}_i(x_i)\\[3pt]\operatorname{cap}_i(x)=\begin{cases}x,&i=\text{motorización total}\\\min(x,140),&\text{resto}\end{cases}\end{gathered}`,
-      leyenda: "Promedio ponderado en dos niveles (28,06% ingresos y consumo · 25% presión de precios · 24,19% prospectivas de empleo · 10% vulnerabilidad financiera · 8,25% confianza y percepción · 4,5% seguridad), con el techo de recorte declarado.",
+      leyenda: "Promedio ponderado en dos niveles (20,16% ingresos · 7,9% consumo · 25% presión de precios · 24,19% prospectivas de empleo · 10% vulnerabilidad financiera · 8,25% confianza y percepción · 4,5% seguridad), con el techo de recorte declarado.",
       parrafos: [
         "La agregación es compensatoria y el flag de dimensión crítica lo declara cuando una dimensión cae por debajo del umbral. Cuáles están marcadas se lee en la tabla de composición, que se recalcula con cada actualización: nombrarlas acá dejaría el texto viejo al mes siguiente.",
         "El índice y la tensión son DOS ESCALAS DISTINTAS y conviene no confundirlas. El índice suma niveles: cada componente vale lo que vale contra su base de 2023, y esos números se promedian. La tensión es una lectura del resultado —5 − (índice − 100) × 0,2, recortada al rango 0-10— pensada para ponerlo en la misma vara que los otros cinturones. La tensión que aparece en la ficha de cada componente aplica esa misma fórmula a ese componente solo, y sirve para leerlo, no para calcular: al índice entra el nivel, nunca la tensión.",
@@ -3642,6 +3649,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El análisis multivariado previo del estándar OCDE/JRC está pendiente; la eliminación del doble conteo salario/comida (detectado por correlación casi perfecta entre dos componentes) fue un paso en esa dirección.",
     ],
     cambios: [
+      { fecha: "2026-10-26", cambio: "La dimensión «Ingresos y consumo» se parte en dos, a pedido de Luis: «Ingresos» (salario contra canasta y pobreza, 20,16% del índice) y «Consumo» (supermercados, motorización, motos por auto y carnes, 7,9%). Cada componente conserva su peso en el índice, así que el índice no se mueve (93,6); con los datos del 26 de octubre de 2026 la dimensión que era 109,0 se lee como Ingresos 114,6 y Consumo 94,6.", adr: "0373" },
       { fecha: "2026-05", cambio: "Versión inicial del cinturón: fórmulas de tensión ancladas por indicador, promediadas." },
       { fecha: "2026-07-03", cambio: "Nace el índice de impacto social base 100: reemplaza el promedio de fórmulas ancladas por la evolución acumulada contra el 4º trimestre de 2023, con robustez Monte Carlo y flag de dimensión crítica publicados. Los patentamientos pasan al acumulado móvil de 12 meses por estacionalidad." },
       { fecha: "2026-07-04", cambio: "Barrido componente por componente: la victimización pasa de la serie anual de denuncias a la encuesta mensual; se elimina el doble conteo salario/comida (dos componentes correlacionaban 0,985); se aplica el techo de recorte 140 sin piso; el sentimiento digital pasa a puntuar tras un banco de pruebas empírico; y la matriz de validación cruzada queda como tercer pilar de robustez." },

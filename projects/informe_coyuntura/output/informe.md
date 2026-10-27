@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-26 22:37:24"
+generado: "2026-10-26 22:42:38"
 score_global: 4.0
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -126,4 +126,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:gasto_funcionamiento`
 
 ---
-*Generado por CIGOB — 2026-10-26 22:37:24 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-26 22:42:38 — schema 1.2.0*

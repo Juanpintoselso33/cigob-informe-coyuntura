@@ -75,13 +75,13 @@ DIMENSIONES_ITVC = {
         # los definen como proxies de poder de compra, y la matriz de
         # redundancia lo confirmó (ADR-0108): motos correlaciona −0,974 con la
         # mora y +0,770 con el salario, y sólo +0,442 con el ICC.
-        "nombre": "Ingresos y consumo",
+        "nombre": "Ingresos",
         # ADR-0214: baja de 0,3725 a 0,2806 porque `informalidad` se fue a la
         # dimensión de empleo. NO es una recalibración: el peso que se va es
         # exactamente el peso EFECTIVO que el indicador ya tenía (9,19% del
         # índice), así que ninguno de los que quedan cambia lo que aporta y el
         # ITCIS no se mueve. Los nominales de acá se derivan de esos efectivos.
-        "peso": 0.2806,
+        "peso": 0.2016,   # 0,2806 hasta ADR-0373
         # ADR-0153: entra `pobreza_nowcast` con 25%. Hasta el 30-jul-2026 era una
         # card VISIBLE que no puntuaba, o sea el patrón de "contexto" que el
         # editor dio de baja: no había tercera opción entre entrar al índice e ir
@@ -237,15 +237,30 @@ DIMENSIONES_ITVC = {
         # de pesos en esta corrección porque hacerlo exigiría remover una de
         # las dos vistas, y las dos preguntas —nivel del flujo, composición
         # del flujo— siguen siendo dos preguntas distintas (ver ADR-0328).
-        "indicadores": alta_proporcional(
-            alta_proporcional(
-                {"brecha_salario_cbt": 0.5959,
-                 "pobreza_nowcast": 0.3253,
-                 "consumo_carnes_total": 0.0196,
-                 "consumo_carne_vacuna": 0.0196,
-                 "motorizacion_total": 0.0396},
-                "consumo_supermercados", 0.20),
-            "ratio_motos_autos", 0.025),
+        #
+        # ADR-0373 (revisión de Luis del 22-oct-2026): la dimensión se parte en
+        # dos. «Ingresos» queda con el salario y la pobreza, que dicen si el
+        # ingreso alcanza; «Consumo» con lo que efectivamente se compra. El
+        # reparto conserva el peso efectivo de cada componente: la dimensión de
+        # 0,2806 se divide por la parte que ya sumaban adentro —salario y
+        # pobreza, 0,4648 + 0,2537 = 0,7185 → 0,2016; el resto, 0,0790— y los
+        # pesos internos son los de antes reescalados a cada mitad. El índice
+        # de impacto social no se mueve más que por redondeo.
+        "indicadores": {"brecha_salario_cbt": 0.6469,
+                        "pobreza_nowcast": 0.3531},
+    },
+    "consumo": {
+        "nombre": "Consumo",
+        # ADR-0373: los rastros de compra realizada que estaban en
+        # «Ingresos y consumo» (ADR-0115, 0223, 0224, 0225, 0328, 0339). Los
+        # pesos son los internos de antes divididos por 0,2815, su suma, y
+        # redondeados a cuatro decimales cerrando en 1,0 con el supermercado.
+        "peso": 0.0790,
+        "indicadores": {"consumo_supermercados": 0.6926,
+                        "motorizacion_total": 0.1098,
+                        "ratio_motos_autos": 0.0888,
+                        "consumo_carnes_total": 0.0544,
+                        "consumo_carne_vacuna": 0.0544},
     },
     "precios": {
         "nombre": "Presión de precios",

@@ -29,7 +29,7 @@ BRECHA_MAX_PP = 3.0
 
 
 def test_puntuan_el_total_y_la_vacuna():
-    ingresos = itvc.DIMENSIONES_ITVC["ingresos"]["indicadores"]
+    ingresos = itvc.DIMENSIONES_ITVC["consumo"]["indicadores"]   # ADR-0373
     assert "consumo_carnes_total" in ingresos, "el total de las tres carnes dejó de puntuar"
     assert "consumo_carne_vacuna" in ingresos, "la vacuna (aspiracional) dejó de puntuar"
     assert "consumo_carnes_otras" not in ingresos, (
@@ -40,13 +40,15 @@ def test_las_carnes_conservan_el_peso_de_antes_mitad_y_mitad():
     """El total y la vacuna reparten el MISMO 0,0392 que tenían las carnes,
     mitad y mitad: ni más (le quitaría peso al resto de la dimensión sin que
     nadie lo decidiera) ni menos."""
-    ingresos = itvc.DIMENSIONES_ITVC["ingresos"]["indicadores"]
+    ingresos = itvc.DIMENSIONES_ITVC["consumo"]["indicadores"]   # ADR-0373
     total, vacuna = ingresos["consumo_carnes_total"], ingresos["consumo_carne_vacuna"]
     assert total == vacuna, f"no es mitad y mitad: total {total}, vacuna {vacuna}"
     motor = ingresos["motorizacion_total"]
     razon_vieja = 0.0396 / 0.0392   # motorización / carnes, antes y después
     razon_nueva = motor / (total + vacuna)
-    assert abs(razon_nueva - razon_vieja) < 1e-3, (
+    # 2e-3 y no 1e-3: ADR-0373 reescaló los internos a cuatro decimales sobre
+    # una dimensión más chica, y el redondeo mueve la razón 0,001.
+    assert abs(razon_nueva - razon_vieja) < 2e-3, (
         f"las carnes no conservan su peso: razón {razon_nueva:.6f}, esperada {razon_vieja:.6f}")
 
 

@@ -244,8 +244,13 @@ def test_el_peso_es_la_suma_de_los_dos_que_reemplaza():
     lo único que había pasado es que los cuatro cedieron ×0,80 juntos.
 
     Lo que sigue fijo, y es lo que un cambio de contrabando rompería: cuánto
-    pesa la motorización EN RELACIÓN a cada uno de los otros tres."""
-    ingresos = itvc.DIMENSIONES_ITVC["ingresos"]["indicadores"]
+    pesa la motorización EN RELACIÓN a cada uno de los otros tres.
+
+    ADR-0373 partió la dimensión en dos: las razones se miden sobre los pesos
+    EFECTIVOS, que es lo que la partición conservó."""
+    D = itvc.DIMENSIONES_ITVC
+    ingresos = {k: D[n]["peso"] * w / 0.2806
+                for n in ("ingresos", "consumo") for k, w in D[n]["indicadores"].items()}
     motor = ingresos["motorizacion_total"]
     # ADR-0322: `consumo_carnes_total` (0,0392) se partió en dos componentes
     # que puntúan por separado; la razón que importa es contra la SUMA, que es
@@ -255,7 +260,8 @@ def test_el_peso_es_la_suma_de_los_dos_que_reemplaza():
                  "pobreza_nowcast": (0.0396 / 0.3253, ingresos["pobreza_nowcast"]),
                  "consumo_carnes (vacuna+total)": (0.0396 / 0.0392, carne_total)}
     for otro, (razon, valor) in esperadas.items():
-        assert motor / valor == pytest.approx(razon, rel=1e-3), (
+        # rel=2e-3: el reescalado a cuatro decimales de ADR-0373 mueve 0,001.
+        assert motor / valor == pytest.approx(razon, rel=2e-3), (
             f"la motorización dejó de pesar lo de los dos vehículos en relación "
             f"a {otro}: razón {motor / valor:.6f}, esperada {razon:.6f}")
     # Y los cinco siguen sumando lo que la dimensión reparte entre ellos.
@@ -419,7 +425,7 @@ def test_el_peso_acota_el_aporte_que_la_exencion_deja_por_encima_del_techo():
     proporcional adicional, así que el peso efectivo de este componente bajó
     de 0,89% a 0,87% — el argumento (peso chico acota el exceso posible sobre
     el techo) sigue valiendo con el número nuevo."""
-    dim = itvc.DIMENSIONES_ITVC["ingresos"]
+    dim = itvc.DIMENSIONES_ITVC["consumo"]   # ADR-0373
     peso_efectivo = dim["peso"] * dim["indicadores"]["motorizacion_total"]
     assert peso_efectivo == pytest.approx(0.00867, abs=0.00005)
     exceso_si_llegara_a_170 = (170 - itvc.WINSOR_TOPE) * peso_efectivo
