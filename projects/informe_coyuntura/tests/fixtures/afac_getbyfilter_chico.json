@@ -1,0 +1,60 @@
+{
+ "data": [
+  {
+   "id": 6244,
+   "titulo": "Comercio Exterior de Autopartes (enero-septiembre 2025)",
+   "fecha": "2026-10-22T00:00:00",
+   "periodo": "",
+   "sector": null,
+   "anio": 2026,
+   "adjunto": "20261022_023710_AFAC_COMEX_9M2026.pdf",
+   "imagen": null,
+   "sectorId": null,
+   "bajada": "",
+   "orden": 4,
+   "privacidad": "P"
+  },
+  {
+   "id": 6204,
+   "titulo": "Acuerdo Automotor Argentina-Ecuador",
+   "fecha": "2026-08-06T00:00:00",
+   "periodo": "",
+   "sector": null,
+   "anio": 2026,
+   "adjunto": null,
+   "imagen": null,
+   "sectorId": null,
+   "bajada": "",
+   "orden": 7,
+   "privacidad": "P"
+  },
+  {
+   "id": 6038,
+   "titulo": "Necesidad de generar un punto de quiebre en el comercio exterior de autopartes",
+   "fecha": "2026-01-14T00:00:00",
+   "periodo": "",
+   "sector": null,
+   "anio": 2026,
+   "adjunto": null,
+   "imagen": null,
+   "sectorId": null,
+   "bajada": "",
+   "orden": 17,
+   "privacidad": "P"
+  },
+  {
+   "id": 5479,
+   "titulo": "Deuda comercial autopartista pone en riesgo la producción",
+   "fecha": "2023-12-07T00:00:00",
+   "periodo": "",
+   "sector": null,
+   "anio": 2023,
+   "adjunto": "20231207_040003_AFAC_DEUDA_COMERCIAL_AUTOPARTISTA.pdf",
+   "imagen": null,
+   "sectorId": null,
+   "bajada": "",
+   "orden": 46,
+   "privacidad": "P"
+  }
+ ]
+}

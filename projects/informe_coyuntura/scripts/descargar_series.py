@@ -1751,9 +1751,10 @@ POLITICA_DERIVADAS = [
     ("brecha_obra_publica", "pp (obra pública − privada, 12m móviles)",
      "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
      politica.brecha_obra_publica_serie),
-    # Mismo patrón: la card es el último punto de esta lista (ADR-0150).
+    # Mismo patrón: la card es el último punto de esta lista (ADR-0150). Desde
+    # ADR-0391 promedia por cámara la UIA y AFAC.
     ("apoyo_empresario", "saldo de postura (−1 a +1, 12m móviles)",
-     "Comunicados de la UIA — codificación CIGOB",
+     "Comunicados de la UIA y AFAC — codificación CIGOB",
      politica.apoyo_empresario_serie),
     # Mismo patrón, mismo cálculo, otro sector (ADR-0380).
     ("apoyo_comercio", "saldo de postura (−1 a +1, 12m móviles)",
@@ -1763,6 +1764,10 @@ POLITICA_DERIVADAS = [
     ("apoyo_campo", "saldo de postura (−1 a +1, 12m móviles)",
      "Comunicados de Coninagro, la SRA y CRA — codificación CIGOB",
      politica.apoyo_campo_serie),
+    # Cuarto sector (ADR-0391): la construcción, con el mismo saldo.
+    ("apoyo_construccion", "saldo de postura (−1 a +1, 12m móviles)",
+     "Comunicados de CAMARCO — codificación CIGOB",
+     politica.apoyo_construccion_serie),
     ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_eficacia_serie),
     ("veto_quorum", "% sesiones en minoría (12m móviles)", "Cámara de Diputados — índice oficial de sesiones", fetch_veto_quorum_serie),
     ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_comisiones_serie),

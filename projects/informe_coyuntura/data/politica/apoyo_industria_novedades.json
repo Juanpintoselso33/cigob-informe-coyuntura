@@ -1,0 +1,138 @@
+{
+ "_meta": {
+  "comunicados_vistos": 41,
+  "descripcion": "Comunicados nuevos de las cámaras del perímetro (AFAC) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_empresario en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
+  "fuentes": {
+   "AFAC": "https://afac.org.ar/Api/api/Noticias/GetByFilter"
+  },
+  "inventario_verificado": "2026-10-27",
+  "nuevos_en_la_corrida": 0,
+  "ultima_corrida": "2026-10-27"
+ },
+ "pendientes": {},
+ "revisadas": {
+  "AFAC|5486": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|5543": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|5549": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5558": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|5566": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|5574": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|5587": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|5595": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5610": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|5623": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|5654": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5659": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5665": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5677": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5679": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5695": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|5740": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|5774": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5785": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5808": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5818": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|5854": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5915": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|5994": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|6009": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|6018": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|6031": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|6038": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|6043": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|6068": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|6069": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|6070": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|6087": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|6106": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|6107": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|6139": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|6203": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|6204": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|6208": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  },
+  "AFAC|6228": {
+   "origen": "codificacion ADR-0391"
+  },
+  "AFAC|6244": {
+   "origen": "no se codifica (ADR-0391): informe estadístico periódico"
+  }
+ }
+}

@@ -8,7 +8,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [apoyo_comercio, apoyo_empresario]
 archivos: ['scripts/politica.py', 'scripts/itcp.py', 'scripts/descargar_series.py', 'scripts/procedencia_anclas.py', 'scripts/publicar.py', 'data/politica/apoyo_camaras_codificacion.json', 'data/politica/apoyo_camaras_relevamiento.json', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts']
-relacionado: ['0088', '0131', '0136', '0150', '0310', '0334', '0335', '0372', '0384']
+relacionado: ['0088', '0131', '0136', '0150', '0310', '0334', '0335', '0372', '0384', '0391']
 ambito: 'Cinturón político · ITCP · dimensión Sector privado'
 origen: 'Reunión del 26-oct-2026: sumar otras cámaras además de la UIA si tienen posturas oficiales; criterio de Luis Babino de 4 comunicados con postura en 12 meses.'
 ---

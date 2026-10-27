@@ -19,7 +19,7 @@ al ADR.
 | `cohesion_interna` | 16% | `cohesion_bloque`, `votos_sobre_bancas` |
 | `conflicto_social` | 11% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
 | `poder_judicial` | 16% | `cobertura_judicial` |
-| `sector_privado` | 14% | `apoyo_empresario`, `apoyo_comercio`, `apoyo_campo` |
+| `sector_privado` | 14% | `apoyo_empresario`, `apoyo_comercio`, `apoyo_campo`, `apoyo_construccion` |
 
 Suma de pesos: 100%.
 
@@ -203,7 +203,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **6.5%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
-| Procedencia del ancla | `convencion` — calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052) |
+| Procedencia del ancla | `historia_larga` — uno y dos desvíos (14,7 pp) de la variación interanual de 2020-2023, previa al mandato (ADR-0390) |
 
 **Bandas**: ≤ -30 → 100 · -30–-15 → 85 · -15–15 → 65 · 15–30 → 40 · > 30 → 10
 
@@ -219,7 +219,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **4.3%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
-| Procedencia del ancla | `historia_larga` — anclas fijadas sobre los 17 años completos 2006-2022 de la serie oficial, anteriores al mandato (ADR-0232) |
+| Procedencia del ancla | `historia_larga` — cortes en los percentiles 5/25/50/75 (4,0 · 5,9 · 7,6 · 9,1 millones) de las 204 ventanas de 12 meses de la serie oficial anteriores al mandato, dic-2006 a nov-2023; no se miró 2024-2026 (ADR-0232, ADR-0388) |
 
 **Bandas**: ≤ 4e+06 → 100 · 4e+06–5.9e+06 → 85 · 5.9e+06–7.6e+06 → 65 · 7.6e+06–9.1e+06 → 40 · > 9.1e+06 → 10
 
@@ -251,15 +251,15 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 33% |
-| Peso efectivo en el índice | **4.7%** |
+| Peso dentro de la dimensión | 25% |
+| Peso efectivo en el índice | **3.5%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150) |
 
 **Bandas**: > 0.6 → 100 · 0.2–0.6 → 85 · -0.2–0.2 → 65 · -0.6–-0.2 → 40 · ≤ -0.6 → 10
 
-**Lo gobiernan**: [ADR-0145](../adr/0145-apoyo-empresario-la-fuente-sirve-la-metrica-no.md) Apoyo empresario: la fuente sirve, la métrica no · [ADR-0148](../adr/0148-apoyo-empresario-con-uia-la-metrica-funciona.md) Apoyo empresario: con UIA, la métrica funciona · [ADR-0149](../adr/0149-detector-de-postura-empresaria.md) Detector de postura empresaria · [ADR-0150](../adr/0150-apoyo-empresario-entra-al-itcp.md) Apoyo empresario entra al ITCP, y el bug que lo encontró · [ADR-0151](../adr/0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) El corpus estaba truncado: `apoyo_empresario` se recodifica entero · [ADR-0265](../adr/0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) Una dimensión no promete vías que ya no puntúan · [ADR-0310](../adr/0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) El saldo empresario vuelve al ITCP con el corpus cerrado · [ADR-0332](../adr/0332-una-camara-que-calla-no-dispara-nada.md) Una cámara que calla no dispara nada, y el saldo sigue saliendo · [ADR-0334](../adr/0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md) AEA sale del perímetro y el rótulo dice lo que mide · [ADR-0335](../adr/0335-el-saldo-empresario-necesita-tres-comunicados.md) El saldo empresario necesita al menos tres comunicados · [ADR-0372](../adr/0372-la-brecha-de-obra-publica-sale-del-indice-politico.md) La brecha de obra pública sale del índice político · [ADR-0380](../adr/0380-mas-camaras-en-la-postura-empresaria.md) Más cámaras en la postura empresaria: entra el comercio
+**Lo gobiernan**: [ADR-0145](../adr/0145-apoyo-empresario-la-fuente-sirve-la-metrica-no.md) Apoyo empresario: la fuente sirve, la métrica no · [ADR-0148](../adr/0148-apoyo-empresario-con-uia-la-metrica-funciona.md) Apoyo empresario: con UIA, la métrica funciona · [ADR-0149](../adr/0149-detector-de-postura-empresaria.md) Detector de postura empresaria · [ADR-0150](../adr/0150-apoyo-empresario-entra-al-itcp.md) Apoyo empresario entra al ITCP, y el bug que lo encontró · [ADR-0151](../adr/0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) El corpus estaba truncado: `apoyo_empresario` se recodifica entero · [ADR-0265](../adr/0265-una-dimension-no-promete-vias-que-ya-no-puntuan.md) Una dimensión no promete vías que ya no puntúan · [ADR-0310](../adr/0310-apoyo-empresario-vuelve-con-el-corpus-cerrado.md) El saldo empresario vuelve al ITCP con el corpus cerrado · [ADR-0332](../adr/0332-una-camara-que-calla-no-dispara-nada.md) Una cámara que calla no dispara nada, y el saldo sigue saliendo · [ADR-0334](../adr/0334-aea-sale-del-perimetro-y-el-rotulo-dice-uia.md) AEA sale del perímetro y el rótulo dice lo que mide · [ADR-0335](../adr/0335-el-saldo-empresario-necesita-tres-comunicados.md) El saldo empresario necesita al menos tres comunicados · [ADR-0372](../adr/0372-la-brecha-de-obra-publica-sale-del-indice-politico.md) La brecha de obra pública sale del índice político · [ADR-0380](../adr/0380-mas-camaras-en-la-postura-empresaria.md) Más cámaras en la postura empresaria: entra el comercio · [ADR-0391](../adr/0391-la-construccion-y-las-autopartistas-entran-a-la-postura-empresaria.md) La construcción y las autopartistas entran a la postura empresaria
 
 #### Postura pública del comercio
 
@@ -267,15 +267,15 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 33% |
-| Peso efectivo en el índice | **4.7%** |
+| Peso dentro de la dimensión | 25% |
+| Peso efectivo en el índice | **3.5%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — las mismas anclas del saldo de la industria —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie del comercio; no se miró el rango observado, que de hecho toca el extremo +1,0 (ADR-0150, ADR-0380) |
 
 **Bandas**: > 0.6 → 100 · 0.2–0.6 → 85 · -0.2–0.2 → 65 · -0.6–-0.2 → 40 · ≤ -0.6 → 10
 
-**Lo gobiernan**: [ADR-0380](../adr/0380-mas-camaras-en-la-postura-empresaria.md) Más cámaras en la postura empresaria: entra el comercio
+**Lo gobiernan**: [ADR-0380](../adr/0380-mas-camaras-en-la-postura-empresaria.md) Más cámaras en la postura empresaria: entra el comercio · [ADR-0391](../adr/0391-la-construccion-y-las-autopartistas-entran-a-la-postura-empresaria.md) La construcción y las autopartistas entran a la postura empresaria
 
 #### Postura pública del campo
 
@@ -283,15 +283,31 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 33% |
-| Peso efectivo en el índice | **4.7%** |
+| Peso dentro de la dimensión | 25% |
+| Peso efectivo en el índice | **3.5%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — las mismas anclas del saldo de la industria y del comercio —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie del campo (ADR-0150, ADR-0384) |
 
 **Bandas**: > 0.6 → 100 · 0.2–0.6 → 85 · -0.2–0.2 → 65 · -0.6–-0.2 → 40 · ≤ -0.6 → 10
 
-**Lo gobiernan**: [ADR-0384](../adr/0384-el-campo-entra-a-la-postura-empresaria.md) El campo entra a la postura empresaria
+**Lo gobiernan**: [ADR-0384](../adr/0384-el-campo-entra-a-la-postura-empresaria.md) El campo entra a la postura empresaria · [ADR-0391](../adr/0391-la-construccion-y-las-autopartistas-entran-a-la-postura-empresaria.md) La construcción y las autopartistas entran a la postura empresaria
+
+#### Postura pública de la construcción
+
+`apoyo_construccion`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 25% |
+| Peso efectivo en el índice | **3.5%** |
+| Familia de lectura | tensión externa |
+| Rezago declarado | 6 meses |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Bandas**: > 0.6 → 100 · 0.2–0.6 → 85 · -0.2–0.2 → 65 · -0.6–-0.2 → 40 · ≤ -0.6 → 10
+
+**Lo gobiernan**: [ADR-0391](../adr/0391-la-construccion-y-las-autopartistas-entran-a-la-postura-empresaria.md) La construcción y las autopartistas entran a la postura empresaria
 
 ## Se releva y no puntúa
 
@@ -354,7 +370,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-100 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+101 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -456,3 +472,4 @@ histórica.
 - [0384](../adr/0384-el-campo-entra-a-la-postura-empresaria.md) — El campo entra a la postura empresaria
 - [0388](../adr/0388-jornadas-no-trabajadas-con-escala-que-se-mueve.md) — Jornadas no trabajadas con una escala que se mueve
 - [0390](../adr/0390-conflictividad-con-cortes-de-la-historia-previa.md) — Conflictividad con cortes de la historia previa
+- [0391](../adr/0391-la-construccion-y-las-autopartistas-entran-a-la-postura-empresaria.md) — La construcción y las autopartistas entran a la postura empresaria

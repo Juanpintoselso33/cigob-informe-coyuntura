@@ -8,7 +8,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [apoyo_campo]
 archivos: ['scripts/politica.py', 'scripts/itcp.py', 'scripts/descargar_series.py', 'scripts/procedencia_anclas.py', 'scripts/publicar.py', 'data/politica/apoyo_campo_codificacion.json', 'data/politica/apoyo_campo_desacuerdos.json', 'data/politica/apoyo_campo_novedades.json', 'data/politica/apoyo_camaras_relevamiento.json', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts']
-relacionado: ['0131', '0150', '0245', '0310', '0380']
+relacionado: ['0131', '0150', '0245', '0310', '0380', '0391']
 ambito: 'Cinturón político · ITCP · dimensión Sector privado'
 origen: 'Reunión del 26-oct-2026: sumar otras cámaras además de la UIA; criterio de Luis Babino de 4 comunicados con postura en 12 meses. ADR-0380 dejó el campo como «próxima tanda». Adjudicación de Juan y criterio de suma de Luis, 27-oct-2026.'
 ---

@@ -2286,13 +2286,39 @@ def apoyo_empresario_serie() -> list:
     que lo sacó del ITCP (ADR-0246); el dato queda viejo a la vista y el
     rezago máximo del índice lo marca.
 
+    **Industria = UIA + AFAC (ADR-0391).** Desde el 27-oct-2026 la industria
+    promedia por cámara, como el campo (ADR-0384): la UIA aporta su saldo de su
+    registro y AFAC el suyo de `apoyo_industria_codificacion.json`, cada una con
+    su propio mínimo; si una no llega ese mes, cuenta la que llega. Los
+    pendientes de cualquiera de los dos inventarios cortan la serie.
+
     [[YYYY-MM-01, saldo]] ascendente, saldo en [−1, +1].
     """
-    return _apoyo_saldo_serie(APOYO_CODIFICACION_PATH, APOYO_CAMARAS_PERIMETRO,
-                              APOYO_NOVEDADES_PATH, "apoyo_empresario")
+    return _apoyo_saldo_serie((APOYO_CODIFICACION_PATH, APOYO_INDUSTRIA_CODIFICACION_PATH),
+                              APOYO_CAMARAS_PERIMETRO + APOYO_INDUSTRIA_CAMARAS,
+                              (APOYO_NOVEDADES_PATH, APOYO_INDUSTRIA_NOVEDADES_PATH),
+                              "apoyo_empresario", por_camara=True)
 
 
-def _apoyo_saldo_serie(codificacion: Path, camaras: tuple, novedades: Path,
+def _apoyo_computable(c: dict) -> bool:
+    """Un caso entra al saldo si habla al Ejecutivo nacional, apoya o critica y
+    no es la crónica de un acto ya contado por su declaración (`duplica_a`,
+    ADR-0391). Los pendientes de adjudicación tienen postura null y no entran."""
+    return (c.get("destinatario") == "ejecutivo_nacional"
+            and c.get("postura") in ("apoyo", "critica")
+            and not c.get("duplica_a"))
+
+
+def _apoyo_casos(codificacion) -> list:
+    """Casos de uno o varios registros (un Path o una tupla de Paths)."""
+    rutas = (codificacion,) if isinstance(codificacion, Path) else tuple(codificacion)
+    casos = []
+    for r in rutas:
+        casos += json.loads(r.read_text(encoding="utf-8-sig"))["casos"]
+    return casos
+
+
+def _apoyo_saldo_serie(codificacion, camaras: tuple, novedades,
                        nombre: str, cobertura_desde: str | None = None,
                        por_camara: bool = False) -> list:
     """El cálculo del saldo, común a todos los sectores (ADR-0380): mismo
@@ -2303,18 +2329,20 @@ def _apoyo_saldo_serie(codificacion: Path, camaras: tuple, novedades: Path,
 
     `por_camara=True` (campo, ADR-0384): el saldo es el promedio simple de los
     saldos de cada cámara que tenga el mínimo de comunicados en la ventana, y
-    no el saldo de todas las notas juntas."""
-    d = json.loads(codificacion.read_text(encoding="utf-8-sig"))
-    comp = [(c["fecha"], c["postura"], c["camara"]) for c in d["casos"]
-            if c["camara"] in camaras
-            and c["destinatario"] == "ejecutivo_nacional"
-            and c["postura"] in ("apoyo", "critica")]
+    no el saldo de todas las notas juntas.
+
+    `codificacion` y `novedades` pueden ser un Path o una tupla (la industria
+    lee la UIA y AFAC de dos registros, ADR-0391): el tope es el más bajo de los
+    inventarios."""
+    comp = [(c["fecha"], c["postura"], c["camara"]) for c in _apoyo_casos(codificacion)
+            if c["camara"] in camaras and _apoyo_computable(c)]
     if not comp:
         raise ValueError(f"{nombre}: el registro no tiene casos computables")
 
     y, m = map(int, APOYO_DESDE.split("-"))
     hoy = date.today()
-    tope = _apoyo_tope(hoy, novedades)
+    novs = (novedades,) if isinstance(novedades, Path) or novedades is None else tuple(novedades)
+    tope = min(_apoyo_tope(hoy, n) for n in novs)
     out = []
     while (y, m) <= tope:
         # Doce meses calendario: del mes siguiente al de hace un año al mes
@@ -2417,14 +2445,14 @@ def avisar_apoyo_pendientes(pendientes: dict) -> None:
                   p.get("url") or APOYO_NOVEDADES_PATH.name)
 
 
-def _apoyo_pendientes() -> int:
+def _apoyo_pendientes(novedades: Path | None = None) -> int:
     """Cuántos comunicados detectados esperan codificación humana (ADR-0149).
 
     Este indicador es el único del cinturón cuyo dato lo actualiza una PERSONA,
     no el cron: si nadie codifica, la serie se congela sin que falle nada. Por
     eso el número va a la card, a la vista."""
     try:
-        store = json.loads(APOYO_NOVEDADES_PATH.read_text(encoding="utf-8-sig"))
+        store = json.loads((novedades or APOYO_NOVEDADES_PATH).read_text(encoding="utf-8-sig"))
         return len(store.get("pendientes", {}))
     except (OSError, json.JSONDecodeError):
         return 0
@@ -2432,14 +2460,15 @@ def _apoyo_pendientes() -> int:
 
 def fetch_apoyo_empresario() -> dict | None:
     """
-    Postura pública de AEA y UIA hacia el Ejecutivo nacional, saldo en ventana
-    móvil de 12 meses (ADR-0150).
+    Postura pública de la industria (UIA y AFAC; AEA quedó fuera del cálculo,
+    ADR-0334) hacia el Ejecutivo nacional, saldo en ventana móvil de 12 meses
+    (ADR-0150), promediado por cámara desde ADR-0391.
 
-    Más negativo = las dos cámaras empresarias de referencia critican más de lo
-    que apoyan = mayor tensión con el sector privado organizado.
+    Más negativo = las cámaras de la industria critican más de lo que apoyan =
+    mayor tensión con el sector privado organizado.
 
-    Fuente: comunicados institucionales fechados de aeanet.net/prensa.html y
-    uia.org.ar/uia/novedades, codificados con el protocolo de ADR-0131 — dos
+    Fuente: comunicados institucionales fechados de uia.org.ar/uia/novedades y
+    afac.org.ar (y los de aeanet.net/prensa.html, codificados y fuera del cálculo), codificados con el protocolo de ADR-0131 — dos
     codificadores ciegos entre sí, desacuerdos adjudicados por el autor del
     manual; el kappa de cada tanda está en `apoyo_empresario_codificacion.json`.
     Suspendido por ADR-0246 y repuesto por ADR-0310.
@@ -2450,25 +2479,30 @@ def fetch_apoyo_empresario() -> dict | None:
         serie = apoyo_empresario_serie()
         fecha, valor = serie[-1]
         anterior = serie[-13][1] if len(serie) > 13 else None
-        d = json.loads(APOYO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
+        ini, fin = _apoyo_inicio_ventana(fecha[:7]), f"{fecha[:7]}-31"
         # La misma ventana que el punto de la serie, con su límite superior: si
         # la serie está cortada, contar lo codificado después descompondría un
         # saldo que no es el publicado.
         # MISMO perímetro que `apoyo_empresario_serie`: contar acá los comunicados
         # de una cámara que no entra al saldo publicaba «10 en la ventana» debajo
         # de un saldo calculado sobre 9 (ADR-0334).
-        comp = [c for c in d["casos"]
-                if c["camara"] in APOYO_CAMARAS_PERIMETRO
-                and c["destinatario"] == "ejecutivo_nacional"
-                and c["postura"] in ("apoyo", "critica")
-                and _apoyo_inicio_ventana(fecha[:7]) <= c["fecha"] <= f"{fecha[:7]}-31"]
+        comp = [c for c in _apoyo_casos((APOYO_CODIFICACION_PATH, APOYO_INDUSTRIA_CODIFICACION_PATH))
+                if c["camara"] in APOYO_CAMARAS_PERIMETRO + APOYO_INDUSTRIA_CAMARAS
+                and _apoyo_computable(c) and ini <= c["fecha"] <= fin]
+        saldos = _apoyo_saldos_por_camara([(c["fecha"], c["postura"], c["camara"]) for c in comp], ini, fin)
+        # Sólo cuentan las cámaras que promedian (ADR-0391): las demás no llegaron al mínimo.
+        comp = [c for c in comp if c["camara"] in saldos]
         apoyos = sum(1 for c in comp if c["postura"] == "apoyo")
-        pend = _apoyo_pendientes()
+        pend = _apoyo_pendientes() + _apoyo_pendientes(APOYO_INDUSTRIA_NOVEDADES_PATH)
+        nombres = {"UIA": "la UIA", "AFAC": "AFAC", "AEA": "AEA"}
+        por_cam_txt = "; ".join(
+            f"{nombres.get(k, k)} {str(round(v[2], 3)).replace('-', '−').replace('.', ',')} "
+            f"({v[0]} de apoyo, {v[1]} de crítica)" for k, v in saldos.items())
         return {
             "valor":          valor,
             "unidad":         "saldo de postura (−1 a +1, 12m móviles)",
             # Sin número de ADR: este string se publica (G6).
-            "fuente":         "Comunicados de la UIA — codificación CIGOB",
+            "fuente":         "Comunicados de la UIA y AFAC — codificación CIGOB",
             "fecha_dato":     fecha,
             # Cortada por el inventario (ADR-0310), la card es un dato congelado
             # y se declara así; al día llega al mes en curso.
@@ -2478,10 +2512,12 @@ def fetch_apoyo_empresario() -> dict | None:
             "apoyos_ventana":      apoyos,
             "criticas_ventana":    len(comp) - apoyos,
             "pendientes_de_codificar": pend,
+            "saldos_por_camara": {k: round(v[2], 3) for k, v in saldos.items()},
             "detalle_txt": (
-                f"En los últimos doce meses la UIA se pronunció {len(comp)} veces "
+                f"En los últimos doce meses las cámaras de la industria se pronunciaron {len(comp)} veces "
                 f"sobre medidas del Gobierno nacional: {apoyos} de apoyo y "
-                f"{len(comp) - apoyos} de crítica. Saldo "
+                f"{len(comp) - apoyos} de crítica. El saldo es el promedio simple de los "
+                f"saldos de cada cámara ({por_cam_txt}): "
                 # signo menos tipográfico, como en la unidad y en las anclas
                 f"{str(valor).replace('-', '−').replace('.', ',')} en una escala de "
                 f"−1 (todo crítica) a +1 (todo apoyo)."
@@ -2765,8 +2801,7 @@ def fetch_apoyo_comercio() -> dict | None:
         # MISMO perímetro y MISMA ventana que el punto de la serie (ADR-0334).
         comp = [c for c in d["casos"]
                 if c["camara"] in APOYO_COMERCIO_CAMARAS
-                and c["destinatario"] == "ejecutivo_nacional"
-                and c["postura"] in ("apoyo", "critica")
+                and _apoyo_computable(c)
                 and _apoyo_inicio_ventana(fecha[:7]) <= c["fecha"] <= f"{fecha[:7]}-31"]
         apoyos = sum(1 for c in comp if c["postura"] == "apoyo")
         try:
@@ -3108,8 +3143,7 @@ def fetch_apoyo_campo() -> dict | None:
         # MISMO perímetro y MISMA ventana que el punto de la serie (ADR-0334).
         comp = [c for c in d["casos"]
                 if c["camara"] in APOYO_CAMPO_CAMARAS
-                and c["destinatario"] == "ejecutivo_nacional"
-                and c["postura"] in ("apoyo", "critica")
+                and _apoyo_computable(c)
                 and _apoyo_inicio_ventana(fecha[:7]) <= c["fecha"] <= f"{fecha[:7]}-31"]
         saldos = _apoyo_saldos_por_camara([(c["fecha"], c["postura"], c["camara"]) for c in comp],
                                           _apoyo_inicio_ventana(fecha[:7]), f"{fecha[:7]}-31")
@@ -3305,14 +3339,13 @@ def _avisar_camara_muda(hoy: date | None = None) -> list:
     return avisadas
 
 
-# ── Bancos (ADEBA, ABA, ABAPPRA) y CAMARCO: sólo el corpus (ADR-0391) ────────
+# ── Bancos (ADEBA, ABA, ABAPPRA) y CAMARCO: el corpus (ADR-0391) ────────────
 #
 # Decisión de Juan, 27-oct-2026: los bancos cuentan como UN sector (cada
-# comunicado una vez aunque lo firmen varias cámaras) y CAMARCO se clasifica ya
-# pero queda fuera del cálculo, como CAME, hasta llegar al mínimo de 4
-# comunicados con postura dirigidos al Ejecutivo nacional en 12 meses. Esta
-# fase NO toca el índice: arma el corpus, la regla de archivo y los lotes.
-# Nada de lo de abajo está en ningún perímetro (`APOYO_*_CAMARAS`).
+# comunicado una vez aunque lo firmen varias cámaras). Esto arma el corpus, la
+# regla de archivo y los lotes para los lectores; lo que entra al cálculo lo
+# fijan `APOYO_CONSTRUCCION_CAMARAS` (CAMARCO, que cumple el mínimo de Luis) y
+# `APOYO_BANCOS_CAMARAS` (vacío: los bancos no llegan, quedan clasificados).
 APOYO_BANCOS_CAMARCO_CORPUS_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_bancos_camarco_corpus.json"
 APOYO_BANCOS_CAMARCO_RELEVAMIENTO_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_bancos_camarco_relevamiento.json"
 APOYO_BANCOS_CAMARCO_DESDE = "2023-12-10"      # asunción de Milei: primer día del período
@@ -3375,13 +3408,15 @@ def _es_archivable_camarco(titulo: str, categorias=()) -> str | None:
     return None
 
 
-def _wp_posts(session: requests.Session, url: str, camara: str, params: dict | None = None) -> list[dict]:
+def _wp_posts(session: requests.Session, url: str, camara: str, params: dict | None = None,
+              max_paginas: int | None = None) -> list[dict]:
     """Todas las notas desde el 10-dic-2023 de una API de WordPress, con su texto
     completo. Título y cuerpo salen del MISMO registro, así que no existe el error
     de emparejamiento que tuvo CAME (ADR-0380). Pagina hasta que el sitio
-    contesta 400 (página inexistente) o devuelve menos de 100."""
+    contesta 400 (página inexistente) o devuelve menos de 100. El detector
+    nocturno pide sólo la primera página (`max_paginas=1`, las 100 más nuevas)."""
     salida, p = [], 1
-    while True:
+    while max_paginas is None or p <= max_paginas:
         r = session.get(url, timeout=HTTP_TIMEOUT * 3, params={
             **(params or {}), "per_page": 100, "page": p, "after": f"{APOYO_BANCOS_CAMARCO_DESDE}T00:00:00",
             "_fields": "id,date,link,title,content,categories"})
@@ -3410,8 +3445,8 @@ def _aba_listado(session: requests.Session) -> list[dict]:
     return _wp_posts(session, ABA_POSTS_URL, "ABA", {"categories": ",".join(map(str, ABA_COMUNICADOS_CATS))})
 
 
-def _camarco_listado(session: requests.Session) -> list[dict]:
-    return _wp_posts(session, CAMARCO_POSTS_URL, "CAMARCO")
+def _camarco_listado(session: requests.Session, max_paginas: int | None = None) -> list[dict]:
+    return _wp_posts(session, CAMARCO_POSTS_URL, "CAMARCO", max_paginas=max_paginas)
 
 
 def _abappra_listado(session: requests.Session) -> list[dict]:
@@ -3556,6 +3591,280 @@ def construir_corpus_bancos_camarco(session: requests.Session) -> dict:
                           "url": n["url"], "firmantes": n["firmantes"], "motivo": n["motivo"]} for n in bancos_archivados]
     return {"crudas": crudas, "bancos": bancos, "camarco": camarco,
             "archivados": sorted(bancos_archivados + camarco_archivados, key=lambda n: (n["camara"], n["fecha"]))}
+
+
+# ── La industria suma a AFAC, y entra la construcción (ADR-0391) ────────────
+#
+# Decisiones de Juan, 27-oct-2026, con el criterio de entrada de Luis (mínimo de
+# 4 comunicados dirigidos al Ejecutivo nacional con postura en 12 meses
+# calendario):
+#   · AFAC (autopartistas) cumple y entra DENTRO de la industria: la card
+#     `apoyo_empresario` pasa a promediar por cámara la UIA y AFAC, como el
+#     campo (ADR-0384). Su registro es propio para no tocar el de la UIA.
+#   · CAMARCO cumple y entra como sector nuevo, `apoyo_construccion`.
+#   · Los bancos (ADEBA, ABA, ABAPPRA como un solo sector) no llegan (3): quedan
+#     clasificados fuera del cálculo, como CAME. Nombrarlos en
+#     `APOYO_BANCOS_CAMARAS` repone su saldo.
+#   · Regla nueva, general: la crónica de un acto ya cubierto por su declaración
+#     no se cuenta de nuevo. Se marca en el registro con `duplica_a` (lo mira
+#     `_apoyo_computable`), no se deduce por fecha.
+APOYO_INDUSTRIA_CODIFICACION_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_industria_codificacion.json"
+APOYO_INDUSTRIA_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_industria_novedades.json"
+APOYO_AFAC_CORPUS_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_afac_corpus.json"
+APOYO_INDUSTRIA_CAMARAS = ("AFAC",)
+APOYO_INDUSTRIA_DESDE = "2023-12-10"     # asunción de Milei: primer día del período
+
+AFAC_API_URL = "https://afac.org.ar/Api/api/Noticias"
+AFAC_SECCION_COMUNICADOS = 2              # «Comunicados de prensa» en la API del sitio
+AFAC_NOTICIA_URL = "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id={}"
+AFAC_ADJUNTO_URL = "https://afac.org.ar/Api/imagenes/noticias/{}"
+
+# Informes estadísticos periódicos de AFAC: informe de actividad del sector y de
+# comercio exterior autopartista (con sus variantes de título). Son la salida de
+# un tablero, no una toma de posición: se archivan sin clasificar, por la misma
+# regla de títulos que la CAC y CAME (ADR-0380). Decisión de Juan, 27-oct-2026:
+# los desacuerdos entre lectores sobre estas notas no se adjudican, se archivan.
+APOYO_AFAC_ESTADISTICO = re.compile(
+    r"^informe de actividad|^comercio exterior (autopartista|de autopartes)|^informe de comercio exterior", re.I)
+
+
+def _es_archivable_afac(titulo: str) -> str | None:
+    """Motivo por el que una nota de AFAC no se clasifica, o None."""
+    if APOYO_AFAC_ESTADISTICO.search(titulo.strip()):
+        return "informe estadístico periódico"
+    return None
+
+
+def _afac_listado(session: requests.Session) -> list[dict]:
+    """Inventario de «Comunicados de prensa» de AFAC desde el período, de la API
+    pública del sitio (`Noticias/GetByFilter`, la misma que llama su página)."""
+    r = session.post(f"{AFAC_API_URL}/GetByFilter", timeout=HTTP_TIMEOUT * 3,
+                     json={"idSeccion": AFAC_SECCION_COMUNICADOS, "DateFrom": None, "DateTo": None})
+    r.raise_for_status()
+    salida = []
+    for x in r.json().get("data") or []:
+        fecha = str(x.get("fecha", ""))[:10]
+        if fecha < APOYO_INDUSTRIA_DESDE:
+            continue
+        salida.append({"camara": "AFAC", "id": str(x["id"]), "fecha": fecha,
+                       "titulo": unescape(x.get("titulo") or "").strip(),
+                       "url": AFAC_NOTICIA_URL.format(x["id"]), "adjunto": x.get("adjunto")})
+    return salida
+
+
+def _afac_comunicado(c: dict, session: requests.Session) -> dict | None:
+    """Cuerpo de una nota de AFAC (`Noticias/GetById`). El campo `desarrollo` es
+    HTML escapado dos veces. El PDF adjunto no se lee acá: queda la URL para
+    quien la clasifique."""
+    r = session.get(f"{AFAC_API_URL}/GetById/{c['id']}", timeout=HTTP_TIMEOUT)
+    if r.status_code != 200:
+        return None
+    d = (r.json() or {}).get("data") or {}
+    texto = _texto_limpio_html(unescape(d.get("desarrollo") or ""))
+    out = {"camara": "AFAC", "id": str(c["id"]), "fecha": c["fecha"],
+           "titulo": unescape(d.get("titulo") or c.get("titulo") or "").strip(),
+           "texto": texto, "url": c["url"]}
+    if c.get("adjunto"):
+        out["pdf_url"] = AFAC_ADJUNTO_URL.format(c["adjunto"].replace(" ", "%20"))
+    return out
+
+
+def _detectar_novedades(store_path: Path, registro_path: Path, origen: str, camaras: tuple,
+                        fuentes: dict, listar: dict, bajar: dict, archivable, desde: str,
+                        indicador: str) -> dict:
+    """Contrato común de los detectores de ADR-0391 (el de ADR-0149/0310/0380):
+    detecta, no clasifica; lo ya registrado (clasificado o archivado) no se
+    vuelve a avisar; un informe periódico se anota como revisado; lo nuevo queda
+    pendiente con postura null y corta la serie; `inventario_verificado` sólo
+    avanza si respondieron todas las cámaras del perímetro."""
+    try:
+        store = json.loads(store_path.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        store = {}
+    revisadas = store.setdefault("revisadas", {})
+    pendientes = store.setdefault("pendientes", {})
+    try:
+        reg = json.loads(registro_path.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        reg = {}
+    for c in reg.get("casos", []):
+        revisadas.setdefault(f"{c['camara']}|{c['id']}", {"origen": f"codificacion {origen}"})
+    for c in reg.get("archivados_estadisticos", []):
+        revisadas.setdefault(f"{c['camara']}|{c['id']}",
+                             {"origen": f"no se codifica ({origen}): " + c.get("motivo", "informe periódico")})
+
+    session = requests.Session()
+    session.headers.update(HTTP_HEADERS)
+    nuevas = vistos = respondieron = 0
+    for cam in camaras:
+        try:
+            for c in listar[cam](session):
+                vistos += 1
+                clave = f"{cam}|{c['id']}"
+                if clave in revisadas or c.get("fecha", "9999") < desde:
+                    continue
+                motivo = archivable(c)
+                if motivo:
+                    revisadas[clave] = {"fecha": c["fecha"], "titulo": c.get("titulo", "")[:160],
+                                        "origen": f"no se codifica ({origen}): {motivo}"}
+                    continue
+                completo = c if c.get("texto") is not None else bajar[cam](c, session)
+                if not completo:
+                    raise RuntimeError(f"no se pudo leer {c.get('url')}")
+                revisadas[clave] = {"fecha": completo["fecha"], "titulo": completo.get("titulo", "")[:160]}
+                pendientes[clave] = {**{k: v for k, v in completo.items() if k != "categorias"},
+                                     "camara": cam, "postura": None, "destinatario": None,
+                                     "nota": "sin codificar — ver apoyo_empresario_reglas.json"}
+                nuevas += 1
+            respondieron += 1
+        except Exception as e:
+            print(f"  [WARN] apoyo/{cam}: {e}")
+
+    verificado = (store.get("_meta") or {}).get("inventario_verificado")
+    if respondieron == len(camaras):
+        verificado = date.today().isoformat()
+    store["_meta"] = {
+        "descripcion": (f"Comunicados nuevos de las cámaras del perímetro ({', '.join(camaras)}) "
+                        f"pendientes de codificar ({origen}). Detección automática; la postura y el "
+                        "destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. "
+                        f"Los pendientes cortan la serie de {indicador} en el mes anterior al más viejo, e "
+                        "`inventario_verificado` es la última corrida en la que respondieron todas las "
+                        "cámaras del perímetro. Sacar de 'pendientes' lo ya codificado."),
+        "fuentes": {c: fuentes[c] for c in camaras},
+        "ultima_corrida": date.today().isoformat(),
+        "inventario_verificado": verificado,
+        "comunicados_vistos": vistos,
+        "nuevos_en_la_corrida": nuevas,
+    }
+    store_path.parent.mkdir(parents=True, exist_ok=True)
+    store_path.write_text(json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True), encoding="utf-8")
+    return store
+
+
+def detectar_novedades_industria() -> dict:
+    """Comunicados nuevos de AFAC pendientes de codificar (ADR-0391). La UIA la
+    vigila `detectar_novedades_empresarias`; los dos inventarios cortan la serie
+    de `apoyo_empresario`."""
+    return _detectar_novedades(
+        APOYO_INDUSTRIA_NOVEDADES_PATH, APOYO_INDUSTRIA_CODIFICACION_PATH, "ADR-0391",
+        APOYO_INDUSTRIA_CAMARAS, {"AFAC": f"{AFAC_API_URL}/GetByFilter"},
+        {"AFAC": _afac_listado}, {"AFAC": _afac_comunicado},
+        lambda c: _es_archivable_afac(c.get("titulo", "")), APOYO_INDUSTRIA_DESDE, "apoyo_empresario")
+
+
+def avisar_apoyo_industria_pendientes(pendientes: dict) -> None:
+    """Cada comunicado de AFAC sin codificar va a #monitor-alertas como cotejo
+    manual: mientras haya uno, la serie de `apoyo_empresario` se corta."""
+    from cotejo_manual import registrar
+    for clave, p in sorted(pendientes.items()):
+        registrar("apoyo_empresario", clave,
+                  "Comunicado sin codificar: la serie se corta en el mes anterior hasta codificarlo "
+                  "con el manual v2 y doble codificación ciega (data/politica/apoyo_industria_codificacion.json).",
+                  p.get("url") or APOYO_INDUSTRIA_NOVEDADES_PATH.name)
+
+
+# Construcción: CAMARCO (ADR-0391). Mismo saldo, mismo mínimo, mismas bandas.
+APOYO_CONSTRUCCION_CODIFICACION_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_construccion_codificacion.json"
+APOYO_CONSTRUCCION_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_construccion_novedades.json"
+APOYO_CONSTRUCCION_CAMARAS = ("CAMARCO",)
+
+
+def detectar_novedades_construccion() -> dict:
+    """Notas nuevas de CAMARCO pendientes de codificar (ADR-0391). Lee la
+    primera página de su WordPress (las 100 más nuevas) y archiva por título o
+    categoría lo que no es comunicado."""
+    return _detectar_novedades(
+        APOYO_CONSTRUCCION_NOVEDADES_PATH, APOYO_CONSTRUCCION_CODIFICACION_PATH, "ADR-0391",
+        APOYO_CONSTRUCCION_CAMARAS, {"CAMARCO": CAMARCO_POSTS_URL},
+        {"CAMARCO": lambda s: _camarco_listado(s, max_paginas=1)}, {"CAMARCO": None},
+        lambda c: _es_archivable_camarco(c.get("titulo", ""), c.get("categorias", ())),
+        APOYO_BANCOS_CAMARCO_DESDE, "apoyo_construccion")
+
+
+def avisar_apoyo_construccion_pendientes(pendientes: dict) -> None:
+    """Cada nota de CAMARCO sin codificar va a #monitor-alertas como cotejo
+    manual: mientras haya una, la serie de `apoyo_construccion` se corta."""
+    from cotejo_manual import registrar
+    for clave, p in sorted(pendientes.items()):
+        registrar("apoyo_construccion", clave,
+                  "Comunicado sin codificar: la serie se corta en el mes anterior hasta codificarlo "
+                  "con el manual v2 y doble codificación ciega (data/politica/apoyo_construccion_codificacion.json). "
+                  "Si es la crónica de un acto ya contado por su declaración, se registra con `duplica_a`.",
+                  p.get("url") or APOYO_CONSTRUCCION_NOVEDADES_PATH.name)
+
+
+def apoyo_construccion_serie() -> list:
+    """Saldo de postura de la construcción (CAMARCO) hacia el Ejecutivo
+    nacional, 12 meses móviles. Misma cuenta que `apoyo_empresario_serie`: ver
+    `_apoyo_saldo_serie`. [[YYYY-MM-01, saldo]] ascendente, saldo en [−1, +1]."""
+    return _apoyo_saldo_serie(APOYO_CONSTRUCCION_CODIFICACION_PATH, APOYO_CONSTRUCCION_CAMARAS,
+                              APOYO_CONSTRUCCION_NOVEDADES_PATH, "apoyo_construccion")
+
+
+def fetch_apoyo_construccion() -> dict | None:
+    """
+    Postura pública de la Cámara Argentina de la Construcción (CAMARCO) hacia
+    el Ejecutivo nacional, saldo en ventana móvil de 12 meses (ADR-0391).
+
+    Más negativo = la cámara de la construcción critica más de lo que apoya.
+    Fuente: notas fechadas de camarco.org.ar, codificadas con el protocolo de
+    ADR-0131 (dos lectores ciegos entre sí, desacuerdos que deciden el puntaje
+    adjudicados por una persona). Una crónica de un acto ya contado por su
+    declaración no se cuenta de nuevo (`duplica_a`).
+
+    Dimensión: sector privado (ADR-0088).
+    """
+    try:
+        serie = apoyo_construccion_serie()
+        fecha, valor = serie[-1]
+        anterior = serie[-13][1] if len(serie) > 13 else None
+        ini, fin = _apoyo_inicio_ventana(fecha[:7]), f"{fecha[:7]}-31"
+        comp = [c for c in _apoyo_casos(APOYO_CONSTRUCCION_CODIFICACION_PATH)
+                if c["camara"] in APOYO_CONSTRUCCION_CAMARAS and _apoyo_computable(c)
+                and ini <= c["fecha"] <= fin]
+        apoyos = sum(1 for c in comp if c["postura"] == "apoyo")
+        pend = _apoyo_pendientes(APOYO_CONSTRUCCION_NOVEDADES_PATH)
+        return {
+            "valor":          valor,
+            "unidad":         "saldo de postura (−1 a +1, 12m móviles)",
+            # Sin número de ADR: este string se publica (G6).
+            "fuente":         "Comunicados de CAMARCO — codificación CIGOB",
+            "fecha_dato":     fecha,
+            "desactualizado": fecha[:7] < date.today().isoformat()[:7],
+            "variacion_12m":  None if anterior is None else round(valor - anterior, 3),
+            "comunicados_ventana": len(comp),
+            "apoyos_ventana":      apoyos,
+            "criticas_ventana":    len(comp) - apoyos,
+            "pendientes_de_codificar": pend,
+            "detalle_txt": (
+                f"En los últimos doce meses la Cámara Argentina de la Construcción "
+                f"se pronunció {len(comp)} veces sobre medidas del Gobierno nacional: "
+                f"{apoyos} de apoyo y {len(comp) - apoyos} de crítica. Saldo "
+                f"{str(valor).replace('-', '−').replace('.', ',')} en una escala de "
+                f"−1 (todo crítica) a +1 (todo apoyo)."
+                + (f" Hay {pend} comunicado{'s' if pend != 1 else ''} detectado"
+                   f"{'s' if pend != 1 else ''} sin codificar." if pend else "")),
+        }
+    except Exception as e:
+        _warn("apoyo_construccion", str(e))
+        return None
+
+
+# Bancos (ADR-0391): un solo sector, clasificado y FUERA del cálculo porque no
+# llega al mínimo de Luis (3 en la ventana de la card). Como CAME en el comercio,
+# volver a nombrarlos acá ("BANCOS",) repone su saldo; sumarlos a la dimensión
+# de sector privado es además una decisión de peso (DIMENSIONES_ITCP).
+APOYO_BANCOS_CODIFICACION_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_bancos_codificacion.json"
+APOYO_BANCOS_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_bancos_novedades.json"   # no hay detector mientras estén fuera
+APOYO_BANCOS_CAMARAS: tuple = ()
+
+
+def apoyo_bancos_serie() -> list:
+    """Saldo de los bancos con la misma cuenta que los demás sectores. Con
+    `APOYO_BANCOS_CAMARAS` vacío no hay casos computables y levanta ValueError:
+    no hay serie que publicar."""
+    return _apoyo_saldo_serie(APOYO_BANCOS_CODIFICACION_PATH, APOYO_BANCOS_CAMARAS,
+                              APOYO_BANCOS_NOVEDADES_PATH, "apoyo_bancos")
 
 
 def detectar_novedades_empresarias() -> dict:
@@ -8344,13 +8653,32 @@ def main() -> None:
     except Exception as e:
         print(f"  [WARN] detector de postura del campo no corrió ({e})")
 
+    # Mismo orden y mismo motivo para AFAC (industria) y la construcción (ADR-0391).
+    try:
+        pend_i = detectar_novedades_industria().get("pendientes", {})
+        if pend_i:
+            print(f"  [i] industria (AFAC): {len(pend_i)} comunicado(s) sin codificar "
+                  f"→ data/politica/apoyo_industria_novedades.json")
+            avisar_apoyo_industria_pendientes(pend_i)
+    except Exception as e:
+        print(f"  [WARN] detector de postura de AFAC no corrió ({e})")
+    try:
+        pend_o = detectar_novedades_construccion().get("pendientes", {})
+        if pend_o:
+            print(f"  [i] construcción: {len(pend_o)} comunicado(s) sin codificar "
+                  f"→ data/politica/apoyo_construccion_novedades.json")
+            avisar_apoyo_construccion_pendientes(pend_o)
+    except Exception as e:
+        print(f"  [WARN] detector de postura de la construcción no corrió ({e})")
+
     colectores = [
         ("ratio_dnu",                     fetch_ratio_dnu),
         ("brecha_obra_publica",           fetch_brecha_obra_publica),
         ("apoyo_empresario",              fetch_apoyo_empresario),
         ("apoyo_comercio",                fetch_apoyo_comercio),
         ("apoyo_campo",                   fetch_apoyo_campo),
-        ("conflictividad_nacional",       fetch_conflictividad_nacional),
+        ("apoyo_construccion",            fetch_apoyo_construccion),
+        ("conflictividad_nacional",      fetch_conflictividad_nacional),
         ("jornadas_individuales_no_trabajadas_12m",
                                              fetch_jornadas_individuales_no_trabajadas),
         ("movilizacion_cepa",             fetch_cepa_movilizacion),

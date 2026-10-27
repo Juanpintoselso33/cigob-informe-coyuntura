@@ -1,0 +1,2688 @@
+{
+ "_meta": {
+  "comunicados_vistos": 100,
+  "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
+  "fuentes": {
+   "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
+  },
+  "inventario_verificado": "2026-10-27",
+  "nuevos_en_la_corrida": 0,
+  "ultima_corrida": "2026-10-27"
+ },
+ "pendientes": {},
+ "revisadas": {
+  "CAMARCO|32906": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|32927": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|32935": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|32943": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|32959": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|32965": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33016": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33022": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33054": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33064": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33100": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33109": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33139": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33206": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33231": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33243": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33261": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33290": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33340": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33343": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33361": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33366": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33392": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33403": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33408": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33435": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33440": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33451": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33472": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33478": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33502": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33513": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33522": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33532": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33572": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33612": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33620": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33676": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33679": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33683": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33684": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33687": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33690": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33707": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33712": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33717": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33721": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33724": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33738": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33757": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33786": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33792": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33799": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33819": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33826": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33835": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33851": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33856": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33860": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33866": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33898": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33921": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|33935": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33952": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|33968": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34004": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34013": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34018": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34056": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34075": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34092": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34112": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34303": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34312": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34324": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34342": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34347": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34421": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34430": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34480": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34509": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34521": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|34542": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34552": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34587": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34598": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34609": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34630": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34650": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34669": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34674": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34680": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34686": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34696": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34723": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34729": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34737": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34746": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34858": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34874": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34896": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34900": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34908": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|34925": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34930": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|34948": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|34997": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35009": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35040": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35068": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35087": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35116": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35122": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35131": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35141": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35148": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35167": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35174": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35179": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35195": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35201": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35229": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35230": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35241": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35257": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35282": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35305": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35350": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35359": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35385": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35409": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35426": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35435": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35438": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35451": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35458": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35467": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35487": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35506": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35548": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35566": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35574": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|35610": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35620": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35647": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35661": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35667": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35682": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35710": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35733": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35735": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35772": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35785": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35787": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35811": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35814": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35815": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35873": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35886": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35908": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35915": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35928": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35939": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|35953": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35968": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|35972": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36018": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36057": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36089": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36125": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36131": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36145": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36162": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36186": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36194": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36201": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36214": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36235": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36240": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36247": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36255": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36264": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36279": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36285": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36313": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36332": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36353": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|36373": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36381": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36384": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36387": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36392": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36395": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36396": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36403": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36413": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36416": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36419": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36422": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36452": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36463": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36483": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36493": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|36497": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36521": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|36543": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36562": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36563": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36584": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|36613": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36623": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|36638": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|36651": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36666": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36710": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36726": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36731": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36737": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36751": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36761": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36771": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36779": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36793": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36819": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36829": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36845": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36851": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36856": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36861": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36880": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36897": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36904": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36916": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36925": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36932": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36937": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|36949": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36954": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|36985": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37036": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37046": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37125": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37163": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37172": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37181": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37186": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37215": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37219": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37240": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37257": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37261": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37285": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37307": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37311": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37330": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37346": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37376": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37390": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37410": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37416": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37426": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37431": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37460": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|37467": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37474": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37478": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37515": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|37520": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37548": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37593": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37621": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37622": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37630": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37658": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37663": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37675": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37679": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37683": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37698": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37731": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37763": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37766": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37780": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37787": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37816": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37825": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37842": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37846": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37855": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37869": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37878": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37894": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37901": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37912": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|37948": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37959": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|37999": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|38013": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38025": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38041": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38068": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38074": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38101": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38128": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38147": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38168": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|38179": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|38214": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38219": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38231": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|38276": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38279": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38290": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38309": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38339": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38354": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38368": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38398": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38404": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38411": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38415": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|38426": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38429": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38432": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38442": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38445": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38466": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38480": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38486": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38497": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|38576": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38598": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38609": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38625": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|38663": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38713": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38716": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38730": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38736": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38779": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|38814": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38852": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|38903": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38930": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38942": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38952": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38968": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|38976": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|38983": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39018": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39025": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39029": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39034": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39044": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39047": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39051": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39066": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39071": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39115": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39120": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39132": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39142": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39214": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39240": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39245": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39250": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39260": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39303": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|39335": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39347": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39353": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39362": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39392": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39417": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|39430": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39437": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39462": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39498": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39505": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39510": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39522": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39543": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39557": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39585": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39600": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39644": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39654": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39660": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39670": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39674": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39687": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39695": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39729": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|39793": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39805": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39835": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39851": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39872": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39873": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39883": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39902": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39922": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39936": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39949": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|39975": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39978": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39981": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39984": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39985": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|39992": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39995": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|39999": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40002": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40005": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40010": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40021": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40058": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|40169": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40181": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40186": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40200": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|40228": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|40241": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40256": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40303": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40344": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|40427": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|40464": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40475": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40476": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40496": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|40520": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40544": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40554": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|40613": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40617": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|40634": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|40669": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|40715": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40716": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|40718": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40769": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40772": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|40796": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40867": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40875": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|40889": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40904": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|40962": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41010": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41026": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|41043": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41050": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41056": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41074": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41117": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|41126": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|41189": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41198": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41225": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41232": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|41253": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41270": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|41282": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41288": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|41305": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|41310": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41359": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|41422": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41430": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|41479": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41483": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41488": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41498": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41508": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41527": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41532": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41538": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41584": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41589": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|41681": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41691": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41757": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41883": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|41916": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41930": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41937": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41961": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|41993": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42007": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42026": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42034": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42057": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42096": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42154": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42171": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42176": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42187": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42208": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42209": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42210": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42247": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42261": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42269": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42305": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42320": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42342": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42418": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42448": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|42452": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42474": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42503": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42508": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42512": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42518": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42523": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42526": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42529": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42532": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42535": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42538": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42541": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42544": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42551": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42597": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42609": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42617": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42619": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42641": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|42646": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42706": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42721": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42739": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42744": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42751": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42755": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42764": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42782": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42797": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42818": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42824": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42830": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42846": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42860": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42866": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42882": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42892": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42903": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42911": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42921": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42938": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|42950": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42955": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|42972": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42984": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|42997": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43012": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43031": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43051": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43058": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|43066": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43072": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43078": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43090": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43210": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43223": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43232": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43246": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43274": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43286": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43294": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43301": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43318": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43348": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43355": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43380": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43393": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43394": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43422": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43480": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43514": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|43556": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43562": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43597": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43607": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43613": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43617": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43623": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43627": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43652": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43660": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43689": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43714": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43772": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43778": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43787": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43798": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|43894": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43908": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43945": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43952": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43970": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|43971": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|43998": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44001": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44047": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44055": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44084": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|44103": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44113": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44204": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44216": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44244": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44245": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44279": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|44282": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44290": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44300": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44311": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44315": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44326": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44346": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44355": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44363": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|44427": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44525": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44545": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44567": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|44588": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44604": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44655": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44689": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44728": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44764": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44782": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44792": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44887": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44902": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44927": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44930": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|44955": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|44967": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|44975": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45001": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45033": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45041": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45047": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45072": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45110": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45121": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45134": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45144": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45156": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45183": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45194": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45223": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45252": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45256": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45312": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45317": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45361": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45370": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45406": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|45455": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45467": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45479": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45536": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45546": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45555": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45560": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45570": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45588": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45603": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45627": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45647": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45659": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45687": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45693": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45706": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45718": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45726": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45741": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45764": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45770": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|45786": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|45804": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|45811": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45828": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45845": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45854": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45859": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45864": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45869": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45874": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45894": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45898": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45918": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45923": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45934": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45942": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|45957": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45964": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|45975": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46002": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46065": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46070": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46075": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46096": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46099": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46100": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46109": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46122": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46129": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46151": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46163": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46171": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46176": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46179": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46188": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46193": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46194": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46221": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46231": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46238": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46249": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46272": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46285": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46289": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46311": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46328": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46341": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46363": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46370": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46386": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46417": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46502": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46518": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46522": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46525": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46529": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46540": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46568": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46592": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46615": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46636": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46641": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46648": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46651": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46667": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46676": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46685": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46689": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46694": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46722": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46730": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46738": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46746": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46766": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46777": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46819": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46820": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46840": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46851": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46866": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46924": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46935": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|46942": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46960": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|46964": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|46987": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47048": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47070": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|47136": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47145": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47148": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47161": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47168": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47183": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47191": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47212": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47290": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47294": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47317": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47328": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47353": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47392": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47399": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|47429": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47434": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47443": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|47461": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|47475": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47491": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|47542": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47547": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47573": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47594": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47606": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47608": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47638": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47670": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47698": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|47713": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47722": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47748": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47767": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|47770": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47774": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47795": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|47798": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47811": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47816": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47822": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47836": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47855": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47881": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47888": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47910": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|47931": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|47945": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47949": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|47964": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|47979": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48007": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|48025": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48030": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48034": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48041": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|48045": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48047": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48049": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48060": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|48063": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48089": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48116": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48126": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48132": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48142": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48155": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48162": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48176": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48180": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48186": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48194": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48205": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48206": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48219": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48225": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48245": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48249": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48274": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48278": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48283": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48295": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48329": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48340": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48354": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48373": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48386": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48402": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48411": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48461": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48562": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48567": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48584": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48603": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48611": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48665": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48787": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48824": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48830": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48835": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48846": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48893": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48916": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48938": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48950": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48953": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48956": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|48964": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|48998": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|49005": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|49011": {
+   "origen": "no se codifica (ADR-0391): serie periódica por título"
+  },
+  "CAMARCO|49017": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|49025": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|49056": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|49066": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|49097": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|49119": {
+   "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|49142": {
+   "origen": "no se codifica (ADR-0391): publicación de formación o divulgación (categoría del sitio)"
+  },
+  "CAMARCO|49145": {
+   "origen": "codificacion ADR-0391"
+  }
+ }
+}

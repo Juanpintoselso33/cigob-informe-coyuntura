@@ -238,6 +238,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0384](0384-el-campo-entra-a-la-postura-empresaria.md) | El campo entra a la postura empresaria | `apoyo_campo` | vigente |
 | [0388](0388-jornadas-no-trabajadas-con-escala-que-se-mueve.md) | Jornadas no trabajadas con una escala que se mueve | `jornadas_individuales_no_trabajadas_12m` | vigente |
 | [0390](0390-conflictividad-con-cortes-de-la-historia-previa.md) | Conflictividad con cortes de la historia previa | `conflictividad_nacional` | vigente |
+| [0391](0391-la-construccion-y-las-autopartistas-entran-a-la-postura-empresaria.md) | La construcción y las autopartistas entran a la postura empresaria | `apoyo_empresario`, `apoyo_construccion`, `apoyo_comercio` | vigente |
 
 ### Gestión (ITCG)
 

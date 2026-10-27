@@ -219,6 +219,7 @@ def test_publicacion_y_censo_con_componente_sin_universo(monkeypatch, tmp_path, 
     # 65 → 65: `siniestralidad_laboral` reemplaza a `litigiosidad_laboral` en el ITCG
     # (ADR-0385): sale uno y entra uno.
     # 65 → 66: entra `alquiler_udesa_real` a precios del ITVC (ADR-0386).
-    assert resumen["indicadores"] == 66
-    assert resumen["indicadores_observados_en_calculo"] == 65   # 64 → 65 (ADR-0386) | ... → 66 (ADR-0380) → 63 (tanda 27-oct) | 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328) → 68 (ADR-0365) → 67 (ADR-0368) → 66 (ADR-0369) → 65 (ADR-0372) → 66 (ADR-0380)
+    # 66 → 67: entra `apoyo_construccion` a sector privado (ADR-0391).
+    assert resumen["indicadores"] == 67
+    assert resumen["indicadores_observados_en_calculo"] == 66   # 65 → 66 (ADR-0391) | 64 → 65 (ADR-0386) | ... → 66 (ADR-0380) → 63 (tanda 27-oct) | 62 → 63 (ADR-0310) → 62 (ADR-0314) → 63 (ADR-0322) → 64 (ADR-0329) → 67 (ADR-0327/0328) → 68 (ADR-0365) → 67 (ADR-0368) → 66 (ADR-0369) → 65 (ADR-0372) → 66 (ADR-0380)
     assert resumen["indicadores_sin_universo"] == 1

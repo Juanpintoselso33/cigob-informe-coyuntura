@@ -1,0 +1,1771 @@
+{
+ "_meta": {
+  "descripcion": "Codificación de postura hacia el Ejecutivo nacional de los bancos: ADEBA, ABA y ABAPPRA como UN solo sector, cada comunicado contado una vez aunque lo firmen varias (ADR-0391). Mismo manual y protocolo que los otros sectores. Clasificados y FUERA DEL CÁLCULO: no llegan al mínimo de 4 en 12 meses (como CAME en el comercio y AEA en la industria). El texto de cada nota está en el corpus (apoyo_bancos_camarco_corpus.json).",
+  "fecha": "2026-10-27",
+  "protocolo": "ADR-0131, con el diseño de concordancia de ADR-0150, ADR-0380 y ADR-0384",
+  "corpus": "data/politica/apoyo_bancos_camarco_corpus.json",
+  "camaras": {
+   "BANCOS": "ADEBA (categoría «comunicados» de su WordPress), ABA (categorías «Comunicados ABA», «Gacetillas» y «Prensa») y ABAPPRA (página única de comunicados oficiales), deduplicados: un comunicado publicado en dos sitios es una sola entrada con todas sus firmantes (`firmantes`, `fuentes`). 56 clasificados y 1 archivados por regla de título"
+  },
+  "perimetro": {
+   "camaras_en_el_codigo": [],
+   "criterio": "Mínimo de 4 comunicados dirigidos al Ejecutivo nacional con postura en la ventana de 12 meses calendario de la card (nov-2025 a oct-2026), criterio de Luis Babino.",
+   "conteo_ventana": {
+    "comunicados": 3,
+    "apoyos": 3,
+    "criticas": 0,
+    "ids": [
+     "adeba-44450",
+     "aba-8277",
+     "adeba-44956"
+    ]
+   },
+   "entra_al_calculo": [],
+   "motivo": "Decisión de Juan, 27-oct-2026: los bancos quedan clasificados fuera del cálculo porque no llegan al mínimo (3 en 12 meses).",
+   "reingreso": "Nombrar BANCOS en politica.APOYO_BANCOS_CAMARAS repone el saldo (apoyo_bancos_serie) y el detector; sumar el sector a la dimensión es además una decisión de peso (DIMENSIONES_ITCP) con su ADR y sus textos de la web."
+  },
+  "universo": "Los comunicados de las tres asociaciones desde el 10-dic-2023, salvo los informes periódicos (síntesis normativa, estadísticas, índices, boletines, rankings), que se archivan sin clasificar.",
+  "regla_informes_estadisticos": {
+   "por_que": "Son la salida de un tablero, no una toma de posición. La regla se escribió ANTES de clasificar (politica.APOYO_BANCOS_ESTADISTICO).",
+   "patron": "s[ií]ntesis normativa|estad[ií]stic|[ií]ndices? de |bolet[ií]n|informe (mensual|semanal|trimestral|anual|de coyuntura|de actividad|monetario)|indicadores|ranking|resultados de (los bancos|20\\d\\d)|evoluci[oó]n (del|de los) (cr[eé]dito|dep[oó]sitos)|lideraron los resultados",
+   "riesgo_declarado": "Un informe periódico puede traer una frase de postura; como la regla mira el título, esa frase no entra."
+  },
+  "regla_cronica_duplicada": {
+   "regla": "La crónica de un acto ya cubierto por su declaración no se cuenta de nuevo: se cuenta una vez, la declaración (decisión de Juan, 27-oct-2026, ADR-0391).",
+   "como_se_aplica": "Con un campo explícito, `duplica_a`, en la crónica, que nombra la clave «CÁMARA|id» de la declaración. La crónica conserva sus dos lecturas y entra al kappa, pero el cálculo no la cuenta. No se decide por fecha ni por título: lo marca una persona al registrar el caso.",
+   "casos": []
+  },
+  "codificadores": {
+   "diseno": "Dos lectores independientes ciegos entre sí sobre el corpus completo; el kappa se mide ENTRE ELLOS. Cada uno recibió solo el manual (apoyo_empresario_reglas.json, v2) y el material crudo, en lotes de hasta 60 notas.",
+   "pasada_1": {
+    "quien": "lector ciego C (agente de IA, modelo Sonnet)",
+    "fecha": "2026-10-27",
+    "completa": true
+   },
+   "pasada_2": {
+    "quien": "lector ciego D (agente de IA, modelo Opus)",
+    "fecha": "2026-10-27",
+    "completa": true
+   },
+   "naturaleza_de_los_codificadores": "Los dos lectores son agentes de IA de dos modelos distintos de la misma familia: el kappa prueba que el manual es unívoco, no que dos personas coincidirían. Los desacuerdos que decidían el puntaje los resolvió una persona; ningún agente adjudicó ningún caso.",
+   "postura_mixta": "Los lectores usaron «mixta» para notas que apoyan una medida y critican otra sin que el título resuelva; el manual v2 manda «dudoso» en ese caso. Las dos etiquetas tienen el mismo efecto: no cuentan. Se conservan tal como las escribieron, y el kappa se mide con ellas.",
+   "adjudicacion": {
+    "quien": "Juan (persona), 27-oct-2026, para dos casos; uno (ADEBA, 9-ene-2026, apoyo del G6 al acuerdo con la UE) caía en la ventana y decidía el conteo.",
+    "casos": [
+     "BANCOS|abappra-2024-07-08",
+     "BANCOS|adeba-44450"
+    ],
+    "pendientes": 2,
+    "criterio": "Los desacuerdos que no deciden el puntaje quedan pendientes, con postura y destinatario en null (ADR-0384)."
+   }
+  },
+  "concordancia": {
+   "n": 56,
+   "kappa_postura": 0.943,
+   "acuerdo_postura": 0.964,
+   "kappa_destinatario": 0.918,
+   "acuerdo_destinatario": 0.946,
+   "desacuerdos": 4,
+   "adjudicados": 2,
+   "pendientes": 2,
+   "desacuerdos_que_afectan_el_puntaje": 1,
+   "pendientes_que_afectan_el_puntaje": 0,
+   "umbral_minimo": 0.7,
+   "estado": "ALCANZADA"
+  },
+  "serie": "no se publica: los bancos están fuera del cálculo. politica.apoyo_bancos_serie() la calcula si se los nombra en APOYO_BANCOS_CAMARAS.",
+  "resultado": {
+   "total": 56,
+   "postura": {
+    "neutro": 25,
+    "pendiente": 2,
+    "critica": 10,
+    "apoyo": 19
+   },
+   "destinatario": {
+    "ejecutivo_nacional": 24,
+    "externo_o_propio": 20,
+    "pendiente": 2,
+    "provincias_municipios": 6,
+    "judicial": 1,
+    "congreso": 3
+   },
+   "archivados_estadisticos": 1
+  }
+ },
+ "casos": [
+  {
+   "camara": "BANCOS",
+   "id": "aba-5766",
+   "fecha": "2023-12-20",
+   "titulo": "Pago de salarios y jubilaciones en Argentina",
+   "url": "https://aba-argentina.com/pago-de-salarios-y-jubilaciones-en-argentina/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/pago-de-salarios-y-jubilaciones-en-argentina/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "doctrinario: pagar salarios sólo en bancos, sin medida concreta evaluada"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "doctrina: salarios deben pagarse en bancos; no evalúa medida tomada"
+   },
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "doctrina: salarios deben pagarse en bancos; no evalúa medida tomada",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-5769",
+   "fecha": "2023-12-28",
+   "titulo": "La evaluación mutua de GAFI y GAFILAT a la Argentina",
+   "url": "https://aba-argentina.com/la-evaluacion-mutua-de-gafi-y-gafilat-a-la-argentina/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/la-evaluacion-mutua-de-gafi-y-gafilat-a-la-argentina/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "reunión público-privada sobre evaluación GAFI"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "reunión sobre evaluación GAFI/GAFILAT"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "reunión sobre evaluación GAFI/GAFILAT",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-5794",
+   "fecha": "2024-01-19",
+   "titulo": "Claves del sector financiero para la lucha contra el lavado de activos",
+   "url": "https://aba-argentina.com/claves-del-sector-financiero-para-la-lucha-contra-el-lavado-de-activos/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/claves-del-sector-financiero-para-la-lucha-contra-el-lavado-de-activos/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "congreso",
+    "nota": "pide con urgencia sancionar la reforma de la Ley 25.246"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "posición programática sobre lavado y colaboración con autoridades"
+   },
+   "postura": null,
+   "destinatario": null,
+   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana",
+   "concordancia": "pendiente_adjudicacion",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba35863-abappra2024-01-23",
+   "fecha": "2024-01-23",
+   "titulo": "Comunicado de prensa",
+   "url": "https://abappra.org.ar/comunicados#2024-01-23",
+   "firmantes": [
+    "ADEBA",
+    "ABAPPRA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/aba-abappra-abe-y-adeba-comunican-que-sus-instituciones-asociadas-prestaran-servicios-a-sus-clientes-el-24-de-enero/",
+    "ABAPPRA": "https://abappra.org.ar/comunicados#2024-01-23"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "aviso de servicio por paro"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "servicios durante paro bancario"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "servicios durante paro bancario",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-5820",
+   "fecha": "2024-02-06",
+   "titulo": "Acciones de clase: una causa más del costo argentino",
+   "url": "https://aba-argentina.com/acciones-de-clase-una-causa-mas-del-costo-argentino/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/acciones-de-clase-una-causa-mas-del-costo-argentino/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "acciones de clase: culpa a la laxitud de Secretaría de Comercio y la Justicia; mixto con judicial"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "acciones de clase: atribuye a Secretaría de Comercio y reguladores, pide cambios"
+   },
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "acciones de clase: atribuye a Secretaría de Comercio y reguladores, pide cambios",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-5896",
+   "fecha": "2024-03-02",
+   "titulo": "ABA apoya la convocatoria a la firma del “Pacto del 25 de Mayo”",
+   "url": "https://aba-argentina.com/aba-apoya-la-convocatoria-a-la-firma-del-pacto-del-25-de-mayo/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/aba-apoya-la-convocatoria-a-la-firma-del-pacto-del-25-de-mayo/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "apoya convocatoria presidencial al Pacto de Mayo"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "apoya convocatoria presidencial al Pacto de Mayo"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "apoya convocatoria presidencial al Pacto de Mayo",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-36322",
+   "fecha": "2024-03-02",
+   "titulo": "ADEBA apoya el acuerdo nacional",
+   "url": "https://www.adeba.com.ar/adeba-apoya-el-acuerdo-nacional/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/adeba-apoya-el-acuerdo-nacional/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "celebra convocatoria de Milei al acuerdo nacional"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "celebra convocatoria de Milei al acuerdo nacional"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "celebra convocatoria de Milei al acuerdo nacional",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-5915",
+   "fecha": "2024-03-15",
+   "titulo": "ABA participó de las jornadas para la prevención de lavado de activos",
+   "url": "https://aba-argentina.com/aba-participo-de-las-jornadas-para-la-prevencion-de-lavado-de-activos/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/aba-participo-de-las-jornadas-para-la-prevencion-de-lavado-de-activos/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "participación en jornadas"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "participación en jornadas; propuestas a autoridades"
+   },
+   "postura": null,
+   "destinatario": null,
+   "motivo": "desacuerdo entre los dos lectores; pendiente de adjudicación humana",
+   "concordancia": "pendiente_adjudicacion",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-5970",
+   "fecha": "2024-04-05",
+   "titulo": "ABA participó de la mesa de diálogo para la prevención de lavado de activos",
+   "url": "https://aba-argentina.com/aba-participo-de-la-mesa-de-dialogo-para-la-prevencion-de-lavado-de-activos/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/aba-participo-de-la-mesa-de-dialogo-para-la-prevencion-de-lavado-de-activos/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "reunión con UIF"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "reunión con la UIF"
+   },
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "reunión con la UIF",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-6002",
+   "fecha": "2024-04-10",
+   "titulo": "Evasión: la AFIP acordó con los bancos la implementación del intercambio automático de datos",
+   "url": "https://aba-argentina.com/evasion-la-afip-acordo-con-los-bancos-la-implementacion-del-intercambio-automatico-de-datos/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/evasion-la-afip-acordo-con-los-bancos-la-implementacion-del-intercambio-automatico-de-datos/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "reunión de AFIP con bancos, informativo"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "reunión con AFIP por intercambio FATCA"
+   },
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "reunión con AFIP por intercambio FATCA",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-6656",
+   "fecha": "2024-05-02",
+   "titulo": "Más beneficios para usuarios de tarjetas de crédito",
+   "url": "https://aba-argentina.com/mas-beneficios-para-usuarios-de-tarjetas-de-credito/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/mas-beneficios-para-usuarios-de-tarjetas-de-credito/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "valora interoperabilidad QR dispuesta por BCRA"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "valora interoperabilidad QR dispuesta por BCRA"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "valora interoperabilidad QR dispuesta por BCRA",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-37298",
+   "fecha": "2024-05-02",
+   "titulo": "Bienvenida la era de los QR de pago interoperables",
+   "url": "https://www.adeba.com.ar/bienvenida-la-era-de-los-qr-de-pago-interoperables/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/bienvenida-la-era-de-los-qr-de-pago-interoperables/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "celebra interoperabilidad QR dispuesta por BCRA"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "celebra QR interoperables dispuestos por BCRA"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "celebra QR interoperables dispuestos por BCRA",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-6658",
+   "fecha": "2024-05-10",
+   "titulo": "Buscamos al cocinero de Liniers que no adhirió al paro",
+   "url": "https://aba-argentina.com/buscamos-al-cocinero-de-liniers-que-no-adhirio-al-paro/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/buscamos-al-cocinero-de-liniers-que-no-adhirio-al-paro/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "búsqueda de persona entrevistada, sin medida"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "busca a cocinero afectado por paro CGT; no hay medida estatal"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "busca a cocinero afectado por paro CGT; no hay medida estatal",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "abappra-2024-05-24",
+   "fecha": "2024-05-24",
+   "titulo": "Daniel Tillard fue Reelecto como Presidente de ABAPPRA en su 65 Congreso Anual Ordinario",
+   "url": "https://abappra.org.ar/comunicados#2024-05-24",
+   "firmantes": [
+    "ABAPPRA"
+   ],
+   "fuentes": {
+    "ABAPPRA": "https://abappra.org.ar/comunicados#2024-05-24"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "reelección de autoridades propias"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "reelección de autoridades propias"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "reelección de autoridades propias",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-6663",
+   "fecha": "2024-05-30",
+   "titulo": "Cesario: «Los bancos de Argentina tienen mucha tecnología y mucha inversión»",
+   "url": "https://aba-argentina.com/cesario-los-bancos-de-argentina-tienen-mucha-tecnologia-y-mucha-inversion/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/cesario-los-bancos-de-argentina-tienen-mucha-tecnologia-y-mucha-inversion/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "entrevista al presidente de ABA; comentario tributario incidental"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "entrevista del presidente de ABA"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "entrevista del presidente de ABA",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba37671-aba6666",
+   "fecha": "2024-05-30",
+   "titulo": "Aportes de los bancos y clientes a las arcas públicas de Nación, Provincias, CABA y municipios",
+   "url": "https://www.adeba.com.ar/aportes-de-los-bancos-y-clientes-a-las-arcas-publicas-de-nacion-provincias-caba-y-municipios/",
+   "firmantes": [
+    "ADEBA",
+    "ABA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/aportes-de-los-bancos-y-clientes-a-las-arcas-publicas-de-nacion-provincias-caba-y-municipios/",
+    "ABA": "https://aba-argentina.com/aportes-de-los-bancos-y-clientes-a-las-arcas-publicas-de-nacion-provincias-caba-y-municipios/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "carga impositiva de los tres niveles; pide bajar gasto y eliminar impuestos distorsivos (IDCB, IIBB)"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "alta carga impositiva; pide a los tres niveles bajar gasto e impuestos distorsivos"
+   },
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "alta carga impositiva; pide a los tres niveles bajar gasto e impuestos distorsivos",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba38013-aba6099",
+   "fecha": "2024-07-01",
+   "titulo": "Los bancos privados respaldan las medidas anunciadas por el Gobierno",
+   "url": "https://www.adeba.com.ar/los-bancos-privados-respaldan-las-medidas-anunciadas-por-el-gobierno/",
+   "firmantes": [
+    "ADEBA",
+    "ABA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/los-bancos-privados-respaldan-las-medidas-anunciadas-por-el-gobierno/",
+    "ABA": "https://aba-argentina.com/los-bancos-privados-respaldan-las-medidas-anunciadas-por-el-gobierno/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "respalda anuncios económicos del Gobierno"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "respaldo a nueva fase del programa económico"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "respaldo a nueva fase del programa económico",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "abappra-2024-07-08",
+   "fecha": "2024-07-08",
+   "titulo": "CONCLUSIONES DE LA AGENDA DE TRABAJO DEL 3° CONGRESO FEDERAL BANCARIO ABAPPRA.",
+   "url": "https://abappra.org.ar/comunicados#2024-07-08",
+   "firmantes": [
+    "ABAPPRA"
+   ],
+   "fuentes": {
+    "ABAPPRA": "https://abappra.org.ar/comunicados#2024-07-08"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "mixta",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "conclusiones programáticas con valoración del crédito hipotecario y reclamo por asimetrías con fintechs"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "conclusiones de congreso: documento programático con pedidos al BCRA"
+   },
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "documento programático (manual v2); adjudicación de Juan, 27-oct-2026",
+   "concordancia": "adjudicado",
+   "adjudicacion": {
+    "quien": "Juan",
+    "fecha": "2026-10-27",
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "documento programático (manual v2); adjudicación de Juan, 27-oct-2026"
+   },
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-38097",
+   "fecha": "2024-07-08",
+   "titulo": "El sector empresario desataca los consensos del Pacto de Mayo",
+   "url": "https://www.adeba.com.ar/el-sector-empresario-desataca-los-consensos-del-pacto-de-mayo/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/el-sector-empresario-desataca-los-consensos-del-pacto-de-mayo/"
+   },
+   "g6": true,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "celebra el Pacto de Mayo"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "G6 celebra firma del Pacto de Mayo"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "G6 celebra firma del Pacto de Mayo",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-6675",
+   "fecha": "2024-08-06",
+   "titulo": "ABA destaca el avance de la apertura de los medios de pago en el transporte público",
+   "url": "https://aba-argentina.com/aba-destaca-el-avance-de-la-apertura-de-los-medios-de-pago-en-el-transporte-publico/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/aba-destaca-el-avance-de-la-apertura-de-los-medios-de-pago-en-el-transporte-publico/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "destaca Decreto 698 de pagos en transporte"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "destaca decreto 698 de apertura de medios de pago"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "destaca decreto 698 de apertura de medios de pago",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-38398",
+   "fecha": "2024-08-06",
+   "titulo": "ADEBA celebra el inicio de la desregulación de los medios de pago en el Transporte Público",
+   "url": "https://www.adeba.com.ar/adeba-celebra-el-inicio-de-la-desregulacion-de-los-medios-de-pagos-en-el-transporte-publico/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/adeba-celebra-el-inicio-de-la-desregulacion-de-los-medios-de-pagos-en-el-transporte-publico/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "celebra Decreto 698"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "celebra decreto 698 de desregulación de pagos"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "celebra decreto 698 de desregulación de pagos",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-38829",
+   "fecha": "2024-09-05",
+   "titulo": "ADEBA repudia el atentado contra la Sociedad Rural Argentina",
+   "url": "https://www.adeba.com.ar/adeba-repudia-el-atentado-contra-la-sociedad-rural-argentina/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/adeba-repudia-el-atentado-contra-la-sociedad-rural-argentina/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "repudio a atentado contra la SRA"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "repudio a atentado contra la SRA"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "repudio a atentado contra la SRA",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-7450",
+   "fecha": "2024-09-13",
+   "titulo": "ABA y sus bancos asociados rechazan el aumento de IIBB en La Pampa",
+   "url": "https://aba-argentina.com/aba-y-sus-bancos-asociados-rechazan-el-aumento-de-iibb-en-la-pampa/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/aba-y-sus-bancos-asociados-rechazan-el-aumento-de-iibb-en-la-pampa/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "provincias_municipios",
+    "nota": "rechaza suba de IIBB en La Pampa"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "provincias_municipios",
+    "nota": "rechaza aumento de IIBB en La Pampa"
+   },
+   "postura": "critica",
+   "destinatario": "provincias_municipios",
+   "motivo": "rechaza aumento de IIBB en La Pampa",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-38963",
+   "fecha": "2024-09-18",
+   "titulo": "ADEBA le da la bienvenida al Banco Columbia S.A.",
+   "url": "https://www.adeba.com.ar/adeba-le-da-la-bienvenida-al-banco-columbia-s-a/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/adeba-le-da-la-bienvenida-al-banco-columbia-s-a/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "incorporación de socio"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "incorporación de nuevo socio"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "incorporación de nuevo socio",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-7452",
+   "fecha": "2024-10-03",
+   "titulo": "ABA promueve el financiamiento para pymes exportadoras",
+   "url": "https://aba-argentina.com/aba-promueve-el-financiamiento-para-pymes-exportadoras/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/aba-promueve-el-financiamiento-para-pymes-exportadoras/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "evento de financiamiento pyme con Cancillería"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "evento de financiamiento a pymes exportadoras"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "evento de financiamiento a pymes exportadoras",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-7441",
+   "fecha": "2024-10-07",
+   "titulo": "Los principales actores del sistema financiero se unen para impulsar la educación financiera",
+   "url": "https://aba-argentina.com/los-principales-actores-del-sistema-financiero-se-unen-para-impulsar-la-educacion-financiera/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/los-principales-actores-del-sistema-financiero-se-unen-para-impulsar-la-educacion-financiera/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "iniciativa conjunta de educación financiera con BCRA"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "iniciativa conjunta de educación financiera"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "iniciativa conjunta de educación financiera",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-39620",
+   "fecha": "2024-11-14",
+   "titulo": "ADEBA le da la bienvenida al Banco BICE",
+   "url": "https://www.adeba.com.ar/adeba-le-da-la-bienvenida-al-banco-bice/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/adeba-le-da-la-bienvenida-al-banco-bice/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "incorporación de socio"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "incorporación de nuevo socio"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "incorporación de nuevo socio",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-7595",
+   "fecha": "2024-11-15",
+   "titulo": "El “Caso Azzimonti” afecta el acceso al crédito hipotecario de las familias argentinas",
+   "url": "https://aba-argentina.com/el-caso-azzimonti-afecta-el-acceso-al-credito-hipotecario-de-las-familias-argentinas/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/el-caso-azzimonti-afecta-el-acceso-al-credito-hipotecario-de-las-familias-argentinas/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "judicial",
+    "nota": "preocupación por fallo Caso Azzimonti"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "judicial",
+    "nota": "preocupación por fallo Azzimonti, pide revisión"
+   },
+   "postura": "critica",
+   "destinatario": "judicial",
+   "motivo": "preocupación por fallo Azzimonti, pide revisión",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-7612",
+   "fecha": "2024-11-27",
+   "titulo": "Cesario: “No hay nada por lo que hemos peleado más que por poder trabajar de bancos”",
+   "url": "https://aba-argentina.com/cesario-no-hay-nada-por-lo-que-hemos-peleado-mas-que-por-poder-trabajar-de-bancos/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/cesario-no-hay-nada-por-lo-que-hemos-peleado-mas-que-por-poder-trabajar-de-bancos/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "balance que valora eliminación de restricciones"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "balance: valora eliminación de restricciones a la intermediación"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "balance: valora eliminación de restricciones a la intermediación",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba39783-aba7620",
+   "fecha": "2024-11-29",
+   "titulo": "El pago del transporte público con tarjeta de débito y crédito y celulares ya es una realidad en la Ciudad de Buenos Aires",
+   "url": "https://www.adeba.com.ar/el-pago-del-transporte-publico-con-tarjeta-de-debito-y-credito-y-celulares-ya-es-una-realidad-en-la-ciudad-de-buenos-aires/",
+   "firmantes": [
+    "ADEBA",
+    "ABA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/el-pago-del-transporte-publico-con-tarjeta-de-debito-y-credito-y-celulares-ya-es-una-realidad-en-la-ciudad-de-buenos-aires/",
+    "ABA": "https://aba-argentina.com/el-pago-del-transporte-publico-con-tarjeta-de-debito-y-credito-y-celulares-ya-es-una-realidad-en-la-ciudad-de-buenos-aires/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "provincias_municipios",
+    "nota": "celebra pago con tarjeta en subte de CABA"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "provincias_municipios",
+    "nota": "celebra pago con tarjeta en subte de CABA"
+   },
+   "postura": "apoyo",
+   "destinatario": "provincias_municipios",
+   "motivo": "celebra pago con tarjeta en subte de CABA",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba39826-aba7622",
+   "fecha": "2024-12-02",
+   "titulo": "Tasas municipales exorbitantes gravan los créditos y ponen en riesgo las sucursales",
+   "url": "https://aba-argentina.com/tasas-municipales-exorbitantes-gravan-los-creditos-y-ponen-en-riesgo-las-sucursales/",
+   "firmantes": [
+    "ADEBA",
+    "ABA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/tasas-municipales-exorbitantes-gravan-los-creditos-y-ponen-en-riesgo-las-sucursales/",
+    "ABA": "https://aba-argentina.com/tasas-municipales-exorbitantes-gravan-los-creditos-y-ponen-en-riesgo-las-sucursales/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "provincias_municipios",
+    "nota": "rechaza tasas municipales"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "provincias_municipios",
+    "nota": "advierte sobre tasas municipales exorbitantes"
+   },
+   "postura": "critica",
+   "destinatario": "provincias_municipios",
+   "motivo": "advierte sobre tasas municipales exorbitantes",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-39867",
+   "fecha": "2024-12-06",
+   "titulo": "ADEBA celebra el acuerdo logrado entre Mercosur y la Unión Europea (UE)",
+   "url": "https://www.adeba.com.ar/adeba-celebra-el-acuerdo-logrado-entre-mercosur-y-la-union-europea-ue/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/adeba-celebra-el-acuerdo-logrado-entre-mercosur-y-la-union-europea-ue/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "celebra acuerdo Mercosur-UE firmado"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "celebra acuerdo Mercosur-UE firmado"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "celebra acuerdo Mercosur-UE firmado",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba39992-aba7629",
+   "fecha": "2024-12-19",
+   "titulo": "Los bancos adhieren al asueto del 24 y 31 de diciembre",
+   "url": "https://aba-argentina.com/los-bancos-adhieren-al-asueto-del-24-y-31-de-diciembre-3/",
+   "firmantes": [
+    "ADEBA",
+    "ABA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/los-bancos-adhieren-al-asueto-del-24-y-31-de-diciembre-3/",
+    "ABA": "https://aba-argentina.com/los-bancos-adhieren-al-asueto-del-24-y-31-de-diciembre-3/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "aviso de asueto"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "adhesión al asueto"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "adhesión al asueto",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba40488-aba7712-abappra2025-01-31",
+   "fecha": "2025-01-27",
+   "titulo": "INGRESOS BRUTOS Y ALTAS TASAS MUNICIPALES LIMITAN EL ACCESO A LOS SERVICIOS FINANCIEROS",
+   "url": "https://abappra.org.ar/comunicados#2025-01-31",
+   "firmantes": [
+    "ADEBA",
+    "ABA",
+    "ABAPPRA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/ingresos-brutos-y-altas-tasas-municipales-limitan-el-acceso-a-los-servicios-financieros/",
+    "ABA": "https://aba-argentina.com/ingresos-brutos-y-altas-tasas-municipales-limitan-el-acceso-a-servicios-financieros/",
+    "ABAPPRA": "https://abappra.org.ar/comunicados#2025-01-31"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "provincias_municipios",
+    "nota": "critica IIBB y tasas municipales"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "provincias_municipios",
+    "nota": "IIBB provinciales y tasas municipales; exhorta a provincias y municipios"
+   },
+   "postura": "critica",
+   "destinatario": "provincias_municipios",
+   "motivo": "IIBB provinciales y tasas municipales; exhorta a provincias y municipios",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "abappra-2025-02-05",
+   "fecha": "2025-02-05",
+   "titulo": "COMUNICADO DE ABAPPRA “LOS BANCOS QUE INTEGRAN ABAPPRA RECLAMAN POR EL AUMENTO DE LA PRESIÓN TRIBUTARIA EN LA PROVINCIA DE SANTA FE”",
+   "url": "https://abappra.org.ar/comunicados#2025-02-05",
+   "firmantes": [
+    "ABAPPRA"
+   ],
+   "fuentes": {
+    "ABAPPRA": "https://abappra.org.ar/comunicados#2025-02-05"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "provincias_municipios",
+    "nota": "reclama por presión tributaria en Santa Fe"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "provincias_municipios",
+    "nota": "reclamo por presión tributaria de Santa Fe"
+   },
+   "postura": "critica",
+   "destinatario": "provincias_municipios",
+   "motivo": "reclamo por presión tributaria de Santa Fe",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-40988",
+   "fecha": "2025-03-13",
+   "titulo": "Municipalidad Tres de Febrero – Iniciativa ADEBA: Facilitar el acceso al crédito del sector privado",
+   "url": "https://www.adeba.com.ar/municipalidad-tres-de-febrero-iniciativa-adeba-facilitar-el-acceso-al-credito-del-sector-privado/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/municipalidad-tres-de-febrero-iniciativa-adeba-facilitar-el-acceso-al-credito-del-sector-privado/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "provincias_municipios",
+    "nota": "valora reducción de tasa municipal en Tres de Febrero"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "provincias_municipios",
+    "nota": "valora baja de tasa municipal en Tres de Febrero"
+   },
+   "postura": "apoyo",
+   "destinatario": "provincias_municipios",
+   "motivo": "valora baja de tasa municipal en Tres de Febrero",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-7780",
+   "fecha": "2025-03-20",
+   "titulo": "Claudio Cesario destacó la gestión de FELABAN en su 60º aniversario",
+   "url": "https://aba-argentina.com/claudio-cesario-destaco-la-gestion-de-felaban-en-su-60o-aniversario/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/claudio-cesario-destaco-la-gestion-de-felaban-en-su-60o-aniversario/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "evento FELABAN"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "aniversario de FELABAN"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "aniversario de FELABAN",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "abappra-2025-03-20",
+   "fecha": "2025-03-20",
+   "titulo": "ABAPPRA recibió en Buenos Aires a FELABAN",
+   "url": "https://abappra.org.ar/comunicados#2025-03-20",
+   "firmantes": [
+    "ABAPPRA"
+   ],
+   "fuentes": {
+    "ABAPPRA": "https://abappra.org.ar/comunicados#2025-03-20"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "evento FELABAN"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "recepción de FELABAN"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "recepción de FELABAN",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-7819",
+   "fecha": "2025-04-11",
+   "titulo": "ABA subraya el acuerdo con el FMI que permite eliminar el cepo cambiario",
+   "url": "https://aba-argentina.com/aba-subraya-el-acuerdo-con-el-fmi-que-permite-eliminar-el-cepo-cambiario/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/aba-subraya-el-acuerdo-con-el-fmi-que-permite-eliminar-el-cepo-cambiario/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "valora acuerdo con el FMI y fin del cepo"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "valora acuerdo con FMI y salida del cepo"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "valora acuerdo con FMI y salida del cepo",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-41266",
+   "fecha": "2025-04-11",
+   "titulo": "ACUERDO ARGENTINA – FMI",
+   "url": "https://www.adeba.com.ar/acuerdo-argentina-fmi/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/acuerdo-argentina-fmi/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "considera oportuno acuerdo con el FMI"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "considera conveniente acuerdo con FMI"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "considera conveniente acuerdo con FMI",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-41343",
+   "fecha": "2025-04-21",
+   "titulo": "ADEBA lamenta el fallecimiento de Su Santidad el Papa Francisco",
+   "url": "https://www.adeba.com.ar/adeba-lamenta-el-fallecimiento-de-su-santidad-el-papa-francisco/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/adeba-lamenta-el-fallecimiento-de-su-santidad-el-papa-francisco/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "condolencia por fallecimiento del Papa"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "condolencia por el Papa Francisco"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "condolencia por el Papa Francisco",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-7829",
+   "fecha": "2025-05-12",
+   "titulo": "ABA suma nuevos cursos para la prevención de lavado de activos",
+   "url": "https://aba-argentina.com/aba-suma-nuevos-cursos-para-la-prevencion-de-lavado-de-activos/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/aba-suma-nuevos-cursos-para-la-prevencion-de-lavado-de-activos/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "cursos propios y convenio UIF"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "cursos de prevención de lavado"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "cursos de prevención de lavado",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-41784",
+   "fecha": "2025-05-22",
+   "titulo": "ADEBA CONSIDERA POSITIVAS LAS MEDIDAS ANUNCIADAS POR EL GOBIERNO",
+   "url": "https://www.adeba.com.ar/adeba-considera-positivas-las-medidas-anunciadas-por-el-gobierno/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/adeba-considera-positivas-las-medidas-anunciadas-por-el-gobierno/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "valora medidas de Economía, BCRA y ARCA"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "considera positivas medidas de Economía, BCRA y ARCA"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "considera positivas medidas de Economía, BCRA y ARCA",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba42282-aba7963",
+   "fecha": "2025-07-14",
+   "titulo": "Bancos advierten sobre el impacto negativo de los cambios en las SGR aprobados en el Congreso",
+   "url": "https://aba-argentina.com/bancos-advierten-sobre-el-impacto-negativo-de-los-cambios-en-las-sgr-aprobados-en-el-congreso/",
+   "firmantes": [
+    "ADEBA",
+    "ABA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/bancos-advierten-sobre-el-impacto-negativo-de-los-cambios-en-las-sgr-aprobados-en-el-congreso/",
+    "ABA": "https://aba-argentina.com/bancos-advierten-sobre-el-impacto-negativo-de-los-cambios-en-las-sgr-aprobados-en-el-congreso/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "congreso",
+    "nota": "advierte impacto negativo de cambios en SGR aprobados por el Congreso"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "congreso",
+    "nota": "rechaza cambio al régimen de SGR aprobado por el Congreso"
+   },
+   "postura": "critica",
+   "destinatario": "congreso",
+   "motivo": "rechaza cambio al régimen de SGR aprobado por el Congreso",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-42425",
+   "fecha": "2025-07-25",
+   "titulo": "ADEBA resalta la importancia del acuerdo alcanzado con el FMI",
+   "url": "https://www.adeba.com.ar/adeba-resalta-la-importancia-del-acuerdo-alcanzado-con-el-fmi/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/adeba-resalta-la-importancia-del-acuerdo-alcanzado-con-el-fmi/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "valora acuerdo con el FMI y políticas del Gobierno"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "valora acuerdo técnico con FMI y políticas fiscal y monetaria"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "valora acuerdo técnico con FMI y políticas fiscal y monetaria",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-7990",
+   "fecha": "2025-08-06",
+   "titulo": "¿Cómo evitar estafas virtuales?",
+   "url": "https://aba-argentina.com/como-evitar-estafas-virtuales/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/como-evitar-estafas-virtuales/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "recomendaciones de BCRA contra estafas"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "recomendaciones contra estafas"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "recomendaciones contra estafas",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-8047",
+   "fecha": "2025-10-27",
+   "titulo": "ABA felicita al Gobierno nacional por el resultado de elecciones legislativas",
+   "url": "https://aba-argentina.com/aba-felicita-al-gobierno-nacional-por-el-resultado-de-elecciones-legislativas/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/aba-felicita-al-gobierno-nacional-por-el-resultado-de-elecciones-legislativas/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "felicitación por resultado electoral; caso límite neutro"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "felicitación por resultado electoral"
+   },
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "felicitación por resultado electoral",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba44124-aba8099",
+   "fecha": "2025-12-16",
+   "titulo": "Los bancos adhieren al asueto del 24 y 31 de diciembre",
+   "url": "https://www.adeba.com.ar/los-bancos-adhieren-al-asueto-del-24-y-31-de-diciembre-4/",
+   "firmantes": [
+    "ADEBA",
+    "ABA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/los-bancos-adhieren-al-asueto-del-24-y-31-de-diciembre-4/",
+    "ABA": "https://aba-argentina.com/los-bancos-adhieren-al-asueto-del-24-y-31-de-diciembre-4/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "aviso de asueto"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "adhesión al asueto"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "adhesión al asueto",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-8102",
+   "fecha": "2025-12-18",
+   "titulo": "Senado: Exposición de Claudio Cesario sobre el proyecto de Modernización Laboral",
+   "url": "https://aba-argentina.com/senado-exposicion-de-claudio-cesario-sobre-el-proyecto-de-modernizacion-laboral/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/senado-exposicion-de-claudio-cesario-sobre-el-proyecto-de-modernizacion-laboral/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "congreso",
+    "nota": "pide eliminar art. 35 del proyecto de reforma laboral en el Senado"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "congreso",
+    "nota": "pide eliminar art. 35 de la reforma laboral en el Senado"
+   },
+   "postura": "critica",
+   "destinatario": "congreso",
+   "motivo": "pide eliminar art. 35 de la reforma laboral en el Senado",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "abappra-2025-12-18",
+   "fecha": "2025-12-18",
+   "titulo": "Bancos públicos y privados alertan sobre pérdida de seguridad y mayor inestabilidad en el sistema financiero por cambios en el pago de salarios.",
+   "url": "https://abappra.org.ar/comunicados#2025-12-18",
+   "firmantes": [
+    "ABAPPRA"
+   ],
+   "fuentes": {
+    "ABAPPRA": "https://abappra.org.ar/comunicados#2025-12-18"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "congreso",
+    "nota": "rechaza art. 35 de la reforma laboral"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "congreso",
+    "nota": "rechaza art. 35 de la reforma laboral en el Senado"
+   },
+   "postura": "critica",
+   "destinatario": "congreso",
+   "motivo": "rechaza art. 35 de la reforma laboral en el Senado",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-44450",
+   "fecha": "2026-01-09",
+   "titulo": "Apoyo del G6 al Acuerdo de Asociación Estratégica con la Unión Europea",
+   "url": "https://www.adeba.com.ar/apoyo-del-g6-al-acuerdo-de-asociacion-estrategica-con-la-union-europea/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/apoyo-del-g6-al-acuerdo-de-asociacion-estrategica-con-la-union-europea/"
+   },
+   "g6": true,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "G6 celebra acuerdo Mercosur-UE"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "externo_o_propio",
+    "nota": "satisfacción por aprobación de la UE del acuerdo con Mercosur"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "valorar un acuerdo internacional firmado por el Gobierno es apoyo al Ejecutivo (manual v2); adjudicación de Juan, 27-oct-2026",
+   "concordancia": "adjudicado",
+   "adjudicacion": {
+    "quien": "Juan",
+    "fecha": "2026-10-27",
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "valorar un acuerdo internacional firmado por el Gobierno es apoyo al Ejecutivo (manual v2); adjudicación de Juan, 27-oct-2026"
+   },
+   "afecta_el_puntaje": true
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-8145",
+   "fecha": "2026-01-30",
+   "titulo": "¡Conocé nuestros cursos de 2026!",
+   "url": "https://aba-argentina.com/conoce-el-detalle-de-nuetros-cursos-de-2026/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/conoce-el-detalle-de-nuetros-cursos-de-2026/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "oferta de cursos propios"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "oferta de cursos"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "oferta de cursos",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-44743",
+   "fecha": "2026-02-11",
+   "titulo": "ADEBA da la bienvenida al Banco de la Nación Argentina",
+   "url": "https://www.adeba.com.ar/adeba-da-la-bienvenida-al-banco-de-la-nacion-argentina/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/adeba-da-la-bienvenida-al-banco-de-la-nacion-argentina/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "incorporación de socio"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "incorporación del Banco Nación como socio"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "incorporación del Banco Nación como socio",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "aba-8277",
+   "fecha": "2026-02-18",
+   "titulo": "Cesario: «La aclaración de UIF y BCRA brinda un horizonte de trabajo más claro para los bancos»",
+   "url": "https://aba-argentina.com/cesario-la-aclaracion-de-uif-y-bcra-brinda-un-horizonte-de-trabajo-mas-claro-para-los-bancos/",
+   "firmantes": [
+    "ABA"
+   ],
+   "fuentes": {
+    "ABA": "https://aba-argentina.com/cesario-la-aclaracion-de-uif-y-bcra-brinda-un-horizonte-de-trabajo-mas-claro-para-los-bancos/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "valora aclaración de UIF y BCRA"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "valora aclaración UIF-BCRA sobre Ley de Inocencia Fiscal"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "valora aclaración UIF-BCRA sobre Ley de Inocencia Fiscal",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba44855-aba8282",
+   "fecha": "2026-02-18",
+   "titulo": "Habrá servicios bancarios el 19 de febrero",
+   "url": "https://aba-argentina.com/habra-servicios-bancarios-el-19-de-febrero/",
+   "firmantes": [
+    "ADEBA",
+    "ABA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/habra-servicios-bancarios-el-19-de-febrero/",
+    "ABA": "https://aba-argentina.com/habra-servicios-bancarios-el-19-de-febrero/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "aviso de servicio por paro"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "servicios durante paro de la CGT"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "servicios durante paro de la CGT",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "BANCOS",
+   "id": "adeba-44956",
+   "fecha": "2026-02-25",
+   "titulo": "ADEBA expresa su apoyo a la iniciativa de la Jefatura de Gabinete sobre la publicación de tasas municipales.",
+   "url": "https://www.adeba.com.ar/adeba-expresa-su-apoyo-a-la-iniciativa-de-la-jefatura-de-gabinete-sobre-la-publicacion-de-tasas-municipales/",
+   "firmantes": [
+    "ADEBA"
+   ],
+   "fuentes": {
+    "ADEBA": "https://www.adeba.com.ar/adeba-expresa-su-apoyo-a-la-iniciativa-de-la-jefatura-de-gabinete-sobre-la-publicacion-de-tasas-municipales/"
+   },
+   "g6": false,
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "apoya iniciativa de Jefatura de Gabinete sobre tasas municipales"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "apoya sitio de Jefatura de Gabinete sobre tasas municipales"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "apoya sitio de Jefatura de Gabinete sobre tasas municipales",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  }
+ ],
+ "archivados_estadisticos": [
+  {
+   "camara": "BANCOS",
+   "id": "aba-8310",
+   "fecha": "2026-02-25",
+   "titulo": "Los bancos internacionales lideraron los resultados de 2025",
+   "url": "https://aba-argentina.com/los-bancos-internacionales-lideraron-los-resultados-de-2025/",
+   "firmantes": [
+    "ABA"
+   ],
+   "motivo": "informe periódico (síntesis normativa, estadística, índice o boletín)"
+  }
+ ]
+}

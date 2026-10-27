@@ -47,6 +47,12 @@ def registro(tmp_path, monkeypatch):
     nov.write_text(json.dumps({"pendientes": {}, "revisadas": {}}))
     monkeypatch.setattr(politica, "APOYO_CODIFICACION_PATH", cod)
     monkeypatch.setattr(politica, "APOYO_NOVEDADES_PATH", nov)
+    # Desde ADR-0391 la industria promedia la UIA con AFAC, de otro registro: acá
+    # se lo vacía para que estos tests sigan midiendo el corte de la UIA sola.
+    afac = tmp_path / "afac.json"
+    afac.write_text(json.dumps({"casos": []}))
+    monkeypatch.setattr(politica, "APOYO_INDUSTRIA_CODIFICACION_PATH", afac)
+    monkeypatch.setattr(politica, "APOYO_INDUSTRIA_NOVEDADES_PATH", tmp_path / "nov_afac.json")
     monkeypatch.setattr(politica, "date", Hoy)
     return nov
 
@@ -97,7 +103,8 @@ def test_ya_no_esta_suspendido():
     assert "apoyo_empresario" not in itcp.INDICADORES_SUSPENDIDOS
     # 1.0 desde ADR-0372; 0.5 desde que el comercio se suma a partes iguales (ADR-0380)
     # 0.3333 desde ADR-0384 (tercios; el campo nace suspendido y libera su peso)
-    assert itcp.DIMENSIONES_ITCP["sector_privado"]["indicadores"]["apoyo_empresario"] == 0.3333
+    # 0.25 desde ADR-0391 (cuartos: entra la construcción)
+    assert itcp.DIMENSIONES_ITCP["sector_privado"]["indicadores"]["apoyo_empresario"] == 0.25
 
 
 # ── Lo que agregó la revisión de Codex ───────────────────────────────────────

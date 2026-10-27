@@ -1458,25 +1458,27 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "politica",
     rezago: "Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona.",
     fuente: {
-      organismo: "Unión Industrial Argentina (UIA)",
-      operacion: "Comunicados institucionales fechados de las secciones de prensa de ambas entidades",
+      organismo: "Unión Industrial Argentina (UIA) y Asociación de Fábricas Argentinas de Componentes (AFAC)",
+      operacion: "Comunicados institucionales fechados de las secciones de prensa de las dos cámaras",
       url: "https://www.uia.org.ar/uia/novedades",
       acceso: "Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona.",
     },
     transformaciones: [
       "Cada comunicado se clasifica en dos ejes, con reglas escritas antes de mirar el material: qué dice sobre lo que comenta —respalda, critica o no toma posición— y a quién le habla, que puede ser el Gobierno nacional, el Congreso, una provincia o municipio, la Justicia, o un asunto externo o de la propia entidad.",
       "Sólo entran al cálculo los comunicados dirigidos al Gobierno nacional que respaldan o critican. Los que informan una reunión, un acto institucional, un cambio de autoridades o una condolencia no toman posición y quedan afuera aunque hablen del Gobierno, y también quedan afuera los dirigidos a los otros poderes.",
-      "El indicador es el saldo de los últimos doce meses: apoyos menos críticas, dividido por el total. Va de −1, si todo fue crítica, a +1 si todo fue apoyo.",
-      "La serie llega sólo hasta el último mes con todos los comunicados clasificados. Si aparece uno sin clasificar, el mes de ese comunicado y los siguientes no se calculan hasta clasificarlo: el dato queda quieto en el último mes completo, en vez de calcularse sobre lo que se alcanzó a leer.",
+      "Desde el 27 de octubre de 2026 la industria suma a la Asociación de Fábricas Argentinas de Componentes (AFAC), los autopartistas. Se toma cada nota de su sección de comunicados de prensa desde el 10 de diciembre de 2023 (41), con el texto de la página y del PDF adjunto. Sus informes estadísticos periódicos —«Informe de Actividad», «Comercio Exterior Autopartista» e «Informe de Comercio Exterior»— son la salida de un tablero y no una toma de posición: se archivan sin clasificar por una regla de título (20 de 41).",
+      "Cada cámara tiene su saldo de los últimos doce meses: apoyos menos críticas, dividido por el total. Va de −1, si todo fue crítica, a +1 si todo fue apoyo. El indicador es el promedio simple de los saldos de las cámaras con al menos tres pronunciamientos en la ventana —no el saldo de todos los comunicados juntos—: la UIA y AFAC pesan lo mismo, publique cada una mucho o poco, y si una no llega ese mes cuenta la otra.",
+      "La serie llega sólo hasta el último mes con todos los comunicados clasificados, de las dos cámaras. Si aparece uno sin clasificar, el mes de ese comunicado y los siguientes no se calculan hasta clasificarlo: el dato queda quieto en el último mes completo, en vez de calcularse sobre lo que se alcanzó a leer.",
       "Un mes sin ningún comunicado que se pronuncie sobre el Gobierno nacional queda sin valor y no se rellena con cero: cero significa que las cámaras apoyaron tanto como criticaron, que es una afirmación distinta de que no se pronunciaron. En los treinta y dos meses de serie no ocurrió: el mínimo es de tres pronunciamientos por ventana y el promedio, de casi seis.",
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, interpolado entre anclas: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo. Las anclas parten en cinco tramos iguales el rango teórico del indicador y se centran en el cero, que es el valor con significado propio: saldo nulo quiere decir que el Gobierno no tiene ni respaldo ni enfrentamiento netos del empresariado organizado.",
-      "Pesa un tercio de la dimensión de sector privado, con el comercio (sumado el 27 de octubre de 2026) y el campo (sumado el mismo día). Entre octubre de 2026 y esa fecha fue el único componente, porque salió la brecha de expectativas entre obra pública y obra privada, que medía un solo sector. Estuvo suspendido de agosto a septiembre de 2026 y volvió con ese mismo peso de diseño. Desde el 27 de octubre de 2026: 33% interno · 4,7% efectivo del índice político (14,0% mientras fue el único; 7,0% mientras la dimensión fue de dos sectores).",
+      "Pesa un cuarto de la dimensión de sector privado, con el comercio, el campo y la construcción, sumados el 27 de octubre de 2026. Entre octubre de 2026 y esa fecha fue el único componente, porque salió la brecha de expectativas entre obra pública y obra privada, que medía un solo sector. Estuvo suspendido de agosto a septiembre de 2026 y volvió con ese mismo peso de diseño. Desde el 27 de octubre de 2026: 25% interno · 3,5% efectivo del índice político (14,0% mientras fue el único).",
     ],
     limitaciones: [
       "Mide lo que una asociación decidió declarar en público, no el humor del empresariado ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
-      "Es una sola cámara de la industria: el comercio se mide aparte, con su propio indicador. Se revisaron ocho cámaras en julio de 2026 y sólo estas dos tenían comunicados de postura de manera sostenida: el resto publicaba agenda institucional, servicios al socio o boletines regulatorios, o no tenía contenido accesible. En la revisión de octubre se sumó la del comercio, y varias del campo y la tecnología siguen sin un archivo completo de comunicados desde diciembre de 2023. Eso deja fuera al agro, la banca y la tecnología, que en el país tienen conflictos propios con el Estado.",
+      "Son dos cámaras de la industria: la Unión Industrial, la general, y AFAC, la de los autopartistas, que entró el 27 de octubre de 2026 porque cumple el mínimo para entrar (cuatro pronunciamientos sobre el Gobierno nacional en doce meses). El comercio, el campo y la construcción se miden aparte, con su propio indicador; los bancos están clasificados pero no llegan al mínimo, y la tecnología no tiene comunicados de postura.",
+      "Varios informes estadísticos de AFAC traen frases críticas sobre la política comercial: como la regla que los archiva mira el título, esas frases no entran. Quedan listados, con las dos lecturas, para poder revisarlos. AFAC se pronuncia poco —cuatro veces en el último año, una de apoyo y tres de crítica—, así que un comunicado más mueve mucho su saldo.",
       "La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta los comunicados nuevos y avisa cada uno como pendiente; mientras haya uno sin clasificar la serie no avanza, y si nadie lo clasifica durante meses el índice marca el dato como desactualizado. La cantidad de pendientes se muestra en la ficha del indicador.",
       "Para verificar que las reglas de clasificación no dejan lugar a la interpretación, cada tanda de comunicados la clasifican por separado dos codificadores independientes que no ven el trabajo del otro. En la pasada completa sobre ciento tres comunicados coincidieron en el 95% de las posturas y en el 94% de los destinatarios; en la tanda de veintidós de septiembre de 2026, en el 91% y el 95%. Los pocos desacuerdos se resuelven con tres criterios generales escritos, no caso por caso. Cabe una advertencia sobre esa prueba: ambos codificadores son sistemas de inteligencia artificial del mismo tipo, que comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta. La prueba acredita que el manual es unívoco, no que cualquier par de lectores llegaría al mismo número.",
       "La ventana de doce meses hace que el indicador describa, en promedio, la situación de seis meses atrás. Un giro brusco en la relación —como el de marzo de 2026— tarda en verse completo.",
@@ -1485,6 +1487,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si los sitios de las cámaras no responden, el indicador no cambia: se calcula sobre el registro ya clasificado, que está guardado. Lo que se pierde es el aviso de comunicados nuevos.",
     revisiones: "El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "Suma a la Asociación de Fábricas Argentinas de Componentes (AFAC), los autopartistas: el indicador pasa a ser el promedio simple del saldo de la Unión Industrial y el de AFAC, como el del campo. Se clasificaron sus 21 comunicados que no son informes estadísticos con dos lectores ciegos, y una persona resolvió los tres desacuerdos. La dimensión de sector privado pasa a cuartos con la construcción. Con los datos del 27 de octubre de 2026 el saldo pasa de −0,40 (sólo la UIA) a −0,45 (UIA −0,40, AFAC −0,50) y el puntaje de 40,0 a 32,5.", adr: "0391" },
       { fecha: "2026-10-27", cambio: "Pasa a compartir la dimensión de sector privado, a partes iguales, con la postura pública del comercio y la del campo, y la tarjeta se llama «Postura pública de la industria». El saldo, la banda y la clasificación no cambian: con los datos del 27 de octubre de 2026 el indicador sigue puntuando 40,0.", adr: "0380" },
       { fecha: "2026-10-26", cambio: "Pasa a ser el único componente de la dimensión de sector privado: sale la brecha de expectativas de la construcción, que medía un solo sector. El saldo, la banda y la clasificación no cambian; la dimensión toma su puntaje entero y pasa de 55,6 a 40,0.", adr: "0372" },
       { fecha: "2026-07-27", cambio: "Entra al cinturón como segundo indicador de la dimensión de sector privado, que hasta ahora tenía uno solo. Una revisión externa había señalado que los empresarios eran el actor peor medido del cinturón." },
@@ -1519,7 +1522,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, las mismas que la postura de la industria y del comercio y fijadas antes de ver esta serie: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo.",
-      "Pesa un tercio de la dimensión de sector privado, junto a la industria y el comercio. Se incorporó el 27 de octubre de 2026: 33% interno · 4,7% efectivo del índice político.",
+      "Pesa un cuarto de la dimensión de sector privado, junto a la industria, el comercio y la construcción. Se incorporó el 27 de octubre de 2026: 25% interno · 3,5% efectivo del índice político.",
     ],
     limitaciones: [
       "Mide lo que tres asociaciones decidieron declarar en público, no el humor de los productores ni la opinión de sus asociados.",
@@ -1533,6 +1536,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si los sitios de las cámaras no responden, el indicador no cambia: se calcula sobre el registro ya clasificado, que está guardado. Lo que se pierde es el aviso de notas nuevas.",
     revisiones: "El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "La dimensión de sector privado pasa de tercios a cuartos al entrar la construcción: pesa 25% interno y 3,5% efectivo del índice político. El saldo y el puntaje no cambian.", adr: "0391" },
       { fecha: "2026-10-27", cambio: "Entra al índice político como tercer componente de la dimensión de sector privado, a partes iguales con la industria y el comercio. Se clasificaron 760 notas de Coninagro, la SRA y la CRA con dos lectores ciegos; las tres cumplen el mínimo de cuatro pronunciamientos dirigidos al Gobierno nacional en doce meses, y una persona resolvió los 13 desacuerdos que decidían el puntaje. El saldo es el promedio simple de los saldos de cada cámara. Con los datos del 27 de octubre de 2026 el saldo es −0,15 (Coninagro −0,20, CRA −0,74, SRA +0,50) y puntúa 55,8: la dimensión pasa de 70,0 a 65,3 y el índice político de 74,3 a 73,6.", adr: "0384" },
     ],
   },
@@ -1557,7 +1561,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del saldo, las mismas que la postura de la industria y fijadas antes de ver esta serie: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo. Las anclas parten en cinco tramos iguales el rango teórico del indicador y se centran en el cero, que es el valor con significado propio: saldo nulo quiere decir que el Gobierno no tiene ni respaldo ni enfrentamiento netos de la cámara.",
-      "Pesa un tercio de la dimensión de sector privado, con la industria y el campo. Se incorporó el 27 de octubre de 2026: 33% interno · 4,7% efectivo del índice político. El reparto es parejo porque cada sector es un voto, no cada comunicado.",
+      "Pesa un cuarto de la dimensión de sector privado, con la industria, el campo y la construcción. Se incorporó el 27 de octubre de 2026: 25% interno · 3,5% efectivo del índice político. El reparto es parejo porque cada sector es un voto, no cada comunicado.",
     ],
     limitaciones: [
       "Mide lo que una asociación decidió declarar en público, no el humor de los comerciantes ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
@@ -1570,7 +1574,46 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el sitio de la cámara no responde, el indicador no cambia: se calcula sobre el registro ya clasificado, que está guardado. Lo que se pierde es el aviso de comunicados nuevos.",
     revisiones: "El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.",
     cambios: [
+      { fecha: "2026-10-27", cambio: "La dimensión de sector privado pasa a cuartos al entrar la construcción: pesa 25% interno y 3,5% efectivo del índice político. El saldo y el puntaje no cambian.", adr: "0391" },
       { fecha: "2026-10-27", cambio: "Entra al índice político como segundo componente de la dimensión de sector privado, a partes iguales con la postura de la industria. Con los datos del 27 de octubre de 2026 el saldo es +1,0 sobre cuatro comunicados y puntúa 100, contra 40,0 de la industria: la dimensión pasa de 40,0 a 70,0 y el índice político de 71,6 a 75,8. Es el primer paso para sumar cámaras además de la Unión Industrial; el campo y la tecnología quedan para más adelante porque sus cámaras no tienen hoy un archivo completo de comunicados.", adr: "0380" },
+    ],
+  },
+
+  apoyo_construccion: {
+    tipo: "indicador",
+    id: "apoyo_construccion",
+    cinturon: "politica",
+    rezago: "Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona.",
+    fuente: {
+      organismo: "Cámara Argentina de la Construcción (CAMARCO)",
+      operacion: "Notas fechadas de la sección de noticias de su sitio",
+      url: "https://www.camarco.org.ar/noticias",
+      acceso: "Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona.",
+    },
+    transformaciones: [
+      "Se toma cada nota publicada en el sitio de la cámara desde el 10 de diciembre de 2023, con su texto completo (891). La cámara publica todo en un mismo lugar: su indicador mensual, los acuerdos salariales de la construcción, cursos, la revista, la bolsa de trabajo, llamados a licitación y la agenda de sus delegaciones. Lo que no es un comunicado se archiva sin clasificar, por una regla de título y de sección del sitio escrita antes de clasificar (291 notas); quedan 600.",
+      "Cada nota se clasifica en dos ejes, con las mismas reglas escritas antes de mirar el material que usan la industria, el comercio y el campo: qué dice sobre lo que comenta —respalda, critica o no toma posición— y a quién le habla, que puede ser el Gobierno nacional, el Congreso, una provincia o municipio, la Justicia, o un asunto externo o de la propia entidad.",
+      "Sólo entran al cálculo las notas dirigidas al Gobierno nacional que respaldan o critican. Las que informan una reunión, un acto institucional, un cambio de autoridades o una condolencia no toman posición y quedan afuera, igual que las dirigidas a los otros poderes y a las provincias.",
+      "La crónica de un acto ya cubierto por su declaración no se cuenta de nuevo: se cuenta una vez, la declaración. La cámara publica la declaración de cada Consejo Federal y, al día siguiente, la crónica del encuentro, que la repite; la crónica queda marcada en el registro como duplicado de la declaración y no suma.",
+      "El indicador es el saldo de los últimos doce meses: apoyos menos críticas, dividido por el total. Va de −1, si todo fue crítica, a +1 si todo fue apoyo. Un mes con menos de tres pronunciamientos en la ventana queda sin valor y no se rellena con cero.",
+      "La serie llega sólo hasta el último mes con todas las notas clasificadas. Si aparece una sin clasificar, el mes de esa nota y los siguientes no se calculan hasta clasificarla.",
+    ],
+    incidenciaTexto: [
+      "El puntaje del índice se asigna por bandas del saldo, las mismas que la postura de la industria, el comercio y el campo, fijadas antes de ver esta serie: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo.",
+      "Pesa un cuarto de la dimensión de sector privado, junto a la industria, el comercio y el campo. Se incorporó el 27 de octubre de 2026: 25% interno · 3,5% efectivo del índice político.",
+    ],
+    limitaciones: [
+      "Mide lo que una cámara decidió declarar en público, no el humor de las constructoras ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
+      "Se pronuncia poco sobre el Gobierno nacional: dieciséis veces desde diciembre de 2023 y cuatro en los últimos doce meses, el mínimo para entrar. Con tan pocos pronunciamientos un solo comunicado mueve mucho el saldo: la serie fue de −0,43 a +1,0.",
+      "En 42 de las 600 notas los dos lectores no coincidieron. Dos los resolvió una persona (Juan, el 27 de octubre de 2026); los otros 40 no decidían el puntaje de la ventana en la que se clasificaron, siguen sin resolver y no cuentan hasta que alguien los resuelva. Casi todos son discursos de sus delegaciones en actos provinciales.",
+      "La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta las notas nuevas y avisa cada una como pendiente; mientras haya una sin clasificar la serie no avanza.",
+      "Para verificar que las reglas no dejan lugar a la interpretación, las notas las clasificaron por separado dos lectores independientes que no ven el trabajo del otro: coincidieron en el 99% de las posturas y en el 94% de los destinatarios (kappa de 0,90 y 0,85). Ambos son sistemas de inteligencia artificial, de dos modelos distintos, que comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta.",
+      "La ventana de doce meses hace que el indicador describa, en promedio, la situación de seis meses atrás.",
+    ],
+    faltantes: "Si el sitio de la cámara no responde, el indicador no cambia: se calcula sobre el registro ya clasificado, que está guardado. Lo que se pierde es el aviso de notas nuevas.",
+    revisiones: "El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.",
+    cambios: [
+      { fecha: "2026-10-27", cambio: "Entra al índice político como cuarto componente de la dimensión de sector privado, a partes iguales con la industria, el comercio y el campo. Se clasificaron 600 notas de CAMARCO con dos lectores ciegos; cumple el mínimo de cuatro pronunciamientos dirigidos al Gobierno nacional en doce meses (tres apoyos y una crítica, contando una vez la declaración del 147° Consejo Federal y no su crónica). Con los datos del 27 de octubre de 2026 el saldo es +0,50 y puntúa 92,5: con la industria que suma a AFAC, la dimensión pasa de 65,3 a 70,2 y el índice político de 75,0 a 75,7.", adr: "0391" },
     ],
   },
 

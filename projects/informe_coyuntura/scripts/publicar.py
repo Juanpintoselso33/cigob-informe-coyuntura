@@ -2809,6 +2809,7 @@ METODO_OBTENCION_EXCEPCIONES = {
     "apoyo_empresario": "semiautomatico",
     "apoyo_comercio": "semiautomatico",
     "apoyo_campo": "semiautomatico",
+    "apoyo_construccion": "semiautomatico",
     # CSV automático conciliado con movimientos y bajas de revisión humana.
     "cobertura_judicial": "semiautomatico",
     # Los dos leen el mismo registro legislativo: las actas inequívocas se

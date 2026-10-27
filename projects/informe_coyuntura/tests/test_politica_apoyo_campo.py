@@ -180,7 +180,8 @@ def test_la_adjudicacion_humana_decidio_asi():
 def test_el_indicador_ya_no_esta_suspendido_y_las_tres_camaras_puntuan():
     assert "apoyo_campo" not in itcp.INDICADORES_SUSPENDIDOS
     efectivos = parametrica.indicadores_vigentes(itcp.DIMENSIONES_ITCP, itcp.INDICADORES_SUSPENDIDOS)
-    assert set(efectivos["sector_privado"]) == {"apoyo_empresario", "apoyo_comercio", "apoyo_campo"}
+    # ADR-0391: con la construcción, cuatro sectores.
+    assert set(efectivos["sector_privado"]) == {"apoyo_empresario", "apoyo_comercio", "apoyo_campo", "apoyo_construccion"}
 
 
 # ── la cuenta ──────────────────────────────────────────────────────────────
@@ -288,9 +289,10 @@ def test_las_bandas_del_campo_son_las_de_la_industria_y_el_comercio():
     assert itcp.BANDAS_ITCP["apoyo_campo"] == itcp.BANDAS_ITCP["apoyo_empresario"] == itcp.BANDAS_ITCP["apoyo_comercio"]
 
 
-def test_sector_privado_queda_en_tercios_industria_comercio_campo():
+def test_sector_privado_reparte_parejo_entre_los_sectores():
+    # Tercios desde ADR-0384; cuartos desde ADR-0391 (entra la construcción).
     dim = itcp.DIMENSIONES_ITCP["sector_privado"]["indicadores"]
-    assert set(dim) == {"apoyo_empresario", "apoyo_comercio", "apoyo_campo"}
+    assert set(dim) == {"apoyo_empresario", "apoyo_comercio", "apoyo_campo", "apoyo_construccion"}
     assert abs(sum(dim.values()) - 1.0) < 1e-9
     assert max(dim.values()) - min(dim.values()) < 0.001
     assert itcp.FAMILIAS_ITCP["apoyo_campo"] == "tension"

@@ -74,9 +74,14 @@ def test_el_conteo_de_la_ventana_sale_del_mismo_perimetro_que_el_saldo():
     card = politica.fetch_apoyo_empresario()
     a, c = card["apoyos_ventana"], card["criticas_ventana"]
     assert a + c == card["comunicados_ventana"]
-    assert round((a - c) / (a + c), 3) == card["valor"], (
-        f"el saldo publicado ({card['valor']}) no sale de los comunicados que la "
-        f"card declara ({a} apoyo, {c} crítica): uno de los dos usa otro perímetro")
+    # Desde ADR-0391 la industria promedia por cámara (UIA y AFAC): el saldo es el
+    # promedio de los saldos por cámara, y la suma de lo que cada una aporta tiene
+    # que ser el conteo que declara la card (mismo perímetro).
+    saldos = card["saldos_por_camara"]
+    assert round(sum(saldos.values()) / len(saldos), 3) == card["valor"], (
+        f"el saldo publicado ({card['valor']}) no sale de los saldos por cámara que la "
+        f"card declara ({saldos}): uno de los dos usa otro perímetro")
+    assert set(saldos) <= set(politica.APOYO_CAMARAS_PERIMETRO + politica.APOYO_INDUSTRIA_CAMARAS)
 
 
 def test_la_serie_declara_la_misma_fuente_que_la_card():

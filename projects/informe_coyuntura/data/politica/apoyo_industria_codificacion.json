@@ -1,0 +1,1078 @@
+{
+ "_meta": {
+  "descripcion": "Codificación de postura hacia el Ejecutivo nacional de las cámaras de la INDUSTRIA que no son la UIA: hoy la Asociación de Fábricas Argentinas de Componentes (AFAC, autopartistas) (ADR-0391). La UIA y AEA siguen en apoyo_empresario_codificacion.json, que no se toca: sumar una cámara no toca el registro de otra. La card de la industria (apoyo_empresario) promedia por cámara la UIA y AFAC, como el campo (ADR-0384). Mismo manual y protocolo. El texto de cada nota está en el corpus (apoyo_afac_corpus.json).",
+  "fecha": "2026-10-27",
+  "protocolo": "ADR-0131, con el diseño de concordancia de ADR-0150, ADR-0380 y ADR-0384",
+  "corpus": "data/politica/apoyo_afac_corpus.json",
+  "camaras": {
+   "AFAC": "afac.org.ar, «Comunicados de prensa»: API pública Noticias/GetByFilter (idSeccion 2) para el listado y Noticias/GetById para el cuerpo, más el PDF adjunto cuando lo hay. 41 notas desde el 10-dic-2023 (de 171 en el listado); 21 clasificadas y 20 informes estadísticos archivados"
+  },
+  "perimetro": {
+   "camaras_en_el_codigo": [
+    "AFAC"
+   ],
+   "criterio": "Mínimo de 4 comunicados dirigidos al Ejecutivo nacional con postura en la ventana de 12 meses calendario de la card (nov-2025 a oct-2026), criterio de Luis Babino.",
+   "conteo_ventana": {
+    "comunicados": 4,
+    "apoyos": 1,
+    "criticas": 3,
+    "ids": [
+     "6009",
+     "6031",
+     "6038",
+     "6204"
+    ]
+   },
+   "entra_al_calculo": [
+    "AFAC"
+   ],
+   "motivo": "Decisión de Juan, 27-oct-2026: AFAC cumple el mínimo (4) y entra DENTRO de la industria, que pasa a ser el promedio por cámara de la UIA y AFAC."
+  },
+  "universo": "Todo lo publicado en «Comunicados de prensa» de AFAC desde el 10-dic-2023, salvo sus informes estadísticos periódicos, que se archivan sin clasificar.",
+  "regla_informes_estadisticos": {
+   "por_que": "«Informe de Actividad…», «Comercio Exterior Autopartista…» / «Comercio Exterior de Autopartes…» e «Informe de Comercio Exterior…» son los informes periódicos de la cámara: la salida de un tablero, no una toma de posición. Decisión de Juan, 27-oct-2026, con la misma regla de títulos que la CAC y CAME (ADR-0380). Los desacuerdos entre lectores sobre estas notas no se adjudican: se archivan. «Flota vehicular circulante» (anual) no está en la regla y se clasificó (las dos lecturas: neutro).",
+   "patron": "^informe de actividad|^comercio exterior (autopartista|de autopartes)|^informe de comercio exterior",
+   "riesgo_declarado": "Varios de estos informes traen frases críticas al Ejecutivo (los dos lectores clasificaron cinco como crítica al Ejecutivo); como la regla mira el título, no entran. Las lecturas descartadas quedan en cada archivado para auditarlo."
+  },
+  "regla_cronica_duplicada": {
+   "regla": "La crónica de un acto ya cubierto por su declaración no se cuenta de nuevo: se cuenta una vez, la declaración (decisión de Juan, 27-oct-2026, ADR-0391).",
+   "como_se_aplica": "Con un campo explícito, `duplica_a`, en la crónica, que nombra la clave «CÁMARA|id» de la declaración. La crónica conserva sus dos lecturas y entra al kappa, pero el cálculo no la cuenta. No se decide por fecha ni por título: lo marca una persona al registrar el caso.",
+   "casos": []
+  },
+  "codificadores": {
+   "diseno": "Dos lectores independientes ciegos entre sí sobre el corpus completo; el kappa se mide ENTRE ELLOS. Cada uno recibió solo el manual (apoyo_empresario_reglas.json, v2) y el material crudo, en lotes de hasta 60 notas.",
+   "pasada_1": {
+    "quien": "lector ciego C (agente de IA, modelo Sonnet)",
+    "fecha": "2026-10-27",
+    "completa": true
+   },
+   "pasada_2": {
+    "quien": "lector ciego D (agente de IA, modelo Opus)",
+    "fecha": "2026-10-27",
+    "completa": true
+   },
+   "naturaleza_de_los_codificadores": "Los dos lectores son agentes de IA de dos modelos distintos de la misma familia: el kappa prueba que el manual es unívoco, no que dos personas coincidirían. Los desacuerdos que decidían el puntaje los resolvió una persona; ningún agente adjudicó ningún caso.",
+   "postura_mixta": "Los lectores usaron «mixta» para notas que apoyan una medida y critican otra sin que el título resuelva; el manual v2 manda «dudoso» en ese caso. Las dos etiquetas tienen el mismo efecto: no cuentan. Se conservan tal como las escribieron, y el kappa se mide con ellas.",
+   "adjudicacion": {
+    "quien": "Juan (persona), 27-oct-2026, para los tres desacuerdos que quedan fuera de los informes archivados.",
+    "casos": [
+     "AFAC|5549",
+     "AFAC|5679",
+     "AFAC|5785"
+    ],
+    "pendientes": 0,
+    "archivados_sin_adjudicar": [
+     "AFAC|5695",
+     "AFAC|6087",
+     "AFAC|6244"
+    ],
+    "criterio": "Decisión de Juan caso por caso."
+   }
+  },
+  "concordancia": {
+   "n": 21,
+   "kappa_postura": 0.864,
+   "acuerdo_postura": 0.905,
+   "kappa_destinatario": 0.829,
+   "acuerdo_destinatario": 0.905,
+   "desacuerdos": 3,
+   "adjudicados": 3,
+   "pendientes": 0,
+   "desacuerdos_que_afectan_el_puntaje": 0,
+   "pendientes_que_afectan_el_puntaje": 0,
+   "umbral_minimo": 0.7,
+   "estado": "ALCANZADA",
+   "sobre_las_41_con_los_informes": {
+    "kappa_postura": 0.805,
+    "kappa_destinatario": 0.773,
+    "desacuerdos": 6
+   }
+  },
+  "serie": "no se guarda acá. politica.apoyo_empresario_serie() promedia el saldo de la UIA (apoyo_empresario_codificacion.json) y el de AFAC (este registro), cada uno con su mínimo.",
+  "resultado": {
+   "total": 21,
+   "postura": {
+    "critica": 6,
+    "apoyo": 4,
+    "neutro": 9,
+    "mixta": 2
+   },
+   "destinatario": {
+    "congreso": 2,
+    "ejecutivo_nacional": 10,
+    "externo_o_propio": 9
+   },
+   "archivados_estadisticos": 20
+  }
+ },
+ "casos": [
+  {
+   "camara": "AFAC",
+   "id": "5549",
+   "fecha": "2024-01-25",
+   "titulo": "Impacto de eventuales derechos de exportación sobre el sector autopartista",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5549",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "rechaza eventual suba de derechos de exportación al 15%; el texto no nombra proyecto, se trata como medida del Ejecutivo"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "congreso",
+    "nota": "Rechaza la suba de derechos de exportación al 15% incluida en el proyecto de ley ómnibus en trámite en el Congreso"
+   },
+   "postura": "critica",
+   "destinatario": "congreso",
+   "motivo": "las retenciones estaban en la Ley Ómnibus ya ingresada al Congreso: va donde se decide (manual v2); adjudicación de Juan, 27-oct-2026",
+   "concordancia": "adjudicado",
+   "adjudicacion": {
+    "quien": "Juan",
+    "fecha": "2026-10-27",
+    "postura": "critica",
+    "destinatario": "congreso",
+    "motivo": "las retenciones estaban en la Ley Ómnibus ya ingresada al Congreso: va donde se decide (manual v2); adjudicación de Juan, 27-oct-2026"
+   },
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "5595",
+   "fecha": "2024-04-26",
+   "titulo": "Medidas para mejorar de la competitividad exportadora de la cadena automotriz-autopartista",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5595",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "medidas de Economía (moldes, Repostock, derechos de exportación) muy positivas"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "Celebra medidas del Ministerio de Economía (aranceles de moldes, exención de derechos de exportación incrementales, Repostock)"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "Celebra medidas del Ministerio de Economía (aranceles de moldes, exención de derechos de exportación incrementales, Repostock)",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "5654",
+   "fecha": "2024-07-23",
+   "titulo": "Flota vehicular circulante en Argentina 2023",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5654",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "informe de flota circulante"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "Informe de parque automotor"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "Informe de parque automotor",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "5659",
+   "fecha": "2024-08-08",
+   "titulo": "Asumen nuevas autoridades de AFAC",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5659",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "cambio de autoridades propias"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "Cambio de autoridades propias"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "Cambio de autoridades propias",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "5665",
+   "fecha": "2024-08-09",
+   "titulo": "La mejora del CHAS",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5665",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "rebate al ministro de Desregulación sobre el CHAS, aunque saluda la desregulación en general"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "Refuta al Ministro de Desregulación sobre el CHAS y advierte contra eliminarlo, aunque valora la desregulación en general"
+   },
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "Refuta al Ministro de Desregulación sobre el CHAS y advierte contra eliminarlo, aunque valora la desregulación en general",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "5677",
+   "fecha": "2024-08-29",
+   "titulo": "Impacto positivo de la digitalización del régimen de Reposición de Existencias (Repostock) sobre las oportunidades para la localización de autopartes",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5677",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "valora la digitalización del Repostock anunciada por Economía"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "Valora la digitalización del Repostock anunciada por el Ministerio de Economía"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "Valora la digitalización del Repostock anunciada por el Ministerio de Economía",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "5679",
+   "fecha": "2024-09-04",
+   "titulo": "¿Por qué la venta de vehículos y autopartes de seguridad, nacionales e importados, tienen exigencias de certificaciones en los países desarrollados?",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5679",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "mixta",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "apoya desburocratizar pero defiende exigencias de certificación de seguridad frente a la desregulación; dudoso"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "Defensa doctrinaria de las certificaciones de seguridad ante la desburocratización, sin nombrar una medida"
+   },
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "el título no resuelve la postura (manual v2: no cuenta); adjudicación de Juan, 27-oct-2026",
+   "concordancia": "adjudicado",
+   "adjudicacion": {
+    "quien": "Juan",
+    "fecha": "2026-10-27",
+    "postura": "neutro",
+    "destinatario": "ejecutivo_nacional",
+    "motivo": "el título no resuelve la postura (manual v2: no cuenta); adjudicación de Juan, 27-oct-2026"
+   },
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "5774",
+   "fecha": "2025-01-13",
+   "titulo": "La industria automotriz argentina es parte de la solución para un país con mayor desarrollo económico y bienestar",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5774",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "mixta",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "responde a diputado; celebra cambios del gobierno nacional y cita al Presidente, reclama bajar carga tributaria y corregir políticas; título doctrinario"
+   },
+   "pasada_2": {
+    "postura": "mixta",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "Réplica al diputado Espert; celebra los cambios estructurales del gobierno nacional pero critica políticas sectoriales y la carga tributaria; título doctrinario no resuelve"
+   },
+   "postura": "mixta",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "Réplica al diputado Espert; celebra los cambios estructurales del gobierno nacional pero critica políticas sectoriales y la carga tributaria; título doctrinario no resuelve",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "5785",
+   "fecha": "2025-01-31",
+   "titulo": "La ineficiencia de los prejuicios y el desconocimiento",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5785",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "mixta",
+    "destinatario": "externo_o_propio",
+    "nota": "rebate columna de un economista en Infobae; pide corregir reglas de origen y critica baja de aranceles a eléctricos; no interpela a un poder. Dudoso entre critica y neutro"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "Réplica a columna de Nogués; critica la decisión de las autoridades nacionales de eliminar aranceles a 50 mil eléctricos/híbridos y pide corregir reglas de origen y perforaciones arancelarias"
+   },
+   "postura": "mixta",
+   "destinatario": "externo_o_propio",
+   "motivo": "responde a un columnista, no interpela al Gobierno; adjudicación de Juan, 27-oct-2026",
+   "concordancia": "adjudicado",
+   "adjudicacion": {
+    "quien": "Juan",
+    "fecha": "2026-10-27",
+    "postura": "mixta",
+    "destinatario": "externo_o_propio",
+    "motivo": "responde a un columnista, no interpela al Gobierno; adjudicación de Juan, 27-oct-2026"
+   },
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "5808",
+   "fecha": "2025-04-07",
+   "titulo": "IRAM Y AFAC, en alianza con IQA, promueven la calificación profesional de la industria automotriz en Argentina",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5808",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "convenio de capacitación IRAM/IQA/AFAC"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "Convenio de capacitación IRAM-AFAC-IQA"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "Convenio de capacitación IRAM-AFAC-IQA",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "5854",
+   "fecha": "2025-06-05",
+   "titulo": "Flota vehicular circulante en Argentina 2024",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5854",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "informe de flota circulante"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "Informe de parque automotor"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "Informe de parque automotor",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "5915",
+   "fecha": "2025-07-30",
+   "titulo": "El ingenuo espejismo numérico de los vehículos “Made in Mercosur”",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5915",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "denuncia laxitud del ACE 14 y pide a los gobiernos revisarlo"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "Critica las reglas de origen del ACE 14 y exige a los gobiernos de Argentina y Brasil su revisión urgente"
+   },
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "Critica las reglas de origen del ACE 14 y exige a los gobiernos de Argentina y Brasil su revisión urgente",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "6009",
+   "fecha": "2025-11-20",
+   "titulo": "Alarmante tendencia del déficit comercial de autopartes",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6009",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "alarma por déficit y pide actualizar urgente reglas de origen Mercosur"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "Alerta por déficit y pide revisar urgente las reglas de origen Mercosur vigentes; menciona fuerte carga tributaria"
+   },
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "Alerta por déficit y pide revisar urgente las reglas de origen Mercosur vigentes; menciona fuerte carga tributaria",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "6018",
+   "fecha": "2025-12-01",
+   "titulo": "Aclaración de CAMIMA y AFAC sobre el estado de las negociaciones salariales con la UOM",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6018",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "aclaración sobre paritarias con la UOM"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "Aclaración sobre paritaria con la UOM"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "Aclaración sobre paritaria con la UOM",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "6031",
+   "fecha": "2025-12-15",
+   "titulo": "Necesidad de un shock de inversiones en la cadena de valor automotriz",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6031",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "reclama renegociar ACE 14 y política sectorial; reconoce esfuerzos macro pero insuficientes"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "Pide shock de inversiones, renegociación urgente del ACE 14 y política sectorial; valora la macro pero la juzga insuficiente (codificado por título)"
+   },
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "Pide shock de inversiones, renegociación urgente del ACE 14 y política sectorial; valora la macro pero la juzga insuficiente (codificado por título)",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "6038",
+   "fecha": "2026-01-14",
+   "titulo": "Necesidad de generar un punto de quiebre en el comercio exterior de autopartes",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6038",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "pide reducción urgente de carga tributaria y modernización laboral ante el déficit"
+   },
+   "pasada_2": {
+    "postura": "critica",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "Ante el déficit, pide con urgencia reducir carga tributaria, eliminar impuestos distorsivos y política sectorial; reconoce el cambio de régimen"
+   },
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "Ante el déficit, pide con urgencia reducir carga tributaria, eliminar impuestos distorsivos y política sectorial; reconoce el cambio de régimen",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "6043",
+   "fecha": "2026-01-26",
+   "titulo": "AFAC y CAMIMA - Total apoyo al Proyecto de Modernización Laboral",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6043",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "congreso",
+    "nota": "respalda enfáticamente el proyecto de modernización laboral en trámite en el Senado"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "congreso",
+    "nota": "Apoyo al Proyecto de Ley de Modernización Laboral que tratará el Senado (en trámite parlamentario)"
+   },
+   "postura": "apoyo",
+   "destinatario": "congreso",
+   "motivo": "Apoyo al Proyecto de Ley de Modernización Laboral que tratará el Senado (en trámite parlamentario)",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "6068",
+   "fecha": "2026-04-07",
+   "titulo": "Flota vehicular circulante en Argentina 2025",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6068",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "informe de flota circulante"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "Informe de parque automotor"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "Informe de parque automotor",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "6069",
+   "fecha": "2026-04-13",
+   "titulo": "El sector automotor de Brasil y Argentina pone en marcha una agenda de convergencia",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6069",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "encuentro y declaración entre cámaras de Argentina y Brasil; hecho es el acuerdo entre privados"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "Encuentro y acuerdo entre cámaras de Argentina y Brasil sobre agenda ACE 14"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "Encuentro y acuerdo entre cámaras de Argentina y Brasil sobre agenda ACE 14",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "6204",
+   "fecha": "2026-08-06",
+   "titulo": "Acuerdo Automotor Argentina-Ecuador",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6204",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "celebra la actualización del ACE-59 firmada por el Gobierno (Cancillería/Economía)"
+   },
+   "pasada_2": {
+    "postura": "apoyo",
+    "destinatario": "ejecutivo_nacional",
+    "nota": "Celebra la actualización del ACE-59 con Ecuador firmado con Cancillería y Economía; pide además actualizar política sectorial"
+   },
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "Celebra la actualización del ACE-59 con Ecuador firmado con Cancillería y Economía; pide además actualizar política sectorial",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  },
+  {
+   "camara": "AFAC",
+   "id": "6228",
+   "fecha": "2026-09-25",
+   "titulo": "Asumen nuevas autoridades de AFAC",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6228",
+   "firmantes": [
+    "AFAC"
+   ],
+   "pasada_1": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "cambio de autoridades propias"
+   },
+   "pasada_2": {
+    "postura": "neutro",
+    "destinatario": "externo_o_propio",
+    "nota": "Cambio de autoridades propias"
+   },
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "Cambio de autoridades propias",
+   "concordancia": "acuerdo",
+   "afecta_el_puntaje": false
+  }
+ ],
+ "archivados_estadisticos": [
+  {
+   "camara": "AFAC",
+   "id": "5486",
+   "fecha": "2023-12-14",
+   "titulo": "Informe de Actividad (octubre 2023) - Sector Autopartista",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5486",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    },
+    "pasada_2": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "5543",
+   "fecha": "2024-01-16",
+   "titulo": "Informe de Actividad (noviembre 2023) - Sector Autopartista",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5543",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    },
+    "pasada_2": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "5558",
+   "fecha": "2024-02-19",
+   "titulo": "Informe de Actividad (diciembre 2023) - Sector Autopartista",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5558",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "5566",
+   "fecha": "2024-03-07",
+   "titulo": "Informe de Comercio Exterior Autopartista (diciembre 2023)",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5566",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    },
+    "pasada_2": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "5574",
+   "fecha": "2024-03-19",
+   "titulo": "Informe de Actividad (enero 2024) - Sector Autopartista",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5574",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "5587",
+   "fecha": "2024-04-22",
+   "titulo": "Informe de Actividad (febrero 2024) - Sector Autopartista",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5587",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "ejecutivo_nacional"
+    },
+    "pasada_2": {
+     "postura": "neutro",
+     "destinatario": "ejecutivo_nacional"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "5610",
+   "fecha": "2024-05-15",
+   "titulo": "Informe de Actividad (marzo 2024) - Sector Autopartista",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5610",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "5623",
+   "fecha": "2024-06-11",
+   "titulo": "Informe de Actividad (abril 2024) - Sector Autopartista",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5623",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "5695",
+   "fecha": "2024-09-18",
+   "titulo": "Comercio Exterior Autopartista (1° semestre 2024)",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5695",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "5740",
+   "fecha": "2024-11-20",
+   "titulo": "Comercio Exterior Autopartista (enero - agosto 2024)",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5740",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "mixta",
+     "destinatario": "ejecutivo_nacional"
+    },
+    "pasada_2": {
+     "postura": "mixta",
+     "destinatario": "ejecutivo_nacional"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "5818",
+   "fecha": "2025-04-16",
+   "titulo": "Informe de Comercio Exterior Autopartista 2024",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5818",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    },
+    "pasada_2": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "5994",
+   "fecha": "2025-10-23",
+   "titulo": "Comercio Exterior Autopartista (enero-agosto 2025)",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=5994",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "6070",
+   "fecha": "2026-04-14",
+   "titulo": "Comercio Exterior de Autopartes 2025",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6070",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "6087",
+   "fecha": "2026-04-23",
+   "titulo": "Informe de Actividad del Sector Autopartista (febrero 2026)",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6087",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "6106",
+   "fecha": "2026-05-19",
+   "titulo": "Comercio Exterior de Autopartes (1° trimestre 2026)",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6106",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "6107",
+   "fecha": "2026-05-21",
+   "titulo": "Informe de Actividad del Sector Autopartista (1er trimestre 2026)",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6107",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "6139",
+   "fecha": "2026-06-24",
+   "titulo": "Informe de Actividad del Sector Autopartista (abril 2026)",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6139",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "6203",
+   "fecha": "2026-08-03",
+   "titulo": "Informe de Comercio Exterior de Autopartes (1° semestre 2026)",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6203",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    },
+    "pasada_2": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "6208",
+   "fecha": "2026-08-24",
+   "titulo": "Informe de Actividad del Sector Autopartista (junio 2026)",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6208",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    }
+   }
+  },
+  {
+   "camara": "AFAC",
+   "id": "6244",
+   "fecha": "2026-10-22",
+   "titulo": "Comercio Exterior de Autopartes (enero-septiembre 2025)",
+   "url": "https://www.afac.org.ar/comunicaciones/comunicadosdeprensa/noticia?id=6244",
+   "firmantes": [
+    "AFAC"
+   ],
+   "motivo": "informe estadístico periódico",
+   "lecturas_descartadas": {
+    "pasada_1": {
+     "postura": "neutro",
+     "destinatario": "externo_o_propio"
+    },
+    "pasada_2": {
+     "postura": "critica",
+     "destinatario": "ejecutivo_nacional"
+    }
+   }
+  }
+ ]
+}
