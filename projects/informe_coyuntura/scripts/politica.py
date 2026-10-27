@@ -66,6 +66,8 @@ donde eso se define.
 """
 import sys
 import io
+import collections
+import difflib
 import json
 import re
 import math
@@ -3301,6 +3303,259 @@ def _avisar_camara_muda(hoy: date | None = None) -> list:
                f"el extractor se rompió; si dejó de publicar de verdad, decidirlo en un "
                f"ADR y no dejarlo pasar en silencio."), fuente)
     return avisadas
+
+
+# ── Bancos (ADEBA, ABA, ABAPPRA) y CAMARCO: sólo el corpus (ADR-0391) ────────
+#
+# Decisión de Juan, 27-oct-2026: los bancos cuentan como UN sector (cada
+# comunicado una vez aunque lo firmen varias cámaras) y CAMARCO se clasifica ya
+# pero queda fuera del cálculo, como CAME, hasta llegar al mínimo de 4
+# comunicados con postura dirigidos al Ejecutivo nacional en 12 meses. Esta
+# fase NO toca el índice: arma el corpus, la regla de archivo y los lotes.
+# Nada de lo de abajo está en ningún perímetro (`APOYO_*_CAMARAS`).
+APOYO_BANCOS_CAMARCO_CORPUS_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_bancos_camarco_corpus.json"
+APOYO_BANCOS_CAMARCO_RELEVAMIENTO_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_bancos_camarco_relevamiento.json"
+APOYO_BANCOS_CAMARCO_DESDE = "2023-12-10"      # asunción de Milei: primer día del período
+ADEBA_POSTS_URL = "https://www.adeba.com.ar/wp-json/wp/v2/posts"
+ADEBA_COMUNICADOS_CAT = 255
+ABA_POSTS_URL = "https://aba-argentina.com/wp-json/wp/v2/posts"
+# ABA reparte sus comunicados entre «Comunicados ABA» (103), «Gacetillas» (101) y
+# «Prensa» (107); «Capacitaciones», «Informes», «Columnas» y «Artículos» no.
+ABA_COMUNICADOS_CATS = (103, 101, 107)
+ABAPPRA_COMUNICADOS_URL = "https://abappra.org.ar/comunicados"
+CAMARCO_POSTS_URL = "https://www.camarco.org.ar/wp-json/wp/v2/posts"
+
+# Informes periódicos de las cámaras de bancos (síntesis normativa, estadísticas,
+# índices, boletines, rankings): la salida de un tablero, no una toma de posición.
+# Se archivan sin clasificar y quedan listados para auditoría. La regla se
+# escribió antes de clasificar, como la del comercio (ADR-0380) y el campo (ADR-0384).
+APOYO_BANCOS_ESTADISTICO = re.compile(
+    r"s[ií]ntesis normativa|estad[ií]stic|[ií]ndices? de |bolet[ií]n|"
+    r"informe (mensual|semanal|trimestral|anual|de coyuntura|de actividad|monetario)|"
+    r"indicadores|ranking|resultados de (los bancos|20\d\d)|evoluci[oó]n (del|de los) (cr[eé]dito|dep[oó]sitos)|"
+    r"lideraron los resultados", re.I)
+
+# CAMARCO publica todo en un solo WordPress: agenda, cursos, delegaciones y
+# comunicados. Se archivan sin clasificar (1) las series periódicas por título
+# —Indicador CAMARCO, Flash CAMARCO, acuerdos salariales de la UOCRA, cartelera,
+# llamados a licitación, remates— y (2) las publicaciones de formación y
+# divulgación por categoría del sitio: Escuela de Gestión (46), TIIC (27),
+# Charlas de Obra (561), Revista Construcciones (510), Indicador (587), Flash
+# (574) y Bolsa de Trabajo (495). Ninguna de ellas contiene comunicados de
+# postura: se comprobó que ni una nota con «comunicado», «declaración» o
+# «Consejo Federal» en el título cae en esas categorías.
+APOYO_CAMARCO_ESTADISTICO = re.compile(
+    r"^indicador camarco|flash camarco|acuerdo salarial|homologaci[oó]n acuerdo|"
+    r"ampliaci[oó]n de acuerdo salarial|uocra cultura|cartelera|llamados? a licitaci[oó]n|"
+    r"licitaci[oó]n p[uú]blica|remates z[aá]rate|^programaci[oó]n de", re.I)
+APOYO_CAMARCO_CATEGORIAS_ARCHIVADAS = {46, 27, 561, 510, 587, 574, 495}
+
+_G6 = re.compile(r"\bG-?6\b|grupo de los (6|seis)", re.I)
+# Otras entidades que nombran al G6 sin ser el G6: el CPI (Consejo de Políticas
+# de Infraestructura, que lo integra) y el J6 (sus jóvenes).
+_G6_AJENO = re.compile(r"\bCPI\b|\bJ6\b|Consejo de Pol[ií]ticas de Infraestructura", re.I)
+# Shortcodes de WPBakery/Salient que CAMARCO deja visibles en el cuerpo de cada
+# nota: ~1.200 caracteres de atributos antes del texto.
+_SHORTCODE_WP = re.compile(r"\[/?(?:vc_\w+|image_with_animation|nectar_\w+|fancy_\w+|gallery)\b[^\]]*\]")
+
+
+def _es_archivable_bancos(titulo: str) -> str | None:
+    """Motivo por el que un comunicado de bancos no se clasifica, o None."""
+    if APOYO_BANCOS_ESTADISTICO.search(titulo):
+        return "informe periódico (síntesis normativa, estadística, índice o boletín)"
+    return None
+
+
+def _es_archivable_camarco(titulo: str, categorias=()) -> str | None:
+    """Motivo por el que una nota de CAMARCO no se clasifica, o None."""
+    if APOYO_CAMARCO_ESTADISTICO.search(titulo):
+        return "serie periódica por título"
+    if set(categorias) & APOYO_CAMARCO_CATEGORIAS_ARCHIVADAS:
+        return "publicación de formación o divulgación (categoría del sitio)"
+    return None
+
+
+def _wp_posts(session: requests.Session, url: str, camara: str, params: dict | None = None) -> list[dict]:
+    """Todas las notas desde el 10-dic-2023 de una API de WordPress, con su texto
+    completo. Título y cuerpo salen del MISMO registro, así que no existe el error
+    de emparejamiento que tuvo CAME (ADR-0380). Pagina hasta que el sitio
+    contesta 400 (página inexistente) o devuelve menos de 100."""
+    salida, p = [], 1
+    while True:
+        r = session.get(url, timeout=HTTP_TIMEOUT * 3, params={
+            **(params or {}), "per_page": 100, "page": p, "after": f"{APOYO_BANCOS_CAMARCO_DESDE}T00:00:00",
+            "_fields": "id,date,link,title,content,categories"})
+        if getattr(r, "status_code", 200) == 400:
+            break
+        r.raise_for_status()
+        lote = r.json()
+        for x in lote:
+            salida.append({"camara": camara, "id": str(x["id"]), "fecha": str(x["date"])[:10],
+                           "titulo": _texto_limpio_html(x["title"]["rendered"]),
+                           "texto": _texto_limpio_html(_SHORTCODE_WP.sub(" ", x["content"]["rendered"])), "url": x["link"],
+                           "categorias": list(x.get("categories") or [])})
+        if len(lote) < 100:
+            break
+        p += 1
+    return salida
+
+
+def _adeba_listado(session: requests.Session) -> list[dict]:
+    """Categoría «comunicados» de ADEBA (id 255). El feed general no sirve: está
+    lleno de «Síntesis normativa» (4.100 notas desde ago-2024)."""
+    return _wp_posts(session, ADEBA_POSTS_URL, "ADEBA", {"categories": ADEBA_COMUNICADOS_CAT})
+
+
+def _aba_listado(session: requests.Session) -> list[dict]:
+    return _wp_posts(session, ABA_POSTS_URL, "ABA", {"categories": ",".join(map(str, ABA_COMUNICADOS_CATS))})
+
+
+def _camarco_listado(session: requests.Session) -> list[dict]:
+    return _wp_posts(session, CAMARCO_POSTS_URL, "CAMARCO")
+
+
+def _abappra_listado(session: requests.Session) -> list[dict]:
+    """Comunicados oficiales de ABAPPRA: una sola página, sin paginar, con las
+    entradas separadas por `<hr>` y encabezadas por `<p>AAAA-MM-DD</p>`. No tienen
+    título propio ni enlace individual: el título es el primer texto en negrita
+    (o la primera línea) y la URL lleva la fecha como ancla."""
+    r = session.get(ABAPPRA_COMUNICADOS_URL, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    html = r.content.decode("utf-8", "replace") if hasattr(r, "content") else r.text
+    ini = html.find("COMUNICADOS OFICIALES")
+    fin = html.find("<footer", ini if ini != -1 else 0)
+    cuerpo = html[ini if ini != -1 else 0:fin if fin != -1 else len(html)]
+    salida, vistos = [], collections.Counter()
+    for trozo in re.split(r"<hr\s*/?>", cuerpo):
+        m = re.search(r"<p>\s*(\d{4}-\d{2}-\d{2})\s*</p>", trozo)
+        if not m or m.group(1) < APOYO_BANCOS_CAMARCO_DESDE:
+            continue
+        fecha, resto = m.group(1), trozo[m.end():]
+        fuerte = re.search(r"<strong>(.*?)</strong>", resto, re.S)
+        texto = _texto_limpio_html(resto)
+        if not texto:
+            continue
+        titulo = (_texto_limpio_html(fuerte.group(1)) if fuerte else "") or texto.split("\n", 1)[0]
+        vistos[fecha] += 1
+        sufijo = f"-{vistos[fecha]}" if vistos[fecha] > 1 else ""
+        salida.append({"camara": "ABAPPRA", "id": f"{fecha}{sufijo}", "fecha": fecha,
+                       "titulo": re.sub(r"\s+", " ", titulo)[:240], "texto": texto,
+                       "url": f"{ABAPPRA_COMUNICADOS_URL}#{fecha}{sufijo}", "categorias": []})
+    return salida
+
+
+def _norm_texto(s: str) -> str:
+    s = unicodedata.normalize("NFKD", s.lower())
+    return re.sub(r"[^a-z0-9]+", " ", "".join(c for c in s if not unicodedata.combining(c))).strip()
+
+
+def _son_el_mismo_comunicado(a: dict, b: dict) -> bool:
+    """Dos notas de cámaras distintas son el mismo comunicado si salieron con
+    pocos días de diferencia y tienen el mismo título normalizado, un título casi
+    igual o un texto casi igual (los comunicados conjuntos se publican en cada
+    sitio con retoques de forma)."""
+    if a["camara"] == b["camara"]:
+        return False
+    if abs((date.fromisoformat(a["fecha"]) - date.fromisoformat(b["fecha"])).days) > 14:
+        return False
+    ta, tb = _norm_texto(a["titulo"]), _norm_texto(b["titulo"])
+    if ta == tb or difflib.SequenceMatcher(None, ta, tb).ratio() >= 0.85:
+        return True
+    xa, xb = _norm_texto(a["texto"])[:1500], _norm_texto(b["texto"])[:1500]
+    return min(len(xa), len(xb)) > 200 and difflib.SequenceMatcher(None, xa, xb, autojunk=False).ratio() >= 0.8
+
+
+def _deduplicar_bancos(notas: list[dict]) -> list[dict]:
+    """Una entrada por comunicado de bancos, con todas las firmantes.
+
+    Agrupa por componentes conexas de `_son_el_mismo_comunicado`. Representante:
+    el texto más largo (desempata ADEBA, ABA, ABAPPRA). `firmantes` = cámaras en
+    cuyos sitios se publicó; `fuentes` = una URL por cámara."""
+    orden = {"ADEBA": 0, "ABA": 1, "ABAPPRA": 2}
+    padre = list(range(len(notas)))
+
+    def raiz(i):
+        while padre[i] != i:
+            padre[i] = padre[padre[i]]
+            i = padre[i]
+        return i
+    for i in range(len(notas)):
+        for j in range(i + 1, len(notas)):
+            if _son_el_mismo_comunicado(notas[i], notas[j]):
+                padre[raiz(i)] = raiz(j)
+    grupos = collections.defaultdict(list)
+    for i, n in enumerate(notas):
+        grupos[raiz(i)].append(n)
+    salida = []
+    for g in grupos.values():
+        g.sort(key=lambda n: (-len(n["texto"]), orden.get(n["camara"], 9)))
+        rep = dict(g[0])
+        firmantes = sorted({n["camara"] for n in g}, key=lambda c: orden.get(c, 9))
+        rep["firmantes"] = firmantes
+        rep["fuentes"] = {n["camara"]: n["url"] for n in sorted(g, key=lambda n: orden.get(n["camara"], 9))}
+        rep["fecha"] = min(n["fecha"] for n in g)
+        rep["camara"] = "BANCOS"
+        rep["id"] = f"{g[0]['camara'].lower()}-{g[0]['id']}" if len(g) == 1 else \
+            "-".join(f"{n['camara'].lower()}{n['id']}" for n in sorted(g, key=lambda n: orden.get(n["camara"], 9)))
+        rep.pop("categorias", None)
+        salida.append(rep)
+    salida.sort(key=lambda n: (n["fecha"], n["id"]))
+    return salida
+
+
+def _es_g6(titulo: str, texto: str) -> bool:
+    """Comunicado del G6: lo nombra el título, o lo nombra el arranque del texto
+    (primeros 250 caracteres) sin que la nota sea del CPI ni del J6, que lo
+    mencionan como integrantes."""
+    if _G6.search(titulo):
+        return True
+    arranque = texto[:250]
+    return bool(_G6.search(arranque)) and not (_G6_AJENO.search(titulo) or _G6_AJENO.search(arranque))
+
+
+def _marcar_g6(notas: list[dict]) -> None:
+    for n in notas:
+        n["g6"] = _es_g6(n["titulo"], n["texto"])
+
+
+def construir_corpus_bancos_camarco(session: requests.Session) -> dict:
+    """Corpus de bancos (compuesto) y CAMARCO, sin clasificar (ADR-0391).
+    Devuelve las notas a clasificar, las archivadas por regla de título y las
+    cifras de dedup para el relevamiento."""
+    crudas = {"ADEBA": _adeba_listado(session), "ABA": _aba_listado(session),
+              "ABAPPRA": _abappra_listado(session), "CAMARCO": _camarco_listado(session)}
+    bancos_ok, bancos_arch = [], []
+    for cam in ("ADEBA", "ABA", "ABAPPRA"):
+        for n in crudas[cam]:
+            motivo = _es_archivable_bancos(n["titulo"])
+            (bancos_arch if motivo else bancos_ok).append({**n, **({"motivo": motivo} if motivo else {})})
+    camarco_ok, camarco_arch = [], []
+    for n in crudas["CAMARCO"]:
+        motivo = _es_archivable_camarco(n["titulo"], n.get("categorias", ()))
+        if motivo:
+            camarco_arch.append({**n, "motivo": motivo})
+        else:
+            camarco_ok.append(n)
+    # Los archivados de bancos también se deduplican, para que el recuento cierre
+    # contra la misma cuenta («un comunicado, una vez»).
+    bancos = _deduplicar_bancos(bancos_ok)
+    bancos_archivados = _deduplicar_bancos(bancos_arch)
+    for n in bancos_archivados:
+        n["motivo"] = _es_archivable_bancos(n["titulo"]) or "informe periódico"
+    camarco = []
+    for n in camarco_ok:
+        n = dict(n)
+        n.pop("categorias", None)
+        n["firmantes"] = ["CAMARCO"]
+        camarco.append(n)
+    for lote in (bancos, camarco):
+        _marcar_g6(lote)
+    camarco_archivados = [{"camara": "CAMARCO", "id": n["id"], "fecha": n["fecha"], "titulo": n["titulo"],
+                           "url": n["url"], "motivo": n["motivo"]} for n in camarco_arch]
+    bancos_archivados = [{"camara": "BANCOS", "id": n["id"], "fecha": n["fecha"], "titulo": n["titulo"],
+                          "url": n["url"], "firmantes": n["firmantes"], "motivo": n["motivo"]} for n in bancos_archivados]
+    return {"crudas": crudas, "bancos": bancos, "camarco": camarco,
+            "archivados": sorted(bancos_archivados + camarco_archivados, key=lambda n: (n["camara"], n["fecha"]))}
 
 
 def detectar_novedades_empresarias() -> dict:
