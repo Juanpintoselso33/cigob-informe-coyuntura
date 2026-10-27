@@ -189,8 +189,11 @@ def test_pesos_del_documento():
         "mora_familias": 0.70,
         "carga_servicio_deuda_hogares": 0.30,
     }
+    # ADR-0386: el 20% de la vivienda se reparte entre el alquiler del IPC y el
+    # de los avisos de UdeSA; alimentos y servicios no se tocan.
     assert d["precios"]["indicadores"] == {"ipc_alimentos": 0.35, "peso_tarifas": 0.45,
-                                           "alquiler_real": 0.20}
+                                           "alquiler_real": 0.10,
+                                           "alquiler_udesa_real": 0.10}
     # ADR-0130: entra empleo_registrado con 0,35 y los cuatro proxies ceden ×0,65
     # ADR-0154: sale indice_lider y los cuatro que quedan absorben ÷0,87
     # ADR-0214: entra `informalidad` con su peso efectivo intacto (9,19%) y

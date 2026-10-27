@@ -155,6 +155,15 @@ def build_vida(raw):
     _add(out, "alquiler_real", _red(alq.get("variacion_mensual_pct"), 2),
          "% m/m alquileres", "INDEC — IPC-GBA alquiler de la vivienda (planilla original)",
          alq.get("fecha"), fuente_url=alq.get('fuente_url'))
+    # ADR-0386: alquiler de los avisos de UdeSA - Mercado Libre, deflactado por
+    # el IPC GBA. La clave se llama SIEMPRE, con valor None si el colector no
+    # trajo nada, para que `_carry_forward` pueda restaurar el último valor.
+    au = (raw.get("alquiler_udesa") or {}).get("alquiler_udesa_real") or {}
+    _add(out, "alquiler_udesa_real", _red(au.get("valor"), 2),
+         "% real interanual",
+         "UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)",
+         au.get("fecha"), fuente_url=au.get("fuente_url"),
+         variacion_nominal_pct=au.get("nominal_pct"), ipc_interanual_pct=au.get("ipc_pct"))
     # ADR-0322: la vacuna y el resto (aviar+porcina) puntúan cada uno por su
     # cuenta — antes (ADR-0217) sólo el total puntuaba y la vacuna era
     # diagnóstico puro. Los DOS salen del MISMO PDF de SAGYP: misma

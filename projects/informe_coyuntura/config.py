@@ -239,6 +239,14 @@ MAX_DIAS = {
     "icg_utdt": 90,
     # Trabajo: planilla mensual con 2-3 meses de rezago observado.
     "jornadas_individuales_no_trabajadas_12m": 150,
+    # ADR-0386: CARGA MANUAL mensual (data/vida/alquiler_udesa.json): UdeSA sólo
+    # publica PDF y alguien tiene que leerlo. El punto del mes M (fecha = día 1
+    # de M) necesita además el IPC de M, que sale a mediados de M+1, así que
+    # nace con ~45 días y el siguiente llega a ~76. 105 deja unas tres semanas
+    # de carga tardía y marca desactualizado si se saltea un mes entero. El
+    # recordatorio llega antes: a los 45 días sin carga el colector manda un
+    # [COTEJO_MANUAL] (alquiler_udesa.DIAS_SIN_CARGA_AVISO).
+    "alquiler_udesa_real": 105,
 }
 
 

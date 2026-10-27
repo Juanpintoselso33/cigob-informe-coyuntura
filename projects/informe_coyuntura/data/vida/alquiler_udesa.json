@@ -1,0 +1,403 @@
+{
+ "_meta": {
+  "fuente": "Indicadores UdeSA - Mercado Libre · Relevamiento de precio de propiedad y alquileres (Universidad de San Andrés y Mercado Libre Inmuebles)",
+  "url_pagina": "https://www.udesa.edu.ar/indices-mercado-libre",
+  "carga": "MANUAL, una vez por mes (ADR-0386). Se lee el PDF de AMBA y se copia la frase textual; no hay serie descargable.",
+  "como_cargar": "python scripts/vida_cotidiana/cargar_alquiler_udesa.py --mes AAAA-MM --valor <interanual deptos AMBA, %> --url <PDF> --frase \"<frase textual>\"",
+  "serie_principal": "interanual_deptos_amba_pct: variación interanual nominal (pesos corrientes) del precio de alquiler de departamentos en AMBA, mediana de avisos publicados en Mercado Libre.",
+  "sin_dato": "Los meses de «sin_dato» no se interpolan ni se encadenan desde la intermensual. El precio mediano por m2 sólo está en gráficos de imagen, no en el texto: no se carga."
+ },
+ "meses": {
+  "2023-01": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": null,
+   "frase": null,
+   "url_pdf": "https://drive.google.com/file/d/1boCQ2XE916Hg3QUFQ7pv9hUP-0SFwfql/view",
+   "archivo": "amba_2023-01.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2023-02": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": null,
+   "frase": null,
+   "url_pdf": "https://drive.google.com/file/d/1FkaW6ZQF9hqlSDVScp6jvhaFF2w71Pxf/view",
+   "archivo": "amba_202302.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2023-03": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": null,
+   "frase": null,
+   "url_pdf": "https://drive.google.com/file/d/1bCBNM013qGPuO3pg8pRWmi0i6gdENmj5/view",
+   "archivo": "amba_2023-03.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2023-04": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": null,
+   "frase": null,
+   "url_pdf": "https://drive.google.com/file/d/1bCSvMXDicj34564Xh0-qoBQR-jcvYozJ/view",
+   "archivo": "amba_2023-04.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2023-05": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": null,
+   "frase": null,
+   "url_pdf": "https://drive.google.com/file/d/1bc-x8HKARakAg52sAX6hQAMscOqA7cSB/view",
+   "archivo": "amba_202305.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2023-06": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 15.3,
+   "frase": "En AMBA, durante el mes de junio de 2023, el incremento en el precio de alquiler en pesos corrientes de departamentos ha sido de 15.3%, mientras que en CABA, dicho aumento ha sido de 10.9%.",
+   "url_pdf": "https://drive.google.com/file/d/1bgopwYXn358b3rvvTAzKbNj6GoM8ZeCD/view",
+   "archivo": "amba_202306.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2023-07": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 12.8,
+   "frase": "En AMBA, durante el mes de julio de 2023, el incremento en el precio de alquiler en pesos corrientes de departamentos ha sido de 12.8%, mientras que en CABA, dicho aumento ha sido de 10.0%, respecto a junio de 2023.",
+   "url_pdf": "https://drive.google.com/file/d/1bntXwbtII5ngkstSAYfT021aMT7nqRgP/view",
+   "archivo": "amba_202307.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2023-08": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 15.6,
+   "frase": "En AMBA, durante el mes de agosto de 2023, el incremento en el precio de alquiler en pesos corrientes de departamentos ha sido de 15.6%, mientras que en CABA, dicho aumento ha sido de 25.6%, respecto a julio de 2023.",
+   "url_pdf": "https://drive.google.com/file/d/1cA7Y7F4jwcIVA1NJm0ic6sbE4A1c3U9x/view",
+   "archivo": "amba_202308.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2023-09": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 19.9,
+   "frase": "En AMBA, durante el mes de septiembre de 2023, el incremento en el precio de alquiler en pesos corrientes de departamentos ha sido de 19.9%, mientras que en CABA, dicho aumento ha sido de 19.3%, respecto a agosto de 2023.",
+   "url_pdf": "https://drive.google.com/file/d/1c00s_Bfxp5A6GN4lZlcJFOUGLn_nXIt8/view",
+   "archivo": "amba_202309.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2023-10": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 20.7,
+   "frase": "En AMBA, durante el mes de octubre de 2023, el incremento en el precio de alquiler en pesos corrientes de departamentos ha sido de 20.7%, mientras que en CABA, dicho aumento ha sido de 21.0%, respecto a septiembre de 2023.",
+   "url_pdf": "https://drive.google.com/file/d/1cJ5cBfW1KQ_t6NSyQVmLzbXW7nIUNp6W/view",
+   "archivo": "amba_202310.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2023-11": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": -7.1,
+   "frase": "En AMBA, durante el mes de noviembre de 2023, se registró una caída en el precio de alquiler en pesos corrientes de departamentos de 7.1%, mientras que en casas se registró una subida del 2.0%, respecto a octubre de 2023.",
+   "url_pdf": "https://drive.google.com/file/d/1cMZRxQwutpGooKq9Mi_I9rx7LeuKW6At/view",
+   "archivo": "amba_202311.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2023-12": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 8.9,
+   "frase": "En AMBA, durante el mes de diciembre de 2023, se registraron subidas en el precio de alquiler en pesos corrientes de departamentos y casas del 8.9% y 6.0%, respectivamente, respecto a noviembre de 2023.",
+   "url_pdf": "https://drive.google.com/file/d/1cOya41JhiQGxttFK1gUgZcupatNEJQf9/view",
+   "archivo": "amba_202312.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-01": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 12.4,
+   "frase": "En AMBA, durante el mes de enero de 2024, se registraron subidas en el precio de alquiler en pesos corrientes de departamentos y casas del 12.4% y 10.9%, respectivamente, respecto a diciembre de 2023.",
+   "url_pdf": "https://drive.google.com/file/d/1cEkHfPnp13NcXvr4jJVvcAW_YPQDARrz/view",
+   "archivo": "amba_202401.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-02": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 2.3,
+   "frase": "En AMBA, durante el mes de febrero de 2024, se registraron subidas en el precio de alquiler en pesos corrientes de departamentos y casas del 2.3% y 0.6%, respectivamente, respecto a enero de 2024.",
+   "url_pdf": "https://drive.google.com/file/d/1d2aoZPiUAKEpC4pLgQQz9bJs4wZCVF7r/view",
+   "archivo": "amba_202402.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-03": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 1.5,
+   "frase": "En AMBA, durante el mes de marzo de 2024, se registraron variaciones en el precio de alquiler en pesos corrientes de departamentos y casas del 1.5% y -5.9%, respectivamente, respecto a febrero de 2024.",
+   "url_pdf": "https://drive.google.com/file/d/1cy-rQrsdj02guw3_8tVmDKoqTr3wNmhx/view",
+   "archivo": "amba_202403.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-04": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": null,
+   "frase": null,
+   "url_pdf": "https://drive.google.com/file/d/1csJrTs1G09VBZtxP64DTsqH72z_SDYvy/view",
+   "archivo": "amba_202404.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-05": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 3.9,
+   "frase": "En AMBA, durante el mes de mayo de 2024, se registraron variaciones intermensuales (respecto a abril de 2024) en el precio de alquiler en pesos corrientes de departamentos y casas del 3.9% y 10.6%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1dCl-9wgBkBEXO4pDPTcLxTAsyRRCaxPr/view",
+   "archivo": "amba_202405.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-06": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 5.6,
+   "frase": "En AMBA, durante el mes de junio de 2024, se registraron variaciones intermensuales (respecto a mayo de 2024) en el precio de alquiler en pesos corrientes de departamentos y casas del 5.6% y 9.6%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1d7zM0x6QmjK5tLEQzKGAD4MVKHRFB7ME/view",
+   "archivo": "amba_202406.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-07": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 5.6,
+   "frase": "En AMBA, durante el mes de julio de 2024, se registraron variaciones intermensuales (respecto a junio de 2024) en el precio de alquiler en pesos corrientes de departamentos y casas del 5.6% y 10.8%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1d3PB5QIhioZJ8kcULzpRYg_eSmhUgEbG/view",
+   "archivo": "amba_202407.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-08": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 5.3,
+   "frase": "En AMBA, durante el mes de agosto de 2024, se registraron variaciones intermensuales (respecto a julio de 2024) en el precio de alquiler en pesos corrientes de departamentos y casas del 5.3% y 0.6%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1dWEzwmloVC5DCjEvaq3CM20gofP3VIlW/view",
+   "archivo": "amba_202408.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-09": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 3.6,
+   "frase": "En AMBA, durante el mes de septiembre de 2024, se registraron variaciones intermensuales (respecto a agosto de 2024) en el precio de alquiler en pesos corrientes de departamentos y casas del 3.6% y -1.4%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1AzLT862zhJ374mTZe-MxhS4Gsws0J2D4/view",
+   "archivo": "amba_202409.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-10": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 1.6,
+   "frase": "En AMBA, durante el mes de octubre de 2024, se registraron variaciones intermensuales (respecto a septiembre de 2024) en el precio de alquiler en pesos corrientes de departamentos y casas del 1.6% y 1.9%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1Ah07I_e2yq5feRSBbNAn5eq_1IE9N4bA/view",
+   "archivo": "amba_202410.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-11": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": null,
+   "frase": null,
+   "url_pdf": "https://drive.google.com/file/d/1lPk0shwVHfxXfHKD_2P89JudNtOYUN5H/view",
+   "archivo": "amba_202411.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2024-12": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 2.0,
+   "frase": "En AMBA, durante el mes de diciembre de 2024, se registraron variaciones intermensuales (respecto a noviembre de 2024) en el precio de alquiler en pesos corrientes de departamentos y casas del 2.0% y 2.1%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1J71bXu1HS9FuQg4td3zzRxzaHQFX7-rB/view",
+   "archivo": "amba_202412.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-01": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 3.5,
+   "frase": "En AMBA, durante el mes de enero de 2025, se registraron variaciones intermensuales (respecto a diciembre de 2024) en el precio de alquiler en pesos corrientes de departamentos y casas del 3.5% y 9.3%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1sCPIp5x_wkSrnouBUGz4m-sEPxnRvZtP/view",
+   "archivo": "amba_202501.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-02": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 0.8,
+   "frase": "En AMBA, durante el mes de febrero de 2025, se registraron variaciones intermensuales (respecto a enero de 2025) en el precio de alquiler en pesos corrientes de departamentos y casas del 0.8% y 2.7%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1FDErLvc99vjCXEEOsqDCvzmU8Zr9weGL/view",
+   "archivo": "amba_202502.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-03": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 2.0,
+   "frase": "En AMBA, durante el mes de marzo de 2025, se registraron variaciones intermensuales (respecto a febrero de 2025) en el precio de alquiler en pesos corrientes de departamentos y casas del 2.0% y 3.1%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1d2A1QhwBQoZ4tpabCv-Uj-IqSvWiBeX0/view",
+   "archivo": "amba_202503.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-04": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 3.1,
+   "frase": "En AMBA, durante el mes de abril de 2025, se registraron variaciones intermensuales (respecto a marzo de 2025) en el precio de alquiler en pesos corrientes de casas y departamentos del 0.3% y 3.1%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/17GVhwdMyAkdltx9AfHRoQLe1hcyttvkB/view",
+   "archivo": "amba_202504.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-05": {
+   "interanual_deptos_amba_pct": null,
+   "intermensual_deptos_amba_pct": 0.7,
+   "frase": "En AMBA, durante el mes de mayo de 2025, se registraron variaciones intermensuales (respecto a abril de 2025) en el precio de alquiler en pesos corrientes de casas y departamentos del -0.1% y 0.7%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1qik9yLObWDAJuRpukujupm7NdZ9XLsDw/view",
+   "archivo": "amba_202505.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-06": {
+   "interanual_deptos_amba_pct": 38.8,
+   "intermensual_deptos_amba_pct": 2.2,
+   "frase": "En AMBA, durante el mes de junio de 2025, se registraron variaciones intermensuales (respecto a mayo de 2025) en el precio de alquiler en pesos corrientes de casas y departamentos del 1.4% y 2.2%, respectivamente. Si consideramos la variación interanual (respecto a junio de 2024), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 32.7% y 38.8%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1Vt1KbvZ4HzGz-iuYymjsiIF04-Rd2iHo/view",
+   "archivo": "amba_202506.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-07": {
+   "interanual_deptos_amba_pct": 36.3,
+   "intermensual_deptos_amba_pct": 3.3,
+   "frase": "En AMBA, durante el mes de julio de 2025, se registraron variaciones intermensuales (respecto a junio de 2025) en el precio de alquiler en pesos corrientes de casas y departamentos del 8.3% y 3.3%, respectivamente. Si consideramos la variación interanual (respecto a julio de 2024), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 32.3% y 36.3%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1YZDMwwL-QNopBXL1JFbnukQWLHilN3vD/view",
+   "archivo": "amba_202507.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-08": {
+   "interanual_deptos_amba_pct": 33.5,
+   "intermensual_deptos_amba_pct": 2.5,
+   "frase": "En AMBA, durante el mes de agosto de 2025, se registraron variaciones intermensuales (respecto a julio de 2025) en el precio de alquiler en pesos corrientes de casas y departamentos del 5.0% y 2.5%, respectivamente. Si consideramos la variación interanual (respecto a agosto de 2024), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 37.1% y 33.5%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/16mMBpY7mbYanUR8Otm0OG3Bv-SJE-0me/view",
+   "archivo": "amba_202508.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-09": {
+   "interanual_deptos_amba_pct": 31.9,
+   "intermensual_deptos_amba_pct": 2.1,
+   "frase": "En AMBA, durante el mes de septiembre de 2025, se registraron variaciones intermensuales (respecto a agosto de 2025) en el precio de alquiler en pesos corrientes de casas y departamentos del 2.2% y 2.1%, respectivamente. Si consideramos la variación interanual (respecto a septiembre de 2024), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 44.2% y 31.9%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1vUSl_qvZjn8hVztt_J-5FH1idpOMlyBq/view",
+   "archivo": "amba_202509.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-10": {
+   "interanual_deptos_amba_pct": 32.5,
+   "intermensual_deptos_amba_pct": 2.1,
+   "frase": "En AMBA, durante el mes de octubre de 2025, se registraron variaciones intermensuales (respecto a septiembre de 2025) en el precio de alquiler en pesos corrientes de casas y departamentos del 4.4% y 2.1%, respectivamente. Si consideramos la variación interanual (respecto a octubre de 2024), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 47.5% y 32.5%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/17Yz4nXXZxPg0VphI8ecj4IKDDGSX47C4/view",
+   "archivo": "amba_202510.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-11": {
+   "interanual_deptos_amba_pct": 32.4,
+   "intermensual_deptos_amba_pct": 0.4,
+   "frase": "En AMBA, durante el mes de noviembre de 2025, se registraron variaciones intermensuales (respecto a octubre de 2025) en el precio de alquiler en pesos corrientes de casas y departamentos del 2.3% y 0.4%, respectivamente. Si consideramos la variación interanual (respecto a noviembre de 2024), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 50.0% y 32.4%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1d7DrRUxwUrp0Imqmt2Aa7Jshoj1-2uRC/view",
+   "archivo": "amba_202511.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2025-12": {
+   "interanual_deptos_amba_pct": 31.6,
+   "intermensual_deptos_amba_pct": 1.4,
+   "frase": "En AMBA, durante el mes de diciembre de 2025, se registraron variaciones intermensuales (respecto a noviembre de 2025) en el precio de alquiler en pesos corrientes de casas y departamentos del 2.3% y 1.4%, respectivamente. Si consideramos la variación interanual (respecto a diciembre de 2024), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 49.2% y 31.6%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1VvtUSnH4F1oAJyhvCtxXIamNUjznBcXR/view",
+   "archivo": "amba_202512.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2026-01": {
+   "interanual_deptos_amba_pct": 30.6,
+   "intermensual_deptos_amba_pct": 2.1,
+   "frase": "En AMBA, durante el mes de enero de 2026, se registraron variaciones intermensuales (respecto a diciembre de 2025) en el precio de alquiler en pesos corrientes de casas y departamentos del 1.5% y 2.1%, respectivamente. Si consideramos la variación interanual (respecto a enero de 2025), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 39.1% y 30.6%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1gBH3UA6zhhL9_jjW9IO_OW-9WieYu3zm/view",
+   "archivo": "amba_Informe202601.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2026-02": {
+   "interanual_deptos_amba_pct": 28.6,
+   "intermensual_deptos_amba_pct": 1.1,
+   "frase": "En AMBA, durante el mes de febrero de 2026, se registraron variaciones intermensuales (respecto a enero de 2026) en el precio de alquiler en pesos corrientes de casas y departamentos del -2.3% y 1.1%, respectivamente. Si consideramos la variación interanual (respecto a febrero de 2025), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 32.8% y 28.6%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1l6TRRHbDE8O6dRPVYOKg804Y_LjG9ang/view",
+   "archivo": "amba_Informe202602.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2026-03": {
+   "interanual_deptos_amba_pct": 28.1,
+   "intermensual_deptos_amba_pct": 1.6,
+   "frase": "En AMBA, durante el mes de marzo de 2026, se registraron variaciones intermensuales (respecto a febrero de 2026) en el precio de alquiler en pesos corrientes de casas y departamentos del -1.4% y 1.6%, respectivamente. Si consideramos la variación interanual (respecto a marzo de 2025), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 26.2% y 28.1%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1-z3MZ9CvOL7c3nxGSzhNkbm-K5D4X2SD/view",
+   "archivo": "amba_Informe202603.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2026-04": {
+   "interanual_deptos_amba_pct": 27.0,
+   "intermensual_deptos_amba_pct": 1.6,
+   "frase": "En AMBA, durante el mes de abril de 2026, se registraron variaciones intermensuales (respecto a marzo de 2026) en el precio de alquiler en pesos corrientes de casas y departamentos del 1.7% y 1.6%, respectivamente. Si consideramos la variación interanual (respecto a abril de 2025), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 28.4% y 27.0%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1Ue467gfv7gMzQly8O1VurMj8ZnZ6IGry/view",
+   "archivo": "amba_Informe202604.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2026-05": {
+   "interanual_deptos_amba_pct": 25.8,
+   "intermensual_deptos_amba_pct": 0.3,
+   "frase": "En AMBA, durante el mes de mayo de 2026, se registraron variaciones intermensuales (respecto a abril de 2026) en el precio de alquiler en pesos corrientes de casas y departamentos del -0.3% y 0.3%, respectivamente. Si consideramos la variación interanual (respecto a mayo de 2025), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 28.2% y 25.8%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1-0c43ryeo1HDRPEt4sESx5p_7uYyfU3a/view",
+   "archivo": "amba_Informe202605.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2026-06": {
+   "interanual_deptos_amba_pct": 24.1,
+   "intermensual_deptos_amba_pct": 1.1,
+   "frase": "En AMBA, durante el mes de junio de 2026, se registraron variaciones intermensuales (respecto a mayo de 2026) en el precio de alquiler en pesos corrientes de casas y departamentos del 3.3% y 1.1%, respectivamente. Si consideramos la variación interanual (respecto a junio de 2025), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 30.5% y 24.1%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1LzmmabUmaT1EXy6EL0hjqNWVUxQfZ1iv/view",
+   "archivo": "amba_Informe202606.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2026-07": {
+   "interanual_deptos_amba_pct": 21.8,
+   "intermensual_deptos_amba_pct": 1.6,
+   "frase": "En AMBA, durante el mes de julio de 2026, se registraron variaciones intermensuales (respecto a junio de 2026) en el precio de alquiler en pesos corrientes de casas y departamentos del 2.6% y 1.6%, respectivamente. Si consideramos la variación interanual (respecto a julio de 2025), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 24.7% y 21.8%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1-V9_mXHDs9OfWfl3EsB12o-2KK0VpN0f/view",
+   "archivo": "amba_Informe202607.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2026-08": {
+   "interanual_deptos_amba_pct": 21.1,
+   "intermensual_deptos_amba_pct": 1.9,
+   "frase": "En AMBA, durante el mes de agosto de 2026, se registraron variaciones intermensuales (respecto a julio de 2026) en el precio de alquiler en pesos corrientes de casas y departamentos del 2.8% y 1.9%, respectivamente. Si consideramos la variación interanual (respecto a agosto de 2025), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 22.1% y 21.1%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1mAK8_utriDmhJCvUkw5YBNLo3zlhVbQN/view",
+   "archivo": "amba_Informe202608.pdf",
+   "cargado_en": "2026-10-27"
+  },
+  "2026-09": {
+   "interanual_deptos_amba_pct": 20.4,
+   "intermensual_deptos_amba_pct": 1.4,
+   "frase": "En AMBA, durante el mes de septiembre de 2026, se registraron variaciones intermensuales (respecto a agosto de 2026) en el precio de alquiler en pesos corrientes de casas y departamentos del 1.3% y 1.4%, respectivamente. Si consideramos la variación interanual (respecto a septiembre de 2025), se observan cambios en el precio de alquiler en pesos corrientes de casas y departamentos del 21.2% y 20.4%, respectivamente.",
+   "url_pdf": "https://drive.google.com/file/d/1_Phhg7TAD16bmVjb9XJiX_Wo4w2TSkiX/view",
+   "archivo": "AMBA_Informe202609.pdf",
+   "cargado_en": "2026-10-27"
+  }
+ },
+ "sin_dato": {
+  "2023-01": "Hasta mayo de 2023 el informe expresa el alquiler en pesos constantes (ya deflactado) y no da la variación nominal.",
+  "2023-02": "Hasta mayo de 2023 el informe expresa el alquiler en pesos constantes (ya deflactado) y no da la variación nominal.",
+  "2023-03": "Hasta mayo de 2023 el informe expresa el alquiler en pesos constantes (ya deflactado) y no da la variación nominal.",
+  "2023-04": "Hasta mayo de 2023 el informe expresa el alquiler en pesos constantes (ya deflactado) y no da la variación nominal.",
+  "2023-05": "Hasta mayo de 2023 el informe expresa el alquiler en pesos constantes (ya deflactado) y no da la variación nominal.",
+  "2023-06": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2023-07": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2023-08": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2023-09": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2023-10": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2023-11": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2023-12": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-01": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-02": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-03": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-04": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-05": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-06": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-07": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-08": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-09": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-10": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-11": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2024-12": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2025-01": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2025-02": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2025-03": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2025-04": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual.",
+  "2025-05": "El informe no da la variación interanual nominal de los departamentos de AMBA en el texto: sólo la intermensual y, por aglomerado (CABA y GBA), la interanual."
+ }
+}

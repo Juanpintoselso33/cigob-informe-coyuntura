@@ -760,7 +760,10 @@ def test_vida_itvc_reconcilia():
     # seguridad) y `ratio_motos_autos` (ADR-0328, dimensión de ingresos).
     # 21 → 22: entra `icg_utdt` en la dimensión de percepción (ADR-0345).
     # 22 → 18 (ADR-0383): Empleo; salen cinco y entra la ocupación de la EPH.
-    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
+    # 18 → 19 (ADR-0386): entra `alquiler_udesa_real` a precios. Este test lee
+    # el snapshot versionado: queda rojo hasta la próxima corrida que lo
+    # regenere (no hay nada que arreglar en el código).
+    assert len(en_indice) == 19, f"esperaba 19 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"

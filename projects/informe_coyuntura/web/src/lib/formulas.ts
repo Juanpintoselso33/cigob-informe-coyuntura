@@ -195,6 +195,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`100\cdot\frac{\left(\text{IPC general}\,/\,\text{alquiler}\right)_{\text{hoy}}}{\left(\text{IPC general}\,/\,\text{alquiler}\right)_{\text{4T-23}}}`,
     leyenda: "Cuánto sube el alquiler comparado con el resto de los precios, contra el arranque del mandato. Debajo de 100 = el alquiler se encareció más que todo lo demás.",
   },
+  alquiler_udesa_real: {
+    latex: String.raw`100-\left[\frac{1+\text{alquiler pedido}_{\text{i.a.}}}{1+\text{IPC}_{\text{i.a.}}}-1\right]\cdot 100`,
+    leyenda: "Variación interanual del alquiler pedido por los departamentos de AMBA en Mercado Libre (pesos corrientes), descontada la inflación interanual del mismo mes. El índice es 100 menos esa variación real, en puntos: 100 = el alquiler pedido subió igual que los precios; por debajo de 100, se encareció en términos reales.",
+  },
   trabajo_independiente: {
     latex: String.raw`100\cdot\frac{\text{participaci\'on}_{\text{4T-23}}}{\text{participaci\'on}_{\text{hoy}}}\quad\text{con}\quad\text{participaci\'on}=\frac{\text{aut\'onomos}+\text{monotributo}}{\text{empleo registrado total}}`,
     leyenda: "Peso de autónomos y monotributistas en el empleo registrado, invertido: más participación independiente es peor, 100 = 4T-2023.",

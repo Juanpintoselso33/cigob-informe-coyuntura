@@ -103,6 +103,7 @@ COMPONENTES = {
     "ipc_alimentos":          ("itvc_alimentos", False, False, True),   # ya base-100 (ADR-0033: relativo al IPC)
     "peso_tarifas":           ("itvc_tarifas", False, False, True),    # ya en escala común por anclas externas (ADR-0235)
     "alquiler_real":          ("itvc_alquiler", False, False, True),  # ADR-0111
+    "alquiler_udesa_real":    ("itvc_alquiler_udesa", False, False, True),  # ADR-0386
     # ADR-0218: cantidad de empleadores PyME (SRT). Serie en unidades, no
     # base-100, así que la reconstrucción la rebasea como a las demás.
     "mortalidad_pymes":       ("mortalidad_pymes", False, False, False),

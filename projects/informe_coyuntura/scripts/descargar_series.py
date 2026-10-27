@@ -2203,6 +2203,37 @@ def fetch_itvc_alquiler() -> list:
     return out
 
 
+@_con_config_de_vida
+@_una_sola_vez_por_corrida
+def _alquiler_udesa_puntos() -> list:
+    """[[YYYY-MM-01, real interanual %, índice del componente]] (ADR-0386).
+
+    UdeSA - Mercado Libre se carga A MANO una vez por mes en
+    `data/vida/alquiler_udesa.json`; el IPC GBA sale de la planilla original del
+    INDEC, la misma de `alquiler_real`. Memoizada: la card y el componente
+    leen lo mismo y la planilla se baja una vez. Un mes sin carga o sin IPC no
+    tiene punto: no se interpola."""
+    _entrar_a_vida_cotidiana()
+    import alquiler_udesa
+    from ipc_alquiler import niveles as niveles_originales
+    pts = alquiler_udesa.serie(alquiler_udesa.leer_registro(), niveles_originales()["general"])
+    return [[f"{p['mes']}-01", p["real"], alquiler_udesa.indice_componente(p["real"])] for p in pts]
+
+
+def fetch_alquiler_udesa_real_serie() -> list:
+    """% real interanual del alquiler de departamentos de AMBA (UdeSA - Mercado
+    Libre) — la misma cuenta que la card. [[YYYY-MM-01, %]]."""
+    return [[f, real] for f, real, _ in _alquiler_udesa_puntos()]
+
+
+def fetch_itvc_alquiler_udesa() -> list:
+    """I_AU (ADR-0386): 100 menos el alquiler real interanual, en puntos. >100 =
+    el alquiler publicado subió menos que los precios en el año. Sólo desde
+    jun-2025: antes el informe no da la interanual nominal de AMBA.
+    [[YYYY-MM-01, índice]]."""
+    return [[f, indice] for f, _, indice in _alquiler_udesa_puntos()]
+
+
 def fetch_itvc_tarifas() -> list:
     """I_PT: asequibilidad de la canasta IIEP sobre RIPTE (ADR-0235).
 
@@ -2984,6 +3015,12 @@ VIDA_DERIVADAS += [
     # divergen, la ficha pública dice una cosa y el CSV de la serie otra.
     ("alquiler_real", "% m/m alquileres",
      "INDEC — IPC-GBA alquiler de la vivienda (planilla original)", fetch_alquiler_real_serie),
+    # ADR-0386: alquiler real de UdeSA - Mercado Libre. Carga manual mensual.
+    ("itvc_alquiler_udesa", "índice (100 = el alquiler sube igual que los precios)",
+     "UdeSA - Mercado Libre Inmuebles + INDEC IPC GBA (elab. CIGOB)", fetch_itvc_alquiler_udesa),
+    ("alquiler_udesa_real", "% real interanual",
+     "UdeSA - Mercado Libre Inmuebles (carga manual) + INDEC IPC GBA (elab. CIGOB)",
+     fetch_alquiler_udesa_real_serie),
     # ADR-0218: `mortalidad_pymes` deja de ser el IPI industrial y pasa a medir
     # lo que su nombre promete — el cierre neto de PyMEs. Una sola serie para la
     # card y para el índice; `itvc_ipi` se retira.

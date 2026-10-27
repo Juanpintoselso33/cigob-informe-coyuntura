@@ -16,7 +16,7 @@ al ADR.
 |---|---:|---|
 | `ingresos` | 20% | `brecha_salario_cbt`, `pobreza_nowcast` |
 | `consumo` | 8% | `consumo_supermercados`, `motorizacion_total`, `ratio_motos_autos`, `consumo_carnes_total`, `consumo_carne_vacuna` |
-| `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
+| `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real`, `alquiler_udesa_real` |
 | `vulnerabilidad` | 10% | `mora_familias`, `carga_servicio_deuda_hogares` |
 | `empleo` | 24% | `ocupacion_eph`, `informalidad` |
 | `percepcion` | 8% | `icg_utdt` |
@@ -175,13 +175,27 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **5.0%** |
+| Peso dentro de la dimensión | 10% |
+| Peso efectivo en el índice | **2.5%** |
 | Procedencia del ancla | `conceptual` — encarecimiento relativo del alquiler rebaseado a 4T-2023 (ADR-0111) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0111](../adr/0111-alquiler-real-entra-al-itvc.md) El costo del alquiler entra al cinturón; pobreza y expectativas no · [ADR-0291](../adr/0291-alquiler-usa-la-planilla-original.md) Alquiler usa la planilla original
+**Lo gobiernan**: [ADR-0111](../adr/0111-alquiler-real-entra-al-itvc.md) El costo del alquiler entra al cinturón; pobreza y expectativas no · [ADR-0291](../adr/0291-alquiler-usa-la-planilla-original.md) Alquiler usa la planilla original · [ADR-0386](../adr/0386-el-alquiler-real-entra-a-precios.md) El alquiler de UdeSA – Mercado Libre entra a precios
+
+#### Alquiler real (UdeSA – Mercado Libre)
+
+`alquiler_udesa_real`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 10% |
+| Peso efectivo en el índice | **2.5%** |
+| Procedencia del ancla | ⚠ sin registrar — correr `procedencia_anclas.py` |
+
+**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
+
+**Lo gobiernan**: [ADR-0386](../adr/0386-el-alquiler-real-entra-a-precios.md) El alquiler de UdeSA – Mercado Libre entra a precios
 
 ### Dimensión `vulnerabilidad` (10%)
 
@@ -344,7 +358,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-56 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+57 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -402,3 +416,4 @@ histórica.
 - [0345](../adr/0345-la-confianza-en-el-gobierno-entra-al-indice-de-impacto-social.md) — La confianza en el Gobierno entra al índice de impacto social
 - [0373](../adr/0373-ingresos-y-consumo-se-parten-en-dos-dimensiones.md) — Ingresos y consumo se parten en dos dimensiones
 - [0383](../adr/0383-la-prospectiva-de-empleo-pasa-a-empleo.md) — La prospectiva de empleo pasa a «Empleo»
+- [0386](../adr/0386-el-alquiler-real-entra-a-precios.md) — El alquiler de UdeSA – Mercado Libre entra a precios

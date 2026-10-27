@@ -3184,7 +3184,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se compara contra el índice general del Gran Buenos Aires y no contra el nacional: dividir un precio de una plaza por el índice de otra mezclaría dos mercados en el mismo cociente.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de presión de precios (20% interno · 5% del índice de impacto social).",
+      "Pertenece a la dimensión de presión de precios (10% interno · 2,5% del índice de impacto social; hasta octubre de 2026 pesaba 20% y 5%).",
       "Entra por debajo de tarifas y alimentos porque el alquiler golpea a los hogares inquilinos —alrededor de un tercio de los urbanos— mientras los otros dos pesan sobre todos.",
       "Es el único componente del cinturón que mide el costo de la vivienda, un gasto fijo que ningún otro captura.",
     ],
@@ -3198,6 +3198,43 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-20", cambio: "Alta del indicador: la dimensión de precios no medía el costo de la vivienda." },
       { fecha: "2026-09-08", cambio: "La API discrepaba del original sin que lo explicara un rebase. Se reconstruyen tarjeta e historia desde la planilla INDEC, conservando GBA, base 4T-2023 y pesos. La revisión del índice de impacto social no representa una variación económica nueva.", adr: "0291" },
+      { fecha: "2026-10-27", cambio: "Cede la mitad de su peso (de 20% a 10% dentro de precios) al alquiler pedido en los avisos de UdeSA – Mercado Libre, que mide la misma vivienda desde el mercado de contratos nuevos. Alimentos y servicios públicos no cambian.", adr: "0386" },
+    ],
+  },
+  alquiler_udesa_real: {
+    tipo: "indicador",
+    id: "alquiler_udesa_real",
+    cinturon: "vida_cotidiana",
+    rezago: "El informe de AMBA sale entre el último día del mes y los primeros del siguiente; el punto necesita además el IPC del mismo mes, que el INDEC publica a mediados del mes siguiente (~1,5 meses).",
+    fuente: {
+      organismo: "Universidad de San Andrés (Centro de Estudios Cuantitativos en Negocios) y Mercado Libre Inmuebles",
+      operacion: "Indicadores UdeSA – Mercado Libre: relevamiento de precio de propiedad y alquileres, AMBA",
+      serie: "Variación interanual del precio de alquiler en pesos corrientes de los departamentos de AMBA, apartado «Alquiler» del informe mensual (PDF); deflactada con el nivel general del IPC del Gran Buenos Aires (INDEC)",
+      url: "https://www.udesa.edu.ar/indices-mercado-libre",
+      acceso: "Manual: una vez por mes se lee el PDF de AMBA y se carga la cifra con su frase textual y el enlace al informe en data/vida/alquiler_udesa.json (guía en scripts/vida_cotidiana/cargar_alquiler_udesa.py). Si pasan 45 días sin carga, el pipeline avisa.",
+    },
+    transformaciones: [
+      "La tarjeta muestra la variación real interanual: (1 + alquiler nominal interanual) / (1 + inflación interanual del mismo mes) − 1.",
+      "El alquiler nominal es el que publica UdeSA – Mercado Libre para departamentos de AMBA en pesos corrientes, tal como figura en la prosa del informe. La inflación es el nivel general del IPC del Gran Buenos Aires del INDEC, la misma planilla que usa el costo del alquiler del IPC.",
+      "El componente que puntúa es 100 menos la variación real, en puntos: 100 significa que el alquiler pedido subió igual que los precios; por debajo de 100, se encareció en términos reales. No se rebasea al 4º trimestre de 2023 porque la fuente sólo da variaciones interanuales y no se encadenan.",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de presión de precios con 10% interno, equivalente a 2,5% del índice de impacto social.",
+      "El peso sale de la mitad del que tenía el alquiler del IPC (20% → 10%): son dos miradas al mismo gasto, la de los contratos vigentes y la de los avisos nuevos. Alimentos (35%) y servicios públicos (45%) quedan como estaban.",
+    ],
+    dobleUso: "Mide el mismo gasto que el alquiler del IPC (contratos vigentes) desde el mercado de contratos nuevos; por eso comparten el 20% que la dimensión le asigna a la vivienda.",
+    limitaciones: [
+      "Son precios de avisos publicados, no de contratos firmados: el alquiler que se pide no es el que se pacta ni el que paga quien ya alquila.",
+      "Sólo cubre departamentos de AMBA (CABA y Gran Buenos Aires) y no representa el interior del país.",
+      "Es carga manual: depende de que alguien lea el PDF cada mes. Si no se carga, la tarjeta conserva el último valor como desactualizado.",
+      "La fuente no publica condiciones de reutilización ni el conjunto de datos (el informe dice que está en la página, pero sólo hay PDF). Las cifras se citan con su frase y su enlace.",
+      "El informe expresa la variación interanual de AMBA recién desde junio de 2025; antes sólo da la intermensual y, por zona, la interanual. Esos meses no se estiman ni se encadenan, así que la serie arranca en junio de 2025.",
+      "La mediana de avisos puede cambiar por composición: más avisos de un barrio o tipo de departamento mueven la cifra sin que cambie el precio de un departamento dado.",
+    ],
+    faltantes: "Se mantiene el último valor publicado como desactualizado; si no hay dato utilizable, la dimensión renormaliza entre los otros tres componentes de precios.",
+    revisiones: "Cada mes se carga una vez; si UdeSA corrige un informe se reemplaza la entrada con su frase y su fecha de carga. El IPC se recalcula en cada corrida.",
+    cambios: [
+      { fecha: "2026-10-27", cambio: "Alta del indicador por pedido de la reunión del 26 de octubre: suma el costo del alquiler que se pide hoy, no sólo el de los contratos vigentes.", adr: "0386" },
     ],
   },
   peso_tarifas: {

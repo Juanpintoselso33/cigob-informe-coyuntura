@@ -269,8 +269,17 @@ DIMENSIONES_ITVC = {
         # en el índice: pasa de IPC Regulados/RIPTE contra 4T-2023 a la canasta
         # efectiva del IIEP contra umbrales internacionales por rubro.
         # Conserva el 45% interno fijado antes de esta corrección.
+        # ADR-0386 (reunión del 26-oct-2026): entra `alquiler_udesa_real`, el
+        # alquiler pedido de los avisos de UdeSA - Mercado Libre deflactado por
+        # el IPC. La reunión dejó alimentos y servicios públicos como estaban,
+        # así que NO se les cede nada: el 20% que ADR-0111 fijó para el costo de
+        # la vivienda (un tercio de los hogares urbanos es inquilino) se reparte
+        # mitad y mitad entre las dos miradas del mismo gasto —el alquiler que
+        # releva el IPC, que sigue contratos vigentes, y el de los avisos
+        # nuevos—. El peso de la dimensión (0,25) y el de alimentos (0,35) y
+        # tarifas (0,45) no se tocan.
         "indicadores": {"ipc_alimentos": 0.35, "peso_tarifas": 0.45,
-                        "alquiler_real": 0.20},
+                        "alquiler_real": 0.10, "alquiler_udesa_real": 0.10},
     },
     "vulnerabilidad": {
         "nombre": "Vulnerabilidad financiera",
@@ -718,6 +727,9 @@ SERIES_REBASEADAS = {
     # agua+energía y transporte llegan contra sus propias anclas (ADR-0235).
     "itvc_tarifas":       "peso_tarifas",
     "itvc_alquiler":      "alquiler_real",
+    # ADR-0386: 100 − alquiler real interanual (en pp); sólo hay serie desde
+    # jun-2025 porque el informe de UdeSA no da la interanual de AMBA antes.
+    "itvc_alquiler_udesa": "alquiler_udesa_real",
     "itvc_isac":          "despacho_cemento",
     "itvc_pobreza":       "pobreza_nowcast",
     # Reconstruidas desde la faena INDEC por categoría: ya llegan en base 100

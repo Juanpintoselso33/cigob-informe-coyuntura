@@ -264,6 +264,7 @@ PROCEDENCIA = {
     "ipc_alimentos": ("conceptual", "encarecimiento relativo rebaseado a 4T-2023 (ADR-0033); ancla en fecha fija"),
     "peso_tarifas": ("externa", "canasta IIEP/RIPTE: agua+energía contra 10-15% (Banco Mundial) y transporte contra 5% (ONU-Hábitat), evaluados por separado sin compensación (ADR-0235)"),
     "alquiler_real": ("conceptual", "encarecimiento relativo del alquiler rebaseado a 4T-2023 (ADR-0111)"),
+    "alquiler_udesa_real": ("conceptual", "100 = el alquiler publicado sube igual que los precios en el año: 100 menos la variación real interanual, en puntos; ancla neutra, no calibrada al rango observado (ADR-0386)"),
     "mora_familias": ("conceptual", "nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija"),
     "carga_servicio_deuda_hogares": (
         "conceptual",
