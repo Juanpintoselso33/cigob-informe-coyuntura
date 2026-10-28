@@ -257,3 +257,84 @@ def test_un_listado_truncado_hace_fallar(monkeypatch):
     with pytest.raises(ValueError, match="truncado"):
         politica._infoleg_listado_completo(_Ses(), "http://x", "2",
                                            date(2025, 1, 1), date(2026, 1, 1))
+
+
+# ── ADR-0410: decide el identificador del original, no el rótulo ────────────
+# Casos reales del cotejo del 28-oct-2026: InfoLeg rotula «Decreto 867 / 2026»
+# (presupuesto), «Decreto 521 / 2025» y «Decreto 493 / 2025» como decretos
+# simples, y el original los identifica DNU-AAAA-N-APN-PTE; y rotula «Decreto
+# DNU 44 / 2026» siendo DECTO-2026-44-APN-PTE (ADR-0307).
+
+class _RespTexto:
+    def __init__(self, texto, status=200):
+        self.text, self.status_code = texto, status
+
+
+class _SesTextos:
+    def __init__(self, textos):
+        self.textos, self.pedidos = textos, []
+
+    def get(self, url, **kwargs):
+        self.pedidos.append(url)
+        iid = url.rstrip("/").split("/")[-2]
+        if iid not in self.textos:
+            raise politica.requests.ConnectionError("caído")
+        return _RespTexto(self.textos[iid])
+
+
+@pytest.fixture
+def _sin_memoria(monkeypatch):
+    monkeypatch.setattr(politica, "_TIPO_ORIGINAL", {})
+    monkeypatch.setattr(politica, "_PAUSA_TEXTO_INFOLEG", 0)
+
+
+@pytest.mark.parametrize("norma,texto,es_dnu", [
+    ("Decreto 867 / 2026 PODER EJECUTIVO NACIONAL", "DNU-2026-867-APN-PTE - Presupuesto", True),
+    ("Decreto 521 / 2025 PODER EJECUTIVO NACIONAL", "DNU-2025-521-APN-PTE - Ejercicios", True),
+    ("Decreto DNU 44 / 2026 PODER EJECUTIVO NACIONAL", "DECTO-2026-44-APN-PTE - Nomenclatura", False),
+    ("Decreto DNU 771 / 2026 PODER EJECUTIVO NACIONAL", "DNU-2026-771-APN-PTE", True),
+    ("Decreto 710 / 2026 PODER EJECUTIVO NACIONAL", "DECTO-2026-710-APN-PTE", False),
+    # hasta 2023 el prefijo de los de necesidad y urgencia era DECNU, y DCTO el común
+    ("Decreto DNU 656 / 2023 PODER EJECUTIVO NACIONAL", "DECNU-2023-656-APN-PTE", True),
+    ("Decreto 655 / 2023 PODER EJECUTIVO NACIONAL", "DCTO-2023-655-APN-PTE", False),
+])
+def test_el_identificador_del_original_decide(_sin_memoria, norma, texto, es_dnu):
+    ses = _SesTextos({"429670": texto})
+    item = {"infoleg_id": "429670", "norma": norma}
+    assert politica._es_dnu_infoleg(ses, item) is es_dnu
+    assert "/anexos/425000-429999/429670/norma.htm" in ses.pedidos[0]
+
+
+def test_el_identificador_de_otra_norma_no_cuenta(_sin_memoria):
+    """El visto puede citar el identificador de otro decreto: se exige el mismo
+    número y año, y si no está el de la propia, decide el rótulo."""
+    ses = _SesTextos({"1": "VISTO el DNU-2025-942-APN-PTE ..."})
+    assert politica._es_dnu_infoleg(ses, {"infoleg_id": "1", "norma": "Decreto 88 / 2026"}) is False
+    assert politica._es_dnu_infoleg(ses, {"infoleg_id": "1", "norma": "Decreto DNU 88 / 2026"}) is True
+
+
+def test_un_original_que_no_se_baja_corta_el_conteo(_sin_memoria):
+    """Caída de red: el rótulo ya se sabe equivocado, así que no reemplaza al
+    original. Se reintenta una vez y se corta: la card cae a cache marcada
+    desactualizada en vez de publicar un conteo que parece verificado."""
+    ses = _SesTextos({})
+    item = {"infoleg_id": "7", "norma": "Decreto 867 / 2026"}
+    with pytest.raises(RuntimeError):
+        politica._es_dnu_infoleg(ses, item)
+    assert len(ses.pedidos) == 2
+    assert "7" not in politica._TIPO_ORIGINAL
+
+
+def test_original_sin_identificador_decide_el_rotulo(_sin_memoria):
+    ses = _SesTextos({"7": "texto sin identificador"})
+    item = {"infoleg_id": "7", "norma": "Decreto DNU 2 / 2026"}
+    assert politica._es_dnu_infoleg(ses, item) is True
+
+
+def test_el_tipo_leido_se_pide_una_sola_vez(_sin_memoria):
+    """La serie mensual repite las mismas normas en ventanas solapadas."""
+    ses = _SesTextos({"9": "DNU-2026-17-APN-PTE"})
+    item = {"infoleg_id": "9", "norma": "Decreto DNU 17 / 2026"}
+    for _ in range(3):
+        assert politica._es_dnu_infoleg(ses, item) is True
+    assert len(ses.pedidos) == 1

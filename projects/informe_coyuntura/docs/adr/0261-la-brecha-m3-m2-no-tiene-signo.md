@@ -6,7 +6,7 @@ fecha: 2026-08-25
 cinturon: 'macro'
 indicadores: [idm]
 archivos: ['scripts/itcm.py', 'tests/test_idm_e_icip_no_puntuan.py', 'tests/test_itcm.py', 'tests/test_constructos_no_prometen_de_mas.py']
-relacionado: ['0009', '0045', '0192', '0193', '0254', '0257', '0264', '0265']
+relacionado: ['0009', '0045', '0192', '0193', '0254', '0257', '0264', '0265', '0409']
 ambito: 'Cinturón macro · ITCM · `idm` · la deuda que ADR-0254 dejó escrita: la banda quedó calibrada bajo una lectura que el propio ADR dio por muerta'
 origen: 'Reauditoría externa post-cambios, 25-ago-2026: «las bandas siguen castigando automáticamente una brecha positiva como si probara exceso de pesos»'
 ---

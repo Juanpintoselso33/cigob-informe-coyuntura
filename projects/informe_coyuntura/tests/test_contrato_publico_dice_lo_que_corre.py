@@ -306,20 +306,21 @@ def test_el_rem_declara_solo_los_componentes_que_renormalizan_si_falta():
     """IDM salió del ITCM y la presión de dolarización fue reemplazada.
 
     Si falta el REM, los únicos pares vigentes que absorben su peso dentro de
-    estabilidad monetaria son IPC y desequilibrio monetario (ADR-0261).
+    estabilidad monetaria son IPC y desequilibrio monetario (ADR-0261), y
+    desde ADR-0409 también las reservas netas.
     """
     ficha = _capas("rem_ipc_12m")["fichas.ts"]
     pares_vigentes = (
         set(itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]["indicadores"])
         - {"rem_ipc_12m"}
     )
-    assert pares_vigentes == {"ipc_total", "desequilibrio_monetario"}, (
+    assert pares_vigentes == {"ipc_total", "desequilibrio_monetario", "reservas_bcra"}, (
         "cambió la composición de estabilidad monetaria: actualizá también la "
         "política de faltantes del REM")
     m = re.search(r'faltantes:\s*"([^"]+)"', ficha)
     assert m, "la ficha del REM no declara qué hace ante faltantes"
     texto = m.group(1).lower()
-    assert "ipc" in texto and "desequilibrio monetario" in texto
+    assert "ipc" in texto and "desequilibrio monetario" in texto and "reservas netas" in texto
     assert "idm" not in texto and "presión de dolarización" not in texto, (
         "la ficha del REM conserva componentes que ya no integran estabilidad monetaria")
 

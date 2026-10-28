@@ -2,7 +2,8 @@
 """Revisión del cinturón de gestión del 28-oct-2026 (ADR-0405, 0406 y 0407).
 
 - ADR-0405: los piquetes pasan de la Ciudad al total nacional de Diagnóstico
-  Político, con las bandas de siempre declaradas como convención.
+  Político. ADR-0408 deja eso sin efecto: vuelven a la Ciudad, y los totales
+  nacionales verificados quedan en el registro como contexto.
 - ADR-0406: el RIGI toma la escala de concesiones/privatizaciones.
 - ADR-0407: Corredores Viales sale de la cartera de privatizaciones porque la
   red vial ya la mide concesiones_infraestructura.
@@ -36,23 +37,33 @@ def test_los_totales_nacionales_son_los_verificados_y_tienen_fuente():
         assert f"{NACIONAL[anio]:,}".replace(",", ".") in f["cita"] or str(NACIONAL[anio]) in f["cita"], anio
 
 
-def test_la_clave_caba_se_conserva_como_registro():
+def test_la_clave_caba_es_la_que_puntua():
     assert DP["caba"] == {"2023": 931, "2024": 440, "2025": 240}
+    assert DP["_meta"]["puntua"].startswith("caba") and "0408" in DP["_meta"]["puntua"]
 
 
-def test_la_tarjeta_puntua_el_total_nacional(monkeypatch):
+def test_la_tarjeta_puntua_la_ciudad_y_no_el_pais(monkeypatch):
+    """ADR-0408: vuelve a la Ciudad (ADR-0405 lo había pasado al país)."""
     monkeypatch.setattr(gestion.requests, "get", lambda *a, **k: SimpleNamespace(
         text="", raise_for_status=lambda: None))
     card = gestion.fetch_protocolo_antipiquetes()
-    assert card["valor"] == round((1 - 3893 / 8239) * 100, 1) == 52.7
-    assert card["componentes"] == {"nacional_2023": 8239, "nacional_2025": 3893}
-    assert "país" in card["unidad"] and "CABA" not in card["unidad"]
+    assert card["valor"] == round((1 - 240 / 931) * 100, 1) == 74.2
+    assert card["componentes"] == {"caba_2023": 931, "caba_2025": 240}
+    assert "Ciudad de Buenos Aires" in card["unidad"] and "país" not in card["unidad"]
+    assert "consultora privada" in card["fuente"]
+
+
+def test_la_serie_reproduce_la_tarjeta(monkeypatch):
+    monkeypatch.setattr(gestion.requests, "get", lambda *a, **k: SimpleNamespace(
+        text="", raise_for_status=lambda: None))
+    assert ds.fetch_protocolo_serie()[-1][1] == gestion.fetch_protocolo_antipiquetes()["valor"]
 
 
 def test_el_respaldo_manual_esta_en_el_mismo_universo():
     m = json.loads((RAIZ / "data/gestion/manuales.json").read_text(encoding="utf-8-sig"))
     fb = m["protocolo_antipiquetes"]
-    assert fb["valor"] == 52.7 and "país" in fb["unidad"]
+    assert fb["valor"] == 74.2 and "Ciudad de Buenos Aires" in fb["unidad"]
+    assert "ADR-" not in fb["notas"]   # las notas del respaldo se publican (gate G6)
 
 
 def test_las_bandas_de_piquetes_no_se_movieron_y_se_declaran_convencion():
@@ -60,18 +71,27 @@ def test_las_bandas_de_piquetes_no_se_movieron_y_se_declaran_convencion():
         (75.0, itcg.INF, 100), (50.0, 75.0, 85), (25.0, 50.0, 65),
         (0.0, 25.0, 40), (-itcg.INF, 0.0, 10)]
     cat, glosa = procedencia_anclas.PROCEDENCIA["protocolo_antipiquetes"]
-    assert cat == "convencion" and "0405" in glosa
+    assert cat == "convencion" and "0408" in glosa
 
 
-def test_la_web_dice_pais_y_no_ciudad():
+def test_la_web_dice_ciudad_y_no_pais():
     lib = RAIZ / "web/src/lib"
     datos = (lib / "datos.ts").read_text(encoding="utf-8")
-    assert 'protocolo_antipiquetes: "Reducción de cortes de calle en el país"' in datos
+    assert 'protocolo_antipiquetes: "Reducción de cortes de calle en la Ciudad"' in datos
     for nombre in ("datos.ts", "descripciones.ts", "formulas.ts"):
         texto = (lib / nombre).read_text(encoding="utf-8")
         i = texto.find("protocolo_antipiquetes:")
         tramo = texto[i:i + 600]
-        assert "cortes en la Ciudad" not in tramo and "cortes en CABA" not in tramo, nombre
+        assert "en todo el país" not in tramo and "en el pa" not in tramo, nombre
+
+
+def test_la_ficha_declara_fuente_privada_y_estado_judicial_vigente():
+    fichas = (RAIZ / "web/src/lib/fichas.ts").read_text(encoding="utf-8")
+    i = fichas.find("  protocolo_antipiquetes: {")
+    tramo = fichas[i:fichas.find("\n  },", i)]
+    assert "consultora privada" in tramo
+    assert "31 de marzo de 2026" in tramo and "Corte Suprema" in tramo
+    assert 'adr: "0408"' in tramo
 
 
 # ── ADR-0406 ────────────────────────────────────────────────────────────────

@@ -8,6 +8,7 @@ indice: 'ITCP'
 indicadores: [ratio_dnu]
 archivos: ['scripts/politica.py', 'scripts/descargar_series.py', 'web/src/lib/fichas.ts']
 corrige: ['0058', '0241', '0263']
+relacionado: ['0410']
 ---
 
 # ADR-0307 — Ratio DNU: 365 fechas incluidas

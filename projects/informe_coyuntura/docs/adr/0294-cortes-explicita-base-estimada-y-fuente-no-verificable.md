@@ -6,6 +6,7 @@ fecha: 2026-09-08
 cinturon: 'gestion'
 indicadores: [protocolo_antipiquetes]
 archivos: ['scripts/gestion.py', 'web/src/lib/fichas.ts']
+relacionado: ['0408']
 ambito: 'Procedencia e interpretación de cortes de calle'
 ---
 

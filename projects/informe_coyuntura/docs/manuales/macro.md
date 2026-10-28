@@ -14,9 +14,9 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `estabilidad_monetaria` | 26% | `ipc_total`, `rem_ipc_12m`, `desequilibrio_monetario` |
+| `estabilidad_monetaria` | 31% | `ipc_total`, `rem_ipc_12m`, `desequilibrio_monetario`, `reservas_bcra` |
 | `cuentas_fiscales` | 19% | `resultado_primario`, `recaudacion` |
-| `sector_externo` | 21% | `saldo_comercial_12m`, `reservas_bcra`, `tcrm`, `terminos_intercambio` |
+| `sector_externo` | 16% | `saldo_comercial_12m`, `tcrm`, `terminos_intercambio` |
 | `financiamiento` | 11% | `idc`, `costo_financiamiento_tesoro`, `credito_privado` |
 | `actividad` | 23% | `emae_ia`, `emae_difusion`, `ipi_manufacturero`, `iai` |
 
@@ -24,7 +24,7 @@ Suma de pesos: 100%.
 
 ## Qué mide cada indicador
 
-### Dimensión `estabilidad_monetaria` (26%)
+### Dimensión `estabilidad_monetaria` (31%)
 
 #### Inflación del mes
 
@@ -32,7 +32,7 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 60% |
+| Peso dentro de la dimensión | 50% |
 | Peso efectivo en el índice | **15.6%** |
 | Procedencia del ancla | `conceptual` — bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120); desde ADR-0367 las anclas caen sobre los cortes de color 1/2/3 % mensual |
 
@@ -46,13 +46,13 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
+| Peso dentro de la dimensión | 17% |
 | Peso efectivo en el índice | **5.2%** |
 | Procedencia del ancla | `conceptual` — hereda las bandas normativas del ipc_total —misma vara para inflación esperada y realizada— (ADR-0120) |
 
 **Bandas**: ≤ 0.5 → 100 · 0.5–1.5 → 60 · 1.5–2.5 → 40 · 2.5–3.5 → 20 · > 3.5 → 10
 
-**Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0289](../adr/0289-sensibilidad-conserva-transformaciones-y-deflactor.md) Sensibilidad conserva transformaciones y deflactor · [ADR-0367](../adr/0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) La inflación se pinta con los cortes de Luis
+**Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0289](../adr/0289-sensibilidad-conserva-transformaciones-y-deflactor.md) Sensibilidad conserva transformaciones y deflactor · [ADR-0367](../adr/0367-la-inflacion-se-pinta-con-los-cortes-de-luis.md) La inflación se pinta con los cortes de Luis · [ADR-0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) Las reservas netas pasan a «Estabilidad monetaria-inflacionaria»
 
 #### Liquidez en pesos y presión compradora de divisas
 
@@ -60,13 +60,27 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
+| Peso dentro de la dimensión | 17% |
 | Peso efectivo en el índice | **5.2%** |
 | Procedencia del ancla | `convencion` — cortes por percentiles (p0/p25/p50/p75/p100) de cada componente, como pide la sección 7 de la ficha; la matriz A×B y sus cuatro esquinas vienen del documento (ADR-0192) |
 
 **Bandas**: ≤ 20 → 100 · 20–50 → 60 · 50–80 → 35 · > 80 → 10
 
 **Lo gobiernan**: [ADR-0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó · [ADR-0252](../adr/0252-la-compra-de-divisas-no-dice-adonde-fue-el-dinero.md) La compra de divisas no dice adónde fue el dinero · [ADR-0257](../adr/0257-los-dos-componentes-el-mismo-regimen-y-el-mismo-peso.md) Los dos componentes, el mismo régimen y el mismo peso · [ADR-0264](../adr/0264-renombrar-no-borra-la-lectura-refutada.md) Renombrar no borra la lectura refutada
+
+#### Reservas netas
+
+`reservas_bcra`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 17% |
+| Peso efectivo en el índice | **5.4%** |
+| Procedencia del ancla | `conceptual` — bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120) |
+
+**Bandas**: > 20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤ 0 → 10
+
+**Lo gobiernan**: [ADR-0005](../adr/0005-reservas-netas-a-secas.md) Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal · [ADR-0286](../adr/0286-reservas-explicita-la-estimacion-y-sus-exclusiones.md) Reservas explicita la estimación y sus exclusiones · [ADR-0287](../adr/0287-reservas-no-sustituye-insumos-faltantes.md) Reservas no sustituye insumos faltantes · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan · [ADR-0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) Las reservas netas pasan a «Estabilidad monetaria-inflacionaria»
 
 ### Dimensión `cuentas_fiscales` (19%)
 
@@ -80,11 +94,11 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **12.0%** |
 | Procedencia del ancla | `convencion` — referencias dic-2023 (−12,0%) y el programa estabilizado en +6/+8% (ADR-0072) |
 
-**Bandas**: > 8 → 100 · 4–8 → 85 · 0–4 → 60 · -5–0 → 30 · ≤ -5 → 10
+**Bandas**: > 23.8 → 100 · 11.9–23.8 → 80 · 0–11.9 → 50 · -11.9–0 → 30 · ≤ -11.9 → 10
 
-**Lo gobiernan**: [ADR-0072](../adr/0072-resultado-primario-dimension-fiscal.md) resultado_primario: la dimensión fiscal pasa a medir resultado, no ingresos · [ADR-0127](../adr/0127-la-recaudacion-mide-la-base-imponible-no-la-caja.md) La recaudación mide la base imponible, no la caja: pasa a DGI · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan
+**Lo gobiernan**: [ADR-0072](../adr/0072-resultado-primario-dimension-fiscal.md) resultado_primario: la dimensión fiscal pasa a medir resultado, no ingresos · [ADR-0127](../adr/0127-la-recaudacion-mide-la-base-imponible-no-la-caja.md) La recaudación mide la base imponible, no la caja: pasa a DGI · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan · [ADR-0403](../adr/0403-el-resultado-primario-se-puntua-por-desvios-de-su-historia.md) El resultado primario se puntúa por desvíos de su historia
 
-#### Base imponible real (nación + provincias)
+#### Base imponible real (nación + Ingresos Brutos interjurisdiccionales)
 
 `recaudacion`
 
@@ -98,7 +112,7 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0003](../adr/0003-recaudacion-interanual-real.md) La recaudación se mide en variación interanual REAL (deflactada) · [ADR-0029](../adr/0029-recaudacion-promedio-movil-3m.md) Recaudación real: promedio móvil de 3 meses sobre IPC cerrado · [ADR-0072](../adr/0072-resultado-primario-dimension-fiscal.md) resultado_primario: la dimensión fiscal pasa a medir resultado, no ingresos · [ADR-0127](../adr/0127-la-recaudacion-mide-la-base-imponible-no-la-caja.md) La recaudación mide la base imponible, no la caja: pasa a DGI · [ADR-0283](../adr/0283-recaudacion-actualiza-gacetillas-comarb.md) Recaudación actualiza las gacetillas COMARB · [ADR-0318](../adr/0318-iva-cheque-entran-como-control-no-como-card.md) IVA-DGI y cheque entran como control de `recaudacion`, no como card · [ADR-0319](../adr/0319-control-tributario-mismo-deflactor-mismo-sentido.md) El control tributario usa el mismo deflactor y compara el mismo sentido · [ADR-0321](../adr/0321-descomposicion-no-control-independiente.md) Es una descomposición del agregado, no un control independiente · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan
 
-### Dimensión `sector_externo` (21%)
+### Dimensión `sector_externo` (16%)
 
 #### Saldo comercial (últimos 12 meses)
 
@@ -106,27 +120,13 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 23% |
+| Peso dentro de la dimensión | 30% |
 | Peso efectivo en el índice | **4.8%** |
 | Procedencia del ancla | `conceptual` — bandas en torno al equilibrio comercial (cero), techo institucional 85; consistentes con la mediana histórica (ADR-0120) |
 
-**Bandas**: > 15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000–5000 → 50 · -15000–-5000 → 30 · ≤ -15000 → 10
+**Bandas**: > 17 → 85 · 12.7–17 → 75 · 8.5–12.7 → 60 · -8.5–8.5 → 50 · -17–-8.5 → 30 · ≤ -17 → 10
 
-**Lo gobiernan**: [ADR-0056](../adr/0056-suavizado-ajuste-automatico-saldo-comercial.md) Suavizado del ajuste automático de saldo comercial por composición expo/impo · [ADR-0080](../adr/0080-cuenta-corriente-contexto-saldo-comercial.md) La cuenta corriente acompaña al saldo comercial, y el texto público se corrige · [ADR-0275](../adr/0275-ica-vigente-completa-la-api-historica.md) El cuadro ICA vigente completa la API histórica · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan
-
-#### Reservas netas
-
-`reservas_bcra`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 26% |
-| Peso efectivo en el índice | **5.4%** |
-| Procedencia del ancla | `conceptual` — bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120) |
-
-**Bandas**: > 20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤ 0 → 10
-
-**Lo gobiernan**: [ADR-0005](../adr/0005-reservas-netas-a-secas.md) Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal · [ADR-0286](../adr/0286-reservas-explicita-la-estimacion-y-sus-exclusiones.md) Reservas explicita la estimación y sus exclusiones · [ADR-0287](../adr/0287-reservas-no-sustituye-insumos-faltantes.md) Reservas no sustituye insumos faltantes · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan
+**Lo gobiernan**: [ADR-0056](../adr/0056-suavizado-ajuste-automatico-saldo-comercial.md) Suavizado del ajuste automático de saldo comercial por composición expo/impo · [ADR-0080](../adr/0080-cuenta-corriente-contexto-saldo-comercial.md) La cuenta corriente acompaña al saldo comercial, y el texto público se corrige · [ADR-0275](../adr/0275-ica-vigente-completa-la-api-historica.md) El cuadro ICA vigente completa la API histórica · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan · [ADR-0404](../adr/0404-inversion-credito-y-saldo-comercial-con-cortes-de-la-historia-previa.md) Inversión, crédito y saldo comercial con cortes de la historia previa · [ADR-0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) Las reservas netas pasan a «Estabilidad monetaria-inflacionaria»
 
 #### Tipo de cambio real
 
@@ -134,13 +134,13 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 26% |
+| Peso dentro de la dimensión | 35% |
 | Peso efectivo en el índice | **5.5%** |
 | Procedencia del ancla | `historia_larga` — historia 1997-2026: p10≈75, p25≈87, mediana≈106 — 29 años, cinco gobiernos (vuelve a puntuar solo con ADR-0375) |
 
 **Bandas**: > 110 → 100 · 95–110 → 80 · 85–95 → 60 · 75–85 → 35 · ≤ 75 → 10
 
-**Lo gobiernan**: [ADR-0360](../adr/0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) La competitividad externa cruza el tipo de cambio real con los términos del intercambio · [ADR-0375](../adr/0375-competitividad-el-cruce-pasa-a-la-dimension.md) Competitividad: el cruce pasa a la dimensión · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan
+**Lo gobiernan**: [ADR-0360](../adr/0360-competitividad-externa-tipo-de-cambio-real-por-terminos-del-intercambio.md) La competitividad externa cruza el tipo de cambio real con los términos del intercambio · [ADR-0375](../adr/0375-competitividad-el-cruce-pasa-a-la-dimension.md) Competitividad: el cruce pasa a la dimensión · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan · [ADR-0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) Las reservas netas pasan a «Estabilidad monetaria-inflacionaria»
 
 #### Términos del intercambio
 
@@ -148,13 +148,13 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 26% |
+| Peso dentro de la dimensión | 35% |
 | Peso efectivo en el índice | **5.5%** |
 | Procedencia del ancla | `convencion` — percentiles p0/p25/p50/p75/p100 de 4T-2023 / 2T-2026 —11 trimestres del período medido— llevados a 10-100 (ADR-0360, tarjeta propia desde ADR-0375; la matriz de cuatro esquinas pasó a la dimensión) |
 
 **Bandas**: > 148.15 → 100 · 143.63–148.15 → 78 · 140.4–143.63 → 55 · 138.1–140.4 → 32 · ≤ 138.1 → 10
 
-**Lo gobiernan**: [ADR-0375](../adr/0375-competitividad-el-cruce-pasa-a-la-dimension.md) Competitividad: el cruce pasa a la dimensión · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan
+**Lo gobiernan**: [ADR-0375](../adr/0375-competitividad-el-cruce-pasa-a-la-dimension.md) Competitividad: el cruce pasa a la dimensión · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan · [ADR-0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) Las reservas netas pasan a «Estabilidad monetaria-inflacionaria»
 
 ### Dimensión `financiamiento` (11%)
 
@@ -196,9 +196,9 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **3.2%** |
 | Procedencia del ancla | `convencion` — «calibradas a la remonetización 2024-2026» (ADR-0022) |
 
-**Bandas**: > 40 → 100 · 20–40 → 85 · 8–20 → 65 · 0–8 → 45 · -10–0 → 25 · ≤ -10 → 10
+**Bandas**: > 28.9 → 100 · 14.5–28.9 → 85 · 0–14.5 → 65 · -14.5–0 → 45 · -28.9–-14.5 → 25 · ≤ -28.9 → 10
 
-**Lo gobiernan**: [ADR-0074](../adr/0074-rebalanceo-idc-credito.md) El crédito otorgado deja de pesar un tercio de la capacidad de prestar · [ADR-0251](../adr/0251-el-credito-en-pesos-no-se-mezcla-con-el-tipo-de-cambio.md) El crédito en pesos no se mezcla con el tipo de cambio · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan
+**Lo gobiernan**: [ADR-0074](../adr/0074-rebalanceo-idc-credito.md) El crédito otorgado deja de pesar un tercio de la capacidad de prestar · [ADR-0251](../adr/0251-el-credito-en-pesos-no-se-mezcla-con-el-tipo-de-cambio.md) El crédito en pesos no se mezcla con el tipo de cambio · [ADR-0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) Las cuentas fiscales y el sector externo se separan · [ADR-0404](../adr/0404-inversion-credito-y-saldo-comercial-con-cortes-de-la-historia-previa.md) Inversión, crédito y saldo comercial con cortes de la historia previa
 
 ### Dimensión `actividad` (23%)
 
@@ -254,9 +254,9 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **6.9%** |
 | Procedencia del ancla | `convencion` — el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026, corridas +0,17 al crecimiento de la población del INDEC (ADR-0341) |
 
-**Bandas**: > 10.17 → 100 · 2.17–10.17 → 80 · -1.83–2.17 → 60 · -9.83–-1.83 → 35 · ≤ -9.83 → 10
+**Bandas**: > 37.97 → 100 · 19.07–37.97 → 80 · -18.73–19.07 → 60 · -37.63–-18.73 → 35 · ≤ -37.63 → 10
 
-**Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM · [ADR-0293](../adr/0293-iai-comparte-la-composicion-mensual.md) IAI comparte la composición mensual · [ADR-0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) Actividad usa las planillas originales vigentes · [ADR-0300](../adr/0300-iai-completa-bienes-de-capital-originales.md) IAI completa los bienes de capital originales · [ADR-0301](../adr/0301-historia-macro-deriva-componentes-del-motor.md) La historia macro deriva sus componentes del motor · [ADR-0341](../adr/0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) La inversión física se mide contra el crecimiento de la población
+**Lo gobiernan**: [ADR-0010](../adr/0010-capitulo-inversion-iai-icip.md) Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM · [ADR-0293](../adr/0293-iai-comparte-la-composicion-mensual.md) IAI comparte la composición mensual · [ADR-0299](../adr/0299-actividad-usa-planillas-originales-vigentes.md) Actividad usa las planillas originales vigentes · [ADR-0300](../adr/0300-iai-completa-bienes-de-capital-originales.md) IAI completa los bienes de capital originales · [ADR-0301](../adr/0301-historia-macro-deriva-componentes-del-motor.md) La historia macro deriva sus componentes del motor · [ADR-0341](../adr/0341-la-inversion-fisica-se-mide-contra-el-crecimiento-de-la-poblacion.md) La inversión física se mide contra el crecimiento de la población · [ADR-0404](../adr/0404-inversion-credito-y-saldo-comercial-con-cortes-de-la-historia-previa.md) Inversión, crédito y saldo comercial con cortes de la historia previa
 
 ## Se releva y no puntúa
 
@@ -283,7 +283,7 @@ histórica.
   <br>intercambiable con lo que ya hay. **Queda como candidata abierta y evaluada**,
 - **[ADR-0120](../adr/0120-el-itcm-declara-el-origen-de-sus-bandas.md)** — El ITCM declara el origen de sus bandas, y baja del 83% al 38% de circularidad
   <br>- Queda pendiente de otros frentes, no de éste: el ITCM sigue sin ancla
-  <br>⚠️ Puede estar resuelto: lo tocó ADR-0121. Verificar antes de tratarlo como abierto.
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0121, ADR-0404. Verificar antes de tratarlo como abierto.
 - **[ADR-0158](../adr/0158-validacion-del-itcm-por-puntos-de-giro.md)** — El ITCM se valida por puntos de giro, no sólo por correlación
   <br>- **Queda pendiente** el régimen socioeconómico para los otros tres cinturones.
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0159. Verificar antes de tratarlo como abierto.
@@ -293,7 +293,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-62 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+65 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -357,3 +357,6 @@ histórica.
 - [0368](../adr/0368-la-recaudacion-de-iva-y-cheque-sale-del-indice.md) — La recaudación de IVA y cheque sale del índice
 - [0375](../adr/0375-competitividad-el-cruce-pasa-a-la-dimension.md) — Competitividad: el cruce pasa a la dimensión
 - [0387](../adr/0387-cuentas-fiscales-y-sector-externo-se-separan.md) — Las cuentas fiscales y el sector externo se separan
+- [0403](../adr/0403-el-resultado-primario-se-puntua-por-desvios-de-su-historia.md) — El resultado primario se puntúa por desvíos de su historia
+- [0404](../adr/0404-inversion-credito-y-saldo-comercial-con-cortes-de-la-historia-previa.md) — Inversión, crédito y saldo comercial con cortes de la historia previa
+- [0409](../adr/0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) — Las reservas netas pasan a «Estabilidad monetaria-inflacionaria»

@@ -94,11 +94,12 @@ def test_estabilidad_monetaria_conserva_el_ancla_nominal_del_desequilibrio():
     ya existía. El 20% vuelve entero al IPC, que es el núcleo de la dimensión.
     """
     dim = itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]
-    assert dim["indicadores"]["rem_ipc_12m"] == 0.20
-    assert dim["indicadores"]["desequilibrio_monetario"] == 0.20
+    # ADR-0409: las reservas entran a esta dimensión y los pesos internos pasan
+    # a cociente sobre 0,3144; lo que se conserva es el peso en el índice.
+    assert round(dim["peso"] * dim["indicadores"]["rem_ipc_12m"], 4) == 0.052
+    assert round(dim["peso"] * dim["indicadores"]["desequilibrio_monetario"], 4) == 0.052
     nominal_deseq = dim["peso"] * dim["indicadores"]["desequilibrio_monetario"]
-    ext = itcm.DIMENSIONES_ITCM["sector_externo"]
-    nominal_reservas = ext["peso"] * ext["indicadores"]["reservas_bcra"]
+    nominal_reservas = dim["peso"] * dim["indicadores"]["reservas_bcra"]
     assert abs(nominal_deseq - nominal_reservas) < 0.005
 
 
@@ -186,6 +187,9 @@ def _dimensiones_agosto() -> dict:
     # tipo de cambio real solo.
     for k in ("cuentas_fiscales", "sector_externo"):
         del dims[k]
+    # Y la estabilidad de agosto, sin las reservas que le sumó ADR-0409.
+    dims["estabilidad_monetaria"] = dict(dims["estabilidad_monetaria"], peso=0.26, indicadores={
+        "ipc_total": 0.60, "rem_ipc_12m": 0.20, "desequilibrio_monetario": 0.20})
     dims["viabilidad_fiscal_comercial"] = {
         "nombre": "Viabilidad fiscal-comercial", "peso": 0.24, "indicadores": {
             "resultado_primario": 0.5, "recaudacion": 0.3, "saldo_comercial_12m": 0.2}}

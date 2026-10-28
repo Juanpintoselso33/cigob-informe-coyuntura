@@ -171,8 +171,9 @@ def test_con_un_solo_componente_el_cruce_no_se_calcula():
     assert "sector_externo" not in r["dimensiones"]
     # con otro componente del sector externo, el tipo de cambio real solo queda
     # afuera: no se promedia lo que la matriz necesita completo (ADR-0387)
-    r = itcm.calcular_itcm({"tcrm": 90.0, "reservas_bcra": 1881})
-    assert set(r["dimensiones"]["sector_externo"]["indicadores"]) == {"reservas_bcra"}
+    # (desde ADR-0409 las reservas están en estabilidad: el par es el saldo)
+    r = itcm.calcular_itcm({"tcrm": 90.0, "saldo_comercial_12m": 17.5})
+    assert set(r["dimensiones"]["sector_externo"]["indicadores"]) == {"saldo_comercial_12m"}
 
 
 def test_un_mes_con_los_terminos_congelados_no_se_calcula():

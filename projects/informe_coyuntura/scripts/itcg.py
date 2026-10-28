@@ -36,8 +36,10 @@ Decisiones sobre ambigüedades del documento (ADR-0013):
     ADR-0228 mide el Fondo de Asistencia Laboral VIGENTE en tres etapas
     (construcción firme 50% + vigencia 20% + adopción 30%): un acto suspendido
     judicialmente deja de contar, que es lo que ADR-0142 no podía representar.
-  * Estado legal del protocolo antipiquetes (anulado 29-dic-2025, en
-    apelación): el doc pide tratarlo como dato de primer orden — se expone
+  * Estado legal del protocolo antipiquetes (anulado en primera instancia en
+    dic-2025; la Sala III de la Cámara Contencioso Administrativo Federal
+    revocó la nulidad el 31-mar-2026 y el recurso extraordinario del CELS
+    espera a la Corte; verificado 28-oct-2026, ADR-0408): el doc pide tratarlo como dato de primer orden — se expone
     como contexto del indicador y habilita override del analista en
     data/gestion/ajustes_itcg.json, no una banda propia.
 
@@ -211,13 +213,12 @@ BANDAS_ITCG = {
         # y 0 → 10, como cualquier promesa sin cumplir.
         (95.0, INF, 100), (85.0, 95.0, 85), (60.0, 85.0, 65), (30.0, 60.0, 40), (-INF, 30.0, 10),
     ],
-    "protocolo_antipiquetes": [         # % de reducción de cortes en el país vs 2023 (IRPC×100)
-        # ADR-0405: el dato pasa de CABA al total nacional de Diagnóstico
-        # Político (misma definición). Los cortes 0/25/50/75 son una CONVENCIÓN
-        # declarada —cuartos redondos de la reducción, con el 0 (igual que 2023)
-        # como piso conceptual— y no una calibración: se pusieron mirando la
-        # caída de CABA y se conservan sin moverlos al cambiar de universo, para
-        # no ajustar la escala al nuevo resultado.
+    "protocolo_antipiquetes": [         # % de reducción de cortes en la Ciudad vs 2023 (IRPC×100)
+        # ADR-0408: el dato vuelve a la Ciudad de Buenos Aires (ADR-0405 lo
+        # había pasado al total nacional). Los cortes 0/25/50/75 son una
+        # CONVENCIÓN declarada —cuartos redondos de la reducción, con el 0
+        # (igual que 2023) como piso conceptual— fijada mirando la caída de la
+        # Ciudad en 2024-2025; no se mueven.
         (75.0, INF, 100), (50.0, 75.0, 85), (25.0, 50.0, 65), (0.0, 25.0, 40), (-INF, 0.0, 10),
     ],
     "libertad_opcion_salud": [          # avance por hitos de la libre elección de cobertura (ADR-0371)

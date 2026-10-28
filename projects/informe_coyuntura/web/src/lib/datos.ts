@@ -474,7 +474,7 @@ export const LABELS: Record<string, string> = {
   desregulacion_normativa: "Desregulación normativa", apertura_comercial: "Impuestos sobre el comercio exterior",
   gasto_funcionamiento: "Gasto de funcionamiento", masa_salarial: "Masa salarial pública",
   asistencia_directa: "Planes sin intermediarios", fal_modernizacion_laboral: "Fondo de Asistencia Laboral",
-  libertad_opcion_salud: "Implementación de la libre elección de cobertura de salud", protocolo_antipiquetes: "Reducción de cortes de calle en el país",
+  libertad_opcion_salud: "Implementación de la libre elección de cobertura de salud", protocolo_antipiquetes: "Reducción de cortes de calle en la Ciudad",
   litigiosidad_laboral: "Juicios por riesgos del trabajo (SRT)", siniestralidad_laboral: "Siniestralidad laboral (SRT)", juicios_trabajo_capital: "Juicios en la Justicia del Trabajo (Capital)", alertas_manifestacion: "Alertas de manifestación (GCBA)",
   protestas_caba: "Protestas en CABA (ACLED)",
 };
@@ -519,7 +519,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   iai: "% vs. un año atrás", icip: "% i.a.", credito_privado: "% real vs. un año atrás", costo_financiamiento_tesoro: "% real", resultado_primario: "% de la recaudación",
   prestamos_privados: "% m/m", base_monetaria: "% m/m", tc_mayorista: "% m/m",
   // politica
-  votometro_ventaja_lla: "pp", ratio_dnu: "DNU por ley publicada", movilizacion_cepa: "índice",
+  votometro_ventaja_lla: "pp", ratio_dnu: "decretos por ley publicada", movilizacion_cepa: "índice",
   brecha_obra_publica: "pp",
   apoyo_empresario: "saldo",
   apoyo_comercio: "saldo",
@@ -650,7 +650,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   desregulacion_normativa: "Artículos modificados o eliminados desde dic-2023 (volumen, no importancia)", apertura_comercial: "% del intercambio (alícuota efectiva)",
   gasto_funcionamiento: "% de variación real vs 2023", masa_salarial: "% de variación real vs 2023",
   asistencia_directa: "Unidades de gestión dadas de baja (Res. 84/2024) — 0 o 100", fal_modernizacion_laboral: "Avance de la puesta en marcha del Fondo (0–100)",
-  libertad_opcion_salud: "Avance de la libre elección por hitos (0–100)", protocolo_antipiquetes: "% de reducción de cortes en todo el país vs 2023, dato del año 2025 (no mide la aplicación del protocolo)",
+  libertad_opcion_salud: "Avance de la libre elección por hitos (0–100)", protocolo_antipiquetes: "% de reducción de cortes en la Ciudad de Buenos Aires vs 2023, dato del año 2025 (no mide la aplicación del protocolo)",
   litigiosidad_laboral: "% variación (12m vs 12m previos)",
   siniestralidad_laboral: "% variación del índice de incidencia de accidentes y enfermedades laborales con baja (por mil cubiertos), del período acumulado del año contra el mismo período del año anterior",
   juicios_trabajo_capital: "% variación de los juicios entrados (12m vs 12m previos, por semestre)",

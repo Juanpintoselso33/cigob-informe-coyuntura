@@ -77,11 +77,13 @@ EJEMPLO = {
 def test_itcm_reproduce_ejemplo():
     r = itcm.calcular_itcm(EJEMPLO)
     dims = r["dimensiones"]
-    assert dims["estabilidad_monetaria"]["puntaje"] == 39.0
+    # ADR-0409: con las reservas (25,0) adentro, estabilidad 39,0 → 36,5 y sector
+    # externo 51,4 → 60,5, sin mover el índice.
+    assert dims["estabilidad_monetaria"]["puntaje"] == 36.5
     # ADR-0387: las tres dimensiones de antes (fiscal-comercial 78,5, financiamiento
     # 54,7, competitividad 49,8) se reagrupan sin mover el índice.
     assert dims["cuentas_fiscales"]["puntaje"] == 76.9
-    assert dims["sector_externo"]["puntaje"] == 51.4
+    assert dims["sector_externo"]["puntaje"] == 60.5
     assert dims["financiamiento"]["puntaje"] == 69.9
     assert dims["actividad"]["puntaje"] == 75.8   # 73,9 → 75,8 (ADR-0368: EMAE 0,42 sin la tributaria)
     assert "competitividad_externa" not in dims and "viabilidad_fiscal_comercial" not in dims
@@ -95,7 +97,7 @@ def test_itcm_reproduce_ejemplo():
     assert r["banda"] == "moderadamente_aflojado"   # 60,2: apenas sobre el corte de 60
     desequilibrio = dims["estabilidad_monetaria"]["indicadores"]["desequilibrio_monetario"]
     assert desequilibrio["puntaje_aplicado"] == 64.8
-    assert desequilibrio["peso"] == 0.20
+    assert desequilibrio["peso"] == pytest.approx(0.052 / 0.3144)
     assert desequilibrio["peso_efectivo"] == 0.052
     assert itcm.tension_de_itcm(r["valor"]) == 3.9
     assert r["ajustes_aplicados"] == []
@@ -157,7 +159,7 @@ def test_itcm_usa_anclas_explicitas_para_desequilibrio_monetario():
     )
     assert indicador["puntaje_banda"] == 64.8
     assert indicador["puntaje_aplicado"] == 64.8
-    assert indicador["peso"] == 0.20
+    assert indicador["peso"] == pytest.approx(0.052 / 0.3144)
     assert indicador["peso_efectivo"] == 0.052
 
 
@@ -165,12 +167,19 @@ def test_estabilidad_monetaria_usa_pesos_60_20_20():
     """Eran 40/20/20/20 (ADR-0193). Al salir `idm` del índice (ADR-0261) su 20%
     vuelve ENTERO al IPC: el REM y el desequilibrio son pares entre sí y no se
     tocan, y el desequilibrio además tiene un ancla nominal propia (pesar como
-    las reservas) que renormalizar en proporción habría roto."""
-    assert itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]["indicadores"] == {
-        "ipc_total": 0.60,
-        "rem_ipc_12m": 0.20,
-        "desequilibrio_monetario": 0.20,
-    }
+    las reservas) que renormalizar en proporción habría roto.
+
+    ADR-0409 suma las reservas a la dimensión (0,26 → 0,3144) conservando el
+    peso efectivo de cada uno: el 60/20/20 sigue valiendo entre los tres
+    monetarios (0,156/0,052/0,052 del índice)."""
+    d = itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]
+    assert d["peso"] == 0.3144
+    efectivo = {k: round(d["peso"] * w, 4) for k, w in d["indicadores"].items()}
+    assert efectivo == {"ipc_total": 0.156, "rem_ipc_12m": 0.052,
+                        "desequilibrio_monetario": 0.052, "reservas_bcra": 0.0544}
+    i = d["indicadores"]
+    assert i["ipc_total"] == pytest.approx(3 * i["rem_ipc_12m"])
+    assert i["rem_ipc_12m"] == pytest.approx(i["desequilibrio_monetario"])
 
 
 def test_el_desequilibrio_pesa_como_las_reservas_y_no_como_el_tcrm():
@@ -183,7 +192,7 @@ def test_el_desequilibrio_pesa_como_las_reservas_y_no_como_el_tcrm():
         return D[dim]["peso"] * D[dim]["indicadores"][ind]
 
     desequilibrio = nominal("estabilidad_monetaria", "desequilibrio_monetario")
-    reservas = nominal("sector_externo", "reservas_bcra")
+    reservas = nominal("estabilidad_monetaria", "reservas_bcra")   # ADR-0409
     assert abs(desequilibrio - reservas) < 0.005, (
         f"desequilibrio {desequilibrio:.2%} debería estar cerca de "
         f"reservas {reservas:.2%}")
@@ -283,9 +292,9 @@ def test_ajuste_manual_aplicado():
     ajustes = {"saldo_comercial_12m": {
         "puntaje": 60, "justificacion": "Superávit por contracción de importaciones"}}
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
-    # sector externo = saldo 60 (override) con reservas 25,0 y el cruce 49,8 → 45,8;
-    # el índice es el mismo que con la dimensión fiscal-comercial de antes (59,4)
-    assert r["dimensiones"]["sector_externo"]["puntaje"] == 45.8
+    # sector externo = saldo 60 (override) con el cruce 49,8 → 52,9 (desde
+    # ADR-0409 las reservas están en estabilidad); el índice sigue en 59,4
+    assert r["dimensiones"]["sector_externo"]["puntaje"] == 52.9
     assert r["valor"] == 59.4
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
@@ -310,37 +319,37 @@ def test_renormalizacion_indicador_faltante():
     """Sin REM, la dimensión renormaliza IPC y desequilibrio monetario."""
     valores = dict(EJEMPLO, rem_ipc_12m=None)
     r = itcm.calcular_itcm(valores)
-    # (28,4×0.60 + 64,8×0.20) / 0.80 = 37,5 (ADR-0367)
-    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 37.5
-    assert abs(r["valor"] - 60.2) <= 0.05   # era 60,3: el puntaje de dimensión se redondea distinto (ADR-0387)
+    # (28,4×0,156 + 64,8×0,052 + 25,0×0,0544) / 0,2624 = 34,9 (ADR-0409: las
+    # reservas también renormalizan dentro de la dimensión)
+    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 34.9
+    assert abs(r["valor"] - 60.1) <= 0.05   # 60,3 → 60,2 (ADR-0387) → 60,1 (ADR-0409): reparto ante faltantes
 
 
 def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
     valores = dict(EJEMPLO, desequilibrio_monetario=None)
     r = itcm.calcular_itcm(valores)
     estabilidad = r["dimensiones"]["estabilidad_monetaria"]
-    # (28,4×0.60 + 44,8×0.20) / 0.80 = 32,5 (ADR-0367)
-    assert estabilidad["puntaje"] == 32.5
+    # (28,4×0,156 + 44,8×0,052 + 25,0×0,0544) / 0,2624 = 30,9 (ADR-0409)
+    assert estabilidad["puntaje"] == 30.9
     assert "desequilibrio_monetario" not in estabilidad["indicadores"]
 
 
 def test_renormalizacion_dimension_faltante():
     """Sin el tipo de cambio real el cruce con los términos del intercambio no se
     calcula (la matriz necesita los dos) y el sector externo se arma con el saldo
-    comercial y las reservas, renormalizados. Los términos del intercambio solos
+    comercial solo (las reservas están en estabilidad desde ADR-0409). Los
+    términos del intercambio solos
     no entran. (Antes se probaba sin EMAE, pero desde el 16-oct-2026 la
     actividad no se queda vacía sin él: le queda la inversión física.)"""
     valores = dict(EJEMPLO, tcrm=None)
     r = itcm.calcular_itcm(valores)
     ext = r["dimensiones"]["sector_externo"]
-    assert set(ext["indicadores"]) == {"saldo_comercial_12m", "reservas_bcra"}
-    # (0,048 × 85,0 + 0,0544 × 25,0) / 0,1024 = 53,1
-    assert ext["puntaje"] == 53.1
+    assert set(ext["indicadores"]) == {"saldo_comercial_12m"}
+    assert ext["puntaje"] == 85.0
     assert abs(sum(i["peso_efectivo"] for d in r["dimensiones"].values()
                    for i in d["indicadores"].values()) - 1.0) <= 0.001
-    # sin ninguno de los tres, la dimensión desaparece y el resto renormaliza
-    sin = itcm.calcular_itcm(dict(EJEMPLO, tcrm=None, saldo_comercial_12m=None,
-                                  reservas_bcra=None))
+    # sin el saldo y sin el cruce, la dimensión desaparece y el resto renormaliza
+    sin = itcm.calcular_itcm(dict(EJEMPLO, tcrm=None, saldo_comercial_12m=None))
     assert "sector_externo" not in sin["dimensiones"]
 
 
@@ -381,9 +390,9 @@ def test_ajuste_automatico_saldo_por_contraccion():
     assert aj is not None and aj["puntaje"] == 67.1 and aj["origen"] == "automatico"
     assert "contracción de importaciones" in aj["justificacion"]
     r = itcm.calcular_itcm(dict(EJEMPLO), {"saldo_comercial_12m": aj})
-    # sector externo = saldo 67,1 (ajuste) con reservas 25,0 y el cruce 49,8 → 47,4;
-    # el índice sigue en 59,8, como con la dimensión fiscal-comercial de antes
-    assert r["dimensiones"]["sector_externo"]["puntaje"] == 47.4
+    # sector externo = saldo 67,1 (ajuste) con el cruce 49,8 → 55,1 (ADR-0409);
+    # el índice sigue en 59,8
+    assert r["dimensiones"]["sector_externo"]["puntaje"] == 55.1
     assert r["valor"] == 59.8
     assert r["ajustes_aplicados"][0]["origen"] == "automatico"
 

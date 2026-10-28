@@ -1,13 +1,15 @@
 ---
 madr: 4
 id: '0405'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'Superado por ADR-0408 (28-oct-2026): los piquetes vuelven a la Ciudad de Buenos Aires, que era lo decidido; los totales nacionales quedan como contexto.'
 fecha: 2026-10-28
 cinturon: 'gestion'
 indice: 'ITCG'
 indicadores: [protocolo_antipiquetes]
 archivos: ['data/gestion/dp_piquetes.json', 'data/gestion/manuales.json', 'scripts/gestion.py', 'scripts/descargar_series.py', 'scripts/itcg.py', 'scripts/procedencia_anclas.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts', 'tests/test_piquetes_detector.py', 'tests/test_serie_piquetes_anio_cerrado.py', 'tests/test_gestion_adr0405_0407.py']
 relacionado: ['0025', '0105', '0121', '0395', '0406', '0407']
+superado_por: ['0408']
 ambito: 'ITCG · dimensión Reforma social y orden · universo de `protocolo_antipiquetes`'
 origen: 'Revisión del 28-oct-2026, a pedido de Juan, de las escalas del cinturón de gestión calibradas sobre el propio mandato.'
 ---

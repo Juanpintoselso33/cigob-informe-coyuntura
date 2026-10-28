@@ -160,7 +160,7 @@
     },
     {
       "proyecto": "27.796",
-      "tema": "Emergencia sanitaria pediátrica (Garrahan) y residencias",
+      "tema": "Emergencia sanitaria pediátrica del Hospital Garrahan y residencias",
       "decreto": "651/2025",
       "infoleg_id_decreto": 417372,
       "fecha_veto": "2025-09-11",
@@ -185,7 +185,7 @@
     },
     {
       "proyecto": "27.794",
-      "tema": "Distribución automática del Fondo de ATN",
+      "tema": "Distribución automática del Fondo de Aportes del Tesoro Nacional",
       "decreto": "652/2025",
       "infoleg_id_decreto": 417425,
       "fecha_veto": "2025-09-12",
@@ -223,9 +223,9 @@
     },
     {
       "clave": "656/2024",
-      "etiqueta": "DNU 656/2024",
+      "etiqueta": "Decreto de necesidad y urgencia 656/2024",
       "tipo": "DNU",
-      "tema": "Fondos reservados a la SIDE ($100.000 millones)",
+      "tema": "Fondos reservados a la Secretaría de Inteligencia del Estado ($100.000 millones)",
       "publicado_bo": "2024-07-22",
       "rechazos": [
         {
@@ -247,7 +247,7 @@
       "clave": "179/2025",
       "etiqueta": "DNU 179/2025",
       "tipo": "DNU",
-      "tema": "Acuerdo con el FMI (Facilidades Extendidas)",
+      "tema": "Acuerdo con el Fondo Monetario Internacional (Facilidades Extendidas)",
       "publicado_bo": "2025-03-11",
       "rechazos": [],
       "sostenimientos": [
@@ -265,7 +265,7 @@
     },
     {
       "clave": "340/2025",
-      "etiqueta": "DNU 340/2025",
+      "etiqueta": "Decreto de necesidad y urgencia 340/2025",
       "tipo": "DNU",
       "tema": "Régimen de excepción de la Marina Mercante y restricción del derecho a huelga",
       "publicado_bo": "2025-05-21",
@@ -333,7 +333,7 @@
       "clave": "461/2025",
       "etiqueta": "Decreto delegado 461/2025",
       "tipo": "delegado",
-      "tema": "Disolución de Vialidad Nacional, ANSV y CNTySV",
+      "tema": "Disolución de Vialidad Nacional, de la Agencia Nacional de Seguridad Vial y de la Comisión Nacional de Tránsito y Seguridad Vial",
       "publicado_bo": "2025-07-08",
       "rechazos": [
         {
@@ -355,7 +355,7 @@
       "clave": "462/2025",
       "etiqueta": "Decreto delegado 462/2025",
       "tipo": "delegado",
-      "tema": "Transformación de INTA, INTI, INV, INPI; disolución de ARICCAME, INAFCI, INASE",
+      "tema": "Transformación de los institutos nacionales de Tecnología Agropecuaria, de Tecnología Industrial, de Vitivinicultura y de la Propiedad Industrial; disolución de otros tres organismos",
       "publicado_bo": "2025-07-08",
       "rechazos": [
         {

@@ -27,6 +27,34 @@ def test_solo_cuenta_la_insistencia_de_las_dos_camaras():
     assert [e["fecha"] for e in politica._insistencias_completas(REGISTRO)] == ["2025-10-02"]
 
 
+def test_la_insistencia_detectada_por_el_boletin_se_fecha_en_la_segunda_camara():
+    """ADR-0410: la corrida anota la publicación de la ley (27.795: 21-oct-2025),
+    pero el evento es el voto de la segunda cámara (2-oct-2025)."""
+    veto = {"proyecto": "27.795", "tema": "u", "insistencia_completa": "2025-10-21",
+            "insistencias_votadas": [
+                {"fecha": "2025-09-17", "camara": "Diputados", "resultado": "insistio_camara"},
+                {"fecha": "2025-10-02", "camara": "Senado", "resultado": "insistio_camara"}]}
+    assert [e["fecha"] for e in politica._insistencias_completas({"vetos": [veto]})] == ["2025-10-02"]
+    # sin el voto de una de las dos cámaras, queda la publicación
+    veto["insistencias_votadas"] = veto["insistencias_votadas"][1:]
+    assert [e["fecha"] for e in politica._insistencias_completas({"vetos": [veto]})] == ["2025-10-21"]
+    # un voto rechazado no es insistencia
+    veto["insistencias_votadas"].append(
+        {"fecha": "2025-09-17", "camara": "Diputados", "resultado": "insistencia_rechazada"})
+    assert [e["fecha"] for e in politica._insistencias_completas({"vetos": [veto]})] == ["2025-10-21"]
+
+
+def test_el_registro_real_conserva_los_casos_verificados():
+    """Cotejados el 28-oct-2026 contra las resoluciones de las cámaras en el
+    Boletín (25-ago-2025) y las leyes 27.793/27.795/27.796: lo que venga
+    después se suma detrás, estos no se mueven."""
+    reg = politica._cargar_derrotas_registro()
+    assert [e["fecha"] for e in politica._insistencias_completas(reg)][:3] == [
+        "2025-09-04", "2025-10-02", "2025-10-02"]
+    assert [e["fecha"] for e in politica._decretos_derogados(reg)][:6] == [
+        "2024-09-12"] + ["2025-08-21"] * 5
+
+
 def test_el_rechazo_de_una_camara_no_deroga():
     derogados = politica._decretos_derogados(REGISTRO)
     assert [e["fecha"] for e in derogados] == ["2024-09-12"]   # fechado en la segunda

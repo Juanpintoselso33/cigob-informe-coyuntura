@@ -8,6 +8,7 @@ indice: 'ITCM'
 indicadores: [resultado_primario, recaudacion, saldo_comercial_12m, reservas_bcra, tcrm, terminos_intercambio, idc, credito_privado, costo_financiamiento_tesoro]
 archivos: ['scripts/itcm.py', 'scripts/parametrica.py', 'scripts/sensibilidad.py', 'scripts/auditoria_coherencia.py', 'scripts/interpolacion_sombra.py', 'scripts/publicar.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts']
 relacionado: ['0375', '0359']
+modificado_por: ['0409']
 ambito: 'Cinturón macro · ITCM · dimensiones Cuentas fiscales, Sector externo y Capacidad y costo del financiamiento'
 origen: 'Revisión macro de Luis Babino del 26-oct-2026 (punto 1.1) y decisión de Juan del 27-oct-2026: hacerlo conservando el peso efectivo de cada indicador.'
 ---

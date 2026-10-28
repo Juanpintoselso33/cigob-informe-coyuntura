@@ -128,6 +128,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0387](0387-cuentas-fiscales-y-sector-externo-se-separan.md) | Las cuentas fiscales y el sector externo se separan | `resultado_primario`, `recaudacion`, `saldo_comercial_12m` | vigente |
 | [0403](0403-el-resultado-primario-se-puntua-por-desvios-de-su-historia.md) | El resultado primario se puntúa por desvíos de su historia | `resultado_primario` | vigente |
 | [0404](0404-inversion-credito-y-saldo-comercial-con-cortes-de-la-historia-previa.md) | Inversión, crédito y saldo comercial con cortes de la historia previa | `iai`, `credito_privado`, `saldo_comercial_12m` | vigente |
+| [0409](0409-las-reservas-netas-pasan-a-estabilidad-monetaria.md) | Las reservas netas pasan a «Estabilidad monetaria-inflacionaria» | `reservas_bcra`, `rem_ipc_12m`, `saldo_comercial_12m` | vigente |
 
 ### Política (ITCP)
 
@@ -247,6 +248,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0400](0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) | El bloque del senador es el del día de la votación | `cohesion_bloque`, `alineamiento_senadores_prov`, `votos_sobre_bancas` | vigente |
 | [0401](0401-la-cohesion-mide-las-votaciones-divididas-contra-la-historia.md) | La cohesión mide las votaciones divididas, contra la historia | `cohesion_bloque` | vigente |
 | [0402](0402-el-alineamiento-de-senadores-se-compara-con-la-historia.md) | El alineamiento de senadores se compara con la historia | `alineamiento_senadores_prov` | vigente |
+| [0410](0410-el-tipo-del-decreto-sale-del-original-y-la-insistencia-de-la-segunda-camara.md) | El tipo del decreto sale del original, y la insistencia se fecha en la segunda cámara | `ratio_dnu`, `insistencias_vetos`, `rechazos_decretos` | vigente |
 
 ### Gestión (ITCG)
 
@@ -314,9 +316,10 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0379](0379-vuelven-los-juicios-por-riesgos-del-trabajo.md) | Vuelven los juicios por riesgos del trabajo | `litigiosidad_laboral`, `juicios_trabajo_capital` | vigente |
 | [0385](0385-la-siniestralidad-reemplaza-a-los-juicios-del-sistema-de-riesgos.md) | La siniestralidad reemplaza a los juicios del sistema de riesgos | `siniestralidad_laboral`, `litigiosidad_laboral` | vigente |
 | [0395](0395-los-piquetes-usan-el-ultimo-ano-cerrado.md) | Los piquetes usan el último año cerrado | `protocolo_antipiquetes` | vigente |
-| [0405](0405-los-piquetes-se-miden-en-todo-el-pais.md) | Los piquetes se miden en todo el país | `protocolo_antipiquetes` | vigente |
+| [0405](0405-los-piquetes-se-miden-en-todo-el-pais.md) | Los piquetes se miden en todo el país | `protocolo_antipiquetes` | superado por [0408](0408-los-piquetes-vuelven-a-la-ciudad.md) |
 | [0406](0406-el-rigi-usa-la-escala-de-las-concesiones.md) | El RIGI usa la escala de las concesiones | `rigi_inversiones` | vigente |
 | [0407](0407-corredores-viales-sale-de-la-cartera-de-privatizaciones.md) | Corredores Viales sale de la cartera de privatizaciones | `privatizaciones`, `concesiones_infraestructura` | vigente |
+| [0408](0408-los-piquetes-vuelven-a-la-ciudad.md) | Los piquetes vuelven a la Ciudad de Buenos Aires | `protocolo_antipiquetes` | vigente |
 
 ### Vida cotidiana (ITVC)
 

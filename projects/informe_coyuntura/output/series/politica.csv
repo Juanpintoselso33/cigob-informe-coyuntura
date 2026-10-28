@@ -182,41 +182,41 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rechazos_decretos,0.0,decretos derogados por las dos cámaras (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-01-01,rechazos_decretos,0.0,decretos derogados por las dos cámaras (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2023-12-01,rechazos_decretos,0.0,decretos derogados por las dos cámaras (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
-2026-10-01,ratio_dnu,1.125,DNUs publicados por ley publicada,InfoLeg
-2026-09-01,ratio_dnu,1.062,DNUs publicados por ley publicada,InfoLeg
-2026-08-01,ratio_dnu,1.48,DNUs publicados por ley publicada,InfoLeg
-2026-07-01,ratio_dnu,1.4,DNUs publicados por ley publicada,InfoLeg
-2026-06-01,ratio_dnu,1.45,DNUs publicados por ley publicada,InfoLeg
-2026-05-01,ratio_dnu,2.818,DNUs publicados por ley publicada,InfoLeg
-2026-04-01,ratio_dnu,2.429,DNUs publicados por ley publicada,InfoLeg
-2026-03-01,ratio_dnu,2.833,DNUs publicados por ley publicada,InfoLeg
-2026-02-01,ratio_dnu,2.5,DNUs publicados por ley publicada,InfoLeg
-2026-01-01,ratio_dnu,2.846,DNUs publicados por ley publicada,InfoLeg
-2025-12-01,ratio_dnu,2.818,DNUs publicados por ley publicada,InfoLeg
-2025-11-01,ratio_dnu,3.182,DNUs publicados por ley publicada,InfoLeg
-2025-10-01,ratio_dnu,3.273,DNUs publicados por ley publicada,InfoLeg
-2025-09-01,ratio_dnu,1.182,DNUs publicados por ley publicada,InfoLeg
-2025-08-01,ratio_dnu,0.884,DNUs publicados por ley publicada,InfoLeg
-2025-07-01,ratio_dnu,0.953,DNUs publicados por ley publicada,InfoLeg
-2025-06-01,ratio_dnu,1.022,DNUs publicados por ley publicada,InfoLeg
-2025-05-01,ratio_dnu,1.022,DNUs publicados por ley publicada,InfoLeg
-2025-04-01,ratio_dnu,1.023,DNUs publicados por ley publicada,InfoLeg
-2025-03-01,ratio_dnu,1.022,DNUs publicados por ley publicada,InfoLeg
-2025-02-01,ratio_dnu,1.119,DNUs publicados por ley publicada,InfoLeg
-2025-01-01,ratio_dnu,1.143,DNUs publicados por ley publicada,InfoLeg
-2024-12-01,ratio_dnu,1.119,DNUs publicados por ley publicada,InfoLeg
-2024-11-01,ratio_dnu,1.19,DNUs publicados por ley publicada,InfoLeg
-2024-10-01,ratio_dnu,1.238,DNUs publicados por ley publicada,InfoLeg
-2024-09-01,ratio_dnu,1.656,DNUs publicados por ley publicada,InfoLeg
-2024-08-01,ratio_dnu,2.476,DNUs publicados por ley publicada,InfoLeg
-2024-07-01,ratio_dnu,2.429,DNUs publicados por ley publicada,InfoLeg
-2024-06-01,ratio_dnu,2.043,DNUs publicados por ley publicada,InfoLeg
-2024-05-01,ratio_dnu,1.913,DNUs publicados por ley publicada,InfoLeg
-2024-04-01,ratio_dnu,1.344,DNUs publicados por ley publicada,InfoLeg
-2024-03-01,ratio_dnu,1.212,DNUs publicados por ley publicada,InfoLeg
-2024-02-01,ratio_dnu,1.147,DNUs publicados por ley publicada,InfoLeg
-2024-01-01,ratio_dnu,1.088,DNUs publicados por ley publicada,InfoLeg
-2023-12-01,ratio_dnu,1.029,DNUs publicados por ley publicada,InfoLeg
+2026-10-01,ratio_dnu,1.156,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2026-09-01,ratio_dnu,1.094,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2026-08-01,ratio_dnu,1.48,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2026-07-01,ratio_dnu,1.4,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2026-06-01,ratio_dnu,1.55,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2026-05-01,ratio_dnu,3.0,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2026-04-01,ratio_dnu,2.571,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2026-03-01,ratio_dnu,3.0,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2026-02-01,ratio_dnu,2.643,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2026-01-01,ratio_dnu,3.0,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-12-01,ratio_dnu,3.0,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-11-01,ratio_dnu,3.364,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-10-01,ratio_dnu,3.455,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-09-01,ratio_dnu,1.242,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-08-01,ratio_dnu,0.93,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-07-01,ratio_dnu,1.0,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-06-01,ratio_dnu,1.022,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-05-01,ratio_dnu,1.022,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-04-01,ratio_dnu,1.023,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-03-01,ratio_dnu,1.022,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-02-01,ratio_dnu,1.119,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2025-01-01,ratio_dnu,1.143,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-12-01,ratio_dnu,1.119,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-11-01,ratio_dnu,1.19,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-10-01,ratio_dnu,1.238,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-09-01,ratio_dnu,1.656,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-08-01,ratio_dnu,2.476,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-07-01,ratio_dnu,2.429,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-06-01,ratio_dnu,2.043,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-05-01,ratio_dnu,1.913,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-04-01,ratio_dnu,1.344,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-03-01,ratio_dnu,1.212,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-02-01,ratio_dnu,1.147,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2024-01-01,ratio_dnu,1.088,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
+2023-12-01,ratio_dnu,1.029,decretos de necesidad y urgencia publicados por ley publicada,InfoLeg
 2026-09-01,produccion_legislativa,31,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2026-08-01,produccion_legislativa,29,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2026-07-01,produccion_legislativa,22,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
@@ -860,15 +860,15 @@ fecha,indicador,valor,unidad,fuente
 2025-05-31,cohesion_bloque,99.8,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2025-04-30,cohesion_bloque,98.1,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2025-03-31,cohesion_bloque,97.5,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
-2025-02-28,cohesion_bloque,97.7,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
-2025-01-31,cohesion_bloque,99.1,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
-2024-12-31,cohesion_bloque,99.0,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
-2024-11-30,cohesion_bloque,99.2,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
-2024-10-31,cohesion_bloque,98.4,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
-2024-09-30,cohesion_bloque,98.1,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
-2024-08-31,cohesion_bloque,98.5,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
-2024-07-31,cohesion_bloque,99.5,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
-2024-06-30,cohesion_bloque,99.8,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-02-28,cohesion_bloque,97.9,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-01-31,cohesion_bloque,99.4,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-12-31,cohesion_bloque,99.4,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-11-30,cohesion_bloque,99.5,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-10-31,cohesion_bloque,99.0,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-09-30,cohesion_bloque,97.9,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-08-31,cohesion_bloque,97.4,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-07-31,cohesion_bloque,97.8,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-06-30,cohesion_bloque,98.7,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2024-05-31,cohesion_bloque,100.0,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2024-04-30,cohesion_bloque,100.0,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2024-03-31,cohesion_bloque,100.0,"% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",Votaciones nominales de Diputados y Senado — elaboración CIGOB

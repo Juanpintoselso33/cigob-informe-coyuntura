@@ -159,6 +159,18 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Vetos, decretos y DNU (revisado el 28-oct, ADR-0410).** Los ceros de vetos dados vuelta y
+  de decretos derogados son correctos. «DNU por ley» contaba de menos: tres DNU que InfoLeg
+  rotula como decretos comunes (867/2026, 521/2025, 493/2025); ahora decide el identificador
+  del texto original. Queda para decidir con Luis:
+  1. **Tratados en el denominador:** de las 32 leyes de la ventana, unas 19 aprueban tratados.
+     Sin ellos el cociente sería 2,85 (puntaje 10 en vez de 57); habría que recalcular la
+     referencia histórica con el mismo criterio.
+  2. **DNU de rutina** (siete de ejercicios militares y uno de viaje del Presidente): sin ellos
+     0,91 (puntaje ~67).
+  3. Recordar lo ya acordado: «DNU + delegados juntos».
+
+
 - **Resultados de la investigación del 28-oct (para decidir):**
   - **Dotación: cerrado.** Según el INDEC la serie no cambió de universo (las fusiones de
     ministerios suman en otro renglón). Sólo salieron dos organismos disueltos: INADI (408
@@ -239,8 +251,9 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 - **Piquetes: volver a la Ciudad de Buenos Aires** (Juan, 28-oct). Estaba decidido mantener
   la Ciudad y el ADR-0405 (28-oct) lo pasó al total del país (99 → 77) contra esa decisión.
   Revertir a CABA (otro ADR) y revisar lo que dicen la tarjeta y la ficha de la fuente
-  (consultora Diagnóstico Político) y del protocolo (vigencia: anulado en primera
-  instancia y apelado; verificar el estado actual).
+  (consultora Diagnóstico Político) y del protocolo. **Hecho (ADR-0408, 28-oct):** vuelve
+  a la Ciudad. El protocolo está vigente: la Cámara revocó la nulidad el 31-mar-2026 y el
+  caso está en la Corte Suprema, sin fallo.
 
 - **Revisar vetos, decretos y DNU** (Juan, 28-oct): «DNU por ley» (ratio_dnu), «Vetos que el
   Congreso dio vuelta» (insistencias_vetos) y «Decretos derogados por el Congreso»

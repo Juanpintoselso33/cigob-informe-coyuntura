@@ -27,7 +27,7 @@ CINCO DIMENSIONES (35/25/15/15/10):
      Concesiones: CONTRAT.AR + página oficial RFC, ADR-0016).
   5. Reforma social y orden — asistencia_directa (TDPS contra la ejecución
      presupuestaria real, API Presupuesto Abierto, ADR-0015),
-     protocolo_antipiquetes (reducción de cortes en el país vs 2023, ADR-0405; anclajes anuales
+     protocolo_antipiquetes (reducción de cortes en la Ciudad vs 2023, ADR-0408; anclajes anuales
      públicos de Diagnóstico Político y detector de publicaciones, ADR-0025),
      libertad_opcion_salud (derivación directa a prepagas inscriptas:
      padrones RNAS/RNEMP de la SSS, ADR-0016).
@@ -380,15 +380,15 @@ def fetch_cepo_mulc() -> dict | None:
         brecha = round((float(ccl) - float(mayorista)) / float(mayorista) * 100.0, 2)
         return {
             "valor":          brecha,
-            "unidad":         "% de brecha CCL/mayorista",
-            "fuente":         "dolarapi.com — contado con liquidación y mayorista (el mayorista replica la referencia oficial del BCRA)",
+            "unidad":         "% de brecha entre el contado con liquidación y el mayorista",
+            "fuente":         "dolarapi.com (agregador privado) — contado con liquidación y mayorista (el mayorista replica la referencia oficial del Banco Central)",
             "fecha_dato":     fecha_dato,
             "cotizaciones": {
                 "ccl": {"venta": float(ccl), "actualizado_en": fechas["contadoconliqui"].isoformat()},
                 "mayorista": {"venta": float(mayorista), "actualizado_en": fechas["mayorista"].isoformat()},
             },
             "detalle_txt": (
-                f"CCL venta {float(ccl):.2f} ({fechas['contadoconliqui'].isoformat()}) / "
+                f"Contado con liquidación venta {float(ccl):.2f} ({fechas['contadoconliqui'].isoformat()}) / "
                 f"mayorista venta {float(mayorista):.2f} ({fechas['mayorista'].isoformat()}). "
                 "Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales."
             ),
@@ -3635,24 +3635,23 @@ DP_MONITOREOS_URL = "https://diagnosticopolitico.com.ar/monitoreos-politicos"
 
 def fetch_protocolo_antipiquetes() -> dict | None:
     """
-    IRPC automático (ADR-0025): reducción % de cortes en TODO EL PAÍS vs 2023,
-    con los anclajes ANUALES PÚBLICOS de Diagnóstico Político (su definición de
-    piquete coincide con la Res. 943/23). Desde ADR-0405 puntúa el total
-    nacional y no el de CABA: la Res. 943/23 es un protocolo de las fuerzas
-    federales, el de CABA era un recorte del 11 % del universo con base 2023
-    estimada desde una participación redondeada, y el total nacional es un
-    conteo publicado con historia desde 2014. La clave `caba` del store se
-    conserva como registro. Anclajes curados con fuente en
-    data/gestion/dp_piquetes.json. Además scrapea la página pública de
-    monitoreos como DETECTOR: si aparece un año nuevo, avisa para actualizar
-    el store.
+    IRPC automático (ADR-0025): reducción % de cortes en la CIUDAD DE BUENOS
+    AIRES vs 2023, con los anclajes ANUALES PÚBLICOS de Diagnóstico Político
+    (consultora privada; su definición de piquete coincide con la Res. 943/23).
+    ADR-0405 lo había pasado al total nacional; ADR-0408 lo devuelve a la
+    Ciudad por decisión previa de Juan. La base 2023 de la Ciudad (931) es
+    estimada desde una participación redondeada, y así se declara. Los totales
+    nacionales quedan en el store como contexto y no puntúan. Anclajes curados
+    con fuente en data/gestion/dp_piquetes.json. Además scrapea la página
+    pública de monitoreos como DETECTOR: si aparece un año nuevo, avisa para
+    actualizar el store.
     """
     try:
         dp = json.loads(DP_PIQUETES_PATH.read_text(encoding="utf-8-sig"))
-        nac = {int(k): int(v) for k, v in dp["nacional"].items()}
-        base = nac[2023]
-        ult = max(nac)
-        irpc = round((1.0 - nac[ult] / base) * 100.0, 1)
+        caba = {int(k): int(v) for k, v in dp["caba"].items()}
+        base = caba[2023]
+        ult = max(caba)
+        irpc = round((1.0 - caba[ult] / base) * 100.0, 1)
 
         # Detector de informes nuevos (no fatal): años nacionales publicados
         # posteriores al último ancla del store.
@@ -3673,14 +3672,15 @@ def fetch_protocolo_antipiquetes() -> dict | None:
 
         return {
             "valor":          irpc,
-            "unidad":         "% de reducción de cortes por manifestación en todo el país vs 2023 (IRPC)",
-            "fuente":         "Diagnóstico Político — monitoreos públicos de piquetes",
+            "unidad":         "% de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC)",
+            "fuente":         "Diagnóstico Político (consultora privada) — monitoreos públicos de piquetes",
             "fecha_dato":     f"{ult}-12-31",
             "desactualizado": False,
-            "componentes":    {"nacional_2023": base, f"nacional_{ult}": nac[ult]},
+            "componentes":    {"caba_2023": base, f"caba_{ult}": caba[ult]},
             "advertencia_fuente": advertencia,
-            "detalle_txt":    (f"{nac[ult]:,} cortes en todo el país en {ult} vs {base:,} en 2023".replace(",", ".")
-                               + " (Diagnóstico Político)"
+            "detalle_txt":    (f"{caba[ult]} cortes en la Ciudad de Buenos Aires en {ult} vs {base} en 2023"
+                               " (Diagnóstico Político, consultora privada; base 2023 estimada"
+                               " desde una participación redondeada)"
                                + (f" · {advertencia}" if advertencia else "")),
         }
     except Exception as e:

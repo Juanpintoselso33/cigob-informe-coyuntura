@@ -35,18 +35,18 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 78,6** | **VERDE** | Moderadamente aflojado | 14 indicadores: 11 en verde · 3 en amarillo |
+| **ITCG: 79,4** | **VERDE** | Moderadamente aflojado | 14 indicadores: 11 en verde · 3 en amarillo |
 Componentes que puntúan en este corte: 14 de 14 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica. | 69,3 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica. | 69,0 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 91,2 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un… | 78,8 | VERDE | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 70,9 | VERDE | 15,0 % |
-| Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en todo el país y la implementación de la libre elección de… | 90,9 | VERDE | 10,0 % |
+| Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre… | 99,6 | VERDE | 10,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 7,83 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 8 % de brecha entre el contado con liquidación y el mayorista | VERDE | 14,0 % |
 | Impuestos sobre el comercio exterior | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -77,7 +77,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
 | Planes sin intermediarios | Si los planes sociales siguen pasando por intermediarios. | 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | VERDE | 4,0 % |
-| Reducción de cortes de calle en el país | En qué porcentaje se redujo el número de cortes por manifestación relevados en todo el país respecto de 2023. | 52,7 % de reducción de cortes por manifestación en todo el país vs 2023 (IRPC) | VERDE | 4,0 % |
+| Reducción de cortes de calle en la Ciudad | En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de… | 74,2 % de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC) | VERDE | 4,0 % |
 | Implementación de la libre elección de cobertura de salud | Cuánto avanzó la implementación de la libre elección de cobertura de salud. | 100 Avance de la libre elección de cobertura de salud (hitos 0–100) | VERDE | 2,0 % |
 
 *Datos al 2026-10-28.*
@@ -96,30 +96,31 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 7,83 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 8 % de brecha entre el contado con liquidación y el mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | cepo_mulc | **CINTURÓN** | Gestión |
-| **DIMENSIÓN EN EL ITCG** | Reformas económicas fundamentales | **UNIDAD DE MEDIDA** | % de brecha CCL/mayorista |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Cotizaciones intradiarias: se conservan las marcas de actualización de ambas patas y el corte es el día argentino de la más antigua. La serie mensual usa promedios. |
-| **PRODUCTOR DEL DATO** | dolarapi.com (agregador de cotizaciones; el mayorista replica la referencia oficial A3500 del BCRA) | **OPERACIÓN ESTADÍSTICA** | Cotizaciones del dólar contado con liquidación (CCL) y del mayorista; brecha porcentual entre ambos |
-| **MODO DE ACCESO** | Automático: API pública de cotizaciones; la serie histórica se reconstruye con el CCL promedio del mes sobre el mayorista promedio. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
+| **DIMENSIÓN EN EL ITCG** | Reformas económicas fundamentales | **UNIDAD DE MEDIDA** | % de brecha entre el contado con liquidación y el mayorista |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Cotizaciones intradiarias: se conservan las marcas de actualización de ambas patas y el corte es el día argentino de la más antigua. La serie mensual usa promedios, y su último punto es el promedio del mes en curso, todavía parcial. |
+| **PRODUCTOR DEL DATO** | dolarapi.com (agregador privado de cotizaciones; el mayorista replica la referencia oficial del dólar mayorista del Banco Central) · para la historia, ArgentinaDatos (del mismo proyecto) y el Banco Central | **OPERACIÓN ESTADÍSTICA** | Cotizaciones del dólar contado con liquidación y del mayorista; brecha porcentual entre ambos |
+| **MODO DE ACCESO** | Automático: la tarjeta lee la interfaz pública de dolarapi.com; la serie histórica, desde diciembre de 2023, divide el promedio mensual del contado con liquidación de ArgentinaDatos por el promedio mensual de la referencia oficial del dólar mayorista que publica el Banco Central. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
 Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria.
 
-Es una señal del resultado de la normalización cambiaria, no del desarme del cepo en sí: la brecha puede ser baja con restricciones vigentes y moverse por tasas o elecciones sin que cambie ninguna norma. Las cotizaciones salen de dolarapi.com, un servicio privado que replica las del mercado; el mayorista es el de referencia del Banco Central.
+Es una señal del resultado de la normalización cambiaria, no del desarme del cepo en sí: la brecha puede ser baja con restricciones vigentes y moverse por tasas o elecciones sin que cambie ninguna norma. Las cotizaciones del día salen de dolarapi.com, un servicio privado que replica las del mercado; el mayorista es el de referencia del Banco Central. La historia mensual usa el promedio del contado con liquidación de ArgentinaDatos, del mismo proyecto, sobre el promedio del mayorista que publica el Banco Central.
 
 **Dimensión que integra — Reformas económicas fundamentales.** El corazón de la promesa económica: la normalización cambiaria, vista en la brecha entre el dólar financiero y el oficial; la carga de impuestos sobre el comercio exterior, y la desregulación normativa.
 
 ## Método de cómputo
 
-- Brecha = (CCL − mayorista) / mayorista × 100.
+- Brecha = (contado con liquidación − mayorista) / mayorista × 100.
 - Se usa el mayorista y no el minorista de pizarra: el minorista incluye el margen bancario y subestima la brecha.
+- Tarjeta y serie no usan exactamente los mismos números: la tarjeta toma la última cotización de cada pata en dolarapi.com; cada punto de la serie, los promedios del mes de ArgentinaDatos y del Banco Central.
 - Una brecha reducida indica más proximidad entre las dos cotizaciones: es una señal de normalización cambiaria, pero no permite establecer por sí sola que hayan desaparecido todas las restricciones de acceso al mercado de cambios.
 
 ## Semáforo — valores que determinan el color
@@ -128,7 +129,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% de brecha CCL/mayorista) | Color |
+| Rango (% de brecha entre el contado con liquidación y el mayorista) | Color |
 |---|---|
 | ≤ 14 | VERDE |
 | 14 – 20 | AMARILLO |
@@ -139,13 +140,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1657.40 (2026-10-28T13:59:00-03:00) / mayorista venta 1537.00 (2026-10-28T08:53:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- Contado con liquidación venta 1665.40 (2026-10-28T17:55:00-03:00) / mayorista venta 1542.00 (2026-10-28T13:32:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 7,83 % de brecha CCL/mayorista (2026-10).
+Dato vigente: 8 % de brecha entre el contado con liquidación y el mayorista (2026-10).
 
-7,83 % de brecha CCL/mayorista está en Verde, a 6,17 del límite con Amarillo (14,0).
+8,0 % de brecha entre el contado con liquidación y el mayorista está en Verde, a 6,0 del límite con Amarillo (14,0).
 
 **Color vigente: VERDE**
 
@@ -153,9 +154,10 @@ Ponderación vigente en el ITCG: 14 % efectivo. El color es una lectura adiciona
 
 ## Transparencia — limitaciones declaradas
 
-- La fuente es un agregador privado, no un organismo oficial. Contrastada el 27 de octubre de 2026 con el cierre del 26: el contado con liquidación da 1.682,50 en dolarapi.com y 1.682,65 en Ámbito; el mayorista, 1.541 en los dos y en la referencia oficial del BCRA (Comunicación A3500). La brecha es la misma con cualquiera de las fuentes (9,2%).
-- Mide el cepo por su precio (la brecha que paga quien no accede al mercado oficial), no el stock regulatorio de restricciones.
-- La tarjeta usa las cotizaciones disponibles de CCL y mayorista, que pueden tener horas distintas; la serie usa promedios mensuales. La diferencia puede ser material y no representa una incoherencia aritmética.
+- La fuente de la tarjeta es un agregador privado, no un organismo oficial. Se contrastó con el cierre del 26 de octubre de 2026: el contado con liquidación daba 1.682,50 en dolarapi.com y 1.682,65 en Ámbito, y el mayorista 1.541 en los dos y en la referencia oficial del Banco Central; la brecha del 26 de octubre de 2026 era la misma con cualquiera de las fuentes (9,2 %). Es un contraste de ese día, no el dato vigente, que muestra la tarjeta.
+- Mide las restricciones cambiarias por su precio —cuánto más paga quien compra dólares por fuera del mercado oficial de cambios; desde que en abril de 2025 se levantaron las restricciones para las personas, sobre todo empresas que giran utilidades o mueven capitales—, no el conjunto de restricciones normativas: la brecha puede ser baja con restricciones vigentes y moverse por tasas o por elecciones sin que cambie ninguna norma.
+- La tarjeta usa las últimas cotizaciones disponibles del contado con liquidación y del mayorista, que pueden ser de horas distintas; la serie usa promedios mensuales. La diferencia puede ser material y no representa una incoherencia aritmética.
+- Las bandas salen del documento metodológico del índice de gestión de julio de 2026 («brecha sostenida por debajo de 10-15 % = condiciones óptimas de unificación»), no de una calibración contra la historia.
 
 ## Si falta el dato / Política de revisiones
 
@@ -165,15 +167,17 @@ Ponderación vigente en el ITCG: 14 % efectivo. El color es una lectura adiciona
 
 ## Historial — cambios metodológicos documentados
 
-**2026-10-27** — Se contrastan las cotizaciones con otra fuente (Ámbito y la referencia oficial A3500 del BCRA): coinciden. No cambia el cálculo.
+**2026-10-28** — La ficha se revisa contra el cálculo: declara la fuente de la serie histórica (ArgentinaDatos y el Banco Central) y que tarjeta y serie no usan los mismos números, fecha el contraste de fuentes como un dato del 26 de octubre y saca las siglas. No cambia el cálculo.
+
+**2026-10-27** — Se contrastan las cotizaciones con otra fuente (Ámbito y la referencia oficial del dólar mayorista del Banco Central): coinciden. No cambia el cálculo.
 
 **2026-10-26** — El rótulo pasa a «Brecha cambiaria», sin «cepo»: mide un precio, no el desarme de las restricciones. La descripción declara que las cotizaciones salen de un servicio privado (dolarapi.com). No cambia el cálculo.
 
-**2026-05** — Versión inicial del indicador sobre la brecha CCL/oficial minorista, en la escala de avance del cinturón anterior.
+**2026-05** — Versión inicial del indicador sobre la brecha entre el contado con liquidación y el oficial minorista, en la escala de avance del cinturón anterior.
 
 **2026-09-08** — La fecha proviene de la cotización más antigua, no del día de consulta. Se conservan precios y marcas de tiempo; fechas ausentes o inválidas y precios no positivos o no finitos provocan fallback al cache existente.
 
-**2026-07-02** — Entra al índice de gestión con umbrales institucionales sobre la brecha CCL/mayorista.
+**2026-07-02** — Entra al índice de gestión con umbrales institucionales sobre la brecha entre el contado con liquidación y el mayorista.
 
 **2026-07-03** — Puntaje interpolado entre anclas. Además, la brecha deja de puntuar una segunda vez dentro del compuesto de apertura comercial: puntúa una sola vez, acá.
 
@@ -1207,7 +1211,7 @@ Si los planes sociales siguen pasando por intermediarios: vale 100 desde que la 
 
 Mide lo que el compromiso prometía cambiar. La intermediación no estaba en la clasificación del gasto —en 2023 el 98,3% del devengado ya figuraba como ayudas a personas—, sino en las unidades de gestión: municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista. Es un acto, no un resultado: no acredita cómo se paga cada prestación ni que no quede intermediación informal.
 
-**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en todo el país y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 
@@ -1279,36 +1283,37 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Reducción de cortes de calle en el país
+# Reducción de cortes de calle en la Ciudad
 
-En qué porcentaje se redujo el número de cortes por manifestación relevados en todo el país respecto de 2023.
+En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de una base estimada para 2023.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 52,7 % de reducción de cortes por manifestación en todo el país vs 2023 (IRPC)** (2025-12) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
+| **Hoy: 74,2 % de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC)** (2025-12) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | protocolo_antipiquetes | **CINTURÓN** | Gestión |
-| **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % de reducción de cortes por manifestación en todo el país vs 2023 (IRPC) |
+| **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC) |
 | **SERIE DISPONIBLE** | 2025-01 → 2026-09 (21 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un año: los anclajes públicos de la fuente son por año cerrado. |
-| **PRODUCTOR DEL DATO** | Diagnóstico Político (consultora; relevamiento diario de cortes sobre más de cien medios desde 2009) | **OPERACIÓN ESTADÍSTICA** | Reducción porcentual de los cortes por manifestación en todo el país contra 2023, con los totales anuales publicados: 2023 8.239, 2024 5.996 y 2025 3.893. La misma fuente da la historia previa: 6.805 en 2014, 6.491 en 2016, 5.221 en 2017, 5.857 en 2018, 5.430 en 2019, 6.658 en 2021 y 9.778 en 2022. |
-| **MODO DE ACCESO** | Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el total anual con su fuente pública. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-28 |
+| **PRODUCTOR DEL DATO** | Diagnóstico Político (consultora privada; relevamiento diario de cortes sobre más de cien medios desde 2009; sus informes mensuales detallados son por suscripción) | **OPERACIÓN ESTADÍSTICA** | Reducción porcentual de los cortes por manifestación en la Ciudad de Buenos Aires contra 2023, con anclajes públicos: 2023 aproximadamente 931 (estimado), 2024 440 y 2025 240. |
+| **MODO DE ACCESO** | Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el anclaje anual con su fuente pública. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-En qué porcentaje se redujo el número de cortes por manifestación relevados en todo el país respecto de 2023.
+En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de una base estimada para 2023.
 
-Describe la evolución de los cortes registrados por Diagnóstico Político; el último dato es el del año 2025. El protocolo está vigente: un juez lo anuló en diciembre de 2025 y la Cámara en lo Contencioso Administrativo Federal revocó esa nulidad. Mide resultados observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.
+Describe la evolución de los cortes registrados por Diagnóstico Político, una consultora privada que no publica sus microdatos; el último dato es el del año 2025. El protocolo está vigente: un juez lo anuló en diciembre de 2025, la Cámara en lo Contencioso Administrativo Federal revocó esa nulidad en marzo de 2026 y el caso espera a la Corte Suprema (verificado en octubre de 2026). Mide resultados observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.
 
-**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en todo el país y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 
-- Reducción = (1 − cortes en el país del último año cerrado / cortes en el país en 2023) × 100.
-- Los totales nacionales son conteos publicados por la consultora, no estimaciones. Hasta octubre de 2026 el indicador medía sólo la Ciudad de Buenos Aires, con una base 2023 estimada desde una participación redondeada; ese registro se conserva y no puntúa.
+- Reducción = (1 − cortes en la Ciudad del último año cerrado / cortes en la Ciudad en 2023) × 100.
+- La base 2023 se estima como el total nacional de 2023 por la participación porteña publicada (11,3 %), redondeada a 931. La participación publicada ya está redondeada: 931 no es un conteo original exacto, y el redondeo mueve la reducción de 2025 en una décima hacia cada lado.
+- Los totales nacionales de cada año, de la misma consultora y con la misma definición de corte, quedan en el registro como contexto y no puntúan.
 
 ## Semáforo — valores que determinan el color
 
@@ -1316,7 +1321,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% de reducción de cortes por manifestación en todo el país vs 2023 (IRPC)) | Color |
+| Rango (% de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC)) | Color |
 |---|---|
 | ≥ 32,5 | VERDE |
 | 12,5 – 32,5 | AMARILLO |
@@ -1327,30 +1332,31 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 3.893 cortes en todo el país en 2025 vs 8.239 en 2023 (Diagnóstico Político) · No se pudo verificar si el portal publicó anclajes más recientes.
+- 240 cortes en la Ciudad de Buenos Aires en 2025 vs 931 en 2023 (Diagnóstico Político, consultora privada; base 2023 estimada desde una participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.
 
 ## Color vigente y por qué
 
-Dato vigente: 52,7 % de reducción de cortes por manifestación en todo el país vs 2023 (IRPC) (2025-12).
+Dato vigente: 74,2 % de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC) (2025-12).
 
-52,7 % de reducción de cortes por manifestación en todo el país vs 2023 (IRPC) está en Verde, a 20,2 del límite con Amarillo (32,5).
+74,2 % de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC) está en Verde, a 41,7 del límite con Amarillo (32,5).
 
 **Color vigente: VERDE**
 
 Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** El seguimiento interno de eventos de protesta (ACLED, en la Ciudad de Buenos Aires) complementa el de cortes. Sus universos difieren —en territorio y en lo que cuentan—: la comparación no identifica una conversión de los mismos eventos o actores en marchas sin corte.
+- **Participación en otros indicadores.** El seguimiento interno de eventos de protesta en la Ciudad de Buenos Aires (base internacional de conflictos ACLED) complementa el de cortes. Sus universos difieren: la comparación no identifica una conversión de los mismos eventos o actores en marchas sin corte.
 
 ## Transparencia — limitaciones declaradas
 
-- Fuente privada sin microdatos abiertos: los anclajes se reconstruyen de cifras publicadas.
-- Al 8 de septiembre de 2026 el portal de la consultora redirige a una página de cuenta suspendida. Los anclajes 2023–2025 se corroboran en La Nación y Chequeado, que citan el mismo relevamiento; no son dos mediciones independientes. La tarjeta advierte cuando el detector no puede verificar nuevas publicaciones.
+- Fuente privada: Diagnóstico Político es una consultora, no un organismo público, y no publica microdatos abiertos; sus informes mensuales detallados son por suscripción. Los anclajes se reconstruyen de las cifras anuales que la consultora difunde y que replica la prensa.
+- Al 28 de octubre de 2026 la página de monitoreos de la consultora no responde (antes, el 8 de septiembre, redirigía a una página de cuenta suspendida). Los anclajes 2023–2025 se corroboran en La Nación y Chequeado, que citan el mismo relevamiento; no son dos mediciones independientes. La tarjeta advierte cuando el detector no puede verificar nuevas publicaciones.
+- Mide la Ciudad de Buenos Aires, no todo el país: el protocolo es de las fuerzas federales y rige en todo el territorio nacional, y la Ciudad fue una parte menor de los cortes de 2023. Los totales nacionales de la misma consultora quedan registrados como contexto.
 - La reducción observada no identifica el efecto causal del protocolo ni demuestra ausencia de protesta o mejoras en el ejercicio de derechos. También cambiaron la política social, los actores y las modalidades de movilización.
 - Mide los cortes observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La vigencia del protocolo es un hecho aparte, que se registra en el estado judicial de abajo.
 - Granularidad anual: el valor se arrastra todo el año hasta el anclaje siguiente.
-- Estado judicial verificado: la nulidad de primera instancia fue revocada por la Cámara en lo Contencioso Administrativo Federal (marzo de 2026) — el protocolo es un acto válido y vigente.
-- Las bandas son una convención declarada —cuartos redondos de la reducción contra 2023, con el cero como piso— y no una calibración: se fijaron mirando la caída de la Ciudad y se conservaron sin moverlas al pasar al total nacional.
-- El monitoreo propio de alertas de transporte cubre sólo la Ciudad de Buenos Aires: sirve de contraste, no reemplaza al total nacional.
+- Estado judicial, verificado el 28 de octubre de 2026: el protocolo es la Resolución 943/2023 del Ministerio de Seguridad. En diciembre de 2025 un juez federal de primera instancia lo declaró nulo; el Gobierno apeló con efecto suspensivo, así que siguió aplicándose. El 31 de marzo de 2026 la Sala III de la Cámara en lo Contencioso Administrativo Federal revocó esa nulidad y declaró legítima la resolución. En mayo de 2026 la misma Sala concedió en parte el recurso extraordinario del Centro de Estudios Legales y Sociales, que llevó el caso a la Corte Suprema; la Corte todavía no se pronunció. El protocolo está vigente.
+- Las bandas son una convención declarada —cuartos redondos de la reducción contra 2023, con el cero como piso— fijada mirando la caída de la Ciudad en 2024 y 2025.
+- El registro histórico oficial de cortes del Gobierno de la Ciudad está fuera de servicio; el monitoreo propio de alertas de transporte acumula la serie que permitirá automatizar el dato.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1359,6 +1365,8 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** El registro se actualiza cuando la fuente publica el año nuevo (con aviso automático del detector).
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Vuelve a la Ciudad de Buenos Aires, que era lo decidido: se deja sin efecto el paso al total nacional del mismo día. Las bandas y la regla del año cerrado no cambian. El valor vuelve de 52,7% (país, 2025) a 74,2% (Ciudad, 2025) y la serie, de 27,2/52,7 a 52,7/74,2. La ficha declara que la fuente es una consultora privada y actualiza el estado judicial del protocolo: la Cámara revocó la nulidad en marzo de 2026 y el caso espera a la Corte Suprema.
 
 **2026-10-28** — Pasa de la Ciudad de Buenos Aires al total nacional de cortes de Diagnóstico Político, con la misma definición de corte y la misma base 2023. El protocolo es de las fuerzas federales y la Ciudad era un 11% del universo, con una base 2023 estimada desde una participación redondeada; el total nacional es un conteo publicado con historia desde 2014. Las bandas no se mueven y se declaran como convención. El valor pasa de 74,2% (Ciudad, 2025) a 52,7% (país, 2025) y la serie, de 52,7/74,2 a 27,2/52,7.
 
@@ -1408,7 +1416,7 @@ Cuánto avanzó la implementación de la libre elección de cobertura de salud: 
 
 Evalúa lo que depende del Gobierno: que la elección esté habilitada y funcione. No cuenta cuántas personas se cambian, porque quedarse en la cobertura actual también es elegir. Como dato de contexto, la tarjeta muestra qué parte de los usuarios de prepagas tiene sus aportes derivados directo. Con los hitos cumplidos el puntaje queda alto y estable: es una promesa cumplida, no un indicador de variación.
 
-**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en todo el país y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 

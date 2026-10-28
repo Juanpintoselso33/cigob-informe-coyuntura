@@ -1,6 +1,6 @@
 ---
 periodo: "2026-10"
-generado: "2026-10-28 14:37:23"
+generado: "2026-10-28 18:18:34"
 score_global: 3.8
 barbarismo_activo: "político"
 cinturon_dominante: "vida_cotidiana"
@@ -21,8 +21,8 @@ schema_version: "1.2.0"
 |---|---|---|---|---|
 | ipc_total | 1.93 | % mensual | 2026-09-01 | fresco |
 | reservas_bcra | 10725.0 | Millones de USD | 2026-09-30 | fresco |
-| idc | -0.34 | σ vs. su historia | 2026-09-01 | fresco |
-| badlar | 22.19 | % anual | 2026-10-26 | fresco |
+| idc | -0.35 | σ vs. su historia | 2026-09-01 | fresco |
+| badlar | 23.5 | % anual | 2026-10-27 | fresco |
 | emae_ia | -1.44 | % i.a. | 2026-07-01 | fresco |
 | emae_difusion | 46.67 | % de sectores en crecimiento i.a. | 2026-07-01 | fresco |
 | ipi_manufacturero | -2.04 | % i.a. (promedio 3 meses) | 2026-08-01 | fresco |
@@ -33,23 +33,23 @@ schema_version: "1.2.0"
 | terminos_intercambio | 145.14 | índice (base 2004 = 100) | 2026-04-01 | fresco |
 | tcr_terminos_intercambio | 49.8 | puntaje (0-100) | 2026-09-01 | fresco |
 | rem_ipc_12m | 21.1 | % anual esperado | 2026-09-30 | fresco |
-| idm | 1.85 | pp (brecha i.a. real) | 2026-09-01 | fresco |
+| idm | 1.87 | pp (brecha i.a. real) | 2026-09-01 | fresco |
 | desequilibrio_monetario | 64.02 | pts de tensión (0-100) | 2026-08-01 | fresco |
 | iai | -1.74 | % i.a. ponderado | 2026-08-01 | fresco |
 | icip | 13.67 | % i.a. ponderado | 2026-07-01 | fresco |
-| credito_privado | -1.2 | % i.a. real (crédito en pesos) | 2026-09-01 | fresco |
+| credito_privado | -0.6 | % i.a. real (crédito en pesos) | 2026-09-01 | fresco |
 | costo_financiamiento_tesoro | 6.22 | % real anual (TIREA vs. inflación esperada REM) | 2026-09-01 | fresco |
 | resultado_primario | 6.02 | % de la recaudación (acum. 12 meses) | 2026-08-01 | fresco |
-| prestamos_privados | 2.01 | % mensual nominal | 2026-10-22 | fresco |
-| base_monetaria | 2.33 | % mensual nominal | 2026-10-23 | fresco |
-| tc_mayorista | 0.97 | % mensual | 2026-10-27 | fresco |
+| prestamos_privados | 2.38 | % mensual nominal | 2026-10-23 | fresco |
+| base_monetaria | 1.68 | % mensual nominal | 2026-10-26 | fresco |
+| tc_mayorista | 1.38 | % mensual | 2026-10-28 | fresco |
 
 ### 🟢 Politica — score 3.0/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| ratio_dnu | 1.125 | DNUs publicados por ley publicada | 2026-10-28 | fresco |
+| ratio_dnu | 1.156 | decretos de necesidad y urgencia publicados por ley publicada | 2026-10-28 | fresco |
 | apoyo_empresario | -0.45 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
 | apoyo_comercio | 1.0 | saldo de postura (−1 a +1, 12m móviles) | 2026-10-01 | fresco |
 | apoyo_campo | -0.152 | saldo de postura (−1 a +1, 12m móviles) | 2026-09-01 | ⚠ cache |
@@ -104,7 +104,7 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 7.83 | % de brecha CCL/mayorista | 2026-10-28 | fresco |
+| cepo_mulc | 8.0 | % de brecha entre el contado con liquidación y el mayorista | 2026-10-28 | fresco |
 | apertura_comercial | 7.16 | % del intercambio (alícuota efectiva) | 2026-09-01 | fresco |
 | desregulacion_normativa | 17606.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-09-01 | fresco |
 | reduccion_estado | -21.37 | % de variación vs dic-2023 (dotación APN) | 2026-08-01 | fresco |
@@ -116,7 +116,7 @@ schema_version: "1.2.0"
 | rigi_inversiones | 36.4 | % de inversión aprobada sobre el pipeline | 2026-10-28 | fresco |
 | concesiones_infraestructura | 100.0 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-10-28 | fresco |
 | asistencia_directa | 100.0 | hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | 2026-10-28 | fresco |
-| protocolo_antipiquetes | 52.7 | % de reducción de cortes por manifestación en todo el país vs 2023 (IRPC) | 2025-12-31 | fresco |
+| protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 100.0 | Avance de la libre elección de cobertura de salud (hitos 0–100) | 2026-09-01 | fresco |
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-10-28 | fresco |
 | protestas_caba | 264 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-09-01 | fresco |
@@ -134,4 +134,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:apoyo_empresario,apoyo_campo,apoyo_construccion`
 
 ---
-*Generado por CIGOB — 2026-10-28 14:37:23 — schema 1.2.0*
+*Generado por CIGOB — 2026-10-28 18:18:34 — schema 1.2.0*

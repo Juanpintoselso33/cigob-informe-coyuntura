@@ -16,6 +16,7 @@ import terminos_intercambio as ti  # noqa: E402
 D = itcm.DIMENSIONES_ITCM
 
 # Pesos efectivos en el índice ANTES de ADR-0387 (dimensión × peso interno).
+# ADR-0409 movió las reservas a estabilidad y estos siguen siendo los mismos.
 EFECTIVOS = {
     "ipc_total": 0.156, "rem_ipc_12m": 0.052, "desequilibrio_monetario": 0.052,
     "resultado_primario": 0.12, "recaudacion": 0.072, "saldo_comercial_12m": 0.048,
@@ -31,8 +32,12 @@ def test_composicion_de_las_dimensiones():
                        "financiamiento", "actividad"]
     assert "viabilidad_fiscal_comercial" not in D and "competitividad_externa" not in D
     assert set(D["cuentas_fiscales"]["indicadores"]) == {"resultado_primario", "recaudacion"}
+    # ADR-0409: las reservas netas pasan a estabilidad monetaria-inflacionaria.
     assert set(D["sector_externo"]["indicadores"]) == {
-        "saldo_comercial_12m", "reservas_bcra", "tcrm", "terminos_intercambio"}
+        "saldo_comercial_12m", "tcrm", "terminos_intercambio"}
+    assert set(D["estabilidad_monetaria"]["indicadores"]) == {
+        "ipc_total", "rem_ipc_12m", "desequilibrio_monetario", "reservas_bcra"}
+    assert D["estabilidad_monetaria"]["peso"] == 0.3144 and D["sector_externo"]["peso"] == 0.158
     assert set(D["financiamiento"]["indicadores"]) == {
         "idc", "costo_financiamiento_tesoro", "credito_privado"}
     assert D["cuentas_fiscales"]["nombre"] == "Cuentas fiscales"
@@ -67,9 +72,9 @@ def test_el_itcm_no_se_mueve_con_los_datos_completos():
 
 def test_grupo_incompleto_no_se_calcula_ni_se_promedia():
     p, usados = parametrica.puntaje_dimension(
-        {"tcrm": 40.0, "reservas_bcra": 60.0},
+        {"tcrm": 40.0, "saldo_comercial_12m": 60.0},
         D["sector_externo"]["indicadores"], D["sector_externo"]["grupos"])
-    assert usados == {"reservas_bcra"} and p == 60.0
+    assert usados == {"saldo_comercial_12m"} and p == 60.0
     p, usados = parametrica.puntaje_dimension(
         {"tcrm": 40.0}, D["sector_externo"]["indicadores"], D["sector_externo"]["grupos"])
     assert p is None and usados == set()

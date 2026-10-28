@@ -42,7 +42,7 @@ Componentes que puntúan en este corte: 17 de 17 publicados.
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 72,3 | VERDE | 22,6 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 72,1 | VERDE | 22,6 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 53,8 | AMARILLO | 20,4 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 84,8 | VERDE | 16,1 % |
 | Poder judicial | Mide la cobertura estimada de cargos de juez, que depende de los pliegos que eleva el Poder Ejecutivo y del acuerdo del Senado. | 62,0 | VERDE | 16,1 % |
@@ -62,7 +62,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,12 DNUs publicados por ley publicada | AMARILLO | 5,2 % |
+| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,16 decretos de necesidad y urgencia publicados por ley publicada | AMARILLO | 5,2 % |
 | Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 6,8 % |
 | Vetos que el Congreso dio vuelta | Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses. | 0 vetos insistidos por las dos cámaras, últimos 12 meses | VERDE | 3,4 % |
 | Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 3,4 % |
@@ -101,30 +101,30 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,12 DNUs publicados por ley publicada** (2026-10) | **AMARILLO** | Peso efectivo 5,2 % del ITCP | Cinturón Política |
+| **Hoy: 1,16 decretos de necesidad y urgencia publicados por ley publicada** (2026-10) | **AMARILLO** | Peso efectivo 5,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | ratio_dnu | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | DNUs publicados por ley publicada |
+| **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | decretos de necesidad y urgencia publicados por ley publicada |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | InfoLeg incorpora publicaciones del Boletín Oficial con un rezago que no está garantizado. La fecha de consulta no acredita por sí sola exhaustividad ni tipificación correcta. |
-| **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — listado de decretos tipificados «Decreto DNU» y conteo de leyes, los dos por fecha de publicación en el Boletín Oficial, en los últimos 365 días |
-| **MODO DE ACCESO** | Automático: dos consultas al buscador oficial sobre la misma ventana. Del lado de las leyes toma el total de resultados. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia» y se queda con los que la grilla rotula «Decreto DNU»; la tarjeta publica el inventario de las normas efectivamente contadas, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
+| **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — listado de decretos de necesidad y urgencia y conteo de leyes, los dos por fecha de publicación en el Boletín Oficial, en los últimos 365 días |
+| **MODO DE ACCESO** | Automático: consultas al buscador oficial sobre la misma ventana. Del lado de las leyes toma el total de resultados. Del lado de los decretos trae el listado completo —paginado— de los que contienen la frase «necesidad y urgencia» y abre el texto original de cada uno para leer con qué tipo se firmó; la tarjeta publica el inventario de las normas efectivamente contadas, con su fecha de publicación. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
 Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una ventana móvil de 365 días. Las leyes del denominador son las publicadas, no las sancionadas, así que no coincide con la «Producción legislativa», que cuenta las que sanciona el Congreso. Los dos lados del cociente usan la misma convención jurídica —la publicación, no el dictado ni la sanción—: son momentos distintos del trámite y mezclarlos mueve el ratio sin que nada falle.
 
-Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. En el relevamiento cerrado el 19 de julio de 2026, el 95% de los decretos de necesidad y urgencia de esta gestión nunca había llegado a votarse en el recinto; de los ocho que sí habían llegado, seis habían caído. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
+Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. La gran mayoría de los decretos de necesidad y urgencia nunca llega a votarse en el recinto y sigue vigente, pero el Congreso puede derogarlos con el rechazo de las dos cámaras, como hizo con el de los fondos reservados de inteligencia en 2024 y el de la marina mercante en 2025. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia (DNU) en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
-- Ratio = DNU publicados / leyes publicadas (no sancionadas; por eso el denominador no coincide con «Producción legislativa del Congreso») en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.
-- Los DNU se identifican por el TIPO JURÍDICO que declara la grilla de InfoLeg («Decreto DNU»), no por el texto. La búsqueda por la frase «necesidad y urgencia» se conserva sólo como filtro previo, para no tener que traer todos los decretos del año: esa frase la dicen también los decretos que prorrogan una intervención dispuesta por un DNU, los reglamentarios, los vetos que la citan al fundarse y los decretos ordinarios que modifican una norma dictada en su momento por DNU.
+- Ratio = decretos de necesidad y urgencia publicados / leyes publicadas (no sancionadas; por eso el denominador no coincide con «Producción legislativa del Congreso») en el Boletín Oficial dentro de 365 fechas incluidas: desde la fecha final menos 364 días hasta la fecha final, con ambos extremos incluidos. La convención es publicación en ambos lados, no dictado ni sanción; no se reinicia el conteo en enero.
+- Un decreto cuenta como de necesidad y urgencia por el TIPO JURÍDICO con el que se firmó, que encabeza su texto original publicado en el Boletín (el identificador empieza con «DNU-», frente a «DECTO-» de un decreto común), no por la frase. La búsqueda por «necesidad y urgencia» se conserva sólo como filtro previo, para no tener que traer todos los decretos del año: esa frase la dicen también los decretos que prorrogan una intervención dispuesta por uno de necesidad y urgencia, los reglamentarios, los vetos que la citan al fundarse y los decretos comunes que modifican una norma dictada en su momento así. El rótulo «Decreto DNU» de la grilla de InfoLeg no alcanza: es un dato de catálogo y se equivoca en las dos direcciones. Si un texto original no se puede leer, decide ese rótulo.
 - El listado se pagina hasta completar el total que declara el buscador (la grilla devuelve 50 filas por página); si lo acumulado no llega a ese total, el indicador falla en vez de publicar un conteo corto.
 - La serie histórica recalcula esta ventana móvil al cierre de cada mes desde diciembre de 2023. El mes en curso es provisional y termina en el día de consulta; también abarca 365 fechas, pero todavía no representa el cierre de ese mes. No hay un reseteo del conteo en enero.
 
@@ -134,7 +134,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (DNUs publicados por ley publicada) | Color |
+| Rango (decretos de necesidad y urgencia publicados por ley publicada) | Color |
 |---|---|
 | ≤ 1,08 | VERDE |
 | 1,08 – 1,6 | AMARILLO |
@@ -145,13 +145,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 36 DNU y 32 leyes publicados en el Boletín Oficial entre 2025-10-29 y 2026-10-28 → 1.12 DNU por ley
+- 37 decretos de necesidad y urgencia y 32 leyes publicados en el Boletín Oficial entre el 29/10/2025 y el 28/10/2026: 1,16 decretos por ley
 
 ## Color vigente y por qué
 
-Dato vigente: 1,12 DNUs publicados por ley publicada (2026-10).
+Dato vigente: 1,16 decretos de necesidad y urgencia publicados por ley publicada (2026-10).
 
-1,125 DNUs publicados por ley publicada está en Amarillo, a 0,04 del límite con Verde (1,08).
+1,156 decretos de necesidad y urgencia publicados por ley publicada está en Amarillo, a 0,08 del límite con Verde (1,08).
 
 **Color vigente: AMARILLO**
 
@@ -160,8 +160,8 @@ Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicion
 ## Transparencia — limitaciones declaradas
 
 - Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.
-- En el relevamiento cerrado el 19 de julio de 2026, los datos respaldaban que la dependencia fuera una vulnerabilidad real y no una objeción teórica, pero también que fuera latente: de los 162 decretos de necesidad y urgencia dictados desde diciembre de 2023, el 95% nunca se había votado en el recinto y por lo tanto seguía vigente; de los ocho que sí se habían votado, seis habían caído. El 7 de agosto de 2025 cayeron cinco en un solo día.
-- El conteo depende tanto del rótulo de InfoLeg como del filtro textual previo. Ambos pueden tener errores u omisiones parciales sin que el resultado caiga a cero. El cotejo del 8-sep-2026 encontró que InfoLeg rotula el 44/2026 como DNU aunque el original lo identifica como decreto común; el filtro usado no lo estaba contando. La consulta completa de decretos y los textos originales son controles independientes necesarios.
+- La dependencia es una vulnerabilidad real pero latente: la gran mayoría de los decretos de necesidad y urgencia de la gestión nunca se votó en el recinto y sigue vigente. De los que se votaron, el Congreso derogó dos con el rechazo de las dos cámaras —los fondos reservados de inteligencia (septiembre de 2024) y la marina mercante (agosto de 2025)—; el Senado rechazó solo el decreto 70/2023, que siguió vigente, y Diputados aprobó el del acuerdo con el Fondo Monetario Internacional. Los otros cuatro derogados el 21 de agosto de 2025 eran decretos delegados, que no entran en este cociente.
+- El conteo depende del filtro textual previo y del texto original de cada decreto. El cotejo del 28 de octubre de 2026 no encontró en la ventana ningún decreto de necesidad y urgencia fuera del filtro, y sí tres que InfoLeg rotula como decretos comunes (867/2026, 521/2025 y 493/2025); el del 8 de septiembre había encontrado el caso inverso, el 44/2026. Si InfoLeg deja de publicar el texto original de una norma, esa norma se clasifica por el rótulo.
 - Depende del formulario del buscador oficial: un rediseño del sitio lo interrumpe hasta adaptarlo.
 - El buscador no ofrece descarga masiva: reconstruir la serie mensual exige dos consultas por mes —una de leyes y una de decretos—, no un volcado único como el de otros portales de datos abiertos.
 
@@ -172,6 +172,8 @@ Ponderación vigente en el ITCP: 5,2 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Los conteos se reconsultan en cada actualización. Las cargas tardías o correcciones del catálogo pueden revisar los valores; la consulta automática no garantiza detectar errores de rótulo ni omisiones del filtro textual.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Un decreto cuenta como de necesidad y urgencia por el tipo con el que se firmó, que figura en el encabezado de su texto original, y no por el rótulo del catálogo de InfoLeg, que trataba como comunes a tres decretos de necesidad y urgencia (presupuesto, septiembre de 2026; ejercicios militares y agua potable, julio de 2025). La ventana actual suma uno (de 36 a 37 sobre 32 leyes); en la serie, suman dos los cierres de julio de 2025 a junio de 2026 y uno los de septiembre y octubre de 2026.
 
 **2026-10-28** — El rótulo aclara que cuenta decretos y leyes publicados en el Boletín Oficial y la ficha explica la diferencia con «Producción legislativa del Congreso», que cuenta leyes sancionadas. No cambia el cálculo.
 
@@ -902,7 +904,7 @@ Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365
 
 Mide la aprobación de una cohorte de proyectos maduros. Las iniciativas publicadas hace menos de un año quedan fuera: no resume la aprobación de la agenda actual ni pondera la importancia política de cada proyecto.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia (DNU) en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -1306,11 +1308,11 @@ Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses:
 
 Es la derrota legislativa más dura que puede sufrir el Ejecutivo: exige dos tercios en las dos cámaras. Cuenta sólo lo consumado; una insistencia que se vota y no alcanza los dos tercios, o que aprueba una sola cámara, no suma. Cero es la lectura más favorable para el Gobierno.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia (DNU) en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
-- Un veto cuenta cuando las dos cámaras insistieron con dos tercios y la ley quedó promulgada por insistencia (artículo 83 de la Constitución). Se fecha en la insistencia de la segunda cámara. Una insistencia que no alcanza los dos tercios, o que vota una sola cámara, no cuenta.
+- Un veto cuenta cuando las dos cámaras insistieron con dos tercios y la ley quedó promulgada por insistencia (artículo 83 de la Constitución). Se fecha en la insistencia de la segunda cámara. La corrida detecta la insistencia consumada cuando la ley aparece publicada, unas semanas después del voto; si todavía no tiene registrado el voto de alguna de las dos cámaras, la fecha provisoria es la de publicación. Una insistencia que no alcanza los dos tercios, o que vota una sola cámara, no cuenta.
 - Se suman los de los últimos doce meses calendario, hasta el día de la actualización.
 
 ## Semáforo — valores que determinan el color
@@ -1330,7 +1332,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Ninguna en los últimos 12 meses: cero es la señal, no un dato faltante. La última fue ley 27.796 (Emergencia sanitaria pediátrica (Garrahan) y residencias), el 02/10/2025.
+- Ninguna en los últimos 12 meses: cero es la señal, no un dato faltante. La última fue ley 27.796 (Emergencia sanitaria pediátrica del Hospital Garrahan y residencias), el 02/10/2025.
 
 ## Color vigente y por qué
 
@@ -1355,6 +1357,8 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** El registro se revisa en cada actualización: si una fuente carga un acta con retraso, el conteo se corrige solo hacia atrás.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Se fecha siempre en el voto de la segunda cámara, también cuando la corrida detecta la insistencia por la publicación de la ley; antes, un caso nuevo habría quedado fechado en la publicación. Cotejado contra el Boletín Oficial: desde octubre de 2025 no hubo vetos nuevos ni leyes promulgadas por insistencia. No cambia ningún conteo publicado.
 
 **2026-10-27** — Entra al índice político en reemplazo de las sesiones caídas por falta de quórum y de las normas desafiadas en el recinto, que la revisión del 26 de octubre consideró mal formuladas. Cuenta sólo lo consumado en las dos cámaras. En todo el mandato hubo tres: discapacidad (4 de septiembre de 2025), financiamiento universitario y Garrahan (2 de octubre de 2025). Con los datos del 27 de octubre de 2026 la ventana da cero y el índice político no cambia.
 
@@ -1390,7 +1394,7 @@ Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los
 
 El rechazo de una sola cámara no deroga el decreto; el de las dos, sí. Cuenta sólo los derogados, fechados en el rechazo de la segunda cámara. Cero es la lectura más favorable para el Gobierno.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia (DNU) en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -1414,7 +1418,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Ninguna en los últimos 12 meses: cero es la señal, no un dato faltante. La última fue Decreto delegado 462/2025 (Transformación de INTA, INTI, INV, INPI; disolución de ARICCAME, INAFCI, INASE), el 21/08/2025.
+- Ninguna en los últimos 12 meses: cero es la señal, no un dato faltante. La última fue Decreto delegado 462/2025 (Transformación de los institutos nacionales de Tecnología Agropecuaria, de Tecnología Industrial, de Vitivinicultura y de la Propiedad Industrial; disolución de otros tres organismos), el 21/08/2025.
 
 ## Color vigente y por qué
 
@@ -1440,7 +1444,9 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-10-27** — Entra al índice político en reemplazo de las sesiones caídas por falta de quórum y de las normas desafiadas en el recinto, que la revisión del 26 de octubre consideró mal formuladas. Cuenta sólo los decretos derogados por las dos cámaras. En todo el mandato hubo seis: los fondos reservados de inteligencia (12 de septiembre de 2024) y cinco el 21 de agosto de 2025 (marina mercante, Cultura, Datos Genéticos, Vialidad, y el de INTA e INTI). Con los datos del 27 de octubre de 2026 la ventana da cero y el índice político no cambia.
+**2026-10-28** — Cotejado contra las resoluciones de las dos cámaras publicadas en el Boletín Oficial: las últimas que rechazan decretos son las del 25 de agosto de 2025, así que la ventana de doce meses da cero de verdad. Los nombres de los decretos se escriben sin siglas. No cambia el conteo.
+
+**2026-10-27** — Entra al índice político en reemplazo de las sesiones caídas por falta de quórum y de las normas desafiadas en el recinto, que la revisión del 26 de octubre consideró mal formuladas. Cuenta sólo los decretos derogados por las dos cámaras. En todo el mandato hubo seis: los fondos reservados de inteligencia (12 de septiembre de 2024) y cinco el 21 de agosto de 2025 (marina mercante, Cultura, Datos Genéticos, Vialidad, y el de los institutos de tecnología agropecuaria e industrial). Con los datos del 27 de octubre de 2026 la ventana da cero y el índice político no cambia.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1474,7 +1480,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno 
 
 Responde si el Congreso sanciona leyes que el Gobierno acepta: más leyes, menos tensión entre los poderes. Una ley vetada entera no es producción compartida sino un desacuerdo, y ese desacuerdo ya lo registran los vetos insistidos. No equipara el total a victorias del Ejecutivo: ni el origen ni el contenido de cada ley se deducen del conteo.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia (DNU) en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 

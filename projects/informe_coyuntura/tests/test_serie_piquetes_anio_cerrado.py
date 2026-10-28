@@ -19,9 +19,9 @@ def _serie(monkeypatch, hoy):
 
 def test_el_dato_de_un_anio_entra_en_enero_del_siguiente(monkeypatch):
     s = _serie(monkeypatch, date(2026, 10, 5))
-    # ADR-0405: total nacional (8.239 en 2023, 5.996 en 2024, 3.893 en 2025).
-    assert s["2025-01-01"] == 27.2 and s["2025-12-01"] == 27.2   # 2024 cerrado
-    assert s["2026-01-01"] == 52.7 and s["2026-09-01"] == 52.7   # 2025 cerrado
+    # ADR-0408: la Ciudad (931 estimado en 2023, 440 en 2024, 240 en 2025).
+    assert s["2025-01-01"] == 52.7 and s["2025-12-01"] == 52.7   # 2024 cerrado
+    assert s["2026-01-01"] == 74.2 and s["2026-09-01"] == 74.2   # 2025 cerrado
 
 
 def test_no_hay_puntos_con_un_anio_sin_cerrar(monkeypatch):

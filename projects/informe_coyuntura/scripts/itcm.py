@@ -387,10 +387,18 @@ ANCLAS_ITCM = {
 DIMENSIONES_ITCM = {
     "estabilidad_monetaria": {
         "nombre": "Estabilidad monetaria-inflacionaria",
-        "peso": 0.26,
+        # ADR-0409 (2026-10-28, decisión de Juan): las reservas netas pasan acá
+        # desde «Sector externo» con su peso efectivo (0,0544), así que la
+        # dimensión pasa de 0,26 a 0,3144. Es una reorganización como la de
+        # ADR-0387: cada indicador conserva su peso en el índice (IPC 0,156,
+        # REM 0,052, desequilibrio 0,052, reservas 0,0544) y por eso los pesos
+        # internos se escriben como cociente sobre 0,3144.
+        "peso": 0.3144,
         "indicadores": {
-            # 60/20/20 desde ADR-0261. Eran 40/20/20/20 (ADR-0193) con `idm` en
-            # el cuarto lugar, y su 20% vacante vuelve ENTERO al IPC.
+            # 60/20/20 desde ADR-0261 (sobre el 0,26 de entonces; desde
+            # ADR-0409 son 0,156/0,052/0,052 del índice, igual que antes). Eran
+            # 40/20/20/20 (ADR-0193) con `idm` en el cuarto lugar, y su 20%
+            # vacante vuelve ENTERO al IPC.
             #
             # No se renormaliza en proporción, y la razón es que ADR-0193 no fijó
             # estos pesos como proporciones sino con dos compromisos explícitos
@@ -406,9 +414,13 @@ DIMENSIONES_ITCM = {
             #      de la dimensión.
             # Sacar un par no cambia lo que valen los otros dos: la cuota vacante
             # vuelve al núcleo y nada más se mueve.
-            "ipc_total": 0.60,
-            "rem_ipc_12m": 0.20,
-            "desequilibrio_monetario": 0.20,
+            # Con ADR-0409 el ancla 1 se conserva tal cual: el desequilibrio
+            # sigue en 0,052 del índice y las reservas en 0,0544, ahora en la
+            # misma dimensión.
+            "ipc_total": 0.156 / 0.3144,
+            "rem_ipc_12m": 0.052 / 0.3144,
+            "desequilibrio_monetario": 0.052 / 0.3144,
+            "reservas_bcra": 0.0544 / 0.3144,
         },
     },
     "cuentas_fiscales": {
@@ -429,21 +441,23 @@ DIMENSIONES_ITCM = {
     },
     "sector_externo": {
         "nombre": "Sector externo",
-        "peso": 0.2124,
+        "peso": 0.158,
         # ADR-0387 (2026-10-27), a pedido de Luis: junta lo que estaba disperso
         # en tres dimensiones —el saldo comercial (de «Viabilidad fiscal-
         # comercial», 0,048), las reservas netas (de «Capacidad y costo del
         # financiamiento», 0,0544) y la competitividad externa (0,11, el tipo de
         # cambio real cruzado con los términos del intercambio, ADR-0360/0375)—.
         # Es una reorganización: cada indicador conserva su peso efectivo en el
-        # índice (0,048 + 0,0544 + 0,055 + 0,055 = 0,2124), por eso los pesos
-        # internos se escriben como cociente. Sólo cambia el redondeo del
-        # puntaje de dimensión (un decimal) y el reparto ante datos faltantes.
+        # índice, por eso los pesos internos se escriben como cociente. Sólo
+        # cambia el redondeo del puntaje de dimensión (un decimal) y el reparto
+        # ante datos faltantes.
+        # ADR-0409 (2026-10-28): las reservas netas pasan a «Estabilidad
+        # monetaria-inflacionaria» con su 0,0544; quedan 0,048 + 0,055 + 0,055
+        # = 0,158.
         "indicadores": {
-            "saldo_comercial_12m": 0.048 / 0.2124,
-            "reservas_bcra": 0.0544 / 0.2124,
-            "tcrm": 0.055 / 0.2124,
-            "terminos_intercambio": 0.055 / 0.2124,
+            "saldo_comercial_12m": 0.048 / 0.158,
+            "tcrm": 0.055 / 0.158,
+            "terminos_intercambio": 0.055 / 0.158,
         },
         # ADR-0375: tcrm y términos del intercambio no se promedian, se cruzan
         # con la matriz de cuatro esquinas, y el cruce entra con el peso que

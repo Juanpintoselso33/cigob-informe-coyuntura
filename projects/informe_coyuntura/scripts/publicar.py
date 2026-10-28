@@ -457,9 +457,10 @@ def acumular_historico(informe):
     for sustituido in ("dolarizacion_depositos", "presion_dolarizacion"):
         store.pop(sustituido, None)
     # Cambios de unidad o de alcance: los meses anteriores están en otra unidad
-    # (saldo en dólares, ADR-0404), otro alcance (piquetes de CABA, ADR-0405) u
-    # otra comparación (transferencias interanuales, ADR-0397), y no se pueden
-    # encadenar con los nuevos.
+    # (saldo en dólares, ADR-0404) u otra comparación (transferencias
+    # interanuales, ADR-0397), y no se pueden encadenar con los nuevos. Los
+    # piquetes salieron de esta lista con ADR-0408: vuelven a la Ciudad, el
+    # mismo alcance que sus meses viejos.
     for clave, desde in METODO_NUEVO_DESDE.items():
         if clave in store:
             store[clave] = {ym: v for ym, v in store[clave].items() if ym >= desde}
@@ -476,7 +477,6 @@ def acumular_historico(informe):
 
 
 METODO_NUEVO_DESDE = {"saldo_comercial_12m": "2026-10",
-                      "protocolo_antipiquetes": "2026-10",
                       "transferencias_no_automaticas": "2026-10"}
 
 

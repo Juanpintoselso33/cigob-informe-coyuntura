@@ -237,7 +237,7 @@ PROCEDENCIA = {
     # calibración que señalaba ADR-0189 (la TDPS ya era 98,3% en 2023) se fue
     # con la TDPS.
     "asistencia_directa": ("conceptual", "hito binario: 100 desde el cese de las unidades de gestión (Res. 84/2024), 0 antes; las bandas sólo se usan en sus extremos (ADR-0362)"),
-    "protocolo_antipiquetes": ("convencion", "anclas declaradas por convención —cuartos redondos de la reducción contra 2023: 0 → 10 · 12,5 → 40 · 37,5 → 65 · 62,5 → 85 · 75 → 100—; se habían fijado mirando la caída de CABA y se conservan sin moverlas al pasar al total nacional, para no ajustar la escala al nuevo resultado (ADR-0405)"),
+    "protocolo_antipiquetes": ("convencion", "anclas declaradas por convención —cuartos redondos de la reducción contra 2023: 0 → 10 · 12,5 → 40 · 37,5 → 65 · 62,5 → 85 · 75 → 100—; fijadas mirando la caída observada en la Ciudad de Buenos Aires en 2024-2025, el universo que mide el indicador (ADR-0405 lo había pasado al total nacional; ADR-0408 lo devuelve a la Ciudad)"),
     "libertad_opcion_salud": ("conceptual", "avance por hitos de implementación (25/20/20/20/15); un ancla por escalón y el 100 es la libre elección implementada y funcionando (ADR-0371)"),
     "siniestralidad_laboral": ("convencion", "toma la convención de variación interanual de los juicios (cortes en −15, −5, +5 y +20 %), que reemplaza; la serie de la SRT sólo da seis variaciones anuales y no alcanza para calibrar una escala propia (ADR-0385)"),
     "juicios_trabajo_capital": ("convencion", "toma la escala de litigiosidad_laboral (hoy suspendida; la misma que usa siniestralidad_laboral), que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365)"),

@@ -7,7 +7,7 @@ cinturon: 'transversal'
 indice: 'todos'
 indicadores: [ipc_total, emae_ia, ipi_manufacturero, rem_ipc_12m, saldo_comercial_12m, ratio_dnu, cohesion_bloque, adhesion_reformas_provincial, reduccion_estado, rigi_inversiones, cepo_mulc, apertura_comercial, protocolo_antipiquetes]
 archivos: ['web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/fichas.ts', 'web/src/components/IndicadorModal.astro', 'scripts/publicar.py', 'scripts/parametrica.py', 'scripts/itcm.py', 'scripts/itcg.py']
-relacionado: ['0340', '0361', '0367', '0406']
+relacionado: ['0340', '0361', '0367', '0406', '0408']
 ambito: 'Todo el sitio · rótulos, unidades, descripciones y fichas de índice'
 origen: 'Revisiones de Luis Babino del 26-oct-2026 (macro, gestión y político) y decisión de Juan del mismo día de empezar por lo transversal y los textos.'
 ---

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-10-28T14:37:06.218164-03:00",
+    "generated_at": "2026-10-28T18:18:18.237179-03:00",
     "nota": "Ancla externa: ICC UTDT (ADR-0314). También panel y factor común"
   },
   "serie_itvc": {
@@ -52,22 +52,22 @@
     }
   },
   "serie_itcm": {
-    "2023-12": 28.9,
-    "2024-01": 29.1,
-    "2024-02": 32.0,
-    "2024-03": 28.7,
-    "2024-04": 32.2,
-    "2024-05": 38.5,
-    "2024-06": 31.6,
+    "2023-12": 26.5,
+    "2024-01": 26.8,
+    "2024-02": 29.7,
+    "2024-03": 26.1,
+    "2024-04": 29.9,
+    "2024-05": 36.3,
+    "2024-06": 31.7,
     "2024-07": 36.0,
     "2024-08": 34.1,
-    "2024-09": 35.7,
-    "2024-10": 40.6,
-    "2024-11": 47.6,
-    "2024-12": 53.0,
-    "2025-01": 58.4,
-    "2025-02": 57.6,
-    "2025-03": 54.7,
+    "2024-09": 35.6,
+    "2024-10": 40.4,
+    "2024-11": 47.3,
+    "2024-12": 52.8,
+    "2025-01": 58.1,
+    "2025-02": 57.4,
+    "2025-03": 54.6,
     "2025-04": 61.5,
     "2025-05": 63.2,
     "2025-06": 66.4,
@@ -82,7 +82,7 @@
     "2026-03": 52.3,
     "2026-04": 50.0,
     "2026-05": 53.1,
-    "2026-06": 56.7,
+    "2026-06": 56.8,
     "2026-07": 53.6,
     "2026-08": 54.6
   },
@@ -106,7 +106,7 @@
   ],
   "linea_base_itcm": {
     "periodo": "2023-12",
-    "valor": 28.9,
+    "valor": 26.5,
     "cobertura": 0.894,
     "sin_dato": [
       "desequilibrio_monetario",
@@ -177,23 +177,23 @@
   },
   "correlaciones_itcm": {
     "niveles (ITCM vs índice líder)": {
-      "r": 0.707,
+      "r": 0.71,
       "n": 33
     },
     "primeras diferencias (ITCM vs líder)": {
-      "r": 0.377,
+      "r": 0.368,
       "n": 32
     },
     "líder adelantado 1 mes vs ITCM": {
-      "r": 0.531,
+      "r": 0.529,
       "n": 33
     },
     "líder adelantado 3 meses vs ITCM": {
-      "r": 0.164,
+      "r": 0.132,
       "n": 33
     },
     "ITCM adelantado 1 mes vs líder": {
-      "r": 0.658,
+      "r": 0.673,
       "n": 33
     }
   },
@@ -202,19 +202,19 @@
       {
         "mes": "2024-09",
         "tipo": "valle",
-        "amplitud": -6.51,
+        "amplitud": -5.96,
         "provisorio": false
       },
       {
         "mes": "2025-06",
         "tipo": "pico",
-        "amplitud": 9.35,
+        "amplitud": 9.42,
         "provisorio": false
       },
       {
         "mes": "2026-02",
         "tipo": "valle",
-        "amplitud": -8.72,
+        "amplitud": -8.73,
         "provisorio": false
       }
     ],
@@ -388,7 +388,7 @@
   "redundancia_itcm": {
     "diferencias": {
       "n_pares": 120,
-      "r_abs_medio": 0.172,
+      "r_abs_medio": 0.173,
       "share_altos": 0.008
     },
     "umbral": 0.7,
@@ -399,12 +399,12 @@
     "share_bajos": 0.408,
     "matriz": {
       "costo_financiamiento_tesoro": {
-        "credito_privado": 0.097,
+        "credito_privado": 0.098,
         "desequilibrio_monetario": 0.389,
         "emae_difusion": 0.19,
         "emae_ia": 0.167,
         "iai": 0.106,
-        "idc": 0.154,
+        "idc": 0.153,
         "ipc_total": 0.148,
         "ipi_manufacturero": 0.048,
         "recaudacion": 0.018,
@@ -416,21 +416,21 @@
         "terminos_intercambio": 0.011
       },
       "credito_privado": {
-        "costo_financiamiento_tesoro": 0.097,
+        "costo_financiamiento_tesoro": 0.098,
         "desequilibrio_monetario": 0.08,
         "emae_difusion": 0.7,
         "emae_ia": 0.785,
         "iai": 0.841,
         "idc": 0.92,
-        "ipc_total": 0.606,
+        "ipc_total": 0.607,
         "ipi_manufacturero": 0.662,
         "recaudacion": -0.354,
-        "rem_ipc_12m": 0.861,
-        "reservas_bcra": -0.071,
+        "rem_ipc_12m": 0.862,
+        "reservas_bcra": -0.069,
         "resultado_primario": 0.792,
-        "saldo_comercial_12m": 0.411,
+        "saldo_comercial_12m": 0.413,
         "tcrm": -0.546,
-        "terminos_intercambio": 0.049
+        "terminos_intercambio": 0.05
       },
       "desequilibrio_monetario": {
         "costo_financiamiento_tesoro": 0.389,
@@ -501,7 +501,7 @@
         "terminos_intercambio": 0.28
       },
       "idc": {
-        "costo_financiamiento_tesoro": 0.154,
+        "costo_financiamiento_tesoro": 0.153,
         "credito_privado": 0.92,
         "desequilibrio_monetario": 0.16,
         "emae_difusion": 0.641,
@@ -510,16 +510,16 @@
         "ipc_total": 0.706,
         "ipi_manufacturero": 0.738,
         "recaudacion": -0.235,
-        "rem_ipc_12m": 0.846,
-        "reservas_bcra": 0.271,
+        "rem_ipc_12m": 0.845,
+        "reservas_bcra": 0.268,
         "resultado_primario": 0.845,
-        "saldo_comercial_12m": 0.503,
+        "saldo_comercial_12m": 0.502,
         "tcrm": -0.65,
         "terminos_intercambio": 0.261
       },
       "ipc_total": {
         "costo_financiamiento_tesoro": 0.148,
-        "credito_privado": 0.606,
+        "credito_privado": 0.607,
         "desequilibrio_monetario": -0.146,
         "emae_difusion": 0.607,
         "emae_ia": 0.557,
@@ -570,12 +570,12 @@
       },
       "rem_ipc_12m": {
         "costo_financiamiento_tesoro": 0.287,
-        "credito_privado": 0.861,
+        "credito_privado": 0.862,
         "desequilibrio_monetario": -0.287,
         "emae_difusion": 0.769,
         "emae_ia": 0.727,
         "iai": 0.774,
-        "idc": 0.846,
+        "idc": 0.845,
         "ipc_total": 0.792,
         "ipi_manufacturero": 0.562,
         "recaudacion": -0.336,
@@ -587,12 +587,12 @@
       },
       "reservas_bcra": {
         "costo_financiamiento_tesoro": -0.035,
-        "credito_privado": -0.071,
+        "credito_privado": -0.069,
         "desequilibrio_monetario": 0.003,
         "emae_difusion": 0.212,
         "emae_ia": 0.153,
         "iai": 0.307,
-        "idc": 0.271,
+        "idc": 0.268,
         "ipc_total": 0.722,
         "ipi_manufacturero": 0.293,
         "recaudacion": -0.203,
@@ -621,12 +621,12 @@
       },
       "saldo_comercial_12m": {
         "costo_financiamiento_tesoro": 0.646,
-        "credito_privado": 0.411,
+        "credito_privado": 0.413,
         "desequilibrio_monetario": 0.022,
         "emae_difusion": 0.291,
         "emae_ia": 0.467,
         "iai": 0.312,
-        "idc": 0.503,
+        "idc": 0.502,
         "ipc_total": 0.552,
         "ipi_manufacturero": 0.293,
         "recaudacion": 0.034,
@@ -655,7 +655,7 @@
       },
       "terminos_intercambio": {
         "costo_financiamiento_tesoro": 0.011,
-        "credito_privado": 0.049,
+        "credito_privado": 0.05,
         "desequilibrio_monetario": 0.17,
         "emae_difusion": 0.222,
         "emae_ia": 0.184,
@@ -685,7 +685,7 @@
       {
         "a": "credito_privado",
         "b": "rem_ipc_12m",
-        "r": 0.861,
+        "r": 0.862,
         "n": 34,
         "dimension_a": "financiamiento",
         "dimension_b": "estabilidad_monetaria",
@@ -695,7 +695,7 @@
       {
         "a": "idc",
         "b": "rem_ipc_12m",
-        "r": 0.846,
+        "r": 0.845,
         "n": 34,
         "dimension_a": "financiamiento",
         "dimension_b": "estabilidad_monetaria",
@@ -767,9 +767,9 @@
         "b": "terminos_intercambio",
         "r": 0.82,
         "n": 28,
-        "dimension_a": "sector_externo",
+        "dimension_a": "estabilidad_monetaria",
         "dimension_b": "sector_externo",
-        "misma_dimension": true,
+        "misma_dimension": false,
         "por_diseno": null
       },
       {
@@ -918,8 +918,8 @@
         "r": 0.722,
         "n": 28,
         "dimension_a": "estabilidad_monetaria",
-        "dimension_b": "sector_externo",
-        "misma_dimension": false,
+        "dimension_b": "estabilidad_monetaria",
+        "misma_dimension": true,
         "por_diseno": null
       },
       {
@@ -992,23 +992,23 @@
       "cepo_mulc": {
         "apertura_comercial": 0.341,
         "asistencia_directa": 0.528,
-        "concesiones_infraestructura": 0.334,
+        "concesiones_infraestructura": 0.335,
         "desregulacion_normativa": 0.918,
-        "fal_modernizacion_laboral": 0.307,
+        "fal_modernizacion_laboral": 0.308,
         "gasto_funcionamiento": 0.274,
-        "juicios_trabajo_capital": -0.488,
+        "juicios_trabajo_capital": -0.489,
         "libertad_opcion_salud": 0.902,
         "masa_salarial": 0.474,
         "privatizaciones": 0.808,
         "protocolo_antipiquetes": 0.328,
         "reduccion_estado": 0.847,
-        "reestructuracion_organismos": 0.462,
+        "reestructuracion_organismos": 0.463,
         "siniestralidad_laboral": 0.414
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.067,
         "asistencia_directa": 0.152,
-        "cepo_mulc": 0.334,
+        "cepo_mulc": 0.335,
         "desregulacion_normativa": 0.499,
         "fal_modernizacion_laboral": 0.902,
         "gasto_funcionamiento": 0.281,
@@ -1040,7 +1040,7 @@
       "fal_modernizacion_laboral": {
         "apertura_comercial": 0.091,
         "asistencia_directa": 0.143,
-        "cepo_mulc": 0.307,
+        "cepo_mulc": 0.308,
         "concesiones_infraestructura": 0.902,
         "desregulacion_normativa": 0.533,
         "gasto_funcionamiento": 0.218,
@@ -1071,7 +1071,7 @@
       },
       "juicios_trabajo_capital": {
         "apertura_comercial": -0.299,
-        "cepo_mulc": -0.488,
+        "cepo_mulc": -0.489,
         "concesiones_infraestructura": -0.776,
         "desregulacion_normativa": -0.883,
         "fal_modernizacion_laboral": -0.727,
@@ -1164,7 +1164,7 @@
       "reestructuracion_organismos": {
         "apertura_comercial": 0.284,
         "asistencia_directa": 0.208,
-        "cepo_mulc": 0.462,
+        "cepo_mulc": 0.463,
         "concesiones_infraestructura": 0.76,
         "desregulacion_normativa": 0.671,
         "fal_modernizacion_laboral": 0.718,
@@ -1462,15 +1462,15 @@
   "redundancia_itcp": {
     "diferencias": {
       "n_pares": 105,
-      "r_abs_medio": 0.202,
+      "r_abs_medio": 0.199,
       "share_altos": 0.0
     },
     "umbral": 0.7,
     "n_indicadores": 17,
     "n_pares": 105,
-    "r_abs_medio": 0.454,
-    "share_altos": 0.19,
-    "share_bajos": 0.248,
+    "r_abs_medio": 0.452,
+    "share_altos": 0.181,
+    "share_bajos": 0.257,
     "matriz": {
       "adhesion_reformas_provincial": {
         "alineamiento_senadores_prov": -0.067,
@@ -1478,13 +1478,13 @@
         "apoyo_construccion": -0.271,
         "apoyo_empresario": -0.332,
         "cobertura_judicial": -0.44,
-        "cohesion_bloque": 0.231,
+        "cohesion_bloque": 0.567,
         "conflictividad_nacional": -0.227,
         "eficacia_legislativa": -0.742,
         "insistencias_vetos": -0.528,
         "jornadas_individuales_no_trabajadas_12m": 0.303,
         "produccion_legislativa": -0.057,
-        "ratio_dnu": 0.215,
+        "ratio_dnu": 0.209,
         "rechazos_decretos": -0.552,
         "votos_sobre_bancas": -0.434
       },
@@ -1494,13 +1494,13 @@
         "apoyo_construccion": 0.058,
         "apoyo_empresario": -0.077,
         "cobertura_judicial": 0.352,
-        "cohesion_bloque": 0.356,
+        "cohesion_bloque": 0.303,
         "conflictividad_nacional": -0.397,
         "eficacia_legislativa": -0.761,
         "insistencias_vetos": 0.241,
         "jornadas_individuales_no_trabajadas_12m": -0.243,
         "produccion_legislativa": 0.164,
-        "ratio_dnu": 0.162,
+        "ratio_dnu": 0.17,
         "rechazos_decretos": 0.503,
         "votos_sobre_bancas": -0.085
       },
@@ -1516,7 +1516,7 @@
         "insistencias_vetos": 0.325,
         "jornadas_individuales_no_trabajadas_12m": -0.49,
         "produccion_legislativa": 0.612,
-        "ratio_dnu": 0.826,
+        "ratio_dnu": 0.822,
         "rechazos_decretos": 0.457,
         "votos_sobre_bancas": -0.525
       },
@@ -1526,13 +1526,13 @@
         "apoyo_campo": -0.099,
         "apoyo_empresario": 0.852,
         "cobertura_judicial": 0.406,
-        "cohesion_bloque": -0.463,
+        "cohesion_bloque": -0.401,
         "conflictividad_nacional": 0.317,
         "eficacia_legislativa": 0.013,
         "insistencias_vetos": 0.711,
         "jornadas_individuales_no_trabajadas_12m": -0.405,
         "produccion_legislativa": 0.768,
-        "ratio_dnu": 0.546,
+        "ratio_dnu": 0.56,
         "rechazos_decretos": 0.367,
         "votos_sobre_bancas": 0.573
       },
@@ -1542,13 +1542,13 @@
         "apoyo_campo": 0.444,
         "apoyo_construccion": 0.852,
         "cobertura_judicial": 0.648,
-        "cohesion_bloque": -0.71,
+        "cohesion_bloque": -0.606,
         "conflictividad_nacional": 0.211,
         "eficacia_legislativa": -0.436,
         "insistencias_vetos": 0.934,
         "jornadas_individuales_no_trabajadas_12m": -0.547,
         "produccion_legislativa": 0.876,
-        "ratio_dnu": 0.784,
+        "ratio_dnu": 0.794,
         "rechazos_decretos": 0.579,
         "votos_sobre_bancas": 0.827
       },
@@ -1558,31 +1558,31 @@
         "apoyo_campo": 0.683,
         "apoyo_construccion": 0.406,
         "apoyo_empresario": 0.648,
-        "cohesion_bloque": -0.153,
+        "cohesion_bloque": -0.219,
         "conflictividad_nacional": -0.456,
         "eficacia_legislativa": -0.371,
         "insistencias_vetos": 0.707,
         "jornadas_individuales_no_trabajadas_12m": -0.558,
         "produccion_legislativa": 0.518,
-        "ratio_dnu": 0.534,
+        "ratio_dnu": 0.541,
         "rechazos_decretos": 0.834,
         "votos_sobre_bancas": 0.477
       },
       "cohesion_bloque": {
-        "adhesion_reformas_provincial": 0.231,
-        "alineamiento_senadores_prov": 0.356,
+        "adhesion_reformas_provincial": 0.567,
+        "alineamiento_senadores_prov": 0.303,
         "apoyo_campo": -0.672,
-        "apoyo_construccion": -0.463,
-        "apoyo_empresario": -0.71,
-        "cobertura_judicial": -0.153,
-        "conflictividad_nacional": -0.345,
+        "apoyo_construccion": -0.401,
+        "apoyo_empresario": -0.606,
+        "cobertura_judicial": -0.219,
+        "conflictividad_nacional": -0.337,
         "eficacia_legislativa": 0.484,
-        "insistencias_vetos": -0.358,
-        "jornadas_individuales_no_trabajadas_12m": 0.379,
-        "produccion_legislativa": -0.447,
-        "ratio_dnu": -0.357,
-        "rechazos_decretos": 0.095,
-        "votos_sobre_bancas": -0.479
+        "insistencias_vetos": -0.392,
+        "jornadas_individuales_no_trabajadas_12m": 0.25,
+        "produccion_legislativa": -0.268,
+        "ratio_dnu": -0.098,
+        "rechazos_decretos": -0.074,
+        "votos_sobre_bancas": -0.494
       },
       "conflictividad_nacional": {
         "adhesion_reformas_provincial": -0.227,
@@ -1591,12 +1591,12 @@
         "apoyo_construccion": 0.317,
         "apoyo_empresario": 0.211,
         "cobertura_judicial": -0.456,
-        "cohesion_bloque": -0.345,
+        "cohesion_bloque": -0.337,
         "eficacia_legislativa": 0.813,
         "insistencias_vetos": -0.248,
         "jornadas_individuales_no_trabajadas_12m": 0.185,
         "produccion_legislativa": -0.029,
-        "ratio_dnu": -0.195,
+        "ratio_dnu": -0.199,
         "rechazos_decretos": -0.501,
         "votos_sobre_bancas": 0.041
       },
@@ -1612,7 +1612,7 @@
         "insistencias_vetos": -0.048,
         "jornadas_individuales_no_trabajadas_12m": 0.483,
         "produccion_legislativa": -0.451,
-        "ratio_dnu": -0.489,
+        "ratio_dnu": -0.51,
         "rechazos_decretos": -0.39,
         "votos_sobre_bancas": 0.304
       },
@@ -1623,12 +1623,12 @@
         "apoyo_construccion": 0.711,
         "apoyo_empresario": 0.934,
         "cobertura_judicial": 0.707,
-        "cohesion_bloque": -0.358,
+        "cohesion_bloque": -0.392,
         "conflictividad_nacional": -0.248,
         "eficacia_legislativa": -0.048,
         "jornadas_individuales_no_trabajadas_12m": -0.609,
         "produccion_legislativa": 0.701,
-        "ratio_dnu": 0.535,
+        "ratio_dnu": 0.546,
         "rechazos_decretos": 0.668,
         "votos_sobre_bancas": 0.78
       },
@@ -1639,12 +1639,12 @@
         "apoyo_construccion": -0.405,
         "apoyo_empresario": -0.547,
         "cobertura_judicial": -0.558,
-        "cohesion_bloque": 0.379,
+        "cohesion_bloque": 0.25,
         "conflictividad_nacional": 0.185,
         "eficacia_legislativa": 0.483,
         "insistencias_vetos": -0.609,
         "produccion_legislativa": -0.514,
-        "ratio_dnu": -0.389,
+        "ratio_dnu": -0.397,
         "rechazos_decretos": -0.466,
         "votos_sobre_bancas": -0.383
       },
@@ -1655,30 +1655,30 @@
         "apoyo_construccion": 0.768,
         "apoyo_empresario": 0.876,
         "cobertura_judicial": 0.518,
-        "cohesion_bloque": -0.447,
+        "cohesion_bloque": -0.268,
         "conflictividad_nacional": -0.029,
         "eficacia_legislativa": -0.451,
         "insistencias_vetos": 0.701,
         "jornadas_individuales_no_trabajadas_12m": -0.514,
-        "ratio_dnu": 0.825,
+        "ratio_dnu": 0.833,
         "rechazos_decretos": 0.429,
         "votos_sobre_bancas": 0.488
       },
       "ratio_dnu": {
-        "adhesion_reformas_provincial": 0.215,
-        "alineamiento_senadores_prov": 0.162,
-        "apoyo_campo": 0.826,
-        "apoyo_construccion": 0.546,
-        "apoyo_empresario": 0.784,
-        "cobertura_judicial": 0.534,
-        "cohesion_bloque": -0.357,
-        "conflictividad_nacional": -0.195,
-        "eficacia_legislativa": -0.489,
-        "insistencias_vetos": 0.535,
-        "jornadas_individuales_no_trabajadas_12m": -0.389,
-        "produccion_legislativa": 0.825,
-        "rechazos_decretos": 0.288,
-        "votos_sobre_bancas": 0.286
+        "adhesion_reformas_provincial": 0.209,
+        "alineamiento_senadores_prov": 0.17,
+        "apoyo_campo": 0.822,
+        "apoyo_construccion": 0.56,
+        "apoyo_empresario": 0.794,
+        "cobertura_judicial": 0.541,
+        "cohesion_bloque": -0.098,
+        "conflictividad_nacional": -0.199,
+        "eficacia_legislativa": -0.51,
+        "insistencias_vetos": 0.546,
+        "jornadas_individuales_no_trabajadas_12m": -0.397,
+        "produccion_legislativa": 0.833,
+        "rechazos_decretos": 0.302,
+        "votos_sobre_bancas": 0.296
       },
       "rechazos_decretos": {
         "adhesion_reformas_provincial": -0.552,
@@ -1687,13 +1687,13 @@
         "apoyo_construccion": 0.367,
         "apoyo_empresario": 0.579,
         "cobertura_judicial": 0.834,
-        "cohesion_bloque": 0.095,
+        "cohesion_bloque": -0.074,
         "conflictividad_nacional": -0.501,
         "eficacia_legislativa": -0.39,
         "insistencias_vetos": 0.668,
         "jornadas_individuales_no_trabajadas_12m": -0.466,
         "produccion_legislativa": 0.429,
-        "ratio_dnu": 0.288,
+        "ratio_dnu": 0.302,
         "votos_sobre_bancas": 0.362
       },
       "votos_sobre_bancas": {
@@ -1703,13 +1703,13 @@
         "apoyo_construccion": 0.573,
         "apoyo_empresario": 0.827,
         "cobertura_judicial": 0.477,
-        "cohesion_bloque": -0.479,
+        "cohesion_bloque": -0.494,
         "conflictividad_nacional": 0.041,
         "eficacia_legislativa": 0.304,
         "insistencias_vetos": 0.78,
         "jornadas_individuales_no_trabajadas_12m": -0.383,
         "produccion_legislativa": 0.488,
-        "ratio_dnu": 0.286,
+        "ratio_dnu": 0.296,
         "rechazos_decretos": 0.362
       }
     },
@@ -1775,6 +1775,16 @@
         "por_diseno": null
       },
       {
+        "a": "produccion_legislativa",
+        "b": "ratio_dnu",
+        "r": 0.833,
+        "n": 33,
+        "dimension_a": "poder_legislativo",
+        "dimension_b": "poder_legislativo",
+        "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
         "a": "apoyo_empresario",
         "b": "votos_sobre_bancas",
         "r": 0.827,
@@ -1787,21 +1797,11 @@
       {
         "a": "apoyo_campo",
         "b": "ratio_dnu",
-        "r": 0.826,
+        "r": 0.822,
         "n": 9,
         "dimension_a": "sector_privado",
         "dimension_b": "poder_legislativo",
         "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "produccion_legislativa",
-        "b": "ratio_dnu",
-        "r": 0.825,
-        "n": 33,
-        "dimension_a": "poder_legislativo",
-        "dimension_b": "poder_legislativo",
-        "misma_dimension": true,
         "por_diseno": null
       },
       {
@@ -1827,7 +1827,7 @@
       {
         "a": "apoyo_empresario",
         "b": "ratio_dnu",
-        "r": 0.784,
+        "r": 0.794,
         "n": 23,
         "dimension_a": "sector_privado",
         "dimension_b": "poder_legislativo",
@@ -1885,16 +1885,6 @@
         "por_diseno": null
       },
       {
-        "a": "apoyo_empresario",
-        "b": "cohesion_bloque",
-        "r": -0.71,
-        "n": 23,
-        "dimension_a": "sector_privado",
-        "dimension_b": "cohesion_interna",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "cobertura_judicial",
         "b": "insistencias_vetos",
         "r": 0.707,
@@ -1915,8 +1905,8 @@
         "por_diseno": null
       }
     ],
-    "pares_cruzados": 17,
-    "pares_no_explicados": 17
+    "pares_cruzados": 16,
+    "pares_no_explicados": 16
   },
   "redundancia_itvc": {
     "diferencias": {
@@ -2783,27 +2773,27 @@
     "2024-10": 44.4,
     "2024-11": 48.6,
     "2024-12": 53.6,
-    "2025-01": 51.2,
-    "2025-02": 51.5,
-    "2025-03": 52.8,
-    "2025-04": 53.4,
-    "2025-05": 60.2,
-    "2025-06": 57.4,
-    "2025-07": 62.9,
-    "2025-08": 68.3,
-    "2025-09": 68.0,
-    "2025-10": 67.4,
-    "2025-11": 70.6,
-    "2025-12": 69.1,
-    "2026-01": 69.7,
-    "2026-02": 69.9,
-    "2026-03": 70.7,
-    "2026-04": 66.9,
-    "2026-05": 73.1,
-    "2026-06": 75.0,
-    "2026-07": 74.8,
-    "2026-08": 77.6,
-    "2026-09": 74.9
+    "2025-01": 52.1,
+    "2025-02": 52.4,
+    "2025-03": 53.7,
+    "2025-04": 54.3,
+    "2025-05": 61.1,
+    "2025-06": 58.3,
+    "2025-07": 63.8,
+    "2025-08": 69.2,
+    "2025-09": 68.9,
+    "2025-10": 68.3,
+    "2025-11": 71.5,
+    "2025-12": 70.0,
+    "2026-01": 70.6,
+    "2026-02": 70.8,
+    "2026-03": 71.6,
+    "2026-04": 67.8,
+    "2026-05": 73.9,
+    "2026-06": 75.9,
+    "2026-07": 75.6,
+    "2026-08": 78.5,
+    "2026-09": 76.0
   },
   "merval_usd_mensual": {
     "2023-11": 918.3,
@@ -2847,22 +2837,22 @@
     "2024-03": 79.9,
     "2024-04": 80.0,
     "2024-05": 75.8,
-    "2024-06": 73.1,
-    "2024-07": 67.1,
-    "2024-08": 66.5,
-    "2024-09": 67.8,
-    "2024-10": 72.0,
-    "2024-11": 70.1,
-    "2024-12": 71.0,
-    "2025-01": 73.2,
-    "2025-02": 70.8,
+    "2024-06": 72.0,
+    "2024-07": 65.4,
+    "2024-08": 65.4,
+    "2024-09": 67.6,
+    "2024-10": 72.6,
+    "2024-11": 70.4,
+    "2024-12": 71.4,
+    "2025-01": 73.5,
+    "2025-02": 71.0,
     "2025-03": 69.7,
     "2025-04": 70.8,
     "2025-05": 74.0,
     "2025-06": 73.9,
-    "2025-07": 72.2,
-    "2025-08": 63.4,
-    "2025-09": 60.6,
+    "2025-07": 72.1,
+    "2025-08": 63.2,
+    "2025-09": 60.4,
     "2025-10": 55.1,
     "2025-11": 56.4,
     "2025-12": 56.0,
@@ -2871,10 +2861,10 @@
     "2026-03": 53.6,
     "2026-04": 51.7,
     "2026-05": 52.1,
-    "2026-06": 56.5,
+    "2026-06": 56.3,
     "2026-07": 59.2,
     "2026-08": 63.3,
-    "2026-09": 68.2
+    "2026-09": 68.1
   },
   "series_dimensiones": {
     "itvc": {
@@ -3169,7 +3159,7 @@
     "itcm": {
       "estabilidad_monetaria": {
         "nombre": "Estabilidad monetaria-inflacionaria",
-        "peso": 0.26,
+        "peso": 0.3144,
         "serie": {
           "2023-12": 10.0,
           "2024-01": 10.0,
@@ -3177,33 +3167,33 @@
           "2024-03": 10.0,
           "2024-04": 10.0,
           "2024-05": 10.0,
-          "2024-06": 10.0,
+          "2024-06": 10.3,
           "2024-07": 10.0,
-          "2024-08": 11.9,
-          "2024-09": 13.4,
-          "2024-10": 27.0,
-          "2024-11": 32.7,
-          "2024-12": 29.8,
-          "2025-01": 38.5,
-          "2025-02": 35.6,
-          "2025-03": 18.3,
-          "2025-04": 37.8,
-          "2025-05": 50.0,
-          "2025-06": 49.0,
-          "2025-07": 42.7,
-          "2025-08": 44.5,
-          "2025-09": 37.6,
-          "2025-10": 33.4,
-          "2025-11": 38.3,
-          "2025-12": 38.3,
-          "2026-01": 29.8,
-          "2026-02": 30.9,
-          "2026-03": 26.2,
-          "2026-04": 33.4,
-          "2026-05": 40.6,
-          "2026-06": 47.0,
-          "2026-07": 40.4,
-          "2026-08": 44.9
+          "2024-08": 11.5,
+          "2024-09": 12.7,
+          "2024-10": 23.5,
+          "2024-11": 28.0,
+          "2024-12": 25.7,
+          "2025-01": 32.6,
+          "2025-02": 30.3,
+          "2025-03": 16.6,
+          "2025-04": 38.1,
+          "2025-05": 47.9,
+          "2025-06": 49.5,
+          "2025-07": 42.8,
+          "2025-08": 44.4,
+          "2025-09": 38.8,
+          "2025-10": 29.7,
+          "2025-11": 33.4,
+          "2025-12": 34.2,
+          "2026-01": 26.4,
+          "2026-02": 27.3,
+          "2026-03": 23.4,
+          "2026-04": 30.2,
+          "2026-05": 39.9,
+          "2026-06": 45.7,
+          "2026-07": 45.2,
+          "2026-08": 49.3
         }
       },
       "cuentas_fiscales": {
@@ -3247,7 +3237,7 @@
       },
       "sector_externo": {
         "nombre": "Sector externo",
-        "peso": 0.2124,
+        "peso": 0.158,
         "serie": {
           "2023-12": 52.9,
           "2024-01": 53.3,
@@ -3255,33 +3245,33 @@
           "2024-03": 57.7,
           "2024-04": 51.8,
           "2024-05": 50.5,
-          "2024-06": 36.3,
-          "2024-07": 35.0,
-          "2024-08": 35.0,
-          "2024-09": 31.0,
-          "2024-10": 30.6,
-          "2024-11": 30.2,
-          "2024-12": 29.7,
-          "2025-01": 29.1,
-          "2025-02": 29.3,
-          "2025-03": 35.4,
-          "2025-04": 44.0,
-          "2025-05": 44.4,
-          "2025-06": 54.4,
-          "2025-07": 56.0,
-          "2025-08": 57.8,
-          "2025-09": 48.2,
-          "2025-10": 39.8,
-          "2025-11": 38.2,
-          "2025-12": 38.7,
-          "2026-01": 37.4,
-          "2026-02": 36.0,
-          "2026-03": 37.6,
-          "2026-04": 38.2,
-          "2026-05": 44.8,
-          "2026-06": 53.1,
-          "2026-07": 61.2,
-          "2026-08": 62.2
+          "2024-06": 44.9,
+          "2024-07": 43.6,
+          "2024-08": 43.6,
+          "2024-09": 38.3,
+          "2024-10": 37.6,
+          "2024-11": 37.1,
+          "2024-12": 36.5,
+          "2025-01": 35.7,
+          "2025-02": 35.9,
+          "2025-03": 44.1,
+          "2025-04": 45.5,
+          "2025-05": 46.6,
+          "2025-06": 55.3,
+          "2025-07": 60.5,
+          "2025-08": 62.6,
+          "2025-09": 49.5,
+          "2025-10": 49.3,
+          "2025-11": 47.9,
+          "2025-12": 47.1,
+          "2026-01": 46.8,
+          "2026-02": 45.0,
+          "2026-03": 47.1,
+          "2026-04": 46.3,
+          "2026-05": 47.6,
+          "2026-06": 57.8,
+          "2026-07": 58.9,
+          "2026-08": 59.4
         }
       },
       "financiamiento": {
@@ -3540,27 +3530,27 @@
           "2024-10": 80.0,
           "2024-11": 80.0,
           "2024-12": 95.0,
-          "2025-01": 81.9,
-          "2025-02": 81.9,
-          "2025-03": 81.9,
-          "2025-04": 81.9,
-          "2025-05": 81.9,
-          "2025-06": 81.9,
-          "2025-07": 81.9,
-          "2025-08": 81.9,
-          "2025-09": 81.9,
-          "2025-10": 81.9,
-          "2025-11": 81.9,
-          "2025-12": 81.9,
-          "2026-01": 90.9,
-          "2026-02": 90.9,
-          "2026-03": 90.9,
-          "2026-04": 90.9,
-          "2026-05": 90.9,
-          "2026-06": 90.9,
-          "2026-07": 90.9,
-          "2026-08": 90.9,
-          "2026-09": 90.9
+          "2025-01": 90.9,
+          "2025-02": 90.9,
+          "2025-03": 90.9,
+          "2025-04": 90.9,
+          "2025-05": 90.9,
+          "2025-06": 90.9,
+          "2025-07": 90.9,
+          "2025-08": 90.9,
+          "2025-09": 90.9,
+          "2025-10": 90.9,
+          "2025-11": 90.9,
+          "2025-12": 90.9,
+          "2026-01": 99.6,
+          "2026-02": 99.6,
+          "2026-03": 99.6,
+          "2026-04": 99.6,
+          "2026-05": 99.6,
+          "2026-06": 99.6,
+          "2026-07": 99.6,
+          "2026-08": 99.6,
+          "2026-09": 99.6
         }
       }
     },
@@ -3585,9 +3575,9 @@
           "2025-04": 70.6,
           "2025-05": 71.4,
           "2025-06": 70.9,
-          "2025-07": 71.5,
-          "2025-08": 57.4,
-          "2025-09": 44.6,
+          "2025-07": 70.9,
+          "2025-08": 56.8,
+          "2025-09": 43.8,
           "2025-10": 15.4,
           "2025-11": 15.4,
           "2025-12": 31.1,
@@ -3596,10 +3586,10 @@
           "2026-03": 33.1,
           "2026-04": 28.1,
           "2026-05": 26.2,
-          "2026-06": 39.7,
+          "2026-06": 38.8,
           "2026-07": 35.4,
           "2026-08": 52.3,
-          "2026-09": 61.9
+          "2026-09": 61.6
         }
       },
       "alianzas_territoriales": {
@@ -3646,15 +3636,15 @@
           "2024-03": 100.0,
           "2024-04": 100.0,
           "2024-05": 100.0,
-          "2024-06": 99.4,
-          "2024-07": 97.6,
-          "2024-08": 91.5,
-          "2024-09": 89.2,
-          "2024-10": 91.0,
-          "2024-11": 95.8,
-          "2024-12": 94.5,
-          "2025-01": 95.2,
-          "2025-02": 86.7,
+          "2024-06": 92.8,
+          "2024-07": 87.3,
+          "2024-08": 84.9,
+          "2024-09": 88.0,
+          "2024-10": 94.5,
+          "2024-11": 97.6,
+          "2024-12": 97.0,
+          "2025-01": 97.0,
+          "2025-02": 88.0,
           "2025-03": 85.5,
           "2025-04": 89.2,
           "2025-05": 99.4,
@@ -4080,23 +4070,23 @@
   },
   "correlaciones_itcp": {
     "niveles (ITCP vs EPU Argentina)": {
-      "r": -0.328,
+      "r": -0.333,
       "n": 31
     },
     "primeras diferencias (ITCP vs EPU)": {
-      "r": 0.023,
+      "r": -0.001,
       "n": 30
     },
     "ITCP adelantado 1 mes vs EPU": {
-      "r": -0.236,
+      "r": -0.234,
       "n": 30
     },
     "EPU adelantado 1 mes vs ITCP": {
-      "r": -0.426,
+      "r": -0.43,
       "n": 31
     },
     "niveles, sin la dimensión de sector privado": {
-      "r": -0.377,
+      "r": -0.378,
       "n": 27
     }
   },
@@ -5526,8 +5516,8 @@
           "etiqueta": "Ventas en autoservicios mayoristas",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": 0.554,
-          "r_diferencias": -0.18,
+          "r_niveles": 0.539,
+          "r_diferencias": -0.173,
           "n": 29
         },
         {
@@ -5535,8 +5525,8 @@
           "etiqueta": "Ventas en centros de compras",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.195,
-          "r_diferencias": -0.297,
+          "r_niveles": -0.197,
+          "r_diferencias": -0.307,
           "n": 29
         },
         {
@@ -5544,8 +5534,8 @@
           "etiqueta": "Demanda eléctrica residencial",
           "fuente": "CAMMESA",
           "propia": false,
-          "r_niveles": -0.116,
-          "r_diferencias": -0.032,
+          "r_niveles": -0.111,
+          "r_diferencias": -0.017,
           "n": 30
         },
         {
@@ -5553,8 +5543,8 @@
           "etiqueta": "Incertidumbre de política (EPU)",
           "fuente": "Banco de España / SECMCA",
           "propia": true,
-          "r_niveles": -0.328,
-          "r_diferencias": 0.023,
+          "r_niveles": -0.333,
+          "r_diferencias": -0.001,
           "n": 31
         },
         {
@@ -5562,8 +5552,8 @@
           "etiqueta": "Financiamiento externo a empresas",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": -0.33,
-          "r_diferencias": 0.128,
+          "r_niveles": -0.305,
+          "r_diferencias": 0.143,
           "n": 30
         },
         {
@@ -5571,8 +5561,8 @@
           "etiqueta": "Consumo residencial de gas",
           "fuente": "Sec. de Energía",
           "propia": false,
-          "r_niveles": -0.01,
-          "r_diferencias": -0.235,
+          "r_niveles": -0.017,
+          "r_diferencias": -0.215,
           "n": 28
         },
         {
@@ -5580,8 +5570,8 @@
           "etiqueta": "Confianza del Consumidor (ICC de la UTDT)",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": -0.005,
-          "r_diferencias": 0.334,
+          "r_niveles": 0.021,
+          "r_diferencias": 0.33,
           "n": 30
         },
         {
@@ -5589,8 +5579,8 @@
           "etiqueta": "Índice Líder de actividad",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": -0.213,
-          "r_diferencias": -0.096,
+          "r_niveles": -0.193,
+          "r_diferencias": -0.065,
           "n": 31
         },
         {
@@ -5598,8 +5588,8 @@
           "etiqueta": "Inversión directa de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": -0.03,
-          "r_diferencias": 0.014,
+          "r_niveles": -0.04,
+          "r_diferencias": 0.01,
           "n": 30
         },
         {
@@ -5607,8 +5597,8 @@
           "etiqueta": "Inversión de cartera de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": -0.242,
-          "r_diferencias": -0.234,
+          "r_niveles": -0.239,
+          "r_diferencias": -0.212,
           "n": 30
         },
         {
@@ -5616,8 +5606,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": -0.484,
-          "r_diferencias": 0.031,
+          "r_niveles": -0.454,
+          "r_diferencias": 0.062,
           "n": 31
         },
         {
@@ -5625,8 +5615,8 @@
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": 0.553,
-          "r_diferencias": 0.023,
+          "r_niveles": 0.536,
+          "r_diferencias": 0.017,
           "n": 29
         },
         {
@@ -5634,24 +5624,24 @@
           "etiqueta": "Ventas de naftas",
           "fuente": "Sec. de Energía",
           "propia": false,
-          "r_niveles": -0.198,
-          "r_diferencias": -0.065,
+          "r_niveles": -0.189,
+          "r_diferencias": -0.055,
           "n": 30
         }
       ],
       "n_propias": 1,
       "n_ajenas": 12,
       "niveles": {
-        "convergente": 0.328,
-        "discriminante": 0.244,
-        "brecha": 0.084
+        "convergente": 0.333,
+        "discriminante": 0.237,
+        "brecha": 0.096
       },
       "diferencias": {
-        "convergente": 0.023,
-        "discriminante": 0.139,
-        "brecha": -0.116
+        "convergente": 0.001,
+        "discriminante": 0.134,
+        "brecha": -0.133
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,328 y con las 12 ajenas es 0,244. En los cambios mes a mes la separación no se sostiene: 0,023 con lo propio contra 0,139 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación usa la media de correlaciones en valor absoluto. La magnitud no indica que las series se muevan en la misma dirección. En niveles la asociación media del índice con la única estadística de su propio terreno es 0,333 y con las 12 ajenas es 0,237. En los cambios mes a mes la separación no se sostiene: 0,001 con lo propio contra 0,134 con lo ajeno. En este plano, la asociación en magnitud es tanto o más alta con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto. La comparación es descriptiva: no prueba significación estadística, causalidad ni capacidad predictiva."
     }
   }
 }

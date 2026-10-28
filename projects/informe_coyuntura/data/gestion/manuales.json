@@ -50,11 +50,11 @@
     "fecha_dato": "2026-10-24"
   },
   "protocolo_antipiquetes": {
-    "valor": 52.7,
-    "unidad": "% de reducción de cortes por manifestación en todo el país vs 2023 (IRPC)",
+    "valor": 74.2,
+    "unidad": "% de reducción de cortes por manifestación en la Ciudad de Buenos Aires vs 2023 (IRPC)",
     "estado": "estimado",
-    "fuente": "Diagnóstico Político — FALLBACK del colector automático (dp_piquetes.json)",
-    "notas": "Total nacional (ADR-0405): 3.893 cortes en 2025 contra 8.239 en 2023 (5.996 en 2024). Estado judicial (verificado 03-jul-2026): la nulidad de primera instancia (dic-2025) fue revocada por la Sala III de la Cámara Contencioso Administrativo Federal el 31-mar-2026 — el protocolo es un acto válido y plenamente vigente. Sin fuente pública automatizable con base 2023 por ahora: el dato se sostiene en los anclajes anuales de Diagnóstico Político, y el monitoreo de alertas de transporte acumula la serie propia que lo reemplazará.",
+    "fuente": "Diagnóstico Político (consultora privada) — FALLBACK del colector automático (dp_piquetes.json)",
+    "notas": "Ciudad de Buenos Aires: 240 cortes en 2025 contra una base 2023 estimada de 931 (440 en 2024). Estado judicial (verificado 28-oct-2026): la nulidad de primera instancia (dic-2025) fue revocada por la Sala III de la Cámara en lo Contencioso Administrativo Federal el 31-mar-2026, que declaró legítima la Resolución 943/2023; en mayo de 2026 la Sala concedió en parte el recurso extraordinario del Centro de Estudios Legales y Sociales y la Corte Suprema no se pronunció — el protocolo está vigente. Sin fuente pública automatizable con base 2023 por ahora: el dato se sostiene en los anclajes anuales de Diagnóstico Político, y el monitoreo de alertas de transporte acumula la serie propia que lo reemplazará.",
     "fecha_dato": "2026-06-30"
   },
   "libertad_opcion_salud": {

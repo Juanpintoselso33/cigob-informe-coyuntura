@@ -42,11 +42,11 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 41,6 | AMARILLO | 26,0 % |
+| Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde cuatro señales complementarias. | 45,3 | AMARILLO | 31,4 % |
 | Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 43,3 | AMARILLO | 23,0 % |
-| Sector externo | Qué tan holgada está la economía frente al resto del mundo. | 59,1 | AMARILLO | 21,2 % |
 | Cuentas fiscales | Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. | 62,7 | VERDE | 19,2 % |
-| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 64,5 | VERDE | 10,6 % |
+| Sector externo | Qué tan holgada está la economía frente al resto del mundo. | 57,8 | AMARILLO | 15,8 % |
+| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 64,6 | VERDE | 10,6 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -62,6 +62,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 |---|---|---|---|---|
 | **DIMENSIÓN: Estabilidad monetaria-inflacionaria** | | | | |
 | Inflación del mes | Cuánto suben en el mes los precios al consumidor en general. | 1,93 % mensual | AMARILLO | 15,6 % |
+| Reservas netas | Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la… | 10.725 Millones de USD | VERDE | 5,4 % |
 | Inflación esperada a 12 meses | La inflación que el mercado espera para los próximos 12 meses, en tasa anual, según el relevamiento de expectativas del… | 21,1 % anual esperado | AMARILLO | 5,2 % |
 | Liquidez en pesos y presión compradora de divisas | Mira dos cosas a la vez. | 64,02 pts de tensión (0-100) | NARANJA | 5,2 % |
 | **DIMENSIÓN: Actividad e inversión** | | | | |
@@ -69,17 +70,16 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Amplitud del crecimiento (sectores en alza) | De los quince sectores en que el Instituto Nacional de Estadística y Censos (INDEC) divide la actividad económica… | 46,67 % de sectores en crecimiento i.a. | AMARILLO | 3,2 % |
 | Producción industrial (vs. un año atrás) | Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses. | −2,04 % i.a. (promedio 3 meses) | NARANJA | 3,2 % |
 | Inversión física | Índice Anticipador de Inversión. | −1,74 % i.a. ponderado | AMARILLO | 6,9 % |
-| **DIMENSIÓN: Sector externo** | | | | |
-| Reservas netas | Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la… | 10.725 Millones de USD | VERDE | 5,4 % |
-| Saldo comercial (últimos 12 meses) | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses, como porcentaje de todo el… | 15,11 % del comercio (exportaciones + importaciones, acum. 12 meses) | VERDE | 4,8 % |
-| Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el… | 85,87 Índice (base dic-2015=100) | AMARILLO | 5,5 % |
-| Términos del intercambio | Cuánto valen las exportaciones argentinas frente a lo que se importa. | 145,14 índice (base 2004 = 100) | VERDE | 5,5 % |
 | **DIMENSIÓN: Cuentas fiscales** | | | | |
 | Base imponible real (nación + Ingresos Brutos interjurisdiccionales) | Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de… | 94,4 índice (100 = 4T-2023) | AMARILLO | 7,2 % |
 | Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acum. 12 meses) | VERDE | 12,0 % |
+| **DIMENSIÓN: Sector externo** | | | | |
+| Saldo comercial (últimos 12 meses) | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses, como porcentaje de todo el… | 15,11 % del comercio (exportaciones + importaciones, acum. 12 meses) | VERDE | 4,8 % |
+| Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el… | 85,87 Índice (base dic-2015=100) | AMARILLO | 5,5 % |
+| Términos del intercambio | Cuánto valen las exportaciones argentinas frente a lo que se importa. | 145,14 índice (base 2004 = 100) | VERDE | 5,5 % |
 | **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
-| Capacidad prestable | Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. | −0,34 σ vs. su historia | AMARILLO | 3,4 % |
-| Crédito privado real en pesos | Cuánto crecen los préstamos en pesos al sector privado en términos reales (contra un año atrás, descontada la… | −1,2 % i.a. real (crédito en pesos) | AMARILLO | 3,2 % |
+| Capacidad prestable | Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. | −0,35 σ vs. su historia | AMARILLO | 3,4 % |
+| Crédito privado real en pesos | Cuánto crecen los préstamos en pesos al sector privado en términos reales (contra un año atrás, descontada la… | −0,6 % i.a. real (crédito en pesos) | AMARILLO | 3,2 % |
 | Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 6,22 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
 
 *Datos al 2026-10-28.*
@@ -116,7 +116,7 @@ Cuánto suben en el mes los precios al consumidor en general.
 
 Es el termómetro central de la estabilización: marca si el programa antiinflacionario avanza o se estanca.
 
-**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual, según el índice de precios al consumidor (IPC); la esperada por el mercado, según el Relevamiento de Expectativas de Mercado (REM), y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
+**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual, según el índice de precios al consumidor; la esperada por el mercado, según el Relevamiento de Expectativas de Mercado del Banco Central; la presión por salir del peso, observada según el régimen cambiario vigente, y las reservas netas del Banco Central, los dólares propios con que respalda la moneda. Las reservas estaban en el sector externo hasta octubre de 2026 y pasaron acá con el mismo peso en el índice. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como otra señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
 
 ## Método de cómputo
 
@@ -198,7 +198,7 @@ Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, se
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | reservas_bcra | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Sector externo | **UNIDAD DE MEDIDA** | Millones de USD |
+| **DIMENSIÓN EN EL ITCM** | Estabilidad monetaria-inflacionaria | **UNIDAD DE MEDIDA** | Millones de USD |
 | **SERIE DISPONIBLE** | 2024-06 → 2026-09 (28 puntos) | **REZAGO DE PUBLICACIÓN** | La planilla de reservas y liquidez del BCRA se publica unas tres semanas después del cierre de cada mes; el informe la incorpora automáticamente. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Planilla SDDS «Reservas internacionales y liquidez en moneda extranjera» + Balance Consolidado del BCRA (depósitos del Tesoro en dólares) |
 | **MODO DE ACCESO** | Automático: se leen la planilla oficial del mes y el Balance Consolidado; el resultado se valida contra las reservas brutas de la API de estadísticas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
@@ -209,7 +209,7 @@ Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, se
 
 Aproxima el margen externo con una definición explícita. Su lectura depende de los pasivos excluidos y debe contrastarse con otras medidas de reservas y liquidez.
 
-**Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses, las reservas netas del Banco Central y la competitividad del tipo de cambio. La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
+**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual, según el índice de precios al consumidor; la esperada por el mercado, según el Relevamiento de Expectativas de Mercado del Banco Central; la presión por salir del peso, observada según el régimen cambiario vigente, y las reservas netas del Banco Central, los dólares propios con que respalda la moneda. Las reservas estaban en el sector externo hasta octubre de 2026 y pasaron acá con el mismo peso en el índice. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como otra señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
 
 ## Método de cómputo
 
@@ -256,13 +256,15 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Sin planilla completa o depósitos del Tesoro del mismo mes, se conserva el último resultado completo con su fecha y marcado como desactualizado. No se reemplaza por brutas recientes menos pasivos de un config. La historia omite meses sin Tesoro; cero observado se admite. Si no hay resultado utilizable, se redistribuye el peso entre los componentes disponibles del sector externo.
+- **Si falta el dato:** Sin planilla completa o depósitos del Tesoro del mismo mes, se conserva el último resultado completo con su fecha y marcado como desactualizado. No se reemplaza por brutas recientes menos pasivos de un config. La historia omite meses sin Tesoro; cero observado se admite. Si no hay resultado utilizable, se redistribuye el peso entre los componentes disponibles de la estabilidad monetaria-inflacionaria.
 
 - **Política de revisiones:** La planilla publicada no se revisa; el informe reconstruye la serie completa releyendo todas las planillas disponibles en cada actualización.
 
 ## Historial — cambios metodológicos documentados
 
 **2026-10-28** — La tabla de colores separa el rojo (menos de 1.250 millones) del naranja, que se mostraban fusionados por un error del motor. No cambia el puntaje.
+
+**2026-10-28** — Pasa del «Sector externo» a «Estabilidad monetaria-inflacionaria», junto con la inflación, las expectativas y el desequilibrio monetario: las reservas netas son el respaldo en dólares de la moneda. Su peso en el índice macroeconómico no cambia (5,44 %) y el índice tampoco.
 
 **2026-10-27** — Pasa de «Capacidad y costo del financiamiento» al «Sector externo», junto con el saldo comercial y el cruce del tipo de cambio real con los términos del intercambio. Su peso en el índice macroeconómico no cambia (5,44 %).
 
@@ -290,7 +292,7 @@ Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,34 σ vs. su historia** (2026-09) | **AMARILLO** | Peso efectivo 3,4 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −0,35 σ vs. su historia** (2026-09) | **AMARILLO** | Peso efectivo 3,4 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -333,13 +335,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- −0,34 σ = precio 0,45 · volumen −0,3 · asignación −1,19 (banda propia de este indicador: amarillo) — niveles: tasa real −0,21 pp · depósitos −4,1% i.a. real · holgura 16,0%
+- −0,35 σ = precio 0,45 · volumen −0,3 · asignación −1,22 (banda propia de este indicador: amarillo) — niveles: tasa real −0,21 pp · depósitos −4,1% i.a. real · holgura 15,4%
 
 ## Color vigente y por qué
 
-Dato vigente: −0,34 σ vs. su historia (2026-09).
+Dato vigente: −0,35 σ vs. su historia (2026-09).
 
-−0,34 σ vs. su historia está en Amarillo, a 0,26 del límite con Naranja (−0,6).
+−0,35 σ vs. su historia está en Amarillo, a 0,25 del límite con Naranja (−0,6).
 
 **Color vigente: AMARILLO**
 
@@ -682,7 +684,7 @@ El balance entre lo que el país exporta y lo que importa, acumulado en los últ
 
 Muestra si el intercambio de bienes aporta o resta dólares, en proporción a su tamaño, para que un mismo resultado se compare entre años con comercios muy distintos. No alcanza para saber si el sector externo en conjunto los genera: faltan los servicios, los intereses y las utilidades giradas, que se ven en la cuenta corriente del gráfico.
 
-**Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses, las reservas netas del Banco Central y la competitividad del tipo de cambio. La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
+**Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses y la competitividad del tipo de cambio (las reservas netas del Banco Central se leen, desde octubre de 2026, en la estabilidad monetaria). La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
 
 ## Método de cómputo
 
@@ -738,6 +740,8 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La fuente revisa provisorios; el informe re-descarga la serie completa en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Las reservas netas salen del sector externo hacia la estabilidad monetaria: el sector externo queda con este indicador y el cruce del tipo de cambio real con los términos del intercambio. Su peso en el índice macroeconómico no cambia.
 
 **2026-10-28** — Pasa a medirse como porcentaje del comercio (exportaciones más importaciones de los mismos 12 meses), no en millones de dólares, y la escala corta en desvíos de su historia de 2004-2023 con el equilibrio en 50 y el techo de 85. El monto en dólares queda en el detalle y en el gráfico, junto a la cuenta corriente. El umbral de superávit relevante de la regla automática pasa de 5.000 millones de dólares a 3 % del comercio. Con septiembre de 2026 (15,11 % del comercio, 26.472 millones) el puntaje pasa de 85 a 76,2.
 
@@ -912,7 +916,7 @@ Si el peso está caro o barato frente a los socios comerciales, en términos rea
 
 Una apreciación real (peso caro) frena exportaciones y la acumulación de reservas, y suele anticipar presión cambiaria: cuanto más apreciado, más tensión. El sector externo no lo promedia con los términos del intercambio: los cruza, porque un peso apreciado con buenos precios de exportación no es lo mismo que el mismo peso con precios en caída.
 
-**Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses, las reservas netas del Banco Central y la competitividad del tipo de cambio. La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
+**Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses y la competitividad del tipo de cambio (las reservas netas del Banco Central se leen, desde octubre de 2026, en la estabilidad monetaria). La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
 
 ## Método de cómputo
 
@@ -958,11 +962,13 @@ Ponderación vigente en el ITCM: 5,5 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si la planilla del BCRA no está disponible, se mantiene el último valor, señalado como desactualizado. Sin tipo de cambio real o sin términos del intercambio, el cruce no se calcula y el sector externo se arma con el saldo comercial y las reservas, que renormalizan entre sí.
+- **Si falta el dato:** Si la planilla del BCRA no está disponible, se mantiene el último valor, señalado como desactualizado. Sin tipo de cambio real o sin términos del intercambio, el cruce no se calcula y el sector externo se arma con el saldo comercial solo (las reservas están en la estabilidad monetaria desde octubre de 2026).
 
 - **Política de revisiones:** El BCRA puede revisar los ponderadores del índice; la serie se baja completa en cada corrida y las revisiones entran solas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Las reservas netas salen del sector externo hacia la estabilidad monetaria: el sector externo queda con el saldo comercial y este cruce. Su peso en el índice macroeconómico no cambia.
 
 **2026-10-27** — Su dimensión «Competitividad externa» se junta con el saldo comercial y las reservas en el «Sector externo». El cruce con los términos del intercambio y su peso en el índice (11 % entre los dos) no cambian.
 
@@ -1012,7 +1018,7 @@ Cuánto valen las exportaciones argentinas frente a lo que se importa: los preci
 
 Dice si el nivel del tipo de cambio real se sostiene: con buenos precios de exportación, un peso caro aguanta más. El sector externo lo cruza con el tipo de cambio real en vez de promediarlos: con el peso competitivo el ajuste ya ocurrió; un peso apreciado que se sostiene por buenos precios depende de una variable externa y volátil. Se publica por trimestre, con unos dos meses y medio de demora.
 
-**Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses, las reservas netas del Banco Central y la competitividad del tipo de cambio. La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
+**Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses y la competitividad del tipo de cambio (las reservas netas del Banco Central se leen, desde octubre de 2026, en la estabilidad monetaria). La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
 
 ## Método de cómputo
 
@@ -1057,11 +1063,13 @@ Ponderación vigente en el ITCM: 5,5 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si el último trimestre publicado queda más de nueve meses atrás, la serie se considera congelada: la tarjeta conserva el último valor, señalado como desactualizado, y el cruce con el tipo de cambio real no se calcula: el sector externo se arma con el saldo comercial y las reservas.
+- **Si falta el dato:** Si el último trimestre publicado queda más de nueve meses atrás, la serie se considera congelada: la tarjeta conserva el último valor, señalado como desactualizado, y el cruce con el tipo de cambio real no se calcula: el sector externo se arma con el saldo comercial solo (las reservas están en la estabilidad monetaria desde octubre de 2026).
 
 - **Política de revisiones:** El INDEC revisa trimestres anteriores; la serie se baja completa en cada corrida y las revisiones entran solas. Los cortes quedan congelados para que el puntaje de un trimestre sea reproducible.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Las reservas netas salen del sector externo hacia la estabilidad monetaria: el sector externo queda con el saldo comercial y este cruce. Su peso en el índice macroeconómico no cambia.
 
 **2026-10-27** — Su dimensión «Competitividad externa» se junta con el saldo comercial y las reservas en el «Sector externo». El cruce con el tipo de cambio real y su peso en el índice (11 % entre los dos) no cambian.
 
@@ -1101,7 +1109,7 @@ La inflación que el mercado espera para los próximos 12 meses, en tasa anual, 
 
 Captura la credibilidad del programa: si el mercado espera que la inflación siga bajando, el ancla de expectativas funciona; si la ve acelerarse, hay desconfianza.
 
-**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual, según el índice de precios al consumidor (IPC); la esperada por el mercado, según el Relevamiento de Expectativas de Mercado (REM), y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
+**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual, según el índice de precios al consumidor; la esperada por el mercado, según el Relevamiento de Expectativas de Mercado del Banco Central; la presión por salir del peso, observada según el régimen cambiario vigente, y las reservas netas del Banco Central, los dólares propios con que respalda la moneda. Las reservas estaban en el sector externo hasta octubre de 2026 y pasaron acá con el mismo peso en el índice. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como otra señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
 
 ## Método de cómputo
 
@@ -1145,11 +1153,13 @@ Ponderación vigente en el ITCM: 5,2 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin dato utilizable, el IPC y el desequilibrio monetario renormalizan entre sí dentro de la dimensión de estabilidad monetaria.
+- **Si falta el dato:** Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin dato utilizable, el IPC, el desequilibrio monetario y, desde octubre de 2026, las reservas netas renormalizan entre sí dentro de la dimensión de estabilidad monetaria.
 
 - **Política de revisiones:** El REM publicado no se revisa: cada mes es un relevamiento nuevo.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Las reservas netas se suman a su dimensión, la estabilidad monetaria: si falta este dato, su peso se reparte también con ellas. Su peso en el índice macroeconómico no cambia.
 
 **2026-10-26** — Sigue la escala nueva de la inflación del mes, sobre el equivalente mensual de la expectativa: verde hasta 1 % mensual (12,7 % anual), amarillo hasta 2 % (26,8 %), naranja hasta 3 % (42,6 %). Con 21,1 % anual (1,61 % por mes) el puntaje pasa de 82,8 a 47,8 y el indicador, de verde a amarillo.
 
@@ -1199,7 +1209,7 @@ Mira dos cosas a la vez: si la gente sigue usando pesos y cuántos dólares comp
 
 Los dos componentes se leen juntos porque uno solo alcanza para engañar: la composición de la liquidez puede verse estable mientras crece la compra de divisas, y a la inversa. El resultado sale de cruzarlos en una matriz, no de promediarlos. Mayor tensión reduce el puntaje de estabilidad monetaria.
 
-**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde tres señales complementarias: la inflación actual, según el índice de precios al consumidor (IPC); la esperada por el mercado, según el Relevamiento de Expectativas de Mercado (REM), y la presión por salir del peso, observada según el régimen cambiario vigente. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como cuarta señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
+**Dimensión que integra — Estabilidad monetaria-inflacionaria.** La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual, según el índice de precios al consumidor; la esperada por el mercado, según el Relevamiento de Expectativas de Mercado del Banco Central; la presión por salir del peso, observada según el régimen cambiario vigente, y las reservas netas del Banco Central, los dólares propios con que respalda la moneda. Las reservas estaban en el sector externo hasta octubre de 2026 y pasaron acá con el mismo peso en el índice. La brecha de crecimiento real entre el agregado amplio y el transaccional acompañaba como otra señal hasta agosto de 2026: se sigue calculando fuera del índice, porque su banda afirmaba una dirección que ninguna referencia externa pudo firmar.
 
 ## Método de cómputo
 
@@ -1392,7 +1402,7 @@ Cuánto crecen los préstamos en pesos al sector privado en términos reales (co
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −1,2 % i.a. real (crédito en pesos)** (2026-09) | **AMARILLO** | Peso efectivo 3,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −0,6 % i.a. real (crédito en pesos)** (2026-09) | **AMARILLO** | Peso efectivo 3,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1434,13 +1444,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- nominal 31,7% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-09) · aparte, la cartera en moneda extranjera 15,4% real medida en pesos y 38,6% en dólares; los dos universos juntos, 2,4% real — al 2026-10-22 (provisorio, no puntúa): -1,4% real con deflactor de 2026-09
+- nominal 32,6% i.a. deflactado por IPC, sólo crédito EN PESOS — crédito realizado, no capacidad prestable (mes común: 2026-09) · aparte, la cartera en moneda extranjera 15,4% real medida en pesos y 38,6% en dólares; los dos universos juntos, 2,9% real — al 2026-10-23 (provisorio, no puntúa): -1,4% real con deflactor de 2026-09
 
 ## Color vigente y por qué
 
-Dato vigente: −1,2 % i.a. real (crédito en pesos) (2026-09).
+Dato vigente: −0,6 % i.a. real (crédito en pesos) (2026-09).
 
-−1,2 % i.a. real (crédito en pesos) está en Amarillo, a 4,83 del límite con Verde (3,62).
+−0,6 % i.a. real (crédito en pesos) está en Amarillo, a 4,22 del límite con Verde (3,62).
 
 **Color vigente: AMARILLO**
 
@@ -1548,6 +1558,7 @@ Ponderación vigente en el ITCM: 4 % efectivo. El color es una lectura adicional
 ## Transparencia — limitaciones declaradas
 
 - Es el único indicador del tablero cuya escala premia el punto medio y castiga los dos extremos: una tasa real muy negativa significa que el Estado se financia licuando al ahorrista, y una muy alta que la deuda crece más rápido que la economía.
+- La escala satura por arriba: toda tasa real mayor a 20 % puntúa lo mismo, así que no distingue un 21 % de un 34 %. Importa porque la serie la superó: en agosto de 2025 llegó a 33,8 % y en septiembre de 2025 a 30,3 %, los dos con el mismo puntaje que un mes apenas por encima de 20 %. Que el peor tramo sature es deliberado —como la inflación por encima de 3,5 % mensual—; el corte es conceptual y no se movió para distinguir ese episodio (declarado en octubre de 2026, a pedido de la revisión macro de Luis Babino).
 - Se expresa en tasa efectiva anual, no en tasa nominal anual. A tasas altas la diferencia es enorme: la letra colocada en diciembre de 2023 equivalía a 105% nominal y a 169% efectiva.
 - Los meses sin colocaciones a tasa fija en pesos no tienen dato: enero y febrero de 2024 quedan fuera de la serie porque todo lo emitido en esos meses se ajustaba por inflación.
 - El promedio mezcla plazos: un mes con colocaciones largas y otro con cortas no son estrictamente comparables cuando la curva de tasas tiene pendiente.
@@ -1560,6 +1571,8 @@ Ponderación vigente en el ITCM: 4 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** Las planillas del año en curso se actualizan a lo largo del año; la serie se regenera completa desde diciembre de 2023 en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La ficha declara que la escala satura por encima de 20 % real y que la serie la superó en agosto y septiembre de 2025. No cambia el cálculo.
 
 **2026-10-27** — Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». El peso de este indicador en el índice macroeconómico no cambia (4 %).
 

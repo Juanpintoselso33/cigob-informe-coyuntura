@@ -746,11 +746,82 @@ def _infoleg_contar_dnus(session: requests.Session, action_url: str,
     El tipo jurídico está en la propia grilla: InfoLeg rotula `Decreto DNU 771 /
     2026` frente a `Decreto 710 / 2026` o `Decreto Reglamentario 58 / 2026`. La
     búsqueda de texto se conserva porque acota la grilla —sin ella habría que
-    traer todos los decretos del año— pero ya no decide."""
+    traer todos los decretos del año— pero ya no decide.
+
+    Y el rótulo tampoco alcanza (ADR-0410): InfoLeg rotula «Decreto 867 /
+    2026», «Decreto 521 / 2025» y «Decreto 493 / 2025» como decretos simples
+    cuando el original del Boletín los identifica `DNU-AAAA-N-APN-PTE`, y
+    rotula «Decreto DNU 44 / 2026» siendo `DECTO-2026-44-APN-PTE`
+    (ADR-0307). Decide el identificador del original; el rótulo queda como
+    respaldo sólo si el texto se leyó y no trae identificador; si no se pudo
+    bajar, el conteo se corta."""
     items = _infoleg_listado_completo(session, action_url, "2", desde, hasta,
                                       texto="necesidad y urgencia")
-    dnus = [it for it in items if _RE_INFOLEG_DNU.match(it["norma"])]
+    dnus = [it for it in items if _es_dnu_infoleg(session, it)]
     return len(dnus), dnus
+
+
+# Identificador del sistema de gestión documental que encabeza el original de
+# cada decreto del Presidente: `DNU-2026-867-APN-PTE` frente a
+# `DECTO-2026-710-APN-PTE`. Hasta 2023 los de necesidad y urgencia se
+# numeraban `DECNU-` y los comunes `DCTO-`. Es el tipo con el que se firmó, no
+# un rótulo de catálogo (ADR-0410).
+_RE_IDENT_DECRETO = re.compile(r"\b(DNU|DECNU|DECTO|DCTO)-(\d{4})-(\d+)-APN-PTE\b")
+_RE_NUMERO_NORMA = re.compile(r"(\d+)\s*/\s*(\d{4})")
+_TIPO_ORIGINAL: dict[str, str | None] = {}   # infoleg_id → tipo leído; no cambia nunca
+_PAUSA_TEXTO_INFOLEG = 0.4
+
+
+def _tipo_original_infoleg(session: requests.Session, item: dict) -> str | None:
+    """'DNU' / 'DECTO' según el identificador del texto original publicado en
+    InfoLeg, o None si el texto no trae el identificador de la propia
+    norma; si el texto no se pudo bajar, RuntimeError (se exige el mismo número y año: el texto puede citar el de otra).
+    Se memoriza todo texto leído —también el que no trae identificador—; un
+    fallo de red no, y se reintenta la próxima vez."""
+    iid = str(item["infoleg_id"])
+    if iid in _TIPO_ORIGINAL:
+        return _TIPO_ORIGINAL[iid]
+    num = _RE_NUMERO_NORMA.search(item.get("norma", ""))
+    if not num:
+        return None
+    lo = int(iid) // 5000 * 5000
+    url = (f"https://servicios.infoleg.gob.ar/infolegInternet/anexos/"
+           f"{lo}-{lo + 4999}/{iid}/norma.htm")
+    # Un original que no se pudo bajar no autoriza a usar el rótulo, que ya se
+    # sabe equivocado en varios casos: se reintenta una vez y, si sigue sin
+    # responder, se corta. La card cae a cache marcada desactualizada y la
+    # serie salta ese mes, en vez de publicar un conteo que parece verificado.
+    r = None
+    for _ in range(2):
+        try:
+            time.sleep(_PAUSA_TEXTO_INFOLEG)
+            r = session.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+        except requests.RequestException:
+            r = None
+            continue
+        if r.status_code == 200:
+            break
+    if r is None or r.status_code != 200:
+        raise RuntimeError(f"no se pudo leer el original de {item['norma'][:40]!r} "
+                           f"({'sin respuesta' if r is None else f'HTTP {r.status_code}'})")
+    tipo = None
+    for m in _RE_IDENT_DECRETO.finditer(r.text):
+        if m.group(3) == num.group(1) and m.group(2) == num.group(2):
+            tipo = "DNU" if m.group(1) in ("DNU", "DECNU") else "DECTO"
+            break
+    _TIPO_ORIGINAL[iid] = tipo
+    if tipo is None:
+        print(f"[WARN] {CINTURON}.ratio_dnu: el original de {item['norma'][:40]!r} "
+              f"no trae su identificador; se usa el rótulo de InfoLeg")
+    return tipo
+
+
+def _es_dnu_infoleg(session: requests.Session, item: dict) -> bool:
+    """Decide el identificador del original; si no hay, el rótulo de la grilla."""
+    tipo = _tipo_original_infoleg(session, item)
+    if tipo is None:
+        return bool(_RE_INFOLEG_DNU.match(item["norma"]))
+    return tipo == "DNU"
 
 
 # ── Sector privado: brecha de expectativas obra pública vs. privada ───────────
@@ -954,7 +1025,7 @@ def fetch_ratio_dnu() -> dict | None:
             "dnu_count": dnus,
             "leyes_count": leyes,
             "ventana_dias": 365,
-            "unidad": "DNUs publicados por ley publicada",
+            "unidad": "decretos de necesidad y urgencia publicados por ley publicada",
             "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
             "fecha_dato": str(date.today()),
             "desactualizado": False,
@@ -963,9 +1034,10 @@ def fetch_ratio_dnu() -> dict | None:
             "inventario_dnu": [{"norma": it["norma"].split(" PODER")[0].strip(),
                                 "fecha_pub": it["fecha_pub"]} for it in inventario],
             "detalle_txt": (
-                f"{dnus} DNU y {leyes} leyes publicados en el Boletín Oficial "
-                f"entre {desde.isoformat()} y {hasta.isoformat()} → {ratio:.2f} "
-                f"DNU por ley"),
+                f"{dnus} decretos de necesidad y urgencia y {leyes} leyes publicados "
+                f"en el Boletín Oficial entre el {_fecha_dmy(desde.isoformat())} y el "
+                f"{_fecha_dmy(hasta.isoformat())}: "
+                f"{f'{ratio:.2f}'.replace('.', ',')} decretos por ley"),
         }
 
     except Exception as e:
@@ -7433,10 +7505,30 @@ def fetch_desafios_legislativos(registro: dict | None = None) -> dict | None:
 # cámara (ley 26.122, art. 24)—, en la ventana de 12 meses calendario que
 # termina en el mes de referencia (la misma que _bloqueo_tasa_12m).
 
+def _fecha_segunda_insistencia(veto: dict) -> str:
+    """Fecha de la insistencia de la segunda cámara (ADR-0377).
+
+    `insistencia_completa` es la publicación de la ley en el Boletín cuando la
+    detecta la corrida (`_derrotas_detectar_insistencias`), que llega semanas
+    después del voto: la 27.795 y la 27.796 se insistieron el 2-oct-2025 y se
+    publicaron el 21. Si las dos cámaras tienen su voto de insistencia
+    registrado, decide el de la segunda; si no, queda la publicación
+    (ADR-0410)."""
+    votos = [iv for iv in veto.get("insistencias_votadas") or []
+             if iv.get("resultado") == "insistio_camara" and iv.get("fecha")]
+    primeras = [min(iv["fecha"] for iv in votos if iv.get("camara") == c)
+                for c in ("Diputados", "Senado")
+                if any(iv.get("camara") == c for iv in votos)]
+    if len(primeras) == 2 and max(primeras) <= veto["insistencia_completa"]:
+        return max(primeras)
+    return veto["insistencia_completa"]
+
+
 def _insistencias_completas(registro: dict) -> list[dict]:
-    """Vetos con insistencia consumada en las dos cámaras: [{nombre, fecha}]."""
+    """Vetos con insistencia consumada en las dos cámaras: [{nombre, fecha}],
+    fechados en la insistencia de la segunda cámara."""
     return sorted(({"nombre": f"ley {v['proyecto']} ({v.get('tema', '')})",
-                    "fecha": v["insistencia_completa"]}
+                    "fecha": _fecha_segunda_insistencia(v)}
                    for v in registro.get("vetos", []) if v.get("insistencia_completa")),
                   key=lambda e: e["fecha"])
 

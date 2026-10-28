@@ -106,8 +106,8 @@ export const FORMULAS: Record<string, Formula> = {
 
   // ── Gestión (ITCG) ───────────────────────────────────────────────────────
   cepo_mulc: {
-    latex: String.raw`\left(\frac{\text{d\'olar CCL}}{\text{d\'olar mayorista}}-1\right)\times 100`,
-    leyenda: "Cuánto más caro es el dólar financiero libre que el oficial. Una brecha reducida indica más proximidad entre las dos cotizaciones: es una señal de normalización cambiaria, pero no permite establecer por sí sola que hayan desaparecido todas las restricciones de acceso al mercado de cambios.",
+    latex: String.raw`\left(\frac{\text{d\'olar contado con liquidaci\'on}}{\text{d\'olar mayorista}}-1\right)\times 100`,
+    leyenda: "Cuánto más caro es el dólar financiero (contado con liquidación) que el mayorista de referencia del Banco Central. Una brecha reducida indica más proximidad entre las dos cotizaciones: es una señal de normalización cambiaria, pero no permite establecer por sí sola que hayan desaparecido todas las restricciones de acceso al mercado de cambios.",
   },
   apertura_comercial: {
     latex: String.raw`\frac{\text{impuestos al comercio exterior}}{\text{exportaciones}+\text{importaciones}}\times 100`,
@@ -166,8 +166,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "La intermediación del Potenciar Trabajo estaba en las unidades de gestión —municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista—. La Resolución 84/2024 del Ministerio de Capital Humano (Boletín Oficial, 10 de abril de 2024) dispuso su cese. El indicador vale 100 desde entonces y 0 antes.",
   },
   protocolo_antipiquetes: {
-    latex: String.raw`\left(1-\frac{\text{cortes en el pa\'is, \'ultimo a\~no cerrado}}{\text{cortes en el pa\'is en 2023}}\right)\times 100`,
-    leyenda: "Reducción porcentual de cortes en todo el país contra 2023, con los totales anuales publicados por Diagnóstico Político (2023: 8.239; 2025: 3.893). 100 = cero cortes; 0 = igual que 2023.",
+    latex: String.raw`\left(1-\frac{\text{cortes en la Ciudad, \'ultimo a\~no cerrado}}{\text{cortes en la Ciudad en 2023}}\right)\times 100`,
+    leyenda: "Reducción porcentual de cortes en la Ciudad de Buenos Aires contra 2023, con los anclajes anuales de Diagnóstico Político, una consultora privada (2023: aproximadamente 931, estimado desde una participación redondeada; 2025: 240). 100 = cero cortes; 0 = igual que 2023.",
   },
   libertad_opcion_salud: {
     latex: String.raw`100\times\left(0{,}25\cdot\text{marco}+0{,}20\cdot\text{sin permanencia}+0{,}20\cdot\text{derivaci\'on directa}+0{,}20\cdot\text{tr\'amite}+0{,}15\cdot\text{funcionamiento}\right)`,
@@ -302,7 +302,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Cuenta los vetos del Presidente a los que el Congreso les insistió con dos tercios en las dos cámaras, de modo que la ley quedó promulgada igual (artículo 83 de la Constitución). Se fecha en la insistencia de la segunda cámara. Cero es la lectura más favorable para el Gobierno: uno ya es amarillo, tres naranja y cuatro o más rojo.",
   },
   rechazos_decretos: {
-    latex: String.raw`\#\{\text{DNU y decretos delegados rechazados por las dos cámaras en los últimos 12 meses}\}`,
+    latex: String.raw`\#\{\text{decretos de necesidad y urgencia y delegados rechazados por las dos cámaras en los últimos 12 meses}\}`,
     leyenda: "Cuenta los decretos de necesidad y urgencia y los decretos delegados que las dos cámaras rechazaron, lo que los deroga (ley 26.122). Se fecha en el rechazo de la segunda cámara; el rechazo de una sola no cuenta. Cero es la lectura más favorable para el Gobierno: uno ya es amarillo, tres naranja y cuatro o más rojo.",
   },
   desafios_legislativos: {
@@ -330,8 +330,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Comunicados de prensa fechados de la Cámara Argentina de Comercio y Servicios (CAC). Cada comunicado se clasifica a mano en dos ejes: si respalda o critica lo que comenta, y a quién le habla. Sólo entran al cálculo los que se pronuncian sobre una medida del Gobierno nacional: los que informan una reunión, un acto o un cambio de autoridades no toman posición y quedan afuera, igual que los dirigidos al Congreso, a una provincia o a la Justicia. Los informes estadísticos periódicos de la cámara tampoco cuentan. El resultado va de −1, si en doce meses todo fue crítica, a +1 si todo fue apoyo; cero significa que la CAC apoyó tanto como criticó. Si la cámara emite menos de tres pronunciamientos en la ventana, el mes queda sin valor.",
   },
   ratio_dnu: {
-    latex: String.raw`\frac{\text{DNU publicados en el B.O., \'ultimos 365 d\'ias}}{\text{leyes publicadas en el B.O., \'ultimos 365 d\'ias}}`,
-    leyenda: "Buscador oficial de InfoLeg sobre una ventana móvil de 365 días (no el año calendario), con la misma convención de fecha en los dos lados: la publicación en el Boletín Oficial. Los decretos de necesidad y urgencia (DNU) se identifican por el tipo jurídico que declara la grilla —«Decreto DNU»—, no por la frase «necesidad y urgencia»: esa frase la dicen también decretos que prorrogan una intervención dispuesta por un DNU, reglamentarios y vetos que la citan al fundarse, y la búsqueda por texto queda sólo como filtro previo para acotar el listado. Más de 1 = se publican más DNU que leyes.",
+    latex: String.raw`\frac{\text{decretos de necesidad y urgencia publicados en el Bolet\'in Oficial, \'ultimos 365 d\'ias}}{\text{leyes publicadas en el Bolet\'in Oficial, \'ultimos 365 d\'ias}}`,
+    leyenda: "Buscador oficial de InfoLeg sobre una ventana móvil de 365 días (no el año calendario), con la misma convención de fecha en los dos lados: la publicación en el Boletín Oficial. Un decreto cuenta como de necesidad y urgencia por el tipo con el que se firmó, que figura en el encabezado de su texto original; no por la frase «necesidad y urgencia», que dicen también decretos que prorrogan una intervención dispuesta por uno de ellos, reglamentarios y vetos que la citan al fundarse. La búsqueda por esa frase queda sólo como filtro previo para acotar el listado. Más de 1 = se publican más decretos de necesidad y urgencia que leyes.",
   },
   veto_quorum: {
     latex: String.raw`\frac{\text{sesiones en minor\'ia}_{\text{12 m}}}{\text{sesiones convocadas}_{\text{12 m}}}\times 100`,

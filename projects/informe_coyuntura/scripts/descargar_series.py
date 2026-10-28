@@ -1754,7 +1754,8 @@ POLITICA_DERIVADAS = [
     ("transferencias_no_automaticas", "% real vs 2023 (12m móviles)",
      "Presupuesto Abierto (devengado, transferencias a provincias sin las automáticas) + IPC INDEC deflactado mes a mes",
      fetch_transferencias_no_automaticas_serie),
-    ("ratio_dnu", "DNUs publicados por ley publicada", "InfoLeg", fetch_ratio_dnu_serie),
+    ("ratio_dnu", "decretos de necesidad y urgencia publicados por ley publicada", "InfoLeg",
+     fetch_ratio_dnu_serie),
     ("desafios_legislativos", "normas desafiadas en el recinto (12m)",
      "Actas de Diputados y Senado + InfoLeg — elaboración CIGOB",
      fetch_desafios_legislativos_mensual),
@@ -3716,7 +3717,8 @@ def fetch_icg_serie() -> list:
 
 
 def fetch_protocolo_serie() -> list:
-    """Serie del IRPC (reducción de cortes en todo el país vs 2023, ADR-0405) por escalones ANUALES
+    """Serie del IRPC (reducción de cortes en la Ciudad de Buenos Aires vs 2023,
+    ADR-0408, que revierte el total nacional de ADR-0405) por escalones ANUALES
     de los anclajes públicos de Diagnóstico Político (ADR-0025): cada año
     cerrado aporta su IRPC y el valor se arrastra mes a mes hasta el siguiente
     (regla del último dato disponible). [[YYYY-MM-01, %]].
@@ -3729,15 +3731,15 @@ def fetch_protocolo_serie() -> list:
     puntuaría como «sin mejora» en una historia reconstruida que nadie midió."""
     dp = json.loads((Path(__file__).resolve().parents[1] / "data" / "gestion" /
                      "dp_piquetes.json").read_text(encoding="utf-8-sig"))
-    nac = {int(k): int(v) for k, v in dp["nacional"].items()}
-    base = nac[2023]
+    caba = {int(k): int(v) for k, v in dp["caba"].items()}
+    base = caba[2023]
     hoy = date.today()
     fin = hoy.replace(day=1) - timedelta(days=1)
     out = []
-    y, m = min(a for a in nac if a > 2023) + 1, 1
+    y, m = min(a for a in caba if a > 2023) + 1, 1
     while (y, m) <= (fin.year, fin.month):
-        anio_dato = max(a for a in nac if 2023 < a < y)
-        irpc = round((1.0 - nac[anio_dato] / base) * 100.0, 1)
+        anio_dato = max(a for a in caba if 2023 < a < y)
+        irpc = round((1.0 - caba[anio_dato] / base) * 100.0, 1)
         out.append([f"{y}-{m:02d}-01", irpc])
         m += 1
         if m > 12:
@@ -3776,7 +3778,7 @@ VIDA_DERIVADAS.append(
 
 
 GESTION_DERIVADAS = [
-    ("protocolo_antipiquetes", "% reducción de cortes en el país vs 2023 (IRPC, anual)",
+    ("protocolo_antipiquetes", "% reducción de cortes en la Ciudad de Buenos Aires vs 2023 (IRPC, anual)",
      "Diagnóstico Político (monitoreos públicos)", fetch_protocolo_serie),
     ("apertura_comercial", "% alícuota efectiva del comercio exterior", "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500", fetch_alicuota_serie),
     ("concesiones_infraestructura", "% km adjudicados RFC", "Boletín Oficial + RFC (hitos fechados)", fetch_concesiones_serie),
@@ -3807,7 +3809,8 @@ GESTION_DERIVADAS = [
     ("litigiosidad_laboral", "% i.a. juicios SRT (12m vs 12m)", "SRT — serie de litigiosidad", fetch_litigiosidad_serie),
     ("siniestralidad_laboral", "% variación del índice de incidencia de AT y EP (mismo período, año contra año)", "SRT — Informe provisorio de accidentabilidad laboral y Serie histórica de indicadores de AT y EP", fetch_siniestralidad_serie),
     ("juicios_trabajo_capital", "% juicios entrados en 1ª instancia (12m vs 12m, semestral)", "Consejo de la Magistratura — Justicia Nacional del Trabajo", fetch_juicios_trabajo_serie),
-    ("cepo_mulc", "% brecha CCL/mayorista (prom. mensual)", "ArgentinaDatos (CCL) + BCRA (A3500)", fetch_brecha_serie),
+    ("cepo_mulc", "% de brecha entre el contado con liquidación y el mayorista (promedio mensual)",
+     "ArgentinaDatos (contado con liquidación) + Banco Central (referencia oficial del dólar mayorista)", fetch_brecha_serie),
     ("protestas_caba", "eventos de protesta/mes (CABA)", "ACLED — agregado semanal (acleddata.com)", fetch_protestas_serie),
 ]
 
