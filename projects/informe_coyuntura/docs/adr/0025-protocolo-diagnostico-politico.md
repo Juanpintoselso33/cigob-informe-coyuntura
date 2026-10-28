@@ -6,7 +6,7 @@ nota_estado: 'aceptada (revisión uno-por-uno de gestión; mandato del editor:'
 fecha: 2026-07-03
 cinturon: 'gestion'
 indicadores: [protocolo_antipiquetes]
-relacionado: ['0395']
+relacionado: ['0395', '0405']
 ---
 
 # ADR-0025 — Protocolo antipiquetes automatizado con Diagnóstico Político (y corrección 55 → 74,2)

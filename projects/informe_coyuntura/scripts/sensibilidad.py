@@ -86,6 +86,7 @@ INDICES = {
     "itvc": {"cinturon": "vida_cotidiana", "bandas": None,   # continuo
              "tension": lambda v: round(min(10.0, max(0.0, 5 - (v - 100) * 0.2)), 1)},
     "itcp": {"cinturon": "politica", "bandas": itcp.BANDAS_ITCP,
+             "anclas": itcp.ANCLAS_ITCP,   # ADR-0401/0402
              "tension": lambda v: round((100 - v) / 10, 1)},
 }
 

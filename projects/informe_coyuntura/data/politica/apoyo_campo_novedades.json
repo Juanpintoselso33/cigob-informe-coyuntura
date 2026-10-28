@@ -8,10 +8,22 @@
    "SRA": "https://www.sra.ar/comunicacion/"
   },
   "inventario_verificado": "2026-10-28",
-  "nuevos_en_la_corrida": 0,
+  "nuevos_en_la_corrida": 1,
   "ultima_corrida": "2026-10-28"
  },
- "pendientes": {},
+ "pendientes": {
+  "CONINAGRO|72351": {
+   "camara": "CONINAGRO",
+   "destinatario": null,
+   "fecha": "2026-10-28",
+   "id": "72351",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Con una producción de granos proyectada en alza, las relaciones insumo-producto muestran que el combustible, el transporte y la mano de obra continúan presionando sobre la capacidad de compra de la soja y el maíz. \n La campaña gruesa 2026/27 comienza bajo un escenario climático marcado por la presencia de El Niño y una mayor disponibilidad de agua, factores que inciden en las decisiones de siembra, especialmente en el maíz. \n Según el relevamiento de precampaña de la Bolsa de Cereales de Buenos Aires, la producción de los principales granos (soja, maíz, trigo, girasol, sorgo y cebada) alcanzaría 157,9 millones de toneladas, un 0,5% más que los 157,1 millones registrados en la campaña anterior . Para el maíz, se proyectan 66 millones de toneladas, mientras que la soja alcanzaría 53,6 millones de toneladas, incrementos del 3% y 7% respectivamente. Sin embargo, las perspectivas productivas conviven con desafíos en la estructura de costos. El análisis de las relaciones insumo-producto muestra que, en septiembre, el poder de compra de ambos cultivos se deterioró frente al combustible, el flete y la mano de obra, con una presión relativamente mayor sobre el maíz.\n En su informe mensual, CONINAGRO analizó el poder de compra de siete productos clave de la producción agropecuaria en Argentina: soja, maíz, trigo, ternero, novillito, leche y yerba. Este indicador mide la capacidad de estos productos para adquirir una amplia gama de insumos, costos e inversiones del sector, que incluyen herbicidas, fletes, maquinaria y otras 20 variables analizadas.\n Los datos utilizados para este informe, también se encuentran disponibles en una herramienta interactiva y gratuita disponible en https://monitoragropecuario.com.ar/ El objetivo del estudio es monitorear la evolución de las relaciones entre precios y costos en el agro, proporcionando una herramienta clave para evaluar la competitividad de los productores a través de un enfoque insumo-producto que ofrece una visión integral sobre la competitividad del sector.\n El poder de compra Soja y Maíz \n En septiembre de 2026, la pérdida de poder de compra de la soja y el maíz frente a los principales costos operativos respondió al mayor incremento de los costos en relación con los precios de los granos. En términos interanuales, ambos cultivos registraron subas de sus precios disponibles: la soja aumentó un 19%, hasta USD 371,1 por tonelada, mientras que el maíz subió un 9%, hasta USD 196,6 por tonelada.\n Combustible, flete y mano de obra: mayor presión sobre el maíz\n El gasoil es el rubro que más se encareció para ambos cultivos, su precio aumentó un 58% interanual. y se ubicó un 32% por encima del promedio de los últimos cinco años. Como resultado, se necesitaron 4,4 kg de soja para adquirir un litro de combustible, un 33% más que un año atrás y un 23% por encima de su promedio histórico. Para el maíz, el requerimiento ascendió a 8,4 kg por litro, con un incremento interanual del 45% y un nivel un 35% superior al promedio ultimo cinco años. Siguiendo en el rubro transporte, el costo de un flete de 300 kilómetros aumentó un 15% interanual y demanda 106 kg de soja, un 7% por encima de su promedio histórico, mientras que requiere 200 kg de maíz, un 17% más que su promedio histórico.\n Una dinámica similar se observó en el empleo rural. El costo aumento un 29% interanual. Para cubrir este costo se necesitaron 2,2 toneladas de soja, un 9% más que un año atrás, y 4,1 toneladas de maíz, un 19% más. \n En los insumos agrícolas, en cambio, se observaron comportamientos diferenciados. El glifosato alcanzó los USD 4,7 por litro, con un aumento interanual del 19%, aunque permaneció un 32% por debajo de su promedio histórico. Para adquirir un litro se necesitaron 12,7 kg de soja, una relación estable en términos interanuales y un 34% más favorable que el promedio de los últimos cinco años. En el caso del maíz, el requerimiento fue de 23,9 kg por litro, un 9% más que un año atrás, aunque un 27% inferior al promedio quinquenal. \n El fosfato monoamónico (MAP) se ubicó en USD 990,2 por tonelada, con subas del 4% interanual y del 2% frente al promedio histórico. Dado que estos incrementos fueron inferiores a los registrados por ambos granos, la relación de compra mejoró. Por su parte, la urea alcanzó los USD 624,8 por tonelada, prácticamente sin cambios interanuales y un 15% por debajo de su promedio histórico, lo que favoreció la capacidad de compra del maíz frente a este fertilizante.\n Aquí, el informe completo con las demás producciones en detalle\n Monitor-insumo-producto.-Oct-26",
+   "titulo": "Campaña 2026/27: Proyectan récords de producción agrícola, pero los costos de combustible y fletes presionan la rentabilidad",
+   "url": "https://www.coninagro.org.ar/campana-2026-27-proyectan-records-de-produccion-agricola-pero-los-costos-de-combustible-y-fletes-presionan-la-rentabilidad/"
+  }
+ },
  "revisadas": {
   "CONINAGRO|68761": {
    "origen": "codificacion ADR-0384"
@@ -804,6 +816,10 @@
   },
   "CONINAGRO|72347": {
    "origen": "codificacion ADR-0384"
+  },
+  "CONINAGRO|72351": {
+   "fecha": "2026-10-28",
+   "titulo": "Campaña 2026/27: Proyectan récords de producción agrícola, pero los costos de combustible y fletes presionan la rentabilidad"
   },
   "CRA|28552": {
    "origen": "codificacion ADR-0384"

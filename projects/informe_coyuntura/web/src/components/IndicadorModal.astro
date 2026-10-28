@@ -439,10 +439,13 @@ const dimsJson = JSON.stringify(dims);
       // El saldo de bienes junto a la cuenta corriente: el primero puede estar
       // en superávit mientras el país sigue drenando dólares por servicios,
       // intereses y utilidades. La línea del cero marca la frontera.
+      // Desde ADR-0404 la tarjeta mide el saldo en % del comercio; para
+      // compararlo con la cuenta corriente se grafica su serie en dólares,
+      // la misma unidad (la `unidad` de la entrada pisa la de la tarjeta).
       saldo_comercial_12m: {
-        series: [["saldo_comercial_12m", "Saldo comercial (bienes)"],
+        series: [["saldo_comercial_12m_usd", "Saldo comercial (bienes)"],
                  ["cuenta_corriente", "Cuenta corriente (total)"]],
-        refY: 0, refLabel: "equilibrio externo",
+        refY: 0, refLabel: "equilibrio externo", unidad: "US$ M",
       },
     };
     const baseKey = key.split(".").pop();
@@ -450,7 +453,7 @@ const dimsJson = JSON.stringify(dims);
     if (tipo === "linea" && multi && multi.series.every(([k]) => (SERIES[k] || []).length > 1)) {
       chartInstance = C.multiTimeChart(el,
         multi.series.map(([k, nombre]) => ({ nombre, puntos: SERIES[k] })),
-        { color, unidad: d.unidad, refY: multi.refY, refLabel: multi.refLabel });
+        { color, unidad: multi.unidad ?? d.unidad, refY: multi.refY, refLabel: multi.refLabel });
     }
     else if (tipo === "linea") chartInstance = C.timeChart(el, serie, { color, nombre: d.label, unidad: d.unidadSerie ?? d.unidad, indicador: baseKey });
     else if (tipo === "gauge_avance") chartInstance = C.gaugeChart(el, d.avance, { color, label: "avance ejecutado" });

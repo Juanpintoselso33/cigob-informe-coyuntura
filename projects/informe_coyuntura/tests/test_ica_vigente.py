@@ -82,7 +82,9 @@ def test_tarjeta_acumula_doce_y_compara_con_los_doce_anteriores(monkeypatch):
     monkeypatch.setattr(macro,'_ica_mensual',lambda:{'puntos':puntos,'url':'https://www.indec.gob.ar/cuadro.xls',
         'advertencia':None,'consulta_oficial_exitosa':True})
     c=macro.fetch_saldo_comercial_12m()
-    assert c['valor']==round(12*(100.25-80.125),0)
+    # ADR-0404: el titular es el saldo como % del comercio; el monto, aparte
+    assert c['saldo_musd']==round(12*(100.25-80.125),0)
+    assert c['valor']==round((100.25-80.125)/(100.25+80.125)*100,2)
     assert c['fecha_dato']=='2026-07-01'
     assert c['expo_delta_12m']==123
     assert c['impo_delta_12m']==-58

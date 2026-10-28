@@ -7,7 +7,8 @@ cinturon: 'macro'
 indice: 'ITCM'
 indicadores: [iai]
 archivos: ['scripts/itcm.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts', 'tests/test_itcm.py', 'tests/test_idm_e_icip_no_puntuan.py']
-relacionado: ['0331']
+relacionado: ['0331', '0404']
+modificado_por: ['0404']
 ambito: 'Cinturón macro · ITCM · dónde arranca el verde de la inversión física'
 origen: 'Revisión de Luis del 23-sep-2026: «el tema de inversión física se toma verde cuando está arriba de 0, por lo menos debería estar arriba del crecimiento de la población o ponerlo como relación al PBI». Juan eligió el piso de población el 30-sep, sabiendo que mueve la escala sólo 0,17 puntos.'
 ---

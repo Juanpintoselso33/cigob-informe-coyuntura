@@ -48,8 +48,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Irregular (registro revisado)", tipo: "% estimado de cobertura",
   },
   produccion_legislativa: {
-    que: "Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta leyes sancionadas, no publicadas. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas en el Boletín Oficial, otro momento del trámite: los dos números de leyes no coinciden.",
-    aporta: "Describe el volumen total de leyes sancionadas, sin equipararlo a victorias del Ejecutivo. Complementa la eficacia de su agenda y las votaciones que desafían sus normas; ni el origen ni el contenido de cada ley se deducen del total.",
+    que: "Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno aceptó: no cuentan las que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso después haya insistido; las vetadas en parte sí, porque se promulgaron. No distingue de quién nació cada proyecto. Cuenta leyes sancionadas, no publicadas. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas en el Boletín Oficial, otro momento del trámite: los dos números de leyes no coinciden.",
+    aporta: "Responde si el Congreso sanciona leyes que el Gobierno acepta: más leyes, menos tensión entre los poderes. Una ley vetada entera no es producción compartida sino un desacuerdo, y ese desacuerdo ya lo registran los vetos insistidos. No equipara el total a victorias del Ejecutivo: ni el origen ni el contenido de cada ley se deducen del conteo.",
     frecuencia: "Mensual", tipo: "Conteo en ventana móvil",
   },
   judicializacion: {
@@ -83,9 +83,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación i.a. real (compuesto)",
   },
   saldo_comercial_12m: {
-    que: "El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses.",
-    aporta: "Muestra si el intercambio de bienes aporta o resta dólares. No alcanza para saber si el sector externo en conjunto los genera: faltan los servicios, los intereses y las utilidades giradas, que se ven en la cuenta corriente del gráfico.",
-    frecuencia: "Mensual", tipo: "Nivel (acum. 12m)",
+    que: "El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses, como porcentaje de todo el comercio de esos meses (exportaciones más importaciones). El monto en dólares se ve en el detalle.",
+    aporta: "Muestra si el intercambio de bienes aporta o resta dólares, en proporción a su tamaño, para que un mismo resultado se compare entre años con comercios muy distintos. No alcanza para saber si el sector externo en conjunto los genera: faltan los servicios, los intereses y las utilidades giradas, que se ven en la cuenta corriente del gráfico.",
+    frecuencia: "Mensual", tipo: "Proporción del comercio (acum. 12m)",
   },
   recaudacion: {
     que: "Índice de recaudación interna en términos reales, ajustado por estacionalidad y comparado con el cuarto trimestre de 2023, que vale 100. Combina tributos internos nacionales e Ingresos Brutos recaudado por los regímenes de la Comisión Arbitral del Convenio Multilateral; excluye los tributos aduaneros.",
@@ -220,9 +220,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (12 meses móviles)", tipo: "Variación real",
   },
   transferencias_no_automaticas: {
-    que: "Cuánto varían, en términos reales, las transferencias que la Nación devenga a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con los 12 meses anteriores (la ventana termina en el último mes cerrado con IPC publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.",
-    aporta: "Mide cuánto recurso discrecional pone la Nación en juego con las provincias: cuánto gira por encima o por debajo de lo que giraba antes, en términos reales. Es un insumo de la relación federal, no la respuesta de los gobernadores: informa lo que hace el Gobierno nacional, no a qué provincias va ni cómo reaccionan.",
-    frecuencia: "Mensual (12 meses móviles)", tipo: "Variación real",
+    que: "Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con el total de 2023, el año anterior al mandato (la ventana termina en el último mes cerrado con IPC publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.",
+    aporta: "Mide cuánto recurso discrecional pone la Nación en juego con las provincias frente al nivel de 2023, en términos reales. Compara contra una base fija y no contra el año anterior: así una recuperación parcial después de una caída no se lee como un aumento. Es un insumo de la relación federal, no la respuesta de los gobernadores: informa lo que hace el Gobierno nacional, no a qué provincias va ni cómo reaccionan.",
+    frecuencia: "Mensual (12 meses móviles)", tipo: "Variación real (%)",
   },
   eficacia_legislativa: {
     que: "Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. Cada proyecto tuvo al menos un año para tramitarse.",
@@ -230,12 +230,12 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (cohorte de 365–730 días)", tipo: "Nivel (%)",
   },
   cohesion_bloque: {
-    que: "Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones nominales de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene votaciones nominales en la ventana, el peso pasa a la otra.",
-    aporta: "Mide la cohesión interna del oficialismo en el Congreso, clave para sostener vetos y aprobar leyes. La composición por cámara se publica en el detalle.",
+    que: "Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas (la minoría tuvo al menos 10 % de los votos) de los últimos 90 días de ambas cámaras. Diputados pesa más que el Senado (el reparto está en el detalle de la tarjeta); si una cámara no tiene votaciones divididas en la ventana, el peso pasa a la otra.",
+    aporta: "Mide la cohesión interna del oficialismo en el Congreso, clave para sostener vetos y aprobar leyes. Se compara con la cohesión del bloque PRO en el gobierno de Macri, medida igual. La composición por cámara se publica en el detalle.",
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
   votos_sobre_bancas: {
-    que: "Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de LLA a los votos afirmativos totales. Es el promedio de los últimos 12 meses; pesa Diputados 65% y Senado 35%, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.",
+    que: "Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de LLA a los votos afirmativos totales. Es el promedio de los últimos 12 meses; Diputados pesa más que el Senado, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.",
     aporta: "Mide la capacidad del Ejecutivo de sumar votos ajenos en el Congreso: con un bloque propio grande hacen falta pocos votos de otros bloques, con uno chico hacen falta muchos. Complementa a la cohesión del bloque: un oficialismo unido puede igual necesitar más votos de los que tiene. Una ley aprobada con los votos de un bloque grande aliado cuenta igual que una aprobada con muchos bloques chicos, y cuando el bloque oficialista crece (como en diciembre de 2025) el excedente baja aunque el Gobierno apruebe lo mismo.",
     frecuencia: "Mensual (12 meses móviles)", tipo: "Nivel (% de la cámara)",
   },
@@ -250,7 +250,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua", tipo: "Nivel (%)",
   },
   alineamiento_senadores_prov: {
-    que: "Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición que tomó el bloque oficialista en esa misma votación, promediado entre provincias.",
+    que: "Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición que tomó el bloque oficialista en esa misma votación, promediado entre provincias. Se compara con lo que acompañaban a su oficialismo los senadores de otros bloques en los tres gobiernos anteriores.",
     aporta: "Es la mejor señal automatizable disponible del respaldo territorial, y conviene leerla por lo que es: mide el voto de los senadores, no la postura del gobernador de cada provincia. Un senador no depende del gobernador de turno y puede responder a la estrategia nacional de su propio partido. Reemplaza a un indicador de alineamiento de gobernadores que quedó congelado por falta de una fuente pública que midiera directamente la posición de los ejecutivos provinciales.",
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
@@ -449,7 +449,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   privatizaciones: {
     que: "Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas verificables: 0 sin definir · 1 preparatoria · 2 pliegos · 3 licitación/adjudicación · 4 operación cerrada.",
-    aporta: "Describe el avance documentado de cada proceso: una operación cerrada recibe etapa 4 y los pliegos etapa 2. Las nueve empresas pesan igual; el promedio no mide valor de activos vendido ni dinero cobrado. Se mantiene mediante curaduría de normas y comunicaciones primarias; una revisión parcial o una búsqueda sin novedades no certifica exhaustividad.",
+    aporta: "Describe el avance documentado de cada proceso: una operación cerrada recibe etapa 4 y los pliegos etapa 2. Las empresas pesan igual; el promedio no mide valor de activos vendido ni dinero cobrado. Corredores Viales no integra la cartera: la concesión de la red vial la mide el indicador de concesiones de infraestructura. Se mantiene mediante curaduría de normas y comunicaciones primarias; una revisión parcial o una búsqueda sin novedades no certifica exhaustividad.",
     frecuencia: "Quincenal prevista (curaduría)", tipo: "Avance por etapas",
   },
   concesiones_infraestructura: {
@@ -469,7 +469,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   rigi_inversiones: {
     que: "Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total de la cartera (aprobados + en evaluación).",
-    aporta: "Mide decisiones administrativas de aprobación, con la plataforma oficial del Ministerio de Economía: no cuánto se invirtió efectivamente ni cuánto avanzaron los proyectos, porque no hay una serie pública de inversión ejecutada. Como el total incluye lo que está en evaluación, el porcentaje baja cuando entran proyectos nuevos aunque no se haya rechazado ninguno. La evolución histórica grafica la inversión aprobada acumulada en dólares.",
+    aporta: "Mide decisiones administrativas de aprobación, con la plataforma oficial del Ministerio de Economía: no cuánto se invirtió efectivamente ni cuánto avanzaron los proyectos, porque no hay una serie pública de inversión ejecutada. Como el total incluye lo que está en evaluación, el porcentaje baja cuando entran proyectos nuevos aunque no se haya rechazado ninguno; y como casi todo lo presentado termina aprobado, mide sobre todo la demora en aprobar. La evolución histórica grafica la inversión aprobada acumulada en dólares.",
     frecuencia: "Continua (plataforma oficial)", tipo: "Avance de reforma",
   },
   desregulacion_normativa: {
@@ -523,7 +523,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (padrón) · por acto (normas)", tipo: "Avance de reforma (hitos)",
   },
   protocolo_antipiquetes: {
-    que: "En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de una base estimada para 2023.",
+    que: "En qué porcentaje se redujo el número de cortes por manifestación relevados en todo el país respecto de 2023.",
     aporta: "Describe la evolución de los cortes registrados por Diagnóstico Político; el último dato es el del año 2025. El protocolo está vigente: un juez lo anuló en diciembre de 2025 y la Cámara en lo Contencioso Administrativo Federal revocó esa nulidad. Mide resultados observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.",
     frecuencia: "Anual", tipo: "Variación vs. base 2023",
   },
@@ -568,7 +568,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   reforma_estado: "El achicamiento del Estado en dos medidas que se controlan entre sí: la dotación de personal, que cuenta gente, y el gasto de funcionamiento real, que cuenta pesos a precios constantes. El avance de reestructuración de organismos salió del índice en agosto de 2026 —dividía normas por una meta documental, dos unidades distintas— y se sigue relevando como inventario. El puntaje máximo refleja el cumplimiento de las referencias fijadas para esas dos variables; no implica que se haya completado la reforma y transformación del Estado. La de dotación es la meta de recortar otro 10% de la planta en 2026, que informó la prensa citando fuentes oficiales (el Gobierno no publicó un número); la de gasto de funcionamiento es una referencia propia, porque no hay meta oficial con la que compararlo.",
   reforma_laboral: "Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un cuarto: accidentes y enfermedades con días de baja, en todo el país) y con los juicios que se inician en la Justicia Nacional del Trabajo de la Capital (otro cuarto, despidos incluidos). Ni la siniestralidad ni los juicios permiten atribuir sus variaciones a la reforma.",
   privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.",
-  social_orden: "Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.",
+  social_orden: "Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en todo el país y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.",
   // ITCIS
   ingresos: "Si el ingreso alcanza: la brecha entre el salario registrado y la canasta de pobreza, y la pobreza estimada mes a mes, que alcanza también a los hogares informales y a los que no viven de un salario.",
   consumo: "Lo que efectivamente se compra: las ventas de supermercados a precios constantes, la motorización total —autos y motos 0 km por habitante— y cuántas motos se patentan por cada auto, y el consumo de carnes. Se mueven con el poder de compra, pero también con el crédito y los precios relativos.",

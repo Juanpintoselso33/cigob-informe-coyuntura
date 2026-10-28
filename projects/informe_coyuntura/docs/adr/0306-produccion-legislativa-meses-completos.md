@@ -8,6 +8,7 @@ indice: 'ITCP'
 indicadores: [produccion_legislativa]
 archivos: ['scripts/politica.py', 'scripts/itcp.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts']
 corrige: ['0168']
+relacionado: ['0398']
 corregido_por: ['0308']
 ---
 

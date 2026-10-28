@@ -189,8 +189,14 @@ BANDAS_ITCG = {
         (75.0, INF, 100), (55.0, 75.0, 85), (35.0, 55.0, 65), (15.0, 35.0, 40), (-INF, 15.0, 10),
     ],
     "rigi_inversiones": [               # % de inversión aprobada sobre el pipeline (ADR-0011)
-        # 22,1% (jun-2026): pipeline dominado por mega-proyectos en evaluación.
-        (60.0, INF, 100), (40.0, 60.0, 85), (25.0, 40.0, 65), (10.0, 25.0, 40), (-INF, 10.0, 10),
+        # ADR-0406: misma escala que concesiones_infraestructura y
+        # privatizaciones (cortes 15/35/55/75 → anclas 15→10 · 25→40 · 45→65 ·
+        # 65→85 · 75→100), declarada como CONVENCIÓN de medidor de avance 0-100.
+        # La anterior (10/25/40/60) se había fijado mirando el 22,1 % de
+        # jun-2026; ésta no se calibró sobre el dato. Como casi todo lo
+        # presentado termina aprobado, el porcentaje mide sobre todo la demora
+        # en aprobar, no rechazos.
+        (75.0, INF, 100), (55.0, 75.0, 85), (35.0, 55.0, 65), (15.0, 35.0, 40), (-INF, 15.0, 10),
     ],
     "concesiones_infraestructura": [    # % corredores adjudicados / plan (tasa de adjudicación)
         # CONCEPTUAL (ADR-0121): tasa de adjudicación 0-100 (km adjudicados sobre
@@ -205,8 +211,13 @@ BANDAS_ITCG = {
         # y 0 → 10, como cualquier promesa sin cumplir.
         (95.0, INF, 100), (85.0, 95.0, 85), (60.0, 85.0, 65), (30.0, 60.0, 40), (-INF, 30.0, 10),
     ],
-    "protocolo_antipiquetes": [         # % de reducción de cortes vs promedio 2023 (IRPC×100)
-        # CABA: caída >50% en 2024 y 240 cortes en 2025 (vs ~11% share 2023).
+    "protocolo_antipiquetes": [         # % de reducción de cortes en el país vs 2023 (IRPC×100)
+        # ADR-0405: el dato pasa de CABA al total nacional de Diagnóstico
+        # Político (misma definición). Los cortes 0/25/50/75 son una CONVENCIÓN
+        # declarada —cuartos redondos de la reducción, con el 0 (igual que 2023)
+        # como piso conceptual— y no una calibración: se pusieron mirando la
+        # caída de CABA y se conservan sin moverlos al cambiar de universo, para
+        # no ajustar la escala al nuevo resultado.
         (75.0, INF, 100), (50.0, 75.0, 85), (25.0, 50.0, 65), (0.0, 25.0, 40), (-INF, 0.0, 10),
     ],
     "libertad_opcion_salud": [          # avance por hitos de la libre elección de cobertura (ADR-0371)

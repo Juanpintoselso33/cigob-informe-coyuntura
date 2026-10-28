@@ -27,7 +27,7 @@ CINCO DIMENSIONES (35/25/15/15/10):
      Concesiones: CONTRAT.AR + página oficial RFC, ADR-0016).
   5. Reforma social y orden — asistencia_directa (TDPS contra la ejecución
      presupuestaria real, API Presupuesto Abierto, ADR-0015),
-     protocolo_antipiquetes (reducción de cortes CABA vs 2023, anclajes anuales
+     protocolo_antipiquetes (reducción de cortes en el país vs 2023, ADR-0405; anclajes anuales
      públicos de Diagnóstico Político y detector de publicaciones, ADR-0025),
      libertad_opcion_salud (derivación directa a prepagas inscriptas:
      padrones RNAS/RNEMP de la SSS, ADR-0016).
@@ -2283,14 +2283,15 @@ PRIVATIZACIONES_NOVEDADES_PATH = (PROJECT_DIR / "data" / "gestion"
 
 # Términos de búsqueda por empresa. La clave es el nombre del registro; el
 # valor, cómo aparece la empresa nombrada en el Boletín Oficial. Se busca por
-# el término MÁS DISTINTIVO: "AySA" trae poco ruido, "SOFSE" nada, pero
-# "Corredores Viales" hay que buscarlo entero o matchea cualquier obra vial.
+# el término MÁS DISTINTIVO: "AySA" trae poco ruido, "SOFSE" nada.
+# Corredores Viales salió de la cartera (ADR-0407): su privatización es la
+# concesión de la red vial, que ya mide concesiones_infraestructura. Buscarla
+# acá sólo generaría avisos de una empresa que no promedia.
 PRIVATIZACIONES_TERMINOS = {
     "AySA": "Agua y Saneamientos Argentinos",
     "Transener": "Transener",
     "Enarsa": "Energía Argentina",
     "Intercargo": "Intercargo",
-    "Corredores Viales": "Corredores Viales",
     "Belgrano Cargas": "Belgrano Cargas",
     "Nucleoeléctrica": "Nucleoeléctrica",
     "YCRT": "Yacimientos Carboníferos Río Turbio",
@@ -3634,21 +3635,24 @@ DP_MONITOREOS_URL = "https://diagnosticopolitico.com.ar/monitoreos-politicos"
 
 def fetch_protocolo_antipiquetes() -> dict | None:
     """
-    IRPC automático (ADR-0025): reducción % de cortes en CABA vs 2023, con los
-    anclajes ANUALES PÚBLICOS de Diagnóstico Político (la misma consultora que
-    citaba la estimación manual; su definición de piquete coincide con la Res.
-    943/23). Anclajes curados con fuente en data/gestion/dp_piquetes.json —
-    mismo patrón de hitos fechados que privatizaciones/concesiones. Además
-    scrapea la página pública de monitoreos como DETECTOR: si aparece un año
-    nuevo, avisa para actualizar el store. Corrigió la subcalibración del
-    valor manual (55% era la foto 2024; con 2025 cerrado el IRPC CABA es 74%).
+    IRPC automático (ADR-0025): reducción % de cortes en TODO EL PAÍS vs 2023,
+    con los anclajes ANUALES PÚBLICOS de Diagnóstico Político (su definición de
+    piquete coincide con la Res. 943/23). Desde ADR-0405 puntúa el total
+    nacional y no el de CABA: la Res. 943/23 es un protocolo de las fuerzas
+    federales, el de CABA era un recorte del 11 % del universo con base 2023
+    estimada desde una participación redondeada, y el total nacional es un
+    conteo publicado con historia desde 2014. La clave `caba` del store se
+    conserva como registro. Anclajes curados con fuente en
+    data/gestion/dp_piquetes.json. Además scrapea la página pública de
+    monitoreos como DETECTOR: si aparece un año nuevo, avisa para actualizar
+    el store.
     """
     try:
         dp = json.loads(DP_PIQUETES_PATH.read_text(encoding="utf-8-sig"))
-        caba = {int(k): int(v) for k, v in dp["caba"].items()}
-        base = caba[2023]
-        ult = max(caba)
-        irpc = round((1.0 - caba[ult] / base) * 100.0, 1)
+        nac = {int(k): int(v) for k, v in dp["nacional"].items()}
+        base = nac[2023]
+        ult = max(nac)
+        irpc = round((1.0 - nac[ult] / base) * 100.0, 1)
 
         # Detector de informes nuevos (no fatal): años nacionales publicados
         # posteriores al último ancla del store.
@@ -3669,14 +3673,14 @@ def fetch_protocolo_antipiquetes() -> dict | None:
 
         return {
             "valor":          irpc,
-            "unidad":         "% de reducción de cortes por manifestación en CABA vs 2023 (IRPC)",
+            "unidad":         "% de reducción de cortes por manifestación en todo el país vs 2023 (IRPC)",
             "fuente":         "Diagnóstico Político — monitoreos públicos de piquetes",
             "fecha_dato":     f"{ult}-12-31",
             "desactualizado": False,
-            "componentes":    {"caba_2023": base, f"caba_{ult}": caba[ult]},
+            "componentes":    {"nacional_2023": base, f"nacional_{ult}": nac[ult]},
             "advertencia_fuente": advertencia,
-            "detalle_txt":    (f"{caba[ult]} cortes en CABA en {ult} vs {base} en 2023 "
-                               "(Diagnóstico Político; base 2023 estimada desde participación redondeada)"
+            "detalle_txt":    (f"{nac[ult]:,} cortes en todo el país en {ult} vs {base:,} en 2023".replace(",", ".")
+                               + " (Diagnóstico Político)"
                                + (f" · {advertencia}" if advertencia else "")),
         }
     except Exception as e:

@@ -98,6 +98,23 @@ INF = float("inf")
 # población es invertir menos por habitante, y eso no puede salir en verde.
 CRECIMIENTO_POBLACION_PCT = 0.17
 
+# Desvíos de la historia previa al mandato (ADR-0403, ADR-0404). Ventana común:
+# enero de 2004 a noviembre de 2023, 239 meses; desvío muestral (n − 1). Se
+# midieron una vez sobre las series oficiales y quedan CONGELADOS: los cortes no
+# se recalculan con cada dato nuevo, ni con los del mandato que miden.
+#   resultado primario / recaudación 12 m (Hacienda, IMIG): desvío 11,878 pp.
+#   inversión física (0,65 ISAC + 0,35 bienes de capital, % i.a.): rango
+#     intercuartil / 1,349 = 18,925 (el desvío clásico, 26,8, lo infla la cola
+#     de rebotes de +100 a +230 % de 2003 y 2021).
+#   crédito privado en pesos, % i.a. real: desvío 14,471 pp.
+#   saldo comercial 12 m como % del comercio (expo + impo): desvío 8,48 pp.
+# Los cortes de BANDAS_ITCM / ANCLAS_ITCM son estos desvíos redondeados a un
+# decimal (uno y dos desvíos); tests/test_itcm_anclas_historia.py los cruza.
+DESVIO_RESULTADO_PRIMARIO = 11.878
+DESVIO_ROBUSTO_IAI = 18.925
+DESVIO_CREDITO_PRIVADO = 14.471
+DESVIO_SALDO_COMERCIAL = 8.48
+
 # Tablas de bandas de la sección IV del documento. (low, high, puntaje).
 BANDAS_ITCM = {
     "ipc_total": [                      # % mensual
@@ -169,17 +186,19 @@ BANDAS_ITCM = {
         (110.0, INF, 100), (100.0, 110.0, 85), (90.0, 100.0, 60),
         (80.0, 90.0, 35), (-INF, 80.0, 10),
     ],
-    "saldo_comercial_12m": [            # millones USD acumulado 12m
-        # Bandas en torno al EQUILIBRIO comercial (ADR-0120): el cero —comercio
-        # balanceado— es el punto con significado, y los cortes marcan superávit/
-        # déficit crecientes en miles de millones redondos. Techo institucional
-        # de 85, no 100: un superávit puede ser por contracción de importaciones
-        # (recesión), así que no se premia como óptimo pleno (regla de ADR-0056).
-        # Sobre la historia 2022-2023 los cortes centrales caen cerca de la
-        # mediana (5000→p53), de modo que la banda discrimina también fuera del
-        # período que mide — no está calibrada a él.
-        (15000.0, INF, 85), (10000.0, 15000.0, 75), (5000.0, 10000.0, 60),
-        (-5000.0, 5000.0, 50), (-15000.0, -5000.0, 30), (-INF, -15000.0, 10),
+    "saldo_comercial_12m": [            # % del comercio (expo + impo), acum. 12m
+        # ADR-0404. Se mide como PROPORCIÓN del comercio, no en dólares
+        # corrientes: 15 mil millones no son lo mismo con un comercio de 60 mil
+        # (2004) que con uno de 175 mil (2026), y en dólares el mandato vivía en
+        # el techo. Centro en el EQUILIBRIO (0 → 50, ADR-0120) y cortes en
+        # desvíos de la historia previa (σ = 8,48 pp, ene-2004 a nov-2023):
+        # ±1σ = ±8,5 · +1,5σ = 12,7 · ±2σ = ±17. Anclas que resultan
+        # (ADR-0021): −17 → 10 · −12,7 → 30 · 0 → 50 · 10,6 → 60 · 14,8 → 75 ·
+        # 17 → 85. Techo institucional de 85, no 100: un superávit puede ser
+        # por contracción de importaciones (recesión), así que no se premia
+        # como óptimo pleno (regla de ADR-0056, techo de ADR-0120).
+        (17.0, INF, 85), (12.7, 17.0, 75), (8.5, 12.7, 60),
+        (-8.5, 8.5, 50), (-17.0, -8.5, 30), (-INF, -17.0, 10),
     ],
     "reservas_bcra": [                  # millones USD — RESERVAS NETAS (no brutas)
         # Bandas en torno al CERO de reservas netas (ADR-0120): el cero —el BCRA
@@ -256,10 +275,13 @@ BANDAS_ITCM = {
     ],
     "resultado_primario": [             # % de la recaudación (acum. 12 meses)
         # ADR-0072. Superávit primario del SPN sobre recaudación, ventana de 12
-        # meses. Monótona: más superávit = más sostenible. Referencias: dic-2023
-        # dio −12,0% (déficit) y el programa se estabilizó en torno a +6/+8%.
-        (8.0, INF, 100), (4.0, 8.0, 85), (0.0, 4.0, 60),
-        (-5.0, 0.0, 30), (-INF, -5.0, 10),
+        # meses. Monótona: más superávit = más sostenible.
+        # ADR-0403: el puntaje sale de ANCLAS_ITCM (equilibrio = 50, uno y dos
+        # desvíos de 2004-2023 a cada lado). Estos tramos son la escala de
+        # severidad que se publica: cortes EN las anclas y, en cada tramo, el
+        # puntaje de su ancla inferior (la convención de terminos_intercambio).
+        (23.8, INF, 100), (11.9, 23.8, 80), (0.0, 11.9, 50),
+        (-11.9, 0.0, 30), (-INF, -11.9, 10),
     ],
     "costo_financiamiento_tesoro": [    # % real anual (TIREA vs. inflación esperada REM)
         # ADR-0071. ÚNICA banda de U INVERTIDA del ITCM: los dos extremos son
@@ -304,22 +326,32 @@ BANDAS_ITCM = {
     # IAI — Índice Anticipador de Inversión (% i.a. ponderado).
     "iai": [
         # Inversión física (ISAC + bienes de capital importados). Más = expansión.
-        # El umbral ±2% del doc no sobrevive al dato (las series i.a. de inversión
-        # argentina se mueven ±30-180% por la base 2024); bandas ANCHAS calibradas a
-        # la realidad 2024-2026 conservando la lógica contracción/neutro/expansión.
+        # ADR-0404: cortes en uno y dos desvíos ROBUSTOS (rango intercuartil /
+        # 1,349 = 18,9) de la variación interanual de ene-2004 a nov-2023 (la
+        # historia empalma el ISAC base 2004 hasta 2012 con el vigente desde
+        # 2013). Reemplazan las bandas de ±2/±10 puestas sobre 2024-2026, con las
+        # que 23 de 33 meses del mandato tocaban un extremo. Robusto y no clásico
+        # (26,8) porque la cola de rebotes de +100 % o más infla el desvío.
         # ADR-0341: la escala entera se corre al crecimiento de la población, así
-        # que el tramo neutro se centra en invertir lo mismo por habitante y el
-        # verde arranca en +0,17 %, no en 0.
+        # que el tramo neutro se centra en invertir lo mismo por habitante.
+        # Anclas que resultan: −37,63 → 10 · −28,18 → 35 · 0,17 → 60 ·
+        # 28,52 → 80 · 37,97 → 100.
         (lo + CRECIMIENTO_POBLACION_PCT, hi + CRECIMIENTO_POBLACION_PCT, p)
-        for lo, hi, p in ((10.0, INF, 100), (2.0, 10.0, 80), (-2.0, 2.0, 60),
-                          (-10.0, -2.0, 35), (-INF, -10.0, 10))
+        for lo, hi, p in ((37.8, INF, 100), (18.9, 37.8, 80), (-18.9, 18.9, 60),
+                          (-37.8, -18.9, 35), (-INF, -37.8, 10))
     ],
     "credito_privado": [                # Crédito al sector privado, % i.a. REAL (ADR-0022)
-        # Crédito REALIZADO (complementa la capacidad del IdC). Bandas anchas
-        # calibradas a la remonetización 2024-2026: el crédito real llegó a
-        # crecer +90% i.a. desde base ínfima y se normaliza hacia +20/30%;
-        # contracción real = crunch de financiamiento.
-        (40.0, INF, 100), (20.0, 40.0, 85), (8.0, 20.0, 65), (0.0, 8.0, 45), (-10.0, 0.0, 25), (-INF, -10.0, 10),
+        # Crédito REALIZADO (complementa la capacidad del IdC).
+        # ADR-0404: centro en 0 (el crédito real ni crece ni cae) y cortes en uno
+        # y dos desvíos (14,5 / 28,9 pp) de la variación real de ene-2004 a
+        # nov-2023 (deflactor empalmado: IPC GBA, San Luis, CABA, INDEC). Las
+        # bandas de antes estaban calibradas sobre la remonetización 2024-2026.
+        # El mandato está FUERA de todo el rango previo (−38 % y +118 % contra
+        # −35,7 y +27,2 de 2004-2023): sigue tocando los extremos y es dato, no
+        # defecto de la escala (ADR-0081 no deja estirarla para absorberlo).
+        # Anclas: −28,9 → 10 · −21,7 → 25 · −7,25 → 45 · 7,25 → 65 · 21,7 → 85 ·
+        # 28,9 → 100.
+        (28.9, INF, 100), (14.5, 28.9, 85), (0.0, 14.5, 65), (-14.5, 0.0, 45), (-28.9, -14.5, 25), (-INF, -28.9, 10),
     ],
 }
 
@@ -334,6 +366,17 @@ ANCLAS_ITCM = {
     # ADR-0375: la posición de los términos del intercambio en la escala
     # 10-100 del tipo de cambio real (129,7 → 10 … 148,15 → 100).
     "terminos_intercambio": terminos_intercambio.ANCLAS_TI,
+    # ADR-0403: el equilibrio fiscal es el punto medio conceptual (0 → 50) y a
+    # cada lado hay uno y dos desvíos (11,9 pp) del resultado primario sobre la
+    # recaudación de ene-2004 a nov-2023. Asimétrica a propósito: el superávit
+    # sube más rápido (30 puntos en el primer desvío) que lo que baja el
+    # déficit (20), porque el déficit sostenido ya es tensión. Antes de 2015 la
+    # serie incluye rentas del BCRA y del FGS, que inflan los superávits de
+    # 2007-2014; un desvío es la medida menos sensible a eso (sin esos años da
+    # 13,1 y el puntaje de hoy se mueve poco más de un punto), mientras que los
+    # percentiles se corrían doce.
+    "resultado_primario": ((-23.8, 10.0), (-11.9, 30.0), (0.0, 50.0),
+                           (11.9, 80.0), (23.8, 100.0)),
 }
 
 # Dimensiones del índice con su peso y la ponderación interna de indicadores.
@@ -633,6 +676,16 @@ def texto_bandas(indicador: str) -> str:
     return parametrica.texto_bandas(BANDAS_ITCM[indicador])
 
 
+# Umbral de "superávit relevante" de la regla automática, en % del comercio de
+# 12 meses (ADR-0404). Era 5.000 millones de USD, el borde de la banda neutra
+# vieja. Reexpresado en la unidad nueva: 5.000 millones son el 3,6 % del
+# comercio de dic-2023 (140,5 mil millones), el 3,2 % del promedio 2022-2023
+# (157,9 mil) y el 2,9 % de ago-2026 (173,4 mil); se redondea a 3 %. No es el
+# que decide en la práctica: la regla exige además un puntaje de banda mayor
+# que 60, y eso recién pasa por encima del 10,6 % del comercio.
+SUPERAVIT_RELEVANTE_PCT_COMERCIO = 3.0
+
+
 def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
     """Regla automática del "Subcomponente D" de la Paramétrica: un superávit
     comercial que refleja caída de demanda interna (menos importaciones) más
@@ -666,7 +719,7 @@ def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
     d_impo = ind_saldo.get("impo_delta_12m")
     if valor is None or d_expo is None or d_impo is None:
         return None
-    if valor <= 5000:                # sin superávit relevante: la banda ya lo castiga
+    if valor <= SUPERAVIT_RELEVANTE_PCT_COMERCIO:   # sin superávit relevante
         return None
     p_banda = ESCALA_ITCM.puntaje(valor, "saldo_comercial_12m")
     if p_banda <= 60:

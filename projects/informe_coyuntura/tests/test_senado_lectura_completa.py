@@ -26,6 +26,8 @@ def filas_validas():
     return [
         {'nombre': 'A', 'bloque': 'LA LIBERTAD AVANZA', 'provincia': 'Córdoba', 'voto': 'AFIRMATIVO'},
         {'nombre': 'B', 'bloque': 'OTRO', 'provincia': 'Córdoba', 'voto': 'AFIRMATIVO'},
+        # un voto en contra: la votación es dividida (ADR-0401) y entra a la cohesión
+        {'nombre': 'C', 'bloque': 'OTRO', 'provincia': 'Salta', 'voto': 'NEGATIVO'},
     ]
 
 
@@ -57,7 +59,8 @@ def test_solo_lee_actas_del_intervalo_hasta_el_corte(colector, monkeypatch):
     monkeypatch.setattr(politica, '_paced_get', leer)
     monkeypatch.setattr(politica, '_parsear_acta', lambda _: filas_validas())
     resultado = colector()
-    assert resultado['valor'] == 100
+    assert resultado['valor'] == {'fetch_cohesion_bloque_senado': 100,
+                                  'fetch_alineamiento_senadores_prov': 50}[colector.__name__]
     assert resultado['fecha_dato'] == '2026-09-08'
     assert llamadas == ['/votaciones/detalleActa/hoy']
 

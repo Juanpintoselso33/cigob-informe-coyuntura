@@ -7,7 +7,7 @@ cinturon: 'gestion'
 indicadores: [privatizaciones]
 archivos: ['privatizaciones_novedades.json']
 complementa: ['0101']
-relacionado: ['0277']
+relacionado: ['0277', '0407']
 ambito: 'ITCG · `privatizaciones` · `privatizaciones_novedades.json` (nuevo)'
 origen: 'Aporte externo sobre el cinturón de gestión (doc 260723)'
 ---

@@ -7,9 +7,25 @@
       "https://chequeado.com/ultimas-noticias/javier-milei-en-la-apertura-de-sesiones-2026-hemos-terminado-con-los-piquetes-de-una-vez-por-todas-los-cuales-pasaron-de-9-mil-por-ano-a-0",
       "https://hoydia.com.ar/sociedad/los-piquetes-cayeron-527-desde-la-asuncion-de-milei-segun-informe"
     ],
-    "actualizado": "2026-07-03",
-    "nota": "caba_2023 derivado del share publicado (11,3% de 8.239 = 931); caba_2024 = 440 (los informes citan '240 en 2025, 200 menos que en 2024'); caba_2025 = 240 directo (6,2% de 3.893). Los reportes mensuales detallados de DP son por suscripción (info@diagnosticopolitico.com.ar): estos anclajes salen de sus publicaciones anuales públicas y de la prensa que las replica."
+    "actualizado": "2026-10-28",
+    "puntua": "nacional (ADR-0405). La clave caba se conserva como registro y no puntúa: su base 2023 es estimada desde una participación redondeada, mientras que los totales nacionales son conteos publicados.",
+    "nota": "caba_2023 derivado del share publicado (11,3% de 8.239 = 931); caba_2024 = 440 (los informes citan '240 en 2025, 200 menos que en 2024'); caba_2025 = 240 directo (6,2% de 3.893). Los reportes mensuales detallados de DP son por suscripción (info@diagnosticopolitico.com.ar): estos anclajes salen de sus publicaciones anuales públicas y de la prensa que las replica. 2015 y 2020 no tienen total anual publicado verificado y quedan fuera."
   },
-  "nacional": { "2023": 8239, "2024": 5996, "2025": 3893 },
+  "nacional": {
+    "2014": 6805, "2016": 6491, "2017": 5221, "2018": 5857, "2019": 5430,
+    "2021": 6658, "2022": 9778, "2023": 8239, "2024": 5996, "2025": 3893
+  },
+  "fuentes_nacional": {
+    "2014": {"url": "https://web.archive.org/web/2020id_/https://diagnosticopolitico.com.ar/wp-content/uploads/2020/01/Ocho-an%CC%83os-consecutivos-con-ma%CC%81s-de-5.000-piquetes.pdf", "cita": "El año 2014 se mantiene como el período récord de los últimos 11 años, con 6.805 bloqueos (DP, relevamiento anual, ene-2020)", "verificado": "2026-10-28"},
+    "2016": {"url": "https://www.cronista.com/economia-politica/durante-2017-en-la-argentina-hubo-14-piquetes-por-dia/", "cita": "supone un descenso respecto de 2016, cuando se registraron 6.491 cortes (El Cronista, 5-ene-2018, citando a DP)", "verificado": "2026-10-28"},
+    "2017": {"url": "https://www.cronista.com/economia-politica/durante-2017-en-la-argentina-hubo-14-piquetes-por-dia/", "cita": "contabilizó un total de 5.221 cortes de vías públicas en todo el país (El Cronista, 5-ene-2018, citando a DP)", "verificado": "2026-10-28"},
+    "2018": {"url": "https://web.archive.org/web/2020id_/https://diagnosticopolitico.com.ar/wp-content/uploads/2020/01/Ocho-an%CC%83os-consecutivos-con-ma%CC%81s-de-5.000-piquetes.pdf", "cita": "una baja de 7% respecto a 2018, cuando se registraron 5.857 (DP, ene-2020; también Diario de Cuyo, 22-ene-2019: https://www.diariodecuyo.com.ar/noticias/hubo-5-857-piquetes-el-ano-pasado-215637.html)", "verificado": "2026-10-28"},
+    "2019": {"url": "https://web.archive.org/web/2020id_/https://diagnosticopolitico.com.ar/wp-content/uploads/2020/01/Ocho-an%CC%83os-consecutivos-con-ma%CC%81s-de-5.000-piquetes.pdf", "cita": "Durante el año 2019 hubo 5.430 cortes de vías públicas en todo el país (DP, ene-2020)", "verificado": "2026-10-28"},
+    "2021": {"url": "https://web.archive.org/web/20220514061554/https://www.semanarioargentino.miami/2022/05/13/2022-seria-record-historico/", "cita": "llevó a que 2021 concluyera con un total de 6.658 cortes (Semanario Argentino, 13-may-2022, citando el informe de DP)", "verificado": "2026-10-28"},
+    "2022": {"url": "https://www.infobae.com/opinion/2024/05/13/milei-y-el-gran-desafio-de-recuperar-el-orden-en-las-calles/", "cita": "2022 y 2023 fueron los dos años con más cortes desde que hay registro (9.778 y 8.239, respectivamente) (Infobae, 13-may-2024, datos de DP)", "verificado": "2026-10-28"},
+    "2023": {"url": "https://chequeado.com/ultimas-noticias/javier-milei-en-la-apertura-de-sesiones-2026-hemos-terminado-con-los-piquetes-de-una-vez-por-todas-los-cuales-pasaron-de-9-mil-por-ano-a-0", "cita": "una disminución del 52,8% respecto a 2023 (cuando se registraron 8.239 piquetes) (Chequeado, 1-mar-2026, datos de DP; también Infobae 13-may-2024)", "verificado": "2026-10-28"},
+    "2024": {"url": "https://hoydia.com.ar/sociedad/los-piquetes-cayeron-527-desde-la-asuncion-de-milei-segun-informe", "cita": "en 2025 se registraron 3.893 piquetes, frente a 5.996 en 2024 y 8.239 en 2023 (Hoy Día, 14-ene-2026, informe de DP; también Chequeado 1-mar-2026)", "verificado": "2026-10-28"},
+    "2025": {"url": "https://www.lanacion.com.ar/politica/los-piquetes-se-redujeron-mas-del-527-desde-que-asumio-milei-hay-menos-protestas-de-las-nid13012026", "cita": "Según el relevamiento, hubo en rigor 3893 piquetes en 2025, 5996 en 2024 y 8239 en 2023 (La Nación, 13-ene-2026, datos de DP; también Hoy Día y Chequeado)", "verificado": "2026-10-28"}
+  },
   "caba": { "2023": 931, "2024": 440, "2025": 240 }
 }

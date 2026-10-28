@@ -17,7 +17,7 @@ Indicadores:
                                acumulado YTD no comparable mes a mes — queda como contraste
                                oculto del snapshot
   iaf_transferencias        — Variación real 12 meses móviles de transferencias federales RON (Hacienda, auto; ADR-0353). Fuera del índice desde ADR-0378
-  transferencias_no_automaticas — Variación real 12m de lo que la Nación gira a las provincias por decisión (Presupuesto Abierto; ADR-0378)
+  transferencias_no_automaticas — Nivel real 12m vs 2023 de lo que la Nación gira a las provincias por decisión (Presupuesto Abierto; ADR-0378/0397)
   eficacia_legislativa      — % proyectos PE aprobados, ventana 12m (datos.hcdn.gob.ar CKAN, auto)
   cohesion_bloque           — % cohesión (Rice) del bloque LLA, COMPUESTO bicameral desde
                                2026-07-10 (ADR-0048): Diputados 65% (scrape votaciones.hcdn.gob.ar)
@@ -1390,7 +1390,10 @@ def fetch_iaf_transferencias() -> dict | None:
 # Presupuesto Abierto. La coparticipación y el RON no pasan por el presupuesto
 # como gasto —se detraen de la recaudación—, así que no están en la consulta.
 
-TRANSF_NA_DESDE = 2022            # base de 12 meses previos a la ventana de dic-2023
+# ADR-0397: el indicador es el NIVEL real de los últimos 12 meses contra el
+# total real de 2023, así que basta con consultar desde ese ejercicio.
+TRANSF_NA_DESDE = 2023            # año base: la primera ventana (dic-2023) es la base misma
+TRANSF_NA_ANIO_BASE = 2023
 TRANSF_NA_ATN = "aportes del tesoro nacional"
 _TRANSF_NA_MEMO: dict = {}
 
@@ -1453,7 +1456,7 @@ def _transf_na_mensual_de_filas(filas_por_anio: dict) -> dict:
 
 
 def _transf_na_mensual(hoy: date | None = None) -> dict:
-    """Devengado mensual no automático desde 2022, SOLO meses cerrados.
+    """Devengado mensual no automático desde 2023, SOLO meses cerrados.
 
     El mes en curso queda afuera: es parcial y comparar 12 meses completos con
     uno a medias daría una caída falsa. Una consulta por ejercicio (la API no
@@ -1480,33 +1483,38 @@ def _transf_na_mensual(hoy: date | None = None) -> dict:
     return mensual
 
 
-def _transf_na_12m_moviles(mensual: dict | None = None, ipc: dict | None = None) -> dict:
-    """{YYYY-MM: (var_real, var_nominal, deflactor, total_ref, total_ant, comp_ref)}.
+def _transf_na_nivel_vs_base(mensual: dict | None = None, ipc: dict | None = None) -> dict:
+    """{YYYY-MM: (var_real, real_ref, real_base, nom_ref, comp_ref)} (ADR-0397).
 
-    Misma cuenta que `_iaf_12m_moviles` (ADR-0239/0353): los 12 meses que
-    terminan en YYYY-MM contra los 12 anteriores, cada flujo a precios de SU mes
-    (dividido por el IPC de ese mes) antes de sumar. `comp_ref` es la
-    composición nominal de la ventana de referencia {atn, corrientes, capital}.
-    Sólo hay ventana si están los 24 meses de devengado Y de IPC."""
+    El NIVEL real de los 12 meses que terminan en YYYY-MM contra el total real
+    de 2023 (TRANSF_NA_ANIO_BASE), la misma lectura que conflictividad_nacional
+    (ADR-0390). Cada flujo se lleva a precios de SU mes (dividido por el IPC de
+    ese mes, ADR-0239) antes de sumar; `real_ref` y `real_base` quedan
+    expresados a precios del último mes de la ventana (millones de pesos), así
+    que se pueden leer juntos. `comp_ref` es la composición nominal de la
+    ventana {atn, corrientes, capital}. Sólo hay punto si los 12 meses de la
+    ventana y los 12 de la base tienen devengado Y IPC. La primera ventana
+    (dic-2023) es la base misma y da 0."""
     mensual = _transf_na_mensual() if mensual is None else mensual
     ipc = _ipc_indice_mensual() if ipc is None else ipc
     tot = lambda m: sum(mensual[m].values())
+    base = [f"{TRANSF_NA_ANIO_BASE}-{k:02d}" for k in range(1, 13)]
+    if not all(m in mensual and m in ipc for m in base):
+        return {}
+    real_base = sum(tot(m) / ipc[m] for m in base)
+    if real_base <= 0:
+        return {}
     out = {}
     for fin in sorted(mensual):
+        if fin < base[-1]:
+            continue
         ref = [_mes_siguiente(fin, -k) for k in range(11, -1, -1)]
-        ant = [_mes_siguiente(fin, -k) for k in range(23, 11, -1)]
-        if not all(m in mensual and m in ipc for m in ref + ant):
+        if not all(m in mensual and m in ipc for m in ref):
             continue
-        nom_ref, nom_ant = sum(tot(m) for m in ref), sum(tot(m) for m in ant)
         real_ref = sum(tot(m) / ipc[m] for m in ref)
-        real_ant = sum(tot(m) / ipc[m] for m in ant)
-        if nom_ant <= 0 or real_ant <= 0:
-            continue
-        var_real = real_ref / real_ant - 1.0
-        var_nom = nom_ref / nom_ant - 1.0
         comp = {k: sum(mensual[m][k] for m in ref) for k in ("atn", "corrientes", "capital")}
-        out[fin] = (var_real, var_nom, (1.0 + var_nom) / (1.0 + var_real) - 1.0,
-                    nom_ref, nom_ant, comp)
+        out[fin] = (real_ref / real_base - 1.0, real_ref * ipc[fin], real_base * ipc[fin],
+                    sum(tot(m) for m in ref), comp)
     return out
 
 
@@ -1517,10 +1525,11 @@ def _billones(millones: float) -> str:
 
 def fetch_transferencias_no_automaticas() -> dict | None:
     """
-    Variación real de los últimos 12 meses móviles de lo que la Nación gira a las
-    provincias y municipios POR DECISIÓN —Aportes del Tesoro Nacional,
-    transferencias corrientes y de capital por programa— contra los 12 previos
-    (ADR-0378). Reemplaza a `iaf_transferencias`, que medía el RON automático.
+    Nivel real de los últimos 12 meses de lo que la Nación gira a las provincias
+    y municipios POR DECISIÓN —Aportes del Tesoro Nacional, transferencias
+    corrientes y de capital por programa— contra el total real de 2023
+    (ADR-0397; antes, variación contra los 12 meses previos, ADR-0378).
+    Reemplaza a `iaf_transferencias`, que medía el RON automático.
 
     Fuente: Presupuesto Abierto (devengado, inciso 5, principales 7 y 8), sin
     la coparticipación de CABA por fallo, el FONID, las cajas previsionales ni
@@ -1532,32 +1541,33 @@ def fetch_transferencias_no_automaticas() -> dict | None:
     individual y no existe una serie mensual consolidada.
     """
     try:
-        ventanas = _transf_na_12m_moviles()
+        ventanas = _transf_na_nivel_vs_base()
         if not ventanas:
-            raise ValueError("sin ventanas de 24 meses con devengado e IPC")
+            raise ValueError(f"sin ventana de 12 meses ni base {TRANSF_NA_ANIO_BASE} con devengado e IPC")
         fin = max(ventanas)
-        var_real, var_nominal, deflactor, tot_ref, tot_ant, comp = ventanas[fin]
+        var_real, real_ref, real_base, nom_ref, comp = ventanas[fin]
         ultimo_dia = (date(int(fin[:4]) + (int(fin[5:7]) == 12), int(fin[5:7]) % 12 + 1, 1)
                       - timedelta(days=1))
+        periodo = (f"{_etiqueta_mes(_mes_siguiente(fin, -11))}–{_etiqueta_mes(fin)} "
+                   f"vs {TRANSF_NA_ANIO_BASE}")
         return {
             "valor": round(var_real * 100.0, 1),
-            "var_nominal_pct": round(var_nominal * 100.0, 1),
-            "total_ref_billones": round(tot_ref / 1e6, 2),
-            "total_ant_billones": round(tot_ant / 1e6, 2),
+            "total_ref_billones": round(nom_ref / 1e6, 2),
+            "real_ref_billones": round(real_ref / 1e6, 2),
+            "real_base_billones": round(real_base / 1e6, 2),
             "atn_ref_billones": round(comp["atn"] / 1e6, 2),
-            "periodo": _periodo_12m(fin),
-            "ipc_aplicado_pct": round(deflactor * 100.0, 1),
-            "unidad": "% interanual real",
+            "periodo": periodo,
+            "unidad": f"% real vs {TRANSF_NA_ANIO_BASE}",
             "fuente": ("Presupuesto Abierto (Ministerio de Economía) — devengado de transferencias a "
                        "provincias y municipios, sin las automáticas por ley o fallo; IPC INDEC "
                        "(deflactado mes a mes)"),
             "detalle_txt": (
-                f"12 meses a {_etiqueta_mes(fin)}: ${_billones(tot_ref)} billones devengados "
+                f"12 meses a {_etiqueta_mes(fin)}: ${_billones(nom_ref)} billones devengados "
                 f"(ATN ${_billones(comp['atn'])} · transferencias corrientes "
-                f"${_billones(comp['corrientes'])} · de capital ${_billones(comp['capital'])}), "
-                f"{var_nominal * 100:+.1f}% nominal contra un deflactor de {deflactor * 100:.1f}% "
-                f"ponderado por el flujo de cada mes → {var_real * 100:+.1f}% real "
-                f"({_periodo_12m(fin)})"
+                f"${_billones(comp['corrientes'])} · de capital ${_billones(comp['capital'])}). "
+                f"A precios de {_etiqueta_mes(fin)}, ${_billones(real_ref)} billones contra "
+                f"${_billones(real_base)} de todo {TRANSF_NA_ANIO_BASE} → "
+                f"{var_real * 100:+.1f}% real ({periodo}); cada mes deflactado por su IPC"
             ),
             "fecha_dato": ultimo_dia.isoformat(),
             "desactualizado": False,
@@ -4413,8 +4423,31 @@ def _leyes_fechadas(filas: list[dict]) -> list[tuple[str, date]]:
     return [(ley, f) for ley, fechas in leyes.items() for f in fechas]
 
 
-def _produccion_legislativa_mensual(leyes: list[tuple[str, date]]) -> dict[str, int]:
-    """Doce meses calendarios completos, excluido el mes en curso (ADR-0306)."""
+def _leyes_vetadas_totalmente(registro: dict | None = None) -> set[str]:
+    """Identidades («ley:27756») de las leyes que el Ejecutivo vetó en su
+    totalidad, según el registro de derrotas legislativas (ADR-0377). Entran
+    también las que el Congreso después insistió: el Gobierno no las aceptó
+    (ADR-0398). Los vetos parciales no: la ley se promulgó. Sin registro no hay
+    conteo — contar las vetadas sin avisar inflaría el indicador."""
+    registro = registro if registro is not None else _cargar_derrotas_registro()
+    if registro is None:
+        raise ValueError(f"registro de vetos ausente o ilegible ({DERROTAS_EVENTOS_PATH})")
+    out = set()
+    for v in registro.get("vetos", []):
+        if v.get("tipo") != "total":
+            continue
+        numero = re.sub(r"\D", "", str(v.get("proyecto") or ""))
+        if not numero:
+            raise ValueError(f"veto total sin número de ley: {v!r}")
+        out.add("ley:" + numero)
+    return out
+
+
+def _produccion_legislativa_mensual(leyes: list[tuple[str, date]],
+                                    vetadas: set[str] | frozenset = frozenset()) -> dict[str, int]:
+    """Doce meses calendarios completos, excluido el mes en curso (ADR-0306),
+    sin las leyes vetadas en su totalidad (ADR-0398)."""
+    leyes = [(ley, fecha) for ley, fecha in leyes if ley not in vetadas]
     hoy = date.today()
     cur = date(2023, 12, 1)
     serie: dict[str, int] = {}
@@ -4429,7 +4462,8 @@ def _produccion_legislativa_mensual(leyes: list[tuple[str, date]]) -> dict[str, 
 
 
 def produccion_legislativa_serie() -> dict[str, int]:
-    """Leyes con sanción definitiva en la ventana móvil de 12 meses, por mes.
+    """Leyes con sanción definitiva en la ventana móvil de 12 meses, por mes,
+    sin las que el Ejecutivo vetó en su totalidad (ADR-0398).
 
     EN VIVO contra el CKAN de HCDN, el mismo recurso que ya usa
     eficacia_legislativa (ADR-0062). Se cuenta el TOTAL, sin mirar de dónde
@@ -4437,20 +4471,24 @@ def produccion_legislativa_serie() -> dict[str, int]:
     (ADR-0137) y por eso lo que puntúa es este número (ADR-0168).
     """
     return _produccion_legislativa_mensual(
-        _leyes_fechadas(_hcdn_paginate(HCDN_LEYES_SANC_RID)))
+        _leyes_fechadas(_hcdn_paginate(HCDN_LEYES_SANC_RID)), _leyes_vetadas_totalmente())
 
 
 def fetch_produccion_legislativa() -> dict | None:
-    """Cuántas leyes sanciona el Congreso en 12 meses (ADR-0168)."""
+    """Cuántas leyes que el Gobierno acepta —sanciona sin vetarlas en su
+    totalidad— sanciona el Congreso en 12 meses (ADR-0168/0398)."""
     try:
         leyes = _leyes_fechadas(_hcdn_paginate(HCDN_LEYES_SANC_RID))
-        serie = _produccion_legislativa_mensual(leyes)
+        vetadas = _leyes_vetadas_totalmente()
+        serie = _produccion_legislativa_mensual(leyes, vetadas)
         ym = max(serie)
         valor = serie[ym]
+        vetadas_ventana = (_produccion_legislativa_mensual(leyes)[ym] - valor)
         ultima = max(fecha for _, fecha in leyes).isoformat()
         historicas = len({ley for ley, fecha in leyes if 2008 <= fecha.year <= 2025})
         return {
             "valor": valor,
+            "vetadas_excluidas_12m": vetadas_ventana,
             "unidad": "leyes sancionadas (12m)",
             "fuente": "Cámaras de Diputados y Senadores — catálogos, boletines parlamentarios y Boletín Oficial",
             "fecha_dato": f"{ym}-01",
@@ -4458,7 +4496,8 @@ def fetch_produccion_legislativa() -> dict | None:
             "ultima_sancion_registrada": ultima,
             "referencia_temporal": "12 meses calendarios completos según el catálogo consultado",
             "detalle_txt": (
-                f"{valor} leyes distintas en los 12 meses completos hasta {ym}. "
+                f"{valor} leyes distintas en los 12 meses completos hasta {ym}, "
+                f"sin las vetadas en su totalidad ({vetadas_ventana} en la ventana). "
                 f"Última sanción registrada: {ultima}; la consulta no certifica "
                 f"que el catálogo contenga todas las sanciones posteriores. "
                 f"Catálogo más complementos documentados: {historicas} leyes distintas de 2008-2025 "
@@ -4864,6 +4903,105 @@ def es_bloque_lla(nombre_bloque: str) -> bool:
     return nombre_bloque.strip().lower() in BLOQUES_LLA
 
 
+# ── Bloque del senador A LA FECHA de la votación (ADR-0400) ───────────────────
+#
+# El portal del Senado muestra en TODAS las actas el bloque ACTUAL de cada
+# senador, no el que tenía el día en que votó: Luis Juez figura como La
+# Libertad Avanza en las actas de 2024, cuando era del bloque PRO; Paoltroni
+# figura en LLA en los quince meses en que estuvo expulsado. El registro
+# versionado de pases corrige eso para cohesion_bloque (Senado),
+# alineamiento_senadores_prov y votos_sobre_bancas (Senado). Un senador que no
+# figura en el registro conserva el bloque que publica el acta. Diputados no lo
+# necesita: el PDF de cada acta trae el bloque del día.
+PASES_SENADORES_PATH = PROJECT_DIR / "data" / "politica" / "pases_senadores.json"
+_PASES_SENADORES_MEMO: dict | None = None
+
+
+def _clave_senador(nombre: str) -> str:
+    sin_tildes = "".join(c for c in unicodedata.normalize("NFD", nombre or "")
+                         if unicodedata.category(c) != "Mn")
+    return re.sub(r"\s+", " ", sin_tildes).strip().upper()
+
+
+def cargar_pases_senadores(path: Path | None = None) -> dict:
+    """{clave del senador: [(desde, hasta | None, bloque)]} desde el registro.
+    Memoizado para la ruta por defecto; un registro ausente o roto es un error
+    (sin él el bloque del Senado vuelve a ser el del portal, en silencio)."""
+    global _PASES_SENADORES_MEMO
+    if path is None and _PASES_SENADORES_MEMO is not None:
+        return _PASES_SENADORES_MEMO
+    datos = json.loads((path or PASES_SENADORES_PATH).read_text(encoding="utf-8-sig"))
+    pases: dict = {}
+    for p in datos["pases"]:
+        pases.setdefault(_clave_senador(p["senador"]), []).append(
+            (p["desde"], p.get("hasta"), p["bloque"]))
+    if path is None:
+        _PASES_SENADORES_MEMO = pases
+    return pases
+
+
+def bloque_senador_vigente(nombre: str, bloque_acta: str, fecha, pases: dict | None = None) -> str:
+    """Bloque del senador el día `fecha` (date, datetime o 'YYYY-MM-DD'): el del
+    tramo del registro de pases que la contiene, o el del acta si el senador no
+    está en el registro o ningún tramo cubre la fecha."""
+    if pases is None:
+        pases = cargar_pases_senadores()
+    tramos = pases.get(_clave_senador(nombre))
+    if not tramos:
+        return bloque_acta
+    f = fecha.strftime("%Y-%m-%d") if hasattr(fecha, "strftime") else str(fecha)[:10]
+    for desde, hasta, bloque in tramos:
+        if desde <= f and (hasta is None or f <= hasta):
+            return bloque
+    return bloque_acta
+
+
+def filas_senado_a_la_fecha(filas: list[dict], fecha, pases: dict | None = None) -> list[dict]:
+    """Las filas de un acta del Senado con el bloque vigente a `fecha`."""
+    if pases is None:
+        pases = cargar_pases_senadores()
+    return [{**f, "bloque": bloque_senador_vigente(f.get("nombre", ""), f["bloque"], fecha, pases)}
+            for f in filas]
+
+
+# ── Votaciones divididas (ADR-0401) ───────────────────────────────────────────
+#
+# cohesion_bloque promedia sólo las votaciones DIVIDIDAS: aquellas en que el
+# lado perdedor de la cámara (el menor entre afirmativos y negativos) tuvo al
+# menos UMBRAL_MINORIA_DIVIDIDA % de los votos emitidos (afirmativos +
+# negativos). Una votación casi unánime no pone a prueba la disciplina del
+# bloque y empujaba el promedio contra 100.
+UMBRAL_MINORIA_DIVIDIDA = 10.0
+
+
+def minoria_votacion(filas: list[dict]) -> float | None:
+    """% de los votos emitidos (afirmativos + negativos) del lado perdedor de
+    TODA la cámara en el acta. None si nadie votó por sí o por no."""
+    afirm = sum(1 for f in filas if f["voto"] == "AFIRMATIVO")
+    neg = sum(1 for f in filas if f["voto"] == "NEGATIVO")
+    if afirm + neg == 0:
+        return None
+    return round(min(afirm, neg) / (afirm + neg) * 100.0, 2)
+
+
+def es_votacion_dividida(minoria: float | None) -> bool:
+    return minoria is not None and minoria >= UMBRAL_MINORIA_DIVIDIDA
+
+
+def _minoria_acta_senado(html: str, filas: list[dict]) -> float | None:
+    """Minoría de un acta del Senado sobre los 72: _parsear_acta descarta a
+    quien figura con el bloque en blanco, que igual vota; _vsb_filas_senado no.
+    Si la página no trae esa tabla, sobre las filas ya leídas."""
+    return minoria_votacion(_vsb_filas_senado(html) or filas)
+
+
+# Versión del detalle por acta que cachea descargar_series (cohesión de las dos
+# cámaras y alineamiento): la 2 trae el bloque del Senado a la fecha (ADR-0400)
+# y la minoría de cada votación (ADR-0401). Un año cerrado cacheado con otra
+# versión se vuelve a pedir.
+VERSION_DETALLE_ACTAS = 2
+
+
 _RE_REDIRECT_ACTA = re.compile(r"redirectActa\((\d+),\s*(\d+),\s*'([^']*)'\)")
 _RE_DISPLAY_NONE   = re.compile(r"display\s*:\s*none")  # el sitio real usa "display: none" (con
                                                           # espacio) — confirmado vía snapshot de
@@ -5142,6 +5280,28 @@ def _cargar_cache_cohesion_diputados() -> dict:
         return {}
 
 
+# Minoría de cada acta de Diputados ya cacheada antes de ADR-0401, cuando la
+# caché por acta guardaba sólo el Rice: id -> % del lado perdedor de la cámara.
+# Sale de los PDF de cada acta (los anteriores al 6-feb-2025, que el portal ya no
+# sirve, desde su copia en el Internet Archive). Las actas nuevas guardan la
+# minoría en la caché misma. Un acta sin minoría en ninguno de los dos lados no
+# entra al promedio de votaciones divididas.
+DIPUTADOS_MINORIA_SEMILLA_PATH = (Path(__file__).resolve().parents[1] / "data" / "politica"
+                                  / "cohesion_bloque_diputados_minoria.json")
+_MINORIAS_SEMILLA_MEMO: dict | None = None
+
+
+def _minorias_diputados_semilla() -> dict:
+    global _MINORIAS_SEMILLA_MEMO
+    if _MINORIAS_SEMILLA_MEMO is None:
+        try:
+            datos = json.loads(DIPUTADOS_MINORIA_SEMILLA_PATH.read_text(encoding="utf-8-sig"))
+            _MINORIAS_SEMILLA_MEMO = datos.get("minorias", {})
+        except (OSError, json.JSONDecodeError):
+            _MINORIAS_SEMILLA_MEMO = {}
+    return _MINORIAS_SEMILLA_MEMO
+
+
 def _guardar_cache_cohesion_diputados(cache: dict) -> None:
     DIPUTADOS_COHESION_CACHE_PATH.write_text(
         json.dumps(cache, indent=2, ensure_ascii=False, sort_keys=True), encoding="utf-8")
@@ -5166,7 +5326,9 @@ def _acta_diputados_cacheada(session: requests.Session, id_acta: int, cache: dic
     clave = str(id_acta)
     if clave in cache:
         entrada = cache[clave]
-        return {"fecha": datetime.strptime(entrada["fecha"], "%Y-%m-%d"), "rice": entrada["rice"]}
+        minoria = entrada.get("minoria", _minorias_diputados_semilla().get(clave))
+        return {"fecha": datetime.strptime(entrada["fecha"], "%Y-%m-%d"), "rice": entrada["rice"],
+                "minoria": minoria}
     contenido = _diputados_acta_pdf(session, id_acta)
     if contenido is _ACTA_FALLO:
         return _ACTA_FALLO
@@ -5192,9 +5354,10 @@ def _acta_diputados_cacheada(session: requests.Session, id_acta: int, cache: dic
     afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
     neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
     rice = indice_rice(afirm, neg)
-    cache[clave] = {"fecha": fecha.strftime("%Y-%m-%d"), "rice": rice}
+    minoria = minoria_votacion(filas)
+    cache[clave] = {"fecha": fecha.strftime("%Y-%m-%d"), "rice": rice, "minoria": minoria}
     _guardar_cache_cohesion_diputados(cache)
-    return {"fecha": fecha, "rice": rice}
+    return {"fecha": fecha, "rice": rice, "minoria": minoria}
 
 
 # El avance de _diputados_acta_id_maximo tolera huecos de numeración: la
@@ -5395,7 +5558,8 @@ def fetch_cohesion_bloque_diputados_actas_anio(anio: int) -> list | None:
             continue
         fuera_de_anio_seguidas = 0
         if entrada["rice"] is not None:
-            detalle.append({"fecha": entrada["fecha"].strftime("%Y-%m-%d"), "rice": entrada["rice"]})
+            detalle.append({"fecha": entrada["fecha"].strftime("%Y-%m-%d"), "rice": entrada["rice"],
+                            "minoria": entrada.get("minoria"), "v": VERSION_DETALLE_ACTAS})
 
     if fallidas:
         print(f"  [WARN] cohesion_bloque_diputados_actas_anio {anio}: "
@@ -5406,7 +5570,9 @@ def fetch_cohesion_bloque_diputados_actas_anio(anio: int) -> list | None:
 
 def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> dict | None:
     """Cohesión del bloque LLA en Diputados: índice de Rice promedio sobre
-    las actas nominales (toda acta con votos de LLA, no sólo las divididas) de los últimos `dias_ventana` días.
+    las actas nominales DIVIDIDAS (la minoría de la cámara tuvo al menos
+    UMBRAL_MINORIA_DIVIDIDA % de los votos, ADR-0401) con votos de LLA de los
+    últimos `dias_ventana` días.
 
     Desde 2026-07-09 (ADR-0040) usa el endpoint PDF directo
     (votaciones.hcdn.gob.ar/pdf/acta/{id}), NO la SPA bloqueada por
@@ -5471,13 +5637,14 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
             fuera_de_ventana_seguidas += 1
             continue
         fuera_de_ventana_seguidas = 0
-        if entrada["rice"] is not None:
+        if entrada["rice"] is not None and es_votacion_dividida(entrada.get("minoria")):
             detalle.append((entrada["fecha"], entrada["rice"]))
 
     fecha_max = max((f for f, _ in detalle), default=None)
     return {
         "valor": round(sum(r for _, r in detalle) / len(detalle), 1) if detalle else None,
-        "unidad": "% cohesión (índice de Rice), promedio de las votaciones nominales de los últimos 90 días",
+        "unidad": ("% cohesión (índice de Rice), promedio de las votaciones divididas (la minoría "
+                   "tuvo al menos 10 % de los votos) de los últimos 90 días"),
         "fuente": "Votaciones nominales de la Cámara de Diputados — elaboración CIGOB",
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_actas": len(detalle),
@@ -5572,6 +5739,9 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
         filas = _parsear_acta(r.text)
         if not filas:
             return None  # HTTP 200 sin votos tampoco acredita una lectura completa.
+        if not es_votacion_dividida(_minoria_acta_senado(r.text, filas)):
+            continue   # votación casi unánime: no pone a prueba al bloque (ADR-0401)
+        filas = filas_senado_a_la_fecha(filas, acta["fecha"])   # ADR-0400
         afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
         neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
         rice = indice_rice(afirm, neg)
@@ -5582,7 +5752,8 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
 
     return {
         "valor": round(sum(indices) / len(indices), 1) if indices else None,
-        "unidad": "% cohesión (índice de Rice, Senado), promedio de las votaciones nominales de los últimos 90 días",
+        "unidad": ("% cohesión (índice de Rice, Senado), promedio de las votaciones divididas "
+                   "(la minoría tuvo al menos 10 % de los votos) de los últimos 90 días"),
         "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_actas": len(indices),
@@ -5622,11 +5793,14 @@ def fetch_cohesion_bloque_senado_actas_anio(anio: int) -> list | None:
         if not filas:
             fallidas += 1
             continue
+        minoria = _minoria_acta_senado(r.text, filas)
+        filas = filas_senado_a_la_fecha(filas, acta["fecha"])   # ADR-0400
         afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
         neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
         rice = indice_rice(afirm, neg)
         if rice is not None:
-            detalle.append({"fecha": acta["fecha"].strftime("%Y-%m-%d"), "rice": rice})
+            detalle.append({"fecha": acta["fecha"].strftime("%Y-%m-%d"), "rice": rice,
+                            "minoria": minoria, "v": VERSION_DETALLE_ACTAS})
     if fallidas:
         print(f"  [WARN] cohesion_bloque_senado_actas_anio {anio}: "
               f"{fallidas} actas con detalle fallido -- detalle incompleto, no se devuelve")
@@ -5641,13 +5815,17 @@ def _agregar_cohesion_ventana(detalle: list[dict], referencia: datetime, dias_ve
     acta cae en la ventana. Misma fórmula que fetch_cohesion_bloque_senado
     (promedio simple del índice de Rice entre las actas con señal) --
     factorizada acá para que el backfill mensual pueda recalcularla para
-    cada fin de mes sin duplicar la matemática ni volver a pedir red."""
+    cada fin de mes sin duplicar la matemática ni volver a pedir red.
+    Sólo entran las votaciones divididas (ADR-0401): una fila sin minoría
+    (detalle de antes de esa versión) no entra."""
     limite = referencia - timedelta(days=dias_ventana)
     indices = []
     fecha_max = None
     for fila in detalle:
         fecha = datetime.strptime(fila["fecha"], "%Y-%m-%d")
         if fecha < limite or fecha > referencia:
+            continue
+        if not es_votacion_dividida(fila.get("minoria")):
             continue
         indices.append(fila["rice"])
         fecha_max = fecha if fecha_max is None else max(fecha_max, fecha)
@@ -5697,7 +5875,9 @@ def fetch_alineamiento_senadores_prov(anio: int | None = None, dias_ventana: int
     directa -- mismo tipo de proxy que adhesion_reformas_provincial/RIGI.
 
     Misma ventana/ancla que fetch_cohesion_bloque_senado (hoy para año en
-    curso, 31-dic para backfill)."""
+    curso, 31-dic para backfill). El bloque de cada senador es el vigente a la
+    fecha de la votación (registro de pases, ADR-0400), no el que muestra hoy
+    el portal."""
     anio = anio or datetime.now().year
     session = _hcdn_votaciones_session()
     actas = _descubrir_actas_senado(session, anio)
@@ -5723,7 +5903,7 @@ def fetch_alineamiento_senadores_prov(anio: int | None = None, dias_ventana: int
         filas = _parsear_acta(r.text)
         if not filas:
             return None
-        resultado_acta = _alineamiento_por_provincia(filas)
+        resultado_acta = _alineamiento_por_provincia(filas_senado_a_la_fecha(filas, acta["fecha"]))
         for provincia, (coincide, total) in resultado_acta.items():
             c0, t0 = acumulado.get(provincia, (0, 0))
             acumulado[provincia] = (c0 + coincide, t0 + total)
@@ -5791,11 +5971,12 @@ def fetch_alineamiento_senadores_actas_anio(anio: int) -> list | None:
         if not filas:
             fallidas += 1
             continue
-        resultado_acta = _alineamiento_por_provincia(filas)
+        resultado_acta = _alineamiento_por_provincia(filas_senado_a_la_fecha(filas, acta["fecha"]))
         if resultado_acta:
             detalle.append({
                 "fecha": acta["fecha"].strftime("%Y-%m-%d"),
                 "provincias": {p: list(ct) for p, ct in resultado_acta.items()},
+                "v": VERSION_DETALLE_ACTAS,
             })
     if fallidas:
         print(f"  [WARN] alineamiento_senadores_actas_anio {anio}: "
@@ -8334,8 +8515,11 @@ def _parsear_cabecera_acta_senado(html: str) -> dict | None:
 
 
 # Versión del formato de las entradas del Senado en el caché: la 2 cuenta también a
-# los senadores cuyo bloque figura en blanco en el acta (ver _vsb_filas_senado).
-VSB_VERSION_SENADO = 2
+# los senadores cuyo bloque figura en blanco en el acta (ver _vsb_filas_senado); la
+# 3 cuenta las bancas de LLA con el bloque vigente a la fecha del acta (registro de
+# pases, ADR-0400): el portal etiquetaba a Juez y a Álvarez Rivero como LLA desde
+# 2024 y a Paoltroni también en los meses en que estuvo fuera del bloque.
+VSB_VERSION_SENADO = 3
 
 
 def _vsb_filas_senado(html: str) -> list[dict]:
@@ -8379,8 +8563,8 @@ def _vsb_actualizar_senado(cache: dict) -> bool:
             if not filas or cab is None:
                 completo = False
                 continue
-            actas[acta["id"]] = {**cab, **_vsb_conteos(filas), "bancas_camara": len(filas),
-                                 "v": VSB_VERSION_SENADO}
+            actas[acta["id"]] = {**cab, **_vsb_conteos(filas_senado_a_la_fecha(filas, cab["fecha"])),
+                                 "bancas_camara": len(filas), "v": VSB_VERSION_SENADO}
             _vsb_guardar_cache(cache)
     return completo
 
@@ -8508,7 +8692,8 @@ def componer_cohesion_bloque(dip: dict | None, sen: dict | None) -> dict | None:
     return {
         "valor": valor,
         "unidad": ("% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, "
-                   "promedio de las votaciones nominales de los últimos 90 días)"),
+                   "promedio de las votaciones divididas —la minoría tuvo al menos 10 % de "
+                   "los votos— de los últimos 90 días)"),
         "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
         "fecha_dato": max(fechas) if fechas else None,
         "n_actas": sum(e.get("n_actas") or 0 for e in con_dato.values()),

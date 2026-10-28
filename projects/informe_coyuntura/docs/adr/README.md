@@ -126,6 +126,8 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0368](0368-la-recaudacion-de-iva-y-cheque-sale-del-indice.md) | La recaudación de IVA y cheque sale del índice | `actividad_tributaria` | vigente |
 | [0375](0375-competitividad-el-cruce-pasa-a-la-dimension.md) | Competitividad: el cruce pasa a la dimensión | `tcrm`, `terminos_intercambio`, `tcr_terminos_intercambio` | vigente |
 | [0387](0387-cuentas-fiscales-y-sector-externo-se-separan.md) | Las cuentas fiscales y el sector externo se separan | `resultado_primario`, `recaudacion`, `saldo_comercial_12m` | vigente |
+| [0403](0403-el-resultado-primario-se-puntua-por-desvios-de-su-historia.md) | El resultado primario se puntúa por desvíos de su historia | `resultado_primario` | vigente |
+| [0404](0404-inversion-credito-y-saldo-comercial-con-cortes-de-la-historia-previa.md) | Inversión, crédito y saldo comercial con cortes de la historia previa | `iai`, `credito_privado`, `saldo_comercial_12m` | vigente |
 
 ### Política (ITCP)
 
@@ -239,6 +241,12 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0388](0388-jornadas-no-trabajadas-con-escala-que-se-mueve.md) | Jornadas no trabajadas con una escala que se mueve | `jornadas_individuales_no_trabajadas_12m` | vigente |
 | [0390](0390-conflictividad-con-cortes-de-la-historia-previa.md) | Conflictividad con cortes de la historia previa | `conflictividad_nacional` | vigente |
 | [0391](0391-la-construccion-y-las-autopartistas-entran-a-la-postura-empresaria.md) | La construcción y las autopartistas entran a la postura empresaria | `apoyo_empresario`, `apoyo_construccion`, `apoyo_comercio` | vigente |
+| [0397](0397-las-transferencias-no-automaticas-se-miden-contra-2023.md) | Las transferencias no automáticas se miden contra 2023 | `transferencias_no_automaticas` | vigente |
+| [0398](0398-la-produccion-legislativa-no-cuenta-leyes-vetadas.md) | La producción legislativa no cuenta las leyes vetadas | `produccion_legislativa` | vigente |
+| [0399](0399-el-rezago-suma-la-demora-de-publicacion.md) | El rezago suma la demora de publicación | `jornadas_individuales_no_trabajadas_12m`, `produccion_legislativa`, `conflictividad_nacional` | vigente |
+| [0400](0400-el-bloque-del-senador-es-el-del-dia-de-la-votacion.md) | El bloque del senador es el del día de la votación | `cohesion_bloque`, `alineamiento_senadores_prov`, `votos_sobre_bancas` | vigente |
+| [0401](0401-la-cohesion-mide-las-votaciones-divididas-contra-la-historia.md) | La cohesión mide las votaciones divididas, contra la historia | `cohesion_bloque` | vigente |
+| [0402](0402-el-alineamiento-de-senadores-se-compara-con-la-historia.md) | El alineamiento de senadores se compara con la historia | `alineamiento_senadores_prov` | vigente |
 
 ### Gestión (ITCG)
 
@@ -306,6 +314,9 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0379](0379-vuelven-los-juicios-por-riesgos-del-trabajo.md) | Vuelven los juicios por riesgos del trabajo | `litigiosidad_laboral`, `juicios_trabajo_capital` | vigente |
 | [0385](0385-la-siniestralidad-reemplaza-a-los-juicios-del-sistema-de-riesgos.md) | La siniestralidad reemplaza a los juicios del sistema de riesgos | `siniestralidad_laboral`, `litigiosidad_laboral` | vigente |
 | [0395](0395-los-piquetes-usan-el-ultimo-ano-cerrado.md) | Los piquetes usan el último año cerrado | `protocolo_antipiquetes` | vigente |
+| [0405](0405-los-piquetes-se-miden-en-todo-el-pais.md) | Los piquetes se miden en todo el país | `protocolo_antipiquetes` | vigente |
+| [0406](0406-el-rigi-usa-la-escala-de-las-concesiones.md) | El RIGI usa la escala de las concesiones | `rigi_inversiones` | vigente |
+| [0407](0407-corredores-viales-sale-de-la-cartera-de-privatizaciones.md) | Corredores Viales sale de la cartera de privatizaciones | `privatizaciones`, `concesiones_infraestructura` | vigente |
 
 ### Vida cotidiana (ITVC)
 

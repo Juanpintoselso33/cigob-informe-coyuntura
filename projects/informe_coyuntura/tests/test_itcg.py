@@ -39,7 +39,8 @@ import gestion
 #     pasó a 0,5/0,5); desde ADR-0385 el cuarto lo ocupa la siniestralidad
 #     laboral, −5,0% → 75,0.
 #   * privatizaciones 51,4% → 71,4 (banda 65).
-#   * rigi_inversiones 22,1% → 47,7 (banda 40).
+#   * rigi_inversiones 22,1% → 31,3 (banda 40; ADR-0406 le da la escala de
+#     concesiones: antes 47,7).
 #   * concesiones 35% → 52,5 (borde de banda) · asistencia 96% → 100 ·
 #     protocolo 52% → 76,6 (banda 85) · libertad_opcion_salud 65 de avance → 65 (ancla, ADR-0371).
 # Dimensiones: económicas=81,3 estado=77,3 laboral=56,4 privatizaciones=58,1
@@ -69,7 +70,7 @@ EJEMPLO = {
     "litigiosidad_laboral": 3.6,        # sin efecto: suspendido (ADR-0385), se sigue calculando
     "juicios_trabajo_capital": 12.4,    # 40,2 (banda 40) — juicios entrados, Justicia del Trabajo (25%, ADR-0365)
     "privatizaciones": 51.4,            # 71,4 (banda 65)
-    "rigi_inversiones": 22.1,           # 47,7 (banda 40)
+    "rigi_inversiones": 22.1,           # 31,3 (banda 40; ADR-0406, antes 47,7)
     "concesiones_infraestructura": 35.0,  # 52,5 (borde 40/65)
     "asistencia_directa": 96.0,         # 100
     "protocolo_antipiquetes": 52.0,     # 76,6 (banda 85)
@@ -100,13 +101,15 @@ def test_itcg_reproduce_ejemplo():
     # → 56,3 (ADR-0385: la siniestralidad, −5,0% → 75,0, ocupa el cuarto de la SRT:
     # 0,50·55 + 0,25·75,0 + 0,25·40,2).
     assert dims["reforma_laboral"]["puntaje"] == 56.3
-    assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
+    # 58,1 → 51,6 (ADR-0406: el RIGI pasa a la escala de concesiones y su
+    # 22,1% puntúa 31,3 en vez de 47,7: 0,4·71,4 + 0,4·31,3 + 0,2·52,5).
+    assert dims["privatizaciones_inversion"]["puntaje"] == 51.6
     # ADR-0189: vuelve asistencia_directa y la dimension recupera el 40/40/20
     # del documento. 0,4x100 + 0,4x76,6 + 0,2x65 = 83,6 (antes 72,8 con 67/33).
     assert dims["social_orden"]["puntaje"] == 83.6
-    assert r["valor"] == 75.4          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228) → 75,4 (0247) → 74,7 (0365) → 74,1 (0369) → 74,7 (0379) → 75,4 (0385)
+    assert r["valor"] == 74.4          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228) → 75,4 (0247) → 74,7 (0365) → 74,1 (0369) → 74,7 (0379) → 75,4 (0385) → 74,4 (0406)
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcg.tension_de_itcg(r["valor"]) == 2.5   # 75,4 (ADR-0385)
+    assert itcg.tension_de_itcg(r["valor"]) == 2.6   # 74,4 (ADR-0406)
     assert r["ajustes_aplicados"] == []
 
 
@@ -176,10 +179,12 @@ def test_bordes_de_banda():
     assert itcg.puntaje_banda(-21.37, b["reduccion_estado"]) == 85
     assert itcg.puntaje_banda(0.0, b["reduccion_estado"]) == 40
     assert itcg.puntaje_banda(0.01, b["reduccion_estado"]) == 10
-    # RIGI: 22,1% del pipeline aprobado (jun-2026) → 40.
+    # RIGI (ADR-0406): la MISMA escala que concesiones y privatizaciones.
     assert itcg.puntaje_banda(22.1, b["rigi_inversiones"]) == 40
-    assert itcg.puntaje_banda(10.0, b["rigi_inversiones"]) == 10
-    assert itcg.puntaje_banda(60.01, b["rigi_inversiones"]) == 100
+    assert itcg.puntaje_banda(15.0, b["rigi_inversiones"]) == 10
+    assert itcg.puntaje_banda(60.01, b["rigi_inversiones"]) == 85
+    assert itcg.puntaje_banda(75.01, b["rigi_inversiones"]) == 100
+    assert b["rigi_inversiones"] == b["concesiones_infraestructura"]
     # Privatizaciones: la cartera del doc (etapa promedio 2,06/4 = 51,5%) → 65.
     assert itcg.puntaje_banda(51.5, b["privatizaciones"]) == 65
     assert itcg.puntaje_banda(35.0, b["privatizaciones"]) == 40

@@ -7,7 +7,8 @@ cinturon: 'politica'
 indicadores: [fetch_alineamiento_senadores_actas_anio, fetch_alineamiento_senadores_prov_mensual]
 parametros: ['BANDAS_ITCP["alineamiento_senadores_prov"]']
 archivos: ['scripts/itcp.py', 'scripts/politica.py', _agregar_alineamiento_ventana, 'scripts/descargar_series.py', _actas_alineamiento_cacheadas, _fines_de_mes, 'data/politica/alineamiento_senadores_actas.json', 'tests/test_itcp.py', 'tests/test_politica_cohesion.py', 'tests/test_descargar_series_cohesion.py']
-relacionado: ['0059']
+relacionado: ['0059', '0402']
+modificado_por: ['0402']
 ambito: '`scripts/itcp.py` (`BANDAS_ITCP["alineamiento_senadores_prov"]`) · `scripts/politica.py` (`fetch_alineamiento_senadores_actas_anio`, `_agregar_alineamiento_ventana`) · `scripts/descargar_series.py` (`_actas_alineamiento_cacheadas`, `_fines_de_mes`, `fetch_alineamiento_senadores_prov_mensual`) · `data/politica/alineamiento_senadores_actas.json` · `tests/test_itcp.py`, `tests/test_politica_cohesion.py`, `tests/test_descargar_series_cohesion.py`'
 ---
 

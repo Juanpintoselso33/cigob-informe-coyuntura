@@ -7,7 +7,8 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [transferencias_no_automaticas, iaf_transferencias]
 archivos: ['scripts/politica.py', 'scripts/descargar_series.py', 'scripts/itcp.py', 'scripts/procedencia_anclas.py', 'scripts/validacion_externa.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts', 'tests/test_politica_transferencias_no_automaticas.py']
-relacionado: ['0066', '0239', '0353', '0359']
+relacionado: ['0066', '0239', '0353', '0359', '0397']
+modificado_por: ['0397']
 ambito: 'Cinturón político · ITCP · dimensión Alianzas territoriales'
 origen: 'Reunión del 26-oct-2026.'
 ---

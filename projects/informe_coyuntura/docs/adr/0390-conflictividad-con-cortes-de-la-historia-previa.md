@@ -9,7 +9,7 @@ indicadores: [conflictividad_nacional]
 parametros: ['BANDAS_ITCP["conflictividad_nacional"]']
 archivos: ['scripts/itcp.py', 'scripts/procedencia_anclas.py', 'tests/test_itcp.py', 'web/src/lib/fichas.ts']
 modifica: ['0052']
-relacionado: ['0052', '0388', '0359']
+relacionado: ['0052', '0359', '0388', '0397', '0403', '0404']
 ambito: 'ITCP · dimensión de conflicto social · escala de la conflictividad nacional (ACLED)'
 origen: 'Revisión del cinturón político de Luis Babino (26-oct-2026), punto 5: las anclas de conflictividad parecen calibradas sobre el propio mandato. Diagnóstico del 27-oct y decisión de Juan del mismo día: cambiarlas.'
 ---

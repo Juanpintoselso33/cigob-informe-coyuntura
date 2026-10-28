@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [votos_sobre_bancas, cohesion_bloque]
 archivos: ['scripts/politica.py', 'scripts/itcp.py', 'scripts/descargar_series.py', 'scripts/procedencia_anclas.py', 'data/politica/votos_sobre_bancas_actas.json', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts', 'tests/test_votos_sobre_bancas.py']
-relacionado: ['0040', '0041', '0048', '0284', '0359']
+relacionado: ['0040', '0041', '0048', '0284', '0359', '0400']
 ambito: 'Cinturón político · ITCP · dimensión Cohesión interna del oficialismo'
 origen: 'Pedido de Luis Babino (bajar el peso de la cohesión) y decisión de Juan del 27-oct-2026.'
 ---

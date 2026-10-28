@@ -471,8 +471,19 @@ def test_acta_diputados_cacheada_no_pide_red_si_ya_esta_en_cache(monkeypatch):
 
     entrada = politica._acta_diputados_cacheada(MagicMock(), 5, cache)
 
-    assert entrada == {"fecha": datetime(2026, 6, 24), "rice": 87.5}
+    # sin minoría en la caché ni en la semilla (id inventado): None, no entra a
+    # las votaciones divididas (ADR-0401)
+    assert entrada == {"fecha": datetime(2026, 6, 24), "rice": 87.5, "minoria": None}
     assert llamadas == []   # cache hit -- nunca llamó a _diputados_acta_pdf
+
+
+def test_acta_diputados_cacheada_lee_la_minoria_de_la_cache_o_de_la_semilla(monkeypatch):
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: pytest.fail("pidió red"))
+    monkeypatch.setattr(politica, "_MINORIAS_SEMILLA_MEMO", {"6": 31.5})
+    cache = {"5": {"fecha": "2026-06-24", "rice": 87.5, "minoria": 12.0},
+             "6": {"fecha": "2024-06-24", "rice": 90.0}}
+    assert politica._acta_diputados_cacheada(MagicMock(), 5, cache)["minoria"] == 12.0
+    assert politica._acta_diputados_cacheada(MagicMock(), 6, cache)["minoria"] == 31.5
 
 
 def test_acta_diputados_cacheada_descarga_y_cachea_en_miss(monkeypatch):
@@ -481,8 +492,9 @@ def test_acta_diputados_cacheada_descarga_y_cachea_en_miss(monkeypatch):
 
     entrada = politica._acta_diputados_cacheada(MagicMock(), 5, cache)
 
-    assert entrada == {"fecha": datetime(2026, 6, 24), "rice": politica.indice_rice(1, 1)}
-    assert cache["5"] == {"fecha": "2026-06-24", "rice": politica.indice_rice(1, 1)}
+    # un afirmativo y un negativo en toda la cámara: minoría 50 %
+    assert entrada == {"fecha": datetime(2026, 6, 24), "rice": politica.indice_rice(1, 1), "minoria": 50.0}
+    assert cache["5"] == {"fecha": "2026-06-24", "rice": politica.indice_rice(1, 1), "minoria": 50.0}
 
 
 def test_acta_diputados_cacheada_sin_senal_igual_se_cachea_con_rice_none(monkeypatch):
@@ -495,8 +507,8 @@ def test_acta_diputados_cacheada_sin_senal_igual_se_cachea_con_rice_none(monkeyp
 
     entrada = politica._acta_diputados_cacheada(MagicMock(), 5, cache)
 
-    assert entrada == {"fecha": datetime(2026, 6, 24), "rice": None}
-    assert cache["5"] == {"fecha": "2026-06-24", "rice": None}
+    assert entrada == {"fecha": datetime(2026, 6, 24), "rice": None, "minoria": None}
+    assert cache["5"] == {"fecha": "2026-06-24", "rice": None, "minoria": None}
 
 
 def test_acta_diputados_cacheada_404_no_se_cachea(monkeypatch):
@@ -811,10 +823,30 @@ def test_fetch_cohesion_bloque_senado_es_complementario(monkeypatch):
     monkeypatch.setattr(politica, "_parsear_acta", lambda html: [
         {"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
         {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+        {"nombre": "Z", "bloque": "OTRO", "voto": "NEGATIVO"},   # dividida: minoría 1/3
     ])
     resultado = politica.fetch_cohesion_bloque_senado()
     assert resultado["valor"] == 100.0
     assert "Senado" in resultado["fuente"]
+
+
+def test_fetch_cohesion_bloque_senado_descarta_las_casi_unanimes(monkeypatch):
+    # ADR-0401: si el lado perdedor de la cámara no llega al 10 % de los votos
+    # emitidos, la votación no pone a prueba al bloque y no entra.
+    hoy = datetime.now()
+    actas = [{"id": "1", "fecha": hoy - timedelta(days=5)}, {"id": "2", "fecha": hoy - timedelta(days=4)}]
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas_senado", lambda s, a: actas)
+    monkeypatch.setattr(politica, "_paced_get", lambda s, base, path: MagicMock(text=path[-1]))
+    lla_partido = [{"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+                   {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"}]
+    otros = {"1": [{"nombre": f"O{i}", "bloque": "OTRO", "voto": "AFIRMATIVO"} for i in range(30)],
+             "2": [{"nombre": f"O{i}", "bloque": "OTRO", "voto": "AFIRMATIVO"} for i in range(4)]}
+    monkeypatch.setattr(politica, "_parsear_acta", lambda html: lla_partido + otros[html])
+    # acta 1: 31 a favor, 1 en contra -> minoría 3,1 %, afuera; acta 2: 5 a 1 -> 16,7 %, entra
+    resultado = politica.fetch_cohesion_bloque_senado()
+    assert resultado["n_actas"] == 1
+    assert resultado["valor"] == 0.0
 
 
 def test_fetch_cohesion_bloque_senado_ventana_de_backfill_ancla_al_anio_pedido(monkeypatch):
@@ -863,9 +895,10 @@ def test_fetch_cohesion_bloque_senado_actas_anio_devuelve_detalle_crudo_por_acta
 
     detalle = politica.fetch_cohesion_bloque_senado_actas_anio(2026)
 
+    v = politica.VERSION_DETALLE_ACTAS
     assert detalle == [
-        {"fecha": "2026-06-01", "rice": 100.0},
-        {"fecha": "2026-06-10", "rice": politica.indice_rice(1, 1)},
+        {"fecha": "2026-06-01", "rice": 100.0, "minoria": 0.0, "v": v},
+        {"fecha": "2026-06-10", "rice": politica.indice_rice(1, 1), "minoria": 50.0, "v": v},
     ]
 
 
@@ -900,12 +933,24 @@ def test_fetch_cohesion_bloque_senado_actas_anio_detalle_fallido_devuelve_none(m
 
 def test_agregar_cohesion_ventana_filtra_por_fecha_y_promedia():
     detalle = [
-        {"fecha": "2026-01-01", "rice": 50.0},   # fuera de ventana
-        {"fecha": "2026-06-01", "rice": 100.0},
-        {"fecha": "2026-06-10", "rice": 80.0},
+        {"fecha": "2026-01-01", "rice": 50.0, "minoria": 40.0},   # fuera de ventana
+        {"fecha": "2026-06-01", "rice": 100.0, "minoria": 40.0},
+        {"fecha": "2026-06-10", "rice": 80.0, "minoria": 10.0},   # justo en el umbral: entra
+        {"fecha": "2026-06-11", "rice": 0.0, "minoria": 9.99},    # casi unánime: afuera
+        {"fecha": "2026-06-12", "rice": 0.0},                     # sin minoría (versión vieja): afuera
     ]
     resultado = politica._agregar_cohesion_ventana(detalle, datetime(2026, 6, 15), dias_ventana=90)
     assert resultado == {"valor": 90.0, "fecha_dato": "2026-06-10", "n_actas": 2}
+
+
+def test_minoria_votacion_es_el_lado_perdedor_sobre_los_emitidos():
+    filas = ([{"voto": "AFIRMATIVO"}] * 9 + [{"voto": "NEGATIVO"}] * 1
+             + [{"voto": "ABSTENCION"}] * 5 + [{"voto": "AUSENTE"}] * 3)
+    assert politica.minoria_votacion(filas) == 10.0
+    assert politica.es_votacion_dividida(10.0)
+    assert not politica.es_votacion_dividida(9.99)
+    assert not politica.es_votacion_dividida(None)
+    assert politica.minoria_votacion([{"voto": "AUSENTE"}]) is None
 
 
 def test_agregar_cohesion_ventana_sin_actas_en_ventana_devuelve_none():
@@ -1136,9 +1181,10 @@ def test_fetch_alineamiento_senadores_actas_anio_devuelve_detalle_crudo_por_acta
 
     detalle = politica.fetch_alineamiento_senadores_actas_anio(2026)
 
+    v = politica.VERSION_DETALLE_ACTAS
     assert detalle == [
-        {"fecha": "2026-06-01", "provincias": {"CABA": [1, 1], "Córdoba": [1, 3]}},
-        {"fecha": "2026-06-10", "provincias": {"CABA": [0, 1]}},
+        {"fecha": "2026-06-01", "provincias": {"CABA": [1, 1], "Córdoba": [1, 3]}, "v": v},
+        {"fecha": "2026-06-10", "provincias": {"CABA": [0, 1]}, "v": v},
     ]
 
 

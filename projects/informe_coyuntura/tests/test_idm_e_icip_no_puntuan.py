@@ -153,6 +153,17 @@ BANDAS_ANTES["ipc_total"] = [(-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (
 BANDAS_ANTES["rem_ipc_12m"] = list(BANDAS_ANTES["ipc_total"])
 BANDAS_ANTES["iai"] = [(10.0, INF, 100), (2.0, 10.0, 80), (-2.0, 2.0, 60),
                        (-10.0, -2.0, 35), (-INF, -10.0, 10)]
+# Y el resultado primario, el crédito y el saldo comercial con las escalas de
+# agosto: ADR-0403 y ADR-0404 las pasaron a desvíos de 2004-2023 (y el saldo a
+# % del comercio), otras decisiones que no se atribuyen acá.
+BANDAS_ANTES["resultado_primario"] = [(8.0, INF, 100), (4.0, 8.0, 85), (0.0, 4.0, 60),
+                                      (-5.0, 0.0, 30), (-INF, -5.0, 10)]
+BANDAS_ANTES["credito_privado"] = [(40.0, INF, 100), (20.0, 40.0, 85), (8.0, 20.0, 65),
+                                   (0.0, 8.0, 45), (-10.0, 0.0, 25), (-INF, -10.0, 10)]
+BANDAS_ANTES["saldo_comercial_12m"] = [(15000.0, INF, 85), (10000.0, 15000.0, 75),
+                                       (5000.0, 10000.0, 60), (-5000.0, 5000.0, 50),
+                                       (-15000.0, -5000.0, 30), (-INF, -15000.0, 10)]
+ANCLAS_ANTES = {k: v for k, v in itcm.ANCLAS_ITCM.items() if k != "resultado_primario"}
 # Y el `tcrm` como puntuaba en agosto, solo en su dimensión: ADR-0360 lo
 # reemplazó por el compuesto con los términos del intercambio.
 import terminos_intercambio  # noqa: E402
@@ -197,7 +208,7 @@ def _itcm_antes() -> float:
     return parametrica.calcular_indice(
         dict(VALORES_260825), None, BANDAS_ANTES, dims,
         itcm.BANDAS_INTERPRETACION, itcm.INTERPRETACION_LEGIBLE,
-        anclas_por_indicador=itcm.ANCLAS_ITCM,
+        anclas_por_indicador=ANCLAS_ANTES,
         transformaciones_por_indicador=itcm.TRANSFORMACIONES_ITCM)["valor"]
 
 
@@ -211,7 +222,7 @@ def test_el_efecto_de_las_dos_decisiones_sobre_el_itcm():
     despues = parametrica.calcular_indice(
         dict(VALORES_260825), None, BANDAS_ANTES, _dimensiones_agosto(),
         itcm.BANDAS_INTERPRETACION, itcm.INTERPRETACION_LEGIBLE,
-        anclas_por_indicador=itcm.ANCLAS_ITCM,
+        anclas_por_indicador=ANCLAS_ANTES,
         transformaciones_por_indicador=itcm.TRANSFORMACIONES_ITCM)["valor"]
     assert antes == 64.8
     assert despues == 65.3
@@ -228,7 +239,7 @@ def test_cada_retiro_por_separado():
         dims["inversion"]["indicadores"] = dims_inv
         return parametrica.calcular_indice(
             valores, None, BANDAS_ANTES, dims, itcm.BANDAS_INTERPRETACION,
-            itcm.INTERPRETACION_LEGIBLE, anclas_por_indicador=itcm.ANCLAS_ITCM,
+            itcm.INTERPRETACION_LEGIBLE, anclas_por_indicador=ANCLAS_ANTES,
             transformaciones_por_indicador=itcm.TRANSFORMACIONES_ITCM)["valor"]
 
     antes_estab = {"ipc_total": 0.40, "rem_ipc_12m": 0.20, "idm": 0.20,

@@ -9,7 +9,7 @@ indicadores: [jornadas_individuales_no_trabajadas_12m]
 parametros: ['BANDAS_ITCP["jornadas_individuales_no_trabajadas_12m"]']
 archivos: ['scripts/itcp.py', 'scripts/procedencia_anclas.py', 'tests/test_itcp.py', 'web/src/lib/fichas.ts']
 modifica: ['0232']
-relacionado: ['0081', '0103', '0232', '0295', '0359', '0390']
+relacionado: ['0081', '0103', '0232', '0295', '0359', '0390', '0403']
 ambito: 'ITCP · dimensión de conflicto social · escala de las jornadas no trabajadas'
 origen: 'Revisión del cinturón político de Luis Babino (26-oct-2026): un cuarto del peso del índice está clavado en 100, jornadas incluida. Decisión de Juan del 27-oct-2026: ajustar la escala para que el indicador se mueva.'
 ---

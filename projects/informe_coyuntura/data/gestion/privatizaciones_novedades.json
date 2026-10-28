@@ -2,8 +2,8 @@
  "_meta": {
   "cobertura": {
    "consultas_fallidas": [],
-   "consultas_previstas": 27,
-   "consultas_sin_error": 27,
+   "consultas_previstas": 24,
+   "consultas_sin_error": 24,
    "estado": "sin_fallos_detectados",
    "relectura_pendiente": [],
    "textos_fallidos": []

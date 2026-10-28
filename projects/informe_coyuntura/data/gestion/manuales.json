@@ -50,11 +50,11 @@
     "fecha_dato": "2026-10-24"
   },
   "protocolo_antipiquetes": {
-    "valor": 74.2,
-    "unidad": "% de reducción de cortes por manifestación en CABA vs 2023 (IRPC)",
+    "valor": 52.7,
+    "unidad": "% de reducción de cortes por manifestación en todo el país vs 2023 (IRPC)",
     "estado": "estimado",
     "fuente": "Diagnóstico Político — FALLBACK del colector automático (dp_piquetes.json)",
-    "notas": "CABA: caída superior al 50% en 2024 sostenida en 2025 (240 cortes, 6,2% del total nacional vs 11,3% en 2023). Estado judicial (verificado 03-jul-2026): la nulidad de primera instancia (dic-2025) fue revocada por la Sala III de la Cámara Contencioso Administrativo Federal el 31-mar-2026 — el protocolo es un acto válido y plenamente vigente. Sin fuente pública automatizable con base 2023 por ahora: el dato se sostiene en los anclajes anuales de Diagnóstico Político, y el monitoreo de alertas de transporte acumula la serie propia que lo reemplazará.",
+    "notas": "Total nacional (ADR-0405): 3.893 cortes en 2025 contra 8.239 en 2023 (5.996 en 2024). Estado judicial (verificado 03-jul-2026): la nulidad de primera instancia (dic-2025) fue revocada por la Sala III de la Cámara Contencioso Administrativo Federal el 31-mar-2026 — el protocolo es un acto válido y plenamente vigente. Sin fuente pública automatizable con base 2023 por ahora: el dato se sostiene en los anclajes anuales de Diagnóstico Político, y el monitoreo de alertas de transporte acumula la serie propia que lo reemplazará.",
     "fecha_dato": "2026-06-30"
   },
   "libertad_opcion_salud": {

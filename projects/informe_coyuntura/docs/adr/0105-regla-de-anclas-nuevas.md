@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'transversal'
 continua: ['0103']
-relacionado: ['0168', '0193']
+relacionado: ['0168', '0193', '0403', '0404', '0405', '0406']
 ambito: 'Todo indicador que se incorpore a un índice paramétrico'
 ---
 

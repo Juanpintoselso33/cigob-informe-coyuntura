@@ -32,8 +32,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Pobreza rebaseada al segundo semestre de 2023, que vale 100, e invertida: la base va arriba porque más pobreza es peor, así que por encima de 100 hay menos pobreza que en la transición. El nivel de cada mes es la estimación mensual de la Universidad Torcuato Di Tella; la base es la medición oficial del Instituto Nacional de Estadística y Censos (INDEC), porque la estimación mensual empieza en enero de 2025 y no alcanza el período base. Las dos fuentes no coinciden exactamente y el desvío está declarado en las limitaciones de la ficha.",
   },
   saldo_comercial_12m: {
-    latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\left(\text{exportaciones}-\text{importaciones}\right)`,
-    leyenda: "Acumulado de 12 meses del intercambio de bienes, según el Intercambio Comercial Argentino que publica el Instituto Nacional de Estadística y Censos, en millones de dólares.",
+    latex: String.raw`\frac{\sum_{12m}\text{exportaciones}-\sum_{12m}\text{importaciones}}{\sum_{12m}\text{exportaciones}+\sum_{12m}\text{importaciones}}\times 100`,
+    leyenda: "Saldo del intercambio de bienes acumulado en 12 meses, como porcentaje del comercio total de esos mismos meses, según el Intercambio Comercial Argentino que publica el Instituto Nacional de Estadística y Censos. El saldo en millones de dólares se muestra en el detalle. La escala se centra en el equilibrio y corta en desvíos de la historia de 2004 a 2023.",
   },
   reservas_bcra: {
     latex: String.raw`\text{estimación CIGOB}=\text{I.A}+\text{II.1}+\text{II.2}+\text{II.3}+\text{Tesoro}+|\text{II.1}_{>3m,\leq1a}|`,
@@ -68,8 +68,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Padrón de magistrados del Ministerio de Justicia: de los cargos de juez de la justicia federal y nacional que están habilitados, qué porcentaje tiene juez designado. Los cargos vacantes se cuentan como no cubiertos aunque haya un subrogante a cargo, porque un subrogante es una solución transitoria y no un juez designado para ese tribunal. La serie mensual se reconstruye moviendo el padrón hacia atrás y hacia adelante con los registros oficiales de designaciones y renuncias.",
   },
   produccion_legislativa: {
-    latex: String.raw`\text{leyes sancionadas en los \'ultimos 12 meses}`,
-    leyenda: "Catálogo de leyes sancionadas de la Cámara de Diputados más omisiones cotejadas en el Boletín Oficial y diarios de sesiones: leyes o expedientes con sanción definitiva verificada, sin duplicar incorporaciones tardías; identidades distintas en doce meses calendarios completos hasta el mes informado; se excluye el mes en curso. El umbral de diseño se conserva en 74 leyes por año. El cotejo del 8 de septiembre de 2026 encontró 1.320 leyes distintas de 2008-2025, un promedio de 73,3; el umbral no es ese promedio exacto ni un óptimo normativo. La última sanción registrada no certifica exhaustividad.",
+    latex: String.raw`\text{leyes sancionadas en los \'ultimos 12 meses}-\text{leyes vetadas en su totalidad}`,
+    leyenda: "Catálogo de leyes sancionadas de la Cámara de Diputados más omisiones cotejadas en el Boletín Oficial y diarios de sesiones: leyes o expedientes con sanción definitiva verificada, sin duplicar incorporaciones tardías; identidades distintas en doce meses calendarios completos hasta el mes informado; se excluye el mes en curso. No cuentan las leyes que el Poder Ejecutivo vetó en su totalidad, según el registro de vetos del índice, aunque el Congreso después haya insistido; las vetadas en parte sí cuentan, porque se promulgaron. El umbral de diseño se conserva en 74 leyes por año. El cotejo del 8 de septiembre de 2026 encontró 1.320 leyes distintas de 2008-2025, un promedio de 73,3; el umbral no es ese promedio exacto ni un óptimo normativo. La última sanción registrada no certifica exhaustividad.",
   },
   judicializacion: {
     latex: String.raw`\frac{\text{sumarios con medida cautelar}}{\text{total de sumarios}}\times 100`,
@@ -166,8 +166,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "La intermediación del Potenciar Trabajo estaba en las unidades de gestión —municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista—. La Resolución 84/2024 del Ministerio de Capital Humano (Boletín Oficial, 10 de abril de 2024) dispuso su cese. El indicador vale 100 desde entonces y 0 antes.",
   },
   protocolo_antipiquetes: {
-    latex: String.raw`\left(1-\frac{\text{cortes en CABA, \'ultimo a\~no}}{\text{cortes en CABA en 2023}}\right)\times 100`,
-    leyenda: "Reducción porcentual de cortes contra 2023, con anclajes de Diagnóstico Político (2023: aproximadamente 931, estimado desde participación redondeada; 2025: 240). 100 = cero cortes; 0 = igual que 2023.",
+    latex: String.raw`\left(1-\frac{\text{cortes en el pa\'is, \'ultimo a\~no cerrado}}{\text{cortes en el pa\'is en 2023}}\right)\times 100`,
+    leyenda: "Reducción porcentual de cortes en todo el país contra 2023, con los totales anuales publicados por Diagnóstico Político (2023: 8.239; 2025: 3.893). 100 = cero cortes; 0 = igual que 2023.",
   },
   libertad_opcion_salud: {
     latex: String.raw`100\times\left(0{,}25\cdot\text{marco}+0{,}20\cdot\text{sin permanencia}+0{,}20\cdot\text{derivaci\'on directa}+0{,}20\cdot\text{tr\'amite}+0{,}15\cdot\text{funcionamiento}\right)`,
@@ -366,8 +366,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Recursos de origen nacional efectivamente girados a las jurisdicciones —Provincias, Ciudad de Buenos Aires y Fondo Compensador, incluida la compensación del Consenso Fiscal; afuera Tesoro Nacional, Seguridad Social y Fondo A.T.N.—, mes a mes, según la planilla mensual consolidada de la Secretaría de Hacienda. Cada flujo se lleva a una base común dividiéndolo por el índice de precios al consumidor (IPC) nacional de su propio mes (Instituto Nacional de Estadística y Censos, base diciembre de 2016 = 100) y recién ahí se suman los doce: un deflactor único le daría a cada mes el mismo peso, y las transferencias no se reparten parejo por el calendario. Los dos términos son ventanas de doce meses: los últimos doce, que terminan en el último mes con IPC publicado, contra los doce anteriores. No se compara nunca un tramo incompleto contra uno entero.",
   },
   transferencias_no_automaticas: {
-    latex: String.raw`\left(\frac{\sum_{m\,\in\,\text{\'ultimos 12 meses}}\text{transferencias no autom\'aticas}_{m}/\text{IPC}_{m}}{\sum_{m\,\in\,\text{12 meses previos}}\text{transferencias no autom\'aticas}_{m}/\text{IPC}_{m}}-1\right)\times 100`,
-    leyenda: "Crédito devengado por la Nación como transferencia a gobiernos provinciales y municipales —Aportes del Tesoro Nacional y transferencias corrientes y de capital por programa—, mes a mes, según Presupuesto Abierto, sin la coparticipación de la Ciudad de Buenos Aires por fallo, el Fondo de Incentivo Docente, las cajas previsionales provinciales ni los hospitales nacionales. Cada flujo se lleva a una base común dividiéndolo por el índice de precios al consumidor (IPC) nacional de su propio mes (Instituto Nacional de Estadística y Censos, base diciembre de 2016 = 100) y recién ahí se suman los doce: un deflactor único le daría a cada mes el mismo peso, y estos giros se concentran en pocos meses. Los últimos doce, que terminan en el último mes cerrado con IPC publicado, contra los doce anteriores; no se compara nunca un tramo incompleto contra uno entero.",
+    latex: String.raw`\left(\frac{\sum_{m\,\in\,\text{\'ultimos 12 meses}}\text{transferencias no autom\'aticas}_{m}/\text{IPC}_{m}}{\sum_{m\,\in\,2023}\text{transferencias no autom\'aticas}_{m}/\text{IPC}_{m}}-1\right)\times 100`,
+    leyenda: "Crédito devengado por la Nación como transferencia a gobiernos provinciales y municipales —Aportes del Tesoro Nacional y transferencias corrientes y de capital por programa—, mes a mes, según Presupuesto Abierto, sin la coparticipación de la Ciudad de Buenos Aires por fallo, el Fondo de Incentivo Docente, las cajas previsionales provinciales ni los hospitales nacionales. Cada flujo se lleva a una base común dividiéndolo por el índice de precios al consumidor (IPC) nacional de su propio mes (Instituto Nacional de Estadística y Censos, base diciembre de 2016 = 100) y recién ahí se suman los doce: un deflactor único le daría a cada mes el mismo peso, y estos giros se concentran en pocos meses. Los últimos doce, que terminan en el último mes cerrado con IPC publicado, contra los doce meses de 2023, una base fija anterior al mandato; no se compara nunca un tramo incompleto contra uno entero. Negativo = la Nación gira menos que en 2023.",
   },
   adhesion_reformas_provincial: {
     latex: String.raw`\frac{\text{jurisdicciones adheridas al RIGI}}{24}\times 100`,
@@ -383,15 +383,15 @@ export const FORMULAS: Record<string, Formula> = {
   },
   cohesion_bloque: {
     latex: String.raw`0{,}65\times\text{cohesi\'on Diputados}+0{,}35\times\text{cohesi\'on Senado}`,
-    leyenda: "Compuesto bicameral. La cohesión de cada cámara es el promedio, sobre las votaciones nominales de los últimos 90 días en que votó el bloque, de |votos a favor − votos en contra| dividido por el total de votos que emitió el bloque propio de LLA en cada acta (índice de Rice); abstenciones y ausencias no entran. Si una cámara no tiene votaciones nominales en la ventana, el peso se reparte sobre la otra.",
+    leyenda: "Compuesto bicameral. La cohesión de cada cámara es el promedio, sobre las votaciones divididas (la minoría tuvo al menos 10 % de los votos) de los últimos 90 días en que votó el bloque, de |votos a favor − votos en contra| dividido por el total de votos que emitió el bloque propio de LLA en cada acta (índice de Rice); abstenciones y ausencias no entran. En el Senado, el bloque de cada senador es el que tenía el día de la votación. Si una cámara no tiene votaciones divididas en la ventana, el peso se reparte sobre la otra.",
   },
   votos_sobre_bancas: {
     latex: String.raw`\frac{\text{votos afirmativos}-\text{bancas de LLA}}{\text{bancas de la c\'amara}}\times 100`,
-    leyenda: "Por cada votación nominal en general de un proyecto de ley del Poder Ejecutivo (sin tratados ni convenios internacionales) que salió aprobada y en la que el bloque La Libertad Avanza votó mayoritariamente a favor: votos afirmativos totales menos las bancas del bloque LLA (todos los legisladores del bloque en el acta, hayan votado o no), sobre las bancas de la cámara (257 en Diputados, 72 en el Senado). Cada cámara es el promedio simple de sus votaciones de los últimos 12 meses; el indicador pesa Diputados 65% y Senado 35% (si una cámara no tuvo votaciones, queda la otra).",
+    leyenda: "Por cada votación nominal en general de un proyecto de ley del Poder Ejecutivo (sin tratados ni convenios internacionales) que salió aprobada y en la que el bloque La Libertad Avanza votó mayoritariamente a favor: votos afirmativos totales menos las bancas del bloque LLA (todos los legisladores del bloque en el acta, hayan votado o no), sobre las bancas de la cámara (257 en Diputados, 72 en el Senado). Cada cámara es el promedio simple de sus votaciones de los últimos 12 meses; Diputados pesa más que el Senado (si una cámara no tuvo votaciones, queda la otra).",
   },
   alineamiento_senadores_prov: {
     latex: String.raw`\frac{1}{N_{\text{provincias}}}\sum_{\text{provincias}}\frac{\text{votos no-LLA que coinciden con la posici\'on LLA}}{\text{votos no-LLA}}\times 100`,
-    leyenda: "Actas del Senado de los últimos 90 días: por provincia, qué proporción de los votos de senadores que no son del bloque LLA coincidió con el sentido en que votó ese bloque; el indicador promedia entre provincias con al menos un senador no oficialista.",
+    leyenda: "Actas del Senado de los últimos 90 días: por provincia, qué proporción de los votos de senadores que no son del bloque LLA coincidió con el sentido en que votó ese bloque; el indicador promedia entre provincias con al menos un senador no oficialista. El bloque de cada senador es el que tenía el día de la votación, no el que muestra hoy el portal.",
   },
   votometro_ventaja_lla: {
     latex: String.raw`\text{intenci\'on de voto LLA}-\text{intenci\'on de voto PJ}`,

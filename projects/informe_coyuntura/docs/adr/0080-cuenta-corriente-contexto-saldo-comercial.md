@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-18
 cinturon: 'macro'
 indicadores: [saldo_comercial_12m, cuenta_corriente]
-relacionado: ['0056', '0077']
+relacionado: ['0056', '0077', '0404']
 ambito: 'Cinturón macro · `saldo_comercial_12m` · serie acompañante `cuenta_corriente`'
 origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), observación 8'
 ---

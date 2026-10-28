@@ -92,28 +92,6 @@
         "fuente": "Resolución ME 282/2026 (BO 26-mar-2026): llamado a licitación, base USD 45,12M; apertura postergada al 25-jun-2026 (Res. 833/2026), sin adjudicación"
       }
     ],
-    "Corredores Viales": [
-      {
-        "etapa": 0.5,
-        "fecha": "2024-07",
-        "fuente": "Ley Bases 27.742 (BO 08-jul-2024), Anexo I Privatización/Concesión"
-      },
-      {
-        "etapa": 1,
-        "fecha": "2025-02",
-        "fuente": "Decreto 97/2025 (BO 17-feb-2025): autoriza la privatización vía concesión de obra pública por peaje"
-      },
-      {
-        "etapa": 2,
-        "fecha": "2025-06",
-        "fuente": "Resolución ST 29/2025 (BO 03-jun-2025): llamado y pliegos de la Etapa I de la Red Federal de Concesiones"
-      },
-      {
-        "etapa": 3,
-        "fecha": "2025-11",
-        "fuente": "Resolución ST 80/2025 (BO 19-nov-2025): adjudica los Tramos Oriental y Conexión (Etapa I)"
-      }
-    ],
     "Belgrano Cargas": [
       {
         "etapa": 0.5,
@@ -160,6 +138,31 @@
         "etapa": 0.5,
         "fecha": "2024-07",
         "fuente": "Ley Bases 27.742 (BO 08-jul-2024), Anexo I Privatización/Concesión. La transformación en SOFSA, reseñada en ST 34/2026, no equivale a adjudicación o venta. No se acredita con estas fuentes una suspensión formal de todo el proceso."
+      }
+    ]
+  },
+  "fuera_de_cartera": {
+    "_nota": "ADR-0407: Corredores Viales no promedia en el indicador (la red vial la mide concesiones_infraestructura). Sus transiciones se conservan como registro y no entran a la serie.",
+    "Corredores Viales": [
+      {
+        "etapa": 0.5,
+        "fecha": "2024-07",
+        "fuente": "Ley Bases 27.742 (BO 08-jul-2024), Anexo I Privatización/Concesión"
+      },
+      {
+        "etapa": 1,
+        "fecha": "2025-02",
+        "fuente": "Decreto 97/2025 (BO 17-feb-2025): autoriza la privatización vía concesión de obra pública por peaje"
+      },
+      {
+        "etapa": 2,
+        "fecha": "2025-06",
+        "fuente": "Resolución ST 29/2025 (BO 03-jun-2025): llamado y pliegos de la Etapa I de la Red Federal de Concesiones"
+      },
+      {
+        "etapa": 3,
+        "fecha": "2025-11",
+        "fuente": "Resolución ST 80/2025 (BO 19-nov-2025): adjudica los Tramos Oriental y Conexión (Etapa I)"
       }
     ]
   }

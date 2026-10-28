@@ -281,21 +281,36 @@ def fetch_saldo_ica(limit: int = 48) -> list:
     return [[fecha, ex - im] for fecha, ex, im in datos['puntos']]
 
 
-def fetch_saldo_12m_serie(limit: int = 60) -> list:
-    """Saldo comercial ACUMULADO MÓVIL de 12 meses — la métrica del titular
-    del indicador (barrido 5/12: la serie mensual bajo un titular acumulado
-    confundía la lectura). La mensual sigue publicándose como saldo_comercial,
-    insumo de la validación externa del ITCM. [[YYYY-MM-01, M USD]]."""
-    mensual = dict(sorted(fetch_saldo_ica(limit)))
-    fechas = list(mensual)
+def _ica_12m(limit: int = 60) -> list:
+    """[(YYYY-MM-01, expo 12m, impo 12m)] de ventanas móviles de 12 meses sin
+    huecos, sobre la misma serie ICA que la tarjeta."""
+    mensual = {f: (ex, im) for f, ex, im in macro._ica_mensual(limit)['puntos']}
+    fechas = sorted(mensual)
     out = []
     for i in range(11, len(fechas)):
         win = fechas[i - 11:i + 1]
         a0, m0 = int(win[0][:4]), int(win[0][5:7])
         af, mf = int(win[-1][:4]), int(win[-1][5:7])
         if (af * 12 + mf) - (a0 * 12 + m0) == 11:      # ventana sin huecos
-            out.append([fechas[i], round(sum(mensual[f] for f in win), 1)])
+            out.append((fechas[i], sum(mensual[f][0] for f in win),
+                        sum(mensual[f][1] for f in win)))
     return out
+
+
+def fetch_saldo_12m_serie(limit: int = 60) -> list:
+    """Saldo comercial ACUMULADO MÓVIL de 12 meses como % del comercio
+    (exportaciones + importaciones de la misma ventana) — la métrica del
+    titular desde ADR-0404. La mensual en dólares sigue publicándose como
+    saldo_comercial, y el acumulado en dólares como saldo_comercial_12m_usd
+    (el gráfico lo compara con la cuenta corriente). [[YYYY-MM-01, %]]."""
+    return [[f, round((ex - im) / (ex + im) * 100, 2)] for f, ex, im in _ica_12m(limit)]
+
+
+def fetch_saldo_12m_usd_serie(limit: int = 60) -> list:
+    """Saldo comercial acumulado de 12 meses en millones de USD: el monto que
+    la tarjeta muestra en el detalle y que el gráfico pone junto a la cuenta
+    corriente, en la misma unidad. [[YYYY-MM-01, M USD]]."""
+    return [[f, round(ex - im, 1)] for f, ex, im in _ica_12m(limit)]
 
 
 def _tesoro_por_mes() -> dict:
@@ -940,7 +955,9 @@ MACRO_DERIVADAS = [
     ("costo_financiamiento_tesoro", "% real anual", "Sec. de Finanzas (colocaciones) + BCRA (REM)", fetch_costo_financiamiento_tesoro_serie),
     ("resultado_primario", "% de la recaudación (12m)", "Sec. de Hacienda — IMIG + recaudación", fetch_resultado_primario_serie),
     ("saldo_comercial", "M USD", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_saldo_ica),
-    ("saldo_comercial_12m", "M USD (acum. 12 meses)", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_saldo_12m_serie),
+    ("saldo_comercial_12m", "% del comercio (acum. 12 meses)", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_saldo_12m_serie),
+    # el mismo saldo en dólares: acompaña a la cuenta corriente en el modal (ADR-0404)
+    ("saldo_comercial_12m_usd", "M USD (acum. 12 meses)", "INDEC — cuadro original ICA + historia datos.gob.ar", fetch_saldo_12m_usd_serie),
     # acompaña al saldo comercial en el modal, no puntúa (ADR-0080)
     ("cuenta_corriente", "M USD (acum. 4 trimestres)", "INDEC — balanza de pagos (vía datos.gob.ar)", fetch_cuenta_corriente_serie),
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
@@ -996,13 +1013,14 @@ def fetch_iaf_serie() -> list:
 
 
 def fetch_transferencias_no_automaticas_serie() -> list:
-    """Serie MENSUAL de la variación real de las transferencias no automáticas a
-    provincias (Presupuesto Abierto; ADR-0378): el punto YYYY-MM-01 es la ventana
-    de 12 meses que termina en ese mes contra los 12 anteriores. Misma función que
-    la card (`politica._transf_na_12m_moviles`), así que no pueden divergir.
-    Arranca en dic-2023 (con 2022 como base). [[YYYY-MM-01, %]]."""
+    """Serie MENSUAL del nivel real de las transferencias no automáticas a
+    provincias (Presupuesto Abierto; ADR-0378/0397): el punto YYYY-MM-01 es la
+    ventana de 12 meses que termina en ese mes contra el total real de 2023.
+    Misma función que la card (`politica._transf_na_nivel_vs_base`), así que no
+    pueden divergir. Arranca en dic-2023, que es la base misma (0 %).
+    [[YYYY-MM-01, %]]."""
     return [[f"{fin}-01", round(v[0] * 100.0, 1)]
-            for fin, v in sorted(politica._transf_na_12m_moviles().items())]
+            for fin, v in sorted(politica._transf_na_nivel_vs_base().items())]
 
 
 def fetch_ratio_dnu_serie() -> list:
@@ -1204,6 +1222,19 @@ def fetch_cohesion_bloque_senado_serie(anio_inicio: int = 2023) -> list:
 COHESION_SENADO_ACTAS_STORE = Path(__file__).resolve().parents[1] / "data" / "politica" / "cohesion_bloque_senado_actas.json"
 
 
+def _detalle_vigente(detalle) -> bool:
+    """¿El detalle por acta cacheado de un año cerrado sirve tal cual? Sólo si
+    lo escribió la versión actual del cálculo (politica.VERSION_DETALLE_ACTAS:
+    bloque del Senado a la fecha de cada votación, ADR-0400, y minoría de cada
+    votación, ADR-0401). Un detalle de otra versión se vuelve a pedir: las
+    cohesiones y alineamientos viejos contaban como LLA a senadores que ese día
+    no lo eran, y sin minoría no se puede filtrar las votaciones divididas. Un
+    año cacheado vacío (sin actas con señal) no tiene nada que corregir."""
+    if detalle is None:
+        return False
+    return all(f.get("v") == politica.VERSION_DETALLE_ACTAS for f in detalle)
+
+
 def _actas_cohesion_senado_cacheadas(anio_inicio: int) -> dict:
     """Cachea el detalle CRUDO por acta (politica.fetch_cohesion_bloque_senado_actas_anio)
     por año -- mismo criterio que _actas_alineamiento_cacheadas: años
@@ -1219,7 +1250,7 @@ def _actas_cohesion_senado_cacheadas(anio_inicio: int) -> dict:
     hoy_anio = date.today().year
     for anio in range(anio_inicio, hoy_anio + 1):
         clave = str(anio)
-        if anio < hoy_anio and clave in cache:
+        if anio < hoy_anio and _detalle_vigente(cache.get(clave)):
             continue   # año cerrado ya cacheado -- inmutable, no se vuelve a pedir
         try:
             detalle = politica.fetch_cohesion_bloque_senado_actas_anio(anio)
@@ -1282,7 +1313,7 @@ def _actas_cohesion_diputados_cacheadas(anio_inicio: int) -> dict:
     hoy_anio = date.today().year
     for anio in range(anio_inicio, hoy_anio + 1):
         clave = str(anio)
-        if anio < hoy_anio and clave in cache:
+        if anio < hoy_anio and _detalle_vigente(cache.get(clave)):
             continue   # año cerrado ya cacheado -- inmutable, no se vuelve a pedir
         try:
             detalle = politica.fetch_cohesion_bloque_diputados_actas_anio(anio)
@@ -1375,7 +1406,7 @@ def _actas_alineamiento_cacheadas(anio_inicio: int) -> dict:
     hoy_anio = date.today().year
     for anio in range(anio_inicio, hoy_anio + 1):
         clave = str(anio)
-        if anio < hoy_anio and clave in cache:
+        if anio < hoy_anio and _detalle_vigente(cache.get(clave)):
             continue   # año cerrado ya cacheado -- inmutable, no se vuelve a pedir
         try:
             detalle = politica.fetch_alineamiento_senadores_actas_anio(anio)
@@ -1712,7 +1743,7 @@ def fetch_conflictividad_nacional_mensual() -> list:
 POLITICA_DERIVADAS = [
     ("iaf_transferencias", "% i.a. real (12m móviles)",
      "RON Hacienda (planilla mensual) + IPC INDEC deflactado mes a mes", fetch_iaf_serie),
-    ("transferencias_no_automaticas", "% i.a. real (12m móviles)",
+    ("transferencias_no_automaticas", "% real vs 2023 (12m móviles)",
      "Presupuesto Abierto (devengado, transferencias a provincias sin las automáticas) + IPC INDEC deflactado mes a mes",
      fetch_transferencias_no_automaticas_serie),
     ("ratio_dnu", "DNUs publicados por ley publicada", "InfoLeg", fetch_ratio_dnu_serie),
@@ -1799,7 +1830,7 @@ POLITICA_DERIVADAS = [
     # diferencia) siguen siendo los insumos, pero al CSV va una sola serie
     # 65/35 — la card del Senado dejó de existir como indicador propio, así
     # que su serie separada se purga del CSV en la primera corrida sin merge.
-    ("cohesion_bloque", "% cohesión (índice de Rice bicameral 65/35)",
+    ("cohesion_bloque", "% cohesión (índice de Rice bicameral 65/35, votaciones divididas)",
      "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
      fetch_cohesion_bloque_compuesta_mensual),
     # La card es el último punto de esta lista (mismo cálculo, ADR-0376): el
@@ -3677,7 +3708,7 @@ def fetch_icg_serie() -> list:
 
 
 def fetch_protocolo_serie() -> list:
-    """Serie del IRPC (reducción de cortes CABA vs 2023) por escalones ANUALES
+    """Serie del IRPC (reducción de cortes en todo el país vs 2023, ADR-0405) por escalones ANUALES
     de los anclajes públicos de Diagnóstico Político (ADR-0025): cada año
     cerrado aporta su IRPC y el valor se arrastra mes a mes hasta el siguiente
     (regla del último dato disponible). [[YYYY-MM-01, %]].
@@ -3690,15 +3721,15 @@ def fetch_protocolo_serie() -> list:
     puntuaría como «sin mejora» en una historia reconstruida que nadie midió."""
     dp = json.loads((Path(__file__).resolve().parents[1] / "data" / "gestion" /
                      "dp_piquetes.json").read_text(encoding="utf-8-sig"))
-    caba = {int(k): int(v) for k, v in dp["caba"].items()}
-    base = caba[2023]
+    nac = {int(k): int(v) for k, v in dp["nacional"].items()}
+    base = nac[2023]
     hoy = date.today()
     fin = hoy.replace(day=1) - timedelta(days=1)
     out = []
-    y, m = min(a for a in caba if a > 2023) + 1, 1
+    y, m = min(a for a in nac if a > 2023) + 1, 1
     while (y, m) <= (fin.year, fin.month):
-        anio_dato = max(a for a in caba if 2023 < a < y)
-        irpc = round((1.0 - caba[anio_dato] / base) * 100.0, 1)
+        anio_dato = max(a for a in nac if 2023 < a < y)
+        irpc = round((1.0 - nac[anio_dato] / base) * 100.0, 1)
         out.append([f"{y}-{m:02d}-01", irpc])
         m += 1
         if m > 12:
@@ -3737,7 +3768,7 @@ VIDA_DERIVADAS.append(
 
 
 GESTION_DERIVADAS = [
-    ("protocolo_antipiquetes", "% reducción de cortes CABA vs 2023 (IRPC, anual)",
+    ("protocolo_antipiquetes", "% reducción de cortes en el país vs 2023 (IRPC, anual)",
      "Diagnóstico Político (monitoreos públicos)", fetch_protocolo_serie),
     ("apertura_comercial", "% alícuota efectiva del comercio exterior", "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500", fetch_alicuota_serie),
     ("concesiones_infraestructura", "% km adjudicados RFC", "Boletín Oficial + RFC (hitos fechados)", fetch_concesiones_serie),

@@ -1,0 +1,59 @@
+{
+  "descripcion": "Bloque de cada senador vigente a cada fecha, para los senadores que cambiaron de bloque durante el mandato (ADR-0400). El portal de votaciones del Senado muestra en TODAS las actas el bloque actual del senador, no el que tenía el día de la votación: sin este registro se cuenta como del bloque La Libertad Avanza a senadores que en ese momento no lo eran. Un senador que no figura acá se toma con el bloque que publica el acta. Cada tramo es inclusivo en las dos puntas; hasta null = vigente. El nombre es el del acta (se compara sin tildes ni mayúsculas).",
+  "pases": [
+    {
+      "senador": "PAOLTRONI, FRANCISCO MANUEL",
+      "bloque": "La Libertad Avanza",
+      "desde": "2023-12-10",
+      "hasta": "2024-08-27",
+      "fuente": "https://www.baenegocios.com/amp/Echaron-a-Francisco-Paoltroni-del-bloque-de-senadores-de-LLA-20240828-0115/"
+    },
+    {
+      "senador": "PAOLTRONI, FRANCISCO MANUEL",
+      "bloque": "Libertad, Trabajo y Progreso",
+      "desde": "2024-08-28",
+      "hasta": "2025-12-09",
+      "fuente": "https://www.infobae.com/politica/2024/08/29/francisco-paoltroni-conformo-su-propio-bloque-tras-ser-expulsado-de-la-bancada-de-la-libertad-avanza-en-el-senado/",
+      "nota": "Expulsado del bloque LLA el 28-ago-2024 por nota de los otros seis senadores del bloque; arma un monobloque propio."
+    },
+    {
+      "senador": "PAOLTRONI, FRANCISCO MANUEL",
+      "bloque": "La Libertad Avanza",
+      "desde": "2025-12-10",
+      "hasta": null,
+      "fuente": "https://www.a24.com/politica/patricia-bullrich-recupera-paoltroni-y-consolida-el-bloque-oficialista-el-senado-n1498717",
+      "nota": "Vuelve al bloque LLA el 10-dic-2025, con la asunción de Patricia Bullrich como jefa del bloque (anunciado el 17-nov-2025; también https://rivadavia.com.ar/noticias/esta-manana/francisco-paoltroni-confirmo-que-vuelve-al-bloque-de-la-libertad-avanza)."
+    },
+    {
+      "senador": "ALVAREZ RIVERO, CARMEN",
+      "bloque": "Frente PRO",
+      "desde": "2023-12-10",
+      "hasta": "2025-11-03",
+      "fuente": "https://hoydia.com.ar/politica/carmen-alvarez-rivero-oficializo-su-pase-a-la-libertad-avanza/"
+    },
+    {
+      "senador": "ALVAREZ RIVERO, CARMEN",
+      "bloque": "La Libertad Avanza",
+      "desde": "2025-11-04",
+      "hasta": null,
+      "fuente": "https://hoydia.com.ar/politica/carmen-alvarez-rivero-oficializo-su-pase-a-la-libertad-avanza/",
+      "nota": "Pasa del bloque Frente PRO al bloque LLA el 4-nov-2025."
+    },
+    {
+      "senador": "JUEZ, LUIS ALFREDO",
+      "bloque": "Frente PRO; luego monobloque Frente Cívico de Córdoba",
+      "desde": "2023-12-10",
+      "hasta": "2026-02-22",
+      "fuente": "https://www.ambito.com/politica/se-agranda-la-libertad-avanza-el-senado-patricia-bullrich-confirmo-la-incorporacion-luis-juez-al-interbloque-n6223238",
+      "nota": "Desde el 9-dic-2025 integra el INTERBLOQUE de La Libertad Avanza, pero sigue en un bloque propio: el indicador cuenta el bloque, no el interbloque (los aliados de bloques separados quedan afuera, igual que en Diputados)."
+    },
+    {
+      "senador": "JUEZ, LUIS ALFREDO",
+      "bloque": "La Libertad Avanza",
+      "desde": "2026-02-23",
+      "hasta": null,
+      "fuente": "https://www.perfil.com/noticias/politica/a-dias-de-la-votacion-clave-por-la-reforma-laboral-en-senadores-luis-juez-abandono-el-frente-civico-y-se-incorporo-a-la-libertad-avanza.phtml",
+      "nota": "Deja el monobloque Frente Cívico y se incorpora al bloque LLA el 23-feb-2026."
+    }
+  ]
+}

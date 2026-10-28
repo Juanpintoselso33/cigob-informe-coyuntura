@@ -5,12 +5,15 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'politica'
 archivos: ['publicar._rezago']
-relacionado: ['0232', '0351', '0353']
+relacionado: ['0232', '0351', '0353', '0399']
+modificado_por: ['0399']
 ambito: 'ITCP · card pública "Rezago del índice" · `publicar._rezago`'
 origen: 'Auditoría externa del cinturón político, prioridad 5'
 ---
 
 # ADR-0092 — El informe declara de cuándo es la foto que muestra
+
+> Corrección del 28-oct-2026: [ADR-0399](0399-el-rezago-suma-la-demora-de-publicacion.md) reemplaza la regla de abajo para las ventanas de 12 meses: el rezago es la mitad de la ventana **más** la demora media de publicación de la fuente, redondeado a 0,5, y esa demora es una estimación. Las cifras y afirmaciones originales de este ADR describen la decisión histórica.
 
 ## Contexto y planteo del problema
 
@@ -74,7 +77,7 @@ en cada ficha— sino el **centroide de la ventana**: un indicador que promedia
 los últimos doce meses describe, en promedio, la situación de hace seis, aunque
 su último dato sea de ayer.
 
-Los valores se derivan del diseño de cada ventana; no se estiman:
+Los valores se derivaban del diseño de cada ventana (desde ADR-0399, en las ventanas de 12 meses se suma además la demora de publicación, que sí se estima):
 
 | ventana | centroide |
 |---|---|
@@ -108,4 +111,4 @@ los dos es corregible sin romper lo que los hace correctos.
   centroide efectivo se declaró en 1 mes en lugar de la mitad de su ventana.
 - El rezago de **publicación** de cada fuente sigue viviendo en su ficha y no se
   suma acá, salvo en `brecha_obra_publica`, donde el retraso del INDEC es
-  material frente al ancho de la ventana.
+  material frente al ancho de la ventana. Desde ADR-0399 se suma en todas las ventanas de 12 meses.

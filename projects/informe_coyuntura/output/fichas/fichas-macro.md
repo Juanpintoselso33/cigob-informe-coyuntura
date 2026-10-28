@@ -35,7 +35,7 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCM: 53,9** | **AMARILLO** | Moderadamente apretado | 16 indicadores: 5 en verde · 7 en amarillo · 4 en naranja |
+| **ITCM: 52,2** | **AMARILLO** | Moderadamente apretado | 16 indicadores: 5 en verde · 8 en amarillo · 3 en naranja |
 Componentes que puntúan en este corte: 16 de 16 publicados.
 
 ## Dimensiones
@@ -43,10 +43,10 @@ Componentes que puntúan en este corte: 16 de 16 publicados.
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
 | Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde tres señales complementarias. | 41,6 | AMARILLO | 26,0 % |
-| Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 41,4 | AMARILLO | 23,0 % |
-| Sector externo | Qué tan holgada está la economía frente al resto del mundo. | 61,1 | VERDE | 21,2 % |
-| Cuentas fiscales | Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. | 75,1 | VERDE | 19,2 % |
-| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 58,4 | AMARILLO | 10,6 % |
+| Actividad e inversión | Si la economía crece y si alguien apuesta al futuro. | 43,3 | AMARILLO | 23,0 % |
+| Sector externo | Qué tan holgada está la economía frente al resto del mundo. | 59,1 | AMARILLO | 21,2 % |
+| Cuentas fiscales | Si las cuentas del Estado cierran: el resultado primario sobre lo recaudado y la recaudación real. | 62,7 | VERDE | 19,2 % |
+| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: capacidad prestable del sistema financiero, crédito real otorgado y el costo del Tesoro. | 64,5 | VERDE | 10,6 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -71,7 +71,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Inversión física | Índice Anticipador de Inversión. | −1,74 % i.a. ponderado | AMARILLO | 6,9 % |
 | **DIMENSIÓN: Sector externo** | | | | |
 | Reservas netas | Los dólares del Banco Central una vez descontadas sus deudas de corto plazo, según una cuenta propia de CiGob sobre la… | 10.725 Millones de USD | VERDE | 5,4 % |
-| Saldo comercial (últimos 12 meses) | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses. | 26.472 Millones de USD (acum. 12 meses) | VERDE | 4,8 % |
+| Saldo comercial (últimos 12 meses) | El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses, como porcentaje de todo el… | 15,11 % del comercio (exportaciones + importaciones, acum. 12 meses) | VERDE | 4,8 % |
 | Tipo de cambio real | Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria), según el… | 85,87 Índice (base dic-2015=100) | AMARILLO | 5,5 % |
 | Términos del intercambio | Cuánto valen las exportaciones argentinas frente a lo que se importa. | 145,14 índice (base 2004 = 100) | VERDE | 5,5 % |
 | **DIMENSIÓN: Cuentas fiscales** | | | | |
@@ -79,7 +79,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Resultado primario del Estado nacional | Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda… | 6,02 % de la recaudación (acum. 12 meses) | VERDE | 12,0 % |
 | **DIMENSIÓN: Capacidad y costo del financiamiento** | | | | |
 | Capacidad prestable | Mide si los bancos tienen plata y margen para prestar, comparado con lo habitual desde 2018. | −0,34 σ vs. su historia | AMARILLO | 3,4 % |
-| Crédito privado real en pesos | Cuánto crecen los préstamos en pesos al sector privado en términos reales (contra un año atrás, descontada la… | −1,2 % i.a. real (crédito en pesos) | NARANJA | 3,2 % |
+| Crédito privado real en pesos | Cuánto crecen los préstamos en pesos al sector privado en términos reales (contra un año atrás, descontada la… | −1,2 % i.a. real (crédito en pesos) | AMARILLO | 3,2 % |
 | Costo real del financiamiento del Tesoro | Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos. | 6,22 % real anual (TIREA vs. inflación esperada REM) | VERDE | 4,0 % |
 
 *Datos al 2026-10-28.*
@@ -660,35 +660,37 @@ Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicion
 
 # Saldo comercial (últimos 12 meses)
 
-El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses.
+El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses, como porcentaje de todo el comercio de esos meses (exportaciones más importaciones). El monto en dólares se ve en el detalle.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 26.472 Millones de USD (acum. 12 meses)** (2026-09) | **VERDE** | Peso efectivo 4,8 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: 15,11 % del comercio (exportaciones + importaciones, acum. 12 meses)** (2026-09) | **VERDE** | Peso efectivo 4,8 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | saldo_comercial_12m | **CINTURÓN** | Macroeconomía |
-| **DIMENSIÓN EN EL ITCM** | Sector externo | **UNIDAD DE MEDIDA** | Millones de USD (acum. 12 meses) |
+| **DIMENSIÓN EN EL ITCM** | Sector externo | **UNIDAD DE MEDIDA** | % del comercio (exportaciones + importaciones, acum. 12 meses) |
 | **SERIE DISPONIBLE** | 2022-08 → 2026-09 (50 puntos) | **REZAGO DE PUBLICACIÓN** | El cuadro original del ICA se publica durante el mes siguiente al dato; la API histórica puede incorporarlo después. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | ICA — Intercambio Comercial Argentino: exportaciones e importaciones totales mensuales, en millones de dólares |
 | **MODO DE ACCESO** | Automático: se descubre la planilla vigente desde el catálogo INDEC y se completa la historia de la API; la tarjeta y el gráfico comparten esa serie. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses.
+El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses, como porcentaje de todo el comercio de esos meses (exportaciones más importaciones). El monto en dólares se ve en el detalle.
 
-Muestra si el intercambio de bienes aporta o resta dólares. No alcanza para saber si el sector externo en conjunto los genera: faltan los servicios, los intereses y las utilidades giradas, que se ven en la cuenta corriente del gráfico.
+Muestra si el intercambio de bienes aporta o resta dólares, en proporción a su tamaño, para que un mismo resultado se compare entre años con comercios muy distintos. No alcanza para saber si el sector externo en conjunto los genera: faltan los servicios, los intereses y las utilidades giradas, que se ven en la cuenta corriente del gráfico.
 
 **Dimensión que integra — Sector externo.** Qué tan holgada está la economía frente al resto del mundo: el saldo comercial de los últimos doce meses, las reservas netas del Banco Central y la competitividad del tipo de cambio. La competitividad no es un promedio de dos datos sino su cruce: el tipo de cambio real multilateral oficial del Banco Central con los términos del intercambio del Instituto Nacional de Estadística y Censos (precios de exportación sobre precios de importación) dicen si el peso alcanza para competir y si ese nivel se sostiene. Cada combinación tiene su puntaje (peso competitivo con términos altos 85 · competitivo con términos bajos 50 · apreciado con términos altos 30 · apreciado con términos bajos 10), y entre esas esquinas se interpola.
 
 ## Método de cómputo
 
 - Saldo acumulado de 12 meses: suma de exportaciones menos suma de importaciones de doce meses consecutivos, comunes a ambas series, sin redondear cada mes antes de sumar. La composición compara esa ventana con los doce meses anteriores y exige 24 meses consecutivos.
+- El saldo se expresa como porcentaje del comercio de la misma ventana (exportaciones más importaciones): así un mismo resultado se compara entre años con volúmenes de comercio muy distintos. El monto en millones de dólares se muestra en el detalle de la tarjeta.
 - El acumulado anual elimina la estacionalidad energética y sojera.
-- Regla automática declarada: si hay superávit pero se explica más por una caída de importaciones que por un aumento de exportaciones (contracción de la demanda interna, no éxito exportador), el puntaje se interpola hacia un piso de 60 en proporción a cuánto domina esa caída, sin un corte brusco apenas se cruza el umbral. La justificación se genera a partir de los números de cada actualización.
+- La escala se centra en el equilibrio (0 → 50) y corta en uno, uno y medio y dos desvíos del saldo como porcentaje del comercio de enero de 2004 a noviembre de 2023, antes del mandato. Los cortes quedan congelados.
+- Regla automática declarada: si hay un superávit relevante (más de 3 % del comercio) pero se explica más por una caída de importaciones que por un aumento de exportaciones (contracción de la demanda interna, no éxito exportador), el puntaje se interpola hacia un piso de 60 en proporción a cuánto domina esa caída, sin un corte brusco apenas se cruza el umbral. La justificación se genera a partir de los números de cada actualización.
 
 ## Semáforo — valores que determinan el color
 
@@ -696,24 +698,24 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (Millones de USD (acum. 12 meses)) | Color |
+| Rango (% del comercio (exportaciones + importaciones, acum. 12 meses)) | Color |
 |---|---|
-| ≥ 7.500 | VERDE |
-| −5.000 – 7.500 | AMARILLO |
-| −12.500 – −5.000 | NARANJA |
-| ≤ −12.500 | ROJO |
+| ≥ 10,6 | VERDE |
+| −6,38 – 10,6 | AMARILLO |
+| −14,88 – −6,38 | NARANJA |
+| ≤ −14,88 | ROJO |
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (26.472 Millones de USD (acum. 12 meses)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- saldo de US$ 26.472 millones sobre un comercio de US$ 175.217 millones (exportaciones US$ 100.845 M · importaciones US$ 74.373 M), doce meses a 2026-09
 
 ## Color vigente y por qué
 
-Dato vigente: 26.472 Millones de USD (acum. 12 meses) (2026-09).
+Dato vigente: 15,11 % del comercio (exportaciones + importaciones, acum. 12 meses) (2026-09).
 
-26.472 Millones de USD (acum. 12 meses) está en Verde, a 18.972 del límite con Amarillo (7.500).
+15,11 % del comercio (exportaciones + importaciones, acum. 12 meses) está en Verde, a 4,51 del límite con Amarillo (10,6).
 
 **Color vigente: VERDE**
 
@@ -726,6 +728,7 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 - Mide sólo el intercambio de BIENES. Quedan afuera los servicios, los intereses de la deuda y las utilidades giradas al exterior, que pueden drenar dólares por una suma grande: un saldo comercial con superávit puede convivir con una cuenta corriente —que sí los incluye— en déficit. Un superávit comercial no equivale, por sí solo, a que el sector externo genere los dólares que el programa necesita. La cuenta corriente (acumulado de cuatro trimestres) se publica junto a este indicador en el gráfico, como contexto: la diferencia entre las dos series es la lectura que importa.
 - El acumulado de 12 meses suaviza a costa de reactividad: un vuelco del frente comercial tarda meses en reflejarse por completo.
 - El máximo alcanzable de la escala es 85, no 100: diseño del documento institucional.
+- Como proporción del comercio, el mismo saldo en dólares puntúa menos cuando el comercio crece. Es a propósito: mide el resultado relativo al tamaño del intercambio, no el monto.
 - Los datos del ICA son provisorios y se revisan; la serie regenerada por actualización los absorbe.
 
 ## Si falta el dato / Política de revisiones
@@ -735,6 +738,8 @@ Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La fuente revisa provisorios; el informe re-descarga la serie completa en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Pasa a medirse como porcentaje del comercio (exportaciones más importaciones de los mismos 12 meses), no en millones de dólares, y la escala corta en desvíos de su historia de 2004-2023 con el equilibrio en 50 y el techo de 85. El monto en dólares queda en el detalle y en el gráfico, junto a la cuenta corriente. El umbral de superávit relevante de la regla automática pasa de 5.000 millones de dólares a 3 % del comercio. Con septiembre de 2026 (15,11 % del comercio, 26.472 millones) el puntaje pasa de 85 a 76,2.
 
 **2026-10-28** — La tabla de colores separa el rojo (déficit mayor a 12.500 millones) del naranja, que se mostraban fusionados por un error del motor. No cambia el puntaje.
 
@@ -1314,9 +1319,9 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 | Rango (% i.a. ponderado) | Color |
 |---|---|
 | ≥ 0,17 | VERDE |
-| −4,63 – 0,17 | AMARILLO |
-| −8,23 – −4,63 | NARANJA |
-| ≤ −8,23 | ROJO |
+| −22,51 – 0,17 | AMARILLO |
+| −33,85 – −22,51 | NARANJA |
+| ≤ −33,85 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1341,7 +1346,8 @@ Ponderación vigente en el ITCM: 6,9 % efectivo. El color es una lectura adicion
 - No mide depreciación ni inversión neta de reposición. Una variación interanual negativa de sus componentes no demuestra una disminución del stock de capital.
 - Los bienes de capital se miden en dólares corrientes e incluyen el efecto de los precios internacionales: el índice de cantidades oficial es solo trimestral.
 - El tercer componente (patentamientos comerciales) no tiene serie histórica pública: se acumula desde mediados de 2026 y recién tendrá comparación interanual a mediados de 2027.
-- Las bandas anchas son calibración propia declarada: el umbral fino del documento no sobrevivía a la volatilidad del dato argentino reciente.
+- Los cortes son uno y dos desvíos robustos (rango intercuartil dividido 1,349) de la variación interanual de enero de 2004 a noviembre de 2023, antes del mandato, y quedan congelados. Se usa el desvío robusto y no el clásico porque los rebotes de más de 100 % de algunos años inflan el clásico.
+- La historia que fija los cortes es un empalme: el ISAC con base 2004 hasta 2012 y el vigente desde 2013. En los meses en que las dos series se superponen difieren unos 3 puntos en promedio, así que los cortes son aproximados en esa medida.
 - El piso de crecimiento de la población es fijo (0,17% anual, proyección del INDEC para 2025-2026): no se actualiza solo. La proyección vigente, basada en el Censo 2022, espera un crecimiento promedio de 0,16% por año hasta 2040, así que el corrimiento es chico y casi no cambia la lectura.
 
 ## Si falta el dato / Política de revisiones
@@ -1351,6 +1357,8 @@ Ponderación vigente en el ITCM: 6,9 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Tarjeta e historia se recalculan con los datos revisados de las fuentes y la composición correspondiente a cada mes; no son una reconstrucción de la información conocida originalmente en cada fecha.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La escala deja las bandas de ±2 y ±10 % puestas sobre 2024-2026, con las que 23 de 33 meses del mandato tocaban un extremo, y corta en uno y dos desvíos robustos (18,9 y 37,8 puntos) de la variación interanual de 2004-2023, centrados en el crecimiento de la población. Con agosto de 2026 (−1,74 %) el puntaje pasa de 52,0 a 58,3.
 
 **2026-09-08** — La planilla original de bienes de capital completa julio y reemplaza revisiones, conservando la API para años anteriores. Tarjeta e historia avanzan al mismo mes común con ISAC; la inversión física de julio da −5,66%.
 
@@ -1384,7 +1392,7 @@ Cuánto crecen los préstamos en pesos al sector privado en términos reales (co
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −1,2 % i.a. real (crédito en pesos)** (2026-09) | **NARANJA** | Peso efectivo 3,2 % del ITCM | Cinturón Macroeconomía |
+| **Hoy: −1,2 % i.a. real (crédito en pesos)** (2026-09) | **AMARILLO** | Peso efectivo 3,2 % del ITCM | Cinturón Macroeconomía |
 
 ## Identificación
 
@@ -1417,10 +1425,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% i.a. real (crédito en pesos)) | Color |
 |---|---|
-| ≥ 11,5 | VERDE |
-| 1,75 – 11,5 | AMARILLO |
-| −6,67 – 1,75 | NARANJA |
-| ≤ −6,67 | ROJO |
+| ≥ 3,62 | VERDE |
+| −10,86 – 3,62 | AMARILLO |
+| −24,1 – −10,86 | NARANJA |
+| ≤ −24,1 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1432,9 +1440,9 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: −1,2 % i.a. real (crédito en pesos) (2026-09).
 
-−1,2 % i.a. real (crédito en pesos) está en Naranja, a 2,95 del límite con Amarillo (1,75).
+−1,2 % i.a. real (crédito en pesos) está en Amarillo, a 4,83 del límite con Verde (3,62).
 
-**Color vigente: NARANJA**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
@@ -1442,7 +1450,8 @@ Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicion
 
 ## Transparencia — limitaciones declaradas
 
-- Bandas calibradas a la remonetización 2024-2026 (el crédito real llegó a crecer 90% interanual desde una base ínfima): calibración propia sobre historia corta, declarada.
+- La escala se centra en 0 (el crédito real ni crece ni cae) y corta en uno y dos desvíos de la variación real de enero de 2004 a noviembre de 2023, antes del mandato; los cortes quedan congelados. Para esa historia la inflación se empalma con los índices de precios del Gran Buenos Aires hasta 2006, de San Luis de 2007 a 2012 y de la Ciudad de Buenos Aires de 2012 a 2016, porque el índice nacional de esos años no es confiable.
+- El mandato está fuera de todo el rango previo: entre 2004 y 2023 el crédito real nunca cayó más de 35,7 % ni creció más de 27,2 % interanual, y en 2024-2025 cayó más que eso y después creció más de cuatro veces ese máximo. Por eso el indicador sigue tocando los extremos de la escala con frecuencia: es un dato del período, no un defecto de los cortes, que no se estiran para absorberlo.
 - Agregado total: no distingue empresas de familias ni líneas de crédito.
 
 ## Si falta el dato / Política de revisiones
@@ -1452,6 +1461,8 @@ Ponderación vigente en el ITCM: 3,2 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Los saldos del BCRA no se revisan de forma habitual; la serie se regenera completa (desde diciembre de 2023) en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La escala deja las bandas calibradas sobre la remonetización 2024-2026 y pasa a centrarse en 0, con cortes en uno y dos desvíos (14,5 y 28,9 puntos) de la variación real de 2004-2023. Con septiembre de 2026 (−1,2 %) el puntaje pasa de 33,4 a 53,3.
 
 **2026-10-27** — Las reservas netas salen de «Capacidad y costo del financiamiento» y pasan al «Sector externo». El peso de este indicador en el índice macroeconómico no cambia (3,2 %).
 
@@ -1599,6 +1610,7 @@ Es el resultado fiscal, no los ingresos. La recaudación puede caer porque la ac
 - Ambas series se acumulan en ventanas de doce meses. El resultado primario mensual es fuertemente estacional —diciembre da déficit todos los años por el aguinaldo y el cierre del ejercicio, enero da superávit alto—, así que puntuar el mes suelto marcaría un colapso fiscal cada diciembre.
 - El resultado primario acumulado se divide por la recaudación tributaria acumulada del mismo período. La recaudación se usa como escala: no representa todos los ingresos del mismo universo contable del resultado primario.
 - Se normaliza contra la recaudación y no contra el producto ni contra los precios: no hay producto nominal mensual publicado, y usar el índice de precios sumaría una dependencia más a un deflactor que ya interviene en otros tres indicadores del índice.
+- El puntaje se interpola entre cinco anclas: el equilibrio fiscal vale 50, y a cada lado hay uno y dos desvíos de la misma serie entre enero de 2004 y noviembre de 2023, antes del mandato (−23,8 → 10 · −11,9 → 30 · 0 → 50 · 11,9 → 80 · 23,8 → 100). El primer desvío de superávit suma más puntos que lo que resta el primero de déficit, porque un déficit sostenido ya es tensión. Las anclas quedan congeladas.
 
 ## Semáforo — valores que determinan el color
 
@@ -1608,10 +1620,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de la recaudación (acum. 12 meses)) | Color |
 |---|---|
-| ≥ 2 | VERDE |
-| −1 – 2 | AMARILLO |
-| −3,75 – −1 | NARANJA |
-| ≤ −3,75 | ROJO |
+| ≥ 3,97 | VERDE |
+| −5,95 – 3,97 | AMARILLO |
+| −17,85 – −5,95 | NARANJA |
+| ≤ −17,85 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1623,7 +1635,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 6,02 % de la recaudación (acum. 12 meses) (2026-08).
 
-6,02 % de la recaudación (acum. 12 meses) está en Verde, a 4,02 del límite con Amarillo (2,0).
+6,02 % de la recaudación (acum. 12 meses) está en Verde, a 2,05 del límite con Amarillo (3,97).
 
 **Color vigente: VERDE**
 
@@ -1635,6 +1647,7 @@ Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adiciona
 - Es resultado primario: excluye los intereses de la deuda. Un superávit primario alto convive con déficit financiero si la carga de intereses es grande.
 - La ventana de doce meses suaviza la estacionalidad pero también demora en reflejar un cambio de régimen fiscal: un giro brusco tarda meses en verse completo.
 - No mide la calidad del ajuste: el mismo resultado puede alcanzarse recortando gasto de capital o licuando jubilaciones, y el indicador no los distingue.
+- Antes de 2015 el resultado primario incluye las rentas que el Banco Central y el Fondo de Garantía de Sustentabilidad transferían al Tesoro, que inflan los superávits de 2007 a 2014; la serie oficial mensual sin esas rentas no está publicada, así que la historia que fija las anclas no se puede limpiar. Por eso las anclas son desvíos y no percentiles: sin esos años el desvío cambia poco y el puntaje se mueve alrededor de un punto, mientras que los percentiles se corrían más de diez.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1643,6 +1656,8 @@ Ponderación vigente en el ITCM: 12 % efectivo. El color es una lectura adiciona
 - **Política de revisiones:** Las cifras fiscales pueden revisarse en publicaciones posteriores; la serie se regenera completa desde diciembre de 2023 en cada actualización.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La escala de −5 a +8 %, puesta mirando diciembre de 2023 y el programa estabilizado, se reemplaza por anclas de la historia 2004-2023: el equilibrio vale 50 y a cada lado hay uno y dos desvíos (11,9 puntos). Con agosto de 2026 (6,02 %) el puntaje pasa de 85,1 a 65,2: un superávit de ese tamaño se lee bien, no como óptimo.
 
 **2026-10-27** — La dimensión «Viabilidad fiscal-comercial» pasa a llamarse «Cuentas fiscales» y se queda con este indicador y la recaudación: el saldo comercial se fue al «Sector externo». Su peso en el índice macroeconómico no cambia (12 %).
 

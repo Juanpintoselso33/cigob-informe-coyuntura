@@ -92,3 +92,40 @@ def test_ckan_sin_numero_toma_la_ley_de_su_expediente(monkeypatch):
         fila(1, '2026-06-24'),
         {'LEY': None, 'EXPEDIENTE_INICIAL': '0011-PE-2024', 'SANCION_DEFINITIVA': '2026-08-27T00:00:00'}])
     assert politica.produccion_legislativa_serie()['2026-08'] == 2
+
+
+# ── ADR-0398: las leyes vetadas en su totalidad no cuentan ──────────────────
+
+REGISTRO = {'vetos': [
+    {'proyecto': '27.756', 'tipo': 'total', 'insistencia_completa': None},
+    {'proyecto': '27.795', 'tipo': 'total', 'insistencia_completa': '2025-10-02'},
+    {'proyecto': '27.739', 'tipo': 'parcial', 'insistencia_completa': None},
+], 'decretos': []}
+
+
+def test_vetadas_totales_salen_aunque_haya_insistencia_y_las_parciales_quedan():
+    assert politica._leyes_vetadas_totalmente(REGISTRO) == {'ley:27756', 'ley:27795'}
+
+
+def test_la_ley_vetada_no_cuenta_en_la_serie_ni_en_la_card(monkeypatch):
+    rows = [fila(27756, '2026-03-10'), fila(27795, '2026-04-10'),
+            fila(27739, '2026-05-10'), fila(1, '2026-06-10')]
+    monkeypatch.setattr(politica, '_hcdn_paginate', lambda *a: rows)
+    monkeypatch.setattr(politica, '_cargar_derrotas_registro', lambda: REGISTRO)
+    assert politica.produccion_legislativa_serie()['2026-08'] == 2
+    card = politica.fetch_produccion_legislativa()
+    assert card['valor'] == 2
+    assert card['vetadas_excluidas_12m'] == 2
+    assert 'vetadas en su totalidad' in card['detalle_txt']
+
+
+def test_sin_registro_de_vetos_no_publica(monkeypatch):
+    monkeypatch.setattr(politica, '_hcdn_paginate', lambda *a: [fila(1, '2026-06-10')])
+    monkeypatch.setattr(politica, '_cargar_derrotas_registro', lambda: None)
+    assert politica.fetch_produccion_legislativa() is None
+
+
+def test_el_registro_real_excluye_los_vetos_totales():
+    vetadas = politica._leyes_vetadas_totalmente()
+    assert {'ley:27756', 'ley:27757', 'ley:27790', 'ley:27794'} <= vetadas
+    assert 'ley:27739' not in vetadas          # veto parcial: la ley se promulgó

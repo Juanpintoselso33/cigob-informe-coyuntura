@@ -10,7 +10,8 @@ import gestion
 @pytest.fixture(autouse=True)
 def anclajes(tmp_path, monkeypatch):
     p = tmp_path / 'piquetes.json'
-    p.write_text('{"caba": {"2023": 931, "2025": 240}}')
+    # ADR-0405: puntúa el total nacional; la clave caba queda como registro.
+    p.write_text('{"nacional": {"2023": 8239, "2025": 3893}, "caba": {"2023": 931, "2025": 240}}')
     monkeypatch.setattr(gestion, 'DP_PIQUETES_PATH', p)
 
 
@@ -18,7 +19,7 @@ def test_http_exitoso_sin_informes_no_certifica_vigencia(monkeypatch):
     monkeypatch.setattr(gestion.requests, 'get', lambda *a, **k: SimpleNamespace(
         text='Account Suspended', raise_for_status=lambda: None))
     card = gestion.fetch_protocolo_antipiquetes()
-    assert card['valor'] == 74.2
+    assert card['valor'] == 52.7
     assert 'No se pudo verificar' in card['detalle_txt']
     assert card['advertencia_fuente']
 

@@ -387,12 +387,13 @@ def _valores_itcm_por_mes() -> dict:
     m = lambda k: _mensual(series.get(k) or [])
     ipc_mm = m("ipc_total")               # ya publicada en % m/m (04-jul-2026)
     rem = m("rem_ipc_12m")                # % anual → equivalente mensual
-    saldo = m("saldo_comercial")          # M USD mensual → suma móvil 12m
+    # ADR-0404: el saldo de 12 meses se publica ya como % del comercio de la
+    # misma ventana, y ese cociente no se rearma desde el saldo mensual en
+    # dólares (falta el denominador): se lee la serie del titular tal cual.
     # El catálogo del motor gobierna también la historia. Una lista paralela
     # omitió el IAI incluso después de publicarse su serie (ADR-0301).
     activos = {k for d in itcm.DIMENSIONES_ITCM.values() for k in d["indicadores"]}
-    especiales = {"ipc_total", "rem_ipc_12m", "saldo_comercial_12m",
-                  "terminos_intercambio"}
+    especiales = {"ipc_total", "rem_ipc_12m", "terminos_intercambio"}
     # Trimestral, fechada en el primer mes del trimestre: cada mes toma el
     # último trimestre publicado, con la misma regla que la matriz de ADR-0360
     # (ADR-0375). Sin trimestre vigente no hay dato y la dimensión no se arma.
@@ -405,20 +406,10 @@ def _valores_itcm_por_mes() -> dict:
         return ti[q]
     directos = {k: m(k) for k in sorted(activos - especiales)}
 
-    def saldo_12m(ym):
-        yms = sorted(saldo)
-        if ym not in yms or yms.index(ym) < 11:
-            return None
-        win = yms[yms.index(ym) - 11:yms.index(ym) + 1]
-        a0, m0 = int(win[0][:4]), int(win[0][5:7])
-        af, mf = int(win[-1][:4]), int(win[-1][5:7])
-        return sum(saldo[k] for k in win) if (af * 12 + mf) - (a0 * 12 + m0) == 11 else None
-
     return {
         ym: {
             "ipc_total": ipc_mm.get(ym),
             "rem_ipc_12m": rem.get(ym),   # crudo: lo transforma el motor
-            "saldo_comercial_12m": saldo_12m(ym),
             "terminos_intercambio": ti_vigente(ym),
             **{k: v.get(ym) for k, v in directos.items()},
         }

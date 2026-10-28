@@ -5,7 +5,8 @@ estado: 'aceptado'
 nota_estado: 'aceptada (decisión del editor)'
 fecha: 2026-07-03
 cinturon: 'macro'
-relacionado: ['0071', '0074', '0077', '0251', '0266']
+relacionado: ['0071', '0074', '0077', '0251', '0266', '0404']
+modificado_por: ['0404']
 ---
 
 # ADR-0022 — Crédito privado real al ITCM; los monetarios nominales quedan ocultos

@@ -838,9 +838,21 @@ def fetch_saldo_comercial_12m() -> dict | None:
         im  = [i for _, _, i in comunes]
         expo_12, expo_prev = sum(ex[:12]), sum(ex[12:24])
         impo_12, impo_prev = sum(im[:12]), sum(im[12:24])
+        saldo_musd = expo_12 - impo_12
+        comercio_musd = expo_12 + impo_12
+        # ADR-0404: el titular es el saldo como % del comercio de los mismos
+        # 12 meses; el monto en dólares queda en el detalle.
+        valor = round(saldo_musd / comercio_musd * 100, 2)
+        miles = lambda x: f"{x:,.0f}".replace(",", ".")
         return {
-            "valor": round(expo_12 - impo_12, 0),
-            "unidad": "Millones de USD (acum. 12 meses)",
+            "valor": valor,
+            "unidad": "% del comercio (exportaciones + importaciones, acum. 12 meses)",
+            "saldo_musd": round(saldo_musd, 0),
+            "comercio_musd": round(comercio_musd, 0),
+            "detalle_txt": (
+                f"saldo de US$ {miles(saldo_musd)} millones sobre un comercio de "
+                f"US$ {miles(comercio_musd)} millones (exportaciones US$ {miles(expo_12)} M "
+                f"· importaciones US$ {miles(impo_12)} M), doce meses a {comunes[0][0][:7]}"),
             "fuente": "INDEC — ICA, cuadro original vigente + historia datos.gob.ar",
             "fuente_url": datos['url'],
             "advertencia_fuente": datos['advertencia'],

@@ -1,15 +1,27 @@
 {
  "_meta": {
-  "comunicados_vistos": 891,
+  "comunicados_vistos": 892,
   "descripcion": "Comunicados nuevos de las cámaras del perímetro (CAMARCO) pendientes de codificar (ADR-0391). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. Los pendientes cortan la serie de apoyo_construccion en el mes anterior al más viejo, e `inventario_verificado` es la última corrida en la que respondieron todas las cámaras del perímetro. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "CAMARCO": "https://www.camarco.org.ar/wp-json/wp/v2/posts"
   },
   "inventario_verificado": "2026-10-28",
-  "nuevos_en_la_corrida": 0,
+  "nuevos_en_la_corrida": 1,
   "ultima_corrida": "2026-10-28"
  },
- "pendientes": {},
+ "pendientes": {
+  "CAMARCO|49378": {
+   "camara": "CAMARCO",
+   "destinatario": null,
+   "fecha": "2026-10-28",
+   "id": "49378",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Dirigentes jóvenes de la construcción de todo el país participaron del VII Summit de CAMARCO Joven, un espacio de encuentro, formación y networking pensado para fortalecer el liderazgo de las nuevas generaciones del sector. \n La apertura estuvo a cargo de Juan Gallará, Presidente de CAMARCO Joven, quien dio inicio a una agenda que combinó exposiciones de referentes empresariales, espacios de debate y actividades para fomentar la integración entre los participantes.\n Uno de los momentos centrales del encuentro fue “CAMARCO Joven Federal” , una dinámica en la que las delegaciones de todo el país compartieron iniciativas, experiencias y desafíos propios de cada región.\n La agenda incluyó una presentación sobre las nuevas tendencias en comercio electrónico aplicadas a la industria de la construcción, a cargo de César Felgueras y María Florencia Convertini, de Mercado Libre, así como también un panel integrado por Franco Mignacco, chair del Comité de Accionistas de EXAR, y Francisco Paolini, CEO de Grupo Paolini, quienes analizaron la coyuntura económica y los desafíos de la matriz productiva argentina.\n Además, el politólogo y empresario Rosendo Grobocopatel compartió reflexiones sobre liderazgo y la construcción de proyectos colectivos, mientras que Federico Lufft, vicepresidente de Milicic, abordó los procesos de transformación empresarial, con foco en la continuidad, la innovación y la construcción de legado en las organizaciones.\n El Summit concluyó con un espacio de networking que permitió consolidar vínculos entre jóvenes empresarios y dirigentes de distintas provincias, promoviendo el intercambio de ideas y la generación de nuevas oportunidades de colaboración.\n Con una participación federal y una agenda orientada al desarrollo de capacidades de liderazgo, el VII Summit de CAMARCO Joven volvió a consolidarse como uno de los principales espacios de encuentro para quienes trabajan en la construcción del futuro del sector en todo el país.",
+   "titulo": "Se realizó el VII Summit de CAMARCO Joven en Bariloche",
+   "url": "https://www.camarco.org.ar/2026/10/28/se-realizo-el-vii-summit-de-camarco-joven-en-bariloche/"
+  }
+ },
  "revisadas": {
   "CAMARCO|32906": {
    "origen": "codificacion ADR-0391"
@@ -2683,6 +2695,10 @@
   },
   "CAMARCO|49145": {
    "origen": "codificacion ADR-0391"
+  },
+  "CAMARCO|49378": {
+   "fecha": "2026-10-28",
+   "titulo": "Se realizó el VII Summit de CAMARCO Joven en Bariloche"
   }
  }
 }

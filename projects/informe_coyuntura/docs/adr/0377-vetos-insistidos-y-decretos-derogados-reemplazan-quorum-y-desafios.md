@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 indicadores: [insistencias_vetos, rechazos_decretos, veto_quorum, desafios_legislativos]
 archivos: ['scripts/itcp.py', 'scripts/politica.py', 'scripts/descargar_series.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/datos.ts']
-relacionado: ['0069', '0089', '0245', '0330', '0359']
+relacionado: ['0069', '0089', '0245', '0330', '0359', '0398']
 ambito: 'Cinturón político · ITCP · dimensión Poder legislativo'
 origen: 'Reunión de Juan y Luis Babino del 26-oct-2026 (acuerdos enviados por Luis ese día): «sesiones caídas por falta de quórum» y «leyes aprobadas contra el Ejecutivo» están mal formuladas y se reemplazan por insistencias sobre vetos y rechazos de DNU.'
 ---

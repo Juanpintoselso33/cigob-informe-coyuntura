@@ -285,6 +285,7 @@ jobs:
                   projects/informe_coyuntura/data/politica/apoyo_campo_novedades.json \
                   projects/informe_coyuntura/data/politica/apoyo_industria_novedades.json \
                   projects/informe_coyuntura/data/politica/apoyo_construccion_novedades.json \
+                  projects/informe_coyuntura/data/politica/cohesion_bloque_diputados_minoria.json \
                   projects/informe_coyuntura/data/vida/carne_serie.json \
                   projects/informe_coyuntura/data/vida/carnes_total_serie.json \
                   projects/informe_coyuntura/data/vida/consumo_carnes_sagyp.json \

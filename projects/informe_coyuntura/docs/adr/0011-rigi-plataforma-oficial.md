@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-06-30
 cinturon: 'gestion'
 archivos: ['scripts/gestion.py', 'scripts/publicar.py', 'descripciones.ts']
+relacionado: ['0406']
 ambito: '`scripts/gestion.py` · `scripts/publicar.py` · web (`descripciones.ts`)'
 ---
 

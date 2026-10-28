@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'gestion'
 indicadores: [privatizaciones]
-relacionado: ['0277']
+relacionado: ['0277', '0407']
 complementado_por: ['0129']
 ambito: 'ITCG · `privatizaciones` · modal del indicador'
 origen: 'Auditoría externa del cinturón de gestión (doc 2), punto 3.5'

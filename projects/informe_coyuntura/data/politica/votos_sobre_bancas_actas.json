@@ -2717,55 +2717,55 @@
    "afirmativos": 71,
    "afirmativos_encabezado": 71,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-02-23",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Fijación de días y horas para el próximo período",
-   "v": 2
+   "v": 3
   },
   "2433": {
    "afirmativos": 71,
    "afirmativos_encabezado": 71,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-02-23",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Designación de la senadora Silvia Sapag como vicepresidente del Senado.",
-   "v": 2
+   "v": 3
   },
   "2434": {
    "afirmativos": 45,
    "afirmativos_encabezado": 45,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "OTRA",
    "expedientes": [],
    "fecha": "2024-03-14",
    "lla_afirm": 0,
-   "lla_neg": 7,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Moción de preferencia solicitada por la senadora Silva para el tratamiento del expediente S-2447/23.",
-   "v": 2
+   "v": 3
   },
   "2435": {
    "afirmativos": 69,
    "afirmativos_encabezado": 69,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
@@ -2774,7 +2774,7 @@
     "PE-180/19-PL"
    ],
    "fecha": "2024-03-14",
-   "lla_afirm": 8,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -2785,20 +2785,20 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Aprobación de acuerdo con la República de Turquía, de convenio con la República Popular China, de acuerdo con los Emiratos Árabes Unidos.",
-   "v": 2
+   "v": 3
   },
   "2436": {
    "afirmativos": 36,
    "afirmativos_encabezado": 36,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
     "PE-180/19-PL"
    ],
    "fecha": "2024-03-14",
-   "lla_afirm": 8,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -2807,20 +2807,20 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Aprobación de acuerdo con los Emiratos Árabes Unidos.",
-   "v": 2
+   "v": 3
   },
   "2437": {
    "afirmativos": 69,
    "afirmativos_encabezado": 69,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
     "PE-202/23-PL"
    ],
    "fecha": "2024-03-14",
-   "lla_afirm": 8,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -2829,20 +2829,20 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Autorización al Presidente para ausentarse del país, durante el año 2024, cuando razones del gobierno así lo requieran.",
-   "v": 2
+   "v": 3
   },
   "2438": {
    "afirmativos": 69,
    "afirmativos_encabezado": 69,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
     "CD-3/23-PL"
    ],
    "fecha": "2024-03-14",
-   "lla_afirm": 8,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -2851,29 +2851,29 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del Código Penal sobre lavado de activos, financiación del terrorismo y proliferación de armas de destrucción masiva.",
-   "v": 2
+   "v": 3
   },
   "2439": {
    "afirmativos": 30,
    "afirmativos_encabezado": 30,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "MOCIÓN DE ORDEN",
    "expedientes": [],
    "fecha": "2024-03-14",
-   "lla_afirm": 8,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Moción de orden solicitada por el senador Atauche para aplazar el tratamiento del expediente PE-203/23 sobre el DNU 70/23.",
-   "v": 2
+   "v": 3
   },
   "2440": {
    "afirmativos": 0,
    "afirmativos_encabezado": 0,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "PE-203/23-DC"
@@ -2885,36 +2885,36 @@
    "ods": [],
    "resultado": "CANCELADA LEV.VOT.",
    "titulo": "Rechazo del Decreto del Poder Ejecutivo Nº 70/23, en los términos de la ley 26.122.",
-   "v": 2
+   "v": 3
   },
   "2441": {
    "afirmativos": 25,
    "afirmativos_encabezado": 25,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "PE-203/23-DC"
    ],
    "fecha": "2024-03-14",
-   "lla_afirm": 8,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Rechazo del Decreto del Poder Ejecutivo Nº 70/23, en los términos de la ley 26.122.",
-   "v": 2
+   "v": 3
   },
   "2442": {
    "afirmativos": 67,
    "afirmativos_encabezado": 67,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [],
    "fecha": "2024-04-18",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -2923,13 +2923,13 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo  para designaciones de embajadores extraordinarios y plenipotenciarios.",
-   "v": 2
+   "v": 3
   },
   "2443": {
    "afirmativos": 67,
    "afirmativos_encabezado": 67,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
@@ -2954,7 +2954,7 @@
     "PE-99/22-PL"
    ],
    "fecha": "2024-04-18",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -2981,575 +2981,575 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdos internacionales relacionados con el Mercosur, servicios aéreos, asistencia jurídica y tratados de extradición.",
-   "v": 2
+   "v": 3
   },
   "2445": {
    "afirmativos": 36,
    "afirmativos_encabezado": 36,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "EMPATE",
    "titulo": "Ley de Bases.",
-   "v": 2
+   "v": 3
   },
   "2446": {
    "afirmativos": 36,
    "afirmativos_encabezado": 36,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Bases.",
-   "v": 2
+   "v": 3
   },
   "2447": {
    "afirmativos": 37,
    "afirmativos_encabezado": 37,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Bases. Moción para estipular la forma de votación en particular por títulos.",
-   "v": 2
+   "v": 3
   },
   "2448": {
    "afirmativos": 35,
    "afirmativos_encabezado": 35,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "EMPATE",
    "titulo": "Ley de Bases. Título I: Declaración de emergencia.",
-   "v": 2
+   "v": 3
   },
   "2449": {
    "afirmativos": 35,
    "afirmativos_encabezado": 35,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Bases. Título I: Declaración de emergencia.",
-   "v": 2
+   "v": 3
   },
   "2450": {
    "afirmativos": 35,
    "afirmativos_encabezado": 35,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "EMPATE",
    "titulo": "Ley de Bases. Título II: Reforma del Estado.",
-   "v": 2
+   "v": 3
   },
   "2451": {
    "afirmativos": 35,
    "afirmativos_encabezado": 35,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Bases. Título II: Reforma del Estado.",
-   "v": 2
+   "v": 3
   },
   "2452": {
    "afirmativos": 37,
    "afirmativos_encabezado": 37,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Bases. Título III: Contratos y acuerdos transaccionales.",
-   "v": 2
+   "v": 3
   },
   "2453": {
    "afirmativos": 35,
    "afirmativos_encabezado": 35,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "EMPATE",
    "titulo": "Ley de Bases. Título IV: Promoción del empleo registrado.",
-   "v": 2
+   "v": 3
   },
   "2454": {
    "afirmativos": 37,
    "afirmativos_encabezado": 37,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Bases. Título IV: Promoción del empleo registrado.",
-   "v": 2
+   "v": 3
   },
   "2455": {
    "afirmativos": 37,
    "afirmativos_encabezado": 37,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Bases. Título V: Modernización laboral.",
-   "v": 2
+   "v": 3
   },
   "2456": {
    "afirmativos": 18,
    "afirmativos_encabezado": 18,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Ley de Bases. Título V: Modernización laboral. Artículo 96.",
-   "v": 2
+   "v": 3
   },
   "2457": {
    "afirmativos": 37,
    "afirmativos_encabezado": 37,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Bases. Título VI: Energía.",
-   "v": 2
+   "v": 3
   },
   "2458": {
    "afirmativos": 38,
    "afirmativos_encabezado": 38,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Bases. Título VII: Régimen de Incentivo para Grandes Inversiones (RIGI).",
-   "v": 2
+   "v": 3
   },
   "2459": {
    "afirmativos": 33,
    "afirmativos_encabezado": 33,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 6,
+   "lla_afirm": 4,
    "lla_neg": 3,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Bases. Título IX: Medidas fiscales para un ajuste equitativo y de calidad.",
-   "v": 2
+   "v": 3
   },
   "2460": {
    "afirmativos": 36,
    "afirmativos_encabezado": 36,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Bases. Título X. Disposiciones finales.",
-   "v": 2
+   "v": 3
   },
   "2461": {
    "afirmativos": 37,
    "afirmativos_encabezado": 37,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes.",
-   "v": 2
+   "v": 3
   },
   "2462": {
    "afirmativos": 72,
    "afirmativos_encabezado": 72,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título I: Régimen de Regularización Excepcional de Obligaciones Tributarias, Aduaneras y de Seguridad Social.",
-   "v": 2
+   "v": 3
   },
   "2463": {
    "afirmativos": 72,
    "afirmativos_encabezado": 72,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título II: Régimen de Regularización de Activos.",
-   "v": 2
+   "v": 3
   },
   "2464": {
    "afirmativos": 35,
    "afirmativos_encabezado": 35,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título III: Impuesto sobre los Bienes Personales.",
-   "v": 2
+   "v": 3
   },
   "2465": {
    "afirmativos": 3,
    "afirmativos_encabezado": 3,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 7,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título III: Impuesto sobre los Bienes Personales (dictamen de minoría).",
-   "v": 2
+   "v": 3
   },
   "2466": {
    "afirmativos": 38,
    "afirmativos_encabezado": 38,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título IV: Impuesto a las Transferencias de Inmuebles de Personas Físicas y Sucesiones Indivisas.",
-   "v": 2
+   "v": 3
   },
   "2467": {
    "afirmativos": 31,
    "afirmativos_encabezado": 31,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título V: Impuesto a las Ganancias.",
-   "v": 2
+   "v": 3
   },
   "2468": {
    "afirmativos": 37,
    "afirmativos_encabezado": 37,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 7,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título VI: Régimen Simplificado para Pequeños Contribuyentes.",
-   "v": 2
+   "v": 3
   },
   "2469": {
    "afirmativos": 30,
    "afirmativos_encabezado": 30,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
    "lla_afirm": 7,
-   "lla_neg": 2,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título VI:  Régimen Simplificado para Pequeños Contribuyentes. Artículo 100.",
-   "v": 2
+   "v": 3
   },
   "2470": {
    "afirmativos": 38,
    "afirmativos_encabezado": 38,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 7,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título VII: Régimen de Transparencia Fiscal al Consumidor.",
-   "v": 2
+   "v": 3
   },
   "2471": {
    "afirmativos": 70,
    "afirmativos_encabezado": 70,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 8,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título VIII: Otras Medidas Fiscales. Artículo 110.",
-   "v": 2
+   "v": 3
   },
   "2472": {
    "afirmativos": 7,
    "afirmativos_encabezado": 7,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
    "lla_afirm": 0,
-   "lla_neg": 8,
+   "lla_neg": 7,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título VIII: Otras Medidas Fiscales. Artículo 111.",
-   "v": 2
+   "v": 3
   },
   "2473": {
    "afirmativos": 32,
    "afirmativos_encabezado": 32,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 8,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "CANCELADA LEV.VOT.",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título VIII: Otras Medidas Fiscales. Artículo 112.",
-   "v": 2
+   "v": 3
   },
   "2474": {
    "afirmativos": 41,
    "afirmativos_encabezado": 41,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 8,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "CANCELADA LEV.VOT.",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Título VIII: Otras Medidas Fiscales. Artículo 112.",
-   "v": 2
+   "v": 3
   },
   "2475": {
    "afirmativos": 69,
    "afirmativos_encabezado": 69,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 8,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Otras Medidas Fiscales. Artículo 112.",
-   "v": 2
+   "v": 3
   },
   "2476": {
    "afirmativos": 70,
    "afirmativos_encabezado": 70,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-06-12",
-   "lla_afirm": 8,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Medidas Fiscales Paliativas y Relevantes. Otras Medidas Fiscales. Artículos 113 y 114.",
-   "v": 2
+   "v": 3
   },
   "2477": {
    "afirmativos": 37,
    "afirmativos_encabezado": 37,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "OTRA",
    "expedientes": [
     "CD-7/24-PL"
    ],
    "fecha": "2024-07-04",
-   "lla_afirm": 7,
+   "lla_afirm": 5,
    "lla_neg": 2,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Moción de preferencia para tratar el expediente CD-7/24.",
-   "v": 2
+   "v": 3
   },
   "2478": {
    "afirmativos": 43,
    "afirmativos_encabezado": 43,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-07-04",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "CANCELADA",
    "titulo": "Moción de preferencia.",
-   "v": 2
+   "v": 3
   },
   "2479": {
    "afirmativos": 56,
    "afirmativos_encabezado": 56,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-07-04",
-   "lla_afirm": 8,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdos para la promoción de personal de las Fuerzas Armadas y para diplomáticos de carrera de la Cancillería.",
-   "v": 2
+   "v": 3
   },
   "2480": {
    "afirmativos": 63,
    "afirmativos_encabezado": 63,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL",
    "expedientes": [],
    "expedientes_od": [
@@ -3557,7 +3557,7 @@
     "S-284/24-PL"
    ],
    "fecha": "2024-07-04",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3566,20 +3566,20 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del art. 139 del Código Penal tipificando la sustracción y/o comercialización de menores de edad.",
-   "v": 2
+   "v": 3
   },
   "2481": {
    "afirmativos": 51,
    "afirmativos_encabezado": 51,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
     "CD-15/23-PL"
    ],
    "fecha": "2024-07-04",
-   "lla_afirm": 7,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3588,17 +3588,17 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración del 18 de julio como Día de Duelo Nacional, en homenaje a las víctimas de AMIA.",
-   "v": 2
+   "v": 3
   },
   "2482": {
    "afirmativos": 65,
    "afirmativos_encabezado": 65,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL",
    "expedientes": [],
    "fecha": "2024-08-22",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3606,13 +3606,13 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para promoción de funcionarios del Ministerio de Relaciones Exteriores, Comercio Internacional y Culto.",
-   "v": 2
+   "v": 3
   },
   "2483": {
    "afirmativos": 66,
    "afirmativos_encabezado": 66,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
@@ -3623,7 +3623,7 @@
     "S-549/24-PL"
    ],
    "fecha": "2024-08-22",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3636,13 +3636,13 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Transferencias de inmuebles del Estado Nacional en las provincias de La Pampa, Entre Ríos y Río Negro.",
-   "v": 2
+   "v": 3
   },
   "2484": {
    "afirmativos": 66,
    "afirmativos_encabezado": 66,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
@@ -3650,7 +3650,7 @@
     "PE-375/19-PL"
    ],
    "fecha": "2024-08-22",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3660,17 +3660,17 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Aprobación del Convenio Internacional de Nairobi sobre remoción de restos de naufragio.",
-   "v": 2
+   "v": 3
   },
   "2485": {
    "afirmativos": 66,
    "afirmativos_encabezado": 66,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-08-22",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3678,13 +3678,13 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Designación de cónsules, vicecónsules y embajadores extraordinarios y plenipotenciarios.",
-   "v": 2
+   "v": 3
   },
   "2486": {
    "afirmativos": 67,
    "afirmativos_encabezado": 67,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
@@ -3692,7 +3692,7 @@
     "S-284/24-PL"
    ],
    "fecha": "2024-08-22",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3701,13 +3701,13 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del Código Penal de la Nación sobre la sustracción y/o comercialización de menores de edad.",
-   "v": 2
+   "v": 3
   },
   "2487": {
    "afirmativos": 61,
    "afirmativos_encabezado": 61,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL",
    "expedientes": [],
    "expedientes_od": [
@@ -3716,8 +3716,8 @@
     "S-465/24-PL"
    ],
    "fecha": "2024-08-22",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 7,
    "n_filas": 72,
    "ods": [
     "O.D. 78/2024"
@@ -3725,17 +3725,17 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Movilidad Previsional y de la Seguridad Social.",
-   "v": 2
+   "v": 3
   },
   "2488": {
    "afirmativos": 69,
    "afirmativos_encabezado": 69,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-08-22",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3743,125 +3743,125 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Movilidad Previsional y de la Seguridad Social. Artículo 1.",
-   "v": 2
+   "v": 3
   },
   "2489": {
    "afirmativos": 49,
    "afirmativos_encabezado": 49,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-08-22",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 7,
    "n_filas": 72,
    "ods": [
     "O.D. 78/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Movilidad Previsional y de la Seguridad Social. Artículo 2",
-   "v": 2
+   "v": 3
   },
   "2490": {
    "afirmativos": 61,
    "afirmativos_encabezado": 61,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-08-22",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 7,
    "n_filas": 72,
    "ods": [
     "O.D. 78/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Movilidad Previsional y de la Seguridad Social. Artículo 3.",
-   "v": 2
+   "v": 3
   },
   "2491": {
    "afirmativos": 49,
    "afirmativos_encabezado": 49,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-08-22",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 7,
    "n_filas": 72,
    "ods": [
     "O.D. 78/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Movilidad Previsional y de la Seguridad Social. Artículo 4.",
-   "v": 2
+   "v": 3
   },
   "2492": {
    "afirmativos": 67,
    "afirmativos_encabezado": 67,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-08-22",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 7,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [
     "O.D. 78/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Movilidad Previsional y de la Seguridad Social. Artículo 4.",
-   "v": 2
+   "v": 3
   },
   "2493": {
    "afirmativos": 68,
    "afirmativos_encabezado": 68,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-08-22",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 7,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [
     "O.D. 78/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Movilidad Previsional y de la Seguridad Social. Artículos 6, 7, 8 y 9.",
-   "v": 2
+   "v": 3
   },
   "2494": {
    "afirmativos": 54,
    "afirmativos_encabezado": 54,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-08-22",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 7,
    "n_filas": 72,
    "ods": [
     "O.D. 78/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Movilidad Previsional y de la Seguridad Social. Artículo 10.",
-   "v": 2
+   "v": 3
   },
   "2495": {
    "afirmativos": 68,
    "afirmativos_encabezado": 68,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-08-22",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3869,71 +3869,71 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Movilidad Previsional y de la Seguridad Social. Artículos 11, 12 y 13.",
-   "v": 2
+   "v": 3
   },
   "2496": {
    "afirmativos": 65,
    "afirmativos_encabezado": 65,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 7,
    "etapa": "EN GENERAL",
    "expedientes": [
     "S-1517/24-PR"
    ],
    "fecha": "2024-08-22",
-   "lla_afirm": 9,
+   "lla_afirm": 7,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Suspensión de la actualización del valor del módulo en las dietas de los senadores hasta el 31 de diciembre.",
-   "v": 2
+   "v": 3
   },
   "2497": {
    "afirmativos": 27,
    "afirmativos_encabezado": 27,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [
     "S-1634/24-PD"
    ],
    "fecha": "2024-09-12",
    "lla_afirm": 0,
-   "lla_neg": 6,
+   "lla_neg": 4,
    "n_filas": 72,
    "ods": [],
    "resultado": "EMPATE",
    "titulo": "Moción de preferencia solicitada por el senador Parrilli para el tratamiento del expediente S-1634/24.",
-   "v": 2
+   "v": 3
   },
   "2498": {
    "afirmativos": 28,
    "afirmativos_encabezado": 28,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [
     "S-1634/24-PD"
    ],
    "fecha": "2024-09-12",
    "lla_afirm": 0,
-   "lla_neg": 7,
+   "lla_neg": 5,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Moción de preferencia solicitada por el senador Parrilli para el tratamiento del expediente S-1634/24.",
-   "v": 2
+   "v": 3
   },
   "2499": {
    "afirmativos": 22,
    "afirmativos_encabezado": 22,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2024-09-12",
-   "lla_afirm": 7,
+   "lla_afirm": 5,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3941,20 +3941,20 @@
    ],
    "resultado": "NEGATIVO",
    "titulo": "Repudio y rechazo al proceso electoral de la República Bolivariana de Venezuela.",
-   "v": 2
+   "v": 3
   },
   "2500": {
    "afirmativos": 39,
    "afirmativos_encabezado": 39,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL",
    "expedientes": [],
    "expedientes_od": [
     "CD-4/22-PL"
    ],
    "fecha": "2024-09-12",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3963,17 +3963,17 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Boleta Única de Papel",
-   "v": 2
+   "v": 3
   },
   "2501": {
    "afirmativos": 38,
    "afirmativos_encabezado": 38,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-12",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -3981,21 +3981,21 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Boleta Única de Papel",
-   "v": 2
+   "v": 3
   },
   "2502": {
    "afirmativos": 57,
    "afirmativos_encabezado": 57,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL",
    "expedientes": [],
    "expedientes_od": [
     "CD-14/24-PL"
    ],
    "fecha": "2024-09-12",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 146/2024"
@@ -4003,195 +4003,195 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Aumento al financiamiento de las Universidades Nacionales.",
-   "v": 2
+   "v": 3
   },
   "2503": {
    "afirmativos": 56,
    "afirmativos_encabezado": 56,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-12",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 146/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Aumento al financiamiento de las Universidades Nacionales. Artículo 1",
-   "v": 2
+   "v": 3
   },
   "2504": {
    "afirmativos": 55,
    "afirmativos_encabezado": 55,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-12",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 146/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Aumento al financiamiento de las Universidades Nacionales. Artículo 2",
-   "v": 2
+   "v": 3
   },
   "2505": {
    "afirmativos": 52,
    "afirmativos_encabezado": 52,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-12",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 146/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Aumento al financiamiento de las Universidades Nacionales. Artículo 3",
-   "v": 2
+   "v": 3
   },
   "2506": {
    "afirmativos": 55,
    "afirmativos_encabezado": 55,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-12",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 146/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Aumento al financiamiento de las Universidades Nacionales. Artículo 4",
-   "v": 2
+   "v": 3
   },
   "2507": {
    "afirmativos": 51,
    "afirmativos_encabezado": 51,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-12",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 146/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Aumento al financiamiento de las Universidades Nacionales. Artículo 5",
-   "v": 2
+   "v": 3
   },
   "2508": {
    "afirmativos": 52,
    "afirmativos_encabezado": 52,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-12",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 146/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Aumento al financiamiento de las Universidades Nacionales. Artículo 6",
-   "v": 2
+   "v": 3
   },
   "2509": {
    "afirmativos": 56,
    "afirmativos_encabezado": 56,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-12",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 146/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Aumento al financiamiento de las Universidades Nacionales. Artículo 7",
-   "v": 2
+   "v": 3
   },
   "2510": {
    "afirmativos": 56,
    "afirmativos_encabezado": 56,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-12",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 146/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Aumento al financiamiento de las Universidades Nacionales. Artículo 8",
-   "v": 2
+   "v": 3
   },
   "2511": {
    "afirmativos": 54,
    "afirmativos_encabezado": 54,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-12",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 146/2024"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Aumento al financiamiento de las Universidades Nacionales. Artículo 9",
-   "v": 2
+   "v": 3
   },
   "2512": {
    "afirmativos": 11,
    "afirmativos_encabezado": 11,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [],
    "fecha": "2024-09-12",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 6,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Rechazo del Decreto del Poder Ejecutivo Nº 656/24, en los términos de la ley 26.122.",
-   "v": 2
+   "v": 3
   },
   "2513": {
    "afirmativos": 57,
    "afirmativos_encabezado": 57,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-26",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -4199,17 +4199,17 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Pliego de prórroga del camarista Jorge Eduardo Moran.",
-   "v": 2
+   "v": 3
   },
   "2514": {
    "afirmativos": 59,
    "afirmativos_encabezado": 59,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-26",
-   "lla_afirm": 8,
+   "lla_afirm": 5,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -4217,20 +4217,20 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Pliego de prórroga del camarista Roberto Enrique Hornos.",
-   "v": 2
+   "v": 3
   },
   "2515": {
    "afirmativos": 59,
    "afirmativos_encabezado": 59,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
     "CD-29/23-PL"
    ],
    "fecha": "2024-09-26",
-   "lla_afirm": 8,
+   "lla_afirm": 5,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -4239,38 +4239,38 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Institución del  15 de noviembre de cada año como Día Nacional por la Memoria de los 44 héroes y heroína del Submarino Ara San Juan y la reafirmación y defensa de los Derechos Soberanos del Mar Argentino.",
-   "v": 2
+   "v": 3
   },
   "2516": {
    "afirmativos": 22,
    "afirmativos_encabezado": 22,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "MOCIÓN VUELTA A COMISIÓN",
    "expedientes": [],
    "fecha": "2024-09-26",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 153/2024"
    ],
    "resultado": "NEGATIVO",
    "titulo": "Ampliación del Registro Nacional de Datos Genéticos.",
-   "v": 2
+   "v": 3
   },
   "2517": {
    "afirmativos": 39,
    "afirmativos_encabezado": 39,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
     "CD-10/24-PL"
    ],
    "fecha": "2024-09-26",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -4279,79 +4279,79 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Ampliación del Registro Nacional de Datos Genéticos.",
-   "v": 2
+   "v": 3
   },
   "2518": {
    "afirmativos": 40,
    "afirmativos_encabezado": 40,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [],
    "fecha": "2024-09-26",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Aprobación del Decreto del Poder Ejecutivo Nacional N° 829/19, en los términos de la ley 26.122.",
-   "v": 2
+   "v": 3
   },
   "2519": {
    "afirmativos": 55,
    "afirmativos_encabezado": 55,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2024-09-26",
-   "lla_afirm": 3,
+   "lla_afirm": 0,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de emergencia ambiental, económica y habitacional en las zonas de la provincia de Córdoba afectadas por los incendios forestales.",
-   "v": 2
+   "v": 3
   },
   "2521": {
    "afirmativos": 68,
    "afirmativos_encabezado": 68,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "MOCIÓN DE ORDEN",
    "expedientes": [],
    "fecha": "2024-12-12",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas de los proyectos de Resolución S-2370/24 y S-2385/24.",
-   "v": 2
+   "v": 3
   },
   "2522": {
    "afirmativos": 60,
    "afirmativos_encabezado": 60,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "MOCIÓN DE ORDEN",
    "expedientes": [
     "S-2370/24-PR"
    ],
    "fecha": "2024-12-12",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 6,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Remoción del Senador Edgardo Kueider en los términos del artículo 66 de la Constitución Nacional.",
-   "v": 2
+   "v": 3
   },
   "2523": {
    "afirmativos": 0,
    "afirmativos_encabezado": 0,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "MOCIÓN DE ORDEN",
    "expedientes": [],
    "fecha": "2024-12-12",
@@ -4361,109 +4361,109 @@
    "ods": [],
    "resultado": "CANCELADA",
    "titulo": "Habilitación del tratamiento sobre tablas del proyecto de Resolución S-2386/24.",
-   "v": 2
+   "v": 3
   },
   "2524": {
    "afirmativos": 34,
    "afirmativos_encabezado": 34,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "MOCIÓN DE ORDEN",
    "expedientes": [],
    "fecha": "2024-12-12",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del proyecto de Resolución S-2386/24.",
-   "v": 2
+   "v": 3
   },
   "2525": {
    "afirmativos": 53,
    "afirmativos_encabezado": 53,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-02-20",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del proyecto para la creación de una comisión investigadora sobre la criptomoneda $LIBRA.",
-   "v": 2
+   "v": 3
   },
   "2526": {
    "afirmativos": 47,
    "afirmativos_encabezado": 47,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [],
    "fecha": "2025-02-20",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Creación de una comisión investigadora sobre la criptomoneda $LIBRA.",
-   "v": 2
+   "v": 3
   },
   "2527": {
    "afirmativos": 47,
    "afirmativos_encabezado": 47,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-02-20",
    "lla_afirm": 1,
-   "lla_neg": 7,
+   "lla_neg": 5,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del proyecto para el pedido de informes al Poder Ejecutivo Nacional sobre la criptomoneda $LIBRA.",
-   "v": 2
+   "v": 3
   },
   "2528": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [],
    "fecha": "2025-02-20",
    "lla_afirm": 1,
-   "lla_neg": 7,
+   "lla_neg": 5,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Pedido de informes al Poder Ejecutivo Nacional sobre la criptomoneda $LIBRA.",
-   "v": 2
+   "v": 3
   },
   "2529": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-02-20",
    "lla_afirm": 0,
-   "lla_neg": 8,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas para la interpelación al Jefe de Gabinete.",
-   "v": 2
+   "v": 3
   },
   "2530": {
    "afirmativos": 1,
    "afirmativos_encabezado": 1,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-02-20",
@@ -4473,328 +4473,328 @@
    "ods": [],
    "resultado": "CANCELADA LEV.VOT.",
    "titulo": "Habilitación del tratamiento sobre tablas del proyecto de conmemoración del aniversario de la Batalla de Salta.",
-   "v": 2
+   "v": 3
   },
   "2531": {
    "afirmativos": 39,
    "afirmativos_encabezado": 39,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-02-20",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas para la interpelación a la secretaria general de la Presidencia.",
-   "v": 2
+   "v": 3
   },
   "2532": {
    "afirmativos": 61,
    "afirmativos_encabezado": 61,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-02-20",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdos para el ascenso de personal del Ministerio de Defensa, promociones de grado para las Fuerzas Armadas y el Ejército Argentino y ascensos de diplomáticos pertenecientes al Ministerio de Relaciones Exteriores, Comercio Internacional y Culto.",
-   "v": 2
+   "v": 3
   },
   "2533": {
    "afirmativos": 34,
    "afirmativos_encabezado": 34,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-02-20",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdos para la promoción de funcionarios del Ministerio de Relaciones Exteriores, Comercio Internacional y Culto y para la promoción de oficiales del Ejército Argentino.",
-   "v": 2
+   "v": 3
   },
   "2534": {
    "afirmativos": 43,
    "afirmativos_encabezado": 43,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-02-20",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 6,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Suspensión durante 2025 de las Elecciones Primarias, Abiertas, Simultáneas y Obligatorias (PASO).",
-   "v": 2
+   "v": 3
   },
   "2535": {
    "afirmativos": 45,
    "afirmativos_encabezado": 45,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-02-20",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del Código Procesal Penal y Código Procesal Federal sobre juicio en ausencia del imputado.",
-   "v": 2
+   "v": 3
   },
   "2536": {
    "afirmativos": 67,
    "afirmativos_encabezado": 67,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL",
    "expedientes": [],
    "fecha": "2025-02-20",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del Código Penal, Código Procesal Penal Federal y Código Procesal Penal en materia de reincidencia, reiterancia, concurso de delitos y unificación de condenas.",
-   "v": 2
+   "v": 3
   },
   "2537": {
    "afirmativos": 67,
    "afirmativos_encabezado": 67,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-02-20",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del Código Penal, Código Procesal Penal Federal y Código Procesal Penal en materia de reincidencia, reiterancia, concurso de delitos y unificación de condenas. Artículos 1 y 2.",
-   "v": 2
+   "v": 3
   },
   "2538": {
    "afirmativos": 38,
    "afirmativos_encabezado": 38,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-02-20",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del Código Penal, Código Procesal Penal Federal y Código Procesal Penal en materia de reincidencia, reiterancia, concurso de delitos y unificación de condenas. Artículos 3 al 10.",
-   "v": 2
+   "v": 3
   },
   "2539": {
    "afirmativos": 66,
    "afirmativos_encabezado": 66,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-02-20",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del Código Penal, Código Procesal Penal Federal y Código Procesal Penal en materia de reincidencia, reiterancia, concurso de delitos y unificación de condenas. Artículo 11.",
-   "v": 2
+   "v": 3
   },
   "2540": {
    "afirmativos": 38,
    "afirmativos_encabezado": 38,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-02-20",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Abordaje integral del crimen organizado.",
-   "v": 2
+   "v": 3
   },
   "2541": {
    "afirmativos": 27,
    "afirmativos_encabezado": 27,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [],
    "fecha": "2025-04-03",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Moción de preferencia solicitada por el senador Romero para el tratamiento del Orden del Día 596/24.",
-   "v": 2
+   "v": 3
   },
   "2542": {
    "afirmativos": 27,
    "afirmativos_encabezado": 27,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-04-03",
    "lla_afirm": 5,
-   "lla_neg": 3,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [
     "O.D. 592/2024"
    ],
    "resultado": "NEGATIVO",
    "titulo": "Pliego para designar al doctor Ariel Lijo como juez de la Corte Suprema de Justicia.",
-   "v": 2
+   "v": 3
   },
   "2543": {
    "afirmativos": 20,
    "afirmativos_encabezado": 20,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-04-03",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 6,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [
     "O.D. 6/2025"
    ],
    "resultado": "NEGATIVO",
    "titulo": "Pliego para designar al doctor Manuel José García Mansilla como juez de la Corte Suprema de Justicia.",
-   "v": 2
+   "v": 3
   },
   "2544": {
    "afirmativos": 35,
    "afirmativos_encabezado": 35,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-05-07",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del proyecto para la interpelación a la Secretaria General de la Presidencia.",
-   "v": 2
+   "v": 3
   },
   "2545": {
    "afirmativos": 35,
    "afirmativos_encabezado": 35,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-05-07",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del proyecto para la interpelación al Ministro de Economía.",
-   "v": 2
+   "v": 3
   },
   "2546": {
    "afirmativos": 33,
    "afirmativos_encabezado": 33,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-05-07",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del proyecto para la interpelación al Ministro de Defensa.",
-   "v": 2
+   "v": 3
   },
   "2547": {
    "afirmativos": 65,
    "afirmativos_encabezado": 65,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-05-07",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del proyecto de declaración de zona de emergencia y en situación de catástrofe, durante el término de 180 días, del departamento Rivadavia, Salta.",
-   "v": 2
+   "v": 3
   },
   "2548": {
    "afirmativos": 58,
    "afirmativos_encabezado": 58,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "S-303/25-PL"
    ],
    "fecha": "2025-05-07",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de zona de emergencia y en situación de catástrofe, durante el término de 180 días, del departamento Rivadavia, Salta.",
-   "v": 2
+   "v": 3
   },
   "2549": {
    "afirmativos": 63,
    "afirmativos_encabezado": 63,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-05-07",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Designación de Emilio Viramonte Olmos como secretario Administrativo.",
-   "v": 2
+   "v": 3
   },
   "2550": {
    "afirmativos": 55,
    "afirmativos_encabezado": 55,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-05-07",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -4802,17 +4802,17 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designar embajador extraordinario y plenipotenciario a Alejando Carlos Francisco Oxenford.",
-   "v": 2
+   "v": 3
   },
   "2551": {
    "afirmativos": 53,
    "afirmativos_encabezado": 53,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-05-07",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -4820,17 +4820,17 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designar embajador extraordinario y plenipotenciario a Wenceslao Bunge Saravia.",
-   "v": 2
+   "v": 3
   },
   "2552": {
    "afirmativos": 45,
    "afirmativos_encabezado": 45,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-05-07",
-   "lla_afirm": 8,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -4840,20 +4840,20 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Ratificación del tratado internacional sobre traslado de personas condenadas con la República de Serbia; aprobación de una convención multilateral contra la evasión fiscal; y aprobación del acuerdo con Suiza en materia de servicios aéreos regulares.",
-   "v": 2
+   "v": 3
   },
   "2553": {
    "afirmativos": 64,
    "afirmativos_encabezado": 64,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
     "S-172/25-PL"
    ],
    "fecha": "2025-05-07",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -4862,17 +4862,17 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de zona de emergencia y en situación de catástrofe a los municipios de Bahía Blanca y Coronel Rosales.",
-   "v": 2
+   "v": 3
   },
   "2554": {
    "afirmativos": 36,
    "afirmativos_encabezado": 36,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-05-07",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -4880,64 +4880,64 @@
    ],
    "resultado": "NEGATIVO",
    "titulo": "Ley de Ficha Limpia",
-   "v": 2
+   "v": 3
   },
   "2555": {
    "afirmativos": 38,
    "afirmativos_encabezado": 38,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "MOCIÓN DE ORDEN",
    "expedientes": [],
    "fecha": "2025-07-10",
-   "lla_afirm": 1,
-   "lla_neg": 2,
+   "lla_afirm": 0,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Moción de orden a fin de establecer el Plan de Labor de la sesión.",
-   "v": 2
+   "v": 3
   },
   "2556": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "MOCIÓN DE ORDEN",
    "expedientes": [],
    "fecha": "2025-07-10",
-   "lla_afirm": 1,
-   "lla_neg": 2,
+   "lla_afirm": 0,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Moción de orden a fin de determinar la validez de los dictámenes recaídos en los expedientes CD- 4/25, CD- 5/25 y CD- 6/25.",
-   "v": 2
+   "v": 3
   },
   "2557": {
    "afirmativos": 55,
    "afirmativos_encabezado": 55,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "CD-5/25-PL"
    ],
    "fecha": "2025-07-10",
-   "lla_afirm": 1,
+   "lla_afirm": 0,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de emergencia en discapacidad hasta el 31 de diciembre de 2026.",
-   "v": 2
+   "v": 3
   },
   "2558": {
    "afirmativos": 51,
    "afirmativos_encabezado": 51,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [
     "PE-50/25-DC"
@@ -4949,13 +4949,13 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del veto presidencial al proyecto que declara zona de emergencia y en situación de catástrofe a la provincia de Buenos Aires.",
-   "v": 2
+   "v": 3
   },
   "2559": {
    "afirmativos": 51,
    "afirmativos_encabezado": 51,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "PE-50/25-DC"
@@ -4967,13 +4967,13 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Insistencia ante el veto presidencial al proyecto que declara zona de emergencia y en situación de catástrofe a la provincia de Buenos Aires.",
-   "v": 2
+   "v": 3
   },
   "2560": {
    "afirmativos": 51,
    "afirmativos_encabezado": 51,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
@@ -4989,13 +4989,13 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de la Ciudad de 28 de Noviembre, provincia de Santa Cruz, como Capital Nacional del Cóndor Andino.",
-   "v": 2
+   "v": 3
   },
   "2561": {
    "afirmativos": 54,
    "afirmativos_encabezado": 54,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [
     "S-1167/25-PL",
@@ -5008,55 +5008,55 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas de los expedientes S-1167/25 y S-1168/25.",
-   "v": 2
+   "v": 3
   },
   "2562": {
    "afirmativos": 56,
    "afirmativos_encabezado": 56,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "S-1167/25-PL"
    ],
    "fecha": "2025-07-10",
    "lla_afirm": 0,
-   "lla_neg": 1,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Eliminación de fideicomisos y fondos nacionales. Modificación de la distribución del Impuesto a los Combustibles Líquidos.",
-   "v": 2
+   "v": 3
   },
   "2563": {
    "afirmativos": 56,
    "afirmativos_encabezado": 56,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "S-1168/25-PL"
    ],
    "fecha": "2025-07-10",
    "lla_afirm": 0,
-   "lla_neg": 1,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Distribución automática del Fondo de los Aportes del Tesoro Nacional.",
-   "v": 2
+   "v": 3
   },
   "2564": {
    "afirmativos": 70,
    "afirmativos_encabezado": 70,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-08-21",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5072,129 +5072,129 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para promover a grado inmediato superior a personal militar superior de la Armada y de la Fuerza Aérea Argentina.",
-   "v": 2
+   "v": 3
   },
   "2565": {
    "afirmativos": 9,
    "afirmativos_encabezado": 9,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [
     "PE-95/25-DC"
    ],
    "fecha": "2025-08-21",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 6,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Rechazo del decreto de facultades delegadas Nº 462/25 del Poder Ejecutivo Nacional, en los términos de la ley 26.122.",
-   "v": 2
+   "v": 3
   },
   "2566": {
    "afirmativos": 13,
    "afirmativos_encabezado": 13,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [
     "PE-43/25-DC"
    ],
    "fecha": "2025-08-21",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 6,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Rechazo del decreto de facultades delegadas Nº 345/25 del Poder Ejecutivo Nacional, en los términos de la ley 26.122.",
-   "v": 2
+   "v": 3
   },
   "2567": {
    "afirmativos": 12,
    "afirmativos_encabezado": 12,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [
     "PE-44/25-DC"
    ],
    "fecha": "2025-08-21",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 6,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Rechazo del decreto de facultades delegadas Nº 351/25 del Poder Ejecutivo Nacional, en los términos de la ley 26.122.",
-   "v": 2
+   "v": 3
   },
   "2568": {
    "afirmativos": 13,
    "afirmativos_encabezado": 13,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [
     "PE-39/25-DC"
    ],
    "fecha": "2025-08-21",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 6,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Decreto de Necesidad de Urgencia Nº 340/25 del Poder Ejecutivo Nacional, en los términos de la ley 26.122.",
-   "v": 2
+   "v": 3
   },
   "2569": {
    "afirmativos": 10,
    "afirmativos_encabezado": 10,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [
     "PE-94/25-DC"
    ],
    "fecha": "2025-08-21",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 6,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Rechazo del decreto de facultades delegadas Nº 461/25 del Poder Ejecutivo Nacional, en los términos de la ley 26.122.",
-   "v": 2
+   "v": 3
   },
   "2570": {
    "afirmativos": 58,
    "afirmativos_encabezado": 58,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-08-21",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 424/2025"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del proyecto sobre financiamiento de la educación universitaria y recomposición del salario docente.",
-   "v": 2
+   "v": 3
   },
   "2571": {
    "afirmativos": 58,
    "afirmativos_encabezado": 58,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
     "CD-7/25-PL"
    ],
    "fecha": "2025-08-21",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 424/2025"
@@ -5202,39 +5202,39 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Financiamiento de la educación universitaria y recomposición del salario docente.",
-   "v": 2
+   "v": 3
   },
   "2572": {
    "afirmativos": 60,
    "afirmativos_encabezado": 60,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-08-21",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 425/2025"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del proyecto sobre emergencia sanitaria de la salud pediátrica y de los residentes nacionales de salud.",
-   "v": 2
+   "v": 3
   },
   "2574": {
    "afirmativos": 62,
    "afirmativos_encabezado": 62,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [],
    "expedientes_od": [
     "CD-8/25-PL"
    ],
    "fecha": "2025-08-21",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 425/2025"
@@ -5242,49 +5242,49 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Emergencia sanitaria de la salud pediátrica y de los residentes nacionales de salud.",
-   "v": 2
+   "v": 3
   },
   "2575": {
    "afirmativos": 62,
    "afirmativos_encabezado": 62,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [
     "CD-16/25-CD"
    ],
    "fecha": "2025-09-04",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas de la insistencia en la ley 27.793 que declara la emergencia en discapacidad.",
-   "v": 2
+   "v": 3
   },
   "2576": {
    "afirmativos": 63,
    "afirmativos_encabezado": 63,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [
     "CD-16/25-CD"
    ],
    "fecha": "2025-09-04",
-   "lla_afirm": 1,
-   "lla_neg": 7,
+   "lla_afirm": 0,
+   "lla_neg": 5,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Insistencia en la ley 27.793 que declara la emergencia en discapacidad.",
-   "v": 2
+   "v": 3
   },
   "2577": {
    "afirmativos": 56,
    "afirmativos_encabezado": 56,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL",
    "expedientes": [
     "S-174/24-PL",
@@ -5296,7 +5296,7 @@
    ],
    "fecha": "2025-09-04",
    "lla_afirm": 0,
-   "lla_neg": 8,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 428/2025"
@@ -5304,109 +5304,109 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del régimen legal de los decretos de necesidad y urgencia, delegación legislativa y de promulgación parcial de las leyes.",
-   "v": 2
+   "v": 3
   },
   "2578": {
    "afirmativos": 56,
    "afirmativos_encabezado": 56,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-09-04",
    "lla_afirm": 0,
-   "lla_neg": 8,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 428/2025"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del régimen legal de los decretos de necesidad y urgencia, delegación legislativa y de promulgación parcial de las leyes. Artículos 1, 2 y 3.",
-   "v": 2
+   "v": 3
   },
   "2579": {
    "afirmativos": 54,
    "afirmativos_encabezado": 54,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-09-04",
    "lla_afirm": 0,
-   "lla_neg": 8,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 428/2025"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del régimen legal de los decretos de necesidad y urgencia, delegación legislativa y de promulgación parcial de las leyes. Artículo 4.",
-   "v": 2
+   "v": 3
   },
   "2580": {
    "afirmativos": 54,
    "afirmativos_encabezado": 54,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-09-04",
    "lla_afirm": 0,
-   "lla_neg": 8,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [
     "O.D. 428/2025"
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del régimen legal de los decretos de necesidad y urgencia, delegación legislativa y de promulgación parcial de las leyes. Artículos 5 y 6.",
-   "v": 2
+   "v": 3
   },
   "2581": {
    "afirmativos": 59,
    "afirmativos_encabezado": 59,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [
     "PE-120/25-DC"
    ],
    "fecha": "2025-09-18",
    "lla_afirm": 0,
-   "lla_neg": 8,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas de la insistencia en la ley 27.794 de distribución automática del Fondo de los Aportes del Tesoro Nacional.",
-   "v": 2
+   "v": 3
   },
   "2582": {
    "afirmativos": 59,
    "afirmativos_encabezado": 59,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "PE-120/25-DC"
    ],
    "fecha": "2025-09-18",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Insistencia en la ley 27.794 de distribución automática del Fondo de los Aportes del Tesoro Nacional.",
-   "v": 2
+   "v": 3
   },
   "2583": {
    "afirmativos": 70,
    "afirmativos_encabezado": 70,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "S-1546/24-PL"
    ],
    "fecha": "2025-09-18",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5415,20 +5415,20 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Incorporación de la atrofia muscular espinal (AME) al Régimen para la detección y posterior tratamiento de determinadas patologías en el recién nacido.",
-   "v": 2
+   "v": 3
   },
   "2584": {
    "afirmativos": 69,
    "afirmativos_encabezado": 69,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "CD-42/23-PL"
    ],
    "fecha": "2025-09-18",
-   "lla_afirm": 8,
-   "lla_neg": 1,
+   "lla_afirm": 6,
+   "lla_neg": 0,
    "n_filas": 72,
    "ods": [
     "O.D. 194/2024"
@@ -5436,13 +5436,13 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de calidad y seguridad sanitaria (Ley Nicolás).",
-   "v": 2
+   "v": 3
   },
   "2585": {
    "afirmativos": 66,
    "afirmativos_encabezado": 66,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL",
    "expedientes": [
     "S-1029/24-PL",
@@ -5450,7 +5450,7 @@
     "S-1506/23-PL"
    ],
    "fecha": "2025-09-18",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5459,17 +5459,17 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Reforma del Código Penal de la Nación en materia de siniestros viales.",
-   "v": 2
+   "v": 3
   },
   "2586": {
    "afirmativos": 53,
    "afirmativos_encabezado": 53,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-09-18",
-   "lla_afirm": 5,
+   "lla_afirm": 3,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5477,17 +5477,17 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Reforma del Código Penal de la Nación en materia de siniestros viales. Artículo 1.",
-   "v": 2
+   "v": 3
   },
   "2587": {
    "afirmativos": 59,
    "afirmativos_encabezado": 59,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN PARTICULAR",
    "expedientes": [],
    "fecha": "2025-09-18",
-   "lla_afirm": 7,
+   "lla_afirm": 4,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5495,13 +5495,13 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Reforma del Código Penal de la Nación en materia de siniestros viales. Artículos 2, 3, 4 y 5.",
-   "v": 2
+   "v": 3
   },
   "2588": {
    "afirmativos": 59,
    "afirmativos_encabezado": 59,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL",
    "expedientes": [
     "S-88/24-PL",
@@ -5510,7 +5510,7 @@
     "S-681/25-PL"
    ],
    "fecha": "2025-09-18",
-   "lla_afirm": 7,
+   "lla_afirm": 5,
    "lla_neg": 1,
    "n_filas": 72,
    "ods": [
@@ -5522,69 +5522,69 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de Monumentos Históricos Nacionales en las provincias de Río Negro, Tucumán y La Pampa.",
-   "v": 2
+   "v": 3
   },
   "2589": {
    "afirmativos": 58,
    "afirmativos_encabezado": 58,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-10-02",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del rechazo al decreto 681/25 del Poder Ejecutivo Nacional por el cual suspende la ejecución de la insistida ley 27.793 de emergencia nacional en discapacidad.",
-   "v": 2
+   "v": 3
   },
   "2590": {
    "afirmativos": 61,
    "afirmativos_encabezado": 61,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [],
    "fecha": "2025-10-02",
-   "lla_afirm": 1,
+   "lla_afirm": 0,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas de la declaración como lugar histórico, estratégico y no enajenable del terreno ocupado por el Regimiento de Infantería N° 1 \"Patricios\".",
-   "v": 2
+   "v": 3
   },
   "2591": {
    "afirmativos": 40,
    "afirmativos_encabezado": 40,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [
     "S-1680/25-PL"
    ],
    "fecha": "2025-10-02",
    "lla_afirm": 0,
-   "lla_neg": 9,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas de la declaración de interés público y estratégico no enajenable el Desarrollo Nuclear Argentino.",
-   "v": 2
+   "v": 3
   },
   "2592": {
    "afirmativos": 67,
    "afirmativos_encabezado": 67,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "PE-114/25-AC"
    ],
    "fecha": "2025-10-02",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5592,127 +5592,127 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para posibilitar un nuevo nombramiento de la vocal de la Cámara Federal de Apelaciones de Posadas, provincia de Misiones, a la doctora Mirta Delia Tyden.",
-   "v": 2
+   "v": 3
   },
   "2593": {
    "afirmativos": 65,
    "afirmativos_encabezado": 65,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [
     "S-1431/25-PR"
    ],
    "fecha": "2025-10-02",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del régimen de retiro anticipado para empleados legislativos.",
-   "v": 2
+   "v": 3
   },
   "2594": {
    "afirmativos": 66,
    "afirmativos_encabezado": 66,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "S-1431/25-PR"
    ],
    "fecha": "2025-10-02",
-   "lla_afirm": 9,
+   "lla_afirm": 6,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas del régimen de retiro anticipado para empleados legislativos.",
-   "v": 2
+   "v": 3
   },
   "2595": {
    "afirmativos": 62,
    "afirmativos_encabezado": 62,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [
     "CD-19/25-CD"
    ],
    "fecha": "2025-10-02",
-   "lla_afirm": 1,
-   "lla_neg": 7,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas sobre la insistencia en la sanción del proyecto de ley registrado bajo el N° 27.796, que fuera vetado por el Poder Ejecutivo Nacional, que declara la Emergencia Sanitaria de la Salud Pediátrica y de las Residencias Nacionales en Salud.",
-   "v": 2
+   "v": 3
   },
   "2596": {
    "afirmativos": 61,
    "afirmativos_encabezado": 61,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "HABILITACIÓN TRAT SOBRE TABLAS",
    "expedientes": [
     "CD-20/25-CD"
    ],
    "fecha": "2025-10-02",
-   "lla_afirm": 1,
-   "lla_neg": 8,
+   "lla_afirm": 0,
+   "lla_neg": 6,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación del tratamiento sobre tablas sobre la insistencia en la sanción del proyecto de ley registrado bajo el N° 27.795, que fuera vetado por el Poder Ejecutivo Nacional, de Financiamiento de la Educación Universitaria y Recomposición del Salario Docente.",
-   "v": 2
+   "v": 3
   },
   "2597": {
    "afirmativos": 59,
    "afirmativos_encabezado": 59,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [
     "CD-19/25-CD"
    ],
    "fecha": "2025-10-02",
-   "lla_afirm": 1,
-   "lla_neg": 7,
+   "lla_afirm": 0,
+   "lla_neg": 5,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Insistencia en la sanción original del proyecto de ley registrado bajo el número 27.796, que declara la Emergencia Sanitaria de la Salud Pediátrica y de las Residencias Nacionales en Salud.",
-   "v": 2
+   "v": 3
   },
   "2598": {
    "afirmativos": 58,
    "afirmativos_encabezado": 58,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "OTRA",
    "expedientes": [
     "CD-20/25-CD"
    ],
    "fecha": "2025-10-02",
-   "lla_afirm": 1,
-   "lla_neg": 7,
+   "lla_afirm": 0,
+   "lla_neg": 5,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Insistencia en la sanción original del proyecto de ley registrado bajo el número 27.795, que fuera vetado totalmente por el Poder Ejecutivo Nacional, de Financiamiento de la Educación Universitaria y Recomposición del Salario Docente.",
-   "v": 2
+   "v": 3
   },
   "2599": {
    "afirmativos": 65,
    "afirmativos_encabezado": 65,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "S-2122/24-PL"
    ],
    "fecha": "2025-10-02",
-   "lla_afirm": 6,
+   "lla_afirm": 4,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5721,20 +5721,20 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de Fiesta Nacional a la Fiesta de los Canales de Riego, en la provincia de Río Negro. Proyecto.",
-   "v": 2
+   "v": 3
   },
   "2600": {
    "afirmativos": 61,
    "afirmativos_encabezado": 61,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "S-72/25-PL",
     "S-75/25-PL"
    ],
    "fecha": "2025-10-02",
-   "lla_afirm": 5,
+   "lla_afirm": 4,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5743,31 +5743,31 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Establecimiento de normas para la facilitación de búsqueda de personas extraviadas o desaparecidas y creación del Sistema de Alerta Rápida Sofía.",
-   "v": 2
+   "v": 3
   },
   "2601": {
    "afirmativos": 54,
    "afirmativos_encabezado": 54,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "S-1692/25-PD"
    ],
    "fecha": "2025-10-02",
    "lla_afirm": 0,
-   "lla_neg": 6,
+   "lla_neg": 5,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Rechazo al decreto 681/25 del Poder Ejecutivo Nacional por el cual se suspende la ejecución de la insistida ley 27.793 de Emergencia Nacional en Discapacidad.",
-   "v": 2
+   "v": 3
   },
   "2602": {
    "afirmativos": 56,
    "afirmativos_encabezado": 56,
    "bancas_camara": 72,
-   "bancas_lla": 9,
+   "bancas_lla": 6,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "S-1720/25-PL"
@@ -5780,51 +5780,51 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración como lugar histórico, estratégico y no enajenable del terreno ocupado por el Regimiento de Infantería N° 1 \"Patricios\".",
-   "v": 2
+   "v": 3
   },
   "2605": {
    "afirmativos": 43,
    "afirmativos_encabezado": 43,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "OTRA",
    "expedientes": [],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Aprobación del Acta de Labor Parlamentaria del 16 de diciembre de 2025.",
-   "v": 2
+   "v": 3
   },
   "2606": {
    "afirmativos": 39,
    "afirmativos_encabezado": 39,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "OTRA",
    "expedientes": [],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Aprobación del Acta de Labor Parlamentaria del 26 de diciembre de 2025.",
-   "v": 2
+   "v": 3
   },
   "2607": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN GENERAL",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5833,19 +5833,19 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2608": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5853,19 +5853,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026. Artículos 1° a 10.",
-   "v": 2
+   "v": 3
   },
   "2609": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5873,19 +5873,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2610": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5893,19 +5893,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2611": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5913,19 +5913,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2612": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5933,19 +5933,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2613": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5953,19 +5953,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2614": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5973,19 +5973,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2615": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -5993,19 +5993,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2616": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6013,19 +6013,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2617": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6033,19 +6033,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2618": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6053,19 +6053,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2619": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6073,19 +6073,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026.",
-   "v": 2
+   "v": 3
   },
   "2620": {
    "afirmativos": 46,
    "afirmativos_encabezado": 46,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "CD-30/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6093,39 +6093,39 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Presupuesto General de la Administración Nacional para el ejercicio fiscal del año 2026",
-   "v": 2
+   "v": 3
   },
   "2621": {
    "afirmativos": 27,
    "afirmativos_encabezado": 27,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "MOCIÓN DE ORDEN",
    "expedientes": [
     "CD-31/25-PL"
    ],
    "fecha": "2025-12-26",
    "lla_afirm": 0,
-   "lla_neg": 21,
+   "lla_neg": 20,
    "n_filas": 72,
    "ods": [
     "O.D. 701/2025"
    ],
    "resultado": "NEGATIVO",
    "titulo": "Moción de orden a fin de establecer la vuelta a comisión del OD 701/25.",
-   "v": 2
+   "v": 3
   },
   "2622": {
    "afirmativos": 43,
    "afirmativos_encabezado": 43,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN GENERAL Y EN PARTICULAR",
    "expedientes": [
     "CD-31/25-PL"
    ],
    "fecha": "2025-12-26",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6134,19 +6134,19 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Ley de Inocencia Fiscal.",
-   "v": 2
+   "v": 3
   },
   "2623": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN GENERAL",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6155,19 +6155,19 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral.",
-   "v": 2
+   "v": 3
   },
   "2624": {
    "afirmativos": 41,
    "afirmativos_encabezado": 41,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6175,19 +6175,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Titulo I.",
-   "v": 2
+   "v": 3
   },
   "2625": {
    "afirmativos": 41,
    "afirmativos_encabezado": 41,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6195,19 +6195,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título II.",
-   "v": 2
+   "v": 3
   },
   "2626": {
    "afirmativos": 44,
    "afirmativos_encabezado": 44,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6215,19 +6215,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título III.",
-   "v": 2
+   "v": 3
   },
   "2627": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6235,19 +6235,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título IV.",
-   "v": 2
+   "v": 3
   },
   "2628": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 20,
+   "lla_afirm": 19,
    "lla_neg": 1,
    "n_filas": 72,
    "ods": [
@@ -6255,19 +6255,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título V.",
-   "v": 2
+   "v": 3
   },
   "2629": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6275,19 +6275,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título VI.",
-   "v": 2
+   "v": 3
   },
   "2630": {
    "afirmativos": 41,
    "afirmativos_encabezado": 41,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6295,19 +6295,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título VII.",
-   "v": 2
+   "v": 3
   },
   "2631": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6315,19 +6315,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título VIII.",
-   "v": 2
+   "v": 3
   },
   "2632": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6335,19 +6335,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título IX.",
-   "v": 2
+   "v": 3
   },
   "2633": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6355,19 +6355,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título X.",
-   "v": 2
+   "v": 3
   },
   "2634": {
    "afirmativos": 43,
    "afirmativos_encabezado": 43,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6375,19 +6375,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XI.",
-   "v": 2
+   "v": 3
   },
   "2635": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6395,19 +6395,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XII.",
-   "v": 2
+   "v": 3
   },
   "2636": {
    "afirmativos": 43,
    "afirmativos_encabezado": 43,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6415,19 +6415,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XIII.",
-   "v": 2
+   "v": 3
   },
   "2637": {
    "afirmativos": 40,
    "afirmativos_encabezado": 40,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6435,19 +6435,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XIV.",
-   "v": 2
+   "v": 3
   },
   "2638": {
    "afirmativos": 41,
    "afirmativos_encabezado": 41,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6455,19 +6455,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XV.",
-   "v": 2
+   "v": 3
   },
   "2639": {
    "afirmativos": 43,
    "afirmativos_encabezado": 43,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6475,19 +6475,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XVI.",
-   "v": 2
+   "v": 3
   },
   "2640": {
    "afirmativos": 45,
    "afirmativos_encabezado": 45,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6495,19 +6495,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XVII.",
-   "v": 2
+   "v": 3
   },
   "2641": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6515,19 +6515,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XVIII.",
-   "v": 2
+   "v": 3
   },
   "2642": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6535,19 +6535,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XIX.",
-   "v": 2
+   "v": 3
   },
   "2643": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6555,19 +6555,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XX.",
-   "v": 2
+   "v": 3
   },
   "2644": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6575,19 +6575,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XXI.",
-   "v": 2
+   "v": 3
   },
   "2645": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6595,19 +6595,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XXII.",
-   "v": 2
+   "v": 3
   },
   "2646": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6615,19 +6615,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XXIII.",
-   "v": 2
+   "v": 3
   },
   "2647": {
    "afirmativos": 42,
    "afirmativos_encabezado": 42,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6635,19 +6635,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XXIV.",
-   "v": 2
+   "v": 3
   },
   "2648": {
    "afirmativos": 40,
    "afirmativos_encabezado": 40,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6655,19 +6655,19 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XXV.",
-   "v": 2
+   "v": 3
   },
   "2649": {
    "afirmativos": 38,
    "afirmativos_encabezado": 38,
    "bancas_camara": 72,
-   "bancas_lla": 21,
+   "bancas_lla": 20,
    "etapa": "EN PARTICULAR",
    "expedientes": [
     "PE-159/25-PL"
    ],
    "fecha": "2026-02-11",
-   "lla_afirm": 21,
+   "lla_afirm": 20,
    "lla_neg": 0,
    "n_filas": 72,
    "ods": [
@@ -6675,7 +6675,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modernización Laboral. Título XXVI.",
-   "v": 2
+   "v": 3
   },
   "2650": {
    "afirmativos": 45,
@@ -6691,7 +6691,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Designación de la senadora Carolina Moisés en la Vicepresidencia.",
-   "v": 2
+   "v": 3
   },
   "2651": {
    "afirmativos": 69,
@@ -6707,7 +6707,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Ratificación de secretarios y prosecretarios.",
-   "v": 2
+   "v": 3
   },
   "2654": {
    "afirmativos": 70,
@@ -6723,7 +6723,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Designación de auditores para la Auditoría General de la Nación.",
-   "v": 2
+   "v": 3
   },
   "2655": {
    "afirmativos": 38,
@@ -6743,7 +6743,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Pliego de Fernando Iglesias como embajador argentino ante Bélgica y la Unión Europea.",
-   "v": 2
+   "v": 3
   },
   "2656": {
    "afirmativos": 69,
@@ -6764,7 +6764,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo de Libre Comercio entre el Mercosur y la Unión Europea.",
-   "v": 2
+   "v": 3
   },
   "2657": {
    "afirmativos": 40,
@@ -6785,7 +6785,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Ley 26.639 de Presupuestos Mínimos para la Protección de Glaciares y del Ambiente Periglacial.",
-   "v": 2
+   "v": 3
   },
   "2658": {
    "afirmativos": 41,
@@ -6805,7 +6805,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Ley 26.639 de Presupuestos Mínimos para la Protección de Glaciares y del Ambiente Periglacial. Art. 1°",
-   "v": 2
+   "v": 3
   },
   "2659": {
    "afirmativos": 40,
@@ -6825,7 +6825,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Ley 26.639 de Presupuestos Mínimos para la Protección de Glaciares y del Ambiente Periglacial. Art. 2°",
-   "v": 2
+   "v": 3
   },
   "2660": {
    "afirmativos": 40,
@@ -6845,7 +6845,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Ley 26.639 de Presupuestos Mínimos para la Protección de Glaciares y del Ambiente Periglacial. Art. 3°",
-   "v": 2
+   "v": 3
   },
   "2661": {
    "afirmativos": 40,
@@ -6865,7 +6865,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Ley 26.639 de Presupuestos Mínimos para la Protección de Glaciares y del Ambiente Periglacial. Art. 4°",
-   "v": 2
+   "v": 3
   },
   "2662": {
    "afirmativos": 40,
@@ -6885,7 +6885,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Ley 26.639 de Presupuestos Mínimos para la Protección de Glaciares y del Ambiente Periglacial. Art. 5°",
-   "v": 2
+   "v": 3
   },
   "2663": {
    "afirmativos": 40,
@@ -6905,7 +6905,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Ley 26.639 de Presupuestos Mínimos para la Protección de Glaciares y del Ambiente Periglacial. Art. 6°",
-   "v": 2
+   "v": 3
   },
   "2664": {
    "afirmativos": 40,
@@ -6925,7 +6925,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Ley 26.639 de Presupuestos Mínimos para la Protección de Glaciares y del Ambiente Periglacial. Art. 7° y 8°",
-   "v": 2
+   "v": 3
   },
   "2665": {
    "afirmativos": 44,
@@ -6946,7 +6946,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil.",
-   "v": 2
+   "v": 3
   },
   "2666": {
    "afirmativos": 44,
@@ -6966,7 +6966,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil. Capítulo I",
-   "v": 2
+   "v": 3
   },
   "2667": {
    "afirmativos": 44,
@@ -6986,7 +6986,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil. Capítulo II",
-   "v": 2
+   "v": 3
   },
   "2668": {
    "afirmativos": 44,
@@ -7006,7 +7006,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil. Capítulo III",
-   "v": 2
+   "v": 3
   },
   "2669": {
    "afirmativos": 44,
@@ -7026,7 +7026,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil. Capítulo IV",
-   "v": 2
+   "v": 3
   },
   "2670": {
    "afirmativos": 44,
@@ -7046,7 +7046,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil. Capítulo V",
-   "v": 2
+   "v": 3
   },
   "2671": {
    "afirmativos": 44,
@@ -7066,7 +7066,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil. Capítulo VI",
-   "v": 2
+   "v": 3
   },
   "2672": {
    "afirmativos": 44,
@@ -7086,7 +7086,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil. Capítulo VII",
-   "v": 2
+   "v": 3
   },
   "2673": {
    "afirmativos": 44,
@@ -7106,7 +7106,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil. Capítulo VIII",
-   "v": 2
+   "v": 3
   },
   "2674": {
    "afirmativos": 44,
@@ -7126,7 +7126,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil. Capítulo IX",
-   "v": 2
+   "v": 3
   },
   "2675": {
    "afirmativos": 44,
@@ -7146,7 +7146,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil. Capítulo X",
-   "v": 2
+   "v": 3
   },
   "2676": {
    "afirmativos": 44,
@@ -7166,7 +7166,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Régimen Penal Juvenil. Capítulo XI",
-   "v": 2
+   "v": 3
   },
   "2677": {
    "afirmativos": 29,
@@ -7182,7 +7182,7 @@
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Moción de orden del senador Recalde para el retorno a comisión del expediente PE-159/25.",
-   "v": 2
+   "v": 3
   },
   "2678": {
    "afirmativos": 42,
@@ -7203,7 +7203,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Aceptación de las modificaciones introducidas por la Cámara de Diputados al proyecto de Modernización Laboral.",
-   "v": 2
+   "v": 3
   },
   "2679": {
    "afirmativos": 68,
@@ -7219,7 +7219,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo con la República de Austria para eliminar la doble imposición y prevenir la evasión y elusión fiscal en impuestos sobre la renta y el patrimonio.",
-   "v": 2
+   "v": 3
   },
   "2680": {
    "afirmativos": 68,
@@ -7240,7 +7240,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Protocolo de enmienda al convenio con Francia para eliminar la doble imposición y prevenir la evasión y elusión fiscal en impuestos sobre la renta y el patrimonio.",
-   "v": 2
+   "v": 3
   },
   "2681": {
    "afirmativos": 68,
@@ -7261,7 +7261,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo de Roma, sobre medidas destinadas a prevenir, desalentar y eliminar la pesca ilegal, no declarada y no reglamentada.",
-   "v": 2
+   "v": 3
   },
   "2682": {
    "afirmativos": 69,
@@ -7279,7 +7279,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de los artículos 22 bis y 123 bis del Reglamento del Senado.",
-   "v": 2
+   "v": 3
   },
   "2683": {
    "afirmativos": 49,
@@ -7295,7 +7295,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración con motivo del 50º aniversario del golpe de Estado que dio inicio a la última dictadura cívico-militar a conmemorarse el próximo 24 de marzo.",
-   "v": 2
+   "v": 3
   },
   "2684": {
    "afirmativos": 70,
@@ -7320,7 +7320,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para promover a grado inmediato superior a personal de las Fuerzas Armadas.",
-   "v": 2
+   "v": 3
   },
   "2685": {
    "afirmativos": 72,
@@ -7340,7 +7340,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para la designación de cargos en la Autoridad Nacional de la Competencia.",
-   "v": 2
+   "v": 3
   },
   "2686": {
    "afirmativos": 45,
@@ -7360,7 +7360,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designar embajadora extraordinaria y plenipotenciaria en Canadá a Carmen Lucila Crexell.",
-   "v": 2
+   "v": 3
   },
   "2688": {
    "afirmativos": 45,
@@ -7376,7 +7376,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Designación de Patricio Finochietto como prosecretario de Coordinación Operativa.",
-   "v": 2
+   "v": 3
   },
   "2689": {
    "afirmativos": 69,
@@ -7394,7 +7394,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Reconocimiento a la labor del Equipo Argentino de Antropología Forense, al Instituto de Medicina Forense del Poder Judicial de Córdoba y al Equipo de Geología de la Universidad Nacional de Río Cuarto.",
-   "v": 2
+   "v": 3
   },
   "2690": {
    "afirmativos": 35,
@@ -7412,7 +7412,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Moción de preferencia para el tratamieto del proyecto S-1287/25-PL.",
-   "v": 2
+   "v": 3
   },
   "2691": {
    "afirmativos": 58,
@@ -7432,7 +7432,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Prórroga por cinco años del mandato de Carlos Alberto Mahiques como vocal de la Cámara Federal de Casación Penal.",
-   "v": 2
+   "v": 3
   },
   "2692": {
    "afirmativos": 65,
@@ -7457,7 +7457,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Tratados Internacionales con Singapur, Suiza y la República de San Marino que refieren al Tratado de Libre Comercio entre el Mercosur.",
-   "v": 2
+   "v": 3
   },
   "2693": {
    "afirmativos": 40,
@@ -7478,7 +7478,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Regularización de armas de fuego y prórroga del Programa Nacional de Entrega Voluntaria de Armas de Fuego.",
-   "v": 2
+   "v": 3
   },
   "2694": {
    "afirmativos": 40,
@@ -7498,7 +7498,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Regularización de armas de fuego y prórroga del Programa Nacional de Entrega Voluntaria de Armas de Fuego.",
-   "v": 2
+   "v": 3
   },
   "2695": {
    "afirmativos": 66,
@@ -7518,7 +7518,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Regularización de armas de fuego y prórroga del Programa Nacional de Entrega Voluntaria de Armas de Fuego.",
-   "v": 2
+   "v": 3
   },
   "2696": {
    "afirmativos": 40,
@@ -7538,7 +7538,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Regularización de armas de fuego y prórroga del Programa Nacional de Entrega Voluntaria de Armas de Fuego.",
-   "v": 2
+   "v": 3
   },
   "2763": {
    "afirmativos": 64,
@@ -7554,7 +7554,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Habilitación de tratamiento sobre tablas de los dictámenes de la Comisión de Acuerdos.",
-   "v": 2
+   "v": 3
   },
   "2764": {
    "afirmativos": 64,
@@ -7584,7 +7584,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designaciones en el Poder Judicial, Ministerio Público Fiscal y Ministerio Público de la Defensa de la Nación.",
-   "v": 2
+   "v": 3
   },
   "2765": {
    "afirmativos": 42,
@@ -7602,7 +7602,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designar a la Jueza de Cámara del Tribunal Oral en lo Criminal Federal N°3 de La Plata María Julia Sosa.",
-   "v": 2
+   "v": 3
   },
   "2766": {
    "afirmativos": 64,
@@ -7666,7 +7666,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designaciones en el Poder Judicial, Ministerio Público Fiscal y Ministerio Público de la Defensa de la Nación.",
-   "v": 2
+   "v": 3
   },
   "2767": {
    "afirmativos": 44,
@@ -7684,7 +7684,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designar a la Juez del Tribunal Federal de Juicio de Santa Fe a Emilio Rosatti.",
-   "v": 2
+   "v": 3
   },
   "2768": {
    "afirmativos": 64,
@@ -7712,7 +7712,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designaciones en el Poder Judicial, Ministerio Público Fiscal y Ministerio Público de la Defensa de la Nación.",
-   "v": 2
+   "v": 3
   },
   "2769": {
    "afirmativos": 44,
@@ -7730,7 +7730,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designar a la Jueza de Cámara del Tribunal Oral en lo Criminal Federal N°3 de La Plata a María Verónica Michelli.",
-   "v": 2
+   "v": 3
   },
   "2770": {
    "afirmativos": 40,
@@ -7752,7 +7752,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo de conciliación con acreedores de títulos de deuda.",
-   "v": 2
+   "v": 3
   },
   "2771": {
    "afirmativos": 61,
@@ -7777,7 +7777,7 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Creación de una nueva sala en la Cámara Federal de Apelaciones de Mar del Plata. Reorganización y ampliación de la Cámara Federal de Apelaciones de Tucumán.",
-   "v": 2
+   "v": 3
   },
   "2789": {
    "afirmativos": 67,
@@ -7807,7 +7807,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdos para el ascenso de diplomáticos pertenecientes al Ministerio de Relaciones Exteriores, Comercio Internacional y Culto.",
-   "v": 2
+   "v": 3
   },
   "2790": {
    "afirmativos": 65,
@@ -7879,7 +7879,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designaciones en el Poder Judicial, Ministerio Público Fiscal y Ministerio Público de la Defensa de la Nación.",
-   "v": 2
+   "v": 3
   },
   "2791": {
    "afirmativos": 35,
@@ -7899,7 +7899,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para posibilitar un nuevo nombramiento del Vocal de la Cámara Nacional de Apelaciones del Trabajo de la Capital Federal, Sala VIII, al Dr. Víctor Arturo Pesino.",
-   "v": 2
+   "v": 3
   },
   "2792": {
    "afirmativos": 40,
@@ -7919,7 +7919,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designar Vocal de la Cámara Nacional de Apelaciones en lo Comercial de la Capital Federal, Sala C, al Dr. Javier Jorge Cosentino.",
-   "v": 2
+   "v": 3
   },
   "2793": {
    "afirmativos": 67,
@@ -7941,7 +7941,7 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de la ciudad de San Miguel de Tucumán como capital simbólica de la República Argentina, el 9 de julio de cada año.",
-   "v": 2
+   "v": 3
   },
   "2794": {
    "afirmativos": 63,
@@ -7957,7 +7957,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Moción para pasar a un cuarto intermedio hasta el 6 de agosto para el tratamiento del proyecto de Ley de Inviolabilidad de la Propiedad Privada.",
-   "v": 2
+   "v": 3
   },
   "2795": {
    "afirmativos": 31,
@@ -7975,7 +7975,7 @@
    ],
    "resultado": "NEGATIVO",
    "titulo": "Moción de orden para el retorno a comisión del expediente PE-13/26-PL.",
-   "v": 2
+   "v": 3
   },
   "2796": {
    "afirmativos": 37,
@@ -7996,7 +7996,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Inviolabilidad de la Propiedad Privada.",
-   "v": 2
+   "v": 3
   },
   "2797": {
    "afirmativos": 37,
@@ -8016,7 +8016,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Inviolabilidad de la Propiedad Privada. Capítulo I.",
-   "v": 2
+   "v": 3
   },
   "2798": {
    "afirmativos": 36,
@@ -8036,7 +8036,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Inviolabilidad de la Propiedad Privada. Capítulo II.",
-   "v": 2
+   "v": 3
   },
   "2799": {
    "afirmativos": 37,
@@ -8056,7 +8056,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Inviolabilidad de la Propiedad Privada. Capítulo V.",
-   "v": 2
+   "v": 3
   },
   "2800": {
    "afirmativos": 37,
@@ -8076,7 +8076,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Inviolabilidad de la Propiedad Privada. Capítulo VI.",
-   "v": 2
+   "v": 3
   },
   "2801": {
    "afirmativos": 66,
@@ -8159,7 +8159,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designaciones en el Poder Judicial y el Ministerio Público Fiscal",
-   "v": 2
+   "v": 3
   },
   "2802": {
    "afirmativos": 44,
@@ -8177,7 +8177,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designar Vocal de la Cámara Nacional de Apelaciones en lo Criminal y Correccional Federal de la Capital Federal, Sala I, a Pablo Daniel Bertuzzi.",
-   "v": 2
+   "v": 3
   },
   "2803": {
    "afirmativos": 65,
@@ -8207,7 +8207,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Tratado con Ucrania sobre Traslado de Personas Sentenciadas.",
-   "v": 2
+   "v": 3
   },
   "2804": {
    "afirmativos": 65,
@@ -8234,7 +8234,7 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración como Fiesta Nacional al Festival del Membrillo, Departamento Ambato, provincia de Catamarca.",
-   "v": 2
+   "v": 3
   },
   "2805": {
    "afirmativos": 18,
@@ -8252,7 +8252,7 @@
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Moción para el tratamiento sobre tablas del expediente S-1563/26.",
-   "v": 2
+   "v": 3
   },
   "2806": {
    "afirmativos": 66,
@@ -8272,7 +8272,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Acuerdo para designaciones en el Poder Judicial.",
-   "v": 2
+   "v": 3
   },
   "2807": {
    "afirmativos": 44,
@@ -8293,7 +8293,7 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Traspaso de la Justicia Nacional a la Ciudad Autónoma de Buenos Aires.",
-   "v": 2
+   "v": 3
   },
   "2808": {
    "afirmativos": 44,
@@ -8315,7 +8315,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Inocencia Fiscal II.",
-   "v": 2
+   "v": 3
   },
   "2809": {
    "afirmativos": 44,
@@ -8333,7 +8333,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Inocencia Fiscal II. Título I.",
-   "v": 2
+   "v": 3
   },
   "2810": {
    "afirmativos": 44,
@@ -8351,7 +8351,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Inocencia Fiscal II. Título II.",
-   "v": 2
+   "v": 3
   },
   "2811": {
    "afirmativos": 44,
@@ -8369,7 +8369,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Inocencia Fiscal II. Título III.",
-   "v": 2
+   "v": 3
   },
   "2812": {
    "afirmativos": 44,
@@ -8385,7 +8385,7 @@
    "ods": [],
    "resultado": "AFIRMATIVO",
    "titulo": "Inocencia Fiscal II. Título IV.",
-   "v": 2
+   "v": 3
   },
   "2813": {
    "afirmativos": 64,
@@ -8414,7 +8414,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Designación de cónsules y vicecónsules honorarios.",
-   "v": 2
+   "v": 3
   },
   "2814": {
    "afirmativos": 57,
@@ -8436,7 +8436,7 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Reconocimiento a Héroes Nacionales.",
-   "v": 2
+   "v": 3
   },
   "2815": {
    "afirmativos": 58,
@@ -8458,7 +8458,7 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Declaración de Héroe Nacional al Brigadier Estanislao López.",
-   "v": 2
+   "v": 3
   },
   "2816": {
    "afirmativos": 60,
@@ -8480,7 +8480,7 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Institución de Día Nacional en Honor al Almirante Guillermo Brown.",
-   "v": 2
+   "v": 3
   },
   "2817": {
    "afirmativos": 59,
@@ -8502,7 +8502,7 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Creación del Parque Interjurisdiccional Marino Monte León",
-   "v": 2
+   "v": 3
   },
   "2818": {
    "afirmativos": 25,
@@ -8518,7 +8518,7 @@
    "ods": [],
    "resultado": "NEGATIVO",
    "titulo": "Moción de cuarto intermedio.",
-   "v": 2
+   "v": 3
   },
   "2819": {
    "afirmativos": 41,
@@ -8546,7 +8546,7 @@
    "origen_pe": false,
    "resultado": "AFIRMATIVO",
    "titulo": "Marco Regulatorio de Biocombustibles.",
-   "v": 2
+   "v": 3
   },
   "2820": {
    "afirmativos": 45,
@@ -8564,7 +8564,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Marco Regulatorio de Biocombustibles. Título I, capítulo I.",
-   "v": 2
+   "v": 3
   },
   "2821": {
    "afirmativos": 45,
@@ -8582,7 +8582,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Marco Regulatorio de Biocombustibles. Título I, capítulo II.",
-   "v": 2
+   "v": 3
   },
   "2822": {
    "afirmativos": 45,
@@ -8600,7 +8600,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Marco Regulatorio de Biocombustibles. Título I, capítulo III.",
-   "v": 2
+   "v": 3
   },
   "2823": {
    "afirmativos": 45,
@@ -8618,7 +8618,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Marco Regulatorio de Biocombustibles. Título I, capítulo IV.",
-   "v": 2
+   "v": 3
   },
   "2824": {
    "afirmativos": 47,
@@ -8636,7 +8636,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Marco Regulatorio de Biocombustibles. Título I, capítulo V.",
-   "v": 2
+   "v": 3
   },
   "2825": {
    "afirmativos": 45,
@@ -8654,7 +8654,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Marco Regulatorio de Biocombustibles. Título I, capítulo VI.",
-   "v": 2
+   "v": 3
   },
   "2826": {
    "afirmativos": 45,
@@ -8672,7 +8672,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Marco Regulatorio de Biocombustibles. Título I, capítulos VII a X.",
-   "v": 2
+   "v": 3
   },
   "2827": {
    "afirmativos": 45,
@@ -8690,7 +8690,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Marco Regulatorio de Biocombustibles. Título II.",
-   "v": 2
+   "v": 3
   },
   "2828": {
    "afirmativos": 45,
@@ -8708,7 +8708,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Marco Regulatorio de Biocombustibles. Título III.",
-   "v": 2
+   "v": 3
   },
   "2829": {
    "afirmativos": 46,
@@ -8730,7 +8730,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central.",
-   "v": 2
+   "v": 3
   },
   "2830": {
    "afirmativos": 43,
@@ -8748,7 +8748,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 1.",
-   "v": 2
+   "v": 3
   },
   "2831": {
    "afirmativos": 46,
@@ -8766,7 +8766,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 2.",
-   "v": 2
+   "v": 3
   },
   "2832": {
    "afirmativos": 66,
@@ -8784,7 +8784,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 3.",
-   "v": 2
+   "v": 3
   },
   "2833": {
    "afirmativos": 46,
@@ -8802,7 +8802,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 4.",
-   "v": 2
+   "v": 3
   },
   "2834": {
    "afirmativos": 46,
@@ -8820,7 +8820,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículos 5 y 6.",
-   "v": 2
+   "v": 3
   },
   "2835": {
    "afirmativos": 46,
@@ -8838,7 +8838,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 7.",
-   "v": 2
+   "v": 3
   },
   "2836": {
    "afirmativos": 46,
@@ -8856,7 +8856,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículos 8, 9, 10 y 11.",
-   "v": 2
+   "v": 3
   },
   "2837": {
    "afirmativos": 45,
@@ -8874,7 +8874,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 12.",
-   "v": 2
+   "v": 3
   },
   "2838": {
    "afirmativos": 42,
@@ -8892,7 +8892,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 13.",
-   "v": 2
+   "v": 3
   },
   "2839": {
    "afirmativos": 46,
@@ -8910,7 +8910,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 14.",
-   "v": 2
+   "v": 3
   },
   "2840": {
    "afirmativos": 46,
@@ -8928,7 +8928,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 15.",
-   "v": 2
+   "v": 3
   },
   "2841": {
    "afirmativos": 46,
@@ -8946,7 +8946,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículos 16 y 17.",
-   "v": 2
+   "v": 3
   },
   "2842": {
    "afirmativos": 46,
@@ -8964,7 +8964,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 18.",
-   "v": 2
+   "v": 3
   },
   "2843": {
    "afirmativos": 45,
@@ -8982,7 +8982,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 19.",
-   "v": 2
+   "v": 3
   },
   "2844": {
    "afirmativos": 45,
@@ -9000,7 +9000,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 21.",
-   "v": 2
+   "v": 3
   },
   "2845": {
    "afirmativos": 65,
@@ -9018,7 +9018,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 22.",
-   "v": 2
+   "v": 3
   },
   "2846": {
    "afirmativos": 38,
@@ -9041,7 +9041,7 @@
    "origen_pe": true,
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación del Régimen de Zonas Frías.",
-   "v": 2
+   "v": 3
   },
   "2847": {
    "afirmativos": 46,
@@ -9059,7 +9059,7 @@
    ],
    "resultado": "AFIRMATIVO",
    "titulo": "Modificación de la Carta Orgánica del Banco Central. Artículo 20.",
-   "v": 2
+   "v": 3
   }
  }
 }

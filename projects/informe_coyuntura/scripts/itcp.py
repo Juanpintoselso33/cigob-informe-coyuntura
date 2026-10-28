@@ -125,6 +125,11 @@ BANDAS_ITCP = {
         # cociente publicaría "el Ejecutivo domina la agenda" exactamente
         # cuando lo que pasó es que el Congreso dejó de sancionar. El cociente
         # no participa de este indicador.
+        #
+        # ADR-0398 (2026-10-28): no cuentan las leyes que el Ejecutivo vetó en
+        # su totalidad (registro de derrotas, ADR-0377), aunque el Congreso
+        # haya insistido. La pregunta pasa a ser «¿el Congreso sanciona leyes
+        # que el Gobierno acepta?»: más leyes, menos tensión. Bandas sin tocar.
         (74.0, INF, 100), (50.0, 74.0, 85), (35.0, 50.0, 65),
         (20.0, 35.0, 40), (-INF, 20.0, 10),
     ],
@@ -368,7 +373,15 @@ BANDAS_ITCP = {
         # que la ficha los declara convención y no ancla externa. Banda
         # simétrica a la de iaf_transferencias no sirve: con ±10 pp casi toda
         # la serie quedaría saturada en los extremos.
-        (30.0, INF, 100), (5.0, 30.0, 85), (-20.0, 5.0, 65), (-50.0, -20.0, 40), (-INF, -50.0, 10),
+        # REHECHO 2026-10-28 (ADR-0397): deja de ser variación interanual —que
+        # leía la base y no el nivel: tras el hundimiento de 2024 cualquier
+        # recuperación parcial daba +30%— y pasa a NIVEL real de los últimos 12
+        # meses contra el total real de 2023, como conflictividad_nacional
+        # (ADR-0390). Cortes de la historia previa al mandato: la variación
+        # interanual real de las 61 ventanas de 12 meses de nov-2018 a nov-2023
+        # (devengado desde nov-2017) tiene desvío de 35,9 pp, así que ±36 ≈ un
+        # desvío y ±72 ≈ dos. La banda del medio (−36 a +36) es «un año normal».
+        (72.0, INF, 100), (36.0, 72.0, 85), (-36.0, 36.0, 65), (-72.0, -36.0, 40), (-INF, -72.0, 10),
     ],
     "bloqueo_sostenido": [
         # FUERA DEL ÍNDICE Y DEL TABLERO desde 2026-09-16 (ADR-0330, corrige
@@ -408,6 +421,24 @@ BANDAS_ITCP = {
         (65.0, INF, 100), (45.0, 65.0, 85), (25.0, 45.0, 65), (10.0, 25.0, 40), (-INF, 10.0, 10),
     ],
     "alineamiento_senadores_prov": [
+        # ANCLAS MIXTAS desde 2026-10-28 (ADR-0402). El puntaje sale de
+        # ANCLAS_ITCP (25 → 10 · 50 → 65 · 77 → 100); esta tabla repite los
+        # mismos cortes con el puntaje de su ancla inferior, para el color y
+        # la ficha (misma convención que terminos_intercambio en el ITCM).
+        # 25 y 50 son conceptuales —un cuarto y la mitad de los votos de los
+        # senadores de otros bloques coinciden con el oficialismo— y 77 es la
+        # mediana de los tres gobiernos anteriores medidos igual, con el
+        # oficialismo de cada uno (Fernández de Kirchner 2012-2015, Macri
+        # 2015-2019, Fernández 2019-2023): 134 meses, mediana 77, media 77,7,
+        # desvío 11,3. La serie del mandato promedia unos 58. Las anclas de abajo
+        # (40/50/60/70) se calibraron con la serie del propio mandato, que
+        # está unos dos desvíos por debajo de esa historia: tomaban como
+        # normal lo que la historia muestra como bajo.
+        (77.0, INF, 100),
+        (50.0, 77.0, 65),
+        (25.0, 50.0, 10),
+        (-INF, 25.0, 10),
+        # Historia (reemplazada por ADR-0402):
         # RECALIBRADO 2026-07-09 con backfill real (ADR-0038): las anclas
         # 65/45/25/10 de abajo eran heredadas de gobernadores_alineamiento
         # (nunca validadas contra este indicador). Con 29 puntos mensuales
@@ -420,12 +451,8 @@ BANDAS_ITCP = {
         # banda, casi equidistribuido). Tramos extremos siguen ABIERTOS
         # (INF) — un tramo superior finito (70,100,100) desplazaría la
         # saturación al punto medio del motor interpolado (85 en vez de 70),
-        # mismo gotcha ya documentado antes de este cambio.
-        (70.0, INF, 100),
-        (60.0, 70.0, 85),
-        (50.0, 60.0, 65),
-        (40.0, 50.0, 40),
-        (-INF, 40.0, 10),
+        # mismo gotcha ya documentado antes de este cambio. Tabla de entonces:
+        # (70,inf,100) (60,70,85) (50,60,65) (40,50,40) (-inf,40,10).
     ],
     "adhesion_reformas_provincial": [
         # Anclas conservadas de ADR-0044. ADR-0304 corrige el registro de
@@ -448,12 +475,23 @@ BANDAS_ITCP = {
         # (chequeadas contra los 31 puntos: 8/4/9/7/3 por banda, las cinco
         # con datos reales — los 8 meses en 100,0 exacto son cohesión
         # perfecta simultánea en ambas cámaras, indistinguibles entre sí por
-        # diseño, mismo caveat que ADR-0042).
+        # diseño, mismo caveat que ADR-0042). Tabla de entonces:
+        # (99.9,inf,100) (99,99.9,85) (97,99,65) (95,97,40) (-inf,95,10).
+        #
+        # HISTORIA PREVIA desde 2026-10-28 (ADR-0401). El indicador pasa a
+        # promediar sólo las votaciones divididas y las anclas salen del
+        # bloque PRO de Macri, dic-2015 a dic-2018, medido igual (las mismas
+        # dos cámaras 65/35, ventana de 90 días, sólo divididas): 34 meses,
+        # media 96,95, desvío 3,55. Anclas en ANCLAS_ITCP: media − 2 desvíos
+        # (89,8) → 10 · media − 1 desvío (93,4) → 40 · media (97,0) → 65 ·
+        # media + 1 desvío, topeado en 99,9 → 100. Esta tabla repite los
+        # cortes con el puntaje de su ancla inferior (convención de
+        # terminos_intercambio en el ITCM), para el color y la ficha.
         (99.9, INF, 100),
-        (99.0, 99.9, 85),
-        (97.0, 99.0, 65),
-        (95.0, 97.0, 40),
-        (-INF, 95.0, 10),
+        (97.0, 99.9, 65),
+        (93.4, 97.0, 40),
+        (89.8, 93.4, 10),
+        (-INF, 89.8, 10),
     ],
     "votos_sobre_bancas": [
         # ADR-0376 (2026-10-27). CONVENCIÓN declarada, no calibrada contra el
@@ -611,6 +649,17 @@ BANDAS_ITCP = {
         # datos reales, sin huecos).
         (-INF, -6.0, 100), (-6.0, -3.0, 85), (-3.0, 0.0, 65), (0.0, 10.0, 40), (10.0, INF, 10),
     ],
+}
+
+# Anclas explícitas (valor → puntaje) de los indicadores cuyo puntaje no sale de
+# los puntos medios de su tabla de bandas (parametrica.puntaje_desde_anclas,
+# misma mecánica que ANCLAS_ITCM). La tabla de BANDAS_ITCP del indicador repite
+# los cortes para el color y la ficha.
+ANCLAS_ITCP = {
+    # ADR-0401: media y desvíos del bloque PRO 2016-2018, sólo divididas.
+    "cohesion_bloque": ((89.8, 10), (93.4, 40), (97.0, 65), (99.9, 100)),
+    # ADR-0402: 25 y 50 conceptuales, 77 = mediana de los gobiernos anteriores.
+    "alineamiento_senadores_prov": ((25.0, 10), (50.0, 65), (77.0, 100)),
 }
 
 DIMENSIONES_ITCP = {
@@ -968,7 +1017,7 @@ FAMILIAS_ITCP = {
     # ADR-0168: los cuatro entran por la regla de ADR-0166 — responden "cuánto
     # lo confrontan las otras instituciones", no "cuánta actividad despliega el
     # Gobierno", y de ahí sale el signo.
-    "produccion_legislativa": "tension",       # cuánto sanciona el Congreso por su cuenta
+    "produccion_legislativa": "tension",       # ¿el Congreso sanciona leyes que el Gobierno acepta? (ADR-0398)
     "judicializacion": "tension",              # cuánto se le frena la agenda por vía judicial
     "velocidad_resolucion": "tension",         # cuán rápido resuelve el sistema judicial
     "paralisis_denuncias": "tension",          # si el control disciplinario está activo
@@ -1005,10 +1054,18 @@ FAMILIAS_ITCP_META = {
 # último dato sea de ayer. Es la distinción que la auditoría pide hacer visible:
 # "dato de julio de 2026" no es lo mismo que "situación de julio de 2026".
 #
-# Los valores se derivan del diseño de cada ventana, no se estiman:
+# Los valores salen del diseño de cada ventana:
 #   ventana móvil de N meses  -> N/2
 #   cohorte de 12 a 24 meses  -> 18
 #   stock acumulado           -> 0 (describe el estado de hoy)
+#
+# REGLA ÚNICA para las ventanas de 12 meses (ADR-0399, 28-oct-2026): rezago =
+# 6 + demora media de publicación de la fuente, redondeado a 0,5. Antes cada
+# una sumaba o no la demora según quién la había escrito (transferencias sí,
+# producción legislativa y las de conflicto no). La demora es una estimación,
+# no un dato de diseño: sale de comparar la fecha del último punto con la de
+# la consulta. Las ventanas que llegan hasta el día de hoy (comunicados,
+# decretos, actas) no tienen demora y quedan en 6.
 REZAGO_MESES_ITCP = {
     # ADR-0168. Los dos judiciales anuales son, por lejos, los más rezagados
     # del índice: la Corte publica su anuario con el año cerrado y SAIJ indexa
@@ -1019,17 +1076,17 @@ REZAGO_MESES_ITCP = {
     # Ventana móvil de 12 meses sobre sesiones ya publicadas en el archivo del
     # Consejo: el rezago es el de la publicación de la nota, no el de la ventana.
     "paralisis_denuncias": 2.0,
-    # Ventana móvil de 12 meses sobre el dataset de leyes sancionadas de HCDN:
-    # la regla de la ventana (N/2 = 6), sin sumar el rezago de la carga en el CKAN.
-    "produccion_legislativa": 6.0,
+    # Ventana móvil de 12 meses sobre el dataset de leyes sancionadas de HCDN,
+    # en meses calendario completos (el mes en curso no entra): 6 + ~0,5 de
+    # demora media (ADR-0399).
+    "produccion_legislativa": 6.5,
     # Cohorte MADURA: sólo entran los proyectos publicados hace 12-24 meses,
     # porque antes no hubo tiempo material de sancionarlos (ADR-0061). Es el
     # más rezagado del índice por construcción, y no hay forma de acelerarlo
     # sin volver a introducir el sesgo que ese ADR sacó.
     "eficacia_legislativa": 18.0,
-    # 12 meses móviles contra los 12 previos (ADR-0353/0378): la variación describe,
-    # en promedio, lo ocurrido 6 meses atrás (centroide de la ventana), más ~1,5
-    # del IPC del INDEC (el criterio que usaba brecha_obra_publica, ADR-0372).
+    # Nivel de los últimos 12 meses (ADR-0397): 6 del centroide más ~1,5 del IPC
+    # del INDEC, que fija el último mes de la ventana (ADR-0399).
     "transferencias_no_automaticas": 7.5,
     # Ventana móvil de 12 meses sobre comunicados fechados: el rezago de
     # publicación es cero (salen el día que la cámara los emite), así que queda
@@ -1049,8 +1106,10 @@ REZAGO_MESES_ITCP = {
     # publicación que sumar.
     "insistencias_vetos": 6.0,
     "rechazos_decretos": 6.0,
-    "conflictividad_nacional": 6.0,
-    "jornadas_individuales_no_trabajadas_12m": 6.0,
+    # ADR-0399: ACLED excluye el mes en curso hasta que cierra (~1 mes de
+    # demora); la planilla de la Secretaría de Trabajo llega con ~3 meses.
+    "conflictividad_nacional": 7.0,
+    "jornadas_individuales_no_trabajadas_12m": 9.0,
     # Ventanas de 90 días.
     "alineamiento_senadores_prov": 1.5,
     "cohesion_bloque": 1.5,
@@ -1111,4 +1170,5 @@ def calcular_itcp(valores: dict, ajustes: dict | None = None) -> dict | None:
     return parametrica.calcular_indice(
         parametrica.sin_suspendidos(valores, INDICADORES_SUSPENDIDOS),
         ajustes, BANDAS_ITCP, DIMENSIONES_ITCP,
-        BANDAS_INTERPRETACION, INTERPRETACION_LEGIBLE)
+        BANDAS_INTERPRETACION, INTERPRETACION_LEGIBLE,
+        anclas_por_indicador=ANCLAS_ITCP)

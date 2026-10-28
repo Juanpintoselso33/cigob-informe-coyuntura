@@ -51,13 +51,6 @@
       "fuente_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/345074/20260729",
       "verificado_en": "2026-09-08"
     },
-    "Corredores Viales": {
-      "etapa": 3,
-      "mecanismo": "Concesión de obra pública por peaje (Dto. 97/2025)",
-      "hito": "RFC Etapa I en operación: DNV 717/2026 acredita obras iniciales y tarifas del Tramo Oriental. ME 555, 607 y 703/2026 modifican pliegos de etapas II-B y III. La etapa 3 no acredita cierre de la privatización completa.",
-      "fuente_url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426242",
-      "verificado_en": "2026-09-08"
-    },
     "Belgrano Cargas": {
       "etapa": 3,
       "mecanismo": "Fragmentación en 7 concesiones + venta de material rodante",
@@ -88,6 +81,20 @@
       "fuente_url": "https://www.boletinoficial.gov.ar/detalleAviso/primera/343329/20260619",
       "verificado_en": "2026-09-08",
       "alcance_revision": "Cotejo de transformación societaria y un servicio específico. No se certifica una suspensión formal de todo el proceso ni la ausencia de actos posteriores."
+    }
+  },
+  "fuera_de_cartera": {
+    "Corredores Viales": {
+      "desde": "2026-10-28",
+      "adr": "0407",
+      "motivo": "Sale de la cartera que promedia el indicador: su privatización es la concesión por peaje de la red vial (Red Federal de Concesiones), que ya mide concesiones_infraestructura en km adjudicados dentro de la misma dimensión. Contarla también acá sumaba dos veces los mismos actos (por ejemplo la Res. ST 80/2025). No sale de la serie histórica por un hecho nuevo: se recalcula toda la serie sin ella.",
+      "ultimo_registro": {
+        "etapa": 3,
+        "mecanismo": "Concesión de obra pública por peaje (Dto. 97/2025)",
+        "hito": "RFC Etapa I en operación: DNV 717/2026 acredita obras iniciales y tarifas del Tramo Oriental. ME 555, 607 y 703/2026 modifican pliegos de etapas II-B y III. La etapa 3 no acredita cierre de la privatización completa.",
+        "fuente_url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426242",
+        "verificado_en": "2026-09-08"
+      }
     }
   }
 }

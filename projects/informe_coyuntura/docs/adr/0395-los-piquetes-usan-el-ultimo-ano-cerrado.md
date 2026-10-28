@@ -7,7 +7,7 @@ cinturon: 'gestion'
 indice: 'ITCG'
 indicadores: [protocolo_antipiquetes]
 archivos: ['scripts/descargar_series.py', 'web/src/lib/fichas.ts', 'tests/test_serie_piquetes_anio_cerrado.py']
-relacionado: ['0025', '0361']
+relacionado: ['0025', '0361', '0405']
 ambito: 'ITCG · `protocolo_antipiquetes` · serie histórica'
 origen: 'Verificación del 28-oct-2026: la serie aplicaba el total de un año desde enero de ese mismo año.'
 ---

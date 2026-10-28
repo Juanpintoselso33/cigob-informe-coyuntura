@@ -35,18 +35,18 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 80,6** | **VERDE** | Aflojado | 14 indicadores: 12 en verde · 2 en amarillo |
+| **ITCG: 78,6** | **VERDE** | Moderadamente aflojado | 14 indicadores: 11 en verde · 3 en amarillo |
 Componentes que puntúan en este corte: 14 de 14 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Reformas económicas fundamentales | El corazón de la promesa económica. | 69,6 | VERDE | 35,0 % |
+| Reformas económicas fundamentales | El corazón de la promesa económica. | 69,3 | VERDE | 35,0 % |
 | Reforma del Estado | El achicamiento del Estado en dos medidas que se controlan entre sí. | 91,2 | VERDE | 25,0 % |
 | Reforma laboral | Combina las etapas del Fondo de Asistencia Laboral (la mitad de la dimensión) con la siniestralidad laboral registrada en el sistema de riesgos del trabajo (un… | 78,8 | VERDE | 15,0 % |
-| Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 78,0 | VERDE | 15,0 % |
-| Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre… | 99,6 | VERDE | 10,0 % |
+| Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales. | 70,9 | VERDE | 15,0 % |
+| Reforma social y orden | Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en todo el país y la implementación de la libre elección de… | 90,9 | VERDE | 10,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -61,7 +61,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCG |
 |---|---|---|---|---|
 | **DIMENSIÓN: Reformas económicas fundamentales** | | | | |
-| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 7,65 % de brecha CCL/mayorista | VERDE | 14,0 % |
+| Brecha cambiaria | Cuánto se separa el dólar financiero (contado con liquidación) del dólar mayorista de referencia: la brecha cambiaria. | 7,83 % de brecha CCL/mayorista | VERDE | 14,0 % |
 | Impuestos sobre el comercio exterior | La recaudación de derechos de importación, exportación y tasa de estadística que cobra la Agencia de Recaudación y… | 7,16 % del intercambio (alícuota efectiva) | AMARILLO | 14,0 % |
 | Desregulación normativa | Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de… | 17.606 artículos de normas modificados o eliminados, acumulados desde dic-2023 | VERDE | 7,0 % |
 | **DIMENSIÓN: Reforma del Estado** | | | | |
@@ -72,12 +72,12 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Siniestralidad laboral (SRT) | Cuánto varía la siniestralidad registrada en el sistema de riesgos del trabajo. | −5 % variación del índice de incidencia (mismo período, contra el año anterior) | VERDE | 3,8 % |
 | Juicios en la Justicia del Trabajo (Capital) | Cuánto varían los juicios laborales que se inician en la Justicia Nacional del Trabajo, que atiende la Capital. | 12,4 % variación juicios entrados (12m vs 12m previos) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Privatizaciones e inversión** | | | | |
-| Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 55,6 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
-| Grandes inversiones aprobadas | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 36,4 % de inversión aprobada sobre el pipeline | VERDE | 6,0 % |
+| Privatizaciones (etapas) | Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas… | 53,1 % de avance (etapas 0-4, cartera Ley Bases) | VERDE | 6,0 % |
+| Grandes inversiones aprobadas | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 36,4 % de inversión aprobada sobre el pipeline | AMARILLO | 6,0 % |
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 100 % de km adjudicados / km del plan (Red Federal de Concesiones) | VERDE | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
 | Planes sin intermediarios | Si los planes sociales siguen pasando por intermediarios. | 100 hito de desintermediación (0 = intermediarios vigentes · 100 = unidades de gestión dadas de baja) | VERDE | 4,0 % |
-| Reducción de cortes de calle en la Ciudad | En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
+| Reducción de cortes de calle en el país | En qué porcentaje se redujo el número de cortes por manifestación relevados en todo el país respecto de 2023. | 52,7 % de reducción de cortes por manifestación en todo el país vs 2023 (IRPC) | VERDE | 4,0 % |
 | Implementación de la libre elección de cobertura de salud | Cuánto avanzó la implementación de la libre elección de cobertura de salud. | 100 Avance de la libre elección de cobertura de salud (hitos 0–100) | VERDE | 2,0 % |
 
 *Datos al 2026-10-28.*
@@ -96,7 +96,7 @@ Cuánto se separa el dólar financiero (contado con liquidación) del dólar may
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 7,65 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
+| **Hoy: 7,83 % de brecha CCL/mayorista** (2026-10) | **VERDE** | Peso efectivo 14 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -139,13 +139,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- CCL venta 1655.70 (2026-10-27T17:59:00-03:00) / mayorista venta 1538.00 (2026-10-27T13:17:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
+- CCL venta 1657.40 (2026-10-28T13:59:00-03:00) / mayorista venta 1537.00 (2026-10-28T08:53:00-03:00). Corte: fecha de la cotización más antigua; no equivale a una medición de restricciones legales.
 
 ## Color vigente y por qué
 
-Dato vigente: 7,65 % de brecha CCL/mayorista (2026-10).
+Dato vigente: 7,83 % de brecha CCL/mayorista (2026-10).
 
-7,65 % de brecha CCL/mayorista está en Verde, a 6,35 del límite con Amarillo (14,0).
+7,83 % de brecha CCL/mayorista está en Verde, a 6,17 del límite con Amarillo (14,0).
 
 **Color vigente: VERDE**
 
@@ -639,7 +639,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Evaluación al 2026-10-28; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV
+- Evaluación al 2026-10-28; consulta CNV de esa fecha. Revisión normativa del 2026-10-26 y judicial del 2026-10-20; la descarga CNV no actualiza esas revisiones. Según el registro curado: 2 de 2 actos fundamentales vigentes (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · 5 de 5 hitos de construcción · Resolución General 1167/2026 2026-09-17 · Resolución General 5907/2026 2026-10-01 · Oferta bancaria 2026-10-24 · el régimen entra en vigencia el 2026-12-01 · 0 fondos de asistencia laboral registrados en CNV · la inconstitucionalidad de la ley todavía se discute en «CGTRA c/ Estado Nacional s/ Acción Declarativa» · contexto: 0 fondos de cese en CNV · 9 menciones del FAL en el BO desde mar-2026
 
 ## Color vigente y por qué
 
@@ -892,7 +892,7 @@ Cuánto avanza la privatización de la cartera de empresas públicas habilitada 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 55,6 % de avance (etapas 0-4, cartera Ley Bases)** (2026-09) | **VERDE** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
+| **Hoy: 53,1 % de avance (etapas 0-4, cartera Ley Bases)** (2026-09) | **VERDE** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -901,14 +901,14 @@ Cuánto avanza la privatización de la cartera de empresas públicas habilitada 
 | **IDENTIFICADOR TÉCNICO** | privatizaciones | **CINTURÓN** | Gestión |
 | **DIMENSIÓN EN EL ITCG** | Privatizaciones e inversión | **UNIDAD DE MEDIDA** | % de avance (etapas 0-4, cartera Ley Bases) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Fecha de la última modificación del registro curado. El seguimiento quincenal es la frecuencia prevista; una revisión parcial no acredita actualidad de todas las empresas. |
-| **PRODUCTOR DEL DATO** | Boletín Oficial y CNV (hechos) + Fundación CIGOB (curaduría del registro) | **OPERACIÓN ESTADÍSTICA** | Avance de la cartera de privatizaciones de la Ley Bases por etapas 0-4 (sin definir → preparatoria → pliegos → licitación/adjudicación → cerrada), nueve empresas |
+| **PRODUCTOR DEL DATO** | Boletín Oficial y CNV (hechos) + Fundación CIGOB (curaduría del registro) | **OPERACIÓN ESTADÍSTICA** | Avance de la cartera de privatizaciones de la Ley Bases por etapas 0-4 (sin definir → preparatoria → pliegos → licitación/adjudicación → cerrada), ocho empresas. Corredores Viales queda fuera: su privatización es la concesión de la red vial, que mide el indicador de concesiones de infraestructura |
 | **MODO DE ACCESO** | Registro curado a mano con normas del Boletín Oficial, comunicaciones del emisor en CNV y detector de posibles novedades. El detector no asigna etapas; sus hallazgos necesitan revisión y pueden incluir falsos positivos. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
 Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas verificables: 0 sin definir · 1 preparatoria · 2 pliegos · 3 licitación/adjudicación · 4 operación cerrada.
 
-Describe el avance documentado de cada proceso: una operación cerrada recibe etapa 4 y los pliegos etapa 2. Las nueve empresas pesan igual; el promedio no mide valor de activos vendido ni dinero cobrado. Se mantiene mediante curaduría de normas y comunicaciones primarias; una revisión parcial o una búsqueda sin novedades no certifica exhaustividad.
+Describe el avance documentado de cada proceso: una operación cerrada recibe etapa 4 y los pliegos etapa 2. Las empresas pesan igual; el promedio no mide valor de activos vendido ni dinero cobrado. Corredores Viales no integra la cartera: la concesión de la red vial la mide el indicador de concesiones de infraestructura. Se mantiene mediante curaduría de normas y comunicaciones primarias; una revisión parcial o una búsqueda sin novedades no certifica exhaustividad.
 
 **Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
@@ -934,19 +934,19 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 9 empresas · etapa promedio 2,22/4 · cerradas: Transener
+- 8 empresas · etapa promedio 2,12/4 · cerradas: Transener
 
 ## Color vigente y por qué
 
-Dato vigente: 55,6 % de avance (etapas 0-4, cartera Ley Bases) (2026-09).
+Dato vigente: 53,1 % de avance (etapas 0-4, cartera Ley Bases) (2026-09).
 
-55,6 % de avance (etapas 0-4, cartera Ley Bases) está en Verde, a 14,6 del límite con Amarillo (41,0).
+53,1 % de avance (etapas 0-4, cartera Ley Bases) está en Verde, a 12,1 del límite con Amarillo (41,0).
 
 **Color vigente: VERDE**
 
 Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Comparte un hecho con las concesiones de infraestructura: la Resolución ST 80/2025 (Corredores Viales, tramos Oriental y Conexión, noviembre de 2025) sube las dos en el mismo mes y dentro de la misma dimensión. Es el mismo acto contado como una etapa de privatización aquí y como adjudicación de concesión allá; el peso combinado es chico, porque dentro de la cartera es un tramo y el indicador no se calcula distinto por ello.
+- **Participación en otros indicadores.** No comparte hechos con las concesiones de infraestructura: Corredores Viales, cuya privatización es la concesión por peaje de la red vial, salió de la cartera en octubre de 2026 para que los actos de la Red Federal de Concesiones (por ejemplo la Resolución ST 80/2025) se cuenten una sola vez, en el indicador de concesiones.
 
 ## Transparencia — limitaciones declaradas
 
@@ -961,6 +961,8 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** Frecuencia quincenal prevista; cada modificación debe conservar su fuente y fecha. La serie avisa si el estado vivo no reconcilia con las transiciones fechadas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Corredores Viales sale de la cartera: su privatización es la concesión por peaje de la red vial, que el indicador de concesiones de infraestructura ya mide en km adjudicados dentro de la misma dimensión, y contarla en los dos sumaba dos veces los mismos actos. La cartera queda en ocho empresas y la serie entera se recalcula sin ella; con las etapas de octubre de 2026 el avance pasa de 55,6% a 53,1%.
 
 **2026-09-08** — Transener: el cierre comunicado en CNV el 28-ago se incorpora en agosto, no junio. La autorización regulatoria de junio no acreditaba perfeccionamiento. Se conserva la etapa actual 4 y se corrigen junio y julio históricos.
 
@@ -986,7 +988,7 @@ Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 36,4 % de inversión aprobada sobre el pipeline** (2026-10) | **VERDE** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
+| **Hoy: 36,4 % de inversión aprobada sobre el pipeline** (2026-10) | **AMARILLO** | Peso efectivo 6 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -1002,7 +1004,7 @@ Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) 
 
 Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total de la cartera (aprobados + en evaluación).
 
-Mide decisiones administrativas de aprobación, con la plataforma oficial del Ministerio de Economía: no cuánto se invirtió efectivamente ni cuánto avanzaron los proyectos, porque no hay una serie pública de inversión ejecutada. Como el total incluye lo que está en evaluación, el porcentaje baja cuando entran proyectos nuevos aunque no se haya rechazado ninguno. La evolución histórica grafica la inversión aprobada acumulada en dólares.
+Mide decisiones administrativas de aprobación, con la plataforma oficial del Ministerio de Economía: no cuánto se invirtió efectivamente ni cuánto avanzaron los proyectos, porque no hay una serie pública de inversión ejecutada. Como el total incluye lo que está en evaluación, el porcentaje baja cuando entran proyectos nuevos aunque no se haya rechazado ninguno; y como casi todo lo presentado termina aprobado, mide sobre todo la demora en aprobar. La evolución histórica grafica la inversión aprobada acumulada en dólares.
 
 **Dimensión que integra — Privatizaciones e inversión.** Los activos del Estado y la inversión privada grande: privatizaciones, cartera del Régimen de Incentivo para Grandes Inversiones (RIGI) y concesiones viales.
 
@@ -1020,10 +1022,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% de inversión aprobada sobre el pipeline) | Color |
 |---|---|
-| ≥ 29,5 | VERDE |
-| 17,5 – 29,5 | AMARILLO |
-| 12,5 – 17,5 | NARANJA |
-| ≤ 12,5 | ROJO |
+| ≥ 41 | VERDE |
+| 25 – 41 | AMARILLO |
+| 18,3 – 25 | NARANJA |
+| ≤ 18,3 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1035,14 +1037,16 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 36,4 % de inversión aprobada sobre el pipeline (2026-10).
 
-36,4 % de inversión aprobada sobre el pipeline está en Verde, a 6,9 del límite con Amarillo (29,5).
+36,4 % de inversión aprobada sobre el pipeline está en Amarillo, a 4,6 del límite con Verde (41,0).
 
-**Color vigente: VERDE**
+**Color vigente: AMARILLO**
 
 Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
+- Como casi todo lo que se presenta al régimen termina aprobado, el porcentaje mide sobre todo la demora en aprobar: un valor bajo indica proyectos todavía en evaluación, no proyectos rechazados.
+- La escala es una convención declarada: la misma de medidor de avance que usan las concesiones y las privatizaciones, no una calibración sobre el dato.
 - No existe fuente estructurada de inversión efectivamente desembolsada: la inversión aprobada es lo más cercano al hecho, y se declara como tal.
 - El denominador salta con cada anuncio grande en evaluación: el avance puede bajar sin que nada empeore.
 - Depende de que la planilla oficial siga pública y con el mismo esquema (ya cambió una vez y la lectura se adaptó).
@@ -1054,6 +1058,8 @@ Ponderación vigente en el ITCG: 6 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** La plataforma se actualiza sin registro de cambios; las fechas de aprobación quedan fijadas con su norma.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Pasa a la escala de las concesiones y las privatizaciones (anclas 15 → 10 · 25 → 40 · 45 → 65 · 65 → 85 · 75 → 100), declarada como convención. La anterior (10 → 10 · 60 → 100) se había fijado mirando el 22,1% de junio de 2026. Con el 36,4% de octubre de 2026 el puntaje pasa de 69,5 a 54,2. Se agrega que el porcentaje mide sobre todo la demora en aprobar.
 
 **2026-10-26** — El rótulo pasa a «Grandes inversiones aprobadas», sin sigla, y la descripción aclara que el porcentaje baja cuando entran proyectos nuevos en evaluación. No cambia el cálculo.
 
@@ -1133,7 +1139,7 @@ Dato vigente: 100 % de km adjudicados / km del plan (Red Federal de Concesiones)
 
 Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Comparte un hecho con las privatizaciones: la Resolución ST 80/2025 (Corredores Viales, tramos Oriental y Conexión, noviembre de 2025) sube las dos en el mismo mes y dentro de la misma dimensión. Es el mismo acto contado como una adjudicación de concesión aquí y como etapa de privatización (Corredores Viales) allá; el peso combinado es chico, porque dentro de el plan de km es un tramo y el indicador no se calcula distinto por ello.
+- **Participación en otros indicadores.** No comparte hechos con las privatizaciones: desde octubre de 2026 Corredores Viales no integra esa cartera, así que las adjudicaciones de la Red Federal de Concesiones (por ejemplo la Resolución ST 80/2025) cuentan sólo acá.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1167,6 +1173,8 @@ Ponderación vigente en el ITCG: 3 % efectivo. El color es una lectura adicional
 
 **2026-10-26** — Se corrigen los km de la Etapa III: 3.920,21, no 3.962,49. Desde octubre la página oficial da 371,37 km para el tramo Cuyo, que es la Ruta 7 de punta a punta con los 42,28 km entre Palmira y la Ruta 40 que no se concesionan; lo concesionado son 329,09 km. Los km verificados a mano mandan sobre la página. El plan queda en 9.091 km y la posesión comprobada en 7.843 (86,3%, igual que antes). No cambia el valor.
 
+**2026-10-28** — Corredores Viales sale de la cartera de privatizaciones, así que las adjudicaciones de la Red Federal de Concesiones dejan de contarse dos veces dentro de la dimensión: cuentan sólo acá. No cambia el valor de este indicador.
+
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
@@ -1199,7 +1207,7 @@ Si los planes sociales siguen pasando por intermediarios: vale 100 desde que la 
 
 Mide lo que el compromiso prometía cambiar. La intermediación no estaba en la clasificación del gasto —en 2023 el 98,3% del devengado ya figuraba como ayudas a personas—, sino en las unidades de gestión: municipios, cooperativas y organizaciones que certificaban la contraprestación y manejaban la lista. Es un acto, no un resultado: no acredita cómo se paga cada prestación ni que no quede intermediación informal.
 
-**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en todo el país y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 
@@ -1271,36 +1279,36 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 
 *Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
 
-# Reducción de cortes de calle en la Ciudad
+# Reducción de cortes de calle en el país
 
-En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de una base estimada para 2023.
+En qué porcentaje se redujo el número de cortes por manifestación relevados en todo el país respecto de 2023.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC)** (2025-12) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
+| **Hoy: 52,7 % de reducción de cortes por manifestación en todo el país vs 2023 (IRPC)** (2025-12) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | protocolo_antipiquetes | **CINTURÓN** | Gestión |
-| **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) |
+| **DIMENSIÓN EN EL ITCG** | Reforma social y orden | **UNIDAD DE MEDIDA** | % de reducción de cortes por manifestación en todo el país vs 2023 (IRPC) |
 | **SERIE DISPONIBLE** | 2025-01 → 2026-09 (21 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un año: los anclajes públicos de la fuente son por año cerrado. |
-| **PRODUCTOR DEL DATO** | Diagnóstico Político (consultora; relevamiento diario de cortes sobre más de cien medios desde 2009) | **OPERACIÓN ESTADÍSTICA** | Reducción porcentual de los cortes por manifestación en CABA contra 2023, con anclajes públicos: 2023 aproximadamente 931 (estimado), 2024 440 y 2025 240. |
-| **MODO DE ACCESO** | Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el anclaje anual con su fuente pública. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-28 |
+| **PRODUCTOR DEL DATO** | Diagnóstico Político (consultora; relevamiento diario de cortes sobre más de cien medios desde 2009) | **OPERACIÓN ESTADÍSTICA** | Reducción porcentual de los cortes por manifestación en todo el país contra 2023, con los totales anuales publicados: 2023 8.239, 2024 5.996 y 2025 3.893. La misma fuente da la historia previa: 6.805 en 2014, 6.491 en 2016, 5.221 en 2017, 5.857 en 2018, 5.430 en 2019, 6.658 en 2021 y 9.778 en 2022. |
+| **MODO DE ACCESO** | Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el total anual con su fuente pública. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-En qué porcentaje se redujo el número de cortes por manifestación relevados en la Ciudad de Buenos Aires respecto de una base estimada para 2023.
+En qué porcentaje se redujo el número de cortes por manifestación relevados en todo el país respecto de 2023.
 
 Describe la evolución de los cortes registrados por Diagnóstico Político; el último dato es el del año 2025. El protocolo está vigente: un juez lo anuló en diciembre de 2025 y la Cámara en lo Contencioso Administrativo Federal revocó esa nulidad. Mide resultados observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La reducción no identifica por sí sola el efecto del protocolo ni permite atribuirla exclusivamente al Gobierno nacional. Tampoco mide toda la protesta social; el detalle y la ficha informan las limitaciones de actualización de la fuente.
 
-**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en todo el país y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 
-- Reducción = (1 − cortes del último año cerrado / cortes de 2023) × 100.
-- La base 2023 se estima como 8.239 cortes nacionales × 11,3% de participación porteña, redondeada a 931. La participación publicada ya está redondeada: 931 no es un conteo original exacto. En 2025 el descenso aproximado fue 74,2%; la incertidumbre de ese redondeo da un rango cercano a 74,1–74,3%.
+- Reducción = (1 − cortes en el país del último año cerrado / cortes en el país en 2023) × 100.
+- Los totales nacionales son conteos publicados por la consultora, no estimaciones. Hasta octubre de 2026 el indicador medía sólo la Ciudad de Buenos Aires, con una base 2023 estimada desde una participación redondeada; ese registro se conserva y no puntúa.
 
 ## Semáforo — valores que determinan el color
 
@@ -1308,7 +1316,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% de reducción de cortes por manifestación en CABA vs 2023 (IRPC)) | Color |
+| Rango (% de reducción de cortes por manifestación en todo el país vs 2023 (IRPC)) | Color |
 |---|---|
 | ≥ 32,5 | VERDE |
 | 12,5 – 32,5 | AMARILLO |
@@ -1319,19 +1327,19 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 240 cortes en CABA en 2025 vs 931 en 2023 (Diagnóstico Político; base 2023 estimada desde participación redondeada) · No se pudo verificar si el portal publicó anclajes más recientes.
+- 3.893 cortes en todo el país en 2025 vs 8.239 en 2023 (Diagnóstico Político) · No se pudo verificar si el portal publicó anclajes más recientes.
 
 ## Color vigente y por qué
 
-Dato vigente: 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) (2025-12).
+Dato vigente: 52,7 % de reducción de cortes por manifestación en todo el país vs 2023 (IRPC) (2025-12).
 
-74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) está en Verde, a 41,7 del límite con Amarillo (32,5).
+52,7 % de reducción de cortes por manifestación en todo el país vs 2023 (IRPC) está en Verde, a 20,2 del límite con Amarillo (32,5).
 
 **Color vigente: VERDE**
 
 Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** El seguimiento interno de eventos de protesta (ACLED) complementa el de cortes. Sus universos difieren: la comparación no identifica una conversión de los mismos eventos o actores en marchas sin corte.
+- **Participación en otros indicadores.** El seguimiento interno de eventos de protesta (ACLED, en la Ciudad de Buenos Aires) complementa el de cortes. Sus universos difieren —en territorio y en lo que cuentan—: la comparación no identifica una conversión de los mismos eventos o actores en marchas sin corte.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1341,7 +1349,8 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 - Mide los cortes observados, no la aplicación del protocolo: no hay una serie pública de cuántas veces se aplicó. La vigencia del protocolo es un hecho aparte, que se registra en el estado judicial de abajo.
 - Granularidad anual: el valor se arrastra todo el año hasta el anclaje siguiente.
 - Estado judicial verificado: la nulidad de primera instancia fue revocada por la Cámara en lo Contencioso Administrativo Federal (marzo de 2026) — el protocolo es un acto válido y vigente.
-- El registro histórico oficial de cortes del GCBA está fuera de servicio; el monitoreo propio de alertas de transporte acumula la serie que permitirá automatizar el dato.
+- Las bandas son una convención declarada —cuartos redondos de la reducción contra 2023, con el cero como piso— y no una calibración: se fijaron mirando la caída de la Ciudad y se conservaron sin moverlas al pasar al total nacional.
+- El monitoreo propio de alertas de transporte cubre sólo la Ciudad de Buenos Aires: sirve de contraste, no reemplaza al total nacional.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1350,6 +1359,8 @@ Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional
 - **Política de revisiones:** El registro se actualiza cuando la fuente publica el año nuevo (con aviso automático del detector).
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Pasa de la Ciudad de Buenos Aires al total nacional de cortes de Diagnóstico Político, con la misma definición de corte y la misma base 2023. El protocolo es de las fuerzas federales y la Ciudad era un 11% del universo, con una base 2023 estimada desde una participación redondeada; el total nacional es un conteo publicado con historia desde 2014. Las bandas no se mueven y se declaran como convención. El valor pasa de 74,2% (Ciudad, 2025) a 52,7% (país, 2025) y la serie, de 52,7/74,2 a 27,2/52,7.
 
 **2026-10-28** — La serie histórica deja de aplicar el total de un año desde enero de ese mismo año: cada mes usa el último año cerrado (el de 2024 entra en enero de 2025, el de 2025 en enero de 2026) y arranca en 2025-01. La tarjeta no cambia.
 
@@ -1397,7 +1408,7 @@ Cuánto avanzó la implementación de la libre elección de cobertura de salud: 
 
 Evalúa lo que depende del Gobierno: que la elección esté habilitada y funcione. No cuenta cuántas personas se cambian, porque quedarse en la cobertura actual también es elegir. Como dato de contexto, la tarjeta muestra qué parte de los usuarios de prepagas tiene sus aportes derivados directo. Con los hitos cumplidos el puntaje queda alto y estable: es una promesa cumplida, no un indicador de variación.
 
-**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en la Ciudad de Buenos Aires y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
+**Dimensión que integra — Reforma social y orden.** Reúne el cese de los intermediarios en los planes sociales, la evolución de los cortes por protesta en todo el país y la implementación de la libre elección de cobertura de salud, que se mide por hitos. La caída de cortes no identifica por sí sola el efecto del protocolo.
 
 ## Método de cómputo
 

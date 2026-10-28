@@ -38,11 +38,11 @@ import itcm
 #     real × términos del intercambio (ADR-0360); el valor YA es el puntaje:
 #     45,7 → 45,7. Hasta el 20-oct-2026 la dimensión puntuaba el ITCRM solo
 #     (84,3 → 45,7), y el fixture conserva ese número para no mover el ITCM.
-#   * iai          = inversión física (% i.a.). −4,2 → 41,8 (banda 35; escala
+#   * iai          = inversión física (% i.a.). −20,47 → 41,8 (banda 35; escala
 #     corrida +0,17 al crecimiento de la población, ADR-0341). Desde el
 #     16-oct-2026 puntúa dentro de «Actividad e inversión» con 30%.
 #   * saldo/emae quedan planos más allá de la última ancla (85 y 100).
-#   * credito_privado = % i.a. REAL de préstamos privados (ADR-0022). +26% → 80.
+#   * credito_privado = % i.a. REAL de préstamos privados (ADR-0022). +18,09% → 80.
 # Dimensiones: estab=67,1 fiscal=78,5 financ=54,7
 # actividad e inversión=73,9 (EMAE 100 × 0,3696 + IAI 41,8 × 0,30, renormalizado
 # porque el fixture no trae difusión, industria ni actividad tributaria)
@@ -57,17 +57,20 @@ EJEMPLO = {
     # ADR-0152: dejó de ser variación i.a. y pasó a NIVEL de base imponible real
     # desestacionalizada (100 = 4T-2023). 94,4 es la mediana de la serie observada.
     "recaudacion": 94.4,
-    "resultado_primario": 6.39,    # superávit sobre recaudación 12m: 87,9 (banda 85)
-    "saldo_comercial_12m": 17125,  # más allá de la última ancla → 85 plano
+    # ADR-0403/0404 movieron las escalas de primario, saldo, crédito e IAI. El
+    # fixture cambia los VALORES para conservar los mismos puntajes (87,9 · 85 ·
+    # 80 · 41,8) y que los números del índice de abajo sigan valiendo.
+    "resultado_primario": 16.6,    # superávit sobre recaudación 12m: 87,9 (ADR-0403)
+    "saldo_comercial_12m": 17.5,   # % del comercio, más allá de la última ancla → 85 plano
     "reservas_bcra": 1881,         # netas: 25,0 (banda 30)
     "idc": -0.31,                  # z compuesto (σ): 49,7 (banda 60)
-    "credito_privado": 26.0,       # % i.a. real: 80,0 (banda 85)
+    "credito_privado": 18.09,      # % i.a. real: 80,0 (banda 85, ADR-0404)
     "costo_financiamiento_tesoro": 8.07,  # tasa real: 78,9 (U invertida, tramo 6-12)
     "emae_ia": 5.48,               # más allá de la última ancla → 100 plano
     "tcrm": 85.87,                 # tipo de cambio real: 49,7 (ADR-0375)
     "terminos_intercambio": 145.1401,  # términos del intercambio 2T-2026: 85,0
     # competitividad externa = matriz de los dos (no el promedio): 49,8
-    "iai": -4.2,                   # inversión física: 41,8 (banda 35)
+    "iai": -20.47,                 # inversión física: 41,8 (banda 35, ADR-0404)
 }
 
 
@@ -115,13 +118,14 @@ def test_puntaje_interpolado():
 
     # Antes acá se pineaban las anclas de `idm`; salió del índice (ADR-0261) y
     # ya no tiene banda. El IAI sirve igual: misma forma de cinco tramos, con la
-    # escala corrida al crecimiento de la población (ADR-0341).
+    # escala corrida al crecimiento de la población (ADR-0341) y cortes en uno
+    # y dos desvíos robustos de 2004-2023 (ADR-0404).
     iai = itcm.BANDAS_ITCM["iai"]
-    assert parametrica.puntaje_interpolado(-9.83, iai) == 10.0
-    assert parametrica.puntaje_interpolado(-5.83, iai) == 35.0
+    assert parametrica.puntaje_interpolado(-37.63, iai) == 10.0
+    assert parametrica.puntaje_interpolado(-28.18, iai) == 35.0
     assert parametrica.puntaje_interpolado(0.17, iai) == 60.0
-    assert parametrica.puntaje_interpolado(6.17, iai) == 80.0
-    assert parametrica.puntaje_interpolado(10.17, iai) == 100.0
+    assert parametrica.puntaje_interpolado(28.52, iai) == 80.0
+    assert parametrica.puntaje_interpolado(37.97, iai) == 100.0
 
 
 def test_puntaje_desde_anclas_respeta_los_cinco_puntos_aprobados():
@@ -254,11 +258,12 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(140.4, b["terminos_intercambio"]) == 32
     assert itcm.puntaje_banda(138.1, b["terminos_intercambio"]) == 10
     # IAI: mayor crecimiento de inversión física = menos tensión, bandas anchas
-    # corridas +0,17 al crecimiento de la población (ADR-0341)
-    assert itcm.puntaje_banda(10.17, b["iai"]) == 80           # high inclusivo
-    assert itcm.puntaje_banda(10.2, b["iai"]) == 100
-    assert itcm.puntaje_banda(-1.83, b["iai"]) == 35
-    assert itcm.puntaje_banda(-9.9, b["iai"]) == 10
+    # corridas +0,17 al crecimiento de la población (ADR-0341), cortes en
+    # ±18,9 y ±37,8 (ADR-0404)
+    assert itcm.puntaje_banda(37.97, b["iai"]) == 80           # high inclusivo
+    assert itcm.puntaje_banda(38.0, b["iai"]) == 100
+    assert itcm.puntaje_banda(-18.73, b["iai"]) == 35
+    assert itcm.puntaje_banda(-37.7, b["iai"]) == 10
 
 
 def test_rem_mensual_equivalente_y_idc():
@@ -370,7 +375,7 @@ def test_ajuste_automatico_saldo_por_contraccion():
     ajuste interpolado hacia 60 (caso del doc: el superávit 2024/25 'por
     contracción'; share_impo=9000/10500=85,7% → puntaje 85 − 0,714×25 = 67,1;
     ADR-0056 suaviza el force-a-60 original de este mismo caso)."""
-    ind = {"valor": 17125, "expo_var_ia": 2.0, "impo_var_ia": -15.0,
+    ind = {"valor": 17.5, "expo_var_ia": 2.0, "impo_var_ia": -15.0,
            "expo_delta_12m": 1500, "impo_delta_12m": -9000}
     aj = itcm.ajuste_automatico_saldo(ind)
     assert aj is not None and aj["puntaje"] == 67.1 and aj["origen"] == "automatico"
@@ -385,9 +390,9 @@ def test_ajuste_automatico_saldo_por_contraccion():
 
 def test_ajuste_automatico_saldo_interpolado():
     """La penalización escala con share_impo (mejora_impo/mejora_total), sin
-    acantilado: mismo p_banda=85 (valor=17125, flat más allá de la última
-    ancla), variando cuánto de la mejora es atribuible a la caída de M."""
-    base = {"valor": 17125, "expo_var_ia": 0.0, "impo_var_ia": 0.0}
+    acantilado: mismo p_banda=85 (valor=17,5 % del comercio, flat más allá de
+    la última ancla), variando cuánto de la mejora es atribuible a la caída de M."""
+    base = {"valor": 17.5, "expo_var_ia": 0.0, "impo_var_ia": 0.0}
     # share_impo = 60% → 85 − 0,2×25 = 80,0
     aj60 = itcm.ajuste_automatico_saldo(
         dict(base, expo_delta_12m=4000, impo_delta_12m=-6000))
@@ -397,11 +402,11 @@ def test_ajuste_automatico_saldo_interpolado():
         dict(base, expo_delta_12m=2000, impo_delta_12m=-8000))
     assert aj80["puntaje"] == 70.0
     # share_impo = 100% (expo sin mejora) → piso de 60, incluso con p_banda
-    # apenas por encima de 60 (valor=8000 → interpolado 61,5): el caso límite
+    # apenas por encima de 60 (valor=11 % → interpolado 61,4): el caso límite
     # que antes quedaba fuera del gate por usar el escalonado (puntaje_banda
     # daba exactamente 60 y el rule se abstenía) ahora sí se evalúa.
     aj_full = itcm.ajuste_automatico_saldo(
-        {"valor": 8000, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
+        {"valor": 11.0, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
          "expo_delta_12m": 0, "impo_delta_12m": -8000})
     assert aj_full["puntaje"] == 60.0
     # monotonía: a mayor share_impo, menor puntaje
@@ -414,22 +419,25 @@ def test_ajuste_automatico_saldo_no_aplica():
     campos de composición."""
     # impo creciendo (situación jun-2026 real)
     assert itcm.ajuste_automatico_saldo(
-        {"valor": 18322, "expo_var_ia": 14.1, "impo_var_ia": 10.6,
+        {"valor": 18.0, "expo_var_ia": 14.1, "impo_var_ia": 10.6,
          "expo_delta_12m": 11451, "impo_delta_12m": 7125}) is None
     # impo caen pero la mejora viene más de las expo (share_impo = 5,3%)
     assert itcm.ajuste_automatico_saldo(
-        {"valor": 16000, "expo_var_ia": 12.0, "impo_var_ia": -1.0,
+        {"valor": 16.0, "expo_var_ia": 12.0, "impo_var_ia": -1.0,
          "expo_delta_12m": 9000, "impo_delta_12m": -500}) is None
-    # déficit / sin superávit relevante
+    # déficit / sin superávit relevante (≤ 3 % del comercio, ADR-0404)
     assert itcm.ajuste_automatico_saldo(
-        {"valor": -2000, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
+        {"valor": -2.0, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
          "expo_delta_12m": 0, "impo_delta_12m": -8000}) is None
-    # banda interpolada ya ≤ 60 (valor=5001 → 56,7): el ajuste no agrega nada
     assert itcm.ajuste_automatico_saldo(
-        {"valor": 5001, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
+        {"valor": 3.0, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
+         "expo_delta_12m": 0, "impo_delta_12m": -8000}) is None
+    # banda interpolada ya ≤ 60 (valor=9 % → 58,5): el ajuste no agrega nada
+    assert itcm.ajuste_automatico_saldo(
+        {"valor": 9.0, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
          "expo_delta_12m": 0, "impo_delta_12m": -3000}) is None
     # sin composición (fallback a la serie de saldo directa)
-    assert itcm.ajuste_automatico_saldo({"valor": 17125}) is None
+    assert itcm.ajuste_automatico_saldo({"valor": 17.5}) is None
 
 
 def test_interpretacion_bandas():

@@ -43,31 +43,27 @@ def test_bandas_itcp_tiene_alineamiento_senadores_prov_no_gobernadores_alineamie
     assert "gobernadores_alineamiento" not in dim["indicadores"]
 
 
-def test_banda_alineamiento_senadores_prov_recalibrada():
-    # Recalibración 2026-07-09 (ADR-0038) con 29 puntos mensuales reales
-    # backfilleados: anclas 70/60/50/40 (antes 65/45/25/10, heredadas sin
-    # validar de gobernadores_alineamiento).
-    bandas = itcp.BANDAS_ITCP["alineamiento_senadores_prov"]
-    assert itcp.puntaje_banda(70.0, bandas) == 85    # low exclusivo del tramo abierto
-    assert itcp.puntaje_banda(70.01, bandas) == 100
-    assert itcp.puntaje_banda(60.0, bandas) == 65    # high inclusivo
-    assert itcp.puntaje_banda(50.0, bandas) == 40
-    assert itcp.puntaje_banda(40.0, bandas) == 10
-    assert itcp.puntaje_banda(19.4, bandas) == 10    # mínimo real observado (ago-2025)
+def _puntaje_itcp(indicador, valor):
+    """Puntaje 0-100 como lo calcula el motor: anclas explícitas si las hay."""
+    return parametrica.puntaje_de(valor, indicador, itcp.BANDAS_ITCP, itcp.ANCLAS_ITCP)
 
 
-def test_banda_alineamiento_senadores_prov_ya_no_satura_el_valor_live_actual():
-    # El hallazgo que motivó la recalibración: bajo las anclas viejas
-    # (65,inf,100), el valor live de la card (68.3%) saturaba en puntaje
-    # interpolado 100.0 -- una tensión de 0.0/10 pese a no ser el máximo
-    # observado en la serie real (que llega a 100.0 en feb-2024). Con las
-    # anclas nuevas, 68.3 queda ENTRE el ancla de (65, 85) y (70, 100) --
-    # ya no se aplana en el techo.
-    import parametrica
-    bandas = itcp.BANDAS_ITCP["alineamiento_senadores_prov"]
-    puntaje = parametrica.puntaje_interpolado(68.3, bandas)
-    assert puntaje < 100.0
-    assert puntaje == 94.9
+def test_anclas_alineamiento_senadores_prov_mixtas():
+    # ADR-0402: 25 → 10 y 50 → 65 conceptuales; 77 → 100, la mediana de los
+    # tres gobiernos anteriores. Reemplaza los cortes 40/50/60/70 de ADR-0038.
+    assert itcp.ANCLAS_ITCP["alineamiento_senadores_prov"] == ((25.0, 10), (50.0, 65), (77.0, 100))
+    assert _puntaje_itcp("alineamiento_senadores_prov", 25.0) == 10.0
+    assert _puntaje_itcp("alineamiento_senadores_prov", 10.0) == 10.0
+    assert _puntaje_itcp("alineamiento_senadores_prov", 50.0) == 65.0
+    assert _puntaje_itcp("alineamiento_senadores_prov", 77.0) == 100.0
+    assert _puntaje_itcp("alineamiento_senadores_prov", 90.0) == 100.0
+    assert _puntaje_itcp("alineamiento_senadores_prov", 63.5) == 82.5   # 65 + 35 × 13,5/27
+
+
+def test_bandas_alineamiento_repiten_los_cortes_de_las_anclas():
+    cortes = {x for lo, hi, _ in itcp.BANDAS_ITCP["alineamiento_senadores_prov"]
+              for x in (lo, hi) if abs(x) != float("inf")}
+    assert cortes == {x for x, _ in itcp.ANCLAS_ITCP["alineamiento_senadores_prov"]}
 
 
 def test_banda_cohesion_bloque_senado_recalibrada():
@@ -94,33 +90,30 @@ def test_banda_cohesion_bloque_senado_ya_no_satura_valores_antes_planos():
     assert puntaje == 86.8
 
 
-def test_banda_cohesion_bloque_compuesta_recalibrada():
-    # ADR-0048 (2026-07-10): cohesion_bloque pasa a ser el COMPUESTO
-    # bicameral 65/35 y sus anclas se recalibran contra la serie compuesta
-    # reconstruida (31 puntos, dic-2023->jun-2026, rango 90,3-100,0):
-    # 99,9/99,0/97,0/95,0 -- distribución 8/4/9/7/3 por banda, las cinco
-    # con datos reales. Las anclas anteriores (99,9/99,0/98,0/97,0,
-    # ADR-0042) estaban calibradas para Diputados sola.
-    bandas = itcp.BANDAS_ITCP["cohesion_bloque"]
-    assert itcp.puntaje_banda(99.9, bandas) == 85     # low exclusivo del tramo abierto
-    assert itcp.puntaje_banda(99.91, bandas) == 100
-    assert itcp.puntaje_banda(99.0, bandas) == 65     # high inclusivo
-    assert itcp.puntaje_banda(97.0, bandas) == 40
-    assert itcp.puntaje_banda(95.0, bandas) == 10
-    assert itcp.puntaje_banda(90.3, bandas) == 10     # mínimo real observado (ago-2025)
+def test_anclas_cohesion_bloque_salen_de_la_historia_del_pro():
+    # ADR-0401: media (97,0) y desvíos (3,55) de la cohesión del bloque PRO
+    # dic-2015 a dic-2018, medida igual (65/35, 90 días, sólo divididas):
+    # media − 2σ → 10 · media − σ → 40 · media → 65 · media + σ (tope 99,9) → 100.
+    assert itcp.ANCLAS_ITCP["cohesion_bloque"] == ((89.8, 10), (93.4, 40), (97.0, 65), (99.9, 100))
+    assert _puntaje_itcp("cohesion_bloque", 100.0) == 100.0
+    assert _puntaje_itcp("cohesion_bloque", 99.9) == 100.0
+    assert _puntaje_itcp("cohesion_bloque", 97.0) == 65.0
+    assert _puntaje_itcp("cohesion_bloque", 93.4) == 40.0
+    assert _puntaje_itcp("cohesion_bloque", 89.8) == 10.0
+    assert _puntaje_itcp("cohesion_bloque", 82.6) == 10.0      # mínimo del PRO 2016-2018
+    assert 65.0 < _puntaje_itcp("cohesion_bloque", 98.5) < 100.0
 
 
-def test_banda_cohesion_bloque_compuesta_discrimina_la_serie_real():
-    # Valores reales de la serie compuesta que con las anclas de Diputados
-    # sola caían casi todos en el piso (menores a 97): con las anclas del
-    # compuesto recorren el cuerpo de la escala sin aplanarse.
-    import parametrica
-    bandas = itcp.BANDAS_ITCP["cohesion_bloque"]
-    assert parametrica.puntaje_interpolado(99.7, bandas) < 100.0   # valor live 10-jul-2026
-    assert parametrica.puntaje_interpolado(99.7, bandas) > 85.0
-    assert 40.0 < parametrica.puntaje_interpolado(97.4, bandas) < 85.0   # mediana real
-    assert parametrica.puntaje_interpolado(92.7, bandas) < 40.0   # sep-2025 real
-    assert parametrica.puntaje_interpolado(90.3, bandas) == 10.0  # mínimo real
+def test_bandas_cohesion_repiten_los_cortes_de_las_anclas():
+    cortes = {x for lo, hi, _ in itcp.BANDAS_ITCP["cohesion_bloque"]
+              for x in (lo, hi) if abs(x) != float("inf")}
+    assert cortes == {x for x, _ in itcp.ANCLAS_ITCP["cohesion_bloque"]}
+
+
+def test_calcular_itcp_usa_las_anclas_explicitas():
+    # El motor puntúa con ANCLAS_ITCP, no con los puntos medios de la tabla.
+    r = itcp.calcular_itcp({"cohesion_bloque": 97.0})
+    assert r["valor"] == 65.0
 
 
 def test_banda_comisiones_caidas_recalibrada():
@@ -333,7 +326,7 @@ def test_calcular_itcp_pondera_dimensiones():
         "veto_quorum": 2.0,                  # poder_legislativo, puntaje 100
         "derrotas_legislativas": 0.0,        # poder_legislativo, puntaje 100
         "iaf_transferencias": 12.0,          # alianzas_territoriales, puntaje 100
-        "alineamiento_senadores_prov": 70.0, # alianzas_territoriales, puntaje 100
+        "alineamiento_senadores_prov": 80.0, # alianzas_territoriales, puntaje 100 (ancla 77, ADR-0402)
         "adhesion_reformas_provincial": 90.0, # alianzas_territoriales, puntaje 100
         "cohesion_bloque": 100.0,            # cohesion_interna, puntaje 100 (compuesto bicameral)
         "conflictividad_nacional": -40.0,    # conflicto_social, puntaje 100 (ADR-0052)
@@ -387,6 +380,20 @@ def test_todo_indicador_del_indice_declara_su_rezago():
     sobran = set(itcp.REZAGO_MESES_ITCP) - en_indice
     assert not sobran, f"declaran rezago pero no integran el índice: {sorted(sobran)}"
     assert all(v >= 0 for v in itcp.REZAGO_MESES_ITCP.values())
+
+
+def test_rezago_de_doce_meses_suma_la_demora_de_publicacion():
+    """ADR-0399: en las ventanas de 12 meses, rezago = 6 + demora media de
+    publicación, redondeado a 0,5. Las que llegan hasta hoy quedan en 6."""
+    r = itcp.REZAGO_MESES_ITCP
+    assert r["jornadas_individuales_no_trabajadas_12m"] == 9.0   # ~3 meses de planilla
+    assert r["transferencias_no_automaticas"] == 7.5             # ~1,5 del IPC
+    assert r["conflictividad_nacional"] == 7.0                   # mes en curso afuera
+    assert r["produccion_legislativa"] == 6.5                    # meses completos
+    for k in ("apoyo_empresario", "apoyo_comercio", "apoyo_campo", "apoyo_construccion",
+              "ratio_dnu", "insistencias_vetos", "rechazos_decretos", "votos_sobre_bancas"):
+        assert r[k] == 6.0, k
+    assert all((2 * v) == int(2 * v) for v in r.values()), "redondeo a 0,5"
 
 
 def test_todo_indicador_del_indice_declara_su_familia():

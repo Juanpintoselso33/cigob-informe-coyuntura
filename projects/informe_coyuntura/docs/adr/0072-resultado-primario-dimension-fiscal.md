@@ -5,7 +5,8 @@ estado: 'aceptado'
 fecha: 2026-07-18
 cinturon: 'macro'
 indicadores: [resultado_primario, recaudacion]
-relacionado: ['0021', '0029', '0056', '0318', '0321', '0329']
+relacionado: ['0021', '0029', '0056', '0318', '0321', '0329', '0403']
+modificado_por: ['0403']
 ambito: 'Cinturón macro · ITCM · dimensión Viabilidad fiscal-comercial · `resultado_primario` (nuevo) · `recaudacion` (reinterpretada)'
 origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 2 — señalada como "el problema central del sistema"'
 ---

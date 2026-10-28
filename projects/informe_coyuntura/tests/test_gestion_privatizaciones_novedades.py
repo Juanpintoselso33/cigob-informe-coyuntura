@@ -9,7 +9,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import gestion
 
 
-def test_las_nueve_empresas_tienen_termino_de_busqueda():
+def test_las_empresas_de_la_cartera_tienen_termino_de_busqueda():
     """Si se agrega una empresa al registro y no se le pone término, el
     detector la ignora en silencio y nadie se entera."""
     registro = json.loads(

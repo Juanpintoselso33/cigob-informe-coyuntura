@@ -1608,11 +1608,14 @@ def _rezago(bloque, rezago_meses: dict, pulso: float, estructural: float):
         # Se emiten las CLAVES: las etiquetas legibles viven en el front.
         "mas_rezagados": rezagados,
         "titulo": "¿De cuándo es la foto que describe el índice?",
+        # ADR-0399: a la mitad de la ventana se le suma la demora media con que
+        # publica cada fuente.
         "sub": ("Cada indicador mira una ventana de tiempo distinta. Uno que promedia "
                 "los últimos doce meses describe, en promedio, la situación de hace "
-                "seis, aunque su último dato sea de ayer. Ponderando cada componente "
-                "por el peso que realmente tiene en el índice, se obtiene de cuándo es "
-                "la foto completa."),
+                "seis, más lo que tarda su fuente en publicar: si el último dato llega "
+                "con tres meses de demora, la foto es de hace nueve. Ponderando cada "
+                "componente por el peso que realmente tiene en el índice, se obtiene "
+                "de cuándo es la foto completa."),
         "conclusion": (
             f"El índice describe, en promedio ponderado, la situación de hace "
             f"{prom_txt} meses. Un {share_pulso:.0%} de su peso corresponde a "

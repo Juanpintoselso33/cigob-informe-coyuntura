@@ -120,7 +120,13 @@ TECHOS = {
     # BAJA a 0,33 el 2026-10-27 (ADR-0375): la matriz pasó a la dimensión y
     # el tipo de cambio real vuelve a contar como historia larga; sólo los
     # términos del intercambio (5,5% efectivo) quedan como convención.
-    "ITCM": {"circular": 0.33, "sin_declarar": 0.01},
+    # BAJA a 0,11 el 2026-10-28 (ADR-0403, ADR-0404): el resultado primario,
+    # la inversión física y el crédito privado dejan los cortes puestos sobre
+    # el mandato y toman desvíos de 2004-2023, y el saldo comercial pasa de
+    # cortes en dólares redondos a desvíos de su historia en % del comercio.
+    # Quedan como convención los términos del intercambio y el desequilibrio
+    # monetario. Medido: 10,7%.
+    "ITCM": {"circular": 0.11, "sin_declarar": 0.01},
     # ITCG y ITCP bajaron el 2026-07-20 (ADR-0121) al declarar el origen de sus
     # bandas sin_declarar: los medidores de avance 0-100 (ITCG) y los indicadores
     # anclados al cero (ITCP: ventaja electoral, quórum, transferencias) eran
@@ -161,7 +167,14 @@ TECHOS = {
     # BAJA a 0,31 el 2026-10-27 (ADR-0390): `conflictividad_nacional` deja los
     # cortes puestos sobre el propio mandato y toma uno y dos desvíos de la
     # variación previa (2020-2023). Medido: 30,4%.
-    "ITCP": {"circular": 0.31, "sin_declarar": 0.01},
+    # BAJA a 0,23 el 2026-10-28 (ADR-0397): `transferencias_no_automaticas`
+    # deja los cortes puestos sobre el rango de la gestión y toma uno y dos
+    # desvíos de la variación previa (nov-2018 a nov-2023). Medido: 22,3%.
+    # BAJA a 0,09 el 2026-10-28 (ADR-0401/0402): `cohesion_bloque` toma media y
+    # desvíos del bloque PRO 2016-2018 y `alineamiento_senadores_prov` la
+    # mediana de los tres gobiernos anteriores como ancla superior; los dos
+    # dejan de calibrarse contra la serie del mandato. Medido: 8,1%.
+    "ITCP": {"circular": 0.09, "sin_declarar": 0.01},
     # ITVC entró al registro el 2026-07-20 (ADR-0123) con 0% circular. Desde
     # ADR-0235, diecisiete componentes usan fecha fija y tarifas usa un rango
     # externo; ninguno se calibra contra el período. Techo en 0,01: si
@@ -178,7 +191,7 @@ PROCEDENCIA = {
     "rem_ipc_12m": ("conceptual", "hereda las bandas normativas del ipc_total —misma vara para inflación esperada y realizada— (ADR-0120)"),
     "desequilibrio_monetario": ("convencion", "cortes por percentiles (p0/p25/p50/p75/p100) de cada componente, como pide la sección 7 de la ficha; la matriz A×B y sus cuatro esquinas vienen del documento (ADR-0192)"),
     "recaudacion": ("conceptual", "anclas sobre el nivel real desestacionalizado de la base imponible (100 = 4T-2023, ADR-0152); los cortes históricos de variación real en torno al cero caen razonablemente en la distribución 2021-2023 de la serie DGI que se puntúa desde ADR-0127 (mediana +4,5%; p0/p14/p57/p80) y NO se recalibraron al cambiar de fuente (ADR-0120)"),
-    "saldo_comercial_12m": ("conceptual", "bandas en torno al equilibrio comercial (cero), techo institucional 85; consistentes con la mediana histórica (ADR-0120)"),
+    "saldo_comercial_12m": ("historia_larga", "en % del comercio, centro en el equilibrio (0 → 50) y cortes en 1, 1,5 y 2 desvíos (8,48 pp) de ene-2004 a nov-2023; techo institucional 85 (ADR-0120, ADR-0404)"),
     "reservas_bcra": ("conceptual", "bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120)"),
     "idc": ("conceptual", "anclas en desvíos estándar: +1σ ≈ p84 · −1σ ≈ p16 (ADR-0028)"),
     "emae_ia": ("conceptual", "bandas de crecimiento en torno al cero; el corte de crecimiento nulo cae en p26 de la historia 2021-2023 (ADR-0120)"),
@@ -193,7 +206,7 @@ PROCEDENCIA = {
     # desequilibrio monetario.
     "tcrm": ("historia_larga", "historia 1997-2026: p10≈75, p25≈87, mediana≈106 — 29 años, cinco gobiernos (vuelve a puntuar solo con ADR-0375)"),
     "terminos_intercambio": ("convencion", "percentiles p0/p25/p50/p75/p100 de 4T-2023 / 2T-2026 —11 trimestres del período medido— llevados a 10-100 (ADR-0360, tarjeta propia desde ADR-0375; la matriz de cuatro esquinas pasó a la dimensión)"),
-    "resultado_primario": ("convencion", "referencias dic-2023 (−12,0%) y el programa estabilizado en +6/+8% (ADR-0072)"),
+    "resultado_primario": ("historia_larga", "equilibrio = 50 y uno y dos desvíos (11,9 pp) del resultado sobre la recaudación de ene-2004 a nov-2023 (−23,8 → 10 · −11,9 → 30 · 0 → 50 · 11,9 → 80 · 23,8 → 100); antes de 2015 la serie incluye rentas del BCRA y del FGS (ADR-0403)"),
     # ADR-0266: decía `convencion` y "extremos tomados de dic-2023 y ago-2025",
     # que confundía la VALIDACIÓN con el ORIGEN. Los cortes de ADR-0071 son
     # conceptuales: el 0 es el cero de una tasa real —la frontera de la
@@ -203,8 +216,8 @@ PROCEDENCIA = {
     # los dos caen en bandas abiertas. Estaban ahí para comprobar que la banda
     # los rotulaba como los rotulaba la prensa, no para fijarla.
     "costo_financiamiento_tesoro": ("conceptual", "umbrales normativos de una tasa REAL: 0 = frontera de la licuación · 6 ≈ crecimiento potencial (r < g) · 12 y 20 hacia la dinámica explosiva (ADR-0071); dic-2023 y ago-2025 se usaron para validar el rótulo, no para fijar los cortes"),
-    "iai": ("convencion", "el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026, corridas +0,17 al crecimiento de la población del INDEC (ADR-0341)"),
-    "credito_privado": ("convencion", "«calibradas a la remonetización 2024-2026» (ADR-0022)"),
+    "iai": ("historia_larga", "uno y dos desvíos robustos (rango intercuartil / 1,349 = 18,9) de la variación interanual de ene-2004 a nov-2023, con el ISAC empalmado; centro en el crecimiento de la población del INDEC, +0,17 (ADR-0341, ADR-0404)"),
+    "credito_privado": ("historia_larga", "centro en 0 y uno y dos desvíos (14,5 / 28,9 pp) de la variación real de ene-2004 a nov-2023; el mandato está fuera de todo ese rango y sigue tocando los extremos (ADR-0404)"),
 
     # ── ITCG ────────────────────────────────────────────────────────────────
     "cepo_mulc": ("documento", "«brecha sostenida <10-15% = condiciones óptimas de unificación» (doc 260702)"),
@@ -218,13 +231,13 @@ PROCEDENCIA = {
     "reestructuracion_organismos": ("conceptual", "medidor de avance 0-100 hacia el plan de disoluciones/cierres; el 100 es el ancla, no el rango observado (ADR-0121)"),
     "fal_modernizacion_laboral": ("conceptual", "cortes sobre los estados que la escala puede tomar, no sobre el rango observado (ADR-0098)"),
     "privatizaciones": ("documento", "etapas 0-4 definidas en el documento de diseño"),
-    "rigi_inversiones": ("convencion", "referencia el 22,1% de jun-2026 y la composición del pipeline de ese momento"),
+    "rigi_inversiones": ("convencion", "anclas declaradas por convención —la escala de medidor de avance de concesiones y privatizaciones: 15 → 10 · 25 → 40 · 45 → 65 · 65 → 85 · 75 → 100—, sin calibrar contra el rango observado; reemplaza a la que referenciaba el 22,1% de jun-2026 (ADR-0406)"),
     "concesiones_infraestructura": ("conceptual", "tasa de adjudicación km/plan; el 100 (plan adjudicado) es el ancla (ADR-0121)"),
     # asistencia_directa pasó a ser un hito binario (ADR-0362): el problema de
     # calibración que señalaba ADR-0189 (la TDPS ya era 98,3% en 2023) se fue
     # con la TDPS.
     "asistencia_directa": ("conceptual", "hito binario: 100 desde el cese de las unidades de gestión (Res. 84/2024), 0 antes; las bandas sólo se usan en sus extremos (ADR-0362)"),
-    "protocolo_antipiquetes": ("convencion", "calibrada con la caída observada en CABA en 2024-2025"),
+    "protocolo_antipiquetes": ("convencion", "anclas declaradas por convención —cuartos redondos de la reducción contra 2023: 0 → 10 · 12,5 → 40 · 37,5 → 65 · 62,5 → 85 · 75 → 100—; se habían fijado mirando la caída de CABA y se conservan sin moverlas al pasar al total nacional, para no ajustar la escala al nuevo resultado (ADR-0405)"),
     "libertad_opcion_salud": ("conceptual", "avance por hitos de implementación (25/20/20/20/15); un ancla por escalón y el 100 es la libre elección implementada y funcionando (ADR-0371)"),
     "siniestralidad_laboral": ("convencion", "toma la convención de variación interanual de los juicios (cortes en −15, −5, +5 y +20 %), que reemplaza; la serie de la SRT sólo da seis variaciones anuales y no alcanza para calibrar una escala propia (ADR-0385)"),
     "juicios_trabajo_capital": ("convencion", "toma la escala de litigiosidad_laboral (hoy suspendida; la misma que usa siniestralidad_laboral), que es la misma cuenta sobre otro universo; su serie arranca en 2023 y no alcanza para calibrar una propia (ADR-0365)"),
@@ -244,10 +257,10 @@ PROCEDENCIA = {
     "apoyo_construccion": ("conceptual", "las mismas anclas del saldo de la industria, el comercio y el campo —el rango TEÓRICO (−1 a +1) en cinco tramos iguales centrado en el cero—, fijadas antes de ver la serie de la construcción (ADR-0150, ADR-0391)"),
     # bloqueo_sostenido salió del índice (ADR-0330): no puntúa más, así que no
     # declara procedencia acá (mismo criterio que derrotas_legislativas).
-    "transferencias_no_automaticas": ("convencion", "cortes -50/-20/+5/+30 pp puestos mirando el rango observado de las 22 ventanas de la gestión (-85% a +38%); sólo el cero como referencia es conceptual (ADR-0378)"),
-    "alineamiento_senadores_prov": ("convencion", "recalibrada con 29 puntos propios de feb-2024 en adelante (ADR-0038)"),
+    "transferencias_no_automaticas": ("historia_larga", "nivel real de 12 meses contra 2023 con cortes en uno y dos desvíos (35,9 pp ≈ ±36/±72) de la variación interanual real de las 61 ventanas de nov-2018 a nov-2023, previas al mandato (ADR-0397; antes, convención sobre el rango de la gestión, ADR-0378)"),
+    "alineamiento_senadores_prov": ("historia_larga", "anclas mixtas: 25 → 10 y 50 → 65 son conceptuales (un cuarto y la mitad de los votos ajenos coinciden con el oficialismo); 77 → 100 es la mediana de los tres gobiernos anteriores medidos igual (Fernández de Kirchner 2012-2015, Macri 2015-2019, Fernández 2019-2023: 134 meses). Antes, 40/50/60/70 calibradas con la serie propia del mandato (ADR-0038, ADR-0402)"),
     "adhesion_reformas_provincial": ("conceptual", "anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044)"),
-    "cohesion_bloque": ("convencion", "calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048)"),
+    "cohesion_bloque": ("historia_larga", "media y desvíos de la cohesión del bloque PRO de Macri, dic-2015 a dic-2018, medida igual (65/35, 90 días, sólo votaciones divididas): 89,8 → 10 · 93,4 → 40 · 97,0 → 65 · 99,9 → 100. Antes, calibrada contra la serie propia del mandato (ADR-0042/0048, ADR-0401)"),
     "votos_sobre_bancas": ("convencion", "anclas declaradas por convención —40% de la cámara o más = 100, 30% = 85, 20% = 65, 10% = 40, 5% o menos = 10—, sin calibrar contra el rango observado (ADR-0376)"),
     "conflictividad_nacional": ("historia_larga", "uno y dos desvíos (14,7 pp) de la variación interanual de 2020-2023, previa al mandato (ADR-0390)"),
     "jornadas_individuales_no_trabajadas_12m": (

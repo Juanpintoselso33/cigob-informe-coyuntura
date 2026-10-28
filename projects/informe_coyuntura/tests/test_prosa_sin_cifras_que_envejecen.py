@@ -35,7 +35,7 @@ CAMPOS_EXCLUIDOS = {"cambios", "bandas", "puntos", "anclas", "latex", "fuente"}
 
 CADENA = re.compile(r'"((?:[^"\\]|\\.){12,}?)"')
 PESO = re.compile(
-    r"\bpesa(?:ba|n)?\s+(?:un\s+|el\s+)?\d[\d,.]*\s?%"
+    r"\b(?:pesa(?:ba|n)?|pondera(?:ba|n)?)\s+(?:a\s+)?(?:un\s+|el\s+)?(?:\w+\s+){0,2}\d[\d,.]*\s?%"
     r"|\d[\d,.]*\s?%\s+(?:del\s+(?:índice|indice|total|cinturón|ITVC|ITCIS|ITCP|ITCG|ITCM)"
     r"|interno|de\s+la\s+dimensión)",
     re.I)

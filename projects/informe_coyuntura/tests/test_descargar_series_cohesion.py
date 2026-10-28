@@ -2,6 +2,8 @@ import sys
 import json
 from pathlib import Path
 from datetime import date
+
+import pytest
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import descargar_series
 
@@ -121,7 +123,8 @@ def test_actas_cohesion_senado_cacheadas_anio_cerrado_no_se_vuelve_a_pedir(tmp_p
     monkeypatch.setattr(descargar_series, "date", _FakeDate)
     monkeypatch.setattr(descargar_series, "COHESION_SENADO_ACTAS_STORE", tmp_path / "actas.json")
     (tmp_path / "actas.json").write_text(json.dumps({
-        "2023": [{"fecha": "2023-06-01", "rice": 90.0}],
+        "2023": [{"fecha": "2023-06-01", "rice": 90.0, "minoria": 30.0,
+                  "v": descargar_series.politica.VERSION_DETALLE_ACTAS}],
     }), encoding="utf-8")
     llamados = []
 
@@ -142,8 +145,9 @@ def test_fetch_cohesion_bloque_senado_mensual_deriva_ventanas_rolling(tmp_path, 
     monkeypatch.setattr(descargar_series, "COHESION_SENADO_ACTAS_STORE", tmp_path / "actas.json")
 
     detalle_2026 = [
-        {"fecha": "2026-03-15", "rice": 100.0},
-        {"fecha": "2026-06-01", "rice": 80.0},
+        {"fecha": "2026-03-15", "rice": 100.0, "minoria": 20.0},
+        {"fecha": "2026-06-01", "rice": 80.0, "minoria": 20.0},
+        {"fecha": "2026-06-02", "rice": 0.0, "minoria": 2.0},   # casi unánime: no entra (ADR-0401)
     ]
     monkeypatch.setattr(descargar_series.politica, "fetch_cohesion_bloque_senado_actas_anio",
                          lambda anio: detalle_2026 if anio == 2026 else [])
@@ -233,7 +237,8 @@ def test_actas_cohesion_diputados_cacheadas_anio_cerrado_no_se_vuelve_a_pedir(tm
     monkeypatch.setattr(descargar_series, "date", _FakeDate)
     monkeypatch.setattr(descargar_series, "COHESION_DIPUTADOS_ACTAS_STORE", tmp_path / "actas.json")
     (tmp_path / "actas.json").write_text(json.dumps({
-        "2023": [{"fecha": "2023-06-01", "rice": 88.0}],
+        "2023": [{"fecha": "2023-06-01", "rice": 88.0, "minoria": 30.0,
+                  "v": descargar_series.politica.VERSION_DETALLE_ACTAS}],
     }), encoding="utf-8")
     llamados = []
 
@@ -254,8 +259,8 @@ def test_fetch_cohesion_bloque_diputados_mensual_deriva_ventanas_rolling(tmp_pat
     monkeypatch.setattr(descargar_series, "COHESION_DIPUTADOS_ACTAS_STORE", tmp_path / "actas.json")
 
     detalle_2026 = [
-        {"fecha": "2026-03-15", "rice": 99.0},
-        {"fecha": "2026-06-01", "rice": 70.0},
+        {"fecha": "2026-03-15", "rice": 99.0, "minoria": 15.0},
+        {"fecha": "2026-06-01", "rice": 70.0, "minoria": 15.0},
     ]
     monkeypatch.setattr(descargar_series.politica, "fetch_cohesion_bloque_diputados_actas_anio",
                          lambda anio: detalle_2026 if anio == 2026 else [])
@@ -295,7 +300,8 @@ def test_actas_alineamiento_cacheadas_anio_cerrado_no_se_vuelve_a_pedir(tmp_path
     monkeypatch.setattr(descargar_series, "date", _FakeDate)
     monkeypatch.setattr(descargar_series, "ALINEAMIENTO_SENADORES_ACTAS_STORE", tmp_path / "actas.json")
     (tmp_path / "actas.json").write_text(json.dumps({
-        "2023": [{"fecha": "2023-06-01", "provincias": {"CABA": [1, 1]}}],
+        "2023": [{"fecha": "2023-06-01", "provincias": {"CABA": [1, 1]},
+                  "v": descargar_series.politica.VERSION_DETALLE_ACTAS}],
     }), encoding="utf-8")
     llamados = []
 
@@ -310,6 +316,27 @@ def test_actas_alineamiento_cacheadas_anio_cerrado_no_se_vuelve_a_pedir(tmp_path
     # 2023 (cerrado) ya estaba cacheado -- solo se re-pide 2024/2025/2026 (en curso).
     assert llamados == [2024, 2025, 2026]
     assert set(cache.keys()) == {"2023", "2024", "2025", "2026"}
+
+
+@pytest.mark.parametrize("store, fn, fetch", [
+    ("COHESION_SENADO_ACTAS_STORE", "_actas_cohesion_senado_cacheadas", "fetch_cohesion_bloque_senado_actas_anio"),
+    ("COHESION_DIPUTADOS_ACTAS_STORE", "_actas_cohesion_diputados_cacheadas", "fetch_cohesion_bloque_diputados_actas_anio"),
+    ("ALINEAMIENTO_SENADORES_ACTAS_STORE", "_actas_alineamiento_cacheadas", "fetch_alineamiento_senadores_actas_anio"),
+])
+def test_anio_cerrado_de_otra_version_se_vuelve_a_pedir(tmp_path, monkeypatch, store, fn, fetch):
+    # ADR-0400/0401: el detalle cacheado antes del registro de pases y de la
+    # minoría por votación está mal (Juez contado en LLA en 2024, sin poder
+    # filtrar las divididas): un año cerrado de otra versión no es inmutable.
+    monkeypatch.setattr(descargar_series, "date", _FakeDate)
+    monkeypatch.setattr(descargar_series, store, tmp_path / "actas.json")
+    (tmp_path / "actas.json").write_text(json.dumps({
+        "2024": [{"fecha": "2024-06-01", "rice": 90.0}],
+        "2025": [],
+    }), encoding="utf-8")
+    llamados = []
+    monkeypatch.setattr(descargar_series.politica, fetch, lambda anio: llamados.append(anio) or [])
+    getattr(descargar_series, fn)(2024)
+    assert llamados == [2024, 2026]   # 2025 vacío no tiene nada que corregir
 
 
 def test_fetch_alineamiento_senadores_prov_mensual_deriva_ventanas_rolling(tmp_path, monkeypatch):

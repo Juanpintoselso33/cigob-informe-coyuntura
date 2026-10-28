@@ -35,18 +35,18 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 75,7** | **VERDE** | Moderadamente aflojado | 17 indicadores: 13 en verde · 3 en amarillo · 1 en naranja |
+| **ITCP: 70,0** | **VERDE** | Moderadamente aflojado | 17 indicadores: 12 en verde · 3 en amarillo · 1 en naranja · 1 en rojo |
 Componentes que puntúan en este corte: 17 de 17 publicados.
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 72,6 | VERDE | 22,6 % |
-| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 78,5 | VERDE | 20,4 % |
-| Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 84,6 | VERDE | 16,1 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en cinco señales. | 72,3 | VERDE | 22,6 % |
+| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 53,8 | AMARILLO | 20,4 % |
+| Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás. | 84,8 | VERDE | 16,1 % |
 | Poder judicial | Mide la cobertura estimada de cargos de juez, que depende de los pliegos que eleva el Poder Ejecutivo y del acuerdo del Senado. | 62,0 | VERDE | 16,1 % |
-| Sector privado | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 70,2 | VERDE | 14,0 % |
+| Sector privado | Lo que dicen en público, por escrito y con firma institucional, las cámaras empresarias sobre las medidas del Gobierno nacional, en cuatro sectores que pesan lo… | 65,8 | VERDE | 14,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 91,4 | VERDE | 10,8 % |
 
 ```{=openxml}
@@ -62,25 +62,25 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCP |
 |---|---|---|---|---|
 | **DIMENSIÓN: Poder legislativo** | | | | |
-| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,09 DNUs publicados por ley publicada | AMARILLO | 5,2 % |
+| Decretos de necesidad y urgencia por ley | Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por cada ley publicada en él, dentro de una… | 1,12 DNUs publicados por ley publicada | AMARILLO | 5,2 % |
 | Eficacia legislativa de proyectos maduros | Porcentaje sancionado de los proyectos de ley del Ejecutivo publicados entre 365 y 730 días antes del corte. | 27,3 % de proyectos | VERDE | 6,8 % |
 | Vetos que el Congreso dio vuelta | Cuántos vetos del Presidente dio vuelta el Congreso en los últimos doce meses. | 0 vetos insistidos por las dos cámaras, últimos 12 meses | VERDE | 3,4 % |
 | Decretos derogados por el Congreso | Cuántos decretos de necesidad y urgencia o delegados derogó el Congreso en los últimos doce meses. | 0 decretos derogados por las dos cámaras, últimos 12 meses | VERDE | 3,4 % |
-| Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. | 31 leyes sancionadas (12m) | AMARILLO | 3,8 % |
+| Producción legislativa del Congreso | Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno aceptó. | 31 leyes sancionadas (12m) | AMARILLO | 3,8 % |
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
-| Transferencias no automáticas a provincias | Cuánto varían, en términos reales, las transferencias que la Nación devenga a provincias y municipios por decisión… | 6 % interanual real | VERDE | 8,2 % |
+| Transferencias no automáticas a provincias | Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del… | −82,1 % real vs 2023 | ROJO | 8,2 % |
 | Provincias adheridas al régimen de grandes inversiones | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 75 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 6,1 % |
 | Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 56,5 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 6,1 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
-| Votos ajenos al aprobar leyes | Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó… | 22,1 % de las bancas de la cámara | VERDE | 8,1 % |
-| Cohesión del bloque oficialista (ambas cámaras) | Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones nominales de los últimos… | 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | VERDE | 8,1 % |
+| Votos ajenos al aprobar leyes | Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó… | 22,3 % de las bancas de la cámara | VERDE | 8,1 % |
+| Cohesión del bloque oficialista (ambas cámaras) | Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas (la minoría tuvo… | 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) | VERDE | 8,1 % |
 | **DIMENSIÓN: Poder judicial** | | | | |
 | Cobertura de cargos judiciales | Qué porcentaje estimado de los cargos de juez de la justicia federal y nacional tiene juez designado. | 73,82 % estimado de cargos con juez designado | VERDE | 16,1 % |
 | **DIMENSIÓN: Sector privado** | | | | |
 | Postura pública de la industria | Qué dicen en público, por escrito y con firma institucional, las cámaras de la industria sobre las medidas del Gobierno… | −0,45 saldo de postura (−1 a +1, 12m móviles) | NARANJA | 3,5 % |
 | Postura pública del comercio | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de Comercio y Servicios (CAC) sobre las… | 1 saldo de postura (−1 a +1, 12m móviles) | VERDE | 3,5 % |
 | Postura pública del campo | Qué dicen en público, por escrito y con firma institucional, Coninagro, la Sociedad Rural Argentina (SRA) y las… | −0,15 saldo de postura (−1 a +1, 12m móviles) | AMARILLO | 3,5 % |
-| Postura pública de la construcción | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de la Construcción (CAMARCO) sobre las… | 0,5 saldo de postura (−1 a +1, 12m móviles) | VERDE | 3,5 % |
+| Postura pública de la construcción | Qué dice en público, por escrito y con firma institucional, la Cámara Argentina de la Construcción (CAMARCO) sobre las… | 0,2 saldo de postura (−1 a +1, 12m móviles) | VERDE | 3,5 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
 | Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −27,2 % vs 2023 | VERDE | 6,5 % |
 | Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.820.775 jornadas individuales no trabajadas (12m) | VERDE | 4,3 % |
@@ -101,7 +101,7 @@ Cuántos decretos de necesidad y urgencia se publican en el Boletín Oficial por
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,09 DNUs publicados por ley publicada** (2026-10) | **AMARILLO** | Peso efectivo 5,2 % del ITCP | Cinturón Política |
+| **Hoy: 1,12 DNUs publicados por ley publicada** (2026-10) | **AMARILLO** | Peso efectivo 5,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -145,13 +145,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 35 DNU y 32 leyes publicados en el Boletín Oficial entre 2025-10-29 y 2026-10-28 → 1.09 DNU por ley
+- 36 DNU y 32 leyes publicados en el Boletín Oficial entre 2025-10-29 y 2026-10-28 → 1.12 DNU por ley
 
 ## Color vigente y por qué
 
-Dato vigente: 1,09 DNUs publicados por ley publicada (2026-10).
+Dato vigente: 1,12 DNUs publicados por ley publicada (2026-10).
 
-1,094 DNUs publicados por ley publicada está en Amarillo, a 0,01 del límite con Verde (1,08).
+1,125 DNUs publicados por ley publicada está en Amarillo, a 0,04 del límite con Verde (1,08).
 
 **Color vigente: AMARILLO**
 
@@ -381,7 +381,7 @@ Ponderación vigente en el ITCP: 3,5 % efectivo. El color es una lectura adicion
 
 - Mide lo que una asociación decidió declarar en público, no el humor de los comerciantes ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.
 - Es una sola cámara. La CAC entra porque cumple el mínimo que se fijó para entrar: cuatro pronunciamientos sobre el Gobierno nacional en doce meses. La Confederación Argentina de la Mediana Empresa (CAME) está clasificada y no entra, porque en el último año sólo dos de sus comunicados se pronunciaron sobre el Gobierno nacional, después de veinticuatro en 2024 y 2025; si vuelve a pronunciarse, vuelve a entrar. Quedan sin medir las pymes del interior, que son la base de CAME.
-- La CAC nunca criticó al Ejecutivo nacional en un comunicado: los veintiún pronunciamientos que le dedicó desde diciembre de 2023 son todos de apoyo. Sus críticas —doce— van dirigidas a las provincias, los municipios, el Congreso, la Justicia o un organismo internacional. Por eso el saldo estuvo en el máximo en los treinta y dos meses de la serie y casi no puede moverse hacia abajo; y con tan pocos pronunciamientos en la ventana, una sola crítica lo bajaría de golpe.
+- La CAC nunca criticó al Ejecutivo nacional en un comunicado: los veintiún pronunciamientos que le dedicó desde diciembre de 2023 son todos de apoyo. Sus críticas —doce— van dirigidas a las provincias, los municipios, el Congreso, la Justicia o el Fondo Monetario Internacional. Por eso el saldo está en el máximo en toda la serie: no es que la escala esté saturada, sino que la cámara no criticó al Ejecutivo nacional en todo el mandato. La escala sí se movería: con tan pocos pronunciamientos en la ventana, una sola crítica al Gobierno lo bajaría de golpe.
 - La clasificación no es automática, y por eso el indicador no puede actualizarse solo. Un proceso diario detecta los comunicados nuevos y avisa cada uno como pendiente; mientras haya uno sin clasificar la serie no avanza, y si nadie lo clasifica durante meses el índice marca el dato como desactualizado.
 - Para verificar que las reglas no dejan lugar a la interpretación, los comunicados los clasificaron por separado dos lectores independientes que no ven el trabajo del otro: coincidieron en el 95% de las posturas y en el 93% de los destinatarios de los 74 de la CAC. Ambos son sistemas de inteligencia artificial —de dos modelos distintos, a diferencia de la tanda de la industria—; comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta. Los pocos desacuerdos los resolvió otro sistema con tres criterios generales escritos, y quedan pendientes de revisión por una persona.
 - La ventana de doce meses hace que el indicador describa, en promedio, la situación de seis meses atrás.
@@ -393,6 +393,8 @@ Ponderación vigente en el ITCP: 3,5 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La ficha aclara que el saldo está en el máximo porque la cámara no criticó al Ejecutivo nacional en todo el mandato, no porque la escala esté saturada. No cambia el cálculo.
 
 **2026-10-27** — La dimensión de sector privado pasa a cuartos al entrar la construcción: pesa 25% interno y 3,5% efectivo del índice político. El saldo y el puntaje no cambian.
 
@@ -412,7 +414,7 @@ Qué dicen en público, por escrito y con firma institucional, Coninagro, la Soc
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −0,15 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **AMARILLO** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
+| **Hoy: −0,15 saldo de postura (−1 a +1, 12m móviles)** (2026-09) | **AMARILLO** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -420,9 +422,9 @@ Qué dicen en público, por escrito y con firma institucional, Coninagro, la Soc
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_campo | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2026-01 → 2026-10 (10 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
+| **SERIE DISPONIBLE** | 2026-01 → 2026-09 (9 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Coninagro, Sociedad Rural Argentina (SRA) y Confederaciones Rurales Argentinas (CRA) | **OPERACIÓN ESTADÍSTICA** | Notas fechadas de las secciones de prensa de sus sitios |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
@@ -457,13 +459,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses las cámaras del campo se pronunciaron 52 veces sobre medidas del Gobierno nacional: 13 de apoyo y 39 de crítica. El saldo es el promedio simple de los saldos de cada cámara (Coninagro −0,2 (2 de apoyo, 3 de crítica); CRA −0,744 (5 de apoyo, 34 de crítica); la SRA 0,5 (6 de apoyo, 2 de crítica)): −0,148 en una escala de −1 (todo crítica) a +1 (todo apoyo).
+- En los últimos doce meses las cámaras del campo se pronunciaron 54 veces sobre medidas del Gobierno nacional: 13 de apoyo y 41 de crítica. El saldo es el promedio simple de los saldos de cada cámara (Coninagro −0,2 (2 de apoyo, 3 de crítica); CRA −0,756 (5 de apoyo, 36 de crítica); la SRA 0,5 (6 de apoyo, 2 de crítica)): −0,152 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.
 
 ## Color vigente y por qué
 
-Dato vigente: −0,15 saldo de postura (−1 a +1, 12m móviles) (2026-10).
+Dato vigente: −0,15 saldo de postura (−1 a +1, 12m móviles) (2026-09).
 
-−0,148 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,07 del límite con Verde (−0,08).
+−0,152 saldo de postura (−1 a +1, 12m móviles) está en Amarillo, a 0,07 del límite con Verde (−0,08).
 
 **Color vigente: AMARILLO**
 
@@ -505,7 +507,7 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0,5 saldo de postura (−1 a +1, 12m móviles)** (2026-10) | **VERDE** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
+| **Hoy: 0,2 saldo de postura (−1 a +1, 12m móviles)** (2026-09) | **VERDE** | Peso efectivo 3,5 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -513,9 +515,9 @@ Qué dice en público, por escrito y con firma institucional, la Cámara Argenti
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | apoyo_construccion | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
-| **SERIE DISPONIBLE** | 2024-02 → 2026-10 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
+| **SERIE DISPONIBLE** | 2024-02 → 2026-09 (31 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: las notas se publican el día en que la cámara las emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Cámara Argentina de la Construcción (CAMARCO) | **OPERACIÓN ESTADÍSTICA** | Notas fechadas de la sección de noticias de su sitio |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta las notas nuevas y las deja pendientes; la clasificación de cada una la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
@@ -551,13 +553,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 4 veces sobre medidas del Gobierno nacional: 3 de apoyo y 1 de crítica. Saldo 0,5 en una escala de −1 (todo crítica) a +1 (todo apoyo).
+- En los últimos doce meses la Cámara Argentina de la Construcción se pronunció 5 veces sobre medidas del Gobierno nacional: 3 de apoyo y 2 de crítica. Saldo 0,2 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 1 comunicado detectado sin codificar.
 
 ## Color vigente y por qué
 
-Dato vigente: 0,5 saldo de postura (−1 a +1, 12m móviles) (2026-10).
+Dato vigente: 0,2 saldo de postura (−1 a +1, 12m móviles) (2026-09).
 
-0,5 saldo de postura (−1 a +1, 12m móviles) está en Verde, a 0,58 del límite con Amarillo (−0,08).
+0,2 saldo de postura (−1 a +1, 12m móviles) está en Verde, a 0,28 del límite con Amarillo (−0,08).
 
 **Color vigente: VERDE**
 
@@ -657,6 +659,7 @@ Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicion
 - La base de comparación es fija (el total de 2023): a medida que pasa el tiempo, la referencia envejece — el mismo criterio declarado que usa el índice de impacto social con su base de fin de 2023.
 - La cobertura de ACLED para la Argentina es confiable desde 2020; los años anteriores registran menos eventos por expansión de la propia cobertura, no por menor conflictividad — por eso ni las bandas ni el gráfico usan datos previos a la base.
 - Depende de la cobertura de prensa que releva ACLED: eventos sin cobertura periodística no entran al registro.
+- Parte de la caída del mandato podría ser tendencia previa: 2022 y 2023 ya sumaban alrededor de un 10% menos de eventos que 2020 y 2021, así que la conflictividad registrada venía bajando antes de diciembre de 2023 y la comparación contra 2023 no separa esa inercia de lo que cambió después.
 - La historia previa con la que se fijan los cortes son sólo cuatro años (2020-2023) y tienen la pandemia adentro. Una caída de eventos registrados también puede deberse a menor cobertura de prensa y no a menos conflicto: la de 2024 coincide con el balance oficial de bloqueos, pero 2025-2026 no se contrastó.
 - Las semanas que cruzan de mes o año se asignan enteras a su inicio. Los grupos mensuales no son conteos exactos por fecha del evento: obtenerlos exige microdatos diarios. La base y la ventana usan la misma convención semanal.
 
@@ -667,6 +670,10 @@ Ponderación vigente en el ITCP: 6,5 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** ACLED revisa y completa semanas recientes en cada publicación; el acumulado de 12 meses se recalcula completo desde el archivo en cada actualización y absorbe esas revisiones automáticamente.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — La ficha declara que 2022 y 2023 ya venían por debajo de 2020 y 2021, así que parte de la caída del mandato podría ser tendencia previa. No cambia el cálculo.
+
+**2026-10-28** — En la tarjeta de rezago del índice político pasa de 6 a 7 meses: a la mitad de la ventana se le suma el mes en curso, que queda afuera hasta que cierra. No cambia el valor ni el puntaje.
 
 **2026-07-11** — Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes de CEPA, que no permitía una serie mensual comparable.
 
@@ -761,6 +768,8 @@ Ponderación vigente en el ITCP: 4,3 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
+**2026-10-28** — En la tarjeta de rezago del índice político pasa de 6 a 9 meses: a la mitad de la ventana de doce meses se le suman los tres meses que tarda en publicarse la planilla. No cambia el valor ni el puntaje.
+
 **2026-10-28** — La tabla de colores muestra el tramo rojo (desde 8,85 millones), que faltaba por un error del motor en los tramos abiertos; los números del «¿por qué este color?» llevan separador de miles. No cambia el puntaje.
 
 **2026-08-21** — Incorporado como segunda pata de conflicto social para medir tamaño y duración de los paros, con 40% interno; ACLED conserva 60%.
@@ -779,27 +788,27 @@ Ponderación vigente en el ITCP: 4,3 % efectivo. El color es una lectura adicion
 
 # Transferencias no automáticas a provincias
 
-Cuánto varían, en términos reales, las transferencias que la Nación devenga a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con los 12 meses anteriores (la ventana termina en el último mes cerrado con IPC publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.
+Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con el total de 2023, el año anterior al mandato (la ventana termina en el último mes cerrado con IPC publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 6 % interanual real** (2026-09) | **VERDE** | Peso efectivo 8,2 % del ITCP | Cinturón Política |
+| **Hoy: −82,1 % real vs 2023** (2026-09) | **ROJO** | Peso efectivo 8,2 % del ITCP | Cinturón Política |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | transferencias_no_automaticas | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % interanual real |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Compara los últimos 12 meses con los 12 anteriores y termina en el último mes cerrado que tiene IPC publicado: el devengado de un mes queda en Presupuesto Abierto a fin de ese mes (el mes en curso viene parcial y no se usa) y el IPC del INDEC llega unos 45 días después, que es el que fija el último mes. |
+| **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % real vs 2023 |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-09 (34 puntos) | **REZAGO DE PUBLICACIÓN** | Suma los últimos 12 meses, que terminan en el último mes cerrado que tiene IPC publicado: el devengado de un mes queda en Presupuesto Abierto a fin de ese mes (el mes en curso viene parcial y no se usa) y el IPC del INDEC llega unos 45 días después, que es el que fija el último mes. |
 | **PRODUCTOR DEL DATO** | Ministerio de Economía (Presupuesto Abierto); deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | Crédito devengado por mes de impacto presupuestario, inciso 5 (transferencias), partidas principales 7 (a instituciones provinciales y municipales, gastos corrientes) y 8 (ídem, de capital); deflactor: IPC nacional del INDEC |
-| **MODO DE ACCESO** | Automático con token de la API de Presupuesto Abierto: una consulta por ejercicio desde 2022, el filtro por partida principal se aplica del lado del cálculo (la API no admite listas de valores) y el IPC se obtiene por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
+| **MODO DE ACCESO** | Automático con token de la API de Presupuesto Abierto: una consulta por ejercicio desde 2023, el filtro por partida principal se aplica del lado del cálculo (la API no admite listas de valores) y el IPC se obtiene por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto varían, en términos reales, las transferencias que la Nación devenga a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con los 12 meses anteriores (la ventana termina en el último mes cerrado con IPC publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.
+Cuánto devengó la Nación, en términos reales, como transferencias a provincias y municipios por decisión —Aportes del Tesoro Nacional (ATN) y transferencias corrientes y de capital por programa— durante los últimos 12 meses, comparado con el total de 2023, el año anterior al mandato (la ventana termina en el último mes cerrado con IPC publicado). Quedan afuera la coparticipación y el resto del reparto automático, que no pasa por el presupuesto como gasto, y las partidas que son por ley o fallo: la coparticipación de la Ciudad de Buenos Aires, el Fondo de Incentivo Docente, las cajas previsionales provinciales y los hospitales nacionales. No incluye los adelantos financieros del Tesoro, que no tienen serie mensual.
 
-Mide cuánto recurso discrecional pone la Nación en juego con las provincias: cuánto gira por encima o por debajo de lo que giraba antes, en términos reales. Es un insumo de la relación federal, no la respuesta de los gobernadores: informa lo que hace el Gobierno nacional, no a qué provincias va ni cómo reaccionan.
+Mide cuánto recurso discrecional pone la Nación en juego con las provincias frente al nivel de 2023, en términos reales. Compara contra una base fija y no contra el año anterior: así una recuperación parcial después de una caída no se lee como un aumento. Es un insumo de la relación federal, no la respuesta de los gobernadores: informa lo que hace el Gobierno nacional, no a qué provincias va ni cómo reaccionan.
 
 **Dimensión que integra — Alianzas territoriales.** El sostén federal del gobierno, visto desde tres señales: las transferencias no automáticas a las provincias —lo que la Nación les gira por decisión y no por ley—, el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al Régimen de Incentivo para Grandes Inversiones (RIGI). Conviene una precisión sobre qué mide y qué no: ninguna de las tres observa directamente la conducta de los gobernadores. La primera describe lo que hace el Gobierno nacional; la segunda, cómo votan los senadores de cada provincia; la tercera, una decisión legislativa provincial ya tomada. No se encontró una fuente pública que midiera de forma automatizable la postura de los ejecutivos provinciales, así que la dimensión se lee como respaldo territorial observado por sus efectos, no como una medición de la relación con cada gobernador.
 
@@ -807,8 +816,8 @@ Mide cuánto recurso discrecional pone la Nación en juego con las provincias: c
 
 - Universo: lo que la Nación devenga como transferencia a gobiernos provinciales y municipales por decisión —los Aportes del Tesoro Nacional (ATN), las transferencias corrientes por programa (educación, salud, asistencia financiera, energía, entre otros) y las de capital (obra pública, infraestructura, agua)—. La coparticipación y el resto del RON no pasan por el presupuesto como gasto, porque se detraen de la recaudación antes de girarse: por construcción no están en esta consulta.
 - Se excluyen cuatro partidas de esas mismas cuentas que tampoco son una decisión sobre las provincias: la coparticipación de la Ciudad de Buenos Aires fijada por la Ley 27.606 y luego por el fallo de la Corte (programa 67 de Obligaciones a cargo del Tesoro), el Fondo Nacional de Incentivo Docente (por ley), las transferencias a las cajas previsionales provinciales (cobertura de déficit por convenio) y el funcionamiento de los hospitales nacionales (Garrahan, El Cruce, SAMIC). Se identifican por programa o por la descripción de la actividad, porque la jurisdicción cambia con cada reorganización de ministerios (los ATN estuvieron en el Ministerio del Interior y en 2025 en la Jefatura de Gabinete).
-- Deflación mes a mes: cada flujo mensual se divide por el IPC nacional de su propio mes, con base común diciembre de 2016 = 100, antes de sumarse. La variación real es el cociente entre ambas sumas a precios comparables menos uno; el deflactor implícito es (1 + variación nominal) / (1 + variación real) − 1. Misma cuenta que usaba la medida de transferencias automáticas.
-- Ventana: los 12 meses móviles que terminan en el último mes cerrado con IPC publicado, contra los 12 meses previos. Sólo hay ventana si los 24 meses tienen devengado e IPC; el mes en curso queda afuera porque está a medias. El gráfico tiene un punto por mes, ubicado en el último mes de la ventana, desde diciembre de 2023 (con 2022 como base).
+- Deflación mes a mes: cada flujo mensual se divide por el IPC nacional de su propio mes, con base común diciembre de 2016 = 100, antes de sumarse. La variación real es el cociente entre la suma de la ventana y la de los doce meses de 2023, las dos a precios comparables, menos uno. El detalle de la tarjeta expresa los dos totales a precios del último mes de la ventana.
+- Ventana y base: los 12 meses móviles que terminan en el último mes cerrado con IPC publicado, contra el total de 2023, una base fija anterior al mandato (la misma lectura que la conflictividad social). Sólo hay punto si la ventana y la base tienen devengado e IPC en todos sus meses; el mes en curso queda afuera porque está a medias. El gráfico tiene un punto por mes, ubicado en el último mes de la ventana, desde diciembre de 2023, que es la base misma y vale cero.
 - Quedan afuera los adelantos financieros y anticipos transitorios del Tesoro a las provincias: son operaciones financieras que se dictan por decreto individual en el Boletín Oficial y no existe una serie mensual consolidada que las agrupe, ni en Presupuesto Abierto.
 
 ## Semáforo — valores que determinan el color
@@ -817,33 +826,34 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% interanual real) | Color |
+| Rango (% real vs 2023) | Color |
 |---|---|
-| ≥ −13 | VERDE |
-| −35 – −13 | AMARILLO |
-| −45 – −35 | NARANJA |
-| ≤ −45 | ROJO |
+| ≥ −10,8 | VERDE |
+| −54 – −10,8 | AMARILLO |
+| −66 – −54 | NARANJA |
+| ≤ −66 | ROJO |
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 12 meses a sep 2026: $1,25 billones devengados (ATN $0,27 · transferencias corrientes $0,81 · de capital $0,16), +37.6% nominal contra un deflactor de 29.9% ponderado por el flujo de cada mes → +6.0% real (oct 2025–sep 2026 vs oct 2024–sep 2025)
+- 12 meses a sep 2026: $1,25 billones devengados (ATN $0,27 · transferencias corrientes $0,81 · de capital $0,16). A precios de sep 2026, $1,43 billones contra $8,00 de todo 2023 → -82.1% real (oct 2025–sep 2026 vs 2023); cada mes deflactado por su IPC
 
 ## Color vigente y por qué
 
-Dato vigente: 6 % interanual real (2026-09).
+Dato vigente: −82,1 % real vs 2023 (2026-09).
 
-6,0 % interanual real está en Verde, a 19,0 del límite con Amarillo (−13,0).
+−82,1 % real vs 2023 está en Rojo, a 16,1 del límite con Naranja (−66,0).
 
-**Color vigente: VERDE**
+**Color vigente: ROJO**
 
 Ponderación vigente en el ITCP: 8,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - Es crédito devengado, no caja: el Estado reconoce la obligación cuando corresponde pagar, y el giro efectivo a la provincia puede llegar más tarde. Una cuota devengada en diciembre y girada en enero cuenta en diciembre.
-- Los giros discrecionales se concentran en pocos meses (diciembre suele multiplicar por varios el promedio mensual), así que la variación hereda un fuerte efecto de base: entre dos ventanas consecutivas puede saltar decenas de puntos aunque la política no haya cambiado.
+- Los giros discrecionales se concentran en pocos meses (diciembre suele multiplicar por varios el promedio mensual): la ventana de doce meses absorbe esa estacionalidad, pero un diciembre fuerte o flojo mueve el nivel durante todo el año siguiente.
+- La base es fija (todo 2023) y envejece con el tiempo, el mismo criterio declarado que usa la conflictividad social. 2023 no fue un año atípico: su nivel real quedó cerca del de 2018 y del de 2022. La historia con la que se fijan los cortes arranca en noviembre de 2017 porque el IPC nacional del INDEC empieza en diciembre de 2016: el devengado existe desde antes, pero no se puede deflactar con el mismo índice.
 - No distingue a qué provincia fue cada giro ni su color político: mide cuánto, no a quién. Tampoco separa lo que una partida paga por convenio vigente de lo que se decide caso por caso dentro del mismo programa.
 - La lista de partidas excluidas (coparticipación de CABA por fallo, FONID, cajas previsionales, hospitales nacionales) es un criterio de CIGOB; otra clasificación de lo automático daría otro nivel. Si el presupuesto crea un programa nuevo con otra descripción, entra salvo que se lo agregue a la lista.
 - Deja afuera los adelantos financieros del Tesoro, que son un instrumento de negociación importante pero no tienen serie mensual.
@@ -855,6 +865,8 @@ Ponderación vigente en el ITCP: 8,2 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Presupuesto Abierto puede ajustar el devengado de meses anteriores (registros tardíos, correcciones de imputación). Se recalcula completo desde la fuente en cada actualización, de modo que las revisiones se absorben solas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Pasa de la variación contra los 12 meses previos al nivel real de los últimos 12 meses contra el total real de 2023, como la conflictividad social: la variación interanual leía la base y no el nivel, y después del hundimiento de 2024 una recuperación parcial daba +30%. Los cortes pasan de −50 · −20 · +5 · +30%, puestos mirando el rango de la gestión, a ±36 y ±72%, uno y dos desvíos de la historia de 2017-2023. Con el dato de septiembre de 2026 (−82,1% contra 2023) el componente pasa de 75,8 a 10.
 
 **2026-10-27** — Entra al índice político en lugar de la medida de transferencias automáticas, con el mismo peso (40% de alianzas territoriales). La reunión del 26 de octubre decidió medir lo que la Nación gira por decisión —ATN y transferencias corrientes y de capital por programa— y no lo que corresponde por coparticipación. La ventana a septiembre de 2026 da +6,0% real (1,25 billones de pesos contra 0,91 de los 12 meses previos, a valores corrientes).
 
@@ -1064,11 +1076,11 @@ Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicion
 
 # Votos ajenos al aprobar leyes
 
-Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de LLA a los votos afirmativos totales. Es el promedio de los últimos 12 meses; pesa Diputados 65% y Senado 35%, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.
+Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de LLA a los votos afirmativos totales. Es el promedio de los últimos 12 meses; Diputados pesa más que el Senado, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 22,1 % de las bancas de la cámara** (2026-10) | **VERDE** | Peso efectivo 8,1 % del ITCP | Cinturón Política |
+| **Hoy: 22,3 % de las bancas de la cámara** (2026-10) | **VERDE** | Peso efectivo 8,1 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1082,7 +1094,7 @@ Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron
 
 ## Definición — qué mide y por qué importa
 
-Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de LLA a los votos afirmativos totales. Es el promedio de los últimos 12 meses; pesa Diputados 65% y Senado 35%, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.
+Cuántos votos de legisladores que no son del bloque La Libertad Avanza hicieron falta para aprobar las leyes que mandó el Gobierno, medidos como porcentaje de las bancas de la cámara. En cada ley del Poder Ejecutivo aprobada en la votación en general (sin contar los tratados y convenios internacionales, que se votan casi por unanimidad), con el bloque oficialista votando a favor, se restan las bancas propias de LLA a los votos afirmativos totales. Es el promedio de los últimos 12 meses; Diputados pesa más que el Senado, y si una cámara no tuvo votaciones en la ventana, queda sólo la otra.
 
 Mide la capacidad del Ejecutivo de sumar votos ajenos en el Congreso: con un bloque propio grande hacen falta pocos votos de otros bloques, con uno chico hacen falta muchos. Complementa a la cohesión del bloque: un oficialismo unido puede igual necesitar más votos de los que tiene. Una ley aprobada con los votos de un bloque grande aliado cuenta igual que una aprobada con muchos bloques chicos, y cuando el bloque oficialista crece (como en diciembre de 2025) el excedente baja aunque el Gobierno apruebe lo mismo.
 
@@ -1094,8 +1106,8 @@ Mide la capacidad del Ejecutivo de sumar votos ajenos en el Congreso: con un blo
 - En el Senado el acta declara la etapa (en general, en particular, en general y en particular) y la clave del expediente, y se acepta el sufijo de proyecto de ley. En Diputados el acta no dice qué tipo de proyecto es: se decide por el título de la votación, y una votación única de un Orden del Día cuenta como votación en general.
 - El origen se resuelve así. En el Senado, el expediente del acta: una clave `PE` o `JGM` es del Ejecutivo; una `CD` (viene de Diputados) se cruza con el catálogo de proyectos parlamentarios, que registra cómo numera cada cámara el mismo proyecto; las claves `S`, `PR`, `PD` o `AC` no cuentan, y un acta sin clave usa la de su Orden del Día. En Diputados el acta no trae expediente: se cruza el número de Orden del Día con el dataset de dictámenes (el más reciente del último año) y los expedientes del dictamen con el catálogo. Una ley del Ejecutivo que pasa por las dos cámaras cuenta en cada una donde se votó en general.
 - Los tratados se reconocen por el título de la votación: tratado, convención o protocolo, o convenio, acuerdo o enmienda con una contraparte internacional (república, gobierno extranjero, Mercosur, Unión Europea, organismo internacional, doble imposición, libre comercio, extradición…), salvo que sea un convenio interno (provincias, Ciudad de Buenos Aires, Estado Nacional, convenios colectivos). Los acuerdos de agenda económica con acreedores u organismos financieros (conciliación con acreedores, FMI, BID, Banco Mundial) no se excluyen: cuentan como cualquier otra ley del Ejecutivo.
-- Para cada votación: votos afirmativos totales menos las bancas del bloque LLA en esa acta, dividido por las bancas de la cámara (257 en Diputados, 72 en el Senado), por cien. Las bancas del bloque son todos los legisladores del bloque listados en el acta, hayan votado o estén ausentes. El acta de Diputados no lista a quien preside la cámara (256 filas sobre 257 bancas): esa banca no entra al numerador ni al bloque y sí al total de la cámara.
-- Por cámara es el promedio simple de las votaciones de los últimos 12 meses calendario, contando cada votación una vez. El indicador pesa Diputados 65% y Senado 35%, el mismo reparto que la cohesión del bloque; si una cámara no tuvo votaciones del universo en la ventana, el indicador es la otra sola y la tarjeta lo dice.
+- Para cada votación: votos afirmativos totales menos las bancas del bloque LLA en esa acta, dividido por las bancas de la cámara (257 en Diputados, 72 en el Senado), por cien. Las bancas del bloque son todos los legisladores del bloque listados en el acta, hayan votado o estén ausentes; en el Senado, con el bloque que cada senador tenía el día de la votación (el portal muestra el actual en todas las actas y los pases se corrigen con un registro versionado). El acta de Diputados no lista a quien preside la cámara (256 filas sobre 257 bancas): esa banca no entra al numerador ni al bloque y sí al total de la cámara.
+- Por cámara es el promedio simple de las votaciones de los últimos 12 meses calendario, contando cada votación una vez. Diputados pesa más que el Senado, con el mismo reparto que la cohesión del bloque; si una cámara no tuvo votaciones del universo en la ventana, el indicador es la otra sola y la tarjeta lo dice.
 - La ventana no cruza la instalación del Congreso del 10 de diciembre de 2023: antes, LLA tenía tres bancas en Diputados y ninguna en el Senado, y no era el bloque oficialista.
 
 ## Semáforo — valores que determinan el color
@@ -1115,13 +1127,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- Promedio de los últimos 12 meses, Diputados: 18,5 % (12 votaciones) · Senado: 28,9 % (12 votaciones). Hay 3 votaciones de ley de los últimos 12 meses (la más reciente del 21/10/2026) cuyo origen todavía no se pudo confirmar; no entran al promedio hasta que se confirme, y entonces el valor puede cambiar.
+- Promedio de los últimos 12 meses, Diputados: 18,5 % (12 votaciones) · Senado: 29,3 % (12 votaciones). Hay 3 votaciones de ley de los últimos 12 meses (la más reciente del 21/10/2026) cuyo origen todavía no se pudo confirmar; no entran al promedio hasta que se confirme, y entonces el valor puede cambiar.
 
 ## Color vigente y por qué
 
-Dato vigente: 22,1 % de las bancas de la cámara (2026-10).
+Dato vigente: 22,3 % de las bancas de la cámara (2026-10).
 
-22,1 % de las bancas de la cámara está en Verde, a 4,1 del límite con Amarillo (18,0).
+22,3 % de las bancas de la cámara está en Verde, a 4,3 del límite con Amarillo (18,0).
 
 **Color vigente: VERDE**
 
@@ -1130,7 +1142,7 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 ## Transparencia — limitaciones declaradas
 
 - Mide cuántos votos ajenos hicieron falta, no quién los puso: una ley aprobada con los votos de un bloque grande aliado cuenta igual que una aprobada con muchos bloques chicos. Tampoco distingue a un aliado estable de uno que vota caso por caso.
-- El excedente depende del tamaño del bloque propio. Las bancas de LLA en las actas pasan de 36 a 39 a 94 en Diputados y de 9 a 21 en el Senado con la renovación de diciembre de 2025: con el mismo respaldo total, el excedente baja porque ahora hay más votos propios. El indicador mide la necesidad de votos ajenos, no el éxito de la negociación, y ese salto no es una pérdida de capacidad.
+- El excedente depende del tamaño del bloque propio. Las bancas de LLA en las actas pasan de 36 a 39 a 94 en Diputados y, en el Senado, de 6 o 7 a 20 con la renovación de diciembre de 2025 y a 21 en febrero de 2026: con el mismo respaldo total, el excedente baja porque ahora hay más votos propios. El indicador mide la necesidad de votos ajenos, no el éxito de la negociación, y ese salto no es una pérdida de capacidad.
 - Con los tratados afuera, el promedio queda en las leyes que el Gobierno necesita negociar, pero la muestra es chica: unas doce votaciones por cámara en el año, y una sola mueve varios puntos. El acuerdo con acreedores de títulos de deuda, que es una ley de agenda económica, sigue contando.
 - El origen de las leyes en Diputados depende del dataset de dictámenes, que se carga con rezago: una votación cuyo Orden del Día todavía no figura queda sin origen, no cuenta y se reintenta en cada actualización (a fines de octubre de 2026 eran tres, entre ellas la inviolabilidad de la propiedad privada). El número de Orden del Día se reinicia cada período: se toma el dictamen más reciente del último año con ese número. Las actas sin número de Orden del Día no se pueden cruzar y no cuentan.
 - El universo de Diputados se decide por el título del acta, que no dice qué clase de proyecto es: una resolución con título de orden del día podría contarse y una ley con un título atípico, quedar afuera. En el Senado, un acta sin clave de expediente se acepta si es un Orden del Día que no es designación ni moción.
@@ -1144,6 +1156,8 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Un acta publicada no cambia, así que la serie es reproducible. El criterio de qué título cuenta como ley puede ajustarse: el caché guarda título y conteos de cada acta, y un cambio de criterio recalcula toda la historia sin volver a descargar.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Corrección de datos en el Senado: las bancas del bloque LLA de cada acta se cuentan con el bloque que cada senador tenía ese día, desde un registro de pases con fuente. El portal asignaba a cada senador su bloque actual en todas las actas, así que Luis Juez y Carmen Álvarez Rivero figuraban en LLA antes de su pase y Francisco Paoltroni mientras estuvo expulsado: las bancas propias quedaban infladas y el excedente, bajo.
 
 **2026-10-27** — Decisión de Juan: los tratados y convenios internacionales quedan afuera aunque los mande el Ejecutivo: se votan casi por unanimidad y no miden cuánto le cuesta aprobar su agenda. Se reconocen por el título; los acuerdos de agenda económica (acreedores, organismos financieros) se mantienen.
 
@@ -1161,35 +1175,36 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 
 # Cohesión del bloque oficialista (ambas cámaras)
 
-Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones nominales de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene votaciones nominales en la ventana, el peso pasa a la otra.
+Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas (la minoría tuvo al menos 10 % de los votos) de los últimos 90 días de ambas cámaras. Diputados pesa más que el Senado (el reparto está en el detalle de la tarjeta); si una cámara no tiene votaciones divididas en la ventana, el peso pasa a la otra.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)** (2026-10) | **VERDE** | Peso efectivo 8,1 % del ITCP | Cinturón Política |
+| **Hoy: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días)** (2026-10) | **VERDE** | Peso efectivo 8,1 % del ITCP | Cinturón Política |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | cohesion_bloque | **CINTURÓN** | Política |
-| **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) |
+| **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-10 (35 puntos) | **REZAGO DE PUBLICACIÓN** | Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
-| **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, votaciones nominales de los últimos 90 días en que votó el bloque |
+| **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, votaciones divididas (la minoría tuvo al menos 10 % de los votos) de los últimos 90 días en que votó el bloque |
 | **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-10 · informe generado el 2026-10-28 |
 
 ## Definición — qué mide y por qué importa
 
-Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones nominales de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene votaciones nominales en la ventana, el peso pasa a la otra.
+Qué tan parejo vota puertas adentro el bloque propio de La Libertad Avanza en las votaciones divididas (la minoría tuvo al menos 10 % de los votos) de los últimos 90 días de ambas cámaras. Diputados pesa más que el Senado (el reparto está en el detalle de la tarjeta); si una cámara no tiene votaciones divididas en la ventana, el peso pasa a la otra.
 
-Mide la cohesión interna del oficialismo en el Congreso, clave para sostener vetos y aprobar leyes. La composición por cámara se publica en el detalle.
+Mide la cohesión interna del oficialismo en el Congreso, clave para sostener vetos y aprobar leyes. Se compara con la cohesión del bloque PRO en el gobierno de Macri, medida igual. La composición por cámara se publica en el detalle.
 
 **Dimensión que integra — Cohesión interna del oficialismo.** Qué tan unido está el oficialismo puertas adentro y cuánto necesita de los demás: la disciplina de voto del bloque propio de La Libertad Avanza, medida con dos indicadores bicamerales (Diputados 65%, Senado 35%) que pesan lo mismo: qué tan parejo vota el bloque propio de La Libertad Avanza, y cuántos votos de otros bloques hacen falta para aprobar una ley una vez descontadas sus propias bancas.
 
 ## Método de cómputo
 
 - Para cada acta con al menos un voto a favor o en contra del bloque propio de La Libertad Avanza (se excluyen deliberadamente los bloques aliados de nombre ambiguo, para no inflar la cohesión medida con votos que no son del oficialismo propiamente dicho), calcula qué tan pareja o dispareja fue esa votación puertas adentro: resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.
-- Por cámara, el cálculo es el promedio de esa cuenta en todas las votaciones nominales de los últimos 90 días en que votó el bloque (no se filtran las votaciones divididas). Abstenciones y ausencias no entran.
-- El indicador publicado es el compuesto bicameral: Diputados pesa más que el Senado, con el mismo reparto que las dos cámaras tenían cuando eran indicadores separados (el reparto exacto está en el detalle de la tarjeta). Si una cámara no tiene dato (por ejemplo, receso sin votaciones nominales), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la tarjeta.
+- Por cámara, el cálculo es el promedio de esa cuenta en las votaciones divididas (la minoría tuvo al menos 10 % de los votos) de los últimos 90 días en que votó el bloque. Una votación es dividida cuando el lado que perdió en toda la cámara —el menor entre los votos a favor y los votos en contra— reunió al menos el 10 % de los votos emitidos; las casi unánimes no ponen a prueba la disciplina del bloque y quedan afuera. Abstenciones y ausencias no entran.
+- En el Senado, el bloque de cada senador es el que tenía el día de la votación. El portal del Senado muestra en todas las actas el bloque actual de cada senador, así que los pases se corrigen con un registro versionado (data/politica/pases_senadores.json, con la fuente de cada pase): por ejemplo, Luis Juez cuenta en La Libertad Avanza recién desde que se incorporó al bloque, y Francisco Paoltroni no cuenta en los meses en que estuvo fuera de él. En Diputados el acta ya trae el bloque del día.
+- El indicador publicado es el compuesto bicameral: Diputados pesa más que el Senado, con el mismo reparto que las dos cámaras tenían cuando eran indicadores separados (el reparto exacto está en el detalle de la tarjeta). Si una cámara no tiene dato (por ejemplo, receso o ventana sin votaciones divididas), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la tarjeta.
 
 ## Semáforo — valores que determinan el color
 
@@ -1197,24 +1212,24 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 **Valores que definen cada color**
 
-| Rango (% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)) | Color |
+| Rango (% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días)) | Color |
 |---|---|
-| ≥ 97,6 | VERDE |
-| 96 – 97,6 | AMARILLO |
-| 95,3 – 96 | NARANJA |
-| ≤ 95,3 | ROJO |
+| ≥ 96,3 | VERDE |
+| 93,4 – 96,3 | AMARILLO |
+| 91 – 93,4 | NARANJA |
+| ≤ 91 | ROJO |
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 100,0% = Diputados 100,0% (peso 65%, 46 actas) · última acta 2026-10-22 · Senado 100,0% (peso 35%, 53 actas) · última acta 2026-09-24
+- 100,0% = Diputados 100,0% (peso 65%, 26 actas) · última acta 2026-10-22 · Senado 100,0% (peso 35%, 42 actas) · última acta 2026-09-24
 
 ## Color vigente y por qué
 
-Dato vigente: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) (2026-10).
+Dato vigente: 100 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) (2026-10).
 
-100,0 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) está en Verde, a 2,4 del límite con Amarillo (97,6).
+100,0 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio de las votaciones divididas —la minoría tuvo al menos 10 % de los votos— de los últimos 90 días) está en Verde, a 3,72 del límite con Amarillo (96,3).
 
 **Color vigente: VERDE**
 
@@ -1226,8 +1241,10 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 - Las dos cámaras tienen sensibilidad distinta: el bloque de Diputados es grande (un disidente mueve poco el promedio) y el del Senado es chico (un solo voto disidente lo mueve con fuerza). El compuesto pondera esa asimetría (65/35) pero no la elimina — la composición por cámara se publica para poder leerla.
 - No distingue ausencias de abstenciones: ambas quedan fuera del cálculo igual que si el legislador no hubiera votado.
 - Depende de que los portales públicos mantengan su estructura actual: un cambio de diseño puede interrumpir la lectura automática hasta que se ajuste.
-- Entran todas las votaciones nominales en que votó el bloque, incluidas las casi unánimes y las votaciones artículo por artículo de una misma ley: eso empuja el índice hacia 100 y hace que la cohesión medida sea más alta que la de las votaciones realmente disputadas. Filtrar solo las divididas es una decisión metodológica pendiente.
-- Con pocas votaciones en la ventana de 90 días, un solo voto conflictivo mueve el promedio con fuerza.
+- Las votaciones artículo por artículo de una misma ley cuentan cada una como una votación: una ley muy disputada en particular pesa más que una votada en general sola.
+- Con el filtro de votaciones divididas quedan menos votaciones en la ventana de 90 días: un solo voto conflictivo mueve el promedio con fuerza, y en un período con sólo votaciones casi unánimes la cámara queda sin dato y el peso pasa a la otra.
+- La comparación con el PRO de Macri usa, en el Senado de ese período, el bloque que el portal muestra para cada senador en todo su mandato: allí los pases no están corregidos como en el registro del mandato actual. En Diputados la historia sale de los datos abiertos de la Cámara, que traen el bloque de cada votación.
+- Las actas de Diputados anteriores al 6 de febrero de 2025 ya no están en el portal: su resultado completo (para saber si la votación fue dividida) sale de la copia de cada PDF en el Internet Archive y quedó guardado en el repositorio.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1236,6 +1253,10 @@ Ponderación vigente en el ITCP: 8,1 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Cuando las fuentes responden, se recalcula el promedio de los últimos 90 días. Ante fallos o receso sin actas se aplica la conservación del último promedio descrita en faltantes. El detalle muestra la fecha de última acta y la condición de caché de cada cámara; la fecha más reciente del compuesto no acredita actualización de ambas.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Decisión de Juan: entran sólo las votaciones divididas (la minoría tuvo al menos 10 % de los votos); las casi unánimes empujaban el índice contra 100. Las anclas pasan a la historia previa —media y desvíos del bloque PRO de Macri 2016-2018, medido igual— en lugar de la serie del propio mandato: 99,9 → 100 · 97 → 65 · 93,4 → 40 · 89,8 → 10. La serie histórica se recalcula con el mismo criterio.
+
+**2026-10-28** — Corrección de datos en el Senado: el bloque de cada senador es el que tenía el día de la votación, desde un registro de pases con fuente. El portal asignaba a cada senador su bloque actual en todas las actas, y se contaba como La Libertad Avanza a Luis Juez y Carmen Álvarez Rivero antes de su pase y a Francisco Paoltroni mientras estuvo expulsado del bloque.
 
 **2026-10-27** — Pasa a compartir la dimensión de cohesión interna, a partes iguales, con el indicador nuevo de votos ajenos al aprobar leyes: su peso en el índice baja de 16,1% a unos 8%. No cambia el cálculo ni las anclas.
 
@@ -1431,7 +1452,7 @@ Ponderación vigente en el ITCP: 3,4 % efectivo. El color es una lectura adicion
 
 # Producción legislativa del Congreso
 
-Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta leyes sancionadas, no publicadas. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas en el Boletín Oficial, otro momento del trámite: los dos números de leyes no coinciden.
+Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno aceptó: no cuentan las que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso después haya insistido; las vetadas en parte sí, porque se promulgaron. No distingue de quién nació cada proyecto. Cuenta leyes sancionadas, no publicadas. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas en el Boletín Oficial, otro momento del trámite: los dos números de leyes no coinciden.
 
 | | | | |
 |---|---|---|---|
@@ -1449,9 +1470,9 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir 
 
 ## Definición — qué mide y por qué importa
 
-Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto. Cuenta leyes sancionadas, no publicadas. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas en el Boletín Oficial, otro momento del trámite: los dos números de leyes no coinciden.
+Cuántas leyes sancionó el Congreso en los últimos doce meses que el Gobierno aceptó: no cuentan las que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso después haya insistido; las vetadas en parte sí, porque se promulgaron. No distingue de quién nació cada proyecto. Cuenta leyes sancionadas, no publicadas. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas en el Boletín Oficial, otro momento del trámite: los dos números de leyes no coinciden.
 
-Describe el volumen total de leyes sancionadas, sin equipararlo a victorias del Ejecutivo. Complementa la eficacia de su agenda y las votaciones que desafían sus normas; ni el origen ni el contenido de cada ley se deducen del total.
+Responde si el Congreso sanciona leyes que el Gobierno acepta: más leyes, menos tensión entre los poderes. Una ley vetada entera no es producción compartida sino un desacuerdo, y ese desacuerdo ya lo registran los vetos insistidos. No equipara el total a victorias del Ejecutivo: ni el origen ni el contenido de cada ley se deducen del conteo.
 
 **Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en cinco señales: cuánto legisla por decreto de necesidad y urgencia (DNU) en vez de ley, qué porción de la agenda del Ejecutivo se aprueba, cuántos vetos le dio vuelta el Congreso con dos tercios en las dos cámaras, cuántos decretos le derogó con el rechazo de las dos cámaras, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
@@ -1460,6 +1481,8 @@ Describe el volumen total de leyes sancionadas, sin equipararlo a victorias del 
 - Cuenta leyes sancionadas, no publicadas en el Boletín Oficial. Por eso no es el mismo denominador que «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas: son dos momentos distintos del trámite y los dos totales de leyes no coinciden.
 - Se cuentan leyes distintas, identificadas por número o expediente de sanción definitiva verificada, dentro de doce meses calendarios completos hasta el último día del mes informado. Se incluye el primer día del mes inicial y se excluye el primer día del mes siguiente al informado. No se publica el mes en curso.
 - Se agregan las sanciones omitidas por el catálogo cotejadas en el Boletín Oficial y en diarios de sesiones (registro local revisado el 8-sep-2026). Se cuenta por ley o, mientras no haya número verificado, por expediente con sanción definitiva documentada. La vinculación por expediente/proyecto evita duplicarlo cuando el catálogo lo incorpora. Las fechas inválidas, futuras o contradictorias impiden actualizar.
+- No cuentan las leyes que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso después haya insistido con dos tercios: la pregunta es si el Congreso sanciona leyes que el Gobierno acepta, y una ley vetada entera es un desacuerdo, no producción compartida. Las vetadas en parte sí cuentan, porque se promulgaron. Los vetos salen del mismo registro que usan los vetos insistidos del índice; sin ese registro, el indicador no se actualiza.
+- Más leyes significa menos tensión entre el Congreso y el Gobierno. El desacuerdo abierto lo miden otros dos componentes de la misma dimensión: los vetos insistidos y los decretos derogados.
 
 ## Semáforo — valores que determinan el color
 
@@ -1478,7 +1501,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 31 leyes distintas en los 12 meses completos hasta 2026-09. Última sanción registrada: 2026-09-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.
+- 31 leyes distintas en los 12 meses completos hasta 2026-09, sin las vetadas en su totalidad (0 en la ventana). Última sanción registrada: 2026-09-24; la consulta no certifica que el catálogo contenga todas las sanciones posteriores. Catálogo más complementos documentados: 1320 leyes distintas de 2008-2025 (73.3 por año). El umbral de diseño se mantiene en 74.
 
 ## Color vigente y por qué
 
@@ -1495,6 +1518,8 @@ Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicion
 - Cuenta leyes, no su importancia. Una ley de presupuesto y una que declara una fecha conmemorativa pesan igual.
 - El umbral de diseño se conserva en 74. El cotejo del 8 de septiembre de 2026 contó 1.320 leyes distintas de 2008-2025, un promedio de 73,3 por año; 74 no es ese promedio exacto ni un óptimo normativo. La referencia abarca mayorías distintas y depende de la exhaustividad del catálogo.
 - La ventana móvil de doce meses suaviza pero también demora: un cambio de ritmo tarda meses en verse completo.
+- Una ley sancionada hace poco cuenta mientras no se la vete; si el veto llega después, sale del conteo y la serie se revisa hacia atrás.
+- La referencia de 74 leyes por año no descuenta los vetos totales de los gobiernos anteriores: compara un conteo sin vetadas contra un promedio que sí las incluye.
 
 ## Si falta el dato / Política de revisiones
 
@@ -1503,6 +1528,10 @@ Ponderación vigente en el ITCP: 3,8 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** La carga tardía, la eliminación de duplicados y las correcciones de fechas pueden revisar la historia en ambas direcciones. Una descarga exitosa no certifica exhaustividad.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — En la tarjeta de rezago del índice político pasa de 6 a 6,5 meses: a la mitad de la ventana se le suma la demora de la carga del catálogo. No cambia el valor ni el puntaje.
+
+**2026-10-28** — Deja de contar las leyes que el Poder Ejecutivo vetó en su totalidad, aunque el Congreso haya insistido, y la pregunta pasa a ser si el Congreso sanciona leyes que el Gobierno acepta: más leyes, menos tensión. Las bandas no cambian. En septiembre de 2026 no había leyes vetadas en la ventana y el dato sigue en 31; en la ventana a agosto de 2025 llegó a haber ocho, y la de entonces pasa de 40 a 32 leyes.
 
 **2026-10-28** — El rótulo aclara que cuenta leyes sancionadas y la ficha explica la diferencia con «Decretos de necesidad y urgencia por ley», que cuenta leyes publicadas. No cambia el cálculo.
 
@@ -1619,7 +1648,7 @@ Ponderación vigente en el ITCP: 16,1 % efectivo. El color es una lectura adicio
 
 # Alineamiento de senadores por provincia
 
-Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición que tomó el bloque oficialista en esa misma votación, promediado entre provincias.
+Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición que tomó el bloque oficialista en esa misma votación, promediado entre provincias. Se compara con lo que acompañaban a su oficialismo los senadores de otros bloques en los tres gobiernos anteriores.
 
 | | | | |
 |---|---|---|---|
@@ -1637,7 +1666,7 @@ Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Li
 
 ## Definición — qué mide y por qué importa
 
-Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición que tomó el bloque oficialista en esa misma votación, promediado entre provincias.
+Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición que tomó el bloque oficialista en esa misma votación, promediado entre provincias. Se compara con lo que acompañaban a su oficialismo los senadores de otros bloques en los tres gobiernos anteriores.
 
 Es la mejor señal automatizable disponible del respaldo territorial, y conviene leerla por lo que es: mide el voto de los senadores, no la postura del gobernador de cada provincia. Un senador no depende del gobernador de turno y puede responder a la estrategia nacional de su propio partido. Reemplaza a un indicador de alineamiento de gobernadores que quedó congelado por falta de una fuente pública que midiera directamente la posición de los ejecutivos provinciales.
 
@@ -1648,6 +1677,7 @@ Es la mejor señal automatizable disponible del respaldo territorial, y conviene
 - Para cada acta, determina la posición del bloque de La Libertad Avanza (el sentido en el que votó la mayoría de sus senadores). Si el bloque queda empatado, esa acta no aporta señal.
 - Para cada provincia, mide qué proporción de los votos de sus senadores QUE NO son del bloque LLA coincidió con esa posición. Las provincias donde los 3 senadores son de LLA quedan fuera del cálculo: su coincidencia sería automática por definición, no aporta información.
 - El indicador es el promedio simple de esa proporción entre todas las provincias con al menos un senador no-LLA, sobre las actas de los últimos 90 días.
+- El bloque de cada senador es el que tenía el día de la votación. El portal del Senado muestra en todas las actas el bloque actual de cada senador, así que los pases se corrigen con un registro versionado (data/politica/pases_senadores.json, con la fuente de cada pase): un senador que se sumó a La Libertad Avanza después cuenta como de otro bloque en las votaciones anteriores a su pase, y uno que estuvo fuera del bloque cuenta como de otro bloque en esos meses.
 
 ## Semáforo — valores que determinan el color
 
@@ -1657,10 +1687,10 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 | Rango (% votos de senadores no-LLA alineados con LLA, por provincia) | Color |
 |---|---|
-| ≥ 53 | VERDE |
-| 45 – 53 | AMARILLO |
-| 41,7 – 45 | NARANJA |
-| ≤ 41,7 | ROJO |
+| ≥ 47,7 | VERDE |
+| 38,6 – 47,7 | AMARILLO |
+| 29,5 – 38,6 | NARANJA |
+| ≤ 29,5 | ROJO |
 
 ## Datos concretos detrás del valor
 
@@ -1672,7 +1702,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 56,5 % votos de senadores no-LLA alineados con LLA, por provincia (2026-09).
 
-56,5 % votos de senadores no-LLA alineados con LLA, por provincia está en Verde, a 3,5 del límite con Amarillo (53,0).
+56,5 % votos de senadores no-LLA alineados con LLA, por provincia está en Verde, a 8,77 del límite con Amarillo (47,7).
 
 **Color vigente: VERDE**
 
@@ -1683,6 +1713,7 @@ Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicion
 - Proxy de comportamiento legislativo, no medición directa de la postura del gobernador (Poder Ejecutivo provincial) — ver caveat arriba.
 - Incluye votaciones consensuadas (donde todo el Senado vota en el mismo sentido), no solo las genuinamente disputadas — solo se excluyen las actas donde el propio bloque LLA queda internamente empatado.
 - Bloque LLA chico en el Senado: pocos senadores propios hacen que su 'posición' en un acta dependa de muy pocos votos.
+- La historia de comparación usa, en los gobiernos anteriores, el bloque que el portal muestra para cada senador en todo su mandato: allí los pases no están corregidos como en el registro del mandato actual.
 - Depende de que el portal público del Senado mantenga su estructura actual: un cambio de diseño del sitio puede interrumpir la lectura automática hasta que se ajuste.
 
 ## Si falta el dato / Política de revisiones
@@ -1692,6 +1723,10 @@ Ponderación vigente en el ITCP: 6,1 % efectivo. El color es una lectura adicion
 - **Política de revisiones:** Cuando el portal responde y hay actas, se recalcula el promedio de los últimos 90 días. Ante fallos o receso sin actas se conserva el último promedio según la regla de faltantes; esto no es una observación nueva.
 
 ## Historial — cambios metodológicos documentados
+
+**2026-10-28** — Decisión de Juan: anclas mixtas contra la historia. 77 → 100 (la mediana de los tres gobiernos anteriores, 2012-2023, medidos igual) · 50 → 65 · 25 → 10, en lugar de los cortes 40/50/60/70 calibrados con la serie del propio mandato, que está unos dos desvíos por debajo de esa historia.
+
+**2026-10-28** — Corrección de datos: el bloque de cada senador es el que tenía el día de la votación, desde un registro de pases con fuente. El portal asignaba a cada senador su bloque actual en todas las actas, y se tomaba como parte del oficialismo a Luis Juez y Carmen Álvarez Rivero antes de su pase y a Francisco Paoltroni mientras estuvo expulsado del bloque. La serie histórica se recalcula.
 
 **2026-09-08** — Una descarga fallida o una página sin votos invalida la lectura completa, también en la reconstrucción anual. La tarjeta excluye actas futuras; ante lectura incompleta se aplica la conservación del dato anterior, sin marcar como exitoso un promedio parcial.
 
