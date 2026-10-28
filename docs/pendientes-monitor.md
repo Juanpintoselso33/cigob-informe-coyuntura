@@ -159,6 +159,13 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Error de datos (sin decisión): bloques del Senado.** El sitio asigna a cada senador un
+  bloque para todo su mandato: Juez, Paoltroni y Álvarez Rivero cuentan como LLA en meses
+  en que no lo eran. Explica casi todos los rojos de la cohesión (ago-2025: 77,8 → 100) y
+  toca alineamiento y votos ajenos. Arreglo: lista de pases con fecha y fuente.
+- **Decisiones de método B, auditadas caso por caso (28-oct):** documento «Decisiones de
+  método del Monitor — auditoría del 28-oct» (https://claude.ai/artifact/DrXmpa1BhLJH8niWRmzeoU).
+
 - **Para la reunión con Luis (28-oct, 15 h):** contarle lo de arriba; pedirle el
   documento de Ever y la revisión de los rubros de transferencias.
 - **Opcional:** completar la historia de la carne vacuna antes de oct-2023 (hoy el
