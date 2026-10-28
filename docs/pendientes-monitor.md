@@ -159,6 +159,11 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Alquiler del IPC: que sea alquiler real** (Juan, 28-oct). Hoy la tarjeta «Alquiler (IPC
+  del Gran Buenos Aires)» muestra la variación mensual nominal (1,88 %) y el puntaje usa el
+  alquiler relativo al IPC general. Que la tarjeta y el puntaje sean el alquiler real
+  (descontada la inflación) contra fines de 2023, con su rótulo. Revisar con Juan.
+
 - **Alquiler de UdeSA – Mercado Libre: conseguir el 4T-2023 o sacarlo** (Juan, 28-oct). Hoy
   se mide como variación interanual porque el informe no trae datos para comparar contra
   fines de 2023 (ADR-0386). Buscar los valores de octubre a diciembre de 2023 (informes
