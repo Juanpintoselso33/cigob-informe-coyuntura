@@ -35,6 +35,15 @@ const esMacro = meta.key === "macro";
 const RESUMEN_CINTURON: Record<string, string> = {
   politica: "El gobierno tiene hoy un frente político tranquilo. El Congreso no le pone freno: en el último año no revirtió vetos ni decretos, el bloque oficialista vota unido y logra alianzas para sacar sus proyectos, y más de la mitad de los senadores de otros partidos lo acompaña. La calle está más calma, con menos protestas que en 2023, y 18 de las 24 provincias adhirieron al régimen de grandes inversiones. Parte de ese respaldo se sostiene con más fondos discrecionales a las provincias. El punto débil: la industria se muestra crítica. La calma es real, pero descansa en acuerdos que hay que renovar.",
 };
+// Pedido del 28-oct-2026, sólo política: el texto bajo la barra se reemplaza
+// por «Qué expresa» y «Cómo se calcula», debajo del resumen; el valor, los
+// pesos y los cortes de color salen de los datos.
+const QUE_EXPRESA: Record<string, string> = {
+  politica: "El índice del cinturón político resume en un número de 0 a 100 cuánto poder real tiene el Gobierno para sostener y lograr el marco normativo que le permita llevar adelante su proyecto, mide en este sentido capacidad de gobernar, no popularidad ni intención de voto.",
+};
+// Título de la página del cinturón cuando difiere del nombre del menú y la portada.
+const TITULO_CINTURON: Record<string, string> = { politica: "Político" };
+const tituloCinturon = TITULO_CINTURON[meta.key] ?? meta.nombre;
 const INTRO_CINTURON: Record<string, string> = {
   macro: "En este apartado se pone foco en la consistencia y sustentabilidad del proyecto de gobierno en sus aspectos económicos y financieros.",
   politica: "En este apartado se pone foco en la capacidad política del Gobierno para sostener su proyecto: su fuerza en el Congreso, sus alianzas con las provincias, la cohesión de su propia fuerza y su relación con el conflicto social, la Justicia y el sector privado.",
@@ -306,7 +315,7 @@ const robChartData = rob?.hist && indice ? {
       <div class="cg-detalle-cols">
       <div class="cg-detalle-texto">
       <p class="cg-eyebrow"><a href={`${base}/`}>← Resumen</a> · Cinturón</p>
-      <h1 class="cg-hero-title cg-detalle-title">{meta.nombre}</h1>
+      <h1 class="cg-hero-title cg-detalle-title">{tituloCinturon}</h1>
       <p class="cg-hero-lead cg-detalle-lead">{INTRO_CINTURON[meta.key] ?? `${meta.sub}.`}</p>
       <div class="cg-detalle-meta">
         {/* El valor del índice se dice en el texto bajo la barra (ADR-0354). */}
@@ -314,10 +323,10 @@ const robChartData = rob?.hist && indice ? {
       </div>
       </div>
       <div class="cg-detalle-nivel">
-        <NivelTension tension={c.score} titulo={`Tensión del cinturón ${meta.nombre}`} tamano="grande"
+        <NivelTension tension={c.score} titulo={`Tensión del cinturón ${tituloCinturon}`} tamano="grande"
           ocultarLectura
           tip={indice ? `${num(indice.data.valor as number)}${indice.base100 ? " (100 = fines de 2023)" : "/100"} · ${LECTURA_SEMAFORO[colorCinturon as keyof typeof LECTURA_SEMAFORO] ?? ""}` : undefined} />
-        {indice && (indice.base100 ? (
+        {indice && !QUE_EXPRESA[meta.key] && (indice.base100 ? (
           <p class="cg-nivel-pie">
             El {indice.corto} compara cómo están hoy los hogares con cómo estaban al
             empezar el mandato. <strong>100 es el promedio del último trimestre de 2023</strong>:
@@ -336,6 +345,35 @@ const robChartData = rob?.hist && indice ? {
             <p class="cg-nivel-pie"><strong>Resumen</strong></p>
             <p class="cg-nivel-pie">{RESUMEN_CINTURON[meta.key]}</p>
           </div>
+        )}
+        {indice && QUE_EXPRESA[meta.key] && (
+          <>
+            <div class="cg-nivel-resumen">
+              <p class="cg-nivel-pie"><strong>Qué expresa</strong></p>
+              <p class="cg-nivel-pie">
+                {QUE_EXPRESA[meta.key]}{" "}
+                0 es la peor situación y 100 la mejor. Hoy marca{" "}
+                <strong>{num(indice.data.valor as number)}/100</strong>{lecturaCinturon && <>: <strong>{lecturaCinturon}</strong></>}.
+              </p>
+            </div>
+            <div class="cg-nivel-resumen">
+              <p class="cg-nivel-pie"><strong>Cómo se calcula</strong></p>
+              <p class="cg-nivel-pie">
+                Cada indicador recibe un puntaje: su valor se compara con una tabla fija de referencias
+                y se traduce a un puntaje de 0 a 100. Los indicadores se agrupan en las{" "}
+                {Object.keys(indice.data.dimensiones).length} dimensiones que se detallan abajo, y cada
+                una promedia los puntajes de sus indicadores. Por último, el índice promedia las
+                dimensiones según su peso:{" "}
+                {Object.values(indice.data.dimensiones).map((d, i, a) =>
+                  `${d.nombre.charAt(0).toLowerCase()}${d.nombre.slice(1)} (${Math.round(d.peso * 100)}%)${i < a.length - 2 ? ", " : i === a.length - 2 ? " y " : "."}`).join("")}
+              </p>
+              <p class="cg-nivel-pie">
+                El color del cinturón sale de este número: {coloresEnIndice(!!indice.base100)}. Los
+                cuatro cinturones usan los mismos cortes de color, y por eso se pueden comparar entre sí.
+                Cada indicador tiene su ficha con la fuente, el cálculo y sus límites.
+              </p>
+            </div>
+          </>
         )}
       </div>
       </div>
