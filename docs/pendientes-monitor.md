@@ -159,6 +159,11 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Ficha de la brecha cambiaria desactualizada** (Juan, 28-oct). Revisarla entera. Visto:
+  el contraste del 27-oct cita una brecha de 9,2 % y hoy es 7,8 %; quedan siglas
+  (contado con liquidación, comunicación A3500, Banco Central); verificar el resto contra
+  lo que hace el cálculo hoy.
+
 - **Sin abreviaturas en el sitio** (Juan, 28-oct): nada de siglas ni abreviaturas en
   rótulos, unidades, tarjetas, fichas y textos (CABA → Ciudad de Buenos Aires, ATN, RIGI,
   DNU, EPH, REM, FAL, etc.: el nombre completo o una forma llana). Barrer todo el sitio.
