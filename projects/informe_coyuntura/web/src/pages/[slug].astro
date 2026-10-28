@@ -384,6 +384,7 @@ const robChartData = rob?.hist && indice ? {
       <section class="cg-section">
         {/* Cómo se calcula, en llano (ADR-0352), y ANTES de las dimensiones (ADR-0354):
             el valor del índice y su color ya se dijeron en la cabecera. */}
+        {!QUE_EXPRESA[meta.key] && (
         <div class="cg-como-se-calcula">
           <h2 class="cg-como-se-calcula-h">Cómo se calcula este número</h2>
           <p>
@@ -403,6 +404,7 @@ const robChartData = rob?.hist && indice ? {
             Cada indicador tiene su ficha con la fuente, el cálculo y sus límites.
           </p>
         </div>
+        )}
         <div class="cg-section-head">
           <p class="cg-eyebrow">Dimensiones</p>
           <h2 class="cg-h2">Estado de tensión de cada dimensión del cinturón</h2>
