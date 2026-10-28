@@ -92,13 +92,28 @@ consumo aparente (SAGyP), movimiento mensual de faena (producción) — dicho en
   Cierra el «no se puede medir» del padrón.
 - **Prensa y Presidente (25): colectado y pendiente**, ver el punto 25.
 
-## Lo que queda abierto (actualizado el 27-oct, noche)
+## Hecho el 28-oct
 
-- **Para la reunión con Luis (28-oct, 15 h):**
-  - verificar que su propuesta macro del 11-oct quedó aplicada (19);
-  - cuántas votaciones divididas entran en 90 días, y si adhesión de provincias se
-    superpone con el RIGI de gestión (27);
-  - aclararle lo de la carne (C).
+- Propuesta macro del 11-oct de Luis: aplicada (estructura de la página), con las
+  dimensiones que después cambió su propia revisión del 26-oct (19).
+- Votaciones divididas: 99 en 90 días (46 Diputados, 53 Senado); LLA votó unida en
+  todas, el 100 no es por pocas actas (27).
+- RIGI provincial: el rótulo ya se había corregido (ADR-0366); la ficha aclara que no se
+  superpone con el RIGI de gestión (27).
+- La carne puntúa el consumo de SAGYP, no la faena del INDEC; tarjeta y puntaje son el
+  mismo dato y el mismo mes (ADR-0392) (C).
+- Revisión de bases «fines de 2023»: todas usan oct-dic 2023 salvo la victimización,
+  que pasa de ene-2024 al 4T-2023 (ADR-0393).
+
+## Lo que queda abierto (actualizado el 28-oct)
+
+- **Para la reunión con Luis (28-oct, 15 h):** contarle lo de arriba; pedirle el
+  documento de Ever y la revisión de los rubros de transferencias.
+- **Opcional:** completar la historia de la carne vacuna antes de oct-2023 (hoy el
+  gráfico arranca ahí): ediciones viejas de Internet Archive, o la copia de 2023
+  ajustada por población. No cambia puntajes.
+- **Sin cerrar del 27 (Luis 7):** DNU por ley cuenta leyes publicadas y producción
+  legislativa, sancionadas; la ficha del DNU ya lo dice, falta aclararlo en los rótulos.
 - **Esperan a otro:**
   - el resto de la EPH (desocupación, informalidad, ingresos): Luis manda el documento
     de Ever (30);
@@ -130,7 +145,7 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
     **hecho (ADR-0374)**: Poder judicial queda sólo con la cobertura de cargos.
   - C. La carne: Luis dice que es consumo per cápita y que la duda era un error. El nivel sí
     es consumo (SAGyP), pero el movimiento que puntúa sale de la faena del INDEC. Aclarárselo.
-    **abierto** (reunión del 28-oct).
+    **hecho (ADR-0392)**: puntúa el consumo.
 - **Nuevo:**
   - D. Competitividad: tarjetas separadas de términos del intercambio y tipo de cambio
     real; el color lo da el cuadrante del cruce de los dos (resuelve el 13). Como no
