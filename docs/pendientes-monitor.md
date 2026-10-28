@@ -159,6 +159,11 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Reservas netas a «Estabilidad monetaria-inflacionaria»** (Juan, 28-oct). Hoy están en
+  «Sector externo» (ADR-0387). Conservando su peso en el índice (5,44 %), estabilidad
+  pasaría de 26 % a 31,4 % y sector externo de 21,2 % a 15,8 %; el índice no se mueve.
+  Lleva ADR.
+
 - **Error de datos (sin decisión): bloques del Senado.** El sitio asigna a cada senador un
   bloque para todo su mandato: Juez, Paoltroni y Álvarez Rivero cuentan como LLA en meses
   en que no lo eran. Explica casi todos los rojos de la cohesión (ago-2025: 77,8 → 100) y
