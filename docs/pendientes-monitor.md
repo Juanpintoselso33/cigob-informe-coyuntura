@@ -159,6 +159,10 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Revisar vetos, decretos y DNU** (Juan, 28-oct): «DNU por ley» (ratio_dnu), «Vetos que el
+  Congreso dio vuelta» (insistencias_vetos) y «Decretos derogados por el Congreso»
+  (rechazos_decretos, ADR-0377). Hoy 1,09 / 0 / 0.
+
 - **Reservas netas a «Estabilidad monetaria-inflacionaria»** (Juan, 28-oct). Hoy están en
   «Sector externo» (ADR-0387). Conservando su peso en el índice (5,44 %), estabilidad
   pasaría de 26 % a 31,4 % y sector externo de 21,2 % a 15,8 %; el índice no se mueve.
