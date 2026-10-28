@@ -159,6 +159,12 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Alquiler de UdeSA – Mercado Libre: conseguir el 4T-2023 o sacarlo** (Juan, 28-oct). Hoy
+  se mide como variación interanual porque el informe no trae datos para comparar contra
+  fines de 2023 (ADR-0386). Buscar los valores de octubre a diciembre de 2023 (informes
+  viejos, archivo de Internet, pedido público de datos no); si no aparecen, el indicador sale
+  del índice (lleva ADR).
+
 - **Verificar el universo de la dotación** (Juan, 28-oct; Luis, gestión 3.1). Ver si la
   serie del INDEC de empleados de la administración nacional cambió qué organismos cuenta
   desde dic-2023 (cierres, traspasos a empresas o provincias) y cuánto del −21,4 % es eso
