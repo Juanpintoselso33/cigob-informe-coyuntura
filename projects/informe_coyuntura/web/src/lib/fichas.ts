@@ -3703,7 +3703,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste.",
     },
     transformaciones: [
-      "Componente del índice: el porcentaje de hogares víctimas, rebaseado de forma invertida (menos victimización = mejora) con base declarada en enero de 2024, conservada por continuidad de la serie publicada.",
+      "Componente del índice: el porcentaje de hogares víctimas, rebaseado de forma invertida (menos victimización = mejora) contra el promedio del 4º trimestre de 2023, como el resto del índice.",
       "La ventana de 12 meses de la pregunta desestacionaliza por construcción.",
     ],
     incidenciaTexto: [
@@ -3711,7 +3711,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Es complementario y no redundante con los dos componentes del SNIC: capta delito denunciado y no denunciado (cifra negra) pero no distingue TIPO de delito, que es justo lo que homicidios y robos aportan por separado.",
     ],
     limitaciones: [
-      "La auditoría del 8-sep-2026 recuperó informes de 2020–2023, incluido el 4º trimestre de 2023: la afirmación anterior de suspensión era incorrecta. Se mantiene explícita la base de enero de 2024; una eventual armonización con 4T-2023 requiere documentar su efecto sobre el índice.",
+      "La base son tres meses de una encuesta con error muestral de ±3 puntos: octubre y noviembre de 2023 fueron altos (34% y 33%) y diciembre bajo (28%). El promedio atenúa, pero no elimina, ese ruido.",
       "Error muestral de ±3 puntos por mes (~1.000 hogares) y cobertura solo urbana.",
       "La divergencia con el registro de denuncias requiere contrastar universos, períodos y error muestral: por sí sola no demuestra crecimiento del delito no denunciado.",
       "El SNIC (registro oficial de delitos) sigue apareciendo como contraste por tipo en el detalle, además de puntuar por separado como `tasa_homicidios` y `tasa_robos` desde el 16-sep-2026.",
@@ -3725,6 +3725,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-09-15", cambio: "El rótulo de la tarjeta pasa de «Victimización (IVI)» a «Victimización». No cambia el cálculo ni la ficha — sólo se saca del rótulo la sigla interna.", adr: "0311" },
       { fecha: "2026-09-16", cambio: "El desglose del SNIC por tipo de delito (homicidios, robos, hurtos, etc.), que se descargaba pero se quedaba en el snapshot interno del colector, se suma al contraste SNIC del detalle. Se restituyen Amenazas y Lesiones dolosas a la lista de tipos conservados.", adr: "0325,0324" },
       { fecha: "2026-09-16", cambio: "Se revierte la decisión anterior: el argumento de que el SNIC «es anual, no puede puntuar en un tablero mensual» era falso — el snapshot ya tenía cinco indicadores vigentes con 243-244 días de rezago del dato. Entran `tasa_homicidios` y `tasa_robos` como componentes propios de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. El peso interno de este indicador baja de 100% a 59,5% (2,68% del índice de impacto social).", adr: "0327,0324,0325" },
+      { fecha: "2026-10-28", cambio: "La base pasa de enero de 2024 al promedio del 4º trimestre de 2023, como el resto del índice de impacto social. Enero de 2024 se usaba porque no se tenían los informes de 2023; se recuperaron en septiembre. Con el dato de julio de 2026 el componente pasa de 104,8 a 115,6.", adr: "0393" },
     ],
   },
 
@@ -4100,7 +4101,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     seleccion: [
       "Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
-      "Criterio: fuentes públicas con serie reconstruible al 4º trimestre de 2023 — o con línea de base declarada. La victimización usa enero de 2024 porque la encuesta no existía en 2023; servicios públicos usa umbrales internacionales separados para agua+energía y transporte porque comparar contra las tarifas subsidiadas de 2023 falseaba su asequibilidad.",
+      "Criterio: fuentes públicas con serie reconstruible al 4º trimestre de 2023 — o con línea de base declarada. Servicios públicos usa umbrales internacionales separados para agua+energía y transporte porque comparar contra las tarifas subsidiadas de 2023 falseaba su asequibilidad.",
     ],
     tratamiento: [
       "Componentes faltantes: los pesos se renormalizan dentro de la dimensión y entre dimensiones; ante una fuente caída, el indicador mantiene su último valor publicado marcado como desactualizado.",

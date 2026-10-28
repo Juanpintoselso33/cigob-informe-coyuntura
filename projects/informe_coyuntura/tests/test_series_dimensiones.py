@@ -249,7 +249,9 @@ def test_no_hay_arrastre_ni_interpolacion_en_la_capa_de_dimension():
     series = ve.cargar_series()
     raw = ve._mensual(series["inseguridad"])
     assert raw["2023-12"] == 27.8   # informe LICIP diciembre 2023
-    indice_inseguridad = round(raw["2024-01"] / raw["2023-12"] * 100, 1)
+    # ADR-0393: base = promedio del 4T-2023 (antes, enero de 2024).
+    base_4t = sum(raw[m] for m in ("2023-10", "2023-11", "2023-12")) / 3
+    indice_inseguridad = round(base_4t / raw["2023-12"] * 100, 1)
 
     def _snic(k):
         s = ve._mensual(series[k])

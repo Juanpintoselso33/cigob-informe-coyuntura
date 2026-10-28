@@ -8,7 +8,7 @@ indice: 'ITCIS'
 indicadores: [consumo_carne_vacuna, consumo_carnes_total, consumo_carnes_otras]
 archivos: ['scripts/vida_cotidiana/collectors/consumo_carnes.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'scripts/gate_calidad.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts', 'web/src/lib/formulas.ts', 'web/src/lib/descripciones.ts', 'tests/test_carne_compuesto.py']
 modifica: ['0217']
-relacionado: ['0217', '0322', '0339', '0373']
+relacionado: ['0217', '0322', '0339', '0373', '0393']
 ambito: 'ITCIS · dimensión Consumo · de qué serie salen el titular y el puntaje de las carnes'
 origen: 'Revisión de Luis Babino (26-oct-2026): la carne «es consumo per cápita». Preparando la reunión del 28-oct se verificó que el titular era consumo pero el puntaje seguía la faena; decisión de Juan del 28-oct: «lo que tiene que puntuar es el consumo».'
 ---

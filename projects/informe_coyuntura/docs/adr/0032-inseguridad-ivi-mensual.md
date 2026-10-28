@@ -5,8 +5,9 @@ estado: 'aceptado'
 fecha: 2026-07-04
 cinturon: 'vida'
 indicadores: [inseguridad]
-relacionado: ['0273', '0324', '0327']
+relacionado: ['0273', '0324', '0327', '0393']
 corregido_por: ['0273']
+modificado_por: ['0393']
 ambito: 'Indicador `inseguridad` (30% de Confianza = 4,5% del ITVC)'
 ---
 

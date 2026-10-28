@@ -375,6 +375,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0386](0386-el-alquiler-real-entra-a-precios.md) | El alquiler de UdeSA – Mercado Libre entra a precios | `alquiler_udesa_real`, `alquiler_real` | vigente |
 | [0389](0389-el-padron-de-empleadores-de-arca-acompana-a-la-ocupacion.md) | El padrón de empleadores de ARCA acompaña a la ocupación | `ocupacion_eph` | vigente |
 | [0392](0392-la-carne-puntua-el-consumo-no-la-faena.md) | La carne puntúa el consumo, no la faena | `consumo_carne_vacuna`, `consumo_carnes_total`, `consumo_carnes_otras` | vigente |
+| [0393](0393-la-victimizacion-se-rebasea-al-4t-2023.md) | La victimización se rebasea al 4T-2023 | `inseguridad` | vigente |
 
 ### Espíritu de época
 

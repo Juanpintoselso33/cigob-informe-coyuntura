@@ -161,7 +161,7 @@ COMPONENTES = {
     "ratio_motos_autos":      ("ratio_motos_autos", True, False, False),
 }
 # Bases DECLARADAS distintas del 4T-2023 (misma regla que publicar):
-BASES_PROPIAS = {"inseguridad": ("2024-01",)}   # base conservada; archivo 2023 recuperado en ADR-0273
+BASES_PROPIAS = {}   # la victimización pasó al 4T-2023 (ADR-0393)
 # Componentes que entran por acumulado móvil de 12 meses porque su flujo
 # mensual crudo tiene estacionalidad fuerte y contra una base fija mediría
 # calendario. Tiene que ser la MISMA lista que aplica

@@ -948,11 +948,10 @@ def indices_desde_series(vida_ind, series, baselines=None):
     #
     # Inseguridad (SNIC anual: su serie emite el total del año en YYYY-12, así
     # el 4T-2023 resuelve al año 2023 — la excepción declarada del doc).
-    # IVI: base = ene-2024 por continuidad con ADR-0032. ADR-0273 recuperó
-    # 4T-2023 y rectificó la supuesta suspensión. Rebasar exige comparar el
-    # efecto y documentar una decisión, no cambiarlo al reparar el colector.
-    idx["inseguridad"] = rebase_de_serie(series, "inseguridad", invertido=True,
-                                               base_meses=("2024-01",))
+    # IVI: base 4T-2023 como el resto (ADR-0393). Hasta ahí era ene-2024
+    # (ADR-0032), porque no se tenían los informes de 2023; ADR-0273 los
+    # recuperó.
+    idx["inseguridad"] = rebase_de_serie(series, "inseguridad", invertido=True)
     # ADR-0327, CORRECCIÓN (revisión adversarial post-merge): el ancla original
     # rebaseaba contra el propio 2023 — la base por defecto (oct/nov/dic)
     # resuelve sola a ese año porque la serie del SNIC sólo tiene un punto por

@@ -35,7 +35,7 @@ El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale 
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 97,2** | **AMARILLO** | Sin cambios significativos frente a las referencias | 19 indicadores: 9 en verde · 3 en amarillo · 3 en naranja · 4 en rojo |
+| **ITCIS: 97,5** | **AMARILLO** | Sin cambios significativos frente a las referencias | 19 indicadores: 10 en verde · 2 en amarillo · 3 en naranja · 4 en rojo |
 Componentes que puntúan en este corte: 19 de 19 publicados.
 
 ## Dimensiones
@@ -48,7 +48,7 @@ Componentes que puntúan en este corte: 19 de 19 publicados.
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,7 | ROJO | 10,0 % |
 | Confianza y percepción | La confianza de la población en el Gobierno nacional, medida preguntando. | 106,7 | VERDE | 8,2 % |
 | Consumo | Lo que efectivamente se compra. | 94,6 | NARANJA | 7,9 % |
-| Seguridad | Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. | 115,9 | VERDE | 4,5 % |
+| Seguridad | Proporción de hogares que declaran haber sufrido al menos un delito, relevada por encuesta. | 122,3 | VERDE | 4,5 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -85,7 +85,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Ratio motos/autos | Cuántas motos se patentan por cada auto patentado, en la misma ventana móvil de doce meses que la motorización total. | 1,54 motos por cada auto patentado (móvil 12m) | ROJO | 0,7 % |
 | Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 80,5 índice (2017 = 100, desestacionalizado) | NARANJA | 5,5 % |
 | **DIMENSIÓN: Seguridad** | | | | |
-| Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | AMARILLO | 2,7 % |
+| Victimización | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 27,3 % de hogares víctimas (últimos 12 meses) | VERDE | 2,7 % |
 | Tasa de homicidios dolosos | Homicidios dolosos cada 100.000 habitantes, tasa ya calculada por el Sistema Nacional de Información Criminal (SNIC)… | 3,48 homicidios dolosos cada 100.000 hab. | VERDE | 1,1 % |
 | Tasa de robos (rapiñas) | Robos que excluyen los agravados por lesiones o muertes, cada 100.000 habitantes, tasa ya calculada por el Sistema… | 778,1 robos (excl. agravados) cada 100.000 hab. | VERDE | 0,7 % |
 
@@ -941,7 +941,7 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 27,3 % de hogares víctimas (últimos 12 meses)** (2026-07) | **AMARILLO** | Peso efectivo 2,7 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 27,3 % de hogares víctimas (últimos 12 meses)** (2026-07) | **VERDE** | Peso efectivo 2,7 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -963,7 +963,7 @@ Recoge hechos de victimización declarados por los hogares, incluidos casos no d
 
 ## Método de cómputo
 
-- Componente del índice: el porcentaje de hogares víctimas, rebaseado de forma invertida (menos victimización = mejora) con base declarada en enero de 2024, conservada por continuidad de la serie publicada.
+- Componente del índice: el porcentaje de hogares víctimas, rebaseado de forma invertida (menos victimización = mejora) contra el promedio del 4º trimestre de 2023, como el resto del índice.
 - La ventana de 12 meses de la pregunta desestacionaliza por construcción.
 
 ## Semáforo — valores que determinan el color
@@ -979,7 +979,7 @@ Este cinturón no usa tablas de bandas por indicador: el componente entra como u
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **104,8**.
+Este componente está hoy en **115,6**.
 
 ## Datos concretos detrás del valor
 
@@ -991,15 +991,15 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 27,3 % de hogares víctimas (últimos 12 meses) (2026-07).
 
-El componente está en 104,8 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
+El componente está en 115,6 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
 
-**Color vigente: AMARILLO**
+**Color vigente: VERDE**
 
 Ponderación vigente en el ITCIS: 2,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
-- La auditoría del 8-sep-2026 recuperó informes de 2020–2023, incluido el 4º trimestre de 2023: la afirmación anterior de suspensión era incorrecta. Se mantiene explícita la base de enero de 2024; una eventual armonización con 4T-2023 requiere documentar su efecto sobre el índice.
+- La base son tres meses de una encuesta con error muestral de ±3 puntos: octubre y noviembre de 2023 fueron altos (34% y 33%) y diciembre bajo (28%). El promedio atenúa, pero no elimina, ese ruido.
 - Error muestral de ±3 puntos por mes (~1.000 hogares) y cobertura solo urbana.
 - La divergencia con el registro de denuncias requiere contrastar universos, períodos y error muestral: por sí sola no demuestra crecimiento del delito no denunciado.
 - El SNIC (registro oficial de delitos) sigue apareciendo como contraste por tipo en el detalle, además de puntuar por separado como `tasa_homicidios` y `tasa_robos` desde el 16-sep-2026.
@@ -1023,6 +1023,8 @@ Ponderación vigente en el ITCIS: 2,7 % efectivo. El color es una lectura adicio
 **2026-09-16** — El desglose del SNIC por tipo de delito (homicidios, robos, hurtos, etc.), que se descargaba pero se quedaba en el snapshot interno del colector, se suma al contraste SNIC del detalle. Se restituyen Amenazas y Lesiones dolosas a la lista de tipos conservados.
 
 **2026-09-16** — Se revierte la decisión anterior: el argumento de que el SNIC «es anual, no puede puntuar en un tablero mensual» era falso — el snapshot ya tenía cinco indicadores vigentes con 243-244 días de rezago del dato. Entran `tasa_homicidios` y `tasa_robos` como componentes propios de la dimensión de seguridad, con la `tasa_hechos` que el SNIC ya calcula. El peso interno de este indicador baja de 100% a 59,5% (2,68% del índice de impacto social).
+
+**2026-10-28** — La base pasa de enero de 2024 al promedio del 4º trimestre de 2023, como el resto del índice de impacto social. Enero de 2024 se usaba porque no se tenían los informes de 2023; se recuperaron en septiembre. Con el dato de julio de 2026 el componente pasa de 104,8 a 115,6.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

@@ -300,7 +300,7 @@ PROCEDENCIA = {
                           "peso ya acota, y contra esta base —deprimida— 140 es el "
                           "nivel de un año normal, no un outlier"),
     "consumo_supermercados": ("conceptual", "serie desestacionalizada del INDEC rebaseada a 4T-2023 (ADR-0225); ancla en fecha fija, sin móvil 12m porque la fuente ya la desestacionalizó"),
-    "inseguridad": ("conceptual", "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"),
+    "inseguridad": ("conceptual", "IVI rebaseado a 4T-2023 (ADR-0393; antes ene-2024, ADR-0032); ancla en fecha fija, no rango observado"),
     "tasa_homicidios": ("historia_larga",
                        "tasa_hechos del SNIC (ya calculada por la fuente, cada 100.000 hab.), "
                        "serie oficial 2000-2025 (26 años); rebase contra la MEDIANA de esos "

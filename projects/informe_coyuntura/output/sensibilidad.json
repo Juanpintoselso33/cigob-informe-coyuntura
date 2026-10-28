@@ -4,7 +4,7 @@
     "semilla": 20260703,
     "ruido_peso": 0.2,
     "ruido_insumo": 0.05,
-    "snapshot": "2026-10-28T10:19:47.230971-03:00",
+    "snapshot": "2026-10-28T10:33:22.380384-03:00",
     "adr": "0019"
   },
   "itcm": {
@@ -106,49 +106,49 @@
     }
   },
   "itvc": {
-    "valor_publicado": 97.2,
-    "valor_recomputado": 97.2,
+    "valor_publicado": 97.5,
+    "valor_recomputado": 97.5,
     "n_draws": 2000,
     "experimentos": {
       "pesos": {
-        "media": 97.2,
-        "p05": 95.6,
-        "p95": 98.8,
+        "media": 97.5,
+        "p05": 95.8,
+        "p95": 99.1,
         "desvio": 1.02
       },
       "combinado": {
-        "media": 97.2,
-        "p05": 95.6,
-        "p95": 98.8,
+        "media": 97.5,
+        "p05": 95.8,
+        "p95": 99.1,
         "desvio": 1.0
       }
     },
     "leave_one_out": {
-      "brecha_salario_cbt": 99.9,
-      "mora_familias": 99.0,
-      "pobreza_nowcast": 95.7,
-      "peso_tarifas": 95.7,
-      "alquiler_real": 98.7,
-      "ocupacion_eph": 95.8,
-      "consumo_supermercados": 98.3,
-      "informalidad": 98.1,
-      "carga_servicio_deuda_hogares": 96.4,
-      "icg_utdt": 96.4,
+      "brecha_salario_cbt": 100.2,
+      "mora_familias": 99.3,
+      "peso_tarifas": 95.9,
+      "alquiler_real": 99.0,
+      "pobreza_nowcast": 96.0,
+      "ocupacion_eph": 96.1,
+      "consumo_supermercados": 98.6,
+      "informalidad": 98.4,
+      "carga_servicio_deuda_hogares": 96.7,
+      "icg_utdt": 96.7,
+      "motorizacion_total": 97.0,
+      "ipc_alimentos": 97.0,
       "inseguridad": 97.9,
-      "motorizacion_total": 96.7,
-      "ipc_alimentos": 96.7,
-      "tasa_homicidios": 96.8,
-      "alquiler_udesa_real": 97.0,
-      "ratio_motos_autos": 97.3,
-      "consumo_carne_vacuna": 97.3,
-      "consumo_carnes_total": 97.2,
-      "tasa_robos": 97.2
+      "tasa_homicidios": 97.2,
+      "alquiler_udesa_real": 97.3,
+      "ratio_motos_autos": 97.6,
+      "consumo_carnes_total": 97.5,
+      "consumo_carne_vacuna": 97.5,
+      "tasa_robos": 97.5
     },
     "tension": {
-      "base": 5.6,
+      "base": 5.5,
       "rango_combinado": [
         5.2,
-        5.9
+        5.8
       ]
     }
   },

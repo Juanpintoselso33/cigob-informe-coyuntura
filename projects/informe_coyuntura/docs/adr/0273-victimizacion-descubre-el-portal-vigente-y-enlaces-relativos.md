@@ -7,7 +7,7 @@ cinturon: 'vida'
 indicadores: [inseguridad]
 archivos: ['scripts/descargar_series.py', 'tests/test_ivi_descubrimiento.py']
 corrige: ['0032']
-relacionado: ['0032', '0272']
+relacionado: ['0032', '0272', '0393']
 ambito: 'Descubrimiento de informes mensuales IVI'
 origen: 'Auditoría contra el catálogo oficial LICIP'
 ---
