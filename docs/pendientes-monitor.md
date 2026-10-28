@@ -159,6 +159,11 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Verificar el universo de la dotación** (Juan, 28-oct; Luis, gestión 3.1). Ver si la
+  serie del INDEC de empleados de la administración nacional cambió qué organismos cuenta
+  desde dic-2023 (cierres, traspasos a empresas o provincias) y cuánto del −21,4 % es eso
+  y no recorte.
+
 - **Ficha de la brecha cambiaria desactualizada** (Juan, 28-oct). Revisarla entera. Visto:
   el contraste del 27-oct cita una brecha de 9,2 % y hoy es 7,8 %; quedan siglas
   (contado con liquidación, comunicación A3500, Banco Central); verificar el resto contra
