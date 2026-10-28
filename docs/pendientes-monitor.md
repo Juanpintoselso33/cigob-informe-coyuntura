@@ -58,7 +58,7 @@ consumo aparente (SAGyP), movimiento mensual de faena (producción) — dicho en
   de Luis anotada punto por punto (Descargas).
 - **No se puede medir hoy:** padrón de empleadores de ARCA con y sin personal (no es
   público; lo más cercano es la serie mensual de empleadores afiliados a una ART de la
-  SRT, que sí cuenta los que no tienen personal: **decidir** si entra y cómo).
+  SRT, que sí cuenta los que no tienen personal: **decidir** si entra y cómo). Superado esa noche: el padrón de ARCA sí se consiguió (ADR-0389).
 
 ## Hecho el 27-oct, tarde (publicado en un push; verificado en el diario; BigQuery cargado)
 
@@ -73,12 +73,48 @@ consumo aparente (SAGyP), movimiento mensual de faena (producción) — dicho en
 - **Entregados:** Excel v7 de gestión y mensaje a Marcos (reemplazan a la v6, que no se
   mandó).
 
-**Abierto:** los 69 desacuerdos del campo que no mueven el puntaje; verificar antes
-del 1-dic que no haya otra suspensión del FAL; convenios colectivos sin lista publicada;
-cargar el alquiler de UdeSA cuando salga el PDF de octubre.
-**Decisiones de Juan para después del lanzamiento:** reagrupar macro (9), jornadas no
-trabajadas en 100, conflictividad calibrada contra el mandato, lectura de octubre de Luis
-(6). Votómetro (32 a 34): más adelante.
+## Hecho el 27-oct, noche (publicado en un push; verificado en el diario; BigQuery cargado)
+
+- **Macro (53,9, igual):** «Cuentas fiscales» (19,2 %) y «Sector externo» (21,2 %) pasan a
+  ser dos dimensiones, con los mismos pesos efectivos (ADR-0387). Cierra el 9.
+- **Político (75,7):**
+  - jornadas no trabajadas con cortes de los percentiles previos al mandato: el
+    componente pasa de 100 a 87 (ADR-0388);
+  - conflictividad con cortes de uno y dos desvíos de 2020-2023: el componente pasa de
+    63,9 a 94,4 (ADR-0390). Cierra la observación 5 de Luis en el 27;
+  - sector privado (70,2) suma la construcción (CAMARCO), y la industria promedia la UIA
+    con las autopartistas (AFAC). Los bancos (ADEBA, ABA, ABAPPRA) se clasificaron pero
+    quedan afuera por no llegar al mínimo de comunicados (ADR-0391). De 41 cámaras
+    relevadas, sólo esas dos llegan al mínimo.
+- **Impacto social (97,2):** padrón de empleadores de ARCA, 511.847 al 24-oct-2026 (−7,5 %
+  contra ago-2024), como dato dentro de la tarjeta de ocupación. Puntúa cuando tenga 12
+  meses; la historia previa se reconstruyó con copias del Internet Archive (ADR-0389).
+  Cierra el «no se puede medir» del padrón.
+- **Prensa y Presidente (25): colectado y pendiente**, ver el punto 25.
+
+## Lo que queda abierto (actualizado el 27-oct, noche)
+
+- **Para la reunión con Luis (28-oct, 15 h):**
+  - verificar que su propuesta macro del 11-oct quedó aplicada (19);
+  - cuántas votaciones divididas entran en 90 días, y si adhesión de provincias se
+    superpone con el RIGI de gestión (27);
+  - aclararle lo de la carne (C).
+- **Esperan a otro:**
+  - el resto de la EPH (desocupación, informalidad, ingresos): Luis manda el documento
+    de Ever (30);
+  - los rubros excluidos de las transferencias no automáticas: los revisa Luis (26).
+- **Mensuales, a mano:**
+  - alquiler UdeSA (PDF de octubre);
+  - prensa y Presidente (`prensa_presidente.py --mes`);
+  - padrón de ARCA (semanal en la fuente; se baja una vez por mes).
+- **Con fecha:** verificar antes del 1-dic que no haya otra suspensión del FAL.
+- **Cuando aparezca:** convenios colectivos, todavía sin lista publicada.
+- **Adjudicación de Juan, no decide ningún puntaje:**
+  - 69 desacuerdos del campo;
+  - 42 de las cámaras nuevas (CAMARCO 40, bancos 2);
+  - 818 de la prensa, sólo si el indicador se retoma.
+- **Más adelante:** Votómetro (32 a 34, lanzamiento a fines de noviembre); elasticidad
+  empleo-producto (18, es una idea).
 
 ## Acuerdos de la reunión Juan–Luis del 26-oct (documento de Luis, 21:00)
 
@@ -87,21 +123,25 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
 
 - **Choca con lo hecho:**
   - A. Reforma laboral con los DOS juicios (Justicia del Trabajo y riesgos del trabajo);
-    ADR-0369 sacó los de riesgos del trabajo. **decidir**
+    ADR-0369 sacó los de riesgos del trabajo. **cerrado**: volvieron (ADR-0379) y después
+    los reemplazó la siniestralidad, como pidió Marcos (ADR-0385).
   - B. Político: sacar «control sobre los jueces» (`paralisis_denuncias`) y «velocidad
     de resolución de la Corte» (`velocidad_resolucion`); en ADR-0366 sólo se renombraron.
+    **hecho (ADR-0374)**: Poder judicial queda sólo con la cobertura de cargos.
   - C. La carne: Luis dice que es consumo per cápita y que la duda era un error. El nivel sí
     es consumo (SAGyP), pero el movimiento que puntúa sale de la faena del INDEC. Aclarárselo.
+    **abierto** (reunión del 28-oct).
 - **Nuevo:**
   - D. Competitividad: tarjetas separadas de términos del intercambio y tipo de cambio
     real; el color lo da el cuadrante del cruce de los dos (resuelve el 13). Como no
     puntúan solas, van dentro de la tarjeta de competitividad (regla ADR-0153/0216).
+    **hecho (ADR-0375)**
   - E. «Veto por quórum» y «desafíos legislativos» se reemplazan por **insistencias sobre
-    vetos** y **rechazos de DNU** (resoluciones de cada cámara; Marcos tiene las fuentes).
+    vetos** y **rechazos de DNU** (resoluciones de cada cámara; Marcos tiene las fuentes). **hecho (ADR-0377)**
   - F. Fichas: sacar los datos fijos del texto y remitir al último dato publicado (no
-    quedó cerrado).
+    quedó cerrado). **hecho** (27-oct): fichas sin cifras fijas.
   - G. El documento de revisión macro es el documento madre del cinturón: lo no tomado
-    se marca «no considerado».
+    se marca «no considerado». **hecho**: revisión anotada punto por punto (27-oct).
 - **Confirma lo hecho o lo decidido:** inflación, expectativas, ficha del índice, riesgo
   país **no** entra (cierra el 11), brecha de obra fuera, cohesión se mantiene, Ingresos y
   Consumo, FAL al 90 %, salud, Excel. Transferencias: sólo lo no automático (26).
@@ -126,30 +166,31 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
 5. **Lectura del mes.** Aclarar que el índice mezcla datos de distintos meses y mirar qué
    indicador explica el cambio antes de titular. [L macro 3.8, gestión 3.8]
 6. **Lectura sistémica de octubre** (texto editorial de Luis, 12-oct): decidir si se
-   publica y dónde. **decidir** [L]
+   publica y dónde. **hecho**: publicada en el informe del mes. [L]
 
 ## Macroeconomía (revisión de Luis, 26-oct)
 
 7. **Inflación en verde hasta ~2,8 % mensual.** Luis propone: verde < 1 % mensual,
    amarillo < 2 %, naranja < 3 %, rojo arriba. Cambio de cálculo: mueve el índice.
-   **decidido** (26-oct): cortes de Luis, y el puntaje acompaña (hoy 1,93 % pasa a
+   **hecho (ADR-0367)** (26-oct): cortes de Luis, y el puntaje acompaña (hoy 1,93 % pasa a
    amarillo). Revisar expectativas con el mismo criterio. [J, L 3.1]
 8. **Expectativas: valor anual contra escala mensual.** Mostrar «21,1 % anual (≈1,6 % por
    mes)» y la escala en anual. [L 3.2]
 9. **Reagrupar el sector externo**: «Cuentas fiscales» (resultado primario, base imponible)
    y «Sector externo» (saldo comercial, reservas, tipo de cambio real), conservando los
-   pesos efectivos. **decidir** [L 1.1]
+   pesos efectivos. **hecho (ADR-0387)** [L 1.1]
 10. **Sacar «Actividad tributaria (IVA + cheque)»** por redundante con la actividad.
-    Entró a pedido de Luis en septiembre (ADR-0329). **decidido** (26-oct): sale, con su
+    Entró a pedido de Luis en septiembre (ADR-0329). **hecho (ADR-0368)** (26-oct): sale, con su
     tarjeta; su peso vuelve a los otros indicadores de actividad. [J, L 1.2]
 11. **Riesgo soberano / resultado financiero.** Falta riesgo país; el resultado primario
     excluye intereses (en septiembre Luis ya pedía el financiero, porque el Gobierno
-    anuncia superávit con intereses). Evaluar o declararlo en la ficha. [L 1.3, sept]
+    anuncia superávit con intereses). Evaluar o declararlo en la ficha. **cerrado**
+    (reunión del 26-oct): el riesgo país no entra y queda declarado en la ficha. [L 1.3, sept]
 12. **Escalas calibradas contra el período** (crédito privado, inversión física, términos
     del intercambio; ~38 % del índice): declararlo en cada ficha y, a mediano plazo,
     anclas normativas. [L 1.4]
 13. **Tipo de cambio real × términos del intercambio**: ver si se muestran los dos y el
-    combinado. **decidir** (conversar) [L 1]
+    combinado. **hecho (ADR-0375)**: dos tarjetas, y el cruce en la dimensión. [L 1]
 14. **Textos en llano**: capacidad prestable, reservas, liquidez y compra de dólares;
     polaridades mezcladas («pts de tensión»); resultado primario en % de la recaudación
     con equivalencia en PBI; crédito privado (rótulo «en pesos», frecuencia mensual, sacar
@@ -158,11 +199,11 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
     criterio de selección (serie desde dic-2023) tiene la excepción de reservas
     (jun-2024). [L 3.4, 3.6]
 16. **Reservas netas en verde con 10.725 M**: contrastar con dos estimaciones públicas.
-    [L 3.7]
+    **hecho** (27-oct). [L 3.7]
 17. **Costo del Tesoro satura** sobre 20 % real: declararlo en su ficha. [L 3.9]
 18. **Elasticidad empleo-producto** (EMAE × SIPA por sector). Idea. [L sept]
 19. Verificar que la propuesta de Luis del 11-oct (tarjetas por dimensión e indicador)
-    quedó aplicada. [L 11-oct]
+    quedó aplicada. **abierto** [L 11-oct]
 
 ## Gestión
 
@@ -170,12 +211,13 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
     CNV 1167, la RG ARCA 5907/2026 y la oferta de los bancos; puntaje 55 → 100. Cambia la
     regla de ADR-0228 («cuenta lo que rige»): lleva ADR. La RG ARCA 5907 no la
     encontramos el 23-oct. Recalcular el efecto con el 50/25/25 de ADR-0365. Al hacerlo,
-    corregir el mensaje a Marcos (hoy dice «FAL en 90: por ahora no»). **decidido** [J, M]
+    corregir el mensaje a Marcos (hoy dice «FAL en 90: por ahora no»). **hecho (ADR-0370)**: cinco hitos. [J, M]
 21. **Revisión de gestión de Luis (26-oct, la reenvió Marcos).** Está escrita sobre los
     datos de la mañana: dotación ya no está en 100 (ADR-0364) y los juicios ya cambiaron
     (ADR-0365). Lo que sigue en pie:
     - **Juicios por riesgos del trabajo**: no miden la reforma, que apunta a despidos.
-      **decidido** (26-oct): salen del índice y de las tarjetas; Reforma laboral queda
+      **superado**: salieron (ADR-0369), volvieron (ADR-0379) y los reemplazó la
+      siniestralidad (ADR-0385). Lo decidido el 26-oct: salen del índice y de las tarjetas; Reforma laboral queda
       FAL 50 % · juicios de la Justicia del Trabajo 50 % (incluyen despidos). Corregir
       el mensaje a Marcos. [J, L 1.1]
     - **Gasto de funcionamiento** en 100: ¿incluye remuneraciones (la masa salarial salió
@@ -183,7 +225,7 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
       2.4]
     - **Orden público** puntúa 99 con dato anual 2025 de una consultora y el protocolo
       anulado (en apelación): ajuste del analista, suspenderlo, o mostrar el estado
-      judicial en la tarjeta. **decidido** (26-oct): sigue puntuando y la tarjeta muestra
+      judicial en la tarjeta. **hecho (ADR-0366)** (26-oct): sigue puntuando y la tarjeta muestra
       «dato del año 2025» y que el protocolo está anulado en primera instancia y
       apelado. [J, L 3.2]
     - **Rótulos que digan lo que miden**: «Brecha cambiaria» (sin «cepo»), «Impuestos
@@ -215,7 +257,7 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
     funcionamiento efectivo y verificable 15 %. Fuentes: SSSalud, ARCA (publicación del
     4-dic-2024), Boletín (DNU 70/2023). El porcentaje de usuarios quedaría como dato
     complementario. Advierte que el puntaje quedaría alto y estable si los hitos están
-    cumplidos. **decidido** (Juan, 26-oct: «se hace lo que dice Marcos»): reemplaza lo
+    cumplidos. **hecho (ADR-0371)** (Juan, 26-oct: «se hace lo que dice Marcos»): reemplaza lo
     decidido el 24-oct y la propuesta de Luis de renombrarlo «Aportes derivados directo
     a prepagas». Cada hito necesita su regla documental de verificación antes de
     puntuar. Lleva ADR. [J, M]
@@ -224,7 +266,8 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
 
 22. **Índice de votos por encima de las bancas propias**: cuántos votos más que sus
     bancas consigue el Gobierno al aprobar leyes. Cohesión de bloque **se mantiene**.
-    **decidido** [J]
+    **hecho (ADR-0376)**: 22,1 % de la cámara; la dimensión se reparte 50/50 con la
+    cohesión. [J]
 23. **Sacar Brecha de obra pública.** **hecho (ADR-0372)** [J; también L 18-oct]
 24. **Postura empresarial con más cámaras.** Luis propone tres sectores con el método de
     la UIA, promediando entidades: campo (SRA, CRA, FAA, Coninagro), comercio (CAC y
@@ -234,9 +277,10 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
     partes iguales. Propone además clasificar con un modelo de lenguaje validado contra
     los ~100 comunicados ya codificados, lo que cambia la regla «el juicio no se
     automatiza» y lleva ADR. (Hoy ya se codifica con dos modelos a ciegas y adjudicación
-    humana: ADR-0131/0150.) **decidido** (26-oct): se suman
+    humana: ADR-0131/0150.) **decidido y hecho** (26-oct): se suman
     cámaras con el método actual (dos modelos a ciegas y adjudicación humana); la
-    propuesta de un solo modelo queda descartada.
+    propuesta de un solo modelo queda descartada. **hecho**: comercio (ADR-0380), campo
+    (ADR-0384), construcción y autopartistas (ADR-0391); bancos clasificados y afuera.
     [J, L 18-oct]
 25. **Menciones de los políticos principales en la prensa.** [J]
     **Colectado y pendiente** (decisión de Juan, 27-oct). Se midió el tono de los titulares
@@ -251,11 +295,12 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
 26. **Transferencias no automáticas a provincias**: anticipos financieros (adelantos
     transitorios), ATN, transferencias por programa. Hoy sólo se miden las automáticas.
     Pista: Presupuesto Abierto, inciso 5, partidas 5.7 y 5.8; los anticipos son operaciones
-    de tesorería y hay que buscarlos en el Boletín. [J]
+    de tesorería y hay que buscarlos en el Boletín. **hecho (ADR-0378)**; Luis revisa
+    los rubros excluidos. [J]
 27. **Revisión del político de Luis (26-oct):**
     - Un cuarto del peso clavado en 100 (cohesión, jornadas no trabajadas, veto por
       quórum, desafíos legislativos): ampliar anclas o pasar a contexto. Para cohesión
-      propone bajar el peso a 6–8 % y un mínimo de actas divididas. **decidido**
+      propone bajar el peso a 6–8 % y un mínimo de actas divididas. **hecho (ADR-0376)**
       (26-oct): cohesión espera al índice de votos por encima de las bancas (22), que
       entra a su misma dimensión; ahí se reparte el peso. Jornadas no trabajadas: **hecho
       (ADR-0388)**, cortes en percentiles de 2006-2023, pasa de 100 a 87. Veto y desafíos
@@ -265,7 +310,7 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
       de denuncias» → «Actividad de las comisiones de control del Consejo», explicando el
       signo. [L 3, 4]
     - Revisar si las anclas de conflictividad están calibradas sobre el propio mandato.
-      [L 5]
+      **hecho (ADR-0390)** [L 5]
     - Nombres: apoyo empresario es sólo la UIA; adhesión de provincias es sólo el RIGI
       (fuente MAGyP) y se superpone con RIGI de gestión. [L 6]
     - DNU por ley usa leyes publicadas; producción legislativa, sancionadas: unificar o
@@ -280,12 +325,15 @@ de la reunión JP y MJ.txt`). Próxima revisión: **miércoles 28-oct, 15 h**.
     publicación de Scienta). **hecho (ADR-0373)** [J, L]
 29. **«Presión de precios» pasa a «Poder de compra»**: inflación de alimentos, canasta de
     servicios públicos sobre salario y costo real del alquiler con el índice de la
-    Universidad de San Andrés y Mercado Libre. [J, L]
+    Universidad de San Andrés y Mercado Libre. **hecho**: el alquiler entra (ADR-0386) y
+    la dimensión no se rebautiza (reunión del 26-oct). [J, L]
 30. **«Prospectiva de empleo» pasa a «Empleo»** con indicadores nuevos: EPH continua
     (desocupación, empleo, informalidad, subocupación, ingresos; trimestral) y padrón de
     contribuyentes de ARCA (empleadores inscriptos; sin serie histórica). Sacar
     construcción; no tomaría empleo registrado, empleadores pyme, subocupación
-    demandante ni trabajo independiente; informalidad «analizar». [J, L]
+    demandante ni trabajo independiente; informalidad «analizar». **en parte**: tasa de
+    empleo (ADR-0383) y padrón de ARCA (ADR-0389); el resto espera el documento de Ever.
+    [J, L]
 31. Se mantienen: Vulnerabilidad financiera (mora y carga de la deuda), Confianza (ver su
     lectura) y Seguridad (victimización, homicidios, robos). [L]
 
