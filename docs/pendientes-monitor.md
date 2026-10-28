@@ -96,14 +96,66 @@ consumo aparente (SAGyP), movimiento mensual de faena (producción) — dicho en
 
 - Propuesta macro del 11-oct de Luis: aplicada (estructura de la página), con las
   dimensiones que después cambió su propia revisión del 26-oct (19).
-- Votaciones divididas: 99 en 90 días (46 Diputados, 53 Senado); LLA votó unida en
-  todas, el 100 no es por pocas actas (27).
+- Votaciones: 99 en 90 días (46 Diputados, 53 Senado), LLA unida en todas. **Corrección
+  (auditoría del 28-oct):** no son «divididas»: el código no filtra, entran todas las
+  actas donde votó LLA, unas 28 casi unánimes, y las 53 del Senado son 4 sesiones
+  votadas artículo por artículo. Ver auditoría, punto B4 (27).
 - RIGI provincial: el rótulo ya se había corregido (ADR-0366); la ficha aclara que no se
   superpone con el RIGI de gestión (27).
 - La carne puntúa el consumo de SAGYP, no la faena del INDEC; tarjeta y puntaje son el
   mismo dato y el mismo mes (ADR-0392) (C).
 - Revisión de bases «fines de 2023»: todas usan oct-dic 2023 salvo la victimización,
   que pasa de ene-2024 al 4T-2023 (ADR-0393).
+
+## Auditoría indicador por indicador (28-oct, un agente por cinturón)
+
+Verificada contra código y snapshot. Los errores (pobreza corrida un semestre, piquetes
+con el año sin cerrar, lectura ≠ color en los bordes, rótulo de la victimización, rojo
+faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir viendo:
+
+**B. Decisiones de método (mueven puntajes)**
+1. Transferencias no automáticas: compara contra los 12 meses previos y premia el
+   rebote (−85 % en 2024, +32 % en 2025: hoy +6 %, verde, con un nivel ~1/5 del de
+   2023). Recomendación: compararlas contra 2023, como conflictividad. 8,2 % del ITCP.
+2. Cortes calibrados sobre el propio mandato: resultado primario (12 % de macro),
+   alineamiento de senadores, piquetes, RIGI, cohesión. Llevarlos a historia previa,
+   uno por uno, como ADR-0390.
+3. Saturados casi siempre en 10 o 100: IAI (23 de 33 meses), crédito privado (19 de 34),
+   saldo comercial (7 meses seguidos en el techo), postura del comercio (siempre 1,0).
+4. Cohesión: filtrar de verdad las actas divididas, que es lo que dicen los textos.
+5. Privatizaciones y concesiones viales: la Res. ST 80/2025 sube las dos en nov-2025,
+   misma dimensión (~0,7 pts de peso). Recomendación: declararlo en las dos fichas.
+6. Producción legislativa: las bandas premian más leyes, pero en 2025 las de la
+   oposición (después vetadas) le suman al Gobierno. Definir la pregunta (con Luis).
+7. Hipótesis a chequear: conflictividad compara contra 2023 fijo con horizonte de hasta
+   3 años, pero los cortes salen del desvío interanual; victimización sin informe nuevo
+   desde julio (¿la UTDT no publicó o el descubrimiento falla?).
+
+**C. Sólo texto (no mueven números)**
+- Fichas con cifras o pesos viejos: EMAE, IPI y emae_difusion (no registran ADR-0368),
+  dotación (cifras de mayo), saldo comercial (cuenta corriente vieja), ejemplo «100
+  normas» de desregulación, historial del índice de gestión sin ADR-0370/0371,
+  desequilibrio monetario («11 %», «competitividad externa»), reservas en el registro de
+  ADR-0387 de idc/crédito/costo del Tesoro, ipc_total «tres» deflactores (son cuatro).
+- Afirmaciones falsas: el ISAC ya no está en el índice de impacto social (ficha del
+  IAI); el ratio motos/autos sí puntúa (ficha de motorización); salud ya no es
+  «derivación de aportes a prepagas» (dimensión Reforma social); apoyo_empresario
+  «32 meses sin huecos» (tiene huecos) y limitación de AEA que ya no entra; ficha del
+  índice de macro: recaudación «promedio móvil de 3 meses» (ya no); peso_tarifas
+  renormaliza también con alquiler UdeSA.
+- Rótulos que prometen de más: «Base imponible real (nación + provincias)» (sólo IIBB
+  del Convenio Multilateral); «Costo real del alquiler» muestra variación nominal;
+  «canasta del hogar» es por adulto equivalente; resultado primario «de cada cien pesos
+  recaudados» incluye seguridad social y coparticipación; siniestralidad «resultado de
+  la reforma en seguridad laboral»; brecha «sobre el dólar oficial» (es el mayorista).
+- Rezagos mal declarados: ICG (dice 55-60 días, llega en ~27), conteos legislativos de
+  12 meses (deberían ser 6, hoy 0-1,5), resultado primario («un mes»), EMAE «el más
+  rezagado» (términos del intercambio lo es).
+- Tablas de cortes que no coinciden con el motor: FAL «>90 → 100» (90 da 100), votos
+  sobre bancas, insistencias/rechazos «3–4 → 35» (4 da 10), eficacia legislativa
+  (comentario de rango viejo, «15 a 20 proyectos»).
+- Comentarios internos viejos: itcp.py «AEA y UIA», «CAC y CAME»; procedencia_anclas
+  desregulación «100/300/600/1200», recaudación «en torno al cero».
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
