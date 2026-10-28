@@ -159,6 +159,14 @@ faltante en jornadas) se corrigen el 28-oct (ADR-0394 a 0396). Queda para ir vie
 
 ## Lo que queda abierto (actualizado el 28-oct)
 
+- **Monotributistas contados como empleo de mala calidad** (Juan, 28-oct; preocupación
+  central de empleo). Los indicadores actuales (informalidad, calidad del empleo y afines)
+  tratan al monotributo y al trabajo independiente como empleo precario o informal, y eso
+  castiga al Gobierno por una forma de trabajo registrada. Buscar una medida que lo subsane:
+  por ejemplo, empleo registrado total incluyendo monotributo, la parte de los
+  independientes que aporta, o separar monotributo de informalidad en la EPH. Revisar qué
+  hace hoy cada indicador del cinturón con los monotributistas.
+
 - **Seguir buscando la serie de empleadores de ARCA** (Juan, 28-oct). Hoy el padrón entra
   como dato sin puntuar porque no tiene historia (ADR-0389; se reconstruyó parte con el
   archivo de Internet). Buscar una serie de empleadores inscriptos que llegue a fines de
